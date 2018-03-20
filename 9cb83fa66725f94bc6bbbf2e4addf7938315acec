@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5ef903a_00bdcb83",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "space instead of tab.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 5
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e75c1d5_e1c882b7",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 56,
+        "startChar": 50,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e8d3e6_a98c587a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "nit: I believe !anx[port].i2c_slave_addr is preferred.",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b19a3c2_72ae4c92",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "This isn\u0027t needed.",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 11
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b342984_46de7cc3",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "I\u0027m afraid we have to use the firmware image version to derive individual driver versions.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722c7c32_3d5bbecd",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "Please use ARRAY_SIZE.",
+      "range": {
+        "startLine": 138,
+        "startChar": 17,
+        "endLine": 138,
+        "endChar": 18
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c681202_6560df46",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "tcpci_tcpm_init(port)",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebbf04c1_ccd81f4d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "Can we ignore the return values of these writes? If so, could you add comments to explain why?",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 11
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b47b6f5b_bc0d6f8d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "nit: I think we prefer \u0027enable ? 0x55 : 0x44\u0027.",
+      "range": {
+        "startLine": 242,
+        "startChar": 43,
+        "endLine": 242,
+        "endChar": 46
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a20aa6f_1380739e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "tcpci_tcpc_alert(port)",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 32
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ad9ba0_e3670ba5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "We need .release otherwise tcpm would crash.",
+      "range": {
+        "startLine": 363,
+        "startChar": 22,
+        "endLine": 363,
+        "endChar": 38
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69348cc3_f1e5db92",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "Can you align macro names and their values vertically?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2efca3_42183199",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T06:07:33Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "9cb83fa66725f94bc6bbbf2e4addf7938315acec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
