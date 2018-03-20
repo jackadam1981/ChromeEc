@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f6519c5_3a48b942",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "Are these required?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98ffa1e6_a3586c10",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "extra blank line not required.",
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256ac9c7_1d6dd330",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "return write_reg(...);",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 15
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea871d19_0f3bfaa6",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "Maybe do this before the if block above -- that way you don\u0027t have to do that in gpio_set_level separately.",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 19
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07523e2_5a97cf30",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "same comment as above.",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 19
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2be17d0_5f2fae6d",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be done only for the current port?\ni.e. db_exit_fail_count[port] \u003d 0;\n\nActually, do you really need to set this count to 0? It is a static variable which would be initialized to 0 already.",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 27
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae70fad_9fe854e6",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "blank line not required",
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0198ceec_94792099",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "Do you want to continue reading the next register(even if read fails for one register) since it is harmless?",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 13
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29a28c16_d67def5c",
+        "filename": "driver/ppc/nx20p3483.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "Do we need the header in this file?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff1ffb0_97a7afa7",
+        "filename": "driver/ppc/nx20p3483.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "You might want to add a forward declaration for ppc_drv here?\n\nstruct ppc_drv;",
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73210341_dab76894",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "Maybe add a comment something like : \"See PPC_CFG_FLAGS_* for bit definitions of flags\"",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcda844_d7beb784",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T17:03:45Z",
+      "side": 1,
+      "message": "Comment indicating that snk_gpio and src_gpio need to be provided only if PPC_CFG_FLAGS_GPIO_CONTROL is set.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 27
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
