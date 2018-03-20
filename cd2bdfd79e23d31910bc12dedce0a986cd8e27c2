@@ -25,6 +25,213 @@
     },
     {
       "key": {
+        "uuid": "75a1e57e_55f63d19",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "Maybe not hard code this? see line 185",
+      "range": {
+        "startLine": 154,
+        "startChar": 41,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "005d0d44_bde20a50",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "Why not USB_POWER_SUCCESS?",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 18
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6b5e44_d8a78ed8",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "What is \u0027shared\u0027?",
+      "range": {
+        "startLine": 246,
+        "startChar": 6,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374f2f9a_4fe71499",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "maybe not hard code this?",
+      "range": {
+        "startLine": 459,
+        "startChar": 21,
+        "endLine": 459,
+        "endChar": 22
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c334f2d7_edf58754",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 466,
+        "startChar": 14,
+        "endLine": 466,
+        "endChar": 15
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064fa273_3a2d298f",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "Does this mean that if resistor size is 0, we don\u0027t get any readings back? Asking because in the case of servo, when resistor is 0, we still get the reading for component voltage.",
+      "range": {
+        "startLine": 497,
+        "startChar": 2,
+        "endLine": 497,
+        "endChar": 19
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70838b5_f933bea1",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "Maybe add in the comment for the reply for start as well? (real integration time).",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d01c29_eed539b4",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "Add this to the comment above?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c81fb7_4c6e905f",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-20T22:20:28Z",
+      "side": 1,
+      "message": "add to comment above? maybe also represent it as 0x00 since it\u0027s 1 byte?",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "879dfdf8_a1d5c898",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
