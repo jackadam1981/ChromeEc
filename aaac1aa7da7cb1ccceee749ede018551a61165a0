@@ -22,6 +22,30 @@
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a2ad4c_5c31a0b3",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:34Z",
+      "side": 0,
+      "message": "We do need to replace this. I will open an issue to track it. I just didn\u0027t want to do it as part of this CL. I opened b/75975215 and added a TODO here.",
+      "parentUuid": "5d358aa0_4b62dc2a",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
