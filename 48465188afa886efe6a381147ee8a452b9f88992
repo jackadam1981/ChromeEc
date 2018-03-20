@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "328232bf_71962551",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: PIN",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84d8e28e_46a55645",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: Merkle",
+      "range": {
+        "startLine": 12,
+        "startChar": 49,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f619704c_f1a713ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 42
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: along with ... along with repetition",
+      "range": {
+        "startLine": 16,
+        "startChar": 37,
+        "endLine": 16,
+        "endChar": 47
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b04c202d_5b63303f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: lowercase",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "251621f2_5d1a85f3",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: instead of setting up a destination pointer, using just temp_hash for the calculation and doing a separate temp_hash-\u003eroot memcpy afterwards is probably easier to read.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 27
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf5a40a_14154465",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02be4479_7cc8f099",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "should we also include the sizes to avoid encoding ambiguity?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dabd130_64e6720a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "Again, this code is probably easier to read if we do a child_hash-\u003etemp_hash memcpy first, then the loop, then a temp_hash-\u003enew_root memcpy.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bbbf04_16328c25",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "stale",
+      "range": {
+        "startLine": 112,
+        "startChar": 23,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93718c04_4b3e9887",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "stale",
+      "range": {
+        "startLine": 123,
+        "startChar": 21,
+        "endLine": 123,
+        "endChar": 27
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef53f4a4_a92916ce",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "It\u0027d probably be a good idea to allow this to be variable for forward-compatibility so old versions can successfully decode (and ignore any added fields).",
+      "range": {
+        "startLine": 155,
+        "startChar": 8,
+        "endLine": 155,
+        "endChar": 30
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cbc1e3_807bfa8c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 160,
+        "startChar": 7,
+        "endLine": 160,
+        "endChar": 29
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451d2056_d4de1665",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "You\u0027ll probably have to declare this volatile or otherwise the compiler might outsmart you and remove instructions updating this.",
+      "range": {
+        "startLine": 434,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 33
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e270ff2e_7d8a8044",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: provides",
+      "range": {
+        "startLine": 456,
+        "startChar": 11,
+        "endLine": 456,
+        "endChar": 18
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a3ba6e_e1f23b45",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "In order to be a bit more defensive regarding timing side channels, perhaps we should simplify this by making a two-element struct array that contains the results for each case so we can select by the boolean outcome of the safe_memcmp?\n\nSomething along these lines perhaps:\n\nvolatile struct {\n  uint32_t attempts;\n  int ret;\n  uint8_t secret[...];\n} results_table[2] \u003d {\n  { 0, PW_ERR_LOWENT_AUTH_FAILED, {} },\n  { 0, EC_SUCCESS, {} },\n};\n\nresults_table[FALSE].attempts \u003d max(leaf_data.pub.attempt_count.v + 1, UINT3_MAX);\nmemcpy(results_table[TRUE].secret, \u0026leaf_data.sec.high_entropy_secret);\n\n\n// ... later ...\n\nvolatile int decision \u003d safe_memcmp(request-\u003elow_entropy_secret,\n\t\t\tleaf_data.sec.low_entropy_secret,\n\t\t\tsizeof(request-\u003elow_entropy_secret)) ? 1 : 0;\n\n// now use results_table[decision] to set up response with pretty good confidence that we get constant-time code.\n\n\n\nBtw. can you also do due diligence to compile whatever final version we land on and check the assembly to make sure it looks right?\n\nAlso, we\u0027re assuming that there are no cache timing effects (i.e. the data for one case loading faster then the other case). I think that\u0027s a valid assumption on the hardware this runs on. Fully setting up the results table in advance will also guard against this risk somewhat as it\u0027ll give us high confidence *all* data will actually be in the cache before making the decision.",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 2
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343fab9b_a7981f7d",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "We could just set up a pointer to either a buffers with zeros or the actual high entropy secret so we can perform the memcpy unconditionally.",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 0
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f5365e_6c1ed839",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "this is used thrice - break out into helper?",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 13
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c64d39_0d783f5f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: provides",
+      "range": {
+        "startLine": 553,
+        "startChar": 11,
+        "endLine": 553,
+        "endChar": 18
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0421d4c4_d5a5dc89",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "this is used twice - break out into helper?",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 30
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e59b619_fd351c76",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "nit: provides",
+      "range": {
+        "startLine": 569,
+        "startChar": 11,
+        "endLine": 569,
+        "endChar": 18
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d33b22_9585bfae",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 42
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "typo: auxiliary",
+      "range": {
+        "startLine": 599,
+        "startChar": 13,
+        "endLine": 599,
+        "endChar": 21
+      },
+      "revId": "48465188afa886efe6a381147ee8a452b9f88992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

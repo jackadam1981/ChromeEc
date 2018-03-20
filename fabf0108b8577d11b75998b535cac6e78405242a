@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "b4e3fc0b_48ecc72e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "Sorry, let me clarify. Our goal should be that these become invalid when the TPM gets cleared, so my intention was to use key derivation to make sure that a TPM clear automatically resets the keys.",
+      "parentUuid": "a8602fab_f9b4312f",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea0ac17c_791eae92",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -413,6 +437,30 @@
       "side": 1,
       "message": "This violates the ec code style checker. I could use a do{}while(0); if you insist.",
       "parentUuid": "36954dce_565e9df3",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 39
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84eb0309_5671ab68",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "Ah, interesting. Let\u0027s keep as is then.",
+      "parentUuid": "ebe18645_7f9a74b8",
       "range": {
         "startLine": 214,
         "startChar": 0,
@@ -941,6 +989,30 @@
     },
     {
       "key": {
+        "uuid": "652ff088_a92ec8eb",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "Apple had a bug in certificate validation a while a go where a duplicated goto fail; in a conditional body not protected by curly braces bypassed subsequent validation checks.\n\nAnyhow, if the EC style enforces no curlies, let\u0027s go with that for now. Changing the style guide would be a separate effort.",
+      "parentUuid": "d2b42227_ad03e279",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 51
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16bf59f9_ce43b01b",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -1023,6 +1095,30 @@
       "side": 1,
       "message": "I don\u0027t think I understand this question.\n\nI suppose I could have an error response type and a successful response type and let the response struct be inferred by whatever request was sent. However, the type fields describe which variant of the union is valid for the response struct.",
       "parentUuid": "d21b7dfb_30d63d9b",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 3
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e89b362_33e7ee4a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-20T15:12:12Z",
+      "side": 1,
+      "message": "Ah, I hadn\u0027t realized you\u0027re using different message types for successful response vs. error response. Is there a good reason to do so? If you just put an error field in the response header, I guess this would simplify things? (also on the OS side since that code knows up front which response message type to expect as opposed to having to look at the type and then checking whether the response is one of the valid response types for corresponding request...)",
+      "parentUuid": "fce99adf_26b55c5f",
       "range": {
         "startLine": 685,
         "startChar": 0,
