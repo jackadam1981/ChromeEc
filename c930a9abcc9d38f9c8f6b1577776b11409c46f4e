@@ -127,6 +127,24 @@
       "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b0ee5a8_1275859a",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-21T21:56:58Z",
+      "side": 1,
+      "message": "But it isn\u0027t a cold at all. Should we remove the parameter to chipset_reset() ? Or rename the entire function?\n\n$ git grep \u0027chipset_reset(\u0027 | grep -v void\nboard/kevin/board.c:    chipset_reset(0);\nboard/oak/board.c:              chipset_reset(0); /* Warm reset AP */\nboard/rainier/board.c:  chipset_reset(0);\nboard/scarlet/board.c:  chipset_reset(0);\nchip/mchp/lpc.c: * Called from power/skylake.c chipset_reset()\ncommon/ap_hang_detect.c:                chipset_reset(0);\ncommon/button.c:                        chipset_reset(0);\ncommon/button.c:                chipset_reset(0);\ncommon/chipset.c:       chipset_reset(is_cold);\ncommon/keyboard_8042.c:         chipset_reset(0);\ncommon/keyboard_scan.c:         chipset_reset(0);\npower/mediatek.c:               chipset_reset(0);\npower/rockchip.c:               chipset_reset(0);\n\nI don\u0027t see a user of the parameter to actually do it. aside from the command line in common/chipset.c. And even if someone asked for \u0027cold\u0027 it doesn\u0027t even work.",
+      "parentUuid": "2b41ac61_9ca02697",
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
