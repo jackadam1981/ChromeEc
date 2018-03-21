@@ -239,6 +239,9 @@ void board_tcpc_init(void)
 {
 	int port;
 
+	/* Enable PP3300_USB_PD. This powers up TCPCs. */
+	gpio_set_level(GPIO_USB_PP3300_USB_PD, 1);
+
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image()) {
 		board_reset_pd_mcu();
