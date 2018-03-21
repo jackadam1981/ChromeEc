@@ -22,7 +22,7 @@
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 
 #define I2C_FLAG_REPEATED_START_DISABLED	0
-#define EVENT_FLAG_I2C_TIMEOUT			TASK_EVENT_CUSTOM(1 << 1)
+#define EVENT_FLAG_I2C_TIMEOUT			TASK_EVENT_CUSTOM(1 << 7)
 
 /*25MHz, 50MHz, 100MHz, 120MHz, 40MHz, 20MHz, 37MHz*/
 static uint16_t default_hcnt_scl_100[] = {
@@ -42,11 +42,11 @@ static uint16_t default_lcnt_scl_400[] = {
 };
 
 static uint16_t default_hcnt_scl_1000[] = {
-	260, 260, 260, 260, 260, 260, 260
+	260, 260, 260, 300, 260, 260, 260
 };
 
 static uint16_t default_lcnt_scl_1000[] = {
-	500, 500, 500, 500, 500, 500, 500
+	500, 500, 500, 400, 500, 500, 500
 };
 
 static uint16_t default_hcnt_scl_hs[] = { 160, 300, 160, 166, 175, 150, 162 };
@@ -63,7 +63,7 @@ static struct i2c_context i2c_ctxs[ISH_I2C_PORT_COUNT] = {
 	{
 		.bus = 0,
 		.base = (uint32_t *) ISH_I2C0_BASE,
-		.speed = I2C_SPEED_FAST,
+		.speed = I2C_SPEED_FAST_PLUS,
 		.int_pin = ISH_I2C0_IRQ,
 	},
 	{
@@ -83,24 +83,24 @@ static struct i2c_context i2c_ctxs[ISH_I2C_PORT_COUNT] = {
 static struct i2c_bus_info board_config[ISH_I2C_PORT_COUNT] = {
 	{
 		.bus_id = 0,
-		.std_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.high_speed.sda_hold = DEFAULT_SDA_HOLD,
+		.std_speed.sda_hold = DEFAULT_SDA_HOLD_STD,
+		.fast_speed.sda_hold = DEFAULT_SDA_HOLD_FAST,
+		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD_FAST_PLUS,
+		.high_speed.sda_hold = DEFAULT_SDA_HOLD_HIGH,
 	},
 	{
 		.bus_id = 1,
-		.std_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.high_speed.sda_hold = DEFAULT_SDA_HOLD,
+		.std_speed.sda_hold = DEFAULT_SDA_HOLD_STD,
+		.fast_speed.sda_hold = DEFAULT_SDA_HOLD_FAST,
+		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD_FAST_PLUS,
+		.high_speed.sda_hold = DEFAULT_SDA_HOLD_HIGH,
 	},
 	{
 		.bus_id = 2,
-		.std_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.high_speed.sda_hold = DEFAULT_SDA_HOLD,
+		.std_speed.sda_hold = DEFAULT_SDA_HOLD_STD,
+		.fast_speed.sda_hold = DEFAULT_SDA_HOLD_FAST,
+		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD_FAST_PLUS,
+		.high_speed.sda_hold = DEFAULT_SDA_HOLD_HIGH,
 	 },
 };
 
@@ -238,6 +238,7 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 	/* in SPT HW we need to sync between I2C clock and data signals */
 	con_value = i2c_mmio_read(base, IC_CON);
 
+	/* TODO: REPEATED START */
 	if (flags & I2C_FLAG_REPEATED_START_DISABLED)
 		con_value &= ~IC_RESTART_EN_VAL;
 	else
@@ -297,17 +298,15 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	ctx = &i2c_ctxs[port];
 	ctx->error_flag = 0;
 
-	total_len = is_read ? (1 + in_size) : out_size;
+	total_len = in_size + out_size;
 
 	i2c_init_transaction(ctx, slave_addr, flags);
 
-	/* Write device id */
-	i2c_write_buffer(ctx->base, 1, out, &curr_index, total_len);
-
 	/* Write W data */
-	i2c_write_buffer(ctx->base, (is_read ? 0 : out_size - 1),
-			 (is_read ? NULL : out + 1),
-			 &curr_index, total_len);
+	if (out_size)
+		i2c_write_buffer(ctx->base, out_size, out,
+				&curr_index, total_len);
+
 
 	if (is_read) {
 		/* Write R commands */
@@ -323,6 +322,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 	/* Wait for interrupt */
 	ctx->wait_task_id = task_get_current();
+
 	task_wait_event_mask(EVENT_FLAG_I2C_TIMEOUT, -1);
 
 	if ((ctx->interrupts & M_TX_ABRT) == 0) {
