@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd68ffe_c937e856",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-21T20:26:29Z",
+      "side": 1,
+      "message": "Why? I thought this was a SKL/KBL specific issue: crbug.com/721853?",
+      "range": {
+        "startLine": 522,
+        "startChar": 3,
+        "endLine": 525,
+        "endChar": 34
+      },
+      "revId": "c03d94971d320a1ccbd399b74e77dcc1c4ca40a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
