@@ -17,12 +17,14 @@
 #include "hwtimer.h"
 #include "util.h"
 
+/* this macro causes 'pause' and reduces loop counts inside loop. */
+#define cpu_relax() asm volatile("rep; nop" ::: "memory")
+
 #define CPUTS(outstr) cputs(CC_I2C, outstr)
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 
-#define I2C_FLAG_REPEATED_START_DISABLED	0
-#define EVENT_FLAG_I2C_TIMEOUT			TASK_EVENT_CUSTOM(1 << 1)
+#define EVENT_FLAG_I2C_TIMEOUT			TASK_EVENT_CUSTOM(1 << 7)
 
 /*25MHz, 50MHz, 100MHz, 120MHz, 40MHz, 20MHz, 37MHz*/
 static uint16_t default_hcnt_scl_100[] = {
@@ -34,26 +36,27 @@ static uint16_t default_lcnt_scl_100[] = {
 };
 
 static uint16_t default_hcnt_scl_400[] = {
-	600, 820, 1120, 1066, 600, 600, 450
+	600, 820, 1120, 800, 600, 600, 450
 };
 
 static uint16_t default_lcnt_scl_400[] = {
-	1320, 1380, 1300, 1300, 1300, 1200, 1250
+	1320, 1380, 1300, 1550, 1300, 1200, 1250
 };
 
 static uint16_t default_hcnt_scl_1000[] = {
-	260, 260, 260, 260, 260, 260, 260
+	260, 260, 260, 305, 260, 260, 260
 };
 
 static uint16_t default_lcnt_scl_1000[] = {
-	500, 500, 500, 500, 500, 500, 500
+	500, 500, 500, 525, 500, 500, 500
 };
 
 static uint16_t default_hcnt_scl_hs[] = { 160, 300, 160, 166, 175, 150, 162 };
 static uint16_t default_lcnt_scl_hs[] = { 320, 340, 320, 325, 325, 300, 297 };
 
 static uint8_t speed_val_arr[] = {
-	STD_SPEED_VAL, FAST_SPEED_VAL, FAST_PLUS_SPEED_VAL, HIGH_SPEED_VAL};
+	STD_SPEED_VAL, FAST_SPEED_VAL, FAST_PLUS_SPEED_VAL, HIGH_SPEED_VAL
+};
 
 static uint8_t bus_freq[ISH_I2C_PORT_COUNT] = {
 	I2C_FREQ_120, I2C_FREQ_120, I2C_FREQ_120
@@ -83,24 +86,24 @@ static struct i2c_context i2c_ctxs[ISH_I2C_PORT_COUNT] = {
 static struct i2c_bus_info board_config[ISH_I2C_PORT_COUNT] = {
 	{
 		.bus_id = 0,
-		.std_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.high_speed.sda_hold = DEFAULT_SDA_HOLD,
+		.std_speed.sda_hold = DEFAULT_SDA_HOLD_STD,
+		.fast_speed.sda_hold = DEFAULT_SDA_HOLD_FAST,
+		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD_FAST_PLUS,
+		.high_speed.sda_hold = DEFAULT_SDA_HOLD_HIGH,
 	},
 	{
 		.bus_id = 1,
-		.std_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.high_speed.sda_hold = DEFAULT_SDA_HOLD,
+		.std_speed.sda_hold = DEFAULT_SDA_HOLD_STD,
+		.fast_speed.sda_hold = DEFAULT_SDA_HOLD_FAST,
+		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD_FAST_PLUS,
+		.high_speed.sda_hold = DEFAULT_SDA_HOLD_HIGH,
 	},
 	{
 		.bus_id = 2,
-		.std_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD,
-		.high_speed.sda_hold = DEFAULT_SDA_HOLD,
+		.std_speed.sda_hold = DEFAULT_SDA_HOLD_STD,
+		.fast_speed.sda_hold = DEFAULT_SDA_HOLD_FAST,
+		.fast_plus_speed.sda_hold = DEFAULT_SDA_HOLD_FAST_PLUS,
+		.high_speed.sda_hold = DEFAULT_SDA_HOLD_HIGH,
 	 },
 };
 
@@ -170,64 +173,63 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 
 	i2c_mmio_write(base, IC_ENABLE, IC_ENABLE_DISABLE);
 	i2c_mmio_write(base, IC_TAR, (slave_addr << IC_TAR_OFFSET) |
-		       TAR_SPECIAL_VAL | IC_10BITADDR_MASTER_VAL);
+			TAR_SPECIAL_VAL | IC_10BITADDR_MASTER_VAL);
 
 	/* set Clock SCL Count */
 	switch (ctx->speed) {
 
 	case I2C_SPEED_STD:
 		i2c_mmio_write(base, IC_SS_SCL_HCNT,
-			       NS_2_COUNTERS(bus_info->std_speed.hcnt,
+				NS_2_COUNTERS(bus_info->std_speed.hcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_SS_SCL_LCNT,
-			       NS_2_COUNTERS(bus_info->std_speed.lcnt,
+				NS_2_COUNTERS(bus_info->std_speed.lcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_SDA_HOLD,
-			       NS_2_COUNTERS(bus_info->std_speed.sda_hold,
+				NS_2_COUNTERS(bus_info->std_speed.sda_hold,
 					     clk_in_val));
 		break;
 
 	case I2C_SPEED_FAST:
 		i2c_mmio_write(base, IC_FS_SCL_HCNT,
-			       NS_2_COUNTERS(bus_info->fast_speed.hcnt,
+				NS_2_COUNTERS(bus_info->fast_speed.hcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_FS_SCL_LCNT,
-			       NS_2_COUNTERS(bus_info->fast_speed.lcnt,
+				NS_2_COUNTERS(bus_info->fast_speed.lcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_SDA_HOLD,
-			       NS_2_COUNTERS(bus_info->fast_speed.sda_hold,
+				NS_2_COUNTERS(bus_info->fast_speed.sda_hold,
 					     clk_in_val));
 		break;
 
-
 	case I2C_SPEED_FAST_PLUS:
 		i2c_mmio_write(base, IC_FS_SCL_HCNT,
-			       NS_2_COUNTERS(bus_info->fast_plus_speed.hcnt,
+				NS_2_COUNTERS(bus_info->fast_plus_speed.hcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_FS_SCL_LCNT,
-			       NS_2_COUNTERS(bus_info->fast_plus_speed.lcnt,
+				NS_2_COUNTERS(bus_info->fast_plus_speed.lcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_SDA_HOLD,
-			       NS_2_COUNTERS(bus_info->fast_plus_speed.sda_hold,
+				NS_2_COUNTERS(bus_info->fast_plus_speed.sda_hold,
 					     clk_in_val));
 		break;
 
 	case I2C_SPEED_HIGH:
 		i2c_mmio_write(base, IC_HS_SCL_HCNT,
-			       NS_2_COUNTERS(bus_info->high_speed.hcnt,
+				NS_2_COUNTERS(bus_info->high_speed.hcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_HS_SCL_LCNT,
-			       NS_2_COUNTERS(bus_info->high_speed.lcnt,
+				NS_2_COUNTERS(bus_info->high_speed.lcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_SDA_HOLD,
-			       NS_2_COUNTERS(bus_info->high_speed.sda_hold,
+				NS_2_COUNTERS(bus_info->high_speed.sda_hold,
 					     clk_in_val));
 
 		i2c_mmio_write(base, IC_FS_SCL_HCNT,
-			       NS_2_COUNTERS(bus_info->fast_speed.hcnt,
+				NS_2_COUNTERS(bus_info->fast_speed.hcnt,
 					     clk_in_val));
 		i2c_mmio_write(base, IC_FS_SCL_LCNT,
-			       NS_2_COUNTERS(bus_info->fast_speed.lcnt,
+				NS_2_COUNTERS(bus_info->fast_speed.lcnt,
 					     clk_in_val));
 		break;
 
@@ -238,11 +240,11 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 	/* in SPT HW we need to sync between I2C clock and data signals */
 	con_value = i2c_mmio_read(base, IC_CON);
 
-	if (flags & I2C_FLAG_REPEATED_START_DISABLED)
-		con_value &= ~IC_RESTART_EN_VAL;
-	else
+	if (flags & I2C_XFER_RESTART) {
 		con_value |= IC_RESTART_EN_VAL;
-
+	} else {
+		con_value &= ~IC_RESTART_EN_VAL;
+	}
 	i2c_mmio_write(base, IC_CON, con_value);
 	i2c_mmio_write(base, IC_FS_SPKLEN, spkln[bus_freq[ctx->bus]]);
 	i2c_mmio_write(base, IC_HS_SPKLEN, spkln[bus_freq[ctx->bus]]);
@@ -261,81 +263,131 @@ static void i2c_write_buffer(uint32_t *base, uint8_t len,
 		++(*cur_index);
 		out = (buffer[i] << DATA_CMD_DAT_OFFSET) | DATA_CMD_WRITE_VAL;
 
-		if (*cur_index == total_len)
+		/* if Write ONLY and Last byte */
+		if (*cur_index == total_len) {
 			out |= DATA_CMD_STOP_VAL;
+		}
 
 		i2c_mmio_write(base, IC_DATA_CMD, out);
 	}
 }
 
-static void i2c_write_read_commands(uint32_t *base, uint8_t len)
+static void i2c_write_read_commands(uint32_t *base, uint8_t len, int more_data,
+					unsigned restart_flag)
 {
+	/* this routine just set RX FIFO's control bit(s),
+	 * READ command or RESTART */
 	int i;
+	uint32_t data_cmd;
 
-	for (i = 0; i < len - 1; i++)
-		i2c_mmio_write(base, IC_DATA_CMD, DATA_CMD_READ_VAL);
+	for (i = 0; i < len; i++) {
+		data_cmd = DATA_CMD_READ_VAL;
 
-	i2c_mmio_write(base, IC_DATA_CMD,
-		       DATA_CMD_READ_VAL | DATA_CMD_STOP_VAL);
+		if ((i == 0) && restart_flag)
+			/* if restart for first byte */
+			data_cmd |= DATA_CMD_RESTART_VAL;
+			if (len == 1) /* if 1 byte only command to write */
+				data_cmd |= DATA_CMD_STOP_VAL;
+		}
+		else if (i == (len - 1) && !more_data)
+//		if (i == (len - 1) && !more_data)
+			data_cmd |= DATA_CMD_STOP_VAL;
+
+		i2c_mmio_write(base, IC_DATA_CMD, data_cmd);
+	}
 }
 
 int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
 {
-	int i, is_read = 0;
+	int i;
 	ssize_t total_len;
 	uint64_t expire_ts;
 	struct i2c_context *ctx;
 	ssize_t curr_index = 0;
 
+	int begin_indx;
+	uint32_t status;
+
 	if (out_size == 0 && in_size == 0)
 		return EC_SUCCESS;
 
-	if (in_size > 0)
-		is_read = 1;
 
 	ctx = &i2c_ctxs[port];
 	ctx->error_flag = 0;
+	ctx->wait_task_id = task_get_current();
 
-	total_len = is_read ? (1 + in_size) : out_size;
+	total_len = in_size + out_size;
 
 	i2c_init_transaction(ctx, slave_addr, flags);
 
-	/* Write device id */
-	i2c_write_buffer(ctx->base, 1, out, &curr_index, total_len);
-
 	/* Write W data */
-	i2c_write_buffer(ctx->base, (is_read ? 0 : out_size - 1),
-			 (is_read ? NULL : out + 1),
-			 &curr_index, total_len);
+	if (out_size)
+		i2c_write_buffer(ctx->base, out_size, out,
+				&curr_index, total_len);
 
-	if (is_read) {
-		/* Write R commands */
-		i2c_write_read_commands(ctx->base, in_size);
-
-		/* Set rx_theshold */
-		i2c_mmio_write(ctx->base, IC_RX_TL, in_size - 1);
+	/* Wait here until Tx is completed so that FIFO becomes empty.
+	 * This is optimized for smaller Tx data size.
+	 * If need to write big data ( > ISH_I2C_FIFO_SIZE ),
+	 * it is better to use Tx FIFO threshold interrupt(as in Rx) for
+	 * better CPU usuage.
+	 * */
+	i = 0;
+	if (in_size > (ISH_I2C_FIFO_SIZE - out_size)) {
+		do {
+			status = i2c_mmio_read(ctx->base, IC_STATUS);
+			cpu_relax();
+			i++;
+		} while ((status & (1 << IC_STATUS_TFE)) == 0 && (i < 500));
 	}
 
-	/* Enable interrupts */
-	i2c_intr_switch(ctx->base,
-			is_read ? ENABLE_READ_INT : ENABLE_WRITE_INT);
+	begin_indx = 0;
+	while (in_size) {
+		int rd_size;  /* read size for on i2c transaction */
 
-	/* Wait for interrupt */
-	ctx->wait_task_id = task_get_current();
-	task_wait_event_mask(EVENT_FLAG_I2C_TIMEOUT, -1);
+		/*
+		 * check if in_size > ISH_I2C_FIFO_SIZE, then try to read
+		 * FIFO_SIZE each time.
+		 */
+		if (in_size > ISH_I2C_FIFO_SIZE) {
+			rd_size = ISH_I2C_FIFO_SIZE;
+			in_size -= ISH_I2C_FIFO_SIZE;
+		} else {
+			rd_size = in_size;
+			in_size = 0;
+		}
+		/* Set rx_threshold */
+		i2c_mmio_write(ctx->base, IC_RX_TL, rd_size - 1);
 
-	if ((ctx->interrupts & M_TX_ABRT) == 0) {
-		if (is_read) {
-			/* read data */
-			for (i = 0; i < in_size; i++)
-				in[i] = i2c_read_byte(ctx->base,
-						IC_DATA_CMD, 0);
+		i2c_intr_switch(ctx->base, ENABLE_READ_INT);
+
+		/*
+		 * RESTART only once for entire i2c transaction.
+		 * assume that if both out_size and in_size are not zero,
+		 * then, it is 'repeated Start' condition.
+		 * set R commands bit, start to read
+		 */
+		i2c_write_read_commands(ctx->base, rd_size, in_size,
+				((begin_indx == 0) && (in_size != 0)
+				&& (out_size != 0)));
+
+
+
+		/* need timeout in case no ACK from slave */
+		task_wait_event_mask(EVENT_FLAG_I2C_TIMEOUT, 2*MSEC);
+
+		if (ctx->interrupts & M_TX_ABRT) {
+			ctx->error_flag = 1;
+			break; /* when bus abort, no more reading !*/
 		}
 
-	} else {
-		ctx->error_flag = 1;
-	}
+		/* read data */
+		for (i = begin_indx; i < begin_indx + rd_size; i++)
+			in[i] = i2c_read_byte(ctx->base,
+					IC_DATA_CMD, 0);
+
+		begin_indx += rd_size;
+	} /* while (in_size) */
 
 	ctx->reason = 0;
 	ctx->interrupts = 0;
@@ -359,10 +411,17 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 static void i2c_interrupt_handler(struct i2c_context *ctx)
 {
+#ifdef INTR_DEBUG
+	uint32_t raw_intr;
+	raw_intr = (uint16_t) i2c_mmio_read(ctx->base, IC_RAW_INTR_STAT);
+#endif
 	/* check interrupts */
 	ctx->interrupts = i2c_mmio_read(ctx->base, IC_INTR_STAT);
 	ctx->reason = (uint16_t) i2c_mmio_read(ctx->base, IC_TX_ABRT_SOURCE);
-
+#ifdef INTR_DEBUG
+	CPRINTS("INTR_STAT = 0x%04x, TX_ABORT_SRC = 0x%04x, RAW_INTR_STAT = 0x%04x\n",
+			ctx->interrupts, ctx->reason, raw_intr);
+#endif
 	/* disable interrupts */
 	i2c_intr_switch(ctx->base, DISABLE_INT);
 	task_set_event(ctx->wait_task_id, EVENT_FLAG_I2C_TIMEOUT, 0);
@@ -408,18 +467,18 @@ static void i2c_init_hardware(struct i2c_context *ctx)
 	i2c_intr_switch(base, DISABLE_INT);
 	i2c_mmio_write(base, IC_ENABLE, IC_ENABLE_DISABLE);
 	i2c_mmio_write(base, IC_CON, (MASTER_MODE_VAL
-				      | speed_val_arr[ctx->speed]
-				      | IC_RESTART_EN_VAL
-				      | IC_SLAVE_DISABLE_VAL));
+				| speed_val_arr[ctx->speed]
+				| IC_RESTART_EN_VAL
+				| IC_SLAVE_DISABLE_VAL));
 
 	i2c_mmio_write(base, IC_FS_SPKLEN, spkln[bus_freq[ctx->bus]]);
 	i2c_mmio_write(base, IC_HS_SPKLEN, spkln[bus_freq[ctx->bus]]);
 
 	/* get RX_FIFO and TX_FIFO depth */
 	ctx->max_rx_depth = i2c_read_byte(base, IC_COMP_PARAM_1,
-					  RX_BUFFER_DEPTH_OFFSET) + 1;
+					RX_BUFFER_DEPTH_OFFSET) + 1;
 	ctx->max_tx_depth = i2c_read_byte(base, IC_COMP_PARAM_1,
-					  TX_BUFFER_DEPTH_OFFSET) + 1;
+					TX_BUFFER_DEPTH_OFFSET) + 1;
 }
 
 static void i2c_initial_board_config(struct i2c_context *ctx)
