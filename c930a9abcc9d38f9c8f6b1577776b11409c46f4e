@@ -86,6 +86,24 @@
       "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b41ac61_9ca02697",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-21T21:53:06Z",
+      "side": 1,
+      "message": "That\u0027s right. We are always doing a SYS_RESET assert now.",
+      "parentUuid": "8d0e9478_0d01d036",
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
