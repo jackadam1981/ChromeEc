@@ -69,6 +69,30 @@
       "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ec18db_78d160ea",
+        "filename": "driver/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-21T17:41:44Z",
+      "side": 1,
+      "message": "Send out CL:973558 for the renamed",
+      "parentUuid": "0e956b09_75b98416",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
