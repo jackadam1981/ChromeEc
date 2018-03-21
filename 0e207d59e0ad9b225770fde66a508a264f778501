@@ -319,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "a07baf41_1adcd587",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-21T20:43:23Z",
+      "side": 1,
+      "message": "Good finding. Will remove this pull up for both.",
+      "parentUuid": "65bd803a_f0a27c4f",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84f1cabd_dfa94321",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
