@@ -145,6 +145,24 @@
       "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd8b7b81_d1528412",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-21T22:11:15Z",
+      "side": 1,
+      "message": "That is a good point. Yes, I think there is no use of the parameter to chipset_reset.",
+      "parentUuid": "2b0ee5a8_1275859a",
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
