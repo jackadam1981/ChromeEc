@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9624ff8a_fd3f78af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-21T00:15:35Z",
+      "side": 1,
+      "message": "Could you confirm these tests are still good?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "442eb760879566536bbb4bf8cfe14de091ac4cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afeb2a7d_f9a66bfb",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-21T00:15:35Z",
+      "side": 1,
+      "message": "I know other boards do this but I think we should just write the address directly (i.e. AN7447_TCPC1_I2C_ADDR) and get rid of TCPC1_I2C_ADDR in board.h.\n\nboard.h has been copied from one board to another and I see macros copied blindly whether they\u0027re actually used or not.",
+      "range": {
+        "startLine": 61,
+        "startChar": 17,
+        "endLine": 61,
+        "endChar": 31
+      },
+      "revId": "442eb760879566536bbb4bf8cfe14de091ac4cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
