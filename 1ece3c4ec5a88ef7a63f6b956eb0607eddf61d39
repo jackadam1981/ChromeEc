@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9ff7554_c635bf25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-21T20:43:06Z",
+      "side": 1,
+      "message": "no, likely they don\u0027t like us entering mode twice (which is more or less incorrect)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 48
+      },
+      "revId": "1ece3c4ec5a88ef7a63f6b956eb0607eddf61d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c959d573_1226f570",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-21T20:43:06Z",
+      "side": 1,
+      "message": "it would be nice to put the proper rationale here since it\u0027s a bit complicated.\nOverall the key points are :\n- setting PD_FLAGS_CHECK_IDENTITY there was useful for the following reasons:\n  * in S5 we are in FORCE_SINK, so we might not able to discover mode (due to the fact that we are a UFP initially when being a SINK)\n  * once we start, we want to discover the full capabilities\n- the use case above is not true if we are a Data DFP (since we can discover mode immediately)\n- so it\u0027s useful IFF we are UFP at transition.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "1ece3c4ec5a88ef7a63f6b956eb0607eddf61d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439f6eda_b025dc42",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3488,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-21T20:43:06Z",
+      "side": 1,
+      "message": "nit: do we put brackets in this case ? I would have omitted them",
+      "range": {
+        "startLine": 3488,
+        "startChar": 0,
+        "endLine": 3488,
+        "endChar": 2
+      },
+      "revId": "1ece3c4ec5a88ef7a63f6b956eb0607eddf61d39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
