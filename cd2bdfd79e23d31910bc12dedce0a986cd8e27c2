@@ -295,6 +295,75 @@
     },
     {
       "key": {
+        "uuid": "386ac765_160c3a10",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-21T19:07:56Z",
+      "side": 1,
+      "message": "maybe use constants instead of hard coding?",
+      "range": {
+        "startLine": 277,
+        "startChar": 28,
+        "endLine": 277,
+        "endChar": 34
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9592a45_9ed9047a",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-21T19:07:56Z",
+      "side": 1,
+      "message": "ina_type is now power/cur/busv/shuntv",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 0
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002e7820_cb4c9e86",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-21T19:07:56Z",
+      "side": 1,
+      "message": "I believe this is now name_tuple.",
+      "range": {
+        "startLine": 413,
+        "startChar": 16,
+        "endLine": 413,
+        "endChar": 20
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b140c53_2d0a821e",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -328,6 +397,29 @@
         "startChar": 4,
         "endLine": 597,
         "endChar": 9
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a6f7a1_38006eea",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-21T19:07:56Z",
+      "side": 1,
+      "message": "multiplier only works for power, not other ina types",
+      "range": {
+        "startLine": 692,
+        "startChar": 38,
+        "endLine": 692,
+        "endChar": 57
       },
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
