@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62832858_24e36c22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-21T21:37:30Z",
+      "side": 1,
+      "message": "intel_x86? since you are touching more than just APL?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5178189a_55711004",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-21T21:37:30Z",
+      "side": 1,
+      "message": "Maybe update this to better reflect what the change is actually doing:\n1. Add a common chipset_reset function for intel_x86 that uses SYS_RESET to trigger warm and cold reset\n2. Use this common chipset_reset function for SKL/KBL, CNL and APL/GLK.\n3. Before this change APL chipset_reset behaved differently for cold and warm reset. With this change, it is more aligned to match the behavior on all other x86 chipsets.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
