@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6b9b3910_b737b244",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-21T11:25:08Z",
+      "side": 1,
+      "message": "What I really care about is whether the PCH can send me a SPI transaction or not. I would imagine it won\u0027t in runtime S0ix ?",
+      "parentUuid": "c0e36682_7e011c5c",
+      "revId": "1582c60679022e5986e4ece01acd6f7de14bc860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f0e844d_066b3161",
         "filename": "board/meowth_fp/board.c",
         "patchSetId": 4
