@@ -232,6 +232,29 @@
     },
     {
       "key": {
+        "uuid": "10d35221_d745c3a9",
+        "filename": "extra/usb_power/marlin_a.scenario",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-21T01:09:37Z",
+      "side": 1,
+      "message": "As a reference, maybe it\u0027s easier to read if you group it this way...\n\n{\n\"VBAT\":[\"POWER\", \"BUSV\", \"CURRENT\", \"SHUTV\"]\n}\n\nand this is a dictionary.\n\nFor backwards compatibility, previously scenario files are lists, so it\u0027s easy to tell them apart. Just a different idea, no need to follow.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 68
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "879dfdf8_a1d5c898",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -249,6 +272,29 @@
     },
     {
       "key": {
+        "uuid": "433bb739_bcecdb4a",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-21T01:09:37Z",
+      "side": 1,
+      "message": "Why are there 48 channels when max ina count is 29 in usb_power.h?",
+      "range": {
+        "startLine": 55,
+        "startChar": 41,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b140c53_2d0a821e",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -260,6 +306,29 @@
       "writtenOn": "2018-03-20T21:22:33Z",
       "side": 1,
       "message": "nit: add \"Raises:\" section to docstring.",
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b26a7a27_0b4f86e2",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-21T01:09:37Z",
+      "side": 1,
+      "message": "Same as my comment in marlin_a.scenario, this could be a dict() of rail names to list of reg types.",
+      "range": {
+        "startLine": 597,
+        "startChar": 4,
+        "endLine": 597,
+        "endChar": 9
+      },
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
