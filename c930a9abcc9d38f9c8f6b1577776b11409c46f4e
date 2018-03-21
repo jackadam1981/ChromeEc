@@ -163,6 +163,24 @@
       "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b3c5cb7_ec455221",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-21T22:33:15Z",
+      "side": 1,
+      "message": "we can clean up and make it a void function. will push a separate CL",
+      "parentUuid": "cd8b7b81_d1528412",
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
