@@ -4832,6 +4832,25 @@ struct __ec_align_size1 ec_params_charger_control {
 	uint8_t allow_charging;
 };
 
+/*
+ * Temporary command for testing CEC at factory
+ */
+#define EC_CMD_DISPLAY_POWER 0x0603
+
+enum cec_cmd {
+	CEC_CMD_TV_ON,
+	CEC_CMD_TV_OFF,
+	CEC_CMD_STATUS,
+};
+
+struct __ec_align1 ec_params_cec {
+	uint8_t cec_cmd; /* enum cec_cmd */
+};
+
+struct __ec_align1 ec_response_cec {
+	uint8_t result;
+};
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
