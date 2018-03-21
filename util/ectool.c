@@ -76,6 +76,14 @@ const char help_str[] =
 	"      Prints supported version mask for a command number\n"
 	"  console\n"
 	"      Prints the last output to the EC debug console\n"
+	"  cecset <address|enable> <val>\n"
+	"      Set the value of a CEC setting\n"
+	"  cecget <address|enable>\n"
+	"      Get the value of a CEC setting\n"
+	"  cecread [timeout]\n"
+	"      Read data from the CEC bus\n"
+	"  cecwrite [write bytes...]\n"
+	"      Write data on the CEC bus\n"
 	"  echash [CMDS]\n"
 	"      Various EC hash commands\n"
 	"  eventclear <mask>\n"
@@ -546,6 +554,7 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_UNIFIED_WAKE_MASKS] = "Unified wake masks for LPC/eSPI",
 	[EC_FEATURE_HOST_EVENT64] = "64-bit host events",
 	[EC_FEATURE_EXEC_IN_RAM] = "Execute code in RAM",
+	[EC_FEATURE_CEC] = "Consumer Electronics Control",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -7797,6 +7806,190 @@ int cmd_wait_event(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_cec_write(int argc, char *argv[])
+{
+	char *e;
+	int rv, i;
+	long val;
+	int msg_len;
+	struct ec_params_cec_write p;
+	struct ec_response_get_next_event buffer;
+
+	if (argc < 2 || argc > 17) {
+		fprintf(stderr, "%s <MSG[0]> [MSG[1] ... MSG[15]]>\n", argv[0]);
+		return -1;
+	}
+
+	msg_len = argc - 1;
+	for (i = 0; i < msg_len; i++) {
+		val = strtol(argv[i + 1], &e, 16);
+		if (e && *e)
+			return -1;
+		if (val < 0 || val > 0xff)
+			return -1;
+		p.msg[i] = (uint8_t)val;
+	}
+
+	printf("Write to CEC: ");
+	for (i = 0; i < msg_len; i++)
+		printf("0x%02x ", p.msg[i]);
+	printf("\n");
+
+	rv = ec_command(EC_CMD_CEC_WRITE_MSG, 0, &p, msg_len, NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	rv = ec_pollevent(1 << EC_MKBP_EVENT_CEC, &buffer,
+			  sizeof(buffer), 1000);
+	if (rv == 0) {
+		fprintf(stderr, "Timeout waiting CEC event\n");
+		return -ETIMEDOUT;
+	} else if (rv < 0) {
+		perror("Error polling for MKBP event\n");
+		return -EIO;
+	}
+
+	if (buffer.data.cec_events & EC_MKBP_CEC_SEND_OK)
+		return 0;
+
+	if (buffer.data.cec_events & EC_MKBP_CEC_SEND_FAILED) {
+		fprintf(stderr, "Send failed\n");
+		return -1;
+	}
+
+	return -1;
+}
+
+int cmd_cec_read(int argc, char *argv[])
+{
+	int msg_len, i, rv;
+	char *e;
+	struct ec_response_cec_read r;
+	struct ec_response_get_next_event buffer;
+	long timeout = 5000;
+	long event_type;
+
+	if (!ec_pollevent) {
+		fprintf(stderr, "Polling for MKBP event not supported\n");
+		return -EINVAL;
+	}
+
+	if (argc >= 2) {
+		timeout = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad timeout value '%s'.\n", argv[1]);
+			return -1;
+		}
+	}
+
+	event_type = EC_MKBP_EVENT_CEC;
+	rv = ec_pollevent(1 << event_type, &buffer, sizeof(buffer), timeout);
+	if (rv == 0) {
+		fprintf(stderr, "Timeout waiting CEC event\n");
+		return -ETIMEDOUT;
+	} else if (rv < 0) {
+		perror("Error polling for MKBP event\n");
+		return -EIO;
+	}
+
+	printf("Got CEC events 0x%08x\n", buffer.data.cec_events);
+
+	rv = ec_command(EC_CMD_CEC_READ_MSG, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	msg_len = rv;
+
+	printf("CEC data: ");
+	for (i = 0; i < msg_len; i++)
+		printf("0x%02x ", r.msg[i]);
+	printf("\n");
+
+	return 0;
+}
+
+static int cec_cmd_to_str(const char *str)
+{
+	if (!strcmp("address", str))
+		return CEC_CMD_LOGICAL_ADDRESS;
+	if (!strcmp("enable", str))
+		return CEC_CMD_ENABLE;
+	return -1;
+}
+int cmd_cec_set(int argc, char *argv[])
+{
+	char *e;
+	struct ec_params_cec_set p;
+	uint8_t val;
+	int cmd;
+
+	if (argc != 3) {
+		fprintf(stderr, "Usage: %s [address|enable] param\n", argv[0]);
+		return -1;
+	}
+
+	val = (uint8_t)strtol(argv[2], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad parameter '%s'.\n", argv[2]);
+		return -1;
+	}
+
+	cmd = cec_cmd_to_str(argv[1]);
+
+	p.cmd = cmd;
+	switch (cmd) {
+	case CEC_CMD_LOGICAL_ADDRESS:
+		p.address = val;
+		break;
+	case CEC_CMD_ENABLE:
+		p.enable = val;
+		break;
+	default:
+		fprintf(stderr, "Invalid command '%s'.\n", argv[1]);
+		return -1;
+	};
+
+	return ec_command(EC_CMD_CEC_SET,
+			  0, &p, sizeof(p), NULL, 0);
+}
+
+
+int cmd_cec_get(int argc, char *argv[])
+{
+	int rv, cmd;
+	struct ec_params_cec_get p;
+	struct ec_response_cec_get r;
+
+
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s [address|enable]\n", argv[0]);
+		return -1;
+	}
+
+	cmd = cec_cmd_to_str(argv[1]);
+	if (cmd < 0) {
+		fprintf(stderr, "Invalid command '%s'.\n", argv[1]);
+		return -1;
+	}
+	p.cmd = cmd;
+
+
+	rv = ec_command(EC_CMD_CEC_GET, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	switch (p.cmd) {
+	case CEC_CMD_ENABLE:
+		printf("%d\n", r.enable);
+		break;
+	case CEC_CMD_LOGICAL_ADDRESS:
+		printf("%d\n", r.address);
+		break;
+	}
+
+	return 0;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
@@ -7813,6 +8006,10 @@ const struct command commands[] = {
 	{"chipinfo", cmd_chipinfo},
 	{"cmdversions", cmd_cmdversions},
 	{"console", cmd_console},
+	{"cecwrite", cmd_cec_write},
+	{"cecread", cmd_cec_read},
+	{"cecset", cmd_cec_set},
+	{"cecget", cmd_cec_get},
 	{"echash", cmd_ec_hash},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},
