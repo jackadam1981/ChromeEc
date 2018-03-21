@@ -45,6 +45,29 @@
       "revId": "442eb760879566536bbb4bf8cfe14de091ac4cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74aaf8f_3aa29152",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-21T00:28:11Z",
+      "side": 1,
+      "message": "What about tcpc_discharge_vbus and drp_toggle? Can you implement them?",
+      "range": {
+        "startLine": 364,
+        "startChar": 22,
+        "endLine": 364,
+        "endChar": 38
+      },
+      "revId": "442eb760879566536bbb4bf8cfe14de091ac4cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
