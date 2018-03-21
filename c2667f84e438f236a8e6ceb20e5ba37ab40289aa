@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "973dd801_be0e785f",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-21T15:29:20Z",
+      "side": 1,
+      "message": "Do you still need it?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0454eac0_cb2edaea",
         "filename": "driver/build.mk",
         "patchSetId": 5
@@ -13,6 +36,30 @@
       "writtenOn": "2018-03-21T14:31:52Z",
       "side": 1,
       "message": "It is still really confusing to have both ANX74XX and ANX7447.\n\nLooking at the code, it appears that everyone using ANX74XX is actually using the ANX3429 part.\n\nShould we rename the ANX74XX to ANX3429?\n\nAlso, should ANX3429 and ANX7447 driver share any code?",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e956b09_75b98416",
+        "filename": "driver/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-21T15:29:20Z",
+      "side": 1,
+      "message": "\u003e Should we rename the ANX74XX to ANX3429?\n\nsgtm.\n\n\u003e Also, should ANX3429 and ANX7447 driver share any code?\n\nWe can do that once we land this patch and verify it\u0027s working as expected on at least one chrome os board.",
+      "parentUuid": "0454eac0_cb2edaea",
       "range": {
         "startLine": 101,
         "startChar": 9,
