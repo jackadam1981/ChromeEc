@@ -69,6 +69,23 @@
       "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0e9478_0d01d036",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-21T21:50:55Z",
+      "side": 1,
+      "message": "So basically we dropped the ability to force a shutdown to S5 and bring it back up? That was in apl but has been removed in this patch?",
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
