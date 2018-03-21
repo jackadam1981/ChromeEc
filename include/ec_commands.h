@@ -4588,6 +4588,19 @@ struct __ec_align4 ec_params_tp_frame_get {
 	uint32_t size;
 };
 
+/*
+ * Temporary command for testing CEC at factory
+ */
+#define EC_CMD_DISPLAY_POWER 0x0603
+
+struct __ec_align4 ec_params_display_power {
+	uint32_t turn_on_display;
+};
+
+struct __ec_align4 ec_response_display_power {
+	uint32_t result;
+};
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
