@@ -13,7 +13,11 @@
 #define I2C_CALIB_ADDRESS		0x3
 #define I2C_INTERRUPT_TIMEOUT		(TICKFREQ / 20)
 #define NS_IN_SEC			1000
-#define DEFAULT_SDA_HOLD		133
+#define DEFAULT_SDA_HOLD		240
+#define DEFAULT_SDA_HOLD_STD		2400
+#define DEFAULT_SDA_HOLD_FAST		600
+#define DEFAULT_SDA_HOLD_FAST_PLUS	200
+#define DEFAULT_SDA_HOLD_HIGH		140
 #define NS_2_COUNTERS(ns, clk)		((ns * clk)/NS_IN_SEC)
 #define COUNTERS_2_NS(counters, clk)	(counters * (NANOSECONDS_IN_SEC / \
 					(clk * HZ_IN_MEGAHZ)))
