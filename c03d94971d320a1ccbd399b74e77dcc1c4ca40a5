@@ -22,6 +22,30 @@
       "revId": "c03d94971d320a1ccbd399b74e77dcc1c4ca40a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61f7a40_e57c6b38",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-21T20:33:47Z",
+      "side": 1,
+      "message": "Oh so the RCIN was just a misname for APL.",
+      "parentUuid": "bbd68ffe_c937e856",
+      "range": {
+        "startLine": 522,
+        "startChar": 3,
+        "endLine": 525,
+        "endChar": 34
+      },
+      "revId": "c03d94971d320a1ccbd399b74e77dcc1c4ca40a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
