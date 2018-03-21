@@ -1077,3 +1077,123 @@ DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
 			"i2ctest count|udelay|dev",
 			"I2C stress test");
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
+
+static int command_elan_reset(int argc, char **argv)
+{
+	uint8_t buf_tx[2 + sizeof (uint16_t)];
+	int port = 0;
+	int slave_addr = 0x15 << 1; /* 8bit addr */
+
+	/* init buffer */
+	buf_tx[0] = 0x05; /* RESET COMMAND */
+	buf_tx[1] = 0x00;
+	buf_tx[2] = 0x00;
+	buf_tx[3] = 0x01;
+
+	/* start transaction */
+	i2c_lock(port, 1);
+	i2c_xfer(port, slave_addr,
+		buf_tx, sizeof(buf_tx),/* sizeof(uint16_t) + 2*/
+		NULL, 0,
+		I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(elanreset, command_elan_reset,
+			"elanreset",
+			"Elan TP reset command");
+
+
+static int command_elan_resp(int argc, char **argv)
+{
+	int rv;
+	uint8_t buf2[sizeof (uint16_t)] = { 0xFF, 0xFF };
+	int port = 0;
+	int slave_addr = 0x15 << 1;
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr,
+			NULL, 0,
+			buf2, sizeof(uint16_t),
+			I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	ccprintf("response out of reset LSB = 0x%x, MSB = 0x%x\n",
+			buf2[0], buf2[1]);
+
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(elanresp, command_elan_resp,
+			"elanresponse",
+			"Elan TP reset command");
+
+static int command_elan_wake(int argc, char **argv)
+{
+	int rv;
+	uint8_t buf_tx[4];
+	int port = 0;
+	int slave_addr = 0x15 << 1;
+
+	buf_tx[0] = 0x05; /* RESET COMMAND */
+	buf_tx[1] = 0x00;
+	buf_tx[2] = 0x00; /* wakeup */
+	buf_tx[3] = 0x08;
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr,
+			buf_tx, sizeof(buf_tx),
+			NULL, 0,
+			I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	ccprintf("Wake Up elanTP\n");
+
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(elanwake, command_elan_wake,
+			"elanwake",
+			"Elan TP wake command");
+
+
+
+static int command_elan_report_desc(int argc, char **argv)
+{
+	int rv, i;
+	uint8_t buf_tx[2];
+	int port = 0;
+	int slave_addr = 0x15 << 1;
+	// reading value
+	uint8_t report[369];
+
+	buf_tx[0] = 0x02;
+	buf_tx[1] = 0x00;
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr,
+			buf_tx, sizeof(buf_tx),
+			(uint8_t*)report, sizeof(report),
+			I2C_XFER_START_REPEAT);
+	i2c_lock(port, 0);
+
+	ccprintf("Repor Descriptor: 369 bytes\n");
+
+	if (rv) {
+		CPRINTS("reading 'Report Descriptor' error! (%d)", rv);
+		return rv;
+	}
+
+	for (i = 0; i < 369; i++)
+		ccprintf("Report descrpt[%d] = 0x%02x\n", i, report[i]);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(elanreportdesc, command_elan_report_desc,
+			"elanreportdesc",
+			"Elan Report Descriptor");
