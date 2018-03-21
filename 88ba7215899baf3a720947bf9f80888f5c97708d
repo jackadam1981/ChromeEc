@@ -46,6 +46,30 @@
       "revId": "88ba7215899baf3a720947bf9f80888f5c97708d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0bac7c3_dd133c1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-21T21:29:52Z",
+      "side": 1,
+      "message": "Sounds good. It would make the intent of the CL clearer.",
+      "parentUuid": "f78cd244_b50325b4",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "88ba7215899baf3a720947bf9f80888f5c97708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
