@@ -3167,6 +3167,9 @@ enum ec_mkbp_event {
 	 */
 	EC_MKBP_EVENT_HOST_EVENT64 = 7,
 
+	/* CEC has either data read out or is reporting a send failure */
+	EC_MKBP_EVENT_CEC = 8,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
@@ -3191,6 +3194,8 @@ union __ec_align_offset1 ec_response_get_next_data {
 	uint32_t fp_events;
 
 	uint32_t sysrq;
+
+	uint32_t cec_events;
 };
 
 struct __ec_align1 ec_response_get_next_event {
@@ -4081,6 +4086,47 @@ struct __ec_align1 ec_params_i2c_passthru_protect {
 
 struct __ec_align1 ec_response_i2c_passthru_protect {
 	uint8_t status;		/* Status flags (0: unlocked, 1: locked) */
+};
+
+
+/*****************************************************************************/
+/*
+ *  HDMI CEC commands
+ *
+ * These commands are for sending and receiving message via HDMI CEC
+ */
+
+#define MAX_CEC_MSG_LEN 16
+
+/* CEC message from the AP to be written on the CEC bus */
+#define EC_CMD_CEC_WRITE_MSG 0x00B8
+
+/* Message to write to the CEC bus */
+struct __ec_align1 ec_params_cec_write {
+	uint8_t msg_len;
+	uint8_t msg[MAX_CEC_MSG_LEN];
+};
+
+/* CEC message from a CEC sink reported back to the AP */
+#define EC_CMD_CEC_READ_MSG 0x00B9
+
+/* Message read from to the CEC bus */
+struct __ec_align1 ec_response_cec_read {
+	uint8_t msg_len;
+	uint8_t msg[MAX_CEC_MSG_LEN];
+};
+
+/* AP sets CEC logical address */
+#define EC_CMD_CEC_SET_LOGICAL_ADDR 0x00BA
+
+struct __ec_align1 ec_params_cec_addr {
+	uint8_t logical_addr;
+};
+
+enum mkbp_cec_event {
+	EC_MKBP_CEC_SEND_OK			= 1 << 0,
+	EC_MKBP_CEC_SEND_FAILED			= 1 << 1,
+	EC_MKBP_CEC_HAVE_DATA			= 1 << 2,
 };
 
 /*****************************************************************************/
