@@ -76,6 +76,8 @@ const char help_str[] =
 	"      Prints supported version mask for a command number\n"
 	"  console\n"
 	"      Prints the last output to the EC debug console\n"
+	"  cec <tv_on|tv_off|status>\n"
+	"      Send CEC command to TV or retrieve CEC status\n"
 	"  echash [CMDS]\n"
 	"      Various EC hash commands\n"
 	"  eventclear <mask>\n"
@@ -7796,6 +7798,39 @@ int cmd_wait_event(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_cec_write(int argc, char *argv[])
+{
+	char *e;
+	int i;
+	long val;
+	struct ec_params_cec_msg p;
+	struct ec_response_cec_msg r;
+
+	if (argc < 2 || argc > 16) {
+		fprintf(stderr, "%s <MSG[0]> [MSG[1] ... MSG[15]]>\n", argv[0]);
+		return -1;
+	}
+
+	p.msg_len = argc - 1;
+	for (i = 0; i < p.msg_len; i++) {
+		val = strtol(argv[i + 1], &e, 16);
+		if (e && *e)
+			return -1;
+		if (val < 0 || val > 0xff)
+			return -1;
+		p.msg[i] = (uint8_t)val;
+	}
+
+	printf("Write CEC: ");
+	for (i = 0; i < p.msg_len; i++)
+		printf("0x%02x ", p.msg[i]);
+	printf("\n");
+
+
+	return ec_command(EC_CMD_CEC_WRITE_MSG, 0, &p,
+			  sizeof(p), &r, sizeof(r));
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
@@ -7812,6 +7847,7 @@ const struct command commands[] = {
 	{"chipinfo", cmd_chipinfo},
 	{"cmdversions", cmd_cmdversions},
 	{"console", cmd_console},
+	{"cecwrite", cmd_cec_write},
 	{"echash", cmd_ec_hash},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},

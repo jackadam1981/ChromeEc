@@ -4857,7 +4857,7 @@ struct __ec_align4 ec_params_tp_frame_get {
 	uint32_t size;
 };
 
-/*****************************************************************************/
+/**************************************************************************/
 /* EC-EC communication commands: range 0x0600-0x06FF */
 
 #define EC_COMM_TEXT_MAX 8
@@ -4921,6 +4921,24 @@ struct __ec_align_size1 ec_params_charger_control {
 
 	/* Allow base battery charging (only makes sense if max_current > 0). */
 	uint8_t allow_charging;
+};
+
+/*
+ *  Send and receive CEC messages
+ */
+
+#define MAX_CEC_MSG_LEN 16
+
+#define EC_CMD_CEC_WRITE_MSG 0x0603
+#define EC_CMD_CEC_READ_MSG 0x0604
+
+struct __ec_align1 ec_params_cec_msg {
+	uint8_t msg_len;
+	uint8_t msg[MAX_CEC_MSG_LEN];
+};
+
+struct __ec_align2 ec_response_cec_msg {
+	uint16_t result;
 };
 
 /*****************************************************************************/
