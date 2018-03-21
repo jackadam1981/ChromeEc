@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "158e5d3a_11a084f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-21T19:04:47Z",
+      "side": 1,
+      "message": "Actually, ANX3429 isn\u0027t publicly available. So, maybe we should also introduce CONFIG_USB_PD_TCPM_ANX740X and CONFIG_USB_PD_TCPM_ANX741X and do:\n\n driver-$(CONFIG_USB_PD_TCPM_ANX3429)+\u003dtcpm/anx74xx.o\n driver-$(CONFIG_USB_PD_TCPM_ANX740X)+\u003dtcpm/anx74xx.o\n driver-$(CONFIG_USB_PD_TCPM_ANX741X)+\u003dtcpm/anx74xx.o\n driver-$(CONFIG_USB_PD_TCPM_ANX7447)+\u003dtcpm/anx7447.o\n\nI think as long as CONFIG_ macros are explicitly named, it\u0027s ok to name the driver anx74xx.c. I can\u0027t find a better name.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "8dd3a1c3ec4ac26d5e3735ed9d08a483f0952bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
