@@ -72,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "fce836f2_46e5cc29",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-21T21:56:22Z",
+      "side": 1,
+      "message": "Since this does nothing, I\u0027d recommend removing it.",
+      "range": {
+        "startLine": 519,
+        "startChar": 29,
+        "endLine": 519,
+        "endChar": 39
+      },
+      "revId": "c930a9abcc9d38f9c8f6b1577776b11409c46f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d0e9478_0d01d036",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
