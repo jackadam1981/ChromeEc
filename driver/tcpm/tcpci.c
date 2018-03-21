@@ -150,7 +150,7 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 		return EC_SUCCESS;
 	}
 	/* Set auto drp toggle */
-	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_OPEN);
+	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD);
 
 	/* Set Look4Connection command */
 	rv |= tcpc_write(port, TCPC_REG_COMMAND,
@@ -168,6 +168,24 @@ int tcpci_tcpm_set_polarity(int port, int polarity)
 	return tcpc_write(port, TCPC_REG_TCPC_CTRL,
 			  TCPC_REG_TCPC_CTRL_SET(polarity));
 }
+
+#ifdef CONFIG_USBC_PPC
+int tcpci_tcpm_set_snk_ctrl(int port, int enable)
+{
+	int cmd = enable ? TCPC_REG_COMMAND_SNK_CTRL_HIGH :
+		TCPC_REG_COMMAND_SNK_CTRL_LOW;
+
+	return tcpc_write(port, TCPC_REG_COMMAND, cmd);
+}
+
+int tcpci_tcpm_set_src_ctrl(int port, int enable)
+{
+	int cmd = enable ? TCPC_REG_COMMAND_SRC_CTRL_HIGH :
+		TCPC_REG_COMMAND_SRC_CTRL_LOW;
+
+	return tcpc_write(port, TCPC_REG_COMMAND, cmd);
+}
+#endif
 
 int tcpci_tcpm_set_vconn(int port, int enable)
 {
@@ -270,12 +288,37 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 	return rv;
 }
 
+/* Returns true if TCPC has reset based on reading mask registers. */
+static int register_mask_reset(int port)
+{
+	int mask;
+
+	mask = 0;
+	tcpc_read16(port, TCPC_REG_ALERT_MASK, &mask);
+	if (mask == TCPC_REG_ALERT_MASK_ALL)
+		return 1;
+
+	mask = 0;
+	tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &mask);
+	if (mask == TCPC_REG_POWER_STATUS_MASK_ALL)
+		return 1;
+
+	return 0;
+}
+
 void tcpci_tcpc_alert(int port)
 {
 	int status;
+	uint32_t pd_event = 0;
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
+	/*
+	 * Check registers to see if we can tell that the TCPC has reset. If
+	 * so, perform tcpc_init inline.
+	 */
+	if (register_mask_reset(port))
+		pd_event |= PD_EVENT_TCPC_RESET;
 
 	/*
 	 * Clear alert status for everything except RX_STATUS, which shouldn't
@@ -287,41 +330,29 @@ void tcpci_tcpc_alert(int port)
 
 	if (status & TCPC_REG_ALERT_CC_STATUS) {
 		/* CC status changed, wake task */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+		pd_event |= PD_EVENT_CC;
 	}
 	if (status & TCPC_REG_ALERT_POWER_STATUS) {
 		int reg = 0;
-
-		tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &reg);
-
-		if (reg == TCPC_REG_POWER_STATUS_MASK_ALL) {
-			/*
-			 * If power status mask has been reset, then the TCPC
-			 * has reset.
-			 */
-			task_set_event(PD_PORT_TO_TASK_ID(port),
-				       PD_EVENT_TCPC_RESET, 0);
-		} else {
-			/* Read Power Status register */
-			tcpci_tcpm_get_power_status(port, &reg);
-			/* Update VBUS status */
-			tcpc_vbus[port] = reg &
-				TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+		/* Read Power Status register */
+		tcpci_tcpm_get_power_status(port, &reg);
+		/* Update VBUS status */
+		tcpc_vbus[port] = reg &
+			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
-			/* Update charge manager with new VBUS state */
-			usb_charger_vbus_change(port, tcpc_vbus[port]);
-			task_wake(PD_PORT_TO_TASK_ID(port));
+		/* Update charge manager with new VBUS state */
+		usb_charger_vbus_change(port, tcpc_vbus[port]);
+		pd_event |= TASK_EVENT_WAKE;
 #endif /* CONFIG_USB_PD_VBUS_DETECT_TCPC && CONFIG_USB_CHARGER */
-		}
 	}
 	if (status & TCPC_REG_ALERT_RX_STATUS) {
 		/* message received */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
+		pd_event |= PD_EVENT_RX;
 	}
 	if (status & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		pd_execute_hard_reset(port);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		pd_event |= TASK_EVENT_WAKE;
 	}
 	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
 		/* transmit complete */
@@ -329,6 +360,16 @@ void tcpci_tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_SUCCESS :
 					   TCPC_TX_COMPLETE_FAILED);
 	}
+
+	/*
+	 * Wait until all possible TCPC accesses in this function are complete
+	 * prior to setting events and/or waking the pd task. When the PD
+	 * task is woken and runs (which will happen during I2C transactions in
+	 * this function), the pd task may put the TCPC into low power mode and
+	 * the next I2C transaction to the TCPC will cause it to wake again.
+	 */
+	if (pd_event)
+		task_set_event(PD_PORT_TO_TASK_ID(port), pd_event, 0);
 }
 
 /*
@@ -380,7 +421,9 @@ int tcpci_get_chip_info(int port, int renew,
 	i->device_id = val;
 
 	switch (i->vendor_id) {
-#ifdef CONFIG_USB_PD_TCPM_ANX74XX
+#if  defined(CONFIG_USB_PD_TCPM_ANX3429) || \
+	defined(CONFIG_USB_PD_TCPM_ANX740X) || \
+	defined(CONFIG_USB_PD_TCPM_ANX741X)
 	case ANX74XX_VENDOR_ID:
 		error = anx74xx_tcpc_get_fw_version(port, &val);
 		break;
@@ -476,13 +519,18 @@ int tcpci_tcpm_mux_init(int i2c_addr)
 	return EC_SUCCESS;
 }
 
-int tcpci_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
+int tcpci_tcpm_mux_set(int i2c_port_addr, mux_state_t mux_state)
 {
 	int reg = 0;
 	int rv;
-	int port = i2c_addr; /* use port index in port_addr field */
-
-	rv = tcpc_read(port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
+#ifdef CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY
+	int port = MUX_PORT(i2c_port_addr);
+	int addr = MUX_ADDR(i2c_port_addr);
+#else
+	int port = tcpc_config[i2c_port_addr].i2c_host_port;
+	int addr = tcpc_config[i2c_port_addr].i2c_slave_addr;
+#endif
+	rv = i2c_read8(port, addr, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
 		return rv;
 
@@ -495,18 +543,24 @@ int tcpci_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 	if (mux_state & MUX_POLARITY_INVERTED)
 		reg |= TCPC_REG_CONFIG_STD_OUTPUT_CONNECTOR_FLIPPED;
 
-	return tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
+	return i2c_write8(port, addr, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
 /* Reads control register and updates mux_state accordingly */
-int tcpci_tcpm_mux_get(int i2c_addr, mux_state_t *mux_state)
+int tcpci_tcpm_mux_get(int i2c_port_addr, mux_state_t *mux_state)
 {
 	int reg = 0;
 	int rv;
-	int port = i2c_addr; /* use port index in port_addr field */
+#ifdef CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY
+	int port = MUX_PORT(i2c_port_addr);
+	int addr = MUX_ADDR(i2c_port_addr);
+#else
+	int port = tcpc_config[i2c_port_addr].i2c_host_port;
+	int addr = tcpc_config[i2c_port_addr].i2c_slave_addr;
+#endif
 
 	*mux_state = 0;
-	rv = tcpc_read(port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
+	rv = i2c_read8(port, addr, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
 		return rv;
 
@@ -552,4 +606,8 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
+#ifdef CONFIG_USBC_PPC
+	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
+	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
+#endif
 };

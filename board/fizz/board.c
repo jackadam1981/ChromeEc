@@ -54,13 +54,6 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-uint16_t host_command_suppressed[] = {
-	EC_CMD_CONSOLE_SNAPSHOT,
-	EC_CMD_CONSOLE_READ,
-	EC_CMD_PD_GET_LOG_ENTRY,
-	HOST_COMMAND_SUPPRESS_DELIMITER,
-};
-
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
@@ -129,7 +122,7 @@ void vbus0_evt(enum gpio_signal signal)
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_PCH_SLP_S0_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_S0_DEASSERTED"},
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	{VW_SLP_S3_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
 	{VW_SLP_S4_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
 #else
@@ -157,16 +150,21 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
-const struct fan_t fans[] = {
-	[FAN_CH_0] = {
-		.flags = FAN_USE_RPM_MODE,
-		.rpm_min = 2800,
-		.rpm_start = 2800,
-		.rpm_max = 5600,
-		.ch = MFT_CH_0,	/* Use MFT id to control fan */
-		.pgood_gpio = -1,
-		.enable_gpio = GPIO_FAN_PWR_EN,
-	},
+const struct fan_conf fan_conf_0 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = MFT_CH_0,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = GPIO_FAN_PWR_EN,
+};
+
+const struct fan_rpm fan_rpm_0 = {
+	.rpm_min = 2800,
+	.rpm_start = 2800,
+	.rpm_max = 5600,
+};
+
+struct fan_t fans[] = {
+	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 
@@ -425,6 +423,15 @@ static void board_pmic_init(void)
 	if (err)
 		goto pmic_error;
 
+	/*
+	 * V3.3A_DSW (VR3) control. Default: 0x2A.
+	 * [7:6] : 00b Disabled
+	 * [5:4] : 00b Vnom + 3%. (default: 10b 0%)
+	 */
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V33ADSWCNT, 0x0A);
+	if (err)
+		goto pmic_error;
+
 	CPRINTS("PMIC init done");
 	pmic_initialized = 1;
 	return;
@@ -433,11 +440,10 @@ pmic_error:
 	CPRINTS("PMIC init failed");
 }
 
-static void chipset_pre_init(void)
+void chipset_pre_init_callback(void)
 {
 	board_pmic_init();
 }
-DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
 /**
  * Notify the AC presence GPIO to the PCH.
@@ -503,7 +509,7 @@ static void set_charge_limit(int charge_ma)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	uint32_t brd_ver = 0;
+	uint32_t ver = 0;
 	int p87w = 0, p65w = 0, p60w = 0;
 
 	/*
@@ -513,7 +519,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * is called.
 	 */
 	led_alert(charge_ma * charge_mv <
-			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000);
+			CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000);
 
 	/*
 	 * In terms of timing, this should always work because
@@ -521,7 +527,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * If CBI isn't initialized or contains invalid data, we assume it's
 	 * a new board.
 	 */
-	if (cbi_get_board_version(&brd_ver) == EC_SUCCESS && brd_ver < 0x0202)
+	if (cbi_get_board_version(&ver) == EC_SUCCESS && ver < 0x0202)
 		return set_charge_limit(charge_ma);
 	/*
 	 * We have three FETs connected to three registers: PR257, PR258,
@@ -667,7 +673,7 @@ static int get_custom_rpm(int fan, int pct, int oem_id)
 	previous_pct = pct;
 
 	if (fan_table[current_level].rpm !=
-		fan_get_rpm_target(fans[fan].ch))
+		fan_get_rpm_target(FAN_CH(fan)))
 		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
 			fan_table[current_level].rpm);
 

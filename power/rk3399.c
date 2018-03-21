@@ -220,14 +220,13 @@ void chipset_force_shutdown(void)
 }
 
 #define SYS_RST_HOLD_US (1 * MSEC)
-void chipset_reset(int cold_reset)
+void chipset_reset(void)
 {
 #ifdef CONFIG_CMD_RTC
 	/* Print out the RTC to help correlate resets in logs. */
 	print_system_rtc(CC_CHIPSET);
 #endif
-	/* TODO: handle cold_reset */
-	CPRINTS("%s(%d)", __func__, cold_reset);
+	CPRINTS("%s", __func__);
 
 	/* Pulse SYS_RST */
 	gpio_set_level(GPIO_SYS_RST_L, 0);
@@ -304,7 +303,11 @@ static int power_seq_run(const struct power_seq_op *power_seq_ops, int op_count)
 			       power_seq_ops[i].level);
 		if (!power_seq_ops[i].delay)
 			continue;
-		if (power_seq_ops == s0s3_power_seq)
+		if ((power_seq_ops == s0s3_power_seq)
+#ifdef S3_USB_WAKE
+		    || (power_seq_ops == s0s3_usb_wake_power_seq)
+#endif
+		   )
 			MSLEEP_CHECK_ABORTED_SUSPEND(power_seq_ops[i].delay);
 		else
 			msleep(power_seq_ops[i].delay);

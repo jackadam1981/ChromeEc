@@ -35,6 +35,7 @@ board-y += ec_state.o
 board-y += power_button.o
 board-y += servo_state.o
 board-y += ap_uart_state.o
+board-y += factory_mode.o
 board-${CONFIG_RDD} += rdd.o
 board-${CONFIG_USB_SPI} += usb_spi.o
 board-${CONFIG_USB_I2C} += usb_i2c.o
@@ -98,3 +99,5 @@ $(out)/tpm2/libtpm2.a:
 	$(MAKE) obj=$(realpath $(out))/tpm2 EMBEDDED_MODE=1 OBJ_PREFIX=Tpm2_ -C $(EXTLIB)
 
 endif   # BOARD_MK_INCLUDED_ONCE is nonempty
+
+board-$(CONFIG_PINWEAVER)+=pinweaver_tpm_imports.o

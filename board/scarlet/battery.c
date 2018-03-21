@@ -8,12 +8,15 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
+#include "chipset.h"
 #include "console.h"
 #include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
+#include "system.h"
 #include "util.h"
 
 /*
@@ -63,15 +66,20 @@ static const struct battery_info info[] = {
 };
 
 static const struct max17055_batt_profile batt_profile[] = {
-	/*
-	 * TODO(philipchen): Update the battery profile for Simplo
-	 * battery once we have the characterization result.
-	 */
 	[BATTERY_SIMPLO] = {
-		.is_ez_config		= 1,
-		.design_cap		= MAX17055_DESIGNCAP_REG(9120),
-		.ichg_term		= MAX17055_ICHGTERM_REG(180),
-		.v_empty_detect		= MAX17055_VEMPTY_REG(2700, 3280),
+		.is_ez_config		= 0,
+		.design_cap		= 0x221e, /* 8734mAh */
+		.ichg_term		= 0x589, /* 443 mA */
+		/* Empty voltage = 3000mV, Recovery voltage = 3600mV */
+		.v_empty_detect		= 0x965a,
+		.learn_cfg		= 0x4406,
+		.dpacc			= 0x0c7a,
+		.rcomp0			= 0x0062,
+		.tempco			= 0x1327,
+		.qr_table00		= 0x1680,
+		.qr_table10		= 0x0900,
+		.qr_table20		= 0x0280,
+		.qr_table30		= 0x0280,
 	},
 	[BATTERY_AETECH] = {
 		.is_ez_config		= 0,
@@ -137,7 +145,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		TEMP_ZONE_COUNT
 	} temp_zone;
 
-	static const struct {
+	static struct {
 		int temp_min; /* 0.1 deg C */
 		int temp_max; /* 0.1 deg C */
 		int desired_current; /* mA */
@@ -145,8 +153,8 @@ int charger_profile_override(struct charge_state_data *curr)
 	} temp_zones[BATTERY_COUNT][TEMP_ZONE_COUNT] = {
 		[BATTERY_SIMPLO] = {
 			{0, 150, 1772, 4400}, /* TEMP_ZONE_0 */
-			{150, 450, 3000, 4400}, /* TEMP_ZONE_1 */
-			{450, 600, 3000, 4100}, /* TEMP_ZONE_2 */
+			{150, 450, 4000, 4400}, /* TEMP_ZONE_1 */
+			{450, 600, 4000, 4100}, /* TEMP_ZONE_2 */
 		},
 		[BATTERY_AETECH] = {
 			{0, 100, 900, 4200}, /* TEMP_ZONE_0 */
@@ -162,6 +170,17 @@ int charger_profile_override(struct charge_state_data *curr)
 	BUILD_ASSERT(ARRAY_SIZE(temp_zones) == BATTERY_COUNT);
 
 	static int charge_phase = 1;
+	static uint8_t quirk_batt_update;
+
+	/*
+	 * This is a quirk for old Simplo battery to clamp
+	 * charging current to 3A.
+	 */
+	if ((board_get_version() <= 4) && !quirk_batt_update) {
+		temp_zones[BATTERY_SIMPLO][TEMP_ZONE_1].desired_current = 3000;
+		temp_zones[BATTERY_SIMPLO][TEMP_ZONE_2].desired_current = 3000;
+		quirk_batt_update = 1;
+	}
 
 	if (batt_id >= BATTERY_COUNT)
 		batt_id = gpio_get_level(GPIO_BATT_ID);
@@ -225,8 +244,46 @@ int charger_profile_override(struct charge_state_data *curr)
 		break;
 	}
 
+	/*
+	 * When the charger says it's done charging, even if fuel gauge says
+	 * SOC < BATTERY_LEVEL_NEAR_FULL, we'll overwrite SOC with
+	 * BATTERY_LEVEL_NEAR_FULL. So we can ensure both Chrome OS UI
+	 * and battery LED indicate full charge.
+	 */
+	if (rt946x_is_charge_done()) {
+		curr->batt.state_of_charge = MAX(BATTERY_LEVEL_NEAR_FULL,
+						 curr->batt.state_of_charge);
+		/*
+		 * This is a workaround for b:78792296. When AP is off and
+		 * charge termination is detected, we disable idle mode.
+		 */
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			disable_idle();
+		else
+			enable_idle();
+	}
+
 	return 0;
 }
+
+static void board_enable_idle(void)
+{
+	enable_idle();
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_enable_idle, HOOK_PRIO_DEFAULT);
+
+static void board_charge_termination(void)
+{
+	static uint8_t te;
+	/* Enable charge termination when we are sure battery is present. */
+	if (!te && battery_is_present() == BP_YES) {
+		if (!rt946x_enable_charge_termination(1))
+			te = 1;
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
+	     board_charge_termination,
+	     HOOK_PRIO_DEFAULT);
 
 /* Customs options controllable by host command. */
 #define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)

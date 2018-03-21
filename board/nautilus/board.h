@@ -17,7 +17,8 @@
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
-#define CONFIG_BOARD_VERSION
+#define CONFIG_BOARD_VERSION_CUSTOM
+#define CONFIG_BOARD_FORCE_RESET_PIN
 #define CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
 #define CONFIG_DPTF
 #define CONFIG_DPTF_DEVICE_ORIENTATION
@@ -25,6 +26,7 @@
 #define CONFIG_FPU
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#define CONFIG_I2C_XFER_BOARD_CALLBACK
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
@@ -35,7 +37,6 @@
 #define CONFIG_SOFTWARE_PANIC
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25X40
-#define CONFIG_UART_HOST 0
 #define CONFIG_VBOOT_HASH
 #define CONFIG_SHA256_UNROLLED
 #define CONFIG_VOLUME_BUTTONS
@@ -61,10 +62,8 @@
 #define CONFIG_CHIPSET_SKYLAKE
 #define CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
 #define CONFIG_CHIPSET_RESET_HOOK
-#define CONFIG_ESPI
-#define CONFIG_ESPI_VW_SIGNALS
-#define CONFIG_LPC
-#undef CONFIG_PECI
+#define CONFIG_HOSTCMD_ESPI
+#define CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 
 /* Battery */
 #define CONFIG_BATTERY_CUT_OFF
@@ -125,10 +124,13 @@
 #define CONFIG_LID_ANGLE_INVALID_CHECK
 
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 1024
+#define CONFIG_ACCEL_FIFO 512
 
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+
+#undef  CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 4096
 
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
@@ -137,7 +139,6 @@
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
-#define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DISCHARGE_TCPC
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -249,6 +250,9 @@ enum adc_channel {
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
 #endif /* !__ASSEMBLER__ */
 

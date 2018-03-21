@@ -74,11 +74,8 @@ void chipset_force_shutdown(void);
 
 /**
  * Reset the CPU and/or chipset.
- *
- * @param cold_reset	If !=0, force a cold reset of the CPU and chipset;
- *			if 0, just pulse the reset line to the CPU.
  */
-void chipset_reset(int cold_reset);
+void chipset_reset(void);
 
 /**
  * Interrupt handler to power GPIO inputs.
@@ -89,6 +86,11 @@ void power_interrupt(enum gpio_signal signal);
  * Handle assert of eSPI_Reset# pin.
  */
 void chipset_handle_espi_reset_assert(void);
+
+/**
+ * Perform chipset pre-initialization work within the context of chipset task.
+ */
+void chipset_pre_init_callback(void);
 
 #else /* !HAS_TASK_CHIPSET */
 
@@ -101,10 +103,12 @@ static inline int chipset_in_state(int state_mask)
 static inline void chipset_exit_hard_off(void) { }
 static inline void chipset_throttle_cpu(int throttle) { }
 static inline void chipset_force_shutdown(void) { }
-static inline void chipset_reset(int cold_reset) { }
+static inline void chipset_reset(void) { }
 static inline void power_interrupt(enum gpio_signal signal) { }
 static inline void chipset_handle_espi_reset_assert(void) { }
 static inline void chipset_handle_reboot(void) { }
+static inline void chipset_reset_request_interrupt(enum gpio_signal signal) { }
+static inline void chipset_power_signal_interrupt(enum gpio_signal signal) { }
 
 #endif /* !HAS_TASK_CHIPSET */
 
@@ -119,4 +123,20 @@ int chipset_pltrst_is_valid(void) __attribute__((weak));
  * Execute chipset-specific reboot.
  */
 void chipset_handle_reboot(void);
+
+/**
+ * GPIO interrupt handler of reset request from AP.
+ *
+ * It is used in SDM845 chipset power sequence.
+ */
+void chipset_reset_request_interrupt(enum gpio_signal signal);
+
+/**
+ * Chipset-specific power signal interrupt, overrides the default one.
+ *
+ * It is used in SDM845, to handle the short-low-pulse during the reset
+ * sequence which we don't consider it as a power-lost.
+ */
+void chipset_power_signal_interrupt(enum gpio_signal signal);
+
 #endif  /* __CROS_EC_CHIPSET_H */

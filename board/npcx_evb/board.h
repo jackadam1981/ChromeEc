@@ -12,7 +12,8 @@
 #define CONFIG_ADC
 #define CONFIG_PWM
 #define CONFIG_SPI
-#define CONFIG_LPC /* Used in Intel-based platform for host interface */
+#define CONFIG_HOSTCMD_LPC
+#define CONFIG_PECI
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
@@ -28,7 +29,7 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
 #define CONFIG_PWM_KBLIGHT
-#define CONFIG_BOARD_VERSION
+#define CONFIG_BOARD_VERSION_GPIO
 
 /* Optional features for test commands */
 #define CONFIG_CMD_TASKREADY
@@ -39,7 +40,6 @@
 #define CONFIG_CMD_SCRATCHPAD
 #define CONFIG_CMD_I2CWEDGE
 
-#define CONFIG_UART_HOST                0
 #define CONFIG_FANS                     1
 
 /* Optional feature - used by nuvoton */

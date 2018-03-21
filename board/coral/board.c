@@ -191,7 +191,7 @@ struct i2c_stress_test i2c_stress_tests[] = {
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
 	{
 		.port = NPCX_I2C_PORT0_0,
-		.addr = 0x50,
+		.addr = ANX74XX_I2C_ADDR1,
 		.i2c_test = &anx74xx_i2c_stress_test_dev,
 	},
 #endif
@@ -200,7 +200,7 @@ struct i2c_stress_test i2c_stress_tests[] = {
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
 	{
 		.port = NPCX_I2C_PORT0_1,
-		.addr = 0x16,
+		.addr = PS8751_I2C_ADDR1,
 		.i2c_test = &ps8xxx_i2c_stress_test_dev,
 	},
 #endif
@@ -241,13 +241,13 @@ const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.i2c_host_port = NPCX_I2C_PORT0_0,
-		.i2c_slave_addr = 0x50,
+		.i2c_slave_addr = ANX74XX_I2C_ADDR1,
 		.drv = &anx74xx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 	[USB_PD_PORT_PS8751] = {
 		.i2c_host_port = NPCX_I2C_PORT0_1,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
@@ -281,18 +281,17 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 static int ps8751_tune_mux(const struct usb_mux *mux)
 {
 	/* 0x98 sets lower EQ of DP port (4.5db) */
-	i2c_write8(NPCX_I2C_PORT0_1, 0x16, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION,
-		   0x98);
+	tcpc_write(mux->port_addr, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 	return EC_SUCCESS;
 }
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	{
-		.port_addr = USB_PD_PORT_ANX74XX,  /* don't care / unused */
+	[USB_PD_PORT_ANX74XX] = {
+		.port_addr = USB_PD_PORT_ANX74XX,
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
-	{
+	[USB_PD_PORT_PS8751] = {
 		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -503,7 +502,7 @@ const struct temp_sensor_t temp_sensors[] = {
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 /* Called by APL power state machine when transitioning from G3 to S5 */
-static void chipset_pre_init(void)
+void chipset_pre_init_callback(void)
 {
 	/*
 	 * No need to re-init PMIC since settings are sticky across sysjump.
@@ -530,7 +529,6 @@ static void chipset_pre_init(void)
 	/* Enable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
 static void board_set_tablet_mode(void)
 {
@@ -667,7 +665,8 @@ static void enable_input_devices(void)
 void lid_angle_peripheral_enable(int enable)
 {
 	/* If the lid is in 360 position, ignore the lid angle,
-	 * which might be faulty. Disable keyboard and touchpad. */
+	 * which might be faulty. Disable keyboard.
+	 */
 	if (tablet_get_mode() || chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		enable = 0;
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
@@ -812,24 +811,13 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
-		/* AP: by default use EC settings */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
 		},
 		 /* Sensor on for lid angle detection */
 		[SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
-		},
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
 		},
 	 },
 	},
@@ -848,11 +836,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .config = {
-		 /* AP: by default use EC settings */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
@@ -862,11 +845,6 @@ struct motion_sensor_t motion_sensors[] = {
 		 [SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
 			.ec_rate = 100 * MSEC,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0
 		 },
 	 },
 	},
@@ -884,28 +862,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = BMI160_ADDR0,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* EC does not need in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-	 },
 	},
 };
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);

@@ -294,16 +294,16 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	memcpy(&pe[port].identity, payload + 1, identity_size);
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
-		/* TODO(tbroch) do I disable VBUS here if power contract
-		 * requested it
-		 */
-		if (!PD_VDO_AMA_VBUS_REQ(payload[VDO_I(AMA)]))
-			pd_power_supply_reset(port);
-
+/* Leave vbus ON if the following macro is false */
 #if defined(CONFIG_USB_PD_DUAL_ROLE) && defined(CONFIG_USBC_VCONN_SWAP)
 		/* Adapter is requesting vconn, try to supply it */
 		if (PD_VDO_AMA_VCONN_REQ(payload[VDO_I(AMA)]))
 			pd_try_vconn_src(port);
+
+		/* Only disable vbus if vconn was requested */
+		if (PD_VDO_AMA_VCONN_REQ(payload[VDO_I(AMA)]) &&
+				!PD_VDO_AMA_VBUS_REQ(payload[VDO_I(AMA)]))
+			pd_power_supply_reset(port);
 #endif
 		break;
 	default:
@@ -841,13 +841,6 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 }
 
 #endif /* CONFIG_USB_PD_ALT_MODE */
-
-#ifndef CONFIG_USB_PD_CUSTOM_VDM
-int pd_vdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
-{
-	return 0;
-}
-#endif /* !CONFIG_USB_PD_CUSTOM_VDM */
 
 static void pd_usb_billboard_deferred(void)
 {

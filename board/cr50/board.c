@@ -32,6 +32,7 @@
 #include "trng.h"
 #include "uart_bitbang.h"
 #include "uartn.h"
+#include "usart.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
 #include "usb_i2c.h"
@@ -103,12 +104,18 @@ struct uart_bitbang_properties bitbang_config = {
 	.rx_pinmux_regval = GC_PINMUX_GPIO1_GPIO4_SEL,
 };
 
-extern struct deferred_data ec_uart_deferred__data;
 void ec_tx_cr50_rx(enum gpio_signal signal)
 {
 	uart_bitbang_receive_char(UART_EC);
-	/* Let the USART module know that there's new bits to consume. */
-	hook_call_deferred(&ec_uart_deferred__data, 0);
+	/*
+	 * Let the USART module know that there's new bits to consume.
+	 *
+	 * When programming the EC in bitbang mode the rest of the system is
+	 * shut down, there not much else to do, so this could be processed
+	 * directly on interrupt context the same way it is done with EC
+	 * console output.
+	 */
+	send_data_to_usb(&ec_uart);
 }
 
 const char *device_state_names[] = {
@@ -1266,38 +1273,10 @@ void i2cs_set_pinmux(void)
 	GWRITE_FIELD(PINMUX, EXITEN0, DIOA1, 1);   /* enable powerdown exit */
 }
 
-/**
- * Return non-zero if this is the first boot of a board in the factory.
- *
- * This is used to determine whether the default CCD configuration will be RMA
- * (things are unlocked for factory) or normal (things locked down because not
- * in factory).
- *
- * Suggested checks:
- * - If the board ID exists, this is not the first boot
- * - If the TPM is not blank, this is not the first boot
- */
-int board_is_first_factory_boot(void)
-{
-	/*
-	 * TODO(rspangler): Add checks for factory boot.  For now, always
-	 * return 0 so we're safely locked by default.
-	 */
-	return 0;
-}
-
 /* Determine key type based on the key ID. */
-static const char *key_type(uint32_t key_id)
+static const char *key_type(const struct SignedHeader *h)
 {
-
-	/*
-	 * It is a mere convention, but all prod keys are required to have key
-	 * IDs such, that bit D2 is set, and all dev keys are required to have
-	 * key IDs such, that bit D2 is not set.
-	 *
-	 * This convention is enforced at the key generation time.
-	 */
-	if (key_id & (1 << 2))
+	if (G_SIGNED_FOR_PROD(h))
 		return "prod";
 	else
 		return "dev";
@@ -1314,7 +1293,7 @@ static int command_sysinfo(int argc, char **argv)
 	ccprintf("Reset flags: 0x%08x (", system_get_reset_flags());
 	system_print_reset_flags();
 	ccprintf(")\n");
-	if (reset_count > 6)
+	if (system_rollback_detected())
 		ccprintf("Rollback detected\n");
 	ccprintf("Reset count: %d\n", reset_count);
 
@@ -1324,12 +1303,12 @@ static int command_sysinfo(int argc, char **argv)
 	active = system_get_ro_image_copy();
 	vaddr = get_program_memory_addr(active);
 	h = (const struct SignedHeader *)vaddr;
-	ccprintf("RO keyid:    0x%08x(%s)\n", h->keyid, key_type(h->keyid));
+	ccprintf("RO keyid:    0x%08x(%s)\n", h->keyid, key_type(h));
 
 	active = system_get_image_copy();
 	vaddr = get_program_memory_addr(active);
 	h = (const struct SignedHeader *)vaddr;
-	ccprintf("RW keyid:    0x%08x(%s)\n", h->keyid, key_type(h->keyid));
+	ccprintf("RW keyid:    0x%08x(%s)\n", h->keyid, key_type(h));
 
 	ccprintf("DEV_ID:      0x%08x 0x%08x\n",
 		 GREG32(FUSE, DEV_ID0), GREG32(FUSE, DEV_ID1));

@@ -729,7 +729,7 @@ static int handle_keyboard_command(uint8_t command, uint8_t *output)
 		break;
 
 	case I8042_SYSTEM_RESET:
-		chipset_reset(0);
+		chipset_reset();
 		break;
 
 	default:
@@ -1052,7 +1052,7 @@ static int command_keyboard_log(int argc, char **argv)
 
 	if (i) {
 		if (!kblog_buf) {
-			int rv = shared_mem_acquire(
+			int rv = SHARED_MEM_ACQUIRE_CHECK(
 				sizeof(*kblog_buf) * MAX_KBLOG,
 				(char **)&kblog_buf);
 			if (rv != EC_SUCCESS)
@@ -1089,7 +1089,7 @@ static int command_keyboard(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(kbd, command_keyboard,
-			"[0 | 1]",
+			"[on | off]",
 			"Print or toggle keyboard info");
 
 

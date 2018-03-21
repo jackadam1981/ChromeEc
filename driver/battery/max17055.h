@@ -37,12 +37,14 @@
 #define REG_TEMPCO                  0x39
 #define REG_EMPTY_VOLTAGE           0x3a
 #define REG_FSTAT                   0x3d
+#define REG_TIMER                   0x3e
 #define REG_QR_TABLE30              0x42
 #define REG_DQACC                   0x45
 #define REG_DPACC                   0x46
 #define REG_STATUS2                 0xb0
 #define REG_HIBCFG                  0xba
 #define REG_CONFIG2                 0xbb
+#define REG_TIMERH                  0xbe
 #define REG_MODELCFG                0xdb
 
 /* Status reg (0x00) flags */
@@ -54,10 +56,15 @@
 
 /* FStat reg (0x3d) flags */
 #define FSTAT_DNR                   0x0001
+#define FSTAT_FQ                    0x0080
 
 /* ModelCfg reg (0xdb) flags */
 #define MODELCFG_REFRESH            0x8000
 #define MODELCFG_VCHG               0x0400
+
+/* Smart battery status bits (sbs reg 0x16) */
+#define BATTERY_DISCHARGING         0x40
+#define BATTERY_FULLY_CHARGED       0x20
 
 /*
  * Before we have the battery fully characterized, we use these macros to

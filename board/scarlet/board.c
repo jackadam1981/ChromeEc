@@ -16,6 +16,7 @@
 #include "ec_commands.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/charger/rt946x.h"
+#include "driver/sync.h"
 #include "driver/tcpm/fusb302.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
@@ -62,7 +63,7 @@ static void overtemp_interrupt(enum gpio_signal signal)
 static void warm_reset_request_interrupt(enum gpio_signal signal)
 {
 	CPRINTS("AP wants warm reset");
-	chipset_reset(0);
+	chipset_reset();
 }
 
 #include "gpio_list.h"
@@ -158,10 +159,14 @@ int board_set_active_charge_port(int charge_port)
 		/* Don't charge from a source port */
 		if (board_vbus_source_enabled(charge_port))
 			return -1;
-		rt946x_enable_charger_boost(1);
 		break;
 	case CHARGE_PORT_NONE:
-		rt946x_enable_charger_boost(0);
+		/*
+		 * To ensure the fuel gauge (max17055) is always powered
+		 * even when battery is disconnected, keep VBAT rail on but
+		 * set the charging current to minimum.
+		 */
+		charger_set_current(0);
 		break;
 	default:
 		panic("Invalid charge port\n");
@@ -233,12 +238,18 @@ static void board_init(void)
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
 
+	/* Enable charger interrupts */
+	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
+
 	/* Enable reboot / shutdown control inputs from AP */
 	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
 	gpio_enable_interrupt(GPIO_AP_OVERTEMP);
 
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_L);
+
+	/* Enable interrupt for the camera vsync. */
+	gpio_enable_interrupt(GPIO_SYNC_INT);
 
 	/* Set SPI2 pins to high speed */
 	/* pins D0/D1/D3/D4 */
@@ -336,6 +347,14 @@ int board_get_version(void)
 		}
 	}
 
+	/*
+	 * Disable ADC module after we detect the board version,
+	 * since this is the only thing ADC module needs to do
+	 * for this board.
+	 */
+	if (version != BOARD_VERSION_UNKNOWN)
+		adc_disable();
+
 	return version;
 }
 
@@ -371,29 +390,14 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = CONFIG_SPI_ACCEL_PORT,
 	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
 	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 2,  /* g, enough for laptop. */
+	 .default_range = 4,  /* g */
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
 	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
 	 .config = {
-		 /* AP: by default use EC settings */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
 		 /* Enable accel in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
 			 .ec_rate = 100 * MSEC,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0
 		 },
 	 },
 	},
@@ -412,28 +416,17 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* Enable gyro in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-	 },
+	},
+	[VSYNC] = {
+	 .name = "Camera vsync",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_GPIO,
+	 .type = MOTIONSENSE_TYPE_SYNC,
+	 .location = MOTIONSENSE_LOC_CAMERA,
+	 .drv = &sync_drv,
+	 .default_range = 0,
+	 .min_frequency = 0,
+	 .max_frequency = 1,
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -448,4 +441,14 @@ int tablet_get_mode(void)
 {
 	/* Always in tablet mode */
 	return 1;
+}
+
+void usb_charger_set_switches(int port, enum usb_switch setting)
+{
+	/*
+	 * There is no USB2 switch anywhere on this board. But based
+	 * on the discussion in b:65446459, RK3399's USB PHY is powered
+	 * off when USB charging port detection is going on, so things
+	 * should mostly work without a USB2 switch.
+	 */
 }

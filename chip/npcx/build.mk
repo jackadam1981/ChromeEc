@@ -25,15 +25,17 @@ chip-$(CONFIG_ADC)+=adc.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o i2c-$(CHIP_FAMILY).o
-chip-$(CONFIG_LPC)+=lpc.o
-chip-$(CONFIG_ESPI)+=espi.o
+chip-$(CONFIG_HOSTCMD_X86)+=lpc.o
+chip-$(CONFIG_HOSTCMD_ESPI)+=espi.o
 chip-$(CONFIG_PECI)+=peci.o
 chip-$(CONFIG_HOSTCMD_SPS)+=shi.o
+chip-$(CONFIG_CEC)+=cec.o
 # pwm functions are implemented with the fan functions
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
+chip-$(CONFIG_WAKE_ON_VOICE)+=apm.o
 chip-$(CONFIG_WAKE_ON_VOICE)+=wov.o
 
 # spi monitor program fw for openocd and UUT(UART Update Tool)

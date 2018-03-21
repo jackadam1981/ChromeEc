@@ -96,23 +96,29 @@ const struct pwm_t pwm_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* Physical fans. These are logically separate from pwm_channels. */
-const struct fan_t fans[] = {
-	{.flags = FAN_USE_RPM_MODE,
-	 .rpm_min = 1000,
-	 .rpm_start = 1000,
-	 .rpm_max = 6350,
-	 .ch = 2,
-	 .pgood_gpio = -1,
-	 .enable_gpio = -1,
-	},
-	{.flags = FAN_USE_RPM_MODE,
-	 .rpm_min = 1000,
-	 .rpm_start = 1000,
-	 .rpm_max = 6350,
-	 .ch = 3,
-	 .pgood_gpio = -1,
-	 .enable_gpio = -1,
-	},
+const struct fan_conf fan_conf_0 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = 2,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = -1,
+};
+
+const struct fan_conf fan_conf_1 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = 3,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = -1,
+};
+
+const struct fan_rpm fan_rpm_0 = {
+	.rpm_min = 1000,
+	.rpm_start = 1000,
+	.rpm_max = 6350,
+};
+
+struct fan_t fans[] = {
+	{ .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
+	{ .conf = &fan_conf_1, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == CONFIG_FANS);
 
@@ -324,11 +330,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = LSM6DS0_ACCEL_MIN_FREQ,
 	 .max_frequency = LSM6DS0_ACCEL_MAX_FREQ,
 	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 119000 | ROUND_UP_FLAG,
@@ -361,24 +362,10 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
 	 .max_frequency = KXCJ9_ACCEL_MAX_FREQ,
 	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 100000 | ROUND_UP_FLAG,
 			 .ec_rate = 100 * MSEC,
-		 },
-		 /* unused */
-		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
 		 },
 	 },
 	},
@@ -397,27 +384,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .default_range = 2000,  /* g, enough for laptop. */
 	 .min_frequency = LSM6DS0_GYRO_MIN_FREQ,
 	 .max_frequency = LSM6DS0_GYRO_MAX_FREQ,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 119000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
-		 },
-		 /* unused */
-		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-	 }
 	},
 
 };

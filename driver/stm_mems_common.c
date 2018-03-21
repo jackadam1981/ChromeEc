@@ -9,28 +9,7 @@
 #include "stm_mems_common.h"
 
 /**
- * Read single register
- */
-int raw_read8(const int port, const int addr, const int reg, int *data_ptr)
-{
-	/* TODO: Implement SPI interface support */
-	return i2c_read8(port, addr, reg, data_ptr);
-}
-
-/**
- * Write single register
- */
-int raw_write8(const int port, const int addr, const int reg, int data)
-{
-	/* TODO: Implement SPI interface support */
-	return i2c_write8(port, addr, reg, data);
-}
-
-/**
- * Read n bytes for read
- * NOTE: Some chip use MSB for auto-increments in SUB address
- * MSB must be set for autoincrement in multi read when auto_inc
- * is set
+ * st_raw_read_n - Read n bytes for read
  */
 int st_raw_read_n(const int port, const int addr, const uint8_t reg,
 	       uint8_t *data_ptr, const int len)
@@ -46,8 +25,24 @@ int st_raw_read_n(const int port, const int addr, const uint8_t reg,
 	return rv;
 }
 
+/**
+ * st_raw_read_n_noinc - Read n bytes for read (no auto inc address)
+ */
+int st_raw_read_n_noinc(const int port, const int addr, const uint8_t reg,
+	       uint8_t *data_ptr, const int len)
+{
+	int rv = -EC_ERROR_PARAM1;
+
+	/* TODO: Implement SPI interface support */
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, addr, &reg, 1, data_ptr, len, I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	return rv;
+}
+
  /**
- * write_data_with_mask - Write register with mask
+ * st_write_data_with_mask - Write register with mask
  * @s: Motion sensor pointer
  * @reg: Device register
  * @mask: The mask to search
@@ -59,7 +54,7 @@ int st_write_data_with_mask(const struct motion_sensor_t *s, int reg,
 	int err;
 	int new_data = 0x00, old_data = 0x00;
 
-	err = raw_read8(s->port, s->addr, reg, &old_data);
+	err = st_raw_read8(s->port, s->addr, reg, &old_data);
 	if (err != EC_SUCCESS)
 		return err;
 
@@ -69,27 +64,12 @@ int st_write_data_with_mask(const struct motion_sensor_t *s, int reg,
 	if (new_data == old_data)
 		return EC_SUCCESS;
 
-	return raw_write8(s->port, s->addr, reg, new_data);
+	return st_raw_write8(s->port, s->addr, reg, new_data);
 }
 
- /**
- * set_resolution - Set bit resolution
+/**
+ * st_get_resolution - Get bit resolution
  * @s: Motion sensor pointer
- * @res: Bit resolution
- * @rnd: Round bit
- *
- * TODO: must support multiple resolution
- */
-int st_set_resolution(const struct motion_sensor_t *s, int res, int rnd)
-{
-	return EC_SUCCESS;
-}
-
- /**
- * get_resolution - Get bit resolution
- * @s: Motion sensor pointer
- *
- * TODO: must support multiple resolution
  */
 int st_get_resolution(const struct motion_sensor_t *s)
 {
@@ -99,7 +79,7 @@ int st_get_resolution(const struct motion_sensor_t *s)
 }
 
 /**
- * set_offset - Set data offset
+ * st_set_offset - Set data offset
  * @s: Motion sensor pointer
  * @offset: offset vector
  * @temp: Temp
@@ -116,7 +96,7 @@ int st_set_offset(const struct motion_sensor_t *s,
 }
 
 /**
- * get_offset - Get data offset
+ * st_get_offset - Get data offset
  * @s: Motion sensor pointer
  * @offset: offset vector
  * @temp: Temp
@@ -134,7 +114,7 @@ int st_get_offset(const struct motion_sensor_t *s,
 }
 
 /**
- * get_data_rate - Get data rate (ODR)
+ * st_get_data_rate - Get data rate (ODR)
  * @s: Motion sensor pointer
  */
 int st_get_data_rate(const struct motion_sensor_t *s)
@@ -145,34 +125,25 @@ int st_get_data_rate(const struct motion_sensor_t *s)
 }
 
 /**
- * normalize - Apply LSB data sens. and rotation based on sensor resolution
+ * st_normalize - Apply LSB data sens. and rotation based on sensor resolution
  * @s: Motion sensor pointer
  * @v: output vector
  * @data: LSB raw data
  */
 void st_normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 {
-	int i;
+	int i, range;
 	struct stprivate_data *drvdata = s->drv_data;
 
-	/* Adjust data to sensor Sensitivity and Precision:
-	 * - devices with 16 bits resolution has gain in ug/LSB
-	 * - devices with 8/10 bits resolution has gain in mg/LSB
-	 */
-	for (i = 0; i < 3; i++) {
-		switch (drvdata->resol) {
-		case 10:
-			v[i] = ((int16_t)((data[i * 2 + 1] << 8) |
-				   data[i * 2]) >> 6);
-			v[i] = v[i] * drvdata->base.range;
-			break;
-		case 16:
-			v[i] = ((int16_t)(data[i * 2 + 1] << 8) |
-				    data[i * 2]);
-			v[i] = (v[i] * drvdata->base.range) / 1000;
-			break;
-		}
+	for (i = X; i <= Z; i++) {
+		v[i] = (int16_t)((data[i * 2 + 1] << 8) |
+				data[i * 2]) >> (16 - drvdata->resol);
 	}
 
 	rotate(v, *s->rot_standard_ref, v);
+
+	/* apply offset in the device coordinates */
+	range = s->drv->get_range(s);
+	for (i = X; i <= Z; i++)
+		v[i] += (drvdata->offset[i] << 5) / range;
 }

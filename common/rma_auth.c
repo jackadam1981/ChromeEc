@@ -11,7 +11,9 @@
 #include "ccd_config.h"
 #include "chip/g/board_id.h"
 #include "console.h"
+#ifdef CONFIG_CURVE25519
 #include "curve25519.h"
+#endif
 #include "extension.h"
 #include "hooks.h"
 #include "rma_auth.h"
@@ -20,7 +22,18 @@
 #include "timer.h"
 #include "tpm_registers.h"
 #include "tpm_vendor_cmds.h"
+#ifdef CONFIG_RMA_AUTH_USE_P256
+#include "trng.h"
+#endif
 #include "util.h"
+
+#ifndef TEST_BUILD
+#include "cryptoc/util.h"
+#include "rma_key_from_blob.h"
+#else
+/* Cryptoc library is not available to the test layer. */
+#define always_memset memset
+#endif
 
 #ifdef CONFIG_DCRYPTO
 #include "dcrypto.h"
@@ -36,9 +49,26 @@
 /* Number of tries to properly enter auth code */
 #define MAX_AUTHCODE_TRIES 3
 
+#ifdef CONFIG_RMA_AUTH_USE_P256
+#define RMA_SERVER_PUB_KEY_SZ 65
+#else
+#define RMA_SERVER_PUB_KEY_SZ 32
+#endif
+
 /* Server public key and key ID */
-static const uint8_t server_pub_key[32] = CONFIG_RMA_AUTH_SERVER_PUBLIC_KEY;
-static const uint8_t server_key_id = CONFIG_RMA_AUTH_SERVER_KEY_ID;
+static const struct  {
+	union {
+		uint8_t raw_blob[RMA_SERVER_PUB_KEY_SZ + 1];
+		struct {
+			uint8_t server_pub_key[RMA_SERVER_PUB_KEY_SZ];
+			volatile uint8_t server_key_id;
+		};
+	};
+} __packed rma_key_blob = {
+	.raw_blob = RMA_KEY_BLOB
+};
+
+BUILD_ASSERT(sizeof(rma_key_blob) == (RMA_SERVER_PUB_KEY_SZ + 1));
 
 static char challenge[RMA_CHALLENGE_BUF_SIZE];
 static char authcode[RMA_AUTHCODE_BUF_SIZE];
@@ -72,6 +102,71 @@ static void hash_buffer(void *dest, size_t dest_size,
 	memcpy(dest, temp, dest_size);
 }
 
+#ifdef CONFIG_RMA_AUTH_USE_P256
+/*
+ * Generate a p256 key pair, such that Y coordinate component of the public
+ * key is an odd value. Use the X component value as the compressed public key
+ * to be sent to the server. Multiply server public key by our private key to
+ * generate the shared secret.
+ *
+ * @pub_key - array to return 32 bytes of the X coordinate public key
+ *	      component.
+ * @secet - array to return the X coordinate of the product of the server
+ *            public key multiplied by our private key.
+ */
+static void p256_get_pub_key_and_secret(uint8_t pub_key[P256_NBYTES],
+					uint8_t secret[P256_NBYTES])
+{
+	uint8_t buf[SHA256_DIGEST_SIZE];
+	p256_int d;
+	p256_int pk_x;
+	p256_int pk_y;
+
+	/* Get some noise for private key. */
+	rand_bytes(buf, sizeof(buf));
+
+	/*
+	 * By convention with the RMA server the Y coordinate of the Cr50
+	 * public key component is required to be an odd value. Keep trying
+	 * until the genreated bublic key has the compliant Y coordinate.
+	 */
+	while (1) {
+		HASH_CTX sha;
+
+		if (DCRYPTO_p256_key_from_bytes(&pk_x, &pk_y, &d, buf)) {
+
+			/* Is Y coordinate an odd value? */
+			if (p256_is_odd(&pk_y))
+				break; /* Yes it is, got a good key. */
+		}
+
+		/* Did not succeed, rehash the private key and try again. */
+		DCRYPTO_SHA256_init(&sha, 0);
+		HASH_update(&sha, buf, sizeof(buf));
+		memcpy(buf, HASH_final(&sha), sizeof(buf));
+	}
+
+	/* X coordinate is passed to the server as the public key. */
+	p256_to_bin(&pk_x, pub_key);
+
+	/*
+	 * Now let's calculate the secret as a the server pub key multiplied
+	 * by our private key.
+	 */
+	p256_from_bin(rma_key_blob.raw_blob + 1, &pk_x);
+	p256_from_bin(rma_key_blob.raw_blob + 1 + P256_NBYTES, &pk_y);
+
+	/* Use input space for storing multiplication results. */
+	DCRYPTO_p256_point_mul(&pk_x, &pk_y, &d, &pk_x, &pk_y);
+
+	/* X value is the seed for the shared secret. */
+	p256_to_bin(&pk_x, secret);
+
+	/* Wipe out the private key just in case. */
+	always_memset(&d, 0, sizeof(d));
+}
+#endif
+
 /**
  * Create a new RMA challenge/response
  *
@@ -101,7 +196,7 @@ int rma_create_challenge(void)
 
 	memset(&c, 0, sizeof(c));
 	c.version_key_id = RMA_CHALLENGE_VKID_BYTE(
-	    RMA_CHALLENGE_VERSION, server_key_id);
+	    RMA_CHALLENGE_VERSION, rma_key_blob.server_key_id);
 
 	if (read_board_id(&bid))
 		return EC_ERROR_UNKNOWN;
@@ -124,15 +219,18 @@ int rma_create_challenge(void)
 			    device_id, unique_device_id_size);
 	}
 
-	/* Calculate a new ephemeral key pair */
+	/* Calculate a new ephemeral key pair and the shared secret. */
+#ifdef CONFIG_RMA_AUTH_USE_P256
+	p256_get_pub_key_and_secret(c.device_pub_key, secret);
+#endif
+#ifdef CONFIG_CURVE25519
 	X25519_keypair(c.device_pub_key, temp);
-
+	X25519(secret, temp, rma_key_blob.server_pub_key);
+#endif
 	/* Encode the challenge */
 	if (base32_encode(challenge, sizeof(challenge), cptr, 8 * sizeof(c), 9))
 		return EC_ERROR_UNKNOWN;
 
-	/* Calculate the shared secret */
-	X25519(secret, temp, server_pub_key);
 
 	/*
 	 * Auth code is a truncated HMAC of the ephemeral public key, BoardID,
@@ -191,6 +289,7 @@ int rma_try_authcode(const char *code)
 static enum vendor_cmd_rc get_challenge(uint8_t *buf, size_t *buf_size)
 {
 	int rv;
+	size_t i;
 
 	if (*buf_size < sizeof(challenge)) {
 		*buf_size = 1;
@@ -208,97 +307,21 @@ static enum vendor_cmd_rc get_challenge(uint8_t *buf, size_t *buf_size)
 	*buf_size = sizeof(challenge) - 1;
 	memcpy(buf, rma_get_challenge(), *buf_size);
 
+
+	CPRINTF("generated challenge:\n\n");
+	for (i = 0; i < *buf_size; i++)
+		CPRINTF("%c", ((uint8_t *)buf)[i]);
+	CPRINTF("\n\n");
+
 #ifdef CR50_DEV
-	{
-		size_t i;
 
-		CPRINTF("%s: generated challenge:\n", __func__);
-		for (i = 0; i < *buf_size; i++)
-			CPRINTF("%c", ((uint8_t *)buf)[i]);
-		CPRINTF("\n");
-
-		CPRINTF("%s: expected authcode: ", __func__);
-		for (i = 0; i < RMA_AUTHCODE_CHARS; i++)
-			CPRINTF("%c", authcode[i]);
-		CPRINTF("\n");
-	}
+	CPRINTF("expected authcode: ");
+	for (i = 0; i < RMA_AUTHCODE_CHARS; i++)
+		CPRINTF("%c", authcode[i]);
+	CPRINTF("\n");
 #endif
-
 	return VENDOR_RC_SUCCESS;
 }
-
-static uint8_t ccd_hook_active;
-
-static void ccd_config_changed(void)
-{
-	if (!ccd_hook_active)
-		return;
-
-	CPRINTF("%s: CCD change saved, rebooting\n", __func__);
-	cflush();
-	system_reset(SYSTEM_RESET_HARD);
-}
-DECLARE_HOOK(HOOK_CCD_CHANGE, ccd_config_changed, HOOK_PRIO_LAST);
-
-static void rma_reset_failed(void)
-{
-	ccd_hook_active = 0;
-	CPRINTF("%s: CCD RMA reset failed\n");
-	deassert_ec_rst();
-}
-DECLARE_DEFERRED(rma_reset_failed);
-
-/* The below time constants are way longer than should be required in practice:
- *
- * Time it takes to finish processing TPM command which provided valid RMA
- * authentication code.
- */
-#define TPM_PROCESSING_TIME (1 * SECOND)
-
-/*
- * Time it takse TPM reset function to wipe out the NVMEM and reboot the
- * device.
- */
-#define TPM_RESET_TIME (10 * SECOND)
-
-/* Total time deep sleep should not be allowed. */
-#define DISABLE_SLEEP_TIME (TPM_PROCESSING_TIME + TPM_RESET_TIME)
-
-static void enter_rma_mode(void)
-{
-	int rv;
-
-	CPRINTF("%s: resetting TPM\n", __func__);
-
-	/*
-	 * Let's make sure the rest of the system is out of the way while TPM
-	 * is being wiped out.
-	 */
-	assert_ec_rst();
-
-	if (tpm_reset_request(1, 1) != EC_SUCCESS) {
-		CPRINTF("%s: TPM reset attempt failed\n", __func__);
-		deassert_ec_rst();
-		return;
-	}
-
-	tpm_reinstate_nvmem_commits();
-
-	CPRINTF("%s: TPM reset succeeded, RMA resetting CCD\n", __func__);
-
-	ccd_hook_active = 1;
-	rv = ccd_reset_config(CCD_RESET_RMA);
-	if (rv != EC_SUCCESS)
-		rma_reset_failed();
-
-	/*
-	 * Make sure we never end up with the EC held in reset, no matter what
-	 * prevents the proper RMA flow from succeeding.
-	 */
-	hook_call_deferred(&rma_reset_failed_data, TPM_RESET_TIME);
-}
-DECLARE_DEFERRED(enter_rma_mode);
-
 /*
  * Compare response sent by the operator with the pre-compiled auth code.
  * Return error code or success depending on the comparison results.
@@ -323,8 +346,7 @@ static enum vendor_cmd_rc process_response(uint8_t *buf,
 	if (rv == EC_SUCCESS) {
 		CPRINTF("%s: success!\n", __func__);
 		*response_size = 0;
-		delay_sleep_by(DISABLE_SLEEP_TIME);
-		hook_call_deferred(&enter_rma_mode_data, TPM_PROCESSING_TIME);
+		enable_ccd_factory_mode();
 		return VENDOR_RC_SUCCESS;
 	}
 
@@ -370,45 +392,50 @@ static int rma_auth_cmd(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 	}
 
-	if (argc == 2) {
-		if (rma_try_authcode(argv[1]) != EC_SUCCESS) {
-			ccprintf("Auth code does not match.\n");
-			return EC_ERROR_PARAM1;
-		}
-		ccprintf("Auth code match!\n");
-		return EC_SUCCESS;
-	}
-
 	rv = shared_mem_acquire(RMA_CMD_BUF_SIZE, (char **)&tpmh);
 	if (rv != EC_SUCCESS)
 		return rv;
 
-	/* Build the extension command to request RMA AUTH challenge. */
+	/* Common fields of the RMA AUTH challenge/response vendor command. */
 	tpmh->tag = htobe16(0x8001); /* TPM_ST_NO_SESSIONS */
-	tpmh->size = htobe32(sizeof(struct tpm_cmd_header));
 	tpmh->command_code = htobe32(TPM_CC_VENDOR_BIT_MASK);
 	tpmh->subcommand_code = htobe16(VENDOR_CC_RMA_CHALLENGE_RESPONSE);
 
+	if (argc == 2) {
+		/*
+		 * The user entered a value, must be the auth code, build and
+		 * send vendor command to check it.
+		 */
+		const char *authcode = argv[1];
+
+		if (strlen(authcode) != RMA_AUTHCODE_CHARS) {
+			ccprintf("Wrong auth code size.\n");
+			return EC_ERROR_PARAM1;
+		}
+
+		tpmh->size = htobe32(sizeof(struct tpm_cmd_header) +
+				     RMA_AUTHCODE_CHARS);
+
+		memcpy(tpmh + 1, authcode, RMA_AUTHCODE_CHARS);
+
+		tpm_alt_extension(tpmh, RMA_CMD_BUF_SIZE);
+
+		if (tpmh->command_code) {
+			ccprintf("Auth code does not match.\n");
+			return EC_ERROR_PARAM1;
+		}
+		ccprintf("Auth code match, reboot might be coming!\n");
+		return EC_SUCCESS;
+	}
+
+	/* Prepare and send the request to get RMA auth challenge. */
+	tpmh->size = htobe32(sizeof(struct tpm_cmd_header));
 	tpm_alt_extension(tpmh, RMA_CMD_BUF_SIZE);
 
 	/* Return status in the command code field now. */
 	if (tpmh->command_code) {
 		ccprintf("RMA Auth error 0x%x\n", be32toh(tpmh->command_code));
 		rv = EC_ERROR_UNKNOWN;
-	} else {
-		/* Success, let's print out the challenge. */
-		int i;
-		char *challenge = (char *)(tpmh + 1);
-
-		for (i = 0; i < RMA_CHALLENGE_CHARS; i++) {
-			if (!(i % 5)) {
-				if (!(i % 20))
-					ccprintf("\n");
-				ccprintf(" ");
-			}
-			ccprintf("%c", challenge[i]);
-		}
-		ccprintf("\n");
 	}
 
 	shared_mem_release(tpmh);

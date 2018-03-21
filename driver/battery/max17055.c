@@ -18,6 +18,12 @@
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 /*
+ * For max17055 to finish battery presence detection, this is the minimal time
+ * we have to wait since the last POR. LSB = 175ms.
+ */
+#define RELIABLE_BATT_DETECT_TIME	0x10
+
+/*
  * Convert the register values to the units that match
  * smart battery protocol.
  */
@@ -34,6 +40,8 @@
 #define TEMPERATURE_CONV(REG)   (((REG * 10) >> 8) + 2731)
 /* Percentage reg value to 1% */
 #define PERCENTAGE_CONV(REG)    (REG >> 8)
+/* Cycle count reg value (LSB = 1%) to absolute count (100%) */
+#define CYCLE_COUNT_CONV(REG)	((REG * 5) >> 9)
 
 /* Useful macros */
 #define MAX17055_READ_DEBUG(offset, ptr_reg) \
@@ -135,7 +143,13 @@ int battery_time_to_full(int *minutes)
 
 int battery_cycle_count(int *count)
 {
-	return max17055_read(REG_CYCLE_COUNT, count);
+	int rv;
+	int reg;
+
+	rv = max17055_read(REG_CYCLE_COUNT, &reg);
+	if (!rv)
+		*count = CYCLE_COUNT_CONV(reg);
+	return rv;
 }
 
 int battery_design_capacity(int *capacity)
@@ -189,27 +203,66 @@ int battery_get_mode(int *mode)
 
 int battery_status(int *status)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	int rv;
+	int reg;
+
+	*status = 0;
+
+	rv = max17055_read(REG_FSTAT, &reg);
+	if (rv)
+		return rv;
+	if (reg & FSTAT_FQ)
+		*status |= BATTERY_FULLY_CHARGED;
+
+	rv = max17055_read(REG_CURRENT, &reg);
+	if (rv)
+		return rv;
+	if (reg >> 15)
+		*status |= BATTERY_DISCHARGING;
+
+	return EC_SUCCESS;
 }
 
 enum battery_present battery_is_present(void)
 {
-	int status = 0;
+	int reg = 0;
+	static uint8_t batt_pres_sure;
 
-	if (max17055_read(REG_STATUS, &status))
+	if (max17055_read(REG_STATUS, &reg))
 		return BP_NOT_SURE;
-	if (status & STATUS_BST)
+
+	if (reg & STATUS_BST)
 		return BP_NO;
+
+	if (!batt_pres_sure) {
+		/*
+		 * The battery detection result is not reliable within
+		 * ~2.8 secs since POR.
+		 */
+		if (!max17055_read(REG_TIMERH, &reg)) {
+			/*
+			 * The LSB of TIMERH reg is 3.2 hrs. If the reg has a
+			 * nonzero value, battery detection must have been
+			 * settled.
+			 */
+			if (reg) {
+				batt_pres_sure = 1;
+				return BP_YES;
+			}
+			if (!max17055_read(REG_TIMER, &reg) &&
+			    ((uint32_t)reg > RELIABLE_BATT_DETECT_TIME)) {
+				batt_pres_sure = 1;
+				return BP_YES;
+			}
+		}
+		return BP_NOT_SURE;
+	}
 	return BP_YES;
 }
 
 void battery_get_params(struct batt_params *batt)
 {
 	int reg = 0;
-	const uint32_t flags_to_check = BATT_FLAG_BAD_TEMPERATURE |
-					BATT_FLAG_BAD_STATE_OF_CHARGE |
-					BATT_FLAG_BAD_VOLTAGE |
-					BATT_FLAG_BAD_CURRENT;
 
 	/* Reset flags */
 	batt->flags = 0;
@@ -231,7 +284,7 @@ void battery_get_params(struct batt_params *batt)
 
 	batt->voltage = VOLTAGE_CONV(reg);
 
-	if (max17055_read(REG_AVERAGE_CURRENT, &reg))
+	if (max17055_read(REG_CURRENT, &reg))
 		batt->flags |= BATT_FLAG_BAD_CURRENT;
 
 	batt->current = CURRENT_CONV((int16_t)reg);
@@ -245,12 +298,14 @@ void battery_get_params(struct batt_params *batt)
 	if (battery_full_charge_capacity(&batt->full_capacity))
 		batt->flags |= BATT_FLAG_BAD_FULL_CAPACITY;
 
-	/* If any of those reads worked, the battery is responsive */
-	if ((batt->flags & flags_to_check) != flags_to_check) {
+	/*
+	 * Assuming the battery is responsive as long as
+	 * max17055 finds battery is present.
+	 */
+	batt->is_present = battery_is_present();
+
+	if (batt->is_present == BP_YES)
 		batt->flags |= BATT_FLAG_RESPONSIVE;
-		batt->is_present = BP_YES;
-	} else
-		batt->is_present = BP_NOT_SURE;
 
 	/*
 	 * Charging allowed if both desired voltage and current are nonzero
@@ -261,6 +316,9 @@ void battery_get_params(struct batt_params *batt)
 	    batt->desired_current &&
 	    batt->state_of_charge < BATTERY_LEVEL_FULL)
 		batt->flags |= BATT_FLAG_WANT_CHARGE;
+
+	if (battery_status(&batt->status))
+		batt->flags |= BATT_FLAG_BAD_STATUS;
 }
 
 #ifdef CONFIG_CMD_PWR_AVG
@@ -285,7 +343,7 @@ int battery_wait_for_stable(void)
 }
 
 /* Configured MAX17055 with the battery parameters for optimal performance. */
-static int max17055_init_config(void)
+static int max17055_load_batt_model(void)
 {
 	int reg;
 	int hib_cfg;
@@ -369,6 +427,14 @@ static void max17055_init(void)
 		return;
 	}
 
+	/*
+	 * Set CONFIG.TSEL to measure temperature using external thermistor.
+	 * Set it as early as possible because max17055 takes up to 1000ms to
+	 * have the first reliable external temperature reading.
+	 */
+	MAX17055_READ_DEBUG(REG_CONFIG, &reg);
+	MAX17055_WRITE_DEBUG(REG_CONFIG, (reg | CONF_TSEL));
+
 	MAX17055_READ_DEBUG(REG_STATUS, &reg);
 
 	/* Check for POR */
@@ -386,19 +452,32 @@ static void max17055_init(void)
 			return;
 		}
 
-		if (max17055_init_config()) {
+		if (max17055_load_batt_model()) {
 			CPRINTS("max17055 configuration failed!");
 			return;
 		}
+
+		/* Clear POR bit */
+		MAX17055_READ_DEBUG(REG_STATUS, &reg);
+		MAX17055_WRITE_DEBUG(REG_STATUS, (reg & ~STATUS_POR));
+	} else {
+		const struct max17055_batt_profile *config;
+
+		config = max17055_get_batt_profile();
+		MAX17055_READ_DEBUG(REG_DESIGN_CAPACITY, &reg);
+
+		/*
+		 * Reload the battery model if the current running one
+		 * is wrong.
+		 */
+		if (config->design_cap != reg) {
+			CPRINTS("max17055 reconfig...");
+			if (max17055_load_batt_model()) {
+				CPRINTS("max17055 configuration failed!");
+				return;
+			}
+		}
 	}
-
-	/* Clear POR bit */
-	MAX17055_READ_DEBUG(REG_STATUS, &reg);
-	MAX17055_WRITE_DEBUG(REG_STATUS, (reg & ~STATUS_POR));
-
-	/* Set CONFIG.TSEL to measure temperature using external thermistor */
-	MAX17055_READ_DEBUG(REG_CONFIG, &reg);
-	MAX17055_WRITE_DEBUG(REG_CONFIG, (reg | CONF_TSEL));
 
 	CPRINTS("max17055 configuration succeeded!");
 }

@@ -50,7 +50,9 @@ struct SignedHeader {
 	 * words of _pad[] may be used by a second FIPS-compliant signature,
 	 * so don't put anything there.
 	 */
-	uint32_t _pad[24];
+	uint32_t _pad[23];
+	/* Field for managing updates between RW product families. */
+	uint32_t rw_product_family_;
 	/* Board ID type, mask, flags (stored ^SIGNED_HEADER_PADDING) */
 	uint32_t board_id_type;
 	uint32_t board_id_type_mask;
@@ -65,4 +67,15 @@ BUILD_ASSERT(sizeof(struct SignedHeader) == 1024);
 BUILD_ASSERT(offsetof(struct SignedHeader, info_chk_) == 1020);
 #define TOP_IMAGE_SIZE_BIT (1 <<			\
 	    (sizeof(((struct SignedHeader *)0)->image_size) * 8 - 1))
+
+/*
+ * It is a mere convention, but all prod keys are required to have key IDs
+ * such, that bit D2 is set, and all dev keys are required to have key IDs
+ * such, that bit D2 is not set.
+ *
+ * This convention is enforced at the key generation time.
+ */
+#define G_SIGNED_FOR_PROD(h) ((h)->keyid & (1 << 2))
+
+
 #endif /* __CROS_EC_SIGNED_HEADER_H */

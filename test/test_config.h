@@ -61,11 +61,14 @@
 #ifdef TEST_RMA_AUTH
 
 /* Test server public and private keys */
-#define RMA_TEST_SERVER_PUBLIC_KEY {				\
+#define RMA_KEY_BLOB	{					\
 		0x03, 0xae, 0x2d, 0x2c, 0x06, 0x23, 0xe0, 0x73, \
 		0x0d, 0xd3, 0xb7, 0x92, 0xac, 0x54, 0xc5, 0xfd,	\
 		0x7e, 0x9c, 0xf0, 0xa8, 0xeb, 0x7e, 0x2a, 0xb5,	\
-		0xdb, 0xf4, 0x79, 0x5f, 0x8a, 0x0f, 0x28, 0x3f}
+		0xdb, 0xf4, 0x79, 0x5f, 0x8a, 0x0f, 0x28, 0x3f, \
+		0x10						\
+	}
+
 #define RMA_TEST_SERVER_PRIVATE_KEY {				\
 		0x47, 0x3b, 0xa5, 0xdb, 0xc4, 0xbb, 0xd6, 0x77, \
 		0x20, 0xbd, 0xd8, 0xbd, 0xc8, 0x7a, 0xbb, 0x07,	\
@@ -76,12 +79,14 @@
 #define CONFIG_BASE32
 #define CONFIG_CURVE25519
 #define CONFIG_RMA_AUTH
-#define CONFIG_RMA_AUTH_SERVER_PUBLIC_KEY RMA_TEST_SERVER_PUBLIC_KEY
-#define CONFIG_RMA_AUTH_SERVER_KEY_ID RMA_TEST_SERVER_KEY_ID
 #define CONFIG_RNG
 #define CONFIG_SHA256
 #define CC_EXTENSION CC_COMMAND
 
+#endif
+
+#ifdef TEST_CRC32
+#define CONFIG_SW_CRC
 #endif
 
 #ifdef TEST_RSA
@@ -92,6 +97,7 @@
 
 #ifdef TEST_RSA3
 #define CONFIG_RSA
+#undef CONFIG_RSA_KEY_SIZE
 #define CONFIG_RSA_KEY_SIZE 2048
 #define CONFIG_RSA_EXPONENT_3
 #define CONFIG_RWSIG_TYPE_RWSIG
@@ -170,7 +176,6 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #if defined(TEST_USB_PD) || defined(TEST_USB_PD_GIVEBACK) || \
 	defined(TEST_USB_PD_REV30)
 #define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_PORT_COUNT 2
 #define CONFIG_USB_PD_TCPC
@@ -254,6 +259,11 @@ enum nvmem_vars {
 #endif
 #define CONFIG_FLASH_NVMEM_VARS_USER_SIZE 600
 #endif	/* TEST_NVMEM_VARS */
+
+#ifdef TEST_PINWEAVER
+#define CONFIG_PINWEAVER
+#define CONFIG_SHA256
+#endif /* TEST_PINWEAVER */
 
 #ifdef TEST_RTC
 #define CONFIG_HOSTCMD_RTC

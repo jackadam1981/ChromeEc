@@ -217,7 +217,8 @@ static int charge_manager_is_seeded(void)
  */
 static int charge_manager_get_source_current(int port)
 {
-	ASSERT(is_pd_port(port));
+	if (!is_pd_port(port))
+		return 0;
 
 	switch (source_port_last_rp[port]) {
 	case TYPEC_RP_3A0:
@@ -370,15 +371,17 @@ static void charge_manager_fill_power_info(int port,
 		if (r->role == USB_PD_PORT_POWER_SINK_NOT_CHARGING)
 			r->meas.voltage_now = 5000;
 		else {
-#ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
+#if defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
 			r->meas.voltage_now = charger_get_vbus_voltage(port);
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT)
+			r->meas.voltage_now =
+				adc_read_channel(board_get_vbus_adc(port));
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
+			/* No VBUS ADC channel - voltage is unknown */
+			r->meas.voltage_now = 0;
 #else
-			if (ADC_VBUS >= 0)
-				r->meas.voltage_now =
-					adc_read_channel(ADC_VBUS);
-			else
-				/* No VBUS ADC channel - voltage is unknown */
-				r->meas.voltage_now = 0;
+			/* There is a single ADC that measures joint Vbus */
+			r->meas.voltage_now = adc_read_channel(ADC_VBUS);
 #endif
 		}
 	}
@@ -1077,6 +1080,9 @@ static int hc_pd_power_info(struct host_cmd_handler_args *args)
 	if (port == PD_POWER_CHARGING_PORT)
 		port = charge_port;
 
+	if (port >= CHARGE_PORT_COUNT)
+		return EC_RES_INVALID_PARAM;
+
 	charge_manager_fill_power_info(port, r);
 
 	args->response_size = sizeof(*r);
@@ -1086,6 +1092,19 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_POWER_INFO,
 		     hc_pd_power_info,
 		     EC_VER_MASK(0));
 #endif /* TEST_BUILD */
+
+static int hc_charge_port_count(struct host_cmd_handler_args *args)
+{
+	struct ec_response_charge_port_count *resp = args->response;
+
+	args->response_size = sizeof(*resp);
+	resp->port_count = CHARGE_PORT_COUNT;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CHARGE_PORT_COUNT,
+		     hc_charge_port_count,
+		     EC_VER_MASK(0));
 
 static int hc_charge_port_override(struct host_cmd_handler_args *args)
 {

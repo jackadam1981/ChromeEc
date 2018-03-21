@@ -17,9 +17,9 @@
 
 /* EC */
 #define CONFIG_ADC
-#define CONFIG_BOARD_VERSION
-#define CONFIG_BOARD_SPECIFIC_VERSION
+#define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CRC8
+#define CONFIG_CEC
 #define CONFIG_CROS_BOARD_INFO
 #define CONFIG_DEDICATED_RECOVERY_BUTTON
 #define CONFIG_EMULATED_SYSRQ
@@ -29,7 +29,6 @@
 #define CONFIG_DPTF
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
-#define CONFIG_SUPPRESS_HOST_COMMANDS
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #undef  CONFIG_LID_SWITCH
@@ -39,7 +38,6 @@
 #define CONFIG_CHIP_PANIC_BACKUP
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25X40
-#define CONFIG_UART_HOST 0
 #define CONFIG_WATCHDOG_HELP
 #define CONFIG_WIRELESS
 #define CONFIG_WIRELESS_SUSPEND \
@@ -47,11 +45,16 @@
 #define WIRELESS_GPIO_WLAN GPIO_WLAN_OFF_L
 #define WIRELESS_GPIO_WLAN_POWER GPIO_PP3300_DX_WLAN
 #define WIRELESS_GPIO_WWAN GPIO_PP3300_DX_LTE
+#define CEC_GPIO_OUT GPIO_CEC_OUT
+#define CEC_GPIO_IN  GPIO_CEC_IN
+#define CEC_GPIO_PULL_UP GPIO_CEC_PULL_UP
 #define CONFIG_FANS 1
 #define CONFIG_FAN_RPM_CUSTOM
 #define CONFIG_THROTTLE_AP
 #define CONFIG_CHIPSET_CAN_THROTTLE
 #define CONFIG_PWM
+#define CONFIG_SUPPRESSED_HOST_COMMANDS \
+	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_PD_GET_LOG_ENTRY
 
 /* EC console commands */
 #define CONFIG_CMD_BUTTON
@@ -59,18 +62,20 @@
 /* SOC */
 #define CONFIG_CHIPSET_SKYLAKE
 #define CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
+#define CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
 #define CONFIG_CHIPSET_RESET_HOOK
-#undef  CONFIG_PECI
-#define CONFIG_ESPI
-/* Eve and Poppy all have wires from GPIO to PCH but CONFIG_ESPI_VW_SIGNALS
- * is defined. So, those GPIOs are not used by EC. */
-#define CONFIG_ESPI_VW_SIGNALS
-#define CONFIG_LPC
+#define CONFIG_HOSTCMD_ESPI
+/*
+ * Eve and Poppy all have wires from GPIO to PCH but
+ * CONFIG_HOSTCMD_ESPI_VW_SIGNALS is defined. So, those GPIOs are not used by
+ * EC.
+ */
+#define CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
 
-#define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 50000
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 50000
 
 #define CONFIG_CMD_PD_CONTROL
 #define CONFIG_EXTPOWER_GPIO
@@ -91,7 +96,6 @@
 #undef  CONFIG_USB_CHARGER		/* dnojiri: verify */
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
-#define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DISCHARGE_TCPC
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -166,7 +170,13 @@
 #define CONFIG_RWSIG
 #define CONFIG_RWSIG_TYPE_RWSIG
 #define CONFIG_RSA
+#ifdef SECTION_IS_RO
+#define CONFIG_RSA_OPTIMIZED
+#endif
 #define CONFIG_SHA256
+#ifdef SECTION_IS_RO
+#define CONFIG_SHA256_UNROLLED
+#endif
 #define CONFIG_RSA_KEY_SIZE 3072
 #define CONFIG_RSA_EXPONENT_3
 
@@ -235,13 +245,12 @@ enum mft_channel {
 
 /* Define typical operating power. Since Fizz doesn't have a battery to charge,
  * we're not interested in any power lower than the AP power-on threshold. */
-#define PD_OPERATING_POWER_MW	CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
+#define PD_OPERATING_POWER_MW	CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
 #define PD_MAX_POWER_MW		100000
 #define PD_MAX_CURRENT_MA	5000
 #define PD_MAX_VOLTAGE_MV	20000
 
 /* Board specific handlers */
-int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
 int board_get_battery_soc(void);

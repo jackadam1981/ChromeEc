@@ -20,6 +20,8 @@ __entry_\()\name:
 	smw.adm $r15, [$sp], $r15, 0xb
 	/* r0-r5 are caller saved */
 	smw.adm $r0,  [$sp], $r5, 0
+	/* store link pointer register */
+	swi.gp  $lp, [ + ilp]
 	/* switch to system stack if we are called from process stack */
 	la $r3, stack_end
 	mov55 $fp, $sp
@@ -85,7 +87,7 @@ vector irq_15,   15	/* HW 15 */
 .global eflash_sig
 eflash_sig:
 .byte 0xA5, 0xA5, 0xA5, 0xA5, 0xA5, 0xA5
-#ifdef CONFIG_ESPI
+#ifdef CONFIG_HOSTCMD_ESPI
 .byte 0xA4 /* eSPI */
 #else
 .byte 0xA5 /* LPC */
@@ -116,6 +118,12 @@ reset:
 
 	/* Set system stack pointer. */
 	la $sp, stack_end
+
+	/*
+	 * move content of lp into r5 and then store the content
+	 * into variable "ec_reset_lp" later after memory initialization.
+	 */
+	mov55 $r5, $lp
 
 	/* map/enable the 16kB of DLM at 0x00080000 */
 	li   $r0, 0x00080005
@@ -160,6 +168,9 @@ data_loop:
 	lwi.bi $r3, [$r0], 4
 	swi.bi $r3, [$r1], 4
 	bne $r1, $r2, data_loop
+
+	/* store the content of r5 (lp after reset) into "ec_reset_lp" */
+	swi.gp  $r5, [ + ec_reset_lp]
 
 	/* we switch to our own exception vectors */
 	/* go back to it level 0 with HW interrupts globally disabled */

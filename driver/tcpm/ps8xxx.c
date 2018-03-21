@@ -92,6 +92,28 @@ int ps8xxx_tcpc_get_fw_version(int port, int *version)
 	return tcpc_read(port, FW_VER_REG, version);
 }
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+/*
+ * Read Vbus level directly instead of using the cached version because some
+ * TCPCs do not fire the Vbus level change interrupt correctly after resuming
+ * from low-power mode.
+ *
+ * TODO(b/77639399): Remove this method once PS8751 firmware has updated to
+ * support better handling of vbus detection
+ */
+int ps8xxx_tcpm_get_vbus_level(int port)
+{
+	int reg;
+
+	/* Read Power Status register */
+	if (tcpc_read(port, TCPC_REG_POWER_STATUS, &reg) == EC_SUCCESS)
+		return reg & TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+
+	/* If read failed, report that Vbus is off */
+	return 0;
+}
+#endif
+
 static int ps8xxx_tcpc_bist_mode_2(int port)
 {
 	int rv;
@@ -141,7 +163,11 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.release		= &ps8xxx_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	.get_vbus_level		= &tcpci_tcpm_get_vbus_level,
+/*
+ * TODO(b/77639399): Replace with tcpci_tcpm_get_vbus_level() after firmware
+ * upgrade.
+ */
+	.get_vbus_level		= &ps8xxx_tcpm_get_vbus_level,
 #endif
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
@@ -157,6 +183,10 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 #endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
+#endif
+#ifdef CONFIG_USBC_PPC
+	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
+	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 };

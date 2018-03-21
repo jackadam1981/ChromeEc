@@ -72,7 +72,7 @@ static struct first_response_pdu targ;
 static uint16_t protocol_version;
 static uint16_t header_type;
 static char *progname;
-static char *short_opts = "bd:efg:hjp:rstuw";
+static char *short_opts = "bd:efg:hjnp:rsS:tuw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"binvers",	1,   NULL, 'b'},
@@ -82,9 +82,11 @@ static const struct option long_opts[] = {
 	{"tp_debug",	1,   NULL, 'g'},
 	{"help",	0,   NULL, 'h'},
 	{"jump_to_rw",	0,   NULL, 'j'},
+	{"no_reset",	0,   NULL, 'n'},
 	{"tp_update",	1,   NULL, 'p'},
 	{"reboot",	0,   NULL, 'r'},
 	{"stay_in_ro",	0,   NULL, 's'},
+	{"serial",	1,   NULL, 'S'},
 	{"tp_info",	0,   NULL, 't'},
 	{"unlock_rollback",	0,   NULL, 'u'},
 	{"unlock_rw",	0,   NULL, 'w'},
@@ -119,6 +121,7 @@ static void usage(int errs)
 	       "  -p,--tp_update file      Update touchpad FW\n"
 	       "  -r,--reboot              Tell EC to reboot\n"
 	       "  -s,--stay_in_ro          Tell EC to stay in RO\n"
+	       "  -S,--serial              Device serial number\n"
 	       "  -t,--tp_info             Get touchpad information\n"
 	       "  -u,--unlock_rollback     Tell EC to unlock the rollback region\n"
 	       "  -w,--unlock_rw           Tell EC to unlock the RW region\n"
@@ -348,10 +351,53 @@ static int parse_vidpid(const char *input, uint16_t *vid_ptr, uint16_t *pid_ptr)
 	return 1;
 }
 
-
-static void usb_findit(uint16_t vid, uint16_t pid, struct usb_endpoint *uep)
+static libusb_device_handle *check_device(libusb_device *dev,
+	uint16_t vid, uint16_t pid, char *serialno)
 {
-	int iface_num, r;
+	struct libusb_device_descriptor desc;
+	libusb_device_handle *handle = NULL;
+	char sn[256];
+	int ret;
+	int match = 1;
+	int snvalid = 0;
+
+	ret = libusb_get_device_descriptor(dev, &desc);
+	if (ret < 0)
+		return NULL;
+
+	ret = libusb_open(dev, &handle);
+
+	if (ret != LIBUSB_SUCCESS)
+		return NULL;
+
+	if (desc.iSerialNumber) {
+		ret = libusb_get_string_descriptor_ascii(handle,
+			desc.iSerialNumber, (unsigned char *)sn, sizeof(sn));
+		if (ret > 0)
+			snvalid = 1;
+	}
+
+	if (vid != 0 && vid != desc.idVendor)
+		match = 0;
+	if (pid != 0 && pid != desc.idProduct)
+		match = 0;
+	if (serialno != NULL && (!snvalid || strstr(sn, serialno) == NULL))
+		match = 0;
+
+	if (match)
+		return handle;
+
+	libusb_close(handle);
+	return NULL;
+}
+
+static void usb_findit(uint16_t vid, uint16_t pid,
+		char *serialno, struct usb_endpoint *uep)
+{
+	int iface_num, r, i;
+	libusb_device **devs;
+	libusb_device_handle *devh = NULL;
+	ssize_t count;
 
 	memset(uep, 0, sizeof(*uep));
 
@@ -361,13 +407,26 @@ static void usb_findit(uint16_t vid, uint16_t pid, struct usb_endpoint *uep)
 		exit(update_error);
 	}
 
-	printf("open_device %04x:%04x\n", vid, pid);
-	/* NOTE: This doesn't handle multiple matches! */
-	uep->devh = libusb_open_device_with_vid_pid(NULL, vid, pid);
-	if (!uep->devh) {
+	count = libusb_get_device_list(NULL, &devs);
+	if (count < 0)
+		return;
+
+	for (i = 0; devs[i]; i++) {
+		devh = check_device(devs[i], vid, pid, serialno);
+		if (devh) {
+			printf("Found device.\n");
+			break;
+		}
+	}
+
+	libusb_free_device_list(devs, 1);
+
+	if (!devh) {
 		fprintf(stderr, "Can't find device\n");
 		exit(update_error);
 	}
+
+	uep->devh = devh;
 
 	iface_num = find_interface(uep);
 	if (iface_num < 0) {
@@ -909,11 +968,13 @@ int main(int argc, char *argv[])
 	uint8_t *data = 0;
 	size_t data_len = 0;
 	uint16_t vid = VID, pid = PID;
+	char *serialno = NULL;
 	int i;
 	size_t j;
 	int transferred_sections = 0;
 	int binary_vers = 0;
 	int show_fw_ver = 0;
+	int no_reset_request = 0;
 	int touchpad_update = 0;
 	int extra_command = -1;
 	uint8_t extra_command_data[50];
@@ -966,6 +1027,9 @@ int main(int argc, char *argv[])
 		case 'j':
 			extra_command = UPDATE_EXTRA_CMD_JUMP_TO_RW;
 			break;
+		case 'n':
+			no_reset_request = 1;
+			break;
 		case 'p':
 			touchpad_update = 1;
 
@@ -979,6 +1043,9 @@ int main(int argc, char *argv[])
 			break;
 		case 's':
 			extra_command = UPDATE_EXTRA_CMD_STAY_IN_RO;
+			break;
+		case 'S':
+			serialno = optarg;
 			break;
 		case 't':
 			extra_command = UPDATE_EXTRA_CMD_TOUCHPAD_INFO;
@@ -1034,7 +1101,7 @@ int main(int argc, char *argv[])
 			printf("Ignoring binary image %s\n", argv[optind]);
 	}
 
-	usb_findit(vid, pid, &td.uep);
+	usb_findit(vid, pid, serialno, &td.uep);
 
 	setup_connection(&td);
 
@@ -1057,7 +1124,7 @@ int main(int argc, char *argv[])
 							data, data_len);
 			free(data);
 
-			if (transferred_sections)
+			if (transferred_sections && !no_reset_request)
 				generate_reset_request(&td);
 		}
 	} else if (extra_command > -1) {

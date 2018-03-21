@@ -209,14 +209,6 @@ static int get_range(const struct motion_sensor_t *s)
 	return data->base.range;
 }
 
-static int set_resolution(const struct motion_sensor_t *s,
-				int res,
-				int rnd)
-{
-	/* Only one resolution, LSM6DS0_RESOLUTION, so nothing to do. */
-	return EC_SUCCESS;
-}
-
 static int get_resolution(const struct motion_sensor_t *s)
 {
 	return LSM6DS0_RESOLUTION;
@@ -363,7 +355,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	}
 
 	for (i = X; i <= Z; i++)
-		v[i] = ((int16_t)((raw[i * 2 + 1] << 8) | raw[i * 2]));
+		v[i] = (int16_t)((raw[i * 2 + 1] << 8) | raw[i * 2]);
 
 	rotate(v, *s->rot_standard_ref, v);
 
@@ -427,7 +419,6 @@ const struct accelgyro_drv lsm6ds0_drv = {
 	.read = read,
 	.set_range = set_range,
 	.get_range = get_range,
-	.set_resolution = set_resolution,
 	.get_resolution = get_resolution,
 	.set_data_rate = set_data_rate,
 	.get_data_rate = get_data_rate,

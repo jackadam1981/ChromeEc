@@ -6,25 +6,8 @@
 # on-board test binaries build
 #
 
-test-list-y=pingpong timer_calib timer_dos timer_jump mutex utils utils_str
+test-list-y ?= pingpong timer_calib timer_dos timer_jump mutex utils utils_str
 #disable: powerdemo
-
-test-list-$(BOARD_BDS)+=
-
-test-list-$(BOARD_HAMMER)+=entropy
-
-# Samus has board-specific chipset code, and the tests don't
-# compile with it. Disable them for now.
-test-list-$(BOARD_SAMUS)=
-
-# So does Cr50
-test-list-$(BOARD_CR50)=
-
-# For some tests, we are running out of RAM. Disable them for now.
-test-list-$(BOARD_GLADOS_PD)=
-test-list-$(BOARD_CHELL_PD)=
-test-list-$(BOARD_OAK_PD)=
-test-list-$(BOARD_SAMUS_PD)=
 
 # Emulator tests
 ifneq ($(TEST_LIST_HOST),)
@@ -39,6 +22,7 @@ test-list-host += charge_manager
 test-list-host += charge_manager_drp_charging
 test-list-host += charge_ramp
 test-list-host += console_edit
+test-list-host += crc32
 test-list-host += entropy
 test-list-host += extpwr_gpio
 test-list-host += fan
@@ -58,6 +42,7 @@ test-list-host += mutex
 test-list-host += nvmem
 test-list-host += nvmem_vars
 test-list-host += pingpong
+test-list-host += pinweaver
 test-list-host += power_button
 test-list-host += queue
 test-list-host += rma_auth
@@ -89,6 +74,7 @@ charge_manager-y=charge_manager.o
 charge_manager_drp_charging-y=charge_manager.o
 charge_ramp-y+=charge_ramp.o
 console_edit-y=console_edit.o
+crc32-y=crc32.o
 entropy-y=entropy.o
 extpwr_gpio-y=extpwr_gpio.o
 fan-y=fan.o
@@ -109,6 +95,7 @@ mutex-y=mutex.o
 nvmem-y=nvmem.o
 nvmem_vars-y=nvmem_vars.o
 pingpong-y=pingpong.o
+pinweaver-y=pinweaver.o
 power_button-y=power_button.o
 powerdemo-y=powerdemo.o
 queue-y=queue.o

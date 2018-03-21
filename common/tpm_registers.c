@@ -630,7 +630,8 @@ size_t tpm_get_burst_size(void)
 	 (code & TPM_CC_VENDOR_BIT_MASK))
 
 static void call_extension_command(struct tpm_cmd_header *tpmh,
-				   size_t *total_size)
+				   size_t *total_size,
+				   uint32_t flags)
 {
 	size_t command_size = be32toh(tpmh->size);
 	uint32_t rc;
@@ -642,20 +643,21 @@ static void call_extension_command(struct tpm_cmd_header *tpmh,
 
 	/* Verify there is room for at least the extension command header. */
 	if (command_size >= sizeof(struct tpm_cmd_header)) {
-		uint16_t subcommand_code;
+		struct vendor_cmd_params p = {
+			.code = be16toh(tpmh->subcommand_code),
+			/* The header takes room in the buffer. */
+			.buffer = tpmh + 1,
+			.in_size = command_size - sizeof(struct tpm_cmd_header),
+			.out_size = *total_size - sizeof(struct tpm_cmd_header),
+			.flags = flags
+		};
 
-		/* The header takes room in the buffer. */
-		*total_size -= sizeof(struct tpm_cmd_header);
+		rc = extension_route_command(&p);
 
-		subcommand_code = be16toh(tpmh->subcommand_code);
-		rc = tpm_extension_route_command(subcommand_code,
-						 tpmh + 1,
-						 command_size -
-						 sizeof(struct tpm_cmd_header),
-						 total_size);
 		/* Add the header size back. */
-		*total_size += sizeof(struct tpm_cmd_header);
+		*total_size = p.out_size + sizeof(struct tpm_cmd_header);
 		tpmh->size = htobe32(*total_size);
+
 		/* Flag errors from commands as vendor-specific */
 		if (rc)
 			rc |= VENDOR_RC_ERR;
@@ -695,7 +697,7 @@ enum alt_process_result {
  * The mutex ensures that only one alternative TPM command execution is active
  * at a time.
  */
-static struct alt_tpm_interface {
+static __preserved struct alt_tpm_interface {
 	struct tpm_cmd_header *alt_hdr;
 	size_t alt_buffer_size;
 	uint32_t process_result;
@@ -895,7 +897,7 @@ int tpm_sync_reset(int wipe_first)
 
 void tpm_task(void)
 {
-	uint32_t evt;
+	uint32_t evt = 0;
 
 	if (!chip_factory_mode()) {
 		/*
@@ -906,19 +908,27 @@ void tpm_task(void)
 		 */
 		while (!ap_is_on()) {
 			/*
-			 * The only event we should expect at this point would
-			 * be the reset request.
+			 * The only events we should expect at this point
+			 * would be the reset request or a command routed
+			 * through TPM task context to make use of the large
+			 * stack.
 			 */
 			evt = task_wait_event(-1);
-			if (evt & TPM_EVENT_RESET)
+			if (evt & (TPM_EVENT_RESET | TPM_EVENT_ALT_EXTENSION)) {
+				/*
+				 * No need to remember the reset request: tpm
+				 * reset will happen as soon as we break out
+				 * from this while loop,
+				 */
+				evt &= TPM_EVENT_ALT_EXTENSION;
 				break;
+			}
 
 			cprints(CC_TASK, "%s:%d unexpected event %x",
 				__func__, __LINE__, evt);
 		}
 	}
 
-	evt = 0;
 	tpm_reset_now(0);
 	while (1) {
 		uint8_t *response;
@@ -986,7 +996,9 @@ void tpm_task(void)
 #ifdef CONFIG_EXTENSION_COMMAND
 		if (IS_CUSTOM_CODE(command_code)) {
 			response_size = buffer_size;
-			call_extension_command(tpmh, &response_size);
+			call_extension_command(tpmh, &response_size,
+					       alt_if_command ?
+					       VENDOR_CMD_FROM_USB : 0);
 		} else
 #endif
 		{

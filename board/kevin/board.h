@@ -48,8 +48,7 @@
 #define CONFIG_RAM_SIZE (CONFIG_DATA_RAM_SIZE - 0x800)
 
 /* Optional features */
-#define CONFIG_BOARD_VERSION
-#define CONFIG_BOARD_SPECIFIC_VERSION
+#define CONFIG_BOARD_VERSION_CUSTOM
 #define CONFIG_FLASH_SIZE          0x00080000 /* 512KB spi flash */
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_HOSTCMD_SECTION_SORTED /* Host commands are sorted. */
@@ -102,7 +101,7 @@
 #define CONFIG_BARO_BMP280
 #endif
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO 128
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
 
 /* Sensors without hardware FIFO are in forced mode */
@@ -122,7 +121,6 @@
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
-#define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DISCHARGE_GPIO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_LOGGING
@@ -175,7 +173,6 @@
 #define NPCX_SHI_BYPASS_OVER_256B
 
 /* Optional for testing */
-#undef  CONFIG_PECI
 #undef  CONFIG_PSTORE
 
 /* Reduce code size */
@@ -187,6 +184,7 @@
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_BATTFAKE
+#undef CONFIG_CMD_CRASH
 #undef CONFIG_CMD_FLASH
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_HCDEBUG
@@ -194,6 +192,7 @@
 #undef CONFIG_CMD_MD
 #undef CONFIG_CMD_MMAPINFO
 #undef CONFIG_CMD_POWERINDEBUG
+#undef CONFIG_CMD_PWR_AVG
 #undef CONFIG_CMD_TIMERINFO
 #undef CONFIG_CONSOLE_CMDHELP
 #undef CONFIG_CONSOLE_HISTORY
@@ -201,11 +200,11 @@
 
 #undef CONFIG_CMD_ACCELSPOOF
 #undef CONFIG_CMD_FLASHINFO
+#undef CONFIG_CMD_I2C_XFER
 
 /* Gru is especially limited on code space */
 #ifdef BOARD_GRU
 #undef CONFIG_CMD_IDLE_STATS
-#undef CONFIG_CMD_I2C_XFER
 #undef CONFIG_USB_PD_LOGGING
 #undef CONFIG_CMD_SHMEM
 #undef CONFIG_CMD_USBMUX

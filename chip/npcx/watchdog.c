@@ -37,6 +37,8 @@ void watchdog_init_warning_timer(void)
 	NPCX_ITPRE(ITIM_WDG_NO)  = DIV_ROUND_NEAREST(1000*INT_32K_CLOCK,
 							 SECOND) - 1;
 
+	/* Event module disable */
+	CLEAR_BIT(NPCX_ITCTS(ITIM_WDG_NO), NPCX_ITCTS_ITEN);
 	/* ITIM count down : event expired*/
 	NPCX_ITCNT16(ITIM_WDG_NO) = CONFIG_AUX_TIMER_PERIOD_MS - 1;
 	/* Event module enable */
@@ -121,6 +123,10 @@ DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 int watchdog_init(void)
 {
 #if SUPPORT_WDG
+	/* Touch watchdog before init if it is already running */
+	if (IS_BIT_SET(NPCX_T0CSR, NPCX_T0CSR_WD_RUN))
+		NPCX_WDSDM = 0x5C;
+
 	/* Keep prescaler ratio timer0 clock to 1:1024 */
 	NPCX_TWCP = 0x0A;
 	/* Keep prescaler ratio watchdog clock to 1:1 */

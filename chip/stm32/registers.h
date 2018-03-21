@@ -368,6 +368,8 @@
 
 #else  /* CHIP_FAMILY_STM32H7 */
 
+#define STM32_GPV_BASE              0x51000000
+
 #define STM32_DBGMCU_BASE           0x5C001000
 
 #define STM32_BDMA_BASE             0x58025400
@@ -457,6 +459,7 @@
 #define STM32_USART_CR1_TXEIE		(1 << 7)
 #define STM32_USART_CR1_PS		(1 << 9)
 #define STM32_USART_CR1_PCE		(1 << 10)
+#define STM32_USART_CR1_M		(1 << 12)
 #define STM32_USART_CR1_OVER8		(1 << 15)
 #define STM32_USART_CR2(base)      STM32_USART_REG(base, 0x04)
 #define STM32_USART_CR2_SWAP		(1 << 15)
@@ -502,6 +505,7 @@
 #define STM32_USART_CR1_TXEIE		(1 << 7)
 #define STM32_USART_CR1_PS		(1 << 9)
 #define STM32_USART_CR1_PCE		(1 << 10)
+#define STM32_USART_CR1_M		(1 << 12)
 #define STM32_USART_CR1_UE		(1 << 13)
 #define STM32_USART_CR1_OVER8		(1 << 15) /* STM32L only */
 #define STM32_USART_CR2(base)      STM32_USART_REG(base, 0x10)
@@ -1386,6 +1390,21 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_CFGR_SWS_HSE                 (2 << 3)
 #define STM32_RCC_CFGR_SWS_PLL1                (3 << 3)
 #define STM32_RCC_CFGR_SWS_MASK                (3 << 3)
+#define STM32_RCC_D1CFGR_HPRE_DIV1             (0 << 0)
+#define STM32_RCC_D1CFGR_HPRE_DIV2             (8 << 0)
+#define STM32_RCC_D1CFGR_HPRE_DIV4             (9 << 0)
+#define STM32_RCC_D1CFGR_HPRE_DIV8            (10 << 0)
+#define STM32_RCC_D1CFGR_HPRE_DIV16           (11 << 0)
+#define STM32_RCC_D1CFGR_D1PPRE_DIV1           (0 << 4)
+#define STM32_RCC_D1CFGR_D1PPRE_DIV2           (4 << 4)
+#define STM32_RCC_D1CFGR_D1PPRE_DIV4           (5 << 4)
+#define STM32_RCC_D1CFGR_D1PPRE_DIV8           (6 << 4)
+#define STM32_RCC_D1CFGR_D1PPRE_DIV16          (7 << 4)
+#define STM32_RCC_D1CFGR_D1CPRE_DIV1           (0 << 8)
+#define STM32_RCC_D1CFGR_D1CPRE_DIV2           (8 << 8)
+#define STM32_RCC_D1CFGR_D1CPRE_DIV4           (9 << 8)
+#define STM32_RCC_D1CFGR_D1CPRE_DIV8          (10 << 8)
+#define STM32_RCC_D1CFGR_D1CPRE_DIV16         (11 << 8)
 #define STM32_RCC_PLLCKSEL_PLLSRC_HSI          (0 << 0)
 #define STM32_RCC_PLLCKSEL_PLLSRC_CSI          (1 << 0)
 #define STM32_RCC_PLLCKSEL_PLLSRC_HSE          (2 << 0)
@@ -1409,6 +1428,19 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_PLLDIV_DIVQ(q)               (((q) - 1) << 16)
 #define STM32_RCC_PLLDIV_DIVR(r)               (((r) - 1) << 24)
 #define STM32_RCC_PLLFRAC(n)                   ((n) << 3)
+#define STM32_RCC_D2CCIP1R_SPI123SEL_PLL1Q     (0 << 12)
+#define STM32_RCC_D2CCIP1R_SPI123SEL_PLL2P     (1 << 12)
+#define STM32_RCC_D2CCIP1R_SPI123SEL_PLL3P     (2 << 12)
+#define STM32_RCC_D2CCIP1R_SPI123SEL_I2SCKIN   (3 << 12)
+#define STM32_RCC_D2CCIP1R_SPI123SEL_PERCK     (4 << 12)
+#define STM32_RCC_D2CCIP1R_SPI123SEL_MASK      (7 << 12)
+#define STM32_RCC_D2CCIP1R_SPI45SEL_APB        (0 << 16)
+#define STM32_RCC_D2CCIP1R_SPI45SEL_PLL2Q      (1 << 16)
+#define STM32_RCC_D2CCIP1R_SPI45SEL_PLL3Q      (2 << 16)
+#define STM32_RCC_D2CCIP1R_SPI45SEL_HSI        (3 << 16)
+#define STM32_RCC_D2CCIP1R_SPI45SEL_CSI        (4 << 16)
+#define STM32_RCC_D2CCIP1R_SPI45SEL_HSE        (5 << 16)
+#define STM32_RCC_D2CCIP1R_SPI45SEL_MASK       (7 << 16)
 #define STM32_RCC_D2CCIP2_USART234578SEL_PCLK  (0 << 0)
 #define STM32_RCC_D2CCIP2_USART234578SEL_PLL2Q (1 << 0)
 #define STM32_RCC_D2CCIP2_USART234578SEL_PLL3Q (2 << 0)
@@ -2057,6 +2089,7 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 
 #define STM32_ADC_CR               REG32(STM32_ADC1_BASE + 0x08)
 #define STM32_ADC_CR_ADEN          (1 << 0)
+#define STM32_ADC_CR_ADDIS         (1 << 1)
 #define STM32_ADC_CR_ADCAL         (1 << 31)
 #define STM32_ADC_CFGR1            REG32(STM32_ADC1_BASE + 0x0C)
 /* Analog watchdog channel selection */
@@ -2946,6 +2979,14 @@ enum dmamux1_request {
 #define STM32_RNG_SR                REG32(STM32_RNG_BASE + 0x4)
 #define STM32_RNG_SR_DRDY           (1<<0)
 #define STM32_RNG_DR                REG32(STM32_RNG_BASE + 0x8)
+
+/* --- AXI interconnect --- */
+
+/* STM32H7: AXI_TARGx_FN_MOD exists for masters x = 1, 2 and 7 */
+#define STM32_AXI_TARG_FN_MOD(x)    REG32(STM32_GPV_BASE + 0x1108 + \
+					  0x1000 * (x))
+#define  WRITE_ISS_OVERRIDE         (1 << 1)
+#define  READ_ISS_OVERRIDE          (1 << 0)
 
 /* --- MISC --- */
 #define STM32_UNIQUE_ID_ADDRESS     REG32_ADDR(STM32_UNIQUE_ID_BASE)

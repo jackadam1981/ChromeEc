@@ -9,6 +9,7 @@
 #include "adc_chip.h"
 #include "bd99992gw.h"
 #include "board_config.h"
+#include "battery_smart.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
@@ -118,7 +119,7 @@ const struct power_signal_info power_signal_list[] = {
 		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
 		"SLP_S0_DEASSERTED"},
 #endif
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	{VW_SLP_S3_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
 	{VW_SLP_S4_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
 #else
@@ -166,8 +167,18 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{NPCX_I2C_PORT0_0, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{NPCX_I2C_PORT0_1, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{
+		.i2c_host_port = NPCX_I2C_PORT0_0,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
+		.drv = &ps8xxx_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
+	{
+		.i2c_host_port = NPCX_I2C_PORT0_1,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
+		.drv = &ps8xxx_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
@@ -312,11 +323,11 @@ static void board_pmic_disable_slp_s0_vr_decay(void)
 	/*
 	 * VCCIOCNT:
 	 * Bit 6    (0)   - Disable decay of VCCIO on SLP_S0# assertion
-	 * Bits 5:4 (00)  - Nominal output voltage: 0.975V
+	 * Bits 5:4 (11)  - Nominal output voltage: 0.850V
 	 * Bits 3:2 (10)  - VR set to AUTO on SLP_S0# de-assertion
 	 * Bits 1:0 (10)  - VR set to AUTO operating mode
 	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0xa);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x3a);
 
 	/*
 	 * V18ACNT:
@@ -351,11 +362,11 @@ static void board_pmic_enable_slp_s0_vr_decay(void)
 	/*
 	 * VCCIOCNT:
 	 * Bit 6    (1)   - Enable decay of VCCIO on SLP_S0# assertion
-	 * Bits 5:4 (00)  - Nominal output voltage: 0.975V
+	 * Bits 5:4 (11)  - Nominal output voltage: 0.850V
 	 * Bits 3:2 (10)  - VR set to AUTO on SLP_S0# de-assertion
 	 * Bits 1:0 (10)  - VR set to AUTO operating mode
 	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x4a);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x7a);
 
 	/*
 	 * V18ACNT:
@@ -408,7 +419,7 @@ static void board_pmic_init(void)
 	/* VRMODECTRL - disable low-power mode for all rails */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3b, 0x1f);
 }
-DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
+DECLARE_DEFERRED(board_pmic_init);
 
 /* Initialize board. */
 static void board_init(void)
@@ -423,9 +434,6 @@ static void board_init(void)
 
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
-
-	/* Enable sensors power supply */
-	gpio_set_level(GPIO_PP1800_DX_SENSOR, 1);
 
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
@@ -446,6 +454,9 @@ static void board_init(void)
 
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
+
+	/* Initialize PMIC */
+	hook_call_deferred(&board_pmic_init_data, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -572,6 +583,34 @@ void board_hibernate(void)
 		;
 }
 
+int board_get_version(void)
+{
+	static int ver = -1;
+	uint8_t id3;
+
+	if (ver != -1)
+		return ver;
+
+	ver = 0;
+
+	/* First 2 strappings are binary. */
+	if (gpio_get_level(GPIO_BOARD_VERSION1))
+		ver |= 0x01;
+	if (gpio_get_level(GPIO_BOARD_VERSION2))
+		ver |= 0x02;
+
+	/*
+	 * The 3rd strapping pin is tristate.
+	 * id3 = 2 if Hi-Z, id3 = 1 if high, and id3 = 0 if low.
+	 */
+	id3 = gpio_get_ternary(GPIO_BOARD_VERSION3);
+	ver |= id3 * 0x04;
+
+	CPRINTS("Board ID = %d", ver);
+
+	return ver;
+}
+
 /* Lid Sensor mutex */
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
@@ -579,7 +618,7 @@ static struct mutex g_base_mutex;
 static struct bmi160_drv_data_t g_bmi160_data;
 
 /* BMA255 private data */
-static struct bma2x2_accel_data g_bma255_data;
+static struct accelgyro_saved_data_t g_bma255_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
@@ -611,25 +650,13 @@ struct motion_sensor_t motion_sensors[] = {
 	 .max_frequency = BMA255_ACCEL_MAX_FREQ,
 	 .default_range = 2, /* g, to support tablet mode */
 	 .config = {
-		/* AP: by default use EC settings */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
 		},
 		/* Sensor on in S3 */
 		[SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S5 */
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
 		},
 	 },
 	},
@@ -649,11 +676,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
 	 .default_range = 2, /* g, to support tablet mode  */
 	 .config = {
-		/* AP: by default use EC settings */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
@@ -662,12 +684,6 @@ struct motion_sensor_t motion_sensors[] = {
 		/* Sensor on in S3 */
 		[SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S5 */
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0
 		},
 	 },
 	},
@@ -686,28 +702,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
-	 .config = {
-		/* AP: by default shutdown all sensors */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		/* EC does not need in S0 */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S3/S5 */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S3/S5 */
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-	 },
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -717,7 +711,8 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 void lid_angle_peripheral_enable(int enable)
 {
 	/* If the lid is in 360 position, ignore the lid angle,
-	 * which might be faulty. Disable keyboard and touchpad. */
+	 * which might be faulty. Disable keyboard.
+	 */
 	if (tablet_get_mode() || chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		enable = 0;
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
@@ -752,6 +747,8 @@ static void board_chipset_startup(void)
 	gpio_set_level(GPIO_USB1_ENABLE, 1);
 
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
+
+	gpio_set_level(GPIO_PP1800_DX_SENSOR, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -763,6 +760,8 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_USB1_ENABLE, 0);
 
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
+
+	gpio_set_level(GPIO_PP1800_DX_SENSOR, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -776,4 +775,38 @@ int board_has_working_reset_flags(void)
 
 	/* All other board versions should have working reset flags */
 	return 1;
+}
+
+/*
+ * I2C callbacks to ensure bus free time for battery I2C transactions is at
+ * least 5ms.
+ */
+#define BATTERY_FREE_MIN_DELTA_US		(5 * MSEC)
+static timestamp_t battery_last_i2c_time;
+
+static int is_battery_i2c(int port, int slave_addr)
+{
+	return (port == I2C_PORT_BATTERY) && (slave_addr == BATTERY_ADDR);
+}
+
+void i2c_start_xfer_notify(int port, int slave_addr)
+{
+	unsigned int time_delta_us;
+
+	if (!is_battery_i2c(port, slave_addr))
+		return;
+
+	time_delta_us = time_since32(battery_last_i2c_time);
+	if (time_delta_us >= BATTERY_FREE_MIN_DELTA_US)
+		return;
+
+	usleep(BATTERY_FREE_MIN_DELTA_US - time_delta_us);
+}
+
+void i2c_end_xfer_notify(int port, int slave_addr)
+{
+	if (!is_battery_i2c(port, slave_addr))
+		return;
+
+	battery_last_i2c_time = get_time();
 }

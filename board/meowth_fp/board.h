@@ -8,6 +8,12 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
+/*
+ * TODO(b/73337313) remove this config,
+ * once the write-protection scheme is decided and validated.
+ */
+#define CONFIG_SYSTEM_UNLOCKED
+
 /* the UART console is on USART1 */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
@@ -21,6 +27,7 @@
 #define CONFIG_DMA
 #define CONFIG_FPU
 #undef CONFIG_HIBERNATE
+#define CONFIG_HOST_COMMAND_STATUS
 #undef CONFIG_I2C
 #undef CONFIG_LID_SWITCH
 #define CONFIG_MKBP_EVENT
@@ -29,9 +36,11 @@
 #define CONFIG_SHA256_UNROLLED
 #define CONFIG_SPI
 #define CONFIG_STM_HWTIMER32
+#define CONFIG_SUPPRESSED_HOST_COMMANDS \
+	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_PD_GET_LOG_ENTRY
 #undef CONFIG_TASK_PROFILING
 #define CONFIG_WATCHDOG_HELP
-#define CONFIG_WP_ALWAYS
+#define CONFIG_WP_ACTIVE_HIGH
 
 /* SPI configuration for the fingerprint sensor */
 #define CONFIG_SPI_MASTER
@@ -45,6 +54,10 @@
  * (shared_mem_init done too late).
  */
 #define CONFIG_MALLOC
+/* Special memory regions to store large arrays */
+#define FP_FRAME_SECTION    __SECTION(ahb4)
+#define FP_TEMPLATE_SECTION __SECTION(ahb)
+
 /* we are doing slow compute */
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 10000

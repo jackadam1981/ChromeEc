@@ -525,16 +525,27 @@ int command_get_commands(int fd, struct stm32_def *chip)
 		return 0;
 	}
 
+	fprintf(stderr, "Cannot get bootloader command list.\n");
 	return -1;
 }
 
+static int use_progressbar;
 static int windex;
 static const char wheel[] = {'|', '/', '-', '\\' };
 static void draw_spinner(uint32_t remaining, uint32_t size)
 {
 	int percent = (size - remaining)*100/size;
-	printf("\r%c%3d%%", wheel[windex++], percent);
-	windex %= sizeof(wheel);
+	if (use_progressbar) {
+		int dots = percent / 4;
+
+		while (dots > windex) {
+			putchar('#');
+			windex++;
+		}
+	} else {
+		printf("\r%c%3d%%", wheel[windex++], percent);
+		windex %= sizeof(wheel);
+	}
 }
 
 int command_read_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
@@ -568,7 +579,8 @@ int command_read_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 
 int command_write_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 {
-	int res;
+	int res = 0;
+	int i;
 	uint32_t remaining = size;
 	uint32_t addr_be;
 	uint32_t cnt;
@@ -580,17 +592,22 @@ int command_write_mem(int fd, uint32_t address, uint32_t size, uint8_t *buffer)
 
 	while (remaining) {
 		cnt = (remaining > PAGE_SIZE) ? PAGE_SIZE : remaining;
-		addr_be = htonl(address);
-		outbuf[0] = cnt - 1;
-		loads[1].size = cnt + 1;
-		memcpy(outbuf + 1, buffer, cnt);
+		/* skip empty blocks to save time */
+		for (i = 0; i < cnt && buffer[i] == 0xff; i++)
+			;
+		if (i != cnt) {
+			addr_be = htonl(address);
+			outbuf[0] = cnt - 1;
+			loads[1].size = cnt + 1;
+			memcpy(outbuf + 1, buffer, cnt);
 
-		draw_spinner(remaining, size);
-		fflush(stdout);
-		res = send_command(fd, CMD_WRITEMEM, loads, 2, NULL, 0, 1);
-		if (res < 0)
-			return -EIO;
-
+			draw_spinner(remaining, size);
+			fflush(stdout);
+			res = send_command(fd, CMD_WRITEMEM, loads, 2,
+					   NULL, 0, 1);
+			if (res < 0)
+				return -EIO;
+		}
 		buffer += cnt;
 		address += cnt;
 		remaining -= cnt;
@@ -891,6 +908,7 @@ static const struct option longopts[] = {
 	{"spi", 1, 0, 's'},
 	{"length", 1, 0, 'n'},
 	{"offset", 1, 0, 'o'},
+	{"progressbar", 0, 0, 'p'},
 	{NULL, 0, 0, 0}
 };
 
@@ -899,7 +917,7 @@ void display_usage(char *program)
 	fprintf(stderr,
 		"Usage: %s [-a <i2c_adapter> [-l address ]] | [-s]"
 		" [-d <tty>] [-b <baudrate>]] [-u] [-e] [-U]"
-		" [-r <file>] [-w <file>] [-o offset] [-l length] [-g]\n",
+		" [-r <file>] [-w <file>] [-o offset] [-l length] [-g] [-p]\n",
 		program);
 	fprintf(stderr, "Can access the controller via serial port or i2c\n");
 	fprintf(stderr, "Serial port mode:\n");
@@ -921,6 +939,8 @@ void display_usage(char *program)
 	fprintf(stderr, "--o[ffset] : offset to read/write/start from/to\n");
 	fprintf(stderr, "--n[length] : amount to read/write\n");
 	fprintf(stderr, "--g[o] : jump to execute flash entrypoint\n");
+	fprintf(stderr, "--p[rogressbar] : use a progress bar instead of "
+			"the spinner\n");
 
 	exit(2);
 }
@@ -952,7 +972,7 @@ int parse_parameters(int argc, char **argv)
 	int opt, idx;
 	int flags = 0;
 
-	while ((opt = getopt_long(argc, argv, "a:l:b:d:eghn:o:r:s:w:uU?",
+	while ((opt = getopt_long(argc, argv, "a:l:b:d:eghn:o:pr:s:w:uU?",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'a':
@@ -984,6 +1004,9 @@ int parse_parameters(int argc, char **argv)
 			break;
 		case 'o':
 			offset = strtol(optarg, NULL, 0);
+			break;
+		case 'p':
+			use_progressbar = 1;
 			break;
 		case 'r':
 			input_filename = optarg;
@@ -1038,7 +1061,8 @@ int main(int argc, char **argv)
 	if (!chip)
 		goto terminate;
 
-	command_get_commands(ser, chip);
+	if (command_get_commands(ser, chip) < 0)
+		goto terminate;
 
 	if (flags & FLAG_READ_UNPROTECT)
 		command_read_unprotect(ser);

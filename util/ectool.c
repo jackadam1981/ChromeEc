@@ -21,6 +21,7 @@
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
 #include "ec_flash.h"
+#include "ec_version.h"
 #include "ectool.h"
 #include "lightbar.h"
 #include "lock/gec_lock.h"
@@ -75,6 +76,8 @@ const char help_str[] =
 	"      Prints supported version mask for a command number\n"
 	"  console\n"
 	"      Prints the last output to the EC debug console\n"
+	"  cec\n"
+	"      Read or write CEC messages and settings\n"
 	"  echash [CMDS]\n"
 	"      Various EC hash commands\n"
 	"  eventclear <mask>\n"
@@ -123,6 +126,8 @@ const char help_str[] =
 	"      Prints information about the Fingerprint sensor\n"
 	"  fpmode [capture|deepsleep|fingerdown|fingerup]\n"
 	"      Configure/Read the fingerprint sensor current mode\n"
+	"  fptemplate [<infile>|<index 0..2>]\n"
+	"      Add a template if <infile> is provided, else dump it\n"
 	"  forcelidopen <enable>\n"
 	"      Forces the lid switch to open position\n"
 	"  gpioget <GPIO name>\n"
@@ -153,6 +158,8 @@ const char help_str[] =
 	"      Get info about USB type-C accessory attached to port\n"
 	"  inventory\n"
 	"      Return the list of supported features\n"
+	"  kbinfo\n"
+	"      Dump keyboard matrix dimensions\n"
 	"  keyscan <beat_us> <filename>\n"
 	"      Test low-level key scanning\n"
 	"  led <name> <query | auto | off | <color> | <color>=<value>...>\n"
@@ -207,8 +214,8 @@ const char help_str[] =
 	"      Set 16 bit duty cycle of given PWM\n"
 	"  readtest <patternoffset> <size>\n"
 	"      Reads a pattern from the EC via LPC\n"
-	"  reboot_ec <RO|RW|cold|hibernate|disable-jump> "
-			"[at-shutdown|switch-slot]\n"
+	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump>"
+			" [at-shutdown|switch-slot]\n"
 	"      Reboot EC to RO or RW\n"
 	"  rtcget\n"
 	"      Print real-time clock\n"
@@ -530,14 +537,20 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_HANG_DETECT] = "Host hang detection",
 	[EC_FEATURE_PMU] = "Power Management",
 	[EC_FEATURE_SUB_MCU] = "Control downstream MCU",
-	[EC_FEATURE_USB_PD] = "USB Cros Power Delievery",
+	[EC_FEATURE_USB_PD] = "USB Cros Power Delivery",
 	[EC_FEATURE_USB_MUX] = "USB Multiplexer",
 	[EC_FEATURE_MOTION_SENSE_FIFO] = "FIFO for Motion Sensors events",
 	[EC_FEATURE_VSTORE] = "Temporary secure vstore",
 	[EC_FEATURE_USBC_SS_MUX_VIRTUAL] = "Host-controlled USB-C SS mux",
 	[EC_FEATURE_RTC] = "Real-time clock",
+	[EC_FEATURE_FINGERPRINT] = "Fingerprint",
 	[EC_FEATURE_TOUCHPAD] = "Touchpad",
 	[EC_FEATURE_RWSIG] = "RWSIG task",
+	[EC_FEATURE_DEVICE_EVENT] = "Device events reporting",
+	[EC_FEATURE_UNIFIED_WAKE_MASKS] = "Unified wake masks for LPC/eSPI",
+	[EC_FEATURE_HOST_EVENT64] = "64-bit host events",
+	[EC_FEATURE_EXEC_IN_RAM] = "Execute code in RAM",
+	[EC_FEATURE_CEC] = "Consumer Electronics Control",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -554,6 +567,7 @@ int cmd_inventory(int argc, char *argv[])
 		for (j = 0; j < 32; j++, idx++) {
 			if (r.flags[i] & (1 << j)) {
 				if (idx >= ARRAY_SIZE(ec_feature_names) ||
+				    !ec_feature_names[idx] ||
 				    strlen(ec_feature_names[idx]) == 0)
 					printf("%-4d: Unknown feature\n", idx);
 				else
@@ -608,15 +622,16 @@ int cmd_version(int argc, char *argv[])
 	rv = ec_command(EC_CMD_GET_VERSION, 0, NULL, 0, &r, sizeof(r));
 	if (rv < 0) {
 		fprintf(stderr, "ERROR: EC_CMD_GET_VERSION failed: %d\n", rv);
-		return rv;
+		goto exit;
 	}
 	rv = ec_command(EC_CMD_GET_BUILD_INFO, 0,
 			NULL, 0, ec_inbuf, ec_max_insize);
 	if (rv < 0) {
 		fprintf(stderr, "ERROR: EC_CMD_GET_BUILD_INFO failed: %d\n",
 				rv);
-		return rv;
+		goto exit;
 	}
+	rv = 0;
 
 	/* Ensure versions are null-terminated before we print them */
 	r.version_string_ro[sizeof(r.version_string_ro) - 1] = '\0';
@@ -630,8 +645,10 @@ int cmd_version(int argc, char *argv[])
 	       (r.current_image < ARRAY_SIZE(image_names) ?
 		image_names[r.current_image] : "?"));
 	printf("Build info:    %s\n", build_string);
+exit:
+	printf("Tool version:  %s %s %s\n", CROS_ECTOOL_VERSION, DATE, BUILDER);
 
-	return 0;
+	return rv;
 }
 
 
@@ -732,6 +749,8 @@ int cmd_reboot_ec(int argc, char *argv[])
 		p.cmd = EC_REBOOT_DISABLE_JUMP;
 	else if (!strcmp(argv[1], "hibernate"))
 		p.cmd = EC_REBOOT_HIBERNATE;
+	else if (!strcmp(argv[1], "hibernate-clear-ap-off"))
+		p.cmd = EC_REBOOT_HIBERNATE_CLEAR_AP_OFF;
 	else {
 		fprintf(stderr, "Unknown command: %s\n", argv[1]);
 		return -1;
@@ -1083,32 +1102,52 @@ int cmd_rwsig_action(int argc, char *argv[])
 	return ec_command(EC_CMD_RWSIG_ACTION, 0, &req, sizeof(req), NULL, 0);
 }
 
-static void *fp_download_frame(struct ec_response_fp_info *info)
+#define FP_FRAME_INDEX_SIMPLE_IMAGE -1
+
+/*
+ * Download a frame buffer from the FPMCU.
+ *
+ * Might be either the finger image or a finger template depending on 'index'.
+ *
+ * @param info a pointer to store the struct ec_response_fp_info retrieved by
+ * this command.
+ * @param index the specific frame to retrieve, might be:
+ *  -1 (aka FP_FRAME_INDEX_SIMPLE_IMAGE) for the a single grayscale image.
+ *   0  (aka FP_FRAME_INDEX_RAW_IMAGE) for the full vendor raw finger image.
+ *   1..n for a finger template.
+ *
+ * @returns a pointer to the buffer allocated to contain the frame or NULL
+ * if case of error. The caller must call free() once it no longer needs the
+ * buffer.
+ */
+static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 {
 	struct ec_params_fp_frame p;
 	int rv = 0;
 	size_t stride, size;
 	void *buffer;
 	uint8_t *ptr;
+	int cmdver = ec_cmd_version_supported(EC_CMD_FP_INFO, 1) ? 1 : 0;
+	int rsize = cmdver == 1 ? sizeof(*info)
+				: sizeof(struct ec_response_fp_info_v0);
 
-	rv = ec_command(EC_CMD_FP_INFO, 0, NULL, 0, info, sizeof(*info));
+	/* templates not supported in command v0 */
+	if (index > 0 && cmdver == 0)
+		return NULL;
+
+	rv = ec_command(EC_CMD_FP_INFO, cmdver, NULL, 0, info, rsize);
 	if (rv < 0)
 		return NULL;
 
-	stride = (size_t)info->width * info->bpp/8;
-	if (stride > ec_max_insize) {
-		fprintf(stderr, "Not implemented for line size %zu B "
-			"(%u pixels) > EC transfer size %d\n",
-			stride, info->width, ec_max_insize);
-		return NULL;
-	}
-	if (info->bpp != 8) {
-		fprintf(stderr, "Not implemented for BPP = %d != 8\n",
-			info->bpp);
-		return NULL;
+	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
+		size = (size_t)info->width * info->bpp/8 * info->height;
+		index = FP_FRAME_INDEX_RAW_IMAGE;
+	} else if (index == FP_FRAME_INDEX_RAW_IMAGE) {
+		size = info->frame_size;
+	} else {
+		size = info->template_size;
 	}
 
-	size = stride * info->height;
 	buffer = malloc(size);
 	if (!buffer) {
 		fprintf(stderr, "Cannot allocate memory for the image\n");
@@ -1116,9 +1155,10 @@ static void *fp_download_frame(struct ec_response_fp_info *info)
 	}
 
 	ptr = buffer;
-	p.offset = 0;
-	p.size = stride;
+	p.offset = index << FP_FRAME_INDEX_SHIFT;
 	while (size) {
+		stride = MIN(ec_max_insize, size);
+		p.size = stride;
 		rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p),
 				ptr, stride);
 		if (rv < 0) {
@@ -1131,93 +1171,6 @@ static void *fp_download_frame(struct ec_response_fp_info *info)
 	}
 
 	return buffer;
-}
-
-static int fp_pattern_frame(int capt_type, const char *title, int inv)
-{
-	struct ec_response_fp_info info;
-	struct ec_params_fp_mode p;
-	struct ec_response_fp_mode r;
-	void *pattern;
-	uint8_t *ptr;
-	int rv;
-	int bad = 0;
-	int64_t cnt = 0, lo_sum = 0, hi_sum = 0;
-	int64_t lo_sum_squares = 0, hi_sum_squares = 0;
-	int x, y;
-
-	p.mode = FP_MODE_CAPTURE | (capt_type << FP_MODE_CAPTURE_TYPE_SHIFT);
-	rv = ec_command(EC_CMD_FP_MODE, 0, &p, sizeof(p), &r, sizeof(r));
-	if (rv < 0)
-		return -1;
-	/* ensure the capture has happened without using event support */
-	usleep(200000);
-	pattern = fp_download_frame(&info);
-	if (!pattern)
-		return -1;
-
-	ptr = pattern;
-	for (y = 0; y < info.height; y++)
-		for (x = 0; x < info.width; x++, ptr++) {
-			uint8_t v = *ptr;
-			int hi = !!(v & 128);
-
-			/*
-			 * Verify whether the captured image matches the expected
-			 * checkerboard pattern.
-			 */
-			if ((hi ^ inv) == ((x & 1) ^ (y & 1))) {
-				bad++;
-			} else {
-				/*
-				 * For all black pixels and all white pixels of
-				 * the checkerboard pattern, we will compute
-				 * their average and their variance in order to
-				 * have quality metrics later.
-				 * Do the sum and the sum of squares for each
-				 * category here, we will finalize the
-				 * computations outside of the loop.
-				 */
-				cnt++;
-				if (hi) {
-					hi_sum += v;
-					hi_sum_squares += v * v;
-				} else {
-					lo_sum += v;
-					lo_sum_squares += v * v;
-				}
-			}
-		}
-	printf("%s: bad %d\n", title, bad);
-	/*
-	 * For each category of pixels: black aka 'lo' and white aka 'hi',
-	 * the variance is: Avg[v^2] - Avg[v]^2
-	 * which is equivalent to  Sum(v^2) / cnt - Sum(v) * Sum(v) / cnt / cnt
-	 * where v is the pixel grayscale value.
-	 */
-	if (cnt)
-		printf("%s: distribution average %" PRId64 "/%" PRId64
-		       " variance %" PRId64 "/%" PRId64 "\n",
-		       title, lo_sum / cnt, hi_sum / cnt,
-		       (lo_sum_squares / cnt - lo_sum * lo_sum / cnt / cnt),
-		       (hi_sum_squares / cnt - hi_sum * hi_sum / cnt / cnt));
-	free(pattern);
-	return bad;
-}
-
-int cmd_fp_check_pixels(int argc, char *argv[])
-{
-	int bad0, bad1;
-
-	bad0 = fp_pattern_frame(FP_CAPTURE_PATTERN0, "Checkerboard", 0);
-	bad1 = fp_pattern_frame(FP_CAPTURE_PATTERN1, "Inv. Checkerboard", 1);
-	if (bad0 < 0 || bad1 < 0) {
-		fprintf(stderr, "Failed to acquire FP patterns\n");
-		return -1;
-	}
-	printf("Defects: dead %d (pattern0 %d pattern1 %d)\n",
-	       bad0 + bad1, bad0, bad1);
-	return 0;
 }
 
 int cmd_fp_mode(int argc, char *argv[])
@@ -1238,6 +1191,12 @@ int cmd_fp_mode(int argc, char *argv[])
 			mode |= FP_MODE_FINGER_DOWN;
 		else if (!strncmp(argv[i], "fingerup", 8))
 			mode |= FP_MODE_FINGER_UP;
+		else if (!strncmp(argv[i], "enroll", 6))
+			mode |= FP_MODE_ENROLL_IMAGE | FP_MODE_ENROLL_SESSION;
+		else if (!strncmp(argv[i], "match", 5))
+			mode |= FP_MODE_MATCH;
+		else if (!strncmp(argv[i], "reset", 5))
+			mode = 0;
 		else if (!strncmp(argv[i], "capture", 7))
 			mode |= FP_MODE_CAPTURE;
 		/* capture types */
@@ -1247,6 +1206,10 @@ int cmd_fp_mode(int argc, char *argv[])
 			capture_type = FP_CAPTURE_PATTERN0;
 		else if (!strncmp(argv[i], "pattern1", 8))
 			capture_type = FP_CAPTURE_PATTERN1;
+		else if (!strncmp(argv[i], "qual", 4))
+			capture_type = FP_CAPTURE_QUALITY_TEST;
+		else if (!strncmp(argv[i], "test_reset", 10))
+			capture_type = FP_CAPTURE_RESET_TEST;
 	}
 	if (mode & FP_MODE_CAPTURE)
 		mode |= capture_type << FP_MODE_CAPTURE_TYPE_SHIFT;
@@ -1263,6 +1226,11 @@ int cmd_fp_mode(int argc, char *argv[])
 		printf("finger-down ");
 	if (r.mode & FP_MODE_FINGER_UP)
 		printf("finger-up ");
+	if (r.mode & FP_MODE_ENROLL_SESSION)
+		printf("enroll%s ",
+			r.mode & FP_MODE_ENROLL_IMAGE ? "+image" : "");
+	if (r.mode & FP_MODE_MATCH)
+		printf("match ");
 	if (r.mode & FP_MODE_CAPTURE)
 		printf("capture ");
 	printf("\n");
@@ -1273,8 +1241,11 @@ int cmd_fp_info(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
 	int rv;
+	int cmdver = ec_cmd_version_supported(EC_CMD_FP_INFO, 1) ? 1 : 0;
+	int rsize = cmdver == 1 ? sizeof(r)
+				: sizeof(struct ec_response_fp_info_v0);
 
-	rv = ec_command(EC_CMD_FP_INFO, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_command(EC_CMD_FP_INFO, cmdver, NULL, 0, &r, rsize);
 	if (rv < 0)
 		return rv;
 
@@ -1287,6 +1258,11 @@ int cmd_fp_info(int argc, char *argv[])
 	       r.errors & FP_ERROR_BAD_HWID ? "BAD_HWID " : "",
 	       r.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "",
 	       FP_ERROR_DEAD_PIXELS(r.errors));
+	if (cmdver == 1) {
+		printf("Templates: size %d count %d/%d dirty bitmap %x\n",
+		       r.template_size, r.template_valid, r.template_max,
+		       r.template_dirty);
+	}
 
 	return 0;
 }
@@ -1294,13 +1270,20 @@ int cmd_fp_info(int argc, char *argv[])
 int cmd_fp_frame(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
-	void *buffer = fp_download_frame(&r);
+	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
+		FP_FRAME_INDEX_RAW_IMAGE : FP_FRAME_INDEX_SIMPLE_IMAGE;
+	void *buffer = fp_download_frame(&r, idx);
 	uint8_t *ptr = buffer;
 	int x, y;
 
 	if (!buffer) {
 		fprintf(stderr, "Failed to get FP sensor frame\n");
 		return -1;
+	}
+
+	if (idx == FP_FRAME_INDEX_RAW_IMAGE) {
+		fwrite(buffer, r.frame_size, 1, stdout);
+		goto frame_done;
 	}
 
 	/* Print 8-bpp PGM ASCII header */
@@ -1312,8 +1295,70 @@ int cmd_fp_frame(int argc, char *argv[])
 		printf("\n");
 	}
 	printf("# END OF FILE\n");
+frame_done:
 	free(buffer);
 	return 0;
+}
+
+int cmd_fp_template(int argc, char *argv[])
+{
+	struct ec_response_fp_info r;
+	struct ec_params_fp_template *p = ec_outbuf;
+	/* TODO(b/78544921): removing 32 bits is a workaround for the MCU bug */
+	int max_chunk = ec_max_outsize
+			- offsetof(struct ec_params_fp_template, data) - 4;
+	int idx = -1;
+	char *e;
+	int size;
+	void *buffer = NULL;
+	uint32_t offset = 0;
+	int rv = 0;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s [<infile>|<index>]\n", argv[0]);
+		return -1;
+	}
+
+	idx = strtol(argv[1], &e, 0);
+	if (!(e && *e)) {
+		buffer = fp_download_frame(&r, idx + 1);
+		if (!buffer) {
+			fprintf(stderr, "Failed to get FP template %d\n", idx);
+			return -1;
+		}
+		fwrite(buffer, r.template_size, 1, stdout);
+		free(buffer);
+		return 0;
+	}
+	/* not an index, is it a filename ? */
+	buffer = read_file(argv[1], &size);
+	if (!buffer) {
+		fprintf(stderr, "Invalid parameter: %s\n", argv[1]);
+		return -1;
+	}
+	printf("sending template from: %s (%d bytes)\n", argv[1], size);
+	while (size) {
+		uint32_t tlen = MIN(max_chunk, size);
+
+		p->offset = offset;
+		p->size = tlen;
+		size -= tlen;
+		if (!size)
+			p->size |= FP_TEMPLATE_COMMIT;
+		memcpy(p->data, buffer + offset, tlen);
+		rv = ec_command(EC_CMD_FP_TEMPLATE, 0, p, tlen +
+				offsetof(struct ec_params_fp_template, data),
+				NULL, 0);
+		if (rv < 0)
+			break;
+		offset += tlen;
+	}
+	if (rv < 0)
+		fprintf(stderr, "Failed with %d\n", rv);
+	else
+		rv = 0;
+	free(buffer);
+	return rv;
 }
 
 /**
@@ -3975,6 +4020,12 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_CHIP_GPIO:
 			printf("gpio\n");
 			break;
+		case MOTIONSENSE_CHIP_LIS2DH:
+			printf("lis2dh\n");
+			break;
+		case MOTIONSENSE_CHIP_LSM6DSM:
+			printf("lsm6dsm\n");
+			break;
 		default:
 			printf("unknown\n");
 		}
@@ -6369,11 +6420,13 @@ static void cmd_cbi_help(char *cmd)
 {
 	fprintf(stderr,
 		"  Usage: %s get <type> [get_flag]\n"
-		"  Usage: %s set <type> value [set_flag]\n"
+		"  Usage: %s set <type> <value> <size> [set_flag]\n"
 		"    <type> is one of:\n"
 		"      0: BOARD_VERSION\n"
 		"      1: OEM_ID\n"
 		"      2: SKU_ID\n"
+		"    <size> is the size of the data in byte\n"
+		"    <value> is integer to be set. No raw data support yet.\n"
 		"    [get_flag] is combination of:\n"
 		"      01b: Invalidate cache and reload data from EEPROM\n"
 		"    [set_flag] is combination of:\n"
@@ -6388,7 +6441,7 @@ static void cmd_cbi_help(char *cmd)
  */
 static int cmd_cbi(int argc, char *argv[])
 {
-	enum cbi_data_type type;
+	enum cbi_data_tag tag;
 	char *e;
 	int rv;
 
@@ -6398,17 +6451,18 @@ static int cmd_cbi(int argc, char *argv[])
 		return -1;
 	}
 
-	/* Type */
-	type = strtol(argv[2], &e, 0);
+	/* Tag */
+	tag = strtol(argv[2], &e, 0);
 	if (e && *e) {
-		fprintf(stderr, "Bad type\n");
+		fprintf(stderr, "Bad tag\n");
 		return -1;
 	}
 
 	if (!strcasecmp(argv[1], "get")) {
 		struct ec_params_get_cbi p;
-		uint32_t r;
-		p.type = type;
+		uint8_t *r;
+		int i;
+		p.tag = tag;
 		if (argc > 3) {
 			p.flag = strtol(argv[3], &e, 0);
 			if (e && *e) {
@@ -6417,48 +6471,66 @@ static int cmd_cbi(int argc, char *argv[])
 			}
 		}
 		rv = ec_command(EC_CMD_GET_CROS_BOARD_INFO, 0, &p, sizeof(p),
-				&r, sizeof(r));
+				ec_inbuf, ec_max_insize);
 		if (rv < 0) {
 			fprintf(stderr, "Error code: %d\n", rv);
 			return rv;
 		}
-		if (type < CBI_FIRST_STRING_PARAM) { 	/* integer fields */
-			if (rv < sizeof(uint32_t)) {
-				fprintf(stderr, "Invalid size: %d\n", rv);
-				return -1;
-			}
-			printf("%u (0x%x)\n", r, r);
-		} else {
-			fprintf(stderr, "Invalid type: %x\n", type);
+		if (rv < sizeof(uint8_t)) {
+			fprintf(stderr, "Invalid size: %d\n", rv);
 			return -1;
 		}
+		r = ec_inbuf;
+		if (rv <= sizeof(uint32_t))
+			printf("As integer: %u (0x%x)\n", r[0], r[0]);
+		printf("As binary:");
+		for (i = 0; i < rv; i++) {
+			if (i % 32 == 31)
+				printf("\n");
+			printf(" %02x", r[i]);
+		}
+		printf("\n");
 		return 0;
 	} else if (!strcasecmp(argv[1], "set")) {
-		struct ec_params_set_cbi p;
-		if (argc < 4) {
+		struct ec_params_set_cbi *p =
+				(struct ec_params_set_cbi *)ec_outbuf;
+		uint32_t val;
+		uint8_t size;
+		if (argc < 5) {
 			fprintf(stderr, "Invalid number of params\n");
 			cmd_cbi_help(argv[0]);
 			return -1;
 		}
-		memset(&p, 0, sizeof(p));
-		p.type = type;
-		p.data = strtol(argv[3], &e, 0);
+		memset(p, 0, ec_max_outsize);
+		p->tag = tag;
+		val = strtol(argv[3], &e, 0);
 		if (e && *e) {
 			fprintf(stderr, "Bad value\n");
 			return -1;
 		}
-		if (argc > 4) {
-			p.flag = strtol(argv[4], &e, 0);
+		size = strtol(argv[4], &e, 0);
+		if ((e && *e) || size < 1 || 4 < size ||
+				val >= (1ull << size*8)) {
+			fprintf(stderr, "Bad size: %d\n", size);
+			return -1;
+		}
+		/* Little endian */
+		memcpy(p->data, &val, size);
+		p->size = size;
+		if (argc > 5) {
+			p->flag = strtol(argv[5], &e, 0);
 			if (e && *e) {
 				fprintf(stderr, "Bad flag\n");
 				return -1;
 			}
 		}
-		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, &p, sizeof(p),
-				NULL, 0);
+		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0,
+				p, sizeof(*p) + size, NULL, 0);
 		if (rv < 0) {
 			if (rv == -EC_RES_ACCESS_DENIED - EECRESULT)
-				fprintf(stderr, "Write failed. WP enabled?\n");
+				fprintf(stderr, "Write failed. Write-protect "
+					"is enabled or EC explicitly refused "
+					"to change the requested field.");
 			else
 				fprintf(stderr, "Error code: %d\n", rv);
 			return rv;
@@ -6871,6 +6943,29 @@ static int show_fields(struct ec_mkbp_config *config, int argc, char *argv[])
 				get_value(param, (char *)config));
 		}
 	}
+
+	return 0;
+}
+
+static int cmd_kbinfo(int argc, char *argv[])
+{
+	struct ec_params_mkbp_info info = {
+		.info_type = EC_MKBP_INFO_KBD,
+	};
+	struct ec_response_mkbp_info resp;
+	int rv;
+
+	if (argc > 1) {
+		fprintf(stderr, "Too many args\n");
+		return -1;
+	}
+	rv = ec_command(EC_CMD_MKBP_INFO, 0, &info, sizeof(info), &resp,
+			sizeof(resp));
+	if (rv < 0)
+		return rv;
+
+	printf("Matrix rows: %d\n", resp.rows);
+	printf("Matrix columns: %d\n", resp.cols);
 
 	return 0;
 }
@@ -7602,10 +7697,28 @@ err:
 	return rv < 0;
 }
 
+static int wait_event(long event_type,
+		      struct ec_response_get_next_event_v1 *buffer,
+		      size_t buffer_size, long timeout)
+{
+	int rv;
+
+	rv = ec_pollevent(1 << event_type, buffer, buffer_size, timeout);
+	if (rv == 0) {
+		fprintf(stderr, "Timeout waiting for MKBP event\n");
+		return -ETIMEDOUT;
+	} else if (rv < 0) {
+		perror("Error polling for MKBP event\n");
+		return -EIO;
+	}
+
+	return rv;
+}
+
 int cmd_wait_event(int argc, char *argv[])
 {
 	int rv, i;
-	struct ec_response_get_next_event buffer;
+	struct ec_response_get_next_event_v1 buffer;
 	long timeout = 5000;
 	long event_type;
 	char *e;
@@ -7634,14 +7747,9 @@ int cmd_wait_event(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_pollevent(1 << event_type, &buffer, sizeof(buffer), timeout);
-	if (rv == 0) {
-		fprintf(stderr, "Timeout waitout for MKBP event\n");
-		return -ETIMEDOUT;
-	} else if (rv < 0) {
-		perror("Error polling for MKBP event\n");
-		return -EIO;
-	}
+	rv = wait_event(event_type, &buffer, sizeof(buffer), timeout);
+	if (rv < 0)
+		return rv;
 
 	printf("MKBP event %d data: ", buffer.event_type);
 	for (i = 0; i < rv - 1; ++i)
@@ -7649,6 +7757,200 @@ int cmd_wait_event(int argc, char *argv[])
 	printf("\n");
 
 	return 0;
+}
+
+static void cmd_cec_help(const char *cmd)
+{
+	fprintf(stderr,
+		"  Usage: %s write [write bytes...]\n"
+		"    Write message on the CEC bus\n"
+		"  Usage: %s read [timeout]\n"
+		"    [timeout] in seconds\n"
+		"  Usage: %s get <param>\n"
+		"  Usage: %s set <param> <val>\n"
+		"    <param> is one of:\n"
+		"      address: CEC receive address\n"
+		"        <val> is the new CEC address\n"
+		"      enable: Enable or disable CEC\n"
+		"        <val> is 1 to enable, 0 to disable\n",
+		cmd, cmd, cmd, cmd);
+
+}
+
+static int cmd_cec_write(int argc, char *argv[])
+{
+	char *e;
+	long val;
+	int rv, i, msg_len;
+	struct ec_params_cec_write p;
+	struct ec_response_get_next_event_v1 buffer;
+
+	if (argc < 3 || argc > 18) {
+		fprintf(stderr, "Invalid number of params\n");
+		cmd_cec_help(argv[0]);
+		return -1;
+	}
+
+	msg_len = argc - 2;
+	for (i = 0; i < msg_len; i++) {
+		val = strtol(argv[i + 2], &e, 16);
+		if (e && *e)
+			return -1;
+		if (val < 0 || val > 0xff)
+			return -1;
+		p.msg[i] = (uint8_t)val;
+	}
+
+	printf("Write to CEC: ");
+	for (i = 0; i < msg_len; i++)
+		printf("0x%02x ", p.msg[i]);
+	printf("\n");
+
+	rv = ec_command(EC_CMD_CEC_WRITE_MSG, 0, &p, msg_len, NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	rv = wait_event(EC_MKBP_EVENT_CEC_EVENT, &buffer, sizeof(buffer), 1000);
+	if (rv < 0)
+		return rv;
+
+	if (buffer.data.cec_events & EC_MKBP_CEC_SEND_OK)
+		return 0;
+
+	if (buffer.data.cec_events & EC_MKBP_CEC_SEND_FAILED) {
+		fprintf(stderr, "Send failed\n");
+		return -1;
+	}
+
+	fprintf(stderr, "No send result received\n");
+
+	return -1;
+}
+
+static int cmd_cec_read(int argc, char *argv[])
+{
+	int i, rv;
+	char *e;
+	struct ec_response_get_next_event_v1 buffer;
+	long timeout = 5000;
+
+	if (!ec_pollevent) {
+		fprintf(stderr, "Polling for MKBP event not supported\n");
+		return -EINVAL;
+	}
+
+	if (argc >= 3) {
+		timeout = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad timeout value '%s'.\n", argv[2]);
+			return -1;
+		}
+	}
+
+	rv = wait_event(EC_MKBP_EVENT_CEC_MESSAGE, &buffer,
+			sizeof(buffer), timeout);
+	if (rv < 0)
+		return rv;
+
+	printf("CEC data: ");
+	for (i = 0; i < rv - 1; i++)
+		printf("0x%02x ", buffer.data.cec_message[i]);
+	printf("\n");
+
+	return 0;
+}
+
+static int cec_cmd_from_str(const char *str)
+{
+	if (!strcmp("address", str))
+		return CEC_CMD_LOGICAL_ADDRESS;
+	if (!strcmp("enable", str))
+		return CEC_CMD_ENABLE;
+	return -1;
+}
+
+static int cmd_cec_set(int argc, char *argv[])
+{
+	char *e;
+	struct ec_params_cec_set p;
+	uint8_t val;
+	int cmd;
+
+	if (argc != 4) {
+		fprintf(stderr, "Invalid number of params\n");
+		cmd_cec_help(argv[0]);
+		return -1;
+	}
+
+	val = (uint8_t)strtol(argv[3], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad parameter '%s'.\n", argv[3]);
+		return -1;
+	}
+
+	cmd = cec_cmd_from_str(argv[2]);
+	if (cmd < 0) {
+		fprintf(stderr, "Invalid command '%s'.\n", argv[2]);
+		return -1;
+	}
+	p.cmd = cmd;
+	p.val = val;
+
+	return ec_command(EC_CMD_CEC_SET,
+			  0, &p, sizeof(p), NULL, 0);
+}
+
+
+static int cmd_cec_get(int argc, char *argv[])
+{
+	int rv, cmd;
+	struct ec_params_cec_get p;
+	struct ec_response_cec_get r;
+
+
+	if (argc != 3) {
+		fprintf(stderr, "Invalid number of params\n");
+		cmd_cec_help(argv[0]);
+		return -1;
+	}
+
+	cmd = cec_cmd_from_str(argv[2]);
+	if (cmd < 0) {
+		fprintf(stderr, "Invalid command '%s'.\n", argv[2]);
+		return -1;
+	}
+	p.cmd = cmd;
+
+
+	rv = ec_command(EC_CMD_CEC_GET, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	printf("%d\n", r.val);
+
+	return 0;
+}
+
+int cmd_cec(int argc, char *argv[])
+{
+	if (argc < 2) {
+		fprintf(stderr, "Invalid number of params\n");
+		cmd_cec_help(argv[0]);
+		return -1;
+	}
+	if (!strcmp(argv[1], "write"))
+		return cmd_cec_write(argc, argv);
+	if (!strcmp(argv[1], "read"))
+		return cmd_cec_read(argc, argv);
+	if (!strcmp(argv[1], "get"))
+		return cmd_cec_get(argc, argv);
+	if (!strcmp(argv[1], "set"))
+		return cmd_cec_set(argc, argv);
+
+	fprintf(stderr, "Invalid sub command: %s\n", argv[1]);
+	cmd_cec_help(argv[0]);
+
+	return -1;
 }
 
 /* NULL-terminated list of commands */
@@ -7667,6 +7969,7 @@ const struct command commands[] = {
 	{"chipinfo", cmd_chipinfo},
 	{"cmdversions", cmd_cmdversions},
 	{"console", cmd_console},
+	{"cec", cmd_cec},
 	{"echash", cmd_ec_hash},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},
@@ -7688,10 +7991,10 @@ const struct command commands[] = {
 	{"flashspiinfo", cmd_flash_spi_info},
 	{"flashpd", cmd_flash_pd},
 	{"forcelidopen", cmd_force_lid_open},
-	{"fpcheckpixels", cmd_fp_check_pixels},
 	{"fpframe", cmd_fp_frame},
 	{"fpinfo", cmd_fp_info},
 	{"fpmode", cmd_fp_mode},
+	{"fptemplate", cmd_fp_template},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
@@ -7708,6 +8011,7 @@ const struct command commands[] = {
 	{"led", cmd_led},
 	{"lightbar", cmd_lightbar},
 	{"keyconfig", cmd_keyconfig},
+	{"kbinfo", cmd_kbinfo},
 	{"keyscan", cmd_keyscan},
 	{"kbfactorytest", cmd_keyboard_factory_test},
 	{"motionsense", cmd_motionsense},

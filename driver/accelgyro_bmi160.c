@@ -14,6 +14,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/mag_bmm150.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
 #include "spi.h"
@@ -24,6 +25,10 @@
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
+
+#ifdef CONFIG_ACCEL_FIFO
+static uint32_t last_interrupt_timestamp;
+#endif
 
 /*
  * Struct for pairing an engineering value with the register value for a
@@ -343,14 +348,6 @@ static int get_range(const struct motion_sensor_t *s)
 	return data->range;
 }
 
-static int set_resolution(const struct motion_sensor_t *s,
-				int res,
-				int rnd)
-{
-	/* Only one resolution, BMI160_RESOLUTION, so nothing to do. */
-	return EC_SUCCESS;
-}
-
 static int get_resolution(const struct motion_sensor_t *s)
 {
 	return BMI160_RESOLUTION;
@@ -602,9 +599,10 @@ static int set_offset(const struct motion_sensor_t *s,
 	return ret;
 }
 
-int perform_calib(const struct motion_sensor_t *s)
+static int perform_calib(const struct motion_sensor_t *s)
 {
-	int ret, val, en_flag, status, timeout = 0, rate;
+	int ret, val, en_flag, status, rate;
+	timestamp_t deadline;
 
 	rate = get_data_rate(s);
 	/*
@@ -638,8 +636,9 @@ int perform_calib(const struct motion_sensor_t *s)
 	ret = raw_write8(s->port, s->addr, BMI160_FOC_CONF, val);
 	ret = raw_write8(s->port, s->addr, BMI160_CMD_REG,
 			 BMI160_CMD_START_FOC);
+	deadline.val = get_time().val + 400 * MSEC;
 	do {
-		if (timeout > 400) {
+		if (timestamp_expired(deadline, NULL)) {
 			ret = EC_RES_TIMEOUT;
 			goto end_perform_calib;
 		}
@@ -647,7 +646,6 @@ int perform_calib(const struct motion_sensor_t *s)
 		ret = raw_read8(s->port, s->addr, BMI160_STATUS, &status);
 		if (ret != EC_SUCCESS)
 			goto end_perform_calib;
-		timeout += 50;
 	} while ((status & BMI160_FOC_RDY) == 0);
 
 	/* Calibration is successful, and loaded, use the result */
@@ -766,170 +764,6 @@ int list_activities(const struct motion_sensor_t *s,
 #endif
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
-/**
- * bmi160_interrupt - called when the sensor activates the interrupt line.
- *
- * This is a "top half" interrupt handler, it just asks motion sense ask
- * to schedule the "bottom half", ->irq_handler().
- */
-void bmi160_interrupt(enum gpio_signal signal)
-{
-	task_set_event(TASK_ID_MOTIONSENSE,
-		       CONFIG_ACCELGYRO_BMI160_INT_EVENT, 0);
-}
-
-
-static int config_interrupt(const struct motion_sensor_t *s)
-{
-	int ret, tmp;
-
-	if (s->type != MOTIONSENSE_TYPE_ACCEL)
-		return EC_SUCCESS;
-
-	mutex_lock(s->mutex);
-	raw_write8(s->port, s->addr, BMI160_CMD_REG, BMI160_CMD_FIFO_FLUSH);
-	raw_write8(s->port, s->addr, BMI160_CMD_REG, BMI160_CMD_INT_RESET);
-
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-	raw_write8(s->port, s->addr, BMI160_INT_TAP_0,
-		BMI160_TAP_DUR(s, CONFIG_GESTURE_TAP_MAX_INTERSTICE_T));
-	ret = raw_write8(s->port, s->addr, BMI160_INT_TAP_1,
-		BMI160_TAP_TH(s, CONFIG_GESTURE_TAP_THRES_MG));
-#endif
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
-	/* only use orientation sensor on the lid sensor */
-	if (s->location == MOTIONSENSE_LOC_LID) {
-		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_0,
-			BMI160_INT_ORIENT_0_INIT_VAL);
-		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_1,
-			BMI160_INT_ORIENT_1_INIT_VAL);
-	}
-#endif
-
-	/*
-	 * Set a 5ms latch to be sure the EC can read the interrupt register
-	 * properly, even when it is running more slowly.
-	 */
-#ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
-	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH, BMI160_LATCH_5MS);
-#else
-	/* Also, configure int2 as an external input. */
-	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH,
-		BMI160_INT2_INPUT_EN | BMI160_LATCH_5MS);
-#endif
-
-	/* configure int1 as an interrupt */
-	ret = raw_write8(s->port, s->addr, BMI160_INT_OUT_CTRL,
-		BMI160_INT_CTRL(1, OUTPUT_EN));
-
-	/* Map activity interrupt to int 1 */
-	tmp = 0;
-#ifdef CONFIG_GESTURE_SIGMO
-	tmp |= BMI160_INT_ANYMOTION;
-#endif
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-	tmp |= BMI160_INT_D_TAP;
-#endif
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
-	/* enable orientation interrupt for lid sensor only */
-	if (s->location == MOTIONSENSE_LOC_LID)
-		tmp |= BMI160_INT_ORIENT;
-#endif
-	ret = raw_write8(s->port, s->addr, BMI160_INT_MAP_REG(1), tmp);
-
-#ifdef CONFIG_ACCEL_FIFO
-	/* map fifo water mark to int 1 */
-	ret = raw_write8(s->port, s->addr, BMI160_INT_FIFO_MAP,
-			BMI160_INT_MAP(1, FWM) |
-			BMI160_INT_MAP(1, FFULL));
-
-	/* configure fifo watermark at 50% */
-	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_0,
-			512 / sizeof(uint32_t));
-#ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
-	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
-			BMI160_FIFO_HEADER_EN);
-#else
-	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
-			BMI160_FIFO_TAG_INT2_EN |
-			BMI160_FIFO_HEADER_EN);
-#endif
-
-	/* Set fifo*/
-	ret = raw_read8(s->port, s->addr, BMI160_INT_EN_1, &tmp);
-	tmp |= BMI160_INT_FWM_EN | BMI160_INT_FFUL_EN;
-	ret = raw_write8(s->port, s->addr, BMI160_INT_EN_1, tmp);
-#endif
-	mutex_unlock(s->mutex);
-	return ret;
-}
-
-/**
- * irq_handler - bottom half of the interrupt stack.
- * Ran from the motion_sense task, finds the events that raised the interrupt.
- *
- * For now, we just print out. We should set a bitmask motion sense code will
- * act upon.
- */
-static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
-{
-	int interrupt;
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
-	int shifted_masked_orientation;
-#endif
-
-	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
-	    (!(*event & CONFIG_ACCELGYRO_BMI160_INT_EVENT)))
-		return EC_ERROR_NOT_HANDLED;
-
-	raw_read32(s->port, s->addr, BMI160_INT_STATUS_0, &interrupt);
-
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-	if (interrupt & BMI160_D_TAP_INT)
-		*event |= CONFIG_GESTURE_TAP_EVENT;
-#endif
-#ifdef CONFIG_GESTURE_SIGMO
-	if (interrupt & BMI160_SIGMOT_INT)
-		*event |= CONFIG_GESTURE_SIGMO_EVENT;
-#endif
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
-	shifted_masked_orientation = (interrupt >> 24) & BMI160_ORIENT_XY_MASK;
-	if (BMI160_GET_DATA(s)->raw_orientation != shifted_masked_orientation) {
-		enum motionsensor_orientation orientation =
-				MOTIONSENSE_ORIENTATION_UNKNOWN;
-
-		BMI160_GET_DATA(s)->raw_orientation =
-				shifted_masked_orientation;
-
-		switch (shifted_masked_orientation) {
-		case BMI160_ORIENT_PORTRAIT:
-			orientation = MOTIONSENSE_ORIENTATION_PORTRAIT;
-			break;
-		case BMI160_ORIENT_PORTRAIT_INVERT:
-			orientation =
-				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT;
-			break;
-		case BMI160_ORIENT_LANDSCAPE:
-			orientation = MOTIONSENSE_ORIENTATION_LANDSCAPE;
-			break;
-		case BMI160_ORIENT_LANDSCAPE_INVERT:
-			orientation =
-				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE;
-			break;
-		default:
-			break;
-		}
-		orientation = motion_sense_remap_orientation(s, orientation);
-		SET_ORIENTATION(s, orientation);
-	}
-#endif
-	/*
-	 * No need to read the FIFO here, motion sense task is
-	 * doing it on every interrupt.
-	 */
-	return EC_SUCCESS;
-}
-#endif  /* CONFIG_ACCEL_INTERRUPTS */
 
 #ifdef CONFIG_ACCEL_FIFO
 enum fifo_state {
@@ -984,7 +818,8 @@ static int bmi160_decode_header(struct motion_sensor_t *s,
 				vector.data[Y] = v[Y];
 				vector.data[Z] = v[Z];
 				vector.sensor_num = i + (s - motion_sensors);
-				motion_sense_fifo_add_unit(&vector, s + i, 3);
+				motion_sense_fifo_add_data(&vector, s + i, 3,
+						last_interrupt_timestamp);
 				*bp += (i == MOTIONSENSE_TYPE_MAG ? 8 : 6);
 			}
 		}
@@ -994,6 +829,17 @@ static int bmi160_decode_header(struct motion_sensor_t *s,
 	}
 }
 
+/**
+ * Retrieve hardware FIFO from sensor,
+ * - put data in Sensor Hub fifo.
+ * - update sensor raw_xyz vector with the last information.
+ * We put raw data in hub fifo and process data from there.
+ * @s Pointer to sensor data.
+ *
+ * NOTE: If a new driver supports this function, be sure to add a check
+ * for spoof_mode in order to load the sensor stack with the spoofed
+ * data.  See accelgyro_bmi160.c::load_fifo for an example.
+ */
 static int load_fifo(struct motion_sensor_t *s)
 {
 	int done = 0;
@@ -1099,6 +945,177 @@ static int load_fifo(struct motion_sensor_t *s)
 	return EC_SUCCESS;
 }
 #endif  /* CONFIG_ACCEL_FIFO */
+
+/**
+ * bmi160_interrupt - called when the sensor activates the interrupt line.
+ *
+ * This is a "top half" interrupt handler, it just asks motion sense ask
+ * to schedule the "bottom half", ->irq_handler().
+ */
+void bmi160_interrupt(enum gpio_signal signal)
+{
+#ifdef CONFIG_ACCEL_FIFO
+	last_interrupt_timestamp = __hw_clock_source_read();
+#endif
+	task_set_event(TASK_ID_MOTIONSENSE,
+		       CONFIG_ACCELGYRO_BMI160_INT_EVENT, 0);
+}
+
+
+static int config_interrupt(const struct motion_sensor_t *s)
+{
+	int ret, tmp;
+
+	if (s->type != MOTIONSENSE_TYPE_ACCEL)
+		return EC_SUCCESS;
+
+	mutex_lock(s->mutex);
+	raw_write8(s->port, s->addr, BMI160_CMD_REG, BMI160_CMD_FIFO_FLUSH);
+	raw_write8(s->port, s->addr, BMI160_CMD_REG, BMI160_CMD_INT_RESET);
+
+#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+	raw_write8(s->port, s->addr, BMI160_INT_TAP_0,
+		BMI160_TAP_DUR(s, CONFIG_GESTURE_TAP_MAX_INTERSTICE_T));
+	ret = raw_write8(s->port, s->addr, BMI160_INT_TAP_1,
+		BMI160_TAP_TH(s, CONFIG_GESTURE_TAP_THRES_MG));
+#endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	/* only use orientation sensor on the lid sensor */
+	if (s->location == MOTIONSENSE_LOC_LID) {
+		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_0,
+			BMI160_INT_ORIENT_0_INIT_VAL);
+		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_1,
+			BMI160_INT_ORIENT_1_INIT_VAL);
+	}
+#endif
+
+	/*
+	 * Set a 5ms latch to be sure the EC can read the interrupt register
+	 * properly, even when it is running more slowly.
+	 */
+#ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
+	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH, BMI160_LATCH_5MS);
+#else
+	/* Also, configure int2 as an external input. */
+	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH,
+		BMI160_INT2_INPUT_EN | BMI160_LATCH_5MS);
+#endif
+
+	/* configure int1 as an interrupt */
+	ret = raw_write8(s->port, s->addr, BMI160_INT_OUT_CTRL,
+		BMI160_INT_CTRL(1, OUTPUT_EN));
+
+	/* Map activity interrupt to int 1 */
+	tmp = 0;
+#ifdef CONFIG_GESTURE_SIGMO
+	tmp |= BMI160_INT_ANYMOTION;
+#endif
+#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+	tmp |= BMI160_INT_D_TAP;
+#endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	/* enable orientation interrupt for lid sensor only */
+	if (s->location == MOTIONSENSE_LOC_LID)
+		tmp |= BMI160_INT_ORIENT;
+#endif
+	ret = raw_write8(s->port, s->addr, BMI160_INT_MAP_REG(1), tmp);
+
+#ifdef CONFIG_ACCEL_FIFO
+	/* map fifo water mark to int 1 */
+	ret = raw_write8(s->port, s->addr, BMI160_INT_FIFO_MAP,
+			BMI160_INT_MAP(1, FWM) |
+			BMI160_INT_MAP(1, FFULL));
+
+	/* configure fifo watermark to int whenever there's any data in there */
+	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_0, 1);
+#ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
+	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
+			BMI160_FIFO_HEADER_EN);
+#else
+	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
+			BMI160_FIFO_TAG_INT2_EN |
+			BMI160_FIFO_HEADER_EN);
+#endif
+
+	/* Set fifo*/
+	ret = raw_read8(s->port, s->addr, BMI160_INT_EN_1, &tmp);
+	tmp |= BMI160_INT_FWM_EN | BMI160_INT_FFUL_EN;
+	ret = raw_write8(s->port, s->addr, BMI160_INT_EN_1, tmp);
+#endif
+	mutex_unlock(s->mutex);
+	return ret;
+}
+
+/**
+ * irq_handler - bottom half of the interrupt stack.
+ * Ran from the motion_sense task, finds the events that raised the interrupt.
+ *
+ * For now, we just print out. We should set a bitmask motion sense code will
+ * act upon.
+ */
+static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
+{
+	int interrupt;
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	int shifted_masked_orientation;
+#endif
+
+	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
+			(!(*event & CONFIG_ACCELGYRO_BMI160_INT_EVENT)))
+		return EC_ERROR_NOT_HANDLED;
+
+	raw_read32(s->port, s->addr, BMI160_INT_STATUS_0, &interrupt);
+
+#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+	if (interrupt & BMI160_D_TAP_INT)
+		*event |= CONFIG_GESTURE_TAP_EVENT;
+#endif
+#ifdef CONFIG_GESTURE_SIGMO
+	if (interrupt & BMI160_SIGMOT_INT)
+		*event |= CONFIG_GESTURE_SIGMO_EVENT;
+#endif
+#ifdef CONFIG_ACCEL_FIFO
+	if (interrupt & (BMI160_FWM_INT | BMI160_FFULL_INT))
+		load_fifo(s);
+#endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	shifted_masked_orientation = (interrupt >> 24) & BMI160_ORIENT_XY_MASK;
+	if (BMI160_GET_DATA(s)->raw_orientation != shifted_masked_orientation) {
+		enum motionsensor_orientation orientation =
+				MOTIONSENSE_ORIENTATION_UNKNOWN;
+
+		BMI160_GET_DATA(s)->raw_orientation =
+				shifted_masked_orientation;
+
+		switch (shifted_masked_orientation) {
+		case BMI160_ORIENT_PORTRAIT:
+			orientation = MOTIONSENSE_ORIENTATION_PORTRAIT;
+			break;
+		case BMI160_ORIENT_PORTRAIT_INVERT:
+			orientation =
+				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT;
+			break;
+		case BMI160_ORIENT_LANDSCAPE:
+			orientation = MOTIONSENSE_ORIENTATION_LANDSCAPE;
+			break;
+		case BMI160_ORIENT_LANDSCAPE_INVERT:
+			orientation =
+				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE;
+			break;
+		default:
+			break;
+		}
+		orientation = motion_sense_remap_orientation(s, orientation);
+		SET_ORIENTATION(s, orientation);
+	}
+#endif
+	/*
+	 * No need to read the FIFO here, motion sense task is
+	 * doing it on every interrupt.
+	 */
+	return EC_SUCCESS;
+}
+#endif  /* CONFIG_ACCEL_INTERRUPTS */
 
 
 static int read(const struct motion_sensor_t *s, vector_3_t v)
@@ -1269,6 +1286,7 @@ static int init(const struct motion_sensor_t *s)
 	 * so set data rate to 0.
 	 */
 	data->odr = 0;
+	set_range(s, s->default_range, 0);
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 #ifdef CONFIG_ACCEL_INTERRUPTS
@@ -1284,7 +1302,6 @@ const struct accelgyro_drv bmi160_drv = {
 	.read = read,
 	.set_range = set_range,
 	.get_range = get_range,
-	.set_resolution = set_resolution,
 	.get_resolution = get_resolution,
 	.set_data_rate = set_data_rate,
 	.get_data_rate = get_data_rate,
@@ -1293,9 +1310,6 @@ const struct accelgyro_drv bmi160_drv = {
 	.perform_calib = perform_calib,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
-#endif
-#ifdef CONFIG_ACCEL_FIFO
-	.load_fifo = load_fifo,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	.manage_activity = manage_activity,

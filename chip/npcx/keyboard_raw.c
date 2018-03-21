@@ -94,14 +94,14 @@ test_mockable void keyboard_raw_drive_column(int col)
 
 	/* Drive all lines to high */
 	if (col == KEYBOARD_COLUMN_NONE) {
-		mask = KB_COL_MASK;
+		mask = ~0;
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
 	}
 	/* Set KBSOUT to zero to detect key-press */
 	else if (col == KEYBOARD_COLUMN_ALL) {
-		mask = 0;
+		mask = ~((1 << KEYBOARD_COLS) - 1);
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 1);
 #endif
@@ -114,7 +114,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 		else
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
-		mask = ((~(1 << col_out)) & KB_COL_MASK);
+		mask = ~(1 << col_out);
 	}
 
 	/* Set KBSOUT */
@@ -154,7 +154,7 @@ void keyboard_raw_interrupt(void)
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
-DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 5);
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 

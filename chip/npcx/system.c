@@ -182,7 +182,11 @@ static int bbram_idx_lookup(enum system_bbram_idx idx)
 		return BBRM_DATA_INDEX_PD0;
 	if (idx == SYSTEM_BBRAM_IDX_PD1)
 		return BBRM_DATA_INDEX_PD1;
-#endif
+#if CONFIG_USB_PD_PORT_COUNT >= 3
+	if (idx == SYSTEM_BBRAM_IDX_PD2)
+		return BBRM_DATA_INDEX_PD2;
+#endif /* CONFIG_USB_PD_PORT_COUNT >= 3 */
+#endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
 #ifdef CONFIG_VBOOT_EFS
 	if (idx == SYSTEM_BBRAM_IDX_TRY_SLOT)
 		return BBRM_DATA_INDEX_TRY_SLOT;
@@ -367,10 +371,8 @@ void system_check_reset_cause(void)
 
 	/* Use scratch bit to check power on reset or VCC1_RST reset */
 	if (!IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_SCRATCH)) {
-#if defined(BOARD_WHEATLEY) || defined(BOARD_EVE) || defined(BOARD_POPPY) || defined(BOARD_SORAKA)\
-	|| defined(BOARD_NAUTILUS) || defined(BOARD_NAMI)
-
-		/* TODO(crosbug.com/p/61028): Remove workaround for Eve */
+#ifdef CONFIG_BOARD_FORCE_RESET_PIN
+		/* Treat all resets as RESET_PIN */
 		flags |= RESET_FLAG_RESET_PIN;
 #else
 		/* Check for VCC1 reset */
@@ -689,13 +691,17 @@ void system_pre_init(void)
 	pwdwn6 = 0x70 |
 		(1 << NPCX_PWDWN_CTL6_ITIM6_PD) |
 		(1 << NPCX_PWDWN_CTL6_ITIM4_PD); /* Skip ITIM5_PD */
-#if !defined(CONFIG_ESPI)
+#if !defined(CONFIG_HOSTCMD_ESPI)
 	pwdwn6 |= 1 << NPCX_PWDWN_CTL6_ESPI_PD;
 #endif
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_6) = pwdwn6;
 
 #if defined(CHIP_FAMILY_NPCX7)
+#if defined(CHIP_VARIANT_NPCX7M6FB) || defined(CHIP_VARIANT_NPCX7M7WB)
+	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0xE7;
+#else
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0x07;
+#endif
 #endif
 
 	/* Following modules can be powered down automatically in npcx7 */
@@ -792,8 +798,12 @@ const char *system_get_chip_name(void)
 	case 0x17:
 		return "NPCX576G";
 #elif defined(CHIP_FAMILY_NPCX7)
+	case 0x1F:
+		return "NPCX787G";
 	case 0x21:
 		return "NPCX796F";
+	case 0x24:
+		return "NPCX797W";
 #endif
 	default:
 		*p       = system_to_hex((chip_id & 0xF0) >> 4);
@@ -805,15 +815,36 @@ const char *system_get_chip_name(void)
 
 const char *system_get_chip_revision(void)
 {
-	static char rev[5];
+	static char rev[6];
+	char *p = rev;
+	/* Read chip generation from SRID_CR */
+	uint8_t chip_gen = NPCX_SRID_CR;
 	/* Read ROM data for chip revision directly */
 	uint8_t rev_num = *((uint8_t *)CHIP_REV_ADDR);
 
-	*(rev) = 'A';
-	*(rev + 1) = '.';
-	*(rev + 2) = system_to_hex((rev_num & 0xF0) >> 4);
-	*(rev + 3) = system_to_hex(rev_num & 0x0F);
-	*(rev + 4) = '\0';
+	switch (chip_gen) {
+#if defined(CHIP_FAMILY_NPCX5)
+	case 0x05:
+		*p++ = 'A';
+		break;
+#elif defined(CHIP_FAMILY_NPCX7)
+	case 0x06:
+		*p++ = 'A';
+		break;
+	case 0x07:
+		*p++ = 'B';
+		break;
+#endif
+	default:
+		*p++ = system_to_hex((chip_gen & 0xF0) >> 4);
+		*p++ = system_to_hex(chip_gen & 0x0F);
+		break;
+	}
+
+	*p++ = '.';
+	*p++ = system_to_hex((rev_num & 0xF0) >> 4);
+	*p++ = system_to_hex(rev_num & 0x0F);
+	*p++ = '\0';
 
 	return rev;
 }

@@ -28,17 +28,6 @@
 #define CPRINTS(format, args...) cprints(CC_PWM, format, ## args)
 #endif
 
-/* MFT model select */
-enum npcx_mft_mdsel {
-	NPCX_MFT_MDSEL_1,
-	NPCX_MFT_MDSEL_2,
-	NPCX_MFT_MDSEL_3,
-	NPCX_MFT_MDSEL_4,
-	NPCX_MFT_MDSEL_5,
-	/* Number of MFT modes */
-	NPCX_MFT_MDSEL_COUNT
-};
-
 /* Tacho measurement state */
 enum tacho_measure_state {
 	/* Tacho normal state */
@@ -52,7 +41,7 @@ enum tacho_fan_mode {
 	/* FAN rpm mode */
 	TACHO_FAN_RPM = 0,
 	/* FAN duty mode */
-	TACHO_FAN_DUTY = 0,
+	TACHO_FAN_DUTY,
 };
 
 /* Fan status data structure */
@@ -346,8 +335,10 @@ void fan_tick_func(void)
 		/* Make sure rpm mode is enabled */
 		if (p_status->fan_mode != TACHO_FAN_RPM) {
 			p_status->auto_status = FAN_STATUS_STOPPED;
-			return;
+			continue;
 		}
+		if (!fan_get_enabled(ch))
+			continue;
 		/* Get actual rpm */
 		p_status->rpm_actual = mft_fan_rpm(ch);
 		/* Do smart fan stuff */
@@ -489,10 +480,10 @@ void fan_set_rpm_target(int ch, int rpm)
 	/* If rpm = 0, disable PWM */
 	if (rpm == 0)
 		fan_set_duty(ch, 0);
-	else if (rpm > fans[ch].rpm_max)
-		rpm = fans[ch].rpm_max;
-	else if (rpm < fans[ch].rpm_min)
-		rpm = fans[ch].rpm_min;
+	else if (rpm > fans[ch].rpm->rpm_max)
+		rpm = fans[ch].rpm->rpm_max;
+	else if (rpm < fans[ch].rpm->rpm_min)
+		rpm = fans[ch].rpm->rpm_min;
 
 	/* Set target rpm */
 	fan_status[ch].rpm_target = rpm;

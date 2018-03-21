@@ -49,10 +49,11 @@ common-$(CONFIG_DEVICE_STATE)+=device_state.o
 common-$(CONFIG_DPTF)+=dptf.o
 common-$(CONFIG_EC_EC_COMM_MASTER)+=ec_ec_comm_master.o
 common-$(CONFIG_EC_EC_COMM_SLAVE)+=ec_ec_comm_slave.o
-common-$(CONFIG_ESPI)+=espi.o
+common-$(CONFIG_HOSTCMD_ESPI)+=espi.o
 common-$(CONFIG_EXTENSION_COMMAND)+=extension.o
 common-$(CONFIG_EXTPOWER_GPIO)+=extpower_gpio.o
 common-$(CONFIG_FANS)+=fan.o pwm.o
+common-$(CONFIG_FACTORY_MODE)+=factory_mode.o
 common-$(CONFIG_FLASH)+=flash.o
 common-$(CONFIG_FLASH_NVCOUNTER)+=nvcounter.o
 common-$(CONFIG_FLASH_NVMEM)+=nvmem.o
@@ -76,16 +77,18 @@ common-$(CONFIG_LED_PWM)+=led_pwm.o
 common-$(CONFIG_LID_ANGLE)+=motion_lid.o math_util.o
 common-$(CONFIG_LID_ANGLE_UPDATE)+=lid_angle.o
 common-$(CONFIG_LID_SWITCH)+=lid_switch.o
-common-$(CONFIG_LPC)+=acpi.o port80.o ec_features.o
+common-$(CONFIG_HOSTCMD_X86)+=acpi.o port80.o ec_features.o
 common-$(CONFIG_MAG_CALIBRATE)+= mag_cal.o math_util.o vec3.o mat33.o mat44.o
 common-$(CONFIG_MKBP_EVENT)+=mkbp_event.o
 common-$(CONFIG_ONEWIRE)+=onewire.o
 common-$(CONFIG_PHYSICAL_PRESENCE)+=physical_presence.o
+common-$(CONFIG_PINWEAVER)+=pinweaver.o
 common-$(CONFIG_POWER_BUTTON)+=power_button.o
 common-$(CONFIG_POWER_BUTTON_X86)+=power_button_x86.o
 common-$(CONFIG_PSTORE)+=pstore_commands.o
 common-$(CONFIG_PWM)+=pwm.o
 common-$(CONFIG_PWM_KBLIGHT)+=pwm_kblight.o
+common-$(CONFIG_PWM_KBLIGHT)+=keyboard_backlight.o
 common-$(CONFIG_RMA_AUTH)+=rma_auth.o
 common-$(CONFIG_RSA)+=rsa.o
 common-$(CONFIG_ROLLBACK)+=rollback.o
@@ -106,6 +109,8 @@ common-$(CONFIG_SW_CRC)+=crc.o
 common-$(CONFIG_TABLET_MODE)+=tablet_mode.o
 common-$(CONFIG_TEMP_SENSOR)+=temp_sensor.o
 common-$(CONFIG_THROTTLE_AP)+=thermal.o throttle_ap.o
+common-$(CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT)+=throttle_ap.o
+common-$(CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE)+=throttle_ap.o
 common-$(CONFIG_TPM_I2CS)+=i2cs_tpm.o
 common-$(CONFIG_TPM_LOGGING)+=event_log.o tpm_log.o
 common-$(CONFIG_U2F)+=u2f.o
@@ -171,4 +176,19 @@ $(out)/.touchpad_fw: $(TOUCHPAD_FW)
 ifneq ($(touchpad_fw_ls),$(old_touchpad_fw_ls))
 .PHONY: $(out)/.touchpad_fw
 endif
+endif
+
+ifeq ($(TEST_BUILD),)
+
+ifeq ($(CONFIG_RMA_AUTH_USE_P256),)
+BLOB_FILE = rma_key_blob.test
+else
+BLOB_FILE = rma_key_blob.p256.test
+endif
+
+$(out)/RW/common/rma_auth.o: $(out)/rma_key_from_blob.h
+
+$(out)/rma_key_from_blob.h: board/$(BOARD)/$(BLOB_FILE) util/bin2h.sh
+	$(Q)util/bin2h.sh RMA_KEY_BLOB $< $@
+
 endif

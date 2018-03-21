@@ -399,7 +399,7 @@ static void flash_burst_write(unsigned int dest_addr, unsigned int bytes,
 }
 
 static int flash_program_bytes(uint32_t offset, uint32_t bytes,
-	const uint8_t const *data)
+	const uint8_t *data)
 {
 	int write_size;
 	int rv;
@@ -769,7 +769,7 @@ static int command_flash_spi_sel_lock(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(flash_spi_lock, command_flash_spi_sel_lock,
-			"[0 | 1]",
+			"[on | off]",
 			"Lock spi flash interface selection");
 
 static int command_flash_tristate(int argc, char **argv)
@@ -786,6 +786,6 @@ static int command_flash_tristate(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(flash_tristate, command_flash_tristate,
-			"[0 | 1]",
+			"[on | off]",
 			"Tristate spi flash pins");
 #endif /* CONFIG_CMD_FLASH_TRISTATE */

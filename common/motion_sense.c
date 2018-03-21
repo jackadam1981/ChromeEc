@@ -62,7 +62,7 @@ static int accel_disp;
 
 #define SENSOR_ACTIVE(_sensor) (sensor_active & (_sensor)->active_mask)
 
-#if defined(CONFIG_LPC) || defined(TEST_MOTION_LID)
+#if defined(CONFIG_HOSTCMD_X86) || defined(TEST_MOTION_LID)
 #define UPDATE_HOST_MEM_MAP
 #endif
 
@@ -104,9 +104,12 @@ struct queue motion_sense_fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO,
 		struct ec_response_motion_sensor_data);
 static int motion_sense_fifo_lost;
 
-static void motion_sense_insert_timestamp(void);
-
-void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
+/*
+ * Do not use this function directly if you just want to add sensor data, use
+ * motion_sense_fifo_add_data instead to get a proper timestamp too.
+ */
+static void motion_sense_fifo_add_unit(
+				struct ec_response_motion_sensor_data *data,
 				struct motion_sensor_t *sensor,
 				int valid_data)
 {
@@ -139,11 +142,6 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 	}
 	mutex_unlock(&g_sensor_mutex);
 	if (data->flags & MOTIONSENSE_SENSOR_FLAG_WAKEUP) {
-		/*
-		 * Fist, send a timestamp to be sure the event will not
-		 * be tied to an old one.
-		 */
-		motion_sense_insert_timestamp();
 		wake_up_needed = 1;
 	}
 #ifdef CONFIG_TABLET_MODE
@@ -166,13 +164,21 @@ static void motion_sense_insert_flush(struct motion_sensor_t *sensor)
 	motion_sense_fifo_add_unit(&vector, sensor, 0);
 }
 
-static void motion_sense_insert_timestamp(void)
+static void motion_sense_insert_timestamp(uint32_t timestamp)
 {
 	struct ec_response_motion_sensor_data vector;
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
-	vector.timestamp = __hw_clock_source_read();
+	vector.timestamp = timestamp;
 	vector.sensor_num = 0;
 	motion_sense_fifo_add_unit(&vector, NULL, 0);
+}
+
+void motion_sense_fifo_add_data(struct ec_response_motion_sensor_data *data,
+				struct motion_sensor_t *sensor,
+				int valid_data,
+				uint32_t time) {
+	motion_sense_insert_timestamp(time);
+	motion_sense_fifo_add_unit(data, sensor, valid_data);
 }
 
 static void motion_sense_get_fifo_info(
@@ -183,9 +189,25 @@ static void motion_sense_get_fifo_info(
 	fifo_info->count = fifo_queue_count;
 	fifo_info->total_lost = motion_sense_fifo_lost;
 	mutex_unlock(&g_sensor_mutex);
-	fifo_info->timestamp = __hw_clock_source_read();
+	fifo_info->timestamp = mkbp_last_event_time;
 }
 #endif
+
+static inline int motion_sensor_in_forced_mode(
+		const struct motion_sensor_t *sensor)
+{
+#ifdef CONFIG_ACCEL_FORCE_MODE_MASK
+	/* Sensor not in force mode, its irq_handler is getting data. */
+	if (!(CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors))))
+		return 0;
+	else
+		return 1;
+#else
+	return 0;
+#endif
+}
+
+
 
 /* Minimal amount of time since last collection before triggering a new one */
 static inline int motion_sensor_time_to_read(const timestamp_t *ts,
@@ -287,14 +309,12 @@ static int motion_sense_set_ec_rate_from_ap(
 
 	if (new_rate_us == 0)
 		return 0;
-#ifdef CONFIG_ACCEL_FORCE_MODE_MASK
-	if (CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors)))
+	if (motion_sensor_in_forced_mode(sensor))
 		/*
 		 * AP EC sampling rate does not matter: we will collect at the
 		 * requested sensor frequency.
 		 */
 		goto end_set_ec_rate_from_ap;
-#endif
 	if (odr_mhz == 0)
 		goto end_set_ec_rate_from_ap;
 
@@ -336,18 +356,16 @@ static int motion_sense_select_ec_rate(
 		enum sensor_config config_id,
 		int interrupt)
 {
-#ifdef CONFIG_ACCEL_FORCE_MODE_MASK
-	if (interrupt == 0 &&
-	    (CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors)))) {
+	if (interrupt == 0 && motion_sensor_in_forced_mode(sensor)) {
 		int rate_mhz = BASE_ODR(sensor->config[config_id].odr);
 		/* we have to run ec at the sensor frequency rate.*/
 		if (rate_mhz > 0)
 			return SECOND * 1000 / rate_mhz;
 		else
 			return 0;
-	} else
-#endif
-	return sensor->config[config_id].ec_rate;
+	} else {
+		return sensor->config[config_id].ec_rate;
+	}
 }
 
 /* motion_sense_ec_rate
@@ -704,28 +722,29 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	}
 #endif
 #ifdef CONFIG_ACCEL_FIFO
-	if (sensor->drv->load_fifo != NULL) {
-		/* Load fifo is filling raw_xyz sensor vector */
-		sensor->drv->load_fifo(sensor);
-	} else if (motion_sensor_time_to_read(ts, sensor)) {
-		struct ec_response_motion_sensor_data vector;
-		int *v = sensor->raw_xyz;
-		ret = motion_sense_read(sensor);
-		if (ret == EC_SUCCESS) {
-			vector.flags = 0;
-			vector.sensor_num = sensor - motion_sensors;
+	if (motion_sensor_in_forced_mode(sensor)) {
+		if (motion_sensor_time_to_read(ts, sensor)) {
+			struct ec_response_motion_sensor_data vector;
+			int *v = sensor->raw_xyz;
+
+			ret = motion_sense_read(sensor);
+			if (ret == EC_SUCCESS) {
+				vector.flags = 0;
+				vector.sensor_num = sensor - motion_sensors;
 #ifdef CONFIG_ACCEL_SPOOF_MODE
-			if (sensor->in_spoof_mode)
-				v = sensor->spoof_xyz;
+				if (sensor->in_spoof_mode)
+					v = sensor->spoof_xyz;
 #endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */
-			vector.data[X] = v[X];
-			vector.data[Y] = v[Y];
-			vector.data[Z] = v[Z];
-			motion_sense_fifo_add_unit(&vector, sensor, 3);
+				vector.data[X] = v[X];
+				vector.data[Y] = v[Y];
+				vector.data[Z] = v[Z];
+				motion_sense_fifo_add_data(&vector, sensor, 3,
+						   __hw_clock_source_read());
+			}
+			sensor->last_collection = ts->le.lo;
+		} else {
+			ret = EC_ERROR_BUSY;
 		}
-		sensor->last_collection = ts->le.lo;
-	} else {
-		ret = EC_ERROR_BUSY;
 	}
 	if (*event & TASK_EVENT_MOTION_FLUSH_PENDING) {
 		int flush_pending;
@@ -736,19 +755,21 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 		}
 	}
 #else
-	if (motion_sensor_time_to_read(ts, sensor)) {
-		/* Get latest data for local calculation */
-		ret = motion_sense_read(sensor);
-		sensor->last_collection = ts->le.lo;
-	} else {
-		ret = EC_ERROR_BUSY;
+	if (motion_sensor_in_forced_mode(sensor)) {
+		if (motion_sensor_time_to_read(ts, sensor)) {
+			/* Get latest data for local calculation */
+			ret = motion_sense_read(sensor);
+			sensor->last_collection = ts->le.lo;
+		} else {
+			ret = EC_ERROR_BUSY;
+		}
+		if (ret == EC_SUCCESS) {
+			mutex_lock(&g_sensor_mutex);
+			memcpy(sensor->xyz, sensor->raw_xyz,
+			       sizeof(sensor->xyz));
+			mutex_unlock(&g_sensor_mutex);
+		}
 	}
-	if (ret == EC_SUCCESS) {
-		mutex_lock(&g_sensor_mutex);
-		memcpy(sensor->xyz, sensor->raw_xyz, sizeof(sensor->xyz));
-		mutex_unlock(&g_sensor_mutex);
-	}
-
 #endif
 	return ret;
 }
@@ -798,7 +819,8 @@ static void check_and_queue_gestures(uint32_t *event)
 		vector.activity = MOTIONSENSE_ACTIVITY_DOUBLE_TAP;
 		vector.state = 1; /* triggered */
 		vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
-		motion_sense_fifo_add_unit(&vector, NULL, 0);
+		motion_sense_fifo_add_data(&vector, NULL, 0,
+					   __hw_clock_source_read());
 #endif
 		/* Call board specific function to process tap */
 		sensor_board_proc_double_tap();
@@ -815,7 +837,8 @@ static void check_and_queue_gestures(uint32_t *event)
 		vector.activity = MOTIONSENSE_ACTIVITY_SIG_MOTION;
 		vector.state = 1; /* triggered */
 		vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
-		motion_sense_fifo_add_unit(&vector, NULL, 0);
+		motion_sense_fifo_add_data(&vector, NULL, 0,
+					   __hw_clock_source_read());
 #endif
 		/* Disable further detection */
 		activity_sensor = &motion_sensors[CONFIG_GESTURE_SIGMO];
@@ -840,7 +863,8 @@ static void check_and_queue_gestures(uint32_t *event)
 				MOTIONSENSE_ORIENTATION_UNKNOWN)) {
 			SET_ORIENTATION_UPDATED(sensor);
 			vector.state = GET_ORIENTATION(sensor);
-			motion_sense_fifo_add_unit(&vector, NULL, 0);
+			motion_sense_fifo_add_data(&vector, NULL, 0,
+						   __hw_clock_source_read());
 #ifdef CONFIG_DEBUG_ORIENTATION
 			{
 				static const char * const mode_strs[] = {
@@ -959,7 +983,8 @@ void motion_sense_task(void *u)
 		     time_after(ts_end_task.le.lo,
 				ts_last_int.le.lo + motion_int_interval))) {
 			if (!fifo_flush_needed)
-				motion_sense_insert_timestamp();
+				motion_sense_insert_timestamp(
+					__hw_clock_source_read());
 			fifo_flush_needed = 0;
 			ts_last_int = ts_end_task;
 			/*
@@ -1180,7 +1205,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			 * Send an event to have a timestamp inserted in the
 			 * FIFO.
 			 */
-			motion_sense_insert_timestamp();
+			motion_sense_insert_timestamp(__hw_clock_source_read());
 #endif
 			sensor->config[SENSOR_CONFIG_AP].odr =
 				in->sensor_odr.data |
@@ -1535,7 +1560,8 @@ static int command_accelresolution(int argc, char **argv)
 		 * Write new resolution, if it returns invalid arg, then
 		 * return a parameter error.
 		 */
-		if (sensor->drv->set_resolution(sensor, data, round)
+		if (sensor->drv->set_resolution &&
+		    sensor->drv->set_resolution(sensor, data, round)
 			== EC_ERROR_INVAL)
 			return EC_ERROR_PARAM2;
 	} else {

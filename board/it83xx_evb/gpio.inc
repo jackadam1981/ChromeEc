@@ -9,7 +9,7 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 GPIO_INT(POWER_BUTTON_L, PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   power_button_interrupt)
-#ifndef CONFIG_ESPI_VW_SIGNALS
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 GPIO_INT(PCH_PLTRST_L,   PIN(E, 3), GPIO_INT_BOTH | GPIO_PULL_UP,   lpcrst_interrupt)
 #endif
 GPIO_INT(LID_OPEN,       PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)
@@ -35,7 +35,7 @@ GPIO(USBPD_PORTA_VBUS_DROP,   PIN(E, 5), GPIO_OUT_LOW)
 GPIO(PCH_SMI_L,      PIN(D, 3), GPIO_OUT_HIGH)
 GPIO(PCH_SCI_L,      PIN(D, 4), GPIO_OUT_HIGH)
 GPIO(GATE_A20_H,     PIN(B, 5), GPIO_OUT_HIGH)
-GPIO(PCH_RCIN_L,     PIN(B, 6), GPIO_OUT_HIGH)
+GPIO(SYS_RESET_L,    PIN(B, 6), GPIO_OUT_HIGH)
 GPIO(LPC_CLKRUN_L,   PIN(H, 0), GPIO_OUT_LOW)
 GPIO(PCH_WAKE_L,     PIN(B, 7), GPIO_ODR_HIGH) /* Wake signal from EC to PCH */
 

@@ -13,6 +13,7 @@
  */
 
 #include "charge_manager.h"
+#include "charger.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -39,15 +40,17 @@ static void update_vbus_supplier(int port, int vbus_level)
 	}
 }
 
-#ifndef CONFIG_USBC_PPC
-#ifdef CONFIG_USB_PD_5V_EN_ACTIVE_LOW
+#ifdef CONFIG_USB_PD_5V_EN_CUSTOM
+#define USB_5V_EN(port) board_is_sourcing_vbus(port)
+#elif defined(CONFIG_USBC_PPC)
+#define USB_5V_EN(port) ppc_is_sourcing_vbus(port)
+#elif defined(CONFIG_USB_PD_5V_CHARGER_CTRL)
+#define USB_5V_EN(port) charger_is_sourcing_otg_power(port)
+#elif defined(CONFIG_USB_PD_5V_EN_ACTIVE_LOW)
 #define USB_5V_EN(port) !gpio_get_level(GPIO_USB_C##port##_5V_EN_L)
 #else
 #define USB_5V_EN(port) gpio_get_level(GPIO_USB_C##port##_5V_EN)
 #endif
-#else /* defined(CONFIG_USBC_PPC) */
-#define USB_5V_EN(port) ppc_is_sourcing_vbus(port)
-#endif /* !defined(CONFIG_USBC_PPC) */
 
 int usb_charger_port_is_sourcing_vbus(int port)
 {
@@ -87,7 +90,7 @@ static void usb_charger_init(void)
 	int i;
 	struct charge_port_info charge_none;
 
-	/* Initialize all charge suppliers to 0 */
+	/* Initialize all charge suppliers */
 	charge_none.voltage = USB_CHARGER_VOLTAGE_MV;
 	charge_none.current = 0;
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
@@ -106,15 +109,8 @@ static void usb_charger_init(void)
 		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
 					     i,
 					     &charge_none);
-
-#ifndef CONFIG_USB_PD_VBUS_DETECT_TCPC
-		/*
-		 * Initialize VBUS supplier based on whether VBUS is present.
-		 * For CONFIG_USB_PD_VBUS_DETECT_TCPC, usb_charger_vbus_change()
-		 * will be called directly from TCPC alert.
-		 */
-		update_vbus_supplier(i, pd_snk_is_vbus_provided(i));
-#endif
+		/* Initialize VBUS supplier based on whether VBUS is present. */
+		update_vbus_supplier(i, pd_is_vbus_present(i));
 	}
 }
 DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);

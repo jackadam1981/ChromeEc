@@ -20,20 +20,18 @@
 #include <termios.h>
 #include <unistd.h>
 
-
-#ifndef __packed
-#define __packed __attribute__((packed))
-#endif
-
 #include "config.h"
 
 #include "ccd_config.h"
 #include "compile_time_macros.h"
+#include "generated_version.h"
+#include "gsctool.h"
 #include "misc_util.h"
 #include "signed_header.h"
 #include "tpm_vendor_cmds.h"
 #include "upgrade_fw.h"
 #include "usb_descriptor.h"
+#include "verify_ro.h"
 
 #ifdef DEBUG
 #define debug printf
@@ -163,13 +161,6 @@
 #define SUBCLASS USB_SUBCLASS_GOOGLE_CR50
 #define PROTOCOL USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE
 
-enum exit_values {
-	noop = 0,	  /* All up to date, no update needed. */
-	all_updated = 1,  /* Update completed, reboot required. */
-	rw_updated  = 2,  /* RO was not updated, reboot required. */
-	update_error = 3  /* Something went wrong. */
-};
-
 /*
  * Need to create an entire TPM PDU when upgrading over /dev/tpm0 and need to
  * have space to prepare the entire PDU.
@@ -202,49 +193,16 @@ struct upgrade_pkt {
  */
 #define MAX_BUF_SIZE	500
 
-struct usb_endpoint {
-	struct libusb_device_handle *devh;
-	uint8_t ep_num;
-	int     chunk_len;
-};
-
-struct transfer_descriptor {
-	/*
-	 * Set to true for use in an upstart script. Do not reboot after
-	 * transfer, and do not transfer RW if versions are the same.
-	 *
-	 * When using in development environment it is beneficial to transfer
-	 * RW images with the same version, as they get started based on the
-	 * header timestamp.
-	 */
-	uint32_t upstart_mode;
-
-	/*
-	 * offsets of RO and WR sections available for update (not currently
-	 * active).
-	 */
-	uint32_t ro_offset;
-	uint32_t rw_offset;
-	uint32_t post_reset;
-	enum transfer_type {
-		usb_xfer = 0,
-		dev_xfer = 1,
-		ts_xfer = 2
-	} ep_type;
-	union {
-		struct usb_endpoint uep;
-		int tpm_fd;
-	};
-};
-
+static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "abcd:fhikoPprstUu";
+static char *short_opts = "abcd:fhIikO:oPprstUuVv";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		0,   NULL, 'a'},
 	{"binvers",	0,   NULL, 'b'},
 	{"board_id",    2,   NULL, 'i'},
+	{"ccd_info",    0,   NULL, 'I'},
 	{"ccd_lock",    0,   NULL, 'k'},
 	{"ccd_open",    0,   NULL, 'o'},
 	{"ccd_unlock",  0,   NULL, 'U'},
@@ -252,11 +210,14 @@ static const struct option long_opts[] = {
 	{"device",	1,   NULL, 'd'},
 	{"fwver",	0,   NULL, 'f'},
 	{"help",	0,   NULL, 'h'},
+	{"openbox_rma", 1,   NULL, 'O'},
 	{"password",	0,   NULL, 'P'},
 	{"post_reset",	0,   NULL, 'p'},
 	{"rma_auth",	2,   NULL, 'r'},
 	{"systemdev",	0,   NULL, 's'},
 	{"trunks_send",	0,   NULL, 't'},
+	{"verbose",	0,   NULL, 'V'},
+	{"version",	0,   NULL, 'v'},
 	{"upstart",	0,   NULL, 'u'},
 	{},
 };
@@ -546,21 +507,27 @@ static void usage(int errs)
 	       "\n"
 	       "  -a,--any                 Try any interfaces to find Cr50"
 	       " (-d, -s, -t are all ignored)\n"
-	       "  -b,--binvers             Report versions of image's "
+	       "  -b,--binvers             Report versions of Cr50 image's "
 				"RW and RO headers, do not update\n"
 	       "  -c,--corrupt             Corrupt the inactive rw\n"
 	       "  -d,--device  VID:PID     USB device (default %04x:%04x)\n"
-	       "  -f,--fwver               Report running firmware versions\n"
+	       "  -f,--fwver               "
+	       "Report running Cr50 firmware versions\n"
 	       "  -h,--help                Show this message\n"
+	       "  -I,--ccd_info            Get information about CCD state\n"
 	       "  -i,--board_id [ID[:FLAGS]]\n"
 	       "                           Get or set Info1 board ID fields\n"
 	       "                           ID could be 32 bit hex or 4 "
 	       "character string.\n"
 	       "  -k,--ccd_lock            Lock CCD\n"
+	       "  -O,--openbox_rma <desc_file>\n"
+	       "                           Verify other device's RO integrity\n"
+	       "                           using information provided in "
+	       "<desc file>\n"
 	       "  -o,--ccd_open            Start CCD open sequence\n"
 	       "  -P,--password <password>\n"
 	       "                           Set or clear CCD password. Use\n"
-	       "                           'clear:<cur password>' to clear it.\n"
+	       "                           'clear:<cur password>' to clear it\n"
 	       "  -p,--post_reset          Request post reset after transfer\n"
 	       "  -r,--rma_auth [[auth_code|\"disable\"]\n"
 	       "                           Request RMA challenge, process "
@@ -571,6 +538,8 @@ static void usage(int errs)
 	       "  -U,--ccd_unlock          Start CCD unlock sequence\n"
 	       "  -u,--upstart             "
 			"Upstart mode (strict header checks)\n"
+	       "  -V,--verbose             Enable debug messages\n"
+	       "  -v,--version             Report this utility version\n"
 	       "\n", progname, VID, PID);
 
 	exit(errs ? update_error : noop);
@@ -1245,12 +1214,12 @@ static int transfer_image(struct transfer_descriptor *td,
 	return num_txed_sections;
 }
 
-static uint32_t send_vendor_command(struct transfer_descriptor *td,
-				uint16_t subcommand,
-				const void *command_body,
-				size_t command_body_size,
-				void *response,
-				size_t *response_size)
+uint32_t send_vendor_command(struct transfer_descriptor *td,
+			     uint16_t subcommand,
+			     const void *command_body,
+			     size_t command_body_size,
+			     void *response,
+			     size_t *response_size)
 {
 	int32_t rv;
 
@@ -1476,18 +1445,6 @@ static int show_headers_versions(const void *image)
 	return 0;
 }
 
-struct board_id {
-	uint32_t type;		/* Board type */
-	uint32_t type_inv;	/* Board type (inverted) */
-	uint32_t flags;		/* Flags */
-};
-
-enum board_id_action {
-	bid_none,
-	bid_get,
-	bid_set
-};
-
 /*
  * The default flag value will allow to run images built for any hardware
  * generation of a particular board ID.
@@ -1624,57 +1581,21 @@ static void process_password(struct transfer_descriptor *td)
 	exit(update_error);
 }
 
-static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
-			      int ccd_open, int ccd_lock)
+void poll_for_pp(struct transfer_descriptor *td,
+		 uint16_t command,
+		 uint8_t poll_type)
 {
-	uint8_t payload;
 	uint8_t response;
 	uint8_t prev_response;
 	size_t response_size;
 	int rv;
 
-	if (ccd_unlock)
-		payload = CCDV_UNLOCK;
-	else if (ccd_open)
-		payload = CCDV_OPEN;
-	else
-		payload = CCDV_LOCK;
-
-	response_size = sizeof(response);
-	rv = send_vendor_command(td, VENDOR_CC_CCD,
-				 &payload, sizeof(payload),
-				 &response, &response_size);
-
-	/*
-	 * If password is required - try sending the same subcommand
-	 * accompanied by user password.
-	 */
-	if (rv == VENDOR_RC_PASSWORD_REQUIRED)
-		rv = common_process_password(td, payload);
-
-	if (rv == VENDOR_RC_SUCCESS)
-		return;
-
-	if (rv != VENDOR_RC_IN_PROGRESS) {
-		fprintf(stderr, "Error: rv %d, response %d\n",
-			rv, response_size ? response : 0);
-		exit(update_error);
-	}
-
-	/*
-	 * Physical presence process started, poll for the state the user
-	 * asked for. Only two subcommands would return 'IN_PROGRESS'.
-	 */
-	if (ccd_unlock)
-		payload = CCDV_PP_POLL_UNLOCK;
-	else
-		payload = CCDV_PP_POLL_OPEN;
-
 	prev_response = ~0; /* Guaranteed invalid value. */
+
 	while (1) {
 		response_size = sizeof(response);
-		rv = send_vendor_command(td, VENDOR_CC_CCD,
-					 &payload, sizeof(payload),
+		rv = send_vendor_command(td, command,
+					 &poll_type, sizeof(poll_type),
 					 &response, &response_size);
 
 		if (((rv != VENDOR_RC_SUCCESS) && (rv != VENDOR_RC_IN_PROGRESS))
@@ -1710,28 +1631,158 @@ static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
 
 		usleep(500 * 1000); /* Poll every half a second. */
 	}
+
 }
 
-static void process_bid(struct transfer_descriptor *td,
-			enum board_id_action bid_action,
-			struct board_id *bid)
+static void print_ccd_info(void *response, size_t response_size)
+{
+	struct ccd_info_response ccd_info;
+	size_t i;
+	const struct ccd_capability_info cap_info[] = CAP_INFO_DATA;
+	const char *state_names[] = CCD_STATE_NAMES;
+	const char *cap_state_names[] = CCD_CAP_STATE_NAMES;
+	uint32_t caps_bitmap = 0;
+
+	if (response_size != sizeof(ccd_info)) {
+		fprintf(stderr, "Unexpected CCD info response size %zd\n",
+			response_size);
+		exit(update_error);
+	}
+
+	memcpy(&ccd_info, response, sizeof(ccd_info));
+
+	/* Convert it back to host endian format. */
+	ccd_info.ccd_flags = be32toh(ccd_info.ccd_flags);
+	for (i = 0; i < ARRAY_SIZE(ccd_info.ccd_caps_current); i++) {
+		ccd_info.ccd_caps_current[i] =
+			be32toh(ccd_info.ccd_caps_current[i]);
+		ccd_info.ccd_caps_defaults[i] =
+			be32toh(ccd_info.ccd_caps_defaults[i]);
+	}
+
+	/* Now report CCD state on the console. */
+	printf("State: %s\n", ccd_info.ccd_state > ARRAY_SIZE(state_names) ?
+	       "Error" : state_names[ccd_info.ccd_state]);
+	printf("Password: %s\n", ccd_info.ccd_has_password ? "Set" : "None");
+	printf("Flags: %#06x\n", ccd_info.ccd_flags);
+	printf("Capabilities, current and default:\n");
+	for (i = 0; i < CCD_CAP_COUNT; i++) {
+		int is_enabled;
+		int index;
+		int shift;
+		int cap_current;
+		int cap_default;
+
+		index = i / (32/2);
+		shift = (i % (32/2)) * 2;
+
+		cap_current = (ccd_info.ccd_caps_current[index] >> shift) & 3;
+		cap_default = (ccd_info.ccd_caps_defaults[index] >> shift) & 3;
+
+		if (ccd_info.ccd_force_disabled) {
+			is_enabled = 0;
+		} else {
+			switch (cap_current) {
+			case CCD_CAP_STATE_ALWAYS:
+				is_enabled = 1;
+				break;
+			case CCD_CAP_STATE_UNLESS_LOCKED:
+				is_enabled = (ccd_info.ccd_state !=
+					      CCD_STATE_LOCKED);
+				break;
+			default:
+				is_enabled = (ccd_info.ccd_state ==
+					      CCD_STATE_OPENED);
+				break;
+			}
+		}
+
+		printf("  %-15s %c %s",
+		       cap_info[i].name,
+		       is_enabled ? 'Y' : '-',
+		       cap_state_names[cap_current]);
+
+		if (cap_current != cap_default)
+			printf("  (%s)", cap_state_names[cap_default]);
+
+		printf("\n");
+
+		if (is_enabled)
+			caps_bitmap |= (1 << i);
+	}
+	printf("CCD caps bitmap: %#x\n", caps_bitmap);
+}
+
+static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
+			      int ccd_open, int ccd_lock, int ccd_info)
+{
+	uint8_t payload;
+	 /* Max possible response size is when ccd_info is requested. */
+	uint8_t response[sizeof(struct ccd_info_response)];
+	size_t response_size;
+	int rv;
+
+	if (ccd_unlock)
+		payload = CCDV_UNLOCK;
+	else if (ccd_open)
+		payload = CCDV_OPEN;
+	else if (ccd_lock)
+		payload = CCDV_LOCK;
+	else
+		payload = CCDV_GET_INFO;
+
+	response_size = sizeof(response);
+	rv = send_vendor_command(td, VENDOR_CC_CCD,
+				 &payload, sizeof(payload),
+				 &response, &response_size);
+
+	/*
+	 * If password is required - try sending the same subcommand
+	 * accompanied by user password.
+	 */
+	if (rv == VENDOR_RC_PASSWORD_REQUIRED)
+		rv = common_process_password(td, payload);
+
+	if (rv == VENDOR_RC_SUCCESS) {
+		if (ccd_info)
+			print_ccd_info(response, response_size);
+		return;
+	}
+
+	if (rv != VENDOR_RC_IN_PROGRESS) {
+		fprintf(stderr, "Error: rv %d, response %d\n",
+			rv, response_size ? response[0] : 0);
+		exit(update_error);
+	}
+
+	/*
+	 * Physical presence process started, poll for the state the user
+	 * asked for. Only two subcommands would return 'IN_PROGRESS'.
+	 */
+	if (ccd_unlock)
+		poll_for_pp(td, VENDOR_CC_CCD, CCDV_PP_POLL_UNLOCK);
+	else
+		poll_for_pp(td, VENDOR_CC_CCD, CCDV_PP_POLL_OPEN);
+}
+
+void process_bid(struct transfer_descriptor *td,
+		 enum board_id_action bid_action,
+		 struct board_id *bid)
 {
 	size_t response_size;
 
 	if (bid_action == bid_get) {
-		struct board_id bid;
 
-		response_size = sizeof(bid);
+		response_size = sizeof(*bid);
 		send_vendor_command(td, VENDOR_CC_GET_BOARD_ID,
-				    &bid, sizeof(bid),
-				    &bid, &response_size);
+				    bid, sizeof(*bid),
+				    bid, &response_size);
 
-		if (response_size == sizeof(bid)) {
+		if (response_size == sizeof(*bid)) {
 			printf("Board ID space: %08x:%08x:%08x\n",
-			       be32toh(bid.type), be32toh(bid.type_inv),
-			       be32toh(bid.flags));
+			       be32toh(bid->type), be32toh(bid->type_inv),
+			       be32toh(bid->flags));
 			return;
-
 		}
 		fprintf(stderr, "Error reading board ID: response size %zd,"
 			" first byte %#02x\n", response_size,
@@ -1812,7 +1863,7 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode)
 
 	if (!strcmp(authcode, "disable")) {
 		printf("Disabling RMA mode\n");
-		send_vendor_command(td, VENDOR_CC_DISABLE_RMA, NULL, 0,
+		send_vendor_command(td, VENDOR_CC_DISABLE_FACTORY, NULL, 0,
 				    rma_response, &response_size);
 		if (response_size) {
 			fprintf(stderr, "Failed disabling RMA, error %d\n",
@@ -1840,6 +1891,15 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode)
 	printf("RMA unlock succeeded.\n");
 }
 
+static void report_version(void)
+{
+	/* Get version from the generated file, ignore the underscore prefix. */
+	const char *v = VERSION + 1;
+
+	printf("Version: %s, built on %s by %s\n", v, DATE, BUILDER);
+	exit(0);
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -1861,9 +1921,11 @@ int main(int argc, char *argv[])
 	int ccd_open = 0;
 	int ccd_unlock = 0;
 	int ccd_lock = 0;
+	int ccd_info = 0;
 	int try_all_transfer = 0;
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
+	const char *openbox_desc_file = NULL;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -1910,6 +1972,9 @@ int main(int argc, char *argv[])
 		case 'h':
 			usage(errorcnt);
 			break;
+		case 'I':
+			ccd_info = 1;
+			break;
 		case 'i':
 			if (!optarg && argv[optind] && argv[optind][0] != '-')
 				/* optional argument present. */
@@ -1924,6 +1989,9 @@ int main(int argc, char *argv[])
 			break;
 		case 'k':
 			ccd_lock = 1;
+			break;
+		case 'O':
+			openbox_desc_file = optarg;
 			break;
 		case 'o':
 			ccd_open = 1;
@@ -1965,6 +2033,12 @@ int main(int argc, char *argv[])
 		case 'u':
 			td.upstart_mode = 1;
 			break;
+		case 'V':
+			verbose_mode = 1;
+			break;
+		case 'v':
+			report_version();  /* This will call exit(). */
+			break;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -1992,13 +2066,15 @@ int main(int argc, char *argv[])
 		usage(errorcnt);
 
 	if ((bid_action == bid_none) &&
+	    !ccd_info &&
 	    !ccd_lock &&
 	    !ccd_open &&
 	    !ccd_unlock &&
 	    !corrupt_inactive_rw &&
 	    !password &&
 	    !rma &&
-	    !show_fw_ver) {
+	    !show_fw_ver &&
+	    !openbox_desc_file) {
 		if (optind >= argc) {
 			fprintf(stderr,
 				"\nERROR: Missing required <binary image>\n\n");
@@ -2024,8 +2100,10 @@ int main(int argc, char *argv[])
 	}
 
 	if (((bid_action != bid_none) + !!rma + !!password +
-	     !!ccd_open + !!ccd_unlock + !!ccd_lock) > 2) {
-		fprintf(stderr, "ERROR: options -i, -k, -o, -P, -r, and -u "
+	     !!ccd_open + !!ccd_unlock + !!ccd_lock + !!ccd_info +
+	     !!openbox_desc_file) > 2) {
+		fprintf(stderr, "ERROR: "
+			"options -I -i, -k, -O, -o, -P, -r, and -u "
 			"are mutually exclusive\n");
 		exit(update_error);
 	}
@@ -2043,8 +2121,12 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	if (ccd_unlock || ccd_open || ccd_lock)
-		process_ccd_state(&td, ccd_unlock, ccd_open, ccd_lock);
+	if (openbox_desc_file)
+		return verify_ro(&td, openbox_desc_file);
+
+	if (ccd_unlock || ccd_open || ccd_lock || ccd_info)
+		process_ccd_state(&td, ccd_unlock, ccd_open,
+				  ccd_lock, ccd_info);
 
 	if (password)
 		process_password(&td);

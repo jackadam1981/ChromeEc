@@ -10,7 +10,6 @@
 #include "common.h"
 #include "console.h"
 #include "it83xx_pd.h"
-#include "ec2i_chip.h"
 #include "fan.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -106,19 +105,21 @@ const struct pwm_t pwm_channels[] = {
 
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-const struct fan_t fans[] = {
-	{.flags = FAN_USE_RPM_MODE,
-	 .rpm_min = 1500,
-	 .rpm_start = 1500,
-	 .rpm_max = 6500,
-	/*
-	 * index of pwm_channels, not pwm output channel.
-	 * pwm output channel is member "channel" of pwm_t.
-	 */
-	 .ch = 0,
-	 .pgood_gpio = -1,
-	 .enable_gpio = -1,
-	},
+const struct fan_conf fan_conf_0 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = 0,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = -1,
+};
+
+const struct fan_rpm fan_rpm_0 = {
+	.rpm_min = 1500,
+	.rpm_start = 1500,
+	.rpm_max = 6500,
+};
+
+struct fan_t fans[] = {
+	{ .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == CONFIG_FANS);
 
@@ -139,95 +140,6 @@ const struct fan_tach_t fan_tach[] = {
 	{TACH_CH_TACH0A, 2, 50, 30},
 };
 BUILD_ASSERT(ARRAY_SIZE(fan_tach) == PWM_HW_CH_TOTAL);
-
-/* PNPCFG settings */
-const struct ec2i_t pnpcfg_settings[] = {
-	/* Select logical device 06h(keyboard) */
-	{HOST_INDEX_LDN, LDN_KBC_KEYBOARD},
-	/* Set IRQ=01h for logical device */
-	{HOST_INDEX_IRQNUMX, 0x01},
-	/* Enable logical device */
-	{HOST_INDEX_LDA, 0x01},
-
-	/* Select logical device 05h(mouse) */
-	{HOST_INDEX_LDN, LDN_KBC_MOUSE},
-	/* Set IRQ=0Ch for logical device */
-	{HOST_INDEX_IRQNUMX, 0x0C},
-	/* Enable logical device */
-	{HOST_INDEX_LDA, 0x01},
-
-	/* Select logical device 11h(PM1 ACPI) */
-	{HOST_INDEX_LDN, LDN_PMC1},
-	/* Set IRQ=00h for logical device */
-	{HOST_INDEX_IRQNUMX, 0x00},
-	/* Enable logical device */
-	{HOST_INDEX_LDA, 0x01},
-
-	/* Select logical device 12h(PM2) */
-	{HOST_INDEX_LDN, LDN_PMC2},
-	/* I/O Port Base Address 200h/204h */
-	{HOST_INDEX_IOBAD0_MSB, 0x02},
-	{HOST_INDEX_IOBAD0_LSB, 0x00},
-	{HOST_INDEX_IOBAD1_MSB, 0x02},
-	{HOST_INDEX_IOBAD1_LSB, 0x04},
-	/* Set IRQ=00h for logical device */
-	{HOST_INDEX_IRQNUMX, 0x00},
-	/* Enable logical device */
-	{HOST_INDEX_LDA, 0x01},
-
-	/* Select logical device 0Fh(SMFI) */
-	{HOST_INDEX_LDN, LDN_SMFI},
-	/* H2RAM LPC I/O cycle Dxxx */
-	{HOST_INDEX_DSLDC6, 0x00},
-	/* Enable H2RAM LPC I/O cycle */
-	{HOST_INDEX_DSLDC7, 0x01},
-	/* Enable logical device */
-	{HOST_INDEX_LDA, 0x01},
-
-	/* Select logical device 17h(PM3) */
-	{HOST_INDEX_LDN, LDN_PMC3},
-	/* I/O Port Base Address 80h */
-	{HOST_INDEX_IOBAD0_MSB, 0x00},
-	{HOST_INDEX_IOBAD0_LSB, 0x80},
-	{HOST_INDEX_IOBAD1_MSB, 0x00},
-	{HOST_INDEX_IOBAD1_LSB, 0x00},
-	/* Set IRQ=00h for logical device */
-	{HOST_INDEX_IRQNUMX, 0x00},
-	/* Enable logical device */
-	{HOST_INDEX_LDA, 0x01},
-	/* Select logical device 10h(RTCT) */
-	{HOST_INDEX_LDN, LDN_RTCT},
-	/* P80L Begin Index */
-	{HOST_INDEX_DSLDC4, P80L_P80LB},
-	/* P80L End Index */
-	{HOST_INDEX_DSLDC5, P80L_P80LE},
-	/* P80L Current Index */
-	{HOST_INDEX_DSLDC6, P80L_P80LC},
-#ifdef CONFIG_UART_HOST
-	/* Select logical device 2h(UART2) */
-	{HOST_INDEX_LDN, LDN_UART2},
-	/*
-	 * I/O port base address is 2F8h.
-	 * Host can use LPC I/O port 0x2F8 ~ 0x2FF to access UART2.
-	 * See specification 7.24.4 for more detial.
-	 */
-	{HOST_INDEX_IOBAD0_MSB, 0x02},
-	{HOST_INDEX_IOBAD0_LSB, 0xF8},
-	/* IRQ number is 3 */
-	{HOST_INDEX_IRQNUMX, 0x03},
-	/*
-	 * Interrupt Request Type Select
-	 * bit1, 0: IRQ request is buffered and applied to SERIRQ.
-	 *       1: IRQ request is inverted before being applied to SERIRQ.
-	 * bit0, 0: Edge triggered mode.
-	 *       1: Level triggered mode.
-	 */
-	{HOST_INDEX_IRQTP, 0x02},
-	/* Enable logical device */
-	{HOST_INDEX_LDA, 0x01},
-#endif
-};
-BUILD_ASSERT(ARRAY_SIZE(pnpcfg_settings) == EC2I_SETTING_COUNT);
 
 /* Wake-up pins for hibernate */
 const enum gpio_signal hibernate_wake_pins[] = {

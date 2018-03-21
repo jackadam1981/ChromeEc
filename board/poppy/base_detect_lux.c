@@ -11,6 +11,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -86,10 +87,14 @@ int board_is_base_connected(void)
 /**
  * Board-specific routine to enable power distribution between lid and base
  * (current can flow both ways).
+ *
+ * We only allow the base power to be enabled if the detection code knows that
+ * the base is connected.
  */
 void board_enable_base_power(int enable)
 {
-	gpio_set_level(GPIO_PPVAR_VAR_BASE, enable);
+	gpio_set_level(GPIO_PPVAR_VAR_BASE,
+		enable && current_base_status == BASE_CONNECTED);
 }
 
 /*
@@ -109,6 +114,8 @@ static void base_detect_change(enum base_status status)
 	if (current_base_status == status)
 		return;
 
+	current_base_status = status;
+
 	/* Enable pull-down if connected. */
 	gpio_set_level(GPIO_EC_COMM_PD, !connected);
 	/* Disable power to/from base as quickly as possible. */
@@ -122,7 +129,6 @@ static void base_detect_change(enum base_status status)
 	task_wake(TASK_ID_CHARGER);
 
 	tablet_set_mode(!connected);
-	current_base_status = status;
 }
 
 static void print_base_detect_value(const char *str, int v)
@@ -189,6 +195,13 @@ void base_detect_interrupt(enum gpio_signal signal)
 				   BASE_DETECT_DEBOUNCE_US);
 
 	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
+}
+
+void board_base_reset(void)
+{
+	CPRINTS("Resetting base.");
+	base_detect_change(BASE_UNKNOWN);
+	hook_call_deferred(&base_detect_deferred_data, BASE_DETECT_RETRY_US);
 }
 
 static void base_init(void)

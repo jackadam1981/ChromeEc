@@ -190,8 +190,8 @@ static void espi_vw_config_out(const struct vwevsm_config_t *config)
 			index = VWEVSM_IDX_GET(NPCX_VWEVSM(i));
 			/* Set VW output register */
 			if (index == config->idx) {
-				/* Get Wire field */
-				val = NPCX_VWEVSM(i) & 0x0F;
+				/* Preserve WIRE(3-0) and HW_WIRE (27-24). */
+				val = NPCX_VWEVSM(i) & 0x0F00000F;
 				val |= VWEVSM_FIELD(config->idx,
 						config->idx_en,
 						config->valid,
@@ -503,7 +503,7 @@ void __espi_wk2a_interrupt(void)
 	if (IS_BIT_SET(pending_bits, 6))
 		espi_vw_evt_oobrst();
 }
-DECLARE_IRQ(NPCX_IRQ_WKINTA_2, __espi_wk2a_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_WKINTA_2, __espi_wk2a_interrupt, 3);
 
 /* Handle eSPI virtual wire interrupt 2 */
 void __espi_wk2b_interrupt(void)
@@ -519,7 +519,7 @@ void __espi_wk2b_interrupt(void)
 	if (IS_BIT_SET(pending_bits, 0))
 		espi_vw_evt_hostrst_warn();
 }
-DECLARE_IRQ(NPCX_IRQ_WKINTB_2, __espi_wk2b_interrupt, 2);
+DECLARE_IRQ(NPCX_IRQ_WKINTB_2, __espi_wk2b_interrupt, 3);
 
 /* Interrupt handler for eSPI status changed */
 void espi_interrupt(void)
@@ -595,7 +595,7 @@ void espi_interrupt(void)
 		status = NPCX_ESPISTS & mask;
 	}
 }
-DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 3);
+DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 4);
 
 /*****************************************************************************/
 /* eSPI Initialization functions */

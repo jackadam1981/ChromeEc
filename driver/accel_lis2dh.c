@@ -11,12 +11,16 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
 #include "task.h"
 #include "util.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/stm_mems_common.h"
+
+#define CPUTS(outstr) cputs(CC_ACCEL, outstr)
+#define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 
 #ifdef CONFIG_ACCEL_FIFO
 /**
@@ -49,25 +53,25 @@ static int enable_fifo(const struct motion_sensor_t *s, int mode, int en_dis)
  */
 static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 {
-	int err, normalized_rate;
+	int err, normalized_range;
 	struct stprivate_data *data = s->drv_data;
 	int val;
 
 	val = LIS2DH_FS_TO_REG(range);
-	normalized_rate = LIS2DH_FS_TO_NORMALIZE(range);
+	normalized_range = ST_NORMALIZE_RATE(range);
 
-	if (rnd && (range < normalized_rate))
+	if (rnd && (range < normalized_range))
 		val++;
 
 	/* Adjust rounded values */
 	if (val > LIS2DH_FS_16G_VAL) {
 		val = LIS2DH_FS_16G_VAL;
-		normalized_rate = 16;
+		normalized_range = 16;
 	}
 
 	if (val < LIS2DH_FS_2G_VAL) {
 		val = LIS2DH_FS_2G_VAL;
-		normalized_rate = 2;
+		normalized_range = 2;
 	}
 
 	/* Lock accel resource to prevent another task from attempting
@@ -78,7 +82,7 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 
 	/* Save Gain in range for speed up data path */
 	if (err == EC_SUCCESS)
-		data->base.range = LIS2DH_FS_TO_GAIN(normalized_rate);
+		data->base.range = normalized_range;
 
 	mutex_unlock(s->mutex);
 	return EC_SUCCESS;
@@ -125,10 +129,10 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	/* Adjust rounded value */
 	if (reg_val > LIS2DH_ODR_400HZ_VAL) {
 		reg_val = LIS2DH_ODR_400HZ_VAL;
-		normalized_rate = 400000;
+		normalized_rate = LIS2DH_ODR_MAX_VAL;
 	} else if (reg_val < LIS2DH_ODR_1HZ_VAL) {
 		reg_val = LIS2DH_ODR_1HZ_VAL;
-		normalized_rate = 1000;
+		normalized_rate = LIS2DH_ODR_MIN_VAL;
 	}
 
 	/*
@@ -197,7 +201,12 @@ static int load_fifo(struct motion_sensor_t *s)
 			vect.data[2] = axis[2];
 			vect.flags = 0;
 			vect.sensor_num = 0;
-			motion_sense_fifo_add_unit(&vect, s, 3);
+			motion_sense_fifo_add_data(&vect, s, 3,
+						   __hw_clock_source_read());
+			/*
+			 * TODO: get time at a more accurate spot.
+			 * Like in lis2dh_interrupt
+			 */
 		}
 	} while(!done);
 
@@ -311,10 +320,6 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	/* Transform from LSB to real data with rotation and gain */
 	st_normalize(s, v, raw);
 
-	/* apply offset in the device coordinates */
-	for (i = X; i <= Z; i++)
-		v[i] += (data->offset[i] << 5) / data->base.range;
-
 	return EC_SUCCESS;
 }
 
@@ -391,16 +396,12 @@ const struct accelgyro_drv lis2dh_drv = {
 	.read = read,
 	.set_range = set_range,
 	.get_range = get_range,
-	.set_resolution = st_set_resolution,
 	.get_resolution = st_get_resolution,
 	.set_data_rate = set_data_rate,
 	.get_data_rate = st_get_data_rate,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 	.perform_calib = NULL,
-#ifdef CONFIG_ACCEL_FIFO
-	.load_fifo = load_fifo,
-#endif /* CONFIG_ACCEL_FIFO */
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */

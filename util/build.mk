@@ -7,12 +7,16 @@
 #
 
 host-util-bin=ectool lbplay stm32mon ec_sb_firmware_update lbcc \
-	ec_parse_panicinfo
+	ec_parse_panicinfo cbi-util
 build-util-bin=ec_uartd iteflash
 build-util-art+=util/export_taskinfo.so
 ifeq ($(CHIP),npcx)
 build-util-bin+=ecst
 endif
+host-util-bin+=uartupdatetool
+uartupdatetool-objs=uut/main.o uut/cmd.o uut/opr.o uut/l_com_port.o \
+	uut/lib_crc.o
+$(out)/util/uartupdatetool: HOST_CFLAGS+=-Iutil/
 # Build on a limited subset of boards to save build time
 ifeq ($(BOARD),meowth_fp)
 build-util-bin+=ectool_servo
@@ -27,21 +31,31 @@ ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
 ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
 
+util/ectool.c: $(out)/ec_version.h
+
 ec_parse_panicinfo-objs=ec_parse_panicinfo.o ec_panicinfo.o
 
 # USB type-C Vendor Information File generation
 ifeq ($(CONFIG_USB_POWER_DELIVERY),y)
 build-util-bin+=genvif
 build-util-art+=$(BOARD)_vif.txt
-$(out)/util/genvif: $(out)/util/usb_pd_policy.o board/$(BOARD)/board.h \
+
+# usb_pd_policy.c can be in baseboard, or board, or both.
+genvif-pd-srcs=$(sort $(wildcard $(BASEDIR)/usb_pd_policy.c \
+			board/$(BOARD)/usb_pd_policy.c))
+genvif-pd-objs=$(genvif-pd-srcs:%.c=$(out)/util/%.o)
+deps-$(CONFIG_USB_POWER_DELIVERY) += $(genvif-pd-objs:%.o=%.o.d)
+
+$(out)/util/genvif: $(genvif-pd-objs) board/$(BOARD)/board.h \
 			include/usb_pd.h include/usb_pd_tcpm.h
-$(out)/util/genvif: BUILD_LDFLAGS+=$(out)/util/usb_pd_policy.o -flto
+$(out)/util/genvif: BUILD_LDFLAGS+=$(genvif-pd-objs) -flto
 
 STANDALONE_FLAGS=-ffreestanding -fno-builtin -nostdinc \
 			-Ibuiltin/ -D"__keep= " -DVIF_BUILD
-$(out)/util/usb_pd_policy.o: board/$(BOARD)/usb_pd_policy.c
+
+$(out)/util/%/usb_pd_policy.o: %/usb_pd_policy.c
+	-@ mkdir -p $(@D)
 	$(call quiet,c_to_vif,BUILDCC)
-deps-$(CONFIG_USB_POWER_DELIVERY) += $(out)/util/usb_pd_policy.o.d
 endif # CONFIG_USB_POWER_DELIVERY
 
 ifneq ($(CONFIG_TOUCHPAD_HASH_FW),)
@@ -55,13 +69,11 @@ OPENSSL_LDFLAGS := $(shell $(PKG_CONFIG) --libs openssl)
 
 $(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(OPENSSL_CFLAGS)
 $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(OPENSSL_LDFLAGS)
+
+deps-y += $(out)/util/gen_touchpad_hash.d
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
 
-build-util-bin += cbi-util
-$(out)/util/cbi-util: $(out)/util/crc8.o
-$(out)/util/cbi-util: BUILD_LDFLAGS=$(out)/util/crc8.o -static
-$(out)/util/crc8.o: common/crc8.c
-	$(call quiet,c_to_vif,BUILDCC)
+cbi-util-objs=../common/crc8.o ../common/cbi.o
 
 $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
 			$(out)/util/export_taskinfo_rw.o

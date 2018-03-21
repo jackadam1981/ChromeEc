@@ -13,6 +13,7 @@
 #include "util.h"
 #include "task.h"
 #include "timer.h"
+#include "watchdog.h"
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
 
@@ -265,13 +266,25 @@ static int command_wait(int argc, char **argv)
 	if (*e)
 		return EC_ERROR_PARAM1;
 
+	/*
+	 * Waiting for too long (e.g. 3s) will cause the EC to reset due to a
+	 * watchdog timeout. This is intended behaviour and is in fact used by
+	 * a FAFT test to check that the watchdog timer is working.
+	 */
 	udelay(i * 1000);
+
+	/*
+	 * Reload the watchdog so that issuing multiple small waitms commands
+	 * quickly one after the other will not cause a reset.
+	 */
+	watchdog_reload();
 
 	return EC_SUCCESS;
 }
+/* Typically a large delay (e.g. 3s) will cause a reset */
 DECLARE_CONSOLE_COMMAND(waitms, command_wait,
 			"msec",
-			"Busy-wait for msec");
+			"Busy-wait for msec (large delays will reset)");
 #endif
 
 #ifdef CONFIG_CMD_FORCETIME
@@ -306,6 +319,7 @@ DECLARE_CONSOLE_COMMAND(forcetime, command_force_time,
 			"Force current time");
 #endif
 
+#ifdef CONFIG_CMD_GETTIME
 static int command_get_time(int argc, char **argv)
 {
 	timestamp_t ts = get_time();
@@ -316,6 +330,7 @@ static int command_get_time(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(gettime, command_get_time,
 			     NULL,
 			     "Print current time");
+#endif
 
 #ifdef CONFIG_CMD_TIMERINFO
 int command_timer_info(int argc, char **argv)

@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "anx7447.h"
 #include "board_config.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -15,11 +16,14 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "driver/pmic_tps650x30.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accel_bma2x2.h"
+#include "driver/accel_kionix.h"
 #include "driver/als_opt3001.h"
 #include "driver/baro_bmp280.h"
+#include "driver/led/lm3509.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
@@ -29,6 +33,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "keyboard_backlight.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "math_util.h"
@@ -53,17 +58,18 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 #include "espi.h"
+#include "fan.h"
+#include "fan_chip.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-int board_get_version(void)
-{
-	static int version = 0;
-	/* dnojiri: Read version from EEPROM */
-	CPRINTS("Board version: %d", version);
-	return version;
-}
+#define USB_PD_PORT_PS8751	0
+#define USB_PD_PORT_ANX7447	1
+
+uint16_t board_version;
+uint8_t oem = PROJECT_NAMI;
+uint16_t sku;
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -144,11 +150,38 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+/******************************************************************************/
+/* Physical fans. These are logically separate from pwm_channels. */
+
+const struct fan_conf fan_conf_0 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = MFT_CH_0,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = -1,
+};
+
+const struct fan_rpm fan_rpm_0 = {
+	.rpm_min = 2800,
+	.rpm_start = 3000,
+	.rpm_max = 6000,
+};
+
+struct fan_t fans[FAN_CH_COUNT] = {
+	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
+};
+
+/******************************************************************************/
+/* MFT channels. These are logically separate from pwm_channels. */
+const struct mft_t mft_channels[] = {
+	[MFT_CH_0] = {NPCX_MFT_MODULE_2, TCKC_LFCLK, PWM_CH_FAN},
+};
+BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
+
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
 	{"tcpc0",     NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
 	{"tcpc1",     NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"battery",   NPCX_I2C_PORT1,   400, GPIO_I2C1_SCL,   GPIO_I2C1_SDA}, /* dnojiri:verify */
+	{"battery",   NPCX_I2C_PORT1,   100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
 	{"charger",   NPCX_I2C_PORT2,   100, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
 	{"pmic",      NPCX_I2C_PORT2,   400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
 	{"accelgyro", NPCX_I2C_PORT3,   400, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
@@ -158,20 +191,30 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{NPCX_I2C_PORT0_0, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{NPCX_I2C_PORT0_1, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	[USB_PD_PORT_PS8751] = {
+		.i2c_host_port = NPCX_I2C_PORT0_0,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
+		.drv = &ps8xxx_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
+	[USB_PD_PORT_ANX7447] = {
+		.i2c_host_port = NPCX_I2C_PORT0_1,
+		.i2c_slave_addr = AN7447_TCPC3_I2C_ADDR, /* Verified on v1.1 */
+		.drv = &anx7447_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0,
+		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = 1,
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		.port_addr = USB_PD_PORT_ANX7447,
+		.driver = &anx7447_usb_mux_driver,
+		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	}
 };
 
@@ -190,6 +233,12 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 
 void board_reset_pd_mcu(void)
 {
+	if (oem == PROJECT_AKALI && board_version < 0x0200) {
+		if (anx7447_flash_erase(USB_PD_PORT_ANX7447))
+			CPRINTS("Failed to erase OCM flash");
+
+	}
+
 	/* Assert reset */
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
 	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
@@ -203,9 +252,8 @@ void board_tcpc_init(void)
 	int port;
 
 	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_to_this_image()) {
+	if (!system_jumped_to_this_image())
 		board_reset_pd_mcu();
-	}
 
 	/* Enable TCPC interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
@@ -221,7 +269,7 @@ void board_tcpc_init(void)
 		mux->hpd_update(port, 0, 0);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
 uint16_t tcpc_get_alert_status(void)
 {
@@ -241,14 +289,13 @@ uint16_t tcpc_get_alert_status(void)
 }
 
 /*
- * F75303_Local is near CPU, and F75303_Remote is near 5V power ic.
+ * F75303_Remote1 is near CPU, and F75303_Remote2 is near 5V power IC.
  */
 const struct temp_sensor_t temp_sensors[] = {
-	{"F75303_Local", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,
-		F75303_IDX_LOCAL, 4},
-	{"F75303_Remote", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,
-		F75303_IDX_REMOTE, 4},
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0, 4},
+	{"F75303_Remote1", TEMP_SENSOR_TYPE_CPU, f75303_get_val,
+		F75303_IDX_REMOTE1, 4},
+	{"F75303_Remote2", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,
+		F75303_IDX_REMOTE2, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -385,38 +432,10 @@ pmic_error:
 	CPRINTS("PMIC init failed: %d", err);
 }
 
-static void chipset_pre_init(void)
+void chipset_pre_init_callback(void)
 {
 	board_pmic_init();
 }
-DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
-
-/* Initialize board. */
-static void board_init(void)
-{
-	/*
-	 * This enables pull-down on F_DIO1 (SPI MISO), and F_DIO0 (SPI MOSI),
-	 * whenever the EC is not doing SPI flash transactions. This avoids
-	 * floating SPI buffer input (MISO), which causes power leakage (see
-	 * b/64797021).
-	 */
-	NPCX_PUPD_EN1 |= (1 << NPCX_DEVPU1_F_SPI_PUD_EN);
-
-	/* Provide AC status to the PCH */
-	gpio_set_level(GPIO_PCH_ACPRESENT, extpower_is_present());
-
-	/* Enable sensors power supply */
-	/* dnojiri: how do we enable it? */
-
-	/* Enable VBUS interrupt */
-	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
-	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
-
-	/* Enable pericom BC1.2 interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
-	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
-}
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 /**
  * Buffer the AC present GPIO to the PCH.
@@ -486,9 +505,10 @@ void board_hibernate(void)
 }
 
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_LED_RED]   = { 3, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED_GREEN] = { 5, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED1]   = { 3, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED2] = { 5, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
+	[PWM_CH_KBLIGHT] = { 2, 0, 100 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -496,10 +516,12 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
+/* Lid accel private data */
 static struct bmi160_drv_data_t g_bmi160_data;
+static struct kionix_accel_data g_kx022_data;
 
 /* BMA255 private data */
-static struct bma2x2_accel_data g_bma255_data;
+static struct accelgyro_saved_data_t g_bma255_data;
 
 static struct opt3001_drv_data_t g_opt3001_data = {
 	.scale = 1,
@@ -508,170 +530,149 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 };
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
-    { FLOAT_TO_FP(-1), 0, 0},
-    { 0,  FLOAT_TO_FP(1), 0},
-    { 0, 0, FLOAT_TO_FP(-1)}
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
 const matrix_3x3_t lid_standard_ref = {
-    { FLOAT_TO_FP(-1), 0, 0},
-    { 0, FLOAT_TO_FP(-1), 0},
-    { 0,  0, FLOAT_TO_FP(1)}
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+
+const matrix_3x3_t lid_Rx180_Ry180 = {
+	{ FLOAT_TO_FP(-1), 0, 0 },
+	{ 0, FLOAT_TO_FP(-1), 0 },
+	{ 0, 0, FLOAT_TO_FP(1) }
+};
+
+const struct motion_sensor_t lid_accel_1 = {
+	.name = "Lid Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_KX022,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &kionix_accel_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_kx022_data,
+	.port = I2C_PORT_ACCEL,
+	.addr = KX022_ADDR1,
+	.rot_standard_ref = &lid_Rx180_Ry180,
+	.min_frequency = KX022_ACCEL_MIN_FREQ,
+	.max_frequency = KX022_ACCEL_MAX_FREQ,
+	.default_range = 2, /* g, to support tablet mode */
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+		/* Sensor on in S3 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		},
+	},
 };
 
 struct motion_sensor_t motion_sensors[] = {
-        [BASE_ACCEL] = {
-         .name = "Base Accel",
-         .active_mask = SENSOR_ACTIVE_S0_S3,
-         .chip = MOTIONSENSE_CHIP_BMI160,
-         .type = MOTIONSENSE_TYPE_ACCEL,
-         .location = MOTIONSENSE_LOC_BASE,
-         .drv = &bmi160_drv,
-         .mutex = &g_base_mutex,
-         .drv_data = &g_bmi160_data,
-         .port = I2C_PORT_ACCEL,
-         .addr = BMI160_ADDR0,
-         .rot_standard_ref = &base_standard_ref,
-         .min_frequency = BMI160_ACCEL_MIN_FREQ,
-         .max_frequency = BMI160_ACCEL_MAX_FREQ,
-         .default_range = 2, /* g, to support tablet mode  */
-         .config = {
-                 /* AP: by default use EC settings */
-                 [SENSOR_CONFIG_AP] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* EC use accel for angle detection */
-                 [SENSOR_CONFIG_EC_S0] = {
-                         .odr = 10000 | ROUND_UP_FLAG,
-                         .ec_rate = 100 * MSEC,
-                 },
-                 /* Sensor on in S3 */
-                 [SENSOR_CONFIG_EC_S3] = {
-                         .odr = 10000 | ROUND_UP_FLAG,
-                         .ec_rate = 0,
-                 },
-                 /* Sensor off in S5 */
-                 [SENSOR_CONFIG_EC_S5] = {
-                         .odr = 0,
-                         .ec_rate = 0
-                 },
-         },
-        },
-        [BASE_GYRO] = {
-         .name = "Base Gyro",
-         .active_mask = SENSOR_ACTIVE_S0_S3,
-         .chip = MOTIONSENSE_CHIP_BMI160,
-         .type = MOTIONSENSE_TYPE_GYRO,
-         .location = MOTIONSENSE_LOC_BASE,
-         .drv = &bmi160_drv,
-         .mutex = &g_base_mutex,
-         .drv_data = &g_bmi160_data,
-         .port = I2C_PORT_ACCEL,
-         .addr = BMI160_ADDR0,
-         .default_range = 1000, /* dps */
-         .rot_standard_ref = &base_standard_ref,
-         .min_frequency = BMI160_GYRO_MIN_FREQ,
-         .max_frequency = BMI160_GYRO_MAX_FREQ,
-         .config = {
-                 /* AP: by default shutdown all sensors */
-                 [SENSOR_CONFIG_AP] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* EC does not need in S0 */
-                 [SENSOR_CONFIG_EC_S0] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* Sensor off in S3/S5 */
-                 [SENSOR_CONFIG_EC_S3] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* Sensor off in S3/S5 */
-                 [SENSOR_CONFIG_EC_S5] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-         },
-        },
-        [LID_ACCEL] = {
-         .name = "Lid Accel",
-         .active_mask = SENSOR_ACTIVE_S0_S3,
-         .chip = MOTIONSENSE_CHIP_BMA255,
-         .type = MOTIONSENSE_TYPE_ACCEL,
-         .location = MOTIONSENSE_LOC_LID,
-         .drv = &bma2x2_accel_drv,
-         .mutex = &g_lid_mutex,
-         .drv_data = &g_bma255_data,
-         .port = I2C_PORT_ACCEL,
-         .addr = BMA2x2_I2C_ADDR1,
-         .rot_standard_ref = &lid_standard_ref,
-         .min_frequency = BMA255_ACCEL_MIN_FREQ,
-         .max_frequency = BMA255_ACCEL_MAX_FREQ,
-         .default_range = 2, /* g, to support tablet mode */
-         .config = {
-                /* AP: by default use EC settings */
-                [SENSOR_CONFIG_AP] = {
-                        .odr = 0,
-                        .ec_rate = 0,
-                },
-                /* EC use accel for angle detection */
-                [SENSOR_CONFIG_EC_S0] = {
-                        .odr = 10000 | ROUND_UP_FLAG,
-                        .ec_rate = 0,
-                },
-                /* Sensor on in S3 */
-                [SENSOR_CONFIG_EC_S3] = {
-                        .odr = 10000 | ROUND_UP_FLAG,
-                        .ec_rate = 0,
-                },
-                /* Sensor off in S5 */
-                [SENSOR_CONFIG_EC_S5] = {
-                        .odr = 0,
-                        .ec_rate = 0,
-                },
-         },
-        },
-	[LID_ALS] = {
-	 .name = "Light",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_OPT3001,
-	 .type = MOTIONSENSE_TYPE_LIGHT,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &opt3001_drv,
-	 .drv_data = &g_opt3001_data,
-	 .port = I2C_PORT_ALS,
-	 .addr = OPT3001_I2C_ADDR,
-	 .rot_standard_ref = NULL,
-	 .default_range = 0x10000, /* scale = 1; uscale = 0 */
-	 .min_frequency = OPT3001_LIGHT_MIN_FREQ,
-	 .max_frequency = OPT3001_LIGHT_MAX_FREQ,
-	 .config = {
-		/* AP: by default shutdown all sensors */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMA255,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bma2x2_accel_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_bma255_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMA2x2_I2C_ADDR1,
+		.rot_standard_ref = &lid_standard_ref,
+		.min_frequency = BMA255_ACCEL_MIN_FREQ,
+		.max_frequency = BMA255_ACCEL_MAX_FREQ,
+		.default_range = 2, /* g, to support tablet mode */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
 		},
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 1000,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S3/S5 */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S3/S5 */
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-	 },
 	},
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMI160_ADDR0,
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI160_ACCEL_MIN_FREQ,
+		.max_frequency = BMI160_ACCEL_MAX_FREQ,
+		.default_range = 2, /* g, to support tablet mode  */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+		},
+	},
+	[BASE_GYRO] = {
+		.name = "Base Gyro",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMI160_ADDR0,
+		.default_range = 1000, /* dps */
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI160_GYRO_MIN_FREQ,
+		.max_frequency = BMI160_GYRO_MAX_FREQ,
+	},
+	[LID_ALS] = {
+		.name = "Light",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_OPT3001,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &opt3001_drv,
+		.drv_data = &g_opt3001_data,
+		.port = I2C_PORT_ALS,
+		.addr = OPT3001_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1; uscale = 0 */
+		.min_frequency = OPT3001_LIGHT_MIN_FREQ,
+		.max_frequency = OPT3001_LIGHT_MAX_FREQ,
+		.config = {
+			/* Sensor on in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+	/* Please make sure the LID_ALS is the last device in
+	 * motion_sensors array.
+	 */
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
 const struct motion_sensor_t *motion_als_sensors[] = {
@@ -684,7 +685,8 @@ BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 void lid_angle_peripheral_enable(int enable)
 {
 	/* If the lid is in 360 position, ignore the lid angle,
-	 * which might be faulty. Disable keyboard and touchpad. */
+	 * which might be faulty. Disable keyboard.
+	 */
 	if (tablet_get_mode() || chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		enable = 0;
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
@@ -704,3 +706,106 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_board_version(&val) == EC_SUCCESS && val <= UINT16_MAX)
+		board_version = val;
+	CPRINTS("Board Version: 0x%04x", board_version);
+
+	if (cbi_get_oem_id(&val) == EC_SUCCESS && val < PROJECT_COUNT)
+		oem = val;
+	CPRINTS("OEM: %d", oem);
+
+	if (cbi_get_sku_id(&val) == EC_SUCCESS && val <= UINT16_MAX)
+		sku = val;
+	CPRINTS("SKU: 0x%04x", sku);
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+
+static void setup_motion_sensors(void)
+{
+	if (oem != PROJECT_NAMI)
+		/* Only Nami has ALS */
+		motion_sensor_count = ARRAY_SIZE(motion_sensors) - 1;
+	if (oem == PROJECT_AKALI)
+		/* Akali uses KX022 */
+		motion_sensors[LID_ACCEL] = lid_accel_1;
+}
+
+static void board_init(void)
+{
+	/*
+	 * This enables pull-down on F_DIO1 (SPI MISO), and F_DIO0 (SPI MOSI),
+	 * whenever the EC is not doing SPI flash transactions. This avoids
+	 * floating SPI buffer input (MISO), which causes power leakage (see
+	 * b/64797021).
+	 */
+	NPCX_PUPD_EN1 |= (1 << NPCX_DEVPU1_F_SPI_PUD_EN);
+
+	/* Provide AC status to the PCH */
+	gpio_set_level(GPIO_PCH_ACPRESENT, extpower_is_present());
+
+	/* Enable sensors power supply */
+	/* dnojiri: how do we enable it? */
+
+	/* Enable VBUS interrupt */
+	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
+
+	/* Enable pericom BC1.2 interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+
+	/* Enable Gyro interrupt for BMI160 */
+	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
+
+	setup_motion_sensors();
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	/*
+	 * F3 key scan cycle completed but scan input is not
+	 * charging to logic high when EC start scan next
+	 * column for "T" key, so we set .output_settle_us
+	 * to 80us from 50us.
+	 */
+	.output_settle_us = 80,
+	.debounce_down_us = 9 * MSEC,
+	.debounce_up_us = 30 * MSEC,
+	.scan_period_us = 3 * MSEC,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = 100 * MSEC,
+	.actual_key_mask = {
+		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+	},
+};
+
+int board_is_lid_angle_tablet_mode(void)
+{
+	/* Boards with no GMR sensor use lid angles to detect tablet mode. */
+	return oem != PROJECT_AKALI;
+}
+
+void board_kblight_init(void)
+{
+	switch (oem) {
+	default:
+	case PROJECT_NAMI:
+	case PROJECT_AKALI:
+	case PROJECT_VAYNE:
+	case PROJECT_PANTHEON:
+		kblight_register(&kblight_lm3509);
+		break;
+	case PROJECT_SONA:
+		if (sku == 0x3AE2)
+			break;
+		kblight_register(&kblight_pwm);
+		break;
+	}
+}

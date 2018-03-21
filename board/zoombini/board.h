@@ -3,14 +3,24 @@
  * found in the LICENSE file.
  */
 
-/* Zoombini board configuration */
+/* Meowth/Zoombini board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/*
+ * By default, enable all console messages excepted HC, ACPI and event:
+ * The sensor stack is generating a lot of activity.
+ */
+#define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
+#undef CONFIG_HOSTCMD_DEBUG_MODE
+#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
+
 /* Optional features */
 #define CONFIG_HIBERNATE_PSL
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_BUTTON
 #define CONFIG_CMD_PPC_DUMP
 
@@ -26,11 +36,10 @@
 
 /* EC Modules */
 #define CONFIG_ADC
-#define CONFIG_ESPI
+#define CONFIG_HOSTCMD_ESPI
 /* TODO(aaboagye): Uncomment when Si arrives. */
-/* #define CONFIG_ESPI_VW_SIGNALS */
+/* #define CONFIG_HOSTCMD_ESPI_VW_SIGNALS */
 #define CONFIG_I2C
-#define CONFIG_LPC
 #define CONFIG_PWM
 
 /* KB backlight driver */
@@ -38,10 +47,30 @@
 #define CONFIG_LED_DRIVER_LM3630A
 #endif /* defined(BOARD_ZOOMBINI) */
 
+#define CONFIG_ACCELGYRO_LSM6DSM
 #define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 #define ALS_COUNT 1
+
+#ifdef BOARD_MEOWTH
+#define CONFIG_SYNC
+#endif
+
+#ifdef BOARD_MEOWTH
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO 1024
+
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#endif
+
+/* Interrupt management. */
+#define CONFIG_ACCEL_INTERRUPTS
+
+/* Custom sensor option. */
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT		TASK_EVENT_CUSTOM(4)
+#define CONFIG_SYNC_INT_EVENT			TASK_EVENT_CUSTOM(8)
 
 #define CONFIG_BACKLIGHT_LID
 
@@ -50,7 +79,11 @@
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_BAT_PRESENT_L
 
-#define CONFIG_BOARD_VERSION
+#ifdef BOARD_MEOWTH
+#define CONFIG_BOARD_VERSION_CUSTOM
+#else
+#define CONFIG_BOARD_VERSION_GPIO
+#endif
 
 #ifdef BOARD_MEOWTH
 #define CONFIG_BUTTON_TRIGGERED_RECOVERY
@@ -82,7 +115,6 @@
 #define CONFIG_POWER_PP5000_CONTROL
 #define CONFIG_POWER_S0IX
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
-#define CONFIG_UART_HOST 0
 
 #define CONFIG_I2C_MASTER
 
@@ -108,6 +140,14 @@
 #define CONFIG_LED_PWM_COUNT 1
 #endif /* defined(BOARD_MEOWTH) */
 
+#define CONFIG_SUPPRESSED_HOST_COMMANDS \
+	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_PD_GET_LOG_ENTRY
+
+#ifdef BOARD_MEOWTH
+#define CONFIG_TABLET_MODE
+#define CONFIG_TABLET_MODE_SWITCH
+#endif /* defined(BOARD_MEOWTH) */
+
 /* USB PD config */
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_CMD_PD_CONTROL
@@ -125,6 +165,7 @@
 #define CONFIG_USB_PD_TCPM_PS8805
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_VCONN
@@ -132,6 +173,8 @@
 
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VOLUME_BUTTONS
+#define CONFIG_VSTORE
+#define CONFIG_VSTORE_SLOT_COUNT 1
 
 #ifdef BOARD_ZOOMBINI
 /* USB Type-A Port BC1.2 support */
@@ -207,11 +250,12 @@ POWER_SIGNAL_MASK(PP5000_PGOOD)
 
 /* ADC signal */
 enum adc_channel {
-	ADC_VBUS = -1,
 	ADC_TEMP_SENSOR_SOC,
 	ADC_TEMP_SENSOR_CHARGER,
 #ifdef BOARD_MEOWTH
 	ADC_TEMP_SENSOR_WIFI,
+	ADC_BASE_ATTACH,
+	ADC_BASE_DETACH,
 #endif /* defined(BOARD_MEOWTH) */
 	ADC_CH_COUNT
 };
@@ -246,10 +290,19 @@ enum power_signal {
 };
 
 enum sensor_id {
+	LID_ACCEL,
+	LID_GYRO,
 	LID_ALS,
+	VSYNC,
 };
 
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ALS)
+
+#ifdef BOARD_MEOWTH
+int board_get_version(void);
+#endif /* defined(BOARD_MEOWTH) */
+
+void base_pwr_fault_interrupt(enum gpio_signal s);
 
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);

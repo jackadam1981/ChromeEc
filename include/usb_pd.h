@@ -734,6 +734,11 @@ enum pd_states {
 					   PD_FLAGS_UPDATE_SRC_CAPS | \
 					   PD_FLAGS_TS_DTS_PARTNER)
 
+/* Per-port battery backed RAM flags */
+#define PD_BBRMFLG_EXPLICIT_CONTRACT (1 << 0)
+#define PD_BBRMFLG_POWER_ROLE        (1 << 1)
+#define PD_BBRMFLG_DATA_ROLE         (1 << 2)
+
 enum pd_cc_states {
 	PD_CC_NONE,
 
@@ -866,8 +871,9 @@ enum pd_data_msg_type {
 #define PD_ROLE_SINK   0
 #define PD_ROLE_SOURCE 1
 /* Data role */
-#define PD_ROLE_UFP    0
-#define PD_ROLE_DFP    1
+#define PD_ROLE_UFP          0
+#define PD_ROLE_DFP          1
+#define PD_ROLE_DISCONNECTED 2
 /* Vconn role */
 #define PD_ROLE_VCONN_OFF 0
 #define PD_ROLE_VCONN_ON  1
@@ -911,11 +917,12 @@ enum pd_data_msg_type {
 	((id) << 9) | ((cnt) << 12) | ((ext) << 15))
 
 /* Used for processing pd header */
-#define PD_HEADER_EXT(header)  (((header) >> 15) & 1)
-#define PD_HEADER_CNT(header)  (((header) >> 12) & 7)
-#define PD_HEADER_TYPE(header) ((header) & 0xF)
-#define PD_HEADER_ID(header)   (((header) >> 9) & 7)
-#define PD_HEADER_REV(header)  (((header) >> 6) & 3)
+#define PD_HEADER_EXT(header)   (((header) >> 15) & 1)
+#define PD_HEADER_CNT(header)   (((header) >> 12) & 7)
+#define PD_HEADER_TYPE(header)  ((header) & 0xF)
+#define PD_HEADER_ID(header)    (((header) >> 9) & 7)
+#define PD_HEADER_REV(header)   (((header) >> 6) & 3)
+#define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
 
 /* Used for processing pd extended header */
 #define PD_EXT_HEADER_CHUNKED(header)   (((header) >> 15) & 1)
@@ -1745,6 +1752,13 @@ int pd_ts_dts_plugged(int port);
  * @param port USB-C port number
  */
 int pd_capable(int port);
+
+/**
+ * Return true if vbus is present on the specified port.
+ *
+ * @param port USB-C port number
+ */
+int pd_is_vbus_present(int port);
 
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING

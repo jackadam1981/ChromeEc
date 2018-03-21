@@ -11,11 +11,12 @@
 GPIO_INT(USB_C0_PD_INT_ODL,	PIN(A, 0), GPIO_INT_FALLING,			tcpc_alert_event)
 GPIO_INT(USB_C1_PD_INT_ODL,	PIN(F, 5), GPIO_INT_FALLING,			tcpc_alert_event)
 GPIO_INT(USB_C0_SWCTL_INT_ODL,	PIN(0, 3), GPIO_INT_FALLING,			ppc_interrupt)
-GPIO_INT(USB_C1_SWCTL_INT_ODL,	PIN(0, 4), GPIO_INT_FALLING,			ppc_interrupt)
+GPIO_INT(USB_C1_SWCTL_INT_ODL_V0, PIN(0, 4), GPIO_INT_FALLING,			ppc_interrupt)
+GPIO_INT(USB_C1_SWCTL_INT_ODL_V2, PIN(D, 4), GPIO_INT_FALLING,			ppc_interrupt)
 GPIO_INT(PCH_SLP_S3_L,		PIN(A, 6), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(PCH_SLP_S5_L,		PIN(A, 3), GPIO_INT_BOTH,			power_signal_interrupt)
-GPIO_INT(VGATE,			PIN(F, 4), GPIO_INT_BOTH,			power_signal_interrupt)
-GPIO_INT(SPOK,			PIN(6, 3), GPIO_INT_BOTH,			power_signal_interrupt)
+GPIO_INT(S0_PGOOD,		PIN(F, 4), GPIO_INT_BOTH,			power_signal_interrupt)
+GPIO_INT(S5_PGOOD,		PIN(6, 3), GPIO_INT_BOTH | GPIO_PULL_UP,	power_signal_interrupt)
 GPIO_INT(POWER_BUTTON_L,	PIN(0, 1), GPIO_INT_BOTH,			power_button_interrupt)
 GPIO_INT(LID_OPEN,		PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	lid_interrupt)
 GPIO_INT(AC_PRESENT,		PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	extpower_interrupt)
@@ -34,7 +35,7 @@ GPIO(PCH_WAKE_L,		PIN(7, 4), GPIO_OUT_HIGH)			/* Wake SOC */
 GPIO(PCH_RCIN_L,		PIN(0, 2), GPIO_ODR_HIGH)			/* Cold Reset to SOC */
 GPIO(CCD_MODE_ODL,		PIN(E, 3), GPIO_INPUT)				/* Case Closed Debug Mode */
 GPIO(ENTERING_RW,		PIN(E, 1), GPIO_OUT_LOW)			/* EC Entering RW */
-GPIO(EC_BATT_PRES_ODL,		PIN(E, 5), GPIO_INPUT)				/* Battery Present */
+GPIO(EC_BATT_PRES_ODL,		PIN(E, 5), GPIO_INPUT | GPIO_PULL_UP)		/* Battery Present */
 GPIO(PCH_SYS_PWROK,		PIN(D, 6), GPIO_OUT_LOW)			/* Power OK to SOC */
 GPIO(EC_APU_RST,		PIN(E, 4), GPIO_INPUT)				/* Reset to SOC */
 GPIO(CPU_PROCHOT,		PIN(3, 4), GPIO_INPUT | GPIO_SEL_1P8V)		/* PROCHOT to SOC */
@@ -70,14 +71,15 @@ GPIO(PCH_SLP_S0_L,		PIN(A, 4), GPIO_INPUT)
 
 GPIO(EN_USB_A0_5V,		PIN(6, 1), GPIO_OUT_LOW)			/* Enable A0 5V Charging */
 GPIO(EN_USB_A1_5V,		PIN(C, 0), GPIO_OUT_LOW)			/* Enable A1 5V Charging */
-GPIO(USB_A0_CHARGE_EN_L,	PIN(4, 0), GPIO_OUT_HIGH)			/* Enable A0 1.5A Charging */
-GPIO(USB_A1_CHARGE_EN_L,	PIN(D, 4), GPIO_OUT_HIGH)			/* Enable A1 1.5A Charging */
 GPIO(EN_USB_C0_TCPC_PWR,	PIN(6, 0), GPIO_OUT_LOW)			/* Enable C0 TCPC Power */
 GPIO(USB_C0_OC_L,		PIN(7, 3), GPIO_OUT_HIGH)			/* C0 Over Current */
-GPIO(USB_C1_OC_L,		PIN(D, 7), GPIO_OUT_HIGH)			/* C1 Over Current */
-GPIO(USB_C0_PD_RST_L,		PIN(F, 1), GPIO_OUT_HIGH)			/* C0 PD Reset */
+GPIO(USB_C1_OC_L_V0,		PIN(D, 7), GPIO_INPUT)				/* C1 Over Current */
+GPIO(USB_C1_OC_L_V2,		PIN(7, 2), GPIO_INPUT)				/* C1 Over Current */
+GPIO(USB_C0_PD_RST_L_V0,	PIN(F, 1), GPIO_INPUT)				/* C0 PD Reset */
+GPIO(USB_C0_PD_RST_L_V2,	PIN(3, 2), GPIO_INPUT)				/* C0 PD Reset */
 GPIO(USB_C1_PD_RST_L,		PIN(D, 5), GPIO_OUT_HIGH)			/* C1 PD Reset */
-GPIO(USB_C0_BC12_VBUS_ON_L,	PIN(8, 2), GPIO_ODR_HIGH)			/* C0 BC1.2 Power */
+GPIO(USB_C0_BC12_VBUS_ON_L_V0,	PIN(8, 2), GPIO_INPUT)				/* C0 BC1.2 Power */
+GPIO(USB_C0_BC12_VBUS_ON_L,	PIN(4, 0), GPIO_ODR_HIGH)			/* C0 BC1.2 Power */
 GPIO(USB_C1_BC12_VBUS_ON_L,	PIN(B, 1), GPIO_ODR_HIGH)			/* C1 BC1.2 Power */
 GPIO(USB_C0_BC12_CHG_DET,	PIN(6, 2), GPIO_INPUT)				/* C0 BC1.2 Detect */
 GPIO(USB_C1_BC12_CHG_DET,	PIN(8, 3), GPIO_INPUT)				/* C1 BC1.2 Detect */
@@ -92,7 +94,8 @@ GPIO(SKU_ID1,			PIN(F, 0), GPIO_INPUT)
 GPIO(SKU_ID2,			PIN(4, 1), GPIO_INPUT)
 
 /* Alternate functions GPIO definitions */
-ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, GPIO_PULL_UP)			/* UART from EC to Servo */
+/* Cr50 requires no pull-ups on UART pins. */
+ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)					/* UART from EC to Servo */
 ALTERNATE(PIN_MASK(B, 0x30), 1, MODULE_I2C, 0)					/* I2C0 */
 ALTERNATE(PIN_MASK(9, 0x07), 1, MODULE_I2C, 0)					/* I2C1 SCL / I2C2 */
 ALTERNATE(PIN_MASK(8, 0x80), 1, MODULE_I2C, 0)					/* I2C1 SDA */
@@ -100,6 +103,8 @@ ALTERNATE(PIN_MASK(D, 0x03), 1, MODULE_I2C, 0)					/* I2C3 */
 ALTERNATE(PIN_MASK(3, 0x48), 1, MODULE_I2C, 0)					/* I2C5 */
 ALTERNATE(PIN_MASK(B, 0x0C), 1, MODULE_I2C, 0)					/* I2C7 */
 ALTERNATE(PIN_MASK(4, 0x30), 1, MODULE_ADC, 0)					/* ADC0-1 */
+ALTERNATE(PIN_MASK(4, 0x02), 1, MODULE_ADC, 0)					/* ADC4 */
+ALTERNATE(PIN_MASK(F, 0x01), 1, MODULE_ADC, 0)					/* ADC9 */
 ALTERNATE(PIN_MASK(B, 0x80), 1, MODULE_PWM, 0)					/* KB Backlight */
 ALTERNATE(PIN_MASK(C, 0x18), 1, MODULE_PWM, 0) 					/* LED 1 & 2 */
 

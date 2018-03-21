@@ -12,8 +12,18 @@
 #include "usb_charge.h"
 #include "usb_pd.h"
 
-/* USB-C mux state */
+/*
+ * USB-C mux state
+ *
+ * A bitwise combination of the USB_PD_MUX_* flags.
+ * The bottom 2 bits also correspond to the typec_mux enum type.
+ */
 typedef uint8_t mux_state_t;
+
+/* Packing and Unpacking defines used with CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY */
+#define MUX_PORT_AND_ADDR(port, addr) ((port << 8) | (addr & 0xFF))
+#define MUX_PORT(port_addr) (port_addr >> 8)
+#define MUX_ADDR(port_addr) (port_addr & 0xFF)
 
 /* Mux state attributes */
 /* TODO: Directly use USB_PD_MUX_* everywhere and remove these 3 defines */

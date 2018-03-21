@@ -184,7 +184,7 @@ host_event_t host_get_events(void);
  */
 int host_is_event_set(enum host_event_code event);
 
-#ifdef CONFIG_LPC
+#ifdef CONFIG_HOSTCMD_X86
 
 /*
  * Get lazy wake masks for the sleep state provided
@@ -336,8 +336,5 @@ void host_send_sysrq(uint8_t key);
 /* Return the lower/higher part of the feature flags bitmap */
 uint32_t get_feature_flags0(void);
 uint32_t get_feature_flags1(void);
-
-/* Used to define the end of host_command_suppressed */
-#define HOST_COMMAND_SUPPRESS_DELIMITER 0xFFFF
 
 #endif  /* __CROS_EC_HOST_COMMAND_H */

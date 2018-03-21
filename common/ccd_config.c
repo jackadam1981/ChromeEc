@@ -16,7 +16,6 @@
 #include "hooks.h"
 #include "nvmem_vars.h"
 #include "physical_presence.h"
-#include "shared_mem.h"
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
@@ -28,6 +27,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_CCD, format, ## args)
+
+/* Let's make sure that CCD capability state enum fits into two bits. */
+BUILD_ASSERT(CCD_CAP_STATE_COUNT <= 4);
 
 /* Restriction state for ccdunlock when no password is set */
 enum ccd_unlock_restrict {
@@ -47,30 +49,14 @@ enum ccd_unlock_restrict {
 /* Current version of case-closed debugging configuration struct */
 #define CCD_CONFIG_VERSION 0x10
 
-/* Capability states */
-enum ccd_capability_state {
-	/* Default value */
-	CCD_CAP_STATE_DEFAULT = 0,
-
-	/* Always available (state >= CCD_STATE_LOCKED) */
-	CCD_CAP_STATE_ALWAYS = 1,
-
-	/* Unless locked (state >= CCD_STATE_UNLOCKED) */
-	CCD_CAP_STATE_UNLESS_LOCKED = 2,
-
-	/* Only if opened (state >= CCD_STATE_OPENED) */
-	CCD_CAP_STATE_IF_OPENED = 3,
-
-	/* Number of capability states */
-	CCD_CAP_STATE_COUNT
-};
-
 /*
  * CCD command header; including the subcommand code used to demultiplex
  * various CCD commands over the same TPM vendor command.
  */
 struct ccd_vendor_cmd_header {
 	struct tpm_cmd_header tpm_header;
+
+	/* On input, the subcommand.  On output, may contain EC return code */
 	uint8_t ccd_subcommand;
 } __packed;
 
@@ -104,14 +90,6 @@ struct ccd_config {
 	uint8_t password_digest[CCD_PASSWORD_DIGEST_SIZE];
 };
 
-struct ccd_capability_info {
-	/* Capability name */
-	const char *name;
-
-	/* Default state, if config set to CCD_CAP_STATE_DEFAULT */
-	enum ccd_capability_state default_state;
-};
-
 /* Nvmem variable name for CCD config */
 static const uint8_t k_ccd_config = NVMEM_VAR_CCD_CONFIG;
 
@@ -121,33 +99,11 @@ static const uint32_t k_public_flags =
 		CCD_FLAG_OVERRIDE_WP_STATE_ENABLED;
 
 /* List of CCD capability info; must be in same order as enum ccd_capability */
-static const struct ccd_capability_info cap_info[CCD_CAP_COUNT] = {
-	{"UartGscRxAPTx",	CCD_CAP_STATE_ALWAYS},
-	{"UartGscTxAPRx",	CCD_CAP_STATE_ALWAYS},
-	{"UartGscRxECTx",	CCD_CAP_STATE_ALWAYS},
-	{"UartGscTxECRx",	CCD_CAP_STATE_IF_OPENED},
+static const struct ccd_capability_info cap_info[CCD_CAP_COUNT] = CAP_INFO_DATA;
 
-	{"FlashAP",		CCD_CAP_STATE_IF_OPENED},
-	{"FlashEC",		CCD_CAP_STATE_IF_OPENED},
-	{"OverrideWP",		CCD_CAP_STATE_IF_OPENED},
-	{"RebootECAP",		CCD_CAP_STATE_IF_OPENED},
-
-	{"GscFullConsole",	CCD_CAP_STATE_IF_OPENED},
-	{"UnlockNoReboot",	CCD_CAP_STATE_ALWAYS},
-	{"UnlockNoShortPP",	CCD_CAP_STATE_ALWAYS},
-	{"OpenNoTPMWipe",	CCD_CAP_STATE_IF_OPENED},
-
-	{"OpenNoLongPP",	CCD_CAP_STATE_IF_OPENED},
-	{"BatteryBypassPP",	CCD_CAP_STATE_ALWAYS},
-	{"UpdateNoTPMWipe",	CCD_CAP_STATE_ALWAYS},
-	{"I2C",			CCD_CAP_STATE_IF_OPENED},
-	{"FlashRead",		CCD_CAP_STATE_ALWAYS},
-};
-
-static const char *ccd_state_names[CCD_STATE_COUNT] = {
-	"Locked", "Unlocked", "Opened"};
-static const char *ccd_cap_state_names[CCD_CAP_STATE_COUNT] = {
-	"Default", "Always", "UnlessLocked", "IfOpened"};
+static const char *ccd_state_names[CCD_STATE_COUNT] = CCD_STATE_NAMES;
+static const char *ccd_cap_state_names[CCD_CAP_STATE_COUNT] =
+	CCD_CAP_STATE_NAMES;
 
 static enum ccd_state ccd_state = CCD_STATE_LOCKED;
 static struct ccd_config config;
@@ -382,15 +338,14 @@ static void ccd_load_config(void)
 	/* Use defaults if config data is not present */
 	if (!t) {
 		if (board_is_first_factory_boot()) {
-			/* Give factory RMA access */
+			/* Give factory/RMA access */
 			CPRINTS("CCD using factory config");
-			ccd_reset_config(CCD_RESET_TEST_LAB | CCD_RESET_RMA);
+			ccd_reset_config(CCD_RESET_FACTORY);
 		} else {
 			/* Somehow we lost our config; normal defaults */
 			CPRINTS("CCD using default config");
 			ccd_reset_config(CCD_RESET_TEST_LAB);
 		}
-
 		ccd_config_loaded = 1;
 		return;
 	}
@@ -488,22 +443,13 @@ int ccd_reset_config(unsigned int flags)
 		config.version = CCD_CONFIG_VERSION;
 	}
 
-	if (flags & CCD_RESET_RMA) {
-		/* Force RMA settings */
+	if (flags & CCD_RESET_FACTORY) {
+		/* Force factory mode settings */
 		int i;
 
 		/* Allow all capabilities all the time */
-		for (i = 0; i < CCD_CAP_COUNT; i++) {
-			/*
-			 * Restricted console commands are still IfOpened, but
-			 * that's kinda meaningless because we set a
-			 * well-defined password below.
-			 */
-			if (i == CCD_CAP_GSC_RESTRICTED_CONSOLE)
-				continue;
-
+		for (i = 0; i < CCD_CAP_COUNT; i++)
 			raw_set_cap(i, CCD_CAP_STATE_ALWAYS);
-		}
 
 		/* Force WP disabled at boot */
 		raw_set_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT, 1);
@@ -731,6 +677,10 @@ static int command_ccd_info(void)
 		cflush();
 	}
 
+	ccprintf("TPM:%s%s\n",
+		 board_fwmp_allows_unlock() ? "" : " fwmp_lock",
+		 board_vboot_dev_mode_enabled() ? " dev_mode" : "");
+
 	ccputs("Use 'ccd help' to print subcommands\n");
 	return EC_SUCCESS;
 }
@@ -740,16 +690,16 @@ static int command_ccd_reset(int argc, char **argv)
 	int flags = 0;
 
 	if (argc > 1) {
-		if (!strcasecmp(argv[1], "rma"))
-			flags = CCD_RESET_RMA;
+		if (!strcasecmp(argv[1], "factory"))
+			flags = CCD_RESET_FACTORY;
 		else
 			return EC_ERROR_PARAM1;
 	}
 
 	switch (ccd_state) {
 	case CCD_STATE_OPENED:
-		ccprintf("%sResetting all settings.\n",
-			 flags & CCD_RESET_RMA ? "RMA " : "");
+		ccprintf("%s settings.\n",  flags & CCD_RESET_FACTORY ?
+			"Opening factory " : "Resetting all");
 		/* Note that this does not reset the testlab flag */
 		return ccd_reset_config(flags);
 
@@ -833,7 +783,7 @@ static int do_ccd_password(char *password)
  * context.
  *
  * All commands could have a single parameter, which is the password (to be
- * set, cleared, or entered to open/unlock). If argc calue exceeds 1, the
+ * set, cleared, or entered to open/unlock). If argc value exceeds 1, the
  * pointer to password is set, it is checked not to exceed maximum size.
  *
  * If the check succeeds, prepare a message containing a TPM vendor command,
@@ -841,39 +791,33 @@ static int do_ccd_password(char *password)
  *
  * Message header is always the same, the payload is the password, if
  * supplied.
+ *
+ * Expected output is nothing on success, or a single byte EC return code.
  */
 static int ccd_command_wrapper(int argc, char *password,
 			       enum ccd_vendor_subcommands subcmd)
 {
-	int rv;
-	struct ccd_vendor_cmd_header *vch;
-	size_t command_size;
-	size_t password_size;
+	uint8_t buf[sizeof(struct ccd_vendor_cmd_header) +
+		    CCD_MAX_PASSWORD_SIZE];
+	struct ccd_vendor_cmd_header *vch = (struct ccd_vendor_cmd_header *)buf;
+	size_t password_size = 0;
 	uint32_t return_code;
 
 	if (argc > 1) {
 		password_size = strlen(password);
-
-		if (password_size  > CCD_MAX_PASSWORD_SIZE)
+		if (password_size > CCD_MAX_PASSWORD_SIZE)
 			return EC_ERROR_PARAM1;
-	} else {
-		password_size = 0;
 	}
-
-	command_size = sizeof(*vch) + password_size;
-	rv = shared_mem_acquire(command_size, (char **)&vch);
-	if (rv != EC_SUCCESS)
-		return rv;
 
 	/* Build the extension command to set/clear CCD password. */
 	vch->tpm_header.tag = htobe16(0x8001); /* TPM_ST_NO_SESSIONS */
-	vch->tpm_header.size = htobe32(command_size);
+	vch->tpm_header.size = htobe32(sizeof(*vch) + password_size);
 	vch->tpm_header.command_code = htobe32(TPM_CC_VENDOR_BIT_MASK);
 	vch->tpm_header.subcommand_code = htobe16(VENDOR_CC_CCD);
 	vch->ccd_subcommand = subcmd;
 
 	memcpy(vch + 1, password, password_size);
-	tpm_alt_extension(&vch->tpm_header, command_size);
+		    tpm_alt_extension(&vch->tpm_header, sizeof(buf));
 
 	/*
 	 * Return status in the command code field now, in case of error,
@@ -882,36 +826,38 @@ static int ccd_command_wrapper(int argc, char *password,
 	return_code = be32toh(vch->tpm_header.command_code);
 	if ((return_code != EC_SUCCESS) &&
 	    (return_code != VENDOR_RC_IN_PROGRESS)) {
-		rv = vch->ccd_subcommand;
-	} else {
-		rv = EC_SUCCESS;
+		return vch->ccd_subcommand;
 	}
-
-	shared_mem_release(vch);
-	return rv;
+	return EC_SUCCESS;
 }
 
-static enum vendor_cmd_rc ccd_open(void *buf,
-				   size_t input_size,
-				   size_t *response_size)
+static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 {
 	int is_long = 1;
 	int need_pp = 1;
 	int rv;
-	char *buffer = buf;
+	char *buffer = p->buffer;
+	const char *why_denied = "forced";
 
-	if (force_disabled) {
-		*response_size = 1;
-		buffer[0] = EC_ERROR_ACCESS_DENIED;
-		return VENDOR_RC_NOT_ALLOWED;
-	}
+	if (force_disabled)
+		goto denied;
 
 	if (ccd_state == CCD_STATE_OPENED)
 		return VENDOR_RC_SUCCESS;
 
+	/* FWMP blocks open even if a password is set */
+	if (!board_fwmp_allows_unlock()) {
+		why_denied = "fwmp";
+		goto denied;
+	}
+
+	/* Make sure open is allowed */
 	if (raw_has_password()) {
-		if (!input_size) {
-			*response_size = 1;
+		/* Open allowed if correct password is specified */
+
+		if (!p->in_size) {
+			/* ...which it wasn't */
+			p->out_size = 1;
 			buffer[0] = EC_ERROR_PARAM_COUNT;
 			return VENDOR_RC_PASSWORD_REQUIRED;
 		}
@@ -920,23 +866,35 @@ static enum vendor_cmd_rc ccd_open(void *buf,
 		 * We know there is plenty of room in the TPM buffer this is
 		 * stored in.
 		 */
-		buffer[input_size] = '\0';
+		buffer[p->in_size] = '\0';
 		rv = raw_check_password(buffer);
 		if (rv) {
-			*response_size = 1;
+			p->out_size = 1;
 			buffer[0] = rv;
 			return VENDOR_RC_INTERNAL_ERROR;
 		}
-	} else if (!board_fwmp_allows_unlock()) {
-		*response_size = 1;
-		buffer[0] = EC_ERROR_ACCESS_DENIED;
-		return VENDOR_RC_NOT_ALLOWED;
+	} else if (!board_battery_is_present()) {
+		/* Open allowed with no password if battery is removed */
+	} else if (board_vboot_dev_mode_enabled() &&
+		   !(p->flags & VENDOR_CMD_FROM_USB)) {
+		/*
+		 * Open allowed with no password if dev mode enabled and
+		 * command came from the AP.
+		 */
+	} else {
+		/*
+		 * - Password not set
+		 * - Battery is present
+		 * - Either not in developer mode or the command came from USB
+		 */
+		why_denied = "nopwd";
+		goto denied;
 	}
 
 	/* Fail and abort if already checking physical presence */
 	if (physical_detect_busy()) {
 		physical_detect_abort();
-		*response_size = 1;
+		p->out_size = 1;
 		buffer[0] = EC_ERROR_BUSY;
 		return VENDOR_RC_INTERNAL_ERROR;
 	}
@@ -958,7 +916,7 @@ static enum vendor_cmd_rc ccd_open(void *buf,
 		ccprintf("Starting CCD open...\n");
 		rv = physical_detect_start(is_long, ccd_open_done_async);
 		if (rv != EC_SUCCESS) {
-			*response_size = 1;
+			p->out_size = 1;
 			buffer[0] = rv;
 			return VENDOR_RC_INTERNAL_ERROR;
 		}
@@ -969,18 +927,23 @@ static enum vendor_cmd_rc ccd_open(void *buf,
 	ccd_open_done(1);
 
 	return VENDOR_RC_SUCCESS;
+
+denied:
+	/* Open not allowed for some reason */
+	CPRINTS("%s denied: %s", __func__, why_denied);
+	p->out_size = 1;
+	buffer[0] = EC_ERROR_ACCESS_DENIED;
+	return VENDOR_RC_NOT_ALLOWED;
 }
 
-static enum vendor_cmd_rc ccd_unlock(void *buf,
-				     size_t input_size,
-				     size_t *response_size)
+static enum vendor_cmd_rc ccd_unlock(struct vendor_cmd_params *p)
 {
 	int need_pp = 1;
 	int rv;
-	char *buffer = buf;
+	char *buffer = p->buffer;
 
 	if (force_disabled) {
-		*response_size = 1;
+		p->out_size = 1;
 		buffer[0] = EC_ERROR_ACCESS_DENIED;
 		return VENDOR_RC_NOT_ALLOWED;
 	}
@@ -994,53 +957,36 @@ static enum vendor_cmd_rc ccd_unlock(void *buf,
 		return VENDOR_RC_SUCCESS;
 	}
 
-	if (raw_has_password()) {
-		if (!input_size) {
-			*response_size = 1;
-			buffer[0] = EC_ERROR_PARAM_COUNT;
-			return VENDOR_RC_PASSWORD_REQUIRED;
-		}
-
-		/*
-		 * We know there is plenty of room in the TPM buffer this is
-		 * stored in.
-		 */
-		buffer[input_size] = '\0';
-		rv = raw_check_password(buffer);
-		if (rv) {
-			*response_size = 1;
-			buffer[0] = rv;
-			return VENDOR_RC_INTERNAL_ERROR;
-		}
-	} else if (!board_fwmp_allows_unlock()) {
-		*response_size = 1;
+	/* Only allowed if password is already set, and not blocked by FWMP */
+	if (!raw_has_password() || !board_fwmp_allows_unlock()) {
+		p->out_size = 1;
 		buffer[0] = EC_ERROR_ACCESS_DENIED;
 		return VENDOR_RC_NOT_ALLOWED;
-	} else {
-		/*
-		 * When unlock is requested via the console, physical presence
-		 * is required unless disabled by config.  This prevents a
-		 * malicious peripheral from setitng a password.
-		 *
-		 * If this were a TPM vendor command from the AP, we would
-		 * instead check unlock restrictions based on the user login
-		 * state stored in ccd_unlock_restrict:
-		 *
-		 * 1) Unlock from the AP is unrestricted before any users
-		 * login, so enrollment policy scripts can update CCD config.
-		 *
-		 * 2) Owner accounts can unlock, but require physical presence
-		 * to prevent OS-level compromises from setting a password.
-		 *
-		 * 3) A non-owner account logging in blocks CCD config until
-		 * the next AP reboot, as implied by TPM reboot.
-		 */
+	}
+
+	/* Make sure password was specified */
+	if (!p->in_size) {
+		p->out_size = 1;
+		buffer[0] = EC_ERROR_PARAM_COUNT;
+		return VENDOR_RC_PASSWORD_REQUIRED;
+	}
+
+	/*
+	 * Check the password.  We know there is plenty of room in the TPM
+	 * buffer this is stored in.
+	 */
+	buffer[p->in_size] = '\0';
+	rv = raw_check_password(buffer);
+	if (rv) {
+		p->out_size = 1;
+		buffer[0] = rv;
+		return VENDOR_RC_INTERNAL_ERROR;
 	}
 
 	/* Fail and abort if already checking physical presence */
 	if (physical_detect_busy()) {
 		physical_detect_abort();
-		*response_size = 1;
+		p->out_size = 1;
 		buffer[0] = EC_ERROR_BUSY;
 		return VENDOR_RC_INTERNAL_ERROR;
 	}
@@ -1060,7 +1006,7 @@ static enum vendor_cmd_rc ccd_unlock(void *buf,
 		ccprintf("Starting CCD unlock...\n");
 		rv = physical_detect_start(0, ccd_unlock_done);
 		if (rv != EC_SUCCESS) {
-			*response_size = 1;
+			p->out_size = 1;
 			buffer[0] = rv;
 			return VENDOR_RC_INTERNAL_ERROR;
 		}
@@ -1073,9 +1019,7 @@ static enum vendor_cmd_rc ccd_unlock(void *buf,
 	return VENDOR_RC_SUCCESS;
 }
 
-static enum vendor_cmd_rc ccd_lock(void *unused0,
-				   size_t unused1,
-				   size_t *response_size)
+static enum vendor_cmd_rc ccd_lock(struct vendor_cmd_params *p)
 {
 	/* Lock always works */
 	ccprintf("CCD locked.\n");
@@ -1171,7 +1115,7 @@ static int command_ccd_help(void)
 	       "\tSet capability to state\n\n"
 	       "password [<new password> | clear]\n"
 	       "\tSet or clear CCD password\n\n"
-	       "reset [rma]\n"
+	       "reset [factory]\n"
 	       "\tReset CCD config\n\n"
 	       "testlab [enable | disable | open]\n"
 	       "\tToggle testlab mode or force CCD open\n\n");
@@ -1255,146 +1199,52 @@ DECLARE_SAFE_CONSOLE_COMMAND(ccd, command_ccd,
 			     "Configure case-closed debugging");
 
 /*
- * Password handling on Cr50 passes the following states:
- *
- * - password setting is not allowed after Cr50 reset until an upstart (as
- *   opposed to resume) TPM startup happens, as signalled by the TPM callback.
- *   After the proper TPM reset the state changes to 'POST_RESET_STATE' which
- *   means that the device was just reset/rebooted (not resumed) and no user
- *   logged in yet.
- *
- *  - if the owner logs in in this state, the state changes to
- *    'PASSWORD_ALLOWED_STATE'. The owner can open crosh session and set the
- *    password.
- *
- *   - when the owner logs out or any user but the owner logs in, the state
- *     changes to PASSWORD_NOT_ALLOWED_STATE and does not change until TPM is
- *     reset. This makes sure that password can be set only by the owner and
- *     only before anybody else logged in.
- */
-enum password_reset_phase {
-	POST_RESET_STATE,
-	PASSWORD_ALLOWED_STATE,
-	PASSWORD_NOT_ALLOWED_STATE
-};
-
-static uint8_t password_state = PASSWORD_NOT_ALLOWED_STATE;
-
-void ccd_tpm_reset_callback(void)
-{
-	CPRINTS("%s: TPM Startup processed", __func__);
-	password_state = POST_RESET_STATE;
-}
-
-/*
- * Handle the VENDOR_CC_MANAGE_CCD_PASSWORD command.
- *
- * The payload of the command is a single byte Boolean which sets the controls
- * if CCD password can be set or not.
- *
- * After reset the pasword can not be set using VENDOR_CC_CCD_PASSWORD; once
- * this command is received with value of True, the phase stars when the
- * password can be set. As soon as this command is received with a value of
- * False, the password can not be set any more until device is rebooted, even
- * if this command is re-sent with the value of True.
- */
-static enum vendor_cmd_rc manage_ccd_password(enum vendor_cmd_cc code,
-					      void *buf,
-					      size_t input_size,
-					      size_t *response_size)
-{
-	uint8_t prev_state = password_state;
-	/* The vendor command status code. */
-	enum vendor_cmd_rc rv = VENDOR_RC_SUCCESS;
-	/* Actual error code. */
-	uint8_t error_code = EC_SUCCESS;
-
-	do {
-		int value;
-
-		if (input_size != 1) {
-			rv = VENDOR_RC_INTERNAL_ERROR;
-			error_code = EC_ERROR_PARAM1;
-			break;
-		}
-
-		value = *((uint8_t *)buf);
-
-		if (!value) {
-			/* No more password setting allowed. */
-			password_state = PASSWORD_NOT_ALLOWED_STATE;
-			break;
-		}
-
-		if (password_state == POST_RESET_STATE) {
-			/* The only way to allow password setting. */
-			password_state = PASSWORD_ALLOWED_STATE;
-			break;
-		}
-
-		password_state = PASSWORD_NOT_ALLOWED_STATE;
-		rv = VENDOR_RC_BOGUS_ARGS;
-		error_code = EC_ERROR_INVAL;
-	} while (0);
-
-	if (prev_state != password_state)
-		CPRINTF("%s: state change from %d to %d\n",
-			__func__, prev_state, password_state);
-
-	if (rv == VENDOR_RC_SUCCESS) {
-		*response_size = 0;
-	} else {
-		*response_size = 1;
-		((uint8_t *)buf)[0] = error_code;
-	}
-
-	return rv;
-}
-DECLARE_VENDOR_COMMAND(VENDOR_CC_MANAGE_CCD_PWD, manage_ccd_password);
-
-/*
  * Handle the CCVD_PASSWORD subcommand.
  *
  * The payload of the command is a text string to use to set or clear the
  * password.
  */
-static enum vendor_cmd_rc ccd_password(void *buf,
-				       size_t input_size,
-				       size_t *response_size)
+static enum vendor_cmd_rc ccd_password(struct vendor_cmd_params *p)
 {
 	int rv = EC_SUCCESS;
 	char password[CCD_MAX_PASSWORD_SIZE + 1];
-	char *response = buf;
+	char *response = p->buffer;
 
-	if (password_state != PASSWORD_ALLOWED_STATE) {
-		*response_size = 1;
+	/*
+	 * Only allow setting a password from the AP, not USB.  This increases
+	 * the effort required for an attacker to set one externally, even if
+	 * they have access to a system someone left in the opened state.
+	 *
+	 * An attacker can still set testlab mode or open up the CCD config,
+	 * but those changes are reversible by the device owner.
+	 */
+	if (p->flags & VENDOR_CMD_FROM_USB) {
+		p->out_size = 1;
 		*response = EC_ERROR_ACCESS_DENIED;
 		return VENDOR_RC_NOT_ALLOWED;
 	}
 
-	if (!input_size || (input_size >= sizeof(password))) {
+	if (!p->in_size || (p->in_size >= sizeof(password))) {
 		rv = EC_ERROR_PARAM1;
 	} else {
-		memcpy(password, buf, input_size);
-		password[input_size] = '\0';
+		memcpy(password, p->buffer, p->in_size);
+		password[p->in_size] = '\0';
 		rv = do_ccd_password(password);
-		always_memset(password, 0, input_size);
+		always_memset(password, 0, p->in_size);
 	}
 
 	if (rv != EC_SUCCESS) {
 		*response = rv;
-		*response_size = 1;
+		p->out_size = 1;
 		return VENDOR_RC_INTERNAL_ERROR;
 	}
 
 	return VENDOR_RC_SUCCESS;
 }
 
-static enum vendor_cmd_rc ccd_pp_poll(void *buf,
-				      size_t input_size,
-				      size_t *response_size)
+static enum vendor_cmd_rc ccd_pp_poll(struct vendor_cmd_params *p)
 {
-	char *buffer = buf;
+	char *buffer = p->buffer;
 
 	if ((ccd_state == CCD_STATE_OPENED) ||
 	    (ccd_state == CCD_STATE_UNLOCKED)) {
@@ -1412,41 +1262,67 @@ static enum vendor_cmd_rc ccd_pp_poll(void *buf,
 			break;
 		}
 	}
-	*response_size = 1;
+	p->out_size = 1;
 	return VENDOR_RC_SUCCESS;
 }
 
-static enum vendor_cmd_rc ccd_pp_poll_unlock(void *buf,
-					     size_t input_size,
-					     size_t *response_size)
+static enum vendor_cmd_rc ccd_pp_poll_unlock(struct vendor_cmd_params *p)
 {
-	char *buffer;
+	char *buffer = p->buffer;
 
 	if ((ccd_state != CCD_STATE_OPENED) &&
 	    (ccd_state != CCD_STATE_UNLOCKED))
-		return ccd_pp_poll(buf, input_size, response_size);
+		return ccd_pp_poll(p);
 
-
-	buffer = buf;
-	*response_size = 1;
+	p->out_size = 1;
 	buffer[0] = CCD_PP_DONE;
 
 	return VENDOR_RC_SUCCESS;
 }
 
-static enum vendor_cmd_rc ccd_pp_poll_open(void *buf,
-					   size_t input_size,
-					   size_t *response_size)
+static enum vendor_cmd_rc ccd_pp_poll_open(struct vendor_cmd_params *p)
 {
-	char *buffer;
+	char *buffer = p->buffer;
 
 	if (ccd_state != CCD_STATE_OPENED)
-		return ccd_pp_poll(buf, input_size, response_size);
+		return ccd_pp_poll(p);
 
-
-	buffer = buf;
-	*response_size = 1;
+	p->out_size = 1;
 	buffer[0] = CCD_PP_DONE;
+
+	return VENDOR_RC_SUCCESS;
+}
+
+static enum vendor_cmd_rc ccd_get_info(struct vendor_cmd_params *p)
+{
+	int i;
+	struct ccd_info_response response = {};
+
+	for (i = 0; i < CCD_CAP_COUNT; i++) {
+		int index;
+		int shift;
+
+		/* Each capability takes 2 bits. */
+		index = i / (32/2);
+		shift = (i % (32/2)) * 2;
+		response.ccd_caps_current[index] |= raw_get_cap(i, 1) << shift;
+		response.ccd_caps_defaults[index] |=
+			cap_info[i].default_state << shift;
+	}
+
+	response.ccd_flags = htobe32(raw_get_flags());
+	response.ccd_state = ccd_get_state();
+	response.ccd_has_password = raw_has_password();
+	response.ccd_force_disabled = force_disabled;
+	for (i = 0; i < ARRAY_SIZE(response.ccd_caps_current); i++) {
+		response.ccd_caps_current[i] =
+			htobe32(response.ccd_caps_current[i]);
+		response.ccd_caps_defaults[i] =
+			htobe32(response.ccd_caps_defaults[i]);
+	}
+
+	p->out_size = sizeof(response);
+	memcpy(p->buffer, &response, sizeof(response));
 
 	return VENDOR_RC_SUCCESS;
 }
@@ -1455,21 +1331,30 @@ static enum vendor_cmd_rc ccd_pp_poll_open(void *buf,
  * Common TPM Vendor command handler used to demultiplex various CCD commands
  * which need to be available both throuh CLI and over /dev/tpm0.
  */
-static enum vendor_cmd_rc ccd_vendor(enum vendor_cmd_cc code,
-				     void *buf,
-				     size_t input_size,
-				     size_t *response_size)
+static enum vendor_cmd_rc ccd_vendor(struct vendor_cmd_params *p)
 {
-	enum vendor_cmd_rc (*handler)(void *x, size_t y, size_t *t) = NULL;
-	char *buffer;
+	enum vendor_cmd_rc (*handler)(struct vendor_cmd_params *p);
 	enum vendor_cmd_rc rc;
 
 	/*
-	 * buf points to the next byte after tpm header, i.e. to the CCD
-	 * subcommand. Cache the pointer to make it easier to access and
-	 * manipulate.
+	 * The command buffer points to the next byte after tpm header, i.e. to
+	 * the CCD subcommand. Cache the pointer to make it easier to access
+	 * and manipulate.
 	 */
-	buffer = buf;
+	char *buffer = p->buffer;
+
+	/*
+	 * Make sure the buffer is large enough to accommodate any CCD
+	 * subcommand response (plus one byte, since the response is shifted),
+	 * so we can skip size checks in the processing functions.
+	 */
+	if (p->out_size < sizeof(struct ccd_info_response) + 1) {
+		p->out_size = 0;
+		return VENDOR_RC_RESPONSE_TOO_BIG;
+	}
+
+	/* Now we can assume no output data unless proven otherwise */
+	p->out_size = 0;
 
 	/* Pick what to do based on subcommand. */
 	switch (buffer[0]) {
@@ -1497,34 +1382,37 @@ static enum vendor_cmd_rc ccd_vendor(enum vendor_cmd_cc code,
 		handler = ccd_pp_poll_open;
 		break;
 
+	case CCDV_GET_INFO:
+		handler = ccd_get_info;
+		break;
+
 	default:
 		CPRINTS("%s:%d - unknown subcommand\n", __func__, __LINE__);
-		break;
+		return VENDOR_RC_NO_SUCH_SUBCOMMAND;
 	}
 
-	if (handler) {
-		*response_size = 0;  /* Let's be optimistic: 0 means success. */
+	/* Shift buffer past the subcommand when calling the handler */
+	p->buffer = buffer + 1;
+	p->in_size--;
+	rc = handler(p);
+	p->buffer = buffer;
+	p->in_size++;
 
-		rc = handler(buf + 1, input_size - 1, response_size);
-
-		/*
-		 * Move response up for the master to see it in the right
-		 * place in the response buffer.
-		 */
-		memmove(buf, buf + 1, *response_size);
-	} else {
-		rc = VENDOR_RC_NO_SUCH_SUBCOMMAND;
-		*response_size = 0;
-	}
-
+	/*
+	 * Move response up for the master to see it in the right
+	 * place in the response buffer.  We have to do this because the
+	 * first byte of the buffer on input was the subcommand, so we
+	 * passed buffer + 1 in the handler call above.
+	 */
+	memmove(buffer, buffer + 1, p->out_size);
 	return rc;
 }
-DECLARE_VENDOR_COMMAND(VENDOR_CC_CCD, ccd_vendor);
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_CCD, ccd_vendor);
 
-static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
-					  void *buf,
-					  size_t input_size,
-					  size_t *response_size)
+static enum vendor_cmd_rc ccd_disable_factory_mode(enum vendor_cmd_cc code,
+						   void *buf,
+						   size_t input_size,
+						   size_t *response_size)
 {
 	int rv = EC_SUCCESS;
 	int error_line;
@@ -1573,12 +1461,12 @@ static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 		}
 
 
-		ccd_lock(NULL, 0, NULL);
+		ccd_lock(NULL);
 
 		/*
-		 * We do it here to make sure that the device comes out of RMA
-		 * with WP enabled, but in general CCD reset needs to enforce
-		 * WP state.
+		 * We do it here to make sure that the device comes out of
+		 * factory mode with WP enabled, but in general CCD reset needs
+		 * to enforce WP state.
 		 *
 		 * TODO(rspangler): sort out CCD state and WP correlation,
 		 * b/73075443.
@@ -1595,4 +1483,4 @@ static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 	*response_size = 1;
 	return VENDOR_RC_INTERNAL_ERROR;
 }
-DECLARE_VENDOR_COMMAND(VENDOR_CC_DISABLE_RMA, ccd_disable_rma);
+DECLARE_VENDOR_COMMAND(VENDOR_CC_DISABLE_FACTORY, ccd_disable_factory_mode);

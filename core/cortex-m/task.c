@@ -75,7 +75,7 @@ void __idle(void)
 		 * CSAE bit is set. Please notice this symptom only
 		 * occurs at npcx5.
 		 */
-#if defined(CHIP_FAMILY_NPCX5) && defined(CONFIG_ESPI)
+#if defined(CHIP_FAMILY_NPCX5) && defined(CONFIG_HOSTCMD_ESPI)
 		/* Enable Host access wakeup */
 		SET_BIT(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 6);
 #endif
@@ -126,7 +126,7 @@ static const struct {
 	uint32_t r0;
 	uint32_t pc;
 	uint16_t stack_size;
-} const tasks_init[] = {
+} tasks_init[] = {
 	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
 	CONFIG_TASK_LIST
 	CONFIG_TEST_TASK_LIST
@@ -210,7 +210,7 @@ inline int in_interrupt_context(void)
 	return ret;
 }
 
-inline int get_interrupt_context(void)
+static inline int get_interrupt_context(void)
 {
 	int ret;
 	asm("mrs %0, ipsr \n":"=r"(ret)); /* read exception number */

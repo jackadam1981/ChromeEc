@@ -25,11 +25,12 @@ MEMORY
 #endif
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
-#ifdef CONFIG_USB_RAM_SIZE
-    USB_RAM (rw) : \
-        ORIGIN = CONFIG_USB_RAM_BASE, \
-        LENGTH = CONFIG_USB_RAM_SIZE * CONFIG_USB_RAM_ACCESS_SIZE / 2
-#endif
+#ifdef CONFIG_CHIP_MEMORY_REGIONS
+#define REGION(name, attr, start, size) \
+    name(attr) : ORIGIN = (start), LENGTH = (size)
+#include "memory_regions.inc"
+#undef REGION
+#endif /* CONFIG_MEMORY_REGIONS */
 }
 SECTIONS
 {
@@ -221,6 +222,10 @@ SECTIONS
 	/* NOTHING MAY GO AFTER THIS! */
     } > IRAM
 
+    ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
+               (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
+           "Not enough space for shared memory.")
+
     /* The linker won't notice if the .data section is too big to fit,
      * apparently because we're sending it into IRAM, not FLASH. The following
      * symbol isn't used by the code, but running "objdump -t *.elf | grep hey"
@@ -240,14 +245,16 @@ SECTIONS
 
     __image_size = __hey_flash_used;
 
-#ifdef CONFIG_USB_RAM_SIZE
-    .usb_ram (NOLOAD) : {
-        __usb_ram_start = .;
-        . = ALIGN(8);
-        *(.usb_ram.btable)
-        *(.usb_ram.data)
-    } > USB_RAM
-#endif
+#ifdef CONFIG_CHIP_MEMORY_REGIONS
+#define REGION(name, attr, start, size) \
+    .name(NOLOAD) : { \
+        __##name##_start = .; \
+        *(SORT(.name.*)) \
+    } > name
+#include "memory_regions.inc"
+#undef REGION
+#endif /* CONFIG_CHIP_MEMORY_REGIONS */
+
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
     /DISCARD/ : {
               *(.google)

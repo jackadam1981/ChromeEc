@@ -139,7 +139,8 @@ int charger_set_otg_current_voltage(int output_current, int output_voltage)
 	int rv;
 	uint16_t volt_reg = (output_voltage / ISL9238_OTG_VOLTAGE_STEP)
 			<< ISL9238_OTG_VOLTAGE_SHIFT;
-	uint16_t current_reg = (output_current / ISL923X_OTG_CURRENT_STEP)
+	uint16_t current_reg =
+		DIV_ROUND_UP(output_current, ISL923X_OTG_CURRENT_STEP)
 			<< ISL923X_OTG_CURRENT_SHIFT;
 
 	if (output_current < 0 || output_current > ISL923X_OTG_CURRENT_MAX ||
@@ -188,7 +189,7 @@ int charger_get_option(int *option)
 	uint32_t controls;
 	int reg;
 
-	rv = raw_read8(ISL923X_REG_CONTROL0, &reg);
+	rv = raw_read16(ISL923X_REG_CONTROL0, &reg);
 	if (rv)
 		return rv;
 
@@ -318,6 +319,7 @@ static void isl923x_init(void)
 
 	if (raw_write16(ISL923X_REG_CONTROL2,
 			reg |
+			ISL923X_C2_OTG_DEBOUNCE_150 |
 			ISL923X_C2_PROCHOT_DEBOUNCE_1000 |
 			ISL923X_C2_ADAPTER_DEBOUNCE_150))
 		goto init_fail;
@@ -660,3 +662,38 @@ DECLARE_CONSOLE_COMMAND(amonbmon, console_command_amon_bmon,
 #endif
 			"Get charger AMON/BMON voltage diff, current");
 #endif /* CONFIG_CMD_CHARGER_ADC_AMON_BMON */
+
+#ifdef CONFIG_CMD_CHARGER_DUMP
+static void dump_reg_range(int low, int high)
+{
+	int reg;
+	int regval;
+	int rv;
+
+	for (reg = low; reg <= high; reg++) {
+		CPRINTF("[%Xh] = ", reg);
+		rv = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, reg,
+				&regval);
+		if (!rv)
+			CPRINTF("0x%04x\n", regval);
+		else
+			CPRINTF("ERR (%d)\n", rv);
+		cflush();
+	}
+}
+
+static int command_isl923x_dump(int argc, char **argv)
+{
+	dump_reg_range(0x14, 0x15);
+	dump_reg_range(0x38, 0x3F);
+	dump_reg_range(0x47, 0x4A);
+#ifdef CONFIG_CHARGER_ISL9238
+	dump_reg_range(0x4B, 0x4E);
+#endif /* CONFIG_CHARGER_ISL9238 */
+	dump_reg_range(0xFE, 0xFF);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(charger_dump, command_isl923x_dump, "",
+			"Dumps ISL923x registers");
+#endif /* CONFIG_CMD_CHARGER_DUMP */

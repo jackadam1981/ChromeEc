@@ -155,7 +155,7 @@ static int i2c_wait_stop_completed(int controller, int timeout)
 		return EC_ERROR_TIMEOUT;
 }
 
-void i2c_abort_data(int controller)
+static void i2c_abort_data(int controller)
 {
 	/* Clear NEGACK, STASTR and BER bits */
 	SET_BIT(NPCX_SMBST(controller), NPCX_SMBST_BER);
@@ -165,7 +165,7 @@ void i2c_abort_data(int controller)
 	/* Wait till STOP condition is generated */
 	if (i2c_wait_stop_completed(controller, I2C_MAX_TIMEOUT)
 			!= EC_SUCCESS) {
-		cprints(CC_I2C, "Abort i2c %02x fail!", controller);
+		cprintf(CC_I2C, "Abort i2c %02x fail!\n", controller);
 		/* Clear BB (BUS BUSY) bit */
 		SET_BIT(NPCX_SMBCST(controller), NPCX_SMBCST_BB);
 		return;
@@ -175,7 +175,7 @@ void i2c_abort_data(int controller)
 	SET_BIT(NPCX_SMBCST(controller), NPCX_SMBCST_BB);
 }
 
-int i2c_reset(int controller)
+static int i2c_reset(int controller)
 {
 	uint16_t timeout = I2C_MAX_TIMEOUT;
 	/* Disable the SMB module */
@@ -190,7 +190,7 @@ int i2c_reset(int controller)
 	}
 
 	if (timeout == 0) {
-		cprints(CC_I2C, "Reset i2c %02x fail!", controller);
+		cprintf(CC_I2C, "Reset i2c %02x fail!\n", controller);
 		return 0;
 	}
 
@@ -199,7 +199,7 @@ int i2c_reset(int controller)
 	return 1;
 }
 
-void i2c_recovery(int controller, volatile struct i2c_status *p_status)
+static void i2c_recovery(int controller, volatile struct i2c_status *p_status)
 {
 	CPRINTS("i2c %d recovery! error code is %d, current state is %d",
 			controller, p_status->err_code, p_status->oper_state);
@@ -258,7 +258,7 @@ enum smb_error i2c_master_transaction(int controller)
 			/* Need to read the other bytes from next transaction */
 			p_status->oper_state = SMB_READ_OPER;
 	} else
-		cprints(CC_I2C, "Unexpected i2c state machine! %d",
+		cprintf(CC_I2C, "Unexpected i2c state machine! %d\n",
 				p_status->oper_state);
 
 	/* Generate a START condition */
@@ -298,8 +298,9 @@ enum smb_error i2c_master_transaction(int controller)
 	/* Wait till STOP condition is generated for normal transaction */
 	if (p_status->err_code == SMB_OK && i2c_wait_stop_completed(controller,
 			I2C_MIN_TIMEOUT) != EC_SUCCESS) {
-		cprints(CC_I2C, "STOP fail! scl %02x is held by slave device!",
-				controller);
+		cprintf(CC_I2C,
+			"STOP fail! scl %02x is held by slave device!\n",
+			controller);
 		p_status->err_code = SMB_TIMEOUT_ERROR;
 	}
 
@@ -580,15 +581,15 @@ void i2c6_interrupt(void) { handle_interrupt(6); }
 void i2c7_interrupt(void) { handle_interrupt(7); }
 #endif
 
-DECLARE_IRQ(NPCX_IRQ_SMB1, i2c0_interrupt, 3);
-DECLARE_IRQ(NPCX_IRQ_SMB2, i2c1_interrupt, 3);
-DECLARE_IRQ(NPCX_IRQ_SMB3, i2c2_interrupt, 3);
-DECLARE_IRQ(NPCX_IRQ_SMB4, i2c3_interrupt, 3);
+DECLARE_IRQ(NPCX_IRQ_SMB1, i2c0_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_SMB2, i2c1_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_SMB3, i2c2_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_SMB4, i2c3_interrupt, 4);
 #if defined(CHIP_FAMILY_NPCX7)
-DECLARE_IRQ(NPCX_IRQ_SMB5, i2c4_interrupt, 3);
-DECLARE_IRQ(NPCX_IRQ_SMB6, i2c5_interrupt, 3);
-DECLARE_IRQ(NPCX_IRQ_SMB7, i2c6_interrupt, 3);
-DECLARE_IRQ(NPCX_IRQ_SMB8, i2c7_interrupt, 3);
+DECLARE_IRQ(NPCX_IRQ_SMB5, i2c4_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_SMB6, i2c5_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_SMB7, i2c6_interrupt, 4);
+DECLARE_IRQ(NPCX_IRQ_SMB8, i2c7_interrupt, 4);
 #endif
 
 /*****************************************************************************/
@@ -652,11 +653,14 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	     p_status->oper_state != SMB_WRITE_SUSPEND &&
 	     (i2c_bus_busy(ctrl)
 	     || (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
+		int ret;
 
-		/* Attempt to unwedge the i2c port. */
-		i2c_unwedge(port);
+		/* Attempt to unwedge the i2c port */
+		ret = i2c_unwedge(port);
+		if (ret)
+			return ret;
 		p_status->err_code = SMB_BUS_BUSY;
-		/* recovery i2c controller */
+		/* recover i2c controller */
 		i2c_recovery(ctrl, p_status);
 		/* Select port again for recovery */
 		i2c_select_port(port);

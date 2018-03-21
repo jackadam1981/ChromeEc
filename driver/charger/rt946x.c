@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charger.h"
+#include "charge_manager.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "config.h"
@@ -18,6 +19,7 @@
 #include "rt946x.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_charge.h"
 #include "util.h"
 
 /* Console output macros */
@@ -47,7 +49,7 @@ struct charger_init_setting {
 };
 
 static const struct charger_init_setting rt946x_charger_init_setting = {
-	.eoc_current = 250,
+	.eoc_current = 400,
 	.mivr = 4000,
 	.ircmp_vclamp = 32,
 	.ircmp_res = 25,
@@ -59,6 +61,13 @@ enum rt946x_ilmtsel {
 	RT946X_ILMTSEL_PSEL_OTG,
 	RT946X_ILMTSEL_AICR = 2,
 	RT946X_ILMTSEL_LOWER_LEVEL, /* lower of above two */
+};
+
+enum rt946x_chg_stat {
+	RT946X_CHGSTAT_READY = 0,
+	RT946X_CHGSTAT_IN_PROGRESS,
+	RT946X_CHGSTAT_DONE,
+	RT946X_CHGSTAT_FAULT,
 };
 
 enum rt946x_adc_in_sel {
@@ -82,7 +91,7 @@ enum rt946x_irq {
 static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
 	0xF0, 0xF0, 0xFF, 0xFF, 0xFF, 0xFF,
 #ifdef CONFIG_CHARGER_RT9467
-	0xFF,
+	0xFC,
 #endif
 };
 
@@ -306,6 +315,19 @@ static int rt946x_set_ircmp_res(unsigned int res)
 		reg_res << RT946X_SHIFT_IRCMP_RES);
 }
 
+static int rt946x_set_vprec(unsigned int vprec)
+{
+	uint8_t reg_vprec = 0;
+
+	reg_vprec = rt946x_closest_reg(RT946X_VPREC_MIN, RT946X_VPREC_MAX,
+		RT946X_VPREC_STEP, vprec);
+
+	CPRINTF("%s: vprec = %d(0x%02X)\n", __func__, vprec, reg_vprec);
+
+	return rt946x_update_bits(RT946X_REG_CHGCTRL8, RT946X_MASK_VPREC,
+		reg_vprec << RT946X_SHIFT_VPREC);
+}
+
 static int rt946x_set_iprec(unsigned int iprec)
 {
 	uint8_t reg_iprec = 0;
@@ -354,8 +376,12 @@ static int rt946x_init_setting(void)
 	if (rv)
 		return rv;
 #endif
-	/* Disable BC12 detection */
+	/* Enable/Disable BC 1.2 detection */
+#ifdef HAS_TASK_USB_CHG
+	rv = rt946x_enable_bc12_detection(1);
+#else
 	rv = rt946x_enable_bc12_detection(0);
+#endif
 	if (rv)
 		return rv;
 	/* Disable WDT */
@@ -390,6 +416,9 @@ static int rt946x_init_setting(void)
 	rv = rt946x_set_ircmp_res(rt946x_charger_init_setting.ircmp_res);
 	if (rv)
 		return rv;
+	rv = rt946x_set_vprec(batt_info->voltage_min);
+	if (rv)
+		return rv;
 	rv = rt946x_set_iprec(batt_info->precharge_current);
 	if (rv)
 		return rv;
@@ -402,6 +431,16 @@ int charger_enable_otg_power(int enabled)
 {
 	return (enabled ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_CHGCTRL1, RT946X_MASK_OPA_MODE);
+}
+
+int charger_is_sourcing_otg_power(int port)
+{
+	int val;
+
+	if (rt946x_read8(RT946X_REG_CHGCTRL1, &val))
+		return 0;
+
+	return !!(val & RT946X_MASK_OPA_MODE);
 }
 #endif
 
@@ -599,8 +638,8 @@ int charger_discharge_on_ac(int enable)
 int charger_get_vbus_voltage(int port)
 {
 	int val;
-	int vbus_mv;
-	int retries = 40;
+	static int vbus_mv;
+	int retries = 10;
 
 	/* Set VBUS as ADC input */
 	rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
@@ -610,10 +649,14 @@ int charger_get_vbus_voltage(int port)
 	rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
 
 	/*
-	 * Wait up to 200ms for the conversion to finish.
+	 * In practice, ADC conversion rarely takes more than 35ms.
+	 * However, according to the datasheet, ADC conversion may take
+	 * up to 200ms. But we can't wait for that long, otherwise
+	 * host command would time out. So here we set ADC timeout as 50ms.
+	 * If ADC times out, we just return the last read vbus_mv.
 	 *
-	 * TODO(chromium:780364): The 200ms delay might impact
-	 * charge ramp algorithm.
+	 * TODO(chromium:820335): We may handle this more gracefully with
+	 * EC_RES_IN_PROGRESS.
 	 */
 	while (--retries) {
 		rt946x_read8(RT946X_REG_CHGSTAT, &val);
@@ -621,16 +664,16 @@ int charger_get_vbus_voltage(int port)
 			break;
 		msleep(5);
 	}
-	/* ADC timeout */
-	if (!retries)
-		return -1;
 
-	/* Read measured results */
-	rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
-	rt946x_read8(RT946X_REG_ADCDATAH, &val);
-	vbus_mv |= (val << 8);
+	if (retries) {
+		/* Read measured results if ADC finishes in time. */
+		rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
+		rt946x_read8(RT946X_REG_ADCDATAH, &val);
+		vbus_mv |= (val << 8);
+		vbus_mv *= 25;
+	}
 
-	return (vbus_mv * 25);
+	return vbus_mv;
 }
 
 /* Setup sourcing current to prevent overload */
@@ -781,7 +824,79 @@ static void rt946x_init(void)
 	}
 	CPRINTF("RT946X init succeeded\n");
 }
-DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
+
+#ifdef HAS_TASK_USB_CHG
+static int rt946x_get_bc12_device_type(void)
+{
+	int reg;
+
+	if (rt946x_read8(RT946X_REG_DPDM1, &reg))
+		return CHARGE_SUPPLIER_NONE;
+
+	switch (reg & RT946X_MASK_BC12_TYPE) {
+	case RT946X_MASK_SDP:
+		return CHARGE_SUPPLIER_BC12_SDP;
+	case RT946X_MASK_CDP:
+		return CHARGE_SUPPLIER_BC12_CDP;
+	case RT946X_MASK_DCP:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	default:
+		return CHARGE_SUPPLIER_NONE;
+	}
+}
+
+static int rt946x_get_bc12_ilim(int charge_supplier)
+{
+	switch (charge_supplier) {
+	case CHARGE_SUPPLIER_BC12_CDP:
+	case CHARGE_SUPPLIER_BC12_DCP:
+		return 1500;
+	case CHARGE_SUPPLIER_BC12_SDP:
+	default:
+		return USB_CHARGER_MIN_CURR_MA;
+	}
+}
+
+void rt946x_interrupt(enum gpio_signal signal)
+{
+	task_wake(TASK_ID_USB_CHG);
+}
+
+void usb_charger_task(void *u)
+{
+	struct charge_port_info charge;
+	int bc12_type = CHARGE_SUPPLIER_NONE;
+	int reg = 0;
+
+	charge.voltage = USB_CHARGER_VOLTAGE_MV;
+
+	while (1) {
+		rt946x_read8(RT946X_REG_DPDMIRQ, &reg);
+
+		/* VBUS attach event */
+		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
+			bc12_type = rt946x_get_bc12_device_type();
+			if (bc12_type != CHARGE_SUPPLIER_NONE) {
+				charge.current =
+					rt946x_get_bc12_ilim(bc12_type);
+				charge_manager_update_charge(bc12_type,
+							     0, &charge);
+				rt946x_enable_bc12_detection(0);
+			}
+		}
+
+		/* VBUS detach event */
+		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
+			charge.current = 0;
+			charge_manager_update_charge(bc12_type, 0, &charge);
+			rt946x_enable_bc12_detection(1);
+		}
+
+		task_wait_event(-1);
+	}
+}
+#endif /* HAS_TASK_USB_CHG */
 
 /* Non-standard interface functions */
 
@@ -803,7 +918,25 @@ int rt946x_is_vbus_ready(void)
 	       0 : !!(val & RT946X_MASK_PWR_RDY);
 }
 
+int rt946x_is_charge_done(void)
+{
+	int val = 0;
+
+	if (rt946x_read8(RT946X_REG_CHGSTAT, &val))
+		return 0;
+
+	val = (val & RT946X_MASK_CHG_STAT) >> RT946X_SHIFT_CHG_STAT;
+
+	return val == RT946X_CHGSTAT_DONE;
+}
+
 int rt946x_cutoff_battery(void)
 {
 	return rt946x_set_bit(RT946X_REG_CHGCTRL2, RT946X_MASK_SHIP_MODE);
+}
+
+int rt946x_enable_charge_termination(int en)
+{
+	return (en ? rt946x_set_bit : rt946x_clr_bit)
+		(RT946X_REG_CHGCTRL2, RT946X_MASK_TE);
 }

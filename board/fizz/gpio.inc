@@ -14,7 +14,7 @@ GPIO_INT(POWER_BUTTON_L,	PIN(0, 4), GPIO_INT_BOTH | GPIO_PULL_UP,	power_button_i
 
 GPIO_INT(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INT_BOTH,			power_signal_interrupt)
 /* Use VW signals instead of GPIOs */
-#ifndef CONFIG_ESPI_VW_SIGNALS
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 GPIO_INT(PCH_SLP_S3_L,		PIN(7, 3), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(PCH_SLP_S4_L,		PIN(8, 6), GPIO_INT_BOTH,			power_signal_interrupt)
 #endif
@@ -83,6 +83,10 @@ GPIO(USB3_ENABLE,		PIN(A, 1), GPIO_OUT_LOW)			/* Rear port, single */
 GPIO(USB4_ENABLE,		PIN(0, 0), GPIO_OUT_LOW)			/* Front port 1 */
 GPIO(USB5_ENABLE,		PIN(B, 1), GPIO_OUT_LOW)			/* Front port 2 */
 GPIO(USB_A_CHARGE_EN_L,		PIN(A, 5), GPIO_OUT_LOW)
+
+GPIO(CEC_OUT,			PIN(3, 6), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
+GPIO(CEC_IN,			PIN(4, 0), GPIO_INPUT)
+GPIO(CEC_PULL_UP,		PIN(D, 3), GPIO_OUT_HIGH)
 
 /* Board ID */
 GPIO(BOARD_VERSION1,		PIN(C, 4), GPIO_INPUT)	/* Board ID bit0 */

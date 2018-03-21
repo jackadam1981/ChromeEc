@@ -341,6 +341,7 @@ enum system_bbram_idx {
 	/* PD state for CONFIG_USB_PD_DUAL_ROLE uses one byte per port */
 	SYSTEM_BBRAM_IDX_PD0,
 	SYSTEM_BBRAM_IDX_PD1,
+	SYSTEM_BBRAM_IDX_PD2,
 	SYSTEM_BBRAM_IDX_TRY_SLOT,
 };
 
@@ -477,6 +478,30 @@ static inline void disable_sleep(uint32_t mask)
 {
 	atomic_or(&sleep_mask, mask);
 }
+
+#ifdef CONFIG_LOW_POWER_IDLE_LIMITED
+/*
+ * If this variable is nonzero, all levels of idle modes are disabled.
+ * Do NOT access it directly. Use idle_is_disabled() to read it and
+ * enable_idle()/disable_idle() to write it.
+ */
+extern uint32_t idle_disabled;
+
+static inline uint32_t idle_is_disabled(void)
+{
+	return idle_disabled;
+}
+
+static inline void disable_idle(void)
+{
+	atomic_or(&idle_disabled, 1);
+}
+
+static inline void enable_idle(void)
+{
+	atomic_clear(&idle_disabled, 1);
+}
+#endif
 
 /* The following three functions are not available on all chips. */
 /**

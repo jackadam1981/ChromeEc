@@ -46,6 +46,8 @@ die() {
 
 
 BOARDS_IT83XX=(
+	bip
+	glkrvp_ite
 	it83xx_evb
 	reef_it8320
 )
@@ -66,6 +68,7 @@ BOARDS_STM32=(
 	kitty
 	meowth_fp
 	minimuffin
+	nocturne_fp
 	oak
 	oak_pd
 	pit
@@ -105,10 +108,10 @@ BOARDS_NPCX_5M6G_JTAG=(
 )
 
 BOARDS_NPCX_7M6X_JTAG=(
-	npcx7_evb
 )
 
 BOARDS_NPCX_7M7X_JTAG=(
+	npcx7_evb
 )
 
 BOARDS_NPCX_SPI=(
@@ -117,6 +120,7 @@ BOARDS_NPCX_SPI=(
 	fizz
 	glkrvp
 	gru
+	kahlee
 	kevin
         lux
 	nami
@@ -125,16 +129,21 @@ BOARDS_NPCX_SPI=(
 	reef
 	soraka
 	wheatley
-	kahlee
 )
 
 BOARDS_NPCX_INT_SPI=(
+	atlas
 	grunt
 	meowth
+	nocturne
+	phaser
+	yorp
 	zoombini
 )
 
 BOARDS_NPCX_UUT=(
+	cheza
+	grunt
 )
 
 BOARDS_NRF51=(
@@ -167,6 +176,14 @@ BOARDS_RAIDEN=(
 	scarlet
 	soraka
 )
+
+# A map of supported board + chip + servo permutations.
+# The value is a regex that will be checked against $SERVO_TYPE.
+# i.e., If a board needs to use one CHIP when connected via a Suzy-Q and another
+# chip when connected via a Servo.
+declare -A VALID_CHIP_COMBO
+VALID_CHIP_COMBO["grunt.npcx_uut"]="ccd_cr50"
+VALID_CHIP_COMBO["grunt.npcx_spi"]="servo"
 
 # Flags
 DEFINE_string board "${DEFAULT_BOARD}" \
@@ -219,7 +236,6 @@ function get_servo_type() {
 }
 
 BOARD=${FLAGS_board}
-BOARD_ROOT=/build/${BOARD}
 
 in_array() {
 	local n=$#
@@ -233,36 +249,97 @@ in_array() {
 	return 1
 }
 
+declare -a SUPPORTED_CHIPS
+
 if $(in_array "${BOARDS_LM4[@]}" "${BOARD}"); then
-	CHIP="lm4"
-elif $(in_array "${BOARDS_STM32[@]}" "${BOARD}"); then
-	CHIP="stm32"
-elif $(in_array "${BOARDS_STM32_DFU[@]}" "${BOARD}"); then
-	CHIP="stm32_dfu"
-elif $(in_array "${BOARDS_NPCX_5M5G_JTAG[@]}" "${BOARD}"); then
-	CHIP="npcx_5m5g_jtag"
-elif $(in_array "${BOARDS_NPCX_5M6G_JTAG[@]}" "${BOARD}"); then
-	CHIP="npcx_5m6g_jtag"
-elif $(in_array "${BOARDS_NPCX_7M6X_JTAG[@]}" "${BOARD}"); then
-	CHIP="npcx_7m6x_jtag"
-elif $(in_array "${BOARDS_NPCX_7M7X_JTAG[@]}" "${BOARD}"); then
-	CHIP="npcx_7m7x_jtag"
-elif $(in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"); then
-	CHIP="npcx_spi"
-elif $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
-	CHIP="npcx_spi"
-elif $(in_array "${BOARDS_NPCX_UUT[@]}" "${BOARD}"); then
-	CHIP="npcx_uut"
-elif $(in_array "${BOARDS_NRF51[@]}" "${BOARD}"); then
-	CHIP="nrf51"
-elif $(in_array "${BOARDS_MEC1322[@]}" "${BOARD}"); then
-	CHIP="mec1322"
-elif $(in_array "${BOARDS_IT83XX[@]}" "${BOARD}"); then
-	CHIP="it83xx"
+	SUPPORTED_CHIPS+=("lm4")
+fi
+
+if $(in_array "${BOARDS_STM32[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("stm32")
+fi
+
+if $(in_array "${BOARDS_STM32_DFU[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("stm32_dfu")
+fi
+
+if $(in_array "${BOARDS_NPCX_5M5G_JTAG[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_5m5g_jtag")
+fi
+
+if $(in_array "${BOARDS_NPCX_5M6G_JTAG[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_5m6g_jtag")
+fi
+
+if $(in_array "${BOARDS_NPCX_7M6X_JTAG[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_7m6x_jtag")
+fi
+
+if $(in_array "${BOARDS_NPCX_7M7X_JTAG[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_7m7x_jtag")
+fi
+
+if $(in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_spi")
+fi
+
+if $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_spi")
+fi
+
+if $(in_array "${BOARDS_NPCX_UUT[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_uut")
+fi
+
+if $(in_array "${BOARDS_NRF51[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("nrf51")
+fi
+
+if $(in_array "${BOARDS_MEC1322[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("mec1322")
+fi
+
+if $(in_array "${BOARDS_IT83XX[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("it83xx")
+fi
+
+if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 && -n "${FLAGS_chip}" ]]; then
+	SUPPORTED_CHIPS+="${FLAGS_chip}"
+fi
+
+SERVO_TYPE="$(get_servo_type)"
+
+if [[ ${#SUPPORTED_CHIPS[@]} -eq 0 ]]; then
+	die "board '${BOARD}' not supported. Please manually specify --chip="
+elif [[ ${#SUPPORTED_CHIPS[@]} -eq 1 ]]; then
+	CHIP="${SUPPORTED_CHIPS[0]}"
 elif [ -n "${FLAGS_chip}" ]; then
-	CHIP="${FLAGS_chip}"
+	if $(in_array "${SUPPORTED_CHIPS[@]}" "${FLAGS_chip}"); then
+		CHIP="${FLAGS_chip}"
+	else
+		die "board ${BOARD} only supports (${SUPPORTED_CHIPS[@]})," \
+		"not ${FLAGS_chip}."
+	fi
 else
-	die "board ${BOARD} not supported"
+	declare -a FILTERED_CHIPS
+
+	for i in "${SUPPORTED_CHIPS[@]}"; do
+		SUPPORTED_SERVO="${VALID_CHIP_COMBO["${BOARD}.${i}"]}"
+		if [[ -z "$SUPPORTED_SERVO" || \
+				"$SERVO_TYPE" =~ "$SUPPORTED_SERVO" ]]; then
+			FILTERED_CHIPS+=("$i")
+		fi
+
+	done
+
+	if [[ ${#FILTERED_CHIPS[@]} -eq 0 ]]; then
+		die "servo ${SERVO_TYPE} is unsupported for board ${BOARD}."
+	elif [[ ${#FILTERED_CHIPS[@]} -eq 1 ]]; then
+		CHIP="${FILTERED_CHIPS[0]}"
+	else
+		die "board ${BOARD} supports multiple chips" \
+		"(${FILTERED_CHIPS[@]}). Use --chip= to choose one."
+	fi
 fi
 
 if [ -n "${FLAGS_chip}" -a "${CHIP}" != "${FLAGS_chip}" ]; then
@@ -274,11 +351,15 @@ if [ "${CHIP}" = "stm32_dfu" -o "${CHIP}" = "it83xx" ]; then
 fi
 
 servo_has_warm_reset() {
-	dut_control warm_reset >/dev/null 2>&1
+	dut_control -i warm_reset >/dev/null 2>&1
 }
 
 servo_has_cold_reset() {
-	dut_control cold_reset >/dev/null 2>&1
+	dut_control -i cold_reset >/dev/null 2>&1
+}
+
+servo_has_dut_i2c_mux() {
+	dut_control -i dut_i2c_mux >/dev/null 2>&1
 }
 
 # reset the EC
@@ -325,13 +406,13 @@ toad_ec_boot0() {
 	dut_control boot_mode:yes
 }
 
+ccd_ec_boot0() {
+	info "Using CCD $1."
+	dut_control ccd_ec_boot_mode_$1:on
+}
+
 servo_ec_boot0() {
-	if [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
-		info "Using CCD."
-		dut_control ccd_ec_boot_mode:on
-	else
-		dut_control ec_boot_mode:on
-	fi
+	dut_control ec_boot_mode:on
 }
 
 servo_usbpd_boot0() {
@@ -347,12 +428,14 @@ ec_enable_boot0() {
 	if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
 		dut_control prog_en:yes
 	fi
-	if [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		stype=ccd
+	elif [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
 		stype=servo
 	else
 		stype=${SERVO_TYPE}
 	fi
-	eval ${stype}_${MCU}_boot0
+	eval ${stype}_${MCU}_boot0 $1
 }
 
 # Returns 0 on success (if on beaglebone)
@@ -396,6 +479,35 @@ cleanup() {
 		kill -CONT ${pid}
 	done
 
+	if [ "${CHIP}" == "it83xx" ] ; then
+		info "Reinitialize ftdi_i2c interface"
+		dut_control --ftdii2c init
+		dut_control --ftdii2c open
+		dut_control --ftdii2c setclock
+
+		# Reset the dut mux if it exists
+		if $(servo_has_dut_i2c_mux); then
+			# Ensure servo i2c mux is on so we can talk to dut
+			dut_control i2c_mux_en:on
+			dut_control i2c_mux:remote_adc
+
+			# Turn off dut i2c mux
+			dut_control dut_i2c_mux:none
+
+			# Turn off servo i2c mux
+			dut_control i2c_mux_en:off
+		fi
+
+	fi
+	if [ "${CHIP}" == "stm32" -o "${CHIP}" == "npcx_uut" ] ; then
+		dut_control ${MCU}_boot_mode:off
+	fi
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		dut_control ccd_ec_boot_mode_uut:off
+		dut_control ccd_ec_boot_mode_bitbang:off
+		dut_control ${MCU}_uart_bitbang_en:off
+	fi
+
 	if ! on_raiden || $(servo_has_cold_reset); then
 		ec_reset
 	fi
@@ -409,11 +521,31 @@ else
 	EC_FILE=ec.bin
 fi
 
-EMERGE_BUILD=${BOARD_ROOT}/firmware/${EC_FILE}
 
 LOCAL_BUILD=
 if [[ -n "${EC_DIR}" ]]; then
-	LOCAL_BUILD="${EC_DIR}/build/${BOARD}/${EC_FILE}"
+	if [ "${FLAGS_ro}" = ${FLAGS_TRUE} ] ; then
+		LOCAL_BUILD="${EC_DIR}/build/${BOARD}/RO/${EC_FILE}"
+	else
+		LOCAL_BUILD="${EC_DIR}/build/${BOARD}/${EC_FILE}"
+	fi
+fi
+
+# Get baseboard from build system if present
+BASEBOARD=
+if [[ -n "${EC_DIR}" ]]; then
+	BASEBOARD=$(make --quiet -C ${EC_DIR} BOARD=${BOARD} print-baseboard)
+elif [[ -d "${HOME}/trunk/src/platform/ec" ]]; then
+	BASEBOARD=$(make --quiet -C ${HOME}/trunk/src/platform/ec \
+		BOARD=${BOARD} print-baseboard)
+else
+	info "Could not find ec build folder to calculate baseboard."
+fi
+
+if [[ -n "${BASEBOARD}" ]]; then
+	EMERGE_BUILD=/build/${BASEBOARD}/firmware/${BOARD}/${EC_FILE}
+else
+	EMERGE_BUILD=/build/${BOARD}/firmware/${EC_FILE}
 fi
 
 # Find the EC image to use
@@ -454,7 +586,7 @@ function servo_ec_uart() {
 case "${BOARD}" in
 	oak_pd|samus_pd|strago_pd ) MCU="usbpd" ;;
 	chell_pd|glados_pd ) MCU="usbpd" ;;
-	meowth_fp ) MCU="usbpd" ;;
+	meowth_fp|nocturne_fp ) MCU="usbpd" ;;
 	dingdong|hoho|twinkie ) DUT_CONTROL_CMD="true" ; MCU="ec" ;;
 	*) MCU="ec" ;;
 esac
@@ -467,17 +599,19 @@ servo_v4_with_ccd_cr50_VARS="cold_reset"
 # Flashing an STM32 over the UART requires modifying the UART properties along
 # with the boot mode pin.
 if [ "${CHIP}" = "stm32" ] ; then
-	common_stm32_VARS=" ${MCU}_uart_en ${MCU}_uart_parity"
+	common_stm32_VARS=" ${MCU}_uart_parity"
 	common_stm32_VARS+=" ${MCU}_uart_baudrate"
 	servo_v2_VARS+=$common_stm32_VARS
-	servo_v2_VARS+=" ${MCU}_boot_mode"
+	servo_v2_VARS+=" ${MCU}_uart_en"
 	servo_micro_VARS+=$common_stm32_VARS
-	servo_micro_VARS+=" ${MCU}_boot_mode"
+	servo_micro_VARS+=" ${MCU}_uart_en"
 	servo_v4_with_ccd_cr50_VARS+=$common_stm32_VARS
-	servo_v4_with_ccd_cr50_VARS+=" ccd_${MCU}_boot_mode ec_uart_bitbang_en"
 fi
 if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
 	servo_v2_VARS+=" prog_en"
+fi
+if [ "${CHIP}" = "npcx_uut" ] ; then
+	servo_v4_with_ccd_cr50_VARS+=" ccd_keepalive_en"
 fi
 toad_VARS="${MCU}_uart_parity ${MCU}_uart_baudrate boot_mode"
 
@@ -676,9 +810,10 @@ function flash_flashrom() {
 		echo "Running flashrom:" 1>&2
 		echo " ${FLASHROM_CMDLINE}" 1>&2
 	fi
-	SPI_SIZE=$(sudo ${FLASHROM_CMDLINE} 2>/dev/null |\
+	SPI_SIZE=$(${FLASHROM_CMDLINE} 2>/dev/null |\
 		       grep -oe '[0-9]\+$') || \
 		die "Failed to determine chip size!"
+	(( SPI_SIZE == 0 )) && die "Chip size is 0!"
 
 	IMG_SIZE=$(stat -c%s "$IMG")
 	PATCH_SIZE=$((${SPI_SIZE} - ${IMG_SIZE}))
@@ -749,30 +884,46 @@ function flash_stm32() {
 	info "${MCU} UART pty : ${EC_UART}"
 	claim_pty ${EC_UART}
 
-	if [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
+	if ! on_raiden && [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
 		dut_control ${MCU}_uart_en:on
 	fi
 	dut_control ${MCU}_uart_parity:even
 
-	if [ "${SERVO_TYPE}" == "servo_v4_with_ccd_cr50" ] ; then
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		# TODO(b/77965217): remove when cr50 stops clobbering bitbang
+		# when it notices the AP/EC turn off.
+		dut_control cold_reset:on
+		sleep 2
 		dut_control ${MCU}_uart_baudrate:9600
 		dut_control ${MCU}_uart_bitbang_en:on
 	else
 		dut_control ${MCU}_uart_baudrate:115200
+
+		if $(servo_has_warm_reset); then
+			dut_control warm_reset:on
+		fi
 	fi
 
-	if $(servo_has_warm_reset); then
-		dut_control warm_reset:on
-	fi
 	# Force the EC to boot in serial monitor mode
-	ec_enable_boot0
+	ec_enable_boot0 "bitbang"
+
+	# Add a delay long enough for cr50 to update the ccdstate. Cr50 updates
+	# ccdstate once a second, so a 2 second delay should be safe.
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		sleep 2
+	fi
+
 	# Reset the EC
 	if $(servo_has_cold_reset); then
 		ec_reset
 	fi
 	# Unprotect flash, erase, and write
+	STM32MON_COMMAND="${STM32MON} -d ${EC_UART} -U -u -e -w"
+	if [ "${FLAGS_verbose}" = ${FLAGS_TRUE} ]; then
+		echo "${STM32MON_COMMAND}" "${IMG}"
+	fi
 	timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		${STM32MON} -d ${EC_UART} -U -u -e -w "${IMG}"
+		${STM32MON_COMMAND} "${IMG}"
 	# Remove the Application processor reset
 	# TODO(crosbug.com/p/30738): we cannot rely on servo_VARS to restore it
 	if $(servo_has_warm_reset); then
@@ -823,16 +974,18 @@ function flash_it83xx() {
 	dut_control i2c_mux_en:on
 	dut_control i2c_mux:remote_adc
 
+	# Now the we have enabled the I2C mux on the servo to talk to the dut,
+	# we need to switch the I2C mux on the dut to allow ec programing (if
+	# there is a mux on the dut)
+	if $(servo_has_dut_i2c_mux); then
+		dut_control dut_i2c_mux:ec_prog
+	fi
+
 	info "Close connection to ftdi_i2c interface"
 	dut_control --ftdii2c close
 
 	info "Run iteflash..."
 	sudo ${ITEFLASH} -w ${IMG}
-
-	info "Reinitialize ftdi_i2c interface"
-	dut_control --ftdii2c init
-	dut_control --ftdii2c open
-	dut_control --ftdii2c setclock
 }
 
 function flash_lm4() {
@@ -872,23 +1025,14 @@ function flash_npcx_jtag() {
 
 function flash_npcx_uut() {
 	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:$PATH"
-	NPCX_UUT=$(PATH="${TOOL_PATH}" which Uartupdatetool)
+	NPCX_UUT=$(PATH="${TOOL_PATH}" which uartupdatetool)
 	EC_UART="$(servo_ec_uart)"
 
 	BUILD_PATH="${EC_DIR}/build/${BOARD}"
 	MONITOR_PATH="${BUILD_PATH}/chip/npcx/spiflashfw"
-	IMG_RO="${BUILD_PATH}/RO/ec.RO.flat"
-	IMG_RW="${BUILD_PATH}/RW/ec.RW.bin"
 	MON="${MONITOR_PATH}/npcx_monitor.bin"
-	MON_HDR_RO="${MONITOR_PATH}/monitor_hdr_ro.bin"
-	MON_HDR_RW="${MONITOR_PATH}/monitor_hdr_rw.bin"
-	# The start address to restore monitor header binary
-	MON_HDR_ADDR="0x200C3000"
 	# The start address to restore monitor firmware binary
 	MON_ADDR="0x200C3020"
-	# Read the address where the EC image should be loaded from monitor header.
-	# Default: It is equilvalant to the beginning of code RAM address.
-	EC_IMG_ADDR="0x"$(xxd -e ${MON_HDR_RO} | cut -d' ' -f4)
 
 	if [ ! -x "$NPCX_UUT" ]; then
 		die "no NPCX UART Update Tool found."
@@ -898,47 +1042,24 @@ function flash_npcx_uut() {
 	info "${MCU} UART pty : ${EC_UART}"
 	claim_pty ${EC_UART}
 
-	# Remove the prefix "/dev/" because Uartupdatetool will add it.
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]] ; then
+		dut_control ccd_keepalive_en:on
+	fi
+
+	# Force the EC to boot in UART update mode
+	ec_enable_boot0 "uut"
+	ec_reset
+
+	# Have to wait a bit for EC boot-up
+	sleep 0.1
+
+	# Remove the prefix "/dev/" because uartupdatetool will add it.
 	EC_UART=${EC_UART#/dev/}
-	MON_PARAMS="-port ${EC_UART} -baudrate 115200"
+	UUT_PARAMS="--port ${EC_UART} --baudrate 115200"
 
-	# Read the RO image size
-	EC_IMG_SIZE=$(printf "%08X" $(stat -c "%s" ${IMG_RO}))
-	# Covert RO image size to little endian
-	EC_IMG_SIZE_LE=${EC_IMG_SIZE:6:2}${EC_IMG_SIZE:4:2}${EC_IMG_SIZE:2:2}${EC_IMG_SIZE:0:2}
-	# Replace the filed of image size in monitor header with the actual RO image size.
-	T=/tmp/mon_hdr_ro.$$
-	xxd -g4 ${MON_HDR_RO} | awk -v s="$EC_IMG_SIZE_LE" 'NR==1 {$3=s}1' | xxd -r > ${T}
-
-	info "Start to flash RO image.."
-	# Start to program EC RO image
-	# Load monitor header binary to address 0x200C3000
-	${NPCX_UUT} ${MON_PARAMS} -opr wr -addr ${MON_HDR_ADDR} -file ${T}
 	# Load monitor binary to address 0x200C3020
-	${NPCX_UUT} ${MON_PARAMS} -opr wr -addr ${MON_ADDR} -file ${MON}
-	# Load RO image to Code RAM range.
-	${NPCX_UUT} ${MON_PARAMS} -opr wr -addr ${EC_IMG_ADDR} -file ${IMG_RO}
-	# Execute the monitor to program RO image on SPI flash
-	${NPCX_UUT} ${MON_PARAMS} -opr call -addr ${MON_ADDR}
-
-	# Read the RW image size
-	EC_IMG_SIZE=$(printf "%08X" $(stat -c "%s" ${IMG_RW}))
-	# Covert RW image size to little endian
-	EC_IMG_SIZE_LE=${EC_IMG_SIZE:6:2}${EC_IMG_SIZE:4:2}${EC_IMG_SIZE:2:2}${EC_IMG_SIZE:0:2}
-	# Replace the filed of image size in monitor header with the actual RW image size.
-	T=/tmp/mon_hdr_rw.$$
-	xxd -g4 ${MON_HDR_RW} | awk -v s="$EC_IMG_SIZE_LE" 'NR==1 {$3=s}1' | xxd -r > ${T}
-
-	info "Start to flash RW image.."
-	# Start to program EC RW image
-	# Load monitor header binary to address 0x200C3000
-	${NPCX_UUT} ${MON_PARAMS} -opr wr -addr ${MON_HDR_ADDR} -file ${T}
-	# Load monitor binary to address 0x200C3020
-	${NPCX_UUT} ${MON_PARAMS} -opr wr -addr ${MON_ADDR} -file ${MON}
-	# Load RW image to Code RAM range.
-	${NPCX_UUT} ${MON_PARAMS} -opr wr -addr ${EC_IMG_ADDR} -file ${IMG_RW}
-	# Execute the monitor to program RW image on SPI flash
-	${NPCX_UUT} ${MON_PARAMS} -opr call -addr ${MON_ADDR}
+	${NPCX_UUT} ${UUT_PARAMS} --opr wr --addr ${MON_ADDR} --file ${MON}
+	${NPCX_UUT} ${UUT_PARAMS} --auto --offset ${FLAGS_offset} --file ${IMG}
 
 	# Reconnect the EC-3PO interpreter to the UART.
 	dut_control ${MCU}_ec3po_interp_connect:on || \
@@ -970,7 +1091,6 @@ function flash_mec1322() {
 	flash_flashrom
 }
 
-SERVO_TYPE="$(get_servo_type)"
 if dut_control boot_mode 2>/dev/null ; then
 	if [[ "${MCU}" != "ec" ]] ; then
 		die "Toad cable can't support non-ec UARTs"
@@ -983,7 +1103,7 @@ info "Using ${SERVO_TYPE}."
 IMG="$(ec_image)"
 info "Using ${MCU} image : ${IMG}"
 
-if ! on_raiden && [ "${NEED_SERVO}" != "no" ] ; then
+if [ "${NEED_SERVO}" != "no" ] ; then
 	save="$(servo_save)"
 fi
 

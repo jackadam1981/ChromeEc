@@ -25,7 +25,7 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
 #define CONFIG_PWM_KBLIGHT
-#define CONFIG_BOARD_VERSION
+#define CONFIG_BOARD_VERSION_GPIO
 
 /* Optional features for test commands */
 #define CONFIG_CMD_TASKREADY
@@ -49,7 +49,6 @@
 #define NPCX_SHI_BYPASS_OVER_256B
 
 /* Optional for testing */
-#undef  CONFIG_PECI
 #undef  CONFIG_PSTORE
 #undef  CONFIG_LOW_POWER_IDLE           /* Deep Sleep Support */
 

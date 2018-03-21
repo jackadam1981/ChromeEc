@@ -9,62 +9,59 @@
 #include "console.h"
 #include "gpio.h"
 #include "intel_x86.h"
+#include "task.h"
 #include "timer.h"
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
-static int forcing_coldreset; /* Forced coldreset in progress? */
+/*
+ * force_shutdown is used to maintain chipset shutdown request. This request
+ * needs to be handled from within the chipset task.
+ */
+static int force_shutdown;
 
 __attribute__((weak)) void chipset_do_shutdown(void)
 {
 	/* Need to implement board specific shutdown */
 }
 
+static void internal_chipset_shutdown(void)
+{
+	/*
+	 * UART buffer gets overwritten by other tasks if it is not explicitly
+	 * flushed before printing it on the console by same task. Hence, clean
+	 * up the UART buffer so that all the debug messages are printed on the
+	 * UART console before doing shutdown.
+	 */
+	cflush();
+
+	CPRINTS("%s()", __func__);
+
+	force_shutdown = 0;
+	chipset_do_shutdown();
+}
+
 void chipset_force_shutdown(void)
 {
-	if (!forcing_coldreset)
-		CPRINTS("%s()", __func__);
-
-	chipset_do_shutdown();
+	/*
+	 * This function is called from multiple tasks and hence it is racy! But
+	 * since things are going down hard, it does not matter if some task
+	 * misses out.
+	 */
+	force_shutdown = 1;
+	task_wake(TASK_ID_CHIPSET);
 }
 
 enum power_state chipset_force_g3(void)
 {
 	chipset_force_shutdown();
 
-	/* Power up the platform again for forced cold reset */
-	if (forcing_coldreset) {
-		forcing_coldreset = 0;
-		return POWER_G3S5;
-	}
-
 	return POWER_G3;
 }
 
 void chipset_handle_espi_reset_assert(void)
 {
-}
-
-void chipset_reset(int cold_reset)
-{
-	CPRINTS("%s(%d)", __func__, cold_reset);
-	if (cold_reset) {
-		/*
-		 * Perform chipset_force_shutdown and mark forcing_coldreset.
-		 * Once in S5G3 state, check forcing_coldreset to power up.
-		 */
-		forcing_coldreset = 1;
-
-		chipset_force_shutdown();
-	} else {
-		/*
-		 * Send a pulse to SOC PMU_RSTBTN_N to trigger a warm reset.
-		 */
-		gpio_set_level(GPIO_PCH_RCIN_L, 0);
-		usleep(32 * MSEC);
-		gpio_set_level(GPIO_PCH_RCIN_L, 1);
-	}
 }
 
 static void handle_all_sys_pgood(enum power_state state)
@@ -94,15 +91,16 @@ enum power_state power_handle_state(enum power_state state)
 
 	if (state == POWER_S5 && !power_has_signals(IN_PGOOD_ALL_CORE)) {
 		/* Required rail went away */
-		chipset_force_shutdown();
+		internal_chipset_shutdown();
 
 		new_state = POWER_S5G3;
 		goto rsmrst_handle;
 
-	} else if (state == POWER_G3S5) {
-		/* Platform is powering up, clear forcing_coldreset */
-		forcing_coldreset = 0;
 	}
+
+	/* If force shutdown is requested, perform that. */
+	if (force_shutdown)
+		internal_chipset_shutdown();
 
 	new_state = common_intel_x86_power_handle_state(state);
 

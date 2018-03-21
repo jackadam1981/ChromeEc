@@ -21,7 +21,7 @@ MEMORY
 {
     FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
     IRAM (rw)  : ORIGIN = CONFIG_RAM_BASE, LENGTH = CONFIG_RAM_SIZE
-#ifdef CONFIG_LPC
+#ifdef CONFIG_HOSTCMD_X86
     H2RAM (rw) : ORIGIN = CONFIG_H2RAM_BASE, LENGTH = CONFIG_H2RAM_SIZE
 #endif
 }
@@ -220,9 +220,13 @@ SECTIONS
 
     } > IRAM
 
+    ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
+               (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
+           "Not enough space for shared memory.")
+
     __image_size = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
 
-#ifdef CONFIG_LPC
+#ifdef CONFIG_HOSTCMD_X86
     .h2ram (NOLOAD) : {
         . += CONFIG_H2RAM_HOST_LPC_IO_BASE;
         *(.h2ram.pool.hostcmd)

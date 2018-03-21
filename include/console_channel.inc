@@ -16,6 +16,9 @@ CONSOLE_CHANNEL(CC_BLUETOOTH_LL, "bluetooth_ll")
 CONSOLE_CHANNEL(CC_BLUETOOTH_HCI,"bluetooth_hci")
 #endif
 #endif /* CONFIG_BLUETOOTH_LE */
+#ifdef CONFIG_CEC
+CONSOLE_CHANNEL(CC_CEC, "cec")
+#endif
 #ifdef CONFIG_EXTENSION_COMMAND
 CONSOLE_CHANNEL(CC_EXTENSION,    "extension")
 #endif
@@ -23,12 +26,16 @@ CONSOLE_CHANNEL(CC_EXTENSION,    "extension")
 CONSOLE_CHANNEL(CC_CCD,          "ccd")
 #endif
 CONSOLE_CHANNEL(CC_CHARGER,      "charger")
+#ifdef HAS_TASK_CHIPSET
 CONSOLE_CHANNEL(CC_CHIPSET,      "chipset")
+#endif
 CONSOLE_CHANNEL(CC_CLOCK,        "clock")
 #ifdef CONFIG_DMA
 CONSOLE_CHANNEL(CC_DMA,          "dma")
 #endif
+#if defined(CONFIG_DEVICE_EVENT) || defined(CONFIG_HOSTCMD_EVENTS)
 CONSOLE_CHANNEL(CC_EVENTS,       "events")
+#endif
 #ifdef HAS_TASK_FPSENSOR
 CONSOLE_CHANNEL(CC_FP,           "fingerprint")
 #endif
@@ -43,12 +50,16 @@ CONSOLE_CHANNEL(CC_HOSTCMD,      "hostcmd")
 CONSOLE_CHANNEL(CC_I2C,          "i2c")
 #endif
 CONSOLE_CHANNEL(CC_KEYBOARD,     "keyboard")
+#ifdef HAS_TASK_KEYSCAN
 CONSOLE_CHANNEL(CC_KEYSCAN,      "keyscan")
+#endif
+#ifdef CONFIG_LID_ANGLE_UPDATE
 CONSOLE_CHANNEL(CC_LIDANGLE,     "lidangle")
+#endif
 #ifdef HAS_TASK_LIGHTBAR
 CONSOLE_CHANNEL(CC_LIGHTBAR,     "lightbar")
 #endif
-#ifdef CONFIG_LPC
+#ifdef CONFIG_HOSTCMD_X86
 CONSOLE_CHANNEL(CC_LPC,          "lpc")
 #endif
 CONSOLE_CHANNEL(CC_MOTION_LID,   "motionlid")
@@ -82,11 +93,16 @@ CONSOLE_CHANNEL(CC_DPTF,         "dptf")
 CONSOLE_CHANNEL(CC_ALS,		 "als")
 #endif
 CONSOLE_CHANNEL(CC_THERMAL,      "thermal")
+#ifdef CHIP_G
 CONSOLE_CHANNEL(CC_TPM,          "tpm")
+#endif
 CONSOLE_CHANNEL(CC_USB,          "usb")
 CONSOLE_CHANNEL(CC_USBCHARGE,    "usbcharge")
 #if defined(CONFIG_USB_POWER_DELIVERY) || defined(CONFIG_USB_PD_TCPC)
 CONSOLE_CHANNEL(CC_USBPD,        "usbpd")
 #endif
 CONSOLE_CHANNEL(CC_VBOOT,        "vboot")
+#ifdef CONFIG_WAKE_ON_VOICE
+CONSOLE_CHANNEL(CC_WOV,          "wov")
+#endif
 CONSOLE_CHANNEL(CC_HOOK,         "hook")

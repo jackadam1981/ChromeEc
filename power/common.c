@@ -24,7 +24,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_SWITCH, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
 /*
  * Default timeout in us; if we've been waiting this long for an input
@@ -75,7 +75,7 @@ static int pause_in_s5;
 
 static int power_signal_get_level(enum gpio_signal signal)
 {
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	/* Check signal is from GPIOs or VWs */
 	if (espi_signal_is_vw(signal))
 		return espi_vw_get_wire(signal);
@@ -85,7 +85,7 @@ static int power_signal_get_level(enum gpio_signal signal)
 
 int power_signal_disable_interrupt(enum gpio_signal signal)
 {
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	/* Check signal is from GPIOs or VWs */
 	if (espi_signal_is_vw(signal))
 		return espi_vw_disable_wire_int(signal);
@@ -95,7 +95,7 @@ int power_signal_disable_interrupt(enum gpio_signal signal)
 
 int power_signal_enable_interrupt(enum gpio_signal signal)
 {
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	/* Check signal is from GPIOs or VWs */
 	if (espi_signal_is_vw(signal))
 		return espi_vw_enable_wire_int(signal);
@@ -112,7 +112,7 @@ int power_signal_is_asserted(const struct power_signal_info *s)
 #ifdef CONFIG_BRINGUP
 static const char *power_signal_get_name(enum gpio_signal signal)
 {
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	/* Check signal is from GPIOs or VWs */
 	if (espi_signal_is_vw(signal))
 		return espi_vw_get_wire_name(signal);
@@ -209,7 +209,7 @@ void power_set_state(enum power_state new_state)
 		want_g3_exit = 0;
 }
 
-#ifdef CONFIG_LPC
+#ifdef CONFIG_HOSTCMD_X86
 
 /* If host doesn't program s0ix lazy wake mask, use default s0ix mask */
 #define DEFAULT_WAKE_MASK_S0IX  (EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) | \
@@ -856,4 +856,29 @@ void __attribute__((weak)) power_5v_enable(task_id_t tid, int enable)
 
 	mutex_unlock(&pwr_5v_ctl_mtx);
 }
+
+#define P5_SYSJUMP_TAG 0x5005  /* "P5" */
+static void restore_enable_5v_state(void)
+{
+	const uint32_t *state;
+	int size;
+
+	state = (const uint32_t *) system_get_jump_tag(P5_SYSJUMP_TAG, 0,
+						       &size);
+	if (state && size == sizeof(pwr_5v_en_req)) {
+		mutex_lock(&pwr_5v_ctl_mtx);
+		pwr_5v_en_req |= *state;
+		mutex_unlock(&pwr_5v_ctl_mtx);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, restore_enable_5v_state, HOOK_PRIO_FIRST);
+
+static void preserve_enable_5v_state(void)
+{
+	mutex_lock(&pwr_5v_ctl_mtx);
+	system_add_jump_tag(P5_SYSJUMP_TAG, 0, sizeof(pwr_5v_en_req),
+	    &pwr_5v_en_req);
+	mutex_unlock(&pwr_5v_ctl_mtx);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, preserve_enable_5v_state, HOOK_PRIO_DEFAULT);
 #endif /* defined(CONFIG_POWER_PP5000_CONTROL) */

@@ -14,14 +14,14 @@ GPIO_INT(USB_C1_PD_INT_ODL,	PIN(C, 5), GPIO_INT_FALLING,			tcpc_alert_event)
 GPIO_INT(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INT_BOTH,			power_signal_interrupt)
 #endif
 /* Use VW signals instead of GPIOs */
-#ifndef CONFIG_ESPI_VW_SIGNALS
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 #ifdef BOARD_LUX
 GPIO_INT(PCH_SLP_S3_L,		PIN(2, 2), GPIO_INT_BOTH,			power_signal_interrupt)
 #else
 GPIO_INT(PCH_SLP_S3_L,		PIN(7, 3), GPIO_INT_BOTH,			power_signal_interrupt)
 #endif
 GPIO_INT(PCH_SLP_S4_L,		PIN(8, 6), GPIO_INT_BOTH,			power_signal_interrupt)
-#endif /* !CONFIG_ESPI_VW_SIGNALS */
+#endif /* !CONFIG_HOSTCMD_ESPI_VW_SIGNALS */
 GPIO_INT(PCH_SLP_SUS_L,		PIN(6, 2), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(RSMRST_L_PGOOD,	PIN(B, 0), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(PMIC_DPWROK,		PIN(C, 7), GPIO_INT_BOTH,			power_signal_interrupt)
@@ -147,7 +147,7 @@ GPIO(USB_C1_PD_RST_L,		PIN(7, 4), GPIO_ODR_HIGH)			/* C1 PD Reset */
 GPIO(USB_C0_DP_HPD,		PIN(9, 4), GPIO_INPUT)				/* C0 DP Hotplug Detect */
 GPIO(USB_C1_DP_HPD,		PIN(A, 5), GPIO_INPUT)				/* C1 DP Hotplug Detect */
 GPIO(USB_C0_TCPC_PWR,		PIN(8, 4), GPIO_OUT_LOW)			/* Enable C0 TCPC Power */
-GPIO(USB2_OTG_ID,		PIN(A, 1), GPIO_ODR_LOW)			/* OTG ID */
+GPIO(USB2_OTG_ID,		PIN(A, 1), GPIO_OUT_LOW)			/* OTG ID */
 GPIO(USB2_OTG_VBUSSENSE,	PIN(9, 5), GPIO_OUT_LOW)			/* OTG VBUS Sense */
 
 /* LEDs (2 colors on each port) */

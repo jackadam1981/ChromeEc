@@ -31,7 +31,7 @@
 #undef CONFIG_CMD_CRASH
 #undef CONFIG_CMD_MD
 #undef CONFIG_CMD_RW
-#undef CONFIG_CMD_SLEEPMASK
+#undef CONFIG_CMD_SLEEPMASK_SET
 #undef CONFIG_CMD_WAITMS
 #undef CONFIG_FLASH
 #endif
@@ -268,6 +268,7 @@ void power_button_record(void);
 /* Functions needed by CCD config */
 int board_battery_is_present(void);
 int board_fwmp_allows_unlock(void);
+int board_vboot_dev_mode_enabled(void);
 void board_reboot_ap(void);
 int board_wipe_tpm(void);
 int board_is_first_factory_boot(void);
@@ -348,19 +349,21 @@ enum nvmem_users {
 #define I2C_PORT_MASTER 0
 
 #define CONFIG_BASE32
-#define CONFIG_CURVE25519
 #define CONFIG_RMA_AUTH
+#define CONFIG_FACTORY_MODE
 #define CONFIG_RNG
-
-/* Should be eventually injected into the image at build time. */
-#define CONFIG_RMA_AUTH_SERVER_PUBLIC_KEY {			\
-		0xe3, 0xe5, 0x66, 0xf3, 0x12, 0x25, 0x74, 0xba,	\
-		0xb3, 0x8f, 0x9f, 0x41, 0x80, 0x3b, 0x58, 0x9a, \
-		0xb0, 0xdc, 0x71, 0x64, 0x1b, 0x6d, 0x22, 0x82, \
-		0x9f, 0x22, 0x31, 0xb3, 0x56, 0x94, 0x8e, 0x13}
-
-#define CONFIG_RMA_AUTH_SERVER_KEY_ID	  0
 
 #define CONFIG_ENABLE_H1_ALERTS
 
+/* Enable hardware backed brute force resistance feature */
+#define CONFIG_PINWEAVER
+
+/*
+ * While RMA server support is not ready keep using x25519. Switching to P256
+ * saves 5336 bytes of flash space.
+ */
+/* #define CONFIG_RMA_AUTH_USE_P256 */
+#ifndef CONFIG_RMA_AUTH_USE_P256
+#define CONFIG_CURVE25519
+#endif
 #endif /* __CROS_EC_BOARD_H */

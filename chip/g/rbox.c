@@ -10,34 +10,9 @@
 
 #define POWER_BUTTON 2
 
-static uint8_t val;
-
 int rbox_powerbtn_is_pressed(void)
 {
 	return !GREAD_FIELD(RBOX, CHECK_OUTPUT, PWRB_OUT);
-}
-
-int rbox_powerbtn_override_is_enabled(void)
-{
-	return GREAD_FIELD(RBOX, OVERRIDE_OUTPUT, EN) & (1 << POWER_BUTTON);
-}
-
-void rbox_powerbtn_release(void)
-{
-	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, EN, 0);
-	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, OEN, 0);
-	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, VAL, val);
-}
-
-void rbox_powerbtn_press(void)
-{
-	if (rbox_powerbtn_override_is_enabled())
-		return;
-
-	val = GREAD_FIELD(RBOX, OVERRIDE_OUTPUT, VAL);
-	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, VAL, ~(1 << POWER_BUTTON) & val);
-	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, OEN, 1 << POWER_BUTTON);
-	GWRITE_FIELD(RBOX, OVERRIDE_OUTPUT, EN, 1 << POWER_BUTTON);
 }
 
 static void rbox_release_ec_reset(void)
@@ -100,7 +75,7 @@ static void rbox_init(void)
 	       0x0 << GC_RBOX_DEBUG_TERM_KEY0_OUT_LSB |
 	       0x1 << GC_RBOX_DEBUG_TERM_KEY1_IN_LSB |
 	       0x0 << GC_RBOX_DEBUG_TERM_KEY1_OUT_LSB);
-	/* DEBUG_BLOCK_OUTPUT value should be 0x157 */
+	/* DEBUG_DRIVE value should be 0x157 */
 	GWRITE(RBOX, DEBUG_DRIVE,
 	       0x3 << GC_RBOX_DEBUG_DRIVE_PWRB_OUT_LSB |
 	       0x1 << GC_RBOX_DEBUG_DRIVE_KEY0_OUT_LSB |

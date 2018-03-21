@@ -136,16 +136,28 @@ static void keyboard_irq_assert(void)
  */
 static void lpc_generate_smi(void)
 {
+#ifdef CONFIG_HOSTCMD_ESPI
+	espi_vw_set_wire(VW_SMI_L, 0);
+	udelay(65);
+	espi_vw_set_wire(VW_SMI_L, 1);
+#else
 	gpio_set_level(GPIO_PCH_SMI_L, 0);
 	udelay(65);
 	gpio_set_level(GPIO_PCH_SMI_L, 1);
+#endif
 }
 
 static void lpc_generate_sci(void)
 {
+#ifdef CONFIG_HOSTCMD_ESPI
+	espi_vw_set_wire(VW_SCI_L, 0);
+	udelay(65);
+	espi_vw_set_wire(VW_SCI_L, 1);
+#else
 	gpio_set_level(GPIO_PCH_SCI_L, 0);
 	udelay(65);
 	gpio_set_level(GPIO_PCH_SCI_L, 1);
+#endif
 }
 
 /**
@@ -365,13 +377,14 @@ void lpc_clear_acpi_status_mask(uint8_t mask)
 	pm_set_status(LPC_ACPI_CMD, mask, 0);
 }
 
-#ifndef CONFIG_ESPI_VW_SIGNALS
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 int lpc_get_pltrst_asserted(void)
 {
 	return !gpio_get_level(GPIO_PCH_PLTRST_L);
 }
 #endif
 
+#ifdef HAS_TASK_KEYPROTO
 /* KBC and PMC control modules */
 void lpc_kbc_ibf_interrupt(void)
 {
@@ -385,9 +398,7 @@ void lpc_kbc_ibf_interrupt(void)
 
 	task_clear_pending_irq(IT83XX_IRQ_KBC_IN);
 
-#ifdef HAS_TASK_KEYPROTO
 	task_wake(TASK_ID_KEYPROTO);
-#endif
 }
 
 void lpc_kbc_obe_interrupt(void)
@@ -404,10 +415,9 @@ void lpc_kbc_obe_interrupt(void)
 	}
 #endif
 
-#ifdef HAS_TASK_KEYPROTO
 	task_wake(TASK_ID_KEYPROTO);
-#endif
 }
+#endif /* HAS_TASK_KEYPROTO */
 
 void pm1_ibf_interrupt(void)
 {
@@ -667,15 +677,17 @@ static void lpc_init(void)
 	 */
 	IT83XX_GCTRL_SPCTRL1 |= 0xC2;
 
-#ifndef CONFIG_ESPI_VW_SIGNALS
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	gpio_enable_interrupt(GPIO_PCH_PLTRST_L);
 #endif
 
+#ifdef HAS_TASK_KEYPROTO
 	task_clear_pending_irq(IT83XX_IRQ_KBC_OUT);
 	task_disable_irq(IT83XX_IRQ_KBC_OUT);
 
 	task_clear_pending_irq(IT83XX_IRQ_KBC_IN);
 	task_enable_irq(IT83XX_IRQ_KBC_IN);
+#endif
 
 	task_clear_pending_irq(IT83XX_IRQ_PMC_IN);
 	pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_PROCESSING, 0);
@@ -688,7 +700,7 @@ static void lpc_init(void)
 	task_clear_pending_irq(IT83XX_IRQ_PMC3_IN);
 	task_enable_irq(IT83XX_IRQ_PMC3_IN);
 
-#ifdef CONFIG_ESPI
+#ifdef CONFIG_HOSTCMD_ESPI
 	espi_init();
 #endif
 	/* Sufficiently initialized */
@@ -703,21 +715,7 @@ static void lpc_init(void)
  */
 DECLARE_HOOK(HOOK_INIT, lpc_init, HOOK_PRIO_INIT_LPC);
 
-void lpc_host_reset(void)
-{
-	/* Host Reset Control will assert RCIN# */
-#ifdef CONFIG_ESPI_VW_SIGNALS
-	espi_vw_set_wire(VW_RCIN_L, 0);
-	udelay(10);
-	espi_vw_set_wire(VW_RCIN_L, 1);
-#else
-	gpio_set_level(GPIO_PCH_RCIN_L, 0);
-	udelay(10);
-	gpio_set_level(GPIO_PCH_RCIN_L, 1);
-#endif
-}
-
-#ifndef CONFIG_ESPI_VW_SIGNALS
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 void lpcrst_interrupt(enum gpio_signal signal)
 {
 	if (lpc_get_pltrst_asserted())

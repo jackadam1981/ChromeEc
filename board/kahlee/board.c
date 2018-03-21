@@ -87,7 +87,7 @@ void usb1_evt(enum gpio_signal signal)
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_PCH_SLP_S3_L, POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
 	{GPIO_PCH_SLP_S5_L, POWER_SIGNAL_ACTIVE_HIGH, "SLP_S5_DEASSERTED"},
-	{GPIO_SPOK,	    POWER_SIGNAL_ACTIVE_HIGH, "SPOK_DEASSERTED"},
+	{GPIO_S5_PGOOD,	    POWER_SIGNAL_ACTIVE_HIGH, "S5_PGOOD_DEASSERTED"},
 	{GPIO_P095VALW_PG,  POWER_SIGNAL_ACTIVE_HIGH, "0.95VALW_DEASSERTED"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
@@ -132,16 +132,21 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
-const struct fan_t fans[] = {
-	[FAN_CH_0] = {
-		.flags = FAN_USE_RPM_MODE,
-		.rpm_min = 1000,
-		.rpm_start = 1000,
-		.rpm_max = 4300,
-		.ch = 0,/* Use MFT id to control fan */
-		.pgood_gpio = -1,
-		.enable_gpio = -1,
-	},
+const struct fan_conf fan_conf_0 = {
+	.flags = FAN_USE_RPM_MODE,
+	.ch = 0,	/* Use MFT id to control fan */
+	.pgood_gpio = -1,
+	.enable_gpio = -1,
+};
+
+const struct fan_rpm fan_rpm_0 = {
+	.rpm_min = 1000,
+	.rpm_start = 1000,
+	.rpm_max = 4300,
+};
+
+struct fan_t fans[] = {
+	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 
@@ -182,13 +187,13 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[0] = {
 		.i2c_host_port = NPCX_I2C_PORT0_0,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 	[1] = {
 		.i2c_host_port = NPCX_I2C_PORT0_1,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
@@ -284,13 +289,6 @@ void board_tcpc_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
-
-/* Called by power state machine when transitioning from G3 to S5 */
-static void chipset_pre_init(void)
-{
-
-}
-DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
 /* Initialize board. */
 static void board_init(void)
@@ -518,23 +516,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
 	 .max_frequency = KXCJ9_ACCEL_MAX_FREQ,
 	 .config = {
-		/* AP: by default use EC settings */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
 		/* Setup for AP for rotation detection */
 		[SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
-		},
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
 		},
 	 },
 	},

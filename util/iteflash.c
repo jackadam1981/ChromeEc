@@ -7,8 +7,9 @@
 
 #include <errno.h>
 #include <getopt.h>
-#include <stdio.h>
+#include <signal.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -67,6 +68,7 @@ static int usb_pid = SERVO_USB_PID;
 static int usb_interface = SERVO_INTERFACE;
 static char *usb_serial;
 static int flash_size;
+static int exit_requested;
 
 /* debug traces : default OFF*/
 static int debug;
@@ -83,13 +85,17 @@ enum {
 static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 			     uint8_t *ptr, uint8_t *tbuf, int tcnt)
 {
-	int ret, i, j;
+	int ret, i, j, remaining_data, ack_idx;
 	int tx_buffered = 0;
 	static uint8_t ack[TX_BUFFER_LIMIT];
 	uint8_t *b = ptr;
 	uint8_t failed_ack = 0;
 
 	for (i = 0; i < tcnt; i++) {
+		/* If we got a termination signal, stop sending data */
+		if (exit_requested)
+			return -1;
+
 		/* WORKAROUND: force SDA before sending the next byte */
 		*b++ = SET_BITS_LOW; *b++ = SDA_BIT; *b++ = SCL_BIT | SDA_BIT;
 		/* write byte */
@@ -117,7 +123,18 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 			}
 
 			/* read ACK bits */
-			ret = ftdi_read_data(ftdi, &ack[0], tx_buffered);
+			remaining_data = tx_buffered;
+			ack_idx = 0;
+			do {
+				ret = ftdi_read_data(ftdi, &ack[ack_idx],
+					remaining_data);
+				if (ret < 0) {
+					fprintf(stderr, "read ACK failed\n");
+					return ret;
+				}
+				remaining_data -= ret;
+				ack_idx += ret;
+			} while (remaining_data);
 			for (j = 0; j < tx_buffered; j++) {
 				if ((ack[j] & 0x80) != 0)
 					failed_ack = ack[j];
@@ -143,7 +160,7 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 			     uint8_t *ptr, uint8_t *rbuf, int rcnt)
 {
-	int ret, i;
+	int ret, i, rbuf_idx;
 	uint8_t *b = ptr;
 
 	for (i = 0; i < rcnt; i++) {
@@ -170,9 +187,22 @@ static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 		fprintf(stderr, "failed to prepare read\n");
 		return ret;
 	}
-	ret = ftdi_read_data(ftdi, rbuf, rcnt);
-	if (ret < 0)
-		fprintf(stderr, "read byte failed\n");
+
+	rbuf_idx = 0;
+	do {
+		/* If we got a termination signal, stop sending data */
+		if (exit_requested)
+			return -1;
+
+		ret = ftdi_read_data(ftdi, &rbuf[rbuf_idx], rcnt);
+		if (ret < 0) {
+			fprintf(stderr, "read byte failed\n");
+			break;
+		}
+		rcnt -= ret;
+		rbuf_idx += ret;
+	} while (rcnt);
+
 	return ret;
 }
 
@@ -296,27 +326,6 @@ static int dbgr_reset(struct ftdi_context *ftdi)
 	ret |= i2c_write_byte(ftdi, 0x27, 0x80);
 	if (ret < 0)
 		printf("DBGR RESET FAILED\n");
-
-	return 0;
-}
-
-static int exit_dbgr_mode(struct ftdi_context *ftdi)
-{
-	uint8_t val;
-	int ret = 0;
-
-	/* We have to exit dbgr mode so that EC won't hold I2C bus. */
-	ret |= i2c_write_byte(ftdi, 0x2f, 0x1c);
-	ret |= i2c_write_byte(ftdi, 0x2e, 0x08);
-	ret |= i2c_read_byte(ftdi, 0x30, &val);
-	ret |= i2c_write_byte(ftdi, 0x30, (val | (1 << 4)));
-	/*
-	 * NOTE:
-	 * We won't be able to send any commands to EC
-	 * if we have exit dbgr mode.
-	 * We do a cold reset for EC after flashing.
-	 */
-	printf("=== EXIT DBGR MODE %s ===\n", (ret < 0) ? "FAILED" : "DONE");
 
 	return 0;
 }
@@ -514,70 +523,76 @@ static int send_special_waveform(struct ftdi_context *ftdi)
 	printf("Waiting for the EC power-on sequence ...");
 	fflush(stdout);
 
-retry:
-	/* Reset the FTDI into a known state */
-	ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_RESET);
-	if (ret != 0) {
-		fprintf(stderr, "failed to reset FTDI\n");
-		goto special_failed;
-	}
+	do {
+		/* Reset the FTDI into a known state */
+		ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_RESET);
+		if (ret != 0) {
+			fprintf(stderr, "failed to reset FTDI\n");
+			break;
+		}
 
-	/*
-	 * set the clock divider,
-	 * so we output a new bitbang value every 2.5us.
-	 */
-	ret = ftdi_set_baudrate(ftdi, 160000);
-	if (ret != 0) {
-		fprintf(stderr, "failed to set bitbang clock\n");
-		goto special_failed;
-	}
+		/*
+		 * set the clock divider,
+		 * so we output a new bitbang value every 2.5us.
+		 */
+		ret = ftdi_set_baudrate(ftdi, 160000);
+		if (ret != 0) {
+			fprintf(stderr, "failed to set bitbang clock\n");
+			break;
+		}
 
-	/* Enable asynchronous bit-bang mode */
-	ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_BITBANG);
-	if (ret != 0) {
-		fprintf(stderr, "failed to set bitbang mode\n");
-		goto special_failed;
-	}
+		/* Enable asynchronous bit-bang mode */
+		ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_BITBANG);
+		if (ret != 0) {
+			fprintf(stderr, "failed to set bitbang mode\n");
+			break;
+		}
 
-	/* do usb special waveform */
+		/* do usb special waveform */
+		wave[0] = 0x0;
+		ftdi_write_data(ftdi, (uint8_t *)wave, 1);
+		usleep(5000);
 
-	wave[0] = 0x0;
-	ftdi_write_data(ftdi, (uint8_t *)wave, 1);
-	usleep(5000);
+		/* program each special tick */
+		for (i = 0; i < TICK_COUNT; ) {
+			wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
+			wave[i++] = SPECIAL_PATTERN_SDA_H_SCL_L;
+			wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
+		}
+		wave[19] = SPECIAL_PATTERN_SDA_H_SCL_H;
 
-	/* program each special tick */
-	for (i = 0; i < TICK_COUNT; ) {
-		wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
-		wave[i++] = SPECIAL_PATTERN_SDA_H_SCL_L;
-		wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
-	}
-	wave[19] = SPECIAL_PATTERN_SDA_H_SCL_H;
+		/* fill the buffer with the waveform pattern */
+		for (i = TICK_COUNT; i < SPECIAL_BUFFER_SIZE / sizeof(uint64_t);
+		     i++)
+			wave[i] = SPECIAL_PATTERN;
 
+		ret = ftdi_write_data(ftdi, (uint8_t *)wave,
+				      SPECIAL_BUFFER_SIZE);
+		if (ret < 0)
+			fprintf(stderr, "Cannot output special waveform\n");
 
-	/* fill the buffer with the waveform pattern */
-	for (i = TICK_COUNT; i < SPECIAL_BUFFER_SIZE / sizeof(uint64_t); i++)
-		wave[i] = SPECIAL_PATTERN;
+		/* clean everything to go back to regular I2C communication */
+		ftdi_usb_purge_buffers(ftdi);
+		ftdi_set_bitmode(ftdi, 0xff, BITMODE_RESET);
+		config_i2c(ftdi);
+		ftdi_write_data(ftdi, release_lines, sizeof(release_lines));
 
-	ret = ftdi_write_data(ftdi, (uint8_t *)wave, SPECIAL_BUFFER_SIZE);
-	if (ret < 0)
-		fprintf(stderr, "Cannot output special waveform\n");
+		/* wait for PLL stable for 5ms (plus remaining USB transfers) */
+		usleep(10 * MSEC);
 
-	/* clean everything to go back to regular I2C communication */
-	ftdi_usb_purge_buffers(ftdi);
-	ftdi_set_bitmode(ftdi, 0xff, BITMODE_RESET);
-	config_i2c(ftdi);
-	ftdi_write_data(ftdi, release_lines, sizeof(release_lines));
+		/* If we can talk to chip, then we can break the retry loop */
+		ret = check_chipid(ftdi);
 
-	/* wait for PLL stable for 5ms (plus remaining USB transfers) */
-	usleep(10 * MSEC);
+		if (ret != 0)
+			/* Sleep before next attempt */
+			sleep(1);
+	} while (ret != 0);
 
-	/* if we cannot communicate, retry the sequence */
-	if (check_chipid(ftdi) < 0) {
-		sleep(1);
-		goto retry;
-	}
-special_failed:
-	printf("Done.\n");
+	if (ret)
+		printf(" Failed!\n");
+	else
+		printf(" Done.\n");
+
 	free(wave);
 	return ret;
 }
@@ -587,7 +602,7 @@ static const char wheel[] = {'|', '/', '-', '\\' };
 static void draw_spinner(uint32_t remaining, uint32_t size)
 {
 	int percent = (size - remaining)*100/size;
-	printf("\r%c%3d%%", wheel[windex++], percent);
+	fprintf(stderr, "\r%c%3d%%", wheel[windex++], percent);
 	windex %= sizeof(wheel);
 }
 
@@ -723,6 +738,7 @@ int command_write_pages(struct ftdi_context *ftdi, uint32_t address,
 		address += cnt;
 		remaining -= cnt;
 	}
+	draw_spinner(remaining, size);
 	/* No error so far */
 	res = size;
 failed_write:
@@ -801,6 +817,7 @@ wait_busy_cleared:
 		}
 	}
 	/* No error so far */
+	printf("\n\rErasing Done.\n");
 	res = 0;
 failed_erase:
 	if (spi_flash_command_short(ftdi, SPI_CMD_WRITE_DISABLE,
@@ -809,8 +826,6 @@ failed_erase:
 
 	if (spi_flash_follow_mode_exit(ftdi, "erase") < 0)
 		res = -EIO;
-
-	printf("\n");
 
 	return res;
 }
@@ -885,7 +900,7 @@ int write_flash(struct ftdi_context *ftdi, const char *filename,
 		free(buffer);
 		return -EIO;
 	}
-	printf("\rDone.\n");
+	printf("\n\rWriting Done.\n");
 
 	free(buffer);
 	return 0;
@@ -927,12 +942,7 @@ int verify_flash(struct ftdi_context *ftdi, const char *filename,
 	res = command_read_pages(ftdi, offset, flash_size, buffer2);
 	draw_spinner(flash_size-res, flash_size);
 	res = memcmp(buffer, buffer2, file_size);
-	if (res != 0) {
-		fprintf(stderr, "Verify Error!! ");
-		goto exit;
-	}
-
-	printf("\n\rVerify Done.\n");
+	printf("\n\rVerify %s\n", res ? "Failed!" : "Done.");
 exit:
 
 	free(buffer);
@@ -1048,6 +1058,25 @@ int parse_parameters(int argc, char **argv)
 	return flags;
 }
 
+static void sighandler(int signum)
+{
+	printf("\nCaught signal %d: %s\nExiting...\n",
+		signum, sys_siglist[signum]);
+	++exit_requested;
+}
+
+static void register_sigaction(void)
+{
+	struct sigaction sigact;
+
+	sigact.sa_handler = sighandler;
+	sigemptyset(&sigact.sa_mask);
+	sigact.sa_flags = 0;
+	sigaction(SIGINT, &sigact, NULL);
+	sigaction(SIGTERM, &sigact, NULL);
+	sigaction(SIGQUIT, &sigact, NULL);
+}
+
 int main(int argc, char **argv)
 {
 	void *hnd;
@@ -1061,6 +1090,9 @@ int main(int argc, char **argv)
 	hnd = open_ftdi_device(usb_vid, usb_pid, usb_interface, usb_serial);
 	if (hnd == NULL)
 		return 1;
+
+	/* Register signal handler after opening USB handle. */
+	register_sigaction();
 
 	/* Trigger embedded monitor detection */
 	if (send_special_waveform(hnd) < 0)
@@ -1102,8 +1134,10 @@ int main(int argc, char **argv)
 	ret = 0;
 terminate:
 
-	/* Exit DBGR mode */
-	exit_dbgr_mode(hnd);
+	/*
+	 * Do not exit DBGR because it wedges the I2C SDA line and we cannot
+	 * perform a cold reset of the EC.
+	 */
 
 	/* Close the FTDI USB handle */
 	ftdi_usb_close(hnd);

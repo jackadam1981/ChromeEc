@@ -24,6 +24,7 @@
 #include "flash_info.h"
 #include "printf.h"
 #include "registers.h"
+#include "system.h"
 #include "tpm_manufacture.h"
 #include "tpm_registers.h"
 
@@ -68,6 +69,16 @@ struct cros_perso_certificate_response_v0 {
 /* Personalization response. */
 BUILD_ASSERT(sizeof(struct cros_perso_response_component_info_v0) == 8);
 BUILD_ASSERT(sizeof(struct cros_perso_certificate_response_v0) == 8);
+
+
+/*
+ * Uncomment the #define below to enable fallback certificate installatin
+ * capability.
+ *
+#define CR50_INCLUDE_FALLBACK_CERT
+ */
+
+#ifdef CR50_INCLUDE_FALLBACK_CERT
 
 /* This is a fixed seed (and corresponding certificates) for use in a
  * developer environment.  Use of this fixed seed will be triggered if
@@ -247,6 +258,30 @@ const uint8_t FIXED_ECC_ENDORSEMENT_CERT[804] = {
 	0x53, 0xff, 0x13, 0x27, 0x61, 0x87, 0x66, 0x99, 0x76, 0x9c, 0x5f, 0x03,
 	0x52, 0x95, 0x13, 0x6e, 0xb7, 0x33, 0x1f, 0x8d, 0xc6, 0x22, 0xd8, 0xe4
 };
+
+static int store_eps(const uint8_t eps[PRIMARY_SEED_SIZE]);
+static int store_cert(enum cros_perso_component_type component_type,
+		      const uint8_t *cert, size_t cert_len);
+
+static int install_fixed_certs(void)
+{
+	if (!store_eps(FIXED_ENDORSEMENT_SEED))
+		return 0;
+
+	if (!store_cert(CROS_PERSO_COMPONENT_TYPE_RSA_CERT,
+				FIXED_RSA_ENDORSEMENT_CERT,
+				sizeof(FIXED_RSA_ENDORSEMENT_CERT)))
+		return 0;
+
+	if (!store_cert(CROS_PERSO_COMPONENT_TYPE_P256_CERT,
+				FIXED_ECC_ENDORSEMENT_CERT,
+				sizeof(FIXED_ECC_ENDORSEMENT_CERT)))
+		return 0;
+
+	return 1;
+}
+
+#endif
 
 /* Test endorsement CA root. */
 static const uint32_t TEST_ENDORSEMENT_CA_RSA_N[64] = {
@@ -478,24 +513,6 @@ static void endorsement_complete(void)
 	CPRINTF("%s(): SUCCESS\n", __func__);
 }
 
-static int install_fixed_certs(void)
-{
-	if (!store_eps(FIXED_ENDORSEMENT_SEED))
-		return 0;
-
-	if (!store_cert(CROS_PERSO_COMPONENT_TYPE_RSA_CERT,
-				FIXED_RSA_ENDORSEMENT_CERT,
-				sizeof(FIXED_RSA_ENDORSEMENT_CERT)))
-		return 0;
-
-	if (!store_cert(CROS_PERSO_COMPONENT_TYPE_P256_CERT,
-				FIXED_ECC_ENDORSEMENT_CERT,
-				sizeof(FIXED_ECC_ENDORSEMENT_CERT)))
-		return 0;
-
-	return 1;
-}
-
 static int handle_cert(
 	const struct cros_perso_response_component_info_v0 *cert_info,
 	const struct cros_perso_certificate_response_v0 *cert,
@@ -594,9 +611,10 @@ enum manufacturing_status tpm_endorse(void)
 		HASH_update(&hmac.hash, p, RO_CERTS_REGION_SIZE - 32);
 		if (!DCRYPTO_equals(p + RO_CERTS_REGION_SIZE - 32,
 				   DCRYPTO_HMAC_final(&hmac), 32)) {
-			CPRINTF("%s: bad cert region hmac; falling back\n"
-				"    to fixed endorsement\n", __func__);
+			const struct SignedHeader *h;
 
+			CPRINTF("%s: bad cert region hmac;", __func__);
+#ifdef CR50_INCLUDE_FALLBACK_CERT
 			/* HMAC verification failure indicates either
 			 * a manufacture fault, or mis-match in
 			 * production mode and currently running
@@ -608,17 +626,39 @@ enum manufacturing_status tpm_endorse(void)
 			 * by production infrastructure.
 			 */
 			if (!install_fixed_certs()) {
-				CPRINTF("%s: failed to install fixed "
-					"endorsement certs; \n"
-					"    unknown endorsement state\n",
-					__func__);
+				CPRINTF(" failed to install fixed "
+					"endorsement certs;");
+				result = mnf_hmac_mismatch;
+				break;
+			}
+#else
+			h = (const struct SignedHeader *)
+				get_program_memory_addr
+				(system_get_image_copy());
+			if (G_SIGNED_FOR_PROD(h)) {
+
+				/* TODO(ngm): is this state considered
+				 * endorsement failure?
+				 */
+				CPRINTF("NO certs installed\n");
+				result = mnf_hmac_mismatch;
+				break;
 			}
 
-			/* TODO(ngm): is this state considered
-			 * endorsement failure?
+			/*
+			 * This will install bogus certificate, will happen
+			 * only when Cr50 image is signed with dev key.
+			 *
+			 * Installing bogus certificate helps with simple TPM
+			 * operations, as it allows to prevent TPM going
+			 * through manufacturing process after every reset,
+			 * but the generated RSA endorsement will not
+			 * correspond to the certificate, which will cause
+			 * problems when TPM identity is required.
 			 */
-			result = mnf_hmac_mismatch;
-			break;
+			result = mnf_unverified_cert;
+			CPRINTF("instaling UNVERIFIED certs\n");
+#endif
 		}
 
 		if (!handle_cert(

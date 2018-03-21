@@ -6,6 +6,8 @@
 #ifndef __INCLUDE_TPM_VENDOR_CMDS_H
 #define __INCLUDE_TPM_VENDOR_CMDS_H
 
+#include "common.h"  /* For __packed. */
+
 /*
  * This file includes definitions of extended/vendor TPM2 commands and their
  * return codes. The definitions are shared between the embedded code and the
@@ -33,9 +35,7 @@ enum vendor_cmd_cc {
 	VENDOR_CC_IMMEDIATE_RESET = 19,
 	VENDOR_CC_INVALIDATE_INACTIVE_RW = 20,
 	VENDOR_CC_COMMIT_NVMEM = 21,
-
-	/* A gap left for the deep sleep control command. */
-
+	/* DEPRECATED(22): deep sleep control command. */
 	VENDOR_CC_REPORT_TPM_STATE = 23,
 	VENDOR_CC_TURN_UPDATE_ON = 24,
 	VENDOR_CC_GET_BOARD_ID = 25,
@@ -44,13 +44,17 @@ enum vendor_cmd_cc {
 	VENDOR_CC_POP_LOG_ENTRY = 28,
 	VENDOR_CC_GET_REC_BTN = 29,
 	VENDOR_CC_RMA_CHALLENGE_RESPONSE = 30,
-
-	/* A gap left for the no longer supported CCD password command. */
-
-	VENDOR_CC_DISABLE_RMA = 32,
-	VENDOR_CC_MANAGE_CCD_PWD = 33,
+	/* DEPRECATED(31): CCD password command (now part of VENDOR_CC_CCD) */
+	/*
+	 * Disable factory mode. Reset all ccd capabilities to default and reset
+	 * write protect to follow battery presence.
+	 */
+	VENDOR_CC_DISABLE_FACTORY = 32,
+	/* DEPRECATED(33): Manage CCD password phase */
 	VENDOR_CC_CCD = 34,
 	VENDOR_CC_GET_ALERTS_DATA = 35,
+	VENDOR_CC_SPI_HASH = 36,
+	VENDOR_CC_PINWEAVER = 37,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
@@ -108,5 +112,38 @@ enum vendor_cmd_rc {
  */
 #define VENDOR_RC_ERR 0x00000500
 
+/*** Structures and constants for VENDOR_CC_SPI_HASH ***/
+
+enum vendor_cc_spi_hash_request_subcmd {
+	/* Relinquish the bus */
+	SPI_HASH_SUBCMD_DISABLE = 0,
+	/* Acquire the bus for AP SPI */
+	SPI_HASH_SUBCMD_AP = 1,
+	/* Acquire the bus for EC SPI */
+	SPI_HASH_SUBCMD_EC = 2,
+	/* Hash SPI data */
+	SPI_HASH_SUBCMD_SHA256 = 4,
+	/* Read SPI data */
+	SPI_HASH_SUBCMD_DUMP = 5,
+	/* Poll spi hash PP state. */
+	SPI_HASH_PP_POLL = 6,
+};
+
+enum vendor_cc_spi_hash_request_flags {
+	/* EC uses gang programmer mode */
+	SPI_HASH_FLAG_EC_GANG = (1 << 0),
+};
+
+/* Structure for VENDOR_CC_SPI_HASH request which follows tpm_header */
+struct vendor_cc_spi_hash_request {
+	uint8_t subcmd;		/* See vendor_cc_spi_hash_request_subcmd */
+	uint8_t flags;		/* See vendor_cc_spi_hash_request_flags */
+	/* Offset and size used by SHA256 and DUMP; ignored by other subcmds */
+	uint32_t offset;	/* Offset in flash to hash/read */
+	uint32_t size;		/* Size in bytes to hash/read */
+} __packed;
+
+/* Maximum size of a response = SHA-256 hash or 1-32 bytes of data */
+#define SPI_HASH_MAX_RESPONSE_BYTES 32
 
 #endif /* __INCLUDE_TPM_VENDOR_CMDS_H */

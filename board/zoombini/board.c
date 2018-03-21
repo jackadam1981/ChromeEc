@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Zoombini board-specific configuration */
+/* Meowth/Zoombini board-specific configuration */
 
 #include "adc_chip.h"
 #include "button.h"
@@ -13,15 +13,18 @@
 #include "common.h"
 #include "console.h"
 #include "compile_time_macros.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "driver/als_opt3001.h"
+#include "driver/bc12/bq24392.h"
 #include "driver/led/lm3630a.h"
 #include "driver/pmic_tps650x30.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "ec_commands.h"
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 #include "espi.h"
-#endif /* defined(CONFIG_ESPI_VW_SIGNALS) */
+#endif /* defined(CONFIG_HOSTCMD_ESPI_VW_SIGNALS) */
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -36,6 +39,7 @@
 #include "registers.h"
 #include "system.h"
 #include "switch.h"
+#include "task.h"
 #include "tcpci.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
@@ -120,6 +124,14 @@ const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_WIFI] = {
 		"WIFI", NPCX_ADC_CH8, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
 	},
+
+	[ADC_BASE_ATTACH] = {
+		"BASE ATTACH", NPCX_ADC_CH9, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
+	},
+
+	[ADC_BASE_DETACH] = {
+		"BASE DETACH", NPCX_ADC_CH4, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
+	},
 #endif /* defined(BOARD_ZOOMBINI) */
 };
 
@@ -153,13 +165,13 @@ const struct power_signal_info power_signal_list[] = {
 	{GPIO_PCH_SLP_S0_L,
 		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
 		"SLP_S0_DEASSERTED"},
-#ifdef CONFIG_ESPI_VW_SIGNALS
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	{VW_SLP_S3_L,	      POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
 	{VW_SLP_S4_L,	      POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
 #else
 	{GPIO_PCH_SLP_S3_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
 	{GPIO_PCH_SLP_S4_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-#endif /* defined(CONFIG_ESPI_VW_SIGNALS) */
+#endif /* defined(CONFIG_HOSTCMD_ESPI_VW_SIGNALS) */
 	{GPIO_PCH_SLP_SUS_L,  POWER_SIGNAL_ACTIVE_HIGH, "SLP_SUS_DEASSERTED"},
 	{GPIO_RSMRST_L_PGOOD, POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L_PGOOD"},
 	{GPIO_PMIC_DPWROK,    POWER_SIGNAL_ACTIVE_HIGH, "PMIC_DPWROK"},
@@ -199,44 +211,91 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 	.offset = 0,
 };
 
+/* Base Sensor mutex */
+static struct mutex g_base_mutex;
+
+/*
+ * Motion Sense
+ */
+
+struct lsm6dsm_data lsm6dsm_a_data;
+struct stprivate_data lsm6dsm_g_data;
+struct stprivate_data lsm6dsm_m_data;
+
 struct motion_sensor_t motion_sensors[] = {
-	[LID_ALS] = {
-	 .name = "Light",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_OPT3001,
-	 .type = MOTIONSENSE_TYPE_LIGHT,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &opt3001_drv,
-	 .drv_data = &g_opt3001_data,
-	 .port = I2C_PORT_SENSOR,
-	 .addr = OPT3001_I2C_ADDR,
-	 .rot_standard_ref = NULL,
-	 .default_range = 0x10000, /* scale = 1; uscale = 0 */
-	 .min_frequency = OPT3001_LIGHT_MIN_FREQ,
-	 .max_frequency = OPT3001_LIGHT_MAX_FREQ,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* Run ALS sensor in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 1000,
-			 .ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-	 },
+	[LID_ACCEL] = {
+		.name = "LSM6DSL ACC",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &lsm6dsm_a_data,
+		.port = I2C_PORT_SENSOR,
+		.addr = LSM6DSM_ADDR0,
+		.rot_standard_ref = NULL,
+		.default_range = 4, /* g, enough for laptop. */
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 13000,
+				.ec_rate = 76 * MSEC,
+			},
+		},
 	},
+	[LID_GYRO] = {
+		.name = "LSM6DSL GYRO",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &lsm6dsm_g_data,
+		.port = I2C_PORT_SENSOR,
+		.addr = LSM6DSM_ADDR0,
+		.rot_standard_ref = NULL,
+		.default_range = 1000, /* dps */
+		.min_frequency = LSM6DSM_ODR_MIN_VAL,
+		.max_frequency = LSM6DSM_ODR_MAX_VAL,
+	},
+	[LID_ALS] = {
+		.name = "Light",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_OPT3001,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &opt3001_drv,
+		.drv_data = &g_opt3001_data,
+		.port = I2C_PORT_SENSOR,
+		.addr = OPT3001_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1; uscale = 0 */
+		.min_frequency = OPT3001_LIGHT_MIN_FREQ,
+		.max_frequency = OPT3001_LIGHT_MAX_FREQ,
+		.config = {
+			/* Run ALS sensor in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+#ifdef BOARD_MEOWTH
+	[VSYNC] = {
+	 .name = "Camera vsync",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_GPIO,
+	 .type = MOTIONSENSE_TYPE_SYNC,
+	 .location = MOTIONSENSE_LOC_CAMERA,
+	 .drv = &sync_drv,
+	 .default_range = 0,
+	 .min_frequency = 0,
+	 .max_frequency = 1,
+	},
+#endif
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
@@ -247,7 +306,7 @@ const struct motion_sensor_t *motion_als_sensors[] = {
 BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 
 /* TODO(aaboagye): Add the other ports. 3 for Zoombini, 2 for Meowth */
-const struct ppc_config_t ppc_chips[] = {
+struct ppc_config_t ppc_chips[] = {
 	{
 		.i2c_port = I2C_PORT_TCPC0,
 		.i2c_addr = SN5S330_ADDR0,
@@ -266,9 +325,28 @@ const struct ppc_config_t ppc_chips[] = {
 	}
 #endif /* defined(BOARD_ZOOMBINI) */
 };
-const unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 #ifdef BOARD_ZOOMBINI
+/* BC 1.2 chip Configuration */
+const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
+	{
+		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON_L,
+		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET,
+		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON_L,
+		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET,
+		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin = GPIO_USB_C2_BC12_VBUS_ON_L,
+		.chg_det_pin = GPIO_USB_C2_BC12_CHG_DET,
+		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+};
+
 /* GPIO to enable/disable the USB Type-A port. */
 const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 	GPIO_USB_A_5V_EN,
@@ -293,14 +371,14 @@ struct keyboard_scan_config keyscan_config = {
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.i2c_host_port = I2C_PORT_TCPC0,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &tcpci_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 
 	{
 		.i2c_host_port = I2C_PORT_TCPC1,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &tcpci_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
@@ -308,7 +386,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 #ifdef BOARD_ZOOMBINI
 	{
 		.i2c_host_port = I2C_PORT_TCPC2,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &tcpci_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
@@ -368,18 +446,38 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
+#ifdef BOARD_MEOWTH
+int board_get_version(void)
+{
+	static int board_version = -1;
+
+	if (board_version == -1) {
+		board_version = 0;
+		/* BD_ID3 is LSb. */
+		if (gpio_get_level(GPIO_BOARD_VERSION3))
+			board_version |= 0x1;
+		if (gpio_get_level(GPIO_BOARD_VERSION2))
+			board_version |= 0x2;
+		if (gpio_get_level(GPIO_BOARD_VERSION1))
+			board_version |= 0x4;
+		if (gpio_get_level(GPIO_BOARD_VERSION0))
+			board_version |= 0x8;
+	}
+
+	return board_version;
+}
+#endif /* BOARD_MEOWTH */
+
 static void board_init(void)
 {
-#ifdef BOARD_ZOOMBINI
-	struct charge_port_info chg;
-	int i;
-#endif /* defined(BOARD_ZOOMBINI) */
-
 #ifdef BOARD_ZOOMBINI
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C2_PPC_INT_L);
+#else
+	gpio_enable_interrupt(GPIO_SIXAXIS_INT_L);
+	gpio_enable_interrupt(GPIO_RCAM_VSYNC);
 #endif /* defined(BOARD_ZOOMBINI) */
 
 	/* Enable TCPC interrupts. */
@@ -387,18 +485,6 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_L);
 #ifdef BOARD_ZOOMBINI
 	gpio_enable_interrupt(GPIO_USB_C2_PD_INT_L);
-
-	/* Initialize VBUS suppliers. */
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		if (tcpm_get_vbus_level(i)) {
-			chg.voltage = 5000;
-			chg.current = USB_CHARGER_MIN_CURR_MA;
-		} else {
-			chg.voltage = 0;
-			chg.current = 0;
-		}
-		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, i, &chg);
-	}
 #endif /* defined(BOARD_ZOOMBINI) */
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);

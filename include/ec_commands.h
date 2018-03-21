@@ -21,6 +21,10 @@
 #include "common.h"
 #endif
 
+#if !defined(__KERNEL__)
+#include "compile_time_macros.h"
+#endif
+
 /*
  * Current version of this protocol
  *
@@ -351,6 +355,15 @@
 #define EC_ACPI_MEM_DEVICE_FEATURES7 0x11
 
 #define EC_ACPI_MEM_BATTERY_INDEX    0x12
+
+/*
+ * USB Port Power. Each bit indicates whether the corresponding USB ports' power
+ * is enabled (1) or disabled (0).
+ *   bit 0 USB port ID 0
+ *   ...
+ *   bit 7 USB port ID 7
+ */
+#define EC_ACPI_MEM_USB_PORT_POWER 0x13
 
 /*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
@@ -1248,6 +1261,10 @@ enum ec_feature_code {
 	EC_FEATURE_UNIFIED_WAKE_MASKS = 32,
 	/* EC supports 64-bit host events */
 	EC_FEATURE_HOST_EVENT64 = 33,
+	/* EC runs code in RAM (not in place, a.k.a. XIP) */
+	EC_FEATURE_EXEC_IN_RAM = 34,
+	/* EC supports CEC commands */
+	EC_FEATURE_CEC = 35,
 };
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))
@@ -2275,6 +2292,9 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_OPT3001 = 10,
 	MOTIONSENSE_CHIP_BH1730 = 11,
 	MOTIONSENSE_CHIP_GPIO = 12,
+	MOTIONSENSE_CHIP_LIS2DH = 13,
+	MOTIONSENSE_CHIP_LSM6DSM = 14,
+	MOTIONSENSE_CHIP_MAX,
 };
 
 /* List of orientation positions */
@@ -2312,7 +2332,9 @@ struct __ec_todo_packed ec_response_motion_sense_fifo_info {
 	uint16_t size;
 	/* Amount of space used in the fifo */
 	uint16_t count;
-	/* Timestamp recorded in us */
+	/* Timestamp recorded in us.
+	 * aka accurate timestamp when host event was triggered.
+	 */
 	uint32_t timestamp;
 	/* Total amount of vector lost */
 	uint16_t total_lost;
@@ -3164,6 +3186,12 @@ enum ec_mkbp_event {
 	 */
 	EC_MKBP_EVENT_HOST_EVENT64 = 7,
 
+	/* Notify the AP that something happened on CEC */
+	EC_MKBP_EVENT_CEC_EVENT = 8,
+
+	/* Send an incoming CEC message to the AP */
+	EC_MKBP_EVENT_CEC_MESSAGE = 9,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
@@ -3188,12 +3216,49 @@ union __ec_align_offset1 ec_response_get_next_data {
 	uint32_t fp_events;
 
 	uint32_t sysrq;
+
+	/* CEC events from enum mkbp_cec_event */
+	uint32_t cec_events;
 };
+
+union __ec_align_offset1 ec_response_get_next_data_v1 {
+	uint8_t key_matrix[16];
+
+	/* Unaligned */
+	uint32_t host_event;
+	uint64_t host_event64;
+
+	struct __ec_todo_unpacked {
+		/* For aligning the fifo_info */
+		uint8_t reserved[3];
+		struct ec_response_motion_sense_fifo_info info;
+	} sensor_fifo;
+
+	uint32_t buttons;
+
+	uint32_t switches;
+
+	uint32_t fp_events;
+
+	uint32_t sysrq;
+
+	/* CEC events from enum mkbp_cec_event */
+	uint32_t cec_events;
+
+	uint8_t cec_message[16];
+};
+BUILD_ASSERT(sizeof(union ec_response_get_next_data_v1) == 16);
 
 struct __ec_align1 ec_response_get_next_event {
 	uint8_t event_type;
 	/* Followed by event data if any */
 	union ec_response_get_next_data data;
+};
+
+struct __ec_align1 ec_response_get_next_event_v1 {
+	uint8_t event_type;
+	/* Followed by event data if any */
+	union ec_response_get_next_data_v1 data;
 };
 
 /* Bit indices for buttons and switches.*/
@@ -3216,9 +3281,36 @@ struct __ec_align2 ec_response_keyboard_factory_test {
 
 /* Fingerprint events in 'fp_events' for EC_MKBP_EVENT_FINGERPRINT */
 #define EC_MKBP_FP_RAW_EVENT(fp_events) ((fp_events) & 0x00FFFFFF)
+#define EC_MKBP_FP_ERRCODE(fp_events)   ((fp_events) & 0x0000000F)
+#define EC_MKBP_FP_ENROLL_PROGRESS_OFFSET 4
+#define EC_MKBP_FP_ENROLL_PROGRESS(fpe) (((fpe) & 0x00000FF0) \
+					 >> EC_MKBP_FP_ENROLL_PROGRESS_OFFSET)
+#define EC_MKBP_FP_MATCH_IDX_OFFSET 12
+#define EC_MKBP_FP_MATCH_IDX_MASK 0x0000F000
+#define EC_MKBP_FP_MATCH_IDX(fpe) (((fpe) & EC_MKBP_FP_MATCH_IDX_MASK) \
+					 >> EC_MKBP_FP_MATCH_IDX_OFFSET)
+#define EC_MKBP_FP_ENROLL               (1 << 27)
+#define EC_MKBP_FP_MATCH                (1 << 28)
 #define EC_MKBP_FP_FINGER_DOWN          (1 << 29)
 #define EC_MKBP_FP_FINGER_UP            (1 << 30)
 #define EC_MKBP_FP_IMAGE_READY          (1 << 31)
+/* code given by EC_MKBP_FP_ERRCODE() when EC_MKBP_FP_ENROLL is set */
+#define EC_MKBP_FP_ERR_ENROLL_OK               0
+#define EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY      1
+#define EC_MKBP_FP_ERR_ENROLL_IMMOBILE         2
+#define EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE     3
+#define EC_MKBP_FP_ERR_ENROLL_INTERNAL         5
+/* Can be used to detect if image was usable for enrollment or not. */
+#define EC_MKBP_FP_ERR_ENROLL_PROBLEM_MASK     1
+/* code given by EC_MKBP_FP_ERRCODE() when EC_MKBP_FP_MATCH is set */
+#define EC_MKBP_FP_ERR_MATCH_NO                0
+#define EC_MKBP_FP_ERR_MATCH_NO_INTERNAL       6
+#define EC_MKBP_FP_ERR_MATCH_NO_LOW_QUALITY    2
+#define EC_MKBP_FP_ERR_MATCH_NO_LOW_COVERAGE   4
+#define EC_MKBP_FP_ERR_MATCH_YES               1
+#define EC_MKBP_FP_ERR_MATCH_YES_UPDATED       3
+#define EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED 5
+
 
 /*****************************************************************************/
 /* Temperature sensor commands */
@@ -3750,6 +3842,8 @@ enum charge_state_params {
 	CS_PARAM_DEBUG_SEEMS_DEAD,
 	CS_PARAM_DEBUG_SEEMS_DISCONNECTED,
 	CS_PARAM_DEBUG_BATT_REMOVED,
+	CS_PARAM_DEBUG_MANUAL_CURRENT,
+	CS_PARAM_DEBUG_MANUAL_VOLTAGE,
 	CS_PARAM_DEBUG_MAX = 0x2ffff,
 
 	/* Other custom param ranges go here... */
@@ -4057,6 +4151,58 @@ struct __ec_align1 ec_response_i2c_passthru_protect {
 	uint8_t status;		/* Status flags (0: unlocked, 1: locked) */
 };
 
+
+/*****************************************************************************/
+/*
+ *  HDMI CEC commands
+ *
+ * These commands are for sending and receiving message via HDMI CEC
+ */
+
+#define MAX_CEC_MSG_LEN 16
+
+/* CEC message from the AP to be written on the CEC bus */
+#define EC_CMD_CEC_WRITE_MSG 0x00B8
+
+/* Message to write to the CEC bus */
+struct __ec_align1 ec_params_cec_write {
+	uint8_t msg[MAX_CEC_MSG_LEN];
+};
+
+/* Set various CEC parameters */
+#define EC_CMD_CEC_SET 0x00BA
+
+struct __ec_align1 ec_params_cec_set {
+	uint8_t cmd; /* enum cec_command */
+	uint8_t val;
+};
+
+/* Read various CEC parameters */
+#define EC_CMD_CEC_GET 0x00BB
+
+struct __ec_align1 ec_params_cec_get {
+	uint8_t cmd; /* enum cec_command */
+};
+
+struct __ec_align1 ec_response_cec_get {
+	uint8_t val;
+};
+
+enum cec_command {
+	/* CEC reading, writing and events enable */
+	CEC_CMD_ENABLE,
+	/* CEC logical address  */
+	CEC_CMD_LOGICAL_ADDRESS,
+};
+
+/* Events from CEC to AP */
+enum mkbp_cec_event {
+	/* Outgoing message was acknowledged by a follower */
+	EC_MKBP_CEC_SEND_OK			= 1 << 0,
+	/* Outgoing message was not acknowledged */
+	EC_MKBP_CEC_SEND_FAILED			= 1 << 1,
+};
+
 /*****************************************************************************/
 /* System commands */
 
@@ -4306,6 +4452,17 @@ struct __ec_align4 ec_response_usb_pd_power_info {
 	uint8_t reserved1;
 	struct usb_chg_measures meas;
 	uint32_t max_power;
+};
+
+
+/*
+ * This command will return the number of USB PD charge port + the number
+ * of dedicated port present.
+ * EC_CMD_USB_PD_PORTS does NOT include the dedicated ports
+ */
+#define EC_CMD_CHARGE_PORT_COUNT 0x0105
+struct __ec_align1 ec_response_charge_port_count {
+	uint8_t port_count;
 };
 
 /* Write USB-PD device FW */
@@ -4587,14 +4744,11 @@ struct __ec_align1 ec_params_efs_verify {
  */
 #define EC_CMD_SET_CROS_BOARD_INFO	0x0120
 
-enum cbi_data_type {
-	/* integer types */
-	CBI_DATA_BOARD_VERSION = 0,
-	CBI_DATA_OEM_ID = 1,
-	CBI_DATA_SKU_ID = 2,
-	/* string types */
-	CBI_FIRST_STRING_PARAM = 0x1000,
-	CBI_DATA_COUNT,
+enum cbi_data_tag {
+	CBI_TAG_BOARD_VERSION = 0, /* uint16_t or uint8_t[] = {minor,major} */
+	CBI_TAG_OEM_ID = 1,        /* uint8_t */
+	CBI_TAG_SKU_ID = 2,        /* uint8_t */
+	CBI_TAG_COUNT,
 };
 
 /*
@@ -4606,7 +4760,7 @@ enum cbi_data_type {
 #define CBI_GET_RELOAD		(1 << 0)
 
 struct __ec_align4 ec_params_get_cbi {
-	uint32_t type;		/* enum cbi_data_type */
+	uint32_t tag;		/* enum cbi_data_tag */
 	uint32_t flag;		/* CBI_GET_* */
 };
 
@@ -4622,10 +4776,10 @@ struct __ec_align4 ec_params_get_cbi {
 #define CBI_SET_INIT		(1 << 1)
 
 struct __ec_align1 ec_params_set_cbi {
-	uint32_t type;		/* enum cbi_data_type */
+	uint32_t tag;		/* enum cbi_data_tag */
 	uint32_t flag;		/* CBI_SET_* */
-	uint32_t data;		/* For numeric value */
-	uint8_t raw[];		/* For string and raw data */
+	uint32_t size;		/* Data size */
+	uint8_t data[];		/* For string and raw data */
 };
 
 /*****************************************************************************/
@@ -4690,11 +4844,21 @@ struct __ec_align2 ec_params_fp_sensor_config {
 #define FP_CAPTURE_PATTERN0      2
 /* Self test pattern (e.g. inverted checkerboard) */
 #define FP_CAPTURE_PATTERN1      3
+/* Capture for Quality test with fixed contrast */
+#define FP_CAPTURE_QUALITY_TEST  4
+/* Capture for pixel reset value test */
+#define FP_CAPTURE_RESET_TEST    5
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode) (((mode) >> FP_MODE_CAPTURE_TYPE_SHIFT) \
 					& FP_MODE_CAPTURE_TYPE_MASK)
+/* Finger enrollment session on-going */
+#define FP_MODE_ENROLL_SESSION (1<<4)
+/* Enroll the current finger image */
+#define FP_MODE_ENROLL_IMAGE   (1<<5)
+/* Try to match the current finger image */
+#define FP_MODE_MATCH          (1<<6)
 /* special value: don't change anything just read back current mode */
-#define FP_MODE_DONT_CHANGE   (1<<31)
+#define FP_MODE_DONT_CHANGE    (1<<31)
 
 struct __ec_align4 ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
@@ -4718,7 +4882,7 @@ struct __ec_align4 ec_response_fp_mode {
 /* Sensor initialization failed */
 #define FP_ERROR_INIT_FAIL (1 << 15)
 
-struct __ec_align2 ec_response_fp_info {
+struct __ec_align4 ec_response_fp_info_v0 {
 	/* Sensor identification */
 	uint32_t vendor_id;
 	uint32_t product_id;
@@ -4733,12 +4897,71 @@ struct __ec_align2 ec_response_fp_info {
 	uint16_t errors; /* see FP_ERROR_ flags above */
 };
 
-/* Get the last captured finger frame */
+struct __ec_align4 ec_response_fp_info {
+	/* Sensor identification */
+	uint32_t vendor_id;
+	uint32_t product_id;
+	uint32_t model_id;
+	uint32_t version;
+	/* Image frame characteristics */
+	uint32_t frame_size;
+	uint32_t pixel_format; /* using V4L2_PIX_FMT_ */
+	uint16_t width;
+	uint16_t height;
+	uint16_t bpp;
+	uint16_t errors; /* see FP_ERROR_ flags above */
+	/* Template/finger current information */
+	uint32_t template_size;  /* max template size in bytes */
+	uint16_t template_max;   /* maximum number of fingers/templates */
+	uint16_t template_valid; /* number of valid fingers/templates */
+	uint32_t template_dirty; /* bitmap of templates with MCU side changes */
+};
+
+/* Get the last captured finger frame or a template content */
 #define EC_CMD_FP_FRAME 0x0404
 
+/* constants defining the 'offset' field which also contains the frame index */
+#define FP_FRAME_INDEX_SHIFT       28
+#define FP_FRAME_INDEX_RAW_IMAGE    0
+#define FP_FRAME_TEMPLATE_INDEX(offset) ((offset) >> FP_FRAME_INDEX_SHIFT)
+#define FP_FRAME_OFFSET_MASK       0x0FFFFFFF
+
 struct __ec_align4 ec_params_fp_frame {
+	/*
+	 * The offset contains the template index or FP_FRAME_INDEX_RAW_IMAGE
+	 * in the high nibble, and the real offset within the frame in
+	 * FP_FRAME_OFFSET_MASK.
+	 */
 	uint32_t offset;
 	uint32_t size;
+};
+
+/* Load a template into the MCU */
+#define EC_CMD_FP_TEMPLATE 0x0405
+
+/* Flag in the 'size' field indicating that the full template has been sent */
+#define FP_TEMPLATE_COMMIT 0x80000000
+
+struct __ec_align4 ec_params_fp_template {
+	uint32_t offset;
+	uint32_t size;
+	uint8_t data[];
+};
+
+/* Clear the current fingerprint user context and set a new one */
+#define EC_CMD_FP_CONTEXT 0x0406
+
+#define FP_CONTEXT_USERID_WORDS (32 / sizeof(uint32_t))
+#define FP_CONTEXT_NONCE_WORDS (32 / sizeof(uint32_t))
+
+struct __ec_align4 ec_params_fp_context {
+	uint32_t userid[FP_CONTEXT_USERID_WORDS];
+	/* TODO(b/73337313) mostly a placeholder, details to be implemented */
+	uint32_t nonce[FP_CONTEXT_NONCE_WORDS];
+};
+
+struct __ec_align4 ec_response_fp_context {
+	uint32_t nonce[FP_CONTEXT_NONCE_WORDS];
 };
 
 /*****************************************************************************/

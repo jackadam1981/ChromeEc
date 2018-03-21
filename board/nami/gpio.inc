@@ -34,11 +34,11 @@ GPIO_INT(USB_C1_VBUS_WAKE_L,	PIN(C, 5), GPIO_INT_BOTH | GPIO_PULL_UP,vbus1_evt)
 GPIO_INT(USB_C0_BC12_INT_L,	PIN(D, 2), GPIO_INT_FALLING,		usb0_evt)
 GPIO_INT(USB_C1_BC12_INT_L,	PIN(D, 3), GPIO_INT_FALLING,		usb1_evt)
 GPIO_INT(ACCELGYRO3_INT_L,	PIN(3, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V,	bmi160_interrupt)
+GPIO_INT(TABLET_MODE_L,		PIN(7, 2), GPIO_INT_BOTH,		tablet_mode_isr)
 /* Used to wake up system from deep S3. */
 /* GPIO_INT(TP_INT_CONN,		PIN(4, 2), GPIO_INT_BOTH, trackpad_connect) dnojiri: Revisit */
 /* GPIO_INT(ALS_INT,		PIN(3, 2),,) dnojiri: Revisit */
 /* GPIO_INT(3AXIS_INT,		PIN(9, 5),,) dnojiri: Revisit */
-/* GPIO_INT(TABLET_MODE_L,	PIN(7, 2), GPIO_INT_BOTH,		tablet_mode_interrupt) dnojiri: Revisit */
 
 GPIO(ENABLE_BACKLIGHT_L,		PIN(6, 7), GPIO_OUT_LOW)	/* LCD backlight */
 GPIO(PP3300_DX_WLAN,		PIN(B, 1), GPIO_OUT_LOW)	/* Enable WLAN 3.3V Power */
@@ -94,6 +94,9 @@ GPIO(USB2_OTG_ID,		PIN(5, 7), GPIO_ODR_LOW)	/* OTG ID */
 /* Trackpad */
 GPIO(TP_INT_EN,			PIN(A, 1), GPIO_OUT_LOW)
 
+/* LED */
+GPIO(LED1,			PIN(A, 7), GPIO_OUT_LOW)
+
 /* Alternate functions GPIO definitions */
 ALTERNATE(PIN_MASK(6, 0x30), 1, MODULE_UART, 0)	/* GPIO64-65 UART from EC to Servo */
 ALTERNATE(PIN_MASK(8, 0x80), 1, MODULE_I2C, 0)	/* GPIO87 EC_I2C1_3V3_SDA */
@@ -106,6 +109,7 @@ ALTERNATE(PIN_MASK(B, 0x40), 1, MODULE_PWM, 0)	/* GPIOB6 PWM1 Fan control */
 ALTERNATE(PIN_MASK(8, 0x01), 1, MODULE_PWM, 0)	/* GPIO80 PWM3 LED White */
 ALTERNATE(PIN_MASK(B, 0x80), 1, MODULE_PWM, 0)	/* GPIOB7 PWM5 LED Yellow */
 ALTERNATE(PIN_MASK(A, 0x40), 1, MODULE_PWM, 0)	/* GPIOA6 TA2 */
+ALTERNATE(PIN_MASK(C, 0x10), 1, MODULE_PWM, 0)	/* GPIOC4 PWM2 */
 
 /* Keyboard pins */
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)

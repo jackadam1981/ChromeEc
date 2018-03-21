@@ -20,6 +20,7 @@ enum bbram_data_index {
 	BBRM_DATA_INDEX_PD0 = 12,	       /* USB-PD saved port0 state */
 	BBRM_DATA_INDEX_PD1 = 13,	       /* USB-PD saved port1 state */
 	BBRM_DATA_INDEX_TRY_SLOT = 14,         /* Vboot EC try slot */
+	BBRM_DATA_INDEX_PD2 = 15,	       /* USB-PD saved port2 state */
 	BBRM_DATA_INDEX_VBNVCNTXT = 16,	       /* VbNvContext for ARM arch */
 	BBRM_DATA_INDEX_RAMLOG = 32,	       /* RAM log for Booter */
 	BBRM_DATA_INDEX_PANIC_FLAGS = 35,      /* Flag to indicate validity of
@@ -65,6 +66,9 @@ extern unsigned int __flash_lplfw_end;
 #elif defined(CHIP_FAMILY_NPCX7)
 /* Configure PSL mode setting for the wake-up pins. */
 int system_config_psl_mode(enum gpio_signal signal);
+
+/* Configure PSL pins and enter PSL mode. */
+void system_enter_psl_mode(void);
 
 /* End address for hibernate utility; defined in linker script */
 extern unsigned int __after_init_end;

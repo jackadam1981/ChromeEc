@@ -205,6 +205,10 @@ void chip_pre_init(void)
 	uint32_t apb1fz_reg = 0;
 	uint32_t apb2fz_reg = 0;
 
+#ifdef CONFIG_ARMV7M_CACHE
+	cpu_enable_icache();
+#endif
+
 #if defined(CHIP_FAMILY_STM32F0)
 	apb1fz_reg =
 		STM32_RCC_PB1_TIM2 | STM32_RCC_PB1_TIM3 | STM32_RCC_PB1_TIM6 |
@@ -268,14 +272,12 @@ void system_pre_init(void)
 #endif
 	/* Delay 1 APB clock cycle after the clock is enabled */
 	clock_wait_bus_cycles(BUS_APB, 1);
-#ifndef CHIP_FAMILY_STM32H7
 	/* Enable access to RCC CSR register and RTC backup registers */
 	STM32_PWR_CR |= 1 << 8;
 #ifdef CHIP_VARIANT_STM32L476
 	/* Enable Vddio2 */
 	STM32_PWR_CR2 |= 1 << 9;
 #endif
-#endif /* !CHIP_FAMILY_STM32H7 */
 
 	/* switch on LSI */
 	STM32_RCC_CSR |= 1 << 0;
@@ -388,14 +390,23 @@ void system_reset(int flags)
 		STM32_FLASH_CR |= FLASH_CR_OBL_LAUNCH;
 #else
 		/* Ask the watchdog to trigger a hard reboot */
-		STM32_IWDG_KR = 0x5555;
+		STM32_IWDG_KR = STM32_IWDG_KR_UNLOCK;
 		STM32_IWDG_RLR = 0x1;
-		STM32_IWDG_KR = 0xcccc;
+		STM32_IWDG_KR = STM32_IWDG_KR_RELOAD;
 #endif
 		/* wait for the chip to reboot */
 		while (1)
 			;
 	} else {
+		if (flags & SYSTEM_RESET_WAIT_EXT) {
+			int i;
+
+			/* Wait 10 seconds for external reset */
+			for (i = 0; i < 1000; i++) {
+				watchdog_reload();
+				udelay(10000);
+			}
+		}
 		CPU_NVIC_APINT = 0x05fa0004;
 	}
 

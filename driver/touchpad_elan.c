@@ -18,6 +18,7 @@
 #include "util.h"
 #include "usb_api.h"
 #include "usb_hid_touchpad.h"
+#include "watchdog.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_TOUCHPAD, outstr)
@@ -541,6 +542,7 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 		if (rv)
 			return rv;
 		CPRINTS("%s: page %d updated.", __func__, addr / FW_PAGE_SIZE);
+		watchdog_reload();
 	}
 
 	if (offset + size == FW_SIZE) {
@@ -571,6 +573,9 @@ allowed_command_hashes[TOUCHPAD_ELAN_DEBUG_NUM_CMD][SHA256_DIGEST_SIZE] = {
 		0x7b, 0xb2, 0x1f, 0x14, 0x82, 0x1c, 0x0b, 0x74
 	},
 };
+
+/* Debugging commands need to allocate a <=1k buffer. */
+SHARED_MEM_CHECK_SIZE(1024);
 
 int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		   uint8_t **data, unsigned int *data_size)

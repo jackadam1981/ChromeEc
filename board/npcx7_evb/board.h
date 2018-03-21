@@ -11,7 +11,7 @@
 /*
  * npcx7 EVB version:
  * 1 - for EVB version 1 which supports npcx7m6f/npcx7m6g
- * 2 - for EVB version 2 which supports npcx7m7w/npcx7m6xb
+ * 2 - for EVB version 2 which supports npcx7m7wb/npcx7m6fb
  */
 #define BOARD_VERSION  2
 
@@ -19,15 +19,13 @@
 #define CONFIG_ADC
 #define CONFIG_PWM
 #define CONFIG_SPI
-#define CONFIG_LPC
 #define CONFIG_I2C
-#undef CONFIG_PECI
 /* Features of eSPI */
-#define CONFIG_ESPI /* Use eSPI protocol for host interface of x86 CPU */
-#define CONFIG_ESPI_VW_SIGNALS /* Use VW signals instead of GPIOs */
+#define CONFIG_HOSTCMD_ESPI
+#define CONFIG_HOSTCMD_ESPI_VW_SIGNALS /* Use VW signals instead of GPIOs */
 
 /* Optional features */
-#define CONFIG_BOARD_VERSION
+#define CONFIG_BOARD_VERSION_GPIO
 #define CONFIG_EXTPOWER_GPIO
 #define CONFIG_I2C_MASTER
 #define CONFIG_KEYBOARD_BOARD_CONFIG
@@ -51,9 +49,6 @@
 /* I2C port for CONFIG_CMD_I2CWEDGE */
 #define I2C_PORT_MASTER NPCX_I2C_PORT0_0
 #define I2C_PORT_HOST   0
-
-/* LPC UART */
-#define CONFIG_UART_HOST 0
 
 /* Fans for testing */
 #define CONFIG_FANS 1
