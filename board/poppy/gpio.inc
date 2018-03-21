@@ -43,7 +43,7 @@ GPIO_INT(ACCELGYRO3_INT_L,	PIN(7, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V,	bmi160_i
 GPIO_INT(ACCELGYRO3_INT_L,	PIN(3, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V,	bmi160_interrupt)
 #endif
 GPIO_INT(BASE_DET_A,		PIN(4, 5), GPIO_INT_BOTH,			base_detect_interrupt)
-GPIO_INT(USB_C0_CABLE_DET,      PIN(D, 2), GPIO_INT_RISING,			anx74xx_cable_det_interrupt)
+GPIO_INT(USB_C0_CABLE_DET,      PIN(D, 2), GPIO_INT_RISING,			anx3429_cable_det_interrupt)
 #ifdef BOARD_LUX
 GPIO_INT(UART_MAIN_RX,		PIN(6, 4), GPIO_INT_FALLING,			uart_default_pad_rx_interrupt)
 #endif

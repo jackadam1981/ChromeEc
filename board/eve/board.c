@@ -21,7 +21,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_si114x.h"
 #include "driver/charger/bd9995x.h"
-#include "driver/tcpm/anx74xx.h"
+#include "driver/tcpm/anx3429.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
 #include "driver/temp_sensor/bd99992gw.h"
@@ -101,7 +101,7 @@ void dsp_interrupt(enum gpio_signal signal)
 }
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static void anx74xx_c0_cable_det_handler(void)
+static void anx3429_c0_cable_det_handler(void)
 {
 	int cable_det = gpio_get_level(GPIO_USB_C0_CABLE_DET);
 	int reset_n = gpio_get_level(GPIO_USB_C0_PD_RST_L);
@@ -118,9 +118,9 @@ static void anx74xx_c0_cable_det_handler(void)
 	if (cable_det && !reset_n)
 		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
 }
-DECLARE_DEFERRED(anx74xx_c0_cable_det_handler);
+DECLARE_DEFERRED(anx3429_c0_cable_det_handler);
 
-static void anx74xx_c1_cable_det_handler(void)
+static void anx3429_c1_cable_det_handler(void)
 {
 	int cable_det = gpio_get_level(GPIO_USB_C1_CABLE_DET);
 	int reset_n = gpio_get_level(GPIO_USB_C1_PD_RST_L);
@@ -137,16 +137,16 @@ static void anx74xx_c1_cable_det_handler(void)
 	if (cable_det && !reset_n)
 		task_set_event(TASK_ID_PD_C1, PD_EVENT_TCPC_RESET, 0);
 }
-DECLARE_DEFERRED(anx74xx_c1_cable_det_handler);
+DECLARE_DEFERRED(anx3429_c1_cable_det_handler);
 
-void anx74xx_cable_det_interrupt(enum gpio_signal signal)
+void anx3429_cable_det_interrupt(enum gpio_signal signal)
 {
 	/* Check if it is port 0 or 1, and debounce for 2 msec. */
 	if (signal == GPIO_USB_C0_CABLE_DET)
-		hook_call_deferred(&anx74xx_c0_cable_det_handler_data,
+		hook_call_deferred(&anx3429_c0_cable_det_handler_data,
 				   (2 * MSEC));
 	else
-		hook_call_deferred(&anx74xx_c1_cable_det_handler_data,
+		hook_call_deferred(&anx3429_c1_cable_det_handler_data,
 				   (2 * MSEC));
 }
 #endif
@@ -210,20 +210,20 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{I2C_PORT_TCPC0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{I2C_PORT_TCPC1, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{I2C_PORT_TCPC0, 0x50, &anx3429_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{I2C_PORT_TCPC1, 0x50, &anx3429_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0,
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+		.driver = &anx3429_tcpm_usb_mux_driver,
+		.hpd_update = &anx3429_tcpc_update_hpd_status,
 	},
 	{
 		.port_addr = 1,
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+		.driver = &anx3429_tcpm_usb_mux_driver,
+		.hpd_update = &anx3429_tcpc_update_hpd_status,
 	},
 };
 
@@ -240,25 +240,25 @@ void board_set_tcpc_power_mode(int port, int mode)
 	case 0:
 		if (mode) {
 			gpio_set_level(GPIO_USB_C0_TCPC_PWR, 1);
-			msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
+			msleep(ANX3429_PWR_H_RST_H_DELAY_MS);
 			gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
 		} else {
 			gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-			msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
+			msleep(ANX3429_RST_L_PWR_L_DELAY_MS);
 			gpio_set_level(GPIO_USB_C0_TCPC_PWR, 0);
-			msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
+			msleep(ANX3429_PWR_L_PWR_H_DELAY_MS);
 		}
 		break;
 	case 1:
 		if (mode) {
 			gpio_set_level(GPIO_USB_C1_TCPC_PWR, 1);
-			msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
+			msleep(ANX3429_PWR_H_RST_H_DELAY_MS);
 			gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
 		} else {
 			gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
-			msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
+			msleep(ANX3429_RST_L_PWR_L_DELAY_MS);
 			gpio_set_level(GPIO_USB_C1_TCPC_PWR, 0);
-			msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
+			msleep(ANX3429_PWR_L_PWR_H_DELAY_MS);
 		}
 		break;
 	}
@@ -269,15 +269,15 @@ void board_reset_pd_mcu(void)
 	/* Assert reset */
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
 	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
-	msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
+	msleep(ANX3429_RST_L_PWR_L_DELAY_MS);
 	/* Disable power */
 	gpio_set_level(GPIO_USB_C0_TCPC_PWR, 0);
 	gpio_set_level(GPIO_USB_C1_TCPC_PWR, 0);
-	msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
+	msleep(ANX3429_PWR_L_PWR_H_DELAY_MS);
 	/* Enable power */
 	gpio_set_level(GPIO_USB_C0_TCPC_PWR, 1);
 	gpio_set_level(GPIO_USB_C1_TCPC_PWR, 1);
-	msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
+	msleep(ANX3429_PWR_H_RST_H_DELAY_MS);
 	/* Deassert reset */
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
 	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);

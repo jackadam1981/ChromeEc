@@ -8,7 +8,7 @@
 #include "charge_manager.h"
 #include "common.h"
 #include "console.h"
-#include "driver/tcpm/anx74xx.h"
+#include "driver/tcpm/anx3429.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "gpio.h"
 #include "hooks.h"

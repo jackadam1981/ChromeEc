@@ -19,7 +19,7 @@
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/charger/bd9995x.h"
-#include "driver/tcpm/anx74xx.h"
+#include "driver/tcpm/anx3429.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
@@ -61,7 +61,7 @@
 #define IN_PGOOD_PP3300	POWER_SIGNAL_MASK(X86_PGOOD_PP3300)
 #define IN_PGOOD_PP5000	POWER_SIGNAL_MASK(X86_PGOOD_PP5000)
 
-#define USB_PD_PORT_ANX74XX	0
+#define USB_PD_PORT_ANX3429	0
 #define USB_PD_PORT_PS8751	1
 
 static int sku_id;
@@ -83,7 +83,7 @@ static void tcpc_alert_event(enum gpio_signal signal)
 }
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static void anx74xx_cable_det_handler(void)
+static void anx3429_cable_det_handler(void)
 {
 	int cable_det = gpio_get_level(GPIO_USB_C0_CABLE_DET);
 	int reset_n = gpio_get_level(GPIO_USB_C0_PD_RST_L);
@@ -100,12 +100,12 @@ static void anx74xx_cable_det_handler(void)
 	if (cable_det && !reset_n)
 		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
 }
-DECLARE_DEFERRED(anx74xx_cable_det_handler);
+DECLARE_DEFERRED(anx3429_cable_det_handler);
 
-void anx74xx_cable_det_interrupt(enum gpio_signal signal)
+void anx3429_cable_det_interrupt(enum gpio_signal signal)
 {
 	/* debounce for 2 msec */
-	hook_call_deferred(&anx74xx_cable_det_handler_data, (2 * MSEC));
+	hook_call_deferred(&anx3429_cable_det_handler_data, (2 * MSEC));
 }
 #endif
 
@@ -192,7 +192,7 @@ struct i2c_stress_test i2c_stress_tests[] = {
 	{
 		.port = NPCX_I2C_PORT0_0,
 		.addr = 0x50,
-		.i2c_test = &anx74xx_i2c_stress_test_dev,
+		.i2c_test = &anx3429_i2c_stress_test_dev,
 	},
 #endif
 
@@ -239,10 +239,10 @@ const int i2c_test_dev_used = ARRAY_SIZE(i2c_stress_tests);
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_ANX74XX] = {
+	[USB_PD_PORT_ANX3429] = {
 		.i2c_host_port = NPCX_I2C_PORT0_0,
 		.i2c_slave_addr = 0x50,
-		.drv = &anx74xx_tcpm_drv,
+		.drv = &anx3429_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 	[USB_PD_PORT_PS8751] = {
@@ -287,10 +287,10 @@ static int ps8751_tune_mux(const struct usb_mux *mux)
 }
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_ANX74XX] = {
-		.port_addr = USB_PD_PORT_ANX74XX,
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+	[USB_PD_PORT_ANX3429] = {
+		.port_addr = USB_PD_PORT_ANX3429,
+		.driver = &anx3429_tcpm_usb_mux_driver,
+		.hpd_update = &anx3429_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_PS8751] = {
 		.port_addr = USB_PD_PORT_PS8751,
@@ -313,20 +313,20 @@ const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
  */
 void board_set_tcpc_power_mode(int port, int mode)
 {
-	if (port != USB_PD_PORT_ANX74XX)
+	if (port != USB_PD_PORT_ANX3429)
 		return;
 
 	switch (mode) {
-	case ANX74XX_NORMAL_MODE:
+	case ANX3429_NORMAL_MODE:
 		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
-		msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
+		msleep(ANX3429_PWR_H_RST_H_DELAY_MS);
 		gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
 		break;
-	case ANX74XX_STANDBY_MODE:
+	case ANX3429_STANDBY_MODE:
 		gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-		msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
+		msleep(ANX3429_RST_L_PWR_L_DELAY_MS);
 		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 0);
-		msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
+		msleep(ANX3429_PWR_L_PWR_H_DELAY_MS);
 		break;
 	default:
 		break;
@@ -348,7 +348,7 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
 
 	/* TCPC1 (ps8751) requires 1ms reset down assertion */
-	msleep(MAX(1, ANX74XX_RST_L_PWR_L_DELAY_MS));
+	msleep(MAX(1, ANX3429_RST_L_PWR_L_DELAY_MS));
 
 	/* Deassert reset to TCPC1 */
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
@@ -358,8 +358,8 @@ void board_reset_pd_mcu(void)
 	/*
 	 * anx3429 requires 10ms reset/power down assertion
 	 */
-	msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-	board_set_tcpc_power_mode(USB_PD_PORT_ANX74XX, 1);
+	msleep(ANX3429_PWR_L_PWR_H_DELAY_MS);
+	board_set_tcpc_power_mode(USB_PD_PORT_ANX3429, 1);
 }
 
 static void board_tcpc_init(void)
@@ -585,7 +585,7 @@ int board_set_active_charge_port(int charge_port)
 	int bd9995x_port_select = 1;
 
 	switch (charge_port) {
-	case USB_PD_PORT_ANX74XX:
+	case USB_PD_PORT_ANX3429:
 	case USB_PD_PORT_PS8751:
 		/* Don't charge from a source port */
 		if (board_vbus_source_enabled(charge_port))

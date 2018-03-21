@@ -5,7 +5,7 @@
 
 /* Type-C port manager */
 
-#include "anx74xx.h"
+#include "anx3429.h"
 #include "ec_commands.h"
 #include "ps8xxx.h"
 #include "task.h"
@@ -380,9 +380,9 @@ int tcpci_get_chip_info(int port, int renew,
 	i->device_id = val;
 
 	switch (i->vendor_id) {
-#ifdef CONFIG_USB_PD_TCPM_ANX74XX
-	case ANX74XX_VENDOR_ID:
-		error = anx74xx_tcpc_get_fw_version(port, &val);
+#ifdef CONFIG_USB_PD_TCPM_ANX3429
+	case ANX3429_VENDOR_ID:
+		error = anx3429_tcpc_get_fw_version(port, &val);
 		break;
 #endif
 #if defined(CONFIG_USB_PD_TCPM_PS8751) || defined(CONFIG_USB_PD_TCPM_PS8805)

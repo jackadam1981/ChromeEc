@@ -68,7 +68,7 @@ You can add a annotation like the below to eliminate it.
 ```
 add:
   tcpm_transmit[driver/tcpm/tcpm.h:142]:
-  - anx74xx_tcpm_transmit
+  - anx3429_tcpm_transmit
 ```
 The source `tcpm_transmit[driver/tcpm/tcpm.h:142]` must be a full signature (function_name[path:line number]).
 So the resolver can know which indirect call you want to annotate and eliminate (even if it is inlined).

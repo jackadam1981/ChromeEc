@@ -14,7 +14,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "anx74xx.h"
+#include "anx3429.h"
 #include "battery.h"
 #include "comm-host.h"
 #include "compile_time_macros.h"
@@ -7635,7 +7635,7 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	printf("device_id: 0x%x\n", r.device_id);
 
 	switch (r.vendor_id) {
-	case ANX74XX_VENDOR_ID:
+	case ANX3429_VENDOR_ID:
 	case PS8XXX_VENDOR_ID:
 		printf("fw_version: 0x%" PRIx64 "\n", r.fw_version_number);
 		break;

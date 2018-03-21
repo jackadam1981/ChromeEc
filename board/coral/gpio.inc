@@ -17,7 +17,7 @@ GPIO_INT(CHARGER_INT_L,		PIN(3, 3), GPIO_INT_FALLING, bd9995x_vbus_interrupt)		/
 GPIO_INT(USB_C0_PD_INT_ODL,	PIN(3, 7), GPIO_INT_FALLING, tcpc_alert_event)			/* from Analogix TCPC */
 GPIO_INT(USB_C1_PD_INT_ODL,	PIN(B, 1), GPIO_INT_FALLING | GPIO_PULL_UP, tcpc_alert_event)	/* from Parade TCPC */
 
-GPIO_INT(USB_C0_CABLE_DET,	PIN(C, 5), GPIO_INT_RISING, anx74xx_cable_det_interrupt)	/* CABLE_DET from ANX3429 */
+GPIO_INT(USB_C0_CABLE_DET,	PIN(C, 5), GPIO_INT_RISING, anx3429_cable_det_interrupt)	/* CABLE_DET from ANX3429 */
 #ifdef CONFIG_POWER_S0IX
 GPIO_INT(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INT_BOTH, power_signal_interrupt)				/* SLP_S0_L */
 #endif

@@ -28,8 +28,8 @@ GPIO_INT(TRACKPAD_INT_L,	PIN(7, 1), GPIO_INT_FALLING,			trackpad_interrupt)
 /* DSP IRQ is active low in schematic but DSP treats as active high */
 GPIO_INT(MIC_DSP_IRQ_1V8_L,	PIN(C, 6), GPIO_INT_RISING | GPIO_SEL_1P8V,	dsp_interrupt)
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-GPIO_INT(USB_C0_CABLE_DET,      PIN(D, 2), GPIO_INT_RISING,			anx74xx_cable_det_interrupt)
-GPIO_INT(USB_C1_CABLE_DET,      PIN(D, 3), GPIO_INT_RISING,			anx74xx_cable_det_interrupt)
+GPIO_INT(USB_C0_CABLE_DET,      PIN(D, 2), GPIO_INT_RISING,			anx3429_cable_det_interrupt)
+GPIO_INT(USB_C1_CABLE_DET,      PIN(D, 3), GPIO_INT_RISING,			anx3429_cable_det_interrupt)
 #else
 GPIO(USB_C0_CABLE_DET,          PIN(D, 2), GPIO_INPUT)
 GPIO(USB_C1_CABLE_DET,          PIN(D, 3), GPIO_INPUT)

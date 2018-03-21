@@ -20,7 +20,7 @@
 #include "driver/bc12/bq24392.h"
 #include "driver/led/lm3630a.h"
 #include "driver/ppc/sn5s330.h"
-#include "driver/tcpm/anx74xx.h"
+#include "driver/tcpm/anx3429.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "ec_commands.h"
@@ -74,7 +74,7 @@ static void tcpc_alert_event(enum gpio_signal signal)
 }
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static void anx74xx_cable_det_handler(void)
+static void anx3429_cable_det_handler(void)
 {
 	int cable_det = gpio_get_level(GPIO_USB_C0_CABLE_DET);
 	int reset_n = gpio_get_level(gpio_usb_c0_pd_rst_l);
@@ -91,12 +91,12 @@ static void anx74xx_cable_det_handler(void)
 	if (cable_det && !reset_n)
 		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
 }
-DECLARE_DEFERRED(anx74xx_cable_det_handler);
+DECLARE_DEFERRED(anx3429_cable_det_handler);
 
-void anx74xx_cable_det_interrupt(enum gpio_signal signal)
+void anx3429_cable_det_interrupt(enum gpio_signal signal)
 {
 	/* debounce for 2 msec */
-	hook_call_deferred(&anx74xx_cable_det_handler_data, (2 * MSEC));
+	hook_call_deferred(&anx3429_cable_det_handler_data, (2 * MSEC));
 }
 #endif
 
@@ -155,14 +155,14 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-#define USB_PD_PORT_ANX74XX	0
+#define USB_PD_PORT_ANX3429	0
 #define USB_PD_PORT_PS8751	1
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_ANX74XX] = {
+	[USB_PD_PORT_ANX3429] = {
 		.i2c_host_port = I2C_PORT_TCPC0,
 		.i2c_slave_addr = 0x50,
-		.drv = &anx74xx_tcpm_drv,
+		.drv = &anx3429_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 	[USB_PD_PORT_PS8751] = {
@@ -191,10 +191,10 @@ uint16_t tcpc_get_alert_status(void)
 }
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_ANX74XX] = {
-		.port_addr = USB_PD_PORT_ANX74XX,
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+	[USB_PD_PORT_ANX3429] = {
+		.port_addr = USB_PD_PORT_ANX3429,
+		.driver = &anx3429_tcpm_usb_mux_driver,
+		.hpd_update = &anx3429_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_PS8751] = {
 		.port_addr = USB_PD_PORT_PS8751,
@@ -220,7 +220,7 @@ const unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* BC 1.2 chip Configuration */
 const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_ANX74XX] = {
+	[USB_PD_PORT_ANX3429] = {
 		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON_L_V2,
 		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET,
 		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
@@ -314,20 +314,20 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
  */
 void board_set_tcpc_power_mode(int port, int mode)
 {
-	if (port != USB_PD_PORT_ANX74XX)
+	if (port != USB_PD_PORT_ANX3429)
 		return;
 
 	switch (mode) {
-	case ANX74XX_NORMAL_MODE:
+	case ANX3429_NORMAL_MODE:
 		gpio_set_level(GPIO_EN_USB_C0_TCPC_PWR, 1);
-		msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
+		msleep(ANX3429_PWR_H_RST_H_DELAY_MS);
 		gpio_set_level(gpio_usb_c0_pd_rst_l, 1);
 		break;
-	case ANX74XX_STANDBY_MODE:
+	case ANX3429_STANDBY_MODE:
 		gpio_set_level(gpio_usb_c0_pd_rst_l, 0);
-		msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
+		msleep(ANX3429_RST_L_PWR_L_DELAY_MS);
 		gpio_set_level(GPIO_EN_USB_C0_TCPC_PWR, 0);
-		msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
+		msleep(ANX3429_PWR_L_PWR_H_DELAY_MS);
 		break;
 	default:
 		break;
@@ -343,7 +343,7 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(gpio_usb_c0_pd_rst_l, 0);
 
 	/* TCPC1 (ps8751) requires 1ms reset down assertion */
-	msleep(MAX(1, ANX74XX_RST_L_PWR_L_DELAY_MS));
+	msleep(MAX(1, ANX3429_RST_L_PWR_L_DELAY_MS));
 
 	/* Deassert reset to TCPC1 */
 	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
@@ -353,8 +353,8 @@ void board_reset_pd_mcu(void)
 	/*
 	 * anx3429 requires 10ms reset/power down assertion
 	 */
-	msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-	board_set_tcpc_power_mode(USB_PD_PORT_ANX74XX, 1);
+	msleep(ANX3429_PWR_L_PWR_H_DELAY_MS);
+	board_set_tcpc_power_mode(USB_PD_PORT_ANX3429, 1);
 }
 
 void board_tcpc_init(void)
