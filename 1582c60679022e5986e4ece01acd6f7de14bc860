@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "9be3df7a_f974a953",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-22T05:58:59Z",
+      "side": 1,
+      "message": "That is correct. PCH would be in an idle mode with all its controllers in D3. So, there won\u0027t be any SPI transactions going on at this time. \n\nNot sure if this is interesting in this case, but the residency in runtime S0ix is very short (typically of the order of few msec).",
+      "parentUuid": "6b9b3910_b737b244",
+      "revId": "1582c60679022e5986e4ece01acd6f7de14bc860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f0e844d_066b3161",
         "filename": "board/meowth_fp/board.c",
         "patchSetId": 4
