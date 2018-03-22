@@ -182,7 +182,25 @@ int charger_device_id(int *id)
 	*id = reg;
 	return EC_SUCCESS;
 }
+int charger_get_option_0(int *option)
+{
+	int rv;
 
+	rv = raw_read8(ISL923X_REG_CONTROL0, option);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
+int charger_get_option_1(int *option)
+{
+	int rv;
+	rv = raw_read16(ISL923X_REG_CONTROL1, option);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
 int charger_get_option(int *option)
 {
 	int rv;
