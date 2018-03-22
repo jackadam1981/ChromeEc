@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7786741_687d13ec",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-22T14:13:04Z",
+      "side": 1,
+      "message": "why do we return early if we are already asserting SYS_RESET? Don\u0027t we want to finish the \"pulse\"\n\nThe comment doesn\u0027t seem to match the early return statement",
+      "range": {
+        "startLine": 527,
+        "startChar": 1,
+        "endLine": 527,
+        "endChar": 43
+      },
+      "revId": "fd28938d46ef0ee85e9e0a7f35494090fb0422a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
