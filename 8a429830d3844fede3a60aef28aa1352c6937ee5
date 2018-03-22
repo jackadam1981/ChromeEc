@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff1e4b36_ae7f2e21",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T03:56:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51dbdce4_aebf1ba5",
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e45145ee_5c10be30",
         "filename": "util/unpack_ftb.py",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5dd4ec_42be749f",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T03:56:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e45145ee_5c10be30",
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "634deba3_4cfbe37b",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T03:56:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f568989e_a0c12047",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfdc257a_696e0077",
         "filename": "util/unpack_ftb.py",
         "patchSetId": 5
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "eb012b26_87b26853",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T03:56:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfdc257a_696e0077",
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "379b5df6_d51622e8",
         "filename": "util/unpack_ftb.py",
         "patchSetId": 5
@@ -87,6 +165,30 @@
       "writtenOn": "2018-03-14T05:48:00Z",
       "side": 1,
       "message": "Looks like sec3 must be 0? Since you\u0027re not doing anything with it below.",
+      "range": {
+        "startLine": 81,
+        "startChar": 15,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b451692_921adbac",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T03:56:25Z",
+      "side": 1,
+      "message": "Yes, according to sample code, sec3 is never used",
+      "parentUuid": "379b5df6_d51622e8",
       "range": {
         "startLine": 81,
         "startChar": 15,
