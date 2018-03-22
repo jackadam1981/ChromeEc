@@ -520,8 +520,8 @@ void board_hibernate(void)
 }
 
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_LED_RED]   = { 3, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED_GREEN] = { 5, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED_RED]   = { 5, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED_GREEN] = { 3, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
@@ -688,3 +688,60 @@ static void lm3509_kblight_lid_change(void)
 		lm3509_poweroff();
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lm3509_kblight_lid_change, HOOK_PRIO_DEFAULT);
+
+static int command_foo(int argc, char **argv)
+{
+	task_wake(TASK_ID_BAR);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(u, command_foo, NULL, NULL);
+
+extern int charger_get_option_0(int *option);
+extern int charger_get_option_1(int *option);
+void bar_task(void *u)
+{
+	static int counter;
+	int option;
+
+	while (1) {
+		ccprintf("@%d\n", counter++);
+		ccprintf("AC_PRESENT	(GPIO C1)=%d\n", gpio_get_level(GPIO_AC_PRESENT));
+		ccprintf("PCH_ACPRESENT	(GPIO 50)=%d\n\n", gpio_get_level(GPIO_PCH_ACPRESENT));
+
+		ccprintf("USB_C0_5V_EN	(GPIO 40)=%d\n", gpio_get_level(GPIO_USB_C0_5V_EN));
+		ccprintf("USB_C0_3A_EN	(GPIO 35)=%d\n", gpio_get_level(GPIO_USB_C0_3A_EN));
+		ccprintf("USB_C0_CHARGE_L(GPIO C0)=%d\n", gpio_get_level(GPIO_USB_C0_CHARGE_L));
+		ccprintf("USB_C0_PD_RST_L(GPIO C6)=%d\n", gpio_get_level(GPIO_USB_C0_PD_RST_L));
+		ccprintf("USB_C0_DP_HPD	(GPIO 94)=%d\n\n", gpio_get_level(GPIO_USB_C0_DP_HPD));
+
+		ccprintf("USB_C1_5V_EN	(GPIO 33)=%d\n", gpio_get_level(GPIO_USB_C1_5V_EN));
+		ccprintf("USB_C1_3A_EN	(GPIO 66)=%d\n", gpio_get_level(GPIO_USB_C1_3A_EN));
+		ccprintf("USB_C1_CHARGE_L(GPIO C3)=%d\n", gpio_get_level(GPIO_USB_C1_CHARGE_L));
+		ccprintf("USB_C1_PD_RST_L(GPIO 00)=%d\n", gpio_get_level(GPIO_USB_C1_PD_RST_L));
+		ccprintf("USB_C1_DP_HPD	(GPIO A5)=%d\n\n", gpio_get_level(GPIO_USB_C1_DP_HPD));
+
+		ccprintf("USB_PP3300_USB_PD(GPIO 84)=%d\n\n", gpio_get_level(GPIO_USB_PP3300_USB_PD));
+		//ccprintf("(GPIO)=%d\n", gpio_get_level());
+
+		if (charger_get_option_0(&option) == EC_SUCCESS)
+			ccprintf("isl92xx.option0=0x%x\n", option);
+		else
+			ccprintf("isl92xx.option0=Fail\n");
+
+		if (charger_get_option_1(&option) == EC_SUCCESS)
+			ccprintf("isl92xx.option1=0x%x\n", option);
+		else
+			ccprintf("isl92xx.option1=Fail\n");
+
+		ccprintf("\n\n");
+		cflush();
+
+		task_wait_event(-1);
+	}
+}
+
+static void foo_ac(void)
+{
+}
+DECLARE_HOOK(HOOK_SECOND, foo_ac, HOOK_PRIO_DEFAULT);
+

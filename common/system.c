@@ -1430,6 +1430,10 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 	 */
 	memcpy(&p, args->params, sizeof(p));
 
+#ifdef TEST08
+	ccprints("Test08:Ignore Executing host reboot command %d", p.cmd);
+	return EC_RES_SUCCESS;
+#else
 	if (p.cmd == EC_REBOOT_CANCEL) {
 		/* Cancel pending reboot */
 		reboot_at_shutdown = EC_REBOOT_CANCEL;
@@ -1472,6 +1476,7 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 	default:
 		return EC_RES_ERROR;
 	}
+#endif
 }
 DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC,
 		     host_command_reboot,
