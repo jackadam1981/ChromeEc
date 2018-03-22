@@ -97,6 +97,12 @@ int DCRYPTO_gcm_tag(struct GCM_CTX *ctx, uint8_t *tag, size_t tag_len);
 /* Cleanup secrets. */
 void DCRYPTO_gcm_finish(struct GCM_CTX *ctx);
 
+/* AES-CMAC-128 */
+int DCRYPTO_aes_cmac(const uint8_t *K, const uint8_t *M, const uint32_t len,
+		uint32_t T[4]);
+int DCRYPTO_aes_cmac_verify(const uint8_t *key, const uint8_t *M, const int len,
+		const uint32_t T[4]);
+
 /*
  * SHA implementation.  This abstraction is backed by either a
  * software or hardware implementation.
