@@ -60,6 +60,7 @@ const void *const usb_strings[] = {
 			USB_STRING_DESC(CROS_EC_SECTION ":" CROS_EC_VERSION32),
 	[USB_STR_I2C_NAME]     = USB_STRING_DESC("I2C"),
 	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+	[USB_STR_HEATMAP_NAME] = USB_STRING_DESC("Heatmap"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
