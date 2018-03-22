@@ -22,6 +22,30 @@
       "revId": "0ee419195de80f222c6494989d3476a8ba373bf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3777e8_2a55d068",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-22T15:01:27Z",
+      "side": 1,
+      "message": "okay, I will rebase the patch as its still in pre-commit",
+      "parentUuid": "e73d9c8f_9b2e57c6",
+      "range": {
+        "startLine": 40,
+        "startChar": 40,
+        "endLine": 40,
+        "endChar": 50
+      },
+      "revId": "0ee419195de80f222c6494989d3476a8ba373bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
