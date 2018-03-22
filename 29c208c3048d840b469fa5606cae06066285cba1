@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1303e578_66ae40a1",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-22T15:28:23Z",
+      "side": 1,
+      "message": "I do find this check very odd. I\u0027m not sure why this was originally here. But we can clean it up later.",
+      "revId": "29c208c3048d840b469fa5606cae06066285cba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
