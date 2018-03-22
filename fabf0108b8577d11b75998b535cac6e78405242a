@@ -1131,6 +1131,30 @@
     },
     {
       "key": {
+        "uuid": "9255aee5_f57d3d59",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-22T03:41:14Z",
+      "side": 1,
+      "message": "The error message type doesn\u0027t have any extra data whereas the other response types are tied to different structs depending on what data needs to be conveyed.\n\nI suppose I will get rid of all the response types since it can be inferred from context.",
+      "parentUuid": "9e89b362_33e7ee4a",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 3
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb3cda9f_d9c1a9c4",
         "filename": "include/pinweaver.h",
         "patchSetId": 39
