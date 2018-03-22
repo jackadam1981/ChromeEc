@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22c4ee3d_f6190d65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3acbfab_1163bcd5",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7795792_cdb620a6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa0abf10_a5d82c1a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7795792_cdb620a6",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "2a317724_46ef4ee9",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff86aff_3965c46f",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b685dfbb_63c62c91",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -101,6 +155,24 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbc7b6f5_005c6fba",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b685dfbb_63c62c91",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "67eb951e_20698d42",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6abc2756_963739c6",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e57a983e_fac2bc41",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -132,6 +222,24 @@
       "writtenOn": "2018-03-14T07:00:34Z",
       "side": 1,
       "message": "Why do you need to put dome switch level in system state? Can\u0027t you just keep the value locally in this function?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb8b932_1b07f346",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Because this has to be reset after touchpad update.\n\nST firmware only report switch state changes.\nSo if the switch is on before touchpad update, we won\u0027t received a switch off event until user clicks on the touchpad.",
+      "parentUuid": "e57a983e_fac2bc41",
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -152,6 +260,24 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e23de19_ca778603",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fae7168_006c48dc",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -178,6 +304,30 @@
     },
     {
       "key": {
+        "uuid": "7306a2ad_a3ca4486",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a36cd8c8_4d6b4dfd",
+      "range": {
+        "startLine": 161,
+        "startChar": 21,
+        "endLine": 161,
+        "endChar": 43
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfdab67a_053c6cbb",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -192,6 +342,24 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e043c77_410c6b99",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfdab67a_053c6cbb",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -218,6 +386,30 @@
     },
     {
       "key": {
+        "uuid": "a217060e_9903b798",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b3e313a_da2a18f6",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c122f8a5_b29a8a7e",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -238,6 +430,30 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd26ef6_8d4d5995",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c122f8a5_b29a8a7e",
+      "range": {
+        "startLine": 193,
+        "startChar": 19,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -287,6 +503,54 @@
     },
     {
       "key": {
+        "uuid": "5270518e_4571aa42",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9496c3e7_2ea655b0",
+      "range": {
+        "startLine": 205,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 17
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "533175bd_ea163ace",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a17e6382_f78ccc46",
+      "range": {
+        "startLine": 205,
+        "startChar": 21,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7254e11a_6d6698f4",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -298,6 +562,24 @@
       "writtenOn": "2018-03-14T07:00:34Z",
       "side": 1,
       "message": "I\u0027m not fully sure to understand the purpose of this function. It might be better to have a single function that enables heat map (or not). And another that enables/disable SYSTEM_STATE_ACTIVE_MODE.\n\nDome switch should be on at all times anyway (is that not the default?)",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe52f8c4_2235010c",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "No, it\u0027s not, system_state \u003d 0 is the default system state.\nSo we have to enable dome switch every time when system resets.",
+      "parentUuid": "7254e11a_6d6698f4",
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -321,6 +603,24 @@
     },
     {
       "key": {
+        "uuid": "d1294c5d_5887f095",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this.",
+      "parentUuid": "f21a57c0_74f00cbc",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d83f8d_8d23676e",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -335,6 +635,24 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef9c9152_77b06269",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d83f8d_8d23676e",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -361,6 +679,30 @@
     },
     {
       "key": {
+        "uuid": "cb73864a_72ac4ee1",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3460da26_e53b35f5",
+      "range": {
+        "startLine": 275,
+        "startChar": 46,
+        "endLine": 275,
+        "endChar": 47
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a583414_6f9ca6dc",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -384,6 +726,30 @@
     },
     {
       "key": {
+        "uuid": "b978a2f1_6cc31f91",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a583414_6f9ca6dc",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 8
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d696f80c_f646d5ab",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -395,6 +761,24 @@
       "writtenOn": "2018-03-14T07:00:34Z",
       "side": 1,
       "message": "These look absolutely horrible ,-( Can we define constants maybe? Or group the fields in mutliple sub-structs?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0708d721_078debe2",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Not sure if this would be better?\n\nOr if we should just hard code these size / offsets as constants?",
+      "parentUuid": "d696f80c_f646d5ab",
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -418,6 +802,24 @@
     },
     {
       "key": {
+        "uuid": "f0c16f75_748c32b1",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6808464b_91de208f",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14931cb7_0abb34ab",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -429,6 +831,30 @@
       "writtenOn": "2018-03-14T07:00:34Z",
       "side": 1,
       "message": "File a bug",
+      "range": {
+        "startLine": 490,
+        "startChar": 8,
+        "endLine": 490,
+        "endChar": 14
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f406790e_dbe44716",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Actually, there is no debugging commands for ST touchpad.",
+      "parentUuid": "14931cb7_0abb34ab",
       "range": {
         "startLine": 490,
         "startChar": 8,
@@ -458,6 +884,24 @@
     },
     {
       "key": {
+        "uuid": "5f3b4ec6_268c2081",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3bf35f1_3233c991",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f8237fe_429f54ea",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -475,6 +919,24 @@
     },
     {
       "key": {
+        "uuid": "55f966a5_cdfee615",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f8237fe_429f54ea",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76eba50c_4086855f",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -489,6 +951,24 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6a6173_4a399753",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76eba50c_4086855f",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -515,6 +995,30 @@
     },
     {
       "key": {
+        "uuid": "5d09861a_39cf4b03",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a405d66c_7c2d7f5a",
+      "range": {
+        "startLine": 185,
+        "startChar": 10,
+        "endLine": 185,
+        "endChar": 18
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fd9e9b7_8cfb2e80",
         "filename": "driver/touchpad_st.h",
         "patchSetId": 2
@@ -529,6 +1033,24 @@
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c31b1d_6c1b0e5b",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-03-22T11:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fd9e9b7_8cfb2e80",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
