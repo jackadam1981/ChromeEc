@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e682ad1f_49d6262e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-22T02:14:46Z",
+      "side": 1,
+      "message": "typo: \u0027can\u0027",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "6a716ea3798f0a337a4842973eefe1670c94515c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5cdf36_e15c03a3",
+        "filename": "power/apollolake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-22T02:14:46Z",
+      "side": 1,
+      "message": "I\u0027d still remove the print of cold_reset since it\u0027s not really used.",
+      "revId": "6a716ea3798f0a337a4842973eefe1670c94515c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
