@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0c502be_f0e85d3c",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-22T18:15:03Z",
+      "side": 1,
+      "message": "Can you align these vertically?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ae2553_e34ca70a",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-22T18:15:03Z",
+      "side": 1,
+      "message": "You don\u0027t need this.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed2a889_c7fdff85",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-22T18:15:03Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this if you remove line 76. You should check p-\u003epercent \u003e 100 instead.",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f352a2_dc77b92e",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-22T18:15:03Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this check.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e483e60_419a4552",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-22T18:15:03Z",
+      "side": 1,
+      "message": "This is still run-time computation, which can be done at compilation time. I don\u0027t see why lm3509_brightness has to be float[].",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 53
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad0c0cc_d0ef596c",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-22T18:15:03Z",
+      "side": 1,
+      "message": "Talking to myself - This isn\u0027t PWM. I wonder if we can silently remove this (i.e. EC_CMD_SET_KEYBOARD_BACKLIGHT) here and in ectool.c without breaking anything. EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT is deprecated and replaced by EC_CMD_PWM_SET_DUTY.",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 31
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
