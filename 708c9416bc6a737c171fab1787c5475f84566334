@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1fa59804_cc76ded1",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-22T03:41:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11af9809_4304f7bd",
+      "range": {
+        "startLine": 615,
+        "startChar": 19,
+        "endLine": 615,
+        "endChar": 46
+      },
+      "revId": "708c9416bc6a737c171fab1787c5475f84566334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88b5be7f_7f9001aa",
         "filename": "common/pinweaver.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "708c9416bc6a737c171fab1787c5475f84566334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "974d6861_307a7ecb",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-22T03:41:46Z",
+      "side": 1,
+      "message": "The buffer size isn\u0027t provided as any of the arguments. I make sure the response is smaller than the buffer using a build_assert at the top of the file.\n\nSee:\nBUILD_ASSERT(sizeof(((struct pw_response_t *)0)-\u003edata) \u003d\u003d\n\t     sizeof(((struct pw_response_t *)0)-\u003edata.raw));\n\ndata.raw is sized to make the size of struct pw_response_t equal to the buffer size as long as it is the largest member of the union.",
+      "parentUuid": "88b5be7f_7f9001aa",
+      "range": {
+        "startLine": 618,
+        "startChar": 51,
+        "endLine": 618,
+        "endChar": 59
+      },
+      "revId": "708c9416bc6a737c171fab1787c5475f84566334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
