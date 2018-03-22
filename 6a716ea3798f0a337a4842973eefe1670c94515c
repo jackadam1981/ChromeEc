@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "c6b56174_4371b68a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-22T02:16:38Z",
+      "side": 1,
+      "message": "No they can\u0027t. It\u0027s a warm reset request. Nothing is converting it to a cold reset. This patch is just ignoring the cold_reset path entirely.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "6a716ea3798f0a337a4842973eefe1670c94515c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f5cdf36_e15c03a3",
         "filename": "power/apollolake.c",
         "patchSetId": 4
