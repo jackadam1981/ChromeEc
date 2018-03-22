@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a90f921_14cfe253",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-03-22T17:41:04Z",
+      "side": 1,
+      "message": "wary?",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "d267f0f514aacc01dc1075bd4bd5aedd35561c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "976dee64_11283a98",
         "filename": "board/scarlet/board.c",
         "patchSetId": 1
