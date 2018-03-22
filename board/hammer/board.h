@@ -111,7 +111,7 @@
 
 #ifdef BOARD_WHISKERS
 /* Enable to send heatmap to AP */
-#undef CONFIG_USB_ISOCHRONOUS
+#define CONFIG_USB_ISOCHRONOUS
 #endif
 
 /* USB interface indexes (use define rather than enum to expand them) */
