@@ -40,6 +40,7 @@
 #include "thermal.h"
 #include "usb_charge.h"
 #include "usb_mux.h"
+#include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
@@ -475,3 +476,34 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 	 * should mostly work without a USB2 switch.
 	 */
 }
+
+static void check_charger_critical_condition(int ap_on)
+{
+	int critical_condition, wanted_voltage;
+
+	critical_condition = (charge_get_percent() > 90) && !ap_on;
+
+	wanted_voltage = critical_condition ? 5500 : PD_MAX_VOLTAGE_MV;
+	if (pd_get_max_voltage() != wanted_voltage)
+		pd_set_external_voltage_limit(0, wanted_voltage);
+}
+
+static void check_charger_critical_condition_soc(void) {
+	check_charger_critical_condition(chipset_in_state(CHIPSET_STATE_ON));
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, check_charger_critical_condition_soc,
+	     HOOK_PRIO_DEFAULT);
+
+static void check_charger_critical_condition_resume(void)
+{
+	check_charger_critical_condition(1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, check_charger_critical_condition_resume,
+	     HOOK_PRIO_DEFAULT);
+
+static void check_charger_critical_condition_suspend(void)
+{
+	check_charger_critical_condition(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, check_charger_critical_condition_suspend,
+	     HOOK_PRIO_DEFAULT);
