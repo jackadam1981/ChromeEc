@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72a8041b_7aee2075",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-22T22:58:16Z",
+      "side": 1,
+      "message": "Check you can see the accels reporting data with accelinfo on 1000. [Assuming you have a board].",
+      "revId": "e8150d95e7b7316caf18df57916d9c2646bb3081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f023439a_ce5cba1c",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-22T22:58:16Z",
+      "side": 1,
+      "message": "This indicate when the device is powered on. (it will dictate when to run the -\u003einit() function.\nIf mask has S5, it means the sensor is powered on even on shutdown. Is it correct?",
+      "revId": "e8150d95e7b7316caf18df57916d9c2646bb3081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b003cb86_298404cb",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-22T22:58:16Z",
+      "side": 1,
+      "message": "Given they gyro and the base accel are the same chip, active_mask must match.",
+      "revId": "e8150d95e7b7316caf18df57916d9c2646bb3081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15fa8175_9d749ba9",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-22T22:58:16Z",
+      "side": 1,
+      "message": "Redundant with motion_sensor_count",
+      "revId": "e8150d95e7b7316caf18df57916d9c2646bb3081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a0340d_5c25079f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-22T22:58:16Z",
+      "side": 1,
+      "message": "Another CL if still needed.",
+      "revId": "e8150d95e7b7316caf18df57916d9c2646bb3081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
