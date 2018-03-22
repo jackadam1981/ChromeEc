@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e3da50b8_2c739762",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-22T18:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d59b5274_58f388b6",
+      "range": {
+        "startLine": 182,
+        "startChar": 10,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7645a251_04a5b113",
         "filename": "board/yorp/board.c",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Sounds good. KX022 does support 4g as well. Will modify this.",
       "parentUuid": "7645a251_04a5b113",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afed191b_3eb8401e",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-22T18:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5bc62a_8b82f873",
       "range": {
         "startLine": 196,
         "startChar": 3,
@@ -202,6 +250,24 @@
     },
     {
       "key": {
+        "uuid": "e0dbc9bf_2eaa9a8e",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-22T18:40:07Z",
+      "side": 1,
+      "message": "Do we have a partnerissue or CL for this?",
+      "parentUuid": "94d6f57f_91c633af",
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d43834c_fa4bc80c",
         "filename": "board/yorp/board.c",
         "patchSetId": 4
@@ -249,6 +315,30 @@
     },
     {
       "key": {
+        "uuid": "86abccf0_f2bca1fe",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-22T18:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e678c8_3cb07714",
+      "range": {
+        "startLine": 259,
+        "startChar": 5,
+        "endLine": 259,
+        "endChar": 32
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77148188_fb560fc8",
         "filename": "board/yorp/board.h",
         "patchSetId": 4
@@ -284,6 +374,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "77148188_fb560fc8",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 33
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "964057ec_66823caa",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-22T18:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "578295ce_8328369e",
       "range": {
         "startLine": 102,
         "startChar": 26,
@@ -354,6 +468,24 @@
       "writtenOn": "2018-03-16T17:49:39Z",
       "side": 1,
       "message": "It will conflict with the cl:924406 train.",
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfc05a8_a2549246",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-22T18:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84f1cabd_dfa94321",
       "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
