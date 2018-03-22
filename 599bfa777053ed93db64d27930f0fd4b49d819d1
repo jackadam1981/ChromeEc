@@ -321,6 +321,29 @@
       "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8221df06_2590f5d3",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-22T11:33:08Z",
+      "side": 1,
+      "message": "rather than repeating this for all tests, you can just define a (const) array of all 4 test cases parameters, e.g. :\nstruct test_param {\n  uint32_t K[4];\n  uint32_t M[4];\n  uint32_t Te[4];\n  uint32_t len;\n}\n\nconst struct test_param testcases[4] \u003d {\n  { ... }\n};\n\nthen do a single test console command taking the testcase number as argv[1].",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 1
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
