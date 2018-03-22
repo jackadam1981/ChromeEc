@@ -22,6 +22,30 @@
       "revId": "fd28938d46ef0ee85e9e0a7f35494090fb0422a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "080860f8_459616d3",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-22T15:19:22Z",
+      "side": 1,
+      "message": "comment was for the entire section of GPIO toggling I will bring it above print statement.\n\nI will update the comment.\nToggling SYS_RESET_L will not have any impact when it\u0027s already low .",
+      "parentUuid": "a7786741_687d13ec",
+      "range": {
+        "startLine": 527,
+        "startChar": 1,
+        "endLine": 527,
+        "endChar": 43
+      },
+      "revId": "fd28938d46ef0ee85e9e0a7f35494090fb0422a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
