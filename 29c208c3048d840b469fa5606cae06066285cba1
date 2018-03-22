@@ -34,6 +34,24 @@
       "revId": "29c208c3048d840b469fa5606cae06066285cba1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b118f3_c3aca111",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-22T17:22:44Z",
+      "side": 1,
+      "message": "It might help to at least have a print in there so it gets logged when we run into such a situation.",
+      "parentUuid": "20a33747_798108ef",
+      "revId": "29c208c3048d840b469fa5606cae06066285cba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
