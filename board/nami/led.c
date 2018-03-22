@@ -36,6 +36,8 @@ static int set_color_power(enum led_color color, int duty)
 	if (duty < 0 || 100 < duty)
 		return EC_ERROR_UNKNOWN;
 
+	duty = 100 - duty;	/* reverse for Low active */
+
 	switch (color) {
 	case LED_OFF:
 		break;
@@ -56,12 +58,12 @@ static int set_color_power(enum led_color color, int duty)
 	if (red)
 		pwm_set_duty(PWM_CH_LED_RED, duty);
 	else
-		pwm_set_duty(PWM_CH_LED_RED, 0);
+		pwm_set_duty(PWM_CH_LED_RED, 100);
 
 	if (green)
 		pwm_set_duty(PWM_CH_LED_GREEN, duty);
 	else
-		pwm_set_duty(PWM_CH_LED_GREEN, 0);
+		pwm_set_duty(PWM_CH_LED_GREEN, 100);
 
 	return EC_SUCCESS;
 }
