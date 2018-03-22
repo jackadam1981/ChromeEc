@@ -222,7 +222,35 @@ static int write_board_info(void)
 
 	return EC_SUCCESS;
 }
+static int override_cbi(int start_position, const char* data)
+{
+	/* reference: write_board_info() */
+	uint8_t buf[EEPROM_PAGE_WRITE_SIZE + 1];  /* '1' for offset byte */
+	buf[0] = start_position;
 
+	{
+		int rv;
+		memcpy(&buf[1], data, EEPROM_PAGE_WRITE_SIZE);	/* copy from [1] to [1+16] */
+#if 0	/* check buffer data */
+		int i;
+		ccprintf("buf=");
+		for (i = 0; i < EEPROM_PAGE_WRITE_SIZE+1; i++)
+			ccprintf("0x%x\t", buf[i]);
+		ccprintf("\n");
+#endif
+		rv = i2c_xfer(I2C_PORT_EEPROM, I2C_ADDR_EEPROM, buf, EEPROM_PAGE_WRITE_SIZE+1,
+			      NULL, 0, I2C_XFER_SINGLE);
+		if (rv) {
+			CPRINTS("Failed to write for %d", rv);
+			return rv;
+		}
+
+		/* Wait for internal write cycle completion */
+		msleep(EEPROM_PAGE_WRITE_MS);
+	}
+
+	return EC_SUCCESS;
+}
 int cbi_get_board_version(uint32_t *ver)
 {
 	uint8_t size = sizeof(*ver);
@@ -354,4 +382,79 @@ static int cc_cbi(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, NULL, NULL);
+
+#include "include/hooks.h"
+static void cbi_initial_for_AkaliBoard(void)
+{
+	const char CRC = 0x44;
+	const char SIZE[] = {0x00, 0x12};	/* 18 bytes */
+	const char BOARD_VER[] = {0x12, 0x34};	/* 0x1234 */
+	const char OEM_ID = 0x02;
+	const char SKU_ID = 0x04;
+	const char data1[] = {0x43,  0x42,    0x49,  CRC,   0x0,   0x0,   SIZE[1],  SIZE[0],  0x0,   0x2,   BOARD_VER[1],  BOARD_VER[0],  0x1,   0x1,   OEM_ID,  0x2};
+	const char data2[] = {0x1,   SKU_ID,  0xff,  0xff,  0xff,  0xff,  0xff,     0xff,     0xff,  0xff,  0xff,          0xff,          0xff,  0xff,  0xff,    0xff};
+
+	ccprintf("invoke %s\n", __func__);
+	if (override_cbi(0, data1))
+		ccprintf("CBI reset fail!!!\n");
+	if (override_cbi(EEPROM_PAGE_WRITE_SIZE, data2))
+		ccprintf("CBI reset fail!!!\n");	
+}
+DECLARE_HOOK(HOOK_INIT, cbi_initial_for_AkaliBoard, HOOK_PRIO_DEFAULT);
+#if 1
+static int cc_cbi_debug(int argc, char **argv)
+{
+	int rv;
+
+	ccprintf("Usage: cbidebug\n");
+	ccprintf("Usage: cbidebug reset\n");
+	ccprintf("Usage: cbidebug test\n");
+	ccprintf("Initialize CBI: Going\n");
+	cc_cbi(0, NULL);
+
+	if (argc > 0) {
+		if (!strcasecmp(argv[1], "reset")) {
+			const char data[] = {0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff};
+			int i;
+			ccprintf("Initialize CBI: reset EEPROM\n");
+			rv = override_cbi(0, data);
+			rv = override_cbi(EEPROM_PAGE_WRITE_SIZE, data);
+
+			for (i = 0; i < 256; i+=EEPROM_PAGE_WRITE_SIZE)
+				rv = override_cbi(i, data);
+		} else if (!strcasecmp(argv[1], "set")) {
+			/*ALL: 0x43,  0x42,  0x49,  0x30,  0x0,  0x0,  0x12,  0x0,  0x0,  0x2,  0x34,  0x12,  0x1,  0x1,  0x4,  0x2,  0x1,  0x4,  0xff,  0xff,*/
+			const char CRC = 0x44;
+			const char SIZE[] = {0x00, 0x12};	/* 18 bytes */
+			const char BOARD_VER[] = {0x12, 0x34};	/* 0x1234 */
+			const char OEM_ID = 0x02;
+			const char SKU_ID = 0x04;
+			const char data1[] = {0x43,  0x42,    0x49,  CRC,   0x0,   0x0,   SIZE[1],  SIZE[0],  0x0,   0x2,   BOARD_VER[1],  BOARD_VER[0],  0x1,   0x1,   OEM_ID,  0x2};
+			const char data2[] = {0x1,   SKU_ID,  0xff,  0xff,  0xff,  0xff,  0xff,     0xff,     0xff,  0xff,  0xff,          0xff,          0xff,  0xff,  0xff,    0xff};
+			//const char data1[] = {0x43,  0x42,  0x49,  0x30,  0x0,   0x0,   0x12,  0x0,   0x0,   0x2,   0x34,   0x12,  0x1,   0x1,   0x4,   0x2};
+			//const char data2[] = {0x1,   0x4,   0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,  0xff,   0xff,  0xff,  0xff,  0xff,  0xff,  0xff};
+			rv = override_cbi(0, data1);
+			rv = override_cbi(EEPROM_PAGE_WRITE_SIZE, data2);
+		} else if (!strcasecmp(argv[1], "test")) {
+			const char data[] = {0xA0,  0xA1,  0xA2,  0xA3,  0xA4,  0xA5,  0xA6,  0xA7,  0xA8,  0xA9,  0xAA,  0xAB,  0xAC,  0xAD,  0xAE,  0xAF};
+			rv = override_cbi(0, data);
+			rv = override_cbi(32, data);	/* =16 * 2 */
+			rv = override_cbi(72, data);	/* =16 * 4 + 8 */
+			rv = override_cbi(134, data);	/* =16 * 8 + 6 */
+		}
+	} else {
+		rv = EC_SUCCESS;
+	}
+
+	if (rv == EC_SUCCESS)
+		ccprintf("Initialize CBI: Done\n");
+	else
+		ccprintf("Initialize CBI: Fail, rv=%d\n", rv);
+
+	cc_cbi(0, NULL);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cbidebug, cc_cbi_debug, NULL, NULL);
+#endif
 #endif /* !HOST_TOOLS_BUILD */

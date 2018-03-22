@@ -13,6 +13,10 @@
  * TODO: Remove this config before production.
  */
 #define CONFIG_SYSTEM_UNLOCKED
+/*#define CONFIG_BRINGUP*/
+#define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 45000
+#define CONFIG_USB_PD_DEBUG_LEVEL 4
+#define TEST08
 
 /* EC */
 #define CONFIG_ADC
