@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2740a203_8f96a597",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-22T10:52:55Z",
+      "side": 1,
+      "message": "nit: f.truncate(OUTPUT_FILE_SIZE) should do the same.",
+      "revId": "b6bfe4ba773ee9c0e94bb3e104c9d27afe20f14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
