@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a867e901_a9e638ec",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-23T03:32:51Z",
+      "side": 1,
+      "message": "I\u0027m thinking of renaming this to CONFIG_MIN_CHG_PWR_MW_FOR_POWER_ON.",
+      "range": {
+        "startLine": 1751,
+        "startChar": 7,
+        "endLine": 1751,
+        "endChar": 47
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
