@@ -1748,7 +1748,7 @@ int charge_prevent_power_on(int power_button_pressed)
 	    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
 
-#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
 	/*
 	 * Allow power-on if our charger advertises more than
 	 * LIKELY_PD_USBC_POWER_MW since it may speak PD and provide
@@ -1759,7 +1759,7 @@ int charge_prevent_power_on(int power_button_pressed)
 		    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
 			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000))
 			prevent_power_on = 0;
-#endif
+#endif /* defined(CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW) */
 
 	/*
 	 * Factory override: Always allow power on if WP is disabled,
@@ -1769,9 +1769,9 @@ int charge_prevent_power_on(int power_button_pressed)
 	prevent_power_on &= (system_is_locked() || (automatic_power_on
 #ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
 				    && battery_hw_present() == BP_YES
-#endif
+#endif /* defined(CONFIG_BATTERY_HW_PRESENT_CUSTOM) */
 				     ));
-#endif
+#endif /* defined(CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) */
 
 #ifdef CONFIG_CHARGE_MANAGER
 	/* Always prevent power on until charge current is initialized */
@@ -1786,15 +1786,15 @@ int charge_prevent_power_on(int power_button_pressed)
 	 */
 	if (extpower_is_present() && battery_hw_present() == BP_NO &&
 	    charge_manager_get_power_limit_uw() <
-#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
 	    MIN(LIKELY_PD_USBC_POWER_MW * 1000,
 		CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000))
 #else
 	    (LIKELY_PD_USBC_POWER_MW * 1000))
-#endif
+#endif /* defined(CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW) */
 		prevent_power_on = 1;
-#endif
-#endif
+#endif /* defined(CONFIG_BATTERY_HW_PRESENT_CUSTOM) */
+#endif /* defined(CONFIG_CHARGE_MANAGER) */
 	return prevent_power_on;
 }
 
