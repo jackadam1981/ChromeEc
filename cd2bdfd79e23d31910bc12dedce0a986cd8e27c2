@@ -892,6 +892,30 @@
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37674658_1b54cb1f",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-23T19:42:19Z",
+      "side": 1,
+      "message": "Sorry to keep bugging at this spot, but what happens if self._use_mw \u003d 1 and the value is actually bus voltage, say 5mV? Since mV is already in the header, the print out will look like .005mV. \n\nMaybe multiplier \u003d 0.001 if (self._use_mW and name.type\u003dPOWER) else 1?",
+      "parentUuid": "b0a6effa_ccca92f8",
+      "range": {
+        "startLine": 692,
+        "startChar": 38,
+        "endLine": 692,
+        "endChar": 57
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
