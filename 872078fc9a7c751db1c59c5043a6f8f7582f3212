@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4c2f8a9_553000a0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-23T18:04:44Z",
+      "side": 1,
+      "message": "This is okay, but if we plan to continue supporting multiple options and use it at multiple places, we should come up with a common option like CONFIG_USB_PD_TCPM_ANX_ALL which can be used around all common ANX code. (This can be done when required, not for this CL).",
+      "range": {
+        "startLine": 383,
+        "startChar": 5,
+        "endLine": 385,
+        "endChar": 36
+      },
+      "revId": "872078fc9a7c751db1c59c5043a6f8f7582f3212",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
