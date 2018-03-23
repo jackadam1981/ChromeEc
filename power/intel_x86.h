@@ -33,4 +33,9 @@ enum power_state chipset_force_g3(void);
  */
 enum power_state common_intel_x86_power_handle_state(enum power_state state);
 
+/**
+ * Set force AP reset is executed.
+ */
+void ap_set_force_reset(void);
+
 #endif /* __CROS_EC_INTEL_X86_H */

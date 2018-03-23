@@ -14,6 +14,8 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
+static int forcing_ap_reset;
+
 __attribute__((weak)) void chipset_do_shutdown(void)
 {
 	/* Need to implement board specific shutdown */
@@ -30,7 +32,18 @@ enum power_state chipset_force_g3(void)
 {
 	chipset_force_shutdown();
 
+	/* Power up the platform again for forced AP reset */
+	if (forcing_ap_reset) {
+		forcing_ap_reset = 0;
+		return POWER_G3S5;
+	}
+
 	return POWER_G3;
+}
+
+void ap_set_force_reset(void)
+{
+	forcing_ap_reset = 1;
 }
 
 void chipset_handle_espi_reset_assert(void)
@@ -68,7 +81,6 @@ enum power_state power_handle_state(enum power_state state)
 
 		new_state = POWER_S5G3;
 		goto rsmrst_handle;
-
 	}
 
 	new_state = common_intel_x86_power_handle_state(state);
