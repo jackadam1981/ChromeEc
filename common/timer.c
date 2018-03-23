@@ -319,6 +319,37 @@ DECLARE_CONSOLE_COMMAND(forcetime, command_force_time,
 			"Force current time");
 #endif
 
+static int command_testdeadline(int argc, char **argv)
+{
+	timestamp_t new;
+
+	new.le.hi = 0;
+	new.le.lo = -5000;
+
+	force_time(new);
+	{
+		timestamp_t deadline;
+
+		ccprints("Start");
+		cflush();
+		interrupt_disable();
+		deadline.val = get_time().val + 10*MSEC;
+		while (1) {
+			if (timestamp_expired(deadline, NULL)) {
+				ccprints("watchdog Timeout");
+				break;
+			}
+		}
+		interrupt_enable();
+		ccprints("watchdog Done");
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(testdeadline, command_testdeadline,
+			"",
+			"Test deadline");
+
 static int command_get_time(int argc, char **argv)
 {
 	timestamp_t ts = get_time();
