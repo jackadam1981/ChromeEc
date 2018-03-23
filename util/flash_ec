@@ -54,6 +54,13 @@ BOARDS_LM4=(
 	samus
 )
 
+BOARDS_STM32_BASE=(
+	hammer
+	staff
+	wand
+	whiskers
+)
+
 BOARDS_STM32=(
 	big
 	blaze
@@ -61,7 +68,6 @@ BOARDS_STM32=(
 	coffeecake
 	elm
 	glados_pd
-	hammer
 	jerry
 	kitty
 	meowth_fp
@@ -73,12 +79,11 @@ BOARDS_STM32=(
 	rainier
 	samus_pd
 	scarlet
-	staff
 	strago_pd
-	wand
-	whiskers
 	zinger
+	${BOARDS_STM32_BASE[@]}
 )
+
 BOARDS_STM32_PROG_EN=(
 	plankton
 )
@@ -274,12 +279,19 @@ if [ "${CHIP}" = "stm32_dfu" -o "${CHIP}" = "it83xx" ]; then
 	NEED_SERVO="no"
 fi
 
+PREFIX=
+if $(in_array "${BOARDS_STM32_BASE[@]}" "${BOARD}") && \
+		dut_control ${BOARD}_ec_boot_mode >/dev/null 2>&1; then
+	PREFIX="${BOARD}_"
+fi
+info "PREFIX is: ${PREFIX}"
+
 servo_has_warm_reset() {
-	dut_control warm_reset >/dev/null 2>&1
+	dut_control ${PREFIX}warm_reset >/dev/null 2>&1
 }
 
 servo_has_cold_reset() {
-	dut_control cold_reset >/dev/null 2>&1
+	dut_control ${PREFIX}cold_reset >/dev/null 2>&1
 }
 
 # reset the EC
@@ -293,17 +305,17 @@ toad_ec_hard_reset() {
 }
 
 servo_ec_hard_reset() {
-	dut_control cold_reset:on
-	dut_control cold_reset:off
+	dut_control ${PREFIX}cold_reset:on
+	dut_control ${PREFIX}cold_reset:off
 }
 
 servo_usbpd_hard_reset() {
-	dut_control usbpd_reset:on sleep:0.5 usbpd_reset:off
+	dut_control ${PREFIX}usbpd_reset:on sleep:0.5 ${PREFIX}usbpd_reset:off
 }
 
 servo_sh_hard_reset() {
-	dut_control sh_reset:on
-	dut_control sh_reset:off
+	dut_control ${PREFIX}sh_reset:on
+	dut_control ${PREFIX}sh_reset:off
 }
 
 ccd_cr50_ec_hard_reset() {
@@ -327,11 +339,12 @@ toad_ec_boot0() {
 }
 
 servo_ec_boot0() {
-	if [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
+	info "inside servo_ec_boot0"
+	if [[ "${SERVO_TYPE}" == "servo_v4_with_ccd_cr50" ]] ; then
 		info "Using CCD."
 		dut_control ccd_ec_boot_mode:on
 	else
-		dut_control ec_boot_mode:on
+		dut_control ${PREFIX}ec_boot_mode:on
 	fi
 }
 
@@ -346,7 +359,7 @@ servo_sh_boot0() {
 ec_enable_boot0() {
 	# Enable programming GPIOs
 	if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
-		dut_control prog_en:yes
+		dut_control ${PREFIX}prog_en:yes
 	fi
 	if [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
 		stype=servo
@@ -443,8 +456,8 @@ function ec_image() {
 # Find the EC UART provided by servo.
 function servo_ec_uart() {
 	SERVOD_FAIL="Cannot communicate with servod. Is servod running?"
-	PTY=$(($DUT_CONTROL_CMD raw_${MCU}_uart_pty ||
-	       $DUT_CONTROL_CMD ${MCU}_uart_pty) | cut -d: -f2)
+	PTY=$(($DUT_CONTROL_CMD ${PREFIX}raw_${MCU}_uart_pty ||
+		$DUT_CONTROL_CMD ${PREFIX}${MCU}_uart_pty) | cut -d: -f2)
 	if [[ -z "${PTY}" ]]; then
 	    die "${SERVOD_FAIL}"
 	fi
@@ -461,29 +474,30 @@ case "${BOARD}" in
 esac
 
 # Not every control is supported on every servo type.  Therefore, define which
-# controls are supported by each servo type.
-servo_v2_VARS="jtag_buf_on_flex_en jtag_buf_en cold_reset spi1_vref"
-servo_micro_VARS="cold_reset spi1_vref"
+# controls are supported by each servo type.bash 2 &1 /dev/null
+servo_v2_VARS="${PREFIX}jtag_buf_on_flex_en ${PREFIX}jtag_buf_en"
+servo_v2_VARS+=" ${PREFIX}cold_reset ${PREFIX}spi1_vref"
+servo_micro_VARS="${PREFIX}cold_reset ${PREFIX}spi1_vref"
 servo_v4_with_ccd_cr50_VARS="cold_reset"
 # Flashing an STM32 over the UART requires modifying the UART properties along
 # with the boot mode pin.
-if [ "${CHIP}" = "stm32" ] ; then
-	common_stm32_VARS=" ${MCU}_uart_en ${MCU}_uart_parity"
-	common_stm32_VARS+=" ${MCU}_uart_baudrate"
+if [[ "${CHIP}" = "stm32" ]] ; then
+	common_stm32_VARS=" ${PREFIX}${MCU}_uart_en ${PREFIX}${MCU}_uart_parity"
+	common_stm32_VARS+=" ${PREFIX}${MCU}_uart_baudrate"
 	servo_v2_VARS+=$common_stm32_VARS
-	servo_v2_VARS+=" ${MCU}_boot_mode"
+	servo_v2_VARS+=" ${PREFIX}${MCU}_boot_mode"
 	servo_micro_VARS+=$common_stm32_VARS
-	servo_micro_VARS+=" ${MCU}_boot_mode"
+	servo_micro_VARS+=" ${PREFIX}${MCU}_boot_mode"
 	servo_v4_with_ccd_cr50_VARS+=$common_stm32_VARS
 	servo_v4_with_ccd_cr50_VARS+=" ccd_${MCU}_boot_mode ec_uart_bitbang_en"
 fi
 if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
-	servo_v2_VARS+=" prog_en"
+	servo_v2_VARS+=" ${PREFIX}prog_en"
 fi
 toad_VARS="${MCU}_uart_parity ${MCU}_uart_baudrate boot_mode"
 
 if $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
-	servo_v2_VARS+=" fw_up"
+	servo_v2_VARS+=" ${PREFIX}fw_up"
 fi
 # Some servo boards use the same controls.
 servo_v3_VARS="${servo_v2_VARS}"
@@ -516,7 +530,7 @@ function claim_pty() {
 
 	# Disconnect the EC-3PO interpreter from the UART since it will
 	# interfere with flashing.
-	dut_control ${MCU}_ec3po_interp_connect:off || \
+	dut_control ${PREFIX}${MCU}_ec3po_interp_connect:off || \
 	    warn "hdctools cannot disconnect the EC-3PO interpreter from" \
 	    "the UART."
 
@@ -747,23 +761,23 @@ function flash_stm32() {
 	fi
 
 	info "Using serial flasher : ${STM32MON}"
-	info "${MCU} UART pty : ${EC_UART}"
+	info "${PREFIX}${MCU} UART pty : ${EC_UART}"
 	claim_pty ${EC_UART}
 
 	if [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
-		dut_control ${MCU}_uart_en:on
+		dut_control ${PREFIX}${MCU}_uart_en:on
 	fi
-	dut_control ${MCU}_uart_parity:even
+	dut_control ${PREFIX}${MCU}_uart_parity:even
 
 	if [ "${SERVO_TYPE}" == "servo_v4_with_ccd_cr50" ] ; then
 		dut_control ${MCU}_uart_baudrate:9600
 		dut_control ${MCU}_uart_bitbang_en:on
 	else
-		dut_control ${MCU}_uart_baudrate:115200
+		dut_control ${PREFIX}${MCU}_uart_baudrate:115200
 	fi
 
 	if $(servo_has_warm_reset); then
-		dut_control warm_reset:on
+		dut_control ${PREFIX}warm_reset:on
 	fi
 	# Force the EC to boot in serial monitor mode
 	ec_enable_boot0
@@ -776,12 +790,12 @@ function flash_stm32() {
 		${STM32MON} -d ${EC_UART} -U -u -e -w "${IMG}"
 	# Remove the Application processor reset
 	# TODO(crosbug.com/p/30738): we cannot rely on servo_VARS to restore it
-	if $(servo_has_warm_reset); then
-		dut_control warm_reset:off
+	if $(servo_has_cold_reset); then
+		dut_control ${PREFIX}warm_reset:off
 	fi
 
 	# Reconnect the EC-3PO interpreter to the UART.
-	dut_control ${MCU}_ec3po_interp_connect:on || \
+	dut_control ${PREFIX}${MCU}_ec3po_interp_connect:on || \
 	    warn "hdctools cannot reconnect the EC-3PO interpreter to" \
 	    "the UART."
 }
@@ -979,12 +993,19 @@ if dut_control boot_mode 2>/dev/null ; then
 	SERVO_TYPE=toad
 	info "Using a dedicated debug cable"
 fi
+# FIXME: dut-control ${PREFIX}servo_type on servo_micro should _not_
+# return servo_v4_with_ccd_cr50
+if [[ -n "${PREFIX}" && ${SERVO_TYPE} == "servo_v4_with_ccd_cr50" ]]; then
+	info "HACK, changing type to servo_micro"
+	SERVO_TYPE="servo_micro"
+fi
 info "Using ${SERVO_TYPE}."
 
 IMG="$(ec_image)"
 info "Using ${MCU} image : ${IMG}"
 
-if ! on_raiden && [ "${NEED_SERVO}" != "no" ] ; then
+if (! on_raiden || [[ "${SERVO_TYPE}" =~ "servo_micro" ]]) && \
+		[ "${NEED_SERVO}" != "no" ] ; then
 	save="$(servo_save)"
 fi
 
