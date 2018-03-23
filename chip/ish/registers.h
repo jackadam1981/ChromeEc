@@ -36,7 +36,9 @@ enum ish_i2c_port {
 #define ISH_I2C2_BASE     0x00105000
 #define ISH_UART_BASE     0x00103000
 #define ISH_GPIO_BASE     0x001F0000
+#define ISH_CCU_BASE      0x00900000
 #define ISH_IPC_BASE      0x00B00000
+#define ISH_WDT_BASE      0xFDE00000
 #define ISH_IOAPIC_BASE   0xFEC00000
 #define ISH_HPET_BASE     0xFED00000
 #define ISH_LAPIC_BASE    0xFEE00000
@@ -45,6 +47,7 @@ enum ish_i2c_port {
 #define ISH_I2C0_IRQ               0
 #define ISH_I2C1_IRQ               1
 #define ISH_I2C2_IRQ               40
+#define ISH_WDT_IRQ                6
 #define ISH_GPIO_IRQ               7
 #define ISH_HPET_TIMER0_IRQ        55
 #define ISH_HPET_TIMER1_IRQ        8
@@ -76,6 +79,21 @@ enum ish_i2c_port {
 #define ISH_GPIO_GWSR REG32(ISH_GPIO_BASE + 0x118) /* Wake Source */
 #define ISH_GPIO_GSEC REG32(ISH_GPIO_BASE + 0x130) /* Secure Input */
 
+/* Watchdog Registers */
+#define ISH_WDT_REG(reg) REG32(ISH_WDT_BASE + reg)
+
+#define ISH_WDT_CTL   0x00      /* WDT Control */
+#define ISH_WDT_RL     0x04      /* WDT Reload */
+
+#define ISH_WDT_CTL_EN (1 << 17)     /* WDT enable bit */
+#define ISH_WDT_CTL_T1 95         /* T1 state value, count from 95 */
+#define ISH_WDT_CTL_T2 5          /* T2 state value, count from 5 */
+#define ISH_WDT_RL_VAL  (1 << 0)  /* WDT reload command bit */
+
+/* Watchdog Clock Divider Register */
+#define ISH_CCU_REG(reg) REG32(ISH_CCU_BASE + reg)
+#define ISH_CCU_WDT_CD 0x08
+
 /* APIC interrupt vectors */
 #define ISH_TS_VECTOR              0x20  /* Task switch vector */
 #define LAPIC_LVT_ERROR_VECTOR     0x21
@@ -85,6 +103,7 @@ enum ish_i2c_port {
 #define ISH_I2C0_VEC               IRQ_TO_VEC(ISH_I2C0_IRQ)
 #define ISH_I2C1_VEC               IRQ_TO_VEC(ISH_I2C1_IRQ)
 #define ISH_I2C2_VEC               IRQ_TO_VEC(ISH_I2C2_IRQ)
+#define ISH_WDT_VEC                IRQ_TO_VEC(ISH_WDT_IRQ)
 #define ISH_GPIO_VEC               IRQ_TO_VEC(ISH_GPIO_IRQ)
 #define ISH_HPET_TIMER0_VEC        IRQ_TO_VEC(ISH_HPET_TIMER0_IRQ)
 #define ISH_HPET_TIMER1_VEC        IRQ_TO_VEC(ISH_HPET_TIMER1_IRQ)
