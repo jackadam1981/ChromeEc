@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "46c75f0d_788ebdb0",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-23T09:20:45Z",
+      "side": 1,
+      "message": "We don\u0027t think need into for loop when percentage is 0.\nLet val always is zero for cut off keyboard backlight.\nYou think let it always into for loop even percentage is 0, right?\nOr use other way to avoid into for loop when percentage is 0?",
+      "parentUuid": "80f352a2_dc77b92e",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 22
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e483e60_419a4552",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 10
@@ -105,6 +129,30 @@
       "writtenOn": "2018-03-22T18:15:03Z",
       "side": 1,
       "message": "This is still run-time computation, which can be done at compilation time. I don\u0027t see why lm3509_brightness has to be float[].",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 53
+      },
+      "revId": "5b0e79324b253f44d691691b3998a980cef3c2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8249cc5_e36f98fa",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-23T09:20:45Z",
+      "side": 1,
+      "message": "We enlarge the array of lm3509_brightness ten times first and use \"const int\".",
+      "parentUuid": "0e483e60_419a4552",
       "range": {
         "startLine": 83,
         "startChar": 16,
