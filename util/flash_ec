@@ -80,6 +80,13 @@ BOARDS_STM32=(
 	whiskers
 	zinger
 )
+
+BOARDS_STM32_BASE=(
+	hammer
+	staff
+	whiskers
+)
+
 BOARDS_STM32_PROG_EN=(
 	plankton
 )
@@ -275,12 +282,37 @@ if [ "${CHIP}" = "stm32_dfu" -o "${CHIP}" = "it83xx" ]; then
 	NEED_SERVO="no"
 fi
 
+info "check if servo has base"
+if dut_control hammer_ec_boot_mode >/dev/null 2>&1; then
+	BASE="hammer_"
+elif dut_control staff_ec_boot_mode >/dev/null 2>&1; then
+	BASE="staff_"
+elif dut_control whiskers_ec_boot_mode >/dev/null 2>&1; then
+	BASE="whiskers_"
+else
+	BASE=""
+	info "in servo_has_base else BASE=empty"
+fi
+info "BASE is: ${BASE}"
+
 servo_has_warm_reset() {
-	dut_control warm_reset >/dev/null 2>&1
+	if [ "${BASE}" == "hammer_" ] || \
+	   [ "${BASE}" == "staff_" ] || \
+	   [ "${BASE}" == "whiskers_" ]; then
+		dut_control ${BASE}warm_reset >/dev/null 2>&1
+	else
+		dut_control warm_reset >/dev/null 2>&1
+	fi
 }
 
 servo_has_cold_reset() {
-	dut_control cold_reset >/dev/null 2>&1
+	if [ "${BASE}" == "hammer_" ] || \
+	   [ "${BASE}" == "staff_" ] || \
+	   [ "${BASE}" == "whiskers_" ]; then
+		dut_control ${BASE}cold_reset >/dev/null 2>&1
+	else
+		dut_control cold_reset >/dev/null 2>&1
+	fi
 }
 
 # reset the EC
@@ -294,8 +326,18 @@ toad_ec_hard_reset() {
 }
 
 servo_ec_hard_reset() {
-	dut_control cold_reset:on
-	dut_control cold_reset:off
+	info "servo_ec_hard_reset"
+	if [ "${BASE}" == "hammer_" ] || \
+	   [ "${BASE}" == "staff_" ] || \
+	   [ "${BASE}" == "whiskers_" ]; then
+		dut_control ${BASE}cold_reset:on
+		dut_control ${BASE}cold_reset:off
+		info "power cycled ${BASE} with dut_control base_cold_reset"
+	else
+		dut_control cold_reset:on
+		dut_control cold_reset:off		
+	fi
+
 }
 
 servo_usbpd_hard_reset() {
@@ -312,6 +354,8 @@ ccd_cr50_ec_hard_reset() {
 }
 
 ec_reset() {
+	info "inside ec_reset"
+	info "servo_type is: ${SERVO_TYPE}"
 	stype=${SERVO_TYPE}
 	if [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
 		stype=servo
@@ -328,9 +372,14 @@ toad_ec_boot0() {
 }
 
 servo_ec_boot0() {
-	if [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
+	info "inside servo_ec_boot0"
+	info "Base is ${BASE}"
+	if [[ "${SERVO_TYPE}" == "servo_v4_with_ccd_cr50" && ("${BASE}" != "hammer_" && "${BASE}" != "staff_" && "${BASE}" != "whiskers_" )]] ; then		
 		info "Using CCD."
 		dut_control ccd_ec_boot_mode:on
+	elif [[ "${SERVO_TYPE}" == "servo_v4_with_ccd_cr50" && ("${BASE}" == "hammer_" || "${BASE}" == "staff_" || "${BASE}" == "whiskers_" )]] ; then		
+		info "setting ${BASE}ec_boot_mode: on "
+		dut_control ${BASE}ec_boot_mode:on
 	else
 		dut_control ec_boot_mode:on
 	fi
@@ -444,8 +493,17 @@ function ec_image() {
 # Find the EC UART provided by servo.
 function servo_ec_uart() {
 	SERVOD_FAIL="Cannot communicate with servod. Is servod running?"
-	PTY=$(($DUT_CONTROL_CMD raw_${MCU}_uart_pty ||
-	       $DUT_CONTROL_CMD ${MCU}_uart_pty) | cut -d: -f2)
+	info "in servo_ec_uart where BASE is ${BASE}"
+	if [ "${BASE}" == "hammer_" ] || \
+	   [ "${BASE}" == "staff_" ] || \
+	   [ "${BASE}" == "whiskers_" ]; then
+		PTY=$(($DUT_CONTROL_CMD ${BASE}raw_${MCU}_uart_pty ||
+	       	$DUT_CONTROL_CMD ${BASE}${MCU}_uart_pty) | cut -d: -f2)
+	else
+		PTY=$(($DUT_CONTROL_CMD raw_${MCU}_uart_pty ||
+	       	$DUT_CONTROL_CMD ${MCU}_uart_pty) | cut -d: -f2)
+	fi
+
 	if [[ -z "${PTY}" ]]; then
 	    die "${SERVOD_FAIL}"
 	fi
@@ -462,13 +520,13 @@ case "${BOARD}" in
 esac
 
 # Not every control is supported on every servo type.  Therefore, define which
-# controls are supported by each servo type.
+# controls are supported by each servo type.bash 2 &1 /dev/null
 servo_v2_VARS="jtag_buf_on_flex_en jtag_buf_en cold_reset spi1_vref"
 servo_micro_VARS="cold_reset spi1_vref"
 servo_v4_with_ccd_cr50_VARS="cold_reset"
 # Flashing an STM32 over the UART requires modifying the UART properties along
 # with the boot mode pin.
-if [ "${CHIP}" = "stm32" ] ; then
+if [[ "${CHIP}" = "stm32" && ("${BASE}" != "hammer_" && "${BASE}" != "staff_" && "${BASE}" != "whiskers_" ) ]] ; then
 	common_stm32_VARS=" ${MCU}_uart_en ${MCU}_uart_parity"
 	common_stm32_VARS+=" ${MCU}_uart_baudrate"
 	servo_v2_VARS+=$common_stm32_VARS
@@ -477,6 +535,15 @@ if [ "${CHIP}" = "stm32" ] ; then
 	servo_micro_VARS+=" ${MCU}_boot_mode"
 	servo_v4_with_ccd_cr50_VARS+=$common_stm32_VARS
 	servo_v4_with_ccd_cr50_VARS+=" ccd_${MCU}_boot_mode ec_uart_bitbang_en"
+else
+	common_stm32_VARS=" ${BASE}${MCU}_uart_en ${BASE}${MCU}_uart_parity"
+	common_stm32_VARS+=" ${BASE}${MCU}_uart_baudrate"
+	servo_v2_VARS+=$common_stm32_VARS
+	servo_v2_VARS+=" ${BASE}${MCU}_boot_mode"
+	servo_micro_VARS+=common_stm32_VARS
+	servo_micro_VARS+=" ${BASE}${MCU}_boot_mode"
+	servo_v4_with_ccd_cr50_VARS+=$common_stm32_VARS
+	servo_v4_with_ccd_cr50_VARS+=" ${BASE}${MCU}_boot_mode"
 fi
 if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
 	servo_v2_VARS+=" prog_en"
@@ -491,10 +558,12 @@ servo_v3_VARS="${servo_v2_VARS}"
 servo_v4_with_servo_micro_VARS="${servo_micro_VARS}"
 
 function servo_save() {
+	info "inside servo save"
 	SERVO_VARS_NAME=${SERVO_TYPE}_VARS
 	if [[ -n "${!SERVO_VARS_NAME}" ]]; then
 		$DUT_CONTROL_CMD ${!SERVO_VARS_NAME}
 	fi
+	info "servo vars are: ${SERVO_VARS_NAME}"
 }
 
 function servo_restore() {
@@ -517,7 +586,7 @@ function claim_pty() {
 
 	# Disconnect the EC-3PO interpreter from the UART since it will
 	# interfere with flashing.
-	dut_control ${MCU}_ec3po_interp_connect:off || \
+	dut_control ${BASE}${MCU}_ec3po_interp_connect:off || \
 	    warn "hdctools cannot disconnect the EC-3PO interpreter from" \
 	    "the UART."
 
@@ -743,28 +812,42 @@ function flash_stm32() {
 	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:$PATH"
 	STM32MON=$(PATH="${TOOL_PATH}" which stm32mon)
 	EC_UART="$(servo_ec_uart)"
+	info "EC_UART is: $EC_UART"
+	info "Base is ${BASE}"
 	if [ ! -x "$STM32MON" ]; then
 		die "no stm32mon util found."
 	fi
 
 	info "Using serial flasher : ${STM32MON}"
-	info "${MCU} UART pty : ${EC_UART}"
-	claim_pty ${EC_UART}
-
-	if [[ "${SERVO_TYPE}" =~ "servo" ]] ; then
-		dut_control ${MCU}_uart_en:on
+	if [ "${BASE}" == "hammer_" ] || \
+	   [ "${BASE}" == "staff_" ] || \
+	   [ "${BASE}" == "whiskers_" ]; then
+		info "${BASE}${MCU} UART pty : ${BASE}${EC_UART}"
+		claim_pty ${BASE}${EC_UART}
+	else
+		info "${MCU} UART pty : ${EC_UART}"
+		claim_pty ${EC_UART}
 	fi
-	dut_control ${MCU}_uart_parity:even
 
-	if [ "${SERVO_TYPE}" == "servo_v4_with_ccd_cr50" ] ; then
+	if [[ "${SERVO_TYPE}" == "servo_v4_with_ccd_cr50" && ("${BASE}" != "hammer_" && "${BASE}" != "staff_" && "${BASE}" != "whiskers_" ) ]] ; then
+		info "inside baudrate setting 9600"
+		dut_control ${MCU}_uart_en:on
+		dut_control ${MCU}_uart_parity:even
 		dut_control ${MCU}_uart_baudrate:9600
 		dut_control ${MCU}_uart_bitbang_en:on
 	else
-		dut_control ${MCU}_uart_baudrate:115200
+		info "inside baudrate setting 115200"
+		dut_control ${BASE}${MCU}_uart_en:on
+		dut_control ${BASE}${MCU}_uart_parity:even
+		dut_control ${BASE}${MCU}_uart_baudrate:115200
 	fi
 
-	if $(servo_has_warm_reset); then
+	if [[ $(servo_has_warm_reset) && ("${BASE}" != "hammer_" && "${BASE}" != "staff_" && "${BASE}" != "whiskers_" ) ]] ; then
+		info "warm_reset should not execute here"
 		dut_control warm_reset:on
+	else
+		info "base ec warm_reset"
+		dut_control ${BASE}warm_reset:on
 	fi
 	# Force the EC to boot in serial monitor mode
 	ec_enable_boot0
@@ -777,14 +860,23 @@ function flash_stm32() {
 		${STM32MON} -d ${EC_UART} -U -u -e -w "${IMG}"
 	# Remove the Application processor reset
 	# TODO(crosbug.com/p/30738): we cannot rely on servo_VARS to restore it
-	if $(servo_has_warm_reset); then
+	if [[ $(servo_has_warm_reset) && ("${BASE}" != "hammer_" && "${BASE}" != "staff_" && "${BASE}" != "whiskers_" )]] ; then
 		dut_control warm_reset:off
+	else 
+		dut_control ${BASE}warm_reset:off
 	fi
 
-	# Reconnect the EC-3PO interpreter to the UART.
-	dut_control ${MCU}_ec3po_interp_connect:on || \
-	    warn "hdctools cannot reconnect the EC-3PO interpreter to" \
-	    "the UART."
+	if [[ $(servo_has_warm_reset) && ("${BASE}" != "hammer_" && "${BASE}" != "staff_" && "${BASE}" != "whiskers_" ) ]] ; then
+		# Reconnect the EC-3PO interpreter to the UART.
+		dut_control ${MCU}_ec3po_interp_connect:on || \
+	    	warn "hdctools cannot reconnect the EC-3PO interpreter to" \
+	    	"the UART."
+	else
+		# Reconnect the EC-3PO interpreter to the UART.
+		dut_control ${BASE}${MCU}_ec3po_interp_connect:on || \
+	    	warn "hdctools cannot reconnect the ${BASE} EC-3PO interpreter to" \
+	    	"the UART."
+	fi
 }
 
 function flash_stm32_dfu() {
@@ -985,10 +1077,18 @@ info "Using ${SERVO_TYPE}."
 IMG="$(ec_image)"
 info "Using ${MCU} image : ${IMG}"
 
-if ! on_raiden && [ "${NEED_SERVO}" != "no" ] ; then
+if [ "${NEED_SERVO}" != "no" ] ; then
+	info "Need_servo not NO. This should execute"
 	save="$(servo_save)"
+	info "save: ${save}"
 fi
 
 info "Flashing chip ${CHIP}."
 flash_${CHIP}
 info "Flashing done."
+
+
+
+
+
+
