@@ -246,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "c83d437f_e01e6ac2",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "Oh, I think I understand now.\n\nCan we ask ST to change the interface to always report the level? EC will reboot during updates, and we can\u0027t necessarily guarantee to maintain the state locally.\n\n(ok for this CL, but maybe add a note)",
+      "parentUuid": "cbb8b932_1b07f346",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7fae7168_006c48dc",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 2
@@ -779,6 +797,24 @@
       "side": 1,
       "message": "Not sure if this would be better?\n\nOr if we should just hard code these size / offsets as constants?",
       "parentUuid": "d696f80c_f646d5ab",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f9a48d_eae5ef22",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "Thanks, I think this already looks much better.",
+      "parentUuid": "0708d721_078debe2",
       "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

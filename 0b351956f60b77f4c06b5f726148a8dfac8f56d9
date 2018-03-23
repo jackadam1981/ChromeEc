@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1f0bbff_90bdad1a",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "Use st_tp_command_response maybe?",
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82eae238_8a112589",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "ditto, and a few others below.",
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122f1371_a283f0a3",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "just return EC_ERROR_UNKNOWN",
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dcfab3f_2e034f55",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "parenthesis not needed",
+      "range": {
+        "startLine": 356,
+        "startChar": 9,
+        "endLine": 356,
+        "endChar": 32
+      },
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cc4b87e_629feb69",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "I don\u0027t understand this. Can you document load parameter above?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 44
+      },
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08cdd090_8709ca3a",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0deb9e0c_4b5edac5",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "return some default values",
+      "range": {
+        "startLine": 403,
+        "startChar": 46,
+        "endLine": 404,
+        "endChar": 20
+      },
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f80d66b_02e7d378",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "Add a define for that, too?",
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d5d479_c397eb76",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:48:33Z",
+      "side": 1,
+      "message": "/* if 0 */\n\nOr, better, define a symbol like ST_EXTRA_INFO that you define to 0 by default.",
+      "revId": "0b351956f60b77f4c06b5f726148a8dfac8f56d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
