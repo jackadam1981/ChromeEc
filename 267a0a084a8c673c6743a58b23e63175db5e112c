@@ -22,6 +22,30 @@
       "revId": "267a0a084a8c673c6743a58b23e63175db5e112c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1de78e_f5651304",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T22:07:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8abbf1d_f4843f14",
+      "range": {
+        "startLine": 155,
+        "startChar": 41,
+        "endLine": 155,
+        "endChar": 42
+      },
+      "revId": "267a0a084a8c673c6743a58b23e63175db5e112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

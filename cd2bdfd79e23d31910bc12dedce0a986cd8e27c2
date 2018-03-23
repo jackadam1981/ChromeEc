@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "d8102eb1_c63bd758",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T22:07:51Z",
+      "side": 1,
+      "message": "Yes, exactly",
+      "parentUuid": "a922bf56_2c5dde28",
+      "range": {
+        "startLine": 246,
+        "startChar": 6,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "374f2f9a_4fe71499",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 1
@@ -343,6 +367,30 @@
       "side": 1,
       "message": "We want sweetberry to behave like servo in this case - when resistor size is 0:\nwe can get the value for voltages, but not current or power (or querying for these 2 result in an error).",
       "parentUuid": "45dd7db1_b5af7e85",
+      "range": {
+        "startLine": 497,
+        "startChar": 2,
+        "endLine": 497,
+        "endChar": 19
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be278e9c_08091ee8",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T22:07:51Z",
+      "side": 1,
+      "message": "Although this is a good feature to have, let\u0027s implement in another cl, as I think it\u0027s a fairly major refactor. Currently we just assume the INA config is valid, but there is no valid INA config for 0 ohm, so we\u0027d need to track this separately and generate a fake INA config. An immediate workaround would be to specify dummy resistor values and disregard current/power readings.",
+      "parentUuid": "91d204bc_baabee04",
       "range": {
         "startLine": 497,
         "startChar": 2,
@@ -907,6 +955,30 @@
       "side": 1,
       "message": "Sorry to keep bugging at this spot, but what happens if self._use_mw \u003d 1 and the value is actually bus voltage, say 5mV? Since mV is already in the header, the print out will look like .005mV. \n\nMaybe multiplier \u003d 0.001 if (self._use_mW and name.type\u003dPOWER) else 1?",
       "parentUuid": "b0a6effa_ccca92f8",
+      "range": {
+        "startLine": 692,
+        "startChar": 38,
+        "endLine": 692,
+        "endChar": 57
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c1f48ed_e5ebf75c",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T22:07:51Z",
+      "side": 1,
+      "message": "Ah, yes, I didn\u0027t see how multiplier was being used below. Fixed.",
+      "parentUuid": "37674658_1b54cb1f",
       "range": {
         "startLine": 692,
         "startChar": 38,
