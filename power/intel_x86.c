@@ -523,20 +523,47 @@ void chipset_reset(int cold_reset)
 	 */
 	CPRINTS("%s", __func__);
 
-	/*
-	 * Toggling SYS_RESET_L will not have any impact when it's already
-	 * low (i,e. Chipset is in reset state).
-	 */
-	if (gpio_get_level(GPIO_SYS_RESET_L) == 0) {
-		CPRINTS("Chipset is in reset state");
-		return;
-	}
+	/* In S3, AP is off hence do Resume Well Reset */
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		/*
+		 * Toggling PCH_RSMRST_L will not have any impact when it's
+		 * already low (i,e. suspend power wells are off).
+		 */
+		if (gpio_get_level(GPIO_PCH_RSMRST_L) == 0) {
+			CPRINTS("Suspend power wells are off");
+			return;
+		}
 
-	gpio_set_level(GPIO_SYS_RESET_L, 0);
-	/*
-	 * Debounce time for SYS_RESET_L is 16 ms. Wait twice that period
-	 * to be safe.
-	 */
-	udelay(32 * MSEC);
-	gpio_set_level(GPIO_SYS_RESET_L, 1);
+#ifdef CONFIG_CHIPSET_APL_GLK
+		ap_set_force_reset();
+#endif
+
+		/*
+		 * Resetting the resume power plane logic: This signal must
+		 * be asserted for at least 10 ms after the suspend power
+		 * wells are valid (wait twice that period to be safe). When
+		 * deasserted, this signal is an indication that the suspend
+		 * power wells are stable.
+		 */
+		gpio_set_level(GPIO_PCH_RSMRST_L, 0);
+		udelay(20 * MSEC);
+		gpio_set_level(GPIO_PCH_RSMRST_L, 1);
+	} else {
+		/*
+		 * Toggling SYS_RESET_L will not have any impact when it's
+		 * already low (i,e. Chipset is in reset state).
+		 */
+		if (gpio_get_level(GPIO_SYS_RESET_L) == 0) {
+			CPRINTS("Chipset is in reset state");
+			return;
+		}
+
+		gpio_set_level(GPIO_SYS_RESET_L, 0);
+		/*
+		 * Debounce time for SYS_RESET_L is 16 ms. Wait twice that
+		 * period to be safe.
+		 */
+		udelay(32 * MSEC);
+		gpio_set_level(GPIO_SYS_RESET_L, 1);
+	}
 }
