@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35ceb93b_83304568",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "This is taken care of now that I added the struct leaf_header_t to hold the version and length fields which is also covered by the HMAC.",
+      "parentUuid": "0fac2503_5e35ddef",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 55
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1318a03_8ab2b1fa",
         "filename": "common/pinweaver.c",
         "patchSetId": 44
@@ -39,6 +63,24 @@
       "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9857850a_25c862ba",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "This is now part of validate_leaf_header(...) which takes care of the version numbers and lengths.",
+      "parentUuid": "f1318a03_8ab2b1fa",
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "92d1a654_9ed02430",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b1527e1_04808f7b",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 15
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50dc615b_64821f40",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 44
@@ -85,6 +151,30 @@
       "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85945658_b25c0184",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "The order doesn\u0027t matter so much unless we want to change the size of the HMAC later. I would like to keep the protocol flexible enough that we are not locked into a particular HMAC size to maintain compatibility.\n\nI verify the lengths first because if those are wrong it isn\u0027t safe to continue because of bounds.\n\nIf the lengths are modified, the HMAC test will still fail even if the lengths checks succeed. \n\nThe HMAC comes before the variable length fields so the attacker cannot control where the HMAC is read from.",
+      "parentUuid": "50dc615b_64821f40",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "af707f01_ec98549e",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "I added it to the HMAC.",
+      "parentUuid": "f6007f92_7acf829d",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3abc54d0_9add6b3b",
         "filename": "test/pinweaver.c",
         "patchSetId": 44
@@ -131,6 +245,30 @@
       "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e5be7e4_1c458bde",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "I added comments justifying why those are in this file.",
+      "parentUuid": "3abc54d0_9add6b3b",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 0
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "c0dd2b78_87abd5a2",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ef102e_c59bbf71",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 1
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cc94bec_d156b114",
         "filename": "test/pinweaver.c",
         "patchSetId": 44
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "782e83cf_b5cd9096",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cc94bec_d156b114",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 26
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5310883c_243c42bc",
         "filename": "test/pinweaver.c",
         "patchSetId": 44
@@ -200,6 +386,30 @@
       "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8da5d4_899772e3",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5310883c_243c42bc",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 35
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

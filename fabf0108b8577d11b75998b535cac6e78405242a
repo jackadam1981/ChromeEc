@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "7151bc98_0eec1afb",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "We probably can, but I need to look into how to do that. I uploaded what I have because it was fairly large and addresses most of the other comments.",
+      "parentUuid": "15a2a8e6_bc022810",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea0ac17c_791eae92",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -611,6 +635,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d3a560_dddf2be1",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447a0846_60b7d994",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 65
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1176,6 +1224,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13cf28af_c0d123ef",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-23T22:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9255aee5_f57d3d59",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 3
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
