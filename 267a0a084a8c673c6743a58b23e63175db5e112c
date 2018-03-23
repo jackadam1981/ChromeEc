@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8abbf1d_f4843f14",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-23T19:42:18Z",
+      "side": 1,
+      "message": "Can you use sizeof() for this as well?",
+      "range": {
+        "startLine": 155,
+        "startChar": 41,
+        "endLine": 155,
+        "endChar": 42
+      },
+      "revId": "267a0a084a8c673c6743a58b23e63175db5e112c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

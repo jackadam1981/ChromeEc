@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a922bf56_2c5dde28",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-23T19:42:18Z",
+      "side": 1,
+      "message": "What do you mean \"read several values from this INA?\" like [vbat, busv][vbat, power]?",
+      "parentUuid": "a242ecc4_0e31f91a",
+      "range": {
+        "startLine": 246,
+        "startChar": 6,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "374f2f9a_4fe71499",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 1
@@ -295,6 +319,30 @@
       "side": 1,
       "message": "Should this be not allowed or simply block power/current monitoring?",
       "parentUuid": "064fa273_3a2d298f",
+      "range": {
+        "startLine": 497,
+        "startChar": 2,
+        "endLine": 497,
+        "endChar": 19
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d204bc_baabee04",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-03-23T19:42:18Z",
+      "side": 1,
+      "message": "We want sweetberry to behave like servo in this case - when resistor size is 0:\nwe can get the value for voltages, but not current or power (or querying for these 2 result in an error).",
+      "parentUuid": "45dd7db1_b5af7e85",
       "range": {
         "startLine": 497,
         "startChar": 2,
