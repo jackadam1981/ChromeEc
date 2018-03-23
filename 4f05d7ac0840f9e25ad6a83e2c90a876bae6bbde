@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bef11762_8d51cf1f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:58:32Z",
+      "side": 1,
+      "message": "I think it\u0027d be cleaner to have 2 different functions: one to write a 8-bit register, and one to write a 32-bit register.",
+      "revId": "4f05d7ac0840f9e25ad6a83e2c90a876bae6bbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32150b7b_898d6aa4",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:58:32Z",
+      "side": 1,
+      "message": "Used only once, just make the calls below with a comment.",
+      "revId": "4f05d7ac0840f9e25ad6a83e2c90a876bae6bbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9508710_07795846",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:58:32Z",
+      "side": 1,
+      "message": "This is a little bit of a weird interface... I\u0027d compute chunk_size in this function.",
+      "revId": "4f05d7ac0840f9e25ad6a83e2c90a876bae6bbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c010311_4f07694a",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:58:32Z",
+      "side": 1,
+      "message": "cast should not be needed",
+      "range": {
+        "startLine": 588,
+        "startChar": 20,
+        "endLine": 588,
+        "endChar": 29
+      },
+      "revId": "4f05d7ac0840f9e25ad6a83e2c90a876bae6bbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c7bbf3_97b531c9",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-23T02:58:32Z",
+      "side": 1,
+      "message": "Blank line below int ret;",
+      "revId": "4f05d7ac0840f9e25ad6a83e2c90a876bae6bbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
