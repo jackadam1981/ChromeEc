@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0758cb20_e6a19c3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-23T00:16:26Z",
+      "side": 1,
+      "message": "Does it need to go to these branches? It seems that the original commit only landed on master and was cherry-picked to poppy. Or maybe those branches are going to get a large series of master branch CLs?",
+      "revId": "a848f3e9112f0695024cf6a812adf5df375f67ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
