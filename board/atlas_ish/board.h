@@ -43,6 +43,8 @@
 #define GPIO_I2C_PORT_TP_SCL GPIO_ISH_I2C0_SCL
 #define GPIO_I2C_PORT_TP_SDA GPIO_ISH_I2C0_SDA
 
+#define CONFIG_WATCHDOG
+
 /* Undefine unfeatures */
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_I2C_SCAN
@@ -58,7 +60,7 @@
 #undef CONFIG_FMAP
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_SWITCH
-#undef CONFIG_WATCHDOG
+
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_ACCELS

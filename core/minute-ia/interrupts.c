@@ -21,6 +21,9 @@
 /* The IDT  - initialized in init.S */
 extern IDT_entry __idt[NUM_VECTORS];
 
+volatile uint32_t system_stack[CONFIG_STACK_SIZE] __aligned(4);
+volatile uint32_t system_stack_top =
+				(uint32_t)&system_stack[CONFIG_STACK_SIZE - 1];
 /* To count the interrupt nesting depth. Usually it is not nested */
 volatile uint32_t __in_isr;
 
@@ -70,6 +73,7 @@ static const irq_desc_t system_irqs[] = {
 	LEVEL_INTR(ISH_I2C0_IRQ, ISH_I2C0_VEC),
 	LEVEL_INTR(ISH_I2C1_IRQ, ISH_I2C1_VEC),
 	LEVEL_INTR(ISH_I2C2_IRQ, ISH_I2C2_VEC),
+	LEVEL_INTR(ISH_WDT_IRQ, ISH_WDT_VEC),
 	LEVEL_INTR(ISH_GPIO_IRQ, ISH_GPIO_VEC),
 	LEVEL_INTR(ISH_IPC_HOST2ISH_IRQ, ISH_IPC_VEC),
 	LEVEL_INTR(ISH_IPC_ISH2HOST_CLR_IRQ, ISH_IPC_ISH2HOST_CLR_VEC),
