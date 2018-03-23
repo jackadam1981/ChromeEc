@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "15a2a8e6_bc022810",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "Ping? Have you considered deriving these from the key ladder + TPM clear count?",
+      "parentUuid": "b4e3fc0b_48ecc72e",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea0ac17c_791eae92",
         "filename": "common/pinweaver.c",
         "patchSetId": 39

@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fac2503_5e35ddef",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "Sorry, I wasn\u0027t clear the last time round. The concern with just concatenating for the HMAC input is that the MAC wouldn\u0027t detect changes where the attacker moves bytes out of pub and into ciphertext and vice versa. So the HMAC input is \"publicSECRET\" both for pub\u003d\"public\", cipher_text\u003d\"SECRET\" *and* also pub\u003d\"publicSECRET\", chiper_text\u003d\"\".\n\nI doubt this can be exploited in practice, but it\u0027s best to avoid this. Can be done easily by including the length field in the HMAC input before the actual data:\n\nHASH_update(\u0026hmac.hash, \u0026pub_len, sizeof(pub_len));\n\n(same for cipher_text_len).",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 55
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1318a03_8ab2b1fa",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "Add a check here to ensure the leaf version matches the expected version? Alternatively, add a comment why we\u0027re OK if we don\u0027t and receive a newer leaf that happens to have the right size :)",
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1527e1_04808f7b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "can we use handle_leaf_update here?",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 15
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50dc615b_64821f40",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "Hm, should we perhaps move this after hmac? I guess it comes down to the question on what should be done first: Version check or HMAC verification. My gut feeling is that we should do HMAC first, but we need to know the struct size for that. Also, you\u0027ll want the version number HMAC-protected, but at the same time you don\u0027t want to reach into the public data before it\u0027s been HMAC-checked.\n\nMaybe the best thing to do here would just be to put a separate version field here (and keep the one in leaf_public_data_t). The field here we wouldn\u0027t trust, but just use to detect struct layout?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6007f92_7acf829d",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 44
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "Should this be covered by the hmac as well? Otherwise, someone could inject a bad IV which would result in garbled clear text, which might happily re-encrypt and compute an HMAC one?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3abc54d0_9add6b3b",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "I would have hoped that these utilities already exist in the ec codebase, but that\u0027s a question for a reviewer more familiar with ec.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 0
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22ef102e_c59bbf71",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "remove before submitting",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 1
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cc94bec_d156b114",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "Remove before submitting",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 26
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5310883c_243c42bc",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 44
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-23T13:10:54Z",
+      "side": 1,
+      "message": "Get rid of the view similar to the respective change in pinweaver.c?",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 35
+      },
+      "revId": "4e5f2bec5593a226950393e0b9b5efa3677eaf73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
