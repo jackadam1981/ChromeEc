@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d905a511_6f6f1bc5",
+        "filename": "board/nami/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-23T23:10:03Z",
+      "side": 1,
+      "message": "Please add comments to prevent a sensor from being added after ALS.",
+      "range": {
+        "startLine": 643,
+        "startChar": 1,
+        "endLine": 643,
+        "endChar": 3
+      },
+      "revId": "981f5ddb2cff791b2c67716261bbdcadc5db998e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2c47a8_d923abeb",
+        "filename": "board/nami/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-23T23:10:03Z",
+      "side": 1,
+      "message": "Please use ARRAY_SIZE - 1. ALS has to be the last member of motion_sensors anyway.",
+      "range": {
+        "startLine": 702,
+        "startChar": 25,
+        "endLine": 702,
+        "endChar": 26
+      },
+      "revId": "981f5ddb2cff791b2c67716261bbdcadc5db998e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64de1100_b7462db3",
+        "filename": "board/nami/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-23T23:10:03Z",
+      "side": 1,
+      "message": "Why do you need to create a new hook? board_init doesn\u0027t work?",
+      "range": {
+        "startLine": 705,
+        "startChar": 1,
+        "endLine": 705,
+        "endChar": 74
+      },
+      "revId": "981f5ddb2cff791b2c67716261bbdcadc5db998e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
