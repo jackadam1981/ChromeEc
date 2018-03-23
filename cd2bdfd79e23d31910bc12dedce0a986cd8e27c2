@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5c97f8cc_e11922a5",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75a1e57e_55f63d19",
+      "range": {
+        "startLine": 154,
+        "startChar": 41,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "005d0d44_bde20a50",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "e0586114_16bef6a1",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "005d0d44_bde20a50",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 18
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd6b5e44_d8a78ed8",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2018-03-20T22:20:28Z",
       "side": 1,
       "message": "What is \u0027shared\u0027?",
+      "range": {
+        "startLine": 246,
+        "startChar": 6,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a242ecc4_0e31f91a",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Shared indicates we may read several values from this INA, and i2c transactions must re-specify address each read.",
+      "parentUuid": "fd6b5e44_d8a78ed8",
       "range": {
         "startLine": 246,
         "startChar": 6,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "0fa8018a_64eac4e3",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "374f2f9a_4fe71499",
+      "range": {
+        "startLine": 459,
+        "startChar": 21,
+        "endLine": 459,
+        "endChar": 22
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c334f2d7_edf58754",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 1
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "5f18e570_4f6754da",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c334f2d7_edf58754",
+      "range": {
+        "startLine": 466,
+        "startChar": 14,
+        "endLine": 466,
+        "endChar": 15
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "064fa273_3a2d298f",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 1
@@ -151,6 +271,30 @@
       "writtenOn": "2018-03-20T22:20:28Z",
       "side": 1,
       "message": "Does this mean that if resistor size is 0, we don\u0027t get any readings back? Asking because in the case of servo, when resistor is 0, we still get the reading for component voltage.",
+      "range": {
+        "startLine": 497,
+        "startChar": 2,
+        "endLine": 497,
+        "endChar": 19
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45dd7db1_b5af7e85",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Should this be not allowed or simply block power/current monitoring?",
+      "parentUuid": "064fa273_3a2d298f",
       "range": {
         "startLine": 497,
         "startChar": 2,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "cbcb7cee_ebe626bd",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f70838b5_f933bea1",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59d01c29_eed539b4",
         "filename": "chip/stm32/usb_power.h",
         "patchSetId": 1
@@ -206,6 +374,30 @@
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "257453ea_db663ed7",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d01c29_eed539b4",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "fb8a31e8_693576e9",
+        "filename": "chip/stm32/usb_power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c81fb7_4c6e905f",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10d35221_d745c3a9",
         "filename": "extra/usb_power/marlin_a.scenario",
         "patchSetId": 1
@@ -243,6 +459,30 @@
       "writtenOn": "2018-03-21T01:09:37Z",
       "side": 1,
       "message": "As a reference, maybe it\u0027s easier to read if you group it this way...\n\n{\n\"VBAT\":[\"POWER\", \"BUSV\", \"CURRENT\", \"SHUTV\"]\n}\n\nand this is a dictionary.\n\nFor backwards compatibility, previously scenario files are lists, so it\u0027s easy to tell them apart. Just a different idea, no need to follow.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 68
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29dadf31_043073ea",
+        "filename": "extra/usb_power/marlin_a.scenario",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "I like the concept but maybe for a different cl",
+      "parentUuid": "10d35221_d745c3a9",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -272,6 +512,24 @@
     },
     {
       "key": {
+        "uuid": "1921f60f_f58e55b5",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "879dfdf8_a1d5c898",
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "433bb739_bcecdb4a",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -283,6 +541,30 @@
       "writtenOn": "2018-03-21T01:09:37Z",
       "side": 1,
       "message": "Why are there 48 channels when max ina count is 29 in usb_power.h?",
+      "range": {
+        "startLine": 55,
+        "startChar": 41,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a345d70a_49447d09",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Used to be a 64 byte limitation by USB packet. However I\u0027ve since implemented multipacket support on stm32f4",
+      "parentUuid": "433bb739_bcecdb4a",
       "range": {
         "startLine": 55,
         "startChar": 41,
@@ -318,6 +600,30 @@
     },
     {
       "key": {
+        "uuid": "57be566a_b13ac281",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "386ac765_160c3a10",
+      "range": {
+        "startLine": 277,
+        "startChar": 28,
+        "endLine": 277,
+        "endChar": 34
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9592a45_9ed9047a",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -338,6 +644,30 @@
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ea25dd_cf300078",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9592a45_9ed9047a",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 0
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -364,6 +694,30 @@
     },
     {
       "key": {
+        "uuid": "d0fa1b1c_fbc4f444",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002e7820_cb4c9e86",
+      "range": {
+        "startLine": 413,
+        "startChar": 16,
+        "endLine": 413,
+        "endChar": 20
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b140c53_2d0a821e",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -378,6 +732,24 @@
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ae75b2_3908b244",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b140c53_2d0a821e",
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -404,6 +776,30 @@
     },
     {
       "key": {
+        "uuid": "1ada3b19_c475e744",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "agreed, but not in this cl",
+      "parentUuid": "b26a7a27_0b4f86e2",
+      "range": {
+        "startLine": 597,
+        "startChar": 4,
+        "endLine": 597,
+        "endChar": 9
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33a6f7a1_38006eea",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -415,6 +811,30 @@
       "writtenOn": "2018-03-21T19:07:56Z",
       "side": 1,
       "message": "multiplier only works for power, not other ina types",
+      "range": {
+        "startLine": 692,
+        "startChar": 38,
+        "endLine": 692,
+        "endChar": 57
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0a6effa_ccca92f8",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-23T02:43:39Z",
+      "side": 1,
+      "message": "intended for now. Maybe fix in next cl",
+      "parentUuid": "33a6f7a1_38006eea",
       "range": {
         "startLine": 692,
         "startChar": 38,
