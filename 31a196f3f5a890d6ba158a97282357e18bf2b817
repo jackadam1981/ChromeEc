@@ -22,6 +22,30 @@
       "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73e5192_ed7aafd3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-23T19:25:11Z",
+      "side": 1,
+      "message": "Maybe we need LIMIT_POWER in the name somewhere to indicate that this is used by the LIMIT_POWER functionality. Or maybe a comment in config.h indicating that this is related to limiting power on low battery/weak charger.",
+      "parentUuid": "a867e901_a9e638ec",
+      "range": {
+        "startLine": 1751,
+        "startChar": 7,
+        "endLine": 1751,
+        "endChar": 47
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
