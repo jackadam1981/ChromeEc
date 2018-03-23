@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "572a01d6_e8298c90",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-23T15:34:08Z",
+      "side": 0,
+      "message": "I was definitely mixing this up with measuring vbus instead of detecting vbus. Such an easy fix :)",
+      "range": {
+        "startLine": 71,
+        "startChar": 34,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "9304e2ac012e1cba92e697bfd36428146d4528c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
