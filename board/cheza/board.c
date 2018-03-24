@@ -14,6 +14,7 @@
 #include "lid_switch.h"
 #include "pi3usb9281.h"
 #include "power_button.h"
+#include "shi_chip.h"
 #include "switch.h"
 
 #include "gpio_list.h"

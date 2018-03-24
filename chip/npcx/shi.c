@@ -76,10 +76,10 @@
  * practically want to run the SHI interface, since running it slower
  * significantly impacts firmware update times.
  */
-#define SHI_CMD_RX_TIMEOUT_US 8192
+#define SHI_CMD_RX_TIMEOUT_US 81920
 
 /* Timeout for glitch case. Make sure it will exceed 8 SPI clocks */
-#define SHI_GLITCH_TIMEOUT_US 10000
+#define SHI_GLITCH_TIMEOUT_US 100000
 
 /*
  * The AP blindly clocks back bytes over the SPI interface looking for a
