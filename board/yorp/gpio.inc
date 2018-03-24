@@ -99,6 +99,10 @@ GPIO(USB_C1_BC12_VBUS_ON,   PIN(B, 1), GPIO_OUT_LOW)	/* C1 BC1.2 Power */
 GPIO(USB_C1_BC12_CHG_DET_L, PIN(E, 4), GPIO_INPUT)	/* C1 BC1.2 Detect */
 GPIO(USB_C1_HPD_1V8_ODL, PIN(C, 6), GPIO_ODR_HIGH |	/* C1 DP Hotplug Detect */
 				    GPIO_SEL_1P8V)
+
+GPIO(BAT_LED_AMBER,	PIN(C,  3), GPIO_OUT_HIGH)
+GPIO(BAT_LED_BLUE,	PIN(C,  4), GPIO_OUT_HIGH)
+
 /* Alternate functions GPIO definitions */
 /* Cr50 requires no pull-ups on UART pins. */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)		/* UART from EC to Servo */
