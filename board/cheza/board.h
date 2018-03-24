@@ -29,6 +29,13 @@
 #undef CONFIG_PWM
 #undef CONFIG_PECI
 
+#define CONFIG_HOSTCMD_SPS
+#define CONFIG_HOST_COMMAND_STATUS
+#define CONFIG_HOSTCMD_SECTION_SORTED /* Host commands are sorted. */
+/* By default, set hcdebug to off */
+#undef CONFIG_HOSTCMD_DEBUG_MODE
+#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
+
 #define CONFIG_BOARD_VERSION
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VOLUME_BUTTONS

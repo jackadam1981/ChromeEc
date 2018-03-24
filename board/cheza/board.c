@@ -22,6 +22,7 @@
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
+#include "shi_chip.h"
 #include "switch.h"
 #include "system.h"
 #include "task.h"
