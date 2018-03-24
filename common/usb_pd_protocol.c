@@ -1918,9 +1918,17 @@ static void pd_partner_port_reset(int port)
 	explicit_contract_in_place = !!(flags & PD_BBRMFLG_EXPLICIT_CONTRACT);
 
 	/*
-	 * Check our battery-backed previous port state. If PD comms were
-	 * active, and we didn't just lose power, make sure we
-	 * don't boot into RO with a pre-existing power contract.
+	 * If an explicit contract is in place and PD communications are
+	 * allowed, don't apply Rp.  We'll issue a SoftReset later on and
+	 * renegotiate our contract.  This particular condition only applies to
+	 * unlocked RO images with an explicit contract in place.
+	 */
+	if (explicit_contract_in_place && pd_comm_is_enabled(port))
+		return;
+
+	/*
+	 * If an explicit contract is in place, and we didn't just lose power,
+	 * make sure we don't boot into RO with that contract.
 	 */
 	if (!explicit_contract_in_place ||
 	   system_get_image_copy() != SYSTEM_IMAGE_RO ||
@@ -2126,6 +2134,7 @@ void pd_task(void *u)
 	int hard_reset_count = 0;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	uint64_t next_role_swap = PD_T_DRP_SNK;
+	uint8_t saved_flgs;
 #ifndef CONFIG_USB_PD_VBUS_DETECT_NONE
 	int snk_hard_reset_vbus_off = 0;
 #endif
@@ -2194,6 +2203,38 @@ void pd_task(void *u)
 
 	/* Initialize PD protocol state variables for each port. */
 	pd_set_power_role(port, PD_ROLE_DEFAULT(port));
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	/*
+	 * If there's an explicit contract in place, let's restore the data and
+	 * power roles such that any messages we send to the port partner will
+	 * still be valid.
+	 */
+	if (pd_get_saved_port_flags(port, &saved_flgs) == EC_SUCCESS) {
+		if (saved_flgs & PD_BBRMFLG_EXPLICIT_CONTRACT) {
+			pd_set_power_role(port,
+					  (saved_flgs & PD_BBRMFLG_POWER_ROLE) ?
+					  PD_ROLE_SOURCE : PD_ROLE_SINK);
+			pd_set_data_role(port,
+					 (saved_flgs & PD_BBRMFLG_DATA_ROLE) ?
+					 PD_ROLE_DFP : PD_ROLE_UFP);
+
+			/*
+			 * Since there is an explicit contract in place, let's
+			 * issue a SoftReset such that we can renegotiate with
+			 * our port partner in order to synchronize our state
+			 * machines.
+			 */
+			this_state = PD_STATE_SOFT_RESET;
+
+			/*
+			 * Enable TCPC RX if PD communications are allowed, so
+			 * we can hear back from our port partner.
+			 */
+			if (pd_comm_is_enabled(port))
+				tcpm_set_rx_enable(port, 1);
+		}
+	}
+#endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
 	pd[port].vdm_state = VDM_STATE_DONE;
 	set_state(port, this_state);
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
