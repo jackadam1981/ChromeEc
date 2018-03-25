@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe9ac745_32f38fc3",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-25T19:45:53Z",
+      "side": 1,
+      "message": "Good catch, replace 400000 by 400 * MSEC",
+      "revId": "fd38ec54a6de5d4efd938f9adeb1f22f51b72e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d935435_5c9733f0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-25T19:45:53Z",
+      "side": 1,
+      "message": "Good catch, replace 400000 by 400 * MSEC",
+      "revId": "fd38ec54a6de5d4efd938f9adeb1f22f51b72e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
