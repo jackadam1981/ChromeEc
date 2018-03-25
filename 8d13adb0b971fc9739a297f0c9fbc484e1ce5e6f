@@ -22,6 +22,30 @@
       "revId": "8d13adb0b971fc9739a297f0c9fbc484e1ce5e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8c162fb_58298a43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-25T18:19:35Z",
+      "side": 1,
+      "message": "Is that just a policy or a hardware limitation? What good is deep doze if UART RX is the only wake up source?",
+      "parentUuid": "5797181d_5154b7ed",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "8d13adb0b971fc9739a297f0c9fbc484e1ce5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
