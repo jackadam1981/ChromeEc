@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c352d10a_86425af0",
+        "filename": "board/nami/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-26T18:58:51Z",
+      "side": 1,
+      "message": "we don\u0027t use forward declaration unless it\u0027s necessary.",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 48
+      },
+      "revId": "c751c8540e90a1ea2d57213c5960dc323eaaf6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a48bcb_94ba8bf4",
+        "filename": "board/nami/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-26T18:58:51Z",
+      "side": 1,
+      "message": "Did you confirm motion sensor count won\u0027t be used before this call?",
+      "range": {
+        "startLine": 455,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 33
+      },
+      "revId": "c751c8540e90a1ea2d57213c5960dc323eaaf6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ec4296_c7d1bc1c",
+        "filename": "board/nami/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-26T18:58:51Z",
+      "side": 1,
+      "message": "Please rephrase this or remove it.",
+      "range": {
+        "startLine": 654,
+        "startChar": 4,
+        "endLine": 655,
+        "endChar": 54
+      },
+      "revId": "c751c8540e90a1ea2d57213c5960dc323eaaf6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
