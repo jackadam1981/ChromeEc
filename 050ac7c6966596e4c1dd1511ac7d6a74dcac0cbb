@@ -22,6 +22,30 @@
       "revId": "050ac7c6966596e4c1dd1511ac7d6a74dcac0cbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b555eb_bc2df2cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-03-26T02:19:53Z",
+      "side": 1,
+      "message": "Yes that was it, it builds after updating the private repo.   this hotel network can\u0027t handle a full repo sync so I was just updating the ec repo directly.",
+      "parentUuid": "1c7c60e1_1b9d6150",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "050ac7c6966596e4c1dd1511ac7d6a74dcac0cbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
