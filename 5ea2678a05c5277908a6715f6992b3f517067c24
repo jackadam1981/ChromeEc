@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "0f2beeb9_258fd3f4",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-26T21:05:47Z",
+      "side": 1,
+      "message": "I don\u0027t think we should bother with PWM unless there are specific brightness requirements. Unless it\u0027s a 3 color RGB LED we usually just use gpio on/off control.",
+      "parentUuid": "a17082c9_7835f849",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "5ea2678a05c5277908a6715f6992b3f517067c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36e5e3af_a653c04b",
         "filename": "board/yorp/led.c",
         "patchSetId": 1
