@@ -69,6 +69,24 @@
       "revId": "0d6daca308707f43068732064028e6175707499b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08ed3bc1_52df5282",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-26T07:25:07Z",
+      "side": 1,
+      "message": "Well, you have interrupts disabled here, so __hw_clock_source_set (called from force_time only) won\u0027t happen. Furthermore, force_time is a debug command that is not normally used.\n\nAlso, I believe the max hwtimer value being set to 2**32-1 is baked in the timer code, see common/timer.c:get_time : nothing (including the current code) will work properly if __hw_clock_source_read() does not run from 0 to 2**32-1.",
+      "parentUuid": "3377c1f7_5437fdb0",
+      "revId": "0d6daca308707f43068732064028e6175707499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
