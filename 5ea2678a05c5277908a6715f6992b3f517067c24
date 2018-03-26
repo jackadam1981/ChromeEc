@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "bc0ea048_ce61353f",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-26T22:06:04Z",
+      "side": 1,
+      "message": "Ah cool, I guess we over-implemented it on grunt then. Straight GPIO works for me.",
+      "parentUuid": "0f2beeb9_258fd3f4",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "5ea2678a05c5277908a6715f6992b3f517067c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36e5e3af_a653c04b",
         "filename": "board/yorp/led.c",
         "patchSetId": 1
