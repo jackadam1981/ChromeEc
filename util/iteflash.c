@@ -83,7 +83,7 @@ enum {
 static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 			     uint8_t *ptr, uint8_t *tbuf, int tcnt)
 {
-	int ret, i, j;
+	int ret, i, j, remaining_data, ack_idx;
 	int tx_buffered = 0;
 	static uint8_t ack[TX_BUFFER_LIMIT];
 	uint8_t *b = ptr;
@@ -117,7 +117,16 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 			}
 
 			/* read ACK bits */
-			ret = ftdi_read_data(ftdi, &ack[0], tx_buffered);
+			remaining_data = tx_buffered;
+			ack_idx = 0;
+			do {
+				ret = ftdi_read_data(ftdi, &ack[ack_idx],
+					remaining_data);
+				if (ret < 0)
+					fprintf(stderr, "read ACK failed\n");
+				remaining_data -= ret;
+				ack_idx += ret;
+			} while (remaining_data);
 			for (j = 0; j < tx_buffered; j++) {
 				if ((ack[j] & 0x80) != 0)
 					failed_ack = ack[j];
@@ -143,7 +152,7 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 			     uint8_t *ptr, uint8_t *rbuf, int rcnt)
 {
-	int ret, i;
+	int ret, i, rbuf_idx;
 	uint8_t *b = ptr;
 
 	for (i = 0; i < rcnt; i++) {
@@ -170,9 +179,16 @@ static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 		fprintf(stderr, "failed to prepare read\n");
 		return ret;
 	}
-	ret = ftdi_read_data(ftdi, rbuf, rcnt);
-	if (ret < 0)
-		fprintf(stderr, "read byte failed\n");
+
+	rbuf_idx = 0;
+	do {
+		ret = ftdi_read_data(ftdi, &rbuf[rbuf_idx], rcnt);
+		if (ret < 0)
+			fprintf(stderr, "read byte failed\n");
+		rcnt -= ret;
+		rbuf_idx += ret;
+	} while (rcnt);
+
 	return ret;
 }
 
