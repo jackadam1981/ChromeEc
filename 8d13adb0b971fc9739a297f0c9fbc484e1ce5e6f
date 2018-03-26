@@ -46,6 +46,30 @@
       "revId": "8d13adb0b971fc9739a297f0c9fbc484e1ce5e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c558d6ca_f11ff93c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-03-26T09:36:37Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t describe it clearly, please change to deep doze instead of doze.\n\nWe don\u0027t need to enable RX wake-up interrupt for doze mode.\nBecause UART module works under doze mode, and EC can be wake-up by a valid interrupt of RX\n(a character has been received).\nBut we do need to enable RX\u0027s WUI for deep doze mode.\nUnder deep doze power saving mode, just 32.768KHz clock is on.\nThis WUI will ensure we can wake EC up by a falling edge (start bit) on RX and then\ncontinue RX transmission.",
+      "parentUuid": "b8c162fb_58298a43",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "8d13adb0b971fc9739a297f0c9fbc484e1ce5e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
