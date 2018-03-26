@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f90b8a7_884fbcfc",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-26T15:48:16Z",
+      "side": 1,
+      "message": "nit: This can be broken down into two blocks so that its easier to read:\n\nif (battery_device_name(device_name, sizeof(device_name))\n       continue;\n\nif (strcasecmp(...))\n       continue;\n\nboard_battery_type \u003d i;\nbreak;",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 3
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89313229_1871c968",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-26T15:48:16Z",
+      "side": 1,
+      "message": "Based on the discussion on some other CLs and bugs, I don\u0027t think we should be implementing this function. charger_profile_override was added on a board where the FG was not programmed as per spec and hence required the board to implement this callback to override voltage and current parameters. Reference: b/70908638",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 28
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb907c31_ecd2e3e9",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-26T15:48:16Z",
+      "side": 1,
+      "message": "I think we should be handling this case within the charge state machine if possible.",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
