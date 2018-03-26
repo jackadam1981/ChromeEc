@@ -310,3 +310,32 @@ int __hw_clock_source_init(uint32_t start_t)
 
 	return NPCX_IRQ_ITIM32;
 }
+
+#define TEST_TIMEOUT 0x120 /* Unit: us */
+static int command_testtmrover(int argc, char **argv)
+{
+	timestamp_t deadline, start;
+
+	/* Critical section for testing */
+	interrupt_disable();
+
+	__hw_clock_source_set(0xFFFFFF00);
+	start = get_time();
+	deadline.val = get_time().val + TEST_TIMEOUT;
+	while (1) {
+		if (timestamp_expired(deadline, NULL)) {
+			ccprintf("Expired! %08X %08X\n", get_time().le.hi,
+					get_time().le.lo);
+			break;
+		} /* Overflow occurred? */
+		else if (IS_BIT_SET(NPCX_ITCTS(ITIM32), NPCX_ITCTS_TO_STS)) {
+			__hw_clock_handle_overflow(start.le.hi);
+		}
+	}
+
+	interrupt_enable();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(testtmrover, command_testtmrover,
+			"",
+			"Test hwtimer overflow");
