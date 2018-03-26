@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e5fcbd3_2e194580",
+        "filename": "util/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed52ba54_07839138",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3edecfce_e5c5362d",
         "filename": "util/build.mk",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f26d1480_14bb1b2a",
+        "filename": "util/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3edecfce_e5c5362d",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "95f92dff_74935ca9",
+        "filename": "util/uut/cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf8fe8e_3bc16e94",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b60a9515_0628276e",
         "filename": "util/uut/cmd.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9a969c_b1936dd8",
+        "filename": "util/uut/cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b60a9515_0628276e",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2e90dee3_3623c45c",
+        "filename": "util/uut/cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e4d74c_2285050e",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02c36022_bf424c04",
         "filename": "util/uut/com_port.h",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d1d2e0_85426620",
+        "filename": "util/uut/com_port.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c36022_bf424c04",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 75
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "476d1515_c1cc4171",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bdc95e7_20ab95ef",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f3b5706_94d4fdf3",
         "filename": "util/uut/l_com_port.c",
         "patchSetId": 6
@@ -183,6 +351,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e56221_92bed74a",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "I removed functions convert_byte_size_to_byte_size_mask and convert_parity_to_parity_mask and hard code the parity and byte_size of comport_fileds in main.c.\nThe function convert_baudrate_to_baudrate_mask is kept. The baud rate can be configured with the command flag -baudrate when executing this tool. We rely on this function to do the convert.(Ex: 115200 -\u003e B115200)",
+      "parentUuid": "8f3b5706_94d4fdf3",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "2fa4e714_0f0724b2",
+        "filename": "util/uut/lib_crc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done. A pre-defined lookup table is used.",
+      "parentUuid": "a5a06fa2_2729e336",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 46
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c4350e_c70775bf",
         "filename": "util/uut/opr.c",
         "patchSetId": 6
@@ -229,6 +445,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb76c08_6693ae32",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "We were designing that all the operation for com port are handled by the API in opr.c. \nThis handle for the serial port operation is declared in opr.c and not exposed to main.c.\nSo this function should be remain.",
+      "parentUuid": "e4c4350e_c70775bf",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "f2c7da93_d5f26e59",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c7c83e_7257cfb2",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 23
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2d2cad9_ee57fa5f",
         "filename": "util/uut/uut_common.h",
         "patchSetId": 6
@@ -275,6 +539,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f758e3d6_bdf15bfb",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d2cad9_ee57fa5f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "b794d42e_e70de9d8",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done. Use the bool defined in stdbool.h.",
+      "parentUuid": "c00be215_3362fcc1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "201311ba_fd53e110",
         "filename": "util/uut/uut_common.h",
         "patchSetId": 6
@@ -321,6 +633,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03cfb0f6_79cf0a20",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201311ba_fd53e110",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "d1a2b41d_3456145d",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77747bb9_e7e084a1",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91d6d8be_4f89aaf9",
         "filename": "util/uut/uut_common.h",
         "patchSetId": 6
@@ -367,6 +727,30 @@
       "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31737742_78351c1a",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-26T03:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91d6d8be_4f89aaf9",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
