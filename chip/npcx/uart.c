@@ -206,6 +206,8 @@ void uart_clear_rx_fifo(int channel)
 	}
 }
 
+int tt = 0;
+
 /**
  * Interrupt handler for UART0
  */
@@ -233,6 +235,10 @@ void uart_ec_interrupt(void)
 	/* Read input FIFO until empty, then fill output FIFO */
 	uart_process_input();
 	uart_process_output();
+
+	if (tt++ > 10000)
+		while (1)
+			;
 }
 DECLARE_IRQ(NPCX_IRQ_UART, uart_ec_interrupt, 0);
 
