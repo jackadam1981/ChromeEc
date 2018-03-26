@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a380ff7e_1221efcb",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-26T15:25:30Z",
+      "side": 1,
+      "message": "once the code is finalized, can we pull this into a common method?",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 360,
+        "endChar": 39
+      },
+      "revId": "79ef2b3678ba22bb4168b7d53a21a3f1497a0cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
