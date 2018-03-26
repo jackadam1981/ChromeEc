@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fb5f71a_bacf7bd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-26T02:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e03005_86640a1a",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "eeb3230b4b730782d849f2368a6013923ee05e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b2b3937_d7333961",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "de16169c_c7498103",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-26T02:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b2b3937_d7333961",
+      "range": {
+        "startLine": 598,
+        "startChar": 22,
+        "endLine": 598,
+        "endChar": 24
+      },
+      "revId": "eeb3230b4b730782d849f2368a6013923ee05e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "987dc1c4_489991a4",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "eeb3230b4b730782d849f2368a6013923ee05e4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55b31dd_18c212ae",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-26T02:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "987dc1c4_489991a4",
+      "range": {
+        "startLine": 600,
+        "startChar": 15,
+        "endLine": 600,
+        "endChar": 17
+      },
+      "revId": "eeb3230b4b730782d849f2368a6013923ee05e4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
