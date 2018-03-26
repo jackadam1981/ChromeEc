@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee195eeb_2fdfee47",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-26T14:14:38Z",
+      "side": 1,
+      "message": "These are active low signals, so off should be 1.\n\nHowever, I think we may want to use the PWM module and we can set the polarity there (e.g https://chromium.git.corp.google.com/chromiumos/platform/ec/+/36e7c2498c90df0a4c5672ae8347dec6cca98689/board/grunt/board.c#490)",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "5ea2678a05c5277908a6715f6992b3f517067c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38a88e3_0121d39e",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-26T14:14:38Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we split this into two phases because it is the same color in both.\n\nShould this be {LED_COLOR_AMBER, LED_INDEFINITE}, {LED_OFF, LED_INDEFINITE} instead?",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "5ea2678a05c5277908a6715f6992b3f517067c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fac658_73ec2c3f",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-26T14:14:38Z",
+      "side": 1,
+      "message": "nit: this can fit on one line, right?",
+      "range": {
+        "startLine": 73,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "5ea2678a05c5277908a6715f6992b3f517067c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4398b74_3cbdfbdd",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-26T14:14:38Z",
+      "side": 1,
+      "message": "Do we want to use the PWM instead so we can vary the brightness if needed?",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "5ea2678a05c5277908a6715f6992b3f517067c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e5e3af_a653c04b",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-26T14:14:38Z",
+      "side": 1,
+      "message": "nit: couple extra newlines",
+      "revId": "5ea2678a05c5277908a6715f6992b3f517067c24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
