@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c17d344_3ea62b75",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-26T22:14:20Z",
+      "side": 1,
+      "message": "I modified the section you highlighted. In addition, I moved the static variable \u0027board_battery_type\u0027 to this function and changed all instances to call this function so that now it\u0027s consistent everywhere.",
+      "parentUuid": "2f90b8a7_884fbcfc",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 3
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89313229_1871c968",
         "filename": "board/yorp/battery.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "45e50012_fa3f3898",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-26T22:14:20Z",
+      "side": 1,
+      "message": "I think this is still a good hook to have in case we run into any battery specific changes, Currently it\u0027s not doing anything, unless the flag is set. See my comment below.",
+      "parentUuid": "89313229_1871c968",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 28
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb907c31_ecd2e3e9",
         "filename": "board/yorp/battery.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-03-26T15:48:16Z",
       "side": 1,
       "message": "I think we should be handling this case within the charge state machine if possible.",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d492c82_10cb6919",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-26T22:14:20Z",
+      "side": 1,
+      "message": "This is handled in the charge state machine like this currently:\n\n#ifdef CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD\n\t\t\t/*\n\t\t\t * TODO (crosbug.com/p/29467): remove this workaround\n\t\t\t * for dead battery that requests no voltage/current\n\t\t\t */\n\t\t\tif (curr.requested_voltage \u003d\u003d 0 \u0026\u0026\n\t\t\t    curr.requested_current \u003d\u003d 0 \u0026\u0026\n\t\t\t    curr.batt.state_of_charge \u003d\u003d 0) {\n\t\t\t\t/* Battery is dead, give precharge current */\n\t\t\t\tcurr.requested_voltage \u003d\n\t\t\t\t\tbatt_info-\u003evoltage_max;\n\t\t\t\tcurr.requested_current \u003d\n\t\t\t\t\tbatt_info-\u003eprecharge_current;\n\t\t\t} else\n#endif\n\nI put this in Coral so that batteries that need this can use it without applying it to all batteries.",
+      "parentUuid": "cb907c31_ecd2e3e9",
       "range": {
         "startLine": 226,
         "startChar": 4,
