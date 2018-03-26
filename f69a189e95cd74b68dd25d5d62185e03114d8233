@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4401c1b_f632c3b4",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-26T14:38:14Z",
+      "side": 1,
+      "message": "please remove it",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "f69a189e95cd74b68dd25d5d62185e03114d8233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d797429b_8463697a",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-26T14:38:14Z",
+      "side": 1,
+      "message": "Would you describe it more clear?",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 59
+      },
+      "revId": "f69a189e95cd74b68dd25d5d62185e03114d8233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a96628_d3bc5384",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-26T14:38:14Z",
+      "side": 1,
+      "message": "How about we change it to \"write_kblight\"?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "f69a189e95cd74b68dd25d5d62185e03114d8233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
