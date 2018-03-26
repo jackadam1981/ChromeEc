@@ -337,13 +337,27 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
  */
 static void lpc_sib_wait_host_read_done(void)
 {
-	timestamp_t deadline;
+	timestamp_t deadline, start;
 
-	deadline.val = get_time().val + LPC_HOST_TRANSACTION_TIMEOUT_US;
+	start = get_time();
+	deadline.val = start.val + LPC_HOST_TRANSACTION_TIMEOUT_US;
 	while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSRD)) {
 		if (timestamp_expired(deadline, NULL)) {
 			CPRINTS("Unexpected time of host read transaction");
 			break;
+		} /* Overflow occurred? */
+		else if (IS_BIT_SET(NPCX_ITCTS(ITIM32), NPCX_ITCTS_TO_STS)) {
+			/*
+			 * Restore ITIM32 preload counter value to maximum
+			 * and process overflow by force_time()
+			 */
+			start.le.hi++;
+			start.le.lo = 0;
+			force_time(start);
+
+			/* Set new deadline */
+			deadline.val = start.val
+					+ LPC_HOST_TRANSACTION_TIMEOUT_US;
 		}
 	}
 }
@@ -353,13 +367,27 @@ static void lpc_sib_wait_host_read_done(void)
  */
 static void lpc_sib_wait_host_write_done(void)
 {
-	timestamp_t deadline;
+	timestamp_t deadline, start;
 
-	deadline.val = get_time().val + LPC_HOST_TRANSACTION_TIMEOUT_US;
+	start = get_time();
+	deadline.val = start.val + LPC_HOST_TRANSACTION_TIMEOUT_US;
 	while (IS_BIT_SET(NPCX_SIBCTRL, NPCX_SIBCTRL_CSWR)) {
 		if (timestamp_expired(deadline, NULL)) {
 			CPRINTS("Unexpected time of host write transaction");
 			break;
+		} /* Overflow occurred? */
+		else if (IS_BIT_SET(NPCX_ITCTS(ITIM32), NPCX_ITCTS_TO_STS)) {
+			/*
+			 * Restore ITIM32 preload counter value to maximum
+			 * and process overflow by force_time()
+			 */
+			start.le.hi++;
+			start.le.lo = 0;
+			force_time(start);
+
+			/* Set new deadline */
+			deadline.val = start.val
+					+ LPC_HOST_TRANSACTION_TIMEOUT_US;
 		}
 	}
 }
