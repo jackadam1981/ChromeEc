@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbcae2ef_ae03eb64",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-26T03:52:04Z",
+      "side": 1,
+      "message": "cmd32 (to be a more consistent with what i2c_write8/32 does)\n\nAnd maybe rename the function to something a bit simpler, like write_hwreg_cmd32 ?",
+      "range": {
+        "startLine": 436,
+        "startChar": 29,
+        "endLine": 436,
+        "endChar": 38
+      },
+      "revId": "c02a9856f778e115757973ded4451d4388250209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
