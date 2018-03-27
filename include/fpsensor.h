@@ -52,6 +52,24 @@ void fp_sensor_low_power(void);
  */
 void fp_sensor_configure_detect(void);
 
+
+/*
+ * Get sensor finger detect zone covered information.
+ *
+ * function read the sensor coverage status and returns number of
+ * finger detection zones that is currently covered (0 - 12) and a bit field
+ * with bits set indicating which of the zones on sensor that is covered.
+ *
+ * @param[out] coverage  bit field holding each finger detect zone enabled info
+ * @param[out] num_zones number of finger detect zones covered.
+ *
+ * Returns:
+ * - 0 on success
+ * - negative value on error
+ *
+ */
+int fp_sensor_finger_areas(uint32_t *coverage, uint32_t *num_zones);
+
 /*
  * Returns the status of the finger on the sensor.
  * (assumes fp_sensor_configure_detect was called before)
