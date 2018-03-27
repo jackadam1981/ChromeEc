@@ -123,6 +123,24 @@
       "revId": "0d6daca308707f43068732064028e6175707499b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9685dc8d_03d44df5",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-03-27T09:29:24Z",
+      "side": 1,
+      "message": "Both of them need to be called. One is handling ITIM32 overflow (Reset preload value and clear pending bit.), the other is handling 32-bit timer overflow in common layer.\n\nThe purpose of the /* Handle soft trigger */ else branch in __hw_clock_source_irq is handling ITIM32 interrupt which triggered by M4\u0027s SWTRIG register. Please refer https://chromium.googlesource.com/chromiumos/platform/ec/+/master/core/cortex-m/task.c#486. If ec FW uses forcetime() to compensate hardware timer, it will issue a software timer interrupt at the end of this function. Then the block will calculate each task deadline in ISR. If one of task deadline expired, the system will wake up this task after leaving ISR.\n\nI will use hw_clock_source_set_preload() and process_timers() in next patch set. Once it passed the tests on my side, I will push it for code review.",
+      "parentUuid": "01ef8138_b4f097af",
+      "revId": "0d6daca308707f43068732064028e6175707499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
