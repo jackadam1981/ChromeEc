@@ -254,6 +254,29 @@
       "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a50b096_6163551a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-27T17:13:57Z",
+      "side": 1,
+      "message": "This method is missing:\n.get_chip_info\t\t\u003d \u0026tcpci_get_chip_info,",
+      "range": {
+        "startLine": 364,
+        "startChar": 13,
+        "endLine": 364,
+        "endChar": 38
+      },
+      "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
