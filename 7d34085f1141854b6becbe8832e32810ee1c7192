@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "45a2379d_734c3b74",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T20:42:20Z",
+      "side": 1,
+      "message": "Can you comment what why you need a multiplier of 55.55?",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4fd3a33_724e593a",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T20:42:20Z",
+      "side": 1,
+      "message": "Do you want to put the (ADC_READ_MAX+1) from above down here in the divisor? Also do you want to drop the *2 above and 2 here?",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 4
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd1ce130_471a54df",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T20:42:20Z",
+      "side": 1,
+      "message": "do you want to cut a bug to this?",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 8
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47ae9444_e0a8f244",
         "filename": "board/atlas/board.c",
         "patchSetId": 3
@@ -35,6 +104,52 @@
         "startChar": 23,
         "endLine": 519,
         "endChar": 37
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5af5903_12b7bd7d",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T20:42:20Z",
+      "side": 1,
+      "message": "I have seen some recent board bump this to 4g to better support ARC (if your device supports it)",
+      "range": {
+        "startLine": 532,
+        "startChar": 2,
+        "endLine": 532,
+        "endChar": 50
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ad8481_c481ec2e",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T20:42:20Z",
+      "side": 1,
+      "message": "I was going to look into this later for octopus: why do we want to increase this from 30ms to 1000ms?",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 41
       },
       "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
