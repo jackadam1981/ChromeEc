@@ -13,7 +13,7 @@
 #include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p3483.h"
-#include "driver/tcpm/anx74xx.h"
+#include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
@@ -292,8 +292,8 @@ void lid_angle_peripheral_enable(int enable)
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.i2c_host_port = I2C_PORT_TCPC0,
-		.i2c_slave_addr = 0x50,
-		.drv = &anx74xx_tcpm_drv,
+		.i2c_slave_addr = 0x58, /*AN7447_TCPC1_I2C_ADDR,*/
+		.drv = &anx7447_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 	[USB_PD_PORT_PS8751] = {
@@ -307,8 +307,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.port_addr = USB_PD_PORT_ANX74XX,
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+		.driver = &anx7447_usb_mux_driver ,
+		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_PS8751] = {
 		.port_addr = USB_PD_PORT_PS8751,
