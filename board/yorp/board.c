@@ -298,7 +298,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 	[USB_PD_PORT_PS8751] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
