@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16931e15_3da4bba9",
+        "filename": "board/yorp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-27T17:53:13Z",
+      "side": 1,
+      "message": "rebase error. Will update.",
+      "parentUuid": "85858b67_80ac61d9",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cff7579d_06b6f155",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
