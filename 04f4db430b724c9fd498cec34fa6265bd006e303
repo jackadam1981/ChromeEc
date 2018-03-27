@@ -1,0 +1,296 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85858b67_80ac61d9",
+        "filename": "board/yorp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "This is already added two lines below this.",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff7579d_06b6f155",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40f0c342_8240381f",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "Use tabs for consistency.",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57de7ed6_cd70f994",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "Use tabs for consistency.",
+      "range": {
+        "startLine": 23,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a6a677d_fe412be9",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "multiple blank lines not required.",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f460d8d_b28c20f1",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "In addition to comment, in general, it is helpful to do something like:\n[STATE_CHARGING] \u003d { ... },\n[STATE_CHARGING_FULLY_CHARGED] \u003d { ... },\n\n\nAlso, it might be a good idea to add BUILD_ASSERT to ensure each led_state has an entry in state table or define led_state_table[LED_NUM_STATES][LED_NUM_PHASES].",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e6206a_6bed05e7",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "Why is this required? If phase0 is indefinite, phase1 has no meaning. This could very well be:\n[STATE_CHARGING] \u003d { { LED_COLOR_ORANGE, LED_INDEFINITE }, },\n...",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c001e2_b3472cac",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "multiple blank lines not required.",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97277fe_d27eee9f",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "static",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b55e1f3_b537d757",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "No caller is checking the return value. Do we really care about the failure?",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89320ea_d35b815c",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "multiple blank lines",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8f7423_200e4aa2",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "unsigned int?",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4179a39f_216a8a9a",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be sufficient to check only PHASE_0 for indefinite?",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 69
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6b2bc1_02ee3cd7",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T05:15:31Z",
+      "side": 1,
+      "message": "blank line not required.",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
