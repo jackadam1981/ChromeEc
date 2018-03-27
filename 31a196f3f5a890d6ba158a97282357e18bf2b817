@@ -46,6 +46,30 @@
       "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbcb6cd8_8299562b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-27T21:59:44Z",
+      "side": 1,
+      "message": "(capturing our discussion offline). I think maybe we should split the two configs. What I would really like is to have a single config that essentially means the minimum charger power required for power on, as that\u0027s what\u0027s really being tested here.\n\nWe can then leave the limit power stuff alone elsewhere.",
+      "parentUuid": "b73e5192_ed7aafd3",
+      "range": {
+        "startLine": 1751,
+        "startChar": 7,
+        "endLine": 1751,
+        "endChar": 47
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
