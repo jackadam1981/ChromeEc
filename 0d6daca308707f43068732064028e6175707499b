@@ -105,6 +105,24 @@
       "revId": "0d6daca308707f43068732064028e6175707499b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01ef8138_b4f097af",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-27T00:18:26Z",
+      "side": 1,
+      "message": "Thanks ML, I didn\u0027t grasp that edge case. I really wish NPCX timer controller was a little smarter and had a proper count _and_ reload register...\n\nAnyway, maybe we can just call __hw_clock_source_irq in this loop (or a simpler function that just handles the overflow case), so hw_clock_source_set_preload(0, 1); and that process_timers(1) can be called, which would make the existing deadline code work?\n\nSide note, what\u0027s the purpose of the /* Handle soft trigger */ else branch in __hw_clock_source_irq?",
+      "parentUuid": "69c57b7b_b195d542",
+      "revId": "0d6daca308707f43068732064028e6175707499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
