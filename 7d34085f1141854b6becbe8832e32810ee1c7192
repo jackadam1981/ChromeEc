@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "795b71f7_e39c0734",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T20:44:44Z",
+      "side": 1,
+      "message": "nit: This can be arranged as:\nif (battery_manufacturer_name(name, sizeof(name))\n    return;\n\nfor (i \u003d 0; i \u003c BATTERY_TYPE_COUNT; i++) {\n    if (strncasecmp(...))\n        continue;\n    board_battery_type \u003d i;\n    break;\n}\n\nJust easier to read.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529d3b81_07407694",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T20:44:44Z",
+      "side": 1,
+      "message": "This function always returns 0 :). Is it needed?",
+      "range": {
+        "startLine": 159,
+        "startChar": 11,
+        "endLine": 159,
+        "endChar": 41
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08426ae4_bc77d552",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T20:44:44Z",
+      "side": 1,
+      "message": "Based on some other bugs and discussions, setting of requested current and voltage should not be required at board level. It should be handled correctly by battery gas gauge.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 2
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45a2379d_734c3b74",
         "filename": "board/atlas/board.c",
         "patchSetId": 3
@@ -127,6 +196,29 @@
         "startChar": 2,
         "endLine": 532,
         "endChar": 50
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13916728_2cecea4c",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-27T20:44:44Z",
+      "side": 1,
+      "message": "Isn\u0027t this already #undef\u0027ed in config.h?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 28
       },
       "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
