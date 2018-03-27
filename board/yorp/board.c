@@ -292,7 +292,8 @@ void lid_angle_peripheral_enable(int enable)
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.i2c_host_port = I2C_PORT_TCPC0,
-		.i2c_slave_addr = 0x50,
+		/* TODO(b/76452392): Remove const once CL:956790 lands */
+		.i2c_slave_addr = 0x58,
 		.drv = &anx74xx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
