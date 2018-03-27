@@ -157,6 +157,30 @@
     },
     {
       "key": {
+        "uuid": "afa35861_31de553c",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T14:13:48Z",
+      "side": 1,
+      "message": "+1 Looking at it again, I like keeping both colors the same when LED_INDEFINITE is the time for the first phase, or just dropping the second phase all together since the code will handle it correctly.",
+      "parentUuid": "91e6206a_6bed05e7",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6c001e2_b3472cac",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
