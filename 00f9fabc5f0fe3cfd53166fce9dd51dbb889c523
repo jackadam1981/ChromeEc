@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69bebf19_acb05df5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T13:41:29Z",
+      "side": 1,
+      "message": "can you add !\u003d EC_SUCCESS here too (to match style of below methods)",
+      "range": {
+        "startLine": 366,
+        "startChar": 49,
+        "endLine": 366,
+        "endChar": 50
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b985f4f_237b2ee7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T13:41:29Z",
+      "side": 1,
+      "message": "nit: why negate here? It is easier to read without the extra inversion (and switching the if and else block)",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 9
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08577e33_6f0a2def",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-27T13:41:29Z",
+      "side": 1,
+      "message": "more of a questions for my own understanding: you don\u0027t really need this !! right, since you are only using it in boolean logic below? (I am fine keeping it, just more curious about your style)",
+      "range": {
+        "startLine": 1886,
+        "startChar": 30,
+        "endLine": 1886,
+        "endChar": 33
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
