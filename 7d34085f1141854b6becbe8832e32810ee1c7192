@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47ae9444_e0a8f244",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-03-27T20:19:20Z",
+      "side": 1,
+      "message": "There might need to be a CONFIG_ACCEL_FORCE_MODE_MASK, I am not sure as I only tested the accel readings from the EC console.",
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "063b2b78_7c86f28f",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-03-27T20:19:20Z",
+      "side": 1,
+      "message": "This may need some tweaking..",
+      "range": {
+        "startLine": 519,
+        "startChar": 23,
+        "endLine": 519,
+        "endChar": 37
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
