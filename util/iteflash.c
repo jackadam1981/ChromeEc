@@ -83,7 +83,7 @@ enum {
 static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 			     uint8_t *ptr, uint8_t *tbuf, int tcnt)
 {
-	int ret, i, j;
+	int ret, i, j, remaining_data, ack_idx;
 	int tx_buffered = 0;
 	static uint8_t ack[TX_BUFFER_LIMIT];
 	uint8_t *b = ptr;
@@ -117,7 +117,16 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 			}
 
 			/* read ACK bits */
-			ret = ftdi_read_data(ftdi, &ack[0], tx_buffered);
+			remaining_data = tx_buffered;
+			ack_idx = 0;
+			do {
+				ret = ftdi_read_data(ftdi, &ack[ack_idx],
+					remaining_data);
+				if (ret < 0)
+					fprintf(stderr, "read ACK failed\n");
+				remaining_data -= ret;
+				ack_idx += ret;
+			} while (remaining_data);
 			for (j = 0; j < tx_buffered; j++) {
 				if ((ack[j] & 0x80) != 0)
 					failed_ack = ack[j];
@@ -143,7 +152,7 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 			     uint8_t *ptr, uint8_t *rbuf, int rcnt)
 {
-	int ret, i;
+	int ret, i, rbuf_idx;
 	uint8_t *b = ptr;
 
 	for (i = 0; i < rcnt; i++) {
@@ -170,9 +179,16 @@ static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 		fprintf(stderr, "failed to prepare read\n");
 		return ret;
 	}
-	ret = ftdi_read_data(ftdi, rbuf, rcnt);
-	if (ret < 0)
-		fprintf(stderr, "read byte failed\n");
+
+	rbuf_idx = 0;
+	do {
+		ret = ftdi_read_data(ftdi, &rbuf[rbuf_idx], rcnt);
+		if (ret < 0)
+			fprintf(stderr, "read byte failed\n");
+		rcnt -= ret;
+		rbuf_idx += ret;
+	} while (rcnt);
+
 	return ret;
 }
 
@@ -277,8 +293,8 @@ static int check_chipid(struct ftdi_context *ftdi)
 	/* compute embedded flash size from CHIPVER field */
 	flash_size = (128 + (ver & 0xF0)) * 1024;
 
-	printf("CHIPID %04x, CHIPVER %02x, Flash size %d kB\n", id, ver,
-			flash_size / 1024);
+	fprintf(stderr, "CHIPID %04x, CHIPVER %02x, Flash size %d kB\n", id,
+			ver, flash_size / 1024);
 
 	return 0;
 }
@@ -295,7 +311,7 @@ static int dbgr_reset(struct ftdi_context *ftdi)
 
 	ret |= i2c_write_byte(ftdi, 0x27, 0x80);
 	if (ret < 0)
-		printf("DBGR RESET FAILED\n");
+		fprintf(stderr, "DBGR RESET FAILED\n");
 
 	return 0;
 }
@@ -316,7 +332,8 @@ static int exit_dbgr_mode(struct ftdi_context *ftdi)
 	 * if we have exit dbgr mode.
 	 * We do a cold reset for EC after flashing.
 	 */
-	printf("=== EXIT DBGR MODE %s ===\n", (ret < 0) ? "FAILED" : "DONE");
+	fprintf(stderr, "=== EXIT DBGR MODE %s ===\n",
+		(ret < 0) ? "FAILED" : "DONE");
 
 	return 0;
 }
@@ -511,7 +528,7 @@ static int send_special_waveform(struct ftdi_context *ftdi)
 
 	wave = malloc(SPECIAL_BUFFER_SIZE);
 
-	printf("Waiting for the EC power-on sequence ...");
+	fprintf(stderr, "Waiting for the EC power-on sequence ...");
 	fflush(stdout);
 
 retry:
@@ -577,7 +594,7 @@ retry:
 		goto retry;
 	}
 special_failed:
-	printf("Done.\n");
+	fprintf(stderr, "Done.\n");
 	free(wave);
 	return ret;
 }
@@ -587,7 +604,7 @@ static const char wheel[] = {'|', '/', '-', '\\' };
 static void draw_spinner(uint32_t remaining, uint32_t size)
 {
 	int percent = (size - remaining)*100/size;
-	printf("\r%c%3d%%", wheel[windex++], percent);
+	fprintf(stderr, "\r%c%3d%%", wheel[windex++], percent);
 	windex %= sizeof(wheel);
 }
 
@@ -723,6 +740,7 @@ int command_write_pages(struct ftdi_context *ftdi, uint32_t address,
 		address += cnt;
 		remaining -= cnt;
 	}
+	draw_spinner(remaining, size);
 	/* No error so far */
 	res = size;
 failed_write:
@@ -748,7 +766,7 @@ int command_erase(struct ftdi_context *ftdi, uint32_t len, uint32_t off)
 	int page = 0;
 	uint32_t remaining = len;
 
-	printf("Erasing chip...\n");
+	fprintf(stderr, "Erasing chip...\n");
 
 	if (off != 0 || len != flash_size) {
 		fprintf(stderr, "Only full chip erase is supported\n");
@@ -801,6 +819,7 @@ wait_busy_cleared:
 		}
 	}
 	/* No error so far */
+	fprintf(stderr, "\n\rErasing Done.\n");
 	res = 0;
 failed_erase:
 	if (spi_flash_command_short(ftdi, SPI_CMD_WRITE_DISABLE,
@@ -809,8 +828,6 @@ failed_erase:
 
 	if (spi_flash_follow_mode_exit(ftdi, "erase") < 0)
 		res = -EIO;
-
-	printf("\n");
 
 	return res;
 }
@@ -837,13 +854,13 @@ int read_flash(struct ftdi_context *ftdi, const char *filename,
 
 	if (!size)
 		size = flash_size;
-	printf("Reading %d bytes at 0x%08x\n", size, offset);
+	fprintf(stderr, "Reading %d bytes at 0x%08x\n", size, offset);
 	res = command_read_pages(ftdi, offset, size, buffer);
 	if (res > 0) {
 		if (fwrite(buffer, res, 1, hnd) != 1)
 			fprintf(stderr, "Cannot write %s\n", filename);
 	}
-	printf("\r   %d bytes read.\n", res);
+	fprintf(stderr, "\r   %d bytes read.\n", res);
 
 	fclose(hnd);
 	free(buffer);
@@ -878,14 +895,14 @@ int write_flash(struct ftdi_context *ftdi, const char *filename,
 	}
 	fclose(hnd);
 
-	printf("Writing %d bytes at 0x%08x\n", res, offset);
+	fprintf(stderr, "Writing %d bytes at 0x%08x\n", res, offset);
 	written = command_write_pages(ftdi, offset, res, buffer);
 	if (written != res) {
 		fprintf(stderr, "Error writing to flash\n");
 		free(buffer);
 		return -EIO;
 	}
-	printf("\rDone.\n");
+	fprintf(stderr, "\n\rWriting Done.\n");
 
 	free(buffer);
 	return 0;
@@ -923,7 +940,7 @@ int verify_flash(struct ftdi_context *ftdi, const char *filename,
 		goto exit;
 	}
 
-	printf("Verify %d bytes at 0x%08x\n", file_size, offset);
+	fprintf(stderr, "Verify %d bytes at 0x%08x\n", file_size, offset);
 	res = command_read_pages(ftdi, offset, flash_size, buffer2);
 	draw_spinner(flash_size-res, flash_size);
 	res = memcmp(buffer, buffer2, file_size);
@@ -932,7 +949,7 @@ int verify_flash(struct ftdi_context *ftdi, const char *filename,
 		goto exit;
 	}
 
-	printf("\n\rVerify Done.\n");
+	fprintf(stderr, "\n\rVerify Done.\n");
 exit:
 
 	free(buffer);
@@ -1105,8 +1122,11 @@ terminate:
 	/* Exit DBGR mode */
 	exit_dbgr_mode(hnd);
 
+	/* clean everything */
+	ftdi_usb_purge_buffers(hnd);
 	/* Close the FTDI USB handle */
 	ftdi_usb_close(hnd);
 	ftdi_free(hnd);
+	fprintf(stderr, "Exit iteflash.\n");
 	return ret;
 }
