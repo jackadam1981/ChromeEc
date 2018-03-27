@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f7d7b23_8eb251be",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-27T19:54:18Z",
+      "side": 1,
+      "message": "given you seem to call it by casting uint32_t *,\nshouldn\u0027t you implement it as 4 loop iterations on uint32_t ?\nit seems the same algorithm would work (with 0x80000000) but ... faster",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "0723805497afe889fced6b7a52338fbb81adeea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb30325c_52837b95",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-27T19:54:18Z",
+      "side": 1,
+      "message": "while this header is clearly not an example of good documentation, we likely need more information to use those prototypes (at least self-describing parameter names, e.g T is tag?)",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "0723805497afe889fced6b7a52338fbb81adeea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
