@@ -454,6 +454,30 @@
     },
     {
       "key": {
+        "uuid": "e5aeae82_25626938",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-27T22:55:12Z",
+      "side": 1,
+      "message": "Thanks Jett! Apparently it\u0027s a requirement for ARCore. http://shortn/_R68eL5oFpE.",
+      "parentUuid": "c9642382_e4ea6d89",
+      "range": {
+        "startLine": 532,
+        "startChar": 2,
+        "endLine": 532,
+        "endChar": 50
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9c642b2_660548f6",
         "filename": "board/atlas/board.h",
         "patchSetId": 3
@@ -735,6 +759,24 @@
       "side": 1,
       "message": "yeah probably not, we were having issues with bring-up so we forced this to an input.  I\u0027ll remove for now.",
       "parentUuid": "fe9218a5_6f4ea5cd",
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00894c5_a9c5700f",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-27T22:55:12Z",
+      "side": 1,
+      "message": "I remember on zoombini we had this setup as an output and the EC immediately went into hibernate. Nuvoton agreed that we didn\u0027t need to. (See b/65647213).",
+      "parentUuid": "2256e001_64b33018",
       "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
