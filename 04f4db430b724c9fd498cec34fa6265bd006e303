@@ -111,6 +111,24 @@
     },
     {
       "key": {
+        "uuid": "a64cafd0_dd3b5243",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a6a677d_fe412be9",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f460d8d_b28c20f1",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
@@ -131,6 +149,30 @@
       "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d084b1_2a72c425",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f460d8d_b28c20f1",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 21
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -181,6 +223,30 @@
     },
     {
       "key": {
+        "uuid": "8bbd3e71_0a75c7f4",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Yes, the second phase is ignore. Will change.",
+      "parentUuid": "afa35861_31de553c",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6c001e2_b3472cac",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
@@ -198,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "535b4de0_e94dfcab",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6c001e2_b3472cac",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97277fe_d27eee9f",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
@@ -209,6 +293,24 @@
       "writtenOn": "2018-03-27T05:15:31Z",
       "side": 1,
       "message": "static",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893eb95d_6d090364",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "d97277fe_d27eee9f",
       "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -238,6 +340,30 @@
     },
     {
       "key": {
+        "uuid": "12f9cd17_6401cff5",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Ack. I will remove this.",
+      "parentUuid": "3b55e1f3_b537d757",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c89320ea_d35b815c",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
@@ -252,6 +378,24 @@
       "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f759176e_08cbc67c",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c89320ea_d35b815c",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +422,30 @@
     },
     {
       "key": {
+        "uuid": "52b76b7c_155b4538",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "af8f7423_200e4aa2",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4179a39f_216a8a9a",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
@@ -289,6 +457,30 @@
       "writtenOn": "2018-03-27T05:15:31Z",
       "side": 1,
       "message": "Wouldn\u0027t it be sufficient to check only PHASE_0 for indefinite?",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 69
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31090b1f_5fb8061f",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "I think it would be safe to check if both are indefinite even though we do not have case where phase 1 is indefinite and phase 0 not for the calculation below.",
+      "parentUuid": "4179a39f_216a8a9a",
       "range": {
         "startLine": 181,
         "startChar": 5,
@@ -315,6 +507,24 @@
       "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4214f72_ec18049a",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-27T17:23:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a6b2bc1_02ee3cd7",
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
