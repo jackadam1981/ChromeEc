@@ -193,7 +193,7 @@ struct i2c_stress_test i2c_stress_tests[] = {
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
 	{
 		.port = NPCX_I2C_PORT0_1,
-		.addr = 0x16,
+		.addr = PS8751_I2C_ADDR1,
 		.i2c_test = &ps8xxx_i2c_stress_test_dev,
 	},
 #endif
@@ -252,7 +252,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 	[USB_PD_PORT_PS8751] = {
 		.i2c_host_port = NPCX_I2C_PORT0_1,
-		.i2c_slave_addr = 0x16,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
@@ -286,8 +286,8 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 static int ps8751_tune_mux(const struct usb_mux *mux)
 {
 	/* 0x98 sets lower EQ of DP port (4.5db) */
-	i2c_write8(NPCX_I2C_PORT0_1, 0x16, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION,
-		   0x98);
+	i2c_write8(NPCX_I2C_PORT0_1, PS8751_I2C_ADDR1,
+		PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 	return EC_SUCCESS;
 }
 
