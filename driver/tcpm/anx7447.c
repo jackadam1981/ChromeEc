@@ -123,6 +123,8 @@ static int anx7447_init(int port)
 
 	memset(&anx[port], 0, sizeof(struct anx_state));
 
+	ccprintf("anx7447_init[%d]: started\n", port);
+
 	/*
 	 * find corresponding anx7447 SPI slave address according to
 	 * specified TCPC slave address
@@ -142,8 +144,12 @@ static int anx7447_init(int port)
 	}
 
 	rv = tcpci_tcpm_init(port);
-	if (rv)
+	if (rv) {
+		ccprintf("anx7447_init[%d]: failed tcpm_init \n", port);
 		return rv;
+	} else {
+		ccprintf("anx7447_init[%d]: tcpm_init success!! \n", port);
+	}
 
 	/* clear ALERT mask */
 	rv = tcpc_write(port, ANX7447_REG_INTR_ALERT_MASK_0, 0x00);
@@ -168,11 +174,21 @@ static int anx7447_init(int port)
 	if (rv)
 		return rv;
 
+	ccprintf("anx7447_init[%d]: slave addr 0x%x read VID\n",
+		 port, tcpc_config[port].i2c_slave_addr);
+
+	rv =  tcpc_read16(port, TCPC_REG_VENDOR_ID, &reg);
+	if (rv)
+		ccprintf("tcpc[%d]: vendor id read failed %d\n", port, rv);
+	else
+		ccprintf("tcpc[%d]: vendor id = 0x%04x\n", port, reg);
+	cflush();
+
+
 	/* init hpd status */
 	anx7447_hpd_mode_en(port);
 	anx7447_set_hpd_level(port, 0);
 	anx7447_hpd_output_en(port);
-
 	return rv;
 }
 
@@ -248,6 +264,7 @@ static void anx7447_tcpc_alert(int port)
 	int alert, rv;
 
 	rv = tcpc_read16(port, TCPC_REG_ALERT, &alert);
+
 	/* process and clear alert status */
 	tcpci_tcpc_alert(port);
 
@@ -310,10 +327,13 @@ static int anx7447_mux_set(int port, mux_state_t mux_state)
 
 	cc_direction = mux_state & MUX_POLARITY_INVERTED;
 	mux_type = mux_state & TYPEC_MUX_DOCK;
-	ccprintf("mux_state = 0x%x, mux_type = 0x%x\n", mux_state, mux_type);
+	ccprintf("anx7447[%d] mux_state = 0x%x, mux_type = 0x%x\n",
+		 port, mux_state, mux_type);
 
-	if (mux_type == TYPEC_MUX_NONE)
-		return EC_ERROR_UNKNOWN;
+	if (mux_type == TYPEC_MUX_NONE) {
+		ccprintf("anx7447: TYPEC_MUX_NONE, ignoring\n");
+		return EC_SUCCESS;
+	}
 
 	/* type-C interface detect cable plug direction
 	 * is positive orientation
@@ -342,6 +362,8 @@ static int anx7447_mux_set(int port, mux_state_t mux_state)
 			aux_sw = 0x0C;
 		}
 	}
+	ccprintf("anx7447[%d] sw_sel = 0x%x, aux_sel = 0x%x\n",
+		 port, sw_sel, aux_sw);
 	rv = tcpc_write(port, ANX7447_REG_TCPC_SWITCH_0, sw_sel);
 	rv |= tcpc_write(port, ANX7447_REG_TCPC_SWITCH_1, sw_sel);
 	rv |= tcpc_write(port, ANX7447_REG_TCPC_AUX_SWITCH, aux_sw);
@@ -383,6 +405,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
+	.get_chip_info		= &tcpci_get_chip_info,
 };
 
 #ifdef CONFIG_USB_PD_TCPM_MUX
@@ -392,4 +415,3 @@ const struct usb_mux_driver anx7447_usb_mux_driver = {
 	.get = anx7447_mux_get,
 };
 #endif /* CONFIG_USB_PD_TCPM_MUX */
-
