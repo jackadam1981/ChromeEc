@@ -140,6 +140,30 @@
       "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2349739_2aa2bd86",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-28T00:09:17Z",
+      "side": 1,
+      "message": "In such cases what is the state of charge and discharge FETs?",
+      "parentUuid": "2d492c82_10cb6919",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
