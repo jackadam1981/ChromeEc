@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c2a8100_068278ba",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-28T23:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee52dfe_8efc45db",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2a93b26_7798cccf",
         "filename": "board/yorp/led.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-28T19:25:28Z",
       "side": 1,
       "message": "nit: can you move this down and make default and LED_OFF share this code that way an unsupported color will turn off the LEDs too.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378b2c11_9478d74f",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-28T23:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2a93b26_7798cccf",
       "range": {
         "startLine": 80,
         "startChar": 1,
@@ -82,6 +130,30 @@
       "writtenOn": "2018-03-28T22:51:20Z",
       "side": 1,
       "message": "Or we can add ticks \u003d (ticks + 1) % 65535;",
+      "parentUuid": "2c34050b_9149b9c1",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2d2645_500c2724",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-28T23:27:31Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "2c34050b_9149b9c1",
       "range": {
         "startLine": 190,
