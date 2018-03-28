@@ -22,6 +22,99 @@
       "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82e4eea_4bb1b026",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T16:45:10Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "3d1583ed_dc5c3f1a",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 9
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de83041b_9a8b5e87",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T16:45:10Z",
+      "side": 1,
+      "message": "should we do this check at the top. We don\u0027t need to wait another second for a disconnected battery if we are jumping to RW",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 23
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2eacb7e_5bee61de",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T16:45:10Z",
+      "side": 1,
+      "message": "Why do we want the default state to toggle? (instead of the off default). I didn\u0027t see that for any other boards",
+      "range": {
+        "startLine": 67,
+        "startChar": 40,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25057b21_dfe550cf",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T16:45:10Z",
+      "side": 1,
+      "message": "Why are we limiting the default current to 0.5A instead of 1.5A (the CONFIG_USB_PD_PULLUP default)?",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
