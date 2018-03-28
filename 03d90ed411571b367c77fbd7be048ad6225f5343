@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb017fb6_10ec47b6",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-28T15:51:18Z",
+      "side": 1,
+      "message": "This is a small item, but we used blue/amber previously for reef and coral. In ectool we have support for these led colors:\n/* Note: depends on enum ec_led_colors */\nstatic const char * const led_color_names[] \u003d {\n\t\"red\", \"green\", \"blue\", \"yellow\", \"white\", \"amber\"};\nBUILD_ASSERT(ARRAY_SIZE(led_color_names) \u003d\u003d EC_LED_COLOR_COUNT);\n\nIf ORANGE is changed to AMBER then we don\u0027t need to update ectool to support another name for what\u0027s essentially the same color.",
+      "range": {
+        "startLine": 33,
+        "startChar": 11,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "03d90ed411571b367c77fbd7be048ad6225f5343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
