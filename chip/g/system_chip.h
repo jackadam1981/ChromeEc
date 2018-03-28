@@ -39,7 +39,11 @@ void system_decrement_retry_counter(void);
 int system_rolling_reboot_suspected(void);
 
 /**
- * Compare the rw headers to check if there was a rollback.
+ * Returns True if a rollback was detected during system_preinit. Rollback
+ * is determined if the reset counter stored in long life scratch is greater
+ * than some rollback threshold. The long life scratch reset counter is cleared
+ * once the AP fully boots, so this is only reliable until the first deep sleep
+ * resume after the chip resets and the AP fully boots.
  *
  * @return a boolean, set to True if a rollback is detected.
  */
