@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f617fc01_6b355d43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-28T18:13:04Z",
+      "side": 1,
+      "message": "And I prefer abbreviating instead of going over 50 chars. I wrap the body of my commit message to 72 chars as well. In general, I\u0027m a fan of abbreviations to save space.\n\nAnyways, I think chgstv2 isn\u0027t that cryptic and one should be able to tell from context that chgstv2 \u003d\u003d charge_state_v2, especially when the commit only has 1 file diff of charge_state_v2.c...\n\n\"chg pwr\" sure, maybe not the best.",
+      "parentUuid": "8fd3c816_5ba3cef6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a867e901_a9e638ec",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
