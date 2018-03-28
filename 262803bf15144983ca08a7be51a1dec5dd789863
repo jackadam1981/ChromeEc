@@ -22,6 +22,30 @@
       "revId": "262803bf15144983ca08a7be51a1dec5dd789863",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5d6a40_d3bda782",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T16:26:15Z",
+      "side": 1,
+      "message": "I was touching the 5205 USB MUX address as well (but no one is using that yet)",
+      "parentUuid": "e6300a52_a7f4c8e9",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "262803bf15144983ca08a7be51a1dec5dd789863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
