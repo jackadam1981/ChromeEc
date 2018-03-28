@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3fb074e4_2502bb3a",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97514abc_06febdba",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6f7377c_66f06f9b",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc50db7_2b003de4",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6f7377c_66f06f9b",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "13a9e6ee_f8916a8e",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30936a88_52619db1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94bbcf4a_c2e45d81",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f4e5a06_c5a3d2f3",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94bbcf4a_c2e45d81",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "788b877c_fbbc9198",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3019a8d_3c61d77e",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb88cd42_eded7e38",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2018-03-22T11:25:18Z",
       "side": 1,
       "message": "it\u0027s a fancy version of :\nuint8_t *block \u003d (uint8_t *)block;\nsize_t cnt \u003d MIN(32, nBytes -i);\nblock[0] \u003d block[1] \u003d block[2] \u003d block[3] \u003d 0;\nmemcpy(block, array + (i * 4), cnt);\nif (cnt \u003c 32)\n  block8[cnt] \u003d 0x80;\n\nnot sure your version would win the speed benchmark ;-)\nregardless, you are always doing the following pattern\nget_block128(  , B)\nxor128(B, ...)\n\nyou likely want to do both operations in a single pass while you are iterating on bytes.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb1c038_0ceec787",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Okay, I changed this to a version that does both the padding and the xor, iterating on bytes.",
+      "parentUuid": "cb88cd42_eded7e38",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a98f4723_7b39e3ab",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Do you mean for all constant integers, or for this particular one (which no longer exists in the updated version)?",
+      "parentUuid": "9413b48d_c17f78d2",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 58
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ca74aed_27b7d14d",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d75e0b6_ca8138b8",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca74aed_27b7d14d",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 11
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "dc85ca58_ded412ab",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e8de33d_2fda2d19",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 58
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55964819_b5b161c0",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -229,6 +445,30 @@
       "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e67c84f_29380921",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55964819_b5b161c0",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "43a50bce_02ff026c",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d170aa2_c17eb462",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 61
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aea6a8c_2a6f02c1",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -289,6 +553,30 @@
       "writtenOn": "2018-03-22T11:25:18Z",
       "side": 1,
       "message": "so at the end of the day :\nn \u003d DIV_ROUND_UP(len , 4);\n\nis there really something to do for the special case you mentioned (n\u003d0) ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 61
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c48a9a0_7a5fd1e1",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Yes, if n \u003d 0 then we want to set n \u003d 1 and flag \u003d 0. The flag tells us whether the last 128-bit block of the input is complete, or if we have to pad it. So, for instance, if len\u003d16, we have 128 bits of input, so we set n \u003d ceil(16 / 16) \u003d 1 and flag \u003d 1 to declare one block, which is complete. But if len\u003d0, we do not want n \u003d ceil (0 / 16) \u003d 0 and flag \u003d 1; instead, we want to special-case this and treat it as a single incomplete block by setting n \u003d 1 and flag \u003d 0.\n\nPerhaps, though, this would be clearer with a separate if statement that just checks if len \u003d 0 and adds the special case?",
+      "parentUuid": "5aea6a8c_2a6f02c1",
       "range": {
         "startLine": 111,
         "startChar": 0,
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "a74c9bb3_37ebd100",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure which mode to use--the RFC doesn\u0027t say--but it seems like not reinitializing every iteration gives me incorrect answers and every mode gives the same result for one call. So as far as I can tell, it doesn\u0027t matter what mode we use, but this should probably pass under the eye of someone familiar with AES.",
+      "parentUuid": "9e66a1fb_693a42ed",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8221df06_2590f5d3",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -344,6 +656,30 @@
       "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8db56ac_7c6e2698",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-03-28T12:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8221df06_2590f5d3",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 1
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
