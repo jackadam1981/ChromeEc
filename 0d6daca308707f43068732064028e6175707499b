@@ -141,6 +141,24 @@
       "revId": "0d6daca308707f43068732064028e6175707499b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4e4af1_a2c83b5d",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-03-28T05:20:05Z",
+      "side": 1,
+      "message": "Regarding executing hw_clock_source_set_preload(0, 1) and process_timers(1) directly if ITIM32 expired, I still think force_time is a better solution. Here is my thought.\n\nWe need 64-bits comparison correct in timestamp_expired() by executing process_timers(1) and it will increase clksrc_high by 1. But executing process_timers(1) without ISR is a bad idea. EC will get force hard fault exception immediately during tests on my side. I think the root cause is task_set_event is called without ISR.\n\nThe new CL lets force_time() deal with clksrc_high and preload value of ITIM32 first. Once interrupt is enabled, process_timers(1) will be called in ISR immediately to handle the other timers expired for each task.",
+      "parentUuid": "9685dc8d_03d44df5",
+      "revId": "0d6daca308707f43068732064028e6175707499b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
