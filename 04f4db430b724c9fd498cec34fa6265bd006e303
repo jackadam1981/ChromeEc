@@ -439,6 +439,30 @@
     },
     {
       "key": {
+        "uuid": "663b2cd3_446b5540",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-28T03:38:51Z",
+      "side": 1,
+      "message": "If the time is LED_INDEFINITE, then the 2nd phase is a don\u0027t care. It can be dropped as suggested, or possibly a macro that means \"don\u0027t care\" so the table is easier to read. But, I think I agree with Jett that dropping it is probably best as it makes it explicit that there is no 2nd phase for a particular state.",
+      "parentUuid": "8f01e246_1339d37f",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 64
+      },
+      "revId": "04f4db430b724c9fd498cec34fa6265bd006e303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6c001e2_b3472cac",
         "filename": "board/yorp/led.c",
         "patchSetId": 2
