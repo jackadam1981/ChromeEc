@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "282935ae_b5bcf879",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-28T18:44:58Z",
+      "side": 1,
+      "message": "This whole section needs more comments. Things I can\u0027t tell from reading this or ANX7447 register specification:\n\n1. What is the alert mask used for here? Is this the custom ANX one, or does this related to the tcpci alert mask?\n2. What does INTP mean (i\u0027m pretty sure it means interrupt, but INTR seems to mean that as well)? What is bit 7 being set here.\n3. Why is VBUS protect being disabled here?\n\nI\u0027m sure there are good reasons for doing all this, but I think that should be documented so the code is easier to maintain and debug when issues do arise.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 12
+      },
+      "revId": "eaddcdab3e87a7f1312b7d8ca72c782c1273354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
