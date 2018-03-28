@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "1d79e6eb_e384f7f7",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-28T19:21:52Z",
+      "side": 1,
+      "message": "why not use tcpc_write() and tcpc_read?",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "eaddcdab3e87a7f1312b7d8ca72c782c1273354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8fa9671_70fa0b66",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-28T19:21:52Z",
+      "side": 1,
+      "message": "we don\u0027t need this check every time.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "eaddcdab3e87a7f1312b7d8ca72c782c1273354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c888909_15c9dd51",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-28T19:21:52Z",
+      "side": 1,
+      "message": "this can be configured at compile time.\nwe can add comment in the header to use corresponding address.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "eaddcdab3e87a7f1312b7d8ca72c782c1273354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "282935ae_b5bcf879",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 6
