@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bee52dfe_8efc45db",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T19:25:28Z",
+      "side": 1,
+      "message": "nit: you can get rid of these comments now since the index name defines it",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2a93b26_7798cccf",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T19:25:28Z",
+      "side": 1,
+      "message": "nit: can you move this down and make default and LED_OFF share this code that way an unsupported color will turn off the LEDs too.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c34050b_9149b9c1",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T19:25:28Z",
+      "side": 1,
+      "message": "What happens when this overflows, and do we care? If we don\u0027t care about the overflow case (because the LED might flash funny once) then let\u0027s comment it as such.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
