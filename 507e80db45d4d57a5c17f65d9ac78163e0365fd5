@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18c9c3a9_7a3b6242",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-28T17:17:23Z",
+      "side": 1,
+      "message": "This can be derived from mux (i.e. tcpc_config[mux-\u003eport_addr].i2c_slave_addr). Single place (tcpc_config) to change in the future.",
+      "range": {
+        "startLine": 289,
+        "startChar": 30,
+        "endLine": 289,
+        "endChar": 46
+      },
+      "revId": "507e80db45d4d57a5c17f65d9ac78163e0365fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
