@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ae48c4fd_d2093528",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-28T05:10:18Z",
+      "side": 1,
+      "message": "charge_state_v2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0107ae01_dab63fe2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-28T05:10:18Z",
+      "side": 1,
+      "message": "What does this mean? No abbreviation please.",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a867e901_a9e638ec",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
