@@ -164,6 +164,30 @@
       "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4724abc2_056c5a2d",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-28T00:27:01Z",
+      "side": 1,
+      "message": "I don\u0027t know. I was not able to reproduce the problem. But the ODM was convinced it was an issue because they were reusing the battery packs that the config option CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD was added to fix. We don\u0027t need this section, I thought it was a \"good to have\" but it\u0027s certainly not necessary. I do think we should keep the hook in either case. We may need to make some adjustments based on some battery parameter such as temperature. This happened on Eve for instance. Since the charge updates only happen at 0.5 sec intervals, I don\u0027t think it hurts anything to leave this here, until some point when we are closer to FW branch time and it\u0027s not being used.",
+      "parentUuid": "b2349739_2aa2bd86",
+      "range": {
+        "startLine": 226,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 58
+      },
+      "revId": "a86f0d72ee91dae6e7705bb192aea7da8638ba75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
