@@ -257,6 +257,29 @@
     },
     {
       "key": {
+        "uuid": "4f5d5fe9_04de36f5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-28T13:46:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the sw_sel and aux_sw settings need to be modified if mux_type \u003d\u003d TYPEC_MUX_NONE, but even if they don\u0027t, this function shouldn\u0027t return an error.",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 316,
+        "endChar": 25
+      },
+      "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a50b096_6163551a",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 5
@@ -273,6 +296,29 @@
         "startChar": 13,
         "endLine": 364,
         "endChar": 38
+      },
+      "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be10b90c_0e042685",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-28T13:46:37Z",
+      "side": 1,
+      "message": "To me this ordering is non-intuitive. I think AN7447_TCPC1_I2C_ADDR should correspond to ADDR1|ADDR0 \u003d 0x0, AN7447_TCPC2_I2C_ADDR -\u003e ADDR1|ADDR0 \u003d 0x1, etc. So these defines should be changed accordingly:\n#define AN7447_TCPC1_I2C_ADDR 0x58\n#define AN7447_TCPC2_I2C_ADDR 0x56\n#define AN7447_TCPC3_I2C_ADDR 0x54\n#define AN7447_TCPC4_I2C_ADDR 0x52\n\nWe may also want to change the 1-4 to 0-3",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 34
       },
       "revId": "c2667f84e438f236a8e6ceb20e5ba37ab40289aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
