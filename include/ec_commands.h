@@ -2626,6 +2626,13 @@ struct __ec_align1 ec_params_config_power_button {
 	uint8_t flags;
 };
 
+/* Get the power button press time */
+#define EC_CMD_POWER_BUTTON_PRESS_TIME 0x002E
+
+struct __ec_align1 ec_response_pwrbtn_press_time {
+	uint32_t time;
+};
+
 /*****************************************************************************/
 /* USB charging control commands */
 
