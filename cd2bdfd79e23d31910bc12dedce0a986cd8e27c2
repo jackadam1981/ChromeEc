@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0c9a42ab_07279ed5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-28T02:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6e5fe8_98729f26",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75a1e57e_55f63d19",
         "filename": "chip/stm32/usb_power.c",
         "patchSetId": 1
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "Does this mean reading several values from one INA (power, voltage and current) is actually slower than reading one value from each INA?",
       "parentUuid": "d8102eb1_c63bd758",
+      "range": {
+        "startLine": 246,
+        "startChar": 6,
+        "endLine": 246,
+        "endChar": 12
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d665d1c_c4ed5146",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-28T02:30:52Z",
+      "side": 1,
+      "message": "yes, reading power + voltage + current on one INA is roughly equivalent of reading 6-12 channels of only power.",
+      "parentUuid": "72bdc0db_b213e335",
       "range": {
         "startLine": 246,
         "startChar": 6,
@@ -472,6 +520,30 @@
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac32a30c_db942365",
+        "filename": "chip/stm32/usb_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-28T02:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ff8e12_e1981b24",
+      "range": {
+        "startLine": 497,
+        "startChar": 2,
+        "endLine": 497,
+        "endChar": 19
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1156,6 +1228,30 @@
       "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c96e3cb_9588e0ff",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-03-28T02:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b858139_f93c95d2",
+      "range": {
+        "startLine": 692,
+        "startChar": 38,
+        "endLine": 692,
+        "endChar": 57
+      },
+      "revId": "cd2bdfd79e23d31910bc12dedce0a986cd8e27c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
