@@ -46,6 +46,30 @@
       "revId": "262803bf15144983ca08a7be51a1dec5dd789863",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772f8734_54a8dca0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T16:27:30Z",
+      "side": 1,
+      "message": "I added the ANX for good measure though (somehow this comment didn\u0027t make it in the first reply)",
+      "parentUuid": "1b5d6a40_d3bda782",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "262803bf15144983ca08a7be51a1dec5dd789863",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
