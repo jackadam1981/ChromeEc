@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d1583ed_dc5c3f1a",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-28T16:13:35Z",
+      "side": 1,
+      "message": "Maybe add a print in such cases so that it can be caught in logs?",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 9
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
