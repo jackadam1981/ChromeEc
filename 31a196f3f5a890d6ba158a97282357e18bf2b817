@@ -96,6 +96,54 @@
     },
     {
       "key": {
+        "uuid": "861cd97d_ea0764c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-28T07:00:30Z",
+      "side": 1,
+      "message": "Right, I had no idea that chg was charger (charge, or change? Or maybe \"chg pwr\" is some special term?)",
+      "parentUuid": "fee7271e_08c4f158",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fd3c816_5ba3cef6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-28T07:00:30Z",
+      "side": 1,
+      "message": "It\u0027s less easy to parse when you want to manually generate a changelog between 2 EC versions, and figure out which CLs are relevant, for example.\n\nI prefer going over 50 chars than abbreviating and having to spend 3 more seconds to figure out what the abbreviation means. If you look at the history in the EC codebase, many, many, commits go over 50 chars, we seem to have a soft limit around 60/70 characters\n\nI think Linux kernel, for example, recommends 75 chars:\n\"Possible unwrapped commit description (prefer a maximum 75 chars per line)\"",
+      "parentUuid": "0918fa93_ca25f22a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a867e901_a9e638ec",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
