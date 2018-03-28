@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "e9ecfdcf_e2e38514",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-28T23:08:13Z",
+      "side": 1,
+      "message": "1 question, 1 remark:\n\n 1. Why 50 chars?\n 2. We all have personal preferences, but when contributing to existing repo, we follow the existing style.\n\n\u003e Anyways, I think chgstv2 isn\u0027t that cryptic and one should be able to tell from context that chgstv2 \u003d\u003d charge_state_v2, especially when the commit only has 1 file diff of charge_state_v2.c...\n\nI often parse git log --oneline to try to figure out what is interesting. I don\u0027t look at the patch itself or what file it changes. When you have 100 commits, it\u0027s easier to parse when commit messages are consistent.",
+      "parentUuid": "f617fc01_6b355d43",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a867e901_a9e638ec",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
