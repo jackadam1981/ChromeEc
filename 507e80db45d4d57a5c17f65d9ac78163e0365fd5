@@ -22,6 +22,30 @@
       "revId": "507e80db45d4d57a5c17f65d9ac78163e0365fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fcbd816_4afe9adf",
+        "filename": "board/reef/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T17:44:54Z",
+      "side": 1,
+      "message": "I like it! I used tcpc_write instead so to hard-code even less :)",
+      "parentUuid": "18c9c3a9_7a3b6242",
+      "range": {
+        "startLine": 289,
+        "startChar": 30,
+        "endLine": 289,
+        "endChar": 46
+      },
+      "revId": "507e80db45d4d57a5c17f65d9ac78163e0365fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
