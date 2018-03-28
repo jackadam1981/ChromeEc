@@ -1,0 +1,55 @@
+#!/bin/bash
+# Copyright 2018 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# Description: Read and output temperature of device's primary battery.
+#
+# TODO(tbroch) revisit when we have devices with multiple batteries
+
+BATT_DEGC=""
+
+# Read battery temperature from sysfs power_supply and return in degC.
+batt_temp_sysfs() {
+    local temp_degc=""
+
+    for psdir in /sys/class/power_supply/* ; do
+        if [[ -e "${psdir}/temp" ]] ; then
+            pstype=$(cat $psdir/type)
+            if [[ "${pstype}" -eq "Battery" ]] ; then
+                temp_degc=$(bc <<< "scale=2; $(cat ${psdir}/temp)/10")
+                break
+            fi
+        fi
+    done
+    echo ${temp_degc}
+}
+
+# Read battery temperature from EC and return in degC.
+batt_temp_ec() {
+    local temp_degk
+
+    local sensor_str=$(ectool tempsinfo all | grep Battery)
+    if [[ $? -eq 0 ]] ; then
+        local idx=$(echo ${sensor_str} | cut -d: -f1)
+        # ectool temps <idx> looks like 'Reading temperature...298 K'
+        temp_degk=$(ectool temps ${idx} | sed -e 's/.*\.\([0-9]\+\) K/\1/')
+        echo $(bc <<< "scale=2; ${temp_degk} - 273.15")
+
+EOF
+    else
+        echo ""
+    fi
+}
+
+# Main
+TEMP_DEGC=$(batt_temp_sysfs)
+if [[ -z "${TEMP_DEGC}" ]] ; then
+    TEMP_DEGC=$(batt_temp_ec)
+fi
+
+if [[ -z "${TEMP_DEGC}" ]] ; then
+    echo "unknown"
+else
+    echo ${TEMP_DEGC}
+fi
