@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a619fef4_50ff4983",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-28T16:33:39Z",
+      "side": 1,
+      "message": "Can we use the one defined in keyboard_scan.c and change only output_settle_us at boot? Does it break anything (e.g. recovery mode)?",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 2
+      },
+      "revId": "840c6722a51c183c071cec012947f94ec22f5581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
