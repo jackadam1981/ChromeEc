@@ -22,6 +22,30 @@
       "revId": "07bdb8575c6909f76ba3b30bd1cedffdfde0de05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a74441f_0997d920",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-28T19:10:49Z",
+      "side": 1,
+      "message": "That is correct. Additionally, we don\u0027t even use trackpad as a wake source. So, until we change that, I think we should have trackpad enabled only when chipset is in S0.",
+      "parentUuid": "ebaa20a6_9370a9b0",
+      "range": {
+        "startLine": 56,
+        "startChar": 40,
+        "endLine": 56,
+        "endChar": 52
+      },
+      "revId": "07bdb8575c6909f76ba3b30bd1cedffdfde0de05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
