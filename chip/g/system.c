@@ -16,12 +16,23 @@
 #include "task.h"
 #include "version.h"
 
+/*
+ * Value of the retry counter which, if exceeded, indicates that the currently
+ * running RW image is not well and is rebooting before bringing the system
+ * manages to come up.
+ */
+#define RW_BOOT_MAX_RETRY_COUNT 5
+
 static uint8_t pinhold_on_reset;
+static uint8_t rollback_detected_at_boot;
 
 static void check_reset_cause(void)
 {
 	uint32_t g_rstsrc = GR_PMU_RSTSRC;
 	uint32_t flags = 0;
+
+	rollback_detected_at_boot = (GREG32(PMU, LONG_LIFE_SCRATCH0) >
+		RW_BOOT_MAX_RETRY_COUNT);
 
 	/* Clear the reset source now we have recorded it */
 	GR_PMU_CLRRST = 1;
@@ -459,8 +470,11 @@ static int corrupt_header(volatile struct SignedHeader *header)
 	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = 1023;
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, EN, 1);
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
-	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
 
+	if (header->magic == 0)
+		return EC_SUCCESS;
+
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
 	ccprintf("%s: RW fallback must have happened, magic at %p before: %x\n",
 		 __func__, &header->magic, header->magic);
 
@@ -475,14 +489,6 @@ static int corrupt_header(volatile struct SignedHeader *header)
 
 	return rv;
 }
-
-/*
- * Value of the retry counter which, if exceeded, indicates that the currently
- * running RW image is not well and is rebooting before bringing the system
- * manages to come up.
- */
-#define RW_BOOT_MAX_RETRY_COUNT 5
-
 /*
  * Check if the current running image is newer. Set the passed in pointer, if
  * supplied, to point to the newer image in case the running image is the
@@ -514,28 +520,27 @@ static int current_image_is_newer(struct SignedHeader **newer_image)
 
 int system_rollback_detected(void)
 {
-	return !current_image_is_newer(NULL);
+	return rollback_detected_at_boot;
 }
 
 int system_process_retry_counter(void)
 {
-	unsigned retry_counter;
 	struct SignedHeader *newer_image;
 
-	retry_counter = GREG32(PMU, LONG_LIFE_SCRATCH0);
+	ccprintf("%s: retry counter %d\n", __func__,
+		GREG32(PMU, LONG_LIFE_SCRATCH0));
 	system_clear_retry_counter();
 
-	ccprintf("%s:retry counter %d\n", __func__, retry_counter);
-
-	if (retry_counter <= RW_BOOT_MAX_RETRY_COUNT)
+	if (!system_rollback_detected())
 		return EC_SUCCESS;
 
 	if (current_image_is_newer(&newer_image)) {
 		ccprintf("%s: "
-			 "this is odd, I am newer, but retry counter was %d\n",
-			 __func__, retry_counter);
+			 "this is odd, I am newer, but retry counter indicates "
+			 "the system rolledback\n", __func__);
 		return EC_SUCCESS;
 	}
+
 	/*
 	 * let's corrupt the newer image so that the next restart is happening
 	 * straight into the current version.
