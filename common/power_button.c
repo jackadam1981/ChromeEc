@@ -31,6 +31,7 @@
 static int debounced_power_pressed;	/* Debounced power button state */
 static int simulate_power_pressed;
 static volatile int power_button_is_stable = 1;
+static uint32_t pwr_btn_press_time;
 
 /**
  * Return non-zero if power button signal asserted at hardware input.
@@ -119,6 +120,7 @@ DECLARE_HOOK(HOOK_INIT, power_button_init, HOOK_PRIO_INIT_POWER_BUTTON);
 static void power_button_change_deferred(void)
 {
 	const int new_pressed = raw_power_button_pressed();
+	static int start;
 
 	/* Re-enable keyboard scanning if power button is no longer pressed */
 	if (!new_pressed)
@@ -132,6 +134,14 @@ static void power_button_change_deferred(void)
 
 	debounced_power_pressed = new_pressed;
 	power_button_is_stable = 1;
+
+	/* Get power button pressed time */
+	if (new_pressed) {
+		pwr_btn_press_time = 0;
+		start = get_time().val;
+	} else {
+		pwr_btn_press_time = get_time().val - start;
+	}
 
 	CPRINTS("power button %s", new_pressed ? "pressed" : "released");
 
@@ -185,10 +195,29 @@ static int command_powerbtn(int argc, char **argv)
 	simulate_power_pressed = 0;
 	power_button_is_stable = 0;
 	hook_call_deferred(&power_button_change_deferred_data, 0);
-
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn,
 			"[msec]",
 			"Simulate power button press");
 
+
+static int command_get_pwrbtn_press_time(int argc, char **argv)
+{
+	ccprintf("PWRBTN press time %d us\n", pwr_btn_press_time);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pwrbtntime, command_get_pwrbtn_press_time,
+			NULL, "Power button press time in us");
+
+static int hc_get_pwrbtn_press_time(struct host_cmd_handler_args *args)
+{
+	struct ec_response_pwrbtn_press_time *r = args->response;
+
+	r->time = pwr_btn_press_time;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_POWER_BUTTON_PRESS_TIME, hc_get_pwrbtn_press_time,
+		     EC_VER_MASK(0));

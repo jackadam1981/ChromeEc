@@ -208,6 +208,8 @@ const char help_str[] =
 	"      Set keyboard backlight in percent\n"
 	"  pwmsetduty\n"
 	"      Set 16 bit duty cycle of given PWM\n"
+	"  pwrbtntime\n"
+	"      Get power button press time\n"
 	"  readtest <patternoffset> <size>\n"
 	"      Reads a pattern from the EC via LPC\n"
 	"  reboot_ec <RO|RW|cold|hibernate|disable-jump> "
@@ -5414,6 +5416,23 @@ int cmd_switches(int argc, char *argv[])
 }
 
 
+int cmd_pwr_btn_time(int argc, char *argv[])
+{
+	struct ec_response_pwrbtn_press_time r;
+	int rv;
+
+	rv = ec_command(EC_CMD_POWER_BUTTON_PRESS_TIME, 0,
+			NULL, 0,
+			&r, sizeof(r));
+
+	if (rv < 0)
+		return rv;
+
+	printf("Power button press time %d us\n", r.time);
+	return 0;
+}
+
+
 int cmd_wireless(int argc, char *argv[])
 {
 	char *e;
@@ -7879,6 +7898,7 @@ const struct command commands[] = {
 	{"pwmsetfanrpm", cmd_pwm_set_fan_rpm},
 	{"pwmsetkblight", cmd_pwm_set_keyboard_backlight},
 	{"pwmsetduty", cmd_pwm_set_duty},
+	{"pwrbtntime", cmd_pwr_btn_time},
 	{"readtest", cmd_read_test},
 	{"reboot_ec", cmd_reboot_ec},
 	{"rtcget", cmd_rtc_get},
