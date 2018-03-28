@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebaa20a6_9370a9b0",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-28T18:31:40Z",
+      "side": 1,
+      "message": "Let\u0027s start this signal at GPIO_ODR_HIGH on start up since we don\u0027t need to enable this in G3 or S5, right?\n\nWe can activate this line when we activate EN_PP300 in board.c",
+      "range": {
+        "startLine": 56,
+        "startChar": 40,
+        "endLine": 56,
+        "endChar": 52
+      },
+      "revId": "07bdb8575c6909f76ba3b30bd1cedffdfde0de05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
