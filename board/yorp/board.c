@@ -188,6 +188,17 @@ uint16_t tcpc_get_alert_status(void)
 	return 0;
 }
 
+int board_get_version(void)
+{
+	static int version;
+
+	/* TODO(b/76448181): Add more versions once we know mV thresholds. */
+	version = 0;
+
+	ccprints("Board version: %d", version);
+	return version;
+}
+
 /* Motion sensors */
 /* Mutexes */
 static struct mutex g_lid_mutex;
