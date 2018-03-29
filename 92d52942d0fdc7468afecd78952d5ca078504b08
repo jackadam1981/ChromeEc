@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cb17c41_f8847e0e",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-29T21:49:54Z",
+      "side": 1,
+      "message": "you don\u0027t need this variable.\n\nJust checking \n\nif (header-\u003emagic \u003d\u003d 0)\n\nwill tell you that the header is corrupted.",
+      "range": {
+        "startLine": 459,
+        "startChar": 15,
+        "endLine": 459,
+        "endChar": 31
+      },
+      "revId": "92d52942d0fdc7468afecd78952d5ca078504b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db13b5b9_79400c57",
+        "filename": "chip/g/system_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-29T21:49:54Z",
+      "side": 1,
+      "message": "\u0027this is only reliable\u0027 - what is \u0027this\u0027? \n\nThe counter is cleared once the AP fully boots, but the information returned by this function is reliable after reset, after initialization completed and all the way til the first deep sleep, potentially longer after the AP fully boots, right?\n\nNot sure if the mechanism where this information comes from is even needed here, but the scope of when the return value is valid should be properly described.",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "92d52942d0fdc7468afecd78952d5ca078504b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
