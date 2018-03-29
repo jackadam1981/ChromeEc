@@ -713,6 +713,30 @@
     },
     {
       "key": {
+        "uuid": "f0927107_dc5c6183",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-03-29T20:40:27Z",
+      "side": 1,
+      "message": "i originally added these markers to indicate that we need\nto config the pin for its alternate function which is\nspecified separately.\ni think we should keep the indicators, but obviously\nexpress this more clearly :)\n\ni also tried to keep this list in the same grouping and order\nas the schematics so it\u0027s easier to cross-check.",
+      "parentUuid": "8870bb3b_6d0f7646",
+      "range": {
+        "startLine": 47,
+        "startChar": 55,
+        "endLine": 47,
+        "endChar": 60
+      },
+      "revId": "7d34085f1141854b6becbe8832e32810ee1c7192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19b107ce_8cf3721c",
         "filename": "board/atlas/gpio.inc",
         "patchSetId": 3
