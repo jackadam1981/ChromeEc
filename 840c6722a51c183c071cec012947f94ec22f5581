@@ -70,6 +70,30 @@
       "revId": "840c6722a51c183c071cec012947f94ec22f5581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69c85e9_e929ba07",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-29T03:04:44Z",
+      "side": 1,
+      "message": "I check it again and this delay time maybe depends on the board HW.\nI am not sure whether the 80us will be fine on another board in future.\nSo maybe keep it can be adjust by board is good solution.\n\n\u003e\u003eCan we use the one defined in keyboard_scan.c and change only output_settle_us at boot?\nI think this define \"CONFIG_KEYBOARD_BOARD_CONFIG\" already let we do some fine tune by board.\nDo you think we need to add another define for \".output_settle_us\"?",
+      "parentUuid": "efe9f110_a616a168",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 2
+      },
+      "revId": "840c6722a51c183c071cec012947f94ec22f5581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
