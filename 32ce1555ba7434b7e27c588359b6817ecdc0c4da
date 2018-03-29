@@ -22,6 +22,30 @@
       "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4893022_90768f04",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-29T08:01:07Z",
+      "side": 1,
+      "message": "We need to use the extended host events. master branch has that, we\u0027ll need to backport patches to the eve branch.",
+      "parentUuid": "b66632b9_bfc90396",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 35
+      },
+      "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
