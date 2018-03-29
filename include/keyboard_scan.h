@@ -54,6 +54,7 @@ enum boot_key {
 	BOOT_KEY_ESC = (1 << 0),
 	BOOT_KEY_DOWN_ARROW = (1 << 1),
 	BOOT_KEY_LEFT_SHIFT = (1 << 2),
+	BOOT_KEY_A = (1 << 3),
 };
 
 #if defined(HAS_TASK_KEYSCAN) && defined(CONFIG_KEYBOARD_BOOT_KEYS)
@@ -63,7 +64,7 @@ enum boot_key {
  * will be set for each of those keys. Since more than one bit can be set,
  * caller needs to ensure that boot keys match as intended.
  *
- * Returns BOOT_NONE if no additional key is held or if none of the keys
+ * Returns BOOT_KEY_NONE if no additional key is held or if none of the keys
  * specifically checked was pressed, or reset was not caused by a
  * keyboard-controlled reset or if any key *other* than boot keys, power, or
  * refresh is also pressed.
