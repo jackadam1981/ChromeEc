@@ -558,6 +558,9 @@ enum host_event_code {
 	/* Keyboard recovery combo with hardware reinitialization */
 	EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT = 30,
 
+	/* Keyboard combo for entering AltOS mode */
+	EC_HOST_EVENT_KEYBOARD_ALTOS = 31,
+
 	/*
 	 * Reserve this last bit to indicate that at least one bit in a
 	 * secondary host event word is set.  See crbug.com/633646.
