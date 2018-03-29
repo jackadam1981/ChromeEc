@@ -128,6 +128,30 @@
       "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312c1cd4_6a52589d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-29T14:54:04Z",
+      "side": 1,
+      "message": "This change should ideally go in ToT first as it is introducing a new host event bit and then be cherry-picked appropriately to firmware branch. This helps keep compatibility for host event bits across different branches. Also, the changes on coreboot side need to be cherry-picked correctly since the EC_FEATURE_HOST_EVENT64 was overloaded for other reasons.",
+      "parentUuid": "7b2632f9_2fdd72f6",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 35
+      },
+      "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
