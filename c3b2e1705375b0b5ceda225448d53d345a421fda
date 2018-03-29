@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c3c43b2_ee593961",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-29T02:12:56Z",
+      "side": 1,
+      "message": "please add comment in the .h file where this function is declared extern that it can be trusted only between reboot after INIT hooks finished running after reset and  before the first deep sleep after that.",
+      "revId": "c3b2e1705375b0b5ceda225448d53d345a421fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff56a75_3fd708d0",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-29T02:12:56Z",
+      "side": 1,
+      "message": "shouldn\u0027t this check be after line 549? If condition in line 543 is true, the header would never be corrupted, so the check in line 538 will never be true.\n\nAlso, instead of keeping a static variable you could check in corrupt_header() if the field in question is zeroed yet or not, and stop there if it is.",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 0
+      },
+      "revId": "c3b2e1705375b0b5ceda225448d53d345a421fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
