@@ -164,6 +164,30 @@
       "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b304c2c_c778c1fd",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-29T14:19:32Z",
+      "side": 1,
+      "message": "(ticks + 1) % 65535; doesn\u0027t work with periods that aren\u0027t aligned with that divisor. For example if your period was 1000 you would jump from 535 to 0 so you would have 1465 ticks instead of 1000.\n\nticks \u003d (ticks + 1) % period; would work since we know that the period is stable until ticks is reset. And then you could simplify line 175 to just \"ticks \u003c phase_0.time\"",
+      "parentUuid": "4d2d2645_500c2724",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
