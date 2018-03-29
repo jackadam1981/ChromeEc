@@ -73,9 +73,10 @@ struct boot_key_entry {
 
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 static const struct boot_key_entry boot_key_list[] = {
-	{KEYBOARD_COL_ESC, KEYBOARD_MASK_ESC},   /* Esc */
+	{KEYBOARD_COL_ESC, KEYBOARD_MASK_ESC},  /* Esc */
 	{KEYBOARD_COL_DOWN, KEYBOARD_MASK_DOWN}, /* Down-arrow */
 	{KEYBOARD_COL_LEFT_SHIFT, KEYBOARD_MASK_LEFT_SHIFT}, /* Left-Shift */
+	{KEYBOARD_COL_KEY_A, KEYBOARD_MASK_KEY_A},  /* A */
 };
 static uint32_t boot_key_value = BOOT_KEY_NONE;
 #endif
@@ -646,15 +647,17 @@ void keyboard_scan_init(void)
 	/* Check for keys held down at boot */
 	boot_key_value = check_boot_key(debounced_state);
 
+#ifdef CONFIG_HOSTCMD_EVENTS
+	/* If any key other than A was pressed, do not trigger AltOS mode. */
+	if (boot_key_value == BOOT_KEY_A)
+		host_set_single_event(EC_HOST_EVENT_KEYBOARD_ALT_OS);
+
 	/*
 	 * If any key other than Esc or Left_Shift was pressed, do not trigger
 	 * recovery.
 	 */
-	if (boot_key_value & ~(BOOT_KEY_ESC | BOOT_KEY_LEFT_SHIFT))
-		return;
-
-#ifdef CONFIG_HOSTCMD_EVENTS
-	if (boot_key_value & BOOT_KEY_ESC) {
+	if (boot_key_value & BOOT_KEY_ESC &&
+	    (boot_key_value & ~(BOOT_KEY_ESC | BOOT_KEY_LEFT_SHIFT)) == 0) {
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 		if (boot_key_value & BOOT_KEY_LEFT_SHIFT)
 			host_set_single_event(
