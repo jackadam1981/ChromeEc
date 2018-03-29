@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94001178_54bd7893",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T18:55:11Z",
+      "side": 1,
+      "message": "These functions are used to access the SPI register block. The tcpc block is accessed using tcpc_read/tcpc_write",
+      "parentUuid": "1d79e6eb_e384f7f7",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "eaddcdab3e87a7f1312b7d8ca72c782c1273354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8fa9671_70fa0b66",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 6
