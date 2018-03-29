@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0cc90f8_0c5d1575",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T01:19:06Z",
+      "side": 0,
+      "message": "This needs to be removed as well.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "4da17a671e9863d3cc063141744f1b4852c3a631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca21fa2_c9df783f",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T01:19:06Z",
+      "side": 0,
+      "message": "This mutex is also no longer needed.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "4da17a671e9863d3cc063141744f1b4852c3a631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f327bd1b_923364ea",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T01:19:06Z",
+      "side": 0,
+      "message": "This section will be irrelevant once VSYS_PRIORITY is never set in the first place.",
+      "range": {
+        "startLine": 760,
+        "startChar": 1,
+        "endLine": 788,
+        "endChar": 2
+      },
+      "revId": "4da17a671e9863d3cc063141744f1b4852c3a631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
