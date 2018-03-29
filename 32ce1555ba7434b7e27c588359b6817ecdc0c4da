@@ -46,6 +46,30 @@
       "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d7674e7_eb4e4c81",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-03-29T11:18:11Z",
+      "side": 1,
+      "message": "I guess you\u0027re talking about this bug: b/69329196\nI\u0027ll cherry-pick the patches underneath this one.",
+      "parentUuid": "a4893022_90768f04",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 35
+      },
+      "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
