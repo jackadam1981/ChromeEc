@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f06a5d6b_50e72d66",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-29T00:36:27Z",
+      "side": 1,
+      "message": "please use a one byte sized variable for this.",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "b5cfb9fcd6e546bd872b217f9956cbf656bf153e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c694e5_ecc114e1",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-29T00:36:27Z",
+      "side": 1,
+      "message": "one byte in size is enough",
+      "range": {
+        "startLine": 459,
+        "startChar": 7,
+        "endLine": 459,
+        "endChar": 15
+      },
+      "revId": "b5cfb9fcd6e546bd872b217f9956cbf656bf153e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
