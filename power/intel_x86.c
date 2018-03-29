@@ -141,7 +141,7 @@ static enum power_state power_wait_s5_rtc_reset(void)
 static void s0ix_lpc_enable_wake_mask(void)
 {
 	if (chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON)) {
-		uint32_t mask;
+		host_event_t mask;
 
 		mask = lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE) |
 			EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |
@@ -161,7 +161,7 @@ static void s0ix_lpc_enable_wake_mask(void)
 static void s0ix_lpc_disable_wake_mask(void)
 {
 	if (chipset_in_state(CHIPSET_STATE_STANDBY | CHIPSET_STATE_ON)) {
-		uint32_t mask;
+		host_event_t mask;
 
 		mask = lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE) &
 			~EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) &
@@ -170,7 +170,7 @@ static void s0ix_lpc_disable_wake_mask(void)
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, mask);
 
 		/* clear host events */
-		while (lpc_query_host_event_state() != 0)
+		while (lpc_get_next_host_event() != 0)
 			;
 	}
 }
@@ -345,6 +345,8 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 		/* Enable wireless */
 		wireless_set_state(WIRELESS_ON);
+
+		lpc_s3_resume_clear_masks();
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
