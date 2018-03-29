@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19ad9b85_07df7270",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-29T21:41:50Z",
+      "side": 1,
+      "message": "I don\u0027t understand what these defines are for. How does this file get compiled when BOARD_ZOOMBINI is not defined?\n\nWhy are we adding the enable_interrupt on the else branch.",
+      "range": {
+        "startLine": 464,
+        "startChar": 7,
+        "endLine": 464,
+        "endChar": 21
+      },
+      "revId": "ba25deadb56abaf01c6101210b5a618aa79ffe71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260bc271_f3d063cd",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-29T21:41:50Z",
+      "side": 1,
+      "message": "I don\u0027t understand the purpose of this paragraph. Is CONFIG_HOSTCMD_DEBUG_MODE by default way more spammy?",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "ba25deadb56abaf01c6101210b5a618aa79ffe71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
