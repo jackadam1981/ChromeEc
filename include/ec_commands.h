@@ -570,7 +570,10 @@ enum host_event_code {
 	 * raw event status via EC_MEMMAP_HOST_EVENTS but the LPC interface is
 	 * not initialized on the EC, or improperly configured on the host.
 	 */
-	EC_HOST_EVENT_INVALID = 32
+	EC_HOST_EVENT_INVALID = 32,
+
+	/* Keyboard combo for entering Alt OS mode */
+	EC_HOST_EVENT_KEYBOARD_ALT_OS = 33
 };
 /* Host event mask */
 #define EC_HOST_EVENT_MASK(event_code) (1ULL << ((event_code) - 1))
