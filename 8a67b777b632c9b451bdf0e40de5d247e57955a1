@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b9228176_9427564f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-29T00:32:03Z",
+      "side": 1,
+      "message": "If cr50 thinks the system didn\u0027t rollback then it will try to rollback. That will make it rollback to itself and then everything will be locked out again.",
+      "parentUuid": "c58df9ae_ce9a231f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 70
+      },
+      "revId": "8a67b777b632c9b451bdf0e40de5d247e57955a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "491fc7d2_913f7ed5",
         "filename": "chip/g/system.c",
         "patchSetId": 1
