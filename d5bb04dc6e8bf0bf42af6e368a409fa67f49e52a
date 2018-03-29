@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "80c0bc87_f64df8a8",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T19:12:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e82e4eea_4bb1b026",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 9
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de83041b_9a8b5e87",
         "filename": "board/yorp/board.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2018-03-28T16:45:10Z",
       "side": 1,
       "message": "should we do this check at the top. We don\u0027t need to wait another second for a disconnected battery if we are jumping to RW",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 23
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7165b7a1_ff7dce4d",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T19:12:21Z",
+      "side": 1,
+      "message": "This is how it was in other board.c files. That\u0027s why it\u0027s in this order.",
+      "parentUuid": "de83041b_9a8b5e87",
       "range": {
         "startLine": 205,
         "startChar": 1,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c8add84b_5031ca7d",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T19:12:21Z",
+      "side": 1,
+      "message": "I removed these. I had grabbed these when I was pulling in the anx7447 driver and they were in the board.h file that had been removed.",
+      "parentUuid": "b2eacb7e_5bee61de",
+      "range": {
+        "startLine": 67,
+        "startChar": 40,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25057b21_dfe550cf",
         "filename": "board/yorp/board.h",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2018-03-28T16:45:10Z",
       "side": 1,
       "message": "Why are we limiting the default current to 0.5A instead of 1.5A (the CONFIG_USB_PD_PULLUP default)?",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 41
+      },
+      "revId": "d5bb04dc6e8bf0bf42af6e368a409fa67f49e52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39431fc_0e3b25a0",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-29T19:12:21Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "25057b21_dfe550cf",
       "range": {
         "startLine": 69,
         "startChar": 29,
