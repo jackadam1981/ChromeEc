@@ -54,6 +54,7 @@ enum boot_key {
 	BOOT_KEY_ESC = (1 << 0),
 	BOOT_KEY_DOWN_ARROW = (1 << 1),
 	BOOT_KEY_LEFT_SHIFT = (1 << 2),
+	BOOT_KEY_A = (1 << 3),
 };
 
 #if defined(HAS_TASK_KEYSCAN) && defined(CONFIG_KEYBOARD_BOOT_KEYS)
