@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f25f3e3c_e4f5e615",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-29T11:23:20Z",
+      "side": 1,
+      "message": "nit: I would not change these 3 lines",
+      "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8be6fc1c_297b9434",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-29T11:23:20Z",
+      "side": 1,
+      "message": "This looks the same as boot_key_value \u003d\u003d BOOT_KEY_A",
+      "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b66632b9_bfc90396",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -61,6 +95,30 @@
       "side": 1,
       "message": "I guess you\u0027re talking about this bug: b/69329196\nI\u0027ll cherry-pick the patches underneath this one.",
       "parentUuid": "a4893022_90768f04",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 35
+      },
+      "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b2632f9_2fdd72f6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-29T11:23:20Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "4d7674e7_eb4e4c81",
       "range": {
         "startLine": 561,
         "startChar": 0,
