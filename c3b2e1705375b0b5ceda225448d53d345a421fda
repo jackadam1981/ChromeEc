@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cde30d42_1c72b472",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-29T21:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c3c43b2_ee593961",
+      "revId": "c3b2e1705375b0b5ceda225448d53d345a421fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ff56a75_3fd708d0",
         "filename": "chip/g/system.c",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "c3b2e1705375b0b5ceda225448d53d345a421fda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ecbe93f_a5022aaa",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-29T21:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ff56a75_3fd708d0",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 0
+      },
+      "revId": "c3b2e1705375b0b5ceda225448d53d345a421fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
