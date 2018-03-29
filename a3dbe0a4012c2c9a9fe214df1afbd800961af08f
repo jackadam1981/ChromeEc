@@ -46,6 +46,53 @@
       "revId": "a3dbe0a4012c2c9a9fe214df1afbd800961af08f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7317fb9d_4ac077c8",
+        "filename": "util/battery_temp",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-03-29T21:08:38Z",
+      "side": 1,
+      "message": "I didn\u0027t realize this is only for dev/test images anyway..",
+      "parentUuid": "3b3853ac_98938dc2",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "a3dbe0a4012c2c9a9fe214df1afbd800961af08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0bd1414_f38d815f",
+        "filename": "util/battery_temp",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-03-29T21:08:38Z",
+      "side": 1,
+      "message": "TIL \u003c\u003c\u003c is a thing..",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "a3dbe0a4012c2c9a9fe214df1afbd800961af08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
