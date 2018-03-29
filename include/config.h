@@ -943,6 +943,12 @@
 /* EC capable of sensor speeds up to 200000 mHz */
 #define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 200000
 
+/*
+ * Allow board to override the feature bitmap provided through host command
+ * and ACPI.
+ */
+#undef CONFIG_EC_FEATURE_BOARD_OVERRIDE
+
 /* Support EC chip internal data EEPROM */
 #undef CONFIG_EEPROM
 
@@ -1261,7 +1267,6 @@
 
 #undef CONFIG_GESTURE_SIGMO_EVENT
 
-
 /* Do we want to detect the lid angle? */
 #undef CONFIG_LID_ANGLE
 
@@ -1327,6 +1332,13 @@
  * of the previous command.
  */
 #undef CONFIG_HOST_COMMAND_STATUS
+
+/* clear bit(s) to mask reporting of an EC_HOST_EVENT_XXX event(s) */
+#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
+#define CONFIG_HOST_EVENT64_REPORT_MASK 0xffffffffffffffffULL
+
+/* Config option to support 64-bit hostevents and wake-masks. */
+#define CONFIG_HOST_EVENT64
 
 /*
  * The host commands are sorted in the .rodata.hcmds section so use the binary
