@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c58df9ae_ce9a231f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-29T00:29:56Z",
+      "side": 1,
+      "message": "The code path that worries me here is the one in check_board_id_mismatch().\n\nIf we somehow roll back to an image with a board ID which is no longer allowed on the system, we need to force CCD (and everything else other than firmware update) disabled.\n\nIf we forget that state on deep sleep, won\u0027t we come back up, still in the disallowed firmware, but then allow CCD and everything else to be re-enabled?",
+      "parentUuid": "5f9d43a8_c962d979",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 70
+      },
+      "revId": "8a67b777b632c9b451bdf0e40de5d247e57955a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "491fc7d2_913f7ed5",
         "filename": "chip/g/system.c",
         "patchSetId": 1
