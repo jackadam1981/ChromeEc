@@ -22,6 +22,30 @@
       "revId": "840c6722a51c183c071cec012947f94ec22f5581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4bd925_3f6ca3eb",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-29T01:16:45Z",
+      "side": 1,
+      "message": "This issue was caused by the timing shift of connecting to H1.\nIf the KSI/KSO connect to H1 is necessary in future, I think maybe we can fix it by common instead of by the board.",
+      "parentUuid": "a619fef4_50ff4983",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 2
+      },
+      "revId": "840c6722a51c183c071cec012947f94ec22f5581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
