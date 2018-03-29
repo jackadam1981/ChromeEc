@@ -46,6 +46,30 @@
       "revId": "840c6722a51c183c071cec012947f94ec22f5581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe9f110_a616a168",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-29T01:31:54Z",
+      "side": 1,
+      "message": "Can you update the comment?",
+      "parentUuid": "ef4bd925_3f6ca3eb",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 2
+      },
+      "revId": "840c6722a51c183c071cec012947f94ec22f5581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
