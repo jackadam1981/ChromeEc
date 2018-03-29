@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c74374f0_c92bcf82",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-29T15:15:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t have to be globally scoped in this file. It can live in led_update_battery.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "bf6bb531c5871aa78b7c865edb01525c1deefaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -188,6 +188,30 @@
       "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15dd8646_89f7beae",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-29T15:15:21Z",
+      "side": 1,
+      "message": "+1. Also, I think this function can be further simplified too:\n\n#define LED_DEFAULT_STATE LED_NUM_STATES\n\nstatic uint8_t ticks, period \u003d UINT8_MAX;\n\ndesired_state \u003d led_get_state();\n\nif (desired_state !\u003d led_state) {\n    ticks \u003d 0;\n    period \u003d UINT8_MAX;\n    led_state \u003d desired_state;\n}\n\nif (led_state \u003d\u003d LED_DEFAULT_STATE)\n    return;\n\nphase \u003d 0;\nif (led_state_table[led_state][LED_PHASE_0].time !\u003d LED_INDEFINITE) {\n    if (period \u003d\u003d UINT8_MAX)\n        period \u003d ...;\n    phase \u003d ticks \u003c ... ? 0 : 1;\n}\n\nled_set_color_battery(...);\nticks \u003d (ticks + 1) % period;",
+      "parentUuid": "7b304c2c_c778c1fd",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "dc4422225d0b93b2bb8a05e288a834d08707032e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
