@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ba76f8b_22dd44f5",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-29T20:30:55Z",
+      "side": 1,
+      "message": "I don´t think perl is used anywhere in this codebase,\ngiven this looks like a simple search\u0026replace? maybe use ´sed´ or ´grep´ instead (as done in other places I think).\n\nPast adventures have also proven that grepping config and #define has a very basic failure mode: if you comment it out, you still get it...\nFor C headers, we have solved this by using the preprocessor instead, here I don´t have a good proposal (unless we want to execute it from the Makefile as we have done for some other scripts)",
+      "range": {
+        "startLine": 422,
+        "startChar": 13,
+        "endLine": 423,
+        "endChar": 36
+      },
+      "revId": "d69c2e76ce2ced4debb97d95aa23caceea356ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
