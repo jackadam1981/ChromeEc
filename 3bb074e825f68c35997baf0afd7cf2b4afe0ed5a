@@ -70,6 +70,24 @@
       "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117aacc8_957fc03d",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-30T18:50:29Z",
+      "side": 1,
+      "message": "In short, charge termination enabled + battery absence \u003d EC boot loop: VBUS plunges, making VSYS glitches...\n\nAnyway, yea, I see battery_is_present() be called frequently in charger_task(). But I don\u0027t want board_charge_termination() to make more calls to battery_is_present(). However, if you\u0027re fine with these additional calls, I can do that and remove the static variable.",
+      "parentUuid": "e25a24fe_2ed78e65",
+      "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
