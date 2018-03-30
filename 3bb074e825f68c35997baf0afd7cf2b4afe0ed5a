@@ -52,6 +52,24 @@
       "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25a24fe_2ed78e65",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-30T18:37:50Z",
+      "side": 1,
+      "message": "Why would the EC boot loop if that happened? Also, isn\u0027t battery_is_present() called all the time? (by the charger state machine?)",
+      "parentUuid": "5c8d66e2_1914ab9d",
+      "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
