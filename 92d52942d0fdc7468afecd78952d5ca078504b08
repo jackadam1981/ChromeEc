@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c7550db_23f2e95d",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-30T00:00:29Z",
+      "side": 1,
+      "message": "It could botch the first run of cr50-update depending on if system_process_retry counter is called during/right after cr50-update, but done",
+      "parentUuid": "1cb17c41_f8847e0e",
+      "range": {
+        "startLine": 459,
+        "startChar": 15,
+        "endLine": 459,
+        "endChar": 31
+      },
+      "revId": "92d52942d0fdc7468afecd78952d5ca078504b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db13b5b9_79400c57",
         "filename": "chip/g/system_chip.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "92d52942d0fdc7468afecd78952d5ca078504b08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd599891_e9255672",
+        "filename": "chip/g/system_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-30T00:00:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db13b5b9_79400c57",
+      "range": {
+        "startLine": 45,
+        "startChar": 28,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "92d52942d0fdc7468afecd78952d5ca078504b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
