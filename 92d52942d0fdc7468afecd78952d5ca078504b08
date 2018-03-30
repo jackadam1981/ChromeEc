@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1137c5a6_58561475",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-30T01:58:17Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment, but let\u0027s discuss this offline.",
+      "parentUuid": "7c7550db_23f2e95d",
+      "range": {
+        "startLine": 459,
+        "startChar": 15,
+        "endLine": 459,
+        "endChar": 31
+      },
+      "revId": "92d52942d0fdc7468afecd78952d5ca078504b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db13b5b9_79400c57",
         "filename": "chip/g/system_chip.h",
         "patchSetId": 4
