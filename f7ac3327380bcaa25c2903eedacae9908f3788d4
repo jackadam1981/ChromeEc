@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f36aad53_333e993e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-30T14:10:19Z",
+      "side": 1,
+      "message": "We can keep it as optional and make it require CONFIG_LPC otherwise #error, or do we really always want to turn the module on?",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "f7ac3327380bcaa25c2903eedacae9908f3788d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
