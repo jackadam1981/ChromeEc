@@ -16,6 +16,24 @@
       "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64601d99_79bdb08b",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-30T18:23:13Z",
+      "side": 1,
+      "message": "Yeah, set it back to 0 once battery_is_present no longer says \"BP_YES\"?",
+      "parentUuid": "1f3884ab_729df125",
+      "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
