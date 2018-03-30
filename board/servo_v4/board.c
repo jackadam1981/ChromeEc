@@ -92,6 +92,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 #define USB_STREAM_RX_SIZE	16
 #define USB_STREAM_TX_SIZE	16
 
+
+#if 0
 /******************************************************************************
  * Forward USART3 as a simple USB serial interface.
  */
@@ -150,7 +152,7 @@ USB_STREAM_CONFIG(usart4_usb,
 	USB_STREAM_TX_SIZE,
 	usb_to_usart4,
 	usart4_to_usb)
-
+#endif
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.
@@ -430,6 +432,7 @@ int board_get_version(void)
 
 static void board_init(void)
 {
+#if 0
 	/* USB to serial queues */
 	queue_init(&usart3_to_usb);
 	queue_init(&usb_to_usart3);
@@ -439,7 +442,7 @@ static void board_init(void)
 	/* UART init */
 	usart_init(&usart3);
 	usart_init(&usart4);
-
+#endif
 	/* Delay DUT hub to avoid brownout. */
 	usleep(1000);
 	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);

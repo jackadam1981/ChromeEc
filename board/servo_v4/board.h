@@ -24,10 +24,15 @@
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
 
-#define CONFIG_STREAM_USART3
-#define CONFIG_STREAM_USART4
+/* #define CONFIG_STREAM_USART3 */
+/*#define CONFIG_STREAM_USART4 */
 #define CONFIG_STREAM_USB
 #define CONFIG_CMD_USART_INFO
+
+#undef CONFIG_UART_CONSOLE
+#define CONFIG_UART_CONSOLE 4
+#undef CONFIG_UART_TX_DMA
+#undef CONFIG_UART_RX_DMA
 
 /* Optional features */
 #define CONFIG_STM_HWTIMER32

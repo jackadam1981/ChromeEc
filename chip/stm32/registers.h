@@ -43,6 +43,8 @@
 #define STM32_IRQ_USART1          27
 #define STM32_IRQ_USART2          28
 #define STM32_IRQ_USART3_4        29
+#define STM32_IRQ_USART3          29
+#define STM32_IRQ_USART4          29
 #define STM32_IRQ_CEC_CAN         30
 #define STM32_IRQ_USB             31
 /* aliases for easier code sharing */
