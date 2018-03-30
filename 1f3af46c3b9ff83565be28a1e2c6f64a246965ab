@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91c8bef9_197461dd",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-30T14:19:51Z",
+      "side": 1,
+      "message": "nit: can you add comment saying that you are enabling the trackpad for S0 (and a similar one in the below function)?",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 15
+      },
+      "revId": "1f3af46c3b9ff83565be28a1e2c6f64a246965ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
