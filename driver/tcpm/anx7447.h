@@ -31,6 +31,33 @@
 
 #define ANX7447_REG_INTP_CTRL_0		0x9E
 
+#define ANX7447_DELAY_IN_US		(20*1000)
+
+#define R_RAM_CTRL			0x05
+#define OCM_CTRL_0			0x6E
+#define R_FLASH_RW_CTRL			0x30
+#define R_FLASH_STATUS_0		0x31
+#define FLASH_INSTRUCTION_TYPE		0x33
+#define FLASH_ERASE_TYPE		0x34
+#define ADDR_GPIO_CTRL_0		0x88
+#define OCM_VERSION			0xB4
+
+#define WRITEENABLE			0x06
+#define CHIPERASE			0x60
+
+#define SPI_WP				(1<<7)
+#define SPI_STATUS_0			0x43
+#define SPI_CLK_ENABLE			(1<<6)
+
+#define OCM_RESET			(1<<6)
+
+#define FLASH_DONE			(1<<7)
+#define GENERAL_INSTRUCTION_EN		(1<<6)
+#define FLASH_ERASE_EN			(1<<5)
+#define WRITE_STATUS_EN			(1<<2)
+#define FLASH_READ			(1<<1)
+#define FLASH_WRITE			(1<<0)
+
 struct anx7447_i2c_addr {
 	int tcpc_slave_addr;
 	int spi_slave_addr;

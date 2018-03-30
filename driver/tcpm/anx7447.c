@@ -36,9 +36,12 @@
 struct anx_state {
 	int i2c_slave_addr;
 	int mux_state;
+	int flash_checked_once;
 };
 
-static struct anx_state anx[CONFIG_USB_PD_PORT_COUNT];
+static struct anx_state anx[CONFIG_USB_PD_PORT_COUNT] = {
+	[0 ... CONFIG_USB_PD_PORT_COUNT-1] = {0, 0, 0}
+};
 
 /*
  * ANX7447 has two co-existence I2C slave addresses, TCPC slave address and
@@ -70,6 +73,22 @@ static inline int anx7447_reg_read(int port, int reg, int *val)
 	return i2c_read8(tcpc_config[port].i2c_host_port,
 			 anx[port].i2c_slave_addr,
 			 reg, val);
+}
+
+static inline void anx7447_reg_write_and(int port, int reg, int v_and)
+{
+	int r;
+
+	anx7447_reg_read(port, reg, &r);
+	anx7447_reg_write(port, reg, (r & v_and));
+}
+
+static inline void anx7447_reg_write_or(int port, int reg, int v_or)
+{
+	int r;
+
+	anx7447_reg_read(port, reg, &r);
+	anx7447_reg_write(port, reg, (r | v_or));
 }
 
 void anx7447_hpd_mode_en(int port)
@@ -111,11 +130,75 @@ void anx7447_set_hpd_level(int port, int hpd_lvl)
 	anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
 }
 
+static void anx7447_flash_write_en(int port)
+{
+	int r;
+
+	anx7447_reg_write(port, FLASH_INSTRUCTION_TYPE, WRITEENABLE);
+	anx7447_reg_write_or(port, R_FLASH_RW_CTRL, GENERAL_INSTRUCTION_EN);
+	do {
+		anx7447_reg_read(port, R_RAM_CTRL, &r);
+	} while (!(r & FLASH_DONE));
+}
+
+static void anx7447_flash_op_init(int port)
+{
+	int r;
+
+	anx7447_reg_write_or(port, OCM_CTRL_0, OCM_RESET);
+	anx7447_reg_write_or(port, ADDR_GPIO_CTRL_0, SPI_WP);
+
+	anx7447_flash_write_en(port);
+
+	anx7447_reg_write_and(port, R_FLASH_STATUS_0, SPI_STATUS_0);
+	anx7447_reg_write_or(port, R_FLASH_RW_CTRL, WRITE_STATUS_EN);
+
+	do {
+		anx7447_reg_read(port, R_RAM_CTRL, &r);
+	} while (!(r & FLASH_DONE));
+}
+
+static int anx7447_flash_is_empty(int port)
+{
+	int r;
+
+	anx7447_reg_read(port, OCM_VERSION, &r);
+	anx7447_reg_write(port, OCM_VERSION, 0);
+
+	return ((r == 0) ? 1 : 0);
+}
+
+static void anx7447_flash_check(int port)
+{
+	int r;
+
+	tcpc_read(port, TCPC_REG_COMMAND, &r);
+	usleep(ANX7447_DELAY_IN_US);
+
+	if (anx7447_flash_is_empty(port) == 1)
+		return;
+
+	anx7447_flash_op_init(port);
+
+	usleep(ANX7447_DELAY_IN_US);
+
+	anx7447_flash_write_en(port);
+	anx7447_reg_write(port, FLASH_ERASE_TYPE, CHIPERASE);
+	anx7447_reg_write_or(port, R_FLASH_RW_CTRL, FLASH_ERASE_EN);
+	do {
+		anx7447_reg_read(port, R_RAM_CTRL, &r);
+	} while (!(r & FLASH_DONE));
+
+	ccprintf("*** flash checked and erase flash successed ***\n");
+	return;
+}
+
 static int anx7447_init(int port)
 {
 	int rv, reg, i;
 
 	memset(&anx[port], 0, sizeof(struct anx_state));
+	anx[port].mux_state = 0;
 
 	/*
 	 * find corresponding anx7447 SPI slave address according to
@@ -133,6 +216,11 @@ static int anx7447_init(int port)
 		ccprintf("TCPC I2C slave addr 0x%x is invalid for ANX7447\n",
 			  tcpc_config[port].i2c_slave_addr);
 		return EC_ERROR_UNKNOWN;
+	}
+
+	if (anx[port].flash_checked_once == 0) {
+		anx7447_flash_check(port);
+		anx[port].flash_checked_once = 1;
 	}
 
 	rv = tcpci_tcpm_init(port);
