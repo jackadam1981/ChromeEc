@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b7075d5d_b2fc92c4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-30T18:33:15Z",
+      "side": 1,
+      "message": "actually compiler is good at inlining things like this on its own,\n\nalso, when browsing the code with grep or gid, it is much better to have the function name and its return value type on the same line\n\ninline const struct unimported_leaf_data_t *cast_wld_uld(\n                                  args go here)",
+      "parentUuid": "3531c526_679f8343",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e74409e5_40f492f0",
         "filename": "common/pinweaver.c",
         "patchSetId": 46
