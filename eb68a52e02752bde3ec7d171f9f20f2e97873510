@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b3dfe5d_520ad75f",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-30T07:33:34Z",
+      "side": 1,
+      "message": "I have a mild preference for:\n\nif (!IS_BIT_SET(NPCX_ITCTS(ITIM32), NPCX_ITCTS_TO_STS))\n   return;\n\nSET_BIT(NPCX_ITCTS(ITIM32), NPCX_ITCTS_TO_STS);",
+      "revId": "eb68a52e02752bde3ec7d171f9f20f2e97873510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

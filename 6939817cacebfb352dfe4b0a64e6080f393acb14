@@ -175,6 +175,24 @@
       "revId": "6939817cacebfb352dfe4b0a64e6080f393acb14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917bfc17_e3c44a4f",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-30T07:33:34Z",
+      "side": 1,
+      "message": "Oh, didn\u0027t think of that. Hopefully that\u0027s ok, yeah.",
+      "parentUuid": "4702e29f_9f7b245b",
+      "revId": "6939817cacebfb352dfe4b0a64e6080f393acb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
