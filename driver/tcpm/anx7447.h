@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_ANX7447_H
 #define __CROS_EC_USB_PD_TCPM_ANX7447_H
 
+#include "config.h"
+
 /* Registers: TCPC slave address used */
 #define ANX7447_REG_TCPC_SWITCH_0	0xB4
 #define ANX7447_REG_TCPC_SWITCH_1	0xB5
@@ -30,6 +32,44 @@
 #define ANX7447_REG_HPD_OEN		0x40
 
 #define ANX7447_REG_INTP_CTRL_0		0x9E
+
+#ifdef CONFIG_USB_PD_TCPM_ANX7447_OCM_ERASE
+/* SPI registers used for OCM flash operations */
+#define ANX7447_DELAY_IN_US		(20*1000)
+
+#define ANX7447_REG_R_RAM_CTRL			0x05
+#define ANX7447_REG_R_FLASH_RW_CTRL		0x30
+#define ANX7447_REG_R_FLASH_STATUS_0		0x31
+#define ANX7447_REG_FLASH_INST_TYPE		0x33
+#define ANX7447_REG_FLASH_ERASE_TYPE		0x34
+#define ANX7447_REG_OCM_CTRL_0			0x6E
+#define ANX7447_REG_ADDR_GPIO_CTRL_0		0x88
+#define ANX7447_REG_OCM_VERSION			0xB4
+
+/* R_RAM_CTRL bit definitions */
+#define ANX7447_R_RAM_CTRL_FLASH_DONE			(1<<7)
+
+/* R_FLASH_RW_CTRL bit definitions */
+#define ANX7447_R_FLASH_RW_CTRL_GENERAL_INST_EN		(1<<6)
+#define ANX7447_R_FLASH_RW_CTRL_FLASH_ERASE_EN		(1<<5)
+#define ANX7447_R_FLASH_RW_CTRL_WRITE_STATUS_EN		(1<<2)
+#define ANX7447_R_FLASH_RW_CTRL_FLASH_READ		(1<<1)
+#define ANX7447_R_FLASH_RW_CTRL_FLASH_WRITE		(1<<0)
+
+/* R_FLASH_STATUS_0 definitions */
+#define ANX7447_FLASH_STATUS_SPI_STATUS_0		0x43
+
+/* FLASH_ERASE_TYPE bit definitions */
+#define ANX7447_FLASH_INST_TYPE_WRITEENABLE		0x06
+#define ANX7447_FLASH_ERASE_TYPE_CHIPERASE		0x60
+
+/* OCM_CTRL_0 bit definitions */
+#define ANX7447_OCM_CTRL_OCM_RESET			(1<<6)
+
+/* ADDR_GPIO_CTRL_0 bit definitions */
+#define ANX7447_ADDR_GPIO_CTRL_0_SPI_WP			(1<<7)
+#define ANX7447_ADDR_GPIO_CTRL_0_SPI_CLK_ENABLE		(1<<6)
+#endif
 
 struct anx7447_i2c_addr {
 	int tcpc_slave_addr;
