@@ -152,6 +152,30 @@
       "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49c58604_ab3aea41",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-03-30T07:49:35Z",
+      "side": 1,
+      "message": "Furquan: As for the EC side of things, I believe these are the patches I need to cherry-pick:\n\nCL:707771, CL:770925, CL:791862, CL:791863\n\nHowever, there\u0027s a lot of merging hell from some RTC changes that occurred along the way.  Is this still the right thing to do?",
+      "parentUuid": "312c1cd4_6a52589d",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 35
+      },
+      "revId": "32ce1555ba7434b7e27c588359b6817ecdc0c4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
