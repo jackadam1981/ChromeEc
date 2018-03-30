@@ -17,6 +17,9 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+/* Compared with timer reg (0x3e), LSB = 175ms */
+#define MAX17055_RELIABLE_BATT_DETECT	0x10
+
 /*
  * Convert the register values to the units that match
  * smart battery protocol.
@@ -219,12 +222,29 @@ int battery_status(int *status)
 
 enum battery_present battery_is_present(void)
 {
-	int status = 0;
+	int reg = 0;
+	static uint8_t batt_pres_sure;
 
-	if (max17055_read(REG_STATUS, &status))
+	if (max17055_read(REG_STATUS, &reg))
 		return BP_NOT_SURE;
-	if (status & STATUS_BST)
+
+	if (reg & STATUS_BST)
 		return BP_NO;
+
+	if (!batt_pres_sure) {
+		/*
+		 * The battery detection result is not reliable within
+		 * ~2.8 secs after POR.
+		 */
+		if (!max17055_read(REG_TIMERH, &reg)) {
+			if (reg)
+				return BP_YES;
+			if (!max17055_read(REG_TIMER, &reg) &&
+			    ((uint32_t)reg > MAX17055_RELIABLE_BATT_DETECT))
+				batt_pres_sure = 1;
+		}
+		return BP_NOT_SURE;
+	}
 	return BP_YES;
 }
 
