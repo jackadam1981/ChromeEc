@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b9891e2_177da692",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-30T06:23:21Z",
+      "side": 1,
+      "message": "I\u0027d avoid the variable name \"new\" ,-) Maybe newtime?",
+      "range": {
+        "startLine": 273,
+        "startChar": 13,
+        "endLine": 273,
+        "endChar": 16
+      },
+      "revId": "6939817cacebfb352dfe4b0a64e6080f393acb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58edd87c_1b98fc67",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-30T06:23:21Z",
+      "side": 1,
+      "message": "clksrc_high + 1",
+      "range": {
+        "startLine": 280,
+        "startChar": 13,
+        "endLine": 280,
+        "endChar": 26
+      },
+      "revId": "6939817cacebfb352dfe4b0a64e6080f393acb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7ee65d3_eb01446f",
+        "filename": "chip/npcx/hwtimer_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-30T06:23:21Z",
+      "side": 1,
+      "message": "disabled",
+      "range": {
+        "startLine": 35,
+        "startChar": 42,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "6939817cacebfb352dfe4b0a64e6080f393acb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f9d457_84dfb554",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-30T06:23:21Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s better to put:\n\nif (IS_BIT_SET(NPCX_ITCTS(ITIM32), NPCX_ITCTS_TO_STS))\n\ninside __hw_clock_handle_overflow function?",
+      "revId": "6939817cacebfb352dfe4b0a64e6080f393acb14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
