@@ -3012,11 +3012,13 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SNK_TRANSITION:
 			/* Wait for PS_RDY */
-			if (pd[port].last_state != pd[port].task_state)
+			if (pd[port].last_state != pd[port].task_state) {
+				pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
 				set_state_timeout(port,
 						  get_time().val +
 						  PD_T_PS_TRANSITION,
 						  PD_STATE_HARD_RESET_SEND);
+			}
 			break;
 		case PD_STATE_SNK_READY:
 			timeout = 20*MSEC;
