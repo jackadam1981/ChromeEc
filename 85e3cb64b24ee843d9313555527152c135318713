@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4005607a_e304a297",
+        "filename": "board/host/dcrypto.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "Giving that you\u0027re copying more and more stuff verbatim - can we actually just use the production header? Or are there any differences in the declarations?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3531c526_679f8343",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "This is used in exactly one code location - inline?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74409e5_40f492f0",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: nonce ?",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 103,
+        "endChar": 50
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe1c983_e595bcea",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "Hm, didn\u0027t we decide to feed something in that gets reset on TPM clear?",
+      "range": {
+        "startLine": 106,
+        "startChar": 38,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4018a8f_ebf3b47f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 228,
+        "startChar": 16,
+        "endLine": 228,
+        "endChar": 18
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec8fd16_ec40d0e9",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: fits a single line",
+      "range": {
+        "startLine": 378,
+        "startChar": 20,
+        "endLine": 379,
+        "endChar": 20
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2207b0c_92e41c2a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: fits a single line",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 27
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de3c8c2_2c568c43",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: fits a single line",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 29
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03e7355_302d1750",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "this isn\u0027t used",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 23
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afce9e6_10cb0b7c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: space before }",
+      "range": {
+        "startLine": 651,
+        "startChar": 53,
+        "endLine": 651,
+        "endChar": 54
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a43c49e_fa1bf8c7",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: root",
+      "range": {
+        "startLine": 815,
+        "startChar": 15,
+        "endLine": 815,
+        "endChar": 23
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d72d0fdd_d54a9115",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "nit: spelling error in discrepancy",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff8df6b7_998b242f",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "As far as I can see, you\u0027re not using this union field anywhere. Remove and drop the union?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 13
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e1d0c26_9895f8b6",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "Maybe it\u0027s just me, but I somehow find the approach of overlaying structs hard to follow, in particular due to the implicit assumptions (sizes are fixed for response data, but not for request data for example). Have you considered an alternative where you don\u0027t rely on assumptions to locate the variable-length members, but pass explicit pointers and sizes to the variable-length parts? You\u0027d have to initialize this once for a request that comes in or when you set up the response.",
+      "range": {
+        "startLine": 175,
+        "startChar": 17,
+        "endLine": 175,
+        "endChar": 39
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2144faf5_b7914064",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": ".iv and .payload ?",
+      "range": {
+        "startLine": 198,
+        "startChar": 18,
+        "endLine": 198,
+        "endChar": 42
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02789a1_c795138d",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "Flatten? It\u0027s not that the union really saves much space, and simpler is less error prone.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 3
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dccbb0e_2ee2fa5f",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-30T18:09:03Z",
+      "side": 1,
+      "message": "comment to explain the magic number?",
+      "range": {
+        "startLine": 317,
+        "startChar": 25,
+        "endLine": 317,
+        "endChar": 29
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
