@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f3884ab_729df125",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-30T18:11:33Z",
+      "side": 1,
+      "message": "Nothing sets this back to 0. Isn\u0027t that a thing we want to do?\nOr is this some kind of check to make sure we\u0027re not looping on an error?",
+      "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
