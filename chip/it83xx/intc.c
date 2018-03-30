@@ -17,13 +17,13 @@ static void chip_pd_irq(enum usbpd_port port)
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
-	if (USBPD_IS_HARD_RESET_DETECT(port)) {
+	if (IT83XX_USBPD_ISR(port) & USBPD_REG_MASK_HARD_RESET_DETECT) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
-		if (USBPD_IS_RX_DONE(port)) {
+		if (IT83XX_USBPD_ISR(port) & USBPD_REG_MASK_MSG_RX_DONE) {
 			/* mask RX done interrupt */
 			IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
 			/* clear RX done interrupt */
@@ -31,7 +31,7 @@ static void chip_pd_irq(enum usbpd_port port)
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				PD_EVENT_RX, 0);
 		}
-		if (USBPD_IS_TX_DONE(port)) {
+		if (IT83XX_USBPD_ISR(port) & USBPD_REG_MASK_MSG_TX_DONE) {
 			/* clear TX done interrupt */
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
