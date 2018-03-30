@@ -34,6 +34,24 @@
       "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8d66e2_1914ab9d",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-30T18:29:13Z",
+      "side": 1,
+      "message": "The only possibility that we\u0027d want to set it back to 0 is that someone unplug battery while the AC charger is plugged and the device has booted. In this rare use case, we would see EC boot loop. But it can recovery once the user unplug/replug AC (while battery is still absent).\n\nI\u0027m not sure if it\u0027s worth calling battery_is_present() frequently just for this rare use case.",
+      "parentUuid": "1f3884ab_729df125",
+      "revId": "3bb074e825f68c35997baf0afd7cf2b4afe0ed5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
