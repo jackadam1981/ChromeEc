@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bf744a9_f564153a",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-03-30T03:45:46Z",
+      "side": 1,
+      "message": "i think it\u0027ll be more helpful to code referencing these pins if we name them after board signal names instead of chip GPIO designations.\n\n\n/* I2C pins - these will be reconfigured for alternate function below */\nGPIO(I2C0_C0_SCL,\t\tPIN(9, 0), GPIO_INPUT)\t\t/* EC_I2C0_USB_C0_SCL */\nGPIO(I2C0_C0_SDA,\t\tPIN(8, 7), GPIO_INPUT)\t\t/* EC_I2C0_USB_C0_SDA */\nGPIO(I2C0_C1_SCL,\t\tPIN(9, 2), GPIO_INPUT)\t\t/* EC_I2C0_USB_C1_SCL */\nGPIO(I2C0_C1_SDA,\t\tPIN(9, 1), GPIO_INPUT)\t\t/* EC_I2C0_USB_C1_SDA */\nGPIO(I2C1_GYRO_SCL,\t\tPIN(3, 3), GPIO_INPUT)\t\t/* EC_I2C1_GYRO_SCL */\nGPIO(I2C1_GYRO_SDA,\t\tPIN(3, 6), GPIO_INPUT)\t\t/* EC_I2C1_GYRO_SDA */\nGPIO(I2C2_SENSOR_SCL,\t\tPIN(D, 1), GPIO_INPUT)\t\t/* EC_I2C2_SENSOR_3V3_SCL */\nGPIO(I2C2_SENSOR_SDA,\t\tPIN(D, 0), GPIO_INPUT)\t\t/* EC_I2C2_SENSOR_3V3_SDA */\nGPIO(I2C3_POWER_SCL,\t\tPIN(B, 5), GPIO_INPUT)\t\t/* EC_I2C3_POWER_SCL */\nGPIO(I2C3_POWER_SDA,\t\tPIN(B, 4), GPIO_INPUT)\t\t/* EC_I2C3_POWER_SDA */\nGPIO(I2C4_BATTERY_SCL,\t\tPIN(F, 3), GPIO_INPUT)\t\t/* EC_I2C4_BATTERY_SCL */\nGPIO(I2C4_BATTERY_SDA,\t\tPIN(F, 2), GPIO_INPUT)\t\t/* EC_I2C4_BATTERY_SDA */",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "65730bcfd01841e48920369443b10ed9d498784c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
