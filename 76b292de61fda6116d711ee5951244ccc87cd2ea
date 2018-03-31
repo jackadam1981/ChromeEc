@@ -22,6 +22,30 @@
       "revId": "76b292de61fda6116d711ee5951244ccc87cd2ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea78279_33b209c1",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-31T23:29:08Z",
+      "side": 1,
+      "message": "\u003e Now that you have moved period calculation to the upper if block, phase calculation can be simplified too:\n\u003e \n\u003e 1. Change time from int8_t to uint8_t\n \u003e\u003e Ack.\n\n\u003e 2. Change LED_INDEFINITE to be UINT8_MAX instead of -1\n\u003e 3. Here you can do this all the time without the comparison to LED_INDEFINITE:\n\u003e phase \u003d ticks \u003c led_state_table[led_state][LED_PHASE_0].time ? 0 : 1;\n\u003e ticks \u003d (ticks + 1) % period;\n\u003e 4. Changing LED_INDEFINITE to UINT8_MAX will also mean that period is set to UINT8_MAX when phase 0 is defined as indefinite in L158.\n\n  \u003e\u003e Wont we want to use the chance to avoid calculating (add / modulo etc) when its LED_INDEFINITE for phase 0 and let it continue until there is a state change.\n\n\u003e 5. Also, you don\u0027t need to initialize period to UINT8_MAX any more in L147.\n\u003e\u003e Ack.",
+      "parentUuid": "cd7d7d34_1dc08cf5",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 70
+      },
+      "revId": "76b292de61fda6116d711ee5951244ccc87cd2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
