@@ -172,3 +172,12 @@ ifneq ($(touchpad_fw_ls),$(old_touchpad_fw_ls))
 .PHONY: $(out)/.touchpad_fw
 endif
 endif
+
+ifeq ($(TEST_BUILD),)
+
+$(out)/RW/common/rma_auth.o: $(out)/rma_key_from_blob.h
+
+$(out)/rma_key_from_blob.h: board/$(BOARD)/rma_key_blob.test util/od_rma_key.sh
+	$(Q)util/od_rma_key.sh RMA_KEY_BLOB $< $@
+
+endif
