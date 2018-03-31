@@ -172,3 +172,16 @@ ifneq ($(touchpad_fw_ls),$(old_touchpad_fw_ls))
 .PHONY: $(out)/.touchpad_fw
 endif
 endif
+
+ifeq ($(TEST_BUILD),)
+
+$(out)/RW/common/rma_auth.o: $(out)/rma_key_from_blob.h
+
+# Generate .h file from the binary key blob; replace existing file only if the
+# new generated file is different from the existiong one.
+$(out)/rma_key_from_blob.h: board/$(BOARD)/rma_key_blob.test util/od_rma_key.sh
+	$(Q)util/od_rma_key.sh $< $@.tmp
+	$(Q)if [[ ! -f $@  ]] || ! cmp -s $@.tmp $@; then  \
+                mv $@.tmp $@;                              \
+        fi
+endif
