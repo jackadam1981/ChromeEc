@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd7d7d34_1dc08cf5",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-31T07:17:26Z",
+      "side": 1,
+      "message": "Now that you have moved period calculation to the upper if block, phase calculation can be simplified too:\n\n1. Change time from int8_t to uint8_t\n2. Change LED_INDEFINITE to be UINT8_MAX instead of -1\n3. Here you can do this all the time without the comparison to LED_INDEFINITE:\nphase \u003d ticks \u003c led_state_table[led_state][LED_PHASE_0].time ? 0 : 1;\nticks \u003d (ticks + 1) % period;\n4. Changing LED_INDEFINITE to UINT8_MAX will also mean that period is set to UINT8_MAX when phase 0 is defined as indefinite in L158.\n5. Also, you don\u0027t need to initialize period to UINT8_MAX any more in L147.",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 70
+      },
+      "revId": "76b292de61fda6116d711ee5951244ccc87cd2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
