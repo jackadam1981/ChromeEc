@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d78a048_2dfe94dc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3016,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-01T16:22:07Z",
+      "side": 1,
+      "message": "The experiments that Daisuke has run recently on Fizz have shown that we need to be careful when setting again PD_FLAGS_CHECK_IDENTITY as we can do the mode discovery again and as a consequence in the current stack, (wrongly) enter twice the DP mode (without exiting it) which fails some devices.\nI´m thinking about the possible paths for this case,\nbut overall if the SVDM was interrupted it seems you might be in a bad case, unless the new request somehow discards the previous modes ?",
+      "range": {
+        "startLine": 3016,
+        "startChar": 4,
+        "endLine": 3016,
+        "endChar": 46
+      },
+      "revId": "9e879877ebd503b88ec7e1b0400e0bc48eb6b0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
