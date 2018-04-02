@@ -7,6 +7,9 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "battery.h"
+#include "charge_manager.h"
+#include "charge_state.h"
 #include "common.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_lsm6dsm.h"
@@ -32,6 +35,9 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #define USB_PD_PORT_ANX74XX	0
 #define USB_PD_PORT_PS8751	1
@@ -173,6 +179,54 @@ void board_reset_pd_mcu(void)
 int board_set_active_charge_port(int port)
 {
 	/* TODO(b/74127309): Flesh out USB code */
+	int is_real_port = (port >= 0 &&
+			    port < CONFIG_USB_PD_PORT_COUNT);
+	int i;
+	int rv;
+
+	if (!is_real_port && port != CHARGE_PORT_NONE)
+		return EC_ERROR_INVAL;
+
+
+	CPRINTS("New chg p%d", port);
+
+	if (port == CHARGE_PORT_NONE) {
+		/* Disable all ports. */
+		for (i = 0; i < ppc_cnt; i++) {
+			rv = ppc_vbus_sink_enable(i, 0);
+			if (rv) {
+				CPRINTS("Disabling p%d sink path failed.", i);
+				return rv;
+			}
+		}
+
+		return EC_SUCCESS;
+	}
+
+	/* Check if the port is sourcing VBUS. */
+	if (ppc_is_sourcing_vbus(port)) {
+		CPRINTF("Skip enable p%d", port);
+		return EC_ERROR_INVAL;
+	}
+
+	/*
+	 * Turn off the other ports' sink path FETs, before enabling the
+	 * requested charge port.
+	 */
+	for (i = 0; i < ppc_cnt; i++) {
+		if (i == port)
+			continue;
+
+		if (ppc_vbus_sink_enable(i, 0))
+			CPRINTS("p%d: sink path disable failed.", i);
+	}
+
+	/* Enable requested charge port. */
+	if (ppc_vbus_sink_enable(port, 1)) {
+		CPRINTS("p%d: sink path enable failed.");
+		return EC_ERROR_UNKNOWN;
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -180,6 +234,9 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
 	/* TODO(b/74127309): Flesh out USB code */
+	charge_set_input_current_limit(MAX(charge_ma,
+					   CONFIG_CHARGER_INPUT_CURRENT),
+				       charge_mv);
 }
 
 uint16_t tcpc_get_alert_status(void)
