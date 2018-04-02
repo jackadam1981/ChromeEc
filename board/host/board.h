@@ -73,4 +73,11 @@ extern const int supplier_priority[];
 #define PD_MIN_CURRENT_MA     500
 #define PD_MIN_POWER_MW       7500
 
+/*
+ * Define a huge tx buffer, to make sure EC does not need to notify host that
+ * buffer is getting full
+ */
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 8192
+
 #endif /* __CROS_EC_BOARD_H */
