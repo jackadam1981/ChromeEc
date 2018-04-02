@@ -923,3 +923,93 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 			"hcdebug [off | normal | every | params]",
 			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
+
+#ifdef CONFIG_AUDIO_CODEC
+
+static uint8_t gain_left;
+static uint8_t gain_right;
+
+typedef int (*codec_i2s_func)(struct host_cmd_handler_args *args);
+
+static int codec_set_sample_depth(struct host_cmd_handler_args *args)
+{
+	args->response_size = 0;
+
+	return EC_RES_SUCCESS;
+}
+
+static int codec_set_gain(struct host_cmd_handler_args *args)
+{
+	struct ec_param_codec_i2s *param =
+		(struct ec_param_codec_i2s *)args->params;
+
+	args->response_size = 0;
+
+	gain_left = param->gain.left;
+	gain_right = param->gain.right;
+
+	return EC_RES_SUCCESS;
+}
+
+static int codec_get_gain(struct host_cmd_handler_args *args)
+{
+	uint8_t len = sizeof(struct ec_response_codec_gain);
+
+	struct ec_response_codec_gain *resp =
+		(struct ec_response_codec_gain*)args->response;
+
+	args->response_size = len;
+
+	resp->left = gain_left;
+	resp->right = gain_right;
+
+	return EC_RES_SUCCESS;
+}
+
+
+static int codec_i2s_enable(struct host_cmd_handler_args *args)
+{
+	args->response_size = 0;
+
+	return EC_RES_SUCCESS;
+}
+
+static int codec_i2s_set_config(struct host_cmd_handler_args *args)
+{
+	args->response_size = 0;
+
+	return EC_RES_SUCCESS;
+}
+
+static int codec_i2s_set_tdm_config(struct host_cmd_handler_args *args)
+{
+	args->response_size = 0;
+
+	return EC_RES_SUCCESS;
+}
+
+static int codec_i2s(struct host_cmd_handler_args *args)
+{
+	struct ec_param_codec_i2s *param =
+		(struct ec_param_codec_i2s *)args->params;
+
+	codec_i2s_func codec_i2s_func_tbl[] = {
+		codec_set_sample_depth,
+		codec_set_gain,
+		codec_get_gain,
+		codec_i2s_enable,
+		codec_i2s_set_config,
+		codec_i2s_set_tdm_config,
+	};
+
+	if (param->cmd < EC_CODEC_I2S_MAX)
+		return codec_i2s_func_tbl[param->cmd](args);
+	else
+		return EC_RES_INVALID_PARAM;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_CODEC_I2S,
+		     codec_i2s,
+		     EC_VER_MASK(0));
+
+#endif /* CONFIG_AUDIO_CODEC*/
