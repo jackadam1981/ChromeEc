@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d4148939_f2852c0d",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:45Z",
+      "side": 1,
+      "message": "We now store a nonce instead of the keys and tie the keys to both the nonce and the storage seed so that TPM_CLEAR() also makes the keys change invalidating the old leaves.",
+      "parentUuid": "f7ed688d_7a71c36c",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 56
+      },
+      "revId": "aac16f7e517ad6590a571b60a787148244f4ee40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aeb450a_63530a26",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 10
