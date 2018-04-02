@@ -596,7 +596,7 @@ enum host_event_code {
 	 * raw event status via EC_MEMMAP_HOST_EVENTS but the LPC interface is
 	 * not initialized on the EC, or improperly configured on the host.
 	 */
-	EC_HOST_EVENT_INVALID = 32
+	EC_HOST_EVENT_INVALID = 32,
 };
 /* Host event mask */
 #define EC_HOST_EVENT_MASK(event_code) (1ULL << ((event_code) - 1))
@@ -3166,6 +3166,9 @@ enum ec_mkbp_event {
 	 * The event data is 8 bytes of host event flags.
 	 */
 	EC_MKBP_EVENT_HOST_EVENT64 = 7,
+
+	/* EC console log is getting full, and should be fetched. */
+	EC_MKBP_EVENT_CONSOLE = 8,
 
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
