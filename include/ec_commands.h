@@ -3169,6 +3169,9 @@ enum ec_mkbp_event {
 	 */
 	EC_MKBP_EVENT_HOST_EVENT64 = 7,
 
+	/* EC console log is getting full, and should be fetched. */
+	EC_MKBP_EVENT_CONSOLE = 8,
+
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };

@@ -11,6 +11,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "mkbp_event.h"
 #include "printf.h"
 #include "system.h"
 #include "task.h"
@@ -46,6 +47,39 @@ static int tx_snapshot_head;
 static int tx_snapshot_tail;
 static int tx_last_snapshot_head;
 static int tx_next_snapshot_head;
+
+#ifdef CONFIG_MKBP_EVENT
+static int host_notified;
+
+#define UART_TX_BUF_NOTIFY_LEVEL ((3 * CONFIG_UART_TX_BUF_SIZE) / 4)
+
+/*
+ * We check how full the console buffer is from uart_process_output, to avoid
+ * increasing stack size in __tx_char, which is often very deep in call stack.
+ */
+void uart_notify_full(void)
+{
+	int buffer_level;
+
+	if (host_notified)
+		return;
+
+	buffer_level = TX_BUF_DIFF(tx_buf_head, tx_next_snapshot_head);
+	if (buffer_level > UART_TX_BUF_NOTIFY_LEVEL) {
+		mkbp_send_event(EC_MKBP_EVENT_CONSOLE);
+		host_notified = 1;
+	}
+}
+
+static int console_get_next_event(uint8_t *out)
+{
+	/* No parameter. */
+	return 0;
+}
+DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_CONSOLE, console_get_next_event);
+#else
+inline void uart_notify_full(void) {}
+#endif /* CONFIG_MKBP_EVENT */
 
 /**
  * Put a single character into the transmit buffer.
@@ -111,6 +145,8 @@ void uart_process_output(void)
 	 */
 	int head = tx_buf_head;
 
+	uart_notify_full();
+
 	/* If DMA is still busy, nothing to do. */
 	if (!uart_tx_dma_ready())
 		return;
@@ -142,6 +178,8 @@ void uart_process_output(void)
 
 void uart_process_output(void)
 {
+	uart_notify_full();
+
 	/* Copy output from buffer until TX fifo full or output buffer empty */
 	while (uart_tx_ready() && (tx_buf_head != tx_buf_tail)) {
 		uart_write_char(tx_buf[tx_buf_tail]);
@@ -335,6 +373,10 @@ static int host_command_console_snapshot(struct host_cmd_handler_args *args)
 	/* Set up pointer for just the new part of the buffer */
 	tx_last_snapshot_head = tx_next_snapshot_head;
 	tx_next_snapshot_head = tx_buf_head;
+#ifdef CONFIG_MKBP_EVENT
+	/* When the next snapshot fills up, notify host again */
+	host_notified = 0;
+#endif
 
 	/*
 	 * Immediately skip any unused bytes.  This doesn't always work,
