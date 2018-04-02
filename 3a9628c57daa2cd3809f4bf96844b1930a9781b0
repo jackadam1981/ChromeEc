@@ -22,6 +22,30 @@
       "revId": "3a9628c57daa2cd3809f4bf96844b1930a9781b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebcdd6d6_86e09d89",
+        "filename": "chip/it83xx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-02T17:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "209f7e20_1313bd1f",
+      "range": {
+        "startLine": 672,
+        "startChar": 4,
+        "endLine": 672,
+        "endChar": 26
+      },
+      "revId": "3a9628c57daa2cd3809f4bf96844b1930a9781b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
