@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21ade717_b45d4c2c",
+        "filename": "board/host/dcrypto.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "There are differences in declarations. This is primarily because I don\u0027t want to migrate a bunch of Cr50 headers into common and make cryptoc a dependency of the tests. I started down that route when I first setup the tests. If we want to switch back to that way, we will have to migrate more than dcrypto.h out of chip/g/include into include/ and add the include path for cryptoc to the pinweaver test binary.",
+      "parentUuid": "4005607a_e304a297",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3531c526_679f8343",
         "filename": "common/pinweaver.c",
         "patchSetId": 46
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "eac4b8ef_d46b2946",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7075d5d_b2fc92c4",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e74409e5_40f492f0",
         "filename": "common/pinweaver.c",
         "patchSetId": 46
@@ -92,6 +140,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d2345f2_0eb2b23c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74409e5_40f492f0",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 103,
+        "endChar": 50
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "c539da36_9e1530a2",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Yes I missed this because it requires bringing back pinweaver_tpm_imports.",
+      "parentUuid": "7fe1c983_e595bcea",
+      "range": {
+        "startLine": 106,
+        "startChar": 38,
+        "endLine": 106,
+        "endChar": 43
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4018a8f_ebf3b47f",
         "filename": "common/pinweaver.c",
         "patchSetId": 46
@@ -138,6 +234,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7850dc41_9326cacd",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4018a8f_ebf3b47f",
+      "range": {
+        "startLine": 228,
+        "startChar": 16,
+        "endLine": 228,
+        "endChar": 18
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "32816afb_51da23b1",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cec8fd16_ec40d0e9",
+      "range": {
+        "startLine": 378,
+        "startChar": 20,
+        "endLine": 379,
+        "endChar": 20
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2207b0c_92e41c2a",
         "filename": "common/pinweaver.c",
         "patchSetId": 46
@@ -184,6 +328,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42984e4a_df96f368",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2207b0c_92e41c2a",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 27
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "839501e6_29edd877",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de3c8c2_2c568c43",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 29
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a03e7355_302d1750",
         "filename": "common/pinweaver.c",
         "patchSetId": 46
@@ -230,6 +422,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c860f8c_6462308c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a03e7355_302d1750",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 23
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "27ff8937_e492df01",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5afce9e6_10cb0b7c",
+      "range": {
+        "startLine": 651,
+        "startChar": 53,
+        "endLine": 651,
+        "endChar": 54
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a43c49e_fa1bf8c7",
         "filename": "common/pinweaver.c",
         "patchSetId": 46
@@ -276,6 +516,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "186c05e5_8e7224f2",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 46
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a43c49e_fa1bf8c7",
+      "range": {
+        "startLine": 815,
+        "startChar": 15,
+        "endLine": 815,
+        "endChar": 23
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -302,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "bf9704bf_acc7f17d",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d72d0fdd_d54a9115",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff8df6b7_998b242f",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 46
@@ -322,6 +610,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae75a31_5d1e49df",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff8df6b7_998b242f",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 13
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -348,6 +660,30 @@
     },
     {
       "key": {
+        "uuid": "5c4ea631_33e93e81",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e1d0c26_9895f8b6",
+      "range": {
+        "startLine": 175,
+        "startChar": 17,
+        "endLine": 175,
+        "endChar": 39
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2144faf5_b7914064",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 46
@@ -368,6 +704,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42cf7397_7e2e4ed1",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2144faf5_b7914064",
+      "range": {
+        "startLine": 198,
+        "startChar": 18,
+        "endLine": 198,
+        "endChar": 42
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -394,6 +754,30 @@
     },
     {
       "key": {
+        "uuid": "a3a56f7f_dbf73dd0",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a02789a1_c795138d",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 3
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dccbb0e_2ee2fa5f",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 46
@@ -414,6 +798,30 @@
       "revId": "85e3cb64b24ee843d9313555527152c135318713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60711a09_ab203bc6",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-02T23:55:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dccbb0e_2ee2fa5f",
+      "range": {
+        "startLine": 317,
+        "startChar": 25,
+        "endLine": 317,
+        "endChar": 29
+      },
+      "revId": "85e3cb64b24ee843d9313555527152c135318713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
