@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97140c0e_06538295",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T13:58:57Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you need this hack.\nthis make rule will be executed only if board/$(BOARD)/rma_key_blob.test is more recent than rma_key_from_blob.h which seems fine to me ?",
+      "range": {
+        "startLine": 180,
+        "startChar": 45,
+        "endLine": 181,
+        "endChar": 56
+      },
+      "revId": "29ac17071856332e8bd8a10775a7217aab05d995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
