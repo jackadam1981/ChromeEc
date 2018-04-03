@@ -1425,6 +1425,14 @@ void charger_task(void *u)
 			curr.batt.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 		}
 
+#if defined(CONFIG_HOSTCMD_EVENTS) && \
+	defined(CONFIG_BATTERY_CRITICAL_DISCHG_CURRENT_MA)
+		if (!(curr.batt.flags & BATT_FLAG_BAD_CURRENT) &&
+		    (curr.batt.current <
+		     -CONFIG_BATTERY_CRITICAL_DISCHG_CURRENT_MA))
+			host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
+#endif
+
 		/*
 		 * Now decide what we want to do about it. We'll normally just
 		 * pass along whatever the battery wants to the charger. Note

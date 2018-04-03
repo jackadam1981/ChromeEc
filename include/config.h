@@ -289,6 +289,12 @@
 #undef CONFIG_BATTERY_DEVICE_CHEMISTRY
 
 /*
+ * If the battery discharging current goes higher than this number (in mA),
+ * we should warn AP.
+ */
+#undef CONFIG_BATTERY_CRITICAL_DISCHG_CURRENT_MA
+
+/*
  * Critical battery shutdown timeout (seconds)
  *
  * If the battery is at extremely low charge (and discharging) or extremely
