@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e9d79e_6694a94e",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:07:07Z",
+      "side": 1,
+      "message": "I defer to Vadim for deciding the correct value for this.",
+      "range": {
+        "startLine": 61,
+        "startChar": 23,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "bc741cb258abc620514098702526863ac8d9714d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
