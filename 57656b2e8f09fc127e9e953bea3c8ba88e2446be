@@ -22,6 +22,30 @@
       "revId": "57656b2e8f09fc127e9e953bea3c8ba88e2446be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5ee4fc_8d5f79ba",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-03T21:43:49Z",
+      "side": 1,
+      "message": "Boards that don\u0027t define complained with a warning/error that this function was defined but never used.",
+      "parentUuid": "f290052a_b9385c86",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 37
+      },
+      "revId": "57656b2e8f09fc127e9e953bea3c8ba88e2446be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
