@@ -2576,6 +2576,14 @@
 
 /* Compile common code for throttling the CPU based on the temp sensors */
 #undef CONFIG_THROTTLE_AP
+
+/*
+ * Compile common code for throttling the CPU based on the battery discharge
+ * current. When this feature is enabled, BAT_MAX_DISCHG_CURRENT and
+ * OCP_HYSTERESIS must be defined in board.h.
+ */
+#undef CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT
+
 /*
  * If defined, dptf is enabled to manage thermals.
  *
