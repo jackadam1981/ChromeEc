@@ -46,6 +46,30 @@
       "revId": "76b292de61fda6116d711ee5951244ccc87cd2ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ad3087_f03adc85",
+        "filename": "board/yorp/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-03T08:02:47Z",
+      "side": 1,
+      "message": "\u003e\u003e\u003e Wont we want to use the chance to avoid calculating (add / modulo etc) when its LED_INDEFINITE for phase 0 and let it continue until there is a state change.\n\nIf you want to optimize that part, then we can avoid the unnecessary call to led_set_color_battery as well:\n\n\nif (desired_state !\u003d led_state) {\n...\n} else if (period \u003d\u003d UINT8_MAX)\n    return;    /* Desired state did not change and has indefinite phase0, so no change in LED required. */\n\nif (led_state \u003d\u003d LED_STATE_DEFAULT)\n    return;\n\n...",
+      "parentUuid": "aea78279_33b209c1",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 70
+      },
+      "revId": "76b292de61fda6116d711ee5951244ccc87cd2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
