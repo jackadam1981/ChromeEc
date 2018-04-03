@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "f9a756bf_cf8e6dc0",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T21:11:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cfe95baa_a8cfb864",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 31
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "996a1736_7b3749ed",
         "filename": "common/pinweaver.c",
         "patchSetId": 47
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "I looked into moving this into the validation functions and it doesn\u0027t work well because of how the validation functions are layered / reused. I could add them but it will lead to a lot of duplicate checks.",
       "parentUuid": "996a1736_7b3749ed",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 31
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "055f0fee_2e93aad8",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T21:11:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65c98fca_3ba70e21",
       "range": {
         "startLine": 567,
         "startChar": 0,
