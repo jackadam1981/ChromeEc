@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "199a0c78_95f8310b",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-03T22:31:10Z",
+      "side": 1,
+      "message": "This is changing from 0x50 to 0x58. Is the driver define wrong? The schematics say 0x50",
+      "range": {
+        "startLine": 448,
+        "startChar": 20,
+        "endLine": 448,
+        "endChar": 41
+      },
+      "revId": "837e2c498526e0f9bde6078585443f425b5d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873e2ed0_02453dab",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-03T22:31:10Z",
+      "side": 1,
+      "message": "nit: s/doe/does/",
+      "range": {
+        "startLine": 73,
+        "startChar": 31,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "837e2c498526e0f9bde6078585443f425b5d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
