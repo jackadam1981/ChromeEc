@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "54939bfe_8256ea63",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T09:29:12Z",
+      "side": 1,
+      "message": "I meant all of them.",
+      "parentUuid": "a98f4723_7b39e3ab",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 58
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ca74aed_27b7d14d",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -589,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "61d73423_b7b90899",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T09:29:12Z",
+      "side": 1,
+      "message": "Yes we should probably put a len \u003d\u003d 0 conditional at the beginning and be done with it.",
+      "parentUuid": "2c48a9a0_7a5fd1e1",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 61
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e66a1fb_693a42ed",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
@@ -624,6 +672,30 @@
       "side": 1,
       "message": "I wasn\u0027t sure which mode to use--the RFC doesn\u0027t say--but it seems like not reinitializing every iteration gives me incorrect answers and every mode gives the same result for one call. So as far as I can tell, it doesn\u0027t matter what mode we use, but this should probably pass under the eye of someone familiar with AES.",
       "parentUuid": "9e66a1fb_693a42ed",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b28ba0b_37e999cf",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T09:29:12Z",
+      "side": 1,
+      "message": "CBC really meant propagating some init from the previous block,\nif we don\u0027t (to get a correct answer), we should go for something simpler which doesn\u0027t require the init everytime.\nI have seen other implementations using ECB mode.",
+      "parentUuid": "a74c9bb3_37ebd100",
       "range": {
         "startLine": 119,
         "startChar": 0,
