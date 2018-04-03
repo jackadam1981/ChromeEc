@@ -48,6 +48,75 @@
     },
     {
       "key": {
+        "uuid": "283ee75c_b2164464",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T13:03:20Z",
+      "side": 1,
+      "message": "any reason why it is not next to the point where we reset PD_FLAGS_EXPLICIT_CONTRACT at line 463 ?\nthe (existing) code around has definitely too many conditionals for my brain to process it.",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 11
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc46e70_09ed0b64",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T13:03:20Z",
+      "side": 1,
+      "message": "why you don\u0027t update the BBRM one here too ?",
+      "range": {
+        "startLine": 1178,
+        "startChar": 4,
+        "endLine": 1178,
+        "endChar": 49
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65cff5f_43eaca37",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T13:03:20Z",
+      "side": 1,
+      "message": "ditto you don\u0027t reset PD_BBRMFLG_EXPLICIT_CONTRACT here ?",
+      "range": {
+        "startLine": 1472,
+        "startChar": 3,
+        "endLine": 1476,
+        "endChar": 49
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08577e33_6f0a2def",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
