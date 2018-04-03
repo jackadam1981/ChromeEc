@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37d99b68_c499aba7",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "can\u0027t we just include the proper header?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5baa6322_e990d61e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "Doesn\u0027t this clobber input.bytes modifications in the loop above, thus removing the storage seed from the input?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4b3cfe_2f0c45e3",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "nit: This just happens to hold the correct mask value, but conceptually this doesn\u0027t make much sense (i.e. why are you masking with a counter?). Should we add another (redundant) local variable with a proper name (suggestion: path_suffix_mask)?",
+      "range": {
+        "startLine": 182,
+        "startChar": 56,
+        "endLine": 182,
+        "endChar": 63
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae01e35_cd9e37ac",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "This is odd to be present in this function - drop here and handle this condition in calling code?",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 33
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42741d16_dc53ffa3",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "suggestion: rename to leaf_metadata_len or leaf_payload_len ?",
+      "range": {
+        "startLine": 384,
+        "startChar": 10,
+        "endLine": 384,
+        "endChar": 17
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b97824_47750b51",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "Hm, if I\u0027m not mistaken these always go in pairs? Have you considered including struct leaf_data_t in imported_leaf_data_t? Or alternatively, would it make sense to just add pointers in imported_leaf_data_t backed by pub and cipher_text buffers in unimported_leaf_data_t? For pub that should be trivial, for cipher_text it depends on whether we can encrypt/decrypt in-place. Can we? The DCRYPTO code suggests so, but I\u0027m not sure it\u0027s OK to rely on that. Even if not, we could declare an inline leaf_sensitive_data_t field in imporated_leaf_data_t that receives the decrypted data?\n\nThe reason I\u0027m asking is because I\u0027m hoping we could drop the additional layer of struct/buffers represented by struct leaf_data_t. WDYT?",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 31
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996a1736_7b3749ed",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "These size checks before calling the validation function are kinda awkward - ideally the validation function would handle this so there\u0027s less of a risk to accidentally miss the length validation or screw up parameters. I don\u0027t have a good idea how to do this without messing up the validation function\u0027s parameters though.\n\nLong story short: Fine to leave as is unless you have a good idea on how to improve this (same for validation of requests with leaf).",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 31
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20dbb225_539e7d60",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-03T14:04:56Z",
+      "side": 1,
+      "message": "Maybe rename this to PW_LEAF_METADATA_LEN or maybe PW_LEAF_PAYLOAD_LEN? I feel that\u0027d make it clearer what this is without forcing people to look up the definition and then comparing the struct definitions to understand what\u0027s going on.",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
