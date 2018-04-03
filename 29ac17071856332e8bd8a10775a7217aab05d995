@@ -22,6 +22,30 @@
       "revId": "29ac17071856332e8bd8a10775a7217aab05d995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9e6cf7_1712ed5e",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-03T14:28:46Z",
+      "side": 1,
+      "message": "ah, good point. I went through different variants, at some point this target was dependency of the .c file, and in that case it had to be .PHONY,\n\nFixed.",
+      "parentUuid": "97140c0e_06538295",
+      "range": {
+        "startLine": 180,
+        "startChar": 45,
+        "endLine": 181,
+        "endChar": 56
+      },
+      "revId": "29ac17071856332e8bd8a10775a7217aab05d995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
