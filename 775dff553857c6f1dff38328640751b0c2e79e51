@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01dd2d1_eb6bb904",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-03T12:47:47Z",
+      "side": 1,
+      "message": "both timer interrupts are lower than the UART (and at the same level as all the external GPIO interrupts).\nIt\u0027s not great and not really the original intent, a very immediate consequence is that developers must be careful in the other IRQ routine as the 64-bit timestamp is no longer coherent.\nMaybe we want to fix it too.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 64
+      },
+      "revId": "775dff553857c6f1dff38328640751b0c2e79e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
