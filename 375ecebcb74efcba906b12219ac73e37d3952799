@@ -22,6 +22,30 @@
       "revId": "375ecebcb74efcba906b12219ac73e37d3952799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d968cb8e_fa54754f",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-04-03T00:43:41Z",
+      "side": 1,
+      "message": "oops, this breaks when flash_ec is installed\ni.e., the non-workon case.\nEC_DIR\u003d\u0027\u0027, see line 12.",
+      "parentUuid": "9c995b5d_693b869b",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 69
+      },
+      "revId": "375ecebcb74efcba906b12219ac73e37d3952799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
