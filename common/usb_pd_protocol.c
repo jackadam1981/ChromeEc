@@ -1841,7 +1841,7 @@ static int pd_is_power_swapping(int port)
  * Provide Rp to ensure the partner port is in a known state (eg. not
  * PD negotiated, not sourcing 20V).
  */
-static void pd_partner_port_reset(int port)
+static void pd_partner_port_reset(int port, int force)
 {
 	uint64_t timeout;
 
@@ -1850,11 +1850,13 @@ static void pd_partner_port_reset(int port)
 	 * active, and we didn't just lose power, make sure we
 	 * don't boot into RO with a pre-existing power contract.
 	 */
-	if (!pd_get_saved_active(port) ||
-	   system_get_image_copy() != SYSTEM_IMAGE_RO ||
-	   system_get_reset_flags() &
-	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
-		return;
+	if (!force) {
+		if (!pd_get_saved_active(port) ||
+		    system_get_image_copy() != SYSTEM_IMAGE_RO ||
+		    system_get_reset_flags() & (RESET_FLAG_BROWNOUT |
+				    RESET_FLAG_POWER_ON))
+			return;
+	}
 
 	/*
 	 * Clear the active contract bit before we apply Rp in case we
@@ -2082,7 +2084,7 @@ void pd_task(void *u)
 	res = tcpm_init(port);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-	pd_partner_port_reset(port);
+	pd_partner_port_reset(port, 0);
 #endif
 
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
@@ -2705,8 +2707,11 @@ void pd_task(void *u)
 			pd_power_supply_reset(port);
 #else
 			rstatus = tcpm_release(port);
-			if (rstatus != 0 && rstatus != EC_ERROR_UNIMPLEMENTED)
+			if (rstatus != 0 && rstatus != EC_ERROR_UNIMPLEMENTED) {
 				CPRINTS("TCPC p%d release failed!", port);
+				/* We may not return... */
+				pd_partner_port_reset(port, 1);
+			}
 #endif
 			/* Wait for resume */
 			while (pd[port].task_state == PD_STATE_SUSPENDED)
