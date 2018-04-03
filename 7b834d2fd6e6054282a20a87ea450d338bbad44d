@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "768a5987_95786816",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "No, there are naming collisions.\n\nThe naming collisions are why I ended up splitting out the code that calls into the TPM2 code in the first place.",
+      "parentUuid": "37d99b68_c499aba7",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5baa6322_e990d61e",
         "filename": "common/pinweaver.c",
         "patchSetId": 47
@@ -45,6 +69,30 @@
       "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe7d906_2d2b7700",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "Yes, I had intended on removing this when I made the for loop above.",
+      "parentUuid": "5baa6322_e990d61e",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ea39eb0f_c77986a2",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4b3cfe_2f0c45e3",
+      "range": {
+        "startLine": 182,
+        "startChar": 56,
+        "endLine": 182,
+        "endChar": 63
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ae01e35_cd9e37ac",
         "filename": "common/pinweaver.c",
         "patchSetId": 47
@@ -91,6 +163,30 @@
       "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b100688_953a11d4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae01e35_cd9e37ac",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 33
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c0180d4f_c8a2d0af",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42741d16_dc53ffa3",
+      "range": {
+        "startLine": 384,
+        "startChar": 10,
+        "endLine": 384,
+        "endChar": 17
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00b97824_47750b51",
         "filename": "common/pinweaver.c",
         "patchSetId": 47
@@ -137,6 +257,30 @@
       "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe95baa_a8cfb864",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "I started working on the code for this and then reverted those changes because it was becoming too much of a rewrite. Specifically, handle_leaf_update().\n\nPlus I don\u0027t want to use the same memory for clear text and cipher text because then you have to track what state that memory is in and mistakes would lead to leaking the clear text.\n\nLets safe any further improvements that are primarily for readability for follow up CLs, since they will be easier to follow that way.",
+      "parentUuid": "00b97824_47750b51",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 31
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "65c98fca_3ba70e21",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 47
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "I looked into moving this into the validation functions and it doesn\u0027t work well because of how the validation functions are layered / reused. I could add them but it will lead to a lot of duplicate checks.",
+      "parentUuid": "996a1736_7b3749ed",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 31
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20dbb225_539e7d60",
         "filename": "include/pinweaver.h",
         "patchSetId": 47
@@ -183,6 +351,30 @@
       "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f3c5af_a7e48bff",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 47
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-03T19:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20dbb225_539e7d60",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "7b834d2fd6e6054282a20a87ea450d338bbad44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
