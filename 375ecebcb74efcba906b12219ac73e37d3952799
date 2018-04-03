@@ -46,6 +46,30 @@
       "revId": "375ecebcb74efcba906b12219ac73e37d3952799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57dc30eb_7c6bf883",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-03T16:37:29Z",
+      "side": 1,
+      "message": "sent CL:992993 to fix",
+      "parentUuid": "d968cb8e_fa54754f",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 69
+      },
+      "revId": "375ecebcb74efcba906b12219ac73e37d3952799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
