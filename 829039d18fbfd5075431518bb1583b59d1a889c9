@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a945dc2_d707301a",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-03T19:02:36Z",
+      "side": 1,
+      "message": "nit: Can you move this under the ALTERNATE configs below and put the comment to the side to match style?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 39
+      },
+      "revId": "829039d18fbfd5075431518bb1583b59d1a889c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
