@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19e960ef_2f2d17c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-04T07:05:11Z",
+      "side": 1,
+      "message": "no, doing thousands of unverified I2C transfers is not more robust.\nIt might allow to paper over a PS875 issue, but a small fraction of them will always fail and make VBUS virtually flap.\n\nOverall VBUS level is polled fairly often, making it 3 or 4 order of magnitudes slower is not necessarily the best strategy, maybe PPC interrupt is still not a thing, but here it\u0027s a net regression.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "228dc8d1193d2b4c26f60a9da779803bd41fe172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ef7d4a_f0682862",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-04T07:05:11Z",
+      "side": 1,
+      "message": "reg is undefined when the I2C transfer has failed.",
+      "range": {
+        "startLine": 211,
+        "startChar": 7,
+        "endLine": 211,
+        "endChar": 45
+      },
+      "revId": "228dc8d1193d2b4c26f60a9da779803bd41fe172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
