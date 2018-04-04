@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f16f2055_0cd2afe1",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-04T16:11:01Z",
+      "side": 1,
+      "message": "I wish we have CONFIG_XIP separately. If CONFIG_INTERNAL_STORAGE implies XIP, we can auto-define CONFIG_XIP based on CONFIG_INTERNAL_STORAGE. These notations are supposed to be orthogonal. They may not to be so in the current cros EC code base.",
+      "range": {
+        "startLine": 1242,
+        "startChar": 7,
+        "endLine": 1242,
+        "endChar": 30
+      },
+      "revId": "773b81ea86357ad2ac6bdf8ced5355038bfb45fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
