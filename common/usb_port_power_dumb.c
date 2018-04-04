@@ -33,6 +33,7 @@ static void usb_port_set_enabled(int port_id, int en)
 static void usb_port_all_ports_on(void)
 {
 	int i;
+	CPRINTS("%s", __func__);
 	for (i = 0; i < USB_PORT_COUNT; i++)
 		usb_port_set_enabled(i, 1);
 }
@@ -40,6 +41,7 @@ static void usb_port_all_ports_on(void)
 static void usb_port_all_ports_off(void)
 {
 	int i;
+	CPRINTS("%s", __func__);
 	for (i = 0; i < USB_PORT_COUNT; i++)
 		usb_port_set_enabled(i, 0);
 }
@@ -131,10 +133,12 @@ static void usb_port_init(void)
 	const uint8_t *prev;
 	int version, size, i;
 
+	CPRINTS("%s", __func__);
 	prev = (const uint8_t *)system_get_jump_tag(USB_SYSJUMP_TAG,
 						    &version, &size);
 	if (!prev || version != USB_HOOK_VERSION ||
 			size != sizeof(charge_mode)) {
+		CPRINTS("Previous USB charge mode not found");
 		usb_port_all_ports_off();
 		return;
 	}
