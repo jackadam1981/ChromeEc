@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f443672_8a9d69de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-04T16:22:00Z",
+      "side": 1,
+      "message": "I corrected the unverified part (CL:995959), thanks again for spotting that.\n\nCaching is inherently prone to getting out of sync with reality, especially if you are having trouble getting the correct interrupts. Timing this read on a 400kHz bus takes around ~350usec for the tcpc i2c read to return. Is ~350us not worth having an invalid cache state? (When a cable is plugged in, we call get_vbus_level about ~5/sec). Let me know your thoughts.",
+      "parentUuid": "19e960ef_2f2d17c8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "228dc8d1193d2b4c26f60a9da779803bd41fe172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5ef7d4a_f0682862",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "228dc8d1193d2b4c26f60a9da779803bd41fe172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceecb268_10758c0d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-04T16:22:00Z",
+      "side": 1,
+      "message": "Thanks for catching that. Sent out CL:995959 to fix.",
+      "parentUuid": "e5ef7d4a_f0682862",
+      "range": {
+        "startLine": 211,
+        "startChar": 7,
+        "endLine": 211,
+        "endChar": 45
+      },
+      "revId": "228dc8d1193d2b4c26f60a9da779803bd41fe172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
