@@ -45,6 +45,47 @@
       "revId": "e1e2dc22320bb18d622b2fcef21dc2c7db87413b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76099eb4_1d6423b0",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-04T20:17:15Z",
+      "side": 1,
+      "message": "TCPCI spec.",
+      "parentUuid": "0203b3a4_39cbe828",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "e1e2dc22320bb18d622b2fcef21dc2c7db87413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "037de5d5_45356bb7",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-04T20:17:15Z",
+      "side": 1,
+      "message": "Maybe add a note that this only enables sourcing vSafe5V (which is what most of our devices do today).",
+      "revId": "e1e2dc22320bb18d622b2fcef21dc2c7db87413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
