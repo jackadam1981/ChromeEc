@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72b7153c_b1d4d541",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-04T20:08:46Z",
+      "side": 1,
+      "message": "this seems really weird, but I don\u0027t really have a better alternative yet\n\nI know we need to defined CONFIG_USBC_PPC for other PPC functions, but it seems weird that we are calling back into the TCPC driver from the PPC",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "e1e2dc22320bb18d622b2fcef21dc2c7db87413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0203b3a4_39cbe828",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-04T20:08:46Z",
+      "side": 1,
+      "message": "is this apart of the TypeC Spec or just for the ANX7447 driver?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "e1e2dc22320bb18d622b2fcef21dc2c7db87413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
