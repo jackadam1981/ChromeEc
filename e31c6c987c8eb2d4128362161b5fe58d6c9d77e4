@@ -45,6 +45,30 @@
       "revId": "e31c6c987c8eb2d4128362161b5fe58d6c9d77e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b8809b_72302c37",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-04T18:49:31Z",
+      "side": 1,
+      "message": "normally when you see CPRINTS at the top of the file, the entire file pertains to the same cc_channel, but in board.c there can be are multiple cc_channels present.\n\nSince there can be multiple, I feel this naming makes it a little more clear.",
+      "parentUuid": "5e4d9f18_0d6c7a49",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "e31c6c987c8eb2d4128362161b5fe58d6c9d77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
