@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6b5aad1_9f65eedf",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-04T22:00:20Z",
+      "side": 1,
+      "message": "The other option which I initially considered is making this call from without the PD protocol layer in usb_pd_protocol.c. This would be done once VBUS is detected (for SNK) or when VBUS needs to be provided (SRC). But, then after discussing with Aseda, it seemed like this was a cleaner place as this function is already only called when CONFIG_USBC_PPC is defined (and that config would need to be added where it was called in usb_pd_protocol.c. In addition, this is the same place where these lines are being set when they are controlled by the EC. So, I think it might be more confusing to have a call that does something in the case of ANX but then nothing for the case of Parade.",
+      "parentUuid": "72b7153c_b1d4d541",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "e1e2dc22320bb18d622b2fcef21dc2c7db87413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0203b3a4_39cbe828",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 1
