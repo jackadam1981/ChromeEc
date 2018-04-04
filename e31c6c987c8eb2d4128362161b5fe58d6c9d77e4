@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dee43a3_72eafeaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-04T04:37:32Z",
+      "side": 1,
+      "message": "Were you able to test source mode on port 1? I think we should test that or check the source port functions in when that testing can be run.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "e31c6c987c8eb2d4128362161b5fe58d6c9d77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4d9f18_0d6c7a49",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-04T04:37:32Z",
+      "side": 1,
+      "message": "Why not just keep this as CPRINTS and CPRINTF like is in the rest of the codebase?",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "e31c6c987c8eb2d4128362161b5fe58d6c9d77e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
