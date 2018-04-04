@@ -22,6 +22,30 @@
       "revId": "773b81ea86357ad2ac6bdf8ced5355038bfb45fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a5d939_abbb69de",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-04-04T16:12:52Z",
+      "side": 1,
+      "message": "Agreed. I was just clarifying existing assumptions. I think it\u0027s helpful to separate the 2 notions, but that\u0027s a deeper change. \n\ne.g. npcx7 has internal flash. but it isn\u0027t XIP. I didn\u0027t want to hack on the linker script, etc. But we can certainly do that as a follow up.",
+      "parentUuid": "f16f2055_0cd2afe1",
+      "range": {
+        "startLine": 1242,
+        "startChar": 7,
+        "endLine": 1242,
+        "endChar": 30
+      },
+      "revId": "773b81ea86357ad2ac6bdf8ced5355038bfb45fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
