@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28b1eef4_ff969bc8",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-04T22:02:02Z",
+      "side": 1,
+      "message": "Yes the schematics are incorrect. I think I saw an issue opened to fix the schematic. The values in the .h file are the correct ones.",
+      "parentUuid": "199a0c78_95f8310b",
+      "range": {
+        "startLine": 448,
+        "startChar": 20,
+        "endLine": 448,
+        "endChar": 41
+      },
+      "revId": "837e2c498526e0f9bde6078585443f425b5d7971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "873e2ed0_02453dab",
         "filename": "board/yorp/board.h",
         "patchSetId": 2
