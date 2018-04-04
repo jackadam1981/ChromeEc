@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f921df_cfa26041",
+        "filename": "common/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-04T19:07:04Z",
+      "side": 1,
+      "message": "for backward compatibility, you need to do it the other way round I think:\n(old product have this equals to 0)\nso we need a NOT_XIP bit (for new products).",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "fd3541570a7db3b3e313a9f7ac6ab20f4c0a73d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
