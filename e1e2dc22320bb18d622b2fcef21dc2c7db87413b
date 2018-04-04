@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fe6061db_27c005ae",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-04T20:37:12Z",
+      "side": 1,
+      "message": "cool, Thanks!",
+      "parentUuid": "76099eb4_1d6423b0",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "e1e2dc22320bb18d622b2fcef21dc2c7db87413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "037de5d5_45356bb7",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
