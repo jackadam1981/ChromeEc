@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11ce65ab_d5e51434",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69bebf19_acb05df5",
+      "range": {
+        "startLine": 366,
+        "startChar": 49,
+        "endLine": 366,
+        "endChar": 50
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b985f4f_237b2ee7",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-27T13:41:29Z",
       "side": 1,
       "message": "nit: why negate here? It is easier to read without the extra inversion (and switching the if and else block)",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 9
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492c795d_8b8c8832",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:50:29Z",
+      "side": 1,
+      "message": "I think it just happened to end up this way. Done.",
+      "parentUuid": "9b985f4f_237b2ee7",
       "range": {
         "startLine": 387,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "76b93c07_45f045e1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:50:29Z",
+      "side": 1,
+      "message": "I think I originally had it there, but pd_update_saved_port_flags() is only defined for CONFIG_USB_PD_DUAL_ROLE devices.\n\nNo reason to restore data/power roles for non-dual role devices right?",
+      "parentUuid": "283ee75c_b2164464",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 11
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecc46e70_09ed0b64",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2018-04-03T13:03:20Z",
       "side": 1,
       "message": "why you don\u0027t update the BBRM one here too ?",
+      "range": {
+        "startLine": 1178,
+        "startChar": 4,
+        "endLine": 1178,
+        "endChar": 49
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a45da2_7ccaca0e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:50:29Z",
+      "side": 1,
+      "message": "Looks like I missed a couple cases, thanks.",
+      "parentUuid": "ecc46e70_09ed0b64",
       "range": {
         "startLine": 1178,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "56611a05_c398480c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1476,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65cff5f_43eaca37",
+      "range": {
+        "startLine": 1472,
+        "startChar": 3,
+        "endLine": 1476,
+        "endChar": 49
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08577e33_6f0a2def",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2018-03-27T13:41:29Z",
       "side": 1,
       "message": "more of a questions for my own understanding: you don\u0027t really need this !! right, since you are only using it in boolean logic below? (I am fine keeping it, just more curious about your style)",
+      "range": {
+        "startLine": 1886,
+        "startChar": 30,
+        "endLine": 1886,
+        "endChar": 33
+      },
+      "revId": "00f9fabc5f0fe3cfd53166fce9dd51dbb889c523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa2fe0e_27ce0938",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:50:29Z",
+      "side": 1,
+      "message": "Yes, I technically don\u0027t need it.",
+      "parentUuid": "08577e33_6f0a2def",
       "range": {
         "startLine": 1886,
         "startChar": 30,
