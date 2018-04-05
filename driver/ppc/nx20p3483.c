@@ -206,6 +206,11 @@ static int nx20p3483_init(int port)
 	rv = read_reg(port, NX20P3483_DEVICE_CONTROL_REG, &reg);
 	if (rv)
 		return rv;
+
+	/* Enter SNK mode if in dead battery mode to not cut power */
+	if (!(reg & ~NX20P3483_CTRL_DB_EXIT))
+		nx20p3483_vbus_sink_enable(port, 1);
+
 	reg |= NX20P3483_CTRL_DB_EXIT;
 	rv = write_reg(port, NX20P3483_DEVICE_CONTROL_REG, reg);
 	if (rv)
