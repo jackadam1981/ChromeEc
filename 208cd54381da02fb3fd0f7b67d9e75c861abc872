@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd28d273_898d357d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:54:11Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027s not needed anymore.",
+      "parentUuid": "494802c9_e41f9d22",
+      "range": {
+        "startLine": 1944,
+        "startChar": 4,
+        "endLine": 1944,
+        "endChar": 49
+      },
+      "revId": "208cd54381da02fb3fd0f7b67d9e75c861abc872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1311468_a2aba5c7",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-03T13:24:42Z",
       "side": 1,
       "message": "in which case is it a good idea to reach this point with the PD communication disabled ?",
+      "range": {
+        "startLine": 2243,
+        "startChar": 3,
+        "endLine": 2243,
+        "endChar": 32
+      },
+      "revId": "208cd54381da02fb3fd0f7b67d9e75c861abc872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0adfe36_b785876c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2243,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-05T03:54:11Z",
+      "side": 1,
+      "message": "Hmm, no case. If PD communication is disabled, I think we should terminate the contract and clear the bit. This already happens in pd_partner_port_reset(). We also wouldn\u0027t be able to send the SoftReset anyways.",
+      "parentUuid": "a1311468_a2aba5c7",
       "range": {
         "startLine": 2243,
         "startChar": 3,
