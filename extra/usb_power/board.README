@@ -1,7 +1,7 @@
 Sweetberry USB power monitoring
 
 This tool allows high speed monitoring of power rails via a special USB
-endpoint. Currently this is implemented for the sweetberry baord.
+endpoint. Currently this is implemented for the sweetberry board.
 
 To use on a board, you'll need two config files, one describing the board,
 a ".board" file, and one describing the particular rails you want to
@@ -137,3 +137,9 @@ If --save_stats flag is not set, stats will not be saved.
 
 --save_stats_json is designed for power_telemetry_logger for easy reading and
 writing.
+
+
+Install powerlog.py in chroot
+Run command in the terminal:
+cros_workon --host start ec-devutils # just the first time
+sudo emerge ec-devutils # everytime powerlog gets changed
