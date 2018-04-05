@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f82e5398_18ca0d97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-05T18:47:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afa5e32f_bf8648a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "81f4cd6db16c3ca15209412da0013c33071e659b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "905b63d2_ed928694",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "81f4cd6db16c3ca15209412da0013c33071e659b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ff84ff7_137f82ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-05T18:47:14Z",
+      "side": 1,
+      "message": "I have done some local testing to fire the vbus update event as soon as I noticed the change on the TCPC, and it is still was not fast enough. I filed b/77639399 to see if the interrupts can be fixed.\n\nIf we can fix the interrupts, we can re-evaluate this, but the fact that zoombini also needed to do the board.c initialization makes me think it is just something incorrect with the timing for VBUS_DETECT_TCPC (which isn\u0027t used as frequently)",
+      "parentUuid": "905b63d2_ed928694",
+      "range": {
+        "startLine": 10,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "81f4cd6db16c3ca15209412da0013c33071e659b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
