@@ -22,6 +22,30 @@
       "revId": "5c0315a31867c206e7683de2c7388d33b8a9a581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09a606a_272f2218",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-06T15:02:43Z",
+      "side": 1,
+      "message": "Thanks for catching this; I must be tired. Sent CL:998410 to fix.",
+      "parentUuid": "46ed20e3_eda7fb27",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "5c0315a31867c206e7683de2c7388d33b8a9a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
