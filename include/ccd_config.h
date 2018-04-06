@@ -7,6 +7,8 @@
 #ifndef __CROS_EC_CCD_CONFIG_H
 #define __CROS_EC_CCD_CONFIG_H
 
+#include <stdint.h>
+
 /* Case-closed debugging state */
 enum ccd_state {
 	CCD_STATE_LOCKED = 0,
@@ -112,6 +114,7 @@ enum ccd_vendor_subcommands {
 	CCDV_LOCK = 3,
 	CCDV_PP_POLL_UNLOCK = 4,
 	CCDV_PP_POLL_OPEN = 5,
+	CCDV_GET_INFO = 6
 };
 
 enum ccd_pp_state {
@@ -119,6 +122,12 @@ enum ccd_pp_state {
 	CCD_PP_AWAITING_PRESS = 1,
 	CCD_PP_BETWEEN_PRESSES = 2,
 	CCD_PP_DONE = 3
+};
+
+/* Structure to communicate information about CCD state. */
+struct ccd_info_response {
+	uint32_t ccd_caps;
+	uint32_t ccd_state;
 };
 
 /**

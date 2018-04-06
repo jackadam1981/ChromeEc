@@ -1442,6 +1442,26 @@ static enum vendor_cmd_rc ccd_pp_poll_open(void *buf,
 	return VENDOR_RC_SUCCESS;
 }
 
+static enum vendor_cmd_rc ccd_get_info(void *buf,
+				       size_t input_size,
+				       size_t *response_size)
+{
+	int i;
+	struct ccd_info_response response = {};
+
+	for (i = 0; i < CCD_CAP_COUNT; i++)
+		if (ccd_is_cap_enabled(i))
+			response.ccd_caps |= 1 << i;
+
+	response.ccd_caps = htobe32(response.ccd_caps);
+	response.ccd_state = htobe32(ccd_get_state());
+
+	*response_size = sizeof(response);
+	memcpy(buf, &response, sizeof(response));
+
+	return VENDOR_RC_SUCCESS;
+}
+
 /*
  * Common TPM Vendor command handler used to demultiplex various CCD commands
  * which need to be available both throuh CLI and over /dev/tpm0.
@@ -1488,13 +1508,24 @@ static enum vendor_cmd_rc ccd_vendor(enum vendor_cmd_cc code,
 		handler = ccd_pp_poll_open;
 		break;
 
+	case CCDV_GET_INFO:
+		handler = ccd_get_info;
+		break;
+
 	default:
 		CPRINTS("%s:%d - unknown subcommand\n", __func__, __LINE__);
 		break;
 	}
 
 	if (handler) {
-		*response_size = 0;  /* Let's be optimistic: 0 means success. */
+		/*
+		 * Let's be optimistic: 0 usually means success.
+		 *
+		 * We know the buffer is large enough to accommodate any CCD
+		 * subcommand response, so there is no size checks in the
+		 * processing functions.
+		 */
+		*response_size = 0;
 
 		rc = handler(buf + 1, input_size - 1, response_size);
 
