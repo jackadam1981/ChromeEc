@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46ed20e3_eda7fb27",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-06T01:26:28Z",
+      "side": 1,
+      "message": "I am a bit confused with this check. Is the intention here to see if no bit other than DB_EXIT is set and if yes then assume it is in dead battery mode? Shouldn\u0027t it be \nif (!(reg \u0026 NX20P3483_CTRL_DB_EXIT)) {\n ...\n}",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "5c0315a31867c206e7683de2c7388d33b8a9a581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
