@@ -52,6 +52,24 @@
       "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36dac5f_c6c58ed3",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-07T03:07:10Z",
+      "side": 1,
+      "message": "Yeah, I agree id3 \u003c\u003c 2 or id3 * 0x04 looks straight forward.",
+      "parentUuid": "17c6f57c_31491b1a",
+      "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
