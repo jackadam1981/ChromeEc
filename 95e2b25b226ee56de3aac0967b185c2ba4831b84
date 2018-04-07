@@ -70,6 +70,24 @@
       "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d3c3f3_048626bd",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-04-07T19:19:36Z",
+      "side": 1,
+      "message": "Yep, it can be more straightforward. Will fix it.",
+      "parentUuid": "f36dac5f_c6c58ed3",
+      "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
