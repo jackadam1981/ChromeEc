@@ -16,6 +16,24 @@
       "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13be585e_43b31df1",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-07T02:48:15Z",
+      "side": 1,
+      "message": "Since there is a check for if (id3), isn\u0027t \"ver |\u003d 0x04 \u003c\u003c (id3 - 1);\" the same as ver |\u003d id3 * 0x04?",
+      "parentUuid": "64587c3f_4a19805e",
+      "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
