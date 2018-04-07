@@ -34,6 +34,24 @@
       "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c6f57c_31491b1a",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-07T02:50:51Z",
+      "side": 1,
+      "message": "Oh, right. It just looks convoluted (at least to me) and not very efficient then ,-)",
+      "parentUuid": "13be585e_43b31df1",
+      "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
