@@ -617,9 +617,10 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 	 * discharge on AC till the new charger is detected and charge
 	 * detect delay has passed.
 	 */
+#if 0
 	if (!chg_ramp_is_detected() && curr->batt.state_of_charge > 2)
 		return 1;
-
+#endif
 	return 0;
 }
 
