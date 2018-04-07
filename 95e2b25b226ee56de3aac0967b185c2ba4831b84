@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64587c3f_4a19805e",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-07T02:13:56Z",
+      "side": 1,
+      "message": "This does not look right.\n\nShould be ver |\u003d id3 * 0x04; (or id3 \u003c\u003c 2)\n\nsee board/poppy/board.c for a slightly different example.",
+      "revId": "95e2b25b226ee56de3aac0967b185c2ba4831b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
