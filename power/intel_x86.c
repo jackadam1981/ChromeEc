@@ -70,11 +70,14 @@ static int power_up_inhibited;
  */
 static int is_power_up_inhibited(void)
 {
+	return 0;
+#if 0
 	/* Defaulting to power button not pressed. */
 	const int power_button_pressed = 0;
 
 	return charge_prevent_power_on(power_button_pressed) ||
 		charge_want_shutdown();
+#endif
 }
 
 static void power_up_inhibited_cb(void)
