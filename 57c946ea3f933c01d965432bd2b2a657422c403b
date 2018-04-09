@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae11c0b5_ee0eca00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T15:09:28Z",
+      "side": 1,
+      "message": "are there many cases where we use tags at the same time as shared_mem ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f419534e_43b91239",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T15:09:28Z",
+      "side": 1,
+      "message": "this new section is just useful to get a better error message when it\u0027s overflowing ?\nsomething else ?",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42983a5_c5f3f790",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T15:09:28Z",
+      "side": 1,
+      "message": "everything else is quite nice,\nbut it\u0027s a bit a pity to set an arbitrary size here while you just got the max sizes declared everywhere.\nI agree the \u0027union\u0027 of sizes is kind of tricky to declare with just a C compiler/linker (ld does have a MAX() function though)",
+      "range": {
+        "startLine": 3312,
+        "startChar": 0,
+        "endLine": 3319,
+        "endChar": 6
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b42619ed_634cefae",
+        "filename": "include/shared_mem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T15:09:28Z",
+      "side": 1,
+      "message": "SHARED_MEM_CHECK_SIZE(SIZE); ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
