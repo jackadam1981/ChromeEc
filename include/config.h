@@ -3306,6 +3306,22 @@
 
 /******************************************************************************/
 /*
+ * Set minimum shared memory size, unless it is defined in board file.
+ */
+#ifndef CONFIG_SHAREDMEM_MINIMUM_SIZE
+/* If RWSIG is used with keys longer than 2048-bit, we need more space. */
+#if defined(CONFIG_RWSIG) && \
+	defined(CONFIG_RSA_KEY_SIZE) && CONFIG_RSA_KEY_SIZE > 2048
+#define CONFIG_SHAREDMEM_MINIMUM_SIZE (CONFIG_RSA_KEY_SIZE / 8 * 3)
+#else
+/* Default: 1kb */
+#define CONFIG_SHAREDMEM_MINIMUM_SIZE 1024
+#endif
+#endif /* !CONFIG_SHAREDMEM_MINIMUM_SIZE */
+
+
+/******************************************************************************/
+/*
  * Disable the built-in console history if using the experimental console.
  *
  * The experimental console keeps its own session-persistent history which

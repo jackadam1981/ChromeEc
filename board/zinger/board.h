@@ -72,6 +72,9 @@
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 2300
 
+/* zinger does not use shared memory. */
+#define CONFIG_SHAREDMEM_MINIMUM_SIZE 0
+
 /* debug printf flash footprinf is about 1400 bytes */
 #define CONFIG_DEBUG_PRINTF
 #define UARTN CONFIG_UART_CONSOLE

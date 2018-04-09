@@ -341,11 +341,19 @@ SECTIONS
 #endif
         __data_end = .;
 
-	/* Shared memory buffer must be at the end of preallocated RAM, so it
-	 * can expand to use all the remaining RAM. */
-	__shared_mem_buf = .;
-
 	/* NOTHING MAY GO AFTER THIS! */
+    } > IRAM
+
+#ifdef CONFIG_EXTERNAL_STORAGE
+    .shdata : AT(LOADADDR(.data) + SIZEOF(.data)) {
+#else
+    .shdata : AT(ADDR(.data) + SIZEOF(.data)) {
+#endif
+        /* Shared memory buffer must be at the end of preallocated RAM, so it
+         * can expand to use all the remaining RAM. */
+        __shared_mem_buf = .;
+        . += CONFIG_SHAREDMEM_MINIMUM_SIZE;
+        __shared_mem_buf_minimum = .;
     } > IRAM
 
     /* The linker won't notice if the .data section is too big to fit,

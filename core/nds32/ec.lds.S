@@ -213,11 +213,14 @@ SECTIONS
 
         . = ALIGN(4);
         __bss_end = .;
+    } > IRAM
 
+    .shdata : AT(ADDR(.bss) + SIZEOF(.bss)) {
         /* Shared memory buffer must be at the end of preallocated RAM, so it
          * can expand to use all the remaining RAM. */
         __shared_mem_buf = .;
-
+        . += CONFIG_SHAREDMEM_MINIMUM_SIZE;
+        __shared_mem_buf_minimum = .;
     } > IRAM
 
     __image_size = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
