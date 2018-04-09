@@ -25,6 +25,46 @@
     },
     {
       "key": {
+        "uuid": "4dd357d4_bb3a0f31",
+        "filename": "board/zinger/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T17:14:29Z",
+      "side": 1,
+      "message": "Should we have a parent CONFIG_SHARED_MEM option?\n\n#undef\u0027ing that should block linking in the shared memory library entirely.",
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22581f5e_fa0cb75a",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T17:14:29Z",
+      "side": 1,
+      "message": "This macro fails at build time, and will always return success at runtime. \n So no need for the error handling around it anymore.",
+      "range": {
+        "startLine": 841,
+        "startChar": 5,
+        "endLine": 841,
+        "endChar": 29
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f419534e_43b91239",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 1
@@ -59,6 +99,30 @@
       "writtenOn": "2018-04-09T15:09:28Z",
       "side": 1,
       "message": "everything else is quite nice,\nbut it\u0027s a bit a pity to set an arbitrary size here while you just got the max sizes declared everywhere.\nI agree the \u0027union\u0027 of sizes is kind of tricky to declare with just a C compiler/linker (ld does have a MAX() function though)",
+      "range": {
+        "startLine": 3312,
+        "startChar": 0,
+        "endLine": 3319,
+        "endChar": 6
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea30f71_4ef1306a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T17:14:29Z",
+      "side": 1,
+      "message": "This also seems like a pretty complex RSA/shared mem specific thing to be putting in the list of all configs.  This opens the can of worms for all sorts of other things to be put in here.\n\nCan this be moved to shared_mem.h?",
+      "parentUuid": "e42983a5_c5f3f790",
       "range": {
         "startLine": 3312,
         "startChar": 0,
