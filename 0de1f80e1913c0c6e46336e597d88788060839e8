@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34d1bc68_6d753d1f",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T23:55:02Z",
+      "side": 1,
+      "message": "UUT mode?  Is that UART programming mode?",
+      "range": {
+        "startLine": 121,
+        "startChar": 10,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8342642_fb3e6d41",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T23:55:02Z",
+      "side": 1,
+      "message": "EC_UART_TX?\n\nThat is, call it by its primary pin function, like we do I2CS_SDA above.\n\n(which we\u0027ll need to wiggle as an output to trigger IT8320 programming mode soon...)",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc6682ea_7676d510",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T23:55:02Z",
+      "side": 1,
+      "message": "Extra line?",
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ddaef4c_8253cdf0",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T23:55:02Z",
+      "side": 1,
+      "message": "gang | uart?\n\nTwo different submodes, not one with a sub-submode.  And figure i2c will be coming soon.",
+      "range": {
+        "startLine": 810,
+        "startChar": 22,
+        "endLine": 810,
+        "endChar": 26
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e30e6c3_30662c01",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T23:55:02Z",
+      "side": 1,
+      "message": "Extra newline?",
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ba92028_fffced2b",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T23:55:02Z",
+      "side": 1,
+      "message": "To enter UART programming mode?",
+      "range": {
+        "startLine": 134,
+        "startChar": 40,
+        "endLine": 134,
+        "endChar": 58
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "097f93fb_a553b343",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-09T23:55:02Z",
+      "side": 1,
+      "message": "UART?",
+      "range": {
+        "startLine": 135,
+        "startChar": 18,
+        "endLine": 135,
+        "endChar": 26
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
