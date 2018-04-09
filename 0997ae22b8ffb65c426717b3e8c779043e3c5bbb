@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e3051e9_75107564",
+        "filename": "util/uut/lib_crc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "what is this useful for ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e58545e_4291c529",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "are they really all globals ?\n\u0027verbose\u0027 and \u0027console\u0027 are, but the other ones ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a223ec17_d8e6c107",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "don\u0027t you need the exit_uart_app here ?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 14
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d3cec0_d2164c7b",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "addr_str can be undefined or less than 2 characters ?\n\n(ditto for the 4 following GET_BASE ?)",
+      "range": {
+        "startLine": 159,
+        "startChar": 38,
+        "endLine": 159,
+        "endChar": 56
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9992f546_45e7f7db",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "using getopt would be nicer here.",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 21
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "668215b7_0069ed16",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "nit: that\u0027s argv[i]",
+      "range": {
+        "startLine": 229,
+        "startChar": 22,
+        "endLine": 229,
+        "endChar": 33
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac56ade4_373afeb4",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "this argument might not exist (getopt would save you this kind of trouble)\nditto for the next 5 ones with the same pattern",
+      "range": {
+        "startLine": 264,
+        "startChar": 14,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0836a6cd_fa0a26bc",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "these checks are brittle (e.g some USB-serial adapters are not matching any of those prefixes)\nyou can probably remove them, if you can open the device file and do the tcsetattr, it\u0027s enough to go on with the user-supplied port path.",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 40
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86de9a2_7f1eff08",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "using stat() would be simpler here ?",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 16
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4119bd02_dcfbcda0",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "the checks are in the wrong order, strlen(NULL) might segfault",
+      "range": {
+        "startLine": 427,
+        "startChar": 5,
+        "endLine": 427,
+        "endChar": 46
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d7d427_7b993555",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "if this is just a tool, it´s a pretty bad security issue (ie using here what seems to be an untrusted user input without any size check)",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06623435_e1b3ee16",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-09T14:25:47Z",
+      "side": 1,
+      "message": "port_handle is now an int, you no longer need these casts",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
