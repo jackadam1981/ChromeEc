@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19f5c853_1b0aab7e",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-09T16:52:01Z",
+      "side": 1,
+      "message": "We want to eventually remove this code right. If so, let\u0027s put in a breadcrumb comment saying that we expect to only need this code temporarily.",
+      "range": {
+        "startLine": 2863,
+        "startChar": 7,
+        "endLine": 2863,
+        "endChar": 43
+      },
+      "revId": "ffbcf27f489cc3bb5bec34d206de09b56a971ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
