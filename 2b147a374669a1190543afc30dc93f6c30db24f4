@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "580dc3eb_14e2ce2c",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-09T16:44:13Z",
+      "side": 1,
+      "message": "Please use code names. You need to rebase your patch.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 2
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "104864d8_d7ce079d",
         "filename": "board/nami/board.h",
         "patchSetId": 4
@@ -46,6 +69,52 @@
       "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "561664c0_b43c1735",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-09T16:44:13Z",
+      "side": 1,
+      "message": "Have you verified PD_MAX_POWER_MW is currently used after is_Vayne set everywhere? Even if that\u0027s the case, Nami EC will silently break if anybody uses this macro otherwise. I think we should use a function.",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 35
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5350ffd5_2673ecaa",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-09T16:44:13Z",
+      "side": 1,
+      "message": "Why do we need to separate cases for CONFIG_DYNAMIC_PD_MAX_POWER_MW and !CONFIG_DYNAMIC_PD_MAX_POWER_MW?",
+      "range": {
+        "startLine": 1927,
+        "startChar": 0,
+        "endLine": 1927,
+        "endChar": 42
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
