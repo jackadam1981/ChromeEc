@@ -55,18 +55,24 @@ static uint8_t spi_hash_device = USB_SPI_DISABLE;
  *	When we relinquish the EC SPI bus, we need to reset the EC again while
  *	keeping gang programmer deasserted, then take the EC out of reset.  The
  *	EC will then boot normally.
+ *
+ *  If 2, then:
+ *	Pull UART_EC_TX_H1_RX low while rebooting the EC so NPCX will boot into
+ *	UUT mode.
  */
-static uint8_t use_npcx_gang_mode;
+static uint8_t ec_program_mode;
 
 /*
  * Device and gang mode selected by last spihash command, for use by
  * spi_hash_pp_done().
  */
 static uint8_t new_device;
-static uint8_t new_gang_mode;
+static uint8_t new_program_mode;
 
 static void spi_hash_inactive_timeout(void);
 DECLARE_DEFERRED(spi_hash_inactive_timeout);
+
+static void spi_hash_stop_ec_device(void);
 
 /*****************************************************************************/
 /*
@@ -153,6 +159,9 @@ static void disable_ec_ap_spi(void)
 		deassert_ec_rst();
 		deassert_sys_rst();
 	}
+
+	/* Stop the EC device, if it was active */
+	spi_hash_stop_ec_device();
 }
 
 static void enable_ec_spi(void)
@@ -181,6 +190,27 @@ static void enable_ap_spi(void)
 	assert_ec_rst();
 }
 
+
+/**
+ * Disable the pin mux to the SPI master port.
+ */
+static void ec_tx_cr50_rx_release(void)
+{
+	gpio_set_level(GPIO_EC_UUT_TRIGGER, 1);
+	CPRINTS("%s", __func__);
+}
+
+
+/**
+ * Disable the pin mux to the SPI master port.
+ */
+static void ec_tx_cr50_rx_hold_low(void)
+{
+	gpio_set_level(GPIO_EC_UUT_TRIGGER, 0);
+	CPRINTS("%s", __func__);
+}
+
+
 /**
  * Enable the pin mux to the SPI master port.
  */
@@ -201,6 +231,7 @@ static void enable_spi_pinmux(void)
 
 	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
 }
+
 
 /**
  * Disable the pin mux to the SPI master port.
@@ -360,7 +391,10 @@ static void spi_hash_stop_ec_device(void)
 	if (spi_hash_device != USB_SPI_EC)
 		return;
 
-	if (use_npcx_gang_mode) {
+	if (ec_program_mode & SPI_HASH_FLAG_EC_HOLD_LOW)
+		ec_tx_cr50_rx_release();
+
+	if (ec_program_mode & SPI_HASH_FLAG_EC_GANG) {
 		/*
 		 * EC was in gang mode.  Pulse reset without asserting gang
 		 * programmer enable, so that when we take the EC out of reset
@@ -368,8 +402,9 @@ static void spi_hash_stop_ec_device(void)
 		 */
 		assert_ec_rst();
 		usleep(200);
-		use_npcx_gang_mode = 0;
 	}
+
+	ec_program_mode = 0;
 
 	/*
 	 * Release EC from reset (either from above, or because gang progamming
@@ -396,13 +431,10 @@ static enum vendor_cmd_rc spi_hash_disable(void)
 	disable_spi_pinmux();
 	disable_ec_ap_spi();
 
-	/* Stop the EC device, if it was active */
-	spi_hash_stop_ec_device();
-
 	/* Release the bus */
 	spi_hash_device = USB_SPI_DISABLE;
 	new_device = USB_SPI_DISABLE;
-	new_gang_mode = 0;
+	new_program_mode = 0;
 	set_spi_bus_user(SPI_BUS_USER_HASH, 0);
 
 	/* Disable inactivity timer to turn hashing mode off */
@@ -442,6 +474,13 @@ static void spi_hash_pp_done(void)
 
 		enable_ap_spi();
 	} else {
+		ec_program_mode = 0;
+
+		if (new_program_mode & SPI_HASH_FLAG_EC_HOLD_LOW) {
+			ec_program_mode |= SPI_HASH_FLAG_EC_HOLD_LOW;
+			ec_tx_cr50_rx_hold_low();
+		}
+
 		/* Force the EC into reset and enable EC SPI bus */
 		assert_ec_rst();
 		enable_ec_spi();
@@ -452,11 +491,14 @@ static void spi_hash_pp_done(void)
 		 * to the EC's GP_SEL_ODL signal, which is what enables gang
 		 * programmer mode.
 		 */
-		if (new_gang_mode) {
+		if (new_program_mode) {
 			usleep(200);
 			deassert_ec_rst();
-			use_npcx_gang_mode = 1;
+			ec_program_mode |= SPI_HASH_FLAG_EC_GANG;
 		}
+		if (new_program_mode & SPI_HASH_FLAG_EC_HOLD_LOW)
+			ec_tx_cr50_rx_release();
+
 	}
 
 	enable_spi_pinmux();
@@ -499,12 +541,12 @@ static enum vendor_cmd_rc spihash_pp_poll(void *buf,
 /**
  * Set the SPI hashing device.
  *
- * @param dev		Device (enum usb_spi)
- * @param gang_mode	If non-zero, EC uses gang mode
+ * @param dev			Device (enum usb_spi)
+ * @param req_program_mode	If non-zero, EC uses gang mode
  *
  * @return Vendor command return code
  */
-static enum vendor_cmd_rc spi_hash_set_device(int dev, int gang_mode,
+static enum vendor_cmd_rc spi_hash_set_device(int dev, int req_program_mode,
 					      uint8_t *response_buf,
 					      size_t *response_size)
 {
@@ -518,7 +560,7 @@ static enum vendor_cmd_rc spi_hash_set_device(int dev, int gang_mode,
 		return VENDOR_RC_NOT_ALLOWED;
 
 	new_device = dev;
-	new_gang_mode = gang_mode;
+	new_program_mode = req_program_mode;
 
 	/* Handle enabling */
 	if (spi_hash_device == USB_SPI_DISABLE &&
@@ -654,8 +696,8 @@ static enum vendor_cmd_rc spi_hash_vendor(enum vendor_cmd_cc code,
 		return spi_hash_set_device(USB_SPI_AP, 0, buf, response_size);
 	case SPI_HASH_SUBCMD_EC:
 		return spi_hash_set_device(USB_SPI_EC,
-					   !!(req->flags &
-					      SPI_HASH_FLAG_EC_GANG),
+					   (req->flags &
+					      SPI_HASH_PROGRAM_EC_FLAGS),
 					   buf, response_size);
 	case SPI_HASH_SUBCMD_SHA256:
 		*response_size = SHA256_DIGEST_SIZE;
@@ -711,8 +753,11 @@ static int hash_command_wrapper(int argc, char *argv[])
 		req.subcmd = SPI_HASH_SUBCMD_AP;
 	} else if (!strcasecmp(argv[1], "EC")) {
 		req.subcmd = SPI_HASH_SUBCMD_EC;
-		if (argc > 2 && !strcasecmp(argv[2], "gang"))
+		if (argc > 2 && !strcasecmp(argv[2], "gang")) {
 			req.flags |= SPI_HASH_FLAG_EC_GANG;
+			if (argc > 3 && !strcasecmp(argv[3], "rx"))
+				req.flags |= SPI_HASH_FLAG_EC_HOLD_LOW;
+		}
 	} else if (!strcasecmp(argv[1], "disable")) {
 		req.subcmd = SPI_HASH_SUBCMD_DISABLE;
 	} else if (argc == 3) {
@@ -762,5 +807,6 @@ static int hash_command_wrapper(int argc, char *argv[])
 	return rv;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(spihash, hash_command_wrapper,
-		     "ap | ec [gang] | disable | [dump] <offset> <size>",
+		     "ap | ec [gang [rx]] | disable | [dump] <offset> <size>",
 		     "Hash SPI flash via TPM vendor command");
+

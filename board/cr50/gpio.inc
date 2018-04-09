@@ -116,6 +116,11 @@ GPIO(I2C_SDA_INA,     PIN(0, 13), GPIO_INPUT)
  * up the pinmux in board.c will have to change as well.
  */
 GPIO(I2CS_SDA,        PIN(0, 14), GPIO_INPUT)
+/*
+ * Fake open drain on EC_UUT_TRIGGER. When asserted, the signal can be used to
+ * enable UUT mode on the EC.
+ */
+GPIO(EC_UUT_TRIGGER,  PIN(0, 15), GPIO_ODR_HIGH)
 
 /* Unimplemented signals which we need to emulate for now */
 /* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
@@ -176,6 +181,7 @@ PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)	/* EC console */
 PINMUX(GPIO(DETECT_AP),       A3, DIO_INPUT)
 PINMUX(GPIO(DETECT_EC),       B6, DIO_INPUT)
 PINMUX(GPIO(EC_TX_CR50_RX),   B6, DIO_INPUT)
+PINMUX(GPIO(EC_UUT_TRIGGER),  B6, DIO_INPUT)
 PINMUX(GPIO(DETECT_SERVO),    B5, DIO_INPUT)
 
 /*

@@ -131,7 +131,12 @@ enum vendor_cc_spi_hash_request_subcmd {
 enum vendor_cc_spi_hash_request_flags {
 	/* EC uses gang programmer mode */
 	SPI_HASH_FLAG_EC_GANG = (1 << 0),
+	/* EC needs EC_TX_H1_RX to be held low to enter gang mode */
+	SPI_HASH_FLAG_EC_HOLD_LOW = (1 << 1),
 };
+
+#define SPI_HASH_PROGRAM_EC_FLAGS (SPI_HASH_FLAG_EC_GANG | \
+		SPI_HASH_FLAG_EC_HOLD_LOW)
 
 /* Structure for VENDOR_CC_SPI_HASH request which follows tpm_header */
 struct vendor_cc_spi_hash_request {
