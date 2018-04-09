@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62faa99f_6a9c4e25",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-04-09T06:48:31Z",
+      "side": 1,
+      "message": "Vayne should be 65W.",
+      "parentUuid": "104864d8_d7ce079d",
+      "range": {
+        "startLine": 282,
+        "startChar": 38,
+        "endLine": 282,
+        "endChar": 44
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d07af2b2_c581b85f",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c514a6e9_d1e23f49",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-04-09T06:48:31Z",
+      "side": 1,
+      "message": "This \"if statement\" is included by line:1907, so we do need twice TAB here.",
+      "parentUuid": "d07af2b2_c581b85f",
+      "range": {
+        "startLine": 1928,
+        "startChar": 1,
+        "endLine": 1928,
+        "endChar": 2
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
