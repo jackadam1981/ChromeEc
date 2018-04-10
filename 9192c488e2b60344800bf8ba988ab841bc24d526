@@ -22,6 +22,23 @@
       "revId": "9192c488e2b60344800bf8ba988ab841bc24d526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82aef63_1960d4ae",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-04-10T20:57:41Z",
+      "side": 1,
+      "message": "Given it does not carry data, a console event should be a host event. \nIt looks like the 32 bits host event have been exhausted, time to use the 64 bit version.",
+      "revId": "9192c488e2b60344800bf8ba988ab841bc24d526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
