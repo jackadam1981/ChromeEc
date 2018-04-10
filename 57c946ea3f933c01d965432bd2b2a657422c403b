@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f50a00a9_4986d7e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-10T10:58:02Z",
+      "side": 1,
+      "message": "I just discovered about jump tags, actually, so I\u0027m not sure ,-)\n\nRW does use shared memory, but I guess by the time it does, the jump tags would have been read out and are not useful anymore? Conversely, RO sets up the jump tags just before jumping to RW, so it would not be using shared memory at that time...\n\nThe problem though, is that shared_mem_size uses:\nsystem_usable_ram_end() - (uintptr_t)__shared_mem_buf\n\nand system_usable_ram_end() is\n(uintptr_t)jdata - jdata-\u003ejump_tag_total;\n\nSo, technically, we are underestimating a bit the required shared memory size... (shared_mem_acquire may fail even though SHARED_MEM_ACQUIRE_CHECK won\u0027t fail at compile time...)\n\nI guess we could fix this by actually allocating RAM for the jump tags?!",
+      "parentUuid": "ae11c0b5_ee0eca00",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4dd357d4_bb3a0f31",
         "filename": "board/zinger/board.h",
         "patchSetId": 1
@@ -88,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "17fdf048_4b1df882",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-10T10:58:02Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the only purpose.",
+      "parentUuid": "f419534e_43b91239",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e42983a5_c5f3f790",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -123,6 +171,30 @@
       "side": 1,
       "message": "This also seems like a pretty complex RSA/shared mem specific thing to be putting in the list of all configs.  This opens the can of worms for all sorts of other things to be put in here.\n\nCan this be moved to shared_mem.h?",
       "parentUuid": "e42983a5_c5f3f790",
+      "range": {
+        "startLine": 3312,
+        "startChar": 0,
+        "endLine": 3319,
+        "endChar": 6
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b271c2_5eca8ea4",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-10T10:58:02Z",
+      "side": 1,
+      "message": "Yeah, this is quite terrible, and I\u0027m not sure how to make this much better (I see some ways to make it a _little_ better). The good thing is that this logic can only overestimate the required shared memory size.\n\nI need to try more stuff using linker script magic, but I\u0027m not sure if it\u0027ll be possible...",
+      "parentUuid": "8ea30f71_4ef1306a",
       "range": {
         "startLine": 3312,
         "startChar": 0,
