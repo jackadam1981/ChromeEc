@@ -21,21 +21,21 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
  *
  * Shutdown mode parameter to write to manufacturer access register
  */
-#define SB_SHIP_MODE_REG	SB_MANUFACTURER_ACCESS
-#define SB_SHUTDOWN_DATA        0x0010
+#define SB_SHIP_MODE_REG	0x3A
+#define SB_SHUTDOWN_DATA	0xC574
 
 static const struct battery_info info = {
-	.voltage_max = 8700,
-	.voltage_normal = 7700,
-	.voltage_min = 6000,
+	.voltage_max = 13200,
+	.voltage_normal = 11550,
+	.voltage_min = 9000,
 	/* Pre-charge values. */
-	.precharge_current = 152, /* mA */
+	.precharge_current = 256, /* mA */
 
 	.start_charging_min_c = 0,
-	.start_charging_max_c = 45,
+	.start_charging_max_c = 50,
 	.charging_min_c = 0,
-	.charging_max_c = 50,
-	.discharging_min_c = -20,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
 	.discharging_max_c = 60,
 };
 
@@ -127,22 +127,15 @@ static int battery_init(void)
  */
 static int battery_check_disconnect(void)
 {
-	int rv;
-	uint8_t data[6];
+	int batt_discharge_fet = -1;
 
-	/* Check if battery charging + discharging is disabled. */
-	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-			    SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
-	if (rv)
+	if (sb_read(SB_MANUFACTURER_ACCESS, &batt_discharge_fet))
 		return BATTERY_DISCONNECT_ERROR;
 
-	/* TODO(dnojiri): Verify if battery supports this check. */
-	if ((data[3] & (BATTERY_DISCHARGING_DISABLED |
-			BATTERY_CHARGING_DISABLED)) ==
-	    (BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED))
+	if (batt_discharge_fet & 0x4000)
+		return BATTERY_NOT_DISCONNECTED;
+	else
 		return BATTERY_DISCONNECTED;
-
-	return BATTERY_NOT_DISCONNECTED;
 }
 
 enum battery_present battery_is_present(void)
