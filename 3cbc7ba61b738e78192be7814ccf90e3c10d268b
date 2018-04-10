@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a3de566_98c3a527",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-04-10T00:28:44Z",
+      "side": 1,
+      "message": "Why return filename at the end?\n\nShouldn\u0027t we throw error instead?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac26985_88d5f57e",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-04-10T00:28:44Z",
+      "side": 1,
+      "message": "Why 2 empty strings?\n\nAdd code comment here?",
+      "range": {
+        "startLine": 75,
+        "startChar": 18,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
