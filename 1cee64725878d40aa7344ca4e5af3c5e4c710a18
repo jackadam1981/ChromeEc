@@ -22,6 +22,30 @@
       "revId": "1cee64725878d40aa7344ca4e5af3c5e4c710a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901c6e44_a29a7d6d",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-10T17:50:02Z",
+      "side": 1,
+      "message": "This has been fixed",
+      "parentUuid": "143e1e95_4f0ddfc3",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 46
+      },
+      "revId": "1cee64725878d40aa7344ca4e5af3c5e4c710a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
