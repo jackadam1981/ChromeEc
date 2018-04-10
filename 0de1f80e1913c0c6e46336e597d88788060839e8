@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "46b2c87b_2c5aad43",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-04-10T01:02:23Z",
+      "side": 1,
+      "message": "I dont know if we want to name it something that tells us that it is used for or what signal it goes to.",
+      "parentUuid": "d8342642_fb3e6d41",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ba5d11f_8e6bbe8d",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
