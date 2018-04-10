@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad338a83_ce6852eb",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-10T10:31:30Z",
+      "side": 1,
+      "message": "sure you don\u0027t want it in __tx_char,\nbut maybe you don\u0027t really the overhead of this polling either ?\n\nWhat if you just plug it in uart_process_output with some corse-grained heuristic ?\nIs there really cases where you would miss it ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "9192c488e2b60344800bf8ba988ab841bc24d526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
