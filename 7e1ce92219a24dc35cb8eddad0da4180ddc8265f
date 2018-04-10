@@ -22,6 +22,30 @@
       "revId": "7e1ce92219a24dc35cb8eddad0da4180ddc8265f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1385126e_924ed6a2",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-10T23:01:50Z",
+      "side": 0,
+      "message": "Actually there is no need to run codesigner as sudo, especially if you are not using the fob.\n\nMaybe there are some stale files from the previous runs when codesigner was invoked with sudo?\n\nCan you try executing \u0027rm -rf build/cr50\u0027 and then build again?",
+      "parentUuid": "8cc3105c_b30bb8d3",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "7e1ce92219a24dc35cb8eddad0da4180ddc8265f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
