@@ -126,7 +126,12 @@ endif
 
 MANIFEST := util/signer/ec_RW-manifest-dev.json
 CR50_RO_KEY ?= rom-testkey-A.pem
-SIGNER = /usr/bin/cr50-codesigner
+REAL_SIGNER = /usr/bin/cr50-codesigner
+ifneq ($(wildcard $(REAL_SIGNER)),)
+SIGNER := $(REAL_SIGNER)
+else
+SIGNER := ./util/signer/dummy_signer.sh
+endif
 
 ifeq ($(H1_DEVIDS),)
 CR50_RW_KEY = loader-testkey-A.pem
