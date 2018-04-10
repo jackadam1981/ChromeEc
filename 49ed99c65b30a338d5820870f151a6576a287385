@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f197950_72e4dccb",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-10T15:57:34Z",
+      "side": 1,
+      "message": "just curious, could this check be more rigorous? I mean sre there cases where there is more data than the length field indicates?",
+      "range": {
+        "startLine": 336,
+        "startChar": 20,
+        "endLine": 336,
+        "endChar": 59
+      },
+      "revId": "49ed99c65b30a338d5820870f151a6576a287385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
