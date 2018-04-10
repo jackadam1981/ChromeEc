@@ -2,7 +2,6 @@
 # Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
-#
 # Board-specific build requirements
 
 # Define the SoC used by this board
@@ -61,8 +60,9 @@ board-y += wp.o
 board-$(CONFIG_U2F) += u2f.o
 
 # Build and link with an external library
-EXTLIB := $(realpath ../../third_party/tpm2)
-CFLAGS += -I$(EXTLIB)
+#EXTLIB := $(realpath ../../third_party/tpm2)
+EXTLIB := $(realpath ../../third_party/ms-tpm-20-ref/TPMCmd/tpm)
+CFLAGS += -I$(EXTLIB)/include
 
 # For the benefit of the tpm2 library.
 INCLUDE_ROOT := $(abspath ./include)
