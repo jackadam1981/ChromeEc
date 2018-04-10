@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7afd7f2f_b9c1de1e",
+        "filename": "board/glkrvp_ite/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-10T16:42:49Z",
+      "side": 1,
+      "message": "Thanks Dino! I already filed b/76022972 to look into this. I assigned it you :)",
+      "parentUuid": "598ffcc1_f1a3c756",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 41
+      },
+      "revId": "c80ab6b072daa651e49c3eb2f343282e720e7b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efdfbbf7_2d3f0b70",
         "filename": "board/glkrvp_ite/gpio.inc",
         "patchSetId": 1
