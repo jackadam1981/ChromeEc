@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0594abb1_3d503e69",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-10T09:43:09Z",
+      "side": 1,
+      "message": "while Gwendal said the FIFO size above is fine, if we need a UART debug console that large, maybe we should start trimming the offenders in the traces.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "93576b2923bf2de6584965fe244ea4f2c877a61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
