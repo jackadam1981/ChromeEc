@@ -22,6 +22,30 @@
       "revId": "49ed99c65b30a338d5820870f151a6576a287385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62880a53_10733ccf",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-10T16:06:53Z",
+      "side": 1,
+      "message": "for standard commands (below), no. For vendor \u0027commands\u0027 (as called by u2f_custom_dispatch), it\u0027s flexibility for extensions with backward compability.\n\nIf you look at each standard command implementation above, the size is strictly verified and returns U2F_SW_WRONG_LENGTH if it is not exactly the expected one.\nHere it\u0027s really the \u0027well-formed\u0027 check (as opposed to the \u0027valid\u0027 check as per XML terminology) to guarantee we can continue the parsing.",
+      "parentUuid": "1f197950_72e4dccb",
+      "range": {
+        "startLine": 336,
+        "startChar": 20,
+        "endLine": 336,
+        "endChar": 59
+      },
+      "revId": "49ed99c65b30a338d5820870f151a6576a287385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
