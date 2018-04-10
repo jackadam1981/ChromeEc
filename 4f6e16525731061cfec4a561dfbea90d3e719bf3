@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "334d4ccf_334527d6",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-10T23:15:11Z",
+      "side": 1,
+      "message": "shall we just always have PERSO_AUTH key listed in this structure? not having it here saves us nothing.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4f6e16525731061cfec4a561dfbea90d3e719bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f55ee22_e93bf486",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 51
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-10T23:15:11Z",
+      "side": 1,
+      "message": "where is it used? I don\u0027t see it in this CL",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "4f6e16525731061cfec4a561dfbea90d3e719bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
