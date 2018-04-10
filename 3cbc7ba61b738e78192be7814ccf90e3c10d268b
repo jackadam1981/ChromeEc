@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "03cfefa9_7cc506b0",
+        "filename": "extra/usb_power/board.README",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-04-10T02:34:33Z",
+      "side": 1,
+      "message": "this is a bit misleading as powerlog.py is installed in chroot via target-chromium-os-sdk ebuild I believe.  Perhaps mentioning that and changing \u0027Install powerlog.py in chroot\u0027 to \u0027Making developer changes to powerlog.py\u0027 or similar would clarify",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 57
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c85bf35_8fa17e53",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-04-10T02:34:33Z",
+      "side": 1,
+      "message": "nit, add docstring",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a3de566_98c3a527",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 2
@@ -41,6 +87,52 @@
         "startChar": 18,
         "endLine": 75,
         "endChar": 25
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a20ece_556f7251",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-04-10T02:34:33Z",
+      "side": 1,
+      "message": "any concern that someone will call twice with the same domain?  Should we print warning / raise exception if they do?",
+      "range": {
+        "startLine": 50,
+        "startChar": 34,
+        "endLine": 50,
+        "endChar": 77
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501a0088_6e3177a0",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-04-10T02:34:33Z",
+      "side": 1,
+      "message": "perhaps more pythonic and certainly shorter\n\n  unit \u003d LONG_UNIT.get(self._unit[domain], self._unit[domain])",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 30
       },
       "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
