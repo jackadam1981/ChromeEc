@@ -2841,6 +2841,9 @@
 /* Alternative configuration keeping only the TX part of PHY */
 #undef CONFIG_USB_PD_TX_PHY_ONLY
 
+/* PD tasks try to reset the partner by pulling up the CC. */
+#define CONFIG_USB_PD_RESET_PARTNER_ON_BOOT 1
+
 /* Use DAC as reference for comparator at 850mV. */
 #undef CONFIG_PD_USE_DAC_AS_REF
 

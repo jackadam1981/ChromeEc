@@ -1845,6 +1845,8 @@ static void pd_partner_port_reset(int port)
 {
 	uint64_t timeout;
 
+	if (!CONFIG_USB_PD_RESET_PARTNER_ON_BOOT)
+		return;
 	/*
 	 * Check our battery-backed previous port state. If PD comms were
 	 * active, and we didn't just lose power, make sure we
