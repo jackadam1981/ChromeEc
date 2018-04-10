@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "f8b14eee_1933538f",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-10T00:01:13Z",
+      "side": 1,
+      "message": "it would be great to have a table of GPIO assignments to keep track of their use in Cr50, not in this patch, just a thought.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 48
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ba5d11f_8e6bbe8d",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-10T00:01:13Z",
+      "side": 1,
+      "message": "comment copy and paste?",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 46
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc6682ea_7676d510",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
