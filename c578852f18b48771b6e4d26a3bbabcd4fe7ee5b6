@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e95db196_3092e6d7",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-10T23:37:54Z",
+      "side": 1,
+      "message": "I\u0027d actually do this instead:\nif (!DCRYPTO_aes_ctr(...)) {\n  return PW_ERR_CRYPTO_FAILURE;\n}\nreturn EC_SUCCESS;\n\nthis template of returning early in case of an error is typical, and less confusing to the future readers than the reverse check.\n\nsame for the other DCRYPTO_aes_ctr below",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 8
+      },
+      "revId": "c578852f18b48771b6e4d26a3bbabcd4fe7ee5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0911b5_c29d7e79",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 52
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-10T23:37:54Z",
+      "side": 1,
+      "message": "you are testing for non-null, not for !\u003d EC_SUCCESS, right?",
+      "range": {
+        "startLine": 272,
+        "startChar": 31,
+        "endLine": 272,
+        "endChar": 44
+      },
+      "revId": "c578852f18b48771b6e4d26a3bbabcd4fe7ee5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
