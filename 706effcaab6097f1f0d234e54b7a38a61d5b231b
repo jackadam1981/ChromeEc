@@ -22,6 +22,30 @@
       "revId": "706effcaab6097f1f0d234e54b7a38a61d5b231b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "118be761_2fa69ddc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-10T14:14:03Z",
+      "side": 1,
+      "message": "Agreed; It does produce the same results. I wanted to be a little more explicit about what was happening in the failure case though",
+      "parentUuid": "3ae567e6_1d50af9a",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "706effcaab6097f1f0d234e54b7a38a61d5b231b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
