@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ea1a97ec_6c5a2ddb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-10T16:10:53Z",
+      "side": 1,
+      "message": "Chatted offline. Sent CL:1005403 out to limit the non-caching version to only the parade driver instead of the global tcpci impl",
+      "parentUuid": "7f443672_8a9d69de",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "228dc8d1193d2b4c26f60a9da779803bd41fe172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ef7d4a_f0682862",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
