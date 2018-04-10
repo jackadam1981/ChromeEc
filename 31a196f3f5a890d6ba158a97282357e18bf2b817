@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "b25e6831_a6e7f987",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-10T03:39:29Z",
+      "side": 1,
+      "message": "1. This comes from the \"50/72 rule\" which I had heard of back when I first started using git. IIRC, it was taken from the most common commit subject line length from the linux kernel commit history. I also felt that it encouraged me to \"trim the fat\" in my subjects.\n2. Sure, fair enough.",
+      "parentUuid": "e9ecfdcf_e2e38514",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "31a196f3f5a890d6ba158a97282357e18bf2b817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a867e901_a9e638ec",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
