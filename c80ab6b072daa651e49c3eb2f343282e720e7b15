@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "598ffcc1_f1a3c756",
+        "filename": "board/glkrvp_ite/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-04-10T02:26:39Z",
+      "side": 1,
+      "message": "These settings are same as other it83xx baseboard.\nYes, I will make a change to cleanup it.",
+      "parentUuid": "efd38df6_0637c8e7",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 41
+      },
+      "revId": "c80ab6b072daa651e49c3eb2f343282e720e7b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efdfbbf7_2d3f0b70",
         "filename": "board/glkrvp_ite/gpio.inc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-10T01:39:03Z",
       "side": 1,
       "message": "how to enable eSPI?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "c80ab6b072daa651e49c3eb2f343282e720e7b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83fcf7f5_d7b61497",
+        "filename": "board/glkrvp_ite/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-04-10T02:26:39Z",
+      "side": 1,
+      "message": "I will do a change like these:\n\nstatic void lpc_generate_smi(void)\n{\n#ifdef CONFIG_ESPI\n\tespi_vw_set_wire(VW_SMI_L, 0);\n\tudelay(65);\n\tespi_vw_set_wire(VW_SMI_L, 1);\n#else\n\tgpio_set_level(GPIO_PCH_SMI_L, 0);\n\tudelay(65);\n\tgpio_set_level(GPIO_PCH_SMI_L, 1);\n#endif\n}\n\nstatic void lpc_generate_sci(void)\n{\n#ifdef CONFIG_ESPI\n\tespi_vw_set_wire(VW_SCI_L, 0);\n\tudelay(65);\n\tespi_vw_set_wire(VW_SCI_L, 1);\n#else\n\tgpio_set_level(GPIO_PCH_SCI_L, 0);\n\tudelay(65);\n\tgpio_set_level(GPIO_PCH_SCI_L, 1);\n#endif\n}",
+      "parentUuid": "efdfbbf7_2d3f0b70",
       "range": {
         "startLine": 59,
         "startChar": 0,
