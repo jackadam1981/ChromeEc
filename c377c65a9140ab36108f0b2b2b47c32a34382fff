@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea6e9514_0befc40e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-04-10T17:47:34Z",
+      "side": 1,
+      "message": "No longer used, so can be removed.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 37
+      },
+      "revId": "c377c65a9140ab36108f0b2b2b47c32a34382fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1026e54_eea7f98a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-04-10T17:47:34Z",
+      "side": 1,
+      "message": "Change \"charge manager provides at least LIKELY_PD_USBC_POWER_MW\"\nto \"sufficient charger is present\"",
+      "range": {
+        "startLine": 1862,
+        "startChar": 4,
+        "endLine": 1862,
+        "endChar": 60
+      },
+      "revId": "c377c65a9140ab36108f0b2b2b47c32a34382fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
