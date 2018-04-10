@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c1dd60c_413c83c3",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-10T00:04:15Z",
+      "side": 1,
+      "message": "Where does this number come from?",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "cf6b1f0310af7c2b9701cdd64a0342e6428e06d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad11b60a_c8d78b6d",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-10T00:04:15Z",
+      "side": 1,
+      "message": "Is bitflag ordering guaranteed across platforms in the current C compiler?\n\nA long time ago I remember it wasn\u0027t, which is why I avoid them in interfaces, but it\u0027s possible that no longer applies.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 34
+      },
+      "revId": "cf6b1f0310af7c2b9701cdd64a0342e6428e06d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
