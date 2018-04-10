@@ -22,6 +22,30 @@
       "revId": "93576b2923bf2de6584965fe244ea4f2c877a61e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf2ba07_85316422",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-10T10:07:03Z",
+      "side": 1,
+      "message": "Right. The feature tracked in this bug will also help a bit: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d826592, but yes, we should also think about trimming the logs a bit more.\n\nI just thought that we might use the extra RAM for something useful (for example, this should give us more complete boot logs).",
+      "parentUuid": "0594abb1_3d503e69",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 36
+      },
+      "revId": "93576b2923bf2de6584965fe244ea4f2c877a61e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
