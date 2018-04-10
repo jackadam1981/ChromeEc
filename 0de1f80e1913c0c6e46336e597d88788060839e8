@@ -182,6 +182,29 @@
     },
     {
       "key": {
+        "uuid": "e6a1641e_07df4b8a",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-04-10T01:06:31Z",
+      "side": 1,
+      "message": "Has anyone verified this works? If so on what board?\n\nAnd can you tell me the commands to use?",
+      "range": {
+        "startLine": 810,
+        "startChar": 17,
+        "endLine": 810,
+        "endChar": 21
+      },
+      "revId": "0de1f80e1913c0c6e46336e597d88788060839e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e30e6c3_30662c01",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
