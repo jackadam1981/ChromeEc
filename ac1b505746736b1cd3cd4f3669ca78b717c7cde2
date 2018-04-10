@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8f9f1af_96e8978d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-10T20:37:09Z",
+      "side": 1,
+      "message": "This will be erased if we jump. I suppose checking OCM twice is not harmful. Since we check only in init, why don\u0027t we remove this?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "724ebd8a_0e9e4409",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-10T20:37:09Z",
+      "side": 1,
+      "message": "nit: i would remove it.",
+      "range": {
+        "startLine": 201,
+        "startChar": 42,
+        "endLine": 201,
+        "endChar": 54
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ca5127_2016ad02",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-10T20:37:09Z",
+      "side": 1,
+      "message": "that",
+      "range": {
+        "startLine": 231,
+        "startChar": 53,
+        "endLine": 231,
+        "endChar": 57
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26b6c00_44073f5f",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-10T20:37:09Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
