@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cc3105c_b30bb8d3",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-10T22:57:15Z",
+      "side": 0,
+      "message": "The original code had:\nSIGNER \u003d sudo $(HOME)/bin/codesigner\nyou may need to include sudo when calling /usr/bin/cr50-codesigner unless there is something that changed. If I run \"sudo make -j BOARD\u003dcr50 CR50_DEV\u003d1\" it works without errors, but I get errors with just \"make -j BOARD\u003dcr50 CR50_DEV\u003d1\"",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "7e1ce92219a24dc35cb8eddad0da4180ddc8265f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
