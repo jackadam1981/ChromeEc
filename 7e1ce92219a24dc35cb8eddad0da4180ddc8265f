@@ -46,6 +46,30 @@
       "revId": "7e1ce92219a24dc35cb8eddad0da4180ddc8265f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341d95d0_8e86a677",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-10T23:10:07Z",
+      "side": 0,
+      "message": "I had tried that before, but I removed the build folder again and .failedboards and it worked this time.",
+      "parentUuid": "1385126e_924ed6a2",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 33
+      },
+      "revId": "7e1ce92219a24dc35cb8eddad0da4180ddc8265f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
