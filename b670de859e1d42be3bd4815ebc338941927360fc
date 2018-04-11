@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca719824_c6b03e3e",
+        "filename": "util/uut/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-11T15:20:39Z",
+      "side": 1,
+      "message": "should be \u0027static\u0027",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db79fb4a_da71188a",
+        "filename": "util/uut/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-11T15:20:39Z",
+      "side": 1,
+      "message": "they are global variables stored in .bss, they are already implicitly zeroed.\nAnd the usual rule in this codebase is not to do it again.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21f2ced_5bcb1618",
+        "filename": "util/uut/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-11T15:20:39Z",
+      "side": 1,
+      "message": "the sscanf doesn\u0027t make much sense here and below since it is just doing a string copy at the end and you are not even verifying the length.\nMaybe you want to do a \u0027strlcpy\u0027 or equivalent.",
+      "range": {
+        "startLine": 257,
+        "startChar": 6,
+        "endLine": 257,
+        "endChar": 51
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e78dd3_8e684826",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-11T15:20:39Z",
+      "side": 1,
+      "message": "isn\u0027t this incorrect for port_len \u003d\u003d MAX_PORT_NAME_SIZE - 5 ?\nie full_port_name will miss the space to store the final \\0 ?\n\nOverall this is showing how brittle is this piling of strcpy and strcat,\nmaybe \u0027asprintf\u0027 would be a simpler and more robust alternative here.",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a56b235_24bd7008",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-11T15:20:39Z",
+      "side": 1,
+      "message": "ditto as the one you fixed 5 lines above.",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
