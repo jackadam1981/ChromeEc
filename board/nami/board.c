@@ -691,6 +691,23 @@ static void board_set_motion_sensor_count(void)
 	}
 }
 
+/* is_nami will used by other functions, for example, charge_state_v2.c.
+ * So, it must be global function.
+ */
+int is_nami(void)
+{
+	uint32_t oem_id;
+
+	/* Base on oem_id decide is_nami.
+	 * is_nami will change PD_POWER setting
+	 */
+	if (cbi_get_oem_id(&oem_id) == EC_SUCCESS) {
+		if (oem_id == PROJECT_NAMI)
+			return 1;
+	}
+	return 0;
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -698,7 +715,6 @@ static void board_init(void)
 
 	if (cbi_get_board_version(&version) == EC_SUCCESS)
 		CPRINTS("Board Version: 0x%04x", version);
-
 	/*
 	 * This enables pull-down on F_DIO1 (SPI MISO), and F_DIO0 (SPI MOSI),
 	 * whenever the EC is not doing SPI flash transactions. This avoids
