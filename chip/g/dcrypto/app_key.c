@@ -79,7 +79,7 @@ void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx)
 }
 
 int DCRYPTO_appkey_derive(enum dcrypto_appid appid, const uint32_t input[8],
-			  uint32_t output[8])
+			  uint32_t output[8], struct APPKEY_CTX *ctx)
 {
 	return !!dcrypto_ladder_derive(appid, dcrypto_app_names[appid].digest,
 				       input, output);

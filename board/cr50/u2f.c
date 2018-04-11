@@ -134,7 +134,7 @@ static int _derive_key(enum dcrypto_appid appid, const uint32_t input[8],
 	/* Setup USR-based application key. */
 	if (!DCRYPTO_appkey_init(appid, &ctx))
 		return 0;
-	result = DCRYPTO_appkey_derive(appid, input, output);
+	result = DCRYPTO_appkey_derive(appid, input, output, &ctx);
 
 	DCRYPTO_appkey_finish(&ctx);
 	return result;

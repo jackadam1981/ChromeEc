@@ -286,7 +286,7 @@ int DCRYPTO_ladder_random(void *output);
 int DCRYPTO_appkey_init(enum dcrypto_appid id, struct APPKEY_CTX *ctx);
 void DCRYPTO_appkey_finish(struct APPKEY_CTX *ctx);
 int DCRYPTO_appkey_derive(enum dcrypto_appid appid, const uint32_t input[8],
-			  uint32_t output[8]);
+			  uint32_t output[8], struct APPKEY_CTX *ctx);
 
 /* Number of bytes in the salt object. */
 #define DCRYPTO_CIPHER_SALT_SIZE 16
