@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "edf3bda7_727cc9eb",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-04-11T12:55:02Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "580dc3eb_14e2ce2c",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 2
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "104864d8_d7ce079d",
         "filename": "board/nami/board.h",
         "patchSetId": 4
@@ -95,6 +119,54 @@
     },
     {
       "key": {
+        "uuid": "03b61cd0_a3072c20",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-04-11T12:55:02Z",
+      "side": 1,
+      "message": "Sorry for my mistake, Nami should be 65W, and Vayne should be 45W.",
+      "parentUuid": "62faa99f_6a9c4e25",
+      "range": {
+        "startLine": 282,
+        "startChar": 38,
+        "endLine": 282,
+        "endChar": 44
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19db45ae_cb7302de",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-04-11T12:55:02Z",
+      "side": 1,
+      "message": "Yes, you make a point.",
+      "parentUuid": "561664c0_b43c1735",
+      "range": {
+        "startLine": 282,
+        "startChar": 27,
+        "endLine": 282,
+        "endChar": 35
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5350ffd5_2673ecaa",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -115,6 +187,30 @@
       "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd93404f_02614d58",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-04-11T12:55:02Z",
+      "side": 1,
+      "message": "This way could make other projects keep their code size and run time.\nFor example, if a project is without CONFIG_DYNAMIC_PD_MAX_POWER_MW and satisfy ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV !\u003d PD_MAX_CURRENT_MA), then this branch even won\u0027t need to run in this part.\nIf we did not to separate cases, it would impact other projects who do not need this changing.\nAnyway, I\u0027ve updated patch as not to separate.\nIf you prefer the old ways, please let me know, thanks.",
+      "parentUuid": "5350ffd5_2673ecaa",
+      "range": {
+        "startLine": 1927,
+        "startChar": 0,
+        "endLine": 1927,
+        "endChar": 42
+      },
+      "revId": "2b147a374669a1190543afc30dc93f6c30db24f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
