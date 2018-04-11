@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "95f44957_dca6a9eb",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-04-11T23:13:44Z",
+      "side": 1,
+      "message": "I guess it\u0027s not really necessary",
+      "parentUuid": "c4b9b578_23ed36e4",
+      "revId": "8b084b83216b0b080ec5eb1c3413c0aab6784a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6a4f370_618c2f07",
         "filename": "util/flash_ec",
         "patchSetId": 1
@@ -76,6 +94,30 @@
       "writtenOn": "2018-04-11T23:07:15Z",
       "side": 1,
       "message": "Why is this only in the non-cr50 case now?",
+      "range": {
+        "startLine": 792,
+        "startChar": 0,
+        "endLine": 794,
+        "endChar": 4
+      },
+      "revId": "8b084b83216b0b080ec5eb1c3413c0aab6784a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6beaeb8_dffd90e0",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-04-11T23:13:44Z",
+      "side": 1,
+      "message": "It has the potential to trigger another device state transition. And it has no benefit for the cr50 bitbang process.",
+      "parentUuid": "9f1797a2_d599310d",
       "range": {
         "startLine": 792,
         "startChar": 0,
