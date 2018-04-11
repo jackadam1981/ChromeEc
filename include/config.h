@@ -2714,6 +2714,9 @@
 /* Include all USB Power Delivery modules */
 #undef CONFIG_USB_POWER_DELIVERY
 
+/* Allow to change PD_MAX_POWER_MW in run time */
+#undef CONFIG_DYNAMIC_PD_MAX_POWER_MW
+
 /* Support for USB PD alternate mode */
 #undef CONFIG_USB_PD_ALT_MODE
 
