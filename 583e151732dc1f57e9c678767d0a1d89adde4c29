@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1080e8bd_ae406228",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-11T17:45:53Z",
+      "side": 1,
+      "message": "no need to check this, the check would be necessary/useful if the same function was invoked to handle than one vendor command.",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 2
+      },
+      "revId": "583e151732dc1f57e9c678767d0a1d89adde4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893de28d_9f1af516",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-11T17:45:53Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment: what return code is it referring to?\n\nThe success/failure of this function is communicated in the response header.",
+      "range": {
+        "startLine": 817,
+        "startChar": 3,
+        "endLine": 818,
+        "endChar": 58
+      },
+      "revId": "583e151732dc1f57e9c678767d0a1d89adde4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03888cdf_20b4e8ae",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-11T17:45:53Z",
+      "side": 1,
+      "message": "this is an enum from a different set (which happens to have the correct value).",
+      "range": {
+        "startLine": 830,
+        "startChar": 8,
+        "endLine": 830,
+        "endChar": 18
+      },
+      "revId": "583e151732dc1f57e9c678767d0a1d89adde4c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
