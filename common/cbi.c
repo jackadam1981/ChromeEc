@@ -330,8 +330,18 @@ static int cc_cbi(int argc, char **argv)
 {
 	uint32_t val;
 
-	ccprintf("CBI_VERSION: 0x%04x\n", head->version);
-	ccprintf("TOTAL_SIZE: %u\n", head->total_size);
+	/* Ensure we read the latest data from flash. */
+	cached_read_result = EC_ERROR_CBI_CACHE_INVALID;
+	read_board_info();
+
+	if (cached_read_result == EC_SUCCESS) {
+		ccprintf("CBI_VERSION: 0x%04x\n", head->version);
+		ccprintf("TOTAL_SIZE: %u\n", head->total_size);
+	} else {
+		ccprintf("CBI_VERSION: UNKNOWN\n");
+		ccprintf("TOTAL_SIZE: UNKNOWN\n");
+	}
+
 	ccprintf("BOARD_VERSION: ");
 	if (cbi_get_board_version(&val) == EC_SUCCESS)
 		ccprintf("%u (0x%x)\n", val, val);
@@ -353,5 +363,5 @@ static int cc_cbi(int argc, char **argv)
 	dump_cbi();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, NULL, NULL);
+DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, NULL, "Print CBI info from flash");
 #endif /* !HOST_TOOLS_BUILD */
