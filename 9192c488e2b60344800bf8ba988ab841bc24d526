@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db6c5aaf_1bdfbd30",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-11T06:13:08Z",
+      "side": 1,
+      "message": "Right, uart_process_output seems like a good option. That\u0027s usually run from interrupt context though, but if we don\u0027t do too much processing we should be fine?",
+      "parentUuid": "ad338a83_ce6852eb",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "9192c488e2b60344800bf8ba988ab841bc24d526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e82aef63_1960d4ae",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-10T20:57:41Z",
       "side": 1,
       "message": "Given it does not carry data, a console event should be a host event. \nIt looks like the 32 bits host event have been exhausted, time to use the 64 bit version.",
+      "revId": "9192c488e2b60344800bf8ba988ab841bc24d526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35eb7536_a68e9e50",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3170,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-11T06:13:08Z",
+      "side": 1,
+      "message": "See comments in other CL.",
+      "parentUuid": "e82aef63_1960d4ae",
       "revId": "9192c488e2b60344800bf8ba988ab841bc24d526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
