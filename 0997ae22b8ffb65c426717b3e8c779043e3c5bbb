@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44b7644e_4b826a4e",
+        "filename": "util/uut/lib_crc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Actually, it should not need here and is removed.",
+      "parentUuid": "1e3051e9_75107564",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e58545e_4291c529",
         "filename": "util/uut/main.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16bb42d_ea1f8ef4",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Indeed, only verbose and console are global.\nThe others are moved to the local declaration below.",
+      "parentUuid": "8e58545e_4291c529",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4c817037_bf0066ab",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Indeed, it need exit_uart_app() to close the port.",
+      "parentUuid": "a223ec17_d8e6c107",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 14
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48d3cec0_d2164c7b",
         "filename": "util/uut/main.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211e156d_e1b5599a",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Replace \"GET_BASE(addr_str)\" with \"0\" to let strtoul() to determine the base.\nAlso set addr_str as NULL string at init at main() to prevent the condition of undefinition.",
+      "parentUuid": "48d3cec0_d2164c7b",
+      "range": {
+        "startLine": 159,
+        "startChar": 38,
+        "endLine": 159,
+        "endChar": 56
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e7d96310_07b6899b",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Done by using getopt now.\nThe related commands in flash_ec to call this tool is also modified because now the format of option is \"--flag\" not \"-flag\".",
+      "parentUuid": "9992f546_45e7f7db",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 21
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "668215b7_0069ed16",
         "filename": "util/uut/main.c",
         "patchSetId": 7
@@ -137,6 +257,30 @@
       "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e7368e6_0325419d",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "This is not needed after using getopt.",
+      "parentUuid": "668215b7_0069ed16",
+      "range": {
+        "startLine": 229,
+        "startChar": 22,
+        "endLine": 229,
+        "endChar": 33
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "7761b485_5195346d",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Resolved by using getopt.",
+      "parentUuid": "ac56ade4_373afeb4",
+      "range": {
+        "startLine": 264,
+        "startChar": 14,
+        "endLine": 264,
+        "endChar": 29
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0836a6cd_fa0a26bc",
         "filename": "util/uut/main.c",
         "patchSetId": 7
@@ -183,6 +351,30 @@
       "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0c23d4_2ce50c66",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "This function is removed.",
+      "parentUuid": "0836a6cd_fa0a26bc",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 40
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "7e8072ac_850b68d0",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Done.\nIndeed, it is simpler to use stat().",
+      "parentUuid": "a86de9a2_7f1eff08",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 16
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4119bd02_dcfbcda0",
         "filename": "util/uut/main.c",
         "patchSetId": 7
@@ -229,6 +445,30 @@
       "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a7d458_14ee947f",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4119bd02_dcfbcda0",
+      "range": {
+        "startLine": 427,
+        "startChar": 5,
+        "endLine": 427,
+        "endChar": 46
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "d6700e74_9f52dbff",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Done by adding size checking.",
+      "parentUuid": "14d7d427_7b993555",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06623435_e1b3ee16",
         "filename": "util/uut/opr.c",
         "patchSetId": 7
@@ -275,6 +539,30 @@
       "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81085ac_46d477af",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-11T10:07:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06623435_e1b3ee16",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "0997ae22b8ffb65c426717b3e8c779043e3c5bbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
