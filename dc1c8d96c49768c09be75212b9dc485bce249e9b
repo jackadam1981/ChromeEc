@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc60afb8_086b8bdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-11T08:35:16Z",
+      "side": 1,
+      "message": "it\u0027s a poor argument why you would not need it contrary to other platforms.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "dc1c8d96c49768c09be75212b9dc485bce249e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb61ed6_2653e1d5",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2846,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-11T08:35:16Z",
+      "side": 1,
+      "message": "-1 to this, CONFIG_xxx switch are enabled/disabled by defining/undefining them.",
+      "range": {
+        "startLine": 2845,
+        "startChar": 0,
+        "endLine": 2846,
+        "endChar": 0
+      },
+      "revId": "dc1c8d96c49768c09be75212b9dc485bce249e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
