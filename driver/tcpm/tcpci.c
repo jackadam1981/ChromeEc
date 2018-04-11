@@ -149,9 +149,15 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 #endif
 		return EC_SUCCESS;
 	}
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	/* Clear alert mask to avoid alert while set RD on CC1&CC2 */
+	rv = clear_alert_mask(port);
+	/* Set auto drp toggle with RD on CC1&CC2 */
+	rv |= set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD);
+#else
 	/* Set auto drp toggle */
 	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_OPEN);
-
+#endif
 	/* Set Look4Connection command */
 	rv |= tcpc_write(port, TCPC_REG_COMMAND,
 			 TCPC_REG_COMMAND_LOOK4CONNECTION);
@@ -304,8 +310,21 @@ void tcpci_tcpc_alert(int port)
 			     status & ~TCPC_REG_ALERT_RX_STATUS);
 
 	if (status & TCPC_REG_ALERT_CC_STATUS) {
-		/* CC status changed, wake task */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+		int reg = 0;
+		tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &reg);
+
+		if (reg == TCPC_REG_POWER_STATUS_MASK_ALL) {
+			/*
+			 * If power status mask has been reset, then the TCPC
+			 * has reset.
+			 */
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				       PD_EVENT_TCPC_RESET, 0);
+		} else {
+			/* CC status changed, wake task */
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+					PD_EVENT_CC, 0);
+		}
 	}
 	if (status & TCPC_REG_ALERT_POWER_STATUS) {
 		int reg = 0;
