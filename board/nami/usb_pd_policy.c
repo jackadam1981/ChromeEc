@@ -264,6 +264,12 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	return 0;
 }
 
+int board_get_max_power_mw(void)
+{
+	/* TODO: Customize for variants */
+	return PD_MAX_POWER_MW;
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
 static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];

@@ -26,6 +26,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "usb_pd.h"
 #include "util.h"
 
 /* Console output macros */
@@ -1989,10 +1990,12 @@ int charge_set_input_current_limit(int ma, int mv)
 	 * Yes, we might overcurrent the charger but this is no worse than
 	 * browning out due to insufficient input current.
 	 */
+#ifdef CONFIG_USB_POWER_DELIVERY
 	if (curr.batt.is_present != BP_YES && !system_is_locked() &&
 		!base_connected) {
-#ifdef CONFIG_USB_POWER_DELIVERY
-#if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV != PD_MAX_CURRENT_MA)
+		int max_mw = pd_get_max_power_mw();
+		if (max_mw * 1000 / PD_MAX_VOLTAGE_MV == PD_MAX_CURRENT_MA)
+			return EC_SUCCESS;
 		/*
 		 * If battery is not present, input current is set to
 		 * PD_MAX_CURRENT_MA. If the input power set is greater than
@@ -2000,16 +2003,12 @@ int charge_set_input_current_limit(int ma, int mv)
 		 * Hence, limit the input current to meet maximum allowed
 		 * input system power.
 		 */
-		if (mv > 0 && mv * curr.desired_input_current >
-			PD_MAX_POWER_MW * 1000)
-			ma = (PD_MAX_POWER_MW * 1000) / mv;
+		if (mv > 0 && mv * curr.desired_input_current > max_mw * 1000)
+			ma = max_mw * 1000 / mv;
 		else
 			return EC_SUCCESS;
-#else
-		return EC_SUCCESS;
-#endif
-#endif /* CONFIG_USB_POWER_DELIVERY */
 	}
+#endif /* CONFIG_USB_POWER_DELIVERY */
 
 #ifdef CONFIG_CHARGER_MAX_INPUT_CURRENT
 	/* Limit input current limit to max limit for this board */
