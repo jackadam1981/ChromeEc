@@ -16,6 +16,24 @@
       "revId": "adf0feb1f337ef57dedfe02ceb7fddfe1f485a91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37046298_3a05eaa6",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-04-11T19:55:32Z",
+      "side": 0,
+      "message": "we are adding the new appid for PINWEAVER.\nenum dcrypto_appid has PERSO_AUTH at 5, PINWEAVER at 6.\nhowever, if CONFIG_STREAM_SIGNATURE is undefined, this array has PINWEAVER entry at index 5.\n\nthe alternatives would be: (a) PERSO-AUTH -\u003e end of enum (6), PINWEAVER -\u003e 5; or (b) adding #ifdef CONFIG_STREAM_SIGNATURE to enum and getting rid of explicitly specifying values for enumerators.",
+      "parentUuid": "44739791_c138c602",
+      "revId": "adf0feb1f337ef57dedfe02ceb7fddfe1f485a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
