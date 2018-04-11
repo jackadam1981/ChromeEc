@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6fbef7b7_aabd9c6f",
+        "filename": "board/glkrvp_ite/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-04-11T22:05:29Z",
+      "side": 1,
+      "message": "pca9555_write() \u0026 pca9555_read() are static inline so kept it a macro.\nWold you like me to remove macro and directly call the function?",
+      "parentUuid": "d4c35e20_3eca92a1",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "c80ab6b072daa651e49c3eb2f343282e720e7b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efd38df6_0637c8e7",
         "filename": "board/glkrvp_ite/board.c",
         "patchSetId": 1
@@ -107,6 +131,30 @@
       "writtenOn": "2018-04-10T16:46:36Z",
       "side": 1,
       "message": "no S0ix ?",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "c80ab6b072daa651e49c3eb2f343282e720e7b15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef933c7_91739831",
+        "filename": "board/glkrvp_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-04-11T22:05:29Z",
+      "side": 1,
+      "message": "SOIX is enabled so dint add the ifdef\nX86_SLP_S0_N",
+      "parentUuid": "e5be66c1_16fccfce",
       "range": {
         "startLine": 131,
         "startChar": 5,
