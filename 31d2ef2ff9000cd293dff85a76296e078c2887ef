@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b2bc79e_14b19049",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-11T20:14:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f132214b_553e3480",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4f9663c_9303740b",
         "filename": "board/host/dcrypto.h",
         "patchSetId": 53
@@ -45,6 +69,30 @@
       "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21959677_5ff94813",
+        "filename": "board/host/dcrypto.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-11T20:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4f9663c_9303740b",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "62123a04_bf00480e",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-11T20:14:01Z",
+      "side": 1,
+      "message": "There is a comment above that says it is SHA256(name). I have computed it for one of the other values to verify this is the case. I am not sure why we don\u0027t just compute these at runtime other than it would make the operation slower, but it would free up some space.",
+      "parentUuid": "c7130a60_2e2c2763",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2a458b1_42ca059a",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 53
@@ -91,6 +163,30 @@
       "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5edf3e24_697bbee2",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-11T20:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2a458b1_42ca059a",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
