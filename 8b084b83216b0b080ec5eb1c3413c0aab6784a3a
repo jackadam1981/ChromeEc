@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e0404f5_7c811429",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-11T23:07:15Z",
+      "side": 1,
+      "message": "maybe \u0027UART bitbang flashing\u0027?",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "8b084b83216b0b080ec5eb1c3413c0aab6784a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b9b578_23ed36e4",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-11T23:07:15Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "revId": "8b084b83216b0b080ec5eb1c3413c0aab6784a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a4f370_618c2f07",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-11T23:07:15Z",
+      "side": 1,
+      "message": "nit: prefer bugs over usernames",
+      "range": {
+        "startLine": 783,
+        "startChar": 4,
+        "endLine": 783,
+        "endChar": 18
+      },
+      "revId": "8b084b83216b0b080ec5eb1c3413c0aab6784a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f1797a2_d599310d",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-11T23:07:15Z",
+      "side": 1,
+      "message": "Why is this only in the non-cr50 case now?",
+      "range": {
+        "startLine": 792,
+        "startChar": 0,
+        "endLine": 794,
+        "endChar": 4
+      },
+      "revId": "8b084b83216b0b080ec5eb1c3413c0aab6784a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
