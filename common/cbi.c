@@ -353,5 +353,5 @@ static int cc_cbi(int argc, char **argv)
 	dump_cbi();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, NULL, NULL);
+DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, NULL, "Print CBI info from flash");
 #endif /* !HOST_TOOLS_BUILD */
