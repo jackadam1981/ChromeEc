@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f132214b_553e3480",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-11T17:45:33Z",
+      "side": 1,
+      "message": "what naming collisions are there? I just tried including util.h and there were no problems.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f9663c_9303740b",
+        "filename": "board/host/dcrypto.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-11T17:45:33Z",
+      "side": 1,
+      "message": "here and in the other new .h files: this should reflect path to the file in the EC tree.\n\n__EC_HOST_DCRYPTO_H",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7130a60_2e2c2763",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-11T17:45:33Z",
+      "side": 1,
+      "message": "just curious, where does this value come from?",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 52
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2a458b1_42ca059a",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-11T17:45:33Z",
+      "side": 1,
+      "message": "does this have to be 2048? This is the entire receive FIFO buffer size, it would be better to limit the payload size such that it fits into the buffer prepended with the TPM vendor command header.",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "31d2ef2ff9000cd293dff85a76296e078c2887ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
