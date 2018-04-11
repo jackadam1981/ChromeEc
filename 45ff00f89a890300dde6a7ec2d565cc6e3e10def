@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d581ee8b_ec2b52dd",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-11T02:17:46Z",
+      "side": 1,
+      "message": "Not sure why this is needed",
+      "revId": "45ff00f89a890300dde6a7ec2d565cc6e3e10def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d504827_2bb33c89",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-11T02:17:46Z",
+      "side": 1,
+      "message": "I like that solution better than the one in my CL.",
+      "revId": "45ff00f89a890300dde6a7ec2d565cc6e3e10def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
