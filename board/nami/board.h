@@ -261,6 +261,8 @@ enum oem_id {
 	PROJECT_NAMI,		/* Nami */
 };
 
+int is_nami(void);
+
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
 /*
  * delay to turn on the power supply max is ~16ms.
@@ -274,7 +276,7 @@ enum oem_id {
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW		15000
-#define PD_MAX_POWER_MW			45000
+#define PD_MAX_POWER_MW		(is_nami() ? 65000 : 45000)
 #define PD_MAX_CURRENT_MA		3000
 #define PD_MAX_VOLTAGE_MV		20000
 
