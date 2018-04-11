@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2e19786_18e5b2e6",
+        "filename": "board/fizz/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-11T17:53:34Z",
+      "side": 1,
+      "message": "CEC support seems like it\u0027d apply to more than just Fizz.  Should it be moved to common/ ?",
+      "revId": "5414d44a6a6127119be7728a3ede54a204d5a2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d347f761_a6060dec",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4933,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-04-11T17:53:34Z",
+      "side": 1,
+      "message": "These should be outside the range of EC-EC communication.  0x00B8 / 0x00B9 look free.\n\nAlso, please add a comment describing what each command sends/receives.  This is in effect the interface document.",
+      "range": {
+        "startLine": 4932,
+        "startChar": 8,
+        "endLine": 4933,
+        "endChar": 34
+      },
+      "revId": "5414d44a6a6127119be7728a3ede54a204d5a2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
