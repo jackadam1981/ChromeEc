@@ -2781,6 +2781,13 @@
 /* Dynamic USB PD source capability */
 #undef CONFIG_USB_PD_DYNAMIC_SRC_CAP
 
+/*
+ * Dynamic USB PD max power configuration.
+ * You must define board_get_max_power_mw as well. Make sure it returns fast
+ * after PD tasks start.
+ */
+#undef CONFIG_USB_PD_DYNAMIC_MAX_POWER
+
 /* Support USB PD flash. */
 #undef CONFIG_USB_PD_FLASH
 

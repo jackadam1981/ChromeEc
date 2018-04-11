@@ -89,6 +89,15 @@ static uint8_t pd_src_cap_cnt[CONFIG_USB_PD_PORT_COUNT];
 /* Cap on the max voltage requested as a sink (in millivolts) */
 static unsigned max_request_mv = PD_MAX_VOLTAGE_MV; /* no cap */
 
+int pd_get_max_power_mw(void)
+{
+#ifdef CONFIG_USB_PD_DYNAMIC_MAX_POWER
+	return board_get_max_power_mw();
+#else
+	return PD_MAX_POWER_MW;
+#endif
+}
+
 int pd_find_pdo_index(int port, int max_mv, uint32_t *selected_pdo)
 {
 	int i, uw, mv, ma;
@@ -125,7 +134,7 @@ int pd_find_pdo_index(int port, int max_mv, uint32_t *selected_pdo)
 
 		if (mv > max_mv)
 			continue;
-		uw = MIN(uw, PD_MAX_POWER_MW * 1000);
+		uw = MIN(uw, pd_get_max_power_mw() * 1000);
 		prefer_cur = 0;
 
 		/* Apply special rules in case of 'tie' */
@@ -152,7 +161,7 @@ int pd_find_pdo_index(int port, int max_mv, uint32_t *selected_pdo)
 
 void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 {
-	int max_ma, uw;
+	int max_ma, uw, max_mw;
 
 	*mv = ((pdo >> 10) & 0x3FF) * 50;
 
@@ -162,12 +171,13 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 		return;
 	}
 
+	max_mw = pd_get_max_power_mw();
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		uw = 250000 * (pdo & 0x3FF);
-		max_ma = 1000 * MIN(1000 * uw, PD_MAX_POWER_MW) / *mv;
+		max_ma = 1000 * MIN(1000 * uw, max_mw) / *mv;
 	} else {
 		max_ma = 10 * (pdo & 0x3FF);
-		max_ma = MIN(max_ma, PD_MAX_POWER_MW * 1000 / *mv);
+		max_ma = MIN(max_ma, max_mw * 1000 / *mv);
 	}
 
 	*ma = MIN(max_ma, PD_MAX_CURRENT_MA);

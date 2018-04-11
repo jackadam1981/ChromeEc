@@ -250,6 +250,9 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 
+	/* Exercise once to cache the value */
+	CPRINTS("Max power is %dmw\n", board_get_max_power_mw());
+
 	/*
 	 * Initialize HPD to low; after sysjump SOC needs to see
 	 * HPD pulse to enable video path
