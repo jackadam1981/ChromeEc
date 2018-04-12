@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c38972c3_ecafa824",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-12T20:37:25Z",
+      "side": 1,
+      "message": "Ack. Then, I suppose we\u0027d better do the OCM check in HOOK_INIT or something. Maybe we can come back once we stabilize the driver.",
+      "parentUuid": "aa92e61f_76a69566",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "724ebd8a_0e9e4409",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 4
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "It\u0027s not needed for compilation. I was just using it here as a way to clearly delineate the #defines that were only required for OCM flash erase.",
       "parentUuid": "c26b6c00_44073f5f",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b374ae6_1b1f80df",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-12T20:37:25Z",
+      "side": 1,
+      "message": "Then, can you replace it with a comment? When I see #ifdef..#endif, I suspect the code between has special/different meanings but they\u0027re just register offsets and bit positions (well, mostly but they\u0027re benign anyway).",
+      "parentUuid": "614b40c9_1a7d73ee",
       "range": {
         "startLine": 36,
         "startChar": 0,
