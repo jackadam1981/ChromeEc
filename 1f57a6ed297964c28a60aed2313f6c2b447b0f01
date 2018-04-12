@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eade1854_dc9b5399",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-12T15:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6680923b_02cd6f72",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 36
+      },
+      "revId": "1f57a6ed297964c28a60aed2313f6c2b447b0f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77b858c5_419af44e",
         "filename": "common/cbi.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "1f57a6ed297964c28a60aed2313f6c2b447b0f01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "017f09ae_2444854c",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-12T15:23:05Z",
+      "side": 1,
+      "message": "Each read can failed independently, so I kept the error checking, but I pulled in out into a common function as to not repeat ourselves.\n\nI also changed to to return early if the overall CBI read failed (which is what you were getting at)",
+      "parentUuid": "77b858c5_419af44e",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 24
+      },
+      "revId": "1f57a6ed297964c28a60aed2313f6c2b447b0f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
