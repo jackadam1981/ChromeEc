@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eec3429e_498c2d5d",
+        "filename": "util/uut/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-12T10:02:48Z",
+      "side": 1,
+      "message": "All done except struct comport_fields port_cfg.\nIt is also used by opr.c and should be moved to global.",
+      "parentUuid": "ca719824_c6b03e3e",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db79fb4a_da71188a",
         "filename": "util/uut/main.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1ffce9_5697b32b",
+        "filename": "util/uut/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-12T10:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db79fb4a_da71188a",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "32e1f184_4d3287a1",
+        "filename": "util/uut/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-12T10:02:48Z",
+      "side": 1,
+      "message": "Done by using strlcpy.(this function need the libbsd to be included.)",
+      "parentUuid": "b21f2ced_5bcb1618",
+      "range": {
+        "startLine": 257,
+        "startChar": 6,
+        "endLine": 257,
+        "endChar": 51
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5e78dd3_8e684826",
         "filename": "util/uut/opr.c",
         "patchSetId": 8
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9d5c73c3_9508e83e",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-12T10:02:48Z",
+      "side": 1,
+      "message": "Done by using asprintf().\nIndeed, it is simpler and more robust.",
+      "parentUuid": "b5e78dd3_8e684826",
+      "range": {
+        "startLine": 113,
+        "startChar": 36,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a56b235_24bd7008",
         "filename": "util/uut/opr.c",
         "patchSetId": 8
@@ -114,6 +210,30 @@
       "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a34de9_cd2a69bc",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-12T10:02:48Z",
+      "side": 1,
+      "message": "I am sorry I don\u0027t check all the unnecessary type casting for port_handle.\nNow all of them are checked and fixed.",
+      "parentUuid": "3a56b235_24bd7008",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "b670de859e1d42be3bd4815ebc338941927360fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
