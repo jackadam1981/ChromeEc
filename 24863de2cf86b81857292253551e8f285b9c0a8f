@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1517d3e6_619d822c",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-12T19:23:37Z",
+      "side": 1,
+      "message": "Why don\u0027t you just pass the value?",
+      "range": {
+        "startLine": 329,
+        "startChar": 69,
+        "endLine": 329,
+        "endChar": 70
+      },
+      "revId": "24863de2cf86b81857292253551e8f285b9c0a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eccf4e6e_f37a92a1",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-12T19:23:37Z",
+      "side": 1,
+      "message": "nit: I feel something like (ERROR %d) is enough here. What do you think?",
+      "range": {
+        "startLine": 335,
+        "startChar": 13,
+        "endLine": 335,
+        "endChar": 36
+      },
+      "revId": "24863de2cf86b81857292253551e8f285b9c0a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60f4b49_d5491ee4",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-12T19:23:37Z",
+      "side": 1,
+      "message": "nit: Probably \u0027Dump CBI from flash\u0027. \u0027I\u0027 stands for info...",
+      "range": {
+        "startLine": 365,
+        "startChar": 43,
+        "endLine": 365,
+        "endChar": 59
+      },
+      "revId": "24863de2cf86b81857292253551e8f285b9c0a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
