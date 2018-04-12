@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "952310d2_b445a014",
+        "filename": "board/glkrvp_ite/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-04-12T16:31:15Z",
+      "side": 1,
+      "message": "okay I will add it",
+      "parentUuid": "2aa8b281_84f5f5dd",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "08911701cd090915a9f8e8394c5f7889320a280e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8892723_c54039d4",
         "filename": "board/glkrvp_ite/board.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "33489f96_1428f87e",
+        "filename": "board/glkrvp_ite/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-04-12T16:31:15Z",
+      "side": 1,
+      "message": "will remove it",
+      "parentUuid": "c8892723_c54039d4",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "08911701cd090915a9f8e8394c5f7889320a280e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c5664a5_118e1e27",
         "filename": "board/glkrvp_ite/gpio.inc",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-12T13:49:18Z",
       "side": 1,
       "message": "Do you want to all add the \n\nGPIO(PCH_PLTRST_L, PIN(E, 3...)\n\ncase when CONFIG_ESPI_VM_SIGNALS is defined",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "08911701cd090915a9f8e8394c5f7889320a280e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f7a961_ea54315d",
+        "filename": "board/glkrvp_ite/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-04-12T16:31:15Z",
+      "side": 1,
+      "message": "Okay, I will remove CONFIG_ESPI_VW_SIGNALS and add only GPIO(*) as we will not define CONFIG_ESPI_VW_SIGNALS for GLK.",
+      "parentUuid": "0c5664a5_118e1e27",
       "range": {
         "startLine": 33,
         "startChar": 8,
