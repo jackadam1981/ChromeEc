@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9668f4ff_a41a60af",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-12T22:49:02Z",
+      "side": 1,
+      "message": "Yeah we can make this better, or it will be removed once the driver doesn\u0027t need to support erasing the OCM flash.",
+      "parentUuid": "c38972c3_ecafa824",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "724ebd8a_0e9e4409",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 4
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Then, can you replace it with a comment? When I see #ifdef..#endif, I suspect the code between has special/different meanings but they\u0027re just register offsets and bit positions (well, mostly but they\u0027re benign anyway).",
       "parentUuid": "614b40c9_1a7d73ee",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92bce9b9_a595ce63",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-12T22:49:02Z",
+      "side": 1,
+      "message": "I changed this to a comment as suggested.",
+      "parentUuid": "1b374ae6_1b1f80df",
       "range": {
         "startLine": 36,
         "startChar": 0,
