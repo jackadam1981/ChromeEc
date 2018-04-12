@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa92e61f_76a69566",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-12T19:36:49Z",
+      "side": 1,
+      "message": "The init function is called quite often, each time something is attached while in low power mode.",
+      "parentUuid": "a8f9f1af_96e8978d",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "724ebd8a_0e9e4409",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c1060f8e_381b7cf5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-12T19:36:49Z",
+      "side": 1,
+      "message": "I think Daisuke is referring to just the word successfully. So it will say \"OCM flash checked and erased\"",
+      "parentUuid": "bded9453_94446305",
+      "range": {
+        "startLine": 201,
+        "startChar": 42,
+        "endLine": 201,
+        "endChar": 54
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1ca5127_2016ad02",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 4
@@ -106,6 +154,30 @@
       "writtenOn": "2018-04-10T20:37:09Z",
       "side": 1,
       "message": "Do you need this?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "ac1b505746736b1cd3cd4f3669ca78b717c7cde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614b40c9_1a7d73ee",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-12T19:36:49Z",
+      "side": 1,
+      "message": "It\u0027s not needed for compilation. I was just using it here as a way to clearly delineate the #defines that were only required for OCM flash erase.",
+      "parentUuid": "c26b6c00_44073f5f",
       "range": {
         "startLine": 36,
         "startChar": 0,
