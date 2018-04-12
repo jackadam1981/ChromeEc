@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8892723_c54039d4",
+        "filename": "board/glkrvp_ite/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-04-12T09:22:41Z",
+      "side": 1,
+      "message": "May I know why we have to enable CONFIG_SPI on this board?\n(If that is for enabling it83xx\u0027s embedded flash, we don\u0027t need it)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 31
+      },
+      "revId": "08911701cd090915a9f8e8394c5f7889320a280e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
