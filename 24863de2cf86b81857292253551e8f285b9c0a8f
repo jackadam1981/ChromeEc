@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db978a11_dbc69c5d",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-12T19:46:32Z",
+      "side": 1,
+      "message": "Depending on the parameter order and the stack packing, passing by value may pass the previously set value. Passing by reference avoids taking advantage of parameter order evaluation.",
+      "parentUuid": "1517d3e6_619d822c",
+      "range": {
+        "startLine": 329,
+        "startChar": 69,
+        "endLine": 329,
+        "endChar": 70
+      },
+      "revId": "24863de2cf86b81857292253551e8f285b9c0a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eccf4e6e_f37a92a1",
         "filename": "common/cbi.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "be822f49_5a1c2f17",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-12T19:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eccf4e6e_f37a92a1",
+      "range": {
+        "startLine": 335,
+        "startChar": 13,
+        "endLine": 335,
+        "endChar": 36
+      },
+      "revId": "24863de2cf86b81857292253551e8f285b9c0a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b60f4b49_d5491ee4",
         "filename": "common/cbi.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "24863de2cf86b81857292253551e8f285b9c0a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad250b94_639d1d1c",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-12T19:46:32Z",
+      "side": 1,
+      "message": "expanded CBI to Cros Board Info",
+      "parentUuid": "b60f4b49_d5491ee4",
+      "range": {
+        "startLine": 365,
+        "startChar": 43,
+        "endLine": 365,
+        "endChar": 59
+      },
+      "revId": "24863de2cf86b81857292253551e8f285b9c0a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
