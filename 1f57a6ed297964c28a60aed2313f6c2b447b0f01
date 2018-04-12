@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6680923b_02cd6f72",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-12T00:07:41Z",
+      "side": 1,
+      "message": "Could you print an error message (e.g. Invalid CBI) instead?",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 36
+      },
+      "revId": "1f57a6ed297964c28a60aed2313f6c2b447b0f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b858c5_419af44e",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-12T00:07:41Z",
+      "side": 1,
+      "message": "Can you put these in the \u0027success\u0027 clause?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 24
+      },
+      "revId": "1f57a6ed297964c28a60aed2313f6c2b447b0f01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
