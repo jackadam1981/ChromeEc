@@ -22,6 +22,23 @@
       "revId": "e2b0ab620752bed15f118c6ccc391c8ba45da5af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77fe8da7_237a8d84",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-12T06:24:15Z",
+      "side": 1,
+      "message": "nit: brackets {} in the else branch",
+      "revId": "e2b0ab620752bed15f118c6ccc391c8ba45da5af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
