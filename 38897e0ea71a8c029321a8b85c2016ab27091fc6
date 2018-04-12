@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfc5ea5e_f6875f45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-12T12:14:08Z",
+      "side": 1,
+      "message": "This bug actually contains a reason NOT to do this \n(PD_MAX_POWER_MW has definitely nothing to do with the power supply adapter..)\nbut no reason why we need to do this.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "38897e0ea71a8c029321a8b85c2016ab27091fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d23e7b_eaa2dbff",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-12T12:14:08Z",
+      "side": 1,
+      "message": "nit: the unit is supposed to be written \u0027mW\u0027",
+      "range": {
+        "startLine": 254,
+        "startChar": 25,
+        "endLine": 254,
+        "endChar": 27
+      },
+      "revId": "38897e0ea71a8c029321a8b85c2016ab27091fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1e1862_4c891168",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1995,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-12T12:14:08Z",
+      "side": 1,
+      "message": "the previous and the new version of the logic around \u0027CONFIG_USB_POWER_DELIVERY\u0027 looks different\nis this another change hidden in this CL ?",
+      "range": {
+        "startLine": 1993,
+        "startChar": 0,
+        "endLine": 1995,
+        "endChar": 20
+      },
+      "revId": "38897e0ea71a8c029321a8b85c2016ab27091fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ccef45_e5824f7e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2002,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-12T12:14:08Z",
+      "side": 1,
+      "message": "is this parameter different on the different variants ?\nI have doubt.",
+      "range": {
+        "startLine": 2001,
+        "startChar": 22,
+        "endLine": 2002,
+        "endChar": 64
+      },
+      "revId": "38897e0ea71a8c029321a8b85c2016ab27091fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba844e8_ab22ec0e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-12T12:14:08Z",
+      "side": 1,
+      "message": "nit: this is megawatts, you meant milliwatts ? ie \u0027mW\u0027",
+      "range": {
+        "startLine": 1790,
+        "startChar": 31,
+        "endLine": 1790,
+        "endChar": 33
+      },
+      "revId": "38897e0ea71a8c029321a8b85c2016ab27091fc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
