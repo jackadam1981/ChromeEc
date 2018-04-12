@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2aa8b281_84f5f5dd",
+        "filename": "board/glkrvp_ite/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-12T13:49:18Z",
+      "side": 1,
+      "message": "Sorry for the miscommunication, but the PMIC_PORT and PMIC_ADDR defines were helpful. Can you add them back? (but still keep the direct call to pca9555_write)\n\nThose defines should go in your board.h file so you can reuse them battery.c",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 36
+      },
+      "revId": "08911701cd090915a9f8e8394c5f7889320a280e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8892723_c54039d4",
         "filename": "board/glkrvp_ite/board.h",
         "patchSetId": 3
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 97,
         "endChar": 31
+      },
+      "revId": "08911701cd090915a9f8e8394c5f7889320a280e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5664a5_118e1e27",
+        "filename": "board/glkrvp_ite/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-12T13:49:18Z",
+      "side": 1,
+      "message": "Do you want to all add the \n\nGPIO(PCH_PLTRST_L, PIN(E, 3...)\n\ncase when CONFIG_ESPI_VM_SIGNALS is defined",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 1
       },
       "revId": "08911701cd090915a9f8e8394c5f7889320a280e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
