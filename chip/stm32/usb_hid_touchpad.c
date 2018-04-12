@@ -268,6 +268,8 @@ void set_touchpad_report(struct usb_hid_touchpad_report *report)
 {
 	static int print_full = 1;
 
+	board_usb_wake();
+
 	mutex_lock(&report_queue_mutex);
 
 	/* USB/EP ready and nothing in queue, just write the report. */

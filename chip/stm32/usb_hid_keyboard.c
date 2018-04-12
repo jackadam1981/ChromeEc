@@ -567,6 +567,7 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 	mutex_lock(&key_queue_mutex);
 	queue_add_unit(&key_queue, &ev);
 	mutex_unlock(&key_queue_mutex);
+	board_usb_wake();
 
 	keyboard_process_queue();
 }

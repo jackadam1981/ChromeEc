@@ -108,6 +108,8 @@ static void print_base_detect_value(int v, int tmp_pulse_width)
 			v, tmp_pulse_width);
 }
 
+static int dbg;
+
 static void base_detect_deferred(void)
 {
 	uint64_t time_now = get_time().val;
@@ -124,6 +126,12 @@ static void base_detect_deferred(void)
 	v = adc_read_channel(ADC_BASE_DET);
 	if (v == ADC_READ_ERROR)
 		return;
+
+	/* b/77828249 debugging/emulation */
+	dbg = (dbg + 1) % 8;
+	if (dbg == 4) {
+		v = 500;
+	}
 
 	print_base_detect_value(v, tmp_pulse_width);
 
