@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9b4bc36_e75ef5ba",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "s/Cold/Warm",
+      "range": {
+        "startLine": 21,
+        "startChar": 56,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c6d8bdf_749b5c0a",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "s/Cold/Warm\n\nYou might also want to put a big warning that the EC shouldn\u0027t really assert this pin much (since we\u0027ll break the negotiations).",
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d2734b_b57b8a42",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "perhaps GPIO_INPUT.",
+      "range": {
+        "startLine": 22,
+        "startChar": 37,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a08afb1_92c09c8e",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "shutdown",
+      "range": {
+        "startLine": 23,
+        "startChar": 82,
+        "endLine": 23,
+        "endChar": 87
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e7859c_0806d1c7",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "These comments are a little bit redundant, they don\u0027t really add anything, yet you\u0027ll have to remember to change them if the names change.",
+      "range": {
+        "startLine": 34,
+        "startChar": 69,
+        "endLine": 34,
+        "endChar": 86
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d6c678_7d563ec4",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "Hardware problem with the soft start on the PP5000_A rail, you just got the rework :)\n\nTime to remove this comment I guess.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb29c4f2_528c1d33",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "I suggest we mux port-0 to the sdm and port-1 disabled by default. That way kernel developers can just use a charge through hub (without the daughter board), and without many EC commands they should have usb working.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f45df1_5ad072e5",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-13T22:56:34Z",
+      "side": 1,
+      "message": "Please include all the GPIOs that this board uses and initialize them to safe values (especially if they have to be outputs). We shouldn\u0027t leave stuff to HiZ, that might not necessarily be safe.\n\nYou\u0027re missing at least the leds, EN_CC_LID_BASE_PH, EN_PPVAR_VAR_BASE, SKU_ID, RCAM_VSYNC,  PROCHOT_L, AP_RST_REQ.",
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
