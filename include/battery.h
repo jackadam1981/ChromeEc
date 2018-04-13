@@ -32,7 +32,7 @@ extern struct ec_response_battery_dynamic_info
 #ifdef CONFIG_BATTERY_LEVEL_NEAR_FULL
 #define BATTERY_LEVEL_NEAR_FULL		 CONFIG_BATTERY_LEVEL_NEAR_FULL
 #else
-#define BATTERY_LEVEL_NEAR_FULL		 97
+#define BATTERY_LEVEL_NEAR_FULL		 99
 #endif
 
 /*
