@@ -70,6 +70,92 @@
       "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf0ca830_db45f4f8",
+        "filename": "util/flash_ec",
+        "patchSetId": 9
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-04-13T20:20:59Z",
+      "side": 1,
+      "message": "Is it possible to add a verification step that reads the firmware from the SPI and compares it with what is expected?",
+      "range": {
+        "startLine": 924,
+        "startChar": 0,
+        "endLine": 925,
+        "endChar": 0
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e282f4_e5e13e86",
+        "filename": "util/uut/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-04-13T20:20:59Z",
+      "side": 1,
+      "message": "If you want to use this library you will need to add the dev-libs/libbsd dependency to the ebuild.",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4c60f0_4de7bffa",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-04-13T20:20:59Z",
+      "side": 1,
+      "message": "Check the return value",
+      "range": {
+        "startLine": 109,
+        "startChar": 9,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5350be_cc67d41d",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-04-13T20:20:59Z",
+      "side": 1,
+      "message": "s/outout/output/",
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
