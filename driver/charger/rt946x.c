@@ -399,6 +399,10 @@ static int rt946x_init_setting(void)
 	rv = rt946x_set_iprec(batt_info->precharge_current);
 	if (rv)
 		return rv;
+	rv = rt946x_update_bits(RT946X_REG_CHGCTRL8, RT946X_MASK_VPREC,
+		0xF0); 
+	if (rv)
+		return rv;
 
 	return rt946x_init_irq();
 }
