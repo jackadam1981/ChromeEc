@@ -131,6 +131,16 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 		return 0;
 
 	/*
+	 * Do not discharge on AC if the system is not consuming significant
+	 * power. This is any of the following states including transitional
+	 * states between them: G3, S5.
+	 * S3 is not included because we can't distinguish whether we're booting
+	 * up or we're quietly sleeping.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return 0;
+
+	/*
 	 * In light load (<450mA being withdrawn from VSYS) the DCDC of the
 	 * charger operates intermittently i.e. DCDC switches continuously
 	 * and then stops to regulate the output voltage and current, and
