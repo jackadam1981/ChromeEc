@@ -63,6 +63,13 @@ enum rt946x_ilmtsel {
 	RT946X_ILMTSEL_LOWER_LEVEL, /* lower of above two */
 };
 
+enum rt946x_chg_stat {
+	RT946X_CHGSTAT_READY = 0,
+	RT946X_CHGSTAT_IN_PROGRESS,
+	RT946X_CHGSTAT_DONE,
+	RT946X_CHGSTAT_FAULT,
+};
+
 enum rt946x_adc_in_sel {
 	RT946X_ADC_VBUS_DIV5 = 1,
 	RT946X_ADC_VBUS_DIV2,
@@ -82,7 +89,7 @@ enum rt946x_irq {
 };
 
 static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
-	0xF0, 0xF0, 0xFF, 0xFF, 0xFF, 0xFF,
+	0xF0, 0xF0, 0xFF, 0xFF, (0xFF & ~RT946X_MASK_CHGIRQ2_TERMI), 0xFF,
 #ifdef CONFIG_CHARGER_RT9467
 	0xFC,
 #endif
@@ -99,6 +106,8 @@ static const uint8_t rt946x_irq_maskall[RT946X_IRQ_COUNT] = {
 static const uint16_t rt946x_boost_current[] = {
 	500, 700, 1100, 1300, 1800, 2100, 2400,
 };
+
+static uint8_t charge_terminated;
 
 static int rt946x_read8(int reg, int *val)
 {
@@ -819,6 +828,26 @@ static void rt946x_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
 
+static void charge_terminate_update(void)
+{
+	int reg = 0;
+
+	rt946x_read8(RT946X_REG_CHGIRQ2, &reg);
+
+	/* Charge terminated */
+	if (reg & RT946X_MASK_CHGIRQ2_TERMI)
+		charge_terminated = 1;
+}
+DECLARE_DEFERRED(charge_terminate_update);
+
+void rt946x_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&charge_terminate_update_data, 0);
+#ifdef HAS_TASK_USB_CHG
+	task_wake(TASK_ID_USB_CHG);
+#endif
+}
+
 #ifdef HAS_TASK_USB_CHG
 static int rt946x_get_bc12_device_type(void)
 {
@@ -849,11 +878,6 @@ static int rt946x_get_bc12_ilim(int charge_supplier)
 	default:
 		return USB_CHARGER_MIN_CURR_MA;
 	}
-}
-
-void rt946x_interrupt(enum gpio_signal signal)
-{
-	task_wake(TASK_ID_USB_CHG);
 }
 
 void usb_charger_task(void *u)
@@ -909,6 +933,24 @@ int rt946x_is_vbus_ready(void)
 
 	return rt946x_read8(RT946X_REG_CHGSTATC, &val) ?
 	       0 : !!(val & RT946X_MASK_PWR_RDY);
+}
+
+int rt946x_is_charge_done(void)
+{
+	int val = 0;
+
+	/*
+	 * rt946x supports interrupt for the start of charge termination
+	 * (CHG_TERMI) but not for the end of charge termination. Thus even
+	 * though we set charge_terminated by interrupt, we have to clear
+	 * charge_terminated by polling rt946x.
+	 */
+	if (charge_terminated && !rt946x_read8(RT946X_REG_CHGSTAT, &val)) {
+		val = (val & RT946X_MASK_CHG_STAT) >> RT946X_SHIFT_CHG_STAT;
+		charge_terminated = (val == RT946X_CHGSTAT_DONE);
+	}
+
+	return charge_terminated;
 }
 
 int rt946x_cutoff_battery(void)
