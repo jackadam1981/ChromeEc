@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4a842afe_ec9c9596",
+        "filename": "util/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-04-13T21:57:47Z",
+      "side": 1,
+      "message": "I guess I was confused by what host and build meant. You might have to update the chromeos-ec ebuild to add the bsd dependency.",
+      "parentUuid": "d3a08fc2_f8685023",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5de2cb88_139ab183",
         "filename": "util/flash_ec",
         "patchSetId": 9
