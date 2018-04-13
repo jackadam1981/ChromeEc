@@ -500,6 +500,7 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED_RED]   = { 3, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_LED_GREEN] = { 5, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
+	[PWM_CH_KBLIGHT]   = { 2, 0, 100 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -652,29 +653,16 @@ void lid_angle_peripheral_enable(int enable)
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
-	if (lid_is_open())
-		lm3509_poweron();
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
-	lm3509_poweroff();
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
-
-/* Control keyboard backlight when Lid status change */
-static void lm3509_kblight_lid_change(void)
-{
-	if (lid_is_open())
-		lm3509_poweron();
-	else
-		lm3509_poweroff();
-}
-DECLARE_HOOK(HOOK_LID_CHANGE, lm3509_kblight_lid_change, HOOK_PRIO_DEFAULT);
 
 static void board_set_motion_sensor_count(void)
 {
