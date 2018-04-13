@@ -611,7 +611,8 @@ int board_set_active_charge_port(int charge_port)
 		 * discharge on AC till the new charger is detected and
 		 * charge detect delay has passed.
 		 */
-		if (charge_get_percent() > 2)
+		if (charge_get_percent() > 2 &&
+				!chipset_in_state(CHIPSET_STATE_ANY_OFF))
 			charger_discharge_on_ac(1);
 		break;
 	default:
