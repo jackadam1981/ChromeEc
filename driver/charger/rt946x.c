@@ -13,6 +13,7 @@
 #include "compile_time_macros.h"
 #include "config.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "printf.h"
@@ -82,7 +83,7 @@ enum rt946x_irq {
 };
 
 static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
-	0xF0, 0xF0, 0xFF, 0xFF, 0xFF, 0xFF,
+	0xF0, 0xF0, 0xFF, 0xFF, 0x9F, 0xFF,
 #ifdef CONFIG_CHARGER_RT9467
 	0xFC,
 #endif
@@ -99,6 +100,8 @@ static const uint8_t rt946x_irq_maskall[RT946X_IRQ_COUNT] = {
 static const uint16_t rt946x_boost_current[] = {
 	500, 700, 1100, 1300, 1800, 2100, 2400,
 };
+
+static uint8_t charge_terminated;
 
 static int rt946x_read8(int reg, int *val)
 {
@@ -819,6 +822,39 @@ static void rt946x_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
 
+static void charge_terminate_update(void)
+{
+	int reg = 0;
+
+	rt946x_read8(RT946X_REG_CHGIRQ2, &reg);
+	CPRINTF("RT946X_REG_CHGIRQ2: %02x\n", reg);
+
+	/* Charge terminated */
+	if (reg & RT946X_MASK_CHGIRQ2_TERMI)
+		charge_terminated = 1;
+
+	/* Charge restarts */
+	if (reg & RT946X_MASK_CHGIRQ2_RECHGI)
+		charge_terminated = 0;
+}
+DECLARE_DEFERRED(charge_terminate_update);
+
+static void charge_terminate_reset(void)
+{
+	/* Clear charge_terminated when AC is unplugged */
+	if (!extpower_is_present())
+		charge_terminated = 0;
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, charge_terminate_reset, HOOK_PRIO_LAST);
+
+void rt946x_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&charge_terminate_update_data, 0);
+#ifdef HAS_TASK_USB_CHG
+	task_wake(TASK_ID_USB_CHG);
+#endif
+}
+
 #ifdef HAS_TASK_USB_CHG
 static int rt946x_get_bc12_device_type(void)
 {
@@ -849,11 +885,6 @@ static int rt946x_get_bc12_ilim(int charge_supplier)
 	default:
 		return USB_CHARGER_MIN_CURR_MA;
 	}
-}
-
-void rt946x_interrupt(enum gpio_signal signal)
-{
-	task_wake(TASK_ID_USB_CHG);
 }
 
 void usb_charger_task(void *u)
@@ -909,6 +940,11 @@ int rt946x_is_vbus_ready(void)
 
 	return rt946x_read8(RT946X_REG_CHGSTATC, &val) ?
 	       0 : !!(val & RT946X_MASK_PWR_RDY);
+}
+
+int rt946x_is_charge_done(void)
+{
+	return charge_terminated;
 }
 
 int rt946x_cutoff_battery(void)
