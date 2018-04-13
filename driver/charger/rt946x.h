@@ -281,6 +281,13 @@
 #define RT946X_MASK_CHG_VBATOV	(1 << RT946X_SHIFT_CHG_VBATOV)
 #define RT946X_MASK_CHG_VBUSOV	(1 << RT946X_SHIFT_CHG_VBUSOV)
 
+/* ========== CHGIRQ2 0x54 ============ */
+#define RT946X_SHIFT_CHGIRQ2_TERMI	6
+#define RT946X_SHIFT_CHGIRQ2_RECHGI	5
+
+#define RT946X_MASK_CHGIRQ2_TERMI	(1 << RT946X_SHIFT_CHGIRQ2_TERMI)
+#define RT946X_MASK_CHGIRQ2_RECHGI	(1 << RT946X_SHIFT_CHGIRQ2_RECHGI)
+
 /* ========== DPDMIRQ 0x56 ============ */
 #ifdef CONFIG_CHARGER_RT9467
 #define RT946X_SHIFT_DPDMIRQ_DETACH	1
@@ -314,6 +321,12 @@ int rt946x_enable_charger_boost(int en);
  * UVLO < VBUS < VOVP && VBUS > BATS + VSLP
  */
 int rt946x_is_vbus_ready(void);
+
+/*
+ * Return 1 if rt946x triggers charge terminatation
+ * due to full charge.
+ */
+int rt946x_is_charge_done(void);
 
 /*
  * Cut off the battery (force BATFET to turn off).
