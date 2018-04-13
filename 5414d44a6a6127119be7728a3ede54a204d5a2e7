@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08bfa8b2_4d3fbac0",
+        "filename": "board/fizz/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-04-13T07:18:43Z",
+      "side": 1,
+      "message": "I think the implementation would be quite different on another platform. Thinking of the heavy use of the capture timer. Can it live in chip/npcx?",
+      "parentUuid": "e2e19786_18e5b2e6",
+      "revId": "5414d44a6a6127119be7728a3ede54a204d5a2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d347f761_a6060dec",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "5414d44a6a6127119be7728a3ede54a204d5a2e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e8b76b_f334b3b0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4933,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-04-13T07:18:43Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "d347f761_a6060dec",
+      "range": {
+        "startLine": 4932,
+        "startChar": 8,
+        "endLine": 4933,
+        "endChar": 34
+      },
+      "revId": "5414d44a6a6127119be7728a3ede54a204d5a2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
