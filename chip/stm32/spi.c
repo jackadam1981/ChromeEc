@@ -280,6 +280,10 @@ static void tx_status(uint8_t byte)
 {
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 
+#ifdef CHIP_FAMILY_STM32H7
+	SPI_TXDR = byte;
+	spi->udrdr = byte;
+#else /* !CHIP_FAMILY_STM32H7 */
 	SPI_TXDR = byte;
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)
 	/* It sends the byte 4 times in order to be sure it bypassed the FIFO
@@ -288,9 +292,8 @@ static void tx_status(uint8_t byte)
 	spi->dr = byte;
 	spi->dr = byte;
 	spi->dr = byte;
-#elif defined(CHIP_FAMILY_STM32H7)
-	spi->ifcr = STM32_SPI_SR_UDR;
-#endif
+#endif /* CHIP_FAMILY_STM32F0 || CHIP_FAMILY_STM32L4 */
+#endif /* !CHIP_FAMILY_STM32H7 */
 }
 
 /**
@@ -307,8 +310,10 @@ static void setup_for_transaction(void)
 	/* clear this as soon as possible */
 	setup_transaction_later = 0;
 
+#ifndef CHIP_FAMILY_STM32H7 /* H7 is not ready to set status here */
 	/* Not ready to receive yet */
 	tx_status(EC_SPI_NOT_READY);
+#endif
 
 	/* We are no longer actively processing a transaction */
 	state = SPI_STATE_PREPARE_RX;
@@ -331,13 +336,13 @@ static void setup_for_transaction(void)
 	/* Start DMA */
 	dma_start_rx(&dma_rx_option, sizeof(in_msg), in_msg);
 
-#ifdef CHIP_FAMILY_STM32H7
-	spi->cr1 |= STM32_SPI_CR1_SPE;
-#endif
-
 	/* Ready to receive */
 	state = SPI_STATE_READY_TO_RX;
 	tx_status(EC_SPI_OLD_READY);
+
+#ifdef CHIP_FAMILY_STM32H7
+	spi->cr1 |= STM32_SPI_CR1_SPE;
+#endif
 }
 
 /* Forward declaraction */
@@ -681,7 +686,7 @@ static void spi_init(void)
 	spi->cfg1 = STM32_SPI_CFG1_DATASIZE(8) | STM32_SPI_CFG1_FTHLV(4) |
 			STM32_SPI_CFG1_CRCSIZE(8) |
 			STM32_SPI_CFG1_TXDMAEN | STM32_SPI_CFG1_RXDMAEN |
-			STM32_SPI_CFG1_UDRCFG_LAST_TX |
+			STM32_SPI_CFG1_UDRCFG_CONST |
 			STM32_SPI_CFG1_UDRDET_BEGIN_FRM;
 	spi->cr1 = 0;
 #else /* !CHIP_FAMILY_STM32H7 */
