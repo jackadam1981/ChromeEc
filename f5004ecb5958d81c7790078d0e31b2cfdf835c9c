@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f65bbb50_fb92d3cc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 2252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-13T14:25:35Z",
+      "side": 1,
+      "message": "isn\u0027t this too early ?\n(eg before ppc_init)",
+      "range": {
+        "startLine": 2252,
+        "startChar": 1,
+        "endLine": 2252,
+        "endChar": 31
+      },
+      "revId": "f5004ecb5958d81c7790078d0e31b2cfdf835c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d324d95d_d9ac96e8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-13T14:25:35Z",
+      "side": 1,
+      "message": "is this taking into account the pd_set_power_role above ?",
+      "range": {
+        "startLine": 2264,
+        "startChar": 0,
+        "endLine": 2265,
+        "endChar": 33
+      },
+      "revId": "f5004ecb5958d81c7790078d0e31b2cfdf835c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
