@@ -22,6 +22,30 @@
       "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e6ab3e6_e2063e14",
+        "filename": "util/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-13T07:13:20Z",
+      "side": 1,
+      "message": "If I understand correctly, host-util-bin is to build tool run on host board.\nIs this tool expected to run on the host side? (I assume that it just runs on the build/development machine.)\nAs for updating the chromeos-base/ec-devutils ebuild, I am sorry that we are not familiar with it.(We only have experience on ec firmware). Can you provide some document about how to do it?",
+      "parentUuid": "33dc531f_99b09e77",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
