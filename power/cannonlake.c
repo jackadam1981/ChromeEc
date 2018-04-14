@@ -50,6 +50,7 @@ void chipset_handle_espi_reset_assert(void)
 		power_button_pch_release();
 		forcing_shutdown = 0;
 	}
+	CPRINTS("*************************************************");
 }
 
 enum power_state chipset_force_g3(void)

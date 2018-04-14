@@ -467,7 +467,7 @@ void common_intel_x86_handle_rsmrst(enum power_state state)
 	 * and deasserting RSMRST to PCH.
 	 */
 	if (rsmrst_in)
-		msleep(10);
+		msleep(100);
 #endif
 
 	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
