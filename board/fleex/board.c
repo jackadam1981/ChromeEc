@@ -13,11 +13,11 @@
 #include "charge_state.h"
 #include "common.h"
 #include "cros_board_info.h"
-#include "driver/accel_kionix.h"
+#include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
-#include "driver/ppc/nx20p3483.h"
+#include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -33,6 +33,7 @@
 #include "power_button.h"
 #include "switch.h"
 #include "system.h"
+#include "task.h"
 #include "tablet_mode.h"
 #include "tcpci.h"
 #include "temp_sensor.h"
@@ -43,6 +44,9 @@
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+#define USB_PD_PORT_ANX7447	0
+#define USB_PD_PORT_PS8751	1
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -60,11 +64,11 @@ static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_PD_C0_INT_ODL:
-		nx20p3483_interrupt(0);
+		nx20p348x_interrupt(0);
 		break;
 
 	case GPIO_USB_PD_C1_INT_ODL:
-		nx20p3483_interrupt(1);
+		nx20p348x_interrupt(1);
 		break;
 
 	default:
@@ -81,8 +85,19 @@ const struct adc_t adc_channels[] = {
 		"TEMP_AMB", NPCX_ADC_CH0, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 	[ADC_TEMP_SENSOR_CHARGER] = {
 		"TEMP_CHARGER", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
+	[ADC_VBUS_C0] = {"VBUS_C0", NPCX_ADC_CH9, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
+	[ADC_VBUS_C1] = {"VBUS_C1", NPCX_ADC_CH4, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+enum adc_channel board_get_vbus_adc(int port)
+{
+	if (port == USB_PD_PORT_ANX7447)
+		return  ADC_VBUS_C0;
+	if (port == USB_PD_PORT_PS8751)
+		return  ADC_VBUS_C1;
+	return ADC_VBUS_C0;
+}
 
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
@@ -109,14 +124,20 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
-	{ 0, FLOAT_TO_FP(-1), 0},
-	{ FLOAT_TO_FP(1), 0,  0},
+const matrix_3x3_t lid_standard_ref = {
+	{ 0, FLOAT_TO_FP(1),  0},
+	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
 };
 
+ const matrix_3x3_t base_standard_ref = {
+	{ FLOAT_TO_FP(-1), 0,  0},
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ 0, 0,  FLOAT_TO_FP(1)}
+ };
+
 /* sensor private data */
-static struct kionix_accel_data g_kx022_data;
+static struct stprivate_data g_lis2dh_data;
 static struct lsm6dsm_data lsm6dsm_g_data;
 static struct lsm6dsm_data lsm6dsm_a_data;
 
@@ -125,16 +146,19 @@ struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 	 .name = "Lid Accel",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_KX022,
+	 .chip = MOTIONSENSE_CHIP_LIS2DE,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kionix_accel_drv,
+	 .drv = &lis2dh_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_kx022_data,
+	 .drv_data = &g_lis2dh_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = KX022_ADDR1,
-	 .rot_standard_ref = NULL, /* Identity matrix. */
-	 .default_range = 4, /* g */
+	 .addr = LIS2DH_ADDR1,
+	 .rot_standard_ref = &lid_standard_ref,
+	 .default_range = 2, /* g */
+	  /* We only use 2g because its resolution is only 8-bits */
+	 .min_frequency = LIS2DH_ODR_MIN_VAL,
+	 .max_frequency = LIS2DH_ODR_MAX_VAL,
 	 .config = {
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {

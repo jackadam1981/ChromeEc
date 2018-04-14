@@ -11,6 +11,14 @@
 /* TODO(waihong): Remove the following bringup features */
 #define CONFIG_BRINGUP
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
+#define CONFIG_USB_PD_DEBUG_LEVEL 3
+
+/*
+ * By default, enable all console messages excepted event and HC:
+ * The sensor stack is generating a lot of activity.
+ * They can be enabled through the console command 'chan'.
+ */
+#define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_HOSTCMD)))
 
 /* NPCX7 config */
 #define NPCX_UART_MODULE2 1  /* GPIO64/65 are used as UART pins. */
@@ -27,6 +35,7 @@
 #define CONFIG_I2C_MASTER
 #define CONFIG_LED_COMMON
 #define CONFIG_ADC
+#define CONFIG_BACKLIGHT_LID
 #define CONFIG_PWM
 #define CONFIG_PWM_DISPLIGHT
 
@@ -46,6 +55,7 @@
 #define CONFIG_EXTPOWER_GPIO
 
 /* Battery */
+#define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_BATT_PRES_ODL
 #define CONFIG_BATTERY_SMART
 
@@ -59,6 +69,7 @@
 #define CONFIG_CMD_CHARGER_ADC_AMON_BMON
 #define CONFIG_CHARGER_PSYS
 #define CONFIG_CHARGER_PSYS_READ
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
 
 /* TODO(b/79163120): Use correct charger values, copied from Lux for rev-0 */
 #define CONFIG_CHARGER_INPUT_CURRENT 512
@@ -89,6 +100,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_5V_EN_CUSTOM
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USBC_SS_MUX
@@ -145,7 +157,6 @@ enum power_signal {
 };
 
 enum adc_channel {
-	ADC_VBUS = -1,  /* No VBUS ADC detection */
 	ADC_BASE_DET,
 	ADC_AMON_BMON,
 	ADC_PSYS,

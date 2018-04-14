@@ -85,7 +85,6 @@ void usb_i2c_execute(struct usb_i2c_config const *config)
 	int write_count     = (config->buffer[1] >> 0) & 0xff;
 	int read_count      = (config->buffer[1] >> 8) & 0xff;
 	int offset          = 0;    /* Offset for extended reading header. */
-	int port;
 
 	config->buffer[0] = 0;
 	config->buffer[1] = 0;
@@ -109,19 +108,21 @@ void usb_i2c_execute(struct usb_i2c_config const *config)
 	} else if (portindex >= i2c_ports_used) {
 		config->buffer[0] = USB_I2C_PORT_INVALID;
 	} else {
+		int ret;
+
 		/*
 		 * TODO (crbug.com/750397): Add security.  This currently
 		 * blindly passes through ALL I2C commands on any bus the EC
 		 * knows about.  It should behave closer to
 		 * EC_CMD_I2C_PASSTHRU, which can protect ports and ranges.
 		 */
-		port = i2c_ports[portindex].port;
-		config->buffer[0] = usb_i2c_map_error(
-			i2c_xfer(port, slave_addr,
+		ret = i2c_xfer(i2c_ports[portindex].port,
+				 slave_addr,
 				 (uint8_t *)(config->buffer + 2) + offset,
 				 write_count,
 				 (uint8_t *)(config->buffer + 2),
-				 read_count, I2C_XFER_SINGLE));
+				 read_count);
+		config->buffer[0] = usb_i2c_map_error(ret);
 	}
 	usb_i2c_write_packet(config, read_count + 4);
 }

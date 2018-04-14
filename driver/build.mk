@@ -40,6 +40,7 @@ driver-$(CONFIG_BATTERY_BQ27541)+=battery/bq27541.o
 driver-$(CONFIG_BATTERY_BQ27621)+=battery/bq27621_g1.o
 driver-$(CONFIG_BATTERY_MAX17055)+=battery/max17055.o
 driver-$(CONFIG_BATTERY_SMART)+=battery/smart.o
+driver-$(CONFIG_BATTERY_BQ4050)+=battery/bq4050.o
 
 # Battery charger ICs
 driver-$(CONFIG_CHARGER_BD9995X)+=charger/bd9995x.o
@@ -103,6 +104,7 @@ driver-$(CONFIG_THERMISTOR_NCP15WB)+=temp_sensor/thermistor_ncp15wb.o
 driver-$(CONFIG_USB_PD_TCPM_STUB)+=tcpm/stub.o
 driver-$(CONFIG_USB_PD_TCPM_TCPCI)+=tcpm/tcpci.o
 driver-$(CONFIG_USB_PD_TCPM_FUSB302)+=tcpm/fusb302.o
+driver-$(CONFIG_USB_PD_TCPM_MT6370)+=tcpm/mt6370.o
 driver-$(CONFIG_USB_PD_TCPM_ITE83XX)+=tcpm/it83xx.o
 driver-$(CONFIG_USB_PD_TCPM_ANX3429)+=tcpm/anx74xx.o
 driver-$(CONFIG_USB_PD_TCPM_ANX740X)+=tcpm/anx74xx.o
@@ -124,7 +126,7 @@ driver-$(CONFIG_USB_MUX_VIRTUAL)+=usb_mux_virtual.o
 
 # Type-C Power Path Controllers (PPC)
 driver-$(CONFIG_USBC_PPC_SN5S330)+=ppc/sn5s330.o
-driver-$(CONFIG_USBC_PPC_NX20P3483)+=ppc/nx20p3483.o
+driver-$(CONFIG_USBC_PPC_NX20P3483)+=ppc/nx20p348x.o
 
 # video converters
 driver-$(CONFIG_MCDP28X0)+=mcdp28x0.o

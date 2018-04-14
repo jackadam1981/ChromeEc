@@ -20,25 +20,31 @@ const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 /* We may not be using the blue channel long term. */
 struct pwm_led led_color_map[EC_LED_COLOR_COUNT] = {
 				/* Red, Green, Blue */
-	[EC_LED_COLOR_RED]    = {  45,   0,   0 },
-	[EC_LED_COLOR_GREEN]  = {   0,  30,   0 },
-	[EC_LED_COLOR_BLUE]   = {   0,   0,  60 },
-	[EC_LED_COLOR_YELLOW] = {  25,  15,   0 },
-	[EC_LED_COLOR_WHITE]  = {  30,  25,  25 },
-	[EC_LED_COLOR_AMBER]  = {  40,   5,   0 },
+	[EC_LED_COLOR_RED]    = {  70,   0,   0 },
+	[EC_LED_COLOR_GREEN]  = {   0,  35,   0 },
+	[EC_LED_COLOR_BLUE]   = {   0,   0, 100 },
+	[EC_LED_COLOR_YELLOW] = {  55,  15,   0 },
+	[EC_LED_COLOR_WHITE]  = {  50,  30,  15 },
+	[EC_LED_COLOR_AMBER]  = {  65,   5,   0 },
 };
 
-/* Two tri-color LEDs with red, green, and blue channels. */
+/*
+ * Two tri-color LEDs with red, green, and blue channels.
+ *
+ * Note: This order must match tcpc_config[]
+ */
 struct pwm_led pwm_leds[CONFIG_LED_PWM_COUNT] = {
 	[PWM_LED0] = {
-		PWM_CH_DB0_LED_RED,
-		PWM_CH_DB0_LED_GREEN,
-		PWM_CH_DB0_LED_BLUE,
-	},
-	[PWM_LED1] = {
+		/* left port LEDs */
 		PWM_CH_DB1_LED_RED,
 		PWM_CH_DB1_LED_GREEN,
 		PWM_CH_DB1_LED_BLUE,
+	},
+	[PWM_LED1] = {
+		/* right port LEDs */
+		PWM_CH_DB0_LED_RED,
+		PWM_CH_DB0_LED_GREEN,
+		PWM_CH_DB0_LED_BLUE,
 	},
 };
 
@@ -58,9 +64,9 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 
 	/* Convert ec_led_id to pwm_led_id. */
 	if (led_id == EC_LED_ID_LEFT_LED)
-		pwm_id = PWM_LED1;
-	else if (led_id == EC_LED_ID_RIGHT_LED)
 		pwm_id = PWM_LED0;
+	else if (led_id == EC_LED_ID_RIGHT_LED)
+		pwm_id = PWM_LED1;
 	else
 		return EC_ERROR_UNKNOWN;
 

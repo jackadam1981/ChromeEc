@@ -115,9 +115,8 @@ static void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
-	int port = (signal == GPIO_USB_C0_SWCTL_INT_ODL) ? 0 : 1;
-
-	sn5s330_interrupt(port);
+	/* Only port-0 uses PPC chip */
+	sn5s330_interrupt(0);
 }
 
 /* ADC channels */
@@ -298,6 +297,23 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
+static void board_chipset_suspend(void)
+{
+	/*
+	 * Turn off display backlight in S3. AP has its own control. The EC's
+	 * and the AP's will be AND'ed together in hardware.
+	 */
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_resume(void)
+{
+	/* Turn on display backlight in S0. */
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
 /**
  * Power on (or off) a single TCPC.
  * minimum on/off delays are included.
@@ -444,9 +460,11 @@ uint16_t tcpc_get_alert_status(void)
 	uint16_t status = 0;
 
 	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
-		status |= PD_STATUS_TCPC_ALERT_0;
+		if (gpio_get_level(GPIO_USB_C0_PD_RST_R_L))
+			status |= PD_STATUS_TCPC_ALERT_0;
 	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL))
-		status |= PD_STATUS_TCPC_ALERT_1;
+		if (gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
+			status |= PD_STATUS_TCPC_ALERT_1;
 
 	return status;
 }

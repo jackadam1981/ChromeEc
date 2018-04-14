@@ -77,15 +77,55 @@ int tcpc_read16(int port, int reg, int *val)
 	return rv;
 }
 
+int tcpc_read_block(int port, int reg, uint8_t *in, int size)
+{
+	int rv = i2c_read_block(tcpc_config[port].i2c_host_port,
+			    tcpc_config[port].i2c_slave_addr, reg, in, size);
+	if (rv && pd_device_in_low_power(port)) {
+		pd_wait_for_wakeup(port);
+		rv = i2c_read_block(tcpc_config[port].i2c_host_port,
+				tcpc_config[port].i2c_slave_addr, reg,
+				in, size);
+	}
+	pd_device_accessed(port);
+	return rv;
+}
+
+int tcpc_write_block(int port, int reg, const uint8_t *out, int size)
+{
+	int rv = i2c_write_block(tcpc_config[port].i2c_host_port,
+			    tcpc_config[port].i2c_slave_addr, reg, out, size);
+	if (rv && pd_device_in_low_power(port)) {
+		pd_wait_for_wakeup(port);
+		rv = i2c_write_block(tcpc_config[port].i2c_host_port,
+				tcpc_config[port].i2c_slave_addr, reg,
+				out, size);
+	}
+	pd_device_accessed(port);
+	return rv;
+}
+
 int tcpc_xfer(int port, const uint8_t *out, int out_size,
+			uint8_t *in, int in_size)
+{
+	int rv;
+	/* Dispatching to tcpc_xfer_unlocked reduces code size growth. */
+	tcpc_lock(port, 1);
+	rv = tcpc_xfer_unlocked(port, out, out_size, in, in_size,
+				I2C_XFER_SINGLE);
+	tcpc_lock(port, 0);
+	return rv;
+}
+
+int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
 			    uint8_t *in, int in_size, int flags)
 {
-	int rv = i2c_xfer(tcpc_config[port].i2c_host_port,
+	int rv = i2c_xfer_unlocked(tcpc_config[port].i2c_host_port,
 			  tcpc_config[port].i2c_slave_addr, out, out_size,
 			  in, in_size, flags);
 	if (rv && pd_device_in_low_power(port)) {
 		pd_wait_for_wakeup(port);
-		rv = i2c_xfer(tcpc_config[port].i2c_host_port,
+		rv = i2c_xfer_unlocked(tcpc_config[port].i2c_host_port,
 			      tcpc_config[port].i2c_slave_addr, out, out_size,
 			      in, in_size, flags);
 	}
@@ -212,14 +252,9 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 {
 	int rv;
 
-	if (!enable) {
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-		struct usb_mux *mux = &usb_muxes[port];
-		if (mux->board_init)
-			return mux->board_init(mux);
-#endif
+	if (!enable)
 		return EC_SUCCESS;
-	}
+
 	/* Set auto drp toggle */
 	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD);
 
@@ -319,11 +354,7 @@ int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
 
 	cnt = cnt - 3;
 	if (rv == EC_SUCCESS && cnt > 0) {
-		tcpc_lock(port, 1);
-		rv = tcpc_xfer(port,
-			       (uint8_t *)&reg, 1, (uint8_t *)payload,
-			       cnt, I2C_XFER_SINGLE);
-		tcpc_lock(port, 0);
+		tcpc_read_block(port, reg, (uint8_t *)payload, cnt);
 	}
 
 clear:
@@ -349,12 +380,7 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 		return rv;
 
 	if (cnt > 0) {
-		tcpc_lock(port, 1);
-		rv = tcpc_xfer(port,
-			       (uint8_t *)&reg, 1, NULL, 0, I2C_XFER_START);
-		rv |= tcpc_xfer(port,
-				(uint8_t *)data, cnt, NULL, 0, I2C_XFER_STOP);
-		tcpc_lock(port, 0);
+		tcpc_write_block(port, reg, (const uint8_t *)data, cnt);
 	}
 
 	/* If tcpc read fails, return error */
@@ -527,6 +553,28 @@ int tcpci_get_chip_info(int port, int renew,
 }
 
 /*
+ * Dissociate from the TCPC.
+ */
+
+int tcpci_tcpm_release(int port)
+{
+	int error;
+
+	error = clear_alert_mask(port);
+	if (error)
+		return error;
+	error = clear_power_status_mask(port);
+	if (error)
+		return error;
+	/* Clear pending interrupts */
+	error = tcpc_write16(port, TCPC_REG_ALERT, 0xffff);
+	if (error)
+		return error;
+
+	return EC_SUCCESS;
+}
+
+/*
  * On TCPC i2c failure, make 30 tries (at least 300ms) before giving up
  * in order to allow the TCPC time to boot / reset.
  */
@@ -568,34 +616,61 @@ int tcpci_tcpm_init(int port)
 	return EC_SUCCESS;
 }
 
-/*
- * Dissociate from the TCPC.
- */
-
-int tcpci_tcpm_release(int port)
-{
-	int error;
-
-	error = clear_alert_mask(port);
-	if (error)
-		return error;
-	error = clear_power_status_mask(port);
-	if (error)
-		return error;
-	/* Clear pending interrupts */
-	error = tcpc_write16(port, TCPC_REG_ALERT, 0xffff);
-	if (error)
-		return error;
-
-	return EC_SUCCESS;
-}
-
 #ifdef CONFIG_USB_PD_TCPM_MUX
 
+#ifdef CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY
+
+/*
+ * Since the TCPC/MUX device is only used for the MUX, we need to initialize it
+ * via mux init because tcpc_init won't run for the device. This is borrowed
+ * from tcpc_init.
+ */
+int tcpci_tcpm_mux_init(int i2c_port_addr)
+{
+	int error;
+	int power_status;
+	int tries = TCPM_INIT_TRIES;
+
+	/* Wait for the device to exit low power state */
+	while (1) {
+		error = i2c_read8(MUX_PORT(i2c_port_addr),
+				  MUX_ADDR(i2c_port_addr),
+				  TCPC_REG_POWER_STATUS, &power_status);
+		/*
+		 * If read succeeds and the uninitialized bit is clear, then
+		 * initialization is complete.
+		 */
+		if (!error && !(power_status & TCPC_REG_POWER_STATUS_UNINIT))
+			break;
+		else if (error && --tries == 0)
+			return error;
+		msleep(10);
+	}
+
+	/* Turn off all alerts and acknowledge any pending IRQ */
+	error = i2c_write16(MUX_PORT(i2c_port_addr), MUX_ADDR(i2c_port_addr),
+			     TCPC_REG_ALERT_MASK, 0);
+	error |= i2c_write16(MUX_PORT(i2c_port_addr), MUX_ADDR(i2c_port_addr),
+			     TCPC_REG_ALERT, 0xffff);
+
+	return error ? EC_ERROR_UNKNOWN : EC_SUCCESS;
+}
+
+static int tcpci_tcpm_mux_enter_low_power(int i2c_port_addr)
+{
+	return i2c_write8(MUX_PORT(i2c_port_addr), MUX_ADDR(i2c_port_addr),
+			  TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+}
+
+#else /* !CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY */
+
+/* Nothing to init for mux since TCPC init will take care of it. */
 int tcpci_tcpm_mux_init(int i2c_addr)
 {
 	return EC_SUCCESS;
 }
+
+#endif /* CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY */
 
 int tcpci_tcpm_mux_set(int i2c_port_addr, mux_state_t mux_state)
 {
@@ -661,11 +736,18 @@ int tcpci_tcpm_mux_get(int i2c_port_addr, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
-
 const struct usb_mux_driver tcpci_tcpm_usb_mux_driver = {
-	.init = tcpci_tcpm_mux_init,
-	.set = tcpci_tcpm_mux_set,
-	.get = tcpci_tcpm_mux_get,
+	.init = &tcpci_tcpm_mux_init,
+	.set = &tcpci_tcpm_mux_set,
+	.get = &tcpci_tcpm_mux_get,
+#ifdef CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY
+	/*
+	 * This method is only needed when the TCPC/MUX device is acting solely
+	 * as a MUX (and not the TCPC). In that case, we need to put the device
+	 * into LPM via the mux path since the TCPC path won't do it for us.
+	 */
+	.enter_low_power_mode = &tcpci_tcpm_mux_enter_low_power,
+#endif
 };
 
 #endif /* CONFIG_USB_PD_TCPM_MUX */

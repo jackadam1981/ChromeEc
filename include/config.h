@@ -266,6 +266,7 @@
 #undef CONFIG_BATTERY_BQ20Z453
 #undef CONFIG_BATTERY_BQ27541
 #undef CONFIG_BATTERY_BQ27621
+#undef CONFIG_BATTERY_BQ4050
 #undef CONFIG_BATTERY_MAX17055
 
 /* Compile mock battery support; used by tests. */
@@ -396,6 +397,12 @@
  * Number of batteries, only matters when CONFIG_BATTERY_V2 is used.
  */
 #undef CONFIG_BATTERY_COUNT
+
+/*
+ * Smart battery driver should measure the voltage cell imbalance in the battery
+ * pack.  This requires a battery driver capable of the measurement.
+ */
+#undef CONFIG_BATTERY_MEASURE_IMBALANCE
 
 /*
  * Expose some data when it is needed.
@@ -689,11 +696,34 @@
  */
 #undef CONFIG_CHARGER_MAINTAIN_VBAT
 
-/* Minimum battery percentage for power on */
+/*
+ * Power thresholds for AP boot
+ *
+ * If one of the following conditions is met, EC boots AP:
+ *
+ * 1. Battery charge >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+ * 2. AC power >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
+ * 3. Battery charge >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
+ *    and
+ *    AC power >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT
+ *
+ * Note that CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT/_CHG_MW are thresholds
+ * for the OS boot used by Depthcharge. The OS has higher power requirement
+ * but PD power is also available.
+ */
 #undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
-
-/* Minimum charger power (in mW) required for powering on. */
+#undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
 #undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
+#undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT
+
+/* Minimum battery percentage for power on with an imbalanced pack */
+#undef CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON
+
+/*
+ * Maximum battery cell imbalance to accept before considering the pack to be
+ * imbalanced, in millivolts.
+ */
+#undef CONFIG_BATTERY_MAX_IMBALANCE_MV
 
 /* Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8. */
 #undef CONFIG_CHARGER_NARROW_VDC
@@ -1497,6 +1527,10 @@
 /* If defined, add support for storing some entropy in the rollback region. */
 #undef CONFIG_ROLLBACK_SECRET_SIZE
 
+/* If defined, protect rollback region readback using MPU. */
+#undef CONFIG_ROLLBACK_MPU_PROTECT
+
+
 /*
  * If defined, inject some locally generated entropy when secret is updated,
  * using board_get_entropy function.
@@ -2009,6 +2043,11 @@
 #undef CONFIG_KEYBOARD_SCANCODE_MUTABLE
 
 /*
+ * Allow board-specific 8042 keyboard callback when a key state is changed.
+ */
+#undef CONFIG_KEYBOARD_SCANCODE_CALLBACK
+
+/*
  * Call board-supplied keyboard_suppress_noise() function when the debounced
  * keyboard state changes.  Some boards use this to send a signal to the audio
  * codec to suppress typing noise picked up by the microphone.
@@ -2347,6 +2386,9 @@
 
 /* Set power button state idle at init. Implemented only for npcx. */
 #undef CONFIG_POWER_BUTTON_INIT_IDLE
+
+/* Timeout before power button task gives up starting system */
+#define CONFIG_POWER_BUTTON_INIT_TIMEOUT	1
 
 /*
  * Enable delay between DSW_PWROK and PWRBTN assertion.
@@ -3088,6 +3130,7 @@
 #undef CONFIG_USB_PD_TCPM_ANX7688
 #undef CONFIG_USB_PD_TCPM_PS8751
 #undef CONFIG_USB_PD_TCPM_PS8805
+#undef CONFIG_USB_PD_TCPM_MT6370
 
 /*
  * Adds an EC console command to erase the ANX7447 OCM flash.
@@ -3663,6 +3706,7 @@
 #if defined(CONFIG_BATTERY_BQ20Z453) || \
 	defined(CONFIG_BATTERY_BQ27541) || \
 	defined(CONFIG_BATTERY_BQ27621) || \
+	defined(CONFIG_BATTERY_BQ4050) || \
 	defined(CONFIG_BATTERY_MAX17055) || \
 	defined(CONFIG_BATTERY_SMART)
 #define CONFIG_BATTERY
@@ -3687,7 +3731,8 @@
  */
 #if defined(CONFIG_CHARGER_BD9995X) || \
 	defined(CONFIG_CHARGER_RT9466) || \
-	defined(CONFIG_CHARGER_RT9467)
+	defined(CONFIG_CHARGER_RT9467) || \
+	defined(CONFIG_CHARGER_MT6370)
 #define CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 #endif
 
@@ -3789,6 +3834,40 @@
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 15000
 #endif /* !defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) */
 #endif /* defined(HAS_TASK_CHIPSET) */
+
+#ifndef CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON
+/*
+ * The function of MEASURE_BATTERY_IMBALANCE and these variables is to prevent a
+ * battery brownout when the management IC reports a state of charge that is
+ * higher than CHARGER_MIN_BAT_PCT_FOR_POWER_ON, but an individual cell is lower
+ * than the rest of the pack.  The critical term is MAX_IMBALANCE_MV, which must
+ * be small enough to ensure that the system can reliably boot even when the
+ * battery total state of charge barely passes the
+ * CHARGER_MIN_BAT_PCT_FOR_POWER_ON threshold.
+ *
+ * Lowering CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON below
+ * CHARGER_MIN_BAT_PCT_FOR_POWER_ON disables this check.  Raising it too high
+ * may needlessly prevent boot when the lowest cell can still support the
+ * system.
+ *
+ * As this term is lowered and BATTERY_MAX_IMBALANCE_MV is raised, the risk of
+ * cell-undervoltage brownout during startup increases.  Raising this term and
+ * lowering MAX_IMBALANCE_MV increases the risk of poor UX when the user must
+ * wait longer to turn on their device.
+ */
+#define CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON 5
+#endif
+
+#ifndef CONFIG_BATTERY_MAX_IMBALANCE_MV
+/*
+ * WAG.  Imbalanced battery packs in this situation appear to have balanced
+ * charge very quickly after beginning the charging cycle, since dV/dQ rapidly
+ * decreases as the cell is charged out of deep discharge.  Increasing the value
+ * of CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON will make a system tolerant of
+ * larger values of BATTERY_MAX_IMBALANCE_MV.
+ */
+#define CONFIG_BATTERY_MAX_IMBALANCE_MV 200
+#endif
 
 #ifndef HAS_TASK_KEYPROTO
 #undef CONFIG_KEYBOARD_PROTOCOL_8042

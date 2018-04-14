@@ -35,6 +35,7 @@
 #define SPI (&(spi_devices[SPI_ST_TP_DEVICE_ID]))
 
 BUILD_ASSERT(sizeof(struct st_tp_event_t) == 8);
+BUILD_ASSERT(BYTES_PER_PIXEL == 1);
 
 /* Function prototypes */
 static int st_tp_read_all_events(void);
@@ -183,12 +184,19 @@ static int st_tp_parse_finger(struct usb_hid_touchpad_report *report,
 	return i + 1;
 }
 
-static int st_tp_write_hid_report(void)
+/*
+ * Read domeswitch level from touchpad, and save in `system_state`.
+ *
+ * After calling this function, use
+ *	`system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL`
+ * to get current value.
+ *
+ * @return error code on failure.
+ */
+static int st_tp_check_domeswitch_state(void)
 {
-	int ret, i, num_finger, num_events, domeswitch_changed = 0;
-	struct usb_hid_touchpad_report report;
+	int ret = st_tp_read_host_buffer_header();
 
-	ret = st_tp_read_host_buffer_header();
 	if (ret)
 		return ret;
 
@@ -201,8 +209,23 @@ static int st_tp_write_hid_report(void)
 			 (rx_buf.buffer_header.dome_switch_level ?
 			  0 : SYSTEM_STATE_DOME_SWITCH_LEVEL),
 			 SYSTEM_STATE_DOME_SWITCH_LEVEL);
-		domeswitch_changed = 1;
 	}
+	return 0;
+}
+
+static int st_tp_write_hid_report(void)
+{
+	int ret, i, num_finger, num_events;
+	const int old_system_state = system_state;
+	int domeswitch_changed;
+	struct usb_hid_touchpad_report report;
+
+	ret = st_tp_check_domeswitch_state();
+	if (ret)
+		return ret;
+
+	domeswitch_changed = ((old_system_state ^ system_state) &
+			      SYSTEM_STATE_DOME_SWITCH_LEVEL);
 
 	num_events = st_tp_read_all_events();
 	if (num_events < 0)
@@ -328,7 +351,8 @@ static int st_tp_update_system_state(int new_state, int mask)
 		set_bits(&system_state, new_state, mask);
 	}
 
-	/* We need to lock scan mode to prevent scan rate drop when heat map
+	/*
+	 * We need to lock scan mode to prevent scan rate drop when heat map
 	 * mode is enabled.
 	 */
 	if (need_locked_scan_mode) {
@@ -982,9 +1006,8 @@ static void print_frame(void)
 
 static int st_tp_read_frame(void)
 {
-	struct st_tp_host_buffer_heat_map_t *heat_map = &rx_buf.heat_map;
 	int ret = EC_SUCCESS;
-	int rx_len = sizeof(*heat_map) + ST_TP_DUMMY_BYTE;
+	int rx_len = ST_TOUCH_FRAME_SIZE + ST_TP_DUMMY_BYTE;
 	int heat_map_addr = get_heat_map_addr();
 	uint8_t tx_buf[] = {
 		ST_TP_CMD_READ_SPI_HOST_BUFFER,
@@ -992,8 +1015,28 @@ static int st_tp_read_frame(void)
 		(heat_map_addr >> 0) & 0xFF,
 	};
 
+	/*
+	 * Since usb_packet.frame is already ane uint8_t byte array, we can just
+	 * make it the RX buffer for SPI transaction.
+	 *
+	 * When there is a dummy byte, since we know that flags is a one byte
+	 * value, and we will override it later, it's okay for SPI transaction
+	 * to write the dummy byte to flags address.
+	 */
+#if ST_TP_DUMMY_BYTE == 1
+	BUILD_ASSERT(sizeof(usb_packet[0].flags) == 1);
+	uint8_t *rx_buf = &usb_packet[spi_buffer_index & 1].flags;
+#else
+	uint8_t *rx_buf = usb_packet[spi_buffer_index & 1].frame;
+#endif
+
 	if (heat_map_addr < 0)
 		goto failed;
+
+	ret = st_tp_check_domeswitch_state();
+	if (ret)
+		goto failed;
+
 	/*
 	 * Theoretically, we should read host buffer header to check if data is
 	 * valid, but the data should always be ready when interrupt pin is low.
@@ -1002,38 +1045,19 @@ static int st_tp_read_frame(void)
 	ret = spi_transaction(SPI, tx_buf, sizeof(tx_buf),
 			      (uint8_t *)&rx_buf, rx_len);
 	if (ret == EC_SUCCESS) {
-#if BYTES_PER_PIXEL == 1
-		/*
-		 * If BYTES_PER_PIXEL = 1, then we can memcpy directly.
-		 * This takes about 0.1ms per frame.
-		 */
-		memcpy(dest, heat_map->frame, ST_TOUCH_COLS * ST_TOUCH_ROWS);
-#elif BYTES_PER_PIXEL == 2
-		/*
-		 * Down scaling and move data into usb_packet, this takes
-		 * about 0.35ms per frame
-		 */
 		int i;
-		int16_t v;
 		uint8_t *dest = usb_packet[spi_buffer_index & 1].frame;
 		uint8_t max_value = 0;
 
-		for (i = 0; i < ST_TOUCH_COLS * ST_TOUCH_ROWS; i++) {
-			v = (heat_map->frame[i * 2] |
-			     (heat_map->frame[i * 2 + 1] << 8));
-			v = MAX(0, v);
-			v = MIN(v >> (BITS_PER_PIXEL - 8), 255);
-			if (v < ST_TP_HEAT_MAP_THRESHOLD)
-				v = 0;
-			dest[i] = v;
-			max_value |= v;
-		}
-
+		for (i = 0; i < ST_TOUCH_COLS * ST_TOUCH_ROWS; i++)
+			max_value |= dest[i];
 		if (max_value == 0) // empty frame
 			return -1;
-#else
-#error "BYTES_PER_PIXEL can only be 1 or 2"
-#endif
+
+		usb_packet[spi_buffer_index & 1].flags = 0;
+		if (system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL)
+			usb_packet[spi_buffer_index & 1].flags |=
+				USB_FRAME_FLAGS_BUTTON;
 	}
 failed:
 	return ret;
@@ -1127,7 +1151,8 @@ static int heatmap_send_packet(struct usb_isochronous_config const *config)
 				&buffer_id,
 				1);
 		if (ret < 0) {
-			/* TODO(b/70482333): handle this error, it might be:
+			/*
+			 * TODO(b/70482333): handle this error, it might be:
 			 *   1. timeout (buffer_id changed)
 			 *   2. invalid offset
 			 *
@@ -1150,6 +1175,10 @@ static int heatmap_send_packet(struct usb_isochronous_config const *config)
 static int st_tp_usb_set_interface(usb_uint alternate_setting,
 				   usb_uint interface)
 {
+	if ((system_info.release_info & 0xFF) < ST_TP_MIN_HEATMAP_VERSION)
+		/* Heatmap mode is not supported in this version. */
+		return -1;
+
 	if (alternate_setting == 1) {
 		hook_call_deferred(&st_tp_enable_heat_map_data, 0);
 		return 0;

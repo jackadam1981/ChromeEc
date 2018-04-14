@@ -1229,7 +1229,10 @@ static int charge_request(int voltage, int current)
 
 void chgstate_set_manual_current(int curr_ma)
 {
-	manual_current = charger_closest_current(curr_ma);
+	if (curr_ma < 0)
+		manual_current = -1;
+	else
+		manual_current = charger_closest_current(curr_ma);
 }
 
 void chgstate_set_manual_voltage(int volt_mv)
@@ -1524,8 +1527,9 @@ void charger_task(void *u)
 	 * as needed.
 	 */
 	battery_get_params(&curr.batt);
-	prev_bp = curr.batt.is_present;
-	curr.desired_input_current = get_desired_input_current(prev_bp, info);
+	prev_bp = BP_NOT_INIT;
+	curr.desired_input_current = get_desired_input_current(
+			curr.batt.is_present, info);
 
 	while (1) {
 
@@ -1772,8 +1776,24 @@ wait_for_it:
 #ifdef CONFIG_CHARGE_MANAGER
 		if (curr.batt.state_of_charge >=
 		    CONFIG_CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT &&
-		    !battery_seems_to_be_disconnected)
+		    !battery_seems_to_be_disconnected) {
+			/*
+			 * Sometimes the fuel gauge will report that it has
+			 * sufficient state of charge and remaining capacity,
+			 * but in actuality it doesn't.  When the EC sees that
+			 * information, it trusts it and leaves charge manager
+			 * safe mode.  Doing so will allow CHARGE_PORT_NONE to
+			 * be selected, thereby cutting off the input FETs.
+			 * When the battery cannot provide the charge it claims,
+			 * the system loses power, shuts down, and the battery
+			 * is not charged even though the charger is plugged in.
+			 * By waiting 500ms, we can avoid the selection of
+			 * CHARGE_PORT_NONE around init time and not cut off the
+			 * input FETs.
+			 */
+			msleep(500);
 			charge_manager_leave_safe_mode();
+		}
 #endif
 
 		/* Keep the AP informed */
@@ -1954,23 +1974,37 @@ int charge_prevent_power_on(int power_button_pressed)
 		automatic_power_on = 0;
 	/*
 	 * Require a minimum battery level to power on and ensure that the
-	 * battery can prvoide power to the system.
+	 * battery can provide power to the system.
 	 */
 	if (current_batt_params->is_present != BP_YES ||
+#ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
+	    (current_batt_params->flags & BATT_FLAG_IMBALANCED_CELL &&
+		current_batt_params->state_of_charge <
+		CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON) ||
+#endif
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
 	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED ||
 #endif
 	    current_batt_params->state_of_charge <
-	    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
+		CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
 		prevent_power_on = 1;
 
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) && \
 	defined(CONFIG_CHARGE_MANAGER)
 	/* However, we can power on if a sufficient charger is present. */
-	if (prevent_power_on)
+	if (prevent_power_on) {
 		if (charge_manager_get_power_limit_uw() >=
 		    CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000)
 			prevent_power_on = 0;
+#if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT) && \
+	defined(CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC)
+		else if (charge_manager_get_power_limit_uw() >=
+		    CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT * 1000
+		    && (current_batt_params->state_of_charge >=
+			CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC))
+			prevent_power_on = 0;
+#endif
+	}
 #endif /* CONFIG_CHARGE_MANAGER && CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
 
 	/*

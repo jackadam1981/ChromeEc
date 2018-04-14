@@ -33,7 +33,7 @@ GPIO_INT(LID_OPEN,           PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, lid_
 GPIO_INT(ACCELGYRO3_INT_L,   PIN(4, 1), GPIO_INT_FALLING, bmi160_interrupt)
 GPIO_INT(BASE_USB_FAULT_ODL, PIN(2, 3), GPIO_INT_FALLING, base_pwr_fault_interrupt)
 GPIO_INT(BASE_PWR_FAULT_ODL, PIN(2, 4), GPIO_INT_FALLING, base_pwr_fault_interrupt)
-GPIO_INT(RCAM_VSYNC,         PIN(E, 4), GPIO_INT_FALLING, sync_interrupt)
+GPIO_INT(RCAM_VSYNC,         PIN(E, 4), GPIO_INT_RISING, sync_interrupt)
 
 /* SoC */
 GPIO(RSMRST_L,               PIN(C, 2), GPIO_OUT_LOW)
@@ -62,7 +62,6 @@ GPIO(EC_BRD_ID1,             PIN(9, 6), GPIO_INPUT)
 GPIO(EC_BRD_ID2,             PIN(9, 3), GPIO_INPUT)
 GPIO(EC_BRD_ID3,             PIN(F, 0), GPIO_INPUT)
 GPIO(EC_GPIO95,              PIN(9, 5), GPIO_OUT_LOW)
-/* TODO(b/78640157): Determine what to do with this pin. */
 GPIO(UHALL_PWR_EN,           PIN(E, 0), GPIO_OUT_LOW)
 GPIO(USB2_VBUSSENSE,         PIN(A, 2), GPIO_OUT_LOW)
 GPIO(USB2_ID,                PIN(A, 0), GPIO_OUT_LOW)

@@ -83,7 +83,7 @@ extern struct i2c_stress_test i2c_stress_tests[];
 extern const int i2c_test_dev_used;
 #endif
 
-/* Flags for i2c_xfer() */
+/* Flags for i2c_xfer_unlocked() */
 #define I2C_XFER_START (1 << 0)  /* Start smbus session from idle state */
 #define I2C_XFER_STOP (1 << 1)  /* Terminate smbus session with stop bit */
 #define I2C_XFER_SINGLE (I2C_XFER_START | I2C_XFER_STOP)  /* One transaction */
@@ -91,10 +91,8 @@ extern const int i2c_test_dev_used;
 /**
  * Transmit one block of raw data, then receive one block of raw data. However,
  * received data might be capped at CONFIG_I2C_CHIP_MAX_READ_SIZE if
- * CONFIG_I2C_XFER_LARGE_READ is not defined.
- *
- * This is a wrapper function for chip_i2c_xfer(), a low-level chip-dependent
- * function. It must be called between i2c_lock(port, 1) and i2c_lock(port, 0).
+ * CONFIG_I2C_XFER_LARGE_READ is not defined.  The transfer is strictly atomic,
+ * by locking the I2C port and performing an I2C_XFER_SINGLE transfer.
  *
  * @param port		Port to access
  * @param slave_addr	Slave device address
@@ -102,11 +100,20 @@ extern const int i2c_test_dev_used;
  * @param out_size	Number of bytes to send
  * @param in		Destination buffer for received data
  * @param in_size	Number of bytes to receive
- * @param flags		Flags (see I2C_XFER_* above)
  * @return EC_SUCCESS, or non-zero if error.
  */
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-	     uint8_t *in, int in_size, int flags);
+	     uint8_t *in, int in_size);
+
+/**
+ * Same as i2c_xfer, but the bus is not implicitly locked.  It must be called
+ * between i2c_lock(port, 1) and i2c_lock(port, 0).
+ *
+ * @param flags		Flags (see I2C_XFER_* above)
+ */
+int i2c_xfer_unlocked(int port, int slave_addr,
+		      const uint8_t *out, int out_size,
+		      uint8_t *in, int in_size, int flags);
 
 #define I2C_LINE_SCL_HIGH (1 << 0)
 #define I2C_LINE_SDA_HIGH (1 << 1)
@@ -278,10 +285,27 @@ int i2c_unwedge(int port);
  *
  * <len>      : the max length of receiving buffer. to read N bytes
  *              ascii, len should be at least N+1 to include the
- *              terminating 0.
+ *              terminating 0.  Similar to strlcpy, the terminating null is
+ *              always written into the output buffer.
  * <len> == 0 : buffer size > 255
  */
 int i2c_read_string(int port, int slave_addr, int offset, uint8_t *data,
+			int len);
+
+/**
+ * Read a data block of <len> 8-bit transfers from the slave at 8-bit slave
+ * address <slaveaddr>, at the specified 8-bit <offset> in the slave's address
+ * space.
+ */
+int i2c_read_block(int port, int slave_addr, int offset, uint8_t *data,
+			int len);
+
+/**
+ * Write a data block of <len> 8-bit transfers to the slave at 8-bit slave
+ * address <slaveaddr>, at the specified 8-bit <offset> in the slave's address
+ * space.
+ */
+int i2c_write_block(int port, int slave_addr, int offset, const uint8_t *data,
 			int len);
 
 /**

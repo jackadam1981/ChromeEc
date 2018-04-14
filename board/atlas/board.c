@@ -167,12 +167,14 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{
+		/* left port */
 		.i2c_host_port = I2C_PORT_TCPC0,
 		.i2c_slave_addr = I2C_ADDR_TCPC,
 		.drv = &ps8xxx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW
 	},
 	{
+		/* right port */
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_slave_addr = I2C_ADDR_TCPC,
 		.drv = &ps8xxx_tcpm_drv,
@@ -243,13 +245,13 @@ uint16_t tcpc_get_alert_status(void)
 const struct temp_sensor_t temp_sensors[] = {
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0, 4},
 	/* BD99992GW temp sensors are only readable in S0 */
-	{"systherm0", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"Ambient", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM0, 4},
-	{"systherm1", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"Charger", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM1, 4},
-	{"systherm2", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"DRAM", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM2, 4},
-	{"systherm3", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"eMMC", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM3, 4},
 	{"gyro", TEMP_SENSOR_TYPE_BOARD, bmi160_get_sensor_temp, BASE_GYRO, 1},
 };
@@ -519,12 +521,14 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
+	gpio_set_level(GPIO_KBD_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
+	gpio_set_level(GPIO_KBD_BL_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 

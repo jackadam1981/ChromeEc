@@ -4762,6 +4762,7 @@ enum cbi_data_tag {
 	CBI_TAG_BOARD_VERSION = 0, /* uint16_t or uint8_t[] = {minor,major} */
 	CBI_TAG_OEM_ID = 1,        /* uint8_t */
 	CBI_TAG_SKU_ID = 2,        /* uint8_t */
+	CBI_TAG_DRAM_PART_NUM = 3, /* variable length ascii, nul terminated. */
 	CBI_TAG_COUNT,
 };
 
@@ -5053,6 +5054,23 @@ struct __ec_align4 ec_params_fp_context {
 
 struct __ec_align4 ec_response_fp_context {
 	uint32_t nonce[FP_CONTEXT_NONCE_WORDS];
+};
+
+#define EC_CMD_FP_STATS 0x0407
+
+#define FPSTATS_CAPTURE_INV  (1 << 0)
+#define FPSTATS_MATCHING_INV (1 << 1)
+
+struct __ec_align2 ec_response_fp_stats {
+	uint32_t capture_time_us;
+	uint32_t matching_time_us;
+	uint32_t overall_time_us;
+	struct {
+		uint32_t lo;
+		uint32_t hi;
+	} overall_t0;
+	uint8_t timestamps_invalid;
+	int8_t template_matched;
 };
 
 /*****************************************************************************/

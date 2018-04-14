@@ -168,7 +168,7 @@ const matrix_3x3_t lid_standard_ref = {
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 		.name = "BMI160 ACC",
-		.active_mask = SENSOR_ACTIVE_S0,
+		.active_mask = SENSOR_ACTIVE_S0_S3,
 		.chip = MOTIONSENSE_CHIP_BMI160,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_LID,
@@ -191,7 +191,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[LID_GYRO] = {
 		.name = "BMI160 GYRO",
-		.active_mask = SENSOR_ACTIVE_S0,
+		.active_mask = SENSOR_ACTIVE_S0_S3,
 		.chip = MOTIONSENSE_CHIP_BMI160,
 		.type = MOTIONSENSE_TYPE_GYRO,
 		.location = MOTIONSENSE_LOC_LID,
@@ -208,7 +208,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[LID_ALS] = {
 		.name = "Light",
-		.active_mask = SENSOR_ACTIVE_S0,
+		.active_mask = SENSOR_ACTIVE_S0_S3,
 		.chip = MOTIONSENSE_CHIP_OPT3001,
 		.type = MOTIONSENSE_TYPE_LIGHT,
 		.location = MOTIONSENSE_LOC_LID,
@@ -217,7 +217,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.port = I2C_PORT_ALS_GYRO,
 		.addr = OPT3001_I2C_ADDR,
 		.rot_standard_ref = NULL,
-		.default_range = 0x10000, /* scale = 1; uscale = 0 */
+		/* scale = 43.4513 http://b/111528815#comment14 */
+		.default_range = 0x2b11a1,
 		.min_frequency = OPT3001_LIGHT_MIN_FREQ,
 		.max_frequency = OPT3001_LIGHT_MAX_FREQ,
 		.config = {
@@ -355,14 +356,14 @@ int board_get_version(void)
 
 	if (board_version == -1) {
 		board_version = 0;
-		/* BRD_ID3 is LSb. */
-		if (gpio_get_level(GPIO_EC_BRD_ID3))
-			board_version |= 0x1;
-		if (gpio_get_level(GPIO_EC_BRD_ID2))
-			board_version |= 0x2;
-		if (gpio_get_level(GPIO_EC_BRD_ID1))
-			board_version |= 0x4;
+		/* BRD_ID0 is LSb. */
 		if (gpio_get_level(GPIO_EC_BRD_ID0))
+			board_version |= 0x1;
+		if (gpio_get_level(GPIO_EC_BRD_ID1))
+			board_version |= 0x2;
+		if (gpio_get_level(GPIO_EC_BRD_ID2))
+			board_version |= 0x4;
+		if (gpio_get_level(GPIO_EC_BRD_ID3))
 			board_version |= 0x8;
 	}
 
@@ -404,6 +405,105 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static void board_lid_change(void)
+{
+	/* This is done in hardware on old revisions. */
+	if (board_get_version() <= 1)
+		return;
+
+	if (lid_is_open())
+		gpio_set_level(GPIO_UHALL_PWR_EN, 1);
+	else
+		gpio_set_level(GPIO_UHALL_PWR_EN, 0);
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, board_lid_change, HOOK_PRIO_DEFAULT);
+
+static void board_pmic_disable_slp_s0_vr_decay(void)
+{
+	/*
+	 * VCCIOCNT:
+	 * Bit 6    (0)   - Disable decay of VCCIO on SLP_S0# assertion
+	 * Bits 5:4 (11)  - Nominal output voltage: 0.850V
+	 * Bits 3:2 (10)  - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10)  - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x3a);
+
+	/*
+	 * V18ACNT:
+	 * Bits 7:6 (00) - Disable low power mode on SLP_S0# assertion
+	 * Bits 5:4 (10) - Nominal voltage set to 1.8V
+	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10) - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x34, 0x2a);
+
+	/*
+	 * V100ACNT:
+	 * Bits 7:6 (00) - Disable low power mode on SLP_S0# assertion
+	 * Bits 5:4 (01) - Nominal voltage 1.0V
+	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10) - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x1a);
+
+	/*
+	 * V085ACNT:
+	 * Bits 7:6 (00) - Disable low power mode on SLP_S0# assertion
+	 * Bits 5:4 (10) - Nominal voltage 0.85V
+	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10) - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x2a);
+}
+
+static void board_pmic_enable_slp_s0_vr_decay(void)
+{
+	/*
+	 * VCCIOCNT:
+	 * Bit 6    (1)   - Enable decay of VCCIO on SLP_S0# assertion
+	 * Bits 5:4 (11)  - Nominal output voltage: 0.850V
+	 * Bits 3:2 (10)  - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10)  - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x7a);
+
+	/*
+	 * V18ACNT:
+	 * Bits 7:6 (01) - Enable low power mode on SLP_S0# assertion
+	 * Bits 5:4 (10) - Nominal voltage set to 1.8V
+	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10) - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x34, 0x6a);
+
+	/*
+	 * V100ACNT:
+	 * Bits 7:6 (01) - Enable low power mode on SLP_S0# assertion
+	 * Bits 5:4 (01) - Nominal voltage 1.0V
+	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10) - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x5a);
+
+	/*
+	 * V085ACNT:
+	 * Bits 7:6 (01) - Enable low power mode on SLP_S0# assertion
+	 * Bits 5:4 (10) - Nominal voltage 0.85V
+	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
+	 * Bits 1:0 (10) - VR set to AUTO operating mode
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x6a);
+}
+
+void power_board_handle_host_sleep_event(enum host_sleep_event state)
+{
+	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND)
+		board_pmic_enable_slp_s0_vr_decay();
+	else if (state == HOST_SLEEP_EVENT_S0IX_RESUME)
+		board_pmic_disable_slp_s0_vr_decay();
+}
+
 static void board_pmic_init(void)
 {
 	int pgmask1;
@@ -414,8 +514,7 @@ static void board_pmic_init(void)
 	pgmask1 |= (1 << 2);
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x18, pgmask1);
 
-	/* Select 0.85V for the V085A nominal output voltage. */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x2a);
+	board_pmic_disable_slp_s0_vr_decay();
 
 	/* Enable active discharge (100 ohms) on V33A_PCH and V1.8A. */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3D, 0x5);
@@ -534,10 +633,21 @@ static void board_report_pmic_fault(const char *str)
 
 void board_reset_pd_mcu(void)
 {
+	cprints(CC_USB, "Resetting TCPCs...");
+	cflush();
 	/* GPIO_USB_PD_RST_L resets all the TCPCs. */
 	gpio_set_level(GPIO_USB_PD_RST_L, 0);
 	msleep(10); /* TODO(aaboagye): Verify min hold time. */
 	gpio_set_level(GPIO_USB_PD_RST_L, 1);
+}
+
+void board_set_tcpc_power_mode(int port, int mode)
+{
+	/* Ignore the "mode" to turn the chip on.  We can only do a reset. */
+	if (mode)
+		return;
+
+	board_reset_pd_mcu();
 }
 
 void board_rtc_reset(void)
