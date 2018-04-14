@@ -3,19 +3,14 @@
  * found in the LICENSE file.
  */
 
-/* Shared USB-C policy for octopus boards */
-
 #include "charge_manager.h"
-#include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
-#include "ec_commands.h"
 #include "gpio.h"
+#include "stddef.h"
 #include "system.h"
 #include "usb_mux.h"
-#include "usb_pd.h"
-#include "usbc_ppc.h"
-#include "util.h"
+#include "usb_pd_tcpm.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -23,12 +18,13 @@
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
+/* TODO: fill in correct source and sink capabilities */
 const uint32_t pd_src_pdo[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 const uint32_t pd_src_pdo_max[] = {
-	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
+		PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
 };
 const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
@@ -39,31 +35,42 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+int pd_is_valid_input_voltage(int mv)
+{
+	return 1;
+}
+
+void pd_transition_voltage(int idx)
+{
+	/* No-operation: we are always 5V */
+}
+
+int pd_set_power_supply_ready(int port)
+{
+	/* Disable charging */
+	board_charging_enable(port, 0);
+
+	/* Provide VBUS */
+	board_vbus_enable(port, 1);
+
+	/* notify host of power info change */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+
+	return EC_SUCCESS; /* we are ready */
+}
+
+void pd_power_supply_reset(int port)
+{
+	/* Disable VBUS */
+	board_vbus_enable(port, 0);
+
+	/* notify host of power info change */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+}
+
 int pd_board_checks(void)
 {
 	return EC_SUCCESS;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/*
-	 * Allow data swap if we are a UFP, otherwise don't allow.
-	 *
-	 * When we are still in the Read-Only firmware, avoid swapping roles
-	 * so we don't jump in RW as a SNK/DFP and potentially confuse the
-	 * power supply by sending a soft-reset with wrong data role.
-	 */
-	return (data_role == PD_ROLE_UFP) &&
-	       (system_get_image_copy() != SYSTEM_IMAGE_RO) ? 1 : 0;
-}
-
-void pd_check_dr_role(int port, int dr_role, int flags)
-{
-	/* If UFP, try to switch to DFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
-		pd_request_data_swap(port);
 }
 
 int pd_check_power_swap(int port)
@@ -73,7 +80,25 @@ int pd_check_power_swap(int port)
 	 * otherwise assume our role is fixed (not in S0 or console command
 	 * to fix our role).
 	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
+	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON;
+}
+
+int pd_check_data_swap(int port, int data_role)
+{
+	/* Allow data swap if we are a UFP, otherwise don't allow */
+	return (data_role == PD_ROLE_UFP);
+}
+
+int pd_check_vconn_swap(int port)
+{
+	/* in G3, do not allow vconn swap since pp5000_A rail is off */
+	/* TODO: return gpio_get_level(GPIO_PMIC_EN); */
+	return 1;
+}
+
+void pd_execute_data_swap(int port, int data_role)
+{
+	/* Do nothing */
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)
@@ -83,7 +108,7 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 	 * if a power swap is necessary.
 	 */
 	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
-	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
+		pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
 		/*
 		 * If we are a sink and partner is not externally powered, then
 		 * swap to become a source. If we are source and partner is
@@ -92,98 +117,17 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
 
 		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
+			(partner_extpower && pr_role == PD_ROLE_SOURCE))
 			pd_request_power_swap(port);
 	}
 }
 
-int pd_check_vconn_swap(int port)
+void pd_check_dr_role(int port, int dr_role, int flags)
 {
-	/* Only allow vconn swap if pp5000_A rail is enabled */
-	return gpio_get_level(GPIO_EN_PP5000);
+	/* If UFP, try to switch to DFP */
+	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
+		pd_request_data_swap(port);
 }
-
-void pd_execute_data_swap(int port, int data_role)
-{
-	/* Do nothing - functionality moved to the AP for octopus */
-}
-
-int pd_is_valid_input_voltage(int mv)
-{
-	return 1;
-}
-
-void pd_power_supply_reset(int port)
-{
-	int prev_en;
-
-	prev_en = ppc_is_sourcing_vbus(port);
-
-	/* Disable VBUS. */
-	ppc_vbus_source_enable(port, 0);
-
-	/* Enable discharge if we were previously sourcing 5V */
-	if (prev_en)
-		pd_set_vbus_discharge(port, 1);
-
-#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
-	/* Give back the current quota we are no longer using */
-	charge_manager_source_port(port, 0);
-#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
-
-	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
-}
-
-int pd_set_power_supply_ready(int port)
-{
-	int rv;
-
-	/* Disable charging. */
-	rv = ppc_vbus_sink_enable(port, 0);
-	if (rv)
-		return rv;
-
-	pd_set_vbus_discharge(port, 0);
-
-	/* Provide Vbus. */
-	rv = ppc_vbus_source_enable(port, 1);
-	if (rv)
-		return rv;
-
-#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
-	/* Ensure we advertise the proper available current quota */
-	charge_manager_source_port(port, 1);
-#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
-
-	/* Notify host of power info change. */
-	pd_send_host_event(PD_EVENT_POWER_CHANGE);
-
-	return EC_SUCCESS;
-}
-
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
-#ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
-int pd_snk_is_vbus_provided(int port)
-{
-	return ppc_is_vbus_present(port);
-}
-#endif
-
-void typec_set_source_current_limit(int port, int rp)
-{
-	ppc_set_vbus_source_current_limit(port, rp);
-}
-
-int board_vbus_source_enabled(int port)
-{
-	return ppc_is_sourcing_vbus(port);
-}
-
 
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
@@ -222,6 +166,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 							 is_rw ?
 							 SYSTEM_IMAGE_RW :
 							 SYSTEM_IMAGE_RO);
+
 			/*
 			 * Send update host event unless our RW hash is
 			 * already known to be the latest update RW.
@@ -244,7 +189,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		CPRINTF("Current: %dmA\n", payload[1]);
 		break;
 	case VDO_CMD_FLIP:
-		usb_mux_flip(port);
+		/* TODO: usb_mux_flip(port); */
 		break;
 #ifdef CONFIG_USB_PD_LOGGING
 	case VDO_CMD_GET_LOG:
@@ -317,22 +262,19 @@ static int svdm_dp_config(int port, uint32_t *payload)
 	return 2;
 };
 
-
 static void svdm_dp_post_config(int port)
 {
-	const struct usb_mux *mux = &usb_muxes[port];
-
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
-	mux->hpd_update(port, 1, 0);
+	/* TODO: Update HPD to host */
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
-	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
-	const struct usb_mux *mux = &usb_muxes[port];
+
+	/* TODO: Read HPD IRQ */
 
 	dp_status[port] = payload[1];
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
@@ -340,7 +282,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
 		return 1;
 	}
-	mux->hpd_update(port, lvl, irq);
+	/* TODO: Update HPD to host */
 
 	/* ack */
 	return 1;
@@ -348,10 +290,8 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 
 static void svdm_exit_dp_mode(int port)
 {
-	const struct usb_mux *mux = &usb_muxes[port];
-
 	svdm_safe_dp_mode(port);
-	mux->hpd_update(port, 0, 0);
+	/* TODO: Update HPD to host */
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
