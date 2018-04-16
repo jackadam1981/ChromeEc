@@ -154,14 +154,20 @@ const struct fan_conf fan_conf_0 = {
 	.enable_gpio = -1,
 };
 
-const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2800,
-	.rpm_start = 3000,
-	.rpm_max = 6000,
+const struct fan_rpm fan_rpm_Nami = {
+	.rpm_min = 2900,
+	.rpm_start = 2900,
+	.rpm_max = 7000,
+};
+
+const struct fan_rpm fan_rpm_Sona = {
+	.rpm_min = 2500,
+	.rpm_start = 2500,
+	.rpm_max = 5100,
 };
 
 struct fan_t fans[FAN_CH_COUNT] = {
-	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
+	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_Nami, },
 };
 
 /******************************************************************************/
@@ -677,6 +683,21 @@ static void board_set_motion_sensor_count(void)
 	}
 }
 
+static void board_set_fan_rpm_config(void)
+{
+	/* There are two possible fan rpm configurations.
+	 * Vayne and Nami are fan_rpm_Nami
+	 * Sona is fan_rpm_Sona
+	 * Use the oem id to different them.
+	 */
+	uint32_t oem_id;
+
+	if (cbi_get_oem_id(&oem_id) == EC_SUCCESS) {
+		if (oem_id == PROJECT_SONA)
+			fans[0].rpm = &fan_rpm_Sona;
+	}
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -712,6 +733,7 @@ static void board_init(void)
 
 	/* Update motion_sensor_count  */
 	board_set_motion_sensor_count();
+	board_set_fan_rpm_config();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
