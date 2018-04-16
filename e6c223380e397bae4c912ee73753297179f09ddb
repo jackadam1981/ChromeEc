@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c04928ce_f2b1cce1",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T21:23:57Z",
+      "side": 1,
+      "message": "Probably deprecated. Removed it.",
+      "parentUuid": "4d92c766_516a472c",
+      "range": {
+        "startLine": 32,
+        "startChar": 56,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "e6c223380e397bae4c912ee73753297179f09ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e65eb90_532b2159",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-16T19:51:56Z",
       "side": 1,
       "message": "Nit: perhaps we should align all lines in this file to the longest variable, so they all line up.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "e6c223380e397bae4c912ee73753297179f09ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b37e97b_1a4f792c",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T21:23:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e65eb90_532b2159",
       "range": {
         "startLine": 58,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c7f7b769_602d3893",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T21:23:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f7c7ddc_30af0cf3",
+      "range": {
+        "startLine": 134,
+        "startChar": 66,
+        "endLine": 134,
+        "endChar": 71
+      },
+      "revId": "e6c223380e397bae4c912ee73753297179f09ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b3c831a_211f345f",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 11
@@ -82,6 +154,24 @@
       "writtenOn": "2018-04-16T19:51:56Z",
       "side": 1,
       "message": "I guess we\u0027re still missing the ap spi here, but I guess we can add it later.",
+      "revId": "e6c223380e397bae4c912ee73753297179f09ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1231f064_e507c544",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T21:23:57Z",
+      "side": 1,
+      "message": "OK. Added it here.",
+      "parentUuid": "9b3c831a_211f345f",
       "revId": "e6c223380e397bae4c912ee73753297179f09ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
