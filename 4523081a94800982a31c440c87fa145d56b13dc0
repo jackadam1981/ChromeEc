@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c3cf3ec_189e92e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-04-16T17:01:48Z",
+      "side": 1,
+      "message": "nit,effectively",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "4523081a94800982a31c440c87fa145d56b13dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c123f9cc_782113e1",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-04-16T17:01:48Z",
+      "side": 1,
+      "message": "Logic looks to say that BD9995X_CMD_CHGOP_SET2_CHG_EN will always be \u00270\u0027 when battery is disconnected as well.  Is there ever a chance that isn\u0027t true?  Should we be looking at some battery presence signal directly instead?",
+      "range": {
+        "startLine": 946,
+        "startChar": 58,
+        "endLine": 946,
+        "endChar": 70
+      },
+      "revId": "4523081a94800982a31c440c87fa145d56b13dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
