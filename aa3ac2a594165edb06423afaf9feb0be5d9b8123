@@ -436,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "d0c9d76e_a9def1c8",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-16T18:43:41Z",
+      "side": 1,
+      "message": "\u003e I am not sure why to disable port-1. We need to connect port-1 to the hub to make port-1 HS works, right?\n\nHmm, you\u0027re right, port-1 enabled to the hub is probably a good idea.",
+      "parentUuid": "effffc36_d936c9ed",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7f45df1_5ad072e5",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 8
