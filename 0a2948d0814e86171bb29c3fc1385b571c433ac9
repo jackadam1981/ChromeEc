@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "665b8cf0_77596923",
+        "filename": "util/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-16T10:01:10Z",
+      "side": 1,
+      "message": "1. changing \"build-util-bin\" to \"host-util-bin\" was done.\n2. I will try and study for the devutils ebuild latter.\n3. the capitalized U is fixed in the CL.",
+      "parentUuid": "4a842afe_ec9c9596",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5de2cb88_139ab183",
         "filename": "util/flash_ec",
         "patchSetId": 9
@@ -108,6 +132,24 @@
       "writtenOn": "2018-04-13T21:48:43Z",
       "side": 1,
       "message": "Can you use the ec.bin provided in $IMG. It\u0027s set from the command line.",
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d9f053_65f243a8",
+        "filename": "util/flash_ec",
+        "patchSetId": 9
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-16T10:01:10Z",
+      "side": 1,
+      "message": "Currently the UUT will flash the RO/RW ec firmware separately.\nIf using the ec.bin, it will need to divide the ec.bin into several blocks and flash them one by one.(Because the limitation of our code RAM size.) We will add the support for it and create another CL latter.",
+      "parentUuid": "5de2cb88_139ab183",
       "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -137,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "c7895b66_50fb79eb",
+        "filename": "util/flash_ec",
+        "patchSetId": 9
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-16T10:01:10Z",
+      "side": 1,
+      "message": "The monitor firmware will verify it after it write the data to flash.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/spiflashfw/npcx_monitor.c#217",
+      "parentUuid": "bf0ca830_db45f4f8",
+      "range": {
+        "startLine": 924,
+        "startChar": 0,
+        "endLine": 925,
+        "endChar": 0
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15e282f4_e5e13e86",
         "filename": "util/uut/main.c",
         "patchSetId": 9
@@ -157,6 +223,30 @@
       "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b53e9c6_2cfb8145",
+        "filename": "util/uut/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-16T10:01:10Z",
+      "side": 1,
+      "message": "For simplicity, I change the use of srtlcpy to strncpy.\nThus, there is no need to use the libbsd now.",
+      "parentUuid": "15e282f4_e5e13e86",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -183,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "91df3d70_751e45da",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-16T10:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c4c60f0_4de7bffa",
+      "range": {
+        "startLine": 109,
+        "startChar": 9,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a5350be_cc67d41d",
         "filename": "util/uut/opr.c",
         "patchSetId": 9
@@ -197,6 +311,24 @@
       "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc038e65_1d4181af",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-16T10:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a5350be_cc67d41d",
+      "revId": "0a2948d0814e86171bb29c3fc1385b571c433ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
