@@ -160,10 +160,25 @@ const struct fan_conf fan_conf_0 = {
 	.enable_gpio = -1,
 };
 
+/* Default, Nami, Vayne */
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2800,
-	.rpm_start = 3000,
-	.rpm_max = 6000,
+	.rpm_min = 3100,
+	.rpm_start = 3100,
+	.rpm_max = 6900,
+};
+
+/* Sona */
+const struct fan_rpm fan_rpm_1 = {
+	.rpm_min = 2500,
+	.rpm_start = 2500,
+	.rpm_max = 5100,
+};
+
+/* Pantheon */
+const struct fan_rpm fan_rpm_2 = {
+	.rpm_min = 2100,
+	.rpm_start = 2200,
+	.rpm_max = 4700,
 };
 
 struct fan_t fans[FAN_CH_COUNT] = {
@@ -707,6 +722,20 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
+static void setup_fans(void)
+{
+	/* There are 3 possible fan rpm configurations.
+	 * Vayne and Nami are fan_rpm_0
+	 * Sona is fan_rpm_1
+	 * Pantheon is fan_rpm_2
+	 * Use the oem id to different them.
+	 */
+	if (oem == PROJECT_SONA)
+		fans[0].rpm = &fan_rpm_1;
+	else if (oem == PROJECT_PANTHEON)
+		fans[0].rpm = &fan_rpm_2;
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
@@ -763,6 +792,9 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
 
 	setup_motion_sensors();
+
+	/* Update fan rpm config  */
+	setup_fans();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
