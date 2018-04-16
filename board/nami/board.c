@@ -19,7 +19,7 @@
 #include "cros_board_info.h"
 #include "driver/pmic_tps650x30.h"
 #include "driver/accelgyro_bmi160.h"
-#include "driver/accel_bma2x2.h"
+#include "driver/accel_kionix.h"
 #include "driver/als_opt3001.h"
 #include "driver/baro_bmp280.h"
 #include "driver/led/lm3509.h"
@@ -506,9 +506,7 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 static struct bmi160_drv_data_t g_bmi160_data;
-
-/* BMA255 private data */
-static struct accelgyro_saved_data_t g_bma255_data;
+static struct kionix_accel_data g_kx022_data;
 
 static struct opt3001_drv_data_t g_opt3001_data = {
 	.scale = 1,
@@ -532,17 +530,17 @@ struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 		.name = "Lid Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMA255,
+		.chip = MOTIONSENSE_CHIP_KX022,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_LID,
-		.drv = &bma2x2_accel_drv,
+		.drv = &kionix_accel_drv,
 		.mutex = &g_lid_mutex,
-		.drv_data = &g_bma255_data,
+		.drv_data = &g_kx022_data,
 		.port = I2C_PORT_ACCEL,
-		.addr = BMA2x2_I2C_ADDR1,
-		.rot_standard_ref = &lid_standard_ref,
-		.min_frequency = BMA255_ACCEL_MIN_FREQ,
-		.max_frequency = BMA255_ACCEL_MAX_FREQ,
+		.addr = KX022_ADDR1,
+		.rot_standard_ref = NULL,
+		.min_frequency = KX022_ACCEL_MIN_FREQ,
+		.max_frequency = KX022_ACCEL_MAX_FREQ,
 		.default_range = 2, /* g, to support tablet mode */
 		.config = {
 			/* EC use accel for angle detection */
