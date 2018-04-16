@@ -159,14 +159,26 @@ const struct fan_conf fan_conf_0 = {
 	.enable_gpio = -1,
 };
 
-const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2800,
-	.rpm_start = 3000,
-	.rpm_max = 6000,
+const struct fan_rpm fan_rpm_Nami = {
+	.rpm_min = 3100,
+	.rpm_start = 3100,
+	.rpm_max = 6900,
+};
+
+const struct fan_rpm fan_rpm_Sona = {
+	.rpm_min = 2500,
+	.rpm_start = 2500,
+	.rpm_max = 5100,
+};
+
+const struct fan_rpm fan_rpm_Pantheon = {
+	.rpm_min = 2100,
+	.rpm_start = 2200,
+	.rpm_max = 4700,
 };
 
 struct fan_t fans[FAN_CH_COUNT] = {
-	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
+	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_Nami, },
 };
 
 /******************************************************************************/
@@ -666,6 +678,20 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
+static void board_set_fan_rpm_config(void)
+{
+	/* There are two possible fan rpm configurations.
+	 * Vayne and Nami are fan_rpm_Nami
+	 * Sona is fan_rpm_Sona
+	 * Pantheon is fan_rpm_Pantheon
+	 * Use the oem id to different them.
+	 */
+	if (oem == PROJECT_SONA)
+		fans[0].rpm = &fan_rpm_Sona;
+	else if (oem == PROJECT_PANTHEON)
+		fans[0].rpm = &fan_rpm_Pantheon;
+}
+
 static void cbi_init(void)
 {
 	uint32_t val;
@@ -714,6 +740,9 @@ static void board_init(void)
 	/* Only Nami has an ALS sensor. */
 	if (oem != PROJECT_NAMI)
 		motion_sensor_count = ARRAY_SIZE(motion_sensors) - 1;
+
+	/* Update fan rpm config  */
+	board_set_fan_rpm_config();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
