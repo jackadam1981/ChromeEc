@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "49f91b99_af667bdd",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-16T06:56:14Z",
+      "side": 1,
+      "message": "nit: this is not used.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 71
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d060345_742a56b0",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-16T06:56:14Z",
+      "side": 1,
+      "message": "pi3usb9281.h has at least constants defined for these register names.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4326a801_0ea4a7f1",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-16T06:56:14Z",
+      "side": 1,
+      "message": "this should have been in the chip config rather than being duplicated from board to board,\nnot that it\u0027s terribly urgent either.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9b4bc36_e75ef5ba",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 8
