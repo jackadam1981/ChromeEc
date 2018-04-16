@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "476a72da_4c0c9fe3",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "49f91b99_af667bdd",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 71
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d060345_742a56b0",
         "filename": "board/cheza/board.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-16T06:56:14Z",
       "side": 1,
       "message": "pi3usb9281.h has at least constants defined for these register names.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "995d274b_da8ad42d",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d060345_742a56b0",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b1fdb6f_326d2878",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "OK. I will check it later.",
+      "parentUuid": "4326a801_0ea4a7f1",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9b4bc36_e75ef5ba",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2018-04-13T22:56:34Z",
       "side": 1,
       "message": "s/Cold/Warm",
+      "range": {
+        "startLine": 21,
+        "startChar": 56,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917d784a_4a0abdac",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "I can\u0027t remember why I picked \"cold reset\" as this comment. I refined it to a better term.",
+      "parentUuid": "d9b4bc36_e75ef5ba",
       "range": {
         "startLine": 21,
         "startChar": 56,
@@ -134,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "db6e5188_bf005826",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "Change it to GPIO_INPUT. It\u0027d be safe that people can\u0027t change its state on the console.",
+      "parentUuid": "7c6d8bdf_749b5c0a",
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a08afb1_92c09c8e",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 8
@@ -145,6 +259,30 @@
       "writtenOn": "2018-04-13T22:56:34Z",
       "side": 1,
       "message": "shutdown",
+      "range": {
+        "startLine": 23,
+        "startChar": 82,
+        "endLine": 23,
+        "endChar": 87
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79fe74fd_a9ff3ada",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "It can be a reset if the pulse is between 10ms and 20ms. Change it to \"reset/shutdown\".",
+      "parentUuid": "7a08afb1_92c09c8e",
       "range": {
         "startLine": 23,
         "startChar": 82,
@@ -180,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "93fbafcb_3fa10634",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "Refined it.",
+      "parentUuid": "b2e7859c_0806d1c7",
+      "range": {
+        "startLine": 34,
+        "startChar": 69,
+        "endLine": 34,
+        "endChar": 86
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97d6c678_7d563ec4",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 8
@@ -191,6 +353,30 @@
       "writtenOn": "2018-04-13T22:56:34Z",
       "side": 1,
       "message": "Hardware problem with the soft start on the PP5000_A rail, you just got the rework :)\n\nTime to remove this comment I guess.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac44786d_f42a15cb",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "It still be low due to forcing the BC1.2 switch on. Added better comment.",
+      "parentUuid": "97d6c678_7d563ec4",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -226,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "effffc36_d936c9ed",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "As port-0 had the rotated part issue, so I changed it to port-1 as primary booting port. Probably most of the boards will get the rotated part fixed; should be good to switch the booting port to port-0. I am not sure why to disable port-1. We need to connect port-1 to the hub to make port-1 HS works, right?",
+      "parentUuid": "cb29c4f2_528c1d33",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7f45df1_5ad072e5",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 8
@@ -237,6 +447,24 @@
       "writtenOn": "2018-04-13T22:56:34Z",
       "side": 1,
       "message": "Please include all the GPIOs that this board uses and initialize them to safe values (especially if they have to be outputs). We shouldn\u0027t leave stuff to HiZ, that might not necessarily be safe.\n\nYou\u0027re missing at least the leds, EN_CC_LID_BASE_PH, EN_PPVAR_VAR_BASE, SKU_ID, RCAM_VSYNC,  PROCHOT_L, AP_RST_REQ.",
+      "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ff3112_128a7e8e",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-16T18:09:18Z",
+      "side": 1,
+      "message": "Added most of the GPIOs.",
+      "parentUuid": "a7f45df1_5ad072e5",
       "revId": "aa3ac2a594165edb06423afaf9feb0be5d9b8123",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
