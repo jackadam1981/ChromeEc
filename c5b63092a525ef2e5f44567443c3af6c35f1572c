@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e78b9a61_499bc53a",
+        "filename": "util/uut/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-16T08:24:24Z",
+      "side": 1,
+      "message": "please use MAX_PARAM_SIZE here (or sizeof(opr_name))\nremove the 5 lines above.\nyou can use below: opr_name[sizeof(opr_name) -1 ] \u003d \u0027\\0\u0027;\n\nditto for the next ones.",
+      "range": {
+        "startLine": 261,
+        "startChar": 37,
+        "endLine": 261,
+        "endChar": 41
+      },
+      "revId": "c5b63092a525ef2e5f44567443c3af6c35f1572c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
