@@ -16,6 +16,24 @@
       "revId": "a093653ff291c1bd86d94570ec869062b3834859",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a9f576f_9e75d097",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-16T21:07:57Z",
+      "side": 1,
+      "message": "Test builds for yorp exist that don\u0027t have a CHIPSET task, so HAS_TASK_CHIPSET is undefined, which undefines POWER_COMMON, which prevents power_5v_enable from being defined. Bleh.\n\nI could probably remove \"defined(CONFIG_POWER_PP5000_CONTROL)\", though.",
+      "parentUuid": "c91a2bff_ba19abae",
+      "revId": "a093653ff291c1bd86d94570ec869062b3834859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
