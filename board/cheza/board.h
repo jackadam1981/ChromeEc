@@ -36,6 +36,65 @@
 #define CONFIG_LID_SWITCH
 #define CONFIG_EXTPOWER_GPIO
 
+/* Battery */
+#define CONFIG_BATTERY_CUT_OFF
+#define CONFIG_BATTERY_PRESENT_GPIO GPIO_BATT_PRES_ODL
+#define CONFIG_BATTERY_SMART
+
+/* Charger */
+#define CONFIG_CHARGER
+#define CONFIG_CHARGER_V2
+#define CONFIG_CHARGE_MANAGER
+
+/* TODO(waihong): Use correct charger values */
+#define CONFIG_CHARGER_INPUT_CURRENT 128
+#define CONFIG_CHARGER_ISL9238
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 1
+#define CONFIG_CHARGER_SENSE_RESISTOR 10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
+#define CONFIG_CHARGE_RAMP_HW
+#define CONFIG_USB_CHARGER
+
+/* BC 1.2 Charger */
+#define CONFIG_BC12_DETECT_PI3USB9281
+#define CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT 2
+
+/* USB */
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_COMM_LOCKED
+#define CONFIG_USB_PD_DISCHARGE_PPC
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_LOGGING
+#define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
+#define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_USB_PD_TCPM_ANX740X
+#define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_USB_PD_TCPM_PS8751
+#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_PD_VBUS_DETECT_PPC
+#define CONFIG_USBC_PPC_SN5S330
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_SS_MUX_DFP_ONLY
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+
+/* TODO(waihong): Use correct PD delay values */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY   30000  /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY  250000 /* us */
+#define PD_VCONN_SWAP_DELAY             5000 /* us */
+
+/* TODO(waihong): Use correct PD power values */
+#define PD_OPERATING_POWER_MW   15000
+#define PD_MAX_POWER_MW         45000
+#define PD_MAX_CURRENT_MA       3000
+#define PD_MAX_VOLTAGE_MV       20000
+
 /* NPCX Features */
 #define CONFIG_HIBERNATE_PSL
 
@@ -57,6 +116,11 @@ enum adc_channel {
 	ADC_VBUS = -1,
 	ADC_CH_COUNT
 };
+
+/* Enable VBUS sink for a given port */
+int board_vbus_sink_enable(int port, int enable);
+/* Reset all TCPCs. */
+void board_reset_pd_mcu(void);
 
 #endif /* !defined(__ASSEMBLER__) */
 
