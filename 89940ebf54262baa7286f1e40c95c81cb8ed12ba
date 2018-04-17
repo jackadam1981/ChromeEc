@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "422d33bc_8948b7e0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-17T13:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6eb83eb_f79b2ec5",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 3
+      },
+      "revId": "89940ebf54262baa7286f1e40c95c81cb8ed12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52c35ea5_b9f9d0e2",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-17T01:17:05Z",
       "side": 1,
       "message": "Both the ALERT_MASK and POWER_STATUS_MASK must be cleared at reset right? Do you want to check both?",
+      "revId": "89940ebf54262baa7286f1e40c95c81cb8ed12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f8ab3b6_9db0fd26",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-17T13:16:28Z",
+      "side": 1,
+      "message": "I am checking both to see if either meets the empirically-determined reset condition for the TCPC. If either mask resets, then we want to perform init again. I have not seen it to be the case that both masks are reset though (if that is what you are asking)",
+      "parentUuid": "52c35ea5_b9f9d0e2",
       "revId": "89940ebf54262baa7286f1e40c95c81cb8ed12ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
