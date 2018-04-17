@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a72ae0e8_e4927f58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-17T17:38:55Z",
+      "side": 1,
+      "message": "nit: prefer \u0027ec3po: console: Detect HUP from user console.\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "8f0db6c3613d1db8ad2754b358fcbc1aca4120fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbcbc8d_d2cf6ed3",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-17T17:38:55Z",
+      "side": 1,
+      "message": "Indicating writes to user vs interface PTY? May be more clear to insert it within the arrow:\n\n    \n\u0027|CMD|-%s-\u003e\\\u0027%s\\\u0027\u0027, ...",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 886,
+        "endChar": 52
+      },
+      "revId": "8f0db6c3613d1db8ad2754b358fcbc1aca4120fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
