@@ -22,6 +22,30 @@
       "revId": "eee0dab8061fbef48638ba87e561b18801ed07c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921018fd_d644971d",
+        "filename": "util/uut/lib_crc.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-04-17T10:00:11Z",
+      "side": 1,
+      "message": "We used the older version(1.16) of lib_crc which has no license declaration and is free to use.\nPlease refer to the lib_crc.txt in http://www.lammertbies.nl/download/lib_crc.zip.\nThe new version released in MIT license is the reversion 2.0.\nhttps://github.com/lammertb/libcrc/releases",
+      "parentUuid": "6a64e2d7_3d16244c",
+      "range": {
+        "startLine": 2,
+        "startChar": 18,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "eee0dab8061fbef48638ba87e561b18801ed07c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
