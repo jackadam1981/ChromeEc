@@ -81,6 +81,24 @@
       "revId": "89940ebf54262baa7286f1e40c95c81cb8ed12ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5883681_d1769b39",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-17T16:41:19Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I was asking. My reading of the TCPCI spec says that ought to be the case. Maybe I\u0027m wrong though.. Does it happen at least on a reset of the TCPC?\n\nAnyway, I guess checking for either one might be good enough.",
+      "parentUuid": "8f8ab3b6_9db0fd26",
+      "revId": "89940ebf54262baa7286f1e40c95c81cb8ed12ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
