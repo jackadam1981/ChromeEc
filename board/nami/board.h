@@ -257,6 +257,7 @@ enum mft_channel {
 };
 
 enum oem_id {
+	PROJECT_AKALI = 1,	/* Akali */
 	PROJECT_VAYNE = 3,	/* Vayne */
 	PROJECT_SONA,		/* Sona */
 	PROJECT_PANTHEON,	/* Pantheon */
