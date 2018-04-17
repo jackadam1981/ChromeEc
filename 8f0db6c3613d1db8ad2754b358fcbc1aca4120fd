@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41fc8f51_36cd9a88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-04-17T18:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a72ae0e8_e4927f58",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "8f0db6c3613d1db8ad2754b358fcbc1aca4120fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dbcbc8d_d2cf6ed3",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "96f1835c_09f92e8d",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-04-17T18:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbcbc8d_d2cf6ed3",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 886,
+        "endChar": 52
+      },
+      "revId": "8f0db6c3613d1db8ad2754b358fcbc1aca4120fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3bc310a_a19c4004",
         "filename": "util/ec3po/console.py",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-17T18:11:39Z",
       "side": 1,
       "message": "Why did you skip raising the errors after both of these exceptions?",
+      "range": {
+        "startLine": 910,
+        "startChar": 2,
+        "endLine": 910,
+        "endChar": 8
+      },
+      "revId": "8f0db6c3613d1db8ad2754b358fcbc1aca4120fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c8c1e81_6c848a95",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-04-17T18:15:53Z",
+      "side": 1,
+      "message": "KeyboardInterrupt is how servod exit gets propagated here. Since this is a thread ending in sys.exit(0), raised exceptions don\u0027t go anywhere. So I print them if they are unexpected.",
+      "parentUuid": "d3bc310a_a19c4004",
       "range": {
         "startLine": 910,
         "startChar": 2,
