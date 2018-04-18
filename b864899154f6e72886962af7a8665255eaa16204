@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef960e9c_1551437e",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-18T15:44:29Z",
+      "side": 1,
+      "message": "Add the example of the use of -w option.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "b864899154f6e72886962af7a8665255eaa16204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e0ab926_42c411d4",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-18T15:44:29Z",
+      "side": 1,
+      "message": "No one uses it.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 30
+      },
+      "revId": "b864899154f6e72886962af7a8665255eaa16204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7c04a1f_3e55259b",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-18T15:44:29Z",
+      "side": 1,
+      "message": "These messages may be skipped if there is an exception raised at the above code. Suppress the exception?",
+      "range": {
+        "startLine": 428,
+        "startChar": 4,
+        "endLine": 428,
+        "endChar": 52
+      },
+      "revId": "b864899154f6e72886962af7a8665255eaa16204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fef3344_7be04ebf",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-18T15:44:29Z",
+      "side": 1,
+      "message": "enabled?",
+      "range": {
+        "startLine": 433,
+        "startChar": 27,
+        "endLine": 433,
+        "endChar": 35
+      },
+      "revId": "b864899154f6e72886962af7a8665255eaa16204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
