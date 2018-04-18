@@ -34,6 +34,24 @@
       "revId": "ca4832ebe31d6d7bc7f3c5cd7a12e034860d200f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99308ded_673743f1",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-04-18T23:51:34Z",
+      "side": 1,
+      "message": "Hmm...it turns out the optimization doesn\u0027t work out. With or without the optimization, samus_pd RO size is the same - 0x10008 Bytes (head@cd872d58f24, excluding this CL). I\u0027ll need to find something else to squeeze the space.",
+      "parentUuid": "1ad4ed0a_685d0fae",
+      "revId": "ca4832ebe31d6d7bc7f3c5cd7a12e034860d200f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
