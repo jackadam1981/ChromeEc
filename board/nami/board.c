@@ -199,11 +199,18 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
+static int ps8751_tune_mux(const struct usb_mux *mux)
+{
+	/* 0x98 sets lower EQ of DP port (4.5db) */
+	tcpc_write(mux->port_addr, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+	return EC_SUCCESS;
+}
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		.board_init = &ps8751_tune_mux,
 	},
 	{
 		.port_addr = USB_PD_PORT_ANX7447,
