@@ -22,6 +22,30 @@
       "revId": "6a86de66ece3d28cf97c9d3e3930317d1796d80e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38b9f58c_944e0ba2",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-04-18T05:01:32Z",
+      "side": 1,
+      "message": "Can you help to make g-sensor selected by oem id at runtime ? I\u0027ll porting KX022 with Akali\u0027s OEM_ID (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1014881)",
+      "parentUuid": "85d8ece5_3d538e08",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "6a86de66ece3d28cf97c9d3e3930317d1796d80e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
