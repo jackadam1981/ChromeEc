@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e866b7ca_520004af",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-18T06:27:43Z",
+      "side": 1,
+      "message": "I could make the code fit by doing this:\n\n\t/* Set alarm time in seconds */\n\t/* Check for match on hours, minutes, and seconds */\n\tSTM32_RTC_ALRMAR \u003d sec_to_rtc_tr(alarm_sec) | 0xc0000000;\n\t/* Missing comment */\n\tSTM32_RTC_ALRMASSR \u003d delay_us ? (us_to_rtcss(alarm_us) | 0x0f000000) : 0;\n\nSTM32_RTC_ALR* are registers, so they are volatile and the compiler will not optimize accesses.\n\nPlease double-check if it\u0027s ok to update timeout value and higher bits at the same time (I think so as the alarm is disabled here.",
+      "revId": "ca4832ebe31d6d7bc7f3c5cd7a12e034860d200f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
