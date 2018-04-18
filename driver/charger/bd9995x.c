@@ -13,6 +13,7 @@
 #include "charger.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "system.h"
@@ -873,6 +874,8 @@ int charger_discharge_on_ac(int enable)
 				BD9995X_EXTENDED_COMMAND);
 	if (rv)
 		return rv;
+
+	gpio_set_level(GPIO_TRACKPAD_INT_GATE, enable);
 
 	/*
 	 * Suspend USB charging and DC/DC converter so that BATT_LEARN mode
