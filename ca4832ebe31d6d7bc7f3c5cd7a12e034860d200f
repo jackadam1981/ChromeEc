@@ -16,6 +16,24 @@
       "revId": "ca4832ebe31d6d7bc7f3c5cd7a12e034860d200f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad4ed0a_685d0fae",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-04-18T19:12:55Z",
+      "side": 1,
+      "message": "Good optimization, thanks!",
+      "parentUuid": "e866b7ca_520004af",
+      "revId": "ca4832ebe31d6d7bc7f3c5cd7a12e034860d200f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
