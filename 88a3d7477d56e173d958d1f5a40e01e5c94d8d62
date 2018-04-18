@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0dab71a_1a45e2bc",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "you have no GPIO code here so far",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "addafba6_0679fbd8",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "despite being not used/implemented right now\nare there the real values for this battery ?\nelse remove them.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15cda7e_2b716664",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "the usual EC style is to have a bug number in TODOs\nTODO(b/xxxx) or TODO(crbug.com/xxxx)",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d72a443_e54761b4",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "a less successful error code might be better,\nunless this is blocking your factory process or something else.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3552806e_e4670365",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "at least this one seems useless",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34719b5f_ce84343c",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "given we program the interrupt to detect the falling, what is this trying to protect against ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb686e40_838e074d",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "Personally, I think that all the #ifdef in board code depending on board configuration (HAS_TASK_xxx and CONFIG_xx) are just obfuscation and should be removed.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3292fdd6_4d1c5131",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "the GPIO name has a typo ? (C0 vs C1)",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe2f36a_664a40a1",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "unconditionally calling the discharge here looks scary to me,\nthe other side might be controlling VBUS ? (or maybe not on this design)",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 53
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f23c18b_b6168aba",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "you can add [USB_PD_PORT_ANX74XX] \u003d\nto check consistency",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 67
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b3015c4_fac3c8d0",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "nit: you can just omit this line",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e81952fa_21126b22",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "maybe you need a USB_PD_PORT_xxx constant as the ANX one above",
+      "range": {
+        "startLine": 251,
+        "startChar": 13,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8696967_30a44492",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "nit: Notify?",
+      "range": {
+        "startLine": 276,
+        "startChar": 19,
+        "endLine": 276,
+        "endChar": 25
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448e9672_d5181cc4",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PORT_COUNT ?",
+      "range": {
+        "startLine": 294,
+        "startChar": 18,
+        "endLine": 294,
+        "endChar": 19
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca97bee5_f6f5e726",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PORT_COUNT ?",
+      "range": {
+        "startLine": 315,
+        "startChar": 17,
+        "endLine": 315,
+        "endChar": 18
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2de2bb4_48e18ed4",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "I would remove it until it is actually implemented to save other people the time to investigate why the command is not actually working.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2506053_6d215798",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "the usual EC style is to have a bug number in TODOs\nTODO(b/xxxx) or TODO(crbug.com/xxxx)",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b678912b_77ebb4ca",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "you might want to undefine it for bringup and move it above with CONFIG_BRINGUP.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8f159b_35cda47d",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "what was Jim\u0027s conclusion about this: we can provide 3A only on one port at a time ?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe425409_61049a89",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "for these, somebody has to measure them",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 53
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7eab7d9_18b65d82",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-18T10:41:13Z",
+      "side": 1,
+      "message": "might not be true on your board",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
