@@ -107,8 +107,6 @@ extern struct deferred_data ec_uart_deferred__data;
 void ec_tx_cr50_rx(enum gpio_signal signal)
 {
 	uart_bitbang_receive_char(UART_EC);
-	/* Let the USART module know that there's new bits to consume. */
-	hook_call_deferred(&ec_uart_deferred__data, 0);
 }
 
 const char *device_state_names[] = {
