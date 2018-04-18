@@ -82,7 +82,7 @@ void uart_ec_tx_interrupt(void)
 	/* Fill output FIFO */
 	uart_process_output();
 }
-DECLARE_IRQ(GC_IRQNUM_UART0_TXINT, uart_ec_tx_interrupt, 1);
+DECLARE_IRQ(GC_IRQNUM_UART0_TXINT, uart_ec_tx_interrupt, 2);
 
 void uart_ec_rx_interrupt(void)
 {

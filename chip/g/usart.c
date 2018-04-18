@@ -57,7 +57,7 @@ SIGNER_CONFIG(sig, stream_uart, sig_to_usb, ap_uart_output);
 
 #else  /* Not CONFIG_STREAM_SIGNATURE */
 static struct queue const ap_uart_output =
-	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ap_uart.producer, ap_usb.consumer);
+	QUEUE_DIRECT(512, uint8_t, ap_uart.producer, ap_usb.consumer);
 #endif
 
 static struct queue const ap_usb_to_uart =
@@ -100,7 +100,7 @@ struct usb_stream_config const ec_usb;
 struct usart_config const ec_uart;
 
 static struct queue const ec_uart_to_usb =
-	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_uart.producer, ec_usb.consumer);
+	QUEUE_DIRECT(512, uint8_t, ec_uart.producer, ec_usb.consumer);
 static struct queue const ec_usb_to_uart =
 	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_usb.producer, ec_uart.consumer);
 
@@ -135,14 +135,41 @@ void get_data_from_usb(struct usart_config const *config)
 
 void send_data_to_usb(struct usart_config const *config)
 {
+	 /*
+	  * UART RX FIFO is 32 bytes in size, let's have little extra room so
+	  * that we could catch up if we are draining the FIFO while the chip
+	  * keeps receiving.
+	  */
+	uint8_t buffer[50];
+	uint32_t i;
+	uint32_t room;
 	struct queue const *uart_in = config->producer.queue;
+	int uart = config->uart;
 
-	/* Copy input from buffer until RX fifo empty or the queue is full */
-	while (uartn_rx_available(config->uart) && queue_space(uart_in)) {
-		int c = uartn_read_char(config->uart);
+	room = MIN(sizeof(buffer), queue_space(uart_in));
 
-		QUEUE_ADD_UNITS(uart_in, &c, 1);
+	if (!room)
+		return;
+
+	/* Copy input from buffer until RX fifo empty or tx queue is full. */
+	i = 0;
+	while (uartn_rx_available(uart)) {
+		if (i < room) {
+			buffer[i++] = uartn_read_char(uart);
+			continue;
+		}
+
+		QUEUE_ADD_UNITS(uart_in, buffer, i);
+
+		/* Just in case some more space freed up. */
+		room = MIN(sizeof(buffer), queue_space(uart_in));
+		if (!room)
+			return;
+		i = 0;
 	}
+
+	if (i)
+		QUEUE_ADD_UNITS(uart_in, buffer, i);
 }
 
 static void uart_read(struct producer const *producer, size_t count)
