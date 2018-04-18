@@ -57,7 +57,7 @@ SIGNER_CONFIG(sig, stream_uart, sig_to_usb, ap_uart_output);
 
 #else  /* Not CONFIG_STREAM_SIGNATURE */
 static struct queue const ap_uart_output =
-	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ap_uart.producer, ap_usb.consumer);
+	QUEUE_DIRECT(512, uint8_t, ap_uart.producer, ap_usb.consumer);
 #endif
 
 static struct queue const ap_usb_to_uart =
@@ -100,7 +100,7 @@ struct usb_stream_config const ec_usb;
 struct usart_config const ec_uart;
 
 static struct queue const ec_uart_to_usb =
-	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_uart.producer, ec_usb.consumer);
+	QUEUE_DIRECT(512, uint8_t, ec_uart.producer, ec_usb.consumer);
 static struct queue const ec_usb_to_uart =
 	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_usb.producer, ec_uart.consumer);
 
@@ -133,15 +133,41 @@ void get_data_from_usb(struct usart_config const *config)
 		uartn_tx_stop(config->uart);
 }
 
+uint32_t emtpy_count [3];
+uint8_t max_i[3];
+
+
 void send_data_to_usb(struct usart_config const *config)
 {
 	struct queue const *uart_in = config->producer.queue;
+	uint8_t buffer[50];
+	uint32_t i;
+	uint32_t room;
+	int uart = config->uart;
+
+	room = MIN(sizeof(buffer), queue_space(uart_in));
+	i = 0;
 
 	/* Copy input from buffer until RX fifo empty or the queue is full */
-	while (uartn_rx_available(config->uart) && queue_space(uart_in)) {
-		int c = uartn_read_char(config->uart);
+	while (uartn_rx_available(uart)) {
+		if (i < room) {
+			buffer[i++] = uartn_read_char(uart);
+			continue;
+		}
 
-		QUEUE_ADD_UNITS(uart_in, &c, 1);
+		if (i)
+			QUEUE_ADD_UNITS(uart_in, buffer, i);
+
+		/* Just in case some more space freed up. */
+		room = MIN(sizeof(buffer), queue_space(uart_in));
+		if (!room)
+			break;
+		i = 0;
+	}
+	if (i) {
+		QUEUE_ADD_UNITS(uart_in, buffer, i);
+		if (i > max_i[uart])
+			max_i[uart] = i;
 	}
 }
 

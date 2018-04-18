@@ -74,7 +74,7 @@ static uint8_t ep_buf_rx[USB_MAX_PACKET_SIZE];
 static struct g_usb_desc ep_out_desc;
 static struct g_usb_desc ep_in_desc;
 
-static struct queue const tx_q = QUEUE_NULL(4096, uint8_t);
+static struct queue const tx_q = QUEUE_NULL(64, uint8_t);
 static struct queue const rx_q = QUEUE_NULL(USB_MAX_PACKET_SIZE, uint8_t);
 
 
@@ -296,6 +296,7 @@ uint32_t usb_console_crc(void)
 
 static int __tx_char(void *context, int c)
 {
+	static uint16_t count;
 	struct queue *state =
 			(struct queue *) context;
 
@@ -310,6 +311,8 @@ static int __tx_char(void *context, int c)
 #else
 	QUEUE_ADD_UNITS(state, &c, 1);
 #endif
+	if (!(count++ % 10))
+		usleep(100);
 	return 0;
 }
 
