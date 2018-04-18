@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e295e2b3_ee4ac47e",
+        "filename": "board/nami/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-18T10:32:12Z",
+      "side": 1,
+      "message": "These are probably needed for other variants which I haven\u0027t received the hardware. Vendors want to customize colors. They\u0027ll mostly used as an alias.",
+      "parentUuid": "ef681733_8c1b085e",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "52fb468523ba1df9d06dc20220611147a265d2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b88bf88f_99c4a26a",
         "filename": "board/nami/led.c",
         "patchSetId": 3
