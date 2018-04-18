@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "5801fa59_44005ef3",
+        "filename": "extra/cr50_rma_open/cr50_rma_open.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-04-18T17:34:16Z",
+      "side": 1,
+      "message": "I just want to make sure if someone runs the script without any args it\u0027ll tell them what to do. I can remove it though",
+      "parentUuid": "f7c04a1f_3e55259b",
+      "range": {
+        "startLine": 428,
+        "startChar": 4,
+        "endLine": 428,
+        "endChar": 52
+      },
+      "revId": "b864899154f6e72886962af7a8665255eaa16204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fef3344_7be04ebf",
         "filename": "extra/cr50_rma_open/cr50_rma_open.py",
         "patchSetId": 1
