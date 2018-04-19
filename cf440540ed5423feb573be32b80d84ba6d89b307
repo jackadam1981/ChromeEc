@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aac4a21d_69cf1987",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-19T19:53:45Z",
+      "side": 1,
+      "message": "That is true. I had a hard time coming up with the power_force_chipset_shutdown too. I will change it to internal_chipset_shutdown.",
+      "parentUuid": "8c6779c7_75d714e0",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "cf440540ed5423feb573be32b80d84ba6d89b307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5216792f_890c347b",
         "filename": "power/apollolake.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-19T15:20:09Z",
       "side": 1,
       "message": "How many different tasks call this?",
+      "revId": "cf440540ed5423feb573be32b80d84ba6d89b307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d66d43a0_81908a6f",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-19T19:53:45Z",
+      "side": 1,
+      "message": "1. charger_task: \n*** common/charge_state_v2.c:\nshutdown_on_critical_battery[1293] chipset_force_shutdown();\n\n2. console_task:\n*** common/chipset.c:\ncommand_apshutdown[34]         chipset_force_shutdown();\n\n3. chipset_task:\n*** power/apollolake.c:\nchipset_force_g3[45]           chipset_force_shutdown();\n\n*** power/intel_x86.c:\ncommon_intel_x86_power_handle_state[219] chipset_force_shutdown();\ncommon_intel_x86_power_handle_state[232] chipset_force_shutdown();\ncommon_intel_x86_power_handle_state[293] chipset_force_shutdown();\ncommon_intel_x86_power_handle_state[320] chipset_force_shutdown();\ncommon_intel_x86_power_handle_state[330] chipset_force_shutdown();\ncommon_intel_x86_power_handle_state[349] chipset_force_shutdown();\n\n4. hook_task (indirectly since it calls chipset_force_g3 which calls chipset_force_shutdown):\n*** power/intel_x86.c:\npower_chipset_init[193]        chipset_force_g3();",
+      "parentUuid": "5216792f_890c347b",
       "revId": "cf440540ed5423feb573be32b80d84ba6d89b307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -62,6 +104,30 @@
       "revId": "cf440540ed5423feb573be32b80d84ba6d89b307",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b2292d2_cac56c84",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-19T19:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00cf581_2f02654a",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "cf440540ed5423feb573be32b80d84ba6d89b307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
