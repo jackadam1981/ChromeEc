@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb5dfb19_5b90fd2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T19:37:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e034aff6_b6ef7e55",
+      "revId": "7e0ea13e25ecf6cda6316e46e1815b8d8e175d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8852738c_2ce10892",
         "filename": "driver/charger/bq25703.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6ec6e485_cffaa52e",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T19:37:21Z",
+      "side": 1,
+      "message": "Filed b/78292522 for investigation",
+      "parentUuid": "8852738c_2ce10892",
+      "revId": "7e0ea13e25ecf6cda6316e46e1815b8d8e175d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "070d91c8_e983a30d",
         "filename": "driver/charger/bq25703.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2018-04-19T19:17:17Z",
       "side": 1,
       "message": "CHARGE_CURRENT ?",
+      "revId": "7e0ea13e25ecf6cda6316e46e1815b8d8e175d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8952dd32_0d9dcabc",
+        "filename": "driver/charger/bq25703.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T19:37:21Z",
+      "side": 1,
+      "message": "Thanks. At least I was consistent in the c file!",
+      "parentUuid": "070d91c8_e983a30d",
       "revId": "7e0ea13e25ecf6cda6316e46e1815b8d8e175d1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

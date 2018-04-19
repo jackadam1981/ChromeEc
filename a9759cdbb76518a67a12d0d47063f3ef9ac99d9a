@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "b33aea7c_1ef0b69f",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T19:37:21Z",
+      "side": 1,
+      "message": "It was a copy past error, corrected. Thank you.",
+      "parentUuid": "e15a9366_be3f257a",
+      "revId": "a9759cdbb76518a67a12d0d47063f3ef9ac99d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af06a2ab_7a7eef02",
         "filename": "driver/charger/bq25703.c",
         "patchSetId": 1
