@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8af65914_9010122c",
+        "filename": "board/fizz/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-04-19T13:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08bfa8b2_4d3fbac0",
+      "revId": "5414d44a6a6127119be7728a3ede54a204d5a2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d347f761_a6060dec",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -96,6 +114,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "d1e8b76b_f334b3b0",
+      "range": {
+        "startLine": 4932,
+        "startChar": 8,
+        "endLine": 4933,
+        "endChar": 34
+      },
+      "revId": "5414d44a6a6127119be7728a3ede54a204d5a2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aec8f547_da8d7003",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4933,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-04-19T13:46:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ea23039_bca11aae",
       "range": {
         "startLine": 4932,
         "startChar": 8,
