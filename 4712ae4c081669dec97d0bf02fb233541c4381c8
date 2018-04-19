@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22371117_b885ee26",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T13:51:43Z",
+      "side": 1,
+      "message": "You should also set the alternate mode for these GPIO pins: similar to vbus pins https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/18/1018118/1/board/yorp/gpio.inc#126",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 20
+      },
+      "revId": "4712ae4c081669dec97d0bf02fb233541c4381c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
