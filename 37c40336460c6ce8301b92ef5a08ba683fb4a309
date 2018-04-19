@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ce86838_7406e105",
+        "filename": "board/bip/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T18:47:27Z",
+      "side": 1,
+      "message": "From my reading of datasheet, BC25703 does not support HW ramp.  Can someone double check that is correct: https://drive.google.com/file/d/1yTTpSc0bRRuWZn-f7w6CqT4KFplHRDAt/view",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "37c40336460c6ce8301b92ef5a08ba683fb4a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
