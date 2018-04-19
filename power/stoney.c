@@ -159,8 +159,11 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_EN_PWR_A, 1);
 #endif
 
-		/* Call hooks to initialize PMIC */
-		hook_notify(HOOK_CHIPSET_PRE_INIT);
+		/*
+		 * Callback to do pre-initialization within the context of
+		 * chipset task.
+		 */
+		chipset_pre_init();
 
 		if (power_wait_signals(IN_S5_PGOOD)) {
 			chipset_force_g3();
