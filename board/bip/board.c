@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "common.h"
+#include "charge_ramp.h"
 #include "driver/bc12/bq24392.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/it83xx_pd.h"
@@ -237,6 +238,14 @@ void board_overcurrent_event(int port)
 	cprints(CC_USBPD, "p%d: overcurrent!", port);
 }
 
+/**
+ * Return if VBUS is sagging too low
+ */
+int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
+{
+	/* VBUS should not drop below 4.6V */
+	return adc_read_channel(board_get_vbus_adc(port)) < 4600;
+}
 
 uint16_t tcpc_get_alert_status(void)
 {
