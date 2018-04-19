@@ -19,6 +19,17 @@ int extpower_is_present(void)
 	return debounced_extpower_presence;
 }
 
+static void update_ac_present_flag(void)
+{
+	uint8_t *memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
+
+	/* Initialize the memory-mapped AC_PRESENT flag */
+	if (debounced_extpower_presence)
+		*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
+	else
+		*memmap_batt_flags &= ~EC_BATT_FLAG_AC_PRESENT;
+}
+
 /**
  * Deferred function to handle external power change
  */
@@ -30,6 +41,7 @@ static void extpower_deferred(void)
 		return;
 
 	debounced_extpower_presence = extpower_presence;
+	update_ac_present_flag();
 	hook_notify(HOOK_AC_CHANGE);
 
 	/* Forward notification to host */
@@ -49,16 +61,8 @@ void extpower_interrupt(enum gpio_signal signal)
 
 static void extpower_init(void)
 {
-	uint8_t *memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
-
 	debounced_extpower_presence = gpio_get_level(GPIO_AC_PRESENT);
-
-	/* Initialize the memory-mapped AC_PRESENT flag */
-	if (debounced_extpower_presence)
-		*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
-	else
-		*memmap_batt_flags &= ~EC_BATT_FLAG_AC_PRESENT;
-
+	update_ac_present_flag();
 	/* Enable interrupts, now that we've initialized */
 	gpio_enable_interrupt(GPIO_AC_PRESENT);
 }
