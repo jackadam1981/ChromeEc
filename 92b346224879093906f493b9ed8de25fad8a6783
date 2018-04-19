@@ -22,6 +22,30 @@
       "revId": "92b346224879093906f493b9ed8de25fad8a6783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2a4f4b7_a6621897",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T19:49:15Z",
+      "side": 1,
+      "message": "|\u003d seems safer to me too.\n\nDidn\u0027t know about these jump tags, good to know for the future!",
+      "parentUuid": "7b67a271_17486e47",
+      "range": {
+        "startLine": 869,
+        "startChar": 18,
+        "endLine": 869,
+        "endChar": 25
+      },
+      "revId": "92b346224879093906f493b9ed8de25fad8a6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
