@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81cc1a9c_7938e318",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T18:44:31Z",
+      "side": 1,
+      "message": "What is the best way in the EC code base to \"unit test\" the above formulas?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "a9759cdbb76518a67a12d0d47063f3ef9ac99d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af06a2ab_7a7eef02",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T18:44:31Z",
+      "side": 1,
+      "message": "Is this TODO worthwhile or is it implied that we will add more if/when needed? Many impls have very little here, but few impls have a lot.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 53
+      },
+      "revId": "a9759cdbb76518a67a12d0d47063f3ef9ac99d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
