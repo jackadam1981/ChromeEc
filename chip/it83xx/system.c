@@ -142,6 +142,17 @@ void system_reset(int flags)
 	BRAM_RESET_FLAGS2 = (save_flags >> 8) & 0xff;
 	BRAM_RESET_FLAGS3 = save_flags & 0xff;
 
+	/* If WAIT_EXT is set, then allow 10 seconds for external reset */
+	if (flags & SYSTEM_RESET_WAIT_EXT) {
+		int i;
+
+		/* Wait 10 seconds for external reset */
+		for (i = 0; i < 1000; i++) {
+			watchdog_reload();
+			udelay(10000);
+		}
+	}
+
 	/*
 	 * bit4, disable debug mode through SMBus.
 	 * If we are in debug mode, we need disable it before triggering
