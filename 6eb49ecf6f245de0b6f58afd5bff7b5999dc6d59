@@ -22,6 +22,30 @@
       "revId": "6eb49ecf6f245de0b6f58afd5bff7b5999dc6d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "891fdb4c_2f0863f2",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-19T19:37:27Z",
+      "side": 0,
+      "message": "I tried \"make BOARD\u003dyorp tests\" as well as \"make -j buildall\" and both succeed.",
+      "parentUuid": "87e61f5f_30a3d7ff",
+      "range": {
+        "startLine": 136,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "6eb49ecf6f245de0b6f58afd5bff7b5999dc6d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
