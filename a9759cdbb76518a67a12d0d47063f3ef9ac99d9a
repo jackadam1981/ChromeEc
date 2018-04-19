@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "e15a9366_be3f257a",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-19T19:17:17Z",
+      "side": 1,
+      "message": "Isn\u0027t the current step 64mA? (I think the minimum is also 64) Or am I misreading the datasheet?",
+      "revId": "a9759cdbb76518a67a12d0d47063f3ef9ac99d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af06a2ab_7a7eef02",
         "filename": "driver/charger/bq25703.c",
         "patchSetId": 1

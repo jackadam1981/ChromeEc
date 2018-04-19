@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e034aff6_b6ef7e55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-19T19:17:17Z",
+      "side": 1,
+      "message": "s/bq25793/bq25703/",
+      "revId": "7e0ea13e25ecf6cda6316e46e1815b8d8e175d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8852738c_2ce10892",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-19T19:17:17Z",
+      "side": 1,
+      "message": "Do we have a bug open for OTG?",
+      "revId": "7e0ea13e25ecf6cda6316e46e1815b8d8e175d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070d91c8_e983a30d",
+        "filename": "driver/charger/bq25703.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-19T19:17:17Z",
+      "side": 1,
+      "message": "CHARGE_CURRENT ?",
+      "revId": "7e0ea13e25ecf6cda6316e46e1815b8d8e175d1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
