@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b67a271_17486e47",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-19T18:39:59Z",
+      "side": 1,
+      "message": "I know this is being done under HOOK_PRIO_FIRST, so might not be a big issue. But should we still: \"pwr_5v_en_req |\u003d *state;\" ?",
+      "range": {
+        "startLine": 869,
+        "startChar": 18,
+        "endLine": 869,
+        "endChar": 25
+      },
+      "revId": "92b346224879093906f493b9ed8de25fad8a6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
