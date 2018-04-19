@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5749757a_87cafd77",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-19T20:56:38Z",
+      "side": 1,
+      "message": "Make it static and also the below function.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 4
+      },
+      "revId": "f0e43cd9b5d23322d476a33d3f9bc79e7c55c8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b08f7514_444d4326",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-19T20:56:38Z",
+      "side": 1,
+      "message": "From the point of view as a productivity hack, this \"apshutdown\" is not as useful as \"apreset\", like how can you trigger the AP boot up again? typing gpioset commands, or apreset?\n\nProbably just define the apreset.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "f0e43cd9b5d23322d476a33d3f9bc79e7c55c8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b91655e_13d82792",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-19T20:56:38Z",
+      "side": 1,
+      "message": "Actually, I am not sure what\u0027s the purpose of this kind of reset.\n\nI think SDM chipset has its own warm reset sequence, which toggles the PS_HOLD signal for 12.2ms to notify PMIC for a warm reset.",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "f0e43cd9b5d23322d476a33d3f9bc79e7c55c8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
