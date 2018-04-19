@@ -10,17 +10,46 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "console.h"
 #include "i2c.h"
 #include "lid_switch.h"
 #include "pi3usb9281.h"
 #include "power_button.h"
 #include "switch.h"
-
-#include "gpio_list.h"
+#include "timer.h"
 
 /* 8-bit I2C address */
 #define PI3USB9281_I2C_ADDR	0x4a
 #define DA9313_I2C_ADDR		0xd0
+
+/* TODO(after proper power sequencing, rev0): remove/massage this */
+void chipset_force_shutdown(void) {
+	/* make sure switchcap listens to us */
+	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
+
+	gpio_set_level(GPIO_SWITCHCAP_ON_L, 0);
+	msleep(500);
+	gpio_set_level(GPIO_SWITCHCAP_ON_L, 1);
+}
+
+int chipset_reset(void) {
+	chipset_force_shutdown();
+	msleep(10);
+
+	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
+	msleep(10);
+	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
+
+	return EC_SUCCESS;
+}
+
+static void warm_reset_request_interrupt(enum gpio_signal signal)
+{
+	ccprintf("AP wants warm reset");
+	chipset_reset();
+}
+
+#include "gpio_list.h"
 
 /* Wake-up pins for hibernate */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -41,6 +70,28 @@ const struct i2c_port_t i2c_ports[] = {
 	{"sensor",  I2C_PORT_SENSOR, 400, GPIO_I2C7_SCL,  GPIO_I2C7_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* TODO(after HAS_TASK_CHIPSET==1): remove these 2 commands,
+ * they're defined in common/chipset.c */
+static int command_apreset(int argc, char **argv)
+{
+	/* Force the chipset to reset */
+	ccprintf("Issuing AP reset...\n");
+	chipset_reset();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(apreset, command_apreset,
+			"",
+			"Issue AP reset");
+
+static int command_apshutdown(int argc, char **argv)
+{
+	chipset_force_shutdown();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown,
+			"",
+			"Force AP shutdown");
 
 /* Initialize board. */
 static void board_init(void)
@@ -63,5 +114,8 @@ static void board_init(void)
 	 * TODO(b/77957956): Remove it after hardware fix.
 	 */
 	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
+
+	/* simulate normal chromebook AP reboot behavior on rev0 */
+	chipset_reset();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
