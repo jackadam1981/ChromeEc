@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "2372b930_56a5ea44",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-04-19T20:07:05Z",
+      "side": 1,
+      "message": "Well, this code is pretty racy given there\u0027s potential for all those tasks to miss. I guess, things are going down hard anyway so it may not matter. You probably want to put a comment about how you acknowledge it\u0027s racy, but that\u0027s acceptable considering what\u0027s about to happen.",
+      "parentUuid": "d66d43a0_81908a6f",
+      "revId": "cf440540ed5423feb573be32b80d84ba6d89b307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00cf581_2f02654a",
         "filename": "power/apollolake.c",
         "patchSetId": 1
