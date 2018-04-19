@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d25dd6a7_807d1adb",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-19T17:11:32Z",
+      "side": 1,
+      "message": "The state of the power_5v_en_req variable isn\u0027t saved across sysjump. How is this supposed to work if the first call is power_5v_enable(tid, 0); power_5v_en_req will be 0 and we\u0027ll turn off 5V.",
+      "revId": "6d5cccefa09d28d6b0f9c29799ccd5f8254b7e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
