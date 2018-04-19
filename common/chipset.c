@@ -14,6 +14,11 @@
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
+void __attribute__((weak)) chipset_pre_init(void)
+{
+	/* Default weak implementation, nothing to do. */
+}
+
 /*****************************************************************************/
 /* Console commands */
 

@@ -87,6 +87,11 @@ void power_interrupt(enum gpio_signal signal);
  */
 void chipset_handle_espi_reset_assert(void);
 
+/**
+ * Perform chipset pre-initialization work within the context of chipset task.
+ */
+void chipset_pre_init(void);
+
 #else /* !HAS_TASK_CHIPSET */
 
 /* When no chipset is present, assume it is always off. */
@@ -102,6 +107,7 @@ static inline void chipset_reset(void) { }
 static inline void power_interrupt(enum gpio_signal signal) { }
 static inline void chipset_handle_espi_reset_assert(void) { }
 static inline void chipset_handle_reboot(void) { }
+static inline void chipset_pre_init(void) { }
 
 #endif /* !HAS_TASK_CHIPSET */
 
