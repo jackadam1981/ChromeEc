@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87e61f5f_30a3d7ff",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-19T14:08:35Z",
+      "side": 0,
+      "message": "this was needed when using `make BOARD\u003dyorp tests` which is used from unibuild. Is this not needed anymore? (e.g. the PingPong board didn\u0027t compile without this guard)",
+      "range": {
+        "startLine": 136,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "6eb49ecf6f245de0b6f58afd5bff7b5999dc6d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
