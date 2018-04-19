@@ -314,9 +314,6 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		 */
 		chipset_pre_init();
 
-		/* Call hooks to initialize PMIC */
-		hook_notify(HOOK_CHIPSET_PRE_INIT);
-
 		if (power_wait_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			chipset_force_shutdown();
 			return POWER_G3;
