@@ -22,6 +22,30 @@
       "revId": "6eb49ecf6f245de0b6f58afd5bff7b5999dc6d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927a584d_73730606",
+        "filename": "common/chipset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-19T19:23:16Z",
+      "side": 1,
+      "message": "Okay, I can add that.",
+      "parentUuid": "3bf186fb_eab00dcd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 48
+      },
+      "revId": "6eb49ecf6f245de0b6f58afd5bff7b5999dc6d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
