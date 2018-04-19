@@ -22,6 +22,30 @@
       "revId": "d96640be5f9d8dbec481f87af65b52f1fcbdc33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71efcb60_b624a952",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-19T21:11:17Z",
+      "side": 1,
+      "message": "The cleanup() trap will restore the original state back.",
+      "parentUuid": "da6d6827_6a2c9a23",
+      "range": {
+        "startLine": 953,
+        "startChar": 1,
+        "endLine": 953,
+        "endChar": 16
+      },
+      "revId": "d96640be5f9d8dbec481f87af65b52f1fcbdc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
