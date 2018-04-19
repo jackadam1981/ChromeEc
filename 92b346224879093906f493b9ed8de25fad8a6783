@@ -46,6 +46,30 @@
       "revId": "92b346224879093906f493b9ed8de25fad8a6783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bae16e5_8190f941",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-19T19:56:44Z",
+      "side": 1,
+      "message": "Good call, done.",
+      "parentUuid": "a2a4f4b7_a6621897",
+      "range": {
+        "startLine": 869,
+        "startChar": 18,
+        "endLine": 869,
+        "endChar": 25
+      },
+      "revId": "92b346224879093906f493b9ed8de25fad8a6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
