@@ -10,11 +10,13 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "console.h"
 #include "i2c.h"
 #include "lid_switch.h"
 #include "pi3usb9281.h"
 #include "power_button.h"
 #include "switch.h"
+#include "timer.h"
 
 #include "gpio_list.h"
 
@@ -42,6 +44,33 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+/* TODO(after proper power sequencing, rev0): remove this */
+void apreset(void) {
+	ccprintf("Cold resetting AP via switchcap\n");
+
+	/* make sure switchcap listens to us */
+	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
+
+	gpio_set_level(GPIO_SWITCHCAP_ON_L, 0);
+	msleep(500);
+	gpio_set_level(GPIO_SWITCHCAP_ON_L, 1);
+
+	msleep(10);
+
+	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 0);
+	msleep(10);
+	gpio_set_level(GPIO_PMIC_KPD_PWR_ODL, 1);
+
+}
+int command_apreset(int argc, char **argv)
+{
+	apreset();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(apreset, command_apreset,
+			"",
+			"Cold reset AP via switchcap");
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -63,5 +92,8 @@ static void board_init(void)
 	 * TODO(b/77957956): Remove it after hardware fix.
 	 */
 	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
+
+	/* simulate normal chromebook AP reboot behavior on rev0 */
+	apreset();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
