@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8119a6bc_72f92c23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-19T20:12:02Z",
+      "side": 1,
+      "message": "Done\n\nI guess I never formally understood what this tags mean. To me it means: I have developed and tested this branch on branch master, therefore I\u0027m confident it works there.",
+      "parentUuid": "38476838_ce77b39d",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "157c343ad7ae96d9ce4f024b044961d57e6392c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1d7a5a7_99010f1f",
         "filename": "board/cheza/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "157c343ad7ae96d9ce4f024b044961d57e6392c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d77041_3a2b9793",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-19T20:12:02Z",
+      "side": 1,
+      "message": "Sigh..\n\nI did it your way, but halfway through I discovered:\ncommon/build.mk:common-$(HAS_TASK_CHIPSET)+\u003dchipset.o\n\nWe don\u0027t have TASK_CHIPSET yet :(\n\nBecause of that I had to copy and paste pretty much the whole content of that file in here.\n\nI guess we\u0027re reverting half of this at one point anyway, might as well.",
+      "parentUuid": "b1d7a5a7_99010f1f",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "157c343ad7ae96d9ce4f024b044961d57e6392c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
