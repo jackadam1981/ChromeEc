@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38476838_ce77b39d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-19T14:08:55Z",
+      "side": 1,
+      "message": "nit: this is really \u0027BRANCH\u003dnone\u0027",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "157c343ad7ae96d9ce4f024b044961d57e6392c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d7a5a7_99010f1f",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-19T14:08:55Z",
+      "side": 1,
+      "message": "rather than adding apreset command which already exists,\nyou are supposed to implement \u0027chipset_reset\u0027 and define CONFIG_CMD_POWER_AP",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "157c343ad7ae96d9ce4f024b044961d57e6392c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
