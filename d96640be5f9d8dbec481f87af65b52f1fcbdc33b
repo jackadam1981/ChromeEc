@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "71ae78bf_3882cac7",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-04-19T21:18:10Z",
+      "side": 1,
+      "message": "Can you also make sure ccd_keepalive_en is on here and clear it after it\u0027s done flashing. If something goes wrong with RDD while holding the EC in reset, we don\u0027t want cr50 to leave the system in a weird state with ccd unable to be accessed.",
+      "revId": "d96640be5f9d8dbec481f87af65b52f1fcbdc33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da6d6827_6a2c9a23",
         "filename": "util/flash_ec",
         "patchSetId": 1
