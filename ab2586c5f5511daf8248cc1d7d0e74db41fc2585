@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5511a1e4_ad503437",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2018-04-20T22:18:34Z",
+      "side": 1,
+      "message": "I think it\u0027s marginally easier to understand this code if you just make an else if block that\u0027s #ifdef\u0027d out.",
+      "revId": "ab2586c5f5511daf8248cc1d7d0e74db41fc2585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
