@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f5a7c3e_0c3d0029",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-20T00:28:10Z",
+      "side": 1,
+      "message": "Maybe the trick here is to not call this again if you are in suspend?",
+      "revId": "7d4697a5aea1f3fbfab30096c7f4a7fd2ba4b05b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6a53ef_25fbff3c",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-20T00:28:10Z",
+      "side": 1,
+      "message": "That does not look right. You don\u0027t want to power the base on resume if it\u0027s not there, right?\n\nI\u0027d just call:\nhook_call_deferred(\u0026base_detect_deferred_data, 0);\n\nAlso, this needs to be HOOK_CHIPSET_STARTUP, not resume.",
+      "revId": "7d4697a5aea1f3fbfab30096c7f4a7fd2ba4b05b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
