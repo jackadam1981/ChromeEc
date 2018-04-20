@@ -968,6 +968,38 @@ DECLARE_SAFE_CONSOLE_COMMAND(sysinfo, command_sysinfo,
 			     "Print system info");
 #endif
 
+static int command_chargen(int argc, char **argv)
+{
+	int wrap_value = 0;
+	int wrap_counter = 0;
+
+	while (uart_getc() != -1)
+		; /* Drain received characters, if any. */
+
+	if (argc > 1)
+		wrap_value = atoi(argv[1]);
+
+	while (uart_getc() == -1) {
+		char c;
+
+		for (c = 32; c < 126; c++) {
+			while (!uart_tx_ready())
+				usleep(100);
+			uart_putc(c);
+			if (wrap_value &&
+			    (wrap_counter++ == wrap_value)) {
+				c = 32;
+				wrap_counter = 0;
+			}
+		}
+		usleep(100);
+	}
+
+	return 0;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(chargen, command_chargen,
+			     NULL, NULL);
+
 #ifdef CONFIG_CMD_SCRATCHPAD
 static int command_scratchpad(int argc, char **argv)
 {
