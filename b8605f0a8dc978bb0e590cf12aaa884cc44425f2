@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "814ea6de_4dd8e2a9",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-04-20T18:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42f8675d_9d491da1",
+      "revId": "b8605f0a8dc978bb0e590cf12aaa884cc44425f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cb4fdf2_af401070",
         "filename": "board/yorp/board.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2018-04-20T14:10:17Z",
       "side": 1,
       "message": "return EC_SUCCESS",
+      "range": {
+        "startLine": 175,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 9
+      },
+      "revId": "b8605f0a8dc978bb0e590cf12aaa884cc44425f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ad2071_1fe77c5e",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-04-20T18:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb4fdf2_af401070",
       "range": {
         "startLine": 175,
         "startChar": 7,
