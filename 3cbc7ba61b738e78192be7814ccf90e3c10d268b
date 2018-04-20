@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cdaf0b9f_132d3457",
+        "filename": "extra/usb_power/board.README",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-04-20T01:50:32Z",
+      "side": 1,
+      "message": "Agree. Added text to further explain this.",
+      "parentUuid": "03cfefa9_7cc506b0",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 57
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c85bf35_8fa17e53",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a17966_23fc0eb5",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-04-20T01:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c85bf35_8fa17e53",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "afc3a8ca_57379cbe",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-04-20T01:50:32Z",
+      "side": 1,
+      "message": "Original thought is that I want be lenient towards this file name. Even if we don\u0027t recognize it, we give it a chance to be opened. And we rely on open() to throw the error.\nBut I changed it so that we are strict about the filename and we throw error if file does not exist.",
+      "parentUuid": "6a3de566_98c3a527",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ac26985_88d5f57e",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed55bcc_be74dce9",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-04-20T01:50:32Z",
+      "side": 1,
+      "message": "See comment in code.",
+      "parentUuid": "0ac26985_88d5f57e",
+      "range": {
+        "startLine": 75,
+        "startChar": 18,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d124f918_65b28115",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-04-20T01:50:32Z",
+      "side": 1,
+      "message": "calling twice will overwrite the original unit. Changed method name to SetUnit to be more intuitive. Will issue a warning on overwrite.",
+      "parentUuid": "e5a20ece_556f7251",
+      "range": {
+        "startLine": 50,
+        "startChar": 34,
+        "endLine": 50,
+        "endChar": 77
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "501a0088_6e3177a0",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0bfeab6_02fa03c2",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-04-20T01:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "501a0088_6e3177a0",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 30
+      },
+      "revId": "3cbc7ba61b738e78192be7814ccf90e3c10d268b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
