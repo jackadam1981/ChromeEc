@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "c73059e5_ec054294",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-04-20T21:52:30Z",
+      "side": 1,
+      "message": "!\u003d isn\u0027t bitwise but it\u0027s still not a boolean operator (i.e. 0x10 !\u003d 0x01). The safest way to write this sort of thing is\n\n if (!!asserted !\u003d !!is_pmic_pwron())\n\n...or I guess technically you\u0027d already be good enough with\n\n if (!asserted !\u003d !is_pmic_pwron())",
+      "parentUuid": "3e050994_16578e3b",
+      "range": {
+        "startLine": 195,
+        "startChar": 14,
+        "endLine": 195,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58bd75a6_6d376da8",
         "filename": "power/sdm845.c",
         "patchSetId": 7
