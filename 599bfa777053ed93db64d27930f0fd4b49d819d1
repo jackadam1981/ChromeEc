@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b388ca42_fe22f672",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-20T16:27:09Z",
+      "side": 1,
+      "message": "Jade, you must be using \u0027git push\u0027  instead of \u0027repo upload\u0027? Please make sure to use \u0027repo upload\u0027 as it runs some important checks before accepting the patch, and make sure it passes before proceeding.",
+      "parentUuid": "13a9e6ee_f8916a8e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94bbcf4a_c2e45d81",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
