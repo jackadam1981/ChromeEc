@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d719d597_4086094c",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-20T17:29:48Z",
+      "side": 1,
+      "message": "That\u0027s a good idea.",
+      "parentUuid": "a9e646b7_044fd426",
+      "revId": "e21623f819733355f5fba24ff6166ddd3110c3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef6d1d07_c6a4dcd9",
         "filename": "board/zoombini/base_detect.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-20T17:13:12Z",
       "side": 1,
       "message": "After you give up and decide not to enable power to base, do you need to do something like tablet_set_mode(1)?",
+      "revId": "e21623f819733355f5fba24ff6166ddd3110c3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee751406_95406cde",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-20T17:29:48Z",
+      "side": 1,
+      "message": "I tie tablet mode with physical detach/attach and not necessarily base power. I think it might be weird if the virtual keyboard shows up when the base is still attached.",
+      "parentUuid": "ef6d1d07_c6a4dcd9",
       "revId": "e21623f819733355f5fba24ff6166ddd3110c3f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
