@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59967774_88876b20",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-20T21:47:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is a good idea for POWER_GOOD. What about when we\u0027re warm resetting (either short or long)? Won\u0027t this signal go low temporarly, making he EC think the pmic lost power? I\u0027m thinking it might be better to use PS_HOLD for this, or maybe an OR between both of those. We also have to think how the long warm reset will affect these signals, since we\u0027ll temporarily have to mux them to outputs.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d33f6b0_605fb4fd",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-20T21:47:31Z",
+      "side": 1,
+      "message": "We should probably implement this as well. I\u0027ve noticed your comment about the AP\u0027s ability to reset itself, but for now we still want this feature (since none of that code is ready yet, much easier with a gpio).",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5836b00a_fb34158d",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-20T21:47:31Z",
+      "side": 1,
+      "message": "How would that work? POWER_GOOD only goes on if the switchcap is already on. Beyond rev0, this should never be the case.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e050994_16578e3b",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-20T21:47:31Z",
+      "side": 1,
+      "message": "nit: \"!\u003d\" might be more semantic perhaps? It\u0027s also non-bitwise. This applies to a lot of other places.",
+      "range": {
+        "startLine": 195,
+        "startChar": 14,
+        "endLine": 195,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58bd75a6_6d376da8",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-20T21:47:31Z",
+      "side": 1,
+      "message": "Feel free to implement the real code already. It would be a good simulation of what would be happening if the AP is malicious. This EC code should work just fine in its final form, regardless of AP readiness.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 36
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
