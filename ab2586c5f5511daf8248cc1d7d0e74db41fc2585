@@ -16,6 +16,24 @@
       "revId": "ab2586c5f5511daf8248cc1d7d0e74db41fc2585",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b3716e_cdbfb45e",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-04-20T22:46:59Z",
+      "side": 1,
+      "message": "This way we\u0027ll have one line of duplicate code: MSLEEP_CHECK_ABORTED_SUSPEND(power_seq_ops[i].delay)\n\nI see RO code size increase 40B (0x19444 -\u003e 0x19484).\nNot sure if it\u0027s worth it.",
+      "parentUuid": "5511a1e4_ad503437",
+      "revId": "ab2586c5f5511daf8248cc1d7d0e74db41fc2585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
