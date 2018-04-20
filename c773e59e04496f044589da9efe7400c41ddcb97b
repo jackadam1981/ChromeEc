@@ -16,6 +16,24 @@
       "revId": "c773e59e04496f044589da9efe7400c41ddcb97b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58bc0ab2_07031581",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-04-20T22:47:56Z",
+      "side": 1,
+      "message": "Powerlog currently does add a value for each entry (mostly for printing), so SetDefaultUnit won\u0027t be in use :(",
+      "parentUuid": "6dd1026e_7949b764",
+      "revId": "c773e59e04496f044589da9efe7400c41ddcb97b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
