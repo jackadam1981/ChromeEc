@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd1026e_7949b764",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-04-20T03:34:26Z",
+      "side": 1,
+      "message": "I think for simplicity it might beneficial to allow for SetDefaultUnit(self, unit):\nwhere you have self._unit \u003d collections.defaultdict(lambda u\u003dunit: u) so we don\u0027t have to add a unit for each entry.",
+      "revId": "c773e59e04496f044589da9efe7400c41ddcb97b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
