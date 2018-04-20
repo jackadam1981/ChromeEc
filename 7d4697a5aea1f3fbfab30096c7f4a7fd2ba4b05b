@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7bb270d7_951c63d2",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-20T00:39:41Z",
+      "side": 1,
+      "message": "I think we need to be able to wake from attach/detach events in suspend. (http://shortn/_tG8rFC8Akj). So maybe don\u0027t call it in S5 or lower.",
+      "parentUuid": "4f5a7c3e_0c3d0029",
+      "revId": "7d4697a5aea1f3fbfab30096c7f4a7fd2ba4b05b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a6a53ef_25fbff3c",
         "filename": "board/zoombini/base_detect.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-20T00:28:10Z",
       "side": 1,
       "message": "That does not look right. You don\u0027t want to power the base on resume if it\u0027s not there, right?\n\nI\u0027d just call:\nhook_call_deferred(\u0026base_detect_deferred_data, 0);\n\nAlso, this needs to be HOOK_CHIPSET_STARTUP, not resume.",
+      "revId": "7d4697a5aea1f3fbfab30096c7f4a7fd2ba4b05b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c808d1dd_c4de0032",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-20T00:39:41Z",
+      "side": 1,
+      "message": "Oh, yeah, that\u0027s wrong. Kicking the state machine should be sufficient.",
+      "parentUuid": "6a6a53ef_25fbff3c",
       "revId": "7d4697a5aea1f3fbfab30096c7f4a7fd2ba4b05b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
