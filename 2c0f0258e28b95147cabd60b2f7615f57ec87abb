@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21f1e328_a452f43b",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-20T10:17:24Z",
+      "side": 1,
+      "message": "now you are using ECB mode, you don\u0027t need to do the init everytime,\nyou can move DCRYPTO_aes_init to the beginning of DCRYPTO_aes_cmac.\nIt actually makes a significant difference for speed, according to my benchmarks it\u0027s 30 to 50% faster ...",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "2c0f0258e28b95147cabd60b2f7615f57ec87abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cffbb22_df1db842",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-20T10:17:24Z",
+      "side": 1,
+      "message": "You don\u0027t need an IV for ECB mode,\nyou can put NULL here and remove \u0027zero\u0027 above (saving the corresponding 16 bytes and init time)",
+      "range": {
+        "startLine": 57,
+        "startChar": 48,
+        "endLine": 57,
+        "endChar": 71
+      },
+      "revId": "2c0f0258e28b95147cabd60b2f7615f57ec87abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb611f2_e85811a7",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-20T10:17:24Z",
+      "side": 1,
+      "message": "nit: might worth checking the testN param (ie I have just panic\u0027ed my board by typing \u0027test_cmac 0\u0027)\nif (testN \u003c 1 || testN \u003e ARRAY_SIZE(rfc_tests))\n  return EC_ERROR_PARAM1 + (i - 1);",
+      "range": {
+        "startLine": 299,
+        "startChar": 2,
+        "endLine": 299,
+        "endChar": 30
+      },
+      "revId": "2c0f0258e28b95147cabd60b2f7615f57ec87abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
