@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9e646b7_044fd426",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-20T17:13:12Z",
+      "side": 1,
+      "message": "Bail out early if no change in state?\n\nif (prev_state \u003d\u003d enable)\nreturn;",
+      "revId": "e21623f819733355f5fba24ff6166ddd3110c3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6d1d07_c6a4dcd9",
+        "filename": "board/zoombini/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-20T17:13:12Z",
+      "side": 1,
+      "message": "After you give up and decide not to enable power to base, do you need to do something like tablet_set_mode(1)?",
+      "revId": "e21623f819733355f5fba24ff6166ddd3110c3f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
