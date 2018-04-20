@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "86c948a8_3f15ef40",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-04-20T07:53:06Z",
+      "side": 1,
+      "message": "(As discussed with Vincent in person; recording here for documentation)\nIt seems like the RFC is using big-endian, so the byte order gets reversed if this is changed to uint32 and the algorithm no longer works. Left as-is.",
+      "parentUuid": "4f7d7b23_8eb251be",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "0723805497afe889fced6b7a52338fbb81adeea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb30325c_52837b95",
         "filename": "chip/g/dcrypto/dcrypto.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0723805497afe889fced6b7a52338fbb81adeea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551b8dc0_36eff0c1",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-04-20T07:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb30325c_52837b95",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "0723805497afe889fced6b7a52338fbb81adeea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
