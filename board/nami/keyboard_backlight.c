@@ -8,6 +8,7 @@
 #include "console.h"
 #include "cros_board_info.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "lid_switch.h"
 #include "lm3509.h"
 #include "pwm.h"
@@ -87,23 +88,48 @@ DECLARE_HOOK(HOOK_INIT, kblight_init, HOOK_PRIO_DEFAULT);
 static void kblight_suspend(void)
 {
 	if (kblight_power)
-	kblight_power(0);
+		kblight_power(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_suspend, HOOK_PRIO_DEFAULT);
 
 static void kblight_resume(void)
 {
 	if (kblight_power)
-	kblight_power(lid_is_open());
+		kblight_power(lid_is_open());
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_resume, HOOK_PRIO_DEFAULT);
 
 static void kblight_lid_change(void)
 {
 	if (kblight_power)
-	kblight_power(lid_is_open());
+		kblight_power(lid_is_open());
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, kblight_lid_change, HOOK_PRIO_DEFAULT);
+
+int hc_set_kblight(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_pwm_set_keyboard_backlight *p = args->params;
+	/* Assume already enabled */
+	if (!kblight_set)
+		return EC_RES_UNAVAILABLE;
+	kblight_set(p->percent);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT,
+		     hc_set_kblight, EC_VER_MASK(0));
+
+int hc_get_kblight(struct host_cmd_handler_args *args)
+{
+	struct ec_response_pwm_get_keyboard_backlight *r = args->response;
+	if (!kblight_get)
+		return EC_RES_UNAVAILABLE;
+	r->percent = kblight_get();
+	/* Assume always enabled */
+	r->enabled = 1;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT,
+		     hc_get_kblight, EC_VER_MASK(0));
 
 static int cc_kblight(int argc, char **argv)
 {
