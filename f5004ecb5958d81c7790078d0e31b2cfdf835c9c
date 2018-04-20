@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20e384dd_475bfdb3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 2252,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-20T02:07:44Z",
+      "side": 1,
+      "message": "I think it\u0027s okay. ppc_init should basically close the CC FETs.",
+      "parentUuid": "f65bbb50_fb92d3cc",
+      "range": {
+        "startLine": 2252,
+        "startChar": 1,
+        "endLine": 2252,
+        "endChar": 31
+      },
+      "revId": "f5004ecb5958d81c7790078d0e31b2cfdf835c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d324d95d_d9ac96e8",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-13T14:25:35Z",
       "side": 1,
       "message": "is this taking into account the pd_set_power_role above ?",
+      "range": {
+        "startLine": 2264,
+        "startChar": 0,
+        "endLine": 2265,
+        "endChar": 33
+      },
+      "revId": "f5004ecb5958d81c7790078d0e31b2cfdf835c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67d5936_8f3a2d59",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-20T02:07:44Z",
+      "side": 1,
+      "message": "It\u0027s currently not, but it should. I think we should set the termination according to our power role.",
+      "parentUuid": "d324d95d_d9ac96e8",
       "range": {
         "startLine": 2264,
         "startChar": 0,
