@@ -34,6 +34,24 @@
       "revId": "0521077d7b1463165d2438f1c6f8b371e0f1d922",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da3d372_13d0ebaf",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-20T16:06:49Z",
+      "side": 0,
+      "message": "doing it here was a violation of the HW rules described in the TRM: we would have needed to guarantee that the TX FIFO was not empty.\nOverall the HW doesn\u0027t really behave as described in the manual either ... \nwe are clearing this bit in spi_send_response_packet() [when our TX FIFO is actually filled]",
+      "parentUuid": "ffa94bb6_c0f9012b",
+      "revId": "0521077d7b1463165d2438f1c6f8b371e0f1d922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
