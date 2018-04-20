@@ -17,6 +17,7 @@
 
 /* EC */
 #define CONFIG_ADC
+#define CONFIG_BOARD_HAS_RTC_RESET
 #define CONFIG_BOARD_VERSION
 #define CONFIG_BOARD_SPECIFIC_VERSION
 #define CONFIG_CRC8
@@ -248,6 +249,7 @@ void board_set_tcpc_power_mode(int port, int mode);
 int board_get_battery_soc(void);
 void led_alert(int enable);
 void led_critical(void);
+void board_rtc_reset(void);
 
 #endif /* !__ASSEMBLER__ */
 
