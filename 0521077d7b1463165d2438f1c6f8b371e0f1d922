@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffa94bb6_c0f9012b",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-20T15:52:45Z",
+      "side": 0,
+      "message": "caveat: I\u0027m not familiar with the stm32, but how come you don\u0027t have to clear this flag anymore?",
+      "revId": "0521077d7b1463165d2438f1c6f8b371e0f1d922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
