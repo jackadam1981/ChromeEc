@@ -68,6 +68,29 @@
       "revId": "2c0f0258e28b95147cabd60b2f7615f57ec87abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0fefbf_8d89649c",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-20T10:42:57Z",
+      "side": 1,
+      "message": "we have a real issue here though:\nEC_ERROR_UNKNOWN \u003d 1 (\u003d\u003d success ...)\n\nThe root cause being DCRYPTO using 1 \u003d\u003d success, 0 \u003d\u003d fail\nand everywhere else: EC_SUCCESS \u003d\u003d 0 and EC_ERROR_ ... \u003e 0\n\nwe can stick to DCRYPTO convention but returns -EC_ERROR_UNKNOWN for internal issues.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 48
+      },
+      "revId": "2c0f0258e28b95147cabd60b2f7615f57ec87abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
