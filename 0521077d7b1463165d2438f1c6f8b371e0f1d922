@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a5dfaae_7da13a99",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-21T09:44:51Z",
+      "side": 0,
+      "message": "yes, the CL organically ended up like,\nbut I will do the other way round",
+      "parentUuid": "fe9c8946_927bbc04",
+      "revId": "0521077d7b1463165d2438f1c6f8b371e0f1d922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffa94bb6_c0f9012b",
         "filename": "chip/stm32/spi.c",
         "patchSetId": 2
