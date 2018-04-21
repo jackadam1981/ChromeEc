@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "040da758_a0c66d39",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-21T01:12:19Z",
+      "side": 1,
+      "message": "It is a good point. But PS_HOLD still has the same issue, which is a low pulse for warm reset. Looked at an example, it is like:\n 1. PS_HOLD L\n 2. AP_RST_L L\n 3. AP_RST_L H\n 4. PS_HOLD H\n\nMaybe we need to add some timer logic to ignore the short pulse.\n\nStill need to experiment your rev-1 design for the long warm reset case. I think it is probably OK. For the long warm reset, which is controlled by SYS_RST_L as an EC input, the falling edge will trigger S0-\u003eS5 and the raising edge will trigger S5-\u003eS0. The AP_RST_L signal is held by EC during the process, should match what we want.",
+      "parentUuid": "59967774_88876b20",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d33f6b0_605fb4fd",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "077bbae4_8d248563",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-21T01:12:19Z",
+      "side": 1,
+      "message": "Per today discussion, this AP_RST_REQ acts as a secured way to reset AP. It is needed so far until we have a better understanding of the Qualcomm way reset.\n\nI will add the implementation of it.",
+      "parentUuid": "5d33f6b0_605fb4fd",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5836b00a_fb34158d",
         "filename": "power/sdm845.c",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-20T21:47:31Z",
       "side": 1,
       "message": "How would that work? POWER_GOOD only goes on if the switchcap is already on. Beyond rev0, this should never be the case.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f92e9da2_c39ac95e",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-21T01:12:19Z",
+      "side": 1,
+      "message": "It is for the case of sysjump to RW. The switchcap and AP are already ON.",
+      "parentUuid": "5836b00a_fb34158d",
       "range": {
         "startLine": 107,
         "startChar": 1,
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "f0837f32_dcaeade7",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-21T01:12:19Z",
+      "side": 1,
+      "message": "Right, using !\u003d is more understandable. Will fix it.",
+      "parentUuid": "c73059e5_ec054294",
+      "range": {
+        "startLine": 195,
+        "startChar": 14,
+        "endLine": 195,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58bd75a6_6d376da8",
         "filename": "power/sdm845.c",
         "patchSetId": 7
@@ -129,6 +225,30 @@
       "writtenOn": "2018-04-20T21:47:31Z",
       "side": 1,
       "message": "Feel free to implement the real code already. It would be a good simulation of what would be happening if the AP is malicious. This EC code should work just fine in its final form, regardless of AP readiness.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 36
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4c4683_9dc3e0e0",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-21T01:12:19Z",
+      "side": 1,
+      "message": "Will do so. The implementation is to just remove this check.",
+      "parentUuid": "58bd75a6_6d376da8",
       "range": {
         "startLine": 217,
         "startChar": 0,
