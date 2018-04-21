@@ -63,12 +63,23 @@
 /* Delay between power-on the system and power-on the PMIC */
 #define PMIC_POWER_ON_DELAY		(10 * MSEC)
 
+/* Delay between power-off and power-on */
+#define PMIC_POWER_COLD_RESET_DELAY	(50 * MSEC)
+
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
 
 /* 1 if lid-open event has been detected */
 static char lid_opened;
+
+/*
+ * 1 if power state is controlled by special functions, like a console command
+ * or an interrupt handler, for bypassing POWER_GOOD lost trigger. It is
+ * because these functions control the PMIC and AP power signals directly and
+ * don't want to get preempted by the chipset state machine.
+ */
+static uint8_t bypass_power_lost_trigger;
 
 /* Time where we will power off, if power button still held down */
 static timestamp_t power_off_deadline;
@@ -438,7 +449,7 @@ static int check_for_power_off_event(void)
 	power_button_was_pressed = pressed;
 
 	/* POWER_GOOD released by AP : shutdown immediately */
-	if (!power_has_signals(IN_POWER_GOOD)) {
+	if (!power_has_signals(IN_POWER_GOOD) && !bypass_power_lost_trigger) {
 		if (power_button_was_pressed)
 			timer_cancel(TASK_ID_CHIPSET);
 
@@ -468,11 +479,11 @@ void chipset_reset(void)
 	 * reset pin and zero-latency. We do cold reset instead.
 	 */
 	CPRINTS("EC triggered cold reboot");
+	bypass_power_lost_trigger = 1;
 	power_off();
-
-	/* Issue a request to initiate a power-on sequence */
-	power_request = POWER_REQ_ON;
-	task_wake(TASK_ID_CHIPSET);
+	usleep(PMIC_POWER_COLD_RESET_DELAY);
+	power_on();
+	bypass_power_lost_trigger = 0;
 }
 
 /**
