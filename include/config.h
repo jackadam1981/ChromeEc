@@ -755,6 +755,9 @@
 /* Board requires chipset pre-init callback */
 #undef CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
 
+/* Support reset request from AP via a GPIO; define the GPIO in this config */
+#undef CONFIG_CHIPSET_RESET_REQUEST_GPIO
+
 /* Redefine when we need a different power-on sequence on the same chipset. */
 #define CONFIG_CHIPSET_POWER_SEQ_VERSION 0
 

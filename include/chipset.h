@@ -121,4 +121,12 @@ int chipset_pltrst_is_valid(void) __attribute__((weak));
  * Execute chipset-specific reboot.
  */
 void chipset_handle_reboot(void);
+
+#ifdef CONFIG_CHIPSET_SDM845
+/**
+ * GPIO interrupt handler of reset request from AP.
+ */
+void chipset_reset_request_interrupt(enum gpio_signal signal);
+#endif /* CONFIG_CHIPSET_SDM845 */
+
 #endif  /* __CROS_EC_CHIPSET_H */
