@@ -7,6 +7,8 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "chipset.h"
+#include "console.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -17,11 +19,21 @@
 #include "power_button.h"
 #include "switch.h"
 
+/* Forward declaration */
+static void warm_reset_request_interrupt(enum gpio_signal signal);
+
 #include "gpio_list.h"
 
 /* 8-bit I2C address */
 #define PI3USB9281_I2C_ADDR	0x4a
 #define DA9313_I2C_ADDR		0xd0
+
+/* GPIO Interrupt Handlers */
+static void warm_reset_request_interrupt(enum gpio_signal signal)
+{
+	ccprintf("AP wants warm reset");
+	chipset_reset();
+}
 
 /* Wake-up pins for hibernate */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -84,5 +96,8 @@ static void board_init(void)
 	 * TODO(b/77957956): Remove it after hardware fix.
 	 */
 	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
+
+	/* Enable reboot control input from AP */
+	gpio_enable_interrupt(GPIO_AP_RST_REQ);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
