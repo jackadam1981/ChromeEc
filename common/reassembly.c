@@ -83,28 +83,41 @@ void *reassembly_register(void *buffer, size_t buffer_size,
 	return buffer;
 }
 
-enum reassembly_result reassembly_feed(void *c, void *buffer, size_t size)
+void reassembly_get_payload(void *c, struct reassembly_payload *payload)
+{
+	struct reassembly_context *ctx = c;
+
+	payload->rs_data = ctx->pdu.payload;
+	payload->rs_data_size = ctx->pdu.size;
+}
+
+enum reassembly_result reassembly_feed(void *c,
+				       struct queue const *q,
+				       size_t count)
 {
 	timestamp_t tstamp;
 	uint16_t expected_size;
 	struct reassembly_context *ctx = c;
 
 	/* First things first: does it fit? */
-	if ((size + ctx->pdu_offset) > ctx->payload_size) {
+	if ((count + ctx->pdu_offset) > ctx->payload_size) {
 		ctx->pdu_offset = 0;
+		queue_advance_head(q, count);
 		return RS_OVERFLOW;
 	}
 
 	tstamp = get_time();
 	if (ctx->pdu_offset && ((tstamp.le.lo - ctx->us_stamp) > RS_TIMEOUT_US)) {
 		ctx->pdu_offset = 0;
+		queue_advance_head(q, count);
 		return RS_TIMEOUT;
 	}
 
 	ctx->us_stamp = tstamp.le.lo;
 
-	memcpy(ctx->pdu.payload + ctx->pdu_offset, buffer, size);
-	ctx->pdu_offset += size;
+	QUEUE_REMOVE_UNITS(q,
+			   ctx->pdu.payload + ctx->pdu_offset,
+			   count);
 
 	if (ctx->pdu_offset < sizeof(struct reassembly_pdu))
 		return RS_NEED_MORE_DATA;

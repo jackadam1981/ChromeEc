@@ -2,15 +2,18 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-
+#if 0
 #include "byteorder.h"
-#include "common.h"
-#include "console.h"
 #include "consumer.h"
 #include "extension.h"
-#include "queue_policies.h"
-#include "shared_mem.h"
 #include "system.h"
+#endif
+
+#include "common.h"
+#include "console.h"
+#include "queue_policies.h"
+#include "reassembly.h"
+#include "shared_mem.h"
 #include "upgrade_fw.h"
 #include "usb-stream.h"
 
@@ -60,6 +63,64 @@ USB_STREAM_CONFIG_FULL(usb_upgrade,
 		       upgrade_to_usb)
 
 
+#define MAX_UPDATE_PDU_SIZE 0x1100
+
+static int upgrade_pdu_check(const void *check, size_t check_size,
+			     const void *data, size_t data_size)
+{
+	return 0;
+}
+
+static void upgrade_out_handler(struct consumer const *consumer, size_t count)
+{
+	static struct reassembly_context *ctx;
+	enum reassembly_result result;
+	uint8_t resp_value = 0;
+	size_t response_size = 0;
+	struct reassembly_payload payload;
+	uint8_t *response_buffer;
+
+	if (!ctx) {
+		char *buf;
+		size_t buf_size = reassembly_overhead() + MAX_UPDATE_PDU_SIZE;
+
+		/* New PDU starting?. */
+		if (shared_mem_acquire(buf_size, &buf)
+		    != EC_SUCCESS) {
+			CPRINTS("%s: problem: failed to allocate %d bytes",
+				__func__, buf_size);
+			queue_advance_head(consumer->queue, count);
+			resp_value = UPGRADE_MALLOC_ERROR;
+			QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, 1);
+			return;
+		}
+		ctx = reassembly_register(buf, buf_size, upgrade_pdu_check);
+	}
+
+	reassembly_get_payload(ctx, &payload);
+	result = reassembly_feed(ctx, consumer->queue, count);
+	switch(result) {
+	case RS_NEED_MORE_DATA:
+		return;
+	case RS_SUCCESS:
+		fw_upgrade_command_handler(payload.rs_data,
+					   payload.rs_data_size,
+					   &response_size);
+	default:
+		break;
+	}
+
+	/*
+	 * There sure is one extra byte below payload, let's use that space to
+	 * communicate reassembly result to the server.
+	 */
+	response_buffer = ((uint8_t *)payload.rs_data) - 1;
+	response_buffer[0] = result;
+	QUEUE_ADD_UNITS(&upgrade_to_usb, response_buffer, response_size + 1);
+	shared_mem_release(ctx);
+}
+
+#if 0
 /* The receiver can be in one of the states below. */
 enum rx_state {
 	rx_idle,	   /* Nothing happened yet. */
@@ -399,7 +460,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	shared_mem_release(block_buffer);
 	block_buffer = NULL;
 }
-
+#endif
 struct consumer const upgrade_consumer = {
 	.queue = &usb_to_upgrade,
 	.ops   = &((struct consumer_ops const) {
