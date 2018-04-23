@@ -46,6 +46,40 @@
       "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "590548a4_dc0834a3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-23T23:20:00Z",
+      "side": 1,
+      "message": "Could you add a scary message here?",
+      "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2778d69e_8f02fef1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2233,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-23T23:20:00Z",
+      "side": 1,
+      "message": "What do you think adding a message here (or somewhere below) to show we\u0027re restoring the states?",
+      "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
