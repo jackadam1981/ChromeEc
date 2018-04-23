@@ -747,3 +747,11 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+int board_is_lid_angle_tablet_mode(void)
+{
+	uint32_t oem = PROJECT_NAMI;
+	cbi_get_oem_id(&oem);
+	/* Vayne uses lid angle to detect tablet mode because it doesn't have a
+	 * GMR sensor. */
+	return oem == PROJECT_VAYNE;
+}
