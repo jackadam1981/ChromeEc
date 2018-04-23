@@ -27,6 +27,7 @@ static void warm_reset_request_interrupt(enum gpio_signal signal);
 /* 8-bit I2C address */
 #define PI3USB9281_I2C_ADDR	0x4a
 #define DA9313_I2C_ADDR		0xd0
+#define CHARGER_I2C_ADDR	0x12
 
 /* GPIO Interrupt Handlers */
 static void warm_reset_request_interrupt(enum gpio_signal signal)
@@ -42,6 +43,15 @@ const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_POWER_BUTTON_L,
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
+void board_set_switchcap(int asserted) {
+	/*
+	 * Disable SwitchCap auto-boot and make EN pin level-trigger
+	 * TODO(b/77957956): Remove it after hardware fix.
+	 */
+	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
+	gpio_set_level(GPIO_SWITCHCAP_ON_L, asserted);
+}
 
 const struct adc_t adc_channels[] = {};
 
