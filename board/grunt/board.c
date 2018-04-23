@@ -46,6 +46,8 @@
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "kblight.h"
+#include "pwm_kblight.h"
 
 /*
  * These GPIOs change pins depending on board version. They are configured
@@ -708,3 +710,17 @@ uint32_t system_get_sku_id(void)
 	sku_id = (sku_id2 << 4) | sku_id1;
 	return sku_id;
 }
+
+static struct kblight_drv _kblight_drv = {
+        .init = pwm_kblight_init,
+        .preserve_state = pwm_kblight_preserve_state,
+        .set = pwm_kblight_set,
+        .get = pwm_kblight_get,
+        .enable = pwm_kblight_enable,
+        .state = pwm_kblight_state,
+};
+static void kblight_config(void)
+{
+        kblight_driver_register(&_kblight_drv);
+}
+DECLARE_HOOK(HOOK_INIT, kblight_config, HOOK_PRIO_FIRST);

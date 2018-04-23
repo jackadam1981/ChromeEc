@@ -38,6 +38,7 @@
 #define CONFIG_SOFTWARE_PANIC
 #define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
+#define CONFIG_KBLIGHT
 #define CONFIG_SHA256_UNROLLED
 
 /* Internal SPI flash on NPCX7 */

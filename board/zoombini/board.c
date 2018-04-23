@@ -46,6 +46,9 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
+#include "kblight.h"
+#include "pwm_kblight.h"
+
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
@@ -722,3 +725,19 @@ static int command_tcpc_dump_reg(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(tcpcdump, command_tcpc_dump_reg, "<port>",
 			"Dumps TCPCI regs 0-ff");
+
+#ifdef BOARD_ZOOMBINI
+static struct kblight_drv _kblight_drv = {
+        .init = pwm_kblight_init,
+        .preserve_state = pwm_kblight_preserve_state,
+        .set = pwm_kblight_set,
+        .get = pwm_kblight_get,
+        .enable = pwm_kblight_enable,
+        .state = pwm_kblight_state,
+};
+static void kblight_config(void)
+{
+        kblight_driver_register(&_kblight_drv);
+}
+DECLARE_HOOK(HOOK_INIT, kblight_config, HOOK_PRIO_FIRST);
+#endif

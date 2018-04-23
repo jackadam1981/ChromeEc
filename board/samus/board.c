@@ -46,6 +46,8 @@
 #include "thermal.h"
 #include "uart.h"
 #include "util.h"
+#include "kblight.h"
+#include "pwm_kblight.h"
 
 static void pd_mcu_interrupt(enum gpio_signal signal)
 {
@@ -407,3 +409,16 @@ void jtag_interrupt(enum gpio_signal signal)
 }
 #endif /* CONFIG_LOW_POWER_IDLE */
 
+static struct kblight_drv _kblight_drv = {
+        .init = pwm_kblight_init,
+        .preserve_state = pwm_kblight_preserve_state,
+        .set = pwm_kblight_set,
+        .get = pwm_kblight_get,
+        .enable = pwm_kblight_enable,
+        .state = pwm_kblight_state,
+};
+static void kblight_config(void)
+{
+        kblight_driver_register(&_kblight_drv);
+}
+DECLARE_HOOK(HOOK_INIT, kblight_config, HOOK_PRIO_FIRST);

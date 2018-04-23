@@ -53,6 +53,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "kblight.h"
+#include "pwm_kblight.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -1093,7 +1095,7 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 		return flags0;
 
 	// Report that there is no keyboard backlight
-	flags0 &= ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB);
+	flags0 &= ~EC_FEATURE_MASK_0(EC_FEATURE_KBLIGHT);
 
 	return flags0;
 }
@@ -1102,3 +1104,17 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+
+static struct kblight_drv _kblight_drv = {
+        .init = pwm_kblight_init,
+        .preserve_state = pwm_kblight_preserve_state,
+        .set = pwm_kblight_set,
+        .get = pwm_kblight_get,
+        .enable = pwm_kblight_enable,
+        .state = pwm_kblight_state,
+};
+static void kblight_config(void)
+{
+        kblight_driver_register(&_kblight_drv);
+}
+DECLARE_HOOK(HOOK_INIT, kblight_config, HOOK_PRIO_FIRST);
