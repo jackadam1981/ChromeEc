@@ -570,11 +570,13 @@ function claim_pty() {
 }
 
 function get_serial() {
+	backup_sn_ctl=""
 	if [[ "${SERVO_TYPE}" =~ "servo_v4_with_servo_micro" ]]; then
 		if [[ -z "${BOARD}" ]]; then
 			sn_ctl="servo_micro_"
 		else
 			sn_ctl="servo_micro_for_${BOARD}_"
+			backup_sn_ctl="servo_micro_"
 		fi
 	elif [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
 		sn_ctl="ccd_"
@@ -583,8 +585,15 @@ function get_serial() {
 		sn_ctl=""
 	fi
 
-	SERIALNAME=$(${DUT_CONTROL_CMD} "${sn_ctl}serialname" | cut -d: -f2)
-	echo $SERIALNAME
+	SERIALNAME=$(${DUT_CONTROL_CMD} "${sn_ctl}serialname")
+	BACKUP_SERIALNAME=$(${DUT_CONTROL_CMD} "${backup_sn_ctl}serialname")
+	# If we failed to get the serialname from the main control, use the
+	# backup control
+	if [[ "${SERIALNAME}" =~ "unknown" ]] && \
+	   [[ ! "${BACKUP_SERIALNAME}" =~ "unknown" ]]; then
+		SERIALNAME="${BACKUP_SERIALNAME}"
+	fi
+	echo "${SERIALNAME}" | cut -d: -f2
 }
 
 # Board specific flashing scripts
