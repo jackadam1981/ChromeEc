@@ -2886,6 +2886,13 @@
 #undef CONFIG_USB_PD_TCPM_MUX
 
 /*
+ * Use this option if the TCPC/MUX chip is only being used as a mux and the
+ * board tcpc_config_t does not specify the chip. The mux driver must use the
+ * MUX_PORT_AND_ADDR define to pack the port and address together.
+ */
+#undef CONFIG_TCPM_MUX_WITHOUT_TCPC
+
+/*
  * The TCPM must know whether VBUS is present in order to make proper state
  * transitions. In addition, charge_manager must know about VBUS presence in
  * order to make charging decisions. VBUS state can be determined by various
