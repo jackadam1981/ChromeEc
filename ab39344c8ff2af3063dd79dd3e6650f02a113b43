@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18beb815_3350fb0e",
+        "filename": "power/sdm845.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-23T23:29:49Z",
+      "side": 1,
+      "message": "This needs to be bigger. On my board, when doing \"apreset\", \"power_good\" takes around 140ms (maybe just a little bit more), so we always timeout.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 38
+      },
+      "revId": "ab39344c8ff2af3063dd79dd3e6650f02a113b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
