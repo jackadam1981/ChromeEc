@@ -16,6 +16,24 @@
       "revId": "b0130082af15556f9315b9262de615d3c433d27a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adbf3e1_fc6b8c25",
+        "filename": "board/bip/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-23T21:47:38Z",
+      "side": 1,
+      "message": "It is supposed to be TCPC. I and going to have to see where else I made this mistake now :(",
+      "parentUuid": "8e937001_920958b7",
+      "revId": "b0130082af15556f9315b9262de615d3c433d27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
