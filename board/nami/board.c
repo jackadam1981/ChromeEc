@@ -58,6 +58,8 @@
 #include "espi.h"
 #include "fan.h"
 #include "fan_chip.h"
+#include "kblight.h"
+#include "pwm_kblight.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -497,6 +499,7 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED1]   = { 3, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_LED2] = { 5, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
+	[PWM_CH_KBLIGHT] = { 2, 0, 100 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -771,3 +774,26 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 	return flags1;
 }
 
+static struct kblight_drv _kblight_drv[] = {
+	{
+        .init = pwm_kblight_init,
+        .preserve_state = pwm_kblight_preserve_state,
+        .set = pwm_kblight_set,
+        .get = pwm_kblight_get,
+        .enable = pwm_kblight_enable,
+        .state = pwm_kblight_state,
+	},
+};
+static void kblight_config(void)
+{
+	uint32_t sku;
+	int ret;
+	ret = cbi_get_sku_id(&sku);
+
+	if(ret)
+		return;
+
+	if (sku == 0x3AE3)
+	    kblight_driver_register(&_kblight_drv[0]);
+}
+DECLARE_HOOK(HOOK_INIT, kblight_config, HOOK_PRIO_FIRST);

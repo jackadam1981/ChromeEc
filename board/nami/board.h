@@ -132,6 +132,8 @@
 
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3509
+#define CONFIG_KBLIGHT
+#define CONFIG_PWM_KBLIGHT
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
@@ -242,6 +244,7 @@ enum pwm_channel {
 	PWM_CH_LED1,
 	PWM_CH_LED2,
 	PWM_CH_FAN,
+	PWM_CH_KBLIGHT,
 	/* Number of PWM channels */
 	PWM_CH_COUNT,
 };
