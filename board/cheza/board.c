@@ -27,6 +27,7 @@ static void warm_reset_request_interrupt(enum gpio_signal signal);
 /* 8-bit I2C address */
 #define PI3USB9281_I2C_ADDR	0x4a
 #define DA9313_I2C_ADDR		0xd0
+#define CHARGER_I2C_ADDR	0x12
 
 /* GPIO Interrupt Handlers */
 static void warm_reset_request_handler(void)
@@ -112,6 +113,12 @@ static void board_init(void)
 	 * TODO(b/77957956): Remove it after hardware fix.
 	 */
 	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
+
+	/*
+	 * Increase AdapterCurrentLimit{1,2} to max (6080mA)
+	 */
+	i2c_write16(I2C_PORT_POWER, CHARGER_I2C_ADDR, 0x3B, 0x17c0);
+	i2c_write16(I2C_PORT_POWER, CHARGER_I2C_ADDR, 0x3F, 0x17c0);
 
 	/* Enable reboot control input from AP */
 	gpio_enable_interrupt(GPIO_AP_RST_REQ);
