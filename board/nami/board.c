@@ -746,3 +746,28 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	uint32_t sku;
+	int ret;
+	ret = cbi_get_sku_id(&sku);
+
+	/*
+	 * We always compile in backlight support for nami, but only some
+	 * models come with the hardware. Therefore, check if the current
+	 * device is one of them and return the default value - with backlight
+	 * here.
+	 */
+	if (ret || sku == 0x3AE2) {
+		// Report that there is no keyboard backlight
+		flags0 &= ~EC_FEATURE_MASK_0(EC_FEATURE_KBLIGHT);
+	}
+
+	return flags0;
+}
+
+uint32_t board_override_feature_flags1(uint32_t flags1)
+{
+	return flags1;
+}
+
