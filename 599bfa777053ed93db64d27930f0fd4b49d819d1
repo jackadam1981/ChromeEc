@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "c691c4b2_a367eb10",
+        "filename": "chip/g/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1264944
+      },
+      "writtenOn": "2018-04-23T07:53:32Z",
+      "side": 1,
+      "message": "I have been using repo upload--the presubmit check didn\u0027t suggest changing this comment style.",
+      "parentUuid": "b388ca42_fe22f672",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "599bfa777053ed93db64d27930f0fd4b49d819d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94bbcf4a_c2e45d81",
         "filename": "chip/g/dcrypto/aes_cmac.c",
         "patchSetId": 1
