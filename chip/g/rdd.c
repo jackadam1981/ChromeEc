@@ -34,7 +34,7 @@
 static enum device_state state = DEVICE_STATE_DISCONNECTED;
 
 /* Force detecting a debug accessory (ignore RDD CC detect hardware) */
-static int force_detected;
+static int force_detected = 1;
 
 /**
  * Get instantaneous cable detect state

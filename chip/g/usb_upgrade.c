@@ -11,6 +11,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "dcrypto/dcrypto.h"
 #include "queue_policies.h"
 #include "reassembly.h"
 #include "shared_mem.h"
@@ -65,9 +66,18 @@ USB_STREAM_CONFIG_FULL(usb_upgrade,
 
 #define MAX_UPDATE_PDU_SIZE 0x1100
 
+/* Check if the PDU was received properly. */
 static int upgrade_pdu_check(const void *check, size_t check_size,
 			     const void *data, size_t data_size)
 {
+	uint8_t sha1_digest[SHA_DIGEST_SIZE];
+
+	DCRYPTO_SHA1_hash(data, data_size, sha1_digest);
+	if (memcmp(sha1_digest, check, check_size)) {
+		CPRINTS("%s:%d PDU check failed size %d, input %.8h\n", __func__, __LINE__, data_size, data);
+		return 1;
+	}
+	CPRINTS("%s:%d PDU check succeeded", __func__, __LINE__);
 	return 0;
 }
 
@@ -80,6 +90,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	struct reassembly_payload payload;
 	uint8_t *response_buffer;
 
+	CPRINTS("%s called with %d bytes", __func__, count);
 	if (!ctx) {
 		char *buf;
 		size_t buf_size = reassembly_overhead() + MAX_UPDATE_PDU_SIZE;
@@ -99,6 +110,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 
 	reassembly_get_payload(ctx, &payload);
 	result = reassembly_feed(ctx, consumer->queue, count);
+	CPRINTS("%s:%d reassembly result %d payload %.11h", __func__, __LINE__, result, payload.rs_data);
 	switch(result) {
 	case RS_NEED_MORE_DATA:
 		return;
@@ -118,6 +130,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	response_buffer[0] = result;
 	QUEUE_ADD_UNITS(&upgrade_to_usb, response_buffer, response_size + 1);
 	shared_mem_release(ctx);
+	ctx = NULL;
 }
 
 #if 0

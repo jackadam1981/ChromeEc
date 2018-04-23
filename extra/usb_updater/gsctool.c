@@ -26,6 +26,7 @@
 #include "compile_time_macros.h"
 #include "gsctool.h"
 #include "misc_util.h"
+#include "reassembly.h"
 #include "signed_header.h"
 #include "tpm_vendor_cmds.h"
 #include "upgrade_fw.h"
@@ -805,6 +806,90 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 	return 0;
 }
 
+
+static void dump(const char* title, const void *data, size_t size)
+{
+	const uint8_t *b = data;
+	size_t i;
+
+	if (title)
+		printf("%s:", title);
+	for (i = 0; i < size; i++)
+		printf(" %2.2x", b[i]);
+	printf("\n");
+}
+static void usb_reassembly(struct usb_endpoint *uep,
+			   const void *data_ptr,
+			   size_t data_size,
+			   void *response,
+			   size_t max_response,
+			   size_t *response_size)
+{
+	uint8_t buffer[2000];  /* Way more than enough. */
+	struct reassembly_pdu *pdu;
+	SHA_CTX ctx;
+	uint8_t digest[SHA_DIGEST_LENGTH];
+	size_t transfer_size;
+	size_t total_size = data_size + sizeof(struct reassembly_pdu);
+	int r;
+
+	/* assert(total_size <= sizeof(buffer)); */
+
+	pdu = (struct reassembly_pdu *)buffer;
+
+	pdu->magic = htobe32(REASSEMBLY_MAGIC);
+	pdu->version = 0;
+	pdu->size = htobe16(data_size);
+	memcpy(pdu->payload, data_ptr, data_size);
+size_t digest_size = data_size + sizeof(struct reassembly_pdu) -
+	offsetof(struct reassembly_pdu, version);
+	SHA1_Init(&ctx);
+	SHA1_Update(&ctx, &pdu->version,
+		    data_size + sizeof(struct reassembly_pdu) -
+		    offsetof(struct reassembly_pdu, version));
+	SHA1_Final(digest, &ctx);
+dump("digest input", &pdu->version, digest_size);
+dump("digest", digest, sizeof(digest));
+
+	/* Copy the first few bytes of the digest. */
+	memcpy(&pdu->check, digest, sizeof(pdu->check));
+
+dump("pdu", pdu, total_size);
+	/* Transfer the entire PDU, segmenting it into USB chunks.  */
+	for (transfer_size = 0; transfer_size < total_size;) {
+		int chunk_size;
+
+		chunk_size = MIN(uep->chunk_len, total_size - transfer_size);
+		xfer(uep, buffer + transfer_size, chunk_size, NULL, 0);
+		transfer_size += chunk_size;
+	}
+
+	/* Get response. */
+
+	r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80,
+				 buffer, sizeof(buffer), (int *)&transfer_size, 1000);
+	if (r < 0 || !transfer_size--) {
+		USB_ERROR("libusb_bulk_transfer reassembly failure", r);
+		exit(update_error);
+	}
+
+	if (buffer[0] != RS_SUCCESS) {
+		fprintf(stderr, "reassembly failure %d\n", buffer[0]);
+		exit(update_error);
+	}
+
+	if (!response)
+		return;
+
+	if (transfer_size > *response_size) {
+		fprintf(stderr, "reassembly response overflow (%zd > %zd)\n",
+			transfer_size, *response_size);
+		exit(update_error);
+	}
+
+	memcpy(response, buffer + 1, transfer_size);
+}
+
 /**
  * Transfer an image section (typically RW or RO).
  *
@@ -1063,6 +1148,10 @@ static void setup_connection(struct transfer_descriptor *td)
 		updu.block_size = htobe32(sizeof(updu));
 		do_xfer(&td->uep, &updu, sizeof(updu), &start_resp,
 			sizeof(start_resp), 1, &rxed_size);
+
+		if (rxed_size < 8)
+			usb_reassembly(&td->uep, &updu, sizeof(updu), &start_resp,
+				       sizeof(start_resp), &rxed_size);
 	} else {
 		rxed_size = sizeof(start_resp);
 		if (tpm_send_pkt(td, 0, 0, NULL, 0,

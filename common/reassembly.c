@@ -44,6 +44,7 @@
  */
 
 #include <common.h>
+#include <console.h>
 #include <endian.h>
 #include <reassembly.h>
 #include <timer.h>
@@ -54,6 +55,7 @@
 
 struct reassembly_context {
 	uint32_t us_stamp;
+	uint32_t expected_size;
 	uint16_t payload_size;
 	uint16_t pdu_offset;
 	int (*pdu_check_func)(const void *, size_t,
@@ -96,7 +98,6 @@ enum reassembly_result reassembly_feed(void *c,
 				       size_t count)
 {
 	timestamp_t tstamp;
-	uint16_t expected_size;
 	struct reassembly_context *ctx = c;
 
 	/* First things first: does it fit? */
@@ -115,30 +116,41 @@ enum reassembly_result reassembly_feed(void *c,
 
 	ctx->us_stamp = tstamp.le.lo;
 
-	QUEUE_REMOVE_UNITS(q,
-			   ctx->pdu.payload + ctx->pdu_offset,
-			   count);
+	QUEUE_REMOVE_UNITS(q, (uint8_t *)&ctx->pdu + ctx->pdu_offset, count);
+	ctx->pdu_offset += count;
 
 	if (ctx->pdu_offset < sizeof(struct reassembly_pdu))
 		return RS_NEED_MORE_DATA;
 
-	expected_size = be16toh(ctx->pdu.size);
+	if (!ctx->expected_size) {
+		uint32_t magic = be32toh(ctx->pdu.magic);
 
-	if (ctx->pdu_offset < expected_size)
+		if (magic != REASSEMBLY_MAGIC) {
+			ccprintf("%s:%d magic %d offset %d, bytes %.8h\n", __func__, __LINE__, magic, ctx->pdu_offset, &ctx->pdu);
+			return RS_PROTOCOL_ERROR;
+		}
+
+		ctx->expected_size = be16toh(ctx->pdu.size) + sizeof(struct reassembly_pdu);
+		if (ctx->expected_size > ctx->payload_size) {
+			ccprintf("%s:%d expected %d, real %d\n", __func__, __LINE__, ctx->expected_size, ctx->payload_size);
+			return RS_PROTOCOL_ERROR;
+		}
+	}
+
+	if (ctx->pdu_offset < ctx->expected_size)
 		return RS_NEED_MORE_DATA;
 
-	if (ctx->pdu_offset > expected_size)
+	if (ctx->pdu_offset > ctx->expected_size)
 		return RS_OVERFLOW;
 
 	/* Prepare for the next PDU. */
 	ctx->pdu_offset = 0;
 
 	/* All right, the exact PDU has been received, let's verify its contents. */
-	if (ctx->pdu_check_func(&ctx->pdu.check,
-				sizeof(ctx->pdu.check),
-				(const uint8_t *)ctx +
-				offsetof(struct reassembly_context, pdu.size),
-				expected_size + sizeof(be16toh(ctx->pdu.size))))
+	if (!ctx->pdu_check_func(&ctx->pdu.check,
+				 sizeof(ctx->pdu.check),
+				 &ctx->pdu.check  + 1, /* Checke everfything after the check field. */
+				 ctx->expected_size - offsetof(struct reassembly_pdu, check) - sizeof(ctx->pdu.check)))
 		return RS_SUCCESS;
 
 	return RS_CHECK_ERROR;
