@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "14a6a70d_f677a6a8",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-23T20:58:35Z",
+      "side": 1,
+      "message": "Yep, this is causing issues once we configure the pmic nicely. The moment you assert warm_reset, ap resets, but the EC eventually kills power to the system about a second later.",
+      "parentUuid": "040da758_a0c66d39",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d33f6b0_605fb4fd",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 7
@@ -140,6 +164,30 @@
       "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58de6c60_e0543446",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-23T20:58:35Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "f92e9da2_c39ac95e",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
