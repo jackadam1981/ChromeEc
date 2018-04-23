@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0a71c6c_d5b28a7a",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-23T17:57:27Z",
+      "side": 1,
+      "message": "It would need prototypes if I reordered these functions.\n\nCannot use the prototypes from include/chipset.h because we don\u0027t have HAS_TASK_CHIPSET.",
+      "parentUuid": "5749757a_87cafd77",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 4
+      },
+      "revId": "f0e43cd9b5d23322d476a33d3f9bc79e7c55c8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b08f7514_444d4326",
         "filename": "board/cheza/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-19T20:56:38Z",
       "side": 1,
       "message": "From the point of view as a productivity hack, this \"apshutdown\" is not as useful as \"apreset\", like how can you trigger the AP boot up again? typing gpioset commands, or apreset?\n\nProbably just define the apreset.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 24
+      },
+      "revId": "f0e43cd9b5d23322d476a33d3f9bc79e7c55c8aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "266b44a8_5facb1b2",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-04-23T17:57:27Z",
+      "side": 1,
+      "message": "I literally just copied the insides of chipset.c\n\nIf we had the chipset task this wouldn\u0027t have been required at all since the makefiles eventually compile chipset.c in. In theory this section could be replaced with #include \"../../common/chipset.c\"",
+      "parentUuid": "b08f7514_444d4326",
       "range": {
         "startLine": 87,
         "startChar": 0,
