@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c7a4ac6_ddaa3f92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-23T22:49:47Z",
+      "side": 1,
+      "message": "\u0027tcpc_config_t\u0027 ?",
+      "revId": "2482e3e87fbbddce9208ced152c717ee41083880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e53d005f_4e1c6063",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2892,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-23T22:49:47Z",
+      "side": 1,
+      "message": "Maybe you should add a comment that if this is defined, all usb muxes using the TCPI mux driver should use the appropriate macros.\n\nAlso, what do you think about making it clear that this is only for TCPI muxes? e.g. CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY? Because technically, you\u0027re still using the TCPC.",
+      "range": {
+        "startLine": 2889,
+        "startChar": 0,
+        "endLine": 2892,
+        "endChar": 3
+      },
+      "revId": "2482e3e87fbbddce9208ced152c717ee41083880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
