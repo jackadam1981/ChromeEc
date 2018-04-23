@@ -60,6 +60,7 @@
 #include "fan_chip.h"
 #include "kblight.h"
 #include "pwm_kblight.h"
+#include "i2c_kblight.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -774,6 +775,15 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 	return flags1;
 }
 
+static struct i2c_kblight_drv _i2c_kblight_drv[] = {
+	{
+	.i2c_light_set = lm3509_light_set,
+	.i2c_light_get = lm3509_light_get,
+	.i2c_light_enable = NULL,
+	.i2c_light_state = NULL,
+	},
+};
+
 static struct kblight_drv _kblight_drv[] = {
 	{
         .init = pwm_kblight_init,
@@ -782,6 +792,14 @@ static struct kblight_drv _kblight_drv[] = {
         .get = pwm_kblight_get,
         .enable = pwm_kblight_enable,
         .state = pwm_kblight_state,
+	},
+	{
+	.init = NULL,
+	.preserve_state = NULL,
+	.set = &i2c_kblight_set,
+	.get = &i2c_kblight_get,
+	.enable = &i2c_kblight_enable,
+	.state = &i2c_kblight_state,
 	},
 };
 static void kblight_config(void)
@@ -793,7 +811,15 @@ static void kblight_config(void)
 	if(ret)
 		return;
 
-	if (sku == 0x3AE3)
-	    kblight_driver_register(&_kblight_drv[0]);
+	switch(sku)
+	{
+		case 0x3A7B:
+			i2c_kblight_driver_register(&_i2c_kblight_drv[0]);
+			kblight_driver_register(&_kblight_drv[1]);
+			break;
+		case 0x3AE3:
+			kblight_driver_register(&_kblight_drv[0]);
+			break;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, kblight_config, HOOK_PRIO_FIRST);

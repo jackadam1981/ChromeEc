@@ -134,6 +134,7 @@
 #define CONFIG_LED_DRIVER_LM3509
 #define CONFIG_KBLIGHT
 #define CONFIG_PWM_KBLIGHT
+#define CONFIG_I2C_KBLIGHT
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024

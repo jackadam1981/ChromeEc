@@ -2257,6 +2257,8 @@
 
 /* Support PWM output to keyboard backlight */
 #undef CONFIG_PWM_KBLIGHT
+/* Support I2C output to keyboard backlight */
+#undef CONFIG_I2C_KBLIGHT
 /* Support output to keyboard backlight */
 #undef CONFIG_KBLIGHT
 
