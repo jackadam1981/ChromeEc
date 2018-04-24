@@ -221,6 +221,12 @@ static struct cec_rx_cb cec_rx_cb;
 /* Parameters and buffer for initiator (sender) state */
 static struct cec_tx cec_tx;
 
+/*
+ * Time between interrupt triggered and the next timer was
+ * set when measuring pulse width
+ */
+static int cap_delay;
+
 /* Value charged into the catpure timer on last capture start */
 static int cap_charge;
 
@@ -268,7 +274,13 @@ static void tmr_cap_start(enum cap_edge edge, int tmo)
 	 * the edge change.
 	 */
 	if (tmo > 0) {
-		cap_charge = tmo;
+		/*
+		 * Store the time it takes from the interrupts starts to when we
+		 * actually get here. This part of the pulse-width needs to be
+		 * taken into account
+		 */
+		cap_delay = (0xffff - NPCX_TCNT1(mdl));
+		cap_charge = tmo - cap_delay;
 		NPCX_TCNT1(mdl) = cap_charge;
 		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
 	} else {
@@ -296,7 +308,7 @@ static int tmr_cap_get(void)
 {
 	int mdl = NPCX_MFT_MODULE_1;
 
-	return (cap_charge - NPCX_TCRA(mdl));
+	return (cap_charge + cap_delay - NPCX_TCRA(mdl));
 }
 
 static void tmr_oneshot_start(int tmo)
@@ -954,6 +966,7 @@ static int cec_set_enable(uint8_t enable)
 		memset(&cec_tx, 0, sizeof(struct cec_tx));
 		memset(&cec_rx_cb, 0, sizeof(struct cec_rx_cb));
 		cec_state = CEC_STATE_IDLE;
+		cap_delay = 0;
 		cap_charge = 0;
 		cec_events = 0;
 		/*
