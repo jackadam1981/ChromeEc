@@ -41,10 +41,15 @@
 #error "Buffer must fit at least a CEC message and a length byte"
 #endif
 
-/* Free time timing (us). */
+/*
+ * Free time timing (us). Our free-time is calculated from the end of
+ * the last bit (not from the start). We compensate by having one
+ * free-time period less than in the spec.
+ */
 #define NOMINAL_BIT_TIME APB1_TICKS(2400)
-#define FREE_TIME_RS	(3 * (NOMINAL_BIT_TIME)) /* Resend */
-#define FREE_TIME_NI	(5 * (NOMINAL_BIT_TIME)) /* New initiator */
+#define FREE_TIME_RS	(2 * (NOMINAL_BIT_TIME)) /* Resend */
+#define FREE_TIME_NI	(4 * (NOMINAL_BIT_TIME)) /* New initiator */
+#define FREE_TIME_PI	(6 * (NOMINAL_BIT_TIME)) /* Present initiator */
 
 /* Start bit timing (us) */
 #define START_BIT_LOW		APB1_TICKS(3700)
@@ -209,6 +214,11 @@ struct cec_tx {
 	int resends;
 	/* Acknowledge received from sink? */
 	bool ack;
+	/*
+	 * When sending multiple concurrent frames,
+	 * the free-time is slightly higher
+	 */
+	bool present_initiator;
 };
 
 /* Single state for CEC. We are INITIATOR, FOLLOWER or IDLE */
@@ -469,10 +479,13 @@ void enter_state(enum cec_state new_state)
 		cap_edge = CAP_EDGE_FALLING;
 		if (cec_tx.resends)
 			tmo = FREE_TIME_RS;
+		else if (cec_tx.present_initiator)
+			tmo = FREE_TIME_PI;
 		else
 			tmo = FREE_TIME_NI;
 		break;
 	case CEC_STATE_INITIATOR_START_LOW:
+		cec_tx.present_initiator = 1;
 		cec_tx.msgt.bit = 0;
 		cec_tx.msgt.byte = 0;
 		gpio = 0;
@@ -533,6 +546,7 @@ void enter_state(enum cec_state new_state)
 		tmo = NOMINAL_BIT_TIME - NOMINAL_SAMPLE_TIME;
 		break;
 	case CEC_STATE_FOLLOWER_START_LOW:
+		cec_tx.present_initiator = 0;
 		cap_edge = CAP_EDGE_RISING;
 		tmo = CAP_START_LOW;
 		break;
