@@ -180,6 +180,9 @@ void chipset_do_shutdown(void)
 
 static void board_init(void)
 {
+	/* Need to configure GPIO72 to be a GPIO. Default is PWRGD. */
+	if (!system_jumped_to_this_image())
+		gpio_config_pin(MODULE_CHIPSET, GPIO_PMIC_EN, 1);
 
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
