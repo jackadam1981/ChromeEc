@@ -193,14 +193,14 @@ int main(int argc, char *argv[])
 					"%s",
 					main_str_temp) != 1)) {
 				my_printf(TERR, "\nCannot read chip name, ");
-				my_printf(TERR, "npcx7m7w");
-				my_printf(TERR, "npcx7m6xb, npcx7m6f");
+				my_printf(TERR, "npcx7m7wb");
+				my_printf(TERR, "npcx7m6fb, npcx7m6f");
 				my_printf(TERR, ", npcx7m6g, npcx7m5g");
 				my_printf(TERR, ", npcx5m5g or npcx5m6g.\n");
 				main_status = FALSE;
 			} else {
 				if (str_cmp_no_case(main_str_temp,
-					"npcx7m7w") == 0) {
+					"npcx7m7wb") == 0) {
 					if ((bin_params.bin_params
 						& BIN_FW_LOAD_START_ADDR) ==
 						0x00000000)
@@ -220,7 +220,7 @@ int main(int argc, char *argv[])
 				} else if ((str_cmp_no_case(main_str_temp,
 					"npcx7m6f") == 0) ||
 					       (str_cmp_no_case(main_str_temp,
-					"npcx7m6xb") == 0) ||
+					"npcx7m6fb") == 0) ||
 					       (str_cmp_no_case(main_str_temp,
 					"npcx7m6g") == 0)) {
 					if ((bin_params.bin_params
@@ -302,8 +302,8 @@ int main(int argc, char *argv[])
 					my_printf(TERR,
 						  "\nInvalid chip name (%s) ",
 						  main_str_temp);
-					my_printf(TERR, "should be npcx7m7w, ");
-					my_printf(TERR, "npcx7m6xb, ");
+					my_printf(TERR, "should be npcx7m7wb");
+					my_printf(TERR, ", npcx7m6fb, ");
 					my_printf(TERR, "npcx7m6f, npcx7m6g, ");
 					my_printf(TERR, "npcx7m5g, npcx5m5g, ");
 					my_printf(TERR, "or npcx5m6g.");
@@ -842,7 +842,7 @@ void exit_with_usage(void)
 	my_printf(TUSG, "\n -argfile <filename> - Arguments file name; ");
 	my_printf(TUSG, "includes multiple flags");
 	my_printf(TUSG, "\n -chip <name>        - EC Chip Name: ");
-	my_printf(TUSG, "npcx7m7w|npcx7m6f|npcx7m6xb|npcx7m6g|npcx7m5g|");
+	my_printf(TUSG, "npcx7m7wb|npcx7m6f|npcx7m6fb|npcx7m6g|npcx7m5g|");
 	my_printf(TUSG, "npcx5m5g|npcx5m6g");
 	my_printf(TUSG, " (default is npcx5m5g)");
 	my_printf(TUSG, "\n -v          - Verbose; prints ");
