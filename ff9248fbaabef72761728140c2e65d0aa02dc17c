@@ -22,6 +22,30 @@
       "revId": "ff9248fbaabef72761728140c2e65d0aa02dc17c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ef9ace_1e0f000a",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-24T18:01:07Z",
+      "side": 0,
+      "message": "If SYSTEM_RESET_WAIT_EXT is set in `flags`, but an external reset doesn\u0027t occur, we falsely report it as a hard reset.",
+      "parentUuid": "d9b9b0d0_36c29da1",
+      "range": {
+        "startLine": 348,
+        "startChar": 16,
+        "endLine": 348,
+        "endChar": 31
+      },
+      "revId": "ff9248fbaabef72761728140c2e65d0aa02dc17c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
