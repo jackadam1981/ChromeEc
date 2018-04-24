@@ -14,7 +14,11 @@
 extern const enum ec_led_id supported_led_ids[];
 
 /* Defined in led_<board>.c */
+#ifdef CONFIG_DYNAMIC_SUPPORTED_LED_IDS_COUNT
+extern unsigned int supported_led_ids_count;
+#else
 extern const int supported_led_ids_count;
+#endif
 
 /**
  * Enable or disable automatic control of an LED.

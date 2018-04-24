@@ -1997,6 +1997,9 @@
 #undef CONFIG_LED_DRIVER_LM3630A /* LM3630A, on I2C interface */
 #undef CONFIG_LED_DRIVER_LP5562  /* LP5562, on I2C interface */
 
+/* Define supported LED ids count in board layer */
+#undef CONFIG_DYNAMIC_SUPPORTED_LED_IDS_COUNT
+
 /* Offset in flash where little firmware will live. */
 #undef CONFIG_LFW_OFFSET
 

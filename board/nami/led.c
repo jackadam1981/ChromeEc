@@ -39,8 +39,12 @@
 #include "util.h"
 
 const enum ec_led_id supported_led_ids[] = {
-		EC_LED_ID_BATTERY_LED, EC_LED_ID_POWER_LED};
-const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
+		EC_LED_ID_BATTERY_LED, EC_LED_ID_POWER_LED
+/* Please make sure the EC_LED_ID_POWER_LED is the last led
+ * in supported_led_ids array.
+ */
+		};
+unsigned int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
 	LED_OFF = 0,
@@ -69,6 +73,7 @@ enum led_power_state {
 	LED_STATE_S5,
 	LED_POWER_STATE_COUNT,
 };
+
 
 /* Defines a LED pattern for a single state */
 struct led_pattern {
@@ -188,6 +193,7 @@ static void led_init(void)
 	default:
 		patterns[0] = &battery_pattern_0;
 		patterns[1] = NULL;
+		supported_led_ids_count = ARRAY_SIZE(supported_led_ids)-1;
 		break;
 	case PROJECT_SONA:
 		patterns[0] = &battery_pattern_1;
@@ -476,9 +482,8 @@ DECLARE_CONSOLE_COMMAND(led, command_led,
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_RED] = 100;
-	brightness_range[EC_LED_COLOR_GREEN] = 100;
 	brightness_range[EC_LED_COLOR_AMBER] = 100;
+	brightness_range[EC_LED_COLOR_WHITE] = 100;
 }
 
 int led_set_brightness(enum ec_led_id id, const uint8_t *brightness)
@@ -489,6 +494,8 @@ int led_set_brightness(enum ec_led_id id, const uint8_t *brightness)
 		return set_color(id, LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
 	else if (brightness[EC_LED_COLOR_AMBER])
 		return set_color(id, LED_AMBER, brightness[EC_LED_COLOR_AMBER]);
+	else if (brightness[EC_LED_COLOR_WHITE])
+		return set_color(id, LED_WHITE, brightness[EC_LED_COLOR_WHITE]);
 	else
 		return set_color(id, LED_OFF, 0);
 }
