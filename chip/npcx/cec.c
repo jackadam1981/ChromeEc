@@ -242,9 +242,8 @@ static int cap_charge;
  * However, the AP is responsible for writing the initiator address
  * on writes. UINT32_MAX means means that the address hasn't been
  * set by the AP yet.
- * TODO(sadolfsson): Make it possible to change this using cecset
  */
-static volatile uint32_t cec_addr = 5;
+static volatile uint32_t cec_addr = UINT32_MAX;
 
 /* CEC enable/disable flag */
 static bool cec_enabled;
@@ -1021,6 +1020,17 @@ static int cec_set_enable(uint8_t enable)
 	return EC_RES_SUCCESS;
 }
 
+static int cec_set_logical_addr(uint8_t logical_addr)
+{
+	if (logical_addr >= CEC_BROADCAST_ADDR)
+		return EC_RES_INVALID_PARAM;
+
+	cec_addr = logical_addr;
+	CPRINTF("CEC address set to: %u\n", cec_addr);
+
+	return EC_RES_SUCCESS;
+}
+
 static int hc_cec_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_cec_set *params = args->params;
@@ -1028,6 +1038,8 @@ static int hc_cec_set(struct host_cmd_handler_args *args)
 	switch (params->cmd) {
 	case CEC_CMD_ENABLE:
 		return cec_set_enable(params->enable);
+	case CEC_CMD_LOGICAL_ADDRESS:
+		return cec_set_logical_addr(params->address);
 	}
 
 	return EC_RES_INVALID_PARAM;
@@ -1043,6 +1055,9 @@ static int hc_cec_get(struct host_cmd_handler_args *args)
 	switch (params->cmd) {
 	case CEC_CMD_ENABLE:
 		response->enable = cec_enabled;
+		break;
+	case CEC_CMD_LOGICAL_ADDRESS:
+		response->enable = cec_addr;
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
