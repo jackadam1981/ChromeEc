@@ -116,6 +116,24 @@
       "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcb65d99_1ec2f05b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-24T18:57:27Z",
+      "side": 1,
+      "message": "Adding a print here, pushes kevin over its limit again... Seeing the state machine start off not in state 2 would be an indication that this is taking place.",
+      "parentUuid": "f39914a2_01e1c868",
+      "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
