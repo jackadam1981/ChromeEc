@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86df26e5_0e1e4747",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-24T16:55:43Z",
+      "side": 1,
+      "message": "Are you saying that servo_micro_for_bob_serialname returns unknown, but servo_micro_serialname doesn\u0027t?",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 3
+      },
+      "revId": "2ab6edd4fdb22963a4ece925c50b7a6eeebab248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
