@@ -22,6 +22,30 @@
       "revId": "6b247c907864d8180d920cdb3327cb004b200936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eefe1b5_2a309298",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-24T22:02:29Z",
+      "side": 1,
+      "message": "I added a comment that states which fields are valid for which return codes. You can use that if you decided on going with checking the return codes. This shouldn\u0027t be a problem if we setup a way for you to include pinweaver_types.h directly.\n\nOtherwise, the following logic to determine which fields are valid:\n\n1) Test if seconds_to_wait is zero. If it is not, seconds_to_wait is the only valid field. Otherwise, the unimported_leaf_data field is valid.\n\n2) Test if the number of attempts in the public section of the leaf data is zero. If it is, the high_entropy_secret field is valid. Otherwise, it is not valid.\n\nOn the trunks side I have been just copying the fields, but I will change it so the metadata and secret are zero length if they are not valid.",
+      "parentUuid": "b2ec6604_2d4dda07",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 35
+      },
+      "revId": "6b247c907864d8180d920cdb3327cb004b200936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
