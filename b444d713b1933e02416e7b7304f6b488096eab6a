@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf7a971f_d5c930a3",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-24T15:46:16Z",
+      "side": 1,
+      "message": "Right now both yorp and bip define CONFIG_CHARGER_INPUT_CURRENT separately, but we could easily define it in baseboard.h.\n\nbaseboard.h is include right before board.h, so board.h could undef/redef something in baseboard.h to override it.",
+      "parentUuid": "665679b4_17bb1f42",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "b444d713b1933e02416e7b7304f6b488096eab6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50671e96_5c7c55fc",
         "filename": "baseboard/octopus/battery.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-23T23:06:21Z",
       "side": 1,
       "message": "You are going to need to get battery information from a different module that is per oem board.",
+      "revId": "b444d713b1933e02416e7b7304f6b488096eab6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d81b60a_d278941e",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-24T15:46:16Z",
+      "side": 1,
+      "message": "I was under the impression that all of the batteries where going to be present in all of the firmware builds for simplicity. We can carve out select batteries for each build though if needed.",
+      "parentUuid": "50671e96_5c7c55fc",
       "revId": "b444d713b1933e02416e7b7304f6b488096eab6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
