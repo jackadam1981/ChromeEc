@@ -37,6 +37,7 @@
 
 /* Free time timing (us). */
 #define NOMINAL_BIT_TIME APB1_TICKS(2400)
+#define FREE_TIME_RS	(3 * (NOMINAL_BIT_TIME)) /* Resend */
 #define FREE_TIME_NI	(5 * (NOMINAL_BIT_TIME)) /* New initiator */
 
 /* Start bit timing (us) */
@@ -109,6 +110,8 @@ struct cec_tx {
 	struct cec_msg_transfer msgt;
 	/* Message length */
 	int len;
+	/* Number of resends attempted in current send */
+	int resends;
 	/* Acknowledge received from sink? */
 	bool ack;
 };
@@ -183,7 +186,10 @@ void enter_state(enum cec_state new_state)
 		break;
 	case CEC_STATE_INITIATOR_FREE_TIME:
 		gpio = 1;
-		tmo = FREE_TIME_NI;
+		if (cec_tx.resends)
+			tmo = FREE_TIME_RS;
+		else
+			tmo = FREE_TIME_NI;
 		break;
 	case CEC_STATE_INITIATOR_START_LOW:
 		cec_tx.msgt.bit = 0;
@@ -302,12 +308,20 @@ static void cec_ev_tmo(void)
 			} else {
 				/* Transfer completed successfully */
 				cec_tx.len = 0;
+				cec_tx.resends = 0;
 				enter_state(CEC_STATE_IDLE);
 			}
 		} else {
-			/* Transfer failed */
-			cec_tx.len = 0;
-			enter_state(CEC_STATE_IDLE);
+			if (cec_tx.resends < 5) {
+				/* Resend */
+				cec_tx.resends++;
+				enter_state(CEC_STATE_INITIATOR_FREE_TIME);
+			} else {
+				/* Transfer failed */
+				cec_tx.len = 0;
+				cec_tx.resends = 0;
+				enter_state(CEC_STATE_IDLE);
+			}
 		}
 		break;
 	case CEC_STATE_INITIATOR_DATA_LOW:
