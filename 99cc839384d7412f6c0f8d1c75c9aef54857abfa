@@ -22,6 +22,30 @@
       "revId": "99cc839384d7412f6c0f8d1c75c9aef54857abfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d65c958_352e6d7f",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-04-24T14:21:06Z",
+      "side": 1,
+      "message": "I doubt this question in my mind too but finally I feel this way is ok. As I know normally CONFIG_SYSTEM_UNLOCKED will be undefined when firmware is starting to pass qualification and signed by MP keys.And it would be near to PVT phase already. As the result, before PVT ODM team can change these values freely for experiments. But in PVT phase (undefined CONFIG_SYSTEM_UNLOCKED), no experimental commands should be used including changing these values. \n\nOne downside is that any follower projects later then first PVT build can\u0027t have this chance to modify values. But I doubt write once is no much meaning for doing experiments.",
+      "parentUuid": "3a959076_10f8d925",
+      "range": {
+        "startLine": 281,
+        "startChar": 5,
+        "endLine": 281,
+        "endChar": 36
+      },
+      "revId": "99cc839384d7412f6c0f8d1c75c9aef54857abfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
