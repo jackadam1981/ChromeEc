@@ -77,6 +77,13 @@
 #define DATA_HIGH(data) DATA_TIME(HIGH, data)
 #define DATA_LOW(data) DATA_TIME(LOW, data)
 
+/* The limit how short a start-bit can be to trigger debounce logic */
+#define DEBOUNCE_LIMIT APB1_TICKS(200)
+/* The time we ignore the bus for the first three debounce cases */
+#define DEBOUNCE_WAIT_SHORT APB1_TICKS(100)
+/* The time we ignore the bus after the three initial debounce cases */
+#define DEBOUNCE_WAIT_LONG APB1_TICKS(500)
+
 /*
  * The variance in timing we allow outside of the CEC specification for
  * incoming signals. Our measurements aren't 100% accurate either, so this
@@ -126,6 +133,7 @@ enum cec_state {
 	CEC_STATE_INITIATOR_ACK_VERIFY,
 	CEC_STATE_FOLLOWER_START_LOW,
 	CEC_STATE_FOLLOWER_START_HIGH,
+	CEC_STATE_FOLLOWER_DEBOUNCE,
 	CEC_STATE_FOLLOWER_HEADER_INIT_LOW,
 	CEC_STATE_FOLLOWER_HEADER_INIT_HIGH,
 	CEC_STATE_FOLLOWER_HEADER_DEST_LOW,
@@ -187,6 +195,8 @@ struct cec_rx {
 	 * pulse duration
 	 */
 	int low_time;
+	/* Number of too short pulses seen in a row */
+	int debounce_cnt;
 };
 
 /* Transfer buffer and states */
@@ -528,8 +538,17 @@ void enter_state(enum cec_state new_state)
 		tmo = CAP_START_LOW;
 		break;
 	case CEC_STATE_FOLLOWER_START_HIGH:
+		cec_rx.debounce_cnt = 0;
 		cap_edge = CAP_EDGE_FALLING;
 		tmo = CAP_START_HIGH;
+		break;
+	case CEC_STATE_FOLLOWER_DEBOUNCE:
+		if (cec_rx.debounce_cnt >= 3) {
+			tmo = DEBOUNCE_WAIT_LONG;
+		} else {
+			tmo = DEBOUNCE_WAIT_SHORT;
+			cec_rx.debounce_cnt++;
+		}
 		break;
 	case CEC_STATE_FOLLOWER_HEADER_INIT_LOW:
 	case CEC_STATE_FOLLOWER_HEADER_DEST_LOW:
@@ -699,6 +718,7 @@ static void cec_ev_tmo(void)
 		break;
 	case CEC_STATE_FOLLOWER_START_LOW:
 	case CEC_STATE_FOLLOWER_START_HIGH:
+	case CEC_STATE_FOLLOWER_DEBOUNCE:
 	case CEC_STATE_FOLLOWER_HEADER_INIT_LOW:
 	case CEC_STATE_FOLLOWER_HEADER_INIT_HIGH:
 	case CEC_STATE_FOLLOWER_HEADER_DEST_LOW:
@@ -741,6 +761,9 @@ static void cec_ev_cap(void)
 		if (VALID_LOW(START_BIT, t)) {
 			cec_rx.low_time = t;
 			enter_state(CEC_STATE_FOLLOWER_START_HIGH);
+		} else if (t < DEBOUNCE_LIMIT) {
+			/* Wait a bit if start-pulses are really short */
+			enter_state(CEC_STATE_FOLLOWER_DEBOUNCE);
 		} else {
 			enter_state(CEC_STATE_IDLE);
 		}
