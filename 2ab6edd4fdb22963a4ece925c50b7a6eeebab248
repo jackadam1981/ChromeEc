@@ -22,6 +22,30 @@
       "revId": "2ab6edd4fdb22963a4ece925c50b7a6eeebab248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7257ac5f_8c0c9fc9",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-04-24T17:14:54Z",
+      "side": 1,
+      "message": "flash_ec actually tries servo_micro_for_gru_serialname, but both bob and gru return unknown. The controls don\u0027t exist, and I can\u0027t see where they\u0027d be created.\n\nservo_micro_serialname returns the servo micro serialname, which is the one we should be using.\n\nHave people successfully been using servo_v4_with_servo_micro to flash the ec?",
+      "parentUuid": "86df26e5_0e1e4747",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 3
+      },
+      "revId": "2ab6edd4fdb22963a4ece925c50b7a6eeebab248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
