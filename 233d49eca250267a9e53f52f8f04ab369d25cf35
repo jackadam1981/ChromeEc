@@ -16,6 +16,24 @@
       "revId": "233d49eca250267a9e53f52f8f04ab369d25cf35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a691a2b_4e455f76",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1157199
+      },
+      "writtenOn": "2018-04-24T08:27:19Z",
+      "side": 1,
+      "message": "Hi.\nWhen i applid only above change (log), some issue is revoled.\nHowever problem is still remained.\n\nAlso when i applied only below change(ODR), CtsHardwareTests can be passed. But sensortest of cts-verifier is failed",
+      "parentUuid": "27b6c8a1_722ef810",
+      "revId": "233d49eca250267a9e53f52f8f04ab369d25cf35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
