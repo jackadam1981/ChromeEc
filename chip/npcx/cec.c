@@ -96,6 +96,12 @@ enum cec_state {
 	CEC_STATE_INITIATOR_ACK_VERIFY,
 };
 
+/* Edge to trigger capture timer interrupt on */
+enum cap_edge {
+	CAP_EDGE_FALLING,
+	CAP_EDGE_RISING
+};
+
 /* CEC message during transfer */
 struct cec_msg_transfer {
 	/* The CEC message */
@@ -137,6 +143,42 @@ static void send_mkbp_event(uint32_t event)
 {
 	atomic_or(&cec_events, event);
 	mkbp_send_event(EC_MKBP_EVENT_CEC);
+}
+static void tmr_cap_start(enum cap_edge edge, int tmo)
+{
+	int mdl = NPCX_MFT_MODULE_1;
+
+	/* Select edge to trigger capture on */
+	UPDATE_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TAEDG,
+		   edge == CAP_EDGE_RISING);
+
+	/*
+	 * Set capture timeout. If we don't have a timeout, we
+	 * turn the timeout interrupt off and only care about
+	 * the edge change.
+	 */
+	if (tmo > 0) {
+		NPCX_TCNT1(mdl) = tmo;
+		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
+	} else {
+		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
+		NPCX_TCNT1(mdl) = 0;
+	}
+
+	/* Clear out old events */
+	SET_BIT(NPCX_TECLR(mdl), NPCX_TECLR_TACLR);
+	SET_BIT(NPCX_TECLR(mdl), NPCX_TECLR_TCCLR);
+	NPCX_TCRA(mdl) = 0;
+	/* Start the capture timer */
+	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD, 1);
+}
+
+static void tmr_cap_stop(void)
+{
+	int mdl = NPCX_MFT_MODULE_1;
+
+	CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
+	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD, 0);
 }
 
 static void tmr_oneshot_start(int tmo)
@@ -190,15 +232,21 @@ static bool msgt_is_eom(const struct cec_msg_transfer *msgt, int len)
 void enter_state(enum cec_state new_state)
 {
 	int gpio = -1, tmo = -1;
+	enum cap_edge cap_edge = -1;
 
 	cec_state = new_state;
 	switch (new_state) {
 	case CEC_STATE_IDLE:
 		cec_tx.msgt.bit = 0;
 		cec_tx.msgt.byte = 0;
+		if (cec_tx.len > 0) {
+			/* Execute a postponed send */
+			enter_state(CEC_STATE_INITIATOR_FREE_TIME);
+		}
 		break;
 	case CEC_STATE_INITIATOR_FREE_TIME:
 		gpio = 1;
+		cap_edge = CAP_EDGE_FALLING;
 		if (cec_tx.resends)
 			tmo = FREE_TIME_RS;
 		else
@@ -212,6 +260,7 @@ void enter_state(enum cec_state new_state)
 		break;
 	case CEC_STATE_INITIATOR_START_HIGH:
 		gpio = 1;
+		cap_edge = CAP_EDGE_FALLING;
 		tmo = START_BIT_HIGH;
 		break;
 	case CEC_STATE_INITIATOR_HEADER_INIT_LOW:
@@ -221,6 +270,10 @@ void enter_state(enum cec_state new_state)
 		tmo = DATA_LOW(msgt_get_bit(&cec_tx.msgt));
 		break;
 	case CEC_STATE_INITIATOR_HEADER_INIT_HIGH:
+		gpio = 1;
+		cap_edge = CAP_EDGE_FALLING;
+		tmo = DATA_HIGH(msgt_get_bit(&cec_tx.msgt));
+		break;
 	case CEC_STATE_INITIATOR_HEADER_DEST_HIGH:
 	case CEC_STATE_INITIATOR_DATA_HIGH:
 		gpio = 1;
@@ -263,8 +316,12 @@ void enter_state(enum cec_state new_state)
 
 	if (gpio >= 0)
 		gpio_set_level(CEC_GPIO_OUT, gpio);
-	if (tmo >= 0)
-		tmr_oneshot_start(tmo);
+	if (tmo >= 0) {
+		if (cap_edge >= 0)
+			tmr_cap_start(cap_edge, tmo);
+		else
+			tmr_oneshot_start(tmo);
+	}
 }
 
 static void cec_ev_tmo(void)
@@ -352,6 +409,25 @@ static void cec_ev_tmo(void)
 	}
 }
 
+static void cec_ev_cap(void)
+{
+	switch (cec_state) {
+	case CEC_STATE_INITIATOR_FREE_TIME:
+	case CEC_STATE_INITIATOR_START_HIGH:
+	case CEC_STATE_INITIATOR_HEADER_INIT_HIGH:
+		/*
+		 * A falling edge during free-time, postpone
+		 * this send
+		 */
+		cec_tx.msgt.bit = 0;
+		cec_tx.msgt.byte = 0;
+		enter_state(CEC_STATE_IDLE);
+		break;
+	default:
+		break;
+	}
+}
+
 static void cec_ev_tx(void)
 {
 	enter_state(CEC_STATE_INITIATOR_FREE_TIME);
@@ -365,10 +441,19 @@ static void cec_isr(void)
 	/* Retrieve events NPCX_TECTRL_TAXND */
 	events = GET_FIELD(NPCX_TECTRL(mdl), FIELD(0, 4));
 
-	/* Timer event for bit-flipping */
-	if (events & (1 << NPCX_TECTRL_TCPND))
-		cec_ev_tmo();
-
+	if (events & (1 << NPCX_TECTRL_TAPND)) {
+		/* Capture event */
+		cec_ev_cap();
+	} else {
+		/*
+		 * Capture timeout
+		 * We only care about this if the capture event is not
+		 * happening, since we will get both events in the
+		 * edge-trigger case
+		 */
+		if (events & (1 << NPCX_TECTRL_TCPND))
+			cec_ev_tmo();
+	}
 	/* Oneshot timer, a transfer has been initiated from AP */
 	if (events & (1 << NPCX_TECTRL_TDPND)) {
 		tmr2_stop();
@@ -431,7 +516,7 @@ static int cec_set_enable(uint8_t enable)
 		cec_events = 0;
 
 		/* Enable timer interrupts */
-		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
+		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TAIEN);
 		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
 
 		/* Enable multifunction timer interrupt */
@@ -440,10 +525,11 @@ static int cec_set_enable(uint8_t enable)
 		CPRINTF("CEC enabled\n");
 	} else {
 		/* Disable timer interrupts */
-		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
+		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TAIEN);
 		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
 
 		tmr2_stop();
+		tmr_cap_stop();
 
 		task_disable_irq(NPCX_IRQ_MFT_1);
 
