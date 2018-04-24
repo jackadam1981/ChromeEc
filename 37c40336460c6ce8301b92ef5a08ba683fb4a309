@@ -70,6 +70,30 @@
       "revId": "37c40336460c6ce8301b92ef5a08ba683fb4a309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "345b2dc0_a89d84ea",
+        "filename": "board/bip/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-24T18:08:27Z",
+      "side": 1,
+      "message": "It does support HW_RAMP; Added it is parent CL.",
+      "parentUuid": "8f4a1143_679fa03a",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "37c40336460c6ce8301b92ef5a08ba683fb4a309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
