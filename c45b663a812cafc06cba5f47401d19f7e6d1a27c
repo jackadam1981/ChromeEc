@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17160e67_7403cd88",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-04-24T20:24:15Z",
+      "side": 1,
+      "message": "While spec (6.4.4.3.1.11 Alternate Mode Adapter VDO) doesn\u0027t account for this scenario !VBUS \u0026 !VCONN required it seems practical to leave some power on.\n\nCurious why it should be inside the #if however as it does not seem like it should be dependent dual role or VCONN swap configs.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "c45b663a812cafc06cba5f47401d19f7e6d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
