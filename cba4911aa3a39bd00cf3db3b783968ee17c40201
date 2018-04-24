@@ -22,6 +22,30 @@
       "revId": "cba4911aa3a39bd00cf3db3b783968ee17c40201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badbc196_e34c40d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-24T13:54:37Z",
+      "side": 1,
+      "message": "Hardware isn\u0027t ready yet, but we want to have the flash pre-programmed to test out the factory flow. We want to be able to have board id when we get them.",
+      "parentUuid": "4d01b30e_b614effa",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "cba4911aa3a39bd00cf3db3b783968ee17c40201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
