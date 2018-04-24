@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50271ee3_91077d35",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-24T18:46:33Z",
+      "side": 1,
+      "message": "How\u0027d you decide on a retry count of 3?",
+      "revId": "8704033e11a254bd39f3cb85cde1ded9d1721974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b14263_9856f896",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-04-24T18:46:33Z",
+      "side": 1,
+      "message": "Should this be a constant like ADC_STEP?",
+      "revId": "8704033e11a254bd39f3cb85cde1ded9d1721974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
