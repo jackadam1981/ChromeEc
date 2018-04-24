@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a959076_10f8d925",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-24T13:53:31Z",
+      "side": 1,
+      "message": "Should we see if they are defined first? (write-once behavior vs no-write behavior)",
+      "range": {
+        "startLine": 281,
+        "startChar": 5,
+        "endLine": 281,
+        "endChar": 36
+      },
+      "revId": "99cc839384d7412f6c0f8d1c75c9aef54857abfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
