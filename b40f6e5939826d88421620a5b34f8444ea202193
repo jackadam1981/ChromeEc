@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cb10f0f0_0884a084",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-24T17:27:20Z",
+      "side": 0,
+      "message": "Oh, sorry I missed that. Thanks for pointing that out. And ${MCU}_uart_en is being removed for ~ccd_cr50.",
+      "parentUuid": "8a36b025_13e8429e",
+      "range": {
+        "startLine": 507,
+        "startChar": 18,
+        "endLine": 507,
+        "endChar": 35
+      },
+      "revId": "b40f6e5939826d88421620a5b34f8444ea202193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc555771_5285c141",
         "filename": "util/flash_ec",
         "patchSetId": 3
