@@ -327,6 +327,9 @@
 #define NPCX_ALT_DMIC_CLK
 #define NPCX_ALT_DMIC_IN
 #endif
+
+#define NPCX_ALT_NO_PWRGD ALT(7, 2, NPCX_ALT_INV(1, NO_PWRGD))
+
 #define NPCX_ALT_TABLE { \
 	NPCX_ALT_I2C0SDA0 \
 	NPCX_ALT_I2C0SCL0 \
@@ -413,6 +416,7 @@
 	NPCX_ALT_I2S_SDAT \
 	NPCX_ALT_DMIC_CLK \
 	NPCX_ALT_DMIC_IN \
+	NPCX_ALT_NO_PWRGD \
 }
 
 /*****************************************************************************/
