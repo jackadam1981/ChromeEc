@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2ec6604_2d4dda07",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 58
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-04-24T12:36:10Z",
+      "side": 1,
+      "message": "Is there a good way for the caller to determine if the response includes valid updated leaf data and mac? I could distinguish error codes, but that seems a bit brittle. Checking whether the buffer contains non-zero data probably won\u0027t work for all error cases either (if we exit early we might see leftover data from the request buffer). Should we perhaps add a field in the reply to indicate whether there\u0027s a valid state update?",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 35
+      },
+      "revId": "6b247c907864d8180d920cdb3327cb004b200936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
