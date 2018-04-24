@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6c129351_8c9cb896",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-24T18:20:12Z",
+      "side": 1,
+      "message": "Sure. Do you have any suggestions? Would \"C0: Apply Rp!\" be sufficient?",
+      "parentUuid": "590548a4_dc0834a3",
+      "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2778d69e_8f02fef1",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 16
@@ -77,6 +95,24 @@
       "writtenOn": "2018-04-23T23:20:00Z",
       "side": 1,
       "message": "What do you think adding a message here (or somewhere below) to show we\u0027re restoring the states?",
+      "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39914a2_01e1c868",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-24T18:20:12Z",
+      "side": 1,
+      "message": "I\u0027ve been using the SoftReset state as a proxy for it, but I could add a small print.",
+      "parentUuid": "2778d69e_8f02fef1",
       "revId": "388d74c2bca186b0a71526a8ddcbb4a74a88c741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
