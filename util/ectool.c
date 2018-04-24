@@ -76,6 +76,8 @@ const char help_str[] =
 	"      Prints supported version mask for a command number\n"
 	"  console\n"
 	"      Prints the last output to the EC debug console\n"
+	"  cecread [timeout]\n"
+	"      Read data from the CEC bus\n"
 	"  cecwrite [write bytes...]\n"
 	"      Write data on the CEC bus\n"
 	"  echash [CMDS]\n"
@@ -7854,6 +7856,55 @@ int cmd_cec_write(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_cec_read(int argc, char *argv[])
+{
+	int msg_len, i, rv;
+	char *e;
+	struct ec_response_cec_read r;
+	struct ec_response_get_next_event buffer;
+	long timeout = 5000;
+	long event_type;
+
+	if (!ec_pollevent) {
+		fprintf(stderr, "Polling for MKBP event not supported\n");
+		return -EINVAL;
+	}
+
+	if (argc >= 2) {
+		timeout = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad timeout value '%s'.\n", argv[1]);
+			return -1;
+		}
+	}
+
+	event_type = EC_MKBP_EVENT_CEC;
+	rv = ec_pollevent(1 << event_type, &buffer, sizeof(buffer), timeout);
+	if (rv == 0) {
+		fprintf(stderr, "Timeout waiting CEC event\n");
+		return -ETIMEDOUT;
+	} else if (rv < 0) {
+		perror("Error polling for MKBP event\n");
+		return -EIO;
+	}
+
+	printf("Got CEC events 0x%08x\n", buffer.data.cec_events);
+
+	rv = ec_command(EC_CMD_CEC_READ_MSG, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	msg_len = rv;
+
+	printf("CEC data: ");
+	for (i = 0; i < msg_len; i++)
+		printf("0x%02x ", r.msg[i]);
+	printf("\n");
+
+	return 0;
+}
+
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
@@ -7871,6 +7922,7 @@ const struct command commands[] = {
 	{"cmdversions", cmd_cmdversions},
 	{"console", cmd_console},
 	{"cecwrite", cmd_cec_write},
+	{"cecread", cmd_cec_read},
 	{"echash", cmd_ec_hash},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},
