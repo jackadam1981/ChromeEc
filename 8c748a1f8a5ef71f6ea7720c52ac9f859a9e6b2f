@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3855769_2b68f382",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-04-24T02:45:52Z",
+      "side": 1,
+      "message": "Hi Daisuke, \nSona have 2 sku.\nOne is w/ kblight, but other one is w/o kblight.\nMaybe we need to use sku id to differentiate these.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "8c748a1f8a5ef71f6ea7720c52ac9f859a9e6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
