@@ -336,16 +336,8 @@ void system_reset(int flags)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
 
-	/* Save current reset reasons if necessary */
-	if (flags & SYSTEM_RESET_PRESERVE_FLAGS)
-		save_flags = system_get_reset_flags() | RESET_FLAG_PRESERVED;
-
-	if (flags & SYSTEM_RESET_LEAVE_AP_OFF)
-		save_flags |= RESET_FLAG_AP_OFF;
-
-	/* Remember that the software asked us to hard reboot */
-	if (flags & SYSTEM_RESET_HARD)
-		save_flags |= RESET_FLAG_HARD;
+	/* Handle saving common reset flags. */
+	system_encode_save_flags(flags, &save_flags);
 
 	/* Reset flags are 32-bits, but BBRAM entry is only 16 bits. */
 	ASSERT(!(save_flags >> 16));
