@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7d8108bd_048eaeeb",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-24T16:47:20Z",
+      "side": 1,
+      "message": "I will file another CL to fix it using timer to confirm the shutdown, not over-complicate this CL.",
+      "parentUuid": "14a6a70d_f677a6a8",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d33f6b0_605fb4fd",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 7
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "Right, using !\u003d is more understandable. Will fix it.",
       "parentUuid": "c73059e5_ec054294",
+      "range": {
+        "startLine": 195,
+        "startChar": 14,
+        "endLine": 195,
+        "endChar": 15
+      },
+      "revId": "0c99dd3e1d433d117911d96e426c04400b709cd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e32823_31a222ab",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-24T16:47:20Z",
+      "side": 1,
+      "message": "Made is_system_powered() and is_pmic_pwron() returns 1 instead of non-zero, such that it matches the value of the argument.",
+      "parentUuid": "f0837f32_dcaeade7",
       "range": {
         "startLine": 195,
         "startChar": 14,
