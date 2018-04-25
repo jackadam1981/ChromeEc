@@ -2256,8 +2256,19 @@
 /* Support PWM output to display backlight */
 #undef CONFIG_PWM_DISPLIGHT
 
-/* Support PWM output to keyboard backlight */
+/**
+ * Keyboard backlight configutions, either one of the below configurations:
+ * 1. CONFIG_PWM_KBLIGHT_ONLY: Define when the board only supports PWM
+ *    keyboard backlight.
+ * 2. CONFIG_KBLIGHT: Define when the board needs to runtime config different
+ *    keyboard backlight interface. So far, the PWM and i2c are supported.
+ *    (i). CONFIG_PWM_KBLIGHT: Define when PWM driver needs to be supported
+ *    (ii).CONFIG_I2C_KBLIGHT: Define when I2C driver needs to be supported
+ */
+#undef CONFIG_KBLIGHT
+#undef CONFIG_PWM_KBLIGHT_ONLY
 #undef CONFIG_PWM_KBLIGHT
+#undef CONFIG_I2C_KBLIGHT
 
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
@@ -3572,4 +3583,38 @@
 #define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ \
 	CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ
 #endif
+
+/**
+ * Keyboard backlight configution checks:
+ * Error1:
+ *    Group1: {CONFIG_PWM_KBLIGHT_ONLY}
+ *    Group2: {CONFIG_KBLIGHT, CONFIG_PWM_KBLIGHT, CONFIG_I2C_KBLIGHT}
+ *    Group1 and Group2 are mutual exclusive
+ * Error2:
+ *    if CONFIG_KBLIGHT is defined, at least one of
+ *      {CONFIG_PWM_KBLIGHT, CONFIG_I2C_KBLIGHT} should be defined
+ * Error3:
+ *    if one or both of {CONFIG_PWM_KBLIGHT, CONFIG_I2C_KBLIGHT} is defined,
+ *      CONFIG_KBLIGHT should be defined.
+ */
+
+#ifdef CONFIG_PWM_KBLIGHT_ONLY
+#if defined(CONFIG_KBLIGHT) || defined(CONFIG_PWM_KBLIGHT) \
+	|| defined(CONFIG_I2C_KBLIGHT)
+#error "Error1: Shouldn't define CONFIG_KBLIGHT, CONFIG_{I2C/PWM}_KBLIGHT"
+#endif
+#endif
+
+#ifdef CONFIG_KBLIGHT
+#if !defined(CONFIG_PWM_KBLIGHT) && !defined(CONFIG_I2C_KBLIGHT)
+#error "Error2: Should define either CONFIG_PWM_KBLIGHT or CONFIG_I2C_KBLIGHT"
+#endif
+#endif
+
+#if defined(CONFIG_PWM_KBLIGHT) || defined(CONFIG_I2C_KBLIGHT)
+#ifndef CONFIG_KBLIGHT
+#error "Error3: Should define CONFIG_KBLIGHT"
+#endif
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
