@@ -22,6 +22,30 @@
       "revId": "c45b663a812cafc06cba5f47401d19f7e6d1a27c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa67c85_94483e02",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-25T06:12:51Z",
+      "side": 1,
+      "message": "I think the idea here is if we are not in the #if clause, we are not fully sure we supply VCONN (as we cannot try hard to supply it using pd_try_vconn_src), so Sam wants to stay on the safe side and provide VBUS as per the comment above.\nMakes sense.\n\nFor the !VBUS \u0026\u0026 !VCONN scenario, I think an AMA might be self-powered I imagine (even though this is a somewhat far-fetched idea) but given we \u0027shall\u0027 provide power when the bits are set but nothing says that we \u0027must not\u0027 when it is not, seems fair to put in place this protection given Sam has found a device (wrongly) behaving this way.\nThis has power implication though when the user has a dangling AMA hanging off on of his ports, but we can probably live with it.",
+      "parentUuid": "17160e67_7403cd88",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "c45b663a812cafc06cba5f47401d19f7e6d1a27c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
