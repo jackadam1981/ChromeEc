@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4cf5d76_2c682e9a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T16:19:58Z",
+      "side": 1,
+      "message": "How are these 3 different, should a combination of these be used? Please elaborate in the comments. Where does i2c fit in here?",
+      "range": {
+        "startLine": 2258,
+        "startChar": 0,
+        "endLine": 2264,
+        "endChar": 30
+      },
+      "revId": "8198b40a855413c25712d3b1f7abae06feef8071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16963269_3b3c15bf",
+        "filename": "include/kblight.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T16:19:58Z",
+      "side": 1,
+      "message": "why is this in the driver but does not have a corresponding function in the header file?",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "8198b40a855413c25712d3b1f7abae06feef8071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b02b8d6c_d9fba0a6",
+        "filename": "include/kblight.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T16:19:58Z",
+      "side": 1,
+      "message": "Please add function comments",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "8198b40a855413c25712d3b1f7abae06feef8071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f97e6c5_181e66e5",
+        "filename": "include/pwm_kblight.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T16:19:58Z",
+      "side": 1,
+      "message": "Please add function comment header that specify what each function does.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "8198b40a855413c25712d3b1f7abae06feef8071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
