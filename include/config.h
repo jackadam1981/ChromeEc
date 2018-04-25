@@ -2256,8 +2256,22 @@
 /* Support PWM output to display backlight */
 #undef CONFIG_PWM_DISPLIGHT
 
-/* Support PWM output to keyboard backlight */
-#undef CONFIG_PWM_KBLIGHT
+/**
+ * Keyboard backlight configutions, either one of the below configurations:
+ * 1. CONFIG_KBLIGHT_STATIC_PWM: Define when the board only supports PWM
+ *    keyboard backlight.
+ * 2. CONFIG_KBLIGHT_RUNTIME: Define when the board needs to runtime config
+ *    different keyboard backlight interface. So far, the PWM and i2c are
+ *    supported.
+ *    (i). CONFIG_KBLIGHT_RUNTIME_PWM: Define when PWM driver needs to be
+ *         supported
+ *    (ii).CONFIG_KBLIGHT_RUNTIME_I2C: Define when I2C driver needs to be
+ *         supported
+ */
+#undef CONFIG_KBLIGHT_RUNTIME
+#undef CONFIG_KBLIGHT_STATIC_PWM
+#undef CONFIG_KBLIGHT_RUNTIME_PWM
+#undef CONFIG_KBLIGHT_RUNTIME_I2C
 
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
@@ -3572,4 +3586,41 @@
 #define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ \
 	CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ
 #endif
+
+/**
+ * Keyboard backlight configution checks:
+ * Error1:
+ *    Group1: {CONFIG_KBLIGHT_STATIC_PWM}
+ *    Group2: {CONFIG_KBLIGHT_RUNTIME, CONFIG_KBLIGHT_RUNTIME_PWM,
+ *             CONFIG_KBLIGHT_RUNTIME_I2C}
+ *    Group1 and Group2 are mutual exclusive
+ * Error2:
+ *    if CONFIG_KBLIGHT_RUNTIME is defined, at least one of
+ *    {CONFIG_KBLIGHT_RUNTIME_PWM, CONFIG_KBLIGHT_RUNTIME_I2C}
+ *    must be defined
+ * Correction:
+ *    if one or both of {CONFIG_KBLIGHT_RUNTIME_PWM,
+ *    CONFIG_KBLIGHT_RUNTIME_I2C} is defined, CONFIG_KBLIGHT_RUNTIME
+ *    should be defined.
+ */
+
+#ifdef CONFIG_KBLIGHT_STATIC_PWM
+#if defined(CONFIG_KBLIGHT_RUNTIME) || defined(CONFIG_KBLIGHT_RUNTIME_PWM) \
+	|| defined(CONFIG_KBLIGHT_RUNTIME_I2C)
+#error "Error1: Shouldn't define any CONFIG_KBLIGHT_RUNTIME*"
+#endif
+#endif
+
+#ifdef CONFIG_KBLIGHT_RUNTIME
+#if !defined(CONFIG_KBLIGHT_RUNTIME_PWM) && !defined(CONFIG_KBLIGHT_RUNTIME_I2C)
+#error "Error2: Should define either CONFIG_KBLIGHT_RUNTIME_{PWM|I2C}"
+#endif
+#endif
+
+#if defined(CONFIG_KBLIGHT_RUNTIME_PWM) || defined(CONFIG_KBLIGHT_RUNTIME_I2C)
+#ifndef CONFIG_KBLIGHT_RUNTIME
+#define CONFIG_KBLIGHT_RUNTIME
+#endif
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */

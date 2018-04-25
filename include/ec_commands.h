@@ -1176,7 +1176,7 @@ enum ec_feature_code {
 	/*
 	 * Can control the intensity of the keyboard backlight.
 	 */
-	EC_FEATURE_PWM_KEYB = 3,
+	EC_FEATURE_KBLIGHT = 3,
 	/*
 	 * Support Google lightbar, introduced on Pixel.
 	 */
@@ -1626,19 +1626,17 @@ struct __ec_align_size1 ec_params_pwm_set_fan_target_rpm_v1 {
 };
 
 /* Get keyboard backlight */
-/* OBSOLETE - Use EC_CMD_PWM_SET_DUTY */
-#define EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT 0x0022
+#define EC_CMD_GET_KEYBOARD_BACKLIGHT 0x0022
 
-struct __ec_align1 ec_response_pwm_get_keyboard_backlight {
+struct __ec_align1 ec_response_get_keyboard_backlight {
 	uint8_t percent;
 	uint8_t enabled;
 };
 
 /* Set keyboard backlight */
-/* OBSOLETE - Use EC_CMD_PWM_SET_DUTY */
-#define EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT 0x0023
+#define EC_CMD_SET_KEYBOARD_BACKLIGHT 0x0023
 
-struct __ec_align1 ec_params_pwm_set_keyboard_backlight {
+struct __ec_align1 ec_params_set_keyboard_backlight {
 	uint8_t percent;
 };
 

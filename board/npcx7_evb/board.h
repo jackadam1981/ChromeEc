@@ -34,7 +34,7 @@
 #undef  CONFIG_LOW_POWER_IDLE /* Deep Sleep Support */
 #define CONFIG_POWER_BUTTON
 #undef  CONFIG_PSTORE
-#define CONFIG_PWM_KBLIGHT
+#define CONFIG_KBLIGHT_STATIC_PWM
 #define CONFIG_VBOOT_HASH
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands */
 
