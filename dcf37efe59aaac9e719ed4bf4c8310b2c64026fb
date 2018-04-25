@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "54ef212d_e674364e",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-04-25T22:58:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "774f067e_a869fee8",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e219473e_6e545f02",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "We want to ensure that we disable all of the other ports first so we need to keep after the for loop",
       "parentUuid": "cbd4d1a5_9d21fc6c",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccfa2592_4e75dee3",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-04-25T22:58:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70c2c2c8_87b45812",
       "range": {
         "startLine": 64,
         "startChar": 0,
