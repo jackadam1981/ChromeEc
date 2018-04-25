@@ -2263,8 +2263,20 @@
 /* Support PWM output to display backlight */
 #undef CONFIG_PWM_DISPLIGHT
 
-/* Support PWM output to keyboard backlight */
-#undef CONFIG_PWM_KBLIGHT
+/**
+ * Keyboard backlight configutions, either one of the below configurations:
+ * 1. CONFIG_KBLIGHT_STATIC_PWM: Define when the board only supports PWM
+ *    keyboard backlight.
+ * 2. CONFIG_KBLIGHT_RUNTIME: Define when the board needs to runtime config
+ *    different keyboard backlight interface. So far, the PWM and i2c are
+ *    supported.
+ *    (i). CONFIG_KBLIGHT_RUNTIME_PWM: Define when PWM driver needs to be
+ *         supported
+ *    (ii).To support i2c, just register callback function
+ */
+#undef CONFIG_KBLIGHT_RUNTIME
+#undef CONFIG_KBLIGHT_STATIC_PWM
+#undef CONFIG_KBLIGHT_RUNTIME_PWM
 
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
@@ -3579,4 +3591,28 @@
 #define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ \
 	CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ
 #endif
+
+/**
+ * Keyboard backlight configution checks:
+ * Error:
+ *    Group1: {CONFIG_KBLIGHT_STATIC_PWM}
+ *    Group2: {CONFIG_KBLIGHT_RUNTIME, CONFIG_KBLIGHT_RUNTIME_PWM}
+ *    Group1 and Group2 are mutual exclusive
+ * Correction:
+ *    if CONFIG_KBLIGHT_RUNTIME_PWM is defined,
+ *    CONFIG_KBLIGHT_RUNTIME should be defined.
+ */
+
+#ifdef CONFIG_KBLIGHT_STATIC_PWM
+#if defined(CONFIG_KBLIGHT_RUNTIME) || defined(CONFIG_KBLIGHT_RUNTIME_PWM)
+#error "Error: Shouldn't define any CONFIG_KBLIGHT_RUNTIME*"
+#endif
+#endif
+
+#ifdef CONFIG_KBLIGHT_RUNTIME_PWM
+#ifndef CONFIG_KBLIGHT_RUNTIME
+#define CONFIG_KBLIGHT_RUNTIME
+#endif
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */

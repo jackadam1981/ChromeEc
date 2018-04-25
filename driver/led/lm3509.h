@@ -26,6 +26,12 @@
 int lm3509_power(int enable);
 
 /**
+ * Query LM3509 enable state
+ * @return 0:disable, 1:enable
+ */
+int lm3509_is_enable(void);
+
+/**
  * Set brightness level
  *
  * @param percent: Brightness level: 0 - 100%

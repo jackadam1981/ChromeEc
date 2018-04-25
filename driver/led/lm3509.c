@@ -71,6 +71,14 @@ int lm3509_power(int enable)
 	return ret;
 }
 
+int lm3509_is_enable(void)
+{
+	int val;
+
+	lm3509_read(LM3509_REG_GP, &val);
+	return (val & 0x7) ? 1 : 0;
+}
+
 int lm3509_set_brightness(int percent)
 {
 	/* We don't need to read/mask/write BMAIN because bit6 and 7 are non

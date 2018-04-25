@@ -60,7 +60,7 @@
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 #define CONFIG_POWER_S0IX
 #define CONFIG_PWM
-#define CONFIG_PWM_KBLIGHT
+#define CONFIG_KBLIGHT_STATIC_PWM
 /* All data won't fit in data RAM.  So, moving boundary slightly. */
 #undef CONFIG_RO_SIZE
 #define CONFIG_RO_SIZE (104 * 1024)
