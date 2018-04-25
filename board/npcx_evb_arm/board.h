@@ -24,7 +24,7 @@
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP /* Instead of 8042 protocol of keyboard */
 #define CONFIG_POWER_BUTTON
 #define CONFIG_VBOOT_HASH
-#define CONFIG_PWM_KBLIGHT
+#define CONFIG_KBLIGHT_STATIC_PWM
 #define CONFIG_BOARD_VERSION_GPIO
 
 /* Optional features for test commands */
