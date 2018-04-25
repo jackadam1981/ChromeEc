@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "774f067e_a869fee8",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T22:22:31Z",
+      "side": 1,
+      "message": "The variable is just to make is easier to read the early return on line 24. I renamed it to is_valid_port",
+      "parentUuid": "aefc2caf_8601f03c",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e219473e_6e545f02",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc97de1e_9e5d4587",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T22:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e219473e_6e545f02",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "70c2c2c8_87b45812",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T22:22:31Z",
+      "side": 1,
+      "message": "We want to ensure that we disable all of the other ports first so we need to keep after the for loop",
+      "parentUuid": "cbd4d1a5_9d21fc6c",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "111642be_c5bb4686",
         "filename": "baseboard/octopus/battery.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "50e7ffd8_3b949abc",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T22:22:31Z",
+      "side": 1,
+      "message": "Looks like we don\u0027t need it for either charger. Good catch. Removed.",
+      "parentUuid": "111642be_c5bb4686",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 1
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29f13c2_dc20508b",
         "filename": "board/bip/battery.c",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8670eea_20073221",
+        "filename": "board/bip/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-25T22:22:31Z",
+      "side": 1,
+      "message": "I was planing on having it for board-specific logic, but now I need it in the CL",
+      "parentUuid": "a29f13c2_dc20508b",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
