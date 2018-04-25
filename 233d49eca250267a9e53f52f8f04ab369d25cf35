@@ -34,6 +34,24 @@
       "revId": "233d49eca250267a9e53f52f8f04ab369d25cf35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09f8a86d_f65086b0",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-04-25T23:54:31Z",
+      "side": 1,
+      "message": "Keep the changes line 11-18, let\u0027s focus on the failure when 200Hz ODR is allowed.\nWhich CTS tests fail? Happen the tests result zip in the bug.",
+      "parentUuid": "2a691a2b_4e455f76",
+      "revId": "233d49eca250267a9e53f52f8f04ab369d25cf35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
