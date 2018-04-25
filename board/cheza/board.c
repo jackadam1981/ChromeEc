@@ -18,15 +18,51 @@
 #include "power.h"
 #include "power_button.h"
 #include "switch.h"
+#include "system.h"
+#include "task.h"
 
 /* Forward declaration */
 static void warm_reset_request_interrupt(enum gpio_signal signal);
+static void board_power_signal_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
 
 /* 8-bit I2C address */
 #define PI3USB9281_I2C_ADDR	0x4a
 #define DA9313_I2C_ADDR		0xd0
+
+/* Delay to confirm the power lost */
+#define POWER_LOST_CONFIRM_DELAY        (350 * MSEC)
+
+/* The power signals after the above confirm-delay */
+static uint32_t deferred_in_signals;
+
+/* Confirm power lost if the POWER_GOOD signal keeps low for a while */
+uint32_t board_is_power_lost(void)
+{
+	return !power_has_signals(IN_POWER_GOOD) &&
+		!(deferred_in_signals & IN_POWER_GOOD);
+}
+
+/* The deferred handler to save the power signal */
+static void deferred_power_signal_handler(void)
+{
+	deferred_in_signals = power_get_signals();
+
+	/* Wake the chipset task to handle the power signal */
+	task_wake(TASK_ID_CHIPSET);
+}
+DECLARE_DEFERRED(deferred_power_signal_handler);
+
+/* Power signal interrupt to also save the deferred signals */
+static void board_power_signal_interrupt(enum gpio_signal signal)
+{
+	/* Call the default power signal interrupt */
+	power_signal_interrupt(signal);
+
+	hook_call_deferred(&deferred_power_signal_handler_data,
+			   POWER_LOST_CONFIRM_DELAY);
+}
 
 /* GPIO Interrupt Handlers */
 static void warm_reset_request_handler(void)
