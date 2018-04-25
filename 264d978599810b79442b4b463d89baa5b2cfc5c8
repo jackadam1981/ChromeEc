@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32c808ad_7d6aae0c",
+        "filename": "board/nami/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-25T16:03:37Z",
+      "side": 1,
+      "message": "you should put parenthesis around variable for macros (else it\u0027s a big trap due to operators precedence)",
+      "range": {
+        "startLine": 85,
+        "startChar": 38,
+        "endLine": 85,
+        "endChar": 46
+      },
+      "revId": "264d978599810b79442b4b463d89baa5b2cfc5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4af314_d5ce2260",
+        "filename": "board/nami/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-04-25T16:03:37Z",
+      "side": 1,
+      "message": "please put a break below,\nelse we will fall into the trap when we add the next one.\n\na default clause might be needed here.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 21
+      },
+      "revId": "264d978599810b79442b4b463d89baa5b2cfc5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
