@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aefc2caf_8601f03c",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-04-25T14:18:05Z",
+      "side": 1,
+      "message": "we can remove this variable and bring code at line 47",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e219473e_6e545f02",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-04-25T14:18:05Z",
+      "side": 1,
+      "message": "move to line 52",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd4d1a5_9d21fc6c",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-04-25T14:18:05Z",
+      "side": 1,
+      "message": "we can move it to line 57",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111642be_c5bb4686",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-04-25T14:18:05Z",
+      "side": 1,
+      "message": "is it need for TI charger too?",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 1
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29f13c2_dc20508b",
+        "filename": "board/bip/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-04-25T14:18:05Z",
+      "side": 1,
+      "message": "we can remove this file",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 3
+      },
+      "revId": "dcf37efe59aaac9e719ed4bf4c8310b2c64026fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
