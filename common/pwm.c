@@ -9,6 +9,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "pwm.h"
+#include "pwm_kblight.h"
 #include "util.h"
 
 #ifdef CONFIG_PWM
@@ -23,9 +24,9 @@ static int get_target_channel(enum pwm_channel *channel, int type, int index)
 	case EC_PWM_TYPE_GENERIC:
 		*channel = index;
 		break;
-#ifdef CONFIG_PWM_KBLIGHT
+#if defined(CONFIG_KBLIGHT_RUNTIME_PWM) || defined(CONFIG_KBLIGHT_STATIC_PWM)
 	case EC_PWM_TYPE_KB_LIGHT:
-		*channel = PWM_CH_KBLIGHT;
+		*channel = pwm_get_channel();
 		break;
 #endif
 #ifdef CONFIG_PWM_DISPLIGHT
