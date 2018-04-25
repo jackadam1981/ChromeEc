@@ -127,6 +127,13 @@ void chipset_handle_reboot(void);
  * GPIO interrupt handler of reset request from AP.
  */
 void chipset_reset_request_interrupt(enum gpio_signal signal);
+
+/**
+ * SDM845-specific power signal interrupt, overrides the default one.
+ * It handles the short-low-pulse during the reset sequence which we don't
+ * consider it as a power-lost.
+ */
+void chipset_power_signal_interrupt(enum gpio_signal signal);
 #endif /* CONFIG_CHIPSET_SDM845 */
 
 #endif  /* __CROS_EC_CHIPSET_H */
