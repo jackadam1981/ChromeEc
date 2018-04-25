@@ -25,6 +25,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "kblight.h"
 #endif
 
 /*
@@ -200,7 +201,7 @@ static void lightbar_restore_state(void)
  * state by calling the demo_* functions directly. */
 /******************************************************************************/
 
-#ifdef CONFIG_PWM_KBLIGHT
+#if defined(CONFIG_KBLIGHT_RUNTIME) || defined(CONFIG_KBLIGHT_STATIC_PWM)
 static int last_backlight_level;
 #endif
 #ifdef CONFIG_ALS_LIGHTBAR_DIMMING
@@ -282,7 +283,7 @@ static int get_battery_level(void)
 		change = 1;
 	}
 
-#ifdef CONFIG_PWM_KBLIGHT
+#if defined(CONFIG_KBLIGHT_RUNTIME) || defined(CONFIG_KBLIGHT_STATIC_PWM)
 	/*
 	 * With nothing else to go on, use the keyboard backlight level to *
 	 * set the brightness. In general, if the keyboard backlight
@@ -292,8 +293,8 @@ static int get_battery_level(void)
 	 * someone's watching a movie in the dark, of course. Ideally we should
 	 * just let the AP control it directly.
 	 */
-	if (pwm_get_enabled(PWM_CH_KBLIGHT)) {
-		pct = pwm_get_duty(PWM_CH_KBLIGHT);
+	if (kblight_is_enable()) {
+		pct = kblight_get();
 		pct = (255 * pct) / 100;  /* 00 - FF */
 		if (pct > st.p.bright_bl_on_max[st.battery_is_charging])
 			pct = st.p.bright_bl_on_max[st.battery_is_charging];

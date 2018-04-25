@@ -514,7 +514,7 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_LIMITED] = "Limited image, load RW for more",
 	[EC_FEATURE_FLASH] = "Flash",
 	[EC_FEATURE_PWM_FAN] = "Direct Fan power management",
-	[EC_FEATURE_PWM_KEYB] = "Keyboard backlight",
+	[EC_FEATURE_KBLIGHT] = "Keyboard backlight",
 	[EC_FEATURE_LIGHTBAR] = "Lightbar",
 	[EC_FEATURE_LED] = "LED",
 	[EC_FEATURE_MOTION_SENSE] = "Motion Sensors",
@@ -2377,10 +2377,10 @@ int cmd_pwm_set_fan_rpm(int argc, char *argv[])
 
 int cmd_pwm_get_keyboard_backlight(int argc, char *argv[])
 {
-	struct ec_response_pwm_get_keyboard_backlight r;
+	struct ec_response_get_keyboard_backlight r;
 	int rv;
 
-	rv = ec_command(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT, 0,
+	rv = ec_command(EC_CMD_GET_KEYBOARD_BACKLIGHT, 0,
 			NULL, 0, &r, sizeof(r));
 	if (rv < 0)
 		return rv;
@@ -2396,7 +2396,7 @@ int cmd_pwm_get_keyboard_backlight(int argc, char *argv[])
 
 int cmd_pwm_set_keyboard_backlight(int argc, char *argv[])
 {
-	struct ec_params_pwm_set_keyboard_backlight p;
+	struct ec_params_set_keyboard_backlight p;
 	char *e;
 	int rv;
 
@@ -2410,7 +2410,7 @@ int cmd_pwm_set_keyboard_backlight(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT, 0,
+	rv = ec_command(EC_CMD_SET_KEYBOARD_BACKLIGHT, 0,
 			&p, sizeof(p), NULL, 0);
 	if (rv < 0)
 		return rv;
