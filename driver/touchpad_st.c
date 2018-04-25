@@ -42,6 +42,7 @@ static int st_tp_send_ack(void);
 static int st_tp_send_ack(void);
 static int st_tp_start_scan(void);
 static int st_tp_stop_scan(void);
+static int st_tp_update_system_state(int new_state, int mask);
 
 /* Global variables */
 /*
@@ -54,6 +55,7 @@ static int system_state;
 #define SYSTEM_STATE_ENABLE_DOME_SWITCH	(1 << 2)
 #define SYSTEM_STATE_ACTIVE_MODE	(1 << 3)
 #define SYSTEM_STATE_DOME_SWITCH_LEVEL  (1 << 4)
+#define SYSTEM_STATE_INITIALIZATION	(1 << 5)
 
 /*
  * Timestamp of last interrupt (32 bits are enough as we divide the value by 100
@@ -319,6 +321,11 @@ static int st_tp_update_system_state(int new_state, int mask)
 			return ret;
 		set_bits(&system_state, new_state, mask);
 	}
+
+	mask = SYSTEM_STATE_INITIALIZATION;
+	if ((new_state & mask) != (system_state & mask))
+		set_bits(&system_state, new_state, mask);
+
 	return ret;
 }
 
@@ -685,6 +692,48 @@ static int st_tp_write_flash(int offset, int size, const uint8_t *data)
 	return EC_SUCCESS;
 }
 
+static void st_tp_check_initialization(void) {
+	int i;
+	struct st_tp_event_t *event;
+
+	if (st_tp_read_all_events()) // failed, try again later
+		return;
+
+	for (i = 0; i < ARRAY_SIZE(rx_buf.events); i++) {
+		event = &rx_buf.events[i];
+
+		if (event->magic != 0x3)
+			break;
+
+		if (event->evt_id == 0x0) {
+			CPRINTS("controller ready!");
+			st_tp_update_system_state(
+					0, SYSTEM_STATE_INITIALIZATION);
+			return;
+		}
+	}
+	CPRINTS("controller not ready!");
+}
+
+static void st_tp_full_initialize(void) {
+	uint8_t tx_buf[] = { ST_TP_CMD_WRITE_SYSTEM_COMMAND, 0x00, 0x03 };
+
+	st_tp_stop_scan();
+	board_touchpad_reset();
+
+	st_tp_update_system_state(SYSTEM_STATE_INITIALIZATION,
+				  SYSTEM_STATE_INITIALIZATION);
+
+	spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
+
+	while (system_state & SYSTEM_STATE_INITIALIZATION) {
+		usleep(10 * MSEC);
+		st_tp_check_initialization();
+	}
+
+	hook_call_deferred(&st_tp_init_data, 10 * MSEC);
+}
+
 /*
  * @param offset: should be address between 0 to 1M, aligned with
  *	ST_TP_DMA_CHUNK_SIZE.
@@ -694,7 +743,6 @@ static int st_tp_write_flash(int offset, int size, const uint8_t *data)
 int touchpad_update_write(int offset, int size, const uint8_t *data)
 {
 	int ret;
-	uint8_t tx_buf[] = { ST_TP_CMD_WRITE_SYSTEM_COMMAND, 0x00, 0x03 };
 
 	CPRINTS("%s %08x %d", __func__, offset, size);
 	if (offset == 0) {
@@ -721,12 +769,7 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 	if (offset + size == CONFIG_TOUCHPAD_VIRTUAL_SIZE) {
 		CPRINTS("%s: End update, wait for reset.", __func__);
 
-		board_touchpad_reset();
-
-		/* Full panel initialization */
-		spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
-
-		hook_call_deferred(&st_tp_init_data, 10 * MSEC);
+		st_tp_full_initialize();
 	}
 
 	return EC_SUCCESS;
@@ -1012,6 +1055,9 @@ static int command_touchpad_st(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 	if (strcasecmp(argv[1], "version") == 0) {
 		st_tp_read_system_info(1);
+		return 0;
+	} else if (strcasecmp(argv[1], "calibrate") == 0) {
+		st_tp_full_initialize();
 		return 0;
 #ifdef CONFIG_USB_ISOCHRONOUS
 	} else if (strcasecmp(argv[1], "enable") == 0) {
