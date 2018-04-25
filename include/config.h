@@ -2258,6 +2258,10 @@
 
 /* Support PWM output to keyboard backlight */
 #undef CONFIG_PWM_KBLIGHT
+/* Support output to keyboard backlight */
+#undef CONFIG_KBLIGHT
+/* Only support PWM output to keyboard backlight */
+#undef CONFIG_PWM_KBLIGHT_ONLY
 
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
@@ -3572,4 +3576,11 @@
 #define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ \
 	CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ
 #endif
+
+#ifdef CONFIG_PWM_KBLIGHT
+#ifdef CONFIG_PWM_KBLIGHT_ONLY
+#error "Either CONFIG_PWM_KBLIGHT or CONFIG_PWM_KBLIGHT_ONLY"
+#endif
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
