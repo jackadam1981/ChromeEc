@@ -1093,7 +1093,7 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 		return flags0;
 
 	// Report that there is no keyboard backlight
-	flags0 &= ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB);
+	flags0 &= ~EC_FEATURE_MASK_0(EC_FEATURE_KBLIGHT);
 
 	return flags0;
 }
