@@ -23,7 +23,7 @@ static int get_target_channel(enum pwm_channel *channel, int type, int index)
 	case EC_PWM_TYPE_GENERIC:
 		*channel = index;
 		break;
-#ifdef CONFIG_PWM_KBLIGHT
+#ifdef CONFIG_KBLIGHT_STATIC_PWM
 	case EC_PWM_TYPE_KB_LIGHT:
 		*channel = PWM_CH_KBLIGHT;
 		break;
