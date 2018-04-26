@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f4a987_803e2595",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T14:28:53Z",
+      "side": 1,
+      "message": "where does 8 correspond to 128-pins? isn\u0027t is g that corresponds to 128-pins?\n\nAre M and N number of letter placeholders? Are M and N mutually exclusive in the naming scheme?",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907457a0_09b6d7e1",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T14:28:53Z",
+      "side": 1,
+      "message": "nit: seems like the order here should go in ascending chip order (I am okay either way, just wanted to point it out)\n\nnpcx7m6f npcx7m7fb npcx7m7wb",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b457b718_123455ff",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T14:28:53Z",
+      "side": 1,
+      "message": "same nit here about order",
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c480a5_e8ab9516",
+        "filename": "util/ecst.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T14:28:53Z",
+      "side": 1,
+      "message": "nit: can you add the space above again for consistency",
+      "range": {
+        "startLine": 306,
+        "startChar": 22,
+        "endLine": 306,
+        "endChar": 23
+      },
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
