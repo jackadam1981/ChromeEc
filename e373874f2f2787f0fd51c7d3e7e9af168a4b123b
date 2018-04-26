@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "0d43d833_7ecab09e",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T19:12:31Z",
+      "side": 1,
+      "message": "Ah, I understand this now. Could you rewrite line 11 to be something like NPCX7(M)(N)(G|K|F|W)(B|C)\n\nI was confused because the configs specify M as the letter M and N as a number. Thanks for helping me understand!",
+      "parentUuid": "0dadb47b_4ce5e377",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907457a0_09b6d7e1",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 9
