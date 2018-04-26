@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "98c6b0d0_58b7e052",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7930ed51_2ac81f7e",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15c81ad0_327e7658",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:58:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650d43fe_6a68548e",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e454ecc8_3fc9dabc",
         "filename": "board/bip/board.c",
         "patchSetId": 3
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f75e611e_c6c4a297",
+        "filename": "board/bip/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:58:07Z",
+      "side": 1,
+      "message": "Done. C0 is always first now.",
+      "parentUuid": "e454ecc8_3fc9dabc",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 11
+      },
+      "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a4351fc_b9457580",
         "filename": "board/bip/usb_pd_policy.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba199a2_05cb6789",
+        "filename": "board/bip/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:58:07Z",
+      "side": 1,
+      "message": "I was thinking about doing this too. I went ahead a moved it to baseboard with a  CONFIG_USB_PD_VBUS_DETECT_PPC guard.\n\nOn a more general note, many boards that use a PPC all defined this same code. I think we should pull it out in a common PPC PD method set.",
+      "parentUuid": "2a4351fc_b9457580",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +233,30 @@
       "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb706b4c_0a6170cb",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:58:07Z",
+      "side": 1,
+      "message": "We want to only have the batteries available that each board will use (instead of all firmware builds containing all of the batteries). It was my understanding that yorp will only be used the the panasonic battery.\n\nWe can pull the other battery parameters out from revision history when we need to add them to their specific OEM board.\n\nSee comment thread https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1024279/1/baseboard/octopus/battery.c#25 for more discussion.",
+      "parentUuid": "0186c48a_dd430548",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 18
+      },
+      "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
