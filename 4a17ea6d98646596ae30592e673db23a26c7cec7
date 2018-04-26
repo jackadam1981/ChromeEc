@@ -22,6 +22,30 @@
       "revId": "4a17ea6d98646596ae30592e673db23a26c7cec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae283f9_13ada5e2",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-26T15:50:18Z",
+      "side": 1,
+      "message": "The commit message gives the reason and I think that\u0027s sufficient. I think one can look at the git blame if they\u0027re curious about a particular CONFIG_* option.",
+      "parentUuid": "bdfc0493_2d642fa1",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 48
+      },
+      "revId": "4a17ea6d98646596ae30592e673db23a26c7cec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
