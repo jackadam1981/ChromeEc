@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b1cc00fa_50a74d2b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-26T21:52:12Z",
+      "side": 1,
+      "message": "I removed it, but left a comment because this was added for a previous reviewer.",
+      "parentUuid": "1378fc16_064478e2",
+      "range": {
+        "startLine": 821,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 2
+      },
+      "revId": "6c9a798d1634e25c9aa73d2417c4527fcf5eff39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc1135a3_29e743a4",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 36
@@ -45,6 +69,30 @@
       "revId": "6c9a798d1634e25c9aa73d2417c4527fcf5eff39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88904a63_94941f4d",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 36
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-26T21:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1135a3_29e743a4",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "6c9a798d1634e25c9aa73d2417c4527fcf5eff39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
