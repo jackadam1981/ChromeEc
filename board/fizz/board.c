@@ -56,8 +56,10 @@
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
+	/*
 	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
 		return;
+		*/
 
 #ifdef HAS_TASK_PDCMD
 	/* Exchange status with TCPCs */
@@ -221,6 +223,8 @@ void board_reset_pd_mcu(void)
 void board_tcpc_init(void)
 {
 	int port, reg;
+
+	gpio_set_flags(GPIO_USB_C0_PD_RST_ODL, GPIO_OUT_LOW);
 
 	/* This needs to be executed only once per boot. It could be run by RO
 	 * if we boot in recovery mode. It could be run by RW if we boot in
