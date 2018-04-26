@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bafe37f3_8a5e7e8c",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165254
+      },
+      "writtenOn": "2018-04-26T15:17:17Z",
+      "side": 1,
+      "message": "G is the baseline SKU (e.g., no internal flash). It is not tied to package size.\nM and N are indeed mutually exclusive in the naming scheme.",
+      "parentUuid": "b9f4a987_803e2595",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "907457a0_09b6d7e1",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 9
