@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e24a86d0_ed9ac828",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 60
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-26T19:47:05Z",
+      "side": 1,
+      "message": "util.h provides definition of MIN(a, b)",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 59
+      },
+      "revId": "bffa274c1e621f41bba37850c0209ff5caa44100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a5a228_58016029",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 60
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-26T19:47:05Z",
+      "side": 1,
+      "message": "I think we should get rid of this table and calculate these digests on the fly, or maybe calculate them once, at startup (at expense of SRAM). In a different patch of course.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 1
+      },
+      "revId": "bffa274c1e621f41bba37850c0209ff5caa44100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "268c9de5_6109ce46",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 60
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-04-26T19:47:05Z",
+      "side": 1,
+      "message": "does this file come from out of the tree? Why is it included in a different way?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "bffa274c1e621f41bba37850c0209ff5caa44100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
