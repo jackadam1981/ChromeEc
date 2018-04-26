@@ -281,6 +281,30 @@
       "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b39a2cda_3cdbf7fc",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-26T16:02:57Z",
+      "side": 1,
+      "message": "Until we stop using P0, I prefer to leave the battery types here. You can add a TODO/issue to track. But, things like battery cutoff/recovery won\u0027t work properly for people who have the Sanyo batteries or LG on their current setup.",
+      "parentUuid": "cb706b4c_0a6170cb",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 18
+      },
+      "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
