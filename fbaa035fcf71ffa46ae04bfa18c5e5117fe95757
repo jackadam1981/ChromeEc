@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "30e76895_c20c19b8",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T16:08:27Z",
+      "side": 1,
+      "message": "Done. Every 2ms for 16 ms.",
+      "parentUuid": "2d3dd6d7_f32fe9fe",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 14
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95217ba6_aa7692fa",
         "filename": "driver/charger/bq25703.h",
         "patchSetId": 2
