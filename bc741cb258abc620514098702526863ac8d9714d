@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a826dfec_0ac26743",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-26T22:16:07Z",
+      "side": 1,
+      "message": "We already have a message type field in the request that is essentially that.",
+      "parentUuid": "bf9c08eb_ba8a11fd",
+      "range": {
+        "startLine": 783,
+        "startChar": 0,
+        "endLine": 783,
+        "endChar": 42
+      },
+      "revId": "bc741cb258abc620514098702526863ac8d9714d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e9d79e_6694a94e",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 18
