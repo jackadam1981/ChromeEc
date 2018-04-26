@@ -19,8 +19,8 @@ BOARD_MK_INCLUDED_ONCE=1
 SIG_EXTRA = --cros
 else
 
-# Need to generate a .hex file
-all: hex
+# Need to force flash use calculation.
+all: size_calculation
 
 # The simulator components have their own subdirectory
 CFLAGS += -I$(realpath chip/$(CHIP)/dcrypto)
@@ -92,6 +92,22 @@ $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
 $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a
 
 #$(out)/RW/ec.RW_B.elf: $(out)/tpm2/libtpm2.a LDFLAGS_EXTRA += -L$(out)/tpm2 -ltpm2
+size_calculation: $(out)/$(PROJECT).bin
+
+.PHONY: size_calculation
+ROM_SIZE := 0x40000   # H1 flash half size
+RO_SIZE := 0x4000     # RO space size
+NVMEM_SIZE := 0x3000  # NVMEM space size
+NVCTR_SIZE := 0x800   # Nonvolatile counter space size
+# '__hey_flash_used' is a linker calculated value showing how much space code
+# RO and initialized data take in flash.
+
+size_calculation: $(out)/$(PROJECT).bin
+	@awk '/hey_flash/ { \
+	  room = $(ROM_SIZE) - strtonum("0x"$$1) - \
+		$(RO_SIZE) - $(NVMEM_SIZE) - $(NVCTR_SIZE); \
+	  printf ("*** %s bytes still available in flash ****\n", room)}' \
+	$(out)/RW/ec.RW.smap
 
 # Force the external build each time, so it can look for changed sources.
 .PHONY: $(out)/tpm2/libtpm2.a
