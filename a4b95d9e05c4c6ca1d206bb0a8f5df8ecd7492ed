@@ -16,6 +16,24 @@
       "revId": "a4b95d9e05c4c6ca1d206bb0a8f5df8ecd7492ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb19ef8_a784ff7e",
+        "filename": "board/bip/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T18:09:43Z",
+      "side": 1,
+      "message": "I was going to leave it as a place holder to see if we needed any board specific functions. I will add a comment and a bug that says to remove it if we don\u0027t need it after DVT.",
+      "parentUuid": "fa94f776_59c8210c",
+      "revId": "a4b95d9e05c4c6ca1d206bb0a8f5df8ecd7492ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
