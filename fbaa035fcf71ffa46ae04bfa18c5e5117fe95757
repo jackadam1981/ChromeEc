@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2d3dd6d7_f32fe9fe",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-26T15:58:31Z",
+      "side": 1,
+      "message": "Since the expected time is 10 msec, 1 msec might be overkill. What about 2 msec?",
+      "parentUuid": "4cd81ef0_41d2f162",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 14
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95217ba6_aa7692fa",
         "filename": "driver/charger/bq25703.h",
         "patchSetId": 2
