@@ -124,6 +124,9 @@ static enum cec_state cec_state;
 /* Parameters and buffer for initiator (sender) state */
 static struct cec_tx cec_tx;
 
+/* CEC enable/disable flag */
+static bool cec_enabled;
+
 /* Events to send to AP */
 static uint32_t cec_events;
 
@@ -402,6 +405,9 @@ static int hc_cec_write(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_cec_write *params = args->params;
 
+	if (!cec_enabled)
+		return EC_RES_UNAVAILABLE;
+
 	if (args->params_size == 0 || args->params_size > MAX_CEC_MSG_LEN)
 		return EC_RES_INVALID_PARAM;
 
@@ -411,6 +417,76 @@ static int hc_cec_write(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CEC_WRITE_MSG, hc_cec_write, EC_VER_MASK(0));
+
+static int cec_set_enable(uint8_t enable)
+{
+	int mdl = NPCX_MFT_MODULE_1;
+
+	if (cec_enabled == enable)
+		return EC_RES_SUCCESS;
+
+	if (enable) {
+		memset(&cec_tx, 0, sizeof(struct cec_tx));
+		cec_state = CEC_STATE_IDLE;
+		cec_events = 0;
+
+		/* Enable timer interrupts */
+		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
+		SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
+
+		/* Enable multifunction timer interrupt */
+		task_enable_irq(NPCX_IRQ_MFT_1);
+
+		CPRINTF("CEC enabled\n");
+	} else {
+		/* Disable timer interrupts */
+		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
+		CLEAR_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
+
+		tmr2_stop();
+
+		task_disable_irq(NPCX_IRQ_MFT_1);
+
+		CPRINTF("CEC disabled\n");
+	}
+
+	cec_enabled = enable;
+
+	return EC_RES_SUCCESS;
+}
+
+static int hc_cec_set(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_cec_set *params = args->params;
+
+	switch (params->cmd) {
+	case CEC_CMD_ENABLE:
+		return cec_set_enable(params->val);
+	}
+
+	return EC_RES_INVALID_PARAM;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CEC_SET, hc_cec_set, EC_VER_MASK(0));
+
+
+static int hc_cec_get(struct host_cmd_handler_args *args)
+{
+	struct ec_response_cec_get *response = args->response;
+	const struct ec_params_cec_get *params = args->params;
+
+	switch (params->cmd) {
+	case CEC_CMD_ENABLE:
+		response->val = cec_enabled;
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
+	}
+
+	args->response_size = sizeof(*response);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CEC_GET, hc_cec_get, EC_VER_MASK(0));
 
 static int cec_get_next_event(uint8_t *out)
 {
@@ -434,13 +510,6 @@ static void cec_init(void)
 
 	/* Mode 2 - Dual-input capture */
 	SET_FIELD(NPCX_TMCTRL(mdl), NPCX_TMCTRL_MDSEL_FIELD, NPCX_MFT_MDSEL_2);
-
-	/* Enable timer interrupts */
-	SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TCIEN);
-	SET_BIT(NPCX_TIEN(mdl), NPCX_TIEN_TDIEN);
-
-	/* Enable multifunction timer interrupt */
-	task_enable_irq(NPCX_IRQ_MFT_1);
 
 	CPRINTS("CEC initialized");
 }
