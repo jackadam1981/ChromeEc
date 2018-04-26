@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6dfac773_2c69aa9c",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:25:37Z",
+      "side": 1,
+      "message": "Yes if we use bit BQ25793_ADC_OPTION_ADC_START for the single reading. The bit right above it (bit 15) does continuous reading though, which we are not using.",
+      "parentUuid": "c169e3bc_733f568b",
+      "range": {
+        "startLine": 262,
+        "startChar": 4,
+        "endLine": 262,
+        "endChar": 35
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d8e9adb_3dfe17b7",
         "filename": "driver/charger/bq25703.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4cd81ef0_41d2f162",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:25:37Z",
+      "side": 1,
+      "message": "Thanks for catching that. I changed from usleep to msleep without changing the value.\n\nI now check every 1ms for 15ms.",
+      "parentUuid": "8d8e9adb_3dfe17b7",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 14
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95217ba6_aa7692fa",
         "filename": "driver/charger/bq25703.h",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8fbdf75_1e270049",
+        "filename": "driver/charger/bq25703.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T15:25:37Z",
+      "side": 1,
+      "message": "Good idea. Done",
+      "parentUuid": "95217ba6_aa7692fa",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
