@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa94f776_59c8210c",
+        "filename": "board/bip/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-26T17:26:06Z",
+      "side": 1,
+      "message": "Is this file needed now? You would probably have to update the Makefile rule to do something like this:\n\nUSB_PD_POLICY_SRCS :\u003d $(wildcard $(BASEDIR)/usb_pd_policy.c board/$(BOARD)/usb_pd_policy.c)",
+      "revId": "a4b95d9e05c4c6ca1d206bb0a8f5df8ecd7492ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
