@@ -22,6 +22,30 @@
       "revId": "3a9e3ab7cd0841ee3c606dec926271f85850a19f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df19099b_d08b7be1",
+        "filename": "board/poppy/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-26T05:57:09Z",
+      "side": 1,
+      "message": "Ah yes, that is right! device mode is supported only on port 0. Updated in new patchset.\n\nFor b/78308749: I was hoping to check this change in until we can resolve that bug and get a proper solution that works for all boards.",
+      "parentUuid": "8d5f4dea_07dd32b9",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "3a9e3ab7cd0841ee3c606dec926271f85850a19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
