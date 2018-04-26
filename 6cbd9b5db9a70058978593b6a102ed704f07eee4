@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cdf32dcd_525a9263",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-26T16:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80d6c828_2f07d07e",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "6cbd9b5db9a70058978593b6a102ed704f07eee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0186c48a_dd430548",
         "filename": "board/yorp/board.h",
         "patchSetId": 3
