@@ -52,6 +52,24 @@
       "revId": "233d49eca250267a9e53f52f8f04ab369d25cf35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbbab420_b3e91035",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1157199
+      },
+      "writtenOn": "2018-04-26T01:29:49Z",
+      "side": 1,
+      "message": "Please refer b:75498983\nWhen 200Hz ODR is allowed, delta_time\u003d9.31ms can\u0027t meet sepc(\u003c\u003d9ms)\n\n - testGameRotationVector_fastest_batching\n - TestAccelerometer_200hz\n - testAccelerometer_fastest\n - testGameRotationVector_200hz \n - + ect etc",
+      "parentUuid": "09f8a86d_f65086b0",
+      "revId": "233d49eca250267a9e53f52f8f04ab369d25cf35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
