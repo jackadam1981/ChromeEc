@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c169e3bc_733f568b",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-26T14:25:18Z",
+      "side": 1,
+      "message": "Does it auto turn off after the reading is complete?",
+      "range": {
+        "startLine": 262,
+        "startChar": 4,
+        "endLine": 262,
+        "endChar": 35
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8e9adb_3dfe17b7",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-26T14:25:18Z",
+      "side": 1,
+      "message": "This should be 5 if the intention is to wait 5 msec. If 10 msec is typcial, then maybe use a larger divider than 2 so that if if misses, it doesn\u0027t jump to 15 msec wait.",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 14
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95217ba6_aa7692fa",
+        "filename": "driver/charger/bq25703.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-04-26T14:25:18Z",
+      "side": 1,
+      "message": "maybe IIN_STEP_MA so that the units are clear",
+      "range": {
+        "startLine": 56,
+        "startChar": 20,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "fbaa035fcf71ffa46ae04bfa18c5e5117fe95757",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
