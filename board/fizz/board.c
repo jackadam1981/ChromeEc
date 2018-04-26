@@ -237,6 +237,10 @@ void board_tcpc_init(void)
 {
 	int port, reg;
 
+	/* This is configured here to prevent EC reset by cr50 from causing
+	 * PS8751 to reset. */
+	gpio_set_flags(GPIO_USB_C0_PD_RST_ODL, GPIO_OUT_LOW);
+
 	/* This needs to be executed only once per boot. It could be run by RO
 	 * if we boot in recovery mode. It could be run by RW if we boot in
 	 * normal or dev mode. Note EFS makes RO jump to RW before HOOK_INIT. */

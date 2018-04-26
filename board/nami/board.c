@@ -275,6 +275,11 @@ void board_tcpc_init(void)
 {
 	int port;
 
+	/* This is configured here to prevent EC reset by cr50 from causing
+	 * tcpc to reset. */
+	gpio_set_flags(GPIO_USB_C0_PD_RST_L, GPIO_ODR_HIGH);
+	gpio_set_flags(GPIO_USB_C1_PD_RST, GPIO_OUT_LOW);
+
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image())
 		board_reset_pd_mcu();
