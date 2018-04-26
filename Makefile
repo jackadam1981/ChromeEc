@@ -264,7 +264,7 @@ deps := $(ro-deps) $(rw-deps) $(deps-y)
 $(config): $(out)/$(PROJECT).bin
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
-def_all_deps:=utils ro rw notice $(config) $(PROJECT_EXTRA)
+def_all_deps:=utils ro rw notice $(config) $(PROJECT_EXTRA) size_calculation
 all_deps?=$(def_all_deps)
 all: $(all_deps)
 
@@ -287,6 +287,13 @@ libsharedobjs-$(CONFIG_SHAREDLIB) := $(out)/$(SHOBJLIB)/$(SHOBJLIB).flat
 libsharedobjs_elf-$(CONFIG_SHAREDLIB) := \
 	$(libsharedobjs-$(CONFIG_SHAREDLIB):%.flat=%.elf)
 libsharedobjs: $(libsharedobjs-y)
+
+size_calculation: $(out)/$(PROJECT).bin
+	@awk '/__image_size =/ {image_size = strtonum($$1)} \
+	      /^FLASH/ {flash_size = strtonum($$3)} \
+	      END {room_left = flash_size - image_size; \
+                  printf ("*** %s bytes still available in flash ****\n", \
+		  room_left)}' $(out)/RW/ec.RW.map
 
 include Makefile.rules
 export CROSS_COMPILE CFLAGS CC CPP LD NM AR OBJCOPY OBJDUMP
