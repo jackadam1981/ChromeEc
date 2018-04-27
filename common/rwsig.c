@@ -41,7 +41,7 @@ void rwsig_jump_now(void)
 	/* Protect all flash before jumping to RW. */
 
 	/* This may do nothing if WP is not enabled, RO is not protected. */
-	flash_set_protect(EC_FLASH_PROTECT_ALL_NOW, -1);
+	//flash_set_protect(EC_FLASH_PROTECT_ALL_NOW, -1);
 
 	/*
 	 * For chips that does not support EC_FLASH_PROTECT_ALL_NOW, use

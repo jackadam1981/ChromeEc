@@ -62,3 +62,5 @@
 
 /* the Cortex-M7 core has 'standard' ARMv7-M caches */
 #define CONFIG_ARMV7M_CACHE
+/* Use the MPU to configure cacheability */
+#define CONFIG_MPU
