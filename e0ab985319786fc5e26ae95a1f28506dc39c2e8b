@@ -93,6 +93,30 @@
       "revId": "e0ab985319786fc5e26ae95a1f28506dc39c2e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b081ffa2_9e512f47",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-27T05:36:32Z",
+      "side": 1,
+      "message": "Some explanation of the previous solution: the deferred_in_signal is a right-shifted of in_signal. The check of board_is_power_lost() makes sure it is power lost both at this moment and at 350ms before.\n\nBut the deferred signal solution can\u0027t handle multiple short pulses within the 350ms. There is a chance board_is_power_lost() returns true but power lost doesn\u0027t hold 350ms, like\n[1.000] POWER_GOOD -\u003e low, in_signals\u003d0, deferred_in_signals\u003d1\n[1.100] POWER_GOOD -\u003e high, in_signals\u003d1, deferred_in_signals\u003d1\n[1.200] POWER_GOOD -\u003e low, in_signals\u003d0, deferred_in_signals\u003d1\n[1.350] deferred_power_signal_handler() is called, in_signal\u003d0, deferred_in_signal\u003d0, wake chipset task, the board_is_power_lost() returns true. However, the power lost doesn\u0027t hold 350ms.\n\nThe new way of saving the timestamp of POWER_GOOD -\u003e low can check this case.",
+      "parentUuid": "b2674bb1_b63075cb",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "e0ab985319786fc5e26ae95a1f28506dc39c2e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
