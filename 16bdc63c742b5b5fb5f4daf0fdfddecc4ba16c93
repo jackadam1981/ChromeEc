@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c90dda2_10d6cbfc",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "What\u0027s this pin being used for on the devices that don\u0027t have this connected to the led strings?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bb6562_29cdfea4",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "we\u0027re defaulting to having a backlight?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93cfb608_1796ba4e",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "no keyboard backlight i presume?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01682348_3bbd320b",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "indention",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe44abdb_b3cfd148",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "indention",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64585310_3baf0a2d",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "indention",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8eb9c70_19ca405b",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "space after comma",
+      "range": {
+        "startLine": 26,
+        "startChar": 34,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48c2a23c_a1529c4d",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "rounding nearest?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94c7f0c2_5b901680",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T00:18:51Z",
+      "side": 1,
+      "message": "We\u0027re masking on the read path below, but not the write path here. Why?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
