@@ -175,6 +175,24 @@
     },
     {
       "key": {
+        "uuid": "a755527f_617edc8c",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-27T17:22:42Z",
+      "side": 1,
+      "message": "Is your question about \u0027val\u0027? We do \u0027int *val\u0027 and pass it to i2c_read8 almost everywhere. I don\u0027t know why these i2c_read8 and i2c_write8 take int instead of uint8_t historically.",
+      "parentUuid": "bd1dfa2e_13be07c6",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8eb9c70_19ca405b",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 7
