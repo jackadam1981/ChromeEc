@@ -16,6 +16,29 @@
       "revId": "2cfae89dd9496d32c8f547450ccec22a1f15b38b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c73350c_5ba019ad",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-04-27T09:23:33Z",
+      "side": 1,
+      "message": "Here you need to add \"args-\u003eresponse_size \u003d sizeof(*r);\" for return size.",
+      "range": {
+        "startLine": 128,
+        "startChar": 16,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "2cfae89dd9496d32c8f547450ccec22a1f15b38b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
