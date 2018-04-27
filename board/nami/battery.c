@@ -8,13 +8,15 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
+#include "charge_ramp.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "hooks.h"
+#include "i2c.h"
 #include "util.h"
-
-static enum battery_present batt_pres_prev = BP_NOT_SURE;
 
 /*
  * TODO(dnojiri): Check if these parameters are valid for battery.
@@ -24,24 +26,109 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
 #define SB_SHIP_MODE_REG	SB_MANUFACTURER_ACCESS
 #define SB_SHUTDOWN_DATA        0x0010
 
-static const struct battery_info info = {
-	.voltage_max = 8700,
-	.voltage_normal = 7700,
-	.voltage_min = 6000,
-	/* Pre-charge values. */
-	.precharge_current = 152, /* mA */
+enum battery_type {
+	BATTERY_NAMI_VAYNE,
+	BATTERY_SONA,
+	BATTERY_PANTHEON,
+	BATTERY_TYPE_COUNT,
+};
 
+struct board_batt_params {
+	const struct battery_info *batt_info;
+};
+
+#define DEFAULT_BATTERY_TYPE BATTERY_NAMI_VAYNE
+static enum battery_present batt_pres_prev = BP_NOT_SURE;
+static enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
+
+/*
+ * Battery info for nami/vayne
+ */
+static const struct battery_info batt_info_nami_vayne = {
+	.voltage_max = 8800, /* mV */
+	.voltage_normal = 7600,
+	.voltage_min = 6000,
+	.precharge_current = 256, /* mA */
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
+	.discharging_max_c = 70,
+};
+
+/*
+ * Battery info for sona.
+ */
+static const struct battery_info batt_info_sona = {
+	.voltage_max = 13200, /* mV */
+	.voltage_normal = 11550,
+	.voltage_min = 9000,
+	.precharge_current = 256, /* mA */
 	.start_charging_min_c = 0,
 	.start_charging_max_c = 45,
 	.charging_min_c = 0,
-	.charging_max_c = 50,
+	.charging_max_c = 45,
+	.discharging_min_c = -10,
+	.discharging_max_c = 60,
+};
+
+/*
+ * Battery info for pantheon.
+ */
+static const struct battery_info batt_info_pantheon = {
+	.voltage_max = 8700, /* mV */
+	.voltage_normal = 7500,
+	.voltage_min = 6000,
+	.precharge_current = 373, /* mA */
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
 	.discharging_min_c = -20,
 	.discharging_max_c = 60,
 };
 
+static const struct board_batt_params info[] = {
+	[BATTERY_NAMI_VAYNE] = {
+		.batt_info = &batt_info_nami_vayne,
+	},
+
+	[BATTERY_SONA] = {
+		.batt_info = &batt_info_sona,
+	},
+
+	[BATTERY_PANTHEON] = {
+		.batt_info = &batt_info_pantheon,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(info) == BATTERY_TYPE_COUNT);
+
+static void board_set_battery_type_count(void)
+{
+	/* There are two battery type configurations.
+	 * Nami and vayne are batt_info_sona
+	 * Sona is batt_info_sona
+	 * Pantheon is batt_info_pantheon
+	 * Use the oem id to different them.
+	 */
+	uint32_t oem_id;
+
+	if (cbi_get_oem_id(&oem_id) == EC_SUCCESS) {
+		if (oem_id == PROJECT_NAMI || oem_id == PROJECT_VAYNE)
+			board_battery_type = ARRAY_SIZE(info) - 3;
+		else if (oem_id == PROJECT_SONA)
+			board_battery_type = ARRAY_SIZE(info) - 2;
+		else
+			board_battery_type = ARRAY_SIZE(info) - 1;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_set_battery_type_count, HOOK_PRIO_INIT_I2C + 1);
+
 const struct battery_info *battery_get_info(void)
 {
-	return &info;
+	return info[board_battery_type == BATTERY_TYPE_COUNT ?
+		    DEFAULT_BATTERY_TYPE : board_battery_type].batt_info;
 }
 
 int board_cut_off_battery(void)
@@ -174,4 +261,3 @@ enum battery_present battery_is_present(void)
 	batt_pres_prev = batt_pres;
 	return batt_pres;
 }
-
