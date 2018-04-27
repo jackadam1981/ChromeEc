@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "78ffd734_75ae57e9",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-27T15:49:04Z",
+      "side": 1,
+      "message": "It\u0027s TP. It may be used for the secondary fan if the plan changes.",
+      "parentUuid": "3c90dda2_10d6cbfc",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79bb6562_29cdfea4",
         "filename": "board/nami/keyboard_backlight.c",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "835e35cd_ab9e8589",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-27T15:49:04Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "79bb6562_29cdfea4",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93cfb608_1796ba4e",
         "filename": "board/nami/keyboard_backlight.c",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2018-04-27T00:18:51Z",
       "side": 1,
       "message": "no keyboard backlight i presume?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88db955d_9188fec2",
+        "filename": "board/nami/keyboard_backlight.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-27T15:49:04Z",
+      "side": 1,
+      "message": "yes. This particular SKU \u0026 OEM has no keyboard backlight.",
+      "parentUuid": "93cfb608_1796ba4e",
       "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +209,24 @@
       "writtenOn": "2018-04-27T00:18:51Z",
       "side": 1,
       "message": "We\u0027re masking on the read path below, but not the write path here. Why?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0db99050_4064a16a",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-27T15:49:04Z",
+      "side": 1,
+      "message": "We own brightness_to_main. It returns only values between 0 ~ 31. So, masking isn\u0027t necessary.",
+      "parentUuid": "94c7f0c2_5b901680",
       "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
