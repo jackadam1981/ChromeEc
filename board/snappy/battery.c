@@ -164,7 +164,8 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 	 * discharge on AC till the new charger is detected and charge
 	 * detect delay has passed.
 	 */
-	if (!chg_ramp_is_detected() && curr->batt.state_of_charge > 2)
+	if (!chg_ramp_is_detected() && curr->batt.state_of_charge > 2 &&
+			need_inrush_protection)
 		return 1;
 
 	return 0;

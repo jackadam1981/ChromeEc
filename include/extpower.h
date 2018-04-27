@@ -22,4 +22,10 @@ int extpower_is_present(void);
  */
 void extpower_interrupt(enum gpio_signal signal);
 
+/*
+ * True means inrush current might happen, thus, battery learning mode
+ * might trigger.
+ */
+int need_inrush_protection;
+
 #endif  /* __CROS_EC_EXTPOWER_H */
