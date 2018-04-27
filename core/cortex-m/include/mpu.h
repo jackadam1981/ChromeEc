@@ -28,6 +28,8 @@ enum mpu_region {
 	REGION_STORAGE2 = 5,		/* Second region for unaligned size */
 	REGION_DATA_RAM_TEXT = 6,	/* Exempt region of data RAM */
 	REGION_CHIP_RESERVED = 7,	/* Reserved for use in chip/ */
+	/* only for chips with MPU supporting 16 regions */
+	REGION_UNCACHED_RAM = 8,        /* For uncached data RAM */
 };
 
 #define MPU_TYPE		REG32(0xe000ed90)
@@ -36,6 +38,9 @@ enum mpu_region {
 #define MPU_BASE		REG32(0xe000ed9c)
 #define MPU_SIZE		REG16(0xe000eda0)
 #define MPU_ATTR		REG16(0xe000eda2)
+
+#define MPU_TYPE_UNIFIED_MASK	0x00FF0001
+#define MPU_TYPE_REG_COUNT(t)	(((t) >> 8) & 0xFF)
 
 #define MPU_CTRL_PRIVDEFEN	(1 << 2)
 #define MPU_CTRL_HFNMIENA	(1 << 1)
