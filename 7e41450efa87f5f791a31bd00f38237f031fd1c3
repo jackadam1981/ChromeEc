@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c5f1309e_ffc012e6",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-27T19:12:51Z",
+      "side": 1,
+      "message": "I thought the S0_L was the S0ix signal (maybe a misunderstanding on my part). Here is an example of what I was referring to https://chromium.git.corp.google.com/chromiumos/platform/ec/+/6e7193c4587c13d69e8f4990252623284e84893f/board/coral/board.c#130)",
+      "parentUuid": "6cb74856_9bee0737",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9229777_d9bce3b9",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "What do you mean by pulling behind PPC define?",
       "parentUuid": "c4fcd9fd_e3dfe2d0",
+      "range": {
+        "startLine": 435,
+        "startChar": 4,
+        "endLine": 435,
+        "endChar": 14
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "019a27b3_b8f75bfd",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-27T19:12:51Z",
+      "side": 1,
+      "message": "If you have PPCs, then this board_set_active_charge_port method is always the same. I figured we should single source it soon.",
+      "parentUuid": "4d51ef20_1330d7da",
       "range": {
         "startLine": 435,
         "startChar": 4,
@@ -436,6 +484,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "fcfd5c23_a1a85fe3",
+      "range": {
+        "startLine": 103,
+        "startChar": 22,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccba14f0_ee64cd37",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-27T19:12:51Z",
+      "side": 1,
+      "message": "F3 and F2 would make 0b00001100 which is 0x0C. What am I missing? (I didn\u0027t see the change)",
+      "parentUuid": "f6730644_8f93484a",
       "range": {
         "startLine": 103,
         "startChar": 22,
