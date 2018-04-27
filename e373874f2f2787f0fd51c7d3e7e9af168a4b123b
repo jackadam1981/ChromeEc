@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "4f728bfe_5cde1887",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-04-27T01:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d43d833_7ecab09e",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907457a0_09b6d7e1",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 9
@@ -168,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "37f31a00_9cc054e6",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-04-27T01:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907457a0_09b6d7e1",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b457b718_123455ff",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 9
@@ -179,6 +227,24 @@
       "writtenOn": "2018-04-26T14:28:53Z",
       "side": 1,
       "message": "same nit here about order",
+      "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc4f570_95868c3a",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-04-27T01:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b457b718_123455ff",
       "revId": "e373874f2f2787f0fd51c7d3e7e9af168a4b123b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
