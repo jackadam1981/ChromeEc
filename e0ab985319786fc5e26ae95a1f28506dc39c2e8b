@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "803eace3_ff639890",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-27T01:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c6107f5_fdd441d5",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "e0ab985319786fc5e26ae95a1f28506dc39c2e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cd52dc0_2c520893",
         "filename": "board/cheza/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-26T08:40:29Z",
       "side": 1,
       "message": "How are you sure that deferred_in_signals is up-to-date (and not from a previous run) ?\n\nDon\u0027t you need somewhat to initialize in board_power_signal_interrupt ?\nelse if board_is_power_lost is called between board_power_signal_interrupt and deferred_power_signal_handler, it might not do what you want",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "e0ab985319786fc5e26ae95a1f28506dc39c2e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2674bb1_b63075cb",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-27T01:41:31Z",
+      "side": 1,
+      "message": "This is an issue. I changed to use another way to solve it.\n\nIt now just save the timestamp of the power lost interrupt. The deferred handler just wakes up the chipset task. The check is to compare the timestamp to ensure low pulse held for a while.",
+      "parentUuid": "6cd52dc0_2c520893",
       "range": {
         "startLine": 44,
         "startChar": 0,
