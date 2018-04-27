@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cb74856_9bee0737",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "What do you mean? I believe the SLP_S0_L signal is needed regardless if you use S0ix or not.",
+      "parentUuid": "986c52ff_f59e85ff",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9229777_d9bce3b9",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-27T16:06:49Z",
       "side": 1,
       "message": "We noticed some timing issues for speeds over 100kHz on the Nuvoton chip (the timings really should be tuned on a per board basis - b/78225299#comment7). I would also recommend using 100kHz for bring up and increasing them later (we had an issue with grunt on this)",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8b1122_0519a825",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "I don\u0027t recall having such problems on previous projects. I\u0027d assume that the i2c settings are conservative enough to meet timing requirements across all boards. I can lower it for now and then raise it later...",
+      "parentUuid": "c9229777_d9bce3b9",
       "range": {
         "startLine": 133,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0e7fa96f_c192f0c5",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "95ca6a5b_86674773",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 21
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd0a9390_17c523a4",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "af8fafe9_23dd7282",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd0a9390_17c523a4",
+      "range": {
+        "startLine": 411,
+        "startChar": 1,
+        "endLine": 411,
+        "endChar": 8
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4fcd9fd_e3dfe2d0",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2018-04-27T16:06:49Z",
       "side": 1,
       "message": "Having this return here caused a assertion-boot loop on yorp. I would recommend removing it. Also, we should really pull this code behind the PPC define (thinking out loud).",
+      "range": {
+        "startLine": 435,
+        "startChar": 4,
+        "endLine": 435,
+        "endChar": 14
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d51ef20_1330d7da",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "What do you mean by pulling behind PPC define?",
+      "parentUuid": "c4fcd9fd_e3dfe2d0",
       "range": {
         "startLine": 435,
         "startChar": 4,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "c77315f6_cb7effca",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "Good point, maybe I\u0027ll quiet them later.",
+      "parentUuid": "e4bc7e48_3bc9caf0",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 73
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8dc6334_0023c192",
         "filename": "board/nocturne/board.h",
         "patchSetId": 1
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1234906a_0ce73c3c",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "I thought about adding a \"driver\" for these, but they would just be addresses since I think the configuration would be board specific.",
+      "parentUuid": "b8dc6334_0023c192",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7722aae_8dcecd1b",
         "filename": "board/nocturne/build.mk",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2018-04-27T16:06:49Z",
       "side": 1,
       "message": "After CL:1025471 lands, you may need to update it. are you using revision a or b?",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22666148_d7f302e0",
+        "filename": "board/nocturne/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "Ack, we\u0027re using A.",
+      "parentUuid": "a7722aae_8dcecd1b",
       "range": {
         "startLine": 11,
         "startChar": 14,
@@ -229,6 +421,30 @@
       "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6730644_8f93484a",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-27T17:25:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fcfd5c23_a1a85fe3",
+      "range": {
+        "startLine": 103,
+        "startChar": 22,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "7e41450efa87f5f791a31bd00f38237f031fd1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
