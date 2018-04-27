@@ -158,6 +158,23 @@
     },
     {
       "key": {
+        "uuid": "bd1dfa2e_13be07c6",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T15:55:55Z",
+      "side": 1,
+      "message": "We\u0027re reading 1 byte into a variable larger than one byte? That doesn\u0027t seem correct.",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8eb9c70_19ca405b",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 7
@@ -198,6 +215,23 @@
     },
     {
       "key": {
+        "uuid": "2510aca2_5fcfb1dd",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T15:55:55Z",
+      "side": 1,
+      "message": "Set to ARRAY_SIZE() - 1 ?",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94c7f0c2_5b901680",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 7
@@ -227,6 +261,24 @@
       "side": 1,
       "message": "We own brightness_to_main. It returns only values between 0 ~ 31. So, masking isn\u0027t necessary.",
       "parentUuid": "94c7f0c2_5b901680",
+      "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2ec4d65_96f745b3",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-04-27T15:55:55Z",
+      "side": 1,
+      "message": "My point is that  that we\u0027re writing in that register but blowing away anything else in there. We clearly mask things off on the read path. Those bits are not writable?",
+      "parentUuid": "0db99050_4064a16a",
       "revId": "16bdc63c742b5b5fb5f4daf0fdfddecc4ba16c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
