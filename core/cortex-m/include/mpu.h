@@ -37,6 +37,9 @@ enum mpu_region {
 #define MPU_SIZE		REG16(0xe000eda0)
 #define MPU_ATTR		REG16(0xe000eda2)
 
+#define MPU_TYPE_UNIFIED_MASK	0x00FF0001
+#define MPU_TYPE_REG_COUNT(t)	(((t) >> 8) & 0xFF)
+
 #define MPU_CTRL_PRIVDEFEN	(1 << 2)
 #define MPU_CTRL_HFNMIENA	(1 << 1)
 #define MPU_CTRL_ENABLE		(1 << 0)
@@ -55,7 +58,7 @@ enum mpu_region {
 
 /* Suggested value for TEX S/C/B bit. See table 3-6 of Stellaris LM4F232H5QC
  * datasheet and table 38 of STM32F10xxx Cortex-M3 programming manual. */
-#define MPU_ATTR_INTERNAL_SRAM  6  /* for Internal SRAM */
+#define MPU_ATTR_INTERNAL_SRAM  /*6*/0x29  /* for Internal SRAM */
 #define MPU_ATTR_FLASH_MEMORY   2  /* for flash memory */
 
 /**

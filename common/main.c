@@ -63,7 +63,7 @@ test_mockable __keep int main(void)
 #endif
 
 #ifdef CONFIG_MPU
-	mpu_pre_init();
+/*	mpu_pre_init();  TODO: moved below for debug */
 #endif
 
 	gpio_pre_init();
@@ -115,6 +115,9 @@ test_mockable __keep int main(void)
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
 
+#ifdef CONFIG_MPU /* TODO: pushed here to get UART debug traces */
+	mpu_pre_init();
+#endif
 	/* be less verbose if we boot for USB resume to meet spec timings */
 	if (!(system_get_reset_flags() & RESET_FLAG_USB_RESUME)) {
 		if (system_jumped_to_this_image()) {
