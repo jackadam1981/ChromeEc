@@ -7,7 +7,9 @@
 
 #include "mpu.h"
 #include "console.h"
+#include "cpu.h"
 #include "registers.h"
+#include "system.h" /* TODO: temporary REMOVE */
 #include "task.h"
 #include "util.h"
 
@@ -26,6 +28,7 @@
 static void mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
 			      uint16_t attr, uint8_t enable, uint8_t srd)
 {
+	ccprintf(">> UPDATE/%d %08x attr %x EN %d\n", region, addr, attr, enable); cflush(); /* REMOVEME */
 	asm volatile("isb; dsb;");
 
 	MPU_NUMBER = region;
@@ -34,9 +37,17 @@ static void mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
 		MPU_BASE = addr;
 		MPU_ATTR = attr;
 		MPU_SIZE = (srd << 8) | ((size_bit - 1) << 1) | 1; /* Enable */
+		/*
+		 * WORKAROUND: the 2 half-word accesses above should work
+		 * according to the doc, but they don't ..., do a single 32-bit
+		 * one.
+		 */
+		REG32(0xe000eda0) = ((uint32_t)attr << 16) | (srd << 8) | ((size_bit - 1) << 1) | 1;
 	}
 
 	asm volatile("isb; dsb;");
+	if (enable)
+	ccprintf("<< UPDATE/%d %08x>%x ==(%d) %08x[%04x]\n", region, addr, attr, MPU_NUMBER, REG32(0xe000eda0), MPU_ATTR); cflush(); /* REMOVEME */
 }
 
 /**
@@ -205,13 +216,37 @@ int mpu_lock_rw_flash(void)
 int mpu_pre_init(void)
 {
 	int i;
+	uint32_t mpu_type = mpu_get_type();
 
-	if (mpu_get_type() != 0x00000800)
+	ccprintf("MPU TYPE %08x\n", mpu_get_type()); cflush(); /* REMOVEME */
+	/* Supports MPU with 8 or 16 unified regions */
+	if ((mpu_type & MPU_TYPE_UNIFIED_MASK) ||
+	    (MPU_TYPE_REG_COUNT(mpu_type) != 8 &&
+	     MPU_TYPE_REG_COUNT(mpu_type) != 16))
 		return EC_ERROR_UNIMPLEMENTED;
 
 	mpu_disable();
-	for (i = 0; i < 8; ++i)
+	for (i = 0; i < MPU_TYPE_REG_COUNT(mpu_type); ++i)
 		mpu_config_region(i, CONFIG_RAM_BASE, CONFIG_RAM_SIZE, 0, 0);
+
+	ccprintf(">> MPU config\n"); cflush(); /* REMOVEME */
+#if 0 /* Verify normal MPU locking */
+	mpu_protect_data_ram();
+	if (system_jumped_to_this_image())
+		mpu_lock_ro_flash();
+#endif
+	/* ahb4 'test config' */
+	mpu_config_region(8, 0x38000000, 0x10000, MPU_ATTR_RW_RW, 1);
+	/* backup 'test config' */
+	mpu_config_region(9, 0x38800000, 0x01000, MPU_ATTR_RW_RW, 1);
+	ccprintf(">> MPU enable\n"); cflush(); /* REMOVEME */
+	mpu_enable();
+	ccprintf("<< MPU enable\n"); cflush(); /* REMOVEME */
+#ifdef CONFIG_ARMV7M_CACHE
+	ccprintf(">> enable_caches\n"); cflush(); /* REMOVEME */
+	cpu_enable_caches();
+	ccprintf("<< enable_caches\n"); cflush(); /* REMOVEME */
+#endif
 
 	return EC_SUCCESS;
 }
