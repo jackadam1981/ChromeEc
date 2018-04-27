@@ -221,6 +221,30 @@
       "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec5b340_188ee84e",
+        "filename": "util/ecst.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T04:32:27Z",
+      "side": 1,
+      "message": "Maybe you should have the list of supported devices as a string defined above, and use it here (and above?)\n\ne.g. something like: const char *supported_chips \u003d \"npcx7m7wb, ... or ...\";",
+      "parentUuid": "788158e3_98eb85ed",
+      "range": {
+        "startLine": 305,
+        "startChar": 42,
+        "endLine": 305,
+        "endChar": 43
+      },
+      "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
