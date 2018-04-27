@@ -22,6 +22,30 @@
       "revId": "b21c4f57fc1dc004a3b2c11a9d9a13f78dbf1492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43f3d7f3_43246fcc",
+        "filename": "util/ecst.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-04-27T06:23:27Z",
+      "side": 1,
+      "message": "Actually, the comma can be put on the same line. I will modify it in the next patch.",
+      "parentUuid": "91b1317a_92f9bc28",
+      "range": {
+        "startLine": 200,
+        "startChar": 6,
+        "endLine": 200,
+        "endChar": 7
+      },
+      "revId": "b21c4f57fc1dc004a3b2c11a9d9a13f78dbf1492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
