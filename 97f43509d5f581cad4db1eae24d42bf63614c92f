@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e41b71a_2b4d1541",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-27T14:55:32Z",
+      "side": 1,
+      "message": "nit: you can put kblight.o on the same line as pwm_kblight.O (line 91)",
+      "range": {
+        "startLine": 92,
+        "startChar": 36,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "97f43509d5f581cad4db1eae24d42bf63614c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a727ceba_6563bed8",
+        "filename": "common/kblight.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-27T14:55:32Z",
+      "side": 1,
+      "message": "do we really need to disable interrupts here especially since we are already running this in a HOOK task as a deferred function?",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "97f43509d5f581cad4db1eae24d42bf63614c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34d3758_59590ded",
+        "filename": "common/kblight.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-27T14:55:32Z",
+      "side": 1,
+      "message": "this this is called in an interrupt context, then we should have console output right? Can you do this check in the deferred method?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "97f43509d5f581cad4db1eae24d42bf63614c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

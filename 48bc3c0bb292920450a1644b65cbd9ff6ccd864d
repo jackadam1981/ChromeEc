@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "7fcd0770_eb6fb6bd",
+        "filename": "include/i2c_kblight.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-27T14:55:32Z",
+      "side": 1,
+      "message": "Let\u0027s remove it for now to reduce layers",
+      "parentUuid": "0f3ada44_a90ad52b",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df5b73c9_02f7ed26",
         "filename": "include/i2c_kblight.h",
         "patchSetId": 2
