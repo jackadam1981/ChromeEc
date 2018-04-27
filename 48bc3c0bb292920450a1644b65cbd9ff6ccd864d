@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "93ff1399_91d14516",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-27T01:36:05Z",
+      "side": 1,
+      "message": "Good suggestion. Let me change it :)",
+      "parentUuid": "bac7ee93_a29dae35",
+      "range": {
+        "startLine": 2268,
+        "startChar": 7,
+        "endLine": 2268,
+        "endChar": 21
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3deb1650_0d50f9a8",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-26T13:29:35Z",
       "side": 1,
       "message": "should we make CONFIG_KBLIGHT get automatically defined if you define either of the 2 child options (similar to line 3488).",
+      "range": {
+        "startLine": 3614,
+        "startChar": 1,
+        "endLine": 3617,
+        "endChar": 6
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd020b7_b142a08a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3617,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-27T01:36:05Z",
+      "side": 1,
+      "message": "ok, let me modify it",
+      "parentUuid": "3deb1650_0d50f9a8",
       "range": {
         "startLine": 3614,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0f3ada44_a90ad52b",
+        "filename": "include/i2c_kblight.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-27T01:36:05Z",
+      "side": 1,
+      "message": "I reserve this for the i2c driver common code for the keyboard backlight. Of cause, we can remove this layer and add it back when needed.\nWhat do you think? Remove it or keep it? Both way is okay to me :)",
+      "parentUuid": "ac539ee7_39955d58",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df5b73c9_02f7ed26",
         "filename": "include/i2c_kblight.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2018-04-26T13:29:35Z",
       "side": 1,
       "message": "can we call this i2c_is_enable since that is the only state we have and it match the i2c_enable function?",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440a467f_00cbeab6",
+        "filename": "include/i2c_kblight.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-27T01:36:05Z",
+      "side": 1,
+      "message": "sure, will modify this on next version",
+      "parentUuid": "df5b73c9_02f7ed26",
       "range": {
         "startLine": 43,
         "startChar": 7,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "01a22efc_42578ab6",
+        "filename": "include/kblight.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-27T01:36:05Z",
+      "side": 1,
+      "message": "oops..",
+      "parentUuid": "7e87a460_97d1889e",
+      "range": {
+        "startLine": 22,
+        "startChar": 23,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f44344f_2b4c840c",
         "filename": "include/kblight.h",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7ea7fc22_705da903",
+        "filename": "include/kblight.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-27T01:36:05Z",
+      "side": 1,
+      "message": "Don\u0027t see any caller will do the check for the return value. Will add a check for it",
+      "parentUuid": "4f44344f_2b4c840c",
+      "range": {
+        "startLine": 30,
+        "startChar": 6,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be632def_b817f7a6",
         "filename": "include/kblight.h",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2018-04-26T13:29:35Z",
       "side": 1,
       "message": "is_enabled",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 12
+      },
+      "revId": "48bc3c0bb292920450a1644b65cbd9ff6ccd864d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d2d43b_c2914fd9",
+        "filename": "include/kblight.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-27T01:36:05Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "be632def_b817f7a6",
       "range": {
         "startLine": 54,
         "startChar": 7,
