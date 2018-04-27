@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91b1317a_92f9bc28",
+        "filename": "util/ecst.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T05:55:35Z",
+      "side": 1,
+      "message": "argh, I assume the comma does not fit in 80 chars?\n\nI\u0027d still prefer to have 81-char line than this.\n\nAlso, the fact that you are so squeezed to the right of the page is a good indicator that some of the code should be moved to sub-functions... But it\u0027s ok for now, either split the string or go over by one char.",
+      "range": {
+        "startLine": 200,
+        "startChar": 6,
+        "endLine": 200,
+        "endChar": 7
+      },
+      "revId": "b21c4f57fc1dc004a3b2c11a9d9a13f78dbf1492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
