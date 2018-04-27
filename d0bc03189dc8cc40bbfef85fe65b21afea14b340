@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cb9b05c_9c10a35c",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T02:47:08Z",
+      "side": 1,
+      "message": "Please be consistent with order in test. 6F, 6FB, 6G",
+      "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeca6c97_deac2b8f",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T02:47:08Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b51dd5_8eab9671",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T02:47:08Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2bd446_b1774ff7",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T02:47:08Z",
+      "side": 1,
+      "message": "alphabetical order\n\n6FB || 7WD",
+      "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8512b2e5_29bc5156",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T02:47:08Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c84e081_3643e6a7",
+        "filename": "util/ecst.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-04-27T02:47:08Z",
+      "side": 1,
+      "message": "keep space after \",\", and remove \" \" below.",
+      "range": {
+        "startLine": 305,
+        "startChar": 42,
+        "endLine": 305,
+        "endChar": 43
+      },
+      "revId": "d0bc03189dc8cc40bbfef85fe65b21afea14b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
