@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c08db646_607d305a",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-27T20:00:18Z",
+      "side": 1,
+      "message": "Lonely ;",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc66cbe_190cbfec",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-27T20:00:18Z",
+      "side": 1,
+      "message": "No pmic_init?",
+      "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9a01b0a_94ef9f5e",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-27T20:00:18Z",
+      "side": 1,
+      "message": "There is an external pull-up on this line. Do you still need the internal pull?",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 68
+      },
+      "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
