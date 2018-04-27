@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e457850b_895e7628",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-27T01:38:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a491004e_d29d548a",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "b76eb798d5c89b73cb97cbfd81575653b8a675f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12ae1180_e66c38c5",
         "filename": "power/sdm845.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-26T09:11:03Z",
       "side": 1,
       "message": "nit: not char, uint8 (or int)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "b76eb798d5c89b73cb97cbfd81575653b8a675f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "016b57d5_153609df",
+        "filename": "power/sdm845.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-04-27T01:38:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12ae1180_e66c38c5",
       "range": {
         "startLine": 82,
         "startChar": 0,
