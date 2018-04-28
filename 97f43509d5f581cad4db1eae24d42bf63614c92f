@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb3639b1_82146836",
+        "filename": "common/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-28T09:34:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e41b71a_2b4d1541",
+      "range": {
+        "startLine": 92,
+        "startChar": 36,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "97f43509d5f581cad4db1eae24d42bf63614c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a727ceba_6563bed8",
         "filename": "common/kblight.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "492624ad_e7421f57",
+        "filename": "common/kblight.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-28T09:34:43Z",
+      "side": 1,
+      "message": "Remove the retry_counter from kblight_set and the interrupt_(en|dis)able can be removed.",
+      "parentUuid": "a727ceba_6563bed8",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "97f43509d5f581cad4db1eae24d42bf63614c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c34d3758_59590ded",
         "filename": "common/kblight.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-27T14:55:32Z",
       "side": 1,
       "message": "this this is called in an interrupt context, then we should have console output right? Can you do this check in the deferred method?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "97f43509d5f581cad4db1eae24d42bf63614c92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd92c7a_6a1fea93",
+        "filename": "common/kblight.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-28T09:34:43Z",
+      "side": 1,
+      "message": "Putting this check at the first place because if we modify _percent in the deferred function, someone may get the out of range value when using kblight_get. To avoid this case, modify the percent before applying to _percent. BTW, in the normal case, we won\u0027t call ccprintf. The acpi interrupt also calls ccprintf to print the status. So, it won\u0027t be a problem? Do you have concern about this?",
+      "parentUuid": "c34d3758_59590ded",
       "range": {
         "startLine": 103,
         "startChar": 2,
