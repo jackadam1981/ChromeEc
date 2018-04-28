@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9562d56c_c71af906",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-04-28T05:38:49Z",
+      "side": 1,
+      "message": "Not deliberately.  Just xxd output (which is byte order, i.e. LE).",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
