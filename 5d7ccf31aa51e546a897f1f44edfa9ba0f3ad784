@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84c582bb_9ae586a9",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-30T17:47:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c08db646_607d305a",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dc66cbe_190cbfec",
         "filename": "board/nocturne/board.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-27T20:00:18Z",
       "side": 1,
       "message": "No pmic_init?",
+      "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b626494_8f3acfc8",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-30T17:47:47Z",
+      "side": 1,
+      "message": "I\u0027ve reached out asking what\u0027s necessary for power on. (b/78540108) Still waiting to hear back. I\u0027d like to get this merged without being blocked on that.",
+      "parentUuid": "9dc66cbe_190cbfec",
       "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
