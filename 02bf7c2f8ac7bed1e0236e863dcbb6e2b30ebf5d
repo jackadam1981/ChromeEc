@@ -211,6 +211,30 @@
       "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a0bd2cf_4ded6b03",
+        "filename": "common/pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-04-30T16:10:19Z",
+      "side": 1,
+      "message": "I mean if creating a new api like, \nenum pwm_channel pwm_get_channel(void) {\n  return -1 if runtime find that DUT doesn\u0027t have PWM, \n  return PWM_CH_KBLIGHT if it has PWM\n}\n\nThen modify the below code, like:\ncase EC_PWM_TYPE_KB_LIGHT:\n    *channel \u003d pwm_get_channel();\n    if (*channel \u003d\u003d -1)\n        return -1;\n    break;\n\nif the DUT has PWM keyboard backlight, the host command for the set/get duty should work. However, if DUT has i2c keyboard backlight, the set/get duty shouldn\u0027t work.\n\nWhat do you think? Is there any corner case?",
+      "parentUuid": "ce0be350_2f0df4d9",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
