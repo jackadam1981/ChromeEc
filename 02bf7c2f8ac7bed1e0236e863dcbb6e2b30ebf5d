@@ -187,6 +187,30 @@
       "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce0be350_2f0df4d9",
+        "filename": "common/pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-30T15:36:54Z",
+      "side": 1,
+      "message": "I agree this is only for PWM, but you don\u0027t know until runtime if you are using PWM or i2c.\n\nThis section of code seems like it shoudl only be defined for static_pwm and the runtime_pwm should go through a different mechanism",
+      "parentUuid": "192ddadc_9c394f32",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
