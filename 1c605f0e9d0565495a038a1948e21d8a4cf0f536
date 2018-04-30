@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "070ba4e9_5d177e32",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-04-30T19:30:17Z",
+      "side": 1,
+      "message": "const char * const ?\nto make the list of ptrs also sit in RO vs. RAM and save some startup copying.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a4043c_e50f0040",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-04-30T19:30:17Z",
+      "side": 1,
+      "message": "strings also take space. Kinda strange to not minimize this here and still have it compute wrong value if !defined(CONFIG_STREAM_SIGNATURE)",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e317bb4a_fd9aa9b7",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-04-30T19:30:17Z",
+      "side": 1,
+      "message": "is still hash of some string, no? But we dont remember which?",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9562d56c_c71af906",
         "filename": "chip/g/dcrypto/app_key.c",
         "patchSetId": 2
