@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b8eb06f_777a964b",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-30T23:47:23Z",
+      "side": 1,
+      "message": "We can add BUILD_ASSERT(ARRAY_SIZE(fan_tables)) here.",
+      "revId": "3bf5b3251556fb9aff8b51ce12fabb77d5a352bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd280480_6e8b114b",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-04-30T23:47:23Z",
+      "side": 1,
+      "message": "I see Wukongs are assigned multiple OEM IDs on the spreadsheet. What\u0027s the plan?",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 11
+      },
+      "revId": "3bf5b3251556fb9aff8b51ce12fabb77d5a352bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
