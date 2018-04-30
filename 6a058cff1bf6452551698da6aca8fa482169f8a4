@@ -22,6 +22,30 @@
       "revId": "6a058cff1bf6452551698da6aca8fa482169f8a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6fc4b24_074325eb",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-04-30T23:22:02Z",
+      "side": 1,
+      "message": "Ah yes, that might be a good idea. Also probably should add a comment like other fields do.",
+      "parentUuid": "38be7911_d4ad684c",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 13
+      },
+      "revId": "6a058cff1bf6452551698da6aca8fa482169f8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
