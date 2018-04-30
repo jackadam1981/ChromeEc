@@ -78,6 +78,7 @@ get_tree_version() {
 
 IFS="${dc}"
 ver="${CR50_DEV:+DBG/}${BOARD}_"
+tool_ver=""
 global_dirty=    # set if any of the component repos is 'dirty'.
 dir_list=( . )   # list of component directories, always includes the EC tree
 
@@ -98,6 +99,7 @@ for git_dir in ${dir_list[@]}; do
     ver+=" ${component}:"
   fi
   ver+="${vbase}"
+  tool_ver+="${vbase}"
   popd > /dev/null
 done
 
@@ -129,3 +131,4 @@ else
     gitdate=$(git log -1 --format='%ci' HEAD 2>/dev/null | cut -d ' ' -f '1 2')
     echo "#define DATE \"${gitdate}\""
 fi
+echo "#define CROS_ECTOOL_VERSION \"${tool_ver}\""
