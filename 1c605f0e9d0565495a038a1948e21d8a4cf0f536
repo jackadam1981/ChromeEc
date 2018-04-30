@@ -22,6 +22,30 @@
       "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69bdde5_8ae4aa88",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-04-30T19:22:29Z",
+      "side": 1,
+      "message": "I made this clear in the comment, so any future changes can be made in an informed manner.",
+      "parentUuid": "9562d56c_c71af906",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
