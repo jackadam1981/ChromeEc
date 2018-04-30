@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6be72cb_d7e2cc71",
+        "filename": "common/kblight.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-30T14:00:06Z",
+      "side": 1,
+      "message": "nit: I have not seen the _underscore prefix much in the ec code base. Would you mind removing it?",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0205d46e_8fc98f59",
+        "filename": "common/kblight.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-30T14:00:06Z",
+      "side": 1,
+      "message": "is it worth printing to the conosole in the else case that no kblight driver is installed?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "829e523c_e2f1c5c7",
+        "filename": "common/lightbar.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-30T14:00:06Z",
+      "side": 1,
+      "message": "why not just runtime here (instead of runtime_pwm)",
+      "range": {
+        "startLine": 286,
+        "startChar": 50,
+        "endLine": 286,
+        "endChar": 76
+      },
+      "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d645c16_0d93f69b",
+        "filename": "common/pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-04-30T14:00:06Z",
+      "side": 1,
+      "message": "This runtime config option still feels very static in nature (i.e. you have to know at build time that you are going to support or need PWM). What happen is you are using runtime_i2c here instead?\n\nIt also most seems that we need to drop the CONFIG_KBLIGHT_RUNTIME_PWM define and keep only CONFIG_KBLIGHT_RUNTIME since we won\u0027t know what we need until runtime. Thoughts?",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
