@@ -431,6 +431,8 @@ static int anx7447_mux_set(int port, mux_state_t mux_state)
 			/* L0-a10/11,L1-b2/b3, L2-a2/a3, L3-b10/11 */
 			sw_sel = 0x09;
 			aux_sw = 0x03;
+		} else if (mux_type == TYPEC_MUX_USB) {
+			sw_sel = 0x21;
 		}
 	} else {
 		/* cc2 connection */
@@ -442,6 +444,8 @@ static int anx7447_mux_set(int port, mux_state_t mux_state)
 			/* L0-b10/11,L1-a2/b3, L2-b2/a3, L3-a10/11 */
 			sw_sel = 0x06;
 			aux_sw = 0x0C;
+		} else if (mux_type == TYPEC_MUX_USB) {
+			sw_sel = 0x12;
 		}
 	}
 	rv = tcpc_write(port, ANX7447_REG_TCPC_SWITCH_0, sw_sel);
