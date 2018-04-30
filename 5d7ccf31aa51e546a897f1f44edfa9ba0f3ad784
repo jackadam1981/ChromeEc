@@ -104,6 +104,30 @@
       "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a72022c_3e699c0f",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-04-30T18:18:18Z",
+      "side": 1,
+      "message": "This was the recommendation:\n\n\u003e \"As is, the pullup won\u0027t hurt and the wake should actually work in all configurations: Push-pull, OD, and OD with pullup.\n\n\u003e For maximum compatibility, I would enable the internal pullup as well, and have the buffer configured as OD.\"",
+      "parentUuid": "a9a01b0a_94ef9f5e",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 68
+      },
+      "revId": "5d7ccf31aa51e546a897f1f44edfa9ba0f3ad784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
