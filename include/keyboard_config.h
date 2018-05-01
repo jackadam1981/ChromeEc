@@ -10,9 +10,17 @@
 
 #include "common.h"
 
+#if defined(HAS_TASK_KEYSCAN) || defined(HAS_TASK_KEYPROTO)
 /* Keyboard matrix is 13 output columns x 8 input rows */
 #define KEYBOARD_COLS 13
 #define KEYBOARD_ROWS 8
+#else
+#define KEYBOARD_COLS 0
+#define KEYBOARD_ROWS 0
+#endif
+
+#define MAX_KEYBOARD_COLS 13
+#define MAX_KEYBOARD_ROWS 8
 
 #define KEYBOARD_ROW_TO_MASK(r) (1 << (r))
 
