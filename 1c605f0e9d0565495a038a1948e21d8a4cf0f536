@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33796808_e5f83eb4",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-05-01T16:43:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "070ba4e9_5d177e32",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73a4043c_e50f0040",
         "filename": "chip/g/dcrypto/app_key.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fe723655_03359361",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-05-01T16:43:17Z",
+      "side": 1,
+      "message": "Ok, I will remove the ifdef so there is consistent behavior.",
+      "parentUuid": "73a4043c_e50f0040",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e317bb4a_fd9aa9b7",
         "filename": "chip/g/dcrypto/app_key.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-04-30T19:30:17Z",
       "side": 1,
       "message": "is still hash of some string, no? But we dont remember which?",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 48
+      },
+      "revId": "1c605f0e9d0565495a038a1948e21d8a4cf0f536",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78543ff1_1889b691",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-05-01T16:43:17Z",
+      "side": 1,
+      "message": "No one knows what the original source of this digest was. I tried a few obvious possibilities like adding an EOL with the different possible encodings, a trailing space, and a trailing \\0. None of which worked. I don\u0027t know what this key is used for or if we could tolerate changing it in the field.",
+      "parentUuid": "e317bb4a_fd9aa9b7",
       "range": {
         "startLine": 33,
         "startChar": 30,
