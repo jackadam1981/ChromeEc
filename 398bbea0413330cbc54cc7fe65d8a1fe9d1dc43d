@@ -94,6 +94,30 @@
       "revId": "398bbea0413330cbc54cc7fe65d8a1fe9d1dc43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6d42f61_4c69c57e",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-05-01T17:15:03Z",
+      "side": 1,
+      "message": "There appears to be a larger question about lack of space, not sure how much CLs like this one will make a dent in the grand scheme of things.  That said -- these constants are used in key-derivation, i.e. switching a constant will result in a different derived key.",
+      "parentUuid": "59ccc4ee_378146c2",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "398bbea0413330cbc54cc7fe65d8a1fe9d1dc43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
