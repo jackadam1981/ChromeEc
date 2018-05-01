@@ -46,6 +46,30 @@
       "revId": "398bbea0413330cbc54cc7fe65d8a1fe9d1dc43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246ccaae_3733568d",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-05-01T16:56:34Z",
+      "side": 1,
+      "message": "This one is used by cr53.  They shouldn\u0027t change.\nIt would be great if there were a KAT (Known Answer Test).",
+      "parentUuid": "617de6f2_9168bfa5",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "398bbea0413330cbc54cc7fe65d8a1fe9d1dc43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
