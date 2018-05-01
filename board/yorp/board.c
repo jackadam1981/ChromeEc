@@ -31,6 +31,7 @@
 #include "power_button.h"
 #include "switch.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
 #include "tcpci.h"
@@ -67,6 +68,19 @@ static void ppc_interrupt(enum gpio_signal signal)
 	default:
 		break;
 	}
+}
+/*
+ * enable_input_devices() is called by the tablet_mode ISR, but changes the
+ * state of GPIOs, so its definition must reside after including gpio_list.
+ * Use DECLARE_DEFERRED to generate enable_input_devices_data.
+ */
+static void enable_input_devices(void);
+DECLARE_DEFERRED(enable_input_devices);
+
+#define LID_DEBOUNCE_US    (30 * MSEC)  /* Debounce time for lid switch */
+void tablet_mode_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&enable_input_devices_data, LID_DEBOUNCE_US);
 }
 
 /* Must come after other header files and GPIO interrupts*/
@@ -300,11 +314,54 @@ struct motion_sensor_t motion_sensors[] = {
 };
 
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+static void board_set_tablet_mode(void)
+{
+	tablet_set_mode(!gpio_get_level(GPIO_TABLET_MODE));
+}
+
+void lid_angle_peripheral_enable(int enable);
+
+static void enable_input_devices(void)
+{
+	/* We need to turn on tablet mode for motion sense */
+	board_set_tablet_mode();
+
+	/*
+	 * Then, we disable peripherals only when the lid reaches 360 position.
+	 * (It's probably already disabled by motion_sense_task.)
+	 * We deliberately do not enable peripherals when the lid is leaving
+	 * 360 position. Instead, we let motion_sense_task enable it once it
+	 * reaches laptop zone (180 or less).
+	 */
+	if (tablet_get_mode())
+		lid_angle_peripheral_enable(0);
+}
+
+
+/* Initialize board. */
+static void tablet_mode_init(void)
+{
+	/*
+	 * Ensure tablet mode is initialized according to the hardware state
+	 * so that the cached state reflects reality.
+	 */
+	board_set_tablet_mode();
+
+	gpio_enable_interrupt(GPIO_TABLET_MODE);
+}
+
+DECLARE_HOOK(HOOK_INIT, tablet_mode_init, HOOK_PRIO_DEFAULT);
 
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
 void lid_angle_peripheral_enable(int enable)
 {
+	/* If the lid is in 360 position, ignore the lid angle,
+	 * which might be faulty. Disable keyboard.
+	 */
+	if (tablet_get_mode())
+		enable = 0;
+
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
