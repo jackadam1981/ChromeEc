@@ -440,9 +440,18 @@ static int mkbp_get_info(struct host_cmd_handler_args *args)
 	if (args->params_size == 0 || p->info_type == EC_MKBP_INFO_KBD) {
 		struct ec_response_mkbp_info *r = args->response;
 
+#ifdef HAS_TASK_KEYSCAN
 		/* Version 0 just returns info about the keyboard. */
 		r->rows = KEYBOARD_ROWS;
 		r->cols = KEYBOARD_COLS;
+#else
+		/*
+		 * Only report non-zero rows/colums if keyboard is actually
+		 * supported. Otherwise, we might just have buttons/switches.
+		 */
+		r->rows = 0;
+		r->cols = 0;
+#endif
 		/* This used to be "switches" which was previously 0. */
 		r->reserved = 0;
 
