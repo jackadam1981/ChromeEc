@@ -357,6 +357,7 @@ enum nvmem_users {
 #define CONFIG_RNG
 
 #define CONFIG_ENABLE_H1_ALERTS
+#define CONFIG_REASSEMBLY_LAYER
 
 /* Enable hardware backed brute force resistance feature */
 #define CONFIG_PINWEAVER

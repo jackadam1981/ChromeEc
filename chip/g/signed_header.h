@@ -61,7 +61,7 @@ struct SignedHeader {
 	uint32_t dev_id1_;
 	uint32_t fuses_chk_;  /* top 32 bit of expected fuses hash */
 	uint32_t info_chk_;   /* top 32 bit of expected info hash */
-};
+} __packed;
 
 BUILD_ASSERT(sizeof(struct SignedHeader) == 1024);
 BUILD_ASSERT(offsetof(struct SignedHeader, info_chk_) == 1020);

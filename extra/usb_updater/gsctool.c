@@ -27,6 +27,7 @@
 #include "generated_version.h"
 #include "gsctool.h"
 #include "misc_util.h"
+#include "reassembly.h"
 #include "signed_header.h"
 #include "tpm_vendor_cmds.h"
 #include "upgrade_fw.h"
@@ -155,6 +156,35 @@
  * Again, vendor command responses are subcommand specific.
  */
 
+/* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
+/* Artifacts of protocol versions below 7 for backwards compatibility. */
+/* This is the format of the update frame header. */
+struct upgrade_command {
+	uint32_t  block_digest;  /* first 4 bytes of sha1 of the rest of the
+				  * frame.
+				  */
+        uint32_t  block_base;    /* Offset of this frame into the flash SPI. */
+        /* The actual payload goes here. */
+} __packed;
+
+/*
+ * This is the frame format the host uses when sending update PDUs over USB.
+ *
+ * The PDUs are up to 1K bytes in size, they are fragmented into USB chunks of
+ * 64 bytes each and reassembled on the receive side before being passed to
+ * the flash update function.
+ *
+ * The flash update function receives the unframed PDU body (starting at the
+ * cmd field below), and puts its reply into the same buffer the PDU was in.
+ */
+struct update_frame_header {
+	uint32_t block_size;    /* Total size of the block, including this
+				 * field.
+				 */
+	struct upgrade_command cmd;
+};
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+
 /* Look for Cr50 FW update interface */
 #define VID USB_VID_GOOGLE
 #define PID CONFIG_USB_PID
@@ -188,11 +218,49 @@ struct upgrade_pkt {
 
 
 /*
+ * Expandable buffer, allowing to add data both in front and at the end. This
+ * allows adding protocol encapsulation as necessary.
+ */
+struct comm_buffer {
+	unsigned payload_base;
+	size_t payload_size;
+	uint8_t body[2000];
+};
+
+/* Add data at the end of the expandable buffer. */
+static void cbuffer_add(struct comm_buffer *cbuffer,
+			const void *data,
+			size_t data_size)
+{
+	unsigned new_data_top = cbuffer->payload_base +
+		cbuffer->payload_size + data_size;
+
+	if (new_data_top > sizeof(cbuffer->body)) {
+		fprintf(stderr, "Can not fit %d bytes into a comm_buffer\n",
+			new_data_top);
+		exit(update_error);
+	}
+
+	memcpy(cbuffer->body + cbuffer->payload_base + cbuffer->payload_size,
+	       data, data_size);
+	cbuffer->payload_size += data_size;
+}
+
+static void cbuffer_init(struct comm_buffer *cbuffer, const void *data, size_t data_size)
+{
+	cbuffer->payload_base = 20; /* Pretty arbitrary, but enough for any encapsulation. */
+	cbuffer->payload_size = 0;
+
+	cbuffer_add(cbuffer, data, data_size);
+}
+
+/*
  * This by far exceeds the largest vendor command response size we ever
  * expect.
  */
 #define MAX_BUF_SIZE	500
 
+static int target_uses_usb_reassembly;
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
@@ -811,6 +879,102 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 	return 0;
 }
 
+static void dump(const char* title, const void *data, size_t size)
+{
+	const uint8_t *b = data;
+	size_t i;
+
+	if (!verbose_mode)
+		return;
+
+	if (title)
+		printf("%s:", title);
+	for (i = 0; i < size; i++) {
+		if (!(i % 16))
+		    printf("\n");
+		printf(" %2.2x", b[i]);
+	}
+	printf("\n");
+}
+
+static void usb_segment(struct usb_endpoint *uep,
+			struct comm_buffer *cbuffer,
+			void *response,
+			size_t *response_size)
+{
+	struct reassembly_pdu *pdu;
+	SHA_CTX ctx;
+	uint8_t digest[SHA_DIGEST_LENGTH];
+	size_t transfer_size;
+	int r;
+	size_t digest_input_size;
+	size_t digest_size;
+
+	if (cbuffer->payload_base < sizeof(struct reassembly_pdu)) {
+		fprintf(stderr, "Can not add reassembly header in %d bytes\n",
+			cbuffer->payload_base);
+		exit(update_error);
+	}
+
+	cbuffer->payload_base -= sizeof(struct reassembly_pdu);
+	pdu = (struct reassembly_pdu *)(cbuffer->body + cbuffer->payload_base);
+
+	pdu->magic = htobe32(REASSEMBLY_MAGIC);
+	pdu->version = 0;
+	pdu->size = htobe16(cbuffer->payload_size);
+	digest_input_size = cbuffer->payload_size + sizeof(struct reassembly_pdu) -
+		offsetof(struct reassembly_pdu, version);
+	cbuffer->payload_size += sizeof(struct reassembly_pdu);
+
+	// printf("Will hash %zd bytes\n", digest_input_size);
+
+	SHA1_Init(&ctx);
+	SHA1_Update(&ctx, &pdu->version, digest_input_size);
+	SHA1_Final(digest, &ctx);
+
+	digest_size = cbuffer->payload_size - offsetof(struct reassembly_pdu, version);
+	dump("digest input", &pdu->version, digest_size);
+	dump("digest", digest, sizeof(digest));
+
+	/* Copy the first few bytes of the digest. */
+	memcpy(&pdu->check, digest, sizeof(pdu->check));
+
+	dump("pdu", pdu, cbuffer->payload_size);
+	/* Transfer the entire PDU, segmenting it into USB chunks.  */
+	for (transfer_size = 0; transfer_size < cbuffer->payload_size;) {
+		int chunk_size;
+
+		chunk_size = MIN(uep->chunk_len, cbuffer->payload_size - transfer_size);
+		xfer(uep, (uint8_t *)pdu + transfer_size, chunk_size, NULL, 0);
+		transfer_size += chunk_size;
+	}
+
+	/* Get response, reusing cbuffer contents BAD!!!!!!!. */
+	r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80,
+				 cbuffer->body, sizeof(cbuffer->body), (int *)&transfer_size, 1000);
+	if (r < 0 || !transfer_size--) {
+		USB_ERROR("libusb_bulk_transfer reassembly failure", r);
+		exit(update_error);
+	}
+
+	if (cbuffer->body[0] != RS_SUCCESS) {
+		fprintf(stderr, "reassembly failure %d\n", cbuffer->body[0]);
+		exit(update_error);
+	}
+
+	if (!response)
+		return;
+
+	if (transfer_size > *response_size) {
+		fprintf(stderr, "reassembly response overflow (%zd > %zd)\n",
+			transfer_size, *response_size);
+		exit(update_error);
+	}
+	// printf("got back %zd bytes\n", transfer_size);
+	*response_size = transfer_size;
+	memmove(response, cbuffer->body + 1, transfer_size);
+}
+
 /**
  * Transfer an image section (typically RW or RO).
  *
@@ -839,8 +1003,22 @@ static void transfer_section(struct transfer_descriptor *td,
 		int max_retries;
 		struct update_pdu updu;
 
+
 		/* prepare the header to prepend to the block. */
 		payload_size = MIN(data_len, SIGNED_TRANSFER_SIZE);
+		if (target_uses_usb_reassembly) {
+			struct comm_buffer cbuffer;
+			uint8_t response;
+			size_t response_size = sizeof(response);
+			struct fw_update_command upd_cmd;
+
+			upd_cmd.block_base = htobe32(section_addr);
+
+			cbuffer_init(&cbuffer, &upd_cmd, sizeof(upd_cmd));
+			cbuffer_add(&cbuffer, data_ptr, payload_size);
+			usb_segment(&td->uep, &cbuffer, &response, &response_size);
+		} else {
+
 		updu.block_size = htobe32(payload_size +
 					  sizeof(struct update_pdu));
 
@@ -903,6 +1081,7 @@ static void transfer_section(struct transfer_descriptor *td,
 				fprintf(stderr, "Error %d\n", error_code[0]);
 				exit(update_error);
 			}
+		}
 		}
 		data_len -= payload_size;
 		data_ptr += payload_size;
@@ -1069,6 +1248,17 @@ static void setup_connection(struct transfer_descriptor *td)
 		updu.block_size = htobe32(sizeof(updu));
 		do_xfer(&td->uep, &updu, sizeof(updu), &start_resp,
 			sizeof(start_resp), 1, &rxed_size);
+
+		if (rxed_size < 8) {
+			struct comm_buffer cbuffer;
+			uint32_t base_addr = 0;
+
+			cbuffer_init(&cbuffer, &base_addr, sizeof(base_addr));
+			rxed_size = sizeof(start_resp);
+			usb_segment(&td->uep, &cbuffer,
+				    &start_resp, &rxed_size);
+			target_uses_usb_reassembly = 1;
+		}
 	} else {
 		rxed_size = sizeof(start_resp);
 		if (tpm_send_pkt(td, 0, 0, NULL, 0,
@@ -1142,6 +1332,19 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 	SHA_CTX ctx;
 	uint8_t digest[SHA_DIGEST_LENGTH];
 
+	subcommand = htobe16(subcommand);
+
+	if (target_uses_usb_reassembly) {
+		struct comm_buffer cbuffer;
+		uint32_t command = htobe32(CONFIG_EXTENSION_COMMAND);
+
+		cbuffer_init(&cbuffer, &command, sizeof(command));
+		cbuffer_add(&cbuffer, &subcommand, sizeof(subcommand));
+		cbuffer_add(&cbuffer, cmd_body, body_size);
+		usb_segment(uep, &cbuffer, resp, resp_size);
+		return 0;
+	}
+
 	usb_msg_size = sizeof(struct update_frame_header) +
 		sizeof(subcommand) + body_size;
 
@@ -1155,7 +1358,7 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 	ufh->block_size = htobe32(usb_msg_size);
 	ufh->cmd.block_base = htobe32(CONFIG_EXTENSION_COMMAND);
 	frame_ptr = (uint16_t *)(ufh + 1);
-	*frame_ptr = htobe16(subcommand);
+	*frame_ptr = subcommand;
 
 	if (body_size)
 		memcpy(frame_ptr + 1, cmd_body, body_size);
@@ -1187,7 +1390,17 @@ static void send_done(struct usb_endpoint *uep)
 
 	/* Send stop request, ignoring reply. */
 	out = htobe32(UPGRADE_DONE);
-	xfer(uep, &out, sizeof(out), &out, 1);
+
+	if (target_uses_usb_reassembly) {
+		struct comm_buffer cbuffer;
+		uint8_t response;
+		size_t response_size = sizeof(response);
+
+		cbuffer_init(&cbuffer, &out, sizeof(out));
+		usb_segment(uep, &cbuffer, &response, &response_size);
+	} else {
+		xfer(uep, &out, sizeof(out), &out, 1);
+	}
 }
 
 /* Returns number of successfully transmitted image sections. */

@@ -24,6 +24,8 @@
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
+static uint8_t data_was_transferred;
+
 /*
  * This structure defines flash offset ranges of the RO and RW images which
  * are not currently active and as such could be overwritten with an update.
@@ -34,6 +36,32 @@ struct {
 	uint32_t rw_base_offset;
 	uint32_t rw_top_offset;
 } valid_sections;
+
+static void process_vendor_command(void *body, size_t size, size_t *response_size)
+{
+	struct vc_header_t {
+		uint32_t vc_marker;
+		uint16_t subcommand;
+	} __packed *vc_header;
+
+	if (size < sizeof(struct vc_header_t)) {
+		uint8_t *response = body;
+
+		*response = UPGRADE_GEN_ERROR;
+		*response_size = sizeof(*response);
+		return;
+	}
+
+	vc_header = body;
+	usb_extension_route_command(be16toh(vc_header->subcommand),
+				    vc_header + 1,
+				    size - sizeof(struct vc_header_t),
+				    response_size);
+
+	if (*response_size)
+		/* Need to copy response up to the head of the buffer. */
+		memmove(body, vc_header + 1, *response_size);
+}
 
 /* Pick sections where updates can go to based on current code addresses. */
 static void set_valid_sections(void)
@@ -139,27 +167,6 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		valid_sections.rw_top_offset);
 
 	return UPGRADE_BAD_ADDR;
-}
-
-int usb_pdu_valid(struct upgrade_command *cmd_body,  size_t cmd_size)
-{
-	uint8_t sha1_digest[SHA_DIGEST_SIZE];
-	size_t body_size = cmd_size - offsetof(struct update_frame_header,
-					       cmd.block_base);
-
-	/* Check if the block was received properly. */
-	DCRYPTO_SHA1_hash((uint8_t *)&cmd_body->block_base,
-			  body_size + sizeof(cmd_body->block_base),
-			  sha1_digest);
-	if (memcmp(sha1_digest, &cmd_body->block_digest,
-		   sizeof(cmd_body->block_digest))) {
-		CPRINTF("%s:%d sha1 %x not equal received %x\n",
-			__func__, __LINE__,
-			*(uint32_t *)sha1_digest, cmd_body->block_digest);
-		return 0;
-	}
-
-	return 1;
 }
 
 #ifdef CR50_DEV
@@ -343,7 +350,7 @@ void fw_upgrade_command_handler(void *body,
 				size_t cmd_size,
 				size_t *response_size)
 {
-	struct upgrade_command *cmd_body = body;
+	struct fw_update_command *cmd_body = body;
 	void *upgrade_data;
 	uint8_t *error_code = body;  /* Cache the address for code clarity. */
 	size_t body_size;
@@ -351,12 +358,12 @@ void fw_upgrade_command_handler(void *body,
 
 	*response_size = 1; /* One byte response unless this is a start PDU. */
 
-	if (cmd_size < sizeof(struct upgrade_command)) {
-		CPRINTF("%s:%d\n", __func__, __LINE__);
+	if (cmd_size < sizeof(struct fw_update_command)) {
+		CPRINTF("%s:%d cmd size %d\n", __func__, __LINE__, cmd_size);
 		*error_code = UPGRADE_GEN_ERROR;
 		return;
 	}
-	body_size = cmd_size - sizeof(struct upgrade_command);
+	body_size = cmd_size - sizeof(struct fw_update_command);
 
 	if (!cmd_body->block_base && !body_size) {
 		struct first_response_pdu *rpdu = body;
@@ -416,9 +423,23 @@ void fw_upgrade_command_handler(void *body,
 	}
 
 	block_offset = be32toh(cmd_body->block_base);
+	if (block_offset == UPGRADE_DONE) {
+		uint8_t *response = body;
 
-	if (!usb_pdu_valid(cmd_body, cmd_size)) {
-		*error_code = UPGRADE_DATA_ERROR;
+		CPRINTF("FW update: done\n");
+
+		if (data_was_transferred) {
+			system_clear_retry_counter();
+			data_was_transferred = 0;
+		}
+
+		*response = 0;
+		*response_size = sizeof(*response);
+		return;
+	}
+
+	if (block_offset == CONFIG_EXTENSION_COMMAND) {
+		process_vendor_command(body, cmd_size, response_size);
 		return;
 	}
 
@@ -462,6 +483,7 @@ void fw_upgrade_command_handler(void *body,
 		return;
 	}
 
+	data_was_transferred = 1;
 	new_chunk_written(block_offset);
 
 	/* Verify that data was written properly. */
@@ -475,9 +497,4 @@ void fw_upgrade_command_handler(void *body,
 	}
 
 	*error_code = UPGRADE_SUCCESS;
-}
-
-void fw_upgrade_complete(void)
-{
-	system_clear_retry_counter();
 }

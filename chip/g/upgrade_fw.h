@@ -33,33 +33,13 @@
  * first_response_pdu structure below.
  */
 
-#define UPGRADE_PROTOCOL_VERSION 6
+#define UPGRADE_PROTOCOL_VERSION 7
 
 /* This is the format of the update frame header. */
-struct upgrade_command {
-	uint32_t  block_digest;  /* first 4 bytes of sha1 of the rest of the
-				  * frame.
-				  */
+struct fw_update_command {
 	uint32_t  block_base;    /* Offset of this frame into the flash SPI. */
 	/* The actual payload goes here. */
 } __packed;
-
-/*
- * This is the frame format the host uses when sending update PDUs over USB.
- *
- * The PDUs are up to 1K bytes in size, they are fragmented into USB chunks of
- * 64 bytes each and reassembled on the receive side before being passed to
- * the flash update function.
- *
- * The flash update function receives the unframed PDU body (starting at the
- * cmd field below), and puts its reply into the same buffer the PDU was in.
- */
-struct update_frame_header {
-	uint32_t block_size;    /* Total size of the block, including this
-				 * field.
-				 */
-	struct upgrade_command cmd;
-};
 
 /*
  * A convenience structure which allows to group together various revision
@@ -111,20 +91,13 @@ struct first_response_pdu {
 	/* The below fields are present in versions 5 and up */
 	/* keyids of the currently active RO and RW sections. */
 	uint32_t keyid[2];
-};
+} __packed;
 
 #define UPGRADE_DONE          0xB007AB1E
 
 void fw_upgrade_command_handler(void *body,
 				size_t cmd_size,
 				size_t *response_size);
-
-/* Used to tell fw upgrade the update ran successfully and is finished */
-void fw_upgrade_complete(void);
-
-/* Verify integrity of the PDU received over USB. */
-int usb_pdu_valid(struct upgrade_command *cmd_body,
-		  size_t cmd_size);
 
 /* Various upgrade command return values. */
 enum return_value {
