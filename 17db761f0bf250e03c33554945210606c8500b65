@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "498ddd7b_c6cf5b82",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-01T14:49:24Z",
+      "side": 1,
+      "message": "I am dense. I could not figure out what this means from the data sheet. Can we comment what \n\nml0p \u003c--\u003ea11, ml0n \u003c--\u003ea10\n\nand \n\nssrxp\u003c--\u003eb11, ssrxn\u003c--\u003eb10\n\nmean?",
+      "range": {
+        "startLine": 434,
+        "startChar": 4,
+        "endLine": 436,
+        "endChar": 3
+      },
+      "revId": "17db761f0bf250e03c33554945210606c8500b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
