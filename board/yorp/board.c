@@ -281,23 +281,6 @@ enum adc_channel board_get_vbus_adc(int port)
 	return port ? ADC_VBUS_C1 : ADC_VBUS_C0;
 }
 
-/**
- * Reset all system PD/TCPC MCUs -- currently only called from
- * handle_pending_reboot() in common/power.c just before hard
- * resetting the system. This logic is likely not needed as the
- * PP3300_A rail should be dropped on EC reset.
- */
-void board_reset_pd_mcu(void)
-{
-
-	/* Assert reset to TCPC1 (PS8751) for required delay  (1ms) */
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
-	msleep(PS8XXX_RESET_DELAY_MS);
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
-
-	/* ANX7447 does not have a reset pin. */
-}
-
 void board_tcpc_init(void)
 {
 	int count = 0;

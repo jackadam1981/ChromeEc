@@ -9,6 +9,8 @@
 #include "console.h"
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "driver/tcpm/ps8xxx.h"
+#include "gpio.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -77,3 +79,39 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 					   CONFIG_CHARGER_INPUT_CURRENT),
 				       charge_mv);
 }
+
+/**
+ * Reset all system PD/TCPC MCUs -- currently only called from
+ * handle_pending_reboot() in common/power.c just before hard
+ * resetting the system. This logic is likely not needed as the
+ * PP3300_A rail should be dropped on EC reset.
+ */
+void board_reset_pd_mcu(void)
+{
+#if defined(OCTOPUS_USBC_STANDALONE_TCPCS)
+	/* C0: ANX7447 does not have a reset pin. */
+
+	/* C1: Assert reset to TCPC1 (PS8751) for required delay (1ms) */
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
+	msleep(PS8XXX_RESET_DELAY_MS);
+	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
+#elif defined(OCTOPUS_USBC_ITE_EC_TCPCS)
+	/*
+	 * C0 & C1: The internal TCPC on ITE EC does not have a reset signal,
+	 * but it will get reset when the EC gets reset.
+	 */
+#endif
+}
+
+#ifdef OCTOPUS_USBC_ITE_EC_TCPCS
+void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+{
+	/*
+	 * We ignore the cc_pin because the polarity should already be set
+	 * correctly in the PPC driver via the pd state machine.
+	 */
+	if (ppc_set_vconn(port, enabled) != EC_SUCCESS)
+		cprints(CC_USBPD, "C%d: Failed %sabling vconn",
+			port, enabled ? "en" : "dis");
+}
+#endif

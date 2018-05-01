@@ -214,39 +214,9 @@ static void board_it83xx_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 }
 
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
-{
-	/*
-	 * We ignore the cc_pin because the polarity should already be set
-	 * correctly in the PPC driver via the pd state machine.
-	 */
-	if (ppc_set_vconn(port, enabled) != EC_SUCCESS)
-		cprints(CC_USBPD, "C%d: Failed %sabling vconn",
-			port, enabled ? "en" : "dis");
-}
-
 enum adc_channel board_get_vbus_adc(int port)
 {
 	return port ? ADC_VBUS_C1 : ADC_VBUS_C0;
-}
-
-/**
- * Reset all system PD/TCPC MCUs -- currently only called from
- * handle_pending_reboot() in common/power.c just before hard
- * resetting the system. This logic is likely not needed as the
- * PP3300_A rail should be dropped on EC reset.
- */
-void board_reset_pd_mcu(void)
-{
-	/*
-	 * C0: The internal TCPC on ITE EC does not have a reset signal, but
-	 * it will get reset when the EC gets reset.
-	 */
-
-	/* C1: Assert reset to TCPC (PS8751) for required delay (1ms) */
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
-	msleep(PS8XXX_RESET_DELAY_MS);
-	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
 }
 
 void board_overcurrent_event(int port)
