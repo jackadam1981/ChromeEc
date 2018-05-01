@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c16199a_a727d2a6",
+        "filename": "power/sdm845.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-01T17:48:48Z",
+      "side": 1,
+      "message": "I\u0027m still not convinced this is necessary.\n\nIn theory it could be replaced with a delay(the max timeout in pmic_pwron) instead. There\u0027s nothing that needs to happen immediately after an S5 (or if it does, it won\u0027t really be affected by waiting a little longer).\n\nIf the rails don\u0027t go down even after the EC did set_system_power(0) there\u0027s not much the EC can do that that point (besides get just a little mad with a print).",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 20
+      },
+      "revId": "750f602d6fe0c7fc555ad5a4785bf3198631e657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
