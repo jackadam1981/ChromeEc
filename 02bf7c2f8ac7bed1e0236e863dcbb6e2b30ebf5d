@@ -259,6 +259,30 @@
       "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e112b791_014bc12b",
+        "filename": "common/pwm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-01T09:32:10Z",
+      "side": 1,
+      "message": "ok, let\u0027s remove RUNTIME_PWM. This api is only supported by STATIC_PWM, switch back and just set PWM_CH_KBLIGHT to *channel",
+      "parentUuid": "08fe42b6_c4e8864d",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "02bf7c2f8ac7bed1e0236e863dcbb6e2b30ebf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
