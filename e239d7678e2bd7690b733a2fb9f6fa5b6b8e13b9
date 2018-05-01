@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9034b10_05a0c10b",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-01T15:57:32Z",
+      "side": 1,
+      "message": "Made this change from original patchset since this pin has to be 1.8V and not 3.3V.",
+      "range": {
+        "startLine": 62,
+        "startChar": 51,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "e239d7678e2bd7690b733a2fb9f6fa5b6b8e13b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
