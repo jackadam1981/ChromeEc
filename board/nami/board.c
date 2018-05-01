@@ -293,11 +293,117 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 #define I2C_PMIC_WRITE(reg, data) \
 		i2c_write8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
 
+
+static void board_pmic_enable_slp_s0_vr_decay(void)
+{
+	/*
+	 * VRMODECTRL:
+	 * [7:6] : 0b0      - Rsvd
+	 * [5:0] : 0b111111 - Enable LPM for all VRs
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_VRMODECTRL, 0x3F);
+
+	/*
+	 * VCCIOCNT:
+	 * [7]   : 0b0  - Rsvd
+	 * [6]   : 0b1  - Enable VCCIO decay
+	 * [5:4] : 0b00 - 0.975V output voltage
+	 * [3:2] : 0b10 - default
+	 * [1:0] : 0b10 - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_VCCIOCNT, 0x4A);
+
+	/*
+	 * V18ACNT:
+	 * [7:6] : 0b01 - Decay to Vnom - 4%
+	 * [5:4] : 0b10 - default
+	 * [3:2] : 0b10 - default
+	 * [1:0] : 0b10 - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_V18ACNT, 0x6A);
+
+	/*
+	 * V1P2UCNT:
+	 * [7]   : 0b1   - Decay to Vnom - 3%
+	 * [6:4] : 0b011 - default
+	 * [3:2] : 0b10  - default
+	 * [1:0] : 0b10  - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_V1P2UCNT, 0xBA);
+
+	/*
+	 * V085ACNT:
+	 * [7:6] : 0b01 - Decay to 0.7V
+	 * [5:4] : 0b00 - default
+	 * [3:2] : 0b10 - default
+	 * [1:0] : 0b10 - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_V085ACNT, 0x4A);
+}
+
+static void board_pmic_disable_slp_s0_vr_decay(void)
+{
+	/*
+	 * VRMODECTRL:
+	 * [7:6] : 0b0      - Rsvd
+	 * [5:0] : 0b000000 - Disable LPM for all VRs
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_VRMODECTRL, 0x0);
+
+	/*
+	 * VCCIOCNT:
+	 * [7]   : 0b0  - Rsvd
+	 * [6]   : 0b0  - Disable VCCIO decay
+	 * [5:4] : 0b00 - 0.975V output voltage
+	 * [3:2] : 0b10 - default
+	 * [1:0] : 0b10 - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_VCCIOCNT, 0x0A);
+
+	/*
+	 * V18ACNT:
+	 * [7:6] : 0b00 - Disable LPM
+	 * [5:4] : 0b10 - default
+	 * [3:2] : 0b10 - default
+	 * [1:0] : 0b10 - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_V18ACNT, 0x2A);
+
+	/*
+	 * V1P2UCNT:
+	 * [7]   : 0b0   - Disable LPM
+	 * [6:4] : 0b011 - default
+	 * [3:2] : 0b10  - default
+	 * [1:0] : 0b10  - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_V1P2UCNT, 0x3A);
+
+	/*
+	 * V085ACNT:
+	 * [7:6] : 0b00 - Disable LPM
+	 * [5:4] : 0b00 - default
+	 * [3:2] : 0b10 - default
+	 * [1:0] : 0b10 - default
+	 */
+	I2C_PMIC_WRITE(TPS650X30_REG_V085ACNT, 0x0A);
+}
+
+void power_board_handle_host_sleep_event(enum host_sleep_event state)
+{
+	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND)
+		board_pmic_enable_slp_s0_vr_decay();
+	else if (state == HOST_SLEEP_EVENT_S0IX_RESUME)
+		board_pmic_disable_slp_s0_vr_decay();
+}
+
 static void board_pmic_init(void)
 {
 	int err;
 	int error_count = 0;
 	static uint8_t pmic_initialized = 0;
+
+	if (system_jumped_to_this_image())
+		return;
 
 	if (pmic_initialized)
 		return;
@@ -312,24 +418,6 @@ static void board_pmic_init(void)
 			goto pmic_error;
 		error_count++;
 	}
-
-	/*
-	 * VCCIOCNT register setting
-	 * [6] : CSDECAYEN
-	 * otherbits: default
-	 */
-	err = I2C_PMIC_WRITE(TPS650X30_REG_VCCIOCNT, 0x4A);
-	if (err)
-		goto pmic_error;
-
-	/*
-	 * VRMODECTRL:
-	 * [4] : VCCIOLPM clear
-	 * otherbits: default
-	 */
-	err = I2C_PMIC_WRITE(TPS650X30_REG_VRMODECTRL, 0x2F);
-	if (err)
-		goto pmic_error;
 
 	/*
 	 * PGMASK1 : Exclude VCCIO from Power Good Tree
@@ -412,6 +500,8 @@ static void board_pmic_init(void)
 	err = I2C_PMIC_WRITE(TPS650X30_REG_PBCONFIG, 0x9F);
 	if (err)
 		goto pmic_error;
+
+	board_pmic_disable_slp_s0_vr_decay();
 
 	CPRINTS("PMIC init done");
 	pmic_initialized = 1;
