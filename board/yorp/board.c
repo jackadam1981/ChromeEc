@@ -241,6 +241,8 @@ static void board_chipset_resume(void)
 {
 	/* Enable Trackpad Power when chipset is in S0 */
 	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, 0);
+
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -249,6 +251,8 @@ static void board_chipset_suspend(void)
 {
 	/* Disable Trackpad Power when chipset transitions to sleep state */
 	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, 1);
+
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
