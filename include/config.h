@@ -3223,6 +3223,10 @@
  */
 #define CONFIG_AUX_TIMER_PERIOD_MS (CONFIG_WATCHDOG_PERIOD_MS - 500)
 
+/*
+ * Add common code to support reassembly of segmented PDUs. */
+#undef CONNFIG_REASSEMBLY_LAYER
+
 /*****************************************************************************/
 /* WebUSB config */
 
