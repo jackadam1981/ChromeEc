@@ -309,6 +309,8 @@ static int register_mask_reset(int port)
 void tcpci_tcpc_alert(int port)
 {
 	int status;
+	int pd_event = 0;
+	int pd_wake = 0;
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
@@ -317,8 +319,7 @@ void tcpci_tcpc_alert(int port)
 	 * so, perform tcpc_init inline.
 	 */
 	if (register_mask_reset(port))
-		task_set_event(PD_PORT_TO_TASK_ID(port),
-			PD_EVENT_TCPC_RESET, 0);
+		pd_event = PD_EVENT_TCPC_RESET;
 
 	/*
 	 * Clear alert status for everything except RX_STATUS, which shouldn't
@@ -330,7 +331,7 @@ void tcpci_tcpc_alert(int port)
 
 	if (status & TCPC_REG_ALERT_CC_STATUS) {
 		/* CC status changed, wake task */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+		pd_event |= PD_EVENT_CC;
 	}
 	if (status & TCPC_REG_ALERT_POWER_STATUS) {
 		int reg = 0;
@@ -342,17 +343,17 @@ void tcpci_tcpc_alert(int port)
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
 		/* Update charge manager with new VBUS state */
 		usb_charger_vbus_change(port, tcpc_vbus[port]);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		pd_wake = 1;
 #endif /* CONFIG_USB_PD_VBUS_DETECT_TCPC && CONFIG_USB_CHARGER */
 	}
 	if (status & TCPC_REG_ALERT_RX_STATUS) {
 		/* message received */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
+		pd_event |= PD_EVENT_RX;
 	}
 	if (status & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		pd_execute_hard_reset(port);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		pd_wake = 1;
 	}
 	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
 		/* transmit complete */
@@ -360,6 +361,18 @@ void tcpci_tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_SUCCESS :
 					   TCPC_TX_COMPLETE_FAILED);
 	}
+
+	/*
+	 * Wait until all possible TCPC accesses in this function are complete
+	 * prior to setting events and/or waking the pd task. When the PD is
+	 * task is woken and runs (which will happen during I2C transactions in
+	 * this function), the pd task may be the TCPC into low power mode and
+	 * the next I2C transaction to the TCPC will cause it to wake again.
+	 */
+	if (pd_event)
+		task_set_event(PD_PORT_TO_TASK_ID(port), pd_event, 0);
+	if (pd_wake)
+		task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
 /*
