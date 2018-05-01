@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fb52614_0c6f87e9",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-01T16:47:28Z",
+      "side": 1,
+      "message": "who is the user of this, and how much harm would be losing this data on a Cr50 update?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "398bbea0413330cbc54cc7fe65d8a1fe9d1dc43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
