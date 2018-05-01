@@ -70,6 +70,30 @@
       "revId": "398bbea0413330cbc54cc7fe65d8a1fe9d1dc43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ccc4ee_378146c2",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-01T16:59:40Z",
+      "side": 1,
+      "message": "I wonder if this should come from cr53 code then. Kinda beyond the point of diminishing returns, but we just could call a weak function here.\n\nAlso, just to understand better, why could this not change? Is there some counterpart using the same seed, can the couterpart be changed?",
+      "parentUuid": "246ccaae_3733568d",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "398bbea0413330cbc54cc7fe65d8a1fe9d1dc43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
