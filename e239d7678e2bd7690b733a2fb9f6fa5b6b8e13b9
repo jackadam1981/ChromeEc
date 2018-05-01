@@ -22,6 +22,30 @@
       "revId": "e239d7678e2bd7690b733a2fb9f6fa5b6b8e13b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc0e396_b48fc8a2",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-01T16:09:39Z",
+      "side": 1,
+      "message": "If it\u0027s ODR then it doesn\u0027t matter too much in this case. But this is the right thing.",
+      "parentUuid": "d9034b10_05a0c10b",
+      "range": {
+        "startLine": 62,
+        "startChar": 51,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "e239d7678e2bd7690b733a2fb9f6fa5b6b8e13b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
