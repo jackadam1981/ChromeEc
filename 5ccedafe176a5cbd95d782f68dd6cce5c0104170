@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebea4656_a702ea50",
+        "filename": "common/extpower_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-02T16:22:07Z",
+      "side": 1,
+      "message": "I feel like we should have a function returning this instead of just a global lurking.",
+      "revId": "5ccedafe176a5cbd95d782f68dd6cce5c0104170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
