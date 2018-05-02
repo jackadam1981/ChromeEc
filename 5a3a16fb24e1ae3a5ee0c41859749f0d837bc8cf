@@ -22,6 +22,30 @@
       "revId": "5a3a16fb24e1ae3a5ee0c41859749f0d837bc8cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370dc3d5_4661be6c",
+        "filename": "core/cortex-m0/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2018-05-02T19:55:22Z",
+      "side": 1,
+      "message": "It\u0027s already const, see line 93.",
+      "parentUuid": "0e9dbac4_952b5592",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "5a3a16fb24e1ae3a5ee0c41859749f0d837bc8cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
