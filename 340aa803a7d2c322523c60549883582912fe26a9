@@ -16,6 +16,24 @@
       "revId": "340aa803a7d2c322523c60549883582912fe26a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321f1396_07d93b94",
+        "filename": "board/bip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-02T16:49:14Z",
+      "side": 1,
+      "message": "I pulled it into baseboard in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1040107/1/baseboard/octopus/baseboard.c#53\n\nI wanted to keep this CL self contained since things can get lost in CLs that reorganize everything",
+      "parentUuid": "ff1555b1_d1350976",
+      "revId": "340aa803a7d2c322523c60549883582912fe26a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
