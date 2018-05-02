@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab9465d_eaa4a752",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-05-02T08:44:03Z",
+      "side": 1,
+      "message": "Hi James,\n\nAfter confirming with Agnes, sku id - 32 is for Rabbid with touchscreen not babytiger. Could you double check the sku information?",
+      "revId": "540c1086831957c81b7b0f58dcbf227beb5c59c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c0fd03_679da29f",
+        "filename": "board/coral/sku.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-05-02T08:44:03Z",
+      "side": 1,
+      "message": "1. Except for 32 is for babytiger or rabbid, the number here is 33. Should it be 32?\n2. We record status of each skus in a bit so 32 should be in the next slot just like what comment noted.",
+      "revId": "540c1086831957c81b7b0f58dcbf227beb5c59c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
