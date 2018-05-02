@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c31eaccc_3dd79b87",
+        "filename": "board/nami/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-02T15:41:27Z",
+      "side": 1,
+      "message": "ok, will remove it",
+      "parentUuid": "da93c53c_2b14fbd0",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "0105fb379b8dc74108bc976d7f40f81b77e86e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "239d56e4_e4033486",
         "filename": "common/kblight.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-02T13:53:43Z",
       "side": 1,
       "message": "why are we setting both enable and percent to 0? Can we just disable it since that implicitly sets the percentage to 0?",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 15
+      },
+      "revId": "0105fb379b8dc74108bc976d7f40f81b77e86e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52d30fc_effdaa76",
+        "filename": "common/kblight.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-02T15:41:27Z",
+      "side": 1,
+      "message": "I will remove _kblight_set(0) and double check the functionality on Coral/Nami.",
+      "parentUuid": "239d56e4_e4033486",
       "range": {
         "startLine": 202,
         "startChar": 1,
