@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa4f126f_43b61a66",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-02T18:24:36Z",
+      "side": 1,
+      "message": "add \u0027gsctool\u0027 so people will know it\u0027s not the cr50 version",
+      "range": {
+        "startLine": 538,
+        "startChar": 42,
+        "endLine": 538,
+        "endChar": 43
+      },
+      "revId": "25ebda43f5f38173c60a239ebaa1775d952dbb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
