@@ -22,6 +22,30 @@
       "revId": "7187f4dc14c8958b00b8d9a42d1679a7db0a78e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19a3b99_1fb48d63",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-02T17:25:34Z",
+      "side": 1,
+      "message": "the EC variant section will actually define the appropriate USB define, but I wanted to keep them separate even though they are dependent.\n\nin the board.h you only have to define OCTOPUS_EC_NPCX796FB (and not OCTOPUS_USBC_STANDALONE_TCPCS too)",
+      "parentUuid": "987a904c_5826551e",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 41
+      },
+      "revId": "7187f4dc14c8958b00b8d9a42d1679a7db0a78e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
