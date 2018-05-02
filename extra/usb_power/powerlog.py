@@ -333,7 +333,7 @@ class Spower(object):
     Raises:
       Exception on failure.
     """
-    count = 10
+    count = 100
     while count > 0:
       self.clear()
       try:
@@ -342,7 +342,8 @@ class Spower(object):
       except Exception as e:
         self.clear()
         self.clear()
-        debuglog("TRY %d of 10: %s" % (count, e))
+        debuglog("TRY %d of 100: %s" % (count, e))
+        time.sleep(0.01)
       finally:
         count -= 1
     if count == 0:
