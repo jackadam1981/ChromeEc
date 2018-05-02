@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e4fd132_a03a0130",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-02T18:22:10Z",
+      "side": 0,
+      "message": "Thinking out loud: I understand that there is a specific order in which we would want this included i.e. BOARD would select some configs that would trigger selection in BASEBOARD. Do we want to place baseboard include after the board include here?\n\nOr could there be two-way dependency as well? i.e. BOARD uses something that BASEBOARD defines? Would BOARD want to override after BASEBOARD has done the defines?",
+      "range": {
+        "startLine": 3332,
+        "startChar": 0,
+        "endLine": 3334,
+        "endChar": 6
+      },
+      "revId": "c15f91cdb8d6f10fbd49d34d7fb01703dd0483df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
