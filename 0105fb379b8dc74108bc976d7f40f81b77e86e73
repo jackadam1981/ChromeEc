@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da93c53c_2b14fbd0",
+        "filename": "board/nami/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-02T13:53:43Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need to define this common runtime as runtime_pwm should define it automatically",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "0105fb379b8dc74108bc976d7f40f81b77e86e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239d56e4_e4033486",
+        "filename": "common/kblight.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-02T13:53:43Z",
+      "side": 1,
+      "message": "why are we setting both enable and percent to 0? Can we just disable it since that implicitly sets the percentage to 0?",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 15
+      },
+      "revId": "0105fb379b8dc74108bc976d7f40f81b77e86e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
