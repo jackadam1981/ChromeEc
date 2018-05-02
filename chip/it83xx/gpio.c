@@ -62,6 +62,25 @@ static volatile uint8_t *wuemr(uint8_t grp)
 			(volatile uint8_t *)(IT83XX_WUC_WUEMR5 + 4*(grp-5));
 }
 
+/**
+ * Convert wake-up controller (WUC) group to the corresponding wake-up both edge
+ * mode register (WUBEMR). Return pointer to the register.
+ *
+ * @param grp  WUC group.
+ *
+ * @return Pointer to corresponding WUBEMR register.
+ */
+static volatile uint8_t *wubemr(uint8_t grp)
+{
+	/*
+	 * From WUBEMR1-WUBEMR4, the address increases by ones. From WUBEMR5 on
+	 * the address increases by fours.
+	 */
+	return (grp <= 4) ?
+			(volatile uint8_t *)(IT83XX_WUC_WUBEMR1 + grp-1) :
+			(volatile uint8_t *)(IT83XX_WUC_WUBEMR5 + 4*(grp-5));
+}
+
 /*
  * Array to store the corresponding GPIO port and mask, and WUC group and mask
  * for each WKO interrupt. This allows GPIO interrupts coming in through WKO
@@ -363,26 +382,35 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		mask_copy >>= 1;
 	}
 
-	/* Set rising edge interrupt. */
-	if (flags & GPIO_INT_F_RISING) {
-		irq = gpio_to_irq(port, mask);
-
-		*(wuemr(gpio_irqs[irq].wuc_group)) &= ~gpio_irqs[irq].wuc_mask;
-	}
+	/* Get the corresponding WKO interrupt number */
+	irq = gpio_to_irq(port, mask);
 
 	/*
-	 * Set falling edge or both edges interrupt. Note that pins in WUC
-	 * groups 7, 10, and 12 can only declare a falling edge trigger. All
-	 * other pins can only declare both edges as the trigger.
-	 *
-	 * TODO: use an assert to catch if a developer tries to declare one
-	 * type of interrupt on a pin that doesn't support that type.
+	 * Set both edges interrupt. The WUBEMRx registers are available only
+	 * on IT8320 DX version and after.
 	 */
-	if (flags & GPIO_INT_F_FALLING) {
-		irq = gpio_to_irq(port, mask);
+	if ((flags & GPIO_INT_BOTH) == GPIO_INT_BOTH)
+		/*
+		 * Both-edge interrupt is selected. Note that we don't care
+		 * the setting of WUEMR register if this mode is enabled.
+		 */
+		*(wubemr(gpio_irqs[irq].wuc_group)) |= gpio_irqs[irq].wuc_mask;
+	else
+		/* Apply to the setting of WUEMR register. */
+		*(wubemr(gpio_irqs[irq].wuc_group)) &= ~gpio_irqs[irq].wuc_mask;
 
+	/* Set rising edge interrupt. */
+	if (flags & GPIO_INT_F_RISING)
+		*(wuemr(gpio_irqs[irq].wuc_group)) &= ~gpio_irqs[irq].wuc_mask;
+
+	/*
+	 * Set falling edge or both edges interrupt.
+	 *
+	 * NOTE: the both edges interrupt is apply to pins in WUC
+	 * groups 7, 10, and 12 only on IT8320 BX version and before.
+	 */
+	if (flags & GPIO_INT_F_FALLING)
 		*(wuemr(gpio_irqs[irq].wuc_group)) |= gpio_irqs[irq].wuc_mask;
-	}
 }
 
 int gpio_enable_interrupt(enum gpio_signal signal)
