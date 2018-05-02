@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc52d288_7e749641",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-02T06:23:01Z",
+      "side": 1,
+      "message": "braces not required for single statement.",
+      "range": {
+        "startLine": 653,
+        "startChar": 42,
+        "endLine": 653,
+        "endChar": 43
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db995593_721892e6",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-02T06:23:01Z",
+      "side": 1,
+      "message": "Isn\u0027t this effectively checking: if (boot_key_value \u003d\u003d BOOT_KEY_A)",
+      "range": {
+        "startLine": 652,
+        "startChar": 5,
+        "endLine": 653,
+        "endChar": 40
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522625dd_f30409f5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-02T06:23:01Z",
+      "side": 1,
+      "message": "Why was this changed?",
+      "range": {
+        "startLine": 661,
+        "startChar": 1,
+        "endLine": 662,
+        "endChar": 69
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd36ef39_489e2f79",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-02T06:23:01Z",
+      "side": 1,
+      "message": "You need to rebase this change on top of current HEAD since you have cherry-picked this already: https://chromium-review.googlesource.com/c/791863/",
+      "range": {
+        "startLine": 560,
+        "startChar": 1,
+        "endLine": 564,
+        "endChar": 4
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b45571_4ad7ad6a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-02T06:23:01Z",
+      "side": 1,
+      "message": "Please add in order i.e. this event should go before EC_HOST_EVENT_INVALID.",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 36
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
