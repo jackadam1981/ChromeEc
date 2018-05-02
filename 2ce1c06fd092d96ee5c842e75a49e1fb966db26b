@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "996ff435_4076aa9b",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-02T06:39:11Z",
+      "side": 1,
+      "message": "Yes, good point.",
+      "parentUuid": "db995593_721892e6",
+      "range": {
+        "startLine": 652,
+        "startChar": 5,
+        "endLine": 653,
+        "endChar": 40
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43ad07b_d3d2b146",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-02T06:39:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc52d288_7e749641",
+      "range": {
+        "startLine": 653,
+        "startChar": 42,
+        "endLine": 653,
+        "endChar": 43
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "522625dd_f30409f5",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-02T06:23:01Z",
       "side": 1,
       "message": "Why was this changed?",
+      "range": {
+        "startLine": 661,
+        "startChar": 1,
+        "endLine": 662,
+        "endChar": 69
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999f1ca4_b949b682",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-02T06:39:11Z",
+      "side": 1,
+      "message": "Rather than four conditionals:\n\n(1) Check keys other than A\n(2) Check A\n(3) Check keys other than Esc or Left_Shift\n(4) Check Esc\n\nSeemed like it made more sense to merge (1)(2) and (3)(4).  Not to mention if (1) returns from the function, (3) and (4) will never be reached.",
+      "parentUuid": "522625dd_f30409f5",
       "range": {
         "startLine": 661,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "cc93fce9_dedbdafa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-02T06:39:11Z",
+      "side": 1,
+      "message": "Of course -- this is commented out temporarily (and used by EC_HOST_EVENT_KEYBOARD_ALT_OS) since Patrick was still doing some work to enable 64-bit communication between EC and AP.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/coreboot/+/1016444/1/src/ec/google/chromeec/ec.c#139\nSee line 139 and 191.",
+      "parentUuid": "cd36ef39_489e2f79",
+      "range": {
+        "startLine": 560,
+        "startChar": 1,
+        "endLine": 564,
+        "endChar": 4
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26b45571_4ad7ad6a",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
@@ -105,6 +201,30 @@
       "writtenOn": "2018-05-02T06:23:01Z",
       "side": 1,
       "message": "Please add in order i.e. this event should go before EC_HOST_EVENT_INVALID.",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 36
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b99e9a_0761808e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-02T06:39:11Z",
+      "side": 1,
+      "message": "The way I understood, 31 is *reserved* as mentioned in the comment above, and thus the bit that should be used is 33 (after EC_HOST_EVENT_INVALID)?",
+      "parentUuid": "26b45571_4ad7ad6a",
       "range": {
         "startLine": 574,
         "startChar": 0,
