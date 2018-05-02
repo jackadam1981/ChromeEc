@@ -33,6 +33,24 @@
       "revId": "540c1086831957c81b7b0f58dcbf227beb5c59c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4562c45c_ab3ed07c",
+        "filename": "board/coral/sku.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2018-05-02T08:52:33Z",
+      "side": 1,
+      "message": "Done. I move the SKU_ENCODE(33) to next slot.",
+      "parentUuid": "a0c0fd03_679da29f",
+      "revId": "540c1086831957c81b7b0f58dcbf227beb5c59c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
