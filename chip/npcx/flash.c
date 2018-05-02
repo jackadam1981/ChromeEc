@@ -406,7 +406,7 @@ void flash_burst_write(unsigned int dest_addr, unsigned int bytes,
 }
 
 static int flash_program_bytes(uint32_t offset, uint32_t bytes,
-	const uint8_t const *data)
+	const uint8_t *data)
 {
 	int write_size;
 	int rv;
