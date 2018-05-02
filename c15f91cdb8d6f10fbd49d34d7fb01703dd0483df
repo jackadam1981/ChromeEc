@@ -22,6 +22,30 @@
       "revId": "c15f91cdb8d6f10fbd49d34d7fb01703dd0483df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd715bf2_7c64b228",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-02T18:43:01Z",
+      "side": 0,
+      "message": "I imagine baseboard as 1) a library of components that variant boards can select from and 2) a place where all \"very\" common defines can go.\n\nTo achieve #1, I need to define items in board.h before baseboard.h is included, but there is a ordering problem that baseboard\u0027s defines (e.g. EC chip defines) need to be before \"register.h\" in board.h.\n\nI am also overriding a baseboard-common define in yorp/board.h [0]: USB_A port count (since yorp\u0027s reason to set to 1 instead of 2 was a hardware issue that is fixing going forward). That is the paradigm I envision us using.\n\n[0] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1038898/3/board/yorp/board.h#26",
+      "parentUuid": "4e4fd132_a03a0130",
+      "range": {
+        "startLine": 3332,
+        "startChar": 0,
+        "endLine": 3334,
+        "endChar": 6
+      },
+      "revId": "c15f91cdb8d6f10fbd49d34d7fb01703dd0483df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
