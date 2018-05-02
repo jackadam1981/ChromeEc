@@ -22,6 +22,30 @@
       "revId": "750f602d6fe0c7fc555ad5a4785bf3198631e657",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6514dee1_2ca6371b",
+        "filename": "power/sdm845.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-02T22:02:03Z",
+      "side": 1,
+      "message": "Changed it to a wait.",
+      "parentUuid": "0c16199a_a727d2a6",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 20
+      },
+      "revId": "750f602d6fe0c7fc555ad5a4785bf3198631e657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
