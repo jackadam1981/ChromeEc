@@ -34,10 +34,12 @@ void chipset_force_shutdown(void)
 	 * Consider reducing the latency here by changing the power off
 	 * hold time on the PMIC.
 	 */
+#if 0
 	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		forcing_shutdown = 1;
 		power_button_pch_press();
 	}
+#endif
 }
 
 __attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)
@@ -61,7 +63,7 @@ static void handle_slp_sus(enum power_state state)
 		return;
 
 	/* Always mimic PCH SLP_SUS request for all other states. */
-	chipset_set_pmic_slp_sus_l(gpio_get_level(GPIO_PCH_SLP_SUS_L));
+	chipset_set_pmic_slp_sus_l(1);//gpio_get_level(GPIO_PCH_SLP_SUS_L));
 }
 
 void chipset_handle_espi_reset_assert(void)
