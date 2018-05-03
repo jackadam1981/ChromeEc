@@ -52,6 +52,24 @@
       "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9db2067c_5410529a",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-03T23:23:53Z",
+      "side": 1,
+      "message": "I see that ACOK_OD stays high and the EC stays in hibernate.",
+      "parentUuid": "b75e6975_1cdd9faf",
+      "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
