@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1c1a413_4707ff33",
+        "filename": "board/yorp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-03T13:50:50Z",
+      "side": 1,
+      "message": "nit: can you keep the spacing between batteries consistent, please",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "f29c57a6e4fcbfc0f1e8d13ff2231eace0a49fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e952a923_5a5171f5",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-03T13:50:50Z",
+      "side": 1,
+      "message": "please put enums in same order as c file",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 13
+      },
+      "revId": "f29c57a6e4fcbfc0f1e8d13ff2231eace0a49fff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
