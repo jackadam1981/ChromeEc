@@ -26,6 +26,7 @@
 #include "system.h"
 #include "task.h"
 #include "timer.h"
+#include "throttle_ap.h"
 #include "util.h"
 
 /* Console output macros */
@@ -40,6 +41,12 @@
 	(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT * SECOND)
 #define PRECHARGE_TIMEOUT_US (PRECHARGE_TIMEOUT * SECOND)
 #define LFCC_EVENT_THRESH 5 /* Full-capacity change reqd for host event */
+
+#if defined(CONFIG_HOSTCMD_EVENTS) && \
+	defined(CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT)
+#define OCP_TIMEOUT_US (60 * SECOND)
+static timestamp_t ocp_throttle_start_time;
+#endif
 
 static int charge_request(int voltage, int current);
 
@@ -1305,18 +1312,74 @@ static int shutdown_on_critical_battery(void)
  */
 static void notify_host_of_low_battery(void)
 {
+#ifdef CONFIG_HOSTCMD_EVENTS
+	/*
+	 * Track battery SOC for corresponding host events
+	 *
+	 * BAT_OK: AC is on or battery SOC > BATTERY_LEVEL_LOW
+	 * BAT_LOW: AC is off and
+	 *          BATTERY_LEVEL_CRITICAL < SOC <= BATTERY_LEVEL_LOW
+	 * BAT_CRITICAL: AC is off and SOC <= BATTERY_LEVEL_CRITICAL
+	 */
+	static enum {
+		BAT_OK,
+		BAT_LOW,
+		BAT_CRITICAL,
+	} bat_lv;
+
 	/* We can't tell what the current charge is. Assume it's okay. */
 	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE)
 		return;
 
-#ifdef CONFIG_HOSTCMD_EVENTS
-	if (curr.batt.state_of_charge <= BATTERY_LEVEL_LOW &&
-	    prev_charge > BATTERY_LEVEL_LOW)
-		host_set_single_event(EC_HOST_EVENT_BATTERY_LOW);
+	if (curr.ac || curr.batt.state_of_charge > BATTERY_LEVEL_LOW) {
+#ifdef CONFIG_THROTTLE_AP_ON_BAT_LEVEL
+		if (bat_lv == BAT_CRITICAL) {
+			throttle_ap(THROTTLE_OFF, THROTTLE_SOFT,
+				    THROTTLE_SRC_BAT_LEVEL);
+		}
+#endif
+		bat_lv = BAT_OK;
+	} else if (curr.batt.state_of_charge <= BATTERY_LEVEL_CRITICAL) {
+		if (bat_lv != BAT_CRITICAL) {
+#ifdef CONFIG_THROTTLE_AP_ON_BAT_LEVEL
+			throttle_ap(THROTTLE_ON, THROTTLE_SOFT,
+				    THROTTLE_SRC_BAT_LEVEL);
+#endif
+			host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
+			bat_lv = BAT_CRITICAL;
+		}
+	} else {
+		if (bat_lv != BAT_LOW) {
+			host_set_single_event(EC_HOST_EVENT_BATTERY_LOW);
+			bat_lv = BAT_LOW;
+		}
+	}
+#endif
+}
 
-	if (curr.batt.state_of_charge <= BATTERY_LEVEL_CRITICAL &&
-	    prev_charge > BATTERY_LEVEL_CRITICAL)
-		host_set_single_event(EC_HOST_EVENT_BATTERY_CRITICAL);
+static void notify_host_of_over_current(struct batt_params *batt)
+{
+#if defined(CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT) && \
+	defined(CONFIG_HOSTCMD_EVENTS)
+	if (batt->flags & BATT_FLAG_BAD_CURRENT)
+		return;
+
+	if ((!ocp_throttle_start_time.val &&
+	     (batt->current < -BAT_MAX_DISCHG_CURRENT)) ||
+	    (ocp_throttle_start_time.val &&
+	     (batt->current < -BAT_MAX_DISCHG_CURRENT + BAT_OCP_HYSTERESIS))) {
+		ocp_throttle_start_time = get_time();
+		host_throttle_cpu(1);
+	} else if (ocp_throttle_start_time.val &&
+		   (get_time().val > ocp_throttle_start_time.val +
+		    OCP_TIMEOUT_US)) {
+		/*
+		 * Clear the timer and notify AP to stop throttling if
+		 * we haven't seen over current for OCP_TIMEOUT_US.
+		 */
+		ocp_throttle_start_time.val = 0;
+		host_throttle_cpu(0);
+	}
 #endif
 }
 
@@ -1499,6 +1562,8 @@ void charger_task(void *u)
 				curr.batt.state_of_charge);
 			curr.batt.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
 		}
+
+		notify_host_of_over_current(&curr.batt);
 
 		/*
 		 * Now decide what we want to do about it. We'll normally just
@@ -1736,7 +1801,12 @@ wait_for_it:
 #endif
 
 		/* How long to sleep? */
-		if (problems_exist)
+		if (problems_exist
+#if defined(CONFIG_HOSTCMD_EVENTS) && \
+	defined(CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT)
+		    || ocp_throttle_start_time.val
+#endif
+		)
 			/* If there are errors, don't wait very long. */
 			sleep_usec = CHARGE_POLL_PERIOD_SHORT;
 		else if (sleep_usec <= 0) {
