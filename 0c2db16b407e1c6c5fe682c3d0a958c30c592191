@@ -106,6 +106,24 @@
       "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf0a816d_0fa348a9",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-03T18:45:18Z",
+      "side": 1,
+      "message": "I was also trying to keep the OCTOPUS options limited to the octopus world and not push them up to the EC global config.h. If we want conditional compilation unit selection from the EC build system, then we would need to make all of the OCTOPUS options global CONFIG_OCTOPUS options. It can be done if needed, it just seems like a larger scope than what we would want.",
+      "parentUuid": "0a55898f_8fd0356a",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
