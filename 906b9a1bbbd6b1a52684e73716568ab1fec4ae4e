@@ -16,6 +16,24 @@
       "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc3e8c72_1c7ec862",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-03T21:35:44Z",
+      "side": 1,
+      "message": "Do you mean already plugged in when EC goes to hibernate?",
+      "parentUuid": "1da5d68a_ccfbc203",
+      "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
