@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dad0c6f_8825bb94",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-03T18:18:33Z",
+      "side": 1,
+      "message": "Why do this here? Why not just have i2c_ports[] in the per board compilation units? What are we saving by sprinkling everything with #ifdefs ? If anything you can just add these to specific .c files that are added to the build using a config or something.",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
