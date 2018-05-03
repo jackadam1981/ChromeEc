@@ -230,6 +230,7 @@ uint16_t tcpc_get_alert_status(void)
 }
 
 const struct temp_sensor_t temp_sensors[] = {
+#if 0
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0, 4},
 	/* BD99992GW temp sensors are only readable in S0 */
 	{"systherm0", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
@@ -241,8 +242,41 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"systherm3", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM3, 4},
 	{"gyro", TEMP_SENSOR_TYPE_BOARD, bmi160_get_sensor_temp, BASE_GYRO, 1},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+void board_before_rsmrst(int rsmrst)
+{
+	uint16_t vboot[3] = { 0x1083, 0x0083, 0x0083 };
+	int rail;
+
+	/* Only trigger on RSMRST# deassertion */
+	if (!rsmrst)
+		return;
+
+	i2c_lock(I2C_PORT_MP2949, 1);
+	for (rail = 2; rail >= 0; rail--) {
+		uint8_t buf[3];
+
+		/* Select register page for this rail */
+		buf[0] = 0x00;
+		buf[1] = rail;
+		i2c_xfer(I2C_PORT_MP2949, I2C_ADDR_MP2949,
+			 buf, 2, NULL, 0, I2C_XFER_SINGLE);
+
+		/* Set Vboot voltage */
+		buf[0] = 0xe5;
+		buf[1] = vboot[rail] & 0xff;
+		buf[2] = (vboot[rail] >> 8) & 0xff;
+		i2c_xfer(I2C_PORT_MP2949, I2C_ADDR_MP2949,
+			 buf, 3, NULL, 0, I2C_XFER_SINGLE);
+
+		CPRINTS("IMVP8 set Vboot [rail %d] to 0x%04x",
+			rail, vboot[rail]);
+	}
+	i2c_lock(I2C_PORT_MP2949, 0);
+}
 
 /*
  * Check if PMIC fault registers indicate VR fault. If yes, print out fault
@@ -401,6 +435,9 @@ static void board_pmic_init(void)
 
 	/* VRMODECTRL - disable low-power mode for all rails */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3b, 0x1f);
+
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x18, 0xff);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x19, 0x0f);
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 
@@ -409,6 +446,8 @@ static void board_init(void)
 {
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
+
+	gpio_set_level(GPIO_PMIC_SLP_SUS_L, 1);
 
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);

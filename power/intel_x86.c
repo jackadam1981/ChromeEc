@@ -268,9 +268,10 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
+#if 0
 #ifdef CONFIG_CHARGER
 		{
-		int tries = 0;
+		//int tries = 0;
 
 		/*
 		 * Allow charger to be initialized for upto defined tries,
@@ -297,6 +298,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		power_up_inhibited = 0;
 		}
 #endif
+#endif
 
 #ifdef CONFIG_VBOOT_EFS
 		/*
@@ -316,10 +318,12 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		chipset_pre_init_callback();
 #endif
 
+#if 0
 		if (power_wait_signals(CHIPSET_G3S5_POWERUP_SIGNAL)) {
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
+#endif
 
 		power_s5_up = 1;
 		return POWER_S5;
