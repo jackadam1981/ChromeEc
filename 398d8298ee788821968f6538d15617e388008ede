@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4717eec3_0322eab7",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:07:33Z",
+      "side": 1,
+      "message": "NOMINAL_BIT_US?  NOMINAL_BIT_USEC?",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af0ab517_366ad8b0",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:07:33Z",
+      "side": 1,
+      "message": "_US?\n\n(for the constants below, too...)",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b6fd172_292efe56",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:07:33Z",
+      "side": 1,
+      "message": "uint8_t?  Max length is short...",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e589642_d072985b",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:07:33Z",
+      "side": 1,
+      "message": "timeout?  max_t?  tnext?\n\n(Not sure what \u0027tmo\u0027 is supposed to stand for)",
+      "range": {
+        "startLine": 176,
+        "startChar": 16,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
