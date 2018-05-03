@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e239077e_8964e72e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-05-03T05:25:11Z",
+      "side": 1,
+      "message": "I hope 0x30 is never used. It will connect the sstx to two pins of the USB-C and the ssrx to two pins. This will cause crazy SI things to happen. And I have no idea what would happen in the case the other end can do the new USB3.2 x2 operation.\n\nWould it be better not to initialize and let the compiler complain if it is used but not set?",
+      "range": {
+        "startLine": 408,
+        "startChar": 14,
+        "endLine": 408,
+        "endChar": 18
+      },
+      "revId": "17db761f0bf250e03c33554945210606c8500b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "498ddd7b_c6cf5b82",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 2
@@ -42,6 +65,53 @@
         "startChar": 4,
         "endLine": 436,
         "endChar": 3
+      },
+      "revId": "17db761f0bf250e03c33554945210606c8500b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef41455_8a95a01d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-05-03T05:25:11Z",
+      "side": 1,
+      "message": "sstx and ssrx are the USB superspeed transmit and receive pairs\nml is the DisplayPort Main Link. Called \"L\" in the comments above.\nUp to four lanes total, so DP case connects them all and dock connects 2 DP and USB.\n\na2, a3, a10, a11, b2, b3, b10, b11 are pins on the USB-C connector. \n\nNote sw_sel is written to two registers, each bit makes one connection\n\nI don\u0027t understand why the value here is 0x21. I believe it should be 0x20,\notherwise this is identical to the TYPEC_MUX_DOCK case and you will connect DisplayPort on to the pins that should be unused, which is a violation of the spec (and will cause issues if the other end happens to be a USB3.2 device capable of x2 operation where these lanes would carry USB signalling). (I know the bug says to use 0x21 but it seems wrong)",
+      "parentUuid": "682be093_f39f00b0",
+      "range": {
+        "startLine": 434,
+        "startChar": 4,
+        "endLine": 436,
+        "endChar": 3
+      },
+      "revId": "17db761f0bf250e03c33554945210606c8500b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98cfcd5c_1da4f380",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-05-03T05:25:11Z",
+      "side": 1,
+      "message": "Same argument as above, this should be 0x10 to avoid connecting DP when not in alt mode.",
+      "range": {
+        "startLine": 448,
+        "startChar": 3,
+        "endLine": 448,
+        "endChar": 9
       },
       "revId": "17db761f0bf250e03c33554945210606c8500b65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
