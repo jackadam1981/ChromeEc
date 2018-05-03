@@ -88,6 +88,24 @@
       "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "254eb7a2_ab67f692",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-03T18:44:47Z",
+      "side": 1,
+      "message": "For static structures I don\u0027t see why it\u0027s necessary to have them in one file. If one wants to compare two files can be opened side-by-side? \n\nIn general this sets a bad precedent where everything is getting thrown into a single file and sprinkling #ifdefs around. There is more than one way to share code.\n\nYes, these port layouts can be shared and are a function of 1. EC used and 2. following specific ref design. However, that determination is pretty easy to do in a build.mk proper saying \"use this .c\" file. btw, my name suggestions weren\u0027t real. You can name them according to ec type. I was just using that as an example of two separate compilation units.",
+      "parentUuid": "0a55898f_8fd0356a",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
