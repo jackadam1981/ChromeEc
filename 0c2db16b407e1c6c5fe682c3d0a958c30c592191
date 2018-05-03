@@ -70,6 +70,24 @@
       "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a55898f_8fd0356a",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-03T18:40:57Z",
+      "side": 1,
+      "message": "I was replying while you commented ... aren\u0027t we going to allow components to be different making a combination of both yorp and bip? Would we need the like_bip_ec.c and like_yorp_ec.c pair along with the like_bip_charger.c and like_yorp_charger.c pair etc. (naming TBD of course).\n\nI can restructure this file into multiple c files; however, it does seem slightly valuable to see what the other variant is doing (but it does clutter it as well).",
+      "parentUuid": "180b10fd_adbe9254",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
