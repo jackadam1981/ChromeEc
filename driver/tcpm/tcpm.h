@@ -25,33 +25,13 @@
 extern const struct tcpc_config_t tcpc_config[];
 
 /* I2C wrapper functions - get I2C port / slave addr from config struct. */
-static inline int tcpc_write(int port, int reg, int val)
-{
-	return i2c_write8(tcpc_config[port].i2c_host_port,
-			  tcpc_config[port].i2c_slave_addr,
-			  reg, val);
-}
+int tcpc_write(int port, int reg, int val);
 
-static inline int tcpc_write16(int port, int reg, int val)
-{
-	return i2c_write16(tcpc_config[port].i2c_host_port,
-			   tcpc_config[port].i2c_slave_addr,
-			   reg, val);
-}
+int tcpc_write16(int port, int reg, int val);
 
-static inline int tcpc_read(int port, int reg, int *val)
-{
-	return i2c_read8(tcpc_config[port].i2c_host_port,
-			 tcpc_config[port].i2c_slave_addr,
-			 reg, val);
-}
+int tcpc_read(int port, int reg, int *val);
 
-static inline int tcpc_read16(int port, int reg, int *val)
-{
-	return i2c_read16(tcpc_config[port].i2c_host_port,
-			  tcpc_config[port].i2c_slave_addr,
-			  reg, val);
-}
+int tcpc_read16(int port, int reg, int *val);
 
 static inline int tcpc_xfer(int port,
 			    const uint8_t *out, int out_size,
