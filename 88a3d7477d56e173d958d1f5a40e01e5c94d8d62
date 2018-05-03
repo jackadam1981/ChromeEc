@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a6c43ed_1552275f",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0dab71a_1a45e2bc",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "addafba6_0679fbd8",
         "filename": "board/cheza/battery.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "despite being not used/implemented right now\nare there the real values for this battery ?\nelse remove them.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461b7e64_3e11ad39",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "I just copied from other. Removed it now until it is verified.",
+      "parentUuid": "addafba6_0679fbd8",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6f5f54c7_7783dde0",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Rev-0 uses the same battery as Lux. Verified it work.",
+      "parentUuid": "f15cda7e_2b716664",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d72a443_e54761b4",
         "filename": "board/cheza/battery.c",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "a less successful error code might be better,\nunless this is blocking your factory process or something else.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dbbf3fb_b07e7a8d",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "The battery cutoff will be implemented later. So removed it from this change.",
+      "parentUuid": "6d72a443_e54761b4",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "771b284d_b03da51e",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "3552806e_e4670365",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34719b5f_ce84343c",
         "filename": "board/cheza/board.c",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "given we program the interrupt to detect the falling, what is this trying to protect against ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bbc6910_920b3f87",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "It makes sense. Removed it.",
+      "parentUuid": "34719b5f_ce84343c",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "8d072c3c_aa4aa841",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb686e40_838e074d",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3292fdd6_4d1c5131",
         "filename": "board/cheza/board.c",
         "patchSetId": 6
@@ -174,6 +342,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "the GPIO name has a typo ? (C0 vs C1)",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8195b269_0ec8c56e",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Yes, it is a typo.",
+      "parentUuid": "3292fdd6_4d1c5131",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "96c42a5f_f817f086",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "I removed it at ths initial charging change. Will figure it out the logic.",
+      "parentUuid": "cbe2f36a_664a40a1",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 53
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f23c18b_b6168aba",
         "filename": "board/cheza/board.c",
         "patchSetId": 6
@@ -220,6 +436,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "you can add [USB_PD_PORT_ANX74XX] \u003d\nto check consistency",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 67
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "534471d7_c59c33d9",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f23c18b_b6168aba",
       "range": {
         "startLine": 179,
         "startChar": 0,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "51d8490d_f27cc14d",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b3015c4_fac3c8d0",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e81952fa_21126b22",
         "filename": "board/cheza/board.c",
         "patchSetId": 6
@@ -266,6 +530,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "maybe you need a USB_PD_PORT_xxx constant as the ANX one above",
+      "range": {
+        "startLine": 251,
+        "startChar": 13,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a1266d_c76ba63f",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e81952fa_21126b22",
       "range": {
         "startLine": 251,
         "startChar": 13,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "61eb999d_1122f2ec",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8696967_30a44492",
+      "range": {
+        "startLine": 276,
+        "startChar": 19,
+        "endLine": 276,
+        "endChar": 25
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "448e9672_d5181cc4",
         "filename": "board/cheza/board.c",
         "patchSetId": 6
@@ -312,6 +624,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "CONFIG_USB_PD_PORT_COUNT ?",
+      "range": {
+        "startLine": 294,
+        "startChar": 18,
+        "endLine": 294,
+        "endChar": 19
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aa2f712_24d937fd",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "448e9672_d5181cc4",
       "range": {
         "startLine": 294,
         "startChar": 18,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "b36c04d9_2da5de8f",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca97bee5_f6f5e726",
+      "range": {
+        "startLine": 315,
+        "startChar": 17,
+        "endLine": 315,
+        "endChar": 18
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2de2bb4_48e18ed4",
         "filename": "board/cheza/board.h",
         "patchSetId": 6
@@ -358,6 +718,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "I would remove it until it is actually implemented to save other people the time to investigate why the command is not actually working.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80da27b9_df3563de",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2de2bb4_48e18ed4",
       "range": {
         "startLine": 40,
         "startChar": 0,
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "716084d0_089c5453",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2506053_6d215798",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b678912b_77ebb4ca",
         "filename": "board/cheza/board.h",
         "patchSetId": 6
@@ -404,6 +812,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "you might want to undefine it for bringup and move it above with CONFIG_BRINGUP.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c92fcdc1_257145a2",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b678912b_77ebb4ca",
       "range": {
         "startLine": 67,
         "startChar": 0,
@@ -439,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "859c9e3e_4dd91799",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "[",
+      "parentUuid": "9e8f159b_35cda47d",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe425409_61049a89",
         "filename": "board/cheza/board.h",
         "patchSetId": 6
@@ -462,6 +918,30 @@
     },
     {
       "key": {
+        "uuid": "9b8b8c48_a7f0acc4",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Added a bug to track it.",
+      "parentUuid": "fe425409_61049a89",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 53
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7eab7d9_18b65d82",
         "filename": "board/cheza/usb_pd_policy.c",
         "patchSetId": 6
@@ -473,6 +953,30 @@
       "writtenOn": "2018-04-18T10:41:13Z",
       "side": 1,
       "message": "might not be true on your board",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3eab0e9_950c39ef",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T20:46:20Z",
+      "side": 1,
+      "message": "Changed to disallow in RO.",
+      "parentUuid": "f7eab7d9_18b65d82",
       "range": {
         "startLine": 44,
         "startChar": 0,
