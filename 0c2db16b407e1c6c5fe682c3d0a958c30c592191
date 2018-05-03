@@ -52,6 +52,24 @@
       "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "180b10fd_adbe9254",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-03T18:36:19Z",
+      "side": 1,
+      "message": "Looking at phaser, the i2c port configuration matches yorp, and that really seems like a function of which EC is used.\n\nWe can pull this into board.c but it will be the same copy everywhere (so I lean towards keeping it here). However, if we do need one board variant to be different, I plan on making a OCTOPUS_I2C_CUSTOM_PORT option (or something like that) that complies out the definition from baseboard and would rely on board.c to define the i2c_port_t variable.\n\nI don\u0027t want to hack baseboard.c up with a bunch of variant specific code, but I think it is reasonable if it contains the two main variants of each component (2 ecs, 2 typec, 2, chargers, etc)",
+      "parentUuid": "0dc23a27_2776d48b",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
