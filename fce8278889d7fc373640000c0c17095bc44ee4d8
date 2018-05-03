@@ -16,6 +16,24 @@
       "revId": "fce8278889d7fc373640000c0c17095bc44ee4d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8df68587_095537e6",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-05-03T17:37:19Z",
+      "side": 1,
+      "message": "You are right. Fixed.",
+      "parentUuid": "62e5e9ad_b26de859",
+      "revId": "fce8278889d7fc373640000c0c17095bc44ee4d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
