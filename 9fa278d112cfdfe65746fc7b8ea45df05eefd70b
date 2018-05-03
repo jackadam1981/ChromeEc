@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3a0e1b59_59f6689b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 4110,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-03T23:52:23Z",
+      "side": 1,
+      "message": "Actually, I think this is a bit nicer. The max-length is a part of the protocol, and that would not be as obvious if the array was declared in e.g. cec.c.",
+      "parentUuid": "e38b143b_846efa7d",
+      "range": {
+        "startLine": 4110,
+        "startChar": 1,
+        "endLine": 4110,
+        "endChar": 30
+      },
+      "revId": "9fa278d112cfdfe65746fc7b8ea45df05eefd70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d581264_71f951f1",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
