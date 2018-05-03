@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "518ec4eb_fc6e3fb6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T16:59:39Z",
+      "side": 1,
+      "message": "Add comment, please. Is it for enum mkbp_cec_event? Can we utilize event_type in struct ec_response_get_next_event?\n\nI thought we were going to put msg[mx_cec_msg_len] here and support two versions of ec_response_get_next_data. Any issue with the idea? This will add one extra message exchange, right?",
+      "range": {
+        "startLine": 3202,
+        "startChar": 10,
+        "endLine": 3202,
+        "endChar": 20
+      },
+      "revId": "9fa278d112cfdfe65746fc7b8ea45df05eefd70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beeabdd7_94afe4d6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 4110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T16:59:39Z",
+      "side": 1,
+      "message": "Have you thought about passing it as raw data? If it\u0027s raw data like this, I don\u0027t think we need to put it in a struct.",
+      "range": {
+        "startLine": 4110,
+        "startChar": 1,
+        "endLine": 4110,
+        "endChar": 30
+      },
+      "revId": "9fa278d112cfdfe65746fc7b8ea45df05eefd70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e243b5_de54fbed",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 4156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T16:59:39Z",
+      "side": 1,
+      "message": "Could you add comments to describe these?",
+      "range": {
+        "startLine": 4154,
+        "startChar": 0,
+        "endLine": 4156,
+        "endChar": 34
+      },
+      "revId": "9fa278d112cfdfe65746fc7b8ea45df05eefd70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
