@@ -16,6 +16,24 @@
       "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dc23a27_2776d48b",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-03T18:26:06Z",
+      "side": 1,
+      "message": "Probably because this will be used by all boards that use a particular EC? i.e. all variants using NPCX are expected to have their I2C ports connected to the devices as mentioned here?",
+      "parentUuid": "3dad0c6f_8825bb94",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
