@@ -29,7 +29,7 @@ GPIO_INT(PCH_SLP_S3_L,	 PIN(A, 6), GPIO_INT_BOTH, power_signal_interrupt)	/* SLP
 GPIO_INT(SUSPWRDNACK,	 PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)	/* SUSPWRDNACK */
 GPIO_INT(RSMRST_L_PGOOD, PIN(E, 2), GPIO_INT_BOTH, power_signal_interrupt)	/* PMIC_EC_RSMRST_ODL */
 GPIO_INT(ALL_SYS_PGOOD,	 PIN(F, 4), GPIO_INT_BOTH, power_signal_interrupt)	/* PMIC_EC_PWROK_OD */
-GPIO_INT(AC_PRESENT, 	 PIN(0, 0), GPIO_INT_BOTH, extpower_interrupt)		/* ACOK_OD */
+GPIO_INT(AC_PRESENT, 	 PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, extpower_interrupt)		/* ACOK_OD */
 
 /* TODO(b/74932344): Make it as an interrupt after driver supports this */
 GPIO(BASE_SIXAXIS_INT_L,	PIN(5, 6), GPIO_INPUT | GPIO_SEL_1P8V)
