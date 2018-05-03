@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b2a0575_d5f5370b",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7846,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:13:00Z",
+      "side": 1,
+      "message": "There is any association between the message and the send status? What happens if you send two messages back-to-back?",
+      "range": {
+        "startLine": 7846,
+        "startChar": 2,
+        "endLine": 7846,
+        "endChar": 50
+      },
+      "revId": "dccba8dfd66cb55e6934eee1282c00206cbf3886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e76ed998_6786a8c3",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7854,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:13:00Z",
+      "side": 1,
+      "message": "Why not printing error message?",
+      "range": {
+        "startLine": 7854,
+        "startChar": 1,
+        "endLine": 7854,
+        "endChar": 10
+      },
+      "revId": "dccba8dfd66cb55e6934eee1282c00206cbf3886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
