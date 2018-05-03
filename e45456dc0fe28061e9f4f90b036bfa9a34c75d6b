@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e851844_4420b0b2",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:37:56Z",
+      "side": 1,
+      "message": "Might be a little clearer as\n\nCEC_CIRCBUF_SIZE \u003c MAX_CEC_MSG_LEN + 1",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "e45456dc0fe28061e9f4f90b036bfa9a34c75d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c7d544_3d3f5e9b",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:37:56Z",
+      "side": 1,
+      "message": "uint8_t?  Unless CEC_CIRCBUF_SIZE \u003e 255...",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 9
+      },
+      "revId": "e45456dc0fe28061e9f4f90b036bfa9a34c75d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
