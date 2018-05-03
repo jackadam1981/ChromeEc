@@ -124,6 +124,24 @@
       "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb0ba63_fecab12d",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-03T18:49:33Z",
+      "side": 1,
+      "message": "We can\u0027t just add entries in the build.mk for the targest that are\n\nblah-y+\u003d../../baseboard/octopus/foo.c ?\n\nAnd we\u0027re doing this to work around the EC\u0027s build system limitations?",
+      "parentUuid": "bf0a816d_0fa348a9",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
