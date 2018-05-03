@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "214c27d9_edef1b7a",
+        "filename": "board/zinger/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-03T07:48:09Z",
+      "side": 1,
+      "message": "Turns out with already have CONFIG_COMMON_RUNTIME, so for now, at least, we can check for that in config.h.",
+      "parentUuid": "4dd357d4_bb3a0f31",
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22581f5e_fa0cb75a",
         "filename": "common/host_command.c",
         "patchSetId": 1
@@ -77,6 +95,30 @@
       "writtenOn": "2018-04-09T17:14:29Z",
       "side": 1,
       "message": "This macro fails at build time, and will always return success at runtime. \n So no need for the error handling around it anymore.",
+      "range": {
+        "startLine": 841,
+        "startChar": 5,
+        "endLine": 841,
+        "endChar": 29
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb8d239_551fb798",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-03T07:48:09Z",
+      "side": 1,
+      "message": "No, the shared memory may be in use for another purpose.",
+      "parentUuid": "22581f5e_fa0cb75a",
       "range": {
         "startLine": 841,
         "startChar": 5,
@@ -124,6 +166,30 @@
       "side": 1,
       "message": "Yes, that\u0027s the only purpose.",
       "parentUuid": "f419534e_43b91239",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95178a09_e713747c",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-03T07:48:09Z",
+      "side": 1,
+      "message": "Replaced with some ASSERT, inspired from Gwendal\u0027s CL.",
+      "parentUuid": "17fdf048_4b1df882",
       "range": {
         "startLine": 347,
         "startChar": 1,
@@ -207,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "c249a4d9_a5775496",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-03T07:48:09Z",
+      "side": 1,
+      "message": "Sadly we can\u0027t put stuff in shared_mem.h, as the only thing the lds.S script includes is config.h.\n\nManaged to do something mildly better by using a MAX function.",
+      "parentUuid": "e4b271c2_5eca8ea4",
+      "range": {
+        "startLine": 3312,
+        "startChar": 0,
+        "endLine": 3319,
+        "endChar": 6
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b42619ed_634cefae",
         "filename": "include/shared_mem.h",
         "patchSetId": 1
@@ -227,6 +317,30 @@
       "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e73971ee_781d2d5c",
+        "filename": "include/shared_mem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-03T07:48:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b42619ed_634cefae",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "57c946ea3f933c01d965432bd2b2a657422c403b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
