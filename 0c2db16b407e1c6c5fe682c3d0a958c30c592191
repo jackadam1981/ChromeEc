@@ -34,6 +34,24 @@
       "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0be7551f_f4a2eb67",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-03T18:33:27Z",
+      "side": 1,
+      "message": "My point is that we can have 2 compilation units:\n\nlikebip.c\nlikeyorp.c\n\nAnd the ec build targets can indicate which .c files to use within the builds system. #ifdefs strewn throughout the code is not a good solution, imo.",
+      "parentUuid": "0dc23a27_2776d48b",
+      "revId": "0c2db16b407e1c6c5fe682c3d0a958c30c592191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
