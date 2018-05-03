@@ -7,7 +7,9 @@
 
 #include "anx74xx.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "ps8xxx.h"
+#include "system.h"
 #include "task.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -23,7 +25,76 @@ static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
-static int init_alert_mask(int port)
+/*
+ * Flag variable used to indicate that a task has a current/pending TCPC access
+ * in progress. One bit is used per task and can be checked prior to putting the
+ * TCPC into low power mode.
+ */
+static int tcpc_access_pending[CONFIG_USB_PD_PORT_COUNT];
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+/* Used to indicate that a port has a low power mode request pending */
+static int tcpc_lpm_pending;
+#endif
+
+#ifdef CONFIG_USB_PD_TCPM_TCPCI
+int tcpc_write(int port, int reg, int val)
+{
+	int rv;
+	int task_id = task_get_current();
+
+	atomic_or(&tcpc_access_pending[port], 1 << task_id);
+	rv = i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  reg, val);
+	atomic_clear(&tcpc_access_pending[port], 1 << task_id);
+
+	return rv;
+}
+
+int tcpc_write16(int port, int reg, int val)
+{
+	int rv;
+	int task_id = task_get_current();
+
+	atomic_or(&tcpc_access_pending[port], 1 << task_id);
+	rv =  i2c_write16(tcpc_config[port].i2c_host_port,
+			   tcpc_config[port].i2c_slave_addr,
+			   reg, val);
+	atomic_clear(&tcpc_access_pending[port], 1 << task_id);
+
+	return rv;
+}
+
+int tcpc_read(int port, int reg, int *val)
+{
+	int rv;
+	int task_id = task_get_current();
+
+	atomic_or(&tcpc_access_pending[port], 1 << task_id);
+	rv = i2c_read8(tcpc_config[port].i2c_host_port,
+			 tcpc_config[port].i2c_slave_addr,
+			 reg, val);
+	atomic_clear(&tcpc_access_pending[port], 1 << task_id);
+
+	return rv;
+}
+
+int tcpc_read16(int port, int reg, int *val)
+{
+	int rv;
+	int task_id = task_get_current();
+
+	atomic_or(&tcpc_access_pending[port], 1 << task_id);
+	rv = i2c_read16(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  reg, val);
+	atomic_clear(&tcpc_access_pending[port], 1 << task_id);
+
+	return rv;
+}
+#endif
+
+int init_alert_mask(int port)
 {
 	uint16_t mask;
 
@@ -136,6 +207,48 @@ int tcpci_tcpm_set_cc(int port, int pull)
 	return set_role_ctrl(port, 0, selected_rp[port], pull);
 }
 
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static void tcpc_start_drp_toggle(void);
+DECLARE_DEFERRED(tcpc_start_drp_toggle);
+
+static void tcpc_start_drp_toggle(void)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		/* If lpm is not pending for this port, then skip. */
+		if (!(tcpc_lpm_pending & (1 << i)))
+			continue;
+
+		if (tcpc_access_pending[i]) {
+			/*
+			 * This check ensures that no other TCPC access is
+			 * pending (i.e. some other task is currently blocked on
+			 * a i2c mutex), before allowing the I2CIDLE command to
+			 * be issued.
+			 */
+			hook_call_deferred(&tcpc_start_drp_toggle_data, 0);
+		} else {
+			/* Clear low power mode pending bit for this port */
+			atomic_clear(&tcpc_lpm_pending, 1 << i);
+			/* Enter low power mode */
+			tcpc_write(i, TCPC_REG_COMMAND,
+				   TCPC_REG_COMMAND_I2CIDLE);
+			/*
+			 * If no other ports have low power mode pending, then
+			 * cancel this hook so that an uncessary call here
+			 * doesn't cause TCPC to exit low power mode.
+			 */
+			if (!tcpc_lpm_pending)
+				hook_call_deferred(&tcpc_start_drp_toggle_data,
+						   -1);
+		}
+	}
+}
+#endif
+
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_tcpc_drp_toggle(int port, int enable)
 {
@@ -144,11 +257,13 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 	if (!enable) {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 		struct usb_mux *mux = &usb_muxes[port];
+
 		if (mux->board_init)
 			return mux->board_init(mux);
 #endif
 		return EC_SUCCESS;
 	}
+
 	/* Set auto drp toggle */
 	rv = set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD);
 
@@ -157,7 +272,19 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 			 TCPC_REG_COMMAND_LOOK4CONNECTION);
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	rv |= tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+	/*
+	 * Once the TCPC is put into low power mode by sending
+	 * TCPC_REG_COMMAND_I2CIDLE to the command register, any valid I2C
+	 * access attempt to that TCPC can wake the TCPC and cause it to exit
+	 * low power mode. Therefore, schedule the the I2CIDLE command to happen
+	 * in the hooks task, so than any pending TCPC accesses have an
+	 * opportunity to complete before this command is issued. Otherwise,
+	 * it's possible to enter low power mode, then exit right away, and have
+	 * that cycle continue indefinitely. Because the hook call loses the
+	 * port information, store that as a bit in tcpc_lpm_pending.
+	 */
+	atomic_or(&tcpc_lpm_pending, 1 << port);
+	hook_call_deferred(&tcpc_start_drp_toggle_data, 0);
 #endif
 	return rv;
 }
