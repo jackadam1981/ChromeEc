@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "878ad9c7_fcb89cab",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-03T21:06:43Z",
+      "side": 1,
+      "message": "A lot of this doesn\u0027t seem chip specific. What do you think about pulling out the CEC portion into common level code (e.g. state machine)? The timer and ISR related items could stay.",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eaf3df4_d54416b1",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-03T21:06:43Z",
+      "side": 1,
+      "message": "Typically, we don\u0027t use the bool type.",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8900d78a_14ce3d12",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-03T21:06:43Z",
+      "side": 1,
+      "message": "nit: keep in alphabetical order",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4717eec3_0322eab7",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -81,6 +132,69 @@
         "startChar": 16,
         "endLine": 176,
         "endChar": 19
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "885546b9_c7d5f1f8",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-03T21:06:43Z",
+      "side": 1,
+      "message": "missing default case",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f99568_fcee0a85",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-03T21:06:43Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 251,
+        "startChar": 19,
+        "endLine": 251,
+        "endChar": 22
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d47f6a_b908b5dd",
+        "filename": "chip/npcx/fan_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-03T21:06:43Z",
+      "side": 1,
+      "message": "Maybe fix this typo to \u0027mode\u0027 while you\u0027re at it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 12
       },
       "revId": "398d8298ee788821968f6538d15617e388008ede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
