@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13ba3356_e5df1386",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:33:40Z",
+      "side": 1,
+      "message": "Here as well: ectool cec \u003cwrite/read/set/get\u003e ...",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "66fc7086da823c37309be5868aa01dd84e4e8548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c3664b_036a5cca",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7919,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:33:40Z",
+      "side": 1,
+      "message": "Need a blank line.",
+      "revId": "66fc7086da823c37309be5868aa01dd84e4e8548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f527743a_c14032ff",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7937,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:33:40Z",
+      "side": 1,
+      "message": "It looks \u0027from\u0027 to me.",
+      "range": {
+        "startLine": 7937,
+        "startChar": 15,
+        "endLine": 7937,
+        "endChar": 17
+      },
+      "revId": "66fc7086da823c37309be5868aa01dd84e4e8548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ba47525_e1785605",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7988,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:33:40Z",
+      "side": 1,
+      "message": "As I commented in CL:995440, it seems we should use \u0027uint8_t value\u0027 instead of union of enable \u0026 address.",
+      "range": {
+        "startLine": 7982,
+        "startChar": 0,
+        "endLine": 7988,
+        "endChar": 2
+      },
+      "revId": "66fc7086da823c37309be5868aa01dd84e4e8548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
