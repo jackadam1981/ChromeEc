@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0504dac_ff61320f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:40:48Z",
+      "side": 1,
+      "message": "any kind *of* misbehavior?\n\n(But really, this only handles one kind of misbehavior - that of pulses which are too short...)",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "ad8c85f635f1930e6b02732a2ee5dc00235ff912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622516b7_78096ce0",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:40:48Z",
+      "side": 1,
+      "message": "DEBOUNCE_LIMIT_US?",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 22
+      },
+      "revId": "ad8c85f635f1930e6b02732a2ee5dc00235ff912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d90c7163_a824c690",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:40:48Z",
+      "side": 1,
+      "message": "debounce_count?\ndebounces?",
+      "range": {
+        "startLine": 204,
+        "startChar": 5,
+        "endLine": 204,
+        "endChar": 17
+      },
+      "revId": "ad8c85f635f1930e6b02732a2ee5dc00235ff912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88eaaa82_e98742cb",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-03T20:40:48Z",
+      "side": 1,
+      "message": "MAX_DEBOUNCE_COUNT?",
+      "range": {
+        "startLine": 551,
+        "startChar": 29,
+        "endLine": 551,
+        "endChar": 30
+      },
+      "revId": "ad8c85f635f1930e6b02732a2ee5dc00235ff912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
