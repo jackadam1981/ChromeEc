@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58c0dfee_93e20c35",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:19:41Z",
+      "side": 1,
+      "message": "I would print the unit.",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "revId": "4373958991d6167f6efab43f1fd58084264e8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1610fed7_efc61ee0",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7889,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:19:41Z",
+      "side": 1,
+      "message": "Why not creating a subroutine?",
+      "range": {
+        "startLine": 7881,
+        "startChar": 0,
+        "endLine": 7889,
+        "endChar": 2
+      },
+      "revId": "4373958991d6167f6efab43f1fd58084264e8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4f132e_38766538",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7925,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-03T17:19:41Z",
+      "side": 1,
+      "message": "Maybe you want a sub-command tree: ectool cec write \u0026 ectool cec read. You may refer to the cbi command.",
+      "range": {
+        "startLine": 7925,
+        "startChar": 3,
+        "endLine": 7925,
+        "endChar": 10
+      },
+      "revId": "4373958991d6167f6efab43f1fd58084264e8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
