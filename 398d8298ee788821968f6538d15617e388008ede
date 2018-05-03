@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "3e3533f0_266da37e",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-03T21:54:10Z",
+      "side": 1,
+      "message": "The unit is really in ticks of the apb1 timer. I.e. 2400 us in ticks. NOMINAL_BIT_TICKS?",
+      "parentUuid": "4717eec3_0322eab7",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af0ab517_366ad8b0",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -139,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "36a2f165_ed55baeb",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-03T21:54:10Z",
+      "side": 1,
+      "message": "timeout. I get a bit cheap on letters sometimes...",
+      "parentUuid": "2e589642_d072985b",
+      "range": {
+        "startLine": 176,
+        "startChar": 16,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "885546b9_c7d5f1f8",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -156,6 +204,24 @@
     },
     {
       "key": {
+        "uuid": "7ff10650_07424258",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-03T21:54:10Z",
+      "side": 1,
+      "message": "Intentional, since every state should have a enter-state handler and I want a warning if that is not fulfilled. Do you think it would be better to have some kind internal-error handling instead?",
+      "parentUuid": "885546b9_c7d5f1f8",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34f99568_fcee0a85",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -167,6 +233,30 @@
       "writtenOn": "2018-05-03T21:06:43Z",
       "side": 1,
       "message": "What does this mean?",
+      "range": {
+        "startLine": 251,
+        "startChar": 19,
+        "endLine": 251,
+        "endChar": 22
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "391a40fd_990bbf2f",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-03T21:54:10Z",
+      "side": 1,
+      "message": "cec timeout event, can rename to something better...",
+      "parentUuid": "34f99568_fcee0a85",
       "range": {
         "startLine": 251,
         "startChar": 19,
