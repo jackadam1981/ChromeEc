@@ -895,6 +895,30 @@
     },
     {
       "key": {
+        "uuid": "e3eadfff_575bb2e0",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-03T21:56:41Z",
+      "side": 1,
+      "message": "Talked to Jim. It shares the same battery and TCPC/PPC with Lux. Lux uses this setting. May revise it if we change the battery.",
+      "parentUuid": "859c9e3e_4dd91799",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 60
+      },
+      "revId": "88a3d7477d56e173d958d1f5a40e01e5c94d8d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe425409_61049a89",
         "filename": "board/cheza/board.h",
         "patchSetId": 6
