@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "3ca8d277_7dd31e1c",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-03T21:56:43Z",
+      "side": 1,
+      "message": "This is just a temporary address I used for testing until \"cecset address\" was implemented. So it was hard-coded to address 5.",
+      "parentUuid": "f113504a_b69e2fb8",
+      "range": {
+        "startLine": 203,
+        "startChar": 36,
+        "endLine": 203,
+        "endChar": 37
+      },
+      "revId": "aa37bfd91a88d7406a730183beea36ce96de858d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77bf88d2_d1e022fa",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
