@@ -22,6 +22,30 @@
       "revId": "683f0345ec499df248a93f1b9aa2049af393e9e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7863f8_6c5171f3",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-03T19:11:15Z",
+      "side": 1,
+      "message": "Which OEM-id:s do we want to enable CEC on?",
+      "parentUuid": "78ae20b7_f40f844e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 1
+      },
+      "revId": "683f0345ec499df248a93f1b9aa2049af393e9e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
