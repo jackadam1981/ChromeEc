@@ -264,6 +264,7 @@ DECLARE_HOOK(HOOK_INIT, board_charge_manager_init,
 int board_set_active_charge_port(int port)
 {
 	const int active_port = charge_manager_get_active_charge_port();
+	uint8_t *memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 
 	if (port < 0 || CHARGE_PORT_COUNT <= port)
 		return EC_ERROR_INVAL;
@@ -283,6 +284,8 @@ int board_set_active_charge_port(int port)
 		gpio_set_level(GPIO_USB_C0_CHARGE_L, 0);
 		gpio_set_level(GPIO_AC_JACK_CHARGE_L, 1);
 		gpio_enable_interrupt(GPIO_ADP_IN_L);
+		/* Clear device node AC/online=0 */
+		*memmap_batt_flags &= ~EC_BATT_FLAG_AC_PRESENT;
 		break;
 	case CHARGE_PORT_BARRELJACK:
 		/* Make sure BJ adapter is sourcing power */
@@ -295,6 +298,8 @@ int board_set_active_charge_port(int port)
 		 * reverse current protection of PU3 but it's intended. */
 		gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
 		gpio_disable_interrupt(GPIO_ADP_IN_L);
+		/* Set device node AC/online=1 */
+		*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
 		break;
 	default:
 		return EC_ERROR_INVAL;
