@@ -22,6 +22,30 @@
       "revId": "63939f9e699478b82a005ff698535dd49f341327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea1d0ed_04d5d604",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-04T17:26:57Z",
+      "side": 1,
+      "message": "Done. Moved this to \"Wake source interrupts\" section. I have moved WP interrupt down since that is not a wake source. We don\u0027t need GPIO_HIB_WAKE_HIGH on power button interrupt since it is active low.",
+      "parentUuid": "585396b7_b692aca6",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 104
+      },
+      "revId": "63939f9e699478b82a005ff698535dd49f341327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
