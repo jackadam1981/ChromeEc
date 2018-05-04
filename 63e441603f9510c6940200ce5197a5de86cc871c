@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b0143e7_7ed2966f",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T06:57:19Z",
+      "side": 1,
+      "message": "Remove SPI2 for now.",
+      "range": {
+        "startLine": 268,
+        "startChar": 21,
+        "endLine": 268,
+        "endChar": 25
+      },
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3764d7_fee254e3",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T06:57:19Z",
+      "side": 1,
+      "message": "Drop this ifdef.",
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a6b055_f0e6f834",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T06:57:19Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acbaa651_4b7360f2",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T06:57:19Z",
+      "side": 1,
+      "message": "This is incredibly useful during early bringup, please re-enable.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 26
+      },
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "016e2000_42d87d17",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T06:57:19Z",
+      "side": 1,
+      "message": "Quite a few issues in this file but there is no point to fix it for now, let\u0027s wait a bit.",
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a58926_cf5d1731",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T06:57:19Z",
+      "side": 1,
+      "message": "Not used, drop this.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 55
+      },
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
