@@ -16,6 +16,24 @@
       "revId": "b7b9647433b2100e2371bcb70ec8dab0c20271cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9837ebad_ffb8093c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-04T20:57:14Z",
+      "side": 1,
+      "message": "Looking at the code closer, I think we can just remove this.\nHaving the code here or setting problems_exist would make charger_task wake up more often (since the sleep time decreases from 500 ms to 100 ms).\nBut it\u0027s not very useful in this case, because:\n\nAs long as EC notifies AP when OCP is detected, AP should start throttling. If over-current is still detected, it is not helpful for EC to resend AP the host event more often (unless AP misses the initial throttle request, which is not likely). Note that we only plan to do binary throttling (on/off) in kernel.\n\nOTOH the delay of 500 ms should be fine for EC to detect OCP is clear and asks AP to stop throttling.",
+      "parentUuid": "71e31375_770567b2",
+      "revId": "b7b9647433b2100e2371bcb70ec8dab0c20271cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
