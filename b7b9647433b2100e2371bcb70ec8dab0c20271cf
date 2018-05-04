@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71e31375_770567b2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T03:03:30Z",
+      "side": 1,
+      "message": "Instead of this ifdefed code, can you have notify_host_of_over_current return an error code and set problems_exist \u003d 1; above?",
+      "revId": "b7b9647433b2100e2371bcb70ec8dab0c20271cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
