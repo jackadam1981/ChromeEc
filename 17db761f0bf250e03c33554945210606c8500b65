@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a2d17cb1_c1357471",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-04T17:06:24Z",
+      "side": 1,
+      "message": "Yeah, it makes sense. Updated the code as suggested.",
+      "parentUuid": "9ef41455_8a95a01d",
+      "range": {
+        "startLine": 434,
+        "startChar": 4,
+        "endLine": 436,
+        "endChar": 3
+      },
+      "revId": "17db761f0bf250e03c33554945210606c8500b65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98cfcd5c_1da4f380",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 2
