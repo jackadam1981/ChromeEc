@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "585396b7_b692aca6",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-04T15:23:17Z",
+      "side": 1,
+      "message": "We should probably move this up to \"Wake Source interrupts\" section. Should the other remaining 2 wake sources also get GPIO_BIG_WAKE_HIGH enabled too?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 104
+      },
+      "revId": "63939f9e699478b82a005ff698535dd49f341327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
