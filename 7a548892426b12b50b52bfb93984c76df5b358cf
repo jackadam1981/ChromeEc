@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6331ea4d_203aad95",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-04T00:24:29Z",
+      "side": 1,
+      "message": "The spec says at least one and maximum 5 resend attempts.",
+      "parentUuid": "4e3266fb_11b93c3c",
+      "range": {
+        "startLine": 315,
+        "startChar": 24,
+        "endLine": 315,
+        "endChar": 25
+      },
+      "revId": "7a548892426b12b50b52bfb93984c76df5b358cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b6dc6ea_92bf65e1",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-03T20:09:56Z",
       "side": 1,
       "message": "Seems like this should be zero\u0027d at the start of a new transfer, rather than at the end of a successful one.\n\nIs there any code path that doesn\u0027t go through here which could leave this unzero\u0027d?",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 23
+      },
+      "revId": "7a548892426b12b50b52bfb93984c76df5b358cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56062bb5_8ebfd96b",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-04T00:24:29Z",
+      "side": 1,
+      "message": "The only path out of send is when losing the bus arbitration war. But then I don\u0027t think the resend-counter should be reset anyway. The cec_tx.len\u003d0 is heavily relied on since it also indicates that new AP-initiated transfer attempt is accepted (else -EBUSY), so if we don\u0027t end up here, we have more problems then just the resend counter.",
+      "parentUuid": "9b6dc6ea_92bf65e1",
       "range": {
         "startLine": 322,
         "startChar": 4,
