@@ -2151,6 +2151,7 @@ static int pd_restart_tcpc(int port)
 void pd_task(void *u)
 {
 	int head;
+	int enter_low_power = 0;
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	uint32_t payload[7];
 	int timeout = 10*MSEC;
@@ -2390,6 +2391,7 @@ void pd_task(void *u)
 		/* if nothing to do, verify the state of the world in 500ms */
 		this_state = pd[port].task_state;
 		timeout = 500*MSEC;
+		enter_low_power = 0;
 		switch (this_state) {
 		case PD_STATE_DISABLED:
 			/* Nothing to do */
@@ -3512,12 +3514,9 @@ void pd_task(void *u)
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				timeout = 2*MSEC;
 			} else {
-				tcpm_set_drp_toggle(port, 1);
+				enter_low_power = 1;
 				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
 				timeout = -1;
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				CPRINTS("TCPC p%d Low Power Mode", port);
-#endif
 			}
 			set_state(port, next_state);
 
@@ -3598,6 +3597,17 @@ void pd_task(void *u)
 			timeout = 5*MSEC;
 		}
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+
+		/*
+		 * Always enter low power mode last since TCPC communication
+		 * can wake it up
+		 */
+		if (enter_low_power) {
+			tcpm_set_drp_toggle(port, 1);
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+			CPRINTS("TCPC p%d Low Power Mode", port);
+#endif
+		}
 	}
 }
 
