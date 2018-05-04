@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0458b175_72142eaa",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-04T22:11:51Z",
+      "side": 1,
+      "message": "Not a wake source.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 77
+      },
+      "revId": "96002e76e541a09c6a2d5c39b27ac39f2bcc9439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18257d73_1a7c20fa",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-04T22:11:51Z",
+      "side": 1,
+      "message": "This is a wake source and is active high.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 83
+      },
+      "revId": "96002e76e541a09c6a2d5c39b27ac39f2bcc9439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
