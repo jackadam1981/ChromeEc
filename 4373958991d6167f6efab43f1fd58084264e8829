@@ -68,6 +68,30 @@
       "revId": "4373958991d6167f6efab43f1fd58084264e8829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a850d7_112dfc12",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7925,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-04T12:59:22Z",
+      "side": 1,
+      "message": "Sure. I looked at the event* commands, but they are more generic I guess. Will update the design doc accordingly.",
+      "parentUuid": "cc4f132e_38766538",
+      "range": {
+        "startLine": 7925,
+        "startChar": 3,
+        "endLine": 7925,
+        "endChar": 10
+      },
+      "revId": "4373958991d6167f6efab43f1fd58084264e8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
