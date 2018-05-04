@@ -262,6 +262,10 @@ static void charge_manager_fill_power_info(int port,
 	/* Fill in power role */
 	if (charge_port == port)
 		r->role = USB_PD_PORT_POWER_SINK;
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+	else if (charge_port == DEDICATED_CHARGE_PORT)
+		r->role = USB_PD_PORT_POWER_DISCONNECTED;
+#endif
 	else if (is_connected(port) && !is_sink(port))
 		r->role = USB_PD_PORT_POWER_SOURCE;
 	else if (sup != CHARGE_SUPPLIER_NONE)
