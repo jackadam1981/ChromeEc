@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9b79b28_571fc502",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-04T18:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c3cf3ec_189e92e3",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "4523081a94800982a31c440c87fa145d56b13dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c123f9cc_782113e1",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-16T17:01:48Z",
       "side": 1,
       "message": "Logic looks to say that BD9995X_CMD_CHGOP_SET2_CHG_EN will always be \u00270\u0027 when battery is disconnected as well.  Is there ever a chance that isn\u0027t true?  Should we be looking at some battery presence signal directly instead?",
+      "range": {
+        "startLine": 946,
+        "startChar": 58,
+        "endLine": 946,
+        "endChar": 70
+      },
+      "revId": "4523081a94800982a31c440c87fa145d56b13dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0964b973_92d51348",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-04T18:04:56Z",
+      "side": 1,
+      "message": "The logic here only cares about b7 of CHGOP2_SET register. This bit in turn depends on the current value passed in the function charger_set_current(). In my testing, I found that the desired charger current is consistently set to 0 when the battery is not present.",
+      "parentUuid": "c123f9cc_782113e1",
       "range": {
         "startLine": 946,
         "startChar": 58,
