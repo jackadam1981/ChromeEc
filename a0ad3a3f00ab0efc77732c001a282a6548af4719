@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b2c543b_4a3dfb25",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-04T22:03:24Z",
+      "side": 1,
+      "message": "Moved this up so that it is before the GPIO configurations.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 77
+      },
+      "revId": "a0ad3a3f00ab0efc77732c001a282a6548af4719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
