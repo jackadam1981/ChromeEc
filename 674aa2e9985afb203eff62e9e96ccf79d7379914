@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31e82843_083a5438",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-04T20:29:15Z",
+      "side": 1,
+      "message": "does this immediately call back into this method? Should we wait 10s of ms?",
+      "range": {
+        "startLine": 228,
+        "startChar": 51,
+        "endLine": 228,
+        "endChar": 53
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee60e38_0bd6487f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-04T20:29:15Z",
+      "side": 1,
+      "message": "is tcpc_access_pending really non-zero at this point? I would imagine that all tcpc calls are serialize so I would expect tcpc_access_pending to be zero.\n\nDoes this CL work because calling the I2C idle message in a deferred function delays the calls or is the guard on line 221 actually hitting?",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
