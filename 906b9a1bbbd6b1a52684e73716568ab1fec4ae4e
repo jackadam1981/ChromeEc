@@ -88,6 +88,24 @@
       "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb38a56c_f52b5243",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-04T16:58:18Z",
+      "side": 1,
+      "message": "There are two issues here:\n1. Current hibernate mode which is using \"wfi\" where only the clocks are gated and EC enters a standby mode. I don\u0027t think we lose PP3300_EC in this case. Since PP3300_EC is up, we won\u0027t power down the TCPCs and hence the sink control should work. What I am observing as part of issue 79173959 is that SINK_CTRL is not asserted which ultimately results in ACOK_OD remaining low. For that reason we need the above change.\n\n2. PSL hibernate is different as talked about in the issue 79218851 and for that we need to ensure that voltage is re-negotiated to 5V before hibernating if something is connected on a port.\n\nThis change is for issue #1 where I start out with nothing connected on any port and hibernate. Then on connecting AC power, EC does not wake up because ACOK stays low. Does this make sense?",
+      "parentUuid": "6dbbe4bf_1b16d691",
+      "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
