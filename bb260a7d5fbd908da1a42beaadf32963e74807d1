@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d253a1c_2562f63b",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T03:06:16Z",
+      "side": 1,
+      "message": "Not needed",
+      "revId": "bb260a7d5fbd908da1a42beaadf32963e74807d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04201507_5b5066e2",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-04T03:06:16Z",
+      "side": 1,
+      "message": "That\u0027s a very large hysteresis, do you really need it to be that wide?",
+      "revId": "bb260a7d5fbd908da1a42beaadf32963e74807d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
