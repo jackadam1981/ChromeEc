@@ -70,6 +70,24 @@
       "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dbbe4bf_1b16d691",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-04T15:19:57Z",
+      "side": 1,
+      "message": "I need to trace it more on the schmatics, but won\u0027t the TCPCs power get dropped when the EC goes into hibernate which will make them stop asserting EN_SNK to the PPCs (this is different than most other board configurations).\n\nI think it would be better to set the voltage down to 5V, then we know we are safe. We wouldn\u0027t need more than 5V anyway since we are in such a lower power state too.",
+      "parentUuid": "9db2067c_5410529a",
+      "revId": "906b9a1bbbd6b1a52684e73716568ab1fec4ae4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
