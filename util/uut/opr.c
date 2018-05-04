@@ -129,6 +129,34 @@ bool opr_open_port(const char *port_name, struct comport_fields port_cfg)
 }
 
 /*----------------------------------------------------------------------------
+ * Function:	opr_write_chunk
+ *
+ * Parameters:
+ *      buffer  - Input data buffer.
+ *      addr    - Memory address to write to.
+ *      size    - Data size to write.
+ * Returns: true if successful, false in the case of an error.
+ * Side effects:
+ * Description:
+ *   Write data to RAM, starting from the given  address (addr).
+ *   Data size is limited to the max chunk size (256 bytes).
+ *---------------------------------------------------------------------------
+ */
+bool opr_write_chunk(uint8_t *buffer, uint32_t addr, uint32_t size)
+{
+	struct command_node wr_cmd_buf;
+
+	if (size > MAX_RW_DATA_SIZE) {
+		display_color_msg(FAIL,
+			"ERROR: Block cannot exceed %d\n", MAX_RW_DATA_SIZE);
+	}
+	/* Initialize response size */
+	wr_cmd_buf.resp_size = 1;
+	cmd_create_write(addr, size, buffer,
+			wr_cmd_buf.cmd, &wr_cmd_buf.cmd_size);
+	return opr_send_cmds(&wr_cmd_buf, 1);
+}
+/*----------------------------------------------------------------------------
  * Function:	opr_write_mem
  *
  * Parameters:	input	- Input (file-name/console), containing data to write.
@@ -331,23 +359,29 @@ void opr_execute_exit(uint32_t addr)
  * Function:	opr_execute_return
  *
  * Parameters:	addr - Start address to execute from.
- * Returns:	none.
+ * Returns:	true if successful, false in the case of an error.
  * Side effects:
  * Description:
- *	Execute code starting from a given address.
- *	Memory address may be in Flash (SPI), DRAM (DDR) or SRAM.
- *	The executed code should return with the execution result.
+ *  Execute code starting from the given address and then check the result.
+ *  The executed code should return with the execution result.
  *---------------------------------------------------------------------------
  */
-void opr_execute_return(uint32_t addr)
+bool opr_execute_return(uint32_t addr)
 {
 	uint32_t cmd_num;
 
 	cmd_build_exec_ret(addr, cmd_buf, &cmd_num);
 	if (opr_send_cmds(cmd_buf, cmd_num) != true)
-		return;
+		return false;
 
-	cmd_disp_exec_ret(resp_buf);
+	/*
+	 * Check the response command code is UFPP_FCALL_RSLT_CMD and
+	 * the return value from monitor is 0x03. (program finish and verify ok)
+	 */
+	if (resp_buf[1] != (uint8_t)(UFPP_FCALL_RSLT_CMD)
+					|| resp_buf[2] != 0x03)
+		return false;
+	return true;
 }
 
 /*----------------------------------------------------------------------------
