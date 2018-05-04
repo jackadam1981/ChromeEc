@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "602688d7_d44364e2",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-04T12:55:22Z",
+      "side": 1,
+      "message": "All other enter_state() calls are from interrupt context, so I see it as part of the interrupt handler. But taking into account the comment below, I think I\u0027ll change this to call enter_state() when interrupts are off.",
+      "parentUuid": "304e06a4_8005b0e5",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 431,
+        "endChar": 17
+      },
+      "revId": "dc88dfdf396a2eae5e549a9e08ef111553176fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc86588_8edb0184",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-03T20:15:22Z",
       "side": 1,
       "message": "Shouldn\u0027t this set cec_state to idle as well?\n\nMaybe disabled should just be CEC_STATE_DISABLED, rather than a separate bool?  That would also ensure we stop driving the GPIO.",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 450,
+        "endChar": 28
+      },
+      "revId": "dc88dfdf396a2eae5e549a9e08ef111553176fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6b9fdbf_c61ecd74",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-04T12:55:22Z",
+      "side": 1,
+      "message": "I like that idea. As long as interrupts are off it is safe to do enter_state() from here.",
+      "parentUuid": "fbc86588_8edb0184",
       "range": {
         "startLine": 442,
         "startChar": 2,
