@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6ac790e6_61bf3361",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-04T00:11:57Z",
+      "side": 1,
+      "message": "I\u0027ve thought about this a bit. The state-machine is really based on the behavior of the timers of the npcx. That they generate an interrupt and stores the current timer value on edge-change. So with other hardware, I don\u0027t think much of it is reusable. That is just my gut feeling though, it might turn out alright.",
+      "parentUuid": "878ad9c7_fcb89cab",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4eaf3df4_d54416b1",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-03T21:06:43Z",
       "side": 1,
       "message": "Typically, we don\u0027t use the bool type.",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c157222_dd544ba3",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-04T00:11:57Z",
+      "side": 1,
+      "message": "ok, will remove.",
+      "parentUuid": "4eaf3df4_d54416b1",
       "revId": "398d8298ee788821968f6538d15617e388008ede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
