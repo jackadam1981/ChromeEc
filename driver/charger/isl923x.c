@@ -485,6 +485,7 @@ static void charger_enable_psys(void)
 	if (raw_write16(ISL923X_REG_CONTROL1, val))
 		goto out;
 
+	CPRINTF("enabling PSYS\n");
 	psys_enabled = 1;
 
 out:
@@ -509,6 +510,7 @@ static void charger_disable_psys(void)
 	if (raw_write16(ISL923X_REG_CONTROL1, val))
 		goto out;
 
+	CPRINTF("disabling PSYS\n");
 	psys_enabled = 0;
 
 out:
@@ -525,8 +527,10 @@ int charger_get_system_power(void)
 	 * If PSYS is not enabled, AP is probably off, and the value is usually
 	 * too small to be measured acurately anyway.
 	 */
-	if (!psys_enabled)
-		return -1;
+	if (!psys_enabled) {
+		CPRINTF("PSYS not enabled\n");
+		/* return -1; */
+	}
 
 	/*
 	 * We assume that the output gain is always left to the default
