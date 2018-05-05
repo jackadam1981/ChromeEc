@@ -4336,6 +4336,11 @@ struct __ec_align4 ec_response_usb_pd_power_info {
 	uint32_t max_power;
 };
 
+#define EC_CMD_CHARGE_PORT_COUNT 0x0105
+struct __ec_align1 ec_response_charge_port_count {
+	uint8_t port_count;
+};
+
 /* Write USB-PD device FW */
 #define EC_CMD_USB_PD_FW_UPDATE 0x0110
 
