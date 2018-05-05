@@ -25,6 +25,7 @@
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
+#define xxxCONFIG_BOARD_ATLAS_P0			/* pre proto0b */
 #define CONFIG_BOARD_VERSION_CUSTOM
 #define CONFIG_BOARD_FORCE_RESET_PIN
 #define CONFIG_DPTF
@@ -196,6 +197,10 @@ enum pwm_channel {
 	PWM_CH_KBLIGHT,
 	PWM_CH_LED1,
 	PWM_CH_LED2,
+#ifndef CONFIG_BOARD_ATLAS_P0
+	PWM_CH_LED3,
+	PWM_CH_LED4,
+#endif
 	PWM_CH_COUNT
 };
 
