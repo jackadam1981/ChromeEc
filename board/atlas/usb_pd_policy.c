@@ -168,7 +168,14 @@ int pd_check_vconn_swap(int port)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Do nothing */
+	/* Only port 0 supports device mode. */
+	if (port != 0)
+		return;
+
+	gpio_set_level(GPIO_USB2_ID,
+		      (data_role == PD_ROLE_UFP) ? 1 : 0);
+	gpio_set_level(GPIO_USB2_VBUSSENSE,
+		      (data_role == PD_ROLE_UFP) ? 1 : 0);
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)
@@ -332,6 +339,7 @@ static int svdm_dp_config(int port, uint32_t *payload)
 	return 2;
 };
 
+#ifdef CONFIG_BOARD_ATLAS_P0
 /*
  * timestamp of the next possible toggle to ensure the 2-ms spacing
  * between IRQ_HPD.
@@ -339,6 +347,7 @@ static int svdm_dp_config(int port, uint32_t *payload)
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
 
 #define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
+#endif
 
 static void svdm_dp_post_config(int port)
 {
@@ -348,14 +357,17 @@ static void svdm_dp_post_config(int port)
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
+#ifdef CONFIG_BOARD_ATLAS_P0
 	gpio_set_level(PORT_TO_HPD(port), 1);
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+#endif
 
 	mux->hpd_update(port, 1, 0);
 }
 
+#ifdef CONFIG_BOARD_ATLAS_P0
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int cur_lvl;
@@ -399,13 +411,36 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	/* ack */
 	return 1;
 }
+#else
+static int svdm_dp_attention(int port, uint32_t *payload)
+{
+	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
+	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+	const struct usb_mux *mux = &usb_muxes[port];
+
+	dp_status[port] = payload[1];
+
+	/* Its initial DP status message prior to config */
+	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
+		if (lvl)
+			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		return 1;
+	}
+	mux->hpd_update(port, lvl, irq);
+
+	/* ack */
+	return 1;
+}
+#endif
 
 static void svdm_exit_dp_mode(int port)
 {
 	const struct usb_mux *mux = &usb_muxes[port];
 
 	svdm_safe_dp_mode(port);
+#ifdef CONFIG_BOARD_ATLAS_P0
 	gpio_set_level(PORT_TO_HPD(port), 0);
+#endif
 	mux->hpd_update(port, 0, 0);
 }
 
