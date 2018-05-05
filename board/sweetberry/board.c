@@ -10,7 +10,6 @@
 #include "gpio.h"
 #include "gpio_list.h"
 #include "hooks.h"
-#include "i2c.h"
 #include "registers.h"
 #include "stm32-dma.h"
 #include "task.h"
@@ -21,6 +20,9 @@
 #include "usb_hw.h"
 #include "usb_power.h"
 #include "usb_dwc_update.h"
+#include "i2c.h"
+#include "usb_i2c.h"
+#include "usb-stream.h"
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.
@@ -31,6 +33,7 @@ const void *const usb_strings[] = {
 	[USB_STR_PRODUCT]	= USB_STRING_DESC("Sweetberry"),
 	[USB_STR_SERIALNO]	= USB_STRING_DESC("1234-a"),
 	[USB_STR_VERSION]	= USB_STRING_DESC(CROS_EC_VERSION32),
+	[USB_STR_I2C_NAME]	= USB_STRING_DESC("I2C"),
 	[USB_STR_CONSOLE_NAME]	= USB_STRING_DESC("Sweetberry EC Shell"),
 	[USB_STR_UPDATE_NAME]	= USB_STRING_DESC("Firmware update"),
 };
@@ -40,6 +43,8 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 /* USB power interface. */
 USB_POWER_CONFIG(sweetberry_power, USB_IFACE_POWER, USB_EP_POWER);
 
+/* I2C over USB interface. This gets declared in usb_i2c.c */
+extern struct dwc_usb_ep i2c_usb__ep_ctl;
 
 struct dwc_usb usb_ctl = {
 	.ep = {
@@ -47,6 +52,7 @@ struct dwc_usb usb_ctl = {
 		&ep_console_ctl,
 		&usb_update_ep_ctl,
 		&sweetberry_power_ep_ctl,
+		&i2c_usb__ep_ctl,
 	},
 	.speed = USB_SPEED_FS,
 	.phy_type = USB_PHY_ULPI,
@@ -66,6 +72,8 @@ const struct i2c_port_t i2c_ports[] = {
 		GPIO_FMPI2C_SCL, GPIO_FMPI2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+int usb_i2c_board_is_enabled(void) { return 1; }
 
 #define GPIO_SET_HS(bank, number)	\
 	(STM32_GPIO_OSPEEDR(GPIO_##bank) |= (0x3 << ((number) * 2)))
