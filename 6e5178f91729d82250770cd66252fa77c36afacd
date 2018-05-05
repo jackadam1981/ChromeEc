@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aefeb396_24a132dc",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-05-05T00:03:36Z",
+      "side": 1,
+      "message": "how often does this trigger?  charge complete is also an alert we could enable and act on instead of polling.",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 26
+      },
+      "revId": "6e5178f91729d82250770cd66252fa77c36afacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27767a89_c0f61afe",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-05-05T00:03:36Z",
+      "side": 1,
+      "message": "this is correct, but I dunno why this wasn\u0027t written (0x3 \u003c\u003c RT946X_SHIFT_CHG_STAT) or something",
+      "range": {
+        "startLine": 253,
+        "startChar": 29,
+        "endLine": 253,
+        "endChar": 33
+      },
+      "revId": "6e5178f91729d82250770cd66252fa77c36afacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
