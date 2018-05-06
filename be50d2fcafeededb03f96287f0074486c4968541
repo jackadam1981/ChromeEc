@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf781c04_2aad1b93",
+        "filename": "common/kblight.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-06T10:28:42Z",
+      "side": 1,
+      "message": "Yes, this is incorrect. If kblight_set is called. The deferred function will be called after current deferred function. So, it is no necessary to call deferred again. The following block is only valid for error checking.",
+      "parentUuid": "7f73fc8f_5f72e6d9",
+      "range": {
+        "startLine": 55,
+        "startChar": 31,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "be50d2fcafeededb03f96287f0074486c4968541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "459ad0e0_745ed695",
         "filename": "common/kblight.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-05T01:08:32Z",
       "side": 1,
       "message": "This will never match for lm3509.",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "be50d2fcafeededb03f96287f0074486c4968541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83abc210_513f9fdb",
+        "filename": "common/kblight.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-06T10:28:42Z",
+      "side": 1,
+      "message": "Yes. I checked the lm3509 code, the percentage can\u0027t be set to the required value.\nMaybe we can change the return type of .set() function to int to do error checking?",
+      "parentUuid": "459ad0e0_745ed695",
       "range": {
         "startLine": 60,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0d9500ec_266fb14e",
+        "filename": "common/kblight.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-06T10:28:42Z",
+      "side": 1,
+      "message": "No, just for error checking.",
+      "parentUuid": "96f6783c_38ba5925",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "be50d2fcafeededb03f96287f0074486c4968541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11e51cc3_bef3001b",
         "filename": "common/kblight.c",
         "patchSetId": 11
@@ -82,6 +154,30 @@
       "writtenOn": "2018-05-05T01:08:32Z",
       "side": 1,
       "message": "I think you should define CPRINTS and CPRINTF.",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "be50d2fcafeededb03f96287f0074486c4968541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e97dac9_7160f750",
+        "filename": "common/kblight.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-06T10:28:42Z",
+      "side": 1,
+      "message": "\u003e I think you should define CPRINTS and CPRINTF.\n\nok, maybe can define a macro at the beginning of this file",
+      "parentUuid": "11e51cc3_bef3001b",
       "range": {
         "startLine": 66,
         "startChar": 3,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c4612e75_0a3cc62e",
+        "filename": "common/kblight.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-06T10:28:42Z",
+      "side": 1,
+      "message": "Yes, maybe we can use kblight_set instead?",
+      "parentUuid": "abcde3bf_2a170454",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 15
+      },
+      "revId": "be50d2fcafeededb03f96287f0074486c4968541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b8b8df7_5e255fe4",
         "filename": "common/kblight.c",
         "patchSetId": 11
@@ -128,6 +248,30 @@
       "writtenOn": "2018-05-05T01:08:32Z",
       "side": 1,
       "message": "Why do you need this hook?",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 73
+      },
+      "revId": "be50d2fcafeededb03f96287f0074486c4968541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7303c4f7_216d4071",
+        "filename": "common/kblight.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-05-06T10:28:42Z",
+      "side": 1,
+      "message": "This is from the old pwm_kblight.c . \nThe story can be found from:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/26039\nI\u0027m not quite sure if it is still needed.",
+      "parentUuid": "7b8b8df7_5e255fe4",
       "range": {
         "startLine": 204,
         "startChar": 0,
