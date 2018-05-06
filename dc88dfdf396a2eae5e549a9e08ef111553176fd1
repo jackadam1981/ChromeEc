@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8419e6ee_e37fd7c2",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-06T22:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "602688d7_d44364e2",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 431,
+        "endChar": 17
+      },
+      "revId": "dc88dfdf396a2eae5e549a9e08ef111553176fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbc86588_8edb0184",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -93,6 +117,30 @@
       "revId": "dc88dfdf396a2eae5e549a9e08ef111553176fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b239d609_25282353",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-06T22:21:07Z",
+      "side": 1,
+      "message": "I implemented CEC_STATE_DISABLED.",
+      "parentUuid": "e6b9fdbf_c61ecd74",
+      "range": {
+        "startLine": 442,
+        "startChar": 2,
+        "endLine": 450,
+        "endChar": 28
+      },
+      "revId": "dc88dfdf396a2eae5e549a9e08ef111553176fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
