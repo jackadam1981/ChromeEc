@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d57582b_4fa53b1b",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-06T17:12:04Z",
+      "side": 1,
+      "message": "Resolved in the CL that changes \"ectool cecread\" to \"ectool cec read\"",
+      "parentUuid": "58c0dfee_93e20c35",
+      "range": {
+        "startLine": 79,
+        "startChar": 13,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "revId": "4373958991d6167f6efab43f1fd58084264e8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1610fed7_efc61ee0",
         "filename": "util/ectool.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-03T17:19:41Z",
       "side": 1,
       "message": "Why not creating a subroutine?",
+      "range": {
+        "startLine": 7881,
+        "startChar": 0,
+        "endLine": 7889,
+        "endChar": 2
+      },
+      "revId": "4373958991d6167f6efab43f1fd58084264e8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69e544a_629e59c0",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7889,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-06T17:12:04Z",
+      "side": 1,
+      "message": "Will do",
+      "parentUuid": "1610fed7_efc61ee0",
       "range": {
         "startLine": 7881,
         "startChar": 0,
@@ -92,6 +140,30 @@
       "revId": "4373958991d6167f6efab43f1fd58084264e8829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b1a4dc_b90c2569",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7925,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-06T17:12:04Z",
+      "side": 1,
+      "message": "Will add this in a separate CL.",
+      "parentUuid": "e2a850d7_112dfc12",
+      "range": {
+        "startLine": 7925,
+        "startChar": 3,
+        "endLine": 7925,
+        "endChar": 10
+      },
+      "revId": "4373958991d6167f6efab43f1fd58084264e8829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
