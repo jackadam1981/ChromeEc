@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63659b13_811598b0",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T09:28:07Z",
+      "side": 1,
+      "message": "the computation looks wrong: in addition to NVMEM_SIZE, you need to substract the flash bank used by CONFIG_FLASH_NVCTR_SIZE (as done in board/cr50/board.h)\n\nOverall you don\u0027t need to do this computation with board specific constants because the linker actually computes it for the \u0027FLASH\u0027 memory configuration, see build/cr50/RW/ec.RW.map :\n\"\"\"\nMemory Configuration\n\nName             Origin             Length             Attributes\nFLASH            0x0000000000044000 0x0000000000038800 xr\n\"\"\"\n0x0000000000038800 \u003d ROM_SIZE - RO_SIZE - NVMEM_SIZE - CONFIG_FLASH_NVCTR_SIZE\n\nMy own dirty script I have been carrying around for years is doing it this way : https://crrev.com/c/189225",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 31
+      },
+      "revId": "bb88bbafabbd319f0bc348328673dfc03e1d9ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
