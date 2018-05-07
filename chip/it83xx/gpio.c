@@ -62,6 +62,25 @@ static volatile uint8_t *wuemr(uint8_t grp)
 			(volatile uint8_t *)(IT83XX_WUC_WUEMR5 + 4*(grp-5));
 }
 
+/**
+ * Convert wake-up controller (WUC) group to the corresponding wake-up both edge
+ * mode register (WUBEMR). Return pointer to the register.
+ *
+ * @param grp  WUC group.
+ *
+ * @return Pointer to corresponding WUBEMR register.
+ */
+static volatile uint8_t *wubemr(uint8_t grp)
+{
+	/*
+	 * From WUBEMR1-WUBEMR4, the address increases by ones. From WUBEMR5 on
+	 * the address increases by fours.
+	 */
+	return (grp <= 4) ?
+			(volatile uint8_t *)(IT83XX_WUC_WUBEMR1 + grp-1) :
+			(volatile uint8_t *)(IT83XX_WUC_WUBEMR5 + 4*(grp-5));
+}
+
 /*
  * Array to store the corresponding GPIO port and mask, and WUC group and mask
  * for each WKO interrupt. This allows GPIO interrupts coming in through WKO
@@ -200,38 +219,82 @@ struct gpio_1p8v_t {
 const struct gpio_1p8v_t gpio_1p8v_ctrl[] = {
 	{GPIO_A, (1 << 4), &IT83XX_GPIO_GRC24, (1 << 0)},
 	{GPIO_A, (1 << 5), &IT83XX_GPIO_GRC24, (1 << 1)},
+	{GPIO_A, (1 << 6), &IT83XX_GPIO_GRC24, (1 << 5)},
+	{GPIO_A, (1 << 7), &IT83XX_GPIO_GRC24, (1 << 6)},
 	{GPIO_B, (1 << 3), &IT83XX_GPIO_GRC22, (1 << 1)},
 	{GPIO_B, (1 << 4), &IT83XX_GPIO_GRC22, (1 << 0)},
 	{GPIO_B, (1 << 5), &IT83XX_GPIO_GRC19, (1 << 7)},
 	{GPIO_B, (1 << 6), &IT83XX_GPIO_GRC19, (1 << 6)},
+	{GPIO_B, (1 << 7), &IT83XX_GPIO_GRC24, (1 << 4)},
+	{GPIO_C, (1 << 0), &IT83XX_GPIO_GRC22, (1 << 7)},
 	{GPIO_C, (1 << 1), &IT83XX_GPIO_GRC19, (1 << 5)},
 	{GPIO_C, (1 << 2), &IT83XX_GPIO_GRC19, (1 << 4)},
+	{GPIO_C, (1 << 4), &IT83XX_GPIO_GRC24, (1 << 2)},
+	{GPIO_C, (1 << 6), &IT83XX_GPIO_GRC24, (1 << 3)},
 	{GPIO_C, (1 << 7), &IT83XX_GPIO_GRC19, (1 << 3)},
 	{GPIO_D, (1 << 0), &IT83XX_GPIO_GRC19, (1 << 2)},
 	{GPIO_D, (1 << 1), &IT83XX_GPIO_GRC19, (1 << 1)},
 	{GPIO_D, (1 << 2), &IT83XX_GPIO_GRC19, (1 << 0)},
 	{GPIO_D, (1 << 3), &IT83XX_GPIO_GRC20, (1 << 7)},
 	{GPIO_D, (1 << 4), &IT83XX_GPIO_GRC20, (1 << 6)},
+	{GPIO_D, (1 << 5), &IT83XX_GPIO_GRC22, (1 << 4)},
+	{GPIO_D, (1 << 6), &IT83XX_GPIO_GRC22, (1 << 5)},
+	{GPIO_D, (1 << 7), &IT83XX_GPIO_GRC22, (1 << 6)},
 	{GPIO_E, (1 << 0), &IT83XX_GPIO_GRC20, (1 << 5)},
+	{GPIO_E, (1 << 1), &IT83XX_GPIO_GCR28, (1 << 6)},
+	{GPIO_E, (1 << 2), &IT83XX_GPIO_GCR28, (1 << 7)},
+	{GPIO_E, (1 << 4), &IT83XX_GPIO_GRC22, (1 << 2)},
+	{GPIO_E, (1 << 5), &IT83XX_GPIO_GRC22, (1 << 3)},
 	{GPIO_E, (1 << 6), &IT83XX_GPIO_GRC20, (1 << 4)},
 	{GPIO_E, (1 << 7), &IT83XX_GPIO_GRC20, (1 << 3)},
+	{GPIO_F, (1 << 0), &IT83XX_GPIO_GCR28, (1 << 4)},
+	{GPIO_F, (1 << 1), &IT83XX_GPIO_GCR28, (1 << 5)},
 	{GPIO_F, (1 << 2), &IT83XX_GPIO_GRC20, (1 << 2)},
 	{GPIO_F, (1 << 3), &IT83XX_GPIO_GRC20, (1 << 1)},
 	{GPIO_F, (1 << 4), &IT83XX_GPIO_GRC20, (1 << 0)},
 	{GPIO_F, (1 << 5), &IT83XX_GPIO_GRC21, (1 << 7)},
 	{GPIO_F, (1 << 6), &IT83XX_GPIO_GRC21, (1 << 6)},
 	{GPIO_F, (1 << 7), &IT83XX_GPIO_GRC21, (1 << 5)},
+	{GPIO_G, (1 << 0), &IT83XX_GPIO_GCR28, (1 << 2)},
+	{GPIO_G, (1 << 1), &IT83XX_GPIO_GRC21, (1 << 4)},
+	{GPIO_G, (1 << 2), &IT83XX_GPIO_GCR28, (1 << 3)},
+	{GPIO_G, (1 << 6), &IT83XX_GPIO_GRC21, (1 << 3)},
 	{GPIO_H, (1 << 0), &IT83XX_GPIO_GRC21, (1 << 2)},
 	{GPIO_H, (1 << 1), &IT83XX_GPIO_GRC21, (1 << 1)},
 	{GPIO_H, (1 << 2), &IT83XX_GPIO_GRC21, (1 << 0)},
+	{GPIO_H, (1 << 5), &IT83XX_GPIO_GCR27, (1 << 7)},
+	{GPIO_H, (1 << 6), &IT83XX_GPIO_GCR28, (1 << 0)},
+	{GPIO_I, (1 << 0), &IT83XX_GPIO_GCR27, (1 << 3)},
 	{GPIO_I, (1 << 1), &IT83XX_GPIO_GRC23, (1 << 4)},
 	{GPIO_I, (1 << 2), &IT83XX_GPIO_GRC23, (1 << 5)},
 	{GPIO_I, (1 << 3), &IT83XX_GPIO_GRC23, (1 << 6)},
 	{GPIO_I, (1 << 4), &IT83XX_GPIO_GRC23, (1 << 7)},
+	{GPIO_I, (1 << 5), &IT83XX_GPIO_GCR27, (1 << 4)},
+	{GPIO_I, (1 << 6), &IT83XX_GPIO_GCR27, (1 << 5)},
+	{GPIO_I, (1 << 7), &IT83XX_GPIO_GCR27, (1 << 6)},
 	{GPIO_J, (1 << 0), &IT83XX_GPIO_GRC23, (1 << 0)},
 	{GPIO_J, (1 << 1), &IT83XX_GPIO_GRC23, (1 << 1)},
 	{GPIO_J, (1 << 2), &IT83XX_GPIO_GRC23, (1 << 2)},
 	{GPIO_J, (1 << 3), &IT83XX_GPIO_GRC23, (1 << 3)},
+	{GPIO_J, (1 << 4), &IT83XX_GPIO_GCR27, (1 << 0)},
+	{GPIO_J, (1 << 5), &IT83XX_GPIO_GCR27, (1 << 1)},
+	{GPIO_J, (1 << 6), &IT83XX_GPIO_GCR27, (1 << 2)},
+	{GPIO_K, (1 << 0), &IT83XX_GPIO_GCR26, (1 << 0)},
+	{GPIO_K, (1 << 1), &IT83XX_GPIO_GCR26, (1 << 1)},
+	{GPIO_K, (1 << 2), &IT83XX_GPIO_GCR26, (1 << 2)},
+	{GPIO_K, (1 << 3), &IT83XX_GPIO_GCR26, (1 << 3)},
+	{GPIO_K, (1 << 4), &IT83XX_GPIO_GCR26, (1 << 4)},
+	{GPIO_K, (1 << 5), &IT83XX_GPIO_GCR26, (1 << 5)},
+	{GPIO_K, (1 << 6), &IT83XX_GPIO_GCR26, (1 << 6)},
+	{GPIO_K, (1 << 7), &IT83XX_GPIO_GCR26, (1 << 7)},
+	{GPIO_L, (1 << 0), &IT83XX_GPIO_GCR25, (1 << 0)},
+	{GPIO_L, (1 << 1), &IT83XX_GPIO_GCR25, (1 << 1)},
+	{GPIO_L, (1 << 2), &IT83XX_GPIO_GCR25, (1 << 2)},
+	{GPIO_L, (1 << 3), &IT83XX_GPIO_GCR25, (1 << 3)},
+	{GPIO_L, (1 << 4), &IT83XX_GPIO_GCR25, (1 << 4)},
+	{GPIO_L, (1 << 5), &IT83XX_GPIO_GCR25, (1 << 5)},
+	{GPIO_L, (1 << 6), &IT83XX_GPIO_GCR25, (1 << 6)},
+	{GPIO_L, (1 << 7), &IT83XX_GPIO_GCR25, (1 << 7)},
 };
 
 static void gpio_1p8v_3p3v_sel(uint8_t port, uint8_t mask, uint32_t flags)
@@ -363,26 +426,35 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		mask_copy >>= 1;
 	}
 
-	/* Set rising edge interrupt. */
-	if (flags & GPIO_INT_F_RISING) {
-		irq = gpio_to_irq(port, mask);
-
-		*(wuemr(gpio_irqs[irq].wuc_group)) &= ~gpio_irqs[irq].wuc_mask;
-	}
+	/* Get the corresponding WKO interrupt number */
+	irq = gpio_to_irq(port, mask);
 
 	/*
-	 * Set falling edge or both edges interrupt. Note that pins in WUC
-	 * groups 7, 10, and 12 can only declare a falling edge trigger. All
-	 * other pins can only declare both edges as the trigger.
-	 *
-	 * TODO: use an assert to catch if a developer tries to declare one
-	 * type of interrupt on a pin that doesn't support that type.
+	 * Set both edges interrupt. The WUBEMRx registers are available only
+	 * on IT8320 DX version and after.
 	 */
-	if (flags & GPIO_INT_F_FALLING) {
-		irq = gpio_to_irq(port, mask);
+	if ((flags & GPIO_INT_BOTH) == GPIO_INT_BOTH)
+		/*
+		 * Both-edge interrupt is selected. Note that we don't care
+		 * the setting of WUEMR register if this mode is enabled.
+		 */
+		*(wubemr(gpio_irqs[irq].wuc_group)) |= gpio_irqs[irq].wuc_mask;
+	else
+		/* Apply to the setting of WUEMR register. */
+		*(wubemr(gpio_irqs[irq].wuc_group)) &= ~gpio_irqs[irq].wuc_mask;
 
+	/* Set rising edge interrupt. */
+	if (flags & GPIO_INT_F_RISING)
+		*(wuemr(gpio_irqs[irq].wuc_group)) &= ~gpio_irqs[irq].wuc_mask;
+
+	/*
+	 * Set falling edge or both edges interrupt.
+	 *
+	 * NOTE: the both edges interrupt is apply to pins in WUC
+	 * groups 7, 10, and 12 only on IT8320 BX version and before.
+	 */
+	if (flags & GPIO_INT_F_FALLING)
 		*(wuemr(gpio_irqs[irq].wuc_group)) |= gpio_irqs[irq].wuc_mask;
-	}
 }
 
 int gpio_enable_interrupt(enum gpio_signal signal)
