@@ -22,6 +22,30 @@
       "revId": "bb88bbafabbd319f0bc348328673dfc03e1d9ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3efe51_a5bbb9bb",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-07T14:54:21Z",
+      "side": 1,
+      "message": "wow, you are right, I forgot about this flash counter.",
+      "parentUuid": "63659b13_811598b0",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 31
+      },
+      "revId": "bb88bbafabbd319f0bc348328673dfc03e1d9ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
