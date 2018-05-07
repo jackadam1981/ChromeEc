@@ -349,6 +349,30 @@
     },
     {
       "key": {
+        "uuid": "4d96da1c_cec120be",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T21:07:50Z",
+      "side": 1,
+      "message": "Thtsok. Fxdnw. ;)",
+      "parentUuid": "5bec1736_970a6ab6",
+      "range": {
+        "startLine": 176,
+        "startChar": 16,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "885546b9_c7d5f1f8",
         "filename": "chip/npcx/cec.c",
         "patchSetId": 5
@@ -378,6 +402,24 @@
       "side": 1,
       "message": "Intentional, since every state should have a enter-state handler and I want a warning if that is not fulfilled. Do you think it would be better to have some kind internal-error handling instead?",
       "parentUuid": "885546b9_c7d5f1f8",
+      "revId": "398d8298ee788821968f6538d15617e388008ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110fa07c_3801e6e0",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T21:07:50Z",
+      "side": 1,
+      "message": "In that case (ha), it\u0027s ok.\n\nCould add a comment to that effect at the end of the switch()  /* No default case, since all states must be handled explicitly */",
+      "parentUuid": "7ff10650_07424258",
       "revId": "398d8298ee788821968f6538d15617e388008ede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
