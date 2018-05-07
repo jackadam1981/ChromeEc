@@ -46,6 +46,29 @@
       "revId": "77304c8d20ea3730c5d022085b84ab9f65e9b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdd8cbf_5fd7e280",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-07T17:22:58Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 367,
+        "startChar": 67,
+        "endLine": 367,
+        "endChar": 69
+      },
+      "revId": "77304c8d20ea3730c5d022085b84ab9f65e9b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
