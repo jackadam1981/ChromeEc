@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea34db97_30e5838e",
+        "filename": "board/cheza/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T12:17:11Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think this is used anymore.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "55102c91e3a8c42c548c6d0b83f4d7fd7979b226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870b9d85_58f91818",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T12:17:11Z",
+      "side": 1,
+      "message": "both operations in the hook are designed to be call in interrupt-context,\nyou can move the content here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "55102c91e3a8c42c548c6d0b83f4d7fd7979b226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08cf164e_99d2fc22",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T12:17:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is true,\nit seems to be used as port number in the mux code.",
+      "range": {
+        "startLine": 206,
+        "startChar": 36,
+        "endLine": 206,
+        "endChar": 61
+      },
+      "revId": "55102c91e3a8c42c548c6d0b83f4d7fd7979b226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09892c58_a69a0cee",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T12:17:11Z",
+      "side": 1,
+      "message": "I think Aseda fixed this specific case recently.",
+      "range": {
+        "startLine": 47,
+        "startChar": 49,
+        "endLine": 49,
+        "endChar": 62
+      },
+      "revId": "55102c91e3a8c42c548c6d0b83f4d7fd7979b226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13459681_f1fa6b29",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T12:17:11Z",
+      "side": 1,
+      "message": "My former comment still holds:\n  I imagine this SoC might be both a USB UFP or DFP, so you might not necessarily want to disable it based on your current data_role",
+      "range": {
+        "startLine": 51,
+        "startChar": 9,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "55102c91e3a8c42c548c6d0b83f4d7fd7979b226",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
