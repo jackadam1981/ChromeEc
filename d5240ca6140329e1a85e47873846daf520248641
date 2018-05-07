@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "75f89208_06c779a9",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T22:29:24Z",
+      "side": 1,
+      "message": "*p++ \u003d \u0027A\u0027",
+      "range": {
+        "startLine": 824,
+        "startChar": 2,
+        "endLine": 824,
+        "endChar": 8
+      },
+      "revId": "d5240ca6140329e1a85e47873846daf520248641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "686f20aa_9a9de25a",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -35,6 +58,52 @@
         "startChar": 4,
         "endLine": 831,
         "endChar": 7
+      },
+      "revId": "d5240ca6140329e1a85e47873846daf520248641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b52e6d_3b4a1459",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T22:29:24Z",
+      "side": 1,
+      "message": "*p++ \u003d system_to_hex((chip_gen \u0026 0xF0) \u003e\u003e 4);\n*p++ \u003d system_to_hex(chip_gen \u0026 0x0F);",
+      "range": {
+        "startLine": 835,
+        "startChar": 2,
+        "endLine": 837,
+        "endChar": 14
+      },
+      "revId": "d5240ca6140329e1a85e47873846daf520248641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1c8bb0_50bdae55",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T22:29:24Z",
+      "side": 1,
+      "message": "*p++ \u003d \u0027.\u0027;\n*p++ \u003d system_to_hex((rev_num \u0026 0xF0) \u003e\u003e 4);\n*p++ \u003d system_to_hex(rev_num \u0026 0x0F);\n*p++ \u003d \u0027\\0\u0027;",
+      "range": {
+        "startLine": 841,
+        "startChar": 1,
+        "endLine": 844,
+        "endChar": 17
       },
       "revId": "d5240ca6140329e1a85e47873846daf520248641",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
