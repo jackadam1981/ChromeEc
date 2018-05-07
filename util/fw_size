@@ -1,0 +1,62 @@
+#!/usr/bin/env python2
+# Copyright 2014 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+"""Compute the flash and RAM size of an EC firmware build."""
+
+from __future__ import print_function
+import os
+import sys
+import commands
+
+# Use RO or RW partition
+PARTITION = "RW"
+
+SECTIONS = ["FLASH", "IRAM", ".text", ".data", ".rodata", ".bss", ".google"]
+GREP_SECT = " ".join(['-e "^%s"' % s for s in SECTIONS])
+
+def b(sz):
+  return "%6d B" % (sz)
+
+def kb(sz):
+  return "%5.1fk " % (sz/1024.0)
+
+def print_partition_usage(section, unit):
+  flash_usage = section[".text"]+section[".rodata"]+section[".data"]
+  ram_usage = section[".data"]+section[".bss"]
+  print("FLASH %s / %s [text %s rodat %s data %s]" % (unit(flash_usage),
+                                                      unit(section["FLASH"]),
+                                                      unit(section[".text"]),
+                                                      unit(section[".rodata"]),
+                                                      unit(section[".data"])))
+  print("RAM   %s / %s [data %s bss   %s]" % (unit(ram_usage),
+                                              unit(section["IRAM"]),
+                                              unit(section[".data"]),
+                                              unit(section[".bss"])))
+
+
+def compute_usage(build_dir, part):
+  map_file = "%s/ec.%s.map" % (part, part)
+  map_path = os.path.join(build_dir, map_file)
+
+  cmdline = r"grep %s %s | sed 's/ \+/ /g' | cut -d' ' -f 1,3" % (GREP_SECT,
+                                                                  map_path)
+  sizes = commands.getoutput(cmdline)
+
+  section = {}
+  for l in sizes.split("\n"):
+    try:
+      name, size = l.strip().split()
+      section[name] = int(size, 16)
+    except Exception:
+      pass
+
+  print("=== %s ===" % (build_dir))
+  print_partition_usage(section, kb)
+  print_partition_usage(section, b)
+
+if __name__ == '__main__':
+  if len(sys.argv) < 2 or not os.path.isdir(sys.argv[1]):
+    sys.stderr.write("Usage: %s <build/dir/with/board>\n" % (sys.argv[0]))
+    sys.exit(1)
+  compute_usage(sys.argv[1], PARTITION)
