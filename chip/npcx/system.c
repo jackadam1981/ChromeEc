@@ -794,6 +794,8 @@ const char *system_get_chip_name(void)
 	case 0x17:
 		return "NPCX576G";
 #elif defined(CHIP_FAMILY_NPCX7)
+	case 0x1F:
+		return "NPCX787G";
 	case 0x21:
 		return "NPCX796F";
 	case 0x24:
@@ -809,15 +811,37 @@ const char *system_get_chip_name(void)
 
 const char *system_get_chip_revision(void)
 {
-	static char rev[5];
+	static char rev[15] = "Unknown-";
+	char *p = rev;
+	/* Read chip generation from SRID_CR */
+	uint8_t chip_gen = NPCX_SRID_CR;
 	/* Read ROM data for chip revision directly */
 	uint8_t rev_num = *((uint8_t *)CHIP_REV_ADDR);
 
-	*(rev) = 'A';
-	*(rev + 1) = '.';
-	*(rev + 2) = system_to_hex((rev_num & 0xF0) >> 4);
-	*(rev + 3) = system_to_hex(rev_num & 0x0F);
-	*(rev + 4) = '\0';
+	switch (chip_gen) {
+#if defined(CHIP_FAMILY_NPCX5)
+	case 0x05:
+		*(rev) = 'A';
+		break;
+#elif defined(CHIP_FAMILY_NPCX7)
+	case 0x06:
+		*(rev) = 'A';
+		break;
+	case 0x07:
+		*(rev) = 'B';
+		break;
+#endif
+	default:
+		*(p + 8) = system_to_hex((chip_gen & 0xF0) >> 4);
+		*(p + 9) = system_to_hex(chip_gen & 0x0F);
+		p = rev + 9;
+		break;
+	}
+
+	*(p + 1) = '.';
+	*(p + 2) = system_to_hex((rev_num & 0xF0) >> 4);
+	*(p + 3) = system_to_hex(rev_num & 0x0F);
+	*(p + 4) = '\0';
 
 	return rev;
 }
