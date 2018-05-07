@@ -36,6 +36,7 @@ enum battery_type {
 	INIT = -1,	/* only use this as default static value */
 	SONY = 0,
 	SANYO,
+	SIMPLO,
 	UNKNOWN,
 	/* Number of types, not a real type */
 	BATTERY_TYPE_COUNT,
@@ -99,6 +100,21 @@ static const struct battery_info info_sanyo = {
 	.discharging_max_c = 60,
 };
 
+static const struct battery_info info_simplo = {
+	.voltage_max = 13050, /* mV */
+	.voltage_normal = 11400,
+	.voltage_min = 9100,
+
+	.precharge_current = 256, /* mA */
+
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 45,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
+	.discharging_max_c = 60,
+};
+
 /* see enum battery_type */
 static const struct battery_device support_batteries[BATTERY_TYPE_COUNT] = {
 	{
@@ -112,6 +128,12 @@ static const struct battery_device support_batteries[BATTERY_TYPE_COUNT] = {
 		.device		= "AP13J3K",
 		.design_mv	= 11400,
 		.battery_info	= &info_sanyo,
+	},
+	{
+		.manuf		= "SIMPLO",
+		.device		= "AP13J7K",
+		.design_mv	= 11400,
+		.battery_info	= &info_simplo,
 	},
 	{
 		.manuf		= "Unknown",
@@ -188,6 +210,7 @@ int board_cut_off_battery(void)
 #define UNABLE 0
 #define SONY_DISCHARGE_FET_BIT (0x1 << 15)
 #define SANYO_DISCHARGE_FET_BIT (0x1 << 14)
+#define SIMPLO_DISCHARGE_FET_BIT (0x1 << 1)
 static int can_battery_provide_power(enum battery_type type)
 {
 	int batt_discharge_fet = -1;
@@ -216,6 +239,10 @@ static int can_battery_provide_power(enum battery_type type)
 		break;
 	case SANYO:
 		if (batt_discharge_fet & SANYO_DISCHARGE_FET_BIT)
+			return ABLE;
+		break;
+	case SIMPLO:
+		if (batt_discharge_fet & SIMPLO_DISCHARGE_FET_BIT)
 			return ABLE;
 		break;
 	default:
