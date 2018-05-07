@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3773f70d_c8bbbf4c",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T21:11:42Z",
+      "side": 1,
+      "message": "enable is effectively bool, so no harm in passing zero/nonzero.",
+      "range": {
+        "startLine": 433,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 30
+      },
+      "revId": "c26fb09b260679f1bcf48cb7d8f77c5fa7f86f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
