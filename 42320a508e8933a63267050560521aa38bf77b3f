@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccc93d39_d0ca04e9",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:05:36Z",
+      "side": 1,
+      "message": "remove or use CCPRINTF and piggy back on a channel.",
+      "revId": "42320a508e8933a63267050560521aa38bf77b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6becda5_693b136e",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:05:36Z",
+      "side": 1,
+      "message": "Use a CONFIG_ variable, add a #error if TABLET_MODE_GPIO_L is not defined.",
+      "revId": "42320a508e8933a63267050560521aa38bf77b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2030a14c_da5db116",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:05:36Z",
+      "side": 1,
+      "message": "Add 2 more variable to allow support for high and low GPIO level.",
+      "revId": "42320a508e8933a63267050560521aa38bf77b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
