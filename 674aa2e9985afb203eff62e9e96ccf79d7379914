@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d9bed58_4d9ba2f2",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-07T23:33:42Z",
+      "side": 1,
+      "message": "Where this hook is called by the PD task I definitely wanted the delay to be 0, as the PD task could run more than once before the I2CIDLE command can be sent. For deferring again, since it\u0027s in the lowest priority task, i don\u0027t think its necessary to add additional wait time here as it would only get called when there is nothing else to do.",
+      "parentUuid": "31e82843_083a5438",
+      "range": {
+        "startLine": 228,
+        "startChar": 51,
+        "endLine": 228,
+        "endChar": 53
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ee60e38_0bd6487f",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-04T20:29:15Z",
       "side": 1,
       "message": "is tcpc_access_pending really non-zero at this point? I would imagine that all tcpc calls are serialize so I would expect tcpc_access_pending to be zero.\n\nDoes this CL work because calling the I2C idle message in a deferred function delays the calls or is the guard on line 221 actually hitting?",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6793aa_1456dd2e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-07T23:33:42Z",
+      "side": 1,
+      "message": "This flag is used just to track which port wants to enter low power mode. The flag tcpc_access_pending is used for different tasks for a given port to indicate that there is a pending TCPC access. Moving the the entry into low power mode into the hooks task does help to make sure low power mode isn\u0027t entered, then exited right away, but it needs to be in conjunction with the variable tcpc_access_pending.",
+      "parentUuid": "3ee60e38_0bd6487f",
       "range": {
         "startLine": 282,
         "startChar": 1,
