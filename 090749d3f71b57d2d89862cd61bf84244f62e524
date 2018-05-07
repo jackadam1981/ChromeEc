@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1b7c2276_35323455",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-07T19:55:15Z",
+      "side": 1,
+      "message": "That\u0027ll be applied to the actual definition in board.c, right? Can you elaborate?",
+      "parentUuid": "3e80b6cf_223f18ca",
+      "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2f96c0a_f46828f1",
         "filename": "common/motion_lid.c",
         "patchSetId": 3
@@ -81,6 +99,24 @@
       "writtenOn": "2018-05-07T06:45:20Z",
       "side": 1,
       "message": "Can go as well and do \nnew_tablet_mode \u003d current_tablet_mode \u003d  tablet_get_mode(); in  set_tablet_mode()",
+      "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837de17c_cb4e7fe5",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-07T19:55:15Z",
+      "side": 1,
+      "message": "Do you mean new_tablet_mode is always equal to current_tablet_mode? Can you elaborate?",
+      "parentUuid": "753e6b22_0227aadc",
       "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
