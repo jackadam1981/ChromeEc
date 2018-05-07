@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6814fb05_28542d2f",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T10:19:27Z",
+      "side": 1,
+      "message": "given it\u0027s PMIC specific for now, I\u0027m not sure this little abstraction brings much to the table.\nIMO you can use directly GPIO_AP_RST_REQ in power/sdm845.c file (as we do for several other GPIOs) and assume we will name properly the GPIO for the follower boards.\nIf one day (which might never happen), we need another abstraction, we can do it at that point.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 57
+      },
+      "revId": "0e05d1f44b190d90bbc38745b7d6ca1796f897e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5808855_2dc71e91",
+        "filename": "include/chipset.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T10:19:27Z",
+      "side": 1,
+      "message": "no #ifdef for function prototypes in header file, it\u0027s mostly useless.\nat best, you can mention something in the comment.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "0e05d1f44b190d90bbc38745b7d6ca1796f897e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
