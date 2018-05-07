@@ -16,6 +16,14 @@
 
 static uint32_t events;
 
+#ifdef CONFIG_MKBP_WAKEUP_MASK
+/**
+ * Current wakeup mask. Defaulted to |CONFIG_MKBP_WAKEUP_MASK|. Can be set only
+ * to subset of CONFIG_MKBP_WAKEUP_MASK.
+ */
+static uint32_t active_wake_mask = CONFIG_MKBP_WAKEUP_MASK;
+#endif
+
 static void set_event(uint8_t event_type)
 {
 	atomic_or(&events, 1 << event_type);
@@ -70,8 +78,7 @@ int mkbp_send_event(uint8_t event_type)
 	/* Only assert interrupt for wake events if host is sleeping */
 	if (host_is_sleeping()) {
 		/* Skip host wake if this isn't a wake event */
-		if (!(host_get_events() & CONFIG_MKBP_WAKEUP_MASK) &&
-		      event_type != EC_MKBP_EVENT_KEY_MATRIX)
+		if (!(host_get_events() & active_wake_mask))
 			return 0;
 	}
 #endif
@@ -157,5 +164,16 @@ static int mkbp_get_wake_mask(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
 		     mkbp_get_wake_mask,
+		     EC_VER_MASK(0));
+
+static int mkbp_set_wake_mask(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_host_event_mask *p = args->params;
+
+	active_wake_mask = CONFIG_MKBP_WAKEUP_MASK & p->mask;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_WAKE_MASK,
+		     mkbp_set_wake_mask,
 		     EC_VER_MASK(0));
 #endif
