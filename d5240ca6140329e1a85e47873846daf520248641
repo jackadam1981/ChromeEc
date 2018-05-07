@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "425114e2_c0a0a3a6",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-07T17:16:55Z",
+      "side": 1,
+      "message": "Is this \"Unknown-\" prefix really useful? After all A.xy, B.xy and hh.xy look different enough.\n\nI\u0027d just have static rev[6] here.",
+      "revId": "d5240ca6140329e1a85e47873846daf520248641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686f20aa_9a9de25a",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-07T17:16:55Z",
+      "side": 1,
+      "message": "I find it somewhat clearer to use *p here.",
+      "range": {
+        "startLine": 831,
+        "startChar": 4,
+        "endLine": 831,
+        "endChar": 7
+      },
+      "revId": "d5240ca6140329e1a85e47873846daf520248641",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
