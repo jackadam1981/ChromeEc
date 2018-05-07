@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3eee93a_401e84a7",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:45:20Z",
+      "side": 1,
+      "message": "Isn\u0027t it expensive to do it on every call of tablet_mode...? Cache it in board_init.",
+      "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e80b6cf_223f18ca",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:45:20Z",
+      "side": 1,
+      "message": "Declare it in a .h\n int board_is_lid_angle_tablet_mode(void) __attribute__((weak));",
+      "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f96c0a_f46828f1",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:45:20Z",
+      "side": 1,
+      "message": "Use CONFIG_LID_ANGLE_TABLET_MODE: tablet_mode_debounce_cnt is only defined when CONFIG_LID_ANGLE_INVALID_CHECK is defined. [ when CONFIG_LID_ANGLE_TABLET_MODE is defined,  CONFIG_LID_ANGLE_INVALID_CHECK must be defined. ]",
+      "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96cb79bd_215da5e5",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:45:20Z",
+      "side": 1,
+      "message": "rename motion_lid_set_tablet_mode.",
+      "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753e6b22_0227aadc",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-07T06:45:20Z",
+      "side": 1,
+      "message": "Can go as well and do \nnew_tablet_mode \u003d current_tablet_mode \u003d  tablet_get_mode(); in  set_tablet_mode()",
+      "revId": "090749d3f71b57d2d89862cd61bf84244f62e524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
