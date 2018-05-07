@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "7beacdf5_dae21443",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-05-07T06:54:57Z",
+      "side": 1,
+      "message": "Remove this for now.",
+      "parentUuid": "d1a6b055_f0e6f834",
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acbaa651_4b7360f2",
         "filename": "board/kukui/board.h",
         "patchSetId": 1
@@ -79,6 +97,30 @@
       "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69bb4d1c_8ea86aae",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-05-07T06:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acbaa651_4b7360f2",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 26
+      },
+      "revId": "63e441603f9510c6940200ce5197a5de86cc871c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
