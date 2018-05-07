@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b68b0e90_5d87fba7",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-07T15:59:11Z",
+      "side": 1,
+      "message": "Moved down.",
+      "parentUuid": "0458b175_72142eaa",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 77
+      },
+      "revId": "96002e76e541a09c6a2d5c39b27ac39f2bcc9439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18257d73_1a7c20fa",
         "filename": "board/phaser/gpio.inc",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "96002e76e541a09c6a2d5c39b27ac39f2bcc9439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a4d1cdf_7d53adcc",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-07T15:59:11Z",
+      "side": 1,
+      "message": "Updated and moved up",
+      "parentUuid": "18257d73_1a7c20fa",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 83
+      },
+      "revId": "96002e76e541a09c6a2d5c39b27ac39f2bcc9439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
