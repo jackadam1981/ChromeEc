@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a52b3b12_18ef7ab3",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7848,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-07T21:29:24Z",
+      "side": 1,
+      "message": "Seems like each subcommand should check its own arg count.",
+      "range": {
+        "startLine": 7848,
+        "startChar": 24,
+        "endLine": 7848,
+        "endChar": 26
+      },
+      "revId": "13a2d3c15144605406c5ef7521a56edc8ed43a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d744105_7b7698cb",
         "filename": "util/ectool.c",
         "patchSetId": 1
