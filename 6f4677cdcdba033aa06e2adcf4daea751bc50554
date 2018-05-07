@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcdb9f56_99dbe58b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T10:25:08Z",
+      "side": 1,
+      "message": "nit: you meant \u0027stays\u0027 rather than \u0027keeps\u0027 ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "6f4677cdcdba033aa06e2adcf4daea751bc50554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c39e2a4_cd94b407",
+        "filename": "power/sdm845.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-07T10:25:08Z",
+      "side": 1,
+      "message": "nit: we know about this in *sdm845.c*",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "6f4677cdcdba033aa06e2adcf4daea751bc50554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
