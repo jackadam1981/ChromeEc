@@ -234,6 +234,30 @@
       "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88ea81eb_a858c5ba",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-08T15:51:13Z",
+      "side": 1,
+      "message": "31 was reserved for EVENT_EXTENDED. But once we added support for 64-bit events, event#31 (bit#30) was reclaimed so that it can be used for some host event. Hence the CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/989869\n\nAnd so you can just use event31 to indicate EC_HOST_EVENT_KEYBOARD_ALT_OS without the need for using bits in upper-32 of host events.",
+      "parentUuid": "28b99e9a_0761808e",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 36
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
