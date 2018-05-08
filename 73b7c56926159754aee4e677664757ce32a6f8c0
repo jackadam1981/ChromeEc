@@ -46,6 +46,30 @@
       "revId": "73b7c56926159754aee4e677664757ce32a6f8c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f851f3e4_5c75f918",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7794,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-08T20:30:55Z",
+      "side": 1,
+      "message": "Actually there is another reason as well:\n\nutil/ectool.c: In function \u0027cmd_wait_event\u0027:\nutil/ectool.c:7794:2: error: implicit declaration of function \u0027strtoi\u0027 [-Werror\u003dimplicit-function-declaration]\n  event_type \u003d strtoi(argv[1], \u0026e, 0);\n  ^",
+      "parentUuid": "45ae981d_337957e7",
+      "range": {
+        "startLine": 7794,
+        "startChar": 1,
+        "endLine": 7794,
+        "endChar": 37
+      },
+      "revId": "73b7c56926159754aee4e677664757ce32a6f8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
