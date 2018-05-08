@@ -22,6 +22,7 @@ HOST_CROSS_COMPILE:=$(if $(shell which x86_64-pc-linux-gnu-gcc 2>/dev/null),x86_
 endif
 
 CC=$(CCACHE) $(CROSS_COMPILE)gcc
+CXX=$(CCACHE) $(CROSS_COMPILE)gcc
 CPP=$(CCACHE) $(CROSS_COMPILE)cpp
 LD=$(CROSS_COMPILE)ld
 NM=$(CROSS_COMPILE)nm
@@ -73,6 +74,8 @@ CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(CFLAGS_WARN) $(CFLAGS_y)
 CFLAGS+= -ffunction-sections -fshort-wchar
 CFLAGS+= -fno-delete-null-pointer-checks -fconserve-stack
 CFLAGS+= -DCHROMIUM_EC
+CXXFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(CXXFLAGS_WARN) $(CXXFLAGS_y)
+CXXFLAGS+= -DCHROMIUM_EC
 
 FTDIVERSION=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
 ifneq ($(FTDIVERSION),)
