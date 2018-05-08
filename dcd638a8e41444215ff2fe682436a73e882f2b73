@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77135db1_f22b9212",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-08T23:43:28Z",
+      "side": 1,
+      "message": "Rename TABLET_MODE_GPIO_L CONFIG_TABLET_MODE_GPIO_L, define it in config.h so that future self will not forget about the meaning.",
+      "revId": "dcd638a8e41444215ff2fe682436a73e882f2b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
