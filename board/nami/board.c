@@ -32,6 +32,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "keyboard_backlight.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "math_util.h"
@@ -736,3 +737,26 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+void board_kblight_init(void)
+{
+	uint32_t oem = PROJECT_NAMI;
+	uint32_t sku = 0;
+
+	/* TODO: This will be done in board_init and cached */
+	cbi_get_oem_id(&oem);
+	cbi_get_sku_id(&sku);
+
+	switch (oem) {
+	default:
+	case PROJECT_NAMI:
+	case PROJECT_VAYNE:
+	case PROJECT_PANTHEON:
+		kblight_register(&kblight_lm3509);
+		break;
+	case PROJECT_SONA:
+		if (sku == 0x3AE2)
+			break;
+		kblight_register(&kblight_pwm);
+		break;
+	}
+}
