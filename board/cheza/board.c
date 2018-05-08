@@ -50,7 +50,6 @@ static void anx74xx_cable_det_interrupt(enum gpio_signal signal);
 
 /* 8-bit I2C address */
 #define DA9313_I2C_ADDR		0xd0
-#define CHARGER_I2C_ADDR	0x12
 
 /* GPIO Interrupt Handlers */
 static void tcpc_alert_event(enum gpio_signal signal)
@@ -218,6 +217,18 @@ struct pi3usb9281_config pi3usb9281_chips[] = {
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 	     CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT);
 
+static void board_post_init(void)
+{
+	/*
+	 * Enabling PP5000_A should be done after the charger task sets an
+	 * initial input current. Doing it in board_post_init() (the context
+	 * of the hook task) guarantees the charger input current is set
+	 * correctly.
+	 */
+	gpio_set_level(GPIO_EN_PP5000_A, 1);
+}
+DECLARE_DEFERRED(board_post_init);
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -235,12 +246,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 
-	/*
-	 * Increase AdapterCurrentLimit{1,2} to max (6080mA)
-	 */
-	i2c_write16(I2C_PORT_POWER, CHARGER_I2C_ADDR, 0x3B, 0x17c0);
-	i2c_write16(I2C_PORT_POWER, CHARGER_I2C_ADDR, 0x3F, 0x17c0);
-
+	hook_call_deferred(&board_post_init_data, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
