@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f67e9f6_070bad4a",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-08T18:42:17Z",
+      "side": 1,
+      "message": "this should be host_event_t to allow 32 and 64-bit masks depending upon CONFIG_HOST_EVENT64.",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "30e75339001659a6be05d4011f7281e55a23271c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74a05d9_74f84cd9",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-08T18:42:17Z",
+      "side": 1,
+      "message": "We should be able to extend the UHEPI command to handle this: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/ec_commands.h#3352\n\nP.S.: Kernel EC driver will have to be updated to support UHEPI command.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 23
+      },
+      "revId": "30e75339001659a6be05d4011f7281e55a23271c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
