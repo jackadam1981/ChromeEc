@@ -575,6 +575,16 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_G3S5:
+		/* Make sure it has enough power to enable the 5V rail */
+		while (!system_can_boot_ap())
+			msleep(200);
+
+		/* Enable the 5V rail. */
+#ifdef CONFIG_POWER_PP5000_CONTROL
+		power_5v_enable(task_get_current(), 1);
+#else /* !defined(CONFIG_POWER_PP5000_CONTROL) */
+		gpio_set_level(GPIO_EN_PP5000, 1);
+#endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
 		return POWER_S5;
 
 	case POWER_S5:
@@ -655,6 +665,12 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5G3:
+		/* Turn off the 5V rail. */
+#ifdef CONFIG_POWER_PP5000_CONTROL
+		power_5v_enable(task_get_current(), 0);
+#else /* !defined(CONFIG_POWER_PP5000_CONTROL) */
+		gpio_set_level(GPIO_EN_PP5000, 0);
+#endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
 		return POWER_G3;
 	}
 
