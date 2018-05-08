@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84e48017_840b360d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T21:52:55Z",
+      "side": 1,
+      "message": "I don\u0027t know this definitively, but I don\u0027t think declaring the volatile is required as the atomic operation protects changes to tcpc_lpm_pending. If the value of tcpc_lpm_pending changes (another port requests lpm entry while the for loop is processing for port 0) and that wasn\u0027t handled, then there is still a hook call pending (when the port bit is set),",
+      "parentUuid": "9ca08067_8786c507",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 24
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78b80470_dca7969d",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-08T15:26:57Z",
       "side": 1,
       "message": "should we declare tcpc_access_pending as volatile since other \"threads\" can change this value?",
+      "range": {
+        "startLine": 221,
+        "startChar": 6,
+        "endLine": 221,
+        "endChar": 28
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211439f0_64f13d0e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T21:52:55Z",
+      "side": 1,
+      "message": "same comment as above.",
+      "parentUuid": "78b80470_dca7969d",
       "range": {
         "startLine": 221,
         "startChar": 6,
@@ -165,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "96b67386_a717a4b8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T21:52:55Z",
+      "side": 1,
+      "message": "While the tcpc_write will be give up control to other tasks, the only place that sets the bit is in the PD task when it calls tcpm_set_drp_toggle(port, 0); This call might happen twice before the deferred call is able to take place, and it could even happen in between line 231 and 233, but it\u0027s a duplicate call in the first place. Therefore, clearing the port\u0027s bit in lpm_pending is a don\u0027t care and actually preferable because it prevents the deferred call from waking the TCPC from low power mode that it just entered in to.",
+      "parentUuid": "8153b700_4959791a",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 43
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4aa323c_17cc7cad",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -199,6 +271,30 @@
       "writtenOn": "2018-05-08T21:14:56Z",
       "side": 1,
       "message": "Why is this being done within the for loop? Shouldn\u0027t we just check this at the end of the function?\n\nfor ( ... ) {\n    if (!tcpc_lpm_pending ... )\n        continue;\n    if (!tcpc_access_pending[i]) {\n         // Enter low power mode\n         // Clear tcpc_lpm_pending flag for this port\n    }\n}\n\nif (tcpc_lpm_pending)\n    delay \u003d 0;\nelse\n    delay \u003d -1;\n\nhook_call_deferred(\u0026tcpc_start_drp_toggle_data, delay);",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 13
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7eea8e_cd9d1c9e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T21:52:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be removed. At this point the TCPC has just entered low power mode and its port indication (stating that it needs to go into low power mode) has just been cleared. The only path to set the port\u0027s bit withing tcpc_lpm_pending is via tcpm_set_drp_toggle() which is called from the PD task. This won\u0027t happen in an interrupt which is the only thing that could take place between lines 239/240. In addition, the hook deferred call and the port bit are only used as means to enter low power mode which was just done here, so that information could be lost with no difference in desired behavior.\n\nIf it is removed, then this hook will often get called twice and force low power mode to be exited, got through a TCPC reset cycle, and then entered again.",
+      "parentUuid": "e4aa323c_17cc7cad",
       "range": {
         "startLine": 239,
         "startChar": 3,
@@ -270,6 +366,30 @@
       "side": 1,
       "message": "I had to download the patch and run it; now I understand it better. I do see that i2c xfers gives execution to lower priority tasks (which can happens in the middle of the tcpc_write/tcpc_read calls).",
       "parentUuid": "fd6793aa_1456dd2e",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cec0d10_7f034aaf",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T21:52:55Z",
+      "side": 1,
+      "message": "Prior to CL that reworks the alert handler, task 8 (PDCMD) would give up control during an I2C access and then the PD task would run and then call this function and enter low power mode. Then control would return to the PDCMD task and that would finish its tcpc accesses which would be NAKd by the TCPC and wake the TCPC from low power mode. But again this flag is only being used to store which port wants to enter low power mode, not that a TCPC access is pending.",
+      "parentUuid": "b680cdca_10439318",
       "range": {
         "startLine": 282,
         "startChar": 1,
