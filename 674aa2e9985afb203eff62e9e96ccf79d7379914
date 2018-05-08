@@ -119,6 +119,29 @@
     },
     {
       "key": {
+        "uuid": "7c6affce_6bfd7b64",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-08T21:14:56Z",
+      "side": 1,
+      "message": "Instead of scheduling a deferred call right away, should we just do it at the end of the function so that the deferred call is scheduled/cancelled only from one place within the function?",
+      "range": {
+        "startLine": 228,
+        "startChar": 3,
+        "endLine": 228,
+        "endChar": 54
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8153b700_4959791a",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -153,6 +176,29 @@
       "writtenOn": "2018-05-08T15:26:57Z",
       "side": 1,
       "message": "if tcpc_lpm_pending changes beteween line 239 and 240, we can stop this function from getting called when is needed. We should remove this condition and let the deferred method get call one extra time (it won\u0027t repeat forever)",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 13
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b64ca21a_7159edfa",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-08T21:14:56Z",
+      "side": 1,
+      "message": "Why is this being done within the for loop? Shouldn\u0027t we just check this at the end of the function?\n\nfor ( ... ) {\n    if (!tcpc_lpm_pending ... )\n        continue;\n    if (!tcpc_access_pending[i]) {\n         // Enter low power mode\n         // Clear tcpc_lpm_pending flag for this port\n    }\n}\n\nif (tcpc_lpm_pending)\n    delay \u003d 0;\nelse\n    delay \u003d -1;\n\nhook_call_deferred(\u0026tcpc_start_drp_toggle_data, delay);",
       "range": {
         "startLine": 239,
         "startChar": 3,
