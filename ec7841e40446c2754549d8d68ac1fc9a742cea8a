@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a47329de_e51af1cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T23:08:26Z",
+      "side": 1,
+      "message": "This CL ensures that there are no deterministic events that that can result in the low power entry/exit cycle repeating forever. It also improves the likelihood that TCPC accesses won\u0027t happen while it\u0027s in low power mode and therefore will NAK a request attempt. I don\u0027t think this is relying on there not being a race condition between hooks and higher priority tasks. There may still be some instance of going into low power mode, then having another TCPC access attempt  undo that, but if nothing is attached, the USB PD state machine will always request entry into low power mode again.\n\nPrior to this CL and the previous one that refactors tcpc_alert(), there were TCPC accesses by lower priority tasks that were always generated in conjunction with events (coming out of reset, chipset power state change, or cable detach events) such as processing TCPC alerts and checking VBUS level (via TCPC) that precipitated the enter/exit cycle. The parade TCPC does NAK TCPC request attempts when in low power mode, but unlike the ANX7447 doesn\u0027t appear to use that as a trigger to wake from low power mode and drive the alert line to the EC. So that\u0027s why the ANX7447 exposed this design issue w.r.t low power mode.",
+      "parentUuid": "fd045a82_adc77b8b",
+      "revId": "ec7841e40446c2754549d8d68ac1fc9a742cea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71194ab7_814b2b98",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "efe8cddb_46fd1ff8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T23:08:26Z",
+      "side": 1,
+      "message": "If the bit that\u0027s about to be cleared (which just means that the TCPC for a port has a low power mode entry pending), gets set while the tcpc_write() function is happening, then that\u0027s really just a duplicate request to enter low power mode. The \u0027enter low power mode\u0027 request only comes from the PD task and so that can run when the hook task gives up control waiting for the TCPC access to complete, but that\u0027s not new information and should be ignored.",
+      "parentUuid": "71194ab7_814b2b98",
+      "revId": "ec7841e40446c2754549d8d68ac1fc9a742cea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58132bfa_c7b3e48b",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2018-05-08T22:32:45Z",
       "side": 1,
       "message": "This function is currently called from how many tasks? And what are their typical priorities w.r.t. other tasks touching the tcpc hardware?",
+      "revId": "ec7841e40446c2754549d8d68ac1fc9a742cea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1b4d8cb_29e485ae",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T23:08:26Z",
+      "side": 1,
+      "message": "This function is only called from the PD task when \u0027enable \u003d\u003d1\u0027.  The PD tasks are the highest priority tasks with port 1 being higher priority than port 0. The other tasks that I found that will access the TCPC are the hooks task, USB charge task (when VBUS state changes), and PDCMD task when TCPC alerts are processed.",
+      "parentUuid": "58132bfa_c7b3e48b",
       "revId": "ec7841e40446c2754549d8d68ac1fc9a742cea8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
