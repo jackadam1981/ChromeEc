@@ -5,8 +5,10 @@
 
 /* Common code for VARIANT_OCTOPUS_EC_NPCX796FB configuration */
 
+#include "config.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "pwm_chip.h"
 #include "util.h"
 
 /******************************************************************************/
@@ -20,3 +22,11 @@ const struct i2c_port_t i2c_ports[] = {
 	{"sensor",  I2C_PORT_SENSOR,  100, GPIO_I2C7_SCL, GPIO_I2C7_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/******************************************************************************/
+/* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_KBLIGHT] = { .channel = 3, .flags = 0, .freq = 100 },
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
