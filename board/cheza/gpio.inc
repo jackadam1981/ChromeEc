@@ -48,7 +48,7 @@ GPIO(AP_EC_INT_L,           PIN(A, 2), GPIO_INPUT)     /* Interrupt line between
 GPIO(SWITCHCAP_ON_L,        PIN(D, 5), GPIO_OUT_HIGH)  /* Enable switch cap. XXX: It's active-high */
 GPIO(VBOB_EN,               PIN(9, 5), GPIO_OUT_HIGH)  /* Enable VBOB */
 GPIO(EN_PP3300_A,           PIN(A, 6), GPIO_OUT_HIGH)  /* Enable PP3300 */
-GPIO(EN_PP5000_A,           PIN(6, 7), GPIO_OUT_HIGH)  /* Enable PP5000 */
+GPIO(EN_PP5000_A,           PIN(6, 7), GPIO_OUT_LOW)   /* Enable PP5000 */
 GPIO(BL_DISABLE_L,          PIN(2, 6), GPIO_OUT_HIGH)  /* EC_BL_DISABLE_L: Backlight disable signal from EC */
 
 /* Sensors */

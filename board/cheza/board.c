@@ -241,6 +241,17 @@ static void board_init(void)
 	/* Enable BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+
+	if (gpio_get_level(GPIO_BATT_PRES_ODL)) {
+		/*
+		 * The initial adapter current limit 1500mA is not enough for
+		 * the system. Initialize it to the max the board can support.
+		 * After PD negotiation, it will change to a proper value.
+		 */
+		charger_set_input_current(PD_MAX_CURRENT_MA);
+		usleep(PD_POWER_SUPPLY_TURN_ON_DELAY);
+	}
+	gpio_set_level(GPIO_EN_PP5000_A, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
