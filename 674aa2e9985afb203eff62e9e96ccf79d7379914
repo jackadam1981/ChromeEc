@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "20169569_d16b4694",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T22:26:12Z",
+      "side": 1,
+      "message": "Yes, I agree that\u0027s a simpler implementation and it doesn\u0027t make sense to check whether to defer or not until after all ports have been checked.",
+      "parentUuid": "b64ca21a_7159edfa",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 13
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ee60e38_0bd6487f",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
