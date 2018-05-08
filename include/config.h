@@ -2264,7 +2264,12 @@
 /* Support PWM output to display backlight */
 #undef CONFIG_PWM_DISPLIGHT
 
-/* Support PWM output to keyboard backlight */
+/*
+ * Support PWM output to keyboard backlight
+ *
+ * Optionally, you can use lm3509 as a keyboard backlight controller.
+ * TODO: Create CONFIG_KEYBOARD_BACKLIGHT to allow lm3509 is used without PWM.
+ */
 #undef CONFIG_PWM_KBLIGHT
 
 /* Base address of RAM for the chip */
