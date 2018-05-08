@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ca08067_8786c507",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-08T15:26:57Z",
+      "side": 1,
+      "message": "should we declare tcpc_lpm_pending as volatile since other \"threads\" can change this value?",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 24
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b80470_dca7969d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-08T15:26:57Z",
+      "side": 1,
+      "message": "should we declare tcpc_access_pending as volatile since other \"threads\" can change this value?",
+      "range": {
+        "startLine": 221,
+        "startChar": 6,
+        "endLine": 221,
+        "endChar": 28
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31e82843_083a5438",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -42,6 +88,76 @@
         "startChar": 51,
         "endLine": 228,
         "endChar": 53
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a78b88b1_abec241a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-08T15:26:57Z",
+      "side": 1,
+      "message": "Ah, I had the priority backwards thinking hooks had the highest priority",
+      "parentUuid": "0d9bed58_4d9ba2f2",
+      "range": {
+        "startLine": 228,
+        "startChar": 51,
+        "endLine": 228,
+        "endChar": 53
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8153b700_4959791a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-08T15:26:57Z",
+      "side": 1,
+      "message": "we should put this line before the tcpc_write since we could get pre-empted between these 2 lines and miss a requested idle command.",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 43
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4aa323c_17cc7cad",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-08T15:26:57Z",
+      "side": 1,
+      "message": "if tcpc_lpm_pending changes beteween line 239 and 240, we can stop this function from getting called when is needed. We should remove this condition and let the deferred method get call one extra time (it won\u0027t repeat forever)",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 13
       },
       "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -93,6 +209,30 @@
       "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b680cdca_10439318",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-08T15:26:57Z",
+      "side": 1,
+      "message": "I had to download the patch and run it; now I understand it better. I do see that i2c xfers gives execution to lower priority tasks (which can happens in the middle of the tcpc_write/tcpc_read calls).",
+      "parentUuid": "fd6793aa_1456dd2e",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "674aa2e9985afb203eff62e9e96ccf79d7379914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
