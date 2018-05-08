@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eee302f9_ed1d66f5",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7794,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-08T16:37:20Z",
+      "side": 1,
+      "message": "Why is this long / strtol() vs. int / strtoi()?\n\nEvent type is used as a shift, so it can\u0027t be more than 32.",
+      "range": {
+        "startLine": 7794,
+        "startChar": 1,
+        "endLine": 7794,
+        "endChar": 37
+      },
+      "revId": "73b7c56926159754aee4e677664757ce32a6f8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
