@@ -8,7 +8,6 @@
 #ifndef __CROS_EC_MATH_H
 #define __CROS_EC_MATH_H
 
-#ifdef CONFIG_FPU
 static inline float sqrtf(float v)
 {
 	float root;
@@ -34,6 +33,5 @@ static inline float fabsf(float v)
 	);
 	return root;
 }
-#endif  /* CONFIG_FPU */
 
 #endif  /* __CROS_EC_MATH_H */
