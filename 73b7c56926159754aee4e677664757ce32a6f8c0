@@ -22,6 +22,30 @@
       "revId": "73b7c56926159754aee4e677664757ce32a6f8c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ae981d_337957e7",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7794,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-08T20:12:58Z",
+      "side": 1,
+      "message": "It was based on the usage from the older cmd_wait_event which used long/strtol. Not an excuse, just an explanation.",
+      "parentUuid": "eee302f9_ed1d66f5",
+      "range": {
+        "startLine": 7794,
+        "startChar": 1,
+        "endLine": 7794,
+        "endChar": 37
+      },
+      "revId": "73b7c56926159754aee4e677664757ce32a6f8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
