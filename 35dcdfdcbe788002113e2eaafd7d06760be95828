@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c73312fb_57dd792a",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-08T07:17:03Z",
+      "side": 1,
+      "message": "as mentioned in my previous review, you can do this in a more robust (and not board dependent) way as the linker computes the available flash space.\nas proven by this iteration, this computation is very brittle and will get outdated.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 47
+      },
+      "revId": "35dcdfdcbe788002113e2eaafd7d06760be95828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
