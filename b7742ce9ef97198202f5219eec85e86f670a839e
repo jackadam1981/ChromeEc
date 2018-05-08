@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05c80e7a_5ba15fcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-08T23:12:14Z",
+      "side": 1,
+      "message": "current",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "b7742ce9ef97198202f5219eec85e86f670a839e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f928fd_e57aab70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-08T23:12:14Z",
+      "side": 1,
+      "message": "Add a few lines here (i.e. explaining the fact that we sent the event continuously until the current drops, but that\u0027s ok because xyz...)",
+      "revId": "b7742ce9ef97198202f5219eec85e86f670a839e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf25c3a7_fbd6fa93",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-08T23:12:14Z",
+      "side": 1,
+      "message": "Can CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT be used without CONFIG_HOSTCMD_EVENTS? Maybe not?\n\nIf that\u0027s the case maybe do:\n\n#ifdef CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT\n#ifndef CONFIG_HOSTCMD_EVENTS\n#error \"CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT needs CONFIG_HOSTCMD_EVENTS\"\n#endif\n\n...",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "b7742ce9ef97198202f5219eec85e86f670a839e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407c94e0_c98e3fce",
+        "filename": "include/throttle_ap.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-08T23:12:14Z",
+      "side": 1,
+      "message": "Drop this if not used?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "b7742ce9ef97198202f5219eec85e86f670a839e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
