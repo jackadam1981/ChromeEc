@@ -3018,7 +3018,7 @@ struct __ec_align4 ec_params_host_event_mask {
 };
 
 struct __ec_align4 ec_response_host_event_mask {
-	uint32_t mask;
+	uint64_t mask;
 };
 
 /* These all use ec_response_host_event_mask */

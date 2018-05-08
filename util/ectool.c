@@ -4925,7 +4925,7 @@ int cmd_host_event_get_b(int argc, char *argv[])
 		return -1;
 	}
 
-	printf("Current host events-B: 0x%08x\n", r.mask);
+	printf("Current host events-B: 0x%016lx\n", r.mask);
 	return 0;
 }
 
@@ -4940,7 +4940,7 @@ int cmd_host_event_get_smi_mask(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 
-	printf("Current host event SMI mask: 0x%08x\n", r.mask);
+	printf("Current host event SMI mask: 0x%016lx\n", r.mask);
 	return 0;
 }
 
@@ -4955,7 +4955,7 @@ int cmd_host_event_get_sci_mask(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 
-	printf("Current host event SCI mask: 0x%08x\n", r.mask);
+	printf("Current host event SCI mask: 0x%016lx\n", r.mask);
 	return 0;
 }
 
@@ -4970,7 +4970,7 @@ int cmd_host_event_get_wake_mask(int argc, char *argv[])
 	if (rv < 0)
 		return rv;
 
-	printf("Current host event wake mask: 0x%08x\n", r.mask);
+	printf("Current host event wake mask: 0x%016lx\n", r.mask);
 	return 0;
 }
 
