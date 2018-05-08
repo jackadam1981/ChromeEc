@@ -22,6 +22,30 @@
       "revId": "3a56f1bd1eec76174a914e0b826eed1f40663cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40aa4597_4a4d8089",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-08T04:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587cae72_0f388565",
+      "range": {
+        "startLine": 105,
+        "startChar": 52,
+        "endLine": 105,
+        "endChar": 56
+      },
+      "revId": "3a56f1bd1eec76174a914e0b826eed1f40663cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
