@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd045a82_adc77b8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-08T22:32:45Z",
+      "side": 1,
+      "message": "Why aren\u0027t all the accesses to the tcpcs serialized through a single task? How is one supposed to maintain correct tcpc state when there are multiple tasks at play who can directly affect the tcpc state -- which can make the hardware state and the software maintained state be different.\n\nThe current construction of this change relies on there not being a race in the hook task with higher priority tasks? This may make the problem harder to trigger, but I think I\u0027m missing how it\u0027s completely prevented.",
+      "revId": "ec7841e40446c2754549d8d68ac1fc9a742cea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71194ab7_814b2b98",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-08T22:32:45Z",
+      "side": 1,
+      "message": "What\u0027s to stop the pre-emption of the hook task here and the bit being set in the higher priority task? Or just after the \u0027delay \u003d \u0027 line below.",
+      "revId": "ec7841e40446c2754549d8d68ac1fc9a742cea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58132bfa_c7b3e48b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-08T22:32:45Z",
+      "side": 1,
+      "message": "This function is currently called from how many tasks? And what are their typical priorities w.r.t. other tasks touching the tcpc hardware?",
+      "revId": "ec7841e40446c2754549d8d68ac1fc9a742cea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
