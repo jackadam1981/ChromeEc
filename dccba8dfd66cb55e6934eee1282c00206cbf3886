@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f08518e5_dc8cc047",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 7846,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-08T20:34:35Z",
+      "side": 1,
+      "message": "The busy-error occurs at ec_command(EC_CMD_CEC_WRITE_MSG). ec_command  has builtin error handling for that.",
+      "parentUuid": "dac3da9c_2330385d",
+      "range": {
+        "startLine": 7846,
+        "startChar": 2,
+        "endLine": 7846,
+        "endChar": 50
+      },
+      "revId": "dccba8dfd66cb55e6934eee1282c00206cbf3886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e76ed998_6786a8c3",
         "filename": "util/ectool.c",
         "patchSetId": 4
