@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d925d2f4_cc0d2e1b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T21:51:23Z",
+      "side": 1,
+      "message": "I changed this to |\u003d, but my previous thought was that if a TCPC reset has been detected, then any other event notifications are not relevant.",
+      "parentUuid": "eaec982f_0ea4f3dd",
+      "range": {
+        "startLine": 322,
+        "startChar": 10,
+        "endLine": 322,
+        "endChar": 13
+      },
+      "revId": "77304c8d20ea3730c5d022085b84ab9f65e9b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cdd8cbf_5fd7e280",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "77304c8d20ea3730c5d022085b84ab9f65e9b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a05cad_dfa7550f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-08T21:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cdd8cbf_5fd7e280",
+      "range": {
+        "startLine": 367,
+        "startChar": 67,
+        "endLine": 367,
+        "endChar": 69
+      },
+      "revId": "77304c8d20ea3730c5d022085b84ab9f65e9b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
