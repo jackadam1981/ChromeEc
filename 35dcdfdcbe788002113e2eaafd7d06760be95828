@@ -22,6 +22,30 @@
       "revId": "35dcdfdcbe788002113e2eaafd7d06760be95828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3a38ea_7442ebe3",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-08T16:38:33Z",
+      "side": 1,
+      "message": "good point, used both linker calculated values and moved the dependency to the common space.",
+      "parentUuid": "c73312fb_57dd792a",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 47
+      },
+      "revId": "35dcdfdcbe788002113e2eaafd7d06760be95828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
