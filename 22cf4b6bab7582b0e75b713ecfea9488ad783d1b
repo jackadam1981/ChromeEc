@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d1442b0_9f48325e",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-09T16:50:55Z",
+      "side": 1,
+      "message": "We should define this in intel_x86.h to reserve the name.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 27
+      },
+      "revId": "22cf4b6bab7582b0e75b713ecfea9488ad783d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37184703_ebfcf770",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-09T16:50:55Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "22cf4b6bab7582b0e75b713ecfea9488ad783d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
