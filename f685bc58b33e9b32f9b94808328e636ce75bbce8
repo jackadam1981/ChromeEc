@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbf08594_a98eceab",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T13:06:53Z",
+      "side": 1,
+      "message": "uint32_t",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 4
+      },
+      "revId": "f685bc58b33e9b32f9b94808328e636ce75bbce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2bacd2f_10b809aa",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T13:06:53Z",
+      "side": 1,
+      "message": "implementation-wise, task_wake() is just a shortcut to write:\ntask_set_event(tskid, TASK_EVENT_WAKE, 0);\nso please replace above \u0027pd_wake \u003d 1\u0027 by \u0027pd_event |\u003d TASK_EVENT_WAKE\u0027\nand remove the special case for pd_wake.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 38
+      },
+      "revId": "f685bc58b33e9b32f9b94808328e636ce75bbce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
