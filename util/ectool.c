@@ -550,6 +550,52 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_EXEC_IN_RAM] = "Execute code in RAM",
 };
 
+static int host_event_action_get(uint8_t mask_type, uint64_t *value)
+{
+	struct ec_params_host_event p;
+	struct ec_response_host_event r;
+	int rv;
+
+	p.action = EC_HOST_EVENT_GET;
+	p.mask_type = mask_type;
+	rv = ec_command(EC_CMD_HOST_EVENT, 0,
+			&p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+	*value = r.value;
+	return 0;
+}
+
+static int host_event_action_set(uint8_t mask_type, uint64_t value)
+{
+	struct ec_params_host_event p;
+	int rv;
+
+	p.action = EC_HOST_EVENT_SET;
+	p.mask_type = mask_type;
+	p.value = value;
+	rv = ec_command(EC_CMD_HOST_EVENT, 0,
+			&p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+	return 0;
+}
+
+static int is_feature_supported(uint8_t feature)
+{
+	struct ec_response_get_features r;
+	int rv;
+
+	if (feature > ARRAY_SIZE(ec_feature_names))
+		return -1;
+	rv = ec_command(EC_CMD_GET_FEATURES, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+	if (r.flags[feature / 32] & (1 << (feature % 32)))
+		return 0;
+	return -1;
+}
+
 int cmd_inventory(int argc, char *argv[])
 {
 	struct ec_response_get_features r;
@@ -5262,13 +5308,21 @@ int cmd_host_event_get_wake_mask(int argc, char *argv[])
 {
 	struct ec_response_host_event_mask r;
 	int rv;
+	uint64_t mask;
 
-	rv = ec_command(EC_CMD_HOST_EVENT_GET_WAKE_MASK, 0,
-			NULL, 0, &r, sizeof(r));
+	if (is_feature_supported(EC_FEATURE_UNIFIED_WAKE_MASKS) >= 0) {
+		printf("Getting mask using UHEPI.\n");
+		rv = host_event_action_get(EC_HOST_EVENT_ACTIVE_WAKE_MASK,
+					   &mask);
+	} else {
+		rv = ec_command(EC_CMD_HOST_EVENT_GET_WAKE_MASK, 0,
+				NULL, 0, &r, sizeof(r));
+		if (rv >= 0)
+			mask = r.mask;
+	}
 	if (rv < 0)
 		return rv;
-
-	printf("Current host event wake mask: 0x%08x\n", r.mask);
+	printf("Current host event wake mask: 0x%016lx\n", mask);
 	return 0;
 }
 
@@ -5340,9 +5394,14 @@ int cmd_host_event_set_wake_mask(int argc, char *argv[])
 		fprintf(stderr, "Bad mask.\n");
 		return -1;
 	}
-
-	rv = ec_command(EC_CMD_HOST_EVENT_SET_WAKE_MASK, 0,
-			&p, sizeof(p), NULL, 0);
+	if (is_feature_supported(EC_FEATURE_UNIFIED_WAKE_MASKS) >= 0) {
+		printf("Setting mask using UHEPI.\n");
+		rv = host_event_action_set(EC_HOST_EVENT_ACTIVE_WAKE_MASK,
+					   p.mask);
+	} else {
+		rv = ec_command(EC_CMD_HOST_EVENT_SET_WAKE_MASK, 0,
+				&p, sizeof(p), NULL, 0);
+	}
 	if (rv < 0)
 		return rv;
 
