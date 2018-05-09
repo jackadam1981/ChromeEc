@@ -308,11 +308,7 @@ static int dbgr_reset(struct ftdi_context *ftdi)
 {
 	int ret = 0;
 
-	/* Reset CPU only, and we keep power state until flashing is done. */
-	ret |= i2c_write_byte(ftdi, 0x2f, 0x20);
-	ret |= i2c_write_byte(ftdi, 0x2e, 0x06);
-	ret |= i2c_write_byte(ftdi, 0x30, 0x40);
-
+	/* Reset all the EC domain */
 	ret |= i2c_write_byte(ftdi, 0x27, 0x80);
 	if (ret < 0)
 		printf("DBGR RESET FAILED\n");
@@ -593,7 +589,6 @@ retry:
 
 	/* if we cannot communicate, retry the sequence */
 	if (check_chipid(ftdi) < 0) {
-		sleep(1);
 		goto retry;
 	}
 special_failed:
