@@ -34,6 +34,93 @@
       "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13725f2b_58ef3a97",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T14:30:10Z",
+      "side": 1,
+      "message": "all the other rules are in Makefile.rules,\nI see no reason to not put this one there",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33f6feb_76a8fd13",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T14:30:10Z",
+      "side": 1,
+      "message": "on a buildall, it doesn\u0027t produce usable information, as it produces 80 lines with \u0027XXX bytes still available in flash \u0027 and no reference to the board.\ne.g\n\n*** 107572 bytes still available in flash ****\n  OBJCOPY ec.bin\n  OBJCOPY ec.bin\n  COPY_RW ec.bin\n  COPY_RW ec.bin\n  MV      ec.bin\n  MV      ec.bin\n  OBJCOPY ec.bin\n  COPY_RW ec.bin\n*** 103244 bytes still available in flash ****\n  MV      ec.bin\n*** 103736 bytes still available in flash ****\n*** 103376 bytes still available in flash ****\n  NM      RO/ec.RO.smap\n  OBJCOPY RO/ec.RO.flat",
+      "parentUuid": "b2f0fb4a_89bc7afa",
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ea5628_a61d0bc3",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T14:30:10Z",
+      "side": 1,
+      "message": "it would be nice to respect the V\u003d verbosity as other rules.",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e22d0739_829f1064",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T14:30:10Z",
+      "side": 1,
+      "message": "I think the name is wrong here, it\u0027s likely $(out)/RW/$(PROJECT).RW.map",
+      "range": {
+        "startLine": 296,
+        "startChar": 27,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
