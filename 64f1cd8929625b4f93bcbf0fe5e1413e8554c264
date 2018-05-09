@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d67f0a41_70360494",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-09T17:35:03Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "616ca484_f6cc2211",
+      "revId": "64f1cd8929625b4f93bcbf0fe5e1413e8554c264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42445176_19414179",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2018-05-09T17:30:12Z",
       "side": 1,
       "message": "Can we derive this from BAT_MAX_DISCHG_CURRENT (\u003d BAT_MAX_DISCHG_CURRENT * x%)? I think that\u0027s what most boards would do.",
+      "range": {
+        "startLine": 1347,
+        "startChar": 49,
+        "endLine": 1347,
+        "endChar": 67
+      },
+      "revId": "64f1cd8929625b4f93bcbf0fe5e1413e8554c264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b550243_31268938",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-09T17:35:03Z",
+      "side": 1,
+      "message": "Yes, that sounds good to me.",
+      "parentUuid": "42445176_19414179",
       "range": {
         "startLine": 1347,
         "startChar": 49,
