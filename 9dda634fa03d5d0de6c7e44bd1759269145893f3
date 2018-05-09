@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a55edf1e_707ebce6",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-09T17:57:28Z",
+      "side": 1,
+      "message": "Could you align these vertically?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "510b6419_dd6c5168",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-09T17:57:28Z",
+      "side": 1,
+      "message": "Is this pull up strong enough? I want to make sure we don\u0027t need an external  pull-up.",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
