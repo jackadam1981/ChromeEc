@@ -22,6 +22,30 @@
       "revId": "04b28d910c48332e7e520c83265b665155d18941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5118f86_8ec60794",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T08:16:49Z",
+      "side": 1,
+      "message": "actually servod behavior is nicer: you can mention just a chunk of the serial number\nmore or less putting here : strstr(sn, serialno) !\u003d NULL",
+      "parentUuid": "427d4e32_7a6bbdfe",
+      "range": {
+        "startLine": 384,
+        "startChar": 28,
+        "endLine": 384,
+        "endChar": 38
+      },
+      "revId": "04b28d910c48332e7e520c83265b665155d18941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
