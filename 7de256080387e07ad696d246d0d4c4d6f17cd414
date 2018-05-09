@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "188f8c95_2fa09708",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-09T15:51:49Z",
+      "side": 1,
+      "message": "should this report an error?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "7de256080387e07ad696d246d0d4c4d6f17cd414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c70560f_fbb1ba1c",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-09T15:51:49Z",
+      "side": 1,
+      "message": "is this the default and the board can/should override this? If that is the case, can you add a comment to that effect.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "7de256080387e07ad696d246d0d4c4d6f17cd414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf46a3d3_6b646849",
+        "filename": "include/keyboard_backlight.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-09T15:51:49Z",
+      "side": 1,
+      "message": "can we state that this is an option function",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "7de256080387e07ad696d246d0d4c4d6f17cd414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
