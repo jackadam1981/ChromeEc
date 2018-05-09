@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a245073_7b9602bd",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-09T08:21:44Z",
+      "side": 1,
+      "message": "nit: I\u0027d remove some of the parentheses to make the code a bit more readable.\nvid !\u003d 0 \u0026\u0026 vid !\u003d ..\n\nSame below for serialno, snvalid and strncmp.",
+      "revId": "04b28d910c48332e7e520c83265b665155d18941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "427d4e32_7a6bbdfe",
         "filename": "extra/usb_updater/usb_updater2.c",
         "patchSetId": 2
@@ -42,6 +59,46 @@
         "startChar": 28,
         "endLine": 384,
         "endChar": 38
+      },
+      "revId": "04b28d910c48332e7e520c83265b665155d18941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0672f69f_4cb7387b",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-09T08:21:44Z",
+      "side": 1,
+      "message": "Can handle be NULL here?",
+      "revId": "04b28d910c48332e7e520c83265b665155d18941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4605ee_712a5d1b",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-09T08:21:44Z",
+      "side": 1,
+      "message": "nit: i++ is more consistent with the rest of the code",
+      "range": {
+        "startLine": 416,
+        "startChar": 22,
+        "endLine": 416,
+        "endChar": 25
       },
       "revId": "04b28d910c48332e7e520c83265b665155d18941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
