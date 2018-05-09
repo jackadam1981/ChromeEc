@@ -45,6 +45,30 @@
       "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ad6584b_02aae99b",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-09T18:29:23Z",
+      "side": 1,
+      "message": "It is 27k, so it is the same as the old external pull-up which have been removed on newer boards. Also, it is specified in the CEC spec to use 27k.",
+      "parentUuid": "510b6419_dd6c5168",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
