@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "427d4e32_7a6bbdfe",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-09T03:27:38Z",
+      "side": 1,
+      "message": "serialno is much shorter than sn.\n\nI\u0027d just use strcmp?",
+      "range": {
+        "startLine": 384,
+        "startChar": 28,
+        "endLine": 384,
+        "endChar": 38
+      },
+      "revId": "04b28d910c48332e7e520c83265b665155d18941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
