@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81a21108_2a017968",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T08:31:17Z",
+      "side": 1,
+      "message": "it should be something like : \n battery_is_present() \u003d\u003d BP_NO\n\nYou might need to define CONFIG_BATTERY_PRESENT_GPIO properly for cheza",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 40
+      },
+      "revId": "77e15d0f2cedaf8327e60f360957abd68c1c34bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d8fb8e2_7e8905a8",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-09T08:31:17Z",
+      "side": 1,
+      "message": "Ok, but you don\u0027t really want to do it here at a random time in the middle of init.\nOn top of that, we already have way too many broken workaround for this.\nWe need to find why the other workarounds are not enabled here or not working.\n\nAmong other things, you can look at the end of charge_prevent_power_on()\nyou might want to define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON (and ensure other details are setup properly) and let the system wait it has detected the charger properly before starting up.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 40
+      },
+      "revId": "77e15d0f2cedaf8327e60f360957abd68c1c34bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
