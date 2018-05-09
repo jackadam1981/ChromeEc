@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "80acb254_faffb8bc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3175,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-09T22:26:20Z",
+      "side": 1,
+      "message": "Well, it really is an event.  It\u0027s qualitatively similar to EC_MKBP_EVENT_HOST_EVENT.",
+      "parentUuid": "920cae0c_9460feb8",
+      "range": {
+        "startLine": 3175,
+        "startChar": 19,
+        "endLine": 3175,
+        "endChar": 24
+      },
+      "revId": "978d5b28bc3c5f19b13552313ed0409d982eca80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21652561_e7edacf8",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
