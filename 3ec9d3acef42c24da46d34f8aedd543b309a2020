@@ -22,6 +22,53 @@
       "revId": "3ec9d3acef42c24da46d34f8aedd543b309a2020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d7bb34_be5c5e81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-09T15:49:15Z",
+      "side": 1,
+      "message": "this still has not been addressed.",
+      "parentUuid": "5ca18fcc_1bf8d583",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "3ec9d3acef42c24da46d34f8aedd543b309a2020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cad6064_eeb80d2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-09T15:49:15Z",
+      "side": 1,
+      "message": "what\u0027s test methodology - did you compile it with console commands enabled and ran the commands?\n\nCan you add a comment to this respect, how to run the four vectors.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 53
+      },
+      "revId": "3ec9d3acef42c24da46d34f8aedd543b309a2020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
