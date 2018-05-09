@@ -93,6 +93,30 @@
       "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37b05e4_6276e810",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-09T19:11:03Z",
+      "side": 1,
+      "message": "sgtm. Please add that as a comment. In the future design, we can avoid wasting a GPIO pin by using an external pull-up. (We don\u0027t need to toggle it, right?)",
+      "parentUuid": "8ad6584b_02aae99b",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
