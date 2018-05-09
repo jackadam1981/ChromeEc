@@ -376,9 +376,10 @@ static void charge_manager_fill_power_info(int port,
 		 * If we are sourcing power, or sinking but not charging, then
 		 * VBUS must be 5V. If we are charging, then read VBUS ADC.
 		 */
-		if (r->role == USB_PD_PORT_POWER_SINK_NOT_CHARGING)
+		if (r->role == USB_PD_PORT_POWER_SINK_NOT_CHARGING &&
+		    sup != CHARGE_SUPPLIER_DEDICATED)
 			r->meas.voltage_now = 5000;
-		else {
+		else if (sup != CHARGE_SUPPLIER_DEDICATED) {
 #if defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
 			r->meas.voltage_now = charger_get_vbus_voltage(port);
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT)
@@ -391,6 +392,8 @@ static void charge_manager_fill_power_info(int port,
 			/* There is a single ADC that measures joint Vbus */
 			r->meas.voltage_now = adc_read_channel(ADC_VBUS);
 #endif
+		} else {
+			r->meas.voltage_now = 0;
 		}
 	}
 }
