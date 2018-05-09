@@ -117,6 +117,30 @@
       "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88824ca1_9c402a3d",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-09T19:21:13Z",
+      "side": 1,
+      "message": "There was a discussion between the EE guys on why they wanted to use a GPIO instead of external pull-up. It had to do with not drawing current if the device is backpowered. This was long before I was involved in the project, so I don\u0027t have all the details.",
+      "parentUuid": "b37b05e4_6276e810",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "9dda634fa03d5d0de6c7e44bd1759269145893f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
