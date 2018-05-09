@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "413e17c3_79aeb702",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-09T15:45:31Z",
+      "side": 1,
+      "message": "can you move \u003d0 to initialization instead?",
+      "range": {
+        "startLine": 732,
+        "startChar": 1,
+        "endLine": 732,
+        "endChar": 15
+      },
+      "revId": "c56ffdb82c8f5efafecaa6eb57e03c15fae923bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
