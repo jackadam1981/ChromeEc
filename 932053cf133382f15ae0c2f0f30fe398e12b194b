@@ -78,6 +78,48 @@
     },
     {
       "key": {
+        "uuid": "031a1071_ae5ac8d2",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-09T14:40:13Z",
+      "side": 1,
+      "message": "so, what is your suggestion - suppress these messages when make buildall is running (how would I do that?). \n\nNote that all messages printed during \u0027make buildall\u0027 don\u0027t produce usable information unless they are error messages (and even in that case it is not clear what board is failing).",
+      "parentUuid": "f33f6feb_76a8fd13",
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26f8cf53_31d5aff2",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-09T14:40:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13725f2b_58ef3a97",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87ea5628_a61d0bc3",
         "filename": "Makefile",
         "patchSetId": 6
@@ -89,6 +131,30 @@
       "writtenOn": "2018-05-09T14:30:10Z",
       "side": 1,
       "message": "it would be nice to respect the V\u003d verbosity as other rules.",
+      "range": {
+        "startLine": 292,
+        "startChar": 1,
+        "endLine": 292,
+        "endChar": 5
+      },
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf58913f_4c5618a2",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-09T14:40:13Z",
+      "side": 1,
+      "message": "you mean you want to see the whole command printed when V is set?",
+      "parentUuid": "87ea5628_a61d0bc3",
       "range": {
         "startLine": 292,
         "startChar": 1,
@@ -121,6 +187,30 @@
       "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8258b54_357ec099",
+        "filename": "Makefile",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-09T14:40:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e22d0739_829f1064",
+      "range": {
+        "startLine": 296,
+        "startChar": 27,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "932053cf133382f15ae0c2f0f30fe398e12b194b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
