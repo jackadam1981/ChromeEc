@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88b2cf36_02b797db",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-09T02:13:06Z",
+      "side": 1,
+      "message": "Can you please add a comment here indicating that the bus free time needs to be maintained from last transaction on I2C bus to any device on it to the next transaction to battery/",
+      "range": {
+        "startLine": 800,
+        "startChar": 1,
+        "endLine": 800,
+        "endChar": 28
+      },
+      "revId": "7e4498f379da76a9a01ca00bb1b69e2bd18ba3ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
