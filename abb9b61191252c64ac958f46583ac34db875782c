@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a520fdb2_579231a1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4338,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-05-10T16:40:27Z",
+      "side": 1,
+      "message": "We should add a comment to clarify how this host command differs from EC_CMD_USB_PD_PORTS.",
+      "revId": "abb9b61191252c64ac958f46583ac34db875782c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
