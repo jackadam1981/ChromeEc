@@ -883,6 +883,8 @@ function flash_it83xx() {
 	dut_control i2c_mux_en:on
 	dut_control i2c_mux:remote_adc
 
+	dut_control dut_i2c_mux:ec_prog
+
 	info "Close connection to ftdi_i2c interface"
 	dut_control --ftdii2c close
 
