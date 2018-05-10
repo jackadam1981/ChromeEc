@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2191439c_ec11a2cd",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "The idea here is, the default mask is list of all possible wake sources allowed on a particular device. So you cannot set a new one that is not in the list.  \n\nFor example DRU does not have a keyboard. So keyboard is not set as wake source in the default mask. So setting keyboard as a wake source from kernel should not enable wake from MKBP KEY events.\n\nPlease let me know if this does not make any sense.",
+      "parentUuid": "dc79ab13_744dd967",
+      "range": {
+        "startLine": 21,
+        "startChar": 64,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c424e01_7909be80",
         "filename": "include/mkbp_event.h",
         "patchSetId": 10
@@ -68,6 +92,54 @@
       "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0671d237_26e1a29e",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec71c35_fe4e6676",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3341dad2_ff1a5be0",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "The way userland would control this is by writing \"enabled/disabled\" to power/wakeup to the device property. And we do not have hooks in the kernel to call host commands when the user actually sets the property. \nInstead what we do is, on our path to suspend we make host command calls if needed by reading the property. Since we know that this is reset on every resume, we only have to make the call if someone disables a wake source set in the default wake mask (that we read during the probe). \n\nWith kernel patches this would have made more sense. But this way we can prevent few calls. Otherwise we would have to make call for every ec device to set the wake mask irrespective of it is enabled/disabled since we do not know the current state in EC.\n\nPlease let me know if this does not make any sense.",
+      "parentUuid": "4c424e01_7909be80",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 76
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "d516fee9_77e64c3f",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bc493c_fe2e4dca",
+      "range": {
+        "startLine": 32,
+        "startChar": 31,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c1b352a_150dd12b",
         "filename": "util/ectool.c",
         "patchSetId": 10
@@ -165,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "9e6ec208_14c21eb0",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1b352a_150dd12b",
+      "range": {
+        "startLine": 82,
+        "startChar": 55,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9eca59ac_b5029bd1",
         "filename": "util/ectool.c",
         "patchSetId": 10
@@ -182,6 +302,24 @@
     },
     {
       "key": {
+        "uuid": "3c67a410_4f156e2e",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eca59ac_b5029bd1",
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d51a7aed_ae389c17",
         "filename": "util/ectool.c",
         "patchSetId": 10
@@ -196,6 +334,24 @@
       "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3014d067_135e95dc",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51a7aed_ae389c17",
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -222,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "573e3e16_482bbfb9",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5314,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df47ef87_17894c6c",
+      "range": {
+        "startLine": 5314,
+        "startChar": 57,
+        "endLine": 5314,
+        "endChar": 60
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88afcab8_60832a59",
         "filename": "util/ectool.c",
         "patchSetId": 10
@@ -242,6 +422,30 @@
       "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44381bf0_97e3ee06",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5398,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-10T17:46:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88afcab8_60832a59",
+      "range": {
+        "startLine": 5398,
+        "startChar": 57,
+        "endLine": 5398,
+        "endChar": 59
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
