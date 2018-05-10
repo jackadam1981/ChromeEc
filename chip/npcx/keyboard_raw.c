@@ -114,6 +114,17 @@ test_mockable void keyboard_raw_drive_column(int col)
 		else
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
+#ifdef CONFIG_KEYBOARD_LANGUAGE_ID
+		if (col == 14)
+			gpio_set_level(GPIO_KBD_KSO14, 0);
+		else
+			gpio_set_flags(GPIO_KBD_KSO14, GPIO_ODR_HIGH);
+
+		if (col == 15)
+			gpio_set_level(GPIO_KBD_KSO15, 0);
+		else
+			gpio_set_flags(GPIO_KBD_KSO15, GPIO_ODR_HIGH);
+#endif
 		mask = ~(1 << col_out);
 	}
 
