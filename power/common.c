@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lpc.h"
+#include "mkbp_event.h"
 #include "power.h"
 #include "system.h"
 #include "task.h"
@@ -243,7 +244,14 @@ static void power_set_active_wake_mask(enum power_state state)
 	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
 }
 #else
-static void power_set_active_wake_mask(enum power_state state) { }
+static void power_set_active_wake_mask(enum power_state state)
+{
+#ifdef CONFIG_MKBP_WAKEUP_MASK
+	/* Reset wake mask to default on every S0 entry. */
+	if (state == POWER_S0)
+		mkbp_set_active_wake_mask(CONFIG_MKBP_WAKEUP_MASK);
+#endif
+}
 #endif
 
 /**
