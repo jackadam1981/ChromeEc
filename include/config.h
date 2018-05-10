@@ -2120,6 +2120,8 @@
 /*
  * With this option, we can define the MKBP wakeup events in this mask (as a
  * white list) in board level, those events allow to interrupt AP during S3.
+ * Host can configure the EC wakeup mask before every suspend to wake only on
+ * subset of these events.
  */
 #undef CONFIG_MKBP_WAKEUP_MASK
 

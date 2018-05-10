@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_MKBP_EVENT_H
 #define __CROS_EC_MKBP_EVENT_H
 
+#include "host_command.h"
+
 /*
  * Sends an event to the AP.
  *
@@ -18,6 +20,17 @@
  * @return   True if event succeeded to generate host interrupt.
  */
 int mkbp_send_event(uint8_t event_type);
+
+#ifdef CONFIG_MKBP_WAKEUP_MASK
+/* Get current active wake mask. */
+host_event_t mkbp_get_active_wake_mask(void);
+
+/*
+ * Set active wake mask for host events. Should be set every time the system
+ * suspends. Is reset on every resume.
+ */
+void mkbp_set_active_wake_mask(host_event_t mask);
+#endif
 
 /*
  * The struct to store the event source definition.  The get_data routine is
@@ -33,6 +46,6 @@ struct mkbp_event_source {
 #define DECLARE_EVENT_SOURCE(type, func)                       \
 	const struct mkbp_event_source __keep __evt_src_##type \
 	__attribute__((section(".rodata.evtsrcs")))            \
-		 = {type, func}
+		= {type, func}
 
 #endif  /* __CROS_EC_MKBP_EVENT_H */
