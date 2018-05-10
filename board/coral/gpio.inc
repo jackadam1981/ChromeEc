@@ -31,8 +31,6 @@ GPIO_INT(AC_PRESENT,		PIN(C, 1), GPIO_INT_BOTH, extpower_interrupt)			/* ACOK_OD
 /* TODO: We might remove external pull-up for POWER_BUTTON_L in EVT */
 GPIO_INT(POWER_BUTTON_L,	PIN(0, 4), GPIO_INT_BOTH, power_button_interrupt)		/* MECH_PWR_BTN_ODL */
 GPIO_INT(LID_OPEN,		PIN(6, 7), GPIO_INT_BOTH, lid_interrupt)
-GPIO_INT(EC_VOLDN_BTN_ODL,	PIN(8, 2), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-GPIO_INT(EC_VOLUP_BTN_ODL,	PIN(8, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 
 /* Tablet switch is active-low. L: lid is attached (360 position) H: detached */
 GPIO_INT(TABLET_MODE_L,		PIN(3, 6), GPIO_INT_BOTH, tablet_mode_interrupt)
@@ -42,6 +40,10 @@ GPIO_INT(WP_L,			PIN(4, 0), GPIO_INT_BOTH | GPIO_SEL_1P8V, switch_interrupt)	/* 
 GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(9, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V,
 	 bmi160_interrupt)
 GPIO(LID_ACCEL_INT_L,		PIN(C, 7), GPIO_INPUT | GPIO_SEL_1P8V)
+
+/* KEYBOARD w/ Language ID implementation */
+GPIO(GPIO_KB_ID0,		PIN(8, 2), GPIO_ODR_HIGH)
+GPIO(GPIO_KB_ID1,		PIN(8, 3), GPIO_ODR_HIGH)
 
 /* I2C GPIOs will be set to alt. function later. */
 GPIO(EC_I2C_GYRO_SDA,		PIN(8, 7), GPIO_INPUT | GPIO_SEL_1P8V)
