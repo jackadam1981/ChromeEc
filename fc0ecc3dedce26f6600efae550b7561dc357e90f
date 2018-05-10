@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2481d0f1_685e7edb",
+        "filename": "board/sweetberry/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-05-10T05:26:47Z",
+      "side": 1,
+      "message": "this is causing warnings when uploading, as the hook says I should avoid declaring extern in the .c file.\nNick, would you suggest to go the route of usb_dsw_update.h \u0026 just adding a thin usb_dsw_i2c file? or another approach?",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "fc0ecc3dedce26f6600efae550b7561dc357e90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
