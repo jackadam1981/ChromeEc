@@ -138,6 +138,53 @@ static int clear_power_status_mask(int port)
 	return tcpc_write(port, TCPC_REG_POWER_STATUS_MASK, 0);
 }
 
+/* Returns true if TCPC has reset based on reading mask registers. */
+static int register_mask_reset(int port)
+{
+	int mask;
+
+	mask = 0;
+	tcpc_read16(port, TCPC_REG_ALERT_MASK, &mask);
+	if (mask == TCPC_REG_ALERT_MASK_ALL)
+		return 1;
+
+	mask = 0;
+	tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &mask);
+	if (mask == TCPC_REG_POWER_STATUS_MASK_ALL)
+		return 1;
+
+	return 0;
+}
+
+/*
+ * On TCPC i2c failure, make 30 tries (at least 300ms) before giving up
+ * in order to allow the TCPC time to boot / reset.
+ */
+#define TCPM_INIT_TRIES 30
+
+static int tcpc_check_init_status(int port)
+{
+	int error;
+	int power_status;
+	int tries = TCPM_INIT_TRIES;
+
+	while (1) {
+		error = tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
+		/*
+		 * If read succeeds and the uninitialized bit is clear, then
+		 * initalization is complete, clear all alert bits and write
+		 * the initial alert mask.
+		 */
+		if (!error && !(power_status & TCPC_REG_POWER_STATUS_UNINIT))
+			break;
+		else if (error && --tries == 0)
+			return error;
+		msleep(10);
+	}
+
+	return EC_SUCCESS;
+}
+
 int tcpci_tcpm_get_cc(int port, int *cc1, int *cc2)
 {
 	int status;
@@ -253,6 +300,14 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 	if (!enable) {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 		struct usb_mux *mux = &usb_muxes[port];
+
+		rv = tcpc_check_init_status(port);
+		if (rv)
+			return rv;
+
+		if (register_mask_reset(port))
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				       PD_EVENT_TCPC_RESET, 0);
 
 		if (mux->board_init)
 			return mux->board_init(mux);
@@ -411,24 +466,6 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 	return rv;
 }
 
-/* Returns true if TCPC has reset based on reading mask registers. */
-static int register_mask_reset(int port)
-{
-	int mask;
-
-	mask = 0;
-	tcpc_read16(port, TCPC_REG_ALERT_MASK, &mask);
-	if (mask == TCPC_REG_ALERT_MASK_ALL)
-		return 1;
-
-	mask = 0;
-	tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &mask);
-	if (mask == TCPC_REG_POWER_STATUS_MASK_ALL)
-		return 1;
-
-	return 0;
-}
-
 void tcpci_tcpc_alert(int port)
 {
 	int status;
@@ -575,7 +612,6 @@ int tcpci_get_chip_info(int port, int renew,
  * On TCPC i2c failure, make 30 tries (at least 300ms) before giving up
  * in order to allow the TCPC time to boot / reset.
  */
-#define TCPM_INIT_TRIES 30
 
 int tcpci_tcpm_init(int port)
 {
