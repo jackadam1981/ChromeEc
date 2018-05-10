@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c61f4ee_13e94c47",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-10T05:48:32Z",
+      "side": 1,
+      "message": "I did not create a cmd_xxx for this, because it does not make sense for this rule not to print the same message, whatever the value of V is. Added $(Q) so it prints out the script when V\u003d1.",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 5
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568d3647_c6ac9bb9",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-10T05:48:32Z",
+      "side": 1,
+      "message": "I could add \"$(BOARD): \" here if you insist, but it does not make sense when a single target is built, and looks weird when running \u0027make buildall\u0027 as all other messages do not have board associated with them.\n\nAlso, added indent so that this text is aligned with the rest of the output.",
+      "range": {
+        "startLine": 604,
+        "startChar": 20,
+        "endLine": 604,
+        "endChar": 21
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
