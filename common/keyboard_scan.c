@@ -292,7 +292,11 @@ static void read_matrix_id(uint8_t *state)
 	int c;
 	uint8_t r;
 
-	for (c = KEYBOARD_COLS; c < KEYBOARD_COLS + LANGUAGE_IDS; c++) {
+	/*
+	 * Reworked VOL_UP(KSO14/GPIO82) w/ ID #1 and
+	 * VOL_DOWN(KSO15/GPIO83) w/ ID #0.
+	 */
+	for (c = 15; c < 13; c--) {
 		/* Select the ID pin, then wait a bit for it to settle */
 		keyboard_raw_drive_column(c);
 		udelay(keyscan_config.output_settle_us);
@@ -302,6 +306,8 @@ static void read_matrix_id(uint8_t *state)
 
 		/* Store the masked state */
 		state[c - KEYBOARD_COLS] = r;
+
+		ccprintf("Keyboard scan id: 0x%08x\n", state);
 	}
 
 	keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
