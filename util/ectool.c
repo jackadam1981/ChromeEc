@@ -46,6 +46,45 @@ static struct option long_opts[] = {
 
 #define GEC_LOCK_TIMEOUT_SECS	30  /* 30 secs */
 
+static const char * const ec_feature_names[] = {
+	[EC_FEATURE_LIMITED] = "Limited image, load RW for more",
+	[EC_FEATURE_FLASH] = "Flash",
+	[EC_FEATURE_PWM_FAN] = "Direct Fan power management",
+	[EC_FEATURE_PWM_KEYB] = "Keyboard backlight",
+	[EC_FEATURE_LIGHTBAR] = "Lightbar",
+	[EC_FEATURE_LED] = "LED",
+	[EC_FEATURE_MOTION_SENSE] = "Motion Sensors",
+	[EC_FEATURE_KEYB] = "Keyboard",
+	[EC_FEATURE_PSTORE] = "Host Permanent Storage",
+	[EC_FEATURE_PORT80] = "BIOS Port 80h access",
+	[EC_FEATURE_THERMAL] = "Thermal management",
+	[EC_FEATURE_BKLIGHT_SWITCH] = "Switch backlight on/off",
+	[EC_FEATURE_WIFI_SWITCH] = "Switch wifi on/off",
+	[EC_FEATURE_HOST_EVENTS] = "Host event",
+	[EC_FEATURE_GPIO] = "GPIO",
+	[EC_FEATURE_I2C] = "I2C master",
+	[EC_FEATURE_CHARGER] = "Charger",
+	[EC_FEATURE_BATTERY] = "Simple Battery",
+	[EC_FEATURE_SMART_BATTERY] = "Smart Battery",
+	[EC_FEATURE_HANG_DETECT] = "Host hang detection",
+	[EC_FEATURE_PMU] = "Power Management",
+	[EC_FEATURE_SUB_MCU] = "Control downstream MCU",
+	[EC_FEATURE_USB_PD] = "USB Cros Power Delievery",
+	[EC_FEATURE_USB_MUX] = "USB Multiplexer",
+	[EC_FEATURE_MOTION_SENSE_FIFO] = "FIFO for Motion Sensors events",
+	[EC_FEATURE_VSTORE] = "Temporary secure vstore",
+	[EC_FEATURE_USBC_SS_MUX_VIRTUAL] = "Host-controlled USB-C SS mux",
+	[EC_FEATURE_RTC] = "Real-time clock",
+	[EC_FEATURE_FINGERPRINT] = "Fingerprint",
+	[EC_FEATURE_TOUCHPAD] = "Touchpad",
+	[EC_FEATURE_RWSIG] = "RWSIG task",
+	[EC_FEATURE_DEVICE_EVENT] = "Device events reporting",
+	[EC_FEATURE_UNIFIED_WAKE_MASKS] = "Unified wake masks",
+	[EC_FEATURE_HOST_EVENT64] = "64-bit host events",
+	[EC_FEATURE_EXEC_IN_RAM] = "Execute code in RAM",
+	[EC_FEATURE_CEC] = "Consumer Electronics Control",
+};
+
 const char help_str[] =
 	"Commands:\n"
 	"  autofanctrl <on>\n"
@@ -291,6 +330,39 @@ static const char * const led_names[] = {
 	"sysrq debug" };
 BUILD_ASSERT(ARRAY_SIZE(led_names) == EC_LED_ID_COUNT);
 
+static int host_event_action_get(uint8_t mask_type, uint64_t *value)
+{
+	struct ec_params_host_event p;
+	struct ec_response_host_event r;
+	int rv;
+
+	memset(&p, 0, sizeof(p));
+	p.action = EC_HOST_EVENT_GET;
+	p.mask_type = mask_type;
+	rv = ec_command(EC_CMD_HOST_EVENT, 0,
+			&p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+	*value = r.value;
+	return 0;
+}
+
+static int host_event_action_set(uint8_t mask_type, uint64_t value)
+{
+	struct ec_params_host_event p;
+	int rv;
+
+	memset(&p, 0, sizeof(p));
+	p.action = EC_HOST_EVENT_SET;
+	p.mask_type = mask_type;
+	p.value = value;
+	rv = ec_command(EC_CMD_HOST_EVENT, 0,
+			&p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+	return 0;
+}
+
 /* Check SBS numerical value range */
 int is_battery_range(int val)
 {
@@ -310,6 +382,21 @@ int parse_bool(const char *s, int *dest)
 	} else {
 		return 0;
 	}
+}
+
+static int is_feature_supported(uint8_t feature)
+{
+	struct ec_response_get_features r;
+	int rv;
+
+	if (feature > ARRAY_SIZE(ec_feature_names))
+		return -1;
+	rv = ec_command(EC_CMD_GET_FEATURES, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+	if (r.flags[feature / 32] & (1 << (feature % 32)))
+		return 0;
+	return -1;
 }
 
 void print_help(const char *prog, int print_cmds)
@@ -520,44 +607,6 @@ int cmd_s5(int argc, char *argv[])
 	return rv < 0;
 }
 
-static const char * const ec_feature_names[] = {
-	[EC_FEATURE_LIMITED] = "Limited image, load RW for more",
-	[EC_FEATURE_FLASH] = "Flash",
-	[EC_FEATURE_PWM_FAN] = "Direct Fan power management",
-	[EC_FEATURE_PWM_KEYB] = "Keyboard backlight",
-	[EC_FEATURE_LIGHTBAR] = "Lightbar",
-	[EC_FEATURE_LED] = "LED",
-	[EC_FEATURE_MOTION_SENSE] = "Motion Sensors",
-	[EC_FEATURE_KEYB] = "Keyboard",
-	[EC_FEATURE_PSTORE] = "Host Permanent Storage",
-	[EC_FEATURE_PORT80] = "BIOS Port 80h access",
-	[EC_FEATURE_THERMAL] = "Thermal management",
-	[EC_FEATURE_BKLIGHT_SWITCH] = "Switch backlight on/off",
-	[EC_FEATURE_WIFI_SWITCH] = "Switch wifi on/off",
-	[EC_FEATURE_HOST_EVENTS] = "Host event",
-	[EC_FEATURE_GPIO] = "GPIO",
-	[EC_FEATURE_I2C] = "I2C master",
-	[EC_FEATURE_CHARGER] = "Charger",
-	[EC_FEATURE_BATTERY] = "Simple Battery",
-	[EC_FEATURE_SMART_BATTERY] = "Smart Battery",
-	[EC_FEATURE_HANG_DETECT] = "Host hang detection",
-	[EC_FEATURE_PMU] = "Power Management",
-	[EC_FEATURE_SUB_MCU] = "Control downstream MCU",
-	[EC_FEATURE_USB_PD] = "USB Cros Power Delievery",
-	[EC_FEATURE_USB_MUX] = "USB Multiplexer",
-	[EC_FEATURE_MOTION_SENSE_FIFO] = "FIFO for Motion Sensors events",
-	[EC_FEATURE_VSTORE] = "Temporary secure vstore",
-	[EC_FEATURE_USBC_SS_MUX_VIRTUAL] = "Host-controlled USB-C SS mux",
-	[EC_FEATURE_RTC] = "Real-time clock",
-	[EC_FEATURE_FINGERPRINT] = "Fingerprint",
-	[EC_FEATURE_TOUCHPAD] = "Touchpad",
-	[EC_FEATURE_RWSIG] = "RWSIG task",
-	[EC_FEATURE_DEVICE_EVENT] = "Device events reporting",
-	[EC_FEATURE_UNIFIED_WAKE_MASKS] = "Unified wake masks for LPC/eSPI",
-	[EC_FEATURE_HOST_EVENT64] = "64-bit host events",
-	[EC_FEATURE_EXEC_IN_RAM] = "Execute code in RAM",
-	[EC_FEATURE_CEC] = "Consumer Electronics Control",
-};
 
 int cmd_inventory(int argc, char *argv[])
 {
@@ -5271,13 +5320,21 @@ int cmd_host_event_get_wake_mask(int argc, char *argv[])
 {
 	struct ec_response_host_event_mask r;
 	int rv;
+	uint64_t mask;
 
-	rv = ec_command(EC_CMD_HOST_EVENT_GET_WAKE_MASK, 0,
-			NULL, 0, &r, sizeof(r));
+	if (is_feature_supported(EC_FEATURE_UNIFIED_WAKE_MASKS) == 0) {
+		printf("Getting mask using UHEPI.\n");
+		rv = host_event_action_get(EC_HOST_EVENT_ACTIVE_WAKE_MASK,
+					   &mask);
+	} else {
+		rv = ec_command(EC_CMD_HOST_EVENT_GET_WAKE_MASK, 0,
+				NULL, 0, &r, sizeof(r));
+		if (rv >= 0)
+			mask = r.mask;
+	}
 	if (rv < 0)
 		return rv;
-
-	printf("Current host event wake mask: 0x%08x\n", r.mask);
+	printf("Current host event wake mask: 0x%016lx\n", mask);
 	return 0;
 }
 
@@ -5349,9 +5406,14 @@ int cmd_host_event_set_wake_mask(int argc, char *argv[])
 		fprintf(stderr, "Bad mask.\n");
 		return -1;
 	}
-
-	rv = ec_command(EC_CMD_HOST_EVENT_SET_WAKE_MASK, 0,
-			&p, sizeof(p), NULL, 0);
+	if (is_feature_supported(EC_FEATURE_UNIFIED_WAKE_MASKS) == 0) {
+		printf("Setting mask using UHEPI.\n");
+		rv = host_event_action_set(EC_HOST_EVENT_ACTIVE_WAKE_MASK,
+					   p.mask);
+	} else {
+		rv = ec_command(EC_CMD_HOST_EVENT_SET_WAKE_MASK, 0,
+				&p, sizeof(p), NULL, 0);
+	}
 	if (rv < 0)
 		return rv;
 
