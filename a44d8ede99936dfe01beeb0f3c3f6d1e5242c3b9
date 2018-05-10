@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc79ab13_744dd967",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "Why is this restricted? Why not let the AP decide it?",
+      "range": {
+        "startLine": 21,
+        "startChar": 64,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c424e01_7909be80",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "Why? Can you not set it once and use it until AP tells EC not to?",
+      "range": {
+        "startLine": 29,
+        "startChar": 41,
+        "endLine": 29,
+        "endChar": 76
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec71c35_fe4e6676",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be MKBP events (which is https://cs.corp.google.com/chromeos_public/src/platform/ec/include/ec_commands.h?q\u003dMKBP_EVENT_+file:%5Esrc/platform/ec/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d3143). Instead it should be host events (which is https://cs.corp.google.com/chromeos_public/src/platform/ec/include/ec_commands.h?type\u003dcs\u0026q\u003dHOST_EVENT_+file:%5Esrc/platform/ec/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d526)",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ca4a89_f58b5af4",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 32,
+        "startChar": 31,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1b352a_150dd12b",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "This should be updated as it is not true anymore.",
+      "range": {
+        "startLine": 82,
+        "startChar": 55,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eca59ac_b5029bd1",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "memset(\u0026p, 0, sizeof(p));",
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51a7aed_ae389c17",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "memset(\u0026p, 0, sizeof(p));",
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df47ef87_17894c6c",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5314,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \u003d\u003d?",
+      "range": {
+        "startLine": 5314,
+        "startChar": 57,
+        "endLine": 5314,
+        "endChar": 60
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88afcab8_60832a59",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5398,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-10T07:32:36Z",
+      "side": 1,
+      "message": "\u003d\u003d?",
+      "range": {
+        "startLine": 5398,
+        "startChar": 57,
+        "endLine": 5398,
+        "endChar": 59
+      },
+      "revId": "a44d8ede99936dfe01beeb0f3c3f6d1e5242c3b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
