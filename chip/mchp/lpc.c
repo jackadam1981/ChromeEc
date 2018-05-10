@@ -25,9 +25,13 @@
 #include "tfdp_chip.h"
 
 /* Console output macros */
-
+#if !(DEBUG_LPC)
+#define CPUTS(...)
+#define CPRINTS(...)
+#else
 #define CPUTS(outstr) cputs(CC_LPC, outstr)
 #define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+#endif
 
 static uint8_t
 mem_mapped[0x200] __attribute__((section(".bss.big_align")));
@@ -83,8 +87,8 @@ static void keyboard_irq_assert(void)
  */
 static void lpc_generate_smi(void)
 {
-	/* CPRINTS("LPC Pulse SMI"); */
-	trace0(0, LPC, 0, "LPC Pulse SMI");
+	CPUTS("LPC Pulse SMI");
+	trace0(0, LPC, 0, "LPC Pulse SMI Begin");
 #ifdef CONFIG_ESPI
 	/* eSPI: pulse SMI# Virtual Wire low */
 	espi_vw_pulse_wire(VW_SMI_L, 0);
@@ -93,12 +97,13 @@ static void lpc_generate_smi(void)
 	udelay(65);
 	gpio_set_level(GPIO_PCH_SMI_L, 1);
 #endif
+	trace0(0, LPC, 0, "LPC Pulse SMI End");
 }
 
 static void lpc_generate_sci(void)
 {
-	/* CPRINTS("LPC Pulse SCI"); */
-	trace0(0, LPC, 0, "LPC Pulse SCI");
+	CPUTS("LPC Pulse SCI");
+	trace0(0, LPC, 0, "LPC Pulse SCI Begin");
 #ifdef CONFIG_SCI_GPIO
 	gpio_set_level(CONFIG_SCI_GPIO, 0);
 	udelay(65);
@@ -112,6 +117,7 @@ static void lpc_generate_sci(void)
 	MCHP_ACPI_PM_STS &= ~1;
 #endif
 #endif
+	trace0(0, LPC, 0, "LPC Pulse SCI End");
 }
 
 /**
@@ -122,8 +128,8 @@ static void lpc_generate_sci(void)
 static void lpc_update_wake(host_event_t wake_events)
 {
 	/*
-	 * Mask off power button event, since the AP gets that through a
-	 * separate dedicated GPIO.
+	 * Mask off power button event, since the AP gets that
+	 * through a separate dedicated GPIO.
 	 */
 	wake_events &= ~EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON);
 
@@ -131,6 +137,8 @@ static void lpc_update_wake(host_event_t wake_events)
 	espi_vw_set_wire(VW_WAKE_L, !wake_events);
 #else
 	/* Signal is asserted low when wake events is non-zero */
+	trace2(0, LPC, 0, "lpc_update_wake: Drive PCH_WAKE_L %d->%d",
+		gpio_get_level(GPIO_PCH_WAKE_L), !wake_events);
 	gpio_set_level(GPIO_PCH_WAKE_L, !wake_events);
 #endif
 }
@@ -153,7 +161,7 @@ void lpc_update_host_event_status(void)
 	int need_sci = 0;
 	int need_smi = 0;
 
-	CPRINTS("LPC update_host_event_status");
+	CPUTS("LPC update_host_event_status");
 	trace0(0, LPC, 0, "LPC update_host_event_status");
 
 	if (!init_done)
@@ -164,7 +172,8 @@ void lpc_update_host_event_status(void)
 
 	if (lpc_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
 		/* Only generate SMI for first event */
-		if (!(MCHP_ACPI_EC_STATUS(0) & EC_LPC_STATUS_SMI_PENDING))
+		if (!(MCHP_ACPI_EC_STATUS(0) &
+				EC_LPC_STATUS_SMI_PENDING))
 			need_smi = 1;
 		MCHP_ACPI_EC_STATUS(0) |= EC_LPC_STATUS_SMI_PENDING;
 	} else {
@@ -204,7 +213,9 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 	int csum;
 	int i;
 
-	/* Ignore in-progress on LPC since interface is synchronous anyway */
+	/* Ignore in-progress on LPC since interface
+	 * is synchronous anyway
+	 */
 	if (args->result == EC_RES_IN_PROGRESS)
 		return;
 
@@ -216,7 +227,7 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 
 	/* New-style response */
 	lpc_host_args->flags =
-			(host_cmd_flags & ~EC_HOST_ARGS_FLAG_FROM_HOST) |
+		(host_cmd_flags & ~EC_HOST_ARGS_FLAG_FROM_HOST) |
 			EC_HOST_ARGS_FLAG_TO_HOST;
 
 	lpc_host_args->data_size = size;
@@ -225,7 +236,8 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 			lpc_host_args->command_version +
 			lpc_host_args->data_size;
 
-	for (i = 0, out = (uint8_t *)args->response; i < size; i++, out++)
+	for (i = 0, out = (uint8_t *)args->response;
+			i < size; i++, out++)
 		csum += *out;
 
 	lpc_host_args->checksum = (uint8_t)csum;
@@ -237,7 +249,7 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 	/* Write result to the data byte. */
 	MCHP_ACPI_EC_EC2OS(1, 0) = args->result;
 
-	/* 
+	/*
 	 * Clear processing flag in hardware and
          * sticky status in interrupt aggregator.
 	 */
@@ -249,23 +261,19 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 
 static void lpc_send_response_packet(struct host_packet *pkt)
 {
-	int i;
-	uint8_t *p8;
-
-	/* Ignore in-progress on LPC since interface is synchronous anyway */
+	/* Ignore in-progress on LPC since interface is
+	 * synchronous anyway
+	 */
 	if (pkt->driver_result == EC_RES_IN_PROGRESS) {
 		/* CPRINTS("LPC EC_RES_IN_PROGRESS"); */
 		return;
 	}
 
-	/* CPRINTS("LPC Set EC2OS(1,0)=0x%02x",pkt->driver_result); */
-	trace1(0, LPC, 0, "LPC Set EC2OS(1,0)=0x%02x", pkt->driver_result);
-
-	p8 = (uint8_t *)pkt->response;
-	if (p8 != NULL) {
-		for (i = 0; i < pkt->response_size; i++)
-			trace2(0, LPC, 0, "response[%d] = 0x%02x", i, *p8++);
-	}
+	CPRINTS("LPC Set EC2OS(1,0)=0x%02x", pkt->driver_result);
+	trace1(0, LPC, 0, "LPC Set EC2OS[1,0]=0x%02x",
+		pkt->driver_result);
+	trace11(0, LPC, 0, "LPC Response Pkt size = 0x%0x",
+		pkt->response_size);
 
 	/* Write result to the data byte. */
 	MCHP_ACPI_EC_EC2OS(1, 0) = pkt->driver_result;
@@ -281,11 +289,6 @@ uint8_t *lpc_get_memmap_range(void)
 	return mem_mapped + 0x100;
 }
 
-uint32_t lpc_mem_mapped_addr(void)
-{
-	return (uint32_t)mem_mapped;
-}
-
 void lpc_mem_mapped_init(void)
 {
 	/* We support LPC args and version 3 protocol */
@@ -294,51 +297,71 @@ void lpc_mem_mapped_init(void)
 		EC_HOST_CMD_FLAG_VERSION_3;
 }
 
+const int acpi_ec_pcr_slp[MCHP_ACPI_EC_MAX] = {
+	MCHP_PCR_ACPI_EC0,
+	MCHP_PCR_ACPI_EC1,
+	MCHP_PCR_ACPI_EC2,
+	MCHP_PCR_ACPI_EC3,
+	MCHP_PCR_ACPI_EC4,
+};
+
+const int acpi_ec_nvic_ibf[MCHP_ACPI_EC_MAX] = {
+	MCHP_IRQ_ACPIEC0_IBF,
+	MCHP_IRQ_ACPIEC1_IBF,
+	MCHP_IRQ_ACPIEC2_IBF,
+	MCHP_IRQ_ACPIEC3_IBF,
+	MCHP_IRQ_ACPIEC4_IBF,
+};
+
+#ifdef CONFIG_ESPI
+const int acpi_ec_espi_bar_id[MCHP_ACPI_EC_MAX] = {
+	MCHP_ESPI_IO_BAR_ID_ACPI_EC0,
+	MCHP_ESPI_IO_BAR_ID_ACPI_EC1,
+	MCHP_ESPI_IO_BAR_ID_ACPI_EC2,
+	MCHP_ESPI_IO_BAR_ID_ACPI_EC3,
+	MCHP_ESPI_IO_BAR_ID_ACPI_EC4,
+};
+#endif
+
+void chip_acpi_ec_config(int instance, uint32_t io_base, uint8_t mask)
+{
+	if (instance >= MCHP_ACPI_EC_MAX)
+		CPUTS("ACPI EC CFG invalid");
+
+	MCHP_PCR_SLP_DIS_DEV(acpi_ec_pcr_slp[instance]);
+
+#ifdef CONFIG_ESPI
+	MCHP_ESPI_IO_BAR_CTL_MASK(acpi_ec_espi_bar_id[instance]) =
+			mask;
+	MCHP_ESPI_IO_BAR(acpi_ec_espi_bar_id[instance]) =
+			(io_base << 16) + 0x01ul;
+#else
+	MCHP_LPC_ACPI_EC_BAR(instance) = (io_base << 16) +
+		(1ul << 15) + mask;
+#endif
+	MCHP_ACPI_EC_STATUS(instance) &= ~EC_LPC_STATUS_PROCESSING;
+	MCHP_INT_ENABLE(MCHP_ACPI_EC_GIRQ) =
+			MCHP_ACPI_EC_IBF_GIRQ_BIT(instance);
+	task_enable_irq(acpi_ec_nvic_ibf[instance]);
+}
 
 /*
- * Most registers in LPC module are reset when the host is off. We need to
- * set up LPC again when the host is starting up.
- * MCHP does not appear to connect LRESET# to an interrupt!
- * MCHP LRESET# can be one of two pins
- *	GPIO_0052 Func 2
- *	GPIO_0064 Func 1
- * Use GPIO interrupt to detect LRESET# changes.
- * Use GPIO_0064 for LRESET#. Must update board/board_name/gpio.inc
- *
- * For eSPI PLATFORM_RESET# virtual wire is used as LRESET#
- *
+ * 8042EM hardware decodes with fixed mask of 0x04
+ * Example: io_base == 0x60 -> decodes 0x60/0x64
+ * Enable both IBF and OBE interrupts.
  */
-#ifndef CONFIG_ESPI
-static void setup_lpc(void)
+void chip_8042_config(uint32_t io_base)
 {
-	gpio_config_module(MODULE_LPC, 1);
+	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_8042);
 
-	/*
-	 * MCHP LRESET# interrupt is GPIO interrupt
-	 * and configured by GPIO table in board level gpio.inc
-	 * Refer to lpcrst_interrupt() in this file.
-	 */
-
-	/* Set up ACPI0 for 0x62/0x66 */
-	MCHP_LPC_ACPI_EC0_BAR = 0x00628304;
-
-	/* Clear STATUS_PROCESSING bit in case it was set during sysjump */
-	MCHP_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_PROCESSING;
-	MCHP_INT_ENABLE(MCHP_ACPI_EC_GIRQ) =
-			MCHP_ACPI_EC_IBF_GIRQ_BIT(0);
-	task_enable_irq(MCHP_IRQ_ACPIEC0_IBF);
-
-	/* Set up ACPI1 for 0x200/0x204 */
-	MCHP_LPC_ACPI_EC1_BAR = 0x02008407;
-
-	MCHP_ACPI_EC_STATUS(1) &= ~EC_LPC_STATUS_PROCESSING;
-	MCHP_INT_ENABLE(MCHP_ACPI_EC_GIRQ) =
-			MCHP_ACPI_EC_IBF_GIRQ_BIT(1);
-	task_enable_irq(MCHP_IRQ_ACPIEC1_IBF);
-
+#ifdef CONFIG_ESPI
+	MCHP_ESPI_IO_BAR_CTL_MASK(MCHP_ESPI_IO_BAR_ID_8042) = 0x04;
+	MCHP_ESPI_IO_BAR(MCHP_ESPI_IO_BAR_ID_8042) =
+			(io_base << 16) + 0x01ul;
+#else
 	/* Set up 8042 interface at 0x60/0x64 */
-	MCHP_LPC_8042_BAR = 0x00608104;
-
+	MCHP_LPC_8042_BAR = (io_base << 16) + (1ul << 15);
+#endif
 	/* Set up indication of Auxiliary sts */
 	MCHP_8042_KB_CTRL |= 1 << 7;
 
@@ -355,42 +378,130 @@ static void setup_lpc(void)
 	MCHP_8042_KB_CTRL |= (1 << 5);
 	MCHP_LPC_SIRQ(1) = 0x01;
 #endif
+}
 
-	/* Set up EMI module for memory mapped region, base address 0x800 */
-	MCHP_LPC_EMI0_BAR = 0x0800800f;
+/*
+ * Access data RAM
+ * MCHP EMI Base address register = physical address of buffer
+ * in SRAM. EMI hardware adds 16-bit offset Host programs into
+ * EC_Address_LSB/MSB registers.
+ * Limit EMI read / write range. First 256 bytes are RW for host
+ * commands. Second 256 bytes are RO for mem-mapped data.
+ * Hardware decodes a fixed 16 byte IO range.
+ */
+void chip_emi0_config(uint32_t io_base)
+{
+#ifdef CONFIG_ESPI
+	MCHP_ESPI_IO_BAR_CTL_MASK(MCHP_ESPI_IO_BAR_ID_EMI0) = 0x0F;
+	MCHP_ESPI_IO_BAR(MCHP_ESPI_IO_BAR_ID_EMI0) =
+			(io_base << 16) + 0x01ul;
+#else
+	MCHP_LPC_EMI0_BAR = (io_base << 16) + (1ul << 15);
+#endif
 
-	MCHP_INT_ENABLE(MCHP_EMI_GIRQ) = MCHP_EMI_GIRQ_BIT(0);
-	task_enable_irq(MCHP_IRQ_EMI0);
-
-	/*
-	 * Access data RAM
-	 * MCHP EMI Base address register = physical address of buffer
-	 * in SRAM. EMI hardware adds 16-bit offset Host programs into
-	 * EC_Address_LSB/MSB registers.
-	 */
 	MCHP_EMI_MBA0(0) = (uint32_t)mem_mapped;
 
-	/*
-	 * Limit EMI read / write range. First 256 bytes are RW for host
-	 * commands. Second 256 bytes are RO for mem-mapped data.
-	 */
 	MCHP_EMI_MRL0(0) = 0x200;
 	MCHP_EMI_MWL0(0) = 0x100;
 
-	/* Setup Port80 Debug Hardware ports.
-	 * First instance for I/O 80h only.
-	 * Set FIFO interrupt threshold to maximum of 14 bytes.
-	 */
+	MCHP_INT_ENABLE(MCHP_EMI_GIRQ) = MCHP_EMI_GIRQ_BIT(0);
+	task_enable_irq(MCHP_IRQ_EMI0);
+}
+
+/* Setup Port80 Debug Hardware ports.
+ * First instance for I/O 80h only.
+ * Clear FIFO's and timestamp.
+ * Set FIFO interrupt threshold to maximum of 14 bytes.
+ */
+void chip_port80_config(uint32_t io_base)
+{
+	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_P80CAP0);
+
 	MCHP_P80_CFG(0) = MCHP_P80_FLUSH_FIFO_WO +
 			MCHP_P80_RESET_TIMESTAMP_WO;
 
-	MCHP_LPC_P80DBG0_BAR = (0x80ul << 16) + 0x01ul;
-
+#ifdef CONFIG_ESPI
+	MCHP_ESPI_IO_BAR_CTL_MASK(MCHP_ESPI_IO_BAR_P80_0) = 0x00;
+	MCHP_ESPI_IO_BAR(MCHP_ESPI_IO_BAR_P80_0) =
+			(io_base << 16) + 0x01ul;
+#else
+	MCHP_LPC_P80DBG0_BAR = (io_base << 16) + (1ul << 15);
+#endif
 	MCHP_P80_CFG(0) = MCHP_P80_FIFO_THRHOLD_14 +
 			MCHP_P80_TIMEBASE_1500KHZ +
 			MCHP_P80_TIMER_ENABLE;
 
+	MCHP_P80_ACTIVATE(0) = 1;
+
+	MCHP_INT_SOURCE(15) = MCHP_INT15_P80(0);
+	MCHP_INT_ENABLE(15) = MCHP_INT15_P80(0);
 	task_enable_irq(MCHP_IRQ_PORT80DBG0);
+}
+
+#if DEBUG_LPC
+static void chip_lpc_iobar_debug(void)
+{
+	trace11(0, LPC, 0, "LPC ACPI EC0 IO BAR   = 0x%08x",
+		MCHP_LPC_ACPI_EC_BAR(0));
+	trace11(0, LPC, 0, "LPC ACPI EC1 IO BAR   = 0x%08x",
+		MCHP_LPC_ACPI_EC_BAR(1));
+	trace11(0, LPC, 0, "LPC 8042EM IO BAR     = 0x%08x",
+		MCHP_LPC_8042_BAR);
+	trace11(0, LPC, 0, "LPC EMI0 IO BAR       = 0x%08x",
+		MCHP_LPC_EMI0_BAR);
+	trace11(0, LPC, 0, "LPC Port80Dbg0 IO BAR = 0x%08x",
+		MCHP_LPC_P80DBG0_BAR);
+}
+#endif
+
+/*
+ * Most registers in LPC module are reset when the host is off.
+ * We need to set up LPC again when the host is starting up.
+ * MCHP LRESET# can be one of two pins
+ *	GPIO_0052 Func 2
+ *	GPIO_0064 Func 1
+ * Use GPIO interrupt to detect LRESET# changes.
+ * Use GPIO_0064 for LRESET#. Must update board/board_name/gpio.inc
+ *
+ * For eSPI PLATFORM_RESET# virtual wire is used as LRESET#
+ *
+ */
+#ifndef CONFIG_ESPI
+static void setup_lpc(void)
+{
+	trace0(0, LPC, 0, "setup_lpc");
+#if 0
+	gpio_config_module(MODULE_LPC, 1);
+
+	/*
+	 * MCHP LRESET# interrupt is GPIO interrupt
+	 * and configured by GPIO table in board level gpio.inc
+	 * Refer to lpcrst_interrupt() in this file.
+	 */
+	gpio_enable_interrupt(GPIO_PCH_PLTRST_L);
+#endif
+	MCHP_LPC_CFG_BAR |= (1ul << 15);
+	trace11(0, LPC, 0, "setup_lpc: MCHP_LPC_CFG_BAR = 0x%08x",
+		MCHP_LPC_CFG_BAR);
+
+	/* Set up ACPI0 for 0x62/0x66 */
+	chip_acpi_ec_config(0, 0x62, 0x04);
+
+	/* Set up ACPI1 for 0x200 - 0x207 */
+	chip_acpi_ec_config(1, 0x200, 0x07);
+
+	/* Set up 8042 interface at 0x60/0x64 */
+	chip_8042_config(0x60);
+
+#ifndef CONFIG_KEYBOARD_IRQ_GPIO
+	/* Set up SERIRQ for keyboard */
+	MCHP_8042_KB_CTRL |= (1 << 5);
+	MCHP_LPC_SIRQ(1) = 0x01;
+#endif
+	/* EMI0 at IO 0x800 */
+	chip_emi0_config(0x800);
+
+	chip_port80_config(0x80);
 
 	lpc_mem_mapped_init();
 
@@ -399,13 +510,24 @@ static void setup_lpc(void)
 
 	/* Update host events now that we can copy them to memmap */
 	lpc_update_host_event_status();
+
+	trace1(0, LPC, 0, "setup_lpc: MCHP_PCR_PWR_RST_CTL=0x%04x",
+		MCHP_PCR_PWR_RST_CTL);
+
+	/* Activate LPC interface */
+	trace1(0, LPC, 0, "setup_lpc: MCHP_LPC_ACT=0x%04x",
+		MCHP_LPC_ACT);
+
+#if DEBUG_LPC
+	chip_lpc_iobar_debug();
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, setup_lpc, HOOK_PRIO_FIRST);
 #endif
 
 static void lpc_init(void)
 {
-	CPRINTS("LPC HOOK_INIT");
+	CPUTS("LPC HOOK_INIT");
 	trace0(0, HOOK, 0, "HOOK_INIT - lpc_init");
 
 	/* Initialize host args and memory map to all zero */
@@ -420,7 +542,8 @@ static void lpc_init(void)
 	 * NOTE: EMI doesn't have a sleep enable.
 	 */
 	MCHP_PCR_SLP_DIS_DEV_MASK(2, MCHP_PCR_SLP_EN2_GCFG +
-		MCHP_PCR_SLP_EN2_ACPI_EC0 + MCHP_PCR_SLP_EN2_ACPI_EC0 +
+		MCHP_PCR_SLP_EN2_ACPI_EC0 +
+		MCHP_PCR_SLP_EN2_ACPI_EC0 +
 		MCHP_PCR_SLP_EN2_MIF8042);
 
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_P80CAP0);
@@ -433,27 +556,40 @@ static void lpc_init(void)
 	/* Clear PCR LPC sleep enable */
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_LPC);
 
+	/* configure pins */
+	gpio_config_module(MODULE_LPC, 1);
+
+	/*
+	 * MCHP LRESET# interrupt is GPIO interrupt
+	 * and configured by GPIO table in board level gpio.inc
+	 * Refer to lpcrst_interrupt() in this file.
+	 */
+	gpio_enable_interrupt(GPIO_PCH_PLTRST_L);
+
 	/*
 	 * b[8]=1(LRESET# is platform reset), b[0]=0 VCC_PWRGD is
 	 * asserted when LRESET# is 1(inactive)
 	 */
 	MCHP_PCR_PWR_RST_CTL = 0x100ul;
 
+	/*
+	 * Allow LPC sleep if Host CLKRUN# signals
+	 * clock stop and there are no pending SERIRQ
+	 * or LPC DMA.
+	 */
+	MCHP_LPC_EC_CLK_CTRL =
+		(MCHP_LPC_EC_CLK_CTRL & ~(0x03ul)) | 0x01ul;
+
 	/* Activate LPC interface */
 	MCHP_LPC_ACT |= 1;
-
-	/*
-	 * Ring Oscillator not permitted to shut down
-	 * until LPC activate bit is cleared
-	 */
-	MCHP_LPC_EC_CLK_CTRL |= 3;
 
 	setup_lpc();
 #endif
 }
 /*
- * Set priority to higher than default; this way LPC memory mapped data
- * is ready before other inits try to initialize their memmap data.
+ * Set priority to higher than default; this way LPC memory mapped
+ * data is ready before other inits try to initialize their
+ * memmap data.
  */
 DECLARE_HOOK(HOOK_INIT, lpc_init, HOOK_PRIO_INIT_LPC);
 
@@ -466,6 +602,27 @@ DECLARE_DEFERRED(lpc_chipset_reset);
 #endif
 
 
+#ifdef CONFIG_ESPI
+/*
+ * Called from power/skylake.c chipset_reset()
+ * For LPC it doesn't call here, instead it pulses RCIN# low
+ * for 10 us
+ */
+void lpc_host_reset(void)
+{
+	/* Host Reset Control will assert KBRST# (LPC) or
+	 * RCIN# VW (eSPI)
+	 */
+#ifdef CONFIG_ESPI_VW_SIGNALS
+	espi_vw_pulse_wire(VW_RCIN_L, 0);
+#else
+	gpio_set_level(GPIO_SYS_RESET_L, 0);
+	udelay(10);
+	gpio_set_level(GPIO_SYS_RESET_L, 1);
+#endif
+}
+#endif /* #ifdef CONFIG_ESPI */
+
 void lpc_set_init_done(int val)
 {
 	init_done = val;
@@ -474,8 +631,10 @@ void lpc_set_init_done(int val)
 /*
  * MCHP MCHP family allows selecting one of two GPIO pins alternate
  * functions as LRESET#.
- * LRESET# can be monitored as bit[1](read-only) of the LPC Bus Monitor
- * register.
+ * LRESET# can be monitored as bit[1](read-only) of the
+ * LPC Bus Monitor register. NOTE: Bus Monitor is synchronized with
+ * LPC clock. We have observed APL configurations where LRESET#
+ * changes while LPC clock is not running!
  * bit[1]==0 -> LRESET# is high
  * bit[1]==1 -> LRESET# is low (active)
  * LRESET# active causes the EC to activate internal signal RESET_HOST.
@@ -491,10 +650,14 @@ void lpc_set_init_done(int val)
 void lpcrst_interrupt(enum gpio_signal signal)
 {
 #ifndef CONFIG_ESPI
+	trace0(0, LPC, 0, "LPCRST# edge interrupt handler");
+
 	/* Initialize LPC module when LRESET# is deasserted */
 	if (!lpc_get_pltrst_asserted()) {
+		trace0(0, LPC, 0, "LPCRESET# De-assertion");
 		setup_lpc();
 	} else {
+		trace0(0, LPC, 0, "LPCRESET# Assertion");
 		/* Store port 80 reset event */
 		port_80_write(PORT_80_EVENT_RESET);
 
@@ -503,13 +666,18 @@ void lpcrst_interrupt(enum gpio_signal signal)
 		hook_call_deferred(&lpc_chipset_reset_data, MSEC);
 #endif
 	}
-
+#if 0
 	CPRINTS("LPC RESET# %sasserted",
 		lpc_get_pltrst_asserted() ? "" : "de");
 #endif
+#endif
 }
 
-
+/*
+ * TODO - Is this only for debug of EMI host communication
+ * or logging of EMI host communication? We don't observe
+ * this ISR so Host is not writing to MCHP_EMI_H2E_MBX(0).
+ */
 void emi0_interrupt(void)
 {
 	uint8_t h2e;
@@ -543,7 +711,8 @@ int port_80_read(void)
  * Some chipset's CoreBoot will send read board ID command expecting
  * a two byte response.
  */
-static int acpi_ec0_custom(int is_cmd, uint8_t value, uint8_t *resultptr)
+static int acpi_ec0_custom(int is_cmd, uint8_t value,
+		uint8_t *resultptr)
 {
 	int rval;
 
@@ -556,21 +725,18 @@ static int acpi_ec0_custom(int is_cmd, uint8_t value, uint8_t *resultptr)
 				MCHP_ACPI_EC_OBE_GIRQ_BIT(0);
 		/* Write two bytes sequence 0xC2, 0x04 to Host */
 		if (MCHP_ACPI_EC_BYTE_CTL(0) & 0x01) {
-			trace0(0, LPC, 0,
-			     "AEC0 ISR: Cmd 0x0d 4-byte mode. Result=0x04c2");
 			/* Host enabled 4-byte mode */
-			MCHP_ACPI_EC_EC2OS(0, 0) = 0x02; /* was 0xc2 */
+			MCHP_ACPI_EC_EC2OS(0, 0) = 0x02;
 			MCHP_ACPI_EC_EC2OS(0, 1) = 0x04;
 			MCHP_ACPI_EC_EC2OS(0, 2) = 0x00;
-			MCHP_ACPI_EC_EC2OS(0, 3) = 0x00; /* OBF is set */
+			/* Sets OBF */
+			MCHP_ACPI_EC_EC2OS(0, 3) = 0x00;
 		} else {
-			trace0(0, LPC, 0,
-			  "AEC0 ISR: Cmd 0x0d 1-byte mode. Result=0xc2,0x04");
 			/* single byte mode */
-			*resultptr = 0x02; /* was 0xc2 */
+			*resultptr = 0x02;
 			custom_acpi_ec2os_cnt = 1;
 			custom_apci_ec2os[0] = 0x04;
-			MCHP_ACPI_EC_EC2OS(0, 0) = 0x02; /* was 0xc2 */
+			MCHP_ACPI_EC_EC2OS(0, 0) = 0x02;
 			MCHP_INT_ENABLE(MCHP_ACPI_EC_GIRQ) =
 					MCHP_ACPI_EC_OBE_GIRQ_BIT(0);
 			task_enable_irq(MCHP_IRQ_ACPIEC0_OBE);
@@ -597,11 +763,6 @@ void acpi_0_interrupt(void)
 	/* Read command/data; this clears the FRMH bit. */
 	value = MCHP_ACPI_EC_OS2EC(0, 0);
 
-	/* CPRINTS("ACPI EC0 ISR sts=0x%02x OS2EC=0x%02x ",is_cmd,value); */
-	trace3(0, LPC, 0,
-	  "AEC0 ISR: sts=0x%02x O2SEC=0x%02x byte_ctrl=0x%02x",
-	       is_cmd, value, result);
-
 	is_cmd &= EC_LPC_STATUS_LAST_CMD;
 
 	/* Handle whatever this was. */
@@ -620,8 +781,8 @@ void acpi_0_interrupt(void)
 			MCHP_ACPI_EC_IBF_GIRQ_BIT(0);
 
 	/*
-	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty / Output Buffer
-	 * Full condition on the kernel channel.
+	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty /
+	 * Output Buffer Full condition on the kernel channel/
 	 */
 	lpc_generate_sci();
 }
@@ -642,17 +803,10 @@ void acpi_0_obe_isr(void)
 
 	sts = MCHP_ACPI_EC_STATUS(0);
 	data = MCHP_ACPI_EC_BYTE_CTL(0);
-	trace3(0, LPC, 0,
-	       "AEC0 OBE ISR: sts=0x%02x bytectrl=0x%02x ec2os_cnt=0x%02x",
-	       sts, data, custom_acpi_ec2os_cnt);
-
 	data = sts;
 	if (custom_acpi_ec2os_cnt) {
 		custom_acpi_ec2os_cnt--;
 		data = custom_apci_ec2os[custom_acpi_ec2os_cnt];
-		trace1(0, LPC, 0,
-		       "AEC0 OBE ISR: write EC2OS(0,0)=0x%02x", data);
-		MCHP_ACPI_EC_EC2OS(0, 0) = data;
 	}
 
 	if (custom_acpi_ec2os_cnt == 0) { /* was last byte? */
@@ -667,12 +821,9 @@ DECLARE_IRQ(MCHP_IRQ_ACPIEC0_OBE, acpi_0_obe_isr, 1);
 
 void acpi_1_interrupt(void)
 {
-	const struct ec_host_request *r;
-
 	uint8_t st = MCHP_ACPI_EC_STATUS(1);
 
-	CPRINTS("ACPI EC1 ISR: sts=0x%02x", st);
-	trace1(0, LPC, 0, "ACPI EC1 ISR: sts=0x%02x", st);
+	trace1(0, LPC, 0, "ACPI EC1 ISR: Status=0x%02x", st);
 
 	if (!(st & EC_LPC_STATUS_FROM_HOST) ||
 	    !(st & EC_LPC_STATUS_LAST_CMD))
@@ -686,40 +837,34 @@ void acpi_1_interrupt(void)
 	 * the status byte.
 	 */
 	host_cmd_args.command = MCHP_ACPI_EC_OS2EC(1, 0);
-	CPRINTS("ACPI EC1 ISR: OS2EC0=0x%02x", host_cmd_args.command);
-	trace1(0, LPC, 0,
-	       "ACPI EC1 ISR OS2EC[0]=0x%02x", host_cmd_args.command);
 
 	host_cmd_args.result = EC_RES_SUCCESS;
 	host_cmd_args.send_response = lpc_send_response;
 	host_cmd_flags = lpc_host_args->flags;
-	
+
 	/* We only support new style command (v3) now */
 	if (host_cmd_args.command == EC_COMMAND_PROTOCOL_3) {
 		lpc_packet.send_response = lpc_send_response_packet;
 
-		lpc_packet.request = (const void *)lpc_get_hostcmd_data_range();
+		lpc_packet.request =
+			(const void *)lpc_get_hostcmd_data_range();
 		lpc_packet.request_temp = params_copy;
 		lpc_packet.request_max = sizeof(params_copy);
-		/* Don't know the request size so pass in the entire buffer */
+		/* Don't know the request size so
+		 * pass in the entire buffer
+		 */
 		lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
 
-		lpc_packet.response = (void *)lpc_get_hostcmd_data_range();
+		lpc_packet.response =
+			(void *)lpc_get_hostcmd_data_range();
 		lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
 		lpc_packet.response_size = 0;
 
 		lpc_packet.driver_result = EC_RES_SUCCESS;
 
-		r = lpc_packet.request;
-		CPRINTS("ACPI EC1 Packet Command=0x%04x", r->command);
-		trace1(0, LPC, 0,
-		       "ACPI EC1 ISR: Packet Cmd = 0x%04x", r->command);
-
 		host_packet_receive(&lpc_packet);
 
 	} else {
-		CPRINTS("ACPI EC1 ISR: Invalid protocol");
-		trace0(0, LPC, 0, "ACPI EC1 ISR: Invalid protocol");
 		/* Old style command unsupported */
 		host_cmd_args.result = EC_RES_INVALID_COMMAND;
 
@@ -727,7 +872,6 @@ void acpi_1_interrupt(void)
 		host_command_received(&host_cmd_args);
 	}
 
-	CPRINTS("ACPI EC1 ISR: Exit");
 	trace0(0, LPC, 0, "ACPI EC1 ISR: Exit");
 }
 DECLARE_IRQ(MCHP_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
@@ -749,10 +893,11 @@ void kb_ibf_interrupt(void)
 DECLARE_IRQ(MCHP_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
 
 /*
- * Interrupt generated when Host reads data byte from 8042EM output buffer.
- * The 8042EM STATUS.OBF bit will clear when the Host reads the data and
- * assert its OBE signal to interrupt aggregator.
- * Clear aggregator 8042EM OBE R/WC status bit before invoking task.
+ * Interrupt generated when Host reads data byte from 8042EM
+ * output buffer. The 8042EM STATUS.OBF bit will clear when the
+ * Host reads the data and assert its OBE signal to interrupt
+ * aggregator. Clear aggregator 8042EM OBE R/WC status bit before
+ * invoking task.
  */
 void kb_obe_interrupt(void)
 {
@@ -763,8 +908,9 @@ DECLARE_IRQ(MCHP_IRQ_8042EM_OBE, kb_obe_interrupt, 1);
 #endif
 
 /*
- * Bit 0 of 8042EM STATUS register is OBF meaning EC has written data
- * to EC2HOST data register. OBF is cleared when the host reads the data.
+ * Bit 0 of 8042EM STATUS register is OBF meaning EC has written
+ * data to EC2HOST data register. OBF is cleared when the host
+ * reads the data.
  */
 int lpc_keyboard_has_char(void)
 {
@@ -811,6 +957,15 @@ void lpc_clear_acpi_status_mask(uint8_t mask)
 	MCHP_ACPI_EC_STATUS(0) &= ~mask;
 }
 
+/*
+ * Read hardware to determine state of platform reset signal.
+ * LPC issue: Observed APL chipset changing LRESET# while LPC
+ * clock is not running. This violates original LPC specification.
+ * Unable to find information in APL chipset documentation
+ * stating APL can change LRESET# with LPC clock not running.
+ * Could this be a CoreBoot issue during CB LPC configuration?
+ * We work-around this issue by reading the GPIO state.
+ */
 int lpc_get_pltrst_asserted(void)
 {
 #ifdef CONFIG_ESPI
@@ -818,10 +973,20 @@ int lpc_get_pltrst_asserted(void)
 	 * eSPI PLTRST# a VWire or side-band signal
 	 * Controlled by CONFIG_ESPI_PLTRST_IS_VWIRE
 	 */
-	return espi_vw_get_wire(VW_PLTRST_L);
+	return !espi_vw_get_wire(VW_PLTRST_L);
 #else
 	/* returns 1 if LRESET# pin is asserted(low) else 0 */
+	trace11(0, LPC, 0, "GPIO64.Ctrl = 0x%08x",
+		MCHP_GPIO_CTRL(064));
+	trace12(0, LPC, 0, "LPC_BUS_MON @ 0x%08x = 0x%04x",
+		(MCHP_LPC_RT_BASE + 0x4), MCHP_LPC_BUS_MONITOR);
+#ifdef CONFIG_CHIPSET_APL_GLK
+	/* Use GPIO */
+	return !gpio_get_level(GPIO_PCH_PLTRST_L);
+#else
+	/* assumes LPC clock is running when host changes LRESET# */
 	return (MCHP_LPC_BUS_MONITOR & (1<<1)) ? 1 : 0;
+#endif
 #endif
 }
 
@@ -850,7 +1015,7 @@ static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_protocol_info *r = args->response;
 
-	CPRINTS("MEC1701 Handler EC_CMD_GET_PROTOCOL_INFO");
+	CPUTS("MEC1701 Handler EC_CMD_GET_PROTOCOL_INFO");
 	trace0(0, LPC, 0, "Handler EC_CMD_GET_PROTOCOL_INFO");
 
 	memset(r, 0, sizeof(*r));
@@ -866,3 +1031,24 @@ static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		lpc_get_protocol_info,
 		EC_VER_MASK(0));
+
+#if DEBUG_LPC
+static int command_lpc(int argc, char **argv)
+{
+	if (argc == 1)
+		return EC_ERROR_PARAM1;
+
+	if (!strcasecmp(argv[1], "sci"))
+		lpc_generate_sci();
+	else if (!strcasecmp(argv[1], "smi"))
+		lpc_generate_smi();
+	else if (!strcasecmp(argv[1], "wake"))
+		lpc_update_wake(-1);
+	else
+		return EC_ERROR_PARAM1;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lpc, command_lpc, "[sci|smi|wake]",
+	"Trigger SCI/SMI");
+#endif
+
