@@ -46,6 +46,30 @@
       "revId": "eff84dd17aef67b57bd35c8a97d1054c09170c8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066504ae_7e108d47",
+        "filename": "board/fizz/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-10T20:50:37Z",
+      "side": 1,
+      "message": "This is to avoid a compile error if someone wants to build the Fizz firmware without CEC support. I.e. they removed CONFIG_CEC from board/fizz/board.h.",
+      "parentUuid": "502b5ce3_706baf8d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "eff84dd17aef67b57bd35c8a97d1054c09170c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
