@@ -613,9 +613,6 @@ static int host_event_action_get(struct host_cmd_handler_args *args)
 		r->value = lpc_get_host_event_mask
 				(LPC_HOST_EVENT_ALWAYS_REPORT);
 		break;
-	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
-		r->value = lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);
-		break;
 #ifdef CONFIG_POWER_S0IX
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX:
 		r->value = lazy_wm.s0ix_lazy_wm;
@@ -626,6 +623,18 @@ static int host_event_action_get(struct host_cmd_handler_args *args)
 		break;
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S5:
 		r->value = lazy_wm.s5_lazy_wm;
+		break;
+#endif
+	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
+#if defined(CONFIG_LPC) && defined(CONFIG_MKBP_WAKEUP_MASK)
+		result = EC_RES_INVALID_PARAM;
+		break;
+#endif
+#ifdef CONFIG_LPC
+		r->value = lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);
+		break;
+#elif defined(CONFIG_MKBP_WAKEUP_MASK)
+		r->value = mkbp_get_active_wake_mask();
 		break;
 #endif
 	default:
@@ -654,10 +663,6 @@ static int host_event_action_set(struct host_cmd_handler_args *args)
 		lpc_set_host_event_mask(LPC_HOST_EVENT_ALWAYS_REPORT,
 						mask_value);
 		break;
-	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
-		active_wm_set_by_host = !!mask_value;
-		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, mask_value);
-		break;
 #ifdef CONFIG_POWER_S0IX
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX:
 		lazy_wm.s0ix_lazy_wm = mask_value;
@@ -670,9 +675,22 @@ static int host_event_action_set(struct host_cmd_handler_args *args)
 		lazy_wm.s5_lazy_wm = mask_value;
 		break;
 #endif
-	default:
+	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
+#if defined(CONFIG_LPC) && defined(CONFIG_MKBP_WAKEUP_MASK)
 		result = EC_RES_INVALID_PARAM;
 		break;
+#endif
+#ifdef CONFIG_LPC
+		active_wm_set_by_host = !!mask_value;
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, mask_value);
+		break;
+#elif defined(CONFIG_MKBP_WAKEUP_MASK)
+		mkbp_set_active_wake_mask(mask_value);
+		break;
+#endif
+	default:
+		result = EC_RES_INVALID_PARAM;
+	break;
 	}
 
 	return result;
