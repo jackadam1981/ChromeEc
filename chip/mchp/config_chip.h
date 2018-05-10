@@ -27,6 +27,10 @@
  */
 #define CONFIG_CHIP_PRE_INIT
 
+/*
+ * Board level call at the end of system pre-init.
+ */
+#undef CONFIG_BOARD_SYS_PRE_INIT
 
 /*
  * MCHP EC's have I2C master/slave
