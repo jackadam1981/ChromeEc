@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4f6fae0_b99da4a1",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-10T16:30:34Z",
+      "side": 0,
+      "message": "when tracing the charger_task() code in charge_state_v2, it seems that if we return BP_NOT_SURE here when the batter is in disconnected state, then it won\u0027t get into the idle state and the AP won\u0027t boot. What actually happens?",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 55
+      },
+      "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
