@@ -2176,6 +2176,7 @@ void pd_task(void *u)
 	int caps_count = 0, hard_reset_sent = 0;
 	int snk_cap_count = 0;
 	int evt;
+	int tcpc_reset[2];
 
 #ifdef CONFIG_COMMON_RUNTIME
 	pd_init_tasks();
@@ -2341,6 +2342,10 @@ void pd_task(void *u)
 			if (tcpm_init(port) != EC_SUCCESS)
 				CPRINTS("TCPC p%d init failed", port);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+			msleep(10);
+			tcpc_reset[port] = 1;
+			tcpm_get_cc(port, &cc1, &cc2);
+			CPRINTS("usbpd[%d]: cc1 = %d, cc2 = %d", port, cc1, cc2);
 		}
 
 		if ((evt & PD_EVENT_TCPC_RESET) &&
@@ -3474,6 +3479,11 @@ void pd_task(void *u)
 
 			/* Check for connection */
 			tcpm_get_cc(port, &cc1, &cc2);
+			if (tcpc_reset[port]) {
+				CPRINTS("drp[%d]: cc1 = %d, cc2 = %d",
+					port, cc1, cc2);
+				tcpc_reset[port] = 0;
+			}
 
 			/* Set to appropriate port state */
 			if (cc1 == TYPEC_CC_VOLT_OPEN &&
