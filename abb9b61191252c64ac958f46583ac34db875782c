@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd2440c4_5a0253fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1279820
+      },
+      "writtenOn": "2018-05-10T20:53:24Z",
+      "side": 1,
+      "message": "Done. Not sure what to put for BRANCH since I have not seen that tag in the documentation. The last few commits that were merged into the repo used \"None\" so I did the same.",
+      "parentUuid": "3e9a40ef_f082abb1",
+      "revId": "abb9b61191252c64ac958f46583ac34db875782c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a520fdb2_579231a1",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "+1. The last sentence in the CL description is almost good.",
       "parentUuid": "a520fdb2_579231a1",
+      "revId": "abb9b61191252c64ac958f46583ac34db875782c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73898a84_20f56a92",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4338,
+      "author": {
+        "id": 1279820
+      },
+      "writtenOn": "2018-05-10T20:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd3a51b0_fb5dc1ea",
       "revId": "abb9b61191252c64ac958f46583ac34db875782c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
