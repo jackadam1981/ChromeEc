@@ -31,8 +31,6 @@ GPIO_INT(AC_PRESENT,		PIN(C, 1), GPIO_INT_BOTH, extpower_interrupt)			/* ACOK_OD
 /* TODO: We might remove external pull-up for POWER_BUTTON_L in EVT */
 GPIO_INT(POWER_BUTTON_L,	PIN(0, 4), GPIO_INT_BOTH, power_button_interrupt)		/* MECH_PWR_BTN_ODL */
 GPIO_INT(LID_OPEN,		PIN(6, 7), GPIO_INT_BOTH, lid_interrupt)
-GPIO_INT(EC_VOLDN_BTN_ODL,	PIN(8, 2), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-GPIO_INT(EC_VOLUP_BTN_ODL,	PIN(8, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 
 /* Tablet switch is active-low. L: lid is attached (360 position) H: detached */
 GPIO_INT(TABLET_MODE_L,		PIN(3, 6), GPIO_INT_BOTH, tablet_mode_interrupt)
@@ -148,6 +146,8 @@ ALTERNATE(PIN_MASK(2, 0x03), 0,  MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PIN_MASK(0, 0xe0), 0,  MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 ALTERNATE(PIN_MASK(1, 0x7f), 0,  MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 GPIO(KBD_KSO2,			 PIN(1, 7), GPIO_KB_OUTPUT_COL2)
+/* Keyboard ID pins */
+ALTERNATE(PIN_MASK(8, 0x0c), 0,  MODULE_KEYBOARD_SCAN, GPIO_KB_OUTPUT)
 
 /* Board and SKU ID ADC inputs (GPIO 41, 42, 43) */
 ALTERNATE(PIN_MASK(4, 0x02), 1, MODULE_ADC, 0)

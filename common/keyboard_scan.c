@@ -292,8 +292,12 @@ static void read_matrix_id(uint8_t *id)
 	int c;
 
 	for (c = 0; c < KEYBOARD_IDS; c++) {
+	/*
+	 * Reworked VOL_UP(KSO14/GPIO82) w/ ID #0 and
+	 * VOL_DOWN(KSO15/GPIO83) w/ ID #1.
+	 */
 		/* Select the ID pin, then wait a bit for it to settle */
-		keyboard_raw_drive_column(KEYBOARD_COLS + c);
+		keyboard_raw_drive_column(KEYBOARD_COLS + c + 1);
 		udelay(keyscan_config.output_settle_us);
 
 		/* Read and then the row state */
