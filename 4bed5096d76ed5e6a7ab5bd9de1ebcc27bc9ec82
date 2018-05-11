@@ -70,6 +70,24 @@
       "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "096950eb_e10588ad",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-11T19:35:19Z",
+      "side": 1,
+      "message": "good idea, added an extensive comment (please feel free to suggest improvements) and a new return value.",
+      "parentUuid": "f05c12de_88a64512",
+      "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
