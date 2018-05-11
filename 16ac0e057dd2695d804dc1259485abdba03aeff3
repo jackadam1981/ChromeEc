@@ -94,6 +94,30 @@
       "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a866a9_445d35dd",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-11T19:45:41Z",
+      "side": 0,
+      "message": "Cool. Completely makes sense. Thinking about it again, I do prefer the approach you are taking.",
+      "parentUuid": "cdcaecd4_2f4339d2",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 55
+      },
+      "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
