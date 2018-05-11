@@ -593,7 +593,6 @@ retry:
 
 	/* if we cannot communicate, retry the sequence */
 	if (check_chipid(ftdi) < 0) {
-		sleep(1);
 		goto retry;
 	}
 special_failed:
