@@ -34,6 +34,24 @@
       "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf6844e9_6fb70c46",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-05-11T18:13:32Z",
+      "side": 1,
+      "message": "\u003e I would rather avoid adding extra text\n\nYour call.  The text is for the benefit of the maintainers (case in point :)\n\n\u003e And the return value, even if unused, should be different\n\nSure, that works.  Though some error value would be good (it appears that result is returned uninitialized in the current code path, but I haven\u0027t read carefully)",
+      "parentUuid": "cc2add36_022ca4c2",
+      "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
