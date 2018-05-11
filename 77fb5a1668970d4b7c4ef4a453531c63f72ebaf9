@@ -34,6 +34,24 @@
       "revId": "77fb5a1668970d4b7c4ef4a453531c63f72ebaf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fd1945d_0b33d24c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-11T14:16:10Z",
+      "side": 1,
+      "message": "According to the comment, this battery present seems to belong in the dynamic update instead of the static update. Does it still work if you move the setting of EC_BATT_FLAG_AC_PRESENT into that function?",
+      "parentUuid": "e75bbe8e_9b5578c5",
+      "revId": "77fb5a1668970d4b7c4ef4a453531c63f72ebaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
