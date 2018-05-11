@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "27c80b9c_9903b407",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1279820
+      },
+      "writtenOn": "2018-05-11T11:44:19Z",
+      "side": 1,
+      "message": "That\u0027s correct. That\u0027s also true that it is self-referencing but that necessarily make my argument invalid?\n\nThis whole function seems to have been written with USB PD in mind, and later on modified to add dedicated chargers (haven\u0027t checked the veracity of that statement but that\u0027s my feeling after having read the EC charge_manager source code). The best would probably be to rewrite the entire function in a way that is more neutral to the charger type (which would fix all issues related to the dedicated charger), but I haven\u0027t done that for several reasons which include the fact that I\u0027m not a Google employee and don\u0027t have access to a broad range of ChromeOS devices in order to test my changes, so I tried to make a change that was minimal in order to make sure to not break anything on other ChromeOS device which have a different USB PD/BJ configuration.\n\nI also checked the size of the function + its static data before and after applying this patch. Before the size is 0x1ec bytes and after it is 0x1f0, so this patch adds just 4 bytes of code. The compiler probably did some good optimization there, but I\u0027m guessing that building without optimization would increase a lot more the size here.",
+      "parentUuid": "a398440b_5e1ac4d3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d12c37_3c9bcda5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
