@@ -5,6 +5,7 @@
 
 /* Shared USB-C policy for octopus boards */
 
+#include "baseboard_usb_pd_policy.h"
 #include "charge_manager.h"
 #include "common.h"
 #include "compile_time_macros.h"
@@ -105,7 +106,7 @@ int pd_check_vconn_swap(int port)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Do nothing */
+	return board_pd_execute_data_swap(port, data_role);
 }
 
 int pd_is_valid_input_voltage(int mv)
