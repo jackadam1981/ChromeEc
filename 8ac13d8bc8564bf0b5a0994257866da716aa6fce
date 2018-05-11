@@ -22,6 +22,30 @@
       "revId": "8ac13d8bc8564bf0b5a0994257866da716aa6fce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23cdbc14_b89045e2",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-05-11T21:48:40Z",
+      "side": 1,
+      "message": "Ack. The keyboad has been disabled by other platforms as well in AP off. I dont see a reason why this is done. Will remove it.",
+      "parentUuid": "036b538c_52e10d0f",
+      "range": {
+        "startLine": 375,
+        "startChar": 25,
+        "endLine": 375,
+        "endChar": 65
+      },
+      "revId": "8ac13d8bc8564bf0b5a0994257866da716aa6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
