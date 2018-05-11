@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "142efb94_0d989c88",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-05-11T18:29:34Z",
+      "side": 1,
+      "message": "What happens if both LPC and MKBP are defined? Nothing good...\n\nI\u0027m inferring these are mutually exclusive. So might as well do \u0027#elif defined(...)\u0027?",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 30
+      },
+      "revId": "8c096e70f24f0a1498095827af951dca5c3c134c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
