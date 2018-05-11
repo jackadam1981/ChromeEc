@@ -46,6 +46,30 @@
       "revId": "8c096e70f24f0a1498095827af951dca5c3c134c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a651bf62_9a6a6fcc",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-05-11T20:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cd82006_25630b0a",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 30
+      },
+      "revId": "8c096e70f24f0a1498095827af951dca5c3c134c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
