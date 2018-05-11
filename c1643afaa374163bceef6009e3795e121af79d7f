@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc4ff77b_0c84561a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T10:30:10Z",
+      "side": 1,
+      "message": "From the description, I don\u0027t fully understand what is it useful for ?\nYou have already added a second host command to get the total number of ports (vs the number of PD ports), then total_ports - pd_ports_count \u003d\u003d the number of dedicated ports. Filling the answer with mostly 0 everywhere is eating flash space for not much.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d12c37_3c9bcda5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T10:30:10Z",
+      "side": 1,
+      "message": "as mandatory fields are missing, I can imagine the pre-submit check was skipped.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
