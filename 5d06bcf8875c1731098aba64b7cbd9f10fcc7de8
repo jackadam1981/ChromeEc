@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7999b82e_09d362a3",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-11T18:12:16Z",
+      "side": 1,
+      "message": "Seems like an odd place for these.  Leftover testing code?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "5d06bcf8875c1731098aba64b7cbd9f10fcc7de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
