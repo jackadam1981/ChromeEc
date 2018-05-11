@@ -70,6 +70,30 @@
       "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdcaecd4_2f4339d2",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-11T15:43:28Z",
+      "side": 0,
+      "message": "This might solve the specific issue that we are seeing (if charge state is no longer being forced to ST_IDLE), but I still think it\u0027s preferable to not conflate BATTERY_DISCONNECTED_STATE with the battery_is_present() function. battery_is_present() is used for various purposes, where the BATTERY_DISCONNECTED_STATE was connected to battery_is_present solely to affect prevent_power_on. So moving that directly to there makes it *slightly* more clear.\n\nprevent_power_on should be refactored entirely, but that will be a much larger scope effort.",
+      "parentUuid": "6360fea4_fd86c032",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 55
+      },
+      "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
