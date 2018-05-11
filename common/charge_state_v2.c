@@ -29,6 +29,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include "../driver/battery/smart_battery_firmware_update.h"
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
@@ -1522,6 +1524,12 @@ void charger_task(void *u)
 	curr.desired_input_current = get_desired_input_current(prev_bp, info);
 
 	while (1) {
+#ifdef CONFIG_SMART_BATTERY_FIRMWARE_UPDATE
+		if (sbfu_in_progress()) {
+			task_wait_event(CHARGE_MAX_SLEEP_USEC);
+			continue;
+		}
+#endif
 
 		/* Let's see what's going on... */
 		curr.ts = get_time();

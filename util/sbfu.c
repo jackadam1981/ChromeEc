@@ -768,27 +768,26 @@ int main(int argc, char *argv[])
 	}
 
 	if (acquire_gec_lock(GEC_LOCK_TIMEOUT_SECS) < 0) {
-		printf("Could not acquire GEC lock.\n");
+		fprintf(stderr, "Could not acquire GEC lock.\n");
 		return -1;
 	}
 
 	if (comm_init(interfaces, NULL)) {
-		printf("Couldn't find EC\n");
+		fprintf(stderr, "Couldn't find EC\n");
 		goto out;
 	}
 
 	fw_update.flags = 0;
 	rv = ec_readmem(EC_MEMMAP_BATT_FLAG, sizeof(val), &val);
 	if (rv <= 0) {
-		printf("EC Memmap read error:%d\n", rv);
+		fprintf(stderr, "EC Memmap read error: %d\n", rv);
 		goto out;
 	}
 
 	rv = get_status(&fw_update.status);
 	if (rv) {
-		fw_update.rv = -1;
-		log_msg(&fw_update, S1_READ_INFO, "Interface Error");
-		return S10_TERMINAL;
+		fprintf(stderr, "Failed to get status: %d\n", rv);
+		goto out;
 	}
 
 	if (fw_update.status.fw_update_mode) {
