@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a398440b_5e1ac4d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T10:45:34Z",
+      "side": 1,
+      "message": "You mean the code you have just added in the kernel ?\nYes sure (albeit being kind of self-referencing argument), my original point stands this whole implementation is not terribly space efficient.",
+      "parentUuid": "13febd02_9a4ba687",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d12c37_3c9bcda5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
