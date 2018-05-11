@@ -46,6 +46,30 @@
       "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6360fea4_fd86c032",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-11T14:55:09Z",
+      "side": 0,
+      "message": "I am curious if returning BP_NO_SURE here for when the battery is in (error or disconnected) would solve the original issue of not being able to charge the battery while still preventing the AP from starting",
+      "parentUuid": "dd34c90e_2f860e0e",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 55
+      },
+      "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
