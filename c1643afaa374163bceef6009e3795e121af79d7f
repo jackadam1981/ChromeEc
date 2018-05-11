@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13febd02_9a4ba687",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1279820
+      },
+      "writtenOn": "2018-05-11T10:38:24Z",
+      "side": 1,
+      "message": "This commit is useful for the following case:\n\nThe kernel is using the \u0027type\u0027 field in order to know during driver probe whether a port is dedicated or is USB. If we boot from the dedicated port, then everything is fine, because the kernel driver will receive \u0027type \u003d\u003d USB_CHG_TYPE_DEDICATED\u0027 and will be able to create the sysfs entry accordingly.\nBut if the device was booted from USB, then the kernel driver will receive USB_CHG_TYPE_NONE and will not be able to distinguish whether the port is USB or dedicated.",
+      "parentUuid": "cc4ff77b_0c84561a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d12c37_3c9bcda5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
