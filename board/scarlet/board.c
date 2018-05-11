@@ -119,7 +119,9 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 /******************************************************************************/
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
+#ifdef SECTION_IS_RW
 	{ CONFIG_SPI_ACCEL_PORT, 1, GPIO_SPI_ACCEL_CS_L },
+#endif
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -203,6 +205,7 @@ int pd_snk_is_vbus_provided(int port)
 	return rt946x_is_vbus_ready();
 }
 
+#ifdef SECTION_IS_RW
 static void board_spi_enable(void)
 {
 	gpio_config_module(MODULE_SPI_MASTER, 1);
@@ -232,6 +235,7 @@ static void board_spi_disable(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
+#endif
 
 static void board_init(void)
 {
@@ -245,6 +249,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
 	gpio_enable_interrupt(GPIO_AP_OVERTEMP);
 
+#ifdef SECTION_IS_RW
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_L);
 
@@ -258,6 +263,7 @@ static void board_init(void)
 	/* Sensor Init */
 	if (system_jumped_to_this_image() && chipset_in_state(CHIPSET_STATE_ON))
 		board_spi_enable();
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -359,7 +365,7 @@ int board_get_version(void)
 }
 
 /* Motion sensors */
-#ifdef HAS_TASK_MOTIONSENSE
+#if defined(HAS_TASK_MOTIONSENSE) && defined(SECTION_IS_RW)
 /* Mutexes */
 static struct mutex g_base_mutex;
 

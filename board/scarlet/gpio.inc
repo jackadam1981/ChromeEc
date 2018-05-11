@@ -30,10 +30,12 @@ GPIO_INT(WARM_RESET_REQ,   PIN(E, 1),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          warm_reset_request_interrupt)
 GPIO_INT(AP_OVERTEMP,      PIN(E, 4),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          overtemp_interrupt)
+#ifdef SECTION_IS_RW
 GPIO_INT(ACCEL_INT_L,      PIN(D, 14), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          bmi160_interrupt)
 GPIO_INT(SYNC_INT,         PIN(A, 12), GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
+#endif
 GPIO_INT(CHARGER_INT_L,    PIN(E, 6),  GPIO_INT_FALLING | GPIO_PULL_UP,
          rt946x_interrupt)
 
