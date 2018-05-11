@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f55ac6f3_ead930ab",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-11T16:35:38Z",
+      "side": 1,
+      "message": "#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) \u0026\u0026 defined(CONFIG_USB_PD_TCPC_LOW_POWER)",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 42
+      },
+      "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf4ab50_55b4e5b1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-11T16:35:38Z",
+      "side": 1,
+      "message": "power",
+      "range": {
+        "startLine": 236,
+        "startChar": 47,
+        "endLine": 236,
+        "endChar": 51
+      },
+      "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
