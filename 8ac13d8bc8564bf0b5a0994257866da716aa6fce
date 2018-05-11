@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "036b538c_52e10d0f",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-11T14:00:51Z",
+      "side": 1,
+      "message": "this power state condition doesn\u0027t seem to line up with the KB_SCAN_DISABLE_LID_ANGLE. Do we need to turn off keyboard scan when the AP is off? It won\u0027t turn anything to sent keyboard presses when the AP is off, right?",
+      "range": {
+        "startLine": 375,
+        "startChar": 25,
+        "endLine": 375,
+        "endChar": 65
+      },
+      "revId": "8ac13d8bc8564bf0b5a0994257866da716aa6fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
