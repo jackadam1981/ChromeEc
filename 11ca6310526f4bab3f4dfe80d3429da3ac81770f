@@ -93,6 +93,29 @@
       "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d924df94_f29c6e3a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-11T19:39:56Z",
+      "side": 1,
+      "message": "I was looking through different drivers, and the ANX74XX (not 74474) doesn\u0027t use this method. Should be put this defer logic higher in the driver so all drivers get this behavior?",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 25
+      },
+      "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

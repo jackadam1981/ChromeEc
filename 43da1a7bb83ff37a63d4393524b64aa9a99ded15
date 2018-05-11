@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7162b8e_c20ac4b4",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-11T19:39:56Z",
+      "side": 1,
+      "message": "I really do think that the clear should happen before tcpc_write otherwise we can\u0027t guarantee that you try to go into lower power mode (at least once) after requesting it.",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 43
+      },
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13c1b97_eaf599f0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-11T19:39:56Z",
+      "side": 1,
+      "message": "I don\u0027t think we should cancel a defer request in the method because we might override a request from a higher priority method. We should reschedule though.\n\nThe reschedule should be based a flag (that we set to true in an else condition on line 232).\n\nWith the these changes, we shouldn\u0027t need to make the global variables volatile",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
