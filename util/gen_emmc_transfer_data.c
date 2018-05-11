@@ -15,6 +15,8 @@
 
 #include <compile_time_macros.h>
 
+#include <lz4.h>
+
 /* eMMC transfer block size */
 #define BLOCK_SIZE		512
 #define BLOCK_RAW_DATA		"bootblock_raw_data"
@@ -34,12 +36,27 @@ uint16_t crc16_arg(uint8_t data, uint16_t previous_crc)
 	return (uint16_t)(crc >> 8);
 }
 
+void print_hex(FILE *fout, uint8_t *buffer, size_t size)
+{
+	int j;
+
+	for (j = 0; j < size; j++) {
+		fprintf(fout, "%s0x%02x,",
+			(j % 8) == 0 ? "\n\t" : " ", buffer[j]);
+	}
+	fprintf(fout, "\n");
+}
+
 void header_format(FILE *fin, FILE *fout)
 {
-	uint8_t data[BLOCK_SIZE];
+	uint8_t compdata[BLOCK_SIZE + 4];
+	uint8_t outdata[BLOCK_SIZE + 4];
+	uint8_t *data = &outdata[1];
 	int blk, j;
 	uint16_t crc16;
 	size_t cnt = 0;
+	int size;
+	int total_in = 0, total_out = 0;
 
 	fprintf(fout, "/* This file is auto-generated. Do not modify. */\n"
 		"#ifndef __CROS_EC_BOOTBLOCK_DATA_H\n"
@@ -64,24 +81,45 @@ void header_format(FILE *fin, FILE *fout)
 		else if (cnt < BLOCK_SIZE)
 			memset(&data[cnt], 0xff, BLOCK_SIZE-cnt);
 
-		fprintf(fout, "\t/* Block %d (%ld) */\n", blk, cnt);
-		fprintf(fout, "\t0xfe, /* idle, start bit. */");
-		for (j = 0; j < sizeof(data); j++) {
-			fprintf(fout, "%s0x%02x,",
-				(j % 8) == 0 ? "\n\t" : " ", data[j]);
+		total_in += BLOCK_SIZE + 4;
+
+		for (j = 0; j < BLOCK_SIZE; j++) {
 			crc16 = crc16_arg(data[j], crc16);
 		}
-		fprintf(fout, "\n");
 
-		fprintf(fout, "\t0x%02x, 0x%02x, 0xff,"
-			" /* CRC, end bit, idle */\n",
-			crc16 >> 8, crc16 & 0xff);
+		outdata[0] = 0xfe; /* idle, start bit. */
+		outdata[BLOCK_SIZE+1] = crc16 >> 8; /* CRC*/
+		outdata[BLOCK_SIZE+2] = crc16;
+		outdata[BLOCK_SIZE+3] = 0xff; /* end bit, idle */
+
+#if 1
+		fprintf(fout, "\t/* Block %d (%ld) */\n", blk, cnt);
+
+		size = LZ4_compress_default(outdata, compdata, sizeof(outdata), sizeof(compdata));
+
+		if (size > 0) {
+			fprintf(fout, "\n\t0x%02x, 0x%02x,\n",
+				size & 0xff, size >> 8);
+			print_hex(fout, compdata, size);
+			total_out += 1+size;
+		} else {
+			size = sizeof(outdata) | 0x8000;
+			/* Not compressed. */
+			fprintf(fout, "\n\t0x%02x, 0x%02x,\n",
+				size & 0xff, size >> 8);
+			print_hex(fout, outdata, sizeof(outdata));
+			total_out += 1+BLOCK_SIZE+4;
+		}
+#else
+		fprintf(fout, "\t/* Block %d (%ld) */\n", blk, cnt);
+		print_hex(fout, outdata, sizeof(outdata));
+#endif
 	}
 
-	fprintf(fout, "\t/* Last block: idle */\n");
-	fprintf(fout, "\t0xff, 0xff, 0xff, 0xff\n");
 	fprintf(fout, "};\n");
 	fprintf(fout, "#endif /* __CROS_EC_BOOTBLOCK_DATA_H */\n");
+
+	fprintf(stderr, "Bootblock compressed from %d to %d bytes.\n", total_in, total_out);
 }
 
 int main(int argc, char **argv)

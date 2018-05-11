@@ -63,7 +63,7 @@ ifneq ($(CONFIG_BOOTBLOCK),)
 build-util-bin += gen_emmc_transfer_data
 
 # Bootblock is only packed in RO image.
-$(out)/util/gen_emmc_transfer_data: BUILD_LDFLAGS += -DSECTION_IS_RO
+$(out)/util/gen_emmc_transfer_data: BUILD_LDFLAGS += -DSECTION_IS_RO -llz4
 endif # CONFIG_BOOTBLOCK
 
 ifneq ($(CONFIG_TOUCHPAD_HASH_FW),)
