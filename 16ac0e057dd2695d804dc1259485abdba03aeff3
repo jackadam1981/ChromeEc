@@ -22,6 +22,30 @@
       "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd34c90e_2f860e0e",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-11T14:43:46Z",
+      "side": 0,
+      "message": "This value would only be returned if the fuel gauge can\u0027t be read. But, I\u0027m not sure I understand the concern you address here.",
+      "parentUuid": "f4f6fae0_b99da4a1",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 55
+      },
+      "revId": "16ac0e057dd2695d804dc1259485abdba03aeff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
