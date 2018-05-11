@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d40beb3_52357881",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-11T22:53:27Z",
+      "side": 1,
+      "message": "I think these were easier to read when the bits were in order.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "769656c55fa0abb14c7f0b1e3e43bde0c9580968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
