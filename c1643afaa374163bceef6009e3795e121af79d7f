@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "330dc57a_6be94b91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1279820
+      },
+      "writtenOn": "2018-05-11T18:20:18Z",
+      "side": 1,
+      "message": "\u003e No, but my point was the change is eating flash space while being mostly useless.\n\u003e So the argument that it is useful for the kernel side (while I have pointed that the kernel side can just get the port count) is mostly moot.\n\nI see, sorry for not understanding immediately your point.\n\nThis patch is actually doing two things:\n1) return the type of the supply as USB_CHG_TYPE_DEDICATED when it is dedicated and when the supply is not connected. This part is useful for the kernel probe time in order to know that this unconnected port is actually a dedicated port.\n2) fill with 0s some field because about voltage, current and power because the supply is not connected. Without this patch we would fill the USB supply info here even for dedicated port which would be wrong.\n\nIt is true that I forgot to describe the point #2 in the commit message.\n\nLet\u0027s talk about my previous point #1. If we don\u0027t apply this patch, it means that the kernel needs to call both EC_CMD_CHARGE_PORT_COUNT and EC_CMD_USB_PD_PORTS and if the two values are different then assume that the last port id is for the dedicated port while all the first ports are for the USB PD ports. This means encoding the port organization, i.e. USB PD port before dedicated port, inside the protocol used to communicate between the kernel and the EC. Is that the approach you would prefer?\n\nIf we solve point #1 as described above, we still need to solve point #2. My solution was to solve both issues in a single patch while not encoding the port order in the communication protocol between the kernel and EC.\n\n\u003e Not so long ago, it was forbidden (by the hardware requirements) to have dedicated charging port on machines with USB-C ports.\n\nThanks for explaining the background of this source code. That\u0027s useful.\n\n\u003e Maybe or maybe not,\n\u003e if the kernel is now calling EC_CMD_USB_PD_POWER_INFO for the dedicated ports (side note: really it has USB_PD in its name), just to get an answer with all fields stubbed and filled with 0, it might be as good to keep the original intent of this host command and not call it in this case and save all those changes / code additions.\n\nThe fields are not always 0. They are 0 only when the BJ is not connected, when the BJ is connected then the field will not be zero because the condition of the top-level if will be false this time.\n\nThe kernel does not know in advance whether the BJ is connected, it needs to make this call to know about it. A little bit above in the function the field \u0027role\u0027 is filled. So when the current/voltage/power fields are set to 0, the field role is set to USB_PD_PORT_POWER_DISCONNECTED. That\u0027s a useful information the kernel driver wants to know which make the call to this host command not optional.",
+      "parentUuid": "22d8d757_4985409f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d12c37_3c9bcda5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
