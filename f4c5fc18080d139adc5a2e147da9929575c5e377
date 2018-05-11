@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef4f8d56_a10471b9",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-11T17:46:38Z",
+      "side": 1,
+      "message": "Though as soon as the charger is unplugged, UI will drop down to the actual level of charge.  That is:\n\n- Plug in charger; charging takes place\n- Charger says it\u0027s done, but battery only says 95%\n- This code overrides that to 99%\n- Unplug charger; battery level in UI drops immediately to 95%\n\nNot too bad if state_of_charge is close to 99%.  Could this ever happen for some reason when it\u0027s significantly below that?  (e.g. charging stopped due to high temperature)",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 41
+      },
+      "revId": "f4c5fc18080d139adc5a2e147da9929575c5e377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
