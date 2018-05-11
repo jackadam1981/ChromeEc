@@ -16,6 +16,24 @@
       "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2add36_022ca4c2",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-11T17:40:13Z",
+      "side": 1,
+      "message": "I would rather avoid adding extra text, all those five people who can build dev images know what they are doing (presumably :)\n\nAnd the return value, even if unused, should be different from the case when cert was not installed, we might add another rv value here if you think it is needed.",
+      "parentUuid": "427ce42c_bb870128",
+      "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
