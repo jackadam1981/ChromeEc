@@ -25,6 +25,8 @@
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_STM_HWTIMER32
 
+#define CONFIG_LZ4
+
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_WATCHDOG_HELP

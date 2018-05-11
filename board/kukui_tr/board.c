@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "lz4.h"
 #include "printf.h"
 #include "spi.h"
 #include "system.h"
@@ -28,7 +29,7 @@
 static stm32_spi_regs_t *const spi = STM32_SPI1_REGS;
 
 /* 1024 bytes of buffer is enough for ~0.6ms @ 13Mhz */
-#define SPI_RX_BUF_SIZE 1024
+#define SPI_RX_BUF_SIZE 8*1024
 #define SPI_RX_BUF_SIZE_32 (SPI_RX_BUF_SIZE/4)
 static uint32_t in_msg[SPI_RX_BUF_SIZE_32] __aligned(4);
 
@@ -157,6 +158,11 @@ void emmc_task(void *u)
 	int tx = 0;
 	enum emmc_cmd cmd;
 
+	while (1) {
+		/* Wait for a command */
+		task_wait_event(-1);
+	}
+
 	gpio_enable_interrupt(GPIO_EMMC_CMD);
 
 	dma_start_rx(&dma_rx_option, sizeof(in_msg), in_msg);
@@ -220,6 +226,8 @@ void emmc_task(void *u)
 	}
 }
 
+#include "watchdog.h"
+
 /******************************************************************************
  * Initialize board.
  */
@@ -252,6 +260,21 @@ static void board_init(void)
 
 	/* Enable the SPI peripheral */
 	spi->cr1 |= STM32_SPI_CR1_SPE;
+
+	{
+	    int i;
+	    char* d = (void *)in_msg;
+	    cflush();
+	    CPRINTS("Start");
+	    ulz4fn(raw_data, sizeof(raw_data), in_msg, sizeof(in_msg));
+	    CPRINTS("End");
+
+	    for (i = 0; i < 10; i++) {
+		CPRINTF("%02x", d[i]);
+		cflush();
+		watchdog_reload();
+	    }
+	}
 }
 /* This needs to happen before PWM is initialized. */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_PWM - 1);
