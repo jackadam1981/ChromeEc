@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2379869a_bd85a876",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-11T21:55:55Z",
+      "side": 1,
+      "message": "We should probably go back to polling.\nHere is my reason:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1055194/1/board/scarlet/battery.c#249\nHowever I\u0027ll add some checking before calling rt946x_is_charge_done() to reduce unnecessary i2c traffic.",
+      "parentUuid": "027b679d_bb188c5b",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 26
+      },
+      "revId": "6e5178f91729d82250770cd66252fa77c36afacd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27767a89_c0f61afe",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 1
