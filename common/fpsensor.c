@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "aes.h"
 #include "atomic.h"
 #include "clock.h"
 #include "common.h"
@@ -13,6 +14,7 @@
 #include "host_command.h"
 #include "link_defs.h"
 #include "mkbp_event.h"
+#include "sha256.h"
 #include "spi.h"
 #include "system.h"
 #include "task.h"
@@ -50,6 +52,8 @@ static uint32_t templ_valid;
 static uint32_t templ_dirty;
 /* Current user ID */
 static uint32_t user_id[FP_CONTEXT_USERID_WORDS];
+/* Current template symmetric crypto key */
+static uint32_t templ_key[SHA256_DIGEST_SIZE / sizeof(uint32_t)];
 
 #define CPRINTF(format, args...) cprintf(CC_FP, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_FP, format, ## args)
@@ -306,6 +310,8 @@ static void fp_clear_context(void)
 	templ_dirty = 0;
 	memset(fp_buffer, 0, sizeof(fp_buffer));
 	memset(fp_template, 0, sizeof(fp_template));
+	memset(user_id, 0, sizeof(user_id));
+	memset(templ_key, 0, sizeof(templ_key));
 	/* TODO maybe shutdown and re-init the private libraries ? */
 }
 
@@ -404,31 +410,41 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 	void *out = args->response;
 	uint32_t idx = FP_FRAME_TEMPLATE_INDEX(params->offset);
 	uint32_t offset = params->offset & FP_FRAME_OFFSET_MASK;
-	uint32_t max_size;
-	uint8_t *content;
 
 	if (idx == FP_FRAME_INDEX_RAW_IMAGE) {
+		if (system_is_locked())
+			return EC_RES_ACCESS_DENIED;
 		if (!is_raw_capture(sensor_mode))
 			offset += FP_SENSOR_IMAGE_OFFSET;
-		max_size = sizeof(fp_buffer);
-		content = fp_buffer;
+		if (offset + params->size > sizeof(fp_buffer) ||
+		    params->size > args->response_max)
+			return EC_RES_INVALID_PARAM;
+
+		memcpy(out, fp_buffer + offset, params->size);
+
+		args->response_size = params->size;
+		return EC_RES_SUCCESS;
 	} else if (idx > FP_MAX_FINGER_COUNT) {
 		return EC_RES_INVALID_PARAM;
 	} else if (idx > templ_valid) {
 		return EC_RES_UNAVAILABLE;
-	} else { /* the host requested a template */
-		max_size = sizeof(fp_template[0]);
-		/* Templates are numbered from 1 in this host request. */
-		content = fp_template[idx - 1];
-		templ_dirty &= ~(1 << (idx - 1));
 	}
-
-	if (offset + params->size > max_size ||
+	/* the host requested a template */
+	if (offset + params->size > sizeof(fp_template[0]) ||
 	    params->size > args->response_max)
 		return EC_RES_INVALID_PARAM;
 
-	memcpy(out, content + offset, params->size);
+	if (!params->offset) {
+		if (aes_init(templ_key, templ_key, AES_FLAG_MODE_GCM |
+			     AES_FLAG_KEYSIZE_256 | AES_FLAG_ENCRYPT))
+			return EC_RES_BUSY;
+	}
+	templ_dirty &= ~(1 << (idx - 1));
 
+	/* Templates are numbered from 1 in this host request. */
+	memcpy(out, &fp_template[idx - 1][offset], params->size);
+
+	//aes_cleanup();
 	args->response_size = params->size;
 	return EC_RES_SUCCESS;
 }
@@ -466,10 +482,21 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 	    (params->offset + size > sizeof(fp_template[0])))
 		return EC_RES_INVALID_PARAM;
 
+	if (size % AES_BLOCK_SIZE)
+		return EC_RES_INVALID_PARAM;
+
+	if (!params->offset) {
+		if (aes_init(templ_key, templ_key, AES_FLAG_MODE_GCM |
+			     AES_FLAG_KEYSIZE_256 | AES_FLAG_DECRYPT))
+			return EC_RES_BUSY;
+	}
+
 	memcpy(&fp_template[idx][params->offset], params->data, size);
 
-	if (params->size & FP_TEMPLATE_COMMIT)
+	if (params->size & FP_TEMPLATE_COMMIT) {
 		templ_valid++;
+		aes_cleanup();
+	}
 
 	return EC_RES_SUCCESS;
 }
@@ -479,12 +506,21 @@ static int fp_command_context(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_context *params = args->params;
 	struct ec_response_fp_context *resp = args->response;
+	struct sha256_ctx ctx;
+	uint8_t *hw_id;
+	int hw_id_len;
 
 	fp_clear_context();
 
 	memcpy(user_id, params->userid, sizeof(user_id));
 	/* TODO(b/73337313): real crypto protocol */
 	memcpy(resp->nonce, params->nonce, sizeof(resp->nonce));
+	/* TODO(b/73337313): update hw-specific template key generation */
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, (void *)user_id, sizeof(user_id));
+	hw_id_len = system_get_chip_unique_id(&hw_id);
+	SHA256_update(&ctx, hw_id, hw_id_len);
+	memcpy(templ_key, SHA256_final(&ctx), SHA256_DIGEST_SIZE);
 
 	args->response_size = sizeof(*resp);
 	return EC_RES_SUCCESS;
