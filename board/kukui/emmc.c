@@ -10,6 +10,9 @@
 #include "dma.h"
 #include "endian.h"
 #include "gpio.h"
+#ifdef CONFIG_LZ4
+#include "lz4dec.h"
+#endif
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -59,34 +62,48 @@ static const struct dma_option dma_rx_option = {
 	STM32_DMA_CCR_CIRC
 };
 
-int txpos = 0;
+int ipos = 0;
 #define SPI_TX_N_BLOCK 1
 #define SPI_TX_BUF_SIZE (SPI_TX_N_BLOCK * (512+4) + 4)
-static uint8_t out_msg[SPI_TX_BUF_SIZE] __aligned(4);
+static uint8_t out_msg[SPI_TX_BUF_SIZE + 128] __aligned(4);
 
 static int bootblock_transfer(void)
 {
 	dma_chan_t *txdma = dma_get_channel(STM32_DMAC_SPI_EMMC_TX);
-	int size = SPI_TX_BUF_SIZE - 4;
+	int outsize = 512+4;
+	int insize;
+	const uint8_t *input;
 
-	if (txpos >= sizeof(bootblock_raw_data))
+	if (ipos >= (int)sizeof(bootblock_raw_data))
 		return 1;
 
-	if (txpos == 0) {
+	if (ipos == -1) {
 		out_msg[0] = 0xff;
 		out_msg[1] = 0x97; /* Acknowledge boot mode: 1 S=0 010 E=1 11 */
-		size = 2;
+		insize = 1;
+		outsize = 2;
 		CPRINTS("transfer");
 	} else {
-		memcpy(out_msg, bootblock_raw_data+txpos-2, size);
+		input = bootblock_raw_data + ipos;
+		insize = input[0] + ((uint16_t)input[1] << 8);
+		if (insize & 0x8000) {
+			insize = insize & ~0x8000;
+			memcpy(out_msg, input+2, insize);
+		} else {
+#ifdef CONFIG_LZ4
+			outsize = ulz4fn_simple(input+2, insize,
+						out_msg, sizeof(out_msg));
+#endif
+		}
+		insize += 2;
 	}
-	memset(out_msg+size, 0xff, 4);
+	memset(out_msg+outsize, 0xff, 4);
 
-	dma_prepare_tx(&dma_tx_option, size+4, (void *)out_msg);
+	dma_prepare_tx(&dma_tx_option, outsize+4, (void *)out_msg);
 	dma_enable_tc_interrupt(STM32_DMAC_SPI_EMMC_TX);
 	dma_go(txdma);
 
-	txpos += size;
+	ipos += insize;
 
 	return 0;
 }
@@ -232,7 +249,7 @@ static void handle_command(void)
 	 * it faster.
 	 */
 	while (i != dma_pos && in_msg[i] == 0xffffffff)
-			i = RX_BUF_PREV_32(i);
+		i = RX_BUF_PREV_32(i);
 
 	/*
 	 * We missed the command? That should not happen if the
@@ -259,7 +276,7 @@ static void handle_command(void)
 		 */
 		if (cmd == EMMC_BOOT) {
 			tx = 1;
-			txpos = 0;
+			ipos = -1;
 			bootblock_transfer();
 		}
 	} else {
