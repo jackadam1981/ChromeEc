@@ -52,6 +52,24 @@
       "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f05c12de_88a64512",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-05-11T18:24:12Z",
+      "side": 1,
+      "message": "As a compromise ;) we can add verbose comment here, so that anyone who sees \"installing UNVERIFIED certs\" and  bumps into unexpected behavior can at least look it up in sources and understand what\u0027s going on w/o further research?",
+      "parentUuid": "bf6844e9_6fb70c46",
+      "revId": "4bed5096d76ed5e6a7ab5bd9de1ebcc27bc9ec82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
