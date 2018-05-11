@@ -118,6 +118,30 @@
       "revId": "eff84dd17aef67b57bd35c8a97d1054c09170c8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad608bb_f4589a37",
+        "filename": "board/fizz/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T13:10:19Z",
+      "side": 1,
+      "message": "If you are worried about this discrepancy,\nyou can do the same as several other features which depend on having a specific task:\n rather than using a CONFIG_\u003cfeature\u003e flag, just use directly the HAS_TASK_\u003ctaskname\u003e flag for this\ne.g. \nHAS_TASK_CEC",
+      "parentUuid": "00856ec7_b65272bf",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "eff84dd17aef67b57bd35c8a97d1054c09170c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
