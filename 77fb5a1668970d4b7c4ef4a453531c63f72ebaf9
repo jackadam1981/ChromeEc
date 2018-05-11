@@ -52,6 +52,24 @@
       "revId": "77fb5a1668970d4b7c4ef4a453531c63f72ebaf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41ba82d1_e02e4bdf",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-05-11T21:22:53Z",
+      "side": 1,
+      "message": "it does not.  we\u0027re definitely running update_static_battery_info()\nin some cases -- think no battery, or battery communication problems.\ni think update_dynamic_battery_info() already\ndoes the right thing.",
+      "parentUuid": "5fd1945d_0b33d24c",
+      "revId": "77fb5a1668970d4b7c4ef4a453531c63f72ebaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
