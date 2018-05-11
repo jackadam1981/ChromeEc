@@ -6,3 +6,7 @@
 #include "common.h"
 
 /* TODO(b/78638238): Remove file if still unused after DVT */
+
+void board_pd_execute_data_swap(int port, int data_role)
+{
+}
