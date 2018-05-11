@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ac6a7ac_b44f6331",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-11T16:18:30Z",
+      "side": 1,
+      "message": "only one \"to\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "0e0bcdeb4c233f5c61c13ae98c6b0cf6727efee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7af64123_0e0ad850",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-11T16:18:30Z",
+      "side": 1,
+      "message": "put?",
+      "range": {
+        "startLine": 368,
+        "startChar": 36,
+        "endLine": 368,
+        "endChar": 38
+      },
+      "revId": "0e0bcdeb4c233f5c61c13ae98c6b0cf6727efee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
