@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "22d8d757_4985409f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T16:04:36Z",
+      "side": 1,
+      "message": "\u003e That\u0027s correct. That\u0027s also true that it is self-referencing \n\u003e but that necessarily make my argument invalid?\n\nNo, but my point was the change is eating flash space while being mostly useless.\nSo the argument that it is useful for the kernel side (while I have pointed that the kernel side can just get the port count) is mostly moot.\n\n\u003e \n\u003e This whole function seems to have been written with USB PD in mind,\n\nNot so long ago, it was forbidden (by the hardware requirements) to have dedicated charging port on machines with USB-C ports.\n\n\n\u003e and later on modified to add dedicated chargers\n\nWhile the EC code base was indeed modified recently to support machines having both USB-C port and dedicated charging port.\nThis particular function was not touched I think (and it\u0027s mainly used by EC_CMD_USB_PD_POWER_INFO which does not exactly indicate it should support something).\n\n\n\u003e The best would probably be to rewrite the entire function in a way that is more neutral to the charger type (which would fix all issues related to the dedicated charger),\n\n\nMaybe or maybe not,\nif the kernel is now calling EC_CMD_USB_PD_POWER_INFO for the dedicated ports (side note: really it has USB_PD in its name), just to get an answer with all fields stubbed and filled with 0, it might be as good to keep the original intent of this host command and not call it in this case and save all those changes / code additions.\n\n\n\u003e I also checked the size of the function + its static data before and after applying this patch. \n\u003e Before the size is 0x1ec bytes and after it is 0x1f0, so this patch adds just 4 bytes of code.\n\nOn board\u003dfizz, I\u0027m personally seeing a 44-byte difference for the firmware size with and without the patch.",
+      "parentUuid": "27c80b9c_9903b407",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d12c37_3c9bcda5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
