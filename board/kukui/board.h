@@ -45,6 +45,8 @@
 #ifdef SECTION_IS_RO
 #define CONFIG_BOOTBLOCK
 
+#define CONFIG_LZ4
+
 #define EMMC_SPI_PORT 2
 #endif
 

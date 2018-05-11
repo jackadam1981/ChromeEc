@@ -36,6 +36,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "lz4dec.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -94,41 +95,54 @@ static const struct dma_option dma_rx_option = {
 	STM32_DMA_CCR_CIRC
 };
 
-int txpos = 0;
+int ipos = 0;
 #define SPI_TX_N_BLOCK 1
-#define SPI_TX_BUF_SIZE (SPI_TX_N_BLOCK * (512+4) + 8)
-static uint8_t out_msg[SPI_TX_BUF_SIZE] __aligned(4);
+#define SPI_TX_BUF_SIZE (SPI_TX_N_BLOCK * (512+4) + 4)
+static uint8_t out_msg[SPI_TX_BUF_SIZE + 128] __aligned(4);
 
 static int bootblock_transfer(void)
 {
 	static int transfer_try;
 
 	dma_chan_t *txdma = dma_get_channel(STM32_DMAC_SPI_EMMC_TX);
-	int size = SPI_TX_BUF_SIZE - 8;
+	int outsize = 512+4;
+	int insize;
+	const uint8_t *input;
 
-	if (txpos >= (sizeof(bootblock_raw_data) + 2))
+	if (ipos >= (int)sizeof(bootblock_raw_data))
 		return 1;
 
 	/* FIXME: DMA seems to be skipping the first byte sometimes?! */
 	memset(out_msg, 0xff, 4);
-	if (txpos == 0) {
+	if (ipos == -1) {
 		out_msg[4] = 0xff;
 		out_msg[5] = 0x97; /* Acknowledge boot mode: 1 S=0 010 E=1 11 */
-		size = 2;
+		insize = 1;
+		outsize = 2;
 		CPRINTS("transfer %d", ++transfer_try);
 	} else {
+		input = bootblock_raw_data + ipos;
+		insize = input[0] + ((uint16_t)input[1] << 8);
+		if (insize & 0x8000) {
+			insize = insize & ~0x8000;
+			memcpy(out_msg+4, input+2, insize);
+		} else {
+			outsize = ulz4fn_simple(input+2, insize,
+						out_msg+4, sizeof(out_msg)-4);
+		}
+		insize += 2;
 		/* FIXME: Remove debugging */
-		CPRINTS("data %d/%d (%02x %02x)", txpos, sizeof(bootblock_raw_data) + 2,
-			bootblock_raw_data[txpos-2], bootblock_raw_data[txpos-1]);
-		memcpy(out_msg+4, bootblock_raw_data+txpos-2, size);
-	}
-	memset(out_msg+size+4, 0xff, 4);
+		CPRINTS("data i=%d/%d outsize=%d",
+			ipos, sizeof(bootblock_raw_data), outsize);
 
-	dma_prepare_tx(&dma_tx_option, size+8, (void *)out_msg);
+	}
+	memset(out_msg+outsize+4, 0xff, 4);
+
+	dma_prepare_tx(&dma_tx_option, outsize+8, (void *)out_msg);
 	dma_enable_tc_interrupt(STM32_DMAC_SPI_EMMC_TX);
 	dma_go(txdma);
 
-	txpos += size;
+	ipos += insize;
 
 	return 0;
 }
@@ -362,7 +376,7 @@ static void handle_command(void)
 	 * it faster.
 	 */
 	while (i != dma_pos && in_msg[i] == 0xffffffff)
-			i = RX_BUF_PREV_32(i);
+		i = RX_BUF_PREV_32(i);
 
 	/*
 	 * We missed the command? That should not happen if the
@@ -389,7 +403,7 @@ static void handle_command(void)
 		 */
 		if (cmd == EMMC_BOOT) {
 			tx = 1;
-			txpos = 0;
+			ipos = -1;
 			bootblock_transfer();
 		}
 	} else {
