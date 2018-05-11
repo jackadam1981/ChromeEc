@@ -16,6 +16,24 @@
       "revId": "77fb5a1668970d4b7c4ef4a453531c63f72ebaf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75bbe8e_9b5578c5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-05-11T01:24:56Z",
+      "side": 1,
+      "message": "like, move the code?  we do need it here because we have\ncases where AC_PRESENT bit shows up as being cleared\nwhen we\u0027re on AC.",
+      "parentUuid": "8a796734_790051a3",
+      "revId": "77fb5a1668970d4b7c4ef4a453531c63f72ebaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
