@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1bda6d49_75814c8b",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-11T16:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d46997c_a14dd946",
+      "range": {
+        "startLine": 599,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 16
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c61f4ee_13e94c47",
         "filename": "Makefile.rules",
         "patchSetId": 7
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "e1d45625_6a2e3b12",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-11T16:47:19Z",
+      "side": 1,
+      "message": "ah, I did not know that. Note that building with V\u003d0 seems to be very chatty, not sure what\u0027s wrong. Since we always want this rule to print the size when it is invoked, there is no point in adding a shorcut, so instead of using the \u0027quiet\u0027 command I added a command for size specifically, it keeps silent if V\u003d1 and honors Q setting otherwise.",
+      "parentUuid": "c737f7ac_5471a795",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 5
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "568d3647_c6ac9bb9",
         "filename": "Makefile.rules",
         "patchSetId": 7
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "This way is not useful for any of my personal use cases but I can admit other people have different needs.\nie. either I need to see the size of a single board and I can run explicitly \u0027make BOARD\u003dfoobar size\u0027 (and save 60 additional in my buildall ...)\nor I\u0027m interested in size information for the board I\u0027m not working but might be impacted by changes (and I would need some useful info from buildall)",
       "parentUuid": "568d3647_c6ac9bb9",
+      "range": {
+        "startLine": 604,
+        "startChar": 20,
+        "endLine": 604,
+        "endChar": 21
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60b410f_fe71b7ae",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-11T16:47:19Z",
+      "side": 1,
+      "message": "ok, this is a good reason to add $(BOARD) to the string.",
+      "parentUuid": "e4acd66f_048092e3",
       "range": {
         "startLine": 604,
         "startChar": 20,
