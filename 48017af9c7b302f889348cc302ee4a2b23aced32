@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d46997c_a14dd946",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T16:13:56Z",
+      "side": 1,
+      "message": "maybe we can simply call \u0027size\u0027\n(just because I like running make targets manually)",
+      "range": {
+        "startLine": 599,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 16
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c61f4ee_13e94c47",
         "filename": "Makefile.rules",
         "patchSetId": 7
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c737f7ac_5471a795",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T16:13:56Z",
+      "side": 1,
+      "message": "it doesn\u0027t honor \"V\u003d0 for silent build (warnings/errors only)\" as \u0027documented\u0027 at the top of this file.\nIMO it would have been better if it did/",
+      "parentUuid": "5c61f4ee_13e94c47",
+      "range": {
+        "startLine": 600,
+        "startChar": 1,
+        "endLine": 600,
+        "endChar": 5
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "568d3647_c6ac9bb9",
         "filename": "Makefile.rules",
         "patchSetId": 7
@@ -36,6 +83,30 @@
       "writtenOn": "2018-05-10T05:48:32Z",
       "side": 1,
       "message": "I could add \"$(BOARD): \" here if you insist, but it does not make sense when a single target is built, and looks weird when running \u0027make buildall\u0027 as all other messages do not have board associated with them.\n\nAlso, added indent so that this text is aligned with the rest of the output.",
+      "range": {
+        "startLine": 604,
+        "startChar": 20,
+        "endLine": 604,
+        "endChar": 21
+      },
+      "revId": "48017af9c7b302f889348cc302ee4a2b23aced32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4acd66f_048092e3",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-11T16:13:56Z",
+      "side": 1,
+      "message": "This way is not useful for any of my personal use cases but I can admit other people have different needs.\nie. either I need to see the size of a single board and I can run explicitly \u0027make BOARD\u003dfoobar size\u0027 (and save 60 additional in my buildall ...)\nor I\u0027m interested in size information for the board I\u0027m not working but might be impacted by changes (and I would need some useful info from buildall)",
+      "parentUuid": "568d3647_c6ac9bb9",
       "range": {
         "startLine": 604,
         "startChar": 20,
