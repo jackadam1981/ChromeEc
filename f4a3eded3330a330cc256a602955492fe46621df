@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c11bc22_54e270d0",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-12T01:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d5c62e_3e217c69",
+      "range": {
+        "startLine": 326,
+        "startChar": 38,
+        "endLine": 326,
+        "endChar": 51
+      },
+      "revId": "f4a3eded3330a330cc256a602955492fe46621df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ac396cd_8b773872",
         "filename": "include/battery.h",
         "patchSetId": 4
