@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "970a2b94_80a23d72",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-12T07:54:50Z",
+      "side": 1,
+      "message": "not needed, these are uint8_t anyway",
+      "range": {
+        "startLine": 92,
+        "startChar": 26,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "94ad283cdfbd513ae730b94a6172ff4b877e0ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cdd4b9d_bc2f90ec",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-12T07:54:50Z",
+      "side": 1,
+      "message": "So the default is 0? Are you guaranteed to get an interrupt that\u0027ll set it to 1, if the battery is already full when the EC resets?",
+      "revId": "94ad283cdfbd513ae730b94a6172ff4b877e0ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
