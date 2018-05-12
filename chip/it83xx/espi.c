@@ -19,7 +19,9 @@
 #define CHIP_ESPI_VW_INTERRUPT_NUM 8
 
 /* Console output macros */
-#define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+//#define CPRINTS(format, args...) cprints(CC_LPC, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 struct vw_channel_t {
 	uint8_t  index;         /* VW index of signal */
@@ -385,3 +387,55 @@ void espi_init(void)
 	IT83XX_ESPI_VWCTRL0 |= (1 << 7);
 	task_enable_irq(IT83XX_IRQ_ESPI_VW);
 }
+
+
+struct espi_reg_group {
+	uint8_t start_addr;
+	uint8_t end_addr;
+};
+
+static int command_espi_dump(int argc, char **argv)
+{
+	int i, j;
+
+	struct espi_reg_group *reg_group;
+	/* eSPI slave registers */
+	struct espi_reg_group slave_reg_group[] = {
+		{0x00, 0x17},
+		{0x90, 0x97},
+		{0xA0, 0xA2},
+		{0xB0, 0xB8},
+		{0xC0, 0xC4},
+	};
+
+	/* eSPI VW registers */
+	struct espi_reg_group vw_reg_group[] = {
+		{0x00, 0x00},
+		{0x02, 0x07},
+		{0x40, 0x47},
+		{0x90, 0x93},
+	};
+
+	CPRINTS("eSPI slave registers @ 0x%x", IT83XX_ESPI_BASE);
+	for (i = 0; i < ARRAY_SIZE(slave_reg_group); i++) {
+		reg_group = &slave_reg_group[i];
+		for (j = reg_group->start_addr; j <= reg_group->end_addr; j++) {
+			CPRINTF("[0x%x] = 0x%x\n", j, REG8(IT83XX_ESPI_BASE + j));
+		}
+		CPRINTF("\n");
+		cflush();
+	}
+
+	CPRINTS("eSPI VW registers @ 0x%x", IT83XX_ESPI_VW_BASE);
+	for (i = 0; i < ARRAY_SIZE(vw_reg_group); i++) {
+		reg_group = &vw_reg_group[i];
+		for (j = reg_group->start_addr; j <= reg_group->end_addr; j++) {
+			CPRINTF("[0x%x] = 0x%x\n", j, REG8(IT83XX_ESPI_VW_BASE + j));
+		}
+		CPRINTF("\n");
+		cflush();
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(espi_dump, command_espi_dump, "NULL", "eSPI register dump");
