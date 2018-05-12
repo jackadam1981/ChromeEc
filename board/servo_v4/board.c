@@ -98,6 +98,21 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
  * Forward USART3 as a simple USB serial interface.
  */
 
+#ifdef ENABLE_UART_CONSOLE
+/* Dummy loopback for servod. */
+struct usb_stream_config const usart3_usb;
+static struct queue const usart3_to_usb = QUEUE_DIRECT(64, uint8_t,
+	usart3_usb.producer, usart3_usb.consumer);
+
+USB_STREAM_CONFIG(usart3_usb,
+	USB_IFACE_USART3_STREAM,
+	USB_STR_USART3_STREAM_NAME,
+	USB_EP_USART3_STREAM,
+	USB_STREAM_RX_SIZE,
+	USB_STREAM_TX_SIZE,
+	usart3_to_usb,
+	usart3_to_usb)
+#else
 static struct usart_config const usart3;
 struct usb_stream_config const usart3_usb;
 
@@ -123,11 +138,26 @@ USB_STREAM_CONFIG(usart3_usb,
 	USB_STREAM_TX_SIZE,
 	usb_to_usart3,
 	usart3_to_usb)
-
+#endif
 
 /******************************************************************************
  * Forward USART4 as a simple USB serial interface.
  */
+#ifdef ENABLE_UART_CONSOLE
+/* Dummy loopback for servod. */
+struct usb_stream_config const usart4_usb;
+static struct queue const usart4_to_usb = QUEUE_DIRECT(64, uint8_t,
+	usart4_usb.producer, usart4_usb.consumer);
+
+USB_STREAM_CONFIG(usart4_usb,
+	USB_IFACE_USART4_STREAM,
+	USB_STR_USART4_STREAM_NAME,
+	USB_EP_USART4_STREAM,
+	USB_STREAM_RX_SIZE,
+	USB_STREAM_TX_SIZE,
+	usart4_to_usb,
+	usart4_to_usb)
+#else
 
 static struct usart_config const usart4;
 struct usb_stream_config const usart4_usb;
@@ -154,6 +184,7 @@ USB_STREAM_CONFIG(usart4_usb,
 	USB_STREAM_TX_SIZE,
 	usb_to_usart4,
 	usart4_to_usb)
+#endif
 
 
 /******************************************************************************
@@ -413,13 +444,16 @@ static void board_init(void)
 {
 	/* USB to serial queues */
 	queue_init(&usart3_to_usb);
-	queue_init(&usb_to_usart3);
 	queue_init(&usart4_to_usb);
+
+#ifndef ENABLE_UART_CONSOLE
+	queue_init(&usb_to_usart3);
 	queue_init(&usb_to_usart4);
 
 	/* UART init */
 	usart_init(&usart3);
 	usart_init(&usart4);
+#endif
 
 	/* Delay DUT hub to avoid brownout. */
 	usleep(1000);
