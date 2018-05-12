@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c6826a2_58c96d41",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-12T02:49:50Z",
+      "side": 1,
+      "message": "Yes, you read it right.\nWill fix it.",
+      "parentUuid": "afc78d24_5b472636",
+      "range": {
+        "startLine": 92,
+        "startChar": 25,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd233331_e848fcbf",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-12T02:05:44Z",
       "side": 1,
       "message": "Check return value? Or unnecessary?",
+      "range": {
+        "startLine": 835,
+        "startChar": 1,
+        "endLine": 835,
+        "endChar": 13
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88963706_5e8cddfb",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-12T02:49:50Z",
+      "side": 1,
+      "message": "Probably unnecessary.\nThere is not much I can do should this read fail.",
+      "parentUuid": "dd233331_e848fcbf",
       "range": {
         "startLine": 835,
         "startChar": 1,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "bac5c729_bbd1da83",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-12T02:49:50Z",
+      "side": 1,
+      "message": "I have the same thought.\nOr we can go back to my initial patch set.\nIt\u0027s up to you EC folks :)",
+      "parentUuid": "4bcf0cd3_897cb235",
+      "range": {
+        "startLine": 942,
+        "startChar": 0,
+        "endLine": 947,
+        "endChar": 4
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdc725f1_f8b254b7",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 6
@@ -106,6 +178,30 @@
       "writtenOn": "2018-05-12T02:05:44Z",
       "side": 1,
       "message": "nit: no () around charge_terminated",
+      "range": {
+        "startLine": 948,
+        "startChar": 5,
+        "endLine": 948,
+        "endChar": 24
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49e22899_bfe93086",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-12T02:49:50Z",
+      "side": 1,
+      "message": "Will fix it.",
+      "parentUuid": "cdc725f1_f8b254b7",
       "range": {
         "startLine": 948,
         "startChar": 5,
