@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e6b732c_b670d21e",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-12T00:20:47Z",
+      "side": 1,
+      "message": "I thought first_response_pdu had a backward-compatible field for the version?\n\nIn any case, current code is ok if it works.",
+      "revId": "57c91f2079b009667de1e7ee9a2e39bb6005012f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
