@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca51bac_dbb989d9",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-12T08:31:43Z",
+      "side": 1,
+      "message": "This combo is not supported currently. We expect them to be mutually exclusive, so there should be a compile time error for this.\n\n#if defined(CONFIG_LPC) \u0026\u0026 defined(CONFIG_MKBP_WAKEUP_MASK)\n#error \"CONFIG_LPC and CONFIG_MKBP_WAKEUP_MASK cannot be defined together\"\n#elif defined(CONFIG_LPC)\n    r-\u003evalue \u003d lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);\n#elif defined(CONFIG_MKBP_WAKEUP_MASK)\n    r-\u003evalue \u003d mkbp_get_active_wake_mask();\n#else\n    result \u003d EC_RES_INVALID_PARAM;\n#endif\n    break;",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 629,
+        "endChar": 59
+      },
+      "revId": "e196a6d00eeba6f0d1b88dfb387125a73d1b4865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e29016f_505c432d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-12T08:31:43Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 6
+      },
+      "revId": "e196a6d00eeba6f0d1b88dfb387125a73d1b4865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69c73129_62173594",
+        "filename": "util/ectool.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-12T08:31:43Z",
+      "side": 1,
+      "message": "Does this fit on the above line?",
+      "range": {
+        "startLine": 337,
+        "startChar": 3,
+        "endLine": 337,
+        "endChar": 33
+      },
+      "revId": "e196a6d00eeba6f0d1b88dfb387125a73d1b4865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8621934_536f3cb3",
+        "filename": "util/ectool.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-12T08:31:43Z",
+      "side": 1,
+      "message": "Does this fit on the above line?",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 354,
+        "endChar": 27
+      },
+      "revId": "e196a6d00eeba6f0d1b88dfb387125a73d1b4865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1951fa7e_40a10f70",
+        "filename": "util/ectool.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-12T08:31:43Z",
+      "side": 1,
+      "message": "It is a bit confusing that \"is_feature_supported\" returns 0 indicating feature is supported and -1 indicating feature is not supported :). Maybe add a comment before this function indicating the return values? Or just set 1 \u003d feature supported, 0 \u003d feature not supported, -1 \u003d error to read feature",
+      "range": {
+        "startLine": 387,
+        "startChar": 9,
+        "endLine": 387,
+        "endChar": 11
+      },
+      "revId": "e196a6d00eeba6f0d1b88dfb387125a73d1b4865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
