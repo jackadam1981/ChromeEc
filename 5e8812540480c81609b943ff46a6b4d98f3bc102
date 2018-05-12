@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "afc78d24_5b472636",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-12T02:05:44Z",
+      "side": 1,
+      "message": "Can you add a comment about what that 0xBF is?\n\nOr maybe use ~RT946X_MASK_CHGIRQ2_TERMI (if I understand what this is about....)",
+      "range": {
+        "startLine": 92,
+        "startChar": 25,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd233331_e848fcbf",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-12T02:05:44Z",
+      "side": 1,
+      "message": "Check return value? Or unnecessary?",
+      "range": {
+        "startLine": 835,
+        "startChar": 1,
+        "endLine": 835,
+        "endChar": 13
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4de783ba_76f35168",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 6
@@ -18,6 +64,53 @@
         "startChar": 0,
         "endLine": 947,
         "endChar": 4
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bcf0cd3_897cb235",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-12T02:05:44Z",
+      "side": 1,
+      "message": "Looks ok, I guess.\n\nBut... with this, you avoid one I2C transactions when charge_terminated \u003d\u003d 0 (among the large number of other I2C transactions that are happening anyway at every charge_state_v2 loop...). Is this worth the additional code/complexity?",
+      "parentUuid": "4de783ba_76f35168",
+      "range": {
+        "startLine": 942,
+        "startChar": 0,
+        "endLine": 947,
+        "endChar": 4
+      },
+      "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc725f1_f8b254b7",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-12T02:05:44Z",
+      "side": 1,
+      "message": "nit: no () around charge_terminated",
+      "range": {
+        "startLine": 948,
+        "startChar": 5,
+        "endLine": 948,
+        "endChar": 24
       },
       "revId": "5e8812540480c81609b943ff46a6b4d98f3bc102",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
