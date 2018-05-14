@@ -202,6 +202,20 @@ void interrupt_enable(void)
 	asm("cpsie i");
 }
 
+uint32_t get_int_mask(void)
+{
+	uint32_t ret;
+
+	asm volatile("mrs %0, primask":"=r"(ret));
+	return ret;
+}
+
+void set_int_mask(uint32_t val)
+{
+	if (!val)
+		interrupt_enable();
+}
+
 inline int in_interrupt_context(void)
 {
 	int ret;

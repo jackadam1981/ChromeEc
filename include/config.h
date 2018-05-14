@@ -2836,6 +2836,13 @@
 #undef CONFIG_UART_TX_REQ_CH
 #undef CONFIG_UART_RX_REQ_CH
 
+/*
+ * Disable interrupts while adding a character to the transmit buffer.
+ * This reduces missing and duplicate console output caused by multiple tasks
+ * printing to the console at the same time, but will change system timing
+ * behavior, so should be enabled only temporarily for debugging.
+ */
+#undef CONFIG_UART_TX_USES_CRITICAL_SECTION
 
 /*****************************************************************************/
 /* USB PD config */

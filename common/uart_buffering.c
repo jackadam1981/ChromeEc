@@ -59,20 +59,36 @@ static int tx_next_snapshot_head;
 static int __tx_char(void *context, int c)
 {
 	int tx_buf_next, tx_buf_new_tail;
+#ifdef CONFIG_UART_TX_USES_CRITICAL_SECTION
+	uint32_t int_mask;
+#endif
 
 	/* Do newline to CRLF translation */
 	if (c == '\n' && __tx_char(NULL, '\r'))
 		return 1;
 
-#if defined CONFIG_POLLING_UART
+#ifdef CONFIG_POLLING_UART
 	(void) tx_buf_next;
 	(void) tx_buf_new_tail;
 	uart_write_char(c);
-#else
+#else /* CONFIG_POLLING_UART */
+
+#ifdef CONFIG_UART_TX_USES_CRITICAL_SECTION
+	/* Start critical section so only one task is modifying the buffer. */
+	int_mask = get_int_mask();
+	interrupt_disable();
+#endif
 
 	tx_buf_next = TX_BUF_NEXT(tx_buf_head);
-	if (tx_buf_next == tx_buf_tail)
+	if (tx_buf_next == tx_buf_tail) {
+
+#ifdef CONFIG_UART_TX_USES_CRITICAL_SECTION
+		/* End critical section. */
+		set_int_mask(int_mask);
+#endif
+
 		return 1;
+	}
 
 	/*
 	 * If we do a READ_RECENT, the buffer may have wrapped around, and
@@ -91,7 +107,13 @@ static int __tx_char(void *context, int c)
 
 	tx_buf[tx_buf_head] = c;
 	tx_buf_head = tx_buf_next;
+
+#ifdef CONFIG_UART_TX_USES_CRITICAL_SECTION
+	/* End critical section. */
+	set_int_mask(int_mask);
 #endif
+
+#endif /* CONFIG_POLLING_UART */
 	return 0;
 }
 
