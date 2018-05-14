@@ -70,9 +70,14 @@ static int __tx_char(void *context, int c)
 	uart_write_char(c);
 #else
 
+	/* Start critical section so only one task is modifying the buffer. */
+	interrupt_disable();
 	tx_buf_next = TX_BUF_NEXT(tx_buf_head);
-	if (tx_buf_next == tx_buf_tail)
+	if (tx_buf_next == tx_buf_tail) {
+		/* End critical section. */
+		interrupt_enable();
 		return 1;
+	}
 
 	/*
 	 * If we do a READ_RECENT, the buffer may have wrapped around, and
@@ -91,6 +96,8 @@ static int __tx_char(void *context, int c)
 
 	tx_buf[tx_buf_head] = c;
 	tx_buf_head = tx_buf_next;
+	/* End critical section. */
+	interrupt_enable();
 #endif
 	return 0;
 }
