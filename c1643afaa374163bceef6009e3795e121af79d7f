@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "0099cc76_c03014d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1279820
+      },
+      "writtenOn": "2018-05-14T19:59:51Z",
+      "side": 1,
+      "message": "Ok. Thanks. I will then apply the necessary changes to the kernel driver in order to use these assumptions. Is there any places other than in-code comments that I need to write down these assumptions, like a specification or some kind of documentions?",
+      "parentUuid": "ebd22918_c068adc7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d12c37_3c9bcda5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
