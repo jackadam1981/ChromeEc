@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02707540_bb006edf",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-14T17:56:22Z",
+      "side": 1,
+      "message": "How do you think this test will work? What implicit conversion is being used? val is of type int that will never be able to exceed that value. Also strtoul() returns unsigned values. And struct integer_field uses unsigned types for its value.",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 22
+      },
+      "revId": "804a73808deb38bc61123fd6be353bffa3cd8da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
