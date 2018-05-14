@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d85bfb00_fc775b36",
+        "filename": "board/nami/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-14T16:12:33Z",
+      "side": 1,
+      "message": "These are duplicated.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 16
+      },
+      "revId": "c9313f6447dc1383affdaa721e2ed87c65b02172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae9a46b2_4aae4737",
+        "filename": "board/nami/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-14T16:12:33Z",
+      "side": 1,
+      "message": "There is a fundamental gap to fill between the common library and the board specific code: red isn\u0027t supported. enum led_color is a duplicate. etc. Akali uses blue. etc.\n\nI\u0027m also not convinced why we need led_get_brighness_range at all (if we change the common code).\n\nWe should move the code to the common directory.",
+      "range": {
+        "startLine": 491,
+        "startChar": 16,
+        "endLine": 491,
+        "endChar": 32
+      },
+      "revId": "c9313f6447dc1383affdaa721e2ed87c65b02172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
