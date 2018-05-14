@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "ebd22918_c068adc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-14T19:50:49Z",
+      "side": 1,
+      "message": "If it simplifies the EC code, I think it\u0027s ok to assume a) there is at most one dedicate port b) the port has the highest port id.\n\nAlso, a couple of notes about Fizz power source selection:\n1. Power is selected when the device is turned off and never changed once the device is up \u0026 running.\n2. Dedicated port is always preferred\n\nWithout these assumptions, my understanding is that there would be much more things to fix. So, it\u0027s more likely we would apply these assumptions to the future devices.\n\nI believe the OS is given all the necessary commands to learn the power info  if we accept the assumptions.",
+      "parentUuid": "330dc57a_6be94b91",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c1643afaa374163bceef6009e3795e121af79d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d12c37_3c9bcda5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
