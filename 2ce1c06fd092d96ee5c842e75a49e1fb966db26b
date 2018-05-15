@@ -258,6 +258,30 @@
       "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c62a19_8a3e39ae",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-05-15T08:55:41Z",
+      "side": 1,
+      "message": "OK, I misunderstood the comment -- this explains clearly.  So actually this means we don\u0027t need the set of patches adding 64-bit host event support?  Or they should still be added before taking over bit #31 here?  (I\u0027ve already cherry-picked all except CL:1049469 into eve-campfire branch.)",
+      "parentUuid": "88ea81eb_a858c5ba",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 36
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
