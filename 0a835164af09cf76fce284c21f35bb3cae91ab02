@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41315085_074ee1e9",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-15T16:22:53Z",
+      "side": 1,
+      "message": "we should remove this from octopus baseboard, since all versions of octopus should support OTG",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 34
+      },
+      "revId": "0a835164af09cf76fce284c21f35bb3cae91ab02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea76741_c55ce98f",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-15T16:22:53Z",
+      "side": 1,
+      "message": "this should move to octopus baseboard since all octopus boards will support this behavior",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "0a835164af09cf76fce284c21f35bb3cae91ab02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
