@@ -126,11 +126,21 @@ void chipset_do_shutdown(void)
 	/* Disable 5.0V and 3.3V rails, and wait until they power down. */
 	power_5v_enable(task_get_current(), 0);
 
+#ifdef VARIANT_OCTOPUS_EC_ITE8320
+	gpio_set_flags_by_mask(GPIO_PIN(K, 1), GPIO_OUT_LOW);
+	msleep(5);
+#endif
+
 	/*
 	 * Shutdown the 3.3V rail and wait for it to go down. We cannot wait
 	 * for the 5V rail since other tasks may be using it.
 	 */
 	gpio_set_level(GPIO_EN_PP3300, 0);
+
+#ifdef VARIANT_OCTOPUS_EC_ITE8320
+	gpio_set_flags_by_mask(GPIO_PIN(K, 1), GPIO_INPUT);
+#endif
+
 	while (gpio_get_level(GPIO_PP3300_PG))
 		;
 }
