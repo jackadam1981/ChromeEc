@@ -68,6 +68,30 @@
       "revId": "0a835164af09cf76fce284c21f35bb3cae91ab02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb2aa3d_bf93fd2f",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115140
+      },
+      "writtenOn": "2018-05-15T18:25:44Z",
+      "side": 1,
+      "message": "yeah, makes sense. I will move the implementation to the Octpus baseboard, but that will also enable the otg implementation (the gpio line will be high in UFP mode) in BIP.",
+      "parentUuid": "4ea76741_c55ce98f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "0a835164af09cf76fce284c21f35bb3cae91ab02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
