@@ -148,6 +148,8 @@
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
+#define CONFIG_SHA256_UNROLLED
+
 /* Optional for testing */
 #undef  CONFIG_PECI
 #undef  CONFIG_PSTORE

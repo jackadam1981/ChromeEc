@@ -478,7 +478,5 @@ static void max17055_init(void)
 			}
 		}
 	}
-
-	CPRINTS("max17055 configuration succeeded!");
 }
 DECLARE_HOOK(HOOK_INIT, max17055_init, HOOK_PRIO_DEFAULT);

@@ -436,6 +436,7 @@ void host_command_task(void *u)
 	t_recess.val = 0;
 	t1.val = 0;
 
+	CPRINTS("HC init");
 	host_command_init();
 
 	while (1) {
