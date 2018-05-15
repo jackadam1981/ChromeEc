@@ -108,10 +108,12 @@ void chipset_pre_init_callback(void)
 	/* Enable 5.0V and 3.3V rails, and wait for Power Good */
 	power_5v_enable(task_get_current(), 1);
 
-	gpio_set_level(GPIO_EN_PP3300, 1);
-	while (!gpio_get_level(GPIO_PP5000_PG) ||
-	       !gpio_get_level(GPIO_PP3300_PG))
-		;
+	if (0) {
+		gpio_set_level(GPIO_EN_PP3300, 1);
+		while (!gpio_get_level(GPIO_PP5000_PG) ||
+		       !gpio_get_level(GPIO_PP3300_PG))
+			;
+	}
 
 	/* Enable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 1);
@@ -123,16 +125,18 @@ void chipset_do_shutdown(void)
 	/* Disable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 0);
 
-	/* Disable 5.0V and 3.3V rails, and wait until they power down. */
-	power_5v_enable(task_get_current(), 0);
+	if (0) {
+		/* Disable 5.0V and 3.3V rails, and wait until they power down. */
+		power_5v_enable(task_get_current(), 0);
 
-	/*
-	 * Shutdown the 3.3V rail and wait for it to go down. We cannot wait
-	 * for the 5V rail since other tasks may be using it.
-	 */
-	gpio_set_level(GPIO_EN_PP3300, 0);
-	while (gpio_get_level(GPIO_PP3300_PG))
-		;
+		/*
+		 * Shutdown the 3.3V rail and wait for it to go down. We cannot wait
+		 * for the 5V rail since other tasks may be using it.
+		 */
+		gpio_set_level(GPIO_EN_PP3300, 0);
+		while (gpio_get_level(GPIO_PP3300_PG))
+			;
+	}
 }
 
 int board_set_active_charge_port(int port)

@@ -174,12 +174,16 @@ static inline void tcpc_discharge_vbus(int port, int enable)
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 static inline int tcpm_auto_toggle_supported(int port)
 {
-	return !!tcpc_config[port].drv->drp_toggle;
+	if (tcpc_config[port].drv->drp_toggle)
+		return !!tcpc_config[port].drv->drp_toggle;
+	return 0;
 }
 
 static inline int tcpm_set_drp_toggle(int port, int enable)
 {
-	return tcpc_config[port].drv->drp_toggle(port, enable);
+	if (tcpc_config[port].drv->drp_toggle)
+		return tcpc_config[port].drv->drp_toggle(port, enable);
+	return 0;
 }
 #endif
 
