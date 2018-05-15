@@ -38,6 +38,7 @@ void watchdog_warning_irq(void)
 	IT83XX_ETWD_ETXCTRL(WDT_EXT_TIMER) = 0x03;
 
 	panic_printf("Pre-watchdog warning! IPC: %08x\n", get_ipc());
+	task_print_list();
 }
 
 void watchdog_reload(void)
