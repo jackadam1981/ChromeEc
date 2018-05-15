@@ -22,6 +22,30 @@
       "revId": "784e5240b585f30d0fbc05a216ba0ad6dd3503be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c261b9f_06996e9f",
+        "filename": "baseboard/octopus/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115140
+      },
+      "writtenOn": "2018-05-15T18:27:10Z",
+      "side": 1,
+      "message": "Since OTG mode is supported in Octopus, I will move the OTG implementation here (which will hold good for Yorp and BIP)",
+      "parentUuid": "31c1136f_99e7baee",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 34
+      },
+      "revId": "784e5240b585f30d0fbc05a216ba0ad6dd3503be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
