@@ -17,6 +17,12 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) || \
+	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
+	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+#error "Unsupported config options of IT83xx PD driver"
+#endif
+
 /* Wait time for vconn power switch to turn off. */
 #ifndef PD_IT83XX_VCONN_TURN_OFF_DELAY_US
 #define PD_IT83XX_VCONN_TURN_OFF_DELAY_US 500
