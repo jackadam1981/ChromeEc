@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bc30987_39751c24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-15T12:41:45Z",
+      "side": 1,
+      "message": "Actually this doesn\u0027t guarantee much (e.g. you might have a random i2c access sending the charger task to sleep before this point)",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "101b1c01c60857beb1a85ac605deec039dde8359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9176176_6073e6eb",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-15T12:41:45Z",
+      "side": 1,
+      "message": "Most systems have the PP5000 off in G3 and S5,\ndo you need to keep it on ?\n(else you need some hooks in the chipset power code)",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 37
+      },
+      "revId": "101b1c01c60857beb1a85ac605deec039dde8359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
