@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70ed65e5_263cbc5e",
+        "filename": "util/uut/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-15T03:28:38Z",
+      "side": 1,
+      "message": "Done by adding the header and make it static.",
+      "parentUuid": "adc89658_091e11cc",
+      "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deb959c9_aab79dfd",
         "filename": "util/uut/main.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "639560b1_afaf7168",
+        "filename": "util/uut/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-15T03:28:38Z",
+      "side": 1,
+      "message": "Done by checking (strip_size \u003e 0)",
+      "parentUuid": "deb959c9_aab79dfd",
+      "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "97675243_a926cfe1",
+        "filename": "util/uut/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-15T03:28:38Z",
+      "side": 1,
+      "message": "I added the short flag description in the help which makes it clearer.",
+      "parentUuid": "8a73c876_b60374c4",
+      "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3edf7ed5_0b8b3b31",
         "filename": "util/uut/opr.c",
         "patchSetId": 4
@@ -67,6 +121,24 @@
       "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1bd09b_916da5b9",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-15T03:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3edf7ed5_0b8b3b31",
+      "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "0fda5670_51063439",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-15T03:28:38Z",
+      "side": 1,
+      "message": "Indeed. I should just combine them to one.",
+      "parentUuid": "d0b1a02a_0deed009",
+      "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fa913d7_6fbf3fbb",
         "filename": "util/uut/opr.h",
         "patchSetId": 4
@@ -101,6 +191,24 @@
       "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9788207a_beee5724",
+        "filename": "util/uut/opr.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-15T03:28:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fa913d7_6fbf3fbb",
+      "revId": "db31738c733d68eb9d28335ba043d3ef18db5229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
