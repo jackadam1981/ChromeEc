@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b42ada6c_21411253",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-15T19:55:02Z",
+      "side": 1,
+      "message": "FYI we are never rolling out ToT firmware on test DUTs.\nSo the firmware changes are no-op for the perf tests.\nLooking at the small ectool userspace diff, seems quite innocuous (there is a high probability these code paths are not even executed).",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 71
+      },
+      "revId": "f139d3a0ca9215b5b5bb2abc1f120ff6171036c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
