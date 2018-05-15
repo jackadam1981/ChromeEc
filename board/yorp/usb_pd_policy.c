@@ -9,4 +9,8 @@
 
 void board_pd_execute_data_swap(int port, int data_role)
 {
+	/* On Octopus, only the first port can act as OTG*/
+	if (port == 0)
+		gpio_set_level(GPIO_USB2_OTG_ID,
+			(data_role == PD_ROLE_UFP) ? 1 : 0);
 }
