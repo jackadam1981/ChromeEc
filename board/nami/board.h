@@ -283,8 +283,13 @@ enum oem_id {
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW		15000
-#define PD_MAX_POWER_MW			45000
-#define PD_MAX_CURRENT_MA		3000
+/*
+ * The estimated power consumption is 65W thus we may make the supply reserve
+ * more power than necessary. There is no such a smart power supply available.
+ * We can update the value if the situation changes in the future.
+ */
+#define PD_MAX_POWER_MW			100000
+#define PD_MAX_CURRENT_MA		5000
 #define PD_MAX_VOLTAGE_MV		20000
 
 /* Board specific handlers */
