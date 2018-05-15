@@ -56,7 +56,8 @@ enum adc_channel {
 };
 
 enum temp_sensor_id {
-	TEMP_SENSOR_AMBIENT = 0,
+	TEMP_SENSOR_BATTERY = 0,
+	TEMP_SENSOR_AMBIENT,
 	TEMP_SENSOR_CHARGER,
 	TEMP_SENSOR_COUNT
 };
