@@ -14,7 +14,9 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "led_common.h"
+#include "power.h"
 #include "system.h"
+#include "task.h"
 #include "util.h"
 
 #define BAT_LED_ON 1
@@ -36,10 +38,24 @@ enum led_color {
 
 static void side_led_set_color(int port, enum led_color color)
 {
+	int led_on;
+
 	gpio_set_level(port ? GPIO_CHG_LED_Y_C1 : GPIO_CHG_LED_Y_C0,
 		(color == LED_AMBER) ? BAT_LED_ON : BAT_LED_OFF);
 	gpio_set_level(port ? GPIO_CHG_LED_W_C1 : GPIO_CHG_LED_W_C0,
 		(color == LED_WHITE) ? BAT_LED_ON : BAT_LED_OFF);
+
+	/*
+	 * TODO(b/79749048): Remove this hack after hardware fix which moves
+	 * the power source to an always-rail.
+	 */
+	if (system_can_boot_ap()) {
+		led_on = (gpio_get_level(GPIO_CHG_LED_Y_C0) ||
+			gpio_get_level(GPIO_CHG_LED_Y_C1) ||
+			gpio_get_level(GPIO_CHG_LED_W_C0) ||
+			gpio_get_level(GPIO_CHG_LED_W_C1));
+		power_5v_enable(task_get_current(), led_on);
+	}
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
