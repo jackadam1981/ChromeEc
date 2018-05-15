@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e5f7bc3_62ba6b7d",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-05-15T11:23:02Z",
+      "side": 1,
+      "message": "Do you mean something like this ?\n\nintel_x86.h\n{\n    ...\n\n    #ifdef CONFIG_BOARD_HAS_RTC_RESET\n    void board_rtc_reset(void);\n    #endif\n\n    ...\n}",
+      "parentUuid": "7d1442b0_9f48325e",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 27
+      },
+      "revId": "22cf4b6bab7582b0e75b713ecfea9488ad783d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37184703_ebfcf770",
         "filename": "util/getversion.sh",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-09T16:50:55Z",
       "side": 1,
       "message": "What\u0027s this?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "22cf4b6bab7582b0e75b713ecfea9488ad783d1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0395b126_b098bcf6",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-05-15T11:23:02Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "37184703_ebfcf770",
       "range": {
         "startLine": 71,
         "startChar": 1,
