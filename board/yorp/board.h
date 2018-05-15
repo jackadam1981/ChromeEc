@@ -25,7 +25,7 @@
 /* USB-A Configuration */
 #undef USB_PORT_COUNT
 #define USB_PORT_COUNT 1 /* TODO(b/74388692): Make 2 after hardware fix. */
-
+#undef CONFIG_USBC_SS_MUX_DFP_ONLY
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
