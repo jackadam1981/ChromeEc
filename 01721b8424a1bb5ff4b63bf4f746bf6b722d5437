@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a986ee3_4c233789",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1529cb2d_061fae9d",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c073eb85_f73d3fc2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-16T07:33:23Z",
       "side": 1,
       "message": "do we need an additional flag ? or can this always be the tool behavior ?\n\nie what is the drawback of having it ? is it slower ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a71722_45b060a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "The flag is used to distinguish the mechanism (auto_mode) from the existing operations (--opr wr|rd|go|call) in the UUT tool.\nIf --auto flag is set, UUT will do the image_auto_write function.\nif it is not set, UUT will perform functions based on the parameter set with --opr flag.",
+      "parentUuid": "c073eb85_f73d3fc2",
       "range": {
         "startLine": 13,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f22548c1_c3c81484",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042c0237_d608e350",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c755d11_e73f18a5",
         "filename": "util/uut/main.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f49e6b7b_d0ac8a74",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c755d11_e73f18a5",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 65
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d3962a77_de5eb878",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e8f6cb_594a9939",
+      "range": {
+        "startLine": 42,
+        "startChar": 57,
+        "endLine": 42,
+        "endChar": 66
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f40b0eaf_19f982f5",
         "filename": "util/uut/main.c",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09d3c00_68e053f4",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f40b0eaf_19f982f5",
+      "range": {
+        "startLine": 106,
+        "startChar": 33,
+        "endLine": 106,
+        "endChar": 42
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "74329fbb_ce4903f6",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b06be115_73685789",
+      "range": {
+        "startLine": 135,
+        "startChar": 20,
+        "endLine": 135,
+        "endChar": 29
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dae5cc38_b90b08a2",
         "filename": "util/uut/main.c",
         "patchSetId": 5
@@ -183,6 +351,30 @@
       "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea169ca_ae8589e6",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "I just want to let the progress (percentage) shown responsively and look smooth.\nConsidering the performance, I will move it outside of the second while loop in the next patch set",
+      "parentUuid": "dae5cc38_b90b08a2",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "ceb33fd4_1b11e97d",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "I will set the element to \"size\u0027-byte in the next patch set.",
+      "parentUuid": "2e66a71e_675fa826",
+      "range": {
+        "startLine": 245,
+        "startChar": 6,
+        "endLine": 245,
+        "endChar": 38
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4c1d77f_7dfe00aa",
         "filename": "util/uut/main.c",
         "patchSetId": 5
@@ -229,6 +445,30 @@
       "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9065495_0afbdd10",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Indeed, I will fix this to  while ((strip_size \u003e 0) \u0026\u0026 (buffer[strip_size-1] \u003d\u003d 0xFF))\nin the next patch set.",
+      "parentUuid": "c4c1d77f_7dfe00aa",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 16
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "92a78461_ca115f60",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c7b29a6_79cba4d6",
+      "range": {
+        "startLine": 519,
+        "startChar": 47,
+        "endLine": 519,
+        "endChar": 54
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbf4eedc_38396770",
         "filename": "util/uut/opr.c",
         "patchSetId": 5
@@ -275,6 +539,30 @@
       "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f37c230d_f693a67e",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-16T12:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf4eedc_38396770",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
