@@ -196,7 +196,7 @@ struct upgrade_pkt {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "abcd:fhIikO:oPprstUuVv";
+static char *short_opts = "abcd:fhIikO:oPprstUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		0,   NULL, 'a'},
@@ -218,6 +218,7 @@ static const struct option long_opts[] = {
 	{"trunks_send",	0,   NULL, 't'},
 	{"verbose",	0,   NULL, 'V'},
 	{"version",	0,   NULL, 'v'},
+	{"wp",		2,   NULL, 'w'},
 	{"upstart",	0,   NULL, 'u'},
 	{},
 };
@@ -540,6 +541,9 @@ static void usage(int errs)
 			"Upstart mode (strict header checks)\n"
 	       "  -V,--verbose             Enable debug messages\n"
 	       "  -v,--version             Report this utility version\n"
+	       "  -w,--wp [enable|disable|follow_batt_pres[:atboot]]\n"
+	       "			   Control write protect. Use atboot\n"
+	       "			   to save this wp state through boot\n"
 	       "\n", progname, VID, PID);
 
 	exit(errs ? update_error : noop);
@@ -1765,6 +1769,70 @@ static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
 		poll_for_pp(td, VENDOR_CC_CCD, CCDV_PP_POLL_OPEN);
 }
 
+static void process_wp(struct transfer_descriptor *td,
+		       const char *wp_command)
+{
+	size_t response_size;
+	uint8_t response;
+	uint8_t set_wp = 0;
+	int rv = 0;
+
+	response_size = sizeof(response);
+
+	if (wp_command) {
+		set_wp = WPV_UPDATE;
+		if (!strncasecmp(wp_command, "follow", 6))
+			printf("resetting wp\n");
+		else {
+			set_wp |= WPV_FORCE;
+			if (!strncasecmp(wp_command, "enable", 6))
+				set_wp |= WPV_ENABLE;
+			else if (strncasecmp(wp_command, "disable", 7))
+				exit(update_error);
+		}
+		if (strstr(wp_command, ":atboot")) {
+			printf("ATBOOT\n");
+			set_wp |= WPV_ATBOOT_SET;
+		}
+	}
+
+	if (set_wp)
+		printf("Setting WP: %x\n", set_wp);
+	else
+		printf("Getting WP");
+
+	rv = send_vendor_command(td, VENDOR_CC_WP,
+				 &set_wp, sizeof(set_wp),
+				 &response, &response_size);
+
+	if (rv == VENDOR_RC_NOT_ALLOWED) {
+		fprintf(stderr, "Setting WP is restricted\n");
+		exit(update_error);
+	}
+
+	if (rv != VENDOR_RC_SUCCESS) {
+		fprintf(stderr, "Error %d setting write protect\n", rv);
+		exit(update_error);
+	}
+
+	if (response_size == sizeof(response)) {
+		printf("WP: %08x\n", response);
+		printf("Flash WP: %s%s\n",
+			response & WPV_FORCE ? "forced " : "",
+			response & WPV_ENABLE ? "enabled" : "disabled");
+		printf(" at boot: %s\n",
+			!(response & WPV_ATBOOT_SET) ? "follow_batt_pres" :
+			response & WPV_ATBOOT_ENABLE ? "forced enabled" :
+			"forced disabled");
+		return;
+	}
+
+	fprintf(stderr, "Unexpected response size %zd while getting "
+		"write protect\n",
+		response_size);
+	exit(update_error);
+}
+
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action,
 		 struct board_id *bid)
@@ -1922,6 +1990,8 @@ int main(int argc, char *argv[])
 	int ccd_unlock = 0;
 	int ccd_lock = 0;
 	int ccd_info = 0;
+	int wp = 0;
+	const char *wp_command;
 	int try_all_transfer = 0;
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
@@ -2039,6 +2109,14 @@ int main(int argc, char *argv[])
 		case 'v':
 			report_version();  /* This will call exit(). */
 			break;
+		case 'w':
+			wp = 1;
+			if (!optarg && argv[optind] && argv[optind][0] != '-')
+				/* optional argument present. */
+				optarg = argv[optind++];
+
+			wp_command = optarg;
+			break;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -2074,7 +2152,8 @@ int main(int argc, char *argv[])
 	    !password &&
 	    !rma &&
 	    !show_fw_ver &&
-	    !openbox_desc_file) {
+	    !openbox_desc_file &&
+	    !wp) {
 		if (optind >= argc) {
 			fprintf(stderr,
 				"\nERROR: Missing required <binary image>\n\n");
@@ -2101,9 +2180,9 @@ int main(int argc, char *argv[])
 
 	if (((bid_action != bid_none) + !!rma + !!password +
 	     !!ccd_open + !!ccd_unlock + !!ccd_lock + !!ccd_info +
-	     !!openbox_desc_file) > 2) {
+	     !!openbox_desc_file + !!wp) > 2) {
 		fprintf(stderr, "ERROR: "
-			"options -I -i, -k, -O, -o, -P, -r, and -u "
+			"options -I -i, -k, -O, -o, -P, -r, -u, and -w "
 			"are mutually exclusive\n");
 		exit(update_error);
 	}
@@ -2136,6 +2215,9 @@ int main(int argc, char *argv[])
 
 	if (rma)
 		process_rma(&td, rma_auth_code);
+
+	if (wp)
+		process_wp(&td, wp_command);
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
