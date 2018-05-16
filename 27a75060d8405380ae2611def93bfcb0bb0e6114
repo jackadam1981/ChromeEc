@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "77b380ef_0d16a95e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-16T18:11:44Z",
+      "side": 1,
+      "message": "Is this supposed to be 1500mA?\n\nThat\u0027s still very low, I\u0027ve seen brownouts even when configuring the charger at 4A when turning on the 5V rail.",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "27a75060d8405380ae2611def93bfcb0bb0e6114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0b2beaa_f99ba15f",
         "filename": "power/sdm845.c",
         "patchSetId": 4
@@ -13,6 +36,30 @@
       "writtenOn": "2018-05-16T07:07:09Z",
       "side": 1,
       "message": "I\u0027m not convinced doing a loop here polling forever is right.\n\nWhile Fizz added a similar system, it was only for the battery-less chromebox.\n\nFrom a high-level PoV, going to S5 doesn\u0027t require 7.5W, does it ?\n(S3/S0 might certainly)\n\nFrom an implementation perspective, it\u0027s weird to spin here in a \u0027transition\u0027 state (G3S5),\nwhy it is exiting G3 in first place if you don\u0027t want ?\nwhy the waiting for this condition is not handled by the regular state machine ?",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 15
+      },
+      "revId": "27a75060d8405380ae2611def93bfcb0bb0e6114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b2eeee6_e16d8fc0",
+        "filename": "power/sdm845.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-16T18:11:44Z",
+      "side": 1,
+      "message": "I don\u0027t like this either, especially this early in development.\n\nThe issue is that turning on the 5V rail temporary (O(1ms)) requires a lot of current (I think in my previous patches I had to go all the way up to 5A on the charger). After the 5V capacitors are charged, it probably requires very little current after that.\n\nTo make matters worse, our leds are on that rail.\n\nThere are also other rails (stuff that\u0027s required for the AP) that sometimes requires more current from the charger too.\n\nRealistically I don\u0027t think a proper type C power supply will brown out with this. I guess that\u0027s why the charger has 2 current limits (one for spikes like ours and another standard one that will probably follow the PD negotiated current). Of course, low power 500mA cables will still brown out regardless.\n\nSo without a battery, we either can\u0027t turn on the led (or usb vbus, but which isn\u0027t always needed). Or we do something hacky like this to prevent any booting unless we have a good enough power supply.",
+      "parentUuid": "c0b2beaa_f99ba15f",
       "range": {
         "startLine": 578,
         "startChar": 0,
