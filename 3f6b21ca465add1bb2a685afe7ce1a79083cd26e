@@ -114,6 +114,30 @@
       "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab826e23_0b057211",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-16T23:46:27Z",
+      "side": 1,
+      "message": "Agree more documentation would be helpful.  tpm_vendor_commands.h should be more descriptive for each command, similar to (or better than :)  ec_commands.h.",
+      "parentUuid": "7cb46152_35893d94",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 32
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
