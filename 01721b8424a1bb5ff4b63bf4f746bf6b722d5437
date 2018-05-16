@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1529cb2d_061fae9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c073eb85_f73d3fc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "do we need an additional flag ? or can this always be the tool behavior ?\n\nie what is the drawback of having it ? is it slower ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042c0237_d608e350",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c755d11_e73f18a5",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "missing word ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 65
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e8f6cb_594a9939",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "typo ?",
+      "range": {
+        "startLine": 42,
+        "startChar": 57,
+        "endLine": 42,
+        "endChar": 66
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40b0eaf_19f982f5",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 106,
+        "startChar": 33,
+        "endLine": 106,
+        "endChar": 42
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06be115_73685789",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 135,
+        "startChar": 20,
+        "endLine": 135,
+        "endChar": 29
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae5cc38_b90b08a2",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "why do you flush at each iteration ? it\u0027s slow.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e66a71e_675fa826",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "using 1-byte element is the slowest way of doing a fread",
+      "range": {
+        "startLine": 245,
+        "startChar": 6,
+        "endLine": 245,
+        "endChar": 38
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c1d77f_7dfe00aa",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "isn\u0027t this doing an undefined read for \u0027strip_size \u003d\u003d 0\u0027 ?\n(e.g a blank image)",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 16
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7b29a6_79cba4d6",
+        "filename": "util/uut/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 519,
+        "startChar": 47,
+        "endLine": 519,
+        "endChar": 54
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf4eedc_38396770",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:33:23Z",
+      "side": 1,
+      "message": "nit: return opr_send_cmds(\u0026wr_cmd_buf, 1);",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "01721b8424a1bb5ff4b63bf4f746bf6b722d5437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
