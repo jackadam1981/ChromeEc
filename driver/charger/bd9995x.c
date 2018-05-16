@@ -1522,3 +1522,64 @@ struct i2c_stress_test_dev bd9995x_i2c_stress_test_dev = {
 	.i2c_write_dev = &bd9995x_i2c_write,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_CHARGER */
+
+static int tino_get_lim_set_func(int argc, char **argv)
+{
+	int reg;
+	if (argc != 2) {
+		CPRINTS("TINO: number of argument is not two!");
+		return EC_ERROR_INVAL;
+	}
+
+	if (!strcasecmp(argv[1], "7")) {
+		CPRINTS("TINO: get VBUS input current limit settings!");
+		ch_raw_read16(BD9995X_CMD_EXT_IBUS_LIM_SET, &reg,
+				BD9995X_EXTENDED_COMMAND);
+		CPRINTS("TINO: reg is %u", reg);
+		return EC_SUCCESS;
+	} else if (!strcasecmp(argv[1], "8")) {
+		CPRINTS("TINO: get VCC input current limit settings!");
+		ch_raw_read16(BD9995X_CMD_EXT_ICC_LIM_SET, &reg,
+				BD9995X_EXTENDED_COMMAND);
+		CPRINTS("TINO: reg is %u", reg);
+		return EC_SUCCESS;
+	} else {
+		CPRINTS("TINO: argument is not 7 or 8!");
+		return EC_ERROR_PARAM1;
+	}
+
+}
+DECLARE_CONSOLE_COMMAND(tino_get, tino_get_lim_set_func, 
+			"[7|8]", 
+			"Tino get limitation settings");
+
+static int tino_set_lim_set_func(int argc, char **argv)
+{
+	int rv;
+	int val;
+	char *e;
+
+	CPRINTS("TINO: would like to set input current as %s", argv[1]);
+
+	val = strtoi(argv[1], &e, 10);
+	if (*e) {
+		CPRINTS("TINO: error parameter!");
+		return EC_ERROR_PARAM1;
+	}
+	CPRINTS("TINO: integer val is %u", val);
+
+	rv = ch_raw_write16(BD9995X_CMD_EXT_IBUS_LIM_SET, val,
+				BD9995X_EXTENDED_COMMAND);
+
+	if (rv) {
+		CPRINTS("TINO: failed to set input current as %u", val);
+		return rv;
+	}
+
+	CPRINTS("TINO: set input current as %u", val);
+	return ch_raw_write16(BD9995X_CMD_EXT_ICC_LIM_SET, val,
+				BD9995X_EXTENDED_COMMAND);
+}
+DECLARE_CONSOLE_COMMAND(tino_set, tino_set_lim_set_func, 
+			"arg[1] is input current", 
+			"Tino get limitation settings");
