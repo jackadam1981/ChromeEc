@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0b2beaa_f99ba15f",
+        "filename": "power/sdm845.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:07:09Z",
+      "side": 1,
+      "message": "I\u0027m not convinced doing a loop here polling forever is right.\n\nWhile Fizz added a similar system, it was only for the battery-less chromebox.\n\nFrom a high-level PoV, going to S5 doesn\u0027t require 7.5W, does it ?\n(S3/S0 might certainly)\n\nFrom an implementation perspective, it\u0027s weird to spin here in a \u0027transition\u0027 state (G3S5),\nwhy it is exiting G3 in first place if you don\u0027t want ?\nwhy the waiting for this condition is not handled by the regular state machine ?",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 15
+      },
+      "revId": "27a75060d8405380ae2611def93bfcb0bb0e6114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
