@@ -22,6 +22,30 @@
       "revId": "cc999a5f54492275fd1b852bdd4ae3f3ed44c891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8dbb534_041697d7",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-16T01:33:47Z",
+      "side": 1,
+      "message": "I\u0027m honestly just following the pattern elsewhere in this file (e.g. https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/89/1060589/1/util/flash_ec#844)",
+      "parentUuid": "272b1f11_5bd2c626",
+      "range": {
+        "startLine": 907,
+        "startChar": 6,
+        "endLine": 907,
+        "endChar": 27
+      },
+      "revId": "cc999a5f54492275fd1b852bdd4ae3f3ed44c891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
