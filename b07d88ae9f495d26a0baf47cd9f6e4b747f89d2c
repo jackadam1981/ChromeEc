@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb9a3454_7479fdf7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:23:31Z",
+      "side": 1,
+      "message": "help message also needs to be updated.",
+      "range": {
+        "startLine": 543,
+        "startChar": 9,
+        "endLine": 543,
+        "endChar": 63
+      },
+      "revId": "b07d88ae9f495d26a0baf47cd9f6e4b747f89d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6756865_0d474e84",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1788,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:23:31Z",
+      "side": 1,
+      "message": "don\u0027t print out response value interpretation if there has been an error.",
+      "range": {
+        "startLine": 1781,
+        "startChar": 0,
+        "endLine": 1788,
+        "endChar": 22
+      },
+      "revId": "b07d88ae9f495d26a0baf47cd9f6e4b747f89d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fbf4b80_b3aa95dc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:23:31Z",
+      "side": 1,
+      "message": "all this logic should be in \u0027process_wp\u0027",
+      "range": {
+        "startLine": 2079,
+        "startChar": 0,
+        "endLine": 2095,
+        "endChar": 5
+      },
+      "revId": "b07d88ae9f495d26a0baf47cd9f6e4b747f89d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
