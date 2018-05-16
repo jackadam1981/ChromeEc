@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a22ceb36_41e9dbf9",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-05-16T10:49:07Z",
+      "side": 1,
+      "message": "Not really understand...what do you mean \"not addressed\" ?",
+      "parentUuid": "be9e5b84_5b5b5607",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 30
+      },
+      "revId": "2fcebdac238d534f5348b59e9baabab4d93676e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de8cd3da_330b9e9c",
         "filename": "board/fizz/board.c",
         "patchSetId": 6
