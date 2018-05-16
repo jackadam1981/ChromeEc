@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f244557_e42ce924",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T06:28:57Z",
+      "side": 1,
+      "message": "Wasn\u0027t the intent to use BRANCH\u003dpoppy ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdcb6f91_94d042fa",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T06:28:57Z",
+      "side": 1,
+      "message": "it seems one day we should have a proper bd99992 header with those constants",
+      "range": {
+        "startLine": 325,
+        "startChar": 30,
+        "endLine": 327,
+        "endChar": 21
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f54bdb6_62d70716",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T06:28:57Z",
+      "side": 1,
+      "message": "the if is useless",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 9
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b429b41_d3e61e27",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T06:28:57Z",
+      "side": 1,
+      "message": "sure, you do\nbut you are not telling us why you have to do so and it\u0027s not obvious to me (HOOK_INIT already being executed in the HOOK task context)",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
