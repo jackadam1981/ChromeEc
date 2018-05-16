@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fff7219_c19c2933",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-16T22:12:31Z",
+      "side": 1,
+      "message": "It might help to define a custom macro since this pattern is repeated so often within the file:\n\n/* PPC_PORT_FAILURE expects function using this to have a variable named port. */\n#define PPC_PORT_FAILURE(msg, arg...) \\\n»       CPRINTS(\"PPC p%d: \"msg, port, ##arg)",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 532,
+        "endChar": 40
+      },
+      "revId": "e07cad44fd4808eabc836e616b73900a60fcf6d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
