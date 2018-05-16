@@ -527,6 +527,7 @@ static int send_special_waveform(struct ftdi_context *ftdi)
 	int ret;
 	int i;
 	uint64_t *wave;
+	int retries_left = 10;
 	uint8_t release_lines[] = {SET_BITS_LOW, 0, 0};
 
 	wave = malloc(SPECIAL_BUFFER_SIZE);
@@ -534,70 +535,78 @@ static int send_special_waveform(struct ftdi_context *ftdi)
 	printf("Waiting for the EC power-on sequence ...");
 	fflush(stdout);
 
-retry:
-	/* Reset the FTDI into a known state */
-	ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_RESET);
-	if (ret != 0) {
-		fprintf(stderr, "failed to reset FTDI\n");
-		goto special_failed;
-	}
+	while (--retries_left){
+		/* Reset the FTDI into a known state */
+		ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_RESET);
+		if (ret != 0) {
+			fprintf(stderr, "failed to reset FTDI\n");
+			break;
+		}
+	
+		/*
+		 * set the clock divider,
+		 * so we output a new bitbang value every 2.5us.
+		 */
+		ret = ftdi_set_baudrate(ftdi, 160000);
+		if (ret != 0) {
+			fprintf(stderr, "failed to set bitbang clock\n");
+			break;
+		}
+	
+		/* Enable asynchronous bit-bang mode */
+		ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_BITBANG);
+		if (ret != 0) {
+			fprintf(stderr, "failed to set bitbang mode\n");
+			break;
+		}
+	
+		/* do usb special waveform */
+	
+		wave[0] = 0x0;
+		ftdi_write_data(ftdi, (uint8_t *)wave, 1);
+		usleep(5000);
+	
+		/* program each special tick */
+		for (i = 0; i < TICK_COUNT; ) {
+			wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
+			wave[i++] = SPECIAL_PATTERN_SDA_H_SCL_L;
+			wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
+		}
+		wave[19] = SPECIAL_PATTERN_SDA_H_SCL_H;
+	
+	
+		/* fill the buffer with the waveform pattern */
+		for (i = TICK_COUNT; i < SPECIAL_BUFFER_SIZE / sizeof(uint64_t); i++)
+			wave[i] = SPECIAL_PATTERN;
+	
+		ret = ftdi_write_data(ftdi, (uint8_t *)wave, SPECIAL_BUFFER_SIZE);
+		if (ret < 0)
+			fprintf(stderr, "Cannot output special waveform\n");
+	
+		/* clean everything to go back to regular I2C communication */
+		ftdi_usb_purge_buffers(ftdi);
+		ftdi_set_bitmode(ftdi, 0xff, BITMODE_RESET);
+		config_i2c(ftdi);
+		ftdi_write_data(ftdi, release_lines, sizeof(release_lines));
+	
+		/* wait for PLL stable for 5ms (plus remaining USB transfers) */
+		usleep(10 * MSEC);
+	
+		/* If we can talk to chip, then we can break the retry loop */
+		ret = check_chipid(ftdi);
+		if (!ret) {
+			break;
+		}
 
-	/*
-	 * set the clock divider,
-	 * so we output a new bitbang value every 2.5us.
-	 */
-	ret = ftdi_set_baudrate(ftdi, 160000);
-	if (ret != 0) {
-		fprintf(stderr, "failed to set bitbang clock\n");
-		goto special_failed;
-	}
-
-	/* Enable asynchronous bit-bang mode */
-	ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_BITBANG);
-	if (ret != 0) {
-		fprintf(stderr, "failed to set bitbang mode\n");
-		goto special_failed;
-	}
-
-	/* do usb special waveform */
-
-	wave[0] = 0x0;
-	ftdi_write_data(ftdi, (uint8_t *)wave, 1);
-	usleep(5000);
-
-	/* program each special tick */
-	for (i = 0; i < TICK_COUNT; ) {
-		wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
-		wave[i++] = SPECIAL_PATTERN_SDA_H_SCL_L;
-		wave[i++] = SPECIAL_PATTERN_SDA_L_SCL_L;
-	}
-	wave[19] = SPECIAL_PATTERN_SDA_H_SCL_H;
-
-
-	/* fill the buffer with the waveform pattern */
-	for (i = TICK_COUNT; i < SPECIAL_BUFFER_SIZE / sizeof(uint64_t); i++)
-		wave[i] = SPECIAL_PATTERN;
-
-	ret = ftdi_write_data(ftdi, (uint8_t *)wave, SPECIAL_BUFFER_SIZE);
-	if (ret < 0)
-		fprintf(stderr, "Cannot output special waveform\n");
-
-	/* clean everything to go back to regular I2C communication */
-	ftdi_usb_purge_buffers(ftdi);
-	ftdi_set_bitmode(ftdi, 0xff, BITMODE_RESET);
-	config_i2c(ftdi);
-	ftdi_write_data(ftdi, release_lines, sizeof(release_lines));
-
-	/* wait for PLL stable for 5ms (plus remaining USB transfers) */
-	usleep(10 * MSEC);
-
-	/* if we cannot communicate, retry the sequence */
-	if (check_chipid(ftdi) < 0) {
+		/* Sleep before next attempt */
 		sleep(1);
-		goto retry;
 	}
-special_failed:
-	printf("Done.\n");
+
+	if (ret)
+		printf(" Failed.\n");
+	else
+		printf(" Done.\n");
+
 	free(wave);
 	return ret;
 }
