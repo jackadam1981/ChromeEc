@@ -1164,7 +1164,7 @@ static void cec_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cec_init, HOOK_PRIO_LAST);
 
-void cec_task(void)
+void cec_task(void *unused)
 {
 	int rv;
 	uint32_t events;
