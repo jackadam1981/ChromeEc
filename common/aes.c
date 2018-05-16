@@ -46,18 +46,27 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  * ==================================================================== */
 
-#include <openssl/aes.h>
+#include <stdint.h>
 
-#include <assert.h>
+#include "endian.h"
 
-#include <openssl/cpu.h>
+// AES_MAXNR is the maximum number of AES rounds.
+#define AES_MAXNR 14
+// aes_key_st should be an opaque type, but EVP requires that the size be
+// known.
+struct aes_key_st {
+  uint32_t rd_key[4 * (AES_MAXNR + 1)];
+  unsigned rounds;
+};
+typedef struct aes_key_st AES_KEY;
 
-#include "internal.h"
-#include "../modes/internal.h"
+static inline uint32_t GETU32(const void *in) {
+  return be32toh(*(uint32_t *)in);
+}
 
-
-#if defined(OPENSSL_NO_ASM) || \
-    (!defined(OPENSSL_X86) && !defined(OPENSSL_X86_64) && !defined(OPENSSL_ARM))
+static inline void PUTU32(void *out, uint32_t v) {
+  *(uint32_t *)out = be32toh(v);
+}
 
 // Te0[x] = S [x].[02, 01, 01, 03];
 // Te1[x] = S [x].[03, 02, 01, 01];
@@ -682,7 +691,6 @@ void AES_encrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
   uint32_t s0, s1, s2, s3, t0, t1, t2, t3;
   int r;
 
-  assert(in && out && key);
   rk = key->rd_key;
 
   // map byte array block to cipher state
@@ -743,7 +751,6 @@ void AES_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
   uint32_t s0, s1, s2, s3, t0, t1, t2, t3;
   int r;
 
-  assert(in && out && key);
   rk = key->rd_key;
 
   // map byte array block to cipher state
@@ -804,55 +811,4 @@ void AES_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
   PUTU32(out + 12, s3);
 }
 
-#else
-
-// In this case several functions are provided by asm code. However, one cannot
-// control asm symbol visibility with command line flags and such so they are
-// always hidden and wrapped by these C functions, which can be so
-// controlled.
-//
-// Be aware that on x86(-64), the asm_AES_* functions are incompatible with the
-// aes_hw_* functions. The latter set |AES_KEY.rounds| to one less than the true
-// value, which breaks the former. Therefore the two functions cannot mix.
-//
-// On AArch64, we don't have asm_AES_* functions and so must use the generic
-// versions when hardware support isn't provided. However, the Aarch64 assembly
-// doesn't have the same compatibility problem.
-
-void asm_AES_encrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key);
-void AES_encrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
-  if (hwaes_capable()) {
-    aes_hw_encrypt(in, out, key);
-  } else {
-    asm_AES_encrypt(in, out, key);
-  }
-}
-
-void asm_AES_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key);
-void AES_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
-  if (hwaes_capable()) {
-    aes_hw_decrypt(in, out, key);
-  } else {
-    asm_AES_decrypt(in, out, key);
-  }
-}
-
-int asm_AES_set_encrypt_key(const uint8_t *key, unsigned bits, AES_KEY *aeskey);
-int AES_set_encrypt_key(const uint8_t *key, unsigned bits, AES_KEY *aeskey) {
-  if (hwaes_capable()) {
-    return aes_hw_set_encrypt_key(key, bits, aeskey);
-  } else {
-    return asm_AES_set_encrypt_key(key, bits, aeskey);
-  }
-}
-
-int asm_AES_set_decrypt_key(const uint8_t *key, unsigned bits, AES_KEY *aeskey);
-int AES_set_decrypt_key(const uint8_t *key, unsigned bits, AES_KEY *aeskey) {
-  if (hwaes_capable()) {
-    return aes_hw_set_decrypt_key(key, bits, aeskey);
-  } else {
-    return asm_AES_set_decrypt_key(key, bits, aeskey);
-  }
-}
-
-#endif  // OPENSSL_NO_ASM || (!OPENSSL_X86 && !OPENSSL_X86_64 && !OPENSSL_ARM)
+/* --------- wrappers for AES modes --------- */
