@@ -22,6 +22,30 @@
       "revId": "f139d3a0ca9215b5b5bb2abc1f120ff6171036c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35bfddf6_0da1690f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-16T15:14:25Z",
+      "side": 1,
+      "message": "I verified that the kernel-fix is the problem. Reproduced the problem om bob, reverted the kernel-commit and saw that the problem went away.",
+      "parentUuid": "b42ada6c_21411253",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 71
+      },
+      "revId": "f139d3a0ca9215b5b5bb2abc1f120ff6171036c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
