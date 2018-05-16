@@ -196,7 +196,7 @@ struct upgrade_pkt {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "abcd:fhIikO:oPprstUuVv";
+static char *short_opts = "abcd:fhIikO:oPprstUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		0,   NULL, 'a'},
@@ -218,6 +218,7 @@ static const struct option long_opts[] = {
 	{"trunks_send",	0,   NULL, 't'},
 	{"verbose",	0,   NULL, 'V'},
 	{"version",	0,   NULL, 'v'},
+	{"wp",		2,   NULL, 'w'},
 	{"upstart",	0,   NULL, 'u'},
 	{},
 };
@@ -1765,6 +1766,38 @@ static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
 		poll_for_pp(td, VENDOR_CC_CCD, CCDV_PP_POLL_OPEN);
 }
 
+static void process_wp(struct transfer_descriptor *td, uint8_t wp_setting)
+{
+	size_t response_size;
+	uint8_t response[2];
+
+	response_size = sizeof(response);
+
+	send_vendor_command(td, VENDOR_CC_WP,
+			    &wp_setting, sizeof(wp_setting),
+			    &response, &response_size);
+
+	if (response_size == sizeof(response)) {
+		printf("WP: %08x\n", response[1]);
+		printf("Flash WP: %s%s\n",
+			response[1] & WPV_FORCE ? "forced " : "",
+			response[1] & WPV_ENABLE ? "enabled" : "disabled");
+		printf(" at boot: %s\n",
+			!(response[1] & WPV_ATBOOT_SET) ? "follow_batt_pres" :
+			response[1] & WPV_ATBOOT_ENABLE ? "forced enabled" :
+			"forced disabled");
+		if (response[0]) {
+			printf("Error setting write protect %x\n", response[0]);
+			exit(update_error);
+		}
+	} else {
+		fprintf(stderr, "Unexpected response size %zd"
+			" while setting write_protect\n",
+			response_size);
+		exit(update_error);
+	}
+}
+
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action,
 		 struct board_id *bid)
@@ -1922,6 +1955,8 @@ int main(int argc, char *argv[])
 	int ccd_unlock = 0;
 	int ccd_lock = 0;
 	int ccd_info = 0;
+	int wp_action = 0;
+	uint8_t wp_setting = 0;
 	int try_all_transfer = 0;
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
@@ -2039,6 +2074,27 @@ int main(int argc, char *argv[])
 		case 'v':
 			report_version();  /* This will call exit(). */
 			break;
+		case 'w':
+			wp_action = 1;
+			if (argc > 2) {
+				wp_setting |= WPV_UPDATE;
+				if (!strcasecmp(argv[2], "follow_batt_pres")) {
+					printf("resetting wp\n");
+				} else {
+					wp_setting |= WPV_FORCE;
+					if (!strncasecmp(argv[2], "ena", 3))
+						wp_setting |= WPV_ENABLE;
+					else if (strncasecmp(argv[2], "dis", 3))
+						exit(update_error);
+				}
+				if (argc > 3) {
+					if (!strcasecmp(argv[3], "atboot"))
+						wp_setting |= WPV_ATBOOT_SET;
+					else
+						exit(update_error);
+				}
+			}
+			break;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -2074,7 +2130,8 @@ int main(int argc, char *argv[])
 	    !password &&
 	    !rma &&
 	    !show_fw_ver &&
-	    !openbox_desc_file) {
+	    !openbox_desc_file &&
+	    !wp_action) {
 		if (optind >= argc) {
 			fprintf(stderr,
 				"\nERROR: Missing required <binary image>\n\n");
@@ -2101,9 +2158,9 @@ int main(int argc, char *argv[])
 
 	if (((bid_action != bid_none) + !!rma + !!password +
 	     !!ccd_open + !!ccd_unlock + !!ccd_lock + !!ccd_info +
-	     !!openbox_desc_file) > 2) {
+	     !!openbox_desc_file + !!wp_action) > 2) {
 		fprintf(stderr, "ERROR: "
-			"options -I -i, -k, -O, -o, -P, -r, and -u "
+			"options -I -i, -k, -O, -o, -P, -r, -u, and -w "
 			"are mutually exclusive\n");
 		exit(update_error);
 	}
@@ -2136,6 +2193,9 @@ int main(int argc, char *argv[])
 
 	if (rma)
 		process_rma(&td, rma_auth_code);
+
+	if (wp_action)
+		process_wp(&td, wp_setting);
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
