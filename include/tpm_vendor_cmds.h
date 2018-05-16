@@ -63,6 +63,11 @@ enum vendor_cmd_cc {
 	 * the 'ccd reset' console command is run.
 	 */
 	VENDOR_CC_RESET_FACTORY = 38,
+	/*
+	 * Get the write protect setting. This will return the atboot and
+	 * current write protect settings.
+	 */
+	VENDOR_CC_WP = 39,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
@@ -153,5 +158,14 @@ struct vendor_cc_spi_hash_request {
 
 /* Maximum size of a response = SHA-256 hash or 1-32 bytes of data */
 #define SPI_HASH_MAX_RESPONSE_BYTES 32
+
+/*
+ * Subcommand code, used to set write protect.
+ */
+#define WPV_UPDATE		(1 << 0)
+#define WPV_ENABLE		(1 << 1)
+#define WPV_FORCE		(1 << 2)
+#define WPV_ATBOOT_SET		(1 << 3)
+#define WPV_ATBOOT_ENABLE	(1 << 4)
 
 #endif /* __INCLUDE_TPM_VENDOR_CMDS_H */
