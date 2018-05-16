@@ -16,6 +16,24 @@
       "revId": "22d3be6b87cb1a4c1f5d844f0869fd8fd4bd5fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d3a17ec_e6a4cdc5",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-16T04:55:51Z",
+      "side": 1,
+      "message": "A config option would be nice, however I guess theoretically a board could have two of these sensors and they *could* be connected via SPI or I2C (maybe not in practice). In that case maybe a flag would be better.\n\nMaybe if the board uses the i2c address it could enable the i2c related code automatically.\n\nAnyways, it\u0027s mostly cosmetic. For this board, I was trying to follow schematic names as much as possible.",
+      "parentUuid": "222d1d04_56639171",
+      "revId": "22d3be6b87cb1a4c1f5d844f0869fd8fd4bd5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
