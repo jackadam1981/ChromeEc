@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd16e13a_e86a874c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:16:56Z",
+      "side": 1,
+      "message": "IMO PD_MAX_POWER_MW is how much power the input power conversion from the USB-C port can transform (e.g PMIC / DC-DC / inductor limitations), it\u0027s not the power consumption of the system or its estimate.",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "3d596ec8598a0aab14ee2e3ec15522ada741efc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82ba02b_cc8b7169",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:16:56Z",
+      "side": 1,
+      "message": "I don\u0027t think it would waste much, it definitely not consuming any power on the system by setting this limit higher. While it might be reserving more power on the supply side, the fancy speculative multiport 60+W USB-PD supply doesn\u0027t really exist either.",
+      "range": {
+        "startLine": 28,
+        "startChar": 35,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "3d596ec8598a0aab14ee2e3ec15522ada741efc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b09be9_224c5cbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-16T07:16:56Z",
+      "side": 1,
+      "message": "then you cannot go above 60W, do you ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "3d596ec8598a0aab14ee2e3ec15522ada741efc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
