@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "222d1d04_56639171",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-16T04:26:09Z",
+      "side": 1,
+      "message": "I2C_PORT_ACCEL needs to be defined to enable i2c code (should be a CONFIG_) .port from motion_sense is still used.\nAnyhow, you can get rid of I2C_PORT_ALS_GYRO now.",
+      "revId": "22d3be6b87cb1a4c1f5d844f0869fd8fd4bd5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
