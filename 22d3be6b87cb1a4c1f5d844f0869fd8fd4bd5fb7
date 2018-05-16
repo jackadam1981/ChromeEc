@@ -34,6 +34,24 @@
       "revId": "22d3be6b87cb1a4c1f5d844f0869fd8fd4bd5fb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d76b4fe2_7662aff4",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-16T17:14:56Z",
+      "side": 1,
+      "message": "We talked about it earlier: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/353813",
+      "parentUuid": "6d3a17ec_e6a4cdc5",
+      "revId": "22d3be6b87cb1a4c1f5d844f0869fd8fd4bd5fb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
