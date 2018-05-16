@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "834a36b8_246b878a",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-16T18:06:57Z",
+      "side": 1,
+      "message": "What\u0027s the contamination? Does that object already exist?",
+      "revId": "d58347db9ee6d948d9221bd4f65c7b750eab8be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053b52ca_d0ae5eab",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-16T18:06:57Z",
+      "side": 1,
+      "message": "You\u0027re only using \u0027oem\u0027 variable in this CL but exposing all these objects. Also, you are externing out the variables. If anything, I think you should put the extern declarations inside board.h.",
+      "revId": "d58347db9ee6d948d9221bd4f65c7b750eab8be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
