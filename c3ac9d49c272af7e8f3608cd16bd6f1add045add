@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d7092629_e35e2c91",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-16T23:51:52Z",
+      "side": 1,
+      "message": "Is this the right console channel?",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3fb835c_08954a8a",
         "filename": "board/cr50/factory_mode.c",
         "patchSetId": 4
@@ -64,6 +87,29 @@
         "startChar": 11,
         "endLine": 48,
         "endChar": 29
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46fe167_3c855787",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-16T23:51:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this go after lines 338-340?",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 2
       },
       "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
