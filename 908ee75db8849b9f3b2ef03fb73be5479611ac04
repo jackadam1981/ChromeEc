@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7bac620_eb11cf5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-05-16T16:10:23Z",
+      "side": 1,
+      "message": "Do you need a new flag? Or can the --opr wr method have a check to see if the size is \u003e 4K. If it is, then break it up, otherwise just continue using the existing code. The difference between --auto and --opr wr seems very subtle.",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "908ee75db8849b9f3b2ef03fb73be5479611ac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "970ba6c4_0610a34e",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-05-16T16:10:23Z",
+      "side": 1,
+      "message": "nit: Indenting seems off.",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "908ee75db8849b9f3b2ef03fb73be5479611ac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
