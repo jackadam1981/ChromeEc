@@ -107,10 +107,80 @@ static void force_write_protect(int force, int wp_en)
 	set_wp_state(wp_en);
 }
 
+static int control_wp_settings(uint8_t forced, uint8_t enable, uint8_t atboot)
+{
+	/* Make sure we're allowed to override WP settings */
+	if (!ccd_is_cap_enabled(CCD_CAP_OVERRIDE_WP))
+		return EC_ERROR_ACCESS_DENIED;
+	CPRINTS("Setting WP: %s%s", !forced ? "follow_batt_pres" :
+		enable ? "force enable" : "force disable",
+		atboot ? " atboot" : "");
+
+	force_write_protect(forced, enable);
+
+	if (atboot) {
+		/* Change override at boot to match */
+		ccd_set_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT, forced);
+		ccd_set_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED, enable);
+	}
+	return EC_SUCCESS;
+}
+
+static enum vendor_cmd_rc vc_set_wp(enum vendor_cmd_cc code,
+				    void *buf,
+				    size_t input_size,
+				    size_t *response_size)
+{
+	uint8_t wp_setting;
+	uint8_t response = 0;
+	uint8_t error_code = EC_SUCCESS;
+	enum vendor_cmd_rc rv = VENDOR_RC_SUCCESS;
+
+	if (code != VENDOR_CC_WP) {
+		/* I have no idea what you're talking about */
+		*response_size = 0;
+		return VENDOR_RC_NO_SUCH_COMMAND;
+	}
+
+	/* We expect a 1 byte wp setting */
+	if (input_size != sizeof(wp_setting)) {
+		error_code = EC_ERROR_INVAL;
+		rv = VENDOR_RC_BOGUS_ARGS;
+	} else {
+		memcpy(&wp_setting, buf, sizeof(wp_setting));
+		/* If the command is changing write protect, try to update it */
+		if (wp_setting & WPV_UPDATE) {
+			error_code = control_wp_settings(wp_setting & WPV_FORCE,
+				wp_setting & WPV_ENABLE,
+				wp_setting & WPV_ATBOOT_SET);
+			if (error_code)
+				rv = VENDOR_RC_NOT_ALLOWED;
+		}
+	}
+	/* Get the current wp setting no matter what */
+	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP)
+		response |= WPV_FORCE;
+	if (get_wp_state())
+		response |= WPV_ENABLE;
+
+	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT)) {
+		response |= WPV_ATBOOT_SET;
+		if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED))
+			response |= WPV_ATBOOT_ENABLE;
+	}
+	((uint8_t *)buf)[0] = error_code;
+	((uint8_t *)buf)[1] = response;
+	*response_size = 2;
+	return rv;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_WP, vc_set_wp);
+
 static int command_wp(int argc, char **argv)
 {
-	int val = 1;
+	int enable = 1;
 	int forced = 1;
+	uint8_t atboot = 0;
+	int rv;
 
 	if (argc > 1) {
 		/* Make sure we're allowed to override WP settings */
@@ -120,21 +190,19 @@ static int command_wp(int argc, char **argv)
 		/* Update WP */
 		if (strncasecmp(argv[1], "follow_batt_pres", 16) == 0)
 			forced = 0;
-		else if (parse_bool(argv[1], &val))
+		else if (parse_bool(argv[1], &enable))
 			forced = 1;
 		else
 			return EC_ERROR_PARAM1;
+		if (argc > 2 && !strcasecmp(argv[2], "atboot"))
+			atboot = 1;
 
-		force_write_protect(forced, val);
-
-		if (argc > 2 && !strcasecmp(argv[2], "atboot")) {
-			/* Change override at boot to match */
-			ccd_set_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT, forced);
-			ccd_set_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED, val);
-		}
+		rv = control_wp_settings(forced, enable, atboot);
+		if (rv)
+			return rv;
 	}
 
-	forced = GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP;
+	forced = !!(GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP);
 	ccprintf("Flash WP: %s%s\n", forced ? "forced " : "",
 		 get_wp_state() ? "enabled" : "disabled");
 
