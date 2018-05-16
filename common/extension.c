@@ -71,6 +71,7 @@ void usb_extension_route_command(uint16_t command_code,
 	case VENDOR_CC_GET_BOARD_ID:
 	case VENDOR_CC_SPI_HASH:   /* This will require physical presence. */
 	case VENDOR_CC_TURN_UPDATE_ON:
+	case VENDOR_CC_WP:
 
 		/*
 		 * The return code normally put into the TPM response header
