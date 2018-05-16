@@ -376,6 +376,14 @@ static void isl923x_init(void)
 		return;
 
 	/*
+	 * We need a non-zero charge current limit so we can talk
+	 * to a completely discharged battery.  The actual charge
+	 * current is based on the CONTROL2<15:14> register.
+	 */
+	if (isl9237_set_current(battery_get_info()->precharge_current))
+		goto init_fail;
+
+	/*
 	 * Initialize the input current limit to the board's default.
 	 */
 	if (charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT))
