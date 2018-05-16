@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a423c8e_2e246129",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:17:37Z",
+      "side": 1,
+      "message": "but this new vendor command is also not always allowed, right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "964bfe74_bf23f04d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:17:37Z",
+      "side": 1,
+      "message": "when is the new vendor command locked out?",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f305bfc_2ebf0b2e",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:17:37Z",
+      "side": 1,
+      "message": "this is not necessary.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c35a26fb_ce210fe2",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:17:37Z",
+      "side": 1,
+      "message": "wp_setting being a single byte - why invoke memcpy?",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 47
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb46152_35893d94",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-16T16:17:37Z",
+      "side": 1,
+      "message": "the error code is communicated through the TPM command header, passed back as the return value of this function.\n\nIf the command succeeds, it should return no response body (*response_size of zero), If the command fails, it should return a single byte response, the EC error code in the response body, and the vendor_command_rc error code in the TPM header.\n\nOr maybe I am missing how this command is expected to work, maybe it is supposed to return a value even if succeeds, a description would help.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 32
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
