@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "272b1f11_5bd2c626",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-16T01:24:48Z",
+      "side": 1,
+      "message": "Why does this have to be in command substitution \u0027$()\u0027?",
+      "range": {
+        "startLine": 907,
+        "startChar": 6,
+        "endLine": 907,
+        "endChar": 27
+      },
+      "revId": "cc999a5f54492275fd1b852bdd4ae3f3ed44c891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
