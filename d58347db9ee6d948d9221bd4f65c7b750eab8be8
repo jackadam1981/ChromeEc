@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3b6c0578_20d57197",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-16T22:12:56Z",
+      "side": 1,
+      "message": "There is no conflict yet but I\u0027m concerned because they\u0027re named short (intentionally). These CBI variables should be used only by board/nami/*.c. I\u0027m trying to keep them only visible to board/nami/*.c. If I put them in board.h, they\u0027ll become global.\n\nI\u0027m fine with externing them in board.h. That\u0027s standard anyway.",
+      "parentUuid": "834a36b8_246b878a",
+      "revId": "d58347db9ee6d948d9221bd4f65c7b750eab8be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "053b52ca_d0ae5eab",
         "filename": "board/nami/board.c",
         "patchSetId": 2
