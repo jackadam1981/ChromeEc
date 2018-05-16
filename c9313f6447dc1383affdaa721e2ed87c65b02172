@@ -45,6 +45,30 @@
       "revId": "c9313f6447dc1383affdaa721e2ed87c65b02172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba169153_8d558913",
+        "filename": "board/nami/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-05-16T03:18:22Z",
+      "side": 1,
+      "message": "I know we have fundamental gap between each OEM project, the color is different..\nBut currently I do not find out a suitable solution for all OEM project...\n\nWe just need a command to turn on LED(100 duty cycle) to make sure the LED HW portion is work. Basically we don\u0027t need to set other duty cycle.\n\nIf you plan to move this code to common directory, would you let me know your schedule?",
+      "parentUuid": "ae9a46b2_4aae4737",
+      "range": {
+        "startLine": 491,
+        "startChar": 16,
+        "endLine": 491,
+        "endChar": 32
+      },
+      "revId": "c9313f6447dc1383affdaa721e2ed87c65b02172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
