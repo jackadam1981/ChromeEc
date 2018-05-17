@@ -26,7 +26,7 @@
 #endif
 
 static uint32_t previous_interrupt_timestamp, last_interrupt_timestamp;
-static int event_counter;
+static int previous_event_counter, event_counter;
 struct ec_response_motion_sensor_data vector = {.flags = 0, .data = {0, 0, 0} };
 int sync_enabled;
 
@@ -84,8 +84,18 @@ static int motion_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	previous_interrupt_timestamp = timestamp;
 
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_WAKEUP;
-	vector.data[X] = event_counter;
-	motion_sense_fifo_add_data(&vector, s, 1, timestamp);
+	/*
+	* Normally this only loops once, but just in case more interrupts
+	* happened since last time, add more all the events.
+	* Don't worry about the timestamp being the same on all of them,
+	* the AP will interpolate.
+	*/
+	while (previous_event_counter != event_counter) {
+		vector.data[X] = previous_event_counter;
+		motion_sense_fifo_add_data(&vector, s, 1, timestamp);
+		previous_event_counter++;
+	}
+
 	return EC_SUCCESS;
 }
 
@@ -94,6 +104,7 @@ static int sync_init(const struct motion_sensor_t *s)
 	last_interrupt_timestamp = __hw_clock_source_read();
 	previous_interrupt_timestamp = last_interrupt_timestamp;
 	event_counter = 0;
+	previous_event_counter = 0;
 	vector.sensor_num = s - motion_sensors;
 	sync_enabled = 0;
 	return 0;
