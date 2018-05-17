@@ -306,6 +306,30 @@
       "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd431299_10b03257",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-17T08:29:47Z",
+      "side": 1,
+      "message": "Yeah, that is true. For this particular case, as long as it happens before ~4 seconds after power on, it\u0027s okay. If we still haven\u0027t run this by then, the watchdog would have got us and we have other issues.",
+      "parentUuid": "36811ca6_5f870769",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
