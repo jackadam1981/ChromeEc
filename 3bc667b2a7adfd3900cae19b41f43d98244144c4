@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31bb5463_d36268b3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-17T23:39:34Z",
+      "side": 1,
+      "message": "how about doing apshutdown here?",
+      "range": {
+        "startLine": 1561,
+        "startChar": 2,
+        "endLine": 1561,
+        "endChar": 38
+      },
+      "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
