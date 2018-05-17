@@ -46,6 +46,30 @@
       "revId": "87c7a132b3149ae3cf28d58322ffaca583ec5919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ffef05_ad5f2748",
+        "filename": "chip/mchp/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-17T14:58:59Z",
+      "side": 1,
+      "message": "I don\u0027t get this warning and when looking at PRESUBMIT.cfg in platform/ec, I\u0027m seeing :\n[Hook Overrides Options]\ncheckpatch_check: --no-tree --ignore\u003dMSLEEP,VOLATILE\n\nIt should not fail your pre-submit.\n\nPlease note that checkpatch.pl is not the only presubmit script run.\n\n\u003e I will add #undef\u0027s for the new CONFIG_ items to include/config.h\n\nDo we really need it ?\nif a developer debugging its system doesn\u0027t want the watchdog firing, he can just do #undef CONFIG_WATCHDOG.\nI\u0027m doing it fairly regularly for random experiments/bringup",
+      "parentUuid": "93ed61cb_900980c3",
+      "range": {
+        "startLine": 22,
+        "startChar": 45,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "87c7a132b3149ae3cf28d58322ffaca583ec5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
