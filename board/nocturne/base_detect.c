@@ -213,6 +213,9 @@ DECLARE_HOOK(HOOK_INIT, base_detect_deferred, HOOK_PRIO_INIT_ADC + 1);
 
 static void power_on_base(void)
 {
+	/* Turn on base power if the base is attached. */
+	if (state == BASE_ATTACHED)
+		base_power_enable(1);
 	hook_call_deferred(&base_detect_deferred_data, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, power_on_base, HOOK_PRIO_DEFAULT);
