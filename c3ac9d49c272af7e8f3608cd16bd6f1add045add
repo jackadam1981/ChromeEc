@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "130c94fc_571f67e0",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T21:52:07Z",
+      "side": 1,
+      "message": "probably no",
+      "parentUuid": "d7092629_e35e2c91",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3fb835c_08954a8a",
         "filename": "board/cr50/factory_mode.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-16T16:41:12Z",
       "side": 1,
       "message": "do we want to waste flash space to store these headers? Maybe just verify that epoch/major is zero and that minor is either 13 or 22?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a1fb7bf_6bf4afec",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T21:52:07Z",
+      "side": 1,
+      "message": "Ok I\u0027ll change this",
+      "parentUuid": "f3fb835c_08954a8a",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1a968a06_6599210d",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T21:52:07Z",
+      "side": 1,
+      "message": "I will/tests will. I can shorten the message. It is very unlikely we\u0027ll hit this, but it\u0027d be good to know if we do.",
+      "parentUuid": "58d5928b_21d2b092",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e02ba8b9_86c5937c",
         "filename": "board/cr50/factory_mode.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e3a8713_fc8564b7",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T21:52:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e02ba8b9_86c5937c",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +224,30 @@
       "writtenOn": "2018-05-16T16:41:12Z",
       "side": 1,
       "message": "not a big deal, but I think you could keep the factory_boot check inside this if clause: there would be no variables in nvmem saved at this time.",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 8
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b9bd22_dfa78801",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T21:52:07Z",
+      "side": 1,
+      "message": "What cr50 version did we start loading config variables? Do you know if .22 loads config variables? If we update from that to a factory mode image then there would be config variables.\n\nI\u0027m fine with moving it after !t if we can guarantee the image we ran before the factory mode supported image didn\u0027t load config variables.\n\nRandall is right. It should definitely be after 338",
+      "parentUuid": "9aa9a61b_a6aa00e6",
       "range": {
         "startLine": 346,
         "startChar": 4,
