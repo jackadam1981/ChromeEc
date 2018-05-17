@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33499c2d_d443791f",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-17T21:21:41Z",
+      "side": 1,
+      "message": "Should we change the prefix to Battery Disconnect: (since it only happen in this case now)",
+      "range": {
+        "startLine": 210,
+        "startChar": 11,
+        "endLine": 210,
+        "endChar": 22
+      },
+      "revId": "898d14ff8beaed2ffefaf4040e40a8cc03f4e7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
