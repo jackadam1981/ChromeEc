@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20decb32_a957f1be",
+        "filename": "chip/mchp/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T21:30:22Z",
+      "side": 1,
+      "message": "Would be better to switch the halves of the conditional\n\n#if DEBUG_LPC\n(real defines)\n#else\n(empty defines)\n#endif",
+      "revId": "0f76b07f508e2dd5be7733fa6094a9dfa0c4afef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dabf7b1_eaf3ff59",
+        "filename": "chip/mchp/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T21:30:22Z",
+      "side": 1,
+      "message": "Why\u0027d this reflow?  (also applies to some of the lines below)",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 4
+      },
+      "revId": "0f76b07f508e2dd5be7733fa6094a9dfa0c4afef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db822d0_3008f05f",
+        "filename": "chip/mchp/lpc_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T21:30:22Z",
+      "side": 1,
+      "message": "() not needed",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "0f76b07f508e2dd5be7733fa6094a9dfa0c4afef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
