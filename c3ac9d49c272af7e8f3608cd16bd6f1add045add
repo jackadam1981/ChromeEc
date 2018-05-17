@@ -401,6 +401,30 @@
       "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e66493d8_dedfcf49",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-17T23:42:38Z",
+      "side": 1,
+      "message": "default config is not kept in nvmem",
+      "parentUuid": "9e74ff64_78ef04b6",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 8
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
