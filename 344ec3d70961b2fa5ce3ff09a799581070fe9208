@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "91fa706a_d41d37e0",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-17T05:56:53Z",
+      "side": 1,
+      "message": "Oh, right, we do the same thing on poppy. Makes sense.",
+      "parentUuid": "b41a8fb8_ebba492f",
+      "revId": "344ec3d70961b2fa5ce3ff09a799581070fe9208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdaf03f9_373a62d7",
         "filename": "board/nocturne/base_detect.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "S5 no, but S3/S0ix, yes.\n\nCutting power and setting state vs. applying power and determining state seem like two sides of the same coin to me. Just curious, why do you prefer cutting power?",
       "parentUuid": "fdaf03f9_373a62d7",
+      "revId": "344ec3d70961b2fa5ce3ff09a799581070fe9208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f97b2d_b897851f",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-17T05:56:53Z",
+      "side": 1,
+      "message": "Ok, right, S3/S0ix does not matter here, this is CHIPSET_STARTUP (so boot from S5).\n\nIn S5, you do not poll for disconnection, so you have no idea if state is reliable (it might say BASE_ATTACHED but the base might have been detached while in S5). My concern here is that you are applying power blindly, without knowing if the base is present. We should not apply power to the pogo if the base is not there.",
+      "parentUuid": "a5e332c0_a076bb22",
       "revId": "344ec3d70961b2fa5ce3ff09a799581070fe9208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
