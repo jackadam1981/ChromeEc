@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f570fd6b_fe7c1afd",
+        "filename": "chip/mchp/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-17T13:54:13Z",
+      "side": 1,
+      "message": "new CONFIG_ variable must be defined in the include/config.h\n\nBy the way this is checked by the presubmit check script, are you bypassing it ?\n\nAlso\n|| !defined(CONFIG_WATCHDOG) seems a better condition for this case.",
+      "range": {
+        "startLine": 22,
+        "startChar": 45,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "87c7a132b3149ae3cf28d58322ffaca583ec5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
