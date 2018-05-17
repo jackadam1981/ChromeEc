@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "842cefc8_c1a546c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-17T03:49:42Z",
+      "side": 1,
+      "message": "Yes, will add.",
+      "parentUuid": "0f244557_e42ce924",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "306c88a8_e795d9ae",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c3ed0b_e599dbd3",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-17T03:49:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "306c88a8_e795d9ae",
+      "range": {
+        "startLine": 322,
+        "startChar": 13,
+        "endLine": 322,
+        "endChar": 16
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "bdcb6f91_94d042fa",
+      "range": {
+        "startLine": 325,
+        "startChar": 30,
+        "endLine": 327,
+        "endChar": 21
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a6c28b1_dbf5e326",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-17T03:49:42Z",
+      "side": 1,
+      "message": "Yes, I agree. A lot of the boards do similar things.",
+      "parentUuid": "8fb2c940_c4ca1844",
       "range": {
         "startLine": 325,
         "startChar": 30,
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "2d378da4_d8b2ddbf",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-17T03:49:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c08c466a_cfe23793",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 9
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b429b41_d3e61e27",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -153,6 +249,30 @@
       "writtenOn": "2018-05-16T06:28:57Z",
       "side": 1,
       "message": "sure, you do\nbut you are not telling us why you have to do so and it\u0027s not obvious to me (HOOK_INIT already being executed in the HOOK task context)",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bcba82_d765faef",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-17T03:49:42Z",
+      "side": 1,
+      "message": "I remember hearing this in the office, but I actually don\u0027t think it makes a difference.",
+      "parentUuid": "8b429b41_d3e61e27",
       "range": {
         "startLine": 343,
         "startChar": 1,
