@@ -46,6 +46,30 @@
       "revId": "ba7a5566a11be9c444075c254c96da199f2dc348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eabe0b53_a173b925",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-17T19:28:23Z",
+      "side": 1,
+      "message": "APL has only LPC so applicable to GLK only",
+      "parentUuid": "2de97989_fae9e79b",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "ba7a5566a11be9c444075c254c96da199f2dc348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
