@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "registers.h"
+#include "shared_mem.h"
 #include "spi.h"
 #include "task.h"
 #include "timer.h"
@@ -802,7 +803,29 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		   uint8_t **data, unsigned int *data_size)
 {
-	return EC_RES_INVALID_COMMAND;
+	static uint8_t *buffer;  // so we can free it on next call
+	static unsigned int buffer_size;
+
+	CPRINTS("touchpad_debug called");
+
+	if (param_size != 1)
+		return EC_RES_INVALID_PARAM;
+
+	if (buffer) {
+		shared_mem_release(buffer);
+		buffer = NULL;
+		buffer_size = 0;
+	}
+
+	switch (*param) {
+	case ST_TP_DEBUG_CMD_CALIBRATE:
+		/* no return value */
+		*data = buffer;
+		*data_size = buffer_size;
+		st_tp_full_initialize();
+		return EC_SUCCESS;
+	}
+	return EC_RES_INVALID_PARAM;
 }
 #endif
 
