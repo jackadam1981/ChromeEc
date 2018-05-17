@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b1c715c0_83565a03",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T17:44:22Z",
+      "side": 1,
+      "message": "This is in common/system.c I don\u0027t think we should be using something that is cr50 specific",
+      "parentUuid": "ea9a2f99_89838acb",
+      "range": {
+        "startLine": 1227,
+        "startChar": 7,
+        "endLine": 1227,
+        "endChar": 31
+      },
+      "revId": "00d6c272ac1564210ba9cbe41226c15da1530488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99ec69a5_0004e248",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-16T22:49:20Z",
       "side": 1,
       "message": "should this be DECLARE_SAFE_CONSOLE_COMMAND?",
+      "range": {
+        "startLine": 1251,
+        "startChar": 0,
+        "endLine": 1251,
+        "endChar": 24
+      },
+      "revId": "00d6c272ac1564210ba9cbe41226c15da1530488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32de972d_03c1aacf",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T17:44:22Z",
+      "side": 1,
+      "message": "Lets just keep it unsafe for now. People debugging cr50 will have the console open.",
+      "parentUuid": "99ec69a5_0004e248",
       "range": {
         "startLine": 1251,
         "startChar": 0,
