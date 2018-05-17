@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3dabaecc_412dca85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-17T02:45:34Z",
+      "side": 1,
+      "message": "--auto is something like performing the combination of --opr wr (write the firmware data to the RAM) and --opr call (call the monitor lfw to program firmware data in RAM to flash) for several times.\n\nMaybe I can remove the flag --auto and put it under --opr flag, like \"--opr auto\".\nWhat do you think about it?",
+      "parentUuid": "e7bac620_eb11cf5c",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "908ee75db8849b9f3b2ef03fb73be5479611ac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "970ba6c4_0610a34e",
         "filename": "util/uut/main.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-16T16:10:23Z",
       "side": 1,
       "message": "nit: Indenting seems off.",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 7
+      },
+      "revId": "908ee75db8849b9f3b2ef03fb73be5479611ac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ca70ff_a6c7d185",
+        "filename": "util/uut/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-17T02:45:34Z",
+      "side": 1,
+      "message": "Do you mean there is too many tab characters here?\nAny way, I will delete some in the next patch.",
+      "parentUuid": "970ba6c4_0610a34e",
       "range": {
         "startLine": 116,
         "startChar": 6,
