@@ -257,6 +257,30 @@
       "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c9b0bb_5ed6d7bb",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-17T22:40:48Z",
+      "side": 1,
+      "message": "this is not a question of if a version \u0027loads config variables\u0027 this is a question if there is a CCD config state saved in the nvmem, and there will be not one unless CCD configuration was changed from the default and saved.",
+      "parentUuid": "b2b9bd22_dfa78801",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 8
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
