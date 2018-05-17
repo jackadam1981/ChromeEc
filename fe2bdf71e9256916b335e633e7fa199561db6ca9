@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd801d7_f926be6d",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-17T01:07:15Z",
+      "side": 1,
+      "message": "This is setting the charge current command, correct? I am a little concerned to always set the precharge current as the initial charge command. We already have some code that will attempt to set the charge command to precharge current limit if it the battery is non-responsive.",
+      "range": {
+        "startLine": 379,
+        "startChar": 30,
+        "endLine": 379,
+        "endChar": 43
+      },
+      "revId": "fe2bdf71e9256916b335e633e7fa199561db6ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
