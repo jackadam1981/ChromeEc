@@ -282,6 +282,30 @@
       "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36811ca6_5f870769",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-17T07:25:12Z",
+      "side": 1,
+      "message": "This will actually do a difference for the actual scheduling,\nas this deferred hook will likely be executed after all the HOOK_INIT and likely the most of the task startup code.\nbut it\u0027s a not-so-great idea to delay it in such a way since it\u0027s not terribly deterministic when it will actually happen.\nI have seen recently another board using it since to avoid a brown-out due to some inrush current, but it\u0027s a risky way.\n\nHere you want to get it after HOOK_PRIO_INIT_I2C (but this part is fine, it\u0027s way lower priority)",
+      "parentUuid": "38bcba82_d765faef",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 43
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

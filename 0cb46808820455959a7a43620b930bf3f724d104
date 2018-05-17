@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68567fcc_a96a5ea9",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-17T07:25:12Z",
+      "side": 1,
+      "message": "I would have just pasted it in the board_init above instead to save you the 8 bytes or so wasted by an additional Hook",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 60
+      },
+      "revId": "0cb46808820455959a7a43620b930bf3f724d104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
