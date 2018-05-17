@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "306c88a8_e795d9ae",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-17T03:07:52Z",
+      "side": 1,
+      "message": "No need to initialize this to 0 since it would get set in i2c_read8 below.",
+      "range": {
+        "startLine": 322,
+        "startChar": 13,
+        "endLine": 322,
+        "endChar": 16
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdcb6f91_94d042fa",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -48,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "8fb2c940_c4ca1844",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-17T03:07:52Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "bdcb6f91_94d042fa",
+      "range": {
+        "startLine": 325,
+        "startChar": 30,
+        "endLine": 327,
+        "endChar": 21
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f54bdb6_62d70716",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
@@ -59,6 +106,30 @@
       "writtenOn": "2018-05-16T06:28:57Z",
       "side": 1,
       "message": "the if is useless",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 9
+      },
+      "revId": "ea9fc4e8d2df00b59d1e6a7fbec5a7bfe4c4fdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08c466a_cfe23793",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-17T03:07:52Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "0f54bdb6_62d70716",
       "range": {
         "startLine": 328,
         "startChar": 0,
