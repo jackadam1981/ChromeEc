@@ -22,6 +22,30 @@
       "revId": "898d14ff8beaed2ffefaf4040e40a8cc03f4e7bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3848e81d_4052b3e1",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-17T21:32:40Z",
+      "side": 1,
+      "message": "I changed this and fixed up the indentation of the print arguments.",
+      "parentUuid": "33499c2d_d443791f",
+      "range": {
+        "startLine": 210,
+        "startChar": 11,
+        "endLine": 210,
+        "endChar": 22
+      },
+      "revId": "898d14ff8beaed2ffefaf4040e40a8cc03f4e7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
