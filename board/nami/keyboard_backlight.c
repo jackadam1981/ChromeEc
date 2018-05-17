@@ -68,6 +68,7 @@ static void kblight_init(void)
 	switch (oem) {
 	default:
 	case PROJECT_NAMI:
+	case PROJECT_AKALI:
 	case PROJECT_VAYNE:
 	case PROJECT_PANTHEON:
 		kblight_set = kblight_i2c_set;
