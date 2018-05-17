@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea208dda_14bd2e1f",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 1,
+      "message": "Leftover debugging?",
+      "revId": "a9f0c3c555826095448002a4506b4017053ce9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d92d4d_c9eadbb6",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 1,
+      "message": "\u0027ul\u0027 doesn\u0027t seem needed; COMP_IDLE doesn\u0027t use it for example.",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "a9f0c3c555826095448002a4506b4017053ce9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9216cfe6_ea96a8a5",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 1,
+      "message": "Why 32 and not 31?",
+      "range": {
+        "startLine": 230,
+        "startChar": 9,
+        "endLine": 230,
+        "endChar": 11
+      },
+      "revId": "a9f0c3c555826095448002a4506b4017053ce9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "017952a8_c702ff7a",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 1,
+      "message": "Is this still an unknown?",
+      "range": {
+        "startLine": 419,
+        "startChar": 3,
+        "endLine": 419,
+        "endChar": 64
+      },
+      "revId": "a9f0c3c555826095448002a4506b4017053ce9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "146051d1_9355e409",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 1,
+      "message": "typo: specified",
+      "range": {
+        "startLine": 456,
+        "startChar": 7,
+        "endLine": 456,
+        "endChar": 17
+      },
+      "revId": "a9f0c3c555826095448002a4506b4017053ce9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0230e1e_3c44056f",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 1,
+      "message": "Needed?  It should be zero-init.",
+      "range": {
+        "startLine": 973,
+        "startChar": 1,
+        "endLine": 973,
+        "endChar": 33
+      },
+      "revId": "a9f0c3c555826095448002a4506b4017053ce9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf153ef6_d3d1cb8d",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 1,
+      "message": "Redundant with line 973 (or zero-init)?",
+      "range": {
+        "startLine": 992,
+        "startChar": 2,
+        "endLine": 992,
+        "endChar": 58
+      },
+      "revId": "a9f0c3c555826095448002a4506b4017053ce9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

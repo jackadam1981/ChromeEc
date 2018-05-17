@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84992cbb_f5fb199b",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-17T16:53:03Z",
+      "side": 0,
+      "message": "Seems like this comment still applies to lines 272-273 in the new code?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 69
+      },
+      "revId": "7ffcb0629f5460859224c17e378cb3054394220f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
