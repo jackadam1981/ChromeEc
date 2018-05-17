@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "138c15f3_46f0a2b5",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T23:40:00Z",
+      "side": 1,
+      "message": "CC_CCD ok?",
+      "parentUuid": "130c94fc_571f67e0",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3fb835c_08954a8a",
         "filename": "board/cr50/factory_mode.c",
         "patchSetId": 4
@@ -93,6 +117,30 @@
       "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7a48dc_23a4fe6d",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T23:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1fb7bf_6bf4afec",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "c465a8d3_9f79532d",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T23:40:00Z",
+      "side": 1,
+      "message": "I shortened all of the messages",
+      "parentUuid": "1a968a06_6599210d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e02ba8b9_86c5937c",
         "filename": "board/cr50/factory_mode.c",
         "patchSetId": 4
@@ -178,6 +250,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "e02ba8b9_86c5937c",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "493a732e_de3e69d8",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T23:40:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e3a8713_fc8564b7",
       "range": {
         "startLine": 48,
         "startChar": 11,
@@ -272,6 +368,30 @@
       "side": 1,
       "message": "this is not a question of if a version \u0027loads config variables\u0027 this is a question if there is a CCD config state saved in the nvmem, and there will be not one unless CCD configuration was changed from the default and saved.",
       "parentUuid": "b2b9bd22_dfa78801",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 8
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e74ff64_78ef04b6",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-17T23:40:00Z",
+      "side": 1,
+      "message": "So we don\u0027t save the default config?",
+      "parentUuid": "52c9b0bb_5ed6d7bb",
       "range": {
         "startLine": 346,
         "startChar": 4,
