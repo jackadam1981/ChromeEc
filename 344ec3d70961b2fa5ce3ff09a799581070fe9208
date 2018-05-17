@@ -105,6 +105,24 @@
       "revId": "344ec3d70961b2fa5ce3ff09a799581070fe9208",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81fbbdcb_4a84d927",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-17T07:06:30Z",
+      "side": 1,
+      "message": "Ah, yes that\u0027s true. Better to be safe then. Thanks.",
+      "parentUuid": "61f97b2d_b897851f",
+      "revId": "344ec3d70961b2fa5ce3ff09a799581070fe9208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
