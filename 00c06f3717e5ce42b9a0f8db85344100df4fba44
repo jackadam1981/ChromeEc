@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "472a1e15_0f2aaa8c",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-17T18:42:39Z",
+      "side": 1,
+      "message": "We want to wake from trackpad in s3 and s0ix. We shouldn\u0027t be disabling this until S5 state.",
+      "revId": "00c06f3717e5ce42b9a0f8db85344100df4fba44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a003db43_31ae7e4e",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-17T18:42:39Z",
+      "side": 1,
+      "message": "Looks like we need an internal pullup as there is no external one. What about the other boards?",
+      "revId": "00c06f3717e5ce42b9a0f8db85344100df4fba44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
