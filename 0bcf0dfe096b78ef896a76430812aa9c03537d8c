@@ -22,6 +22,30 @@
       "revId": "0bcf0dfe096b78ef896a76430812aa9c03537d8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06db0203_e4203ec4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115140
+      },
+      "writtenOn": "2018-05-17T16:20:11Z",
+      "side": 1,
+      "message": "I enabled otg controller in coreboot and verified in kernel that lspci lists it.",
+      "parentUuid": "303edb32_d976b32a",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 44
+      },
+      "revId": "0bcf0dfe096b78ef896a76430812aa9c03537d8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
