@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2ad07c9e_1b272dbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-17T07:57:14Z",
+      "side": 1,
+      "message": "IMO --auto is better than --opr auto\nbut can we duplicate less code between auto and --opr wr\nthe latter is basically just a special case of the former we don\u0027t need 2 different code paths (e.g to read the file)",
+      "parentUuid": "3dabaecc_412dca85",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "908ee75db8849b9f3b2ef03fb73be5479611ac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "970ba6c4_0610a34e",
         "filename": "util/uut/main.c",
         "patchSetId": 7
