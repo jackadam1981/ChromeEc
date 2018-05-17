@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c5090d9_81bc504f",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-17T18:36:28Z",
+      "side": 1,
+      "message": "do we know if this apply to apollo lake too or just geminilake?",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "ba7a5566a11be9c444075c254c96da199f2dc348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
