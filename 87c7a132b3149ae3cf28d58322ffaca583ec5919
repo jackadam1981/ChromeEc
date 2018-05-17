@@ -22,6 +22,30 @@
       "revId": "87c7a132b3149ae3cf28d58322ffaca583ec5919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ed61cb_900980c3",
+        "filename": "chip/mchp/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2018-05-17T14:52:01Z",
+      "side": 1,
+      "message": "I manually pipe output of git diff to repohooks/checkpatch.pl  I got used to doing this because repo upload checkpatch.pl emits a warning for one of the delay functions either msleep(n) or another and rejects the upload. I clean up all the syntax warnings but how can I convice repo upload to ignore the warning on msleep(n)? Does this warning only occur in new files?\nWARNING: msleep \u003c 20ms can sleep for up to 20ms; see Documentation/timers/timers-howto.txt\n#119: FILE: board/reef_mchp/board.c:503:\n+\tmsleep(6);\n\nI will add #undef\u0027s for the new CONFIG_ items to include/config.h",
+      "parentUuid": "f570fd6b_fe7c1afd",
+      "range": {
+        "startLine": 22,
+        "startChar": 45,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "87c7a132b3149ae3cf28d58322ffaca583ec5919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
