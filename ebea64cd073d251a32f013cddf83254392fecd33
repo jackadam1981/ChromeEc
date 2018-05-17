@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8deada1b_4f644490",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-17T11:57:54Z",
+      "side": 1,
+      "message": "the real question here is: does the input power path (on the motherboard) supports 5A ?\nCan you confirm it as it\u0027s not written in the bug.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 32
+      },
+      "revId": "ebea64cd073d251a32f013cddf83254392fecd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
