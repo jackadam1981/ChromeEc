@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0ddcaff2_e7badcdf",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-17T20:08:38Z",
+      "side": 1,
+      "message": "Moved trackpad to S5/S3 transition. Also verified that it actually wakes AP up.",
+      "parentUuid": "472a1e15_0f2aaa8c",
+      "revId": "00c06f3717e5ce42b9a0f8db85344100df4fba44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a003db43_31ae7e4e",
         "filename": "board/bip/gpio.inc",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "00c06f3717e5ce42b9a0f8db85344100df4fba44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5717412_227e68a5",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-17T20:08:38Z",
+      "side": 1,
+      "message": "We have a pull-up through the diode on that line (all of the schematics have this pull-up diode circuit)",
+      "parentUuid": "a003db43_31ae7e4e",
+      "revId": "00c06f3717e5ce42b9a0f8db85344100df4fba44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
