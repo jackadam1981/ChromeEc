@@ -22,6 +22,30 @@
       "revId": "ba7a5566a11be9c444075c254c96da199f2dc348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de97989_fae9e79b",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-05-17T18:59:49Z",
+      "side": 1,
+      "message": "We know that some virtual wires are not supported on Gemini Lake. I don\u0027t have any documents pointing to similar restrictions on Apollo Lake.",
+      "parentUuid": "5c5090d9_81bc504f",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "ba7a5566a11be9c444075c254c96da199f2dc348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
