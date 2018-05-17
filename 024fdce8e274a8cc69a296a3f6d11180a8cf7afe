@@ -22,6 +22,30 @@
       "revId": "024fdce8e274a8cc69a296a3f6d11180a8cf7afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeb3eec3_c6cc59af",
+        "filename": "power/sdm845.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-17T20:40:58Z",
+      "side": 1,
+      "message": "Checked that either system_can_boot_ap() or charge_prevent_power_on(0) works here. Added the check of charge_want_shutdown() too.",
+      "parentUuid": "9973d2eb_c7ec4df3",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "024fdce8e274a8cc69a296a3f6d11180a8cf7afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
