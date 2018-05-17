@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c9df0ad_e5ba4b91",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-17T05:04:07Z",
+      "side": 1,
+      "message": "Slightly tangential: Why do you need this? You call the hook anyway on chipset startup below.",
+      "revId": "344ec3d70961b2fa5ce3ff09a799581070fe9208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdaf03f9_373a62d7",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-17T05:04:07Z",
+      "side": 1,
+      "message": "So even in S3/S5, you poll the base status to check when it gets disconnected? That might consume some non-negligible amount of power...\n\nOn power_on, can you redo the detection logic instead, to make sure the base is attached? (maybe cutting power and setting state \u003d BASE_DETACHED is enough, so that base_detect_deferred re-detects it?)",
+      "revId": "344ec3d70961b2fa5ce3ff09a799581070fe9208",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
