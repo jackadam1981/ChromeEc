@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31e1c8d0_cf9656d7",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-18T06:23:23Z",
+      "side": 1,
+      "message": "On a system with drained battery, when the user repeatedly pressed the power button (that\u0027s the kind of things the user will do ;-) you might stay here 500ms everytime, we had seen not so good effects of this in the past, you might want to check charge_want_shutdown in the while loop too",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 427,
+        "endChar": 56
+      },
+      "revId": "ea6bff8ad8736cd40ebc5abf3a0182aebf71e66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

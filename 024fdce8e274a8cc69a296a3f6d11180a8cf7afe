@@ -46,6 +46,30 @@
       "revId": "024fdce8e274a8cc69a296a3f6d11180a8cf7afe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb0741ca_47c31797",
+        "filename": "power/sdm845.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-18T06:23:23Z",
+      "side": 1,
+      "message": "I don\u0027t think they are strictly equivalent either but the differences are subtle and depends on your board config.",
+      "parentUuid": "eeb3eec3_c6cc59af",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "024fdce8e274a8cc69a296a3f6d11180a8cf7afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
