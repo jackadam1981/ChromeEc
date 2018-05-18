@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "48a01bdb_e27e31ea",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T00:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138c15f3_46f0a2b5",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3fb835c_08954a8a",
         "filename": "board/cr50/factory_mode.c",
         "patchSetId": 4
@@ -215,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "0daf97e3_e6623a54",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T00:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c465a8d3_9f79532d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e02ba8b9_86c5937c",
         "filename": "board/cr50/factory_mode.c",
         "patchSetId": 4
@@ -306,6 +354,30 @@
       "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "947eb467_42c3133d",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T00:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46fe167_3c855787",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 2
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -425,6 +497,30 @@
       "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703ce037_f433aafd",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T00:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e66493d8_dedfcf49",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 8
+      },
+      "revId": "c3ac9d49c272af7e8f3608cd16bd6f1add045add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
