@@ -283,7 +283,7 @@ static int anx7447_init(int port)
 
 #ifdef CONFIG_USB_PD_TCPM_ANX7447_OCM_ERASE_COMMAND
 	/* Check and print OCM status to console. */
-	ccprintf("C%d: OCM flash is %sempty.\n",
+	CPRINTS("C%d: OCM flash is %sempty",
 		port, anx7447_flash_is_empty(port) ? "" : "not ");
 #endif
 
