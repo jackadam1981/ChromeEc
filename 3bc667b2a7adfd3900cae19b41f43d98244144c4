@@ -46,6 +46,30 @@
       "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ce44872_7f855776",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-18T00:51:30Z",
+      "side": 1,
+      "message": "okay one though, if we add it here it will be used by all boards without needing to define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON.\nAlso this thread comes up before we set prevent_power_on",
+      "parentUuid": "b858aeee_dce0648b",
+      "range": {
+        "startLine": 1561,
+        "startChar": 2,
+        "endLine": 1561,
+        "endChar": 38
+      },
+      "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
