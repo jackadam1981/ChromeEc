@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83b32711_33e2d193",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-18T17:13:28Z",
+      "side": 1,
+      "message": "remove space? Or is this what EC code base does about pointers?",
+      "range": {
+        "startLine": 314,
+        "startChar": 19,
+        "endLine": 314,
+        "endChar": 20
+      },
+      "revId": "fc43919a862b2d4eb03a81b1e3239499b5436936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2954d3aa_6e1e1506",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-18T17:13:28Z",
+      "side": 1,
+      "message": "port can never be 0?",
+      "revId": "fc43919a862b2d4eb03a81b1e3239499b5436936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17f6355d_fbb0cf60",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-18T17:13:28Z",
+      "side": 1,
+      "message": "Does mask only have 1 bit set in it?",
+      "revId": "fc43919a862b2d4eb03a81b1e3239499b5436936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb4db14_e8d6c932",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-18T17:13:28Z",
+      "side": 1,
+      "message": "Can you keep the format string on one line? Usually format strings exceeding line length are allowed.",
+      "revId": "fc43919a862b2d4eb03a81b1e3239499b5436936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
