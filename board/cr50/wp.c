@@ -246,9 +246,41 @@ int board_wipe_tpm(void)
  * src/platform/vboot_reference/firmware/lib/include/rollback_index.h. at
  * git sha c7282f6.
  */
+#define FIRMWARE_NV_INDEX           0x1007
 #define FWMP_NV_INDEX		    0x100a
 #define FWMP_HASH_SIZE		    32
 #define FWMP_DEV_DISABLE_CCD_UNLOCK (1 << 6)
+
+/* Flags for firmware space */
+/*
+ * Last boot was developer mode.  TPM ownership is cleared when transitioning
+ * to/from developer mode.
+ */
+#define FLAG_LAST_BOOT_DEVELOPER 0x01
+/*
+ * Some systems may not have a dedicated dev-mode switch, but enter and leave
+ * dev-mode through some recovery-mode magic keypresses. For those systems, the
+ * dev-mode "switch" state is in this bit (0=normal, 1=dev). To make it work, a
+ * new flag is passed to VbInit(), indicating that the system lacks a physical
+ * dev-mode switch. If a physical switch is present, this bit is ignored.
+ */
+#define FLAG_VIRTUAL_DEV_MODE_ON 0x02
+
+/* Firmware space - FIRMWARE_NV_INDEX, locked with global lock. */
+#define ROLLBACK_SPACE_FIRMWARE_VERSION 2
+
+struct RollbackSpaceFirmware {
+	/* Struct version, for backwards compatibility */
+	uint8_t struct_version;
+	/* Flags (see FLAG_* above) */
+	uint8_t flags;
+	/* Firmware versions */
+	uint32_t fw_versions;
+	/* Reserved for future expansion */
+	uint8_t reserved[3];
+	/* Checksum (v2 and later only) */
+	uint8_t crc8;
+} __packed;
 
 /* Firmware management parameters */
 struct RollbackSpaceFwmp {
@@ -318,6 +350,19 @@ int board_fwmp_allows_unlock(void)
 
 	return allows_unlock;
 #endif
+}
+
+int board_vboot_dev_mode_enabled(void)
+{
+	struct RollbackSpaceFirmware fw;
+
+	if (tpm_read_success ==
+	    read_tpm_nvmem(FIRMWARE_NV_INDEX, sizeof(fw), &fw)) {
+		return !!(fw.flags & FLAG_VIRTUAL_DEV_MODE_ON);
+	}
+
+	/* If not found or other error, assume dev mode is disabled */
+	return 0;
 }
 
 /****************************************************************************/

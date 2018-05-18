@@ -677,6 +677,13 @@ static int command_ccd_info(void)
 		cflush();
 	}
 
+	ccputs("TPM:");
+	if (!board_fwmp_allows_unlock())
+		ccputs(" fwmp_lock");
+	if (board_vboot_dev_mode_enabled())
+		ccputs(" dev_mode");
+	ccputs("\n");
+
 	ccputs("Use 'ccd help' to print subcommands\n");
 	return EC_SUCCESS;
 }
