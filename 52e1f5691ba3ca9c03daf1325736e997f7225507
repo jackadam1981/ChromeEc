@@ -16,6 +16,24 @@
       "revId": "52e1f5691ba3ca9c03daf1325736e997f7225507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c3768b_567ec5be",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-18T15:58:30Z",
+      "side": 1,
+      "message": "I will add details:\nbuffer gets overwritten by other tasks if we dont explicitly flush the UART buffer before printing it on console by same task.",
+      "parentUuid": "3242b3bc_852d9409",
+      "revId": "52e1f5691ba3ca9c03daf1325736e997f7225507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
