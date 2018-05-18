@@ -277,12 +277,13 @@ cmd_report_cov=genhtml -q -o build/host/coverage_rpt -t \
 ifeq ($(V),0)
 cmd_size=
 else
-cmd_size=$(Q)awk '\
+cmd_size_region=$(shell awk '\
   /__image_size =/ {image_size = strtonum($$1)} \
   /^FLASH/ {flash_size = strtonum($$3)} \
-  END {room_left = flash_size - image_size; \
-       printf ("  *** %s bytes still available in flash on $(BOARD) ****\n", \
-	       room_left)}' $(out)/RW/$(PROJECT).RW.map
+  END { print (flash_size - image_size) }' "$(out)/$(1)/$(PROJECT).$(1).map")
+cmd_size=$(Q)printf \
+  "  *** %s/%s bytes still available in RO/RW flash on $(BOARD) ****\n" \
+  $(foreach a,RO RW,$(call cmd_size_region,$(a)))
 endif
 
 build/host/%.info: run-%
