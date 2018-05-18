@@ -22,6 +22,30 @@
       "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b858aeee_dce0648b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-18T00:39:41Z",
+      "side": 1,
+      "message": "I think it would be a better state to prevent the AP from starting up rather then letting it start then shutting it down; although they do produce similar results",
+      "parentUuid": "31bb5463_d36268b3",
+      "range": {
+        "startLine": 1561,
+        "startChar": 2,
+        "endLine": 1561,
+        "endChar": 38
+      },
+      "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
