@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4be4c1f7_a8296827",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-18T02:56:42Z",
+      "side": 1,
+      "message": "We should probably add a print here to indicate to the user that this event has occurred and we are ignoring it?",
+      "revId": "65b05ac7b128e871dcbe55cc5fdcb6612448ab2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
