@@ -52,6 +52,24 @@
       "revId": "9c6e50a904e1ba78637cc9c2dcb4f99c5586bfdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e486dd29_7eac7a48",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-18T19:16:31Z",
+      "side": 1,
+      "message": "Let\u0027s move the cleanup to the next patch. It\u0027s not related to this patch anyway.",
+      "parentUuid": "7d745d38_96d05b34",
+      "revId": "9c6e50a904e1ba78637cc9c2dcb4f99c5586bfdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
