@@ -34,6 +34,24 @@
       "revId": "f0ff571fde1c6a5c5d045301895d04a2db27697a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd5340e_319e69e7",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-18T18:33:29Z",
+      "side": 1,
+      "message": "I guess the answer is to disable interrupts, grab both last_interrupt_timestamp and event_counter, then enable them again.",
+      "parentUuid": "ad5b8cca_c5fac897",
+      "revId": "f0ff571fde1c6a5c5d045301895d04a2db27697a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
