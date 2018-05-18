@@ -22,6 +22,30 @@
       "revId": "ea6bff8ad8736cd40ebc5abf3a0182aebf71e66f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf75ec45_ff2b3998",
+        "filename": "power/sdm845.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-18T17:12:43Z",
+      "side": 1,
+      "message": "Right. Fixed it by checking charge_want_shutdown() in the loop.",
+      "parentUuid": "31e1c8d0_cf9656d7",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 427,
+        "endChar": 56
+      },
+      "revId": "ea6bff8ad8736cd40ebc5abf3a0182aebf71e66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
