@@ -38,6 +38,9 @@ uint32_t extension_route_command(uint16_t command_code,
 		case VENDOR_CC_GET_BOARD_ID:
 		case VENDOR_CC_SPI_HASH:   /* Requires physical presence. */
 		case VENDOR_CC_TURN_UPDATE_ON:
+		/* Commands from console via tpm_alt_extension() */
+		case VENDOR_CC_RMA_CHALLENGE_RESPONSE:
+		case VENDOR_CC_CCD:
 			break;
 		default:
 			/* Otherwise, we don't allow this command. */
