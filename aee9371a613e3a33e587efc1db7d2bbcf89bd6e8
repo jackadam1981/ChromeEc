@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8afd6d_4898e8e4",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-18T17:02:46Z",
+      "side": 0,
+      "message": "fyi this comment was backward according to section 7.4.4.1 in datasheet",
+      "range": {
+        "startLine": 375,
+        "startChar": 11,
+        "endLine": 375,
+        "endChar": 64
+      },
+      "revId": "aee9371a613e3a33e587efc1db7d2bbcf89bd6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
