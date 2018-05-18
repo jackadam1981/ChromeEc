@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3242b3bc_852d9409",
+        "filename": "power/apollolake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-18T15:49:06Z",
+      "side": 1,
+      "message": "Why doesn\u0027t the buffer eventually get spit out? There\u0027s no description in this CL as to why.",
+      "revId": "52e1f5691ba3ca9c03daf1325736e997f7225507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
