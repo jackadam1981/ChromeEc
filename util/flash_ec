@@ -966,6 +966,13 @@ function flash_npcx_uut() {
 	# Default: It is equilvalant to the beginning of code RAM address.
 	EC_IMG_ADDR="0x"$(xxd -e ${MON_HDR_RO} | cut -d' ' -f4)
 
+	COLD_RESET=$(${DUT_CONTROL_CMD} "cold_reset" | cut -d: -f2)
+	if [[ "${COLD_RESET}" == "on" ]]; then
+		# Don't restore settings, they are wrong if the board is unpowered.
+		save=
+		die "Probably your board is unpowered or in a weird state"
+	fi
+
 	if [ ! -x "$NPCX_UUT" ]; then
 		die "no NPCX UART Update Tool found."
 	fi
