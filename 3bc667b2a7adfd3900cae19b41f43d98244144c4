@@ -94,6 +94,30 @@
       "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0955f0ae_2a44c7a4",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-18T15:45:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6dacdad9_4d3aacbc",
+      "range": {
+        "startLine": 1561,
+        "startChar": 2,
+        "endLine": 1561,
+        "endChar": 38
+      },
+      "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
