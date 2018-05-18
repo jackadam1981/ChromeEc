@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e75166_f31d5e6c",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-18T19:02:01Z",
+      "side": 1,
+      "message": "let\u0027s add a comment sayinig that IPC is Interrupt Program Counter and contains the address that was executing when the ISR was called. Same for LP, please.\n\nThank you!",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "b8ffc2fd464434e953fbda3fab3d71c2704718ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
