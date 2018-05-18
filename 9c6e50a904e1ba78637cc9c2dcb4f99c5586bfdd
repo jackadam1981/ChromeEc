@@ -16,6 +16,24 @@
       "revId": "9c6e50a904e1ba78637cc9c2dcb4f99c5586bfdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ed87e0_610e92c2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-18T06:21:37Z",
+      "side": 1,
+      "message": "OK. I meant to place all notify_host_of_* blocks together.\nBut the move is probably a bit confusing.",
+      "parentUuid": "fe5c311e_1bdb3bc4",
+      "revId": "9c6e50a904e1ba78637cc9c2dcb4f99c5586bfdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
