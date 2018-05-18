@@ -118,6 +118,8 @@ extern struct producer_ops const usb_stream_producer_ops;
  * BUILD_ASSERT(RX_QUEUE.unit_bytes == 1);
  * BUILD_ASSERT(TX_QUEUE.unit_bytes == 1);
  */
+#define USB_STREAM_CONFIG_FULL_EP(NAME) int CONCAT2(NAME, ___dummy___)
+
 #define USB_STREAM_CONFIG_FULL(NAME,					\
 			       INTERFACE,				\
 			       INTERFACE_CLASS,				\
