@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f9899f2_598f4c29",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-18T16:49:06Z",
+      "side": 1,
+      "message": "How does TCPC init depend on the battery being present? If the the intention is to wait until the battery can provide power, then you should call battery_get_disconnect_state() and I have seen batteries on Coral that took upwards of 5-6 seconds prior to discharge FET being enabled.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "879ada2a5c3b8e6d581822648742c5a046e36a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b995f7_18540714",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-18T16:49:06Z",
+      "side": 1,
+      "message": "I assume the + 2 here is to make sure this happens after tcpc_init completes. You probably should add a comment for future reference.",
+      "range": {
+        "startLine": 104,
+        "startChar": 43,
+        "endLine": 104,
+        "endChar": 65
+      },
+      "revId": "879ada2a5c3b8e6d581822648742c5a046e36a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
