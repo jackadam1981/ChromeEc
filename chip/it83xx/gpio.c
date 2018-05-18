@@ -305,11 +305,15 @@ void gpio_kbs_pin_gpio_mode(uint32_t port, uint32_t mask, uint32_t flags)
 		IT83XX_KBS_KSIGCTRL |= mask;
 }
 
+static int group_supports_both_triggers(const int group)
+{
+	return group == 7 || group == 10 || group == 12;
+}
+
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
 	uint32_t pin = 0;
 	uint32_t mask_copy = mask;
-	int irq;
 
 	/*
 	 * Select open drain first, so that we don't glitch the signal
@@ -363,25 +367,23 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		mask_copy >>= 1;
 	}
 
-	/* Set rising edge interrupt. */
-	if (flags & GPIO_INT_F_RISING) {
+	if (flags & (GPIO_INT_F_RISING | GPIO_INT_F_FALLING)) {
+		int irq, wuc_group, wuc_mask;
 		irq = gpio_to_irq(port, mask);
+		wuc_group = gpio_irqs[irq].wuc_group;
+		wuc_mask = gpio_irqs[irq].wuc_mask;
 
-		*(wuemr(gpio_irqs[irq].wuc_group)) &= ~gpio_irqs[irq].wuc_mask;
-	}
-
-	/*
-	 * Set falling edge or both edges interrupt. Note that pins in WUC
-	 * groups 7, 10, and 12 can only declare a falling edge trigger. All
-	 * other pins can only declare both edges as the trigger.
-	 *
-	 * TODO: use an assert to catch if a developer tries to declare one
-	 * type of interrupt on a pin that doesn't support that type.
-	 */
-	if (flags & GPIO_INT_F_FALLING) {
-		irq = gpio_to_irq(port, mask);
-
-		*(wuemr(gpio_irqs[irq].wuc_group)) |= gpio_irqs[irq].wuc_mask;
+		if (flags & GPIO_INT_F_FALLING) {
+			if ((flags & GPIO_INT_F_RISING) &&
+			    !group_supports_both_triggers(wuc_group)) {
+				ccprintf("Fix GPIO interrupt configuration!! "
+					 "%d 0x%x\n",
+					 port, mask);
+			}
+			*(wuemr(wuc_group)) |= wuc_mask;
+		} else {
+			*(wuemr(wuc_group)) &= ~wuc_mask;
+		}
 	}
 }
 
