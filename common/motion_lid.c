@@ -111,7 +111,7 @@ static int lid_angle_is_reliable;
  * maximum deviation in magnitude between the base and lid vectors.  The units
  * are in m/s^2.
  */
-#define NOISY_MAGNITUDE_DEVIATION 1
+#define NOISY_MAGNITUDE_DEVIATION FLOAT_TO_FP(1.5)
 
 /*
  * Define the accelerometer orientation matrices based on the standard
@@ -299,8 +299,8 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	 *
 	 *          (A^2 - B^2) < 2 * 1g * NOISY_MAGNITUDE_DEVIATION
 	 */
-	if (ABS(base_magnitude2 - lid_magnitude2) >
-	    (2 * 10 * NOISY_MAGNITUDE_DEVIATION))
+	if (FLOAT_TO_FP(ABS(base_magnitude2 - lid_magnitude2)) >
+	    FLOAT_TO_FP(2 * 10 * NOISY_MAGNITUDE_DEVIATION))
 		reliable = 0;
 
 #ifdef CONFIG_LID_ANGLE_INVALID_CHECK
