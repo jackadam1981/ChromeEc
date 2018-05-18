@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59bc6103_316f4e38",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-18T13:09:53Z",
+      "side": 1,
+      "message": "why are you dropping ${Q} ?",
+      "range": {
+        "startLine": 284,
+        "startChar": 9,
+        "endLine": 284,
+        "endChar": 10
+      },
+      "revId": "ba323030e501e5e688513a5aa2ef37854c94ffa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
