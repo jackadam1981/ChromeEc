@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "026052d7_d61e5b0b",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-18T17:46:33Z",
+      "side": 1,
+      "message": "Let\u0027s remove these empty definitions here (since you have the guard at the top of the file)",
+      "range": {
+        "startLine": 546,
+        "startChar": 7,
+        "endLine": 546,
+        "endChar": 35
+      },
+      "revId": "53713e057f8505a9b3c8cdc99a0d9a2cba6e8f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
