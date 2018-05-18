@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff1b1a71_42591748",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T18:33:01Z",
+      "side": 1,
+      "message": "The vendor command is always allowed, but sometimes you can\u0027t set write protect.",
+      "parentUuid": "2a423c8e_2e246129",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "964bfe74_bf23f04d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7237b80d_c2de87bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T18:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "964bfe74_bf23f04d",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7a8b0693_134d1449",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T18:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f305bfc_2ebf0b2e",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c35a26fb_ce210fe2",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d21f0a23_c5349d73",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T18:33:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c35a26fb_ce210fe2",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 47
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -129,6 +225,30 @@
       "side": 1,
       "message": "Agree more documentation would be helpful.  tpm_vendor_commands.h should be more descriptive for each command, similar to (or better than :)  ec_commands.h.",
       "parentUuid": "7cb46152_35893d94",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 32
+      },
+      "revId": "3f6b21ca465add1bb2a685afe7ce1a79083cd26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9b2f64_78026694",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-18T18:33:01Z",
+      "side": 1,
+      "message": "I changed it to behave how you described.",
+      "parentUuid": "ab826e23_0b057211",
       "range": {
         "startLine": 171,
         "startChar": 0,
