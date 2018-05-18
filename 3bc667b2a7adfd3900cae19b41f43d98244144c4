@@ -70,6 +70,30 @@
       "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dacdad9_4d3aacbc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-18T03:02:59Z",
+      "side": 1,
+      "message": "\u003e if we add it here it will be used by all boards without needing to define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON.\n\nEven with the current implementation there is no need for boards to define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON.",
+      "parentUuid": "6ce44872_7f855776",
+      "range": {
+        "startLine": 1561,
+        "startChar": 2,
+        "endLine": 1561,
+        "endChar": 38
+      },
+      "revId": "3bc667b2a7adfd3900cae19b41f43d98244144c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
