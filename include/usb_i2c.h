@@ -8,6 +8,7 @@
 #include "registers.h"
 #include "task.h"
 #include "usb_descriptor.h"
+#include "usb-stream.h"
 #include "util.h"
 
 #ifndef __CROS_USB_I2C_H
@@ -185,6 +186,15 @@ extern struct consumer_ops const usb_i2c_consumer_ops;
 		CONCAT2(NAME, _usb_).producer, NAME.consumer);		\
 	static void CONCAT2(NAME, _deferred_)(void)			\
 	{ usb_i2c_deferred(&NAME); }
+
+/*
+ * TODO: I don't like the duplication of the NAME==i2c here, maybe we should
+ * just do #define NAME i2c above, or not have a name parameter to
+ * USB_I2C_CONFIG.
+ * TODO: I also do not like the duplication of CONCAT2(i2c, _usb_) (can be fixed
+ * easily.
+ */
+extern USB_STREAM_CONFIG_FULL_EP(CONCAT2(i2c, _usb_));
 
 /*
  * Handle I2C request in a deferred callback.

@@ -92,6 +92,8 @@ extern struct producer_ops const usb_stream_producer_ops;
  * BUILD_ASSERT(RX_QUEUE.unit_bytes == 1);
  * BUILD_ASSERT(TX_QUEUE.unit_bytes == 1);
  */
+#define USB_STREAM_CONFIG_FULL_EP(NAME) struct dwc_usb_ep CONCAT2(NAME, _ep_ctl)
+
 #define USB_STREAM_CONFIG_FULL(NAME,					\
 			       INTERFACE,				\
 			       INTERFACE_CLASS,				\
@@ -177,7 +179,7 @@ extern struct producer_ops const usb_stream_producer_ops;
 	{								\
 		usb_stream_event(&NAME, evt);				\
 	}								\
-	struct dwc_usb_ep CONCAT2(NAME, _ep_ctl) = {			\
+	USB_STREAM_CONFIG_FULL_EP(NAME) = {				\
 		.max_packet = USB_MAX_PACKET_SIZE,			\
 		.tx_fifo = ENDPOINT,					\
 		.out_pending = 0,					\

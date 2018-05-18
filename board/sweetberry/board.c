@@ -42,9 +42,6 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 /* USB power interface. */
 USB_POWER_CONFIG(sweetberry_power, USB_IFACE_POWER, USB_EP_POWER);
 
-/* I2C over USB interface. This gets declared in usb_i2c.c */
-extern struct dwc_usb_ep i2c_usb__ep_ctl;
-
 struct dwc_usb usb_ctl = {
 	.ep = {
 		&ep0_ctl,
