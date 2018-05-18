@@ -164,6 +164,30 @@
       "revId": "5ddeb5e9765104d28e41e0e264050df1a87d49d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc7464ac_25cf4ac2",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-18T18:30:22Z",
+      "side": 1,
+      "message": "ccprintf() takes a variable argument list, the ternary comparisons have additional \"\" strings, and \"%s%s\" adds another 4 bytes of static data.  That eats up all the space saved from a few additional opcodes to call the same function more than once.",
+      "parentUuid": "2ebd3bd7_bd19974c",
+      "range": {
+        "startLine": 680,
+        "startChar": 1,
+        "endLine": 685,
+        "endChar": 14
+      },
+      "revId": "5ddeb5e9765104d28e41e0e264050df1a87d49d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
