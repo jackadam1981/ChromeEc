@@ -34,6 +34,24 @@
       "revId": "9c6e50a904e1ba78637cc9c2dcb4f99c5586bfdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d745d38_96d05b34",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-18T15:35:13Z",
+      "side": 1,
+      "message": "It seems like a reasonable cleanup.  This is a small enough function it\u0027s not confusing to follow where it went.",
+      "parentUuid": "46ed87e0_610e92c2",
+      "revId": "9c6e50a904e1ba78637cc9c2dcb4f99c5586bfdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
