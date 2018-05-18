@@ -362,6 +362,12 @@ servo_has_dut_i2c_mux() {
 	dut_control -i dut_i2c_mux >/dev/null 2>&1
 }
 
+dut_unpowered() {
+	# Use the servo control cold_reset to indicate if the DUT is unpowered.
+	local cold_reset=$(${DUT_CONTROL_CMD} "cold_reset" | cut -d: -f2)
+	[[ "${cold_reset}" == "on" ]]
+}
+
 # reset the EC
 toad_ec_hard_reset() {
 	if dut_control cold_reset 2>/dev/null ; then
@@ -1034,6 +1040,12 @@ function flash_npcx_uut() {
 	MON="${MONITOR_PATH}/npcx_monitor.bin"
 	# The start address to restore monitor firmware binary
 	MON_ADDR="0x200C3020"
+
+	if $(dut_unpowered); then
+		# Don't restore settings, they are wrong if the DUT is unpowered.
+		save=
+		die "The DUT is probably unpowered or in a weird state"
+	fi
 
 	if [ ! -x "$NPCX_UUT" ]; then
 		die "no NPCX UART Update Tool found."
