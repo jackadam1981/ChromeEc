@@ -95,6 +95,14 @@ const unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 /******************************************************************************/
 /* Power Delivery and charing functions */
 
+void variant_tcpc_init(void)
+{
+	/* Enable PPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+}
+DECLARE_HOOK(HOOK_INIT, variant_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
+
 uint16_t tcpc_get_alert_status(void)
 {
 	/*
