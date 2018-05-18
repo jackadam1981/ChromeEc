@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f2d54ad_c2d9ba9e",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-18T16:42:07Z",
+      "side": 0,
+      "message": "I strongly recommend not removing this check. We added this to solve a very bad problem on Eve which is that if the discharge FET can\u0027t provide power, but the state of charge (as read from the fuel gauge) is high enough, the EC will try to boot the AP. But if the discharge FET is disabled, then that can cause a brownout on VSYS and the power rails to the H1. This can then lead to H1 getting into a bad state that can only be solve be resetting H1. This was unrecoverable until removing the battery.",
+      "range": {
+        "startLine": 226,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "0579bf584ccd0e9aeea51c3435b2bca114dacdb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
