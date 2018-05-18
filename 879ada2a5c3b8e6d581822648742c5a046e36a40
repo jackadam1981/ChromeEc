@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1dbeff1_e0506930",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-18T19:23:16Z",
+      "side": 1,
+      "message": "Looks like the original version of this was added in CL:627115 which was for the purpose of waiting for the battery from disconnect to improve PD state machine.\n\nI went ahead and changed this to look at battery_get_disconnect_state instead since that does seem better.\n\nShould we increase the time now or wait until we see bad batteries?",
+      "parentUuid": "1f9899f2_598f4c29",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "879ada2a5c3b8e6d581822648742c5a046e36a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2b995f7_18540714",
         "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "879ada2a5c3b8e6d581822648742c5a046e36a40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f31c1a9_83c624dd",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-18T19:23:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2b995f7_18540714",
+      "range": {
+        "startLine": 104,
+        "startChar": 43,
+        "endLine": 104,
+        "endChar": 65
+      },
+      "revId": "879ada2a5c3b8e6d581822648742c5a046e36a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
