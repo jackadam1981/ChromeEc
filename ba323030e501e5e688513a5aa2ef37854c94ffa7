@@ -22,6 +22,30 @@
       "revId": "ba323030e501e5e688513a5aa2ef37854c94ffa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f973469_31e9a5b3",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-19T02:26:39Z",
+      "side": 1,
+      "message": "Well, with V\u003d1, the line that this prints is not very interesting (any maybe not worth printing?):\nprintf \"  *** %s/%s bytes still available in RO/RW flash on hammer ****\\n\" 7600 27904\n\nI can add it back anyway.\n\nI haven\u0027t found a way to print the interesting line though (the shell/awk invocation), as we using the output of cmd_size_region as parameter to this function...",
+      "parentUuid": "59bc6103_316f4e38",
+      "range": {
+        "startLine": 284,
+        "startChar": 9,
+        "endLine": 284,
+        "endChar": 10
+      },
+      "revId": "ba323030e501e5e688513a5aa2ef37854c94ffa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
