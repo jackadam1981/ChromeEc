@@ -28,6 +28,12 @@ __attribute__((weak)) void chipset_do_shutdown(void)
 
 static void internal_chipset_shutdown(void)
 {
+	/*
+	 * Clean up the UART buffer so that all the debug messages are
+	 * printed on the UART console before doing shutdown.
+	 */
+	cflush();
+
 	CPRINTS("%s()", __func__);
 
 	force_shutdown = 0;
