@@ -22,6 +22,30 @@
       "revId": "0579bf584ccd0e9aeea51c3435b2bca114dacdb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a35c8d4_0c81ab82",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-05-19T02:07:12Z",
+      "side": 0,
+      "message": "hmmm... the eve code looks a bit simpler than this,\nbut we still have a problem with discharged\nbatteries.  battery_init() tries to talk to the\nbattery, but the battery can\u0027t reply because it\ndoesn\u0027t have enough power to operate its controller.\n\nwe report there is no battery to the charger task.\nthe charger task won\u0027t even try to supply the\nprecharge current to the battery in this case,\nso we never get the battery back.",
+      "parentUuid": "3f2d54ad_c2d9ba9e",
+      "range": {
+        "startLine": 226,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "0579bf584ccd0e9aeea51c3435b2bca114dacdb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
