@@ -16,6 +16,24 @@
       "revId": "d9dd5da976a26d2fd51710b85115b17adfe379cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78d5160e_5f795273",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-21T16:18:53Z",
+      "side": 1,
+      "message": "0x0200 is the first board version I was informed the proper chip would start being sourced. I added more info in the bug. I don\u0027t think we need to remove this fix later (unless we start needing more ROM space).",
+      "parentUuid": "6995be85_604a6efa",
+      "revId": "d9dd5da976a26d2fd51710b85115b17adfe379cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
