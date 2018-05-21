@@ -1173,7 +1173,7 @@
 #undef CONFIG_EMULATED_SYSRQ
 
 /* Support for eSPI for host communication */
-#undef CONFIG_ESPI
+#undef CONFIG_HOSTCMD_ESPI
 
 /* Use Virtual Wire signals instead of GPIO with eSPI interface */
 #undef CONFIG_ESPI_VW_SIGNALS
