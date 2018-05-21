@@ -272,4 +272,13 @@ int ccd_reset_config(unsigned int flags);
  */
 void ccd_tpm_reset_callback(void);
 
+/**
+ * Read the ccd has password setting. This checks the raw password. It is
+ * possible that a pending ccd change would set or clear the password, but we
+ * don't think this is a big issue or risk for now.
+ *
+ * @return 1 if password is set, 0 if it's not
+ */
+int ccd_has_password(void);
+
 #endif /* __CROS_EC_CCD_CONFIG_H */
