@@ -22,6 +22,30 @@
       "revId": "b8ffc2fd464434e953fbda3fab3d71c2704718ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307cd6f9_d525af84",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-21T09:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e75166_f31d5e6c",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "b8ffc2fd464434e953fbda3fab3d71c2704718ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
