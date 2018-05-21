@@ -204,6 +204,18 @@ static int raw_has_password(void)
 }
 
 /**
+ * Read the ccd has password setting. This checks the raw password. It is
+ * possible that a pending ccd change would set or clear the password, but we
+ * don't think this is a big issue or risk for now.
+ *
+ * @return 1 if password is set, 0 if it's not
+ */
+int ccd_has_password(void)
+{
+	return raw_has_password();
+}
+
+/**
  * Calculate the expected digest for a password.
  *
  * Uses the unique device ID and the salt from the config.
