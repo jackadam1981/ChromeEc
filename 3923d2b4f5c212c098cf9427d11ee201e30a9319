@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d2b796d_7df3d2b7",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-21T21:33:48Z",
+      "side": 1,
+      "message": "With this change, you won\u0027t call __enter_hibernate in npcx/system.c. I am not sure how critical it is for PSL mode hibernate, but definitely worth checking to ensure nothing is missed.",
+      "revId": "3923d2b4f5c212c098cf9427d11ee201e30a9319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
