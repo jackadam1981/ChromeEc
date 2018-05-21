@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a040a1a_02d77111",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-21T21:57:04Z",
+      "side": 1,
+      "message": "Accoring to the screenshot shared by longsys, 3.3V seems to be set earlier and fully up when the the other rails are coming up: https://b.corp.google.com/issues/73258414#comment10\n\n[ There is no specific requirement in the data sheet however, but from experience, I would try to mimmic what we got from the manufacturer].\n\"\"\"The 1.2V and 1.8V power supplied need to reach the required voltage within 300ms of each other regardless of the order. \"\"\"",
+      "revId": "97c8447df0dca8f867cd9918f98a3cbe38a6ab2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046bb04d_440b6a91",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-21T21:57:04Z",
+      "side": 1,
+      "message": "Similarely, I would disable 3.3V once 1.1 and 1.8V are confirmed off.",
+      "revId": "97c8447df0dca8f867cd9918f98a3cbe38a6ab2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
