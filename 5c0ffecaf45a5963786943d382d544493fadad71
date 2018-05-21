@@ -34,6 +34,24 @@
       "revId": "5c0ffecaf45a5963786943d382d544493fadad71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4658e4e7_2839da63",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-21T16:13:52Z",
+      "side": 1,
+      "message": "Where is that patch? Regardless you are adding this code. Do the right thing and check return value and continue if it\u0027s a failure.",
+      "parentUuid": "89bf5169_89a3b859",
+      "revId": "5c0ffecaf45a5963786943d382d544493fadad71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
