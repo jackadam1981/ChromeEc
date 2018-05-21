@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04291b79_d2a3cc2f",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-21T18:07:31Z",
+      "side": 1,
+      "message": "remove, setting a static field to 0 is useless.",
+      "revId": "7fd64020774addadab179832466737df297a8d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62266c00_4f6b7c9f",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-21T18:07:31Z",
+      "side": 1,
+      "message": "remove, setting a static field to 0 is useless.",
+      "revId": "7fd64020774addadab179832466737df297a8d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aeb3618_ec541b1d",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-21T18:07:31Z",
+      "side": 1,
+      "message": "it is not going to work: motion_sensors is an array of sensors, no sensor pointers. Do a memcpy.",
+      "revId": "7fd64020774addadab179832466737df297a8d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
