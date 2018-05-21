@@ -16,6 +16,24 @@
       "revId": "3923d2b4f5c212c098cf9427d11ee201e30a9319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f695a7_47a1e50f",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-21T21:42:51Z",
+      "side": 1,
+      "message": "It\u0027s somewhat intentional as we need interrupts enabled to issue i2c commands. Leaving the watchdog enabled seems good just in case we hang for some reason.\n\nLet me add Mulin to see what his thoughts are.",
+      "parentUuid": "4d2b796d_7df3d2b7",
+      "revId": "3923d2b4f5c212c098cf9427d11ee201e30a9319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
