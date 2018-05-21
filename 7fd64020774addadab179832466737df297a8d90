@@ -68,6 +68,24 @@
       "revId": "7fd64020774addadab179832466737df297a8d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14946be1_22a3455d",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-21T19:02:37Z",
+      "side": 1,
+      "message": "Indeed, much cleaner than memcpy.",
+      "parentUuid": "ca3faa74_a80b366f",
+      "revId": "7fd64020774addadab179832466737df297a8d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
