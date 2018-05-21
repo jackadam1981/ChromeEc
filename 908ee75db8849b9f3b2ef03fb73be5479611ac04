@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2bdf562b_61a64acc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-05-21T12:37:55Z",
+      "side": 1,
+      "message": "done. the \"--auto\" and \"--opr wr\" will read file via the function read_input_file().",
+      "parentUuid": "2ad07c9e_1b272dbb",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "908ee75db8849b9f3b2ef03fb73be5479611ac04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "970ba6c4_0610a34e",
         "filename": "util/uut/main.c",
         "patchSetId": 7
