@@ -46,6 +46,30 @@
       "revId": "0579bf584ccd0e9aeea51c3435b2bca114dacdb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc35d51e_183d912d",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-21T21:14:15Z",
+      "side": 0,
+      "message": "I understand the the problem symptom here is different. However, I still think that the solution here is to remove the call to battery_check_disconnect() from battery_is_present() as we did for Octopus recently. But, still keep this functionality and call it from the prevent_power_on function where it is needed and prevents the problem I described in my previous comment.\n\nEven when the FG is not responding, battery presence will be detected via the hw presence GPIO, The charger state machine should follow the path where it knows a battery is connected, but it\u0027s not responsive and that results in applying a precharge current command.",
+      "parentUuid": "9a35c8d4_0c81ab82",
+      "range": {
+        "startLine": 226,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "0579bf584ccd0e9aeea51c3435b2bca114dacdb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
