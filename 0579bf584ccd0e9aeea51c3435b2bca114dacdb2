@@ -70,6 +70,30 @@
       "revId": "0579bf584ccd0e9aeea51c3435b2bca114dacdb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba5c574f_97770c96",
+        "filename": "board/atlas/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-05-21T22:25:35Z",
+      "side": 0,
+      "message": "ok, if i read the code correctly, we\u0027ll keep the AP off based on\nCONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON\nwhich is presently at the default 15w on atlas.\nmaybe we need to tweak that threshold on some boards to avoid\nthe brownout?",
+      "parentUuid": "cc35d51e_183d912d",
+      "range": {
+        "startLine": 226,
+        "startChar": 11,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "0579bf584ccd0e9aeea51c3435b2bca114dacdb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
