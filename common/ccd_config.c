@@ -649,6 +649,12 @@ void ccd_disable(void)
 	ccd_set_state(CCD_STATE_LOCKED);
 }
 
+/* Check for any settings that restrict ccd open */
+int ccd_open_not_standard(void)
+{
+	return !board_fwmp_allows_unlock() || raw_has_password();
+}
+
 /******************************************************************************/
 /* Console commands */
 
@@ -1592,3 +1598,4 @@ static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 	return VENDOR_RC_INTERNAL_ERROR;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_DISABLE_RMA, ccd_disable_rma);
+DECLARE_VENDOR_COMMAND(VENDOR_CC_FACTORY_MODE_DISABLE, ccd_disable_rma);

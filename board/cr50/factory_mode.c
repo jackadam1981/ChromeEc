@@ -5,7 +5,11 @@
 
 #include "board_id.h"
 #include "console.h"
+#include "ccd_config.h"
+#include "extension.h"
+#include "rma_auth.h"
 #include "system.h"
+#include "tpm_vendor_cmds.h"
 
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_CCD, format, ## args)
@@ -75,3 +79,23 @@ int board_is_first_factory_boot(void)
 	return (!(system_get_reset_flags() & RESET_FLAG_HIBERNATE) &&
 		inactive_image_is_guc_image() && board_id_is_erased());
 }
+
+static enum vendor_cmd_rc vc_factory_mode(enum vendor_cmd_cc code,
+					  void *buf,
+					  size_t input_size,
+					  size_t *response_size)
+{
+	*response_size = 0;
+
+	if (input_size)
+		return VENDOR_RC_BOGUS_ARGS;
+
+	if (board_battery_is_present() || ccd_open_not_standard())
+		return VENDOR_RC_NOT_ALLOWED;
+
+	CPRINTF("%s: enable factory mode\n", __func__);
+	enter_rma_mode();
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_FACTORY_MODE_ENABLE, vc_factory_mode);

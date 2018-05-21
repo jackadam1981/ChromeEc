@@ -272,4 +272,13 @@ int ccd_reset_config(unsigned int flags);
  */
 void ccd_tpm_reset_callback(void);
 
+/**
+ * Returns True if any ccd settings restrict opening the device. FWMP and
+ * password are the settings we use now. Others can be added.
+ *
+ * FWMP can comletely prevent CCD open. If a password is set, the password has
+ * to be used to open the device.
+ */
+int ccd_open_not_standard(void);
+
 #endif /* __CROS_EC_CCD_CONFIG_H */
