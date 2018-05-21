@@ -279,7 +279,7 @@ DECLARE_DEFERRED(rma_reset_failed);
 /* Total time deep sleep should not be allowed. */
 #define DISABLE_SLEEP_TIME (TPM_PROCESSING_TIME + TPM_RESET_TIME)
 
-static void enter_rma_mode(void)
+static void enter_rma_mode_deferred(void)
 {
 	int rv;
 
@@ -312,8 +312,15 @@ static void enter_rma_mode(void)
 	 */
 	hook_call_deferred(&rma_reset_failed_data, TPM_RESET_TIME);
 }
-DECLARE_DEFERRED(enter_rma_mode);
+DECLARE_DEFERRED(enter_rma_mode_deferred);
 
+/* Disable sleep and call the deferred function that will enable rma mode */
+void enter_rma_mode(void)
+{
+	delay_sleep_by(DISABLE_SLEEP_TIME);
+	hook_call_deferred(&enter_rma_mode_deferred_data,
+		TPM_PROCESSING_TIME);
+}
 /*
  * Compare response sent by the operator with the pre-compiled auth code.
  * Return error code or success depending on the comparison results.
@@ -338,8 +345,7 @@ static enum vendor_cmd_rc process_response(uint8_t *buf,
 	if (rv == EC_SUCCESS) {
 		CPRINTF("%s: success!\n", __func__);
 		*response_size = 0;
-		delay_sleep_by(DISABLE_SLEEP_TIME);
-		hook_call_deferred(&enter_rma_mode_data, TPM_PROCESSING_TIME);
+		enter_rma_mode();
 		return VENDOR_RC_SUCCESS;
 	}
 

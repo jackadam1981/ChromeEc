@@ -66,4 +66,10 @@ const char *rma_get_challenge(void);
  */
 int rma_try_authcode(const char *code);
 
+/**
+ * Set ccd capabilities to Always and disable write protect. This will leave the
+ * device unlocked. Only call it if ccd should be completely opened.
+ */
+void enter_rma_mode(void);
+
 #endif
