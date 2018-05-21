@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9f9baf76_c6e53a92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-21T23:19:16Z",
+      "side": 1,
+      "message": "s/coes/comes/",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "ef73c5a40d4a2c77045b3a3efa5448298b1adf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed5a7e91_7bbc780e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -18,6 +41,29 @@
         "startChar": 21,
         "endLine": 26,
         "endChar": 23
+      },
+      "revId": "ef73c5a40d4a2c77045b3a3efa5448298b1adf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f72fcaf_97e9eee8",
+        "filename": "include/extension.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-21T23:19:16Z",
+      "side": 1,
+      "message": "add @flags here?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 3
       },
       "revId": "ef73c5a40d4a2c77045b3a3efa5448298b1adf52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
