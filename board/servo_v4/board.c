@@ -21,7 +21,6 @@
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
-#include "usb_gpio.h"
 #include "usb_i2c.h"
 #include "usb_pd.h"
 #include "usb_spi.h"
@@ -89,8 +88,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
  * Forward UARTs as a USB serial interface.
  */
 
-#define USB_STREAM_RX_SIZE	16
-#define USB_STREAM_TX_SIZE	16
+#define USB_STREAM_RX_SIZE	64
+#define USB_STREAM_TX_SIZE	64
 
 /******************************************************************************
  * Forward USART3 as a simple USB serial interface.
@@ -445,6 +444,10 @@ static void board_init(void)
 	 * Voltage transition needs to occur in lockstep between the CHG and
 	 * DUT ports, so initially limit voltage to 5V.
 	 */
+#if 0
 	pd_set_max_voltage(PD_MIN_MV);
+#else
+	pd_set_max_voltage(0);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
