@@ -1953,6 +1953,10 @@
  */
 #undef CONFIG_KEYBOARD_KSO_HIGH_DRIVE
 
+/*
+ * Add support for keyboards with language ID pins
+ */
+#undef CONFIG_KEYBOARD_LANGUAGE_ID
 /*****************************************************************************/
 
 /* Support common LED interface */
