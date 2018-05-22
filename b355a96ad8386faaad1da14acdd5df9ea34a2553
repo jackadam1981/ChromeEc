@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8204a791_cddceb2a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-22T18:34:43Z",
+      "side": 1,
+      "message": "This is optional and dependent upon how the board is designed, not necessarily a function of using a PS8XXX and any USB-C PPC. For instance, meowth and nocturne use PS8805 w/ SN5S330, but don\u0027t have the TCPC control the FETs.\n\nConsidering the NX20P3483 is the only one that uses this feature, maybe it\u0027s okay.",
+      "revId": "b355a96ad8386faaad1da14acdd5df9ea34a2553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
