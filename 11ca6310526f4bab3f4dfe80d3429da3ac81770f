@@ -116,6 +116,30 @@
       "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73be6d23_28001333",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-22T00:11:17Z",
+      "side": 1,
+      "message": "I believe this change only applies to TCPCs which are TCPCI compliant. The ANX3429 (used on Reef/Eve etc) enters/exits low power mode completely differently. It uses 2 GPIO lines to wake it back up and doesn\u0027t wake due to an I2C access on the bus.",
+      "parentUuid": "d924df94_f29c6e3a",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 25
+      },
+      "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

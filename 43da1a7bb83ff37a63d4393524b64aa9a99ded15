@@ -45,6 +45,30 @@
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721657e1_f7c07cbc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-22T00:11:17Z",
+      "side": 1,
+      "message": "If the port doesn\u0027t have a pending lpm_entry, then canceling the request is what needs to happen. Otherwise, the extra request will cause the TCPC to exit low power mode.",
+      "parentUuid": "d13c1b97_eaf599f0",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
