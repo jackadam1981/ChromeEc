@@ -22,6 +22,52 @@
       "revId": "45184964528338dcd216cfd41bc09a45875232cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0d1a41_f971c1c8",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-22T16:17:04Z",
+      "side": 1,
+      "message": "It is PIN(8, 3)",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 25
+      },
+      "revId": "45184964528338dcd216cfd41bc09a45875232cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e719aace_406b869d",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-22T16:17:04Z",
+      "side": 1,
+      "message": "Can we add a note that this pin changed to PIN(8, 3) in proto 2. We need to handle this change when we get the new one",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "45184964528338dcd216cfd41bc09a45875232cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
