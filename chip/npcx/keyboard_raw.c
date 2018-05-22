@@ -94,7 +94,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 
 	/* Drive all lines to high */
 	if (col == KEYBOARD_COLUMN_NONE) {
-		mask = KB_COL_MASK;
+		mask = 0x3FFFF;
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
@@ -114,7 +114,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 		else
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
-		mask = ((~(1 << col_out)) & KB_COL_MASK);
+		mask = ~(1 << col_out);
 	}
 
 	/* Set KBSOUT */
