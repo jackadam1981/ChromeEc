@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ee24497_449ebaf1",
+        "filename": "util/uut/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-22T10:15:23Z",
+      "side": 1,
+      "message": "seems it should be static",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "a6d016129bc7c6fbbfd315eaf88d74d5590d2f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29a2f404_c3215b35",
+        "filename": "util/uut/main.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-22T10:15:23Z",
+      "side": 1,
+      "message": "nit: the sentence still looks incorrect to me",
+      "range": {
+        "startLine": 105,
+        "startChar": 27,
+        "endLine": 106,
+        "endChar": 44
+      },
+      "revId": "a6d016129bc7c6fbbfd315eaf88d74d5590d2f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
