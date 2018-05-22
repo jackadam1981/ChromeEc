@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "2183b81f_dc758b4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-22T16:48:34Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "51daf1b50211315a19c54c18faf53898c434a572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c0ebbb5_0ac234c1",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-22T16:48:34Z",
+      "side": 1,
+      "message": "Please use numbers instead of code names (as done for other configurations per project) and add comment above each config: /* Default, Nami, Vayne */.",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "51daf1b50211315a19c54c18faf53898c434a572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d716f903_100a9d05",
         "filename": "board/nami/board.c",
         "patchSetId": 5
@@ -18,6 +64,53 @@
         "startChar": 1,
         "endLine": 688,
         "endChar": 4
+      },
+      "revId": "51daf1b50211315a19c54c18faf53898c434a572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a971d241_ef300667",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-22T16:48:34Z",
+      "side": 1,
+      "message": "Please use if (oem \u003d\u003d\u003d ) for only non-default cases to save code space.",
+      "parentUuid": "d716f903_100a9d05",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 688,
+        "endChar": 4
+      },
+      "revId": "51daf1b50211315a19c54c18faf53898c434a572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2461b30_9afe239e",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-22T16:48:34Z",
+      "side": 1,
+      "message": "nit: I would just call it \u0027setup_fans\u0027. It\u0027ll make it available as a bucket for other fan related stuff.",
+      "range": {
+        "startLine": 745,
+        "startChar": 1,
+        "endLine": 745,
+        "endChar": 25
       },
       "revId": "51daf1b50211315a19c54c18faf53898c434a572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
