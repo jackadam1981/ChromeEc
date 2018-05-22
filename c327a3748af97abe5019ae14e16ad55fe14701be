@@ -22,6 +22,30 @@
       "revId": "c327a3748af97abe5019ae14e16ad55fe14701be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a7f719_fb2d74b4",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-22T21:34:00Z",
+      "side": 1,
+      "message": "I think it establishes the contract/interface of this config define. I recently saw a use of CONFIG_BATTERY_REVIVE_DISCONNECT and wondered why we needed it. After tracing, I realize we were only defining CONFIG_BATTERY_REVIVE_DISCONNECT so we could use the battery_get_disconnected_state function.\n\nPutting this in the comment clearly states what you are getting with this define when you use it.",
+      "parentUuid": "f4b06d9c_4856a2e9",
+      "range": {
+        "startLine": 337,
+        "startChar": 36,
+        "endLine": 338,
+        "endChar": 48
+      },
+      "revId": "c327a3748af97abe5019ae14e16ad55fe14701be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
