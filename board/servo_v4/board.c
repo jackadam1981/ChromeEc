@@ -21,7 +21,6 @@
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
-#include "usb_gpio.h"
 #include "usb_i2c.h"
 #include "usb_pd.h"
 #include "usb_spi.h"
@@ -89,8 +88,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
  * Forward UARTs as a USB serial interface.
  */
 
-#define USB_STREAM_RX_SIZE	16
-#define USB_STREAM_TX_SIZE	16
+#define USB_STREAM_RX_SIZE	64
+#define USB_STREAM_TX_SIZE	64
 
 /******************************************************************************
  * Forward USART3 as a simple USB serial interface.
