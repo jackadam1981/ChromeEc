@@ -22,6 +22,30 @@
       "revId": "85dc029a43a4e316b66b065d97c7d6121125bf9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01feb098_8347c529",
+        "filename": "common/extension.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T22:31:36Z",
+      "side": 1,
+      "message": "We\u0027ve always allowed it via USB, just only via the console.\n\nIt may be implemented differently in the release branch, but go/cr50-rma \"Cr50 Implementation\" specifies it works via both console and debug cable.",
+      "parentUuid": "ba9de221_a8367a05",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "85dc029a43a4e316b66b065d97c7d6121125bf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
