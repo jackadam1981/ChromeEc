@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d716f903_100a9d05",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1189530
+      },
+      "writtenOn": "2018-05-22T01:47:03Z",
+      "side": 1,
+      "message": "Vayne is OEM project and we should have the if() case in code here even its setting same as Nami(reference design). Nami setting is default value as init value and for non-oem case.\n\nlike:\nif (oem \u003d\u003d PROJECT_VAYNE) fans[0].rpm \u003d $fan_rpm_Nami;",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 688,
+        "endChar": 4
+      },
+      "revId": "51daf1b50211315a19c54c18faf53898c434a572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
