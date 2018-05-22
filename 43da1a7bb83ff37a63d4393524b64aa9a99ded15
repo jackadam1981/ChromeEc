@@ -69,6 +69,30 @@
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ca9c62c_8e7ce39e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-22T18:48:51Z",
+      "side": 1,
+      "message": "I was looking at other code that uses atomic operation, and I saw a pattern that would alleviate any concerns I had about volatile from earlier.\n\nWe can do a atomic_read_clear to a local variable and use that local as our work queue. If we cannot complete the work, we atomic_or back on the to global and call hook_call_deferred(0). If we completed all of the work, then we don\u0027t need to clear the deferred call (with -1) since it shouldn\u0027t run again (unless of course a higher priority task has already added back to the work queue and scheduled it again - in which case we would want to run again)\n\nThis also ensures all access to tcpc_lpm_pending is through an atomic operation (which guarantees the volatile reads and writes)",
+      "parentUuid": "721657e1_f7c07cbc",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

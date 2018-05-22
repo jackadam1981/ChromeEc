@@ -140,6 +140,30 @@
       "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "925ac178_47719384",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-22T18:48:51Z",
+      "side": 1,
+      "message": "Even though the ANX3429 doesn\u0027t use wake back up from I2C transfer, it seems pretty reasonable for a future TCPC to do so (even if it isn\u0027t fully TCPCI compliant).\n\nMoving up the delay logic to tcpm_set_drp_toggle (or maybe adding a new tcpm_enter_low_power) will allow all of the TCPCs to behave the same in terms of lower-power mode timing (whether they follow tcpci strictly or not)",
+      "parentUuid": "73be6d23_28001333",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 25
+      },
+      "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
