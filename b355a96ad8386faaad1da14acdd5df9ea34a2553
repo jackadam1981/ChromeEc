@@ -16,6 +16,24 @@
       "revId": "b355a96ad8386faaad1da14acdd5df9ea34a2553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a34cea1_ec9a6179",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-22T18:53:29Z",
+      "side": 1,
+      "message": "Very true. This change just gives us the option for this method to be called. Even for meowth, the set_snk_ctrl field is present it is just set to NULL.\n\nThe PS8751 follows the TCPCI spec here, so it seems reasonable for this function to be included in its driver set.\n\nIt is still up each PPC driver to know when to call into the tcpm_set_snk_ctrl or issues an i2c command to the PPC itself.",
+      "parentUuid": "8204a791_cddceb2a",
+      "revId": "b355a96ad8386faaad1da14acdd5df9ea34a2553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
