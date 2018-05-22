@@ -34,6 +34,24 @@
       "revId": "3923d2b4f5c212c098cf9427d11ee201e30a9319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264d1b5e_4bd00f4b",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-05-22T01:23:38Z",
+      "side": 1,
+      "message": "If my understanding is correct, PMIC cuts off ec\u0027s VCC power rail through i2c commands in this case. If so, it should have no harm without calling __enter_hibernate. And it\u0027s better to add an infinite loop at the end of board_hibernate() in case ec has a chance to execute few instructions in __enter_hibernate(). \n\nRegarding system_enter_psl_mode(), setting bit 5 of PDOUT(8) will pull  PSL_OUT (GPIO85) to low. Once ec received PSL input event, PSL_OUT will be pulled to high immediately. Does this pin influence the ROP PMIC? Or ec won\u0027t wake-up from hibernating.",
+      "parentUuid": "58f695a7_47a1e50f",
+      "revId": "3923d2b4f5c212c098cf9427d11ee201e30a9319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
