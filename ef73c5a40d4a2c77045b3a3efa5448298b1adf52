@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bf9923d_1b2853d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T19:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9baf76_c6e53a92",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "ef73c5a40d4a2c77045b3a3efa5448298b1adf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed5a7e91_7bbc780e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-21T23:13:47Z",
       "side": 1,
       "message": "Not related to this change, but why can\u0027t we get ccd info from usb vendor commands?",
+      "range": {
+        "startLine": 26,
+        "startChar": 21,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "ef73c5a40d4a2c77045b3a3efa5448298b1adf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6810fd75_1c3d515b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T19:57:02Z",
+      "side": 1,
+      "message": "We will be able to, after the next changes.  Here I\u0027m just ensuring that I didn\u0027t change existing behavior with this refactoring.",
+      "parentUuid": "ed5a7e91_7bbc780e",
       "range": {
         "startLine": 26,
         "startChar": 21,
@@ -91,6 +139,30 @@
       "revId": "ef73c5a40d4a2c77045b3a3efa5448298b1adf52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fb9028b_8a8d3ccc",
+        "filename": "include/extension.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T19:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f72fcaf_97e9eee8",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "ef73c5a40d4a2c77045b3a3efa5448298b1adf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
