@@ -129,7 +129,7 @@ const static led_patterns battery_pattern_1 = {
 };
 
 /*
- * Sona - Power LED (single color)
+ * Sona, Pantheon- Power LED (single color)
  * System S0         Solid on
  * System S3         1 second on, 1 second off
  * System S4/S5      Off
@@ -156,21 +156,6 @@ const static led_patterns battery_pattern_2 = {
 	{{LED_AMBER, PULSE_NO}, {LED_AMBER, PULSE_NO}, {LED_AMBER, PULSE_NO}},
 	/* full: s0, s3, s5 */
 	{{LED_WHITE, PULSE_NO}, {LED_WHITE, PULSE_NO}, {LED_WHITE, PULSE_NO}},
-};
-
-/*
- * Pantheon - Power LED(single color):
- * S0:             White (solid on)
- * S3/Lid closed:  White Pulsing (Gradual 1sec on, Gradual 1sec off, 2sec off)
- * S5:             Off
- */
-const static led_patterns power_pattern_2 = {
-	/* discharging: s0, s3, s5 */
-	{{LED_WHITE, PULSE_NO}, {LED_WHITE, PULSE(20)}, {LED_OFF,   PULSE_NO}},
-	/* charging: s0, s3, s5 */
-	{{LED_WHITE, PULSE_NO}, {LED_WHITE, PULSE(20)}, {LED_OFF,   PULSE_NO}},
-	/* full: s0, s3, s5 */
-	{{LED_WHITE, PULSE_NO}, {LED_WHITE, PULSE(20)}, {LED_OFF,   PULSE_NO}},
 };
 
 /*
@@ -221,7 +206,7 @@ static void led_init(void)
 		break;
 	case PROJECT_PANTHEON:
 		patterns[0] = &battery_pattern_2;
-		patterns[1] = &power_pattern_2;
+		patterns[1] = &power_pattern_1;
 		break;
 	case PROJECT_AKALI:
 		patterns[0] = &battery_pattern_3;
