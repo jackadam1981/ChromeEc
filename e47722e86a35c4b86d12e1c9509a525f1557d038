@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f2d6913a_9c9fa8dc",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-22T20:15:53Z",
+      "side": 1,
+      "message": "Is this message even needed? wouldn\u0027t \u0027enter_rma_mode\u0027  report both success and failure?",
+      "parentUuid": "fb92af74_add7971e",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "e47722e86a35c4b86d12e1c9509a525f1557d038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04df9108_73640c64",
         "filename": "common/ccd_config.c",
         "patchSetId": 1
@@ -65,6 +89,29 @@
         "startChar": 13,
         "endLine": 653,
         "endChar": 25
+      },
+      "revId": "e47722e86a35c4b86d12e1c9509a525f1557d038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40593af3_2d7b6cfe",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-22T20:15:53Z",
+      "side": 1,
+      "message": "this should be a single command with a parameter - enable/disable.\n\nor maybe we can just live with FACTORY_MODE_ENABLE and DISABLE_RMA, modulo Randall\u0027s suggestion on streamlining the terminology.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
       },
       "revId": "e47722e86a35c4b86d12e1c9509a525f1557d038",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
