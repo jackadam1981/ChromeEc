@@ -255,7 +255,7 @@ enum ccd_reset_config_flags {
 	CCD_RESET_UNLOCKED_ONLY = (1 << 1),
 
 	/* Use RMA/factory defaults */
-	CCD_RESET_RMA = (1 << 2)
+	CCD_RESET_FACTORY = (1 << 2)
 };
 
 /**
@@ -272,4 +272,9 @@ int ccd_reset_config(unsigned int flags);
  */
 void ccd_tpm_reset_callback(void);
 
+/**
+ * Enter CCD factory mode. This will clear the TPM and do a hard reboot after
+ * updating the ccd config.
+ */
+void enable_ccd_factory_mode(void);
 #endif /* __CROS_EC_CCD_CONFIG_H */
