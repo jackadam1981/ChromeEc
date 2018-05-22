@@ -418,6 +418,15 @@ static void board_pmic_init(void)
 	if (err)
 		goto pmic_error;
 
+	/*
+	 * V3.3A_DSW (VR3) control.
+	 * [7:6] : 00b Disabled (default:00b)
+	 * [5:4] : 00b Vnom + 3%. (default: 10b 0%)
+	 */
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V33ADSWCNT, 0x0A);
+	if (err)
+		goto pmic_error;
+
 	CPRINTS("PMIC init done");
 	pmic_initialized = 1;
 	return;
