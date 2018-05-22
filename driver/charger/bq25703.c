@@ -64,6 +64,26 @@ static inline int raw_write16(int offset, int value)
 	return i2c_write16(I2C_PORT_CHARGER, BQ25703_I2C_ADDR1, offset, value);
 }
 
+static int bq25703_set_low_power_mode(int enable)
+{
+	int rv;
+	int reg;
+
+	rv = raw_read16(BQ25703_REG_CHARGE_OPTION_0, &reg);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= BQ25703_CHARGE_OPTION_0_LOW_POWER_MODE;
+	else
+		reg &= ~BQ25703_CHARGE_OPTION_0_LOW_POWER_MODE;
+
+	rv =  raw_write16(BQ25703_REG_CHARGE_OPTION_0, reg);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
 
 /* Charger interfaces */
 
@@ -259,16 +279,26 @@ int chg_ramp_get_current_limit(void)
 	int reg;
 	int tries_left = 8;
 
+	/* Exit low power mode so ADC conversion takes typical time */
+	bq25703_set_low_power_mode(0);
+
 	/* Turn on the ADC for one reading */
 	reg = BQ25703_ADC_OPTION_ADC_START | BQ25703_ADC_OPTION_EN_ADC_IIN;
 	if (raw_write16(BQ25703_REG_ADC_OPTION, reg))
 		goto error;
 
-	/* Wait until the ADC operation completes. Typically 10ms */
+	/*
+	 * Wait until the ADC operation completes. The spec says typical
+	 * conversion time is 10 msec. If low power mode isn't exited first,
+	 * then the conversion time jumps to ~60 msec.
+	 */
 	do {
 		msleep(2);
 		raw_read16(BQ25703_REG_ADC_OPTION, &reg);
 	} while (--tries_left && (reg & BQ25703_ADC_OPTION_ADC_START));
+
+	/* ADC reading attempt complete, go back to low power mode */
+	bq25703_set_low_power_mode(1);
 
 	/* Could not complete read */
 	if (reg & BQ25703_ADC_OPTION_ADC_START)
@@ -282,7 +312,7 @@ int chg_ramp_get_current_limit(void)
 	return reg * BQ25703_ADC_IIN_STEP_MA;
 
 error:
-	CPRINTF("Could not read input current limit ADC!");
+	CPRINTF("Could not read input current limit ADC!\n");
 	return 0;
 }
 #endif /* CONFIG_CHARGE_RAMP_HW */

@@ -41,6 +41,7 @@
 /* ChargeOption0 Register */
 #define BQ25703_CHARGE_OPTION_0_EN_LEARN	(1 << 5)
 #define BQ25703_CHARGE_OPTION_0_CHRG_INHIBIT	(1 << 0)
+#define BQ25703_CHARGE_OPTION_0_LOW_POWER_MODE	(1 << 15)
 
 /* ChargeOption3 Register */
 #define BQ25703_CHARGE_OPTION_3_EN_ICO_MODE	(1 << 11)
