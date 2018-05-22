@@ -46,6 +46,30 @@
       "revId": "210261ebe5ad9e295495e2cc722f68fb2f63f80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd47da2f_70d33a7a",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-22T18:02:20Z",
+      "side": 1,
+      "message": "I definitely rely on console output to know what it going on; I would like to know that it is reliably.",
+      "parentUuid": "b1016a33_586c5dce",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "210261ebe5ad9e295495e2cc722f68fb2f63f80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
