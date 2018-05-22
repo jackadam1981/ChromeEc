@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7303d32f_60220f45",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-22T20:13:28Z",
+      "side": 1,
+      "message": "Yeah I agree, but I don\u0027t think we should chose either factory or rma to call the mode. It is more like rma and factory are methods for enabling a ccd mode. \n\nLike they both make ccd extremely open. ccd extreme mode? I kind of want the naming to make people be adverse to enabling this mode if they don\u0027t need it. \n\nWe could say factory reset and rma reset to get to this yet unnamed mode.",
+      "parentUuid": "fb92af74_add7971e",
+      "range": {
+        "startLine": 96,
+        "startChar": 21,
+        "endLine": 96,
+        "endChar": 28
+      },
+      "revId": "e47722e86a35c4b86d12e1c9509a525f1557d038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04df9108_73640c64",
         "filename": "common/ccd_config.c",
         "patchSetId": 1
