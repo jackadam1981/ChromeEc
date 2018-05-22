@@ -22,6 +22,30 @@
       "revId": "210261ebe5ad9e295495e2cc722f68fb2f63f80f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1016a33_586c5dce",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-22T17:41:25Z",
+      "side": 1,
+      "message": "\u003e Are you sure this is only called with interrupts disabled?  Because it will end up with them enabled.\n\nAh yes, calling this with interrupts already disabled would need to be handled, thanks for catching that.\n\n\u003e Also, the debug output stream is not required to be reliable.  It is better to lose the occasional character than impact the rest of the system.  That\u0027s why we didn\u0027t put this update in a critical section before, and why we allow multiple threads to printf() on top of each other.\n\nThe corruption I experienced was more serious than losing an occasional character. The whole string from the higher priority task would sometimes be dropped, making it harder to know what was really happening while debugging. Other times the whole TX buffer would be printed again (because the tail can end up past the head). This duplicate output meant that I spent some time looking for what caused this second reboot before I realized it wasn\u0027t real:\n\n\"\"\"\n--- UART initialized after reboot ---\n[Reset cause: reset-pin]\n[Image: RO, grunt_v1.1.8319-1356a1a5b 2018-05-10 02:27:11 @cros-beefy475-c2]\n[0.004176 init buttons]\n[0.004399 Inits done]\n[0.039184 SW 0x03]\n[0.040385 hash start 0x00040000 0x00020dd4]\n[0.043375 PB init-on]\n[0.043808 PD comm enabled]\n[0.049110 KB init state: [0.049492 TCPC p1 init ready]\n[0.049793 TCPC p1 VID:0x1da0 PID:0x8751 DID:0x1 FWV:0x37]\n08 0a 08 08 08 -- 08 --C1 st2\n 08 08 -- 08 [0.064022 p1: PPC init\u0027d.]\n0\n\n--- UART initialized after reboot ---\n[Reset cause: reset-pin]\n[Image: RO, grunt_v1.1.8319-1356a1a5b 2018-05-10 02:27:11 @cros-beefy475-c2]\n[0.004176 init buttons]\n[0.004399 Inits done]\n[0.039184 SW 0x03]\n[0.040385 hash start 0x00040000 0x00020dd4]\n[0.043375 PB init-on]\n[0.043808 PD comm enabled]\n[0.049110 KB init state: [0.049492 TCPC p1 init ready]\n[0.049793 TCPC p1 VID:0x1da0 PID:0x8751 DID:0x1 FWV:0x37]\n08 0a 08 08 08 -- 08 --C1 st2\n 08 08 -- 08 [8]\n[0.072954 TCPC p0 init ready]\n\"\"\"\n\nGiven these types of missing and duplicate output, I thought it may be worth adding the critical section. Alternatively, I can just apply this patch locally whenever I need more reliable console output for debugging.",
+      "parentUuid": "b66e1eec_7347a34f",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "210261ebe5ad9e295495e2cc722f68fb2f63f80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
