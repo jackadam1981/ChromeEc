@@ -22,7 +22,6 @@
 
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
-
 #define CONFIG_STREAM_USART3
 #define CONFIG_STREAM_USART4
 #define CONFIG_STREAM_USB
@@ -92,7 +91,14 @@
 #undef  CONFIG_CHARGE_MANAGER_SAFE_MODE
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_CMD_PD
+#if 0
+#define CONFIG_USB_PD_COMM_DISABLED
+#endif
+#if 1
+#define CONFIG_USB_PD_DEBUG_LEVEL 7
+#endif
 #define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_BOARD_INIT
 #define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_PORT_COUNT 2
@@ -103,11 +109,19 @@
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 
 /* Override PD_ROLE_DEFAULT in usb_pd.h */
+#if 0
 #define PD_ROLE_DEFAULT(port) ((port) ? PD_ROLE_SOURCE : PD_ROLE_SINK)
+#else
+#define PD_ROLE_DEFAULT(port) ((port) ? PD_ROLE_SINK : PD_ROLE_SINK)
+#endif
 
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
+#if 0
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FREEZE
+#else
+#define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SINK
+#endif
 
 /* Variable-current Rp no connect and Ra attach macros */
 #define CC_NC(port, cc, sel)  (pd_tcpc_cc_nc(port, cc, sel))
@@ -211,6 +225,9 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel);
  * @return 1 if cc_pull == 1 and Rp is invalid, otherwise 0
  */
 int pd_set_rp_rd(int port, int cc_pull, int rp_value);
+
+/* Board specific PD init. */
+int pd_board_init(void);
 
 /**
  * Get board HW ID version
