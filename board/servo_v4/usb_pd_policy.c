@@ -44,9 +44,12 @@ static const uint16_t pd_src_voltages_mv[] = {
 };
 static uint32_t pd_src_chg_pdo[ARRAY_SIZE(pd_src_voltages_mv)];
 static uint8_t chg_pdo_cnt;
+#if 0
 static const uint32_t pd_src_host_pdo[] = {
 		PDO_FIXED(5000, 500, DUT_PDO_FIXED_FLAGS),
 };
+#endif
+
 const uint32_t pd_snk_pdo[] = {
 		PDO_FIXED(5000, 500, CHG_PDO_FIXED_FLAGS),
 		PDO_BATT(4750, 21000, 15000),
@@ -107,10 +110,35 @@ static int charge_port_is_active(void)
 	return active_charge_port == CHG && vbus[CHG].mv > 0;
 }
 
+
+static void dut_allow_charge(void);
+DECLARE_DEFERRED(dut_allow_charge);
+static void dut_allow_charge(void)
+{
+	CPRINTS("dut_allow_charge");
+
+	/*
+	 * Update to charge enable if charger still present and not
+	 * already charging.
+	 */
+	if (charge_port_is_active() &&
+	    pd_get_dual_role(DUT) != PD_DRP_FORCE_SOURCE) {
+		CPRINTS("dut_allow_charge !");
+		pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
+		/* pd_config_init(port, enable_src?) */
+		pd_config_init(DUT, 1);
+		pd_update_contract(DUT);
+	}
+}
+
+
+
 static void board_manage_dut_port(void)
 {
-	int rp;
+	enum pd_dual_role_states allow_role;
+	enum pd_dual_role_states role;
 
+	CPRINTS("board_manage_dut_port t:%d", task_get_current());
 	/*
 	 * This function is called by the CHG port whenever there has been a
 	 * change in its vbus voltage or current. That change may necessitate
@@ -118,27 +146,50 @@ static void board_manage_dut_port(void)
 	 * contract if it is connected.
 	 */
 
-	/* Assume the default value of Rp */
-	rp = TYPEC_RP_USB;
-	if (vbus[CHG].mv == PD_MIN_MV && charge_port_is_active()) {
-		/* Only advertise higher current via Rp if vbus == 5V */
-		if (vbus[CHG].ma >= 3000)
-			/* CHG port is connected and DUt can advertise 3A */
-			rp = TYPEC_RP_3A0;
-		else if (vbus[CHG].ma >= 1500)
-			rp = TYPEC_RP_1A5;
+	/* Assume the default value of Rd */
+	allow_role = PD_DRP_FORCE_SINK;
+
+	if (charge_port_is_active()) {
+		CPRINTS("active");
+		allow_role = PD_DRP_FORCE_SOURCE;
+#if 0
+		if (vbus[CHG].mv == PD_MIN_MV) {
+			/* Only advertise higher current via Rp if vbus == 5V */
+			if (vbus[CHG].ma >= 3000)
+				/* CHG port is connected and DUt can advertise 3A */
+				rp = TYPEC_RP_3A0;
+			else if (vbus[CHG].ma >= 1500)
+				rp = TYPEC_RP_1A5;
+		}
+#endif
 	}
 
-	/* Check if Rp setting needs to change from current value */
-	if (vbus_rp != rp)
-		/* Present new Rp value */
-		tcpm_select_rp_value(DUT, rp);
 
+	role = pd_get_dual_role(DUT);
+	if (role != allow_role) {
+		/* Update role. */
+		if (allow_role == PD_DRP_FORCE_SINK) {
+			CPRINTS("update role %d -> %d", role, allow_role);
+			CPRINTS("Disconnect charge. ");
+			gpio_set_level(GPIO_DUT_CHG_EN, 0);
+
+			CPRINTS("board_manage_dut_port config_init -> %d", allow_role);
+			pd_set_dual_role(DUT, allow_role);
+
+			/* pd_config_init(port, enable_src?) */
+			pd_config_init(DUT, allow_role == PD_DRP_FORCE_SOURCE);
+		} else {
+			CPRINTS("pd_set_power_supply_ ON later");
+			hook_call_deferred(&dut_allow_charge_data, 2000 * MSEC);
+		}
+	}
+	CPRINTS("board_manage_dut_port contract");
 	/*
 	 * Update PD contract to reflect new available CHG
 	 * voltage/current values.
 	 */
 	pd_update_contract(DUT);
+	CPRINTS("board_manage_dut_port done");
 }
 
 static void update_ports(void)
@@ -146,6 +197,7 @@ static void update_ports(void)
 	int pdo_index, src_index, snk_index, i;
 	uint32_t pdo, max_ma, max_mv;
 
+	CPRINTS("update_ports");
 	/*
 	 * CHG Vbus has changed states, update PDO that reflects CHG port
 	 * state
@@ -153,6 +205,7 @@ static void update_ports(void)
 	if (!charge_port_is_active()) {
 		/* CHG Vbus has dropped, so always source DUT Vbus from host */
 		chg_pdo_cnt = 0;
+		CPRINTS("no power");
 	} else {
 		/* Advertise the 'best' PDOs at various discrete voltages */
 		if (active_charge_supplier == CHARGE_SUPPLIER_PD) {
@@ -192,20 +245,17 @@ static void update_ports(void)
 
 			chg_pdo_cnt = 1;
 		}
+		CPRINTS("Some power");
 	}
 
 	/* Call DUT port manager to update Rp and possible PD contract */
 	board_manage_dut_port();
-
-	/*
-	 * Supply VBUS from the CHG port if available. This may glitch VBUS
-	 * on the DUT during switchover.
-	 */
-	gpio_set_level(GPIO_HOST_OR_CHG_CTL, chg_pdo_cnt > 0);
+	CPRINTS("Set source ? %d", chg_pdo_cnt);
 }
 
 int board_set_active_charge_port(int charge_port)
 {
+	CPRINTS("board_set_active_charge_port");
 	if (charge_port == DUT)
 		return -1;
 
@@ -224,6 +274,8 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 {
 	if (port != CHG)
 		return;
+
+	CPRINTS("board_set_charge_limit p:%d s:%d c_ma:%d m:%d c:%d", port, supplier, charge_ma, max_ma, charge_mv);
 
 	active_charge_supplier = supplier;
 
@@ -287,6 +339,8 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 
 static int board_set_rp(int rp)
 {
+	CPRINTS("board_set_rp");
+
 	if (disable_dts_mode) {
 		/*
 		 * DTS mode is disabled, so only present the requested Rp value
@@ -359,6 +413,8 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 {
 	int rv = EC_SUCCESS;
 
+	CPRINTS("pd_set_rp_rd, p:%d, rd?:%d, v:%x", port, cc_pull == TYPEC_CC_RD, rp_value);
+
 	/* By default disconnect all Rp/Rd resistors from both CC lines */
 	/* Set Rd for CC1/CC2 to High-Z. */
 	gpio_set_flags(GPIO_USB_DUT_CC1_RD, GPIO_INPUT);
@@ -409,8 +465,12 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 		*src_pdo =  pd_src_chg_pdo;
 		pdo_cnt = chg_pdo_cnt;
 	} else {
+#if 0
 		*src_pdo =  pd_src_host_pdo;
 		pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+#else
+		return 0;
+#endif
 	}
 
 	return pdo_cnt;
@@ -459,24 +519,30 @@ void pd_transition_voltage(int idx)
 
 int pd_set_power_supply_ready(int port)
 {
+	CPRINTS("pd_set_power_supply_ready %d", port);
 	/* Port 0 can never provide vbus. */
 	if (port == CHG)
 		return EC_ERROR_INVAL;
 
-	/* Enable VBUS */
-	gpio_set_level(GPIO_DUT_CHG_EN, 1);
-
 	if (charge_port_is_active()) {
+		/* Enable VBUS */
+		CPRINTS("pd_set_power_supply_ ON");
+		gpio_set_level(GPIO_DUT_CHG_EN, 1);
+
 		if (vbus[CHG].mv != PD_MIN_MV)
 			CPRINTS("ERROR, CHG port voltage %d != PD_MIN_MV",
 				vbus[CHG].mv);
 
 		vbus[DUT].mv = vbus[CHG].mv;
 		vbus[DUT].ma = vbus[CHG].mv;
+		pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
 	} else {
-		/* Host vbus is always 5V/500mA */
-		vbus[DUT].mv = PD_MIN_MV;
-		vbus[DUT].ma = 500;
+		vbus[DUT].mv = 0;
+		vbus[DUT].ma = 0;
+		CPRINTS("pd_set_power_supply_ OFF");
+		gpio_set_level(GPIO_DUT_CHG_EN, 0);
+		pd_set_dual_role(DUT, PD_DRP_FORCE_SINK);
+		return EC_ERROR_NOT_POWERED;
 	}
 
 	/* Enable CCD, if debuggable TS attached */
@@ -488,6 +554,7 @@ int pd_set_power_supply_ready(int port)
 
 void pd_power_supply_reset(int port)
 {
+	CPRINTS("pd_power_supply_reset %d", port);
 	/* Port 0 can never provide vbus. */
 	if (port == CHG)
 		return;
@@ -495,12 +562,14 @@ void pd_power_supply_reset(int port)
 	ccd_enable(0);
 
 	/* Disable VBUS */
+	CPRINTS("set_chg_en OFF");
 	gpio_set_level(GPIO_DUT_CHG_EN, 0);
-
+#if 0
 	/* Host vbus is always 5V/500mA */
 	vbus[DUT].mv = 0;
 	vbus[DUT].ma = 0;
-
+	pd_set_dual_role(DUT, PD_DRP_FORCE_SINK);
+#endif
 	/* DUT is lost, back to 5V limit on CHG */
 	pd_set_external_voltage_limit(CHG, PD_MIN_MV);
 }
@@ -510,6 +579,16 @@ int pd_snk_is_vbus_provided(int port)
 
 	return gpio_get_level(port ? GPIO_USB_DET_PP_DUT :
 				     GPIO_USB_DET_PP_CHG);
+}
+
+int pd_board_init(void)
+{
+#if 0
+	CPRINTS("pd_board_init");
+	pd_execute_hard_reset(CHG);
+	pd_execute_hard_reset(DUT);
+#endif
+	return EC_SUCCESS;
 }
 
 int pd_board_checks(void)
@@ -526,18 +605,39 @@ int pd_check_power_swap(int port)
 	 * SRC. Let servo_v4 have more control over its power role by always
 	 * rejecting power swap requests from the DUT.
 	 */
+
+	/* Port 0 can never provide vbus. */
+	if (port == CHG)
+		return 0;
+
+	if (pd_snk_is_vbus_provided(CHG))
+		return 1;
+
 	return 0;
 }
 
 int pd_check_data_swap(int port, int data_role)
 {
+	if (port == CHG)
+		return 0;
+
 	/* Servo can allow data role swaps */
 	return 1;
 }
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Should we do something here? */
+	/* Port 0 can never provide data. */
+	if (port == CHG)
+		return;
+
+#if 0
+	/* Change USB mux based on data role. */
+	if (data_role)
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_SEL, 0);
+	else
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_SEL, 1);
+#endif
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)
@@ -622,9 +722,13 @@ static int command_dts(int argc, char **argv)
 		/* Accept new disable_dts value */
 		disable_dts_mode = disable_dts_new;
 		/* Some time for DUT to detach */
-		msleep(100);
+		msleep(500);
 		/* Present RP_USB on CC1 and CC2 based on disable_dts_mode */
+#if 0
 		board_select_rp_value(DUT, TYPEC_RP_USB);
+#else
+		pd_config_init(DUT, pd_get_dual_role(DUT) == PD_DRP_FORCE_SOURCE);
+#endif
 		ccprintf("dts mode: %s\n", disable_dts_mode ? "off" : "on");
 	}
 
