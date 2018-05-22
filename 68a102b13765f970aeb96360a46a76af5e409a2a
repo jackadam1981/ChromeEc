@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cc0a44b_6be2ca20",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-22T20:26:01Z",
+      "side": 1,
+      "message": "this command requires an extra argument, needs to be mentioned in the help message",
+      "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb202c87_39dc16b0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-22T20:26:01Z",
+      "side": 1,
+      "message": "one empty line is enough.",
+      "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8daa1ee9_4a2a9f8a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-22T20:26:01Z",
+      "side": 1,
+      "message": "should we just use RMA_DISABLE here?u",
+      "range": {
+        "startLine": 1909,
+        "startChar": 2,
+        "endLine": 1909,
+        "endChar": 41
+      },
+      "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066823c7_ebf98e2a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-22T20:26:01Z",
+      "side": 1,
+      "message": "the -F argument is not optional, optarg should be set unconditionally or error reported if there is no additional argument supplied.",
+      "range": {
+        "startLine": 2044,
+        "startChar": 4,
+        "endLine": 2049,
+        "endChar": 0
+      },
+      "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
