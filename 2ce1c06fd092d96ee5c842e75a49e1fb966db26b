@@ -282,6 +282,30 @@
       "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37707d17_293506e6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T17:05:44Z",
+      "side": 1,
+      "message": "It looks from CL:1049467 like you\u0027re going the route of making the host command interface for the campfire branch incompatible with ToT.  In that case, you might as well just take over bit #31.  Then you don\u0027t need any of the 64-bit stuff.",
+      "parentUuid": "39c62a19_8a3e39ae",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 36
+      },
+      "revId": "2ce1c06fd092d96ee5c842e75a49e1fb966db26b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
