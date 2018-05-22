@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2034e3a4_f643e68b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T16:48:39Z",
+      "side": 1,
+      "message": "Is this the correct bug?\n\nThis is the bug for the real fix, not the campfire-only hack.  Attaching this CL to the bug may be confusing, if people try to follow the patch stream for it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "a8b72d3a3ac959fdd79b63d9697274d955765ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0989ba59_5f7ce2bb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3021,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T16:48:39Z",
+      "side": 1,
+      "message": "Please add comment /* Hacked to 64-bit for campfire branch; see b:(whatever the correct bug is) */",
+      "range": {
+        "startLine": 3021,
+        "startChar": 1,
+        "endLine": 3021,
+        "endChar": 9
+      },
+      "revId": "a8b72d3a3ac959fdd79b63d9697274d955765ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
