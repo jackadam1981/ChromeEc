@@ -16,6 +16,24 @@
       "revId": "f139d3a0ca9215b5b5bb2abc1f120ff6171036c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383d2ef8_0831d7e0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-22T00:06:50Z",
+      "side": 0,
+      "message": "Which line are you referring to? The call to charge_request(0,0)?",
+      "parentUuid": "3a246007_363989d2",
+      "revId": "f139d3a0ca9215b5b5bb2abc1f120ff6171036c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
