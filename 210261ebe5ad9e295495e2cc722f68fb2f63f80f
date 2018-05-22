@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b66e1eec_7347a34f",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-22T17:11:36Z",
+      "side": 1,
+      "message": "Are you sure this is only called with interrupts disabled?  Because it will end up with them enabled.\n\nAlso, the debug output stream is not required to be reliable.  It is better to lose the occasional character than impact the rest of the system.  That\u0027s why we didn\u0027t put this update in a critical section before, and why we allow multiple threads to printf() on top of each other.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "210261ebe5ad9e295495e2cc722f68fb2f63f80f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
