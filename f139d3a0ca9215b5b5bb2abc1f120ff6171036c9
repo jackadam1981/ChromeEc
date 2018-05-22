@@ -52,6 +52,24 @@
       "revId": "f139d3a0ca9215b5b5bb2abc1f120ff6171036c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cca3e46_438d24a2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-22T00:16:22Z",
+      "side": 0,
+      "message": "This was removed so that the call to charge request isn\u0027t called from the EC command task which leads to the race condition. Instead, when charger task sees that manual_current/manual_voltage are 0, then it forces charging to be disabled.",
+      "parentUuid": "7f6d85c9_66730024",
+      "revId": "f139d3a0ca9215b5b5bb2abc1f120ff6171036c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
