@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba9de221_a8367a05",
+        "filename": "common/extension.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-22T22:17:29Z",
+      "side": 1,
+      "message": "why does this have to be added here while it does not work over USB?",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "85dc029a43a4e316b66b065d97c7d6121125bf9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
