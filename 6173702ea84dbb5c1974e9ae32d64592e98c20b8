@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7edd48c_03927f31",
+        "filename": "board/coral/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:43:14Z",
+      "side": 1,
+      "message": "You need some change here to configure the 2 extra pins.",
+      "revId": "6173702ea84dbb5c1974e9ae32d64592e98c20b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f0616e5_d5032305",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:43:14Z",
+      "side": 1,
+      "message": "you mean \u003e\n\nLooks like the rework has ID 0 and 1 swapped, can you fix the rework instead of modifying this?",
+      "range": {
+        "startLine": 299,
+        "startChar": 16,
+        "endLine": 299,
+        "endChar": 17
+      },
+      "revId": "6173702ea84dbb5c1974e9ae32d64592e98c20b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eeb02b9_d2cd5c01",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:43:14Z",
+      "side": 1,
+      "message": "This can go in the previous patch, at least for testing.",
+      "revId": "6173702ea84dbb5c1974e9ae32d64592e98c20b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
