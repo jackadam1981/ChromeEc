@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "54b79c95_a0a4d21a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-23T20:46:00Z",
+      "side": 1,
+      "message": "If you delay here (proxy for normal preemption) does that mean we lose state in the tcpc that was set up in a higher priority task? This questions goes w/ my comment below on line 281. It seems to me we can be requesting idle when we shouldn\u0027t be.",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7162b8e_c20ac4b4",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 6
@@ -22,6 +39,23 @@
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24a1b0c_dec38ab9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-23T20:46:00Z",
+      "side": 1,
+      "message": "Are you relying on the compiler to generate another read here of the global variable? \n\nWhat happens if we preempt here and cancel a call from the drp_toggle below? Are you relying on another port to kick this task and we eventually settle? I don\u0027t see how you guaranteed not to miss an idle request. Yes, tcpc_lpm_pending can have the request set but this hook can be canceled right here w/ a pending lpm request.",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +151,23 @@
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3de94a8_844caa9a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-23T20:46:00Z",
+      "side": 1,
+      "message": "I think I\u0027m missing something still. Yes, we can send i2cidle command and a subsequent access will wake it back up. Will the hardware lose state in that situation where an idle command is sent which drops state that was previous set up?",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
