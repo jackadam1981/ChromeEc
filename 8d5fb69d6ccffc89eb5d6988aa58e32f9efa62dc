@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da6d268c_2502f767",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-23T23:05:23Z",
+      "side": 1,
+      "message": "I see. This turns out that I will also need to check other chips implementation if the keyboard scanning HW is being used based on the actual declared keyboard\u0027s columns.",
+      "parentUuid": "140bb6b9_41e6782b",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0000fa07_dad6301c",
         "filename": "chip/npcx/keyboard_raw.c",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "f2972c1b_60a76462",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-23T23:05:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0000fa07_dad6301c",
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb709d5f_3b3eddbc",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2018-05-23T10:38:54Z",
       "side": 1,
       "message": "\"state\" isn\u0027t a great name, since it never changes.\n\nAlso, you probably never have to read back that array (all you care about is the processed data from the array), so I\u0027d just have it as a local variable in read_matrix_id.",
+      "range": {
+        "startLine": 93,
+        "startChar": 26,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12e6bd8_afdc7b57",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-23T23:05:23Z",
+      "side": 1,
+      "message": "I should probably change this naming from \"id_state\" to \"keyboard_id\".\n\nWith regard to the local variable suggestion, I would expect that we need to build some host and console commands to manipulate its value further on top of this variable. Would it be appropriate to declare it as global scope to accomplish this purpose. thanks",
+      "parentUuid": "cb709d5f_3b3eddbc",
       "range": {
         "startLine": 93,
         "startChar": 26,
@@ -105,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "b814a091_9d7e5c54",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-23T23:05:23Z",
+      "side": 1,
+      "message": "yup. you make a very fair point for readability. thanks",
+      "parentUuid": "01384e89_40419e13",
+      "range": {
+        "startLine": 296,
+        "startChar": 10,
+        "endLine": 296,
+        "endChar": 23
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf6bbdd3_3e4a6984",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "a033314b_a82d0d8f",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-23T23:05:23Z",
+      "side": 1,
+      "message": "Agree. I thought ID is composed of at least two KSOs pins so it makes sense to declare as plural.",
+      "parentUuid": "cf6bbdd3_3e4a6984",
+      "range": {
+        "startLine": 1967,
+        "startChar": 0,
+        "endLine": 1968,
+        "endChar": 0
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f2ce446_3cdff056",
         "filename": "include/keyboard_config.h",
         "patchSetId": 3
@@ -139,6 +253,24 @@
       "writtenOn": "2018-05-23T10:38:54Z",
       "side": 1,
       "message": "I don\u0027t think you use this anywhere anymore if CONFIG_KEYBOARD_LANGUAGE_IDS is not defined, so you can just drop it.",
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac67879_4a2f43d9",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-23T23:05:23Z",
+      "side": 1,
+      "message": "Yup. good catch. I will remove the #else block.",
+      "parentUuid": "1f2ce446_3cdff056",
       "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
