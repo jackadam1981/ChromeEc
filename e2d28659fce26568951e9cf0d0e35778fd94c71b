@@ -22,6 +22,30 @@
       "revId": "e2d28659fce26568951e9cf0d0e35778fd94c71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73cc98e5_1296c948",
+        "filename": "chip/it83xx/ec2i_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-23T19:22:32Z",
+      "side": 1,
+      "message": "I am working on a follow-up cleanup patch where I plan to get rid of this.",
+      "parentUuid": "2b834f7d_a5ce1a48",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "e2d28659fce26568951e9cf0d0e35778fd94c71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
