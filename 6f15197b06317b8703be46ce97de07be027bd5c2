@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f5f822f_365c114e",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-23T08:16:31Z",
+      "side": 1,
+      "message": "seems the ship has sailed (at least too fast for me)\nbut please note that you are not supposed to mess up with GPIO registers directly but call the GPIO API.\n\nHere, probably putting the proper ALTERNATE(..., MODULE_CEC, 0) in the board gpio.inc, then call gpio_config_module(MODULE_CEC_SCAN, 1);\n(and gpio_config_module(MODULE_KEYBOARD_SCAN, 0) below)",
+      "range": {
+        "startLine": 1026,
+        "startChar": 0,
+        "endLine": 1029,
+        "endChar": 0
+      },
+      "revId": "6f15197b06317b8703be46ce97de07be027bd5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
