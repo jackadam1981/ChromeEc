@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c9c4683_a6d508fa",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-23T00:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cc0a44b_6be2ca20",
+      "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb202c87_39dc16b0",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c225a8a_c839ade1",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-23T00:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb202c87_39dc16b0",
+      "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +163,30 @@
       "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc689b23_7b8c0588",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-23T00:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066823c7_ebf98e2a",
+      "range": {
+        "startLine": 2044,
+        "startChar": 4,
+        "endLine": 2049,
+        "endChar": 0
+      },
+      "revId": "68a102b13765f970aeb96360a46a76af5e409a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
