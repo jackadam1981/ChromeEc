@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51fa7a43_8baad16c",
+        "filename": "common/acpi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-23T17:47:55Z",
+      "side": 1,
+      "message": "Curious: why not just walk from 0 up til port_count and just set result directly with 1 \u003c\u003c i ?",
+      "revId": "282ee4e7e98f71d07c35bb7470a283cf3ab7b90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
