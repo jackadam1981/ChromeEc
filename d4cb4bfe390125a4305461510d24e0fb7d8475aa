@@ -46,6 +46,30 @@
       "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503f84e0_a23550a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T23:35:41Z",
+      "side": 1,
+      "message": "They take values from the same enum, so this is ok.",
+      "parentUuid": "c64d5623_2fe7b8fd",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
