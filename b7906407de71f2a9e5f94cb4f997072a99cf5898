@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "694956d2_c45071ec",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-23T20:52:02Z",
+      "side": 1,
+      "message": "Yes, seems like that would be a good idea.",
+      "parentUuid": "de036945_31f9a23f",
+      "range": {
+        "startLine": 48,
+        "startChar": 27,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "b7906407de71f2a9e5f94cb4f997072a99cf5898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c485d1e_9d8f051a",
         "filename": "chip/it83xx/ec2i.c",
         "patchSetId": 2
@@ -45,6 +69,23 @@
       "revId": "b7906407de71f2a9e5f94cb4f997072a99cf5898",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e77d322_476887b4",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-23T20:52:02Z",
+      "side": 1,
+      "message": "How much do we care about one size field per array? Probably is a wash if you explicitly initialized these open coded in a function?",
+      "revId": "b7906407de71f2a9e5f94cb4f997072a99cf5898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
