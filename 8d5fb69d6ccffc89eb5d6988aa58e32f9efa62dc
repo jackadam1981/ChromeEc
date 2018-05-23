@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "140bb6b9_41e6782b",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:38:54Z",
+      "side": 1,
+      "message": "KB_COL_MASK \u003d ((1\u003c\u003cKB_COL_NUM) - 1), so I don\u0027t think this is going to work properly anymore.\n\nIf the keyboard scanning HW is implemented properly in NPCX, you should just be able set mask \u003d 0x3ffff and the HW won\u0027t do anything to the pins that are not muxed to the keyboard scanning module (MODULE_KEYBOARD_SCAN in board/x/gpio.inc).",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0000fa07_dad6301c",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:38:54Z",
+      "side": 1,
+      "message": "ditto, same problem. Maybe we can just remove `\u0026 KB_COL_MASK`.",
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb709d5f_3b3eddbc",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:38:54Z",
+      "side": 1,
+      "message": "\"state\" isn\u0027t a great name, since it never changes.\n\nAlso, you probably never have to read back that array (all you care about is the processed data from the array), so I\u0027d just have it as a local variable in read_matrix_id.",
+      "range": {
+        "startLine": 93,
+        "startChar": 26,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a295c2_596dcc0e",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:38:54Z",
+      "side": 1,
+      "message": "Drop that parameter, it\u0027s always id_state anyway.",
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01384e89_40419e13",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:38:54Z",
+      "side": 1,
+      "message": "I\u0027d do c \u003d 0; c \u003c LANGUAGE_IDS; c++\n\nThen below:\nkeyboard_raw_drive_column(KEYBOARD_COLS + c);\n\nstate[c] \u003d r",
+      "range": {
+        "startLine": 296,
+        "startChar": 10,
+        "endLine": 296,
+        "endChar": 23
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2ce446_3cdff056",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T10:38:54Z",
+      "side": 1,
+      "message": "I don\u0027t think you use this anywhere anymore if CONFIG_KEYBOARD_LANGUAGE_IDS is not defined, so you can just drop it.",
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
