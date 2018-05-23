@@ -86,6 +86,24 @@
       "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9e195ef_4a43b76c",
+        "filename": "chip/it83xx/ec2i_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-23T17:36:04Z",
+      "side": 1,
+      "message": "Unfortunately, the way these settings are organized, the order here is very important. L17 is responsible for selecting a logical device i.e. KBC in this case and all the settings that follow are applied on that logical device. Thus L18-L22 are all meant for KBC logical device. L23 selects a different logical device.",
+      "parentUuid": "219c9529_f15c4eea",
+      "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
