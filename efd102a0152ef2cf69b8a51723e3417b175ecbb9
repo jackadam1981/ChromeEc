@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "669a7819_b0113989",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T00:56:09Z",
+      "side": 1,
+      "message": "Also, please link to a design doc.  Depending on the intended hardware implementation, this may impact keyboard scanning and/or the keyboard-with-numpad which is now allowed and which increases the matrix size by 2.",
+      "parentUuid": "eeb98b90_42b5654f",
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf57193_95ea80c5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T00:56:09Z",
+      "side": 1,
+      "message": "What happens if keys are pressed while this runs?  If enough keys are pressed to trigger ghosting, that could cause the ID to be misread.\n\nAre we guaranteed that only one ID is connected in each column?  If not, then the ID connections themselves can trigger ghosting in the main matrix.",
+      "range": {
+        "startLine": 282,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21c232ae_0682210a",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 2
@@ -35,6 +76,29 @@
         "startChar": 12,
         "endLine": 291,
         "endChar": 26
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "028f9f79_879c58b2",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T00:56:09Z",
+      "side": 1,
+      "message": "Not needed, because this only runs in pre-init",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 302,
+        "endChar": 9
       },
       "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -65,6 +129,75 @@
     },
     {
       "key": {
+        "uuid": "234cc910_13eebfde",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T00:56:09Z",
+      "side": 1,
+      "message": "Handle",
+      "range": {
+        "startLine": 323,
+        "startChar": 10,
+        "endLine": 323,
+        "endChar": 16
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dec3f3f_d13f0b37",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T00:56:09Z",
+      "side": 1,
+      "message": "Is the number of language ID pins always 2?\n\nIf it\u0027s not always 2, use this constant itself for the number of language ID pins if it\u0027s defined.",
+      "range": {
+        "startLine": 1966,
+        "startChar": 1,
+        "endLine": 1966,
+        "endChar": 2
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f987e2a6_3a3123da",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T00:56:09Z",
+      "side": 1,
+      "message": "typo: matrix",
+      "range": {
+        "startLine": 14,
+        "startChar": 12,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "547baf0a_bbe5a867",
         "filename": "include/keyboard_config.h",
         "patchSetId": 2
@@ -76,6 +209,24 @@
       "writtenOn": "2018-05-23T00:17:31Z",
       "side": 1,
       "message": "I\u0027m not fully sure if this is right: you don\u0027t want to change the number of columns that the keyboard task has to deal with.\n\nBasically, you only want to read the keyboard IDs once, and then ignore them forever.",
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd8aafbe_268eca09",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T00:56:09Z",
+      "side": 1,
+      "message": "Agree.  The IDs should be static, so they\u0027d be read at boot time, before the scanning task is active, and then cached after that.",
+      "parentUuid": "547baf0a_bbe5a867",
       "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
