@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "977b5871_423ca3ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-23T00:34:59Z",
+      "side": 1,
+      "message": "what\u0027s the flash use size balance of this patch?",
+      "revId": "f43528e803c332278aea77d1406b75a91848f93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846a221a_874fab08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-23T00:34:59Z",
+      "side": 1,
+      "message": "s/ccd/factory mode/ \n\nto be consistent.",
+      "range": {
+        "startLine": 18,
+        "startChar": 37,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "f43528e803c332278aea77d1406b75a91848f93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc73e18d_f992dd4a",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-23T00:34:59Z",
+      "side": 1,
+      "message": "this includes tpm_vendor_cmds.h",
+      "revId": "f43528e803c332278aea77d1406b75a91848f93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d464ce35_bc3bb398",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-23T00:34:59Z",
+      "side": 1,
+      "message": "header comment in the .h file should be enough.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 3
+      },
+      "revId": "f43528e803c332278aea77d1406b75a91848f93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86bdd55_177af2f3",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-23T00:34:59Z",
+      "side": 1,
+      "message": "Did you mean \"Check if CCD password is set\"?",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 276,
+        "endChar": 37
+      },
+      "revId": "f43528e803c332278aea77d1406b75a91848f93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d43bb80_bd6a28c1",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-23T00:34:59Z",
+      "side": 1,
+      "message": "We should start commenting vendor command\u0027s contents, as Randall suggested earlier, I\u0027ll add comments for old ones at some point :)",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "f43528e803c332278aea77d1406b75a91848f93a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
