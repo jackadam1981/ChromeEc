@@ -122,6 +122,24 @@
       "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e0a07c2_6559758f",
+        "filename": "chip/it83xx/ec2i_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-23T17:40:20Z",
+      "side": 1,
+      "message": "Oh. That\u0027s super odd to have enums that aren\u0027t actually used. But the array order is the sequence of instructions...",
+      "parentUuid": "1aaa9c63_260d5cce",
+      "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
