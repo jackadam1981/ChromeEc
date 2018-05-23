@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_state.h"
+#include "chipset.h"
 #include "console.h"
 #include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
@@ -123,6 +124,12 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 		return BATTERY_NOT_DISCONNECTED;
 	return BATTERY_DISCONNECTED;
 }
+
+static void spin(void)
+{
+	udelay(50 * MSEC);
+}
+DECLARE_DEFERRED(spin);
 
 int charger_profile_override(struct charge_state_data *curr)
 {
@@ -248,9 +255,19 @@ int charger_profile_override(struct charge_state_data *curr)
 	 * BATTERY_LEVEL_NEAR_FULL. So we can ensure both Chrome OS UI
 	 * and battery LED indicate full charge.
 	 */
-	if (rt946x_is_charge_done())
+	if (rt946x_is_charge_done()) {
 		curr->batt.state_of_charge = MAX(BATTERY_LEVEL_NEAR_FULL,
 						 curr->batt.state_of_charge);
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF |
+				     CHIPSET_STATE_ANY_SUSPEND)) {
+			/*
+			 * This is a workaround for b:78792296.
+			 * When AP is off and charge termination is detected,
+			 * this is called every 250 ms.
+			 */
+			hook_call_deferred(&spin_data, MSEC);
+		}
+	}
 
 	return 0;
 }
