@@ -45,6 +45,30 @@
       "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d65e64_65f69d40",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-23T17:22:27Z",
+      "side": 1,
+      "message": "Yes, that is correct! I did not add my latest changes to the commit.",
+      "parentUuid": "1c9c105f_3115e265",
+      "range": {
+        "startLine": 39,
+        "startChar": 50,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
