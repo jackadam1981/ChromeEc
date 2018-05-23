@@ -104,6 +104,24 @@
       "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aaa9c63_260d5cce",
+        "filename": "chip/it83xx/ec2i_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-23T17:36:57Z",
+      "side": 1,
+      "message": "I will send a follow-up patch to at least ensure the mapping in the enum here and in the table in other file match.",
+      "parentUuid": "e9e195ef_4a43b76c",
+      "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
