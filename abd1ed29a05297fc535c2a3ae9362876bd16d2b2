@@ -22,6 +22,30 @@
       "revId": "abd1ed29a05297fc535c2a3ae9362876bd16d2b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf3d295_3fd16fff",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T23:04:05Z",
+      "side": 1,
+      "message": "Agree; sounds like a good candidate for cleanup in a subsequent CL.",
+      "parentUuid": "f50cb43f_b750c407",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 52
+      },
+      "revId": "abd1ed29a05297fc535c2a3ae9362876bd16d2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
