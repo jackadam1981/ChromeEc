@@ -22,6 +22,30 @@
       "revId": "6f15197b06317b8703be46ce97de07be027bd5c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb833c60_ac94ef2f",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-05-23T08:46:13Z",
+      "side": 1,
+      "message": "Good to know. There are a few others that also does it the wrong way (uart.c, shi.c) which fooled me. Might be worth cleaning up all of them at the same time in the future.",
+      "parentUuid": "6f5f822f_365c114e",
+      "range": {
+        "startLine": 1026,
+        "startChar": 0,
+        "endLine": 1029,
+        "endChar": 0
+      },
+      "revId": "6f15197b06317b8703be46ce97de07be027bd5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
