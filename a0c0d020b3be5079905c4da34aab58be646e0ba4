@@ -22,6 +22,30 @@
       "revId": "a0c0d020b3be5079905c4da34aab58be646e0ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4558f83d_ba2909fe",
+        "filename": "util/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-23T16:05:41Z",
+      "side": 1,
+      "message": "It is a pattern rule for building:\nbuild/\u003cBOARD\u003e/util/baseboard/\u003cBASEBOARD\u003e/usb_pd_policy.o\nbuild/\u003cBOARD\u003e/util/board/\u003cBOARD\u003e/usb_pd_policy.o",
+      "parentUuid": "dd8eb4c0_b501d499",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 13
+      },
+      "revId": "a0c0d020b3be5079905c4da34aab58be646e0ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
