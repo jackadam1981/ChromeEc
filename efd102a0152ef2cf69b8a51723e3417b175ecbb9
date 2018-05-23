@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeb98b90_42b5654f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T00:17:31Z",
+      "side": 1,
+      "message": "Please file one ,-)",
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c232ae_0682210a",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T00:17:31Z",
+      "side": 1,
+      "message": "read_matrix_id",
+      "range": {
+        "startLine": 291,
+        "startChar": 12,
+        "endLine": 291,
+        "endChar": 26
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e2f8a5_5931f278",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T00:17:31Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary: Just store the values in id_state directly.\n\n(also, there is a buffer overflow here, as state \u003d id_state has only KEYBOARD_IDS elements)",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 15
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547baf0a_bbe5a867",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-23T00:17:31Z",
+      "side": 1,
+      "message": "I\u0027m not fully sure if this is right: you don\u0027t want to change the number of columns that the keyboard task has to deal with.\n\nBasically, you only want to read the keyboard IDs once, and then ignore them forever.",
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
