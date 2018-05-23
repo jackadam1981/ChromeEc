@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f8d25d0_1a0eea6d",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-23T17:13:05Z",
+      "side": 1,
+      "message": "you will need to sync. I just renamed this to CONFIG_HOSTCMD_ESPI",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9c105f_3115e265",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-23T17:13:05Z",
+      "side": 1,
+      "message": "this comment make me this we should be writing 0x02 instead of 0x03 or do we want edge-trigger on host and level-trigger on EC?",
+      "range": {
+        "startLine": 39,
+        "startChar": 50,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "fcc5fbae0353fecd8108c8017ac15140edc56b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
