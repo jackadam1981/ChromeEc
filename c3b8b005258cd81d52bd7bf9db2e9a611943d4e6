@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0c6630e_d48ddeba",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T23:33:22Z",
+      "side": 1,
+      "message": "This seems like the wrong way to increase current, since it will hold off *all* other activity in the hook task.  That may cause other state machines to have timing problems.\n\nIf you want to make the EC consume more power, it would be better to turn on more modules, or disable sleep in the idle task.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 23
+      },
+      "revId": "c3b8b005258cd81d52bd7bf9db2e9a611943d4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
