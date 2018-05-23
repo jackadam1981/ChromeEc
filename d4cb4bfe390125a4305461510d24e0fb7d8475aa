@@ -22,6 +22,30 @@
       "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64d5623_2fe7b8fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-05-23T11:56:49Z",
+      "side": 1,
+      "message": "\u003e So now we\u0027ll have two functions with the same name but a different set of allowed values for the second parameter?\n\u003e\n\u003e Are those values at least in the same enum, or does the same value mean different things to each implementation?\n\nKind of. Yes they both take the same enum usb_charge_mode as second parameter.\n\nBoth functions will accept:\n\nUSB_CHARGE_MODE_DISABLED\n\nThe smart implementation will additionally only accept:\n\nUSB_CHARGE_MODE_SDP2\nUSB_CHARGE_MODE_CDP\nUSB_CHARGE_MODE_DCP_SHORT\n\nAnd the dumb implementation will only accept the following in addition to DISABLE:\n\nUSB_CHARGE_MODE_ENABLED\n \n\u003e Do the functions properly return error if you pass in one of the values for the other implementation?\n\nYes, both implementations return EC_ERROR_UNKNOWN if you pass something unexpected.\n\n\nAnother way to do this would be to have distinct function names and instead add a usb_port_set_mode() declaration to common/usb_charge.h, but that also feels a bit weird.\n\nDo you have a better idea?",
+      "parentUuid": "792b1444_ae9c32cb",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
