@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b1fce332_f245fcc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T23:23:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63e284b3_0d01172e",
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edf57193_95ea80c5",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 2
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "IDs pin are connected to at most one column each time.\n\nWhen reading keyboard id, we would disable other KSOs.",
       "parentUuid": "edf57193_95ea80c5",
+      "range": {
+        "startLine": 282,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0472ff9_446ab74b",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T23:23:32Z",
+      "side": 1,
+      "message": "Ok, so the ID pins cannot cause ghosting in the main matrix.  But the main matrix can still cause ghosting in the ID pins.\n\nDisabling other KSOs does not disconnect the keyboard matrix.\n\nFor example, holding \u0027C\u0027 and \u0027D\u0027 (both on KSO2) electrically connects KSI4 and KSI5.\n\nIf you have KSI4 connected to KSO14 for ID, then if \u0027C\u0027 and \u0027D\u0027 are held down, both KSI4 and KSI5 will assert when KSO14 is asserted.\n\nYou can detect this, because you know at most one ID pin should be connected.  So if you read 2 ID pins as connected, then you know someone was holding too many keys down.  But in that case, you can\u0027t report the correct ID until those keys are released.\n\nIn that case, you need to be able to rescan them after boot.  For example, in the scan task (which will be active as long as any keys are held down).\n\nAnd you need to have an unknown/readable value for keyboard ID.  For example, if your scheme allows keyboard IDs 0-63, then define 64 as KEYBOARD_ID_UNREADABLE.  \n\nWith any luck, at some point after boot the user will release those keys (or the cat will move off the keyboard), and you can read the true ID.  At that point, you can stop checking the ID in the scan task; it will remain constant.",
+      "parentUuid": "8c1fe678_5cf5491b",
       "range": {
         "startLine": 282,
         "startChar": 3,

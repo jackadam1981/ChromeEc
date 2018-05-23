@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "82395f45_f7b85eca",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-23T23:23:32Z",
+      "side": 1,
+      "message": "It should still be static within keyboard_scan.c.  If the commands are implemented outside keyboard_scan.c, then just add get_keyboard_id() which returns the id.",
+      "parentUuid": "e12e6bd8_afdc7b57",
+      "range": {
+        "startLine": 93,
+        "startChar": 26,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "8d5fb69d6ccffc89eb5d6988aa58e32f9efa62dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7a295c2_596dcc0e",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 3
