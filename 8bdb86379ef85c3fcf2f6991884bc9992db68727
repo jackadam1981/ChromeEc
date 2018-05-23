@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55cc73e3_417699bd",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-23T23:38:14Z",
+      "side": 1,
+      "message": "Seems simpler to just flush after every register.",
+      "revId": "8bdb86379ef85c3fcf2f6991884bc9992db68727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
