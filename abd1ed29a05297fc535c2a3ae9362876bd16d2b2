@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f50cb43f_b750c407",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-23T22:43:53Z",
+      "side": 1,
+      "message": "I know I wrote this code, but I don\u0027t see why this allocation is necessary,  the received data is eventually copied into subcommand_body array in line 185, might as well read it straight into the the array (which will have to be a tad larger to accommodate the tpm header).",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 52
+      },
+      "revId": "abd1ed29a05297fc535c2a3ae9362876bd16d2b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
