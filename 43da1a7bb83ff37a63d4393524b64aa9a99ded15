@@ -93,6 +93,30 @@
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c86ee06_c4aaa478",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-23T00:10:58Z",
+      "side": 1,
+      "message": "I don\u0027t think any of that is necessary here. A bit being set in tcpc_lpm_pending simply means that a port, given by the bit position, has requested to go into low power mode. That indication can only get cleared following the I2CIDLE command being sent. At that point the TCPC is in low power mode and there can\u0027t be any new request to go in to low power mode than can matter. It can only be a duplicate request and so ignoring it is actually the desired outcome.\n\nIf the PD requests entry into low power mode while this function is running in the hook task, allowing that request to persist will result in waking the TCPC from low power mode, because its slave address will be on the I2C bus. Then the TCPC will reset, and the PD task will run again, nothing will be attached, and it will call into drp_toggle again, which will result in this deferred function getting called. It ends up at the same place, but with an extraneous exit/enter taking place. I don\u0027t see how that is better than simply ignoring the duplicate request from the start. The hook call should only be deferred if a low power entry request is pending.",
+      "parentUuid": "9ca9c62c_8e7ce39e",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

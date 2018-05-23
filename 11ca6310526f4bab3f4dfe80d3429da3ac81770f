@@ -164,6 +164,30 @@
       "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a550695_fe6eadf1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-23T00:10:58Z",
+      "side": 1,
+      "message": "I still think that this fix is specific to low power mode entry/exit and I2C which means that it\u0027s specific to tcpci compliant TCPCs. If down the road, there does end up being another version that gets used for some reason, then I believe it can be addressed then. But, I think I don\u0027t think that\u0027s likely.",
+      "parentUuid": "925ac178_47719384",
+      "range": {
+        "startLine": 249,
+        "startChar": 4,
+        "endLine": 249,
+        "endChar": 25
+      },
+      "revId": "11ca6310526f4bab3f4dfe80d3429da3ac81770f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
