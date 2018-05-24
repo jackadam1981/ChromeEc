@@ -34,10 +34,11 @@ BUILD_ASSERT(sizeof(struct st_tp_event_t) == 8);
 static struct st_tp_system_info_t system_info;
 
 static int st_tp_read_all_events(void);
+static int st_tp_read_host_buffer_header(void);
 static int st_tp_send_ack(void);
 static int st_tp_start_scan(void);
 static int st_tp_stop_scan(void);
-static int st_tp_read_host_buffer_header(void);
+static int st_tp_update_system_state(int new_state, int mask);
 
 /*
  * Current system state, meaning of each bit is defined below.
@@ -275,7 +276,8 @@ static int st_tp_start_scan(void)
 	return ret;
 }
 
-static int st_tp_read_host_data_memory(uint16_t addr, void *rx_buf, int len) {
+static int st_tp_read_host_data_memory(uint16_t addr, void *rx_buf, int len)
+{
 	uint8_t tx_buf[] = {
 		ST_TP_CMD_READ_HOST_DATA_MEMORY, addr >> 8, addr & 0xFF
 	};
@@ -376,14 +378,84 @@ static int st_tp_read_all_events(void)
 {
 	uint8_t cmd = ST_TP_CMD_READ_ALL_EVENTS;
 	int rx_len = sizeof(rx_buf.events) + ST_TP_DUMMY_BYTE;
+	int ret;
+	int i;
+	int error_report_count = 0;
 
-	return spi_transaction(SPI, &cmd, 1, (uint8_t *)&rx_buf, rx_len);
+	ret = spi_transaction(SPI, &cmd, 1, (uint8_t *)&rx_buf, rx_len);
+	if (ret)
+		return ret;
+
+	for (i = 0; i < ARRAY_SIZE(rx_buf.events); i++) {
+		if (rx_buf.events[i].magic != ST_TP_EVENT_MAGIC)
+			break;
+		if (rx_buf.events[i].evt_id == ST_TP_EVENT_ID_ERROR_REPORT)
+			error_report_count++;
+	}
+	if (error_report_count)
+		return EC_ERROR_INTERNAL_FIRST | error_report_count;
+	return 0;
+}
+
+static int st_tp_handle_error_reports(void)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(rx_buf.events); i++) {
+		struct st_tp_event_t *e = rx_buf.events + i;
+
+		if (e->magic != ST_TP_EVENT_MAGIC)
+			break;
+		if (e->evt_id != ST_TP_EVENT_ID_ERROR_REPORT)
+			continue;
+		CPRINTS("Touchpad error: %x %x",
+			e->report.report_type,
+			((e->report.info[0] << 24) |
+			 (e->report.info[1] << 16) |
+			 (e->report.info[2] << 8) |
+			 (e->report.info[3] << 0)));
+	}
+	return 0;
 }
 
 static int st_tp_reset(void)
 {
+	int ret, i, ok;
+
 	board_touchpad_reset();
-	return st_tp_read_all_events();
+
+	while (1) {
+		ret = st_tp_read_all_events();
+		if (ret) {
+			if (ret < EC_ERROR_INTERNAL_FIRST ||
+			    ret > EC_ERROR_INTERNAL_LAST)
+				return ret;
+
+			// there are some error reports
+			ret = st_tp_handle_error_reports();
+			if (ret) // severe error, abort
+				return ret;
+		}
+
+		// ret == 0, look for controller ready
+		ok = 0;
+		for (i = 0; i < ARRAY_SIZE(rx_buf.events); i++) {
+			struct st_tp_event_t *e = rx_buf.events + i;
+
+			if (e->magic != ST_TP_EVENT_MAGIC)
+				break;
+			if (e->evt_id == 0) {
+				ok = 1;
+				break;
+			}
+		}
+
+		if (ok) {
+			CPRINTS("ST ready");
+			return 0;
+		}
+		usleep(10 * MSEC);
+	}
 }
 
 /* Initialize the controller ICs after reset */

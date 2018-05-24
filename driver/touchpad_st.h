@@ -197,6 +197,7 @@ struct st_tp_host_buffer_heat_map_t {
 } __packed;
 
 struct st_tp_event_t {
+#define ST_TP_EVENT_MAGIC		0x3
 	unsigned magic:2;  /* should always be 0x3 */
 	unsigned major_high:2;
 #define ST_TP_EVENT_ID_ENTER_POINTER	0x1
@@ -226,7 +227,7 @@ struct st_tp_event_t {
 
 		struct {
 			uint8_t report_type;
-			uint32_t info;
+			uint8_t info[4];
 			uint8_t reserved;
 		} __packed report;
 	} __packed ; /* anonymous */
