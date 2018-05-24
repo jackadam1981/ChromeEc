@@ -46,6 +46,30 @@
       "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49e22c79_9cecff37",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-24T18:22:47Z",
+      "side": 1,
+      "message": "Did we not change that recently to make battery_is_present not check the disconnect state: https://chromium-review.googlesource.com/1053096",
+      "parentUuid": "774794bf_7b35fe24",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
