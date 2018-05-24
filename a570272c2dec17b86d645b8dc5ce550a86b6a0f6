@@ -70,6 +70,30 @@
       "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eced2938_0158a171",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-24T18:28:53Z",
+      "side": 1,
+      "message": "We changed the battery_check_present_status function to not take in to account disconnect status (not the battery_is_present() function)\n\nSounds like we need to do some more clean up with function names since this does seem pretty confusion at this point. I created crbug.com/846412 for this cleanup.",
+      "parentUuid": "49e22c79_9cecff37",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
