@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3917443_3d2226ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-24T22:25:29Z",
+      "side": 1,
+      "message": "In the grunt design, does the servo pin 33 (UART_EC_TX_SERVO_RX signal) connect to the servo pin 41 (ec_boot_mode) with a resistor? This is the way to trigger UUT mode using servo.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 39
+      },
+      "revId": "336be875915c5aa0ae285401c0f60d0c93a563ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
