@@ -205,6 +205,14 @@ void vboot_main(void)
 		return;
 	}
 
+	if (system_jumped_to_this_image()) {
+		/*
+		 * Jumped from RW to RO. We should be asked to jump back to RW.
+		 */
+		CPRINTS("Jumped from RW to RO");
+		return;
+	}
+
 	if (!(flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED)) {
 		/*
 		 * If hardware WP is disabled, PD communication is enabled.
