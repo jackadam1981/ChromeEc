@@ -16,6 +16,24 @@
       "revId": "d83ca2b9d86f9911707239a3ce46d7564f717faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b7b2feb_27f18f6a",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-24T22:37:21Z",
+      "side": 1,
+      "message": "We enable idle for any AC changes.\n\nWhen we unplug AC, we want to enable idle no matter what. Note that charger_profile_override() is only called when AC is plugged. So if we unplug AC when idle is disabled, we won\u0027t be able to enable idle without this hook.\n\nWhen we plug in AC, since idle mode must have been enabled when AC is not plugged, enable_idle() is a no-op here.\n\nSo we don\u0027t need to check it\u0027s a AC-on or AC-off event.",
+      "parentUuid": "03741f11_87b99962",
+      "revId": "d83ca2b9d86f9911707239a3ce46d7564f717faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
