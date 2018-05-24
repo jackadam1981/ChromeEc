@@ -46,6 +46,30 @@
       "revId": "e2d28659fce26568951e9cf0d0e35778fd94c71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5748e2a_713c7aa2",
+        "filename": "chip/it83xx/ec2i_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2018-05-24T02:26:20Z",
+      "side": 1,
+      "message": "Yes, we can remove this enum.\nJust one thing we have to take care and Furquan has mentioned about it.\nWe have to select a logical device (index 07h) at first and all the settings that follow are applied on that logical device.",
+      "parentUuid": "73cc98e5_1296c948",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "e2d28659fce26568951e9cf0d0e35778fd94c71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
