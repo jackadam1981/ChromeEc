@@ -22,6 +22,30 @@
       "revId": "c3b8b005258cd81d52bd7bf9db2e9a611943d4e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bccbf08c_80bca654",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-24T03:26:07Z",
+      "side": 1,
+      "message": "Thanks for the comment. Let\u0027s move to CL:1071124.",
+      "parentUuid": "c0c6630e_d48ddeba",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 23
+      },
+      "revId": "c3b8b005258cd81d52bd7bf9db2e9a611943d4e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
