@@ -22,6 +22,30 @@
       "revId": "bf12f0eb8ed0a41b2c715330b48bc67901c9e6a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5d7ef3_dcbdfcc1",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-24T16:30:50Z",
+      "side": 1,
+      "message": "I update the comment, but basically we can turn it off all of the time since the battery charger will step up the voltage to whatever we need. We won\u0027t damage the system by having lower to no voltage on the PPVAR_VBUS_PWER_IN line. \n\nOn the other hand, if we leave on under voltage protection, we don\u0027t really have a good recourse other than re-enabling the SNK fet (since we can handle the lower voltage). I would rather pull power from a 2V VBus from a bad adapter than preventing it (even though it is out of spec).",
+      "parentUuid": "ad346b82_cc6f5829",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 14
+      },
+      "revId": "bf12f0eb8ed0a41b2c715330b48bc67901c9e6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
