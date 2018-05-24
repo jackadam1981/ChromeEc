@@ -1817,6 +1817,9 @@
 /* Number of IRQs supported on the EC chip */
 #undef CONFIG_IRQ_COUNT
 
+/* Enable LDN for KBC mouse */
+#undef CONFIG_IT83XX_ENABLE_MOUSE_LDN
+
 /*
  * The IT8320 supports e-flash clock up to 48 MHz (IT8390 maximum is 32 MHz).
  * Enable it if we want better performance of fetching instruction from e-flash.
@@ -1827,6 +1830,7 @@
 
 /* To define it, if I2C channel C and PECI used at the same time. */
 #undef CONFIG_IT83XX_SMCLK2_ON_GPC7
+
 
 /*****************************************************************************/
 /* Keyboard config */
