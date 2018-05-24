@@ -2,11 +2,10 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Battery pack vendor provided charging profile
+ * Battery fuel gauge parameters
  */
 
-#include "battery.h"
-#include "baseboard_battery.h"
+#include "battery_fuel_gauge.h"
 #include "battery_smart.h"
 #include "charge_state.h"
 #include "common.h"
@@ -120,37 +119,6 @@ int board_cut_off_battery(void)
 	rv = sb_write(cmd, data);
 
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
-}
-
-int charger_profile_override(struct charge_state_data *curr)
-{
-	int type = board_get_battery_type();
-
-	/*
-	 * Some batteries, when fully discharged, may request 0 voltage/current
-	 * which can then inadvertently disable the charger leading to the
-	 * battery not waking up. For this type of battery, marked by
-	 * override_nil being set, if SOC is 0 and requested voltage/current is
-	 * 0, then use precharge current and max voltage instead.
-	 */
-	if (type != BATTERY_TYPE_COUNT &&
-	    board_battery_info[type].fuel_gauge.override_nil) {
-		int v = board_battery_info[type].batt_info.voltage_max;
-		int i = board_battery_info[type].batt_info.precharge_current;
-
-		if (curr->requested_voltage == 0 &&
-		    curr->requested_current == 0 &&
-		    curr->batt.state_of_charge == 0) {
-			/*
-			 * Battery is dead, override with precharge current and
-			 * max voltage setting for the battery.
-			 */
-			curr->requested_voltage = v;
-			curr->requested_current = i;
-		}
-	}
-
-	return 0;
 }
 
 enum battery_present battery_hw_present(void)
