@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b23ef821_36fa3420",
+        "filename": "core/cortex-m/mac.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-24T10:02:17Z",
+      "side": 1,
+      "message": "no, this is a cortex-M3/4/7 file...",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "239b30a9d8ac5ce8adcb8534af34306f3a0ffa8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a704429c_0ca52035",
+        "filename": "core/cortex-m/mac.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-24T10:02:17Z",
+      "side": 1,
+      "message": "isn\u0027t all this code pointless and slow with ARMv7-M ISA ?\nIt seems you can just use the UMAAL instruction which does :\nresult \u003d UInt(R[n]) * UInt(R[m]) + UInt(R[dHi]) + UInt(R[dLo]);\n R[dHi] \u003d result\u003c63:32\u003e;\n R[dLo] \u003d result\u003c31:0\u003e;\nwith \u0027UMAAL \u003cRdLo\u003e, \u003cRdHi\u003e, \u003cRn\u003e, \u003cRm\u003e\u0027\n\nthen you want to define this helper function as :\nuint64_t mac32_2(uint32_t c, uint32_t d, uint32_t a, uint32_t b)\nand do :\numall r0, r1, r2, r3\n\nthe same likely applies above (and you want different prototypes in this CL and the previous one).",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "239b30a9d8ac5ce8adcb8534af34306f3a0ffa8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
