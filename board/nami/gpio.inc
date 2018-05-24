@@ -61,7 +61,7 @@ GPIO(CR50_RESET_ODL,		PIN(0, 2), GPIO_ODR_HIGH)	/* Cr50 Reset. dnojiri: unused. 
 GPIO(GPP_B14,			PIN(C, 2), GPIO_INPUT) /* Used for Intel's experimental uCode/P-unit update */
 /* Will be used to shut down EC on board_hibernate. */
 GPIO(EC_HIBERNATE,		PIN(0, 1), GPIO_OUT_LOW)
-/* GPIO(PCH_RTCRST,		PIN(E, 7), GPIO_INPUT) dnojiri: Revisit */
+GPIO(PCH_RTCRST,		PIN(E, 7), GPIO_OUT_LOW)
 
 /* I2C pins - these will be reconfigured for alternate function below */
 GPIO(I2C0_0_SCL,		PIN(B, 5), GPIO_INPUT)		/* EC_I2C0_0_USBC_3V3_SCL */

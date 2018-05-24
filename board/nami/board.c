@@ -809,3 +809,11 @@ void board_kblight_init(void)
 		break;
 	}
 }
+
+void board_rtc_reset(void)
+{
+	CPRINTS("Asserting RTCRST# to PCH");
+	gpio_set_level(GPIO_PCH_RTCRST, 1);
+	udelay(100);
+	gpio_set_level(GPIO_PCH_RTCRST, 0);
+}
