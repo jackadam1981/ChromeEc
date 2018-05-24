@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1523f008_ccd38cf1",
+        "filename": "board/glkrvp_ite/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-24T18:20:54Z",
+      "side": 1,
+      "message": "Can we call it CONFIG_IT83XX_ENABLE_MOUSE_DEVICE (I think of LDN as meaning Logical Device Number)",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 38
+      },
+      "revId": "c06ff962937bb14405a84c044286d98d4bd3e13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
