@@ -94,6 +94,30 @@
       "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08b9cb98_fed60769",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-24T18:33:22Z",
+      "side": 1,
+      "message": "Right, but battery_is_present basically just returns whatever battery_check_present_status() returns and battery_check_present_status() no longer accounts for disconnect status. Just wondering if we should account for disconnect status as well for this use case in board_reset_pd_mcu() or does that seem not necessary?",
+      "parentUuid": "eced2938_0158a171",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
