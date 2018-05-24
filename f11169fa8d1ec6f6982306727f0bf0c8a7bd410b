@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae3be2f5_c06e201c",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-05-24T19:44:42Z",
+      "side": 0,
+      "message": "nit: A switch like in board_kblight_init() is more consistent.",
+      "revId": "f11169fa8d1ec6f6982306727f0bf0c8a7bd410b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
