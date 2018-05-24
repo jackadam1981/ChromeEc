@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "d618bb18_f617c113",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-24T11:17:59Z",
+      "side": 1,
+      "message": "You\u0027re right. Really appreciated for walking through a case, and recommended how to detect and improve this potential ghosting in the ID pins. Your points are worth another commit to do a comprehensive solution, which I need some time to work out. This\u0027s definitively in the TODO list.",
+      "parentUuid": "f0472ff9_446ab74b",
+      "range": {
+        "startLine": 282,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21c232ae_0682210a",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 2
