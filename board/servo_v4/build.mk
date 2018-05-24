@@ -9,6 +9,8 @@
 CHIP:=stm32
 CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f07x
+$(call set-option,CROSS_COMPILE_arm,$(CROSS_COMPILE_arm),\
+	/opt/coreboot-sdk/bin/arm-eabi-)
 
 board-y=board.o
 board-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
