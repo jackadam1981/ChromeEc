@@ -2,11 +2,10 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Battery pack vendor provided charging profile
+ * Battery fuel gauge parameters
  */
 
-#include "battery.h"
-#include "baseboard_battery.h"
+#include "battery_fuel_gauge.h"
 #include "battery_smart.h"
 #include "charge_state.h"
 #include "common.h"
