@@ -4,15 +4,15 @@
 # found in the LICENSE file.
 
 # Meowth configuration
-SPIDEV="/dev/spidev1.0"
-# Cannonlake PCH GPIOs
-GPIOCHIP="gpiochip268"
+SPIDEV="/dev/spidev32765.0"
+# Kabylake PCH GPIOs
+GPIOCHIP="gpiochip360"
 # GSPI1 ACPI device for FP MCU
 SPIID="spi-PRP0001:01"
-# FPMCU RST_ODL is on GPP_A23 = 268 + 23 = 291
-GPIO_NRST=291
-# FPMCU BOOT0 is on GPP_A21 = 268 + 21 = 289
-GPIO_BOOT0=289
+# FPMCU RST_ODL is on GPP_C10 = 360 + 58 = 418
+GPIO_NRST=418
+# FPMCU BOOT0 is on GPP_A21 = 360 + 56 = 416
+GPIO_BOOT0=416
 
 if [ ! -e "/sys/class/gpio/${GPIOCHIP}" ]
 then
