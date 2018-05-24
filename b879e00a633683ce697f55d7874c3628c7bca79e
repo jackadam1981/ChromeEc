@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8900cacc_0c6e5d7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-24T09:11:59Z",
+      "side": 1,
+      "message": "my 2 cents, the console channels were never intended to be some kind of FAFT helper but just a developer feature to be able to use more easily the interactive console when it\u0027s a bit overcrowded by random over events.\nWhile not technically wrong the current config.h description is slightly misleading IMO.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "b879e00a633683ce697f55d7874c3628c7bca79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
