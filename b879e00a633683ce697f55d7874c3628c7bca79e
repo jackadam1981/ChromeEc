@@ -22,6 +22,30 @@
       "revId": "b879e00a633683ce697f55d7874c3628c7bca79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fa0bcbf_6ce1c9c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-24T09:21:52Z",
+      "side": 1,
+      "message": "Right. Clarified in CL:1071412. I can squash if the CQ acts up and rejects this.",
+      "parentUuid": "8900cacc_0c6e5d7f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "b879e00a633683ce697f55d7874c3628c7bca79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
