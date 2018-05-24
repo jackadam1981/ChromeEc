@@ -45,10 +45,11 @@ struct __packed rma_challenge {
 /**
  * Create a new RMA challenge/response
  *
+ * @param p256_mode if true use prime256v1 curve, if false - use 25519
  * @return EC_SUCCESS, EC_ERROR_TIMEOUT if too soon since the last challenge,
  * or other non-zero error code.
  */
-int rma_create_challenge(void);
+int rma_create_challenge(int p256_mode);
 
 /**
  * Get the current challenge string

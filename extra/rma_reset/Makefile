@@ -8,9 +8,7 @@ SOURCE  := $(PROGRAM).c
 OBJS    := curve25519.o curve25519-generic.o sha256.o base32.o
 LIBS    :=
 LFLAGS  :=
-CFLAGS  := -std=gnu99 \
-	-g3 \
-	-O3 \
+CFLAGS  += -std=gnu99 \
         -Wall \
         -Werror \
         -Wpointer-arith \
