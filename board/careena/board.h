@@ -36,4 +36,13 @@
 
 #define CONFIG_LED_PWM_COUNT 1
 
+#ifndef __ASSEMBLER__
+
+enum battery_type {
+	BATTERY_PANASONIC,
+	BATTERY_TYPE_COUNT,
+};
+
+#endif /* !__ASSEMBLER__ */
+
 #endif /* __CROS_EC_BOARD_H */
