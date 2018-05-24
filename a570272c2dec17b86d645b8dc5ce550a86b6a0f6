@@ -118,6 +118,30 @@
       "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72649686_e77dfe7d",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-24T18:58:42Z",
+      "side": 1,
+      "message": "When I was looking at the code, I was conflating battery cutoff and battery disconnect (which I thought were the same) because the function is still checking the cutoff state (but is no longer checking the disconnect state).\n\nTo be thorough we should really check that the battery has enough charge to last the reboot cycle. Even if it is out of disconnect, we don\u0027t want to reboot if it will die before we can re-enable Vbus power path to board.\n\nI want to refactor battery code in general now. I will come back to this and make it require a minimum charge (like the AP does before it boots). Or is that overkill?",
+      "parentUuid": "08b9cb98_fed60769",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
