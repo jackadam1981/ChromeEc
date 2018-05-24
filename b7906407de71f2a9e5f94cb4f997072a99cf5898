@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6f8b1053_18b5e2c8",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2018-05-24T02:56:24Z",
+      "side": 1,
+      "message": "We don\u0027t need to enable this device but we need to set the index f3h ~ f5h for latching port80 messages into BRAM.",
+      "parentUuid": "1c485d1e_9d8f051a",
+      "range": {
+        "startLine": 105,
+        "startChar": 27,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "b7906407de71f2a9e5f94cb4f997072a99cf5898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e77d322_476887b4",
         "filename": "chip/it83xx/ec2i.c",
         "patchSetId": 2
