@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "1aeae4ae_8cc6bb3d",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-24T12:03:30Z",
+      "side": 1,
+      "message": "Aah okay. So, the PM3 LDN is the one that needs to be enabled for port80 communication. But the setting in RTCT needs to be set for port80 index. I will add a comment for the same. Thanks!\n\nAnother question: Section 7.21.4 says that P80LC is read-only and it looks like we are setting DSLDC6 i.e. P80LC to 0. However, section 6.3.10.19 says that P80LC is R/W. Which of the two is correct?",
+      "parentUuid": "6f8b1053_18b5e2c8",
+      "range": {
+        "startLine": 105,
+        "startChar": 27,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "b7906407de71f2a9e5f94cb4f997072a99cf5898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e77d322_476887b4",
         "filename": "chip/it83xx/ec2i.c",
         "patchSetId": 2
