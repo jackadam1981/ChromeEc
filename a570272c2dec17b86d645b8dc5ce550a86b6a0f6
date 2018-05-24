@@ -22,6 +22,30 @@
       "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774794bf_7b35fe24",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-24T18:17:40Z",
+      "side": 1,
+      "message": "this version of battery checkout actually accounts for that (battery_hw_present checks for physical presences)",
+      "parentUuid": "77bf77bb_5f79aa52",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
