@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36c01d8a_d75fb352",
+        "filename": "core/cortex-m0/mac.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-24T10:23:18Z",
+      "side": 1,
+      "message": "we usually don\u0027t do this (as our build scripts know about it in this directory)",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "cb30d1032523c7e4ec3e0f62113c53f20493dfce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b12ae6b4_13f99598",
+        "filename": "core/cortex-m0/mac.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-24T10:23:18Z",
+      "side": 1,
+      "message": "pushing lr here seems both wrong and mostly useless:\n- wrong: AFAIK ARM EABI assumes that the stack is always 64-bit aligned\n- useless (excepted to save one \u0027bx lr\u0027 instruction at the end ?): as you are not modifying it",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "cb30d1032523c7e4ec3e0f62113c53f20493dfce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
