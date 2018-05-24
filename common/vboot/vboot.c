@@ -205,6 +205,16 @@ void vboot_main(void)
 		return;
 	}
 
+	if (system_jumped_to_this_image()) {
+		/*
+		 * We were asked to jump from RW to RO. So we also wait to be
+		 * asked to jump back to RW, instead of automatically verifying
+		 * RW and jumping back to it.
+		 */
+		CPRINTS("Jumped from RW to RO");
+		return;
+	}
+
 	if (!(flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED)) {
 		/*
 		 * If hardware WP is disabled, PD communication is enabled.
