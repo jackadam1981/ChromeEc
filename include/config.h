@@ -478,6 +478,8 @@
 #undef CONFIG_CASE_CLOSED_DEBUG_V1
 /* Allow unsafe debugging functionality in V1 configuration */
 #undef CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE
+/* Allow unlock with no password set */
+#undef CONFIG_CASE_CLOSED_DEBUG_UNLOCK_NO_PWD
 
 /*
  * Capsense chip has buttons, too.

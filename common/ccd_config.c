@@ -839,11 +839,11 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 	int need_pp = 1;
 	int rv;
 	char *buffer = p->buffer;
+	char *why_denied = "?";
 
 	if (force_disabled) {
-		p->out_size = 1;
-		buffer[0] = EC_ERROR_ACCESS_DENIED;
-		return VENDOR_RC_NOT_ALLOWED;
+		why_denied = "forced";
+		goto denied;
 	}
 
 	if (ccd_state == CCD_STATE_OPENED)
@@ -851,9 +851,8 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 
 	/* FWMP blocks open even if a password is set */
 	if (!board_fwmp_allows_unlock()) {
-		p->out_size = 1;
-		buffer[0] = EC_ERROR_ACCESS_DENIED;
-		return VENDOR_RC_NOT_ALLOWED;
+		why_denied = "fwmp";
+		goto denied;
 	}
 
 	/* If a password is set, check it */
@@ -875,6 +874,22 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 			buffer[0] = rv;
 			return VENDOR_RC_INTERNAL_ERROR;
 		}
+	} else if (!board_battery_is_present()) {
+		/* Open allowed with no password if battery is removed */
+	} else if (board_vboot_dev_mode_enabled() &&
+		   !(p->flags & VENDOR_CMD_FROM_USB)) {
+		/*
+		 * Open allowed with no password if dev mode enabled and
+		 * command came from the AP.
+		 */
+	} else {
+		/*
+		 * - Password not set
+		 * - Battery is present
+		 * - Either not in developer mode or the command came from USB
+		 */
+		why_denied = "nopwd";
+		goto denied;
 	}
 
 	/* Fail and abort if already checking physical presence */
@@ -913,6 +928,13 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 	ccd_open_done(1);
 
 	return VENDOR_RC_SUCCESS;
+
+denied:
+	/* Open not allowed for some reason */
+	CPRINTS("%s denied: %s", __func__, why_denied);
+	p->out_size = 1;
+	buffer[0] = EC_ERROR_ACCESS_DENIED;
+	return VENDOR_RC_NOT_ALLOWED;
 }
 
 static enum vendor_cmd_rc ccd_unlock(struct vendor_cmd_params *p)
@@ -936,7 +958,10 @@ static enum vendor_cmd_rc ccd_unlock(struct vendor_cmd_params *p)
 		return VENDOR_RC_SUCCESS;
 	}
 
-	/* Only allowed if password is already set, and not blocked by FWMP */
+	/*
+	 * Only allowed if password is already set, and not blocked by FWMP.
+	 * Eventually, CONFIG_CASE_CLOSED_DEBUG_UNLOCK_NO_PWD will allow this.
+	 */
 	if (!raw_has_password() || !board_fwmp_allows_unlock()) {
 		p->out_size = 1;
 		buffer[0] = EC_ERROR_ACCESS_DENIED;
@@ -1177,103 +1202,25 @@ DECLARE_SAFE_CONSOLE_COMMAND(ccd, command_ccd,
 			     "[help | ...]",
 			     "Configure case-closed debugging");
 
-/*
- * Password handling on Cr50 passes the following states:
- *
- * - password setting is not allowed after Cr50 reset until an upstart (as
- *   opposed to resume) TPM startup happens, as signalled by the TPM callback.
- *   After the proper TPM reset the state changes to 'POST_RESET_STATE' which
- *   means that the device was just reset/rebooted (not resumed) and no user
- *   logged in yet.
- *
- *  - if the owner logs in in this state, the state changes to
- *    'PASSWORD_ALLOWED_STATE'. The owner can open crosh session and set the
- *    password.
- *
- *   - when the owner logs out or any user but the owner logs in, the state
- *     changes to PASSWORD_NOT_ALLOWED_STATE and does not change until TPM is
- *     reset. This makes sure that password can be set only by the owner and
- *     only before anybody else logged in.
- */
-enum password_reset_phase {
-	POST_RESET_STATE,
-	PASSWORD_ALLOWED_STATE,
-	PASSWORD_NOT_ALLOWED_STATE
-};
-
-static uint8_t password_state = PASSWORD_NOT_ALLOWED_STATE;
-
+#ifdef CONFIG_CASE_CLOSED_DEBUG_UNLOCK_NO_PWD
 void ccd_tpm_reset_callback(void)
 {
-	CPRINTS("%s: TPM Startup processed", __func__);
-	password_state = POST_RESET_STATE;
+	/*
+	 * Eventually, we'll want to allow unlock with no password, so
+	 * enterprise policy can set a password to block CCD instead of locking
+	 * it out via the FWMP.
+	 *
+	 * When we do that, we'll allow unlock without password between a real
+	 * TPM startup (not just a resume) and explicit disabling of that
+	 * feature via a to-be-created vendor command.  That will be called
+	 * after enterprize policy is updated, or the device is determined not
+	 * to be enrolled.
+	 *
+	 * But for now, we'll just block unlock entirely if no password is set,
+	 * so we don't yet need this callback.
+	 */
 }
-
-/*
- * Handle the VENDOR_CC_MANAGE_CCD_PASSWORD command.
- *
- * The payload of the command is a single byte Boolean which sets the controls
- * if CCD password can be set or not.
- *
- * After reset the pasword can not be set using VENDOR_CC_CCD_PASSWORD; once
- * this command is received with value of True, the phase stars when the
- * password can be set. As soon as this command is received with a value of
- * False, the password can not be set any more until device is rebooted, even
- * if this command is re-sent with the value of True.
- */
-static enum vendor_cmd_rc manage_ccd_password(enum vendor_cmd_cc code,
-					      void *buf,
-					      size_t input_size,
-					      size_t *response_size)
-{
-	uint8_t prev_state = password_state;
-	/* The vendor command status code. */
-	enum vendor_cmd_rc rv = VENDOR_RC_SUCCESS;
-	/* Actual error code. */
-	uint8_t error_code = EC_SUCCESS;
-
-	do {
-		int value;
-
-		if (input_size != 1) {
-			rv = VENDOR_RC_INTERNAL_ERROR;
-			error_code = EC_ERROR_PARAM1;
-			break;
-		}
-
-		value = *((uint8_t *)buf);
-
-		if (!value) {
-			/* No more password setting allowed. */
-			password_state = PASSWORD_NOT_ALLOWED_STATE;
-			break;
-		}
-
-		if (password_state == POST_RESET_STATE) {
-			/* The only way to allow password setting. */
-			password_state = PASSWORD_ALLOWED_STATE;
-			break;
-		}
-
-		password_state = PASSWORD_NOT_ALLOWED_STATE;
-		rv = VENDOR_RC_BOGUS_ARGS;
-		error_code = EC_ERROR_INVAL;
-	} while (0);
-
-	if (prev_state != password_state)
-		CPRINTF("%s: state change from %d to %d\n",
-			__func__, prev_state, password_state);
-
-	if (rv == VENDOR_RC_SUCCESS) {
-		*response_size = 0;
-	} else {
-		*response_size = 1;
-		((uint8_t *)buf)[0] = error_code;
-	}
-
-	return rv;
-}
-DECLARE_VENDOR_COMMAND(VENDOR_CC_MANAGE_CCD_PWD, manage_ccd_password);
+#endif
 
 /*
  * Handle the CCVD_PASSWORD subcommand.
@@ -1287,7 +1234,15 @@ static enum vendor_cmd_rc ccd_password(struct vendor_cmd_params *p)
 	char password[CCD_MAX_PASSWORD_SIZE + 1];
 	char *response = p->buffer;
 
-	if (password_state != PASSWORD_ALLOWED_STATE) {
+	/*
+	 * Only allow setting a password from the AP, not USB.  This increases
+	 * the effort required for an attacker to set one externally, even if
+	 * they have access to a system someone left in the opened state.
+	 *
+	 * An attacker can still set testlab mode or open up the CCD config,
+	 * but those changes are reversible by the device owner.
+	 */
+	if (p->flags & VENDOR_CMD_FROM_USB) {
 		p->out_size = 1;
 		*response = EC_ERROR_ACCESS_DENIED;
 		return VENDOR_RC_NOT_ALLOWED;

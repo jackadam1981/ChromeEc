@@ -66,5 +66,7 @@ void   _plat__GetFwVersion(uint32_t *firmwareV1, uint32_t *firmwareV2)
 void _plat__ResetCallback(void)
 {
 	pinweaver_init();
+#ifdef CONFIG_CASE_CLOSED_DEBUG_UNLOCK_NO_PWD
 	ccd_tpm_reset_callback();
+#endif
 }
