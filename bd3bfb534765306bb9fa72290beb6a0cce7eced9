@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afb093d0_b3b78777",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-25T00:57:33Z",
+      "side": 1,
+      "message": "I don\u0027t think this can be pulled into common. This function (if even used) would be battery specific in terms of what needs to be done.",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "bd3bfb534765306bb9fa72290beb6a0cce7eced9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
