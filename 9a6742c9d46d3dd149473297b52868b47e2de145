@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f8fcbfd8_213495db",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-25T09:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985f5263_4053cb8e",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05fbd2b3_4640e57d",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-25T07:17:06Z",
       "side": 1,
       "message": "Why do you need to go through the array twice? Can\u0027t you just print the errors on the first pass in st_tp_read_all_events?",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5561e3b_158f27f4",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-25T09:00:28Z",
+      "side": 1,
+      "message": "Now st_tp_read_all_events will call handle_error_report for you, and abort if there are major errors.",
+      "parentUuid": "05fbd2b3_4640e57d",
       "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0ebf0c83_b1e1d80c",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-25T09:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f43113_63caa3f1",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "046b5a81_7d67ffff",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d1ca9e_c41d197b",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-25T09:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046b5a81_7d67ffff",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "1e24cbce_10a6ae76",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-25T09:00:28Z",
+      "side": 1,
+      "message": "Since st_tp_read_all_events will be called for different purposes.  read_all_events will handle errors for us, but I think it would be better if each caller handles other events by themselves.",
+      "parentUuid": "4275aec4_e1bed6a1",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a63dfa09_50b583b8",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 3
@@ -101,6 +191,24 @@
       "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad37e06_01c145f6",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-25T09:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63dfa09_50b583b8",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
