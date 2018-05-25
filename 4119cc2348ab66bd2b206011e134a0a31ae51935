@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f7cec7fc_b0d85519",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-05-25T22:14:13Z",
+      "side": 1,
+      "message": "This is how crypto snafus happen. Probably wasn\u0027t the best idea to make rand() on h1 be legit and yet have the same name..",
+      "parentUuid": "e70b7e82_a09fa424",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 15
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2288505_54d17dfd",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "This is just test code, the key is used only once by design, and the generated shared secret is just 40 bits in size. May I suggest that we don\u0027t worry about truncating the key to 255 bits in this case :)\n\nBut if you feel strongly about this - I can modify it.",
       "parentUuid": "e2288505_54d17dfd",
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d12fa9_f0095af4",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-05-25T22:14:13Z",
+      "side": 1,
+      "message": "Some other poor sap will copy\u0026pasta this search result and call it a day some day.",
+      "parentUuid": "2c6524ca_f7435d6f",
       "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -119,6 +161,30 @@
       "side": 1,
       "message": "in fact this seed *is* further converted with a KDF (see line 398 below), which is in common code for both curves.",
       "parentUuid": "f99e8872_a6de9992",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 7
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b23d3a_74ad5cf6",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-05-25T22:14:13Z",
+      "side": 1,
+      "message": "tl;dr but the function name could improve a bit then. p256_calculate_shared_x or such. Although it is secret, it is not quite ready to be used as uniform secret as the current name suggests.\n\nbut yeah, static function, test code, ..",
+      "parentUuid": "04ac9ae8_ee5552d8",
       "range": {
         "startLine": 302,
         "startChar": 1,
