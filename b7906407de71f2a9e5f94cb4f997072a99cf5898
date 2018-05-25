@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f61c77d8_484b2192",
+        "filename": "chip/it83xx/ec2i.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-25T06:32:36Z",
+      "side": 1,
+      "message": "Thanks for the confirmation Dino!",
+      "parentUuid": "85650e74_4d7c069a",
+      "range": {
+        "startLine": 105,
+        "startChar": 27,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "b7906407de71f2a9e5f94cb4f997072a99cf5898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e77d322_476887b4",
         "filename": "chip/it83xx/ec2i.c",
         "patchSetId": 2
