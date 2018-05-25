@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6596e4b1_87a975ab",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T22:51:06Z",
+      "side": 1,
+      "message": "Ok, changed to use RAND_bytes() not to preset a bad example.",
+      "parentUuid": "f7cec7fc_b0d85519",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 15
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2288505_54d17dfd",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
@@ -120,6 +144,24 @@
       "side": 1,
       "message": "Some other poor sap will copy\u0026pasta this search result and call it a day some day.",
       "parentUuid": "2c6524ca_f7435d6f",
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d91f835_43859663",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T22:51:06Z",
+      "side": 1,
+      "message": "ah, in fact this turns out to be much more compact when using EC_KEY_generate_key();",
+      "parentUuid": "14d12fa9_f0095af4",
       "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -185,6 +227,30 @@
       "side": 1,
       "message": "tl;dr but the function name could improve a bit then. p256_calculate_shared_x or such. Although it is secret, it is not quite ready to be used as uniform secret as the current name suggests.\n\nbut yeah, static function, test code, ..",
       "parentUuid": "04ac9ae8_ee5552d8",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 7
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b2e490e_80a924a8",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T22:51:06Z",
+      "side": 1,
+      "message": "modified variable name and comments.",
+      "parentUuid": "68b23d3a_74ad5cf6",
       "range": {
         "startLine": 302,
         "startChar": 1,
