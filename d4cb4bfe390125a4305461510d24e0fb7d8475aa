@@ -93,6 +93,30 @@
       "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0bd15e3_072d13ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-05-25T14:59:26Z",
+      "side": 1,
+      "message": "Ops, missed your comments (mobile UI sucks). sadolfsson said we could move these changes to fizz later after doing some verification round.",
+      "parentUuid": "33bc7abd_bb8864fc",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
