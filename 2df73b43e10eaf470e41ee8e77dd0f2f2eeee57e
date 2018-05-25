@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e02f03d8_2e774766",
+        "filename": "board/careena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-25T15:28:14Z",
+      "side": 1,
+      "message": "can you use the .field notation for this stuct, please?",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "2df73b43e10eaf470e41ee8e77dd0f2f2eeee57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66ae265_8a3b047a",
+        "filename": "board/careena/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-25T15:28:14Z",
+      "side": 1,
+      "message": "can you name these with _L so it make it more clear that you are initializing it to off?",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "2df73b43e10eaf470e41ee8e77dd0f2f2eeee57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e3cb45_6f07b00f",
+        "filename": "board/careena/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-25T15:28:14Z",
+      "side": 1,
+      "message": "it really feels like we should be calling into a common library that does this access to the memory mapped region. What do you think?",
+      "range": {
+        "startLine": 109,
+        "startChar": 30,
+        "endLine": 110,
+        "endChar": 47
+      },
+      "revId": "2df73b43e10eaf470e41ee8e77dd0f2f2eeee57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd6b0b7_1255c662",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-25T15:28:14Z",
+      "side": 1,
+      "message": ".field notation here too please",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "2df73b43e10eaf470e41ee8e77dd0f2f2eeee57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
