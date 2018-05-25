@@ -166,6 +166,30 @@
       "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6893b25f_46cb60e6",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-25T13:21:47Z",
+      "side": 1,
+      "message": "I added a note to come back to this tied to the refactor.",
+      "parentUuid": "8bfb56d8_1544f732",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
