@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95b733f8_4e903c69",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-25T23:03:01Z",
+      "side": 1,
+      "message": "its not time critical, may be we can change it to HOOK_PRIO_DEFAULT or HOOK_PRIO_LAST",
+      "range": {
+        "startLine": 302,
+        "startChar": 36,
+        "endLine": 302,
+        "endChar": 51
+      },
+      "revId": "db4fe4446a6e31b7d26bdc36c173244463110d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
