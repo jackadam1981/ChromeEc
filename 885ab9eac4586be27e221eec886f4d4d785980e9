@@ -22,6 +22,30 @@
       "revId": "885ab9eac4586be27e221eec886f4d4d785980e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408fd072_ef9b2411",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T23:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9ce66cf_d787cc36",
+      "range": {
+        "startLine": 227,
+        "startChar": 54,
+        "endLine": 227,
+        "endChar": 61
+      },
+      "revId": "885ab9eac4586be27e221eec886f4d4d785980e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
