@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e386f72e_7dbe6fb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T10:02:39Z",
+      "side": 1,
+      "message": "normally, not when entering SRC_SWAP_STANDBY\nbut when we are receiving the PS_RDY in PD_CTRL_PS_RDY, it should be the \u00272nd one\u0027 of the swap process meaning the new source is ready / VBUS is on again. So AFAIU when transitioning from SRC_SWAP_STANDBY to SNK_DISCOVERY, VBUS is supposed to be on at this point.\nTherefore the issue described below should not happen ? what am I missing ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "38bef43593f7a5b37eebc7a449d871075aceb5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12513d46_b03e6566",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3597,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T10:02:39Z",
+      "side": 1,
+      "message": "PR_SWAP states are supposed to be already filtered at line 3552 by \u0027pd_is_power_swapping(port)\u0027\nso maybe you would need to push this new condition in that routine (but I\u0027m still unconvinced, this is the desired behavior)",
+      "range": {
+        "startLine": 3596,
+        "startChar": 1,
+        "endLine": 3597,
+        "endChar": 55
+      },
+      "revId": "38bef43593f7a5b37eebc7a449d871075aceb5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
