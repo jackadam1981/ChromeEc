@@ -1060,6 +1060,11 @@ int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
 		goto select_input_port_exit;
 
 	if (select) {
+		if (bd9995x_is_vbus_provided(port)) {
+			rv = 0;
+			goto select_input_port_exit;
+		}
+
 		if (port == BD9995X_CHARGE_PORT_VBUS) {
 			reg |= BD9995X_CMD_VIN_CTRL_SET_VBUS_EN;
 			reg &= ~BD9995X_CMD_VIN_CTRL_SET_VCC_EN;
