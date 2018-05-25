@@ -46,6 +46,30 @@
       "revId": "bd3bfb534765306bb9fa72290beb6a0cce7eced9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3474c9c4_2fecad63",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-25T16:57:52Z",
+      "side": 1,
+      "message": "When I looked more closely, I noticed that no octopus or grunt boards define CONFIG_CHARGER_PROFILE_OVERRIDE, so I deleted the function here, and boards can add it if/when needed.",
+      "parentUuid": "c4a3ddb4_ff1b2abb",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "bd3bfb534765306bb9fa72290beb6a0cce7eced9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
