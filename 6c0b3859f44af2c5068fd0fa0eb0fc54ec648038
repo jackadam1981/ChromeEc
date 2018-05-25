@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a766db40_dce02ee6",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T23:22:58Z",
+      "side": 1,
+      "message": "borrowed key size definition from the next patch.",
+      "parentUuid": "87d84609_569f0c01",
+      "range": {
+        "startLine": 246,
+        "startChar": 43,
+        "endLine": 246,
+        "endChar": 45
+      },
+      "revId": "6c0b3859f44af2c5068fd0fa0eb0fc54ec648038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbc9a33c_95af701c",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-25T23:04:50Z",
       "side": 1,
       "message": "parameters?\n\nOr \u0027params\u0027 if you want to make it shorter.\n\nIs it default params or test params?",
+      "range": {
+        "startLine": 292,
+        "startChar": 38,
+        "endLine": 292,
+        "endChar": 47
+      },
+      "revId": "6c0b3859f44af2c5068fd0fa0eb0fc54ec648038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74007ad3_ec64cf1d",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T23:22:58Z",
+      "side": 1,
+      "message": "modified to call it \u0027test inputs\u0027",
+      "parentUuid": "cbc9a33c_95af701c",
       "range": {
         "startLine": 292,
         "startChar": 38,
