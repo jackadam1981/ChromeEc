@@ -22,6 +22,30 @@
       "revId": "f4d9452922b19e30160573291947a3015b030a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b2939e4_df800ffb",
+        "filename": "core/cortex-m0/mac.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150814
+      },
+      "writtenOn": "2018-05-25T17:36:25Z",
+      "side": 1,
+      "message": "And no, you do NOT need 8-byte stack alignment. As I said in the other CL:\n\n\nEABI only applies when calling C. It does not apply to leaf asm functions such as this.\n8-byte alignment in a leaf function is only needed for exception entry, and the CPU takes care of that for you already thanks to the CCR.STKALIGN bit being RAO in C-M0[+]",
+      "parentUuid": "2724ac14_b6702ba7",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "f4d9452922b19e30160573291947a3015b030a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
