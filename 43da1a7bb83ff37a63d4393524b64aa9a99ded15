@@ -95,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "bf894510_bdb7337c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-25T18:56:39Z",
+      "side": 1,
+      "message": "Doesn\u0027t an interrupt always preempt a task, which can then schedule a higher priority task in the in between any two lines of code?",
+      "parentUuid": "4c14b9a3_3959ef27",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d13c1b97_eaf599f0",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 6
