@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9327dda7_c2792f8a",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T08:16:44Z",
+      "side": 1,
+      "message": "the statement is kind of ambiguous here.\nthe core (aka Cortex-M0 silicon) doesn\u0027t provide the operation (as in the instruction)\nour \u0027core\u0027 code (as in the core/ directory) provides a special assembly implementation...",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 63
+      },
+      "revId": "74b1ecb5ba098cbd7aa9f51339e4cdf5c42b4b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eebdb72_fb26b186",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T08:16:44Z",
+      "side": 1,
+      "message": "is the config name still optimal or should we change it to ASSEMBLY_MULA32 ?",
+      "range": {
+        "startLine": 201,
+        "startChar": 14,
+        "endLine": 201,
+        "endChar": 28
+      },
+      "revId": "74b1ecb5ba098cbd7aa9f51339e4cdf5c42b4b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
