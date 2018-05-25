@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8046ebe_aa16775f",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-05-25T21:00:24Z",
+      "side": 1,
+      "message": "Use openssl RAND_bytes(); libc rand is a toy.",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 15
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2288505_54d17dfd",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-05-25T21:00:24Z",
+      "side": 1,
+      "message": "This has terrible bias; private keys should be chosen uniformly from \u003c0, P\u003e.\nUse EC_KEY_generate_key()",
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99e8872_a6de9992",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-05-25T21:00:24Z",
+      "side": 1,
+      "message": "usually a minimalist kdf such as sha256(x-coordinate) is used; the raw x-coordinate is not a uniformly distributed 256-bit value, it is an integer modulo some P close to 2**256",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 7
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
