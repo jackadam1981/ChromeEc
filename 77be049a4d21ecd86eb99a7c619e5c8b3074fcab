@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6e83aed_e8ba469d",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T23:37:34Z",
+      "side": 1,
+      "message": "Still seems like this should be a defined constant.\n\nYou can define it as ((1 \u003c\u003c TOTAL_KSO_COUNT) - 1), assuming you calculate TOTAL_KSO_COUNT based on KEYBOARD_COLS and KEYBOARD_IDS.",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "77be049a4d21ecd86eb99a7c619e5c8b3074fcab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

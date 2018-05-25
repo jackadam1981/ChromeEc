@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "c5da33bb_9122b1f8",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T23:37:34Z",
+      "side": 1,
+      "message": "Yeah, can wait to a second commit.\n\nAlso worth folding into the design doc (both the problem, and how to work around it).",
+      "parentUuid": "d618bb18_f617c113",
+      "range": {
+        "startLine": 282,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21c232ae_0682210a",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 2
@@ -391,6 +415,30 @@
       "side": 1,
       "message": "Should be 2 mostly. By current design, 2 ID pins could help 81 configurations. It\u0027s less likely to add one ID pin more, giving 729 configurations and EC pins constraints.",
       "parentUuid": "3dec3f3f_d13f0b37",
+      "range": {
+        "startLine": 1966,
+        "startChar": 1,
+        "endLine": 1966,
+        "endChar": 2
+      },
+      "revId": "efd102a0152ef2cf69b8a51723e3417b175ecbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cc1a8ab_b55b2a11",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T23:37:34Z",
+      "side": 1,
+      "message": "If we have more than 81 keyboard configs, we have a problem. ;)",
+      "parentUuid": "0377852f_36b48109",
       "range": {
         "startLine": 1966,
         "startChar": 1,
