@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4de00bea_f86d9ebd",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T10:20:04Z",
+      "side": 1,
+      "message": "an alternative implementation would be to put console_init in a deferred function and wait for an event from this function before starting the main loop in the console task.\nMaybe slightly cleaner but larger footprint too.",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 274,
+        "endChar": 70
+      },
+      "revId": "35ed7c0a82a4d65a57a23270e2e6dbd5649a8a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
