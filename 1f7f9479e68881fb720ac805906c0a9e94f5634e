@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "900e2d9e_a73c7306",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T21:07:01Z",
+      "side": 1,
+      "message": "This is safer, and will compile to the same thing.  Then you can just tell people not to touch idle_disabled directly at all.\n\nstatic inline uint32_t idle_is_disabled(void) { return idle_disabled; }",
+      "range": {
+        "startLine": 485,
+        "startChar": 3,
+        "endLine": 485,
+        "endChar": 59
+      },
+      "revId": "1f7f9479e68881fb720ac805906c0a9e94f5634e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
