@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1546242_c304191d",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-25T21:39:30Z",
+      "side": 1,
+      "message": "Right, it\u0027s one instruction anyway.",
+      "parentUuid": "d53cab1f_68f38d55",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 19
+      },
+      "revId": "d83ca2b9d86f9911707239a3ce46d7564f717faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0eecc7cc_1a8a525f",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 2
