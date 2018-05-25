@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "258a9bec_e5520701",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-25T20:30:51Z",
+      "side": 1,
+      "message": "I was just meaning in general. Hook task is lowest priority task so anywhere through this execution path can be preempted. So if it\u0027s here at this point, but before the tcpc_write() transaction we could send the idle command which would cause state to be lost.",
+      "parentUuid": "c0339e36_4efc4f37",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7162b8e_c20ac4b4",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 6
@@ -110,6 +128,24 @@
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68665549_491a601a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-05-25T20:30:51Z",
+      "side": 1,
+      "message": "\u003e The EC code doesn\u0027t preempt and switch tasks. This task would have\n \u003e to give up control for the PD task to run, which would happen\n \u003e either waiting for the I2C mutex, or while waiting for the\n \u003e tcpc_write to complete in the for loop above. The task switch can\u0027t\n \u003e happen between lines 243 and 244.\n\n\nI disagree. The EC is a preemptive design w.r.t. task scheduling. Why do you think a higher priority task won\u0027t preempt a lower one (or this hook task)? It definitely can be preempted here.",
+      "parentUuid": "4c14b9a3_3959ef27",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
