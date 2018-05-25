@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "985f5263_4053cb8e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:17:06Z",
+      "side": 1,
+      "message": "Why do you need to know the number of errors? You iterate over the array again anyway.",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05fbd2b3_4640e57d",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:17:06Z",
+      "side": 1,
+      "message": "Why do you need to go through the array twice? Can\u0027t you just print the errors on the first pass in st_tp_read_all_events?",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f43113_63caa3f1",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:17:06Z",
+      "side": 1,
+      "message": "nit: I think you can reflow this is make more use of the 80 chars",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046b5a81_7d67ffff",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:17:06Z",
+      "side": 1,
+      "message": "No //.\n\nPlease do not submit with --no-verify.\n\nAlso, I\u0027d just remove these comments, not very useful.",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4275aec4_e1bed6a1",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:17:06Z",
+      "side": 1,
+      "message": "ditto: This logic can be merged with error checking. Either here on in st_tp_read_all_events",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63dfa09_50b583b8",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:17:06Z",
+      "side": 1,
+      "message": "msleep(10)",
+      "revId": "9a6742c9d46d3dd149473297b52868b47e2de145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
