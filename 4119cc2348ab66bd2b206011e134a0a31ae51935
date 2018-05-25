@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e70b7e82_a09fa424",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T21:59:46Z",
+      "side": 1,
+      "message": "this function is a copy of the embedded implementation and there it gets rand() fed by h1, not a big deal to keep it libc based for test.",
+      "parentUuid": "d8046ebe_aa16775f",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 15
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2288505_54d17dfd",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2c6524ca_f7435d6f",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T21:59:46Z",
+      "side": 1,
+      "message": "This is just test code, the key is used only once by design, and the generated shared secret is just 40 bits in size. May I suggest that we don\u0027t worry about truncating the key to 255 bits in this case :)\n\nBut if you feel strongly about this - I can modify it.",
+      "parentUuid": "e2288505_54d17dfd",
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f99e8872_a6de9992",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2018-05-25T21:00:24Z",
       "side": 1,
       "message": "usually a minimalist kdf such as sha256(x-coordinate) is used; the raw x-coordinate is not a uniformly distributed 256-bit value, it is an integer modulo some P close to 2**256",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 7
+      },
+      "revId": "4119cc2348ab66bd2b206011e134a0a31ae51935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ac9ae8_ee5552d8",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T21:59:46Z",
+      "side": 1,
+      "message": "in fact this seed *is* further converted with a KDF (see line 398 below), which is in common code for both curves.",
+      "parentUuid": "f99e8872_a6de9992",
       "range": {
         "startLine": 302,
         "startChar": 1,
