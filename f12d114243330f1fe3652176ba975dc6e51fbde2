@@ -16,6 +16,41 @@
       "revId": "f12d114243330f1fe3652176ba975dc6e51fbde2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "040808fe_794b5520",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T18:30:25Z",
+      "side": 1,
+      "message": "Globals implicitly init to 0",
+      "parentUuid": "77a55534_f6522c42",
+      "revId": "f12d114243330f1fe3652176ba975dc6e51fbde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6527d599_414c0ab3",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T18:30:25Z",
+      "side": 1,
+      "message": "Header comments?\n\nShould these take a mask like the sleep mask?",
+      "revId": "f12d114243330f1fe3652176ba975dc6e51fbde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
