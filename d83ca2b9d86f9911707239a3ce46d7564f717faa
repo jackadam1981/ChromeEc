@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d53cab1f_68f38d55",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T18:51:27Z",
+      "side": 1,
+      "message": "No need for the if; disabling if already disabled is a no-op anyway.",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 19
+      },
+      "revId": "d83ca2b9d86f9911707239a3ce46d7564f717faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eecc7cc_1a8a525f",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T18:51:27Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 265,
+        "endChar": 17
+      },
+      "revId": "d83ca2b9d86f9911707239a3ce46d7564f717faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03741f11_87b99962",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 2
