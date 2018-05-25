@@ -142,6 +142,30 @@
       "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfb56d8_1544f732",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-25T06:29:13Z",
+      "side": 1,
+      "message": "I think that would make sense. Basically, we can ensure that the battery can survive the pd reset. I am okay with going ahead with this for now and re-visiting it later after the cleanup is done.",
+      "parentUuid": "72649686_e77dfe7d",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "a570272c2dec17b86d645b8dc5ce550a86b6a0f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
