@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf9bd8ca_922cc40b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-25T18:46:52Z",
+      "side": 1,
+      "message": "Changed it to DUT.",
+      "parentUuid": "6882b757_7a271dce",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "808d6928292096d9e3ee49777eb41b1119897694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c37e759_2b7985c3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "53d46f8b_3cefdf49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-25T18:46:52Z",
+      "side": 1,
+      "message": "Added more background about it.",
+      "parentUuid": "3c37e759_2b7985c3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 67
+      },
+      "revId": "808d6928292096d9e3ee49777eb41b1119897694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d3e0017_f86156ea",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-23T04:28:23Z",
       "side": 1,
       "message": "lets file a bug I\u0027d think ... especially as this is likely just a workaround till we can fix more correctly in servod",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "808d6928292096d9e3ee49777eb41b1119897694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1594eca0_9b45e432",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-25T18:46:52Z",
+      "side": 1,
+      "message": "Filed a bug for it.",
+      "parentUuid": "2d3e0017_f86156ea",
       "range": {
         "startLine": 13,
         "startChar": 4,
@@ -91,6 +163,30 @@
       "revId": "808d6928292096d9e3ee49777eb41b1119897694",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1f3caa_a8978bf8",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-05-25T18:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51402fbd_bd4a298b",
+      "range": {
+        "startLine": 969,
+        "startChar": 0,
+        "endLine": 975,
+        "endChar": 0
+      },
+      "revId": "808d6928292096d9e3ee49777eb41b1119897694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
