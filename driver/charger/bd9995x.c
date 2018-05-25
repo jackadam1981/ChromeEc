@@ -1030,9 +1030,12 @@ int bd9995x_is_vbus_provided(enum bd9995x_charge_port port)
 {
 	int reg;
 
+	mutex_lock(&bd9995x_vin_mutex);
 	if (ch_raw_read16(BD9995X_CMD_VBUS_VCC_STATUS, &reg,
-			  BD9995X_EXTENDED_COMMAND))
-		return 0;
+			  BD9995X_EXTENDED_COMMAND)) {
+		reg = 0;
+		goto is_vbus_provided_exit;
+	}
 
 	if (port == BD9995X_CHARGE_PORT_VBUS)
 		reg &= BD9995X_CMD_VBUS_VCC_STATUS_VBUS_DETECT;
@@ -1044,7 +1047,8 @@ int bd9995x_is_vbus_provided(enum bd9995x_charge_port port)
 			BD9995X_CMD_VBUS_VCC_STATUS_VBUS_DETECT);
 	} else
 		reg = 0;
-
+is_vbus_provided_exit:
+	mutex_unlock(&bd9995x_vin_mutex);
 	return !!reg;
 }
 
@@ -1088,6 +1092,8 @@ int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
 
 	rv = ch_raw_write16(BD9995X_CMD_VIN_CTRL_SET, reg,
 			      BD9995X_EXTENDED_COMMAND);
+	/* Allow time for VBUS_VCC_STATUS register to update??? */
+	usleep(16000);
 select_input_port_exit:
 	mutex_unlock(&bd9995x_vin_mutex);
 	return rv;
