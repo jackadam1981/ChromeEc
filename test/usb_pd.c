@@ -553,6 +553,15 @@ static int test_request_with_wait_and_contract(void)
 #else
 	TEST_ASSERT(!give_back_called);
 #endif
+	/* We're in SNK_TRANSITION. Send ps_rdy */
+	simulate_ps_rdy(port);
+	task_wait_event(30 * MSEC);
+	TEST_ASSERT(verify_goodcrc(0, PD_ROLE_SINK, pd_port[port].msg_rx_id));
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(30 * MSEC);
+	inc_rx_id(port);
+
 	/* We're done */
 	unplug(port);
 

@@ -3586,12 +3586,15 @@ void pd_task(void *u)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		/*
 		 * Sink disconnect if VBUS is low and we are not recovering
-		 * a hard reset.
+		 * a hard reset and we are not in the middle of power role
+		 * swapping to sink.
 		 */
 		if (pd[port].power_role == PD_ROLE_SINK &&
 		    !pd_is_vbus_present(port) &&
 		    pd[port].task_state != PD_STATE_SNK_HARD_RESET_RECOVER &&
-		    pd[port].task_state != PD_STATE_HARD_RESET_EXECUTE) {
+		    pd[port].task_state != PD_STATE_HARD_RESET_EXECUTE &&
+		    pd[port].task_state != PD_STATE_SNK_REQUESTED &&
+		    pd[port].task_state != PD_STATE_SNK_TRANSITION) {
 			/* Sink: detect disconnect by monitoring VBUS */
 			set_state(port, PD_STATE_SNK_DISCONNECTED);
 			/* set timeout small to reconnect fast */
