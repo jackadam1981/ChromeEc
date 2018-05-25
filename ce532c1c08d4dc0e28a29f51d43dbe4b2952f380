@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcaaa2ef_2ecfc0df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T15:01:21Z",
+      "side": 1,
+      "message": "the read looks broken to me",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "ce532c1c08d4dc0e28a29f51d43dbe4b2952f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e29991_338bdbfb",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T15:01:21Z",
+      "side": 1,
+      "message": "that\u0027s wrong\nAs defined above, \u0027usb_port_enable[i]\u0027 is a constant representing the GPIO index controlling the port.",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 225,
+        "endChar": 33
+      },
+      "revId": "ce532c1c08d4dc0e28a29f51d43dbe4b2952f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
