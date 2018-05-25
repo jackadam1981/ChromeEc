@@ -93,6 +93,30 @@
       "revId": "cb30d1032523c7e4ec3e0f62113c53f20493dfce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0315b9d7_ea373bc2",
+        "filename": "core/cortex-m0/mac.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150814
+      },
+      "writtenOn": "2018-05-25T17:35:42Z",
+      "side": 1,
+      "message": "Vincent is actually wrong. EABI only applies when calling C. It does not apply to leaf asm functions such as this.\nPushing LR here is wrong for another reason (speed), but not this one. 8-byte alignment in a leaf function is only needed for exception entry, and the CPU takes care of that for you already thanks to the CCR.STKALIGN bit being RAO in C-M0[+]",
+      "parentUuid": "185b9235_79970cb7",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "cb30d1032523c7e4ec3e0f62113c53f20493dfce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
