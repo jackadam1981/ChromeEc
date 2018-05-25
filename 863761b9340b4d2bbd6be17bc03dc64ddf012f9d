@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2658541f_eb9e7e23",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T16:29:03Z",
+      "side": 1,
+      "message": "const char *?\n\nalso, does it have to be initialized here, or is this to calm a compiler warning?",
+      "revId": "863761b9340b4d2bbd6be17bc03dc64ddf012f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e080c0_9cf180f6",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T16:29:03Z",
+      "side": 1,
+      "message": "this looks odd, maybe just have a local variable \u0027unlock_allowed\u0027 set based on all these conditioins?",
+      "range": {
+        "startLine": 877,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 0
+      },
+      "revId": "863761b9340b4d2bbd6be17bc03dc64ddf012f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64b7be4_4182eed5",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T16:29:03Z",
+      "side": 1,
+      "message": "I would rather remove the callback invocation and this instead of clattering the code with yet another CONFIG_ option.",
+      "range": {
+        "startLine": 1205,
+        "startChar": 7,
+        "endLine": 1205,
+        "endChar": 38
+      },
+      "revId": "863761b9340b4d2bbd6be17bc03dc64ddf012f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f520b5_fa5e501b",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T16:29:03Z",
+      "side": 1,
+      "message": "still in the list (not deprecated?)",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 30
+      },
+      "revId": "863761b9340b4d2bbd6be17bc03dc64ddf012f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
