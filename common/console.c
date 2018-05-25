@@ -268,14 +268,24 @@ command_has_error:
 
 static void console_init(void)
 {
+#ifndef TEST_BUILD
+	/*
+	 * Delay console startup by a bit: The problem here is that the CONSOLE
+	 * task may have higher priority than other tasks (for good reasons),
+	 * but, on boot, there are other more critical tasks that need to run
+	 * (e.g. RW image verification). We also want to increase the chances
+	 * of the string below being printed without being interleaved with
+	 * other strings.
+	 */
+	msleep(300);
+#endif
+
 	*input_buf = '\0';
-	cflush();
 #ifdef CONFIG_EXPERIMENTAL_CONSOLE
 	ccprintf("Enhanced Console is enabled (v1.0.0); type HELP for help.\n");
 #else
 	ccprintf("Console is enabled; type HELP for help.\n");
 #endif /* defined(CONFIG_EXPERIMENTAL_CONSOLE) */
-	cflush();
 	ccputs(PROMPT);
 }
 
