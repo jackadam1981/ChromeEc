@@ -45,6 +45,30 @@
       "revId": "239b30a9d8ac5ce8adcb8534af34306f3a0ffa8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b521398_de4641df",
+        "filename": "core/cortex-m/mac.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1150814
+      },
+      "writtenOn": "2018-05-25T17:29:34Z",
+      "side": 1,
+      "message": "this code is for v6-m (the \"Cortex-M0\" in CL title)\n\nv-7m will use the inline c func defined elsewhere, which will produce umlal or umaal",
+      "parentUuid": "a704429c_0ca52035",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "239b30a9d8ac5ce8adcb8534af34306f3a0ffa8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
