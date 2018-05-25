@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6dd1013_a4f323b0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:20:27Z",
+      "side": 1,
+      "message": "Please implement a timeout.",
+      "revId": "d0764c9d6364cc8c14d0c118b8ad26ac30f34772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640f0c49_d1f61e20",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:20:27Z",
+      "side": 1,
+      "message": "msleep(100)",
+      "revId": "d0764c9d6364cc8c14d0c118b8ad26ac30f34772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916395e7_6f05befb",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-25T07:20:27Z",
+      "side": 1,
+      "message": "I\u0027m a bit uncomfortable with having such long-running code in the USB updater task (e.g. USB transaction may timeout...) Can we do the re-init in a hook, maybe?",
+      "revId": "d0764c9d6364cc8c14d0c118b8ad26ac30f34772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
