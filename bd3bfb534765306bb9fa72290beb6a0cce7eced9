@@ -22,6 +22,30 @@
       "revId": "bd3bfb534765306bb9fa72290beb6a0cce7eced9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a3ddb4_ff1b2abb",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-25T02:45:41Z",
+      "side": 1,
+      "message": "Ah, I thought this would work for any battery that has override_nil set in the fuel gauge info.\nI\u0027ll move this function out of common, back into the baseboards.",
+      "parentUuid": "afb093d0_b3b78777",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 29
+      },
+      "revId": "bd3bfb534765306bb9fa72290beb6a0cce7eced9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
