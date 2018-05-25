@@ -51,6 +51,24 @@
       "revId": "f12d114243330f1fe3652176ba975dc6e51fbde2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0e467a_8a8788ba",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-05-25T19:04:56Z",
+      "side": 1,
+      "message": "IMHO we need neither a mask nor an enum like the sleep_mask. As for now, it seems rare that we\u0027d ever want to disable idle/sleep mode. So a binary (on/off) control should be sufficient. When we need to disable idle/sleep mode for other boards in the future, we may consider extending it to a mask.",
+      "parentUuid": "6527d599_414c0ab3",
+      "revId": "f12d114243330f1fe3652176ba975dc6e51fbde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
