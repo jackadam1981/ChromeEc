@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67545fd4_571af7a3",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-25T15:55:26Z",
+      "side": 1,
+      "message": "do you really need this variable? You could say\n\nuint8_t buf[sizeof(struct ccd_vendor_cmd_header)  + CCD_MAX_PASSWORD_SIZE];\n\nand then use sizeof(buf) in line 822.\n\nalso, max_size or buf_size would be a better name.",
+      "range": {
+        "startLine": 801,
+        "startChar": 1,
+        "endLine": 802,
+        "endChar": 28
+      },
+      "revId": "2e17990631b1a7fe44f3c1060c106021261a8100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
