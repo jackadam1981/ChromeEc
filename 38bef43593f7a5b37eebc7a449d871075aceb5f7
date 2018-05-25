@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33f7c249_9c9e7da6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-05-25T23:05:13Z",
+      "side": 1,
+      "message": "You are correct. The problem is occurring during PR_Swap to sink after receiving Source_Cap. pd_is_vbus_present() returns 0 between DFP:Request and UFP:Accept and this is what\u0027s causing the state machine to enter the SNK_DISCONNECTED state and generating the Hard Reset when Accept is finally received.\n\nSink:UFP\t[3]PR_Swap\nSource:DFP\t[3]GoodCRC\nSource:DFP\t[4]Accept\nSink:UFP\t[4]GoodCRC\nSource:DFP\t[5]PS_RDY\nSink:UFP\t[5]GoodCRC\nSource:UFP\t[0]PS_RDY\nSource:DFP\t[0]GoodCRC\nSource:UFP\t[1]Source_Cap\nSink:DFP\t[1]GoodCRC\nSink:DFP\t[0]Request\nSource:UFP\t[0]GoodCRC\nSource:UFP\t[2]Accept\nSink:DFP\t[2]GoodCRC\nHard Reset\n\nI tracked the problem to bd9995x_select_input_port(). When writing to the VIN_CTRL_SET register, pd_is_vbus_present() return 0 for ~16mS even though VBUS is present.",
+      "parentUuid": "e386f72e_7dbe6fb0",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "38bef43593f7a5b37eebc7a449d871075aceb5f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12513d46_b03e6566",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
