@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c0339e36_4efc4f37",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-25T18:32:49Z",
+      "side": 1,
+      "message": "I haven\u0027t come up with a test for this case yet, but one possible concern would be entry to low power mode triggered by EC reset (or some TCPC reset) and while the write to enter low power mode is ongoing (and the hook task gives up control while waiting for either I2C mutex, or waiting for the I2C write to complete), an attach event on that port which would request an exit from low power mode. In normal user actions there is no way for a port to request to enter low power mode then need that request cancelled before it takes place.",
+      "parentUuid": "54b79c95_a0a4d21a",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7162b8e_c20ac4b4",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 6
@@ -53,6 +71,24 @@
       "writtenOn": "2018-05-23T20:46:00Z",
       "side": 1,
       "message": "Are you relying on the compiler to generate another read here of the global variable? \n\nWhat happens if we preempt here and cancel a call from the drp_toggle below? Are you relying on another port to kick this task and we eventually settle? I don\u0027t see how you guaranteed not to miss an idle request. Yes, tcpc_lpm_pending can have the request set but this hook can be canceled right here w/ a pending lpm request.",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c14b9a3_3959ef27",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-25T18:32:49Z",
+      "side": 1,
+      "message": "I made tcpc_lpm_pending volatile to make sure that its current value is always loaded. After reading your comment, I thought one potential problem would be if port 1\u0027s lpm_pending bit was set while this loop is processing port 0. I have tested with and without tcpc_lpm_pending declared as a volatile. I see no difference in behavior, but leaving volatile just to be safe.\n\nThe EC code doesn\u0027t preempt and switch tasks. This task would have to give up control for the PD task to run, which would happen either waiting for the I2C mutex, or while waiting for the tcpc_write to complete in the for loop above. The task switch can\u0027t happen between lines 243 and 244.",
+      "parentUuid": "c24a1b0c_dec38ab9",
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -165,6 +201,24 @@
       "writtenOn": "2018-05-23T20:46:00Z",
       "side": 1,
       "message": "I think I\u0027m missing something still. Yes, we can send i2cidle command and a subsequent access will wake it back up. Will the hardware lose state in that situation where an idle command is sent which drops state that was previous set up?",
+      "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8769dc22_45f0c7c8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-25T18:32:49Z",
+      "side": 1,
+      "message": "The main concern would be losing a request to enter idle mode. If some access were to wake the TCPC from low power mode, the PD task will always put it back into low power mode (assuming CC state leads to that).",
+      "parentUuid": "e3de94a8_844caa9a",
       "revId": "43da1a7bb83ff37a63d4393524b64aa9a99ded15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
