@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2724ac14_b6702ba7",
+        "filename": "core/cortex-m0/mac.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1150814
+      },
+      "writtenOn": "2018-05-25T17:27:02Z",
+      "side": 1,
+      "message": "pushing lr to then pop pc saves code space, but it also wastes you cycles. the extra push costs a cycle, as does the pop. also a word of stack is wasted. advice replace this push with just {r4-r6}, the pop at the end with {r4-r6} and then \"bx lr\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "f4d9452922b19e30160573291947a3015b030a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
