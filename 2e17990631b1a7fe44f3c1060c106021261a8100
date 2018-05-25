@@ -22,6 +22,30 @@
       "revId": "2e17990631b1a7fe44f3c1060c106021261a8100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4199bb4_f26b6632",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-25T21:14:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67545fd4_571af7a3",
+      "range": {
+        "startLine": 801,
+        "startChar": 1,
+        "endLine": 802,
+        "endChar": 28
+      },
+      "revId": "2e17990631b1a7fe44f3c1060c106021261a8100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
