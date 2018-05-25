@@ -70,6 +70,29 @@
       "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33bc7abd_bb8864fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-25T14:53:42Z",
+      "side": 1,
+      "message": "isn\u0027t this targeted for BRANCH\u003dfizz ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "d4cb4bfe390125a4305461510d24e0fb7d8475aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
