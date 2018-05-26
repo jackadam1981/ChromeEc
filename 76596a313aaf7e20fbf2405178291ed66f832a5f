@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a11cf48_5d5d5a4b",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-26T01:52:42Z",
+      "side": 1,
+      "message": "ah, looks like this is not needed any more!",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 14
+      },
+      "revId": "76596a313aaf7e20fbf2405178291ed66f832a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
