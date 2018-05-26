@@ -69,6 +69,30 @@
       "revId": "239b30a9d8ac5ce8adcb8534af34306f3a0ffa8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a20185_12d00ad5",
+        "filename": "core/cortex-m/mac.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-26T01:16:42Z",
+      "side": 1,
+      "message": "The previous version of this CL says Cortex-M/M0, my bad. (for whatever reason I thought this would help NPCX (M3) as well: it won\u0027t)",
+      "parentUuid": "9b521398_de4641df",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "239b30a9d8ac5ce8adcb8534af34306f3a0ffa8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
