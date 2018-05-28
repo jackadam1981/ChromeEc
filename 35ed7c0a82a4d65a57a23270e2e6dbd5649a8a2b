@@ -22,6 +22,30 @@
       "revId": "35ed7c0a82a4d65a57a23270e2e6dbd5649a8a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f88c22_d1d28ae1",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-28T00:48:17Z",
+      "side": 1,
+      "message": "Well, then you\u0027d end up locking the HOOKS task, and HOOKS is (at least currently) higher priority than RWSIG task...\n\nAnother way I considered is to have some sort of \"lazy\" cflush that would sleep instead of busy loop, up to a certain maximum duration (then it\u0027d still busy loop). But again, quite a bit of added code...",
+      "parentUuid": "4de00bea_f86d9ebd",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 274,
+        "endChar": 70
+      },
+      "revId": "35ed7c0a82a4d65a57a23270e2e6dbd5649a8a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
