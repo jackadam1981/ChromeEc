@@ -22,6 +22,30 @@
       "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d62a99_b182d3fc",
+        "filename": "common/acpi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-05-28T14:16:40Z",
+      "side": 1,
+      "message": "Oh, I ran clang-format on that region. I\u0027m not sure if it has an option for indenting blocks withing a switch. I should fix this manually to be consistent with the rest of the code.",
+      "parentUuid": "9562ba3a_e8fa24fe",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 3
+      },
+      "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
