@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc37249c_c6a83add",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T11:53:57Z",
+      "side": 1,
+      "message": "you might want to change the prefix here, now you have changed the patch.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "a32db0bbff2a82cd9e81edf69d7836d113ca4ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82b3f4b6_918abb75",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T11:53:57Z",
+      "side": 1,
+      "message": "if the goal is to skip setting again the same value,\nit would be better to compare the new computed \u0027reg\u0027 against the value read back at line 1057.\n\nBoth this new condition might break the case where we switch the charging port from one port to both ports for hibernate and also sometimes VBUS might still incorrectly be detected as high because the net is not fully discharged.",
+      "range": {
+        "startLine": 1063,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 37
+      },
+      "revId": "a32db0bbff2a82cd9e81edf69d7836d113ca4ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2ad0c1_c139f93b",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T11:53:57Z",
+      "side": 1,
+      "message": "nit: implicitly it\u0027s already 0 here.",
+      "range": {
+        "startLine": 1064,
+        "startChar": 0,
+        "endLine": 1064,
+        "endChar": 10
+      },
+      "revId": "a32db0bbff2a82cd9e81edf69d7836d113ca4ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
