@@ -10,4 +10,7 @@ CHIP:=nrf51
 CHIP_FAMILY:=nrf51x22
 CHIP_VARIANT:=nrf51822
 
+# Hadoken does not support scratchpad
+TEST_LIST_BOARD=-
+
 board-y=board.o
