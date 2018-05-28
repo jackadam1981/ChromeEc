@@ -70,6 +70,30 @@
       "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "406a4338_a6da0d92",
+        "filename": "common/acpi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-05-28T14:22:51Z",
+      "side": 1,
+      "message": "It has a .clang-format [1] but I\u0027m not sure that is configured in line with what the code base should use. I\u0027ve uploaded a v4 to be consistent with existing code for now.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/ec/+/master/.clang-format",
+      "parentUuid": "4c2e3d1b_f3213e1d",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 3
+      },
+      "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
