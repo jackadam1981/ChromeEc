@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "823f5722_809496ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-05-28T12:57:40Z",
+      "side": 1,
+      "message": "Indeed it was",
+      "parentUuid": "bcaaa2ef_2ecfc0df",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "ce532c1c08d4dc0e28a29f51d43dbe4b2952f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58e29991_338bdbfb",
         "filename": "common/acpi.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ce532c1c08d4dc0e28a29f51d43dbe4b2952f380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d364ff3b_52623a8f",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-05-28T12:57:40Z",
+      "side": 1,
+      "message": "Yes, I wanted to read the state of that GPIO signal, but got it mixed up with the charge mode somehow. Fixed in v3.",
+      "parentUuid": "58e29991_338bdbfb",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 225,
+        "endChar": 33
+      },
+      "revId": "ce532c1c08d4dc0e28a29f51d43dbe4b2952f380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
