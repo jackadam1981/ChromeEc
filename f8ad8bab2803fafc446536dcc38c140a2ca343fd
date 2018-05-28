@@ -94,6 +94,30 @@
       "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ccd5b3_6bece11c",
+        "filename": "common/acpi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T14:36:25Z",
+      "side": 1,
+      "message": "let\u0027s say \u0027interesting\u0027 I hadn\u0027t noticed this new addition.\nI must admit I have no idea what it is useful for if we don\u0027t fix the thousands of violations for this style in the current source files and don\u0027t enforce it in the pre-submit check.",
+      "parentUuid": "406a4338_a6da0d92",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 3
+      },
+      "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
