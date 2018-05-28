@@ -22,6 +22,30 @@
       "revId": "f9289b3dcb19fcccb8d867357962e1bc03775d47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94105f6d_707f973a",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-28T23:08:11Z",
+      "side": 0,
+      "message": "I agree we can probably remove those (or at the very least make them more succinct).\n\n\u003e The console task should sleep right after console_init and shouldn\u0027t distract other tasks which are important but given lower priority, right?\n\nYes, which is why I modified this code (cflush busy loops waiting for the UART buffer to be flushed, so that prevents other tasks from running).\n\nWe do not care about how fast the console shows up (not sure how host event would work though, as this is about FAFT that only has access to consoles through servo at this stage).",
+      "parentUuid": "a55842ff_974006dd",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 10
+      },
+      "revId": "f9289b3dcb19fcccb8d867357962e1bc03775d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
