@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9562ba3a_e8fa24fe",
+        "filename": "common/acpi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T14:07:39Z",
+      "side": 1,
+      "message": "nit: I don\u0027t know if we have a style rule for this, but it\u0027s matching neither the indentation of the case blocks above nor your own code below ?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 3
+      },
+      "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
