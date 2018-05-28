@@ -46,6 +46,30 @@
       "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c2e3d1b_f3213e1d",
+        "filename": "common/acpi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T14:18:58Z",
+      "side": 1,
+      "message": "While this has been on my wish-list, the code-base doesn\u0027t have a defined clang-format. So in this case, it\u0027s better to follow the existing style unless the pre-submit check complains.",
+      "parentUuid": "70d62a99_b182d3fc",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 3
+      },
+      "revId": "f8ad8bab2803fafc446536dcc38c140a2ca343fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
