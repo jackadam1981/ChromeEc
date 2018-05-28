@@ -531,18 +531,9 @@ int usb_charger_ramp_max(int supplier, int sup_curr)
 int charger_set_input_current(int input_current)
 {
 	int rv;
-    int current;
 
 	/* Input current step 32 mA */
 	input_current &= ~0x1F;
-
-	CPRINTS("mmarco before compre present current input current %d",
-			input_current);
-
-	charger_get_input_current(&current);
-
-	CPRINTS("marco input current %d, ci.icm %d, pre %d", input_current,
-			bd9995x_charger_info.input_current_min, current);
 
 	if (input_current < bd9995x_charger_info.input_current_min)
 		input_current = bd9995x_charger_info.input_current_min;

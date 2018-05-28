@@ -1016,7 +1016,7 @@ static int board_read_version(enum adc_channel chan)
 	/* Wait to allow cap charge */
 	msleep(1);
 	mv = adc_read_channel(chan);
-	CPRINTS("ID/SKU ADC %d = %d mV", chan, mv);
+	CPRINTS("mmarco ID/SKU ADC %d = %d mV", chan, mv);
 	/* Disable ID/SKU circuit */
 	gpio_set_flags(GPIO_EC_BRD_ID_EN, GPIO_INPUT);
 
