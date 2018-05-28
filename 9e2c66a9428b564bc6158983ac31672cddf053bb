@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b7564ce_d54be871",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-28T07:46:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37128b54_8c3f106f",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "9e2c66a9428b564bc6158983ac31672cddf053bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad0dab89_bdc98f3b",
         "filename": "test/build.mk",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-28T07:26:27Z",
       "side": 1,
       "message": "what if we just do above :\ntest-list-y ?\u003d pingpong timer_calib timer_dos timer_jump mutex utils utils_str\n(and use directly test-list-y in the specific build.mk ?)\n\nI haven\u0027t tested it so I might be missing the not-so-obvious ...",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "9e2c66a9428b564bc6158983ac31672cddf053bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ee81b7_0e77b820",
+        "filename": "test/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-28T07:46:23Z",
+      "side": 1,
+      "message": "Yes, this actually works (https://www.gnu.org/software/make/manual/make.html: \"Note that a variable set to an empty value is still defined, so ‘?\u003d’ will not set that variable.\").\n\nAnd it\u0027s a bit nicer, so let\u0027s go with that. Thanks.",
+      "parentUuid": "ad0dab89_bdc98f3b",
       "range": {
         "startLine": 19,
         "startChar": 0,
