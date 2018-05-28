@@ -28,28 +28,30 @@ struct vw_channel_t {
 };
 
 /* VW settings at initialization */
-#ifdef CONFIG_CHIPSET_GEMINILAKE
-static const struct vw_channel_t vw_init_setting[] = {
-	{ESPI_SYSTEM_EVENT_VW_IDX_4,
-		VW_LEVEL_FIELD(0),
-		VW_VALID_FIELD(VW_IDX_4_OOB_RST_ACK)},
-	{ESPI_SYSTEM_EVENT_VW_IDX_5,
-		VW_LEVEL_FIELD(VW_IDX_5_BTLD_STATUS_DONE),
-		VW_VALID_FIELD(VW_IDX_5_BTLD_STATUS_DONE)},
+static const struct vw_channel_t espi_en_peripheral_setting[] = {
+
 };
-#else
-static const struct vw_channel_t vw_init_setting[] = {
-	{ESPI_SYSTEM_EVENT_VW_IDX_4,
-		VW_LEVEL_FIELD(0),
-		VW_VALID_FIELD(VW_IDX_4_OOB_RST_ACK)},
-	{ESPI_SYSTEM_EVENT_VW_IDX_5,
-		VW_LEVEL_FIELD(VW_IDX_5_BTLD_STATUS_DONE),
-		VW_VALID_FIELD(VW_IDX_5_BTLD_STATUS_DONE)},
+
+static const struct vw_channel_t espi_en_vw_setting[] = {
+	/* EC sends SUS_ACK# = 1 VW to PCH. That do not apply to GLK SoC. */
+#ifndef CONFIG_CHIPSET_GEMINILAKE
 	{ESPI_SYSTEM_EVENT_VW_IDX_40,
 		VW_LEVEL_FIELD(0),
 		VW_VALID_FIELD(VW_IDX_40_SUS_ACK)},
-};
 #endif
+};
+
+static const struct vw_channel_t espi_en_oob_setting[] = {
+	{ESPI_SYSTEM_EVENT_VW_IDX_4,
+		VW_LEVEL_FIELD(0),
+		VW_VALID_FIELD(VW_IDX_4_OOB_RST_ACK)},
+};
+
+static const struct vw_channel_t espi_en_flash_setting[] = {
+	{ESPI_SYSTEM_EVENT_VW_IDX_5,
+		VW_LEVEL_FIELD(VW_IDX_5_BTLD_STATUS_DONE),
+		VW_VALID_FIELD(VW_IDX_5_BTLD_STATUS_DONE)},
+};
 
 /* VW settings at host startup */
 static const struct vw_channel_t vw_host_startup_setting[] = {
@@ -305,7 +307,7 @@ static void espi_vw_idx3_isr(uint8_t flag_changed)
 			/* Store port 80 reset event */
 			port_80_write(PORT_80_EVENT_RESET);
 
-		CPRINTS("PLTRST_L %sasserted", pltrst ? "de" : "");
+		CPRINTS("VW PLTRST_L %sasserted", pltrst ? "de" : "");
 	}
 
 	if (flag_changed & VW_LEVEL_FIELD(VW_IDX_3_OOB_RST_WARN))
@@ -385,18 +387,92 @@ void espi_vw_interrupt(void)
 	}
 }
 
+static void espi_peripheral_en_asserted(void)
+{
+	const struct vw_channel_t *setting = espi_en_peripheral_setting;
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(espi_en_peripheral_setting); i++)
+		IT83XX_ESPI_VWIDX(setting[i].index) =
+			(setting[i].level_mask | setting[i].valid_mask);
+}
+
+static void espi_vw_en_asserted(void)
+{
+	const struct vw_channel_t *setting = espi_en_vw_setting;
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(espi_en_vw_setting); i++)
+		IT83XX_ESPI_VWIDX(setting[i].index) =
+			(setting[i].level_mask | setting[i].valid_mask);
+}
+
+static void espi_oob_en_asserted(void)
+{
+	const struct vw_channel_t *setting = espi_en_oob_setting;
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(espi_en_oob_setting); i++)
+		IT83XX_ESPI_VWIDX(setting[i].index) =
+			(setting[i].level_mask | setting[i].valid_mask);
+}
+
+static void espi_flash_en_asserted(void)
+{
+	const struct vw_channel_t *setting = espi_en_flash_setting;
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(espi_en_flash_setting); i++)
+		IT83XX_ESPI_VWIDX(setting[i].index) =
+			(setting[i].level_mask | setting[i].valid_mask);
+}
+
+static void (*espi_isr[])(void) = {
+	espi_peripheral_en_asserted,
+	espi_vw_en_asserted,
+	espi_oob_en_asserted,
+	espi_flash_en_asserted,
+};
+
 void espi_interrupt(void)
 {
+	int i, isr_idx = 0;
+	uint8_t espi_event = IT83XX_ESPI_ESGCTRL0;
+
+	for (i = 0; i < ARRAY_SIZE(espi_isr); i++) {
+		if (espi_event & (1 << i))
+			espi_isr[isr_idx]();
+		isr_idx++;
+	}
+	/* write-1 to clear */
+	IT83XX_ESPI_ESGCTRL0 = espi_event;
+
+	if (IT83XX_ESPI_ESPCTRL0 & (1 << 7)) {
+		/* write-1 to clear */
+		IT83XX_ESPI_ESPCTRL0 |= (1 << 7);
+	}
+
+	task_clear_pending_irq(IT83XX_IRQ_ESPI);
 }
+
+static void espi_reset_vw_index_flag(void)
+{
+	int i;
+
+	/* TODO: reset vw_index_flag[] when espi_rst# asserted. */
+	for (i = 0; i < CHIP_ESPI_VW_INTERRUPT_NUM; i++)
+		vw_index_flag[i] = IT83XX_ESPI_VWIDX(vw_isr_list[i].vw_index);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, espi_reset_vw_index_flag, HOOK_PRIO_LAST);
 
 void espi_init(void)
 {
 	int i;
 
-	for (i = 0; i < ARRAY_SIZE(vw_init_setting); i++)
-		IT83XX_ESPI_VWIDX(vw_init_setting[i].index) =
-			(vw_init_setting[i].level_mask |
-			vw_init_setting[i].valid_mask);
+	/* enable ESPI_RESET# function. */
+	IT83XX_GPIO_GRC19 |= (1 << 0);
+	IT83XX_GPIO_GPCRD2 = 0;
+	IT83XX_GPIO_GCR = 0x4;
 
 	for (i = 0; i < CHIP_ESPI_VW_INTERRUPT_NUM; i++)
 		vw_index_flag[i] = IT83XX_ESPI_VWIDX(vw_isr_list[i].vw_index);
@@ -410,4 +486,10 @@ void espi_init(void)
 	/* bit7: VW interrupt enable */
 	IT83XX_ESPI_VWCTRL0 |= (1 << 7);
 	task_enable_irq(IT83XX_IRQ_ESPI_VW);
+
+	/* bit7: eSPI interrupt enable */
+	IT83XX_ESPI_ESGCTRL1 |= (1 << 7);
+	/* bit4: eSPI to WUC enable */
+	IT83XX_ESPI_ESGCTRL2 |= (1 << 4);
+	task_enable_irq(IT83XX_IRQ_ESPI);
 }
