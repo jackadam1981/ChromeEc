@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a55842ff_974006dd",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-28T17:00:21Z",
+      "side": 0,
+      "message": "Can we fix the test and delete these entirely?\n\nThe console task should sleep right after console_init and shouldn\u0027t distract other tasks which are important but given lower priority, right?\n\nI don\u0027t understand why we care how fast console becomes available. In any case, I believe it\u0027s a bad idea to use UART as an event indicator. We should make it a host event if we need to measure it.",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 10
+      },
+      "revId": "f9289b3dcb19fcccb8d867357962e1bc03775d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
