@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0922849c_337f7c44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T12:11:33Z",
+      "side": 1,
+      "message": "I think that was the main reason for it actually.\nA lot of boards used to have a small TX buffer to save RAM, it\u0027s less true on the current set of boards though.",
+      "range": {
+        "startLine": 24,
+        "startChar": 42,
+        "endLine": 25,
+        "endChar": 52
+      },
+      "revId": "35ed7c0a82a4d65a57a23270e2e6dbd5649a8a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4de00bea_f86d9ebd",
         "filename": "common/console.c",
         "patchSetId": 2
@@ -42,6 +65,29 @@
         "startChar": 3,
         "endLine": 274,
         "endChar": 70
+      },
+      "revId": "35ed7c0a82a4d65a57a23270e2e6dbd5649a8a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d06243_9787172a",
+        "filename": "common/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-05-28T12:11:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s fully true for full-featured laptop ECs which do all kind of long PMIC and power supplies dances, but it\u0027s still probably slightly better than earlier.",
+      "range": {
+        "startLine": 277,
+        "startChar": 27,
+        "endLine": 279,
+        "endChar": 11
       },
       "revId": "35ed7c0a82a4d65a57a23270e2e6dbd5649a8a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
