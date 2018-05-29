@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "206b141e_829f1a99",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T16:57:03Z",
+      "side": 1,
+      "message": "Meowth uses the same accelerameter and uses 1024. Why use 512 over 1024? (I\u0027m not saying 512 is incorrect, just curious)",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "028f9fb441b35c493bf926d4871e67f23d577d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8aaf1e5_0cc80e90",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T16:57:03Z",
+      "side": 1,
+      "message": "this should be a power of two (unless you are trying to fire 2 events at the same time). This seems like this should be 4 (since 4 is the first available bit in https://chromium.git.corp.google.com/chromiumos/platform/ec/+/ecd0d1b5767c829f4c73a79a9eb6abae343284fb/include/motion_sense.h#43)",
+      "range": {
+        "startLine": 56,
+        "startChar": 57,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "028f9fb441b35c493bf926d4871e67f23d577d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
