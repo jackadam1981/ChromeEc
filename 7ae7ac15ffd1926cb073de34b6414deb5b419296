@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2d24a88_c84a7530",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T23:00:35Z",
+      "side": 1,
+      "message": "I think this should be just dropped and the rma command should not process \u0027disable\u0027 as a special auth code. \n\n-r will be for retrieving challenge and sending auth code, and -F will be fore disabling factory mode.",
+      "range": {
+        "startLine": 1867,
+        "startChar": 0,
+        "endLine": 1877,
+        "endChar": 2
+      },
+      "revId": "7ae7ac15ffd1926cb073de34b6414deb5b419296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
