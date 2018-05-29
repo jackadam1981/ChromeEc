@@ -22,6 +22,30 @@
       "revId": "77be049a4d21ecd86eb99a7c619e5c8b3074fcab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cecaf721_8f880482",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-29T07:28:57Z",
+      "side": 1,
+      "message": "Per line #120 and line #121, the mask variable bitwise AND with 0x3FFFF (18 KSO pins). This leads me to think we could set the ~0 here and defer which KSO pins should be enabled to the line #120 and line #121.",
+      "parentUuid": "a6e83aed_e8ba469d",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "77be049a4d21ecd86eb99a7c619e5c8b3074fcab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
