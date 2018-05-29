@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "282280aa_642c884b",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-29T20:53:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eef6e28_bc6aec29",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cae5bb4_a2a31902",
         "filename": "driver/sync.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c4a018c6_e880724b",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-29T20:53:16Z",
+      "side": 1,
+      "message": "Are we sure we want to say \"Note: There\u0027s a risk of overflow, but at 30Hz this condition will be wrong every 4.5 years (for one sample)\"\n\nThis is assuming the sensor has been continuously on (nothing called sync_init) for the last 4.5 years. And at that point the only thing that happens is the polling way to get to this sensor(which is useless, nothing uses it) returns EC_RES_UNAVAILABLE.\n\nI don\u0027t think anyone reading this code should worry about that.",
+      "parentUuid": "9cae5bb4_a2a31902",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f511aac_892dc8ad",
         "filename": "driver/sync.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2018-05-29T18:53:49Z",
       "side": 1,
       "message": "move to line 73: counter was never 0 in the previous implementation.",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c807703_deec13f2",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-29T20:53:16Z",
+      "side": 1,
+      "message": "It\u0027s true that it was never 0 in the previous implementation, but that was wrong. First event should start at 0, no?",
+      "parentUuid": "9f511aac_892dc8ad",
       "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
