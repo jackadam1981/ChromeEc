@@ -46,6 +46,30 @@
       "revId": "7ae7ac15ffd1926cb073de34b6414deb5b419296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212709c9_75370801",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T23:14:30Z",
+      "side": 1,
+      "message": "I think this is fine, they will have to pick up this patch, they will have to test, they will change the way the shim uses this utility.\n\nHaving to ways to do exactly the same thing is not a good practice.",
+      "parentUuid": "05af33ee_35066143",
+      "range": {
+        "startLine": 1867,
+        "startChar": 0,
+        "endLine": 1877,
+        "endChar": 2
+      },
+      "revId": "7ae7ac15ffd1926cb073de34b6414deb5b419296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
