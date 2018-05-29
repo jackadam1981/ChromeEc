@@ -117,6 +117,30 @@
       "revId": "0ddd9f8cd25b1a7e2c681c8030c1365ea186a879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c9925dd_fdf663fa",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T23:53:02Z",
+      "side": 1,
+      "message": "ah, even better, there is an api for that, I should have looked earlier.",
+      "parentUuid": "9fe72d14_0692441c",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 43
+      },
+      "revId": "0ddd9f8cd25b1a7e2c681c8030c1365ea186a879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
