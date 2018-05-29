@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cf8e3cb_486f38c4",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T07:49:15Z",
+      "side": 1,
+      "message": "~KB_COL_MASK ?",
+      "revId": "8bad80639b5e333375aa687b92cdc3f8c9b1ec37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b338737_91d1dcb2",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T07:49:15Z",
+      "side": 1,
+      "message": "You can do this in one line (just drop r).",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "8bad80639b5e333375aa687b92cdc3f8c9b1ec37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d17614_9b4fd5fb",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T07:49:15Z",
+      "side": 1,
+      "message": "nit: drop those tab\n\nAlso, TODO style is:\n\n/*\n * TODO (b:1231241): .... .. ..\n * ... . ..\n */",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 5
+      },
+      "revId": "8bad80639b5e333375aa687b92cdc3f8c9b1ec37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
