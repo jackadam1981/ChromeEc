@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4aea09d2_4d573296",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-29T23:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc56937f_238de03d",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "600a34d7_a29e758c",
         "filename": "board/cr50/board.h",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0a94b23f_b1d97631",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-29T23:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600a34d7_a29e758c",
+      "range": {
+        "startLine": 354,
+        "startChar": 8,
+        "endLine": 354,
+        "endChar": 27
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40cd74a7_75cdd443",
         "filename": "common/ccd_config.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd96e33e_cf86715a",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-29T23:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40cd74a7_75cdd443",
+      "range": {
+        "startLine": 1119,
+        "startChar": 16,
+        "endLine": 1119,
+        "endChar": 27
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
