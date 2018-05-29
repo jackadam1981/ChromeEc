@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5064d729_d7738af4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-29T17:31:44Z",
+      "side": 1,
+      "message": "The whole subject line needs work. It doesn\u0027t say what it\u0027s fixing...",
+      "parentUuid": "dc37249c_c6a83add",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "a32db0bbff2a82cd9e81edf69d7836d113ca4ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82b3f4b6_918abb75",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 3
