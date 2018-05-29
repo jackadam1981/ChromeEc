@@ -33,6 +33,24 @@
       "revId": "97c8447df0dca8f867cd9918f98a3cbe38a6ab2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e198cf_045e5a28",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-29T23:40:20Z",
+      "side": 1,
+      "message": "Does this mean some delay is required before setting PP3300_NVME_EN to 0 to allow other rails to go down?",
+      "parentUuid": "046bb04d_440b6a91",
+      "revId": "97c8447df0dca8f867cd9918f98a3cbe38a6ab2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
