@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1c9c7b4_92d72f81",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-05-29T17:40:22Z",
+      "side": 1,
+      "message": "Why define this if it\u0027s not used?",
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc0fa1a7_d617197a",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-05-29T17:40:22Z",
+      "side": 1,
+      "message": "Define a macro for 1 \u003c\u003c 4 for readability?",
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551dd3c0_4248c7b6",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-05-29T17:40:22Z",
+      "side": 1,
+      "message": "Maybe define a macro for 1\u003c\u003c7 here as well?",
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
