@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc56937f_238de03d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T22:32:41Z",
+      "side": 1,
+      "message": "s/On/When/",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "600a34d7_a29e758c",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T22:32:41Z",
+      "side": 1,
+      "message": "patch description says this is a renaming patch, but a new config option is being added. Please mention in the description that some refactoring is happening at the same time.",
+      "range": {
+        "startLine": 354,
+        "startChar": 8,
+        "endLine": 354,
+        "endChar": 27
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40cd74a7_75cdd443",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T22:32:41Z",
+      "side": 1,
+      "message": "both parameters (rma and factory) are processed exactly the same - what\u0027s the point to have two parameters? Just call it \u0027reset factory\u0027, as this is the flags bit this parameter sets.",
+      "range": {
+        "startLine": 1119,
+        "startChar": 16,
+        "endLine": 1119,
+        "endChar": 27
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a422869c_b75eb2e5",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T22:32:41Z",
+      "side": 1,
+      "message": "is this hook still required if code in line 79 was executed?\n\nI know this is just moving function around, but still am curious.",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 65
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
