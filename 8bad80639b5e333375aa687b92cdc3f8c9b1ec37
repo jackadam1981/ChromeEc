@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5069752d_ea6bab8a",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T09:01:27Z",
+      "side": 1,
+      "message": "Ack, I missed that.\n\nYes, please drop KB_COL_MASK then.",
+      "parentUuid": "0a0a31f8_e89a02d0",
+      "revId": "8bad80639b5e333375aa687b92cdc3f8c9b1ec37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b338737_91d1dcb2",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 5
