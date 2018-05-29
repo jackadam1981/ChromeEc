@@ -292,17 +292,17 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
-void board_chipset_startup(void)
+void board_chipset_startup_5v(void)
 {
 	gpio_set_level(GPIO_EN_5V, 1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup_5v, HOOK_PRIO_DEFAULT);
 
-void board_chipset_shutdown(void)
+void board_chipset_shutdown_5v(void)
 {
 	gpio_set_level(GPIO_EN_5V, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown_5v, HOOK_PRIO_DEFAULT);
 
 int board_get_version(void)
 {
@@ -368,6 +368,23 @@ static void board_pmic_init(void)
 		return;
 	pgmask1 |= (1 << 2);
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x18, pgmask1);
+
+	/* Select 0.85V for the V085A nominal output voltage. */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x2a);
+
+	/* Hacks for enabling all power rails. */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x08);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x31, 0x28);
+	/* i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x32, 0x28); */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x33, 0x28);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x34, 0x28);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x35, 0x28);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x36, 0x38);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x18);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x08);
+
+
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x43, 0xff);
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 

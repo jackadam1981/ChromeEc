@@ -19,6 +19,7 @@
 #define NPCX_TACH_SEL2    0  /* No tach. */
 #define NPCX7_PWM1_SEL    0  /* GPIO C2 is not used as PWM1. */
 #define CONFIG_HIBERNATE_PSL
+#define CONFIG_POWER_BUTTON_INIT_IDLE
 
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE (512 * 1024) /* It's really 1MB. */

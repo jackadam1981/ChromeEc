@@ -1904,6 +1904,7 @@ int charge_prevent_power_on(int power_button_pressed)
 #ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 	static int automatic_power_on = 1;
 #endif
+	return 1;
 
 	/* If battery params seem uninitialized then retrieve them */
 	if (current_batt_params->is_present == BP_NOT_SURE) {
