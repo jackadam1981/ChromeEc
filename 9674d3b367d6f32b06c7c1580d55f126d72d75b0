@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "f54f769c_dbab6815",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-29T21:40:24Z",
+      "side": 1,
+      "message": "Because of the other comment, counter\u003d\u003d0 could be argued to be a valid sync_read. Removed the if fully.",
+      "parentUuid": "c4a018c6_e880724b",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f511aac_892dc8ad",
         "filename": "driver/sync.c",
         "patchSetId": 3
@@ -104,6 +122,24 @@
       "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b0bb967_7038bef2",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-05-29T21:40:24Z",
+      "side": 1,
+      "message": "Done, you convinced me.",
+      "parentUuid": "8c807703_deec13f2",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
