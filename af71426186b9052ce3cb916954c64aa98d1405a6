@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27fd0f34_37b29c53",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-29T23:35:39Z",
+      "side": 1,
+      "message": "Now that this is common code, should we drop the board_ prefix on the functions here?",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "af71426186b9052ce3cb916954c64aa98d1405a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe0d066f_f9fb56d6",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-29T23:35:39Z",
+      "side": 1,
+      "message": "This gets printed only when device_name is not NULL. Maybe do this just before the return or add it in line 54 as well?",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "af71426186b9052ce3cb916954c64aa98d1405a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce3755b_147e0aff",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-05-29T23:35:39Z",
+      "side": 1,
+      "message": "Just curious since we are moving this into common code now: Do we have any examples of batteries that use two different reg_data values for entering ship mode? Can this structure instead just have:\n\nstruct ship_mode_info {\n\tconst uint8_t reg_addr;\n        const uint16_t reg_data;\n};\n\nAnd then board_cut_off_battery() can send reg_data twice.",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "af71426186b9052ce3cb916954c64aa98d1405a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
