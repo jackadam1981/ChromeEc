@@ -22,6 +22,30 @@
       "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45477177_5f3b7e48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-29T19:36:16Z",
+      "side": 1,
+      "message": "If we do, then the console will be unresponsive during signature verification.  So if you have any bugs, they\u0027ll be more fun to debug.",
+      "parentUuid": "a55a3e8c_4757d844",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
