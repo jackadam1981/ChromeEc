@@ -22,6 +22,30 @@
       "revId": "bfa3a70b2b67fc6c7bb0b1a4acaf6e5b68fd6af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22fe0b1e_4ba6f9ea",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-29T23:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e551332a_9a46a087",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "bfa3a70b2b67fc6c7bb0b1a4acaf6e5b68fd6af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
