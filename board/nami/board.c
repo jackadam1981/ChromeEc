@@ -241,10 +241,10 @@ void board_reset_pd_mcu(void)
 
 	/* Assert reset */
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
+	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
 	msleep(1);
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
+	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
 }
 
 void board_tcpc_init(void)
