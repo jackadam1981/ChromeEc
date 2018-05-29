@@ -22,6 +22,29 @@
       "revId": "0ddd9f8cd25b1a7e2c681c8030c1365ea186a879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97704cc3_0560e2b6",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-29T22:43:45Z",
+      "side": 1,
+      "message": "Actually, can you just use\n\np256_get_bit(\u0026pk_y, 0) \u003d\u003d 1",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 43
+      },
+      "revId": "0ddd9f8cd25b1a7e2c681c8030c1365ea186a879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
