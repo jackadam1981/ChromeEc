@@ -46,6 +46,30 @@
       "revId": "db4fe4446a6e31b7d26bdc36c173244463110d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e13580_a39893f0",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1115140
+      },
+      "writtenOn": "2018-05-29T16:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa72f81b_c13cdb16",
+      "range": {
+        "startLine": 302,
+        "startChar": 36,
+        "endLine": 302,
+        "endChar": 51
+      },
+      "revId": "db4fe4446a6e31b7d26bdc36c173244463110d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
