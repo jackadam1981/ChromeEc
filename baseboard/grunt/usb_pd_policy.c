@@ -23,15 +23,17 @@
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
-/* TODO(ecgh): fill in correct source and sink capabilities */
 const uint32_t pd_src_pdo[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+
+#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 const uint32_t pd_src_pdo_max[] = {
 	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
 };
 const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
+#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
 
 const uint32_t pd_snk_pdo[] = {
 	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
@@ -168,10 +170,12 @@ void pd_transition_voltage(int idx)
 	/* No-operation: we are always 5V */
 }
 
+#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 void typec_set_source_current_limit(int port, int rp)
 {
 	ppc_set_vbus_source_current_limit(port, rp);
 }
+#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
 
 int pd_snk_is_vbus_provided(int port)
 {
