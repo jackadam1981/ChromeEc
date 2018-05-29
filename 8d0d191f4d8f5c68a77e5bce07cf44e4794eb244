@@ -36,6 +36,167 @@
     },
     {
       "key": {
+        "uuid": "6bd76806_6836b338",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "Should we be careful not to override other bits:\nIT83XX_GPIO_GCR \u003d (IT83XX_GPIO_GCR \u0026 ~0x06) | 0x04;\n(but we should make DEFINES for the masks and options)",
+      "range": {
+        "startLine": 421,
+        "startChar": 19,
+        "endLine": 421,
+        "endChar": 22
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19c17380_1fd3aefb",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "Add comment saying enabling 1.8V for eSPI",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 30
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a26a1230_ae837140",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "comment saying set up as alternate function with no pull ups.\n\nThese register operations really seems like they should be going through common GPIO routines that speak in terms of pull ups, alternate function or voltages. At the very least we should be using common DEFINES",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 19
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3be7588_7643cc7f",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "Does b/68918637 apply here also since this is also a WC register?",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 30
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12bdb8bf_24c964ce",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "add a comment that order in array matched bit order in IT83XX_ESPI_ESGCTRL0 register",
+      "range": {
+        "startLine": 472,
+        "startChar": 10,
+        "endLine": 472,
+        "endChar": 31
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "201020da_cf217895",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "should we only clear the bottom 4 bits since that is all we are servicing?",
+      "range": {
+        "startLine": 486,
+        "startChar": 24,
+        "endLine": 486,
+        "endChar": 34
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8266e0_def8a2f0",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "what is that for (or when does this happen)?",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 66
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "551dd3c0_4248c7b6",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 3
@@ -47,6 +208,52 @@
       "writtenOn": "2018-05-29T17:40:22Z",
       "side": 1,
       "message": "Maybe define a macro for 1\u003c\u003c7 here as well?",
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8c0df2_e96c20f0",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "This line disables the HOST GLOBAL RESET (HGRST) for LPCRST#. Should we instead set bit 3 to 1 instead of clearing it now?",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 32
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db698a15_7042055f",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-29T17:46:41Z",
+      "side": 1,
+      "message": "not in the CL, but it seems that we should just flesh the rest of the GPIO defines out for the GPIO registers",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 583,
+        "endChar": 26
+      },
       "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
