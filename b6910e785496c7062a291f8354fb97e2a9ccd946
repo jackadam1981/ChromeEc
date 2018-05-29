@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c2761fe_bba53345",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T04:51:25Z",
+      "side": 1,
+      "message": "e-\u003eevt_id \u003d\u003d ST_TP_EVENT_ID_STATUS_REPORT \u0026\u0026\ne-\u003ereport.report_type \u003d\u003d 0x1",
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f82eb35_50ec1aed",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T04:51:25Z",
+      "side": 1,
+      "message": "Can we define what report type 0x1 is as a constant?",
+      "range": {
+        "startLine": 687,
+        "startChar": 33,
+        "endLine": 687,
+        "endChar": 36
+      },
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56cf013_3f87315f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T04:51:25Z",
+      "side": 1,
+      "message": "if (memcmp(e-\u003ereport.info, cmd, MIN(len, 4)) \u003d\u003d 0)\n    return 0;\n\n(IMHO I\u0027d even remove the MIN(len, 4), you know that the caller won\u0027t use len \u003e 4.",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 14
+      },
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7af09cbe_485b416e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T04:51:25Z",
+      "side": 1,
+      "message": "nit: EC_SUCCESS",
+      "range": {
+        "startLine": 805,
+        "startChar": 9,
+        "endLine": 805,
+        "endChar": 10
+      },
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
