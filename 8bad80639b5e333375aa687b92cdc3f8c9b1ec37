@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3d9059d7_dd6bbadc",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-29T09:47:49Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "5069752d_ea6bab8a",
+      "revId": "8bad80639b5e333375aa687b92cdc3f8c9b1ec37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b338737_91d1dcb2",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 5
