@@ -22,6 +22,8 @@
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "system.h"
 #include "shi_chip.h"
 #include "switch.h"
@@ -140,6 +142,13 @@ void board_set_switchcap(int enable)
 }
 
 const struct adc_t adc_channels[] = {};
+
+const struct pwm_t pwm_channels[] = {
+	/* TODO(waihong): Assign a proper frequence. */
+	[PWM_CH_DISPLIGHT] = { 5, 0, 210 },
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
 
 /* Power signal list. Must match order of enum power_signal. */
 /*
