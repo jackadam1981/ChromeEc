@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eef6e28_bc6aec29",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-29T18:53:49Z",
+      "side": 1,
+      "message": "Define 8 in a #define, possibly a CONFIG_SYNC_QUEUE_SIZE (default to 8)",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cae5bb4_a2a31902",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-29T18:53:49Z",
+      "side": 1,
+      "message": "Add a comment: risk of rollover, but at 30ms, will take 745 days to become a negative number.",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f511aac_892dc8ad",
+        "filename": "driver/sync.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-05-29T18:53:49Z",
+      "side": 1,
+      "message": "move to line 73: counter was never 0 in the previous implementation.",
+      "revId": "9674d3b367d6f32b06c7c1580d55f126d72d75b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
