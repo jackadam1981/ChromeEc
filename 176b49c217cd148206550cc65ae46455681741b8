@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b78956ad_4bee9043",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T04:53:01Z",
+      "side": 1,
+      "message": "Drop this.",
+      "revId": "176b49c217cd148206550cc65ae46455681741b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320a5434_097b9cb0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-29T04:53:01Z",
+      "side": 1,
+      "message": "Is this useful? Maybe drop it. Or make it print something useful like the parameter.",
+      "revId": "176b49c217cd148206550cc65ae46455681741b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
