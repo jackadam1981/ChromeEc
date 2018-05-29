@@ -118,6 +118,30 @@
       "revId": "7ae7ac15ffd1926cb073de34b6414deb5b419296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1a4e92b_2043e175",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-29T23:34:44Z",
+      "side": 1,
+      "message": "they don\u0027t run it twice, and only allow it to fail if the running Cr50 version is lower than a certain level, they sure will notice the failure when running the newer version.",
+      "parentUuid": "0a62c739_28937cc2",
+      "range": {
+        "startLine": 1867,
+        "startChar": 0,
+        "endLine": 1877,
+        "endChar": 2
+      },
+      "revId": "7ae7ac15ffd1926cb073de34b6414deb5b419296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
