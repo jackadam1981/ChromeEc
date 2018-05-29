@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70139c63_22d200fc",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-29T05:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2761fe_bba53345",
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f82eb35_50ec1aed",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "70f1be5b_e14e3a40",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-29T05:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f82eb35_50ec1aed",
+      "range": {
+        "startLine": 687,
+        "startChar": 33,
+        "endLine": 687,
+        "endChar": 36
+      },
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56cf013_3f87315f",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2018-05-29T04:51:25Z",
       "side": 1,
       "message": "if (memcmp(e-\u003ereport.info, cmd, MIN(len, 4)) \u003d\u003d 0)\n    return 0;\n\n(IMHO I\u0027d even remove the MIN(len, 4), you know that the caller won\u0027t use len \u003e 4.",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 14
+      },
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7e4651_5f034665",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-29T05:50:57Z",
+      "side": 1,
+      "message": "I think the function should be called in the following way:\n\nst_tp_check_command_echo(tx_buf, sizeof(tx_buf), 10);\n\nso the caller don\u0027t need to check if the buf length is more than 4.",
+      "parentUuid": "e56cf013_3f87315f",
       "range": {
         "startLine": 689,
         "startChar": 0,
@@ -85,6 +151,30 @@
       "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042d2524_7ab467fb",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-05-29T05:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af09cbe_485b416e",
+      "range": {
+        "startLine": 805,
+        "startChar": 9,
+        "endLine": 805,
+        "endChar": 10
+      },
+      "revId": "b6910e785496c7062a291f8354fb97e2a9ccd946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
