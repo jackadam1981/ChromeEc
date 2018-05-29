@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4d0aaea_b58c923e",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-29T20:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab57f29_680adbbf",
+      "range": {
+        "startLine": 25,
+        "startChar": 14,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "af0c0e90158f3bf07fefb4c82ea2cfddd9f1ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc7ad969_a827add1",
         "filename": "common/factory_mode.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3554e67f_83585da2",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-29T20:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc7ad969_a827add1",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "af0c0e90158f3bf07fefb4c82ea2cfddd9f1ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "883f583e_6d9d04c3",
         "filename": "common/factory_mode.c",
         "patchSetId": 3
@@ -64,6 +112,53 @@
         "startChar": 25,
         "endLine": 67,
         "endChar": 32
+      },
+      "revId": "af0c0e90158f3bf07fefb4c82ea2cfddd9f1ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79eb7f4b_26fe50df",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-29T20:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "883f583e_6d9d04c3",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "af0c0e90158f3bf07fefb4c82ea2cfddd9f1ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15ce2350_7a0e1730",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-05-29T20:06:20Z",
+      "side": 1,
+      "message": "I moved this from rma_auth.c Why do we call enable_factory_mode_failed twice in a row? And why do we not use a deferred call for both?\n\nccd_reset_config(CCD_RESET_FACTORY); reboots cr50 right? so if we ever return we should just call enable_factory_mode_failed right?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 70
       },
       "revId": "af0c0e90158f3bf07fefb4c82ea2cfddd9f1ac73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
