@@ -20,5 +20,7 @@ CFLAGS_CPU+=-flto
 LDFLAGS_EXTRA+=-flto
 endif
 
-core-y=cpu.o init.o panic.o task.o switch.o __muldi3.o math.o __builtin.o
+LDFLAGS_EXTRA+=-Wl,--relax
+
+core-y=cpu.o init.o panic.o task.o switch.o __muldi3.o math.o __builtin.o abort.o
 core-$(CONFIG_FPU)+=__libsoftfpu.o
