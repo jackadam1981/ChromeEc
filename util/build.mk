@@ -54,6 +54,13 @@ $(out)/util/usb_pd_policy.o: $(BASEDIR)/usb_pd_policy.c \
 deps-$(CONFIG_USB_POWER_DELIVERY) += $(out)/util/usb_pd_policy.o.d
 endif # CONFIG_USB_POWER_DELIVERY
 
+ifneq ($(CONFIG_PACK_BOOTBLOCK),)
+build-util-bin += gen_emmc_transfer_data
+
+# For security issue, we should only pack bootblock in RO.
+$(out)/util/gen_emmc_transfer_data: BUILD_LDFLAGS += -DSECTION_IS_RO
+endif # CONFIG_PACK_BOOTBLOCK
+
 ifneq ($(CONFIG_TOUCHPAD_HASH_FW),)
 build-util-bin += gen_touchpad_hash
 

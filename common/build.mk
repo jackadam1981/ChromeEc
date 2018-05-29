@@ -80,6 +80,7 @@ common-$(CONFIG_LPC)+=acpi.o port80.o ec_features.o
 common-$(CONFIG_MAG_CALIBRATE)+= mag_cal.o math_util.o vec3.o mat33.o mat44.o
 common-$(CONFIG_MKBP_EVENT)+=mkbp_event.o
 common-$(CONFIG_ONEWIRE)+=onewire.o
+common-$(CONFIG_PACK_BOOTBLOCK)+=bootblock.o
 common-$(CONFIG_PHYSICAL_PRESENCE)+=physical_presence.o
 common-$(CONFIG_PINWEAVER)+=pinweaver.o
 common-$(CONFIG_POWER_BUTTON)+=power_button.o
@@ -153,6 +154,12 @@ endif
 ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3
 $(out)/RO/common/rsa.o: CFLAGS+=-O3
+endif
+
+ifneq ($(CONFIG_PACK_BOOTBLOCK),)
+$(out)/RO/common/bootblock.o: $(out)/bootblock.bin
+$(out)/bootblock.bin: $(out)/util/gen_emmc_transfer_data
+	$(call quiet,emmc_bootblock,BTBLK  )
 endif
 
 ifneq ($(CONFIG_TOUCHPAD_HASH_FW),)
