@@ -410,6 +410,14 @@
 #undef CONFIG_BOOT_HEADER_STORAGE_SIZE
 
 /*****************************************************************************/
+/* Bootblock config */
+
+/* Pack AP bootblock in EC image. The bootblock can be accessed with
+ * bootblock_get_data(), and bootblock_get_size().
+ */
+#undef CONFIG_PACK_BOOTBLOCK
+
+/*****************************************************************************/
 
 /* EC has GPIOs to allow board to reset RTC */
 #undef CONFIG_BOARD_HAS_RTC_RESET
