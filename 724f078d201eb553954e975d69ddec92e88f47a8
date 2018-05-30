@@ -22,6 +22,30 @@
       "revId": "724f078d201eb553954e975d69ddec92e88f47a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca9446a_a1b36582",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-05-30T02:24:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b10d1157_b9932727",
+      "range": {
+        "startLine": 300,
+        "startChar": 10,
+        "endLine": 300,
+        "endChar": 19
+      },
+      "revId": "724f078d201eb553954e975d69ddec92e88f47a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
