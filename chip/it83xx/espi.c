@@ -406,6 +406,39 @@ static void espi_reset_vw_index_flags(void)
 		vw_index_flag[i] = IT83XX_ESPI_VWIDX(vw_isr_list[i].vw_index);
 }
 
+void espi_reset_pin_asserted_interrupt(void)
+{
+	/* clear the WUC status register */
+	IT83XX_WUC_WUESR2 = ESPI_RESET_L_WUC_SENSE_BIT;
+	task_clear_pending_irq(IT83XX_IRQ_ESPI_RESET_L);
+	/* reset vw_index_flag when espi_reset# asserted. */
+	espi_reset_vw_index_flags();
+}
+
+static void espi_enable_reset(void)
+{
+	/*
+	 * bit[2-1]:
+	 * 00b: reserved.
+	 * 01b: espi_reset# is enabled on GPB7.
+	 * 10b: espi_reset# is enabled on GPD2.
+	 * 11b: reset is disabled.
+	 */
+	IT83XX_GPIO_GCR = (IT83XX_GPIO_GCR & ~0x06) | (1 << 2);
+	/*
+	 * enable 1.8v input of EC's espi_reset pin (GPD2),
+	 * and then this pin takes effect.
+	 * interrupt on falling edge.
+	 */
+	gpio_set_flags_by_mask(GPIO_D, (1 << 2),
+			GPIO_INT_FALLING | GPIO_SEL_1P8V);
+	/* set up GPD2 as alternate function (eSPI_reset#). */
+	gpio_set_alternate_function(GPIO_D, (1 << 2), 0);
+	IT83XX_WUC_WUESR2 = ESPI_RESET_L_WUC_SENSE_BIT;
+	task_clear_pending_irq(IT83XX_IRQ_ESPI_RESET_L);
+	task_enable_irq(IT83XX_IRQ_ESPI_RESET_L);
+}
+
 /* Interrupt event of master configures peripheral channel. */
 static void espi_peripheral_en_asserted(void)
 {
@@ -500,4 +533,7 @@ void espi_init(void)
 	/* bit4: eSPI to WUC enable */
 	IT83XX_ESPI_ESGCTRL2 |= (1 << 4);
 	task_enable_irq(IT83XX_IRQ_ESPI);
+
+	/* enable interrupt and reset from eSPI_reset# */
+	espi_enable_reset();
 }
