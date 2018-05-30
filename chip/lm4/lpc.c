@@ -97,7 +97,7 @@ static void keyboard_irq_assert(void)
 	do {
 		if (get_time().val > tstop)
 			break;
-	} while (lpc_keyboard_has_char());
+	} while (hostcmdx86_keyboard_has_char());
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(CONFIG_KEYBOARD_IRQ_GPIO, 1);
 }
@@ -118,7 +118,7 @@ static void wait_send_serirq(uint32_t lpcirqctl)
  * The first one is to assert IRQ (pull low), and then the second one is
  * to de-assert it. This generates a pulse (high-low-high) for an IRQ.
  */
-static void lpc_manual_irq(int irq_num)
+static void hostcmdx86_manual_irq(int irq_num)
 {
 	uint32_t common_bits =
 	    0x00000004 |  /* PULSE */
@@ -135,7 +135,7 @@ static void lpc_manual_irq(int irq_num)
 static inline void keyboard_irq_assert(void)
 {
 	/* Use serirq method. */
-	lpc_manual_irq(1);  /* IRQ#1 */
+	hostcmdx86_manual_irq(1);  /* IRQ#1 */
 }
 #endif
 
@@ -147,7 +147,7 @@ static inline void keyboard_irq_assert(void)
  * length >61us.  Both are short enough and events are infrequent, so just
  * delay for 65us.
  */
-static void lpc_generate_smi(void)
+static void hostcmdx86_generate_smi(void)
 {
 	host_event_t smi;
 
@@ -160,7 +160,7 @@ static void lpc_generate_smi(void)
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(GPIO_PCH_SMI_L, 1);
 
-	smi = lpc_get_host_events_by_type(LPC_HOST_EVENT_SMI);
+	smi = hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI);
 	if (smi)
 		HOST_EVENT_CPRINTS("smi", smi);
 }
@@ -168,7 +168,7 @@ static void lpc_generate_smi(void)
 /**
  * Generate SCI pulse to the host chipset via LPC0SCI.
  */
-static void lpc_generate_sci(void)
+static void hostcmdx86_generate_sci(void)
 {
 	host_event_t sci;
 
@@ -185,7 +185,7 @@ static void lpc_generate_sci(void)
 	LM4_LPC_LPCCTL |= LM4_LPC_SCI_START;
 #endif
 
-	sci = lpc_get_host_events_by_type(LPC_HOST_EVENT_SCI);
+	sci = hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI);
 	if (sci)
 		HOST_EVENT_CPRINTS("sci", sci);
 }
@@ -195,7 +195,7 @@ static void lpc_generate_sci(void)
  *
  * @param wake_events	Currently asserted wake events
  */
-static void lpc_update_wake(uint64_t wake_events)
+static void hostcmdx86_update_wake(uint64_t wake_events)
 {
 	/*
 	 * Mask off power button event, since the AP gets that through a
@@ -207,12 +207,12 @@ static void lpc_update_wake(uint64_t wake_events)
 	gpio_set_level(GPIO_PCH_WAKE_L, !wake_events);
 }
 
-uint8_t *lpc_get_memmap_range(void)
+uint8_t *hostcmdx86_get_memmap_range(void)
 {
 	return (uint8_t *)LPC_POOL_MEMMAP;
 }
 
-static void lpc_send_response(struct host_cmd_handler_args *args)
+static void hostcmdx86_send_response(struct host_cmd_handler_args *args)
 {
 	uint8_t *out;
 	int size = args->response_size;
@@ -258,7 +258,7 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 	task_enable_irq(LM4_IRQ_LPC);
 }
 
-static void lpc_send_response_packet(struct host_packet *pkt)
+static void hostcmdx86_send_response_packet(struct host_packet *pkt)
 {
 	/* Ignore in-progress on LPC since interface is synchronous anyway */
 	if (pkt->driver_result == EC_RES_IN_PROGRESS)
@@ -273,26 +273,26 @@ static void lpc_send_response_packet(struct host_packet *pkt)
 	task_enable_irq(LM4_IRQ_LPC);
 }
 
-int lpc_keyboard_has_char(void)
+int hostcmdx86_keyboard_has_char(void)
 {
 	return (LM4_LPC_ST(LPC_CH_KEYBOARD) & LM4_LPC_ST_TOH) ? 1 : 0;
 }
 
 /* Return true if the FRMH is set */
-int lpc_keyboard_input_pending(void)
+int hostcmdx86_keyboard_input_pending(void)
 {
 	return (LM4_LPC_ST(LPC_CH_KEYBOARD) & LM4_LPC_ST_FRMH) ? 1 : 0;
 }
 
 /* Put a char to host buffer and send IRQ if specified. */
-void lpc_keyboard_put_char(uint8_t chr, int send_irq)
+void hostcmdx86_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	LPC_POOL_KEYBOARD[1] = chr;
 	if (send_irq)
 		keyboard_irq_assert();
 }
 
-void lpc_keyboard_clear_buffer(void)
+void hostcmdx86_keyboard_clear_buffer(void)
 {
 	/* Make sure the previous TOH and IRQ has been sent out. */
 	wait_irq_sent();
@@ -303,25 +303,25 @@ void lpc_keyboard_clear_buffer(void)
 	wait_irq_sent();
 }
 
-void lpc_keyboard_resume_irq(void)
+void hostcmdx86_keyboard_resume_irq(void)
 {
-	if (lpc_keyboard_has_char())
+	if (hostcmdx86_keyboard_has_char())
 		keyboard_irq_assert();
 }
 
 #ifdef CONFIG_UART_HOST
 
-int lpc_comx_has_char(void)
+int hostcmdx86_comx_has_char(void)
 {
 	return LM4_LPC_ST(LPC_CH_COMX) & LM4_LPC_ST_FRMH;
 }
 
-int lpc_comx_get_char(void)
+int hostcmdx86_comx_get_char(void)
 {
 	return LPC_POOL_COMX[0];
 }
 
-void lpc_comx_put_char(int c)
+void hostcmdx86_comx_put_char(int c)
 {
 	LPC_POOL_COMX[1] = c;
 
@@ -341,7 +341,7 @@ void lpc_comx_put_char(int c)
  *   - SMI pulse via EC_SMI_L GPIO
  *   - SCI pulse via LPC0SCI
  */
-void lpc_update_host_event_status(void)
+void hostcmdx86_update_host_event_status(void)
 {
 	int need_sci = 0;
 	int need_smi = 0;
@@ -352,7 +352,7 @@ void lpc_update_host_event_status(void)
 	/* Disable LPC interrupt while updating status register */
 	task_disable_irq(LM4_IRQ_LPC);
 
-	if (lpc_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
+	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
 		/* Only generate SMI for first event */
 		if (!(LM4_LPC_ST(LPC_CH_ACPI) & LM4_LPC_ST_SMI))
 			need_smi = 1;
@@ -360,7 +360,7 @@ void lpc_update_host_event_status(void)
 	} else
 		LM4_LPC_ST(LPC_CH_ACPI) &= ~LM4_LPC_ST_SMI;
 
-	if (lpc_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
+	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
 		/* Generate SCI for every event */
 		need_sci = 1;
 		LM4_LPC_ST(LPC_CH_ACPI) |= LM4_LPC_ST_SCI;
@@ -369,23 +369,24 @@ void lpc_update_host_event_status(void)
 
 	/* Copy host events to mapped memory */
 	*(host_event_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) =
-				lpc_get_host_events();
+				hostcmdx86_get_host_events();
 
 	task_enable_irq(LM4_IRQ_LPC);
 
 	/* Process the wake events. */
-	lpc_update_wake(lpc_get_host_events_by_type(LPC_HOST_EVENT_WAKE));
+	hostcmdx86_update_wake(
+		hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_WAKE));
 
 	/* Send pulse on SMI signal if needed */
 	if (need_smi)
-		lpc_generate_smi();
+		hostcmdx86_generate_smi();
 
 	/* ACPI 5.0-12.6.1: Generate SCI for SCI_EVT=1. */
 	if (need_sci)
-		lpc_generate_sci();
+		hostcmdx86_generate_sci();
 }
 
-void lpc_set_acpi_status_mask(uint8_t mask)
+void hostcmdx86_set_acpi_status_mask(uint8_t mask)
 {
 	uint32_t set_mask = 0;
 	if (mask & EC_LPC_STATUS_BURST_MODE)
@@ -394,7 +395,7 @@ void lpc_set_acpi_status_mask(uint8_t mask)
 	LM4_LPC_ST(LPC_CH_ACPI) |= set_mask;
 }
 
-void lpc_clear_acpi_status_mask(uint8_t mask)
+void hostcmdx86_clear_acpi_status_mask(uint8_t mask)
 {
 	uint32_t clear_mask = 0;
 	if (mask & EC_LPC_STATUS_BURST_MODE)
@@ -403,7 +404,7 @@ void lpc_clear_acpi_status_mask(uint8_t mask)
 	LM4_LPC_ST(LPC_CH_ACPI) &= ~clear_mask;
 }
 
-int lpc_get_pltrst_asserted(void)
+int hostcmdx86_get_pltrst_asserted(void)
 {
 	return (LM4_LPC_LPCSTS & (1<<10)) ? 1 : 0;
 }
@@ -434,7 +435,7 @@ static void handle_acpi_write(int is_cmd)
 	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty / Output Buffer
 	 * Full condition on the kernel channel.
 	 */
-	lpc_generate_sci();
+	hostcmdx86_generate_sci();
 }
 
 /**
@@ -463,12 +464,12 @@ static void handle_host_write(int is_cmd)
 	host_cmd_args.command = LPC_POOL_CMD[0];
 
 	host_cmd_args.result = EC_RES_SUCCESS;
-	host_cmd_args.send_response = lpc_send_response;
+	host_cmd_args.send_response = hostcmdx86_send_response;
 	host_cmd_flags = lpc_host_args->flags;
 
 	/* See if we have an old or new style command */
 	if (host_cmd_args.command == EC_COMMAND_PROTOCOL_3) {
-		lpc_packet.send_response = lpc_send_response_packet;
+		lpc_packet.send_response = hostcmdx86_send_response_packet;
 
 		lpc_packet.request = (const void *)LPC_POOL_CMD_DATA;
 		lpc_packet.request_temp = params_copy;
@@ -532,17 +533,17 @@ static void handle_host_write(int is_cmd)
 }
 
 #ifdef CONFIG_CHIPSET_RESET_HOOK
-static void lpc_chipset_reset(void)
+static void hostcmdx86_chipset_reset(void)
 {
 	hook_notify(HOOK_CHIPSET_RESET);
 }
-DECLARE_DEFERRED(lpc_chipset_reset);
+DECLARE_DEFERRED(hostcmdx86_chipset_reset);
 #endif
 
 /**
  * LPC interrupt handler
  */
-void lpc_interrupt(void)
+void hostcmdx86_interrupt(void)
 {
 	uint32_t mis = LM4_LPC_LPCMIS;
 	uint32_t st;
@@ -586,10 +587,10 @@ void lpc_interrupt(void)
 
 #ifdef CONFIG_UART_HOST
 	/* Handle COMx */
-	if (lpc_comx_has_char()) {
+	if (hostcmdx86_comx_has_char()) {
 		/* Copy a character to the UART if there's space */
 		if (uart_comx_putc_ok())
-			uart_comx_putc(lpc_comx_get_char());
+			uart_comx_putc(hostcmdx86_comx_get_char());
 	}
 #endif
 
@@ -610,29 +611,30 @@ void lpc_interrupt(void)
 
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 			/* Notify HOOK_CHIPSET_RESET */
-			hook_call_deferred(&lpc_chipset_reset_data, MSEC);
+			hook_call_deferred(&hostcmdx86_chipset_reset_data,
+					   MSEC);
 #endif
 		}
 
 		CPRINTS("LPC RESET# %sasserted",
-			lpc_get_pltrst_asserted() ? "" : "de");
+			hostcmdx86_get_pltrst_asserted() ? "" : "de");
 	}
 }
-DECLARE_IRQ(LM4_IRQ_LPC, lpc_interrupt, 2);
+DECLARE_IRQ(LM4_IRQ_LPC, hostcmdx86_interrupt, 2);
 
 /* Enable LPC ACPI-EC interrupts */
-void lpc_enable_acpi_interrupts(void)
+void hostcmdx86_enable_acpi_interrupts(void)
 {
 	LM4_LPC_LPCIM |= LM4_LPC_INT_MASK(LPC_CH_ACPI, 6);
 }
 
 /* Disable LPC ACPI-EC interrupts */
-void lpc_disable_acpi_interrupts(void)
+void hostcmdx86_disable_acpi_interrupts(void)
 {
 	LM4_LPC_LPCIM &= ~(LM4_LPC_INT_MASK(LPC_CH_ACPI, 6));
 }
 
-static void lpc_init(void)
+static void hostcmdx86_init(void)
 {
 	/* Enable LPC clock in run and sleep modes. */
 	clock_enable_peripheral(CGC_OFFSET_LPC, 0x1,
@@ -774,10 +776,10 @@ static void lpc_init(void)
 
 	/* Initialize host args and memory map to all zero */
 	memset(lpc_host_args, 0, sizeof(*lpc_host_args));
-	memset(lpc_get_memmap_range(), 0, EC_MEMMAP_SIZE);
+	memset(hostcmdx86_get_memmap_range(), 0, EC_MEMMAP_SIZE);
 
 	/* We support LPC args and version 3 protocol */
-	*(lpc_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
+	*(hostcmdx86_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
 		EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED |
 		EC_HOST_CMD_FLAG_VERSION_3;
 
@@ -793,15 +795,15 @@ static void lpc_init(void)
 	init_done = 1;
 
 	/* Update host events now that we can copy them to memmap */
-	lpc_update_host_event_status();
+	hostcmdx86_update_host_event_status();
 }
 /*
  * Set prio to higher than default; this way LPC memory mapped data is ready
  * before other inits try to initialize their memmap data.
  */
-DECLARE_HOOK(HOOK_INIT, lpc_init, HOOK_PRIO_INIT_LPC);
+DECLARE_HOOK(HOOK_INIT, hostcmdx86_init, HOOK_PRIO_INIT_LPC);
 
-static void lpc_tick(void)
+static void hostcmdx86_tick(void)
 {
 	/*
 	 * Make sure pending LPC interrupts have been processed.
@@ -810,12 +812,12 @@ static void lpc_tick(void)
 	 */
 	task_trigger_irq(LM4_IRQ_LPC);
 }
-DECLARE_HOOK(HOOK_TICK, lpc_tick, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_TICK, hostcmdx86_tick, HOOK_PRIO_DEFAULT);
 
 /**
  * Get protocol information
  */
-static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
+static int hostcmdx86_get_protocol_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_protocol_info *r = args->response;
 
@@ -830,5 +832,5 @@ static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
 	return EC_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
-		     lpc_get_protocol_info,
+		     hostcmdx86_get_protocol_info,
 		     EC_VER_MASK(0));

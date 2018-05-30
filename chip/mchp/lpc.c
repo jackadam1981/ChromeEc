@@ -81,7 +81,7 @@ static void keyboard_irq_assert(void)
  * pulse length >61us. Both are short enough and events are infrequent,
  * so just delay for 65us.
  */
-static void lpc_generate_smi(void)
+static void hostcmdx86_generate_smi(void)
 {
 	/* CPRINTS("LPC Pulse SMI"); */
 	trace0(0, LPC, 0, "LPC Pulse SMI");
@@ -95,7 +95,7 @@ static void lpc_generate_smi(void)
 #endif
 }
 
-static void lpc_generate_sci(void)
+static void hostcmdx86_generate_sci(void)
 {
 	/* CPRINTS("LPC Pulse SCI"); */
 	trace0(0, LPC, 0, "LPC Pulse SCI");
@@ -119,7 +119,7 @@ static void lpc_generate_sci(void)
  *
  * @param wake_events	Currently asserted wake events
  */
-static void lpc_update_wake(host_event_t wake_events)
+static void hostcmdx86_update_wake(host_event_t wake_events)
 {
 	/*
 	 * Mask off power button event, since the AP gets that through a
@@ -135,7 +135,7 @@ static void lpc_update_wake(host_event_t wake_events)
 #endif
 }
 
-static uint8_t *lpc_get_hostcmd_data_range(void)
+static uint8_t *hostcmdx86_get_hostcmd_data_range(void)
 {
 	return mem_mapped;
 }
@@ -148,7 +148,7 @@ static uint8_t *lpc_get_hostcmd_data_range(void)
  *   - SMI pulse via PCH_SMI_L GPIO
  *   - SCI pulse via PCH_SCI_L GPIO
  */
-void lpc_update_host_event_status(void)
+void hostcmdx86_update_host_event_status(void)
 {
 	int need_sci = 0;
 	int need_smi = 0;
@@ -162,7 +162,7 @@ void lpc_update_host_event_status(void)
 	/* Disable LPC interrupt while updating status register */
 	task_disable_irq(MCHP_IRQ_ACPIEC0_IBF);
 
-	if (lpc_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
+	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
 		/* Only generate SMI for first event */
 		if (!(MCHP_ACPI_EC_STATUS(0) & EC_LPC_STATUS_SMI_PENDING))
 			need_smi = 1;
@@ -171,7 +171,7 @@ void lpc_update_host_event_status(void)
 		MCHP_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_SMI_PENDING;
 	}
 
-	if (lpc_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
+	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
 		/* Generate SCI for every event */
 		need_sci = 1;
 		MCHP_ACPI_EC_STATUS(0) |= EC_LPC_STATUS_SCI_PENDING;
@@ -181,23 +181,24 @@ void lpc_update_host_event_status(void)
 
 	/* Copy host events to mapped memory */
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) =
-			lpc_get_host_events();
+			hostcmdx86_get_host_events();
 
 	task_enable_irq(MCHP_IRQ_ACPIEC0_IBF);
 
 	/* Process the wake events. */
-	lpc_update_wake(lpc_get_host_events_by_type(LPC_HOST_EVENT_WAKE));
+	hostcmdx86_update_wake(
+		hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_WAKE));
 
 	/* Send pulse on SMI signal if needed */
 	if (need_smi)
-		lpc_generate_smi();
+		hostcmdx86_generate_smi();
 
 	/* ACPI 5.0-12.6.1: Generate SCI for SCI_EVT=1. */
 	if (need_sci)
-		lpc_generate_sci();
+		hostcmdx86_generate_sci();
 }
 
-static void lpc_send_response(struct host_cmd_handler_args *args)
+static void hostcmdx86_send_response(struct host_cmd_handler_args *args)
 {
 	uint8_t *out;
 	int size = args->response_size;
@@ -247,7 +248,7 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 
 }
 
-static void lpc_send_response_packet(struct host_packet *pkt)
+static void hostcmdx86_send_response_packet(struct host_packet *pkt)
 {
 	int i;
 	uint8_t *p8;
@@ -276,20 +277,20 @@ static void lpc_send_response_packet(struct host_packet *pkt)
 				MCHP_ACPI_EC_IBF_GIRQ_BIT(1);
 }
 
-uint8_t *lpc_get_memmap_range(void)
+uint8_t *hostcmdx86_get_memmap_range(void)
 {
 	return mem_mapped + 0x100;
 }
 
-uint32_t lpc_mem_mapped_addr(void)
+uint32_t hostcmdx86_mem_mapped_addr(void)
 {
 	return (uint32_t)mem_mapped;
 }
 
-void lpc_mem_mapped_init(void)
+void hostcmdx86_mem_mapped_init(void)
 {
 	/* We support LPC args and version 3 protocol */
-	*(lpc_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
+	*(hostcmdx86_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
 		EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED |
 		EC_HOST_CMD_FLAG_VERSION_3;
 }
@@ -392,25 +393,25 @@ static void setup_lpc(void)
 
 	task_enable_irq(MCHP_IRQ_PORT80DBG0);
 
-	lpc_mem_mapped_init();
+	hostcmdx86_mem_mapped_init();
 
 	/* Sufficiently initialized */
 	init_done = 1;
 
 	/* Update host events now that we can copy them to memmap */
-	lpc_update_host_event_status();
+	hostcmdx86_update_host_event_status();
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, setup_lpc, HOOK_PRIO_FIRST);
 #endif
 
-static void lpc_init(void)
+static void hostcmdx86_init(void)
 {
 	CPRINTS("LPC HOOK_INIT");
-	trace0(0, HOOK, 0, "HOOK_INIT - lpc_init");
+	trace0(0, HOOK, 0, "HOOK_INIT - hostcmdx86_init");
 
 	/* Initialize host args and memory map to all zero */
 	memset(lpc_host_args, 0, sizeof(*lpc_host_args));
-	memset(lpc_get_memmap_range(), 0, EC_MEMMAP_SIZE);
+	memset(hostcmdx86_get_memmap_range(), 0, EC_MEMMAP_SIZE);
 
 	/*
 	 * Clear PCR sleep enables for peripherals we are using for
@@ -455,18 +456,18 @@ static void lpc_init(void)
  * Set priority to higher than default; this way LPC memory mapped data
  * is ready before other inits try to initialize their memmap data.
  */
-DECLARE_HOOK(HOOK_INIT, lpc_init, HOOK_PRIO_INIT_LPC);
+DECLARE_HOOK(HOOK_INIT, hostcmdx86_init, HOOK_PRIO_INIT_LPC);
 
 #ifdef CONFIG_CHIPSET_RESET_HOOK
-static void lpc_chipset_reset(void)
+static void hostcmdx86_chipset_reset(void)
 {
 	hook_notify(HOOK_CHIPSET_RESET);
 }
-DECLARE_DEFERRED(lpc_chipset_reset);
+DECLARE_DEFERRED(hostcmdx86_chipset_reset);
 #endif
 
 
-void lpc_set_init_done(int val)
+void hostcmdx86_set_init_done(int val)
 {
 	init_done = val;
 }
@@ -492,7 +493,7 @@ void lpcrst_interrupt(enum gpio_signal signal)
 {
 #ifndef CONFIG_HOSTCMD_ESPI
 	/* Initialize LPC module when LRESET# is deasserted */
-	if (!lpc_get_pltrst_asserted()) {
+	if (!hostcmdx86_get_pltrst_asserted()) {
 		setup_lpc();
 	} else {
 		/* Store port 80 reset event */
@@ -500,12 +501,12 @@ void lpcrst_interrupt(enum gpio_signal signal)
 
 #ifdef CONFIG_CHIPSET_RESET_HOOK
 		/* Notify HOOK_CHIPSET_RESET */
-		hook_call_deferred(&lpc_chipset_reset_data, MSEC);
+		hook_call_deferred(&hostcmdx86_chipset_reset_data, MSEC);
 #endif
 	}
 
 	CPRINTS("LPC RESET# %sasserted",
-		lpc_get_pltrst_asserted() ? "" : "de");
+		hostcmdx86_get_pltrst_asserted() ? "" : "de");
 #endif
 }
 
@@ -623,7 +624,7 @@ void acpi_0_interrupt(void)
 	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty / Output Buffer
 	 * Full condition on the kernel channel.
 	 */
-	lpc_generate_sci();
+	hostcmdx86_generate_sci();
 }
 DECLARE_IRQ(MCHP_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 
@@ -660,7 +661,7 @@ void acpi_0_obe_isr(void)
 				MCHP_ACPI_EC_OBE_GIRQ_BIT(0);
 	}
 
-	lpc_generate_sci();
+	hostcmdx86_generate_sci();
 }
 DECLARE_IRQ(MCHP_IRQ_ACPIEC0_OBE, acpi_0_obe_isr, 1);
 #endif
@@ -691,20 +692,22 @@ void acpi_1_interrupt(void)
 	       "ACPI EC1 ISR OS2EC[0]=0x%02x", host_cmd_args.command);
 
 	host_cmd_args.result = EC_RES_SUCCESS;
-	host_cmd_args.send_response = lpc_send_response;
+	host_cmd_args.send_response = hostcmdx86_send_response;
 	host_cmd_flags = lpc_host_args->flags;
 	
 	/* We only support new style command (v3) now */
 	if (host_cmd_args.command == EC_COMMAND_PROTOCOL_3) {
-		lpc_packet.send_response = lpc_send_response_packet;
+		lpc_packet.send_response = hostcmdx86_send_response_packet;
 
-		lpc_packet.request = (const void *)lpc_get_hostcmd_data_range();
+		lpc_packet.request =
+			(const void *)hostcmdx86_get_hostcmd_data_range();
 		lpc_packet.request_temp = params_copy;
 		lpc_packet.request_max = sizeof(params_copy);
 		/* Don't know the request size so pass in the entire buffer */
 		lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
 
-		lpc_packet.response = (void *)lpc_get_hostcmd_data_range();
+		lpc_packet.response =
+			(void *)hostcmdx86_get_hostcmd_data_range();
 		lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
 		lpc_packet.response_size = 0;
 
@@ -739,7 +742,7 @@ DECLARE_IRQ(MCHP_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
  */
 void kb_ibf_interrupt(void)
 {
-	if (lpc_keyboard_input_pending())
+	if (hostcmdx86_keyboard_input_pending())
 		keyboard_host_write(MCHP_8042_H2E,
 				    MCHP_8042_STS & (1 << 3));
 
@@ -766,12 +769,12 @@ DECLARE_IRQ(MCHP_IRQ_8042EM_OBE, kb_obe_interrupt, 1);
  * Bit 0 of 8042EM STATUS register is OBF meaning EC has written data
  * to EC2HOST data register. OBF is cleared when the host reads the data.
  */
-int lpc_keyboard_has_char(void)
+int hostcmdx86_keyboard_has_char(void)
 {
 	return (MCHP_8042_STS & (1 << 0)) ? 1 : 0;
 }
 
-int lpc_keyboard_input_pending(void)
+int hostcmdx86_keyboard_input_pending(void)
 {
 	return (MCHP_8042_STS & (1 << 1)) ? 1 : 0;
 }
@@ -779,7 +782,7 @@ int lpc_keyboard_input_pending(void)
 /*
  * called from common/keyboard_8042.c
  */
-void lpc_keyboard_put_char(uint8_t chr, int send_irq)
+void hostcmdx86_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	MCHP_8042_E2H = chr;
 	if (send_irq)
@@ -790,28 +793,28 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
  * Read 8042 register and write to read-only register
  * insuring compiler does not optimize out the read.
  */
-void lpc_keyboard_clear_buffer(void)
+void hostcmdx86_keyboard_clear_buffer(void)
 {
 	MCHP_PCR_CHIP_OSC_ID = MCHP_8042_OBF_CLR;
 }
 
-void lpc_keyboard_resume_irq(void)
+void hostcmdx86_keyboard_resume_irq(void)
 {
-	if (lpc_keyboard_has_char())
+	if (hostcmdx86_keyboard_has_char())
 		keyboard_irq_assert();
 }
 
-void lpc_set_acpi_status_mask(uint8_t mask)
+void hostcmdx86_set_acpi_status_mask(uint8_t mask)
 {
 	MCHP_ACPI_EC_STATUS(0) |= mask;
 }
 
-void lpc_clear_acpi_status_mask(uint8_t mask)
+void hostcmdx86_clear_acpi_status_mask(uint8_t mask)
 {
 	MCHP_ACPI_EC_STATUS(0) &= ~mask;
 }
 
-int lpc_get_pltrst_asserted(void)
+int hostcmdx86_get_pltrst_asserted(void)
 {
 #ifdef CONFIG_HOSTCMD_ESPI
 	/*
@@ -826,27 +829,27 @@ int lpc_get_pltrst_asserted(void)
 }
 
 /* Enable LPC ACPI-EC0 interrupts */
-void lpc_enable_acpi_interrupts(void)
+void hostcmdx86_enable_acpi_interrupts(void)
 {
 	task_enable_irq(MCHP_IRQ_ACPIEC0_IBF);
 }
 
 /* Disable LPC ACPI-EC0 interrupts */
-void lpc_disable_acpi_interrupts(void)
+void hostcmdx86_disable_acpi_interrupts(void)
 {
 	task_disable_irq(MCHP_IRQ_ACPIEC0_IBF);
 }
 
 /* On boards without a host, this command is used to set up LPC */
-static int lpc_command_init(int argc, char **argv)
+static int hostcmdx86_command_init(int argc, char **argv)
 {
-	lpc_init();
+	hostcmdx86_init();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lpcinit, lpc_command_init, NULL, NULL);
+DECLARE_CONSOLE_COMMAND(lpcinit, hostcmdx86_command_init, NULL, NULL);
 
 /* Get protocol information */
-static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
+static int hostcmdx86_get_protocol_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_protocol_info *r = args->response;
 
@@ -864,5 +867,5 @@ static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
 	return EC_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
-		lpc_get_protocol_info,
+		hostcmdx86_get_protocol_info,
 		EC_VER_MASK(0));

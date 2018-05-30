@@ -517,7 +517,7 @@ void __gpio_wk0efgh_interrupt(void)
 #else
 	else if (IS_BIT_SET(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 7) &&
 		 IS_BIT_SET(NPCX_WKPND(MIWU_TABLE_0, MIWU_GROUP_5), 7))
-		lpc_lreset_pltrst_handler();
+		hostcmdx86_lreset_pltrst_handler();
 #endif
 	else
 #endif

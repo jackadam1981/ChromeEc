@@ -353,7 +353,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		/* Enable wireless */
 		wireless_set_state(WIRELESS_ON);
 
-		lpc_s3_resume_clear_masks();
+		hostcmdx86_s3_resume_clear_masks();
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
@@ -504,7 +504,7 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 		s0ix_notify = S0IX_NOTIFY_RESUME;
 		task_wake(TASK_ID_CHIPSET);
 		/* clear host events */
-		while (lpc_get_next_host_event() != 0)
+		while (hostcmdx86_get_next_host_event() != 0)
 			;
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_DEFAULT_RESET) {

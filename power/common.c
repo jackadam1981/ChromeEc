@@ -231,7 +231,7 @@ static void power_set_active_wake_mask(enum power_state state)
 
 	if (state == POWER_S0)
 		wake_mask = 0;
-	else if (lpc_is_active_wm_set_by_host())
+	else if (hostcmdx86_is_active_wm_set_by_host())
 		return;
 	else if (get_lazy_wake_mask(state, &wake_mask))
 		return;
@@ -240,7 +240,7 @@ static void power_set_active_wake_mask(enum power_state state)
 		wake_mask = DEFAULT_WAKE_MASK_S0IX;
 #endif
 
-	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
+	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
 }
 #else
 static void power_set_active_wake_mask(enum power_state state) { }

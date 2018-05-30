@@ -92,7 +92,7 @@ static uint32_t hc_suppressed_cnt[ARRAY_SIZE(hc_suppressed_cmd)];
 uint8_t *host_get_memmap(int offset)
 {
 #ifdef CONFIG_HOSTCMD_X86
-	return lpc_get_memmap_range() + offset;
+	return hostcmdx86_get_memmap_range() + offset;
 #else
 	return host_memmap + offset;
 #endif

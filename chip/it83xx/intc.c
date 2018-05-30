@@ -49,11 +49,11 @@ void intc_cpu_int_group_5(void)
 	switch (intc_group_5) {
 #if defined(CONFIG_HOSTCMD_X86) && defined(HAS_TASK_KEYPROTO)
 	case IT83XX_IRQ_KBC_OUT:
-		lpc_kbc_obe_interrupt();
+		hostcmdx86_kbc_obe_interrupt();
 		break;
 
 	case IT83XX_IRQ_KBC_IN:
-		lpc_kbc_ibf_interrupt();
+		hostcmdx86_kbc_ibf_interrupt();
 		break;
 #endif
 	default:

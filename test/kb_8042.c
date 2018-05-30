@@ -34,7 +34,7 @@ int lid_is_open(void)
 	return 1;
 }
 
-void lpc_keyboard_put_char(uint8_t chr, int send_irq)
+void hostcmdx86_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	lpc_char_buf[lpc_char_cnt++] = chr;
 }

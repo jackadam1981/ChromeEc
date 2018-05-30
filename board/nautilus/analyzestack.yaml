@@ -182,9 +182,9 @@ add:
   mkbp_get_next_event[common/mkbp_event.c:130]:
     - { name:  __mkbp_evt_srcs, stride: 8, offset: 4 }
   host_send_response[common/host_command.c:153]:
-    - lpc_send_response
+    - hostcmdx86_send_response
   host_packet_respond[common/host_command.c:240]:
-    - lpc_send_response
+    - hostcmdx86_send_response
   host_command_process[common/host_command.c:704]:
     - { name: __hcmds, stride: 12, offset: 0 }
   # gpio_interrupt.lto_priv.407[chip/npcx/gpio.c:479]
@@ -198,7 +198,7 @@ remove:
 # Remove all callsites pointing to panic_assert_fail.
 - panic_assert_fail
 # Remove hook paths that don't make sense
-- [ [ common_intel_x86_power_handle_state, power_button_change_deferred, hook_task, lpc_chipset_reset, espi_chipset_reset ], hook_notify, powerbtn_x86_lid_change ]
+- [ [ common_intel_x86_power_handle_state, power_button_change_deferred, hook_task, hostcmdx86_chipset_reset, espi_chipset_reset ], hook_notify, powerbtn_x86_lid_change ]
 - [ system_common_shutdown, hook_notify, system_run_image_copy ]
 - [ jump_to_image, hook_notify, [ powerbtn_x86_lid_change, system_common_shutdown, power_up_inhibited_cb, motion_sense_shutdown, motion_sense_resume ] ]
 - [ [ extpower_deferred, charger_task, motion_sense_switch_sensor_rate, lid_switch_open, lid_switch_close, motion_sense_task ], hook_notify, [ powerbtn_x86_lid_change, power_up_inhibited_cb, system_common_shutdown, motion_sense_shutdown, motion_sense_resume ] ]
