@@ -34,6 +34,24 @@
       "revId": "5e6894467499d3e8b4ba4b3e6c688b6a8ad60b79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98cc2a58_b9424deb",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-30T00:22:23Z",
+      "side": 1,
+      "message": "ah, you mean it could be optimized out...",
+      "parentUuid": "076b2544_382d7afc",
+      "revId": "5e6894467499d3e8b4ba4b3e6c688b6a8ad60b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
