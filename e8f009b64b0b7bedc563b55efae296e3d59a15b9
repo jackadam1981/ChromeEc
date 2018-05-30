@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb5c6469_296183d0",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-05-30T22:21:04Z",
+      "side": 0,
+      "message": "This function is used to account for the time period between the battery\u0027s FG reporting SOC and the discharge FET being enabled. It can\u0027t be removed without introducing the potential for brownout and that is known to cause issues with H1.",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 58
+      },
+      "revId": "e8f009b64b0b7bedc563b55efae296e3d59a15b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
