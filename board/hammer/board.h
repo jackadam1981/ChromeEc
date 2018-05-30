@@ -232,7 +232,6 @@
 #ifdef BOARD_WHISKERS
 #define CONFIG_LED_DRIVER_LM3630A
 #define CONFIG_LID_SWITCH
-#define CONFIG_USB_INHIBIT_CONNECT
 /* Enable control of SPI over USB */
 #define CONFIG_USB_SPI
 #define CONFIG_SPI_MASTER

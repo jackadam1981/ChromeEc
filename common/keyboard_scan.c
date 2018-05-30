@@ -768,6 +768,7 @@ void keyboard_scan_task(void *u)
 	}
 }
 
+#if 0
 #ifdef CONFIG_LID_SWITCH
 
 static void keyboard_lid_change(void)
@@ -780,6 +781,7 @@ static void keyboard_lid_change(void)
 DECLARE_HOOK(HOOK_LID_CHANGE, keyboard_lid_change, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_INIT, keyboard_lid_change, HOOK_PRIO_INIT_LID + 1);
 
+#endif
 #endif
 
 #ifdef CONFIG_USB_SUSPEND

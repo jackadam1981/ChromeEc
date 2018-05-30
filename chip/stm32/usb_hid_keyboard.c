@@ -13,6 +13,7 @@
 #include "hwtimer.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
+#include "lid_switch.h"
 #include "link_defs.h"
 #include "pwm.h"
 #include "queue.h"
@@ -25,6 +26,8 @@
 #include "usb_hw.h"
 #include "usb_hid.h"
 #include "usb_hid_hw.h"
+
+#define CONFIG_KEYBOARD_FLIPPED_SWITCH
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
@@ -61,7 +64,9 @@ struct usb_hid_keyboard_report {
 	/* Non-boot protocol fields below */
 #ifdef CONFIG_KEYBOARD_ASSISTANT_KEY
 	uint8_t assistant:1;
-	uint8_t reserved2:7;
+#endif
+#ifdef CONFIG_KEYBOARD_FLIPPED_SWITCH
+	uint8_t flipped:1;
 #endif
 } __packed;
 
@@ -100,6 +105,7 @@ struct usb_hid_keyboard_output_report {
 #define HID_KEYBOARD_MODIFIER_HIGH 0xe7
 
 #define HID_KEYBOARD_ASSISTANT_KEY 0xf0
+#define HID_KEYBOARD_FLIPPED_SWITCH 0xf1
 
 /* The standard Chrome OS keyboard matrix table. See HUT 1.12v2 Table 12 and
  * https://www.w3.org/TR/DOM-Level-3-Events-code .
@@ -191,7 +197,14 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 	0x29, 0xa4, /* Usage Maximum (164) */				\
 	0x81, 0x00, /* Input (Data, Array), ;Key arrays (6 bytes) */
 
-#define KEYBOARD_ASSISTANT_KEY_DESC					\
+/*
+ * Vendor-defined Usage Page 0xffd1:
+ *  - 0x18: Assistant key
+ *  - 0x19: Flipped switch
+ *
+ * FIXME: This needs to be fixed to support either assistant or flipped
+ */
+#define KEYBOARD_VENDOR_DESC						\
 	0x06, 0xd1, 0xff, /* Usage Page (Vendor-defined 0xffd1) */	\
 	0x19, 0x18, /* Usage Minimum */					\
 	0x29, 0x18, /* Usage Maximum */					\
@@ -201,8 +214,16 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_HID_KEYBOARD, 02) = {
 	0x95, 0x01, /* Report Count (1) */				\
 	0x81, 0x02, /* Input (Data, Variable, Absolute), ;Modifier byte */ \
 									\
+	0x19, 0x19, /* Usage Minimum */					\
+	0x29, 0x19, /* Usage Maximum */					\
+	0x15, 0x00, /* Logical Minimum (0) */				\
+	0x25, 0x01, /* Logical Maximum (1) */				\
+	0x75, 0x01, /* Report Size (1) */				\
 	0x95, 0x01, /* Report Count (1) */				\
-	0x75, 0x07, /* Report Size (7) */				\
+	0x81, 0x20, /* Input (Data, Absolute, No Preferred), ;Modifier byte */ \
+									\
+	0x95, 0x01, /* Report Count (1) */				\
+	0x75, 0x06, /* Report Size (6) */				\
 	0x81, 0x01, /* Input (Constant), ;7-bit padding */
 
 #define KEYBOARD_BACKLIGHT_DESC \
@@ -226,9 +247,7 @@ static const uint8_t report_desc[] = {
 
 	KEYBOARD_BASE_DESC
 
-#ifdef CONFIG_KEYBOARD_ASSISTANT_KEY
-	KEYBOARD_ASSISTANT_KEY_DESC
-#endif
+	KEYBOARD_VENDOR_DESC
 
 	0xC0        /* End Collection */
 };
@@ -241,9 +260,7 @@ static const uint8_t report_desc_with_backlight[] = {
 
 	KEYBOARD_BASE_DESC
 
-#ifdef CONFIG_KEYBOARD_ASSISTANT_KEY
-	KEYBOARD_ASSISTANT_KEY_DESC
-#endif
+	KEYBOARD_VENDOR_DESC
 
 	KEYBOARD_BACKLIGHT_DESC
 
@@ -506,6 +523,11 @@ static void keyboard_process_queue(void)
 			report.assistant = ev.pressed ? 1 : 0;
 			valid = 1;
 #endif
+		} else if (ev.keycode == HID_KEYBOARD_FLIPPED_SWITCH) {
+#ifdef CONFIG_KEYBOARD_FLIPPED_SWITCH
+			report.flipped = ev.pressed ? 1 : 0;
+			valid = 1;
+#endif
 		} else if (ev.keycode >= HID_KEYBOARD_MODIFIER_LOW &&
 		    ev.keycode <= HID_KEYBOARD_MODIFIER_HIGH) {
 			mask = 0x01 << (ev.keycode - HID_KEYBOARD_MODIFIER_LOW);
@@ -549,6 +571,25 @@ static void keyboard_process_queue(void)
 	if (valid && !trimming)
 		write_keyboard_report();
 }
+
+#ifdef CONFIG_KEYBOARD_FLIPPED_SWITCH
+static void lid_change(void)
+{
+	struct key_event ev = {
+		.time = __hw_clock_source_read(),
+		.keycode = HID_KEYBOARD_FLIPPED_SWITCH,
+		.pressed = !lid_is_open(),
+	};
+
+	mutex_lock(&key_queue_mutex);
+	queue_add_unit(&key_queue, &ev);
+	mutex_unlock(&key_queue_mutex);
+
+	keyboard_process_queue();
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, lid_change, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, lid_change, HOOK_PRIO_DEFAULT + 1);
+#endif
 
 void keyboard_state_changed(int row, int col, int is_pressed)
 {
