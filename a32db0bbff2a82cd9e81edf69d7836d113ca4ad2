@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "87c9b541_6096538c",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-05-30T02:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b3f4b6_918abb75",
+      "range": {
+        "startLine": 1063,
+        "startChar": 0,
+        "endLine": 1063,
+        "endChar": 37
+      },
+      "revId": "a32db0bbff2a82cd9e81edf69d7836d113ca4ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf2ad0c1_c139f93b",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 3
@@ -92,6 +116,30 @@
       "revId": "a32db0bbff2a82cd9e81edf69d7836d113ca4ad2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab146da6_62c075af",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-05-30T02:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf2ad0c1_c139f93b",
+      "range": {
+        "startLine": 1064,
+        "startChar": 0,
+        "endLine": 1064,
+        "endChar": 10
+      },
+      "revId": "a32db0bbff2a82cd9e81edf69d7836d113ca4ad2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
