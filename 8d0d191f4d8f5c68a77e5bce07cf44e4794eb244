@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a02a8927_ec0f7e12",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "I reserved it in case we need to configure VW outputs in the future.\nLet\u0027s add a TODO here or do you want me to remove it?",
+      "parentUuid": "a1c9c7b4_92d72f81",
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc0fa1a7_d617197a",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ec63d7_6c45455b",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc0fa1a7_d617197a",
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4aedb9ad_5ccaf3cc",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd76806_6836b338",
+      "range": {
+        "startLine": 421,
+        "startChar": 19,
+        "endLine": 421,
+        "endChar": 22
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19c17380_1fd3aefb",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 3
@@ -79,6 +139,30 @@
       "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ca6ecd_2a624e4b",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19c17380_1fd3aefb",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 422,
+        "endChar": 30
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "7446c46d_0bba59e5",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a26a1230_ae837140",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 19
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3be7588_7643cc7f",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 3
@@ -116,6 +224,30 @@
       "writtenOn": "2018-05-29T17:46:41Z",
       "side": 1,
       "message": "Does b/68918637 apply here also since this is also a WC register?",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 30
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909c8786_34a5674c",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "No, that bug only apply to IT83XX_ESPI_VWCTRL1 register.\nWe don\u0027t use operator \"|\" for a W/C register. This can avoid clear other pending bit.",
+      "parentUuid": "c3be7588_7643cc7f",
       "range": {
         "startLine": 426,
         "startChar": 0,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "af6c6144_c28079c7",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12bdb8bf_24c964ce",
+      "range": {
+        "startLine": 472,
+        "startChar": 10,
+        "endLine": 472,
+        "endChar": 31
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "201020da_cf217895",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 3
@@ -162,6 +318,30 @@
       "writtenOn": "2018-05-29T17:46:41Z",
       "side": 1,
       "message": "should we only clear the bottom 4 bits since that is all we are servicing?",
+      "range": {
+        "startLine": 486,
+        "startChar": 24,
+        "endLine": 486,
+        "endChar": 34
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd2900c_fa828592",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "The other 4 bits indicate the events of flash/oob/vw/peripheral channels to enable flag\nde-asserted. we don\u0027t need to implement ISR for these 4 event as for now.\nBut we still need to clear pending bit if the event occurred or the interrupt is triggered again and again over the course.\nShould we reserve ISR for these events?",
+      "parentUuid": "201020da_cf217895",
       "range": {
         "startLine": 486,
         "startChar": 24,
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "59013a87_5e9ad6f9",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "I don\u0027t understand this event well yet.\nI just want to ensure the event will not be pending and cause interrupt fired again.\nWill check with our designer later.",
+      "parentUuid": "1e8266e0_def8a2f0",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 66
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "551dd3c0_4248c7b6",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 3
@@ -214,6 +418,24 @@
     },
     {
       "key": {
+        "uuid": "0c47010e_b701b122",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "551dd3c0_4248c7b6",
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd8c0df2_e96c20f0",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 3
@@ -225,6 +447,30 @@
       "writtenOn": "2018-05-29T17:46:41Z",
       "side": 1,
       "message": "This line disables the HOST GLOBAL RESET (HGRST) for LPCRST#. Should we instead set bit 3 to 1 instead of clearing it now?",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 32
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d9d1f7_61e31c68",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "No, we can keep the configuration of PNPCFG until WRST# is asserted.\nSo we don\u0027t need to reconfigure it for each LPCRST#(espi_rst#)",
+      "parentUuid": "fd8c0df2_e96c20f0",
       "range": {
         "startLine": 510,
         "startChar": 1,
@@ -257,6 +503,30 @@
       "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bbd1465_78deea4f",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-30T12:16:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db698a15_7042055f",
+      "range": {
+        "startLine": 583,
+        "startChar": 8,
+        "endLine": 583,
+        "endChar": 26
+      },
+      "revId": "8d0d191f4d8f5c68a77e5bce07cf44e4794eb244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
