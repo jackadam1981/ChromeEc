@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "131963ac_3c973cd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-30T18:06:57Z",
+      "side": 1,
+      "message": "Sorry to be nit-picky here, but I would use a subject line like the following.\n\n    bd9995x: Avoid unnecessarily setting VIN_CTRL_SET.\n\nUsually, you\u0027d want your commit message subject line to briefly describe the effect of your change.",
+      "revId": "7f4cb316d0964ea3f057fa35bba6d9cc5f4268b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a312434_9d1215b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-30T18:06:57Z",
+      "side": 1,
+      "message": "typo: \u0027pd\u0027",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "7f4cb316d0964ea3f057fa35bba6d9cc5f4268b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ee0717_348986e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-30T18:06:57Z",
+      "side": 1,
+      "message": "Is this any register write or just when the value changes?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 57
+      },
+      "revId": "7f4cb316d0964ea3f057fa35bba6d9cc5f4268b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37ad071c_0e0685e9",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-30T18:06:57Z",
+      "side": 1,
+      "message": "These checks prevent any changes if we choose to go from both charge ports to 1.\n\nWhat about just comparing the new regval to what is already there like Vincent mentioned? Or would that be insufficient?",
+      "revId": "7f4cb316d0964ea3f057fa35bba6d9cc5f4268b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd060905_5d826623",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-05-30T18:06:57Z",
+      "side": 1,
+      "message": "This fails if only one is set.",
+      "range": {
+        "startLine": 1074,
+        "startChar": 0,
+        "endLine": 1076,
+        "endChar": 0
+      },
+      "revId": "7f4cb316d0964ea3f057fa35bba6d9cc5f4268b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
