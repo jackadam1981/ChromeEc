@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7ad9449_ecbd726f",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-05-30T00:04:02Z",
+      "side": 1,
+      "message": "always_memset(\u0026d, o, sizeof(d))",
+      "revId": "5e6894467499d3e8b4ba4b3e6c688b6a8ad60b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
