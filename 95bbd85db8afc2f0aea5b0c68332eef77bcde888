@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbb53bbf_8b8e538a",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "let\u0027s just remove this for now and use the no_isr to handle this case",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa89cbd5_36b17427",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "nit: does",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f2b092_1930b7be",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be |\u003d\n\nin case we have more than 1 VW in the same control register",
+      "range": {
+        "startLine": 280,
+        "startChar": 39,
+        "endLine": 280,
+        "endChar": 40
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7411829_61a8fcdc",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "while we are changing this code, can you also add the comment here that this array order match the bit order of the IT83XX_ESPI_VWCTRL1 register?",
+      "range": {
+        "startLine": 344,
+        "startChar": 20,
+        "endLine": 344,
+        "endChar": 34
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1a075c_c3ad346d",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "I like the idea of making this array length 8 and having no_isr for the upper 4 bits. We can make a new define CHIP_ESPI_INTERRUPT_NUM of 8 (like the VM define) and assert that the array size matches the new define",
+      "range": {
+        "startLine": 454,
+        "startChar": 14,
+        "endLine": 454,
+        "endChar": 22
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39bba6dd_8b5a063d",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "here we can use the new define (similar to how the espi_vw_interrupt function works)",
+      "range": {
+        "startLine": 470,
+        "startChar": 17,
+        "endLine": 470,
+        "endChar": 36
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb3193d_a70bdaf9",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need the isr_idx variable. `i` always has the same value",
+      "range": {
+        "startLine": 472,
+        "startChar": 12,
+        "endLine": 472,
+        "endChar": 19
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e2a601b_a3f5e78a",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T14:06:52Z",
+      "side": 1,
+      "message": "are there any other random status bits that cause the eSPI interrupt to fire. Is there any documentation on that?\n\nFor example, do we need to check and clear ESUCTRL0 bit2-1 as well?",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 478,
+        "endChar": 53
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
