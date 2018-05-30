@@ -18,6 +18,6 @@ void espi_init(void);
 void espi_espirst_handler(void);
 #else
 /* LPC PLTRST assert/de-assert interrupt */
-void lpc_lreset_pltrst_handler(void);
+void hostcmdx86_lreset_pltrst_handler(void);
 #endif
 #endif /* __CROS_EC_LPC_CHIP_H */

@@ -161,7 +161,7 @@ test_mockable __keep int main(void)
 	 * correctly.
 	 */
 #ifdef CONFIG_HOSTCMD_X86
-	lpc_init_mask();
+	hostcmdx86_init_mask();
 #endif
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();

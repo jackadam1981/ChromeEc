@@ -1,4 +1,4 @@
-/* Copyright (c) 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -220,7 +220,7 @@ static int ipc_write(uint8_t peer_id, void *buff, uint32_t buff_size)
 	return EC_SUCCESS;
 }
 
-uint8_t *lpc_get_memmap_range(void)
+uint8_t *hostcmdx86_get_memmap_range(void)
 {
 	return mem_mapped + 0x100;
 }
@@ -235,11 +235,11 @@ static void ipc_send_response_packet(struct host_packet *pkt)
 	ipc_write(IPC_PEER_HOST_ID, pkt->response, pkt->response_size);
 }
 
-void lpc_update_host_event_status(void)
+void hostcmdx86_update_host_event_status(void)
 {
 }
 
-void lpc_clear_acpi_status_mask(uint8_t mask)
+void hostcmdx86_clear_acpi_status_mask(uint8_t mask)
 {
 }
 
@@ -374,7 +374,7 @@ static void ipc_init(void)
 
 	/* Initialize host args and memory map to all zero */
 	memset(ipc_host_args, 0, sizeof(*ipc_host_args));
-	memset(lpc_get_memmap_range(), 0, EC_MEMMAP_SIZE);
+	memset(hostcmdx86_get_memmap_range(), 0, EC_MEMMAP_SIZE);
 
 	setup_ipc();
 }

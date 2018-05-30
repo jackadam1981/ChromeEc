@@ -76,7 +76,7 @@ static struct {
 static void acpi_disable_burst_deferred(void)
 {
 	acpi_read_cache.enabled = 0;
-	lpc_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+	hostcmdx86_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
 	CPUTS("ACPI missed burst disable?");
 }
 DECLARE_DEFERRED(acpi_disable_burst_deferred);
@@ -84,8 +84,8 @@ DECLARE_DEFERRED(acpi_disable_burst_deferred);
 /* Read memmapped data, returns read data or 0xff on error. */
 static int acpi_read(uint8_t addr)
 {
-	uint8_t *memmap_addr = (uint8_t *)(lpc_get_memmap_range() + addr -
-					   EC_ACPI_MEM_MAPPED_BEGIN);
+	uint8_t *memmap_addr = (uint8_t *)(hostcmdx86_get_memmap_range() +
+					   addr - EC_ACPI_MEM_MAPPED_BEGIN);
 
 	/* Check for out-of-range read. */
 	if (addr < EC_ACPI_MEM_MAPPED_BEGIN ||
@@ -329,7 +329,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		}
 	} else if (acpi_cmd == EC_CMD_ACPI_QUERY_EVENT && !acpi_data_count) {
 		/* Clear and return the lowest host event */
-		int evt_index = lpc_get_next_host_event();
+		int evt_index = hostcmdx86_get_next_host_event();
 		CPRINTS("ACPI query = %d", evt_index);
 		*resultptr = evt_index;
 		retval = 1;
@@ -345,7 +345,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		acpi_read_cache.start_addr = ACPI_READ_CACHE_FLUSHED;
 
 		/* Enter burst mode */
-		lpc_set_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+		hostcmdx86_set_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
 
 		/*
 		 * Disable from deferred function in case burst mode is enabled
@@ -361,7 +361,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 
 		/* Leave burst mode */
 		hook_call_deferred(&acpi_disable_burst_deferred_data, -1);
-		lpc_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+		hostcmdx86_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
 	}
 
 	return retval;

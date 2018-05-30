@@ -128,9 +128,10 @@ void uart_host_interrupt(void)
 	 * If we have space in our FIFO and a character is pending in LPC,
 	 * handle that character.
 	 */
-	if (!(LM4_UART_FR(CONFIG_UART_HOST) & 0x20) && lpc_comx_has_char()) {
+	if (!(LM4_UART_FR(CONFIG_UART_HOST) & 0x20) &&
+	    hostcmdx86_comx_has_char()) {
 		/* Copy the next byte then disable transmit interrupt */
-		LM4_UART_DR(CONFIG_UART_HOST) = lpc_comx_get_char();
+		LM4_UART_DR(CONFIG_UART_HOST) = hostcmdx86_comx_get_char();
 		LM4_UART_IM(CONFIG_UART_HOST) &= ~0x20;
 	}
 
@@ -141,7 +142,7 @@ void uart_host_interrupt(void)
 	 * on the UART receive-side either.
 	 */
 	if (!(LM4_UART_FR(CONFIG_UART_HOST) & 0x10))
-		lpc_comx_put_char(LM4_UART_DR(CONFIG_UART_HOST));
+		hostcmdx86_comx_put_char(LM4_UART_DR(CONFIG_UART_HOST));
 #endif
 }
 /* Must be same prio as LPC interrupt handler so they don't preempt */

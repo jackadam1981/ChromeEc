@@ -7,27 +7,27 @@
 
 #include "lpc.h"
 
-test_mockable int lpc_keyboard_has_char(void)
+test_mockable int hostcmdx86_keyboard_has_char(void)
 {
 	return 0;
 }
 
-test_mockable int lpc_keyboard_input_pending(void)
+test_mockable int hostcmdx86_keyboard_input_pending(void)
 {
 	return 0;
 }
 
-test_mockable void lpc_keyboard_put_char(uint8_t chr, int send_irq)
+test_mockable void hostcmdx86_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	/* Do nothing */
 }
 
-test_mockable void lpc_keyboard_clear_buffer(void)
+test_mockable void hostcmdx86_keyboard_clear_buffer(void)
 {
 	/* Do nothing */
 }
 
-test_mockable void lpc_keyboard_resume_irq(void)
+test_mockable void hostcmdx86_keyboard_resume_irq(void)
 {
 	/* Do nothing */
 }

@@ -203,7 +203,7 @@ int get_lazy_wake_mask(enum power_state state, host_event_t *mask);
  *
  * @return 1 if active wake mask set by host else return 0
  */
-uint8_t lpc_is_active_wm_set_by_host(void);
+uint8_t hostcmdx86_is_active_wm_set_by_host(void);
 #endif
 #endif
 

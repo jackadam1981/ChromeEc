@@ -1707,7 +1707,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, lightbar_shutdown, HOOK_PRIO_DEFAULT);
 /* Host commands via LPC bus */
 /****************************************************************************/
 
-static int lpc_cmd_lightbar(struct host_cmd_handler_args *args)
+static int hostcmdx86_cmd_lightbar(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_lightbar *in = args->params;
 	struct ec_response_lightbar *out = args->response;
@@ -1893,7 +1893,7 @@ static int lpc_cmd_lightbar(struct host_cmd_handler_args *args)
 }
 
 DECLARE_HOST_COMMAND(EC_CMD_LIGHTBAR_CMD,
-		     lpc_cmd_lightbar,
+		     hostcmdx86_cmd_lightbar,
 		     EC_VER_MASK(0));
 
 /****************************************************************************/

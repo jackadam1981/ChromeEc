@@ -199,9 +199,9 @@ add:
   mkbp_get_next_event[common/mkbp_event.c:130]:
     - { name:  __mkbp_evt_srcs, stride: 8, offset: 4 }
   host_send_response[common/host_command.c:153]:
-    - lpc_send_response
+    - hostcmdx86_send_response
   host_packet_respond[common/host_command.c:240]:
-    - lpc_send_response
+    - hostcmdx86_send_response
   host_command_process[common/host_command.c:704]:
     - { name: __hcmds, stride: 12, offset: 0 }
   # gpio_interrupt.lto_priv.407[chip/npcx/gpio.c:479]

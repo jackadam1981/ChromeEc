@@ -23,17 +23,17 @@ void espi_reset_handler(void);
  */
 int espi_vw_pulse_wire(enum espi_vw_signal signal, int pulse_level);
 
-void lpc_update_host_event_status(void);
+void hostcmdx86_update_host_event_status(void);
 
 #endif
 
 /* LPC LRESET interrupt handler */
 void lpcrst_interrupt(enum gpio_signal signal);
 
-void lpc_set_init_done(int val);
+void hostcmdx86_set_init_done(int val);
 
-uint32_t lpc_mem_mapped_addr(void);
+uint32_t hostcmdx86_mem_mapped_addr(void);
 
-void lpc_mem_mapped_init(void);
+void hostcmdx86_mem_mapped_init(void);
 
 #endif /* __CROS_EC_LPC_CHIP_H */

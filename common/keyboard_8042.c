@@ -210,7 +210,7 @@ static void keyboard_enable_irq(int enable)
 
 	i8042_irq_enabled = enable;
 	if (enable)
-		lpc_keyboard_resume_irq();
+		hostcmdx86_keyboard_resume_irq();
 }
 
 /**
@@ -367,7 +367,7 @@ void keyboard_clear_buffer(void)
 	mutex_lock(&to_host_mutex);
 	queue_init(&to_host);
 	mutex_unlock(&to_host_mutex);
-	lpc_keyboard_clear_buffer();
+	hostcmdx86_keyboard_clear_buffer();
 }
 
 static void keyboard_wakeup(void)
@@ -690,8 +690,8 @@ static int handle_keyboard_command(uint8_t command, uint8_t *output)
 
 	case I8042_READ_OUTPUT_PORT:
 		output[out_len++] =
-			(lpc_keyboard_input_pending() ? (1 << 5) : 0) |
-			(lpc_keyboard_has_char() ? (1 << 4) : 0) |
+			(hostcmdx86_keyboard_input_pending() ? (1 << 5) : 0) |
+			(hostcmdx86_keyboard_has_char() ? (1 << 4) : 0) |
 			(A20_status ? (1 << 1) : 0) |
 			1;  /* Main processor in normal mode */
 		break;
@@ -868,7 +868,7 @@ void keyboard_protocol_task(void *u)
 				break;
 
 			/* Handle data waiting for host */
-			if (lpc_keyboard_has_char()) {
+			if (hostcmdx86_keyboard_has_char()) {
 				/* If interrupts disabled, nothing we can do */
 				if (!i8042_irq_enabled)
 					break;
@@ -885,7 +885,7 @@ void keyboard_protocol_task(void *u)
 				 * somehow missed the first one.
 				 */
 				CPRINTS("KB extra IRQ");
-				lpc_keyboard_resume_irq();
+				hostcmdx86_keyboard_resume_irq();
 				retries = 0;
 				break;
 			}
@@ -896,7 +896,7 @@ void keyboard_protocol_task(void *u)
 			kblog_put('K', chr);
 
 			/* Write to host. */
-			lpc_keyboard_put_char(chr, i8042_irq_enabled);
+			hostcmdx86_keyboard_put_char(chr, i8042_irq_enabled);
 			retries = 0;
 		}
 	}

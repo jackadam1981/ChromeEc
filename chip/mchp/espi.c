@@ -563,7 +563,7 @@ static void espi_host_init(void)
 	 * EMI hardware adds 16-bit offset Host programs into
 	 * EC_Address_LSB/MSB registers.
 	 */
-	MCHP_EMI_MBA0(0) = lpc_mem_mapped_addr();
+	MCHP_EMI_MBA0(0) = hostcmdx86_mem_mapped_addr();
 
 	/*
 	 * Limit EMI read / write range. First 256 bytes are RW for host
@@ -593,7 +593,7 @@ static void espi_host_init(void)
 
 	task_enable_irq(MCHP_IRQ_PORT80DBG0);
 
-	lpc_mem_mapped_init();
+	hostcmdx86_mem_mapped_init();
 
 	MCHP_ESPI_PC_STATUS = 0xfffffffful;
 	/* PC enable & Mastering enable changes */
@@ -601,7 +601,7 @@ static void espi_host_init(void)
 
 
 	/* Sufficiently initialized */
-	lpc_set_init_done(1);
+	hostcmdx86_set_init_done(1);
 
 	/* last set eSPI Peripheral Channel Ready = 1 */
 	/* Done in ISR for PC Channel */
@@ -613,7 +613,7 @@ static void espi_host_init(void)
 	 * enabled before PLTRST# is de-asserted so its safe BUT has
 	 * PC Channel(I/O) Enable occurred?
 	 */
-	lpc_update_host_event_status();
+	hostcmdx86_update_host_event_status();
 
 	CPRINTS("eSPI - espi_host_init Done");
 	trace0(0, ESPI, 0, "eSPI Host Init Done");
