@@ -70,6 +70,30 @@
       "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f5ebe1_decca814",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-30T02:35:56Z",
+      "side": 1,
+      "message": "Yeah, I agree we could probably have RWSIG higher priority than CONSOLE without too much impact.\n\nThe problem then is how to chose a reasonable task order. Currently we have:\n\nRWSIG\nHOOKS\nCONSOLE\nKEYSCAN\n\nSo we\u0027d want RWSIG \u003e CONSOLE, but we probably want CONSOLE \u003e HOOKS (for ease of debugging), and HOOKS \u003e RWSIG (USB is initialized in hooks so we want that to be prioritized). Which is impossible ,-(",
+      "parentUuid": "4f7b5ad0_34c26c6f",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
