@@ -70,6 +70,30 @@
       "revId": "e8f009b64b0b7bedc563b55efae296e3d59a15b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e6782ca_80624dfd",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-30T23:21:21Z",
+      "side": 0,
+      "message": "okay.\n\nLine 202 is same as reading if the battery is initialized or not .\nAs we already call battery_init() at line 200 we can just replace  battery_init() with  battery_get_disconnect_state() and may be name it as battery_get_init_state()",
+      "parentUuid": "d8205571_db7acc57",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 58
+      },
+      "revId": "e8f009b64b0b7bedc563b55efae296e3d59a15b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
