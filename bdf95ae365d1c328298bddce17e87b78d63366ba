@@ -94,6 +94,30 @@
       "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3468538_37858a8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-05-30T16:19:22Z",
+      "side": 1,
+      "message": "HOOK_INIT hooks are guaranteed to be called before any task starts (except HOOKS task itself) regardless of task priority. If the initialization you\u0027re referring to is usb_init, it\u0027ll be called before a RWSIG task starts.",
+      "parentUuid": "03f5ebe1_decca814",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
