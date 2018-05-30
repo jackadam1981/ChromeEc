@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e29e82a2_67fbc43e",
+        "filename": "board/cr50/factory_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-30T22:42:40Z",
+      "side": 1,
+      "message": "this is not quite right any more.",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "124720013678e625af0f1820c0b2920176e0f14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad57e92_01005e82",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-05-30T22:42:40Z",
+      "side": 1,
+      "message": "can this mode not be disabled using ccd console commands?",
+      "range": {
+        "startLine": 61,
+        "startChar": 66,
+        "endLine": 62,
+        "endChar": 67
+      },
+      "revId": "124720013678e625af0f1820c0b2920176e0f14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
