@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df7f10b4_f03fbef3",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T17:27:53Z",
+      "side": 1,
+      "message": "Since we all three control line of the BC1.2 chip are tied to power, we can only support CDP and DSP. We need to define CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "acbed5cc928610330e4c81d374764689ced56bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba96a50_591773d3",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T17:27:53Z",
+      "side": 1,
+      "message": "Why are we changing the default from SDP to CDP?",
+      "range": {
+        "startLine": 31,
+        "startChar": 49,
+        "endLine": 31,
+        "endChar": 68
+      },
+      "revId": "acbed5cc928610330e4c81d374764689ced56bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "895eed58_7f7e8691",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T17:27:53Z",
+      "side": 1,
+      "message": "We will not defined this option any longer (after defining CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY).\n\nEven those this is mute because this is going away. The way the code is written now, it does not work with CONFIG_POWER_PP5000_CONTROL (which we use)",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "acbed5cc928610330e4c81d374764689ced56bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
