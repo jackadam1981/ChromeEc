@@ -235,6 +235,30 @@
       "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458bb0ce_dd2296fb",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-05-30T17:06:53Z",
+      "side": 1,
+      "message": "SGTM.  It shouldn\u0027t be harmful.\n\nAlternately, this is a little cleaner:\n\n/* Make sure we never end up with the EC held in reset.  Allow time for TPM reset only if CCD reset succeeded */\nhook_call_deferred(\u0026func, rv \u003d\u003d EC_SUCCESS ? TPM_RESET_TIME : 0)",
+      "parentUuid": "0a5eff29_7a745760",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 65
+      },
+      "revId": "c2774b4ed13e668ecac7afa07e9c1704edfba400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
