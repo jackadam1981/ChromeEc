@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "311f319d_a4a339ea",
+        "filename": "board/atlas_tp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-05-30T01:29:59Z",
+      "side": 1,
+      "message": "CONFIG_LPC should be removed from chip/ish/config_chip.h. And fix common/host_event_commands.c.",
+      "revId": "2a818d9df9fbaf3606669291278aa26afd1e29ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f8dac5_16c2841b",
+        "filename": "board/atlas_tp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-05-30T01:29:59Z",
+      "side": 1,
+      "message": "Move to centroiding/ec_build.mk",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "2a818d9df9fbaf3606669291278aa26afd1e29ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ba8c99_77fe9536",
+        "filename": "board/atlas_tp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-05-30T01:29:59Z",
+      "side": 1,
+      "message": "Move to Makefile?",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "2a818d9df9fbaf3606669291278aa26afd1e29ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
