@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fae88e1d_fecb6e2d",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-05-30T20:20:09Z",
+      "side": 1,
+      "message": "I am looking for the code that switches the device to CDP when a device is plugged in, and I cannot find it. It looks like we need to set it to CDP here like it already is set in this patch set to have for it to even work (which seems weird to me since other board set this to DFP)\n\nThere is a host command that can set the charge mode, but it doesn\u0027t look like anything makes use of it in the AP",
+      "parentUuid": "34453b9a_667d38ad",
+      "range": {
+        "startLine": 31,
+        "startChar": 49,
+        "endLine": 31,
+        "endChar": 68
+      },
+      "revId": "acbed5cc928610330e4c81d374764689ced56bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "895eed58_7f7e8691",
         "filename": "board/yorp/board.h",
         "patchSetId": 2
