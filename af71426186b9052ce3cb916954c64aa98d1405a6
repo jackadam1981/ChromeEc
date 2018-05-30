@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5e8bfe73_d74fefa8",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-30T23:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f928d3ce_22c6122f",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "af71426186b9052ce3cb916954c64aa98d1405a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe0d066f_f9fb56d6",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "af71426186b9052ce3cb916954c64aa98d1405a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bac470f0_baef8978",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-30T23:33:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe0d066f_f9fb56d6",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "af71426186b9052ce3cb916954c64aa98d1405a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "We need 2 separate values that alternate For example write 0x1000 then 0x0000 to register 0x34",
       "parentUuid": "0ce3755b_147e0aff",
+      "range": {
+        "startLine": 18,
+        "startChar": 25,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "af71426186b9052ce3cb916954c64aa98d1405a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "623c1568_016efc45",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-30T23:33:27Z",
+      "side": 1,
+      "message": "Yes, Jett tells me Octopus will soon add some batteries that will need to write 2 different data values.",
+      "parentUuid": "34df0a5e_83eccb1c",
       "range": {
         "startLine": 18,
         "startChar": 25,
