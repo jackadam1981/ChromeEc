@@ -5644,11 +5644,12 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	uint8_t *read_buf;
 	char *e;
 	int rv, i;
+	int ascii_mode = 0;
 
 	if (argc < 4) {
 		fprintf(stderr,
 			"Usage: %s <port> <slave_addr> <read_count> "
-			"[write bytes...]\n", argv[0]);
+			"[[write bytes...] | --ascii]\n", argv[0]);
 		return -1;
 	}
 
@@ -5673,18 +5674,23 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	/* Skip over params to bytes to write */
 	argc -= 4;
 	argv += 4;
-	write_len = argc;
+	if (strncmp("--ascii", argv[0], strlen("--ascii"))) {
+		write_len = argc;
 
-	if (write_len) {
-		write_buf = malloc(write_len);
-		for (i = 0; i < write_len; i++) {
-			write_buf[i] = strtol(argv[i], &e, 0);
-			if (e && *e) {
-				fprintf(stderr, "Bad write byte %d\n", i);
-				return -1;
+		if (write_len) {
+			write_len = argc;
+			write_buf = malloc(write_len);
+			for (i = 0; i < write_len; i++) {
+				write_buf[i] = strtol(argv[i], &e, 0);
+				if (e && *e) {
+					fprintf(stderr,
+						"Bad write byte %d\n", i);
+					return -1;
+				}
 			}
 		}
-	}
+	} else
+		ascii_mode = 1;
 
 	rv = do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
 
@@ -5695,9 +5701,18 @@ int cmd_i2c_xfer(int argc, char *argv[])
 		return rv;
 
 	if (read_len) {
-		printf("Read bytes:");
-		for (i = 0; i < read_len; i++)
-			printf(" %#02x", read_buf[i]);
+		if (ascii_mode) {
+			for (i = 0; i < read_len; i++) {
+				if (isprint(read_buf[i]))
+					printf("%c", read_buf[i]);
+				else
+					printf("\\x%02x", read_buf[i]);
+			}
+		} else {
+			printf("Read bytes:");
+			for (i = 0; i < read_len; i++)
+				printf(" %#02x", read_buf[i]);
+		}
 		printf("\n");
 	} else {
 		printf("Write successful.\n");
