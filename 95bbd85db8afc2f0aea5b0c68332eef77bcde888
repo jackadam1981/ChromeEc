@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b591912_9a5b6db2",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb53bbf_8b8e538a",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa89cbd5_36b17427",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6e506078_e2f5eb8d",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa89cbd5_36b17427",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f2b092_1930b7be",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-30T14:06:52Z",
       "side": 1,
       "message": "shouldn\u0027t this be |\u003d\n\nin case we have more than 1 VW in the same control register",
+      "range": {
+        "startLine": 280,
+        "startChar": 39,
+        "endLine": 280,
+        "endChar": 40
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a165e4ad_9cb5f514",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "We will merge the VW signals in the same index (in xxx_setting[] array), and write into the control register.",
+      "parentUuid": "10f2b092_1930b7be",
       "range": {
         "startLine": 280,
         "startChar": 39,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5819938a_58cc4cc1",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7411829_61a8fcdc",
+      "range": {
+        "startLine": 344,
+        "startChar": 20,
+        "endLine": 344,
+        "endChar": 34
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1a075c_c3ad346d",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e490313_1ae8216c",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1a075c_c3ad346d",
+      "range": {
+        "startLine": 454,
+        "startChar": 14,
+        "endLine": 454,
+        "endChar": 22
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "c5aec406_ace46b8a",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39bba6dd_8b5a063d",
+      "range": {
+        "startLine": 470,
+        "startChar": 17,
+        "endLine": 470,
+        "endChar": 36
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bb3193d_a70bdaf9",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "333b2cc5_f532db66",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb3193d_a70bdaf9",
+      "range": {
+        "startLine": 472,
+        "startChar": 12,
+        "endLine": 472,
+        "endChar": 19
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e2a601b_a3f5e78a",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2018-05-30T14:06:52Z",
       "side": 1,
       "message": "are there any other random status bits that cause the eSPI interrupt to fire. Is there any documentation on that?\n\nFor example, do we need to check and clear ESUCTRL0 bit2-1 as well?",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 478,
+        "endChar": 53
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7509cc97_cc5204b4",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-05-31T07:26:13Z",
+      "side": 1,
+      "message": "No, this is the last interrupt event which enable by bit7@ESGCTRL1.\nWe can get more information at section 6.1.3.5 \"Expression of eSPI Interrupt Events\" from the datasheet.\nInterrupt events of ESUCTRL0 bit2-1 are control by bit5@ESUCTRL0, and we didn\u0027t enable it.",
+      "parentUuid": "6e2a601b_a3f5e78a",
       "range": {
         "startLine": 475,
         "startChar": 1,
