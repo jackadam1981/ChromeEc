@@ -154,7 +154,7 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 const struct i2c_port_t i2c_ports[] = {
 	{"power",   I2C_PORT_POWER,  100, GPIO_I2C0_SCL,  GPIO_I2C0_SDA},
 	{"tcpc0",   I2C_PORT_TCPC0,  400, GPIO_I2C1_SCL,  GPIO_I2C1_SDA},
-	{"tcpc1",   I2C_PORT_TCPC1,  400, GPIO_I2C2_SCL,  GPIO_I2C2_SDA},
+	{"tcpc1",   I2C_PORT_TCPC1, 1000, GPIO_I2C2_SCL,  GPIO_I2C2_SDA},
 	{"eeprom",  I2C_PORT_EEPROM, 400, GPIO_I2C5_SCL,  GPIO_I2C5_SDA},
 	{"sensor",  I2C_PORT_SENSOR, 400, GPIO_I2C7_SCL,  GPIO_I2C7_SDA},
 };
@@ -200,10 +200,10 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 /* BC1.2 */
 struct pi3usb9281_config pi3usb9281_chips[] = {
 	{
-		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_port = I2C_PORT_POWER,
 	},
 	{
-		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_port = I2C_PORT_EEPROM,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
