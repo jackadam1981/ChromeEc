@@ -528,6 +528,13 @@ static void __gpio_irq(void)
 		return;
 #endif
 
+#ifdef CONFIG_HOSTCMD_ESPI
+	if (irq == IT83XX_IRQ_ESPI_RESET_L) {
+		espi_reset_pin_asserted_interrupt();
+		return;
+	}
+#endif
+
 	/*
 	 * Clear the WUC status register. Note the external pin first goes
 	 * to the WUC module and is always edge triggered.
