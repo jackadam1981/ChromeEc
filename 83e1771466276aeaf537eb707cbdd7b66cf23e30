@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6366c58_d0730245",
+        "filename": "board/bip/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-31T21:49:25Z",
+      "side": 1,
+      "message": "looks like even for panasonic battery this bit is always 1, I will keep the FET way of detecting battery can communicate or not",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "83e1771466276aeaf537eb707cbdd7b66cf23e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
