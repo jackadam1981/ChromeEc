@@ -76,6 +76,9 @@
 /* Delay to confirm the power lost */
 #define POWER_LOST_CONFIRM_DELAY        (350 * MSEC)
 
+/* Delay for toggling the warm reset line */
+#define WARM_RESET_DELAY (5 * MSEC)
+
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
@@ -593,18 +596,10 @@ void chipset_force_shutdown(void)
 
 void chipset_reset(void)
 {
-	/*
-	 * Before we can reprogram the PMIC to make the PMIC RESIN_N pin as
-	 * reset pin and zero-latency. We do cold reset instead.
-	 */
-	CPRINTS("EC triggered cold reboot");
-	bypass_power_lost_trigger = 1;
-	power_off();
-	bypass_power_lost_trigger = 0;
-
-	/* Issue a request to initiate a power-on sequence */
-	power_request = POWER_REQ_ON;
-	task_wake(TASK_ID_CHIPSET);
+	CPRINTS("EC triggered warm reboot");
+	gpio_set_level(GPIO_WARM_RESET_L, 0);
+	usleep(WARM_RESET_DELAY);
+	gpio_set_level(GPIO_WARM_RESET_L, 1);
 }
 
 /**
