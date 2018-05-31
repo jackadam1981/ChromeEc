@@ -86,8 +86,10 @@ extern const int i2c_test_dev_used;
 /* Flags for i2c_xfer_unlocked() */
 #define I2C_XFER_START (1 << 0)  /* Start smbus session from idle state */
 #define I2C_XFER_STOP (1 << 1)  /* Terminate smbus session with stop bit */
+#define I2C_XFER_RESTART (1 << 4)  /* generate RESTART when the direction of transfer
+				      changes from Rx to Tx(or vice-versa */
 #define I2C_XFER_SINGLE (I2C_XFER_START | I2C_XFER_STOP)  /* One transaction */
-
+#define I2C_XFER_START_REPEAT (I2C_XFER_SINGLE | I2C_XFER_RESTART)
 /**
  * Transmit one block of raw data, then receive one block of raw data. However,
  * received data might be capped at CONFIG_I2C_CHIP_MAX_READ_SIZE if
