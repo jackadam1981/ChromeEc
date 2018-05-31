@@ -37,7 +37,6 @@ static timestamp_t sleep_mode_t1;
 static int idle_doze_cnt;
 static int idle_sleep_cnt;
 static uint64_t total_idle_sleep_time_us;
-static int allow_sleep;
 static uint32_t ec_sleep;
 /*
  * Fixed amount of time to keep the console in use flag true after boot in
@@ -463,6 +462,16 @@ void clock_sleep_mode_wakeup_isr(void)
 	}
 }
 
+/* Enter doze mode */
+static void clock_ec_doze(void)
+{
+	/* doze mode */
+	clock_ec_pll_ctrl(EC_PLL_DOZE);
+	/* standby instruction */
+	asm("standby wake_grant");
+	idle_doze_cnt++;
+}
+
 /**
  * Low power idle task. Executed when no tasks are ready to be scheduled.
  */
@@ -481,12 +490,22 @@ void __idle(void)
 	CPRINTS("low power idle task started");
 
 	while (1) {
-		allow_sleep = 0;
-		if (DEEP_SLEEP_ALLOWED)
-			allow_sleep = clock_allow_low_power_idle();
-
-		if (allow_sleep) {
+		/*
+		 * This is used to avoid disable/enable interrupt frequently
+		 * if sleep isn't allowed.
+		 */
+		if (DEEP_SLEEP_ALLOWED) {
 			interrupt_disable();
+			/*
+			 * Check if the EC can enter deep doze mode or not after
+			 * interrupts are disabled.
+			 */
+			if (!clock_allow_low_power_idle() ||
+							!DEEP_SLEEP_ALLOWED) {
+				interrupt_enable();
+				clock_ec_doze();
+				continue;
+			}
 			/* reset low power mode hw timer */
 			IT83XX_ETWD_ETXCTRL(LOW_POWER_EXT_TIMER) |= (1 << 1);
 			sleep_mode_t0 = get_time();
@@ -505,11 +524,7 @@ void __idle(void)
 			asm("standby wake_grant");
 			idle_sleep_cnt++;
 		} else {
-			/* doze mode */
-			clock_ec_pll_ctrl(EC_PLL_DOZE);
-			/* standby instruction */
-			asm("standby wake_grant");
-			idle_doze_cnt++;
+			clock_ec_doze();
 		}
 	}
 }
