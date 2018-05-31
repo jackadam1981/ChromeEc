@@ -22,6 +22,30 @@
       "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4566692_193cd00a",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-05-31T23:03:56Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand what you mean, can you explain more?\nI think we will reach this check when batt_pres_prev\u003dBP_NOT_SURE/BP_NO and batt_pres\u003dBP_YES.",
+      "parentUuid": "2d7288f0_9c51ac90",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 56
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
