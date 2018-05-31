@@ -36,7 +36,7 @@ static int wait_for_ec(int status_addr, int timeout_usec)
 		 */
 		usleep(MIN(delay, timeout_usec - i));
 
-		if (!(inb(status_addr) & EC_LPC_STATUS_BUSY_MASK))
+		if (!(inb(status_addr) & EC_X86_STATUS_BUSY_MASK))
 			return 0;
 
 		/* Increase the delay interval after a few rapid checks */
@@ -66,24 +66,24 @@ static int ec_command_lpc(int command, int version,
 
 	/* Write data and update checksum */
 	for (i = 0, d = (uint8_t *)outdata; i < outsize; i++, d++) {
-		outb(*d, EC_LPC_ADDR_HOST_PARAM + i);
+		outb(*d, EC_X86_ADDR_HOST_PARAM + i);
 		csum += *d;
 	}
 
 	/* Finalize checksum and write args */
 	args.checksum = (uint8_t)csum;
 	for (i = 0, d = (const uint8_t *)&args; i < sizeof(args); i++, d++)
-		outb(*d, EC_LPC_ADDR_HOST_ARGS + i);
+		outb(*d, EC_X86_ADDR_HOST_ARGS + i);
 
-	outb(command, EC_LPC_ADDR_HOST_CMD);
+	outb(command, EC_X86_ADDR_HOST_CMD);
 
-	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000)) {
+	if (wait_for_ec(EC_X86_ADDR_HOST_CMD, 1000000)) {
 		fprintf(stderr, "Timeout waiting for EC response\n");
 		return -EC_RES_ERROR;
 	}
 
 	/* Check result */
-	i = inb(EC_LPC_ADDR_HOST_DATA);
+	i = inb(EC_X86_ADDR_HOST_DATA);
 	if (i) {
 		fprintf(stderr, "EC returned error result code %d\n", i);
 		return -EECRESULT - i;
@@ -91,7 +91,7 @@ static int ec_command_lpc(int command, int version,
 
 	/* Read back args */
 	for (i = 0, dout = (uint8_t *)&args; i < sizeof(args); i++, dout++)
-		*dout = inb(EC_LPC_ADDR_HOST_ARGS + i);
+		*dout = inb(EC_X86_ADDR_HOST_ARGS + i);
 
 	/*
 	 * If EC didn't modify args flags, then somehow we sent a new-style
@@ -114,7 +114,7 @@ static int ec_command_lpc(int command, int version,
 	/* Read response and update checksum */
 	for (i = 0, dout = (uint8_t *)indata; i < args.data_size;
 	     i++, dout++) {
-		*dout = inb(EC_LPC_ADDR_HOST_PARAM + i);
+		*dout = inb(EC_X86_ADDR_HOST_PARAM + i);
 		csum += *dout;
 	}
 
@@ -140,7 +140,7 @@ static int ec_command_lpc_3(int command, int version,
 	int i;
 
 	/* Fail if output size is too big */
-	if (outsize + sizeof(rq) > EC_LPC_HOST_PACKET_SIZE)
+	if (outsize + sizeof(rq) > EC_X86_HOST_PACKET_SIZE)
 		return -EC_RES_REQUEST_TRUNCATED;
 
 	/* Fill in request packet */
@@ -154,7 +154,7 @@ static int ec_command_lpc_3(int command, int version,
 
 	/* Copy data and start checksum */
 	for (i = 0, d = (const uint8_t *)outdata; i < outsize; i++, d++) {
-		outb(*d, EC_LPC_ADDR_HOST_PACKET + sizeof(rq) + i);
+		outb(*d, EC_X86_ADDR_HOST_PACKET + sizeof(rq) + i);
 		csum += *d;
 	}
 
@@ -167,18 +167,18 @@ static int ec_command_lpc_3(int command, int version,
 
 	/* Copy header */
 	for (i = 0, d = (const uint8_t *)&rq; i < sizeof(rq); i++, d++)
-		outb(*d, EC_LPC_ADDR_HOST_PACKET + i);
+		outb(*d, EC_X86_ADDR_HOST_PACKET + i);
 
 	/* Start the command */
-	outb(EC_COMMAND_PROTOCOL_3, EC_LPC_ADDR_HOST_CMD);
+	outb(EC_COMMAND_PROTOCOL_3, EC_X86_ADDR_HOST_CMD);
 
-	if (wait_for_ec(EC_LPC_ADDR_HOST_CMD, 1000000)) {
+	if (wait_for_ec(EC_X86_ADDR_HOST_CMD, 1000000)) {
 		fprintf(stderr, "Timeout waiting for EC response\n");
 		return -EC_RES_ERROR;
 	}
 
 	/* Check result */
-	i = inb(EC_LPC_ADDR_HOST_DATA);
+	i = inb(EC_X86_ADDR_HOST_DATA);
 	if (i) {
 		fprintf(stderr, "EC returned error result code %d\n", i);
 		return -EECRESULT - i;
@@ -187,7 +187,7 @@ static int ec_command_lpc_3(int command, int version,
 	/* Read back response header and start checksum */
 	csum = 0;
 	for (i = 0, dout = (uint8_t *)&rs; i < sizeof(rs); i++, dout++) {
-		*dout = inb(EC_LPC_ADDR_HOST_PACKET + i);
+		*dout = inb(EC_X86_ADDR_HOST_PACKET + i);
 		csum += *dout;
 	}
 
@@ -208,7 +208,7 @@ static int ec_command_lpc_3(int command, int version,
 
 	/* Read back data and update checksum */
 	for (i = 0, dout = (uint8_t *)indata; i < rs.data_len; i++, dout++) {
-		*dout = inb(EC_LPC_ADDR_HOST_PACKET + sizeof(rs) + i);
+		*dout = inb(EC_X86_ADDR_HOST_PACKET + sizeof(rs) + i);
 		csum += *dout;
 	}
 
@@ -233,10 +233,10 @@ static int ec_readmem_lpc(int offset, int bytes, void *dest)
 
 	if (bytes) {				/* fixed length */
 		for (; cnt < bytes; i++, s++, cnt++)
-			*s = inb(EC_LPC_ADDR_MEMMAP + i);
+			*s = inb(EC_X86_ADDR_MEMMAP + i);
 	} else {				/* string */
 		for (; i < EC_MEMMAP_SIZE; i++, s++) {
-			*s = inb(EC_LPC_ADDR_MEMMAP + i);
+			*s = inb(EC_X86_ADDR_MEMMAP + i);
 			cnt++;
 			if (!*s)
 				break;
@@ -263,11 +263,11 @@ int comm_init_lpc(void)
 	 * be 0, so if the command and data bytes are both 0xff, very likely
 	 * that Chromium EC is not present.  See crosbug.com/p/10963.
 	 */
-	byte &= inb(EC_LPC_ADDR_HOST_CMD);
-	byte &= inb(EC_LPC_ADDR_HOST_DATA);
+	byte &= inb(EC_X86_ADDR_HOST_CMD);
+	byte &= inb(EC_X86_ADDR_HOST_DATA);
 	if (byte == 0xff) {
 		fprintf(stderr, "Port 0x%x,0x%x are both 0xFF.\n",
-			EC_LPC_ADDR_HOST_CMD, EC_LPC_ADDR_HOST_DATA);
+			EC_X86_ADDR_HOST_CMD, EC_X86_ADDR_HOST_DATA);
 		fprintf(stderr,
 			"Very likely this board doesn't have a Chromium EC.\n");
 		return -4;
@@ -281,21 +281,21 @@ int comm_init_lpc(void)
 	 * seeing whether the EC sets the EC_HOST_ARGS_FLAG_FROM_HOST flag
 	 * in args when it responds.
 	 */
-	if (inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID) != 'E' ||
-	    inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_ID + 1) != 'C') {
+	if (inb(EC_X86_ADDR_MEMMAP + EC_MEMMAP_ID) != 'E' ||
+	    inb(EC_X86_ADDR_MEMMAP + EC_MEMMAP_ID + 1) != 'C') {
 		fprintf(stderr, "Missing Chromium EC memory map.\n");
 		return -5;
 	}
 
 	/* Check which command version we'll use */
-	i = inb(EC_LPC_ADDR_MEMMAP + EC_MEMMAP_HOST_CMD_FLAGS);
+	i = inb(EC_X86_ADDR_MEMMAP + EC_MEMMAP_HOST_CMD_FLAGS);
 
 	if (i & EC_HOST_CMD_FLAG_VERSION_3) {
 		/* Protocol version 3 */
-		ec_command_proto = ec_command_lpc_3;
-		ec_max_outsize = EC_LPC_HOST_PACKET_SIZE -
+		ec_command_proto = ec_command_x86_3;
+		ec_max_outsize = EC_X86_HOST_PACKET_SIZE -
 			sizeof(struct ec_host_request);
-		ec_max_insize = EC_LPC_HOST_PACKET_SIZE -
+		ec_max_insize = EC_X86_HOST_PACKET_SIZE -
 			sizeof(struct ec_host_response);
 
 	} else if (i & EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED) {

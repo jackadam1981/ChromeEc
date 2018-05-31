@@ -36,14 +36,14 @@ static int pd_host_command_internal(int command, int version,
 	int resp_len;
 	struct ec_host_request rq;
 	struct ec_host_response rs;
-	static uint8_t req_buf[EC_LPC_HOST_PACKET_SIZE];
-	static uint8_t resp_buf[EC_LPC_HOST_PACKET_SIZE];
+	static uint8_t req_buf[EC_X86_HOST_PACKET_SIZE];
+	static uint8_t resp_buf[EC_X86_HOST_PACKET_SIZE];
 	uint8_t sum = 0;
 	const uint8_t *c;
 	uint8_t *d;
 
 	/* Fail if output size is too big */
-	if (outsize + sizeof(rq) > EC_LPC_HOST_PACKET_SIZE)
+	if (outsize + sizeof(rq) > EC_X86_HOST_PACKET_SIZE)
 		return -EC_RES_REQUEST_TRUNCATED;
 
 	/* Fill in request packet */

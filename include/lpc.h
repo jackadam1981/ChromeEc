@@ -110,12 +110,12 @@ host_event_t hostcmdx86_get_host_event_mask(enum lpc_host_event_type type);
 int hostcmdx86_get_next_host_event(void);
 
 /**
- * Set the EC_LPC_STATUS_* mask for the specified status.
+ * Set the EC_X86_STATUS_* mask for the specified status.
  */
 void hostcmdx86_set_acpi_status_mask(uint8_t mask);
 
 /**
- * Clear the EC_LPC_STATUS_* mask for the specified status.
+ * Clear the EC_X86_STATUS_* mask for the specified status.
  */
 void hostcmdx86_clear_acpi_status_mask(uint8_t mask);
 

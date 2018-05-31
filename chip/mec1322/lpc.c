@@ -30,7 +30,7 @@ static struct host_packet lpc_packet;
 static struct host_cmd_handler_args host_cmd_args;
 static uint8_t host_cmd_flags;   /* Flags from host command */
 
-static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
+static uint8_t params_copy[EC_X86_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
 
 static struct ec_lpc_host_args * const lpc_host_args =
@@ -135,19 +135,19 @@ void hostcmdx86_update_host_event_status(void)
 
 	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
 		/* Only generate SMI for first event */
-		if (!(MEC1322_ACPI_EC_STATUS(0) & EC_LPC_STATUS_SMI_PENDING))
+		if (!(MEC1322_ACPI_EC_STATUS(0) & EC_X86_STATUS_SMI_PENDING))
 			need_smi = 1;
-		MEC1322_ACPI_EC_STATUS(0) |= EC_LPC_STATUS_SMI_PENDING;
+		MEC1322_ACPI_EC_STATUS(0) |= EC_X86_STATUS_SMI_PENDING;
 	} else {
-		MEC1322_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_SMI_PENDING;
+		MEC1322_ACPI_EC_STATUS(0) &= ~EC_X86_STATUS_SMI_PENDING;
 	}
 
 	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
 		/* Generate SCI for every event */
 		need_sci = 1;
-		MEC1322_ACPI_EC_STATUS(0) |= EC_LPC_STATUS_SCI_PENDING;
+		MEC1322_ACPI_EC_STATUS(0) |= EC_X86_STATUS_SCI_PENDING;
 	} else {
-		MEC1322_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_SCI_PENDING;
+		MEC1322_ACPI_EC_STATUS(0) &= ~EC_X86_STATUS_SCI_PENDING;
 	}
 
 	/* Copy host events to mapped memory */
@@ -179,7 +179,7 @@ static void hostcmdx86_send_response_packet(struct host_packet *pkt)
 	MEC1322_ACPI_EC_EC2OS(1, 0) = pkt->driver_result;
 
 	/* Clear the busy bit, so the host knows the EC is done. */
-	MEC1322_ACPI_EC_STATUS(1) &= ~EC_LPC_STATUS_PROCESSING;
+	MEC1322_ACPI_EC_STATUS(1) &= ~EC_X86_STATUS_PROCESSING;
 }
 
 /*
@@ -201,14 +201,14 @@ static void setup_lpc(void)
 	MEC1322_INT_ENABLE(15) |= 1 << 6;
 	MEC1322_INT_BLK_EN |= 1 << 15;
 	/* Clear STATUS_PROCESSING bit in case it was set during sysjump */
-	MEC1322_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_PROCESSING;
+	MEC1322_ACPI_EC_STATUS(0) &= ~EC_X86_STATUS_PROCESSING;
 	task_enable_irq(MEC1322_IRQ_ACPIEC0_IBF);
 
 	/* Set up ACPI1 for 0x200/0x204 */
 	MEC1322_LPC_ACPI_EC1_BAR = 0x02008407;
 	MEC1322_INT_ENABLE(15) |= 1 << 8;
 	MEC1322_INT_BLK_EN |= 1 << 15;
-	MEC1322_ACPI_EC_STATUS(1) &= ~EC_LPC_STATUS_PROCESSING;
+	MEC1322_ACPI_EC_STATUS(1) &= ~EC_X86_STATUS_PROCESSING;
 	task_enable_irq(MEC1322_IRQ_ACPIEC1_IBF);
 
 	/* Set up 8042 interface at 0x60/0x64 */
@@ -351,10 +351,10 @@ void acpi_0_interrupt(void)
 {
 	uint8_t value, result, is_cmd;
 
-	is_cmd = MEC1322_ACPI_EC_STATUS(0) & EC_LPC_STATUS_LAST_CMD;
+	is_cmd = MEC1322_ACPI_EC_STATUS(0) & EC_X86_STATUS_LAST_CMD;
 
 	/* Set the bust bi */
-	MEC1322_ACPI_EC_STATUS(0) |= EC_LPC_STATUS_PROCESSING;
+	MEC1322_ACPI_EC_STATUS(0) |= EC_X86_STATUS_PROCESSING;
 
 	/* Read command/data; this clears the FRMH bit. */
 	value = MEC1322_ACPI_EC_OS2EC(0, 0);
@@ -364,7 +364,7 @@ void acpi_0_interrupt(void)
 		MEC1322_ACPI_EC_EC2OS(0, 0) = result;
 
 	/* Clear the busy bit */
-	MEC1322_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_PROCESSING;
+	MEC1322_ACPI_EC_STATUS(0) &= ~EC_X86_STATUS_PROCESSING;
 
 	/*
 	 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty / Output Buffer
@@ -377,12 +377,12 @@ DECLARE_IRQ(MEC1322_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 void acpi_1_interrupt(void)
 {
 	uint8_t st = MEC1322_ACPI_EC_STATUS(1);
-	if (!(st & EC_LPC_STATUS_FROM_HOST) ||
-	    !(st & EC_LPC_STATUS_LAST_CMD))
+	if (!(st & EC_X86_STATUS_FROM_HOST) ||
+	    !(st & EC_X86_STATUS_LAST_CMD))
 		return;
 
 	/* Set the busy bit */
-	MEC1322_ACPI_EC_STATUS(1) |= EC_LPC_STATUS_PROCESSING;
+	MEC1322_ACPI_EC_STATUS(1) |= EC_X86_STATUS_PROCESSING;
 
 	/*
 	 * Read the command byte.  This clears the FRMH bit in
@@ -402,11 +402,11 @@ void acpi_1_interrupt(void)
 		lpc_packet.request_temp = params_copy;
 		lpc_packet.request_max = sizeof(params_copy);
 		/* Don't know the request size so pass in the entire buffer */
-		lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.request_size = EC_X86_HOST_PACKET_SIZE;
 
 		lpc_packet.response =
 			(void *)hostcmdx86_get_hostcmd_data_range();
-		lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.response_max = EC_X86_HOST_PACKET_SIZE;
 		lpc_packet.response_size = 0;
 
 		lpc_packet.driver_result = EC_RES_SUCCESS;
@@ -511,8 +511,8 @@ static int hostcmdx86_get_protocol_info(struct host_cmd_handler_args *args)
 
 	memset(r, 0, sizeof(*r));
 	r->protocol_versions = (1 << 3);
-	r->max_request_packet_size = EC_LPC_HOST_PACKET_SIZE;
-	r->max_response_packet_size = EC_LPC_HOST_PACKET_SIZE;
+	r->max_request_packet_size = EC_X86_HOST_PACKET_SIZE;
+	r->max_response_packet_size = EC_X86_HOST_PACKET_SIZE;
 	r->flags = 0;
 
 	args->response_size = sizeof(*r);

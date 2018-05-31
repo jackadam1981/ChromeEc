@@ -76,7 +76,7 @@ static struct {
 static void acpi_disable_burst_deferred(void)
 {
 	acpi_read_cache.enabled = 0;
-	hostcmdx86_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+	hostcmdx86_clear_acpi_status_mask(EC_X86_STATUS_BURST_MODE);
 	CPUTS("ACPI missed burst disable?");
 }
 DECLARE_DEFERRED(acpi_disable_burst_deferred);
@@ -345,7 +345,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		acpi_read_cache.start_addr = ACPI_READ_CACHE_FLUSHED;
 
 		/* Enter burst mode */
-		hostcmdx86_set_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+		hostcmdx86_set_acpi_status_mask(EC_X86_STATUS_BURST_MODE);
 
 		/*
 		 * Disable from deferred function in case burst mode is enabled
@@ -361,7 +361,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 
 		/* Leave burst mode */
 		hook_call_deferred(&acpi_disable_burst_deferred_data, -1);
-		hostcmdx86_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+		hostcmdx86_clear_acpi_status_mask(EC_X86_STATUS_BURST_MODE);
 	}
 
 	return retval;

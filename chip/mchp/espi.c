@@ -515,7 +515,7 @@ static void espi_host_init(void)
 	MCHP_INT_ENABLE(MCHP_ACPI_EC_GIRQ) =
 			MCHP_ACPI_EC_IBF_GIRQ_BIT(0);
 	/* Clear STATUS_PROCESSING bit in case it was set during sysjump */
-	MCHP_ACPI_EC_STATUS(0) &= ~EC_LPC_STATUS_PROCESSING;
+	MCHP_ACPI_EC_STATUS(0) &= ~EC_X86_STATUS_PROCESSING;
 	task_enable_irq(MCHP_IRQ_ACPIEC0_IBF);
 
 	/* Set up ACPI1 for 0x200-0x203, 0x204-0x207 */
@@ -524,7 +524,7 @@ static void espi_host_init(void)
 			(0x200ul << 16) + 0x01ul;
 	MCHP_INT_ENABLE(MCHP_ACPI_EC_GIRQ) =
 			MCHP_ACPI_EC_IBF_GIRQ_BIT(1);
-	MCHP_ACPI_EC_STATUS(1) &= ~EC_LPC_STATUS_PROCESSING;
+	MCHP_ACPI_EC_STATUS(1) &= ~EC_X86_STATUS_PROCESSING;
 	task_enable_irq(MCHP_IRQ_ACPIEC1_IBF);
 
 	/* Set up 8042 interface at 0x60/0x64 */

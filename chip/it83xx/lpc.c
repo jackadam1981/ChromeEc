@@ -62,7 +62,7 @@ static struct host_cmd_handler_args host_cmd_args;
 static uint8_t host_cmd_flags;   /* Flags from host command */
 
 /* Params must be 32-bit aligned */
-static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
+static uint8_t params_copy[EC_X86_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
 static int p80l_index;
 
@@ -218,7 +218,7 @@ static void hostcmdx86_send_response(struct host_cmd_handler_args *args)
 	pm_put_data_out(LPC_HOST_CMD, args->result);
 
 	/* Clear the busy bit, so the host knows the EC is done. */
-	pm_set_status(LPC_HOST_CMD, EC_LPC_STATUS_PROCESSING, 0);
+	pm_set_status(LPC_HOST_CMD, EC_X86_STATUS_PROCESSING, 0);
 }
 
 void hostcmdx86_update_host_event_status(void)
@@ -234,19 +234,19 @@ void hostcmdx86_update_host_event_status(void)
 
 	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
 		/* Only generate SMI for first event */
-		if (!(pm_get_status(LPC_ACPI_CMD) & EC_LPC_STATUS_SMI_PENDING))
+		if (!(pm_get_status(LPC_ACPI_CMD) & EC_X86_STATUS_SMI_PENDING))
 			need_smi = 1;
-		pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_SMI_PENDING, 1);
+		pm_set_status(LPC_ACPI_CMD, EC_X86_STATUS_SMI_PENDING, 1);
 	} else {
-		pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_SMI_PENDING, 0);
+		pm_set_status(LPC_ACPI_CMD, EC_X86_STATUS_SMI_PENDING, 0);
 	}
 
 	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
 		/* Generate SCI for every event */
 		need_sci = 1;
-		pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_SCI_PENDING, 1);
+		pm_set_status(LPC_ACPI_CMD, EC_X86_STATUS_SCI_PENDING, 1);
 	} else {
-		pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_SCI_PENDING, 0);
+		pm_set_status(LPC_ACPI_CMD, EC_X86_STATUS_SCI_PENDING, 0);
 	}
 
 	/* Copy host events to mapped memory */
@@ -278,7 +278,7 @@ static void hostcmdx86_send_response_packet(struct host_packet *pkt)
 	pm_put_data_out(LPC_HOST_CMD, pkt->driver_result);
 
 	/* Clear the busy bit, so the host knows the EC is done. */
-	pm_set_status(LPC_HOST_CMD, EC_LPC_STATUS_PROCESSING, 0);
+	pm_set_status(LPC_HOST_CMD, EC_X86_STATUS_PROCESSING, 0);
 }
 
 uint8_t *hostcmdx86_get_memmap_range(void)
@@ -425,12 +425,12 @@ void pm1_ibf_interrupt(void)
 	int is_cmd;
 	uint8_t value, result;
 
-	if (pm_get_status(LPC_ACPI_CMD) & EC_LPC_STATUS_FROM_HOST) {
+	if (pm_get_status(LPC_ACPI_CMD) & EC_X86_STATUS_FROM_HOST) {
 		/* Set the busy bit */
-		pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_PROCESSING, 1);
+		pm_set_status(LPC_ACPI_CMD, EC_X86_STATUS_PROCESSING, 1);
 
 		/* data from command port or data port */
-		is_cmd = pm_get_status(LPC_ACPI_CMD) & EC_LPC_STATUS_LAST_CMD;
+		is_cmd = pm_get_status(LPC_ACPI_CMD) & EC_X86_STATUS_LAST_CMD;
 
 		/* Get command or data */
 		value = pm_get_data_in(LPC_ACPI_CMD);
@@ -442,7 +442,7 @@ void pm1_ibf_interrupt(void)
 		pm_clear_ibf(LPC_ACPI_CMD);
 
 		/* Clear the busy bit */
-		pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_PROCESSING, 0);
+		pm_set_status(LPC_ACPI_CMD, EC_X86_STATUS_PROCESSING, 0);
 
 		/*
 		 * ACPI 5.0-12.6.1: Generate SCI for Input Buffer Empty
@@ -461,13 +461,13 @@ void pm2_ibf_interrupt(void)
 
 	status = pm_get_status(LPC_HOST_CMD);
 	/* IBE */
-	if (!(status & EC_LPC_STATUS_FROM_HOST)) {
+	if (!(status & EC_X86_STATUS_FROM_HOST)) {
 		task_clear_pending_irq(IT83XX_IRQ_PMC2_IN);
 		return;
 	}
 
 	/* IBF and data port */
-	if (!(status & EC_LPC_STATUS_LAST_CMD)) {
+	if (!(status & EC_X86_STATUS_LAST_CMD)) {
 		/* R/C IBF*/
 		value = pm_get_data_in(LPC_HOST_CMD);
 		pm_clear_ibf(LPC_HOST_CMD);
@@ -476,7 +476,7 @@ void pm2_ibf_interrupt(void)
 	}
 
 	/* Set the busy bit */
-	pm_set_status(LPC_HOST_CMD, EC_LPC_STATUS_PROCESSING, 1);
+	pm_set_status(LPC_HOST_CMD, EC_X86_STATUS_PROCESSING, 1);
 
 	/*
 	 * Read the command byte.  This clears the FRMH bit in
@@ -497,10 +497,10 @@ void pm2_ibf_interrupt(void)
 		lpc_packet.request_temp = params_copy;
 		lpc_packet.request_max = sizeof(params_copy);
 		/* Don't know the request size so pass in the entire buffer */
-		lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.request_size = EC_X86_HOST_PACKET_SIZE;
 
 		lpc_packet.response = (void *)host_cmd_memmap;
-		lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.response_max = EC_X86_HOST_PACKET_SIZE;
 		lpc_packet.response_size = 0;
 
 		lpc_packet.driver_result = EC_RES_SUCCESS;
@@ -691,11 +691,11 @@ static void hostcmdx86_init(void)
 #endif
 
 	task_clear_pending_irq(IT83XX_IRQ_PMC_IN);
-	pm_set_status(LPC_ACPI_CMD, EC_LPC_STATUS_PROCESSING, 0);
+	pm_set_status(LPC_ACPI_CMD, EC_X86_STATUS_PROCESSING, 0);
 	task_enable_irq(IT83XX_IRQ_PMC_IN);
 
 	task_clear_pending_irq(IT83XX_IRQ_PMC2_IN);
-	pm_set_status(LPC_HOST_CMD, EC_LPC_STATUS_PROCESSING, 0);
+	pm_set_status(LPC_HOST_CMD, EC_X86_STATUS_PROCESSING, 0);
 	task_enable_irq(IT83XX_IRQ_PMC2_IN);
 
 	task_clear_pending_irq(IT83XX_IRQ_PMC3_IN);
@@ -747,8 +747,8 @@ static int hostcmdx86_get_protocol_info(struct host_cmd_handler_args *args)
 
 	memset(r, 0, sizeof(*r));
 	r->protocol_versions = (1 << 3);
-	r->max_request_packet_size = EC_LPC_HOST_PACKET_SIZE;
-	r->max_response_packet_size = EC_LPC_HOST_PACKET_SIZE;
+	r->max_request_packet_size = EC_X86_HOST_PACKET_SIZE;
+	r->max_response_packet_size = EC_X86_HOST_PACKET_SIZE;
 	r->flags = 0;
 
 	args->response_size = sizeof(*r);

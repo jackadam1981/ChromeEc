@@ -59,11 +59,11 @@ static struct host_cmd_handler_args host_cmd_args;
 static uint8_t host_cmd_flags;   /* Flags from host command */
 
 /* Params must be 32-bit aligned */
-static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
+static uint8_t params_copy[EC_X86_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
 
 static uint8_t * const cmd_params = (uint8_t *)LPC_POOL_CMD_DATA +
-	EC_LPC_ADDR_HOST_PARAM - EC_LPC_ADDR_HOST_ARGS;
+	EC_X86_ADDR_HOST_PARAM - EC_X86_ADDR_HOST_ARGS;
 static struct ec_lpc_host_args * const lpc_host_args =
 	(struct ec_lpc_host_args *)LPC_POOL_CMD_DATA;
 
@@ -389,7 +389,7 @@ void hostcmdx86_update_host_event_status(void)
 void hostcmdx86_set_acpi_status_mask(uint8_t mask)
 {
 	uint32_t set_mask = 0;
-	if (mask & EC_LPC_STATUS_BURST_MODE)
+	if (mask & EC_X86_STATUS_BURST_MODE)
 		set_mask |= LM4_LPC_ST_BURST;
 
 	LM4_LPC_ST(LPC_CH_ACPI) |= set_mask;
@@ -398,7 +398,7 @@ void hostcmdx86_set_acpi_status_mask(uint8_t mask)
 void hostcmdx86_clear_acpi_status_mask(uint8_t mask)
 {
 	uint32_t clear_mask = 0;
-	if (mask & EC_LPC_STATUS_BURST_MODE)
+	if (mask & EC_X86_STATUS_BURST_MODE)
 		clear_mask |= LM4_LPC_ST_BURST;
 
 	LM4_LPC_ST(LPC_CH_ACPI) &= ~clear_mask;
@@ -475,10 +475,10 @@ static void handle_host_write(int is_cmd)
 		lpc_packet.request_temp = params_copy;
 		lpc_packet.request_max = sizeof(params_copy);
 		/* Don't know the request size so pass in the entire buffer */
-		lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.request_size = EC_X86_HOST_PACKET_SIZE;
 
 		lpc_packet.response = (void *)LPC_POOL_CMD_DATA;
-		lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.response_max = EC_X86_HOST_PACKET_SIZE;
 		lpc_packet.response_size = 0;
 
 		lpc_packet.driver_result = EC_RES_SUCCESS;
@@ -652,7 +652,7 @@ static void hostcmdx86_init(void)
 	 * single endpoint, offset 0 for host command/writes and 1 for EC
 	 * data writes, pool bytes 0(data)/1(cmd)
 	 */
-	LM4_LPC_ADR(LPC_CH_ACPI) = EC_LPC_ADDR_ACPI_DATA;
+	LM4_LPC_ADR(LPC_CH_ACPI) = EC_X86_ADDR_ACPI_DATA;
 	LM4_LPC_CTL(LPC_CH_ACPI) = (LPC_POOL_OFFS_ACPI << (5 - 1));
 	LM4_LPC_ST(LPC_CH_ACPI) = 0;
 	/* Unmask interrupt for host command and data writes */
@@ -674,7 +674,7 @@ static void hostcmdx86_init(void)
 	 *
 	 *   pci_write32 0 0x1f 0 0x88 0x007c0801
 	 */
-	LM4_LPC_ADR(LPC_CH_CMD_DATA) = EC_LPC_ADDR_HOST_ARGS;
+	LM4_LPC_ADR(LPC_CH_CMD_DATA) = EC_X86_ADDR_HOST_ARGS;
 	LM4_LPC_CTL(LPC_CH_CMD_DATA) = 0x8019 |
 		(LPC_POOL_OFFS_CMD_DATA << (5 - 1));
 
@@ -695,7 +695,7 @@ static void hostcmdx86_init(void)
 	 * single endpoint, offset 0 for host command/writes and 1 for EC
 	 * data writes, pool bytes 0(data)/1(cmd)
 	 */
-	LM4_LPC_ADR(LPC_CH_CMD) = EC_LPC_ADDR_HOST_DATA;
+	LM4_LPC_ADR(LPC_CH_CMD) = EC_X86_ADDR_HOST_DATA;
 	LM4_LPC_CTL(LPC_CH_CMD) = (LPC_POOL_OFFS_CMD << (5 - 1));
 	/*
 	 * Initialize status bits to 0.  We never set the ACPI burst status bit,
@@ -714,7 +714,7 @@ static void hostcmdx86_init(void)
 	 *
 	 *   pci_write32 0 0x1f 0 0x8c 0x007c0901
 	 */
-	LM4_LPC_ADR(LPC_CH_MEMMAP) = EC_LPC_ADDR_MEMMAP;
+	LM4_LPC_ADR(LPC_CH_MEMMAP) = EC_X86_ADDR_MEMMAP;
 	LM4_LPC_CTL(LPC_CH_MEMMAP) = 0x0019 | (LPC_POOL_OFFS_MEMMAP << (5 - 1));
 
 #ifdef CONFIG_UART_HOST
@@ -823,8 +823,8 @@ static int hostcmdx86_get_protocol_info(struct host_cmd_handler_args *args)
 
 	memset(r, 0, sizeof(*r));
 	r->protocol_versions = (1 << 2) | (1 << 3);
-	r->max_request_packet_size = EC_LPC_HOST_PACKET_SIZE;
-	r->max_response_packet_size = EC_LPC_HOST_PACKET_SIZE;
+	r->max_request_packet_size = EC_X86_HOST_PACKET_SIZE;
+	r->max_response_packet_size = EC_X86_HOST_PACKET_SIZE;
 	r->flags = 0;
 
 	args->response_size = sizeof(*r);

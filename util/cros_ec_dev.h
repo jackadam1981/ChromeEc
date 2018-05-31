@@ -34,7 +34,7 @@ struct cros_ec_command {
 };
 
 /*
- * @offset: within EC_LPC_ADDR_MEMMAP region
+ * @offset: within EC_X86_ADDR_MEMMAP region
  * @bytes: number of bytes to read. zero means "read a string" (including '\0')
  *         (at most only EC_MEMMAP_SIZE bytes can be read)
  * @buffer: where to store the result
@@ -68,7 +68,7 @@ struct cros_ec_command_v2 {
 };
 
 /*
- * @offset: within EC_LPC_ADDR_MEMMAP region
+ * @offset: within EC_X86_ADDR_MEMMAP region
  * @bytes: number of bytes to read. zero means "read a string" (including '\0')
  *         (at most only EC_MEMMAP_SIZE bytes can be read)
  * @buffer: where to store the result

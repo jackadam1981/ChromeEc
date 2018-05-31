@@ -38,21 +38,21 @@
 #define EC_VER_MASK(version) (1UL << (version))
 
 /* I/O addresses for ACPI commands */
-#define EC_LPC_ADDR_ACPI_DATA  0x62
-#define EC_LPC_ADDR_ACPI_CMD   0x66
+#define EC_X86_ADDR_ACPI_DATA  0x62
+#define EC_X86_ADDR_ACPI_CMD   0x66
 
 /* I/O addresses for host command */
-#define EC_LPC_ADDR_HOST_DATA  0x200
-#define EC_LPC_ADDR_HOST_CMD   0x204
+#define EC_X86_ADDR_HOST_DATA  0x200
+#define EC_X86_ADDR_HOST_CMD   0x204
 
 /* I/O addresses for host command args and params */
 /* Protocol version 2 */
-#define EC_LPC_ADDR_HOST_ARGS    0x800  /* And 0x801, 0x802, 0x803 */
-#define EC_LPC_ADDR_HOST_PARAM   0x804  /* For version 2 params; size is
+#define EC_X86_ADDR_HOST_ARGS    0x800  /* And 0x801, 0x802, 0x803 */
+#define EC_X86_ADDR_HOST_PARAM   0x804  /* For version 2 params; size is
 					 * EC_PROTO2_MAX_PARAM_SIZE */
 /* Protocol version 3 */
-#define EC_LPC_ADDR_HOST_PACKET  0x800  /* Offset of version 3 packet */
-#define EC_LPC_HOST_PACKET_SIZE  0x100  /* Max size of version 3 packet */
+#define EC_X86_ADDR_HOST_PACKET  0x800  /* Offset of version 3 packet */
+#define EC_X86_HOST_PACKET_SIZE  0x100  /* Max size of version 3 packet */
 
 /* The actual block is 0x800-0x8ff, but some BIOSes think it's 0x880-0x8ff
  * and they tell the kernel that so we have to think of it as two parts. */
@@ -61,15 +61,15 @@
 #define EC_HOST_CMD_REGION_SIZE 0x80
 
 /* EC command register bit functions */
-#define EC_LPC_CMDR_DATA	(1 << 0)  /* Data ready for host to read */
-#define EC_LPC_CMDR_PENDING	(1 << 1)  /* Write pending to EC */
-#define EC_LPC_CMDR_BUSY	(1 << 2)  /* EC is busy processing a command */
-#define EC_LPC_CMDR_CMD		(1 << 3)  /* Last host write was a command */
-#define EC_LPC_CMDR_ACPI_BRST	(1 << 4)  /* Burst mode (not used) */
-#define EC_LPC_CMDR_SCI		(1 << 5)  /* SCI event is pending */
-#define EC_LPC_CMDR_SMI		(1 << 6)  /* SMI event is pending */
+#define EC_X86_CMDR_DATA	(1 << 0)  /* Data ready for host to read */
+#define EC_X86_CMDR_PENDING	(1 << 1)  /* Write pending to EC */
+#define EC_X86_CMDR_BUSY	(1 << 2)  /* EC is busy processing a command */
+#define EC_X86_CMDR_CMD		(1 << 3)  /* Last host write was a command */
+#define EC_X86_CMDR_ACPI_BRST	(1 << 4)  /* Burst mode (not used) */
+#define EC_X86_CMDR_SCI		(1 << 5)  /* SCI event is pending */
+#define EC_X86_CMDR_SMI		(1 << 6)  /* SMI event is pending */
 
-#define EC_LPC_ADDR_MEMMAP       0x900
+#define EC_X86_ADDR_MEMMAP       0x900
 #define EC_MEMMAP_SIZE         255 /* ACPI IO buffer max is 255 bytes */
 #define EC_MEMMAP_TEXT_MAX     8   /* Size of a string in the memory map */
 
@@ -211,11 +211,11 @@
  *
  * Use the following sequence:
  *
- *    - Write EC_CMD_ACPI_READ to EC_LPC_ADDR_ACPI_CMD
- *    - Wait for EC_LPC_CMDR_PENDING bit to clear
- *    - Write address to EC_LPC_ADDR_ACPI_DATA
- *    - Wait for EC_LPC_CMDR_DATA bit to set
- *    - Read value from EC_LPC_ADDR_ACPI_DATA
+ *    - Write EC_CMD_ACPI_READ to EC_X86_ADDR_ACPI_CMD
+ *    - Wait for EC_X86_CMDR_PENDING bit to clear
+ *    - Write address to EC_X86_ADDR_ACPI_DATA
+ *    - Wait for EC_X86_CMDR_DATA bit to set
+ *    - Read value from EC_X86_ADDR_ACPI_DATA
  */
 #define EC_CMD_ACPI_READ 0x0080
 
@@ -226,11 +226,11 @@
  *
  * Use the following sequence:
  *
- *    - Write EC_CMD_ACPI_WRITE to EC_LPC_ADDR_ACPI_CMD
- *    - Wait for EC_LPC_CMDR_PENDING bit to clear
- *    - Write address to EC_LPC_ADDR_ACPI_DATA
- *    - Wait for EC_LPC_CMDR_PENDING bit to clear
- *    - Write value to EC_LPC_ADDR_ACPI_DATA
+ *    - Write EC_CMD_ACPI_WRITE to EC_X86_ADDR_ACPI_CMD
+ *    - Wait for EC_X86_CMDR_PENDING bit to clear
+ *    - Write address to EC_X86_ADDR_ACPI_DATA
+ *    - Wait for EC_X86_CMDR_PENDING bit to clear
+ *    - Write value to EC_X86_ADDR_ACPI_DATA
  */
 #define EC_CMD_ACPI_WRITE 0x0081
 
@@ -479,28 +479,28 @@
 
 /* LPC command status byte masks */
 /* EC has written a byte in the data register and host hasn't read it yet */
-#define EC_LPC_STATUS_TO_HOST     0x01
+#define EC_X86_STATUS_TO_HOST     0x01
 /* Host has written a command/data byte and the EC hasn't read it yet */
-#define EC_LPC_STATUS_FROM_HOST   0x02
+#define EC_X86_STATUS_FROM_HOST   0x02
 /* EC is processing a command */
-#define EC_LPC_STATUS_PROCESSING  0x04
+#define EC_X86_STATUS_PROCESSING  0x04
 /* Last write to EC was a command, not data */
-#define EC_LPC_STATUS_LAST_CMD    0x08
+#define EC_X86_STATUS_LAST_CMD    0x08
 /* EC is in burst mode */
-#define EC_LPC_STATUS_BURST_MODE  0x10
+#define EC_X86_STATUS_BURST_MODE  0x10
 /* SCI event is pending (requesting SCI query) */
-#define EC_LPC_STATUS_SCI_PENDING 0x20
+#define EC_X86_STATUS_SCI_PENDING 0x20
 /* SMI event is pending (requesting SMI query) */
-#define EC_LPC_STATUS_SMI_PENDING 0x40
+#define EC_X86_STATUS_SMI_PENDING 0x40
 /* (reserved) */
-#define EC_LPC_STATUS_RESERVED    0x80
+#define EC_X86_STATUS_RESERVED    0x80
 
 /*
  * EC is busy.  This covers both the EC processing a command, and the host has
  * written a new command but the EC hasn't picked it up yet.
  */
-#define EC_LPC_STATUS_BUSY_MASK \
-	(EC_LPC_STATUS_FROM_HOST | EC_LPC_STATUS_PROCESSING)
+#define EC_X86_STATUS_BUSY_MASK \
+	(EC_X86_STATUS_FROM_HOST | EC_X86_STATUS_PROCESSING)
 
 /* Host command response codes (16-bit).  Note that response codes should be
  * stored in a uint16_t rather than directly in a value of this type.
@@ -614,7 +614,7 @@ enum host_event_code {
 /* Host event mask */
 #define EC_HOST_EVENT_MASK(event_code) (1ULL << ((event_code) - 1))
 
-/* Arguments at EC_LPC_ADDR_HOST_ARGS */
+/* Arguments at EC_X86_ADDR_HOST_ARGS */
 struct __ec_align4 ec_lpc_host_args {
 	uint8_t flags;
 	uint8_t command_version;
@@ -628,21 +628,21 @@ struct __ec_align4 ec_lpc_host_args {
 
 /* Flags for ec_lpc_host_args.flags */
 /*
- * Args are from host.  Data area at EC_LPC_ADDR_HOST_PARAM contains command
+ * Args are from host.  Data area at EC_X86_ADDR_HOST_PARAM contains command
  * params.
  *
  * If EC gets a command and this flag is not set, this is an old-style command.
- * Command version is 0 and params from host are at EC_LPC_ADDR_OLD_PARAM with
+ * Command version is 0 and params from host are at EC_X86_ADDR_OLD_PARAM with
  * unknown length.  EC must respond with an old-style response (that is,
  * without setting EC_HOST_ARGS_FLAG_TO_HOST).
  */
 #define EC_HOST_ARGS_FLAG_FROM_HOST 0x01
 /*
- * Args are from EC.  Data area at EC_LPC_ADDR_HOST_PARAM contains response.
+ * Args are from EC.  Data area at EC_X86_ADDR_HOST_PARAM contains response.
  *
  * If EC responds to a command and this flag is not set, this is an old-style
  * response.  Command version is 0 and response data from EC is at
- * EC_LPC_ADDR_OLD_PARAM with unknown length.
+ * EC_X86_ADDR_OLD_PARAM with unknown length.
  */
 #define EC_HOST_ARGS_FLAG_TO_HOST   0x02
 
@@ -5127,7 +5127,7 @@ struct __ec_align_size1 ec_params_charger_control {
  * forever.
  */
 #define EC_HOST_PARAM_SIZE      EC_PROTO2_MAX_PARAM_SIZE
-#define EC_LPC_ADDR_OLD_PARAM   EC_HOST_CMD_REGION1
+#define EC_X86_ADDR_OLD_PARAM   EC_HOST_CMD_REGION1
 #define EC_OLD_PARAM_SIZE       EC_HOST_CMD_REGION_SIZE
 
 #endif  /* !__ACPI__ */

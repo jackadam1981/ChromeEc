@@ -40,7 +40,7 @@
 static struct host_packet ipc_packet;	/* For host command processing */
 static struct host_cmd_handler_args host_cmd_args;
 static uint8_t host_cmd_flags;	/* Flags from host command */
-static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
+static uint8_t params_copy[EC_X86_HOST_PACKET_SIZE] __aligned(4);
 static uint8_t mem_mapped[0x200] __attribute__ ((section(".bss.big_align")));
 static struct ec_lpc_host_args *const ipc_host_args =
 	(struct ec_lpc_host_args *)mem_mapped;
@@ -75,8 +75,8 @@ static int ipc_get_protocol_info(struct host_cmd_handler_args *args)
 
 	memset(r, 0, sizeof(*r));
 	r->protocol_versions = (1 << 3);
-	r->max_request_packet_size = EC_LPC_HOST_PACKET_SIZE;
-	r->max_response_packet_size = EC_LPC_HOST_PACKET_SIZE;
+	r->max_request_packet_size = EC_X86_HOST_PACKET_SIZE;
+	r->max_response_packet_size = EC_X86_HOST_PACKET_SIZE;
 	r->flags = 0;
 
 	args->response_size = sizeof(*r);
@@ -335,11 +335,11 @@ void ipc_comm_task(void)
 			/* Don't know the request size so pass in
 			 * the entire buffer
 			 */
-			ipc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
+			ipc_packet.request_size = EC_X86_HOST_PACKET_SIZE;
 
 			ipc_packet.response =
 			    (void *)ipc_get_hostcmd_data_range();
-			ipc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
+			ipc_packet.response_max = EC_X86_HOST_PACKET_SIZE;
 			ipc_packet.response_size = 0;
 
 			ipc_packet.driver_result = EC_RES_SUCCESS;

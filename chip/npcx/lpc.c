@@ -64,7 +64,7 @@ static uint8_t	host_cmd_flags;         /* Flags from host command */
 static uint8_t	shm_mem_host_cmd[256] __aligned(8);
 static uint8_t	shm_memmap[256] __aligned(8);
 /* Params must be 32-bit aligned */
-static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
+static uint8_t params_copy[EC_X86_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
 
 static struct ec_lpc_host_args * const lpc_host_args =
@@ -570,10 +570,10 @@ static void handle_host_write(int is_cmd)
 		lpc_packet.request_temp = params_copy;
 		lpc_packet.request_max = sizeof(params_copy);
 		/* Don't know the request size so pass in the entire buffer */
-		lpc_packet.request_size = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.request_size = EC_X86_HOST_PACKET_SIZE;
 
 		lpc_packet.response = (void *)shm_mem_host_cmd;
-		lpc_packet.response_max = EC_LPC_HOST_PACKET_SIZE;
+		lpc_packet.response_max = EC_X86_HOST_PACKET_SIZE;
 		lpc_packet.response_size = 0;
 
 		lpc_packet.driver_result = EC_RES_SUCCESS;
@@ -1045,8 +1045,8 @@ static int hostcmdx86_get_protocol_info(struct host_cmd_handler_args *args)
 
 	memset(r, 0, sizeof(*r));
 	r->protocol_versions = (1 << 3);
-	r->max_request_packet_size = EC_LPC_HOST_PACKET_SIZE;
-	r->max_response_packet_size = EC_LPC_HOST_PACKET_SIZE;
+	r->max_request_packet_size = EC_X86_HOST_PACKET_SIZE;
+	r->max_response_packet_size = EC_X86_HOST_PACKET_SIZE;
 	r->flags = 0;
 
 	args->response_size = sizeof(*r);
