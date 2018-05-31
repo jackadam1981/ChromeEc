@@ -46,6 +46,30 @@
       "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94cac736_c6bf669d",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-31T23:13:40Z",
+      "side": 1,
+      "message": "if (battery_is_cut_off() !\u003d BATTERY_CUTOFF_STATE_NORMAL)\nFor both the cases of booting from cut-off or doing cut-off,\ndefault battery_cutoff_state is BATTERY_CUTOFF_STATE_NORMAL.\nThis state changes only when we cutoff the battery.\nBefore the cutoff is issued, battery status is already known (BP_YES) and the hardware battery status wont change hence batt_pres will always be equal to batt_pres_prev. This portion of the code is dead code.",
+      "parentUuid": "b4566692_193cd00a",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 56
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
