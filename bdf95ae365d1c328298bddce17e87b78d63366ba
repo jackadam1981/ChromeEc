@@ -118,6 +118,30 @@
       "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7123af4f_9643ecdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-05-31T00:07:04Z",
+      "side": 1,
+      "message": "Good point, wasn\u0027t aware of that... But we also used deferred tasks in the rest of the USB code (e.g. update), and those do run in HOOKS.",
+      "parentUuid": "c3468538_37858a8c",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "bdf95ae365d1c328298bddce17e87b78d63366ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
