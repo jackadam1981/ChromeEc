@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cc6685a9_0976bcbe",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-05-31T01:02:55Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "df7f10b4_f03fbef3",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 35
+      },
+      "revId": "acbed5cc928610330e4c81d374764689ced56bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ba96a50_591773d3",
         "filename": "board/yorp/board.h",
         "patchSetId": 2
@@ -93,6 +117,29 @@
       "revId": "acbed5cc928610330e4c81d374764689ced56bac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a33c341d_c28a360d",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-05-31T01:02:55Z",
+      "side": 1,
+      "message": "The schematic suggests no control of the CTL pins, so I don\u0027t think this should be defined (it enables a single control for the CTL pins (usb_port_power_smart.c:44).",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "acbed5cc928610330e4c81d374764689ced56bac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
