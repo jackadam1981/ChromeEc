@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d7288f0_9c51ac90",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-31T22:18:07Z",
+      "side": 1,
+      "message": "I think we will never hit this condition as batt_pres \u003d\u003d batt_pres_prev",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 56
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
