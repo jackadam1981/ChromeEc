@@ -22,6 +22,30 @@
       "revId": "fe0fc556dd78d319cf5ffba4ab79b6756db9981c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662ceb1b_ccc9fcdb",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-31T18:21:50Z",
+      "side": 1,
+      "message": "Okay.\nI think charger_get_input_current() seems okay if we add details in charger.h.\nIntention is to get the actual input current as we return error if charger_set_input_current() fails.",
+      "parentUuid": "acfa3296_86a89814",
+      "range": {
+        "startLine": 203,
+        "startChar": 16,
+        "endLine": 203,
+        "endChar": 35
+      },
+      "revId": "fe0fc556dd78d319cf5ffba4ab79b6756db9981c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
