@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0ab28525_a7c52362",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-05-31T23:31:19Z",
+      "side": 1,
+      "message": "can the value in reg_data[0] and reg_data[1] change?\nif not we can use avoid the array.",
+      "range": {
+        "startLine": 110,
+        "startChar": 54,
+        "endLine": 110,
+        "endChar": 65
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d7288f0_9c51ac90",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 5
