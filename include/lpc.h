@@ -68,12 +68,12 @@ void hostcmdx86_comx_put_char(int c);
  */
 
 /* Types of host events */
-enum lpc_host_event_type {
-	LPC_HOST_EVENT_SMI = 0,
-	LPC_HOST_EVENT_SCI,
-	LPC_HOST_EVENT_WAKE,
-	LPC_HOST_EVENT_ALWAYS_REPORT,
-	LPC_HOST_EVENT_COUNT,
+enum x86_host_event_type {
+	X86_HOST_EVENT_SMI = 0,
+	X86_HOST_EVENT_SCI,
+	X86_HOST_EVENT_WAKE,
+	X86_HOST_EVENT_ALWAYS_REPORT,
+	X86_HOST_EVENT_COUNT,
 };
 
 /**
@@ -86,7 +86,7 @@ host_event_t hostcmdx86_get_host_events(void);
  *
  * @param type		Event type
  */
-host_event_t hostcmdx86_get_host_events_by_type(enum lpc_host_event_type type);
+host_event_t hostcmdx86_get_host_events_by_type(enum x86_host_event_type type);
 
 /**
  * Set the event mask for the specified event type.
@@ -94,7 +94,7 @@ host_event_t hostcmdx86_get_host_events_by_type(enum lpc_host_event_type type);
  * @param type		Event type
  * @param mask		New event mask
  */
-void hostcmdx86_set_host_event_mask(enum lpc_host_event_type type,
+void hostcmdx86_set_host_event_mask(enum x86_host_event_type type,
 				    host_event_t mask);
 
 /**
@@ -102,7 +102,7 @@ void hostcmdx86_set_host_event_mask(enum lpc_host_event_type type,
  *
  * @param type		Event type
  */
-host_event_t hostcmdx86_get_host_event_mask(enum lpc_host_event_type type);
+host_event_t hostcmdx86_get_host_event_mask(enum x86_host_event_type type);
 
 /**
  * Clear and return the lowest host event.
@@ -141,7 +141,7 @@ void hostcmdx86_update_host_event_status(void);
 
 /*
  * This is a weak function defined in host_events_commands.c to override the
- * LPC_HOST_EVENT_ALWAYS_REPORT mask. It can be implemented by boards if there
+ * X86_HOST_EVENT_ALWAYS_REPORT mask. It can be implemented by boards if there
  * is a need to use custom mask.
  */
 host_event_t hostcmdx86_override_always_report_mask(void);

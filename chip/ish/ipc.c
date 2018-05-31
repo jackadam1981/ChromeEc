@@ -42,8 +42,8 @@ static struct host_cmd_handler_args host_cmd_args;
 static uint8_t host_cmd_flags;	/* Flags from host command */
 static uint8_t params_copy[EC_X86_HOST_PACKET_SIZE] __aligned(4);
 static uint8_t mem_mapped[0x200] __attribute__ ((section(".bss.big_align")));
-static struct ec_lpc_host_args *const ipc_host_args =
-	(struct ec_lpc_host_args *)mem_mapped;
+static struct ec_x86_host_args *const ipc_host_args =
+	(struct ec_x86_host_args *)mem_mapped;
 
 /* Array of peer contexts */
 struct ipc_if_ctx ipc_peer_ctxs[IPC_PEERS_COUNT] = {

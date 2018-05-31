@@ -48,9 +48,9 @@ static void host_event_set_bit(host_event_t *ev, uint8_t bit)
 
 #ifdef CONFIG_HOSTCMD_X86
 
-#define LPC_SYSJUMP_TAG 0x4c50  /* "LP" */
-#define LPC_SYSJUMP_OLD_VERSION 1
-#define LPC_SYSJUMP_VERSION 2
+#define X86_CMD_MASK_SYSJUMP_TAG 0x4c50  /* "LP" */
+#define X86_CMD_MASK_SYSJUMP_OLD_VERSION 1
+#define X86_CMD_MASK_SYSJUMP_VERSION 2
 
 /*
  * Always report mask includes mask of host events that need to be reported in
@@ -71,7 +71,7 @@ static void host_event_set_bit(host_event_t *ev, uint8_t bit)
  *   - EC_HOST_EVENT_MKBP
  *
  */
-#define LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK			\
+#define X86_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK			\
 	(EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY) |		\
 	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_THERMAL_SHUTDOWN) |		\
 	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY_SHUTDOWN) |		\
@@ -81,26 +81,26 @@ static void host_event_set_bit(host_event_t *ev, uint8_t bit)
 	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_MKBP) |			\
 	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT))
 
-static host_event_t lpc_host_events;
-static host_event_t lpc_host_event_mask[LPC_HOST_EVENT_COUNT];
+static host_event_t hostcmd_events;
+static host_event_t hostcmd_event_mask[X86_HOST_EVENT_COUNT];
 
 /* Indicates if active wake mask set by host */
 static uint8_t active_wm_set_by_host;
 
-void hostcmdx86_set_host_event_mask(enum lpc_host_event_type type,
+void hostcmdx86_set_host_event_mask(enum x86_host_event_type type,
 				    host_event_t mask)
 {
-	lpc_host_event_mask[type] = mask;
+	hostcmd_event_mask[type] = mask;
 	hostcmdx86_update_host_event_status();
 
 	/* mask 0 indicates wake mask not set by host */
-	if ((type == LPC_HOST_EVENT_WAKE) && (mask == 0))
+	if ((type == X86_HOST_EVENT_WAKE) && (mask == 0))
 		active_wm_set_by_host = 0;
 }
 
-host_event_t hostcmdx86_get_host_event_mask(enum lpc_host_event_type type)
+host_event_t hostcmdx86_get_host_event_mask(enum x86_host_event_type type)
 {
-	return lpc_host_event_mask[type];
+	return hostcmd_event_mask[type];
 }
 
 static host_event_t hostcmdx86_get_all_host_event_masks(void)
@@ -108,7 +108,7 @@ static host_event_t hostcmdx86_get_all_host_event_masks(void)
 	host_event_t or_mask = 0;
 	int i;
 
-	for (i = 0; i < LPC_HOST_EVENT_COUNT; i++)
+	for (i = 0; i < X86_HOST_EVENT_COUNT; i++)
 		or_mask |= hostcmdx86_get_host_event_mask(i);
 
 	return or_mask;
@@ -116,31 +116,31 @@ static host_event_t hostcmdx86_get_all_host_event_masks(void)
 
 static void hostcmdx86_set_host_event_state(host_event_t events)
 {
-	if (events == lpc_host_events)
+	if (events == hostcmd_events)
 		return;
 
-	lpc_host_events = events;
+	hostcmd_events = events;
 	hostcmdx86_update_host_event_status();
 }
 
-host_event_t hostcmdx86_get_host_events_by_type(enum lpc_host_event_type type)
+host_event_t hostcmdx86_get_host_events_by_type(enum x86_host_event_type type)
 {
-	return lpc_host_events & hostcmdx86_get_host_event_mask(type);
+	return hostcmd_events & hostcmdx86_get_host_event_mask(type);
 }
 
 host_event_t hostcmdx86_get_host_events(void)
 {
-	return lpc_host_events;
+	return hostcmd_events;
 }
 
 int hostcmdx86_get_next_host_event(void)
 {
 	host_event_t ev;
-	int evt_idx =  __builtin_ffs(lpc_host_events);
+	int evt_idx =  __builtin_ffs(hostcmd_events);
 
 #ifdef CONFIG_HOST_EVENT64
 	if (evt_idx == 0) {
-		int evt_idx_high = __builtin_ffs(lpc_host_events >> 32);
+		int evt_idx_high = __builtin_ffs(hostcmd_events >> 32);
 
 		if (evt_idx_high)
 			evt_idx = 32 + evt_idx_high;
@@ -156,8 +156,9 @@ int hostcmdx86_get_next_host_event(void)
 
 static void hostcmdx86_sysjump_save_mask(void)
 {
-	system_add_jump_tag(LPC_SYSJUMP_TAG, LPC_SYSJUMP_VERSION,
-			    sizeof(lpc_host_event_mask), lpc_host_event_mask);
+	system_add_jump_tag(X86_CMD_MASK_SYSJUMP_TAG,
+			    X86_CMD_MASK_SYSJUMP_VERSION,
+			    sizeof(hostcmd_event_mask), hostcmd_event_mask);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, hostcmdx86_sysjump_save_mask, HOOK_PRIO_DEFAULT);
 
@@ -174,21 +175,21 @@ static int hostcmdx86_post_sysjump_restore_mask(void)
 	const host_event_t *prev_mask;
 	int size, version;
 
-	prev_mask = (const host_event_t *)system_get_jump_tag(LPC_SYSJUMP_TAG,
-			&version, &size);
-	if (!prev_mask || size != sizeof(lpc_host_event_mask) ||
-	    (version != LPC_SYSJUMP_VERSION &&
-	     version != LPC_SYSJUMP_OLD_VERSION))
+	prev_mask = (const host_event_t *)system_get_jump_tag(
+		X86_CMD_MASK_SYSJUMP_TAG, &version, &size);
+	if (!prev_mask || size != sizeof(hostcmd_event_mask) ||
+	    (version != X86_CMD_MASK_SYSJUMP_VERSION &&
+	     version != X86_CMD_MASK_SYSJUMP_OLD_VERSION))
 		return 0;
 
-	memcpy(lpc_host_event_mask, prev_mask, sizeof(lpc_host_event_mask));
+	memcpy(hostcmd_event_mask, prev_mask, sizeof(hostcmd_event_mask));
 
-	return version == LPC_SYSJUMP_VERSION;
+	return version == X86_CMD_MASK_SYSJUMP_VERSION;
 }
 
 host_event_t __attribute__((weak)) hostcmdx86_override_always_report_mask(void)
 {
-	return LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK;
+	return X86_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK;
 }
 
 void hostcmdx86_init_mask(void)
@@ -199,15 +200,15 @@ void hostcmdx86_init_mask(void)
 	 * report mask, then set always report mask now.
 	 */
 	if (!hostcmdx86_post_sysjump_restore_mask())
-		lpc_host_event_mask[LPC_HOST_EVENT_ALWAYS_REPORT] =
+		hostcmd_event_mask[X86_HOST_EVENT_ALWAYS_REPORT] =
 			hostcmdx86_override_always_report_mask();
 }
 
 void hostcmdx86_s3_resume_clear_masks(void)
 {
-	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
-	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SCI, 0);
-	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+	hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SMI, 0);
+	hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SCI, 0);
+	hostcmdx86_set_host_event_mask(X86_HOST_EVENT_WAKE, 0);
 }
 
 #endif
@@ -294,7 +295,7 @@ void host_set_events(host_event_t mask)
 	 * Host only cares about the events for which the masks are set either
 	 * in wake mask, SCI mask or SMI mask. In addition to that, there are
 	 * certain events that need to be always reported (Please see
-	 * LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK). Thus, when a new host
+	 * X86_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK). Thus, when a new host
 	 * event is being set, ensure that it is present in one of these
 	 * masks. Else, there is no need to process that event.
 	 */
@@ -438,14 +439,14 @@ static int command_host_event(int argc, char **argv)
 			host_clear_events_b(i);
 #ifdef CONFIG_HOSTCMD_X86
 		else if (!strcasecmp(argv[1], "smi"))
-			hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SMI, i);
+			hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SMI, i);
 		else if (!strcasecmp(argv[1], "sci"))
-			hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SCI, i);
+			hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SCI, i);
 		else if (!strcasecmp(argv[1], "wake"))
-			hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_WAKE, i);
+			hostcmdx86_set_host_event_mask(X86_HOST_EVENT_WAKE, i);
 		else if (!strcasecmp(argv[1], "always_report"))
 			hostcmdx86_set_host_event_mask(
-				LPC_HOST_EVENT_ALWAYS_REPORT, i);
+				X86_HOST_EVENT_ALWAYS_REPORT, i);
 #endif
 		else
 			return EC_ERROR_PARAM1;
@@ -456,13 +457,13 @@ static int command_host_event(int argc, char **argv)
 	HOST_EVENT_CCPRINTF("Events-B:           ", events_copy_b);
 #ifdef CONFIG_HOSTCMD_X86
 	HOST_EVENT_CCPRINTF("SMI mask:           ",
-		 hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_SMI));
+		 hostcmdx86_get_host_event_mask(X86_HOST_EVENT_SMI));
 	HOST_EVENT_CCPRINTF("SCI mask:           ",
-		 hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_SCI));
+		 hostcmdx86_get_host_event_mask(X86_HOST_EVENT_SCI));
 	HOST_EVENT_CCPRINTF("Wake mask:          ",
-		 hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_WAKE));
+		 hostcmdx86_get_host_event_mask(X86_HOST_EVENT_WAKE));
 	HOST_EVENT_CCPRINTF("Always report mask: ",
-		 hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_ALWAYS_REPORT));
+		 hostcmdx86_get_host_event_mask(X86_HOST_EVENT_ALWAYS_REPORT));
 #endif
 	return EC_SUCCESS;
 }
@@ -479,7 +480,7 @@ static int host_event_get_smi_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
-	r->mask = (uint32_t)hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_SMI);
+	r->mask = (uint32_t)hostcmdx86_get_host_event_mask(X86_HOST_EVENT_SMI);
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -492,7 +493,7 @@ static int host_event_get_sci_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
-	r->mask = (uint32_t)hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_SCI);
+	r->mask = (uint32_t)hostcmdx86_get_host_event_mask(X86_HOST_EVENT_SCI);
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -505,7 +506,7 @@ static int host_event_get_wake_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
-	r->mask = (uint32_t)hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_WAKE);
+	r->mask = (uint32_t)hostcmdx86_get_host_event_mask(X86_HOST_EVENT_WAKE);
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -518,7 +519,7 @@ static int host_event_set_smi_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
-	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SMI, p->mask);
+	hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SMI, p->mask);
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SMI_MASK,
@@ -529,7 +530,7 @@ static int host_event_set_sci_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
-	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SCI, p->mask);
+	hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SCI, p->mask);
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SCI_MASK,
@@ -540,7 +541,7 @@ static int host_event_set_wake_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
-	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_WAKE, p->mask);
+	hostcmdx86_set_host_event_mask(X86_HOST_EVENT_WAKE, p->mask);
 	active_wm_set_by_host = !!p->mask;
 	return EC_RES_SUCCESS;
 }
@@ -605,17 +606,17 @@ static int host_event_action_get(struct host_cmd_handler_args *args)
 		break;
 #ifdef CONFIG_HOSTCMD_X86
 	case EC_HOST_EVENT_SCI_MASK:
-		r->value = hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_SCI);
+		r->value = hostcmdx86_get_host_event_mask(X86_HOST_EVENT_SCI);
 		break;
 	case EC_HOST_EVENT_SMI_MASK:
-		r->value = hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_SMI);
+		r->value = hostcmdx86_get_host_event_mask(X86_HOST_EVENT_SMI);
 		break;
 	case EC_HOST_EVENT_ALWAYS_REPORT_MASK:
 		r->value = hostcmdx86_get_host_event_mask
-				(LPC_HOST_EVENT_ALWAYS_REPORT);
+				(X86_HOST_EVENT_ALWAYS_REPORT);
 		break;
 	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
-		r->value = hostcmdx86_get_host_event_mask(LPC_HOST_EVENT_WAKE);
+		r->value = hostcmdx86_get_host_event_mask(X86_HOST_EVENT_WAKE);
 		break;
 #ifdef CONFIG_POWER_S0IX
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX:
@@ -646,18 +647,18 @@ static int host_event_action_set(struct host_cmd_handler_args *args)
 	switch (p->mask_type) {
 #ifdef CONFIG_HOSTCMD_X86
 	case EC_HOST_EVENT_SCI_MASK:
-		hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SCI, mask_value);
+		hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SCI, mask_value);
 		break;
 	case EC_HOST_EVENT_SMI_MASK:
-		hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_SMI, mask_value);
+		hostcmdx86_set_host_event_mask(X86_HOST_EVENT_SMI, mask_value);
 		break;
 	case EC_HOST_EVENT_ALWAYS_REPORT_MASK:
-		hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_ALWAYS_REPORT,
+		hostcmdx86_set_host_event_mask(X86_HOST_EVENT_ALWAYS_REPORT,
 						mask_value);
 		break;
 	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
 		active_wm_set_by_host = !!mask_value;
-		hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_WAKE, mask_value);
+		hostcmdx86_set_host_event_mask(X86_HOST_EVENT_WAKE, mask_value);
 		break;
 #ifdef CONFIG_POWER_S0IX
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX:

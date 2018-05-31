@@ -158,12 +158,12 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 static void wait_for_valid_sample(void)
 {
 	uint8_t sample;
-	uint8_t *lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
+	uint8_t *host_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 
-	sample = *lpc_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
+	sample = *host_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
 	usleep(TEST_LID_EC_RATE);
 	task_wake(TASK_ID_MOTIONSENSE);
-	while ((*lpc_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK) == sample)
+	while ((*host_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK) == sample)
 		usleep(TEST_LID_SLEEP_RATE);
 }
 

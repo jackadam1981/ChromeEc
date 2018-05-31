@@ -64,8 +64,8 @@ static int init_done;
 
 static uint8_t * const cmd_params = (uint8_t *)LPC_POOL_CMD_DATA +
 	EC_X86_ADDR_HOST_PARAM - EC_X86_ADDR_HOST_ARGS;
-static struct ec_lpc_host_args * const lpc_host_args =
-	(struct ec_lpc_host_args *)LPC_POOL_CMD_DATA;
+static struct ec_x86_host_args * const lpc_host_args =
+	(struct ec_x86_host_args *)LPC_POOL_CMD_DATA;
 
 static void wait_irq_sent(void)
 {
@@ -160,7 +160,7 @@ static void hostcmdx86_generate_smi(void)
 	/* Set signal high, now that we've generated the edge */
 	gpio_set_level(GPIO_PCH_SMI_L, 1);
 
-	smi = hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI);
+	smi = hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SMI);
 	if (smi)
 		HOST_EVENT_CPRINTS("smi", smi);
 }
@@ -185,7 +185,7 @@ static void hostcmdx86_generate_sci(void)
 	LM4_LPC_LPCCTL |= LM4_LPC_SCI_START;
 #endif
 
-	sci = hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI);
+	sci = hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SCI);
 	if (sci)
 		HOST_EVENT_CPRINTS("sci", sci);
 }
@@ -352,7 +352,7 @@ void hostcmdx86_update_host_event_status(void)
 	/* Disable LPC interrupt while updating status register */
 	task_disable_irq(LM4_IRQ_LPC);
 
-	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
+	if (hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SMI)) {
 		/* Only generate SMI for first event */
 		if (!(LM4_LPC_ST(LPC_CH_ACPI) & LM4_LPC_ST_SMI))
 			need_smi = 1;
@@ -360,7 +360,7 @@ void hostcmdx86_update_host_event_status(void)
 	} else
 		LM4_LPC_ST(LPC_CH_ACPI) &= ~LM4_LPC_ST_SMI;
 
-	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
+	if (hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SCI)) {
 		/* Generate SCI for every event */
 		need_sci = 1;
 		LM4_LPC_ST(LPC_CH_ACPI) |= LM4_LPC_ST_SCI;
@@ -375,7 +375,7 @@ void hostcmdx86_update_host_event_status(void)
 
 	/* Process the wake events. */
 	hostcmdx86_update_wake(
-		hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_WAKE));
+		hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_WAKE));
 
 	/* Send pulse on SMI signal if needed */
 	if (need_smi)
@@ -780,7 +780,7 @@ static void hostcmdx86_init(void)
 
 	/* We support LPC args and version 3 protocol */
 	*(hostcmdx86_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
-		EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED |
+		EC_HOST_CMD_FLAG_X86_ARGS_SUPPORTED |
 		EC_HOST_CMD_FLAG_VERSION_3;
 
 	/* Enable LPC interrupt */

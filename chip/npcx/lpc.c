@@ -67,8 +67,8 @@ static uint8_t	shm_memmap[256] __aligned(8);
 static uint8_t params_copy[EC_X86_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
 
-static struct ec_lpc_host_args * const lpc_host_args =
-		(struct ec_lpc_host_args *)shm_mem_host_cmd;
+static struct ec_x86_host_args * const lpc_host_args =
+		(struct ec_x86_host_args *)shm_mem_host_cmd;
 
 /*****************************************************************************/
 /* IC specific low-level driver */
@@ -178,7 +178,7 @@ static void hostcmdx86_generate_smi(void)
 	/* Set signal high */
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIB);
 #endif
-	smi = hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI);
+	smi = hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SMI);
 	if (smi)
 		HOST_EVENT_CPRINTS("smi", smi);
 }
@@ -225,7 +225,7 @@ static void hostcmdx86_generate_sci(void)
 	SET_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SCIB);
 #endif
 
-	sci = hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI);
+	sci = hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SCI);
 	if (sci)
 		HOST_EVENT_CPRINTS("sci", sci);
 }
@@ -458,7 +458,7 @@ void hostcmdx86_update_host_event_status(void)
 
 	/* Disable LPC interrupt while updating status register */
 	hostcmdx86_task_disable_irq();
-	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SMI)) {
+	if (hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SMI)) {
 		/* Only generate SMI for first event */
 		if (!(NPCX_HIPMST(PMC_ACPI) & NPCX_HIPMST_ST2))
 			need_smi = 1;
@@ -466,7 +466,7 @@ void hostcmdx86_update_host_event_status(void)
 	} else
 		CLEAR_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_ST2);
 
-	if (hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_SCI)) {
+	if (hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_SCI)) {
 		/* Generate SCI for every event */
 		need_sci = 1;
 		SET_BIT(NPCX_HIPMST(PMC_ACPI), NPCX_HIPMST_ST1);
@@ -481,7 +481,7 @@ void hostcmdx86_update_host_event_status(void)
 
 	/* Process the wake events. */
 	hostcmdx86_update_wake(
-		hostcmdx86_get_host_events_by_type(LPC_HOST_EVENT_WAKE));
+		hostcmdx86_get_host_events_by_type(X86_HOST_EVENT_WAKE));
 
 	/* Send pulse on SMI signal if needed */
 	if (need_smi)
@@ -918,7 +918,7 @@ static void hostcmdx86_init(void)
 
 	/* We support LPC args and version 3 protocol */
 	*(hostcmdx86_get_memmap_range() + EC_MEMMAP_HOST_CMD_FLAGS) =
-			EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED |
+			EC_HOST_CMD_FLAG_X86_ARGS_SUPPORTED |
 			EC_HOST_CMD_FLAG_VERSION_3;
 
 	/*

@@ -46,11 +46,11 @@ static int wait_for_ec(int status_addr, int timeout_usec)
 	return -1;  /* Timeout */
 }
 
-static int ec_command_lpc(int command, int version,
+static int ec_command_x86(int command, int version,
 			  const void *outdata, int outsize,
 			  void *indata, int insize)
 {
-	struct ec_lpc_host_args args;
+	struct ec_x86_host_args args;
 	const uint8_t *d;
 	uint8_t *dout;
 	int csum;
@@ -128,7 +128,7 @@ static int ec_command_lpc(int command, int version,
 	return args.data_size;
 }
 
-static int ec_command_lpc_3(int command, int version,
+static int ec_command_x86_3(int command, int version,
 			  const void *outdata, int outsize,
 			  void *indata, int insize)
 {
@@ -298,9 +298,9 @@ int comm_init_lpc(void)
 		ec_max_insize = EC_X86_HOST_PACKET_SIZE -
 			sizeof(struct ec_host_response);
 
-	} else if (i & EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED) {
+	} else if (i & EC_HOST_CMD_FLAG_X86_ARGS_SUPPORTED) {
 		/* Protocol version 2 */
-		ec_command_proto = ec_command_lpc;
+		ec_command_proto = ec_command_x86;
 		ec_max_outsize = ec_max_insize = EC_PROTO2_MAX_PARAM_SIZE;
 
 	} else {

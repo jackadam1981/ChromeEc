@@ -23,8 +23,8 @@
 static const char *action[2] = {"release", "press"};
 
 #define BUF_SIZE 16
-static char lpc_char_buf[BUF_SIZE];
-static unsigned int lpc_char_cnt;
+static char host_char_buf[BUF_SIZE];
+static unsigned int host_char_cnt;
 
 /*****************************************************************************/
 /* Mock functions */
@@ -36,7 +36,7 @@ int lid_is_open(void)
 
 void hostcmdx86_keyboard_put_char(uint8_t chr, int send_irq)
 {
-	lpc_char_buf[lpc_char_cnt++] = chr;
+	host_char_buf[host_char_cnt++] = chr;
 }
 
 /*****************************************************************************/
@@ -87,34 +87,34 @@ static void write_cmd_byte(uint8_t val)
 
 static uint8_t read_cmd_byte(void)
 {
-	lpc_char_cnt = 0;
+	host_char_cnt = 0;
 	keyboard_host_write(I8042_READ_CMD_BYTE, 1);
 	msleep(30);
-	return lpc_char_buf[0];
+	return host_char_buf[0];
 }
 
-static int __verify_lpc_char(char *arr, unsigned int sz, int delay_ms)
+static int __verify_host_char(char *arr, unsigned int sz, int delay_ms)
 {
 	int i;
 
-	lpc_char_cnt = 0;
+	host_char_cnt = 0;
 	for (i = 0; i < sz; ++i)
-		lpc_char_buf[i] = 0;
+		host_char_buf[i] = 0;
 	msleep(delay_ms);
-	TEST_ASSERT_ARRAY_EQ(arr, lpc_char_buf, sz);
+	TEST_ASSERT_ARRAY_EQ(arr, host_char_buf, sz);
 	return EC_SUCCESS;
 }
 
-#define VERIFY_LPC_CHAR(s) \
-	TEST_ASSERT(__verify_lpc_char(s, strlen(s), 30) == EC_SUCCESS)
-#define VERIFY_LPC_CHAR_DELAY(s, t) \
-	TEST_ASSERT(__verify_lpc_char(s, strlen(s), t) == EC_SUCCESS)
+#define VERIFY_HOST_CHAR(s) \
+	TEST_ASSERT(__verify_host_char(s, strlen(s), 30) == EC_SUCCESS)
+#define VERIFY_HOST_CHAR_DELAY(s, t) \
+	TEST_ASSERT(__verify_host_char(s, strlen(s), t) == EC_SUCCESS)
 
 static int __verify_no_char(void)
 {
-	lpc_char_cnt = 0;
+	host_char_cnt = 0;
 	msleep(30);
-	TEST_CHECK(lpc_char_cnt == 0);
+	TEST_CHECK(host_char_cnt == 0);
 }
 
 #define VERIFY_NO_CHAR() TEST_ASSERT(__verify_no_char() == EC_SUCCESS)
@@ -126,14 +126,14 @@ static int test_single_key_press(void)
 {
 	enable_keystroke(1);
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR("\x01");
+	VERIFY_HOST_CHAR("\x01");
 	press_key(1, 1, 0);
-	VERIFY_LPC_CHAR("\x81");
+	VERIFY_HOST_CHAR("\x81");
 
 	press_key(12, 6, 1);
-	VERIFY_LPC_CHAR("\xe0\x4d");
+	VERIFY_HOST_CHAR("\xe0\x4d");
 	press_key(12, 6, 0);
-	VERIFY_LPC_CHAR("\xe0\xcd");
+	VERIFY_HOST_CHAR("\xe0\xcd");
 
 	return EC_SUCCESS;
 }
@@ -159,9 +159,9 @@ static int test_typematic(void)
 	set_typematic(0xf);
 
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR_DELAY("\x01\x01\x01\x01\x01", 650);
+	VERIFY_HOST_CHAR_DELAY("\x01\x01\x01\x01\x01", 650);
 	press_key(1, 1, 0);
-	VERIFY_LPC_CHAR_DELAY("\x81", 300);
+	VERIFY_HOST_CHAR_DELAY("\x81", 300);
 
 	/*
 	 * 500ms delay, 10.9 chars / sec.
@@ -169,9 +169,9 @@ static int test_typematic(void)
 	reset_8042();
 
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR_DELAY("\x01\x01\x01", 650);
+	VERIFY_HOST_CHAR_DELAY("\x01\x01\x01", 650);
 	press_key(1, 1, 0);
-	VERIFY_LPC_CHAR_DELAY("\x81", 200);
+	VERIFY_HOST_CHAR_DELAY("\x81", 200);
 
 	return EC_SUCCESS;
 }
@@ -182,15 +182,15 @@ static int test_scancode_set2(void)
 
 	write_cmd_byte(read_cmd_byte() | I8042_XLATE);
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR("\x01");
+	VERIFY_HOST_CHAR("\x01");
 	press_key(1, 1, 0);
-	VERIFY_LPC_CHAR("\x81");
+	VERIFY_HOST_CHAR("\x81");
 
 	write_cmd_byte(read_cmd_byte() & ~I8042_XLATE);
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR("\x76");
+	VERIFY_HOST_CHAR("\x76");
 	press_key(1, 1, 0);
-	VERIFY_LPC_CHAR("\xf0\x76");
+	VERIFY_HOST_CHAR("\xf0\x76");
 
 	return EC_SUCCESS;
 }
@@ -202,19 +202,19 @@ static int test_power_button(void)
 	test_chipset_on();
 
 	gpio_set_level(GPIO_POWER_BUTTON_L, 0);
-	VERIFY_LPC_CHAR_DELAY("\xe0\x5e", 100);
+	VERIFY_HOST_CHAR_DELAY("\xe0\x5e", 100);
 
 	gpio_set_level(GPIO_POWER_BUTTON_L, 1);
-	VERIFY_LPC_CHAR_DELAY("\xe0\xde", 100);
+	VERIFY_HOST_CHAR_DELAY("\xe0\xde", 100);
 
 	set_scancode(2);
 	write_cmd_byte(read_cmd_byte() & ~I8042_XLATE);
 
 	gpio_set_level(GPIO_POWER_BUTTON_L, 0);
-	VERIFY_LPC_CHAR_DELAY("\xe0\x37", 100);
+	VERIFY_HOST_CHAR_DELAY("\xe0\x37", 100);
 
 	gpio_set_level(GPIO_POWER_BUTTON_L, 1);
-	VERIFY_LPC_CHAR_DELAY("\xe0\xf0\x37", 100);
+	VERIFY_HOST_CHAR_DELAY("\xe0\xf0\x37", 100);
 
 	test_chipset_off();
 
@@ -242,15 +242,15 @@ static int test_sysjump_cont(void)
 {
 	write_cmd_byte(read_cmd_byte() | I8042_XLATE);
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR("\x01");
+	VERIFY_HOST_CHAR("\x01");
 	press_key(1, 1, 0);
-	VERIFY_LPC_CHAR("\x81");
+	VERIFY_HOST_CHAR("\x81");
 
 	write_cmd_byte(read_cmd_byte() & ~I8042_XLATE);
 	press_key(1, 1, 1);
-	VERIFY_LPC_CHAR("\x76");
+	VERIFY_HOST_CHAR("\x76");
 	press_key(1, 1, 0);
-	VERIFY_LPC_CHAR("\xf0\x76");
+	VERIFY_HOST_CHAR("\xf0\x76");
 
 	return EC_SUCCESS;
 }

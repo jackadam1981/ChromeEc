@@ -621,19 +621,20 @@ DECLARE_HOOK(HOOK_INIT, motion_sense_startup,
 	     MOTION_SENSE_HOOK_PRIO);
 
 /* Write to LPC status byte to represent that accelerometers are present. */
-static inline void set_present(uint8_t *lpc_status)
+static inline void set_present(uint8_t *hostcmd_status)
 {
-	*lpc_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
+	*hostcmd_status |= EC_MEMMAP_ACC_STATUS_PRESENCE_BIT;
 }
 
 #ifdef UPDATE_HOST_MEM_MAP
 /* Update/Write LPC data */
-static inline void update_sense_data(uint8_t *lpc_status, int *psample_id)
+static inline void update_sense_data(uint8_t *hostcmd_status, int *psample_id)
 {
 	int s, d, i;
-	uint16_t *lpc_data = (uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
+	uint16_t *hostcmd_data =
+		(uint16_t *)host_get_memmap(EC_MEMMAP_ACC_DATA);
 #if (!defined HAS_TASK_ALS) && (defined CONFIG_ALS)
-	uint16_t *lpc_als = (uint16_t *)host_get_memmap(EC_MEMMAP_ALS);
+	uint16_t *hostcmd_als = (uint16_t *)host_get_memmap(EC_MEMMAP_ALS);
 #endif
 	struct motion_sensor_t *sensor;
 	/*
@@ -643,7 +644,7 @@ static inline void update_sense_data(uint8_t *lpc_status, int *psample_id)
 	 * bit is not set and that the counter remains the same before
 	 * and after reading the data.
 	 */
-	*lpc_status |= EC_MEMMAP_ACC_STATUS_BUSY_BIT;
+	*hostcmd_status |= EC_MEMMAP_ACC_STATUS_BUSY_BIT;
 
 	/*
 	 * Copy sensor data to shared memory. Note that this code
@@ -654,9 +655,9 @@ static inline void update_sense_data(uint8_t *lpc_status, int *psample_id)
 	 * more accurate lid angle.
 	 */
 #ifdef CONFIG_LID_ANGLE
-	lpc_data[0] = motion_lid_get_angle();
+	hostcmd_data[0] = motion_lid_get_angle();
 #else
-	lpc_data[0] = LID_ANGLE_UNRELIABLE;
+	hostcmd_data[0] = LID_ANGLE_UNRELIABLE;
 #endif
 	/*
 	 * The first 2 entries must be accelerometers, then gyroscope.
@@ -670,12 +671,12 @@ static inline void update_sense_data(uint8_t *lpc_status, int *psample_id)
 		else if (sensor->type == MOTIONSENSE_TYPE_GYRO)
 			d = 2;
 		for (i = X; i <= Z; i++)
-			lpc_data[1 + i + 3 * d] = sensor->xyz[i];
+			hostcmd_data[1 + i + 3 * d] = sensor->xyz[i];
 	}
 
 #if (!defined HAS_TASK_ALS) && (defined CONFIG_ALS)
 	for (i = 0; i < EC_ALS_ENTRIES && i < ALS_COUNT; i++)
-		lpc_als[i] = motion_als_sensors[i]->xyz[X];
+		hostcmd_als[i] = motion_als_sensors[i]->xyz[X];
 #endif
 
 	/*
@@ -684,7 +685,7 @@ static inline void update_sense_data(uint8_t *lpc_status, int *psample_id)
 	 */
 	*psample_id = (*psample_id + 1) &
 			EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
-	*lpc_status = EC_MEMMAP_ACC_STATUS_PRESENCE_BIT | *psample_id;
+	*hostcmd_status = EC_MEMMAP_ACC_STATUS_PRESENCE_BIT | *psample_id;
 }
 #endif
 
@@ -907,10 +908,10 @@ void motion_sense_task(void *u)
 #endif
 #ifdef UPDATE_HOST_MEM_MAP
 	int sample_id = 0;
-	uint8_t *lpc_status;
+	uint8_t *hostcmd_status;
 
-	lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
-	set_present(lpc_status);
+	hostcmd_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
+	set_present(hostcmd_status);
 #endif
 
 #ifdef CONFIG_ACCEL_FIFO
@@ -965,7 +966,7 @@ void motion_sense_task(void *u)
 		}
 #endif
 #ifdef UPDATE_HOST_MEM_MAP
-		update_sense_data(lpc_status, &sample_id);
+		update_sense_data(hostcmd_status, &sample_id);
 #endif
 
 		ts_end_task = get_time();

@@ -240,7 +240,7 @@ static void power_set_active_wake_mask(enum power_state state)
 		wake_mask = DEFAULT_WAKE_MASK_S0IX;
 #endif
 
-	hostcmdx86_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
+	hostcmdx86_set_host_event_mask(X86_HOST_EVENT_WAKE, wake_mask);
 }
 #else
 static void power_set_active_wake_mask(enum power_state state) { }

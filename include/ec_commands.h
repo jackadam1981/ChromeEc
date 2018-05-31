@@ -185,8 +185,8 @@
 #define EC_SWITCH_IGNORE0                0x20
 
 /* Host command interface flags */
-/* Host command interface supports LPC args (LPC interface only) */
-#define EC_HOST_CMD_FLAG_LPC_ARGS_SUPPORTED  0x01
+/* Host command interface supports X86 args (X86 interface only) */
+#define EC_HOST_CMD_FLAG_X86_ARGS_SUPPORTED  0x01
 /* Host command interface supports version 3 protocol */
 #define EC_HOST_CMD_FLAG_VERSION_3   0x02
 
@@ -477,7 +477,7 @@
 
 #endif  /* !CONFIG_HOSTCMD_ALIGNED */
 
-/* LPC command status byte masks */
+/* X86 host command status byte masks */
 /* EC has written a byte in the data register and host hasn't read it yet */
 #define EC_X86_STATUS_TO_HOST     0x01
 /* Host has written a command/data byte and the EC hasn't read it yet */
@@ -615,7 +615,7 @@ enum host_event_code {
 #define EC_HOST_EVENT_MASK(event_code) (1ULL << ((event_code) - 1))
 
 /* Arguments at EC_X86_ADDR_HOST_ARGS */
-struct __ec_align4 ec_lpc_host_args {
+struct __ec_align4 ec_x86_host_args {
 	uint8_t flags;
 	uint8_t command_version;
 	uint8_t data_size;
@@ -626,7 +626,7 @@ struct __ec_align4 ec_lpc_host_args {
 	uint8_t checksum;
 };
 
-/* Flags for ec_lpc_host_args.flags */
+/* Flags for ec_x86_host_args.flags */
 /*
  * Args are from host.  Data area at EC_X86_ADDR_HOST_PARAM contains command
  * params.
