@@ -880,6 +880,27 @@ DECLARE_HOST_COMMAND(EC_CMD_KEYBOARD_FACTORY_TEST,
 		     EC_VER_MASK(0));
 #endif
 
+int keyboard_get_keyboard_id(void)
+{
+#ifdef CONFIG_KEYBOARD_LANGUAGE_ID
+	int c;
+	uint32_t id;
+
+	for (c = 0; c < KEYBOARD_IDS; c++) {
+		/* Check ID ghosting if more than one bit in any KSIs was set */
+		if (!(keyboard_id[c] & (keyboard_id[c] - 1)))
+			id |= keyboard_id[c] << (c * 8);
+		else {
+			/* ID ghosting is found */
+			id = KEYBOARD_ID_UNREADABLE;
+			break;
+		}
+	}
+	return id;
+#else
+	return KEYBOARD_ID_UNSUPPORTED;
+#endif
+}
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_KEYBOARD

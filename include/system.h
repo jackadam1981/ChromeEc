@@ -250,6 +250,14 @@ int system_get_board_version(void);
  */
 const char *system_get_build_info(void);
 
+/**
+ * Get the KEYBOARD ID for a keyboard
+ *
+ * @return A value that identifies keyboard variants. Its meaning and
+ * the number of bits actually used is the supported keyboard layout.
+ */
+int keyboard_get_keyboard_id(void);
+
 /* Flags for system_reset() */
 /*
  * Hard reset.  Cuts power to the entire system.  If not present, does a soft

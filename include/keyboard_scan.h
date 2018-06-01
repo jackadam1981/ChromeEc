@@ -76,6 +76,11 @@ static inline uint32_t keyboard_scan_get_boot_keys(void)
 }
 #endif
 
+enum keyboard_id {
+	KEYBOARD_ID_UNSUPPORTED = 0,
+	KEYBOARD_ID_UNREADABLE = 0xffffffff,
+};
+
 /**
  * Return a pointer to the current debounced keyboard matrix state, which is
  * KEYBOARD_COLS bytes long.
