@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "43b6badc_697d8044",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-01T18:14:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d3ed4c3_385ecea7",
+      "range": {
+        "startLine": 110,
+        "startChar": 54,
+        "endLine": 110,
+        "endChar": 65
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d7288f0_9c51ac90",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 5
@@ -141,6 +165,30 @@
       "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bcd483e_c672584b",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-01T18:14:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5f78a78_f422452f",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 56
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
