@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07d9d35a_3e4ef5e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-01T23:29:12Z",
+      "side": 1,
+      "message": "nit: I\u0027d go with \"stoney\" here, since it applies to the chipset, not just one board.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "b9c421d77fb774121315d104b88c826746b350b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d562e4a2_357ba82a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-01T23:29:12Z",
+      "side": 1,
+      "message": "nit: Could add mention of b/72426192 making the functional change",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "b9c421d77fb774121315d104b88c826746b350b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befb699d_3b373385",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-01T23:29:12Z",
+      "side": 1,
+      "message": "nit: I\u0027d leave the space there to keep this macro consistent with many other files.",
+      "revId": "b9c421d77fb774121315d104b88c826746b350b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
