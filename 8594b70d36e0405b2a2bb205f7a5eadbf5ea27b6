@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d3ed4c3_385ecea7",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-01T16:38:33Z",
+      "side": 1,
+      "message": "There are some batteries being added soon that will need to send 2 different data values for reg_data[0] and reg_data[1].\nSee comments here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1072637/4/include/battery_fuel_gauge.h#18",
+      "parentUuid": "0ab28525_a7c52362",
+      "range": {
+        "startLine": 110,
+        "startChar": 54,
+        "endLine": 110,
+        "endChar": 65
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d7288f0_9c51ac90",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "if (battery_is_cut_off() !\u003d BATTERY_CUTOFF_STATE_NORMAL)\nFor both the cases of booting from cut-off or doing cut-off,\ndefault battery_cutoff_state is BATTERY_CUTOFF_STATE_NORMAL.\nThis state changes only when we cutoff the battery.\nBefore the cutoff is issued, battery status is already known (BP_YES) and the hardware battery status wont change hence batt_pres will always be equal to batt_pres_prev. This portion of the code is dead code.",
       "parentUuid": "b4566692_193cd00a",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 56
+      },
+      "revId": "8594b70d36e0405b2a2bb205f7a5eadbf5ea27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5f78a78_f422452f",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-01T16:38:33Z",
+      "side": 1,
+      "message": "Ah, excellent point, thanks for the explanation. I\u0027ll do a new change to clean this up.\nI think the name of the battery_is_cut_off() function is part of the problem, so I added that to crbug.com/846412",
+      "parentUuid": "94cac736_c6bf669d",
       "range": {
         "startLine": 214,
         "startChar": 1,
