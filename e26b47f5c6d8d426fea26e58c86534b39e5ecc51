@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32184291_429d4bb2",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-01T12:39:28Z",
+      "side": 1,
+      "message": "This seems to be a very board-specific thing i.e. whether eSPI_RESET# is going to GPD2 or GPB7. We should not hard-code such settings in chip code. Ideally, this should be handled using alternate function for gpio or based off some other indication from board.",
+      "range": {
+        "startLine": 427,
+        "startChar": 47,
+        "endLine": 427,
+        "endChar": 55
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120a3919_e5712bc3",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-01T12:39:28Z",
+      "side": 1,
+      "message": "Is there a reason why this is not handled the same way we handle other alternate functions for GPIOs?",
+      "range": {
+        "startLine": 433,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 50
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2750b414_16b78bb1",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-01T12:39:28Z",
+      "side": 1,
+      "message": "Why is there a special handler for eSPI? Why does this not go through the usual gpio_irq_handlers?",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 6
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc3b5a3_f9fc49fe",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-01T12:39:28Z",
+      "side": 1,
+      "message": "Again, this is very specific to GPD2. If some board decided to use GPB7, then this will have to be IT83XX_IRQ_WKO106",
+      "range": {
+        "startLine": 1231,
+        "startChar": 0,
+        "endLine": 1232,
+        "endChar": 48
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
