@@ -168,56 +168,6 @@ static int battery_init(void)
 }
 
 /*
- * This function checks the charge/discharge FET status bits. Each battery type
- * supported provides the register address, mask, and disconnect value for these
- * 2 FET status bits. If the FET status matches the disconnected value, then
- * BATTERY_DISCONNECTED is returned. This function is required to handle the
- * cases when the fuel gauge is awake and will return a non-zero state of
- * charge, but is not able yet to provide power (i.e. discharge FET is not
- * active). By returning BATTERY_DISCONNECTED the AP will not be powered up
- * until either the external charger is able to provided enough power, or
- * the battery is able to provide power and thus prevent a brownout when the
- * AP is powered on by the EC.
- */
-enum battery_disconnect_state battery_get_disconnect_state(void)
-{
-	int rv;
-	int reg;
-	uint8_t data[6];
-	int type = board_get_battery_type();
-
-	/* If battery type is not known, can't check CHG/DCHG FETs */
-	if (type == BATTERY_TYPE_COUNT) {
-		/* Still don't know, so return here */
-		return BATTERY_DISCONNECT_ERROR;
-	}
-
-	/* Read the status of charge/discharge FETs */
-	if (board_battery_info[type].fuel_gauge.fet.mfgacc_support == 1) {
-		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-				SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
-		/* Get the lowest 16bits of the OperationStatus() data */
-		reg = data[2] | data[3] << 8;
-	} else
-		rv = sb_read(board_battery_info[type].fuel_gauge.fet.reg_addr,
-					&reg);
-
-	if (rv)
-		return BATTERY_DISCONNECT_ERROR;
-
-	if ((reg & board_battery_info[type].fuel_gauge.fet.reg_mask) ==
-	    board_battery_info[type].fuel_gauge.fet.disconnect_val) {
-		CPRINTS("Batt disconnected: reg 0x%04x mask 0x%04x disc 0x%04x",
-			reg,
-			board_battery_info[type].fuel_gauge.fet.reg_mask,
-			board_battery_info[type].fuel_gauge.fet.disconnect_val);
-		return BATTERY_DISCONNECTED;
-	}
-
-	return BATTERY_NOT_DISCONNECTED;
-}
-
-/*
  * Physical detection of battery.
  */
 static enum battery_present battery_check_present_status(void)
