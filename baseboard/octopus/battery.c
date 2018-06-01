@@ -159,14 +159,6 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(GPIO_EC_BATT_PRES_L) ? BP_NO : BP_YES;
 }
 
-static int battery_init(void)
-{
-	int batt_status;
-
-	return battery_status(&batt_status) ? 0 :
-		!!(batt_status & STATUS_INITIALIZED);
-}
-
 /*
  * This function checks the charge/discharge FET status bits. Each battery type
  * supported provides the register address, mask, and disconnect value for these
@@ -179,11 +171,10 @@ static int battery_init(void)
  * the battery is able to provide power and thus prevent a brownout when the
  * AP is powered on by the EC.
  */
-enum battery_disconnect_state battery_get_disconnect_state(void)
+static enum battery_disconnect_state battery_get_init_state(void)
 {
 	int rv;
 	int reg;
-	uint8_t data[6];
 	int type = board_get_battery_type();
 
 	/* If battery type is not known, can't check CHG/DCHG FETs */
@@ -192,27 +183,13 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 		return BATTERY_DISCONNECT_ERROR;
 	}
 
-	/* Read the status of charge/discharge FETs */
-	if (board_battery_info[type].fuel_gauge.fet.mfgacc_support == 1) {
-		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-				SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
-		/* Get the lowest 16bits of the OperationStatus() data */
-		reg = data[2] | data[3] << 8;
-	} else
-		rv = sb_read(board_battery_info[type].fuel_gauge.fet.reg_addr,
-					&reg);
-
+	rv = sb_read(board_battery_info[type].fuel_gauge.fet.reg_addr, &reg);
 	if (rv)
 		return BATTERY_DISCONNECT_ERROR;
 
 	if ((reg & board_battery_info[type].fuel_gauge.fet.reg_mask) ==
-	    board_battery_info[type].fuel_gauge.fet.disconnect_val) {
-		CPRINTS("Batt disconnected: reg 0x%04x mask 0x%04x disc 0x%04x",
-			reg,
-			board_battery_info[type].fuel_gauge.fet.reg_mask,
-			board_battery_info[type].fuel_gauge.fet.disconnect_val);
+	    board_battery_info[type].fuel_gauge.fet.disconnect_val)
 		return BATTERY_DISCONNECTED;
-	}
 
 	return BATTERY_NOT_DISCONNECTED;
 }
@@ -244,10 +221,10 @@ static enum battery_present battery_check_present_status(void)
 	/*
 	 * Ensure that battery is:
 	 * 1. Not in cutoff
-	 * 2. Initialized
+	 * 2. Initialized or disconnected
 	 */
 	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_init() == 0) {
+	    battery_get_init_state() != BATTERY_NOT_DISCONNECTED) {
 		batt_pres = BP_NO;
 	}
 
