@@ -159,14 +159,6 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(GPIO_EC_BATT_PRES_L) ? BP_NO : BP_YES;
 }
 
-static int battery_init(void)
-{
-	int batt_status;
-
-	return battery_status(&batt_status) ? 0 :
-		!!(batt_status & STATUS_INITIALIZED);
-}
-
 /*
  * This function checks the charge/discharge FET status bits. Each battery type
  * supported provides the register address, mask, and disconnect value for these
@@ -206,13 +198,8 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 		return BATTERY_DISCONNECT_ERROR;
 
 	if ((reg & board_battery_info[type].fuel_gauge.fet.reg_mask) ==
-	    board_battery_info[type].fuel_gauge.fet.disconnect_val) {
-		CPRINTS("Batt disconnected: reg 0x%04x mask 0x%04x disc 0x%04x",
-			reg,
-			board_battery_info[type].fuel_gauge.fet.reg_mask,
-			board_battery_info[type].fuel_gauge.fet.disconnect_val);
+	    board_battery_info[type].fuel_gauge.fet.disconnect_val)
 		return BATTERY_DISCONNECTED;
-	}
 
 	return BATTERY_NOT_DISCONNECTED;
 }
@@ -244,10 +231,10 @@ static enum battery_present battery_check_present_status(void)
 	/*
 	 * Ensure that battery is:
 	 * 1. Not in cutoff
-	 * 2. Initialized
+	 * 2. Initialized or disconnected
 	 */
 	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_init() == 0) {
+	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED) {
 		batt_pres = BP_NO;
 	}
 
