@@ -24,7 +24,7 @@
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"trackpad", I2C_PORT_TP,   400, GPIO_I2C0_SCL,   GPIO_I2C0_SDA},
+	{"trackpad", I2C_PORT_TP,   1000, GPIO_I2C0_SCL,   GPIO_I2C0_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
