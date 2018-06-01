@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "3f7b8a59_54a3613d",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-01T05:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe0556bf_6a7e2d99",
+      "range": {
+        "startLine": 280,
+        "startChar": 39,
+        "endLine": 280,
+        "endChar": 40
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7411829_61a8fcdc",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "I see that now. I would not have been able to understand that table without you explaining it. Can you give doc feedback that the \u0027b7@31A1h\u0027 clause should be under another column labeled \u0027Enable Bit\u0027 or something like that?",
       "parentUuid": "7509cc97_cc5204b4",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 478,
+        "endChar": 53
+      },
+      "revId": "95bbd85db8afc2f0aea5b0c68332eef77bcde888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1350957_2c1ece33",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-01T05:56:44Z",
+      "side": 1,
+      "message": "Sorry about the confusion. I will feedback your suggestions to our doc team.",
+      "parentUuid": "b320f527_38048cbe",
       "range": {
         "startLine": 475,
         "startChar": 1,
