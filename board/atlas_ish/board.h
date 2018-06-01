@@ -34,11 +34,17 @@
 #define CONFIG_I2C_MASTER
 
 /* I2C ports */
+#define CONFIG_TOUCHPAD_I2C_PORT ISH_I2C0
 #define I2C_PORT_TP ISH_I2C0
 
 /* Sensor */
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
+
+/* Touchpad IPC */
+#define CONFIG_TOUCHPAD
+#define CONFIG_TOUCHPAD_ELAN_IPC
+#define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
@@ -49,7 +55,7 @@
 /* Undefine unfeatures */
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_I2C_SCAN
-#undef CONFIG_CMD_I2C_XFER
+/*#undef CONFIG_CMD_I2C_XFER*/
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_CMD_POWER_AP
 #undef CONFIG_CMD_POWERINDEBUG

@@ -16,6 +16,7 @@
 #include "math_util.h"
 #include "motion_sense.h"
 #include "task.h"
+#include "touchpad.h"
 #include "uart.h"
 
 #include "gpio_list.h" /* has to be included last */
