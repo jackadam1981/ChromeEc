@@ -69,6 +69,24 @@
       "revId": "97c8447df0dca8f867cd9918f98a3cbe38a6ab2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7da7ba_63ae1ded",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-01T00:20:59Z",
+      "side": 1,
+      "message": "I added a 2ms delay between modifying the 1.2V / 1.8V and the 3.3V rail.",
+      "parentUuid": "91e03621_a7ba856e",
+      "revId": "97c8447df0dca8f867cd9918f98a3cbe38a6ab2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
