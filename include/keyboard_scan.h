@@ -76,6 +76,11 @@ static inline uint32_t keyboard_scan_get_boot_keys(void)
 }
 #endif
 
+enum keyboard_id {
+	KEYBOARD_ID_UNSUPPORTED = 0,
+	KEYBOARD_ID_UNREADABLE = 0xffffffff,
+};
+
 /**
  * Return a pointer to the current debounced keyboard matrix state, which is
  * KEYBOARD_COLS bytes long.
@@ -116,6 +121,21 @@ static inline void keyboard_scan_enable(int enable,
  * Boards may supply this function to suppress audio noise.
  */
 void keyboard_suppress_noise(void);
+#endif
+
+#ifdef CONFIG_KEYBOARD_LANGUAGE_ID
+/**
+ * Get the KEYBOARD ID for a keyboard
+ *
+ * @return A value that identifies keyboard variants. Its meaning and
+ * the number of bits actually used is the supported keyboard layout.
+ */
+int keyboard_get_keyboard_id(void);
+#else
+static inline int keyboard_get_keyboard_id(void)
+{
+	return KEYBOARD_ID_UNSUPPORTED;
+}
 #endif
 
 #endif  /* __CROS_EC_KEYBOARD_SCAN_H */

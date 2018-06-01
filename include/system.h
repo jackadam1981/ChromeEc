@@ -250,6 +250,8 @@ int system_get_board_version(void);
  */
 const char *system_get_build_info(void);
 
+extern int keyboard_get_keyboard_id(void);
+
 /* Flags for system_reset() */
 /*
  * Hard reset.  Cuts power to the entire system.  If not present, does a soft
