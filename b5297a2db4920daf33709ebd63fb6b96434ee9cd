@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51085c1_622aa9e1",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-06-01T03:50:46Z",
+      "side": 1,
+      "message": "do we need this?",
+      "revId": "b5297a2db4920daf33709ebd63fb6b96434ee9cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8af99850_1e1bd184",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-06-01T03:50:46Z",
+      "side": 1,
+      "message": "add_keycode sounds like introducing a new keycode, instead of setting event.\n\nPerhaps something like \"set_key_event\" (similar to set_touchpad_report for touchpad HID)",
+      "range": {
+        "startLine": 605,
+        "startChar": 12,
+        "endLine": 605,
+        "endChar": 23
+      },
+      "revId": "b5297a2db4920daf33709ebd63fb6b96434ee9cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
