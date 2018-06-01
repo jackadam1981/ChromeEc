@@ -32,17 +32,18 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct board_batt_params board_battery_info[] = {
-	/* Panasonic AP1505L Battery Information */
+	/* Panasonic AC15A3J Battery Information */
 	[BATTERY_PANASONIC] = {
 		.fuel_gauge = {
 			.manuf_name = "PANASONIC",
+			.device_name = "AC15A3J",
 			.ship_mode = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
 			},
 			.fet = {
-				.reg_addr = 0x0,
-				.reg_mask = 0x4000,
+				.reg_addr = 0x16,	/* BatteryStatus() */
+				.reg_mask = 0x0080,	/* 0x0080 Initialized */
 				.disconnect_val = 0x0,
 			}
 		},
@@ -64,13 +65,14 @@ const struct board_batt_params board_battery_info[] = {
 	[BATTERY_SANYO] = {
 		.fuel_gauge = {
 			.manuf_name = "SANYO",
+			.device_name = "AC15A3J",
 			.ship_mode = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
 			},
 			.fet = {
-				.reg_addr = 0x0,
-				.reg_mask = 0x4000,
+				.reg_addr = 0x16,	/* BatteryStatus() */
+				.reg_mask = 0x0080,	/* 0x0080 Initialized */
 				.disconnect_val = 0x0,
 			}
 		},
