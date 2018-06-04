@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "acf389e4_26f2efe9",
+        "filename": "core/cortex-m/cache.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-04T10:05:21Z",
+      "side": 1,
+      "message": "I actually did it from the ARMv7 architecture manual (in the grand and difficult goal of being generic) then checked it again the STM Programming Manual. You might have noticed that the assembly is subtly different ... since they obviously originated from mostly the same constraints/specs but with different implementers.",
+      "parentUuid": "58ddc9c5_d75c8405",
+      "revId": "bd525e96c0a3b36de153edab9408f027e199cb01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f8026bf_018ba15b",
         "filename": "core/cortex-m/cache.S",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2018-06-04T02:29:51Z",
       "side": 1,
       "message": "Maybe a short note here that SCB_DC[C]ISW use: bits 30-31 as way, bits 5 to 13 as set.",
+      "revId": "bd525e96c0a3b36de153edab9408f027e199cb01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ec7375_252bd817",
+        "filename": "core/cortex-m/cache.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-04T10:05:21Z",
+      "side": 1,
+      "message": "added",
+      "parentUuid": "5f8026bf_018ba15b",
       "revId": "bd525e96c0a3b36de153edab9408f027e199cb01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
