@@ -26,6 +26,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
+static int init_done;
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -195,6 +196,8 @@ static int sn5s330_init(int port)
 	int reg;
 	const int i2c_port  = ppc_chips[port].i2c_port;
 	const int i2c_addr = ppc_chips[port].i2c_addr;
+
+	init_done = 1;
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Set the sourcing current limit value. */
@@ -468,6 +471,15 @@ static int sn5s330_is_sourcing_vbus(int port)
 {
 	int is_sourcing_vbus = 0;
 	int rv;
+
+	/*
+	 * sn5s330_init() will turn off the PP1 (source) FET, but
+	 * sn5s330_is_sourcing_vbus() can be called before PPC init.
+	 * Return 0 in this case, rather than reading the state set by the
+	 * previous boot.
+	 */
+	if (!init_done)
+		return 0;
 
 	rv = sn5s330_is_pp_fet_enabled(port, SN5S330_PP1, &is_sourcing_vbus);
 	if (rv) {
