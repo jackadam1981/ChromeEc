@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i8042_protocol.h"
+#include "keyboard_8042.h"
 #include "keyboard_8042_sharedlib.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
@@ -58,7 +59,17 @@ enum scancode_set_list {
 	SCANCODE_MAX = SCANCODE_SET_3,
 };
 
-#define MAX_SCAN_CODE_LEN 4
+#ifdef CONFIG_KEYBOARD_MAPPING
+enum special_key_func_list {
+	SWITCH_DISPLAY = 0,
+	DIM_SCREEN = 1,
+	BRIGHTEN_SCREEN = 2,
+	KEY_PAUSE = 3,
+	KEY_BREAK = 4,
+};
+#endif
+
+#define MAX_SCAN_CODE_LEN 8
 
 /* Number of bytes host can get behind before we start generating extra IRQs */
 #define KB_TO_HOST_RETRIES 3
@@ -109,6 +120,41 @@ static uint8_t controller_ram[0x20] = {
 };
 static uint8_t A20_status;
 static void keyboard_special(uint16_t k);
+
+#ifdef CONFIG_KEYBOARD_MAPPING
+static int fn_key_enabled;  /* default key is disable. */
+static void fn_key_check(uint8_t pressed);
+static int check_fn_scancode_set(uint16_t make_code,
+				 enum scancode_set_list code_set,
+				 uint8_t pressed, uint8_t *scan_code,
+				 int32_t *len);
+static int check_combine_key_set(uint16_t make_code,
+				 enum scancode_set_list code_set,
+				 uint8_t pressed, uint8_t *scan_code,
+				 int32_t *len);
+static uint8_t *memmap_kb_mapping_type;
+
+enum {
+	KEYBOARD_MAPPING_TYPE_NORMAL_OS = 0,
+	KEYBOARD_MAPPING_TYPE_ALT_OS = 1,
+};
+#endif
+
+void os_type_init(void)
+{
+	memmap_kb_mapping_type = host_get_memmap(EC_MEMMAP_KB_MAPPING_TYPE);
+	clear_os_type();
+}
+
+void set_os_type(void)
+{
+	*memmap_kb_mapping_type = KEYBOARD_MAPPING_TYPE_ALT_OS;
+}
+
+void clear_os_type(void)
+{
+	*memmap_kb_mapping_type = KEYBOARD_MAPPING_TYPE_NORMAL_OS;
+}
 
 /*
  * Scancode settings
@@ -306,6 +352,76 @@ static void scancode_bytes(uint16_t make_code, int8_t pressed,
 	}
 }
 
+/**
+ * Return the make or break code bytes for the active scancode set.
+ *
+ * @param make_code	The make code to generate the make or break code from
+ * @param pressed	Whether the key or button was pressed
+ * @param code_set	The scancode set being used
+ * @param scan_code	An array of bytes to store the make or break code in
+ * @param len		The number of valid bytes to send in scan_code
+ */
+static void special_scancode_bytes(enum special_key_func_list key_func,
+				   int8_t pressed,
+				   enum scancode_set_list code_set,
+				   uint8_t *scan_code, int32_t *len)
+{
+	*len = 0;
+
+	switch (code_set) {
+	case SCANCODE_SET_1:
+		switch (key_func) {
+		case KEY_PAUSE:
+			*len += 6;
+			scan_code[0] = 0xe1;
+			scan_code[1] = 0x1d;
+			scan_code[2] = 0x45;
+			scan_code[3] = 0xe1;
+			scan_code[4] = 0x9d;
+			scan_code[5] = 0xc5;
+			break;
+		case KEY_BREAK:
+			*len += 4;
+			scan_code[0] = 0xe0;
+			scan_code[1] = 0x46;
+			scan_code[2] = 0xe0;
+			scan_code[3] = 0xc6;
+			break;
+		default:
+			break;
+		}
+		break;
+
+	case SCANCODE_SET_2:
+		switch (key_func) {
+		case KEY_PAUSE:
+			*len += 8;
+			scan_code[0] = 0xe1;
+			scan_code[1] = 0x14;
+			scan_code[2] = 0x77;
+			scan_code[3] = 0xe1;
+			scan_code[4] = 0xf0;
+			scan_code[5] = 0x14;
+			scan_code[6] = 0xf0;
+			scan_code[7] = 0x77;
+			break;
+		case KEY_BREAK:
+			*len += 5;
+			scan_code[0] = 0xe0;
+			scan_code[1] = 0x7e;
+			scan_code[2] = 0xe0;
+			scan_code[3] = 0xf0;
+			scan_code[4] = 0x7e;
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
+}
+
 static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 					  int8_t pressed,
 					  enum scancode_set_list code_set,
@@ -326,17 +442,36 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 
 	switch (code_set) {
 	case SCANCODE_SET_1:
+#ifdef CONFIG_KEYBOARD_MAPPING
 		make_code = scancode_set1[row][col];
+		if (*memmap_kb_mapping_type)
+			make_code = alt_os_scancode_set1[row][col];
+#else
+		make_code = scancode_set1[row][col];
+#endif
 		break;
 
 	case SCANCODE_SET_2:
+#ifdef CONFIG_KEYBOARD_MAPPING
 		make_code = scancode_set2[row][col];
+		if (*memmap_kb_mapping_type)
+			make_code = alt_os_scancode_set2[row][col];
+#else
+		make_code = scancode_set2[row][col];
+#endif
 		break;
 
 	default:
 		CPRINTS("KB scancode set %d unsupported", code_set);
 		return EC_ERROR_UNIMPLEMENTED;
 	}
+#ifdef CONFIG_KEYBOARD_MAPPING
+	if (col == 0x00 && row == 0x03)
+		fn_key_check(pressed);
+
+	make_code = check_fn_scancode_set(make_code, code_set, pressed,
+					  scan_code, len);
+#endif
 
 	if (!make_code) {
 		CPRINTS("KB scancode %d:%d missing", row, col);
@@ -346,6 +481,188 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	scancode_bytes(make_code, pressed, code_set, scan_code, len);
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_KEYBOARD_MAPPING
+static void fn_key_check(uint8_t pressed)
+{
+	if (pressed)
+		fn_key_enabled = 1;
+	else
+		fn_key_enabled = 0;
+}
+
+static int check_combine_key_set(uint16_t make_code,
+					  enum scancode_set_list code_set,
+					  uint8_t pressed,
+					  uint8_t *scan_code, int32_t *len)
+{
+	enum special_key_func_list key_func;
+
+	if (make_code >= 0xf000 && make_code < 0xf100) {
+		key_func = make_code & 0x00ff;
+		switch (code_set) {
+		case SCANCODE_SET_1:
+			switch (key_func) {
+			case SWITCH_DISPLAY:
+				if (pressed) {
+					scancode_bytes(0xe05b, 1, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+					scancode_bytes(0x0019, 1, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+					scancode_bytes(0x0019, 0, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+					scancode_bytes(0xe05b, 0, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+				}
+				return 0;
+
+			case DIM_SCREEN:
+				if (pressed)
+					/*
+					 * Temperary use return 0 instead
+					 * of real function
+					 */
+					return 0;
+				return 0;
+
+			case BRIGHTEN_SCREEN:
+				if (pressed)
+					/*
+					 * Temperary use return 0 instead
+					 * of real function
+					 */
+					return 0;
+				return 0;
+
+			case KEY_PAUSE:
+				if (pressed) {
+					special_scancode_bytes(key_func, 1,
+							       code_set,
+							       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+				}
+				return 0;
+
+			case KEY_BREAK:
+				if (pressed) {
+					special_scancode_bytes(key_func, 1,
+							       code_set,
+							       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+				}
+				return 0;
+
+			default:
+				CPRINTS("KB scancode set %d unsupported",
+					code_set);
+				return EC_ERROR_UNIMPLEMENTED;
+			}
+
+		case SCANCODE_SET_2:
+			switch (key_func) {
+			case SWITCH_DISPLAY:
+				if (pressed) {
+					scancode_bytes(0xe01f, 1, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+					scancode_bytes(0x004d, 1, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+					scancode_bytes(0x004d, 0, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+					scancode_bytes(0xe01f, 0, code_set,
+						       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+				}
+				return 0;
+
+			case DIM_SCREEN:
+				if (pressed)
+					/*
+					 * Temperary use return 0 instead
+					 * of real function
+					 */
+					return 0;
+				return 0;
+
+			case BRIGHTEN_SCREEN:
+				if (pressed)
+					/*
+					 * Temperary use return 0 instead
+					 * of real function
+					 */
+					return 0;
+				return 0;
+
+			case KEY_PAUSE:
+				if (pressed) {
+					special_scancode_bytes(key_func, 1,
+							       code_set,
+							       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+				}
+				return 0;
+
+			case KEY_BREAK:
+				if (pressed) {
+					special_scancode_bytes(key_func, 1,
+							       code_set,
+							       scan_code, len);
+					i8042_send_to_host(*len, scan_code);
+				}
+				return 0;
+
+			default:
+				CPRINTS("KB scancode set %d unsupported",
+					code_set);
+				return EC_ERROR_UNIMPLEMENTED;
+			}
+
+		default:
+			CPRINTS("KB scancode set %d unsupported", code_set);
+			return EC_ERROR_UNIMPLEMENTED;
+		}
+		return 0;
+	}
+
+	return make_code;
+}
+
+static int check_fn_scancode_set(uint16_t make_code,
+					  enum scancode_set_list code_set,
+					  uint8_t pressed,
+					  uint8_t *scan_code, int32_t *len)
+{
+	uint8_t sets;
+
+	if (make_code >= 0xff00) {
+		make_code &= 0x00ff;
+		sets = make_code & 0x1f;
+		switch (code_set) {
+		case SCANCODE_SET_1:
+			make_code = fn_scancode_set1[sets][fn_key_enabled];
+			break;
+
+		case SCANCODE_SET_2:
+			make_code = fn_scancode_set2[sets][fn_key_enabled];
+			break;
+
+		default:
+			CPRINTS("KB scancode set %d unsupported", code_set);
+			return EC_ERROR_UNIMPLEMENTED;
+		}
+	}
+	make_code = check_combine_key_set(make_code, code_set, pressed,
+					  scan_code, len);
+
+	return make_code;
+}
+#endif
 
 /**
  * Set typematic delays based on host data byte.
@@ -1113,7 +1430,7 @@ static int command_keyboard(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(kbd, command_keyboard,
-			"[0 | 1]",
+			"[on | off]",
 			"Print or toggle keyboard info");
 
 

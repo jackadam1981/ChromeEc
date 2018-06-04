@@ -28,4 +28,8 @@ void button_state_changed(enum keyboard_button_type button, int is_pressed);
  */
 void keyboard_host_write(int data, int is_cmd);
 
+void os_type_init(void);
+void set_os_type(void);
+void clear_os_type(void);
+
 #endif  /* __CROS_EC_KEYBOARD_8042_H */

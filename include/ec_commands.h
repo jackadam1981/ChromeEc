@@ -108,7 +108,10 @@
 /* 0x94 - 0x99: 1st Accelerometer */
 /* 0x9a - 0x9f: 2nd Accelerometer */
 #define EC_MEMMAP_GYRO_DATA        0xa0 /* Gyroscope data 0xa0 - 0xa5 */
-/* Unused 0xa6 - 0xdf */
+
+/* Current KB mapping type */
+#define EC_MEMMAP_KB_MAPPING_TYPE  0xa6
+/* Unused 0xa7 - 0xdf */
 
 /*
  * ACPI is unable to access memory mapped data at or above this offset due to
@@ -324,6 +327,9 @@
  */
 #define EC_ACPI_MEM_DEVICE_ORIENTATION 0x09
 #define EC_ACPI_MEM_DEVICE_TABLET_MODE 0x01
+
+/* For BIOS notifyto choose KB mapping */
+#define EC_ACPI_MEM_KB_MAPPING_TYPE     0x0a
 
 /*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data

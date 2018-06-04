@@ -9,6 +9,7 @@
 #include "dptf.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "keyboard_8042.h"
 #include "lpc.h"
 #include "ec_commands.h"
 #include "tablet_mode.h"
@@ -232,6 +233,13 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 				dptf_set_charging_current_limit(data);
 			}
 			break;
+#endif
+#ifdef CONFIG_KEYBOARD_MAPPING
+		case EC_ACPI_MEM_KB_MAPPING_TYPE:
+			if (data == 0x01)
+				set_os_type();
+			else
+				clear_os_type();
 #endif
 		default:
 			CPRINTS("ACPI write 0x%02x = 0x%02x (ignored)",
