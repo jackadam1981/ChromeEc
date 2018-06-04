@@ -50,13 +50,6 @@ static enum {
 	STATE_SEND_TO_MOUSE,
 } data_port_state = STATE_NORMAL;
 
-enum scancode_set_list {
-	SCANCODE_GET_SET = 0,
-	SCANCODE_SET_1,
-	SCANCODE_SET_2,
-	SCANCODE_SET_3,
-	SCANCODE_MAX = SCANCODE_SET_3,
-};
 
 #define MAX_SCAN_CODE_LEN 4
 
@@ -191,6 +184,53 @@ static void kblog_put(char type, uint8_t byte)
 }
 
 /*****************************************************************************/
+
+#ifdef CONFIG_KEYBOARD_DYNAMIC_MAPPING
+static uint8_t *memmap_kb_mapping_type;
+
+void keyboard_select_mapping(int mapping)
+{
+	if (mapping < 0 || mapping >= KEYBOARD_MAPPING_INVALID)
+		return;
+	if (!memmap_kb_mapping_type)
+		memmap_kb_mapping_type = host_get_memmap(
+				EC_MEMMAP_KB_MAPPING_TYPE);
+	assert(memmap_kb_mapping_type);
+	*memmap_kb_mapping_type = mapping;
+
+	/* Notify board-specific handler. */
+	keyboard_board_mapping_changed(mapping);
+}
+#endif
+
+int makecode_match(uint16_t make_code, enum scancode_set_list code_set,
+		   const struct makecode_entry *entry)
+{
+	/* Compare SET 2 (default) first. */
+	if (code_set == SCANCODE_SET_2)
+		return make_code == entry->set2;
+	if (code_set == SCANCODE_SET_1)
+		return make_code == entry->set1;
+	return 0;
+}
+
+uint16_t makecode_translate(
+		uint16_t make_code, enum scancode_set_list code_set,
+		const struct makecode_translate_entry *entries, size_t count)
+{
+	for (; count >= 0; count--, entries++) {
+		if (makecode_match(code_set, make_code, &entries->from)) {
+			if (code_set == SCANCODE_SET_2)
+				return entries->to.set2;
+			if (code_set == SCANCODE_SET_1)
+				return entries->to.set1;
+
+			/* Should never reach here. */
+			assert(!"Unexpected code set");
+		}
+	}
+	return make_code;
+}
 
 void keyboard_host_write(int data, int is_cmd)
 {
@@ -337,6 +377,15 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 		CPRINTS("KB scancode set %d unsupported", code_set);
 		return EC_ERROR_UNIMPLEMENTED;
 	}
+
+#ifdef CONFIG_KEYBOARD_DYNAMIC_MAPPING
+	/**
+	 * Currently it only makes sense to apply board translation in dynamic
+	 * mapping. If we find more boards that need special processing, then
+	 * this can changed to weak linking or a specific config.
+	 */
+	make_code = keyboard_board_translate(make_code, pressed, code_set);
+#endif
 
 	if (!make_code) {
 		CPRINTS("KB scancode %d:%d missing", row, col);
@@ -1113,7 +1162,7 @@ static int command_keyboard(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(kbd, command_keyboard,
-			"[0 | 1]",
+			"[on | off]",
 			"Print or toggle keyboard info");
 
 
