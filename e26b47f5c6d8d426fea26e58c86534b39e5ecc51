@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "643e21f4_54171ca6",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-04T10:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32184291_429d4bb2",
+      "range": {
+        "startLine": 427,
+        "startChar": 47,
+        "endLine": 427,
+        "endChar": 55
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "120a3919_e5712bc3",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-01T12:39:28Z",
       "side": 1,
       "message": "Is there a reason why this is not handled the same way we handle other alternate functions for GPIOs?",
+      "range": {
+        "startLine": 433,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 50
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439bd0c9_26ee57cb",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-04T10:52:16Z",
+      "side": 1,
+      "message": "I change to declare the espi_reset signal in gpio.inc.",
+      "parentUuid": "120a3919_e5712bc3",
       "range": {
         "startLine": 433,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "89a4312a_29927947",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-04T10:52:16Z",
+      "side": 1,
+      "message": "We don\u0027t need this special handler if we declare interrupt handler of the espi_reset signal in gpio.inc.",
+      "parentUuid": "2750b414_16b78bb1",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 6
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cc3b5a3_f9fc49fe",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "520d2bf9_b6a87569",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-04T10:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc3b5a3_f9fc49fe",
+      "range": {
+        "startLine": 1231,
+        "startChar": 0,
+        "endLine": 1232,
+        "endChar": 48
+      },
+      "revId": "e26b47f5c6d8d426fea26e58c86534b39e5ecc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
