@@ -6481,8 +6481,17 @@ static int cmd_cbi(int argc, char *argv[])
 			return -1;
 		}
 		r = ec_inbuf;
-		if (rv <= sizeof(uint32_t))
-			printf("As integer: %u (0x%x)\n", r[0], r[0]);
+		if (rv <= sizeof(uint32_t)) {
+			uint32_t val;
+			if (rv <= sizeof(uint8_t))
+				val = *(uint8_t *)r;
+			else if (rv <= sizeof(uint16_t) + 1)
+				/* 24-bit integers not supported */
+				val = *(uint16_t *)r;
+			else
+				val = *(uint32_t *)r;
+			printf("As integer: %u (0x%x)\n", val, val);
+		}
 		printf("As binary:");
 		for (i = 0; i < rv; i++) {
 			if (i % 32 == 31)
