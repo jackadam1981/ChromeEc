@@ -1840,6 +1840,9 @@
 /* Enable LDN for KBC mouse */
 #undef CONFIG_IT83XX_ENABLE_MOUSE_DEVICE
 
+/* eSPI_reset# is enabled on GPB7 */
+#undef CONFIG_IT83XX_ESPI_RESET_L_ON_GPB7
+
 /*
  * The IT8320 supports e-flash clock up to 48 MHz (IT8390 maximum is 32 MHz).
  * Enable it if we want better performance of fetching instruction from e-flash.
