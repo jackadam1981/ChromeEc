@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6ce96f6_258885eb",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-04T23:51:28Z",
+      "side": 1,
+      "message": "battery_init() is equivalent to battery_get_disconnect_state() for TI fuel gauge.\nThis may be always 1 for non TI fuel gauge. We can either define CONFIG_BATTERY_PRESENT_CUSTOM or CONFIG_BATTERY_REVIVE_DISCONNECT.",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "5a211d92c47df728237d6a934be4e47ebad5366e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
