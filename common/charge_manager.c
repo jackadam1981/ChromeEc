@@ -908,7 +908,18 @@ void charge_manager_leave_safe_mode(void)
 	if (left_safe_mode)
 		return;
 
+	/*
+	 * If the battery is booting from shipmode, it cannot provide power
+	 * hence do not disable charge ports instead assume the power source
+	 * port as dedicated charge port till the battery is initialized
+	 * and able to provide power.
+	 */
+#ifdef CONFIG_BATTERY_PRESENT_CUSTOM
+	left_safe_mode = (battery_is_present() == BP_YES);
+#else
 	left_safe_mode = 1;
+#endif /* CONFIG_BATTERY_PRESENT_CUSTOM */
+
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
 }
