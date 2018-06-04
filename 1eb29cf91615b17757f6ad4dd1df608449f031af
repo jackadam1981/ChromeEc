@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91d0ab96_69727375",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-04T20:14:06Z",
+      "side": 1,
+      "message": "I thought that Scott had deliberately removed checking battery_get_disconnect_state() from battery_is_present(). This is undoing that change, and I think breaks CONFIG_BATTERY_REVIVE_DISCONNECT.",
+      "revId": "1eb29cf91615b17757f6ad4dd1df608449f031af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
