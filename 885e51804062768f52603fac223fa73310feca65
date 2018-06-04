@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88a56a4c_9e97a256",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-04T15:27:19Z",
+      "side": 1,
+      "message": "instead of using a #define here, let\u0027s use a condition similar to\n\nif (gpio_list[GPIO_ESPI_RESET_L].port \u003d\u003d GPIO_D \u0026\u0026 gpio_list[GPIO_ESPI_RESET_L].mask \u003d\u003d 0x04)\nelse if(..)\nelse\n  print error; disable;\n\n\nIf the function doesn\u0027t already exist, we should probably create a function that tests the port and mask for a given gpio_signal",
+      "range": {
+        "startLine": 437,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 6
+      },
+      "revId": "885e51804062768f52603fac223fa73310feca65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
