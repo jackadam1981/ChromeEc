@@ -16,6 +16,24 @@
       "revId": "920af3f333a015fe19574e2d4e979947314ed051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5999e800_11b9d6c8",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-04T07:16:49Z",
+      "side": 1,
+      "message": "This is an interesting and somewhat complicated question.\n\nInitially I would have thought that dsb was enough too.\nFirst of all, experimentally it is not, it\u0027s failing with only dsb (the same way it was failing with nothing).\nMy understanding is the following:\n  while the write to the KEYR register can be observed after the dsb, a locking fault in this case is triggering a imprecise bus fault exception (which is effectively an asynchronous exception).\nIn our runtime, we need to ensure that bus_fault_ignored is still set when we go through our bus_fault_handler.\nWhile I haven\u0027t found this specific case in the ISA manual,\nit states: \"The architecture makes no guarantee about how an asynchronous fault is reported relative to the instruction that caused the fault.\"\n(which is likely what I\u0027m observing here only on the M7 with a fancier pipeline)\nand while not explicitly stated either, ISB seems a proper way of solving this as it says \"Using an ISB ensures that the effects of context altering operations executed before the ISB are visible to the instructions fetched after the ISB instruction. Examples of context altering operations that might require the insertion of an ISB instruction to ensure the operations are complete are: [...] Re-prioritizing the exceptions that have configurable priority.\"",
+      "parentUuid": "3218ae19_87a703e5",
+      "revId": "920af3f333a015fe19574e2d4e979947314ed051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
