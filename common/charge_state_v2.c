@@ -1759,11 +1759,24 @@ wait_for_it:
 #endif
 
 #ifdef CONFIG_CHARGE_MANAGER
-		if (curr.batt.state_of_charge >=
-		    CONFIG_CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT &&
-		    !battery_seems_to_be_disconnected)
-			charge_manager_leave_safe_mode();
+		/*
+		 * If the battery is booting from shipmode, it cannot provide
+		 * power even if state of charge is valid threshold limit hence
+		 * do not leave safe mode port till the battery is initialized
+		 * and able to provide power.
+		 */
+		if (
+#ifdef CONFIG_BATTERY_PRESENT_CUSTOM
+			battery_is_present() == BP_YES &&
+#elif defined(CONFIG_BATTERY_REVIVE_DISCONNECT)
+			battery_get_disconnect_state() !=
+			BATTERY_NOT_DISCONNECTED &&
 #endif
+			curr.batt.state_of_charge >=
+			CONFIG_CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT &&
+			!battery_seems_to_be_disconnected)
+			charge_manager_leave_safe_mode();
+#endif /* CONFIG_CHARGE_MANAGER */
 
 		/* Keep the AP informed */
 		if (need_static)
