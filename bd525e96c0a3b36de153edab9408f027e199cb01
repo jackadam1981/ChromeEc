@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58ddc9c5_d75c8405",
+        "filename": "core/cortex-m/cache.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-04T02:29:51Z",
+      "side": 1,
+      "message": "Can you maybe indicate that this is inspired from PM section 4.8.5?",
+      "revId": "bd525e96c0a3b36de153edab9408f027e199cb01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f8026bf_018ba15b",
+        "filename": "core/cortex-m/cache.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-04T02:29:51Z",
+      "side": 1,
+      "message": "Maybe a short note here that SCB_DC[C]ISW use: bits 30-31 as way, bits 5 to 13 as set.",
+      "revId": "bd525e96c0a3b36de153edab9408f027e199cb01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
