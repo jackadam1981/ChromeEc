@@ -26,7 +26,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
-static int init_done;
+static int source_enabled[CONFIG_USB_PD_PORT_COUNT];
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -133,29 +133,6 @@ static int get_func_set3(uint8_t port, int *regval)
 	return status;
 }
 
-static int sn5s330_is_pp_fet_enabled(uint8_t port, enum sn5s330_pp_idx pp,
-			     int *is_enabled)
-{
-	int pp_bit;
-	int status;
-	int regval;
-
-	if (pp == SN5S330_PP1)
-		pp_bit = SN5S330_PP1_EN;
-	else if (pp == SN5S330_PP2)
-		pp_bit = SN5S330_PP2_EN;
-	else
-		return EC_ERROR_INVAL;
-
-	status = get_func_set3(port, &regval);
-	if (status)
-		return status;
-
-	*is_enabled = !!(pp_bit & regval);
-
-	return EC_SUCCESS;
-}
-
 static int sn5s330_pp_fet_enable(uint8_t port, enum sn5s330_pp_idx pp,
 				 int enable)
 {
@@ -185,6 +162,9 @@ static int sn5s330_pp_fet_enable(uint8_t port, enum sn5s330_pp_idx pp,
 		return status;
 	}
 
+	if (pp == SN5S330_PP1)
+		source_enabled[port] = enable;
+
 	return EC_SUCCESS;
 }
 
@@ -196,8 +176,6 @@ static int sn5s330_init(int port)
 	int reg;
 	const int i2c_port  = ppc_chips[port].i2c_port;
 	const int i2c_addr = ppc_chips[port].i2c_addr;
-
-	init_done = 1;
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Set the sourcing current limit value. */
@@ -469,26 +447,7 @@ static int sn5s330_is_vbus_present(int port)
 
 static int sn5s330_is_sourcing_vbus(int port)
 {
-	int is_sourcing_vbus = 0;
-	int rv;
-
-	/*
-	 * sn5s330_init() will turn off the PP1 (source) FET, but
-	 * sn5s330_is_sourcing_vbus() can be called before PPC init.
-	 * Return 0 in this case, rather than reading the state set by the
-	 * previous boot.
-	 */
-	if (!init_done)
-		return 0;
-
-	rv = sn5s330_is_pp_fet_enabled(port, SN5S330_PP1, &is_sourcing_vbus);
-	if (rv) {
-		CPRINTS("ppc p%d: Failed to determine source FET status! (%d)",
-			port, rv);
-		return 0;
-	}
-
-	return is_sourcing_vbus;
+	return source_enabled[port];
 }
 
 #ifdef CONFIG_USBC_PPC_POLARITY
