@@ -22,6 +22,30 @@
       "revId": "605f21f0f6d4b397d34138e338457683df587b95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d0250ef_e8c6777a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-04T06:57:33Z",
+      "side": 1,
+      "message": "the hardware has changed under my feet too, the goal here is to wrap-up the previous iteration.\nthe new bring-up is currently tracked by b/80238512 if there are still open questions when the bring-up is done, I will open a more specific bug.",
+      "parentUuid": "1aff0326_9d314664",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "605f21f0f6d4b397d34138e338457683df587b95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
