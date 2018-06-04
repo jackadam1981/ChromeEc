@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "117bcb01_b1b62c59",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6487,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-04T22:39:18Z",
+      "side": 1,
+      "message": "This is assuming host endian and that unaligned accesses are ok. Do you have anything in here ensuring what endianness values are written in? And any constructs to ensure that happens?",
+      "revId": "7a5a52eefe62bde359c75b63626559a2c7f73897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3cb916_58bd9761",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6489,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-04T22:39:18Z",
+      "side": 1,
+      "message": "Why not just use 32-bit for 24-bit instead of truncacting the value?",
+      "revId": "7a5a52eefe62bde359c75b63626559a2c7f73897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
