@@ -60,6 +60,14 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/**
+ * Init OS type to Chrome.
+ */
+static void keyboard_os_type_init(void)
+{
+	os_type_init();
+}
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
@@ -495,6 +503,10 @@ static void board_init(void)
 
 	/* Initialize PMIC */
 	hook_call_deferred(&board_pmic_init_data, 0);
+
+#ifdef CONFIG_KEYBOARD_ALTOS
+	keyboard_os_type_init();
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -685,6 +697,9 @@ static void board_chipset_startup(void)
 	/* Enable Trackpad */
 	gpio_set_level(GPIO_TRACKPAD_SHDN_L, 1);
 	hook_call_deferred(&enable_input_devices_data, 0);
+#ifdef CONFIG_KEYBOARD_ALTOS
+	keyboard_os_type_init();
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -696,6 +711,9 @@ static void board_chipset_shutdown(void)
 	dsp_wake_enable(0);
 	gpio_set_level(GPIO_TRACKPAD_SHDN_L, 0);
 	hook_call_deferred(&enable_input_devices_data, 0);
+#ifdef CONFIG_KEYBOARD_ALTOS
+	keyboard_os_type_init();
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -726,6 +744,11 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 static void board_chipset_reset(void)
 {
 	board_report_pmic_fault("CHIPSET RESET");
+#ifdef CONFIG_KEYBOARD_ALTOS
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND))
+		return;
+	keyboard_os_type_init();
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, board_chipset_reset, HOOK_PRIO_DEFAULT);
 
