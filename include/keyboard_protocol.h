@@ -32,6 +32,20 @@ void keyboard_update_button(enum keyboard_button_type button, int is_pressed);
  */
 uint32_t keyboard_get_button_state(void);
 
+#ifdef CONFIG_KEYBOARD_DYNAMIC_MAPPING
+/**
+ * Select and change keyboard mapping.
+ *
+ * @param mapping	The type of mapping to apply (see keyboard_config.h).
+ */
+void keyboard_select_mapping(int mapping);
+
+/**
+ * Returns current keyboard mapping.
+ */
+int keyboard_get_mapping(void);
+#endif
+
 /* Protocol-specific includes */
 
 #ifdef CONFIG_KEYBOARD_PROTOCOL_8042

@@ -1597,6 +1597,14 @@
  */
 #undef CONFIG_KEYBOARD_SCANCODE_MUTABLE
 
+/* Allow changing keyboard mapping dynamically (for example changing layout
+ * in AP firmware legacy mode).
+ */
+#undef CONFIG_KEYBOARD_DYNAMIC_MAPPING
+
+/* Provide board-specific scan code translation. */
+#undef CONFIG_KEYBOARD_BOARD_TRANSLATE
+
 /*
  * Call board-supplied keyboard_suppress_noise() function when the debounced
  * keyboard state changes.  Some boards use this to send a signal to the audio
