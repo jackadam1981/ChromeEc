@@ -189,18 +189,7 @@ void chipset_do_shutdown(void)
 
 void baseboard_tcpc_init(void)
 {
-	int count = 0;
 	int port;
-
-	/* Wait for disconnected battery to wake up */
-	while (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED) {
-		usleep(100 * MSEC);
-		/* Give up waiting after more than 1 second */
-		if (++count > 10) {
-			ccprintf("Battery still disconnected > 1 second!\n");
-			break;
-		}
-	}
 
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image())
