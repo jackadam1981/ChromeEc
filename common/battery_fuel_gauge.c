@@ -206,15 +206,9 @@ static enum battery_present battery_check_present_status(void)
 	if (batt_pres == batt_pres_prev)
 		return batt_pres;
 
-	/*
-	 * Ensure that battery is:
-	 * 1. Not in cutoff
-	 * 2. Initialized
-	 */
-	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_init() == 0) {
+	/* Ensure that battery is initialized. */
+	if (battery_init() == 0)
 		batt_pres = BP_NO;
-	}
 
 	return batt_pres;
 }
