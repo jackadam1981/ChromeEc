@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a08fe363_57547a68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-04T15:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d9d35a_3e4ef5e5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "b9c421d77fb774121315d104b88c826746b350b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d562e4a2_357ba82a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bbe3e0df_64cc44e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-04T15:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d562e4a2_357ba82a",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "b9c421d77fb774121315d104b88c826746b350b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "befb699d_3b373385",
         "filename": "power/stoney.c",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "b9c421d77fb774121315d104b88c826746b350b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d26bf4_5eba80c2",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-04T15:30:50Z",
+      "side": 1,
+      "message": "This was done automatically by clang-format.  It doesn\u0027t look like there is a configuration option for tweaking the token-pasting / symbol-concatenation operator\u0027s surrounding spaces.\n\nSummary of offline discussion: The value of machine-automated formatting is great enough to yield to clang-format\u0027s available set of options.",
+      "parentUuid": "befb699d_3b373385",
+      "revId": "b9c421d77fb774121315d104b88c826746b350b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
