@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f9c4d1d4_d1929a52",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-05T15:05:32Z",
+      "side": 1,
+      "message": "what does this gain us ?\nNot much probably (particularly as we have nothing to do when going to idle)",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 496,
+        "endChar": 5
+      },
+      "revId": "b0d33c79b141078e473aaf0559e9f2fefe61ef8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05a87b28_6740e931",
         "filename": "chip/it83xx/clock.c",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 4,
         "endLine": 505,
         "endChar": 20
+      },
+      "revId": "b0d33c79b141078e473aaf0559e9f2fefe61ef8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e6851a_b753f3be",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-05T15:05:32Z",
+      "side": 1,
+      "message": "It\u0027s a bit overcomplicated, \u0027standby\u0027 will work properly with interrupts masked. So we can do the same as we do on other architectures: everything with interrupt disable no special code path excepted to prepare deep sleep.\n\ne.g.\nwhile (1) {\n   interrupt_disable();\n   if (DEEP_SLEEP_ALLOW \u0026\u0026 clock_allow_low_power_idle()) {\n      /* prepare sleep mode */\n      ...\n      clock_ec_pll_ctrl(EC_PLL_DEEP_DOZE);\n   } else {\n      /* cannot deep sleep, regular doze */\n      clock_ec_pll_ctrl(EC_PLL_DOZE);\n   }\n   /* wait for the next event */\n   asm(\"standby wake_grant\");\n   idle_doze_cnt++;\n   interrupt_enable();\n   /* whatever barrier might be needed here */\n}\n\nthe version in this CL might still have race condition before the standby",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 19
       },
       "revId": "b0d33c79b141078e473aaf0559e9f2fefe61ef8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
