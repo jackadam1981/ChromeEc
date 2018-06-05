@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e2239d2_ace4e970",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-06-05T03:21:27Z",
+      "side": 1,
+      "message": "I think a better implementation is to always do init, and only have the CONFIG_* inside the init implementation, so we don\u0027t have to do the #ifdef everywhere.",
+      "range": {
+        "startLine": 516,
+        "startChar": 7,
+        "endLine": 516,
+        "endChar": 28
+      },
+      "revId": "90fed17815daa24c896d9b11273cf0f645104bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7755477a_2a4b1fde",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-06-05T03:21:27Z",
+      "side": 1,
+      "message": "I think we want to name this properly.\n\nFor BIOS, it should notify either OS type and let EC decide KB mapping, or BIOS to directly specify KB mapping, but not having both in name.",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 28
+      },
+      "revId": "90fed17815daa24c896d9b11273cf0f645104bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
