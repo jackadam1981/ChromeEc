@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d9dc7bab_b56f3b9a",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-05T09:57:30Z",
+      "side": 1,
+      "message": "0x203 is the current board version. That\u0027s why it\u0027s default. https://chrome-internal.googlesource.com/chromeos/overlays/overlay-fizz-private/+/0e2a5e1ef50a7c55cbe575e847442376494c5986/chromeos-base/chromeos-firmware-fizz/chromeos-firmware-fizz-9999.ebuild#66.",
+      "parentUuid": "63266295_61daad33",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "43711db390fa6505f0ed24c32a0ae798df8953f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee5f83e4_2c23bca8",
         "filename": "board/fizz/board.h",
         "patchSetId": 3
