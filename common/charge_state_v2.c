@@ -1020,7 +1020,7 @@ static const char * const state_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(state_list) == NUM_STATES_V2);
 static const char * const batt_pres[] = {
-	"NO", "YES", "NOT_SURE",
+	"NO", "YES", "WAKING", "NOT_SURE",
 };
 
 static void dump_charge_state(void)
@@ -1636,6 +1636,23 @@ void charger_task(void *u)
 			battery_was_removed = 1;
 			goto wait_for_it;
 		}
+
+#ifdef CONFIG_BATTERY_PRESENT_CUSTOM
+		/*
+		 * If the battery is booting from shipmode, it cannot
+		 * provide power even if state of charge is above valid
+		 * threshold limit hence do not leave safe mode port till
+		 * the battery is initialized and able to provide power.
+		 */
+		battery_seems_to_be_disconnected =
+			curr.batt.is_present == BP_WAKING;
+		if (battery_seems_to_be_disconnected) {
+			set_charge_state(ST_PRECHARGE);
+			curr.requested_voltage = batt_info->voltage_max;
+			curr.requested_current = batt_info->precharge_current;
+			goto wait_for_it;
+		}
+#endif
 
 		/*
 		 * If we had trouble talking to the battery or the charger, we

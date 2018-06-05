@@ -57,9 +57,10 @@ extern struct ec_response_battery_dynamic_info
  * wait until we've been able to talk to the battery.
  */
 enum battery_present {
-	BP_NO = 0,
-	BP_YES = 1,
-	BP_NOT_SURE,
+	BP_NO = 0,	/* Physical battery hardware not present */
+	BP_YES = 1,	/* Battery is present and able to provide power */
+	BP_WAKING = 2,	/* Battery is waking up from shipmode/initializing */
+	BP_NOT_SURE,	/* Battery status unknown */
 };
 
 enum battery_cutoff_states {
