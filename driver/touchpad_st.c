@@ -20,6 +20,7 @@
 #include "update_fw.h"
 #include "usb_hid_touchpad.h"
 #include "util.h"
+#include "watchdog.h"
 
 /* Console output macros */
 #define CC_TOUCHPAD CC_USB
@@ -680,6 +681,9 @@ static int st_tp_check_command_echo(const uint8_t *cmd,
 	int num_events, i;
 
 	while (retry--) {
+		/* Reset watchdog to prevent timeout. */
+		watchdog_reload();
+
 		num_events = st_tp_read_all_events();
 		if (num_events < 0)
 			return -num_events;
@@ -708,8 +712,6 @@ static void st_tp_full_initialize(void)
 
 	CPRINTS("Start full initialization");
 	spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
-
-	msleep(100);
 
 	ret = st_tp_check_command_echo(tx_buf, sizeof(tx_buf), 20);
 	if (ret) {
