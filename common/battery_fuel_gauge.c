@@ -200,8 +200,8 @@ static enum battery_present battery_check_present_status(void)
 
 #ifdef CONFIG_BATTERY_PRESENT_CUSTOM
 	/* Ensure that battery is Initialized */
-	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
-		batt_pres = BP_NO;
+	if (battery_get_disconnect_state() == BATTERY_DISCONNECTED)
+		batt_pres = BP_WAKING;
 #endif /* CONFIG_BATTERY_PRESENT_CUSTOM */
 
 	return batt_pres;

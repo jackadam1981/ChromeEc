@@ -59,6 +59,7 @@ extern struct ec_response_battery_dynamic_info
 enum battery_present {
 	BP_NO = 0,
 	BP_YES = 1,
+	BP_WAKING = 2,
 	BP_NOT_SURE,
 };
 
