@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e80f98c7_08d92fbf",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-05T10:09:28Z",
+      "side": 1,
+      "message": "My sarcastic point being that this is neither robust nor the intent is very readable.\nThe current board version might change, why using it as default ?\nit seems better to have a clearly identifiable default setting when it was not set, e.g 0xffff",
+      "parentUuid": "d9dc7bab_b56f3b9a",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "43711db390fa6505f0ed24c32a0ae798df8953f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee5f83e4_2c23bca8",
         "filename": "board/fizz/board.h",
         "patchSetId": 3
