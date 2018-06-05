@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63266295_61daad33",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-05T06:26:44Z",
+      "side": 1,
+      "message": "no, it\u0027s 0x302...",
+      "range": {
+        "startLine": 57,
+        "startChar": 15,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "43711db390fa6505f0ed24c32a0ae798df8953f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5f83e4_2c23bca8",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-05T06:26:44Z",
+      "side": 1,
+      "message": "if you expect stable IDs, it would be nice to put \u003d \u003cvalue\u003e for each of them.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 12
+      },
+      "revId": "43711db390fa6505f0ed24c32a0ae798df8953f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
