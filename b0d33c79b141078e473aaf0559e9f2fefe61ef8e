@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05a87b28_6740e931",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-05T13:52:15Z",
+      "side": 1,
+      "message": "what if interrupts were already disabled before entering line 497? Can we check the interrupt enable/disable status bit first and then restore the previous setting instead of always enabling them here?",
+      "range": {
+        "startLine": 505,
+        "startChar": 4,
+        "endLine": 505,
+        "endChar": 20
+      },
+      "revId": "b0d33c79b141078e473aaf0559e9f2fefe61ef8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
