@@ -80,12 +80,6 @@ const struct adc_t adc_channels[] = {
 		"TEMP_AMB", NPCX_ADC_CH0, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 	[ADC_TEMP_SENSOR_CHARGER] = {
 		"TEMP_CHARGER", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
-	/* Vbus C0 sensing (10x voltage divider). PPVAR_USB_C0_VBUS */
-	[ADC_VBUS_C0] = {
-		"VBUS_C0", NPCX_ADC_CH4, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
-	/* Vbus C1 sensing (10x voltage divider). PPVAR_USB_C1_VBUS */
-	[ADC_VBUS_C1] = {
-		"VBUS_C1", NPCX_ADC_CH9, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -193,12 +187,6 @@ const struct temp_sensor_t temp_sensors[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
-
-enum adc_channel board_get_vbus_adc(int port)
-{
-	return port ? ADC_VBUS_C1 : ADC_VBUS_C0;
-}
-
 
 /* Motion sensors */
 /* Mutexes */
@@ -318,6 +306,11 @@ void lid_angle_peripheral_enable(int enable)
 }
 #endif
 
+/* Runtime GPIO defaults */
+enum gpio_signal gpio_sys_reset_l_runtime = GPIO_SYS_RESET_L_V1;
+enum gpio_signal gpio_entering_rw_runtime = GPIO_ENTERING_RW_V1;
+enum gpio_signal gpio_usb2_otg_id_runtime = GPIO_USB2_OTG_ID_V1;
+
 static void update_drivers_from_board_id(void)
 {
 	uint32_t board_id = 0;
@@ -327,9 +320,28 @@ static void update_drivers_from_board_id(void)
 
 	if (board_id == 0) {
 		/* EC drives C1 PPC for proto 1. b/78896495 */
+		gpio_set_flags(GPIO_WFCAM_VSYNC, GPIO_OUT_LOW);
+		gpio_set_flags(GPIO_C1_EN_SNK_V0, GPIO_OUT_LOW);
 		ppc_chips[1].flags = PPC_CFG_FLAGS_GPIO_CONTROL;
-		ppc_chips[1].snk_gpio = GPIO_USB_C1_CHARGE_ON;
-		ppc_chips[1].src_gpio = GPIO_EN_USB_C1_5V_OUT;
+		ppc_chips[1].snk_gpio = GPIO_C1_EN_SNK_V0;  /* GPIO40 */
+		ppc_chips[1].src_gpio = GPIO_WFCAM_VSYNC;   /* GPIO03 */
+
+		/*
+		 * We don't have to worry about changing USB-A port count from
+		 * 2 -> 1 since GPIO_EN_USB_A1_5V on proto 1 just drives the
+		 * EC_BRD_ID_EN signal (which will burn ~ 400uW of power on a
+		 * deprecated board).
+		 */
+
+		/* Move the runtime GPIOS */
+		gpio_set_flags(GPIO_SYS_RESET_L_V0, GPIO_ODR_HIGH);
+		gpio_sys_reset_l_runtime = GPIO_SYS_RESET_L_V0;     /* GPIO02 */
+
+		gpio_set_flags(GPIO_ENTERING_RW_V0, GPIO_OUT_LOW);
+		gpio_entering_rw_runtime = GPIO_ENTERING_RW_V0;     /* GPIO80 */
+
+		gpio_set_flags(GPIO_USB_A1_CHARGE_EN_L, GPIO_OUT_LOW);
+		gpio_usb2_otg_id_runtime = GPIO_USB_A1_CHARGE_EN_L; /* GPIOA0 */
 	}
 }
 DECLARE_HOOK(HOOK_INIT, update_drivers_from_board_id, HOOK_PRIO_INIT_I2C + 1);
