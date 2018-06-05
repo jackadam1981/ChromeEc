@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "d5285c8d_0717cb8a",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-05T22:39:10Z",
+      "side": 1,
+      "message": "I know these names are following the schematic. But, I\u0027m wondering why we didn\u0027t go with USB_PD_C0_PPC_INTL_ODL and USB_PD_C0_PPC_INT_ODL for those signal names to make it explicit.",
+      "range": {
+        "startLine": 89,
+        "startChar": 35,
+        "endLine": 89,
+        "endChar": 38
+      },
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "207b0330_a9e000fc",
         "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
         "patchSetId": 2
