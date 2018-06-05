@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "9067bc5f_c2850839",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-05T14:46:44Z",
+      "side": 1,
+      "message": "when booting from shipmode even if the % of battery is valid range battery can\u0027t provide power until it is initialized. May be we can change curr.batt.state_of_charge to 0 in driver when curr.batt.is_present !\u003d BP_YES for the CUSTOM battery define.",
+      "range": {
+        "startLine": 879,
+        "startChar": 6,
+        "endLine": 879,
+        "endChar": 31
+      },
+      "revId": "1f7e482b1ed16c921e5bcfd5e98de5aabfcfd159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c48e1feb_2e91da28",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
