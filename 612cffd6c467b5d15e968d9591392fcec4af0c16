@@ -16,6 +16,24 @@
       "revId": "612cffd6c467b5d15e968d9591392fcec4af0c16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "745b3852_d26aeae9",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-06-05T10:19:09Z",
+      "side": 1,
+      "message": "after we start full panel initialization, this function (st_tp_check_command_echo) takes about 1.6 seconds to receive the command echo and leave the loop.\n\nwatchdog will timeout and reboot the device when this is triggered by touchpad update.  (but this works fine if it\u0027s called by commands in ec console)",
+      "parentUuid": "510ceae2_f55ff06a",
+      "revId": "612cffd6c467b5d15e968d9591392fcec4af0c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
