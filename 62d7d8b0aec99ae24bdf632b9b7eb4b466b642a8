@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe2579c_1a04e796",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-05T22:27:16Z",
+      "side": 1,
+      "message": "This should be separate? As it\u0027s baseboard.h and applies to everyone?",
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207b0330_a9e000fc",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-05T22:27:16Z",
+      "side": 1,
+      "message": "This affects yorp at the same time as well?",
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
