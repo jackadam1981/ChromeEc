@@ -636,6 +636,10 @@ static const struct fan_step *fan_tables[] = {
 	fan_table0,	/* Kench & Default */
 	fan_table0,	/* Teemo */
 	fan_table1,	/* Sion */
+	fan_table0,	/* Wukong (normal) */
+	fan_table0,	/* Wukong (accelerator) */
+	fan_table0,	/* Wukong (Moblab) */
+	fan_table0,	/* Bleemo */
 };
 
 static int get_custom_rpm(int fan, int pct, int oem_id)
