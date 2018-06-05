@@ -22,6 +22,30 @@
       "revId": "ebea64cd073d251a32f013cddf83254392fecd33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f385e4_72f9de9e",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-05T22:13:25Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t and we will not change the hardware to support 5A. Ptal.",
+      "parentUuid": "8deada1b_4f644490",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 32
+      },
+      "revId": "ebea64cd073d251a32f013cddf83254392fecd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
