@@ -1716,6 +1716,7 @@ void charger_task(void *u)
 					batt_info->precharge_current;
 			} else
 #endif
+
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
 			battery_seems_to_be_disconnected = 0;
 
@@ -1757,6 +1758,17 @@ wait_for_it:
 				problem(PR_CUSTOM, sleep_usec);
 		}
 #endif
+
+#ifdef CONFIG_BATTERY_PRESENT_CUSTOM
+		/*
+		 * If the battery is booting from shipmode, it cannot
+		 * provide power even if state of charge is above valid
+		 * threshold limit hence do not leave safe mode port till
+		 * the battery is initialized and able to provide power.
+		 */
+		battery_seems_to_be_disconnected =
+			battery_is_present() != BP_YES;
+#endif /* CONFIG_BATTERY_PRESENT_CUSTOM */
 
 #ifdef CONFIG_CHARGE_MANAGER
 		if (curr.batt.state_of_charge >=
