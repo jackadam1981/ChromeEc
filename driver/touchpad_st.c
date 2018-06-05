@@ -433,13 +433,14 @@ static int st_tp_reset(void)
 		for (i = 0; i < num_events; i++) {
 			struct st_tp_event_t *e = &rx_buf.events[i];
 
-			if (e->evt_id == ST_TP_EVENT_ID_CONTROLLER_READY)
-				break;
+			if (e->evt_id == ST_TP_EVENT_ID_CONTROLLER_READY) {
+				CPRINTS("Touchpad ready");
+				return 0;
+			}
 		}
 
 		msleep(10);
 	}
-	CPRINTS("Touchpad ready");
 	return 0;
 }
 
