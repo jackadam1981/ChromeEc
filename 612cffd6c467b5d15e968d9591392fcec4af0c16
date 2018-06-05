@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "510ceae2_f55ff06a",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-05T09:29:49Z",
+      "side": 1,
+      "message": "the st_tp_read_all_events() below seems to be a single spi_transaction, and the watchdog will be kicked at each iteration of the loop during the msleep(100)\nI hardly understand what this might fix here.",
+      "revId": "612cffd6c467b5d15e968d9591392fcec4af0c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
