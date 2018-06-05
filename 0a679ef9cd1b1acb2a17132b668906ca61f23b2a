@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9db4945a_6f2cf038",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-05T10:19:18Z",
+      "side": 1,
+      "message": "Actually this could end up being an infinite loop... Is that ok or do we need to add some timeout?",
+      "revId": "0a679ef9cd1b1acb2a17132b668906ca61f23b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
