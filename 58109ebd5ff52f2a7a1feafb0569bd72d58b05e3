@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6bc2ed9_65ed076f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-05T01:02:11Z",
+      "side": 1,
+      "message": "Hi Aseda: I think patch set 1 is the right thing to do so that we check this state every time.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1085668/1",
+      "range": {
+        "startLine": 1760,
+        "startChar": 0,
+        "endLine": 1770,
+        "endChar": 42
+      },
+      "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
