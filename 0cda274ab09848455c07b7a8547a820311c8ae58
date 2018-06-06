@@ -22,6 +22,30 @@
       "revId": "0cda274ab09848455c07b7a8547a820311c8ae58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf67ae3c_ccbd04c2",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T19:57:28Z",
+      "side": 1,
+      "message": "I appreciate you bring this up because there was some subtleties that I didn\u0027t realize across sysjumps and warm reset.",
+      "parentUuid": "98ce4529_57ea48b1",
+      "range": {
+        "startLine": 324,
+        "startChar": 5,
+        "endLine": 324,
+        "endChar": 32
+      },
+      "revId": "0cda274ab09848455c07b7a8547a820311c8ae58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
