@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a8620ce_94b29b40",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-06T14:26:27Z",
+      "side": 1,
+      "message": "It was dropped unintentionally. Restored. Thank you,",
+      "parentUuid": "383479c1_39d50ec1",
+      "revId": "14bd3496eef6c845e8685aa473a64eeddcc27cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04cd11dc_5d34e17e",
         "filename": "board/nami/battery.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-06-06T03:46:35Z",
       "side": 1,
       "message": "Why isn\u0027t SB_SHIP_MODE_REG not being used like in the previous code?",
+      "revId": "14bd3496eef6c845e8685aa473a64eeddcc27cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222c65b4_c1817ff6",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-06T14:26:27Z",
+      "side": 1,
+      "message": "Nami, Vayne, Sona, Pantheon use 0x00 (SB_MANUFACTURER_ACCESS) and Akali use 0x3A.",
+      "parentUuid": "04cd11dc_5d34e17e",
       "revId": "14bd3496eef6c845e8685aa473a64eeddcc27cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
