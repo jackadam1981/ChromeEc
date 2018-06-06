@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98ce4529_57ea48b1",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-06T18:37:47Z",
+      "side": 1,
+      "message": "I was looking at the implementation of gpio_pre_init in main.c again and it looks like gpio_pre_init is always performed irrespective of power-on or sysjump. Probably we would want to keep this the way it was before? Sorry about the confusion.",
+      "range": {
+        "startLine": 324,
+        "startChar": 5,
+        "endLine": 324,
+        "endChar": 32
+      },
+      "revId": "0cda274ab09848455c07b7a8547a820311c8ae58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
