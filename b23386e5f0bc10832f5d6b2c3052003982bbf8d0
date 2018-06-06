@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "626e4287_a1265e2b",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-06-06T02:43:32Z",
+      "side": 1,
+      "message": "Does dualrole do what I think it does?",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 41
+      },
+      "revId": "b23386e5f0bc10832f5d6b2c3052003982bbf8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9334aa0_a52152bf",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-06-06T02:43:32Z",
+      "side": 1,
+      "message": "probably need a \"force sink\" command that enforces the reset as well and adds a no-charge state.",
+      "range": {
+        "startLine": 664,
+        "startChar": 29,
+        "endLine": 664,
+        "endChar": 40
+      },
+      "revId": "b23386e5f0bc10832f5d6b2c3052003982bbf8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca264115_d39ef183",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-06-06T02:43:32Z",
+      "side": 1,
+      "message": "Should I add another function w/o port for compatibility? Or a config?",
+      "range": {
+        "startLine": 774,
+        "startChar": 42,
+        "endLine": 774,
+        "endChar": 50
+      },
+      "revId": "b23386e5f0bc10832f5d6b2c3052003982bbf8d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
