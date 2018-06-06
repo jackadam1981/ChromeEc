@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c82ecbe1_134d9c14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T17:33:45Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "c1f6bae6_670608d9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "3b54160cdd8544f9891b4bef878a1024c6f6eaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d11d7b1_46821e8f",
         "filename": "board/yorp/board.c",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "3b54160cdd8544f9891b4bef878a1024c6f6eaf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1cd6e90_21b1b12c",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T17:33:45Z",
+      "side": 1,
+      "message": "We still need to set up the drivers correctly again after sysjump. The ppc_chip variable won\u0027t be set from RO, right?\n\nWe should skip the gpio_set_flags calls though. I added a new static function to take care of that.\n\nThanks for catching this.",
+      "parentUuid": "2d11d7b1_46821e8f",
+      "revId": "3b54160cdd8544f9891b4bef878a1024c6f6eaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
