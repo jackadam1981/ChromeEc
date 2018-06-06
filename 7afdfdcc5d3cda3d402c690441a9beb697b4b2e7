@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cb5287c1_914bf1bb",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-06T20:28:41Z",
+      "side": 1,
+      "message": "Then add those _NAMES onto the ones used?",
+      "parentUuid": "18bf73aa_7ce1ea21",
+      "revId": "7afdfdcc5d3cda3d402c690441a9beb697b4b2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1904d0_ae64652f",
         "filename": "board/fizz/board.c",
         "patchSetId": 3
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "The default case is there (below OEM_KENCH).",
       "parentUuid": "eb1904d0_ae64652f",
+      "range": {
+        "startLine": 725,
+        "startChar": 22,
+        "endLine": 725,
+        "endChar": 24
+      },
+      "revId": "7afdfdcc5d3cda3d402c690441a9beb697b4b2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b2286f_96cd610c",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-06T20:28:41Z",
+      "side": 1,
+      "message": "Can you just put it at the bottom of the switch then? I completely missed it sitting there.",
+      "parentUuid": "639f18e6_3960fa3e",
       "range": {
         "startLine": 725,
         "startChar": 22,
