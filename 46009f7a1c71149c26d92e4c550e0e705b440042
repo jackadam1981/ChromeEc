@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b18faff9_cdac901d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-06T00:27:14Z",
+      "side": 1,
+      "message": "98 bytes",
+      "parentUuid": "a9144ea5_4e00c7a5",
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "707c85d9_e7a29df6",
         "filename": "board/cr50/wp.c",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d0de9f5_016c719b",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-06T00:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707c85d9_e7a29df6",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1aea59d3_74f6b0e7",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-06T00:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c2c2e48_fc68b578",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 46
+      },
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78da8b5e_b352c192",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b7ed3d_4f57a5f3",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-06T00:27:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78da8b5e_b352c192",
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
