@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca23134b_f7eb5907",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-06-06T15:35:46Z",
+      "side": 1,
+      "message": "+kitching\n\nHi Joel, I think we currently don\u0027t support \u003e32 bit event code right? Or have we enabled 64-bit event code? What\u0027s the right way to add new events here?",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
