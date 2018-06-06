@@ -22,6 +22,30 @@
       "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29cc9cb2_62551de0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-06T20:32:40Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think I agree. I think what you have here is closer to what we\u0027d want and this would be checked every time. My understanding is that for CONFIG_BATTERY_PRESENT_CUSTOM *currently* battery_is_present() also takes into account the discharge FET status. However, I think the naming makes it a bit confusing.\n\nHow about:\n\n    battery_seems_to_be_disconnected \u003d battery_get_disconnect_state() !\u003d BATTERY_NOT_DISCONNECTED;\n\n\nThen have battery_get_disconnect_state() report the right thing taking into account the discharge FET status.",
+      "parentUuid": "c6bc2ed9_65ed076f",
+      "range": {
+        "startLine": 1760,
+        "startChar": 0,
+        "endLine": 1770,
+        "endChar": 42
+      },
+      "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
