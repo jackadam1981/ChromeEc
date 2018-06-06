@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1f6bae6_670608d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-06T17:01:05Z",
+      "side": 1,
+      "message": "Isn\u0027t this change affecting more than just yorp i.e. changes are being made in bip and phaser specific board files as well?\n\nWould it make sense to further split the CL into two\n 1. Removing ADC and using the no ADC config in baseboard -- applies to all octopus variants\n 2. Preparing Yorp for V2 by: \n    a. providing runtime gpio signals\n    b. updating netnames\n    c. adding gpios\n    d. more cleanups",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "3b54160cdd8544f9891b4bef878a1024c6f6eaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d11d7b1_46821e8f",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-06T17:01:05Z",
+      "side": 1,
+      "message": "Probably add an early return if doing a sysjump?",
+      "revId": "3b54160cdd8544f9891b4bef878a1024c6f6eaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
