@@ -46,6 +46,30 @@
       "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d71197_1161e353",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-06T22:13:53Z",
+      "side": 1,
+      "message": "we call battery_is_present() from many location hence to give the actual status (able to provide power) we call battery_get_disconnect_state() which is equivalent to battery_status().\nwe can put \n#elif defined(CONFIG_BATTERY_REVIVE_DISCONNECT)\n battery_seems_to_be_disconnected \u003d battery_get_disconnect_state() !\u003d BATTERY_NOT_DISCONNECTED;",
+      "parentUuid": "29cc9cb2_62551de0",
+      "range": {
+        "startLine": 1760,
+        "startChar": 0,
+        "endLine": 1770,
+        "endChar": 42
+      },
+      "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
