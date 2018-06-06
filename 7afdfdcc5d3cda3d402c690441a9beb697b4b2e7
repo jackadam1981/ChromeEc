@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18bf73aa_7ce1ea21",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-06T20:24:01Z",
+      "side": 1,
+      "message": "In this CL, there is 1-on-1 mapping between OEM ID and BJ type but it won\u0027t be so in the following CLs (which will add Bleemo and Wukon).",
+      "parentUuid": "fa2f970e_866efc8e",
+      "revId": "7afdfdcc5d3cda3d402c690441a9beb697b4b2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1904d0_ae64652f",
         "filename": "board/fizz/board.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2018-06-06T19:58:28Z",
       "side": 1,
       "message": "You have no default case and thus bj can be unitialized.",
+      "range": {
+        "startLine": 725,
+        "startChar": 22,
+        "endLine": 725,
+        "endChar": 24
+      },
+      "revId": "7afdfdcc5d3cda3d402c690441a9beb697b4b2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "639f18e6_3960fa3e",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-06T20:24:01Z",
+      "side": 1,
+      "message": "The default case is there (below OEM_KENCH).",
+      "parentUuid": "eb1904d0_ae64652f",
       "range": {
         "startLine": 725,
         "startChar": 22,
