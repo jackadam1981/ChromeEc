@@ -12,26 +12,59 @@
 #include "usb_descriptor.h"
 #include "usb_hw.h"
 
-/* Currently, we only support TX direction for USB isochronous transfer. */
+struct usb_isochronous_config;
+
+/*
+ * Currently, we only support TX direction for USB isochronous transfer.
+ *
+ * According to RM0091, isochronous transfer is always double buffered.
+ * Addresses of buffers are pointed by `btable_ep[<endpoint>].tx_addr` and
+ * `btable_ep[<endpoint>].rx_addr`.
+ *
+ * DTOG | USB Buffer | App Buffer
+ * -----+------------+-----------
+ *   0  | tx_addr    | rx_addr
+ *   1  | rx_addr    | tx_addr
+ *
+ * That is, when DTOG bit is 0 (see `get_tx_dtog()`), USB hardware will read
+ * from `tx_addr`, and our application can write new data to `rx_addr` at the
+ * same time.
+ *
+ * Number of bytes in each buffer shall be tracked by `tx_count` and `rx_count`
+ * respectively.
+ *
+ * `get_app_addr()`, `set_app_addr()`, `set_app_count()` help you to to select
+ * the correct variable to use by given DTOG value, which is available by
+ * `get_tx_dtog()`.
+ */
+int get_tx_dtog(struct usb_isochronous_config const *config);
+
+/*
+ * Gets buffer address that can be used by software (application).
+ *
+ * The mapping between application buffer address and current TX DTOG value is
+ * shown in table above.
+ */
+usb_uint *get_app_addr(struct usb_isochronous_config const *config,
+			      int dtog_value);
+
+/*
+ * Sets number of bytes written to application buffer.
+ */
+void set_app_count(struct usb_isochronous_config const *config,
+			  int dtog_value,
+			  usb_uint count);
 
 struct usb_isochronous_config {
 	int endpoint;
 
-	/*
-	 * Deferred function to call to handle USB request.
-	 */
-	const struct deferred_data *deferred;
-
-	/*
-	 * On TX complete, this function will be called to ask for more data to
-	 * transmit.
+	/* The task to wake up when a packet is sent.
 	 *
-	 * @param  usb_addr	USB buffer, an uint8_t pointer that can be
-	 *			passed to memcpy_to_usbram()
-	 * @param  tx_size	config->tx_size
-	 * @return size_t	Number of bytes written to USB buffer
+	 * The task should write data to the buffer returned by `get_app_addr`,
+	 * and call `set_app_count` to set number of bytes available in the
+	 * buffer.
 	 */
-	size_t (*tx_callback)(usb_uint *usb_addr, size_t tx_size);
+	int task_id;
 
 	/*
 	 * Received SET_INTERFACE request.
@@ -57,7 +90,7 @@ struct usb_isochronous_config {
 				    INTERFACE_NAME,			\
 				    ENDPOINT,				\
 				    TX_SIZE,				\
-				    TX_CALLBACK,			\
+				    TASK_ID,			\
 				    SET_INTERFACE)			\
 	BUILD_ASSERT(TX_SIZE > 0);					\
 	BUILD_ASSERT((TX_SIZE <   64 && (TX_SIZE & 0x01) == 0) ||	\
@@ -65,12 +98,9 @@ struct usb_isochronous_config {
 	/* Declare buffer */						\
 	static usb_uint CONCAT2(NAME, _ep_tx_buffer_0)[TX_SIZE / 2] __usb_ram; \
 	static usb_uint CONCAT2(NAME, _ep_tx_buffer_1)[TX_SIZE / 2] __usb_ram; \
-	static void CONCAT2(NAME, _deferred_)(void);			\
-	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_));			\
 	struct usb_isochronous_config const NAME = {			\
 		.endpoint  = ENDPOINT,					\
-		.deferred  = &CONCAT2(NAME, _deferred__data),		\
-		.tx_callback = TX_CALLBACK,				\
+		.task_id = TASK_ID,					\
 		.set_interface = SET_INTERFACE,				\
 		.tx_size   = TX_SIZE,					\
 		.tx_ram    = {						\
@@ -128,16 +158,12 @@ struct usb_isochronous_config {
 		       CONCAT2(NAME, _ep_tx),				\
 		       CONCAT2(NAME, _ep_tx),				\
 		       CONCAT2(NAME, _ep_event));			\
-	static void CONCAT2(NAME, _deferred_)(void)			\
-	{								\
-		usb_isochronous_deferred(&NAME);			\
-	}
 
-void usb_isochronous_deferred(struct usb_isochronous_config const *config);
 void usb_isochronous_tx(struct usb_isochronous_config const *config);
 void usb_isochronous_event(struct usb_isochronous_config const *config,
 			   enum usb_ep_event event);
 int usb_isochronous_iface_handler(struct usb_isochronous_config const *config,
 				  usb_uint *ep0_buf_rx,
 				  usb_uint *ep0_buf_tx);
+
 #endif /* __CROS_EC_USB_ISOCHRONOUS_H */
