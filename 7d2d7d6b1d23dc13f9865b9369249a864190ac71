@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfc5e297_fcb5b967",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-06T07:06:36Z",
+      "side": 1,
+      "message": "NO! this has a big race condition.\nWhile the ITE code uses this broken pattern, please do not propagate it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "7d2d7d6b1d23dc13f9865b9369249a864190ac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
