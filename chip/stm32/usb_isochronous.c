@@ -18,10 +18,7 @@
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
-
 /*
- * Currently, we only support TX direction for USB isochronous transfer.
- *
  * According to RM0091, isochronous transfer is always double buffered.
  * Addresses of buffers are pointed by `btable_ep[<endpoint>].tx_addr` and
  * `btable_ep[<endpoint>].rx_addr`.
@@ -38,11 +35,13 @@
  * Number of bytes in each buffer shall be tracked by `tx_count` and `rx_count`
  * respectively.
  *
- * `get_app_addr()`, `set_app_addr()`, `set_app_count()` help you to to select
- * the correct variable to use by given DTOG value, which is available by
- * `get_tx_dtog()`.
+ * `get_app_addr()`, `set_app_count()` help you to to select the correct
+ * variable to use by given DTOG value, which is available by `get_tx_dtog()`.
  */
 
+/*
+ * Gets current DTOG value of given `config`.
+ */
 static int get_tx_dtog(struct usb_isochronous_config const *config)
 {
 	return !!(STM32_USB_EP(config->endpoint) & EP_TX_DTOG);
@@ -71,6 +70,34 @@ static void set_app_count(struct usb_isochronous_config const *config,
 		btable_ep[config->endpoint].tx_count = count;
 	else
 		btable_ep[config->endpoint].rx_count = count;
+}
+
+int usb_isochronous_write_buffer(
+		struct usb_isochronous_config const *config,
+		const uint8_t *src,
+		int n,
+		int dst_offset,
+		int *buffer_id,
+		int commit)
+{
+	int dtog_value = get_tx_dtog(config);
+	usb_uint *buffer = get_app_addr(config, dtog_value);
+	uintptr_t ptr = usb_sram_addr(buffer);
+
+	if (*buffer_id == -1)
+		*buffer_id = dtog_value;
+	else if (dtog_value != *buffer_id)
+		return -EC_ERROR_TIMEOUT;
+
+	n = MIN(n, config->tx_size - dst_offset);
+	if (n < 0 || n > config->tx_size || dst_offset < 0)
+		return -EC_ERROR_INVAL;
+	memcpy_to_usbram((void *)(ptr + dst_offset), src, n);
+
+	if (commit)
+		set_app_count(config, dtog_value, dst_offset + n);
+
+	return n;
 }
 
 void usb_isochronous_init(struct usb_isochronous_config const *config)
@@ -108,16 +135,7 @@ void usb_isochronous_tx(struct usb_isochronous_config const *config)
 	 */
 	set_app_count(config, get_tx_dtog(config), 0);
 
-	hook_call_deferred(config->deferred, 0);
-}
-
-void usb_isochronous_deferred(struct usb_isochronous_config const *config)
-{
-	const int dtog_value = get_tx_dtog(config);
-	usb_uint *app_addr = get_app_addr(config, dtog_value);
-	size_t count = config->tx_callback(app_addr, config->tx_size);
-
-	set_app_count(config, dtog_value, count);
+	config->tx_callback(config);
 }
 
 int usb_isochronous_iface_handler(struct usb_isochronous_config const *config,
