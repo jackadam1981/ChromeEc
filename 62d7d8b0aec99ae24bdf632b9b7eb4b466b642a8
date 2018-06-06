@@ -34,6 +34,24 @@
       "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b9778bc_0a45018b",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-06T14:07:59Z",
+      "side": 0,
+      "message": "Maybe I\u0027m just being weird here, but it seems this and the previous CL are mixing logical changes that are preparing for the next rev of hardware. I would think we would lay all the ground work in a single CL. i.e. baseboard revisions, etc. I guess it\u0027s not clear to me that all the changes made don\u0027t have a bad effect on existing boards in addition to the co-mingling of board and baseboard changes. It\u0027d also help if your reasoning for why everything is ok was also in the commit description. Currently it\u0027s completely blank.\n\nCan the changes be broken up better to address the common baseboard aspects then follow up? Or is this as granular as it gets?",
+      "parentUuid": "e838d917_71cb8597",
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
