@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72c4cbc5_770435ef",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-06T01:41:29Z",
+      "side": 1,
+      "message": "a description should describe the structure of the response, in this particular case it would be something like \"this will return a single byte value with bits communicating various write protect settings as described in xxxx.h\u0027",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "716fa7d6f73cc13770f40ae3813fc1d4e822507c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
