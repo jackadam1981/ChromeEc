@@ -16,6 +16,24 @@
       "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e838d917_71cb8597",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T14:01:19Z",
+      "side": 0,
+      "message": "I added a comment [0] in yorp\u0027s board file where I make all of the changes that support V0 of the board. Since the GPIO_EN_USB_A1_5V (GPIO96) signal maps to EN_BRD_ID circuitry on V0, we don\u0027t have to worry about it asserting. Common code uses these usb_port_enable signal to turn on in S3+ and turn off in S5- (And also toggle by host or console command). For V0 board, the port 0 signal will still control both ports like it does today and the port 1 signal will have no effect (there isn\u0027t a feedback loop that will break either).\n\n\n[0] https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1087815/2/board/yorp/board.c#329",
+      "parentUuid": "fe6b1fd4_8e608e35",
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
