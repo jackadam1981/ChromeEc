@@ -108,9 +108,9 @@ void usb_isochronous_tx(struct usb_isochronous_config const *config)
 	 */
 	set_app_count(config, get_tx_dtog(config), 0);
 
-	hook_call_deferred(config->deferred, 0);
+	task_wake(config->task_id);
 }
-
+#if 0
 void usb_isochronous_deferred(struct usb_isochronous_config const *config)
 {
 	const int dtog_value = get_tx_dtog(config);
@@ -119,7 +119,7 @@ void usb_isochronous_deferred(struct usb_isochronous_config const *config)
 
 	set_app_count(config, dtog_value, count);
 }
-
+#endif
 int usb_isochronous_iface_handler(struct usb_isochronous_config const *config,
 				  usb_uint *ep0_buf_rx,
 				  usb_uint *ep0_buf_tx)
