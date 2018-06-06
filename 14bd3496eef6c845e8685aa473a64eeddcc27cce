@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "383479c1_39d50ec1",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-06T03:46:35Z",
+      "side": 1,
+      "message": "why did we lose max_c entry here?",
+      "revId": "14bd3496eef6c845e8685aa473a64eeddcc27cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04cd11dc_5d34e17e",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-06T03:46:35Z",
+      "side": 1,
+      "message": "Why isn\u0027t SB_SHIP_MODE_REG not being used like in the previous code?",
+      "revId": "14bd3496eef6c845e8685aa473a64eeddcc27cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a706d801_64e93874",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-06-06T03:46:35Z",
+      "side": 1,
+      "message": "Why is SB_SHUTDOWN_DATA not being used like in the previous code?",
+      "revId": "14bd3496eef6c845e8685aa473a64eeddcc27cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
