@@ -20,30 +20,9 @@
 
 
 /*
- * Currently, we only support TX direction for USB isochronous transfer.
- *
- * According to RM0091, isochronous transfer is always double buffered.
- * Addresses of buffers are pointed by `btable_ep[<endpoint>].tx_addr` and
- * `btable_ep[<endpoint>].rx_addr`.
- *
- * DTOG | USB Buffer | App Buffer
- * -----+------------+-----------
- *   0  | tx_addr    | rx_addr
- *   1  | rx_addr    | tx_addr
- *
- * That is, when DTOG bit is 0 (see `get_tx_dtog()`), USB hardware will read
- * from `tx_addr`, and our application can write new data to `rx_addr` at the
- * same time.
- *
- * Number of bytes in each buffer shall be tracked by `tx_count` and `rx_count`
- * respectively.
- *
- * `get_app_addr()`, `set_app_addr()`, `set_app_count()` help you to to select
- * the correct variable to use by given DTOG value, which is available by
- * `get_tx_dtog()`.
+ * Gets current DTOG value of given `config`.
  */
-
-static int get_tx_dtog(struct usb_isochronous_config const *config)
+int usb_isochronous_get_tx_dtog(struct usb_isochronous_config const *config)
 {
 	return !!(STM32_USB_EP(config->endpoint) & EP_TX_DTOG);
 }
@@ -54,8 +33,9 @@ static int get_tx_dtog(struct usb_isochronous_config const *config)
  * The mapping between application buffer address and current TX DTOG value is
  * shown in table above.
  */
-static usb_uint *get_app_addr(struct usb_isochronous_config const *config,
-			      int dtog_value)
+usb_uint *usb_isochronous_get_app_addr(
+		struct usb_isochronous_config const *config,
+		int dtog_value)
 {
 	return config->tx_ram[dtog_value];
 }
@@ -63,9 +43,9 @@ static usb_uint *get_app_addr(struct usb_isochronous_config const *config,
 /*
  * Sets number of bytes written to application buffer.
  */
-static void set_app_count(struct usb_isochronous_config const *config,
-			  int dtog_value,
-			  usb_uint count)
+void usb_isochronous_set_app_count(struct usb_isochronous_config const *config,
+				   int dtog_value,
+				   usb_uint count)
 {
 	if (dtog_value)
 		btable_ep[config->endpoint].tx_count = count;
@@ -77,10 +57,12 @@ void usb_isochronous_init(struct usb_isochronous_config const *config)
 {
 	int ep = config->endpoint;
 
-	btable_ep[ep].tx_addr = usb_sram_addr(get_app_addr(config, 1));
-	btable_ep[ep].rx_addr = usb_sram_addr(get_app_addr(config, 0));
-	set_app_count(config, 0, 0);
-	set_app_count(config, 1, 0);
+	btable_ep[ep].tx_addr = usb_sram_addr(
+			usb_isochronous_get_app_addr(config, 1));
+	btable_ep[ep].rx_addr = usb_sram_addr(
+			usb_isochronous_get_app_addr(config, 0));
+	usb_isochronous_set_app_count(config, 0, 0);
+	usb_isochronous_set_app_count(config, 1, 0);
 
 	STM32_USB_EP(ep) = ((ep << 0) | /* Endpoint Addr */
 			    EP_TX_VALID | /* start transmit */
@@ -106,18 +88,10 @@ void usb_isochronous_tx(struct usb_isochronous_config const *config)
 	 * Clear buffer count for buffer we just transmitted, so we do not
 	 * transmit the data twice.
 	 */
-	set_app_count(config, get_tx_dtog(config), 0);
+	usb_isochronous_set_app_count(config,
+				      usb_isochronous_get_tx_dtog(config), 0);
 
-	hook_call_deferred(config->deferred, 0);
-}
-
-void usb_isochronous_deferred(struct usb_isochronous_config const *config)
-{
-	const int dtog_value = get_tx_dtog(config);
-	usb_uint *app_addr = get_app_addr(config, dtog_value);
-	size_t count = config->tx_callback(app_addr, config->tx_size);
-
-	set_app_count(config, dtog_value, count);
+	config->tx_callback(config);
 }
 
 int usb_isochronous_iface_handler(struct usb_isochronous_config const *config,

@@ -12,26 +12,60 @@
 #include "usb_descriptor.h"
 #include "usb_hw.h"
 
-/* Currently, we only support TX direction for USB isochronous transfer. */
+struct usb_isochronous_config;
+
+/*
+ * Currently, we only support TX direction for USB isochronous transfer.
+ *
+ * According to RM0091, isochronous transfer is always double buffered.
+ * Addresses of buffers are pointed by `btable_ep[<endpoint>].tx_addr` and
+ * `btable_ep[<endpoint>].rx_addr`.
+ *
+ * DTOG | USB Buffer | App Buffer
+ * -----+------------+-----------
+ *   0  | tx_addr    | rx_addr
+ *   1  | rx_addr    | tx_addr
+ *
+ * That is, when DTOG bit is 0 (see `get_tx_dtog()`), USB hardware will read
+ * from `tx_addr`, and our application can write new data to `rx_addr` at the
+ * same time.
+ *
+ * Number of bytes in each buffer shall be tracked by `tx_count` and `rx_count`
+ * respectively.
+ *
+ * `usb_isochronous_get_app_addr()`, `usb_isochronous_set_app_count()` help you
+ * to to select the correct variable to use by given DTOG value, which is
+ * available by `usb_isochronous_get_tx_dtog()`.
+ */
+int usb_isochronous_get_tx_dtog(struct usb_isochronous_config const *config);
+
+/*
+ * Gets buffer address that can be used by software (application).
+ *
+ * The mapping between application buffer address and current TX DTOG value is
+ * shown in table above.
+ */
+usb_uint *usb_isochronous_get_app_addr(
+		struct usb_isochronous_config const *config,
+		int dtog_value);
+
+/*
+ * Sets number of bytes written to application buffer.
+ */
+void usb_isochronous_set_app_count(struct usb_isochronous_config const *config,
+				   int dtog_value,
+				   usb_uint count);
 
 struct usb_isochronous_config {
 	int endpoint;
 
 	/*
-	 * Deferred function to call to handle USB request.
-	 */
-	const struct deferred_data *deferred;
-
-	/*
-	 * On TX complete, this function will be called to ask for more data to
-	 * transmit.
+	 * On TX complete, this function will be called in **interrupt
+	 * context**.
 	 *
-	 * @param  usb_addr	USB buffer, an uint8_t pointer that can be
-	 *			passed to memcpy_to_usbram()
-	 * @param  tx_size	config->tx_size
-	 * @return size_t	Number of bytes written to USB buffer
+	 * @param config	the usb_isochronous_config of the USB interface.
 	 */
-	size_t (*tx_callback)(usb_uint *usb_addr, size_t tx_size);
+	void (*tx_callback)(struct usb_isochronous_config const *config);
 
 	/*
 	 * Received SET_INTERFACE request.
@@ -58,18 +92,16 @@ struct usb_isochronous_config {
 				    ENDPOINT,				\
 				    TX_SIZE,				\
 				    TX_CALLBACK,			\
-				    SET_INTERFACE)			\
+				    SET_INTERFACE,			\
+				    NUM_EXTRA_ENDPOINTS)		\
 	BUILD_ASSERT(TX_SIZE > 0);					\
 	BUILD_ASSERT((TX_SIZE <   64 && (TX_SIZE & 0x01) == 0) ||	\
 		     (TX_SIZE < 1024 && (TX_SIZE & 0x1f) == 0));	\
 	/* Declare buffer */						\
 	static usb_uint CONCAT2(NAME, _ep_tx_buffer_0)[TX_SIZE / 2] __usb_ram; \
 	static usb_uint CONCAT2(NAME, _ep_tx_buffer_1)[TX_SIZE / 2] __usb_ram; \
-	static void CONCAT2(NAME, _deferred_)(void);			\
-	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_));			\
 	struct usb_isochronous_config const NAME = {			\
 		.endpoint  = ENDPOINT,					\
-		.deferred  = &CONCAT2(NAME, _deferred__data),		\
 		.tx_callback = TX_CALLBACK,				\
 		.set_interface = SET_INTERFACE,				\
 		.tx_size   = TX_SIZE,					\
@@ -96,7 +128,7 @@ struct usb_isochronous_config {
 		.bDescriptorType    = USB_DT_INTERFACE,			\
 		.bInterfaceNumber   = INTERFACE,			\
 		.bAlternateSetting  = 1,				\
-		.bNumEndpoints      = 1,				\
+		.bNumEndpoints      = 1 + NUM_EXTRA_ENDPOINTS,		\
 		.bInterfaceClass    = INTERFACE_CLASS,			\
 		.bInterfaceSubClass = INTERFACE_SUBCLASS,		\
 		.bInterfaceProtocol = INTERFACE_PROTOCOL,		\
@@ -128,12 +160,7 @@ struct usb_isochronous_config {
 		       CONCAT2(NAME, _ep_tx),				\
 		       CONCAT2(NAME, _ep_tx),				\
 		       CONCAT2(NAME, _ep_event));			\
-	static void CONCAT2(NAME, _deferred_)(void)			\
-	{								\
-		usb_isochronous_deferred(&NAME);			\
-	}
 
-void usb_isochronous_deferred(struct usb_isochronous_config const *config);
 void usb_isochronous_tx(struct usb_isochronous_config const *config);
 void usb_isochronous_event(struct usb_isochronous_config const *config,
 			   enum usb_ep_event event);
