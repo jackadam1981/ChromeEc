@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d9eee49_e14a2392",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T13:47:22Z",
+      "side": 1,
+      "message": "is it possible for interrupts to already be disabled before line 484? If so, can we restore that setting here instead of always enabling interrupts?",
+      "range": {
+        "startLine": 508,
+        "startChar": 2,
+        "endLine": 508,
+        "endChar": 18
+      },
+      "revId": "7f8a2dca5ee7e72c216452a39c8d5e78495aa9e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
