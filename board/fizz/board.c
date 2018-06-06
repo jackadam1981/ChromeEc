@@ -672,7 +672,9 @@ static void setup_fan(void)
 		fans[FAN_CH_0].rpm = &fan_rpm_1;
 		fan_table = fan_table1;
 		break;
-	case OEM_WUKONG:
+	case OEM_WUKONG_N:
+	case OEM_WUKONG_A:
+	case OEM_WUKONG_M:
 		fans[FAN_CH_0].rpm = &fan_rpm_0;
 		fan_table = fan_table2;
 		break;
@@ -714,6 +716,9 @@ static void setup_bj(void)
 
 	switch (oem) {
 	case OEM_KENCH:
+	case OEM_WUKONG_N:
+	case OEM_WUKONG_A:
+	case OEM_WUKONG_M:
 		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
 			BJ_90W_19P5V : BJ_65W_19P5V;
 		break;
