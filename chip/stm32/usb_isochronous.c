@@ -43,7 +43,7 @@
  * `get_tx_dtog()`.
  */
 
-static int get_tx_dtog(struct usb_isochronous_config const *config)
+int get_tx_dtog(struct usb_isochronous_config const *config)
 {
 	return !!(STM32_USB_EP(config->endpoint) & EP_TX_DTOG);
 }
@@ -54,7 +54,7 @@ static int get_tx_dtog(struct usb_isochronous_config const *config)
  * The mapping between application buffer address and current TX DTOG value is
  * shown in table above.
  */
-static usb_uint *get_app_addr(struct usb_isochronous_config const *config,
+usb_uint *get_app_addr(struct usb_isochronous_config const *config,
 			      int dtog_value)
 {
 	return config->tx_ram[dtog_value];
@@ -63,7 +63,7 @@ static usb_uint *get_app_addr(struct usb_isochronous_config const *config,
 /*
  * Sets number of bytes written to application buffer.
  */
-static void set_app_count(struct usb_isochronous_config const *config,
+void set_app_count(struct usb_isochronous_config const *config,
 			  int dtog_value,
 			  usb_uint count)
 {
@@ -108,9 +108,9 @@ void usb_isochronous_tx(struct usb_isochronous_config const *config)
 	 */
 	set_app_count(config, get_tx_dtog(config), 0);
 
-	hook_call_deferred(config->deferred, 0);
+	task_wake(config->task_id);
 }
-
+#if 0
 void usb_isochronous_deferred(struct usb_isochronous_config const *config)
 {
 	const int dtog_value = get_tx_dtog(config);
@@ -119,7 +119,7 @@ void usb_isochronous_deferred(struct usb_isochronous_config const *config)
 
 	set_app_count(config, dtog_value, count);
 }
-
+#endif
 int usb_isochronous_iface_handler(struct usb_isochronous_config const *config,
 				  usb_uint *ep0_buf_rx,
 				  usb_uint *ep0_buf_tx)
