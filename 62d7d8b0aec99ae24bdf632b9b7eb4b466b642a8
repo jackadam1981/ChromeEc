@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "328f2b26_e7d8921a",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T14:07:50Z",
+      "side": 1,
+      "message": "At this point no board supports ADC measurement of VBUS, so I figured it belongs in common octopus code",
+      "parentUuid": "6fe2579c_1a04e796",
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5285c8d_0717cb8a",
         "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "74fb6501_6ff7b6fc",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T14:07:50Z",
+      "side": 1,
+      "message": "These interrupt signal only go to the MUX (TCPC) and not the PPC.\n\nBut if you are talking about the names on line 85 and 86, then we can definitely file a hardware issue to rename them. I like keeping the firmware and schematic names as close as possible when we are able to.",
+      "parentUuid": "d5285c8d_0717cb8a",
+      "range": {
+        "startLine": 89,
+        "startChar": 35,
+        "endLine": 89,
+        "endChar": 38
+      },
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "207b0330_a9e000fc",
         "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5745175e_efcd3285",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-06T14:07:50Z",
+      "side": 1,
+      "message": "The rename affects both yorp and phaser, and they both share the same net name on the most recent version of schematics.  (This is why the yorp gpio.inc had to change in this CL)",
+      "parentUuid": "207b0330_a9e000fc",
+      "revId": "62d7d8b0aec99ae24bdf632b9b7eb4b466b642a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
