@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed7b8f93_7b3368a1",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-06T00:17:17Z",
+      "side": 1,
+      "message": "controller\n\nAlso, I\u0027d shrink the string a bit, at least: \"Timeout waiting for controller ready\".",
+      "range": {
+        "startLine": 444,
+        "startChar": 30,
+        "endLine": 444,
+        "endChar": 41
+      },
+      "revId": "2a2b8e03991a69a3d2be99723d90c2f5aaddbb2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
