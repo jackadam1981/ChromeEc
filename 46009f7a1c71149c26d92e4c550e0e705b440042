@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9144ea5_4e00c7a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-06T00:19:23Z",
+      "side": 1,
+      "message": "how much extra space does this take?",
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707c85d9_e7a29df6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-06T00:19:23Z",
+      "side": 1,
+      "message": "we don\u0027t expect anything if this command is strictly for reading the WP status.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c2c2e48_fc68b578",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-06T00:19:23Z",
+      "side": 1,
+      "message": "this comment is not needed any more.",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 46
+      },
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78da8b5e_b352c192",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-06T00:19:23Z",
+      "side": 1,
+      "message": "add a comment describing what this command does.",
+      "revId": "46009f7a1c71149c26d92e4c550e0e705b440042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
