@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "596f4dd3_4b6baf3e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-07T02:08:38Z",
+      "side": 1,
+      "message": "are this and line 219 misaligned?",
+      "range": {
+        "startLine": 202,
+        "startChar": 10,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "770b9ef0aff1e121f5512743ba849ece5dd91180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
