@@ -11,7 +11,7 @@
 /* Optional modules */
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
-#define CONFIG_CHIPSET_RK3399
+#define CONFIG_CHIPSET_MT8183
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_RTC
 #define CONFIG_EMULATED_SYSRQ
@@ -39,10 +39,6 @@
 
 /* Region sizes are no longer a power of 2 so we can't enable MPU */
 #undef  CONFIG_MPU
-
-/* Enable a different power-on sequence than the one on gru */
-#undef CONFIG_CHIPSET_POWER_SEQ_VERSION
-#define CONFIG_CHIPSET_POWER_SEQ_VERSION 2
 
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
@@ -185,10 +181,8 @@ enum adc_channel {
 
 /* power signal definitions */
 enum power_signal {
-	PP1250_S3_PWR_GOOD = 0,
-	PP900_S0_PWR_GOOD,
-	AP_PWR_GOOD,
-	SUSPEND_DEASSERTED,
+	AP_IN_S3_L,
+	PMIC_PWR_GOOD,
 
 	/* Number of signals */
 	POWER_SIGNAL_COUNT,
