@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58c36b7c_65e59475",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-07T09:05:31Z",
+      "side": 1,
+      "message": "given parse_bool was also accepting other values (e.g. y/n) and I\u0027m not 100% sure people scripts were not using them. \nCan we keep it and just check \u0027force\u0027 if it returns 0 ?\n(might be smaller code size too)",
+      "range": {
+        "startLine": 889,
+        "startChar": 0,
+        "endLine": 892,
+        "endChar": 27
+      },
+      "revId": "7f03dec5ee305b402474c526e85068efbb873890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
