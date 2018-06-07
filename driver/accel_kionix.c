@@ -510,43 +510,43 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 
 static int init(const struct motion_sensor_t *s)
 {
-	int ret, val, reg, reset_field;
-	uint8_t timeout;
+	int ret, val, reg, reset_field, timeout;
 
 	mutex_lock(s->mutex);
-	if (V(s)) {
-		/* The chip can take up to 10ms to boot */
-		reg = KIONIX_WHO_AM_I(V(s));
-		timeout = 0;
-		do {
-			msleep(1);
+	timeout = 0;
+	do {
+		/*
+		 * Some chips require a period of time to boot.  Some boards
+		 * require time to energize the sensor power rails.  Run the
+		 * startup sequence with a retry loop in all cases.
+		 */
+		if (V(s)) {
 			/* Read WHO_AM_I to be sure the device has booted */
+			reg = KXCJ9_WHOAMI;
 			ret = raw_read8(s->port, s->addr, reg, &val);
-			if (ret == EC_SUCCESS)
-				break;
-
-			/* Check for timeout. */
-			if (timeout++ > 20) {
-				ret = EC_ERROR_TIMEOUT;
-				break;
-			}
-		} while (1);
-	} else {
-		/* Write 0x00 to the internal register for KX022 */
-		reg = KX022_INTERNAL;
-		ret = raw_write8(s->port, s->addr, reg, 0x0);
-		if (ret != EC_SUCCESS) {
+		} else {
 			/*
-			 * For I2C communication, if ACK was not received
-			 * from the first address, resend the command using
-			 * the second address.
+			 * See also Kionix KN014 "Accelerometer Power-On
+			 * Procedure".
 			 */
-			if (!KIONIX_IS_SPI(s->addr)) {
-				ret = raw_write8(s->port, s->addr & ~4, reg,
-						 0x0);
+			reg = KX022_INTERNAL;
+			ret = raw_write8(s->port, s->addr, reg, 0x0);
+			if (ret != EC_SUCCESS) {
+				if (!KIONIX_IS_SPI(s->addr)) {
+					ret = raw_write8(s->port, s->addr & ~4,
+							 reg, 0x0);
+				}
 			}
 		}
-	}
+		if (ret == EC_SUCCESS) {
+			CPRINTF("%s init after %d ms", s->name, timeout + 1);
+			break;
+		} else if (timeout++ > 20) {
+			ret = EC_ERROR_TIMEOUT;
+			break;
+		}
+		msleep(1);
+	} while (1);
 
 	if (ret != EC_SUCCESS)
 		goto reset_failed;
