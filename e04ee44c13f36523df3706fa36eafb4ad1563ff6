@@ -22,6 +22,30 @@
       "revId": "e04ee44c13f36523df3706fa36eafb4ad1563ff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1894832_8715c10d",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-07T23:51:40Z",
+      "side": 0,
+      "message": "Yeah. Also I think we should try to calculate the prod x25519 authcode with the test 25519 key and calculate the prod 256 authcode with the test 256 key.",
+      "parentUuid": "3f123c02_cf843a8a",
+      "range": {
+        "startLine": 300,
+        "startChar": 9,
+        "endLine": 300,
+        "endChar": 10
+      },
+      "revId": "e04ee44c13f36523df3706fa36eafb4ad1563ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
