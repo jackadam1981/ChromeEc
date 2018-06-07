@@ -93,7 +93,25 @@ int pd_check_vconn_swap(int port)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Do nothing */
+	int enable = (data_role == PD_ROLE_UFP);
+
+	/*
+	 * Exclude the charger case, in which the "USB Communications Capable"
+	 * bit is unset in the Fixed Supply PDO.
+	 */
+	if (pd_capable(port))
+		enable = enable && pd_get_partner_usb_comm_capable(port);
+
+	/* Only mux one port to AP. If already muxed, return. */
+	if (enable && (!gpio_get_level(GPIO_USB_C0_HS_MUX_SEL) ||
+		       gpio_get_level(GPIO_USB_C1_HS_MUX_SEL)))
+		return;
+
+	/* Port-0 and port-1 have different polarities. */
+	if (port == 0)
+		gpio_set_level(GPIO_USB_C0_HS_MUX_SEL, enable ? 0 : 1);
+	else if (port == 1)
+		gpio_set_level(GPIO_USB_C1_HS_MUX_SEL, enable ? 1 : 0);
 }
 
 int pd_is_valid_input_voltage(int mv)
