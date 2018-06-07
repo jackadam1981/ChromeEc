@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74e9d60a_d9ce822e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-07T02:26:40Z",
+      "side": 1,
+      "message": "Maybe you can directly call st_tp_full_initialize_start here, instead?",
+      "revId": "49507b620e18959afc0779b88d73b7cc2b15800d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
