@@ -46,6 +46,30 @@
       "revId": "770b9ef0aff1e121f5512743ba849ece5dd91180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ad8865_6ca07897",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-06-07T02:37:03Z",
+      "side": 1,
+      "message": "in t\u003d8 editor it\u0027s all aligned. Must be gerrit quirk.",
+      "parentUuid": "de35a0c7_43574801",
+      "range": {
+        "startLine": 202,
+        "startChar": 10,
+        "endLine": 202,
+        "endChar": 26
+      },
+      "revId": "770b9ef0aff1e121f5512743ba849ece5dd91180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
