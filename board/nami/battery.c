@@ -163,6 +163,41 @@ static int battery_init(void)
 		!!(batt_status & STATUS_INITIALIZED);
 }
 
+enum gauge_type {
+	GAUGE_TYPE_TI_BQ40Z50,
+	GAUGE_TYPE_RENESAS_RAJ240,
+};
+
+/*
+ * This isn't a generic identifier. It can distinguish only those listed in
+ * enum gauge_type.
+ */
+static int get_gauge_ic(enum gauge_type *type)
+{
+	uint8_t data[11];
+	int rv;
+
+	/*
+	 * 0x0002 is for 'Firmware Version' (p91 in BQ40Z50-R2 TRM).
+	 *  We can't use sb_read_mfgacc because the command won't be included
+	 * in the returned block. */
+	rv = sb_write(SB_MANUFACTURER_ACCESS, 0x0002);
+	if (rv)
+		return rv;
+
+	rv = sb_read_string(SB_MANUFACTURER_DATA, data, sizeof(data));
+	if (rv)
+		return rv;
+
+	/* 3rd and 4th byte contain version. BQ40Z50 should return something */
+	if (data[2] == 0 && data[3] == 0)
+		*type = GAUGE_TYPE_RENESAS_RAJ240;
+	else
+		*type = GAUGE_TYPE_TI_BQ40Z50;
+
+	return EC_SUCCESS;
+}
+
 /*
  * Check for case where both XCHG and XDSG bits are set indicating that even
  * though the FG can be read from the battery, the battery is not able to be
@@ -175,7 +210,7 @@ static int battery_init(void)
  * to a brownout event when the battery isn't able yet to provide power to the
  * system. .
  */
-static int battery_check_disconnect_0(void)
+static int battery_check_disconnect_ti_bq40z50(void)
 {
 	int rv;
 	uint8_t data[6];
@@ -195,6 +230,21 @@ static int battery_check_disconnect_0(void)
 	return BATTERY_NOT_DISCONNECTED;
 }
 
+static int battery_check_disconnect_renesas_raj240(void)
+{
+	int data;
+	int rv;
+
+	rv = sb_read(0x41, &data);
+	if (rv)
+		return BATTERY_DISCONNECT_ERROR;
+
+	if (data != 0x1E /* 1E: Power down */)
+		return BATTERY_NOT_DISCONNECTED;
+
+	return BATTERY_DISCONNECTED;
+}
+
 static int battery_check_disconnect_1(void)
 {
 	int batt_discharge_fet;
@@ -211,8 +261,18 @@ static int battery_check_disconnect_1(void)
 
 static int battery_check_disconnect(void)
 {
-	return oem == PROJECT_AKALI ?
-		battery_check_disconnect_1() : battery_check_disconnect_0();
+	enum gauge_type type;
+
+	if (oem == PROJECT_AKALI)
+		return battery_check_disconnect_1();
+
+	if (get_gauge_ic(&type))
+		return BATTERY_DISCONNECT_ERROR;
+
+	if (type == GAUGE_TYPE_TI_BQ40Z50)
+		return battery_check_disconnect_ti_bq40z50();
+	else
+		return battery_check_disconnect_renesas_raj240();
 }
 
 static enum battery_present batt_pres_prev; /* Default BP_NO (=0) */
