@@ -297,7 +297,6 @@ static int rma_server_side(const char *generated_challenge)
 		break;
 	default:
 		printf("Unsupported KeyID %d\n", key_id);
-		return 1;
 	}
 
 	/*
