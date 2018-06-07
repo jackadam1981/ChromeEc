@@ -93,7 +93,14 @@ int pd_check_vconn_swap(int port)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Do nothing */
+	/* TODO(waihong): Make sure only one port mux to AP */
+	if (port == 0) {
+		gpio_set_level(GPIO_USB_C0_HS_MUX_SEL,
+			       (data_role == PD_ROLE_UFP) ? 0 : 1);
+	} else if (port == 1) {
+		gpio_set_level(GPIO_USB_C1_HS_MUX_SEL,
+			       (data_role == PD_ROLE_UFP) ? 1 : 0);
+	}
 }
 
 int pd_is_valid_input_voltage(int mv)
