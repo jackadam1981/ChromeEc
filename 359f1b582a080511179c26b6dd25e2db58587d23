@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2556544_a9148e78",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2232,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2018-06-07T15:06:13Z",
+      "side": 0,
+      "message": "MCHP_IRQ_MAX is used in CL:1053956 under review. Please don\u0027t remove it.",
+      "revId": "359f1b582a080511179c26b6dd25e2db58587d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
