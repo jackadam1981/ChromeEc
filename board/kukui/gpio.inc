@@ -20,35 +20,36 @@ GPIO_INT(VOLUME_DOWN_L,    PIN(E, 11), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt)
 GPIO_INT(POWER_BUTTON_L,   PIN(A, 0),  GPIO_INT_BOTH | GPIO_PULL_UP,
          power_button_interrupt)
-GPIO_INT(PP1250_S3_PG,     PIN(D, 8),  GPIO_INT_BOTH | GPIO_PULL_UP,
+
+GPIO_INT(AP_IN_SLEEP_L,    PIN(C, 12), GPIO_INT_BOTH | GPIO_PULL_DOWN,
          power_signal_interrupt)
-GPIO_INT(PP900_S0_PG,      PIN(D, 9),  GPIO_INT_BOTH | GPIO_PULL_UP,
+GPIO_INT(PMIC_EC_RESETB,   PIN(B, 7),  GPIO_INT_BOTH | GPIO_PULL_UP,
          power_signal_interrupt)
-GPIO_INT(AP_EC_S3_S0_L,    PIN(C, 7),  GPIO_INT_BOTH | GPIO_PULL_DOWN,
-         power_signal_interrupt)
-GPIO_INT(WARM_RESET_REQ,   PIN(E, 1),  GPIO_INT_RISING | GPIO_PULL_DOWN,
+GPIO_INT(WARM_RESET_REQ,   PIN(A, 3),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          warm_reset_request_interrupt)
+GPIO_INT(AP_WATCHDOG_L,    PIN(C, 2),  GPIO_INT_FALLING | GPIO_PULL_UP,
+         ap_watchdog_interrupt)
+
+/* FIXME */
 GPIO_INT(AP_OVERTEMP,      PIN(E, 4),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          overtemp_interrupt)
 GPIO_INT(ACCEL_INT_L,      PIN(D, 14), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          bmi160_interrupt)
-GPIO_INT(SYNC_INT,         PIN(A, 12), GPIO_INT_RISING | GPIO_PULL_DOWN,
+GPIO_INT(SYNC_INT,         PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
 GPIO_INT(CHARGER_INT_L,    PIN(E, 6),  GPIO_INT_FALLING | GPIO_PULL_UP,
          rt946x_interrupt)
 
 /* Voltage rails control pins */
-GPIO(PP1800_S0_EN,         PIN(D, 11), GPIO_OUT_LOW)
-GPIO(AP_CORE_EN,           PIN(C, 1),  GPIO_OUT_LOW)
-GPIO(PP3300_S0_EN,         PIN(E, 12), GPIO_OUT_LOW)
-GPIO(PP1800_USB_EN,        PIN(C, 4),  GPIO_OUT_LOW)
-GPIO(PP900_S0_EN,          PIN(E, 8),  GPIO_OUT_LOW)
-GPIO(PP1250_S3_EN,         PIN(D, 13), GPIO_OUT_LOW)
-GPIO(PP1800_S3_EN,         PIN(C, 3),  GPIO_OUT_LOW)
-GPIO(PP3300_S3_EN,         PIN(E, 2),  GPIO_OUT_LOW)
-GPIO(PP900_S3_EN,          PIN(E, 10), GPIO_OUT_LOW)
+GPIO(PP1800_S0_EN,         PIN(C, 1),  GPIO_OUT_LOW)
+GPIO(PP3300_S0_EN,         PIN(B, 6),  GPIO_OUT_LOW)
+GPIO(PP1800_S3_EN,         PIN(C, 7),  GPIO_OUT_LOW)
+GPIO(PP3300_S3_EN,         PIN(A, 8),  GPIO_OUT_LOW)
 
-GPIO(PP3300_REDUCE_EFF_L,  PIN(D, 12), GPIO_ODR_HIGH)
+/* Reset pins */
+GPIO(AP_SYS_RST_L,         PIN(C, 11), GPIO_ODR_LOW)
+GPIO(PMIC_WATCHDOG_L,      PIN(C, 3),  GPIO_ODR_HIGH)
+GPIO(PMIC_EN_ODL,          PIN(C, 10), GPIO_OUT_LOW)
 
 /*
  * I2C pins should be configured as inputs until I2C module is
@@ -71,18 +72,12 @@ GPIO(BAT_LED_RED,          PIN(E, 13), GPIO_ODR_HIGH)
 
 /* Other input pins */
 GPIO(WP_L,                 PIN(E, 5),  GPIO_INPUT)
-/* TODO(philipchen): Add an interrupt handler once CCD is fully developed. */
+/* FIXME */
 GPIO(CCD_MODE_ODL,         PIN(C, 5),  GPIO_INPUT | GPIO_PULL_UP)
-/* Non-INT power signal pin */
-GPIO(AP_CORE_PG,           PIN(D, 7),  GPIO_INPUT | GPIO_PULL_UP)
-/* Battery ID strap pin */
-GPIO(BATT_ID,              PIN(C, 2),  GPIO_INPUT | GPIO_PULL_UP)
-
 
 
 /* Other output pins */
 GPIO(ENTERING_RW,          PIN(C, 6),  GPIO_ODR_HIGH)
-GPIO(SYS_RST_L,            PIN(C, 8),  GPIO_ODR_LOW)
 GPIO(EC_INT_L,             PIN(E, 3),  GPIO_ODR_HIGH)
 GPIO(EC_BOARD_ID_EN_L,     PIN(F, 1),  GPIO_ODR_HIGH)
 GPIO(USB_C0_DISCHARGE,     PIN(A, 11), GPIO_OUT_LOW)
