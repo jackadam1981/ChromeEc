@@ -102,14 +102,12 @@ GPIO(CHG_LED_W_C1,          PIN(C, 0), GPIO_OUT_LOW)   /* EC_CHG_LED_W_C1 */
  *      +------- C1_MUX:D2
  *          | |
  * AP --- USB_HUB
- *
- * TODO(waihong): Support auto-detection and switching.
  */
 /* Switch both port-0 and port-1 to the hub, which matches the SS path. */
 GPIO(USB_C0_HS_MUX_OE_L,    PIN(A, 4), GPIO_OUT_LOW)
-GPIO(USB_C0_HS_MUX_SEL,     PIN(A, 3), GPIO_OUT_HIGH)  /* L:D1(AP), H:D2(hub) */
+GPIO(USB_C0_HS_MUX_SEL,     PIN(A, 3), GPIO_OUT_HIGH)  /* Active-low, L:D1(AP), H:D2(hub) */
 GPIO(USB_C1_HS_MUX_OE_L,    PIN(7, 3), GPIO_OUT_LOW)
-GPIO(USB_C1_HS_MUX_SEL,     PIN(7, 4), GPIO_OUT_LOW)   /* L:D1(hub), H:D2(AP) */
+GPIO(USB_C1_HS_MUX_SEL,     PIN(7, 4), GPIO_OUT_LOW)   /* Active-high, L:D1(hub), H:D2(AP) */
 
 /* USB-C port-0 controls */
 GPIO(USB_C0_PD_RST_R_L,     PIN(F, 1), GPIO_OUT_HIGH)  /* Port-0 TCPC chip reset */
