@@ -66,6 +66,13 @@ static void warm_reset_request_interrupt(enum gpio_signal signal)
 	chipset_reset();
 }
 
+static void ap_watchdog_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("AP watchdog triggered.");
+	cflush();
+	/* TODO(b:109900671): Handle AP watchdog, when necessary. */
+}
+
 #include "gpio_list.h"
 
 /******************************************************************************/
@@ -85,10 +92,8 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
-	{GPIO_PP1250_S3_PG,    POWER_SIGNAL_ACTIVE_HIGH, "PP1250_S3_PWR_GOOD"},
-	{GPIO_PP900_S0_PG,     POWER_SIGNAL_ACTIVE_HIGH, "PP900_S0_PWR_GOOD"},
-	{GPIO_AP_CORE_PG,      POWER_SIGNAL_ACTIVE_HIGH, "AP_PWR_GOOD"},
-	{GPIO_AP_EC_S3_S0_L,   POWER_SIGNAL_ACTIVE_LOW, "SUSPEND_DEASSERTED"},
+	{GPIO_AP_IN_SLEEP_L,   POWER_SIGNAL_ACTIVE_LOW,  "AP_IN_S3_L"},
+	{GPIO_PMIC_EC_RESETB,  POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
@@ -243,6 +248,7 @@ static void board_init(void)
 
 	/* Enable reboot / shutdown control inputs from AP */
 	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
+	gpio_enable_interrupt(GPIO_AP_WATCHDOG_L);
 	gpio_enable_interrupt(GPIO_AP_OVERTEMP);
 
 	/* Enable interrupts from BMI160 sensor. */
