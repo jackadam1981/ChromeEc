@@ -2,6 +2,236 @@
   "comments": [
     {
       "key": {
+        "uuid": "bee722ad_d3288732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "No need to include the branch name in the title.  \"eve:\" is fine.",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40906a7c_9e8cbeaa",
+        "filename": "board/eve/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "ALT_OS",
+      "range": {
+        "startLine": 79,
+        "startChar": 24,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf04c63_ad91cfe8",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "Missing space before \u003d.",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6894725_4cbf6f9f",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "Two spaces before comment.",
+      "range": {
+        "startLine": 124,
+        "startChar": 26,
+        "endLine": 124,
+        "endChar": 27
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bd9658_d51207e0",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "s/the //",
+      "range": {
+        "startLine": 124,
+        "startChar": 38,
+        "endLine": 124,
+        "endChar": 41
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad09f1d_9555e730",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "If using as a boolean, please indicate in variable name.  Otherwise, please introduce some constants to use instead of \"1\" and \"0\".",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cf7903_0c34334f",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "Is this supposed to line up with the opening bracket?",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 6
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1293205_516d20b4",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "If this is a bug, please correct it in a separate CL.  This will make cherry-picking simpler.",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 50
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860cd8be_77a04b8d",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "BRIGHTEN",
+      "range": {
+        "startLine": 565,
+        "startChar": 41,
+        "endLine": 565,
+        "endChar": 49
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15aa112b_ca7a19f7",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "alt_os",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 14
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca23134b_f7eb5907",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -13,6 +243,47 @@
       "writtenOn": "2018-06-06T15:35:46Z",
       "side": 1,
       "message": "+kitching\n\nHi Joel, I think we currently don\u0027t support \u003e32 bit event code right? Or have we enabled 64-bit event code? What\u0027s the right way to add new events here?",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767a16ad_b1fc9cb0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "I\u0027ve already cherry-picked most required patches to enable 64-bit host events into eve-campfire branch.  There are a few remaining:\n- CL:1016444\n- CL:1049467\n- CL:1049470\n- CL:1049469\n\nThe correct way to introduce a new host event is to directly commit it (or a placeholder) into ToT, so that we don\u0027t create any conflicting events.\n\nHowever, I am confused -- what is the current method to brighten and dim the screen, and why can we not use that method?",
+      "parentUuid": "ca23134b_f7eb5907",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a777187b_ed3b438c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-07T05:47:35Z",
+      "side": 1,
+      "message": "BRIGHTEN",
+      "range": {
+        "startLine": 583,
+        "startChar": 15,
+        "endLine": 583,
+        "endChar": 23
+      },
       "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
