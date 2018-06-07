@@ -19,7 +19,7 @@ static const struct {
 	uint8_t isr_off;
 	uint8_t ier_off;
 	uint8_t cpu_int[8];
-} irq_groups[21] = {
+} irq_groups[23] = {
 	IRQ_GROUP(0,  {-1,  2,  5,  4,  6,  2,  2,  4}),
 	IRQ_GROUP(1,  { 7,  6,  6,  5,  2,  2,  2,  8}),
 	IRQ_GROUP(2,  { 6,  2,  8,  8,  8,  2, 12, 12}),
@@ -41,6 +41,8 @@ static const struct {
 	IRQ_GROUP(18, {-1, -1, -1, -1, -1,  4,  4,  7}),
 	IRQ_GROUP(19, { 6,  6, 12,  3,  3,  3,  3,  3}),
 	IRQ_GROUP(20, {12, 12, 12, 12, 12, 12, 12, 12}),
+	IRQ_GROUP(21, { 2,  2,  2,  2,  2,  2,  2,  2}),
+	IRQ_GROUP(22, { 2,  2, -1, -1, -1, -1, -1, -1}),
 };
 
 int chip_enable_irq(int irq)
