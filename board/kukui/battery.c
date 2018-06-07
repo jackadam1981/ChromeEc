@@ -98,16 +98,20 @@ static const struct max17055_batt_profile batt_profile[] = {
 
 const struct battery_info *battery_get_info(void)
 {
-	if (batt_id >= BATTERY_COUNT)
-		batt_id = gpio_get_level(GPIO_BATT_ID);
+	/* FIXME */
+	batt_id = 0;
+/*	if (batt_id >= BATTERY_COUNT)
+	batt_id = gpio_get_level(GPIO_BATT_ID);*/
 
 	return &info[batt_id];
 }
 
 const struct max17055_batt_profile *max17055_get_batt_profile(void)
 {
-	if (batt_id >= BATTERY_COUNT)
-		batt_id = gpio_get_level(GPIO_BATT_ID);
+	/* FIXME */
+	batt_id = 0;
+/*	if (batt_id >= BATTERY_COUNT)
+	batt_id = gpio_get_level(GPIO_BATT_ID);*/
 
 	return &batt_profile[batt_id];
 }
@@ -180,8 +184,9 @@ int charger_profile_override(struct charge_state_data *curr)
 		quirk_batt_update = 1;
 	}
 
-	if (batt_id >= BATTERY_COUNT)
-		batt_id = gpio_get_level(GPIO_BATT_ID);
+	batt_id = 0;
+/*	if (batt_id >= BATTERY_COUNT)
+	batt_id = gpio_get_level(GPIO_BATT_ID);*/
 
 	if ((curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE) ||
 	    (bat_temp_c < temp_zones[batt_id][0].temp_min) ||
