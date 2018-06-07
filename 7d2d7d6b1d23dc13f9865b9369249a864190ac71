@@ -22,6 +22,30 @@
       "revId": "7d2d7d6b1d23dc13f9865b9369249a864190ac71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa5d086_b18c468a",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-07T19:14:49Z",
+      "side": 1,
+      "message": "I can see a race condition here if an interrupt is handled between get_int_mask() and interrupt_disable(), and the interrupt handler disables interrupts and does not re-enable them.\n\nAs an alternative, I could instead count nested interrupt_disable() calls, something like this:\n\nstatic int interrupt_disable_count;\n\nvoid interrupt_disable(void)\n{\n\tasm(\"cpsid i\");\n\tinterrupt_disable_count++;\n}\n\nvoid interrupt_enable(void)\n{\n\tif (interrupt_disable_count \u003e 0)\n\t\tinterrupt_disable_count--;\n\tif (interrupt_disable_count \u003d\u003d 0)\n\t\tasm(\"cpsie i\");\n}\n\nBut I worry that is too invasive and risky a change to existing behavior, may encourage nesting interrupt_disable() calls, and there may be other edge cases I haven\u0027t thought of, so I will abandon this change.",
+      "parentUuid": "bfc5e297_fcb5b967",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "7d2d7d6b1d23dc13f9865b9369249a864190ac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
