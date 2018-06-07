@@ -46,6 +46,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+#define __board_virtual __attribute__((weak))
+
+static int board_is_convertible(void);
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
@@ -309,14 +312,27 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /*
- * Matrix to rotate accelerator into standard reference frame
+ * Matrix to rotate accelerators into the standard reference frame.  The default
+ * is the identity which is correct for the reference design.  Variations of
+ * Grunt may need to change it for manufacturability.
+ * For the lid:
+ *  +x to the right
+ *  +y up
+ *  +z out of the page
  *
- * TODO(teravest): Update this when we can physically test a Grunt.
+ * The principle axes of the body are aligned with the lid when the lid is in
+ * the 180 degree position (open, flat).
  */
-const matrix_3x3_t base_standard_ref = {
-	{ 0, FLOAT_TO_FP(-1), 0},
-	{ FLOAT_TO_FP(1), 0,  0},
-	{ 0, 0,  FLOAT_TO_FP(1)}
+const matrix_3x3_t base_standard_ref __board_virtual = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1),  0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
+const matrix_3x3_t lid_standard_ref __board_virtual = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1),  0},
+	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
 /* sensor private data */
@@ -335,7 +351,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv_data = &g_kx022_data,
 	 .port = I2C_PORT_SENSOR,
 	 .addr = KX022_ADDR1,
-	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .rot_standard_ref = &lid_standard_ref,
 	 .default_range = 2, /* g, enough for laptop. */
 	 .min_frequency = KX022_ACCEL_MIN_FREQ,
 	 .max_frequency = KX022_ACCEL_MAX_FREQ,
@@ -398,7 +414,8 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #ifndef TEST_BUILD
 void lid_angle_peripheral_enable(int enable)
 {
-	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+	if (board_is_convertible())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
 
@@ -457,4 +474,35 @@ uint32_t system_get_sku_id(void)
 
 	sku_id = (sku_id2 << 4) | sku_id1;
 	return sku_id;
+}
+
+/*
+ * Returns 1 for boards that are convertible into tablet mode, and zero for
+ * clamshells.
+ */
+static int board_is_convertible(void)
+{
+	/*
+	 * Bits are set in this list for SKUs that are convertible into tablet
+	 * mode.  Otherwise, boards are assumed to be clamshells.  See also the
+	 * Grunt SKU Matrix: go/grunt-sku-id.
+	 */
+	static const uint32_t convertible_sku[] = {1 << 6};
+	size_t sku_word;
+	int sku_bit;
+	uint32_t sku_id;
+
+	sku_id = system_get_sku_id();
+	if ((sku_id) < ARRAY_SIZE(convertible_sku) * 32) {
+		sku_word = sku_id / 32;
+		sku_bit = sku_id % 32;
+		return convertible_sku[sku_word] & (1 << sku_bit) ? 1 : 0;
+	} else {
+		return 0;
+	}
+}
+
+int board_is_lid_angle_tablet_mode(void)
+{
+	return board_is_convertible();
 }
