@@ -26,7 +26,7 @@ struct gpio_alt_func {
 	uint8_t module_id;
 
 	/* Flags (GPIO_*; see above). */
-	uint16_t flags;
+	uint32_t flags;
 };
 
 /*
