@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "686f7c54_10b08f40",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-07T06:24:01Z",
+      "side": 1,
+      "message": "It turned out mapping from SKU to BJ spec is shared among OEMs. So, we need only one mask. Please see the comment in the code for details.",
+      "parentUuid": "cb5287c1_914bf1bb",
+      "revId": "7afdfdcc5d3cda3d402c690441a9beb697b4b2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1904d0_ae64652f",
         "filename": "board/fizz/board.c",
         "patchSetId": 3
