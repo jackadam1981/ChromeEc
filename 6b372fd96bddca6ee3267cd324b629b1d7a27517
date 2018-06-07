@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "483fae3d_0984c506",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-07T21:55:12Z",
+      "side": 1,
+      "message": "I think we should omit GPIO_INPUT and just keep GPIO_SEL_1P8V",
+      "range": {
+        "startLine": 142,
+        "startChar": 45,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "6b372fd96bddca6ee3267cd324b629b1d7a27517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
