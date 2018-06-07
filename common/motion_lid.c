@@ -28,7 +28,6 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_LID, format, ## args)
 
-#ifdef CONFIG_LID_ANGLE_INVALID_CHECK
 /* Previous lid_angle. */
 static fp_t last_lid_angle_fp = FLOAT_TO_FP(-1);
 
@@ -38,7 +37,6 @@ static fp_t last_lid_angle_fp = FLOAT_TO_FP(-1);
  * reliability calculations.
  */
 #define SMALL_LID_ANGLE_RANGE 15
-#endif
 
 /* Current acceleration vectors and current lid angle. */
 static int lid_angle_deg;
@@ -115,19 +113,16 @@ const struct motion_sensor_t * const accel_base =
 const struct motion_sensor_t * const accel_lid =
 	&motion_sensors[CONFIG_LID_ANGLE_SENSOR_LID];
 
-__attribute__((weak)) int board_is_lid_angle_tablet_mode(void)
-{
 #ifdef CONFIG_LID_ANGLE_TABLET_MODE
-	return 1;
+__attribute__((weak)) int board_is_lid_angle_tablet_mode(void) { return 1; }
 #else
-	return 0;
+/*
+ * Using a non-weak symbol reveals the constant-expression to the compiler.
+ * Standard constant-folding and DCE passes remove the resulting dead code.
+ */
+int board_is_lid_angle_tablet_mode(void) { return 0; }
 #endif
-}
 
-#ifdef CONFIG_LID_ANGLE_TABLET_MODE
-#ifndef CONFIG_LID_ANGLE_INVALID_CHECK
-#error "Check for invalid transition needed"
-#endif
 /*
  * We are in tablet mode when the lid angle has been calculated
  * to be large.
@@ -201,7 +196,6 @@ static int motion_lid_set_tablet_mode(int reliable)
 		tablet_mode_debounce_cnt = TABLET_MODE_DEBOUNCE_COUNT;
 	return reliable;
 }
-#endif
 
 /**
  * Calculate the lid angle using two acceleration vectors, one recorded in
@@ -344,62 +338,63 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	    (2 * 10 * NOISY_MAGNITUDE_DEVIATION))
 		reliable = 0;
 
-#ifdef CONFIG_LID_ANGLE_INVALID_CHECK
-	/* Ignore large angles when the lid is closed. */
-	if (!lid_is_open() &&
-	    (lid_to_base_fp > FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE)))
-		reliable = 0;
-
-	/*
-	 * Ignore small angles when the lid is open.
-	 *
-	 * Note that we're not correcting the angle, but just marking it as
-	 * unreliable.  Attempting to correct the angle would cause bad angles
-	 * when closing the lid.  However, there is one edge case.  If the
-	 * device is suspended in laptop mode, but then is physically placed in
-	 * tablet mode, but ALL the angles are read as unreliable, a keypress
-	 * may wake us up.  This is because we require at least 4 consecutive
-	 * reliable readings over a threshold to disable key scanning.
-	 */
-	if (lid_is_open() &&
-	    (lid_to_base_fp <= FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE)))
-		reliable = 0;
-
-	if (reliable) {
-		/*
-		 * Seed the lid angle now that we have a reliable
-		 * measurement.
-		 */
-		if (last_lid_angle_fp == FLOAT_TO_FP(-1))
-			last_lid_angle_fp = lid_to_base_fp;
+	if (board_is_lid_angle_tablet_mode()) {
+		/* Ignore large angles when the lid is closed. */
+		if (!lid_is_open() &&
+		    (lid_to_base_fp > FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE)))
+			reliable = 0;
 
 		/*
-		 * If the angle was last seen as really large and now it's quite
-		 * small, we may be rotating around from 360->0 so correct it to
-		 * be large. But in case that the lid switch is closed, we can
-		 * prove the small angle we see is correct so we take the angle
-		 * as is.
+		 * Ignore small angles when the lid is open.
+		 *
+		 * Note that we're not correcting the angle, but just marking it
+		 * as unreliable.  Attempting to correct the angle would cause
+		 * bad angles when closing the lid.  However, there is one edge
+		 * case.  If the device is suspended in laptop mode, but then is
+		 * physically placed in tablet mode, but ALL the angles are read
+		 * as unreliable, a keypress may wake us up.  This is because we
+		 * require at least 4 consecutive reliable readings over a
+		 * threshold to disable key scanning.
 		 */
-		if ((last_lid_angle_fp >=
-		     FLOAT_TO_FP(360) - DEBOUNCE_ANGLE_DELTA) &&
-		    (lid_to_base_fp <= DEBOUNCE_ANGLE_DELTA) &&
-		    (lid_is_open()))
-			last_lid_angle_fp = FLOAT_TO_FP(360) - lid_to_base_fp;
-		else
-			last_lid_angle_fp = lid_to_base_fp;
+		if (lid_is_open() &&
+		    (lid_to_base_fp <= FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE)))
+			reliable = 0;
+
+		if (reliable) {
+			/*
+			 * Seed the lid angle now that we have a reliable
+			 * measurement.
+			 */
+			if (last_lid_angle_fp == FLOAT_TO_FP(-1))
+				last_lid_angle_fp = lid_to_base_fp;
+
+			/*
+			 * If the angle was last seen as really large and now
+			 * it's quite small, we may be rotating around from
+			 * 360->0 so correct it to be large. But in case that
+			 * the lid switch is closed, we can prove the small
+			 * angle we see is correct so we take the angle as is.
+			 */
+			if ((last_lid_angle_fp >=
+			     FLOAT_TO_FP(360) - DEBOUNCE_ANGLE_DELTA) &&
+			    (lid_to_base_fp <= DEBOUNCE_ANGLE_DELTA) &&
+			    (lid_is_open()))
+				last_lid_angle_fp =
+					FLOAT_TO_FP(360) - lid_to_base_fp;
+			else
+				last_lid_angle_fp = lid_to_base_fp;
+		}
+
+		/*
+		 * Round to nearest int by adding 0.5. Note, only works because
+		 * lid angle is known to be positive.
+		 */
+		*lid_angle = FP_TO_INT(last_lid_angle_fp + FLOAT_TO_FP(0.5));
+		reliable = motion_lid_set_tablet_mode(reliable);
+	} else {
+		*lid_angle = FP_TO_INT(lid_to_base_fp + FLOAT_TO_FP(0.5));
 	}
 
-	/*
-	 * Round to nearest int by adding 0.5. Note, only works because lid
-	 * angle is known to be positive.
-	 */
-	*lid_angle = FP_TO_INT(last_lid_angle_fp + FLOAT_TO_FP(0.5));
-
-	if (board_is_lid_angle_tablet_mode())
-		reliable = motion_lid_set_tablet_mode(reliable);
-#else    /* CONFIG_LID_ANGLE_INVALID_CHECK */
-	*lid_angle = FP_TO_INT(lid_to_base_fp + FLOAT_TO_FP(0.5));
-#endif
 	return reliable;
 }
 
