@@ -9,6 +9,7 @@
 #include "common.h"
 #include "gpio.h"
 #include "gpio_chip.h"
+#include "i2c.h"
 #include "keyboard_config.h"
 #include "hooks.h"
 #include "registers.h"
@@ -38,6 +39,10 @@ struct npcx_wui {
 
 /* Constants for GPIO interrupt mapping */
 #define GPIO_INT(name, pin, flags, signal) NPCX_WUI_GPIO_##pin,
+#ifdef CONFIG_LOW_POWER_IDLE
+/* Extend gpio_wui_table for the bypass of better power consumption */
+#define GPIO(name, pin, flags) NPCX_WUI_GPIO_##pin,
+#endif
 static const struct npcx_wui gpio_wui_table[] = {
 	#include "gpio.wrap"
 };
@@ -116,7 +121,7 @@ static void gpio_interrupt_type_sel(enum gpio_signal signal, uint32_t flags)
 {
 	uint8_t table, group, pmask;
 
-	if (signal >= ARRAY_SIZE(gpio_wui_table))
+	if (signal >= GPIO_IH_COUNT)
 		return;
 
 	table = gpio_wui_table[signal].table;
@@ -196,6 +201,59 @@ void gpio_low_voltage_level_sel(uint8_t port, uint8_t mask, uint8_t low_voltage)
 		CPRINTS("Warn! No low voltage support in port%d, mask%d\n",
 								port, mask);
 }
+
+/* The bypass of low voltage IOs for better power consumption */
+#ifdef CONFIG_LOW_POWER_IDLE
+static int gpio_is_i2c_pins(int signal)
+{
+	int i;
+
+	for (i = 0; i < i2c_ports_used; i++)
+		if (i2c_ports[i].scl == signal || i2c_ports[i].sda == signal)
+			return 1;
+
+	return 0;
+}
+
+static void gpio_set_low_voltage_io_buffer(int signal, int enable)
+{
+	const struct gpio_info *g = gpio_list + signal;
+	const struct npcx_wui *wui = gpio_wui_table + signal;
+
+	/* Is the pin selected to low voltage mode? */
+	if ((g->flags & GPIO_SEL_1P8V) && wui->table != MIWU_TABLE_COUNT) {
+		/* Turn on/off input io buffer by WKINENx registers */
+		if (enable)
+			SET_BIT(NPCX_WKINEN(wui->table, wui->group), wui->bit);
+		else
+			CLEAR_BIT(NPCX_WKINEN(wui->table, wui->group),
+						wui->bit);
+	}
+}
+
+void gpio_dis_1p8v_i2c_io_buffer(void)
+{
+	int i;
+
+	/* Disable input buffer of 1.8V i2c ports. */
+	for (i = 0; i < i2c_ports_used; i++) {
+		gpio_set_low_voltage_io_buffer(i2c_ports[i].scl, 0);
+		gpio_set_low_voltage_io_buffer(i2c_ports[i].sda, 0);
+	}
+}
+
+void gpio_en_1p8v_i2c_io_buffer(void)
+{
+	int i;
+
+	/* Enable input buffer of 1.8V i2c ports. */
+	for (i = 0; i < i2c_ports_used; i++) {
+		gpio_set_low_voltage_io_buffer(i2c_ports[i].scl, 1);
+		gpio_set_low_voltage_io_buffer(i2c_ports[i].sda, 1);
+	}
+}
+#endif
+
 /*
  * Make sure the bit depth of low voltage register.
  */
@@ -419,6 +477,17 @@ void gpio_pre_init(void)
 		 */
 		gpio_set_alternate_function(g->port, g->mask, -1);
 	}
+
+	/* The bypass of low voltage IOs for better power consumption */
+#ifdef CONFIG_LOW_POWER_IDLE
+	/* Disable input buffer of 1.8V GPIOs without ISR */
+	g = gpio_list + GPIO_IH_COUNT;
+	for (i = GPIO_IH_COUNT; i < GPIO_COUNT; i++, g++) {
+		/* If the pins belong 1.8V i2c port, skip them */
+		if ((g->flags & GPIO_SEL_1P8V) && !gpio_is_i2c_pins(i))
+			gpio_set_low_voltage_io_buffer(i, 0);
+	}
+#endif
 }
 
 /* List of GPIO IRQs to enable. Don't automatically enable interrupts for
