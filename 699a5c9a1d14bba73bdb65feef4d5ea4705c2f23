@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e1e409d_4545afcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-08T16:21:46Z",
+      "side": 1,
+      "message": "poppy?",
+      "revId": "699a5c9a1d14bba73bdb65feef4d5ea4705c2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a8a859_e633e7b4",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2332,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-08T16:21:46Z",
+      "side": 1,
+      "message": "Other ACTIVE_LOW options don\u0027t include \"_IS_\":\n#undef CONFIG_BACKLIGHT_LID_ACTIVE_LOW\n#undef CONFIG_CHARGER_EN_ACTIVE_LOW\n#undef CONFIG_LED_BAT_ACTIVE_LOW\n#undef CONFIG_LED_POWER_ACTIVE_LOW\n#undef CONFIG_USB_PD_5V_EN_ACTIVE_LOW\n#undef CONFIG_WLAN_POWER_ACTIVE_LOW",
+      "revId": "699a5c9a1d14bba73bdb65feef4d5ea4705c2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18f13eef_3a60cc1f",
         "filename": "power/braswell.c",
         "patchSetId": 1
@@ -19,6 +53,23 @@
         "endLine": 89,
         "endChar": 25
       },
+      "revId": "699a5c9a1d14bba73bdb65feef4d5ea4705c2f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c36de1_c015e0e2",
+        "filename": "power/braswell.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-08T16:21:46Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right, since you are changing the global throttle_cpu",
       "revId": "699a5c9a1d14bba73bdb65feef4d5ea4705c2f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
