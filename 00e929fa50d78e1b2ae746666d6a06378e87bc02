@@ -22,6 +22,30 @@
       "revId": "00e929fa50d78e1b2ae746666d6a06378e87bc02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af2b814b_ece8ff93",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-08T17:57:28Z",
+      "side": 1,
+      "message": "Right now I\u0027m picking a compromise that makes it easy to change the chip orientation per-board, thinking that an OEM would be more likely to produce a set of Grunt SKUs that share a common layout and a single config in board/\n\nOtherwise, yes, if the motion sensor orientation varies per-SKU, this will have to be overwritten at runtime.",
+      "parentUuid": "67c42c4d_06cba490",
+      "range": {
+        "startLine": 326,
+        "startChar": 37,
+        "endLine": 326,
+        "endChar": 52
+      },
+      "revId": "00e929fa50d78e1b2ae746666d6a06378e87bc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
