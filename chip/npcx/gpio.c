@@ -73,6 +73,16 @@ struct gpio_lvol_item {
 /* Constants for GPIO low-voltage mapping */
 const struct gpio_lvol_item gpio_lvol_table[] = NPCX_LVOL_TABLE;
 
+/* The bypass of low voltage IOs for better power consumption */
+#ifdef CONFIG_LOW_POWER_IDLE
+/* Constants for low-voltage control and MIWU WKINEN mapping */
+struct gpio_wkinen_item {
+	struct npcx_wui lvol_wkinen[8];
+};
+
+/* Constants for low-voltage WKINEN bypass mapping */
+const struct gpio_wkinen_item lvol_wkinen_table[] = NPCX_LVOL_WKINEN_TABLE;
+#endif
 
 /*****************************************************************************/
 /* Internal functions */
@@ -196,6 +206,68 @@ void gpio_low_voltage_level_sel(uint8_t port, uint8_t mask, uint8_t low_voltage)
 		CPRINTS("Warn! No low voltage support in port%d, mask%d\n",
 								port, mask);
 }
+
+/* The bypass of low voltage IOs for better power consumption */
+#ifdef CONFIG_LOW_POWER_IDLE
+void gpio_dis_low_voltage_pins_input(void)
+{
+	int i, j;
+
+	/* Browse all bits in LV_GPIO_CTL registers. */
+	for (i = 0; i < ARRAY_SIZE(lvol_wkinen_table); i++) {
+		const struct npcx_wui *wui = lvol_wkinen_table[i].lvol_wkinen;
+		uint8_t ctl_mask = NPCX_LV_GPIO_CTL(i);
+
+		for (j = 0; j < ARRAY_SIZE(lvol_wkinen_table[0].lvol_wkinen)
+				&& ctl_mask; j++) {
+			uint8_t bit_mask = (1 << j);
+
+			/* Is this pin selected to low-voltage mode? */
+			if (ctl_mask & bit_mask) {
+				/* If it has wake-up functionality, skip it. */
+				if (IS_BIT_SET(NPCX_WKEN(wui[j].table,
+						wui[j].group), wui[j].bit))
+					continue;
+				/* Disable it for saving leakage current */
+				CLEAR_BIT(NPCX_WKINEN(wui[j].table,
+						wui[j].group), wui[j].bit);
+				/* Mark this bit is done */
+				ctl_mask &= ~bit_mask;
+			}
+		}
+	}
+}
+
+void gpio_en_low_voltage_pins_input(void)
+{
+	int i, j;
+
+	/* Browse all bits in LV_GPIO_CTL registers. */
+	for (i = 0; i < ARRAY_SIZE(lvol_wkinen_table); i++) {
+		const struct npcx_wui *wui = lvol_wkinen_table[i].lvol_wkinen;
+		uint8_t ctl_mask = NPCX_LV_GPIO_CTL(i);
+
+		for (j = 0; j < ARRAY_SIZE(lvol_wkinen_table[0].lvol_wkinen)
+				&& ctl_mask; j++) {
+			uint8_t bit_mask = (1 << j);
+
+			/* Is this pin selected to low-voltage mode? */
+			if (ctl_mask & bit_mask) {
+				/* If it has wake-up functionality, skip it. */
+				if (IS_BIT_SET(NPCX_WKEN(wui[j].table,
+						wui[j].group), wui[j].bit))
+					continue;
+				/* Enable it again after ec wakes up */
+				SET_BIT(NPCX_WKINEN(wui[j].table,
+						wui[j].group), wui[j].bit);
+				/* Mark this bit is done */
+				ctl_mask &= ~bit_mask;
+			}
+		}
+	}
+}
+#endif
+
 /*
  * Make sure the bit depth of low voltage register.
  */

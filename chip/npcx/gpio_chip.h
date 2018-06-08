@@ -7,6 +7,8 @@
 #define __CROS_EC_GPIO_CHIP_H
 
 /* Macros to initialize the MIWU mapping table. */
+#define NPCX_WUI_NONE ((struct npcx_wui) { .table = MIWU_TABLE_COUNT, \
+						.group = 0, .bit = 0 })
 #define NPCX_WUI_GPIO_PIN(port, index) NPCX_WUI_GPIO_##port##_##index
 #define WUI(tbl, grp, idx) ((struct npcx_wui) { .table = tbl, .group = grp, \
 						.bit = idx })
@@ -32,6 +34,16 @@
 				     NPCX_LVOL_CTRL_##ctrl##_6, \
 				     NPCX_LVOL_CTRL_##ctrl##_7, }
 
+/* Macros for bypass of power consumption */
+#define NPCX_LVOL_WKINEN_ITEMS(ctrl) { NPCX_LVOL_WKINEN_##ctrl##_0, \
+				       NPCX_LVOL_WKINEN_##ctrl##_1, \
+				       NPCX_LVOL_WKINEN_##ctrl##_2, \
+				       NPCX_LVOL_WKINEN_##ctrl##_3, \
+				       NPCX_LVOL_WKINEN_##ctrl##_4, \
+				       NPCX_LVOL_WKINEN_##ctrl##_5, \
+				       NPCX_LVOL_WKINEN_##ctrl##_6, \
+				       NPCX_LVOL_WKINEN_##ctrl##_7, }
+
 /**
  * Switch NPCX UART pins back to normal GPIOs.
  */
@@ -42,6 +54,15 @@ void npcx_uart2gpio(void);
  * pad, see uart.c).
  */
 void npcx_gpio2uart(void);
+
+/*
+ * Disable input buffer of all low voltage pins without wake-up functionality
+ * for better power consumption.
+ */
+void gpio_dis_low_voltage_pins_input(void);
+
+/* Enable input buffer of all low voltage pins without wake-up functionality. */
+void gpio_en_low_voltage_pins_input(void);
 
 /*
  * Include the MIWU, alternative and low-Voltage macro functions for GPIOs
