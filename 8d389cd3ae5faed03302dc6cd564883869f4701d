@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f7c46da_05783510",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-08T08:02:52Z",
+      "side": 1,
+      "message": "nit: is this guy really used ?\n\nas a side-note, it would be nice to have an include/headers checker, clang have something like this ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc420b83_3d34f646",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-08T08:02:52Z",
+      "side": 1,
+      "message": "this is the same as chipset_force_shutdown,\ncan we use a single function for both ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 0
+      },
+      "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cb5245_763e6fac",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-08T08:02:52Z",
+      "side": 1,
+      "message": "then why we would not use an interrupt ?",
+      "range": {
+        "startLine": 148,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 54
+      },
+      "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f643c4_700c02c5",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-08T08:02:52Z",
+      "side": 1,
+      "message": "this seems to be somewhat re-implemented the task events in a custom way ?",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 31
+      },
+      "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8316111d_8ad130b2",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-08T08:02:52Z",
+      "side": 1,
+      "message": "this pattern always seemed bogus to me, while starting a transition, just to block it by sleeping in a loop",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 3
+      },
+      "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dcdd0f6_b5747674",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-08T08:02:52Z",
+      "side": 1,
+      "message": "on other platforms, I think we ended up adding this check to the (dreadful) loop above, so we are not killing the battery when there is not much juice left",
+      "range": {
+        "startLine": 252,
+        "startChar": 6,
+        "endLine": 252,
+        "endChar": 27
+      },
+      "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
