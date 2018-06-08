@@ -9,6 +9,7 @@
 #include "common.h"
 #include "gpio.h"
 #include "gpio_chip.h"
+#include "i2c.h"
 #include "keyboard_config.h"
 #include "hooks.h"
 #include "registers.h"
@@ -73,6 +74,16 @@ struct gpio_lvol_item {
 /* Constants for GPIO low-voltage mapping */
 const struct gpio_lvol_item gpio_lvol_table[] = NPCX_LVOL_TABLE;
 
+/* The bypass of low voltage IOs for better power consumption */
+#ifdef CONFIG_LOW_POWER_IDLE
+/* Constants for low-voltage control and MIWU WKINEN mapping */
+struct gpio_wkinen_item {
+	struct npcx_wui lvol_wkinen[8];
+};
+
+/* Constants for low-voltage WKINEN bypass mapping */
+const struct gpio_wkinen_item lvol_wkinen_table[] = NPCX_LVOL_WKINEN_TABLE;
+#endif
 
 /*****************************************************************************/
 /* Internal functions */
@@ -196,6 +207,67 @@ void gpio_low_voltage_level_sel(uint8_t port, uint8_t mask, uint8_t low_voltage)
 		CPRINTS("Warn! No low voltage support in port%d, mask%d\n",
 								port, mask);
 }
+
+/* The bypass of low voltage IOs for better power consumption */
+#ifdef CONFIG_LOW_POWER_IDLE
+void gpio_set_wk_input_buffer(uint8_t port, uint8_t mask, uint8_t enable)
+{
+	int i, j;
+
+	for (i = 0; i < ARRAY_SIZE(gpio_lvol_table); i++) {
+		const struct npcx_gpio *gpio = gpio_lvol_table[i].lvol_gpio;
+		const struct npcx_wui *wui = lvol_wkinen_table[i].lvol_wkinen;
+
+		for (j = 0; j < ARRAY_SIZE(gpio_lvol_table[0].lvol_gpio); j++)
+			if (gpio_match(port, mask, gpio[j])) {
+				if (enable)
+					/* Enable input buffer for 3.3V IO */
+					SET_BIT(NPCX_WKINEN(wui[j].table,
+						wui[j].group), wui[j].bit);
+				else
+					/* Disable input buffer for 1.8V IO */
+					CLEAR_BIT(NPCX_WKINEN(wui[j].table,
+						wui[j].group), wui[j].bit);
+				return;
+			}
+	}
+}
+
+void gpio_dis_low_voltage_pins_input(void)
+{
+	int port;
+	const struct gpio_info *g;
+
+	/* Disable input buffer of 1.8V i2c ports before entering deep sleep */
+	for (port = 0; port < i2c_ports_used; port++) {
+		g = gpio_list + i2c_ports[port].scl;
+		if (g->flags & GPIO_SEL_1P8V)
+			gpio_set_wk_input_buffer(g->port, g->mask, 0);
+
+		g = gpio_list + i2c_ports[port].sda;
+		if (g->flags & GPIO_SEL_1P8V)
+			gpio_set_wk_input_buffer(g->port, g->mask, 0);
+	}
+}
+
+void gpio_en_low_voltage_pins_input(void)
+{
+	int port;
+	const struct gpio_info *g;
+
+	/* Enable input buffer of 1.8V i2c ports after ec wakes up */
+	for (port = 0; port < i2c_ports_used; port++) {
+		g = gpio_list + i2c_ports[port].scl;
+		if (g->flags & GPIO_SEL_1P8V)
+			gpio_set_wk_input_buffer(g->port, g->mask, 1);
+
+		g = gpio_list + i2c_ports[port].sda;
+		if (g->flags & GPIO_SEL_1P8V)
+			gpio_set_wk_input_buffer(g->port, g->mask, 1);
+	}
+}
+#endif
+
 /*
  * Make sure the bit depth of low voltage register.
  */
@@ -419,6 +491,28 @@ void gpio_pre_init(void)
 		 */
 		gpio_set_alternate_function(g->port, g->mask, -1);
 	}
+
+	/* The bypass of low voltage IOs for better power consumption */
+#ifdef CONFIG_LOW_POWER_IDLE
+	/* Disable input buffer of GPIOs without ISR */
+	g = gpio_list + GPIO_IH_COUNT;
+	for (i = GPIO_IH_COUNT; i < GPIO_COUNT; i++, g++) {
+		/* Select to 1.8V support? */
+		if (g->flags & GPIO_SEL_1P8V) {
+			uint8_t is_i2c_pin = 0;
+			/* If the pins belong 1.8V i2c port, skip them */
+			for (j = 0; j < i2c_ports_used; j++) {
+				if (i == i2c_ports[j].scl ||
+						i == i2c_ports[j].sda) {
+					is_i2c_pin = 1;
+					break;
+				}
+			}
+			if (!is_i2c_pin)
+				gpio_set_wk_input_buffer(g->port, g->mask, 0);
+		}
+	}
+#endif
 }
 
 /* List of GPIO IRQs to enable. Don't automatically enable interrupts for
