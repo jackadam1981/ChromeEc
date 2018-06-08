@@ -13,28 +13,28 @@
 
 /* GPIO alternate function structure */
 struct gpio_alt_func {
+	/* Module ID (as uint8_t, since enum would be 32-bit) */
+	uint8_t module_id;
+
+	/* Alternate function number */
+	uint8_t func;
+
 	/* Port base address */
 	uint32_t port;
 
 	/* Bitmask on that port (multiple bits allowed) */
 	uint32_t mask;
 
-	/* Alternate function number */
-	uint8_t func;
-
-	/* Module ID (as uint8_t, since enum would be 32-bit) */
-	uint8_t module_id;
-
 	/* Flags (GPIO_*; see above). */
-	uint16_t flags;
+	uint32_t flags;
 };
 
 /*
  * Construct the gpio_alt_funcs array.  This array is used by gpio_config_module
  * to enable and disable GPIO alternate functions on a module by module basis.
  */
-#define ALTERNATE(pinmask, function, module, flags)	\
-	{GPIO_##pinmask, function, module, flags},
+#define ALTERNATE(pinmask, function, module, flagz)	\
+	{GPIO_##pinmask, .func = function, .module_id = module, .flags = flagz},
 
 static const struct gpio_alt_func gpio_alt_funcs[] = {
 	#include "gpio.wrap"
