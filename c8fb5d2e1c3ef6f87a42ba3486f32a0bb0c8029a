@@ -16,6 +16,24 @@
       "revId": "c8fb5d2e1c3ef6f87a42ba3486f32a0bb0c8029a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74372c67_303ed502",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-08T17:00:12Z",
+      "side": 1,
+      "message": "Removed console noise (here and Nami)",
+      "parentUuid": "20be3377_89f167ac",
+      "revId": "c8fb5d2e1c3ef6f87a42ba3486f32a0bb0c8029a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
