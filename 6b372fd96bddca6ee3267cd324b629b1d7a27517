@@ -22,6 +22,30 @@
       "revId": "6b372fd96bddca6ee3267cd324b629b1d7a27517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d11c1e5_5fb6e9df",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-08T01:39:19Z",
+      "side": 1,
+      "message": "Hi Jett:\nPlease refer https://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/gpio.c#78. When enable is 1 in gpio_config_pins(), af-\u003eflags is chosen as flags parameter in gpio_set_flags_by_mask(). In npcx gpio driver (https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/gpio.c#244), it doesn\u0027t refer GPIO_INPUT flag here. But I still think keeping flags field between structure gpio_info and gpio_alt_func as the same is better in case unexpected symptom occurred in the future.\n\nPs. I also modified the commit message for better explnantion.",
+      "parentUuid": "483fae3d_0984c506",
+      "range": {
+        "startLine": 142,
+        "startChar": 45,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "6b372fd96bddca6ee3267cd324b629b1d7a27517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
