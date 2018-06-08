@@ -16,9 +16,6 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-
-static enum battery_present batt_pres_prev = BP_NOT_SURE;
-
 /* Get type of the battery connected on the board */
 static int get_battery_type(void)
 {
@@ -182,12 +179,15 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 	return BATTERY_NOT_DISCONNECTED;
 }
 
+static enum battery_present batt_pres_prev; /* Default BP_NO (=0) */
+
 /*
  * Physical detection of battery.
  */
 static enum battery_present battery_check_present_status(void)
 {
 	enum battery_present batt_pres;
+	int batt_disconnect_status;
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
@@ -207,16 +207,28 @@ static enum battery_present battery_check_present_status(void)
 		return batt_pres;
 
 	/*
+	 * Check battery disconnect status. If we are unable to read battery
+	 * disconnect status, then return BP_NOT_SURE. Battery could be in ship
+	 * mode and might require pre-charge current to wake it up. BP_NO is not
+	 * returned here because charger state machine will not provide
+	 * pre-charge current assuming that battery is not present.
+	 */
+	batt_disconnect_status = battery_get_disconnect_state();
+	if (batt_disconnect_status == BATTERY_DISCONNECT_ERROR)
+		return BP_NOT_SURE;
+
+	/*
 	 * Ensure that battery is:
 	 * 1. Not in cutoff
-	 * 2. Initialized
+	 * 2. Not disconnected
+	 * 3. Initialized
 	 */
 	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_init() == 0) {
-		batt_pres = BP_NO;
-	}
+	    batt_disconnect_status != BATTERY_NOT_DISCONNECTED ||
+	    battery_init() == 0)
+		return BP_NO;
 
-	return batt_pres;
+	return BP_YES;
 }
 
 enum battery_present battery_is_present(void)
