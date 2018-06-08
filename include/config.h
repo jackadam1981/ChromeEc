@@ -2326,6 +2326,11 @@
  */
 #undef CONFIG_PRINTF_LEGACY_LI_FORMAT
 
+/*
+ * On x86 systems, define this option if the CPU_PROCHOT signal is active low.
+ */
+#undef CONFIG_CPU_PROCHOT_IS_ACTIVE_LOW
+
 /*****************************************************************************/
 /* Support PWM control */
 #undef CONFIG_PWM
