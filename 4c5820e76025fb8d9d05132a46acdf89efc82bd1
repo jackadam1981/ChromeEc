@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "262476e8_d747fb52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bee722ad_d3288732",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40906a7c_9e8cbeaa",
         "filename": "board/eve/board.h",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b4bd211b_b51d8e32",
+        "filename": "board/eve/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40906a7c_9e8cbeaa",
+      "range": {
+        "startLine": 79,
+        "startChar": 24,
+        "endLine": 79,
+        "endChar": 29
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edf04c63_ad91cfe8",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "176181ac_af874e9e",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edf04c63_ad91cfe8",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "008f5f5f_474c55de",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6894725_4cbf6f9f",
+      "range": {
+        "startLine": 124,
+        "startChar": 26,
+        "endLine": 124,
+        "endChar": 27
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0cccefb6_42b2d6c8",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22bd9658_d51207e0",
+      "range": {
+        "startLine": 124,
+        "startChar": 38,
+        "endLine": 124,
+        "endChar": 41
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ad09f1d_9555e730",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ca68fd_2c65269e",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad09f1d_9555e730",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f89ec1f3_f9b0f01b",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9cf7903_0c34334f",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 6
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1293205_516d20b4",
         "filename": "common/keyboard_8042.c",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f6c8305_00450d1b",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1293205_516d20b4",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 50
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "664c8df7_49c64f6b",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "860cd8be_77a04b8d",
+      "range": {
+        "startLine": 565,
+        "startChar": 41,
+        "endLine": 565,
+        "endChar": 49
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15aa112b_ca7a19f7",
         "filename": "common/keyboard_8042_sharedlib.c",
         "patchSetId": 4
@@ -229,6 +445,30 @@
       "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d19e65_060cebe5",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15aa112b_ca7a19f7",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 14
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -267,6 +507,24 @@
     },
     {
       "key": {
+        "uuid": "c4d94b31_3b8ffaaf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "For chrome os, it use scancode(key F5/F6) to control brightness.\nBut in campfire, the scancode is only for key F5/F6. And campfire OS doesn\u0027t have brightness conntrol scancode.\nWe need use HOST_EVENT to notify OS control brightness in campfire.",
+      "parentUuid": "767a16ad_b1fc9cb0",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a777187b_ed3b438c",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -287,6 +545,30 @@
       "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d536cf3c_efce7cc8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-08T05:38:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a777187b_ed3b438c",
+      "range": {
+        "startLine": 583,
+        "startChar": 15,
+        "endLine": 583,
+        "endChar": 23
+      },
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
