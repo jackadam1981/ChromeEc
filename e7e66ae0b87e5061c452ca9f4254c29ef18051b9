@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee342612_b79a6272",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-08T17:20:16Z",
+      "side": 1,
+      "message": "nit: can we change this to ocotpus",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "e7e66ae0b87e5061c452ca9f4254c29ef18051b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe42565_65888ca5",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-08T17:20:16Z",
+      "side": 1,
+      "message": "we don\u0027t need to undef this now (since the line you are replacing was the only place for octopus boards that this was getting defined)",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 33
+      },
+      "revId": "e7e66ae0b87e5061c452ca9f4254c29ef18051b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
