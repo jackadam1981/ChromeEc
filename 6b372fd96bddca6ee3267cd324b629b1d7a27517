@@ -46,6 +46,30 @@
       "revId": "6b372fd96bddca6ee3267cd324b629b1d7a27517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41fbb3f9_ff29dee0",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-08T14:42:03Z",
+      "side": 1,
+      "message": "The register bit controlled by the GPIO_INPUT flag doesn\u0027t matter when you set the alternate mode (nor should it since it is no longer muxed to be a GPIO pin).\n\nWhen in i2c alternate mode, this pin is an input and output so saying input is misleading.\n\nThe default gpio pin configuration for I2C7_SCL uses GPIO_INPUT to\n 1) put the pin in Hi-Z state before the the alternate mode takes it over\n 2) prevents the `gpioset` command from working on the EC console (b/c the alternate should be controlling it)\n\nAlso, when we put the gpio pin into raw_gpio mode [0] to try to unwedge the bus, we configure the pin to be open-drain output.\n\nI have also tested this without the GPIO_INPUT flag and it works well.\n\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/7c294e0f7b1163d055f95a27f6f344bb525cb010/common/i2c_master.c#390",
+      "parentUuid": "5d11c1e5_5fb6e9df",
+      "range": {
+        "startLine": 142,
+        "startChar": 45,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "6b372fd96bddca6ee3267cd324b629b1d7a27517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
