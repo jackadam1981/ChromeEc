@@ -142,6 +142,15 @@
 #define NPCX_WUI_GPIO_7_5 WUI(1, MIWU_GROUP_8, 5)
 #define NPCX_WUI_GPIO_7_6 WUI(1, MIWU_GROUP_8, 6)
 
+/* Others GPO without MIWU functionality */
+#define NPCX_WUI_GPIO_1_2 WUI_NONE
+#define NPCX_WUI_GPIO_3_2 WUI_NONE
+#define NPCX_WUI_GPIO_3_5 WUI_NONE
+#define NPCX_WUI_GPIO_6_6 WUI_NONE
+#define NPCX_WUI_GPIO_7_7 WUI_NONE
+#define NPCX_WUI_GPIO_B_6 WUI_NONE
+#define NPCX_WUI_GPIO_D_6 WUI_NONE
+
 /*****************************************************************************/
 /* Macro functions for Alternative mapping table */
 
