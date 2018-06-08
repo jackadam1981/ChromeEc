@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce8b0b71_9df8a65f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-08T14:51:15Z",
+      "side": 1,
+      "message": "We still need to submit this CL.\n\nI don\u0027t understand how this CL changes the behavior of the unwedge code to set I2C pins to 1 (open-drain) instead of 0 (which is was would make the power savings).\n\nDoes this CL allow the existing unwedge code to finish successfully where it didn\u0027t before?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "ed38de38511b136a46e95210040d9bc77d160955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
