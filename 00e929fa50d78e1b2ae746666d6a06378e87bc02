@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67c42c4d_06cba490",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-08T17:26:13Z",
+      "side": 1,
+      "message": "I don\u0027t think you will have another build target for each SKU, right? You will ultimately have to change this to a non-const variable and modify it in a board_init. Similar to CL:1068030 and its children CLs.",
+      "range": {
+        "startLine": 326,
+        "startChar": 37,
+        "endLine": 326,
+        "endChar": 52
+      },
+      "revId": "00e929fa50d78e1b2ae746666d6a06378e87bc02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
