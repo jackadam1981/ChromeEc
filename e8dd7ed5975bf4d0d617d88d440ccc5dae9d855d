@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26eef999_0f50eb6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-08T16:09:10Z",
+      "side": 1,
+      "message": "nit: Capital \"CL\" will give you hyperlink \"CL:753969\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "e8dd7ed5975bf4d0d617d88d440ccc5dae9d855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72279eb7_c24153b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-08T16:09:10Z",
+      "side": 1,
+      "message": "Suggest adding the chip names like:\nKXCJ9: No change for protocol V1 devices.\nKX022: Restore the retry feature that was present prior to CL:753969, while retaining the chip-specific software reset logic added by that change.",
+      "revId": "e8dd7ed5975bf4d0d617d88d440ccc5dae9d855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a1b57a_f48d7fd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-08T16:09:10Z",
+      "side": 1,
+      "message": "nit: You can put these all on one line:\nBUG\u003db:79159777,b:35550738,b:62607555",
+      "revId": "e8dd7ed5975bf4d0d617d88d440ccc5dae9d855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c889a43c_b9b62503",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-08T16:09:10Z",
+      "side": 1,
+      "message": "nit: suggest delete \"host\"",
+      "range": {
+        "startLine": 519,
+        "startChar": 56,
+        "endLine": 519,
+        "endChar": 60
+      },
+      "revId": "e8dd7ed5975bf4d0d617d88d440ccc5dae9d855d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
