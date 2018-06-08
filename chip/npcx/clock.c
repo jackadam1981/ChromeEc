@@ -328,6 +328,11 @@ void __idle(void)
 			SET_BIT(NPCX_WKPCL(MIWU_TABLE_1, MIWU_GROUP_8), 7);
 			/* Enable UART wake-up and interrupt request */
 			SET_BIT(NPCX_WKEN(MIWU_TABLE_1, MIWU_GROUP_8), 7);
+			/*
+			 * Disable input buffer of all low voltage pins without
+			 * wake-up functionality for better power consumption.
+			 */
+			gpio_dis_low_voltage_pins_input();
 #endif
 			/* Set deep idle - instant wake-up mode */
 			NPCX_PMCSR = IDLE_PARAMS;
@@ -359,6 +364,12 @@ void __idle(void)
 #if defined(CHIP_FAMILY_NPCX5)
 			/* GPIO back to UART-rx (console) */
 			clock_gpio2uart();
+#elif defined(CHIP_FAMILY_NPCX7)
+			/*
+			 * Enable input buffer of all low voltage pins without
+			 * wake-up functionality.
+			 */
+			gpio_en_low_voltage_pins_input();
 #endif
 
 			/* Record time spent in deep sleep. */

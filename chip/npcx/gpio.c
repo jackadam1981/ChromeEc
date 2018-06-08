@@ -73,6 +73,16 @@ struct gpio_lvol_item {
 /* Constants for GPIO low-voltage mapping */
 const struct gpio_lvol_item gpio_lvol_table[] = NPCX_LVOL_TABLE;
 
+/* Only npcx7 series need this bypass for better power consumption */
+#if defined(CONFIG_LOW_POWER_IDLE) && defined(CHIP_FAMILY_NPCX7)
+/* Constants for low-voltage control and MIWU WKINEN mapping */
+struct gpio_wkinen_item {
+	struct npcx_wui lvol_wkinen[8];
+};
+
+/* Constants for low-voltage WKINEN bypass mapping */
+const struct gpio_wkinen_item gpio_lvol_wkinen_table[] = NPCX_LVOL_WKINEN_TABLE;
+#endif
 
 /*****************************************************************************/
 /* Internal functions */
@@ -196,6 +206,58 @@ void gpio_low_voltage_level_sel(uint8_t port, uint8_t mask, uint8_t low_voltage)
 		CPRINTS("Warn! No low voltage support in port%d, mask%d\n",
 								port, mask);
 }
+
+/* Only npcx7 series ec needs this bypass for better power consumption */
+#if defined(CONFIG_LOW_POWER_IDLE) && defined(CHIP_FAMILY_NPCX7)
+void gpio_dis_low_voltage_pins_input(void)
+{
+	int grp, bit;
+
+	/* Browse all bits in LV_GPIO_CTL registers. */
+	for (grp = 0; grp < ARRAY_SIZE(gpio_lvol_wkinen_table); grp++) {
+		const struct npcx_wui *wui =
+				gpio_lvol_wkinen_table[grp].lvol_wkinen;
+
+		for (bit = 0; bit < 8; bit++) {
+			/* Is this pin selected to low-voltage mode? */
+			if ((NPCX_LV_GPIO_CTL(grp) & (1 << bit))) {
+				/* If it has wake-up functionality, skip it. */
+				if (IS_BIT_SET(NPCX_WKEN(wui[bit].table,
+						wui[bit].group), wui[bit].bit))
+					continue;
+				/* Disable it for saving leakage current */
+				CLEAR_BIT(NPCX_WKINEN(wui[bit].table,
+						wui[bit].group), wui[bit].bit);
+			}
+		}
+	}
+}
+
+void gpio_en_low_voltage_pins_input(void)
+{
+	int grp, bit;
+
+	/* Browse all bits in LV_GPIO_CTL registers. */
+	for (grp = 0; grp < ARRAY_SIZE(gpio_lvol_wkinen_table); grp++) {
+		const struct npcx_wui *wui =
+				gpio_lvol_wkinen_table[grp].lvol_wkinen;
+
+		for (bit = 0; bit < 8; bit++) {
+			/* Is this pin selected to low-voltage mode? */
+			if ((NPCX_LV_GPIO_CTL(grp) & (1 << bit))) {
+				/* If it has wake-up functionality, skip it. */
+				if (IS_BIT_SET(NPCX_WKEN(wui[bit].table,
+						wui[bit].group), wui[bit].bit))
+					continue;
+				/* Enable it again after ec wakes up */
+				SET_BIT(NPCX_WKINEN(wui[bit].table,
+						wui[bit].group), wui[bit].bit);
+			}
+		}
+	}
+}
+#endif
+
 /*
  * Make sure the bit depth of low voltage register.
  */

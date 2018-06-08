@@ -504,4 +504,105 @@
 			  { NPCX_LVOL_CTRL_ITEMS(4), }, \
 			  { NPCX_LVOL_CTRL_ITEMS(5), }, }
 
+/* Only npcx7 series need this bypass for better power consumption */
+#if defined(CONFIG_LOW_POWER_IDLE) && defined(CHIP_FAMILY_NPCX7)
+/*****************************************************************************/
+/* Macro functions for Low-Voltage power consumption bypass */
+
+/* Low-Voltage GPIO WKINEN 0 */
+#define NPCX_LVOL_WKINEN_0_0  NPCX_WUI_GPIO_B_5
+#define NPCX_LVOL_WKINEN_0_1  NPCX_WUI_GPIO_B_4
+#define NPCX_LVOL_WKINEN_0_2  NPCX_WUI_GPIO_B_3
+#define NPCX_LVOL_WKINEN_0_3  NPCX_WUI_GPIO_B_2
+#define NPCX_LVOL_WKINEN_0_4  NPCX_WUI_GPIO_9_0
+#define NPCX_LVOL_WKINEN_0_5  NPCX_WUI_GPIO_8_7
+#define NPCX_LVOL_WKINEN_0_6  NPCX_WUI_GPIO_0_0
+#define NPCX_LVOL_WKINEN_0_7  NPCX_WUI_GPIO_3_3
+
+/* Low-Voltage GPIO WKINEN 1 */
+#define NPCX_LVOL_WKINEN_1_0  NPCX_WUI_GPIO_9_2
+#define NPCX_LVOL_WKINEN_1_1  NPCX_WUI_GPIO_9_1
+#define NPCX_LVOL_WKINEN_1_2  NPCX_WUI_GPIO_D_1
+#define NPCX_LVOL_WKINEN_1_3  NPCX_WUI_GPIO_D_0
+#define NPCX_LVOL_WKINEN_1_4  NPCX_WUI_GPIO_3_6
+#define NPCX_LVOL_WKINEN_1_5  NPCX_WUI_GPIO_6_4
+#define NPCX_LVOL_WKINEN_1_6  NPCX_WUI_GPIO_6_5
+#define NPCX_LVOL_WKINEN_1_7  NPCX_WUI_NONE
+
+/* Low-Voltage GPIO WKINEN 2 */
+#define NPCX_LVOL_WKINEN_2_0  NPCX_WUI_GPIO_7_4
+#ifdef NPCX_PSL_MODE_SUPPORT
+#define NPCX_LVOL_WKINEN_2_1  NPCX_WUI_NONE /* Remove 1.8V support since PSL */
+#define NPCX_LVOL_WKINEN_2_2  NPCX_WUI_NONE /* Remove 1.8V support since PSL */
+#else
+#define NPCX_LVOL_WKINEN_2_1  NPCX_WUI_GPIO_8_4
+#define NPCX_LVOL_WKINEN_2_2  NPCX_WUI_GPIO_8_5
+#endif
+
+#define NPCX_LVOL_WKINEN_2_3  NPCX_WUI_GPIO_7_3
+#define NPCX_LVOL_WKINEN_2_4  NPCX_WUI_GPIO_C_1
+#define NPCX_LVOL_WKINEN_2_5  NPCX_WUI_GPIO_C_7
+#ifdef NPCX_EXT32K_OSC_SUPPORT
+#define NPCX_LVOL_WKINEN_2_6  NPCX_WUI_NONE /* Remove 1.8V mode since CLKIN */
+#else
+#define NPCX_LVOL_WKINEN_2_6  NPCX_WUI_GPIO_E_7
+#endif
+#define NPCX_LVOL_WKINEN_2_7  NPCX_WUI_GPIO_3_4
+
+/* Low-Voltage GPIO WKINEN 3 */
+#define NPCX_LVOL_WKINEN_3_0  NPCX_WUI_GPIO_C_6
+#define NPCX_LVOL_WKINEN_3_1  NPCX_WUI_GPIO_3_7
+#define NPCX_LVOL_WKINEN_3_2  NPCX_WUI_GPIO_4_0
+#ifdef NPCX_EXT32K_OSC_SUPPORT
+#define NPCX_LVOL_WKINEN_3_3  NPCX_WUI_NONE /* Remove 1.8V mode since CLKOUT */
+#else
+#define NPCX_LVOL_WKINEN_3_3  NPCX_WUI_GPIO_7_1
+#endif
+#define NPCX_LVOL_WKINEN_3_4  NPCX_WUI_GPIO_8_2
+#define NPCX_LVOL_WKINEN_3_5  NPCX_WUI_GPIO_7_5
+#define NPCX_LVOL_WKINEN_3_6  NPCX_WUI_GPIO_8_0
+#define NPCX_LVOL_WKINEN_3_7  NPCX_WUI_GPIO_C_5
+
+/* Low-Voltage GPIO WKINEN 4 */
+#ifdef NPCX_PSL_MODE_SUPPORT
+#define NPCX_LVOL_WKINEN_4_0  NPCX_WUI_NONE /* Remove 1.8V support since PSL */
+#else
+#define NPCX_LVOL_WKINEN_4_0  NPCX_WUI_GPIO_8_6
+#endif
+#define NPCX_LVOL_WKINEN_4_1  NPCX_WUI_GPIO_C_2
+#define NPCX_LVOL_WKINEN_4_2  NPCX_WUI_GPIO_F_3
+#define NPCX_LVOL_WKINEN_4_3  NPCX_WUI_GPIO_F_2
+#define NPCX_LVOL_WKINEN_4_4  NPCX_WUI_GPIO_F_5
+#define NPCX_LVOL_WKINEN_4_5  NPCX_WUI_GPIO_F_4
+#define NPCX_LVOL_WKINEN_4_6  NPCX_WUI_GPIO_E_4
+#define NPCX_LVOL_WKINEN_4_7  NPCX_WUI_GPIO_E_3
+
+/* Low-Voltage GPIO WKINEN 5 */
+#define NPCX_LVOL_WKINEN_5_0  NPCX_WUI_GPIO_7_2
+#define NPCX_LVOL_WKINEN_5_1  NPCX_WUI_NONE
+#define NPCX_LVOL_WKINEN_5_2  NPCX_WUI_NONE
+#define NPCX_LVOL_WKINEN_5_3  NPCX_WUI_GPIO_5_0
+#define NPCX_LVOL_WKINEN_5_4  NPCX_WUI_NONE
+#define NPCX_LVOL_WKINEN_5_5  NPCX_WUI_NONE
+#define NPCX_LVOL_WKINEN_5_6  NPCX_WUI_NONE
+#define NPCX_LVOL_WKINEN_5_7  NPCX_WUI_NONE
+
+#define NPCX_LVOL_WKINEN_ITEMS(ctrl) { NPCX_LVOL_WKINEN_##ctrl##_0, \
+				       NPCX_LVOL_WKINEN_##ctrl##_1, \
+				       NPCX_LVOL_WKINEN_##ctrl##_2, \
+				       NPCX_LVOL_WKINEN_##ctrl##_3, \
+				       NPCX_LVOL_WKINEN_##ctrl##_4, \
+				       NPCX_LVOL_WKINEN_##ctrl##_5, \
+				       NPCX_LVOL_WKINEN_##ctrl##_6, \
+				       NPCX_LVOL_WKINEN_##ctrl##_7, }
+
+/* 6 Low-Voltage Mapping Groups on npcx7 */
+#define NPCX_LVOL_WKINEN_TABLE { { NPCX_LVOL_WKINEN_ITEMS(0), }, \
+				 { NPCX_LVOL_WKINEN_ITEMS(1), }, \
+				 { NPCX_LVOL_WKINEN_ITEMS(2), }, \
+				 { NPCX_LVOL_WKINEN_ITEMS(3), }, \
+				 { NPCX_LVOL_WKINEN_ITEMS(4), }, \
+				 { NPCX_LVOL_WKINEN_ITEMS(5), }, }
+#endif
+
 #endif /* __CROS_EC_GPIO_CHIP_NPCX7_H */
