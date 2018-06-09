@@ -70,6 +70,30 @@
       "revId": "6b372fd96bddca6ee3267cd324b629b1d7a27517",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16fa17e8_d7154790",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-09T02:06:20Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\nI knew it works well without GPIO_INPUT flag. From low-level gpio driver point of view, the driver only concerns the \"flags\" parameter in gpio_set_flags_by_mask(). So far, npcx gpio driver doesn\u0027t refer GPIO_INPUT to change IO direction (PDIR registers). But it might be a hidden bug if we need GPIO_INPUT to do something in gpio driver in the future.",
+      "parentUuid": "41fbb3f9_ff29dee0",
+      "range": {
+        "startLine": 142,
+        "startChar": 45,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "6b372fd96bddca6ee3267cd324b629b1d7a27517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

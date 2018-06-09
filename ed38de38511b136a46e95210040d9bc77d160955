@@ -22,6 +22,30 @@
       "revId": "ed38de38511b136a46e95210040d9bc77d160955",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82481a35_3b07d1de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-09T02:06:20Z",
+      "side": 1,
+      "message": "Please notice putting GPIO_SEL_1P8V in flags parameter of gpio_set_flags_by_mask() is crucial. It will set the corresponding bits in LV_GPIO_CTL. Or those bits in LV_GPIO_CTL are cleared unexpectedly and influences the i2c ports which support 1.8V.",
+      "parentUuid": "ce8b0b71_9df8a65f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "ed38de38511b136a46e95210040d9bc77d160955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
