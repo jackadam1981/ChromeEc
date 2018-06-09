@@ -2265,6 +2265,18 @@ void pd_task(void *u)
 		}
 	}
 #endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
+	/* Initialize CC polarity. */
+	{
+		int cc1, cc2;
+
+		tcpm_get_cc(port, &cc1, &cc2);
+		if (pd[port].power_role == PD_ROLE_SINK)
+			pd[port].polarity = get_snk_polarity(cc1, cc2);
+		else
+			pd[port].polarity = (cc1 != TYPEC_CC_VOLT_RD);
+		set_polarity(port, pd[port].polarity);
+	}
+
 	pd[port].vdm_state = VDM_STATE_DONE;
 	set_state(port, this_state);
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
