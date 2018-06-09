@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b9cc96a_14927ba8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2195,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-09T01:37:30Z",
+      "side": 1,
+      "message": "Actually, in my haste, I feel like I missed something. I need to determine what our power role is before checking the polarity.",
+      "revId": "df42f33ca4e755b9c945b600e72fd90e8b01448d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
