@@ -525,6 +525,24 @@
     },
     {
       "key": {
+        "uuid": "061e558b_de1954b7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-10T13:13:20Z",
+      "side": 1,
+      "message": "Looks like in Chrome OS, brightness is controlled at an OS/window manager level (see here: https://cs.chromium.org/chromium/src/ash/system/brightness/brightness_controller_chromeos.cc?type\u003dcs\u0026q\u003dbrightness\u0026g\u003d0\u0026l\u003d19).\n\nHow does this generally work in other OSs?  Is a separate driver needed to control the screen brightness?  Is this driver (or something else) going to be polling EC host events to figure out when brightness should go up and down?",
+      "parentUuid": "c4d94b31_3b8ffaaf",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a777187b_ed3b438c",
         "filename": "include/ec_commands.h",
         "patchSetId": 4

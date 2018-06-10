@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e0900ac_1c7e0e94",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-10T13:13:20Z",
+      "side": 1,
+      "message": "Should this be CHROME_OS?\n\nAlso, AFAIK enum constants are stored in the global namespace.  We should probably be more specific (like KEYBOARD_MAPPING_TYPE_) to prevent future collision.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 15
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8b3c42_9d2c77be",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-10T13:13:20Z",
+      "side": 1,
+      "message": "Update comment to match code change (shouldn\u0027t mention \"OS type\").",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bc483c1_c1652818",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-10T13:13:20Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 53
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17ed7283_64a8a7e1",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-10T13:13:20Z",
+      "side": 1,
+      "message": "Should these also be prepended with alt_os_?",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a302b253_f1743fc7",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-10T13:13:20Z",
+      "side": 1,
+      "message": "Missing space at the end of comment.",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
