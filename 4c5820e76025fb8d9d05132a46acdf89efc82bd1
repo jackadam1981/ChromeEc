@@ -561,6 +561,24 @@
     },
     {
       "key": {
+        "uuid": "743c7b1e_e18a3a1b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-06-11T04:56:37Z",
+      "side": 1,
+      "message": "Do we have this functionality in coreboot/depthcharge ACPI yet?  Or will that be done in a separate CL?  Do other OS\u0027s already have this driver available, or will we also need to write them?",
+      "parentUuid": "7bcb7df9_518b2c8d",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a777187b_ed3b438c",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
