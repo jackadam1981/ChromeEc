@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "833e6b18_109e92f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-11T19:24:37Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "f99c0c3a5da21b426b11672f0601c0a1854d16e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c7bf2e0_070d553c",
         "filename": "chip/g/config_chip.h",
         "patchSetId": 1
