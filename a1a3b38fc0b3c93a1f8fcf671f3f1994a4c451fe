@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00455eab_8e3d0857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-11T21:18:14Z",
+      "side": 1,
+      "message": "maybe something like\n\n\"The FACTORY_DISABLE vendor command could return VENDOR_RC_INTERNAL_ERROR in which case the EC error code is included in the response payload\"\n\ninstead?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "a1a3b38fc0b3c93a1f8fcf671f3f1994a4c451fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
