@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28dbf6b8_b47f2be1",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-06-11T16:12:07Z",
+      "side": 1,
+      "message": "Any reason to change the name? The \"SENSOR\" matches the net name in the schematic.",
+      "range": {
+        "startLine": 128,
+        "startChar": 17,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "643853262fb49767bfa3cb114af1ac60d116eea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
