@@ -18,6 +18,7 @@
 #include "touchpad.h"
 #include "touchpad_st.h"
 #include "update_fw.h"
+#include "usb_api.h"
 #include "usb_hid_touchpad.h"
 #include "util.h"
 
@@ -26,6 +27,9 @@
 #define CPUTS(outstr) cputs(CC_TOUCHPAD, outstr)
 #define CPRINTF(format, args...) cprintf(CC_TOUCHPAD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_TOUCHPAD, format, ## args)
+
+#define TASK_EVENT_POWERON  TASK_EVENT_CUSTOM(1)
+#define TASK_EVENT_POWEROFF  TASK_EVENT_CUSTOM(2)
 
 #define SPI (&(spi_devices[SPI_ST_TP_DEVICE_ID]))
 
@@ -790,15 +794,34 @@ void touchpad_interrupt(enum gpio_signal signal)
 
 void touchpad_task(void *u)
 {
+	uint32_t event;
+
 	st_tp_init();
 
 	while (1) {
-		task_wait_event(-1);
+		event = task_wait_event(-1);
 
-		while (!gpio_get_level(GPIO_TOUCHPAD_INT))
-			st_tp_read_report();
+		if (event & TASK_EVENT_WAKE)
+			while (!gpio_get_level(GPIO_TOUCHPAD_INT))
+				st_tp_read_report();
+
+		if (event & TASK_EVENT_POWERON)
+			st_tp_start_scan();
+		else if (event & TASK_EVENT_POWEROFF)
+			st_tp_stop_scan();
 	}
 }
+
+#ifdef CONFIG_USB_SUSPEND
+static void touchpad_usb_pm_change(void)
+{
+	if (usb_is_suspended() && !usb_is_remote_wakeup_enabled())
+		task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWEROFF, 0);
+	else
+		task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWERON, 0);
+}
+DECLARE_HOOK(HOOK_USB_PM_CHANGE, touchpad_usb_pm_change, HOOK_PRIO_DEFAULT);
+#endif
 
 /* Debugging commands */
 static int command_touchpad_st(int argc, char **argv)
