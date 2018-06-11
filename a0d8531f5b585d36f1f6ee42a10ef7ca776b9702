@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1935a7a_04675256",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-11T16:19:05Z",
+      "side": 1,
+      "message": "This is actually an a real output from the EC to the AP (that just hasn\u0027t been configured yet).\n\nWe should name it USB_C_OC (over current) for when we detect from the PPC that USB-C has had an overcurrent event",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 14
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e5dc845_7b32bb57",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-11T16:19:05Z",
+      "side": 1,
+      "message": "Section 4.5.3 declares all of these pin as output only. It looks like setting input just disables output (but doesn\u0027t actually make them inputs). If that is true, can you add a comment to this section stating that?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 58
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d14e57_b2a25333",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-11T16:19:05Z",
+      "side": 1,
+      "message": "from the schematics I see, these pins are actually tied to a codec for I2S. I don\u0027t think we should label them as NoConnect",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
