@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32bb6e45_862e901a",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-11T19:58:02Z",
+      "side": 1,
+      "message": "Maybe:\n\nWe were asked to jump from RW to RO.  So also wait to be asked to jump back to RW, instead of automatically verifying RW and jumping back to it.",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 65
+      },
+      "revId": "e5dd88c93d4254e4412268898af695bf824e6cd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
