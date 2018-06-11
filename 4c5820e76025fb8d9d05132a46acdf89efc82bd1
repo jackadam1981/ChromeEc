@@ -543,6 +543,24 @@
     },
     {
       "key": {
+        "uuid": "7bcb7df9_518b2c8d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-11T02:14:30Z",
+      "side": 1,
+      "message": "BIOS will define host event in ACPI OS.\nWhen EC trigger these events, ACPI OS will check the event and notify driver to do brightness up/down.",
+      "parentUuid": "061e558b_de1954b7",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a777187b_ed3b438c",
         "filename": "include/ec_commands.h",
         "patchSetId": 4

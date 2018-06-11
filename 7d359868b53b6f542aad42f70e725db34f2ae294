@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "525b383b_b839a178",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-11T02:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e0900ac_1c7e0e94",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 15
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8b3c42_9d2c77be",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-10T13:13:20Z",
       "side": 1,
       "message": "Update comment to match code change (shouldn\u0027t mention \"OS type\").",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d695cf3b_c21f4054",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-11T02:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8b3c42_9d2c77be",
       "range": {
         "startLine": 111,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5a677756_11541d44",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-11T02:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bc483c1_c1652818",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 53
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17ed7283_64a8a7e1",
         "filename": "include/keyboard_8042_sharedlib.h",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a289f312_efe1d57c",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-11T02:14:30Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to prepend with alt_os_ in this key.\nThis key only exists in other os system, but it can be used for define dual function in one key.\nMight be useful for other KB mapping in future.",
+      "parentUuid": "17ed7283_64a8a7e1",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 19
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a302b253_f1743fc7",
         "filename": "include/keyboard_config.h",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2018-06-10T13:13:20Z",
       "side": 1,
       "message": "Missing space at the end of comment.",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "7d359868b53b6f542aad42f70e725db34f2ae294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c209c422_32a7b8b6",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-11T02:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a302b253_f1743fc7",
       "range": {
         "startLine": 67,
         "startChar": 22,
