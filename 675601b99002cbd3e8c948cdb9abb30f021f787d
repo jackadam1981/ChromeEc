@@ -22,6 +22,30 @@
       "revId": "675601b99002cbd3e8c948cdb9abb30f021f787d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f7d6b8_c11c30cb",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-11T17:34:18Z",
+      "side": 1,
+      "message": "cleaned up the comment, left the ifndef in place, as explained in the comment.",
+      "parentUuid": "ed64c480_549019f1",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 3
+      },
+      "revId": "675601b99002cbd3e8c948cdb9abb30f021f787d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
