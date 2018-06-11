@@ -46,6 +46,30 @@
       "revId": "ed38de38511b136a46e95210040d9bc77d160955",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54cd2d16_da60c46f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-11T06:22:39Z",
+      "side": 1,
+      "message": "I listed the configuration steps used by 1.8V i2c port (GPIOB2/B3) during ec powered on and i2c unwedging. Hope it has a better understanding.\n\nFirst, when ec powered on, it used the following functions to configure GPIOB2/B3 to1.8V i2c IOs.\n1. Execute gpio_set_flags_by_mask() in gpio_pre_init() for GPIOB2/B3\n(Its flags are GPIO_INPUT| GPIO_SEL_1P8V) And npcx gpio driver sets the corresponding bits in LV_GPIO_CTL register for 1.8V input buffter.\n2. Execute  gpio_config_module(MODULE_I2C, 1) in i2c_init() to change pin-mux from GPIO to I2C for all i2c pins. At this moment, 1.8V i2c port works properly.\n\nBut during i2c unwedging mechanism, the IO configuration steps are: \n1. Set GPIOB2/B3\u0027s pin-mux from I2C to GPIO first by i2c_raw_mode(port, 1) first. It includes:\n     gpio_config_pin(MODULE_I2C, sda/scl, 0) --\u003e change sda/scl pin-mux to GPIO\n     gpio_set_flags(sda/scl, raw_gpio_mode_flags)  --\u003e change sda/scl IO flags to open-drain, output high and support 1.8V.  \n2. After i2c unwedge mechanism is completed, ec set GPIOB2/B3\u0027s pin-mux from GPIO to I2C by i2c_raw_mode(port, 0)\nIt includes:\n     gpio_config_pin(MODULE_I2C, sda/scl, 1) --\u003e Change sda/scl pin-mux to GPIO. \nPlease notice it also changes GPIO\u0027s flags to af-\u003eflags by gpio_set_flags_by_mask(). (Without this CL, af-\u003eflags is zero and corresponding bits in LV_GPIO_CTL are cleared.) That\u0027s why we still need this CL. And it\u0027s also why I suggest af-\u003eflags is consistent with flags fields in gpio_list array in case IO configuration is not the same as gpio_pre_init() in the future.",
+      "parentUuid": "82481a35_3b07d1de",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "ed38de38511b136a46e95210040d9bc77d160955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
