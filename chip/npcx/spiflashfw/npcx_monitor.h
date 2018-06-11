@@ -26,8 +26,17 @@ struct monitor_header_tag {
 	uint8_t  max_clock;
 	/* offset 0x11: SPI Flash read mode */
 	uint8_t  read_mode;
-	/* offset 0x12: Reserved */
-	uint16_t reserved;
+	/* offset 0x12: monitor operation mode */
+	uint8_t  mon_oper_mode;
+	/* offset 0x13: Reserved */
+	uint8_t reserved;
 } __packed;
+
+enum mon_operation {
+	/* Normal operation. i.e. erase and write image data */
+	NORMAL_OPER,
+	/* Erase sector only */
+	ERASE_SECTOR_ONLY
+};
 
 #endif /* __CROS_EC_NPCX_MONITOR_H */

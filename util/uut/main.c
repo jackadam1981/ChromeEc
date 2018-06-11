@@ -43,6 +43,13 @@
 #define FIRMWARE_START_ADDR    0x10090000
 /* Divide the ec firmware image into 4K byte */
 #define FIRMWARE_SEGMENT       0x1000
+
+enum mon_operation {
+	/* Normal operation. i.e. erase and write image data */
+	NORMAL_OPER,
+	/* Erase sector only */
+	ERASE_SECTOR_ONLY
+};
 /*---------------------------------------------------------------------------
  * Global variables
  *---------------------------------------------------------------------------
@@ -115,9 +122,10 @@ enum EXIT_CODE {
 static bool image_auto_write(uint32_t offset, uint8_t *buffer,
 				uint32_t file_size)
 {
-	uint32_t data_buf[4];
+	uint32_t data_buf[5];
 	uint32_t addr, chunk_remain, file_seg, flash_index, seg;
 	uint32_t count, percent, total;
+	uint32_t i;
 
 	flash_index = offset;
 	/* Monitor tag */
@@ -130,6 +138,31 @@ static bool image_auto_write(uint32_t offset, uint8_t *buffer,
 	while (file_seg) {
 		seg = (file_seg > FIRMWARE_SEGMENT) ?
 					FIRMWARE_SEGMENT : file_seg;
+		/*
+		 * Check if the content of the segment is all 0xff.
+		 * If yes, there is no need to write.
+		 * Call the monitoer to erase the segment only for
+		 * time efficiency.
+		 */
+		for (i = 0; i < seg && buffer[i] == 0xFF; i++)
+			;
+		if (i == seg) {
+			data_buf[1] = seg;
+			data_buf[3] = flash_index;
+			data_buf[4] = ERASE_SECTOR_ONLY << 16;
+			opr_write_chunk((uint8_t *)data_buf, MONITOR_HDR_ADDR,
+						sizeof(data_buf));
+			if (opr_execute_return(MONITOR_ADDR) != true)
+				return false;
+			file_seg -= seg;
+			flash_index += seg;
+			buffer += seg;
+			total += seg;
+			percent = total * 100 / file_size;
+			printf("\r[%d%%] %d/%d", percent, total, file_size);
+			fflush(stdout);
+			continue;
+		}
 		chunk_remain = seg;
 		addr = FIRMWARE_START_ADDR;
 		/* the size to be programmed */
@@ -138,8 +171,10 @@ static bool image_auto_write(uint32_t offset, uint8_t *buffer,
 		 * The offset of the flash where the segment to be programmed.
 		 */
 		data_buf[3] = flash_index;
+		data_buf[4] = NORMAL_OPER;
 		/* Write the monitor header to RAM */
-		opr_write_chunk((uint8_t *)data_buf, MONITOR_HDR_ADDR, 16);
+		opr_write_chunk((uint8_t *)data_buf, MONITOR_HDR_ADDR,
+						sizeof(data_buf));
 		while (chunk_remain) {
 			count = (chunk_remain > MAX_RW_DATA_SIZE) ?
 						MAX_RW_DATA_SIZE : chunk_remain;
@@ -160,6 +195,9 @@ static bool image_auto_write(uint32_t offset, uint8_t *buffer,
 		flash_index += seg;
 	}
 	printf("\n");
+	/* Clear the UUT header tag */
+	data_buf[0] = 0;
+	opr_write_chunk((uint8_t *)data_buf, MONITOR_HDR_ADDR, 4);
 	return true;
 }
 
