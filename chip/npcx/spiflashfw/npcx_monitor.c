@@ -213,12 +213,12 @@ void sspi_flash_physical_erase(int offset, int size)
 	sspi_flash_tristate(1);
 }
 
-/* Start to write */
 int sspi_flash_verify(int offset, int size, const char *data)
 {
-	int		i, result;
-	uint8_t		*ptr_flash;
-	uint8_t		*ptr_mram;
+	int i, result;
+	uint8_t *ptr_flash;
+	uint8_t *ptr_mram;
+	uint8_t cmp_data;
 
 	ptr_flash = (uint8_t *)(CONFIG_MAPPED_STORAGE_BASE + offset);
 	ptr_mram  = (uint8_t *)data;
@@ -229,7 +229,8 @@ int sspi_flash_verify(int offset, int size, const char *data)
 
 	/* Start to verify */
 	for (i = 0; i < size; i++) {
-		if (ptr_flash[i] != ptr_mram[i]) {
+		cmp_data = ptr_mram ? ptr_mram[i] : 0xFF;
+		if (ptr_flash[i] != cmp_data) {
 			result = 0;
 			break;
 		}
@@ -258,7 +259,6 @@ int sspi_flash_get_image_used(const char *fw_base)
 
 }
 
-
 /* Entry function of spi upload function */
 uint32_t  __attribute__ ((section(".startup_text")))
 sspi_flash_upload(int spi_offset, int spi_size)
@@ -280,7 +280,7 @@ sspi_flash_upload(int spi_offset, int spi_size)
 	if (uut_tag == NPCX_MONITOR_UUT_TAG) {
 		sz_image = monitor_header->size;
 		spi_offset = monitor_header->dest_addr;
-		image_base = (const char *)(monitor_header->src_addr);
+			image_base = (const char *)(monitor_header->src_addr);
 	} else {
 		sz_image = spi_size;
 		image_base = (const char *)CONFIG_PROGRAM_MEMORY_BASE;
@@ -305,17 +305,16 @@ sspi_flash_upload(int spi_offset, int spi_size)
 	if (sspi_flash_physical_clear_stsreg()) {
 		/* Start to erase */
 		sspi_flash_physical_erase(spi_offset, sz_image);
-
 		/* Start to write */
-		sspi_flash_physical_write(spi_offset, sz_image, image_base);
-
+		if (image_base != NULL)
+			sspi_flash_physical_write(spi_offset, sz_image,
+						image_base);
 		/* Verify data */
 		if (sspi_flash_verify(spi_offset, sz_image, image_base))
 			*flag_upload |= 0x02;
-
-		/* Disable pinmux */
-		sspi_flash_pinmux(0);
 	}
+	/* Disable pinmux */
+	sspi_flash_pinmux(0);
 
 	/* Mark we have finished upload work */
 	*flag_upload |= 0x01;
