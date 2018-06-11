@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "791d8664_13dd7ab1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-11T08:30:42Z",
+      "side": 1,
+      "message": "most of the time (ie the state being SRC_DISCONNECTED or SNK_DISCONNECTED), this doesn\u0027t make much sense.\nthe only useful case seems to be this_state \u003d\u003d PD_STATE_SOFT_RESET, so it might be better in the condition above (before enabling RX)",
+      "range": {
+        "startLine": 2268,
+        "startChar": 0,
+        "endLine": 2272,
+        "endChar": 32
+      },
+      "revId": "701fc3cafcdd8e5a0d9bf799f4aae89eb3fff2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b07e380_95ad5ba4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2384,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-11T08:30:42Z",
+      "side": 1,
+      "message": "this seems very similar to what you are trying to achieve above for PD_STATE_SOFT_RESET.\nShould we just force a PD_EVENT_TCPC_RESET to avoid having it twice ?",
+      "range": {
+        "startLine": 2381,
+        "startChar": 0,
+        "endLine": 2384,
+        "endChar": 32
+      },
+      "revId": "701fc3cafcdd8e5a0d9bf799f4aae89eb3fff2b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
