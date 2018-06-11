@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e29b4a12_fbb4c0d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-11T19:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "833e6b18_109e92f3",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "f99c0c3a5da21b426b11672f0601c0a1854d16e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c7bf2e0_070d553c",
         "filename": "chip/g/config_chip.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f99c0c3a5da21b426b11672f0601c0a1854d16e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e9e431_698af79c",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-11T19:37:15Z",
+      "side": 1,
+      "message": "I replaced with (var) where it made sense.",
+      "parentUuid": "2c7bf2e0_070d553c",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "f99c0c3a5da21b426b11672f0601c0a1854d16e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
