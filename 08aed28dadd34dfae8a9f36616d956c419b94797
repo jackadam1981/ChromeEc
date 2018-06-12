@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a017bb4_cbc19279",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2018-06-12T20:53:17Z",
+      "side": 1,
+      "message": "Given the constraints of the makefile I\u0027m not quite sure where to put it, but:\n\ngrep emits a list of entries like:\nbuild/phaser/RW/space_left.txt:75888\nbuild/plankton/RW/space_left.txt:13160\n\nsed transforms that to\n75888 phaser\n13160 plankton\n\nwhich is then sorted numerically and cut to the three smallest entries.",
+      "parentUuid": "6c99276d_60551ebf",
+      "range": {
+        "startLine": 157,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 23
+      },
+      "revId": "08aed28dadd34dfae8a9f36616d956c419b94797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a61a4ec_f948ac6a",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "2a61a4ec_f948ac6a",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 42
+      },
+      "revId": "08aed28dadd34dfae8a9f36616d956c419b94797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7125061a_b42fd359",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2018-06-12T20:53:17Z",
+      "side": 1,
+      "message": "Not sure if\n\n    zinger               has 1580       bytes left\n    minimuffin           has 1584       bytes left\n    wheatley             has 2644       bytes left\n\nreally looks better...",
+      "parentUuid": "0402b7c0_e30d72d6",
       "range": {
         "startLine": 159,
         "startChar": 2,
