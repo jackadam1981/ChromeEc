@@ -299,3 +299,19 @@ static void update_drivers_from_board_id(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, update_drivers_from_board_id, HOOK_PRIO_INIT_I2C + 1);
+
+/**
+ * Testing for power consumption measurement.
+ */
+static int command_test1(int argc, char **argv)
+{
+	/* Disable GPIOE0 since this pin doesn't support 1.8V in VCC */
+	NPCX_WKINEN(MIWU_TABLE_0, MIWU_GROUP_7) = 0X7F;
+
+	/* Disable GPIOF1 since this pin doesn't support 1.8V in AVCC */
+	NPCX_WKINEN(MIWU_TABLE_2, MIWU_GROUP_6) = 0XFD;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(test1, command_test1,
+		"",
+		"Testing for power consumption measurement");
