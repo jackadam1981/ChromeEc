@@ -11,6 +11,8 @@
 /* Select Baseboard features */
 #define VARIANT_OCTOPUS_EC_NPCX796FB
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
+#define OCTOPUS_SENSOR_NCP15WB_13_47
+#define OCTOPUS_SENSOR_NCP15WB_51_47
 #include "baseboard.h"
 
 /* Optional features */
