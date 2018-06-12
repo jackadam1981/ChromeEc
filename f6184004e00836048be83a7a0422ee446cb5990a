@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93efd9d6_057ad250",
+        "filename": "chip/mchp/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-12T23:33:48Z",
+      "side": 1,
+      "message": "The conditional halves below weren\u0027t reversed?\n\nSo defining CONFIG_MCHP_DEBUG_LPC turns off debugging, rather than turning it on?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "f6184004e00836048be83a7a0422ee446cb5990a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
