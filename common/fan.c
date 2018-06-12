@@ -46,6 +46,14 @@ int fan_percent_to_rpm(int fan, int pct)
 }
 #endif	/* CONFIG_FAN_RPM_CUSTOM */
 
+static void set_enabled(int fan, int enable)
+{
+	fan_set_enabled(FAN_CH(fan), enable);
+
+	if (fans[fan].conf->enable_gpio >= 0)
+		gpio_set_level(fans[fan].conf->enable_gpio, enable);
+}
+
 /* The thermal task will only call this function with pct in [0,100]. */
 test_mockable void fan_set_percent_needed(int fan, int pct)
 {
@@ -64,23 +72,18 @@ test_mockable void fan_set_percent_needed(int fan, int pct)
 	new_rpm = fan_percent_to_rpm(fan, pct);
 	actual_rpm = fan_get_rpm_actual(FAN_CH(fan));
 
-	/* If we want to turn and the fans are currently significantly below
-	 * the minimum turning speed, we should turn at least as fast as the
-	 * necessary start speed instead. */
-	if (new_rpm &&
-	    actual_rpm < fans[fan].rpm->rpm_min * 9 / 10 &&
-	    new_rpm < fans[fan].rpm->rpm_start)
-		new_rpm = fans[fan].rpm->rpm_start;
+	if (new_rpm) {
+		if (!fan_get_enabled(FAN_CH(fan)))
+			set_enabled(fan, 1);
+		/* If we want to turn and the fans are currently significantly
+		 * below the minimum turning speed, we should turn at least as
+		 * fast as the necessary start speed instead. */
+		if (actual_rpm < fans[fan].rpm->rpm_min * 9 / 10 &&
+				new_rpm < fans[fan].rpm->rpm_start)
+			new_rpm = fans[fan].rpm->rpm_start;
+	}
 
 	fan_set_rpm_target(FAN_CH(fan), new_rpm);
-}
-
-static void set_enabled(int fan, int enable)
-{
-	fan_set_enabled(FAN_CH(fan), enable);
-
-	if (fans[fan].conf->enable_gpio >= 0)
-		gpio_set_level(fans[fan].conf->enable_gpio, enable);
 }
 
 static void set_thermal_control_enabled(int fan, int enable)
@@ -527,8 +530,12 @@ static void pwm_fan_S3_S5(void)
 
 	/* TODO(crosbug.com/p/23530): Still treating all fans as one. */
 	for (fan = 0; fan < CONFIG_FANS; fan++) {
+#ifdef CONFIG_FAN_RPM_CUSTOM
+		set_thermal_control_enabled(fan, 0);
+#else
 		/* Take back fan control when the processor shuts down */
 		set_thermal_control_enabled(fan, 1);
+#endif
 		/* For now don't do anything with it. We'll have to turn it on
 		 * again if we need active cooling during heavy battery
 		 * charging or something.
