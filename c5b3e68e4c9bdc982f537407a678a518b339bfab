@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e499a118_0a94823b",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-12T05:39:30Z",
+      "side": 1,
+      "message": "Since, in practice, we are only interested in\nget_app_addr(config, get_tx_dtog(config))\n\nMaybe we only need a single function?",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b19dd93_a61adc2d",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-12T05:39:30Z",
+      "side": 1,
+      "message": "Instead of this, I\u0027d still have a callback function (that executes in interrupt context).\n\nThen the callback function could decide to use a deferred function, to fill the buffer quickly (if possible), or to wake a task with some special kind of event (TASK_EVENT_CUSTOM).",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14e20f2_161b1521",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-12T05:39:30Z",
+      "side": 1,
+      "message": "If these functions become externally visible, they need better names (e.g usb_isoochronous_get/set..)",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
