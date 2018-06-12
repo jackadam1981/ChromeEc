@@ -133,7 +133,7 @@ void pd_power_supply_reset(int port)
 	charge_manager_source_port(port, 0);
 #endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
 
-	/* Notify host of power info change. */
+	/* Disable it temporarily since power fluctation symptom */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
