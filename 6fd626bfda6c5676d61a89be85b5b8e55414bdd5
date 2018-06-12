@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a957401_ad8a34e2",
+        "filename": "chip/npcx/spiflashfw/npcx_monitor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-12T15:06:07Z",
+      "side": 1,
+      "message": "This would be clearer:\n\ncmp_data \u003d ptr_mram ? ptr_mram[i] : 0xFF;",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 49
+      },
+      "revId": "6fd626bfda6c5676d61a89be85b5b8e55414bdd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "031d4b32_c5e7a644",
         "filename": "chip/npcx/spiflashfw/npcx_monitor.c",
         "patchSetId": 2
