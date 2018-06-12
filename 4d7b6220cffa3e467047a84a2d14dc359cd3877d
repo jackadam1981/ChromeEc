@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63692436_fa636afc",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-12T06:31:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the intent of the fan_set_rpm_target function, is it ?\n\nthe common fan function calling it should already call set_enabled()\ncould you give more detail on the code path/scenario you are trying to fix ?",
+      "range": {
+        "startLine": 490,
+        "startChar": 5,
+        "endLine": 497,
+        "endChar": 26
+      },
+      "revId": "4d7b6220cffa3e467047a84a2d14dc359cd3877d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
