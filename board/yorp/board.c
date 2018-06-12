@@ -30,12 +30,13 @@
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
+#include "sensors.h"
 #include "switch.h"
 #include "system.h"
 #include "tablet_mode.h"
+#include "tcpci.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
-#include "tcpci.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -83,86 +84,6 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
-/*
- * Data derived from Seinhart-Hart equation in a resistor divider circuit with
- * Vdd=3300mV, R = 13.7Kohm, and Murata NCP15WB-series thermistor (B = 4050,
- * T0 = 298.15, nominal resistance (R0) = 47Kohm).
- */
-#define CHARGER_THERMISTOR_SCALING_FACTOR 13
-static const struct thermistor_data_pair charger_thermistor_data[] = {
-	{ 3044 / CHARGER_THERMISTOR_SCALING_FACTOR, 0 },
-	{ 2890 / CHARGER_THERMISTOR_SCALING_FACTOR, 10 },
-	{ 2680 / CHARGER_THERMISTOR_SCALING_FACTOR, 20 },
-	{ 2418 / CHARGER_THERMISTOR_SCALING_FACTOR, 30 },
-	{ 2117 / CHARGER_THERMISTOR_SCALING_FACTOR, 40 },
-	{ 1800 / CHARGER_THERMISTOR_SCALING_FACTOR, 50 },
-	{ 1490 / CHARGER_THERMISTOR_SCALING_FACTOR, 60 },
-	{ 1208 / CHARGER_THERMISTOR_SCALING_FACTOR, 70 },
-	{ 966 / CHARGER_THERMISTOR_SCALING_FACTOR, 80 },
-	{ 860 / CHARGER_THERMISTOR_SCALING_FACTOR, 85 },
-	{ 766 / CHARGER_THERMISTOR_SCALING_FACTOR, 90 },
-	{ 679 / CHARGER_THERMISTOR_SCALING_FACTOR, 95 },
-	{ 603 / CHARGER_THERMISTOR_SCALING_FACTOR, 100 },
-};
-
-static const struct thermistor_info charger_thermistor_info = {
-	.scaling_factor = CHARGER_THERMISTOR_SCALING_FACTOR,
-	.num_pairs = ARRAY_SIZE(charger_thermistor_data),
-	.data = charger_thermistor_data,
-};
-
-int board_get_charger_temp(int idx, int *temp_ptr)
-{
-	int mv = adc_read_channel(NPCX_ADC_CH1);
-
-	if (mv < 0)
-		return EC_ERROR_UNKNOWN;
-
-	*temp_ptr = thermistor_linear_interpolate(mv, &charger_thermistor_info);
-	*temp_ptr = C_TO_K(*temp_ptr);
-	return EC_SUCCESS;
-}
-
-/*
- * Data derived from Seinhart-Hart equation in a resistor divider circuit with
- * Vdd=3300mV, R = 51.1Kohm, and Murata NCP15WB-series thermistor (B = 4050,
- * T0 = 298.15, nominal resistance (R0) = 47Kohm).
- */
-#define AMB_THERMISTOR_SCALING_FACTOR 11
-static const struct thermistor_data_pair amb_thermistor_data[] = {
-	{ 2512 / AMB_THERMISTOR_SCALING_FACTOR, 0 },
-	{ 2158 / AMB_THERMISTOR_SCALING_FACTOR, 10 },
-	{ 1772 / AMB_THERMISTOR_SCALING_FACTOR, 20 },
-	{ 1398 / AMB_THERMISTOR_SCALING_FACTOR, 30 },
-	{ 1070 / AMB_THERMISTOR_SCALING_FACTOR, 40 },
-	{ 803 / AMB_THERMISTOR_SCALING_FACTOR, 50 },
-	{ 597 / AMB_THERMISTOR_SCALING_FACTOR, 60 },
-	{ 443 / AMB_THERMISTOR_SCALING_FACTOR, 70 },
-	{ 329 / AMB_THERMISTOR_SCALING_FACTOR, 80 },
-	{ 285 / AMB_THERMISTOR_SCALING_FACTOR, 85 },
-	{ 247 / AMB_THERMISTOR_SCALING_FACTOR, 90 },
-	{ 214 / AMB_THERMISTOR_SCALING_FACTOR, 95 },
-	{ 187 / AMB_THERMISTOR_SCALING_FACTOR, 100 },
-};
-
-static const struct thermistor_info amb_thermistor_info = {
-	.scaling_factor = AMB_THERMISTOR_SCALING_FACTOR,
-	.num_pairs = ARRAY_SIZE(amb_thermistor_data),
-	.data = amb_thermistor_data,
-};
-
-int board_get_ambient_temp(int idx, int *temp_ptr)
-{
-	int mv = adc_read_channel(NPCX_ADC_CH0);
-
-	if (mv < 0)
-		return EC_ERROR_UNKNOWN;
-
-	*temp_ptr = thermistor_linear_interpolate(mv, &amb_thermistor_info);
-	*temp_ptr = C_TO_K(*temp_ptr);
-	return EC_SUCCESS;
-}
-
 const struct temp_sensor_t temp_sensors[] = {
 	{
 		.name = "Battery",
@@ -174,15 +95,15 @@ const struct temp_sensor_t temp_sensors[] = {
 	{
 		.name = "Ambient",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_ambient_temp,
-		.idx = 0,
+		.read = get_ncp15wb_51_47_temp,
+		.idx = ADC_TEMP_SENSOR_AMB,
 		.action_delay_sec = 5
 	},
 	{
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_charger_temp,
-		.idx = 1,
+		.read = get_ncp15wb_13_47_temp,
+		.idx = ADC_TEMP_SENSOR_CHARGER,
 		.action_delay_sec = 1
 	},
 };
