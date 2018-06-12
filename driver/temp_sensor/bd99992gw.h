@@ -37,6 +37,9 @@ enum bd99992gw_adc_channel {
 #define BD99992GW_REG_IRQLVL1MSK	0x13
 #define BD99992GW_IRQLVL1MSK_MADC	 (1 << 1) /* ADC IRQ mask */
 
+#define BD99992GW_REG_SDWNCTRL		0x49
+#define BD99992GW_SDWNCTRL_SWDN		 (1 << 0) /* SWDN mask */
+
 #define BD99992GW_REG_ADC1CNTL1		0x80
 #define BD99992GW_ADC1CNTL1_SLP27MS	 (0x6 << 3) /* 27ms between pass */
 #define BD99992GW_ADC1CNTL1_NOLOOP	 (0x7 << 3) /* Single loop pass only */
