@@ -16,6 +16,24 @@
       "revId": "7c6f336362770c85a5df02064fd274eee1ff8555",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805b6b43_7b1f4b74",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-12T23:20:43Z",
+      "side": 0,
+      "message": "Common code for battery_is_present() is a good goal, but in the short term, I\u0027d like to remove the non-fuel-gauge code from this particular file, and unblock careena and octopus changes.",
+      "parentUuid": "aff166ce_e5d3b672",
+      "revId": "7c6f336362770c85a5df02064fd274eee1ff8555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
