@@ -104,6 +104,7 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode)
 	switch (mode) {
 	case USB_CHARGE_MODE_DISABLED:
 		usb_charge_set_enabled(port_id, 0);
+		usb_charge_set_ilim(port_id, 0);
 		break;
 	case USB_CHARGE_MODE_SDP2:
 		usb_charge_set_control_mode(port_id, 7);
