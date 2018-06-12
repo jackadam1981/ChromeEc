@@ -532,8 +532,8 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 };
 /* Matrix to rotate accelrator into standard reference frame */
 const matrix_3x3_t base_standard_ref = {
-	{ 0, FLOAT_TO_FP(-1), 0},
 	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
@@ -544,9 +544,9 @@ const matrix_3x3_t lid_standard_ref = {
 };
 
 const matrix_3x3_t lid_Rx180_Ry180 = {
-	{ FLOAT_TO_FP(-1), 0, 0 },
 	{ 0, FLOAT_TO_FP(-1), 0 },
-	{ 0, 0, FLOAT_TO_FP(1) }
+	{ FLOAT_TO_FP(-1), 0, 0 },
+	{ 0, 0, FLOAT_TO_FP(-1) }
 };
 
 const struct motion_sensor_t lid_accel_1 = {
