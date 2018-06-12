@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff61a77e_948ce63b",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-06-12T17:59:17Z",
+      "side": 1,
+      "message": "Don\u0027t we need all SENSOR_CONFIG_EC_ lines? including S3 and S5?",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 471,
+        "endChar": 5
+      },
+      "revId": "69fdc13d2cf78f07606d00f29ffc7261cc75673b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
