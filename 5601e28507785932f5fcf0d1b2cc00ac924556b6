@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e54bf00d_aed0dd72",
+        "filename": "test/cec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-06-12T11:52:18Z",
+      "side": 1,
+      "message": "memset(msg, 0xff, sizeof(msg));",
+      "revId": "5601e28507785932f5fcf0d1b2cc00ac924556b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
