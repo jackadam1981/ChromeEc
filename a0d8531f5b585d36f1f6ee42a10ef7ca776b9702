@@ -140,6 +140,30 @@
       "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ab711f_f1a57ca2",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-12T14:38:20Z",
+      "side": 1,
+      "message": "They are actually connected in both proto1 and proto2 to i2s audio port of SoC",
+      "parentUuid": "a411db2c_37984d41",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
