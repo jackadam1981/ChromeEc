@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8941464d_989959a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:16:03Z",
+      "side": 1,
+      "message": "Which rules is this? Only I have found is that signed-off should be below description. Have seen both usages in the logs.",
+      "parentUuid": "42ec7f22_6da26ab3",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4968414d_4cddad16",
         "filename": "test/cec.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed5aa423_d2e4e909",
+        "filename": "test/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:16:03Z",
+      "side": 1,
+      "message": "It is drawn in by the includes. No need to include it multiple times since that just slows down compilation.",
+      "parentUuid": "4968414d_4cddad16",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "73575d22_c3c9ac10",
+        "filename": "test/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:16:03Z",
+      "side": 1,
+      "message": "No. Since only 1 bit is written per call.",
+      "parentUuid": "55d8da16_6213fc1f",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7117b62_dfde1eae",
         "filename": "test/cec.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2018-05-28T09:04:59Z",
       "side": 1,
       "message": "This comment is confusing since it shouldn\u0027t write beyond the buffer. Change to something like: Make sure the buffer wasn\u0027t actually overwritten, even though it was attempted.",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd83d63a_6cbde7c4",
+        "filename": "test/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:16:03Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "a7117b62_dfde1eae",
       "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "99741566_0e7bb73c",
+        "filename": "test/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:16:03Z",
+      "side": 1,
+      "message": "Both have their pros and cons. This construct is allowed in this codebase.",
+      "parentUuid": "d63b984a_9f7572f3",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa76d2e7_a1d2e649",
         "filename": "test/cec.c",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "07d5e58f_495eea6e",
+        "filename": "test/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:16:03Z",
+      "side": 1,
+      "message": "Reads better than aligning with the assert or the push. And allowed by the style checker.",
+      "parentUuid": "aa76d2e7_a1d2e649",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54de5c6b_cebca98a",
         "filename": "test/cec.c",
         "patchSetId": 1
@@ -115,6 +223,24 @@
       "writtenOn": "2018-05-28T09:04:59Z",
       "side": 1,
       "message": "You could do memset() here as well.",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3895024d_ffeba612",
+        "filename": "test/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:16:03Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "54de5c6b_cebca98a",
       "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
