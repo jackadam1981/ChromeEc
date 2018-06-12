@@ -302,6 +302,11 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+void board_hibernate_late(void) {
+	gpio_set_level(GPIO_BAT_LED_BLUE_L, 1);
+	gpio_set_level(GPIO_BAT_LED_ORANGE_L, 1);
+}
+
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
 void lid_angle_peripheral_enable(int enable)
