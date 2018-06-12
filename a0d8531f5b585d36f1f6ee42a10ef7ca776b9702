@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e3e02c0_4178ebf3",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-12T02:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1935a7a_04675256",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 14
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e5dc845_7b32bb57",
         "filename": "board/yorp/gpio.inc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6170050b_dbb52388",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-12T02:08:29Z",
+      "side": 1,
+      "message": "I will discuss it with my colleagues. Any update will inform you.",
+      "parentUuid": "7e5dc845_7b32bb57",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 58
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82d14e57_b2a25333",
         "filename": "board/yorp/gpio.inc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-11T16:19:05Z",
       "side": 1,
       "message": "from the schematics I see, these pins are actually tied to a codec for I2S. I don\u0027t think we should label them as NoConnect",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a411db2c_37984d41",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-12T02:08:29Z",
+      "side": 1,
+      "message": "Are they used in proto 2? If so, I will remove these lines in next patchset.",
+      "parentUuid": "82d14e57_b2a25333",
       "range": {
         "startLine": 137,
         "startChar": 1,
