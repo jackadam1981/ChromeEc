@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d3f7242d_537cc1e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1207224
+      },
+      "writtenOn": "2018-06-12T11:52:21Z",
+      "side": 1,
+      "message": "According to the pre-upload hook [1], only Signed-off-by is allowed after Change-Id on regular commits. So I guess both are places are fine.\n\nhttps://chromium.googlesource.com/chromiumos/repohooks/+/bb06fc9c260c32080f29cf6146cc3ab4f815e68e/pre-upload.py#978",
+      "parentUuid": "8941464d_989959a2",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4968414d_4cddad16",
         "filename": "test/cec.c",
         "patchSetId": 1
