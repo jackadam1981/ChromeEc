@@ -22,6 +22,30 @@
       "revId": "4d7b6220cffa3e467047a84a2d14dc359cd3877d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "308be35d_8068ada0",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-12T09:01:16Z",
+      "side": 1,
+      "message": "I think the problem is that fan_set_duty() is able to disable the fan since it call pwm_enable() internally. Whether the pwm is enabled is what is relied on in fan_get/set_enabled(). A proper fix would likely have to split the concept of pwm-enabled from fan-enabled.\n\nThe problem call-stack is something like this when thermal sets duty to 0%\nfan_set_percent_needed(pct\u003d0%)\nfan_set_rpm_target(rpm\u003d0)\nfan_set_duty(0)\npwm_set_duty(0)\npwm_set_raw_duty(0)\npwm_enable(0) \u003c- this is the same as fan_set_enabled(0)",
+      "parentUuid": "63692436_fa636afc",
+      "range": {
+        "startLine": 490,
+        "startChar": 5,
+        "endLine": 497,
+        "endChar": 26
+      },
+      "revId": "4d7b6220cffa3e467047a84a2d14dc359cd3877d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
