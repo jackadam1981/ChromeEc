@@ -233,10 +233,9 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 
 void board_reset_pd_mcu(void)
 {
-	if (oem == PROJECT_AKALI && board_version < 0x0200) {
+	if (board_version < 0x0300) {
 		if (anx7447_flash_erase(USB_PD_PORT_ANX7447))
 			CPRINTS("Failed to erase OCM flash");
-
 	}
 
 	/* Assert reset */
