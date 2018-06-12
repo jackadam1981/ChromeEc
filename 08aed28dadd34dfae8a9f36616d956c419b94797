@@ -117,6 +117,30 @@
       "revId": "08aed28dadd34dfae8a9f36616d956c419b94797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "929362ce_b6167877",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-12T21:13:04Z",
+      "side": 1,
+      "message": "I think it does look better, it does not have to have so much whitespace either.\n\nMaybe something like\n\"Tightest boards\u0027 RW images, bytes left:\n\n    zinger 1580\nminimuffin 1584\n  wheatley 2644\n\"\n\nprinted using say \u0027printf \"%10s %4d\\n\" $$board $$size\u0027",
+      "parentUuid": "7125061a_b42fd359",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 42
+      },
+      "revId": "08aed28dadd34dfae8a9f36616d956c419b94797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
