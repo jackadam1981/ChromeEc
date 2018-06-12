@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aff166ce_e5d3b672",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-12T23:12:07Z",
+      "side": 0,
+      "message": "this file can be common code and may be we can add config CONFIG_BATTERY_DETECT_COMMON.\n\nI still believe we should not be using battery_revive code for all the boards and instead use this file and define the bat_fet reading structures as in current code",
+      "revId": "7c6f336362770c85a5df02064fd274eee1ff8555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
