@@ -34,6 +34,29 @@
       "revId": "22e2c5002d24a6788cde01e7675ac143af60d671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25166ef5_4529c54b",
+        "filename": "include/cec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-12T14:59:13Z",
+      "side": 1,
+      "message": "All these declarations should get comments describing what they do, take, and return.  But ok to do that as part of the later refactoring.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "22e2c5002d24a6788cde01e7675ac143af60d671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
