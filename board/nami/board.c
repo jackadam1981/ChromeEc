@@ -537,16 +537,22 @@ const matrix_3x3_t base_standard_ref = {
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
+const matrix_3x3_t base_akali = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
 const matrix_3x3_t lid_standard_ref = {
 	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
-const matrix_3x3_t lid_Rx180_Ry180 = {
-	{ FLOAT_TO_FP(-1), 0, 0 },
+const matrix_3x3_t lid_akali = {
 	{ 0, FLOAT_TO_FP(-1), 0 },
-	{ 0, 0, FLOAT_TO_FP(1) }
+	{ FLOAT_TO_FP(-1), 0, 0 },
+	{ 0, 0, FLOAT_TO_FP(-1) }
 };
 
 const struct motion_sensor_t lid_accel_1 = {
@@ -560,7 +566,7 @@ const struct motion_sensor_t lid_accel_1 = {
 	.drv_data = &g_kx022_data,
 	.port = I2C_PORT_ACCEL,
 	.addr = KX022_ADDR1,
-	.rot_standard_ref = &lid_Rx180_Ry180,
+	.rot_standard_ref = &lid_akali,
 	.min_frequency = KX022_ACCEL_MIN_FREQ,
 	.max_frequency = KX022_ACCEL_MAX_FREQ,
 	.default_range = 2, /* g, to support tablet mode */
@@ -574,6 +580,52 @@ const struct motion_sensor_t lid_accel_1 = {
 			.odr = 10000 | ROUND_UP_FLAG,
 		},
 	},
+};
+
+const struct motion_sensor_t base_accel_1 = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMI160,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &bmi160_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_bmi160_data,
+	.port = I2C_PORT_ACCEL,
+	.addr = BMI160_ADDR0,
+	.rot_standard_ref = &base_akali,
+	.min_frequency = BMI160_ACCEL_MIN_FREQ,
+	.max_frequency = BMI160_ACCEL_MAX_FREQ,
+	.default_range = 2, /* g, to support tablet mode  */
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* Sensor on in S3 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 0,
+		},
+	},
+};
+
+const struct motion_sensor_t base_gyro_1 = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMI160,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &bmi160_drv,
+	.mutex = &g_base_mutex,
+	.drv_data = &g_bmi160_data,
+	.port = I2C_PORT_ACCEL,
+	.addr = BMI160_ADDR0,
+	.default_range = 1000, /* dps */
+	.rot_standard_ref = &base_akali,
+	.min_frequency = BMI160_GYRO_MIN_FREQ,
+	.max_frequency = BMI160_GYRO_MAX_FREQ,
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -732,9 +784,12 @@ static void setup_motion_sensors(void)
 	if (oem != PROJECT_NAMI)
 		/* Only Nami has ALS */
 		motion_sensor_count = ARRAY_SIZE(motion_sensors) - 1;
-	if (oem == PROJECT_AKALI)
+	if (oem == PROJECT_AKALI) {
 		/* Akali uses KX022 */
 		motion_sensors[LID_ACCEL] = lid_accel_1;
+		motion_sensors[BASE_ACCEL] = base_accel_1;
+		motion_sensors[BASE_GYRO] = base_gyro_1;
+	}
 }
 
 static void board_init(void)
