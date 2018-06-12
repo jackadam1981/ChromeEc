@@ -16,6 +16,24 @@
       "revId": "c26ba1d6f6aedc90bf3afed2d24ff4c8071746fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45d31fd_05e86595",
+        "filename": "include/uart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-12T09:42:54Z",
+      "side": 1,
+      "message": "Yes the NPCX5 quirk here is not really great either,\nbut having the uart_enable_wakeup() in chip/\u003cchip\u003e/registers.h has done for npcx is not a very compelling alternative.",
+      "parentUuid": "1500b54a_7d977a83",
+      "revId": "c26ba1d6f6aedc90bf3afed2d24ff4c8071746fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
