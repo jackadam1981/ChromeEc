@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e868b547_3917c12a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-13T18:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3f7242d_537cc1e0",
+      "revId": "25b4bb5e36d9bab245acc040aa4aabcabff8f427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4968414d_4cddad16",
         "filename": "test/cec.c",
         "patchSetId": 1
