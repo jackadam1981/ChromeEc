@@ -39,6 +39,24 @@
       "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5133c65_11c0d9cd",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2018-06-13T22:46:26Z",
+      "side": 1,
+      "message": "Since it\u0027s just a tiny amount of code, I don\u0027t think we should unless it breaks systems that use LPC instead of eSPI. According to Furquan\u0027s comment in the bug (#26), that doesn\u0027t sound like the case.",
+      "parentUuid": "28758699_94318bfc",
+      "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
