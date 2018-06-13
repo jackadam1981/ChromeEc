@@ -87,6 +87,48 @@ static host_event_t lpc_host_event_mask[LPC_HOST_EVENT_COUNT];
 /* Indicates if active wake mask set by host */
 static uint8_t active_wm_set_by_host;
 
+/*
+ * Backup copies of SCI and SMI mask to preserve across S0ix suspend/resume
+ * cycle. If the host uses S0ix, BIOS is not involved during suspend and resume
+ * operations and hence SCI/SMI masks are programmed only once during boot-up.
+ *
+ * These backup variables are set whenever lpc_host_event_mask corresponding to
+ * SCI/SMI is set by host/console command. When host expresses its interest to
+ * enter S0ix, lpc_host_event_mask for SCI and SMI are cleared, but the backup
+ * copies are preserved. When host resumes from S0ix, masks from backup
+ * variables are copied over to lpc_host_event_mask for SCI and SMI.
+ *
+ * There is no need to reset the backup masks in case host resets. This is
+ * because BIOS re-programs the masks on host reset which will update both
+ * copies of the masks.
+ */
+static host_event_t backup_sci_mask;
+static host_event_t backup_smi_mask;
+
+static void lpc_set_sci_mask(host_event_t mask)
+{
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, mask);
+	backup_sci_mask = mask;
+}
+
+static void lpc_set_smi_mask(host_event_t mask)
+{
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, mask);
+	backup_smi_mask = mask;
+}
+
+void lpc_s0ix_suspend_clear_masks(void)
+{
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, 0);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
+}
+
+void lpc_s0ix_resume_restore_masks(void)
+{
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, backup_sci_mask);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, backup_smi_mask);
+}
+
 void lpc_set_host_event_mask(enum lpc_host_event_type type, host_event_t mask)
 {
 	lpc_host_event_mask[type] = mask;
@@ -437,9 +479,9 @@ static int command_host_event(int argc, char **argv)
 			host_clear_events_b(i);
 #ifdef CONFIG_HOSTCMD_X86
 		else if (!strcasecmp(argv[1], "smi"))
-			lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, i);
+			lpc_set_smi_mask(i);
 		else if (!strcasecmp(argv[1], "sci"))
-			lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, i);
+			lpc_set_sci_mask(i);
 		else if (!strcasecmp(argv[1], "wake"))
 			lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, i);
 		else if (!strcasecmp(argv[1], "always_report"))
@@ -517,7 +559,8 @@ static int host_event_set_smi_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
-	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, p->mask);
+	lpc_set_smi_mask(p->mask);
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SMI_MASK,
@@ -528,7 +571,8 @@ static int host_event_set_sci_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
-	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, p->mask);
+	lpc_set_sci_mask(p->mask);
+
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SCI_MASK,
@@ -645,10 +689,10 @@ static int host_event_action_set(struct host_cmd_handler_args *args)
 	switch (p->mask_type) {
 #ifdef CONFIG_HOSTCMD_X86
 	case EC_HOST_EVENT_SCI_MASK:
-		lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, mask_value);
+		lpc_set_sci_mask(mask_value);
 		break;
 	case EC_HOST_EVENT_SMI_MASK:
-		lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, mask_value);
+		lpc_set_smi_mask(mask_value);
 		break;
 	case EC_HOST_EVENT_ALWAYS_REPORT_MASK:
 		lpc_set_host_event_mask(LPC_HOST_EVENT_ALWAYS_REPORT,
