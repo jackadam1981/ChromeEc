@@ -22,6 +22,30 @@
       "revId": "69fdc13d2cf78f07606d00f29ffc7261cc75673b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555a0f5d_1e54bc53",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-06-13T03:42:42Z",
+      "side": 1,
+      "message": "Added for S3. Do we need sensors in S5?",
+      "parentUuid": "ff61a77e_948ce63b",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 471,
+        "endChar": 5
+      },
+      "revId": "69fdc13d2cf78f07606d00f29ffc7261cc75673b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
