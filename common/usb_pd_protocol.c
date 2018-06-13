@@ -3640,6 +3640,13 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_shutdown(void)
 {
+	int p;
+	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++) {
+		int opos = pd_alt_mode(p, USB_SID_DISPLAYPORT);
+		if (opos > 0 && pd_dfp_exit_mode(p, USB_SID_DISPLAYPORT, opos))
+			pd_send_vdm(p, USB_SID_DISPLAYPORT,
+				    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
+	}
 	pd_set_dual_role(PD_DRP_FORCE_SINK);
 	CPRINTS("PD:S3->S5");
 }
