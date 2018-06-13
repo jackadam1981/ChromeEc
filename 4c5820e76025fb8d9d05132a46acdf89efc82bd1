@@ -579,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "0bb248ca_f3ec8fca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1248957
+      },
+      "writtenOn": "2018-06-13T03:23:58Z",
+      "side": 1,
+      "message": "The relative Q-events have not upload to eve firmware branch yet since we have not receive the Intel new GFX driver for brightness verify,Please refer to issue #72196531. I will upload the coreboot changes tomorrow.",
+      "parentUuid": "743c7b1e_e18a3a1b",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a777187b_ed3b438c",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
