@@ -69,6 +69,30 @@
       "revId": "724b8907b43059a32363dad8c19380d33ade3169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8321076f_58331982",
+        "filename": "board/reef_mchp/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2018-06-13T17:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88773b4e_41831678",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "724b8907b43059a32363dad8c19380d33ade3169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
