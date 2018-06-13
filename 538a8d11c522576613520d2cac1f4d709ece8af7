@@ -16,6 +16,23 @@
       "revId": "538a8d11c522576613520d2cac1f4d709ece8af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5d20466_e61fabb7",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-13T07:04:21Z",
+      "side": 1,
+      "message": "I went through some of the architectures to find out what fan_get_enabled() will give you in different scenarios. It does not seem to be well-defined. The problem we are trying to solve is that fan_set_rpm_target on npcx can disable the pwm, but not enable the pwm.\n\nAccording to my findings below we only need to check enabled on npcx, but for different reasons.\nI think for now, the better fix would just be to allow fan_set_rpm_target in npcx to enable the pwm. Then it would behave like mchp and mec1322 and we don\u0027t need to hack around this in common code. Defining the API more clearly is a future exercise. \n\nNote that the list below is about what fan_get_enabled() returns, not whether the fan is actually spinning.\n\nlm4\nfan_set_enable - enabled always follows the input parameter\nfan_set_duty - always sets enabled, does fan_set_enable(1) no matter if duty-cycle is 0\nfan_set_rpm_target - does not touch enabled\n\nmchp and mec1322\nfan_set_enable - won\u0027t set enabled if stored duty-cycle/rpm is 0\nfan_set_duty - disables if duty is 0, else enables\nfan_set_rpm_target - enables/disables in rpm mode\n\nnpcx\nfan_set_enable - enabled always follows the input parameter\nfan_set_duty - disables if duty is 0, else enables\nfan_set_rpm_target - disables if rpm is 0 (by calling fan_set_duty), never enables",
+      "revId": "538a8d11c522576613520d2cac1f4d709ece8af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
