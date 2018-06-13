@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c0ee864_c5f007bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1238150
+      },
+      "writtenOn": "2018-06-13T05:09:31Z",
+      "side": 1,
+      "message": "This is a npcx specific issue,  that is, turning off the pwm when setting duty cycle zero and relying on pwm_get_enabled() for determining if the fan is enabled. I think it needs to be solved in the npcx-specific code to have the fan_get/set_enable API make sense.",
+      "revId": "538a8d11c522576613520d2cac1f4d709ece8af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
