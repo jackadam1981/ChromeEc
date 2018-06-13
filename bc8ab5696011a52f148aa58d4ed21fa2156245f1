@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5c58fa49_c59e3dd1",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-13T23:44:50Z",
+      "side": 0,
+      "message": "We have CONFIG_BATTERY_PRESENT_CUSTOM but not CONFIG_BATTERY_HW_PRESENT_CUSTOM.\nThis is for preventing power on when no battery case in charge_state_v2.c, which is not needed if we have CONFIG_BATTERY_PRESENT_CUSTOM as we make BP_NO if it\u0027s still initializing",
+      "parentUuid": "0cf1febf_5f2ac468",
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6742b8be_88c51899",
         "filename": "baseboard/grunt/baseboard.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-06-13T23:21:57Z",
       "side": 0,
       "message": "The documentation for CONFIG_BATTERY_REVIVE_DISCONNECT sounds very similar to what I think you are trying to do here with this overall chain of CLs:\n\n/*\n * Check for battery in disconnect state (similar to cut-off state). If this\n * battery is found to be in disconnect state, take it out of this state by\n * force-applying a charge current. This option requires\n * battery_get_disconnect_state() to be defined.\n */\n\nSo it seems like it would be better to solve this keeping CONFIG_BATTERY_REVIVE_DISCONNECT defined.",
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b65926a_c80457a1",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-13T23:44:50Z",
+      "side": 0,
+      "message": "as we check battery_present() at multiple location and change the battery present status depending on battery_get_disconnect_state() we don\u0027t have to explicitly call this function. It can be part of battery_present() function itself.",
+      "parentUuid": "6742b8be_88c51899",
       "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
