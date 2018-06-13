@@ -257,6 +257,30 @@
       "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c9c360_50ac3422",
+        "filename": "power/mt8183.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-13T15:51:47Z",
+      "side": 1,
+      "message": "usually the ARM platform can boot to the firmware on their 15W power budget without a battery as buffer...",
+      "parentUuid": "b28b9b8e_43c1a199",
+      "range": {
+        "startLine": 252,
+        "startChar": 6,
+        "endLine": 252,
+        "endChar": 27
+      },
+      "revId": "8d389cd3ae5faed03302dc6cd564883869f4701d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
