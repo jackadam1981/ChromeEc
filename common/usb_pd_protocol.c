@@ -3640,6 +3640,11 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_shutdown(void)
 {
+	int i;
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		if (!pd_dfp_exit_mode(i, 0, 0))
+			CPRINTF("p%i: Failed exit mode\n");
+	}
 	pd_set_dual_role(PD_DRP_FORCE_SINK);
 	CPRINTS("PD:S3->S5");
 }
