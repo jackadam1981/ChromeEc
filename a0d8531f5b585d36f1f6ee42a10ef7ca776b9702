@@ -164,6 +164,30 @@
       "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dce7274_2a22cea8",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-13T06:07:48Z",
+      "side": 1,
+      "message": "We do see the power consumption fluctuation before and after these lines are added in gpio.inc. Are the resistances between ec and audio IC mounted on yorp?",
+      "parentUuid": "a9ab711f_f1a57ca2",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 0
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
