@@ -3609,6 +3609,7 @@ static void pd_chipset_resume(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
 #ifdef CONFIG_CHARGE_MANAGER
 		if (charge_manager_get_active_charge_port() != i)
 #endif
@@ -3623,6 +3624,14 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pd_chipset_resume, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_suspend(void)
 {
+	int p;
+	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++) {
+		int opos = pd_alt_mode(p, USB_SID_DISPLAYPORT);
+		if (pd_dfp_exit_mode(p, USB_SID_DISPLAYPORT, opos)) {
+			pd_send_vdm(p, USB_SID_DISPLAYPORT,
+				    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
+		}
+	}
 	pd_set_dual_role(PD_DRP_TOGGLE_OFF);
 	CPRINTS("PD:S0->S3");
 }
@@ -3630,10 +3639,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 static void pd_chipset_startup(void)
 {
-	int i;
 	pd_set_dual_role(PD_DRP_TOGGLE_OFF);
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
-		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
 	CPRINTS("PD:S5->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pd_chipset_startup, HOOK_PRIO_DEFAULT);
