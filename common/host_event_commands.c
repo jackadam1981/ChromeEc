@@ -87,6 +87,34 @@ static host_event_t lpc_host_event_mask[LPC_HOST_EVENT_COUNT];
 /* Indicates if active wake mask set by host */
 static uint8_t active_wm_set_by_host;
 
+/*
+ * Backup copies of SCI and SMI mask to preserve across S0ix suspend/resume
+ * cycle. If the host uses S0ix, BIOS is not involved during suspend and resume
+ * operations and hence SCI/SMI masks are programmed only once during boot-up.
+ *
+ * These backup variables are set whenever host expresses its interest to
+ * enter S0ix and then lpc_host_event_mask for SCI and SMI are cleared. When
+ * host resumes from S0ix, masks from backup variables are copied over to
+ * lpc_host_event_mask for SCI and SMI.
+ */
+static host_event_t backup_sci_mask;
+static host_event_t backup_smi_mask;
+
+void lpc_s0ix_suspend_clear_masks(void)
+{
+	backup_sci_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SCI);
+	backup_smi_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI);
+
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, 0);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
+}
+
+void lpc_s0ix_resume_restore_masks(void)
+{
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, backup_sci_mask);
+	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, backup_smi_mask);
+}
+
 void lpc_set_host_event_mask(enum lpc_host_event_type type, host_event_t mask)
 {
 	lpc_host_event_mask[type] = mask;

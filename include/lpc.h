@@ -149,9 +149,24 @@ host_event_t lpc_override_always_report_mask(void);
 void lpc_init_mask(void);
 
 /*
- * Clear LPC masks for SMI, SCI and wake upon resume from S3. This is done to
- * mask these events until host unmasks them itself.
+ * Clear host event masks for SMI, SCI and wake upon resume from S3. This is
+ * done to mask these events until host unmasks them itself.
  */
 void lpc_s3_resume_clear_masks(void);
+
+/*
+ * Clear host event masks for SMI and SCI when host is entering S0ix. This is
+ * done to prevent any SCI/SMI interrupts when the host is in suspend. Since
+ * BIOS is not involved in the suspend path, EC needs to take care of clearing
+ * these masks.
+ */
+void lpc_s0ix_suspend_clear_masks(void);
+
+/*
+ * Restore host event masks for SMI and SCI when host exits S0ix. This is done
+ * because BIOS is not involved in the resume path and so EC needs to restore
+ * the masks from backup variables.
+ */
+void lpc_s0ix_resume_restore_masks(void);
 
 #endif  /* __CROS_EC_LPC_H */

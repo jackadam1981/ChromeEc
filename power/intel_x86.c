@@ -502,6 +502,7 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 		 * notification needs to be sent to listeners.
 		 */
 		s0ix_notify = S0IX_NOTIFY_SUSPEND;
+		lpc_s0ix_suspend_clear_masks();
 		power_signal_enable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*
@@ -513,6 +514,7 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 		/* clear host events */
 		while (lpc_get_next_host_event() != 0)
 			;
+		lpc_s0ix_resume_restore_masks();
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_DEFAULT_RESET) {
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
