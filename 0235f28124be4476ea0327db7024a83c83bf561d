@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d2017d7_a4c9f93e",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-13T19:40:31Z",
+      "side": 1,
+      "message": "Not for this change, but I think we should have a new GPIO_UNUSED() that does the right configuration for the provided pin. That way we wouldn\u0027t need to assign the gpio a name and it will also make the intent clear in the gpio.inc file that the pin is unused.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 58
+      },
+      "revId": "0235f28124be4476ea0327db7024a83c83bf561d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
