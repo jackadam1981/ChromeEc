@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f05190a_1b1e7707",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-13T22:51:53Z",
+      "side": 1,
+      "message": "Complicating the code ;). I agree we can just do it here. :)",
+      "parentUuid": "87592858_3e900554",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28758699_94318bfc",
         "filename": "include/lpc.h",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "Since it\u0027s just a tiny amount of code, I don\u0027t think we should unless it breaks systems that use LPC instead of eSPI. According to Furquan\u0027s comment in the bug (#26), that doesn\u0027t sound like the case.",
       "parentUuid": "28758699_94318bfc",
+      "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f50251d_b4201e70",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-13T22:51:53Z",
+      "side": 1,
+      "message": "Correct. This should be okay for both LPC and ESPI. In fact, it is the right thing to do for both since we don\u0027t want any SCI/SMI interrupts (physical or virtual) coming in when host is in S0ix.",
+      "parentUuid": "e5133c65_11c0d9cd",
       "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
