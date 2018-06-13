@@ -152,6 +152,29 @@ static void lpc_sysjump_save_mask(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, lpc_sysjump_save_mask, HOOK_PRIO_DEFAULT);
 
+static int lpc_restore_64bit_mask(const uint64_t *prev_mask, int size)
+{
+	if (size != sizeof(lpc_host_event_mask))
+		return 0;
+
+	memcpy(lpc_host_event_mask, prev_mask, sizeof(lpc_host_event_mask));
+
+	return 1;
+}
+
+static int lpc_restore_32bit_mask(const uint32_t *prev_mask, int size)
+{
+	if (size != sizeof(uint32_t) * 3)
+		return 0;
+
+	lpc_host_event_mask[LPC_HOST_EVENT_SMI] = prev_mask[LPC_HOST_EVENT_SMI];
+	lpc_host_event_mask[LPC_HOST_EVENT_SCI] = prev_mask[LPC_HOST_EVENT_SCI];
+	lpc_host_event_mask[LPC_HOST_EVENT_WAKE] =
+		prev_mask[LPC_HOST_EVENT_WAKE];
+
+	return 0;
+}
+
 /*
  * Restore various LPC masks if they were saved before the sysjump.
  *
@@ -167,14 +190,16 @@ static int lpc_post_sysjump_restore_mask(void)
 
 	prev_mask = (const host_event_t *)system_get_jump_tag(LPC_SYSJUMP_TAG,
 			&version, &size);
-	if (!prev_mask || size != sizeof(lpc_host_event_mask) ||
-	    (version != LPC_SYSJUMP_VERSION &&
-	     version != LPC_SYSJUMP_OLD_VERSION))
+
+	if (!prev_mask)
 		return 0;
 
-	memcpy(lpc_host_event_mask, prev_mask, sizeof(lpc_host_event_mask));
+	if (version == LPC_SYSJUMP_VERSION)
+		return lpc_restore_64bit_mask(prev_mask, size);
+	else
+		return lpc_restore_32bit_mask(prev_mask, size);
 
-	return version == LPC_SYSJUMP_VERSION;
+	return 0;
 }
 
 host_event_t __attribute__((weak)) lpc_override_always_report_mask(void)
