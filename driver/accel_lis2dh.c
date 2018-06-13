@@ -22,6 +22,24 @@
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 
+/**
+ * Read register from accelerometer.
+ */
+static inline int raw_read8(const int port, const int addr, const int reg,
+							int *data_ptr)
+{
+	return i2c_read8(port, addr, reg, data_ptr);
+}
+
+/**
+ * Write register from accelerometer.
+ */
+static inline int raw_write8(const int port, const int addr, const int reg,
+							 int data)
+{
+	return i2c_write8(port, addr, reg, data);
+}
+
 #ifdef CONFIG_ACCEL_FIFO
 /**
  * enable_fifo - Enable/Disable FIFO in LIS2DH
@@ -51,6 +69,10 @@ static int enable_fifo(const struct motion_sensor_t *s, int mode, int en_dis)
  * @range: Range
  * @rnd: Round up/down flag
  */
+
+#define LIS2DH_FS_2G_VAL 0
+#define LIS2DH_FS_16G_VAL 3
+
 static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 {
 	int err, normalized_range;
@@ -92,7 +114,7 @@ static int get_range(const struct motion_sensor_t *s)
 {
 	struct stprivate_data *data = s->drv_data;
 
-	return LIS2DH_GAIN_TO_FS(data->base.range);
+	return data->base.range;
 }
 
 static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
@@ -290,8 +312,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 static int read(const struct motion_sensor_t *s, vector_3_t v)
 {
 	uint8_t raw[OUT_XYZ_SIZE];
-	int ret, i, tmp = 0;
-	struct stprivate_data *data = s->drv_data;
+	int ret, tmp = 0;
 
 	ret = is_data_ready(s, &tmp);
 	if (ret != EC_SUCCESS)

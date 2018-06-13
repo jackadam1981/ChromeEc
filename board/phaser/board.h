@@ -16,6 +16,12 @@
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
+/* Sensors */
+#define CONFIG_ACCEL_LIS2DH		/* Lid accelerometer */
+#define CONFIG_ACCELGYRO_LSM6DSM	/* Base accelerometer */
+#define CONFIG_ACCEL_LIS2DH_INT_EVENT TASK_EVENT_CUSTOM(8)
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT TASK_EVENT_CUSTOM(4)
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -30,6 +36,14 @@ enum adc_channel {
 enum pwm_channel {
 	PWM_CH_KBLIGHT,
 	PWM_CH_COUNT
+};
+
+/* Motion sensors */
+enum sensor_id {
+	LID_ACCEL,
+	BASE_ACCEL,
+	BASE_GYRO,
+	SENSOR_COUNT
 };
 
 /* List of possible batteries */
