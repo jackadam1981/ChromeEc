@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5ed35cad_ecc36d88",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1165254
+      },
+      "writtenOn": "2018-06-13T16:11:27Z",
+      "side": 1,
+      "message": "We checked again and indeed GPOD6, GPO32, GPO35 do not need this. \nGPO66 and GPOB6 do need this - we will update our documentation to reflect this.\nML already updated this in Patchset 3.",
+      "parentUuid": "6170050b_dbb52388",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 58
+      },
+      "revId": "a0d8531f5b585d36f1f6ee42a10ef7ca776b9702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82d14e57_b2a25333",
         "filename": "board/yorp/gpio.inc",
         "patchSetId": 1
