@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b246246_c1a4dcc5",
+        "filename": "chip/g/dcrypto/dcrypto_bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-13T03:24:03Z",
+      "side": 1,
+      "message": "you see: malloc is useful after all ;)",
+      "range": {
+        "startLine": 1447,
+        "startChar": 10,
+        "endLine": 1447,
+        "endChar": 29
+      },
+      "revId": "ee0e6c14f521df191d4f7d2c26700fb7d65e366a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6960f68_14118148",
+        "filename": "chip/g/dcrypto/dcrypto_bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-13T03:24:03Z",
+      "side": 1,
+      "message": "why 0x1 and say not 0, just curious.",
+      "range": {
+        "startLine": 1450,
+        "startChar": 19,
+        "endLine": 1450,
+        "endChar": 23
+      },
+      "revId": "ee0e6c14f521df191d4f7d2c26700fb7d65e366a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b169c33_6d7b102b",
+        "filename": "chip/g/dcrypto/dcrypto_bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-13T03:24:03Z",
+      "side": 1,
+      "message": "what a terrible hack! :)",
+      "range": {
+        "startLine": 1453,
+        "startChar": 0,
+        "endLine": 1458,
+        "endChar": 0
+      },
+      "revId": "ee0e6c14f521df191d4f7d2c26700fb7d65e366a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
