@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87592858_3e900554",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-13T21:50:39Z",
+      "side": 1,
+      "message": "what was the reason we didn\u0027t make the backup copies in this function again?",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 33
+      },
+      "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
