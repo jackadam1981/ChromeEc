@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaecdaaa_6ae883b8",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "Is this the right SLEEP_MASK bit? \"AP_RUN\" seems like a misnomer here.",
+      "range": {
+        "startLine": 208,
+        "startChar": 16,
+        "endLine": 208,
+        "endChar": 33
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f301756_b32efa08",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "Does it harm to get rid of the outer if test and just set LSION always?",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32539bee_d1cc3914",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "Also, do we need to setup LSI if we don\u0027t have CONFIG_LOW_POWER_IDLE?",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be83ba67_9ae40c81",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "Why are we not setting the reload value before starting the counter? Maybe this does not matter...",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30e0711d_e8640861",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "Not super clear if we should care here:\n\"\nWhen the LPTIM is running with an asynchronous clock, reading the LPTIM_CNT register may\nreturn unreliable values. So in this case it is necessary to perform two consecutive read accesses and verify that the two returned values are identical.\n\nIt should be noted that for a reliable LPTIM_CNT register read access, two consecutive read\naccesses must be performed and compared. A read access can be considered reliable when the\nvalues of the two consecutive read accesses are equal.\"",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5f8c34e_7393dfca",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "why -1? (delay_us / LPTIM_PERIOD_US will already round down, right?)",
+      "range": {
+        "startLine": 319,
+        "startChar": 58,
+        "endLine": 319,
+        "endChar": 62
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "515f896b_518ae58e",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "ditto about reading timer value",
+      "range": {
+        "startLine": 360,
+        "startChar": 24,
+        "endLine": 360,
+        "endChar": 39
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc688eb_35b15523",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-13T09:20:10Z",
+      "side": 1,
+      "message": "Well ,-) CPRINTF below...",
+      "range": {
+        "startLine": 379,
+        "startChar": 11,
+        "endLine": 379,
+        "endChar": 16
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
