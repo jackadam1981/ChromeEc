@@ -22,6 +22,30 @@
       "revId": "0235f28124be4476ea0327db7024a83c83bf561d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc82b46b_be83ec56",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-13T19:53:14Z",
+      "side": 1,
+      "message": "I like that idea too (again not in this CL). We would still need to be able to specify pull up or down to allow for all circuit types; we just wouldn\u0027t have to name it.",
+      "parentUuid": "6d2017d7_a4c9f93e",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 58
+      },
+      "revId": "0235f28124be4476ea0327db7024a83c83bf561d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
