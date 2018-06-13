@@ -43,6 +43,12 @@ enum pd_rx_errors {
 #define PD_EVENT_CC               (1<<4) /* CC line change event */
 #define PD_EVENT_TCPC_RESET       (1<<5) /* TCPC has reset */
 #define PD_EVENT_UPDATE_DUAL_ROLE (1<<6) /* DRP state has changed */
+/*
+ * A task, other than the task owning the PD port, accessed the TCPC. The task
+ * that owns the port does not send itself this event.
+ */
+#define PD_EVENT_DEVICE_ACCESSED  (1<<7)
+#define PD_EVENT_DP_DISCONNECT    (1<<8) /* DisplayPort disconnect requested */
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
