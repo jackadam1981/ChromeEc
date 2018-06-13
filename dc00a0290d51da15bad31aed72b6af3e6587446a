@@ -22,6 +22,23 @@
       "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28758699_94318bfc",
+        "filename": "include/lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-06-13T22:09:52Z",
+      "side": 1,
+      "message": "Does it make sense to put these behind some ESPI CONFIG?",
+      "revId": "dc00a0290d51da15bad31aed72b6af3e6587446a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
