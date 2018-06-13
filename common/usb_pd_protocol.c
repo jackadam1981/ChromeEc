@@ -15,6 +15,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "power.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -1935,8 +1936,25 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 			       PD_EVENT_UPDATE_DUAL_ROLE, 0);
 }
 
+static void exit_dp_mode(int port)
+{
+	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+	if (opos <= 0)
+		return;
+	CPRINTS("C%d Exiting DP mode", port);
+	if (!pd_dfp_exit_mode(port, USB_SID_DISPLAYPORT, opos))
+		return;
+	pd_send_vdm(port, USB_SID_DISPLAYPORT,
+		    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
+	pd_vdm_send_state_machine(port);
+	/* Have to wait for ACK */
+}
+
 void pd_update_dual_role_config(int port)
 {
+	if (power_get_state() == POWER_S3S5)
+		exit_dp_mode(port);
+
 	/*
 	 * Change to sink if port is currently a source AND (new DRP
 	 * state is force sink OR new DRP state is either toggle off
