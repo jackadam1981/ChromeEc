@@ -46,6 +46,30 @@
       "revId": "69fdc13d2cf78f07606d00f29ffc7261cc75673b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51518b1_d8c22bdb",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-06-13T05:50:53Z",
+      "side": 1,
+      "message": "S5 can be useful if you want to display battery status with a double tap for instance (pixel C, pixelbook).\nIf the sensor is powered in S5, you should set  .active_mask \u003d SENSOR_ACTIVE_S0_S3_S5. The sensor will be suspended by software if no-one needs it.",
+      "parentUuid": "555a0f5d_1e54bc53",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 471,
+        "endChar": 5
+      },
+      "revId": "69fdc13d2cf78f07606d00f29ffc7261cc75673b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
