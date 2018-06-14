@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11c64398_562bd978",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-14T00:25:40Z",
+      "side": 1,
+      "message": "In the patch set 2, I move this function under \"ifdef CONFIG_KEYBOARD_LANGUAGE_ID\"; however, it turns out I have to change two headers files to avoid the implicit function definition.",
+      "parentUuid": "817c54c7_d88cf7b4",
+      "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "625be314_8f7d53df",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b72b4b_538f6b93",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-14T00:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "625be314_8f7d53df",
+      "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a2cdb2df_f8b7f098",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-14T00:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34dd7d0e_a8867fe5",
+      "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "484fd37e_0dc70f47",
         "filename": "include/keyboard_scan.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2018-06-12T23:55:18Z",
       "side": 1,
       "message": "This should be defined in ec_commands.h as well.",
+      "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48854b93_c300661e",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-14T00:25:40Z",
+      "side": 1,
+      "message": "I doubt this list will be added over time. If putting this to ec_commands.h, this may imply potential sync-up effort in coreboot down the line. Another point is that keyboard_scan.c needs these enum-based variables because it doesn\u0027t include ec_commands.h. Does this make sense to you? Thanks",
+      "parentUuid": "484fd37e_0dc70f47",
       "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
