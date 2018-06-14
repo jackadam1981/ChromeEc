@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a07ca4f_022325ad",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3608,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-06-14T14:57:56Z",
+      "side": 1,
+      "message": "This was experimentally determined. Increased until the debounce worked. VBUS should be monitored to determine the actual length of the glitch.",
+      "range": {
+        "startLine": 3608,
+        "startChar": 36,
+        "endLine": 3608,
+        "endChar": 44
+      },
+      "revId": "8f2c560044f7d33ab74f755cf7248c0c35edb162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
