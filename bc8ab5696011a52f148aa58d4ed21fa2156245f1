@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "456d0431_dad3b3df",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:45:23Z",
+      "side": 1,
+      "message": "I think BP_WAKING gives clear idea instead of making it BP_NOT_SURE or BP_NO.",
+      "parentUuid": "122d6b74_b1dc2a2c",
+      "range": {
+        "startLine": 1648,
+        "startChar": 27,
+        "endLine": 1648,
+        "endChar": 36
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09418e5b_b6d8ac04",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 9
@@ -107,6 +131,30 @@
       "writtenOn": "2018-06-14T06:48:15Z",
       "side": 1,
       "message": "Shouldn\u0027t this call set_charge_state?",
+      "range": {
+        "startLine": 1650,
+        "startChar": 3,
+        "endLine": 1650,
+        "endChar": 29
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a12154_eb46909f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:45:23Z",
+      "side": 1,
+      "message": "nice catch",
+      "parentUuid": "09418e5b_b6d8ac04",
       "range": {
         "startLine": 1650,
         "startChar": 3,
@@ -177,6 +225,30 @@
       "writtenOn": "2018-06-14T06:48:15Z",
       "side": 1,
       "message": "Shouldn\u0027t your check be placed here i.e. if battery is not responsive or if the battery is disconnected, then try to wake it up if possible.",
+      "range": {
+        "startLine": 1690,
+        "startChar": 47,
+        "endLine": 1690,
+        "endChar": 48
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e37d7a_95183e2b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1690,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:45:23Z",
+      "side": 1,
+      "message": "just like if (curr.batt.is_present \u003d\u003d BP_NO)\n(curr.batt.is_present \u003d\u003d BP_WAKING) is definitive status, its better to keep it at line @1640",
+      "parentUuid": "61d05fe4_ea748de0",
       "range": {
         "startLine": 1690,
         "startChar": 47,
