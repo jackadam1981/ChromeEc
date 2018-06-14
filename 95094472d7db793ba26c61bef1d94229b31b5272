@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d76b39b9_819fc561",
+        "filename": "baseboard/octopus/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-14T18:44:00Z",
+      "side": 1,
+      "message": "It occurs to me, it could be possible to put led_states.o under the CONFIG_LED_COMMON toggle since they\u0027re tied.  Then we wouldn\u0027t have to create skeleton led.c files until we\u0027re ready to actually implement the LED behavior.  Thoughts?",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
