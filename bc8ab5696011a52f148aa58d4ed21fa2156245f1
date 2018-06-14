@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d926d1a_c316d15a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T04:02:57Z",
+      "side": 1,
+      "message": "as battery_is_present() is called at multiple locations would like to keep battery_get_disconnect_state() in battery_is_present() for consistency. prev_state gets updated and the next called function has the latest updated state",
+      "parentUuid": "c190e038_317f0ca0",
+      "range": {
+        "startLine": 1648,
+        "startChar": 27,
+        "endLine": 1648,
+        "endChar": 36
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f951e0f_95980644",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-14T01:32:07Z",
       "side": 1,
       "message": "I feel that forcing the state here breaks issuing a battery cutoff, as I think you would immediately try waking it again. Does issuing \u0027cutoff\u0027 still keep the pack cut off?",
+      "range": {
+        "startLine": 1649,
+        "startChar": 0,
+        "endLine": 1654,
+        "endChar": 3
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cdba723_0389cc19",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T04:02:57Z",
+      "side": 1,
+      "message": "in battery_is_present() prev_state is BP_YES and physical pin is also BP_YES we report BP_YES hence it will still keep the battery in cut-off.",
+      "parentUuid": "0f951e0f_95980644",
       "range": {
         "startLine": 1649,
         "startChar": 0,
