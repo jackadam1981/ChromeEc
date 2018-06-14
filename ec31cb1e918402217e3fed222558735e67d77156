@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3caf656b_622a5ec6",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-14T07:34:24Z",
+      "side": 1,
+      "message": "Instead of the symlink, I\u0027d just do:\ndriver-$(CONFIG_CHARGER_MT6370)+\u003dcharger/rt946x.o",
+      "revId": "ec31cb1e918402217e3fed222558735e67d77156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a6defc_98f75d30",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-14T07:34:24Z",
+      "side": 1,
+      "message": "It might be nice to define a macro RT946X_REG_CORECTRL_RST (or something like that), so that we can use the same code for both chargers.",
+      "revId": "ec31cb1e918402217e3fed222558735e67d77156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64bea778_a4f33dc5",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-14T07:34:24Z",
+      "side": 1,
+      "message": "It might be ok to not implement this for now, but if so, please add a bug:\nTODO(b:...): Implement IRQ for MT6370.",
+      "revId": "ec31cb1e918402217e3fed222558735e67d77156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e56dc1_246dca08",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-14T07:34:24Z",
+      "side": 1,
+      "message": "Look at OVPCTRL_STAT? Or maybe CHG_STAT2?",
+      "revId": "ec31cb1e918402217e3fed222558735e67d77156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d2ef8c_e44ebf38",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-14T07:34:24Z",
+      "side": 1,
+      "message": "I think this should be easy to implement. See 0x27 USB status 1/USB Status.",
+      "revId": "ec31cb1e918402217e3fed222558735e67d77156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e588fc39_3f0f139e",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-14T07:34:24Z",
+      "side": 1,
+      "message": "This one is MT6370-specific, so I\u0027d call it MT6370_REG_USB_STATUS1 (ditto for the others that are mt6370-specific)",
+      "revId": "ec31cb1e918402217e3fed222558735e67d77156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286c0ec3_239561e8",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-14T07:34:24Z",
+      "side": 1,
+      "message": "/* CONFIG_CHARGER_MT6370 */\n\nalso, add a final #else branch with a sanity check:\n\n#error \"No suitable charger option defined\"",
+      "revId": "ec31cb1e918402217e3fed222558735e67d77156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
