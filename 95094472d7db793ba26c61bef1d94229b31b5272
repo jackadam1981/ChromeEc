@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "46a0103a_98dd790f",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T19:17:56Z",
+      "side": 1,
+      "message": "yeah, you are right (desired_state \u003d\u003d led_state \u0026\u0026 period \u003d\u003d LED_INDEFINITE) seems like the right early return\n\nIf desired_state is invalid, then I like the idea of staying on the previous state and continuing to service that (e.g. blink if we need too)",
+      "parentUuid": "4a0588a4_bd3a4fe7",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2aba04d_46b04e1a",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 1
@@ -164,6 +188,30 @@
       "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a656b312_fc445094",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T19:17:56Z",
+      "side": 1,
+      "message": "So maybe only an S5/G3 optimization? It also may not be noticeable power savings; we would probably want to test that change\u0027s power saving before actually submitting it.\n\nThis is just more food for though later.",
+      "parentUuid": "2baf4f28_1043142e",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
