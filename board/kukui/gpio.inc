@@ -12,7 +12,7 @@
 
 GPIO_INT(SPI1_NSS,         PIN(A, 15), GPIO_INT_BOTH,
          spi_event)
-GPIO_INT(USB_C0_PD_INT_L,  PIN(C, 13), GPIO_INT_FALLING | GPIO_PULL_UP,
+GPIO_INT(USB_C0_PD_INT_L,  PIN(C, 5),  GPIO_INT_FALLING | GPIO_PULL_UP,
          tcpc_alert_event)
 GPIO_INT(VOLUME_UP_L,      PIN(D, 10), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt)
@@ -37,7 +37,7 @@ GPIO_INT(ACCEL_INT_L,      PIN(D, 14), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          bmi160_interrupt)
 GPIO_INT(SYNC_INT,         PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
-GPIO_INT(CHARGER_INT_L,    PIN(E, 6),  GPIO_INT_FALLING | GPIO_PULL_UP,
+GPIO_INT(CHARGER_INT_ODL,  PIN(C, 13), GPIO_INPUT | GPIO_PULL_UP,
          rt946x_interrupt)
 
 /* Voltage rails control pins */
@@ -73,7 +73,7 @@ GPIO(BAT_LED_RED,          PIN(E, 13), GPIO_ODR_HIGH)
 /* Other input pins */
 GPIO(WP_L,                 PIN(E, 5),  GPIO_INPUT)
 /* FIXME */
-GPIO(CCD_MODE_ODL,         PIN(C, 5),  GPIO_INPUT | GPIO_PULL_UP)
+GPIO(CCD_MODE_ODL,         PIN(C, 9),  GPIO_INPUT | GPIO_PULL_UP)
 
 
 /* Other output pins */
@@ -86,7 +86,8 @@ GPIO(PCA9468_EN,           PIN(E, 15), GPIO_OUT_LOW)
 /* USART1: PA9/PA10 */
 ALTERNATE(PIN_MASK(A, 0x0600), 1, MODULE_UART,       0)
 /* I2C MASTER: PB8/9 */
-ALTERNATE(PIN_MASK(B, 0x0300), 1, MODULE_I2C,        0)
+ALTERNATE(PIN_MASK(B, 0x0300), 1, MODULE_I2C,        GPIO_ODR_HIGH | GPIO_PULL_UP)
+
 /* I2C MASTER: PB10/11 */
 ALTERNATE(PIN_MASK(B, 0x0c00), 1, MODULE_I2C,        0)
 /* SPI SLAVE: PB3/4/5 */
