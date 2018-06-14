@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "80c50487_f6194f5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-06-14T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f1c14b6_eb25578f",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "c7645e4728bff65e6ef772f7626084fbb1670d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed540401_6c8ab229",
         "filename": "chip/npcx/spiflashfw/npcx_monitor.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b10206a9_b2bebb8a",
+        "filename": "chip/npcx/spiflashfw/npcx_monitor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-06-14T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed540401_6c8ab229",
+      "range": {
+        "startLine": 283,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "c7645e4728bff65e6ef772f7626084fbb1670d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db21468e_673cb2d4",
         "filename": "util/uut/main.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "c7645e4728bff65e6ef772f7626084fbb1670d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e976f90d_d6053f29",
+        "filename": "util/uut/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-06-14T10:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db21468e_673cb2d4",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 56
+      },
+      "revId": "c7645e4728bff65e6ef772f7626084fbb1670d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
