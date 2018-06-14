@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571079fa_4daff435",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-06-14T23:45:33Z",
+      "side": 1,
+      "message": "Maybe leave this at 1200 too. Or 12000.\n\nI like 1200 because it\u0027s a multiple of both 50 and 60. So a video recorder (generally designed to ignore either 50 or 60 Hz flicker) will not alias with refresh rate.",
+      "range": {
+        "startLine": 513,
+        "startChar": 29,
+        "endLine": 513,
+        "endChar": 30
+      },
+      "revId": "714b3c3464a5999725b5119b82e2ecff286c5e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
