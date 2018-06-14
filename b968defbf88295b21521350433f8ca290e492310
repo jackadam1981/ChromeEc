@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966dced0_9874fd75",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T19:58:22Z",
+      "side": 1,
+      "message": "Unfortunately I couldn\u0027t get hold of Soraka/Eve, we don\u0027t have them in inventory. As it\u0027s a new enum it should not affect any of the existing system.",
+      "range": {
+        "startLine": 1648,
+        "startChar": 27,
+        "endLine": 1648,
+        "endChar": 37
+      },
+      "revId": "b968defbf88295b21521350433f8ca290e492310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
