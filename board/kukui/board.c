@@ -244,7 +244,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
 
 	/* Enable charger interrupts */
-	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
+	gpio_enable_interrupt(GPIO_CHARGER_INT_ODL);
 
 	/* Enable reboot / shutdown control inputs from AP */
 	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
