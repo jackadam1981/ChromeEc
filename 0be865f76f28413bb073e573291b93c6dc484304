@@ -46,6 +46,30 @@
       "revId": "0be865f76f28413bb073e573291b93c6dc484304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db38fd6_c0d9b4df",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-14T13:41:57Z",
+      "side": 1,
+      "message": "BTW, extending gpio_wui_table[] by the macro \"#define GPIO(name, pin, flags) NPCX_WUI_GPIO_##pin,\" might be a good idea. (https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/gpio.c#41) Although not all GP(I)Os have MIWU functionality, it still has the way to overcome it. I need more time to test it. Once it\u0027s done, I will push it for code review.",
+      "parentUuid": "7722a3d9_51614634",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 33
+      },
+      "revId": "0be865f76f28413bb073e573291b93c6dc484304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
