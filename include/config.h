@@ -75,6 +75,9 @@
 /* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
 #undef CONFIG_MAG_BMI160_BMM150
 
+/* Presence of a ST LIS2MDL magnetometer behind a BMI160. */
+#undef CONFIG_MAG_BMI160_LIS2MDL
+
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
 
@@ -3756,7 +3759,8 @@
 #endif
 
 /* Enable BMI160 secondary port if needed. */
-#ifdef CONFIG_MAG_BMI160_BMM150
+#if defined(CONFIG_MAG_BMI160_BMM150) || \
+	defined(CONFIG_MAG_BMI160_LIS2MDL)
 #define CONFIG_BMI160_SEC_I2C
 #endif
 #endif  /* __CROS_EC_CONFIG_H */

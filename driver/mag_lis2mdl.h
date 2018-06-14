@@ -77,7 +77,12 @@
 
 /* Define ODR supported range */
 #define LIS2MDL_MAX_ODR			100000
+#ifdef CONFIG_MAG_BMI160_LIS2MDL
+/* As low as the host can trigger the manual mode. */
+#define LIS2MDL_MIN_ODR			780
+#else
 #define LIS2MDL_MIN_ODR			10000
+#endif
 
 /* Return ODR real value normalized to sensor capabilities */
 #define LIS2MDL_ODR_TO_NORMALIZE(_odr) \
@@ -98,7 +103,9 @@
  */
 #define LIS2MDL_RANGE			4915
 
+#ifndef CONFIG_MAG_BMI160_LIS2MDL
 extern const struct accelgyro_drv lis2mdl_drv;
+#endif
 int lis2mdl_init(const struct motion_sensor_t *s);
 
 #endif /* __CROS_EC_MAG_LIS2MDL_H */
