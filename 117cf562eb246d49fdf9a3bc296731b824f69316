@@ -22,6 +22,30 @@
       "revId": "117cf562eb246d49fdf9a3bc296731b824f69316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff56846_defdbc86",
+        "filename": "driver/temp_sensor/thermistor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T19:56:08Z",
+      "side": 1,
+      "message": "Yes, they are harmless :)\n\nI do really like the guard in the .h because I feel it clears states which config option you will need to use this function (when there is only one way to get an implementation for a function). What are your thoughts?",
+      "parentUuid": "26cd72c8_84c3a308",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "117cf562eb246d49fdf9a3bc296731b824f69316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
