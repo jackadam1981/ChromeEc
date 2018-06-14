@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ef3f4822_c4cc383a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T17:17:51Z",
+      "side": 1,
+      "message": "Okay sounds good.",
+      "parentUuid": "4b8cf07d_e1e33e52",
+      "revId": "98ab84e5ed044d19163a4a36b6c7e6602accb902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "298352bf_9de8547c",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 1
