@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Richtek rt946x battery charger driver.
+ * Richtek rt946x, Mediatek mt6370 battery charger driver.
  */
 
 #include "battery.h"
@@ -88,12 +88,14 @@ enum rt946x_irq {
 	RT946X_IRQ_COUNT,
 };
 
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
 	0xF0, 0xF0, 0xFF, 0xFF, 0xFF, 0xFF,
 #ifdef CONFIG_CHARGER_RT9467
 	0xFC,
 #endif
 };
+#endif
 
 static const uint8_t rt946x_irq_maskall[RT946X_IRQ_COUNT] = {
 	0xF0, 0xF0, 0xFF, 0xFF, 0xFF, 0xFF,
@@ -117,6 +119,7 @@ static int rt946x_write8(int reg, int val)
 	return i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, reg, val);
 }
 
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 static int rt946x_block_write(int reg, const uint8_t *val, int len)
 {
 	int rv;
@@ -134,6 +137,7 @@ static int rt946x_block_write(int reg, const uint8_t *val, int len)
 	i2c_lock(I2C_PORT_CHARGER, 0);
 	return rv;
 }
+#endif
 
 static int rt946x_update_bits(int reg, int mask, int val)
 {
@@ -200,7 +204,11 @@ static int rt946x_por_reset(void)
 	if (rv)
 		return rv;
 
+#ifdef CONFIG_CHARGER_MT6370
+	return rt946x_set_bit(RT946X_REG_CORECTRL2, RT946X_MASK_RST);
+#else
 	return rt946x_set_bit(RT946X_REG_CORECTRL0, RT946X_MASK_RST);
+#endif
 }
 
 static int rt946x_reset_to_zero(void)
@@ -343,7 +351,9 @@ static int rt946x_set_iprec(unsigned int iprec)
 
 static int rt946x_init_irq(void)
 {
+	/* FIXME: mt6370 */
 	int rv = 0;
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 	int dummy;
 	int i;
 
@@ -363,6 +373,9 @@ static int rt946x_init_irq(void)
 	/* Init interrupt */
 	return rt946x_block_write(RT946X_REG_CHGSTATCCTRL, rt946x_irqmask,
 				  ARRAY_SIZE(rt946x_irqmask));
+#else
+	return rv;
+#endif
 }
 
 static int rt946x_init_setting(void)
@@ -521,11 +534,14 @@ int charger_get_status(int *status)
 	if (!val)
 		*status |= CHARGER_CHARGE_INHIBITED;
 
+	/* FIXME: mt6370 */
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 	rv = rt946x_read8(RT946X_REG_CHGFAULT, &val);
 	if (rv)
 		return rv;
 	if (val & RT946X_MASK_CHG_VBATOV)
 		*status |= CHARGER_VOLTAGE_OR;
+#endif
 
 
 	rv = rt946x_read8(RT946X_REG_CHGNTC, &val);
@@ -829,6 +845,10 @@ DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
 #ifdef HAS_TASK_USB_CHG
 static int rt946x_get_bc12_device_type(void)
 {
+	/* FIXME: mt6370 */
+#ifdef CONFIG_CHARGER_MT6370
+	return CHARGE_SUPPLIER_NONE;
+#else
 	int reg;
 
 	if (rt946x_read8(RT946X_REG_DPDM1, &reg))
@@ -844,6 +864,7 @@ static int rt946x_get_bc12_device_type(void)
 	default:
 		return CHARGE_SUPPLIER_NONE;
 	}
+#endif
 }
 
 static int rt946x_get_bc12_ilim(int charge_supplier)

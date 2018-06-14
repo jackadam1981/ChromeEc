@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Richtek rt9466/rt9467 battery charger driver.
+ * Richtek rt9466/rt9467, Mediatek mt6370 battery charger driver.
  */
 
 #ifndef __CROS_EC_RT946X_H
@@ -21,7 +21,8 @@
 #define INPUT_I_MIN	100
 #define INPUT_I_STEP	50
 
-/* Registers */
+/* Registers for rt9466, rt9467 */
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 #define RT946X_REG_CORECTRL0		0x00
 #define RT946X_REG_CHGCTRL1		0x01
 #define RT946X_REG_CHGCTRL2		0x02
@@ -82,6 +83,51 @@
 
 #ifdef CONFIG_CHARGER_RT9467
 #define RT946X_REG_DPDMIRQCTRL		0x66
+#endif
+
+#elif defined(CONFIG_CHARGER_MT6370)
+/* Registers for mt6370 */
+#define RT946X_REG_DEVICEID		0x00
+#define RT946X_REG_CORECTRL1		0x01
+#define RT946X_REG_CORECTRL2		0x02
+#define RT946X_REG_RST_PAS_CODE1	0x03
+#define RT946X_REG_RST_PAS_CODE2	0x04
+#define RT946X_REG_IRQ_IND		0x0B
+#define RT946X_REG_IRQ_MASK		0x0C
+#define RT946X_REG_IRQ_SET		0x0D
+#define RT946X_REG_OSC_CTRL		0x10
+#define RT946X_REG_CHGCTRL1		0x11
+#define RT946X_REG_CHGCTRL2		0x12
+#define RT946X_REG_CHGCTRL3		0x13
+#define RT946X_REG_CHGCTRL4		0x14
+#define RT946X_REG_CHGCTRL5		0x15
+#define RT946X_REG_CHGCTRL6		0x16
+#define RT946X_REG_CHGCTRL7		0x17
+#define RT946X_REG_CHGCTRL8		0x18
+#define RT946X_REG_CHGCTRL9		0x19
+#define RT946X_REG_CHGCTRL10		0x1A
+#define RT946X_REG_CHGCTRL11		0x1B
+#define RT946X_REG_CHGCTRL12		0x1C
+#define RT946X_REG_CHGCTRL13		0x1D
+#define RT946X_REG_CHGCTRL14		0x1E
+#define RT946X_REG_CHGCTRL15		0x1F
+#define RT946X_REG_CHGCTRL16		0x20
+#define RT946X_REG_CHGADC		0x21
+#define RT946X_REG_DEVICE_TYPE		0X22
+#define RT946X_REG_DCP_CTRL		0X24
+#define RT946X_REG_USB_STATUS1		0x27
+#define RT946X_REG_CHG_PUMP		0X2A
+#define RT946X_REG_CHGCTRL17		0X2B
+#define RT946X_REG_CHGCTRL18		0X2C
+#define RT946X_REG_CHGSTAT		0X4A
+#define RT946X_REG_CHGNTC		0X4B
+#define RT946X_REG_ADCDATAH		0X4C
+#define RT946X_REG_ADCDATAL		0X4D
+
+#define RT946X_REG_DPDMIRQ		0xC6
+
+#define RT946X_REG_CHGSTATC		MT6370_REG_CHGSTAT1
+#define MT6370_REG_CHGSTAT1		0xD0
 #endif
 
 /* EOC current */
@@ -282,7 +328,7 @@
 #define RT946X_MASK_CHG_VBUSOV	(1 << RT946X_SHIFT_CHG_VBUSOV)
 
 /* ========== DPDMIRQ 0x56 ============ */
-#ifdef CONFIG_CHARGER_RT9467
+#if defined(CONFIG_CHARGER_RT9467) || defined(CONFIG_CHARGER_MT6370)
 #define RT946X_SHIFT_DPDMIRQ_DETACH	1
 #define RT946X_SHIFT_DPDMIRQ_ATTACH	0
 
@@ -299,6 +345,10 @@
 	#define RT946X_CHARGER_NAME	"rt9467"
 	#define RT946X_VENDOR_ID	0x90
 	#define RT946X_ADDR		(0x5B << 1)
+#elif defined(CONFIG_CHARGER_MT6370)
+	#define RT946X_CHARGER_NAME	"mt6370"
+	#define RT946X_VENDOR_ID	0xE0
+	#define RT946X_ADDR		(0x34 << 1)
 #endif
 
 /* RT946x specific interface functions */
