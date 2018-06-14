@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f385f1e7_711a66d4",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:29:33Z",
+      "side": 1,
+      "message": "it\u0027s clearly not robust and despite what says the issue, I mildly believe this is the only method ... (e.g is the ManufacturerName really the same ? don\u0027t the DeviceNames have common prefixes ?)",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "0c53d1d31d5bf597383256cb39c452ad3a6b5b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
