@@ -22,6 +22,29 @@
       "revId": "8f2c560044f7d33ab74f755cf7248c0c35edb162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eedab7b4_04419e9b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3612,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T16:04:00Z",
+      "side": 1,
+      "message": "While this might be debouncing correctly for the case you are interested in, it\u0027s not clear, it might not do weird stuff in other cases (e.g the initial debouncing time is not on the debouncing transition, also sometimes the state might not be reset to VBD1 since this loop iteration might abort earlier)\n\nGiven the bd99995x driver already has usb_charger_task which should receive VBUS event, isn\u0027t it way easier to do the debouncing there ? and modify the output of bd9995x_is_vbus_provided() ?\nThis would be hardware-specific but the issue is too",
+      "range": {
+        "startLine": 3605,
+        "startChar": 0,
+        "endLine": 3612,
+        "endChar": 40
+      },
+      "revId": "8f2c560044f7d33ab74f755cf7248c0c35edb162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
