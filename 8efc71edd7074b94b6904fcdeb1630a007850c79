@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ce2f47b_1567ed42",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-06-14T00:03:18Z",
+      "side": 1,
+      "message": "if lid_standard_ref is defined as const, do we need this casting?",
+      "revId": "8efc71edd7074b94b6904fcdeb1630a007850c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
