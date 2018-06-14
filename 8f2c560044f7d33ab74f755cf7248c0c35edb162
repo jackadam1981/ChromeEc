@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f1c08c30_55ba416a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3565,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T19:29:04Z",
+      "side": 1,
+      "message": "why doesn\u0027t this continuation here prevent us from going through the condition on line 3642 (\"Sink disconnect if VBUS is low and we are not recovering\")?",
+      "range": {
+        "startLine": 3564,
+        "startChar": 2,
+        "endLine": 3565,
+        "endChar": 12
+      },
+      "revId": "8f2c560044f7d33ab74f755cf7248c0c35edb162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a07ca4f_022325ad",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
