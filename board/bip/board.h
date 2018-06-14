@@ -13,6 +13,8 @@
 #define VARIANT_OCTOPUS_CHARGER_BQ25703
 #include "baseboard.h"
 
+#define CONFIG_LED_COMMON
+
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
