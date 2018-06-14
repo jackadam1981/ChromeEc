@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e22f3de5_b31b7e98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:48:15Z",
+      "side": 1,
+      "message": "Please test more than just GLK. At least one big core (KBL) since the behavior of the platform can be very different.",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c190e038_317f0ca0",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 9
@@ -49,6 +72,53 @@
     },
     {
       "key": {
+        "uuid": "122d6b74_b1dc2a2c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:48:15Z",
+      "side": 1,
+      "message": "I feel like we are overloading the battery is present too much. Calling battery_get_disconnect_state seems more logical here.",
+      "parentUuid": "6d926d1a_c316d15a",
+      "range": {
+        "startLine": 1648,
+        "startChar": 27,
+        "endLine": 1648,
+        "endChar": 36
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09418e5b_b6d8ac04",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:48:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this call set_charge_state?",
+      "range": {
+        "startLine": 1650,
+        "startChar": 3,
+        "endLine": 1650,
+        "endChar": 29
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f951e0f_95980644",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 9
@@ -89,6 +159,52 @@
         "startChar": 0,
         "endLine": 1654,
         "endChar": 3
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d05fe4_ea748de0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1690,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:48:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t your check be placed here i.e. if battery is not responsive or if the battery is disconnected, then try to wake it up if possible.",
+      "range": {
+        "startLine": 1690,
+        "startChar": 47,
+        "endLine": 1690,
+        "endChar": 48
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1ee6e3_a47a41b4",
+        "filename": "include/battery.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:48:15Z",
+      "side": 1,
+      "message": "Please add appropriate comment explaining what this option means. How is it different from BP_NOT_SURE?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 15
       },
       "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
