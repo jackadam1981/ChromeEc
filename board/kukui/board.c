@@ -124,7 +124,6 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 /******************************************************************************/
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_ACCEL_PORT, 1, GPIO_SPI_ACCEL_CS_L },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -149,7 +148,7 @@ uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
 
-	if (!gpio_get_level(GPIO_USB_C0_PD_INT_L))
+	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
 		status |= PD_STATUS_TCPC_ALERT_0;
 
 	return status;
@@ -241,7 +240,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 static void board_init(void)
 {
 	/* Enable TCPC alert interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 
 	/* Enable charger interrupts */
 	gpio_enable_interrupt(GPIO_CHARGER_INT_ODL);
@@ -252,7 +251,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_AP_OVERTEMP);
 
 	/* Enable interrupts from BMI160 sensor. */
-	gpio_enable_interrupt(GPIO_ACCEL_INT_L);
+	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 
 	/* Enable interrupt for the camera vsync. */
 	gpio_enable_interrupt(GPIO_SYNC_INT);
