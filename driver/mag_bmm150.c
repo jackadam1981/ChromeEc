@@ -134,7 +134,7 @@ int bmm150_init(const struct motion_sensor_t *s)
 	ret = raw_mag_write8(s->port, s->addr, BMM150_OP_CTRL,
 			BMM150_OP_MODE_FORCED << BMM150_OP_MODE_OFFSET);
 
-	init_mag_cal(moc);
+	mag_cal_setup(moc, s->default_range, 0);
 	moc->radius = 0.0f;
 	return ret;
 }
@@ -228,28 +228,4 @@ void bmm150_normalize(const struct motion_sensor_t *s,
 	bmm150_temp_compensate_xy(s, raw, v, r);
 	bmm150_temp_compensate_z(s, raw, v, r);
 	mag_cal_update(cal, v);
-
-	v[X] += cal->bias[X];
-	v[Y] += cal->bias[Y];
-	v[Z] += cal->bias[Z];
-}
-
-int bmm150_set_offset(const struct motion_sensor_t *s,
-		      const intv3_t offset)
-{
-	struct mag_cal_t *cal = BMM150_CAL(s);
-	cal->bias[X] = offset[X];
-	cal->bias[Y] = offset[Y];
-	cal->bias[Z] = offset[Z];
-	return EC_SUCCESS;
-}
-
-int bmm150_get_offset(const struct motion_sensor_t *s,
-		      intv3_t offset)
-{
-	struct mag_cal_t *cal = BMM150_CAL(s);
-	offset[X] = cal->bias[X];
-	offset[Y] = cal->bias[Y];
-	offset[Z] = cal->bias[Z];
-	return EC_SUCCESS;
 }

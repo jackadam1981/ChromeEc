@@ -359,8 +359,8 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	int ret, val, normalized_rate;
 	uint8_t ctrl_reg, reg_val;
 	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
-#ifdef CONFIG_MAG_BMI160_BMM150
-	struct mag_cal_t              *moc = BMM150_CAL(s);
+#if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
+	struct mag_cal_t              *cal = BMI160_GET_MAG_CAL(s);
 #endif
 
 	if (rate == 0) {
@@ -373,9 +373,9 @@ static int set_data_rate(const struct motion_sensor_t *s,
 				 BMI160_CMD_MODE_SUSPEND(s->type));
 		msleep(3);
 		data->odr = 0;
-#ifdef CONFIG_MAG_BMI160_BMM150
+#if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
 		if (s->type == MOTIONSENSE_TYPE_MAG)
-			moc->batch_size = 0;
+			cal->batch_size = 0;
 #endif
 		return ret;
 	} else if (data->odr == 0) {
@@ -405,7 +405,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 		    normalized_rate < BMI160_GYRO_MIN_FREQ)
 			return EC_RES_INVALID_PARAM;
 		break;
-#ifdef CONFIG_MAG_BMI160_BMM150
+#ifdef CONFIG_BMI160_SEC_I2C
 	case MOTIONSENSE_TYPE_MAG:
 		/* We use the regular preset we can go about 100Hz */
 		if (reg_val > BMI160_ODR_100HZ || reg_val < BMI160_ODR_0_78HZ)
@@ -435,19 +435,10 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	/* Now that we have set the odr, update the driver's value. */
 	data->odr = normalized_rate;
 
-#ifdef CONFIG_MAG_BMI160_BMM150
+#if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
 	if (s->type == MOTIONSENSE_TYPE_MAG) {
 		/* Reset the calibration */
-		init_mag_cal(moc);
-		/*
-		 * We need at least MIN_BATCH_SIZE amd we must have collected
-		 * for at least MIN_BATCH_WINDOW_US.
-		 * Given odr is in mHz, multiply by 1000x
-		 */
-		moc->batch_size = MAX(
-			MAG_CAL_MIN_BATCH_SIZE,
-			(data->odr * 1000) / (MAG_CAL_MIN_BATCH_WINDOW_US));
-		CPRINTS("Batch size: %d", moc->batch_size);
+		mag_cal_setup(cal, s->default_range, data->odr);
 	}
 #endif
 
@@ -512,11 +503,11 @@ static int get_offset(const struct motion_sensor_t *s,
 				BMI160_OFFSET_GYRO_DIV_MDS;
 		}
 		break;
-#ifdef CONFIG_MAG_BMI160_BMM150
 	case MOTIONSENSE_TYPE_MAG:
-		bmm150_get_offset(s, v);
+#if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
+		mag_cal_get_offset(BMI160_GET_MAG_CAL(s), v);
+#endif
 		break;
-#endif /* defined(CONFIG_MAG_BMI160_BMM150) */
 	default:
 		for (i = X; i <= Z; i++)
 			v[i] = 0;
@@ -578,9 +569,9 @@ static int set_offset(const struct motion_sensor_t *s,
 		ret = raw_write8(s->port, s->addr, BMI160_OFFSET_EN_GYR98,
 				 val98 | BMI160_OFFSET_GYRO_EN);
 		break;
-#ifdef CONFIG_MAG_BMI160_BMM150
+#if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
 	case MOTIONSENSE_TYPE_MAG:
-		ret = bmm150_set_offset(s, v);
+		ret = mag_cal_set_offset(BMI160_GET_MAG_CAL(s), v);
 		break;
 #endif /* defined(CONFIG_MAG_BMI160) */
 	default:
