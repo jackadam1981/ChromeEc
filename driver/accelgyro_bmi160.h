@@ -10,6 +10,7 @@
 
 #include "accelgyro.h"
 #include "mag_bmm150.h"
+#include "mag_lis2mdl.h"
 
 /*
  * The addr field of motion_sensor support both SPI and I2C:
@@ -462,7 +463,10 @@ struct bmi160_drv_data_t {
 #if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
 	union {
 #ifdef CONFIG_MAG_BMI160_BMM150
-		struct bmm150_private_data compass;
+		struct bmm150_private_data   compass;
+#endif
+#ifdef CONFIG_MAG_BMI160_LIS2MDL
+		struct lis2mdl_private_data  compass;
 #endif
 		struct mag_cal_t             cal;
 	};
