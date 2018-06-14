@@ -80,6 +80,11 @@ enum lis2dh_fifo_modes {
 #define LIS2DH_FIFO_UNREAD_MASK	0x1f
 #endif /* CONFIG_ACCEL_FIFO */
 
+#define LIS2DH_FS_2G_VAL         0x00
+#define LIS2DH_FS_4G_VAL         0x01
+#define LIS2DH_FS_8G_VAL         0x02
+#define LIS2DH_FS_16G_VAL        0x03
+
 /* Interrupt source status register */
 #define LIS2DH_INT1_SRC_REG	0x31
 

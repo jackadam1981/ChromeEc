@@ -92,7 +92,14 @@ static int get_range(const struct motion_sensor_t *s)
 {
 	struct stprivate_data *data = s->drv_data;
 
-	return LIS2DH_GAIN_TO_FS(data->base.range);
+	return data->base.range;
+}
+
+static int get_data_rate(const struct motion_sensor_t *s)
+{
+	struct stprivate_data *data = s->drv_data;
+
+	 return data->base.odr;
 }
 
 static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
@@ -154,6 +161,7 @@ unlock_rate:
 	return ret;
 }
 
+#ifdef CONFIG_USE_AS_NONE_FOCED_MODE
 #ifdef CONFIG_ACCEL_FIFO
 /*
  * Load data from internal sensor FIFO (deep 32 byte)
@@ -169,7 +177,7 @@ static int load_fifo(struct motion_sensor_t *s)
 	/* Try to Empty FIFO */
 	do {
 		/* Read samples number in status register */
-		ret = raw_read8(s->port, s->addr, LIS2DH_FIFO_SRC_REG, &tmp);
+		ret = st_raw_read8(s->port, s->addr, LIS2DH_FIFO_SRC_REG, &tmp);
 		if (ret != EC_SUCCESS)
 			return ret;
 
@@ -214,6 +222,8 @@ static int load_fifo(struct motion_sensor_t *s)
 }
 #endif  /* CONFIG_ACCEL_FIFO */
 
+#endif  /* CONFIG_USE_AS_NONE_FORCED_MODE */
+
 #ifdef CONFIG_ACCEL_INTERRUPTS
 static int config_interrupt(const struct motion_sensor_t *s)
 {
@@ -223,7 +233,7 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	/* configure FIFO watermark level */
 	ret = st_write_data_with_mask(s, LIS2DH_FIFO_CTRL_REG,
 				   LIS2DH_FIFO_THR_MASK,
-				   CONFIG_ACCEL_FIFO_THRES);
+				   0x0f); //(uint8_t)CONFIG_ACCEL_FIFO_THRES);
 	if (ret != EC_SUCCESS)
 		return ret;
 	/* enable interrupt on FIFO watermask and route to int1 */
@@ -234,11 +244,13 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	return ret;
 }
 
+#ifdef CONFIG_USE_AS_NONE_FORCED_MODE
 /**
  * lis2dh_interrupt - interrupt from int1/2 pin of sensor
  */
 void lis2dh_interrupt(enum gpio_signal signal)
 {
+	CPRINTF("lis int");
 	task_set_event(TASK_ID_MOTIONSENSE,
 		       CONFIG_ACCEL_LIS2DH_INT_EVENT, 0);
 }
@@ -256,7 +268,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	}
 
 	/* read interrupt status register to reset source */
-	raw_read8(s->port, s->addr, LIS2DH_INT1_SRC_REG, &interrupt);
+	st_raw_read8(s->port, s->addr, LIS2DH_INT1_SRC_REG, &interrupt);
 
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 	*event |= CONFIG_GESTURE_TAP_EVENT;
@@ -268,15 +280,18 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	 * No need to read the FIFO here, motion sense task is
 	 * doing it on every interrupt.
 	 */
+
 	return EC_SUCCESS;
 }
 #endif  /* CONFIG_ACCEL_INTERRUPTS */
+
+#endif  /* CONFIG_USE_AS_NONE_FROCED_MODE */
 
 static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
 	int ret, tmp;
 
-	ret = raw_read8(s->port, s->addr, LIS2DH_STATUS_REG, &tmp);
+	ret = st_raw_read8(s->port, s->addr, LIS2DH_STATUS_REG, &tmp);
 	if (ret != EC_SUCCESS) {
 		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
 		return ret;
@@ -290,8 +305,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 static int read(const struct motion_sensor_t *s, vector_3_t v)
 {
 	uint8_t raw[OUT_XYZ_SIZE];
-	int ret, i, tmp = 0;
-	struct stprivate_data *data = s->drv_data;
+	int ret, tmp = 0;
 
 	ret = is_data_ready(s, &tmp);
 	if (ret != EC_SUCCESS)
@@ -327,10 +341,21 @@ static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
 	struct stprivate_data *data = s->drv_data;
+        int count = 5;
 
-	ret = raw_read8(s->port, s->addr, LIS2DH_WHO_AM_I_REG, &tmp);
-	if (ret != EC_SUCCESS)
-		return ret;
+        do {
+                ret = st_raw_read8(s->port, s->addr, LIS2DH_WHO_AM_I_REG, &tmp);
+                if (ret != EC_SUCCESS) {
+                        CPRINTF("[%T %s r lis2dh det try failed, cnt=%d, ret=%d]\n", s->name, count, ret);
+                        udelay(10);
+                        count --;
+                }else{
+                        break;
+                }
+        }while(count > 0);
+
+        if(ret != EC_SUCCESS)
+                return ret;
 
 	if (tmp != LIS2DH_WHO_AM_I)
 		return EC_ERROR_ACCESS_DENIED;
@@ -340,34 +365,34 @@ static int init(const struct motion_sensor_t *s)
 	 * register must be restored to it's default
 	 */
 	/* Enable all accel axes data and clear old settings */
-	ret = raw_write8(s->port, s->addr, LIS2DH_CTRL1_ADDR,
+	ret = st_raw_write8(s->port, s->addr, LIS2DH_CTRL1_ADDR,
 			 LIS2DH_ENABLE_ALL_AXES);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
-	ret = raw_write8(s->port, s->addr, LIS2DH_CTRL2_ADDR,
+	ret = st_raw_write8(s->port, s->addr, LIS2DH_CTRL2_ADDR,
 			 LIS2DH_CTRL2_RESET_VAL);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
-	ret = raw_write8(s->port, s->addr, LIS2DH_CTRL3_ADDR,
+	ret = st_raw_write8(s->port, s->addr, LIS2DH_CTRL3_ADDR,
 			 LIS2DH_CTRL3_RESET_VAL);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
 	/* Enable BDU */
-	ret = raw_write8(s->port, s->addr, LIS2DH_CTRL4_ADDR,
+	ret = st_raw_write8(s->port, s->addr, LIS2DH_CTRL4_ADDR,
 			 LIS2DH_BDU_MASK);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
-	ret = raw_write8(s->port, s->addr, LIS2DH_CTRL5_ADDR,
+	ret = st_raw_write8(s->port, s->addr, LIS2DH_CTRL5_ADDR,
 			 LIS2DH_CTRL5_RESET_VAL);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
-	ret = raw_write8(s->port, s->addr, LIS2DH_CTRL6_ADDR,
-			 LIS2DH_CTRL6_RESET_VAL);
+	ret = st_raw_write8(s->port, s->addr, LIS2DH_CTRL6_ADDR,
+			 0x20); //LIS2DH_CTRL6_RESET_VAL);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
@@ -398,11 +423,13 @@ const struct accelgyro_drv lis2dh_drv = {
 	.get_range = get_range,
 	.get_resolution = st_get_resolution,
 	.set_data_rate = set_data_rate,
-	.get_data_rate = st_get_data_rate,
+	.get_data_rate = get_data_rate, //st_get_data_rate,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 	.perform_calib = NULL,
+#ifdef CONFIG_USE_AS_NONE_FORCED_MODE	
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */
+#endif
 };
