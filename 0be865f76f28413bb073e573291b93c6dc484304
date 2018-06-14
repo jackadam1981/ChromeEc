@@ -22,6 +22,30 @@
       "revId": "0be865f76f28413bb073e573291b93c6dc484304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7722a3d9_51614634",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-14T11:08:15Z",
+      "side": 1,
+      "message": "Sorry, I might misunderstand your question. Please ignore my last reply. \nWe only can disable all input buffers of GPIOs without ISR  if there is no i2c port pins declared in gpio.inc. Disabling the input buffer of i2c pin by WKINENx will cause the unexpected effect in I2C module.  Its buffer only can be turn off before ec entered deep sleep. And disabling more GPIOs\u0027 input buffer means we need a larger mapping table between MIWU and GPIO. (There is no simple rule between GPIO and MIWU module. Gpio driver needs a mapping table to get the corresponding table, group, and bit in MIWU for any GPIO pin or I2C pin. )\n\nBeside CL code size and power consumption, it\u0027s also crucial to optimize the efficiency of bypass functions. In __idle() function, we will turn off interrupt and do the necessary stuff before and after ec entered deep sleep. If bypass took lots of time, the latency between a GPIO event and ec runs into its ISR might be too long.\n\nBack to these three CLs, CL 1098865 has better power consumption and code size is not too big. But the bypass functions cost more time compares with the other two CLs.  CL 1098866 also has better power consumption and its bypass efficiency is good enough. But its code size is the largest one since we need to maintain two mapping tables for GPIO and I2C pins. That\u0027s just my personal opinions and it might not be correct. Any comment to make this bypass better is appreciated.",
+      "parentUuid": "de8017b3_ebc5d812",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 233,
+        "endChar": 33
+      },
+      "revId": "0be865f76f28413bb073e573291b93c6dc484304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
