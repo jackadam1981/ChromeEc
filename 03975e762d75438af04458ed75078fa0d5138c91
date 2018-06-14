@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bacbd71e_33c6e533",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-14T21:43:43Z",
+      "side": 1,
+      "message": "This is used for all variants for accel and gyro. Have you verified you\u0027re not breaking other boards?",
+      "range": {
+        "startLine": 534,
+        "startChar": 19,
+        "endLine": 534,
+        "endChar": 36
+      },
+      "revId": "03975e762d75438af04458ed75078fa0d5138c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db83bc6c_2a61960e",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-14T21:43:43Z",
+      "side": 1,
+      "message": "This is used only by Akali but previous board version will break.",
+      "range": {
+        "startLine": 546,
+        "startChar": 19,
+        "endLine": 546,
+        "endChar": 34
+      },
+      "revId": "03975e762d75438af04458ed75078fa0d5138c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
