@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daa6bb39_314d90f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:33:06Z",
+      "side": 1,
+      "message": "revive",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b24cfcb_4d6d8d03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:33:06Z",
+      "side": 1,
+      "message": "revive",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bafd06b_d0034b25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:33:06Z",
+      "side": 1,
+      "message": "This commit message does not explain why we got rid of HW_PRESENT_CUSTOM?",
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5941adcf_6f4ccbdb",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:33:06Z",
+      "side": 1,
+      "message": "You are checking for battery is not disconnected. Do we not care about init any more?\n\n\nHumm.. looks like we don\u0027t since it is 1 for all FG except TI. But then as Edward mentioned -- is there any harm in always checking it?",
+      "range": {
+        "startLine": 202,
+        "startChar": 27,
+        "endLine": 202,
+        "endChar": 38
+      },
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
