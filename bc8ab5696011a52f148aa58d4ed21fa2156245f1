@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df67ac3f_b8765a27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:49:40Z",
+      "side": 1,
+      "message": "If there is a plan to boot DUT at 15W when in shipmode or dead battery then only we will encounter this scenario. if the DUT can\u0027t boot at 15W it should gracefully go to S5/G3. We should not brown out the battery",
+      "parentUuid": "e22f3de5_b31b7e98",
+      "range": {
+        "startLine": 16,
+        "startChar": 24,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c190e038_317f0ca0",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 9
@@ -272,6 +296,30 @@
       "writtenOn": "2018-06-14T06:48:15Z",
       "side": 1,
       "message": "Please add appropriate comment explaining what this option means. How is it different from BP_NOT_SURE?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "bc8ab5696011a52f148aa58d4ed21fa2156245f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8cdbb7d_5b2dcb4f",
+        "filename": "include/battery.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:49:40Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "ac1ee6e3_a47a41b4",
       "range": {
         "startLine": 62,
         "startChar": 1,
