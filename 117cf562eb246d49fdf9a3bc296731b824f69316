@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26cd72c8_84c3a308",
+        "filename": "driver/temp_sensor/thermistor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T19:49:43Z",
+      "side": 1,
+      "message": "Is there a need to guard the declarations here? They should be harmless.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "117cf562eb246d49fdf9a3bc296731b824f69316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
