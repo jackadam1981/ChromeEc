@@ -75,6 +75,12 @@ static const int debug_level;
 #define READY_RETURN_STATE(port) DUAL_ROLE_IF_ELSE(port, PD_STATE_SNK_READY, \
 							 PD_STATE_SRC_READY)
 
+/* VBUS debounce states */
+enum vbd_states {
+	VBD1,
+	VBD2
+};
+
 /* Type C supply voltage (mV) */
 #define TYPE_C_VOLTAGE	5000 /* mV */
 

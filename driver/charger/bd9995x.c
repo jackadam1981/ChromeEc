@@ -25,6 +25,16 @@
 
 #define BD9995X_CHARGE_PORT_COUNT 2
 
+#ifdef CONFIG_BD9995X_VBUS_DEBOUNCE
+
+#define VBUS_LOW_MSEC (450*MSEC)
+#define VBUS_HIGH_MSEC (10*MSEC)
+#define VBUS_CHECK_MSEC (5*MSEC)
+
+static int vbus_level[BD9995X_CHARGE_PORT_COUNT];
+static uint64_t debounce_count[BD9995X_CHARGE_PORT_COUNT];
+#endif
+
 /*
  * BC1.2 detection starts 100ms after VBUS/VCC attach and typically
  * completes 312ms after VBUS/VCC attach.
@@ -1025,8 +1035,8 @@ int charger_get_vbus_voltage(int port)
 }
 
 /*** Non-standard interface functions ***/
-
-int bd9995x_is_vbus_provided(enum bd9995x_charge_port port)
+#if defined(HAS_TASK_USB_CHG) && defined(CONFIG_BD9995X_VBUS_DEBOUNCE)
+static int bd9995x_is_vbus_read(enum bd9995x_charge_port port)
 {
 	int reg;
 
@@ -1047,6 +1057,63 @@ int bd9995x_is_vbus_provided(enum bd9995x_charge_port port)
 
 	return !!reg;
 }
+
+static int bd9995x_vbus_debounce(void)
+{
+	int value;
+	int port;
+
+	for (port = 0; port < BD9995X_CHARGE_PORT_COUNT; port++) {
+		value = bd9995x_is_vbus_read(port);
+		if (value == vbus_level[port]) {
+			if (vbus_level[port])
+				debounce_count[port] = get_time().val +
+								VBUS_LOW_MSEC;
+			else
+				debounce_count[port] = get_time().val +
+								VBUS_HIGH_MSEC;
+		} else {
+			if (get_time().val >= debounce_count[port]) {
+				vbus_level[port] = value;
+				if (vbus_level[port])
+					debounce_count[port] = VBUS_LOW_MSEC;
+				else
+					debounce_count[port] = VBUS_HIGH_MSEC;
+				return -1;
+			}
+		}
+	}
+
+	return VBUS_CHECK_MSEC;
+}
+
+int bd9995x_is_vbus_provided(enum bd9995x_charge_port port)
+{
+	return vbus_level[port];
+}
+#else
+int bd9995x_is_vbus_provided(enum bd9995x_charge_port port)
+{
+	int reg;
+
+	if (ch_raw_read16(BD9995X_CMD_VBUS_VCC_STATUS, &reg,
+		BD9995X_EXTENDED_COMMAND))
+		return 0;
+
+	if (port == BD9995X_CHARGE_PORT_VBUS)
+		reg &= BD9995X_CMD_VBUS_VCC_STATUS_VBUS_DETECT;
+	else if (port == BD9995X_CHARGE_PORT_VCC)
+		reg &= BD9995X_CMD_VBUS_VCC_STATUS_VCC_DETECT;
+	else if (port == BD9995X_CHARGE_PORT_BOTH) {
+		/* Check VBUS on either port */
+		reg &= (BD9995X_CMD_VBUS_VCC_STATUS_VCC_DETECT |
+			BD9995X_CMD_VBUS_VCC_STATUS_VBUS_DETECT);
+	} else
+		reg = 0;
+
+	return !!reg;
+}
+#endif
 
 int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
 {
@@ -1196,16 +1263,37 @@ void usb_charger_task(void *u)
 		bc12_detected_type[port] = CHARGE_SUPPLIER_NONE;
 		bd9995x_enable_vbus_detect_interrupts(port, 1);
 		bc12_det_mark[port] = 0;
+#ifdef CONFIG_BD9995X_VBUS_DEBOUNCE
+		vbus_level[port] = 0;
+		debounce_count[port] = get_time().val + VBUS_HIGH_MSEC;
+#endif
 	}
 
 	while (1) {
+#ifdef CONFIG_BD9995X_VBUS_DEBOUNCE
+		/*
+		 * sleep_usec is -1 when debounce is complete else
+		 * it's set to VBUS_CHECK_MSEC.
+		 */
+		sleep_usec = bd9995x_vbus_debounce();
+#else
 		sleep_usec = -1;
+#endif
 		changed = 0;
+
 		for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
 			/* Get port interrupts */
 			interrupts = bd9995x_get_interrupts(port);
+			/*
+			 * Update bc12_det_mark on interrupt, initialization,
+			 * and after vbus debounce.
+			 */
 			if (interrupts & BD9995X_CMD_INT_VBUS_DET ||
-			    !initialized) {
+			    !initialized
+#ifdef CONFIG_BD9995X_VBUS_DEBOUNCE
+			    || (sleep_usec == -1)
+#endif
+			    ) {
 				/*
 				 * Detect based on current state of VBUS. If
 				 * VBUS is provided, then need to wait for
@@ -1269,6 +1357,7 @@ void usb_charger_task(void *u)
 		}
 
 		initialized = 1;
+
 		/*
 		 * Re-read interrupt registers immediately if we got an
 		 * interrupt. We're dealing with multiple independent
