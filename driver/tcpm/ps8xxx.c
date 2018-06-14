@@ -158,6 +158,51 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
+static int ps8xxx_tcpc_internal_reg_write(int port, int reg, int val)
+{
+	return i2c_write8(tcpc_config[port].i2c_host_port,
+		   PS8XXX_INTERNAL_REG_SLAVE_ADDR,
+		   reg, val);
+
+}
+
+static int ps8xxx_tcpc_set_snk_ctrl(int port, int enable)
+{
+#if 1
+	int rv;
+
+	rv = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE, 0x30);
+	rv |= ps8xxx_tcpc_internal_reg_write(port, PS8XXX_INTERNAL_REG_GPIO_SEL,
+				       0x27);
+	rv |= ps8xxx_tcpc_internal_reg_write(port, PS8XXX_INTERNAL_REG_GPIO_OUT,
+				       enable ? PS8XXX_INTERNAL_REG_GPIO_SNK : 0);
+
+	rv |= ps8xxx_tcpc_internal_reg_write(port, PS8XXX_INTERNAL_REG_GPIO_OEB,
+				       0x40);
+#else
+	rv = tcpci_tcpm_set_snk_ctrl(port, enable);
+#endif
+	return rv;
+}
+
+static int ps8xxx_tcpc_set_src_ctrl(int port, int enable)
+{
+	int rv;
+
+	rv = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE, 0x30);
+	rv |= ps8xxx_tcpc_internal_reg_write(port, PS8XXX_INTERNAL_REG_GPIO_SEL,
+				       0x27);
+	rv |= ps8xxx_tcpc_internal_reg_write(port, PS8XXX_INTERNAL_REG_GPIO_OUT,
+				       enable ? PS8XXX_INTERNAL_REG_GPIO_SRC :
+					     0);
+
+	rv |= ps8xxx_tcpc_internal_reg_write(port, PS8XXX_INTERNAL_REG_GPIO_OEB,
+				       0x40);
+
+	return rv;
+
+}
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= &tcpci_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
@@ -185,8 +230,8 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
 #ifdef CONFIG_USBC_PPC
-	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
-	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
+	.set_snk_ctrl		= &ps8xxx_tcpc_set_snk_ctrl,
+	.set_src_ctrl		= &ps8xxx_tcpc_set_src_ctrl,
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 };
