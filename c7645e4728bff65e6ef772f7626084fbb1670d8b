@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f1c14b6_eb25578f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T10:25:13Z",
+      "side": 1,
+      "message": "it no longer does it",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "c7645e4728bff65e6ef772f7626084fbb1670d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed540401_6c8ab229",
+        "filename": "chip/npcx/spiflashfw/npcx_monitor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T10:25:13Z",
+      "side": 1,
+      "message": "nit: wrong whitespace ?",
+      "range": {
+        "startLine": 283,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "c7645e4728bff65e6ef772f7626084fbb1670d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db21468e_673cb2d4",
+        "filename": "util/uut/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T10:25:13Z",
+      "side": 1,
+      "message": "The sentence seems broken",
+      "range": {
+        "startLine": 165,
+        "startChar": 5,
+        "endLine": 165,
+        "endChar": 56
+      },
+      "revId": "c7645e4728bff65e6ef772f7626084fbb1670d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
