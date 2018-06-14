@@ -104,14 +104,14 @@ struct bmm150_comp_registers {
 };
 
 struct bmm150_private_data {
+	struct mag_cal_t             cal;   /* must be first */
 	struct bmm150_comp_registers comp;
-	struct mag_cal_t             cal;
 };
-#define BMM150_COMP_REG(_s) \
-	(&BMI160_GET_DATA(_s)->compass.comp)
 
-#define BMM150_CAL(_s) \
-	(&BMI160_GET_DATA(_s)->compass.cal)
+#ifdef CONFIG_MAG_BMI160_BMM150
+#define BMM150_CAL(_s) (&BMI160_GET_DATA(_s)->compass.cal)
+#define BMM150_COMP_REG(_s) (&BMI160_GET_DATA(_s)->compass.comp)
+#endif
 
 /* Specific initialization of BMM150 when behing BMI160 */
 int bmm150_init(const struct motion_sensor_t *s);
@@ -120,11 +120,5 @@ int bmm150_init(const struct motion_sensor_t *s);
 void bmm150_normalize(const struct motion_sensor_t *s,
 		      vector_3_t v,
 		      uint8_t *data);
-
-int bmm150_set_offset(const struct motion_sensor_t *s,
-		      const vector_3_t offset);
-
-int bmm150_get_offset(const struct motion_sensor_t *s,
-		      vector_3_t   offset);
 
 #endif /* __CROS_EC_MAG_BMM150_H */

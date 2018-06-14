@@ -13,15 +13,9 @@
 #include "math_util.h"
 #include "util.h"
 
-/* Data from sensor is in 16th of uT */
-#define MAG_CAL_RAW_UT      16
-
 #define MAX_EIGEN_RATIO     25.0f
-#define MAX_EIGEN_MAG       (80.0f * MAG_CAL_RAW_UT)
-#define MIN_EIGEN_MAG       (10.0f * MAG_CAL_RAW_UT)
-
-#define MAX_FIT_MAG         MAX_EIGEN_MAG
-#define MIN_FIT_MAG         MIN_EIGEN_MAG
+#define MAX_EIGEN_MAG       (80.0f)
+#define MIN_EIGEN_MAG       (10.0f)
 
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define PRINTF_FLOAT(x)  ((int)((x) * 100.0f))
@@ -59,8 +53,8 @@ static int moc_eigen_test(struct mag_cal_t *moc)
 	evmag = sqrtf(eigenvals[X] + eigenvals[Y] + eigenvals[Z]);
 
 	eigen_pass = (evmin * MAX_EIGEN_RATIO > evmax)
-		&& (evmag > MIN_EIGEN_MAG)
-		&& (evmag < MAX_EIGEN_MAG);
+		&& (evmag > moc->min_eigen)
+		&& (evmag < moc->max_eigen);
 
 #if 0
 	CPRINTF("mag eigenvalues: (%d %d %d), ",
@@ -112,7 +106,7 @@ static int moc_fit(struct mag_cal_t *moc, vec3_t bias, float *radius)
 	mat44_solve(moc->acc, out, moc->acc_w, pivot);
 
 	/*
-	 * spherei is defined by:
+	 * sphere is defined by:
 	 * (x - xc)^2 + (y - yc)^2 + (z - zc)^2 = r^2
 	 *
 	 * Where r is:
@@ -134,20 +128,42 @@ static int moc_fit(struct mag_cal_t *moc, vec3_t bias, float *radius)
 #endif
 
 	/* TODO (menghsuan): bound on bias as well? */
-	if (*radius > MIN_FIT_MAG && *radius < MAX_FIT_MAG)
+	if (*radius > moc->min_eigen && *radius < moc->max_eigen)
 		success = 1;
 
 	return success;
 }
 
-void init_mag_cal(struct mag_cal_t *moc)
+static void init_mag_cal(struct mag_cal_t *moc)
 {
 	memset(moc->acc, 0, sizeof(moc->acc));
 	memset(moc->acc_w, 0, sizeof(moc->acc_w));
 	moc->nsamples = 0;
 }
 
-int mag_cal_update(struct mag_cal_t *moc, const vector_3_t v)
+void mag_cal_setup(struct mag_cal_t *moc, uint16_t range, int odr)
+{
+	init_mag_cal(moc);
+	moc->min_eigen = MIN_EIGEN_MAG * (1 << 15) / range;
+	moc->max_eigen = MAX_EIGEN_MAG * (1 << 15) / range;
+	/*
+	 * We need at least MIN_BATCH_SIZE amd we must have collected
+	 * for at least MIN_BATCH_WINDOW_US.
+	 * Given odr is in mHz, multiply by 1000x
+	 */
+	moc->batch_size = MAX(
+		MAG_CAL_MIN_BATCH_SIZE,
+		(odr * 1000) / (MAG_CAL_MIN_BATCH_WINDOW_US));
+}
+
+/*
+ * mag_cal_update: accumulate vactor data, calculate bias
+ * periodically.
+ *
+ * Return 1 when bias has been updated.
+ * Update vector with bias.
+ */
+int mag_cal_update(struct mag_cal_t *moc, vector_3_t v)
 {
 	int new_bias = 0;
 
@@ -216,6 +232,22 @@ int mag_cal_update(struct mag_cal_t *moc, const vector_3_t v)
 		init_mag_cal(moc);
 	}
 
+	v[X] += moc->bias[X];
+	v[Y] += moc->bias[Y];
+	v[Z] += moc->bias[Z];
+
 	return new_bias;
+}
+
+int mag_cal_set_offset(struct mag_cal_t *cal, const vector_3_t offset)
+{
+	memcpy(cal->bias, offset, sizeof(vector_3_t));
+	return EC_SUCCESS;
+}
+
+int mag_cal_get_offset(struct mag_cal_t *cal, vector_3_t offset)
+{
+	memcpy(offset, cal->bias, sizeof(vector_3_t));
+	return EC_SUCCESS;
 }
 
