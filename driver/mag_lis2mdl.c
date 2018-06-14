@@ -16,6 +16,15 @@
 #include "util.h"
 #include "driver/mag_lis2mdl.h"
 
+#ifdef CONFIG_MAG_BMI160_LIS2MDL
+#include "driver/accelgyro_bmi160.h"
+#define raw_mag_read8 bmi160_sec_raw_read8
+#define raw_mag_write8 bmi160_sec_raw_write8
+#else
+#define raw_mag_read8 i2c_read8
+#define raw_mag_write8 i2c_write8
+#endif
+
 /**
  * In case of stand alone magnetometer device has not internal FIFO support
  * so just read data is supported. This driver can be used in conjunction
@@ -23,6 +32,7 @@
  * solution.
  */
 
+#ifndef CONFIG_MAG_BMI160_LIS2MDL
 /**
  * set_range - set full scale range
  * @s: Motion sensor pointer
@@ -156,6 +166,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 
 	return EC_SUCCESS;
 }
+#endif
 
 /**
  * init - Init mag in case of stand alone solution
@@ -166,7 +177,7 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 	int ret = 0, tmp, timeout = 0, status;
 	struct stprivate_data *data = s->drv_data;
 
-	ret = raw_read8(s->port, s->addr, LIS2MDL_WHO_AM_I_REG, &tmp);
+	ret = raw_mag_read8(s->port, s->addr, LIS2MDL_WHO_AM_I_REG, &tmp);
 	if (ret != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
@@ -180,8 +191,9 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 	 */
 	mutex_lock(s->mutex);
 
-	/* Reset component, set mode to continuous and BDU. */
-	ret = raw_write8(s->port, s->addr, LIS2MDL_CFG_REG_A, LIS2MDL_SOFT_RST);
+	/* Reset component. */
+	ret = raw_mag_write8(s->port, s->addr, LIS2MDL_CFG_REG_A,
+			     LIS2MDL_SOFT_RST);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
@@ -194,20 +206,34 @@ int lis2mdl_init(const struct motion_sensor_t *s)
 
 		msleep(5);
 		timeout += 5;
-		ret = raw_read8(s->port, s->addr, LIS2MDL_CFG_REG_A, &status);
+		ret = raw_mag_read8(s->port, s->addr, LIS2MDL_CFG_REG_A,
+				    &status);
 		if (ret != EC_SUCCESS)
 			continue;
 	} while ((status & LIS2MDL_REBOOT) != 0);
 
-	/* Set continuous MODE. */
-	ret = st_write_data_with_mask(s, LIS2MDL_CFG_REG_A, LIS2MDL_MODE_MASK,
-				      LIS2MDL_CONT_MODE);
-	if (ret != EC_SUCCESS)
-		goto err_unlock;
 
+#ifndef CONFIG_MAG_BMI160_LIS2MDL
 	/* Enable BDU. */
 	ret = st_write_data_with_mask(s, LIS2MDL_CFG_REG_C, LIS2MDL_BDU_MASK,
 				      LIS2MDL_EN_BIT);
+	if (ret != EC_SUCCESS)
+		goto err_unlock;
+
+	/* Set continuous MODE. */
+	ret = st_write_data_with_mask(s, LIS2MDL_CFG_REG_A, LIS2MDL_MODE_MASK,
+				      LIS2MDL_CONT_MODE);
+#else
+	raw_mag_write8(s->port, s->addr, LIS2MDL_INT_CRTL_REG, 0);
+	/*
+	 * Set single mode: direct write for telling BMI160 how to enter force
+	 * mode.
+	 * This is the last write access to the magnetometer before BMI160
+	 * takes over.
+	 */
+	ret = raw_mag_write8(s->port, s->addr, LIS2MDL_CFG_REG_A,
+			     LIS2MDL_MD_SINGLE_MODE);
+#endif
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
@@ -220,6 +246,7 @@ err_unlock:
 	return ret;
 }
 
+#ifndef CONFIG_BMI160_SEC_I2C
 const struct accelgyro_drv lis2mdl_drv = {
 	.init = lis2mdl_init,
 	.read = read,
@@ -228,3 +255,4 @@ const struct accelgyro_drv lis2mdl_drv = {
 	.set_data_rate = set_data_rate,
 	.get_data_rate = st_get_data_rate,
 };
+#endif

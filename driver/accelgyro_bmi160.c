@@ -13,6 +13,7 @@
 #include "console.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/mag_bmm150.h"
+#include "driver/mag_lis2mdl.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
@@ -260,7 +261,12 @@ static int bmi160_sec_access_ctrl(const int port, const int addr,
 	} else {
 		mag_if_ctrl &= ~BMI160_MAG_MANUAL_EN;
 		mag_if_ctrl &= ~BMI160_MAG_READ_BURST_MASK;
+#ifdef CONFIG_MAG_BMI160_BMM150
 		mag_if_ctrl |= BMI160_MAG_READ_BURST_8;
+#endif
+#ifdef CONFIG_MAG_BMI160_LIS2MDL
+		mag_if_ctrl |= BMI160_MAG_READ_BURST_6;
+#endif
 	}
 	return raw_write8(port, addr, BMI160_MAG_IF_1, mag_if_ctrl);
 }
@@ -660,6 +666,13 @@ void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 		v[0] = ((int16_t)((data[1] << 8) | data[0]));
 		v[1] = ((int16_t)((data[3] << 8) | data[2]));
 		v[2] = ((int16_t)((data[5] << 8) | data[4]));
+#ifdef CONFIG_MAG_BMI160_LIS2MDL
+		if (s->type == MOTIONSENSE_TYPE_MAG) {
+			struct mag_cal_t *cal = &BMI160_GET_DATA(s)->cal;
+
+			mag_cal_update(cal, v);
+		}
+#endif
 	}
 	rotate(v, *s->rot_standard_ref, v);
 }
@@ -1257,6 +1270,7 @@ static int init(const struct motion_sensor_t *s)
 
 		bmi160_sec_access_ctrl(s->port, s->addr, 1);
 
+#ifdef CONFIG_MAG_BMI160_BMM150
 		ret = bmm150_init(s);
 		if (ret)
 			/* Leave the compass open for tinkering. */
@@ -1264,7 +1278,20 @@ static int init(const struct motion_sensor_t *s)
 
 		/* Leave the address for reading the data */
 		raw_write8(s->port, s->addr, BMI160_MAG_I2C_READ_ADDR,
-				BMM150_BASE_DATA);
+			   BMM150_BASE_DATA);
+
+#elif defined(CONFIG_MAG_BMI160_LIS2MDL)
+		ret = lis2mdl_init(s);
+		if (ret)
+			/* Leave the compass open for tinkering. */
+			return ret;
+
+		/* Leave the address for reading the data */
+		raw_write8(s->port, s->addr, BMI160_MAG_I2C_READ_ADDR,
+			   LIS2MDL_OUT_REG);
+#else
+#error "No secondary device specified."
+#endif
 		/*
 		 * Put back the secondary interface in normal mode.
 		 * BMI160 will poll based on the configure ODR.
