@@ -22,6 +22,30 @@
       "revId": "db3acbdd96d514102975c70dec120e752426d289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f28133b_8e236f52",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-14T20:45:17Z",
+      "side": 1,
+      "message": "Can do.  I figured out how to remove my sneaky build.mk newline differences so I was planning to make a new patch anyway",
+      "parentUuid": "9d8f6ba8_12ae2ac7",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "db3acbdd96d514102975c70dec120e752426d289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
