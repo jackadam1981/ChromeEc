@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8b1bd111_4035fb07",
+        "filename": "baseboard/octopus/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-14T19:05:15Z",
+      "side": 1,
+      "message": "Okay.  I\u0027m thinking of keeping it in our baseboard build for now, but having the compile set up so we don\u0027t have to add an led.c file for every board as we make it.",
+      "parentUuid": "3e77114a_59879884",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33a8b1b5_1ff92c46",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2018-06-14T18:46:12Z",
       "side": 1,
       "message": "I think this would be a little easier to read if the early return was seperated and put first.\nI.e \n\nif (desired_state \u003d\u003d led_state || desired_state \u003d\u003d LED_NUM_STATES || period \u003d\u003d LED_INDEFINTE)\n  /* Nothing todo */\n  return;\n\nled_state \u003d desired_state;\n....",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a0588a4_bd3a4fe7",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-14T19:05:15Z",
+      "side": 1,
+      "message": "Yes, it would be more readable with the return cases first.  I don\u0027t think desired_state \u003d\u003d led_state can return though because we may need to blink the LED.  \n\nShould the LED_NUM_STATES case return or proceed with the previous state\u0027s LED behavior?  Yorp\u0027s function had it returning without altering the LED, but I noticed coral\u0027s has that scenario continue using the old led_state\u0027s behavior (so blinking if the previous state blinked, I assume).  I suppose we could also make a default state for the LED to resort to as well, if that would be a better route.",
+      "parentUuid": "33a8b1b5_1ff92c46",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "2baf4f28_1043142e",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-14T19:05:15Z",
+      "side": 1,
+      "message": "Depends on the low power mode, I think?  The Phaser spreadsheet says they\u0027d like blinking in S3 for the power LED, plus they\u0027d like to keep the charging LED on in all power states when we have AC.",
+      "parentUuid": "c2aba04d_46b04e1a",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a375a953_99cf306b",
         "filename": "baseboard/octopus/led_states.h",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2018-06-14T18:46:12Z",
       "side": 1,
       "message": "nit: typical TODO form is:\n\nTODO(b/110086152): note",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa3eeae_3e395b75",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-14T19:05:15Z",
+      "side": 1,
+      "message": "Can do.  I\u0027ll put that in the next change",
+      "parentUuid": "a375a953_99cf306b",
       "range": {
         "startLine": 29,
         "startChar": 20,
