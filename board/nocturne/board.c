@@ -16,6 +16,7 @@
 #include "compile_time_macros.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_opt3001.h"
+#include "driver/mag_lis2mdl.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -176,15 +177,21 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 };
 
 /* Matrix to rotate accel/gyro into standard reference frame. */
-const matrix_3x3_t lid_standard_ref = {
+const matrix_3x3_t accel_standard_ref = {
 	{ 0, FLOAT_TO_FP(1),  0},
 	{ FLOAT_TO_FP(-1), 0,  0},
+	{ 0,  0, FLOAT_TO_FP(1)}
+};
+/* Matrix to rotate magnetometer into standard reference frame. */
+const matrix_3x3_t mag_standard_ref = {
+	{ FLOAT_TO_FP(1), 0,  0},
+	{ 0, FLOAT_TO_FP(1),  0},
 	{ 0,  0, FLOAT_TO_FP(1)}
 };
 
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
-		.name = "BMI160 ACC",
+		.name = "ACC",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
 		.chip = MOTIONSENSE_CHIP_BMI160,
 		.type = MOTIONSENSE_TYPE_ACCEL,
@@ -194,7 +201,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_ALS_GYRO,
 		.addr = BMI160_ADDR0,
-		.rot_standard_ref = &lid_standard_ref,
+		.rot_standard_ref = &accel_standard_ref,
 		.default_range = 4, /* g */
 		.min_frequency = BMI160_ACCEL_MIN_FREQ,
 		.max_frequency = BMI160_ACCEL_MAX_FREQ,
@@ -207,7 +214,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 
 	[LID_GYRO] = {
-		.name = "BMI160 GYRO",
+		.name = "GYRO",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
 		.chip = MOTIONSENSE_CHIP_BMI160,
 		.type = MOTIONSENSE_TYPE_GYRO,
@@ -217,10 +224,27 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_ALS_GYRO,
 		.addr = BMI160_ADDR0,
-		.rot_standard_ref = &lid_standard_ref,
+		.rot_standard_ref = &accel_standard_ref,
 		.default_range = 1000, /* dps */
 		.min_frequency = BMI160_GYRO_MIN_FREQ,
 		.max_frequency = BMI160_GYRO_MAX_FREQ,
+	},
+
+	[LID_MAG] = {
+		.name = "MAG",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LIS2MDL,
+		.type = MOTIONSENSE_TYPE_MAG,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bmi160_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ALS_GYRO,
+		.addr = BMI160_ADDR0,
+		.default_range = LIS2MDL_RANGE,
+		.rot_standard_ref = &mag_standard_ref,
+		.min_frequency = LIS2MDL_MIN_ODR,
+		.max_frequency = LIS2MDL_MAX_ODR
 	},
 
 	[LID_ALS] = {
