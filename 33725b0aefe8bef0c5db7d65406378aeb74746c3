@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cec553c8_1903e121",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:57:50Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "daa6bb39_314d90f7",
+      "range": {
+        "startLine": 10,
+        "startChar": 16,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b24cfcb_4d6d8d03",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-14T06:33:06Z",
       "side": 1,
       "message": "revive",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "096b50a4_5b2aceed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:57:50Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "8b24cfcb_4d6d8d03",
       "range": {
         "startLine": 12,
         "startChar": 23,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "eb67d63d_8a32507e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:57:50Z",
+      "side": 1,
+      "message": "okay, I will add details",
+      "parentUuid": "2bafd06b_d0034b25",
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5941adcf_6f4ccbdb",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 10
@@ -76,6 +142,30 @@
       "writtenOn": "2018-06-14T06:33:06Z",
       "side": 1,
       "message": "You are checking for battery is not disconnected. Do we not care about init any more?\n\n\nHumm.. looks like we don\u0027t since it is 1 for all FG except TI. But then as Edward mentioned -- is there any harm in always checking it?",
+      "range": {
+        "startLine": 202,
+        "startChar": 27,
+        "endLine": 202,
+        "endChar": 38
+      },
+      "revId": "33725b0aefe8bef0c5db7d65406378aeb74746c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6537f009_bad8be4b",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-14T17:57:50Z",
+      "side": 1,
+      "message": "battery_init() : It will be a no effect code so we can add below config For TI FG + comment.\n .fet \u003d {\n            .reg_addr \u003d 0x16,\n           .reg_mask \u003d 1 \u003c\u003c 7,\n             .disconnect_val \u003d 0x0,\n    }",
+      "parentUuid": "5941adcf_6f4ccbdb",
       "range": {
         "startLine": 202,
         "startChar": 27,
