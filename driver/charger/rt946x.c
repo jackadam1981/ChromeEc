@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Richtek rt946x battery charger driver.
+ * Richtek rt946x, Mediatek mt6370 battery charger driver.
  */
 
 #include "battery.h"
@@ -75,6 +75,7 @@ enum rt946x_adc_in_sel {
 	RT946X_ADC_VBUS_DIV2,
 };
 
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 enum rt946x_irq {
 	RT946X_IRQ_CHGSTATC = 0,
 	RT946X_IRQ_CHGFAULT,
@@ -88,6 +89,32 @@ enum rt946x_irq {
 	RT946X_IRQ_COUNT,
 };
 
+#elif defined(CONFIG_CHARGER_MT6370)
+enum rt946x_irq {
+	MT6370_IRQ_CHGSTAT1 = 0,
+	MT6370_IRQ_CHGSTAT2,
+	MT6370_IRQ_CHGSTAT3,
+	MT6370_IRQ_CHGSTAT4,
+	MT6370_IRQ_CHGSTAT5,
+	MT6370_IRQ_CHGSTAT6,
+	MT6370_IRQ_DPDMSTAT,
+	MT6370_IRQ_DICHGSTAT,
+	MT6370_IRQ_OVPCTRLSTAT,
+	RT946X_IRQ_COUNT,
+};
+
+enum mt6370_pmu_chg_type {
+	MT6370_CHG_TYPE_NOVBUS = 0,
+	MT6370_CHG_TYPE_UNDER_GOING,
+	MT6370_CHG_TYPE_SDP,
+	MT6370_CHG_TYPE_SDPNSTD,
+	MT6370_CHG_TYPE_DCP,
+	MT6370_CHG_TYPE_CDP,
+	MT6370_CHG_TYPE_MAX,
+};
+#endif
+
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
 	0xF0, 0xF0, 0xFF, 0xFF, 0xFF, 0xFF,
 #ifdef CONFIG_CHARGER_RT9467
@@ -101,6 +128,16 @@ static const uint8_t rt946x_irq_maskall[RT946X_IRQ_COUNT] = {
 	0xFF,
 #endif
 };
+#elif defined(CONFIG_CHARGER_MT6370)
+/* TODO: choose irq init */
+static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
+	0xF0, 0xF8, 0xF0, 0xF8, 0xFF, 0xE3, 0xE3, 0xF8,
+};
+
+static const uint8_t rt946x_irq_maskall[RT946X_IRQ_COUNT] = {
+	0xF0, 0xF8, 0xF0, 0xF8, 0xFF, 0xE3, 0xE3, 0xF8,
+};
+#endif
 
 /* Must be in ascending order */
 static const uint16_t rt946x_boost_current[] = {
@@ -200,7 +237,7 @@ static int rt946x_por_reset(void)
 	if (rv)
 		return rv;
 
-	return rt946x_set_bit(RT946X_REG_CORECTRL0, RT946X_MASK_RST);
+	return rt946x_set_bit(RT946X_REG_CORECTRL_RST, RT946X_MASK_RST);
 }
 
 static int rt946x_reset_to_zero(void)
@@ -220,7 +257,7 @@ static int rt946x_reset_to_zero(void)
 
 static int rt946x_enable_bc12_detection(int en)
 {
-#ifdef CONFIG_CHARGER_RT9467
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_MT6370)
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_DPDM1, RT946X_MASK_USBCHGEN);
 #endif
@@ -831,6 +868,7 @@ static int rt946x_get_bc12_device_type(void)
 {
 	int reg;
 
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 	if (rt946x_read8(RT946X_REG_DPDM1, &reg))
 		return CHARGE_SUPPLIER_NONE;
 
@@ -844,6 +882,21 @@ static int rt946x_get_bc12_device_type(void)
 	default:
 		return CHARGE_SUPPLIER_NONE;
 	}
+#elif defined(CONFIG_CHARGER_MT6370)
+	if (rt946x_read8(MT6370_REG_USBSTATUS1, &reg))
+		return CHARGE_SUPPLIER_NONE;
+
+	switch ((reg & MT6370_MASK_USB_STATUS) >> MT6370_SHIFT_USB_STATUS) {
+	case MT6370_CHG_TYPE_SDP:
+		return CHARGE_SUPPLIER_BC12_SDP;
+	case MT6370_CHG_TYPE_CDP:
+		return CHARGE_SUPPLIER_BC12_CDP;
+	case MT6370_CHG_TYPE_DCP:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	default:
+		return CHARGE_SUPPLIER_NONE;
+	}
+#endif
 }
 
 static int rt946x_get_bc12_ilim(int charge_supplier)
