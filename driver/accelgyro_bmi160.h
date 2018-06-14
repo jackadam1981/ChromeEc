@@ -459,21 +459,31 @@ struct bmi160_drv_data_t {
 	uint8_t              flags;
 	uint8_t              enabled_activities;
 	uint8_t              disabled_activities;
+#if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
+	union {
 #ifdef CONFIG_MAG_BMI160_BMM150
-	struct bmm150_private_data compass;
+		struct bmm150_private_data compass;
 #endif
+		struct mag_cal_t             cal;
+	};
+#endif  /* CONFIG_MAG_CALIBRATE */
+
 #ifdef CONFIG_BMI160_ORIENTATION_SENSOR
 	uint8_t raw_orientation;
 	enum motionsensor_orientation orientation;
 	enum motionsensor_orientation last_orientation;
 #endif
-
 };
 
 #define BMI160_GET_DATA(_s) \
 	((struct bmi160_drv_data_t *)(_s)->drv_data)
 #define BMI160_GET_SAVED_DATA(_s) \
 	(&BMI160_GET_DATA(_s)->saved_data[(_s)->type])
+
+#if defined(CONFIG_BMI160_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
+#define BMI160_GET_MAG_CAL(_s) (&BMI160_GET_DATA(_s)->cal)
+#endif
+
 
 #ifdef CONFIG_BMI160_ORIENTATION_SENSOR
 #define ORIENTATION_CHANGED(_sensor) \
