@@ -85,8 +85,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /******************************************************************************/
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"charger", I2C_PORT_CHARGER,   400, GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"tcpc0",   I2C_PORT_TCPC0,     1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+	{"charger", I2C_PORT_CHARGER,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+	{"tcpc0",   I2C_PORT_TCPC0,     1000, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -244,7 +244,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
 
 	/* Enable charger interrupts */
-	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
+	gpio_enable_interrupt(GPIO_CHARGER_INT_ODL);
 
 	/* Enable reboot / shutdown control inputs from AP */
 	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
