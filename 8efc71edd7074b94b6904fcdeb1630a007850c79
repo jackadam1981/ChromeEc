@@ -16,6 +16,24 @@
       "revId": "8efc71edd7074b94b6904fcdeb1630a007850c79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e59ad31_f89255b0",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-14T14:35:32Z",
+      "side": 1,
+      "message": "Yeah, I thought this too at first.  However, the removal of this warning for multidimensional arrays didn\u0027t happen until GCC v5.  See the fifth bullet in the \"C\" section of the release notes, and recall that matrix_3x3_t is an array typedef rather than a struct.\n\nhttps://gcc.gnu.org/gcc-5/changes.html",
+      "parentUuid": "1ce2f47b_1567ed42",
+      "revId": "8efc71edd7074b94b6904fcdeb1630a007850c79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
