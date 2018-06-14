@@ -75,6 +75,12 @@ static const int debug_level;
 #define READY_RETURN_STATE(port) DUAL_ROLE_IF_ELSE(port, PD_STATE_SNK_READY, \
 							 PD_STATE_SRC_READY)
 
+/* VBUS debounce states */
+enum vbd_states {
+	VBD1,
+	VBD2
+};
+
 /* Type C supply voltage (mV) */
 #define TYPE_C_VOLTAGE	5000 /* mV */
 
@@ -2157,6 +2163,10 @@ void pd_task(void *u)
 	int cc1, cc2;
 	int res, incoming_packet = 0;
 	int hard_reset_count = 0;
+#ifdef CONFIG_USB_PD_VBUS_DEBOUNCE
+	uint64_t vbd_debounce;
+	enum vbd_states vbd_state = VBD1;
+#endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	uint64_t next_role_swap = PD_T_DRP_SNK;
 	uint8_t saved_flgs = 0;
@@ -3586,6 +3596,45 @@ void pd_task(void *u)
 			}
 		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+#ifdef CONFIG_USB_PD_VBUS_DEBOUNCE
+		/*
+		 * Debounce vbus present to mitigate false sink disconnect
+		 * detection caused by the hardware inrush current problem
+		 * during power role swap.
+		 */
+		if (!pd_is_vbus_present(port)) {
+			switch (vbd_state) {
+			case VBD1:
+				vbd_debounce = get_time().val + 150*MSEC;
+				vbd_state = VBD2;
+				break;
+			case VBD2:
+				if (get_time().val > vbd_debounce) {
+					/*
+					 * Sink disconnect if VBUS is low and
+					 * we are not recovering a hard reset.
+					 */
+					if (pd[port].power_role == PD_ROLE_SINK
+						&& pd[port].task_state !=
+						PD_STATE_SNK_HARD_RESET_RECOVER
+						&& pd[port].task_state !=
+						PD_STATE_HARD_RESET_EXECUTE) {
+						/*
+						 * Sink: detect disconnect by
+						 * monitoring VBUS
+						 */
+						set_state(port,
+						PD_STATE_SNK_DISCONNECTED);
+					}
+					vbd_state = VBD1;
+				}
+				break;
+			}
+		} else {
+			vbd_state = VBD1;
+		}
+#else
+
 		/*
 		 * Sink disconnect if VBUS is low and we are not recovering
 		 * a hard reset.
@@ -3599,6 +3648,7 @@ void pd_task(void *u)
 			/* set timeout small to reconnect fast */
 			timeout = 5*MSEC;
 		}
+#endif /* CONFIG_USB_PD_VBUS_DEBOUNCE */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	}
 }

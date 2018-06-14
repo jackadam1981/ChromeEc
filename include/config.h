@@ -2917,6 +2917,9 @@
 /* Define if this board can used TCPC-controlled DRP toggle */
 #undef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 
+/* Enables debouncing of VBUS glitch caused by inrush current */
+#undef CONFIG_USB_PD_VBUS_DEBOUNCE
+
 /* Initial DRP / toggle policy */
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_TOGGLE_OFF
 
