@@ -10,6 +10,7 @@
 
 #include "math_util.h"
 #include "mat44.h"
+#include "timer.h"
 #include "vec4.h"
 
 #define MAG_CAL_MAX_SAMPLES 0xffff
@@ -33,6 +34,9 @@ struct mag_cal_t {
 	vec4_t acc_w;
 	float radius;
 
+	/* Bound valid eigen value in sensor units */
+	float min_eigen, max_eigen;
+
 	vector_3_t bias;
 
 	/* number of samples needed to calibrate */
@@ -40,7 +44,11 @@ struct mag_cal_t {
 	uint16_t nsamples;
 };
 
-void init_mag_cal(struct mag_cal_t *moc);
+void mag_cal_setup(struct mag_cal_t *moc, uint16_t range, int odr);
 
-int mag_cal_update(struct mag_cal_t *moc, const vector_3_t v);
+int mag_cal_update(struct mag_cal_t *moc, vector_3_t v);
+
+int mag_cal_set_offset(struct mag_cal_t *cal, const vector_3_t offset);
+int mag_cal_get_offset(struct mag_cal_t *cal, vector_3_t offset);
+
 #endif  /* __CROS_EC_MAG_CAL_H */
