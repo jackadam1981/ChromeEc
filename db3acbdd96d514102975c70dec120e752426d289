@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d8f6ba8_12ae2ac7",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T20:14:03Z",
+      "side": 1,
+      "message": "I know you just move this code, so I feel bad for making this suggestion...\nCan you add a commend to why we are do thing and line 108?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "db3acbdd96d514102975c70dec120e752426d289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
