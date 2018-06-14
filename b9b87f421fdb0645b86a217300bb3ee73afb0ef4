@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90299206_437c663f",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "Yes, this is me being lazy and doing some flag re-use.\nLet\u0027s I will create a new flag, e.g. SLEEP_MASK_PLL",
+      "parentUuid": "aaecdaaa_6ae883b8",
+      "range": {
+        "startLine": 208,
+        "startChar": 16,
+        "endLine": 208,
+        "endChar": 33
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f301756_b32efa08",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-06-13T09:20:10Z",
       "side": 1,
       "message": "Does it harm to get rid of the outer if test and just set LSION always?",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64e75f9b_a9db6c9d",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "There was an old tricky issue on previous gen STM32 with the LSI and RTC where doing the setup again would reset the MCU.\nI\u0027m seeing no trace of those shenanigans, so removing it.",
+      "parentUuid": "7f301756_b32efa08",
       "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "4c4fde24_82714383",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "Yes because it is clocking the IWDG\n(and I think there was this strange heisenbug were the watchdog was working properly when you had flashed the board due to the STM bootloader but sometimes no after a cold boot)",
+      "parentUuid": "32539bee_d1cc3914",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be83ba67_9ae40c81",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2018-06-13T09:20:10Z",
       "side": 1,
       "message": "Why are we not setting the reload value before starting the counter? Maybe this does not matter...",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddea94e4_bf0d952c",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "I moved it at the end because LPTIM_ARR needs to be set strictly after enabling in LPTIM_CR, but looking at it again, it would be better between enable and CNTSTRT",
+      "parentUuid": "be83ba67_9ae40c81",
       "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "1f6c1827_34c463d5",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "Useful reminder ! \nI had seen this but I was kind of confuse about it (ie how a single register read can be non-coherent) ... thinking about this, they meant that this is a *binary* *counter* asynchronously clocked (as opposed to some kind of gray-code counter for example, so when incrementing, it changes multiple *bits* non-atomically). I\u0027m adding some kind of helper then.",
+      "parentUuid": "30e0711d_e8640861",
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5f8c34e_7393dfca",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
@@ -104,6 +200,30 @@
       "writtenOn": "2018-06-13T09:20:10Z",
       "side": 1,
       "message": "why -1? (delay_us / LPTIM_PERIOD_US will already round down, right?)",
+      "range": {
+        "startLine": 319,
+        "startChar": 58,
+        "endLine": 319,
+        "endChar": 62
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49bc0f09_e367db2f",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "TL;DR because it\u0027s a free-running counter which is already started.\n\nLet\u0027s imagine delay_us is a whole number of lptim ticks (e.g 40),\nthe LPTIM counter might be anywhere between the beginning and the end of the current 125us tick (represented by \u0027cnt\u0027), so when reaching cnt + 40, the delay would anywhere between 40 ticks and 40 ticks + 124.99999 us.\nSo to get a delay strictly lesser than the requested timer event, we need to decrease it to get between (39 ticks and 39 ticks + 124.99999 us)\n\nExperimentally without -1, on average I\u0027m oversleeping by 70us\nSo hopefully my explanation is not flawed",
+      "parentUuid": "a5f8c34e_7393dfca",
       "range": {
         "startLine": 319,
         "startChar": 58,
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "9657c911_0418461b",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "515f896b_518ae58e",
+      "range": {
+        "startLine": 360,
+        "startChar": 24,
+        "endLine": 360,
+        "endChar": 39
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdc688eb_35b15523",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 2
@@ -150,6 +294,30 @@
       "writtenOn": "2018-06-13T09:20:10Z",
       "side": 1,
       "message": "Well ,-) CPRINTF below...",
+      "range": {
+        "startLine": 379,
+        "startChar": 11,
+        "endLine": 379,
+        "endChar": 16
+      },
+      "revId": "b9b87f421fdb0645b86a217300bb3ee73afb0ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e1e35e7_1775a031",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-14T12:05:39Z",
+      "side": 1,
+      "message": "Indeed, my debug stuff was convenient but my original plan was definitely to get back to the PUTS which truly fits the currently defined stack for STM32...",
+      "parentUuid": "bdc688eb_35b15523",
       "range": {
         "startLine": 379,
         "startChar": 11,
