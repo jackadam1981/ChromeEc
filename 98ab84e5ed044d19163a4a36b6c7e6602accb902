@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c80d4757_3e8b9f10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-14T06:53:09Z",
+      "side": 1,
+      "message": "It would be good to add some reason explaining why this is being moved back.",
+      "revId": "98ab84e5ed044d19163a4a36b6c7e6602accb902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "298352bf_9de8547c",
         "filename": "common/battery_fuel_gauge.c",
         "patchSetId": 1
