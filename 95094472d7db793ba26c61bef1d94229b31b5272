@@ -22,6 +22,99 @@
       "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e77114a_59879884",
+        "filename": "baseboard/octopus/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T18:46:12Z",
+      "side": 1,
+      "message": "I do think that the code in  led_states.c is a good canidate to move to common led code if that works out.",
+      "parentUuid": "d76b39b9_819fc561",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a8b1b5_1ff92c46",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T18:46:12Z",
+      "side": 1,
+      "message": "I think this would be a little easier to read if the early return was seperated and put first.\nI.e \n\nif (desired_state \u003d\u003d led_state || desired_state \u003d\u003d LED_NUM_STATES || period \u003d\u003d LED_INDEFINTE)\n  /* Nothing todo */\n  return;\n\nled_state \u003d desired_state;\n....",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2aba04d_46b04e1a",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T18:46:12Z",
+      "side": 1,
+      "message": "Should we disable this 200ms when we are in a low power mode and LEDs are off?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a375a953_99cf306b",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-14T18:46:12Z",
+      "side": 1,
+      "message": "nit: typical TODO form is:\n\nTODO(b/110086152): note",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "95094472d7db793ba26c61bef1d94229b31b5272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
