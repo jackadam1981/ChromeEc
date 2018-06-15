@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "89a8d51e_e255dab4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-15T19:50:16Z",
+      "side": 1,
+      "message": "Set what to?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "6843b8a66d591a682ea607c93155a7e568be3748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e05053c_58abdb6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-15T19:50:16Z",
+      "side": 1,
+      "message": "Please rephrase it.",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "6843b8a66d591a682ea607c93155a7e568be3748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48e6e852_00bceb17",
         "filename": "board/nami/board.c",
         "patchSetId": 3
