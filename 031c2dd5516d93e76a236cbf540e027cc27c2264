@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5a64148_d1af71a5",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T03:10:29Z",
+      "side": 1,
+      "message": "Just include it unconditionally. Shouldn\u0027t hurt.",
+      "revId": "031c2dd5516d93e76a236cbf540e027cc27c2264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1fd9bc_4231774e",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T03:10:29Z",
+      "side": 1,
+      "message": "Ditto, just include it.",
+      "revId": "031c2dd5516d93e76a236cbf540e027cc27c2264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "078289f3_ca4d7c9d",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T03:10:29Z",
+      "side": 1,
+      "message": "kbid \u003c kbinfo, please swap the 2 help entries.",
+      "revId": "031c2dd5516d93e76a236cbf540e027cc27c2264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
