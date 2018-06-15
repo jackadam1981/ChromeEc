@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3695dda_4f94e0b0",
+        "filename": "board/meowth_fp/flash_fp_mcu",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T00:46:45Z",
+      "side": 1,
+      "message": "Indentation?\n\nAlso, I think we usually use\n\nif [ ... ]; then\n\nin most of our shell scripts.",
+      "revId": "bbb1492161dd962491dba0f803f690dc7f64d4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
