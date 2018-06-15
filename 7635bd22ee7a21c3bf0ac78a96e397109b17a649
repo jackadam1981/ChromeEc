@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "36957625_f3672a57",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-15T08:52:53Z",
+      "side": 1,
+      "message": "Let\u0027s handle it as SDP for now.",
+      "parentUuid": "9e9413c5_6f03b643",
+      "revId": "7635bd22ee7a21c3bf0ac78a96e397109b17a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7130f25_b11cd4b5",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 6
