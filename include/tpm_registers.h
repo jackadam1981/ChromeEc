@@ -61,6 +61,11 @@ void tpm_reinstate_nvmem_commits(void);
 int tpm_sync_reset(int wipe_first);
 
 /*
+ * It shuts down the tpm interface, until next tpm reset event.
+ */
+void tpm_stop(void);
+
+/*
  * This structure describes the header of all commands and responses sent and
  * received over TPM FIFO.
  *
