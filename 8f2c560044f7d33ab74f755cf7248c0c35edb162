@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f65fd9b_2d323f85",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3565,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-15T06:28:31Z",
+      "side": 1,
+      "message": "It does not,\nyou might need to read CL 1072704 and my comments there to understand.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1072704/1/common/usb_pd_protocol.c#3596\n\nVBUS is actually dipping after the new SRC is sending the 2nd PS_RDY,\nwe are no longer in the states currently filtered by pd_is_power_swapping(), we are back in the regular SNK sequence (eg SNK_REQUESTED or SNK_TRANSITION)",
+      "parentUuid": "f1c08c30_55ba416a",
+      "range": {
+        "startLine": 3564,
+        "startChar": 2,
+        "endLine": 3565,
+        "endChar": 12
+      },
+      "revId": "8f2c560044f7d33ab74f755cf7248c0c35edb162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a07ca4f_022325ad",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
