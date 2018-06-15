@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c40e24f8_03d2c299",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-15T18:44:50Z",
+      "side": 1,
+      "message": "I don\u0027t think you want PSL4 as a wake source. Also, where\u0027s GPIO00?",
+      "revId": "7841c17bb9dc6b905aec49a1f82221e6644a09ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "449a899a_2078cc45",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-15T18:44:50Z",
+      "side": 1,
+      "message": "You probably want this to be configured as well.",
+      "revId": "7841c17bb9dc6b905aec49a1f82221e6644a09ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
