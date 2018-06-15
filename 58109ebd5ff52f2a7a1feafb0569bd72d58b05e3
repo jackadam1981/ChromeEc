@@ -94,6 +94,30 @@
       "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83afb8bf_4e32bc6c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-15T23:20:41Z",
+      "side": 1,
+      "message": "the once\u0027s I can remember:\n1. pd_update_try_source() will kill the power if battery can\u0027t provide power.\nCL:335913\n2. set charging current\nWe had several issues with BD9995x around battery",
+      "parentUuid": "704efa1b_56bdb131",
+      "range": {
+        "startLine": 1760,
+        "startChar": 0,
+        "endLine": 1770,
+        "endChar": 42
+      },
+      "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -45,6 +45,30 @@
       "revId": "b968defbf88295b21521350433f8ca290e492310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6d288f_7141ccbf",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2018-06-15T23:20:41Z",
+      "side": 1,
+      "message": "I can remove BP_WAKING and return BP_NO or BP_NOT_SURE but it wont reflect correct status of the battery.",
+      "parentUuid": "a09170bd_e99ad416",
+      "range": {
+        "startLine": 1641,
+        "startChar": 0,
+        "endLine": 1648,
+        "endChar": 37
+      },
+      "revId": "b968defbf88295b21521350433f8ca290e492310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
