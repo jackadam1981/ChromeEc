@@ -42,6 +42,7 @@ board-${CONFIG_USB_I2C} += usb_i2c.o
 board-y += recovery_button.o
 board-y += tpm2/NVMem.o
 board-y += tpm2/aes.o
+board-y += tpm2/tpm_mode.o
 board-y += tpm2/ecc.o
 board-y += tpm2/ecies.o
 board-y += tpm2/endorsement.o

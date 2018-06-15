@@ -542,6 +542,12 @@ void tpm_register_interface(interface_control_func interface_start,
 	if_stop = interface_stop;
 }
 
+static __preserved interface_query_func if_query_enabled;
+void tpm_register_interface_query(interface_query_func interface_query_enabled)
+{
+	if_query_enabled = interface_query_enabled;
+}
+
 static void tpm_init(void)
 {
 	/*
@@ -937,6 +943,11 @@ void tpm_task(void)
 		struct tpm_cmd_header *tpmh;
 		size_t buffer_size;
 		uint8_t alt_if_command;
+		static const char tpm_broken_response[] = {
+			0x80, 0x01,	/* TPM_ST_NO_SESSIONS */
+			0, 0, 0, 10,	/* Response size. */
+			0, 0, 9, 0x21	/* TPM_RC_LOCKOUT */
+		};
 
 		/* Process unprocessed events or wait for the next event */
 		if (!evt)
@@ -993,21 +1004,19 @@ void tpm_task(void)
 
 		watchdog_reload();
 
+		if (if_query_enabled && !if_query_enabled()) {
+			response = (uint8_t *)tpmh;
+			response_size = sizeof(tpm_broken_response);
+			memcpy(response, tpm_broken_response, response_size);
 #ifdef CONFIG_EXTENSION_COMMAND
-		if (IS_CUSTOM_CODE(command_code)) {
+		} else if (IS_CUSTOM_CODE(command_code)) {
 			response_size = buffer_size;
 			call_extension_command(tpmh, &response_size,
 					       alt_if_command ?
 					       VENDOR_CMD_FROM_USB : 0);
-		} else
 #endif
-		{
+		} else {
 			if (board_id_is_mismatched()) {
-				static const char tpm_broken_response[] = {
-					0x80, 0x01,	/* TPM_ST_NO_SESSIONS */
-					0, 0, 0, 10,	/* Response size. */
-					0, 0, 9, 0x21	/* TPM_RC_LOCKOUT */
-				};
 				CPRINTF("%s: Ignoring TPM commands\n",
 					__func__);
 				response = (uint8_t *)tpmh;

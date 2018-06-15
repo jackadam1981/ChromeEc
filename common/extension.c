@@ -30,6 +30,7 @@ uint32_t extension_route_command(struct vendor_cmd_params *p)
 		case VENDOR_CC_IMMEDIATE_RESET:
 		case VENDOR_CC_INVALIDATE_INACTIVE_RW:
 		case VENDOR_CC_SET_BOARD_ID:
+		case VENDOR_CC_GET_TPM_MODE:
 #endif /* defined(CR50_DEV) */
 		case EXTENSION_POST_RESET: /* Always need to reset. */
 		case VENDOR_CC_CCD:
@@ -37,6 +38,8 @@ uint32_t extension_route_command(struct vendor_cmd_params *p)
 		case VENDOR_CC_RMA_CHALLENGE_RESPONSE:
 		case VENDOR_CC_SPI_HASH:   /* Requires physical presence. */
 		case VENDOR_CC_TURN_UPDATE_ON:
+		case VENDOR_CC_ENABLE_TPM_MODE:
+		case VENDOR_CC_DISABLE_TPM_MODE:
 			break;
 		default:
 			/* Otherwise, we don't allow this command. */

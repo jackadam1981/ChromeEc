@@ -35,6 +35,13 @@ void tpm_register_interface(interface_control_func interface_start,
 			    interface_control_func interface_stop);
 
 /*
+ * Register functions to start and stop TPM communications layer. The
+ * communications layer should be kept down while TPM is being reset.
+ */
+typedef int (*interface_query_func)(void);
+void tpm_register_interface_query(interface_query_func interface_query_enabled);
+
+/*
  * This requests the TPM task to reset itself.
  *
  * If wait_until_done is false, it returns EC_SUCCESS immediately. Otherwise it
