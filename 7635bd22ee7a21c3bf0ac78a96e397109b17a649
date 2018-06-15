@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7665d64_28a5c060",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T07:43:17Z",
+      "side": 1,
+      "message": "I think I\u0027d also move the enums to the blocks below...",
+      "revId": "7635bd22ee7a21c3bf0ac78a96e397109b17a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cacbe44_7270ec2b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T07:43:17Z",
+      "side": 1,
+      "message": "9467",
+      "range": {
+        "startLine": 246,
+        "startChar": 12,
+        "endLine": 246,
+        "endChar": 33
+      },
+      "revId": "7635bd22ee7a21c3bf0ac78a96e397109b17a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e9413c5_6f03b643",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T07:43:17Z",
+      "side": 1,
+      "message": "I ponder what we should do with SDP NSTD. But probably the same as SDP.",
+      "revId": "7635bd22ee7a21c3bf0ac78a96e397109b17a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7130f25_b11cd4b5",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T07:43:17Z",
+      "side": 1,
+      "message": "I know that\u0027s what the spec says, but it sounds weird. I\u0027d call it \"BUSY\"",
+      "range": {
+        "startLine": 313,
+        "startChar": 24,
+        "endLine": 313,
+        "endChar": 35
+      },
+      "revId": "7635bd22ee7a21c3bf0ac78a96e397109b17a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "832552e0_82add81f",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T07:43:17Z",
+      "side": 1,
+      "message": "I don\u0027t think you need _MAX for anything.",
+      "revId": "7635bd22ee7a21c3bf0ac78a96e397109b17a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6dbbe76_a33fb283",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T07:43:17Z",
+      "side": 1,
+      "message": "Well, not 100% needed but I\u0027d just protect the whole CHGSTAT2 section by #ifdef CONFIG_CHARGER_MT6370",
+      "revId": "7635bd22ee7a21c3bf0ac78a96e397109b17a649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
