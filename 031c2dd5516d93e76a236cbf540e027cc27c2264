@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb449146_e949ec2e",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-15T04:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5a64148_d1af71a5",
+      "revId": "031c2dd5516d93e76a236cbf540e027cc27c2264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf1fd9bc_4231774e",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b94aec8f_82035941",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-15T04:18:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf1fd9bc_4231774e",
+      "revId": "031c2dd5516d93e76a236cbf540e027cc27c2264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "078289f3_ca4d7c9d",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2018-06-15T03:10:29Z",
       "side": 1,
       "message": "kbid \u003c kbinfo, please swap the 2 help entries.",
+      "revId": "031c2dd5516d93e76a236cbf540e027cc27c2264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce96135_44146112",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-15T04:18:15Z",
+      "side": 1,
+      "message": "i also sorted out k-prefix commands as well.",
+      "parentUuid": "078289f3_ca4d7c9d",
       "revId": "031c2dd5516d93e76a236cbf540e027cc27c2264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
