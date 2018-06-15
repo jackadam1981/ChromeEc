@@ -117,16 +117,14 @@
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 1
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
 #define CONFIG_USB_CHARGER
 
 /* Common battery defines */
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_DEVICE_CHEMISTRY  "LION"
 #define CONFIG_BATTERY_FUEL_GAUGE
-/* TODO(b/74427009): Ensure this works in dead battery conditions */
-#define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 #define CONFIG_BATTERY_PRESENT_CUSTOM
-#define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_SMART
 
 /*******************************************************************************

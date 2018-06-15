@@ -182,31 +182,9 @@ void chipset_do_shutdown(void)
 /******************************************************************************/
 /* Power Delivery and charing functions */
 
-static void wait_for_battery(void)
-{
-	int count = 0;
-
-	/* If battery is not present, don't bother waiting */
-	if (battery_hw_present() == BP_NO)
-		return;
-
-	/* Wait for disconnected battery to wake up */
-	while (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED) {
-		usleep(100 * MSEC);
-		/* Give up waiting after more than 1 second */
-		if (++count > 10) {
-			ccprintf("Battery still disconnected > 1 second!\n");
-			break;
-		}
-	}
-}
-
 void baseboard_tcpc_init(void)
 {
 	int port;
-
-	/* Wait for battery to wake up (if present) */
-	wait_for_battery();
 
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image())
@@ -233,6 +211,16 @@ int board_set_active_charge_port(int port)
 	if (!is_valid_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
 
+	/*
+	 * If the battery is booting from shipmode, it cannot provide power
+	 * hence do not disable charge ports instead assume the power source
+	 * port as dedicated charge port till the battery is initialized and
+	 * able to provide power.
+	 */
+	if (port == CHARGE_PORT_NONE && battery_is_present() == BP_NOT_SURE) {
+		CPRINTSUSB("Battery is initializing");
+		return EC_SUCCESS;
+	}
 
 	if (port == CHARGE_PORT_NONE) {
 		CPRINTSUSB("Disabling all charger ports");
