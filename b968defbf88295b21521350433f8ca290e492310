@@ -22,6 +22,29 @@
       "revId": "b968defbf88295b21521350433f8ca290e492310",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09170bd_e99ad416",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-15T23:02:38Z",
+      "side": 1,
+      "message": "I feel like this is the only bit that is actually needed. Again, I really don\u0027t like the fact that battery presence is conflated with \"disconnect/dchg FET status\". We already have a separate notion of that which I think we should use.",
+      "range": {
+        "startLine": 1641,
+        "startChar": 0,
+        "endLine": 1648,
+        "endChar": 37
+      },
+      "revId": "b968defbf88295b21521350433f8ca290e492310",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

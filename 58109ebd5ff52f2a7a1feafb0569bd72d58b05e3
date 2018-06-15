@@ -70,6 +70,30 @@
       "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704efa1b_56bdb131",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-15T23:02:38Z",
+      "side": 1,
+      "message": "Where are the locations where \"battery_is_present()\" is called to mean \"the battery can provide a charge\"? I think we should fix those.",
+      "parentUuid": "e9d71197_1161e353",
+      "range": {
+        "startLine": 1760,
+        "startChar": 0,
+        "endLine": 1770,
+        "endChar": 42
+      },
+      "revId": "58109ebd5ff52f2a7a1feafb0569bd72d58b05e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
