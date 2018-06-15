@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "908b8962_23e560ab",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-15T14:51:15Z",
+      "side": 1,
+      "message": "Minor nit: I\u0027d swap the order here.\n\n/* Check for ghosting; should be at most one bit per input */\nif (keyboard_id[c] \u0026 (keyboard_id[c] - 1))\n\treturn KEYBOARD_ID_UNREADABLE;\n\nid |\u003d keyboard_id[c] \u003c\u003c (c * 8);",
+      "range": {
+        "startLine": 894,
+        "startChar": 2,
+        "endLine": 898,
+        "endChar": 33
+      },
+      "revId": "7bf02bcb2ca360f5a573cdd3435251c758c10361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
