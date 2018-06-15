@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a020732_ce66a25f",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-15T14:19:42Z",
+      "side": 1,
+      "message": "can you add something similar to the following to make it a little more clear:\n\n#elif\n/* Ignore GPIO definition if using using lower power idle */\ndefine GPIO(name, pin, flag)\n#endif",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0379d66_393552da",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-15T14:19:42Z",
+      "side": 1,
+      "message": "can this type be enum gpio_signal?",
+      "range": {
+        "startLine": 207,
+        "startChar": 28,
+        "endLine": 207,
+        "endChar": 31
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c706d48_d5ae940f",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-15T14:19:42Z",
+      "side": 1,
+      "message": "enum gpio_signal",
+      "range": {
+        "startLine": 218,
+        "startChar": 43,
+        "endLine": 218,
+        "endChar": 46
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a435f97b_50d1e065",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-15T14:19:42Z",
+      "side": 1,
+      "message": "Can we rename this function to something like: gpio_enable_wake_up_input\n\nAnd drop the (g-\u003eflags \u0026 GPIO_SEL_1P8V) check. Then calling functions can check (g-\u003eflags \u0026 GPIO_SEL_1P8V) if it needs too (like gpio_pre_init already does)",
+      "range": {
+        "startLine": 218,
+        "startChar": 12,
+        "endLine": 218,
+        "endChar": 42
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e398ce5a_d9af37b6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-15T14:19:42Z",
+      "side": 1,
+      "message": "this will break if there a board uses the UNIMPLEMENTED(name) gpio macro. You need to define it as well to make an empty entry\n\nSee https://chromium.git.corp.google.com/chromiumos/platform/ec/+/master/include/gpio_signal.h#10",
+      "range": {
+        "startLine": 221,
+        "startChar": 30,
+        "endLine": 221,
+        "endChar": 53
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e84c0969_1d9f6782",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-15T14:19:42Z",
+      "side": 1,
+      "message": "can you combine gpio_dis_1p8v_i2c_io_buffer and gpio_en_1p8v_i2c_io_buffer into a single function",
+      "range": {
+        "startLine": 234,
+        "startChar": 5,
+        "endLine": 234,
+        "endChar": 32
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611446a8_616ecd54",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-15T14:19:42Z",
+      "side": 1,
+      "message": "Can you add the reason for this. something like \"i2c ports are both alternate mode and normal gpio pin, but the alternate mode need the wake up input even though the normal gpio definition doesn\u0027t have an isd\"",
+      "range": {
+        "startLine": 486,
+        "startChar": 5,
+        "endLine": 486,
+        "endChar": 48
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
