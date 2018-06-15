@@ -597,6 +597,24 @@
     },
     {
       "key": {
+        "uuid": "9e508802_4a4b5d3e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1248957
+      },
+      "writtenOn": "2018-06-15T10:19:13Z",
+      "side": 1,
+      "message": "The coreboot change for brightness hotkey control will be uploaded after intel provide how to works with new GFX driver and verify ok. We have not get the new driver yet.",
+      "parentUuid": "0bb248ca_f3ec8fca",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a777187b_ed3b438c",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
