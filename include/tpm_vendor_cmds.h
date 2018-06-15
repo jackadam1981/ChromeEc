@@ -69,6 +69,16 @@ enum vendor_cmd_cc {
 	 * WPV subcommands.
 	 */
 	VENDOR_CC_WP = 39,
+	/*
+	 * Either enable or disable TPM mode. This is allowed for one-time only
+	 * until next TPM reset EVENT. In other words, once TPM mode is set,
+	 * then it cannot be altered to the other mode value. The allowed input
+	 * values are either tpm_mode_enabled or tpm_mode_disabled, which are
+	 * defined in 'enum tpm_modes' below.
+	 * If this command doesn't have any iput mode value, then it just
+	 * returns the current tpm_mode value without modifying it.
+	 */
+	VENDOR_CC_SET_TPM_MODE = 40,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
@@ -97,6 +107,13 @@ enum vendor_cmd_rc {
 
 	/* Only 7 bits available; max is 127 */
 	VENDOR_RC_NO_SUCH_COMMAND = 127,
+};
+
+/* Tpm mode */
+enum tpm_modes {
+	TPM_MODE_ENABLED_TENTATIVE = 0,
+	TPM_MODE_ENABLED = 1,
+	TPM_MODE_DISABLED = 2,
 };
 
 /*
@@ -169,4 +186,5 @@ struct vendor_cc_spi_hash_request {
 #define WPV_ATBOOT_SET		(1 << 3)
 #define WPV_ATBOOT_ENABLE	(1 << 4)
 
+extern enum tpm_modes get_tpm_mode(void);
 #endif /* __INCLUDE_TPM_VENDOR_CMDS_H */
