@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4818c4d3_c156461c",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-15T03:08:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa6530f8_0597c68d",
+      "range": {
+        "startLine": 889,
+        "startChar": 37,
+        "endLine": 889,
+        "endChar": 45
+      },
+      "revId": "b61b8366aa6f27d23d5fd43f71b6b9464dca6db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6c9dad_79f0037b",
         "filename": "include/keyboard_scan.h",
         "patchSetId": 2
@@ -76,6 +100,24 @@
       "writtenOn": "2018-06-15T00:33:21Z",
       "side": 1,
       "message": "Maybe do something here to print a pretty string if the ID is invalid, or if it is unreadable (that\u0027s where having the enumeration in ec_commands.h helps).",
+      "revId": "b61b8366aa6f27d23d5fd43f71b6b9464dca6db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ae331c_d32c078f",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6997,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-06-15T03:08:44Z",
+      "side": 1,
+      "message": "A good point. I did some printings after moving the enumeration in ec_commands.h.",
+      "parentUuid": "deff7b04_2f3d9a25",
       "revId": "b61b8366aa6f27d23d5fd43f71b6b9464dca6db7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
