@@ -139,6 +139,24 @@
       "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45900e78_1f4cc64d",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T00:33:21Z",
+      "side": 1,
+      "message": "No. These values are part of the EC host command interface, so they need to be in ec_commands.h.\n\nIt\u0027s fine if keyboard_scan.h needs to include ec_commands.h.",
+      "parentUuid": "48854b93_c300661e",
+      "revId": "c0c8a65b974fb3e02d446fc81086fd8ca3a87774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

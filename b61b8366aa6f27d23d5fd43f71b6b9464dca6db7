@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa6530f8_0597c68d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T00:33:21Z",
+      "side": 1,
+      "message": "Sorry, I\u0027d use \"id\" here, then.",
+      "range": {
+        "startLine": 889,
+        "startChar": 37,
+        "endLine": 889,
+        "endChar": 45
+      },
+      "revId": "b61b8366aa6f27d23d5fd43f71b6b9464dca6db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a6c9dad_79f0037b",
+        "filename": "include/keyboard_scan.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T00:33:21Z",
+      "side": 1,
+      "message": "Why do you need this? You shouldn\u0027t even call keyboard_get_keyboard_id if CONFIG_KEYBOARD_LANGUAGE_ID is not set.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "b61b8366aa6f27d23d5fd43f71b6b9464dca6db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908cf294_2bfa6c85",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T00:33:21Z",
+      "side": 1,
+      "message": "No. You only need to declare the function in keyboard_scan.h.",
+      "revId": "b61b8366aa6f27d23d5fd43f71b6b9464dca6db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deff7b04_2f3d9a25",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6997,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T00:33:21Z",
+      "side": 1,
+      "message": "Maybe do something here to print a pretty string if the ID is invalid, or if it is unreadable (that\u0027s where having the enumeration in ec_commands.h helps).",
+      "revId": "b61b8366aa6f27d23d5fd43f71b6b9464dca6db7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
