@@ -22,6 +22,30 @@
       "revId": "0c53d1d31d5bf597383256cb39c452ad3a6b5b50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42fec6c3_6a18c83f",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-15T18:52:00Z",
+      "side": 1,
+      "message": "I think we can use the same disconnect check for the same gauge IC. So, first thing to do is to find how to make EC identify the gauge IC. WIP.",
+      "parentUuid": "f385f1e7_711a66d4",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "0c53d1d31d5bf597383256cb39c452ad3a6b5b50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
