@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09d7f6b4_4435ecca",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-06-15T23:29:42Z",
+      "side": 1,
+      "message": "Please flip the logic around here, to only disable the keyboard backlight feature for sku 16.\nThat will allow the keyboard backlight to continue working for other grunt skus.",
+      "revId": "667033db3b2628dbd11cfe447cbbfe33d91ba5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
