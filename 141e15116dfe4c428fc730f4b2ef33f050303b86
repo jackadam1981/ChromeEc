@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2cafeae4_46281fa0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-06-15T22:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94abaab7_f7bae9bf",
+      "revId": "141e15116dfe4c428fc730f4b2ef33f050303b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "983a597c_8847e8f6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3daf5657_984d8863",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-06-15T22:08:17Z",
+      "side": 1,
+      "message": "Looks correct.  Just added you as a CC\nhttps://b.corp.google.com/issues/109719787",
+      "parentUuid": "983a597c_8847e8f6",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "141e15116dfe4c428fc730f4b2ef33f050303b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "535a025d_51982d83",
         "filename": "setup.py",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2018-06-15T20:32:25Z",
       "side": 1,
       "message": "can you add a comment as to what ftb files are?",
+      "revId": "141e15116dfe4c428fc730f4b2ef33f050303b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5979b386_a3b4c011",
+        "filename": "setup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-06-15T22:08:17Z",
+      "side": 1,
+      "message": "Would:\n\"Tool to convert ST delivered .ftb binaries to .bin\" be better?\nLooks like they validate and then strip off the header in the .ftb file.",
+      "parentUuid": "535a025d_51982d83",
       "revId": "141e15116dfe4c428fc730f4b2ef33f050303b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
