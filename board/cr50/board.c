@@ -29,6 +29,7 @@
 #include "system_chip.h"
 #include "task.h"
 #include "tpm_registers.h"
+#include "tpm_vendor_cmds.h"
 #include "trng.h"
 #include "uart_bitbang.h"
 #include "uartn.h"
@@ -1282,6 +1283,7 @@ static const char *key_type(const struct SignedHeader *h)
 		return "dev";
 }
 
+extern enum tpm_modes get_tpm_mode(void);
 static int command_sysinfo(int argc, char **argv)
 {
 	enum system_image_copy_t active;
@@ -1315,6 +1317,8 @@ static int command_sysinfo(int argc, char **argv)
 
 	system_get_rollback_bits(rollback_str, sizeof(rollback_str));
 	ccprintf("Rollback:    %s\n", rollback_str);
+
+	ccprintf("TPM_MODE:    %d\n", get_tpm_mode());
 
 	return EC_SUCCESS;
 }

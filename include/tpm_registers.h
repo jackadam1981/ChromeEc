@@ -60,6 +60,8 @@ void tpm_reinstate_nvmem_commits(void);
  */
 int tpm_sync_reset(int wipe_first);
 
+void tpm_stop(void);
+
 /*
  * This structure describes the header of all commands and responses sent and
  * received over TPM FIFO.
