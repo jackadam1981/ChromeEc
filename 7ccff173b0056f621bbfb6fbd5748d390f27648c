@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "080e2c41_84b3e0ee",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "Define this in header file. Also, I\u0027d explicitly set the values \u003d 1, \u003d 2, ...",
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8880a874_9a0cc927",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "TODO(b:...):",
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edfd34ee_26ca174b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "This whole section is getting confusing, I\u0027d do:\n\n#ifdef RT946X\nenum rt946x_irq { ... }\nstatic uint8_t rt946x_irqmask...\nstatic uint8_t rt946x_irqmaskall...\n#elif MT6370\nenum rt946x_irq { ... }\nstatic uint8_t rt946x_irqmask...\nstatic uint8_t rt946x_irqmaskall...\n#endif",
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69a4f278_8ac50873",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "Swap these 2 (it\u0027s a little confusing)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54170b76_fd513588",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "ditto (and the ones below too)",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7797221b_298461b0",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "CHGDPDM1 0x12 (rt946x) CHG_DEVICETYPE 0x22 (mt6370)",
+      "range": {
+        "startLine": 292,
+        "startChar": 14,
+        "endLine": 292,
+        "endChar": 47
+      },
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f899f646_5fb8f165",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "(rt946x)\n\nAnd then I\u0027d just ifdef the whole section here, so that you don\u0027t have to do that undef below.",
+      "range": {
+        "startLine": 340,
+        "startChar": 26,
+        "endLine": 340,
+        "endChar": 29
+      },
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd08dd60_59ceb110",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T05:53:31Z",
+      "side": 1,
+      "message": "(mt6370)",
+      "range": {
+        "startLine": 360,
+        "startChar": 26,
+        "endLine": 360,
+        "endChar": 29
+      },
+      "revId": "7ccff173b0056f621bbfb6fbd5748d390f27648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
