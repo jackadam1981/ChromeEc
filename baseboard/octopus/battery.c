@@ -17,14 +17,6 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(GPIO_EC_BATT_PRES_L) ? BP_NO : BP_YES;
 }
 
-static int battery_init(void)
-{
-	int batt_status;
-
-	return battery_status(&batt_status) ? 0 :
-		!!(batt_status & STATUS_INITIALIZED);
-}
-
 /*
  * Physical detection of battery.
  */
@@ -49,15 +41,9 @@ static enum battery_present battery_check_present_status(void)
 	if (batt_pres == batt_pres_prev)
 		return batt_pres;
 
-	/*
-	 * Ensure that battery is:
-	 * 1. Not in cutoff
-	 * 2. Initialized
-	 */
-	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_init() == 0) {
-		batt_pres = BP_NO;
-	}
+	/* Ensure that battery is Initialized */
+	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+		batt_pres = BP_WAKING;
 
 	return batt_pres;
 }
