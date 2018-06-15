@@ -7,6 +7,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "charge_state_v2.h"
 #include "gpio.h"
 
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
@@ -15,14 +16,6 @@ enum battery_present battery_hw_present(void)
 {
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(GPIO_EC_BATT_PRES_L) ? BP_NO : BP_YES;
-}
-
-static int battery_init(void)
-{
-	int batt_status;
-
-	return battery_status(&batt_status) ? 0 :
-		!!(batt_status & STATUS_INITIALIZED);
 }
 
 /*
@@ -49,15 +42,9 @@ static enum battery_present battery_check_present_status(void)
 	if (batt_pres == batt_pres_prev)
 		return batt_pres;
 
-	/*
-	 * Ensure that battery is:
-	 * 1. Not in cutoff
-	 * 2. Initialized
-	 */
-	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_init() == 0) {
-		batt_pres = BP_NO;
-	}
+	/* Ensure that battery is Initialized */
+	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+		batt_pres = BP_NOT_SURE;
 
 	return batt_pres;
 }
@@ -66,4 +53,32 @@ enum battery_present battery_is_present(void)
 {
 	batt_pres_prev = battery_check_present_status();
 	return batt_pres_prev;
+}
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	/*
+	 * If the battery is not yet initialized try to wake it by giving
+	 * pre-charge current and set the charge state to pre-charge.
+	 */
+	if (battery_is_present() == BP_NOT_SURE) {
+		curr->state = ST_PRECHARGE;
+		curr->requested_voltage = battery_get_info()->voltage_max;
+		curr->requested_current = battery_get_info()->precharge_current;
+	}
+
+	return 0;
+}
+
+/* TODO: Implement these functions if battery charging profile is implemented */
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
 }
