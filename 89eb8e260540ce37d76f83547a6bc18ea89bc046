@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28c088f0_48dff8fd",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-15T04:30:29Z",
+      "side": 1,
+      "message": "Just noticed, you need to initialize `id \u003d 0`.",
+      "revId": "89eb8e260540ce37d76f83547a6bc18ea89bc046",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
