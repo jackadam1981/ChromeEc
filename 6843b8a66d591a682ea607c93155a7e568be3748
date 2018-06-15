@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48e6e852_00bceb17",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-15T19:47:50Z",
+      "side": 1,
+      "message": "Please see the comment below. I think this will break previous Akali. Please verify.",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 2
+      },
+      "revId": "6843b8a66d591a682ea607c93155a7e568be3748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5099345b_c1efbf42",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-15T19:47:50Z",
+      "side": 1,
+      "message": "You need one more if here:\n\nif (board_version \u003e 0x200)...",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 791,
+        "endChar": 42
+      },
+      "revId": "6843b8a66d591a682ea607c93155a7e568be3748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
