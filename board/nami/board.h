@@ -293,6 +293,7 @@ enum oem_id {
 #define PD_MAX_POWER_MW			70000
 #define PD_MAX_CURRENT_MA		3500
 #define PD_MAX_VOLTAGE_MV		20000
+#define PD_PREFER_HIGH_VOLTAGE
 
 /* Board specific handlers */
 void board_reset_pd_mcu(void);
