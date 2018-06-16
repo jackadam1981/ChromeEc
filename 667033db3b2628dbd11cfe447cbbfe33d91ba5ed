@@ -16,6 +16,24 @@
       "revId": "667033db3b2628dbd11cfe447cbbfe33d91ba5ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb0d0c5c_fa445773",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2018-06-16T04:03:02Z",
+      "side": 1,
+      "message": "The grunt board only sku 16 is not support keyboard backlight, right?",
+      "parentUuid": "09d7f6b4_4435ecca",
+      "revId": "667033db3b2628dbd11cfe447cbbfe33d91ba5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
