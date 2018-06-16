@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f7ff911_7fa6f741",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-16T00:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a020732_ce66a25f",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0379d66_393552da",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d63f73b2_9172c9a6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-16T00:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0379d66_393552da",
+      "range": {
+        "startLine": 207,
+        "startChar": 28,
+        "endLine": 207,
+        "endChar": 31
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "8414e6fc_d0729266",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-16T00:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c706d48_d5ae940f",
+      "range": {
+        "startLine": 218,
+        "startChar": 43,
+        "endLine": 218,
+        "endChar": 46
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c1fd0a5_894ac7c9",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-16T00:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a435f97b_50d1e065",
+      "range": {
+        "startLine": 218,
+        "startChar": 12,
+        "endLine": 218,
+        "endChar": 42
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e398ce5a_d9af37b6",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2018-06-15T14:19:42Z",
       "side": 1,
       "message": "this will break if there a board uses the UNIMPLEMENTED(name) gpio macro. You need to define it as well to make an empty entry\n\nSee https://chromium.git.corp.google.com/chromiumos/platform/ec/+/master/include/gpio_signal.h#10",
+      "range": {
+        "startLine": 221,
+        "startChar": 30,
+        "endLine": 221,
+        "endChar": 53
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a17d55_38bacee4",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-16T00:06:55Z",
+      "side": 1,
+      "message": "I didn\u0027t notice that. Thanks.",
+      "parentUuid": "e398ce5a_d9af37b6",
       "range": {
         "startLine": 221,
         "startChar": 30,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "bd8f4aaa_ae6d5898",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-16T00:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e84c0969_1d9f6782",
+      "range": {
+        "startLine": 234,
+        "startChar": 5,
+        "endLine": 234,
+        "endChar": 32
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "611446a8_616ecd54",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c72e5c80_3e57287a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-16T00:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "611446a8_616ecd54",
+      "range": {
+        "startLine": 486,
+        "startChar": 5,
+        "endLine": 486,
+        "endChar": 48
+      },
+      "revId": "34dca0ec424ee73e514e5eed28a2f16d0fae3f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
