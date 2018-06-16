@@ -153,10 +153,16 @@ ALTERNATE(PIN_MASK(D, 0x03), 0, MODULE_I2C, 0)		/* I2C3 */
 ALTERNATE(PIN_MASK(F, 0x0C), 0, MODULE_I2C, 0)		/* I2C4 */
 ALTERNATE(PIN_MASK(B, 0x0C), 0, MODULE_I2C, (GPIO_INPUT | GPIO_SEL_1P8V)) /* 1.8V I2C7 */
 ALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)		/* ADC0-1 */
-
 /*
  * PWM3 needs to be configured for KB_BL_PWM on board versions >= 1. However, on
  * version 0, GPIO80 is used for ENTERING_RW signal and PWM alternate function
  * should be configured depending upon the board version. Hence, it is done in
  * update_drivers_from_board_id() in board.c file.
  */
+ALTERNATE(PIN_MASK(4, 0x02), 0, MODULE_ADC, 0)		/* ADC4: ADC_USB_C0_VBUS */
+ALTERNATE(PIN_MASK(F, 0x01), 0, MODULE_ADC, 0)		/* ADC9: ADC_USB_C1_VBUS */
+ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)		/* PWM3: KB_BL_PWM */
+
+/* Power Switch Logic (PSL) inputs */
+ALTERNATE(PIN_MASK(0, 0x03), 0, MODULE_PMU, 0) /* GPIO00, GPIO01, GPIO02 */
+ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, 0) /* GPIOD2 */

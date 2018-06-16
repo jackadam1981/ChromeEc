@@ -26,6 +26,8 @@
 	/* Internal SPI flash on NPCX7 */
 	/* Flash is 1MB but reserve half for future use. */
 	#define CONFIG_FLASH_SIZE (512 * 1024)
+	/* Enable NPCX Power Saving Mode */
+	#define CONFIG_HIBERNATE_PSL
 
 	#define CONFIG_SPI_FLASH_REGS
 	#define CONFIG_SPI_FLASH_W25Q128 /* Internal SPI flash type. */

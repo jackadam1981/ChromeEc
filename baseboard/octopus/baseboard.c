@@ -17,6 +17,7 @@
 #include "keyboard_scan.h"
 #include "power.h"
 #include "system.h"
+#include "system_chip.h"
 #include "task.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -290,6 +291,9 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 void board_hibernate(void)
 {
 	int port;
+#ifdef VARIANT_OCTOPUS_EC_NPCX796FB
+	int p;
+#endif
 
 	/*
 	 * To support hibernate called from console commands, ectool commands
@@ -325,4 +329,23 @@ void board_hibernate(void)
 		if (!pd_is_vbus_present(port))
 			ppc_vbus_sink_enable(port, 1);
 	}
+
+#ifdef VARIANT_OCTOPUS_EC_NPCX796FB
+		/* Configure PSL pins */
+	for (p = 0; p < hibernate_wake_pins_used; p++)
+		system_config_psl_mode(hibernate_wake_pins[p]);
+
+	/* Turn off PP3300_A rail */
+	gpio_set_level(GPIO_EN_PP3300, 0);
+	/* Turn off PP5000 rail */
+	gpio_set_level(GPIO_EN_PP5000, 0);
+	/* Enter PSL mode.*/
+	system_enter_psl_mode();
+
+
+	/* Wait for power to be cut. */
+	while (1)
+		;
+
+#endif
 }
