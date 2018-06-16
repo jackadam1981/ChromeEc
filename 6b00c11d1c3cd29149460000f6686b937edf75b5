@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "655432c9_b634994d",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-06-16T20:58:16Z",
+      "side": 1,
+      "message": "Experimentally determined. The value was incremented until the VBUS low glitch was not detected. The glitch wasn\u0027t detected at 430 mS.",
+      "range": {
+        "startLine": 30,
+        "startChar": 23,
+        "endLine": 30,
+        "endChar": 31
+      },
+      "revId": "6b00c11d1c3cd29149460000f6686b937edf75b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
