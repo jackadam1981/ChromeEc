@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c72a70fe_755f01ee",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-06-16T02:09:52Z",
+      "side": 1,
+      "message": "doc rev. 0.6, p24 claims that\nGPIO00 is already is PSL_IN2\u0026GPIO00 by default.\nPSL_IN3,4 are ALT functions.\n\ngood catch re. PSL4... strangely, not configuring\nPSL4 made the wake-on-power-button feature work.\nstrange relationship!",
+      "parentUuid": "c40e24f8_03d2c299",
+      "revId": "7841c17bb9dc6b905aec49a1f82221e6644a09ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "449a899a_2078cc45",
         "filename": "board/atlas/gpio.inc",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "7841c17bb9dc6b905aec49a1f82221e6644a09ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00f7c83_7e339727",
+        "filename": "board/atlas/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-06-16T02:09:52Z",
+      "side": 1,
+      "message": "PSL_IN1\u0026GPID2 is the default.\nlooks like only PSL3,4 are ALT functions.",
+      "parentUuid": "449a899a_2078cc45",
+      "revId": "7841c17bb9dc6b905aec49a1f82221e6644a09ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
