@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "12a901d3_70a2e433",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-06-18T23:22:22Z",
+      "side": 1,
+      "message": "The underlying problem is the EC receive the signal S3 is reached too early and the sensors are still not up. We had the same issue for a while:  see https://chromium-review.googlesource.com/433338, were a board specific delay was introduced.",
+      "parentUuid": "66f40e47_91dcd438",
+      "range": {
+        "startLine": 511,
+        "startChar": 11,
+        "endLine": 511,
+        "endChar": 15
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "727e843f_f674c0b4",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 3
@@ -172,6 +196,30 @@
       "side": 1,
       "message": "I\u0027ve grepped around for various uses of timeout counters in the ec code.  It appears that there is a mix of both upcounting and downcounting timoeouts.\n\nMy personal preference is that expressions like `while (x --\u003e 0)` are a little too cute unless they are universally used in a project\u0027s codebase.",
       "parentUuid": "727e843f_f674c0b4",
+      "range": {
+        "startLine": 516,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e31714_2bd294a0",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-06-18T23:22:22Z",
+      "side": 1,
+      "message": "the latest trend is to use a deadline, like kernel does:\n\n\ttimestamp_t deadline;\n\n\tdeadline.val \u003d get_time().val + (3 * SECOND);\n\twhile (!timestamp_expired(deadline, NULL)) {\n                ...\n\t\tmsleep(100);",
+      "parentUuid": "6bf3f0be_690c28e8",
       "range": {
         "startLine": 516,
         "startChar": 1,
