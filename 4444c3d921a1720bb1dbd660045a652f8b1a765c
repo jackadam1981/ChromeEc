@@ -22,6 +22,30 @@
       "revId": "4444c3d921a1720bb1dbd660045a652f8b1a765c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee0283d_8e77e295",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-06-18T23:04:41Z",
+      "side": 1,
+      "message": "The BC1.2 Chip might be able to tell you the difference between a dumb charger (type A) and a type A host on the other side.",
+      "parentUuid": "f76ce5b7_c6d54570",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "4444c3d921a1720bb1dbd660045a652f8b1a765c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
