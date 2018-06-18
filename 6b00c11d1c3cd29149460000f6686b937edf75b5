@@ -22,6 +22,98 @@
       "revId": "6b00c11d1c3cd29149460000f6686b937edf75b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a626f6_ca52862c",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-18T08:28:31Z",
+      "side": 1,
+      "message": "a comment would be welcome as I\u0027m not even what \u0027debounce_count\u0027 is exactly representing. Seems to be some sort of \u0027deadline\u0027 rather than a \u0027count\u0027",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "6b00c11d1c3cd29149460000f6686b937edf75b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02759675_aab3a616",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-18T08:28:31Z",
+      "side": 1,
+      "message": "I\u0027m lost here, why is debounce_count some kind of delay while it is an absolute timestamp in other places ?",
+      "range": {
+        "startLine": 1079,
+        "startChar": 0,
+        "endLine": 1081,
+        "endChar": 43
+      },
+      "revId": "6b00c11d1c3cd29149460000f6686b937edf75b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280c74c6_d09f9f69",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-18T08:28:31Z",
+      "side": 1,
+      "message": "rather than duplicating this code, you can probably unconditionally define\nstatic int bd9995x_is_vbus_read(enum bd9995x_charge_port port)\nthen here just do \u0027return bd9995x_is_vbus_read(port)\u0027, the compiler will take care of the leaf function optimization",
+      "range": {
+        "startLine": 1095,
+        "startChar": 0,
+        "endLine": 1114,
+        "endChar": 14
+      },
+      "revId": "6b00c11d1c3cd29149460000f6686b937edf75b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f7f434_56028b54",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-18T08:28:31Z",
+      "side": 1,
+      "message": "why do we need to poll here, isn\u0027t the charger generating interrupts on VBUS transitions ?",
+      "range": {
+        "startLine": 1278,
+        "startChar": 2,
+        "endLine": 1278,
+        "endChar": 39
+      },
+      "revId": "6b00c11d1c3cd29149460000f6686b937edf75b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
