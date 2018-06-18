@@ -160,7 +160,10 @@ static uint32_t fp_process_match(void)
 
 static void fp_process_finger(void)
 {
-	int res = fp_sensor_acquire_image_with_mode(fp_buffer,
+	int res;
+
+	CPRINTS("Capture");
+	res = fp_sensor_acquire_image_with_mode(fp_buffer,
 			FP_CAPTURE_TYPE(sensor_mode));
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
@@ -238,6 +241,8 @@ void fp_task(void)
 				gpio_enable_interrupt(GPIO_FPS_INT);
 		} else if (evt & (TASK_EVENT_SENSOR_IRQ | TASK_EVENT_TIMER)) {
 			gpio_disable_interrupt(GPIO_FPS_INT);
+			if (evt & TASK_EVENT_SENSOR_IRQ)
+				CPRINTS("Sensor IRQ");
 			if (sensor_mode & FP_MODE_ANY_DETECT_FINGER) {
 				st = fp_sensor_finger_status();
 				if (st == FINGER_PRESENT &&
