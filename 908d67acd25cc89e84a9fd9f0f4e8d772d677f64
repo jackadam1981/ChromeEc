@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7905fae_98eaa39d",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-18T14:33:23Z",
+      "side": 1,
+      "message": "How does renaming this to gpio_enable_1p8v_i2c_wake_up_input() sound?",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "908d67acd25cc89e84a9fd9f0f4e8d772d677f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
