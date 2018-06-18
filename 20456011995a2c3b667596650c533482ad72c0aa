@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4c47b5e6_732baae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-18T21:17:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0d5e4bfc_3aad6770",
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b1f1ac1_8b4d6977",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6ad6d2d4_24bf8ff7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-18T21:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "733f0ba0_ade17e4a",
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2978b09e_55ece765",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 3
@@ -77,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "66f40e47_91dcd438",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-18T21:17:15Z",
+      "side": 1,
+      "message": "I think it is worthwhile to audit all of the sensor drivers to see if lifting the time delay to that layer is appropriate.  However, that is beyond the scope of this CL.",
+      "parentUuid": "2978b09e_55ece765",
+      "range": {
+        "startLine": 511,
+        "startChar": 11,
+        "endLine": 511,
+        "endChar": 15
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "727e843f_f674c0b4",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 3
@@ -97,6 +157,30 @@
       "revId": "20456011995a2c3b667596650c533482ad72c0aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bf3f0be_690c28e8",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-18T21:17:15Z",
+      "side": 1,
+      "message": "I\u0027ve grepped around for various uses of timeout counters in the ec code.  It appears that there is a mix of both upcounting and downcounting timoeouts.\n\nMy personal preference is that expressions like `while (x --\u003e 0)` are a little too cute unless they are universally used in a project\u0027s codebase.",
+      "parentUuid": "727e843f_f674c0b4",
+      "range": {
+        "startLine": 516,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
