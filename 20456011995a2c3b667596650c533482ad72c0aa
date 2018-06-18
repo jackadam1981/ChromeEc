@@ -51,6 +51,52 @@
       "revId": "20456011995a2c3b667596650c533482ad72c0aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2978b09e_55ece765",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-18T15:26:59Z",
+      "side": 1,
+      "message": "the motion_sense_init function calls this function 3 times in an outer loop (http://shortn/_BFb5Ll0TuD). Do we still want each inner iteration to have 20ms?",
+      "range": {
+        "startLine": 511,
+        "startChar": 11,
+        "endLine": 511,
+        "endChar": 15
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727e843f_f674c0b4",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-18T15:26:59Z",
+      "side": 1,
+      "message": "more of a style things, but what do you think about starting with 20 here and decrementing on line 544. I have seen that in the EC codebase more.\n\nI don\u0027t feel super strong about it, just bring it up.",
+      "range": {
+        "startLine": 516,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
