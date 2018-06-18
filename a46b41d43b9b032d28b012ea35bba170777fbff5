@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21ac2fa_dbc97755",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-18T07:18:41Z",
+      "side": 1,
+      "message": "1 bit is not really a period ...\nlooking at the datasheet, it says \u0027x2 (half switching frequency)\u0027\nso it\u0027s really /2 but\nWorth documenting it ...",
+      "range": {
+        "startLine": 204,
+        "startChar": 13,
+        "endLine": 204,
+        "endChar": 40
+      },
+      "revId": "a46b41d43b9b032d28b012ea35bba170777fbff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
