@@ -196,7 +196,7 @@ struct upgrade_pkt {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikO:oPprstUuVvw";
+static char *short_opts = "aBbcd:F:fhIikmO:oPprstUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -205,6 +205,7 @@ static const struct option long_opts[] = {
 	{"board_id",                    2,   NULL, 'i'},
 	{"ccd_info",                    0,   NULL, 'I'},
 	{"ccd_lock",                    0,   NULL, 'k'},
+	{"tpm_mode",                    2,   NULL, 'm'},
 	{"ccd_open",                    0,   NULL, 'o'},
 	{"ccd_unlock",                  0,   NULL, 'U'},
 	{"corrupt",	                0,   NULL, 'c'},
@@ -525,6 +526,8 @@ static void usage(int errs)
 	       "                           ID could be 32 bit hex or 4 "
 	       "character string.\n"
 	       "  -k,--ccd_lock            Lock CCD\n"
+	       "  -m,--tpm_mode [enable|disable]\n"
+	       "                           Query or control tpm mode\n"
 	       "  -O,--openbox_rma <desc_file>\n"
 	       "                           Verify other device's RO integrity\n"
 	       "                           using information provided in "
@@ -1272,7 +1275,6 @@ uint32_t send_vendor_command(struct transfer_descriptor *td,
 			}
 		}
 	} else {
-
 		rv = tpm_send_pkt(td, 0, 0,
 				  command_body, command_body_size,
 				  response, response_size, subcommand);
@@ -1973,6 +1975,68 @@ static void report_version(void)
 	exit(0);
 }
 
+/*
+ * Get TPM_Mode value
+ */
+static int get_tpm_mode(struct transfer_descriptor *td, uint32_t *mode_val)
+{
+	int rv;
+	uint32_t response;
+	size_t response_size;
+
+	if (!mode_val) {
+		fprintf(stderr, "Null pointer passed to %s.\n", __func__);
+		return update_error;
+	}
+
+	response_size = sizeof(response);
+	rv = send_vendor_command(td, VENDOR_CC_GET_TPM_MODE,
+				NULL, 0, &response, &response_size);
+	if (rv) {
+		fprintf(stderr, "Error %d in getting TPM Mode.\n", rv);
+		return update_error;
+	}
+
+	*mode_val = be32toh(response);
+
+	if (response_size != sizeof(response)) {
+		fprintf(stderr, "Error in getting TPM Mode: response size %zd,"
+			" expected size %#02x.\n", response_size, *mode_val);
+		return update_error;
+	}
+
+	return rv;
+}
+
+/*
+ * Either Enable or Disable TPM.
+ */
+static int process_set_tpm_mode(struct transfer_descriptor *td,
+				const char *arg)
+{
+	int rv;
+	uint16_t subcommand;
+
+	if (!strcasecmp(arg, "disable")) {
+		subcommand = VENDOR_CC_DISABLE_TPM_MODE;
+	} else if (!strcasecmp(arg, "enable")) {
+		subcommand = VENDOR_CC_ENABLE_TPM_MODE;
+	} else {
+		fprintf(stderr, "Invalid tpm mode arg: %s.\n", arg);
+		return update_error;
+	}
+
+	rv = send_vendor_command(td, subcommand, NULL, 0, NULL, NULL);
+	if (rv) {
+		fprintf(stderr, "Error %d in %s TPM.\n", rv,
+			(subcommand == VENDOR_CC_DISABLE_TPM_MODE) ?
+			"disabling" : "enabling");
+		return update_error;
+	}
+
+	return rv;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -1997,11 +2061,14 @@ int main(int argc, char *argv[])
 	int ccd_info = 0;
 	int wp = 0;
 	int try_all_transfer = 0;
+	int tpm_mode = 0;
+
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
 	const char *openbox_desc_file = NULL;
 	int factory_mode = 0;
 	char *factory_mode_arg;
+	char *tpm_mode_arg = NULL;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -2072,6 +2139,13 @@ int main(int argc, char *argv[])
 			break;
 		case 'k':
 			ccd_lock = 1;
+			break;
+		case 'm':
+			tpm_mode = 1;
+			if (argv[optind] && argv[optind][0] != '-') {
+				/* optional argument present. */
+				tpm_mode_arg = argv[optind++];
+			}
 			break;
 		case 'O':
 			openbox_desc_file = optarg;
@@ -2162,6 +2236,7 @@ int main(int argc, char *argv[])
 	    !rma &&
 	    !show_fw_ver &&
 	    !openbox_desc_file &&
+	    !tpm_mode &&
 	    !wp) {
 		if (optind >= argc) {
 			fprintf(stderr,
@@ -2232,6 +2307,35 @@ int main(int argc, char *argv[])
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
+
+	if (tpm_mode) {
+		int rv;
+
+		if (tpm_mode_arg) {
+			rv = process_set_tpm_mode(&td, tpm_mode_arg);
+		} else {
+			uint32_t mode_val = (uint32_t) -1;
+
+			rv = get_tpm_mode(&td, &mode_val);
+
+			switch (mode_val) {
+			case tpm_mode_enabled_tentative:
+			case tpm_mode_enabled:
+				printf("TPM_is enabled (%d).\n", *mode_val);
+				break;
+
+			case tpm_mode_disabled:
+				printf("TPM_is disabled (%d).\n", *mode_val);
+				break;
+
+			default:
+				fprintf(stderr, "Error: failed in"
+					" getting TPM mode.\n");
+				break;
+			}
+		}
+		exit(rv);
+	}
 
 	if (data || show_fw_ver) {
 
