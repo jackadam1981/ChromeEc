@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "2c029e9e_5db96cd1",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-06-19T11:44:04Z",
+      "side": 1,
+      "message": "There\u0027s no NB for previous Akali (no G-sensor), is it OK not add \u0027if (board_version \u003e 0x200)\u0027 ?",
+      "parentUuid": "48e6e852_00bceb17",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 2
+      },
+      "revId": "6843b8a66d591a682ea607c93155a7e568be3748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5099345b_c1efbf42",
         "filename": "board/nami/board.c",
         "patchSetId": 3
