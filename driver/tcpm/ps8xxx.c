@@ -158,6 +158,52 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
+/* TODO(b/110400788): Revert after firmware updated to 0x39 */
+#ifdef CONFIG_USBC_PPC
+#define PS8751_GPIO_CTRL_ADDR 0x12
+#define PS8751_GPIO_ENABLE 0x44
+#define PS8751_GPIO_LEVEL 0x45
+#define PS8751_GPIO0 0x01
+static int ps8751_manual_src_gpio_control(int port, int enable)
+{
+	int ret, val;
+
+	/* Enables access to address 0x12, containing manual GPIO control */
+	ret = tcpc_write(port, 0xA0, 0x30);
+
+	if (ret)
+		return ret;
+
+	/* Enable GPIO0 control by setting bit0 to 1 of register 0x44 */
+	ret = i2c_read8(tcpc_config[port].i2c_host_port, PS8751_GPIO_CTRL_ADDR,
+			PS8751_GPIO_ENABLE, &val);
+
+	if (ret)
+		return ret;
+
+	ret = i2c_write8(tcpc_config[port].i2c_host_port, PS8751_GPIO_CTRL_ADDR,
+			 PS8751_GPIO_ENABLE, val | PS8751_GPIO0);
+
+	if (ret)
+		return ret;
+
+	/* Set GPIO0 level by setting bit0 of register 0x45 */
+	ret = i2c_read8(tcpc_config[port].i2c_host_port, PS8751_GPIO_CTRL_ADDR,
+			PS8751_GPIO_LEVEL, &val);
+
+	if (ret)
+		return ret;
+
+	if (enable)
+		val |= PS8751_GPIO0;
+	else
+		val &= ~PS8751_GPIO0;
+
+	return i2c_write8(tcpc_config[port].i2c_host_port,
+			  PS8751_GPIO_CTRL_ADDR, PS8751_GPIO_LEVEL, val);
+}
+#endif /* CONFIG_USBC_PPC */
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= &tcpci_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
@@ -186,7 +232,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 #endif
 #ifdef CONFIG_USBC_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
-	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
+	.set_src_ctrl		= &ps8751_manual_src_gpio_control,
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 };
