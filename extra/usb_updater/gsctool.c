@@ -196,7 +196,7 @@ struct upgrade_pkt {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikO:oPprstUuVvw";
+static char *short_opts = "aBbcd:F:fhIikm:O:oPprstUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -205,6 +205,7 @@ static const struct option long_opts[] = {
 	{"board_id",                    2,   NULL, 'i'},
 	{"ccd_info",                    0,   NULL, 'I'},
 	{"ccd_lock",                    0,   NULL, 'k'},
+	{"tpm_mode",                    1,   NULL, 'm'},
 	{"ccd_open",                    0,   NULL, 'o'},
 	{"ccd_unlock",                  0,   NULL, 'U'},
 	{"corrupt",	                0,   NULL, 'c'},
@@ -525,6 +526,8 @@ static void usage(int errs)
 	       "                           ID could be 32 bit hex or 4 "
 	       "character string.\n"
 	       "  -k,--ccd_lock            Lock CCD\n"
+	       "  -m,--tpm_mode [enable|disable]\n"
+	       "                           Control tpm mode\n"
 	       "  -O,--openbox_rma <desc_file>\n"
 	       "                           Verify other device's RO integrity\n"
 	       "                           using information provided in "
@@ -1973,6 +1976,34 @@ static void report_version(void)
 	exit(0);
 }
 
+/*
+ * Either Enable or Disable TPM.
+ */
+static int process_set_tpm_mode(struct transfer_descriptor *td,
+				const char *arg)
+{
+	int rv;
+	uint32_t command_body;
+
+	if (!strcasecmp(arg, "disable"))
+		command_body = htobe32(tpm_mode_disabled);
+	else if (!strcasecmp(arg, "enable"))
+		command_body = htobe32(tpm_mode_enabled);
+	else {
+		fprintf(stderr, "Invalid tpm mode arg: %s.\n", arg);
+		return update_error;
+	}
+
+	rv = send_vendor_command(td, VENDOR_CC_SET_TPM_MODE, &command_body, 4,
+				NULL, NULL);
+	if (rv) {
+		fprintf(stderr, "Error %d in setting TPM mode.\n", rv);
+		return update_error;
+	}
+
+	return rv;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -1997,11 +2028,14 @@ int main(int argc, char *argv[])
 	int ccd_info = 0;
 	int wp = 0;
 	int try_all_transfer = 0;
+	int tpm_mode = 0;
+
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
 	const char *openbox_desc_file = NULL;
 	int factory_mode = 0;
 	char *factory_mode_arg;
+	char *tpm_mode_arg = NULL;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -2072,6 +2106,10 @@ int main(int argc, char *argv[])
 			break;
 		case 'k':
 			ccd_lock = 1;
+			break;
+		case 'm':
+			tpm_mode = 1;
+			tpm_mode_arg = optarg;
 			break;
 		case 'O':
 			openbox_desc_file = optarg;
@@ -2162,6 +2200,7 @@ int main(int argc, char *argv[])
 	    !rma &&
 	    !show_fw_ver &&
 	    !openbox_desc_file &&
+	    !tpm_mode &&
 	    !wp) {
 		if (optind >= argc) {
 			fprintf(stderr,
@@ -2232,6 +2271,12 @@ int main(int argc, char *argv[])
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
+
+	if (tpm_mode) {
+		int rv = process_set_tpm_mode(&td, tpm_mode_arg);
+
+		exit(rv);
+	}
 
 	if (data || show_fw_ver) {
 
