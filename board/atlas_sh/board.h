@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Soraka ISH board configuration */
+/* Atlas sensor hub configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -15,10 +15,10 @@
 #define CONFIG_SYSTEM_UNLOCKED
 
 /*
- * By default, enable all console messages except HC, ACPI and event
- * The sensor stack is generating a lot of activity.
+ * By default, enable all console messages. Disable host command debug.
+ * TODO: Remove unused console messages.
  */
-#define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
+#define CC_DEFAULT CC_ALL
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
@@ -27,26 +27,26 @@
 #undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_CLOCK_CRYSTAL
 #define CONFIG_ISH_UART_0
+
 /* EC */
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
+/* ISH runs on RAM, disable RO */
+#undef CONFIG_FW_INCLUDE_RO
+#undef CONFIG_RW_MEM_OFF
+#undef CONFIG_RO_SIZE
+#undef CONFIG_RW_SIZE
+#define CONFIG_RW_MEM_OFF 0
+#define CONFIG_RO_SIZE 0
+#define CONFIG_RW_SIZE CONFIG_FLASH_SIZE
+
 /* I2C ports */
 #define I2C_PORT_TP ISH_I2C0
 
-/* Sensor */
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_HOST_EVENT
-
-/* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 1024
-
-/* Depends on how fast the AP boots and typical ODRs */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
-
-/* Undefine unfeatures */
+/* Features and modules */
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CMD_I2C_XFER
@@ -62,8 +62,6 @@
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_SWITCH
 #undef CONFIG_WATCHDOG
-
-/* Modules we want to exclude */
 #undef CONFIG_CMD_ACCELS
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_TEMP_SENSOR
@@ -74,23 +72,7 @@
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
-#include "registers.h"
 
-/*
- * Motion sensors:
- * When reading through IO memory is set up for sensors (IPC is used),
- * the first 2 entries must be accelerometers, then gyroscope.
- * For BMI160, accel, gyro and compass sensors must be next to each other.
- */
-enum sensor_id {
-	LID_ACCEL = 0,
-	LID_GYRO,
-	LID_MAG,
-	LID_BARO,
-};
-
-/* Sensors without hardware FIFO are in forced mode */
-/*#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_BARO)*/
 
 #endif /* !__ASSEMBLER__ */
 
