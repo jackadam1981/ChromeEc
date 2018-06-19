@@ -22,6 +22,30 @@
       "revId": "d36cc20dde367767f7ee451b7c2cd648ade7409c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a0aaf7_1780b588",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-19T16:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "030e998c_cc665e47",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 29
+      },
+      "revId": "d36cc20dde367767f7ee451b7c2cd648ade7409c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
