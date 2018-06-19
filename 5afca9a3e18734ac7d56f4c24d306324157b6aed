@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "c4e990b4_02be267f",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-19T17:58:48Z",
+      "side": 1,
+      "message": "please add this in alphanumerical order",
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3ab37c7_5e015e40",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
