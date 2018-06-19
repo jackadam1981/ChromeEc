@@ -70,6 +70,8 @@ enum vendor_cmd_cc {
 	 */
 	VENDOR_CC_WP = 39,
 
+	VENDOR_CC_SET_TPM_MODE = 40,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
@@ -97,6 +99,13 @@ enum vendor_cmd_rc {
 
 	/* Only 7 bits available; max is 127 */
 	VENDOR_RC_NO_SUCH_COMMAND = 127,
+};
+
+/* Tpm mode */
+enum tpm_modes {
+	TPM_MODE_ENABLED_TENTATIVE = 0,
+	TPM_MODE_ENABLED = 1,
+	TPM_MODE_DISABLED = 2,
 };
 
 /*
