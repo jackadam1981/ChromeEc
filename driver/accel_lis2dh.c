@@ -22,28 +22,8 @@
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 
-#ifdef CONFIG_ACCEL_FIFO
-/**
- * enable_fifo - Enable/Disable FIFO in LIS2DH
- * @s: Motion sensor pointer
- * @mode: fifo_modes
- * @en_dis: LIS2DH_EN_BIT/LIS2DH_DIS_BIT
- */
-static int enable_fifo(const struct motion_sensor_t *s, int mode, int en_dis)
-{
-	int ret;
-
-	ret = st_write_data_with_mask(s, LIS2DH_FIFO_CTRL_REG,
-				      LIS2DH_FIFO_MODE_MASK, mode);
-	if (ret != EC_SUCCESS)
-		return ret;
-
-	ret = st_write_data_with_mask(s, LIS2DH_CTRL5_ADDR, LIS2DH_FIFO_EN_MASK,
-				      en_dis);
-
-	return ret;
-}
-#endif /* CONFIG_ACCEL_FIFO */
+#define raw_read8  st_raw_read8
+#define raw_write8 st_raw_write8
 
 /**
  * set_range - set full scale range
@@ -92,7 +72,7 @@ static int get_range(const struct motion_sensor_t *s)
 {
 	struct stprivate_data *data = s->drv_data;
 
-	return LIS2DH_GAIN_TO_FS(data->base.range);
+	return data->base.range;
 }
 
 static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
@@ -102,13 +82,6 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	uint8_t reg_val;
 
 	mutex_lock(s->mutex);
-
-#ifdef CONFIG_ACCEL_FIFO
-	/* FIFO stop collecting events. Restart FIFO in Bypass mode */
-	ret = enable_fifo(s, LIS2DH_FIFO_BYPASS_MODE, LIS2DH_DIS_BIT);
-	if (ret != EC_SUCCESS)
-		goto unlock_rate;
-#endif /* CONFIG_ACCEL_FIFO */
 
 	if (rate == 0) {
 		/* Power Off device */
@@ -144,133 +117,10 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	if (ret == EC_SUCCESS)
 		data->base.odr = normalized_rate;
 
-#ifdef CONFIG_ACCEL_FIFO
-	/* FIFO restart collecting events */
-	ret = enable_fifo(s, LIS2DH_FIFO_STREAM_MODE, LIS2DH_EN_BIT);
-#endif /* CONFIG_ACCEL_FIFO */
-
 unlock_rate:
 	mutex_unlock(s->mutex);
 	return ret;
 }
-
-#ifdef CONFIG_ACCEL_FIFO
-/*
- * Load data from internal sensor FIFO (deep 32 byte)
- */
-static int load_fifo(struct motion_sensor_t *s)
-{
-	int ret, tmp, nsamples, i;
-	struct ec_response_motion_sensor_data vect;
-	int done = 0;
-	int *axis = s->raw_xyz;
-	uint8_t fifo[FIFO_READ_LEN];
-
-	/* Try to Empty FIFO */
-	do {
-		/* Read samples number in status register */
-		ret = raw_read8(s->port, s->addr, LIS2DH_FIFO_SRC_REG, &tmp);
-		if (ret != EC_SUCCESS)
-			return ret;
-
-		/* Check FIFO empty flag */
-		if (tmp & LIS2DH_FIFO_EMPTY_FLAG)
-			return EC_SUCCESS;
-
-		nsamples = (tmp & LIS2DH_FIFO_UNREAD_MASK) * OUT_XYZ_SIZE;
-
-		/* Limit FIFO read data to burst of FIFO_READ_LEN size because
-		 * read operatios in under i2c mutex lock */
-		if (nsamples > FIFO_READ_LEN)
-			nsamples = FIFO_READ_LEN;
-		else
-			done = 1;
-
-		ret = st_raw_read_n(s->port, s->addr, LIS2DH_OUT_X_L_ADDR, fifo,
-				 nsamples);
-		if (ret != EC_SUCCESS)
-			return ret;
-
-		for (i = 0; i < nsamples; i += OUT_XYZ_SIZE) {
-			/* Apply precision, sensitivity and rotation vector */
-			st_normalize(s, axis, &fifo[i]);
-
-			/* Fill vector array */
-			vect.data[0] = axis[0];
-			vect.data[1] = axis[1];
-			vect.data[2] = axis[2];
-			vect.flags = 0;
-			vect.sensor_num = 0;
-			motion_sense_fifo_add_data(&vect, s, 3,
-						   __hw_clock_source_read());
-			/*
-			 * TODO: get time at a more accurate spot.
-			 * Like in lis2dh_interrupt
-			 */
-		}
-	} while(!done);
-
-	return EC_SUCCESS;
-}
-#endif  /* CONFIG_ACCEL_FIFO */
-
-#ifdef CONFIG_ACCEL_INTERRUPTS
-static int config_interrupt(const struct motion_sensor_t *s)
-{
-	int ret;
-
-#ifdef CONFIG_ACCEL_FIFO_THRES
-	/* configure FIFO watermark level */
-	ret = st_write_data_with_mask(s, LIS2DH_FIFO_CTRL_REG,
-				   LIS2DH_FIFO_THR_MASK,
-				   CONFIG_ACCEL_FIFO_THRES);
-	if (ret != EC_SUCCESS)
-		return ret;
-	/* enable interrupt on FIFO watermask and route to int1 */
-	ret = st_write_data_with_mask(s, LIS2DH_CTRL3_ADDR,
-				   LIS2DH_FIFO_WTM_INT_MASK, 1);
-#endif /* CONFIG_ACCEL_FIFO */
-
-	return ret;
-}
-
-/**
- * lis2dh_interrupt - interrupt from int1/2 pin of sensor
- */
-void lis2dh_interrupt(enum gpio_signal signal)
-{
-	task_set_event(TASK_ID_MOTIONSENSE,
-		       CONFIG_ACCEL_LIS2DH_INT_EVENT, 0);
-}
-
-/**
- * irq_handler - bottom half of the interrupt stack.
- */
-static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
-{
-	int interrupt;
-
-	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
-	    (!(*event & CONFIG_ACCEL_LIS2DH_INT_EVENT))) {
-		return EC_ERROR_NOT_HANDLED;
-	}
-
-	/* read interrupt status register to reset source */
-	raw_read8(s->port, s->addr, LIS2DH_INT1_SRC_REG, &interrupt);
-
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-	*event |= CONFIG_GESTURE_TAP_EVENT;
-#endif
-#ifdef CONFIG_GESTURE_SIGMO
-	*event |= CONFIG_GESTURE_SIGMO_EVENT;
-#endif
-	/*
-	 * No need to read the FIFO here, motion sense task is
-	 * doing it on every interrupt.
-	 */
-	return EC_SUCCESS;
-}
-#endif  /* CONFIG_ACCEL_INTERRUPTS */
 
 static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
@@ -290,8 +140,7 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 static int read(const struct motion_sensor_t *s, vector_3_t v)
 {
 	uint8_t raw[OUT_XYZ_SIZE];
-	int ret, i, tmp = 0;
-	struct stprivate_data *data = s->drv_data;
+	int ret, tmp = 0;
 
 	ret = is_data_ready(s, &tmp);
 	if (ret != EC_SUCCESS)
@@ -327,8 +176,18 @@ static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
 	struct stprivate_data *data = s->drv_data;
+	int count = 10;
 
-	ret = raw_read8(s->port, s->addr, LIS2DH_WHO_AM_I_REG, &tmp);
+	do {
+		ret = st_raw_read8(s->port, s->addr, LIS2DH_WHO_AM_I_REG, &tmp);
+		if (ret != EC_SUCCESS) {
+			udelay(10);
+			count--;
+		} else {
+			break;
+		}
+	} while (count > 0);
+
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -376,12 +235,6 @@ static int init(const struct motion_sensor_t *s)
 	/* Set default resolution */
 	data->resol = LIS2DH_RESOLUTION;
 
-#ifdef CONFIG_ACCEL_INTERRUPTS
-	ret = config_interrupt(s);
-	if (ret != EC_SUCCESS)
-		return ret;
-#endif
-
 	return sensor_init_done(s);
 
 err_unlock:
@@ -402,7 +255,4 @@ const struct accelgyro_drv lis2dh_drv = {
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 	.perform_calib = NULL,
-#ifdef CONFIG_ACCEL_INTERRUPTS
-	.irq_handler = irq_handler,
-#endif /* CONFIG_ACCEL_INTERRUPTS */
 };
