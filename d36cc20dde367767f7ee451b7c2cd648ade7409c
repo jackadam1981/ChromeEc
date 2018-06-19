@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "030e998c_cc665e47",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-19T16:02:47Z",
+      "side": 1,
+      "message": "can you add a comment here saying we need to enable PWM mode for KB_BL_PWM signal?",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 293,
+        "endChar": 29
+      },
+      "revId": "d36cc20dde367767f7ee451b7c2cd648ade7409c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
