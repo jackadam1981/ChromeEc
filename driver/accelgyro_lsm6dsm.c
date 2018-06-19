@@ -491,6 +491,14 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
+	/*
+	 * Since 'stprivate_data a_data;' is the first member of lsm6dsm_data,
+	 * the address of lsm6dsm_data is the same as a_data's. Using this
+	 * fact, we can do the following conversion. This conversion is equal
+	 * to:
+	 *     struct lsm6dsm_data *lsm_data = s->drv_data;
+	 *     struct stprivate_data *data = &lsm_data->a_data;
+	 */
 	struct stprivate_data *data = s->drv_data;
 
 	ret = st_raw_read8(s->port, s->addr, LSM6DSM_WHO_AM_I_REG, &tmp);
