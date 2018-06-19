@@ -46,6 +46,53 @@
       "revId": "c2a0ff68344d41dfb7e4217aef47f3271ae7f0ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c82e4f99_080e701c",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-19T21:04:06Z",
+      "side": 1,
+      "message": "Oh okay. sounds good.",
+      "parentUuid": "032df18d_db90d8ba",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 19
+      },
+      "revId": "c2a0ff68344d41dfb7e4217aef47f3271ae7f0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b10abca_4d00b0d9",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-19T21:04:06Z",
+      "side": 1,
+      "message": "Safe to overwrite other bits to 0?",
+      "range": {
+        "startLine": 169,
+        "startChar": 30,
+        "endLine": 169,
+        "endChar": 34
+      },
+      "revId": "c2a0ff68344d41dfb7e4217aef47f3271ae7f0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
