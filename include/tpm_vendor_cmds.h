@@ -70,6 +70,8 @@ enum vendor_cmd_cc {
 	 */
 	VENDOR_CC_WP = 39,
 
+	VENDOR_CC_TPM_MODE = 40,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
