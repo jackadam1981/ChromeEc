@@ -22,6 +22,52 @@
       "revId": "3322a95ad24dc811f1b202e4ceba5963b2c9f85b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02be1e57_00385f1a",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1105529
+      },
+      "writtenOn": "2018-06-19T17:40:24Z",
+      "side": 1,
+      "message": "I think this should be after line 57 and remove line 60",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "3322a95ad24dc811f1b202e4ceba5963b2c9f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a90293_fd355247",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1105529
+      },
+      "writtenOn": "2018-06-19T17:40:24Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "3322a95ad24dc811f1b202e4ceba5963b2c9f85b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
