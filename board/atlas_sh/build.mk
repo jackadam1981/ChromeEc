@@ -8,4 +8,4 @@
 
 CHIP:=ish
 
-board-y=board.o chipset.o
+board-y=board.o
