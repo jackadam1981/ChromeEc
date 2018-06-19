@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64b37c1e_3542e179",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-19T22:13:31Z",
+      "side": 1,
+      "message": "I think you should do this in two CLs: one for changing sb_read_string and another for adding AP13J7K.",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "e20d7be59aeaa8e44c1ef3a39f32ea41a31ee8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
