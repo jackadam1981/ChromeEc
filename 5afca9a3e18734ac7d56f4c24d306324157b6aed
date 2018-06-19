@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3ab37c7_5e015e40",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:34:22Z",
+      "side": 1,
+      "message": "Please add a console command for printing the tpm_mode state. If tpm is disabled for some reason we should have a way of telling.",
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71cdc11_17c4af20",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:34:22Z",
+      "side": 1,
+      "message": "Can we rename this function? It is not really clear what it does from the name.\n\nLike set_tpm_is_enabled_func or something?\n\nAlso do we need to allow different functions to enable the tpm interface?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9962fa_cbe90701",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:34:22Z",
+      "side": 1,
+      "message": "Does order matter with this? Does this need to be registered after/before something?",
+      "range": {
+        "startLine": 35,
+        "startChar": 52,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704b229e_f48c3813",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:34:22Z",
+      "side": 1,
+      "message": "Everytime TPM_RST_L is asserted we should reset tpm_mode.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae9a059_326b9b2d",
+        "filename": "common/extension.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:34:22Z",
+      "side": 1,
+      "message": "These probably shouldn\u0027t be allowed from USB",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91eda87_7bf1cd3b",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:34:22Z",
+      "side": 1,
+      "message": "Please comment on how these are used",
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0956bb_a8ccfd6c",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:34:22Z",
+      "side": 1,
+      "message": "Why are these different commands? Should they be included in one? I think having different commands increases the space this uses a bunch.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
