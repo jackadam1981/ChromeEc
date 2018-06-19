@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f51648f2_b7ce6541",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-06-19T01:26:38Z",
+      "side": 1,
+      "message": "servod config template",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd9556d_3eb6cb91",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-06-19T01:26:38Z",
+      "side": 1,
+      "message": "import this from powerlog so that if there are changes to this, your file doesn\u0027t break. Also less code.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 5
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "491a737c_1a2b4321",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-06-19T01:26:38Z",
+      "side": 1,
+      "message": "channel, i2c_addr \u003d CHMAP[rec[\u0027channel\u0027]]\nmight be more pythonic",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 42
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c56aff6_3a12aa6b",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-06-19T01:26:38Z",
+      "side": 1,
+      "message": "should be True if you want to expose _mw, and _ma readings",
+      "range": {
+        "startLine": 112,
+        "startChar": 65,
+        "endLine": 112,
+        "endChar": 70
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b536582_ddc6872c",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-06-19T01:26:38Z",
+      "side": 1,
+      "message": "unclear what this check does?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1523eddd_bff18f24",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-06-19T01:26:38Z",
+      "side": 1,
+      "message": "undefined",
+      "range": {
+        "startLine": 140,
+        "startChar": 28,
+        "endLine": 140,
+        "endChar": 44
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
