@@ -48,6 +48,75 @@
     },
     {
       "key": {
+        "uuid": "e9bae102_3ebe5681",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1105529
+      },
+      "writtenOn": "2018-06-19T02:22:56Z",
+      "side": 1,
+      "message": "always use with to open file.\n\nwith open(file, \u0027w\u0027) as pyfile:",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f485e366_a0e5ab4b",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1105529
+      },
+      "writtenOn": "2018-06-19T02:22:56Z",
+      "side": 1,
+      "message": "Remove this.\n\nIt is cleaner to just add \u0027,\\n\u0027 to every line.",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591e9ea4_92405841",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1105529
+      },
+      "writtenOn": "2018-06-19T02:22:56Z",
+      "side": 1,
+      "message": "use !\u003d instead of not \u003d\u003d",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "491a737c_1a2b4321",
         "filename": "extra/usb_power/convert_power_log_board.py",
         "patchSetId": 5
@@ -94,6 +163,29 @@
     },
     {
       "key": {
+        "uuid": "dff7d3f4_791c969d",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1105529
+      },
+      "writtenOn": "2018-06-19T02:22:56Z",
+      "side": 1,
+      "message": "cleaner to just use set\n\n    sweetberry \u003d set(rec[\u0027sweetberry\u0027] for rec in inas)\n    if len(sweetberry) \u003d\u003d 2:\n        print \"Converting %s to %s and %s\" % (inputf, basename + \u0027_a.py\u0027,\n                                              basename + \u0027_b.py\u0027)\n        write_to_file(basename + \u0027_a.py\u0027, \u0027A\u0027, inas)\n        write_to_file(basename + \u0027_b.py\u0027, \u0027B\u0027, inas)\n    else:\n        print \"Converting %s to %s\" % (inputf, basename + \u0027.py\u0027)\n        write_to_file(basename + \u0027.py\u0027, sweetberry.pop(), inas)",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 28
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b536582_ddc6872c",
         "filename": "extra/usb_power/convert_power_log_board.py",
         "patchSetId": 5
@@ -110,6 +202,29 @@
         "startChar": 0,
         "endLine": 137,
         "endChar": 36
+      },
+      "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329467bb_e7b5f5ef",
+        "filename": "extra/usb_power/convert_power_log_board.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1105529
+      },
+      "writtenOn": "2018-06-19T02:22:56Z",
+      "side": 1,
+      "message": "has_sweetberry_b",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 28
       },
       "revId": "7180fdfbbad84cb0a9c366ca9334245b63eab490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
