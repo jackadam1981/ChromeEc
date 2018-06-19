@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ced6c2f8_9b281cd6",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-19T07:33:52Z",
+      "side": 1,
+      "message": "Missing C, 14 (USB_C0_DP_POLARITY)\nMissing B, 1 (USB_C0_DP_OE_L)",
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e10759_ea29587b",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-19T07:33:52Z",
+      "side": 1,
+      "message": "drop this commment",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa15e9f0_be0c7e93",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-19T07:33:52Z",
+      "side": 1,
+      "message": "drop this",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d2f696_c152fff5",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-19T07:33:52Z",
+      "side": 1,
+      "message": "Looks like this was dropped, remove, and replace with BOOTBLOCK_EN_L.",
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ba899b_a9683d92",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-19T07:33:52Z",
+      "side": 1,
+      "message": "Drop, not on schematics (LED to be controlled by MT6370).",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984b8dac_15335d0c",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-19T07:33:52Z",
+      "side": 1,
+      "message": "drop FIXME",
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed6e82f1_ee030849",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-19T07:33:52Z",
+      "side": 1,
+      "message": "B, 12",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 73
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
