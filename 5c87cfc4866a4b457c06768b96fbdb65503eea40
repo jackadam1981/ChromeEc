@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a40d715b_55c6f57d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2250,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-06-19T23:09:31Z",
+      "side": 1,
+      "message": "Whoops, forgot to remove this bit.",
+      "range": {
+        "startLine": 2248,
+        "startChar": 0,
+        "endLine": 2250,
+        "endChar": 35
+      },
+      "revId": "5c87cfc4866a4b457c06768b96fbdb65503eea40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
