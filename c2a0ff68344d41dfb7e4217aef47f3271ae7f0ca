@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f00c4ab9_7499eff9",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-19T19:25:48Z",
+      "side": 1,
+      "message": "Do we want to add another config option CONFIG_TCPM_MANUAL_SRC_CONTROL and call into ps8751_manual_src_gpio_control or tcpci_tcpm_set_src_ctrl depending upon the config set? That way different boards can have different implementations depending upon the tcpc firmware version they are running with. Also, the only thing that needs to be flipped later on is the config selection in board.",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 19
+      },
+      "revId": "c2a0ff68344d41dfb7e4217aef47f3271ae7f0ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
