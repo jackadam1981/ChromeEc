@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c8f5fdf4_290f014c",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-19T09:26:28Z",
+      "side": 1,
+      "message": "Done\nUSB_C0_DP_OE_L changes to C, 5",
+      "parentUuid": "ced6c2f8_9b281cd6",
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57e10759_ea29587b",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 13
@@ -39,6 +57,30 @@
       "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1e984d_fb08ed33",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-19T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57e10759_ea29587b",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "394fc4d8_42b05dac",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-19T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa15e9f0_be0c7e93",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67d2f696_c152fff5",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 13
@@ -79,6 +145,24 @@
       "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11967f36_a51ada91",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-19T09:26:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "67d2f696_c152fff5",
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d65de0dd_4fac2a0c",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-19T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3ba899b_a9683d92",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "984b8dac_15335d0c",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 13
@@ -119,6 +227,24 @@
       "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c92c804f_676457c4",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-19T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "984b8dac_15335d0c",
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +268,30 @@
       "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb06b6ff_035af006",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-19T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed6e82f1_ee030849",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 73
+      },
+      "revId": "2b228a9822084cc77f3355ec3a5a192528c051b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
