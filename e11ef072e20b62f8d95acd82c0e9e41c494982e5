@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4da67a5f_892798c4",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-19T15:15:15Z",
+      "side": 1,
+      "message": "remove this TODO comment since you are adding interrupt support",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 74
+      },
+      "revId": "e11ef072e20b62f8d95acd82c0e9e41c494982e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc72f3c9_797e5d9a",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-19T15:15:15Z",
+      "side": 1,
+      "message": "are we only polling this sensor, not using an interrupt?",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 20
+      },
+      "revId": "e11ef072e20b62f8d95acd82c0e9e41c494982e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec1b028d_87533a8c",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-19T15:15:15Z",
+      "side": 1,
+      "message": "please use st_raw_read8 and st_raw_write8 directly in the file instead of making using an macro indirection",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "e11ef072e20b62f8d95acd82c0e9e41c494982e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d5a18d_d89b4036",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-19T15:15:15Z",
+      "side": 1,
+      "message": "please add a comment of why you are retying here",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 10
+      },
+      "revId": "e11ef072e20b62f8d95acd82c0e9e41c494982e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
