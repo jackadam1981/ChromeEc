@@ -46,6 +46,30 @@
       "revId": "b69ec46cc07a1895f7f7565febecea5eb63b05d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e73112_0f12dba2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-19T14:38:31Z",
+      "side": 1,
+      "message": "I should have just read the datasheet, sorry. I thought that line was enabling Vconn current limit (not setting the value). Thanks",
+      "parentUuid": "fefc7760_40abd1bd",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "b69ec46cc07a1895f7f7565febecea5eb63b05d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
