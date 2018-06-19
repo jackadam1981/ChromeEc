@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fc55121f_c3aa8630",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-19T17:36:30Z",
+      "side": 1,
+      "message": "After rebooting the DUT, we shouldn\u0027t need to enable the TPM it should already be enabled.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3ab37c7_5e015e40",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
