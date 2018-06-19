@@ -55,6 +55,7 @@ enum vendor_cmd_cc {
 	VENDOR_CC_GET_ALERTS_DATA = 35,
 	VENDOR_CC_SPI_HASH = 36,
 	VENDOR_CC_PINWEAVER = 37,
+
 	/*
 	 * Check the factory reset settings. If they're all set correctly, do a
 	 * factory reset to enable ccd factory mode. All capabilities will be
@@ -69,6 +70,10 @@ enum vendor_cmd_cc {
 	 * WPV subcommands.
 	 */
 	VENDOR_CC_WP = 39,
+
+	VENDOR_CC_ENABLE_TPM_MODE = 40,
+	VENDOR_CC_DISABLE_TPM_MODE = 41,
+	VENDOR_CC_GET_TPM_MODE = 42,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
@@ -97,6 +102,13 @@ enum vendor_cmd_rc {
 
 	/* Only 7 bits available; max is 127 */
 	VENDOR_RC_NO_SUCH_COMMAND = 127,
+};
+
+/* Tpm mode */
+enum tpm_modes {
+	tpm_mode_enabled_tentative = 0,
+	tpm_mode_enabled = 1,
+	tpm_mode_disabled = 2,
 };
 
 /*
