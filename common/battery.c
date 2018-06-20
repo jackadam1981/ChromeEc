@@ -555,3 +555,45 @@ static void battery_init(void)
 DECLARE_HOOK(HOOK_INIT, battery_init, HOOK_PRIO_DEFAULT);
 #endif /* HAS_TASK_HOSTCMD */
 #endif /* CONFIG_BATTERY_V2 */
+
+#ifdef CONFIG_GET_DISPLAY_CHARGE
+/*
+ * The soc at which powerd shuts down the system. Powerd reads it from
+ * low_battery_shutdown_percent.
+ * TODO: Get battery_shutdown_soc from powerd
+ */
+static const int battery_shutdown_soc = 4;
+
+/*
+ * The soc above which powerd considers the battery is full. (Powerd reads it
+ * from power_supply_full_factor.
+ * TODO: Get battery_full_soc from powerd
+ */
+static const int battery_full_soc = 97;
+
+void get_display_charge(struct batt_params *batt)
+{
+	int rem, cap, numer, denom;
+
+	rem = batt->remaining_capacity;
+	cap = batt->full_capacity;
+
+	if (rem <= 0 || cap <= 0)
+		return;
+
+	/* ACPI converts remaining capacity to full capacity if it's within
+	 * 1/16 (~6%) of the full capacity. */
+	if (rem > (cap - (cap >> 4)))
+		rem = cap;
+	/*
+	 * Powerd uses the following equation to calculate display percentage:
+	 *   soc = rem/cap * 100;
+	 *   100 * (soc - battery_shutdown_soc) /
+	 *         (battery_full_soc - battery_shutdown_soc);
+	 */
+	numer = (100 * rem - cap * battery_shutdown_soc) * 100;
+	denom = cap * (battery_full_soc - battery_shutdown_soc);
+	/* Rounding (instead of truncating) */
+	batt->display_charge = (numer + denom / 2) / denom;
+}
+#endif
