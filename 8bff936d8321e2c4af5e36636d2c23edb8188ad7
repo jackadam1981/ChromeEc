@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5ff6288_511a0d39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-06-20T02:16:25Z",
+      "side": 1,
+      "message": "Done. Please help to review new description.",
+      "parentUuid": "48c444a5_4994d289",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "8bff936d8321e2c4af5e36636d2c23edb8188ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e36fb4a_a6e00768",
         "filename": "board/nami/board.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "64ec8676_fa5fb8ea",
+        "filename": "board/nami/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-06-20T02:16:25Z",
+      "side": 1,
+      "message": "In electronics, a choke is an inductor used to block higher-frequency alternating current (AC) in an electrical circuit, while passing lower-frequency or direct current (DC).",
+      "parentUuid": "4e36fb4a_a6e00768",
+      "range": {
+        "startLine": 295,
+        "startChar": 38,
+        "endLine": 295,
+        "endChar": 43
+      },
+      "revId": "8bff936d8321e2c4af5e36636d2c23edb8188ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9645c9b4_c2ee6be3",
         "filename": "board/nami/board.c",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "8bff936d8321e2c4af5e36636d2c23edb8188ad7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d67ece_f1f166e6",
+        "filename": "board/nami/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-06-20T02:16:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9645c9b4_c2ee6be3",
+      "range": {
+        "startLine": 302,
+        "startChar": 20,
+        "endLine": 302,
+        "endChar": 42
+      },
+      "revId": "8bff936d8321e2c4af5e36636d2c23edb8188ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
