@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af92de71_6877d276",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-20T21:17:02Z",
+      "side": 1,
+      "message": "you should check that there is no error, exactly one byte returned, and the byte is of a valid value.",
+      "range": {
+        "startLine": 2013,
+        "startChar": 0,
+        "endLine": 2015,
+        "endChar": 0
+      },
+      "revId": "acf265d44ed88a418f72f039f55e9d434f28a695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
