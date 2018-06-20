@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34da8967_5660fc9c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-20T16:46:24Z",
+      "side": 1,
+      "message": "to be able to support both read and write with the same command line option the code here should check if the next token in the command line is the parameter of -m or another command line option (like is done in the case for \u0027i\u0027 above.",
+      "revId": "4186ab142e1a5dd8ab66cebd43b0106a68ac38a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
