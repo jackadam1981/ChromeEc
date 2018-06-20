@@ -92,6 +92,11 @@ uint32_t charge_get_flags(void);
 int charge_get_percent(void);
 
 /**
+ * Return the current display charge percentage.
+ */
+int charge_get_display_charge(void);
+
+/**
  * Check if board is consuming full input current
  *
  * This returns true if the battery charge percentage is between 2% and 95%
