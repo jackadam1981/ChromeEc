@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4a49212a_7d185e99",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-06-20T05:41:04Z",
+      "side": 1,
+      "message": "at least, we also need the \"set_app_count\".\n\nI thought about something like: write_app_buffer(config, buffer, buf_len)\nHowever, in practice, we will write a header and then some data, so we will call write_app_buffer twice with different offsets.\n\nAnother possible API proposal is:\n\n  int write_app_buffer(config, src, src_len, dst_offset, \u0026dtog_value)\n\nSample usage:\n  int dtog_value \u003d -1;\n  int ret;\n  size_t total_len \u003d 0;\n  ret \u003d write_app_buffer(config, \u0026header, header_len, 0, \u0026dtog_value);\n  if (ret \u003c 0) ...\n  else total_len +\u003d ret;\n  ret \u003d write_app_buffer(config, \u0026data, data_len, total_len, \u0026dtog_value);\n  if (ret \u003c 0) ...\n  else total_len +\u003d ret;\n  ...  // other write_app_buffer call\n  ret \u003d commit_app_buffer(config, total_len, \u0026dtog_value);\n  if (ret \u003c 0) ...\n\nIn the first call, dtog_value is -1, write_app_buffer will set it to current DTOG value without checking it.\nIn subsequence calls, dtog_value is already set, we will check if dtog_value is still the same.\nAnd `commit_app_buffer` will set the {tx|rx}_count.\n(Potentially, we can merge commit_app_buffer and write_app_buffer into one function.)",
+      "parentUuid": "e499a118_0a94823b",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b19dd93_a61adc2d",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7422a81f_8ab579ab",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-06-20T05:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b19dd93_a61adc2d",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f14e20f2_161b1521",
         "filename": "chip/stm32/usb_isochronous.h",
         "patchSetId": 6
@@ -50,6 +86,24 @@
       "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d603d60_72bec1c3",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-06-20T05:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14e20f2_161b1521",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
