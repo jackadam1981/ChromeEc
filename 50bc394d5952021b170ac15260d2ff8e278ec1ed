@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9be16e38_0b24e40e",
+        "filename": "COMMIT-QUEUE.ini",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2018-06-20T18:48:08Z",
+      "side": 0,
+      "message": "Do you mind keeping or changing this to kevin-no-vmtest-pre-cq, as are now special cased and caused so many issues? And maybe at least add the other ARM board, as otherwise you are only compiling in the pre-cq against Intel boards?",
+      "range": {
+        "startLine": 13,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "50bc394d5952021b170ac15260d2ff8e278ec1ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
