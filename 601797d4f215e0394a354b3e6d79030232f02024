@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e5afb56_68527bef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-20T21:12:49Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d8f6ff1_d97821bf",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-20T21:12:49Z",
+      "side": 1,
+      "message": "the way it is implemented this command always returns current mode as a single byte payload, please mention this in the comment.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 60
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42865114_1e52a39e",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-20T21:12:49Z",
+      "side": 1,
+      "message": "this should be just VENDOR_CC_TPM_MODE now",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f9a043_042f64af",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-20T21:12:49Z",
+      "side": 1,
+      "message": "this does not belong in this file,  tpm_registers.h is a better candidate.\n\nalso, we don\u0027t put \u0027extern\u0027 in front of function protototypes.",
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
