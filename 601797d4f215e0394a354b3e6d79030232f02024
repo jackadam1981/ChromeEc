@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "46f8bc7c_0f761975",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-20T22:23:17Z",
+      "side": 1,
+      "message": "I think putting in in the appropriate bss section in line 23 above takes care of that.",
+      "parentUuid": "fcc16620_3902cd36",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d8f6ff1_d97821bf",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 4
