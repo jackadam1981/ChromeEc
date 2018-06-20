@@ -1284,7 +1284,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_COMMAND;
 
 		ret = sensor->drv->get_offset(sensor, out->sensor_offset.offset,
-				&out->sensor_offset.temp);
+					&out->sensor_offset.temp);
 		if (ret != EC_SUCCESS)
 			return ret;
 		args->response_size = sizeof(out->sensor_offset);
