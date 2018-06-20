@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0c42ce5_498bf6c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-20T01:36:30Z",
+      "side": 1,
+      "message": "If you don\u0027t describe what these are, there is little meaning to have them here. The diff can tell these anyway.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "d142cd7d98afa9477f1987cff42f6add955769dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac46eed_90a1ba3b",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-20T01:36:30Z",
+      "side": 1,
+      "message": "This name has to be updated. It\u0027s no longer rotation at 180 on x axis, rotation 180 on y axis.",
+      "range": {
+        "startLine": 552,
+        "startChar": 19,
+        "endLine": 552,
+        "endChar": 34
+      },
+      "revId": "d142cd7d98afa9477f1987cff42f6add955769dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
