@@ -180,6 +180,8 @@ static struct led_pattern battery_error = {LED_AMBER, BLINK(10)};
 /* Pattern for low state of charge. Only battery LED is supported. */
 static struct led_pattern low_battery = {LED_WHITE, BLINK(10)};
 static int low_battery_soc;
+static const int battery_shutdown_soc = 4;
+static const int battery_full_soc = 97;
 static void led_charge_hook(void);
 static enum led_power_state power_state;
 
@@ -195,6 +197,7 @@ static void led_init(void)
 		break;
 	case PROJECT_SONA:
 		patterns[0] = &battery_pattern_1;
+		low_battery_soc = 10;
 		break;
 	case PROJECT_PANTHEON:
 		patterns[0] = &battery_pattern_2;
@@ -369,6 +372,16 @@ static void start_tick(enum ec_led_id id)
 		tick_power();
 }
 
+/*
+ * Convert actual battery percentage to display percentage. The result can
+ * exceed 100, which means it's 'full'. It also can be negative.
+ */
+static int display_percent(int soc)
+{
+	return 100 * (soc - battery_shutdown_soc) /
+			(battery_full_soc - battery_shutdown_soc);
+}
+
 void config_one_led(enum ec_led_id id, enum led_charge_state charge)
 {
 	const led_patterns *pattern;
@@ -380,7 +393,7 @@ void config_one_led(enum ec_led_id id, enum led_charge_state charge)
 
 	if (id == EC_LED_ID_BATTERY_LED &&
 			charge == LED_STATE_DISCHARGE &&
-			charge_get_percent() < low_battery_soc)
+			display_percent(charge_get_percent()) < low_battery_soc)
 		p = low_battery;
 	else
 		p = (*pattern)[charge][power_state];
@@ -412,11 +425,15 @@ static void call_handler(void)
 		config_leds(LED_STATE_DISCHARGE);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		config_leds(LED_STATE_FULL);
-		break;
 	case PWR_STATE_CHARGE:
-		config_leds(LED_STATE_CHARGE);
+	{
+		int soc = display_percent(charge_get_percent());
+		if (soc >= 100)
+			config_leds(LED_STATE_FULL);
+		else
+			config_leds(LED_STATE_CHARGE);
 		break;
+	}
 	case PWR_STATE_ERROR:
 		led_alert(1);
 		break;
