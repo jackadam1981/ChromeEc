@@ -115,6 +115,30 @@
       "revId": "6843b8a66d591a682ea607c93155a7e568be3748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e17ba3_82d6d227",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-06-20T01:20:33Z",
+      "side": 1,
+      "message": "Our EE already confirm that this setting is for Akali every stage.",
+      "parentUuid": "5099345b_c1efbf42",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 791,
+        "endChar": 42
+      },
+      "revId": "6843b8a66d591a682ea607c93155a7e568be3748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
