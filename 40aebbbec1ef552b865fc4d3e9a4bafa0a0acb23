@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f48bab20_3a5273c7",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T00:48:52Z",
+      "side": 1,
+      "message": "I think we probably want OUT_HIGH as default.",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f61672f3_b3b07a06",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T00:48:52Z",
+      "side": 1,
+      "message": "0-ohm is not stuffed, but I\u0027d put this as GPIO_ODR_HIGH anyway.",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70f87fd7_40e6e9e7",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T00:48:52Z",
+      "side": 1,
+      "message": "You\u0027re going to fight against the AP if you do that. GPIO_ODR_HIGH for now.",
+      "range": {
+        "startLine": 80,
+        "startChar": 39,
+        "endLine": 80,
+        "endChar": 51
+      },
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffb52da_a14f4f8f",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T00:48:52Z",
+      "side": 1,
+      "message": "This whole file needs updating. I recommend stripping to minimum for now, and implement in another CL (LEDs are connected to MT6370 on this platform).",
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
