@@ -317,6 +317,23 @@ coverage: TEST_FLAG=TEST_COVERAGE=y
 coverage: $(cov-test-targets)
 	$(call quiet,report_cov,REPORT )
 
+# Fuzzing tests
+
+fuzz-test-targets=$(foreach t,$(fuzz-test-list-host),host-$(t))
+
+.PHONY: $(fuzz-test-targets)
+
+$(fuzz-test-targets): host-%:
+	@set -e ; \
+	$(call echo,"  BUILD   host - build/host/$*") \
+	$(MAKE) --no-print-directory BOARD=host PROJECT=$* \
+		V=$(V) out=build/host/$* TEST_BUILD=y EMU_BUILD=y $(TEST_FLAG) \
+		CROSS_COMPILE= build/host/$*/$*.exe
+
+.PHONY: buildfuzztests
+buildfuzztests: TEST_FLAG=TEST_FUZZ=y TEST_ASAN=y
+buildfuzztests: $(fuzz-test-targets)
+
 $(out)/firmware_image.lds: common/firmware_image.lds.S
 	$(call quiet,lds,LDS    )
 $(out)/%.lds: core/$(CORE)/ec.lds.S
