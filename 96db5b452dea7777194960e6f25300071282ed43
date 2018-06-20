@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d2fc13_6d887e06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-06-20T02:29:30Z",
+      "side": 1,
+      "message": "This issue only happened on cold boot.",
+      "range": {
+        "startLine": 17,
+        "startChar": 28,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "96db5b452dea7777194960e6f25300071282ed43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe97be95_6cf8ebbd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3645,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-06-20T02:29:30Z",
+      "side": 1,
+      "message": "pd_dfp_exit_mode() always return 0 when this variable is 0.",
+      "range": {
+        "startLine": 3645,
+        "startChar": 27,
+        "endLine": 3645,
+        "endChar": 28
+      },
+      "revId": "96db5b452dea7777194960e6f25300071282ed43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
