@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a0475226_e38cbbae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T23:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e5afb56_68527bef",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "924748a0_c99bc6a7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "601797d4f215e0394a354b3e6d79030232f02024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc35778_168763d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T23:16:10Z",
+      "side": 1,
+      "message": "Will create another patch of adding a test case in the autotest suite, and let it be trackable in b/110488978.",
+      "parentUuid": "924748a0_c99bc6a7",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4477022c_2b998e0e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T23:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f567ba6_403b19d8",
+      "range": {
+        "startLine": 1322,
+        "startChar": 11,
+        "endLine": 1322,
+        "endChar": 19
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a266f66_d5f9ed83",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "601797d4f215e0394a354b3e6d79030232f02024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "889a4cb3_1a90ecd2",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T23:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a266f66_d5f9ed83",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +258,30 @@
       "revId": "601797d4f215e0394a354b3e6d79030232f02024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c3e5835_e4e95802",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T23:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46f8bc7c_0f761975",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
