@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ccf3b5bb_3ecb1431",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-20T01:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f48bab20_3a5273c7",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f61672f3_b3b07a06",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f888781_3d927cbb",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-20T01:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f61672f3_b3b07a06",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5f8a1831_7a6be361",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-20T01:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f87fd7_40e6e9e7",
+      "range": {
+        "startLine": 80,
+        "startChar": 39,
+        "endLine": 80,
+        "endChar": 51
+      },
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ffb52da_a14f4f8f",
         "filename": "board/kukui/led.c",
         "patchSetId": 14
@@ -85,6 +157,24 @@
       "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1d0539_0a29ec4e",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-20T01:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ffb52da_a14f4f8f",
+      "revId": "40aebbbec1ef552b865fc4d3e9a4bafa0a0acb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
