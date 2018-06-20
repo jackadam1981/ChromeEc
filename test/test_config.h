@@ -294,5 +294,10 @@ enum nvmem_vars {
 #define CONFIG_CURVE25519
 #endif /* TEST_X25519 */
 
+#ifdef TEST_HOST_COMMAND
+#undef CONFIG_HOSTCMD_DEBUG_MODE
+#define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_PARAMS
+#endif
+
 #endif  /* TEST_BUILD */
 #endif  /* __TEST_TEST_CONFIG_H */

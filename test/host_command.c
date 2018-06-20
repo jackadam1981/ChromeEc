@@ -13,6 +13,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include <pthread.h>
+
 struct host_packet pkt;
 static char resp_buf[128];
 static char req_buf[128];
@@ -40,7 +42,7 @@ static char calculate_checksum(const char *buf, int size)
 
 static void hostcmd_send(void)
 {
-	req->checksum = calculate_checksum(req_buf, pkt.request_size);
+	req->checksum = calculate_checksum(req_buf, MIN(sizeof(req_buf), pkt.request_size));
 	host_packet_receive(&pkt);
 	task_wait_event(-1);
 }
@@ -65,6 +67,7 @@ static void hostcmd_fill_in_default(void)
 	pkt.driver_result = 0;
 }
 
+#if 0
 static int test_hostcmd_ok(void)
 {
 	hostcmd_fill_in_default();
@@ -183,3 +186,45 @@ void run_test(void)
 
 	test_print_result();
 }
+#endif
+
+void run_test(void)
+{
+	ccprintf("Test!");
+}
+
+int xmain(int argc, char **argv);
+
+void *_main_thread(void *a)
+{
+	char *argv[] = { "fuzzer" };
+
+	xmain(1, argv);
+
+	return NULL;
+}
+
+static int init;
+static pthread_t main_t;
+
+int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
+	if (!init) {
+		pthread_create(&main_t, NULL, _main_thread, NULL);
+		wait_for_task_started();
+		ccprintf("Init ok.");
+		init = 1;
+	}
+
+	if (size > sizeof(req_buf))
+		return 0;
+
+	hostcmd_fill_in_default();
+	memset(req_buf, 0, sizeof(req_buf));
+	memcpy(req_buf, data, size);
+	pkt.request_size = size;
+
+	hostcmd_send();
+
+	return 0;
+}
+

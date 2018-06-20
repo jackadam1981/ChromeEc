@@ -12,6 +12,8 @@
 #include "timer.h"
 #include "util.h"
 
+#define CONFIG_HOOK_DEBUG
+
 #ifdef CONFIG_HOOK_DEBUG
 #define CPUTS(outstr) cputs(CC_HOOK, outstr)
 #define CPRINTS(format, args...) cprints(CC_HOOK, format, ## args)
@@ -111,10 +113,15 @@ void hook_notify(enum hook_type type)
 	end = hook_list[type].end;
 	count = end - start;
 
+	CPRINTS("start %p end %p count %d", start, end, count);
+
 	/* Call all the hooks in priority order */
 	while (called < count) {
+		CPRINTS("called %d count %d", called, count);
+
 		/* Find the lowest remaining priority */
 		for (p = start, prio = HOOK_PRIO_LAST + 1; p < end; p++) {
+			CPRINTS("test %p", p);
 			if (p->priority < prio && p->priority > last_prio)
 				prio = p->priority;
 		}

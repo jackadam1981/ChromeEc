@@ -26,7 +26,11 @@ HOST_CROSS_COMPILE:=$(if $(shell which x86_64-pc-linux-gnu-$(cc-name) 2>/dev/nul
 endif
 
 CC=$(CCACHE) $(CROSS_COMPILE)$(cc-name)
+ifeq ($(cc-name),clang)
+CPP=$(CCACHE) $(CROSS_COMPILE)clang-cpp
+else
 CPP=$(CCACHE) $(CROSS_COMPILE)cpp
+endif
 LD=$(CROSS_COMPILE)ld
 NM=$(CROSS_COMPILE)nm
 OBJCOPY=$(CROSS_COMPILE)objcopy
@@ -51,7 +55,8 @@ CFLAGS_TEST=$(if $(TEST_BUILD),-DTEST_BUILD \
             $(if $(CTS_MODULE), $(CFLAGS_CTS)) \
             $(if $(EMU_BUILD),-DEMU_BUILD) \
             $(if $($(PROJECT)-scale),-DTEST_TIME_SCALE=$($(PROJECT)-scale)) \
-            -DTEST_$(PROJECT) -DTEST_$(UC_PROJECT)
+            -DTEST_$(PROJECT) -DTEST_$(UC_PROJECT) \
+	    -fsanitize=address -fsanitize=fuzzer-no-link
 CFLAGS_COVERAGE=$(if $(TEST_COVERAGE),-fprofile-arcs -ftest-coverage \
 				      -DTEST_COVERAGE,)
 CFLAGS_DEFINE=-DOUTDIR=$(out)/$(BLD) -DCHIP=$(CHIP) -DBOARD_TASKFILE=$(_tsk_lst_file) \
@@ -96,7 +101,7 @@ LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
 	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
 BUILD_LDFLAGS=$(LIBFTDI_LDLIBS)
 HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
-		  $(if $(TEST_COVERAGE),-fprofile-arcs,)
+		  $(if $(TEST_COVERAGE),-fprofile-arcs,) -fsanitize=address -fsanitize=fuzzer
 
 # utility function to provide overridable defaults
 # $1: name of variable to set

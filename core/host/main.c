@@ -28,7 +28,7 @@ const char *__get_prog_name(void)
 	return __prog_name;
 }
 
-int main(int argc, char **argv)
+int xmain(int argc, char **argv)
 {
 	__prog_name = argv[0];
 
