@@ -22,6 +22,30 @@
       "revId": "8dc4e4bf1672ee77602a725f764947f317f2e8da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b9c324_8d69bffb",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-06-20T17:40:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05bc97cd_b4509170",
+      "range": {
+        "startLine": 220,
+        "startChar": 14,
+        "endLine": 220,
+        "endChar": 34
+      },
+      "revId": "8dc4e4bf1672ee77602a725f764947f317f2e8da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
