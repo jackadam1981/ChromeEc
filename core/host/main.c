@@ -28,10 +28,8 @@ const char *__get_prog_name(void)
 	return __prog_name;
 }
 
-int main(int argc, char **argv)
+static int test_main(void)
 {
-	__prog_name = argv[0];
-
 	/*
 	 * In order to properly service IRQs before task switching is enabled,
 	 * we must set up our signal handler for the main thread.
@@ -67,3 +65,32 @@ int main(int argc, char **argv)
 
 	return 0;
 }
+
+#ifdef TEST_FUZZ
+/*
+ * Fuzzing tests need to start the main function in a thread, so that
+ * LLVMFuzzerTestOneInput can run freely.
+ */
+
+void *_main_thread(void *a)
+{
+	test_main();
+	return NULL;
+}
+
+int LLVMFuzzerInitialize(int argc, char ***argv)
+{
+	static pthread_t main_t;
+
+	__prog_name = (*argv)[0];
+	pthread_create(&main_t, NULL, _main_thread, NULL);
+
+	return 0;
+}
+#else
+int main(int argc, char **argv)
+{
+	__prog_name = argv[0];
+	return test_main();
+}
+#endif
