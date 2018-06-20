@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "641c019e_fe3fff69",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T02:09:00Z",
+      "side": 1,
+      "message": "Please update, using Simplo datasheet in b:110243480. Or at least reference bug.",
+      "revId": "18e52134501778440a49945a532a5f8cf49a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37db93e4_3a9368c8",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T02:09:00Z",
+      "side": 1,
+      "message": "Just drop the AETECH for now, and all the batt_id references.",
+      "revId": "18e52134501778440a49945a532a5f8cf49a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0c2d1d_d4f4a238",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T02:09:00Z",
+      "side": 1,
+      "message": "Please add TODO to fill this up.",
+      "revId": "18e52134501778440a49945a532a5f8cf49a0e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
