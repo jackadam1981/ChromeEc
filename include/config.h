@@ -393,6 +393,17 @@
 #undef CONFIG_BATTERY_COUNT
 
 /*
+ * Calculate a display charge percentage at every battery status update.
+ *
+ * This percentage is intended to synchronize the percentage on the display
+ * and the LED status. It's not intended to be used for other purposes (such
+ * as controlling charging behavior).
+ *
+ * Note that the equation needs to be updated if powerd updates it.
+ */
+#undef CONFIG_GET_DISPLAY_CHARGE
+
+/*
  * Expose some data when it is needed.
  * For example, battery disconnect state
  */
