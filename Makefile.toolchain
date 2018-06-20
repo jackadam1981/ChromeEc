@@ -15,13 +15,17 @@ ifeq ($(make_version_ok),)
 $(error ERROR: GNU make version $(min_make_version) or higher required.)
 endif
 
+# Extract cc-name
+CC?=gcc
+cc-name:=$(shell $(CC) -v 2>&1 | grep -q "clang version" && echo clang || echo gcc)
+
 # Try not to assume too much about optional tools and prefixes
 CCACHE:=$(shell which ccache 2>/dev/null)
 ifeq ($(origin HOST_CROSS_COMPILE),undefined)
-HOST_CROSS_COMPILE:=$(if $(shell which x86_64-pc-linux-gnu-gcc 2>/dev/null),x86_64-pc-linux-gnu-,)
+HOST_CROSS_COMPILE:=$(if $(shell which x86_64-pc-linux-gnu-$(cc-name) 2>/dev/null),x86_64-pc-linux-gnu-,)
 endif
 
-CC=$(CCACHE) $(CROSS_COMPILE)gcc
+CC=$(CCACHE) $(CROSS_COMPILE)$(cc-name)
 CPP=$(CCACHE) $(CROSS_COMPILE)cpp
 LD=$(CROSS_COMPILE)ld
 NM=$(CROSS_COMPILE)nm
@@ -29,8 +33,8 @@ OBJCOPY=$(CROSS_COMPILE)objcopy
 OBJDUMP=$(CROSS_COMPILE)objdump
 ADDR2LINE=$(CROSS_COMPILE)addr2line
 PKG_CONFIG?=pkg-config
-BUILDCC?=$(CCACHE) gcc
-HOSTCC?=$(CCACHE) $(HOST_CROSS_COMPILE)gcc
+BUILDCC?=$(CCACHE) $(cc-name)
+HOSTCC?=$(CCACHE) $(HOST_CROSS_COMPILE)$(cc-name)
 HOSTCXX?=$(CCACHE) $(HOST_CROSS_COMPILE)g++
 
 C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
@@ -71,7 +75,9 @@ CPPFLAGS+=-Ibuiltin/
 endif
 CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(CFLAGS_WARN) $(CFLAGS_y)
 CFLAGS+= -ffunction-sections -fshort-wchar
+ifneq ($(cc-name),clang)
 CFLAGS+= -fno-delete-null-pointer-checks -fconserve-stack
+endif
 CFLAGS+= -DCHROMIUM_EC
 
 FTDIVERSION=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
@@ -89,7 +95,7 @@ HOST_CFLAGS=$(HOST_CPPFLAGS) -O3 $(CFLAGS_DEBUG) $(CFLAGS_WARN) -DHOST_TOOLS_BUI
 LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
 	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
 BUILD_LDFLAGS=$(LIBFTDI_LDLIBS)
-HOST_TEST_LDFLAGS=-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
+HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
 		  $(if $(TEST_COVERAGE),-fprofile-arcs,)
 
 # utility function to provide overridable defaults
