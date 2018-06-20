@@ -6,6 +6,7 @@
 /* UART driver for emulator */
 
 #include <pthread.h>
+#include <signal.h>
 #include <stdio.h>
 #include <termio.h>
 #include <unistd.h>
@@ -135,14 +136,23 @@ void uart_inject_char(char *s, int sz)
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t uart_monitor_initialized = PTHREAD_COND_INITIALIZER;
 
+static struct termios org_settings;
+
+static void __attribute__((noinline)) _restore_stdin_attr(int sig)
+{
+	tcsetattr(0, TCSANOW, &org_settings);
+}
+
 void *uart_monitor_stdin(void *d)
 {
-	struct termios org_settings, new_settings;
+	struct termios new_settings;
 	char buf[INPUT_BUFFER_SIZE];
 	int rv;
 
 	pthread_mutex_lock(&mutex);
 	tcgetattr(0, &org_settings);
+	signal(SIGABRT, _restore_stdin_attr);
+
 	new_settings = org_settings;
 	new_settings.c_lflag &= ~(ECHO | ICANON);
 	new_settings.c_cc[VTIME] = 0;
