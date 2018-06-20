@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0663200_c85160e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-20T20:18:33Z",
+      "side": 1,
+      "message": "This change is doing more than just move USB2_ID. It would be good to mention in the commit message that it enables setting of USB2_ID when port is UFP.",
+      "revId": "f16825712eaff5068f7c5c4305897c781c2504e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
