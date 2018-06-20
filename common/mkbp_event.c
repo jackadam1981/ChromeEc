@@ -61,7 +61,7 @@ static void set_host_interrupt(int active)
  * Check if the host is sleeping. Check our power state in addition to the
  * self-reported sleep state of host (CONFIG_POWER_TRACK_HOST_SLEEP_STATE).
  */
-static inline int host_is_sleeping(void)
+static __unused inline int host_is_sleeping(void)
 {
 	int is_sleeping = !chipset_in_state(CHIPSET_STATE_ON);
 

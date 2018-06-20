@@ -1088,6 +1088,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	struct ec_response_motion_sense *out = args->response;
 	struct motion_sensor_t *sensor;
 	int i, ret = EC_RES_INVALID_PARAM, reported;
+	uint16_t tmp;
 
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
@@ -1284,9 +1285,10 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_COMMAND;
 
 		ret = sensor->drv->get_offset(sensor, out->sensor_offset.offset,
-				&out->sensor_offset.temp);
+					&tmp);
 		if (ret != EC_SUCCESS)
 			return ret;
+		out->sensor_offset.temp = tmp;
 		args->response_size = sizeof(out->sensor_offset);
 		break;
 
@@ -1303,9 +1305,10 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		if (ret != EC_SUCCESS)
 			return ret;
 		ret = sensor->drv->get_offset(sensor, out->sensor_offset.offset,
-				&out->sensor_offset.temp);
+				&tmp);
 		if (ret != EC_SUCCESS)
 			return ret;
+		out->sensor_offset.temp = tmp;
 		args->response_size = sizeof(out->sensor_offset);
 		break;
 

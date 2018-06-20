@@ -414,13 +414,13 @@ static inline int cycle_010(uint8_t i)
 
 /* This function provides a smooth oscillation between -0.5 and +0.5.
  * Zero starts at 0x00. */
-static inline int cycle_0p0n0(uint8_t i)
+static __unused inline int cycle_0p0n0(uint8_t i)
 {
 	return cycle_010(i + 64) - FP_SCALE / 2;
 }
 
 /* This function provides a pulsing oscillation between -0.5 and +0.5. */
-static inline int cycle_npn(uint16_t i)
+static __unused inline int cycle_npn(uint16_t i)
 {
 	if ((i / 256) % 4)
 		return -FP_SCALE / 2;

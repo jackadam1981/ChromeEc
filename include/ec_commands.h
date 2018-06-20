@@ -4481,6 +4481,7 @@ struct __ec_align4 ec_params_usb_pd_fw_update {
 	uint8_t port;
 	uint32_t size;     /* Size to write in bytes */
 	/* Followed by data to write */
+	uint32_t data[0];
 };
 
 /* Write USB-PD Accessory RW_HASH table entry */

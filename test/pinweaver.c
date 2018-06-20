@@ -662,10 +662,10 @@ static void setup_log_replay_defaults(struct merkle_tree_t *merkle_tree,
 }
 
 /* Increases the length of the pub and cipher_text by 4 each. */
-static void setup_mock_future_version(
-		struct unimported_leaf_data_t *unimported_leaf_data,
-		uint16_t *req_length)
+static void setup_mock_future_version(struct pw_request_t *request)
 {
+	struct unimported_leaf_data_t *unimported_leaf_data =
+		&request->data.reset_auth.unimported_leaf_data;
 	uint8_t *start = unimported_leaf_data->payload;
 	const uint8_t size_increase = 4;
 	const uint16_t cipher_text_offset = unimported_leaf_data->head.pub_len;
@@ -686,7 +686,7 @@ static void setup_mock_future_version(
 	++unimported_leaf_data->head.leaf_version.minor;
 	unimported_leaf_data->head.pub_len += size_increase;
 	unimported_leaf_data->head.sec_len += size_increase;
-	*req_length += size_increase * 2;
+	request->header.data_length += size_increase * 2;
 }
 
 static int test_handle_short_msg(struct merkle_tree_t *merkle_tree,
@@ -2027,9 +2027,7 @@ static int handle_reset_auth_success(void)
 
 	/* Test with different minor version and struct lengths. */
 	setup_reset_auth_defaults(&merkle_tree, &buf.request);
-	setup_mock_future_version(
-			&buf.request.data.reset_auth.unimported_leaf_data,
-			&buf.request.header.data_length);
+	setup_mock_future_version(&buf.request);
 
 	TEST_RET_EQ(do_request(&merkle_tree, &buf), EC_SUCCESS);
 
