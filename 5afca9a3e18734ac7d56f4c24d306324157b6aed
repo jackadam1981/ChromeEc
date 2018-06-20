@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8d2d4f25_d01791cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "It is for locking \"enable\", so that any subsequent \"disabling\" command would be rejected.",
+      "parentUuid": "fc55121f_c3aa8630",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4e990b4_02be267f",
         "filename": "board/cr50/build.mk",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e5264b12_cc5833b4",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e990b4_02be267f",
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ab37c7_5e015e40",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b5e722_34debcd6",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Will let \"sysinfo\" command print the tpm_mode.",
+      "parentUuid": "f3ab37c7_5e015e40",
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "0dab1364_a2cfefcc",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f71cdc11_17c4af20",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c9962fa_cbe90701",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
@@ -102,6 +186,30 @@
       "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea466be0_7675e1fe",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c9962fa_cbe90701",
+      "range": {
+        "startLine": 35,
+        "startChar": 52,
+        "endLine": 35,
+        "endChar": 66
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "3aedaf0a_4a0d146d",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "TPM_RST_L interrupt will call deferred_tpm_rst_isr(), then tpm_reset_request(). This will set TPM_EVENT_RESET, and on this event, TPM task will call tpm_reset_now().\ntpm_reset_now() cleans up () the memory region from __bss_libtpm2_start to __bss_libtpm2_end, where s_tpm_mode is located.",
+      "parentUuid": "704b229e_f48c3813",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 11
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab32dce8_8c3852ab",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
@@ -148,6 +280,30 @@
       "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb9c2ee8_2be937aa",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab32dce8_8c3852ab",
+      "range": {
+        "startLine": 64,
+        "startChar": 26,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "7f316724_9a5d7728",
+        "filename": "common/extension.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Will move them under CR50_DEV.",
+      "parentUuid": "4ae9a059_326b9b2d",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e91eda87_7bf1cd3b",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 1
@@ -188,6 +368,24 @@
       "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74dedf12_f2763a68",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91eda87_7bf1cd3b",
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -211,6 +409,30 @@
       "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aab1b3c_ac551df9",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-06-20T01:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a0956bb_a8ccfd6c",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "5afca9a3e18734ac7d56f4c24d306324157b6aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
