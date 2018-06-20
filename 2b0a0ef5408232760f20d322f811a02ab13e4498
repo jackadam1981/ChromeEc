@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ccd51a2_f6996d7a",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T05:19:40Z",
+      "side": 1,
+      "message": "Set this to 1, drop everything after v_empty_detect, and add a TODO to say that we need to characterize the battery.\n\nBasically restore to what scarlet did before ae952f06a8c8d1b7ab71b1e96ff4e5f0825fc259 .",
+      "revId": "2b0a0ef5408232760f20d322f811a02ab13e4498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b7f87e0_cf44c868",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T05:19:40Z",
+      "side": 1,
+      "message": "This matches ichgTerm register in max17055 user guide (https://pdfserv.maximintegrated.com/en/an/AN6358.pdf). And look at table 3/4.\n\nOur sense resistor is 5ohm. That means 312.50 uA/LSB.\n\n235e3/312.5 \u003d 752 \u003d 0x2f0",
+      "revId": "2b0a0ef5408232760f20d322f811a02ab13e4498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234902fd_2797f349",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T05:19:40Z",
+      "side": 1,
+      "message": "This should be 0x4486 (LearnCfg register). IMHO the previous code is wrong.",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 22
+      },
+      "revId": "2b0a0ef5408232760f20d322f811a02ab13e4498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d71f04_9d031ac2",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T05:19:40Z",
+      "side": 1,
+      "message": "I don\u0027t get this one. This looks like 199.6% ??!",
+      "revId": "2b0a0ef5408232760f20d322f811a02ab13e4498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5fa1ebb_ca8758ee",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T05:19:40Z",
+      "side": 1,
+      "message": "Drop these",
+      "revId": "2b0a0ef5408232760f20d322f811a02ab13e4498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c50aa764_b094fc27",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T05:19:40Z",
+      "side": 1,
+      "message": "4020",
+      "range": {
+        "startLine": 130,
+        "startChar": 14,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "2b0a0ef5408232760f20d322f811a02ab13e4498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d3fe18_c762b923",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-20T05:19:40Z",
+      "side": 1,
+      "message": "3350, 4300",
+      "range": {
+        "startLine": 131,
+        "startChar": 14,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "2b0a0ef5408232760f20d322f811a02ab13e4498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
