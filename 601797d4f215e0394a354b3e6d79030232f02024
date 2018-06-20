@@ -141,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "4f8381c9_01ea8b68",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-06-20T22:30:15Z",
+      "side": 1,
+      "message": "oh ok. Please add a comment that is what that\u0027s for.\n\nAlso please make sure to update the TEST in the commit message",
+      "parentUuid": "46f8bc7c_0f761975",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "601797d4f215e0394a354b3e6d79030232f02024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d8f6ff1_d97821bf",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 4
