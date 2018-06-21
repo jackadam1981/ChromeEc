@@ -88,7 +88,17 @@ int fan_get_rpm_target(int ch);
 /* Is the fan stalled when it shouldn't be? */
 int fan_is_stalled(int ch);
 
-/* How is the automatic RPM control doing? */
+/**
+ * STOPPED means not spinning.
+ *
+ * When setting fan rpm, some implementations in chip layer (npcx and it83xx)
+ * is to adjust fan pwm duty steps by steps. In this period, fan_status will
+ * be marked as CHANGING. After change is done, fan_status will become LOCKED.
+ *
+ * In the period of changing pwm duty, if it's trying to increase/decrease duty
+ * even when duty is already in upper/lower bound. Then this action won't work,
+ * and fan_status will be marked as FRUSTRATED.
+ */
 enum fan_status {
 	FAN_STATUS_STOPPED = 0,
 	FAN_STATUS_CHANGING = 1,
