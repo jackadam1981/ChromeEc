@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "893c9aaa_1874252a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T07:55:00Z",
+      "side": 0,
+      "message": "Vincent: Do you know why we used alias+stub instead of a \"normal\" weak attribute?",
+      "revId": "08d2c75e8540a4dbe0f8feaec16a40bc7050a2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfbf2879_1ec6afe1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T07:55:00Z",
+      "side": 0,
+      "message": "Again, clang isn\u0027t convinced about alignment here (but the fix is easy and fairly clean?)",
+      "revId": "08d2c75e8540a4dbe0f8feaec16a40bc7050a2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

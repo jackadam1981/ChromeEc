@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79746b47_88f66e9e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T07:55:00Z",
+      "side": 1,
+      "message": "I\u0027m not super happy about this change, and I wonder if there is a way to convince clang that out-\u003esensor_offset.temp is aligned (I\u0027m pretty sure it is).",
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8469e3fd_acd8f8c6",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2030,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T07:55:00Z",
+      "side": 1,
+      "message": "Again, some alignment issue (clang thinks \"request-\u003eheader.data_length\" is not aligned (IIRC that\u0027s correct, it\u0027s not aligned)). Does not really matter in this case, as the code is easy to refactor.",
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
