@@ -22,6 +22,30 @@
       "revId": "090bb5913d0ac068cfca1f517acbb6275bc4ac53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4630c3a7_d49af65a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-21T20:04:47Z",
+      "side": 1,
+      "message": "gru will have the same behavior that kevin does: it will build for host-utils and nothing else. I will update the commit message",
+      "parentUuid": "c1c21a46_b243ac78",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "090bb5913d0ac068cfca1f517acbb6275bc4ac53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
