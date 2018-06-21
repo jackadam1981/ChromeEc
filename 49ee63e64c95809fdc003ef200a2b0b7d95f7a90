@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eb3019d_22f5e393",
+        "filename": "test/rma_auth.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-21T16:09:17Z",
+      "side": 1,
+      "message": "Ah, right, because safe_memcmp() does not exit early on a mismatch, but continues through the whole string.\n\nPlease document this in rma_auth.h.\n\nAlternately, rma_try_authcode() could do a strlen() check first, and fail if the string is shorter than expected.  That\u0027s more robust, and still secure since on a proper-length string, it will not provide a timing hint to which characters are correct.\n\nThough since we limit the number of tries to a small number, leaking that timing information isn\u0027t very useful.  We could probably just go back to strcmp().",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 134,
+        "endChar": 77
+      },
+      "revId": "49ee63e64c95809fdc003ef200a2b0b7d95f7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
