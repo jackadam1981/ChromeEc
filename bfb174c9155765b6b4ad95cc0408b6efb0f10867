@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "6e33a741_c719c2a5",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:35:49Z",
+      "side": 1,
+      "message": "this is a total mess ;-)\nhopefully we can do better.\n\nFor the detection part, you need some fancy case where the binary has an arbitrary name but it is still clang ?\nor you just mean something like ?\n $(or $(findstring clang,$(CC)),gcc)\n\n\nHOSTCXX being anyhow related to the target CC is kind of far fetched...\n\nIf you want to default on Clang for host, maybe when HOST_CROSS_COMPILE is undefined, default first to clang if it exists, else fallback to gcc",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37acb7f5_cf30ee56",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:35:49Z",
+      "side": 1,
+      "message": "it\u0027s never ever used ? just scrap it ?",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 1
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e42a4b0_264be187",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:35:49Z",
+      "side": 1,
+      "message": "or #ifdef BLUE_PULSING",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 428,
+        "endChar": 1
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b110397_8dafe9af",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:35:49Z",
+      "side": 1,
+      "message": "is a \u0027#ifdef CONFIG_MKBP_WAKEUP_MASK\u0027 better than the _unused ?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79746b47_88f66e9e",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -13,6 +105,52 @@
       "writtenOn": "2018-06-21T07:55:00Z",
       "side": 1,
       "message": "I\u0027m not super happy about this change, and I wonder if there is a way to convince clang that out-\u003esensor_offset.temp is aligned (I\u0027m pretty sure it is).",
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd64890_7ece5a1f",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:35:49Z",
+      "side": 1,
+      "message": "does this really work as expected ?\nor is it a trap for the future ?\nwould be __attribute__(used) better ?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492c1d89_a0e008ce",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4484,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:35:49Z",
+      "side": 1,
+      "message": "this is breaking C++ compatibility as mentioned in the other file",
+      "range": {
+        "startLine": 4484,
+        "startChar": 0,
+        "endLine": 4484,
+        "endChar": 18
+      },
       "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
