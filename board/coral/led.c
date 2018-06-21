@@ -119,6 +119,7 @@ static const struct led_descriptor led_nasher_state_table[][LED_NUM_PHASES] = {
 };
 
 static struct led_info led;
+static int LED_CONSOLE_FLAG;
 
 static int led_set_color_battery(enum led_color color)
 {
@@ -221,6 +222,41 @@ static enum led_states led_get_state(void)
 	return new_state;
 }
 
+static int command_LED_status(int argc, char **argv)
+{
+	int state_num;
+	char *e;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "state")) {
+		if (LED_CONSOLE_FLAG == 1)
+			ccprintf("It's control mode now.\n");
+		else
+			ccprintf("It's not control mode now.\n");
+	} else if (!strcasecmp(argv[1], "ctrl")) {
+		LED_CONSOLE_FLAG = 1;
+		state_num = strtoi(argv[2], &e, 0);
+		if (*e)
+			ccprintf("Invalid state number.\n");
+		else if (state_num >= LED_NUM_STATES)
+			ccprintf("Out of state type.\n");
+		else
+			led.state = state_num;
+	} else if (!strcasecmp(argv[1], "unctrl")) {
+		LED_CONSOLE_FLAG = 0;
+		led.state = led_get_state();
+		ccprintf("It's not control mode now.\n");
+	}
+	ccprintf("LED recent status: %d\n", led.state);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(LEDstate, command_LED_status,
+			"[state|ctrl|unctrl], <state_num>",
+			"Show the recent LED status and control 0~7 state");
+
 static void led_update_battery(void)
 {
 	static int ticks;
@@ -228,7 +264,8 @@ static void led_update_battery(void)
 	enum led_states desired_state = led_get_state();
 
 	/* Get updated state based on power state and charge level */
-	if (desired_state < LED_NUM_STATES && desired_state != led.state) {
+	if (desired_state < LED_NUM_STATES && desired_state != led.state
+	&& LED_CONSOLE_FLAG == 0) {
 		/* State is changing */
 		led.state = desired_state;
 		/* Reset ticks counter when state changes */

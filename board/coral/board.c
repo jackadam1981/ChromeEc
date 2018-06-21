@@ -31,6 +31,7 @@
 #include "keyboard_scan.h"
 #include "lid_angle.h"
 #include "lid_switch.h"
+#include "link_defs.h"
 #include "math_util.h"
 #include "motion_sense.h"
 #include "motion_lid.h"
@@ -981,6 +982,26 @@ static int command_sku(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(sku, command_sku,
 			"<board|line0|line1|form [low high]>",
 			"Get board id, sku, form factor");
+
+static int command_getVersion(int argc, char **argv)
+{
+	const struct console_command *cmd;
+	int match_len = strlen("version");
+
+	for (cmd = __cmds; cmd < __cmds_end; cmd++) {
+		if (!strncasecmp("version", cmd->name, match_len)) {
+			if (cmd->name[match_len] == '\0') {
+				cmd->handler(argc, argv);
+				return EC_SUCCESS;
+			}
+		}
+	}
+	ccprintf("Not found command version.\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(getVersion, command_getVersion,
+			"Null", "Call command_version()");
 
 uint32_t system_get_sku_id(void)
 {
