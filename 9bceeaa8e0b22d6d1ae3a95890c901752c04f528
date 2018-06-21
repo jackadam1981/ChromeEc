@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67499a2d_c616582f",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-21T06:35:36Z",
+      "side": 1,
+      "message": "Can we move these checks to set_pwm_led_color? Something like:\n\nvoid set_pwm_led_color(enum pwm_led_id id, int color)\n{\n\tif (ignore_set_led_color(id, color))\n\t\treturn;\n\n        ...\n}\n\nand have a function ignore_set_led_color that:\n1. Validates id\n2. Validates color\n3. \na. If CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY is defined:\n    - Check for cancel operation (color \u003d\u003d -1)\n    - Check for pulsing operation\n    - Check if id is same as active charge port\nb. Else returns 0",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 61
+      },
+      "revId": "9bceeaa8e0b22d6d1ae3a95890c901752c04f528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc4e45c_aef1a5eb",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-21T06:35:36Z",
+      "side": 1,
+      "message": "Should we refactor this function so that we don\u0027t have to sprinkle the #ifdef at different places in it?\n\nstatic void update_leds(void)\n{\n\tif (update_leds_charge_state() \u003d\u003d UPDATE_DONE)\n\t\treturn;\n\n\tif (update_leds_battery_percentage() \u003d\u003d UPDATE_DONE)\n\t\treturn;\n\n\tif (update_leds_chipset_state() \u003d\u003d UPDATE_DONE)\n\t\treturn;\n\n\tled_is_pulsing \u003d 0;\n\tset_led_color \u003d -1;\n}",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "9bceeaa8e0b22d6d1ae3a95890c901752c04f528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
