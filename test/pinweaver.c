@@ -67,6 +67,8 @@ const struct leaf_data_t DEFAULT_LEAF = {
 		{0, 0},
 		/* attempt_count */
 		{0},
+		/* valid_pcr_criteria */
+		{{0, {0} }, {0, {0} } },
 	},
 	/*sec*/
 	{
@@ -457,6 +459,9 @@ static void setup_insert_leaf_defaults(struct merkle_tree_t *merkle_tree,
 	memcpy(&request->data.insert_leaf.delay_schedule,
 	       &DEFAULT_LEAF.pub.delay_schedule,
 	       sizeof(DEFAULT_LEAF.pub.delay_schedule));
+	memcpy(&request->data.insert_leaf.valid_pcr_criteria,
+	       &DEFAULT_LEAF.pub.valid_pcr_criteria,
+	       sizeof(DEFAULT_LEAF.pub.valid_pcr_criteria));
 	memcpy(&request->data.insert_leaf.low_entropy_secret,
 	       &DEFAULT_LEAF.sec.low_entropy_secret,
 	       sizeof(DEFAULT_LEAF.sec.low_entropy_secret));
@@ -738,6 +743,11 @@ void get_storage_seed(void *buf, size_t *len)
 	*len = *len < sizeof(DEFAULT_STORAGE_SEED) ? *len :
 	       sizeof(DEFAULT_STORAGE_SEED);
 	memcpy(buf, DEFAULT_STORAGE_SEED, *len);
+}
+
+void get_current_pcr_digest(uint16_t bitmask, uint8_t hash_size,
+		uint8_t *sha256_of_selected_pcr)
+{
 }
 
 /******************************************************************************/

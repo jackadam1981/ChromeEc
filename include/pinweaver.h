@@ -74,6 +74,7 @@ struct PW_PACKED leaf_public_data_t {
 	/* State used to rate limit. */
 	struct pw_timestamp_t timestamp;
 	struct attempt_count_t attempt_count;
+	struct valid_pcr_value_t valid_pcr_criteria[PW_MAX_PCR_CRITERIA_COUNT];
 };
 
 /* Do not remove fields within the same PW_LEAF_MAJOR_VERSION. */
@@ -154,7 +155,7 @@ int pw_handle_request(struct merkle_tree_t *merkle_tree,
  * calling this function.
  */
 void import_leaf(const struct unimported_leaf_data_t *unimported,
-		 struct imported_leaf_data_t *imported);
+		 struct imported_leaf_data_t *imported, int cipher_offset);
 
 /* Calculate how much is needed to add to the size of structs containing
  * an struct unimported_leaf_data_t because the variable length fields at the
