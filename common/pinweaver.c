@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include <Global.h>
+#include <InternalRoutines.h>
+#include <PCR_Read_fp.h>
+
 #include <common.h>
 #include <compile_time_macros.h>
 #include <console.h>
@@ -15,9 +19,11 @@
 #include <pinweaver_types.h>
 #include <timer.h>
 #include <tpm_vendor_cmds.h>
+#include <tpm_types.h>
 #include <trng.h>
 #include <tpm_registers.h>
 #include <util.h>
+
 
 /* Compile time sanity checks. */
 /* Make sure the hash size is consistent with dcrypto. */
@@ -69,7 +75,7 @@ BUILD_ASSERT(PW_MAX_MESSAGE_SIZE + sizeof(struct tpm_cmd_header) <= 2048);
  * fields.
  */
 BUILD_ASSERT(PW_LEAF_MAJOR_VERSION == 0);
-BUILD_ASSERT(PW_MAX_PATH_SIZE == 1536);
+BUILD_ASSERT(PW_MAX_PATH_SIZE == 1024);
 
 /* If fields are appended to struct leaf_sensitive_data_t, an encryption
  * operation should be performed on them reusing the same IV since the prefix
@@ -405,6 +411,61 @@ static int validate_delay_schedule(const struct delay_schedule_entry_t
 		}
 	}
 	return EC_SUCCESS;
+}
+
+static int validate_pcr_value(
+		const struct valid_pcr_value_t valid_pcr_criteria[])
+{
+	size_t x;
+	size_t y;
+	TPML_DIGEST digest;
+
+	cprints(CC_TASK, "PinWeaver: === validate criteria");
+	for (x = 0; x < PW_MAX_PCR_CRITERIA_COUNT; ++x) {
+		uint32_t pcr_counter;
+		TPML_PCR_SELECTION selection;
+
+		if (valid_pcr_criteria[x].bitmask == 0) {
+			if (x == 0)
+				return EC_SUCCESS;
+
+			return PW_ERR_PCR_NOT_MATCH;
+		}
+
+		selection.count = 1;
+		selection.pcrSelections[0].hash = TPM_ALG_SHA256;
+		selection.pcrSelections[0].sizeofSelect = 2;
+		for (y = 0; y < 2; ++y) {
+			selection.pcrSelections[0].pcrSelect[y] =
+			(valid_pcr_criteria[x].bitmask & (255 << (y * 8)));
+			cprints(CC_TASK, "PinWeaver: === pcrSelect val = %d",
+				selection.pcrSelections[0].pcrSelect[y]);
+		}
+
+		cprints(CC_TASK, "PinWeaver: === read PCR, bitmask = %d",
+				valid_pcr_criteria[x].bitmask);
+		PCRRead(&selection, &digest, &pcr_counter);
+		cprints(CC_TASK, "PinWeaver: === read PCR done %d",
+				pcr_counter);
+		// Check if the curent PCR digest is the same as expected by
+		// criteria.
+		for (y = 0; y < digest.digests[0].b.size; ++y) {
+			cprints(CC_TASK, "PinWeaver: === y = %d", y);
+			cprints(CC_TASK, "PinWeaver: === val = %d",
+					digest.digests[0].b.buffer[y]);
+			cprints(CC_TASK, "PinWeaver: === expected = %d",
+					valid_pcr_criteria[x].digest[y]);
+			if (digest.digests[0].b.buffer[y] !=
+				valid_pcr_criteria[x].digest[y]) {
+				break;
+			}
+		}
+
+		if (y == digest.digests[0].b.size)
+			return EC_SUCCESS;
+	}
+
+	return PW_ERR_PCR_NOT_MATCH;
 }
 
 static int validate_leaf_header(const struct leaf_header_t *head,
@@ -862,6 +923,9 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 
 	memset(&leaf_data, 0, sizeof(leaf_data));
 	leaf_data.pub.label.v = request->label.v;
+	cprints(CC_TASK, "PinWeaver: === Set the criterias");
+	memcpy(&leaf_data.pub.valid_pcr_criteria, &request->valid_pcr_criteria,
+				 sizeof(request->valid_pcr_criteria));
 	memcpy(&leaf_data.pub.delay_schedule, &request->delay_schedule,
 	       sizeof(request->delay_schedule));
 	memcpy(&leaf_data.sec.low_entropy_secret, &request->low_entropy_secret,
@@ -964,6 +1028,12 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 			merkle_tree, req_size - sizeof(*request),
 			&request->unimported_leaf_data, &imported_leaf_data,
 			&leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	cprints(CC_TASK, "PinWeaver: === calling validate_pcr_value");
+	/* Check if at least one PCR criteria is satisfied */
+	ret = validate_pcr_value(leaf_data.pub.valid_pcr_criteria);
 	if (ret != EC_SUCCESS)
 		return ret;
 

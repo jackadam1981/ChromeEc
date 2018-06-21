@@ -70,6 +70,7 @@ struct PW_PACKED pw_log_storage_t {
 struct PW_PACKED leaf_public_data_t {
 	struct label_t label;
 	struct delay_schedule_entry_t delay_schedule[PW_SCHED_COUNT];
+	struct valid_pcr_value_t valid_pcr_criteria[PW_MAX_PCR_CRITERIA_COUNT];
 
 	/* State used to rate limit. */
 	struct pw_timestamp_t timestamp;

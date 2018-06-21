@@ -14,7 +14,8 @@
 
 #define PW_PROTOCOL_VERSION 0
 #define PW_LEAF_MAJOR_VERSION 0
-#define PW_LEAF_MINOR_VERSION 0
+/* The change from version zero is the addition of valid_pcr_value metadata */
+#define PW_LEAF_MINOR_VERSION 1
 
 #define PW_MAX_MESSAGE_SIZE (2048 - 12 /* sizeof(struct tpm_cmd_header) */)
 
@@ -45,6 +46,7 @@ enum pw_error_codes_enum {
 	PW_ERR_NV_EMPTY,
 	PW_ERR_NV_LENGTH_MISMATCH,
 	PW_ERR_NV_VERSION_MISMATCH,
+	PW_ERR_PCR_NOT_MATCH,
 };
 
 /* Represents the log2(fan out) of a tree. */
@@ -105,10 +107,25 @@ struct PW_PACKED delay_schedule_entry_t {
 	struct time_diff_t time_diff;
 };
 
+/* Represents a set of PCR values hashed into a single digest. This is a
+ * criteria that can be added to a leaf. A leaf is valid only if at least one of
+ * the valid_pcr_value_t criterias it contains is satisfied.
+ */
+struct PW_PACKED valid_pcr_value_t {
+	/* The set of PCR indexes that have to pass the validation. */
+	uint16_t bitmask;
+	/* The hash digest of the PCR values contained in the bitmask */
+	uint8_t digest[PW_HASH_SIZE];
+};
+
 /* Represents the number of entries in the delay schedule table which can be
  * used to determine the next time an authentication attempt can be made.
  */
 #define PW_SCHED_COUNT 16
+
+/* Represents the maximum number of criterias for valid PCR values.
+ */
+#define PW_MAX_PCR_CRITERIA_COUNT 4
 
 /* Number of bytes required to store a secret.
  */
@@ -212,6 +229,7 @@ struct PW_PACKED pw_request_reset_tree_t {
 struct PW_PACKED pw_request_insert_leaf_t {
 	struct label_t label;
 	struct delay_schedule_entry_t delay_schedule[PW_SCHED_COUNT];
+	struct valid_pcr_value_t valid_pcr_criteria[PW_MAX_PCR_CRITERIA_COUNT];
 	uint8_t low_entropy_secret[PW_SECRET_SIZE];
 	uint8_t high_entropy_secret[PW_SECRET_SIZE];
 	uint8_t reset_secret[PW_SECRET_SIZE];
@@ -341,9 +359,9 @@ struct PW_PACKED pw_response_t {
  * defined so that meaningful parameter limits can be set to validate the tree
  * parameters.
  *
- * 1536 was chosen because it is 3/4 of 2048 and allows for a maximum tree
+ * 1024 was chosen because it is 1/2 of 2048 and allows for a maximum tree
  * height of 16 for the default fan-out of 4.
  */
-#define PW_MAX_PATH_SIZE 1536
+#define PW_MAX_PATH_SIZE 1024
 
 #endif  /* __CROS_EC_INCLUDE_PINWEAVER_TYPES_H */
