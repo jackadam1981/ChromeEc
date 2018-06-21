@@ -982,6 +982,27 @@ DECLARE_CONSOLE_COMMAND(sku, command_sku,
 			"<board|line0|line1|form [low high]>",
 			"Get board id, sku, form factor");
 
+static int command_getVersion(int argc, char **argv)
+{
+	int board_version;
+
+	board_version = system_get_board_version();
+	if (board_version < 0)
+		ccprintf("Board:   Error %d\n", -board_version);
+	else
+		ccprintf("Board:   %d\n", board_version);
+#ifndef CHIP_HAS_RO_B
+	ccprintf("RO:      %s\n", system_get_version(SYSTEM_IMAGE_RO));
+#endif
+#ifndef CONFIG_RW_B
+	ccprintf("RW:      %s\n", system_get_version(SYSTEM_IMAGE_RW));
+#endif
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(getVersion, command_getVersion,
+			NULL, "Add for practice");
+
 uint32_t system_get_sku_id(void)
 {
 	if (sku_id == BOARD_VERSION_UNKNOWN)
