@@ -1236,6 +1236,9 @@
 /* Number of cooling fans. Undef if none. */
 #undef CONFIG_FANS
 
+/* EC chip npcx also update rpm_actual when fan in duty mode */
+#undef CONFIG_FAN_DUTY_MODE_ACTUAL_RPM
+
 /* Percentage to which all fans are set at initiation */
 #define CONFIG_FAN_INIT_SPEED 100
 
