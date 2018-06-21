@@ -1363,7 +1363,7 @@ static void notify_host_of_low_battery_charge(void)
 #endif
 }
 
-static void set_charge_state(enum charge_state_v2 state)
+void set_charge_state(enum charge_state_v2 state)
 {
 	prev_state = curr.state;
 	curr.state = state;

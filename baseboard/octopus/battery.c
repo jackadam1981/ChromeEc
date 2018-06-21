@@ -62,7 +62,7 @@ int charger_profile_override(struct charge_state_data *curr)
 	 * pre-charge current and set the charge state to pre-charge.
 	 */
 	if (battery_is_present() == BP_NOT_SURE) {
-		curr->state = ST_PRECHARGE;
+		set_charge_state(ST_PRECHARGE);
 		curr->requested_voltage = battery_get_info()->voltage_max;
 		curr->requested_current = battery_get_info()->precharge_current;
 	}

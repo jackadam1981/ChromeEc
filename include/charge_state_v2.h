@@ -93,6 +93,13 @@ void chgstate_set_manual_current(int curr_ma);
 void chgstate_set_manual_voltage(int volt_mv);
 
 /**
+ * Set charge state to current state.
+ *
+ * @param state: Current charge state.
+ */
+void set_charge_state(enum charge_state_v2 state);
+
+/**
  * Board-specific routine to indicate if the base is connected.
  */
 int board_is_base_connected(void);
