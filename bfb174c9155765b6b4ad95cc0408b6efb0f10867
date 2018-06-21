@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "74ab51b5_a123523c",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T10:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37acb7f5_cf30ee56",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 1
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e42a4b0_264be187",
         "filename": "common/lightbar.c",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373b40da_81b03b1c",
+        "filename": "common/lightbar.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T10:14:11Z",
+      "side": 1,
+      "message": "Just moved it around.",
+      "parentUuid": "8e42a4b0_264be187",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 428,
+        "endChar": 1
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "dcda6949_9654ef5a",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T10:14:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b110397_8dafe9af",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 49
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79746b47_88f66e9e",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
@@ -111,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "17d831a8_aadd0fed",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T10:14:11Z",
+      "side": 1,
+      "message": "Same trick works, by adding an __aligned(2) to the structure definition...",
+      "parentUuid": "79746b47_88f66e9e",
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acd64890_7ece5a1f",
         "filename": "include/common.h",
         "patchSetId": 2
@@ -122,6 +212,30 @@
       "writtenOn": "2018-06-21T08:35:49Z",
       "side": 1,
       "message": "does this really work as expected ?\nor is it a trap for the future ?\nwould be __attribute__(used) better ?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae10da2_88556046",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T10:14:11Z",
+      "side": 1,
+      "message": "yeah, agree, it looks like a trap... We only use __visible in one place though (memset).\n\n__attribute__(used) is saner, I\u0027ll modify that.",
+      "parentUuid": "acd64890_7ece5a1f",
       "range": {
         "startLine": 75,
         "startChar": 0,

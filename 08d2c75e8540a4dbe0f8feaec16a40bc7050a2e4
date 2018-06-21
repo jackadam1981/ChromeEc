@@ -69,6 +69,24 @@
       "revId": "08d2c75e8540a4dbe0f8feaec16a40bc7050a2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2764a89a_a9af8c21",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-21T10:14:11Z",
+      "side": 0,
+      "message": "clang seems happy with this (TBH, it\u0027s a little clearer that the existing code, but looks uglier...)\n\n(uint32_t *)((uint8_t *)p + sizeof(*p));\n\nOr changing the struct definition to have an align on the variable:\n\nstruct __ec_align4 ec_params_usb_pd_fw_update {\n\tuint16_t dev_id;\n\tuint8_t cmd;\n\tuint8_t port;\n\tuint32_t size __aligned(4);     /* Size to write in bytes */\n\t/* Followed by data to write */\n};",
+      "parentUuid": "ac06362a_d82d8f27",
+      "revId": "08d2c75e8540a4dbe0f8feaec16a40bc7050a2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
