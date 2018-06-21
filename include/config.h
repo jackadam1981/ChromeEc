@@ -1713,6 +1713,9 @@
 /* List of host commands whose debug output will be suppressed */
 #undef CONFIG_SUPPRESSED_HOST_COMMANDS
 
+/* Also update rpm_actual when fan in duty mode */
+#undef CONFIG_FAN_DUTY_MODE_ACTUAL_RPM
+
 /*****************************************************************************/
 
 /* Enable debugging and profiling statistics for hook functions */
