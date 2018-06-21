@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "64c122da_a500b28e",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2018-06-21T18:16:59Z",
+      "side": 1,
+      "message": "The preferred check as per asan docs should be:\n#if defined(__has_feature) \u0026\u0026 __has_feature(address_sanitizer)",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "533cd03845c728fc42a6cc27a9e2f6d79d03f63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44a4fb7f_5aef7c78",
         "filename": "include/common.h",
         "patchSetId": 1
