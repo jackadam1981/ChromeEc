@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3785885_40a1fa86",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-21T01:50:23Z",
+      "side": 1,
+      "message": "sorry, I have been missing this all along: please move this so that the new option is sorted in the list.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "3120ffdaa25fa4f7ee8e0d890e4191d4a6c75c0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
