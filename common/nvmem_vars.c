@@ -177,6 +177,10 @@ int initvars(void)
 		if (!tuple->key_len)
 			break;
 
+		/* Make sure the rest of the struct is still within bounds. */
+		if (i + sizeof(*tuple) > CONFIG_FLASH_NVMEM_VARS_USER_SIZE)
+			goto fixit;
+
 		/* Empty values are not allowed */
 		if (!tuple->val_len)
 			goto fixit;
