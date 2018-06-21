@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
+#include <Global.h>
+#include <InternalRoutines.h>
+#include <PCR_Read_fp.h>
+
 #include <common.h>
 #include <compile_time_macros.h>
 #include <console.h>
@@ -15,9 +19,11 @@
 #include <pinweaver_types.h>
 #include <timer.h>
 #include <tpm_vendor_cmds.h>
+#include <tpm_types.h>
 #include <trng.h>
 #include <tpm_registers.h>
 #include <util.h>
+
 
 /* Compile time sanity checks. */
 /* Make sure the hash size is consistent with dcrypto. */
@@ -69,7 +75,7 @@ BUILD_ASSERT(PW_MAX_MESSAGE_SIZE + sizeof(struct tpm_cmd_header) <= 2048);
  * fields.
  */
 BUILD_ASSERT(PW_LEAF_MAJOR_VERSION == 0);
-BUILD_ASSERT(PW_MAX_PATH_SIZE == 1536);
+BUILD_ASSERT(PW_MAX_PATH_SIZE == 1024);
 
 /* If fields are appended to struct leaf_sensitive_data_t, an encryption
  * operation should be performed on them reusing the same IV since the prefix
@@ -245,6 +251,7 @@ static int authenticate_path(const struct merkle_tree_t *merkle_tree,
 static void init_wrapped_leaf_data(
 		struct wrapped_leaf_data_t *wrapped_leaf_data)
 {
+	cprints(CC_TASK, "PinWeaver: === init wrapped leaf data");
 	wrapped_leaf_data->head.leaf_version.major = PW_LEAF_MAJOR_VERSION;
 	wrapped_leaf_data->head.leaf_version.minor = PW_LEAF_MINOR_VERSION;
 	wrapped_leaf_data->head.pub_len = sizeof(wrapped_leaf_data->pub);
@@ -309,13 +316,17 @@ static int handle_leaf_update(
 	int ret;
 	struct imported_leaf_data_t ptrs;
 
+	cprints(CC_TASK, "PinWeaver: === handle leaf update, %d",
+		(optional_old_wrapped_data == NULL));
 	init_wrapped_leaf_data(wrapped_leaf_data);
 	if (optional_old_wrapped_data == NULL) {
+		cprints(CC_TASK, "PinWeaver: === encrypt_leaf_data");
 		ret = encrypt_leaf_data(merkle_tree, leaf_data,
 					wrapped_leaf_data);
 		if (ret != EC_SUCCESS)
 			return ret;
 	} else {
+		cprints(CC_TASK, "PinWeaver: === memcpys");
 		memcpy(wrapped_leaf_data->iv, optional_old_wrapped_data->iv,
 		       sizeof(wrapped_leaf_data->iv));
 		memcpy(&wrapped_leaf_data->pub, &leaf_data->pub,
@@ -328,10 +339,15 @@ static int handle_leaf_update(
 	import_leaf((const struct unimported_leaf_data_t *)wrapped_leaf_data,
 		    &ptrs);
 	compute_hmac(merkle_tree, &ptrs, wrapped_leaf_data->hmac);
+	cprints(CC_TASK, "PinWeaver: === hmac computed, value0 = %d",
+		wrapped_leaf_data->hmac[0]);
 
 	compute_root_hash(merkle_tree, leaf_data->pub.label,
 			  hashes, wrapped_leaf_data->hmac,
 			  new_root);
+
+	cprints(CC_TASK, "PinWeaver: === leaf update done, bitmask = %d",
+		wrapped_leaf_data->pub.valid_pcr_criteria[0].bitmask);
 
 	return EC_SUCCESS;
 }
@@ -377,6 +393,7 @@ static int validate_label(const struct merkle_tree_t *merkle_tree,
 
 	if ((path.v >> shift_by) == 0)
 		return EC_SUCCESS;
+	cprints(CC_TASK, "PinWeaver: === invalid label");
 	return PW_ERR_LABEL_INVALID;
 }
 
@@ -389,6 +406,7 @@ static int validate_delay_schedule(const struct delay_schedule_entry_t
 {
 	size_t x;
 
+	cprints(CC_TASK, "PinWeaver: === validate delay");
 	/* The first entry should not be useless. */
 	if (delay_schedule[0].time_diff.v == 0)
 		return PW_ERR_DELAY_SCHEDULE_INVALID;
@@ -407,23 +425,128 @@ static int validate_delay_schedule(const struct delay_schedule_entry_t
 	return EC_SUCCESS;
 }
 
+static int validate_pcr_value(
+		const struct valid_pcr_value_t valid_pcr_criteria[])
+{
+	size_t x;
+	size_t y;
+	uint8_t sha256_of_selected_pcr[PW_HASH_SIZE];
+	LITE_SHA256_CTX ctx;
+	TPML_DIGEST digest;
+
+	cprints(CC_TASK, "PinWeaver: === validate criteria");
+	for (x = 0; x < PW_MAX_PCR_CRITERIA_COUNT; ++x) {
+		uint32_t pcr_counter;
+		TPML_PCR_SELECTION selection;
+
+		if (valid_pcr_criteria[x].bitmask == 0) {
+			if (x == 0)
+				return EC_SUCCESS;
+
+			return PW_ERR_PCR_NOT_MATCH;
+		}
+
+		cprints(CC_TASK, "PinWeaver: === bitmask = %d",
+			valid_pcr_criteria[x].bitmask);
+
+		selection.count = 1;
+		selection.pcrSelections[0].hash = TPM_ALG_SHA256;
+		selection.pcrSelections[0].sizeofSelect = 2;
+		for (y = 0; y < 2; ++y) {
+			selection.pcrSelections[0].pcrSelect[y] =
+			(valid_pcr_criteria[x].bitmask & (255 << (y * 8)));
+			cprints(CC_TASK, "PinWeaver: === pcrSelect val = %d",
+				selection.pcrSelections[0].pcrSelect[y]);
+		}
+
+		PCRRead(&selection, &digest, &pcr_counter);
+
+		cprints(CC_TASK, "PinWeaver: === val00 read: %d",
+			digest.digests[0].b.buffer[0]);
+		cprints(CC_TASK, "PinWeaver: === val10 read: %d",
+			digest.digests[1].b.buffer[0]);
+
+		cprints(CC_TASK, "PinWeaver: === size0: %d",
+			digest.digests[0].b.size);
+		cprints(CC_TASK, "PinWeaver: === size1: %d",
+			digest.digests[1].b.size);
+		cprints(CC_TASK, "PinWeaver: === size2: %d",
+			digest.digests[2].b.size);
+		cprints(CC_TASK, "PinWeaver: === hash_size: %d",
+			PW_HASH_SIZE);
+
+		DCRYPTO_SHA256_init(&ctx, 0);
+		HASH_update(&ctx, digest.digests[0].b.buffer, PW_HASH_SIZE);
+		HASH_update(&ctx, digest.digests[1].b.buffer, PW_HASH_SIZE);
+		memcpy(sha256_of_selected_pcr, HASH_final(&ctx), PW_HASH_SIZE);
+
+		cprints(CC_TASK, "PinWeaver: === Expected val0: %d",
+			valid_pcr_criteria[x].digest[0]);
+		cprints(CC_TASK, "PinWeaver: === Computed val0: %d",
+			sha256_of_selected_pcr[0]);
+		cprints(CC_TASK, "PinWeaver: === Expected val1: %d",
+			valid_pcr_criteria[x].digest[1]);
+		cprints(CC_TASK, "PinWeaver: === Computed val1: %d",
+			sha256_of_selected_pcr[1]);
+
+		// Check if the curent PCR digest is the same as expected by
+		// criteria.
+		for (y = 0; y < digest.digests[0].b.size; ++y) {
+			if (sha256_of_selected_pcr[y] !=
+				valid_pcr_criteria[x].digest[y]) {
+				cprints(CC_TASK,
+					"PinWeaver: === invalid y = %d", y);
+				cprints(CC_TASK, "PinWeaver: === expected = %d",
+					valid_pcr_criteria[x].digest[y]);
+				break;
+			}
+			if (y + 1 >= digest.digests[0].b.size) {
+				cprints(CC_TASK,
+						"PinWeaver: === this was the last y, size = %d",
+						digest.digests[0].b.size);
+			}
+		}
+
+		if (y == digest.digests[0].b.size)
+			return EC_SUCCESS;
+
+		cprints(CC_TASK, "PinWeaver: === y = %d", y);
+		cprints(CC_TASK, "PinWeaver: === size = %d",
+			digest.digests[0].b.size);
+	}
+
+	cprints(CC_TASK, "PinWeaver: === Not matching PCR");
+	return PW_ERR_PCR_NOT_MATCH;
+}
+
 static int validate_leaf_header(const struct leaf_header_t *head,
 				uint16_t payload_len, uint16_t aux_hash_len)
 {
 	uint32_t leaf_payload_len = head->pub_len + head->sec_len;
 
+	cprints(CC_TASK, "PinWeaver: === validate leaf header, minor %d",
+		head->leaf_version.minor);
+	cprints(CC_TASK, "PinWeaver: === validate leaf header, pub len %d",
+		head->pub_len);
+	cprints(CC_TASK, "PinWeaver: === validate leaf header, sec len %d",
+		head->sec_len);
+	cprints(CC_TASK, "PinWeaver: === validate leaf header, payload_size %d",
+		PW_LEAF_PAYLOAD_SIZE);
 	if (head->leaf_version.major != PW_LEAF_MAJOR_VERSION)
 		return PW_ERR_LEAF_VERSION_MISMATCH;
 
 	if (head->leaf_version.minor == PW_LEAF_MINOR_VERSION) {
 		if (leaf_payload_len != PW_LEAF_PAYLOAD_SIZE)
 			return PW_ERR_LENGTH_INVALID;
-	} else if (leaf_payload_len < PW_LEAF_PAYLOAD_SIZE)
+	} else if (leaf_payload_len > PW_LEAF_PAYLOAD_SIZE)
 		return PW_ERR_LENGTH_INVALID;
 
+	cprints(CC_TASK, "PinWeaver: === payload_len %d", payload_len);
+	cprints(CC_TASK, "PinWeaver: === aux_hash_len %d", aux_hash_len);
 	if (payload_len != leaf_payload_len + aux_hash_len * PW_HASH_SIZE)
 		return PW_ERR_LENGTH_INVALID;
 
+	cprints(CC_TASK, "PinWeaver: === validate leaf header success");
 	return EC_SUCCESS;
 }
 
@@ -435,6 +558,7 @@ static int validate_request_with_path(const struct merkle_tree_t *merkle_tree,
 {
 	int ret;
 
+	cprints(CC_TASK, "PinWeaver: === validate request_with_path");
 	ret = validate_tree(merkle_tree);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -443,6 +567,7 @@ static int validate_request_with_path(const struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === authenticate_path");
 	return authenticate_path(merkle_tree, path, hashes, hmac);
 }
 
@@ -457,11 +582,18 @@ static int validate_request_with_wrapped_leaf(
 	int ret;
 	uint8_t hmac[PW_HASH_SIZE];
 
+	cprints(CC_TASK, "PinWeaver: === validate request_with_wrapped_leaf");
+	cprints(CC_TASK, "PinWeaver: === impo_pub = %d",
+		unimported_leaf_data->head.pub_len);
 	ret = validate_leaf_header(&unimported_leaf_data->head, payload_len,
 				   get_path_auxiliary_hash_count(merkle_tree));
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === impo_pub = %d",
+		unimported_leaf_data->head.pub_len);
+	cprints(CC_TASK, "PinWeaver: === importing the leaf, minor = %d",
+		unimported_leaf_data->head.leaf_version.minor);
 	import_leaf(unimported_leaf_data, imported_leaf_data);
 	ret = validate_request_with_path(merkle_tree,
 					 imported_leaf_data->pub->label,
@@ -470,15 +602,25 @@ static int validate_request_with_wrapped_leaf(
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === impo_pub = %d",
+		unimported_leaf_data->head.pub_len);
+
 	compute_hmac(merkle_tree, imported_leaf_data, hmac);
 	/* Safe memcmp is used here to prevent an attacker from being able to
 	 * brute force a valid HMAC for a crafted wrapped_leaf_data.
 	 * memcmp provides an attacker a timing side-channel they can use to
 	 * determine how much of a prefix is correct.
 	 */
+	cprints(CC_TASK, "PinWeaver: === safe_memcmp, 0 = %d", hmac[0]);
+	cprints(CC_TASK, "PinWeaver: === safe_memcmp, uhmac_0 = %d",
+		unimported_leaf_data->hmac[0]);
 	if (safe_memcmp(hmac, unimported_leaf_data->hmac, sizeof(hmac)))
 		return PW_ERR_HMAC_AUTH_FAILED;
 
+	cprints(CC_TASK, "PinWeaver: === impo_pub = %d",
+		unimported_leaf_data->head.pub_len);
+	cprints(CC_TASK, "PinWeaver: === decrypt_leaf_data, bitmask = %d",
+		imported_leaf_data->pub->valid_pcr_criteria[0].bitmask);
 	return decrypt_leaf_data(merkle_tree, imported_leaf_data, leaf_data);
 }
 
@@ -697,6 +839,7 @@ int store_merkle_tree(const struct merkle_tree_t *merkle_tree)
 {
 	int ret;
 
+	cprints(CC_TASK, "PinWeaver: === store tree");
 	/* Handle the immutable data. */
 	{
 		struct pw_long_term_storage_t data;
@@ -753,6 +896,7 @@ int log_insert_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE],
 	struct pw_log_storage_t log;
 	struct pw_get_log_entry_t *entry = log.entries;
 
+	cprints(CC_TASK, "PinWeaver: === log insert leaf");
 	ret = log_roll_for_append(&log);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -771,6 +915,7 @@ int log_remove_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE])
 	struct pw_log_storage_t log;
 	struct pw_get_log_entry_t *entry = log.entries;
 
+	cprints(CC_TASK, "PinWeaver: === log remove leaf");
 	ret = log_roll_for_append(&log);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -789,6 +934,7 @@ int log_auth(struct label_t label, const uint8_t root[PW_HASH_SIZE], int code,
 	struct pw_log_storage_t log;
 	struct pw_get_log_entry_t *entry = log.entries;
 
+	cprints(CC_TASK, "PinWeaver: === log auth");
 	ret = log_roll_for_append(&log);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -813,6 +959,7 @@ static int pw_handle_reset_tree(struct merkle_tree_t *merkle_tree,
 	struct merkle_tree_t new_tree = {};
 	int ret;
 
+	cprints(CC_TASK, "PinWeaver: === hadnle reset tree");
 	if (req_size != sizeof(*request))
 		return PW_ERR_LENGTH_INVALID;
 
@@ -821,15 +968,18 @@ static int pw_handle_reset_tree(struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === tree params validated");
 	ret = create_merkle_tree(request->bits_per_level, request->height,
 				 &new_tree);
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === tree created");
 	ret = store_merkle_tree(&new_tree);
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === tree stored");
 	memcpy(merkle_tree, &new_tree, sizeof(new_tree));
 	return EC_SUCCESS;
 }
@@ -846,6 +996,7 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 	const uint8_t empty_hash[PW_HASH_SIZE] = {};
 	uint8_t new_root[PW_HASH_SIZE];
 
+	cprints(CC_TASK, "PinWeaver: === insert leaf");
 	if (req_size != sizeof(*request) +
 			get_path_auxiliary_hash_count(merkle_tree) *
 			PW_HASH_SIZE)
@@ -862,6 +1013,14 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 
 	memset(&leaf_data, 0, sizeof(leaf_data));
 	leaf_data.pub.label.v = request->label.v;
+	cprints(CC_TASK, "PinWeaver: === Set the criterias, pcr: %d",
+		request->valid_pcr_criteria[0].digest[0]);
+	memcpy(&leaf_data.pub.valid_pcr_criteria, &request->valid_pcr_criteria,
+				 sizeof(request->valid_pcr_criteria));
+
+    cprints(CC_TASK, "PinWeaver: === The criterias set, pcr: %d",
+		leaf_data.pub.valid_pcr_criteria[0].digest[0]);
+
 	memcpy(&leaf_data.pub.delay_schedule, &request->delay_schedule,
 	       sizeof(request->delay_schedule));
 	memcpy(&leaf_data.sec.low_entropy_secret, &request->low_entropy_secret,
@@ -889,6 +1048,7 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 
 	*response_size = sizeof(*response) + PW_LEAF_PAYLOAD_SIZE;
 
+	cprints(CC_TASK, "PinWeaver: === insert leaf done, res = %d", ret);
 	return ret;
 }
 
@@ -900,6 +1060,8 @@ static int pw_handle_remove_leaf(struct merkle_tree_t *merkle_tree,
 	const uint8_t empty_hash[PW_HASH_SIZE] = {};
 	uint8_t new_root[PW_HASH_SIZE];
 
+	cprints(CC_TASK, "PinWeaver: === remove_leaf %d",
+		request->leaf_location.v);
 	if (req_size != sizeof(*request) +
 			get_path_auxiliary_hash_count(merkle_tree) *
 			PW_HASH_SIZE)
@@ -930,10 +1092,11 @@ static int pw_handle_remove_leaf(struct merkle_tree_t *merkle_tree,
  *   PW_ERR_LOWENT_AUTH_FAILED  ->  unimported_leaf_data
  */
 static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
-			      const struct pw_request_try_auth_t *request,
-			      uint16_t req_size,
-			      struct pw_response_try_auth_t *response,
-			      uint16_t *data_length)
+				const uint8_t low_entropy_secret[PW_SECRET_SIZE],
+				const struct unimported_leaf_data_t* unimported_leaf_data,
+				uint16_t req_size,
+				struct pw_response_try_auth_t *response,
+				uint16_t *data_length)
 {
 	int ret = EC_SUCCESS;
 	struct leaf_data_t leaf_data = {};
@@ -957,16 +1120,43 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 			{ 0, EC_SUCCESS, leaf_data.sec.high_entropy_secret },
 	};
 
-	if (req_size < sizeof(*request))
+	cprints(CC_TASK, "PinWeaver: === try auth");
+	if (unimported_leaf_data->head.leaf_version.minor == 0 &&
+	    unimported_leaf_data->head.leaf_version.major == 0) {
+		cprints(CC_TASK, "PinWeaver: === asked to auth the old leaf version");
+		return PW_ERR_LENGTH_INVALID;
+	}
+	cprints(CC_TASK, "PinWeaver: === minor1: %d",
+		unimported_leaf_data->head.leaf_version.minor);
+	if (req_size < sizeof(*unimported_leaf_data) + sizeof(low_entropy_secret))
 		return PW_ERR_LENGTH_INVALID;
 
+	cprints(CC_TASK, "PinWeaver: === pub10: %d",
+		unimported_leaf_data->head.pub_len);
+
 	ret = validate_request_with_wrapped_leaf(
-			merkle_tree, req_size - sizeof(*request),
-			&request->unimported_leaf_data, &imported_leaf_data,
+			merkle_tree,
+			req_size - sizeof(struct pw_request_try_auth_t),
+			unimported_leaf_data, &imported_leaf_data,
 			&leaf_data);
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === checking if need validate_pcr_value");
+	cprints(CC_TASK, "PinWeaver: === minor2: %d",
+		imported_leaf_data.head->leaf_version.minor);
+	cprints(CC_TASK, "PinWeaver: === pub11: %d",
+		unimported_leaf_data->head.pub_len);
+	cprints(CC_TASK, "PinWeaver: === bitmask = %d",
+		leaf_data.pub.valid_pcr_criteria[0].bitmask);
+
+	/* Check if at least one PCR criteria is satisfied */
+	cprints(CC_TASK, "PinWeaver: === calling validate_pcr_value");
+	ret = validate_pcr_value(leaf_data.pub.valid_pcr_criteria);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	cprints(CC_TASK, "PinWeaver: === checking test_rate_limit");
 	ret = test_rate_limit(&leaf_data, &seconds_to_wait);
 	if (ret != EC_SUCCESS) {
 		*data_length = sizeof(*response) + PW_LEAF_PAYLOAD_SIZE;
@@ -989,9 +1179,9 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 	 * 2) the runtime of the code paths for failed and successful
 	 *    authentication attempts should not diverge.
 	 */
-	auth_result = safe_memcmp(request->low_entropy_secret,
+	auth_result = safe_memcmp(low_entropy_secret,
 				  leaf_data.sec.low_entropy_secret,
-				  sizeof(request->low_entropy_secret)) == 0;
+				  sizeof(low_entropy_secret)) == 0;
 	leaf_data.pub.attempt_count.v = results_table[auth_result].attempts;
 
 	/* This has a non-constant time path, but it doesn't convey information
@@ -1026,6 +1216,144 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 	       results_table[auth_result].secret,
 	       sizeof(response->high_entropy_secret));
 
+	cprints(CC_TASK, "PinWeaver: === auth done, ret = %d",
+		results_table[auth_result].ret);
+	return results_table[auth_result].ret;
+}
+
+/** This should be called only when the leaf has to be migrated to minor
+ *  version = 1 (from 0), meaning it will get a PCR criteria set.
+ *  Will try to authenticate first. If successful, will check the existing
+ *  PCR criteria for the leaf. If no PCR criteria is present, will override
+ *	them with criteria from request. This is needed to make sure the update
+ *	of the leaf happens only once, and no malicios code can override the PCR
+ *	criteria once the leaf is migrated.
+ */
+static int pw_seal_to_pcr(struct merkle_tree_t *merkle_tree,
+			      const struct pw_request_seal_to_pcr_t *request,
+			      uint16_t req_size,
+			      struct pw_response_try_auth_t *response,
+			      uint16_t *data_length)
+{
+
+	int ret = EC_SUCCESS;
+	struct leaf_data_t leaf_data = {};
+	struct imported_leaf_data_t imported_leaf_data;
+	struct wrapped_leaf_data_t wrapped_leaf_data;
+	struct time_diff_t seconds_to_wait;
+	uint8_t zeros[PW_SECRET_SIZE] = {};
+	uint8_t new_root[PW_HASH_SIZE];
+
+	/* These variables help eliminate the possibility of a timing side
+	 * channel that would allow an attacker to prevent the log write.
+	 */
+	volatile int auth_result;
+
+	volatile struct {
+		uint32_t attempts;
+		int ret;
+		uint8_t *secret;
+	} results_table[2] = {
+			{ 0, PW_ERR_LOWENT_AUTH_FAILED, zeros },
+			{ 0, EC_SUCCESS, leaf_data.sec.high_entropy_secret },
+	};
+
+	cprints(CC_TASK, "PinWeaver: === pw seal to pcr");
+	if (request->unimported_leaf_data.head.leaf_version.minor != 0 ||
+	    request->unimported_leaf_data.head.leaf_version.major != 0) {
+		cprints(CC_TASK, "PinWeaver: === strange minor for seal: %d",
+			request->unimported_leaf_data.head.leaf_version.minor);
+	}
+
+	if (req_size < sizeof(request->unimported_leaf_data)
+	 	+ sizeof(request->low_entropy_secret)) {
+		return PW_ERR_LENGTH_INVALID;
+	}
+
+	ret = validate_request_with_wrapped_leaf(
+			merkle_tree,
+			req_size - sizeof(struct pw_request_seal_to_pcr_t),
+			&request->unimported_leaf_data, &imported_leaf_data,
+			&leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	cprints(CC_TASK, "PinWeaver: === checking if need validate_pcr_value");
+	cprints(CC_TASK, "PinWeaver: === minor2: %d",
+		imported_leaf_data.head->leaf_version.minor);
+	cprints(CC_TASK, "PinWeaver: === bitmask = %d",
+		leaf_data.pub.valid_pcr_criteria[0].bitmask);
+
+	ret = test_rate_limit(&leaf_data, &seconds_to_wait);
+	if (ret != EC_SUCCESS) {
+		*data_length = sizeof(*response) + PW_LEAF_PAYLOAD_SIZE;
+		memset(response, 0, *data_length);
+		memcpy(&response->seconds_to_wait, &seconds_to_wait,
+		       sizeof(seconds_to_wait));
+		return ret;
+	}
+
+	update_timestamp(&leaf_data.pub.timestamp);
+
+	/* Precompute the failed attempts. */
+	results_table[0].attempts = leaf_data.pub.attempt_count.v;
+	if (results_table[0].attempts != UINT32_MAX)
+		++results_table[0].attempts;
+
+	/**********************************************************************/
+	/* After this:
+	 * 1) results_table should not be changed;
+	 * 2) the runtime of the code paths for failed and successful
+	 *    authentication attempts should not diverge.
+	 */
+	auth_result = safe_memcmp(request->low_entropy_secret,
+				  leaf_data.sec.low_entropy_secret,
+				  sizeof(request->low_entropy_secret)) == 0;
+	leaf_data.pub.attempt_count.v = results_table[auth_result].attempts;
+
+	cprints(CC_TASK, "PinWeaver: === setting pcr values");
+	/** Set the PCR criteria from request and update the tree. */
+	memcpy(&leaf_data.pub.valid_pcr_criteria,
+		   &request->valid_pcr_criteria,
+		   sizeof(request->valid_pcr_criteria));
+
+   cprints(CC_TASK, "PinWeaver: === bitmask after set: %d",
+		leaf_data.pub.valid_pcr_criteria[0].bitmask);
+
+	/* This has a non-constant time path, but it doesn't convey information
+	 * about whether a PW_ERR_LOWENT_AUTH_FAILED happened or not.
+	 */
+	ret = handle_leaf_update(merkle_tree, &leaf_data,
+				 imported_leaf_data.hashes, &wrapped_leaf_data,
+				 new_root, &imported_leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = log_auth(wrapped_leaf_data.pub.label, new_root,
+		       results_table[auth_result].ret, leaf_data.pub.timestamp);
+	if (ret != EC_SUCCESS) {
+		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
+		return ret;
+	}
+	/**********************************************************************/
+	/* At this point the log should be written so it should be safe for the
+	 * runtime of the code paths to diverge.
+	 */
+
+	memcpy(merkle_tree->root, new_root, sizeof(new_root));
+
+	*data_length = sizeof(*response) + PW_LEAF_PAYLOAD_SIZE;
+	memset(response, 0, *data_length);
+
+	memcpy(&response->unimported_leaf_data, &wrapped_leaf_data,
+	       sizeof(wrapped_leaf_data));
+
+	memcpy(&response->high_entropy_secret,
+	       results_table[auth_result].secret,
+	       sizeof(response->high_entropy_secret));
+
+	cprints(CC_TASK, "PinWeaver: === auth done, ret = %d",
+		results_table[auth_result].ret);
 	return results_table[auth_result].ret;
 }
 
@@ -1041,6 +1369,7 @@ static int pw_handle_reset_auth(struct merkle_tree_t *merkle_tree,
 	struct wrapped_leaf_data_t wrapped_leaf_data;
 	uint8_t new_root[PW_HASH_SIZE];
 
+	cprints(CC_TASK, "PinWeaver: === handle reset auth");
 	if (req_size < sizeof(*request))
 		return PW_ERR_LENGTH_INVALID;
 
@@ -1084,6 +1413,8 @@ static int pw_handle_reset_auth(struct merkle_tree_t *merkle_tree,
 	       sizeof(response->high_entropy_secret));
 
 	*response_size = sizeof(*response) + PW_LEAF_PAYLOAD_SIZE;
+	cprints(CC_TASK, "PinWeaver: === reset done, res (0=success) = %d",
+		ret);
 
 	return ret;
 }
@@ -1098,6 +1429,7 @@ static int pw_handle_get_log(const struct merkle_tree_t *merkle_tree,
 	int x;
 	struct pw_log_storage_t log;
 
+	cprints(CC_TASK, "PinWeaver: === pw_handle_get_log");
 	if (req_size != sizeof(*request))
 		return PW_ERR_LENGTH_INVALID;
 
@@ -1105,6 +1437,7 @@ static int pw_handle_get_log(const struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	cprints(CC_TASK, "PinWeaver: === tree validated");
 	ret = load_log_data(&log);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -1127,6 +1460,7 @@ static int pw_handle_get_log(const struct merkle_tree_t *merkle_tree,
 	if (x < 0)
 		return EC_SUCCESS;
 
+	cprints(CC_TASK, "PinWeaver: === found_relevant_entry");
 	/* Copy the entries in reverse order. */
 	while (1) {
 		memcpy(&response[x], &log.entries[x], sizeof(log.entries[x]));
@@ -1135,6 +1469,8 @@ static int pw_handle_get_log(const struct merkle_tree_t *merkle_tree,
 			break;
 		--x;
 	}
+
+	cprints(CC_TASK, "PinWeaver: === returning success");
 
 	return EC_SUCCESS;
 }
@@ -1154,6 +1490,8 @@ static int pw_handle_log_replay(const struct merkle_tree_t *merkle_tree,
 	uint8_t hmac[PW_HASH_SIZE];
 	uint8_t root[PW_HASH_SIZE];
 
+    cprints(CC_TASK, "PinWeaver: === handle log replay, minor = %d",
+		request->unimported_leaf_data.head.leaf_version.minor);
 	if (req_size < sizeof(*request))
 		return PW_ERR_LENGTH_INVALID;
 
@@ -1236,6 +1574,8 @@ static enum vendor_cmd_rc pw_vendor_specific_command(enum vendor_cmd_cc code,
 	const struct pw_request_t *request = buf;
 	struct pw_response_t *response = buf;
 
+	ccprintf("PinWeaver: === vendor cmd cc code: %d.\n",
+		 code);
 	if (input_size < sizeof(request->header)) {
 		ccprintf("PinWeaver: message smaller than a header (%d).\n",
 			 input_size);
@@ -1328,8 +1668,10 @@ int pw_handle_request(struct merkle_tree_t *merkle_tree,
 
 	resp_length = 0;
 
+	cprints(CC_TASK, "PinWeaver: === handle_request %d", type.v);
 	if (request->header.version != PW_PROTOCOL_VERSION) {
 		ret = PW_ERR_VERSION_MISMATCH;
+		cprints(CC_TASK, "PinWeaver: === wrong version");
 		goto cleanup;
 	}
 
@@ -1352,10 +1694,12 @@ int pw_handle_request(struct merkle_tree_t *merkle_tree,
 					    request->header.data_length);
 		break;
 	case PW_TRY_AUTH:
-		ret = pw_handle_try_auth(merkle_tree, &request->data.try_auth,
-					 request->header.data_length,
-					 &response->data.try_auth,
-					 &resp_length);
+		ret = pw_handle_try_auth(merkle_tree,
+			 	request->data.try_auth.low_entropy_secret,
+				&request->data.try_auth.unimported_leaf_data,
+				request->header.data_length,
+				&response->data.try_auth,
+				&resp_length);
 		break;
 	case PW_RESET_AUTH:
 		ret = pw_handle_reset_auth(merkle_tree,
@@ -1363,6 +1707,13 @@ int pw_handle_request(struct merkle_tree_t *merkle_tree,
 					   request->header.data_length,
 					   &response->data.reset_auth,
 					   &resp_length);
+		break;
+	case PW_SEAL_TO_PCR:
+		ret = pw_seal_to_pcr(merkle_tree,
+					  &request->data.seal_to_pcr,
+					  request->header.data_length,
+					  &response->data.try_auth,
+					  &resp_length);
 		break;
 	case PW_GET_LOG:
 		ret = pw_handle_get_log(merkle_tree, &request->data.get_log,
