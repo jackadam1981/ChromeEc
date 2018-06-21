@@ -100,6 +100,8 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED2]    = { 2, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_LED3]    = { 6, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_LED4]    = { 1, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED5]    = { 7, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED6]    = { 5, PWM_CONFIG_DSLEEP, 100 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
