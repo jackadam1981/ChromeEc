@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c82305b_5db85e3a",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:40:08Z",
+      "side": 1,
+      "message": "all global variables ?\nor just the ones using link tricks to put them in open-ended sections ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "533cd03845c728fc42a6cc27a9e2f6d79d03f63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a4fb7f_5aef7c78",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-21T08:40:08Z",
+      "side": 1,
+      "message": "nit: I\u0027m not a fan of tab in the middle of those lines, but maybe other people are.",
+      "range": {
+        "startLine": 105,
+        "startChar": 29,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "533cd03845c728fc42a6cc27a9e2f6d79d03f63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
