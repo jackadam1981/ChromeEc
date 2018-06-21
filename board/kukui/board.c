@@ -12,6 +12,7 @@
 #include "charger.h"
 #include "chipset.h"
 #include "common.h"
+#include "clock.h"
 #include "console.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/charger/rt946x.h"
@@ -237,6 +238,40 @@ void board_config_pre_init(void)
 	 */
 	STM32_DMA_CSELR(STM32_DMAC_CH4) = (1 << 15) | (1 << 19);
 }
+
+#ifdef SECTION_IS_RO
+void board_init_spi2(void)
+{
+	/* bootblock */
+	/* Set SPI2 PB13/14/15 pins to high speed */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000000;
+
+	/* Reset SPI2 */
+	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
+
+	/* Enable clocks to SPI2 module */
+	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
+
+	clock_wait_bus_cycles(BUS_APB, 1);
+	gpio_config_module(MODULE_SPI, 1);
+
+	STM32_SPI2_REGS->cr2 = STM32_SPI_CR2_FRXTH | STM32_SPI_CR2_DATASIZE(8) |
+			       STM32_SPI_CR2_RXDMAEN | STM32_SPI_CR2_TXDMAEN;
+
+	/* Manual CS, disable. */
+	STM32_SPI2_REGS->cr1 = STM32_SPI_CR1_SPE;
+
+	STM32_SPI2_REGS->dr = 0xff;
+	STM32_SPI2_REGS->dr = 0xff;
+	STM32_SPI2_REGS->dr = 0xff;
+	STM32_SPI2_REGS->dr = 0xff;
+
+	/* Enable the SPI peripheral */
+	STM32_SPI2_REGS->cr1 |= STM32_SPI_CR1_SPE;
+}
+DECLARE_HOOK(HOOK_INIT, board_init_spi2, HOOK_PRIO_INIT_PWM - 1);
+#endif
 
 enum kukui_board_version {
 	BOARD_VERSION_UNKNOWN = -1,

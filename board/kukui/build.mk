@@ -12,3 +12,4 @@ CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f09x
 
 board-y=battery.o board.o usb_pd_policy.o led.o
+board-$(CONFIG_PACK_BOOTBLOCK)+=emmc.o
