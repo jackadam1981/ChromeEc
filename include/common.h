@@ -96,6 +96,18 @@
 #define __bss_slow __attribute__((section(".bss.slow")))
 #endif
 
+/*
+ * global variables that should not be guarded when AddressSanitizer is enabled
+ * (e.g. hook "arrays")
+ */
+#ifndef __no_sanitize_address
+#ifdef __llvm__
+#define __no_sanitize_address	__attribute__((no_sanitize("address")))
+#else
+#define __no_sanitize_address
+#endif
+#endif
+
 /* There isn't really a better place for this */
 #define C_TO_K(temp_c) ((temp_c) + 273)
 #define K_TO_C(temp_c) ((temp_c) - 273)
