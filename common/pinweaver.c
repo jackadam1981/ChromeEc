@@ -57,7 +57,7 @@ BUILD_ASSERT(PW_MAX_MESSAGE_SIZE >= PW_MAX_RESPONSE_SIZE);
 /* Make sure the largest possible message would fit in
  * (struct tpm_register_file).data_fifo.
  */
-BUILD_ASSERT(PW_MAX_MESSAGE_SIZE + sizeof(struct tpm_cmd_header) <= 2048);
+BUILD_ASSERT(PW_MAX_MESSAGE_SIZE + sizeof(struct tpm_cmd_header) <= 2112);
 
 /* PW_MAX_PATH_SIZE should not change unless PW_LEAF_MAJOR_VERSION changes too.
  * Update these statements whenever these constants are changed to remind future
@@ -404,6 +404,13 @@ static int validate_delay_schedule(const struct delay_schedule_entry_t
 			return PW_ERR_DELAY_SCHEDULE_INVALID;
 		}
 	}
+	return EC_SUCCESS;
+}
+
+static int validate_pcr_value(const struct valid_pcr_value_t valid_pcr_value)
+{
+	/* Read the value of PCR index 4 */
+	/* If the PCR is unchanged, or the value is valid return success */
 	return EC_SUCCESS;
 }
 
@@ -860,8 +867,14 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	ret = validate_pcr_value(request->valid_pcr_value);
+	if (ret != EC_SUCCESS)
+		return ret;
+
 	memset(&leaf_data, 0, sizeof(leaf_data));
 	leaf_data.pub.label.v = request->label.v;
+	memcpy(&leaf_data.pub.valid_pcr_value, &request->valid_pcr_value,
+				 sizeof(request->valid_pcr_value));
 	memcpy(&leaf_data.pub.delay_schedule, &request->delay_schedule,
 	       sizeof(request->delay_schedule));
 	memcpy(&leaf_data.sec.low_entropy_secret, &request->low_entropy_secret,

@@ -14,9 +14,10 @@
 
 #define PW_PROTOCOL_VERSION 0
 #define PW_LEAF_MAJOR_VERSION 0
-#define PW_LEAF_MINOR_VERSION 0
+/* The change from version zero is the addition of valid_pcr_value metadata */
+#define PW_LEAF_MINOR_VERSION 1
 
-#define PW_MAX_MESSAGE_SIZE (2048 - 12 /* sizeof(struct tpm_cmd_header) */)
+#define PW_MAX_MESSAGE_SIZE (2112 - 12 /* sizeof(struct tpm_cmd_header) */)
 
 /* The block size of encryption used for wrapped_leaf_data_t. */
 #define PW_WRAP_BLOCK_SIZE 16
@@ -84,6 +85,14 @@ struct PW_PACKED pw_timestamp_t {
 	uint32_t boot_count;
 	/* Seconds since boot. */
 	uint64_t timer_value;
+};
+
+/* Number of bytes required for a PCR value from TPM. */
+#define PW_PCR_VALUE_SIZE 32
+
+/* Represents the valid PCR value of PCR index 4 when it is extended. */
+struct PW_PACKED valid_pcr_value_t {
+	uint8_t v[PW_PCR_VALUE_SIZE];
 };
 
 /* Represents a time interval in seconds.
@@ -212,6 +221,7 @@ struct PW_PACKED pw_request_reset_tree_t {
 struct PW_PACKED pw_request_insert_leaf_t {
 	struct label_t label;
 	struct delay_schedule_entry_t delay_schedule[PW_SCHED_COUNT];
+	struct valid_pcr_value_t valid_pcr_value;
 	uint8_t low_entropy_secret[PW_SECRET_SIZE];
 	uint8_t high_entropy_secret[PW_SECRET_SIZE];
 	uint8_t reset_secret[PW_SECRET_SIZE];
