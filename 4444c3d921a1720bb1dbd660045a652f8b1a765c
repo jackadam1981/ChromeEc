@@ -70,6 +70,30 @@
       "revId": "4444c3d921a1720bb1dbd660045a652f8b1a765c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3afe23bb_38257781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-06-21T20:07:15Z",
+      "side": 1,
+      "message": "I try to list all the cases (any missing case?):\n 1) Type-C charger w/ PD: UFP, exclude it using USB-comm-capable bit -\u003e negative\n 2) Type-C charger w/o PD: UFP, we can\u0027t differentiate it with (5) -\u003e false-positive\n 3) Type-C device: DFP -\u003e negative\n 4) C-to-C to workstation: UFP -\u003e positive\n 5) Type-C hub and C-to-C to workstation: DFP -\u003e false-negative\n 6) C-to-A to BC1.2 charger: UFP, exclude it by checking BC1.2 chip -\u003e negative\n 7) C-to-A to workstation: UFP -\u003e positive\n 8) C-to-A female and A-to-A to BC1.2 charger: DFP -\u003e negative\n 9) C-to-A female and A-to-A to workstation: DFP, we want it mux to AP but can\u0027t differentiate it from (10) -\u003e false-negative\n 10) C-to-A female to USB device: DFP -\u003e negative\n 11) C-to-B-micro and B-to-A to workstation: UFP -\u003e positive\n 12a) C-to-B-micro and OTG cable to USB device: DFP -\u003e negative (if the C-to-B-micro adapter supports OTG detection)\n 12b) C-to-B-micro and OTG cable to USB device: UFP -\u003e false-positive (if the C-to-B-micro adapter doesn\u0027t support OTG detection)\n\nNote: \"negative\" means muxing to the hub correctly; \"positive\" means muxing to AP correctly; \"false-\" means muxing incorrectly.\n\nWe can also filter the case (4) out by checking the BC1.2 chip as amstan@ suggested. Will update the patch. So the remaining failure cases are:\n * false-positive on (2), (12b)\n * false-negative on (5), (7)\n\nWe may ignore the cases (5), (7), and (12b) as they are rare setup. And ask users to unplug the case (2). Does it make sense?",
+      "parentUuid": "c593729f_a6bb9a09",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "4444c3d921a1720bb1dbd660045a652f8b1a765c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
