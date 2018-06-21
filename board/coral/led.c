@@ -27,6 +27,7 @@
 #define LED_POWER_BLINK_OFF_MSEC 600
 #define LED_POWER_ON_TICKS (LED_POWER_BLINK_ON_MSEC / HOOK_TICK_INTERVAL_MS)
 #define LED_POWER_OFF_TICKS (LED_POWER_BLINK_OFF_MSEC / HOOK_TICK_INTERVAL_MS)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
 const enum ec_led_id supported_led_ids[] = {
 			EC_LED_ID_BATTERY_LED};
@@ -119,6 +120,10 @@ static const struct led_descriptor led_nasher_state_table[][LED_NUM_PHASES] = {
 };
 
 static struct led_info led;
+
+static int STA_FLAG;
+
+static int CTRL_STAT_F;
 
 static int led_set_color_battery(enum led_color color)
 {
@@ -228,11 +233,14 @@ static void led_update_battery(void)
 	enum led_states desired_state = led_get_state();
 
 	/* Get updated state based on power state and charge level */
-	if (desired_state < LED_NUM_STATES && desired_state != led.state) {
+	if (desired_state < LED_NUM_STATES && desired_state != led.state
+	&& CTRL_STAT_F == 0) {
 		/* State is changing */
 		led.state = desired_state;
 		/* Reset ticks counter when state changes */
 		ticks = 0;
+
+		STA_FLAG = 1;
 	}
 
 	/*
@@ -289,6 +297,34 @@ static void led_robo_update_power(void)
 	led_set_color_power(level);
 }
 
+static int command_chag_stat(int argc, char **argv)
+{
+	int sta_num;
+	char *e;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+	if (!strcasecmp(argv[1], "ctrl")) {
+		CTRL_STAT_F = 1;
+		sta_num = strtoi(argv[2], &e, 0);
+		if (*e) {
+			ccprintf("Invalid state number.\n");
+		} else if (sta_num >= LED_NUM_STATES) {
+			ccprintf("Out of state number %d\n", LED_NUM_STATES-1);
+		} else {
+			led.state = sta_num;
+			STA_FLAG = 1;
+		}
+	} else if (!strcasecmp(argv[1], "disctrl")) {
+		CTRL_STAT_F = 0;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(controlLED, command_chag_stat,
+			"[ctrl|disctrl], <state_num>",
+			"Control LED state.");
+
 /* Called by hook task every hook tick (200 msec) */
 static void led_update(void)
 {
@@ -300,6 +336,15 @@ static void led_update(void)
 	}
 }
 DECLARE_HOOK(HOOK_TICK, led_update, HOOK_PRIO_DEFAULT);
+
+static void led_stats_chang(void)
+{
+	if (STA_FLAG == 1) {
+		CPRINTS("LED status changed to status %d\n", led.state);
+		STA_FLAG = 0;
+	}
+}
+DECLARE_HOOK(HOOK_TICK, led_stats_chang, HOOK_PRIO_DEFAULT);
 
 static void led_init(void)
 {
