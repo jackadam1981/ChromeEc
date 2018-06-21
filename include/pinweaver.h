@@ -74,6 +74,7 @@ struct PW_PACKED leaf_public_data_t {
 	/* State used to rate limit. */
 	struct pw_timestamp_t timestamp;
 	struct attempt_count_t attempt_count;
+	struct valid_pcr_value_t valid_pcr_criteria[PW_MAX_PCR_CRITERIA_COUNT];
 };
 
 /* Do not remove fields within the same PW_LEAF_MAJOR_VERSION. */
@@ -111,7 +112,7 @@ struct imported_leaf_data_t {
 	/* Covers .head, .pub, and .cipher_text. */
 	const uint8_t *hmac;
 	const uint8_t *iv;
-	const struct leaf_public_data_t *pub;
+	struct leaf_public_data_t *pub;
 	const uint8_t *cipher_text;
 	const uint8_t (*hashes)[PW_HASH_SIZE];
 };
