@@ -22,6 +22,30 @@
       "revId": "7630529c06fc7f26623c92190f9d2509fcf56439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f0002f_50571c6f",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-21T02:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5ac17e0_918faa0a",
+      "range": {
+        "startLine": 494,
+        "startChar": 1,
+        "endLine": 501,
+        "endChar": 4
+      },
+      "revId": "7630529c06fc7f26623c92190f9d2509fcf56439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
