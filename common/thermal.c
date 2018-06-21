@@ -28,7 +28,7 @@
 
 test_mockable_static void smi_sensor_failure_warning(void)
 {
-	CPRINTS("can't read any temp sensors!");
+	/*CPRINTS("can't read any temp sensors!");*/
 	host_set_single_event(EC_HOST_EVENT_THERMAL);
 }
 

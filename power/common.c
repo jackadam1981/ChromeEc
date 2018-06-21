@@ -311,11 +311,15 @@ static enum power_state power_common_state(enum power_state state)
 
 		/* Wait for inactivity timeout */
 		power_wait_signals(0);
+#if 0
 		if (task_wait_event(S5_INACTIVITY_TIMEOUT) ==
 		    TASK_EVENT_TIMER) {
 			/* Prepare to drop to G3; wake not requested yet */
 			return POWER_S5G3;
 		}
+#else
+		task_wait_event(-1);
+#endif
 		break;
 
 	case POWER_S3:
