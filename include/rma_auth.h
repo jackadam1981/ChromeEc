@@ -61,7 +61,8 @@ const char *rma_get_challenge(void);
 /**
  * Try a RMA authorization code
  *
- * @param code		Authorization code to try
+ * @param code		Authorization code to try (buffer needs to be at least
+ * RMA_AUTHCODE_CHARS bytes long, no matter the actual string length).
  * @return EC_SUCCESS if the response was correct, or non-zero error code.
  */
 int rma_try_authcode(const char *code);
