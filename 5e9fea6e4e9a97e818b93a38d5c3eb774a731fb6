@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8646e361_01e45756",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-21T13:21:47Z",
+      "side": 1,
+      "message": "shouldn\u0027t this check be in the beginning of the for(){} block?",
+      "revId": "5e9fea6e4e9a97e818b93a38d5c3eb774a731fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
