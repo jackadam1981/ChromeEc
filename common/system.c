@@ -1128,6 +1128,15 @@ DECLARE_SAFE_CONSOLE_COMMAND(version, command_version,
 			     NULL,
 			     "Print versions");
 
+static int command_getVersion(int argc, char **argv)
+{
+	command_version(argc, argv);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(getVersion, command_getVersion,
+			"Null", "Null");
+
 #ifdef CONFIG_CMD_SYSJUMP
 static int command_sysjump(int argc, char **argv)
 {
