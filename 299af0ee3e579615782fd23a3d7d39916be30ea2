@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "343a1020_84fa5ad9",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-06-21T13:38:50Z",
+      "side": 1,
+      "message": "By default CONFIG_CHARGE_MANAGER_SAFE_MODE enabled in the code but we still hit this issue.\nInstead of sending -1 here we send 0 so that we skip disabling charge port when battery isnt ready yet",
+      "parentUuid": "2d6502cb_9fc1d477",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 4
+      },
+      "revId": "299af0ee3e579615782fd23a3d7d39916be30ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b044ea1f_30493703",
         "filename": "baseboard/octopus/battery.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-21T05:26:50Z",
       "side": 1,
       "message": "I don\u0027t think this is the right thing to do. CONFIG_CHARGER_PROFILE_OVERRIDE was added for a specific project to work around the issue that battery gas gauge was badly programmed and there was no way to fix it. Please see Vincent\u0027s comment here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/678756/15/board/hammer/battery.c#72",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "299af0ee3e579615782fd23a3d7d39916be30ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac3389e_cee98e66",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-06-21T13:38:50Z",
+      "side": 1,
+      "message": "This logic doesnt override the desired current \u0026 voltage unless battery is still initializing.",
+      "parentUuid": "b044ea1f_30493703",
       "range": {
         "startLine": 58,
         "startChar": 4,
