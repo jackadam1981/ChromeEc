@@ -1075,7 +1075,7 @@ static void print_build_string(void)
 	ccprintf("\n");
 }
 
-static int command_version(int argc, char **argv)
+int command_version(int argc, char **argv)
 {
 	int board_version;
 

@@ -633,5 +633,5 @@ int system_set_active_copy(enum system_image_copy_t copy);
  * @return     Flash offset of the slot storing <copy>
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy);
-
+int command_version(int argc, char **argv);
 #endif  /* __CROS_EC_SYSTEM_H */
