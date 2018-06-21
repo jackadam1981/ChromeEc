@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce67d835_f02b94ae",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-21T13:29:41Z",
+      "side": 1,
+      "message": "let\u0027s use the same variable too (we don\u0027t need to create the lid_standard_ref variable)\n\nCall it standard_rot_ref or something generic like that so we can use it for all sensors.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "6d29fccd1436f3eaf3c689ebf3bfc6c69f55bf64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
