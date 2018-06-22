@@ -373,6 +373,24 @@
     },
     {
       "key": {
+        "uuid": "8e27d90c_876fc75e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T05:15:55Z",
+      "side": 1,
+      "message": "Sorry, you\u0027re right.\n\nIt seems like the right fix may be to enable:\n#define CONFIG_HOSTCMD_ALIGNED\n\nwhich then defines\n#define __ec_align4 __packed __aligned(4)\ninstead of \n#define __ec_align4 __packed\n\nI thought the former was used, but the latter is the default.\n\nI\u0027ll add a TODO in the code instead of blaming LLVM ,-)\n\n(also, that only fixes the one in usb_pd_protocol.c, not the 2 other instances (I already have a fix for test/pinweaver.c, but the motion_sense one would be trickier))",
+      "parentUuid": "268c4dd1_256b7d0e",
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2d86d81_fe5bc383",
         "filename": "include/common.h",
         "patchSetId": 2
