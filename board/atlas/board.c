@@ -96,12 +96,12 @@ struct keyboard_scan_config keyscan_config = {
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] = { 3, 0, 10000 },
-	[PWM_CH_LED1]    = { 0, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED2]    = { 2, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED3]    = { 6, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED4]    = { 1, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED5]    = { 7, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED6]    = { 5, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED1]    = { 0, PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP, 2400 },
+	[PWM_CH_LED2]    = { 2, PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP, 2400 },
+	[PWM_CH_LED3]    = { 6, PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP, 2400 },
+	[PWM_CH_LED4]    = { 1, PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP, 2400 },
+	[PWM_CH_LED5]    = { 7, PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP, 2400 },
+	[PWM_CH_LED6]    = { 5, PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP, 2400 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
