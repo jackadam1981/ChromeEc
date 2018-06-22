@@ -200,6 +200,8 @@ enum pwm_channel {
 	PWM_CH_LED2,
 	PWM_CH_LED3,
 	PWM_CH_LED4,
+	PWM_CH_LED5,
+	PWM_CH_LED6,
 	PWM_CH_COUNT
 };
 
