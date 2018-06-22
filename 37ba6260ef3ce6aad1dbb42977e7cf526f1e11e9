@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98c6b21d_99ed7ca1",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-22T01:31:46Z",
+      "side": 1,
+      "message": "return sb_read_string(...);",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "37ba6260ef3ce6aad1dbb42977e7cf526f1e11e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3c6230_1cf1d817",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-22T01:31:46Z",
+      "side": 1,
+      "message": "What if data 2 and 3 of firmware version happen to be 0?",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "37ba6260ef3ce6aad1dbb42977e7cf526f1e11e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e546db29_b61faa66",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-22T01:31:46Z",
+      "side": 1,
+      "message": "return early if PROJECT_AKALI?",
+      "revId": "37ba6260ef3ce6aad1dbb42977e7cf526f1e11e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d9c042_3c9b92aa",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-22T01:31:46Z",
+      "side": 1,
+      "message": "Okay to get rid of this now?",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 237,
+        "endChar": 60
+      },
+      "revId": "37ba6260ef3ce6aad1dbb42977e7cf526f1e11e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
