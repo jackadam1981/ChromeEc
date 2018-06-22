@@ -27,6 +27,7 @@
 
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DH             /* Lid accel */
+#define CONFIG_ACCEL_LIS2DH_8BIT	/* identify lis2de */
 #define CONFIG_ACCELGYRO_LSM6DSM        /* Base accel */
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)

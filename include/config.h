@@ -64,7 +64,16 @@
 #undef CONFIG_ACCEL_BMA255
 #undef CONFIG_ACCEL_KXCJ9
 #undef CONFIG_ACCEL_KX022
+/*
+ * lis2dh and lis2de have the same register interface but different
+ * supported resolution. In normal mode, lis2dh works in 10-bit resolution,
+ * but lis2de only supports 8bit resolution. CONFIG_ACCEL_LIS2DH_8BIT is
+ * used to differientiate them. if you use lis2de, please define
+ * CONFIG_ACCEL_LIS2DH and CONFIG_ACCEL_LIS2DH_8BIT at the same time.
+ * If you use lis2dh, then only define CONFIG_ACCEL_LIS2DH.
+ */
 #undef CONFIG_ACCEL_LIS2DH
+#undef CONFIG_ACCEL_LIS2DH_8BIT
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM

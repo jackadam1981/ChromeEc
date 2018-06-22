@@ -138,6 +138,11 @@ void st_normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 	for (i = X; i <= Z; i++) {
 		v[i] = (int16_t)((data[i * 2 + 1] << 8) |
 				data[i * 2]) >> (16 - drvdata->resol);
+		/*
+		 * for calculate_lid_angle() unreliable judgement,
+		 * this value must be 16bit, so amplify them now.
+		 */
+		v[i] = v[i] << (16 - drvdata->resol);
 	}
 
 	rotate(v, *s->rot_standard_ref, v);
