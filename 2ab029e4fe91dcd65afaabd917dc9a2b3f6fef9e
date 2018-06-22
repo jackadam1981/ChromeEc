@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c42c63d4_63856372",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T08:39:27Z",
+      "side": 1,
+      "message": "charge_state \u003c charger",
+      "revId": "2ab029e4fe91dcd65afaabd917dc9a2b3f6fef9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c2f61dd_b5d26b60",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T08:39:27Z",
+      "side": 1,
+      "message": "pwoer \u003c power_button",
+      "revId": "2ab029e4fe91dcd65afaabd917dc9a2b3f6fef9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb1eee8_d265a3bf",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T08:39:27Z",
+      "side": 1,
+      "message": "pwm \u003c pwm_chip",
+      "revId": "2ab029e4fe91dcd65afaabd917dc9a2b3f6fef9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a2947dd_710814f0",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T08:39:27Z",
+      "side": 1,
+      "message": "temp_sensor \u003c temp_sensor_chip",
+      "revId": "2ab029e4fe91dcd65afaabd917dc9a2b3f6fef9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
