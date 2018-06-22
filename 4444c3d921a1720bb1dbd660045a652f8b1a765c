@@ -94,6 +94,30 @@
       "revId": "4444c3d921a1720bb1dbd660045a652f8b1a765c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa42acb_8a93e5e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-06-22T18:16:22Z",
+      "side": 1,
+      "message": "I wrote it down to a doc. Probably it is better to describe the problem.\nhttps://docs.google.com/document/d/1PJdjbGjJZSJSU-ZWMVFdc2o3sJANiqYSEmW1ZOpFZA8/edit#",
+      "parentUuid": "3afe23bb_38257781",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "4444c3d921a1720bb1dbd660045a652f8b1a765c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
