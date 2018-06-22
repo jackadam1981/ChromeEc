@@ -355,6 +355,24 @@
     },
     {
       "key": {
+        "uuid": "268c4dd1_256b7d0e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2018-06-22T04:26:08Z",
+      "side": 1,
+      "message": "Packed also implies that base alignment of struct is set to a lower value (often 1 byte), so S may be aligned to 1 byte specially if nested in another struct.\n\nLLVM won\u0027t complain if it can infer the base alignment of the struct.\nBut if the structs are derived from a pointer that could be misaligned, then LLVM can\u0027t figure out the alignment.\n\ne.g. This piece of code is fine:\n\nfoo() {\n   struct S st; // members of st are aligned.\n   bar(\u0026st.x); // LLVM knows x is aligned\n}\n\nBut this case is not\nfoo(struct S* st) { // st might be misaligned since base alignment of st is 1 byte.\n  bar(\u0026 st-\u003ex); // x might be mis-aligned as well.\n}\n\nThis might be fixable in code by specifying struct\u0027s base alignment when marking struct as packed i.e. by using __attribute__((packed, aligned(N))",
+      "parentUuid": "9d1b80b4_51ea1ad7",
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2d86d81_fe5bc383",
         "filename": "include/common.h",
         "patchSetId": 2
