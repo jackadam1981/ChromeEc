@@ -70,6 +70,70 @@
       "revId": "fbb61b3974ca96ad69a053e333edb58e5154f31e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5da43c5_ff0ac442",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T02:45:00Z",
+      "side": 1,
+      "message": "Yeah, I think we really always assume sizeof(key_len) \u003d\u003d 1 (see comments below).",
+      "parentUuid": "676e8327_77406853",
+      "range": {
+        "startLine": 198,
+        "startChar": 12,
+        "endLine": 198,
+        "endChar": 49
+      },
+      "revId": "fbb61b3974ca96ad69a053e333edb58e5154f31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3feaa8c6_7b1d3d44",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T02:45:00Z",
+      "side": 1,
+      "message": "There is an assumption here that we use a single byte 0 as end marker.",
+      "range": {
+        "startLine": 300,
+        "startChar": 51,
+        "endLine": 300,
+        "endChar": 54
+      },
+      "revId": "fbb61b3974ca96ad69a053e333edb58e5154f31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a20d582_e960b10e",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T02:45:00Z",
+      "side": 1,
+      "message": "And here too.",
+      "revId": "fbb61b3974ca96ad69a053e333edb58e5154f31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
