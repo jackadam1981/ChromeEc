@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c3e2f96_3575d183",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:09:16Z",
+      "side": 1,
+      "message": "Seems possible (there are a few fixes needed in Makefile, as gcc/clang -E does not seem to read from stdin by default).",
+      "parentUuid": "8e586560_c72b54d1",
+      "range": {
+        "startLine": 29,
+        "startChar": 14,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e33a741_c719c2a5",
         "filename": "Makefile.toolchain",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cfb980ce_46219202",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:09:16Z",
+      "side": 1,
+      "message": "I stole the cc-name detection from the kernel (it\u0027s used in a bunch of places to detect clang).\n\nI\u0027ll drop the BUILDCC/HOSTCC/HOSTCXX changes that are not required (or at least unrelated, we can think about changing the default compiler at another time).",
+      "parentUuid": "6e33a741_c719c2a5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 0
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ef14fe7_d67d3784",
         "filename": "Makefile.toolchain",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-21T18:14:03Z",
       "side": 1,
       "message": "Just a note for future, clang will have support for this flag soonish:\nhttps://reviews.llvm.org/D47894\nhttps://reviews.llvm.org/D47895",
+      "range": {
+        "startLine": 86,
+        "startChar": 9,
+        "endLine": 86,
+        "endChar": 40
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919e2b38_0748f7d4",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:09:16Z",
+      "side": 1,
+      "message": "Nice. Added a TODO.",
+      "parentUuid": "3ef14fe7_d67d3784",
       "range": {
         "startLine": 86,
         "startChar": 9,
@@ -285,6 +357,30 @@
       "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5009e617_b108fcec",
+        "filename": "include/common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:09:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2d86d81_fe5bc383",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
