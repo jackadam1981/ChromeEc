@@ -337,6 +337,24 @@
     },
     {
       "key": {
+        "uuid": "9d1b80b4_51ea1ad7",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:15:17Z",
+      "side": 1,
+      "message": "Done. Would be great if LLVM could be a little smarter though (our structures are packed, but aligned, so it is possible to determine at compile time whether a member is aligned or not).",
+      "parentUuid": "def5edcd_40eb27bf",
+      "revId": "bfb174c9155765b6b4ad95cc0408b6efb0f10867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2d86d81_fe5bc383",
         "filename": "include/common.h",
         "patchSetId": 2
