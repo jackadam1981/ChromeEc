@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966bd520_4604854b",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-22T01:33:06Z",
+      "side": 1,
+      "message": "I think to be more robust this check should be \n\ni \u003c\u003d (CONFIG_FLASH_NVMEM_VARS_USER_SIZE - sizeof(tuple-\u003ekey_len))",
+      "range": {
+        "startLine": 198,
+        "startChar": 12,
+        "endLine": 198,
+        "endChar": 49
+      },
+      "revId": "fbb61b3974ca96ad69a053e333edb58e5154f31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
