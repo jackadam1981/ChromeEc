@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15649bad_991dca91",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-22T17:54:37Z",
+      "side": 1,
+      "message": "Is the right bit shift in the first statement needed?  What are you seeing in your even data array indexes?  Unless we have junk data in our even data array indexes we\u0027d like to shift out, it seems like this change could just remove the right shift. \n\nThe other driver that uses st_normalize (accelgyro_lsm6dsm.c) appears to have 16 bit resolution so it should be unaffected by removing the right bit shift.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
