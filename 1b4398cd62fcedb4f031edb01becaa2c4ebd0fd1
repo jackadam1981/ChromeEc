@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73e91630_77c75ae3",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T08:18:47Z",
+      "side": 1,
+      "message": "This doesn\u0027t work, and console is useless after running the test (I need to type reset to get echo back).",
+      "revId": "1b4398cd62fcedb4f031edb01becaa2c4ebd0fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
