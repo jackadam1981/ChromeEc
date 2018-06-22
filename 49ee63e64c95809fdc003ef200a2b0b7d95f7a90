@@ -22,6 +22,30 @@
       "revId": "49ee63e64c95809fdc003ef200a2b0b7d95f7a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f520ecef_f665d8ea",
+        "filename": "test/rma_auth.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T00:10:01Z",
+      "side": 1,
+      "message": "There is already such a test in process_response, so maybe we only need it in one place.\n\nAnyway, I\u0027ll add the comment in rma_auth.h, please feel free to do the other modifications.",
+      "parentUuid": "1eb3019d_22f5e393",
+      "range": {
+        "startLine": 134,
+        "startChar": 37,
+        "endLine": 134,
+        "endChar": 77
+      },
+      "revId": "49ee63e64c95809fdc003ef200a2b0b7d95f7a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
