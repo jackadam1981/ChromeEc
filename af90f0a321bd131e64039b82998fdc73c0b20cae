@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afbccf78_f8b0cfcf",
+        "filename": "include/rma_auth.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-06-22T01:13:09Z",
+      "side": 1,
+      "message": "If we\u0027re just going to document the current quirk, we should explain why (that it\u0027s the safe_memcmp() call).\n\nThough I think just changing safe_memcmp() to memcmp() is a better fix, and doesn\u0027t require the workaround at all.",
+      "range": {
+        "startLine": 64,
+        "startChar": 43,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "af90f0a321bd131e64039b82998fdc73c0b20cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
