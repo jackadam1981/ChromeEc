@@ -46,6 +46,30 @@
       "revId": "fbb61b3974ca96ad69a053e333edb58e5154f31e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "676e8327_77406853",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-06-22T02:35:40Z",
+      "side": 1,
+      "message": "I mean if remaining room is smaller than sizeof(key_len) we should bail out. And the check in line 175 should check if the  length field is zero, not just the top byte, in case the size of the length field changes.\n\nBut I guess this is hearsplitting in this case, we\u0027re not going to increase the size of the length field.",
+      "parentUuid": "57232f25_0af79497",
+      "range": {
+        "startLine": 198,
+        "startChar": 12,
+        "endLine": 198,
+        "endChar": 49
+      },
+      "revId": "fbb61b3974ca96ad69a053e333edb58e5154f31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
