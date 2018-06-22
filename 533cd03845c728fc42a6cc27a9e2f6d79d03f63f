@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "726adbb6_1049fe0d",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:19:56Z",
+      "side": 1,
+      "message": "Clarified.",
+      "parentUuid": "3c82305b_5db85e3a",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "533cd03845c728fc42a6cc27a9e2f6d79d03f63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64c122da_a500b28e",
         "filename": "include/common.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5190df26_e6a27e3a",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:19:56Z",
+      "side": 1,
+      "message": "Done. Does not work with gcc as a one-liner though, so I define __has_feature above, if needed.",
+      "parentUuid": "64c122da_a500b28e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "533cd03845c728fc42a6cc27a9e2f6d79d03f63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a4fb7f_5aef7c78",
         "filename": "include/common.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "533cd03845c728fc42a6cc27a9e2f6d79d03f63f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce35ac8b_09953ab0",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-22T01:19:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a4fb7f_5aef7c78",
+      "range": {
+        "startLine": 105,
+        "startChar": 29,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "533cd03845c728fc42a6cc27a9e2f6d79d03f63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
