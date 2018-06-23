@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ed9e63b_44c7568b",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-06-23T13:51:48Z",
+      "side": 1,
+      "message": ".rpm_min \u003d 2100,\n        .rpm_start \u003d 2300,\n        .rpm_max \u003d 5100,\nI got an update for Pantheon this Wednesday.",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "23ef0e8bcc6f52f92e0249c31dca2ca231f32c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
