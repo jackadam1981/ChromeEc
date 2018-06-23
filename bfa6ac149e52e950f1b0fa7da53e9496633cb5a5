@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2cb6297b_06073bd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-23T00:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e435a5_5d5063ba",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "bfa6ac149e52e950f1b0fa7da53e9496633cb5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fae5a78_4dfd5bed",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cb592a86_77c855e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-23T00:32:07Z",
+      "side": 1,
+      "message": "Please refer CL1090603 and 1098864. I created a bug for this issue.",
+      "parentUuid": "2fae5a78_4dfd5bed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "bfa6ac149e52e950f1b0fa7da53e9496633cb5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "265561c9_f558bdb4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-22T15:18:05Z",
       "side": 1,
       "message": "which driver is this ?\nBUG\u003d is containing \u0027none\u0027 below ...",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "bfa6ac149e52e950f1b0fa7da53e9496633cb5a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4caf674f_09a44003",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-23T00:32:07Z",
+      "side": 1,
+      "message": "Please refer CL1090603 and 1098864. I created a bug for this issue.",
+      "parentUuid": "265561c9_f558bdb4",
       "range": {
         "startLine": 20,
         "startChar": 19,
