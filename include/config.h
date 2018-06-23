@@ -1557,6 +1557,15 @@
 #undef CONFIG_LID_ANGLE_INVALID_CHECK
 
 /*
+ * Since the accelerometers are on the same physical device, they should be
+ * under the same acceleration.  This constant, which mirrors
+ * kNoisyMagnitudeDeviation used in Chromium, is an integer which defines the
+ * maximum deviation in magnitude between the base and lid vectors.  The units
+ * are in m/s^2.
+ */
+#define CONFIG_NOISY_MAGNITUDE_DEVIATION FLOAT_TO_FP(1)
+
+/*
  * Use lid angle to detect tablet mode.
  */
 #undef CONFIG_LID_ANGLE_TABLET_MODE
