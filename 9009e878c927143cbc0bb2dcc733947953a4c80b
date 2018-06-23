@@ -22,6 +22,30 @@
       "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c2376c_c336e93b",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-23T00:18:36Z",
+      "side": 1,
+      "message": "Yes, the item in even data array indexes do have data which is not zero for lis2de. So right shift is necessary for the sensors whose resolution is lower than 16bit. For 16bit resolution, there is also no harm. Right shift is to clear unwanted bits and left shift is to get a 16bit value for calculate_lid_angle() to use when judging reliable. Thanks.",
+      "parentUuid": "15649bad_991dca91",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
