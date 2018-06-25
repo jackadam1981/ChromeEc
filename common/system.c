@@ -101,7 +101,7 @@ static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
 
 /* On-going actions preventing going into deep-sleep mode */
-uint32_t sleep_mask;
+uint32_t sleep_mask = SLEEP_MASK_FORCE_NO_DSLEEP;
 
 #ifdef CONFIG_LOW_POWER_IDLE_LIMITED
 /* Set it to prevent going into idle mode */
