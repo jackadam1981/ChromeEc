@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d4e3c4f7_a77f9f55",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-25T18:24:04Z",
+      "side": 1,
+      "message": "\u003e It seems like we need to make safe mode work instead of working around this issue here.\n\n+1. I think we should understand why safe mode isn\u0027t working and fix that.",
+      "parentUuid": "5fa10a49_5470cc25",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 4
+      },
+      "revId": "299af0ee3e579615782fd23a3d7d39916be30ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b044ea1f_30493703",
         "filename": "baseboard/octopus/battery.c",
         "patchSetId": 2
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "This logic doesnt override the desired current \u0026 voltage unless battery is still initializing.",
       "parentUuid": "b044ea1f_30493703",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 28
+      },
+      "revId": "299af0ee3e579615782fd23a3d7d39916be30ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996c0a31_39115541",
+        "filename": "baseboard/octopus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-25T18:24:04Z",
+      "side": 1,
+      "message": "But it should not be required. My point is that this is a common problem for all platforms and we should not require this check specifically for Octopus. As Jett commented, we should fix safe mode to work correctly if it is not.",
+      "parentUuid": "cac3389e_cee98e66",
       "range": {
         "startLine": 58,
         "startChar": 4,
