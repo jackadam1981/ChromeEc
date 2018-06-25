@@ -739,6 +739,11 @@ enum pd_states {
 #define PD_BBRMFLG_POWER_ROLE        (1 << 1)
 #define PD_BBRMFLG_DATA_ROLE         (1 << 2)
 
+#define PD_LM_DEBOUCE_MS 10
+/* Maybe somewhere else */
+#define PD_LPM_FLAGS_REQUESTED     (1 << 0)/* low power mode requested */
+#define PD_LPM_FLAGS_ENGAGED       (1 << 1)/* device in low power mode */
+
 enum pd_cc_states {
 	PD_CC_NONE,
 
@@ -1005,6 +1010,8 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
  * @return True if max voltage request allowed, False otherwise
  */
 int pd_is_max_request_allowed(void);
+
+void usbc_bus_accessed(int port);
 
 /**
  * Process source capabilities packet

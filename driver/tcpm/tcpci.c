@@ -156,10 +156,19 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 	rv |= tcpc_write(port, TCPC_REG_COMMAND,
 			 TCPC_REG_COMMAND_LOOK4CONNECTION);
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	rv |= tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
-#endif
 	return rv;
+}
+#endif
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+int tcpci_enter_low_power_mode(int port, int enable)
+{
+	if (enable)
+		return tcpc_write(port, TCPC_REG_COMMAND,
+				  TCPC_REG_COMMAND_I2CIDLE);
+	else
+		/* TODO, what exits LPM */
+		return EC_SUCCESS;
 }
 #endif
 

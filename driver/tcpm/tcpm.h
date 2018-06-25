@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "i2c.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pd.h"
 #include "util.h"
 
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
@@ -27,6 +28,7 @@ extern const struct tcpc_config_t tcpc_config[];
 /* I2C wrapper functions - get I2C port / slave addr from config struct. */
 static inline int tcpc_write(int port, int reg, int val)
 {
+	usbc_bus_accessed(port);
 	return i2c_write8(tcpc_config[port].i2c_host_port,
 			  tcpc_config[port].i2c_slave_addr,
 			  reg, val);
@@ -34,6 +36,7 @@ static inline int tcpc_write(int port, int reg, int val)
 
 static inline int tcpc_write16(int port, int reg, int val)
 {
+	usbc_bus_accessed(port);
 	return i2c_write16(tcpc_config[port].i2c_host_port,
 			   tcpc_config[port].i2c_slave_addr,
 			   reg, val);
@@ -41,6 +44,7 @@ static inline int tcpc_write16(int port, int reg, int val)
 
 static inline int tcpc_read(int port, int reg, int *val)
 {
+	usbc_bus_accessed(port);
 	return i2c_read8(tcpc_config[port].i2c_host_port,
 			 tcpc_config[port].i2c_slave_addr,
 			 reg, val);
@@ -48,6 +52,7 @@ static inline int tcpc_read(int port, int reg, int *val)
 
 static inline int tcpc_read16(int port, int reg, int *val)
 {
+	usbc_bus_accessed(port);
 	return i2c_read16(tcpc_config[port].i2c_host_port,
 			  tcpc_config[port].i2c_slave_addr,
 			  reg, val);
@@ -58,6 +63,7 @@ static inline int tcpc_xfer(int port,
 			    uint8_t *in, int in_size,
 			    int flags)
 {
+	usbc_bus_accessed(port);
 	return i2c_xfer(tcpc_config[port].i2c_host_port,
 			tcpc_config[port].i2c_slave_addr,
 			out, out_size,
