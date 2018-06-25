@@ -46,6 +46,76 @@
       "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d0ba6c_bced2523",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T15:49:13Z",
+      "side": 1,
+      "message": "can you give an example of typical input and expected output. This section is very difficult to reason through without examples.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbb5369_cdb5fcd3",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T15:49:13Z",
+      "side": 1,
+      "message": "If there is trash data in the unused bits, can we AND with the appropriate mask to clear it?",
+      "parentUuid": "85c2376c_c336e93b",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "427e5d81_21daa5f8",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T15:49:13Z",
+      "side": 1,
+      "message": "let\u0027s make 3 defines:\nCONFIG_ACCEL_LIS2DH\nCONFIG_ACCEL_LIS2DE\nCONFIG_ACCEL_LIS2D_COMMON\n\nCONFIG_ACCEL_LIS2D_COMMON will get defined if either H or D is defined (see 3495 in this file for an example). The common define will include the file in the build.mk files.\n\nThe H and E options will differentiate the different config/code needed (like you did in the .h file in the change)",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
