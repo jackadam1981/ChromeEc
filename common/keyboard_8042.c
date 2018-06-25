@@ -28,7 +28,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ## args)
-
+#define  CONFIG_KEYBOARD_DEBUG
 #ifdef CONFIG_KEYBOARD_DEBUG
 #define CPUTS5(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTS5(format, args...) cprints(CC_KEYBOARD, format, ## args)
@@ -309,7 +309,6 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 					  uint8_t *scan_code, int32_t *len)
 {
 	uint16_t make_code;
-
 	ASSERT(scan_code);
 	ASSERT(len);
 
@@ -340,6 +339,7 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 		return EC_ERROR_UNIMPLEMENTED;
 	}
 
+	//CPRINTS("r%d, c%d, mc=%d", row, col, make_code);
 	scancode_bytes(make_code, pressed, code_set, scan_code, len);
 	return EC_SUCCESS;
 }
@@ -884,8 +884,15 @@ void keyboard_protocol_task(void *u)
 				 * data?  Send it another interrupt in case it
 				 * somehow missed the first one.
 				 */
+				
 				CPRINTS("KB extra IRQ");
 				lpc_keyboard_resume_irq();
+
+				/*
+				 * number of retries are reached so clear the
+				 * buffer and send next set of data
+				 */
+				keyboard_clear_buffer();
 				retries = 0;
 				break;
 			}
