@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5fa10a49_5470cc25",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T16:39:01Z",
+      "side": 1,
+      "message": "It seems like we need to make safe mode work instead of working around this issue here.",
+      "parentUuid": "343a1020_84fa5ad9",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 4
+      },
+      "revId": "299af0ee3e579615782fd23a3d7d39916be30ea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b044ea1f_30493703",
         "filename": "baseboard/octopus/battery.c",
         "patchSetId": 2
