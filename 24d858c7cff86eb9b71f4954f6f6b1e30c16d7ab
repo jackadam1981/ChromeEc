@@ -22,6 +22,30 @@
       "revId": "24d858c7cff86eb9b71f4954f6f6b1e30c16d7ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96cedc81_b97e269c",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-06-25T02:04:46Z",
+      "side": 1,
+      "message": "I\u0027m trying to fix the output of `faninfo` on EC console. In duty mode, we would like to reflect actual status of fan. If fan is actually spinning, but `faninfo` shows \"Status:0(not spinning)\"，it would be a little weird.",
+      "parentUuid": "2443bbb4_4f3b04c9",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 47
+      },
+      "revId": "24d858c7cff86eb9b71f4954f6f6b1e30c16d7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
