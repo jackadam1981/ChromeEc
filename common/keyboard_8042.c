@@ -4,7 +4,6 @@
  *
  * 8042 keyboard protocol
  */
-
 #include "chipset.h"
 #include "button.h"
 #include "common.h"
@@ -28,7 +27,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTS(format, args...) cprints(CC_KEYBOARD, format, ## args)
-
+#define  CONFIG_KEYBOARD_DEBUG
 #ifdef CONFIG_KEYBOARD_DEBUG
 #define CPUTS5(outstr) cputs(CC_KEYBOARD, outstr)
 #define CPRINTS5(format, args...) cprints(CC_KEYBOARD, format, ## args)
@@ -309,7 +308,6 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 					  uint8_t *scan_code, int32_t *len)
 {
 	uint16_t make_code;
-
 	ASSERT(scan_code);
 	ASSERT(len);
 
@@ -886,6 +884,12 @@ void keyboard_protocol_task(void *u)
 				 */
 				CPRINTS("KB extra IRQ");
 				lpc_keyboard_resume_irq();
+
+				/*
+				 * number of retries are reached so clear the
+				 * buffer and send next set of data
+				 */
+				keyboard_clear_buffer();
 				retries = 0;
 				break;
 			}
