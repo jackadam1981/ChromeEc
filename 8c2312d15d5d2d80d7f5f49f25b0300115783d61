@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad00e60_82a0c9cf",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T14:23:17Z",
+      "side": 1,
+      "message": "the code looks like this is the default, or is 010b the power on default and we are overriding it? If that is the case, please remove the \"(default)\" comment for 010b",
+      "range": {
+        "startLine": 537,
+        "startChar": 2,
+        "endLine": 537,
+        "endChar": 15
+      },
+      "revId": "8c2312d15d5d2d80d7f5f49f25b0300115783d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4b8d448_9c3a7693",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T14:23:17Z",
+      "side": 1,
+      "message": "are these valid for all versions? Why aren\u0027t these conditionally compiled based on version DX or not?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "8c2312d15d5d2d80d7f5f49f25b0300115783d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5ec5ad_0be877f3",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T14:23:17Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this is not conditionally included for DX version only. Do these registers work on all of the other existing versions?",
+      "range": {
+        "startLine": 460,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 0
+      },
+      "revId": "8c2312d15d5d2d80d7f5f49f25b0300115783d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
