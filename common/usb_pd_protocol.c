@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
 #include "board.h"
@@ -24,6 +25,8 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+/* Bad idea below - call into driver not TCPCI */
+#include "tcpci.h"
 #include "usbc_ppc.h"
 #include "tcpm.h"
 #include "version.h"
@@ -199,6 +202,48 @@ static struct pd_protocol {
 	uint8_t rev;
 #endif
 } pd[CONFIG_USB_PD_PORT_COUNT];
+
+/* There are seperate from other flags since they can be access in multiple
+ * task contexts
+ */
+static uint32_t lpm_flags[CONFIG_USB_PD_PORT_COUNT];
+
+static void low_power_mode_handler(void)
+{
+	int port;
+	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; ++port) {
+		uint32_t flags =  (volatile uint32_t) lpm_flags[port];
+		if (flags & PD_LPM_FLAGS_REQUESTED) {
+			if (!(flags & PD_LPM_FLAGS_ENGAGED)) {
+				atomic_or(&lpm_flags[port], PD_LPM_FLAGS_ENGAGED);
+				tcpci_enter_low_power_mode(port, 1);
+				CPRINTS("TCPC p%d Enter Low Power Mode", port);
+			}
+		}
+	}
+}
+DECLARE_DEFERRED(low_power_mode_handler);
+
+void usbc_bus_accessed(int port)
+{
+	/* This check is race, but is okay since it just a print statement */
+	if (lpm_flags[port] & PD_LPM_FLAGS_ENGAGED)
+		CPRINTS("TCPC p%d Exited Low Power Mode via bus access", port);
+
+	atomic_clear(&lpm_flags[port], PD_LPM_FLAGS_ENGAGED);
+
+	hook_call_deferred(&low_power_mode_handler_data, PD_LM_DEBOUCE_US);
+}
+
+static void request_low_power_mode(int port, int enable)
+{
+	if (enable)
+		atomic_or(&lpm_flags[port], PD_LPM_FLAGS_REQUESTED);
+	else
+		atomic_clear(&lpm_flags[port], PD_LPM_FLAGS_REQUESTED);
+
+	hook_call_deferred(&low_power_mode_handler_data, PD_LM_DEBOUCE_US);
+}
 
 #ifdef CONFIG_COMMON_RUNTIME
 static const char * const pd_state_names[] = {
@@ -1879,6 +1924,13 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 
 void pd_update_dual_role_config(int port)
 {
+#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
+	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
+	/* When switching drp mode, make sure tcpc is out of standby mode */
+	request_low_power_mode(port, 0);
+	tcpm_set_drp_toggle(port, 0);
+#endif
+
 	/*
 	 * Change to sink if port is currently a source AND (new DRP
 	 * state is force sink OR new DRP state is either toggle off
@@ -1906,12 +1958,6 @@ void pd_update_dual_role_config(int port)
 		set_state(port, PD_STATE_SRC_DISCONNECTED);
 		tcpm_set_cc(port, TYPEC_CC_RP);
 	}
-
-#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
-	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
-	/* When switching drp mode, make sure tcpc is out of standby mode */
-	tcpm_set_drp_toggle(port, 0);
-#endif
 }
 
 int pd_get_role(int port)
@@ -2339,6 +2385,7 @@ void pd_task(void *u)
 #else
 		/* if TCPC has reset, then need to initialize it again */
 		if (evt & PD_EVENT_TCPC_RESET) {
+			request_low_power_mode(port, 0);
 			CPRINTS("TCPC p%d reset!", port);
 			if (tcpm_init(port) != EC_SUCCESS)
 				CPRINTS("TCPC p%d init failed", port);
@@ -3499,10 +3546,10 @@ void pd_task(void *u)
 				next_state = PD_STATE_DRP_AUTO_TOGGLE;
 
 			if (next_state != PD_STATE_DRP_AUTO_TOGGLE) {
-				tcpm_set_drp_toggle(port, 0);
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				CPRINTS("TCPC p%d Exit Low Power Mode", port);
+				request_low_power_mode(port, 0);
 #endif
+				tcpm_set_drp_toggle(port, 0);
 			}
 
 			if (next_state == PD_STATE_SNK_DISCONNECTED) {
@@ -3518,7 +3565,7 @@ void pd_task(void *u)
 				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
 				timeout = -1;
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				CPRINTS("TCPC p%d Low Power Mode", port);
+				request_low_power_mode(port, 1);
 #endif
 			}
 			set_state(port, next_state);
