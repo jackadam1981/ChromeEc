@@ -587,6 +587,7 @@ int system_is_in_rw(void)
 
 int system_run_image_copy(enum system_image_copy_t copy)
 {
+#ifndef TEST_FUZZ
 	uintptr_t base;
 	uintptr_t init_addr;
 
@@ -646,6 +647,7 @@ int system_run_image_copy(enum system_image_copy_t copy)
 	CPRINTS("Jumping to image %s", system_image_copy_t_to_string(copy));
 
 	jump_to_image(init_addr);
+#endif /* TEST_FUZZ */
 
 	/* Should never get here */
 	return EC_ERROR_UNKNOWN;
