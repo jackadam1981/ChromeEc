@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51d037e1_344b3295",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-25T22:59:36Z",
+      "side": 1,
+      "message": "This check allows for the possibility that TCPC may not go into low power mode if the SW state gets out of sync with TCPC chip state.",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 38
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed9f1a12_9ea8702f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-25T22:59:36Z",
+      "side": 1,
+      "message": "Because the bit PD_LPM_FLAGS_ENGAGED gets cleared after this, coming back to this call, potentially won\u0027t affect this port, but it seems odd schedule this call again at the point where it\u0027s entering low power mode.",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c0c2ab_e937d32c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-25T22:59:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure the value of maintaining \u0027lpm_engaged\u0027 if it\u0027s cleared independent of when the TCPC access actually takes place. The entry into LPM is much more tightly coupled to the SW state as it happens following the write of I2CIDLE.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 54
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00bdc5db_07b059ec",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-25T22:59:36Z",
+      "side": 1,
+      "message": "I know it\u0027s unlikely, but this mechanism allows for the possibility of one port preventing the other port from going into low power mode if there are periodic accesses since the call is deferred independent of the \u0027port\u0027 variable.",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 20
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
