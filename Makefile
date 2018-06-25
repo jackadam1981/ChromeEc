@@ -16,16 +16,17 @@ ARCH?=amd64
 BOARD ?= bds
 
 # Directory where the board is configured (includes /$(BOARD) at the end)
-BDIR:=$(wildcard board/$(BOARD) private-*/board/$(BOARD))
-# There can be only one <insert exploding windows here>
-ifeq (,$(BDIR))
+BDIR:=$(wildcard board/$(BOARD))
+PDIR:=$(wildcard private-*/board/$(BOARD))
+
+# We need either public, or private board directory
+ifeq (,$(BDIR)$(PDIR))
 $(error unable to locate BOARD $(BOARD))
 endif
-ifneq (1,$(words $(BDIR)))
-$(error multiple definitions for BOARD $(BOARD): $(BDIR))
-endif
-ifneq ($(filter private-%,$(BDIR)),)
-PDIR=$(subst /board/$(BOARD),,$(BDIR))
+
+# If only private is present, use that as BDIR
+ifeq (,$(BDIR))
+PDIR:=$(BDIR)
 endif
 
 PROJECT?=ec
@@ -233,7 +234,7 @@ all-obj-$(1)+=$(call objs_from_dir_p,$(BASEDIR),baseboard,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BDIR),board,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,private,private,$(1))
 ifneq ($(PDIR),)
-all-obj-$(1)+=$(call objs_from_dir_p,$(PDIR),$(PDIR),$(1))
+all-obj-$(1)+=$(call objs_from_dir_p,$(PDIR),board-private,$(1))
 endif
 all-obj-$(1)+=$(call objs_from_dir_p,common,common,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,driver,driver,$(1))
@@ -279,8 +280,8 @@ rw-objs := $(sort $(rw-common-objs) $(rw-only-objs))
 ifeq ($(CONFIG_SHAREDLIB),y)
 ro-objs := $(filter-out %_sharedlib.o, $(ro-objs))
 endif
-ro-deps := $(ro-objs:%.o=%.o.d)
-rw-deps := $(rw-objs:%.o=%.o.d)
+ro-deps := $(patsubst %.a,%.a.d,$(ro-objs:%.o=%.o.d))
+rw-deps := $(patsubst %.a,%.a.d,$(rw-objs:%.o=%.o.d))
 deps := $(ro-deps) $(rw-deps) $(deps-y)
 
 .PHONY: ro rw
