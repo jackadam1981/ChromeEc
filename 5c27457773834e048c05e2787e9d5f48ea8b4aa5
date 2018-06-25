@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1a06beb_b7e88cca",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-25T16:54:38Z",
+      "side": 1,
+      "message": "nit: can we rename to gpio_is_i2c_pin (drop the s)",
+      "range": {
+        "startLine": 212,
+        "startChar": 11,
+        "endLine": 212,
+        "endChar": 27
+      },
+      "revId": "5c27457773834e048c05e2787e9d5f48ea8b4aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
