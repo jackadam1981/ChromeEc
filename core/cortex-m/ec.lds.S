@@ -129,6 +129,11 @@ SECTIONS
 	__extension_cmds_end = .;
 
         . = ALIGN(4);
+        __virtual_nv_indexes = .;
+        KEEP(*(.rodata.virtualnvindexes))
+	__virtual_nv_indexes_end = .;
+
+        . = ALIGN(4);
         __hcmds = .;
         KEEP(*(SORT(.rodata.hcmds*)))
         __hcmds_end = .;
