@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e37b796_3c5ebdfb",
+        "filename": "driver/pi3usb9281.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-06-26T00:33:12Z",
+      "side": 1,
+      "message": "Is it worth to abstract it in usb_charge.h? or just like that as some other BC1.2 chip, like BQ24392, can\u0027t tell what is the device type on the partner port.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "ad4cc380e3380764d389eaf7246f9d77d9f53fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
