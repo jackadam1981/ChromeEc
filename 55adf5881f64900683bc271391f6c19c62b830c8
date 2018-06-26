@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4e17941f_eac0c873",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T17:11:05Z",
+      "side": 1,
+      "message": "It does get NAK\u0027d and that means it when it to low power mode, right.\n\nHow would we keep track of the hardware state more closely. We can and should do that.",
+      "parentUuid": "7b0869f8_bd684543",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 38
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed9f1a12_9ea8702f",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "My concern here is that LPM_ENAGAGED is getting cleared before the TCPC access takes place. So there is some time period when this value doesn\u0027t reflect the state of TCPC itself. But setting this bit happens after the TCPC write, not before.",
       "parentUuid": "faa1addd_3838a442",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 54
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f75b451c_a77b90a4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T17:11:05Z",
+      "side": 1,
+      "message": "I had it clearing after the tcpc_write at some point, but I couldn\u0027t get the guarantee that I wanted so I put it before just to make the code a little nicer for the sketch out CL.\n\nI agree that putting atomic_clear after the tcpc_write, and and putting the atomic_or before the IDLE command is sent if much better. I just didn\u0027t want to add in the logic to ignore the i2c write for the idle command. But we can and should do that if we go with something like this.",
+      "parentUuid": "436405b5_f7e1c13d",
       "range": {
         "startLine": 239,
         "startChar": 1,
