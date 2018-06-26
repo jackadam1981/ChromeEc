@@ -507,7 +507,9 @@ void power_board_handle_host_sleep_event(enum host_sleep_event state)
 	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND)
 		board_pmic_enable_slp_s0_vr_decay();
 	else if (state == HOST_SLEEP_EVENT_S0IX_RESUME)
-		board_pmic_disable_slp_s0_vr_decay();
+		/* Do not disable VR decay. */
+		if (0)
+			board_pmic_disable_slp_s0_vr_decay();
 }
 
 static void board_pmic_init(void)
