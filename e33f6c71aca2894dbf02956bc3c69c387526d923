@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f34f764d_9091b58e",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-26T10:47:41Z",
+      "side": 1,
+      "message": "pwm_fan_init is also HOOK_PRIO_DEFAULT.\nis this quite right ?",
+      "range": {
+        "startLine": 808,
+        "startChar": 0,
+        "endLine": 810,
+        "endChar": 55
+      },
+      "revId": "e33f6c71aca2894dbf02956bc3c69c387526d923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
