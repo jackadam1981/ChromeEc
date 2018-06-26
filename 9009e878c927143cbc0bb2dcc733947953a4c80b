@@ -96,6 +96,54 @@
     },
     {
       "key": {
+        "uuid": "231cd644_968276fe",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-26T03:53:10Z",
+      "side": 1,
+      "message": "Since st_normalize() is a common function, I construct one mask and use mask method to get final 16 bits value, please help review, thanks.",
+      "parentUuid": "5fbb5369_cdb5fcd3",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7907e87_30e5282a",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-26T03:53:10Z",
+      "side": 1,
+      "message": "I captured a set of lis2de raw data:\ndata28\u003d0x80,data29\u003d0xeb,data2a\u003d0x80,data2b\u003d0xf6,data2c\u003d0x40,data2d\u003d0x13\ndata28\u003d0x80,data29\u003d0xeb,data2a\u003d0x80,data2b\u003d0xf6,data2c\u003d0x00,data2d\u003d0x13\ndata28\u003d0x80,data29\u003d0xeb,data2a\u003d0x40,data2b\u003d0xf6,data2c\u003d0x40,data2d\u003d0x13\ndata28\u003d0x00,data29\u003d0xec,data2a\u003d0x80,data2b\u003d0xf6,data2c\u003d0x40,data2d\u003d0x13\ndata28\u003d0xc0,data29\u003d0xeb,data2a\u003d0x80,data2b\u003d0xf6,data2c\u003d0x00,data2d\u003d0x13\ndata28\u003d0x00,data29\u003d0xec,data2a\u003d0x80,data2b\u003d0xf6,data2c\u003d0x00,data2d\u003d0x13\nas lis2de datasheet says, only register 29, 2b, 2d has valid data. even address 28, 2a and 2c has trash data. thanks.",
+      "parentUuid": "76d0ba6c_bced2523",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "427e5d81_21daa5f8",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -116,6 +164,30 @@
       "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe19585_748f5699",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-26T03:53:10Z",
+      "side": 1,
+      "message": "Good advice, have done that, thanks",
+      "parentUuid": "427e5d81_21daa5f8",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
