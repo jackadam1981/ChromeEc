@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "121c56e0_58263505",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-26T00:39:18Z",
+      "side": 1,
+      "message": "I like this idea.\n\nAnd yes, I\u0027d just add a \"int last\" or \"int commit\" parameter to the write_ function.",
+      "parentUuid": "4a49212a_7d185e99",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b19dd93_a61adc2d",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 6
