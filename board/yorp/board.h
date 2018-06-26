@@ -16,6 +16,9 @@
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
+/* Allow the EC to enter deep sleep in S0 */
+#define CONFIG_LOW_POWER_S0
+
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
