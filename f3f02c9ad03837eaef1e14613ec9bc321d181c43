@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "738b555d_159ead94",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T15:16:05Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need the \u0027val \u003c\u003d UINT16_MAX\u0027 check",
+      "range": {
+        "startLine": 209,
+        "startChar": 39,
+        "endLine": 209,
+        "endChar": 60
+      },
+      "revId": "f3f02c9ad03837eaef1e14613ec9bc321d181c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c2ae48f_ce0868f3",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T15:16:05Z",
+      "side": 1,
+      "message": "we don\u0027t want to put build phases in the comments. Let\u0027s remove them.",
+      "range": {
+        "startLine": 216,
+        "startChar": 13,
+        "endLine": 217,
+        "endChar": 39
+      },
+      "revId": "f3f02c9ad03837eaef1e14613ec9bc321d181c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b78ee1_c463aa58",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T15:16:05Z",
+      "side": 1,
+      "message": "we probably don\u0027t to include 0 since it is unused and means sku_id is uninitialized",
+      "range": {
+        "startLine": 221,
+        "startChar": 8,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "f3f02c9ad03837eaef1e14613ec9bc321d181c43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
