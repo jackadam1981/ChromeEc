@@ -730,6 +730,18 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
+static void setup_motion_sensors(void)
+{
+	if (oem != PROJECT_NAMI)
+		/* Only Nami has ALS */
+		motion_sensor_count = ARRAY_SIZE(motion_sensors) - 1;
+	if (oem == PROJECT_AKALI) {
+		motion_sensors[LID_ACCEL] = lid_accel_1;
+		motion_sensors[BASE_ACCEL].rot_standard_ref = NULL;
+		motion_sensors[BASE_GYRO].rot_standard_ref = NULL;
+	}
+}
+
 static void setup_fans(void)
 {
 	if (oem == PROJECT_SONA)
@@ -757,21 +769,11 @@ static void cbi_init(void)
 		sku = val;
 	CPRINTS("SKU: 0x%04x", sku);
 
+	setup_motion_sensors();
+
 	setup_fans();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
-
-static void setup_motion_sensors(void)
-{
-	if (oem != PROJECT_NAMI)
-		/* Only Nami has ALS */
-		motion_sensor_count = ARRAY_SIZE(motion_sensors) - 1;
-	if (oem == PROJECT_AKALI) {
-		motion_sensors[LID_ACCEL] = lid_accel_1;
-		motion_sensors[BASE_ACCEL].rot_standard_ref = NULL;
-		motion_sensors[BASE_GYRO].rot_standard_ref = NULL;
-	}
-}
 
 static void board_init(void)
 {
@@ -807,8 +809,6 @@ static void board_init(void)
 
 	/* Enable Gyro interrupt for BMI160 */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
-
-	setup_motion_sensors();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
