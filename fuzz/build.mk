@@ -7,7 +7,7 @@
 #
 
 # TODO(crbug.com/911310) Fix the chromeos-ec build before adding cr50_fuzz back.
-fuzz-test-list-host = host_command_fuzz
+fuzz-test-list-host = host_command_fuzz usb_pd_fuzz
 
 # For fuzzing targets libec.a is built from the ro objects and hides functions
 # that collide with stdlib. The rw only objects are then linked against libec.a
@@ -23,6 +23,7 @@ fuzz-test-list-host = host_command_fuzz
 # Otherwise use <obj_name>-y
 cr50_fuzz-rw = cr50_fuzz.o pinweaver_model.o mem_hash_tree.o
 host_command_fuzz-y = host_command_fuzz.o
+usb_pd_fuzz-y = usb_pd_fuzz.o
 
 CR50_PROTO_HEADERS := $(out)/gen/fuzz/cr50_fuzz.pb.h \
   $(out)/gen/fuzz/pinweaver/pinweaver.pb.h
