@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "ce61d5c6_7c273f0a",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-26T21:37:36Z",
+      "side": 1,
+      "message": "Thanks for the reference.  This method adapts just fine to my problem.",
+      "parentUuid": "12a901d3_70a2e433",
+      "range": {
+        "startLine": 511,
+        "startChar": 11,
+        "endLine": 511,
+        "endChar": 15
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "727e843f_f674c0b4",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 3
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "the latest trend is to use a deadline, like kernel does:\n\n\ttimestamp_t deadline;\n\n\tdeadline.val \u003d get_time().val + (3 * SECOND);\n\twhile (!timestamp_expired(deadline, NULL)) {\n                ...\n\t\tmsleep(100);",
       "parentUuid": "6bf3f0be_690c28e8",
+      "range": {
+        "startLine": 516,
+        "startChar": 1,
+        "endLine": 516,
+        "endChar": 13
+      },
+      "revId": "20456011995a2c3b667596650c533482ad72c0aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98e1612a_d9de2902",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-26T21:37:36Z",
+      "side": 1,
+      "message": "Acknowledged.",
+      "parentUuid": "a2e31714_2bd294a0",
       "range": {
         "startLine": 516,
         "startChar": 1,
