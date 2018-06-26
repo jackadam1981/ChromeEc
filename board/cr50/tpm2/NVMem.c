@@ -16,6 +16,7 @@
 #include "TpmError.h"
 #include "assert.h"
 #include "nvmem.h"
+#include "virtual_nvmem.h"
 
 /* Local state */
 static struct {
@@ -114,6 +115,11 @@ void _plat__NvMemoryRead(unsigned int startOffset,
 				    unsigned int size,
 				    void *data)
 {
+	if (_plat__NvOffsetIsVirtual(startOffset)) {
+		_plat__NvVirtualMemoryRead(startOffset, size, data);
+		return;
+	}
+
 	assert(startOffset + size <= NV_MEMORY_SIZE);
 	/* Copy the data from the NV image */
 #ifdef CONFIG_FLASH_NVMEM
@@ -133,6 +139,7 @@ _plat__NvIsDifferent(unsigned int startOffset,
 		     unsigned int size,
 		     void *data)
 {
+	assert(!_plat__NvOffsetIsVirtual(startOffset));
 #ifdef CONFIG_FLASH_NVMEM
 	return (nvmem_is_different(startOffset, size, data, NVMEM_TPM) != 0);
 #else
@@ -149,6 +156,7 @@ void _plat__NvMemoryWrite(unsigned int startOffset,
 			  unsigned int size,
 			  void *data)
 {
+	assert(!_plat__NvOffsetIsVirtual(startOffset));
 	assert(startOffset + size <= NV_MEMORY_SIZE);
 	/* Copy the data to the NV image */
 #ifdef CONFIG_FLASH_NVMEM
@@ -166,6 +174,8 @@ void _plat__NvMemoryMove(unsigned int sourceOffset,
 				    unsigned int destOffset,
 				    unsigned int size)
 {
+	assert(!_plat__NvOffsetIsVirtual(sourceOffset));
+	assert(!_plat__NvOffsetIsVirtual(destOffset));
 	assert(sourceOffset + size <= NV_MEMORY_SIZE);
 	assert(destOffset + size <= NV_MEMORY_SIZE);
 #ifdef CONFIG_FLASH_NVMEM
