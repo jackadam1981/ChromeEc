@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d483a7b5_e7be105a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-06-26T05:49:44Z",
+      "side": 1,
+      "message": "Why was 440mA selected (there does not seem to be a related bug for this change).\nOur max is for DP alt mode which is 1.5W, so I could see an argument that 310mA is too low if the 5V supply is low. But wouldn\u0027t the 370mA cover that case and limit the worst case?",
+      "range": {
+        "startLine": 328,
+        "startChar": 56,
+        "endLine": 328,
+        "endChar": 61
+      },
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b18c095_94bac471",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-06-26T05:49:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you mask off these two bits before doing the OR? (Yes, for 440mA it would work because that has both bits set, but better to do the mask in case things are changed later).",
+      "range": {
+        "startLine": 332,
+        "startChar": 6,
+        "endLine": 332,
+        "endChar": 7
+      },
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
