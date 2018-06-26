@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0704bb2_6bbc9e85",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-26T23:17:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be HOOK_CHIPSET_STARTUP?",
+      "range": {
+        "startLine": 268,
+        "startChar": 13,
+        "endLine": 268,
+        "endChar": 32
+      },
+      "revId": "ae2df9a72423bf7e76ed537d3e7dbe42c0e8f296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
