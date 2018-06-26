@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75a001e7_b59f8eb9",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-26T11:10:15Z",
+      "side": 1,
+      "message": "Done.\n010b is the power on default.",
+      "parentUuid": "6ad00e60_82a0c9cf",
+      "range": {
+        "startLine": 537,
+        "startChar": 2,
+        "endLine": 537,
+        "endChar": 15
+      },
+      "revId": "8c2312d15d5d2d80d7f5f49f25b0300115783d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d4b8d448_9c3a7693",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6cbce42d_f527bfb1",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-26T11:10:15Z",
+      "side": 1,
+      "message": "No, they are only for DX version.\nI want to add an implementation and is able to apply to all versions without adding a new config option. So we don\u0027t need to enable/disable a additional config option for each board.",
+      "parentUuid": "d4b8d448_9c3a7693",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "8c2312d15d5d2d80d7f5f49f25b0300115783d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b5ec5ad_0be877f3",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-25T14:23:17Z",
       "side": 1,
       "message": "I don\u0027t understand why this is not conditionally included for DX version only. Do these registers work on all of the other existing versions?",
+      "range": {
+        "startLine": 460,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 0
+      },
+      "revId": "8c2312d15d5d2d80d7f5f49f25b0300115783d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f149102_32ed7c6b",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-26T11:10:15Z",
+      "side": 1,
+      "message": "No, these registers only work on DX version and they are reserved on all of the other existing versions. Setting these registers would not take any effect on the other versions.",
+      "parentUuid": "8b5ec5ad_0be877f3",
       "range": {
         "startLine": 460,
         "startChar": 2,
