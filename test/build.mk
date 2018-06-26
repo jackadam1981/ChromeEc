@@ -66,7 +66,7 @@ test-list-host += x25519
 endif
 
 # Fuzzing tests
-fuzz-test-list-host = host_command_fuzz
+fuzz-test-list-host = host_command_fuzz usb_pd_fuzz
 
 base32-y=base32.o
 battery_get_params_smart-y=battery_get_params_smart.o
@@ -120,6 +120,7 @@ timer_dos-y=timer_dos.o
 usb_pd-y=usb_pd.o
 usb_pd_giveback-y=usb_pd.o
 usb_pd_rev30-y=usb_pd.o
+usb_pd_fuzz-y=usb_pd_fuzz.o
 utils-y=utils.o
 utils_str-y=utils_str.o
 vboot-y=vboot.o

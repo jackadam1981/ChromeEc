@@ -175,7 +175,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #endif
 
 #if defined(TEST_USB_PD) || defined(TEST_USB_PD_GIVEBACK) || \
-	defined(TEST_USB_PD_REV30)
+	defined(TEST_USB_PD_REV30) || defined(TEST_USB_PD_FUZZ)
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_PORT_COUNT 2
