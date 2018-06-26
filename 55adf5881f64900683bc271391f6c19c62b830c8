@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7b0869f8_bd684543",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-26T15:56:56Z",
+      "side": 1,
+      "message": "If the I2CIDLE write gets NAKd for instance. Again, not a likely outcome, but a possibility.",
+      "parentUuid": "c37705e7_3a145568",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 38
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed9f1a12_9ea8702f",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "The TCPC access is what calls this method, so this is tracking a hardware bus access causing the exit of low-power mode.",
       "parentUuid": "17c0c2ab_e937d32c",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 54
+      },
+      "revId": "55adf5881f64900683bc271391f6c19c62b830c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436405b5_f7e1c13d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-26T15:56:56Z",
+      "side": 1,
+      "message": "My concern here is that LPM_ENAGAGED is getting cleared before the TCPC access takes place. So there is some time period when this value doesn\u0027t reflect the state of TCPC itself. But setting this bit happens after the TCPC write, not before.",
+      "parentUuid": "faa1addd_3838a442",
       "range": {
         "startLine": 239,
         "startChar": 1,
