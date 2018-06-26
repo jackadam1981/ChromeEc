@@ -22,6 +22,30 @@
       "revId": "e33f6c71aca2894dbf02956bc3c69c387526d923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba54161_d889a92d",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-26T16:30:17Z",
+      "side": 1,
+      "message": "No, it\u0027s not. Fixed. setup_motion_sensor is also moved by CL:1115202.",
+      "parentUuid": "f34f764d_9091b58e",
+      "range": {
+        "startLine": 808,
+        "startChar": 0,
+        "endLine": 810,
+        "endChar": 55
+      },
+      "revId": "e33f6c71aca2894dbf02956bc3c69c387526d923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
