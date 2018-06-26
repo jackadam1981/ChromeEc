@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "00979b51_a249ed85",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-26T04:00:16Z",
+      "side": 1,
+      "message": "If using data28\u003d0x80,data29\u003d0xeb as an example, expected v[i] output will be 0xeb00 for lis2de 8 bits resolution. thanks,",
+      "parentUuid": "c7907e87_30e5282a",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "9009e878c927143cbc0bb2dcc733947953a4c80b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "427e5d81_21daa5f8",
         "filename": "include/config.h",
         "patchSetId": 1
