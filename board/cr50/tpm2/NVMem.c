@@ -16,6 +16,7 @@
 #include "TpmError.h"
 #include "assert.h"
 #include "nvmem.h"
+#include "virtual_nvmem.h"
 
 /* Local state */
 static struct {
@@ -114,6 +115,11 @@ void _plat__NvMemoryRead(unsigned int startOffset,
 				    unsigned int size,
 				    void *data)
 {
+	if (_plat__NvOffsetIsVirtual(startOffset)) {
+		_plat__NvVirtualMemoryRead(startOffset, size, data);
+		return;
+	}
+
 	assert(startOffset + size <= NV_MEMORY_SIZE);
 	/* Copy the data from the NV image */
 #ifdef CONFIG_FLASH_NVMEM
