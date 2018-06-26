@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "302745be_ba33c9a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-06-26T17:09:04Z",
+      "side": 1,
+      "message": "General comment: Just write your to-be-final description here, no need to prepend with DRAFT \u0026 change later. if you want to indicate it\u0027s an early draft, set WIP flag on the CL (I doubt it\u0027s, but you can additionally set Private to avoid unsolicited reviews - those whom you add to Cc/Reviewers will still be able to see your private CL). You can even use repo upload --draft to auto-set WIP flag, though it doesn\u0027t save much. WIP is sticky, so you can do regular repo upload\u0027s w/o --draft, and they won\u0027t remove WIP from the CL, until you do it from the gerrit menu.\nAnd just to make it crystal clear you can always add\u0027ly indicate that it\u0027s far from the final product in the comment when you add reviewers/Cc people.\n\nAdd BUG\u003d and TEST\u003d from the beginning. Occasionally, there are comments about the right bug to quote or the right tests to run, so they are also an important part of the eventual review. If you do\u0027t want to spend time writing those for an early draft, just set none for BUG (though this part is normally easy) and TODO for TEST. Also, in platform/ec they require CLs to be signed iirc (like in kernel CLs), so add a signature from the beginning. This will allow to upload drafts without --no-verify from the beginning, which saves time later.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 35
+      },
+      "revId": "531e44f54007f21197055b905b9c47f5d621a3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb28ed79_adc87d0a",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-06-26T17:09:04Z",
+      "side": 1,
+      "message": "I\u0027d do just enum of consecutive numbers for supported virtual indexes - that\u0027s more natural, indices are just indices in the array of nvram spaces after all. Like\nenum {\n  VIRTUAL_NV_INDEX_START \u003d 0x013f0000,\n  VIRTUAL_NV_INDEX_BOARD_ID \u003d VIRTUAL_NV_INDEX_START,\n  VIRTUAL_NV_INDEX_SERIAL_NUMBER,\n  VIRTUAL_NV_INDEX_MAX,\n};\n\nBut then the offset of each returned by NvIndexToNvOffset() should be VIRTUAL_NV_OFFSET_START + (index - VIRTUAL_NV_INDEX_START) * MAX_SIZE_OF_NV_INDEX_SLOT. Where MAX_SIZE_OF_NV_INDEX_SLOT \u003d sizeof(uint32_t) + sizeof(NV_INDEX) + MAX_VIRTUAL_NV_INDEX_DATA_SIZE (say, we support up to 0x200).\n\nAnd then your _plat__NvVirtualMemoryRead can turn into:\n  nvIndex \u003d NvOffsetToNvIndex(startOffset);\n  nvDataSize \u003d GetNvDataSize(nvIndex);\n\n  indexStartOffset \u003d NvIndexToNvOffset(nvIndex);\n  startOffset \u003d (startOffset \u0026 ~VIRTUAL_NV_OFFSET_START) - indexStartOffset;\n\n  /* while size \u003e 0, pick the part where startOffset falls into and copy enough data from there.\n   * There are 3 parts: \n   * 1) pointer-to-next, sizeof(uint32_t): just return zeroes, we are not part of a chain.\n   * 2) header, sizeof(NV_INDEX): set the index number in the common template and copy from there - \n   *            enough for now, (unlikely, but we may want to allow future virt indexes \n   *            have separate templates)\n   * 3) the actual data: invoke an index-specific callback?\n   */",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "531e44f54007f21197055b905b9c47f5d621a3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
