@@ -22,6 +22,30 @@
       "revId": "eb1f70cf87341b9e23a81b73c471d4cfc3527c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "241f53c6_11e76aaa",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1267937
+      },
+      "writtenOn": "2018-06-26T15:09:38Z",
+      "side": 1,
+      "message": "Yes, we confirm this on our manual re-worked PCBA. It\u0027s workable",
+      "parentUuid": "6bba1def_51c9880c",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 85
+      },
+      "revId": "eb1f70cf87341b9e23a81b73c471d4cfc3527c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
