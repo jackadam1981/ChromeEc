@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1dccfa6_e1ed691a",
+        "filename": "driver/accel_lis2dh.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T14:07:39Z",
+      "side": 1,
+      "message": "can we change this to\n#elif defined(CONFIG_ACCEL_LIS2DH)",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 5
+      },
+      "revId": "d2e5d555e3515b9041ee1ebae94ccfe9269296ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96bdd1a0_ccb3a597",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T14:07:39Z",
+      "side": 1,
+      "message": "This is much more clear. Thank you!\n\nCan you add a comment that the data is left-aligned, and the bottom bits need to be cleared because they may contain trash data.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 2
+      },
+      "revId": "d2e5d555e3515b9041ee1ebae94ccfe9269296ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd1aa73_28b9fc15",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T14:07:39Z",
+      "side": 1,
+      "message": "Let\u0027s also you add\n#undef CONFIG_ACCEL_LIS2D_COMMON\nhere too?\n\nCan you also add a comment about how you pick either H or E, and COMMON gets automatically defined for you, too please?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "d2e5d555e3515b9041ee1ebae94ccfe9269296ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f7369ad_3805cf6a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3801,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-26T14:07:39Z",
+      "side": 1,
+      "message": "Please move this to before line 3770  (where test_config.h is included) to match style of other automatic defines.",
+      "range": {
+        "startLine": 3795,
+        "startChar": 0,
+        "endLine": 3801,
+        "endChar": 6
+      },
+      "revId": "d2e5d555e3515b9041ee1ebae94ccfe9269296ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
