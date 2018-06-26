@@ -23,6 +23,10 @@ extern const struct console_command __cmds_end[];
 extern const void *__extension_cmds;
 extern const void *__extension_cmds_end;
 
+/* Virtual NV indexes exposed through TPM2 interface. */
+extern const void *__virtual_nv_indexes;
+extern const void *__virtual_nv_indexes_end;
+
 /* Hooks */
 extern const struct hook_data __hooks_init[];
 extern const struct hook_data __hooks_init_end[];
