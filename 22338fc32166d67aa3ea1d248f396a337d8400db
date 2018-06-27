@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "56bc9bdb_b458085f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-06-27T18:33:51Z",
+      "side": 1,
+      "message": "Can you add BRANCH\u003dpoppy here?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "22338fc32166d67aa3ea1d248f396a337d8400db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0934003_4c8220e9",
         "filename": "board/nautilus/board.c",
         "patchSetId": 2
