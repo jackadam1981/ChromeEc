@@ -93,6 +93,30 @@
       "revId": "531e44f54007f21197055b905b9c47f5d621a3b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fe948d1_31f854e6",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-06-27T16:07:50Z",
+      "side": 1,
+      "message": "\u003e\u003e   * 1) pointer-to-next, sizeof(uint32_t): just return zeroes, we are not part of a chain.\n\n\u003e We shouldn\u0027t ever be called with this offset, so I ignored this for now - do you think I should be handling this? My thinking was that it would be better to double check that it won\u0027t ever happen, and then assert that it doesn\u0027t (or similar)\n\nAgreed, it shouldn\u0027t happen. There are two ways to handle: assert() or log, return 0 and continue. We can assert() but we need to make sure that  it\u0027s a full-blown cr50 reboot that causes whole system (host) reboot then; just restarting cr50 w/o the rest of the system is a security issue. If we can\u0027t guarantee that, let\u0027s use the 2nd option. \nAs for logging stuff, we may want to use this vNVRAM functionality for reporting counters that then can be picked by UMA. But too early to think about that.\n\n\u003e\u003e   * 2) header, sizeof(NV_INDEX): set the index number in the common template and copy from there - \n\n\u003e Do you mean change the value in the template before copying? The reason I did it like this was so that I could have it be const, which I was told would mean it ended up getting stored in flash rather than ram, which seemed like a Good Thing given this will presumably be called very infrequently. What do you think?\n\nYes, sorry, over-simplified things in my writing. having it const, and substituting the index on the fly is also good.  Though nowadays flash is as precious resource as RAM is in cr50 :)\n\n\u003e\u003e   * 3) the actual data: invoke an index-specific callback?\n\n\u003e Sounds good, I wasn\u0027t sure what the standard way to hook this up [in C] was though - do you have any preferences?\n\nLet\u0027s just go with whatever is already used for similar purposes in cr50. E.g. we have DECLARE_EXTENSION_COMMAND and DECLARE_VENDOR_COMMAND for supporting lists of command handlers. Can do something similar. And NvIndexToNvOffset can first just walk this list to check that the index is present, in case index numbers are not consecutive (e.g. we delete an obsolete vNVindex later).",
+      "parentUuid": "6b8d41a1_d0bafd1d",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "531e44f54007f21197055b905b9c47f5d621a3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
