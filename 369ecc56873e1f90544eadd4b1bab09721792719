@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b61fedc9_b1b8d7a9",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-27T18:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee00381b_f10d5a93",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "369ecc56873e1f90544eadd4b1bab09721792719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "869bf188_35f6ce3f",
         "filename": "board/dragonegg/board.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-27T16:11:15Z",
       "side": 1,
       "message": "should we change the default for this to be 4K if all new boards are moving to that? What are your thoughts?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "369ecc56873e1f90544eadd4b1bab09721792719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "295fe166_b16f1296",
+        "filename": "board/dragonegg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-27T18:25:40Z",
+      "side": 1,
+      "message": "I had assumed this was an ITE specific since it was done for Bip. Looks like a number of boards have this redefined. I\u0027d be hesitant to make the default larger given that it will likely push some boards over in terms of available memory.",
+      "parentUuid": "869bf188_35f6ce3f",
       "range": {
         "startLine": 22,
         "startChar": 0,
