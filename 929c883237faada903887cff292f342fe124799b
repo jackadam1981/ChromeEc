@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21267893_586355f4",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T16:07:07Z",
+      "side": 1,
+      "message": "We could probably always leave 255 as a convertable because it isn\u0027t a valid SKU once a device leave the factory floor; we should probably remove the TODO",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "929c883237faada903887cff292f342fe124799b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fde3176_33786890",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T16:07:07Z",
+      "side": 1,
+      "message": "the new practice it so update the drivers as soon as possible (HOOK_PRIO_INIT_I2C + 2)\n\nSee CL:1115202",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 1
+      },
+      "revId": "929c883237faada903887cff292f342fe124799b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
