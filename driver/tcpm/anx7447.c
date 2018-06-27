@@ -329,7 +329,8 @@ static int anx7447_init(int port)
 	rv = tcpc_read(port, ANX7447_REG_ANALOG_CTRL_8, &reg);
 	if (rv)
 		return rv;
-	reg |= ANX7447_REG_VCONN_OCP_440mA;
+	reg &= ~ANX7447_REG_VCONN_OCP_MASK;
+	reg |= ANX7447_REG_VCONN_OCP_370mA;
 	rv = tcpc_write(port, ANX7447_REG_ANALOG_CTRL_8, reg);
 
 	/* init hpd status */
