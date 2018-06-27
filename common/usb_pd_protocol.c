@@ -2230,7 +2230,7 @@ void pd_task(void *u)
 
 	/* Initialize PD protocol state variables for each port. */
 	pd_set_power_role(port, PD_ROLE_DEFAULT(port));
-#ifdef CONFIG_USB_PD_DUAL_ROLE
+#if defined(CONFIG_USB_PD_DUAL_ROLE) && defined(CONFIG_USB_PD_RESTORE_ROLES)
 	/*
 	 * If there's an explicit contract in place, let's restore the data and
 	 * power roles such that any messages we send to the port partner will
