@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07078573_eeabce6c",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-27T07:53:58Z",
+      "side": 1,
+      "message": "in addition to the stdin mess, there are a few differences between gcc -E and cpp, e.g. the behavior regarding \u0027Traditional Mode\u0027.\nI\u0027m only mildly confident that this change does not modify other subtle stuffs, did you try comparing binaries ?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "c18deb985d7eda9b301fc2c6aac284c912008a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
