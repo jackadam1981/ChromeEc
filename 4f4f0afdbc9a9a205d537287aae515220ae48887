@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5fbd0c63_552de04e",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-27T14:39:22Z",
+      "side": 1,
+      "message": "Could we also implement a general power LED function which could be used generically by any octopus board with a power LED?",
+      "parentUuid": "9b9aebf4_cfd77e41",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 1
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "273140cc_a7498d63",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-06-27T13:41:30Z",
       "side": 1,
       "message": "phaser can just add another hook method that calls into phaser\u0027s local led_update_power_led()",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 53
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "823d80ae_bbc8f867",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-27T14:39:22Z",
+      "side": 1,
+      "message": "I believe that alternatively we can check if the power LED auto control is enabled.  That would be a more general way to enable power LEDs for boards with them",
+      "parentUuid": "273140cc_a7498d63",
       "range": {
         "startLine": 168,
         "startChar": 0,
