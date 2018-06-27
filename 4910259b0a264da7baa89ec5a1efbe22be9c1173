@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "70da5b1e_5d966c8d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T15:51:11Z",
+      "side": 1,
+      "message": "Can you add this information to the code (e.g. that some dongle take 2W of power so we increase the limit to 440mA)",
+      "parentUuid": "ae920aee_bc17fe21",
+      "range": {
+        "startLine": 328,
+        "startChar": 56,
+        "endLine": 328,
+        "endChar": 61
+      },
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b18c095_94bac471",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Ok, I\u0027ll change it in next review.",
       "parentUuid": "87a8b993_56fbed4f",
+      "range": {
+        "startLine": 332,
+        "startChar": 6,
+        "endLine": 332,
+        "endChar": 7
+      },
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dfc37ad_11e2976a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T15:51:11Z",
+      "side": 1,
+      "message": "Can you collapse them in to a single change, please?",
+      "parentUuid": "57aa4cc3_faffd73d",
       "range": {
         "startLine": 332,
         "startChar": 6,
