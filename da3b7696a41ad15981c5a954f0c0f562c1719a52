@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6bfe113_716349de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 2225,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-27T00:14:09Z",
+      "side": 1,
+      "message": "This call will write the default role in BBRAM. So, the code below restores the default role instead of the role saved in the previous session.",
+      "range": {
+        "startLine": 2225,
+        "startChar": 1,
+        "endLine": 2225,
+        "endChar": 18
+      },
+      "revId": "da3b7696a41ad15981c5a954f0c0f562c1719a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
