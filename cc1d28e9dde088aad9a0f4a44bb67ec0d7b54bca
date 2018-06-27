@@ -22,6 +22,30 @@
       "revId": "cc1d28e9dde088aad9a0f4a44bb67ec0d7b54bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5f0d7f_887622ff",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-06-27T17:34:26Z",
+      "side": 1,
+      "message": "No.  The Grunt motion sensor power rails are not active in S5, and the grunt configuration, so no actions are taken on the shutdown event.  See also how the SENSOR_ACTIVE macro expands, adn the spec of the `active_mask`s in Grunt\u0027s motion_sensors[].",
+      "parentUuid": "dbada116_c2a565a8",
+      "range": {
+        "startLine": 541,
+        "startChar": 1,
+        "endLine": 541,
+        "endChar": 32
+      },
+      "revId": "cc1d28e9dde088aad9a0f4a44bb67ec0d7b54bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
