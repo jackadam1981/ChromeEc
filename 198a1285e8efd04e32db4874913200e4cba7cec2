@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c09fbe47_a096e896",
+        "filename": "util/run_host_test",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-27T07:59:04Z",
+      "side": 1,
+      "message": "this is just for the process spawned above in RunOnce ?\nthen maybe you want to add env\u003d in the pexpect.spawn() above rather than changing the global environment ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "198a1285e8efd04e32db4874913200e4cba7cec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
