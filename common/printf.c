@@ -378,5 +378,8 @@ int vsnprintf(char *str, int size, const char *format, va_list args)
 	/* Terminate string */
 	*ctx.str = '\0';
 
-	return rv;
+	if (rv == EC_SUCCESS)
+		return ctx.str-str;
+	else
+		return -rv;
 }
