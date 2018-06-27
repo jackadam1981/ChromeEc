@@ -166,6 +166,10 @@ void pd_execute_data_swap(int port, int data_role)
 	if (port != 0)
 		return;
 
+	/* Previous boards do not have USB2_ID wired */
+	if (board_version < 0x300)
+		return;
+
 	gpio_set_level(GPIO_USB2_ID,
 		      (data_role == PD_ROLE_UFP) ? 1 : 0);
 }
