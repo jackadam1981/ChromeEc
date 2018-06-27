@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11c57537_7901e388",
+        "filename": "board/nami/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-06-27T07:37:59Z",
+      "side": 1,
+      "message": "I don\u0027t think doing gpio_set_level on a GPIO_INPUT is an issue.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "c3e477fd61e46d95643bef2a4bef8a7db91704ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
