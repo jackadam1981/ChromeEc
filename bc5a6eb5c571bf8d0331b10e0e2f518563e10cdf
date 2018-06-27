@@ -22,6 +22,30 @@
       "revId": "bc5a6eb5c571bf8d0331b10e0e2f518563e10cdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f5078d_e1ed8113",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-06-27T22:31:01Z",
+      "side": 1,
+      "message": "I caught this and fixed it in the following CL that uses this file.",
+      "parentUuid": "d39432fd_6af4a782",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "bc5a6eb5c571bf8d0331b10e0e2f518563e10cdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
