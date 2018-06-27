@@ -14,6 +14,16 @@
 #define LED_ONE_SEC	(1000 / HOOK_TICK_INTERVAL_MS)
 #define STATE_DEFAULT	LED_NUM_STATES
 #define LED_OFF         EC_LED_COLOR_COUNT
+#define LED_CHARGE_LEVEL_1_PHASER 5
+#define LED_CHARGE_LEVEL_2_PHASER 97
+#define LED_ON_LVL 0
+#define LED_OFF_LVL 1
+#define LED_POWER_BLINK_ON_MSEC 3000
+#define LED_POWER_BLINK_OFF_MSEC 500
+#define LED_POWER_ON_TICKS (LED_POWER_BLINK_ON_MSEC / HOOK_TICK_INTERVAL_MS)
+#define LED_POWER_OFF_TICKS (LED_POWER_BLINK_OFF_MSEC / HOOK_TICK_INTERVAL_MS)
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 /*
  * All LED states should have one phase defined,
@@ -27,12 +37,15 @@ enum led_phase {
 
 enum led_states {
 	STATE_CHARGING,
+	STATE_CHARGING_LVL_1,
+	STATE_CHARGING_LVL_2,
 	/* TODO(b/110086152): more charging states for phasor */
 	STATE_CHARGING_FULL_CHARGE,
 	STATE_DISCHARGE_S0,
 	STATE_DISCHARGE_S3,
 	STATE_DISCHARGE_S5,
 	STATE_BATTERY_ERROR,
+	STATE_FACTORY_TEST,
 	LED_NUM_STATES
 };
 
