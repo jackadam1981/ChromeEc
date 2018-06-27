@@ -93,6 +93,30 @@
       "revId": "369ecc56873e1f90544eadd4b1bab09721792719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd17a7a_ca52ccdc",
+        "filename": "board/dragonegg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T18:47:00Z",
+      "side": 1,
+      "message": "Just more thinking out loud. We might want to come back and clean the buffer size up a little. Bip added it because they were dropping console output in some scenarios.",
+      "parentUuid": "295fe166_b16f1296",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "369ecc56873e1f90544eadd4b1bab09721792719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
