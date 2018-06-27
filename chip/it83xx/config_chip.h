@@ -68,7 +68,16 @@
  * in order to emulate per-bank write-protection UNTIL REBOOT. The hardware
  * doesn't support a write-protect pin, and if we make the write-protection
  * permanent, it can't be undone easily enough to support RMA. */
-#define CONFIG_FLASH_SIZE  0x00040000
+#if defined(CHIP_VARIANT_IT8320BX)
+	#define CONFIG_FLASH_SIZE  0x00040000
+#elif defined(CHIP_VARIANT_IT8320DX)
+	#define CONFIG_FLASH_SIZE  0x00080000
+	#define IT83XX_ESPI_SLAVE_MAX_FREQ_CONFIGURABLE
+	#define IT83XX_ETWD_HW_RESET_SUPPORT
+	#define IT83XX_GPIO_INT_FLEXIBLE
+#else
+	#error "Unsupported chip variant!"
+#endif
 
 /****************************************************************************/
 /* Define our flash layout. */
