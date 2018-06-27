@@ -85,8 +85,17 @@ static void bc12_detect(const int port)
 	 * therefore an activated CHG_DET indicates whether the source is NOT a
 	 * low-power standard downstream port (SDP). The system will have to
 	 * ramp the current to determine the limit.
+	 *
+	 * SDP adapter with USB3.0 can deliver up to 900mA hence set the
+	 * charge ramp for SDP adapter to 900mA. In case of USB2.0 SDP,
+	 * charger can detect VBUS low and stop ramping current at 500mA.
 	 */
+#ifdef CONFIG_CHARGER_BQ25703
+	new_chg.current = is_chg_det_activated(cfg) ? 2400 : 900;
+#else
 	new_chg.current = is_chg_det_activated(cfg) ? 2400 : 500;
+#endif /* CONFIG_CHARGER_BQ25703 */
+
 #else
 	/*
 	 * If the board doesn't support charge ramping, then assume the lowest
