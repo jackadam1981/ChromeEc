@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "72fd1554_322d74e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-27T19:00:22Z",
+      "side": 1,
+      "message": "Please mention the current threshold.",
+      "range": {
+        "startLine": 7,
+        "startChar": 67,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43116d32_ce589eee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-27T19:00:22Z",
+      "side": 1,
+      "message": "Please add BUG\u003d, BRANCH\u003d, and TEST\u003d fields.",
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d483a7b5_e7be105a",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
