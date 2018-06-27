@@ -3027,6 +3027,9 @@
 /* Simple DFP, such as power adapter, will not send discovery VDM on connect */
 #undef CONFIG_USB_PD_SIMPLE_DFP
 
+/* Restore PD power role and data role saved by previous session */
+#define CONFIG_USB_PD_RESTORE_ROLES
+
 /* Use comparator module for PD RX interrupt */
 #define CONFIG_USB_PD_RX_COMP_IRQ
 
