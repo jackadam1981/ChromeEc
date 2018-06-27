@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "90bdb856_d824c28d",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-06-27T08:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a4e8d6_5f30c349",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 60
+      },
+      "revId": "8c2312d15d5d2d80d7f5f49f25b0300115783d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b5ec5ad_0be877f3",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 1
