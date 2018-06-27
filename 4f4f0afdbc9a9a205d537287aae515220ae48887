@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a00b2f2_4216fba0",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T13:41:30Z",
+      "side": 1,
+      "message": "we do not need conditional logic for phaser. All boards can specify how the want to work in these 2 new states.\n\nLet\u0027s drop all of the sku stuff.  Also, SKU does not identify phaser. oem_id of 3 identifies phaser.  Of if you need phaser specific code, we should add it to board/phaser/* files as our first preference",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 19
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b9aebf4_cfd77e41",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T13:41:30Z",
+      "side": 1,
+      "message": "let\u0027s up this in phaser/led.c instead since it is phaser specific",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 1
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "273140cc_a7498d63",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T13:41:30Z",
+      "side": 1,
+      "message": "phaser can just add another hook method that calls into phaser\u0027s local led_update_power_led()",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 53
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b041e2a_fbebb330",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T13:41:30Z",
+      "side": 1,
+      "message": "these should move to board/phaser/led.c since they are mostly phaser specific\n\nAlso, CPRINTS defines should always be in a .c file intead of a .h file (so they only apply locally to that file)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 69
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cb1fec_c77ff0cf",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T13:41:30Z",
+      "side": 1,
+      "message": "can you comment what level 1 and level 2 mean. How much battery is present in each level.\n\nWe also need to add entries in the other octopus led_bat_state_table variables.",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86ef672_569f5f5c",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T13:41:30Z",
+      "side": 1,
+      "message": "why do we need this state? Can we remove it?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea63263c_d6e9249f",
+        "filename": "board/phaser/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-27T13:41:30Z",
+      "side": 1,
+      "message": "doesn\u0027t phaser support all three LEDs?",
+      "range": {
+        "startLine": 27,
+        "startChar": 45,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "4f4f0afdbc9a9a205d537287aae515220ae48887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
