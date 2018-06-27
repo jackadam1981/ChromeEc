@@ -555,6 +555,9 @@
 /* Compile input current ramping support using software control */
 #undef CONFIG_CHARGE_RAMP_SW
 
+/* Allow charge ramping of BC1.2 SDP chargers to 900mA */
+#undef CONFIG_CHARGE_RAMP_SDP_900MA
+
 /*****************************************************************************/
 /* Charger config */
 

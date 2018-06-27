@@ -114,6 +114,7 @@
 /* Common charger defines */
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGE_RAMP_HW
+#define CONFIG_CHARGE_RAMP_SDP_900MA
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_INPUT_CURRENT 512 /* Allow low-current USB charging */
