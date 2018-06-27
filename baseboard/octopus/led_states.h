@@ -14,6 +14,8 @@
 #define LED_ONE_SEC	(1000 / HOOK_TICK_INTERVAL_MS)
 #define STATE_DEFAULT	LED_NUM_STATES
 #define LED_OFF         EC_LED_COLOR_COUNT
+#define LED_ON_LVL 0
+#define LED_OFF_LVL 1
 
 /*
  * All LED states should have one phase defined,
@@ -26,13 +28,15 @@ enum led_phase {
 };
 
 enum led_states {
-	STATE_CHARGING,
+	STATE_CHARGING_LVL_1,
+	STATE_CHARGING_LVL_2,
 	/* TODO(b/110086152): more charging states for phasor */
 	STATE_CHARGING_FULL_CHARGE,
 	STATE_DISCHARGE_S0,
 	STATE_DISCHARGE_S3,
 	STATE_DISCHARGE_S5,
 	STATE_BATTERY_ERROR,
+	STATE_FACTORY_TEST,
 	LED_NUM_STATES
 };
 
@@ -46,6 +50,12 @@ struct led_descriptor {
 extern const struct led_descriptor
 			led_bat_state_table[LED_NUM_STATES][LED_NUM_PHASES];
 
+/* Charging LED state level 1 - defined in board's led.c */
+extern int led_charge_lvl_1;
+
+/* Charging LED state level 2 - defined in board's led.c */
+extern int led_charge_lvl_2;
+
 /**
  * Set battery LED color - defined in board's led.c
  *
@@ -53,5 +63,10 @@ extern const struct led_descriptor
  *
  */
 void led_set_color_battery(enum ec_led_colors color);
+
+/**
+ * Set power LED color - defined in board's led.c
+ */
+void __attribute__((weak)) led_set_color_power(int level, int ticks);
 
 #endif /* __CROS_EC_BASEBOARD_LED_H */
