@@ -887,6 +887,13 @@ void keyboard_protocol_task(void *u)
 				CPRINTS("KB extra IRQ");
 				lpc_keyboard_resume_irq();
 				retries = 0;
+
+				/*
+				 * Number of retries are reached hence clear the
+				 * keyboard buffer so that the next set of data
+				 * can be sent.
+				 */
+				keyboard_clear_buffer();
 				break;
 			}
 
