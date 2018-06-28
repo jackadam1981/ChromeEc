@@ -554,6 +554,9 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
+#endif
 };
 
 #ifdef CONFIG_USB_PD_TCPM_MUX

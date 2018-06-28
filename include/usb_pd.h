@@ -739,6 +739,12 @@ enum pd_states {
 #define PD_BBRMFLG_POWER_ROLE        (1 << 1)
 #define PD_BBRMFLG_DATA_ROLE         (1 << 2)
 
+/* Low-Power Mode constants */
+#define PD_LPM_DEBOUCE_US 10000
+
+#define PD_LPM_FLAGS_REQUESTED (1 << 0) /* Tracks SW desire for LPM */
+#define PD_LPM_FLAGS_ENGAGED   (1 << 1) /* Tracks HW state for LPM */
+
 enum pd_cc_states {
 	PD_CC_NONE,
 
@@ -1005,6 +1011,17 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
  * @return True if max voltage request allowed, False otherwise
  */
 int pd_is_max_request_allowed(void);
+
+/**
+ * Informs the TCPM state machine that code within the EC has accessed the TCPC
+ * via its communication bus (e.g. i2c). This is important to keep track of as
+ * accessing a TCPC may pull the hardware out of low-power mode.
+ *
+ * Note: Call this function after finished accessing the hardware.
+ *
+ * @param port USB-C port number
+ */
+void pd_device_accessed(int port);
 
 /**
  * Process source capabilities packet
