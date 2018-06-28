@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d095108e_be11341b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-28T13:57:17Z",
+      "side": 1,
+      "message": "I\u0027m still not convinced this improves our compatibility with usb-c devices.",
+      "range": {
+        "startLine": 2240,
+        "startChar": 0,
+        "endLine": 2245,
+        "endChar": 33
+      },
+      "revId": "b9ae1e869770b5b8336bd27f03a9cec78a461416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
