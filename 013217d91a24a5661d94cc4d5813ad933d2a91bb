@@ -46,6 +46,30 @@
       "revId": "013217d91a24a5661d94cc4d5813ad933d2a91bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ffc0779_ef82cd3a",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-28T18:20:57Z",
+      "side": 1,
+      "message": "We should remove the _L in the comments then if they are active high",
+      "parentUuid": "d81d5b97_fe392dd6",
+      "range": {
+        "startLine": 105,
+        "startChar": 41,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "013217d91a24a5661d94cc4d5813ad933d2a91bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
