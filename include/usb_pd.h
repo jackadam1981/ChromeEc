@@ -43,6 +43,7 @@ enum pd_rx_errors {
 #define PD_EVENT_CC               (1<<4) /* CC line change event */
 #define PD_EVENT_TCPC_RESET       (1<<5) /* TCPC has reset */
 #define PD_EVENT_UPDATE_DUAL_ROLE (1<<6) /* DRP state has changed */
+#define PD_EVENT_DEVICE_ACCESSED  (1<<7) /* Another Task accessed device */
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
@@ -1005,6 +1006,17 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
  * @return True if max voltage request allowed, False otherwise
  */
 int pd_is_max_request_allowed(void);
+
+/**
+ * Informs the TCPM state machine that code within the EC has accessed the TCPC
+ * via its communication bus (e.g. i2c). This is important to keep track of as
+ * accessing a TCPC may pull the hardware out of low-power mode.
+ *
+ * Note: Call this function after finished accessing the hardware.
+ *
+ * @param port USB-C port number
+ */
+void pd_device_accessed(int port);
 
 /**
  * Process source capabilities packet

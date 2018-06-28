@@ -156,10 +156,17 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 	rv |= tcpc_write(port, TCPC_REG_COMMAND,
 			 TCPC_REG_COMMAND_LOOK4CONNECTION);
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	rv |= tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
-#endif
 	return rv;
+}
+#endif
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+int tcpci_enter_low_power_mode(int port)
+{
+	/* This uses the raw i2c write to bypass the pd_device_accessed call */
+	return i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
 }
 #endif
 
@@ -609,5 +616,8 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USBC_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
+#endif
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif
 };
