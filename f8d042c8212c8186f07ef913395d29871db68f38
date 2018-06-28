@@ -22,6 +22,30 @@
       "revId": "f8d042c8212c8186f07ef913395d29871db68f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eeddc9e_fc253930",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-06-28T14:09:41Z",
+      "side": 0,
+      "message": "Because it is defined later. But rereading config.h, it does not hurt to leave it. Sorry.",
+      "parentUuid": "ec62f20b_dc92d697",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "f8d042c8212c8186f07ef913395d29871db68f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
