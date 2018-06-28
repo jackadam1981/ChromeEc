@@ -22,6 +22,30 @@
       "revId": "013217d91a24a5661d94cc4d5813ad933d2a91bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d81d5b97_fe392dd6",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-06-28T18:19:10Z",
+      "side": 1,
+      "message": "The LEDs on bip are opposite the yorp ones (so 1\u003don).  I know because I initially just copied yorp\u0027s GPIO_OUT_HIGH and my bip board booted with both LEDs on :) \n\nWith this code, the LEDs are off until the LED task starts running and sets them according to our charge/power state",
+      "parentUuid": "0ed5c3d6_4cd6e6d4",
+      "range": {
+        "startLine": 105,
+        "startChar": 41,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "013217d91a24a5661d94cc4d5813ad933d2a91bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
