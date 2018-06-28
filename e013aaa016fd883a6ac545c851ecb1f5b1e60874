@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f33d651_67c11c0c",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-06-28T07:15:56Z",
+      "side": 1,
+      "message": "/*\n * Data is ....",
+      "revId": "e013aaa016fd883a6ac545c851ecb1f5b1e60874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6854463_3457a50b",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-06-28T07:15:56Z",
+      "side": 1,
+      "message": "Thanks, the kernel does expect 16 bits data.",
+      "revId": "e013aaa016fd883a6ac545c851ecb1f5b1e60874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6ec8033_1888f05c",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-06-28T07:15:56Z",
+      "side": 1,
+      "message": "Need to introduce a new device, MOTIONSENSE_TYPE_LIS2DE, and modify ectool accordingly.",
+      "revId": "e013aaa016fd883a6ac545c851ecb1f5b1e60874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e404af_51d9fbd2",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-06-28T07:15:56Z",
+      "side": 1,
+      "message": "not needed, automatically defined later.",
+      "revId": "e013aaa016fd883a6ac545c851ecb1f5b1e60874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
