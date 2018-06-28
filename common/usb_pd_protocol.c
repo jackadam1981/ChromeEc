@@ -2269,10 +2269,8 @@ void pd_task(void *u)
 	set_state(port, this_state);
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	ASSERT(PD_ROLE_DEFAULT(port) == PD_ROLE_SINK);
-	tcpm_select_rp_value(port, CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT);
-#else
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
 #endif
+	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
 	 * If we're not in an explicit contract, set our terminations to match
