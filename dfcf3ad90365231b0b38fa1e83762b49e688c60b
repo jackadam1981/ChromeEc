@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "9ae92637_f4c13b94",
+        "filename": "common/bootblock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-28T06:59:50Z",
+      "side": 1,
+      "message": "Yeah, I think that\u0027s ok.\n\nWe can just add this in board/kukui/build.mk\n$(out)/RO/board/kukui/emmc.o: $(out)/bootblock_data.h",
+      "parentUuid": "13bc4ac6_17899059",
+      "revId": "dfcf3ad90365231b0b38fa1e83762b49e688c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16d992d7_8bbbd172",
         "filename": "common/bootblock.c",
         "patchSetId": 3
@@ -232,6 +250,24 @@
       "side": 1,
       "message": "A macro for build assert to prevent from generating a bad header.",
       "parentUuid": "55f7ab9e_2bd0bc86",
+      "revId": "dfcf3ad90365231b0b38fa1e83762b49e688c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42fe39bf_0daabcfc",
+        "filename": "util/gen_emmc_transfer_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-28T06:59:50Z",
+      "side": 1,
+      "message": "Well, you can just do a BUILD_ASSERT(sizeof(bootblock_raw_data) \u003e xyz); in the code, instead of defining xyz here.",
+      "parentUuid": "4f4a6847_ed4d776c",
       "revId": "dfcf3ad90365231b0b38fa1e83762b49e688c60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
