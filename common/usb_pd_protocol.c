@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
 #include "board.h"
@@ -342,6 +343,89 @@ static void set_vconn(int port, int enable)
 #endif
 }
 #endif /* defined(CONFIG_USBC_VCONN) */
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+/*
+ * These flags are separate from other flags since they can be accessed in
+ * multiple task contexts.
+ *
+ * These flags track the software state (PD_LPM_FLAGS_REQUESTED) and hardware
+ * state (PD_LPM_FLAGS_ENGAGED) of the TCPC lower power mode.
+ *
+ * If the hardware state is high, then we know the device is in low power mode.
+ * If the hardware state is low, then we are reasonably sure that the device is
+ * out of low power mode.
+ */
+#define PD_LPM_FLAGS_REQUESTED (1 << 0)	/* Tracks SW desire for LPM */
+#define PD_LPM_FLAGS_ENGAGED   (1 << 1) /* Tracks HW state for LPM */
+static uint32_t lpm_flags[CONFIG_USB_PD_PORT_COUNT];
+
+static void low_power_mode_checker(void)
+{
+	int port;
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; ++port) {
+		uint32_t flags = lpm_flags[port];
+
+		if (flags & PD_LPM_FLAGS_REQUESTED &&
+		    !(flags & PD_LPM_FLAGS_ENGAGED)) {
+			/*
+			 * We set the hardware flag before entering low-power
+			 * mode and clear the hardware flag after accessing the
+			 * i2c bus to ensure we know the hardware is in low
+			 * power mode when the hardware flag is set. (There is a
+			 * small chance that the device could be in low-power
+			 * mode when we think it isn't).
+			 */
+			atomic_or(&lpm_flags[port], PD_LPM_FLAGS_ENGAGED);
+			tcpm_enter_low_power_mode(port);
+			CPRINTS("TCPC p%d Enter Low Power Mode", port);
+		}
+	}
+}
+DECLARE_DEFERRED(low_power_mode_checker);
+
+/* 10 ms is enough time for any TCPC transaction to complete. */
+#define PD_LPM_DEBOUCE_US (10 * MSEC)
+
+void pd_device_accessed(int port)
+{
+	/*
+	 * This check could be reported multiple times instead of once because
+	 * of a race condition, but is okay since it just a print statement.
+	 */
+	if (lpm_flags[port] & PD_LPM_FLAGS_ENGAGED)
+		CPRINTS("TCPC p%d Exited Low Power Mode via bus access", port);
+
+	atomic_clear(&lpm_flags[port], PD_LPM_FLAGS_ENGAGED);
+
+	/*
+	 * There is a risk that an active TCPC could keep an inactive
+	 * TCPC from going into low power mode if the active TCPC was constantly
+	 * accessed more frequently than the debounce delay. This is unlikely
+	 * and bigger power problem would be at play with a debounce delay
+	 * of 10ms. This could be fixed by having a separate callback per
+	 * port.
+	 */
+	hook_call_deferred(&low_power_mode_checker_data, PD_LPM_DEBOUCE_US);
+}
+
+/**
+ * Updates the desired state of the TCPC low power mode. If the hardware state
+ * does not match the desired state, and we want to be in low power mode, then
+ * we will enter low power mode after a debounce delay to give any pending I2C
+ * transactions time to complete.
+ */
+static void request_low_power_mode(int port, int enable)
+{
+	if (enable)
+		atomic_or(&lpm_flags[port], PD_LPM_FLAGS_REQUESTED);
+	else
+		atomic_clear(&lpm_flags[port], PD_LPM_FLAGS_REQUESTED);
+
+	hook_call_deferred(&low_power_mode_checker_data, PD_LPM_DEBOUCE_US);
+}
+#endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static int get_bbram_idx(int port)
@@ -1879,6 +1963,11 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 
 void pd_update_dual_role_config(int port)
 {
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	/* When switching drp mode, make sure tcpc is out of standby mode */
+	request_low_power_mode(port, 0);
+#endif
+
 	/*
 	 * Change to sink if port is currently a source AND (new DRP
 	 * state is force sink OR new DRP state is either toggle off
@@ -2342,6 +2431,10 @@ void pd_task(void *u)
 #else
 		/* if TCPC has reset, then need to initialize it again */
 		if (evt & PD_EVENT_TCPC_RESET) {
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+			/* Device should be out of low power after a reset */
+			request_low_power_mode(port, 0);
+#endif
 			CPRINTS("TCPC p%d reset!", port);
 			if (tcpm_init(port) != EC_SUCCESS)
 				CPRINTS("TCPC p%d init failed", port);
@@ -3528,10 +3621,15 @@ void pd_task(void *u)
 				next_state = PD_STATE_DRP_AUTO_TOGGLE;
 
 			if (next_state != PD_STATE_DRP_AUTO_TOGGLE) {
-				tcpm_set_drp_toggle(port, 0);
+				/*
+				 * Exit low power mode before communicating with
+				 * the TCPC so we don't try to put the TCPC make
+				 * into low power mode after each transaction.
+				 */
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				CPRINTS("TCPC p%d Exit Low Power Mode", port);
+				request_low_power_mode(port, 0);
 #endif
+				tcpm_set_drp_toggle(port, 0);
 			}
 
 			if (next_state == PD_STATE_SNK_DISCONNECTED) {
@@ -3547,7 +3645,7 @@ void pd_task(void *u)
 				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
 				timeout = -1;
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				CPRINTS("TCPC p%d Low Power Mode", port);
+				request_low_power_mode(port, 1);
 #endif
 			}
 			set_state(port, next_state);

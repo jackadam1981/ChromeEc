@@ -1007,6 +1007,17 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
 int pd_is_max_request_allowed(void);
 
 /**
+ * Informs the TCPM state machine that code within the EC has accessed the TCPC
+ * via its communication bus (e.g. i2c). This is important to keep track of as
+ * accessing a TCPC may pull the hardware out of low-power mode.
+ *
+ * Note: Call this function after finished accessing the hardware.
+ *
+ * @param port USB-C port number
+ */
+void pd_device_accessed(int port);
+
+/**
  * Process source capabilities packet
  *
  * @param port USB-C port number
