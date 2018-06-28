@@ -6,12 +6,13 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "charge_state.h"
 #include "common.h"
 #include "util.h"
 
 /*
  * Battery info for all Careena battery types. Note that the fields
- * start_charging_min/max and charging_min/max are not used for the charger.
+ * start_charging_min/max is not used for the charger.
  * The effective temperature limits are given by discharging_min/max_c.
  *
  * Fuel Gauge (FG) parameters which are used for determining if the battery
@@ -151,3 +152,48 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_DANAPACK_COS;
+
+#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	const struct battery_info *batt_info;
+	int bat_temp_c;
+
+	batt_info = battery_get_info();
+
+	if ((curr->batt.flags & BATT_FLAG_BAD_ANY) == BATT_FLAG_BAD_ANY) {
+		curr->requested_current = batt_info->precharge_current;
+		curr->requested_voltage = batt_info->voltage_max;
+		return 1000;
+	}
+
+	/* battery temp in 0.1 deg C */
+	bat_temp_c = curr->batt.temperature - 2731;
+
+	/* Don't charge if outside of allowable temperature range */
+	if (bat_temp_c > batt_info->charging_max_c * 10 ||
+	    bat_temp_c < batt_info->charging_min_c * 10) {
+		curr->requested_current = 0;
+		curr->requested_voltage = 0;
+		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+		curr->state = ST_IDLE;
+	}
+	return 0;
+}
+
+/* Customs options controllable by host command. */
+#define PARAM_FASTCHARGE (CS_PARAM_CUSTOM_PROFILE_MIN + 0)
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+						  uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+						  uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+#endif				/* CONFIG_CHARGER_PROFILE_OVERRIDE */
