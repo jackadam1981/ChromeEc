@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "7c3833c8_7b7a4ae1",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-06-28T00:34:21Z",
+      "side": 1,
+      "message": "Then, we\u0027ll see it as Renesas gauge. Please see the bug for details.",
+      "parentUuid": "5d3c6230_1cf1d817",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "37ba6260ef3ce6aad1dbb42977e7cf526f1e11e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e546db29_b61faa66",
         "filename": "board/nami/battery.c",
         "patchSetId": 8
