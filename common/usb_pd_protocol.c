@@ -351,6 +351,43 @@ static void set_vconn(int port, int enable)
 }
 #endif /* defined(CONFIG_USBC_VCONN) */
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+
+/* 10 ms is enough time for any TCPC transaction to complete. */
+#define PD_LPM_DEBOUCE_US (10 * MSEC)
+static timestamp_t lpm_debounce_deadlines[CONFIG_USB_PD_PORT_COUNT];
+
+/* This is only called from the PD tasks that owns the port. */
+static void handle_device_access(int port)
+{
+	lpm_debounce_deadlines[port].val = get_time().val + PD_LPM_DEBOUCE_US;
+	if (pd[port].flags & PD_FLAGS_LPM_ENGAGED) {
+		CPRINTS("TCPC p%d Exited Low Power Mode via bus access", port);
+		pd[port].flags &= ~PD_FLAGS_LPM_ENGAGED;
+	}
+}
+
+/* This can be called from any task. */
+void pd_device_accessed(int port)
+{
+	/* If not in the PD TASK that owns data, marshal to that task */
+	if (task_get_current() == PD_PORT_TO_TASK_ID(port))
+		handle_device_access(port);
+	else
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			       PD_EVENT_DEVICE_ACCESSED, 0);
+}
+
+/* This is only called from the PD tasks that owns the port. */
+static void request_low_power_mode(int port, int enable)
+{
+	if (enable)
+		pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
+	else
+		pd[port].flags &= ~PD_FLAGS_LPM_REQUESTED;
+}
+#endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static int get_bbram_idx(int port)
 {
@@ -1921,6 +1958,7 @@ void pd_update_dual_role_config(int port)
 	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
 	/* When switching drp mode, make sure tcpc is out of standby mode */
 	tcpm_set_drp_toggle(port, 0);
+	request_low_power_mode(port, 0);
 #endif
 }
 
@@ -2333,6 +2371,11 @@ void pd_task(void *u)
 		/* wait for next event/packet or timeout expiration */
 		evt = task_wait_event(timeout);
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+		if (evt & PD_EVENT_DEVICE_ACCESSED)
+			handle_device_access(port);
+#endif
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		if (evt & PD_EVENT_UPDATE_DUAL_ROLE)
 			pd_update_dual_role_config(port);
@@ -2347,6 +2390,10 @@ void pd_task(void *u)
 #else
 		/* if TCPC has reset, then need to initialize it again */
 		if (evt & PD_EVENT_TCPC_RESET) {
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+			/* Ensure devices is out of LPM after a reset */
+			request_low_power_mode(port, 0);
+#endif
 			CPRINTS("TCPC p%d reset!", port);
 			if (tcpm_init(port) != EC_SUCCESS)
 				CPRINTS("TCPC p%d init failed", port);
@@ -3508,6 +3555,15 @@ void pd_task(void *u)
 
 			assert(auto_toggle_supported);
 
+			/*
+			 * If we are in the low power state and the CC lines
+			 * did not change, then don't talk with the TCPC
+			 * otherwise we might wake it up.
+			 */
+			if (pd[port].flags & PD_FLAGS_LPM_REQUESTED &&
+			    !(evt & PD_EVENT_CC))
+				break;
+
 			/* Check for connection */
 			tcpm_get_cc(port, &cc1, &cc2);
 
@@ -3535,7 +3591,7 @@ void pd_task(void *u)
 			if (next_state != PD_STATE_DRP_AUTO_TOGGLE) {
 				tcpm_set_drp_toggle(port, 0);
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				CPRINTS("TCPC p%d Exit Low Power Mode", port);
+				request_low_power_mode(port, 0);
 #endif
 			}
 
@@ -3552,7 +3608,7 @@ void pd_task(void *u)
 				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
 				timeout = -1;
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				CPRINTS("TCPC p%d Low Power Mode", port);
+				request_low_power_mode(port, 1);
 #endif
 			}
 			set_state(port, next_state);
@@ -3580,6 +3636,22 @@ void pd_task(void *u)
 				timeout = pd[port].timeout - now.val;
 			}
 		}
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+		/* Determine if we need to put the TCPC in low power mode */
+		if (pd[port].flags & PD_FLAGS_LPM_REQUESTED &&
+		    !(pd[port].flags & PD_FLAGS_LPM_ENGAGED)) {
+			const int64_t time_left =
+				lpm_debounce_deadlines[port].val - now.val;
+			if (time_left <= 0) {
+				pd[port].flags |= PD_FLAGS_LPM_ENGAGED;
+				tcpm_enter_low_power_mode(port);
+				CPRINTS("TCPC p%d Enter Low Power Mode", port);
+			} else if (timeout < 0 || timeout > time_left) {
+				timeout = time_left;
+			}
+		}
+#endif
 
 		/* Check for disconnection if we're connected */
 		if (!pd_is_connected(port))
