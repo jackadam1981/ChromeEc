@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a00bacec_337d5081",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-28T01:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21267893_586355f4",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "929c883237faada903887cff292f342fe124799b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fde3176_33786890",
         "filename": "board/phaser/board.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "929c883237faada903887cff292f342fe124799b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6db31f3_6a9732e9",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-28T01:30:29Z",
+      "side": 1,
+      "message": "As CL:1115202 did, I place board_set_motion_sensor_count() calling in cbi_init().",
+      "parentUuid": "2fde3176_33786890",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 1
+      },
+      "revId": "929c883237faada903887cff292f342fe124799b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
