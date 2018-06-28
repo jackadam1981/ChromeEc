@@ -46,6 +46,30 @@
       "revId": "5c27457773834e048c05e2787e9d5f48ea8b4aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c8393db_6d5398f8",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-06-28T16:27:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdec1a34_78ab6878",
+      "range": {
+        "startLine": 212,
+        "startChar": 11,
+        "endLine": 212,
+        "endChar": 27
+      },
+      "revId": "5c27457773834e048c05e2787e9d5f48ea8b4aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
