@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aa774b92_df43ab2d",
+        "filename": "common/bootblock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-28T09:10:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ac48cf2_54aa509f",
+      "revId": "03a150fd75f9cf7905722872523dcb75d2e4a5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33bae418_6ca71dc5",
         "filename": "common/build.mk",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-06-28T02:30:06Z",
       "side": 1,
       "message": "I wonder if there is some advanced Make tricks that we could use to avoid duplicating this code...",
+      "revId": "03a150fd75f9cf7905722872523dcb75d2e4a5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c706c7fc_da84bda7",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-28T09:10:02Z",
+      "side": 1,
+      "message": "Try a bit, but not quite well though. Add TODO at util/build.mk for now.\nAnd move this to util/build.mk, since we don\u0027t have commmon/bootblock.c now.",
+      "parentUuid": "33bae418_6ca71dc5",
       "revId": "03a150fd75f9cf7905722872523dcb75d2e4a5d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
