@@ -22,6 +22,30 @@
       "revId": "c18deb985d7eda9b301fc2c6aac284c912008a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d6668e_2b0214c7",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-28T01:02:34Z",
+      "side": 1,
+      "message": "I only did savesizes/newsizes previously, which is a little weak.\n\nEnded up splitting this change to CL:1117721, and found a way to get reproducible builds. And yes, no change in resulting ec.bin.",
+      "parentUuid": "07078573_eeabce6c",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "c18deb985d7eda9b301fc2c6aac284c912008a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
