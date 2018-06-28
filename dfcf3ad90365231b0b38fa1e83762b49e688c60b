@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "13bc4ac6_17899059",
+        "filename": "common/bootblock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-28T02:36:51Z",
+      "side": 1,
+      "message": "This main reason that we need this function is to trigger the makefile rules in common/build.mk to generate the header.\nAnd yes, we can remove this file, but then we have to add build dependency/rules in board/build.mk.",
+      "parentUuid": "5d0c39fa_d45f1f9e",
+      "revId": "dfcf3ad90365231b0b38fa1e83762b49e688c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16d992d7_8bbbd172",
         "filename": "common/bootblock.c",
         "patchSetId": 3
