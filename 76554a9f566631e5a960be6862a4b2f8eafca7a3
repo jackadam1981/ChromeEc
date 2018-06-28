@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3965ee32_992a627d",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-28T13:55:02Z",
+      "side": 1,
+      "message": "can we add a comment saying we only use 2g because resolution is only 8-bits",
+      "range": {
+        "startLine": 138,
+        "startChar": 22,
+        "endLine": 138,
+        "endChar": 29
+      },
+      "revId": "76554a9f566631e5a960be6862a4b2f8eafca7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9c8b54_d875c597",
+        "filename": "driver/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-28T13:55:02Z",
+      "side": 1,
+      "message": "nit: If we are already editing this, can we Capitalize the d",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "76554a9f566631e5a960be6862a4b2f8eafca7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
