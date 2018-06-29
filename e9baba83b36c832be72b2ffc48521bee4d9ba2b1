@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6b87306_658ec784",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-29T16:44:56Z",
+      "side": 1,
+      "message": "no 2.?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "e9baba83b36c832be72b2ffc48521bee4d9ba2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "305cc331_2894e9cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-29T16:44:56Z",
+      "side": 1,
+      "message": "What about a completely depleted battery? Does that work fine?",
+      "revId": "e9baba83b36c832be72b2ffc48521bee4d9ba2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f89eb4_35cf2d2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-06-29T16:44:56Z",
+      "side": 1,
+      "message": "Does it boot without any power button press? i.e. \n1. disconnect ac, battery and servo\n2. connect ac\n\u003e\u003e does the system come up?",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 52
+      },
+      "revId": "e9baba83b36c832be72b2ffc48521bee4d9ba2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
