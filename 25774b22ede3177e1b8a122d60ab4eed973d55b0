@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d6661a_5dd73b95",
+        "filename": "util/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-29T09:24:49Z",
+      "side": 1,
+      "message": "Oh, I see the problem. I do feel that util/build.mk is not the right place for this hunk. Can we move it back to common/build.mk, it\u0027s _slightly_ more at home there.",
+      "revId": "25774b22ede3177e1b8a122d60ab4eed973d55b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

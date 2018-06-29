@@ -578,6 +578,30 @@
     },
     {
       "key": {
+        "uuid": "2412ee7e_0bf7785a",
+        "filename": "util/gen_emmc_transfer_data.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-29T09:24:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36a8e03e_aa12f35e",
+      "range": {
+        "startLine": 74,
+        "startChar": 53,
+        "endLine": 74,
+        "endChar": 54
+      },
+      "revId": "dfcf3ad90365231b0b38fa1e83762b49e688c60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cf2b3e7_1eea1412",
         "filename": "util/gen_emmc_transfer_data.c",
         "patchSetId": 3
