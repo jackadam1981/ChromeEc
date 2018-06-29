@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4826aa9f_4ee3edfa",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-29T11:54:52Z",
+      "side": 1,
+      "message": "nit: Is there one \"power\" too many in this sentence?\n\nMaybe \"Lock supply configuration update (SCUEN\u003d0), with...\"",
+      "range": {
+        "startLine": 387,
+        "startChar": 4,
+        "endLine": 387,
+        "endChar": 66
+      },
+      "revId": "01354174dfaec27b577f2f423e38c862426a57c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
