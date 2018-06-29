@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d715b040_5d84e044",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 24
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-06-29T02:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6727b1c0_510af592",
+      "range": {
+        "startLine": 34,
+        "startChar": 28,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "76940c550a295e137abb7d66f188694b73af2f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "242d2a17_2c0c2a75",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 24
