@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e6f87b4_dca9d252",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-06-29T08:12:03Z",
+      "side": 1,
+      "message": "1. Already removed.\n\n2. Test on board nami (project:akali) successfully. After `fanduty \u003cpercent\u003e`, `faninfo` can see actual rpm being updated, and status shows locked while spinning(show not spinning when actual rpm is 0). Test log is posted on issue tracker b:110451144.\n\n3. I think we don\u0027t need to change struct enum fan_status. I\u0027ve added some description for enum fan_status in include/fan.h, explaining what\u0027s the meaning of every status.",
+      "parentUuid": "ce2d5e4a_f5eab824",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 38
+      },
+      "revId": "24d858c7cff86eb9b71f4954f6f6b1e30c16d7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2443bbb4_4f3b04c9",
         "filename": "chip/npcx/fan.c",
         "patchSetId": 5
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "I\u0027m trying to fix the output of `faninfo` on EC console. In duty mode, we would like to reflect actual status of fan. If fan is actually spinning, but `faninfo` shows \"Status:0(not spinning)\"，it would be a little weird.",
       "parentUuid": "2443bbb4_4f3b04c9",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 47
+      },
+      "revId": "24d858c7cff86eb9b71f4954f6f6b1e30c16d7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "722550dc_95c98557",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-06-29T08:12:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96cedc81_b97e269c",
       "range": {
         "startLine": 337,
         "startChar": 0,
