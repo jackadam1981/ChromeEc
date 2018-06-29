@@ -51,9 +51,7 @@ void header_format(FILE *fin, FILE *fout)
 
 	fprintf(fout,
 		"static const uint8_t %s[] __attribute__((aligned(4))) =\n"
-		"{\n"
-		"\t0xff, 0x97, /* Acknowledge boot mode: 1 S=0 010 E=1 11 */\n"
-		"\t0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,\n",
+		"{\n",
 		BLOCK_RAW_DATA);
 
 	for (blk = 0;; blk++) {
@@ -67,7 +65,7 @@ void header_format(FILE *fin, FILE *fout)
 			memset(&data[cnt], 0xff, BLOCK_SIZE-cnt);
 
 		fprintf(fout, "\t/* Block %d (%ld) */\n", blk, cnt);
-		fprintf(fout, "\t0xff, 0xfe, /* idle, start bit. */");
+		fprintf(fout, "\t0xfe, /* idle, start bit. */");
 		for (j = 0; j < sizeof(data); j++) {
 			fprintf(fout, "%s0x%02x,",
 				(j % 8) == 0 ? "\n\t" : " ", data[j]);

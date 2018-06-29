@@ -12,6 +12,7 @@
 #include "gpio.h"
 #include "task.h"
 #include "timer.h"
+#include "util.h"
 
 #include "bootblock_data.h"
 
@@ -58,15 +59,36 @@ static const struct dma_option dma_rx_option = {
 	STM32_DMA_CCR_CIRC
 };
 
-static void bootblock_transfer(void)
+int txpos = 0;
+#define SPI_TX_N_BLOCK 1
+#define SPI_TX_BUF_SIZE (SPI_TX_N_BLOCK * (512+4) + 4)
+static uint8_t out_msg[SPI_TX_BUF_SIZE] __aligned(4);
+
+static int bootblock_transfer(void)
 {
 	dma_chan_t *txdma = dma_get_channel(STM32_DMAC_SPI_EMMC_TX);
+	int size = SPI_TX_BUF_SIZE - 4;
 
-	dma_prepare_tx(&dma_tx_option, sizeof(bootblock_raw_data),
-		       bootblock_raw_data);
+	if (txpos >= sizeof(bootblock_raw_data))
+		return 1;
+
+	if (txpos == 0) {
+		out_msg[0] = 0xff;
+		out_msg[1] = 0x97; /* Acknowledge boot mode: 1 S=0 010 E=1 11 */
+		size = 2;
+		CPRINTS("transfer");
+	} else {
+		memcpy(out_msg, bootblock_raw_data+txpos-2, size);
+	}
+	memset(out_msg+size, 0xff, 4);
+
+	dma_prepare_tx(&dma_tx_option, size+4, (void *)out_msg);
+	dma_enable_tc_interrupt(STM32_DMAC_SPI_EMMC_TX);
 	dma_go(txdma);
 
-	CPRINTS("transfer");
+	txpos += size;
+
+	return 0;
 }
 
 /* Abort an ongoing transfer. */
@@ -182,20 +204,88 @@ static void emmc_init_spi(void)
 	STM32_SPI_EMMC_REGS->cr1 |= STM32_SPI_CR1_SPE;
 }
 
-void emmc_task(void *u)
+
+static int tx = 0;
+
+static void handle_command(void)
 {
 	int dma_pos, i;
-	dma_chan_t *rxdma;
+	dma_chan_t *rxdma = dma_get_channel(STM32_DMAC_SPI_EMMC_RX);
 	enum emmc_cmd cmd;
+
+	dma_pos = dma_bytes_done(rxdma, sizeof(in_msg)) / 4;
+	i = RX_BUF_PREV_32(dma_pos);
+
+	/*
+	 * By now, bus should be idle again (it takes <10us to transmit
+	 * a command, less than is needed to process interrupt and wake
+	 * this task).
+	 */
+	if (in_msg[i] != 0xffffffff) {
+		CPRINTF("?");
+		/* TODO(b:110907438): We should probably just retry. */
+		return;
+	}
+
+	/*
+	 * Find a command, looking from the end of the buffer to make
+	 * it faster.
+	 */
+	while (i != dma_pos && in_msg[i] == 0xffffffff)
+			i = RX_BUF_PREV_32(i);
+
+	/*
+	 * We missed the command? That should not happen if the
+	 * interrupt was not noise, and we process the buffer quickly
+	 * enough.
+	 */
+	if (i == dma_pos) {
+		CPRINTF("!");
+		return;
+	}
+
+	/* We found the end of the command, now find the beginning. */
+	i = RX_BUF_DEC_32(i, 2);
+	while (i != dma_pos && in_msg[i] == 0xffffffff)
+		i = RX_BUF_NEXT_32(i);
+
+	cmd = emmc_parse_command(i);
+
+	if (!tx) {
+		/*
+		 * When not transferring, host will send Idle, Pre-Idle,
+		 * then Boot-Init commands. But all we really care about
+		 * is the Boot-Init command: start the transfer.
+		 */
+		if (cmd == EMMC_BOOT) {
+			tx = 1;
+			txpos = 0;
+			bootblock_transfer();
+		}
+	} else {
+		/*
+		 * Host sends Idle to abort the transfer (e.g. when an
+		 * incorrect number of lanes is used) and when the
+		 * transfer is complete. Also react to Pre-Idle in case
+		 * we miss the Idle command.
+		 */
+		if (cmd == EMMC_IDLE || cmd == EMMC_PRE_IDLE) {
+			bootblock_stop();
+			tx = 0;
+		}
+	}
+}
+
+void emmc_task(void *u)
+{
 	/* Are we currently transmitting data? */
-	int tx = 0;
+	uint32_t event;
 
 	emmc_init_spi();
 
 	gpio_enable_interrupt(GPIO_EMMC_CMD);
 
 	/* Start receiving in circular buffer in_msg. */
-	rxdma = dma_get_channel(STM32_DMAC_SPI_EMMC_RX);
 	dma_start_rx(&dma_rx_option, sizeof(in_msg), in_msg);
 
 	/* Enable internal chip select */
@@ -208,67 +298,18 @@ void emmc_task(void *u)
 		 */
 
 		/* Wait for a command */
-		task_wait_event(-1);
+		event = task_wait_event(-1);
 
-		dma_pos = dma_bytes_done(rxdma, sizeof(in_msg)) / 4;
-		i = RX_BUF_PREV_32(dma_pos);
+		if (event & TASK_EVENT_WAKE)
+			handle_command();
 
-		/*
-		 * By now, bus should be idle again (it takes <10us to transmit
-		 * a command, less than is needed to process interrupt and wake
-		 * this task).
-		 */
-		if (in_msg[i] != 0xffffffff) {
-			CPRINTF("?");
-			/* TODO(b:110907438): We should probably just retry. */
-			continue;
-		}
-
-		/*
-		 * Find a command, looking from the end of the buffer to make
-		 * it faster.
-		 */
-		while (i != dma_pos && in_msg[i] == 0xffffffff)
-			i = RX_BUF_PREV_32(i);
-
-		/*
-		 * We missed the command? That should not happen if the
-		 * interrupt was not noise, and we process the buffer quickly
-		 * enough.
-		 */
-		if (i == dma_pos) {
-			CPRINTF("!");
-			continue;
-		}
-
-		/* We found the end of the command, now find the beginning. */
-		i = RX_BUF_DEC_32(i, 2);
-		while (i != dma_pos && in_msg[i] == 0xffffffff)
-			i = RX_BUF_NEXT_32(i);
-
-		cmd = emmc_parse_command(i);
-
-		if (!tx) {
-			/*
-			 * When not transferring, host will send Idle, Pre-Idle,
-			 * then Boot-Init commands. But all we really care about
-			 * is the Boot-Init command: start the transfer.
-			 */
-			if (cmd == EMMC_BOOT) {
-				tx = 1;
-				bootblock_transfer();
-			}
-		} else {
-			/*
-			 * Host sends Idle to abort the transfer (e.g. when an
-			 * incorrect number of lanes is used) and when the
-			 * transfer is complete. Also react to Pre-Idle in case
-			 * we miss the Idle command.
-			 */
-			if (cmd == EMMC_IDLE || cmd == EMMC_PRE_IDLE) {
-				bootblock_stop();
+		if (tx && event & TASK_EVENT_DMA_TC) {
+			/* Reload DMA */
+			if (bootblock_transfer()) {
 				tx = 0;
+				bootblock_stop();
 			}
 		}
+
 	}
 }
