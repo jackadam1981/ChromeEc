@@ -141,6 +141,30 @@
       "revId": "531e44f54007f21197055b905b9c47f5d621a3b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504adee9_2fd0f062",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-06-29T18:12:51Z",
+      "side": 1,
+      "message": "\u003e Thanks - I had a look at those, I think it can work but is perhaps a little heavy for our needs? Before going ahead, wanted to check if you had a preference for re-using eg DECLARE_EXTENSION_COMMAND, or whether implementing a perhaps lighter weight but similar thing just for this use case is worth considering?\n\nYes, I meant a lighter weight but similar thing. just pointed to solutions t similar cases already accepted into cr50.\ndirectly reusing DECLARE_EXTENSION_COMMAND doesn\u0027t make sense here, since we don\u0027t want to mix handlers for extension commands and for virtual NVRAM spaces in the same table.",
+      "parentUuid": "cfc30744_af2b552c",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "531e44f54007f21197055b905b9c47f5d621a3b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
