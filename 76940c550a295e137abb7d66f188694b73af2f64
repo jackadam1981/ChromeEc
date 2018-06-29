@@ -45,6 +45,30 @@
       "revId": "76940c550a295e137abb7d66f188694b73af2f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b373a44c_66bf4a5e",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 24
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-06-29T01:15:31Z",
+      "side": 1,
+      "message": "That\u0027s ok, we\u0027re reusing the same driver so the interrupt function name is a little confusing.",
+      "parentUuid": "242d2a17_2c0c2a75",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "76940c550a295e137abb7d66f188694b73af2f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
