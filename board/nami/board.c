@@ -317,6 +317,16 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+struct ec_thermal_config thermal_params[] = {
+	/* {Twarn, Thigh, Thalt} for on  {Twarn, Thigh, X } for off
+	 * fan_off, fan_max */
+	{{0, C_TO_K(80), C_TO_K(81)}, {0, C_TO_K(78), 0},
+			C_TO_K(4), C_TO_K(76)},
+	{{0, C_TO_K(80), C_TO_K(81)}, {0, C_TO_K(78), 0},
+			C_TO_K(4), C_TO_K(76)},
+};
+BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
+
 #define I2C_PMIC_READ(reg, data) \
 		i2c_read8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
 #define I2C_PMIC_WRITE(reg, data) \
