@@ -94,6 +94,30 @@
       "revId": "013217d91a24a5661d94cc4d5813ad933d2a91bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f668200_68300250",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-29T15:58:59Z",
+      "side": 1,
+      "message": "Hmm, yes we should file a bug for the schematics to be fixed.\n\nI would put a not in these comment that these LEDs are active high even thought the net name in the schematics implies otherwise.",
+      "parentUuid": "d02e010f_8870413f",
+      "range": {
+        "startLine": 105,
+        "startChar": 41,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "013217d91a24a5661d94cc4d5813ad933d2a91bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
