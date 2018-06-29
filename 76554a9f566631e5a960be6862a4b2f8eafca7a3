@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "51faab6a_3c504080",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-06-29T15:13:37Z",
+      "side": 1,
+      "message": "It makes more sense to remove the comment in this CL since you are changing the driver here.",
+      "parentUuid": "11732f9f_ba4b97de",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "76554a9f566631e5a960be6862a4b2f8eafca7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3965ee32_992a627d",
         "filename": "board/phaser/board.c",
         "patchSetId": 1
