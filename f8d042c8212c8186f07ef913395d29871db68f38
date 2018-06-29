@@ -70,6 +70,30 @@
       "revId": "f8d042c8212c8186f07ef913395d29871db68f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a19b14_f2c236e2",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-06-29T01:33:27Z",
+      "side": 0,
+      "message": "Have added it back.",
+      "parentUuid": "a879a320_0878d2c4",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "f8d042c8212c8186f07ef913395d29871db68f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
