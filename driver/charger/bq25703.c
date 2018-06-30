@@ -7,9 +7,11 @@
 
 #include "battery_smart.h"
 #include "bq25703.h"
+#include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
 #include "console.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "timer.h"
 
@@ -64,6 +66,7 @@ static inline int raw_write16(int offset, int value)
 	return i2c_write16(I2C_PORT_CHARGER, BQ25703_I2C_ADDR1, offset, value);
 }
 
+#ifdef CONFIG_CHARGE_RAMP_HW
 static int bq25703_get_low_power_mode(int *mode)
 {
 	int rv;
@@ -98,6 +101,7 @@ static int bq25703_set_low_power_mode(int enable)
 
 	return EC_SUCCESS;
 }
+#endif
 
 /* Charger interfaces */
 
@@ -263,20 +267,59 @@ int charger_set_option(int option)
 }
 
 #ifdef CONFIG_CHARGE_RAMP_HW
+static int ramp_enable;
+
+static void bq25703_chg_ramp_init(void)
+{
+	/* Set InputVoltage register value to BC1.2 minimum ramp voltage */
+	raw_write16(BQ25703_REG_INPUT_VOLTAGE, BQ25703_BC12_MIN_VOLTAGE_MV);
+}
+DECLARE_HOOK(HOOK_INIT, bq25703_chg_ramp_init, HOOK_PRIO_DEFAULT);
+
+static void bq25703_chg_ramp_handle(void)
+{
+	static int ramp_handle;
+	int ramp_curr = 0; //test
+
+	if (!ramp_handle && ramp_enable) {
+		if (chg_ramp_is_stable()) {
+			ramp_curr = chg_ramp_get_current_limit();
+			CPRINTF("**********************\n");
+			if (ramp_curr && !charger_set_input_current(ramp_curr))
+				ramp_handle = 1;
+		}
+	} else if (!ramp_enable) {
+		ramp_handle = 0;
+	}
+	CPRINTF("test cur=%d hand=%d ena=%d\n", ramp_curr, ramp_handle, ramp_enable);
+}
+DECLARE_HOOK(HOOK_SECOND, bq25703_chg_ramp_handle, HOOK_PRIO_DEFAULT);
+
 int charger_set_hw_ramp(int enable)
 {
-	int reg, rv;
+	int option3_reg, option2_reg, rv;
 
-	rv = raw_read16(BQ25703_REG_CHARGE_OPTION_3, &reg);
+	ramp_enable = enable;
+
+	rv = raw_read16(BQ25703_REG_CHARGE_OPTION_3, &option3_reg);
+	if (rv)
+		return rv;
+	rv = raw_read16(BQ25703_REG_CHARGE_OPTION_2, &option2_reg);
 	if (rv)
 		return rv;
 
-	if (enable)
-		reg |= BQ25703_CHARGE_OPTION_3_EN_ICO_MODE;
-	else
-		reg &= ~BQ25703_CHARGE_OPTION_3_EN_ICO_MODE;
+	if (enable) {
+		option3_reg |= BQ25703_CHARGE_OPTION_3_EN_ICO_MODE;
+		option2_reg |= BQ25703_CHARGE_OPTION_2_EN_EXTILIM;
+	} else {
+		option3_reg &= ~BQ25703_CHARGE_OPTION_3_EN_ICO_MODE;
+		option2_reg &= ~BQ25703_CHARGE_OPTION_2_EN_EXTILIM;
+	}
 
-	return raw_write16(BQ25703_REG_CHARGE_OPTION_3, reg);
+	rv = raw_write16(BQ25703_REG_CHARGE_OPTION_3, option3_reg);
+	if (rv)
+		return rv;
+	return raw_write16(BQ25703_REG_CHARGE_OPTION_2, option2_reg);
 }
 
 int chg_ramp_is_stable(void)
@@ -287,11 +330,6 @@ int chg_ramp_is_stable(void)
 		return 0;
 
 	return reg & BQ25703_CHARGE_STATUS_ICO_DONE;
-}
-
-int chg_ramp_is_detected(void)
-{
-	return 1;
 }
 
 int chg_ramp_get_current_limit(void)
@@ -309,7 +347,8 @@ int chg_ramp_get_current_limit(void)
 		goto error;
 
 	/* Turn on the ADC for one reading */
-	reg = BQ25703_ADC_OPTION_ADC_START | BQ25703_ADC_OPTION_EN_ADC_IIN;
+	reg = BQ25703_ADC_OPTION_ADC_START | BQ25703_ADC_OPTION_EN_ADC_IIN |
+		BQ25703_ADC_OPTION_ADC_CONV;
 	if (raw_write16(BQ25703_REG_ADC_OPTION, reg))
 		goto error;
 
@@ -319,7 +358,7 @@ int chg_ramp_get_current_limit(void)
 	 * then the conversion time jumps to ~60 msec.
 	 */
 	do {
-		msleep(2);
+		msleep(20); //test
 		raw_read16(BQ25703_REG_ADC_OPTION, &reg);
 	} while (--tries_left && (reg & BQ25703_ADC_OPTION_ADC_START));
 
