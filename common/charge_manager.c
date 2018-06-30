@@ -286,7 +286,8 @@ static void charge_manager_fill_power_info(int port,
 	} else {
 #if defined(HAS_TASK_CHG_RAMP) || defined(CONFIG_CHARGE_RAMP_HW)
 		/* Read ramped current if active charging port */
-		int use_ramp_current = (charge_port == port);
+		int use_ramp_current = (charge_port == port) &&
+					chg_ramp_allowed(sup);
 #else
 		const int use_ramp_current = 0;
 #endif
@@ -347,16 +348,9 @@ static void charge_manager_fill_power_info(int port,
 			 * If ramp is not allowed, max current is just the
 			 * available charge current.
 			 */
-			if (chg_ramp_allowed(sup)) {
-				r->meas.current_max = chg_ramp_is_stable() ?
-					r->meas.current_lim :
-					chg_ramp_max(
-					  sup,
-					  available_charge[sup][port].current);
-			} else {
-				r->meas.current_max =
-					available_charge[sup][port].current;
-			}
+			r->meas.current_max = chg_ramp_is_stable() ?
+				r->meas.current_lim : chg_ramp_max(sup,
+					available_charge[sup][port].current);
 
 			r->max_power =
 				r->meas.current_max * r->meas.voltage_max;
