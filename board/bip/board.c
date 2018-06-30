@@ -7,6 +7,9 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "bq25703.h"
+#include "charge_ramp.h"
+#include "charger.h"
 #include "common.h"
 #include "driver/bc12/bq24392.h"
 #include "driver/ppc/sn5s330.h"
@@ -64,4 +67,12 @@ void board_overcurrent_event(int port)
 {
 	/* TODO(b/78344554): pass this signal upstream once hardware reworked */
 	cprints(CC_USBPD, "p%d: overcurrent!", port);
+}
+
+/**
+ * Return if VBUS is sagging too low
+ */
+int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
+{
+	return charger_get_vbus_voltage(port) < BQ25703_BC12_MIN_VOLTAGE_MV;
 }
