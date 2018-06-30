@@ -117,6 +117,8 @@
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USB_PD_COMM_LOCKED
 
+#define CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF
+#define CONFIG_BATTERY_CRITICAL_CUT_OFF_CUSTOM_CONDITION
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BATTERY_RETRY_NACK
@@ -213,6 +215,9 @@ enum sensor_id {
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
+
+/* Don't cut off battery in critical battery when this returns 0. */
+int board_critical_shutdown_check(void *data);
 
 #endif /* !__ASSEMBLER__ */
 

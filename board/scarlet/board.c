@@ -9,6 +9,7 @@
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "charge_state_v2.h"
 #include "charger.h"
 #include "chipset.h"
 #include "common.h"
@@ -138,6 +139,14 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 
 void board_reset_pd_mcu(void)
 {
+}
+
+int board_critical_shutdown_check(void *data)
+{
+	struct charge_state_data *curr = data;
+
+	return ((curr->batt.flags & BATT_FLAG_BAD_VOLTAGE) ||
+		(curr->batt.voltage <= BAT_LOW_VOLTAGE_THRESH));
 }
 
 uint16_t tcpc_get_alert_status(void)
