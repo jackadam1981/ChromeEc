@@ -735,9 +735,14 @@ enum pd_states {
 					   PD_FLAGS_TS_DTS_PARTNER)
 
 /* Per-port battery backed RAM flags */
+/* Set if a contract is in place */
 #define PD_BBRMFLG_EXPLICIT_CONTRACT (1 << 0)
+/* Power role according to struct pd_protocol.power_role. */
 #define PD_BBRMFLG_POWER_ROLE        (1 << 1)
+/* Data role according to struct pd_protocol.data_role. */
 #define PD_BBRMFLG_DATA_ROLE         (1 << 2)
+/* Set if we are sourcing vconn, clear otherwise. */
+#define PD_BBRMFLG_VCONN_SRC         (1 << 3)
 
 enum pd_cc_states {
 	PD_CC_NONE,

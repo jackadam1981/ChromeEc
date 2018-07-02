@@ -66,6 +66,8 @@ static const int debug_level;
 #endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
+static void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t val);
+
 #define DUAL_ROLE_IF_ELSE(port, sink_clause, src_clause) \
 	(pd[port].power_role == PD_ROLE_SINK ? (sink_clause) : (src_clause))
 #else
@@ -340,6 +342,9 @@ static void set_vconn(int port, int enable)
 #ifdef CONFIG_USBC_PPC_VCONN
 	ppc_set_vconn(port, enable);
 #endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	pd_update_saved_port_flags(port, PD_BBRMFLG_VCONN_SRC, enable);
+#endif
 }
 #endif /* defined(CONFIG_USBC_VCONN) */
 
@@ -499,6 +504,16 @@ static inline void set_state(int port, enum pd_states next_state)
 		CPRINTF("C%d st%d\n", port, next_state);
 }
 
+enum transmit_error_codes {
+	ERR_TX_UNKNOWN = 1,
+	ERR_TX_COMM_NOT_ENABLED = 2,
+	ERR_TX_MSG_BUFFERED = 3,
+	ERR_TX_EVT_TIMER = 4,
+	ERR_TX_TCPC_STATUS_SUCCESS = 5,
+	ERR_TX_TCPC_STATUS_DISCARDED = 6,
+	ERR_TX_TCPC_STATUS_FAILED = 7,
+};
+
 /* increment message ID counter */
 static void inc_id(int port)
 {
@@ -534,7 +549,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 
 	/* If comms are disabled, do not transmit, return error */
 	if (!pd_comm_is_enabled(port))
-		return -1;
+		return -ERR_TX_COMM_NOT_ENABLED;
 #ifdef CONFIG_USB_PD_REV30
 	/* Source-coordinated collision avoidance */
 	/*
@@ -574,7 +589,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 				/* Sink can't transmit now. */
 				/* Check if message is already buffered. */
 				if (pd[port].ca_buffered)
-					return -1;
+					return -ERR_TX_MSG_BUFFERED;
 
 				/* Buffer message and send later. */
 				pd[port].ca_type = type;
@@ -606,10 +621,11 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 #endif
 
 	if (evt & TASK_EVENT_TIMER)
-		return -1;
+		return -ERR_TX_EVT_TIMER;
 
 	/* TODO: give different error condition for failed vs discarded */
-	return pd[port].tx_status == TCPC_TX_COMPLETE_SUCCESS ? 1 : -1;
+	return pd[port].tx_status == TCPC_TX_COMPLETE_SUCCESS ? 1 :
+		-5 - pd[port].tx_status;
 }
 
 #ifdef CONFIG_USB_PD_REV30
@@ -2228,8 +2244,6 @@ void pd_task(void *u)
 	usb_mux_init(port);
 #endif
 
-	/* Initialize PD protocol state variables for each port. */
-	pd_set_power_role(port, PD_ROLE_DEFAULT(port));
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
 	 * If there's an explicit contract in place, let's restore the data and
@@ -2249,6 +2263,20 @@ void pd_task(void *u)
 			tcpm_set_cc(port, pd[port].power_role ?
 				    TYPEC_CC_RP : TYPEC_CC_RD);
 
+#ifdef CONFIG_USBC_VCONN
+			if (saved_flgs & PD_BBRMFLG_VCONN_SRC)
+				set_vconn(port, 1);
+			else
+				set_vconn(port, 0);
+#endif
+
+			tcpm_get_cc(port, &cc1, &cc2);
+			pd[port].polarity =
+				pd[port].power_role == PD_ROLE_SOURCE
+				? (cc1 != TYPEC_CC_VOLT_RD)
+				: get_snk_polarity(cc1, cc2);
+			set_polarity(port, pd[port].polarity);
+
 			/*
 			 * Since there is an explicit contract in place, let's
 			 * issue a SoftReset such that we can renegotiate with
@@ -2262,9 +2290,17 @@ void pd_task(void *u)
 			 * partner.
 			 */
 			tcpm_set_rx_enable(port, 1);
+		} else {
+			pd_set_power_role(port, PD_ROLE_DEFAULT(port));
 		}
+	} else {
+		pd_set_power_role(port, PD_ROLE_DEFAULT(port));
 	}
+#else
+	/* Initialize PD protocol state variables for each port. */
+	pd_set_power_role(port, PD_ROLE_DEFAULT(port));
 #endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
+
 	pd[port].vdm_state = VDM_STATE_DONE;
 	set_state(port, this_state);
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
