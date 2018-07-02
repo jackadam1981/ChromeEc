@@ -2765,6 +2765,24 @@ enum ec_mkbp_info_type {
 	 * state of supported switches.
 	 */
 	EC_MKBP_INFO_CURRENT = 2,
+
+	/*
+	 * Gets the keyboard matrix at boot.
+	 *
+	 * Returns uint8_t key_matrix[KEYBOARD_COLS] indicating the state of
+	 * keyboard at boot.
+	 */
+	EC_MKBP_INFO_GET_KB_AT_BOOT = 3,
+
+	/* Clears the keyboard matrix at boot, no return data. */
+	EC_MKBP_INFO_CLEAR_KB_AT_BOOT = 4,
+
+	/*
+	 * TODO: Write document.
+	 *
+	 * No return data.
+	 */
+	EC_MKBP_INFO_SIMULATE_KB_AT_BOOT = 5,
 };
 
 /* Simulate key press */
