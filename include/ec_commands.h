@@ -2973,6 +2973,18 @@ struct __ec_align2 ec_response_keyboard_factory_test {
 #define EC_MKBP_FP_FINGER_UP            (1 << 30)
 #define EC_MKBP_FP_IMAGE_READY          (1 << 31)
 
+/* TODO */
+#define EC_CMD_KEYBOARD_MATRIX_AT_BOOT 0x0069
+
+struct __ec_align1 ec_params_keyboard_matrix_at_boot {
+	uint8_t command;
+};
+
+enum ec_params_keyboard_matrix_at_boot_cmd {
+	KEYBOARD_MATRIX_GET = 0,
+	KEYBOARD_MATRIX_CLEAR = 1,
+};
+
 /*****************************************************************************/
 /* Temperature sensor commands */
 
