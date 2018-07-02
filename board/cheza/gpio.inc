@@ -20,11 +20,12 @@ GPIO_INT(USB_C0_CABLE_DET,     PIN(3, 7), GPIO_INT_RISING, anx74xx_cable_det_int
 GPIO_INT(ACCEL_GYRO_INT_L,     PIN(D, 3), GPIO_INT_RISING | GPIO_SEL_1P8V, bmi160_interrupt)  /* Accelerometer/gyro interrupt */
 
 /* System interrupts */
-GPIO_INT(AC_PRESENT,        PIN(0, 0), GPIO_INT_BOTH, extpower_interrupt) /* ACOK_OD */
+GPIO_INT(AC_PRESENT,        PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, extpower_interrupt) /* ACOK_OD */
 GPIO_INT(POWER_BUTTON_L,    PIN(0, 1), GPIO_INT_BOTH, power_button_interrupt)  /* EC_PWR_BTN_ODL */
 GPIO_INT(VOLUME_DOWN_L,     PIN(7, 0), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)  /* EC_VOLDN_BTN_ODL */
 GPIO_INT(VOLUME_UP_L,       PIN(1, 1), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)  /* EC_VOLUP_BTN_ODL */
 GPIO_INT(WP_L,              PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)  /* EC_WP_ODL */
+/* TODO: Need GPIO_HIB_WAKE_HIGH once external PU by EC_STBY */
 GPIO_INT(LID_OPEN,          PIN(D, 2), GPIO_INT_BOTH, lid_interrupt)  /* LID_OPEN_EC */
 GPIO_INT(AP_RST_REQ,        PIN(C, 2), GPIO_INT_RISING | GPIO_PULL_DOWN, chipset_reset_request_interrupt)  /* Reset request from AP */
 /* AP_RST_L is used for PMIC and AP negotiation. Don't change its state. */
@@ -138,3 +139,8 @@ ALTERNATE(PIN_MASK(3, 0x44), 1, MODULE_I2C, GPIO_PULL_UP)  /* I2C5 */
 ALTERNATE(PIN_MASK(4, 0xC0), 1, MODULE_SPI, 0)             /* SHI_SDO / SHI_SDI */
 ALTERNATE(PIN_MASK(5, 0x28), 1, MODULE_SPI, 0)             /* SHI_SCLK / SHI_CS# */
 ALTERNATE(PIN_MASK(B, 0x80), 1, MODULE_PWM, 0)             /* PWM5 */
+ALTERNATE(PIN_MASK(0, 0x01), 1, MODULE_PMU, 0)             /* PSL_IN2:GPIO00:ACOK_OD */
+ALTERNATE(PIN_MASK(0, 0x04), 1, MODULE_PMU, 0)             /* PSL_IN4:GPIO02:EC_RST_ODL */
+/* TODO: The following wake sources need external PU by EC_STBY */
+//ALTERNATE(PIN_MASK(0, 0x02), 1, MODULE_PMU, 0)             /* PSL_IN3:GPIO01:EC_PWR_BTN_ODL */
+//ALTERNATE(PIN_MASK(D, 0x04), 1, MODULE_PMU, 0)             /* PSL_IN1:GPIOD2:LID_OPEN_EC */
