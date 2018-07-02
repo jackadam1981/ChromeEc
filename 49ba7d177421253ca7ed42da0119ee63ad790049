@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "36cd5053_82c8472b",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T23:44:45Z",
+      "side": 1,
+      "message": "I noticed that CNL had these: \n#define CONFIG_EXTPOWER_GPIO\n#define CONFIG_POWER_COMMON\n\nbut ICL doesn\u0027t - not sure why",
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b755a4f_b1eec407",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T23:44:45Z",
+      "side": 1,
+      "message": "enum power_signal {\n\tX86_SLP_S0_DEASSERTED,\n\tX86_SLP_S3_DEASSERTED,\n\tX86_SLP_S4_DEASSERTED,\n\tX86_SLP_SUS_DEASSERTED,\n\tX86_RSMRST_L_PGOOD,\n\tX86_PMIC_DPWROK,\n\tPP5000_PGOOD,\n\tPOWER_SIGNAL_COUNT\n};",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fca1cc7_04f760a1",
         "filename": "power/icelake.c",
         "patchSetId": 1
