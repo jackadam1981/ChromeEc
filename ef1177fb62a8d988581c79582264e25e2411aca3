@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b655325d_fe0a2a44",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T13:39:59Z",
+      "side": 1,
+      "message": "you could move these definition to line 123 along with \u0027int period;\u0027",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "ef1177fb62a8d988581c79582264e25e2411aca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207af23b_e20d27f4",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T13:39:59Z",
+      "side": 1,
+      "message": "Let\u0027s call out the 2 states that are acceptable here, otherwise if someone change the enum order we may get unexpected results here in the future.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 48
+      },
+      "revId": "ef1177fb62a8d988581c79582264e25e2411aca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5202a33_9eaf08b9",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T13:39:59Z",
+      "side": 1,
+      "message": "We try to stay away from the weak references when we can in the EC codebase because an innocent rename could silently start changing behavior.\n\nLet\u0027s put these three definitions in this file behind a new \u0027#ifdef OCTOPUS_POWER_LED\u0027 and make them all strong references.\n\nPhaser will define OCTOPUS_POWER_LED in phaser/board.h and will also define these variables in its led.c (like it already does)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "ef1177fb62a8d988581c79582264e25e2411aca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad9b9d2_3fd39657",
+        "filename": "board/phaser/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T13:39:59Z",
+      "side": 1,
+      "message": "nit: move the } to the next line",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "ef1177fb62a8d988581c79582264e25e2411aca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
