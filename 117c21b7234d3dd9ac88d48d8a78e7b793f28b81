@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1713a00_ee21cb53",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T21:58:29Z",
+      "side": 1,
+      "message": "Talking with Jett, sounds like starting this at 100KHz is a good idea, but we should eventually aim to speed this up to 400KHz or maybe even 1MHz for the I2C ones. Not sure how to add a todo, but this should probably be a todo to test.",
+      "revId": "117c21b7234d3dd9ac88d48d8a78e7b793f28b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
