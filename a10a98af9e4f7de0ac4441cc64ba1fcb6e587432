@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "9af2cbc2_04504bf2",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-02T08:28:06Z",
+      "side": 1,
+      "message": "Because some board do not use power led(ex: yorp), but need to define it in their led.c, so I define it as \"weak\". It\u0027s my concern, do you agree it or I can remove \"weak\".",
+      "parentUuid": "392287f2_18364401",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "a10a98af9e4f7de0ac4441cc64ba1fcb6e587432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b3e3d89_240536fb",
         "filename": "board/phaser/led.c",
         "patchSetId": 3
