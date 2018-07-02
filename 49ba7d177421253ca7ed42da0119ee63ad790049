@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fca1cc7_04f760a1",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T22:28:53Z",
+      "side": 1,
+      "message": "ICL :)",
+      "range": {
+        "startLine": 81,
+        "startChar": 30,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906b0abe_8041d268",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T22:28:53Z",
+      "side": 1,
+      "message": "I guess this is okay, but we really should never be in this case. SLP_SUS_L should only deassert in the POWER_G3S5 case. I *think* we can remove this.",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 18
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80f45a7_fbd0d0bb",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T22:28:53Z",
+      "side": 1,
+      "message": "I\u0027m not really sure what this is doing, but I\u0027m assuming it\u0027s waiting for PG_DSW_PWROK to change",
+      "range": {
+        "startLine": 105,
+        "startChar": 6,
+        "endLine": 105,
+        "endChar": 43
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94162902_dbe8e83c",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T22:28:53Z",
+      "side": 1,
+      "message": "So I think that what we really want to do is add something along the lines of this - if we\u0027re in G3S5 and we see SLP_SUS_L go high, then we transition to S5. If not, then we bounce back go G3. We might need to do the timout thing here since I think there\u0027s a delay between DSWPWROK going high and SLP_SUS_L going high",
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1861254c_fd989280",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T22:28:53Z",
+      "side": 1,
+      "message": "I think this stuff should happen right when the EC gets initialized or when it exists hibernate.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 49
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c04c3cec_05a28ede",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-02T22:28:53Z",
+      "side": 1,
+      "message": "let\u0027s not do this when we go into G3. We should do this when we go into hibernate.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 49
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
