@@ -17,6 +17,17 @@ GPIO_INT(POWER_BUTTON_L,  PIN(E, 2), GPIO_INT_BOTH, power_button_interrupt)  /* 
 GPIO_INT(UART1_RX,        PIN(B, 0), GPIO_INT_BOTH, uart_deepsleep_interrupt) /* UART_SERVO_TX_EC_RX */
 #endif
 
+/* Power sequencing interrupts */
+GPIO_INT(SLP_S0_L,        PIN(E, 4), GPIO_INT_BOTH, power_signal_interrupt)
+#ifndef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
+GPIO_INT(SLP_S3_L,        PIN(I, 4), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(SLP_S4_L,        PIN(I, 5), GPIO_INT_BOTH, power_signal_interrupt)
+#endif
+GPIO_INT(SLP_SUS_L,       PIN(G, 2), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PG_EC_RSMRST_ODL,PIN(E, 1), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(ACOK_OD,         PIN(E, 3), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PG_EC_DSW_PWROK, PIN(D, 6), GPIO_INT_BOTH, power_signal_interrupt)
+
 /* Misc. interrupts */
 /* TODO (b:110880394) Uncomment this when support for buttons is added */
 /* GPIO_INT(VOL_DOWN_ODL,    PIN(I, 6), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt) */
@@ -32,6 +43,20 @@ GPIO_INT(ESPI_RESET_L,    PIN(D, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V, espi_rese
 GPIO(SYS_RESET_L,         PIN(D, 1), GPIO_ODR_HIGH)  /* SYS_RST_ODL */
 GPIO(PCH_WAKE_L,          PIN(D, 5), GPIO_ODR_HIGH)  /* EC_PCH_WAKE_ODL */
 GPIO(PCH_PWRBTN_L,        PIN(B, 6), GPIO_ODR_HIGH)  /* EC_PCH_PWR_BTN_ODL */
+
+/* Power Sequencing Signals */
+/*
+ * Both PP5000 and PP3300_TCPC should be powered up whenever the EC is not in
+ * hibernate mode. They are enabled by default here and disabled in the
+ * board_hibernate() callback when the EC goes into hibernate mode.
+ */
+GPIO(EN_PP5000,           PIN(K, 5), GPIO_OUT_HIGH)
+GPIO(EN_PP3300_TCPC,      PIN(E, 6), GPIO_OUT_HIGH)
+GPIO(EN_PP3300_A,         PIN(C, 5), GPIO_OUT_LOW)
+GPIO(EC_PCH_DSW_PWROK,    PIN(L, 7), GPIO_OUT_LOW)
+GPIO(EC_PCH_RSMRST_L,     PIN(H, 0), GPIO_OUT_HIGH)
+GPIO(EC_PROCHOT_ODL,      PIN(D, 0), GPIO_ODR_HIGH)
+GPIO(PP5000_PG_OD,        PIN(F, 0), GPIO_INPUT)
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
 GPIO(I2C0_SCL,            PIN(B, 3), GPIO_INPUT)     /* EC_PROG_SCL */
