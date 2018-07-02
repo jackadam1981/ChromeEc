@@ -117,4 +117,10 @@ static inline void keyboard_scan_enable(int enable,
 void keyboard_suppress_noise(void);
 #endif
 
+int keyboard_get_matrix_at_boot(uint8_t *key_matrix, uint16_t buffer_size);
+
+int keyboard_simulate_matrix_at_boot(const uint8_t *key_matrix, uint16_t size);
+
+void keyboard_clear_matrix_at_boot(void);
+
 #endif  /* __CROS_EC_KEYBOARD_SCAN_H */
