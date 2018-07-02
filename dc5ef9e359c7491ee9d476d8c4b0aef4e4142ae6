@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765614b4_da6c0257",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-07-02T08:33:04Z",
+      "side": 1,
+      "message": "MT6358 RESETB is push-pull driving, EC should pull-down and see this pin as a powerok indication.",
+      "range": {
+        "startLine": 27,
+        "startChar": 56,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426b3e1e_16b89156",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-07-02T08:33:04Z",
+      "side": 1,
+      "message": "Push-pull driving pin from AP, enabling pull-up from EC can cause leakage to AP",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bee2c663_7b9d3ab3",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-07-02T08:33:04Z",
+      "side": 1,
+      "message": "We might want this pin to be low initially during booting, and output high until EC receives AP_EC_WATCHDOG high. (see p.57 in pmic datasheet)",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e16eda_be6100ce",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-07-02T08:33:04Z",
+      "side": 1,
+      "message": "PWRKEY/HOMEKEY pins are pulled-high to VBAT in PMIC and being low active signals. Maybe this pin should be init as GPIO_INPUT w/o driving, and perform as GPIO_ODR_LOW when needed.",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb86d5c_415ebd1a",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-07-02T08:33:04Z",
+      "side": 1,
+      "message": "There\u0027s a 100k PU to PP3300_H1 (R90380)",
+      "range": {
+        "startLine": 67,
+        "startChar": 52,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
