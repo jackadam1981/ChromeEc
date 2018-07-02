@@ -10,6 +10,7 @@
 #include "gpio.h"
 #include "intc.h"
 #include "lid_switch.h"
+#include "power.h"
 #include "power_button.h"
 #include "spi.h"
 #include "switch.h"

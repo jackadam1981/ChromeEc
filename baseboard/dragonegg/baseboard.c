@@ -4,9 +4,11 @@
  */
 
 /* DragonEgg family-specific configuration */
-
+#include "chipset.h"
+#include "espi.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "power.h"
 #include "util.h"
 
 /******************************************************************************/
@@ -19,3 +21,24 @@ const struct i2c_port_t i2c_ports[] = {
 	{"power",  IT83XX_I2C_CH_F, 100, GPIO_I2C5_SCL, GPIO_I2C5_SDA}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* power signal list.  Must match order of enum power_signal. */
+const struct power_signal_info power_signal_list[] = {
+	{GPIO_SLP_S0_L,
+		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
+		"SLP_S0_DEASSERTED"},
+#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
+	{VW_SLP_S3_L,	      POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
+	{VW_SLP_S4_L,	      POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
+	{VW_SLP_S5_L,	      POWER_SIGNAL_ACTIVE_HIGH, "SLP_S5_DEASSERTED"},
+#else
+	{GPIO_SLP_S3_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
+	{GPIO_SLP_S4_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
+	{GPIO_SLP_S5_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S5_DEASSERTED"},
+#endif
+	{GPIO_SLP_SUS_L,  POWER_SIGNAL_ACTIVE_HIGH, "SLP_SUS_DEASSERTED"},
+	{GPIO_RSMRST_L_PGOOD, POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L_PGOOD"},
+	{GPIO_PG_EC_DSW_PWROK,    POWER_SIGNAL_ACTIVE_HIGH, "DSW_DPWROK"},
+	{GPIO_ALL_SYS_PWRGD,  POWER_SIGNAL_ACTIVE_HIGH, "ALL_SYS_PWRGD"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
