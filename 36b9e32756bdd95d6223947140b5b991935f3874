@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efed8a1b_96a622b9",
+        "filename": "common/ec_features.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-07-02T23:46:49Z",
+      "side": 1,
+      "message": "Why does this say FEATURE_MASK_0 and the others nearby say FEATURE_MASK_1?\n\nIs this a matter of flags couldn\u0027t find in one register so we made 2?  And because we\u0027re up to over 32 we have to add in here?",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "36b9e32756bdd95d6223947140b5b991935f3874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
