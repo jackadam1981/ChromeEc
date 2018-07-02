@@ -120,11 +120,29 @@ static int mkbp_get_info(struct host_cmd_handler_args *args)
 				r->switches = get_switch_state();
 				args->response_size = sizeof(r->switches);
 				break;
-
 			default:
 				/* Doesn't make sense for other event types. */
 				return EC_RES_INVALID_PARAM;
 			}
+			break;
+
+		case EC_MKBP_INFO_GET_KB_AT_BOOT:
+			if (keyboard_get_matrix_at_boot(r->key_matrix,
+							args->response_max))
+				return EC_RES_INVALID_PARAM;
+			args->response_size = KEYBOARD_COLS;
+			break;
+
+		case EC_MKBP_INFO_CLEAR_KB_AT_BOOT:
+			keyboard_clear_matrix_at_boot();
+			args->response_size = 0;
+			break;
+
+		case EC_MKBP_INFO_SIMULATE_KB_AT_BOOT:
+			keyboard_simulate_matrix_at_boot(
+					p->simulate_kb_at_boot.key_matrix,
+					KEYBOARD_COLS);
+			args->response_size = 0;
 			break;
 
 		default:

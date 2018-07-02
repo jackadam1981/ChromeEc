@@ -132,6 +132,8 @@ const char help_str[] =
 	"      Set the delay before going into hibernation\n"
 	"  hostsleepstate\n"
 	"      Report host sleep state to the EC\n"
+	"  kbatboot\n"
+	"      Get/simulate boottime keyboard press\n"
 	"  kbpress\n"
 	"      Simulate key press\n"
 	"  kbfactorytest\n"
@@ -4678,6 +4680,11 @@ int cmd_usb_pd_power(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_kbatboot(int argc, char *argv[])
+{
+	return 0;
+}
+
 int cmd_kbpress(int argc, char *argv[])
 {
 	struct ec_params_mkbp_simulate_key p;
@@ -7184,6 +7191,7 @@ const struct command commands[] = {
 	{"hello", cmd_hello},
 	{"hibdelay", cmd_hibdelay},
 	{"hostsleepstate", cmd_hostsleepstate},
+	{"kbatboot", cmd_kbatboot},
 	{"kbpress", cmd_kbpress},
 	{"i2cprotect", cmd_i2c_protect},
 	{"i2cread", cmd_i2c_read},
