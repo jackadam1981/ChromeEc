@@ -774,6 +774,7 @@
 #undef CONFIG_CHIPSET_CANNONLAKE	/* Intel Cannonlake (x86) */
 #undef CONFIG_CHIPSET_ECDRIVEN		/* Dummy power module */
 #undef CONFIG_CHIPSET_GEMINILAKE	/* Intel Geminilake (x86) */
+#undef CONFIG_CHIPSET_ICELAKE		/* Intel Icelake (x86) */
 #undef CONFIG_CHIPSET_MT817X		/* MediaTek MT817x */
 #undef CONFIG_CHIPSET_MT8183		/* MediaTek MT8183 */
 #undef CONFIG_CHIPSET_RK3288		/* Rockchip rk3288 */
@@ -3715,6 +3716,7 @@
 #undef CONFIG_CHIPSET_BRASWELL
 #undef CONFIG_CHIPSET_CANNONLAKE
 #undef CONFIG_CHIPSET_GEMINILAKE
+#undef CONFIG_CHIPSET_ICELAKE
 #undef CONFIG_CHIPSET_MT817X
 #undef CONFIG_CHIPSET_RK3399
 #undef CONFIG_CHIPSET_RK3288
@@ -3773,6 +3775,10 @@
 
 #if defined(CONFIG_CHIPSET_APL_GLK)
 #define CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
+#endif
+
+#if defined(CONFIG_CHIPSET_ICELAKE)
+#define CONFIG_POWER_COMMON
 #endif
 
 /*****************************************************************************/
