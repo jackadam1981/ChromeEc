@@ -88,6 +88,10 @@ static uint8_t __bss_slow prev_state[KEYBOARD_COLS];
 static uint8_t __bss_slow debouncing[KEYBOARD_COLS];
 /* Keys simulated-pressed */
 static uint8_t __bss_slow simulated_key[KEYBOARD_COLS];
+/* Matrix of boot keys */
+static uint8_t __bss_slow boot_key_state[KEYBOARD_COLS];
+/* Matrix of simulated boot keys */
+static uint8_t __bss_slow simulated_boot_key[KEYBOARD_COLS];
 
 /* Times of last scans */
 static uint32_t __bss_slow scan_time[SCAN_TIME_COUNT];
@@ -642,6 +646,13 @@ void keyboard_scan_init(void)
 	read_matrix(debounced_state);
 	memcpy(prev_state, debounced_state, sizeof(prev_state));
 
+	/*
+	 * Save the initial keyboard state in memory.
+	 * TODO: check system_jumped_to_this_image() first when this feature is
+	 * available in RO.
+	 */
+	memcpy(boot_key_state, debounced_state, sizeof(boot_key_state));
+
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 	/* Check for keys held down at boot */
 	boot_key_value = check_boot_key(debounced_state);
@@ -890,3 +901,63 @@ DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
 			"[col row [0 | 1]]",
 			"Simulate keypress");
 #endif
+
+
+int keyboard_get_matrix_at_boot(uint8_t *key_matrix, uint16_t buffer_size)
+{
+	int i;
+
+	if (buffer_size < KEYBOARD_COLS)
+		return 1;
+	for (i = 0; i < KEYBOARD_COLS; ++i)
+		key_matrix[i] = boot_key_state[i] | simulated_boot_key[i];
+	return 0;
+}
+
+void keyboard_clear_matrix_at_boot(void)
+{
+	memset(boot_key_state, 0, KEYBOARD_COLS);
+}
+
+int keyboard_simulate_matrix_at_boot(const uint8_t *key_matrix, uint16_t size)
+{
+	if (size != KEYBOARD_COLS)
+		return 1;
+	memcpy(simulated_boot_key, key_matrix, size);
+	return 0;
+}
+
+static int command_keyboard_matrix_at_boot(int argc, char **argv)
+{
+	if (argc == 1) {
+		print_state(boot_key_state, "boot key  ");
+		print_state(simulated_boot_key, "simulated ");
+		return EC_SUCCESS;
+	} else if (argc == 4) {
+		int r, c, p;
+		char *e;
+
+		c = strtoi(argv[1], &e, 0);
+		if (*e || c < 0 || c >= KEYBOARD_COLS)
+			return EC_ERROR_PARAM1;
+
+		r = strtoi(argv[2], &e, 0);
+		if (*e || r < 0 || r >= KEYBOARD_ROWS)
+			return EC_ERROR_PARAM2;
+
+		p = strtoi(argv[3], &e, 0);
+		if (*e || p < 0 || p > 1)
+			return EC_ERROR_PARAM3;
+
+		if (p == 0)
+			simulated_boot_key[c] &= ~(1 << r);
+		else
+			simulated_boot_key[c] |= (1 << r);
+		return EC_SUCCESS;
+	}
+
+	return EC_ERROR_PARAM_COUNT;
+}
+DECLARE_CONSOLE_COMMAND(kbatboot, command_keyboard_matrix_at_boot,
+			"[col row [0 | 1]]",
+			"Get/simulate boottime keyboard press");
