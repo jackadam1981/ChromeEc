@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46d125fc_d34469af",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-02T09:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "765614b4_da6c0257",
+      "range": {
+        "startLine": 27,
+        "startChar": 56,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "426b3e1e_16b89156",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 26
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2d694f85_3c7e7f6c",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-02T09:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "426b3e1e_16b89156",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bee2c663_7b9d3ab3",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 26
@@ -59,6 +107,30 @@
       "writtenOn": "2018-07-02T08:33:04Z",
       "side": 1,
       "message": "We might want this pin to be low initially during booting, and output high until EC receives AP_EC_WATCHDOG high. (see p.57 in pmic datasheet)",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd9309a_303c07f9",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-02T09:13:17Z",
+      "side": 1,
+      "message": "CL:1122137",
+      "parentUuid": "bee2c663_7b9d3ab3",
       "range": {
         "startLine": 48,
         "startChar": 39,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a49a6f9e_46b3c11d",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-02T09:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e16eda_be6100ce",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eb86d5c_415ebd1a",
         "filename": "board/kukui/gpio.inc",
         "patchSetId": 26
@@ -114,6 +210,30 @@
       "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625e0a86_78521eae",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-02T09:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eb86d5c_415ebd1a",
+      "range": {
+        "startLine": 67,
+        "startChar": 52,
+        "endLine": 67,
+        "endChar": 64
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
