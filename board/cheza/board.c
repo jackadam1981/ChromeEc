@@ -120,6 +120,16 @@ static void ppc_interrupt(enum gpio_signal signal)
 	sn5s330_interrupt(port);
 }
 
+/* Wake-up pins for hibernate */
+const enum gpio_signal hibernate_wake_pins[] = {
+	GPIO_AC_PRESENT,
+	GPIO_EC_RST_ODL,
+	/* TODO: The following wake sources need external PU by EC_STBY */
+	//GPIO_LID_OPEN,
+	//GPIO_POWER_BUTTON_L,
+};
+const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
 const struct adc_t adc_channels[] = {};
 
 const struct pwm_t pwm_channels[] = {
