@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39fd6532_b9b6247b",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T14:40:05Z",
+      "side": 1,
+      "message": "bobba",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "8da45e6ac3ead8abf14df93ea03eb4047afaa30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df54fe13_03485a27",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T14:40:05Z",
+      "side": 1,
+      "message": "bobba",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "8da45e6ac3ead8abf14df93ea03eb4047afaa30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "135d6c8d_71b6d471",
+        "filename": "board/bobba/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T14:40:05Z",
+      "side": 1,
+      "message": "bobba",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "8da45e6ac3ead8abf14df93ea03eb4047afaa30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d7e739_512a6373",
+        "filename": "board/bobba/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T14:40:05Z",
+      "side": 1,
+      "message": "bobba",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "8da45e6ac3ead8abf14df93ea03eb4047afaa30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3afe73ef_5058d02c",
+        "filename": "board/bobba/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T14:40:05Z",
+      "side": 1,
+      "message": "this in the middle of getting changed CL:1116628",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "8da45e6ac3ead8abf14df93ea03eb4047afaa30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec2a4978_721d5d2b",
+        "filename": "board/bobba/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-02T14:40:05Z",
+      "side": 1,
+      "message": "we should probably remove reference to DVT now (at least for new files)",
+      "range": {
+        "startLine": 8,
+        "startChar": 55,
+        "endLine": 8,
+        "endChar": 58
+      },
+      "revId": "8da45e6ac3ead8abf14df93ea03eb4047afaa30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
