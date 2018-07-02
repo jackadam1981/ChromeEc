@@ -36,6 +36,12 @@
 BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT <= EC_USB_PD_MAX_PORTS);
 
 /*
+ * If we are trying to upgrade the TCPC port that is supplying power, then we
+ * need to ensure that the battery has enough charge for the upgrade.
+ */
+#define MIN_BATTERY_FOR_TCPC_UPGRADE 5
+
+/*
  * Debug log level - higher number == more log
  *   Level 0: Log state transitions
  *   Level 1: Level 0, plus state name
@@ -4426,6 +4432,31 @@ static int pd_control(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 
 	if (cmd->subcmd == PD_SUSPEND) {
+		/*
+		 * The AP is requesting to suspend PD traffic on the EC so it
+		 * can perform a firmware upgrade. If Vbus is present on the
+		 * connector (it is either a source or sink), then we will
+		 * prevent the upgrade if there is not enough battery to finish
+		 * the upgrade. We cannot rely on the EC's active charger data
+		 * as the EC just rebooted into RW and has not necessarily
+		 * picked the active charger yet.
+		 */
+#ifdef HAS_CHARGER_TASK
+		if (pd_is_vbus_present(cmd->chip) &&
+		    charge_get_percent() < MIN_BATTERY_FOR_TCPC_UPGRADE) {
+			CPRINTS("C%d: Cannot suspend for upgrade, not enough "
+				"battery (%d%%)!",
+				cmd->chip, charge_get_percent());
+			return EC_RES_BUSY;
+		}
+#else
+		if (pd_is_vbus_present(cmd->chip)) {
+			CPRINTS("C%d: Cannot suspend for upgrade, Vbus "
+				"present!",
+				cmd->chip);
+			return EC_RES_BUSY;
+		}
+#endif
 		enable = 0;
 	} else if (cmd->subcmd == PD_RESUME) {
 		enable = 1;
