@@ -234,6 +234,52 @@
       "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e257d91a_ffe76b40",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-07-02T09:28:25Z",
+      "side": 1,
+      "message": "Init. high may cause leakage into AP when AP is off.",
+      "range": {
+        "startLine": 72,
+        "startChar": 39,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6767351_23f03dd6",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-07-02T09:28:25Z",
+      "side": 1,
+      "message": "Just want to confirm this, init high suggests bootblock code is fetched from eMMC as default path, this is expected in P0 build?",
+      "range": {
+        "startLine": 80,
+        "startChar": 39,
+        "endLine": 80,
+        "endChar": 52
+      },
+      "revId": "dc5ef9e359c7491ee9d476d8c4b0aef4e4142ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
