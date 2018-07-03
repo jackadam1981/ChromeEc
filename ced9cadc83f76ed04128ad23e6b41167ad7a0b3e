@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa3d361f_ff76fd05",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-03T16:55:55Z",
+      "side": 1,
+      "message": "if this isn\u0027t sent over the wire, we typically don\u0027t specify the enum value.\n\nAt second glance the EC style way to do this might be to create #defines for each of these return values (as their negative value).",
+      "range": {
+        "startLine": 508,
+        "startChar": 15,
+        "endLine": 508,
+        "endChar": 19
+      },
+      "revId": "ced9cadc83f76ed04128ad23e6b41167ad7a0b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2e144c_b4cb2aca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-03T16:55:55Z",
+      "side": 1,
+      "message": "I don\u0027t understand this snippet. Can you explain and/or add comments",
+      "range": {
+        "startLine": 628,
+        "startChar": 2,
+        "endLine": 628,
+        "endChar": 25
+      },
+      "revId": "ced9cadc83f76ed04128ad23e6b41167ad7a0b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac10f9b3_60f5f0ab",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2273,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-03T16:55:55Z",
+      "side": 1,
+      "message": "should we save the polarity and restore it too?",
+      "range": {
+        "startLine": 2273,
+        "startChar": 3,
+        "endLine": 2273,
+        "endChar": 33
+      },
+      "revId": "ced9cadc83f76ed04128ad23e6b41167ad7a0b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
