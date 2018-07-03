@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b44d0c98_869b06c4",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T01:39:44Z",
+      "side": 1,
+      "message": "This should be PIN(E, 1)",
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c06f83_13ac3a93",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T01:39:44Z",
+      "side": 1,
+      "message": "Remove ALL_SYS_PWRGD - this does not go to the EC.",
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b6607d_8d7da9d4",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T01:39:44Z",
+      "side": 1,
+      "message": "I think this is PIN(E, 6)",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e43df837_c68f6564",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T01:39:44Z",
+      "side": 1,
+      "message": "This should be open-drain - is it?",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
