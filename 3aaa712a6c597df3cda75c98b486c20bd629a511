@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a08c0664_4441190d",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T23:51:29Z",
+      "side": 1,
+      "message": "the big thing that I don\u0027t see that we might want to add is the keyboard",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 13
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9835b624_934f85b7",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T23:51:29Z",
+      "side": 1,
+      "message": "maybe not important, but I would have thought we\u0027d want ACOK in this list rather than the WP signal since I didn\u0027t that that was a wake source",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 92
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eff48ab_cd4f123c",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T23:51:29Z",
+      "side": 1,
+      "message": "also sort of a nit, but I might combine this with the base six axis interrupt above",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cead6b5_0c118470",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T23:51:29Z",
+      "side": 1,
+      "message": "I don\u0027t think you want pullups on these since we have external PUs on the board.",
+      "range": {
+        "startLine": 58,
+        "startChar": 50,
+        "endLine": 58,
+        "endChar": 62
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7139b531_48a7d7b0",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T23:51:29Z",
+      "side": 1,
+      "message": "I believe this is H6",
+      "range": {
+        "startLine": 60,
+        "startChar": 32,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
