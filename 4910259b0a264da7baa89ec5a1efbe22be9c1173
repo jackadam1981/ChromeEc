@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57659b91_f7b7d752",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2018-07-03T03:26:48Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "72fd1554_322d74e5",
+      "range": {
+        "startLine": 7,
+        "startChar": 67,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43116d32_ce589eee",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-06-27T19:00:22Z",
       "side": 1,
       "message": "Please add BUG\u003d, BRANCH\u003d, and TEST\u003d fields.",
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f7acfc_ed0947d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2018-07-03T03:26:48Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "43116d32_ce589eee",
       "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -125,6 +167,30 @@
       "side": 1,
       "message": "You need to check with the board designer how much current they allocated for the Vconn. Change from 1.5W to 2W on two ports would mean the 5V supply needs to be designed to give 1W more. (Of course you get away with it most of the time because you are not loading down all the ports, but you still need to set this on a board (ref design) basis depending on the design parameter. Given the requirement is to match the AltMode spec it is reasonable boards were designed for 1.5W plus over-current margin)",
       "parentUuid": "70da5b1e_5d966c8d",
+      "range": {
+        "startLine": 328,
+        "startChar": 56,
+        "endLine": 328,
+        "endChar": 61
+      },
+      "revId": "4910259b0a264da7baa89ec5a1efbe22be9c1173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcce807d_f3864a31",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2018-07-03T03:26:48Z",
+      "side": 1,
+      "message": "I\u0027ll change the VCONN current threshold to 370mA.",
+      "parentUuid": "ead0277c_5630b7dd",
       "range": {
         "startLine": 328,
         "startChar": 56,
