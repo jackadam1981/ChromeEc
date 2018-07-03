@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec13e821_d6ad81d2",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-07-03T01:24:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we only do this if we detect the USB3? Otherwise we violate the USB spec every time we try to ramp past 500mA. Of course that would require communication from the PHY (detection of USB3 termination) to the kernel to the EC, so it is messy. Otherwise we risk USB2 devices that have a shared 1A current limit for 2 ports (which used to be common) where this code will ramp to 900mA and bad things will happen if a device is plugged in to the other port.\n\nThis needs more general discussion I think.",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "52bc68d29c2a0c0deef0fff077658c83c080417d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c943a33_b710b249",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-07-03T01:24:39Z",
+      "side": 1,
+      "message": "Why condition this on the charger? If we are going to do something dubious why only on certain devices?",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "52bc68d29c2a0c0deef0fff077658c83c080417d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a63c57e_9b1a7c70",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-07-03T01:24:39Z",
+      "side": 1,
+      "message": "Where does the 2400 come from? In the past we always limited DCP to 2000mA because we discovered a large number of 1500mA DCP chargers with bad over-current (like only tripped at 2.5A) but which would get very hot if \u003e2A was pulled. Originally we only went to 2.4 if we knew it was an Apple charger.",
+      "range": {
+        "startLine": 94,
+        "startChar": 47,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "52bc68d29c2a0c0deef0fff077658c83c080417d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
