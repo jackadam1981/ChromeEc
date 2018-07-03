@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab580afb_fb147c4c",
+        "filename": "core/cortex-m/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-07-03T03:17:00Z",
+      "side": 1,
+      "message": "instead of the unconditional define above and the undef here you could make the above defines conditional on PASS \u003d\u003d 1.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "bc87a4d5714d14c6d508c19e63e5d592136ec241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
