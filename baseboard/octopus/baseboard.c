@@ -325,4 +325,7 @@ void board_hibernate(void)
 		if (!pd_is_vbus_present(port))
 			ppc_vbus_sink_enable(port, 1);
 	}
+
+	gpio_set_flags(GPIO_USB_C1_PD_RST_ODL, GPIO_INPUT);
+	gpio_set_flags(GPIO_PP3300_PG, (GPIO_INPUT | GPIO_PULL_DOWN));
 }
