@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "315999a5_33c26bb6",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T01:52:14Z",
+      "side": 1,
+      "message": "Add an init function that does the following:\n1) Turns on EN_PP3300_TCPC_G\n2) Turns on EN_PP5000_A (and waits for the PP5000_A_PG signal)\n3) Maybe turns on EN_PP3300_A (not sure if we want to wait for a power button of do this automatically when we power up the EC - probably do it automatically?) \n\nWe should also have some code that puts the EC into hibernate (this can wait until later though) that will:\n1) Turns off EN_PP5000_A (and waits for the PP5000_A_PG signal to go low)\n2) Turns off EN_PP3300_TCPC_G\n(the EC should only hibernate if ACOK is low)",
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b44d0c98_869b06c4",
         "filename": "board/dragonegg/gpio.inc",
         "patchSetId": 2
