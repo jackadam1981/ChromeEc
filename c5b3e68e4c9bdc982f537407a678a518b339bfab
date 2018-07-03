@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9521a4ae_886c72f5",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-03T08:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121c56e0_58263505",
+      "revId": "c5b3e68e4c9bdc982f537407a678a518b339bfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b19dd93_a61adc2d",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 6
