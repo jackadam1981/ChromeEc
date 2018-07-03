@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26253c33_d8e710b8",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-03T17:05:00Z",
+      "side": 1,
+      "message": "this condition will never be true; they need to be OR\u0027ed in a () set",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 42
+      },
+      "revId": "7a5f5c97a279e4450017fa281a23688fb22b910a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
