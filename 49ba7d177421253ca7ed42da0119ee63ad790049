@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e33f8fb_cf8c3a43",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "I hadn\u0027t added these yet. The 1st patchset was still not building. But, I\u0027ve added these two config options.",
+      "parentUuid": "36cd5053_82c8472b",
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b755a4f_b1eec407",
         "filename": "baseboard/dragonegg/baseboard.h",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c4f563_019e1781",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b755a4f_b1eec407",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "6451110c_abd83c8b",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fca1cc7_04f760a1",
+      "range": {
+        "startLine": 81,
+        "startChar": 30,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "906b0abe_8041d268",
         "filename": "power/icelake.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2018-07-02T22:28:53Z",
       "side": 1,
       "message": "I guess this is okay, but we really should never be in this case. SLP_SUS_L should only deassert in the POWER_G3S5 case. I *think* we can remove this.",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 18
+      },
+      "revId": "49ba7d177421253ca7ed42da0119ee63ad790049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce95fab9_d28d47da",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "I redid the case statement based on your code snippet. Please review again to see if it looks correct to you.",
+      "parentUuid": "906b0abe_8041d268",
       "range": {
         "startLine": 99,
         "startChar": 10,

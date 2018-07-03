@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "229c0917_72db40e0",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "I copied some of these from the ilkrvp, forgot to update the pin assignments. I have fixed this one and changed the name to match the schematic.",
+      "parentUuid": "b44d0c98_869b06c4",
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8c06f83_13ac3a93",
         "filename": "board/dragonegg/gpio.inc",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2018-07-03T01:39:44Z",
       "side": 1,
       "message": "Remove ALL_SYS_PWRGD - this does not go to the EC.",
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d3aef80_28efb6e2",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "e8c06f83_13ac3a93",
       "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "8430ea76_e48a4112",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0b6607d_8d7da9d4",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e43df837_c68f6564",
         "filename": "board/dragonegg/gpio.inc",
         "patchSetId": 2
@@ -87,6 +147,30 @@
       "writtenOn": "2018-07-03T01:39:44Z",
       "side": 1,
       "message": "This should be open-drain - is it?",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "cb4067166752adc9818d3c2e14f2e325cd15c3bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f86abeab_f35aeaf3",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-03T19:52:08Z",
+      "side": 1,
+      "message": "Yes it should have been ODR and not OUT. Have fixed it.",
+      "parentUuid": "e43df837_c68f6564",
       "range": {
         "startLine": 54,
         "startChar": 5,
