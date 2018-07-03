@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49120705_b205f5ea",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-03T21:54:35Z",
+      "side": 1,
+      "message": "This is only being read once. volatile casting should not be required.",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b937c2d_c69a559e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-03T21:54:35Z",
+      "side": 1,
+      "message": "This path is still in the hook task. As such the real state of things can be incorrect.",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c64fbf1_44db48d5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3587,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-03T21:54:35Z",
+      "side": 1,
+      "message": "If there\u0027s an ordering requirement here I think a small comment would help for future readability and context.",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e986dd_f6bdea3f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-03T21:54:35Z",
+      "side": 1,
+      "message": "Is this true for the part we\u0027re using on yorp?",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "601b4375_2acd9332",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-03T21:54:35Z",
+      "side": 1,
+      "message": "Only if board_set_tcpc_power_mode() is implemented to use that, right? What ensures such a thing? If that\u0027s the expectation note that it\u0027s a requirement.",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8a284c_71f7050c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-03T21:54:35Z",
+      "side": 1,
+      "message": "that represent what?",
+      "range": {
+        "startLine": 742,
+        "startChar": 18,
+        "endLine": 742,
+        "endChar": 27
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22ebe7c_7e78d07e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-03T21:54:35Z",
+      "side": 1,
+      "message": "Do all of these need to be exposed in a header if it\u0027s only used in an implementation?",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
