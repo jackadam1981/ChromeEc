@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4feb57b4_091100b7",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2018-07-03T21:28:08Z",
+      "side": 1,
+      "message": "May not be a huge deal, but I would prefer to do these in the other order:\n\ngpio_set_level(GPIO_EN_PP5000, 0);\nthen add a statement waiting for the PP5000_A_PG to go low\ngpio_set_level(GPIO_EN_PP3300_TCPC, 0);",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
