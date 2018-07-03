@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09442fb4_d96486df",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-07-03T18:13:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec13e821_d6ad81d2",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "52bc68d29c2a0c0deef0fff077658c83c080417d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c943a33_b710b249",
         "filename": "driver/bc12/bq24392.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1e0030d7_de68271d",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-07-03T18:13:21Z",
+      "side": 1,
+      "message": "not sure if other chargers support the charge ramp.\nI think I can change it to CONFIG_BC12_SDP_900MA",
+      "parentUuid": "4c943a33_b710b249",
+      "range": {
+        "startLine": 93,
+        "startChar": 7,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "52bc68d29c2a0c0deef0fff077658c83c080417d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a63c57e_9b1a7c70",
         "filename": "driver/bc12/bq24392.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-07-03T01:24:39Z",
       "side": 1,
       "message": "Where does the 2400 come from? In the past we always limited DCP to 2000mA because we discovered a large number of 1500mA DCP chargers with bad over-current (like only tripped at 2.5A) but which would get very hot if \u003e2A was pulled. Originally we only went to 2.4 if we knew it was an Apple charger.",
+      "range": {
+        "startLine": 94,
+        "startChar": 47,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "52bc68d29c2a0c0deef0fff077658c83c080417d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7741fa3_e373157e",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-07-03T18:13:21Z",
+      "side": 1,
+      "message": "I think it came from BD9995X.\nBut ramping to 2.4A is okay if we set appropriate lover threshold voltage limit for input voltage.",
+      "parentUuid": "9a63c57e_9b1a7c70",
       "range": {
         "startLine": 94,
         "startChar": 47,
