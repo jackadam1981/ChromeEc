@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b0634e68_5c1e40da",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-07-03T07:05:35Z",
+      "side": 1,
+      "message": "Already did a regression test. Log is attached to issue tracker b:110451144 #14, please check if the testing is what you expected. In addition, TEST\u003d field is updated.",
+      "parentUuid": "7eb90f6a_2bf74436",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 38
+      },
+      "revId": "24d858c7cff86eb9b71f4954f6f6b1e30c16d7ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2443bbb4_4f3b04c9",
         "filename": "chip/npcx/fan.c",
         "patchSetId": 5
