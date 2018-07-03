@@ -373,3 +373,53 @@ static void led_init(void)
 }
 /* Make sure this comes after SKU ID hook */
 DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT + 2);
+
+
+static int command_led(int argc, char **argv)
+{
+enum ec_led_id id = EC_LED_ID_BATTERY_LED;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "debug")) {
+		led_auto_control(id, !led_auto_control_is_enabled(id));
+		ccprintf("o%s\n", led_auto_control_is_enabled(id) ? "ff" : "n");
+	} else if (!strcasecmp(argv[1], "off")) {
+		gpio_set_level(GPIO_LED_COLOR_1, LED_OFF_LVL);
+		gpio_set_level(GPIO_LED_COLOR_2, LED_OFF_LVL);
+	} else if (!strcasecmp(argv[1], "on")) {
+		gpio_set_level(GPIO_LED_COLOR_1, LED_ON_LVL);
+		gpio_set_level(GPIO_LED_COLOR_2, LED_ON_LVL);
+	} else if (!strcasecmp(argv[1], "green")) {
+		gpio_set_level(GPIO_LED_COLOR_1, LED_OFF_LVL);
+		gpio_set_level(GPIO_LED_COLOR_2, LED_ON_LVL);
+	} else if (!strcasecmp(argv[1], "amber")) {
+		gpio_set_level(GPIO_LED_COLOR_1, LED_ON_LVL);
+		gpio_set_level(GPIO_LED_COLOR_2, LED_OFF_LVL);
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(led, command_led,
+			"[debug|green|amber|on|off]",
+			"Turn on/off LED.");
+
+static void board_led_set_battery(void)
+{
+	static int battery_ticks;
+
+	battery_ticks++;
+
+	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+		led_set_color_battery(
+			(battery_ticks & 0x4) ? LED_COLOR_BOTH : LED_OFF);
+}
+
+static void led_tick(void)
+{
+	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+		board_led_set_battery();
+}
+DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
