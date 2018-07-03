@@ -46,6 +46,30 @@
       "revId": "0489f5e1e7e39c71692eb8c3e95bfe5032e86686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88bc17b0_2764b54b",
+        "filename": "driver/ioexpander_it8300.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-03T17:53:33Z",
+      "side": 1,
+      "message": "just call the i2c_read and write directly in other files. The signature for both functions is the same",
+      "parentUuid": "dd5c052e_27d1b732",
+      "range": {
+        "startLine": 106,
+        "startChar": 18,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "0489f5e1e7e39c71692eb8c3e95bfe5032e86686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
