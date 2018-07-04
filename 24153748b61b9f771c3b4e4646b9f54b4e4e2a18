@@ -33,6 +33,24 @@
       "revId": "24153748b61b9f771c3b4e4646b9f54b4e4e2a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6768e49_3a3b1188",
+        "filename": "power/mt8183.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1253397
+      },
+      "writtenOn": "2018-07-04T09:20:06Z",
+      "side": 1,
+      "message": "Sorry, wrong msg. we have these pins in P0. But don\u0027t understand why need to control these pins during state transition. It seems we don\u0027t need to control this during mt8173.",
+      "parentUuid": "760e7889_30c092a2",
+      "revId": "24153748b61b9f771c3b4e4646b9f54b4e4e2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
