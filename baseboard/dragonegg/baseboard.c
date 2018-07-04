@@ -42,7 +42,13 @@ const struct power_signal_info power_signal_list[] = {
 	{GPIO_SLP_S0_L,
 		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
 		"SLP_S0_DEASSERTED"},
-#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
+/* TODO(b/111136396): Don't rely on VW signals until they are verified to work
+ * properly. CONFIG_HOSTCMD_ESPI_VW_SIGNALS needs to be defined because
+ * PCH_PLTRST_L is not routed to the EC. Therefore, for now, switch the #if and
+ * #else dependency for this config option.
+ */
+/* #ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS */
+#if 0
 	{VW_SLP_S3_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
 	{VW_SLP_S4_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
 #else
