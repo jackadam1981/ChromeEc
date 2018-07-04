@@ -16,6 +16,24 @@
       "revId": "d8abdbaa5bd971e28ba8bd940c05c79f993948b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e786a865_b8ea42ac",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:50:23Z",
+      "side": 1,
+      "message": "I commented out #ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS and replaced it with a \"if 0\" so the signals remain in the correct order in the table, and it looks more like a temporary hack.",
+      "parentUuid": "39abfab0_38411ed4",
+      "revId": "d8abdbaa5bd971e28ba8bd940c05c79f993948b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
