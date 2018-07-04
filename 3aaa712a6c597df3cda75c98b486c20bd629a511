@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24250ded_60799135",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:58Z",
+      "side": 1,
+      "message": "I think the keyboard GPIOs just work as is. I don\u0027t see anything for keyboard on Bip gpio.inc",
+      "parentUuid": "a08c0664_4441190d",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 13
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9835b624_934f85b7",
         "filename": "board/dragonegg/gpio.inc",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7d30b000_602c4c76",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:58Z",
+      "side": 1,
+      "message": "This CL was only adding GPIOs from the \"MISC\" section. The next CL does add ACOK.",
+      "parentUuid": "2562a94a_b7d42cb4",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 92
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2eff48ab_cd4f123c",
         "filename": "board/dragonegg/gpio.inc",
         "patchSetId": 3
@@ -83,6 +131,30 @@
       "writtenOn": "2018-07-03T23:51:29Z",
       "side": 1,
       "message": "also sort of a nit, but I might combine this with the base six axis interrupt above",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 64
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768140d0_da508d9c",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:58Z",
+      "side": 1,
+      "message": "Yes, it will be combined above when the TODO is addressed when I add sensor support.",
+      "parentUuid": "2eff48ab_cd4f123c",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "5ecda459_c9e12d42",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:58Z",
+      "side": 1,
+      "message": "I have removed the internal pullups.",
+      "parentUuid": "7cead6b5_0c118470",
+      "range": {
+        "startLine": 58,
+        "startChar": 50,
+        "endLine": 58,
+        "endChar": 62
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7139b531_48a7d7b0",
         "filename": "board/dragonegg/gpio.inc",
         "patchSetId": 3
@@ -138,6 +234,30 @@
       "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e5f63c_22995698",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7139b531_48a7d7b0",
+      "range": {
+        "startLine": 60,
+        "startChar": 32,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "3aaa712a6c597df3cda75c98b486c20bd629a511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
