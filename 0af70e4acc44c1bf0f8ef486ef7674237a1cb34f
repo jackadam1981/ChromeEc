@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e940d937_423e0db7",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610e01c3_4db0fd26",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8ecc953_e055a67c",
         "filename": "baseboard/dragonegg/baseboard.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a58ef5_81176aef",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ecc953_e055a67c",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "78e11569_e0925d29",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "I switched the order and put a max wait of 20 msec. Not sure if that\u0027s a reasonable timeout value.",
+      "parentUuid": "4feb57b4_091100b7",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd2e080a_10ababf1",
         "filename": "baseboard/dragonegg/baseboard.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-04T01:04:10Z",
       "side": 1,
       "message": "Is this required?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9457403c_c3696ba2",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "No this is not required, but was needed when starting from power/cannonlake.c. I have removed it.",
+      "parentUuid": "fd2e080a_10ababf1",
       "range": {
         "startLine": 16,
         "startChar": 8,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "e8c53efc_c2d2c832",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51bd9781_50054dde",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "626a533f_bd5b9778",
         "filename": "power/icelake.c",
         "patchSetId": 3
@@ -151,6 +271,30 @@
       "writtenOn": "2018-07-04T00:56:20Z",
       "side": 1,
       "message": "Is this really true for this chipset?",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93b23402_19f24ff8",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "No, this is a holdover from cannonlake.c implementation which itself is identical to what is in skylake.c . The comment certainly isn\u0027t accurate. Since icelake doesn\u0027t use a PMIC, does the power_button_pch_press() call still apply? What is the difference between \u0027force_shutdown\u0027 and \u0027force_g3\u0027 for icelake?",
+      "parentUuid": "626a533f_bd5b9778",
       "range": {
         "startLine": 28,
         "startChar": 15,
@@ -180,6 +324,24 @@
     },
     {
       "key": {
+        "uuid": "a7c7b5b6_96f23618",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced30805_f494ae48",
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b05aab76_91d2c468",
         "filename": "power/icelake.c",
         "patchSetId": 3
@@ -197,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "aa7f1b4d_c46d4d76",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b05aab76_91d2c468",
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9b1e3d0_7aad58fe",
         "filename": "power/intel_x86.c",
         "patchSetId": 3
@@ -208,6 +388,30 @@
       "writtenOn": "2018-07-04T00:56:20Z",
       "side": 1,
       "message": "I think we should add a config for the chipsets that need this. It might make the code easier to read.",
+      "range": {
+        "startLine": 473,
+        "startChar": 6,
+        "endLine": 474,
+        "endChar": 35
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e06de1_3dac80f0",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-04T17:39:38Z",
+      "side": 1,
+      "message": "I created CONFIG_CHIPSET_RSMRST_DELAY which gets defined automatically based on CHIPSET_SKYLAKE, CANNONLAKE, and ICELAKE",
+      "parentUuid": "c9b1e3d0_7aad58fe",
       "range": {
         "startLine": 473,
         "startChar": 6,
