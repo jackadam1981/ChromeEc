@@ -133,6 +133,7 @@ DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, panic_init, HOOK_PRIO_LAST);
 
 #ifdef CONFIG_CMD_STACKOVERFLOW
+#if 0
 static void stack_overflow_recurse(int n)
 {
 	ccprintf("+%d", n);
@@ -151,6 +152,7 @@ static void stack_overflow_recurse(int n)
 	 */
 	ccprintf("-%d", n);
 }
+#endif
 #endif /* CONFIG_CMD_STACKOVERFLOW */
 
 /*****************************************************************************/
@@ -163,6 +165,7 @@ static int command_crash(int argc, char **argv)
 
 	if (!strcasecmp(argv[1], "assert")) {
 		ASSERT(0);
+#if 0
 	} else if (!strcasecmp(argv[1], "divzero")) {
 		int zero = 0;
 
@@ -188,6 +191,7 @@ static int command_crash(int argc, char **argv)
 		interrupt_disable();
 		while (1)
 			;
+#endif
 	} else {
 		return EC_ERROR_PARAM1;
 	}
