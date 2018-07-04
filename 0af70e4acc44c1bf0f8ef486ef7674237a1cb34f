@@ -22,6 +22,86 @@
       "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "626a533f_bd5b9778",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T00:56:20Z",
+      "side": 1,
+      "message": "Is this really true for this chipset?",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced30805_f494ae48",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T00:56:20Z",
+      "side": 1,
+      "message": "timeout_ms? to indicate that this timeout is in msec.",
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b05aab76_91d2c468",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T00:56:20Z",
+      "side": 1,
+      "message": "timeout_ms",
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b1e3d0_7aad58fe",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T00:56:20Z",
+      "side": 1,
+      "message": "I think we should add a config for the chipsets that need this. It might make the code easier to read.",
+      "range": {
+        "startLine": 473,
+        "startChar": 6,
+        "endLine": 474,
+        "endChar": 35
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
