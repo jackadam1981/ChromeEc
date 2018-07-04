@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "126ad3c5_4666c8aa",
+        "filename": "include/aes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-07-04T06:29:31Z",
+      "side": 1,
+      "message": "This interface is a leftover from the AES HW driver,\nwe are probably missing some context pointer for a decent software version",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "ec0e4f102d0d4e1e85949843da0a4bd9cffcbecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
