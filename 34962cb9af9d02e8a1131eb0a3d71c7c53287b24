@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "072d8c7c_362f613a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-04T22:33:44Z",
+      "side": 1,
+      "message": "Suggest adding ectool support for the new command so you can test it.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "34962cb9af9d02e8a1131eb0a3d71c7c53287b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c694316_d458718e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-04T22:33:44Z",
+      "side": 1,
+      "message": "Alternately, you could just add two new subcommands/types to this.  One for EC_MKBP_INFO_AT_BOOT, one for EC_MKBP_INFO_CLEAR_AT_BOOT.",
+      "range": {
+        "startLine": 2731,
+        "startChar": 5,
+        "endLine": 2731,
+        "endChar": 22
+      },
+      "revId": "34962cb9af9d02e8a1131eb0a3d71c7c53287b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
