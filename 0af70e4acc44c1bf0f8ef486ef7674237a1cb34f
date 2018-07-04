@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "610e01c3_4db0fd26",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T01:04:10Z",
+      "side": 1,
+      "message": "This could be S0ix too.",
+      "range": {
+        "startLine": 64,
+        "startChar": 16,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ecc953_e055a67c",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T01:04:10Z",
+      "side": 1,
+      "message": "This could be S0ix too",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4feb57b4_091100b7",
         "filename": "baseboard/dragonegg/baseboard.c",
         "patchSetId": 3
@@ -18,6 +64,75 @@
         "startChar": 1,
         "endLine": 96,
         "endChar": 35
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2e080a_10ababf1",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T01:04:10Z",
+      "side": 1,
+      "message": "Is this required?",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7528dc55_fa10899e",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T01:04:10Z",
+      "side": 1,
+      "message": "Not a big deal, but maybe we should enable this later on as part of enabling S0ix on the platform?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51bd9781_50054dde",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T01:04:10Z",
+      "side": 1,
+      "message": "Rachel commented on another CL: this should go above along with other wake sources.",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 16
       },
       "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
