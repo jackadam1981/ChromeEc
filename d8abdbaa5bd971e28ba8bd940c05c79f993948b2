@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39abfab0_38411ed4",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T15:20:29Z",
+      "side": 1,
+      "message": "This looks confusing since it seems like VW_SIGNALS requires physical GPIOs for S3 and S4. Can we use #if 1 here instead?",
+      "revId": "d8abdbaa5bd971e28ba8bd940c05c79f993948b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
