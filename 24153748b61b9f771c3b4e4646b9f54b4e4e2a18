@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c54f63fa_44e67c44",
+        "filename": "power/mt8183.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1253397
+      },
+      "writtenOn": "2018-07-04T09:04:26Z",
+      "side": 1,
+      "message": "Why do we need to turn off PMIC then turn on PMIC here? \ngpio_set_level(GPIO_PMIC_EN_ODL, 0); can power on PMIC",
+      "revId": "24153748b61b9f771c3b4e4646b9f54b4e4e2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760e7889_30c092a2",
+        "filename": "power/mt8183.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1253397
+      },
+      "writtenOn": "2018-07-04T09:04:26Z",
+      "side": 1,
+      "message": "s3s0_power_seq , these pins seems Rockchip\u0027s pin?",
+      "revId": "24153748b61b9f771c3b4e4646b9f54b4e4e2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
