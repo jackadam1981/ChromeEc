@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "62a39d8a_918192b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "What scenario is that? Isn\u0027t it bad to end up in that situation? If EC thinks that TCPC is not in low power mode when it actually is, it could make an i2c transaction to put TCPC into low power mode thus resulting in TCPC actually waking up from LPM. If the rare scenario is repeatable, then we could end up in an indefinite loop.",
+      "range": {
+        "startLine": 370,
+        "startChar": 43,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b937c2d_c69a559e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -30,6 +53,75 @@
       "writtenOn": "2018-07-03T21:54:35Z",
       "side": 1,
       "message": "This path is still in the hook task. As such the real state of things can be incorrect.",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "201e8b39_701c0158",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "Ideally, we would want these two to be atomic. Once the deferred function sets this flag, there is no guarantee that it will continue running to put TCPC into low power mode. There could be another task scheduled which starts talking to the TCPC at this point.",
+      "range": {
+        "startLine": 374,
+        "startChar": 3,
+        "endLine": 375,
+        "endChar": 35
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f3cad1f_e8a4f332",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "One of the assumptions is that all accesses to TCPC are going through the standard tcpc_* functions. I think there are some functions in anx e.g. anx7447_reg_read/write which make I2C transaction directly without calling into tcpc_read/write.",
+      "range": {
+        "startLine": 382,
+        "startChar": 5,
+        "endLine": 382,
+        "endChar": 23
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02baedc1_44bc2d11",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "Scott had pointed out this issue some time back. When coming out of low power mode, we should be making a throwaway transaction to ensure that we actually take the TCPC out of low power mode. Should we be taking care of that here?",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 14
+      },
       "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "0403fbd3_a7ed2f6c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "I don\u0027t think we use this driver on yorp. It uses anx7447.c.",
+      "parentUuid": "37e986dd_f6bdea3f",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "601b4375_2acd9332",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
@@ -81,6 +191,24 @@
       "writtenOn": "2018-07-03T21:54:35Z",
       "side": 1,
       "message": "Only if board_set_tcpc_power_mode() is implemented to use that, right? What ensures such a thing? If that\u0027s the expectation note that it\u0027s a requirement.",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac660cb0_d128ff31",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a requirement on board_set_tcpc_power_mode. It is handled by the calls in usb_pd_protocol.c:\ntcpm_set_drp_toggle calls anx74xx_set_power_mode\n\nrequest_low_power_mode defers call to enter_low_power_mode by PD_LM_DEBOUCE_US and hence the delay.\n\nBut, I am worried about the fact that we could potentially end up changing the value of PD_LM_DEBOUNCE_US in the future breaking this driver. Can we leave the mdelay(1) in here so that the driver does not rely on the delay used by the usb_pd_protocol layer?",
+      "parentUuid": "601b4375_2acd9332",
       "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +238,29 @@
     },
     {
       "key": {
+        "uuid": "50ba936c_2bf1d484",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "(10 * MSEC)?",
+      "range": {
+        "startLine": 743,
+        "startChar": 26,
+        "endLine": 743,
+        "endChar": 31
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f22ebe7c_7e78d07e",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -121,6 +272,24 @@
       "writtenOn": "2018-07-03T21:54:35Z",
       "side": 1,
       "message": "Do all of these need to be exposed in a header if it\u0027s only used in an implementation?",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d7c9f7_82fafa04",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T20:37:56Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "f22ebe7c_7e78d07e",
       "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
