@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f1d2cea8_546ce066",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-04T21:03:47Z",
+      "side": 1,
+      "message": "My understanding is:\n1. chipset_force_shutdown is responsible for transitioning the AP from S0 into shutdown state. In order to achieve this, you will have to turn off the DSW load switch and wait for DSW_PWROK to go away. i.e. basically whatever chipset_force_g3 is currently doing.\n\n2. chipset_force_g3 should just call into chipset_force_shutdown since it is currently doing the same thing as #1.",
+      "parentUuid": "93b23402_19f24ff8",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ced30805_f494ae48",
         "filename": "power/icelake.c",
         "patchSetId": 3
