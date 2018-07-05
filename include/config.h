@@ -229,6 +229,8 @@
  *
  * The GPIO should be named GPIO_BACKLIGHT_ENABLED if active high, or
  * GPIO_BACKLIGHT_ENABLED_L if active low. See CONFIG_BACKLIGHT_LID_ACTIVE_LOW.
+ *
+ * Extra behavior: CONFIG_BACKLIGHT_LID_CUSTOM
  */
 #undef CONFIG_BACKLIGHT_LID
 
@@ -236,6 +238,12 @@
  * The backlight GPIO pin is active low and named GPIO_BACKLIGHT_ENABLED_L
  */
 #undef CONFIG_BACKLIGHT_LID_ACTIVE_LOW
+
+/*
+ * The backlight GPIO pin active low/high by board with different
+ * enable/disable timing
+ */
+#undef CONFIG_BACKLIGHT_LID_CUSTOM
 
 /*
  * If defined, EC will enable the backlight signal only if this GPIO is
