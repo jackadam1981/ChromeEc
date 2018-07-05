@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "06de00ca_0abbbc9d",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-05T00:59:34Z",
+      "side": 1,
+      "message": "I moved what was being done in chipset_force_g3() to chipset_force_shutdown(). So now chipset_force_g3() is simply calling chipset_force_shutdown() and returning the new power state. I think this is what you were suggesting.",
+      "parentUuid": "f1d2cea8_546ce066",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "0af70e4acc44c1bf0f8ef486ef7674237a1cb34f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ced30805_f494ae48",
         "filename": "power/icelake.c",
         "patchSetId": 3
