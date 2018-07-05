@@ -72,6 +72,8 @@ uint16_t board_version;
 uint8_t oem = PROJECT_NAMI;
 uint16_t sku;
 
+static int lcd_backlight_status;
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
@@ -716,17 +718,38 @@ void lid_angle_peripheral_enable(int enable)
 }
 #endif
 
+static void enable_backlight_deferred(void)
+{
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, !lcd_backlight_status);
+}
+DECLARE_DEFERRED(enable_backlight_deferred);
+
+void enable_backlight(int enabled)
+{
+	/*
+	 * Low active
+	 * enable: 30ms delay
+	 * disable: no delay
+	 */
+	lcd_backlight_status = enabled;
+
+	if (lcd_backlight_status)
+		hook_call_deferred(&enable_backlight_deferred_data, (30*MSEC));
+	else
+		enable_backlight_deferred();
+}
+
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
+	enable_backlight(1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
+	enable_backlight(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 

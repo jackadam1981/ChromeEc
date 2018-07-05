@@ -10,11 +10,13 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "backlight.h"
 
 
 /**
  * Activate/Deactivate the backlight GPIO pin considering active high or low.
  */
+#ifndef CONFIG_BACKLIGHT_LID_CUSTOM
 void enable_backlight(int enabled)
 {
 #ifdef CONFIG_BACKLIGHT_LID_ACTIVE_LOW
@@ -23,6 +25,7 @@ void enable_backlight(int enabled)
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, enabled);
 #endif
 }
+#endif /* CONFIG_BACKLIGHT_LID_CUSTOM */
 
 /**
  * Update backlight state.
