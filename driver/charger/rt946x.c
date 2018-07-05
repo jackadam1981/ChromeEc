@@ -159,7 +159,7 @@ static int rt946x_block_write(int reg, const uint8_t *val, int len)
 	return rv;
 }
 
-static int rt946x_update_bits(int reg, int mask, int val)
+int rt946x_update_bits(int reg, int mask, int val)
 {
 	int rv;
 	int reg_val = 0;
