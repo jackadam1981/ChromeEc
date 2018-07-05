@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360c98c6_0399425b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-05T18:04:01Z",
+      "side": 1,
+      "message": "Can you please provide some note explaining why this particular value was chosen?",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ea5eb7_78081e00",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4441,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-05T18:04:01Z",
+      "side": 1,
+      "message": "Don\u0027t we do the PD upgrade in RO?",
+      "range": {
+        "startLine": 4441,
+        "startChar": 11,
+        "endLine": 4441,
+        "endChar": 36
+      },
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "335e9b21_b83ef637",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4452,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-05T18:04:01Z",
+      "side": 1,
+      "message": "Should there be a check for:\n1. curr.batt.is_present\n2. curr.batt.flags to ensure BATT_FLAG_RESPONSIVE is set and none of the BATT_FLAG_BAD_* are set?",
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d52c5d5_685a7b4e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4452,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-05T18:04:01Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this be checked only if BATT_FLAG_BAD_REMAINING_CAPACITY is not set?",
+      "range": {
+        "startLine": 4452,
+        "startChar": 12,
+        "endLine": 4452,
+        "endChar": 30
+      },
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
