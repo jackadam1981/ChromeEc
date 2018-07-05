@@ -22,6 +22,30 @@
       "revId": "ec0e4f102d0d4e1e85949843da0a4bd9cffcbecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5314a38d_6aeb3a88",
+        "filename": "include/aes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-05T04:45:05Z",
+      "side": 1,
+      "message": "Dropped for now.",
+      "parentUuid": "126ad3c5_4666c8aa",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "ec0e4f102d0d4e1e85949843da0a4bd9cffcbecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
