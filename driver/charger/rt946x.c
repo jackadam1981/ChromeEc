@@ -981,3 +981,47 @@ int rt946x_enable_charge_termination(int en)
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_CHGCTRL2, RT946X_MASK_TE);
 }
+
+#ifdef CONFIG_CHARGER_MT6370
+/* MT6370 RGB led */
+
+void mt6370_led_set_color(enum mt6370_led_color color)
+{
+	switch (color) {
+	case LED_OFF:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN, 0);
+		break;
+	case LED_RED:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN,
+				   1 << MT6370_SHIFT_RGB_ISNK_RED);
+		break;
+	case LED_GREEN:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN,
+				   1 << MT6370_SHIFT_RGB_ISNK_GREEN);
+		break;
+	case LED_BLUE:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN,
+				   1 << MT6370_SHIFT_RGB_ISNK_BLUE);
+		break;
+	default:
+		break;
+	}
+}
+
+void mt6370_led_set_brightness(const uint8_t *brightness)
+{
+	rt946x_update_bits(MT6370_REG_RGB1ISNK, MT6370_MASK_RGBISNK_CURSEL,
+			   brightness[EC_LED_COLOR_RED]
+				   << MT6370_SHIFT_RGBISNK_CURSEL);
+	rt946x_update_bits(MT6370_REG_RGB2ISNK, MT6370_MASK_RGBISNK_CURSEL,
+			   brightness[EC_LED_COLOR_GREEN]
+				   << MT6370_SHIFT_RGBISNK_CURSEL);
+	rt946x_update_bits(MT6370_REG_RGB3ISNK, MT6370_MASK_RGBISNK_CURSEL,
+			   brightness[EC_LED_COLOR_BLUE]
+				   << MT6370_SHIFT_RGBISNK_CURSEL);
+}
+#endif /* CONFIG_CHARGER_MT6370 */
