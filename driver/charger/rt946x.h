@@ -118,6 +118,17 @@
 #define RT946X_REG_CHGNTC		0X4B
 #define RT946X_REG_ADCDATAH		0X4C
 #define RT946X_REG_ADCDATAL		0X4D
+/* RGB led */
+#define MT6370_REG_RGB1DIM		0x82
+#define MT6370_REG_RGB2DIM		0x83
+#define MT6370_REG_RGB3DIM		0x84
+#define MT6370_REG_RGBEN		0x85
+#define MT6370_REG_RGB1ISNK		0x86
+#define MT6370_REG_RGB2ISNK		0x87
+#define MT6370_REG_RGB3ISNK		0x88
+#define MT6370_REG_RGBCHRINDDIM		0x92
+#define MT6370_REG_RGBCHRINDCTRL	0x93
+
 #define RT946X_REG_DPDMIRQ		0xC6
 /* status event */
 #define MT6370_REG_CHGSTAT1		0xD0
@@ -366,6 +377,29 @@
 #define RT946X_MASK_DPDMIRQ_ATTACH	(1 << RT946X_SHIFT_DPDMIRQ_ATTACH)
 #endif
 
+/* ========== RGBEN 0x85 (mt6370) ============ */
+#define MT6370_SHIFT_RGB_ISNK_RED	MT6370_SHIFT_RGB_ISNK1DIM
+#define MT6370_SHIFT_RGB_ISNK_GREEN	MT6370_SHIFT_RGB_ISNK2DIM
+#define MT6370_SHIFT_RGB_ISNK_BLUE	MT6370_SHIFT_RGB_ISNK3DIM
+#define MT6370_MASK_RGB_ISNK_RED_EN	MT6370_MASK_RGB_ISNK1DIM_EN
+#define MT6370_MASK_RGB_ISNK_GREEN_EN	MT6370_MASK_RGB_ISNK2DIM_EN
+#define MT6370_MASK_RGB_ISNK_BLUE_EN	MT6370_MASK_RGB_ISNK3DIM_EN
+
+#define MT6370_SHIFT_RGB_ISNK1DIM	7
+#define MT6370_SHIFT_RGB_ISNK2DIM	6
+#define MT6370_SHIFT_RGB_ISNK3DIM	5
+
+#define MT6370_MASK_RGB_ISNK_ALL_EN	(MT6370_MASK_RGB_ISNK_RED_EN | \
+					 MT6370_MASK_RGB_ISNK_GREEN_EN | \
+					 MT6370_MASK_RGB_ISNK_BLUE_EN)
+#define MT6370_MASK_RGB_ISNK1DIM_EN	(1 << MT6370_SHIFT_RGB_ISNK1DIM)
+#define MT6370_MASK_RGB_ISNK2DIM_EN	(1 << MT6370_SHIFT_RGB_ISNK2DIM)
+#define MT6370_MASK_RGB_ISNK3DIM_EN	(1 << MT6370_SHIFT_RGB_ISNK3DIM)
+
+/* ========== RGB_ISNK 0x86/0x87/0x88 (mt6370) ============ */
+#define MT6370_SHIFT_RGBISNK_CURSEL	0
+#define MT6370_MASK_RGBISNK_CURSEL	(0x7 << MT6370_SHIFT_RGBISNK_CURSEL)
+
 /* ========== CHGSTAT2 0xD1 (mt6370) ============ */
 #ifdef CONFIG_CHARGER_MT6370
 #define MT6370_SHIFT_CHG_VBUSOV_STAT	7
@@ -420,4 +454,23 @@ int rt946x_cutoff_battery(void);
 /* Enable/Disable charge temination */
 int rt946x_enable_charge_termination(int en);
 
+/* LED control */
+#ifdef CONFIG_CHARGER_MT6370
+/* MT6370 RGB led */
+enum mt6370_led_color {
+	LED_OFF = 0,
+	LED_RED,
+	LED_GREEN,
+	LED_BLUE,
+	LED_COLOR_COUNT  /* Number of colors, not a color itself */
+};
+
+void mt6370_led_set_color(enum mt6370_led_color color);
+/**
+ * Set brightness per color channel for an LED.
+ *
+ * @param brightness	Brightness per color channel to set.
+ */
+void mt6370_led_set_brightness(const uint8_t *brightness);
+#endif
 #endif /* __CROS_EC_RT946X_H */
