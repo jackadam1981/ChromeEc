@@ -93,6 +93,30 @@
       "revId": "34962cb9af9d02e8a1131eb0a3d71c7c53287b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70568f96_7baf7c5b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-05T20:17:08Z",
+      "side": 1,
+      "message": "What I mean is refactor that command to be supported by both configs, though 8042 would only support a subset of the subcommands.\n\nWe should refactor code so that it makes more general sense, rather than adding more specialized commands.\n\nBut if this is *just* for V1, and won\u0027t be backported to ToT in this form, then ok, I won\u0027t hold it up.",
+      "parentUuid": "a3cf2901_3ce43a7a",
+      "range": {
+        "startLine": 2731,
+        "startChar": 5,
+        "endLine": 2731,
+        "endChar": 22
+      },
+      "revId": "34962cb9af9d02e8a1131eb0a3d71c7c53287b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
