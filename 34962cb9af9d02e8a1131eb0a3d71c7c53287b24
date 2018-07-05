@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "76c5e1b5_ce07349f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-07-05T11:05:15Z",
+      "side": 1,
+      "message": "Added unittest and a console command to show key matrix.\n\nDo we need to test this programmatically?\nI mean something like a simulated key press at boot time (is this possible?).",
+      "parentUuid": "072d8c7c_362f613a",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "34962cb9af9d02e8a1131eb0a3d71c7c53287b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c694316_d458718e",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
