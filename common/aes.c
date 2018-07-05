@@ -46,18 +46,17 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  * ==================================================================== */
 
-#include <openssl/aes.h>
+#include "aes.h"
+#include "common.h"
+#include "endian.h"
 
-#include <assert.h>
+static inline uint32_t GETU32(const void *in) {
+  return be32toh(*(uint32_t *)in);
+}
 
-#include <openssl/cpu.h>
-
-#include "internal.h"
-#include "../modes/internal.h"
-
-
-#if defined(OPENSSL_NO_ASM) || \
-    (!defined(OPENSSL_X86) && !defined(OPENSSL_X86_64) && !defined(OPENSSL_ARM))
+static inline void PUTU32(void *out, uint32_t v) {
+  *(uint32_t *)out = htobe32(v);
+}
 
 // Te0[x] = S [x].[02, 01, 01, 03];
 // Te1[x] = S [x].[03, 02, 01, 01];
@@ -534,8 +533,7 @@ static const uint32_t rcon[] = {
     // for 128-bit blocks, Rijndael never uses more than 10 rcon values
 };
 
-static int aes_nohw_set_encrypt_key(const uint8_t *key, unsigned bits,
-                                    AES_KEY *aeskey) {
+int AES_set_encrypt_key(const uint8_t *key, unsigned int bits, AES_KEY *aeskey) {
   uint32_t *rk;
   int i = 0;
   uint32_t temp;
@@ -630,8 +628,7 @@ static int aes_nohw_set_encrypt_key(const uint8_t *key, unsigned bits,
   return 0;
 }
 
-static int aes_nohw_set_decrypt_key(const uint8_t *key, unsigned bits,
-                                    AES_KEY *aeskey) {
+int AES_set_decrypt_key(const uint8_t *key, unsigned int bits, AES_KEY *aeskey) {
   uint32_t *rk;
   int i, j, status;
   uint32_t temp;
@@ -679,13 +676,11 @@ static int aes_nohw_set_decrypt_key(const uint8_t *key, unsigned bits,
   return 0;
 }
 
-static void aes_nohw_encrypt(const uint8_t *in, uint8_t *out,
-                             const AES_KEY *key) {
+void AES_encrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
   const uint32_t *rk;
   uint32_t s0, s1, s2, s3, t0, t1, t2, t3;
   int r;
 
-  assert(in && out && key);
   rk = key->rd_key;
 
   // map byte array block to cipher state
@@ -741,13 +736,11 @@ static void aes_nohw_encrypt(const uint8_t *in, uint8_t *out,
   PUTU32(out + 12, s3);
 }
 
-static void aes_nohw_decrypt(const uint8_t *in, uint8_t *out,
-                             const AES_KEY *key) {
+void AES_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
   const uint32_t *rk;
   uint32_t s0, s1, s2, s3, t0, t1, t2, t3;
   int r;
 
-  assert(in && out && key);
   rk = key->rd_key;
 
   // map byte array block to cipher state
@@ -808,52 +801,4 @@ static void aes_nohw_decrypt(const uint8_t *in, uint8_t *out,
   PUTU32(out + 12, s3);
 }
 
-#else  // NO_ASM || (!X86 && !X86_64 && !ARM)
-
-// If not implemented in C, these functions will be provided by assembly code.
-void aes_nohw_encrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key);
-void aes_nohw_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key);
-int aes_nohw_set_encrypt_key(const uint8_t *key, unsigned bits,
-                             AES_KEY *aeskey);
-int aes_nohw_set_decrypt_key(const uint8_t *key, unsigned bits,
-                             AES_KEY *aeskey);
-
-#endif
-
-// Be aware that on x86(-64), the |aes_nohw_*| functions are incompatible with
-// the aes_hw_* functions. The latter set |AES_KEY.rounds| to one less than the
-// true value, which breaks the former. Therefore the two functions cannot mix.
-// Also, on Aarch64, the plain-C code, above, is incompatible with the
-// |aes_hw_*| functions.
-
-void AES_encrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
-  if (hwaes_capable()) {
-    aes_hw_encrypt(in, out, key);
-  } else {
-    aes_nohw_encrypt(in, out, key);
-  }
-}
-
-void AES_decrypt(const uint8_t *in, uint8_t *out, const AES_KEY *key) {
-  if (hwaes_capable()) {
-    aes_hw_decrypt(in, out, key);
-  } else {
-    aes_nohw_decrypt(in, out, key);
-  }
-}
-
-int AES_set_encrypt_key(const uint8_t *key, unsigned bits, AES_KEY *aeskey) {
-  if (hwaes_capable()) {
-    return aes_hw_set_encrypt_key(key, bits, aeskey);
-  } else {
-    return aes_nohw_set_encrypt_key(key, bits, aeskey);
-  }
-}
-
-int AES_set_decrypt_key(const uint8_t *key, unsigned bits, AES_KEY *aeskey) {
-  if (hwaes_capable()) {
-    return aes_hw_set_decrypt_key(key, bits, aeskey);
-  } else {
-    return aes_nohw_set_decrypt_key(key, bits, aeskey);
-  }
-}
+/* --------- wrappers for AES modes --------- */

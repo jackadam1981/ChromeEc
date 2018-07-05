@@ -38,16 +38,7 @@
 @ Profiler-assisted and platform-specific optimization resulted in 16%
 @ improvement on Cortex A8 core and ~21.5 cycles per byte.
 
-#ifndef __KERNEL__
-# include <openssl/arm_arch.h>
-#else
-# define __ARM_ARCH__ __LINUX_ARM_ARCH__
-#endif
-
-@ Silence ARMv8 deprecated IT instruction warnings. This file is used by both
-@ ARMv7 and ARMv8 processors and does not use ARMv8 instructions. (ARMv8 AES
-@ instructions are in aesv8-armx.pl.)
-.arch  armv7-a
+#define __ARM_ARCH__ 7
 
 .text
 #if defined(__thumb2__) && !defined(__APPLE__)
@@ -164,14 +155,14 @@ AES_Te:
 .word	0x1B000000, 0x36000000, 0, 0, 0, 0, 0, 0
 .size	AES_Te,.-AES_Te
 
-@ void aes_nohw_encrypt(const unsigned char *in, unsigned char *out,
+@ void AES_encrypt(const unsigned char *in, unsigned char *out,
 @ 		                  const AES_KEY *key) {
-.global aes_nohw_encrypt
-.type   aes_nohw_encrypt,%function
+.global AES_encrypt
+.type   AES_encrypt,%function
 .align	5
-aes_nohw_encrypt:
+AES_encrypt:
 #ifndef	__thumb2__
-	sub	r3,pc,#8		@ aes_nohw_encrypt
+	sub	r3,pc,#8		@ AES_encrypt
 #else
 	adr	r3,.
 #endif
@@ -179,7 +170,7 @@ aes_nohw_encrypt:
 #if defined(__thumb2__) || defined(__APPLE__)
 	adr	r10,AES_Te
 #else
-	sub	r10,r3,#aes_nohw_encrypt-AES_Te	@ Te
+	sub	r10,r3,#AES_encrypt-AES_Te	@ Te
 #endif
 	mov	r12,r0		@ inp
 	mov	r11,r2
@@ -276,7 +267,7 @@ aes_nohw_encrypt:
 	moveq	pc,lr			@ be binary compatible with V4, yet
 	.word	0xe12fff1e			@ interoperable with Thumb ISA:-)
 #endif
-.size	aes_nohw_encrypt,.-aes_nohw_encrypt
+.size	AES_encrypt,.-AES_encrypt
 
 .type   _armv4_AES_encrypt,%function
 .align	2
@@ -415,13 +406,13 @@ _armv4_AES_encrypt:
 	ldr	pc,[sp],#4		@ pop and return
 .size	_armv4_AES_encrypt,.-_armv4_AES_encrypt
 
-.global aes_nohw_set_encrypt_key
-.type   aes_nohw_set_encrypt_key,%function
+.global AES_set_encrypt_key
+.type   AES_set_encrypt_key,%function
 .align	5
-aes_nohw_set_encrypt_key:
+AES_set_encrypt_key:
 _armv4_AES_set_encrypt_key:
 #ifndef	__thumb2__
-	sub	r3,pc,#8		@ aes_nohw_set_encrypt_key
+	sub	r3,pc,#8		@ AES_set_encrypt_key
 #else
 	adr	r3,.
 #endif
@@ -719,22 +710,22 @@ _armv4_AES_set_encrypt_key:
 	moveq	pc,lr			@ be binary compatible with V4, yet
 	.word	0xe12fff1e			@ interoperable with Thumb ISA:-)
 #endif
-.size	aes_nohw_set_encrypt_key,.-aes_nohw_set_encrypt_key
+.size	AES_set_encrypt_key,.-AES_set_encrypt_key
 
-.global aes_nohw_set_decrypt_key
-.type   aes_nohw_set_decrypt_key,%function
+.global AES_set_decrypt_key
+.type   AES_set_decrypt_key,%function
 .align	5
-aes_nohw_set_decrypt_key:
+AES_set_decrypt_key:
 	str	lr,[sp,#-4]!            @ push lr
 	bl	_armv4_AES_set_encrypt_key
 	teq	r0,#0
 	ldr	lr,[sp],#4              @ pop lr
 	bne	.Labrt
 
-	mov	r0,r2			@ aes_nohw_set_encrypt_key preserves r2,
+	mov	r0,r2			@ AES_set_encrypt_key preserves r2,
 	mov	r1,r2			@ which is AES_KEY *key
 	b	_armv4_AES_set_enc2dec_key
-.size	aes_nohw_set_decrypt_key,.-aes_nohw_set_decrypt_key
+.size	AES_set_decrypt_key,.-AES_set_decrypt_key
 
 @ void AES_set_enc2dec_key(const AES_KEY *inp,AES_KEY *out)
 .global	AES_set_enc2dec_key
@@ -935,14 +926,14 @@ AES_Td:
 .byte	0xe1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0c, 0x7d
 .size	AES_Td,.-AES_Td
 
-@ void aes_nohw_decrypt(const unsigned char *in, unsigned char *out,
+@ void AES_decrypt(const unsigned char *in, unsigned char *out,
 @ 		                  const AES_KEY *key) {
-.global aes_nohw_decrypt
-.type   aes_nohw_decrypt,%function
+.global AES_decrypt
+.type   AES_decrypt,%function
 .align	5
-aes_nohw_decrypt:
+AES_decrypt:
 #ifndef	__thumb2__
-	sub	r3,pc,#8		@ aes_nohw_decrypt
+	sub	r3,pc,#8		@ AES_decrypt
 #else
 	adr	r3,.
 #endif
@@ -950,7 +941,7 @@ aes_nohw_decrypt:
 #if defined(__thumb2__) || defined(__APPLE__)
 	adr	r10,AES_Td
 #else
-	sub	r10,r3,#aes_nohw_decrypt-AES_Td	@ Td
+	sub	r10,r3,#AES_decrypt-AES_Td	@ Td
 #endif
 	mov	r12,r0		@ inp
 	mov	r11,r2
@@ -1047,7 +1038,7 @@ aes_nohw_decrypt:
 	moveq	pc,lr			@ be binary compatible with V4, yet
 	.word	0xe12fff1e			@ interoperable with Thumb ISA:-)
 #endif
-.size	aes_nohw_decrypt,.-aes_nohw_decrypt
+.size	AES_decrypt,.-AES_decrypt
 
 .type   _armv4_AES_decrypt,%function
 .align	2
