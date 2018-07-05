@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c1946a8_2f25b4b3",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-05T11:24:41Z",
+      "side": 1,
+      "message": "I still need to investigate and possibly modify TPM2_NV_ChangeAuth, which may be able to call this - see comment in the sheet",
+      "range": {
+        "startLine": 160,
+        "startChar": 24,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "965a41f35206141a7d072018c715e8becac6a9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90deb6e4_84de84bc",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-05T11:24:41Z",
+      "side": 1,
+      "message": "Looking at ec.RW.smap, and the config here, it seems that this is fine\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/chip/g/config_chip.h?rcl\u003d626d419bf155f22cb228413c7b201a5c6f899f28\u0026l\u003d15",
+      "range": {
+        "startLine": 67,
+        "startChar": 49,
+        "endLine": 67,
+        "endChar": 56
+      },
+      "revId": "965a41f35206141a7d072018c715e8becac6a9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c4556a_8364240a",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-05T11:24:41Z",
+      "side": 1,
+      "message": "Looks like the 0x01001007 index is defined here (along with some others):\n\nhttps://cs.corp.google.com/chromeos_public/src/platform/vboot_reference/firmware/lib/include/rollback_index.h?rcl\u003dd0d0cf82ee95c353d6dd988303da77fb7b1ecc06\u0026l\u003d16\n\nI have checked no others are read during boot / after clearing the TPM, and have documented these allocations in a text file to live in this directory - hopefully that is a sensible thing to do. \n\nI\u0027ll assume this is resolved, unless you think I should look into this further.",
+      "range": {
+        "startLine": 110,
+        "startChar": 17,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "965a41f35206141a7d072018c715e8becac6a9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa3c5bb_3d735c5d",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-05T11:24:41Z",
+      "side": 1,
+      "message": "Resolving this as have done audit of tpm2 code shows no weird sources of offsets",
+      "range": {
+        "startLine": 212,
+        "startChar": 37,
+        "endLine": 212,
+        "endChar": 43
+      },
+      "revId": "965a41f35206141a7d072018c715e8becac6a9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
