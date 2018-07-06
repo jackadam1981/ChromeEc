@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c030b63f_7299a2f3",
+        "filename": "common/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T03:28:17Z",
+      "side": 1,
+      "message": "I can\u0027t follow the code where this is used and all the tests pass so I\u0027m sure it\u0027s fine, but just noting that intuitively this feels to me like it should be the opposite of get, not the same as",
+      "revId": "0643c9fdedd973778d8c8208f2e99024219b2c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
