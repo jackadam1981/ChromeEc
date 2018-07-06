@@ -24,7 +24,14 @@ static int thermal_control_enabled[CONFIG_FANS];
 static int fan_update_counter[CONFIG_FANS];
 #endif
 
-#ifndef CONFIG_FAN_RPM_CUSTOM
+static void set_enabled(int fan, int enable)
+{
+	fan_set_enabled(FAN_CH(fan), enable);
+
+	if (fans[fan].conf->enable_gpio >= 0)
+		gpio_set_level(fans[fan].conf->enable_gpio, enable);
+}
+
 /* This is the default implementation. It's only called over [0,100].
  * Convert the percentage to a target RPM. We can't simply scale all
  * the way down to zero because most fans won't turn that slowly, so
@@ -44,7 +51,6 @@ int fan_percent_to_rpm(int fan, int pct)
 
 	return rpm;
 }
-#endif	/* CONFIG_FAN_RPM_CUSTOM */
 
 /* The thermal task will only call this function with pct in [0,100]. */
 test_mockable void fan_set_percent_needed(int fan, int pct)
@@ -72,15 +78,9 @@ test_mockable void fan_set_percent_needed(int fan, int pct)
 	    new_rpm < fans[fan].rpm->rpm_start)
 		new_rpm = fans[fan].rpm->rpm_start;
 
+	/* Enable the fan when non-zero rpm. */
+	set_enabled(fan, (new_rpm > 0) ? 1 : 0);
 	fan_set_rpm_target(FAN_CH(fan), new_rpm);
-}
-
-static void set_enabled(int fan, int enable)
-{
-	fan_set_enabled(FAN_CH(fan), enable);
-
-	if (fans[fan].conf->enable_gpio >= 0)
-		gpio_set_level(fans[fan].conf->enable_gpio, enable);
 }
 
 static void set_thermal_control_enabled(int fan, int enable)
