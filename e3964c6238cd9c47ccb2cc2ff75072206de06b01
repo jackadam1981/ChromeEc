@@ -16,6 +16,24 @@
       "revId": "e3964c6238cd9c47ccb2cc2ff75072206de06b01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0eb10b6_3407a526",
+        "filename": "chip/g/board_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T16:40:04Z",
+      "side": 1,
+      "message": "Yea this was just a quick way to get things up and running so I could play around; I expect to do a fair bit of renaming / refactoring before this change is ready for review.",
+      "parentUuid": "2068f43c_70e01e46",
+      "revId": "e3964c6238cd9c47ccb2cc2ff75072206de06b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
