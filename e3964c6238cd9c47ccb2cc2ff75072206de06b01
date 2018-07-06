@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2068f43c_70e01e46",
+        "filename": "chip/g/board_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-07-06T10:10:09Z",
+      "side": 1,
+      "message": "It seems weird to have the SN bits included into a file that seems to be only about BoardID. Even the info1_board_space below seems, by name at least, to only denote information relative the BoardID.",
+      "revId": "e3964c6238cd9c47ccb2cc2ff75072206de06b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
