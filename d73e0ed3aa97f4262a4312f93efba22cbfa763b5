@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d749b116_0d4620d7",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T12:48:12Z",
+      "side": 1,
+      "message": "huh, looks like we don\u0027t need it, indeed.",
+      "parentUuid": "a27b9eed_686697e9",
+      "range": {
+        "startLine": 136,
+        "startChar": 45,
+        "endLine": 136,
+        "endChar": 50
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a448a6b7_fecd3751",
         "filename": "board/kukui/emmc.c",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2018-07-06T05:42:55Z",
       "side": 1,
       "message": "Curious why you chose 1 byte blocks (instead of 2) given you always compare at least 4 at once?",
+      "range": {
+        "startLine": 195,
+        "startChar": 51,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "071580b6_fb40ca7e",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T12:48:12Z",
+      "side": 1,
+      "message": "No particular reason, this is somewhat generic code I copy-pasted from chip/stm32/spi.c...\n\nThis mode has been already tested extensively, and we\u0027d need to check the interaction with DMA module, and endianess, if we wanted to change to 16-bit. And I\u0027m not sure if that\u0027d gain us much (maybe less bus traffic, but this is something we only do on boot, for a short amount of time, so maybe we do not care that much...)",
+      "parentUuid": "a448a6b7_fecd3751",
       "range": {
         "startLine": 195,
         "startChar": 51,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "70d2f863_e858a3c5",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T12:48:12Z",
+      "side": 1,
+      "message": "Yes. There is a 32-bit FIFO, so that flushes it, and guarantees the line stays high (1). I\u0027ll add a comment.",
+      "parentUuid": "42366c9f_17a60611",
+      "range": {
+        "startLine": 201,
+        "startChar": 32,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b9a8f55_013518e0",
         "filename": "board/kukui/emmc.c",
         "patchSetId": 1
@@ -105,6 +177,30 @@
       "writtenOn": "2018-07-06T05:42:55Z",
       "side": 1,
       "message": "Would be interested to understand this better; looks like this will force the NSS bit to be 0, which is something something about pulse management?",
+      "range": {
+        "startLine": 227,
+        "startChar": 48,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50a60769_d1afe098",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T12:48:12Z",
+      "side": 1,
+      "message": "This is chip-select in SPI. Without this, the slave does not read the data.\n\n\"\n8 SSI: Internal slave select\nThis bit has an effect only when the SSM bit is set. The value of this bit is forced onto the NSS pin and the I/O value of the NSS pin is ignored.\n\"\n\nNSS is active low. Figure 281 from RM0091 is closest to what we actually do (except that we don\u0027t have an external NSS, so we always listen.",
+      "parentUuid": "7b9a8f55_013518e0",
       "range": {
         "startLine": 227,
         "startChar": 48,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "3a6dbd06_a010c662",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T12:48:12Z",
+      "side": 1,
+      "message": "* @param orig_count    Original number of bytes requested on channel\n\nWe called dma_start_rx with that same size (the buffer size), and that\u0027s what the API wants.\n\n(if you look at DMA_CNDTRx, STM32 does not expose the total transfer size after it is first written, so you need to do total-DMA_CNDTRx to get the current buffer position).",
+      "parentUuid": "2add3bcb_bf4c9eb3",
+      "range": {
+        "startLine": 238,
+        "startChar": 41,
+        "endLine": 238,
+        "endChar": 47
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6646b441_da7f269b",
         "filename": "board/kukui/emmc.c",
         "patchSetId": 1
@@ -151,6 +271,30 @@
       "writtenOn": "2018-07-06T05:42:55Z",
       "side": 1,
       "message": "I\u0027m not sure I understand this, should this be !\u003d?",
+      "range": {
+        "startLine": 270,
+        "startChar": 35,
+        "endLine": 270,
+        "endChar": 36
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10afd559_2df7bc2d",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T12:48:12Z",
+      "side": 1,
+      "message": "First DEC by 2 (command are 6 bytes only), then go forward.\n\nSo you have:\nffffffff \u003c\u003d (2) i \u003d RX_BUF_DEC_32(i, 2);\nffff40f0 \u003c\u003d (3) i after the loop\nf0f0f0fd \u003c\u003d (1) i before these 2 lines\nffffffff\n\nBut yes, we do not really need a loop, should be enough to dec by 2, and inc by 1 if the value is still ffffffff (or change the logic in parse_command to do that increment).",
+      "parentUuid": "6646b441_da7f269b",
       "range": {
         "startLine": 270,
         "startChar": 35,
