@@ -16,6 +16,24 @@
       "revId": "0643c9fdedd973778d8c8208f2e99024219b2c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "603e7caa_1e092987",
+        "filename": "common/aes.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T10:43:28Z",
+      "side": 1,
+      "message": "You\u0027re right, it should be htobe32. Not that it really matters, the operation is the same (if host is big-endian, both are no-op; if host is little-endian, both swap all bytes).",
+      "parentUuid": "c030b63f_7299a2f3",
+      "revId": "0643c9fdedd973778d8c8208f2e99024219b2c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
