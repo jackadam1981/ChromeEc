@@ -30,6 +30,8 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -41,6 +43,11 @@ static void ppc_interrupt(enum gpio_signal signal)
 
 #include "gpio_list.h" /* Must come after other header files. */
 
+const struct pwm_t pwm_channels[] = {
+	{7, 0,                     30000, PWM_PRESCALER_C4},
+	{0, PWM_CONFIG_DSLEEP,     100,   PWM_PRESCALER_C6},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 /******************************************************************************/
 /* ADC channels */
 const struct adc_t adc_channels[] = {
