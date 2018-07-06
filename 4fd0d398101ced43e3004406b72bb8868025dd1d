@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "884b4dbc_b0fc3742",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T02:18:26Z",
+      "side": 1,
+      "message": "Maybe add a TODO: the charger has fancy settings and would be able to blink the LEDs on its own.",
+      "revId": "4fd0d398101ced43e3004406b72bb8868025dd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0b4469_16fa4e9b",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-06T02:18:26Z",
+      "side": 1,
+      "message": "LED_RED seems a little better, as an error.",
+      "range": {
+        "startLine": 63,
+        "startChar": 31,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "4fd0d398101ced43e3004406b72bb8868025dd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
