@@ -273,6 +273,11 @@ sspi_flash_upload(int spi_offset, int spi_size)
 	struct monitor_header_tag *monitor_header =
 		(struct monitor_header_tag *)NPCX_MONITOR_HEADER_ADDR;
 
+	/* Set CR_SIN(GPIO64) as pull-up */
+	NPCX_PPUD(6) &= ~(1 << 4);
+	/* Set CR_SIN(GPIO64) pull-up enabled */
+	NPCX_PPULL(6) |= (1 << 4);
+
 	*flag_upload = 0;
 
 	uut_tag = monitor_header->tag;
