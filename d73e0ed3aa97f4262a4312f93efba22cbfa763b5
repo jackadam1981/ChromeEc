@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ecbb6e8_8eb12ae9",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T05:42:55Z",
+      "side": 1,
+      "message": "this is just like my favourite interview question ;)",
+      "range": {
+        "startLine": 134,
+        "startChar": 34,
+        "endLine": 134,
+        "endChar": 44
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a27b9eed_686697e9",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T05:42:55Z",
+      "side": 1,
+      "message": "do you need the mask?",
+      "range": {
+        "startLine": 136,
+        "startChar": 45,
+        "endLine": 136,
+        "endChar": 50
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a448a6b7_fecd3751",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T05:42:55Z",
+      "side": 1,
+      "message": "Curious why you chose 1 byte blocks (instead of 2) given you always compare at least 4 at once?",
+      "range": {
+        "startLine": 195,
+        "startChar": 51,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42366c9f_17a60611",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T05:42:55Z",
+      "side": 1,
+      "message": "such magic, does this fill the data register with 1s or something?",
+      "range": {
+        "startLine": 201,
+        "startChar": 32,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b9a8f55_013518e0",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T05:42:55Z",
+      "side": 1,
+      "message": "Would be interested to understand this better; looks like this will force the NSS bit to be 0, which is something something about pulse management?",
+      "range": {
+        "startLine": 227,
+        "startChar": 48,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2add3bcb_bf4c9eb3",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T05:42:55Z",
+      "side": 1,
+      "message": "you\u0027ll have to explain this one to me as well ;p",
+      "range": {
+        "startLine": 238,
+        "startChar": 41,
+        "endLine": 238,
+        "endChar": 47
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6646b441_da7f269b",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T05:42:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this, should this be !\u003d?",
+      "range": {
+        "startLine": 270,
+        "startChar": 35,
+        "endLine": 270,
+        "endChar": 36
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
