@@ -80,6 +80,25 @@ enum vendor_cmd_cc {
 	 * it will response with the current tpm_mode value in uint8_t format.
 	 */
 	VENDOR_CC_TPM_MODE = 40,
+	/*
+	 * Initializes INFO1 SN data space, and sets SN hash. Takes three
+	 * int32 as parameters, which are written as the SN hash.
+	 */
+	VENDOR_CC_SN_SET_HASH = 41,
+	/*
+	 * Increments the RMA count in the INFO1 SN data space. The space must
+	 * have been previously initialized with the _SET_HASH command above for
+	 * this to succeed. Takes one byte as parameter, which indicates the
+	 * number to increment the RMA count by; this is typically 1 or 0.
+	 *
+	 * Incrementing the RMA count by 0 will set the RMA indicator, but not
+	 * incremement the count. This is useful to mark that a device has been
+	 * RMA'd, but that we were not able to log the new serial number.
+	 *
+	 * The count cannot be incremented by 0 in this way if it has ever been
+	 * incremented by a non-zero amount.
+	 */
+	VENDOR_CC_SN_INC_RMA = 42,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
