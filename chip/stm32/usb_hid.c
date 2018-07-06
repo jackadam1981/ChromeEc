@@ -121,6 +121,26 @@ int hid_iface_request(usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx,
 					EP_STATUS_OUT);
 			return 0;
 		}
+	} else if (ep0_buf_rx[0] == (USB_DIR_IN |
+				     USB_RECIP_INTERFACE |
+				     USB_TYPE_CLASS |
+				     (USB_HID_REQ_GET_REPORT << 8))) {
+		const uint8_t report_type = (ep0_buf_rx[1] >> 8) & 0xFF;
+		const uint8_t report_id = ep0_buf_rx[1] & 0xFF;
+		int retval;
+
+		report_left = ep0_buf_rx[3];
+		if (!config->get_report) // not supported
+			return -1;
+
+		retval = config->get_report(report_id,
+					    report_type,
+					    &report_ptr,
+					    &report_left);
+		if (retval)
+			return retval;
+
+		return send_report(ep0_buf_tx, report_ptr, report_left);
 	}
 
 	return -1;
