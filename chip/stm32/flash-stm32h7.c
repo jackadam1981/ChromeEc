@@ -53,6 +53,10 @@
  */
 #define DEFAULT_PSIZE FLASH_CR_PSIZE_DWORD
 
+#define WP_RANGE(start, count) (((1 << (count)) - 1) << (start))
+#define RO_WP_RANGE WP_RANGE(WP_BANK_OFFSET, WP_BANK_COUNT)
+#define ALL_WP_RANGE WP_RANGE(0, CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE)
+
 /* Can no longer write/erase flash until next reboot */
 static int access_disabled;
 /* Can no longer modify write-protection in option bytes until next reboot */
@@ -137,6 +141,16 @@ static int commit_optb(void)
 	lock(0);
 
 	return (timeout > 0) ? EC_SUCCESS : EC_ERROR_TIMEOUT;
+}
+
+static void unprotect_blocks(uint32_t blocks)
+{
+	if (unlock_optb())
+		return;
+	STM32_FLASH_WPSN_PRG(0) |= blocks & BLOCKS_HWBANK_MASK;
+	STM32_FLASH_WPSN_PRG(1) |= (blocks >> BLOCKS_PER_HWBANK)
+				& BLOCKS_HWBANK_MASK;
+	commit_optb();
 }
 
 static void protect_blocks(uint32_t blocks)
@@ -346,9 +360,6 @@ uint32_t flash_physical_get_protect_flags(void)
 	return flags;
 }
 
-#define WP_RANGE(start, count) (((1 << (count)) - 1) << (start))
-#define RO_WP_RANGE WP_RANGE(WP_BANK_OFFSET, WP_BANK_COUNT)
-
 int flash_physical_protect_now(int all)
 {
 	protect_blocks(RO_WP_RANGE);
@@ -445,8 +456,16 @@ int flash_pre_init(void)
 			prot_flags = flash_get_protect();
 		}
 	} else {
-		/* Don't want RO flash protected */
-		unwanted_prot_flags |= EC_FLASH_PROTECT_RO_NOW;
+		if (!(prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT) &&
+			prot_flags & EC_FLASH_PROTECT_RO_NOW) {
+			/*
+			 * Write protect pin unasserted, RO_AT_BOOT unset, but
+			 * RO is still protected. Drop protection and reboot.
+			 */
+			unprotect_blocks(ALL_WP_RANGE);
+
+			goto reset;
+		}
 	}
 
 	/* If there are no unwanted flags, done */
@@ -463,6 +482,7 @@ int flash_pre_init(void)
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
+reset:
 	/* Otherwise, do a hard boot to clear the flash protection registers */
 	system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_PRESERVE_FLAGS);
 
