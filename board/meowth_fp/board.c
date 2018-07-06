@@ -80,3 +80,9 @@ static void board_init(void)
 	hook_call_deferred(&ap_deferred_data, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+int board_get_entropy(void *buffer, int len)
+{
+	/* TODO(b:111190988): Get entropy from RNG. */
+	return 0;
+}
