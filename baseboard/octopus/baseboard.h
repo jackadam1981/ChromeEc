@@ -49,13 +49,13 @@
 	#define CONFIG_IT83XX_FLASH_CLOCK_48MHZ
 
 	/* I2C Bus Configuration */
-	#define I2C_PORT_BATTERY	IT83XX_I2C_CH_A	/* Shared bus */
-	#define I2C_PORT_CHARGER	IT83XX_I2C_CH_A	/* Shared bus */
+	#define I2C_PORT_BATTERY	IT83XX_I2C_CH_F	/* Shared bus */
+	#define I2C_PORT_CHARGER	IT83XX_I2C_CH_F	/* Shared bus */
 	#define I2C_PORT_SENSOR		IT83XX_I2C_CH_B
 	#define I2C_PORT_USBC0		IT83XX_I2C_CH_C
 	#define I2C_PORT_USBC1		IT83XX_I2C_CH_E
 	#define I2C_PORT_USB_MUX	I2C_PORT_USBC0	/* For MUX driver */
-	#define I2C_PORT_EEPROM		IT83XX_I2C_CH_F
+	#define I2C_PORT_EEPROM		IT83XX_I2C_CH_A
 	#define I2C_ADDR_EEPROM		0xA0
 
 	/* EC variant determines USB-C variant */

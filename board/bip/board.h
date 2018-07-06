@@ -18,8 +18,11 @@
 
 #define CONFIG_LED_COMMON
 
+#define CONFIG_HOSTCMD_ESPI
 /* Hardware for proto bip does not support ec keyboard backlight control. */
+
 #undef CONFIG_PWM
+#define CONFIG_PWM
 #undef CONFIG_PWM_KBLIGHT
 
 #undef CONFIG_UART_TX_BUF_SIZE
@@ -41,6 +44,13 @@ enum battery_type {
 	BATTERY_PANASONIC,
 	BATTERY_SANYO,
 	BATTERY_TYPE_COUNT,
+};
+
+enum pwm_channel {
+	PWM_CH_FAN,
+	PWM_CH_WITH_DSLEEP_FLAG,
+	/* Number of PWM channels */
+	PWM_CH_COUNT
 };
 
 #endif /* !__ASSEMBLER__ */
