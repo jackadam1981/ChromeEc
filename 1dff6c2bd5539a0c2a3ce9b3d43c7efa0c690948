@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f32ff7b7_d5f9f859",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T03:13:00Z",
+      "side": 1,
+      "message": "What are your thoughts on this?",
+      "range": {
+        "startLine": 12,
+        "startChar": 17,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "1dff6c2bd5539a0c2a3ce9b3d43c7efa0c690948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dec81d9_89f46c31",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-06T03:13:00Z",
+      "side": 1,
+      "message": "I think this may make the change to NvDeleteEntity in the other change redundant, but I\u0027m not confident of my understanding of how auth works. What do you think?",
+      "range": {
+        "startLine": 88,
+        "startChar": 30,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "1dff6c2bd5539a0c2a3ce9b3d43c7efa0c690948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
