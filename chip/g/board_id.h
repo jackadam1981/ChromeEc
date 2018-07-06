@@ -18,13 +18,25 @@ struct board_id {
 	uint32_t flags;		/* Flags */
 };
 
+/* Structure holding serial number bits */
+struct sn_bits {
+	uint32_t sn[2];
+};
+
 /* Info1 Board space contents. */
 struct info1_board_space {
 	struct board_id bid;
+	uint32_t padding;
+	struct sn_bits sn;
 };
 
-#define INFO_BOARD_ID_SIZE		sizeof(struct board_id)
-#define INFO_BOARD_SPACE_PROTECT_SIZE	16
+#define INFO_BOARD_ID_SIZE			sizeof(struct board_id)
+#define INFO_BOARD_SPACE_PROTECT_SIZE		16
+#define INFO_SN_BITS_SIZE			sizeof(struct sn_bits)
+#define INFO_BOARD_SPACE_SN_OFFSET		(INFO_BOARD_SPACE_OFFSET + \
+						 offsetof( \
+						 struct info1_board_space, sn))
+#define INFO_BOARD_SPACE_SN_PROTECT_SIZE	8
 
 /**
  * Check the current header vs. the supplied Board ID
@@ -63,6 +75,9 @@ uint32_t board_id_mismatch(const struct SignedHeader *h);
 
 BUILD_ASSERT((offsetof(struct info1_board_space, bid) & 3) == 0);
 BUILD_ASSERT((INFO_BOARD_ID_SIZE & 3) == 0);
-BUILD_ASSERT(sizeof(struct info1_board_space) <= INFO_BOARD_SPACE_PROTECT_SIZE);
+BUILD_ASSERT(INFO_BOARD_ID_SIZE <= INFO_BOARD_SPACE_PROTECT_SIZE);
+BUILD_ASSERT((offsetof(struct info1_board_space, sn) & 3) == 0);
+BUILD_ASSERT((INFO_SN_BITS_SIZE & 3) == 0);
+BUILD_ASSERT(INFO_SN_BITS_SIZE <= INFO_BOARD_SPACE_SN_PROTECT_SIZE);
 
 #endif  /* ! __EC_CHIP_G_BOARD_ID_H */
