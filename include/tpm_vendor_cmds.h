@@ -80,6 +80,11 @@ enum vendor_cmd_cc {
 	 * it will response with the current tpm_mode value in uint8_t format.
 	 */
 	VENDOR_CC_TPM_MODE = 40,
+	/*
+	 * Sets SN bits. Takes three integers as parameters, which are written
+	 * to INFO1.
+	 */
+	VENDOR_CC_SET_SN_BITS = 41,
 
 	LAST_VENDOR_COMMAND = 65535,
 };
