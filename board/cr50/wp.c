@@ -57,7 +57,7 @@ static void set_wp_state(int asserted)
  *
  * @return 0 if WP deasserted, 1 if WP asserted
  */
-static int get_wp_state(void)
+int get_wp_state(void)
 {
 	/* Signal is active low, so invert */
 	return !GREG32(RBOX, EC_WP_L);
