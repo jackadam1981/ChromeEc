@@ -201,7 +201,7 @@ int flash_physical_write(int offset, int size, const char *data)
 		return EC_ERROR_ACCESS_DENIED;
 
 	/* work on a single hardware bank at a time */
-	if ((offset + size) / HWBANK_SIZE != bank)
+	if ((offset + size - 1) / HWBANK_SIZE != bank)
 		return EC_ERROR_INVAL;
 
 	if (unlock(bank) != EC_SUCCESS)
@@ -271,7 +271,7 @@ int flash_physical_erase(int offset, int size)
 		return EC_ERROR_ACCESS_DENIED;
 
 	/* work on a single hardware bank at a time */
-	if ((offset + size) / HWBANK_SIZE != bank)
+	if ((offset + size - 1) / HWBANK_SIZE != bank)
 		return EC_ERROR_INVAL;
 
 	if (unlock(bank) != EC_SUCCESS)
