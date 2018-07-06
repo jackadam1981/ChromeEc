@@ -207,14 +207,32 @@ BUILD_ASSERT(SHA256_DIGEST_SIZE == CONFIG_ROLLBACK_SECRET_SIZE);
 static int rollback_update(int32_t next_min_version,
 			   uint8_t *entropy, unsigned int length)
 {
-	struct rollback_data data;
+#define ROLLBACK_BLOCK_PAD_SIZE						\
+	((CONFIG_FLASH_WRITE_SIZE *					\
+		DIV_ROUND_UP(sizeof(struct rollback_data),		\
+			CONFIG_FLASH_WRITE_SIZE)) -			\
+		sizeof(struct rollback_data))
+
+	/*
+	 * When doing flash_write operation, the data needs to be in blocks
+	 * of CONFIG_FLASH_WRITE_SIZE, pad rollback_data as required.
+	 */
+	struct {
+		struct rollback_data data;
+
+		uint8_t pad[ROLLBACK_BLOCK_PAD_SIZE];
+	} block;
+
+	struct rollback_data *data = &block.data;
 	uintptr_t offset;
 	int region;
+
+	memset(&block.pad, 0xff, ROLLBACK_BLOCK_PAD_SIZE);
 
 	if (flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_NOW)
 		return EC_ERROR_ACCESS_DENIED;
 
-	region = get_latest_rollback(&data);
+	region = get_latest_rollback(data);
 
 	if (region < 0)
 		return EC_ERROR_UNKNOWN;
@@ -222,17 +240,17 @@ static int rollback_update(int32_t next_min_version,
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 	if (entropy) {
 		/* Do not accept to decrease the value. */
-		if (next_min_version < data.rollback_min_version)
-			next_min_version = data.rollback_min_version;
+		if (next_min_version < data->rollback_min_version)
+			next_min_version = data->rollback_min_version;
 	} else
 #endif
 	{
 		/* Do not accept to decrease the value. */
-		if (next_min_version < data.rollback_min_version)
+		if (next_min_version < data->rollback_min_version)
 			return EC_ERROR_INVAL;
 
 		/* No need to update if version is already correct. */
-		if (next_min_version == data.rollback_min_version)
+		if (next_min_version == data->rollback_min_version)
 			return EC_SUCCESS;
 	}
 
@@ -241,19 +259,19 @@ static int rollback_update(int32_t next_min_version,
 
 	offset = get_rollback_offset(region);
 
-	data.id = data.id + 1;
-	data.rollback_min_version = next_min_version;
+	data->id = data->id + 1;
+	data->rollback_min_version = next_min_version;
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 	/*
 	 * If we are provided with some entropy, add it to secret. Otherwise,
 	 * data.secret is left untouched and written back to the other region.
 	 */
 	if (entropy) {
-		if (!add_entropy(data.secret, data.secret, entropy, length))
+		if (!add_entropy(data->secret, data->secret, entropy, length))
 			return EC_ERROR_UNCHANGED;
 	}
 #endif
-	data.cookie = CROS_EC_ROLLBACK_COOKIE;
+	data->cookie = CROS_EC_ROLLBACK_COOKIE;
 
 	/* Offset should never be part of active image. */
 	if (system_unsafe_to_overwrite(offset, CONFIG_FLASH_ERASE_SIZE))
@@ -262,7 +280,7 @@ static int rollback_update(int32_t next_min_version,
 	if (flash_erase(offset, CONFIG_FLASH_ERASE_SIZE))
 		return EC_ERROR_UNKNOWN;
 
-	if (flash_write(offset, sizeof(data), (char *)&data))
+	if (flash_write(offset, sizeof(block), (char *)&block))
 		return EC_ERROR_UNKNOWN;
 
 	return EC_SUCCESS;
