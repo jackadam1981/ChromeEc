@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8119878b_ce688d27",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:12:30Z",
+      "side": 1,
+      "message": "If you use unsigned types for these (say, uint32_t), you can get rid of some checks below.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439ce469_30d4d794",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:12:30Z",
+      "side": 1,
+      "message": "Instead, I\u0027d do:\n\nif (dst_offset + n \u003e\u003d config-\u003etx_size)\n   return -EC_ERROR_OVERFLOW;",
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa62a385_cc53890c",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:12:30Z",
+      "side": 1,
+      "message": "Not needed.\n\nn \u003d MIN(n, config-\u003etx_size - dst_offset);\n\u003d\u003e n \u003c (config-\u003etx_size - dst_offset)\n\u003d\u003e n \u003c config-\u003etx_size",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ca3560_fc068c6c",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:12:30Z",
+      "side": 1,
+      "message": "return an error",
+      "range": {
+        "startLine": 46,
+        "startChar": 64,
+        "endLine": 46,
+        "endChar": 69
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d272bc5_073ef81a",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:12:30Z",
+      "side": 1,
+      "message": "switched",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
