@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1064fa7_8e7f92c8",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "No need to init static variables to 0.\n\nAlso, please separate structure definition from variable definition, i.e.:\n\n\nstruct packet_header_t {\n..\n} __packed;\n\nstatic struct packet_header_t packet_header;",
+      "range": {
+        "startLine": 95,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef32335c_2dffd0f7",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "bug number",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c1b6a78_f301665e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "Does not seem useful",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 14
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10dae58b_6a2937bb",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "Why static? To save stack size?",
+      "range": {
+        "startLine": 951,
+        "startChar": 1,
+        "endLine": 951,
+        "endChar": 7
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d29a5e6a_19aa53c7",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "These are actually printed as a result of a console command, so I\u0027d be tempted to use ccprintf instead.",
+      "range": {
+        "startLine": 963,
+        "startChar": 2,
+        "endLine": 963,
+        "endChar": 9
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "913d2ef5_20c76997",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "I ponder if we should create new cputc/ccputc to avoid the temp buffer.",
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f603ce_dfa1a715",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "Store the result of get_heat_map_addr in a temp variable instead of calling it 3 times.",
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f1221f_e13baf8e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "T",
+      "range": {
+        "startLine": 998,
+        "startChar": 4,
+        "endLine": 998,
+        "endChar": 5
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d590157_777957a4",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "Which one are we planning to use? If \u003d\u003d 2, can we ask ST to provide the right format instead of having to scale stuff?",
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42a7286_3e3dba0a",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-07T07:32:24Z",
+      "side": 1,
+      "message": "Why don\u0027t we directly get spi_transaction to push the data into dest?",
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
