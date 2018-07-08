@@ -344,7 +344,6 @@ end_set_ec_rate_from_ap:
  * If interrupt is set: return the sampling rate requested by AP or EC.
  * If interrupt is not set and the sensor is in forced mode,
  * we return the rate needed to probe the sensor at the right ODR.
- * otherwise return the sampling rate requested by AP or EC.
  *
  * return rate in us.
  */
@@ -353,13 +352,18 @@ static int motion_sense_select_ec_rate(
 		enum sensor_config config_id,
 		int interrupt)
 {
-	if (interrupt == 0 && motion_sensor_in_forced_mode(sensor)) {
-		int rate_mhz = BASE_ODR(sensor->config[config_id].odr);
-		/* we have to run ec at the sensor frequency rate.*/
-		if (rate_mhz > 0)
-			return SECOND * 1000 / rate_mhz;
-		else
+	if (interrupt == 0) {
+		if (motion_sensor_in_forced_mode(sensor)) {
+			int rate_mhz = BASE_ODR(sensor->config[config_id].odr);
+			/* we have to run ec at the sensor frequency rate.*/
+			if (rate_mhz > 0)
+				return SECOND * 1000 / rate_mhz;
+			else
+				return 0;
+		} else {
+			/* The sensor will wake up the EC task. */
 			return 0;
+		}
 	} else {
 		return sensor->config[config_id].ec_rate;
 	}
@@ -412,9 +416,8 @@ static int motion_sense_set_motion_intervals(void)
 			continue;
 
 		sensor_ec_rate = motion_sense_ec_rate(sensor);
-		if (sensor_ec_rate == 0)
-			continue;
-		if (ec_rate == 0 || sensor_ec_rate < ec_rate)
+		if (ec_rate == 0 ||
+		    (sensor_ec_rate && sensor_ec_rate < ec_rate))
 			ec_rate = sensor_ec_rate;
 
 		sensor_ec_rate = motion_sense_select_ec_rate(
@@ -1014,9 +1017,6 @@ void motion_sense_task(void *u)
 			 */
 			wait_us = motion_interval -
 				(ts_end_task.val - ts_begin_task.val);
-
-			/* and it cannnot be negative */
-			wait_us = MAX(wait_us, 0);
 
 			/*
 			 * Guarantee some minimum delay to allow other lower
