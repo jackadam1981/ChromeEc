@@ -53,6 +53,15 @@ enum {
 	CHARGE_SUPPLIER_TEST_COUNT
 };
 
+/* Dummy sensors. */
+enum sensor_id {
+	BASE_ACCEL = 0,
+	LID_ACCEL,
+};
+
+/* Put them in force mode to avoid relying on sensor interrutps. */
+#define CONFIG_ACCEL_FORCE_MODE_MASK ((1 << BASE_ACCEL) | (1 << LID_ACCEL))
+
 /* Custom charge_manager priority table is defined in test code */
 extern const int supplier_priority[];
 

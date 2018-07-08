@@ -23,11 +23,15 @@
 extern enum chipset_state_mask sensor_active;
 extern unsigned motion_interval;
 
+
+/* Sensor frequency in mHz */
+#define TEST_LID_ODR 100000
+
 /*
  * Period in us for the motion task period.
  * The task will read the vectors at that interval
  */
-#define TEST_LID_EC_RATE (10 * MSEC)
+#define TEST_LID_EC_RATE (SECOND * 1000 / TEST_LID_ODR)
 
 /*
  * Time in ms to wait for the task to read the vectors.
@@ -90,7 +94,8 @@ const struct accelgyro_drv test_motion_sense = {
 };
 
 struct motion_sensor_t motion_sensors[] = {
-	{.name = "base",
+	[BASE_ACCEL] = {
+	 .name = "base",
 	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
 	 .chip = MOTIONSENSE_CHIP_LSM6DS0,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
@@ -99,28 +104,17 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = NULL,
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 119000 | ROUND_UP_FLAG,
-			 .ec_rate = TEST_LID_EC_RATE
+			 .odr = TEST_LID_ODR,
 		 },
-		 /* Used for double tap */
 		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 119000 | ROUND_UP_FLAG,
-			 .ec_rate = TEST_LID_EC_RATE * 100,
-		 },
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
+			 .odr = TEST_LID_ODR * 2,
 		 },
 	 },
 	},
-	{.name = "lid",
+	[LID_ACCEL] = {
+	 .name = "lid",
 	 .active_mask = SENSOR_ACTIVE_S0,
 	 .chip = MOTIONSENSE_CHIP_KXCJ9,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
@@ -129,24 +123,12 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = NULL,
 	 .default_range = 2,  /* g, enough for laptop. */
 	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 119000 | ROUND_UP_FLAG,
-			 .ec_rate = TEST_LID_EC_RATE,
+			 .odr = TEST_LID_ODR,
 		 },
-		 /* Used for double tap */
 		 [SENSOR_CONFIG_EC_S3] = {
-			 .odr = 200000 | ROUND_UP_FLAG,
-			 .ec_rate = TEST_LID_EC_RATE * 100,
-		 },
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
+			 .odr = TEST_LID_ODR * 2,
 		 },
 	 },
 	},
@@ -161,8 +143,6 @@ static void wait_for_valid_sample(void)
 	uint8_t *lpc_status = host_get_memmap(EC_MEMMAP_ACC_STATUS);
 
 	sample = *lpc_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK;
-	usleep(TEST_LID_EC_RATE);
-	task_wake(TASK_ID_MOTIONSENSE);
 	while ((*lpc_status & EC_MEMMAP_ACC_STATUS_SAMPLE_ID_MASK) == sample)
 		usleep(TEST_LID_SLEEP_RATE);
 }
@@ -186,7 +166,7 @@ static int test_lid_angle(void)
 	hook_notify(HOOK_CHIPSET_RESUME);
 	msleep(1000);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S0);
-	TEST_ASSERT(accel_get_data_rate(lid) == (119000 | ROUND_UP_FLAG));
+	TEST_ASSERT(accel_get_data_rate(lid) == TEST_LID_ODR);
 	TEST_ASSERT(motion_interval == TEST_LID_EC_RATE);
 
 	/*
@@ -201,10 +181,6 @@ static int test_lid_angle(void)
 	lid->xyz[Z] = -1000;
 	gpio_set_level(GPIO_LID_OPEN, 0);
 	/* Initial wake up, like init does */
-	task_wake(TASK_ID_MOTIONSENSE);
-
-	/* wait for the EC sampling period to expire   */
-	msleep(TEST_LID_EC_RATE);
 	task_wake(TASK_ID_MOTIONSENSE);
 
 	wait_for_valid_sample();
