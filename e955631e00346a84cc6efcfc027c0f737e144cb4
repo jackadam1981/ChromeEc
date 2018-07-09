@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "36699118_ff56389b",
+        "filename": "board/kukui_ev/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-09T01:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93332daa_94b69241",
+      "revId": "e955631e00346a84cc6efcfc027c0f737e144cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19652c85_6cbe1502",
         "filename": "chip/npcx/clock.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "e955631e00346a84cc6efcfc027c0f737e144cb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8183a3c8_46899aef",
+        "filename": "chip/npcx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-09T01:55:56Z",
+      "side": 1,
+      "message": "Oops. Delete this.",
+      "parentUuid": "19652c85_6cbe1502",
+      "revId": "e955631e00346a84cc6efcfc027c0f737e144cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
