@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e749886_9af1c4d2",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1064fa7_8e7f92c8",
+      "range": {
+        "startLine": 95,
+        "startChar": 25,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef32335c_2dffd0f7",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 22
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e60ce62e_c4330b06",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef32335c_2dffd0f7",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 15
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c1b6a78_f301665e",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 22
@@ -59,6 +107,30 @@
       "writtenOn": "2018-07-07T07:32:24Z",
       "side": 1,
       "message": "Does not seem useful",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 14
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2288e62_b8b668bd",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:38:01Z",
+      "side": 1,
+      "message": "This seems useless now, because the control flow will reach line 346 anyway.\nHowever, in the future, if we add another `if` branch, we need to go back here and figure out if we need this \"return\" or now.\nI think it would be more clear if we just add it now instead adding it later.",
+      "parentUuid": "4c1b6a78_f301665e",
       "range": {
         "startLine": 343,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "cf3735f5_42be926f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10dae58b_6a2937bb",
+      "range": {
+        "startLine": 951,
+        "startChar": 1,
+        "endLine": 951,
+        "endChar": 7
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d29a5e6a_19aa53c7",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 22
@@ -105,6 +201,30 @@
       "writtenOn": "2018-07-07T07:32:24Z",
       "side": 1,
       "message": "These are actually printed as a result of a console command, so I\u0027d be tempted to use ccprintf instead.",
+      "range": {
+        "startLine": 963,
+        "startChar": 2,
+        "endLine": 963,
+        "endChar": 9
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba73f91_1192c0b1",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:38:01Z",
+      "side": 1,
+      "message": "what do you mean?  CPRINTF is an alias of ccprintf.",
+      "parentUuid": "d29a5e6a_19aa53c7",
       "range": {
         "startLine": 963,
         "startChar": 2,
@@ -151,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "7ebff012_da36af21",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:38:01Z",
+      "side": 1,
+      "message": "it is declared as pure function, wouldn\u0027t compiler do this for me?",
+      "parentUuid": "a4f603ce_dfa1a715",
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93f1221f_e13baf8e",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 22
@@ -171,6 +309,30 @@
       "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1a779ef_de91f691",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93f1221f_e13baf8e",
+      "range": {
+        "startLine": 998,
+        "startChar": 4,
+        "endLine": 998,
+        "endChar": 5
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
