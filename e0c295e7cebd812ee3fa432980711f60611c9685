@@ -22,6 +22,29 @@
       "revId": "e0c295e7cebd812ee3fa432980711f60611c9685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6d752c_b483d966",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-09T21:57:13Z",
+      "side": 1,
+      "message": "is there a 256 and 512 version of dx and/or the bx? If not, can we keep bx and dx to imple the flash size?",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "e0c295e7cebd812ee3fa432980711f60611c9685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
