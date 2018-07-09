@@ -22,6 +22,30 @@
       "revId": "0ae02a45a6b770d5faf5b009829e285ad5c25256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82dab1ec_22593d86",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2018-07-09T19:15:56Z",
+      "side": 1,
+      "message": "FWIW, this is similar to what we\u0027ve done in the past to adjust for overshoot in the charger.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/428590/2/board/reef/board.c",
+      "parentUuid": "bb073c3f_ccf931eb",
+      "range": {
+        "startLine": 575,
+        "startChar": 4,
+        "endLine": 576,
+        "endChar": 41
+      },
+      "revId": "0ae02a45a6b770d5faf5b009829e285ad5c25256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
