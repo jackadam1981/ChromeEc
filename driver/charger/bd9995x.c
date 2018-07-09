@@ -35,6 +35,19 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+#ifdef CONFIG_BD9995X_DELAY_INPUT_PORT_SELECT
+/* Charge port is selected when VBUS is at least 10V */
+#define SELECT_INPUT_MIN_VOLTAGE 10000
+/* Sample VBUS every 100mS before charge port is selected */
+#define SELECT_INPUT_POLL_TIME (100*MSEC)
+/* Charge port is also selected if VBUS is not aleast 10V within 4s */
+#define SELECT_INPUT_TIMEOUT (40*SELECT_INPUT_POLL_TIME)
+static int port_update;
+static int select_update;
+static int select_input_port_update;
+static uint64_t select_input_port_timeout;
+#endif
+
 /* Charger parameters */
 static const struct charger_info bd9995x_charger_info = {
 	.name         = CHARGER_NAME,
@@ -1047,8 +1060,12 @@ int bd9995x_is_vbus_provided(enum bd9995x_charge_port port)
 
 	return !!reg;
 }
-
+#ifdef CONFIG_BD9995X_DELAY_INPUT_PORT_SELECT
+static int bd9995x_select_input_port_private(enum bd9995x_charge_port port,
+						int select)
+#else
 int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
+#endif
 {
 	int rv;
 	int reg;
@@ -1092,6 +1109,26 @@ select_input_port_exit:
 	mutex_unlock(&bd9995x_vin_mutex);
 	return rv;
 }
+#ifdef CONFIG_BD9995X_DELAY_INPUT_PORT_SELECT
+int bd9995x_select_input_port(enum bd9995x_charge_port port, int select)
+{
+	int ret = EC_SUCCESS;
+
+	if (select) {
+		port_update = port;
+		select_update = select;
+		select_input_port_timeout =
+			get_time().val + SELECT_INPUT_TIMEOUT;
+		select_input_port_update = 1;
+		task_wake(TASK_ID_USB_CHG);
+	} else {
+		select_input_port_update = 0;
+		ret = bd9995x_select_input_port_private(port, select);
+	}
+
+	return ret;
+}
+#endif
 
 #ifdef CONFIG_CHARGER_BATTERY_TSENSE
 int bd9995x_get_battery_temp(int *temp_ptr)
@@ -1192,6 +1229,10 @@ void usb_charger_task(void *u)
 	int vbus_reg, voltage;
 #endif
 
+#ifdef CONFIG_BD9995X_DELAY_INPUT_PORT_SELECT
+	select_input_port_update = 0;
+#endif
+
 	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
 		bc12_detected_type[port] = CHARGE_SUPPLIER_NONE;
 		bd9995x_enable_vbus_detect_interrupts(port, 1);
@@ -1269,6 +1310,34 @@ void usb_charger_task(void *u)
 		}
 
 		initialized = 1;
+#ifdef CONFIG_BD9995X_DELAY_INPUT_PORT_SELECT
+		if (select_input_port_update) {
+			if (sleep_usec == -1)
+				sleep_usec = SELECT_INPUT_POLL_TIME;
+
+			changed = 0;
+
+			/* Get VBUS voltage */
+			vbus_reg = (port_update == BD9995X_CHARGE_PORT_VBUS) ?
+						BD9995X_CMD_VBUS_VAL :
+						BD9995X_CMD_VCC_VAL;
+
+			if (ch_raw_read16(vbus_reg, &voltage,
+					BD9995X_EXTENDED_COMMAND))
+				voltage = 0;
+
+			/*
+			 * Wait until VBUS is greater than 10V or timeout
+			 * occurs.
+			 */
+			if (voltage > SELECT_INPUT_MIN_VOLTAGE ||
+				get_time().val > select_input_port_timeout) {
+				select_input_port_update = 0;
+				bd9995x_select_input_port_private(port_update,
+								select_update);
+			}
+		}
+#endif
 		/*
 		 * Re-read interrupt registers immediately if we got an
 		 * interrupt. We're dealing with multiple independent
