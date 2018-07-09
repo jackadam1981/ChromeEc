@@ -22,6 +22,30 @@
       "revId": "8529bf6775d1ee8f2e4166ba9c3c07696b5f5e05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e562ec3_946af14b",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T05:07:10Z",
+      "side": 1,
+      "message": "Apparently that\u0027s a GCC extension, so yes, it works...\n\nhttps://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html\n\nMaybe a union is slightly cleaner, then:\n\n#define ROLLBACK_BLOCK_SIZE\t\t\t\t\t\t\\\n\t(CONFIG_FLASH_WRITE_SIZE *\t\t\t\t\t\\\n\t\tDIV_ROUND_UP(sizeof(struct rollback_data),\t\t\\\n\t\t\tCONFIG_FLASH_WRITE_SIZE)\n\nunion {\n  struct rollback_data data;\n  uint8_t pad[ROLLBACK_BLOCK_SIZE];\n};\n\nBut then the memset below won\u0027t be as nice...\n\nmemset(\u0026block.pad[sizeof(struct rollback_data)], 0xff, ROLLBACK_BLOCK_SIZE-sizeof(struct rollback_data));\n\nIdeas welcome...",
+      "parentUuid": "c3f41f6a_7da89dbb",
+      "range": {
+        "startLine": 223,
+        "startChar": 14,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "8529bf6775d1ee8f2e4166ba9c3c07696b5f5e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
