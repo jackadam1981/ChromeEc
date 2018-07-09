@@ -136,6 +136,8 @@
 #undef CONFIG_ROLLBACK_UPDATE
 #endif
 
+#define CONFIG_RNG
+
 #define CONFIG_CMD_FLASH
 #define CONFIG_CMD_SPI_XFER
 
