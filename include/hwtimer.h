@@ -67,4 +67,5 @@ void hwtimer_setup_watchdog(void);
 /* Reset the watchdog timer, to avoid the watchdog warning */
 void hwtimer_reset_watchdog(void);
 
+void hwtimer_setup_vsync(void);
 #endif  /* __CROS_EC_HWTIMER_H */
