@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8c1e6e9_48590ca1",
+        "filename": "board/careena/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-09T17:42:40Z",
+      "side": 1,
+      "message": "we should make this common code instead of just for grunt/careena",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 10
+      },
+      "revId": "3fa9320dd4b3cf9c1a03b37d4eefa493caf54ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
