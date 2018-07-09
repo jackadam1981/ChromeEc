@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "161e5334_aff178d5",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T01:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8bad570_1b6f2129",
+      "range": {
+        "startLine": 212,
+        "startChar": 34,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ecbb6e8_8eb12ae9",
         "filename": "board/kukui/emmc.c",
         "patchSetId": 1
@@ -92,6 +116,30 @@
       "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f7a6ba_d74d3f9b",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T01:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d749b116_0d4620d7",
+      "range": {
+        "startLine": 136,
+        "startChar": 45,
+        "endLine": 136,
+        "endChar": 50
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -177,6 +225,30 @@
       "side": 1,
       "message": "Yes. There is a 32-bit FIFO, so that flushes it, and guarantees the line stays high (1). I\u0027ll add a comment.",
       "parentUuid": "42366c9f_17a60611",
+      "range": {
+        "startLine": 201,
+        "startChar": 32,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5786437_d23e2b79",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T01:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d2f863_e858a3c5",
       "range": {
         "startLine": 201,
         "startChar": 32,
@@ -318,6 +390,30 @@
       "side": 1,
       "message": "First DEC by 2 (command are 6 bytes only), then go forward.\n\nSo you have:\nffffffff \u003c\u003d (2) i \u003d RX_BUF_DEC_32(i, 2);\nffff40f0 \u003c\u003d (3) i after the loop\nf0f0f0fd \u003c\u003d (1) i before these 2 lines\nffffffff\n\nBut yes, we do not really need a loop, should be enough to dec by 2, and inc by 1 if the value is still ffffffff (or change the logic in parse_command to do that increment).",
       "parentUuid": "6646b441_da7f269b",
+      "range": {
+        "startLine": 270,
+        "startChar": 35,
+        "endLine": 270,
+        "endChar": 36
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecd1079b_484e149c",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T01:29:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10afd559_2df7bc2d",
       "range": {
         "startLine": 270,
         "startChar": 35,
