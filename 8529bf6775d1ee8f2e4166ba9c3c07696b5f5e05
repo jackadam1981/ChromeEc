@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3f41f6a_7da89dbb",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-09T05:00:25Z",
+      "side": 1,
+      "message": "could this ever be 0? if so, just checking the compiler is ok with 0 length arrays? (think they\u0027re technically not allowed in C?)",
+      "range": {
+        "startLine": 223,
+        "startChar": 14,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "8529bf6775d1ee8f2e4166ba9c3c07696b5f5e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
