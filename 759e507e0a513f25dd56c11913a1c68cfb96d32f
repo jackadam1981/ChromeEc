@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f0390e_2e460547",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-09T16:56:55Z",
+      "side": 1,
+      "message": "If you do want to land this, please use symbolic constants/enums so it\u0027s easier to tell what command is affected, and add a TODO: comment explaining why it\u0027s there.",
+      "range": {
+        "startLine": 708,
+        "startChar": 2,
+        "endLine": 708,
+        "endChar": 39
+      },
+      "revId": "759e507e0a513f25dd56c11913a1c68cfb96d32f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
