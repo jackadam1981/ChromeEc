@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef96507c_c7a5c3a5",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "If n \u003d\u003d 0 this is a no-op, so I\u0027d remove the if (n)",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 18
+      },
+      "revId": "39eb1aa2d34d1dfba886ed2822ddf61597e9cbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "292e4ed3_5f83b73e",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "nit: single :",
+      "range": {
+        "startLine": 27,
+        "startChar": 15,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "39eb1aa2d34d1dfba886ed2822ddf61597e9cbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60c077da_0892a3a8",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "well, that\u0027s a bad example, you want to check ret !\u003d sizeof(header)",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "39eb1aa2d34d1dfba886ed2822ddf61597e9cbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f89b879a_1b455ba9",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "nit: tab?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "39eb1aa2d34d1dfba886ed2822ddf61597e9cbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d61a1ed_2f92af9e",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "bytes that have been",
+      "range": {
+        "startLine": 41,
+        "startChar": 64,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "39eb1aa2d34d1dfba886ed2822ddf61597e9cbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d4279b_178f1310",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "depending",
+      "range": {
+        "startLine": 42,
+        "startChar": 44,
+        "endLine": 42,
+        "endChar": 51
+      },
+      "revId": "39eb1aa2d34d1dfba886ed2822ddf61597e9cbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ef380f_6202d90c",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "drop \"on\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 76,
+        "endLine": 47,
+        "endChar": 78
+      },
+      "revId": "39eb1aa2d34d1dfba886ed2822ddf61597e9cbb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

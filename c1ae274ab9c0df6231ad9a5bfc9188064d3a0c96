@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "c77941ca_2d39d5cd",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:32:39Z",
+      "side": 1,
+      "message": "Okay, if you think it\u0027s easier to have the caller do write(..., size) \u003d\u003d size.",
+      "parentUuid": "f10400fa_633c1078",
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa62a385_cc53890c",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 10
