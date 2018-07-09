@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c8aac57_8d05f0c4",
+        "filename": "board/it83xx_evb/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-09T22:29:05Z",
+      "side": 1,
+      "message": "I guess I didn\u0027t catch the bx vs dx here. As I mentioned in my reply to Jett\u0027s comment, I think just changing this to it8320_256 and it8320_512 is sufficient. If the bx vs dx matters down the road, we can modify it further.",
+      "parentUuid": "8295d4a3_bcb18982",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "e0c295e7cebd812ee3fa432980711f60611c9685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db6d752c_b483d966",
         "filename": "chip/it83xx/config_chip.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-09T21:57:13Z",
       "side": 1,
       "message": "is there a 256 and 512 version of dx and/or the bx? If not, can we keep bx and dx to imple the flash size?",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "e0c295e7cebd812ee3fa432980711f60611c9685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b4b983_641de9c7",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-09T22:29:05Z",
+      "side": 1,
+      "message": "I don\u0027t know if the bx vs dx has anything to do with flash size. I think we can remove the bx/dx designation. As of now this is the only place that is using CHIP_VARIANT.",
+      "parentUuid": "db6d752c_b483d966",
       "range": {
         "startLine": 71,
         "startChar": 12,
