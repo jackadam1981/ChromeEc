@@ -68,7 +68,13 @@
  * in order to emulate per-bank write-protection UNTIL REBOOT. The hardware
  * doesn't support a write-protect pin, and if we make the write-protection
  * permanent, it can't be undone easily enough to support RMA. */
+#if defined(CHIP_VARIANT_IT8320_512)
+#define CONFIG_FLASH_SIZE  0x00080000
+#elif defined(CHIP_VARIANT_IT8320_256)
 #define CONFIG_FLASH_SIZE  0x00040000
+#else
+#error "ITE chip variant not defined! Required for flash size."
+#endif
 
 /****************************************************************************/
 /* Define our flash layout. */

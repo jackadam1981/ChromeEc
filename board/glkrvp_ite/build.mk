@@ -9,7 +9,7 @@
 #it8320
 CHIP:=it83xx
 CHIP_FAMILY:=it8320
-CHIP_VARIANT:=it8320bx
+CHIP_VARIANT:=it8320_256
 
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
