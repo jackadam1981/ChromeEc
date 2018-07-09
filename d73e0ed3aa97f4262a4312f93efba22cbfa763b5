@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4f11c085_e64ff61a",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-09T02:02:05Z",
+      "side": 1,
+      "message": "sounds like a pretty good reason!",
+      "parentUuid": "071580b6_fb40ca7e",
+      "range": {
+        "startLine": 195,
+        "startChar": 51,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42366c9f_17a60611",
         "filename": "board/kukui/emmc.c",
         "patchSetId": 1
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "10afd559_2df7bc2d",
+      "range": {
+        "startLine": 270,
+        "startChar": 35,
+        "endLine": 270,
+        "endChar": 36
+      },
+      "revId": "d73e0ed3aa97f4262a4312f93efba22cbfa763b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ebb7375_ba516cbd",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-09T02:02:05Z",
+      "side": 1,
+      "message": "oh sorry sorry I didn\u0027t notice it\u0027s RX_BUF_NEXT_32 rather than RX_BUF_PREV_32.. update looks good!",
+      "parentUuid": "ecd1079b_484e149c",
       "range": {
         "startLine": 270,
         "startChar": 35,
