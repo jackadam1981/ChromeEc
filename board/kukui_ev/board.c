@@ -4,6 +4,7 @@
  */
 /* Kukui eMMC emulator board configuration */
 
+#include "chip/stm32/registers.h"
 #include "clock.h"
 #include "common.h"
 #include "dma.h"
@@ -41,6 +42,16 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_PWM - 1);
 
 void board_config_pre_init(void)
 {
-	/* enable SYSCFG clock */
+	/* enable SYSCFG clock TIM2 */
 	STM32_RCC_APB1ENR |= 1 << 0;
 }
+
+/******************************************************************************
+ * Initialize vsync timer.
+ */
+
+static void vsync_timer_init(void)
+{
+	hwtimer_setup_vsync();
+}
+DECLARE_HOOK(HOOK_INIT, vsync_timer_init, HOOK_PRIO_INIT_PWM + 1);

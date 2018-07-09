@@ -8,6 +8,7 @@
 #include "clock.h"
 #include "clock-f.h"
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "panic.h"
@@ -15,6 +16,10 @@
 #include "task.h"
 #include "timer.h"
 #include "watchdog.h"
+
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 #define IRQ_TIM(n) CONCAT2(STM32_IRQ_TIM, n)
 
@@ -287,3 +292,52 @@ void hwtimer_reset_watchdog(void)
 }
 
 #endif  /* CONFIG_WATCHDOG_HELP */
+
+void __hw_clock_vsync_source_irq(void)
+{
+	/* Clear status */
+	STM32_TIM_SR(TIM_VSYNC) = 0;
+	CPRINTS("invoke vsync task");
+}
+DECLARE_IRQ(IRQ_TIM(TIM_VSYNC), __hw_clock_vsync_source_irq, 1);
+
+void hwtimer_setup_vsync(void)
+{
+	CPRINTF("VSYNC INIT\n");
+
+	/* Enable TIM peripheral block clocks */
+	__hw_timer_enable_clock(TIM_VSYNC, 1);
+	/* Delay 1 APB clock cycle after the clock is enabled */
+	clock_wait_bus_cycles(BUS_APB, 1);
+
+	/*
+	 * Timer configuration : Upcounter, counter disabled, update event only
+	 * on overflow.
+	 */
+	STM32_TIM_CR1(TIM_VSYNC) = 0x0004;
+	/* No special configuration */
+	STM32_TIM_CR2(TIM_VSYNC) = 0x0000;
+	STM32_TIM_SMCR(TIM_VSYNC) = 0x0000;
+
+	/* Auto-reload value : free-running counter */
+	STM32_TIM_ARR(TIM_VSYNC) = 999;
+
+	/* Update prescaler to increment every microsecond */
+	STM32_TIM_PSC(TIM_VSYNC) = (clock_get_timer_freq() / MSEC) - 1;
+
+	/* Reload the pre-scaler */
+	STM32_TIM_EGR(TIM_VSYNC) = 0x0001;
+
+	/* Set up the overflow interrupt */
+	STM32_TIM_DIER(TIM_VSYNC) = 0x0001;
+
+	/* Start counting */
+	STM32_TIM_CR1(TIM_VSYNC) |= 1;
+
+	/* Override the count with the start value now that counting has
+	 * started. */
+	STM32_TIM_CNT(TIM_VSYNC) = 0;
+
+	/* Enable timer interrupts */
+	task_enable_irq(IRQ_TIM(TIM_VSYNC));
+}
