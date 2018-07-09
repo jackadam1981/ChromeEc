@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "1c55c35c_b3391c67",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2288e62_b8b668bd",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 14
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10dae58b_6a2937bb",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 22
@@ -237,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "4cbe483c_e4e6bc67",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "no.\n\nHere: CPRINTF(format, args...) cprintf(CC_TOUCHPAD, format, ## args)\n\nccprintf prints on the console channel (see chan command). Now we disabled all that on hammer and derivative, so probably does not matter.",
+      "parentUuid": "8ba73f91_1192c0b1",
+      "range": {
+        "startLine": 963,
+        "startChar": 2,
+        "endLine": 963,
+        "endChar": 9
+      },
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "913d2ef5_20c76997",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 22
@@ -283,6 +331,24 @@
       "side": 1,
       "message": "it is declared as pure function, wouldn\u0027t compiler do this for me?",
       "parentUuid": "a4f603ce_dfa1a715",
+      "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2add9554_2c411e9c",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "Dunno, probably, hopefully... Check the assembly?",
+      "parentUuid": "7ebff012_da36af21",
       "revId": "d957cfcd83f989af862096b50786d03d93b3c16b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

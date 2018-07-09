@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c1c05b3_902d0c94",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "nit: both slots are empty",
+      "range": {
+        "startLine": 250,
+        "startChar": 42,
+        "endLine": 250,
+        "endChar": 60
+      },
+      "revId": "d55f624a09f977b3c6c148b377c0484d2b298fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52eb57c2_6fa980b6",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "Why the cast?",
+      "range": {
+        "startLine": 254,
+        "startChar": 7,
+        "endLine": 254,
+        "endChar": 15
+      },
+      "revId": "d55f624a09f977b3c6c148b377c0484d2b298fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73910fab_759f721b",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "I don\u0027t think you need atomic_add for spi_buffer_index (see below for similar note about usb_buffer_index).",
+      "revId": "d55f624a09f977b3c6c148b377c0484d2b298fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e787671a_b39cc4e7",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "Fix this.\n\nAlso, if I understand, you\u0027d keep calling usb_isochronous_write_buffer even though there is no more space in the buffer?",
+      "range": {
+        "startLine": 1111,
+        "startChar": 6,
+        "endLine": 1111,
+        "endChar": 13
+      },
+      "revId": "d55f624a09f977b3c6c148b377c0484d2b298fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ef42ac_fee7ea49",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "nit: `(uint8_t *)packet + transmit_report_offset`",
+      "range": {
+        "startLine": 1120,
+        "startChar": 4,
+        "endLine": 1120,
+        "endChar": 50
+      },
+      "revId": "d55f624a09f977b3c6c148b377c0484d2b298fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38295e41_213231f0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1125,
+        "startChar": 6,
+        "endLine": 1125,
+        "endChar": 14
+      },
+      "revId": "d55f624a09f977b3c6c148b377c0484d2b298fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1bd498_f079fdeb",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:50:25Z",
+      "side": 1,
+      "message": "I don\u0027t think you need the atomic here.\n\nYou only increment usb_buffer_index either here, or above when debug mode is enabled (but you won\u0027t do both concurrently), so just doing usb_buffer_index++ is fine.",
+      "range": {
+        "startLine": 1133,
+        "startChar": 3,
+        "endLine": 1133,
+        "endChar": 36
+      },
+      "revId": "d55f624a09f977b3c6c148b377c0484d2b298fce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
