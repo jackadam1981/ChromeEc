@@ -17,6 +17,7 @@
 #include "hwtimer_chip.h"
 #include "registers.h"
 #include "system.h"
+#include "stm32/
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
