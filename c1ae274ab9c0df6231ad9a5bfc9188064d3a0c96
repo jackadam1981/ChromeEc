@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f0a60e2_2729f78b",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8119878b_ce688d27",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "439ce469_30d4d794",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 10
@@ -36,6 +60,24 @@
       "writtenOn": "2018-07-07T07:12:30Z",
       "side": 1,
       "message": "Instead, I\u0027d do:\n\nif (dst_offset + n \u003e\u003d config-\u003etx_size)\n   return -EC_ERROR_OVERFLOW;",
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f10400fa_633c1078",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:34:53Z",
+      "side": 1,
+      "message": "Since the return value on success is number of bytes written, I would expect it behaves like `write(2)` function: \n\n  On success, the number of bytes written is returned (zero indicates nothing was written).  It is not an error if this number is smaller than the number of bytes requested.",
+      "parentUuid": "439ce469_30d4d794",
       "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "b6de5be8_ae447724",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa62a385_cc53890c",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61ca3560_fc068c6c",
         "filename": "chip/stm32/usb_isochronous.h",
         "patchSetId": 10
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "316d64d4_12e29c3c",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ca3560_fc068c6c",
+      "range": {
+        "startLine": 46,
+        "startChar": 64,
+        "endLine": 46,
+        "endChar": 69
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d272bc5_073ef81a",
         "filename": "chip/stm32/usb_isochronous.h",
         "patchSetId": 10
@@ -108,6 +198,30 @@
       "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a324e275_ffafea45",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-09T03:34:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d272bc5_073ef81a",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
