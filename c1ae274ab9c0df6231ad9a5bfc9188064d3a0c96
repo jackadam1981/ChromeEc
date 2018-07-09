@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "4f1278d3_4e5c4fb3",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-09T04:42:16Z",
+      "side": 1,
+      "message": "I see how you use it in the next CL, makes sense.",
+      "parentUuid": "c77941ca_2d39d5cd",
+      "revId": "c1ae274ab9c0df6231ad9a5bfc9188064d3a0c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa62a385_cc53890c",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 10
