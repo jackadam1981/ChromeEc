@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "672e60d8_d4063228",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-10T16:44:55Z",
+      "side": 1,
+      "message": "\u003e So we are intentionally waking on rising edge?\n\nWe can select only one of the two i.e. rising or falling edge: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/system-npcx7.c#70\n\n\u003e And why is MECH_PWR_BTN not marked with HIB_WAKE_LOW?\n\nBy default, the assumption is that a pin is HIB_WAKE_LOW if GPIO_HIB_WAKE_HIGH is not set.\n\n\u003e  Are we only waking on rising edge of that?\n\nWe wake on falling edge. Way to verify this:\nOn EC console: hibernate\nIn chroot: dut-control pwr_button:press\n\nThis wakes the EC up from PSL hibernate.",
+      "parentUuid": "89e67d4a_017ff126",
+      "revId": "66d217cbf409de9c8fce13bd0b04efd2959f4569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1122856c_c63d7828",
         "filename": "board/phaser/gpio.inc",
         "patchSetId": 1
