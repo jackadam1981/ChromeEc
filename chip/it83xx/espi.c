@@ -435,8 +435,10 @@ static void espi_enable_reset(void)
 	 * 11b: reset is disabled.
 	 */
 	if (espi_rst->port == GPIO_D && espi_rst->mask == (1 << 2)) {
+		gpio_set_alternate_function(GPIO_D, (1 << 2), 0);
 		IT83XX_GPIO_GCR = (IT83XX_GPIO_GCR & ~0x6) | (1 << 2);
 	} else if (espi_rst->port == GPIO_B && espi_rst->mask == (1 << 7)) {
+		gpio_set_alternate_function(GPIO_B, (1 << 7), 0);
 		IT83XX_GPIO_GCR = (IT83XX_GPIO_GCR & ~0x6) | (1 << 1);
 	} else {
 		IT83XX_GPIO_GCR |= 0x6;
