@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b5b81ed_afb0521c",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-10T14:47:42Z",
+      "side": 1,
+      "message": "I don\u0027t understand the INT_RISING requirement. Is that the only way to wake the EC? On a rising signal? If so, then I think we need an inverter. Or are you saying this works and wake from hibernate is just like a reset so we start from RO and do all our initialization that way?",
+      "revId": "66d217cbf409de9c8fce13bd0b04efd2959f4569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
