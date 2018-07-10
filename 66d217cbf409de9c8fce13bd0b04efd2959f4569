@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "9e20d5f1_7c520eaf",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-10T17:01:40Z",
+      "side": 1,
+      "message": "\u003e \u003e So we are intentionally waking on rising edge?\n\u003e \n\u003e We can select only one of the two i.e. rising or falling edge: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/system-npcx7.c#70\n\nOK. By why rising? Just so we don\u0027t double reset? VCC1_RST# being driven low and waking all at the same time?\n\n\u003e \n\u003e \u003e And why is MECH_PWR_BTN not marked with HIB_WAKE_LOW?\n\u003e \n\u003e By default, the assumption is that a pin is HIB_WAKE_LOW if GPIO_HIB_WAKE_HIGH is not set.\n\nI see. That\u0027s not very descriptive when looking at this gpio.inc. We should probably mark it up as such.\n\n\u003e \n\u003e \u003e  Are we only waking on rising edge of that?\n\u003e \n\u003e We wake on falling edge. Way to verify this:\n\u003e On EC console: hibernate\n\u003e In chroot: dut-control pwr_button:press\n\u003e \n\u003e This wakes the EC up from PSL hibernate.",
+      "parentUuid": "672e60d8_d4063228",
+      "revId": "66d217cbf409de9c8fce13bd0b04efd2959f4569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1122856c_c63d7828",
         "filename": "board/phaser/gpio.inc",
         "patchSetId": 1
