@@ -38,19 +38,19 @@ extern struct ec_response_battery_dynamic_info
 /*
  * Send battery-low host event when discharging and battery level <= this level
  */
-#define BATTERY_LEVEL_LOW		 10
+#define BATTERY_LEVEL_LOW		 0
 
 /*
  * Send battery-critical host event when discharging and battery level <= this
  * level.
  */
-#define BATTERY_LEVEL_CRITICAL		  5
+#define BATTERY_LEVEL_CRITICAL		  0
 
 /*
  * Shut down main processor and/or hibernate EC when discharging and battery
  * level < this level.
  */
-#define BATTERY_LEVEL_SHUTDOWN		  3
+#define BATTERY_LEVEL_SHUTDOWN		  0
 
 /*
  * Sometimes we have hardware to detect battery present, sometimes we have to
