@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ef2a0ef_d0176a4b",
+        "filename": "power/icelake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-10T17:13:51Z",
+      "side": 1,
+      "message": "should we use a deadline of 50ms instead of sleep at least 50 ms? Otherwise, we could sleep much longer than 50 ms if another task was hogging the EC; thoughts?",
+      "range": {
+        "startLine": 33,
+        "startChar": 49,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "59919fe5640443769a795a54b6b9a840b47332fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d12020b9_1cb26848",
+        "filename": "power/icelake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-10T17:13:51Z",
+      "side": 1,
+      "message": "similar comment about deadline and sleeps",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 16
+      },
+      "revId": "59919fe5640443769a795a54b6b9a840b47332fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
