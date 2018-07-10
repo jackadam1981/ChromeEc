@@ -72,6 +72,14 @@ GPIO(EN_P3300_TRACKPAD_ODL,	PIN(3, 3), GPIO_ODR_HIGH)
 GPIO(EC_BATT_PRES_L, 	 PIN(E, 5), GPIO_INPUT)
 
 /*
+ * EC_RST_ODL acts as a wake source from PSL hibernate mode. However, it does
+ * not need to be an interrupt for normal EC operations. Thus, configure it as
+ * GPIO_INPUT with GPIO_INT_RISING flag set so that PSL common code can
+ * configure PSL_IN pin correctly.
+ */
+GPIO(EC_RST_ODL,	PIN(0, 2), GPIO_INPUT | GPIO_INT_RISING)
+
+/*
  * PCH_PROCHOT_ODL is primarily for monitoring the PROCHOT# signal which is
  * normally driven by the PMIC. The EC can also drive this signal in the event
  * that the ambient or charger temperature sensors exceeds their thresholds.
@@ -148,5 +156,6 @@ ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)		/* PWM3: KB_BL_PWM */
 
 /* Power Switch Logic (PSL) inputs */
 ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, 0)		/* GPIOD2 = LID_OPEN */
-ALTERNATE(PIN_MASK(0, 0x03), 0, MODULE_PMU, 0)		/* GPIO00 = ACOK_OD,
-							   GPIO01 = MECH_PWR_BTN_ODL */
+ALTERNATE(PIN_MASK(0, 0x07), 0, MODULE_PMU, 0)		/* GPIO00 = ACOK_OD,
+							   GPIO01 = MECH_PWR_BTN_ODL
+							   GPIO02 = EC_RST_ODL */
