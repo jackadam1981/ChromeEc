@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "186d6c24_02dd9f81",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-10T18:10:14Z",
+      "side": 1,
+      "message": "\u003e \n\u003e Yes. My idea is that the EC comes out of hibernate only when EC_RST_ODL is de-asserted.\n\u003e \n\u003e Ideally it should not be a problem even if we wake the EC from hibernate on falling edge because it will cause the EC to come out of hibernate and be held in reset until the signal is de-asserted. I was just worried if this could lead to any race conditions. Probably not?\n\u003e \n\u003e Actually giving it some more thought, if we were in this situation:\n\u003e 1. EC goes into PSL hibernate\n\u003e 2. Now H1 or servo asserts EC_RST_ODL\n\u003e \n\u003e At this point, H1 or servo expects the EC to be held in reset and not hibernate. But from EC\u0027s standpoint, all of the EC except PSL is held in reset. Even though most of EC is held in reset, it seems logically correct to wake on falling edge so that entire EC can be held in reset. Thoughts?\n\u003e \n\nThat was what I was originally thinking this CL was trying to do. But if hibernate (w/ VCC1 off) is the equivalent of holding VCC1_RST# asserted then I don\u0027t care either way. \n\nI think the way you have it should be ok as long as VCC1 goes through a POR and all of the AP side of things stay down (which is what I expect) because of VCC1 dropping out. I think it\u0027s important to put in comments what the intent is and *why* which is what you explained above. That way it\u0027s abundantly clear to the reader what\u0027s going on.",
+      "parentUuid": "222c48a3_0c204be8",
+      "revId": "66d217cbf409de9c8fce13bd0b04efd2959f4569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1122856c_c63d7828",
         "filename": "board/phaser/gpio.inc",
         "patchSetId": 1
