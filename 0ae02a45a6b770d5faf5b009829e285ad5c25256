@@ -46,6 +46,30 @@
       "revId": "0ae02a45a6b770d5faf5b009829e285ad5c25256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057f1689_0f0159b8",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-10T06:20:15Z",
+      "side": 1,
+      "message": "As mentioned offline, decreasing the input current register setting will cause it to draw less current.",
+      "parentUuid": "82dab1ec_22593d86",
+      "range": {
+        "startLine": 575,
+        "startChar": 4,
+        "endLine": 576,
+        "endChar": 41
+      },
+      "revId": "0ae02a45a6b770d5faf5b009829e285ad5c25256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
