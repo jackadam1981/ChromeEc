@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cd47cbd_74ed1dbf",
+        "filename": "common/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-11T16:01:12Z",
+      "side": 1,
+      "message": "Why not just make it a static decision based on CONFIG_EXTERNAL_STORAGE ? Or a better proxy. It\u0027s already a static calculation in get_feature_flags1(). This is just adding code?",
+      "revId": "b3079549cde6253d1af8b152bc5c638384a73213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
