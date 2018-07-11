@@ -304,8 +304,14 @@ static int check_chipid(struct ftdi_context *ftdi)
 		fprintf(stderr, "Invalid chip id: %04x\n", id);
 		return -EINVAL;
 	}
-	/* compute embedded flash size from CHIPVER field */
-	flash_size = (128 + (ver & 0xF0)) * 1024;
+	if (ver == 0x83) {
+		printf("\nChip Ver = 0x%02x, forcing 512k flash size\n",
+		       ver);
+		flash_size = (512) * 1024;
+	} else {
+		/* compute embedded flash size from CHIPVER field */
+		flash_size = (128 + (ver & 0xF0)) * 1024;
+	}
 
 	printf("CHIPID %04x, CHIPVER %02x, Flash size %d kB\n", id, ver,
 			flash_size / 1024);
