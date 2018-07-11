@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "61bdf84d_3d943446",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T06:17:03Z",
+      "side": 1,
+      "message": "Ack. I think what I had in mind is that we would not even need to call this every second (saves a tiny bit of power...)\n\nBut I agree that what we have here seems simpler, let\u0027s just go for that for now.",
+      "parentUuid": "34c4cbf3_33550e97",
+      "revId": "4fd0d398101ced43e3004406b72bb8868025dd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e0b4469_16fa4e9b",
         "filename": "board/kukui/led.c",
         "patchSetId": 5
