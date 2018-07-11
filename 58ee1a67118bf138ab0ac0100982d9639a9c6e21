@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c920e2b_7aba7ed4",
+        "filename": "core/nds32/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-11T13:11:00Z",
+      "side": 1,
+      "message": "Is this disabling the ROM code, or setting the ROM address to a \"don\u0027t care\" location?",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "58ee1a67118bf138ab0ac0100982d9639a9c6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
