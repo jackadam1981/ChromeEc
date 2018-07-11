@@ -22,6 +22,30 @@
       "revId": "58ee1a67118bf138ab0ac0100982d9639a9c6e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a3e799_ffa542d0",
+        "filename": "core/nds32/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-11T16:04:09Z",
+      "side": 1,
+      "message": "I interpreted this as moving the base address for the ROM from the default of 0x070000 to 0x080000.\n\nShould we remove the (disabled) commented, or is it truly disabled at the higher memory location?",
+      "parentUuid": "4c920e2b_7aba7ed4",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "58ee1a67118bf138ab0ac0100982d9639a9c6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
