@@ -69,6 +69,30 @@
       "revId": "819ee4f7da04ad69bd87b76595fb75578eee376d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac8fb5e_93b85e7c",
+        "filename": "board/meowth_fp/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T22:36:50Z",
+      "side": 1,
+      "message": "TBH it\u0027s just for the simplicity of not having a gap in the regions.\n\nI don\u0027t think it makes any difference.",
+      "parentUuid": "fea6e974_f3341d80",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "819ee4f7da04ad69bd87b76595fb75578eee376d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
