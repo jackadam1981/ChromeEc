@@ -159,7 +159,7 @@ static int rt946x_block_write(int reg, const uint8_t *val, int len)
 	return rv;
 }
 
-static int rt946x_update_bits(int reg, int mask, int val)
+int rt946x_update_bits(int reg, int mask, int val)
 {
 	int rv;
 	int reg_val = 0;
@@ -981,3 +981,131 @@ int rt946x_enable_charge_termination(int en)
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_CHGCTRL2, RT946X_MASK_TE);
 }
+
+#ifdef CONFIG_CHARGER_MT6370
+/* MT6370 RGB LED */
+
+int mt6370_led_set_dim_mode(enum mt6370_led_index index,
+			    enum mt6370_led_dim_mode mode)
+{
+	int reg;
+
+	switch (index) {
+	case MT6370_LED_ID1:
+		reg = MT6370_REG_RGB1DIM;
+		break;
+	case MT6370_LED_ID2:
+		reg = MT6370_REG_RGB2DIM;
+		break;
+	case MT6370_LED_ID3:
+		reg = MT6370_REG_RGB3DIM;
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+
+	rt946x_update_bits(reg,
+			   MT6370_MASK_RGB_DIMMODE,
+			   mode << MT6370_SHIFT_RGB_DIMMODE);
+	return EC_SUCCESS;
+}
+
+int mt6370_led_set_color(enum mt6370_led_index index)
+{
+	switch (index) {
+	case MT6370_LED_ID_OFF:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN, 0);
+		break;
+	case MT6370_LED_ID1:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN,
+				   1 << MT6370_SHIFT_RGB_ISNK1DIM);
+		break;
+	case MT6370_LED_ID2:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN,
+				   1 << MT6370_SHIFT_RGB_ISNK2DIM);
+		break;
+	case MT6370_LED_ID3:
+		rt946x_update_bits(MT6370_REG_RGBEN,
+				   MT6370_MASK_RGB_ISNK_ALL_EN,
+				   1 << MT6370_SHIFT_RGB_ISNK3DIM);
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+	return EC_SUCCESS;
+}
+
+int mt6370_led_set_brightness(enum mt6370_led_index index, uint8_t brightness)
+{
+	int reg;
+
+	switch (index) {
+	case MT6370_LED_ID1:
+		reg = MT6370_REG_RGB1ISNK;
+		break;
+	case MT6370_LED_ID2:
+		reg = MT6370_REG_RGB2ISNK;
+		break;
+	case MT6370_LED_ID3:
+		reg = MT6370_REG_RGB3ISNK;
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+	rt946x_update_bits(reg,
+			   MT6370_MASK_RGBISNK_CURSEL,
+			   brightness << MT6370_SHIFT_RGBISNK_CURSEL);
+	return EC_SUCCESS;
+}
+
+int mt6370_led_set_pwm_dim_duty(enum mt6370_led_index index, uint8_t dim_duty)
+{
+	int reg;
+
+	switch (index) {
+	case MT6370_LED_ID1:
+		reg = MT6370_REG_RGB1DIM;
+		break;
+	case MT6370_LED_ID2:
+		reg = MT6370_REG_RGB2DIM;
+		break;
+	case MT6370_LED_ID3:
+		reg = MT6370_REG_RGB3DIM;
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+
+	rt946x_update_bits(reg,
+			   MT6370_MASK_RGB_DIMDUTY,
+			   dim_duty << MT6370_SHIFT_RGB_DIMDUTY);
+	return EC_SUCCESS;
+}
+
+int mt6370_led_set_pwm_frequency(enum mt6370_led_index index,
+				 enum mt6370_led_pwm_freq freq)
+{
+	int reg;
+
+	switch (index) {
+	case MT6370_LED_ID1:
+		reg = MT6370_REG_RGB1ISNK;
+		break;
+	case MT6370_LED_ID2:
+		reg = MT6370_REG_RGB2ISNK;
+		break;
+	case MT6370_LED_ID3:
+		reg = MT6370_REG_RGB3ISNK;
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+	rt946x_update_bits(reg,
+			   MT6370_MASK_RGBISNK_DIMFSEL,
+			   freq << MT6370_SHIFT_RGBISNK_DIMFSEL);
+	return EC_SUCCESS;
+}
+#endif

@@ -118,6 +118,17 @@
 #define RT946X_REG_CHGNTC		0X4B
 #define RT946X_REG_ADCDATAH		0X4C
 #define RT946X_REG_ADCDATAL		0X4D
+/* RGB led */
+#define MT6370_REG_RGB1DIM		0x82
+#define MT6370_REG_RGB2DIM		0x83
+#define MT6370_REG_RGB3DIM		0x84
+#define MT6370_REG_RGBEN		0x85
+#define MT6370_REG_RGB1ISNK		0x86
+#define MT6370_REG_RGB2ISNK		0x87
+#define MT6370_REG_RGB3ISNK		0x88
+#define MT6370_REG_RGBCHRINDDIM		0x92
+#define MT6370_REG_RGBCHRINDCTRL	0x93
+
 #define RT946X_REG_DPDMIRQ		0xC6
 /* status event */
 #define MT6370_REG_CHGSTAT1		0xD0
@@ -366,6 +377,41 @@
 #define RT946X_MASK_DPDMIRQ_ATTACH	(1 << RT946X_SHIFT_DPDMIRQ_ATTACH)
 #endif
 
+/* ========== RGBDIM 0x82/0x83/0x84 (mt6370) ============ */
+#define MT6370_RGB_ISNKDIMMODE_PWM	0x03
+#define MT6370_RGB_ISNKDIMMODE_REG	0x02
+#define MT6370_RGB_ISNKDIMMODE_BREATH	0x01
+
+#define MT6370_LED_PWM_DIMDUTY_MIN	0
+#define MT6370_LED_PWM_DIMDUTY_MAX	31
+
+#define MT6370_SHIFT_RGB_DIMMODE	5
+#define MT6370_SHIFT_RGB_DIMDUTY	0
+
+#define MT6370_MASK_RGB_DIMMODE		(3 << MT6370_SHIFT_RGB_DIMMODE)
+#define MT6370_MASK_RGB_DIMDUTY		(31 << MT6370_SHIFT_RGB_DIMDUTY)
+
+/* ========== RGBEN 0x85 (mt6370) ============ */
+#define MT6370_SHIFT_RGB_ISNK1DIM	7
+#define MT6370_SHIFT_RGB_ISNK2DIM	6
+#define MT6370_SHIFT_RGB_ISNK3DIM	5
+
+#define MT6370_MASK_RGB_ISNK_ALL_EN	(MT6370_MASK_RGB_ISNK1DIM_EN | \
+					 MT6370_MASK_RGB_ISNK2DIM_EN | \
+					 MT6370_MASK_RGB_ISNK3DIM_EN)
+#define MT6370_MASK_RGB_ISNK1DIM_EN	(1 << MT6370_SHIFT_RGB_ISNK1DIM)
+#define MT6370_MASK_RGB_ISNK2DIM_EN	(1 << MT6370_SHIFT_RGB_ISNK2DIM)
+#define MT6370_MASK_RGB_ISNK3DIM_EN	(1 << MT6370_SHIFT_RGB_ISNK3DIM)
+
+/* ========== RGB_ISNK 0x86/0x87/0x88 (mt6370) ============ */
+#define MT6370_LED_BRIGHTNESS_MIN 0
+#define MT6370_LED_BRIGHTNESS_MAX 7
+
+#define MT6370_SHIFT_RGBISNK_CURSEL	0
+#define MT6370_SHIFT_RGBISNK_DIMFSEL	3
+#define MT6370_MASK_RGBISNK_CURSEL	(0x7 << MT6370_SHIFT_RGBISNK_CURSEL)
+#define MT6370_MASK_RGBISNK_DIMFSEL	(0x7 << MT6370_SHIFT_RGBISNK_DIMFSEL)
+
 /* ========== CHGSTAT2 0xD1 (mt6370) ============ */
 #ifdef CONFIG_CHARGER_MT6370
 #define MT6370_SHIFT_CHG_VBUSOV_STAT	7
@@ -396,6 +442,9 @@
 
 /* RT946x specific interface functions */
 
+/* Update register bits. Returns 0 if success. */
+int rt946x_update_bits(int reg, int mask, int val);
+
 /* Interrupt handler for rt946x */
 void rt946x_interrupt(enum gpio_signal signal);
 
@@ -419,5 +468,49 @@ int rt946x_cutoff_battery(void);
 
 /* Enable/Disable charge temination */
 int rt946x_enable_charge_termination(int en);
+
+#ifdef CONFIG_CHARGER_MT6370
+
+enum mt6370_led_index {
+	MT6370_LED_ID_OFF = 0,
+	MT6370_LED_ID1 = 1,
+	MT6370_LED_ID2 = 2,
+	MT6370_LED_ID3 = 3
+};
+
+enum mt6370_led_dim_mode {
+	MT6370_LED_DIM_MODE_PWM = 0,
+	MT6370_LED_DIM_MODE_BREATH = 1,
+	MT6370_LED_DIM_MODE_REGISTER = 3
+};
+
+enum mt6370_led_pwm_freq {
+	MT6370_LED_PWM_FREQ01 = 0, /* 0.1 Hz */
+	MT6370_LED_PWM_FREQ02 = 1, /* 0.2 Hz */
+	MT6370_LED_PWM_FREQ05 = 2, /* 0.5 Hz */
+	MT6370_LED_PWM_FREQ1 = 3, /* 1 Hz */
+	MT6370_LED_PWM_FREQ2 = 4, /* 2 Hz */
+	MT6370_LED_PWM_FREQ5 = 5, /* 5 Hz */
+	MT6370_LED_PWM_FREQ200 = 6, /* 200 Hz */
+	MT6370_LED_PWM_FREQ1000 = 7 /* 1000 Hz */
+};
+
+/* Set LED brightness */
+int mt6370_led_set_brightness(enum mt6370_led_index index, uint8_t brightness);
+
+/* Set LED Color */
+int mt6370_led_set_color(enum mt6370_led_index index);
+
+/* Set LED dim mode, available modes: REGISTER, PWM, BREATH. */
+int mt6370_led_set_dim_mode(enum mt6370_led_index index,
+			    enum mt6370_led_dim_mode mode);
+
+/* Set LED PWM mode duty */
+int mt6370_led_set_pwm_dim_duty(enum mt6370_led_index index, uint8_t dim_duty);
+
+/* Set LED PWM mode frequency */
+int mt6370_led_set_pwm_frequency(enum mt6370_led_index index,
+				 enum mt6370_led_pwm_freq freq);
+#endif
 
 #endif /* __CROS_EC_RT946X_H */
