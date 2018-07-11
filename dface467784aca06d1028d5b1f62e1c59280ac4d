@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "423168ff_9a72e7ce",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-07-11T04:27:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t one be passing in espi_rst-\u003emask instead of hardcoding the same constant?",
+      "range": {
+        "startLine": 438,
+        "startChar": 37,
+        "endLine": 438,
+        "endChar": 46
+      },
+      "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a05d972_04d0f801",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-07-11T04:27:55Z",
+      "side": 1,
+      "message": "These changes assume the alternate mode is needed. But the commit description mentions an option of gpio input or alternate function. This feels like we\u0027re hard coding policy?",
+      "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
