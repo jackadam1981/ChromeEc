@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc84e6e9_ee48b7f2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-11T21:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360c98c6_0399425b",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6ea5eb7_78081e00",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aab65f6_33045711",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4441,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-11T21:41:51Z",
+      "side": 1,
+      "message": "We perform the PD upgrade in RW by design (just in case we need new EC functionality to support the PD upgrade)",
+      "parentUuid": "d6ea5eb7_78081e00",
+      "range": {
+        "startLine": 4441,
+        "startChar": 11,
+        "endLine": 4441,
+        "endChar": 36
+      },
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +133,48 @@
       "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "666c8f57_29fb9573",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4452,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-11T21:41:51Z",
+      "side": 1,
+      "message": "Add remain capacity check",
+      "parentUuid": "2d52c5d5_685a7b4e",
+      "range": {
+        "startLine": 4452,
+        "startChar": 12,
+        "endLine": 4452,
+        "endChar": 30
+      },
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d77b374b_087b07a6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4452,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-11T21:41:51Z",
+      "side": 1,
+      "message": "If we can\u0027t get the remaining capacity, then it will default to 0 which will fail the check. I also added the BAD_REMAINING_CAPACITY check which will be present if the battery isn\u0027t present or we can\u0027t communicate with it",
+      "parentUuid": "335e9b21_b83ef637",
+      "revId": "ffa5d3014a7a4994239ea5a1500e86f2f02b8028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
