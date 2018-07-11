@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c274b63e_c3f97af1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T07:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66284c52_50457830",
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e45e418f_f74323a2",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "12663ea2_76bf686f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T07:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e45e418f_f74323a2",
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29e86505_65f2ffda",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a672441_9ded319a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T07:00:47Z",
+      "side": 1,
+      "message": "Done. You are right. Rewrite this a little.",
+      "parentUuid": "29e86505_65f2ffda",
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "eefb0aa1_ec2191ab",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T07:00:47Z",
+      "side": 1,
+      "message": "Remove this, since we have enum below.",
+      "parentUuid": "f65edbd8_ea94d826",
+      "range": {
+        "startLine": 381,
+        "startChar": 35,
+        "endLine": 381,
+        "endChar": 39
+      },
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64885cf0_0a73810d",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 1
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "4e6eaa90_747c83c8",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T07:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64885cf0_0a73810d",
+      "range": {
+        "startLine": 386,
+        "startChar": 35,
+        "endLine": 386,
+        "endChar": 37
+      },
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd79ecd3_b865da32",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 1
@@ -119,6 +221,30 @@
       "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29775597_e1af0897",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T07:00:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd79ecd3_b865da32",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 34
+      },
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
