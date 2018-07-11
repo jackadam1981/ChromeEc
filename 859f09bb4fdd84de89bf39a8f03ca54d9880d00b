@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "7bbb74be_ad848478",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-11T23:10:36Z",
+      "side": 1,
+      "message": "REQ can be set from any task? But I still don\u0027t think it matters.\n\nLet\u0027s just imagine hook (H) and one other task (O).\n\nO: We go idle: REQ is set. hook is deferred.\nH: eventually gets called. Sees REQ and !ENG in if -\u003e preempted\nO: do some work clearing ENG and REQ. Wait for next event\nH: can run again. put device into low power mode when it shouldn\u0027t since it\u0027s already in the if path. This was my comment about Scott\u0027s CL as well.\n\nThe point is that we have to sequence the state of tcpc through one entity. I don\u0027t see how this CL fixes anything (if I\u0027m reading it correctly). If we\u0027re going to go w/ a racy solution we should clearly document that it is racy and we can sometimes shove a device into low power when it shouldn\u0027t. I don\u0027t claim to understand the implications to such scenarios.",
+      "parentUuid": "ccbf40a9_725a4022",
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "201e8b39_701c0158",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -248,6 +266,30 @@
       "side": 1,
       "message": "I am not familiar with the throwaway transaction requirement/suggestion. Are there some TCPCs that come out of LPM slowly?\n\nIf we do want to do that, we can add a call to the low_power_mode_checker method.",
       "parentUuid": "02baedc1_44bc2d11",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 14
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05575fb0_e2e285a5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-11T23:10:36Z",
+      "side": 1,
+      "message": "I think the ANX NACKs the first transaction that matches its i2c address when it is in low power mode. This is another reason for sequencing state through a single task.",
+      "parentUuid": "c8c0e8ec_3ce3d96a",
       "range": {
         "startLine": 415,
         "startChar": 2,
