@@ -45,6 +45,30 @@
       "revId": "819ee4f7da04ad69bd87b76595fb75578eee376d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea6e974_f3341d80",
+        "filename": "board/meowth_fp/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-07-11T19:21:28Z",
+      "side": 1,
+      "message": "until now CONFIG_RO_SIZE was 128kB and that was more than enough.\nDo we need to make it larger ?",
+      "parentUuid": "fde1a080_0309d6bc",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "819ee4f7da04ad69bd87b76595fb75578eee376d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
