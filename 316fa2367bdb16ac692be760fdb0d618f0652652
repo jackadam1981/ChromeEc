@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92fa5d4f_605bf4ad",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T16:46:44Z",
+      "side": 1,
+      "message": "Seems like the wrong console channel (minor nit)",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 53
+      },
+      "revId": "316fa2367bdb16ac692be760fdb0d618f0652652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e54f9e9_b1ad9fd4",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T16:46:44Z",
+      "side": 1,
+      "message": "SPI_RX_BUF_BYTES and BUF_WORDS might be more readable (minor nit)",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "316fa2367bdb16ac692be760fdb0d618f0652652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
