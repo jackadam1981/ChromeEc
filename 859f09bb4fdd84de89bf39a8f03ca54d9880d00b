@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "4a7cd0b0_08b0e924",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-11T23:18:00Z",
+      "side": 1,
+      "message": "\u003e the only transaction that the EC would perform is to put the  TCPC into low power mode\n\n... which results in an I2C transaction to the TCPC that causes it to in fact come out of low power mode. Is that not correct?",
+      "parentUuid": "884c7d7c_de363921",
+      "range": {
+        "startLine": 370,
+        "startChar": 43,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b937c2d_c69a559e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -231,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "2ba3efdd_b13153a3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-11T23:18:00Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to add complexity for every i2c transaction. But, we must at least ensure that all accesses to tcpc get converted like the ones pointed out above.",
+      "parentUuid": "4a06b78c_44eac6f4",
+      "range": {
+        "startLine": 382,
+        "startChar": 5,
+        "endLine": 382,
+        "endChar": 23
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02baedc1_44bc2d11",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -289,6 +337,30 @@
       "writtenOn": "2018-07-11T23:10:36Z",
       "side": 1,
       "message": "I think the ANX NACKs the first transaction that matches its i2c address when it is in low power mode. This is another reason for sequencing state through a single task.",
+      "parentUuid": "c8c0e8ec_3ce3d96a",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 14
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d08dd6_767c989c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-11T23:18:00Z",
+      "side": 1,
+      "message": "As Aaron mentioned: The first transaction that is made to the TCPC when it is in low power mode gets NACKed at least on ANX part. I am not sure if the behavior is same across different TCPCs.",
       "parentUuid": "c8c0e8ec_3ce3d96a",
       "range": {
         "startLine": 415,
