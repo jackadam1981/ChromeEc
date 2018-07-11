@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "34c4cbf3_33550e97",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T04:56:23Z",
+      "side": 1,
+      "message": "Probably just adding breath mode.\n\nLED software control (with battery_second) is more easier than setting the PWM mode.\nSince that, the hook is invoked per second, and the logic to dim and flash a led is more easier with software control.\n\nFor example, to set led pwm mode, we have to call this per second (we could skip change led behavior if the state doesn\u0027t change, but the granularity of default PWR state is not good enough to fulfill our requirement, for example, blinking when discharge under 10%) :\n\nmt6370_led_set_color(LED_RED);\nmt6370_led_set_dim_mode(LED_RED, MT6370_LED_DIM_MODE_PWM); // defaul\nmt6370_led_set_pwm_frequency(LED_RED, MT6370_LED_PWM_FREQ02); // 0.2 Hz\nmt6370_led_set_pwm_dim_duty(LED_RED, 6); // flash around 1 sec, and dim around 4 sec.\n\nComparing to the software control:\n\nmt6370_led_set_color((battery_second \u0026 0x4) ? LED_GREEN : LED_OFF);\n\nwhich is more easier IMO.",
+      "parentUuid": "884b4dbc_b0fc3742",
+      "revId": "4fd0d398101ced43e3004406b72bb8868025dd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e0b4469_16fa4e9b",
         "filename": "board/kukui/led.c",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "4fd0d398101ced43e3004406b72bb8868025dd1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547ac108_ce837cd0",
+        "filename": "board/kukui/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-11T04:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0b4469_16fa4e9b",
+      "range": {
+        "startLine": 63,
+        "startChar": 31,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "4fd0d398101ced43e3004406b72bb8868025dd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
