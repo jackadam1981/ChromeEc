@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5fa0731_dcd554a0",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T07:08:31Z",
+      "side": 1,
+      "message": "0x1f here too ,-)",
+      "range": {
+        "startLine": 390,
+        "startChar": 34,
+        "endLine": 390,
+        "endChar": 36
+      },
+      "revId": "1eb2ea4bf90af7f7f8920f05b699c71feb2f5a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba25e3fc_464c5b5c",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T07:08:31Z",
+      "side": 1,
+      "message": "We tend to call the last one \"MT6370_LED_ID_COUNT\" in other enums in EC code.",
+      "revId": "1eb2ea4bf90af7f7f8920f05b699c71feb2f5a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
