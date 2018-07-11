@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "985b8ae8_12c98966",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T00:35:09Z",
+      "side": 1,
+      "message": "Could just else if, without the extra level of indentation.",
+      "range": {
+        "startLine": 458,
+        "startChar": 8,
+        "endLine": 458,
+        "endChar": 9
+      },
+      "revId": "7f77ef445fb241d70d42b05820de134e8f530c3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
