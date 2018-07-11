@@ -374,6 +374,30 @@
     },
     {
       "key": {
+        "uuid": "43ea9824_d1de3a34",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-11T23:32:26Z",
+      "side": 1,
+      "message": "Yes, the 1st I2C access attempt to the TCPC when in low power mode will be NAK\u0027d. This happens for both the ANX3447 and the PS8751. In addition, this triggers the TCPC do an internal reset which takes 2-3 msec to complete and during that time other accesses will be NAK\u0027d as well.",
+      "parentUuid": "c4d08dd6_767c989c",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 14
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c64fbf1_44db48d5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
