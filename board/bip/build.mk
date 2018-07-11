@@ -8,7 +8,7 @@
 
 CHIP:=it83xx
 CHIP_FAMILY:=it8320
-CHIP_VARIANT:=it8320bx
+CHIP_VARIANT:=it8320dx
 BASEBOARD:=octopus
 
 board-y=board.o led.o
