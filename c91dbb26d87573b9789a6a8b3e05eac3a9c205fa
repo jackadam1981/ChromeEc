@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ee9454c_c5aab0ae",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-11T18:39:37Z",
+      "side": 1,
+      "message": "Why is this needed? Isn\u0027t CC already set to Rp because power_role \u003d\u003d PD_ROLE_SOURCE?",
+      "range": {
+        "startLine": 370,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 33
+      },
+      "revId": "c91dbb26d87573b9789a6a8b3e05eac3a9c205fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
