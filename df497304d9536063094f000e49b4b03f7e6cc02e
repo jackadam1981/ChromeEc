@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bffa2822_765ad64f",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-07-11T23:48:08Z",
+      "side": 1,
+      "message": "Should \"GPIO_INT_BOTH\" be changed to \"GPIO_INPUT\"? The comment says \"configure it as GPIO_INPUT\".",
+      "range": {
+        "startLine": 91,
+        "startChar": 28,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "df497304d9536063094f000e49b4b03f7e6cc02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
