@@ -16,6 +16,24 @@
       "revId": "e89cca43406b0192ef6b7e20dcd103cc31d355e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd941973_32fceede",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-11T22:47:08Z",
+      "side": 1,
+      "message": "I did put some context around this in the commit message.\n\nThe timer was also changed from 100 to 200\nmsec to ensure enough time for the low power mode operation to\ncomplete. Measuring using a logic analyzer showed that this took ~100\nmsec to complete.",
+      "parentUuid": "20c227d9_af9e81db",
+      "revId": "e89cca43406b0192ef6b7e20dcd103cc31d355e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
