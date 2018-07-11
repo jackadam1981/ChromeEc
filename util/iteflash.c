@@ -300,6 +300,7 @@ static int check_chipid(struct ftdi_context *ftdi)
 	ret = i2c_read_byte(ftdi, 0x02, &ver);
 	if (ret < 0)
 		return ret;
+
 	if ((id & 0xff00) != (CHIP_ID & 0xff00)) {
 		fprintf(stderr, "Invalid chip id: %04x\n", id);
 		return -EINVAL;
@@ -307,6 +308,13 @@ static int check_chipid(struct ftdi_context *ftdi)
 	/* compute embedded flash size from CHIPVER field */
 	flash_size = (128 + (ver & 0xF0)) * 1024;
 
+	printf("Check Version:%02x %02x\n", ver, ver&0x0f);
+	if ((ver & 0x0f) == 0x03) {
+		/* For DX Chip */
+		flash_size = ((ver & 0xF0)) * 4096;
+		printf("change flash size:%d kb\n", flash_size/1024);
+
+	}
 	printf("CHIPID %04x, CHIPVER %02x, Flash size %d kB\n", id, ver,
 			flash_size / 1024);
 
@@ -749,6 +757,83 @@ failed_write:
 	return res;
 }
 
+int command_write_pages2(struct ftdi_context *ftdi, uint32_t address,
+			uint32_t size, uint8_t *buffer)
+{
+	int res = -EIO;
+	uint32_t remaining = size;
+	uint8_t BA, A1, A0, data;
+
+	/* Write another program flow to match the */
+	/*     original ITE 8903 Download board. */
+	/* Fixed me! The code will merge to the */
+	/*     original function later */
+	res |= i2c_write_byte(ftdi, 0x07, 0x7f);
+	res |= i2c_write_byte(ftdi, 0x06, 0xff);
+	res |= i2c_write_byte(ftdi, 0x04, 0xFF);
+
+	/* SMB_SPI_Flash_Enable_Write_Status */
+	res |= i2c_write_byte(ftdi, 0x05, 0xfe);
+	res |= i2c_write_byte(ftdi, 0x08, 0x00);
+	res |= i2c_write_byte(ftdi, 0x05, 0xfd);
+	res |= i2c_write_byte(ftdi, 0x08, 0x50);
+
+	/* SMB_SPI_Flash_Write_Status_Reg */
+	res |= i2c_write_byte(ftdi, 0x05, 0xfe);
+	res |= i2c_write_byte(ftdi, 0x08, 0x00);
+	res |= i2c_write_byte(ftdi, 0x05, 0xfd);
+	res |= i2c_write_byte(ftdi, 0x08, 0x01);
+	res |= i2c_write_byte(ftdi, 0x08, 0x00);
+
+	/* SMB_SPI_Flash_Write_Enable */
+	res |= i2c_write_byte(ftdi, 0x05, 0xfe);
+	res |= i2c_write_byte(ftdi, 0x08, 0x00);
+	res |= i2c_write_byte(ftdi, 0x05, 0xfd);
+	res |= i2c_write_byte(ftdi, 0x08, 0x06);
+
+	/* SMB_SST_SPI_Flash_AAI2_Program */
+	res |= i2c_write_byte(ftdi, 0x05, 0xfe);
+	res |= i2c_write_byte(ftdi, 0x08, 0x00);
+	res |= i2c_write_byte(ftdi, 0x05, 0xfd);
+	res |= i2c_write_byte(ftdi, 0x08, 0xAD);
+
+	BA = address>>16;
+	A1 = address>>8;
+	A0 = 0;
+
+	res = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, &BA, 1, 1);
+	res |= i2c_byte_transfer(ftdi, I2C_DATA_ADDR, &A1, 1, 1);
+	res |= i2c_byte_transfer(ftdi, I2C_DATA_ADDR, &A0, 1, 1);
+	res |= i2c_byte_transfer(ftdi, I2C_DATA_ADDR, buffer++, 1, 1);
+	res |= i2c_byte_transfer(ftdi, I2C_DATA_ADDR, buffer++, 1, 1);
+
+	/* Wait until not busy */
+	if (spi_poll_busy(ftdi, "AAI write") < 0)
+		goto failed_write;
+
+	res = i2c_write_byte(ftdi, 0x10, 0x20);
+	res = i2c_byte_transfer(ftdi, I2C_BLOCK_ADDR,
+		buffer, 1, BLOCK_WRITE_SIZE-2);
+	remaining = size - BLOCK_WRITE_SIZE;
+
+	draw_spinner(remaining, size);
+	/* No error so far */
+	res = size;
+
+	data = 0xff;
+	res = i2c_byte_transfer(ftdi, I2C_DATA_ADDR, &data, 1, 1);
+	res = i2c_write_byte(ftdi, 0x10, 0x00);
+
+
+failed_write:
+	if (spi_flash_command_short(ftdi, SPI_CMD_WRITE_DISABLE,
+		"write disable exit AAI write") < 0)
+		res = -EIO;
+
+	return res;
+}
+
+
 int command_write_unprotect(struct ftdi_context *ftdi)
 {
 	/* TODO(http://crosbug.com/p/23576): implement me */
@@ -812,6 +897,82 @@ wait_busy_cleared:
 			page += SECTOR_ERASE_PAGES;
 			remaining -= SECTOR_ERASE_PAGES * PAGE_SIZE;
 		}
+	}
+	/* No error so far */
+	printf("\n\rErasing Done.\n");
+	res = 0;
+failed_erase:
+	if (spi_flash_command_short(ftdi, SPI_CMD_WRITE_DISABLE,
+		"write disable exit erase") < 0)
+		res = -EIO;
+
+	if (spi_flash_follow_mode_exit(ftdi, "erase") < 0)
+		res = -EIO;
+
+	return res;
+}
+
+int command_erase2(struct ftdi_context *ftdi, uint32_t len,
+						uint32_t off, uint32_t reset)
+{
+	int res = -EIO;
+	int page = 0;
+	uint32_t remaining = len;
+
+	/* Fixed Me!*/
+	/* Using sector erase instead of chip erase */
+	/* For some new chip , the chip erase may not work */
+	/* well on the original flow */
+
+
+	printf("Erasing flash...\n");
+
+	if (off != 0 || len != flash_size) {
+		fprintf(stderr, "Only full chip erase is supported\n");
+		return -EINVAL;
+	}
+
+	if (spi_flash_follow_mode(ftdi, "erase") < 0)
+		goto failed_erase;
+
+	while (remaining) {
+		//printf("Erasing flash...remaining=%d\n",remaining);
+		draw_spinner(remaining, len);
+
+		if (spi_flash_command_short(ftdi, SPI_CMD_WRITE_ENABLE,
+			"write enable for erase") < 0)
+			goto failed_erase;
+
+		if (spi_check_write_enable(ftdi, "erase") < 0)
+			goto failed_erase;
+
+		/* do sector erase */
+		if (spi_flash_command_short(ftdi, SPI_CMD_SECTOR_ERASE,
+			"sector erase") < 0)
+			goto failed_erase;
+
+		if (spi_flash_set_erase_page(ftdi, page, "sector erase") < 0)
+			goto failed_erase;
+
+		if (spi_poll_busy(ftdi, "erase") < 0)
+			goto failed_erase;
+
+		if (spi_flash_command_short(ftdi, SPI_CMD_WRITE_DISABLE,
+			"write disable for erase") < 0)
+			goto failed_erase;
+
+
+		if (reset) {
+			printf("\n\rreset to avoid the watchdog reset...\n");
+			break;
+		}
+
+
+		page += SECTOR_ERASE_PAGES;
+		remaining -= SECTOR_ERASE_PAGES * PAGE_SIZE;
+		draw_spinner(remaining, len);
+
+
 	}
 	/* No error so far */
 	printf("\n\rErasing Done.\n");
@@ -904,6 +1065,59 @@ int write_flash(struct ftdi_context *ftdi, const char *filename,
 }
 
 /* Return zero on success, a negative error value on failures. */
+int write_flash2(struct ftdi_context *ftdi, const char *filename,
+		uint32_t offset)
+{
+	int res, written;
+	FILE *hnd;
+	int size = flash_size;
+	int cnt;
+	uint8_t *buffer = malloc(size);
+
+	if (!buffer) {
+		fprintf(stderr, "Cannot allocate %d bytes\n", size);
+		return -ENOMEM;
+	}
+
+	hnd = fopen(filename, "r");
+	if (!hnd) {
+		fprintf(stderr, "Cannot open file %s for reading\n", filename);
+		free(buffer);
+		return -EIO;
+	}
+	res = fread(buffer, 1, size, hnd);
+	if (res <= 0) {
+		fprintf(stderr, "Cannot read %s\n", filename);
+		free(buffer);
+		return -EIO;
+	}
+	fclose(hnd);
+
+	offset = 0;
+	printf("Writing %d bytes at 0x%08x\n", res, offset);
+	while (res) {
+		cnt = (res > BLOCK_WRITE_SIZE) ?
+				BLOCK_WRITE_SIZE : res;
+		written = command_write_pages2(ftdi, offset, cnt,
+				&buffer[offset]);
+		res -= cnt;
+		offset += cnt;
+		draw_spinner(res, size);
+	}
+
+	if (written != res) {
+		fprintf(stderr, "Error writing to flash\n");
+		free(buffer);
+		return -EIO;
+	}
+	printf("\n\rWriting Done.\n");
+	free(buffer);
+
+	return 0;
+}
+
+
+/* Return zero on success, a negative error value on failures. */
 int verify_flash(struct ftdi_context *ftdi, const char *filename,
 		uint32_t offset)
 {
@@ -940,6 +1154,7 @@ int verify_flash(struct ftdi_context *ftdi, const char *filename,
 	draw_spinner(flash_size-res, flash_size);
 	res = memcmp(buffer, buffer2, file_size);
 	printf("\n\rVerify %s\n", res ? "Failed!" : "Done.");
+
 exit:
 
 	free(buffer);
@@ -1079,6 +1294,7 @@ int main(int argc, char **argv)
 	void *hnd;
 	int ret = 1;
 	int flags;
+	//int count;
 
 	/* Parse command line options */
 	flags = parse_parameters(argc, argv);
@@ -1104,21 +1320,34 @@ int main(int argc, char **argv)
 	if (flags & FLAG_UNPROTECT)
 		command_write_unprotect(hnd);
 
-	if (flags & FLAG_ERASE || output_filename) {
-		command_erase(hnd, flash_size, 0);
-
-		/* Call DBGR Rest to clear the EC lock status */
-		dbgr_reset(hnd);
-	}
-
 	if (input_filename) {
+		dbgr_reset(hnd);
 		ret = read_flash(hnd, input_filename, 0, flash_size);
 		if (ret)
 			goto terminate;
 	}
 
+	if (flags & FLAG_ERASE || output_filename) {
+		/* Do Sector Erase  twice to avoid the watchdog */
+		/* reset during flash  */
+		/* Erase First Sector to break the watchdog reset happen*/
+		command_erase2(hnd, flash_size, 0, 1);
+		/* Call DBGR Rest to clear the EC lock status */
+		dbgr_reset(hnd);
+		if (config_i2c(hnd) < 0)
+			goto terminate;
+
+		/* Do Normal Erase Function */
+		command_erase2(hnd, flash_size, 0, 0);
+
+	}
+
+
+
+
 	if (output_filename) {
-		ret = write_flash(hnd, output_filename, 0);
+
+		ret = write_flash2(hnd, output_filename, 0);
 		if (ret)
 			goto terminate;
 
