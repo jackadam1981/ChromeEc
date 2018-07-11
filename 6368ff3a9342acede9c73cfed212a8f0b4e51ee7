@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66284c52_50457830",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T06:11:56Z",
+      "side": 1,
+      "message": "This can stay static now, right?",
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45e418f_f74323a2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T06:11:56Z",
+      "side": 1,
+      "message": "Can you do like mt6370_led_set_dim_mode and set val \u003d ... in the switch block, then do:\n\nrt946x_update_bits(MT6370_REG_RGBEN,\n\t\t\t\t   MT6370_MASK_RGB_ISNK_ALL_EN,\n\t\t\t\t   val);",
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e86505_65f2ffda",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T06:11:56Z",
+      "side": 1,
+      "message": "Generally, this code isn\u0027t super efficient, space-wise.\n\nCan we replace most/all of the switches with something like:\n\nif (index \u003e MT6370_LED_ID3)\n   return EC_ERROR_INVAL;\n\nreg \u003d MT6370_REG_RGBISNK_BASE + index.",
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65edbd8_ea94d826",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T06:11:56Z",
+      "side": 1,
+      "message": "I think that\u0027s 0x00",
+      "range": {
+        "startLine": 381,
+        "startChar": 35,
+        "endLine": 381,
+        "endChar": 39
+      },
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64885cf0_0a73810d",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T06:11:56Z",
+      "side": 1,
+      "message": "nit: Maybe 0x1f to be more consistent?",
+      "range": {
+        "startLine": 386,
+        "startChar": 35,
+        "endLine": 386,
+        "endChar": 37
+      },
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd79ecd3_b865da32",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T06:11:56Z",
+      "side": 1,
+      "message": "Define this below the other 3.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 34
+      },
+      "revId": "6368ff3a9342acede9c73cfed212a8f0b4e51ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
