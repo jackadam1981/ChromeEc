@@ -34,6 +34,24 @@
       "revId": "e89cca43406b0192ef6b7e20dcd103cc31d355e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d44c7c_bd075c0b",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-11T22:51:20Z",
+      "side": 1,
+      "message": "Ya. I saw that. I was just wondering how we know 200 is enough. Thanks for the bit about the logic analyzer part. That I missed from reading too quickly.",
+      "parentUuid": "fd941973_32fceede",
+      "revId": "e89cca43406b0192ef6b7e20dcd103cc31d355e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
