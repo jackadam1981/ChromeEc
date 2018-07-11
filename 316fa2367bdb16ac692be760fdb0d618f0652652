@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f61b7a6b_d61de409",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T22:39:46Z",
+      "side": 1,
+      "message": "yeah. CC_SPI it is.",
+      "parentUuid": "92fa5d4f_605bf4ad",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 53
+      },
+      "revId": "316fa2367bdb16ac692be760fdb0d618f0652652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e54f9e9_b1ad9fd4",
         "filename": "board/kukui/emmc.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "316fa2367bdb16ac692be760fdb0d618f0652652",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df505e16_f00517bc",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-11T22:39:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e54f9e9_b1ad9fd4",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "316fa2367bdb16ac692be760fdb0d618f0652652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
