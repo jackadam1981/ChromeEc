@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af857185_5e97b66d",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T18:04:46Z",
+      "side": 1,
+      "message": "Update comment?",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 18
+      },
+      "revId": "67dd5e92264b0e84aadd9ba70be0d7b7cca73e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2de62bb_7cc8de9e",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T18:04:46Z",
+      "side": 1,
+      "message": "Just return EC_SUCCESS.  No need to print a message.  (We\u0027re tight on code size)",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 48
+      },
+      "revId": "67dd5e92264b0e84aadd9ba70be0d7b7cca73e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b00861_1345fe17",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T18:04:46Z",
+      "side": 1,
+      "message": "Just print the serial number",
+      "range": {
+        "startLine": 135,
+        "startChar": 12,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "67dd5e92264b0e84aadd9ba70be0d7b7cca73e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "216df167_aa58f20b",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T18:04:46Z",
+      "side": 1,
+      "message": "return EC_ERROR_PARAM_COUNT",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 9
+      },
+      "revId": "67dd5e92264b0e84aadd9ba70be0d7b7cca73e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b551743c_93cee8ab",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-11T18:04:46Z",
+      "side": 1,
+      "message": "This is where you\u0027d specify the [sn0 sn1] optional param for setting.\n\nLook at common/flash.c line 1013 for an example.",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "67dd5e92264b0e84aadd9ba70be0d7b7cca73e67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
