@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37f3aecc_da324aed",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-12T16:14:25Z",
+      "side": 1,
+      "message": "This whole statement is equivalent to \n\nIT83XX_USBPD_CCCSR(port) \u003d IT83XX_USBPD_CCCSR(port);\n\nLet\u0027s use that here instead (and below)",
+      "range": {
+        "startLine": 231,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 42
+      },
+      "revId": "4b27457d311bcf5b9076c8b8ed4c68aaa3c2c83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
