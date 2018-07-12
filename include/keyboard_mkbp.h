@@ -49,4 +49,23 @@ static inline void keyboard_send_battery_key(void) { }
  */
 void mkbp_update_switches(uint32_t sw, int state);
 
+
+#ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
+uint32_t mkbp_get_button_state(void);
+#else
+static inline uint32_t mkbp_get_button_state(void)
+{
+	return 0;
+}
+#endif
+
+#ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
+uint32_t mkbp_get_switch_state(void);
+#else
+static inline uint32_t mkbp_get_switch_state(void)
+{
+	return 0;
+}
+#endif
+
 #endif  /* __CROS_EC_KEYBOARD_MKBP_H */
