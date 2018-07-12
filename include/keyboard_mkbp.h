@@ -49,4 +49,14 @@ static inline void keyboard_send_battery_key(void) { }
  */
 void mkbp_update_switches(uint32_t sw, int state);
 
+/**
+ * Get the state of the buttons.
+ */
+uint32_t mkbp_get_button_state(void);
+
+/**
+ * Get the state of the switches.
+ */
+uint32_t mkbp_get_switch_state(void);
+
 #endif  /* __CROS_EC_KEYBOARD_MKBP_H */
