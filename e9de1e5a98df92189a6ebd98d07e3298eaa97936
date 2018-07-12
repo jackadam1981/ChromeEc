@@ -16,6 +16,24 @@
       "revId": "e9de1e5a98df92189a6ebd98d07e3298eaa97936",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90284bab_b8394ef5",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-12T15:20:36Z",
+      "side": 1,
+      "message": "We\u0027ll disable usb3 lines in s3 but VBUS and usb2 lines are still active because they\u0027re directly connected to the soc (instead of through the redriver). So HID devices can wake up the system.",
+      "parentUuid": "8a664b70_392f156e",
+      "revId": "e9de1e5a98df92189a6ebd98d07e3298eaa97936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
