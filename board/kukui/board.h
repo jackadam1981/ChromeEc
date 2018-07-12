@@ -8,6 +8,9 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* board revision */
+#include "board_revs.h"
+
 /* Optional modules */
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
