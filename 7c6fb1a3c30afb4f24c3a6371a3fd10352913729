@@ -22,6 +22,99 @@
       "revId": "7c6fb1a3c30afb4f24c3a6371a3fd10352913729",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c34ca7f1_e463dd75",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "I think Global.h is fine. better than duplication, and it\u0027s a collection of structures anyways, fine to be included here",
+      "parentUuid": "8211bfce_15290ce9",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "7c6fb1a3c30afb4f24c3a6371a3fd10352913729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09b3bda4_6d8aff5b",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "do we really have TPM_HANDLE there? handle is already in index.publicArea.nvIndex - it is the next field after next_node_offset, but not outside NV_INDEX index.",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "7c6fb1a3c30afb4f24c3a6371a3fd10352913729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4a3f62_7ba77ffe",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "I believe it\u0027s actually uint32_t for next_node_offset, right?",
+      "range": {
+        "startLine": 57,
+        "startChar": 51,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "7c6fb1a3c30afb4f24c3a6371a3fd10352913729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8ffede_256aa52c",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "how about void (*get_data_fn)(BYTE* to, size_t offset, size_t size) instead? this eliminates the need in intermediate static buffers. though we may still use them for caching inside get_data_fn if we want",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "7c6fb1a3c30afb4f24c3a6371a3fd10352913729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

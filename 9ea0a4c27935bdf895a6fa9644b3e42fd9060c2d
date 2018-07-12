@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa12fc81_2b6b9785",
+        "filename": "board/cr50/tpm2/mfg_nvmem_allocations.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "can we list the known ones here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c22986_af6966fb",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "do we expect non-consecutive indices? if not, we can just save on index and implement the table for [virtual_nv_index - VIRTUAL_NV_INDEX_START] and just jump to the right place in table w/o searching through it? if we ever deprecate an old index we can just replace get_data_fn and size for it with 0. if we define 4 indexes and then deprecate one, with this code we\u0027d have a table of 3*(4+4+4) \u003d 36 bytes, and if we drop handles but zero out deprecated we\u0027d have 4 * (4+4) \u003d 32 bytes. and indexing will be faster.",
+      "range": {
+        "startLine": 133,
+        "startChar": 23,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67df642_af887558",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "I suggest to separate the CL that implements the infrastructure for vNVRAM from the CL(s) that add entries for specific data like board_id (and SN_BITS shall go along/after the support for storing those bits in nvram).",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0d3dc2_30ff5762",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "to simplify future extensions: shall this thing rather check for _plat__NvHandleInVirtualRange(), or check for the index to be between [VIRTUAL_NV_INDEX_START, VIRTUAL_NV_INDEX_MAX), or even call GetNvIndexConfig() to verify that the index is actually implemented?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 35
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db1270c_148063a3",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-12T16:50:02Z",
+      "side": 1,
+      "message": "this will go away in the final version of this CL, right?",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 51
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
