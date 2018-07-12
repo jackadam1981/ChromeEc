@@ -108,6 +108,10 @@ static int read_and_hash_chunk(int offset, int size)
 #define SHA256_PRINT_SIZE 4
 #endif
 
+const static uint8_t fake[] = {
+#include "/home/dnojiri/tmp/nami/tmp/hash.inc"
+};
+
 /**
  * Do next chunk of hashing work, if any.
  */
@@ -139,6 +143,7 @@ static void vboot_hash_next_chunk(void)
 	if (curr_pos >= data_size) {
 		/* Store the final hash */
 		hash = SHA256_final(&ctx);
+		hash = fake;
 		CPRINTS("hash done %.*h", SHA256_PRINT_SIZE, hash);
 
 		in_progress = 0;
