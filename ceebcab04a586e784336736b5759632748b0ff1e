@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd2fc996_39be3a42",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-12T16:28:13Z",
+      "side": 1,
+      "message": "I didn\u0027t find documentation for this register in my datasheet. I might have an old version. Do you have a new version or an addendum that contains information about this register?",
+      "range": {
+        "startLine": 872,
+        "startChar": 8,
+        "endLine": 872,
+        "endChar": 25
+      },
+      "revId": "ceebcab04a586e784336736b5759632748b0ff1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
