@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70afba14_c322a8c5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-12T16:34:39Z",
+      "side": 1,
+      "message": "can you give examples like\n\n0x43 is 256 DX\n0x83 is 512 DX\n0x82 is 256 BX\n\nor whatever the correct ver mapping is, please?",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 29
+      },
+      "revId": "80a42b08705e3e740f81965120b2f529c27221fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
