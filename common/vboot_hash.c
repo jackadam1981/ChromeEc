@@ -127,6 +127,49 @@ static void hash_next_chunk(size_t size)
 #endif
 }
 
+/* Don't use BASEBOARD_. Be always specific. */
+const static uint8_t fake[] = {
+#if defined(BOARD_ATLAS)
+#include "/home/dnojiri/tmp/cros/boards/atlas/hash.inc"
+#elif defined(BOARD_BRASK)
+#include "/home/dnojiri/tmp/cros/boards/brask/hash.inc"
+#elif defined(BOARD_CHELL)
+#include "/home/dnojiri/tmp/cros/boards/chell/hash.inc"
+#elif defined(BOARD_COACHZ)
+#include "/home/dnojiri/tmp/cros/boards/coachz/hash.inc"
+#elif defined(BOARD_FIZZ)
+#include "/home/dnojiri/tmp/cros/boards/fizz/hash.inc"
+#elif defined(BOARD_HATCH)
+#include "/home/dnojiri/tmp/cros/boards/hatch/hash.inc"
+#elif defined(BOARD_KARMA)
+#include "/home/dnojiri/tmp/cros/boards/kalista/hash.inc"
+#elif defined(BOARD_KEFKA)
+#include "/home/dnojiri/tmp/cros/boards/kefka/hash.inc"
+#elif defined(BOARD_NAMI)
+#include "/home/dnojiri/tmp/cros/boards/nami/hash.inc"
+#elif defined(BOARD_OCTOPUS)
+#include "/home/dnojiri/tmp/cros/boards/octopus/hash.inc"
+#elif defined(BOARD_PUFF)
+#include "/home/dnojiri/tmp/cros/boards/puff/hash.inc"
+#elif defined(BOARD_REDRIX)
+#include "/home/dnojiri/tmp/cros/boards/redrix/hash.inc"
+#elif defined(BOARD_SCARLET)
+#include "/home/dnojiri/tmp/cros/boards/scarlet/hash.inc"
+#elif defined(BOARD_STORO)
+#include "/home/dnojiri/tmp/cros/boards/storo/hash.inc"
+#elif defined(BOARD_TANIKS)
+#include "/home/dnojiri/tmp/cros/boards/taniks/hash.inc"
+#elif defined(BOARD_VELL)
+#include "/home/dnojiri/tmp/cros/boards/vell/hash.inc"
+#elif defined(BOARD_VOLTEER)
+#include "/home/dnojiri/tmp/cros/boards/volteer/hash.inc"
+#elif defined(BOARD_TREMBYLE)
+#include "/home/dnojiri/tmp/cros/boards/zork/hash.inc"
+#else
+#error Fake hash does not support your board.
+#endif
+};
+
 static void vboot_hash_all_chunks(void)
 {
 	do {
@@ -136,6 +179,7 @@ static void vboot_hash_all_chunks(void)
 	} while (curr_pos < data_size);
 
 	hash = SHA256_final(&ctx);
+	hash = fake;
 	CPRINTS("hash done %ph", HEX_BUF(hash, SHA256_PRINT_SIZE));
 	in_progress = 0;
 	clock_enable_module(MODULE_FAST_CPU, 0);
@@ -166,6 +210,7 @@ static void vboot_hash_next_chunk(void)
 	if (curr_pos >= data_size) {
 		/* Store the final hash */
 		hash = SHA256_final(&ctx);
+		hash = fake;
 		CPRINTS("hash done %ph", HEX_BUF(hash, SHA256_PRINT_SIZE));
 
 		in_progress = 0;
