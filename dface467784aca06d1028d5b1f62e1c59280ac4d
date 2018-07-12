@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1771d8ef_8783b8a0",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-12T14:30:04Z",
+      "side": 1,
+      "message": "Because this is excuted under the condition \"espi_rst-\u003emask \u003d\u003d (1 \u003c\u003c 2)\".\nThe param for gpio_set_alternate_function() is the same no matter we use espi_rst-\u003emask or hardcoding the same constant.\n\nDo you want me change to use espi_rst-\u003emask?",
+      "parentUuid": "423168ff_9a72e7ce",
+      "range": {
+        "startLine": 438,
+        "startChar": 37,
+        "endLine": 438,
+        "endChar": 46
+      },
+      "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a05d972_04d0f801",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-07-11T04:27:55Z",
       "side": 1,
       "message": "These changes assume the alternate mode is needed. But the commit description mentions an option of gpio input or alternate function. This feels like we\u0027re hard coding policy?",
+      "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b6550b_af988287",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-12T14:30:04Z",
+      "side": 1,
+      "message": "BX\u0027s espi_rst pin will work fine no matter we configure this pin as GPIO input mode or  alternate mode.\nBut DX\u0027s espi_rst pin only work at alternate mode.\nSo set alternate mode will apply to all version.",
+      "parentUuid": "8a05d972_04d0f801",
       "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
