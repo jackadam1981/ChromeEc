@@ -46,6 +46,30 @@
       "revId": "58ee1a67118bf138ab0ac0100982d9639a9c6e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8a865a_74c00183",
+        "filename": "core/nds32/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-12T13:01:10Z",
+      "side": 1,
+      "message": "This is disabling the ROM code, because CPU can\u0027t read ROM code by any address if this bit (bit3 at ROMARH register) is set. \nThe description of this bit in datasheet is \"bit19 of ROM address\", so I make the comment like this. \n\nWe will update the datasheet in the next release to clarify it.\nAnd changing comment to \"This disable ROM code by setting bit3 at ROMARH register\".",
+      "parentUuid": "11a3e799_ffa542d0",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "58ee1a67118bf138ab0ac0100982d9639a9c6e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
