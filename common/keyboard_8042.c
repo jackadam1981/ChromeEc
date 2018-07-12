@@ -1235,3 +1235,14 @@ static void keyboard_power_button(void)
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, keyboard_power_button,
 	     HOOK_PRIO_DEFAULT);
+
+/* TODO: finish these */
+uint32_t keyboard_get_button_state(void)
+{
+	return 0;
+}
+
+uint32_t keyboard_get_switch_state(void)
+{
+	return 0;
+}
