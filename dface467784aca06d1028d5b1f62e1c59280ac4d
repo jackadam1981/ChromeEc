@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "74b3a1d2_9792ef6b",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-12T14:34:39Z",
+      "side": 1,
+      "message": "Yes, please change it. Ire removes the duplicated open-coded constants.",
+      "parentUuid": "1771d8ef_8783b8a0",
+      "range": {
+        "startLine": 438,
+        "startChar": 37,
+        "endLine": 438,
+        "endChar": 46
+      },
+      "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a05d972_04d0f801",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "BX\u0027s espi_rst pin will work fine no matter we configure this pin as GPIO input mode or  alternate mode.\nBut DX\u0027s espi_rst pin only work at alternate mode.\nSo set alternate mode will apply to all version.",
       "parentUuid": "8a05d972_04d0f801",
+      "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f81808_bc9e11f8",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-12T14:34:39Z",
+      "side": 1,
+      "message": "That\u0027s a helpful fit of information. Could you please include that in the commit description explicitly?",
+      "parentUuid": "44b6550b_af988287",
       "revId": "dface467784aca06d1028d5b1f62e1c59280ac4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
