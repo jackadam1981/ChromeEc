@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32c6b214_4cf56f3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-13T16:19:24Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 163
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff76dec_2db44f7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-13T16:19:24Z",
+      "side": 1,
+      "message": "If there is no bug, please create one. This change deserves more context.",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580fbfd9_4fee4140",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-13T16:19:24Z",
+      "side": 1,
+      "message": "Please elaborate the test.",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7326fbac_876a390d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-13T16:19:24Z",
+      "side": 1,
+      "message": "This is redundant. Please remove.",
+      "range": {
+        "startLine": 328,
+        "startChar": 52,
+        "endLine": 328,
+        "endChar": 62
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
