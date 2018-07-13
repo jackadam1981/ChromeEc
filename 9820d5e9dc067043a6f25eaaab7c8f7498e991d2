@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80488efd_cd17367e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-13T17:31:52Z",
+      "side": 1,
+      "message": "do we still need this assert any more. Otherwise LGTM",
+      "range": {
+        "startLine": 2275,
+        "startChar": 1,
+        "endLine": 2277,
+        "endChar": 6
+      },
+      "revId": "9820d5e9dc067043a6f25eaaab7c8f7498e991d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
