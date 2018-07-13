@@ -5,10 +5,12 @@
 
 #include "clock.h"
 #include "hooks.h"
+#include "rdd.h"
 #include "registers.h"
 #include "timer.h"
 
-#define POWER_BUTTON 2
+#define DELAY_EC_BOOT_USEC	(2 * SECOND)
+DECLARE_DEFERRED(deassert_ec_rst);
 
 int rbox_powerbtn_is_pressed(void)
 {
@@ -23,9 +25,13 @@ static void rbox_release_ec_reset(void)
 	/* Allow some time for outputs to stabilize. */
 	usleep(500);
 
-	/* Let the EC go (the RO bootloader asserts it ASAP after POR) */
-	GREG32(RBOX, ASSERT_EC_RST) = 0;
-
+	/* Let the EC go (the RO bootloader asserts it ASAP after POR)
+	 * unless RDD debug cable is detected or power button is pressed.
+	 */
+	if (rdd_is_detected() && rbox_powerbtn_is_pressed())
+		hook_call_deferred(&deassert_ec_rst_data, DELAY_EC_BOOT_USEC);
+	else
+		deassert_ec_rst();
 }
 DECLARE_HOOK(HOOK_INIT, rbox_release_ec_reset, HOOK_PRIO_LAST);
 
