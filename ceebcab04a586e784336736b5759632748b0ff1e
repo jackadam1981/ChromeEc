@@ -22,6 +22,30 @@
       "revId": "ceebcab04a586e784336736b5759632748b0ff1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd0dcb5_a7ec848d",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-07-13T01:50:20Z",
+      "side": 1,
+      "message": "Hi Jett:\nIt\u0027s Nuvoton internal register which is not mentioned in the datasheet. \n\nHi Michal:\nCould you share more detail about this register by mail? Thanks.",
+      "parentUuid": "dd2fc996_39be3a42",
+      "range": {
+        "startLine": 872,
+        "startChar": 8,
+        "endLine": 872,
+        "endChar": 25
+      },
+      "revId": "ceebcab04a586e784336736b5759632748b0ff1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
