@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cf689c60_1789d197",
+        "filename": "power/mt8183.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T08:07:24Z",
+      "side": 1,
+      "message": "GPIO_PMIC_EN_ODL is connected to PWR_KEY and HOME_KEY, so we should only press it for a short amount of time, otherwise PMIC will detect long press and shut down.",
+      "parentUuid": "c54f63fa_44e67c44",
+      "revId": "24153748b61b9f771c3b4e4646b9f54b4e4e2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "760e7889_30c092a2",
         "filename": "power/mt8183.c",
         "patchSetId": 6
@@ -48,6 +66,24 @@
       "side": 1,
       "message": "Sorry, wrong msg. we have these pins in P0. But don\u0027t understand why need to control these pins during state transition. It seems we don\u0027t need to control this during mt8173.",
       "parentUuid": "760e7889_30c092a2",
+      "revId": "24153748b61b9f771c3b4e4646b9f54b4e4e2a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6c88c61_6351ae93",
+        "filename": "power/mt8183.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T08:07:24Z",
+      "side": 1,
+      "message": "The only thing this now does is enabling GPIO_PP3300_S0_EN. Agree that we could probably replace this with a simple gpio_set",
+      "parentUuid": "d6768e49_3a3b1188",
       "revId": "24153748b61b9f771c3b4e4646b9f54b4e4e2a18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
