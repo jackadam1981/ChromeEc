@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1bbd5547_9e12347f",
+        "filename": "board/cr50/tpm2/mfg_nvmem_allocations.txt",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-13T06:59:48Z",
+      "side": 1,
+      "message": "good idea, done",
+      "parentUuid": "fa12fc81_2b6b9785",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84c22986_af6966fb",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d878ec83_c2923ba7",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-13T06:59:48Z",
+      "side": 1,
+      "message": "Good point - no, I don\u0027t expect we\u0027ll have non-consecutive ones, and agree that we can easily deprecate them if necessary.\n\nIn fact, we don\u0027t need to use this somewhat complicated method and can just use a normal array in which we can easily guarantee ordering.",
+      "parentUuid": "84c22986_af6966fb",
+      "range": {
+        "startLine": 133,
+        "startChar": 23,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e67df642_af887558",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 12
@@ -59,6 +107,30 @@
       "writtenOn": "2018-07-12T16:50:02Z",
       "side": 1,
       "message": "I suggest to separate the CL that implements the infrastructure for vNVRAM from the CL(s) that add entries for specific data like board_id (and SN_BITS shall go along/after the support for storing those bits in nvram).",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb768a2d_f094f064",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-13T06:59:48Z",
+      "side": 1,
+      "message": "I\u0027ve removed SN_BITS but I\u0027ve left the board ID for now, as removing it requires some other changes to the code (removing a BUILD_ASSERT, changing the array definition) - so I thought leaving it in better represents the intended state of the infrastructure code. Let me know if you\u0027d prefer I made the changes and move it out.",
+      "parentUuid": "e67df642_af887558",
       "range": {
         "startLine": 144,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4636e861_e055f97b",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-13T06:59:48Z",
+      "side": 1,
+      "message": "Good question - if we are requiring consecutive indices I think this makes sense; I\u0027ve set to check up to MAX and non-zero. \n\nIf we decide to support undefined virtual indices in future I\u0027ll update to check __NvHandleInVirtualRange",
+      "parentUuid": "ed0d3dc2_30ff5762",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 35
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7db1270c_148063a3",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 12
@@ -114,6 +210,30 @@
       "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b384821_a27dde9f",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-13T06:59:48Z",
+      "side": 1,
+      "message": "right :) \nremoved",
+      "parentUuid": "7db1270c_148063a3",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 51
+      },
+      "revId": "9ea0a4c27935bdf895a6fa9644b3e42fd9060c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
