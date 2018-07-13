@@ -16,4 +16,9 @@ void init_rdd_state(void);
  */
 void print_rdd_state(void);
 
+/**
+ * Query whether RDD is detected. 1 if connected, and 0 otherwise.
+ */
+int rdd_is_detected(void);
+
 #endif  /* __CROS_RDD_H */
