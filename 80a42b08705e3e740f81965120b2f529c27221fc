@@ -22,6 +22,30 @@
       "revId": "80a42b08705e3e740f81965120b2f529c27221fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50e4dbd2_55e3aac2",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2018-07-13T06:36:54Z",
+      "side": 1,
+      "message": "DX chip\u0027s flash size is different from the  CX,BX,AX\nChip Version is mapping from bit 3-0  , Flash size is mapping from bit 7-4\n0x00 is AX 128KB\n0x01 is BX 128KB\n0x02 is CX 128KB\n0x03 is DX 128KB\n\nCX before flash size (bit 7-4)\n0:128KB\n4:192KB\n8:256KB\n\nDX flash size(bit 7-4)\n0:128KB\n2:192KB\n4:256KB\n6:384KB\n8:512KB\n\n0x83 is DX 512KB (8 for 512KB , 3 for DX)\n\nI\u0027ll fix it later.",
+      "parentUuid": "70afba14_c322a8c5",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 29
+      },
+      "revId": "80a42b08705e3e740f81965120b2f529c27221fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
