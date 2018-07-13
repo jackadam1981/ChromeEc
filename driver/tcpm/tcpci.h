@@ -58,6 +58,10 @@
 #define TCPC_REG_ROLE_CTRL_RP(reg)  (((reg) & TCPC_REG_ROLE_CTRL_RP_MASK) >> 4)
 #define TCPC_REG_ROLE_CTRL_CC2(reg) (((reg) & 0xc) >> 2)
 #define TCPC_REG_ROLE_CTRL_CC1(reg) ((reg) & 0x3)
+#define TCPC_REG_ROLE_CTRL_CC_RA    0x0
+#define TCPC_REG_ROLE_CTRL_CC_RP    0x1
+#define TCPC_REG_ROLE_CTRL_CC_RD    0x2
+#define TCPC_REG_ROLE_CTRL_CC_OPEN  0x3
 
 #define TCPC_REG_FAULT_CTRL        0x1b
 #define TCPC_REG_POWER_CTRL        0x1c
