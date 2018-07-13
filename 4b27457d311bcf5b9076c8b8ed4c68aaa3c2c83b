@@ -46,6 +46,30 @@
       "revId": "4b27457d311bcf5b9076c8b8ed4c68aaa3c2c83b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c273df7b_dcf7638e",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-13T14:57:19Z",
+      "side": 1,
+      "message": "I apologize for my incorrect post earlier, I misread the code, and I thought you had something different. What you had was fine, and what you have now is also good :)\n\nIf you prefer, you can revert your most recent change or you can leave it. I am okay either way.",
+      "parentUuid": "c8de7b76_ab34c84e",
+      "range": {
+        "startLine": 231,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 42
+      },
+      "revId": "4b27457d311bcf5b9076c8b8ed4c68aaa3c2c83b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
