@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfa7ee14_0b47e0d8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3653,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-13T21:46:51Z",
+      "side": 1,
+      "message": "This call might interfere with pd_send_vdm above. I\u0027m exploring alternatives.",
+      "range": {
+        "startLine": 3653,
+        "startChar": 1,
+        "endLine": 3653,
+        "endChar": 37
+      },
+      "revId": "24ef689e1281c163a0448e0a1fc1ce9b0b628a55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
