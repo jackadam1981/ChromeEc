@@ -508,6 +508,11 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	return EC_SUCCESS;
 }
 
+static int perform_calib(const struct motion_sensor_t *s)
+{
+	return EC_SUCCESS;
+}
+
 static int init(const struct motion_sensor_t *s)
 {
 	int ret, val, reg, reset_field;
@@ -642,6 +647,7 @@ const struct accelgyro_drv kionix_accel_drv = {
 	.get_data_rate = get_data_rate,
 	.set_offset = set_offset,
 	.get_offset = get_offset,
+	.perform_calib = perform_calib,
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ACCEL
