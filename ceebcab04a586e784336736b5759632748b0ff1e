@@ -70,6 +70,29 @@
       "revId": "ceebcab04a586e784336736b5759632748b0ff1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "050d9299_6d298df6",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-13T17:01:40Z",
+      "side": 1,
+      "message": "can we add that this is an internal/undocumented register here in the comments.",
+      "range": {
+        "startLine": 726,
+        "startChar": 4,
+        "endLine": 727,
+        "endChar": 18
+      },
+      "revId": "ceebcab04a586e784336736b5759632748b0ff1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
