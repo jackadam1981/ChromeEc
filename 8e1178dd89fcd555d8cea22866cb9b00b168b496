@@ -1,0 +1,295 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dca5bc36_14dd4ea1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "We\u0027ll need a better bug for this.",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69a51c7_af6e5114",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "Drop",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b506349_dd7e834a",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4380e119_433ebd41",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "Drop this\n\nAlso, the kukui changes belong in a separate change, please only add support for the MT6370 TCPC in this CL, and we can switch TCPC in the next CL.",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad39cb9_07780b3d",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "Probably not needed?",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c979df6a_e356d579",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "Most of these seem copied-pasted from tcpci.c. Can we export these functions instead, and just use them here?",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14a341c5_d0e738cd",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "this looks a _lot_ like tcpci_tcpc_alert, the only major difference being\nif (register_mask_reset(port))\n                pd_event |\u003d PD_EVENT_TCPC_RESET;\n\nIs that a problem on mt6370?",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa87e610_d1583ebc",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "return on next line please",
+      "range": {
+        "startLine": 139,
+        "startChar": 22,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a30af92_739cf04e",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "no bracket for single-line if statements please.\n\nAlso, space after if. And no blank line before the if.",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "312bce5a_8c0edd4c",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 148,
+        "startChar": 33,
+        "endLine": 148,
+        "endChar": 47
+      },
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6224ae8b_73a1114b",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "Please define this register as a macro",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 28
+      },
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4ddcce_df4b9cc6",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "space before \u003d\u003d",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 9
+      },
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f9f224c_66602ebe",
+        "filename": "driver/tcpm/mt6370.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "Copyright header please (copy from another file)",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3526886_7dc948df",
+        "filename": "driver/tcpm/mt6370.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "no need for parentheses around these simple numbers",
+      "range": {
+        "startLine": 8,
+        "startChar": 32,
+        "endLine": 8,
+        "endChar": 38
+      },
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6109861f_3866d390",
+        "filename": "driver/tcpm/mt6370.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-13T12:28:53Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
