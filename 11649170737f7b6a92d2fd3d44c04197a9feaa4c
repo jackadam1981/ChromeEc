@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da94207d_e07d5f80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-13T22:54:31Z",
+      "side": 1,
+      "message": "Can we use a combo of CONFIG_ values to provide first class semantics for the various conditions? e.g. with fizz EC does its own verification and jumps to RW on its own.\n\nI still want someone to provide the XIP notion in addition to the early vboot.",
+      "revId": "11649170737f7b6a92d2fd3d44c04197a9feaa4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
