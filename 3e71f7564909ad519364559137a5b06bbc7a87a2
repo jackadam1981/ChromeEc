@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5706201_29e52aae",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-14T06:40:21Z",
+      "side": 1,
+      "message": "I assume it does not work if you just set the variable volatile here?",
+      "revId": "3e71f7564909ad519364559137a5b06bbc7a87a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
