@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38d04ded_627abc82",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-16T21:50:35Z",
+      "side": 1,
+      "message": "Does this algorithm rely on one task owning this state and also being higher than any other task that could touch the devices? If so, I think it\u0027s important you comment that assumption.",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744d166f_0cfc64c2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-16T21:50:35Z",
+      "side": 1,
+      "message": "Can this be called from multiple tasks?",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb6cd8e_21150662",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-16T21:50:35Z",
+      "side": 1,
+      "message": "Can this be called from other tasks? If so then things need to be correctly guarded or atomic ops used.",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7089f5c2_f257105a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3579,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-16T21:50:35Z",
+      "side": 1,
+      "message": "long line?",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4790e742_5b9cf017",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-16T21:50:35Z",
+      "side": 1,
+      "message": "\u0027Some\u0027 instead of \u0027Another\u0027? Or you are saying pd task never sets such a flag?  If so, I think it\u0027s helpful to expand on this concept in a comment here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
