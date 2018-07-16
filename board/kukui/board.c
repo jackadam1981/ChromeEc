@@ -57,7 +57,8 @@ static void tcpc_alert_event(enum gpio_signal signal)
 static void warm_reset_request_interrupt(enum gpio_signal signal)
 {
 	CPRINTS("AP wants warm reset");
-	chipset_reset();
+	// TODO: See if this should be its own thing.
+	chipset_reset(CHIPSET_RESET_BOARD_CUSTOM);
 }
 
 static void ap_watchdog_interrupt(enum gpio_signal signal)

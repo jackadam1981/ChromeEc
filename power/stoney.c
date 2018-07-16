@@ -30,7 +30,7 @@
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
 
-void chipset_force_shutdown(void)
+void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
 
@@ -46,9 +46,10 @@ static void chipset_force_g3(void)
 	gpio_set_level(GPIO_EN_PWR_A, 0);
 }
 
-void chipset_reset(void)
+void chipset_reset(enum chipset_reset_reason reason)
 {
-	CPRINTS("%s", __func__);
+	// TODO: Log the reason somehow.
+	CPRINTS("%s: %d", __func__, reason);
 
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		CPRINTS("Can't reset: SOC is off");

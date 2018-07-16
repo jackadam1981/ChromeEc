@@ -418,7 +418,7 @@ enum power_state power_chipset_init(void)
 		 * The warm reset triggers AP into the recovery mode (
 		 * flash SPI from USB).
 		 */
-		chipset_reset();
+		chipset_reset(CHIPSET_RESET_UNKNOWN);
 
 		init_power_state = POWER_G3;
 	} else {
@@ -474,8 +474,9 @@ static void chipset_turn_off_power_rails(void)
 	set_system_power(0);
 }
 
-void chipset_force_shutdown(void)
+void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
+	CPRINTS("%s: %d", __func__, reason);
 	chipset_turn_off_power_rails();
 
 	/* clean-up internal variable */
@@ -638,9 +639,9 @@ static void power_on(void)
 	CPRINTS("AP running ...");
 }
 
-void chipset_reset(void)
+void chipset_reset(enum chipset_reset_reason reason)
 {
-	CPRINTS("EC triggered warm reboot");
+	CPRINTS("%s: %d", __func__, reason);
 	set_warm_reset(1);
 	usleep(PMIC_WARM_RESET_H_HOLD_TIME);
 	/* deassert the reset signals */

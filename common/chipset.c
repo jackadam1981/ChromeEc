@@ -22,7 +22,7 @@ static int command_apreset(int argc, char **argv)
 {
 	/* Force the chipset to reset */
 	ccprintf("Issuing AP reset...\n");
-	chipset_reset();
+	chipset_reset(CHIPSET_RESET_CONSOLE_CMD);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(apreset, command_apreset,
@@ -31,7 +31,7 @@ DECLARE_CONSOLE_COMMAND(apreset, command_apreset,
 
 static int command_apshutdown(int argc, char **argv)
 {
-	chipset_force_shutdown();
+	chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown,

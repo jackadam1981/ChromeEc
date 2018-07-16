@@ -23,7 +23,7 @@
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
 
-void chipset_force_shutdown(void)
+void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s()", __func__);
 
