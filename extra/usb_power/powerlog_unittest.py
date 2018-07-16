@@ -27,14 +27,14 @@ class TestPowerlog(unittest.TestCase):
 
   def test_ProcessFilenameAbsoluteFilePath(self):
     """Absolute file path is returned unchanged."""
-    processed_fn = powerlog_util.process_filename(self.filepath)
+    processed_fn = powerlog.process_filename(self.filepath)
     self.assertEqual(self.filepath, processed_fn)
 
   def test_ProcessFilenameRelativeFilePathCWD(self):
     """Correct path is returned when using relative name inside cwd."""
     original_wd = os.getcwd()
     os.chdir(self.tempdir)
-    processed_fn = powerlog_util.process_filename(self.filename)
+    processed_fn = powerlog.process_filename(self.filename)
     try:
       self.assertEqual(self.filepath, processed_fn)
     finally:
@@ -42,29 +42,29 @@ class TestPowerlog(unittest.TestCase):
 
   def test_ProcessFilenameLibDir(self):
     """Correct path is returned when using relative name inside LIBDIR."""
-    original_lib_dir = powerlog_util.LIB_DIR
-    powerlog_util.LIB_DIR = self.tempdir
-    processed_fn = powerlog_util.process_filename(self.filename)
+    original_lib_dir = powerlog.LIB_DIR
+    powerlog.LIB_DIR = self.tempdir
+    processed_fn = powerlog.process_filename(self.filename)
     try:
       self.assertEqual(self.filepath, processed_fn)
     finally:
-      powerlog_util.LIB_DIR = original_lib_dir
+      powerlog.LIB_DIR = original_lib_dir
 
   def test_ProcessFilenameRelativeFilePathPyFile(self):
-    """Correct path is returned when filename is in same dir as powerlog_util"""
-    original__file__ = powerlog_util.__file__
-    powerlog_util.__file__ = os.path.join(self.tempdir,
+    """Correct path is returned when filename is in same dir as powerlog"""
+    original__file__ = powerlog.__file__
+    powerlog.__file__ = os.path.join(self.tempdir,
                                           os.path.basename(original__file__))
-    processed_fn = powerlog_util.process_filename(self.filename)
+    processed_fn = powerlog.process_filename(self.filename)
     try:
       self.assertEqual(self.filepath, processed_fn)
     finally:
-      powerlog_util.__file__ = original__file__
+      powerlog.__file__ = original__file__
 
   def test_ProcessFilenameInvalid(self):
     """IOError is raised when file cannot be found by any of the four ways."""
     with self.assertRaises(IOError):
-      powerlog_util.process_filename(self.filename)
+      powerlog.process_filename(self.filename)
 
 if __name__ == '__main__':
   unittest.main()
