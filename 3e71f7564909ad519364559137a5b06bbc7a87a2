@@ -16,6 +16,24 @@
       "revId": "3e71f7564909ad519364559137a5b06bbc7a87a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0254a43f_e1c07ccf",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2018-07-16T18:37:05Z",
+      "side": 1,
+      "message": "It works: gcc is graceful enough not to start optimizing that away (even though zero is never passed elsewhere, points to compiler-chosen memory and therefore the \"volatile\" could be optimized away \"safely\").\n\nSo, done.",
+      "parentUuid": "c5706201_29e52aae",
+      "revId": "3e71f7564909ad519364559137a5b06bbc7a87a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
