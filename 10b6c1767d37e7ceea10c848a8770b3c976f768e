@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f71b877_1c870489",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-07-16T20:42:23Z",
+      "side": 1,
+      "message": "You should also be checking cr50 did a power-on reset.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "10b6c1767d37e7ceea10c848a8770b3c976f768e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
