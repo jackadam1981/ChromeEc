@@ -11,12 +11,14 @@ import numpy
 import os
 
 STATS_PREFIX = '@@'
+# used to aid sorting of dict keys
 KEY_PREFIX = '__'
 # This prefix is used for keys that should not be shown in the summary tab, such
 # as timeline keys.
 NOSHOW_PREFIX = '!!'
 
 LONG_UNIT = {
+    '': 'N/A',
     'mW': 'milliwatt',
     'uW': 'microwatt',
     'mV': 'millivolt',
@@ -24,14 +26,46 @@ LONG_UNIT = {
     'uV': 'microvolt'
 }
 
+class StatsManagerError(Exception):
+  """Errors in StatsManager class."""
+  pass
 
 class StatsManager(object):
-  """Calculates statistics for several lists of data(float)."""
+  """Calculates statistics for several lists of data(float).i
+
+  Example usage:
+
+    >>> stats = StatsManager()
+    >>> stats.AddValue(TIME_KEY, 50.0)
+    >>> stats.AddValue(TIME_KEY, 25.0)
+    >>> stats.AddValue(TIME_KEY, 40.0)
+    >>> stats.AddValue(TIME_KEY, 10.0)
+    >>> stats.AddValue(TIME_KEY, 10.0)
+    >>> stats.AddValue('frobnicate', 11.5)
+    >>> stats.AddValue('frobnicate', 9.0)
+    >>> stats.AddValue('foobar', 11111.0)
+    >>> stats.AddValue('foobar', 22222.0)
+    >>> stats.CalculateStats()
+    >>> stats.PrintSummary()
+    @@            NAME  COUNT      MEAN   STDDEV       MAX       MIN
+    @@   sample_msecs      4     31.25    15.16     50.00     10.00
+    @@         foobar      2  16666.50  5555.50  22222.00  11111.00
+    @@     frobnicate      2     10.25     1.25     11.50      9.00
+
+  Attributes:
+    _data: dict of list of readings for each domain(key)
+    _unit: dict of unit for each domain(key)
+    _summary: dict of stats per domain (key): min, max, count, mean, stddev
+
+  Note:
+    _summary is empty until CalculateStats() is called, and is updated when
+    CalculateStats() is called.
+  """
 
   def __init__(self):
     """Initialize infrastructure for data and their statistics."""
     self._data = collections.defaultdict(list)
-    self._unit = {}
+    self._unit = collections.defaultdict(str)
     self._summary = {}
 
   def AddValue(self, domain, value):
@@ -83,6 +117,8 @@ class StatsManager(object):
   def _SummaryToString(self, prefix=STATS_PREFIX):
     """Format summary into a string, ready for pretty print.
 
+   See class description for format example.
+
     Args:
       prefix: start every row in summary string with prefix, for easier reading.
     """
@@ -92,9 +128,9 @@ class StatsManager(object):
       if domain.startswith(NOSHOW_PREFIX):
         continue
       stats = self._summary[domain]
-      unit = self._unit[domain]
-      domain_unit = domain.lstrip(KEY_PREFIX) + '_' + unit
-      row = [domain_unit]
+      if not domain.endswith(self._unit[domain]):
+        domain = '%s_%s' % (domain, self._unit[domain])
+      row = [domain.lstrip(KEY_PREFIX)]
       row.append(str(stats['count']))
       for entry in headers[2:]:
         row.append('%.2f' % stats[entry.lower()])
@@ -179,7 +215,9 @@ class StatsManager(object):
     if not os.path.exists(dirname):
       os.makedirs(dirname)
     for domain, data in self._data.iteritems():
-      fname = domain + '_' + self._unit[domain] + '.txt'
+      if not domain.endswith(self._unit[domain]):
+          domain = '%s_%s' % (domain, self._unit[domain])
+      fname = '%s.txt' % domain
       fname = os.path.join(dirname, fname)
       with open(fname, 'w') as f:
         f.write('\n'.join('%.2f' % value for value in data) + '\n')
