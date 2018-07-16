@@ -93,6 +93,30 @@
       "revId": "5c6413ca28dabccf77614b8cb3ed1e98121f0fa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e628fe_29808247",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-07-16T20:40:11Z",
+      "side": 1,
+      "message": "Hello Randall and Mary, \n\nCan I have your feedback on this?\n\nThis Hook_Init function seems to get executed on hard reset only. If not, please correct me.\n\nThank you!",
+      "parentUuid": "77e58e5d_f75894e1",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "5c6413ca28dabccf77614b8cb3ed1e98121f0fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
