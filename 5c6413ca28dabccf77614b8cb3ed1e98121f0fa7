@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c60e51a5_123f5d84",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-07-16T20:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d3a6040_b399bebe",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "5c6413ca28dabccf77614b8cb3ed1e98121f0fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff35c5a4_82c20c5f",
         "filename": "chip/g/rbox.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-16T19:21:25Z",
       "side": 1,
       "message": "sorry, I have not been following the discussion on the bug closely: does this mean that if debug cable is plugged in, every reset will be delayed by 2 seconds?",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "5c6413ca28dabccf77614b8cb3ed1e98121f0fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e58e5d_f75894e1",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-07-16T20:34:16Z",
+      "side": 1,
+      "message": "Manually checked that just pressing \"REFRESH\"+\"POWER BUTTON\" doesn\u0027t get this code executed.\n\nThe two cases that I have this part executed are\n(case 1) Binary Download.\n\n(Case 2) EC is shutdown.\n         (1) (ec console) cutoff\n         (2) Unplug the debug cable and the power cable.\n         (3) Plug the debug cable and press the power button. Keep the power button pressed.",
+      "parentUuid": "ff35c5a4_82c20c5f",
       "range": {
         "startLine": 31,
         "startChar": 5,
