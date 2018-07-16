@@ -4796,6 +4796,41 @@ struct __ec_align1 ec_params_set_cbi {
 	uint8_t data[];		/* For string and raw data */
 };
 
+/*
+ * Information about resets of the AP by the EC and the EC's own uptime.
+ */
+#define EC_CMD_GET_UPTIME_INFO 0x0121
+
+struct __ec_align4 ec_response_uptime_info {
+	/* Number of milliseconds since last EC reset */
+	uint32_t time_since_ec_boot_ms;
+
+	/*
+	 * Number of times the AP was reset by the EC since the last EC boot.
+	 * Note that the AP may be held in reset by the EC during the initial
+	 * boot sequence, such that the very first AP boot may count as more
+	 * than one here.
+	 */
+	uint32_t ap_resets_since_ec_boot;
+
+	/*
+	 * The set of flags which describe the EC's most recent reset.  See
+	 * include/system.h RESET_FLAG_* for details.
+	 */
+	uint32_t ec_reset_flags;
+
+	/* Empty log entries have both the cause and timestamp set to zero. */
+	struct ap_reset_log_entry {
+		/* See include/chipset.h for details */
+		uint16_t reset_cause;
+
+		/*
+		 * The time of the reset's assertion, in milliseconds since the
+		 * last EC reset.  Set to zero if the log entry is empty.
+		 */
+		uint32_t reset_time_ms;
+	} recent_ap_reset[4];
+};
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
