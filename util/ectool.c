@@ -17,6 +17,7 @@
 #include "anx74xx.h"
 #include "battery.h"
 #include "comm-host.h"
+#include "chipset.h"
 #include "compile_time_macros.h"
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
@@ -253,6 +254,9 @@ const char help_str[] =
 	"      Get/set TMP006 calibration\n"
 	"  tmp006raw <tmp006_index>\n"
 	"      Get raw TMP006 data\n"
+	"  uptimeinfo\n"
+	"      Get info about how long the EC has been running and the most\n"
+	"      recent AP resets\n"
 	"  usbchargemode <port> <mode>\n"
 	"      Set USB charging mode\n"
 	"  usbmux <mux>\n"
@@ -616,6 +620,104 @@ int cmd_cmdversions(int argc, char *argv[])
 
 	printf("Command 0x%02x supports version mask 0x%08x\n",
 	       cmd, r.version_mask);
+	return 0;
+}
+
+int cmd_uptimeinfo(int argc, char *argv[])
+{
+	static const char * const reset_causes[CHIPSET_SHUTDOWN_END] = {
+		"(reset unknown)",
+		"reset: board custom",
+		"reset: ap hang detected",
+		"reset: console command",
+		"reset: keyboard sysreset",
+		"reset: keyboard warm reboot",
+		"reset: debug warm reboot",
+		"reset: at AP's request",
+		"reset: during EC initialization",
+		"shutdown: power failure",
+		"shutdown: during EC initialization",
+		"shutdown: board custom",
+		"shutdown: battery voltage startup inhibit",
+		"shutdown: power wait asserted",
+		"shutdown: by console command",
+		"shutdown: entering G3",
+		"shutdown: thermal",
+		"shutdown: power button",
+	};
+
+	static const char * const reset_flag_strings[] = {
+		"other",
+		"reset-pin",
+		"brownout",
+		"power-on",
+		"watchdog",
+		"soft",
+		"hibernate",
+		"rtc-alarm",
+		"wake-pin",
+		"low-battery",
+		"sysjump",
+		"hard",
+		"ap-off",
+		"preserved",
+		"usb-resume",
+		"rdd",
+		"rbox",
+		"security"
+	};
+	struct ec_response_uptime_info r;
+	int rv;
+	int i;
+	int reset_cause;
+	int flag_count;
+	uint32_t flag;
+
+	if (argc != 1) {
+		fprintf(stderr, "uptimeinfo takes no arguments");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_GET_UPTIME_INFO, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "ERROR: EC_CMD_GET_UPTIME_INFO failed; %d\n",
+			rv);
+		return rv;
+	}
+
+	printf("EC uptime: %d.%03d seconds\n",
+		r.time_since_ec_boot_ms / 1000,
+		r.time_since_ec_boot_ms % 1000);
+
+	printf("AP resets since EC boot: %d\n", r.ap_resets_since_ec_boot);
+
+	printf("Most recent AP reset causes:\n");
+	for (i = 0; i != ARRAY_SIZE(r.recent_ap_reset); ++i) {
+		if (r.recent_ap_reset[i].reset_time_ms == 0)
+			continue;
+
+		/* Array access guard */
+		reset_cause = r.recent_ap_reset[i].reset_cause;
+		if (reset_cause >= ARRAY_SIZE(reset_causes))
+			reset_cause = 0;
+
+		printf("\t%d.%03d: %s\n",
+			r.recent_ap_reset[i].reset_time_ms / 1000,
+			r.recent_ap_reset[i].reset_time_ms % 1000,
+			reset_causes[reset_cause]);
+	}
+
+	printf("EC reset flags at last EC boot: ");
+	flag_count = 0;
+	for (flag = 0; flag != 32; ++flag) {
+		if ((r.ec_reset_flags & (1 << flag)) != 0) {
+			if (flag_count)
+				printf(" | ");
+			printf(reset_flag_strings[flag]);
+			flag_count++;
+		}
+	}
+	printf("\n");
 	return 0;
 }
 
@@ -8105,6 +8207,7 @@ const struct command commands[] = {
 	{"tpframeget", cmd_tp_frame_get},
 	{"tmp006cal", cmd_tmp006cal},
 	{"tmp006raw", cmd_tmp006raw},
+	{"uptimeinfo", cmd_uptimeinfo},
 	{"usbchargemode", cmd_usb_charge_set_mode},
 	{"usbmux", cmd_usb_mux},
 	{"usbpd", cmd_usb_pd},
