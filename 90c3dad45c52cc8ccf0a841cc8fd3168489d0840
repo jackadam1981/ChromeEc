@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "97c53499_a1960541",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-16T17:18:06Z",
+      "side": 1,
+      "message": "Please mention mark\u0027s concern. Board owners need to decide to cherry-pick it or not based on their board\u0027s power budget.",
+      "parentUuid": "6215c3b5_da34d0ed",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 163
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bff76dec_2db44f7c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
