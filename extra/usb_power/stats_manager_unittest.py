@@ -10,6 +10,7 @@ import os
 import shutil
 import tempfile
 import unittest
+import re
 
 from stats_manager import StatsManager
 
@@ -22,14 +23,14 @@ class TestStatsManager(unittest.TestCase):
 
   def _populate_dummy_stats(self):
     """Create a populated & processed StatsManager to test data retrieval."""
-    self.data.AddValue('A', 99999.5)
-    self.data.AddValue('A', 100000.5)
-    self.data.AddValue('A', 'ERROR')
+    self.data.AddSample('A', 99999.5)
+    self.data.AddSample('A', 100000.5)
+    self.data.AddSample('A', 'ERROR')
     self.data.SetUnit('A', 'uW')
     self.data.SetUnit('A', 'mW')
-    self.data.AddValue('B', 1.5)
-    self.data.AddValue('B', 2.5)
-    self.data.AddValue('B', 3.5)
+    self.data.AddSample('B', 1.5)
+    self.data.AddSample('B', 2.5)
+    self.data.AddSample('B', 3.5)
     self.data.SetUnit('B', 'mV')
     self.data.CalculateStats()
 
@@ -42,33 +43,33 @@ class TestStatsManager(unittest.TestCase):
     """Delete the temporary directory and its content."""
     shutil.rmtree(self.tempdir)
 
-  def test_AddValue(self):
+  def test_AddSample(self):
     """Adding a value successfully adds a value."""
-    self.data.AddValue('Test', 1000)
+    self.data.AddSample('Test', 1000)
     self.data.SetUnit('Test', 'test')
     self.data.CalculateStats()
     summary = self.data.GetSummary()
     self.assertEqual(1, summary['Test']['count'])
 
-  def test_AddValueNoFloat(self):
+  def test_AddSampleNoFloat(self):
     """Adding a non number gets ignored and doesn't raise an exception."""
-    self.data.AddValue('Test', 17)
-    self.data.AddValue('Test', 'fiesta')
+    self.data.AddSample('Test', 17)
+    self.data.AddSample('Test', 'fiesta')
     self.data.SetUnit('Test', 'test')
     self.data.CalculateStats()
     summary = self.data.GetSummary()
     self.assertEqual(1, summary['Test']['count'])
 
-  def test_AddValueNoUnit(self):
+  def test_AddSampleNoUnit(self):
     """Not adding a unit does not cause an exception on CalculateStats()."""
-    self.data.AddValue('Test', 17)
+    self.data.AddSample('Test', 17)
     self.data.CalculateStats()
     summary = self.data.GetSummary()
     self.assertEqual(1, summary['Test']['count'])
 
   def test_UnitSuffix(self):
     """Unit gets appended as a suffix in the displayed summary."""
-    self.data.AddValue('test', 250)
+    self.data.AddSample('test', 250)
     self.data.SetUnit('test', 'mw')
     self.data.CalculateStats()
     summary_str = self.data.SummaryToString()
@@ -76,7 +77,7 @@ class TestStatsManager(unittest.TestCase):
 
   def test_DoubleUnitSuffix(self):
     """If domain already ends in unit, verify that unit doesn't get appended."""
-    self.data.AddValue('test_mw', 250)
+    self.data.AddSample('test_mw', 250)
     self.data.SetUnit('test_mw', 'mw')
     self.data.CalculateStats()
     summary_str = self.data.SummaryToString()
@@ -123,8 +124,8 @@ class TestStatsManager(unittest.TestCase):
 
   def test_SaveRawDataNoUnit(self):
     """SaveRawData appends no unit suffix if the unit is not specified."""
-    self.data.AddValue('train', 1000)
-    self.data.AddValue('car', 200)
+    self.data.AddSample('train', 1000)
+    self.data.AddSample('car', 200)
     self.data.SetUnit('car', 'blue')
     self.data.CalculateStats()
     outdir = 'unittest_raw_data'
@@ -134,6 +135,37 @@ class TestStatsManager(unittest.TestCase):
     self.assertIn('car_blue.txt', files)
     #verify expected behavior without a unit
     self.assertIn('train.txt', files)
+
+  def test_SummaryToStringHideDomains(self):
+    """Keys indicated in hide_domains are not printed in the summary."""
+    data = StatsManager(hide_domains=['A-domain'])
+    data.AddSample('A-domain', 17)
+    data.AddSample('B-domain', 17)
+    data.CalculateStats()
+    summarystr = data.SummaryToString()
+    self.assertIn('B-domain', summarystr)
+    self.assertNotIn('A-domain', summarystr)
+
+  def test_SummaryToStringOrder(self):
+    """Order passed into StatsManager is honored when formatting summary."""
+    a_before_b_regexp = re.compile('A-domain.*B-domain', re.DOTALL)
+    b_before_a_regexp = re.compile('B-domain.*A-domain', re.DOTALL)
+    #StatsManager that should print A before B
+    a2b_data = StatsManager(order=['A-domain'])
+    a2b_data.AddSample('A-domain', 17)
+    a2b_data.AddSample('B-domain', 17)
+    a2b_data.CalculateStats()
+    a2b_summarystr = a2b_data.SummaryToString()
+    self.assertRegexpMatches(a2b_summarystr, a_before_b_regexp)
+    self.assertNotRegexpMatches(a2b_summarystr, b_before_a_regexp)
+    #StatsManager that should print B before A
+    b2a_data = StatsManager(order=['B-domain'])
+    b2a_data.AddSample('A-domain', 17)
+    b2a_data.AddSample('B-domain', 17)
+    b2a_data.CalculateStats()
+    b2a_summarystr = b2a_data.SummaryToString()
+    self.assertRegexpMatches(b2a_summarystr, b_before_a_regexp)
+    self.assertNotRegexpMatches(b2a_summarystr, a_before_b_regexp)
 
   def test_SaveSummary(self):
     """SaveSummary properly dumps the summary into a file."""
@@ -167,8 +199,8 @@ class TestStatsManager(unittest.TestCase):
 
   def test_SaveSummaryJSONNoUnit(self):
     """SaveSummaryJSON marks unknown units properly as N/A."""
-    self.data.AddValue('train', 1000)
-    self.data.AddValue('car', 200)
+    self.data.AddSample('train', 1000)
+    self.data.AddSample('car', 200)
     self.data.SetUnit('car', 'blue')
     self.data.CalculateStats()
     fname = 'unittest_summary.json'
