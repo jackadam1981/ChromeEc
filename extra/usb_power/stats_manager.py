@@ -50,6 +50,11 @@ class StatsManager(object):
   Attributes:
     _data: dict of list of samples for each domain (key)
     _unit: dict of unit for each domain (key)
+    _title: title to add as banner to formatted summary. If no title,
+            no banner gets added
+    _summarytag: tag to prepend to output file names to distinguish between
+                 multiple StatsManager instances saving data to the same
+                 location.
     _order: list of formatting order for domains. Domains not listed are
             displayed in sorted order
     _hide_domains: collection of domains to hide when formatting summary string
@@ -60,8 +65,10 @@ class StatsManager(object):
     _summary is empty until CalculateStats() is called
   """
 
-  def __init__(self, hide_domains=[], order=[]):
+  def __init__(self, title='', summarytag='', hide_domains=[], order=[]):
     """Initialize infrastructure for data and their statistics."""
+    self._title = title
+    self._summarytag = '%s_' % summarytag if summarytag else summarytag
     self._data = collections.defaultdict(list)
     self._unit = collections.defaultdict(str)
     self._order = order
@@ -161,13 +168,25 @@ class StatsManager(object):
       col_item_widths = [len(row[col_idx]) for row in table]
       max_col_width.append(max(col_item_widths))
 
-    formatted_table = []
+    formatted_lines = []
     for row in table:
       formatted_row = prefix + ' '
       for i in range(len(row)):
         formatted_row += row[i].rjust(max_col_width[i] + 2)
-      formatted_table.append(formatted_row)
-    return '\n'.join(formatted_table)
+      formatted_lines.append(formatted_row)
+
+    formatted_output = '\n'.join(formatted_lines)
+    title = self._title
+    if title:
+      dec_len = len(prefix)
+      line_length = len(formatted_lines[0])
+      line = "%s%s" % (prefix, ''.join(['-'] * (line_length - dec_len)))
+      if len(title) > line_length:
+        title = title[:line_length]
+      padded_title = "%s%s" % (prefix, title.center(line_length)[dec_len:])
+      formatted_output = '\n'.join([line, padded_title, line, formatted_output,
+                                    line])
+    return formatted_output
 
   def GetSummary(self):
     """Getter for summary."""
@@ -212,10 +231,10 @@ class StatsManager(object):
       prefix: start every row in summary string with prefix, for easier reading.
     """
     summary_str = self.SummaryToString(prefix=prefix) + '\n'
-
     if not os.path.exists(directory):
       os.makedirs(directory)
-    fname = self._rotate_fname(os.path.join(directory, fname))
+    fname = self._rotate_fname(os.path.join(directory,
+                                            '%s%s' % (self._summarytag, fname)))
     with open(fname, 'w') as f:
       f.write(summary_str)
     return fname
@@ -236,7 +255,8 @@ class StatsManager(object):
       data[domain] = data_entry
     if not os.path.exists(directory):
       os.makedirs(directory)
-    fname = self._rotate_fname(os.path.join(directory, fname))
+    fname = self._rotate_fname(os.path.join(directory,
+                                            '%s%s' % (self._summarytag, fname)))
     with open(fname, 'w') as f:
       json.dump(data, f)
     return fname
@@ -259,7 +279,8 @@ class StatsManager(object):
       os.makedirs(dirname)
     files = []
     for domain, data in self._data.iteritems():
-      fname = '%s%s.txt' % (domain, self._RetrieveUnitSuffix(domain))
+      fname = '%s%s%s.txt' % (self._summarytag, domain,
+                              self._RetrieveUnitSuffix(domain))
       fname = self._rotate_fname(os.path.join(dirname, fname))
       with open(fname, 'w') as f:
         f.write('\n'.join('%.2f' % value for value in data) + '\n')

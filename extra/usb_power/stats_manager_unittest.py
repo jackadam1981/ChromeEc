@@ -12,7 +12,7 @@ import tempfile
 import unittest
 import re
 
-from stats_manager import StatsManager
+from stats_manager import StatsManager, STATS_PREFIX
 
 class TestStatsManager(unittest.TestCase):
   """Test to verify StatsManager methods work as expected.
@@ -106,6 +106,17 @@ class TestStatsManager(unittest.TestCase):
     self.assertAlmostEqual(0.81649658092773, summary['B']['stddev'])
     self.assertAlmostEqual(2.5, summary['B']['mean'])
 
+  def test_SummaryToStringTitle(self):
+    """Title banner gets formatted in expected output."""
+    title = 'titulo'
+    title_regexp = re.compile('%s\s*%s\s*' % (STATS_PREFIX, title))
+    data = StatsManager(title=title)
+    data.AddSample('A-domain', 17)
+    data.AddSample('B-domain', 17)
+    data.CalculateStats()
+    summarystr = data.SummaryToString()
+    self.assertRegexpMatches(summarystr, title_regexp)
+
   def test_SummaryToStringHideDomains(self):
     """Keys indicated in hide_domains are not printed in the summary."""
     data = StatsManager(hide_domains=['A-domain'])
@@ -190,6 +201,15 @@ class TestStatsManager(unittest.TestCase):
           '@@   B_mV      3       2.50    0.82       3.50      1.50\n',
           f.readline())
 
+
+  def test_SaveSummaryTagged(self):
+    """SaveSummary uses the summary tag when creating output filename."""
+    tag = 'ec'
+    self.data = StatsManager(summarytag=tag)
+    self._populate_dummy_stats()
+    fname = os.path.basename(self.data.SaveSummary(self.tempdir))
+    self.assertTrue(fname.startswith(tag))
+
   def test_SaveSummaryJSON(self):
     """SaveSummaryJSON saves the same data as fed in."""
     self._populate_dummy_stats()
@@ -201,6 +221,14 @@ class TestStatsManager(unittest.TestCase):
       self.assertEqual('milliwatt', summary['A']['unit'])
       self.assertAlmostEqual(2.5, summary['B']['mean'])
       self.assertEqual('millivolt', summary['B']['unit'])
+
+  def test_SaveSummaryJSONTagged(self):
+    """SaveSummaryJSON uses the summary tag when creating output filename."""
+    tag = 'ec'
+    self.data = StatsManager(summarytag=tag)
+    self._populate_dummy_stats()
+    fname = os.path.basename(self.data.SaveSummaryJSON(self.tempdir))
+    self.assertTrue(fname.startswith(tag))
 
   def test_SaveSummaryJSONNoUnit(self):
     """SaveSummaryJSON marks unknown units properly as N/A."""
