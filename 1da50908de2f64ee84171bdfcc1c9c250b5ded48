@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "a38a5145_b666fa91",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-17T15:09:13Z",
+      "side": 1,
+      "message": "Just because it is external it doesn\u0027t mean someone couldn\u0027t indirectly call it from a global entry point from the compilation unit. If you have ideas on enforcing said contract I\u0027m open to them.",
+      "parentUuid": "17dc61a2_3dc86a8a",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edb6cd8e_21150662",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
