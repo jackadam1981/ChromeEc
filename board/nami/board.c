@@ -943,6 +943,12 @@ static void board_init(void)
 	/* Enable Accel/Gyro interrupt for convertibles. */
 	if (sku & SKU_ID_MASK_CONVERTIBLE)
 		gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
+
+	/* Set unused pins as Input+PU. */
+	if (oem != PROJECT_SONA)
+		gpio_set_flags_by_mask(GPIO_C, 0x10, GPIO_INPUT | GPIO_PULL_UP);
+	if (oem != PROJECT_SONA && oem != PROJECT_PANTHEON)
+		gpio_set_flags_by_mask(GPIO_A, 0x80, GPIO_INPUT | GPIO_PULL_UP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
