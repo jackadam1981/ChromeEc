@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53dd639c_cb27f19d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-17T22:18:53Z",
+      "side": 1,
+      "message": "The change looks good to me, but should the caching model be made consistent across other PPCs. Doesn\u0027t need to be part of this change, but should we raise an issue?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "978abc14d39c292eb2fee096780b4a4bfd2d67b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
