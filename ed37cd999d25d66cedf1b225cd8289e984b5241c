@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f74fe019_79f62dd5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-17T05:34:18Z",
+      "side": 1,
+      "message": "DEBOUNCE",
+      "range": {
+        "startLine": 357,
+        "startChar": 15,
+        "endLine": 357,
+        "endChar": 22
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c231afa7_7c87f029",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-17T05:34:18Z",
+      "side": 1,
+      "message": "Should this reset PD_FLAGS_LPM_REQUESTED too?",
+      "range": {
+        "startLine": 366,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 42
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e5b718_0891bb40",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-17T05:34:18Z",
+      "side": 1,
+      "message": "Are these flags already preserved across sysjump? Do we care preserving the LPM flags?",
+      "range": {
+        "startLine": 366,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 16
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbde3e9d_74e3dafe",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-17T05:34:18Z",
+      "side": 1,
+      "message": "Should this reset PD_FLAGS_LPM_ENGAGED flag as well?",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 387,
+        "endChar": 44
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "979fb70a_f7e3afa0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3563,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-17T05:34:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this check engaged flag instead of requested?",
+      "range": {
+        "startLine": 3563,
+        "startChar": 24,
+        "endLine": 3563,
+        "endChar": 46
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9a47ab5_ac6770de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3611,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-17T05:34:18Z",
+      "side": 1,
+      "message": "I know you just split request_low_power_mode out of tcpm_set_drp_toggle. But I was wondering if we should instead have a function like pd_set_drp_toggle which makes a call to tcpm_set_drp_toggle followed by request_low_power_mode?",
+      "range": {
+        "startLine": 3611,
+        "startChar": 4,
+        "endLine": 3611,
+        "endChar": 36
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
