@@ -46,6 +46,30 @@
       "revId": "9b373e67c9d9e9d51b172399919a674190e97f04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0957efe1_e386b5cb",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T18:59:55Z",
+      "side": 0,
+      "message": "I think a few lines of cprints followed by a sleep(-1) causing a watchdog reset. After that has been there for a little while, I am sure no one will be using yorp V0 any more ;)",
+      "parentUuid": "66c291fa_820f10f1",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 21
+      },
+      "revId": "9b373e67c9d9e9d51b172399919a674190e97f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
