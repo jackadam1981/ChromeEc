@@ -46,6 +46,30 @@
       "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3303bf_b136e2af",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-17T17:12:30Z",
+      "side": 0,
+      "message": "I\u0027d like to hear from ITE if BBRAM is cleared in hardware following a power-on-reset of VBAT. If so, then this seems fine. Also, I\u0027d like to know if there\u0027s an indicator in a register of VBAT power loss.",
+      "parentUuid": "5c0e78ba_e72a45bd",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
