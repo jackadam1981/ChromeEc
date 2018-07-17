@@ -44,6 +44,13 @@ static void check_reset_cause(void)
 	uint8_t raw_reset_cause = IT83XX_GCTRL_RSTS & 0x03;
 	uint8_t raw_reset_cause2 = IT83XX_GCTRL_SPCTRL4 & 0x07;
 
+	/* Restore saved reset flags. */
+	flags |= BRAM_RESET_FLAGS << 24;
+	flags |= BRAM_RESET_FLAGS1 << 16;
+	flags |= BRAM_RESET_FLAGS2 << 8;
+	flags |= BRAM_RESET_FLAGS3;
+	flags = validate_reset_flag(flags);
+
 	/* Clear reset cause. */
 	IT83XX_GCTRL_RSTS |= 0x03;
 	IT83XX_GCTRL_SPCTRL4 |= 0x07;
@@ -61,18 +68,11 @@ static void check_reset_cause(void)
 	if (raw_reset_cause2 & 0x04)
 		flags |= RESET_FLAG_RESET_PIN;
 
-	/* Restore then clear saved reset flags. */
-	if (!(flags & RESET_FLAG_POWER_ON)) {
-		flags |= BRAM_RESET_FLAGS << 24;
-		flags |= BRAM_RESET_FLAGS1 << 16;
-		flags |= BRAM_RESET_FLAGS2 << 8;
-		flags |= BRAM_RESET_FLAGS3;
+	/* watchdog module triggers these reset */
+	if (flags & (RESET_FLAG_HARD | RESET_FLAG_SOFT))
+		flags &= ~RESET_FLAG_WATCHDOG;
 
-		/* watchdog module triggers these reset */
-		if (flags & (RESET_FLAG_HARD | RESET_FLAG_SOFT))
-			flags &= ~RESET_FLAG_WATCHDOG;
-	}
-
+	/* Clear saved reset flags. */
 	BRAM_RESET_FLAGS = 0;
 	BRAM_RESET_FLAGS1 = 0;
 	BRAM_RESET_FLAGS2 = 0;
