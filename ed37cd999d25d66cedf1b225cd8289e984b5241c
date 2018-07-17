@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3107bd15_8f962826",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T14:10:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74fe019_79f62dd5",
+      "range": {
+        "startLine": 357,
+        "startChar": 15,
+        "endLine": 357,
+        "endChar": 22
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c231afa7_7c87f029",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "c1854c8a_18e9e879",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T14:10:18Z",
+      "side": 1,
+      "message": "We do not preserve the flags via jumptag or BBRAM.\n\nHonestly, preserving or not preserving these LPM flags would be the same since we talk to the TCPC after sysjump thus pulling the TCPC out of LPM (so the hardware flag would then be 0), and the software stack would still need to calculate if it wanted to put the device into LPM after sysjump, so the software flag would be set correctly after that too.",
+      "parentUuid": "73e5b718_0891bb40",
+      "range": {
+        "startLine": 366,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 16
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66c38488_8047a819",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T14:10:18Z",
+      "side": 1,
+      "message": "This should only reset the hardware flag because we are trying to mirror what is happening in the hardware independent of what we want in software (SW flag). We may or may not want the device to be in low power mode at this point, and that is decided by the PD state machine.",
+      "parentUuid": "c231afa7_7c87f029",
+      "range": {
+        "startLine": 366,
+        "startChar": 2,
+        "endLine": 366,
+        "endChar": 42
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbde3e9d_74e3dafe",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91503b29_eaba58ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T14:10:18Z",
+      "side": 1,
+      "message": "This is only tracking the software state (this method is only called from the pd_task). We track what we want to happen independent of the hardware state.\n\nIn the PD event loop we will determine if want we want in SW and what is true of the HW is out of sync; if it is out of sync and we have debounced long enough, we will put the HW into low power mode if SW wants it to be.",
+      "parentUuid": "fbde3e9d_74e3dafe",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 387,
+        "endChar": 44
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8f0d2a2b_b9a3c049",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3563,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T14:10:18Z",
+      "side": 1,
+      "message": "We want to check the software state here only. If we want the device to be in low power mode, then we don\u0027t talk to it (regardless of if it is or not).\n\nThat changes however if we know the CC lines changed, which could potential make the software state machine decide to pull the device out of LPM.\n\nI did update the comment to make it explicit that we want the SW state as the check.",
+      "parentUuid": "979fb70a_f7e3afa0",
+      "range": {
+        "startLine": 3563,
+        "startChar": 24,
+        "endLine": 3563,
+        "endChar": 46
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9a47ab5_ac6770de",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3861ae7_e541c4a3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3611,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T14:10:18Z",
+      "side": 1,
+      "message": "I created the local helper method, let me know what you think.",
+      "parentUuid": "e9a47ab5_ac6770de",
+      "range": {
+        "startLine": 3611,
+        "startChar": 4,
+        "endLine": 3611,
+        "endChar": 36
+      },
+      "revId": "ed37cd999d25d66cedf1b225cd8289e984b5241c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
