@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d59a43d9_5a2ce661",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "ifdef for include files are generally not very useful, you can drop it.",
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55beb299_59601956",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "uint16_t",
+      "range": {
+        "startLine": 1021,
+        "startChar": 2,
+        "endLine": 1021,
+        "endChar": 7
+      },
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7e0cf6_645944cd",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "Then this is useless.",
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554ffd6c_abebfad6",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "Is the 0.35ms delay a concern?\n\nIf so, I wonder if you can optimize this a bit, but merging the operations, e.g.:\n\nv \u003d (heat_map-\u003eframe[i * 2] \u003e\u003e (BITS_PER_PIXEL - 8) |\n    (heat_map-\u003eframe[i * 2 + 1] \u003c\u003c (16 - BITS_PER_PIXEL))));\n\nI also wonder if the compiler generates better code if you just declare v as an unsigned int.",
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48386f72_1e05568a",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "Technically you only care if max_value \u003e 0 or not, so you could do something as simple as:\n\nmax_value \u003d max_value | v;",
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c34bff4_2e0ea735",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "task_wait_event(100) might be a little better, so that you can act right after tx_callback is called?",
+      "range": {
+        "startLine": 1092,
+        "startChar": 3,
+        "endLine": 1092,
+        "endChar": 9
+      },
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5e96c7_0456fabb",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "Nit, comment style: /* alone on first line",
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7b95d2_344d2c37",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-17T06:59:01Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s moderately safer to use offset +\u003d ret; here.",
+      "range": {
+        "startLine": 1122,
+        "startChar": 12,
+        "endLine": 1122,
+        "endChar": 33
+      },
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
