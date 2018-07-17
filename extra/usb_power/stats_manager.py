@@ -53,7 +53,9 @@ class StatsManager(object):
     _unit: dict of unit for each domain(key)
     _order: list of formatting order for domains. Domains not listed are
             displayed in sorted order
-    _hide_domains: collection of domains to hide when formatting summary string
+    _smid: id supplied to differentiate data output to other StatsManager
+           instances that potentially save to the same directory
+           if smid all output files will be named |smid|_|fname|
     _summary: dict of stats per domain (key): min, max, count, mean, stddev
     _logger = StatsManager logger
 
@@ -62,10 +64,11 @@ class StatsManager(object):
     CalculateStats() is called.
   """
 
-  def __init__(self, hide_domains=[], order=[]):
+  def __init__(self, smid='', hide_domains=[], order=[]):
     """Initialize infrastructure for data and their statistics."""
     self._data = collections.defaultdict(list)
     self._unit = collections.defaultdict(str)
+    self._smid = smid
     self._order = order
     self._hide_domains = hide_domains
     self._summary = {}
@@ -159,6 +162,38 @@ class StatsManager(object):
     """Getter for summary."""
     return self._summary
 
+  def _rotate_fname(self, fname):
+    """Rotate filename to ensure no data gets clobbered.
+
+    Before saving a file through the StatsManager, make sure that the filename
+    is unique, first by prepending the smid if any and otherwise by appending
+    increasing integer suffixes until the filename is unique.
+
+    /path/to/example/file.txt becomes /path/to/example/file1.txt if the first
+    one already exists on the system.
+
+    Args:
+      fname: filename to ensure uniqueness.
+
+    Returns:
+      Same fname (with potentially an integer tag) that is guaranteed to be
+      unique on the filesystem at the time of calling.
+    """
+    fdir = os.path.dirname(fname)
+    base, ext = os.path.splitext(os.path.basename(fname))
+    if self._smid:
+      base = '%s_%s' % (self._smid, base)
+    unique_fname = os.path.join(fdir, '%s%s' % (base, ext))
+    tag = 0
+    while os.path.exists(unique_fname):
+      oldfname = unique_fname
+      unique_fname = os.path.join(fdir, '%s%d%s' % (base, tag, ext))
+      self._logger.warn('Attempted to store stats information at %s, but file '
+                        'already exists. Attempting to store at %s now.',
+                        oldfname, unique_fname)
+      tag += 1
+    return unique_fname
+
   def SaveSummary(self, directory, fname='summary.txt', prefix=STATS_PREFIX):
     """Save summary to file.
 
@@ -171,7 +206,7 @@ class StatsManager(object):
 
     if not os.path.exists(directory):
       os.makedirs(directory)
-    fname = os.path.join(directory, fname)
+    fname = self._rotate_fname(os.path.join(directory, fname))
     with open(fname, 'w') as f:
       f.write(summary_str)
     return fname
@@ -190,7 +225,7 @@ class StatsManager(object):
       data[domain] = data_entry
     if not os.path.exists(directory):
       os.makedirs(directory)
-    fname = os.path.join(directory, fname)
+    fname = self._rotate_fname(os.path.join(directory, fname))
     with open(fname, 'w') as f:
       json.dump(data, f)
     return fname
@@ -215,8 +250,7 @@ class StatsManager(object):
     for domain, data in self._data.iteritems():
       if not domain.endswith(self._unit[domain]):
           domain = '%s_%s' % (domain, self._unit[domain])
-      fname = '%s.txt' % domain
-      fname = os.path.join(dirname, fname)
+      fname = self._rotate_fname(os.path.join(dirname, '%s.txt' % domain))
       with open(fname, 'w') as f:
         f.write('\n'.join('%.2f' % value for value in data) + '\n')
       files.append(fname)
