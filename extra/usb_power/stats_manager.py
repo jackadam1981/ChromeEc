@@ -173,6 +173,36 @@ class StatsManager(object):
     """Getter for summary."""
     return self._summary
 
+  def _rotate_fname(self, fname):
+    """Rotate filename to ensure no data gets clobbered.
+
+    Before saving a file through the StatsManager, make sure that the filename
+    is unique, and otherwise keep trying increasing integers until the fname is
+    unique.
+
+    /path/to/example/file.txt becomes /path/to/example/file1.txt if the first
+    one already exists on the system.
+
+    Args:
+      fname: filename to ensure uniqueness.
+
+    Returns:
+      Same fname (with potentially an integer tag) that is guaranteed to be
+      unique on the filesystem at the time of calling.
+    """
+    fdir = os.path.dirname(fname)
+    base, ext = os.path.splitext(os.path.basename(fname))
+    uniquefname = fname
+    tag = 0
+    while os.path.exists(uniquefname):
+      oldfn = uniquefname
+      uniquefname = os.path.join(fdir, "%s%d%s" % (base, tag, ext))
+      self._logger.warn("Attempted to store stats information at %s, but file "
+                        "already exists. Attempting to store at %s now.",
+                        oldfn, uniquefname)
+      tag += 1
+    return uniquefname
+
   def SaveSummary(self, directory, fname='summary.txt', prefix=STATS_PREFIX):
     """Save summary to file.
 
@@ -185,7 +215,7 @@ class StatsManager(object):
 
     if not os.path.exists(directory):
       os.makedirs(directory)
-    fname = os.path.join(directory, fname)
+    fname = self._rotate_fname(os.path.join(directory, fname))
     with open(fname, 'w') as f:
       f.write(summary_str)
     return fname
@@ -199,8 +229,6 @@ class StatsManager(object):
     """
     data = {}
     for domain in self._summary:
-      if domain.startswith(NOSHOW_PREFIX):
-        continue
       unit = LONG_UNIT.get(self._unit[domain], self._unit[domain])
       if not unit:
         unit = 'N/A'
@@ -208,7 +236,7 @@ class StatsManager(object):
       data[domain] = data_entry
     if not os.path.exists(directory):
       os.makedirs(directory)
-    fname = os.path.join(directory, fname)
+    fname = self._rotate_fname(os.path.join(directory, fname))
     with open(fname, 'w') as f:
       json.dump(data, f)
     return fname
@@ -232,7 +260,7 @@ class StatsManager(object):
     files = []
     for domain, data in self._data.iteritems():
       fname = '%s%s.txt' % (domain, self._RetrieveUnitSuffix(domain))
-      fname = os.path.join(dirname, fname)
+      fname = self._rotate_fname(os.path.join(dirname, fname))
       with open(fname, 'w') as f:
         f.write('\n'.join('%.2f' % value for value in data) + '\n')
       files.append(fname)

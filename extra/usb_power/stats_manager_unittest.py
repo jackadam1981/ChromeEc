@@ -106,35 +106,6 @@ class TestStatsManager(unittest.TestCase):
     self.assertAlmostEqual(0.81649658092773, summary['B']['stddev'])
     self.assertAlmostEqual(2.5, summary['B']['mean'])
 
-  def test_SaveRawData(self):
-    """SaveRawData stores same data as fed in."""
-    self._populate_dummy_stats()
-    dirname = 'unittest_raw_data'
-    files = self.data.SaveRawData(self.tempdir, dirname)
-    for fname in files:
-      with open(fname, 'r') as f:
-        if 'A_mW' in fname:
-          self.assertEqual('99999.50', f.readline().strip())
-          self.assertEqual('100000.50', f.readline().strip())
-        if 'B_mV' in fname:
-          self.assertEqual('1.50', f.readline().strip())
-          self.assertEqual('2.50', f.readline().strip())
-          self.assertEqual('3.50', f.readline().strip())
-
-  def test_SaveRawDataNoUnit(self):
-    """SaveRawData appends no unit suffix if the unit is not specified."""
-    self.data.AddSample('train', 1000)
-    self.data.AddSample('car', 200)
-    self.data.SetUnit('car', 'blue')
-    self.data.CalculateStats()
-    outdir = 'unittest_raw_data'
-    files = self.data.SaveRawData(self.tempdir, outdir)
-    files = [os.path.basename(f) for f in files]
-    #verify expected behavior with a unit
-    self.assertIn('car_blue.txt', files)
-    #verify expected behavior without a unit
-    self.assertIn('train.txt', files)
-
   def test_SummaryToStringHideDomains(self):
     """Keys indicated in hide_domains are not printed in the summary."""
     data = StatsManager(hide_domains=['A-domain'])
@@ -165,6 +136,43 @@ class TestStatsManager(unittest.TestCase):
     b2a_summarystr = b2a_data.SummaryToString()
     self.assertRegexpMatches(b2a_summarystr, b_before_a_regexp)
     self.assertNotRegexpMatches(b2a_summarystr, a_before_b_regexp)
+
+  def test_RotateFname(self):
+    data = StatsManager()
+    testfile = os.path.join(self.tempdir, 'testfile.txt')
+    with open(testfile, 'w') as f:
+      f.write('')
+    expected_rotation = os.path.join(self.tempdir, 'testfile0.txt')
+    self.assertEqual(expected_rotation, data._rotate_fname(testfile))
+
+  def test_SaveRawData(self):
+    """SaveRawData stores same data as fed in."""
+    self._populate_dummy_stats()
+    dirname = 'unittest_raw_data'
+    files = self.data.SaveRawData(self.tempdir, dirname)
+    for fname in files:
+      with open(fname, 'r') as f:
+        if 'A_mW' in fname:
+          self.assertEqual('99999.50', f.readline().strip())
+          self.assertEqual('100000.50', f.readline().strip())
+        if 'B_mV' in fname:
+          self.assertEqual('1.50', f.readline().strip())
+          self.assertEqual('2.50', f.readline().strip())
+          self.assertEqual('3.50', f.readline().strip())
+
+  def test_SaveRawDataNoUnit(self):
+    """SaveRawData appends no unit suffix if the unit is not specified."""
+    self.data.AddSample('train', 1000)
+    self.data.AddSample('car', 200)
+    self.data.SetUnit('car', 'blue')
+    self.data.CalculateStats()
+    outdir = 'unittest_raw_data'
+    files = self.data.SaveRawData(self.tempdir, outdir)
+    files = [os.path.basename(f) for f in files]
+    #verify expected behavior with a unit
+    self.assertIn('car_blue.txt', files)
+    #verify expected behavior without a unit
+    self.assertIn('train.txt', files)
 
   def test_SaveSummary(self):
     """SaveSummary properly dumps the summary into a file."""
