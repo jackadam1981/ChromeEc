@@ -12,7 +12,9 @@
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
 #define CONFIG_CHIPSET_MT8183
+#ifdef SECTION_IS_RW
 #define CONFIG_CMD_ACCELS
+#endif
 #define CONFIG_CMD_RTC
 #define CONFIG_EMULATED_SYSRQ
 #undef  CONFIG_HIBERNATE
@@ -88,6 +90,7 @@
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
 /* Motion Sensors */
+#ifdef SECTION_IS_RW
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
@@ -96,6 +99,7 @@
 #define CONFIG_SYNC
 #define CONFIG_SYNC_COMMAND
 #define CONFIG_SYNC_INT_EVENT TASK_EVENT_CUSTOM(5)
+#endif
 
 /* To be able to indicate the device is in tablet mode. */
 #define CONFIG_TABLET_MODE_SWITCH
