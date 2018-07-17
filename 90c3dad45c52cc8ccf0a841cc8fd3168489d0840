@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b1eeb233_77f808bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2018-07-17T03:10:03Z",
+      "side": 1,
+      "message": "This is the PD chip OCP threshold, it is a software control, for circult protection, as for how many VCONN power supply by board, it depends on the design.\nBTW, if you think 370mA is too large, I can change it to 310mA to meet the spec.",
+      "parentUuid": "97c53499_a1960541",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 163
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bff76dec_2db44f7c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "OK.",
       "parentUuid": "bff76dec_2db44f7c",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c37769_c3c9a2f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2018-07-17T03:10:03Z",
+      "side": 1,
+      "message": "Confirmed with Bitland, they agree to create a issue on Google issuetracker, after that, I will commit the next patch and fix other comments.",
+      "parentUuid": "54198154_7ed0b105",
       "range": {
         "startLine": 9,
         "startChar": 4,
