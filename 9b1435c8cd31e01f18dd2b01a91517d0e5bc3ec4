@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65fc2bdb_3027fc2e",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-17T15:14:01Z",
+      "side": 0,
+      "message": "What does power on mean here for ITE. Does that mean BBRAM was lost too? Or is there a separate flag for indicating RTC rail loss?",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
