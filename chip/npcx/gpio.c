@@ -610,3 +610,94 @@ DECLARE_IRQ(NPCX_IRQ_WKINTFG_2,     __gpio_wk2fg_interrupt, 2);
 #endif
 
 #undef GPIO_IRQ_FUNC
+
+/* Get battery led gpio direction. */
+static int gpio_get_dir_func(int argc, char **argv)
+{
+	int val = 0;
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+/* Usage:
+ * 	gpio_get_dir [0|1]
+ *
+ * 0: get gpio direction of BAT_LED_BLUE.
+ * 1: get gpio direction of BAT_LED_AMBER. */
+
+	if (!strcasecmp(argv[1], "0")) {
+		val = NPCX_PDIR(gpio_list[GPIO_BAT_LED_BLUE].port) &
+			gpio_list[GPIO_BAT_LED_BLUE].mask;
+		if (val)
+			ccprintf("GPIO get direction of BAT_LED_BLUE is output\n");
+		else
+			ccprintf("GPIO get direction of BAT_LED_BLUE is input\n");
+	} else if (!strcasecmp(argv[1], "1")) {
+		val = NPCX_PDIR(gpio_list[GPIO_BAT_LED_AMBER].port) &
+			gpio_list[GPIO_BAT_LED_AMBER].mask;
+		if (val)
+			ccprintf("GPIO get direction of BAT_LED_AMBER is output\n");
+		else
+			ccprintf("GPIO get direction of BAT_LED_AMBER is input\n");
+	} else {
+		ccprintf("Input parameter is not [0|1]\n");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(gpio_get_dir, gpio_get_dir_func, "[0|1]",
+		"GPIO get batt LED direction");
+
+/* Set battery led gpio direction. */
+static int gpio_set_dir_func(int argc, char **argv)
+{
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+
+/* Usage:
+ * 	gpio_set_dir [0|1] [0|1]
+ *
+ * First parameter:
+ * 	0: set gpio direction of BAT_LED_BLUE.
+ * 	1: set gpio direction of BAT_LED_AMBER.
+ *
+ * Second parameter:
+ * 	0: set gpio direction to input.
+ * 	1: set gpio direction to output. */
+
+	if (!strcasecmp(argv[1], "0")) {
+		if (!strcasecmp(argv[2], "0")) {
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_BLUE].port)
+				&= ~gpio_list[GPIO_BAT_LED_BLUE].mask;
+			ccprintf("GPIO set direction of BAT_LED_BLUE as input\n");
+		} else if (!strcasecmp(argv[2], "1")) {
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_BLUE].port)
+				|= gpio_list[GPIO_BAT_LED_BLUE].mask;
+			ccprintf("GPIO set direction of BAT_LED_BLUE as output\n");
+		} else {
+			ccprintf("Second input parameter is not [0|1]\n");
+			return EC_ERROR_INVAL;
+		}
+	} else if (!strcasecmp(argv[1], "1")) {
+		if (!strcasecmp(argv[2], "0")) {
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_AMBER].port)
+				&= ~gpio_list[GPIO_BAT_LED_AMBER].mask;
+			ccprintf("GPIO set direction of BAT_LED_AMBER as input\n");
+		} else if (!strcasecmp(argv[2], "1")) {
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_AMBER].port)
+				|= gpio_list[GPIO_BAT_LED_AMBER].mask;
+			ccprintf("GPIO set direction of BAT_LED_AMBER as output\n");
+		} else {
+			ccprintf("Second input parameter is not [0|1]\n");
+			return EC_ERROR_INVAL;
+		}
+
+	} else {
+		ccprintf("First input parameter is not [0|1]\n");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(gpio_set_dir, gpio_set_dir_func,
+		"[0|1] [0|1]",
+		"GPIO set batt LED direction");
