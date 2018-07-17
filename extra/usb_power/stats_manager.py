@@ -8,6 +8,7 @@ from __future__ import print_function
 import collections
 import json
 import logging
+import math
 import numpy
 import os
 
@@ -65,7 +66,8 @@ class StatsManager(object):
     _summary is empty until CalculateStats() is called
   """
 
-  def __init__(self, title='', summarytag='', hide_domains=[], order=[]):
+  def __init__(self, title='', summarytag='', hide_domains=[], order=[],
+               accept_nan=True):
     """Initialize infrastructure for data and their statistics."""
     self._title = title
     self._summarytag = '%s_' % summarytag if summarytag else summarytag
@@ -74,6 +76,7 @@ class StatsManager(object):
     self._order = order
     self._hide_domains = hide_domains
     self._summary = {}
+    self._accept_nan = accept_nan
     self._logger = logging.getLogger('StatsManager')
 
   def AddSample(self, domain, value):
@@ -83,13 +86,26 @@ class StatsManager(object):
       domain: the domain name for the value.
       value: one time sample for domain, expect type float.
     """
-    if isinstance(value, int):
+    try:
       value = float(value)
-    if isinstance(value, float):
-      self._data[domain].append(value)
-      return
-    self._logger.warn('value %s for domain %s is not a number, thus ignored.' %
-                      (value, domain))
+    except ValueError:
+      #if we don't accept nan this will be caught below
+      value = float('NaN')
+      self._logger.debug('value %s for domain %s is not a number. Making NaN'
+                         % (value, domain))
+    if not self._accept_nan and math.isnan(value):
+      raise StatsManagerError('accept_nan is false. Cannot add NaN value %s.' %
+                              str(value))
+    self._data[domain].append(value)
+
+  def RecordReadings(self, readings):
+    """Record multiple readings at once.
+
+    Args:
+      readings: list of (domain, reading) tuples to record
+    """
+    for domain, reading in readings:
+      self.RecordReading(domain, reading)
 
   def SetUnit(self, domain, unit):
     """Set the unit for a domain.
@@ -115,10 +131,10 @@ class StatsManager(object):
     for domain, data in self._data.iteritems():
       data_np = numpy.array(data)
       self._summary[domain] = {
-          'mean': data_np.mean(),
-          'min': data_np.min(),
-          'max': data_np.max(),
-          'stddev': data_np.std(),
+          'mean': numpy.nanmean(data_np),
+          'min': numpy.nanmin(data_np),
+          'max': numpy.nanmax(data_np),
+          'stddev': numpy.nanstd(data_np),
           'count': data_np.size,
       }
 

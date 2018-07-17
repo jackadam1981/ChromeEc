@@ -12,7 +12,7 @@ import tempfile
 import unittest
 import re
 
-from stats_manager import StatsManager, STATS_PREFIX
+from stats_manager import StatsManager, StatsManagerError, STATS_PREFIX
 
 class TestStatsManager(unittest.TestCase):
   """Test to verify StatsManager methods work as expected.
@@ -25,7 +25,6 @@ class TestStatsManager(unittest.TestCase):
     """Create a populated & processed StatsManager to test data retrieval."""
     self.data.AddSample('A', 99999.5)
     self.data.AddSample('A', 100000.5)
-    self.data.AddSample('A', 'ERROR')
     self.data.SetUnit('A', 'uW')
     self.data.SetUnit('A', 'mW')
     self.data.AddSample('B', 1.5)
@@ -51,14 +50,27 @@ class TestStatsManager(unittest.TestCase):
     summary = self.data.GetSummary()
     self.assertEqual(1, summary['Test']['count'])
 
-  def test_AddSampleNoFloat(self):
-    """Adding a non number gets ignored and doesn't raise an exception."""
-    self.data.AddSample('Test', 17)
+  def test_AddSampleNoFloatAcceptNaN(self):
+    """Adding a non number adds 'NaN' and doesn't raise an exception."""
+    self.data.AddSample('Test', 10)
+    self.data.AddSample('Test', 20)
     self.data.AddSample('Test', 'fiesta')
     self.data.SetUnit('Test', 'test')
     self.data.CalculateStats()
     summary = self.data.GetSummary()
-    self.assertEqual(1, summary['Test']['count'])
+    #assert that 'NaN' as added.
+    self.assertEqual(3, summary['Test']['count'])
+    #assert that mean, min, and max calculatings ignore the 'NaN'
+    self.assertEqual(10, summary['Test']['min'])
+    self.assertEqual(20, summary['Test']['max'])
+    self.assertEqual(15, summary['Test']['mean'])
+
+  def test_AddSampleNoFloatNotAcceptNaN(self):
+    """Adding a non number raises a StatsManagerError if accept_nan is False."""
+    self.data = StatsManager(accept_nan=False)
+    self.data.AddSample('Test', 17)
+    with self.assertRaises(StatsManagerError):
+      self.data.AddSample('Test', 'fiesta')
 
   def test_AddSampleNoUnit(self):
     """Not adding a unit does not cause an exception on CalculateStats()."""
