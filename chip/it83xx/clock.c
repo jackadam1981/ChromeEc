@@ -416,6 +416,29 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	for (i = 0; i < hibernate_wake_pins_used; ++i)
 		gpio_enable_interrupt(hibernate_wake_pins[i]);
 
+	gpio_set_flags_by_mask(GPIO_D, 0x1b, (GPIO_INPUT | GPIO_PULL_DOWN));
+	gpio_set_flags_by_mask(GPIO_J, 0x33, GPIO_INPUT);
+	gpio_set_flags_by_mask(GPIO_L, 0x3, GPIO_INPUT);
+	/* Enable eSPI interface pulldown */
+	gpio_set_flags_by_mask(GPIO_M, 0x7f, (GPIO_INPUT | GPIO_PULL_DOWN));
+
+	/* KSO and KSI pins are configured as GPIO input */
+	IT83XX_KBS_KSOHGCTRL = 0xff;
+	IT83XX_KBS_KSOLGCTRL = 0xff;
+	IT83XX_KBS_KSIGCTRL = 0xff;
+
+#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+	for (i = 0; i < USBPD_PORT_COUNT; i++) {
+		/* Disable USBPD PHY */
+		IT83XX_USBPD_GCR(i) &= ~((1 << 0) | (1 << 4));
+		/* Power down CC1 and CC2 */
+		IT83XX_USBPD_CCGCR(i) |= 0x1f;
+		/* Disable CC1/CC2 voltage detector */
+		IT83XX_USBPD_CCCSR(i) = 0xff;
+		/* Connect 5.1K resistor to CC1/CC2 in DB */
+		IT83XX_USBPD_CCPSR(i) = 0x33;
+	}
+#endif
 	/* EC sleep */
 	ec_sleep = 1;
 	clock_ec_pll_ctrl(EC_PLL_SLEEP);
