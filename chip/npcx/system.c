@@ -159,6 +159,8 @@ static int bbram_data_write(enum bbram_data_index index, uint32_t value)
 		return EC_ERROR_INVAL;
 
 	/* Write BBRAM */
+	ccprintf("NPCX_BBRAM(index)= 0x%x\n", &NPCX_BBRAM(index));
+	ccprintf("value & 0xF= 0x%x\n", value & 0xFF);
 	NPCX_BBRAM(index) = value & 0xFF;
 	if (bytes == 4) {
 		NPCX_BBRAM(index + 1) = (value >> 8)  & 0xFF;
@@ -214,6 +216,50 @@ int system_set_bbram(enum system_bbram_idx idx, uint8_t value)
 
 	return bbram_data_write(bbram_idx, value);
 }
+
+static int command_c(int argc, char **argv)
+{
+	volatile char *p;
+	int i;
+
+
+	ccprintf("M1:NPCX_BBRAM(0x1).addr=0x%x, .value=0x%x\n", &NPCX_BBRAM(0x1), NPCX_BBRAM(0x1));
+
+	ccprintf("M2:0x%x=0x%x\n", 0x400AF000, *((volatile uint8_t  *)(0x400AF000)));
+	*((volatile uint8_t  *)(0x400AF000)) = 0x99;
+	ccprintf("M2:0x%x=0x%x\n", 0x400AF000, *((volatile uint8_t  *)(0x400AF000)));
+	ccprintf("\n");
+
+	ccprintf("M3:\n");
+	for (i = 0; i < 64; ++i) {
+		p = (char*)(0x400AF000 + i);
+		ccprintf("0x%x= 0x%x\n", p, *p);
+		cflush();
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(c, command_c, NULL, NULL);
+static int command_foo(int argc, char **argv)
+{
+	uint8_t data;
+
+	if (system_get_bbram(SYSTEM_BBRAM_IDX_VBNVBLOCK0, &data) == EC_SUCCESS)
+		ccprintf("BBRAM[0]=0x%x\n", data);
+	else
+		ccprintf("BBRAM[0] read error\n");
+
+	system_set_bbram(0x1, 0x1);
+	system_set_bbram(0x2, 0x2);
+	system_set_bbram(0x3, 0x3);
+	system_set_bbram(0x4, 0x4);
+	system_set_bbram(0x5, 0x5);
+
+	ccprintf("BRAM set done\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(b, command_foo, NULL, NULL);
 
 /* MTC functions */
 uint32_t system_get_rtc_sec(void)
@@ -1118,18 +1164,12 @@ enum system_image_copy_t system_get_shrspi_image_copy(void)
 {
 	if (IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION)) {
 		/* RO image */
-#ifdef CHIP_HAS_RO_B
-		if (!IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_FW_SLOT))
-			return SYSTEM_IMAGE_RO_B;
-#endif
 		return SYSTEM_IMAGE_RO;
 	} else {
-#ifdef CONFIG_RW_B
 		/* RW image */
 		if (!IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_FW_SLOT))
 			/* Slot A */
 			return SYSTEM_IMAGE_RW_B;
-#endif
 		return SYSTEM_IMAGE_RW;
 	}
 }

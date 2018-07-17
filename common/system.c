@@ -415,35 +415,8 @@ void system_disable_jump(void)
 
 test_mockable enum system_image_copy_t system_get_image_copy(void)
 {
-#ifdef CONFIG_EXTERNAL_STORAGE
 	/* Return which region is used in program memory */
 	return system_get_shrspi_image_copy();
-#else
-	uintptr_t my_addr = (uintptr_t)system_get_image_copy -
-			    CONFIG_PROGRAM_MEMORY_BASE;
-
-	if (my_addr >= CONFIG_RO_MEM_OFF &&
-	    my_addr < (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE))
-		return SYSTEM_IMAGE_RO;
-
-	if (my_addr >= CONFIG_RW_MEM_OFF &&
-	    my_addr < (CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE))
-		return SYSTEM_IMAGE_RW;
-
-#ifdef CHIP_HAS_RO_B
-	if (my_addr >= CHIP_RO_B_MEM_OFF &&
-	    my_addr < (CHIP_RO_B_MEM_OFF + CONFIG_RO_SIZE))
-		return SYSTEM_IMAGE_RO_B;
-#endif
-
-#ifdef CONFIG_RW_B
-	if (my_addr >= CONFIG_RW_B_MEM_OFF &&
-	    my_addr < (CONFIG_RW_B_MEM_OFF + CONFIG_RW_SIZE))
-		return SYSTEM_IMAGE_RW_B;
-#endif
-
-	return SYSTEM_IMAGE_UNKNOWN;
-#endif
 }
 
 test_mockable int system_unsafe_to_overwrite(uint32_t offset, uint32_t size)
@@ -897,6 +870,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_JUMP_RO:
 		return system_run_image_copy(SYSTEM_IMAGE_RO);
 	case EC_REBOOT_JUMP_RW:
+		return EC_SUCCESS;
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
 #ifdef HAS_TASK_PDCMD

@@ -195,6 +195,7 @@ void vboot_main(void)
 	CPRINTS("Main");
 
 	if (system_is_in_rw()) {
+		ccprintf("step 2 - system_is_in_rw\n");
 		/*
 		 * We come here and immediately return. LED shows power shortage
 		 * but it will be immediately corrected if the adapter can
@@ -234,6 +235,7 @@ void vboot_main(void)
 	}
 
 	if (!is_efs_supported()) {
+		ccprintf("!is_efs_supported...\n");
 		if (is_low_power_ap_boot_supported())
 			/* If a device supports this feature, AP's boot power
 			 * threshold should be set low. That will let EC-RO
@@ -244,8 +246,10 @@ void vboot_main(void)
 	}
 
 	/* If successful, this won't return. */
+	ccprintf("step 1 - going to verification\n");
 	verify_and_jump();
 
 	/* Failed to jump. Need recovery. */
+	ccprintf("step X - going to request_power\n");
 	request_recovery();
 }
