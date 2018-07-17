@@ -634,6 +634,16 @@ DECLARE_SAFE_CONSOLE_COMMAND(taskinfo, command_task_info,
 			     NULL,
 			     "Print task info");
 
+void task_show_info(void *u)
+{
+	while (1) {
+		command_task_info(0, NULL);
+		cflush();
+		cflush();
+		task_wait_event(SECOND);
+	}
+}
+
 #ifdef CONFIG_CMD_TASKREADY
 static int command_task_ready(int argc, char **argv)
 {

@@ -68,6 +68,7 @@ get_tree_version() {
       vbase="no_version"
     fi
   fi
+  vbase="disable_watchdog"
   if [[ "${marker}" == "${dirty_marker}" ]]; then
       echo "${vbase}${dc}${marker}"
   else
