@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e501a7bd_28c1a94c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2404,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-17T16:43:42Z",
+      "side": 1,
+      "message": "I think this comment is misleading. What we\u0027re really doing here is making sure the lpm_engaged flag is clear, the TCPC is out of LPM based on the fact that PD_EVENT_TCPC_RESET is set.",
+      "range": {
+        "startLine": 2404,
+        "startChar": 6,
+        "endLine": 2404,
+        "endChar": 48
+      },
+      "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a886954b_558f89f6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3574,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-17T16:43:42Z",
+      "side": 1,
+      "message": "So we are now changing the behavior that PD task waking alone is not sufficient to exit DRP_AUTO_TOGGLE state. Presumably, this section only needs to run when there is a CC state change, but I don\u0027t know if that\u0027s *always* the case.\n\nfor example, if there is an adapter connected but the port is not allowed to be a SRC (AP !\u003d S0), then we want to got into low power mode. When the chipset power state changes, then the PD task will wake and if CC \u003d\u003d Rd, then the PD state should go SRC_DISCONNECTED, but there won\u0027t be a CC state change. Since PD_FLAGS_LPM_REQUESTED won\u0027t remain high, this specific case should still work.",
+      "range": {
+        "startLine": 3574,
+        "startChar": 9,
+        "endLine": 3574,
+        "endChar": 27
+      },
+      "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38270213_4010391f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3652,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-17T16:43:42Z",
+      "side": 1,
+      "message": "I think \"timeout \u003d -1;\" should follow this call. If the else if path gets called then timeout being -1 will have been lost and the PD task will continue to wake back up.",
+      "range": {
+        "startLine": 3652,
+        "startChar": 4,
+        "endLine": 3652,
+        "endChar": 29
+      },
+      "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
