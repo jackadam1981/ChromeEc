@@ -174,6 +174,7 @@ class StatsManager(object):
     fname = os.path.join(directory, fname)
     with open(fname, 'w') as f:
       f.write(summary_str)
+    return fname
 
   def SaveSummaryJSON(self, directory, fname='summary.json'):
     """Save summary (only MEAN) into a JSON file.
@@ -192,6 +193,7 @@ class StatsManager(object):
     fname = os.path.join(directory, fname)
     with open(fname, 'w') as f:
       json.dump(data, f)
+    return fname
 
   def GetRawData(self):
     """Getter for all raw_data."""
@@ -209,6 +211,7 @@ class StatsManager(object):
     dirname = os.path.join(directory, dirname)
     if not os.path.exists(dirname):
       os.makedirs(dirname)
+    files = []
     for domain, data in self._data.iteritems():
       if not domain.endswith(self._unit[domain]):
           domain = '%s_%s' % (domain, self._unit[domain])
@@ -216,3 +219,5 @@ class StatsManager(object):
       fname = os.path.join(dirname, fname)
       with open(fname, 'w') as f:
         f.write('\n'.join('%.2f' % value for value in data) + '\n')
+      files.append(fname)
+    return files
