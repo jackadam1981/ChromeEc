@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "ec323b74_7a710bd6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T19:32:19Z",
+      "side": 1,
+      "message": "I just have comments saying you shouldn\u0027t call it incorrect, I wish I knew of a better way.",
+      "parentUuid": "a38a5145_b666fa91",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edb6cd8e_21150662",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3

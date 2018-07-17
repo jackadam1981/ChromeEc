@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2eb0fd3c_68fc6ab1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2404,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T19:32:19Z",
+      "side": 1,
+      "message": "I changed the comment to: \"Reset LPM software state after a reset\". Let me know if it still lacks clarity.",
+      "parentUuid": "e501a7bd_28c1a94c",
+      "range": {
+        "startLine": 2404,
+        "startChar": 6,
+        "endLine": 2404,
+        "endChar": 48
+      },
+      "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a886954b_558f89f6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d1d151b1_85de7ebc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3574,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T19:32:19Z",
+      "side": 1,
+      "message": "I searched for all of the task_wake(PD_PORT_TO_TASK_ID(port)) calls, and the only call that could be in the AUTO_TOGGLE state is the in usb_charger [0] and similar [1] tpcp_alert.\n\nThey both have to deal with Vbus changing. Vbus would have to be off for us to be in auto toggle so vbus would theoretically be turning on. If Vbus were turning on, then we would have gotten a CC, Reset, or some other type of event as well pulling us out of auto_toggle.\n\nDoes that sounds right to you? I couldn\u0027t think of any other case where the condition on line 3573 broke down, but if you can let me know.\n\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/987ad5eaed2201c41820aa7f81333e1733a124a0/common/usb_charger.c#81\n[1] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/987ad5eaed2201c41820aa7f81333e1733a124a0/driver/tcpm/tcpci.c#345",
+      "parentUuid": "a886954b_558f89f6",
+      "range": {
+        "startLine": 3574,
+        "startChar": 9,
+        "endLine": 3574,
+        "endChar": 27
+      },
+      "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38270213_4010391f",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c94dc17b_160f2126",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3652,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T19:32:19Z",
+      "side": 1,
+      "message": "good call. I think timeout -1 is much better",
+      "parentUuid": "38270213_4010391f",
+      "range": {
+        "startLine": 3652,
+        "startChar": 4,
+        "endLine": 3652,
+        "endChar": 29
+      },
+      "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
