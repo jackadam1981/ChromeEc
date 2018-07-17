@@ -22,6 +22,30 @@
       "revId": "9b373e67c9d9e9d51b172399919a674190e97f04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c291fa_820f10f1",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-17T18:52:08Z",
+      "side": 0,
+      "message": "Okay. I can do that. I was thinking of simply sending out a PSA indicating that yorp v0 support will be removed from EC and to checkout branch before this CL to test v0 boards. But, if the print seems useful, I can add that in.",
+      "parentUuid": "97b44455_060792ee",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 21
+      },
+      "revId": "9b373e67c9d9e9d51b172399919a674190e97f04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
