@@ -610,3 +610,304 @@ DECLARE_IRQ(NPCX_IRQ_WKINTFG_2,     __gpio_wk2fg_interrupt, 2);
 #endif
 
 #undef GPIO_IRQ_FUNC
+
+/* Get battery led gpio direction. */
+static int gpio_get_dir_func(int argc, char **argv)
+{
+	int val = 0;
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+/*
+ * Usage:
+ * 	gpio_get_dir [0|1]
+ *
+ * 0: get gpio direction of BAT_LED_BLUE.
+ * 1: get gpio direction of BAT_LED_AMBER.
+ */
+
+	if (!strcasecmp(argv[1], "0")) {
+		/* Method 1: Front-End calling.
+		val = NPCX_PDIR(gpio_list[GPIO_BAT_LED_BLUE].port) &
+			gpio_list[GPIO_BAT_LED_BLUE].mask; */
+
+		/*
+		 * Method 2: Back-End calling.
+		 * BAT_LED_BLUE is PIN(8,0) => port = 0x8, mask = 0x1
+		 * 0x40081000 (gpio base address) + 0x8 (port) * 0x2000L (offset) + 0x02 (direction) = 0x40091002
+		 */
+		val = REG8(0x40091002) & (0x1);
+
+		if (val)
+			ccprintf("GPIO get direction of BAT_LED_BLUE is output\n");
+		else
+			ccprintf("GPIO get direction of BAT_LED_BLUE is input\n");
+	} else if (!strcasecmp(argv[1], "1")) {
+		/* Method 1: Front-End calling.
+		val = NPCX_PDIR(gpio_list[GPIO_BAT_LED_AMBER].port) &
+			gpio_list[GPIO_BAT_LED_AMBER].mask; */
+
+		/*
+		 * Method 2: Back-End calling.
+		 * BAT_LED_AMBER is PIN(C,4) => port = 0xC, mask = 0x10
+		 * 0x40081000 (gpio base address) + 0xC (port) * 0x2000L (offset) + 0x02 (direction) = 0x40099002
+		 */
+		val = REG8(0x40099002) & (0x10);
+
+		if (val)
+			ccprintf("GPIO get direction of BAT_LED_AMBER is output\n");
+		else
+			ccprintf("GPIO get direction of BAT_LED_AMBER is input\n");
+	} else {
+		ccprintf("Input parameter is not [0|1]\n");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(gpio_get_dir, gpio_get_dir_func, "[0|1]",
+		"GPIO get batt LED direction");
+
+/* Set battery led gpio direction. */
+static int gpio_set_dir_func(int argc, char **argv)
+{
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+
+/*
+ * Usage:
+ * 	gpio_set_dir [0|1] [0|1]
+ *
+ * First parameter:
+ * 	0: BAT_LED_BLUE
+ * 	1: BAT_LED_AMBER
+ *
+ * Second parameter:
+ * 	0: set gpio direction to input.
+ * 	1: set gpio direction to output.
+ */
+
+	if (!strcasecmp(argv[1], "0")) {
+		if (!strcasecmp(argv[2], "0")) {
+			/* Method 1: Front-End calling.
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_BLUE].port)
+				&= ~gpio_list[GPIO_BAT_LED_BLUE].mask; */
+
+			/*
+			 * Method 2: Back-End calling.
+			 * BAT_LED_BLUE is PIN(8,0) => port = 0x8, mask = 0x1
+			 * 0x40081000 (gpio base address) + 0x8 (port) * 0x2000L (offset) + 0x02 (direction) = 0x40091002
+			 */
+			REG8(0x40091002) &= ~(0x1);
+
+			ccprintf("GPIO set direction of BAT_LED_BLUE as input\n");
+		} else if (!strcasecmp(argv[2], "1")) {
+			/* Method 1: Front-End calling.
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_BLUE].port)
+				|= gpio_list[GPIO_BAT_LED_BLUE].mask; */
+
+			/*
+			 * Method 2: Back-End calling.
+			 * BAT_LED_BLUE is PIN(8,0) => port = 0x8, mask = 0x1
+			 * 0x40081000 (gpio base address) + 0x8 (port) * 0x2000L (offset) + 0x02 (direction) = 0x40091002
+			 */
+			REG8(0x40091002) |= (0x1);
+
+			ccprintf("GPIO set direction of BAT_LED_BLUE as output\n");
+		} else {
+			ccprintf("Second input parameter is not [0|1]\n");
+			return EC_ERROR_INVAL;
+		}
+	} else if (!strcasecmp(argv[1], "1")) {
+		if (!strcasecmp(argv[2], "0")) {
+			/* Method 1: Front-End calling.
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_AMBER].port)
+				&= ~gpio_list[GPIO_BAT_LED_AMBER].mask; */
+
+			/*
+			 * Method 2: Back-End calling.
+			 * BAT_LED_AMBER is PIN(C,4) => port = 0xC, mask = 0x10
+			 * 0x40081000 (gpio base address) + 0xC (port) * 0x2000L (offset) + 0x02 (direction) = 0x40099002
+			 */
+			REG8(0x40099002) &= ~(0x10);
+
+			ccprintf("GPIO set direction of BAT_LED_AMBER as input\n");
+		} else if (!strcasecmp(argv[2], "1")) {
+			/* Method 1: Front-End calling.
+			NPCX_PDIR(gpio_list[GPIO_BAT_LED_AMBER].port)
+				|= gpio_list[GPIO_BAT_LED_AMBER].mask; */
+
+			/*
+			 * Method 2: Back-End calling.
+			 * BAT_LED_AMBER is PIN(C,4) => port = 0xC, mask = 0x10
+			 * 0x40081000 (gpio base address) + 0xC (port) * 0x2000L (offset) + 0x02 (direction) = 0x40099002
+			 */
+			REG8(0x40099002) |= (0x10);
+
+			ccprintf("GPIO set direction of BAT_LED_AMBER as output\n");
+		} else {
+			ccprintf("Second input parameter is not [0|1]\n");
+			return EC_ERROR_INVAL;
+		}
+
+	} else {
+		ccprintf("First input parameter is not [0|1]\n");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(gpio_set_dir, gpio_set_dir_func,
+		"[0|1] [0|1]",
+		"GPIO set batt LED direction");
+
+/* Get battery led gpio output level. */
+static int gpio_get_output_level_func(int argc, char **argv)
+{
+	int val = 0;
+	int level = 0;
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+/*
+ * Usage:
+ * 	gpio_get_out [0|1]
+ *
+ * 	0: Get gpio output level of BAT_LED_BLUE
+ * 	1: Get gpio output level of BAT_LED_AMBER
+ */
+
+	if (!strcasecmp(argv[1], "0")) {
+		/* Check if GPIO direction of BAT_LED_BLUE is output. */
+		val = REG8(0x40091002) & (0x1);
+		if (val) {
+			ccprintf("GPIO get direction of BAT_LED_BLUE is output, ");
+			level = REG8(0x40091000) & (0x1);
+			if (level)
+				ccprintf("level is high.\n");
+			else
+				ccprintf("level is low.\n");
+		}
+		else {
+			ccprintf("GPIO get direction of BAT_LED_BLUE is input\n");
+			return EC_ERROR_INVAL;
+		}
+	} else if (!strcasecmp(argv[1], "1")) {
+		/* Check if GPIO direction of BAT_LED_AMBER is output. */
+		val = REG8(0x40099002) & (0x10);
+		if (val) {
+			ccprintf("GPIO get direction of BAT_LED_AMBER is output, ");
+			level = REG8(0x40099000) & (0x10);
+			if (level)
+				ccprintf("level is high.\n");
+			else
+				ccprintf("level is low.\n");
+		}
+		else {
+			ccprintf("GPIO get direction of BAT_LED_AMBER is input\n");
+			return EC_ERROR_INVAL;
+		}
+	} else {
+		ccprintf("Input parameter is not [0|1]\n");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+
+}
+DECLARE_CONSOLE_COMMAND(gpio_get_out, gpio_get_output_level_func,
+		"[0|1]",
+		"GPIO get batt LED output level");
+
+/* Set battery led gpio output level. */
+static int gpio_set_output_level_func(int argc, char **argv)
+{
+	int val = 0;
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+
+/*
+ * Usage:
+ * 	gpio_set_out [0|1] [0|1]
+ *
+ * First parameter:
+ * 	0: BAT_LED_BLUE
+ * 	1: BAT_LED_AMBER
+ *
+ * Second parameter:
+ * 	0: set gpio output level to low.
+ * 	1: set gpio output level to high.
+ */
+
+	if (!strcasecmp(argv[1], "0")) {
+		/* Check if GPIO direction of BAT_LED_BLUE is output. */
+		val = REG8(0x40091002) & (0x1);
+		if (val)
+			ccprintf("GPIO get direction of BAT_LED_BLUE is output\n");
+		else {
+			ccprintf("GPIO get direction of BAT_LED_BLUE is input\n");
+			return EC_ERROR_INVAL;
+		}
+		if (!strcasecmp(argv[2], "0")) {
+			/*
+			 * Set BAT_LED_BLUE to output low.
+			 * BAT_LED_BLUE is PIN(8,0) => port = 0x8, mask = 0x1
+			 * 0x40081000 (gpio base address) + 0x8 (port) * 0x2000L (offset) + 0x00 (data out) = 0x40091000
+			 */
+			REG8(0x40091000) &= ~(0x1);
+
+			ccprintf("Set BAT_LED_BLUE to ouput low.\n");
+		} else if (!strcasecmp(argv[2], "1")) {
+			/*
+			 * Set BAT_LED_BLUE to output high.
+			 * BAT_LED_BLUE is PIN(8,0) => port = 0x8, mask = 0x1
+			 * 0x40081000 (gpio base address) + 0x8 (port) * 0x2000L (offset) + 0x00 (data out) = 0x40091000
+			 */
+			REG8(0x40091000) |= (0x1);
+
+			ccprintf("Set BAT_LED_BLUE to ouput high.\n");
+		} else {
+			ccprintf("Second input parameter is not [0|1]\n");
+			return EC_ERROR_INVAL;
+		}
+	} else if (!strcasecmp(argv[1], "1")) {
+		/* Check if GPIO direction of BAT_LED_AMBER is output. */
+		val = REG8(0x40099002) & (0x10);
+		if (val)
+			ccprintf("GPIO get direction of BAT_LED_AMBER is output\n");
+		else {
+			ccprintf("GPIO get direction of BAT_LED_AMBER is input\n");
+			return EC_ERROR_INVAL;
+		}
+		if (!strcasecmp(argv[2], "0")) {
+			/*
+			 * Set BAT_LED_AMBER to output low.
+			 * BAT_LED_AMBER is PIN(C,4) => port = 0xC, mask = 0x10
+			 * 0x40081000 (gpio base address) + 0xC (port) * 0x2000L (offset) + 0x00 (data out) = 0x40099000
+			 */
+			REG8(0x40099000) &= ~(0x10);
+
+			ccprintf("Set BAT_LED_AMBER to ouput low.\n");
+		} else if (!strcasecmp(argv[2], "1")) {
+			/*
+			 * Set BAT_LED_AMBER to output high.
+			 * BAT_LED_AMBER is PIN(C,4) => port = 0xC, mask = 0x10
+			 * 0x40081000 (gpio base address) + 0xC (port) * 0x2000L (offset) + 0x00 (data out) = 0x40099000
+			 */
+			REG8(0x40099000) |= (0x10);
+
+			ccprintf("Set BAT_LED_AMBER to ouput high.\n");
+		} else {
+			ccprintf("Second input parameter is not [0|1]\n");
+			return EC_ERROR_INVAL;
+		}
+
+	} else {
+		ccprintf("First input parameter is not [0|1]\n");
+		return EC_ERROR_INVAL;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(gpio_set_out, gpio_set_output_level_func,
+		"[0|1] [0|1]",
+		"GPIO set batt LED output level");
