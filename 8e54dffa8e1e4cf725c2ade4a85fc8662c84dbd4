@@ -22,6 +22,30 @@
       "revId": "8e54dffa8e1e4cf725c2ade4a85fc8662c84dbd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf031095_3e497f80",
+        "filename": "driver/charger/bq25703.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-07-17T23:30:07Z",
+      "side": 0,
+      "message": "this is used only in software ramp case. Hence not required.",
+      "parentUuid": "5698d5b9_f4545c2e",
+      "range": {
+        "startLine": 292,
+        "startChar": 4,
+        "endLine": 292,
+        "endChar": 24
+      },
+      "revId": "8e54dffa8e1e4cf725c2ade4a85fc8662c84dbd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
