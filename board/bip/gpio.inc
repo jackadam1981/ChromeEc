@@ -99,7 +99,7 @@ GPIO(USB_C1_BC12_CHG_DET_L, PIN(A, 1), GPIO_INPUT)	/* C1 BC1.2 Detect */
 GPIO(USB_C0_BC12_VBUS_ON,   PIN(J, 4), GPIO_OUT_LOW)	/* C0 BC1.2 Power */
 GPIO(USB_C1_BC12_VBUS_ON,   PIN(J, 5), GPIO_OUT_LOW)	/* C1 BC1.2 Power */
 GPIO(USB_C1_PD_RST_ODL,  PIN(L, 7), GPIO_ODR_HIGH)	/* C1 PD Reset */
-GPIO(USB2_OTG_ID,	 PIN(I, 2), GPIO_OUT_LOW)	/* OTG ID */
+GPIO(USB2_OTG_ID,	 PIN(I, 2), GPIO_ODR_LOW)	/* OTG ID */
 
 /* LED */
 GPIO(BAT_LED_ORANGE, PIN(A, 6), GPIO_OUT_LOW)		/* LED_1_L NOTE: actually active high, but labeled _L in the schematics */
