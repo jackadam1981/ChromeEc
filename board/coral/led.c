@@ -373,3 +373,15 @@ static void led_init(void)
 }
 /* Make sure this comes after SKU ID hook */
 DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT + 2);
+
+/* Blink battery led color every second to assist testing. */
+static void led_blink(void)
+{
+	/* Set battery led color to amber. */
+	led_set_color_battery(LED_COLOR_1);
+	/* Sleep 0.5 sec. */
+	usleep(500 * MSEC);
+	/* Set battery led color to blue. */
+	led_set_color_battery(LED_COLOR_2);
+}
+DECLARE_HOOK(HOOK_SECOND, led_blink, HOOK_PRIO_DEFAULT);
