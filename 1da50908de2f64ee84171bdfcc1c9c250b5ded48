@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "af524f7c_78b3bd99",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T03:37:56Z",
+      "side": 1,
+      "message": "Since each PD task owns its own state, I move the flags into the common PD flags variable (that gets accessed within the PD task).\n\nThis algorithm does not rely on the PD task being higher priority than other tasks. If the PD tasks were lower priority, I would think this would still work since the state is now just within the PD task.",
+      "parentUuid": "38d04ded_627abc82",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "744d166f_0cfc64c2",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17dc61a2_3dc86a8a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T03:37:56Z",
+      "side": 1,
+      "message": "It cannot be called from multiple tasks, I add the note to the function. It is also static so external callers won\u0027t be able to access it.",
+      "parentUuid": "744d166f_0cfc64c2",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5d93636e_bb41e111",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T03:37:56Z",
+      "side": 1,
+      "message": "This also cannot be called out side of the PD task. I added a note (and it is already static)",
+      "parentUuid": "edb6cd8e_21150662",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7089f5c2_f257105a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e9eee35_20eb7997",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3579,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T03:37:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7089f5c2_f257105a",
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -90,6 +162,30 @@
       "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e26e91_103fb464",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T03:37:56Z",
+      "side": 1,
+      "message": "Add a longer explanation:\n\n\"A task, other than the task owning the PD port, accessed the TCPC. The task that owns the port does not send itself this event.\"",
+      "parentUuid": "4790e742_5b9cf017",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "1da50908de2f64ee84171bdfcc1c9c250b5ded48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

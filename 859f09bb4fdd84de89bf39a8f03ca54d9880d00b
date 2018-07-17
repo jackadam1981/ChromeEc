@@ -321,6 +321,30 @@
     },
     {
       "key": {
+        "uuid": "0048024e_429e2e46",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-17T03:37:56Z",
+      "side": 1,
+      "message": "I went through all of the files that already contained tcpc_write|read and I updated all of the raw read to either add a pd_device_accessed call or using tcpc_write|read instead.",
+      "parentUuid": "2ba3efdd_b13153a3",
+      "range": {
+        "startLine": 382,
+        "startChar": 5,
+        "endLine": 382,
+        "endChar": 23
+      },
+      "revId": "859f09bb4fdd84de89bf39a8f03ca54d9880d00b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02baedc1_44bc2d11",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
