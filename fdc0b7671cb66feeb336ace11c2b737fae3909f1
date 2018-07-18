@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "062833d6_fd2540ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T08:49:54Z",
+      "side": 1,
+      "message": "Are you sure you really need all 8(?) CLs to land at once?\n\nI don\u0027t think the CLs are tightly integrated with each other, are they? E.g. is it ok if the first 2 land first?",
+      "revId": "fdc0b7671cb66feeb336ace11c2b737fae3909f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
