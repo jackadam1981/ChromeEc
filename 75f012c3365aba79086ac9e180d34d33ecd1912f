@@ -46,6 +46,30 @@
       "revId": "75f012c3365aba79086ac9e180d34d33ecd1912f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5509cc9a_bdcd2f37",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-18T17:08:26Z",
+      "side": 1,
+      "message": "Sorry, yes we would still want open-drain with 1.8V; it actually isn\u0027t value to use push-pull with 1.8V on this EC (and others).\n\nThanks!",
+      "parentUuid": "c0e98e27_c2973cac",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 56
+      },
+      "revId": "75f012c3365aba79086ac9e180d34d33ecd1912f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
