@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fe0dee5_1fccc951",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T08:45:36Z",
+      "side": 1,
+      "message": "self._unit[domain] can be None?\n\nLONG_UNIT.get(x, y) returns y if LONG_UNIT[x] is not found",
+      "revId": "e40a956fe108fc22756a49e11c99dacf2f0742e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "936101f2_3fe8b193",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T08:45:36Z",
+      "side": 1,
+      "message": "Intentional to drop the _?",
+      "range": {
+        "startLine": 234,
+        "startChar": 15,
+        "endLine": 234,
+        "endChar": 19
+      },
+      "revId": "e40a956fe108fc22756a49e11c99dacf2f0742e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
