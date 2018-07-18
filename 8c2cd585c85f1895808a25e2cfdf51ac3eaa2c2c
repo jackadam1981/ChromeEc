@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97642f53_fd0e5c6c",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-07-18T05:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b733908_caecc8bd",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 68
+      },
+      "revId": "8c2cd585c85f1895808a25e2cfdf51ac3eaa2c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17fed047_fd68d151",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-17T01:43:12Z",
       "side": 1,
       "message": "This is used by H1 which uses servo_v4 but not as a DTS.",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 27
+      },
+      "revId": "8c2cd585c85f1895808a25e2cfdf51ac3eaa2c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e14aae0_0919ed44",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-07-18T05:50:47Z",
+      "side": 1,
+      "message": "This controls whether both CC lines are active or not. So it can be RdRd or RpRp. Enabled will connect to H1, disabled will not. Note that some devices (samus, phones) will not function correctly if DTS is enabled.",
+      "parentUuid": "17fed047_fd68d151",
       "range": {
         "startLine": 63,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4e41a2c3_92bc4435",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-07-18T05:50:47Z",
+      "side": 1,
+      "message": "I guess not, data isn\u0027t connected either way.",
+      "parentUuid": "7902843d_f8bf2f46",
+      "range": {
+        "startLine": 564,
+        "startChar": 5,
+        "endLine": 564,
+        "endChar": 16
+      },
+      "revId": "8c2cd585c85f1895808a25e2cfdf51ac3eaa2c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbd03452_a77e4ec5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-17T01:43:12Z",
       "side": 1,
       "message": "Shouldn\u0027t this be initialized when USB PD task is initialized?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "8c2cd585c85f1895808a25e2cfdf51ac3eaa2c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d5da73_7f3f16e7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-07-18T05:50:47Z",
+      "side": 1,
+      "message": "I think it depends on a default being present, and configured in board.h.",
+      "parentUuid": "bbd03452_a77e4ec5",
       "range": {
         "startLine": 109,
         "startChar": 1,

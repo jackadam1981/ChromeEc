@@ -22,6 +22,30 @@
       "revId": "97a7b12b3ba7caad4b48eee2ec27773c044b3519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3649d6d_514544c0",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-07-18T05:50:47Z",
+      "side": 0,
+      "message": "Correct. Without charge through, servo v4 will be a passive hub.",
+      "parentUuid": "2e2e0641_593e6384",
+      "range": {
+        "startLine": 47,
+        "startChar": 22,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "97a7b12b3ba7caad4b48eee2ec27773c044b3519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
