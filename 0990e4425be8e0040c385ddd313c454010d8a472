@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e11ea5bb_774b3049",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-07-18T21:59:21Z",
+      "side": 1,
+      "message": "you need to consider tolerances.  If we request 9V, we could be getting 9V - 5%, and even then, the ADC measurement will have its own inaccuracies.\n\nI don\u0027t think any value for SELECT_INPUT_MIN_VOLTAGE is correct.  If we make it too high, we\u0027ll behave incorrectly if we select a derated voltage (like the one from a charge-through hub when a 9V charger is attached).  If we set it too low, we could trigger in the middle of a transition, when we aren\u0027t supposed to be pulling much current to begin with.\n\nIs there really no way to just wait until we get a PS_RDY before enabling the input?  Is there code elsewhere that prevents us from enabling the FETs during a voltage transition, when it\u0027s against the spec to be pulling anything more than minimal current to begin with?  Otherwise, maybe we should just always wait for the full delay...perhaps there isn\u0027t as much benefit to enabling early if the timeout is only 1s.",
+      "range": {
+        "startLine": 1333,
+        "startChar": 7,
+        "endLine": 1333,
+        "endChar": 42
+      },
+      "revId": "0990e4425be8e0040c385ddd313c454010d8a472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
