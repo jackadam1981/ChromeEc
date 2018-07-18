@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3e8384d_eb40caf3",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T03:40:07Z",
+      "side": 1,
+      "message": "TBH, I think this is a little weird given that it relies on the exact scope where CONFIG_BATTERY_CRITICAL_CUT_OFF_CUSTOM_CONDITION is used.\n\nI wonder if this would not be better as a board-specific function? (can still be protected by config option).\n\ne.g. if (board_critical_shutdown(curr)) { ... }",
+      "revId": "b72445ea487314cd56999b044c7fdd6dcdea6450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
