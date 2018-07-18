@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba66b4a6_0cac9e8b",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-18T12:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3457173_a71d39cc",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 48
+      },
+      "revId": "05d2597db4e1111ec08611ffc322013b8d66e930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34a1613e_6fa7e381",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-17T23:29:05Z",
       "side": 1,
       "message": "Jett had asked this in the issue, are there any other modules that will be reset by disabling the VCC rail in the chip?",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 18
+      },
+      "revId": "05d2597db4e1111ec08611ffc322013b8d66e930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053a092b_ade2ec5e",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-18T12:26:02Z",
+      "side": 1,
+      "message": "Richard, can you comment this?",
+      "parentUuid": "34a1613e_6fa7e381",
       "range": {
         "startLine": 428,
         "startChar": 1,
