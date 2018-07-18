@@ -74,51 +74,27 @@ uint16_t sku;
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_C0_PD_RST_L))
-		return;
-	else if ((signal == GPIO_USB_C1_PD_INT_ODL) &&
-		 gpio_get_level(GPIO_USB_C1_PD_RST))
-		return;
-
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
 }
 
 /* Set PD discharge whenever VBUS detection is high (i.e. below threshold). */
 static void vbus_discharge_handler(void)
 {
-	pd_set_vbus_discharge(0, gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
-	pd_set_vbus_discharge(1, gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
 }
 DECLARE_DEFERRED(vbus_discharge_handler);
 
 void vbus0_evt(enum gpio_signal signal)
 {
-	/* VBUS present GPIO is inverted */
-	usb_charger_vbus_change(0, !gpio_get_level(signal));
-	task_wake(TASK_ID_PD_C0);
-	hook_call_deferred(&vbus_discharge_handler_data, 0);
 }
 
 void vbus1_evt(enum gpio_signal signal)
 {
-	/* VBUS present GPIO is inverted */
-	usb_charger_vbus_change(1, !gpio_get_level(signal));
-	task_wake(TASK_ID_PD_C1);
-	hook_call_deferred(&vbus_discharge_handler_data, 0);
-}
 
 void usb0_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
 }
 
 void usb1_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
 #include "gpio_list.h"
@@ -204,107 +180,6 @@ const struct i2c_port_t i2c_ports[]  = {
 	/* dnojiri: Add KB backlight, ALS, G-sensor, Thermal sensor, BC1.2 Detectors. */
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
-
-/* TCPC mux configuration */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	[USB_PD_PORT_PS8751] = {
-		.i2c_host_port = NPCX_I2C_PORT0_0,
-		.i2c_slave_addr = PS8751_I2C_ADDR1,
-		.drv = &ps8xxx_tcpm_drv,
-		.pol = TCPC_ALERT_ACTIVE_LOW,
-	},
-	[USB_PD_PORT_ANX7447] = {
-		.i2c_host_port = NPCX_I2C_PORT0_1,
-		.i2c_slave_addr = AN7447_TCPC3_I2C_ADDR, /* Verified on v1.1 */
-		.drv = &anx7447_tcpm_drv,
-		.pol = TCPC_ALERT_ACTIVE_LOW,
-	},
-};
-
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	{
-		.port_addr = USB_PD_PORT_PS8751,
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
-	},
-	{
-		.port_addr = USB_PD_PORT_ANX7447,
-		.driver = &anx7447_usb_mux_driver,
-		.hpd_update = &anx7447_tcpc_update_hpd_status,
-	}
-};
-
-struct pi3usb9281_config pi3usb9281_chips[] = {
-	{
-		.i2c_port = I2C_PORT_USB_CHARGER_0,
-		.mux_lock = NULL,
-	},
-	{
-		.i2c_port = I2C_PORT_USB_CHARGER_1,
-		.mux_lock = NULL,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
-	     CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT);
-
-void board_reset_pd_mcu(void)
-{
-	if (oem == PROJECT_AKALI && board_version < 0x0200) {
-		if (anx7447_flash_erase(USB_PD_PORT_ANX7447))
-			CPRINTS("Failed to erase OCM flash");
-
-	}
-
-	/* Assert reset */
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-	gpio_set_level(GPIO_USB_C1_PD_RST, 1);
-	msleep(1);
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
-	gpio_set_level(GPIO_USB_C1_PD_RST, 0);
-	/* After TEST_R release, anx7447/3447 needs 2ms to finish eFuse
-	 * loading. */
-	msleep(2);
-}
-
-void board_tcpc_init(void)
-{
-	int port;
-
-	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_to_this_image())
-		board_reset_pd_mcu();
-
-	/* Enable TCPC interrupts */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
-
-	/*
-	 * Initialize HPD to low; after sysjump SOC needs to see
-	 * HPD pulse to enable video path
-	 */
-	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
-		const struct usb_mux *mux = &usb_muxes[port];
-		mux->hpd_update(port, 0, 0);
-	}
-}
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
-
-uint16_t tcpc_get_alert_status(void)
-{
-	uint16_t status = 0;
-
-	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C0_PD_RST_L))
-			status |= PD_STATUS_TCPC_ALERT_0;
-	}
-
-	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL)) {
-		if (!gpio_get_level(GPIO_USB_C1_PD_RST))
-			status |= PD_STATUS_TCPC_ALERT_1;
-	}
-
-	return status;
-}
 
 /*
  * F75303_Remote1 is near CPU, and F75303_Remote2 is near 5V power IC.
@@ -467,36 +342,6 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 /* Set active charge port -- only one port can be active at a time. */
 int board_set_active_charge_port(int charge_port)
 {
-	/* charge port is a physical port */
-	int is_real_port = (charge_port >= 0 &&
-			    charge_port < CONFIG_USB_PD_PORT_COUNT);
-	/* check if we are sourcing VBUS on the port */
-	/* dnojiri: revisit */
-	int is_source = gpio_get_level(charge_port == 0 ?
-			GPIO_USB_C0_5V_EN : GPIO_USB_C1_5V_EN);
-
-	if (is_real_port && is_source) {
-		CPRINTF("No charging on source port p%d is ", charge_port);
-		return EC_ERROR_INVAL;
-	}
-
-	CPRINTF("New chg p%d", charge_port);
-
-	if (charge_port == CHARGE_PORT_NONE) {
-		/* Disable both ports */
-		gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
-		gpio_set_level(GPIO_USB_C1_CHARGE_L, 1);
-	} else {
-		/* Make sure non-charging port is disabled */
-		/* dnojiri: revisit. there is always this assumption that
-		 * battery is present. If not, this may cause brownout. */
-		gpio_set_level(charge_port ? GPIO_USB_C0_CHARGE_L :
-					     GPIO_USB_C1_CHARGE_L, 1);
-		/* Enable charging port */
-		gpio_set_level(charge_port ? GPIO_USB_C1_CHARGE_L :
-					     GPIO_USB_C0_CHARGE_L, 0);
-	}
-
 	return EC_SUCCESS;
 }
 
