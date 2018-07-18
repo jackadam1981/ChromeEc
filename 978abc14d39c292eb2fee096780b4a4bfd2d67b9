@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6dd9636b_b4a21dad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-18T16:03:37Z",
+      "side": 1,
+      "message": "The only other PPC we have a driver for (sn5s330) already does this: https://chromium.git.corp.google.com/chromiumos/platform/ec/+/1107089c5b7bb5282224c3c498d514ae31c5dc87/driver/ppc/sn5s330.c#452\n\nWe might want to pull this logic into the common PPC layer though. Thoughts?",
+      "parentUuid": "53dd639c_cb27f19d",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "978abc14d39c292eb2fee096780b4a4bfd2d67b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "771ffa69_31afe6d7",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "978abc14d39c292eb2fee096780b4a4bfd2d67b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fe0781e_d4ec2def",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-18T16:03:37Z",
+      "side": 1,
+      "message": "I changed to uint_8 to make the intent more clear. Also, it would have still worked with a signed int, even if we had a (1 \u003c\u003c 31) flag, right?",
+      "parentUuid": "771ffa69_31afe6d7",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "978abc14d39c292eb2fee096780b4a4bfd2d67b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
