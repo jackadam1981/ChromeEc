@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb355cad_8ecbaf17",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T23:52:24Z",
+      "side": 1,
+      "message": "can you use int8_t?",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "4429e814523064a1097ca429839327d79c139d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "546904de_51b23eac",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T23:52:24Z",
+      "side": 1,
+      "message": "Can you do this in get_temp?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "4429e814523064a1097ca429839327d79c139d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "105ef28a_187b1ac3",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T23:52:24Z",
+      "side": 1,
+      "message": "Can we remove this or even better to say \"Force sensor %u \u003d %uC\"?",
+      "range": {
+        "startLine": 110,
+        "startChar": 15,
+        "endLine": 110,
+        "endChar": 19
+      },
+      "revId": "4429e814523064a1097ca429839327d79c139d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d0c840c_11d87163",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T23:52:24Z",
+      "side": 1,
+      "message": "Can we remove this?",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 55
+      },
+      "revId": "4429e814523064a1097ca429839327d79c139d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd39a44e_9c0822e5",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T23:52:24Z",
+      "side": 1,
+      "message": "How do you like simply \u0027f75303\u0027?",
+      "range": {
+        "startLine": 115,
+        "startChar": 24,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "4429e814523064a1097ca429839327d79c139d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e532ecf5_04216546",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T23:52:24Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 4
+      },
+      "revId": "4429e814523064a1097ca429839327d79c139d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df38cebf_c7e5821f",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T23:52:24Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 116,
+        "startChar": 13,
+        "endLine": 116,
+        "endChar": 14
+      },
+      "revId": "4429e814523064a1097ca429839327d79c139d95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
