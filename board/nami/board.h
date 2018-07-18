@@ -275,6 +275,9 @@ enum oem_id {
 	PROJECT_COUNT,
 };
 
+#define SKU_ID_AKALI_CLAMSHELL	0x2861
+#define SKU_ID_AKALI_360	0x2A67
+
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
 /*
  * delay to turn on the power supply max is ~16ms.
