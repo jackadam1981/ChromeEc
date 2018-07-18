@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "467d319b_753ac652",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-18T19:31:36Z",
+      "side": 1,
+      "message": "We probably don\u0027t need to unibuildify it unless the local sensor is placed near somewhere hotter than CPU or the power IC. We need to confirm this change won\u0027t cause unintended chipset shutdown on other variants.",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
