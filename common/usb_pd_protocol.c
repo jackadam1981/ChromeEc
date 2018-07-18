@@ -2253,6 +2253,9 @@ void pd_task(void *u)
 			pd_set_data_role(port,
 					 (saved_flgs & PD_BBRMFLG_DATA_ROLE) ?
 					 PD_ROLE_DFP : PD_ROLE_UFP);
+			/* Set the terminations to match our power role. */
+			tcpm_set_cc(port, pd[port].power_role ?
+				    TYPEC_CC_RP : TYPEC_CC_RD);
 
 			/*
 			 * Since there is an explicit contract in place, let's
@@ -2263,13 +2266,10 @@ void pd_task(void *u)
 			this_state = PD_STATE_SOFT_RESET;
 
 			/*
-			 * Set the TCPC reset event such that we can set our CC
-			 * terminations, determine polarity, and enable RX so we
-			 * can hear back from our port partner.
+			 * Enable TCPC RX so we can hear back from our port
+			 * partner.
 			 */
-			task_set_event(task_get_current(),
-				       PD_EVENT_TCPC_RESET,
-				       0);
+			tcpm_set_rx_enable(port, 1);
 		}
 	}
 #endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
@@ -2356,34 +2356,9 @@ void pd_task(void *u)
 		if ((evt & PD_EVENT_TCPC_RESET) &&
 		    (pd[port].task_state != PD_STATE_DRP_AUTO_TOGGLE)) {
 #endif
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-			if (pd[port].task_state == PD_STATE_SOFT_RESET) {
-				int cc1, cc2;
-
-				/*
-				 * Set the terminations to match our power
-				 * role.
-				 */
-				tcpm_set_cc(port, pd[port].power_role ?
-					    TYPEC_CC_RP : TYPEC_CC_RD);
-
-				/* Determine the polarity. */
-				tcpm_get_cc(port, &cc1, &cc2);
-				if (pd[port].power_role == PD_ROLE_SINK) {
-					pd[port].polarity =
-						get_snk_polarity(cc1, cc2);
-				} else {
-					pd[port].polarity =
-						(cc1 != TYPEC_CC_VOLT_RD);
-				}
-			} else
-#endif /* CONFIG_USB_PD_DUAL_ROLE */
-			{
-				/* Ensure CC termination is default */
-				tcpm_set_cc(port, PD_ROLE_DEFAULT(port) ==
-					    PD_ROLE_SOURCE ? TYPEC_CC_RP :
-					    TYPEC_CC_RD);
-			}
+			/* Ensure CC termination is default */
+			tcpm_set_cc(port, PD_ROLE_DEFAULT(port) ==
+				    PD_ROLE_SOURCE ? TYPEC_CC_RP : TYPEC_CC_RD);
 
 			/*
 			 * If we have a stable contract in the default role,
@@ -2396,7 +2371,6 @@ void pd_task(void *u)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 			     (PD_ROLE_DEFAULT(port) == PD_ROLE_SINK &&
 			     pd[port].task_state == PD_STATE_SNK_READY) ||
-			     (pd[port].task_state == PD_STATE_SOFT_RESET) ||
 #endif
 			     (PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE &&
 			     pd[port].task_state == PD_STATE_SRC_READY))) {
