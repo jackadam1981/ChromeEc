@@ -70,6 +70,30 @@
       "revId": "633a0a7b10d777f81d2c9615fdcfc21432f275db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd8c960_327c2451",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-18T16:50:53Z",
+      "side": 1,
+      "message": "this is *one* use of bram. There are many other fields of bram used throughout the code. My point is that we should dedicate a bram field that covers *all* of bram to indicate if it is valid. When it isn\u0027t we clear all the fields. The other users (like this one) can just be ignorant of that happening behind the scenes.\n\nside note: If there was a proper register that indicated power on reset of vbat then we\u0027d just use that to clear bram. Instead, we have to use a magic value and check it in bram early during startup.",
+      "parentUuid": "58f59a89_91148c86",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "633a0a7b10d777f81d2c9615fdcfc21432f275db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
