@@ -83,3 +83,13 @@ void _plat__ResetCallback(void)
 	 * occurred.
 	 */
 }
+
+void _plat__RestartCallback(void)
+{
+	pinweaver_init();
+}
+
+void _plat__ResumeCallback(void)
+{
+	pinweaver_init();
+}
