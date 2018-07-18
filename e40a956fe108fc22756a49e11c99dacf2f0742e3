@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0f38b3bf_763a338b",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-18T08:57:08Z",
+      "side": 1,
+      "message": "Is this a typo?",
+      "range": {
+        "startLine": 33,
+        "startChar": 60,
+        "endLine": 33,
+        "endChar": 61
+      },
+      "revId": "e40a956fe108fc22756a49e11c99dacf2f0742e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0fe0dee5_1fccc951",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
