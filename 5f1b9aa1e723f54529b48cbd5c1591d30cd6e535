@@ -16,6 +16,24 @@
       "revId": "5f1b9aa1e723f54529b48cbd5c1591d30cd6e535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa81a4a0_f5dcf069",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T10:11:18Z",
+      "side": 1,
+      "message": "(the pressure logical max change, I mean...)",
+      "parentUuid": "dd1561c0_5d74b8af",
+      "revId": "5f1b9aa1e723f54529b48cbd5c1591d30cd6e535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
