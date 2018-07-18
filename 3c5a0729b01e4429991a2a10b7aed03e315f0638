@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c2dc79f4_dab57946",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3574,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-18T00:55:53Z",
+      "side": 1,
+      "message": "I think this is okay. When I started my comment, I was thinking about PD_EVENT_CC not necessarily being set following a chipset power state change, but since that would have to be in conjunction with PD_FLAGS_LPM_REQUESTED, then i\u0027m not as concerned.",
+      "parentUuid": "d1d151b1_85de7ebc",
+      "range": {
+        "startLine": 3574,
+        "startChar": 9,
+        "endLine": 3574,
+        "endChar": 27
+      },
+      "revId": "3c5a0729b01e4429991a2a10b7aed03e315f0638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38270213_4010391f",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
