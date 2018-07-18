@@ -10,10 +10,12 @@
 #include "i2c.h"
 #include "hooks.h"
 #include "util.h"
+#include "console.h"
 
 static int temp_val_local;
 static int temp_val_remote1;
 static int temp_val_remote2;
+static int8_t fake_temp[F75303_IDX_COUNT] = {-1, -1, -1};
 
 /**
  * Read 8 bits register from temp sensor.
@@ -27,6 +29,26 @@ static int get_temp(const int offset, int *temp_ptr)
 {
 	int rv;
 	int temp_raw = 0;
+	int idx;
+
+	switch (offset) {
+	case F75303_TEMP_LOCAL:
+		idx = F75303_IDX_LOCAL;
+		break;
+	case F75303_TEMP_REMOTE1:
+		idx = F75303_IDX_REMOTE1;
+		break;
+	case F75303_TEMP_REMOTE2:
+		idx = F75303_IDX_REMOTE2;
+		break;
+	default:
+		return EC_ERROR_UNKNOWN;
+	}
+
+	if (fake_temp[idx] != -1) {
+		*temp_ptr = C_TO_K(fake_temp[idx]);
+		return EC_SUCCESS;
+	}
 
 	rv = raw_read8(offset, &temp_raw);
 	if (rv != 0)
@@ -62,4 +84,37 @@ static void f75303_sensor_poll(void)
 	get_temp(F75303_TEMP_REMOTE2, &temp_val_remote2);
 }
 DECLARE_HOOK(HOOK_SECOND, f75303_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
+
+static int f75303_set_fake_temp(int argc, char **argv)
+{
+	int index;
+	int value;
+	char *e;
+
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	index = strtoi(argv[1], &e, 0);
+	if ((*e) || (index < 0) || (index >= F75303_IDX_COUNT))
+		return EC_ERROR_PARAM1;
+
+	if (!strcasecmp(argv[2], "off")) {
+		fake_temp[index] = -1;
+		ccprintf("Turn off fake temp mode for sensor %u.\n", index);
+		return EC_SUCCESS;
+	}
+
+	value = strtoi(argv[2], &e, 0);
+
+	if ((*e) || (value < 0) || (value > 100))
+		return EC_ERROR_PARAM2;
+
+	fake_temp[index] = value;
+	ccprintf("Force sensor %u = %uC.\n", index, value);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(f75303_fake, f75303_set_fake_temp,
+		"<index> <value>|off",
+		"Set fake temperature of sensor f75303.");
 
