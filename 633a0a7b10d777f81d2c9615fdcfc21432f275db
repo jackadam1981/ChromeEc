@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa112f22_48073ff2",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-18T16:22:04Z",
+      "side": 1,
+      "message": "Let\u0027s also create a RESET_MAGIC_MASK in include/system.h [0] to ensure that no one in the future tries to make a flag in the 24 to 31 bit range\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/1107089c5b7bb5282224c3c498d514ae31c5dc87/include/system.h#36",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "633a0a7b10d777f81d2c9615fdcfc21432f275db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
