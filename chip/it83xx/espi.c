@@ -417,8 +417,24 @@ static void espi_reset_vw_index_flags(void)
 		vw_index_flag[i] = IT83XX_ESPI_VWIDX(vw_isr_list[i].vw_index);
 }
 
+#ifdef IT83XX_ESPI_RESET_MODULE_BY_FW
+void __ram_code espi_fw_reset_module(void)
+{
+	/*
+	 * bit[7-6]:
+	 * 00b: The VCC power status is treated as power-off.
+	 * 01b: The VCC power status is treated as power-on.
+	 */
+	IT83XX_GCTRL_RSTS = (IT83XX_GCTRL_RSTS & ~0xc0);
+	IT83XX_GCTRL_RSTS = (IT83XX_GCTRL_RSTS & ~0xc0) | (1 << 6);
+}
+#endif
+
 void espi_reset_pin_asserted_interrupt(enum gpio_signal signal)
 {
+#ifdef IT83XX_ESPI_RESET_MODULE_BY_FW
+	espi_fw_reset_module();
+#endif
 	/* reset vw_index_flag when espi_reset# asserted. */
 	espi_reset_vw_index_flags();
 }
@@ -435,9 +451,13 @@ static void espi_enable_reset(void)
 	 * 11b: reset is disabled.
 	 */
 	if (espi_rst->port == GPIO_D && espi_rst->mask == (1 << 2)) {
+#ifndef IT83XX_ESPI_RESET_MODULE_BY_FW
 		IT83XX_GPIO_GCR = (IT83XX_GPIO_GCR & ~0x6) | (1 << 2);
+#endif
 	} else if (espi_rst->port == GPIO_B && espi_rst->mask == (1 << 7)) {
+#ifndef IT83XX_ESPI_RESET_MODULE_BY_FW
 		IT83XX_GPIO_GCR = (IT83XX_GPIO_GCR & ~0x6) | (1 << 1);
+#endif
 	} else {
 		IT83XX_GPIO_GCR |= 0x6;
 		CPRINTS("EC's espi_reset pin is not enabled correctly");
