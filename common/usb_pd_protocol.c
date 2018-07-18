@@ -2197,6 +2197,15 @@ void pd_task(void *u)
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	res = tcpm_init(port);
 
+	/* Initialize CC polarity. */
+	{
+		int cc1, cc2;
+
+		tcpm_get_cc(port, &cc1, &cc2);
+		pd[port].polarity = get_snk_polarity(cc1, cc2);
+		set_polarity(port, pd[port].polarity);
+	}
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_partner_port_reset(port);
 #endif
