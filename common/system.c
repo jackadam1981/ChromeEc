@@ -897,6 +897,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_JUMP_RO:
 		return system_run_image_copy(SYSTEM_IMAGE_RO);
 	case EC_REBOOT_JUMP_RW:
+		return EC_SUCCESS;
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
 #ifdef HAS_TASK_PDCMD
