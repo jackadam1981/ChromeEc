@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "60e35602_e3a80698",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-18T09:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d59a43d9_5a2ce661",
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55beb299_59601956",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 25
@@ -30,6 +48,30 @@
       "writtenOn": "2018-07-17T06:59:01Z",
       "side": 1,
       "message": "uint16_t",
+      "range": {
+        "startLine": 1021,
+        "startChar": 2,
+        "endLine": 1021,
+        "endChar": 7
+      },
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062ee244_9fad9729",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-18T09:48:47Z",
+      "side": 1,
+      "message": "unfortunately, this is a 16 bit signed integer (the value might be negative).  I have sent a request to make each pixel 8 bits unsigned, hope we can drop this branch when new firmware is released.",
+      "parentUuid": "55beb299_59601956",
       "range": {
         "startLine": 1021,
         "startChar": 2,
@@ -93,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "d0bac51a_5511bf27",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1033,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-18T09:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48386f72_1e05568a",
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c34bff4_2e0ea735",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 25
@@ -113,6 +173,30 @@
       "revId": "b848657d350bc95955a8332dfd3085648878526f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e821254_cde32e93",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-18T09:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c34bff4_2e0ea735",
+      "range": {
+        "startLine": 1092,
+        "startChar": 3,
+        "endLine": 1092,
+        "endChar": 9
+      },
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +237,30 @@
       "revId": "b848657d350bc95955a8332dfd3085648878526f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2110a33d_bdb2c784",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-18T09:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7b95d2_344d2c37",
+      "range": {
+        "startLine": 1122,
+        "startChar": 12,
+        "endLine": 1122,
+        "endChar": 33
+      },
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
