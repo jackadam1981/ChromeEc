@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03dfb7e4_452ff8c9",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T04:44:45Z",
+      "side": 1,
+      "message": "/* SECTION_IS_RW */",
+      "revId": "822369deb71bed5c56e4c277c0aedc31a6d20181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c00bd0a_d94aa4e4",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T04:44:45Z",
+      "side": 1,
+      "message": "Is this necessary? AFAICT common/motion_sense.c will only be built if HAS_TASK_MOTIONSENSE is set, so this should make no difference.",
+      "revId": "822369deb71bed5c56e4c277c0aedc31a6d20181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d48ca339_2d16bef1",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T04:44:45Z",
+      "side": 1,
+      "message": "/* SECTION_IS_RW */",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 6
+      },
+      "revId": "822369deb71bed5c56e4c277c0aedc31a6d20181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
