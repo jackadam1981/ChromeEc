@@ -94,6 +94,30 @@
       "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da83918f_1696cf50",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-18T14:05:49Z",
+      "side": 0,
+      "message": "You really have no indication of VBAT power on reset? How does one know when to zero out BBRAM? That absolutely needs to happen at the right time. If there really is no indication in a register then one needs to use a few magic numbers at appropriate addresses and zero out BBRAM if magic numbers don\u0027t match expectations.",
+      "parentUuid": "f83ea536_da38e7ec",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
