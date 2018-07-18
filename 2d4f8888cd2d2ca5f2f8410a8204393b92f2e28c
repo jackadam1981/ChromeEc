@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "f19f150d_e03de8c0",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-18T18:20:08Z",
+      "side": 1,
+      "message": "I know this isn\u0027t related to this specific change, but wanted to point out that I think this state can be dropped from the octopus led state machine as it\u0027s only applicable to devices which use the Rohm bd9995x charger IC.",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04f04186_c7756819",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-18T18:20:08Z",
+      "side": 1,
+      "message": "This call should be required. It could be replaced with \"charge_get_state() \u003d\u003d PWR_STATE_CHARGE\" as the state PWR_STATE_DISCHARGE_FULL doesn\u0027t apply to Octopus.",
+      "range": {
+        "startLine": 114,
+        "startChar": 33,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40727b34_60098e68",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 7
@@ -59,6 +105,24 @@
       "writtenOn": "2018-07-18T18:15:02Z",
       "side": 1,
       "message": "This function can be organized a bit differently so that led_get_state isn\u0027t called when chipset is not in suspend since we are not using the desired state anyways.\n\nif (chipset_in_state(CHIPSET_STATE_ON)) {\n\t/* In S0 power LED is always on */\n\tenable \u003d 1;\n\tticks \u003d 0;\n} else if (chipset_in_state(CHIPSET_ANY_SUSPEND)) {\n\tdesired_state \u003d led_get_state();\n\tif (desired_state \u003d\u003d ...) {\n\t} else {\n\t\tenable \u003d 0;\n\t\tticks \u003d 0;\n\t}\n} else {\n\tenable \u003d 0;\n\tticks \u003d 0;\n}",
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41953332_984b3431",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-18T18:20:08Z",
+      "side": 1,
+      "message": "Adding to Furquan\u0027s comment. I don\u0027t think calling led_get_state() is required here and can be replaced with charge_get_state() \u003d\u003d PWR_STATE_CHARGE. On Coral devices (which does rely on led.state) there was the added complication of managing the state where AC is connected, but the charging isn\u0027t active which was done to eliminate audio noise that was specific to the Rohm charger.",
+      "parentUuid": "40727b34_60098e68",
       "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
