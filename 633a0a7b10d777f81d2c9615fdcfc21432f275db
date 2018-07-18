@@ -22,6 +22,30 @@
       "revId": "633a0a7b10d777f81d2c9615fdcfc21432f275db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62301f60_f8bf84c5",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-07-18T16:27:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this is appropriate. We need a BRAM field(s) allocated that represent correct state. If the magic value doesn\u0027t match then all of bram needs to be cleared. We shouldn\u0027t locally handle this. It should be done generically.",
+      "parentUuid": "fa112f22_48073ff2",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "633a0a7b10d777f81d2c9615fdcfc21432f275db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
