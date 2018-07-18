@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "695f5d69_7f1deb2f",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-18T19:29:43Z",
+      "side": 1,
+      "message": "Should we consider keeping this state in case this code ends up moving to common in the future?",
+      "parentUuid": "f19f150d_e03de8c0",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04f04186_c7756819",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 7
