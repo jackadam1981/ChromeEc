@@ -70,6 +70,30 @@
       "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83ea536_da38e7ec",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-18T10:45:01Z",
+      "side": 0,
+      "message": "BBRAM is a random number following a power-on-reset of VBAT. And there\u0027s no register to indicator VBAT after power loss.\n\nCan we add a magic number in BBRAM to indicator the reset flag in BBRAM\nis valid or not?",
+      "parentUuid": "dc3303bf_b136e2af",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
