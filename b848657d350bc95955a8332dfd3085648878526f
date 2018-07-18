@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "75fbdabb_5ecccb1b",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-18T10:04:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "062ee244_9fad9729",
+      "range": {
+        "startLine": 1021,
+        "startChar": 2,
+        "endLine": 1021,
+        "endChar": 7
+      },
+      "revId": "b848657d350bc95955a8332dfd3085648878526f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da7e0cf6_645944cd",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 25
