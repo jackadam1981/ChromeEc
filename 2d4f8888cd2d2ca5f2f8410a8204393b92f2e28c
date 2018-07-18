@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "63ac6705_5ee6f53e",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-18T18:22:22Z",
+      "side": 1,
+      "message": "correction \"shouldn\u0027t be required\"",
+      "parentUuid": "04f04186_c7756819",
+      "range": {
+        "startLine": 114,
+        "startChar": 33,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40727b34_60098e68",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 7
