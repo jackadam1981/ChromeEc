@@ -22,6 +22,30 @@
       "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c996ebc_227e3f78",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-19T15:53:38Z",
+      "side": 1,
+      "message": "It should not be possible to get to this point for an unimplemented offset, as in that case _plat__NvGetHandleVirtualOffset will return 0, and the TPM code will iterate through the real NV indexes looking for it. \n\nThat said - the _END and _MAX are confusing names, I think maybe it would be better if they were inverted.\n\n..and case in point, this should be checking \u003c _MAX (which is the end of the implemented/known indexes) - I\u0027ll update when I get into the office tomorrow morning..\n \nAlso yes, in future to implement support for undefined virtual indexes, this needs to change to return null (or more likely, a pointer to the static const 0-length config) and not assert",
+      "parentUuid": "d5f0656a_16650457",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 38
+      },
+      "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
