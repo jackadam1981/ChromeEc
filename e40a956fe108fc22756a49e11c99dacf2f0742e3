@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "702c1132_d178d37f",
+        "filename": "extra/usb_power/powerlog_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-19T03:16:08Z",
+      "side": 1,
+      "message": "If there is another CL that the current CL depends on, pls specify.",
+      "parentUuid": "d1537459_09c712d3",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "e40a956fe108fc22756a49e11c99dacf2f0742e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50874093_673e85f5",
         "filename": "extra/usb_power/powerlog_unittest.py",
         "patchSetId": 1
