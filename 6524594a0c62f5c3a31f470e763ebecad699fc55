@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14424e82_e86a5c26",
+        "filename": "include/temp_sensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-19T15:26:07Z",
+      "side": 1,
+      "message": "Can we just do \u0027extern uint8_t\u0027 for all and get rid of CONFIG_?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "6524594a0c62f5c3a31f470e763ebecad699fc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
