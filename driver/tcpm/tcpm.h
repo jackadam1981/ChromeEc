@@ -29,9 +29,13 @@ extern const struct tcpc_config_t tcpc_config[];
 static inline int tcpc_write(int port, int reg, int val)
 {
 	int rv = i2c_write8(tcpc_config[port].i2c_host_port,
-			  tcpc_config[port].i2c_slave_addr,
-			  reg, val);
+			    tcpc_config[port].i2c_slave_addr, reg, val);
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	if (rv && pd_device_in_low_power(port)) {
+		pd_wait_for_wakeup(port);
+		rv = i2c_write8(tcpc_config[port].i2c_host_port,
+				tcpc_config[port].i2c_slave_addr, reg, val);
+	}
 	pd_device_accessed(port);
 #endif
 	return rv;
@@ -40,9 +44,13 @@ static inline int tcpc_write(int port, int reg, int val)
 static inline int tcpc_write16(int port, int reg, int val)
 {
 	int rv = i2c_write16(tcpc_config[port].i2c_host_port,
-			   tcpc_config[port].i2c_slave_addr,
-			   reg, val);
+			     tcpc_config[port].i2c_slave_addr, reg, val);
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	if (rv && pd_device_in_low_power(port)) {
+		pd_wait_for_wakeup(port);
+		rv = i2c_write16(tcpc_config[port].i2c_host_port,
+				 tcpc_config[port].i2c_slave_addr, reg, val);
+	}
 	pd_device_accessed(port);
 #endif
 	return rv;
@@ -51,9 +59,13 @@ static inline int tcpc_write16(int port, int reg, int val)
 static inline int tcpc_read(int port, int reg, int *val)
 {
 	int rv = i2c_read8(tcpc_config[port].i2c_host_port,
-			 tcpc_config[port].i2c_slave_addr,
-			 reg, val);
+			   tcpc_config[port].i2c_slave_addr, reg, val);
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	if (rv && pd_device_in_low_power(port)) {
+		pd_wait_for_wakeup(port);
+		rv = i2c_read8(tcpc_config[port].i2c_host_port,
+			       tcpc_config[port].i2c_slave_addr, reg, val);
+	}
 	pd_device_accessed(port);
 #endif
 	return rv;
@@ -62,9 +74,13 @@ static inline int tcpc_read(int port, int reg, int *val)
 static inline int tcpc_read16(int port, int reg, int *val)
 {
 	int rv = i2c_read16(tcpc_config[port].i2c_host_port,
-			  tcpc_config[port].i2c_slave_addr,
-			  reg, val);
+			    tcpc_config[port].i2c_slave_addr, reg, val);
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	if (rv && pd_device_in_low_power(port)) {
+		pd_wait_for_wakeup(port);
+		rv = i2c_read16(tcpc_config[port].i2c_host_port,
+				tcpc_config[port].i2c_slave_addr, reg, val);
+	}
 	pd_device_accessed(port);
 #endif
 	return rv;
