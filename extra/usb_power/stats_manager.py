@@ -13,6 +13,8 @@ import numpy
 import os
 
 STATS_PREFIX = '@@'
+NAN_TAG = '*'
+NAN_DESCRIPTION = '%s domains contain NaN samples' % NAN_TAG
 
 LONG_UNIT = {
     '': 'N/A',
@@ -52,6 +54,7 @@ class StatsManager(object):
   Attributes:
     _data: dict of list of readings for each domain(key)
     _unit: dict of unit for each domain(key)
+    _nan_domains: set to keep track of which domains contain NaN values
     _smid: id supplied to differentiate data output to other StatsManager
            instances that potentially save to the same directory
            if smid all output files will be named |smid|_|fname|
@@ -72,6 +75,7 @@ class StatsManager(object):
                accept_nan=True):
     """Initialize infrastructure for data and their statistics."""
     self._title = title
+    self._nan_domains = set()
     self._data = collections.defaultdict(list)
     self._unit = collections.defaultdict(str)
     self._smid = smid
@@ -98,6 +102,8 @@ class StatsManager(object):
     if not self._accept_nan and math.isnan(value):
       raise StatsManagerError('accept_nan is false. Cannot add NaN value.')
     self._data[domain].append(value)
+    if math.isnan(value):
+      self._nan_domains.add(domain)
 
   def SetUnit(self, domain, unit):
     """Set the unit for a domain.
@@ -145,10 +151,14 @@ class StatsManager(object):
     display_order = [key for key in self._order if key in domains_to_display]
     domains_to_display -= set(display_order)
     display_order.extend(list(sorted(domains_to_display)))
+    nan_in_output = False
     for domain in display_order:
       stats = self._summary[domain]
       if not domain.endswith(self._unit[domain]):
         domain = '%s_%s' % (domain, self._unit[domain])
+      if domain in self._nan_domains:
+        domain = '%s%s' % (domain, NAN_TAG)
+        nan_in_output = True
       row = [domain]
       row.append(str(stats['count']))
       for entry in headers[2:]:
@@ -166,6 +176,8 @@ class StatsManager(object):
       for i in range(len(row)):
         formatted_row += row[i].rjust(max_col_width[i] + 2)
       formatted_lines.append(formatted_row)
+    if nan_in_output:
+      formatted_lines.append('%s %s' % (prefix, NAN_DESCRIPTION))
 
     formatted_output = '\n'.join(formatted_lines)
     title = self._title

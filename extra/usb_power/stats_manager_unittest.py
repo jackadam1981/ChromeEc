@@ -12,7 +12,8 @@ import tempfile
 import unittest
 import re
 
-from stats_manager import StatsManager, StatsManagerError, STATS_PREFIX
+from stats_manager import StatsManager, StatsManagerError
+from stats_manager import NAN_DESCRIPTION, NAN_TAG, STATS_PREFIX
 
 class TestStatsManager(unittest.TestCase):
   """Test to verify StatsManager methods work as expected.
@@ -163,6 +164,30 @@ class TestStatsManager(unittest.TestCase):
     files = self.data.SaveRawData(self.tempdir)
     for fname in files:
       self.assertTrue(os.path.basename(fname).startswith(identifier))
+
+  def test_SummaryToStringNaNHelp(self):
+    """NaN containing row gets tagged with *, help banner gets added."""
+    help_banner_exp = '%s %s' % (STATS_PREFIX, NAN_DESCRIPTION)
+    nan_domain = 'A-domain'
+    nan_domain_exp = '%s%s' % (nan_domain, NAN_TAG)
+    # NaN helper banner is added when a NaN domain is found & domain gets tagged
+    data = StatsManager()
+    data.AddSample(nan_domain, float('NaN'))
+    data.AddSample(nan_domain, 17)
+    data.AddSample('B-domain', 17)
+    data.CalculateStats()
+    summarystr = data.SummaryToString()
+    self.assertIn(help_banner_exp, summarystr)
+    self.assertIn(nan_domain_exp, summarystr)
+    # NaN helper banner is not added when no NaN domain output, no tagging
+    data = StatsManager()
+    # nan_domain in this scenario does not contain any NaN
+    data.AddSample(nan_domain, 19)
+    data.AddSample('B-domain', 17)
+    data.CalculateStats()
+    summarystr = data.SummaryToString()
+    self.assertNotIn(help_banner_exp, summarystr)
+    self.assertNotIn(nan_domain_exp, summarystr)
 
   def test_SummaryToStringTitle(self):
     """Title shows up in SummaryToString if title specified."""
