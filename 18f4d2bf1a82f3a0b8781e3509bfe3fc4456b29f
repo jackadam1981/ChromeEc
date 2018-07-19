@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee98a194_62c0f5a8",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-19T06:49:44Z",
+      "side": 1,
+      "message": "Good point, added checks for this. \n\nI\u0027ve checked against VIRTUAL_NV_INDEX_END directly as it seemed clearer / symmetric, and there is a BUILD_ASSERT above that enforces that this matches up with the size of the array.",
+      "parentUuid": "24481092_c9deda9d",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 49
+      },
+      "revId": "18f4d2bf1a82f3a0b8781e3509bfe3fc4456b29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c203d1dc_4d5de851",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 14
