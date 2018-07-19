@@ -22,6 +22,30 @@
       "revId": "2c64687dfa9b2aff7f72d8a365d149c5fab4e8c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68d0034_3dae3531",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1294760
+      },
+      "writtenOn": "2018-07-19T05:48:12Z",
+      "side": 1,
+      "message": "Yes. Setting the RSTS[7:6] to 00b also rewinds the DMA address for EC fetching code from eFlash.\nSo EC must run in SRAM to prevent fetching the wrong code and cause the exception.",
+      "parentUuid": "cf5ee076_07be8819",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 60
+      },
+      "revId": "2c64687dfa9b2aff7f72d8a365d149c5fab4e8c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

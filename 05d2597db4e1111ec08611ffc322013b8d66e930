@@ -93,6 +93,30 @@
       "revId": "05d2597db4e1111ec08611ffc322013b8d66e930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ce44ff_e99a0b67",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1294760
+      },
+      "writtenOn": "2018-07-19T05:48:12Z",
+      "side": 1,
+      "message": "Setting these register bits won\u0027t really disabling the VCC rail in EC. It just asserts a reset  to LPC and eSPI module in EC. Besides, EC code fetching address will be rewind by this reset signal. All functions except LPC and eSPI will not be reset by it.",
+      "parentUuid": "053a092b_ade2ec5e",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 18
+      },
+      "revId": "05d2597db4e1111ec08611ffc322013b8d66e930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
