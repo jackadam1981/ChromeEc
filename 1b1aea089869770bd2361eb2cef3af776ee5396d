@@ -22,6 +22,30 @@
       "revId": "1b1aea089869770bd2361eb2cef3af776ee5396d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73dcf309_f0579504",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-19T18:38:20Z",
+      "side": 1,
+      "message": "I think we are supposed to disable the LPC reset here. The default for this field is 0x2 and so I\u0027m actually confused about the previous patch where this value wasn\u0027t being changed from the default. I\u0027ve refactored yet again. I will let ITE comment and validate.",
+      "parentUuid": "8f3b6f3b_79d8c7f5",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 53
+      },
+      "revId": "1b1aea089869770bd2361eb2cef3af776ee5396d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
