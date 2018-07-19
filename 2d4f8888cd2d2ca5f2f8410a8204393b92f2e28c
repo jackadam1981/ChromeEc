@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40296f8b_d0350cd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "I use \"octopus:\" as title",
+      "parentUuid": "fb2329b5_50a83735",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "205af81f_af608d10",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ae0994_601f5bbe",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "205af81f_af608d10",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "Should we consider keeping this state in case this code ends up moving to common in the future?",
       "parentUuid": "f19f150d_e03de8c0",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d499f1_fd07a48b",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "I keep this state in case this code ends up moving to common in the future.",
+      "parentUuid": "695f5d69_7f1deb2f",
       "range": {
         "startLine": 34,
         "startChar": 6,
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "f6c39a69_9325b3c1",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Consider of \u0027PWR_STATE_CHARGE_NEAR_FULL\u0027 state, it still required.",
+      "parentUuid": "63ac6705_5ee6f53e",
+      "range": {
+        "startLine": 114,
+        "startChar": 33,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40727b34_60098e68",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 7
@@ -177,6 +273,24 @@
     },
     {
       "key": {
+        "uuid": "1e4c9a5a_0c0dab90",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Consider of \u0027PWR_STATE_CHARGE_NEAR_FULL\u0027 state, I still use led_get_state(). Furquan\u0027s comment is implemented.",
+      "parentUuid": "41953332_984b3431",
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d9caa50_9bdc3b57",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 7
@@ -197,6 +311,30 @@
       "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c52e9f4c_881cc724",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9caa50_9bdc3b57",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 54
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -246,6 +384,54 @@
     },
     {
       "key": {
+        "uuid": "f0862734_6c7b44ee",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "278c3321_02a84239",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 7
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d34c0242_58ef67ed",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6167f201_b81a87b2",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cb3297b_e5cddec2",
         "filename": "board/bip/led.c",
         "patchSetId": 7
@@ -269,6 +455,30 @@
     },
     {
       "key": {
+        "uuid": "d2179f1b_3191e381",
+        "filename": "board/bip/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb3297b_e5cddec2",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f7abd27_f6ff2cb3",
         "filename": "board/phaser/led.c",
         "patchSetId": 7
@@ -289,6 +499,30 @@
       "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aabc4d56_1697ab52",
+        "filename": "board/phaser/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1288136
+      },
+      "writtenOn": "2018-07-19T06:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7abd27_f6ff2cb3",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "2d4f8888cd2d2ca5f2f8410a8204393b92f2e28c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
