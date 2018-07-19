@@ -17,6 +17,18 @@
 /* Default value for _pad[] words */
 #define SIGNED_HEADER_PADDING 0x33333333
 
+/*
+ * The timestamp_ field below is overloaded: for debug images it contains the
+ * actual timestamp of the moment the image was signed at. For prod images it
+ * contains zero OR the 'micro' version field, which allows extra granularity
+ * when one needs to build an image slightly different from a previously
+ * released one.
+ *
+ * Valid values of the 'micro' version field are in 1..255 range so that it
+ * fits into a byte.
+ */
+#define MAX_MICRO_VALUE 255
+
 struct SignedHeader {
 	uint32_t magic;       /* -1 (thanks, boot_sys!) */
 	uint32_t signature[96];
