@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24f70ab5_79d18b4a",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-19T19:28:56Z",
+      "side": 1,
+      "message": "D",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "4d9326890b15b0cfd907c0c078dcdd658780ed84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39aad516_9fcbbc8b",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-19T19:28:56Z",
+      "side": 1,
+      "message": "P",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 3
+      },
+      "revId": "4d9326890b15b0cfd907c0c078dcdd658780ed84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96eba14e_078c0715",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-19T19:28:56Z",
+      "side": 1,
+      "message": "Pls maintain the original order of checking: cwd -\u003e same directory as current .py file -\u003e file is installed by hdctools",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "4d9326890b15b0cfd907c0c078dcdd658780ed84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
