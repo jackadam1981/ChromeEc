@@ -70,6 +70,30 @@
       "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f074aa7_4f0d4fd3",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-19T15:33:16Z",
+      "side": 1,
+      "message": "We\u0027ll discuss this with the owners of other projects. CL:1143174 wouldn\u0027t work.\n\nAfter the discussion, I\u0027ll create a CL to do what this CL is trying to do.",
+      "parentUuid": "ebe22fc1_dcc304a8",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
