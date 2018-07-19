@@ -130,11 +130,14 @@ static enum tcpc_transmit_complete it83xx_tx_data(
 	enum tcpm_transmit_type type,
 	uint8_t msg_type,
 	uint8_t length,
+	uint16_t header,
 	const uint32_t *buf)
 {
 	int r;
 	uint32_t evt;
 
+	IT83XX_USBPD_TMHLR(port) = (uint8_t)header;
+	IT83XX_USBPD_TMHHR(port) = (header>>8);
 	/* set message type */
 	IT83XX_USBPD_MTSR0(port) =
 		(IT83XX_USBPD_MTSR0(port) & ~0x1f) | (msg_type & 0xf);
@@ -288,6 +291,7 @@ static void it83xx_init(enum usbpd_port port, int role)
 	IT83XX_USBPD_CCPSR0(port) |= (1 << 7);
 	/* reset */
 	IT83XX_USBPD_GCR(port) = 0;
+	IT83XX_USBPD_GCR(port) |=  (1<<5);
 	USBPD_SW_RESET(port);
 	/* set SOP: receive SOP message only.
 	 * bit[7]: SOP" support enable.
@@ -455,6 +459,7 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 
 	if (enable) {
 		IT83XX_USBPD_IMR(port) &= ~USBPD_REG_MASK_MSG_RX_DONE;
+		//USBPD_SW_RESET(port);
 		USBPD_ENABLE_BMC_PHY(port);
 	} else {
 		IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
@@ -500,6 +505,7 @@ static int it83xx_tcpm_transmit(int port,
 					type,
 					PD_HEADER_TYPE(header),
 					PD_HEADER_CNT(header),
+					header,
 					data);
 		break;
 	case TCPC_TX_BIST_MODE_2:
