@@ -19,7 +19,7 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 {
 	const struct temp_sensor_t *sensor;
 
-	if (id < 0 || id >= TEMP_SENSOR_COUNT)
+	if (id < 0 || id >= temp_sensor_count)
 		return EC_ERROR_INVAL;
 	sensor = temp_sensors + id;
 
@@ -31,7 +31,7 @@ static void update_mapped_memory(void)
 	int i, t;
 	uint8_t *mptr = host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
 
-	for (i = 0; i < TEMP_SENSOR_COUNT; i++, mptr++) {
+	for (i = 0; i < temp_sensor_count; i++, mptr++) {
 		/*
 		 * Switch to second range if first one is full, or stop if
 		 * second range is also full.
@@ -72,7 +72,7 @@ static void temp_sensor_init(void)
 	 */
 	base = host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
 	base_b = host_get_memmap(EC_MEMMAP_TEMP_SENSOR_B);
-	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+	for (i = 0; i < temp_sensor_count; ++i) {
 		if (i < EC_TEMP_SENSOR_ENTRIES)
 			base[i] = EC_TEMP_SENSOR_DEFAULT;
 		else
@@ -102,7 +102,7 @@ static int command_temps(int argc, char **argv)
 	int t, i;
 	int rv, rv1 = EC_SUCCESS;
 
-	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+	for (i = 0; i < temp_sensor_count; ++i) {
 		ccprintf("  %-20s: ", temp_sensors[i].name);
 		rv = temp_sensor_read(i, &t);
 		if (rv)
@@ -148,7 +148,7 @@ int temp_sensor_command_get_info(struct host_cmd_handler_args *args)
 	struct ec_response_temp_sensor_get_info *r = args->response;
 	int id = p->id;
 
-	if (id >= TEMP_SENSOR_COUNT)
+	if (id >= temp_sensor_count)
 		return EC_RES_ERROR;
 
 	strzcpy(r->sensor_name, temp_sensors[id].name, sizeof(r->sensor_name));

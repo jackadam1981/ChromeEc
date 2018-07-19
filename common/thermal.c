@@ -68,7 +68,7 @@ static void thermal_control(void)
 	temp_fan_configured = 0;
 
 	/* go through all the sensors */
-	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+	for (i = 0; i < temp_sensor_count; ++i) {
 
 		/* read one */
 		rv = temp_sensor_read(i, &t);
@@ -189,7 +189,7 @@ static int command_thermalget(int argc, char **argv)
 	int i;
 
 	ccprintf("sensor  warn  high  halt   fan_off fan_max   name\n");
-	for (i = 0; i < TEMP_SENSOR_COUNT; i++) {
+	for (i = 0; i < temp_sensor_count; i++) {
 		ccprintf(" %2d      %3d   %3d    %3d    %3d     %3d     %s\n",
 			 i,
 			 thermal_params[i].temp_host[EC_TEMP_THRESH_WARN],
@@ -262,7 +262,7 @@ static int thermal_command_set_threshold(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_thermal_set_threshold_v1 *p = args->params;
 
-	if (p->sensor_num >= TEMP_SENSOR_COUNT)
+	if (p->sensor_num >= temp_sensor_count)
 		return EC_RES_INVALID_PARAM;
 
 	thermal_params[p->sensor_num] = p->cfg;
@@ -278,7 +278,7 @@ static int thermal_command_get_threshold(struct host_cmd_handler_args *args)
 	const struct ec_params_thermal_get_threshold_v1 *p = args->params;
 	struct ec_thermal_config *r = args->response;
 
-	if (p->sensor_num >= TEMP_SENSOR_COUNT)
+	if (p->sensor_num >= temp_sensor_count)
 		return EC_RES_INVALID_PARAM;
 
 	*r = thermal_params[p->sensor_num];

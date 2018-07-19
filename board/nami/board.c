@@ -316,6 +316,8 @@ const struct temp_sensor_t temp_sensors[TEMP_SENSOR_COUNT] = {
 		F75303_IDX_REMOTE2, 4},
 };
 
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
+
 struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
 
 /* Nami/Vayne Remote 1, 2 */

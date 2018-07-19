@@ -432,6 +432,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
+
 /* Called by APL power state machine when transitioning from G3 to S5 */
 void chipset_pre_init_callback(void)
 {

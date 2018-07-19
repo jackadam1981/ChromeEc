@@ -92,6 +92,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
+
 static void customize_based_on_board_id(void)
 {
 	uint32_t board_id = 0;

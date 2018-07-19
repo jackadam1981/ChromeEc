@@ -255,6 +255,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
+
 /*
  * Check if PMIC fault registers indicate VR fault. If yes, print out fault
  * register info to console. Additionally, set panic reason so that the OS can

@@ -462,6 +462,8 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"Case", TEMP_SENSOR_TYPE_CASE, therm_get_val, (int)ADC_CASE, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
 #endif
 #endif
 

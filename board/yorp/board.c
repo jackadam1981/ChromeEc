@@ -104,6 +104,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
+
 /* Motion sensors */
 /* Mutexes */
 static struct mutex g_lid_mutex;

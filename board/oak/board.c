@@ -152,6 +152,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
+
 #ifdef HAS_TASK_ALS
 /* ALS instances. Must be in same order as enum als_id. */
 struct als_t als[] = {

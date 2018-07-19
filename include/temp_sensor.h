@@ -50,6 +50,12 @@ struct temp_sensor_t {
 extern const struct temp_sensor_t temp_sensors[];
 #endif
 
+#ifdef CONFIG_DYNAMIC_TEMP_SENSOR_COUNT
+extern unsigned int temp_sensor_count;
+#else
+extern const unsigned int temp_sensor_count;
+#endif
+
 /**
  * Get the most recently measured temperature (in degrees K) for the sensor.
  *

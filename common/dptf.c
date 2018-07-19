@@ -28,7 +28,7 @@ static void dptf_init(void)
 {
 	int id, t;
 
-	for (id = 0; id < TEMP_SENSOR_COUNT; id++)
+	for (id = 0; id < temp_sensor_count; id++)
 		for (t = 0; t < DPTF_THRESHOLDS_PER_SENSOR; t++) {
 			dptf_threshold[id][t].temp = -1;
 			cond_init(&dptf_threshold[id][t].over, 0);
@@ -44,7 +44,7 @@ int dptf_query_next_sensor_event(void)
 {
 	int id;
 
-	for (id = 0; id < TEMP_SENSOR_COUNT; id++)
+	for (id = 0; id < temp_sensor_count; id++)
 		if (dptf_seen & (1 << id)) {  /* atomic? */
 			atomic_clear(&dptf_seen, (1 << id));
 			return id;
@@ -135,7 +135,7 @@ static void thermal_control_dptf(void)
 	num_sensors_read = 0;
 
 	/* go through all the sensors */
-	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+	for (i = 0; i < temp_sensor_count; ++i) {
 		rv = temp_sensor_read(i, &t);
 		if (rv != EC_SUCCESS)
 			continue;
@@ -178,7 +178,7 @@ static int command_dptftemp(int argc, char **argv)
 	int temp, trig;
 
 	ccprintf("sensor   thresh0   thresh1\n");
-	for (id = 0; id < TEMP_SENSOR_COUNT; id++) {
+	for (id = 0; id < temp_sensor_count; id++) {
 		ccprintf(" %2d", id);
 		for (t = 0; t < DPTF_THRESHOLDS_PER_SENSOR; t++) {
 			temp = dptf_threshold[id][t].temp;

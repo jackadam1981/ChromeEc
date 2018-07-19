@@ -61,7 +61,7 @@ static void bd99992gw_init(void)
 	uint8_t pointer_reg = BD99992GW_REG_ADC1ADDR0;
 
 	/* Mark active channels from the board temp sensor table */
-	for (i = 0; i < TEMP_SENSOR_COUNT; ++i)
+	for (i = 0; i < temp_sensor_count; ++i)
 		if (temp_sensors[i].read == bd99992gw_get_val)
 			active_channels[active_channel_count++] =
 				temp_sensors[i].idx;

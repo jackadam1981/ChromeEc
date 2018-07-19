@@ -290,6 +290,8 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+const unsigned int temp_sensor_count = TEMP_SENSOR_COUNT;
+
 /*
  * Thermal limits for each temp sensor.  All temps are in degrees K.  Must be in
  * same order as enum temp_sensor_id.  To always ignore any temp, use 0.

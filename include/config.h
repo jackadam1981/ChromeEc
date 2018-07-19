@@ -1610,6 +1610,9 @@
 
 /* Define motion sensor count in board layer */
 #undef CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+
+/* Define temp sensor count in board layer */
+#undef CONFIG_DYNAMIC_TEMP_SENSOR_COUNT
 /******************************************************************************/
 /* Host to RAM (H2RAM) Memory Mapping */
 
