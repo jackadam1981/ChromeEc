@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f3b6f3b_79d8c7f5",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-19T17:31:48Z",
+      "side": 1,
+      "message": "oh, do we actually want to disable it or leave it as 00b? I thought the empty if statements were intentional, maybe there weren\u0027t.\n\nDino or Richard, what is the correct value to use for the for the DX version if the reset pin is GPB7?\n\n(I do prefer this code layout though)",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 53
+      },
+      "revId": "1b1aea089869770bd2361eb2cef3af776ee5396d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
