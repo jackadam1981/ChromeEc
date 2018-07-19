@@ -94,6 +94,30 @@
       "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a190705_6c610aa5",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-19T18:41:38Z",
+      "side": 1,
+      "message": "good point re not being able to tell. in fact, in many cases we don\u0027t have to crash and can just return some \u0027null\u0027 value. but noticing would be good - is there a recommended method for reporting such failed checks?",
+      "parentUuid": "9e234bc1_cc888f93",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 38
+      },
+      "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
