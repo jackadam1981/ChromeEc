@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0947c092_cde00fb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-19T05:26:47Z",
+      "side": 1,
+      "message": "Is it an expected use case to have multiple SM?\n\nIf so, maybe each should either (A) take a random UUID on creation, or (B) take an ID argument to __init__.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d8bcd2b_efa29d21",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-19T05:26:47Z",
+      "side": 1,
+      "message": "unique_fname",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 15
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a225e20c_bb67d1ae",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-19T05:26:47Z",
+      "side": 1,
+      "message": "I realized your \"fn\" means \"file name\".  Maybe best to avoid since it collides with \"function\".",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5abc56_17ebaa39",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-19T05:26:47Z",
+      "side": 1,
+      "message": "Missing space.",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
