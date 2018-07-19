@@ -361,6 +361,7 @@ void fw_upgrade_command_handler(void *body,
 	if (!cmd_body->block_base && !body_size) {
 		struct first_response_pdu *rpdu = body;
 		const struct SignedHeader *header;
+		uint32_t delta;
 
 		/*
 		 * This is the connection establishment request, the response
@@ -407,9 +408,21 @@ void fw_upgrade_command_handler(void *body,
 		/* RW header information. */
 		header = (const struct SignedHeader *)
 			get_program_memory_addr(system_get_image_copy());
+
+		/*
+		 * To avoid changing the communications protocol let's use the
+		 * top byte of the 'epoch' field sent to the host as the micro
+		 * version value.
+		 */
+		if ((header->timestamp_ > 1) &&
+		    (header->timestamp_ <= MAX_MICRO_VALUE))
+			delta = (uint32_t)header->timestamp_;
+		else
+			delta = 0;
+
 		rpdu->shv[1].minor = htobe32(header->minor_);
 		rpdu->shv[1].major = htobe32(header->major_);
-		rpdu->shv[1].epoch = htobe32(header->epoch_);
+		rpdu->shv[1].epoch = htobe32(header->epoch_ + (delta << 24));
 		/* New with protocol version 5 */
 		rpdu->keyid[1] = htobe32(header->keyid);
 		return;
