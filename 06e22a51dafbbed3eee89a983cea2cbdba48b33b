@@ -46,6 +46,30 @@
       "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe22fc1_dcc304a8",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-07-19T12:16:13Z",
+      "side": 1,
+      "message": "We are focusing to enable F75303_LOCAL for PROJECT_AKALI.\nBut this patch will impact all projects of board Nami.\nIf you are worried about that, we should support dynamic temp sensor count.\nThen I can use oem_id to assign different temp sensor count.\n\nThe following patch is to support dynamic temp sensor count:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1143174\nPlease review it.\n\nOnce it has been approved, then I can enable F75303_LOCAL for only PROJECT_AKALI.\nOther projects will not be impacted.\n\nMany thanks.",
+      "parentUuid": "8cdf8d82_9d7772fd",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
