@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e0a7a94f_71f661cc",
+        "filename": "common/dptf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-19T15:31:34Z",
+      "side": 1,
+      "message": "Actually, this doesn\u0027t really work. A simple string substitution doesn\u0027t work. We need a bit of surgery. Let\u0027s hold it. I think we can do what CL:1134721 is trying to do without this CL.",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "6524594a0c62f5c3a31f470e763ebecad699fc55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14424e82_e86a5c26",
         "filename": "include/temp_sensor.h",
         "patchSetId": 1
