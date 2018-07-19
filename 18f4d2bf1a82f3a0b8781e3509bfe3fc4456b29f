@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24481092_c9deda9d",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-19T04:53:09Z",
+      "side": 1,
+      "message": "need to check that index \u003e\u003d VIRTUAL_NV_INDEX_START and (index - VIRTUAL_NV_INDEX_START) \u003c  ARRAY_SIZE(index_config).\n\notherwise:\n\n_plat__NvMemoryRead()\n  if (_plat__NvOffsetIsVirtual(startOffset))   \u003c--- this checks only that falls in big range 13f0000..13fffff\n    _plat__NvVirtualMemoryRead(startOffset, size, data)\n      nvIndex \u003d NvOffsetToNvIndex(startOffset)   \u003c--- this happily converts everything\n      nvIndexConfig \u003d GetNvIndexConfig(nvIndex)  \u003c--- this will happily address past ARRAY_SIZE(index_config) and then check .size and .get_data_fn for that address.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 49
+      },
+      "revId": "18f4d2bf1a82f3a0b8781e3509bfe3fc4456b29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
