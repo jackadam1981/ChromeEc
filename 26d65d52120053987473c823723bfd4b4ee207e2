@@ -22,6 +22,30 @@
       "revId": "26d65d52120053987473c823723bfd4b4ee207e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14fb2dc5_8c2d0605",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-19T01:56:55Z",
+      "side": 1,
+      "message": "The IMVP8 isn\u0027t immediately available for writing via i2c after entering S0. This value was chosen empirically.",
+      "parentUuid": "5f6537b2_d6e3d9ad",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "26d65d52120053987473c823723bfd4b4ee207e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
