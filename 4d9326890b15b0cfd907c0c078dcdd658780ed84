@@ -68,6 +68,29 @@
       "revId": "4d9326890b15b0cfd907c0c078dcdd658780ed84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e8a9cd_40256d9b",
+        "filename": "extra/usb_power/powerlog_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-19T19:42:14Z",
+      "side": 1,
+      "message": "I don\u0027t see why this one will trigger exception...\nMy understanding is that for every test_ method, python actually does setup -\u003e test_ method -\u003e teardown.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "4d9326890b15b0cfd907c0c078dcdd658780ed84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
