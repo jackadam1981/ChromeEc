@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "f5199640_5ab8ad04",
+        "filename": "chip/host/reboot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1243002
+      },
+      "writtenOn": "2018-07-19T15:59:40Z",
+      "side": 1,
+      "message": "Same nit about printing as elsewhere. It can make logs annoying to read if the fuzzer can force this to print over again.",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce0ee6a8_60323907",
         "filename": "chip/host/system.c",
         "patchSetId": 7
@@ -30,6 +47,23 @@
       "writtenOn": "2018-07-19T03:25:29Z",
       "side": 1,
       "message": "Does this get printed to stdout often? We generally prefer that targets don\u0027t do this on ClusterFuzz since it makes it harder to tell how a fuzzer is doing when looking at logs.",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c12a2b0_5a2f51da",
+        "filename": "core/host/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1243002
+      },
+      "writtenOn": "2018-07-19T15:59:40Z",
+      "side": 1,
+      "message": "Another nit: is it possible to create the main thread in LLVMFuzzerTestOneInput using static initialization? If not can you add a .options file (explained here: https://chromium.googlesource.com/chromiumos/docs/+/master/fuzzing.md#adding-an-options-file) with these contents:\n```\n[env]\nAFL_DRIVER_DONT_DEFER\u003d1\n```\n\nWhen you make the ebuild for this fuzzer?\n\nThe reason why is because creating LLVMFuzzerInitialize will cause the fuzz target when built with AFL to break unless given the options I mentioned above. \nThere are no plans to add AFL to Chrome OS right now, but it seems likely this will happen at some point in the future (we already use AFL in Chrome and OSS-Fuzz).",
       "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
