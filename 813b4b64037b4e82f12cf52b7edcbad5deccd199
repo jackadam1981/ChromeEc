@@ -46,6 +46,30 @@
       "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cdfae5f_370e7d6a",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-19T16:08:19Z",
+      "side": 1,
+      "message": "right. the 2nd assert should be for VIRTUAL_NV_INDEX_MAX.\nok. I see it now. guarded by the check for VIRTUAL_NV_INDEX_MAX in _plat__NvGetHandleVirtualOffset in NvFindHandle() on the tpm2 side.\nanother reason why it makes sense either (a) have \u0027empty\u0027 public areas for all reserved but undefined handles and check just for big range (up to ...ffff) on tpm2 side and handle everything else inside platform/ec, or (b) don\u0027t reserve handles past _MAX and avoid this confusion. otherwise too many details are spread between the layers.",
+      "parentUuid": "8c996ebc_227e3f78",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 38
+      },
+      "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
