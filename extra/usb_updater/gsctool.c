@@ -922,7 +922,14 @@ static void transfer_section(struct transfer_descriptor *td,
 }
 
 /* Information about the target */
-static struct first_response_pdu targ;
+static struct {
+	/*
+	 * As received from the target. The epoch field of the RW version
+	 * might include the micro version number in the top byte.
+	 */
+	struct first_response_pdu pdu;
+	uint32_t micro; /* Extracted from RW epoch, if present. */
+} target_info;
 
 /*
  * Each RO or RW section of the new image can be in one of the following
@@ -947,6 +954,12 @@ static struct {
 	uint32_t    size;
 	enum upgrade_status  ustatus;
 	struct signed_header_version shv;
+	/*
+	 * Micro version field is not expected to be set in RO images'
+	 * headers, but let's keep it here for all headers to simplify
+	 * processing.
+	 */
+	uint32_t micro_version;
 	uint32_t keyid;
 } sections[] = {
 	{"RO_A", CONFIG_RO_MEM_OFF, CONFIG_RO_SIZE},
@@ -972,6 +985,13 @@ static void fetch_header_versions(const void *image)
 		sections[i].shv.major = h->major_;
 		sections[i].shv.minor = h->minor_;
 		sections[i].keyid = h->keyid;
+
+		/*
+		 * If timestamp field is used to communicate the micro version
+		 * value - extract it.
+		 */
+		if ((h->timestamp_ > 1) && (h->timestamp_ <= MAX_MICRO_VALUE))
+			sections[i].micro_version = h->timestamp_;
 	}
 }
 
@@ -1036,7 +1056,8 @@ static void pick_sections(struct transfer_descriptor *td)
 			 * different.
 			 */
 
-			if (a_newer_than_b(&sections[i].shv, &targ.shv[1]) ||
+			if (a_newer_than_b(&sections[i].shv,
+					   &target_info.pdu.shv[1]) ||
 			    !td->upstart_mode)
 				sections[i].ustatus = needed;
 			continue;
@@ -1050,7 +1071,7 @@ static void pick_sections(struct transfer_descriptor *td)
 		 * Is it newer in the new image than the running RO section on
 		 * the device?
 		 */
-		if (a_newer_than_b(&sections[i].shv, &targ.shv[0]))
+		if (a_newer_than_b(&sections[i].shv, &target_info.pdu.shv[0]))
 			sections[i].ustatus = needed;
 	}
 }
@@ -1060,6 +1081,7 @@ static void setup_connection(struct transfer_descriptor *td)
 	size_t rxed_size;
 	size_t i;
 	uint32_t error_code;
+	struct first_response_pdu *targ;
 
 	/*
 	 * Need to be backwards compatible, communicate with targets running
@@ -1120,17 +1142,29 @@ static void setup_connection(struct transfer_descriptor *td)
 	td->rw_offset = be32toh(start_resp.rpdu.backup_rw_offset);
 	td->ro_offset = be32toh(start_resp.rpdu.backup_ro_offset);
 
+	targ = &target_info.pdu;
+
 	/* Running header versions. */
-	for (i = 0; i < ARRAY_SIZE(targ.shv); i++) {
-		targ.shv[i].minor = be32toh(start_resp.rpdu.shv[i].minor);
-		targ.shv[i].major = be32toh(start_resp.rpdu.shv[i].major);
-		targ.shv[i].epoch = be32toh(start_resp.rpdu.shv[i].epoch);
+	for (i = 0; i < ARRAY_SIZE(targ->shv); i++) {
+
+
+		targ->shv[i].minor = be32toh(start_resp.rpdu.shv[i].minor);
+		targ->shv[i].major = be32toh(start_resp.rpdu.shv[i].major);
+		targ->shv[i].epoch = be32toh(start_resp.rpdu.shv[i].epoch);
+
+		if (targ->shv[i].epoch < (1 << 24))
+			continue;
+
+		/* Micro version field was sent as the top byte of epoch. */
+		target_info.micro = targ->shv[i].epoch >> 24;
+		targ->shv[i].epoch &= ~(0xff << 24);
 	}
 
-	for (i = 0; i < ARRAY_SIZE(targ.keyid); i++)
-		targ.keyid[i] = be32toh(start_resp.rpdu.keyid[i]);
+	for (i = 0; i < ARRAY_SIZE(targ->keyid); i++)
+		target_info.pdu.keyid[i] = be32toh(start_resp.rpdu.keyid[i]);
 
-	printf("keyids: RO 0x%08x, RW 0x%08x\n", targ.keyid[0], targ.keyid[1]);
+	printf("keyids: RO 0x%08x, RW 0x%08x\n",
+	       targ->keyid[0], targ->keyid[1]);
 	printf("offsets: backup RO at %#x, backup RW at %#x\n",
 	       td->ro_offset, td->rw_offset);
 
@@ -1343,7 +1377,8 @@ static void generate_reset_request(struct transfer_descriptor *td)
 
 	/* RW version 0.0.19 and above has support for background updates. */
 	background_update_supported = td->background_update_supported ||
-				!a_newer_than_b(&ver19, &targ.shv[1]);
+				!a_newer_than_b(&ver19,
+						&target_info.pdu.shv[1]);
 
 	/*
 	 * If this is an upstart request and there is support for background
@@ -1395,15 +1430,6 @@ static void generate_reset_request(struct transfer_descriptor *td)
 
 static int show_headers_versions(const void *image)
 {
-	const struct {
-		const char *name;
-		uint32_t    offset;
-	} sections[] = {
-		{"RO_A", CONFIG_RO_MEM_OFF},
-		{"RW_A", CONFIG_RW_MEM_OFF},
-		{"RO_B", CHIP_RO_B_MEM_OFF},
-		{"RW_B", CONFIG_RW_B_MEM_OFF}
-	};
 	size_t i;
 
 	for (i = 0; i < ARRAY_SIZE(sections); i++) {
@@ -1417,6 +1443,9 @@ static int show_headers_versions(const void *image)
 						  sections[i].offset);
 		printf("%s%s:%d.%d.%d", i ? " " : "", sections[i].name,
 		       h->epoch_, h->major_, h->minor_);
+
+		if (sections[i].micro_version)
+			printf(".%d", sections[i].micro_version);
 
 		if (sections[i].name[1] != 'W')
 			continue;
@@ -2325,13 +2354,20 @@ int main(int argc, char *argv[])
 			generate_reset_request(&td);
 
 		if (show_fw_ver) {
+			struct first_response_pdu *targ;
+
 			printf("Current versions:\n");
-			printf("RO %d.%d.%d\n", targ.shv[0].epoch,
-			       targ.shv[0].major,
-			       targ.shv[0].minor);
-			printf("RW %d.%d.%d\n", targ.shv[1].epoch,
-			       targ.shv[1].major,
-			       targ.shv[1].minor);
+			targ = &target_info.pdu;
+			printf("RO %d.%d.%d\n", targ->shv[0].epoch,
+			       targ->shv[0].major,
+			       targ->shv[0].minor);
+			printf("RW %d.%d.%d", targ->shv[1].epoch,
+			       targ->shv[1].major,
+			       targ->shv[1].minor);
+
+			if (target_info.micro)
+				printf(".%d", target_info.micro);
+			printf("\n");
 		}
 	}
 
