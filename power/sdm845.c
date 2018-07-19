@@ -76,6 +76,9 @@
 /* Delay to confirm the power lost */
 #define POWER_LOST_CONFIRM_DELAY        (350 * MSEC)
 
+/* Delay for toggling the PMIC trigger, like PM845_RESIN_L */
+#define PMIC_TRIGGER_DELAY (5 * MSEC)
+
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
@@ -593,18 +596,36 @@ void chipset_force_shutdown(void)
 
 void chipset_reset(void)
 {
-	/*
-	 * Before we can reprogram the PMIC to make the PMIC RESIN_N pin as
-	 * reset pin and zero-latency. We do cold reset instead.
-	 */
-	CPRINTS("EC triggered cold reboot");
-	bypass_power_lost_trigger = 1;
-	power_off();
-	bypass_power_lost_trigger = 0;
+	timestamp_t start_time = get_time();
 
-	/* Issue a request to initiate a power-on sequence */
-	power_request = POWER_REQ_ON;
-	task_wake(TASK_ID_CHIPSET);
+	/*
+	 * Do a graceful PMIC reset first. It requires reprogramming PMIC
+	 * registers to make PM845_RESIN_L as a reset trigger and zero-latency.
+	 */
+	CPRINTS("EC triggered PMIC reset");
+	gpio_set_level(GPIO_PM845_RESIN_L, 0);
+	usleep(PMIC_TRIGGER_DELAY);
+	gpio_set_level(GPIO_PM845_RESIN_L, 1);
+	usleep(PMIC_POWER_AP_RESPONSE_TIMEOUT);
+
+	/*
+	 * At this point, the AP_RST_L should be toggled and AP should reset.
+	 * If the AP_RST_L is not toggled (PMIC registers not yet
+	 * reprogrammed or some unexpected reason), do a cold reset instead.
+	 *
+	 * A low pulse of AP_RST_L triggers an interrupt and updates the
+	 * latest_power_lost_time. So compare the timestamps.
+	 */
+	if (latest_power_lost_time.val <= start_time.val) {
+		CPRINTS("AP_RST_L NOT TOGGLED, DO A COLD REBOOT");
+		bypass_power_lost_trigger = 1;
+		power_off();
+		bypass_power_lost_trigger = 0;
+
+		/* Issue a request to initiate a power-on sequence */
+		power_request = POWER_REQ_ON;
+		task_wake(TASK_ID_CHIPSET);
+	}
 }
 
 /**
