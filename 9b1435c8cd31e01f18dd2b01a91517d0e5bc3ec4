@@ -118,6 +118,30 @@
       "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8485c89_cf15a2aa",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-19T12:00:32Z",
+      "side": 0,
+      "message": "Yes, we do not have indication of VBAT power on reset.",
+      "parentUuid": "da83918f_1696cf50",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "9b1435c8cd31e01f18dd2b01a91517d0e5bc3ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

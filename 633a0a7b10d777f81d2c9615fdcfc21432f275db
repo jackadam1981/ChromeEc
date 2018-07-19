@@ -94,6 +94,30 @@
       "revId": "633a0a7b10d777f81d2c9615fdcfc21432f275db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845ce687_b1bb4aa8",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-19T12:00:32Z",
+      "side": 1,
+      "message": "I agree Aaron\u0027s point.\nAnd we should dedicate at least 4 bytes magic numbers to indicate if bram is valid (offset 0x20 ~ 0x7f of BRAM_BANK0 are reserved).\n\nThe current version in this CL will have 1/256 probability to get a lot of reset causes at the first time during EC reset.",
+      "parentUuid": "4fd8c960_327c2451",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "633a0a7b10d777f81d2c9615fdcfc21432f275db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
