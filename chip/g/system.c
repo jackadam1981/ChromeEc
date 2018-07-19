@@ -323,6 +323,32 @@ struct version_struct_deprecated {
 #define MAX_RO_VER_LEN 48
 static char vers_str[MAX_RO_VER_LEN];
 
+/*
+ * Represent image version as a text string. Interpret the header timestamp
+ * field as a potential micro version number.
+ */
+static const char *hdr_version_to_string(const struct SignedHeader *h,
+					 const char *version)
+{
+	int offset;
+	uint64_t tstamp;
+
+	tstamp = h->timestamp_;
+
+	offset = snprintf(vers_str, sizeof(vers_str), "%d.%d.%d",
+			  h->epoch_, h->major_, h->minor_);
+
+	if (tstamp && (tstamp <= MAX_MICRO_VALUE))
+		offset += snprintf(vers_str +  offset,
+				   sizeof(vers_str) - offset,
+				   ".%d", (int)tstamp);
+	snprintf(vers_str +  offset,
+		 sizeof(vers_str) - offset,
+		 "/%s", version);
+
+	return vers_str;
+}
+
 const char *system_get_version(enum system_image_copy_t copy)
 {
 	const struct image_data *data;
@@ -356,12 +382,9 @@ const char *system_get_version(enum system_image_copy_t copy)
 		this_copy = system_get_image_copy();
 		vaddr = get_program_memory_addr(this_copy);
 		h = (const struct SignedHeader *)vaddr;
-		if (copy == this_copy) {
-			snprintf(vers_str, sizeof(vers_str), "%d.%d.%d/%s",
-				 h->epoch_, h->major_, h->minor_,
-				 current_image_data.version);
-			return vers_str;
-		}
+		if (copy == this_copy)
+			return hdr_version_to_string
+				(h, current_image_data.version);
 
 		/*
 		 * We want the version of the other RW image. The linker script
@@ -400,9 +423,7 @@ const char *system_get_version(enum system_image_copy_t copy)
 		else
 			break;
 
-		snprintf(vers_str, sizeof(vers_str), "%d.%d.%d/%s",
-			 h->epoch_, h->major_, h->minor_, version);
-		return vers_str;
+		return hdr_version_to_string(h, version);
 
 	default:
 		break;
