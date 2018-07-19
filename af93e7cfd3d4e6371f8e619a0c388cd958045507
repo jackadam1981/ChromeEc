@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a1cb1e1_05dc91eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:54:49Z",
+      "side": 1,
+      "message": "Yeah, in the situation where a power measurement tool is using multiple to measure from multiple sources (onboard INAs, ec battery commands, sweetbery INAs). Smart :)",
+      "parentUuid": "0947c092_cde00fb3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d8bcd2b_efa29d21",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4031c090_8345f48f",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8bcd2b_efa29d21",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 15
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "89b6a75f_b8b48d02",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a225e20c_bb67d1ae",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5abc56_17ebaa39",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8956590c_f6be2f17",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5abc56_17ebaa39",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
