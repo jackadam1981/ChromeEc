@@ -235,8 +235,8 @@ test_mockable uintptr_t system_usable_ram_end(void)
 
 void system_encode_save_flags(int reset_flags, uint32_t *save_flags)
 {
+	int8_t csum = 0;
 	*save_flags = 0;
-
 	/* Save current reset reasons if necessary */
 	if (reset_flags & SYSTEM_RESET_PRESERVE_FLAGS)
 		*save_flags = system_get_reset_flags() | RESET_FLAG_PRESERVED;
@@ -250,6 +250,14 @@ void system_encode_save_flags(int reset_flags, uint32_t *save_flags)
 		*save_flags |= RESET_FLAG_HARD;
 	else
 		*save_flags |= RESET_FLAG_SOFT;
+
+
+	/* Compute checksum using lower 3 byte. */
+	csum += (*save_flags >> 0) & 0xff;
+	csum += (*save_flags >> 8) & 0xff;
+	csum += (*save_flags >> 16) & 0xff;
+	/* Save the checksum. This will be validated after reset. */
+	*save_flags |= (-csum) << 24;
 }
 
 uint32_t system_get_reset_flags(void)
@@ -287,6 +295,19 @@ void system_print_reset_flags(void)
 	}
 }
 
+uint32_t validate_reset_flag(uint32_t flag)
+{
+	int8_t csum=0;
+
+	csum += (flag >> 0) & 0xff;
+	csum += (flag >> 8) & 0xff;
+	csum += (flag >> 16) & 0xff;
+	csum += (flag >> 24) & 0xff;
+	if (csum == 0)
+		return flag & 0xFFFFFF;
+	else
+		return 0;
+}
 int system_jumped_to_this_image(void)
 {
 	return jumped_to_image;

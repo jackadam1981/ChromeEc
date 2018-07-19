@@ -33,10 +33,14 @@
 #define RESET_FLAG_RDD         (1 << 15)  /* USB Type-C debug cable */
 #define RESET_FLAG_RBOX        (1 << 16)  /* Fixed Reset Functionality */
 #define RESET_FLAG_SECURITY    (1 << 17)  /* Security threat */
+/* Bit 31:24 stores checksum of reset flag bit 17:0 */
+#define RESET_FLAG_CKSUM       (1 << 24)
 
 /* Per chip implementation to save/read raw RESET_FLAG_ flags. */
 void chip_save_reset_flags(int flags);
 uint32_t chip_read_reset_flags(void);
+
+
 
 /* System images */
 enum system_image_copy_t {
@@ -96,6 +100,16 @@ void system_set_reset_flags(uint32_t flags);
  * @param flags        Flags to clear in reset flags
  */
 void system_clear_reset_flags(uint32_t flags);
+
+/*
+ * Reset flag will have magic value of 0xa5 in bit 31:24 to check its integrity
+ * across reboot/power loss.
+ *
+ * @param flags		Reset flags;
+ * @return flags	Same value if RESET_MAGIC_VALUE if present else zero
+ * 			reset flag & add magic value. 
+ */
+uint32_t validate_reset_flag(uint32_t flag);
 
 /**
  * Print a description of the reset flags to the console.
