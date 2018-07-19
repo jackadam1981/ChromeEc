@@ -45,6 +45,30 @@
       "revId": "18f4d2bf1a82f3a0b8781e3509bfe3fc4456b29f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6067d23f_8c846498",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-19T05:08:13Z",
+      "side": 1,
+      "message": "nevermind, late evening :)",
+      "parentUuid": "c203d1dc_4d5de851",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 49
+      },
+      "revId": "18f4d2bf1a82f3a0b8781e3509bfe3fc4456b29f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
