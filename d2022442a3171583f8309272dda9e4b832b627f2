@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e672fef9_38b3076d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "It shouldn\u0027t even have been added. A relic from a previous rebase, thanks for catching that :)",
+      "parentUuid": "5f28455e_d2f8c1a0",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 70
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92bd21ae_bcbfda43",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e92ff0c_387c347f",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92bd21ae_bcbfda43",
+      "range": {
+        "startLine": 92,
+        "startChar": 7,
+        "endLine": 92,
+        "endChar": 8
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "8f8fbd62_21bcee41",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc0823e_eeb760a9",
+      "range": {
+        "startLine": 97,
+        "startChar": 77,
+        "endLine": 97,
+        "endChar": 79
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b7cc17_077225f6",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a9f6020_27967655",
+      "range": {
+        "startLine": 97,
+        "startChar": 73,
+        "endLine": 97,
+        "endChar": 75
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "576e223c_4bc8e756",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2018-07-19T05:39:12Z",
       "side": 1,
       "message": "What\u0027s the reason for this change?  Is the old method being deprecated?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3feca290_6fdb878f",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "so before we knew no nan would be in here, now there can be. We still want to report the min/max etc properly so that\u0027s why the method change",
+      "parentUuid": "576e223c_4bc8e756",
       "range": {
         "startLine": 134,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6405368f_65855bd7",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30778303_1e814735",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad32c00c_2adcc767",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d91d547_7d59ed41",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad32c00c_2adcc767",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "85960c87_f8ff9ebe",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6953b0b7_dcfbb9d7",
+      "range": {
+        "startLine": 69,
+        "startChar": 16,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bf6f9fe_6c772f83",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 1
@@ -206,6 +398,30 @@
       "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "813ae6ee_9a00ed94",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bf6f9fe_6c772f83",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
