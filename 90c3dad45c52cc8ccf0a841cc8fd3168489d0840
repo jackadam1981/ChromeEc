@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "4a72d675_f9229e62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-19T14:40:36Z",
+      "side": 1,
+      "message": "Power distribution is designed based on the estimated max power consumption. This patch changes the estimation. Already released hardware can\u0027t be redesigned. So, we need to prevent this patch from being cherry-picked to the projects which have lower budget.\n\n\u003e if you think 370mA is too large, I can change it to 310mA to meet\n\u003e the spec.\n\nThat\u0027s why we need the context.",
+      "parentUuid": "b1eeb233_77f808bd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 163
+      },
+      "revId": "90c3dad45c52cc8ccf0a841cc8fd3168489d0840",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bff76dec_2db44f7c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
