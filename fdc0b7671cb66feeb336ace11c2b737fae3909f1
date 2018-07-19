@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "96532be8_94f90189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:16Z",
+      "side": 1,
+      "message": "Fair point. Problem is, the whole functionality here is essentially just to be used in hdctools. I\u0027ve run into issues before with having to update ec-devutil \u0026 hdctools at the same time, so I\u0027d like to keep the number of jumps to a minimum by making it essentially \"one\" ec-devutils change",
+      "parentUuid": "062833d6_fd2540ee",
+      "revId": "fdc0b7671cb66feeb336ace11c2b737fae3909f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c53da56_c72bfbd2",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c966a1a6_629c7812",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c53da56_c72bfbd2",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 6
+      },
+      "revId": "fdc0b7671cb66feeb336ace11c2b737fae3909f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7585d79d_5c8f7469",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "fdc0b7671cb66feeb336ace11c2b737fae3909f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d480d850_9c089ae2",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-19T12:55:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7585d79d_5c8f7469",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 14
+      },
+      "revId": "fdc0b7671cb66feeb336ace11c2b737fae3909f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
