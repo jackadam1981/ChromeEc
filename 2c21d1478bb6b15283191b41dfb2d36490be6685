@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34f1c136_d09527f1",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-07-20T00:28:21Z",
+      "side": 1,
+      "message": "1) is a valid concern, but loading the same version (modulo micro version component) could be enforced by passing to gsctool the -u command line option. The Cr50 RO will include the timestamp in the consideration, this guarantees that the new version will take over on the H1 after reboot.\n\n2) epoch is used only when the running version is retrieved from the Cr50, and it is cleared when received header is processed (line 1160 below).",
+      "parentUuid": "39e11654_2b8aac3a",
+      "range": {
+        "startLine": 1059,
+        "startChar": 7,
+        "endLine": 1059,
+        "endChar": 21
+      },
+      "revId": "2c21d1478bb6b15283191b41dfb2d36490be6685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d69b195f_6b454176",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-20T00:19:37Z",
       "side": 1,
       "message": "even if we don\u0027t support printing micro version for RO, we probably should clean the upper 8 bits of epoch just in case for it.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 2,
+        "endLine": 1159,
+        "endChar": 47
+      },
+      "revId": "2c21d1478bb6b15283191b41dfb2d36490be6685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c7ca4c_c327ea50",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-07-20T00:28:21Z",
+      "side": 1,
+      "message": "sure, I\u0027ll make this change just in case.",
+      "parentUuid": "d69b195f_6b454176",
       "range": {
         "startLine": 1159,
         "startChar": 2,
