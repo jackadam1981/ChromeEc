@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b112262b_014822b4",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-20T14:51:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this error is accessible from any released firmware.  Every path leading to this function has redundant guards on each of these parameters.  Nevertheless this guard is appropriate and should be repaired.",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "22c584c09d637222c1018a3497c5a9a56f1b56e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8c62865_f5466eb9",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-20T14:51:55Z",
+      "side": 1,
+      "message": "It is not normally our policy to aggressively annotate deliberate fallthroughs with a comment.  Coverity recognizes a broad variety of common patterns and silences its warning for them.  However, this one is subtle enough that it needed a detailed reading to have confidence that it was purposeful.",
+      "range": {
+        "startLine": 1354,
+        "startChar": 3,
+        "endLine": 1354,
+        "endChar": 20
+      },
+      "revId": "22c584c09d637222c1018a3497c5a9a56f1b56e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "792d6efb_b23590dc",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-20T14:51:55Z",
+      "side": 1,
+      "message": "It seems plausible that there is some error case from the hardware that produces values of all-bits-set, and that handling this case was the author\u0027s intention.  Therefore, the erroneous comparisons to -1 were replaced with comparisons to 0xff.",
+      "range": {
+        "startLine": 114,
+        "startChar": 23,
+        "endLine": 114,
+        "endChar": 49
+      },
+      "revId": "22c584c09d637222c1018a3497c5a9a56f1b56e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb2ef697_ce27348f",
+        "filename": "common/spi_flash_reg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-20T14:51:55Z",
+      "side": 1,
+      "message": "Comparisons of these output parameters\u0027 current value to -1 don\u0027t make sense.  They are output parameters.  Therefore these erroneous checks were deleted.",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 18
+      },
+      "revId": "22c584c09d637222c1018a3497c5a9a56f1b56e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
