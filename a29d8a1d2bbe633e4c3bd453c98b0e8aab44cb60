@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a672dd9_b3b84a3a",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T23:03:31Z",
+      "side": 1,
+      "message": "add the example for title",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2923d3f_f8ea4798",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T23:03:31Z",
+      "side": 1,
+      "message": "I think it\u0027s better to prepend lines to formatted_lines and join them all in the end",
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "621c9196_27bda1d9",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T23:03:31Z",
+      "side": 1,
+      "message": "the title length calculation and cut off is bit hard to read",
+      "range": {
+        "startLine": 172,
+        "startChar": 39,
+        "endLine": 172,
+        "endChar": 77
+      },
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
