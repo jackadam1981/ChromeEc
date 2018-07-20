@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1660c1_d5d20801",
+        "filename": "chip/it83xx/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-20T22:29:52Z",
+      "side": 1,
+      "message": "Its not very clear. What does this TODO mean? Is it supposed to remove this config later on?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 22
+      },
+      "revId": "8a6674329235c0446aa1ce8b7ac36371c40308fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a3f480_79063557",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-20T22:29:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be uint8_t as that is the type of config?",
+      "range": {
+        "startLine": 449,
+        "startChar": 7,
+        "endLine": 449,
+        "endChar": 10
+      },
+      "revId": "8a6674329235c0446aa1ce8b7ac36371c40308fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5843433c_93aa6c5d",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-20T22:29:52Z",
+      "side": 1,
+      "message": "uint8_t for consistency with above function.",
+      "range": {
+        "startLine": 476,
+        "startChar": 1,
+        "endLine": 476,
+        "endChar": 4
+      },
+      "revId": "8a6674329235c0446aa1ce8b7ac36371c40308fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
