@@ -641,3 +641,72 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+#define I2C_ADDR_MP2949A	(0x20 << 1)
+#define MP2949A_REG_PAGE		0x00
+#define MP2949A_REG_STORE_USER_ALL	0x15
+#define MP2949A_REG_IOUT_CAL_GAIN	0x38
+#define MP2949A_REG_MFR_OCP_SET_LEVEL	0xEE
+#define MP2949A_REG_OC_LIMIT_ICC_MAX	0xEF
+#define MP2949A_REG_MFR_TRANS_FAST	0xFA
+
+static inline int mp2949a_imvp8_reg_write(int page, int reg, int data)
+{
+	static int current_page = -1;
+	int rv;
+	int read_data;
+
+	/* Set the register page */
+	if (current_page != page) {
+		rv = i2c_write8(I2C_PORT_PMIC, I2C_ADDR_MP2949A,
+			MP2949A_REG_PAGE, page);
+		if (rv)
+			return rv;
+
+		current_page = page;
+	}
+
+	/*
+	 * MP2949A has limitation on number of writes hence do not write if
+	 * the data on the register is same as intended write data.
+	 */
+	rv = i2c_read16(I2C_PORT_PMIC, I2C_ADDR_MP2949A, reg, &read_data);
+	if (rv)
+		return rv;
+	if (read_data == data)
+		return EC_SUCCESS;
+
+	return i2c_write16(I2C_PORT_PMIC, I2C_ADDR_MP2949A, reg, data);
+}
+
+static int board_mp2949a_imvp8_init(int argc, char **argv)
+{
+	/* Adjust CS gain for rail 1 */
+	if (mp2949a_imvp8_reg_write(0x0, MP2949A_REG_IOUT_CAL_GAIN, 0x8B61))
+		return -1;
+
+	/* Adjust OCP */
+	if (mp2949a_imvp8_reg_write(0x0, MP2949A_REG_MFR_OCP_SET_LEVEL, 0x1918))
+		return -1;
+
+	/* Adjust per phase OCP */
+	if (mp2949a_imvp8_reg_write(0x0, MP2949A_REG_OC_LIMIT_ICC_MAX, 0x9B1C))
+		return -1;
+
+	/* Set Rail A reference fast slew rate */
+	if (mp2949a_imvp8_reg_write(0x0, MP2949A_REG_MFR_TRANS_FAST, 0x0AC5))
+		return -1;
+
+	/* Adjust CS gain for rail 2 */
+	if (mp2949a_imvp8_reg_write(0x1, MP2949A_REG_IOUT_CAL_GAIN, 0x8E29))
+		return -1;
+
+	/* TODO: Store register to memory
+	 * if (mp2949a_imvp8_reg_write(0x3, MP2949A_REG_STORE_USER_ALL, ))
+	 *	return -1;
+	 */
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(mp2949a_init, board_mp2949a_imvp8_init,
+			NULL, "MP2949A IMVP8 init");
