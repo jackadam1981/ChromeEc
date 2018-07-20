@@ -62,6 +62,29 @@
       "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48da852a_9cfd75db",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T23:41:46Z",
+      "side": 1,
+      "message": "in this case, we can just import stats_manager, and use \nstats_manager.StatsManager\nstats_manager.STATS_PREFIX\n\nYou are *encouraged* to only import packages and modules ;)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
