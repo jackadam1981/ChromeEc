@@ -22,6 +22,30 @@
       "revId": "635d2c19661f0d29028f12bdcd3e468824d5de18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9381d5c6_237d62ae",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-20T15:27:11Z",
+      "side": 1,
+      "message": "I made the defines be 1, 2, and 3 so that they track the value of LPC Reset Enable (LPCRSTEN). That field needs to be shifted left by 1 bit.",
+      "parentUuid": "bc64e677_1f0d0afb",
+      "range": {
+        "startLine": 489,
+        "startChar": 13,
+        "endLine": 489,
+        "endChar": 40
+      },
+      "revId": "635d2c19661f0d29028f12bdcd3e468824d5de18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
