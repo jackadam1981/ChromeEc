@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86219f8b_29f1985d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-20T08:00:54Z",
+      "side": 1,
+      "message": "Not sure what e is for without looking at strtoi.  I know command_keyboard_press used these names, but can we write something more descriptive?",
+      "range": {
+        "startLine": 938,
+        "startChar": 7,
+        "endLine": 938,
+        "endChar": 10
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23cb86b_802b7e81",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-20T08:00:54Z",
+      "side": 1,
+      "message": "It\u0027s not really obvious what \"p\" is for here.  I know command_keyboard_press used these names, but can we write something more descriptive?",
+      "range": {
+        "startLine": 948,
+        "startChar": 2,
+        "endLine": 948,
+        "endChar": 3
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9142df5a_a0e1ad48",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-20T08:00:54Z",
+      "side": 1,
+      "message": "This would seem to imply that we can run kbatboot with just two arguments (col and row).\n\nIf that\u0027s not the case, I think the correct notation would be:\n\n  [col row \u003c0 | 1\u003e]",
+      "range": {
+        "startLine": 962,
+        "startChar": 13,
+        "endLine": 962,
+        "endChar": 20
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1a3936_28e92274",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4699,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-20T08:00:54Z",
+      "side": 1,
+      "message": "This is a pretty cool graphical representation, but it makes it kinda hard to figure out which individual keys are pressed.\n\nWhat if we just show a list of the COL,ROW pairs?",
+      "range": {
+        "startLine": 4699,
+        "startChar": 0,
+        "endLine": 4699,
+        "endChar": 39
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
