@@ -313,6 +313,29 @@
       "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65dae6ba_7654bf2d",
+        "filename": "driver/tcpm/mt6370.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-20T09:32:30Z",
+      "side": 1,
+      "message": "Should be 0x9C. 0x4E \u003c\u003c 1",
+      "range": {
+        "startLine": 47,
+        "startChar": 33,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "8e1178dd89fcd555d8cea22866cb9b00b168b496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
