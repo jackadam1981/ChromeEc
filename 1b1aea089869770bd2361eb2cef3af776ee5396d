@@ -46,6 +46,30 @@
       "revId": "1b1aea089869770bd2361eb2cef3af776ee5396d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b895a8_db68bfb4",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-20T02:32:26Z",
+      "side": 1,
+      "message": "0x6 (11b) is correct (reset is disabled) for DX version.\nBecause FW will change this register from the default to 0x6 while initialization:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/it83xx/gpio.c#588\nSo it will keep the setting of disabling reset if we don\u0027t change value here.",
+      "parentUuid": "73dcf309_f0579504",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 53
+      },
+      "revId": "1b1aea089869770bd2361eb2cef3af776ee5396d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
