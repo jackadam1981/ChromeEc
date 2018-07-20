@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d71141b_1960ff33",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-07-20T11:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86219f8b_29f1985d",
+      "range": {
+        "startLine": 938,
+        "startChar": 7,
+        "endLine": 938,
+        "endChar": 10
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a23cb86b_802b7e81",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d505ed8e_8634fa2d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-07-20T11:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a23cb86b_802b7e81",
+      "range": {
+        "startLine": 948,
+        "startChar": 2,
+        "endLine": 948,
+        "endChar": 3
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "913f36b2_34bffc9d",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-07-20T11:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9142df5a_a0e1ad48",
+      "range": {
+        "startLine": 962,
+        "startChar": 13,
+        "endLine": 962,
+        "endChar": 20
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a1a3936_28e92274",
         "filename": "util/ectool.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbeb662f_aa4c9c1e",
+        "filename": "util/ectool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4699,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-07-20T11:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a1a3936_28e92274",
+      "range": {
+        "startLine": 4699,
+        "startChar": 0,
+        "endLine": 4699,
+        "endChar": 39
+      },
+      "revId": "4844c12ed0e16c65160a0b5e7b27cb638ea8605a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
