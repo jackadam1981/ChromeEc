@@ -22,6 +22,30 @@
       "revId": "18946e9cfa0344da4689306adafab718dd39da18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13325666_0493ac91",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-07-20T08:35:04Z",
+      "side": 1,
+      "message": "Yes it does.\nPlease assign following rpm settings for Akali.\n\n/* Akali */\nconst struct fan_rpm fan_rpm_3 \u003d {\n\t.rpm_min \u003d 2700,\n\t.rpm_start \u003d 2700,\n\t.rpm_max \u003d 5500,\n};",
+      "parentUuid": "ee30251d_90a9933c",
+      "range": {
+        "startLine": 185,
+        "startChar": 14,
+        "endLine": 185,
+        "endChar": 57
+      },
+      "revId": "18946e9cfa0344da4689306adafab718dd39da18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
