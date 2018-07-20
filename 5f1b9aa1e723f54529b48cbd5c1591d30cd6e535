@@ -34,6 +34,24 @@
       "revId": "5f1b9aa1e723f54529b48cbd5c1591d30cd6e535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab3999f2_43d0f984",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-07-20T08:09:50Z",
+      "side": 1,
+      "message": "yes, however, this version doesn\u0027t work on my meowth.  So I have to revert it first, before we are more clear about the value range.\n\nI guess, for Linux, pressure is more important, but for ChromeOS, width / height is more important...",
+      "parentUuid": "fa81a4a0_f5dcf069",
+      "revId": "5f1b9aa1e723f54529b48cbd5c1591d30cd6e535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
