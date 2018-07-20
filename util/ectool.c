@@ -1261,12 +1261,11 @@ int cmd_fp_info(int argc, char *argv[])
 	printf("Fingerprint sensor: vendor %x product %x model %x version %x\n",
 		r.vendor_id, r.product_id, r.model_id, r.version);
 	printf("Image: size %dx%d %d bpp\n", r.width, r.height, r.bpp);
-	printf("Error flags: %s%s%s%s\nDead pixels: %u\n",
+	printf("Error flags: %s%s%s%s\n",
 	       r.errors & FP_ERROR_NO_IRQ ? "NO_IRQ " : "",
 	       r.errors & FP_ERROR_SPI_COMM ? "SPI_COMM " : "",
 	       r.errors & FP_ERROR_BAD_HWID ? "BAD_HWID " : "",
-	       r.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "",
-	       FP_ERROR_DEAD_PIXELS(r.errors));
+	       r.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "");
 	if (cmdver == 1) {
 		printf("Templates: size %d count %d/%d dirty bitmap %x\n",
 		       r.template_size, r.template_valid, r.template_max,
