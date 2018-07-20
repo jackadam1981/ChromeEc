@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25a22d76_b7c12274",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T00:06:41Z",
+      "side": 1,
+      "message": "I think out of all variants, only Sona uses this pin. Is there a way to do this for everything but Sona or no?",
+      "range": {
+        "startLine": 126,
+        "startChar": 58,
+        "endLine": 126,
+        "endChar": 71
+      },
+      "revId": "5a06333ab20f608bc9bd35afd92d47de56ffd5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "242e6001_5b9640f1",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T00:06:41Z",
+      "side": 1,
+      "message": "This is DVT only, should I add a todo?",
+      "range": {
+        "startLine": 127,
+        "startChar": 61,
+        "endLine": 127,
+        "endChar": 71
+      },
+      "revId": "5a06333ab20f608bc9bd35afd92d47de56ffd5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
