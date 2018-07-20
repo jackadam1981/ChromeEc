@@ -93,6 +93,30 @@
       "revId": "2c21d1478bb6b15283191b41dfb2d36490be6685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecca1524_3e050727",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-07-20T01:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c7ca4c_c327ea50",
+      "range": {
+        "startLine": 1159,
+        "startChar": 2,
+        "endLine": 1159,
+        "endChar": 47
+      },
+      "revId": "2c21d1478bb6b15283191b41dfb2d36490be6685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
