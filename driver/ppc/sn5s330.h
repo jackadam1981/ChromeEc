@@ -147,4 +147,6 @@ extern const struct ppc_drv sn5s330_drv;
  */
 void sn5s330_interrupt(int port);
 
+void sn5s330_lowest_power(int port);
+
 #endif /* defined(__CROS_EC_SN5S330_H) */
