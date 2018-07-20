@@ -46,6 +46,30 @@
       "revId": "5237e255fdc40d9683f696e3481878ee95bc0613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58650708_d83c3c85",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-20T20:57:53Z",
+      "side": 1,
+      "message": "Hmm, it almost seems like we should make an new event like PD_EVENT_REQUESTDP_DISCONNECT and the event loop handles it. It seems weird to tie \"dual role\" and \"DP exit\" together.",
+      "parentUuid": "67ac1a8d_88432688",
+      "range": {
+        "startLine": 1956,
+        "startChar": 2,
+        "endLine": 1956,
+        "endChar": 21
+      },
+      "revId": "5237e255fdc40d9683f696e3481878ee95bc0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
