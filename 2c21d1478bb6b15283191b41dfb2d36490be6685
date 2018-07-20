@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39e11654_2b8aac3a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-20T00:19:37Z",
+      "side": 1,
+      "message": "1) am i right that we don\u0027t care about micro versions when comparing versions. wouldn\u0027t that prevent updating from x.y.z.0 to x.y.z.1? since it compares only up to minor, and they are equal?\n2) just in case: are the upper 8 bits of epoch (where micro version is in packet structure) zeroed out at this point? if not we will end up with images with non-zero microversions being newer than anything with 0 microversion.",
+      "range": {
+        "startLine": 1059,
+        "startChar": 7,
+        "endLine": 1059,
+        "endChar": 21
+      },
+      "revId": "2c21d1478bb6b15283191b41dfb2d36490be6685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d69b195f_6b454176",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-20T00:19:37Z",
+      "side": 1,
+      "message": "even if we don\u0027t support printing micro version for RO, we probably should clean the upper 8 bits of epoch just in case for it.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 2,
+        "endLine": 1159,
+        "endChar": 47
+      },
+      "revId": "2c21d1478bb6b15283191b41dfb2d36490be6685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
