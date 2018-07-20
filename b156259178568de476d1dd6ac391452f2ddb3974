@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69f5b4c6_1ab2f74e",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T20:06:53Z",
+      "side": 1,
+      "message": "why get rid of _hide_domains?",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "b156259178568de476d1dd6ac391452f2ddb3974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14783ffb_1f581816",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T20:06:53Z",
+      "side": 1,
+      "message": "method name doesn\u0027t reflect the smid part. make_unique_fname or something like that?",
+      "range": {
+        "startLine": 165,
+        "startChar": 6,
+        "endLine": 165,
+        "endChar": 19
+      },
+      "revId": "b156259178568de476d1dd6ac391452f2ddb3974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811729e7_f471b5cf",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T20:06:53Z",
+      "side": 1,
+      "message": "and add smid?",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 22
+      },
+      "revId": "b156259178568de476d1dd6ac391452f2ddb3974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "810645cc_4cae09cd",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T20:06:53Z",
+      "side": 1,
+      "message": "smid_file1",
+      "range": {
+        "startLine": 172,
+        "startChar": 55,
+        "endLine": 172,
+        "endChar": 60
+      },
+      "revId": "b156259178568de476d1dd6ac391452f2ddb3974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0d9c67_c0c499ff",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T20:06:53Z",
+      "side": 1,
+      "message": "smid_",
+      "range": {
+        "startLine": 179,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 16
+      },
+      "revId": "b156259178568de476d1dd6ac391452f2ddb3974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4903c9e1_f713e5b1",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T20:06:53Z",
+      "side": 1,
+      "message": "old_fname",
+      "range": {
+        "startLine": 189,
+        "startChar": 6,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "b156259178568de476d1dd6ac391452f2ddb3974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ef2db4_c200aca6",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T20:06:53Z",
+      "side": 1,
+      "message": "In very very unfortunate cases... between rotate the fname and writing the file, some other instance can write a file with the same name (race condition)\n\nIn the past, what I\u0027ve done is that the \"directory\" is unique, usually comes with a timestamp (with 6 decimal points), so the summary and raw data in this directory is safe.",
+      "range": {
+        "startLine": 211,
+        "startChar": 8,
+        "endLine": 211,
+        "endChar": 13
+      },
+      "revId": "b156259178568de476d1dd6ac391452f2ddb3974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
