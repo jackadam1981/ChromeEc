@@ -118,6 +118,30 @@
       "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09e2c37_85002464",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-07-20T02:42:30Z",
+      "side": 1,
+      "message": "/* Akali Local */\nconst static struct ec_thermal_config thermal_d0 \u003d {\n\t.temp_host \u003d {\n\t\t[EC_TEMP_THRESH_WARN] \u003d C_TO_K(79),\n\t\t[EC_TEMP_THRESH_HIGH] \u003d 0,\n\t\t[EC_TEMP_THRESH_HALT] \u003d C_TO_K(81),\n\t},\n\t.temp_host_release \u003d {\n\t\t[EC_TEMP_THRESH_WARN] \u003d C_TO_K(80),\n\t\t[EC_TEMP_THRESH_HIGH] \u003d 0,\n\t\t[EC_TEMP_THRESH_HALT] \u003d C_TO_K(82),\n\t},\n\t.temp_fan_off \u003d C_TO_K(35),\n\t.temp_fan_max \u003d C_TO_K(70),\n};\n\n/* Akali Remote 1 */\nconst static struct ec_thermal_config thermal_d1 \u003d {\n\t.temp_host \u003d {\n\t\t[EC_TEMP_THRESH_WARN] \u003d C_TO_K(59),\n\t\t[EC_TEMP_THRESH_HIGH] \u003d 0,\n\t\t[EC_TEMP_THRESH_HALT] \u003d 0,\n\t},\n\t.temp_host_release \u003d {\n\t\t[EC_TEMP_THRESH_WARN] \u003d C_TO_K(60),\n\t\t[EC_TEMP_THRESH_HIGH] \u003d 0,\n\t\t[EC_TEMP_THRESH_HALT] \u003d 0,\n\t},\n\t.temp_fan_off \u003d 0,\n\t.temp_fan_max \u003d 0,\n};\n\n/* Akali Remote 2 */\nconst static struct ec_thermal_config thermal_d2 \u003d {\n\t.temp_host \u003d {\n\t\t[EC_TEMP_THRESH_WARN] \u003d C_TO_K(59),\n\t\t[EC_TEMP_THRESH_HIGH] \u003d 0,\n\t\t[EC_TEMP_THRESH_HALT] \u003d 0,\n\t},\n\t.temp_host_release \u003d {\n\t\t[EC_TEMP_THRESH_WARN] \u003d C_TO_K(60),\n\t\t[EC_TEMP_THRESH_HIGH] \u003d 0,\n\t\t[EC_TEMP_THRESH_HALT] \u003d 0,\n\t},\n\t.temp_fan_off \u003d 0,\n\t.temp_fan_max \u003d 0,\n};",
+      "parentUuid": "53658d98_59d8e3fd",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
