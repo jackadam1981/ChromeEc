@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc64e677_1f0d0afb",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-20T14:47:35Z",
+      "side": 1,
+      "message": "aren\u0027t the defines already shifted up to bit[2-1]? We don\u0027t need this right?",
+      "range": {
+        "startLine": 489,
+        "startChar": 13,
+        "endLine": 489,
+        "endChar": 40
+      },
+      "revId": "635d2c19661f0d29028f12bdcd3e468824d5de18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
