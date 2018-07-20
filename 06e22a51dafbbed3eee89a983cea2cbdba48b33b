@@ -94,6 +94,30 @@
       "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53658d98_59d8e3fd",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-20T00:25:24Z",
+      "side": 1,
+      "message": "I\u0027ve created https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1144523. Can you provide me struct ec_thermal_config for the local sensor of Akali?",
+      "parentUuid": "2f074aa7_4f0d4fd3",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "06e22a51dafbbed3eee89a983cea2cbdba48b33b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
