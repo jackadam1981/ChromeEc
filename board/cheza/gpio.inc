@@ -33,7 +33,8 @@ GPIO_INT(SHI_CS_L,          PIN(5, 3), GPIO_INT_FALLING | GPIO_PULL_DOWN, shi_cs
 
 GPIO(EC_SELF_RST,           PIN(E, 0), GPIO_OUT_LOW)   /* Self-reset EC */
 GPIO(EC_RST_ODL,            PIN(0, 2), GPIO_INPUT)     /* Wake source: EC reset */
-GPIO(PM845_RESIN_L,         PIN(3, 2), GPIO_ODR_HIGH)  /* PMIC reset trigger */
+GPIO(OLD_PM845_RESIN_L,     PIN(3, 2), GPIO_ODR_HIGH)  /* Original PMIC reset trigger */
+GPIO(PM845_RESIN_L,         PIN(3, 5), GPIO_ODR_HIGH)  /* Rework of wiring TP13 to PMIC reset trigger */
 GPIO(WARM_RESET_L,          PIN(F, 4), GPIO_ODR_HIGH)  /* AP warm reset */
 /* PS_HOLD is used for PMIC and AP negotiation. Don't change its state. */
 GPIO(PS_HOLD,               PIN(D, 4), GPIO_INPUT)     /* Indicate when AP triggers reset/shutdown */
