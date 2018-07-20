@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92ae9289_5bac4a42",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "add Return:",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 8
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df34c30b_30bd1fd8",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 182,
+        "startChar": 4,
+        "endLine": 182,
+        "endChar": 8
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64779a20_454a37a0",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "returns",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 8
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8166941c_0feb4dde",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "fnames? lol",
+      "range": {
+        "startLine": 214,
+        "startChar": 4,
+        "endLine": 214,
+        "endChar": 9
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df23ff64_94886fb1",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "A few things that I think are worth testing for SaveRawData():\n1. returns exactly \"A_mW.txt\" and \"B_mW.txt\"\n2. prints out exactly 2 files\n3. these 2 files has the expected content",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fa51e87_83f2b0f6",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "what if there are 3 strings in files?",
+      "range": {
+        "startLine": 119,
+        "startChar": 17,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6ab080_906c4d26",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "In addition to this, I would still check if file name is in os.listdir(os.path.join(self.tempdir, outdir)). \n\nBecause you want to test that:\n1. return value is correct\n2. saved file is also correct",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 48
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c367863a_84ba5e91",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "Pls test both:\n1. SaveSummary returns the right value\n2. SaveSummary prints the right file",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 54
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551da16d_70b3aa49",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 58
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4fbee7_b8b14142",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T17:52:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 58
+      },
+      "revId": "94a09b318113698474313371b15affce8eb03f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
