@@ -22,6 +22,30 @@
       "revId": "5237e255fdc40d9683f696e3481878ee95bc0613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ac1a8d_88432688",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-20T20:06:42Z",
+      "side": 1,
+      "message": "That\u0027s where it was before. We don\u0027t want to run this in a hook context.",
+      "parentUuid": "72aeaa56_52b843be",
+      "range": {
+        "startLine": 1956,
+        "startChar": 2,
+        "endLine": 1956,
+        "endChar": 21
+      },
+      "revId": "5237e255fdc40d9683f696e3481878ee95bc0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
