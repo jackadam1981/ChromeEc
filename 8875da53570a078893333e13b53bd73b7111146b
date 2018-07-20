@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "782d9cc6_c174ef21",
+        "filename": "common/keyboard_info.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-20T18:32:23Z",
+      "side": 1,
+      "message": "Is this the right error?  Seems like it was a valid param in the request, but some other error occurred.  The only way it can currently fail is if KEYBOARD_COLS isn\u0027t big enough, which (1) seems unlikely and (2) isn\u0027t the requestor\u0027s fault.",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "8875da53570a078893333e13b53bd73b7111146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ec2000_0e0830ff",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-20T18:32:23Z",
+      "side": 1,
+      "message": "Please use at least 15 bytes, to cover the case where we have an extended keyboard matrix.  16 would be safer.",
+      "range": {
+        "startLine": 2731,
+        "startChar": 22,
+        "endLine": 2731,
+        "endChar": 24
+      },
+      "revId": "8875da53570a078893333e13b53bd73b7111146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
