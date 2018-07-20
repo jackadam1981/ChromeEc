@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6ad1c90d_a2d16ea2",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T22:37:58Z",
+      "side": 1,
+      "message": "So I looked around a bit and I see gpio_set_alternate_function by board version, but since this is unibuild, is there support for model/variant?",
+      "parentUuid": "850cb6d5_d2c3a524",
+      "range": {
+        "startLine": 126,
+        "startChar": 58,
+        "endLine": 126,
+        "endChar": 71
+      },
+      "revId": "5a06333ab20f608bc9bd35afd92d47de56ffd5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "242e6001_5b9640f1",
         "filename": "board/nami/gpio.inc",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Why don\u0027t we do it now (because it doesn\u0027t malfunction on DVT, right)?",
       "parentUuid": "242e6001_5b9640f1",
+      "range": {
+        "startLine": 127,
+        "startChar": 61,
+        "endLine": 127,
+        "endChar": 71
+      },
+      "revId": "5a06333ab20f608bc9bd35afd92d47de56ffd5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6222e45_9a206232",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-20T22:37:58Z",
+      "side": 1,
+      "message": "At least in EVT devices GPIO57 is connected to something. Would this break it? I actually don\u0027t know if it will break or not. How do I verify?",
+      "parentUuid": "ca202edc_15b94ba9",
       "range": {
         "startLine": 127,
         "startChar": 61,
