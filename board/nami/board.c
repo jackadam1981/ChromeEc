@@ -308,6 +308,8 @@ uint16_t tcpc_get_alert_status(void)
  * F75303_Remote1 is near CPU, and F75303_Remote2 is near 5V power IC.
  */
 const struct temp_sensor_t temp_sensors[TEMP_SENSOR_COUNT] = {
+	{"F75303_Local", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,
+		F75303_IDX_LOCAL, 4},
 	{"F75303_Remote1", TEMP_SENSOR_TYPE_CPU, f75303_get_val,
 		F75303_IDX_REMOTE1, 4},
 	{"F75303_Remote2", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,
@@ -790,19 +792,19 @@ static void setup_fans(void)
 	switch (oem) {
 	case PROJECT_SONA:
 		fans[FAN_CH_0].rpm = &fan_rpm_1;
-		thermal_params[0] = thermal_b1;
-		thermal_params[1] = thermal_b2;
+		thermal_params[TEMP_SENSOR_REMOTE1] = thermal_b1;
+		thermal_params[TEMP_SENSOR_REMOTE2] = thermal_b2;
 		break;
 	case PROJECT_PANTHEON:
 		fans[FAN_CH_0].rpm = &fan_rpm_2;
-		thermal_params[0] = thermal_c1;
-		thermal_params[1] = thermal_c2;
+		thermal_params[TEMP_SENSOR_REMOTE1] = thermal_c1;
+		thermal_params[TEMP_SENSOR_REMOTE2] = thermal_c2;
 		break;
-	default:
 	case PROJECT_NAMI:
 	case PROJECT_VAYNE:
-		thermal_params[0] = thermal_a;
-		thermal_params[1] = thermal_a;
+	default:
+		thermal_params[TEMP_SENSOR_REMOTE1] = thermal_a;
+		thermal_params[TEMP_SENSOR_REMOTE2] = thermal_a;
 	}
 }
 
