@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d80f86c_4d5b9da8",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-21T02:10:07Z",
+      "side": 1,
+      "message": "You already reset \"value\", this line no longer works. Bring this to above seting NAN.",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 43
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75be96e7_7c434e45",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-21T02:10:07Z",
+      "side": 1,
+      "message": "finally:?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2694ecb8_fd7b7f46",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-21T02:10:07Z",
+      "side": 1,
+      "message": "Does this ignore the NANs in calculation?",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09aff883_9d9a7cbd",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-21T02:10:07Z",
+      "side": 1,
+      "message": "As said in previous CL, I prefer import stats_manager then use\nstats_manager.StatsManager\nstats_manager.StatsManagerError\nstats_manager.STATS_PREFIX",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
