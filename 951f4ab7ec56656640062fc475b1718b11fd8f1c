@@ -91,6 +91,75 @@
       "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f32a656_a0f6c392",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-21T02:25:15Z",
+      "side": 1,
+      "message": "this could be combined into testGetSummary. Or at least you can reuse _populate_dummy_stats.\n\nI recommend trying to reuse _populate_dummy_stats as much as possible, and customize by adding more samples on top of it. It makes the entire file cleaner.",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f02a3e83_ff564364",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-21T02:25:15Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f575d8c_533c72c5",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-21T02:25:15Z",
+      "side": 1,
+      "message": "nit: you can also try assertRaisesRegex. assertRaises might have a msg arg as well.",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 26
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
