@@ -67,6 +67,12 @@
 /* Wait for polling if the system can boot AP */
 #define CAN_BOOT_AP_CHECK_WAIT		(100 * MSEC)
 
+/* The timeout of the check if the switchcap outputs good voltage */
+#define SWITCHCAP_PG_CHECK_TIMEOUT	(50 * MSEC)
+
+/* Wait for polling if the switchcap outputs good voltage */
+#define SWITCHCAP_PG_CHECK_WAIT		(5 * MSEC)
+
 /* Delay between power-on the system and power-on the PMIC */
 #define SYSTEM_POWER_ON_DELAY		(10 * MSEC)
 
@@ -212,6 +218,34 @@ DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, powerbtn_sdm845_changed,
 	     HOOK_PRIO_DEFAULT);
 
 /**
+ * Wait the switchcap GPIO0 PVC_PG signal asserted.
+ *
+ * When the output voltage is over the threshold PVC_PG_ADJ,
+ * the PVC_PG is asserted.
+ *
+ * PVG_PG_ADJ is configured to 3.0V.
+ * GPIO0 is configured as PVC_PG.
+ */
+static void wait_switchcap_power_good(void)
+{
+	timestamp_t poll_deadline;
+
+	poll_deadline = get_time();
+	poll_deadline.val += SWITCHCAP_PG_CHECK_TIMEOUT;
+	while (!gpio_get_level(GPIO_DA9313_GPIO0) &&
+	       get_time().val < poll_deadline.val) {
+		usleep(SWITCHCAP_PG_CHECK_WAIT);
+	}
+
+	/*
+	 * Check the timeout case. Just show a message. More check later
+	 * will switch the state back to S5.
+	 */
+	if (!gpio_get_level(GPIO_DA9313_GPIO0))
+		CPRINTS("SWITCHCAP NO POWER GOOD!");
+}
+
+/**
  * Set the state of the system power signals.
  *
  * The system power signals are the enable pins of SwitchCap and VBOB.
@@ -223,6 +257,7 @@ static void set_system_power(int enable)
 {
 	CPRINTS("set_system_power(%d)", enable);
 	gpio_set_level(GPIO_SWITCHCAP_ON_L, enable);
+	wait_switchcap_power_good();
 	gpio_set_level(GPIO_VBOB_EN, enable);
 }
 
