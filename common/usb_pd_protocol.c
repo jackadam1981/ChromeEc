@@ -2235,6 +2235,9 @@ void pd_task(void *u)
 	int snk_cap_count = 0;
 	int evt;
 
+	while (1)
+		task_wait_event(-1);
+
 #ifdef CONFIG_COMMON_RUNTIME
 	pd_init_tasks();
 #endif
