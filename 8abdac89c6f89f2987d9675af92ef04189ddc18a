@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e08ffda_84b65abe",
+        "filename": "board/eve/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-07-23T15:21:05Z",
+      "side": 1,
+      "message": "We encourage if instead of #ifdef. i.e.,\n\n if (IS_ENABLED(CONFIG_KEYBOARD_DYNAMIC_MAPPING)) {\n   ...\n }",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "8abdac89c6f89f2987d9675af92ef04189ddc18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f415f35a_7880371b",
+        "filename": "board/eve/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-07-23T15:21:05Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_KEYBOARD_MAPPING)) {\n   if (!chipset_in_state(CHIPSET_STATE_SUSPEND))\n     keyboard_mapping_type_init();\n }",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 6
+      },
+      "revId": "8abdac89c6f89f2987d9675af92ef04189ddc18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416b4cb8_3b11df9f",
+        "filename": "board/eve/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-07-23T15:21:05Z",
+      "side": 1,
+      "message": "can we call this CONFIG_KEYBOARD_DYNAMIC_MAPPING, to make it more clear?",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "8abdac89c6f89f2987d9675af92ef04189ddc18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee4fd5c_09ecd38c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-07-23T15:21:05Z",
+      "side": 1,
+      "message": "#define EC_MEMMAP_KB_MAPPING   0xa6 /* Keyboard mapping type */",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "8abdac89c6f89f2987d9675af92ef04189ddc18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3b8142_eb1b5773",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-07-23T15:21:05Z",
+      "side": 1,
+      "message": "to notify and choose",
+      "range": {
+        "startLine": 331,
+        "startChar": 12,
+        "endLine": 331,
+        "endChar": 20
+      },
+      "revId": "8abdac89c6f89f2987d9675af92ef04189ddc18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
