@@ -22,6 +22,30 @@
       "revId": "b835dcb4bb543d37eb36594eca592466b58291cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703ecbe5_ffdddc5d",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-07-23T19:29:33Z",
+      "side": 1,
+      "message": "okay, I will put it back",
+      "parentUuid": "2c87a861_dfdfe7c6",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 3
+      },
+      "revId": "b835dcb4bb543d37eb36594eca592466b58291cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
