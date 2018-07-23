@@ -92,6 +92,11 @@ int ps8xxx_tcpc_get_fw_version(int port, int *version)
 	return tcpc_read(port, FW_VER_REG, version);
 }
 
+int ps8xxx_tcpc_sleep_mode(int port)
+{
+	return tcpc_write(port, 0x23, 0xff);
+}
+
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 /*
  * Read Vbus level directly instead of using the cached version because some

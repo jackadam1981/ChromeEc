@@ -113,6 +113,37 @@ static int it5205_get_mux(int i2c_addr, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
+/* Enable mux power down mode */
+int it5205_power_down(int i2c_addr)
+{
+	int ret = EC_SUCCESS;
+
+	/* All switches High-Z */
+	ret = it5205_write(i2c_addr, IT5205_REG_MUXCR, 0);
+	/* bit[0]: mux power down */
+	ret |= it5205_write(i2c_addr, IT5205_REG_MUXPDR, IT5205_MUX_POWER_DOWN);
+
+	return ret;
+}
+
+static int command_it5205_power_down(int argc, char **argv)
+{
+	int addr;
+	char *e;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	addr = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	return it5205_power_down(addr);
+}
+DECLARE_CONSOLE_COMMAND(it5205pd, command_it5205_power_down,
+			"[addr]",
+			"it5205 power down");
+
 const struct usb_mux_driver it5205_usb_mux_driver = {
 	.init = it5205_init,
 	.set = it5205_set_mux,
