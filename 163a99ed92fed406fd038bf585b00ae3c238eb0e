@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f361a80d_33e733d0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T19:20:20Z",
+      "side": 1,
+      "message": "If we move the handle_device_access method (which makes pd_device_in_low_power return false) before clearing the tasks_waiting_on_reset, then we can still get into the scenario you described\n\n1. Task X checks low power mode -\u003e true\n2. PD Task clears low power mode\n3. PD Task clears waiting tasks\n4. Task X calls pd_wait_for_wakeup (and adds itself to waiting list)\n\n\nIn both cases, Task X misses this round of wake up and has to wait for the next round. The downside of both of these scenarios is that the TCPC will get reset twice pretty quickly; I am tempted to add code to prevent the double reset case, but I am concerned it will add unnecessary complexity for something that doesn\u0027t happen often and doesn\u0027t really have negative consequences (other than being wrong from a purity standpoint). Thoughts?",
+      "parentUuid": "2b64b907_db480a82",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 28
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f24a14c_18a0e439",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 2
