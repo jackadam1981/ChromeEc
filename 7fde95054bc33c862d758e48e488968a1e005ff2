@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97839dd7_58637e63",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T15:25:55Z",
+      "side": 1,
+      "message": "the schematics specify an external pull-up (R229); we shouldn\u0027t need it here",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "7fde95054bc33c862d758e48e488968a1e005ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
