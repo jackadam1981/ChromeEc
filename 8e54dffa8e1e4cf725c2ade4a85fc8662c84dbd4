@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4c5b256_32a3a896",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T14:23:23Z",
+      "side": 1,
+      "message": "while you are cleaning up, can you move this section down to where it right above the first time the use_ramp_current variable is used.",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 6
+      },
+      "revId": "8e54dffa8e1e4cf725c2ade4a85fc8662c84dbd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529fbf1d_c25e3170",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T14:23:23Z",
+      "side": 1,
+      "message": "This only effect of this change I can see is to set current_lim to \u0027available_charge[sup][port].current\u0027 instead of the value of \u0027chg_ramp_get_current_limit()\u0027. Does that have any affect that you know of?",
+      "range": {
+        "startLine": 358,
+        "startChar": 25,
+        "endLine": 358,
+        "endChar": 44
+      },
+      "revId": "8e54dffa8e1e4cf725c2ade4a85fc8662c84dbd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
