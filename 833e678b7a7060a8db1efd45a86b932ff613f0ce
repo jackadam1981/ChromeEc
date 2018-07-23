@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3abf418_1dfa99b8",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T15:27:56Z",
+      "side": 1,
+      "message": "sorry I didn\u0027t ask earlier: why does this need an internal pull up? It appears that there is an external pull up (R229)",
+      "range": {
+        "startLine": 17,
+        "startChar": 54,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "833e678b7a7060a8db1efd45a86b932ff613f0ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
