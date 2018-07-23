@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab88d587_4c702d77",
+        "filename": "include/chipset.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-07-23T18:51:34Z",
+      "side": 1,
+      "message": "drop unrelated change",
+      "revId": "3caf659c9484bedab275606794337a0dc4c7d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4231ef63_6ee2b0d6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4832,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-07-23T18:51:34Z",
+      "side": 1,
+      "message": "I worry about alignment with this. Presumable most compilers will use 8 bytes for each record, but you have not specified this. Consider either adding a dummy uint16_t or using __packed",
+      "range": {
+        "startLine": 4832,
+        "startChar": 3,
+        "endLine": 4832,
+        "endChar": 18
+      },
+      "revId": "3caf659c9484bedab275606794337a0dc4c7d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
