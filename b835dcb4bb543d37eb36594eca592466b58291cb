@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c87a861_dfdfe7c6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T19:24:16Z",
+      "side": 1,
+      "message": "I think using the variable use_ramp_current make the code easier to read. I just wanted the declaration and the use to be next to each other (again to make it easier to read). The compiler should optimize out and dead code paths for us either way.",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 3
+      },
+      "revId": "b835dcb4bb543d37eb36594eca592466b58291cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
