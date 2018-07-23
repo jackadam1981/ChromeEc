@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5d6b89b_4148bf1d",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-23T19:31:16Z",
+      "side": 1,
+      "message": "maybe list this one right under _accept_nan for easy understanding?",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "02f24c7dc13b557a5a7bd400de14de712e08f552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696503bf_8176fd07",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-23T19:31:16Z",
+      "side": 1,
+      "message": "this one is not in \"Attributes\"",
+      "range": {
+        "startLine": 85,
+        "startChar": 9,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "02f24c7dc13b557a5a7bd400de14de712e08f552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
