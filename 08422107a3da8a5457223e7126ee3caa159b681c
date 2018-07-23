@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9996026_6a8c7434",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-23T16:21:43Z",
+      "side": 1,
+      "message": "After C:1146903, you can just stick this in f75303_get_val.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "08422107a3da8a5457223e7126ee3caa159b681c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
