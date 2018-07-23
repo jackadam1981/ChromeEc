@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ab9a9f8_04dab132",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-07-23T22:10:27Z",
+      "side": 1,
+      "message": "Does this take into account the new POWER_GOOD signal?",
+      "range": {
+        "startLine": 619,
+        "startChar": 5,
+        "endLine": 619,
+        "endChar": 27
+      },
+      "revId": "6cd28e0b74cb63eceb0741f13309d0188077ba9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
