@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "470d785b_e28b9f70",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T19:42:55Z",
+      "side": 1,
+      "message": "I added the comment on line 473 were the \u0027task_set_event(..RESET)\u0027 call is",
+      "parentUuid": "024a833f_c443efc5",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 28
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f24a14c_18a0e439",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 2
