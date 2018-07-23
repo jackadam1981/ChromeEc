@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6efecc3b_cd921825",
+        "filename": "common/keyboard_info.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-07-23T04:18:06Z",
+      "side": 1,
+      "message": "Done, found a better one.",
+      "parentUuid": "782d9cc6_c174ef21",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "8875da53570a078893333e13b53bd73b7111146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56ec2000_0e0830ff",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "8875da53570a078893333e13b53bd73b7111146b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf6ca1c_12883d29",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2018-07-23T04:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ec2000_0e0830ff",
+      "range": {
+        "startLine": 2731,
+        "startChar": 22,
+        "endLine": 2731,
+        "endChar": 24
+      },
+      "revId": "8875da53570a078893333e13b53bd73b7111146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
