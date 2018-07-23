@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dae15382_340f7398",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T18:13:33Z",
+      "side": 1,
+      "message": "In practice it means that the TCPC is in bad/undefined state, which may or may not adversely affect the TCPM operation.\n\nThe TCPC would not stay in low power mode since the I2C access wakes it up. At least some TCPCs take some time (order of milliseconds) to wake up from a low power state. Each TCPC driver (that needs it) has a wait loop in the tpcp_init method that waits for the TCPC to respond that it is done initializing after power on. This wait is one of the main things we want from the re initialization (and also setting the mask register correctly)",
+      "parentUuid": "b4428bc8_1d4c9c9d",
+      "range": {
+        "startLine": 440,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 41
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4b1edd4_b1225f6c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "21f0ec0b_a7792880",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T18:13:33Z",
+      "side": 1,
+      "message": "Since we are calling the handle_device_access() method it doesn\u0027t actually matter if we call this before or after clearing tasks_waiting_on_reset. We still do want to do this before we notify the waiting tasks below.\n\nIf we called pd_device_accessed() method instead; the call would have to be called after clearing the waiting tasks variable otherwise we would also ignore that call (line 383)\n\nEven though I am calling handle_device_access directly instead of pd_device_access, I thought it would be better to use the more constrained call sequence in case it was updated later.",
+      "parentUuid": "a4b1edd4_b1225f6c",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 28
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f24a14c_18a0e439",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f53bc93_a0d5a8e1",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T18:13:33Z",
+      "side": 1,
+      "message": "I think either way would probably be okay. I chose to wait afterwards since we engage the hardware LPM bit right before we actually send the I2CIDLE command, and we could theoretically get a single successful i2c transaction through in another task and we wouldn\u0027t have needed to wait.\n\nThis also allows us to be a little more liberal in our updating of the HW LPM state: the HW LPM state is on before we actually go into low power mode and off after we exit low power mode.\n\nLet me know if you feel strong that we should perform the check/wait before the initial attempt",
+      "parentUuid": "0f24a14c_18a0e439",
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "021bd88a_52987240",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T18:13:33Z",
+      "side": 1,
+      "message": "I moved it out into the c file",
+      "parentUuid": "30b19f42_584ebc7f",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
