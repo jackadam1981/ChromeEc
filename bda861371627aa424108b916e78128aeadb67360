@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceff27ed_3e483f01",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T15:41:38Z",
+      "side": 1,
+      "message": "nit: can you aligned the hex values (i.e. use one more tab)",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 21
+      },
+      "revId": "bda861371627aa424108b916e78128aeadb67360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29df88be_b3602e38",
+        "filename": "util/iteflash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-23T15:41:38Z",
+      "side": 1,
+      "message": "nit: please use lower_case variable names",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "bda861371627aa424108b916e78128aeadb67360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
