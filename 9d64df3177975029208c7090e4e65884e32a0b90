@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12232639_09c61854",
+        "filename": "include/chipset.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-23T21:31:26Z",
+      "side": 1,
+      "message": "This parameter guards against most of the code size increase for this feature.  The remaining increase is one instruction to load a small literal into an argument-passing register, per call to chipset_reset or chipset_force_shutdown (but not all of them).  An A/B test with the current compiler shows that glados is affected by 28 bytes.  We expect to gain at least 2 kB by improvements in codegen by switching to the coreboot sdk.\n\nTightest boards:\nzinger 1140 (no change)\nminimuffin 1148 (no change)\nglados 1912 -\u003e 1884 (28 bytes larger)",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
