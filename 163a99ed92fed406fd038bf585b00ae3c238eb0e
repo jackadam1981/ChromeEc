@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e03aa815_bb47f0f3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T18:29:25Z",
+      "side": 1,
+      "message": "Ah okay. Makes sense.",
+      "parentUuid": "dae15382_340f7398",
+      "range": {
+        "startLine": 440,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 41
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4b1edd4_b1225f6c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2b64b907_db480a82",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T18:29:25Z",
+      "side": 1,
+      "message": "Reason why I thought handle_device_access should be moved up before clearing the state of tasks_waiting_on_reset is to avoid the following race:\n\n1. PD task - Clears tasks_waiting_on_reset\n2. X task - Calls pd_device_in_low_power --\u003e true and so calls pd_wait_for_wakeup thus setting tasks_waiting_on_reset for task X\n3. PD task - Calls wake event for all waiting tasks in #1 which did not include task X.",
+      "parentUuid": "21f0ec0b_a7792880",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 28
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f24a14c_18a0e439",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 2
@@ -125,6 +173,24 @@
       "side": 1,
       "message": "I think either way would probably be okay. I chose to wait afterwards since we engage the hardware LPM bit right before we actually send the I2CIDLE command, and we could theoretically get a single successful i2c transaction through in another task and we wouldn\u0027t have needed to wait.\n\nThis also allows us to be a little more liberal in our updating of the HW LPM state: the HW LPM state is on before we actually go into low power mode and off after we exit low power mode.\n\nLet me know if you feel strong that we should perform the check/wait before the initial attempt",
       "parentUuid": "0f24a14c_18a0e439",
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e478ea6c_ff39cb9b",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T18:29:25Z",
+      "side": 1,
+      "message": "I think this is okay. I was just curious to understand the reason why you chose to do it this way.",
+      "parentUuid": "6f53bc93_a0d5a8e1",
       "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
