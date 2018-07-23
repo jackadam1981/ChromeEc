@@ -117,6 +117,30 @@
       "revId": "5c6413ca28dabccf77614b8cb3ed1e98121f0fa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463fca71_a76f5f3c",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-07-23T23:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e628fe_29808247",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "5c6413ca28dabccf77614b8cb3ed1e98121f0fa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
