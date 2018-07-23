@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4428bc8_1d4c9c9d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T17:08:15Z",
+      "side": 1,
+      "message": "What does this case mean in practice? Would the TCPC stay in low power mode?",
+      "range": {
+        "startLine": 440,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 41
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b1edd4_b1225f6c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T17:08:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be done before atomic_read_clear of tasks_waiting_on_reset?",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 28
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f24a14c_18a0e439",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T17:08:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we be checking for LPM state before trying the first transaction? Or is it done this way so that the wait_for_wakeup() happens only on TCPCs that require additional wake up time?",
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b19f42_584ebc7f",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T17:08:15Z",
+      "side": 1,
+      "message": "Now that we are doing more and more stuff in this function, does it still end up being inlined? Or should we be moving all these functions to a .c file?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
