@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80133063_55fae82d",
+        "filename": "board/nami/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T21:13:22Z",
+      "side": 0,
+      "message": "Can we just change the order of this instead of checking for DFP? That will make it easier for readers to understand that we are just looking at UFP state to decide the state of GPIO.",
+      "range": {
+        "startLine": 170,
+        "startChar": 36,
+        "endLine": 170,
+        "endChar": 42
+      },
+      "revId": "83fc351b086a560b21f538828d0eb9fc6d491780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
