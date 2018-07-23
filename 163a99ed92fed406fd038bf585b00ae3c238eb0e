@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "024a833f_c443efc5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-23T19:30:01Z",
+      "side": 1,
+      "message": "That is true. I was just thinking about the same thing i.e. if we need to make the pd_device_in_low_power and pd_wait_for_wakeup a single call so that there is no race. But as you mentioned it could end up adding unnecessary complexity.\n\nOkay lets push this in and we can revisit this again if the double reset is an issue. Can you please add a comment here indicating that there could be a double reset scenario here in case there is a race?",
+      "parentUuid": "f361a80d_33e733d0",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 448,
+        "endChar": 28
+      },
+      "revId": "163a99ed92fed406fd038bf585b00ae3c238eb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f24a14c_18a0e439",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 2
