@@ -22,6 +22,23 @@
       "revId": "6cd28e0b74cb63eceb0741f13309d0188077ba9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dd667fa_e0ef55f2",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-07-23T22:18:00Z",
+      "side": 1,
+      "message": "Do we need to handle the PMIC_FAULT_L signal as well? That may happen and I\u0027m not sure if POWER_GOOD will go high or not when the PMIC faults.",
+      "revId": "6cd28e0b74cb63eceb0741f13309d0188077ba9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
