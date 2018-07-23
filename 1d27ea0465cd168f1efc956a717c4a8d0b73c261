@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02ab2312_71e85342",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-07-23T21:48:12Z",
+      "side": 1,
+      "message": "frequency\n\nIf possible (and doesn\u0027t cause problems on the low duty cycles) we should raise this. Maybe 4800?",
+      "range": {
+        "startLine": 136,
+        "startChar": 35,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "1d27ea0465cd168f1efc956a717c4a8d0b73c261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
