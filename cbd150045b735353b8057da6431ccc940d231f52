@@ -22,6 +22,30 @@
       "revId": "cbd150045b735353b8057da6431ccc940d231f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38a93bd_e808f960",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-24T16:10:09Z",
+      "side": 1,
+      "message": "I need to look at timestamps to confirm, but this was a theory I came up with yesterday.\n\nThe issue is that the state machine gets disabled anytime the chipset is not on or in suspend. I believe that states G3, S5, G3-\u003eS5, S5-\u003eS3 would all not be caught.",
+      "parentUuid": "cd5cb215_191c4b27",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "cbd150045b735353b8057da6431ccc940d231f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
