@@ -22,6 +22,30 @@
       "revId": "ec69b7213144947ba954633dc18d872a52266453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101d2577_326889e7",
+        "filename": "common/chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T21:09:46Z",
+      "side": 1,
+      "message": "It is intentional.  I have some more to learn about how vboot works before I try to preserve information across a sysjump.  I want to get the least-complex diagnostic out there first.  That way it doesn\u0027t take too much work to interpret the logs when using them to debug the AP.\n\nIt also doesn\u0027t help that I just spent most of a week debugging an issue that was (partially) caused by an incomplete save/restore of state through bbsram :)\n\nGrunt also experiences a double-start when powered up for the first time, once on initial power-on, and once more by the H1.  The result is that some interesting startup conditions are only visible on the EC console; they are not visible using the UPTIME_INFO command since the condition has cleared by the time of the second EC start.",
+      "parentUuid": "520d2787_1bcb32bf",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "ec69b7213144947ba954633dc18d872a52266453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
