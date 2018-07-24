@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2df5799f_2d2b9d61",
+        "filename": "board/bip/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-24T02:19:24Z",
+      "side": 1,
+      "message": "We might need to change this member to 3000 (10*ADC_MAX_MVOLT), because IT8320\u0027s ADC is 10 bit full scale for 3.0V.",
+      "range": {
+        "startLine": 56,
+        "startChar": 39,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "279ab1d91418ab5fe3809478241621acfda1e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
