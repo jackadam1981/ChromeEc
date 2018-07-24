@@ -22,6 +22,30 @@
       "revId": "279ab1d91418ab5fe3809478241621acfda1e582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aab2737_5a5be17c",
+        "filename": "board/bip/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-24T19:20:40Z",
+      "side": 1,
+      "message": "Thank you for catching this. Sent CL:1148809 for cleanup",
+      "parentUuid": "2df5799f_2d2b9d61",
+      "range": {
+        "startLine": 56,
+        "startChar": 39,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "279ab1d91418ab5fe3809478241621acfda1e582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
