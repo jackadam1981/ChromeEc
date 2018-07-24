@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d7b787b_49e27639",
+        "filename": "chip/g/usart.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-07-24T17:51:45Z",
+      "side": 1,
+      "message": "this is the only change compared to the previous attempt, the original patch was setting this to 0, to increase UART RX IRQ priority, this proved too aggressive.",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "71eb4da1e9efd234774dc53b887f1095cc96b4cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
