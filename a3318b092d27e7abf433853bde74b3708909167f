@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8d6ca41_2299542b",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-24T03:44:05Z",
+      "side": 1,
+      "message": "Add a TODO to remove this in the future. We can merge it for now, though.",
+      "revId": "a3318b092d27e7abf433853bde74b3708909167f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d909877f_7ef30fd1",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-24T03:44:05Z",
+      "side": 1,
+      "message": "Enabled",
+      "range": {
+        "startLine": 321,
+        "startChar": 36,
+        "endLine": 321,
+        "endChar": 42
+      },
+      "revId": "a3318b092d27e7abf433853bde74b3708909167f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
