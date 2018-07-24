@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "875817da_2d21f7ac",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-24T02:56:24Z",
+      "side": 1,
+      "message": "There is only one host command task, so only one command is processed at a time. Thankfully ,-)",
+      "parentUuid": "1359c1e2_cddfa4e9",
+      "range": {
+        "startLine": 373,
+        "startChar": 2,
+        "endLine": 373,
+        "endChar": 20
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34922e40_4d6822e3",
         "filename": "util/ectool.c",
         "patchSetId": 7
