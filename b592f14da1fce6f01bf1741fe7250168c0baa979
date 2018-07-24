@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d42f8b3_4ad6cd76",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-24T15:10:01Z",
+      "side": 1,
+      "message": "I suggest we name it f75303. There is no confusion and it\u0027s easier to type. The rest looks good to me.",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "b592f14da1fce6f01bf1741fe7250168c0baa979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
