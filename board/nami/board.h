@@ -8,6 +8,12 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/*
+ * By default, enable all console messages except ACPI and host event because
+ * the sensor stack is generating a lot of activity.
+ */
+#define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
+
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
@@ -132,6 +138,8 @@
 #define CONFIG_LID_ANGLE_TABLET_MODE
 #define CONFIG_LID_ANGLE_INVALID_CHECK
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+//#undef  CONFIG_HOST_EVENT64_LOG_MASK
+//#define CONFIG_HOST_EVENT64_LOG_MASK (~EC_HOST_EVENT_MASK(EC_HOST_EVENT_MKBP))
 
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3509
