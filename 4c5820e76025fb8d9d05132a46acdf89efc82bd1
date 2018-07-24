@@ -633,6 +633,24 @@
     },
     {
       "key": {
+        "uuid": "2940a08d_c4b6579f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1284883
+      },
+      "writtenOn": "2018-07-24T00:46:43Z",
+      "side": 1,
+      "message": "I think what I had in mind was this:\nhttps://docs.microsoft.com/en-us/windows-hardware/drivers/hid/acpi-button-device\nwhich is based around the \"Generic Buttons Device\" described in ACPI.  The firmware can provide a mapping from events to HID events.  Unfortunately both are based around GPIOs (hence why Intel probably wrote a non-GPIO driver, but didn\u0027t preserve the ability to provide a mapping table in firmware).",
+      "parentUuid": "df062763_989c3e2b",
+      "revId": "4c5820e76025fb8d9d05132a46acdf89efc82bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a777187b_ed3b438c",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
