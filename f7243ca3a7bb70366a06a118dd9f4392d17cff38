@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3005c425_9df55f48",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-24T18:36:48Z",
+      "side": 1,
+      "message": "This seems suspicious; most boards don\u0027t have a baseboard. Why is this needed?",
+      "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
