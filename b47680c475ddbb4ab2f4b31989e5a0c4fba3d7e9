@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b07b2670_36a204e1",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2018-07-24T23:15:11Z",
+      "side": 1,
+      "message": "This is an interesting turn of events, and a clever solution on your behalf, Sam.\n\nYour original idea was to debounce to detect Vbus disconnect event -- and in this case you are using debounce to detect Vbus stable for Vbus \"select\" function. It\u0027s full circle, but in a good way.\n\nI think this is a good idea. The only edge case I can think of is a PSU that has \"split PDO\" -- i.e. readvertises SRC_CAP repeatedly. However, this is addressed in \"7.3.14 No change in Current or Voltage\". So all looks good, I think. (I defer to other experts.)\n\nAlso worth looking at are the voltage graphs in \"7.3.1 Increasing the Current\" and \"7.3.6 Decreasing the Current\". (In those situations, it is OK to leave the FET open and maintain some draw.)\n\nGreat work! :)",
+      "range": {
+        "startLine": 1363,
+        "startChar": 2,
+        "endLine": 1363,
+        "endChar": 16
+      },
+      "revId": "b47680c475ddbb4ab2f4b31989e5a0c4fba3d7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
