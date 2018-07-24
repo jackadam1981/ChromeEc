@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09438210_569f166b",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d80f86c_4d5b9da8",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 43
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75be96e7_7c434e45",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-21T02:10:07Z",
       "side": 1,
       "message": "finally:?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60a938e_793c0506",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:01:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure what finally adds here?",
+      "parentUuid": "75be96e7_7c434e45",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0ef734e8_509d58db",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:01:06Z",
+      "side": 1,
+      "message": "yeah, it excludes them from calculation it seems.\nhttps://docs.scipy.org/doc/numpy-1.13.0/user/misc.html",
+      "parentUuid": "2694ecb8_fd7b7f46",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09aff883_9d9a7cbd",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "11ee2404_eb4b5aeb",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09aff883_9d9a7cbd",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f32a656_a0f6c392",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2018-07-21T02:25:15Z",
       "side": 1,
       "message": "this could be combined into testGetSummary. Or at least you can reuse _populate_dummy_stats.\n\nI recommend trying to reuse _populate_dummy_stats as much as possible, and customize by adding more samples on top of it. It makes the entire file cleaner.",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bea8f30_8c2aae0b",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:01:06Z",
+      "side": 1,
+      "message": "I wouldn\u0027t combine it with GetSummary as this is really only about accept_nan behavior, so we want to be able to detect if the summary stats are broken due to nan behavior or due to some other more general behavior.\nAs far as _populate_stats goes I can pull out the verification here into a helper that both of these call.\nBut the more I think about it, I actually would rather get rid of populate_dummy in favor of each test being self-explanatory. Thoughts/concerns?",
+      "parentUuid": "6f32a656_a0f6c392",
       "range": {
         "startLine": 58,
         "startChar": 6,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "15edc88d_d0e73a78",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:01:06Z",
+      "side": 1,
+      "message": "it helps to differentiate between a StatsManagerError being thrown for a NaN and not for another issue. Is what I would have said before I saw your nit below :)",
+      "parentUuid": "f02a3e83_ff564364",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f575d8c_533c72c5",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2018-07-21T02:25:15Z",
       "side": 1,
       "message": "nit: you can also try assertRaisesRegex. assertRaises might have a msg arg as well.",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 26
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01946fe6_15321daf",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:01:06Z",
+      "side": 1,
+      "message": "I like it :)",
+      "parentUuid": "8f575d8c_533c72c5",
       "range": {
         "startLine": 83,
         "startChar": 14,
