@@ -46,6 +46,30 @@
       "revId": "cbd150045b735353b8057da6431ccc940d231f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3f314b_97ad1671",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-24T17:09:40Z",
+      "side": 1,
+      "message": "I captured the log of events:\n    \n[58705.177981 power state 1 \u003d S5, in 0x003f]\n[58705.178826 power state 6 \u003d S5-\u003eS3, in 0x003f]\n[58705.179684 BD: st0]\n[58705.180866 BD st0: att: 704mV det: 0mV]\n[58705.181717 BD: st1]\n[58705.183104 PD:S5-\u003eS3]\n[58705.184361 power state 2 \u003d S3, in 0x003f]\n\nAfter the initial kick, the state machine never ran because we were in the transition state (S5-\u003eS3).",
+      "parentUuid": "f38a93bd_e808f960",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "cbd150045b735353b8057da6431ccc940d231f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
