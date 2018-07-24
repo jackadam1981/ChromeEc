@@ -22,6 +22,30 @@
       "revId": "7fde95054bc33c862d758e48e488968a1e005ff2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5477f97b_82774bf5",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-07-24T01:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97839dd7_58637e63",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 66
+      },
+      "revId": "7fde95054bc33c862d758e48e488968a1e005ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
