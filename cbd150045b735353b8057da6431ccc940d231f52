@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd5cb215_191c4b27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T15:59:00Z",
+      "side": 1,
+      "message": "How long is the system taking to transition to S3? Is the issue that the state machine detection gets disabled when the chipset is transitioning from G3-\u003eS5-\u003eS3-\u003eS0?",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "cbd150045b735353b8057da6431ccc940d231f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
