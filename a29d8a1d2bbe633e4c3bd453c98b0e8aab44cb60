@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2edbd841_b1f71015",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a672dd9_b3b84a3a",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2923d3f_f8ea4798",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 2
@@ -65,6 +89,48 @@
     },
     {
       "key": {
+        "uuid": "c434b799_00ff8254",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2923d3f_f8ea4798",
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5ae552c_1e697203",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:00:40Z",
+      "side": 1,
+      "message": "added some comments \u0026 simplified the code",
+      "parentUuid": "621c9196_27bda1d9",
+      "range": {
+        "startLine": 172,
+        "startChar": 39,
+        "endLine": 172,
+        "endChar": 77
+      },
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48da852a_9cfd75db",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990a4aaa_164deed2",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-24T11:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48da852a_9cfd75db",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "a29d8a1d2bbe633e4c3bd453c98b0e8aab44cb60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
