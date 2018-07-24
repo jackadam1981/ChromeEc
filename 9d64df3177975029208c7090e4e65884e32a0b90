@@ -2,6 +2,161 @@
   "comments": [
     {
       "key": {
+        "uuid": "d6a3a368_1d47b61d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "Thanks for taking this up. Can you please add b:79529789 as well here? I will re-assign the bug to you since you are doing more than what was requested :).",
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad097ffe_dae083d1",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "now_us",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125f7386_4f7a3a23",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "MSEC?",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f10be1d4_4b50fdf4",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "Maybe name this log_now_ms?",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe345291_c64a67f8",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "Should this be ec?",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6183ccea_49743e6c",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "MSEC",
+      "range": {
+        "startLine": 72,
+        "startChar": 41,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a7386d2_2b1fecd0",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "memcpy?",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12232639_09c61854",
         "filename": "include/chipset.h",
         "patchSetId": 5
@@ -22,6 +177,29 @@
       "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0527e89_f27f85e3",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T18:16:22Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 3
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
