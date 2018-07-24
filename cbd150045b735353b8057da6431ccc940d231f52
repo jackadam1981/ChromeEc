@@ -118,6 +118,30 @@
       "revId": "cbd150045b735353b8057da6431ccc940d231f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dffd73a6_399a3887",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T19:51:38Z",
+      "side": 1,
+      "message": "Would keeping base power in suspend when base in not attached result in unnecessary power consumption?",
+      "parentUuid": "990a34de_1bcb20f8",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "cbd150045b735353b8057da6431ccc940d231f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
