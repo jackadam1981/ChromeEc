@@ -142,6 +142,30 @@
       "revId": "cbd150045b735353b8057da6431ccc940d231f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ae8513_97bd8c22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-24T20:51:59Z",
+      "side": 1,
+      "message": "Actually, I was wrong. The state machine is active in suspend, so it should detect the detach and turn off base power. We should be okay there.\n\nThe power is explicitly turn off during S3-\u003eS5 transition and the state machine wouldn\u0027t be active in those lower power states.",
+      "parentUuid": "dffd73a6_399a3887",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "cbd150045b735353b8057da6431ccc940d231f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
