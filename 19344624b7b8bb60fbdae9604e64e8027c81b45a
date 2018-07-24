@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "565122e0_a9add68e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-24T19:53:16Z",
+      "side": 1,
+      "message": "shall we now have \nif (i\u003d\u003d1)\n    target_info.micro \u003d targ-\u003eshv[i].epoch \u003e\u003e 24;\nelse\n    target_info.micro \u003d 0;",
+      "range": {
+        "startLine": 1159,
+        "startChar": 2,
+        "endLine": 1159,
+        "endChar": 47
+      },
+      "revId": "19344624b7b8bb60fbdae9604e64e8027c81b45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
