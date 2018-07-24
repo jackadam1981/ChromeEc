@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cccef262_4812e18c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-24T05:41:42Z",
+      "side": 1,
+      "message": "Please move this before rt946x_clr_bit.",
+      "revId": "f759a81a0154d6c7306bc335fba21ce13301b057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
