@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f6dc626_7aba84df",
+        "filename": "board/bip/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-07-24T19:24:04Z",
+      "side": 1,
+      "message": "Does this also need to be 10 * ADC_MAX_MVOLT?",
+      "revId": "99ff241b8ea89b8046ab34dca741e781ff63447a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
