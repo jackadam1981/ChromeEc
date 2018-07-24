@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7eeea06d_36d26b39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-24T06:18:47Z",
+      "side": 1,
+      "message": "explicit?",
+      "range": {
+        "startLine": 13,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "37219f79906222f2ccce51d91b64c019aeec0000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25e84b2e_9b310b98",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 2
