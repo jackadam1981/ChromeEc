@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64c1e460_1ec3cd0b",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-24T21:55:42Z",
+      "side": 1,
+      "message": "don\u0027t see the point of having \"b\" here. _no_unit should be a good enough indicator that this is a variable of \"populate_dummy_stats\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 28,
+        "endLine": 36,
+        "endChar": 29
+      },
+      "revId": "17683ed2d493d9b0eae9473563071e6608a5ad3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
