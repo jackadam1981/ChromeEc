@@ -105,6 +105,30 @@
       "revId": "3caf659c9484bedab275606794337a0dc4c7d375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95148758_0cb2824b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4832,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T17:41:38Z",
+      "side": 1,
+      "message": "I added a zero-valued uint16 to make it possible to fill in this value later without bumping the command\u0027s version number, and the response handler is controlling the wire bits to zero.\n\n\u003crant\u003e\nBut I just threw up a little bit in my mouth reading this file.  It is filled with redundancies and pessimizations.  For example ec_params_efs_verify, ec_params_get_cmd_versions_v1, ec_response_pwm_get_duty, ec_response_port80_last_boot, etc are redundant (so is ec_response_uptime_info, for that matter).  ec_response_pd_chip_info saves some space on the wire, but costs space in flash for uarch\u0027s that don\u0027t implement unaligned reads/writes in hardware, and both ec_params_fp_sensor_config and ec_lpc_host_args are pessimizing *in space* by requesting alignment in excess of their members\u0027 requirements.\n\nSee also https://gcc.gnu.org/onlinedocs/gcc-8.1.0/gcc/Common-Type-Attributes.html#index-packed-type-attribute and https://gcc.gnu.org/onlinedocs/gcc-8.1.0/gcc/Common-Type-Attributes.html#index-aligned-type-attribute\n\u003c/rant\u003e",
+      "parentUuid": "31c77f33_3b9f8fb3",
+      "range": {
+        "startLine": 4832,
+        "startChar": 3,
+        "endLine": 4832,
+        "endChar": 18
+      },
+      "revId": "3caf659c9484bedab275606794337a0dc4c7d375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
