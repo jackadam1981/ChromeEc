@@ -94,6 +94,30 @@
       "revId": "cbd150045b735353b8057da6431ccc940d231f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990a34de_1bcb20f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-24T19:17:30Z",
+      "side": 1,
+      "message": "I don\u0027t think so (or at least I\u0027m not yet aware of any issues). I had separated the base power control from this resume hook. So, if the base was already connected and powered, even though we seed the state machine to the detached state, we don\u0027t modify the power state.\n\nHmm, although, I wonder if this means that if a base is disconnected in suspend, we may not turn off the base power. I\u0027ll need to verify... Maybe upon resume, I could check to see if it seems detached and if so, then remove base power.",
+      "parentUuid": "4f52cd0d_fce04df4",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "cbd150045b735353b8057da6431ccc940d231f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
