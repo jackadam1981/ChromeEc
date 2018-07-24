@@ -1655,6 +1655,9 @@
 #define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
 #define CONFIG_HOST_EVENT64_REPORT_MASK 0xffffffffffffffffULL
 
+#define CONFIG_HOST_EVENT_LOG_MASK	0xffffffff
+#define CONFIG_HOST_EVENT64_LOG_MASK	0xffffffffffffffffULL
+
 /* Config option to support 64-bit hostevents and wake-masks. */
 #define CONFIG_HOST_EVENT64
 

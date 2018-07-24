@@ -304,7 +304,12 @@ void host_set_events(host_event_t mask)
 	if (!((events & mask) != mask || (events_copy_b & mask) != mask))
 		return;
 
-	HOST_EVENT_CPRINTS("event set", mask);
+#ifdef CONFIG_HOST_EVENT64
+	if (mask & CONFIG_HOST_EVENT64_LOG_MASK)
+#else
+	if (mask & CONFIG_HOST_EVENT_LOG_MASK)
+#endif
+		HOST_EVENT_CPRINTS("event set", mask);
 
 	host_events_atomic_or(&events, mask);
 	host_events_atomic_or(&events_copy_b, mask);
@@ -351,7 +356,12 @@ void host_clear_events(host_event_t mask)
 	if (!(events & mask))
 		return;
 
-	HOST_EVENT_CPRINTS("event clear", mask);
+#ifdef CONFIG_HOST_EVENT64
+	if (mask & CONFIG_HOST_EVENT64_LOG_MASK)
+#else
+	if (mask & CONFIG_HOST_EVENT_LOG_MASK)
+#endif
+		HOST_EVENT_CPRINTS("event clear", mask);
 
 	host_events_atomic_clear(&events, mask);
 
