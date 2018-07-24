@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e80198a5_30994a9d",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-24T16:44:53Z",
+      "side": 1,
+      "message": "At the host command level, only enum ec_status return codes can be returned. One could do a mapping of error codes though.",
+      "parentUuid": "a7b938c7_e522c037",
+      "range": {
+        "startLine": 352,
+        "startChar": 20,
+        "endLine": 352,
+        "endChar": 32
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2da3a964_77da0190",
         "filename": "common/rollback.c",
         "patchSetId": 7
@@ -115,6 +139,30 @@
       "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c5bda9e_8dc92112",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-24T16:44:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34922e40_4d6822e3",
+      "range": {
+        "startLine": 395,
+        "startChar": 2,
+        "endLine": 395,
+        "endChar": 12
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
