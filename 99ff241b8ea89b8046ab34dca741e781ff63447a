@@ -16,6 +16,24 @@
       "revId": "99ff241b8ea89b8046ab34dca741e781ff63447a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a883d589_00c3127b",
+        "filename": "board/bip/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-24T20:05:59Z",
+      "side": 1,
+      "message": "The Vbus ADCs were in a 10:1 resistor divider circuit, so we needed to scale the end value up by 10 to get the read Vbus voltates (e.g. 20V)\n\nHere we want the raw mV values (so no 10 * scaling factor is needed)",
+      "parentUuid": "9f6dc626_7aba84df",
+      "revId": "99ff241b8ea89b8046ab34dca741e781ff63447a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
