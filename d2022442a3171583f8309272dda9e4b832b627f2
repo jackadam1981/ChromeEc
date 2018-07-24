@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "8baa691a_21d1d6ce",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-07-24T06:14:23Z",
+      "side": 1,
+      "message": "Oops, I didn\u0027t see the \"nan\" part in the function names.  Makes sense!",
+      "parentUuid": "3feca290_6fdb878f",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 42
+      },
+      "revId": "d2022442a3171583f8309272dda9e4b832b627f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30778303_1e814735",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 1
