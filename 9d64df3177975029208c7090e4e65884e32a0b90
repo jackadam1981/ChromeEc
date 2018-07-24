@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "8d3ec9b7_cdf71f62",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T20:48:55Z",
+      "side": 1,
+      "message": "SG.",
+      "parentUuid": "b8b3eeb6_e5459650",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe345291_c64a67f8",
         "filename": "common/chipset.c",
         "patchSetId": 5
@@ -307,6 +331,30 @@
       "side": 1,
       "message": "I see your memcpy and raise you simple structure assignment.  Both forms will be lowered to either a memcpy call or individual loads and stores based on the compiler\u0027s own heuristics, but simple assignment is more readable.",
       "parentUuid": "1a7386d2_2b1fecd0",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fccb00e_9570c10a",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T20:48:55Z",
+      "side": 1,
+      "message": "SG.",
+      "parentUuid": "766b1749_b7b89281",
       "range": {
         "startLine": 84,
         "startChar": 2,

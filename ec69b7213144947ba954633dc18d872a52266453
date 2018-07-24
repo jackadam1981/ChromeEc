@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "520d2787_1bcb32bf",
+        "filename": "common/chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-24T20:48:55Z",
+      "side": 1,
+      "message": "You will lose this information when doing a sysjump. Is that intentional?",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "ec69b7213144947ba954633dc18d872a52266453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
