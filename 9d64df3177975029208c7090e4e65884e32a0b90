@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dae8ea95_73fd7ab3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T18:55:54Z",
+      "side": 1,
+      "message": "Done.  See also the series beginning at https://review.coreboot.org/c/coreboot/+/27620/ which will dump some of this information to the coreboot logs on startup.",
+      "parentUuid": "d6a3a368_1d47b61d",
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad097ffe_dae083d1",
         "filename": "common/chipset.c",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b56c03f_03b70a36",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T18:55:54Z",
+      "side": 1,
+      "message": "See below.",
+      "parentUuid": "ad097ffe_dae083d1",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,54 @@
     },
     {
       "key": {
+        "uuid": "a4b4733f_fdb2fb3a",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T18:55:54Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "f10be1d4_4b50fdf4",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8b3eeb6_e5459650",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T18:55:54Z",
+      "side": 1,
+      "message": "Here\u0027s how I see it: The function of the MSEC macro is to abstract away the difference between timestamp_t\u0027s timebase and SI units of time.  It just happens that timestamp_t is microseconds, but that\u0027s supposed to be an implementation detail.  With that in mind, I renamed terms to use MSEC as the divisor and annotate the result with its timebase, but did not annotate \u0027now\u0027 with the microsecond timebase.",
+      "parentUuid": "125f7386_4f7a3a23",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe345291_c64a67f8",
         "filename": "common/chipset.c",
         "patchSetId": 5
@@ -108,6 +198,30 @@
       "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e398bd_dfccb7ee",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T18:55:54Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "fe345291_c64a67f8",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 19
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c75e5a65_2accbd42",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T18:55:54Z",
+      "side": 1,
+      "message": "Same.",
+      "parentUuid": "6183ccea_49743e6c",
+      "range": {
+        "startLine": 72,
+        "startChar": 41,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a7386d2_2b1fecd0",
         "filename": "common/chipset.c",
         "patchSetId": 5
@@ -154,6 +292,30 @@
       "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "766b1749_b7b89281",
+        "filename": "common/chipset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-24T18:55:54Z",
+      "side": 1,
+      "message": "I see your memcpy and raise you simple structure assignment.  Both forms will be lowered to either a memcpy call or individual loads and stores based on the compiler\u0027s own heuristics, but simple assignment is more readable.",
+      "parentUuid": "1a7386d2_2b1fecd0",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "9d64df3177975029208c7090e4e65884e32a0b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
