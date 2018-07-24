@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d8f91122_7497c828",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-24T22:26:37Z",
+      "side": 1,
+      "message": "\"i\" is still around",
+      "range": {
+        "startLine": 38,
+        "startChar": 60,
+        "endLine": 38,
+        "endChar": 61
+      },
+      "revId": "17683ed2d493d9b0eae9473563071e6608a5ad3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73695e7f_8fe8a2ab",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-24T22:26:37Z",
+      "side": 1,
+      "message": "be consistent with periods.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "17683ed2d493d9b0eae9473563071e6608a5ad3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64c1e460_1ec3cd0b",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 3
