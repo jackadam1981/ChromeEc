@@ -301,6 +301,7 @@ static enum battery_present battery_check_present_status(void)
 {
 	enum battery_present batt_pres;
 	int batt_disconnect_status;
+	int desired_current;
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
@@ -337,8 +338,12 @@ static enum battery_present battery_check_present_status(void)
 	 * 3. Initialized
 	 */
 	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    batt_disconnect_status != BATTERY_NOT_DISCONNECTED)
+	    batt_disconnect_status != BATTERY_NOT_DISCONNECTED) {
+		if (!sb_read(SB_CHARGING_CURRENT, &desired_current) &&
+		    desired_current > 0)
+			return BP_NOT_SURE;
 		return BP_NO;
+	}
 
 	return BP_YES;
 }
