@@ -21,6 +21,7 @@
 #define BATTERY_NO_RESPONSE_TIMEOUT	(1000*MSEC)
 
 static int fake_state_of_charge = -1;
+static int bat_fake_temp = -1;
 
 test_mockable int sb_read(int cmd, int *param)
 {
@@ -323,6 +324,9 @@ void battery_get_params(struct batt_params *batt)
 	if (fake_state_of_charge >= 0)
 		batt_new.state_of_charge = fake_state_of_charge;
 
+	if (bat_fake_temp >= 0)
+		batt_new.temperature = bat_fake_temp;
+
 	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
 		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
 
@@ -439,6 +443,30 @@ static int command_battfake(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
 			"percent (-1 = use real level)",
 			"Set fake battery level");
+
+static int command_battfake_temp(int argc, char **argv)
+{
+	char *e;
+	int v;
+
+	if (argc == 2) {
+		v = strtoi(argv[1], &e, 0);
+		if (*e || v < -1 || v > 3731)
+			return EC_ERROR_PARAM1;
+
+		bat_fake_temp = v;
+	}
+
+	if (bat_fake_temp >= 0)
+		ccprintf("Fake batt temp %d K\n",
+			 bat_fake_temp);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(battfaketemp, command_battfake_temp,
+			"kelvin (-1 = use real level)",
+			"Set fake battery temp K");
+
 #endif
 
 #ifdef CONFIG_CMD_BATT_MFG_ACCESS
