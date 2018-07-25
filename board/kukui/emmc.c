@@ -217,7 +217,10 @@ void emmc_task(void *u)
 	int tx = 0;
 
 	/* TODO(b:111773571): Remove this once we fix eMMC power supply. */
-	mt6370_set_ldo_voltage(0);
+	mt6370_set_ldo_voltage(1800);
+
+	while (1)
+		task_wait_event(-1);
 
 	emmc_init_spi();
 
