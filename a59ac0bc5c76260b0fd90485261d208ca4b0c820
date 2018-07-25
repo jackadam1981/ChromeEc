@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49b014c4_14fe421b",
+        "filename": "include/chipset.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-25T16:43:59Z",
+      "side": 1,
+      "message": "we should probably hard-code numbers for every reason here since we want ectool (on the host side) to be able in interpret reasons from RO and RW correctly. RO and RW will have different ordinal values if we don\u0027t specify them manually and someone adds a reason.\n\n(we should also leave room between chipset_reset_reason and chip_shutdown_reason)\n\nIf this CL make it through the CQ, you can add it in a follow up CL :)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "a59ac0bc5c76260b0fd90485261d208ca4b0c820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
