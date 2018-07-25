@@ -22,6 +22,30 @@
       "revId": "b592f14da1fce6f01bf1741fe7250168c0baa979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2327b8_f1ac0bd8",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-07-25T01:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d42f8b3_4ad6cd76",
+      "range": {
+        "startLine": 90,
+        "startChar": 24,
+        "endLine": 90,
+        "endChar": 35
+      },
+      "revId": "b592f14da1fce6f01bf1741fe7250168c0baa979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
