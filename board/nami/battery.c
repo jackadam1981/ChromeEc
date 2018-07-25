@@ -325,8 +325,11 @@ static enum battery_present battery_check_present_status(void)
 	 */
 	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
 	    batt_disconnect_status != BATTERY_NOT_DISCONNECTED ||
-	    battery_init() == 0)
+	    battery_init() == 0) {
+		if (oem == PROJECT_AKALI)
+			return BP_NOT_SURE;
 		return BP_NO;
+	}
 
 	return BP_YES;
 }
