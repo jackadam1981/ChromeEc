@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "626b91eb_1afe9570",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-25T01:36:51Z",
+      "side": 1,
+      "message": ", since RBOX runs off of RTC instead of the core clock",
+      "range": {
+        "startLine": 331,
+        "startChar": 55,
+        "endLine": 331,
+        "endChar": 56
+      },
+      "revId": "47c23e5bf6038e57e0fb4ed657a64fbeeca6e801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7fb9c7_e56cb667",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-25T01:36:51Z",
+      "side": 1,
+      "message": "Experimentally determined, or calculated?  RTC \u003d 32KHz, core clock \u003d ?? MHz, loop \u003d ?? cycles",
+      "range": {
+        "startLine": 332,
+        "startChar": 43,
+        "endLine": 332,
+        "endChar": 45
+      },
+      "revId": "47c23e5bf6038e57e0fb4ed657a64fbeeca6e801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
