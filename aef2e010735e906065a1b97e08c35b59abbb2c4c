@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "983d6b6c_4b944c00",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "I added X86 to the config option. I think it\u0027s better to have it has a config option tied to the chipset type as opposed to checking those same defines in intel_x86.c, but it\u0027s not a strong preference.",
+      "parentUuid": "0a5aeaa6_af68c70d",
+      "range": {
+        "startLine": 809,
+        "startChar": 22,
+        "endLine": 809,
+        "endChar": 28
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e2731d8_3d1baa1c",
         "filename": "include/config.h",
         "patchSetId": 8
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9ef994b4_8a8846fe",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3807,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "This was Furquan\u0027s suggestion to make this config option automatically defined rather than have to be added to each new board that uses ICL",
+      "parentUuid": "07fd26b3_dbf09766",
+      "range": {
+        "startLine": 3805,
+        "startChar": 0,
+        "endLine": 3807,
+        "endChar": 6
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d003c83b_b9427a61",
         "filename": "power/icelake.c",
         "patchSetId": 8
@@ -82,6 +130,30 @@
       "writtenOn": "2018-07-25T05:48:54Z",
       "side": 1,
       "message": "There is a pending CL to change the signature of this function: crrev.com/c/1139028.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f910268_a5543572",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "I cherry-picked this CL into my branch, added the changes required, and verified it builds. I added a CQ-DEPEND in the commit message on this.",
+      "parentUuid": "d003c83b_b9427a61",
       "range": {
         "startLine": 23,
         "startChar": 5,
@@ -108,6 +180,24 @@
       "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de05dec_72f982a8",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb549b7a_b4505bcd",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +238,24 @@
       "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7851afc_cbd05448",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98610546_36cc0871",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -220,6 +328,30 @@
     },
     {
       "key": {
+        "uuid": "9446c163_fa526eae",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "I agree that this looks wrong. It should be checking for the same condition that it\u0027s pending on in the while loop in the G3-\u003eS5 state. Regarding the S5G3 vs G3S5, I think it should be S5 to G3 here and have changed that as well.",
+      "parentUuid": "6b0669a9_6f6f8e2f",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "167d8065_c30bbd7a",
         "filename": "power/icelake.c",
         "patchSetId": 8
@@ -231,6 +363,30 @@
       "writtenOn": "2018-07-25T04:35:44Z",
       "side": 1,
       "message": "SLP_SUS_L deassertion is the chipset power up signal right? So if it\u0027s asserted, shouldn\u0027t that mean the system is in G3 or transitioning to G3?\n\nCan it be asserted in S5?\n\n(also, I only added a version of this for CNL because EC couldn\u0027t keep the system in pseudo G3 after a reboot and a version of this helped the chipset state machine catch up.)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de6da3a_075cd682",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "I think Furquan pointed the same problem. The ! in the if check is wrong and should be going to S5G3 state here.",
+      "parentUuid": "167d8065_c30bbd7a",
       "range": {
         "startLine": 120,
         "startChar": 0,
@@ -260,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "9b30de80_70c9da6b",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed3e02fe_ea0decd3",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f131a07_3bd8f7a7",
         "filename": "power/icelake.c",
         "patchSetId": 8
@@ -283,6 +457,30 @@
     },
     {
       "key": {
+        "uuid": "2267a0d1_2e0e34d1",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f131a07_3bd8f7a7",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4be4dce_e34b30b5",
         "filename": "power/icelake.c",
         "patchSetId": 8
@@ -300,6 +498,24 @@
     },
     {
       "key": {
+        "uuid": "3d8a231d_c0be37bc",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4be4dce_e34b30b5",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "755eb0b8_72c65f52",
         "filename": "power/icelake.h",
         "patchSetId": 8
@@ -314,6 +530,24 @@
       "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7cabf1_ba38e309",
+        "filename": "power/icelake.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T14:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "755eb0b8_72c65f52",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
