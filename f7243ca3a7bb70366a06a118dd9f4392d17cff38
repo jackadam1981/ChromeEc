@@ -34,6 +34,24 @@
       "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf66c174_006516f5",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-07-25T23:54:11Z",
+      "side": 1,
+      "message": "coffeecake, glados_pd, hammer, feowth_fp, nocturne_fp, and minimuffin are all EC-only builds though.  Does this mean we should really make chocodile_bec build hammer, and have chocodile_vpdmcu build whatever we\u0027re about to write?  (In which case it should just be \"chocodile\")",
+      "parentUuid": "0a8cd1cb_114f1ad1",
+      "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
