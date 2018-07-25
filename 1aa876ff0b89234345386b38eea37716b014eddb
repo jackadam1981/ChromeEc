@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beda7fe1_d32de994",
+        "filename": "board/bip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-25T18:48:38Z",
+      "side": 1,
+      "message": "this needs to change to ADC_TEMP_SENSOR_CHARGER",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "1aa876ff0b89234345386b38eea37716b014eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
