@@ -22,6 +22,52 @@
       "revId": "3aa2a3594019117c799104bb7b5496a9ff425af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d79fd67_5e3ecbbd",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-25T01:22:36Z",
+      "side": 1,
+      "message": "Would we want to be able to turn console output back on via console command?\n\nelse if (!strcasecmp(argv[1], \"log\"))\n    log_mask \u003d i;\n\n(and then at the top of the file)\n\n#ifdef CONFIG_HOST_EVENT64\nstatic host_event_t log_mask \u003d CONFIG_HOST_EVENT64_LOG_MASK;\n#else\nstatic host_event_t log_mask \u003d CONFIG_HOST_EVENT_LOG_MASK;\n#endif",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 459,
+        "endChar": 6
+      },
+      "revId": "3aa2a3594019117c799104bb7b5496a9ff425af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d98821_28999442",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-25T01:22:36Z",
+      "side": 1,
+      "message": "Might be good to add a comment\n\n/* Clear bit(s) to mask logging host event(s) to the console */",
+      "range": {
+        "startLine": 1658,
+        "startChar": 0,
+        "endLine": 1658,
+        "endChar": 1
+      },
+      "revId": "3aa2a3594019117c799104bb7b5496a9ff425af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
