@@ -352,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "ba2aad3c_bde8d9cd",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T15:21:16Z",
+      "side": 1,
+      "message": "I misunderstood the comment. I think the issue was the state transition, not the conditional check.",
+      "parentUuid": "9446c163_fa526eae",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "167d8065_c30bbd7a",
         "filename": "power/icelake.c",
         "patchSetId": 8
@@ -387,6 +411,30 @@
       "side": 1,
       "message": "I think Furquan pointed the same problem. The ! in the if check is wrong and should be going to S5G3 state here.",
       "parentUuid": "167d8065_c30bbd7a",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27fb6f10_b227ec0d",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T15:21:16Z",
+      "side": 1,
+      "message": "I need to correct this, the problem was the state transition, but this check !power_has_signals(IN_PCH_SLP_SUS_DEASSERTED) didn\u0027t need to be changed. I have uploaded a new patchset.",
+      "parentUuid": "1de6da3a_075cd682",
       "range": {
         "startLine": 120,
         "startChar": 0,
