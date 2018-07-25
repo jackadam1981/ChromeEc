@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46281bee_d78a6772",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-25T18:44:17Z",
+      "side": 1,
+      "message": "Instead of overwriting length, can we save the \u0027total_length\u0027 so that the following while loop can terminate deterministically?",
+      "range": {
+        "startLine": 863,
+        "startChar": 1,
+        "endLine": 863,
+        "endChar": 20
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ad21ec_e7cd465b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-25T18:44:17Z",
+      "side": 1,
+      "message": "Can we do this above (right after line 855)?",
+      "range": {
+        "startLine": 868,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 2
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a29f47_11ec267b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-25T18:44:17Z",
+      "side": 1,
+      "message": "\u0027done \u003d 1\u0027 in this while loop means \u0027return\u0027, right? If you return here, readers don\u0027t need to continue to read the rest of the function.",
+      "range": {
+        "startLine": 922,
+        "startChar": 5,
+        "endLine": 922,
+        "endChar": 14
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c2176fe_4dbb47a6",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-25T18:44:17Z",
+      "side": 1,
+      "message": "Why not just break or return?",
+      "range": {
+        "startLine": 972,
+        "startChar": 3,
+        "endLine": 972,
+        "endChar": 12
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
