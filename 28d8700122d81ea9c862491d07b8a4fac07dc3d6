@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b0fa42d_bdd45e85",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-25T20:55:47Z",
+      "side": 1,
+      "message": "The specs for the ISL9238 and the current sense resistor combined work out to only 3.25% (max tolerance model) or 2.5% (RMS tolerance model).\n\nDo we have an example of a charger that begins to brown out right at the negotiated current limit?",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 34
+      },
+      "revId": "28d8700122d81ea9c862491d07b8a4fac07dc3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
