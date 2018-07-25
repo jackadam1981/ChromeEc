@@ -1,15 +1,15 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* Poppy board-specific configuration */
+/* Rammus board-specific configuration */
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "anx7447.h"
 #include "bd99992gw.h"
 #include "board_config.h"
-#include "battery_smart.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
@@ -19,7 +19,6 @@
 #include "console.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accel_bma2x2.h"
-#include "driver/baro_bmp280.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
@@ -37,6 +36,8 @@
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "spi.h"
 #include "switch.h"
 #include "system.h"
@@ -54,6 +55,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+#define USB_PD_PORT_PS8751	1
+#define USB_PD_PORT_ANX7447	0
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -73,12 +77,8 @@ static void tcpc_alert_event(enum gpio_signal signal)
 /* Set PD discharge whenever VBUS detection is high (i.e. below threshold). */
 static void vbus_discharge_handler(void)
 {
-	if (system_get_board_version() >= 2) {
-		pd_set_vbus_discharge(0,
-				gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
-		pd_set_vbus_discharge(1,
-				gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
-	}
+	pd_set_vbus_discharge(0, gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
+	pd_set_vbus_discharge(1, gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
 }
 DECLARE_DEFERRED(vbus_discharge_handler);
 
@@ -87,7 +87,6 @@ void vbus0_evt(enum gpio_signal signal)
 	/* VBUS present GPIO is inverted */
 	usb_charger_vbus_change(0, !gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C0);
-
 	hook_call_deferred(&vbus_discharge_handler_data, 0);
 }
 
@@ -96,7 +95,6 @@ void vbus1_evt(enum gpio_signal signal)
 	/* VBUS present GPIO is inverted */
 	usb_charger_vbus_change(1, !gpio_get_level(signal));
 	task_wake(TASK_ID_PD_C1);
-
 	hook_call_deferred(&vbus_discharge_handler_data, 0);
 }
 
@@ -119,13 +117,8 @@ const struct power_signal_info power_signal_list[] = {
 		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
 		"SLP_S0_DEASSERTED"},
 #endif
-#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
 	{VW_SLP_S3_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
 	{VW_SLP_S4_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-#else
-	{GPIO_PCH_SLP_S3_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
-	{GPIO_PCH_SLP_S4_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-#endif
 	{GPIO_PCH_SLP_SUS_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_SUS_DEASSERTED"},
 	{GPIO_RSMRST_L_PGOOD,	POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L_PGOOD"},
 	{GPIO_PMIC_DPWROK,	POWER_SIGNAL_ACTIVE_HIGH, "PMIC_DPWROK"},
@@ -141,9 +134,6 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
-	/* Base detection */
-	[ADC_BASE_DET] = {"BASE_DET", NPCX_ADC_CH0,
-			  ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 	/* Vbus sensing (10x voltage divider). */
 	[ADC_VBUS] = {"VBUS", NPCX_ADC_CH2, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
 	/*
@@ -157,50 +147,51 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"tcpc0",     NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"tcpc1",     NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"charger",   NPCX_I2C_PORT1,   100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
-	{"pmic",      NPCX_I2C_PORT2,   400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
-	{"accelgyro", NPCX_I2C_PORT3,   400, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
+	{"tcpc0",     I2C_PORT_TCPC0,   400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
+	{"tcpc1",     I2C_PORT_TCPC1,   400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
+	{"battery",   I2C_PORT_BATTERY, 100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
+	{"charger",   I2C_PORT_CHARGER, 100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
+	{"pmic",      I2C_PORT_PMIC,    400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
+	{"accelgyro", I2C_PORT_ACCEL,   400, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{
-		.i2c_host_port = NPCX_I2C_PORT0_0,
+	[USB_PD_PORT_PS8751] = {
+		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &ps8xxx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
-	{
-		.i2c_host_port = NPCX_I2C_PORT0_1,
-		.i2c_slave_addr = PS8751_I2C_ADDR1,
-		.drv = &ps8xxx_tcpm_drv,
+	[USB_PD_PORT_ANX7447] = {
+		.i2c_host_port = I2C_PORT_TCPC0,
+		.i2c_slave_addr = AN7447_TCPC3_I2C_ADDR, /* Verified on v1.1 */
+		.drv = &anx7447_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	{
-		.port_addr = 0,
+	[USB_PD_PORT_PS8751] = {
+		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
-	{
-		.port_addr = 1,
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+	[USB_PD_PORT_ANX7447] = {
+		.port_addr = USB_PD_PORT_ANX7447,
+		.driver = &anx7447_usb_mux_driver,
+		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	}
 };
 
 struct pi3usb9281_config pi3usb9281_chips[] = {
-	{
-		.i2c_port = I2C_PORT_USB_CHARGER_0,
+	[USB_PD_PORT_PS8751] = {
+		.i2c_port = I2C_PORT_USB_CHARGER_1,
 		.mux_lock = NULL,
 	},
-	{
-		.i2c_port = I2C_PORT_USB_CHARGER_1,
+	[USB_PD_PORT_ANX7447] = {
+		.i2c_port = I2C_PORT_USB_CHARGER_0,
 		.mux_lock = NULL,
 	},
 };
@@ -219,6 +210,10 @@ void board_reset_pd_mcu(void)
 	msleep(1);
 	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
 	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
+	/* After TEST_R release, anx7447/3447 needs 2ms to finish eFuse
+	 * loading.
+	 */
+	msleep(2);
 }
 
 void board_tcpc_init(void)
@@ -240,7 +235,6 @@ void board_tcpc_init(void)
 	 */
 	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
 		const struct usb_mux *mux = &usb_muxes[port];
-
 		mux->hpd_update(port, 0, 0);
 	}
 }
@@ -267,10 +261,14 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0, 4},
 
 	/* These BD99992GW temp sensors are only readable in S0 */
+	{"Ambient", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	 BD99992GW_ADC_CHANNEL_SYSTHERM0, 4},
 	{"Charger", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM1, 4},
 	{"DRAM", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM2, 4},
+	{"eMMC", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	 BD99992GW_ADC_CHANNEL_SYSTHERM3, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -435,6 +433,9 @@ static void board_init(void)
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
 
+	/* Enable sensors power supply */
+	gpio_set_level(GPIO_PP1800_DX_SENSOR, 1);
+
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
@@ -442,15 +443,6 @@ static void board_init(void)
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
-
-	/* Level of sensor's I2C and interrupt are 3.3V on proto board */
-	if(system_get_board_version() < 2) {
-		/* ACCELGYRO3_INT_L */
-		gpio_set_flags(GPIO_ACCELGYRO3_INT_L, GPIO_INT_FALLING);
-		/* I2C3_SCL / I2C3_SDA */
-		gpio_set_flags(GPIO_I2C3_SCL, GPIO_INPUT);
-		gpio_set_flags(GPIO_I2C3_SDA, GPIO_INPUT);
-        }
 
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
@@ -520,46 +512,14 @@ int board_set_active_charge_port(int charge_port)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-        /*
-         * Limit the input current to 96% negotiated limit,
-         * to account for the charger chip margin.
-         */
+	/*
+	 * Limit the input current to 96% negotiated limit,
+	 * to account for the charger chip margin.
+	 */
 	charge_ma = charge_ma * 96 / 100;
-	charge_set_input_current_limit(MAX(charge_ma,
-				   CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
-}
-
-/**
- * Return whether ramping is allowed for given supplier
- */
-int board_is_ramp_allowed(int supplier)
-{
-	/* Don't allow ramping in RO when write protected */
-	if (!system_is_in_rw() && system_is_locked())
-		return 0;
-	else
-		return (supplier == CHARGE_SUPPLIER_BC12_DCP ||
-			supplier == CHARGE_SUPPLIER_BC12_SDP ||
-			supplier == CHARGE_SUPPLIER_BC12_CDP ||
-			supplier == CHARGE_SUPPLIER_OTHER);
-}
-
-/**
- * Return the maximum allowed input current
- */
-int board_get_ramp_current_limit(int supplier, int sup_curr)
-{
-	switch (supplier) {
-	case CHARGE_SUPPLIER_BC12_DCP:
-		return 2000;
-	case CHARGE_SUPPLIER_BC12_SDP:
-		return 1000;
-	case CHARGE_SUPPLIER_BC12_CDP:
-	case CHARGE_SUPPLIER_PROPRIETARY:
-		return sup_curr;
-	default:
-		return 500;
-	}
+	charge_set_input_current_limit(
+			MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT),
+			charge_mv);
 }
 
 void board_hibernate(void)
@@ -567,7 +527,7 @@ void board_hibernate(void)
 	CPRINTS("Triggering PMIC shutdown.");
 	uart_flush_output();
 
-    /* Trigger PMIC shutdown. */
+	/* Trigger PMIC shutdown. */
 	if (i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x49, 0x01)) {
 		/*
 		 * If we can't tell the PMIC to shutdown, instead reset
@@ -583,33 +543,21 @@ void board_hibernate(void)
 		;
 }
 
+/* TODO(b:111815817): Rammus uses EEPROM, will remove this later */
 int board_get_version(void)
 {
-	static int ver = -1;
-	uint8_t id3;
-
-	if (ver != -1)
-		return ver;
-
-	ver = 0;
-
-	/* First 2 strappings are binary. */
-	if (gpio_get_level(GPIO_BOARD_VERSION1))
-		ver |= 0x01;
-	if (gpio_get_level(GPIO_BOARD_VERSION2))
-		ver |= 0x02;
-
-	/*
-	 * The 3rd strapping pin is tristate.
-	 * id3 = 2 if Hi-Z, id3 = 1 if high, and id3 = 0 if low.
-	 */
-	id3 = gpio_get_ternary(GPIO_BOARD_VERSION3);
-	ver |= id3 * 0x04;
-
-	CPRINTS("Board ID = %d", ver);
-
-	return ver;
+	return -1;
 }
+
+const struct pwm_t pwm_channels[] = {
+	/*
+	 * 1.2kHz is a multiple of both 50 and 60. So a video recorder
+	 * (generally designed to ignore either 50 or 60 Hz flicker) will not
+	 * alias with refresh rate.
+	 */
+	[PWM_CH_KBLIGHT] = { 4, 0, 1200 },
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* Lid Sensor mutex */
 static struct mutex g_lid_mutex;
@@ -635,73 +583,76 @@ const matrix_3x3_t lid_standard_ref = {
 
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
-	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_BMA255,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bma2x2_accel_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bma255_data,
-	 .port = I2C_PORT_ACCEL,
-	 .addr = BMA2x2_I2C_ADDR1,
-	 .rot_standard_ref = &lid_standard_ref,
-	 .min_frequency = BMA255_ACCEL_MIN_FREQ,
-	 .max_frequency = BMA255_ACCEL_MAX_FREQ,
-	 .default_range = 2, /* g, to support tablet mode */
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMA255,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bma2x2_accel_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_bma255_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMA2x2_I2C_ADDR1,
+		.rot_standard_ref = &lid_standard_ref,
+		.min_frequency = BMA255_ACCEL_MIN_FREQ,
+		.max_frequency = BMA255_ACCEL_MAX_FREQ,
+		.default_range = 2, /* g, to support tablet mode */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
 		},
-		/* Sensor on in S3 */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-	 },
 	},
 	[BASE_ACCEL] = {
-	 .name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_ACCEL,
-	 .addr = BMI160_ADDR0,
-	 .rot_standard_ref = &base_standard_ref,
-	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
-	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
-	 .default_range = 2, /* g, to support tablet mode  */
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMI160_ADDR0,
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI160_ACCEL_MIN_FREQ,
+		.max_frequency = BMI160_ACCEL_MAX_FREQ,
+		.default_range = 2, /* g, to support tablet mode  */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
 		},
-		/* Sensor on in S3 */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-	 },
 	},
 	[BASE_GYRO] = {
-	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_ACCEL,
-	 .addr = BMI160_ADDR0,
-	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = &base_standard_ref,
-	 .min_frequency = BMI160_GYRO_MIN_FREQ,
-	 .max_frequency = BMI160_GYRO_MAX_FREQ,
+		.name = "Base Gyro",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMI160_ADDR0,
+		.default_range = 1000, /* dps */
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI160_GYRO_MIN_FREQ,
+		.max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -738,71 +689,3 @@ static void board_chipset_suspend(void)
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
-
-static void board_chipset_startup(void)
-{
-	/* Enable USB-A port. */
-	gpio_set_level(GPIO_USB1_ENABLE, 1);
-
-	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
-
-	gpio_set_level(GPIO_PP1800_DX_SENSOR, 1);
-}
-DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
-
-static void board_chipset_shutdown(void)
-{
-	/* Disable USB-A port. */
-	gpio_set_level(GPIO_USB1_ENABLE, 0);
-
-	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
-
-	gpio_set_level(GPIO_PP1800_DX_SENSOR, 0);
-}
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
-
-int board_has_working_reset_flags(void)
-{
-	int version = system_get_board_version();
-
-	/* Boards Rev1, Rev2 and Rev3 will lose reset flags on power cycle. */
-	if ((version == 1) || (version == 2) || (version == 3))
-		return 0;
-
-	/* All other board versions should have working reset flags */
-	return 1;
-}
-
-/*
- * I2C callbacks to ensure bus free time for battery I2C transactions is at
- * least 5ms.
- */
-#define BATTERY_FREE_MIN_DELTA_US		(5 * MSEC)
-static timestamp_t battery_last_i2c_time;
-
-static int is_battery_i2c(int port, int slave_addr)
-{
-	return (port == I2C_PORT_BATTERY) && (slave_addr == BATTERY_ADDR);
-}
-
-void i2c_start_xfer_notify(int port, int slave_addr)
-{
-	unsigned int time_delta_us;
-
-	if (!is_battery_i2c(port, slave_addr))
-		return;
-
-	time_delta_us = time_since32(battery_last_i2c_time);
-	if (time_delta_us >= BATTERY_FREE_MIN_DELTA_US)
-		return;
-
-	usleep(BATTERY_FREE_MIN_DELTA_US - time_delta_us);
-}
-
-void i2c_end_xfer_notify(int port, int slave_addr)
-{
-	if (!is_battery_i2c(port, slave_addr))
-		return;
-
-	battery_last_i2c_time = get_time();
-}

@@ -1,4 +1,4 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -30,6 +30,8 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
 
 #define CHARGING_VOLTAGE_MV_SAFE	8400
 #define CHARGING_CURRENT_MA_SAFE	1500
+
+/* TODO(b:111815315): Need to config/implement the battery related code */
 
 static const struct battery_info info = {
 	.voltage_max = 8700,
