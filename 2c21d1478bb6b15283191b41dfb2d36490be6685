@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "90960d41_aecede72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-07-25T18:41:10Z",
+      "side": 1,
+      "message": "Can you verify -u still compares versions correctly? Like cr50 won\u0027t consider an image version to be higher just because the micro version is non zero? \n\nIf cr50 is running 0.4.8 it will reject 0.3.7.1. \n\nSince the micro version is stored in the epoch we want to make sure it is cleaned properly.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 4
+      },
+      "revId": "2c21d1478bb6b15283191b41dfb2d36490be6685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39e11654_2b8aac3a",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
