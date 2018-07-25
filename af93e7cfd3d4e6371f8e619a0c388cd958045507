@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "49df3889_f19fa822",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-25T05:58:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a1cb1e1_05dc91eb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "af93e7cfd3d4e6371f8e619a0c388cd958045507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d8bcd2b_efa29d21",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
