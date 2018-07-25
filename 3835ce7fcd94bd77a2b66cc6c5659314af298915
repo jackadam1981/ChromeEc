@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09cd92e4_6a65072b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-25T14:39:05Z",
+      "side": 1,
+      "message": "can you also add\n,b:110076440",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "3835ce7fcd94bd77a2b66cc6c5659314af298915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd16739b_2d048153",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-25T14:39:05Z",
+      "side": 1,
+      "message": "From https://issuetracker.google.com/110076440#comment9, I would have expected this to be 0x44.\n\nDo we need another/different datasheet for this battery?",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "3835ce7fcd94bd77a2b66cc6c5659314af298915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
