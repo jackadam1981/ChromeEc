@@ -22,6 +22,30 @@
       "revId": "1a67d7a88f1c3aaa3fd0ec025321c5f128d61780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7173817e_7d67fcaf",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-07-25T18:38:06Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a such a good idea: the vast majority of cases there would be no micro field value to print, so we\u0027d just add noise to various messages.",
+      "parentUuid": "bb40894c_9d717977",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 27
+      },
+      "revId": "1a67d7a88f1c3aaa3fd0ec025321c5f128d61780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
