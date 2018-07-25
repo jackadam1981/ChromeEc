@@ -1151,6 +1151,30 @@
     },
     {
       "key": {
+        "uuid": "1e292f91_96952568",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-25T05:55:56Z",
+      "side": 1,
+      "message": "sorry what\u0027s the test for test_mw_mv testing?\nWe know from test_UnitSuffix that adding a unit  appends it to the name.\nWe know here that adding a unit that is already the suffix of the domain name gets ignored when appending to the name.",
+      "parentUuid": "a86d41de_74f87926",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 38
+      },
+      "revId": "e40a956fe108fc22756a49e11c99dacf2f0742e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f88967d_a2a5de55",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 1
