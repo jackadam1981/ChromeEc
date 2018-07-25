@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e126666a_c943bdcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-07-25T20:43:45Z",
+      "side": 1,
+      "message": "This is for every sensor and keyboard event.\n\nI don\u0027t want this to be misunderstood as a problem that only happens at CTS time.",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "8bfc84cb7f934dcd1505685d0d1cbbf2977a3a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fecb49ae_5ce01a30",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
