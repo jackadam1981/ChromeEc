@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c974bc26_6c1b7ec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-25T05:59:24Z",
+      "side": 1,
+      "message": ";)",
+      "parentUuid": "0bee465c_f492c83a",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "a79c854fe94652c40e205ff9a2e8e3b26f516421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc1960ad_a282e908",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
