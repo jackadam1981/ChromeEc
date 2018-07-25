@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "bd230c84_d1e8b4ab",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-25T01:31:01Z",
+      "side": 1,
+      "message": "This is still a real issue.",
+      "parentUuid": "2da3a964_77da0190",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 10
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1359c1e2_cddfa4e9",
         "filename": "common/rollback.c",
         "patchSetId": 7
