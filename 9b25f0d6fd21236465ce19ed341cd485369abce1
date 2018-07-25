@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "04c6ef8c_69745b28",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-07-25T00:59:14Z",
+      "side": 1,
+      "message": "Gotcha, thanks for the explanation! Maybe we could CPRINTS() something then? It would help to diagnose problems since rollback_add_entropy() can fail for many different reasons.",
+      "parentUuid": "e80198a5_30994a9d",
+      "range": {
+        "startLine": 352,
+        "startChar": 20,
+        "endLine": 352,
+        "endChar": 32
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2da3a964_77da0190",
         "filename": "common/rollback.c",
         "patchSetId": 7
