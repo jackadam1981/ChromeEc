@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1717e73_44e887f8",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-07-25T23:04:14Z",
+      "side": 1,
+      "message": "I will take the POWER_GOOD signal into account, maybe a separated CL, which also reverts the AP_RST_L confirmation. I am still verifying several scenarios.",
+      "parentUuid": "6ab9a9f8_04dab132",
+      "range": {
+        "startLine": 619,
+        "startChar": 5,
+        "endLine": 619,
+        "endChar": 27
+      },
+      "revId": "6cd28e0b74cb63eceb0741f13309d0188077ba9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dd667fa_e0ef55f2",
         "filename": "power/sdm845.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-07-23T22:18:00Z",
       "side": 1,
       "message": "Do we need to handle the PMIC_FAULT_L signal as well? That may happen and I\u0027m not sure if POWER_GOOD will go high or not when the PMIC faults.",
+      "revId": "6cd28e0b74cb63eceb0741f13309d0188077ba9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8eb570_bc7703b6",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-07-25T23:04:14Z",
+      "side": 1,
+      "message": "I will also take the PMIC_FAULT_L signal into account when using the POWER_GOOD signal.",
+      "parentUuid": "9dd667fa_e0ef55f2",
       "revId": "6cd28e0b74cb63eceb0741f13309d0188077ba9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
