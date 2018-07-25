@@ -46,6 +46,30 @@
       "revId": "a59ac0bc5c76260b0fd90485261d208ca4b0c820",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52575791_a66c1bec",
+        "filename": "include/chipset.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-25T21:44:02Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to hard-code them all, but leaving a gap for forward compatibility is just good practice.",
+      "parentUuid": "898dd554_12bc120b",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "a59ac0bc5c76260b0fd90485261d208ca4b0c820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
