@@ -22,6 +22,30 @@
       "revId": "166d6f9ba6b685e25340dc0ee27daed4ba1175ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2deba8fb_10aaf844",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-07-25T22:54:31Z",
+      "side": 1,
+      "message": "ANX7428 operates at a lower speed (400kHz) initially. Talk to it using this low speed to write some register such that the speed can be increased to 1MHz. Check b/78189419",
+      "parentUuid": "2a5bde7b_c72f7c81",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 50
+      },
+      "revId": "166d6f9ba6b685e25340dc0ee27daed4ba1175ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
