@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb40894c_9d717977",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-07-25T18:31:17Z",
+      "side": 1,
+      "message": "Can we make this always print 4 fields? It will make it easier to understand if there\u0027s a consistent format. If there isn\u0027t a valid timestamp, just print .0.",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 27
+      },
+      "revId": "1a67d7a88f1c3aaa3fd0ec025321c5f128d61780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
