@@ -70,6 +70,30 @@
       "revId": "a59ac0bc5c76260b0fd90485261d208ca4b0c820",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ea505e2_fa40d065",
+        "filename": "include/chipset.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-25T21:45:05Z",
+      "side": 1,
+      "message": "Maybe add a comment that new values must go at the end and you can never delete one; otherwise things can still get messed up.",
+      "parentUuid": "52575791_a66c1bec",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "a59ac0bc5c76260b0fd90485261d208ca4b0c820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
