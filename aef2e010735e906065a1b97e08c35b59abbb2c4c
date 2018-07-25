@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a5aeaa6_af68c70d",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-25T04:35:44Z",
+      "side": 1,
+      "message": "nit: This is very x86 specific. Would suggest renaming to indicate it\u0027s x86 specific. Or, what do you think about keeping it all local to power/intel_x86.c?",
+      "range": {
+        "startLine": 809,
+        "startChar": 22,
+        "endLine": 809,
+        "endChar": 28
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e2731d8_3d1baa1c",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3807,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-25T04:35:44Z",
+      "side": 1,
+      "message": "What makes ICL special in this case?",
+      "range": {
+        "startLine": 3805,
+        "startChar": 0,
+        "endLine": 3807,
+        "endChar": 6
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb549b7a_b4505bcd",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-25T04:35:44Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98610546_36cc0871",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-25T04:35:44Z",
+      "side": 1,
+      "message": "nit: here too.",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d01564c_d6e4cced",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-25T04:35:44Z",
+      "side": 1,
+      "message": "G3?",
+      "range": {
+        "startLine": 119,
+        "startChar": 50,
+        "endLine": 119,
+        "endChar": 52
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e00a596_ca8d8fca",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-25T04:35:44Z",
+      "side": 1,
+      "message": "de-asserted?",
+      "range": {
+        "startLine": 119,
+        "startChar": 21,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "167d8065_c30bbd7a",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-25T04:35:44Z",
+      "side": 1,
+      "message": "SLP_SUS_L deassertion is the chipset power up signal right? So if it\u0027s asserted, shouldn\u0027t that mean the system is in G3 or transitioning to G3?\n\nCan it be asserted in S5?\n\n(also, I only added a version of this for CNL because EC couldn\u0027t keep the system in pseudo G3 after a reboot and a version of this helped the chipset state machine catch up.)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 8
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
