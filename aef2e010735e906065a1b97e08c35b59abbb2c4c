@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "07fd26b3_dbf09766",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3807,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "Not for this change, but we should probably do this for rest of the chipsets too ;)",
+      "range": {
+        "startLine": 3805,
+        "startChar": 0,
+        "endLine": 3807,
+        "endChar": 6
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d003c83b_b9427a61",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "There is a pending CL to change the signature of this function: crrev.com/c/1139028.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb549b7a_b4505bcd",
         "filename": "power/icelake.c",
         "patchSetId": 8
@@ -59,6 +105,29 @@
       "writtenOn": "2018-07-25T04:35:44Z",
       "side": 1,
       "message": "nit: nothing on the first line in multi-line comments.",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05fe1de5_691bd215",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "I believe with eSPI if we are forcing shutdown, we would never end up in this case since it will always get handled by chipset_handle_espi_reset_assert above. Anyways, I think it doesn\u0027t hurt to keep this check in if this path was ever used by LPC.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
       "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -128,6 +197,29 @@
     },
     {
       "key": {
+        "uuid": "6b0669a9_6f6f8e2f",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right. Current state is POWER_S5 and now state machine is transitioning to G3S5? Also (!power_has_signals(IN_PCH_SLP_SUS_DEASSERTED))\n\ni.e. SLP_SUS is not deasserted i.e. SLP_SUS is asserted --\u003e Shouldn\u0027t state machine transition to S5G3?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 21
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "167d8065_c30bbd7a",
         "filename": "power/icelake.c",
         "patchSetId": 8
@@ -145,6 +237,80 @@
         "endLine": 122,
         "endChar": 8
       },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3e02fe_ea0decd3",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "extra blank line",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f131a07_3bd8f7a7",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "Why not just:\nreturn common_intel_x86_power_handle_state(state);\n\nnew_state is not used anywhere else.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4be4dce_e34b30b5",
+        "filename": "power/icelake.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "blank line not required.",
+      "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "755eb0b8_72c65f52",
+        "filename": "power/icelake.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-25T05:48:54Z",
+      "side": 1,
+      "message": "blank line not required?",
       "revId": "aef2e010735e906065a1b97e08c35b59abbb2c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
