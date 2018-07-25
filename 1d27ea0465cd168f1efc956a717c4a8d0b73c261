@@ -22,6 +22,30 @@
       "revId": "1d27ea0465cd168f1efc956a717c4a8d0b73c261",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30efe327_b1e19af2",
+        "filename": "board/cheza/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-07-25T22:56:13Z",
+      "side": 1,
+      "message": "4800 is working good. It looks OK on 1% duty cycles.",
+      "parentUuid": "02ab2312_71e85342",
+      "range": {
+        "startLine": 136,
+        "startChar": 35,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "1d27ea0465cd168f1efc956a717c4a8d0b73c261",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
