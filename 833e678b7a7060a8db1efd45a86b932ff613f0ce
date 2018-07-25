@@ -22,6 +22,30 @@
       "revId": "833e678b7a7060a8db1efd45a86b932ff613f0ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29af855b_d1ef44c6",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1286275
+      },
+      "writtenOn": "2018-07-25T07:03:00Z",
+      "side": 1,
+      "message": "@Jett, \nWe removed GPIO_PULL_UP for volume button up \u0026 down and verified the function by OEM.\n\nGPIO_INT(EC_VOLUP_BTN_ODL, PIN(7, 5), GPIO_INT_BOTH, button_interrupt)\nGPIO_INT(EC_VOLDN_BTN_ODL, PIN(4, 0), GPIO_INT_BOTH, button_interrupt)\n\nThe volume buttons are workable without GPIO_PULL_UP,\nWe will create a new CL for this change, thanks.",
+      "parentUuid": "a3abf418_1dfa99b8",
+      "range": {
+        "startLine": 17,
+        "startChar": 54,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "833e678b7a7060a8db1efd45a86b932ff613f0ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
