@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b9b7e768_788df91d",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-25T07:34:48Z",
+      "side": 1,
+      "message": "Yeah it\u0027s a bit tricky. And there isn\u0027t that much the host can do in case of errors anyway...",
+      "parentUuid": "04c6ef8c_69745b28",
+      "range": {
+        "startLine": 352,
+        "startChar": 20,
+        "endLine": 352,
+        "endChar": 32
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2da3a964_77da0190",
         "filename": "common/rollback.c",
         "patchSetId": 7
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "This is still a real issue.",
       "parentUuid": "2da3a964_77da0190",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 10
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4f326d_f7e37563",
+        "filename": "common/rollback.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-25T07:34:48Z",
+      "side": 1,
+      "message": "Actually, no, it\u0027s not. The hook task will finish executing add_entropy_deferred before it gets run again.",
+      "parentUuid": "bd230c84_d1e8b4ab",
       "range": {
         "startLine": 359,
         "startChar": 1,
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "34922e40_4d6822e3",
+      "range": {
+        "startLine": 395,
+        "startChar": 2,
+        "endLine": 395,
+        "endChar": 12
+      },
+      "revId": "9b25f0d6fd21236465ce19ed341cd485369abce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8382899d_29a68e5a",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-07-25T07:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c5bda9e_8dc92112",
       "range": {
         "startLine": 395,
         "startChar": 2,
