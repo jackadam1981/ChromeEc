@@ -70,6 +70,30 @@
       "revId": "ec69b7213144947ba954633dc18d872a52266453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d42147f5_631cd2af",
+        "filename": "common/chipset.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-25T16:05:57Z",
+      "side": 1,
+      "message": "Done, at host_command_get_uptime_info.  I also put some more information in the protocol struct",
+      "parentUuid": "a835237d_e5291987",
+      "range": {
+        "startLine": 53,
+        "startChar": 33,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "ec69b7213144947ba954633dc18d872a52266453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
