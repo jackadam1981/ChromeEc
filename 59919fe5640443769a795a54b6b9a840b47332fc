@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04a0b8ea_ccc0dc7f",
+        "filename": "power/icelake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T02:08:09Z",
+      "side": 1,
+      "message": "I added a TODO here and below noting that this can be replaced with power_wait_signals_timeout().",
+      "parentUuid": "1ef2a0ef_d0176a4b",
+      "range": {
+        "startLine": 33,
+        "startChar": 49,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "59919fe5640443769a795a54b6b9a840b47332fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d12020b9_1cb26848",
         "filename": "power/icelake.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-10T17:13:51Z",
       "side": 1,
       "message": "similar comment about deadline and sleeps",
+      "range": {
+        "startLine": 103,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 16
+      },
+      "revId": "59919fe5640443769a795a54b6b9a840b47332fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d4ed3c_19801060",
+        "filename": "power/icelake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T02:08:09Z",
+      "side": 1,
+      "message": "see reply above",
+      "parentUuid": "d12020b9_1cb26848",
       "range": {
         "startLine": 103,
         "startChar": 3,
