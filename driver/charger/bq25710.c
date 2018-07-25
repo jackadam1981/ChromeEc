@@ -381,3 +381,70 @@ error:
 	return 0;
 }
 #endif /* CONFIG_CHARGE_RAMP_HW */
+
+#ifdef CONFIG_CMD_CHARGER
+static int console_command_bq25710(int argc, char **argv)
+{
+	int reg, rv;
+	int tries_left = 25;
+
+	/* Exit low power mode */
+	raw_read16(BQ25710_REG_CHARGE_OPTION_0, &reg);
+	reg &= ~BQ25710_CHARGE_OPTION_0_LOW_POWER_MODE;
+	raw_write16(BQ25710_REG_CHARGE_OPTION_0, reg);
+
+	/* Enable all ADC channels */
+	reg = BQ25710_ADC_OPTION_ADC_START | BQ25710_ADC_OPTION_EN_ADC_IIN;
+	raw_write16(BQ25710_REG_ADC_OPTION, reg | 0x20ff);
+
+	/* sanity check for debug */
+	raw_read16(BQ25710_REG_ADC_OPTION, &reg);
+	ccprintf("adc_option = 0x%04x\n", reg);
+
+	/*
+	 * Wait until the ADC operation completes. The spec says typical
+	 * conversion time is 10 msec. If low power mode isn't exited first,
+	 * then the conversion time jumps to ~60 msec.
+	 */
+	do {
+		msleep(5);
+		raw_read16(BQ25710_REG_ADC_OPTION, &reg);
+	} while (--tries_left && (reg & BQ25710_ADC_OPTION_ADC_START));
+
+	/* Could not complete read */
+	if (reg & BQ25710_ADC_OPTION_ADC_START) {
+		ccprintf("ADC register read didn't complete\n");
+	} else {
+		ccprintf("Reading BQ25710 ADC results: tries = %d\n", tries_left);
+		/* Get results */
+		rv = raw_read16(BQ25710_REG_ADC_VBUS_PSYS, &reg);
+		if (!rv)
+			ccprintf("[0x%02x]: %x VBUS = %d mV, PSYS = %d mW\n",
+				 BQ25710_REG_ADC_VBUS_PSYS, reg,
+				 (reg >> 8) * 12, (reg & 0xff) * 64);
+
+		rv = raw_read16(BQ25710_REG_ADC_IBAT, &reg);
+		if (!rv)
+			ccprintf("[0x%02x]: %x Ichg = %d mA, idchg = %d mA\n",
+				 BQ25710_REG_ADC_IBAT, reg,
+				 ((reg >> 8) & 0x7f) * 64, (reg & 0x7f) << 8);
+
+		rv = raw_read16(BQ25710_REG_ADC_CMPIN_IIN, &reg);
+		if (!rv)
+			ccprintf("[0x%02x]: %x Iin = %d mA, CmpIn = %d mV\n",
+				 BQ25710_REG_ADC_CMPIN_IIN, reg,
+				 (reg >> 8) * 50, (reg & 0xff) * 12);
+
+		rv = raw_read16(BQ25710_REG_ADC_VSYS_VBAT, &reg);
+		if (!rv)
+			ccprintf("[0x%02x]: %x Vsys = %d mV, Vbat = %d mV\n",
+				 BQ25710_REG_ADC_VSYS_VBAT, reg,
+				 (reg >> 8) * 64, (reg & 0xff) * 64);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bq25710, console_command_bq25710,
+			"no params",
+			"Trigger ADC read");
+#endif /* CONFIG_CMD_CHARGER */
