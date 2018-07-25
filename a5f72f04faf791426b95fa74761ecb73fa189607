@@ -22,6 +22,30 @@
       "revId": "a5f72f04faf791426b95fa74761ecb73fa189607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951d67c0_a9395fce",
+        "filename": "power/icelake.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-25T16:15:56Z",
+      "side": 1,
+      "message": "I added this so that I would work with the pending CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1139028. I have put a CQ-DEPEND on that to make sure this won\u0027t land before that one.",
+      "parentUuid": "37561933_f8cc670d",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "a5f72f04faf791426b95fa74761ecb73fa189607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
