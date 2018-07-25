@@ -22,6 +22,30 @@
       "revId": "a59ac0bc5c76260b0fd90485261d208ca4b0c820",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898dd554_12bc120b",
+        "filename": "include/chipset.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-25T18:24:56Z",
+      "side": 1,
+      "message": "That\u0027s a good idea, I\u0027ll address it in this CL.\n\nThe pre-cq fault is a known issue based on the comms I\u0027m seeing in #crosoncall right now.",
+      "parentUuid": "49b014c4_14fe421b",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "a59ac0bc5c76260b0fd90485261d208ca4b0c820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
