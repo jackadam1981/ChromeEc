@@ -69,6 +69,30 @@
       "revId": "47c23e5bf6038e57e0fb4ed657a64fbeeca6e801",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31344d8a_9d8109da",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-25T01:43:26Z",
+      "side": 1,
+      "message": "/* Experimentally, 15 iterations is usually sufficient. */ :)",
+      "parentUuid": "f868d248_5076c3e5",
+      "range": {
+        "startLine": 332,
+        "startChar": 43,
+        "endLine": 332,
+        "endChar": 45
+      },
+      "revId": "47c23e5bf6038e57e0fb4ed657a64fbeeca6e801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
