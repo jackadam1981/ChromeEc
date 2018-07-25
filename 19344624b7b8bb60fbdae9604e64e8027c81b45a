@@ -22,6 +22,30 @@
       "revId": "19344624b7b8bb60fbdae9604e64e8027c81b45a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0727665_2ffb2196",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-07-25T18:29:15Z",
+      "side": 1,
+      "message": "ah, that\u0027s right, there is only one instance of .micro",
+      "parentUuid": "565122e0_a9add68e",
+      "range": {
+        "startLine": 1159,
+        "startChar": 2,
+        "endLine": 1159,
+        "endChar": 47
+      },
+      "revId": "19344624b7b8bb60fbdae9604e64e8027c81b45a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
