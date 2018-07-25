@@ -22,6 +22,30 @@
       "revId": "1aa876ff0b89234345386b38eea37716b014eddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "888f1809_77de2cee",
+        "filename": "board/bip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-07-25T19:25:19Z",
+      "side": 1,
+      "message": "Thanks for catching that, Jett!\nNow I see bigger problems; R1123 and C916 are 0V on both sides; I\u0027ll file a bug and we can investigate.",
+      "parentUuid": "beda7fe1_d32de994",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "1aa876ff0b89234345386b38eea37716b014eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
