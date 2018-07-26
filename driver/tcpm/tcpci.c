@@ -213,7 +213,7 @@ int tcpci_tcpc_drp_toggle(int port, int enable)
 	int rv;
 
 	if (!enable) {
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+#ifdef 1
 		struct usb_mux *mux = &usb_muxes[port];
 		if (mux->board_init)
 			return mux->board_init(mux);

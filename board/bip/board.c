@@ -41,6 +41,17 @@ static void ppc_interrupt(enum gpio_signal signal)
 		sn5s330_interrupt(1);
 }
 
+
+
+static void init_c1mux(void) {
+	// i2c_write8(4, 0x16, 0xD3, 0x98);
+}
+DECLARE_DEFERRED(init_c1mux);
+
+static void c1mux_interrupt(enum gpio_signal signal) {
+	hook_call_deferred(&init_c1mux_data, 0);
+}
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/

@@ -37,6 +37,8 @@ GPIO_INT(AC_PRESENT, 	 PIN(A, 7), GPIO_INT_BOTH, extpower_interrupt)		/* ACOK_OD
 GPIO_INT(ESPI_RESET_L, 	 PIN(D, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V, espi_reset_pin_asserted_interrupt) /* eSPI_reset# */
 #endif
 
+GPIO_INT(USB_C1_MUX_INT_ODL, PIN(E, 5), GPIO_INT_FALLING, c1mux_interrupt)
+
 GPIO(PCH_PLTRST_L,	 PIN(E, 3), GPIO_INPUT)		/* PLT_RST_L: Platform Reset from SoC */
 GPIO(SYS_RESET_L,	 PIN(B, 6), GPIO_ODR_HIGH)	/* SYS_RST_ODL */
 /*
@@ -56,6 +58,7 @@ GPIO(PP3300_PG,		 PIN(K, 1), GPIO_INPUT)		/* PP3300_PG_OD */
 GPIO(PMIC_EN,		 PIN(D, 7), GPIO_OUT_LOW)	/* Enable A Rails via PMIC */
 GPIO(PCH_RSMRST_L,	 PIN(C, 6), GPIO_OUT_LOW)	/* RSMRST# to SOC. All _A rails now up. */
 GPIO(PCH_SYS_PWROK,	 PIN(K, 4), GPIO_OUT_LOW)	/* EC_PCH_PWROK. All S0 rails now up. */
+
 
 /* Peripheral rails */
 GPIO(ENABLE_BACKLIGHT,		PIN(B, 5), GPIO_ODR_HIGH |

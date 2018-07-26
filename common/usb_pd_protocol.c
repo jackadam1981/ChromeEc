@@ -2794,6 +2794,11 @@ void pd_task(void *u)
 					PD_POWER_SUPPLY_TURN_ON_DELAY,
 #endif
 					PD_STATE_SRC_DISCOVERY);
+				{
+				struct usb_mux *mux = &usb_muxes[port];
+				if (mux->board_init)
+					mux->board_init(mux);
+				}
 			}
 			break;
 		case PD_STATE_SRC_DISCOVERY:

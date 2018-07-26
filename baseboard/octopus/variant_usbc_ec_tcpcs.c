@@ -60,6 +60,15 @@ static void board_it83xx_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 }
 
+volatile int DPEQ = 0x80;
+static int ps8751_tune_mux(const struct usb_mux *mux)
+{
+	ccprintf("***** ps8751_tune_mux\n");
+	i2c_write8(4, 0x16, 0xD3, DPEQ);
+	return EC_SUCCESS;
+}
+
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		/* Driver uses I2C_PORT_USB_MUX as I2C port */
@@ -73,6 +82,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 			I2C_PORT_USBC1, PS8751_I2C_ADDR1),
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &board_it83xx_hpd_status,
+		.board_init = &ps8751_tune_mux,
 	}
 };
 
@@ -100,6 +110,7 @@ void variant_tcpc_init(void)
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+	i2c_write8(4, 0x16, 0xD3, 0x98);
 }
 /* Called after the baseboard_tcpc_init (via +2) */
 DECLARE_HOOK(HOOK_INIT, variant_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
