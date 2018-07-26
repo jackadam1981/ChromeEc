@@ -8,7 +8,6 @@
 #include "trng.h"
 
 /* Firmware blob for crypto accelerator */
-
 /* AUTO-GENERATED.  DO NOT MODIFY. */
 /* clang-format off */
 static const uint32_t IMEM_dcrypto_bn[] = {
@@ -434,7 +433,7 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x080000d5,	/* call &mul1_exp */
 0x0c000000,	/* ret */
 /* } */
-/* @0x152: function modexp_blinded[76] { */
+/* @0x152: function modexp_blinded[68] { */
 #define CF_modexp_blinded_adr 338
 0x080000ac,	/* call &mulx */
 0x84004060,	/* ldi r0, [#3] */
@@ -484,7 +483,7 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x510c0301,	/* addi r3, r3, #1 */
 0x50086201,	/* add r2, r2, r3 << 8 */
 0x94800200,	/* ldlc r2 */
-0x06000019,	/* loop *0 ( */
+0x06000011,	/* loop *0 ( */
 0x080000f0,	/* call &sqrx_exp */
 0x08000103,	/* call &mulx_exp */
 0x84004060,	/* ldi r0, [#3] */
@@ -501,16 +500,7 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x8c0c1400,	/* ld *3, *4 */
 0x50884200,	/* addc r2, r2, r2 */
 0x90700300,	/* st *3, *4++ */
-0x0600c008,	/* loop *6 ( */
-0x99080000,	/* strnd r2 */
-0x8c041500,	/* ld *1, *5 */
-0x90540300,	/* st *3, *5 */
-0x7c8c0800,	/* ldr *3, *0++ */
-0x7c000200,	/* mov r0, r2 */
-0x99080000,	/* strnd r2 */
-0x64086008,	/* selc r2, r0, r3 */
-0x90740300,	/* st *3, *5++ */
-/*		   ) */
+0x08000111,	/* call &selOutOrC */
 0xfc000000,	/* nop */
 /*		   ) */
 0x84004060,	/* ldi r0, [#3] */
@@ -518,8 +508,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x080000d5,	/* call &mul1_exp */
 0x0c000000,	/* ret */
 /* } */
-/* @0x19e: function modload[12] { */
-#define CF_modload_adr 414
+/* @0x196: function modload[12] { */
+#define CF_modload_adr 406
 0x4c7fff00,	/* xor r31, r31, r31 */
 0x84004000,	/* ldi r0, [#0] */
 0x95800000,	/* lddmp r0 */
@@ -534,11 +524,11 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x0c000000,	/* ret */
 /* } */
 #ifdef CONFIG_DCRYPTO_RSA_SPEEDUP
-/* @0x1aa: function selA0orC4[16] { */
-#define CF_selA0orC4_adr 426
+/* @0x1a2: function selA0orC4[16] { */
+#define CF_selA0orC4_adr 418
 0x99000000,	/* strnd r0 */
 0x44000000,	/* or r0, r0, r0 */
-0x100011b4,	/* bl selA0orC4_invsel */
+0x100011ac,	/* bl selA0orC4_invsel */
 0x50840002,	/* addc r1, r0, r0 << 16 */
 0x6458da01,	/* sell r22, r26, r6 */
 0x645cfb01,	/* sell r23, r27, r7 */
@@ -554,8 +544,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x6467a901,	/* sell r25, r9, r29 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x1ba: function mul4[169] { */
-#define CF_mul4_adr 442
+/* @0x1b2: function mul4[169] { */
+#define CF_mul4_adr 434
 0x58594600,	/* mul128 r22, r6l, r10l */
 0x59dd4600,	/* mul128 r23, r6u, r10u */
 0x58894600,	/* mul128 r2, r6u, r10l */
@@ -726,8 +716,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x50f7fd00,	/* addc r29, r29, r31 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x263: function sqr4[117] { */
-#define CF_sqr4_adr 611
+/* @0x25b: function sqr4[117] { */
+#define CF_sqr4_adr 603
 0x5858c600,	/* mul128 r22, r6l, r6l */
 0x59dcc600,	/* mul128 r23, r6u, r6u */
 0x5888c600,	/* mul128 r2, r6u, r6l */
@@ -846,8 +836,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x50f7fd00,	/* addc r29, r29, r31 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x2d8: function dod0[15] { */
-#define CF_dod0_adr 728
+/* @0x2d0: function dod0[15] { */
+#define CF_dod0_adr 720
 0x8c0c1100,	/* ld *3, *1 */
 0x58140100,	/* mul128 r5, r1l, r0l */
 0x58880100,	/* mul128 r2, r1u, r0l */
@@ -864,8 +854,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x50844190,	/* addc r1, r1, r2 >> 128 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x2e7: function dod1[9] { */
-#define CF_dod1_adr 743
+/* @0x2df: function dod1[9] { */
+#define CF_dod1_adr 735
 0x5801e500,	/* mul128 r0, r5l, r15l */
 0x5985e500,	/* mul128 r1, r5u, r15u */
 0x5889e500,	/* mul128 r2, r5u, r15l */
@@ -876,8 +866,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x50844190,	/* addc r1, r1, r2 >> 128 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x2f0: function dod2[9] { */
-#define CF_dod2_adr 752
+/* @0x2e8: function dod2[9] { */
+#define CF_dod2_adr 744
 0x58020500,	/* mul128 r0, r5l, r16l */
 0x59860500,	/* mul128 r1, r5u, r16u */
 0x588a0500,	/* mul128 r2, r5u, r16l */
@@ -888,8 +878,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x50844190,	/* addc r1, r1, r2 >> 128 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x2f9: function dod3[9] { */
-#define CF_dod3_adr 761
+/* @0x2f1: function dod3[9] { */
+#define CF_dod3_adr 753
 0x58022500,	/* mul128 r0, r5l, r17l */
 0x59862500,	/* mul128 r1, r5u, r17u */
 0x588a2500,	/* mul128 r2, r5u, r17l */
@@ -900,88 +890,88 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x50844190,	/* addc r1, r1, r2 >> 128 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x302: function redc4[97] { */
-#define CF_redc4_adr 770
+/* @0x2fa: function redc4[97] { */
+#define CF_redc4_adr 762
 0x7c001600,	/* mov r0, r22 */
-0x080002d8,	/* call &dod0 */
+0x080002d0,	/* call &dod0 */
 0x50581600,	/* add r22, r22, r0 */
 0x50dc3700,	/* addc r23, r23, r1 */
 0x50e3f800,	/* addc r24, r24, r31 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002e7,	/* call &dod1 */
+0x080002df,	/* call &dod1 */
 0x505c1700,	/* add r23, r23, r0 */
 0x50e03800,	/* addc r24, r24, r1 */
 0x50e49900,	/* addc r25, r25, r4 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002f0,	/* call &dod2 */
+0x080002e8,	/* call &dod2 */
 0x50601800,	/* add r24, r24, r0 */
 0x50e43900,	/* addc r25, r25, r1 */
 0x50e89a00,	/* addc r26, r26, r4 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002f9,	/* call &dod3 */
+0x080002f1,	/* call &dod3 */
 0x50641900,	/* add r25, r25, r0 */
 0x50e83a00,	/* addc r26, r26, r1 */
 0x50ec9b00,	/* addc r27, r27, r4 */
 0x508fff00,	/* addc r3, r31, r31 */
 0x7c001700,	/* mov r0, r23 */
-0x080002d8,	/* call &dod0 */
+0x080002d0,	/* call &dod0 */
 0x505c1700,	/* add r23, r23, r0 */
 0x50e03800,	/* addc r24, r24, r1 */
 0x50e7f900,	/* addc r25, r25, r31 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002e7,	/* call &dod1 */
+0x080002df,	/* call &dod1 */
 0x50601800,	/* add r24, r24, r0 */
 0x50e43900,	/* addc r25, r25, r1 */
 0x50e89a00,	/* addc r26, r26, r4 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002f0,	/* call &dod2 */
+0x080002e8,	/* call &dod2 */
 0x50641900,	/* add r25, r25, r0 */
 0x50e83a00,	/* addc r26, r26, r1 */
 0x50ec9b00,	/* addc r27, r27, r4 */
 0x508fff00,	/* addc r3, r31, r31 */
-0x080002f9,	/* call &dod3 */
+0x080002f1,	/* call &dod3 */
 0x50681a00,	/* add r26, r26, r0 */
 0x50ec3b00,	/* addc r27, r27, r1 */
 0x50f07c00,	/* addc r28, r28, r3 */
 0x508fff00,	/* addc r3, r31, r31 */
 0x7c001800,	/* mov r0, r24 */
-0x080002d8,	/* call &dod0 */
+0x080002d0,	/* call &dod0 */
 0x50601800,	/* add r24, r24, r0 */
 0x50e43900,	/* addc r25, r25, r1 */
 0x50ebfa00,	/* addc r26, r26, r31 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002e7,	/* call &dod1 */
+0x080002df,	/* call &dod1 */
 0x50641900,	/* add r25, r25, r0 */
 0x50e83a00,	/* addc r26, r26, r1 */
 0x50ec9b00,	/* addc r27, r27, r4 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002f0,	/* call &dod2 */
+0x080002e8,	/* call &dod2 */
 0x50681a00,	/* add r26, r26, r0 */
 0x50ec3b00,	/* addc r27, r27, r1 */
 0x50f09c00,	/* addc r28, r28, r4 */
 0x5093e300,	/* addc r4, r3, r31 */
-0x080002f9,	/* call &dod3 */
+0x080002f1,	/* call &dod3 */
 0x506c1b00,	/* add r27, r27, r0 */
 0x50f03c00,	/* addc r28, r28, r1 */
 0x50f49d00,	/* addc r29, r29, r4 */
 0x508fff00,	/* addc r3, r31, r31 */
 0x7c001900,	/* mov r0, r25 */
-0x080002d8,	/* call &dod0 */
+0x080002d0,	/* call &dod0 */
 0x50641900,	/* add r25, r25, r0 */
 0x50d83a00,	/* addc r22, r26, r1 */
 0x50dffb00,	/* addc r23, r27, r31 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002e7,	/* call &dod1 */
+0x080002df,	/* call &dod1 */
 0x50581600,	/* add r22, r22, r0 */
 0x50dc3700,	/* addc r23, r23, r1 */
 0x50e09c00,	/* addc r24, r28, r4 */
 0x5093ff00,	/* addc r4, r31, r31 */
-0x080002f0,	/* call &dod2 */
+0x080002e8,	/* call &dod2 */
 0x505c1700,	/* add r23, r23, r0 */
 0x50e03800,	/* addc r24, r24, r1 */
 0x50e49d00,	/* addc r25, r29, r4 */
 0x508fe300,	/* addc r3, r3, r31 */
-0x080002f9,	/* call &dod3 */
+0x080002f1,	/* call &dod3 */
 0x50601800,	/* add r24, r24, r0 */
 0x50e43900,	/* addc r25, r25, r1 */
 0x508fe300,	/* addc r3, r3, r31 */
@@ -1000,8 +990,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x666ac208,	/* selcx r26, r2, r22 */
 0x0c000000,	/* ret */
 /* } */
-/* @0x363: function modexp_1024[101] { */
-#define CF_modexp_1024_adr 867
+/* @0x35b: function modexp_1024[101] { */
+#define CF_modexp_1024_adr 859
 0x7c081f00,	/* mov r2, r31 */
 0x80080006,	/* movi r2.0l, #6 */
 0x8088000a,	/* movi r2.1l, #10 */
@@ -1027,8 +1017,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 /*		   ) */
 0x99780000,	/* strnd r30 */
 0x507bde00,	/* add r30, r30, r30 */
-0x080001ba,	/* call &mul4 */
-0x08000302,	/* call &redc4 */
+0x080001b2,	/* call &mul4 */
+0x080002fa,	/* call &redc4 */
 0x7c281a00,	/* mov r10, r26 */
 0x7c2c1b00,	/* mov r11, r27 */
 0x7c301c00,	/* mov r12, r28 */
@@ -1038,8 +1028,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x99200000,	/* strnd r8 */
 0x99240000,	/* strnd r9 */
 0x05400033,	/* loop #1024 ( */
-0x08000263,	/* call &sqr4 */
-0x08000302,	/* call &redc4 */
+0x0800025b,	/* call &sqr4 */
+0x080002fa,	/* call &redc4 */
 0x99180000,	/* strnd r6 */
 0x991c0000,	/* strnd r7 */
 0x99200000,	/* strnd r8 */
@@ -1048,8 +1038,8 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x7c1c1b00,	/* mov r7, r27 */
 0x7c201c00,	/* mov r8, r28 */
 0x7c241d00,	/* mov r9, r29 */
-0x080001ba,	/* call &mul4 */
-0x08000302,	/* call &redc4 */
+0x080001b2,	/* call &mul4 */
+0x080002fa,	/* call &redc4 */
 0x99000000,	/* strnd r0 */
 0x5002b500,	/* add r0, r21, r21 */
 0x99000000,	/* strnd r0 */
@@ -1072,7 +1062,7 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x995c0000,	/* strnd r23 */
 0x99600000,	/* strnd r24 */
 0x99640000,	/* strnd r25 */
-0x080001aa,	/* call &selA0orC4 */
+0x080001a2,	/* call &selA0orC4 */
 0x99180000,	/* strnd r6 */
 0x991c0000,	/* strnd r7 */
 0x99200000,	/* strnd r8 */
@@ -1095,13 +1085,13 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 0x7c2c1f00,	/* mov r11, r31 */
 0x7c301f00,	/* mov r12, r31 */
 0x7c341f00,	/* mov r13, r31 */
-0x080001ba,	/* call &mul4 */
-0x08000302,	/* call &redc4 */
+0x080001b2,	/* call &mul4 */
+0x080002fa,	/* call &redc4 */
 0x5419da00,	/* sub r6, r26, r14 */
 0x549dfb00,	/* subb r7, r27, r15 */
 0x54a21c00,	/* subb r8, r28, r16 */
 0x54a63d00,	/* subb r9, r29, r17 */
-0x080001aa,	/* call &selA0orC4 */
+0x080001a2,	/* call &selA0orC4 */
 0x05004001,	/* loop #4 ( */
 0x90740d00,	/* st *5++, *5++ */
 /*		   ) */
@@ -1110,6 +1100,7 @@ static const uint32_t IMEM_dcrypto_bn[] = {
 #endif // CONFIG_DCRYPTO_RSA_SPEEDUP
 };
 /* clang-format on */
+
 
 struct DMEM_ctx_ptrs {
 	uint32_t pMod;
