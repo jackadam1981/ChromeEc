@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0a8757a_902c761c",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-26T21:55:21Z",
+      "side": 1,
+      "message": "I changed this in a previous CL.",
+      "parentUuid": "7ffff13a_c7f375fd",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 53
+      },
+      "revId": "46530f69199adb269b8f405cc6be9d4efe7995bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4b97f4e_c353d831",
         "filename": "baseboard/dragonegg/baseboard.c",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "46530f69199adb269b8f405cc6be9d4efe7995bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f003ec85_bf6d8290",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-26T21:55:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4b97f4e_c353d831",
+      "revId": "46530f69199adb269b8f405cc6be9d4efe7995bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
