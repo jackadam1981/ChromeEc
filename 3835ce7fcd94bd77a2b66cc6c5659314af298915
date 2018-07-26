@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d18b429_f02b54dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-07-26T09:07:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09cd92e4_6a65072b",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "3835ce7fcd94bd77a2b66cc6c5659314af298915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd16739b_2d048153",
         "filename": "board/fleex/battery.c",
         "patchSetId": 1
