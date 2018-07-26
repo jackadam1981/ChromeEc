@@ -22,6 +22,30 @@
       "revId": "d13d84b0f64bede406326957e3eab5f45e869d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8ec7a2_3a36bea5",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-26T17:59:35Z",
+      "side": 1,
+      "message": "Actually this is somewhat of a \"drive by\" addition. It\u0027s not required for the workaround, but it\u0027s something I want to have enabled for the project. What this config option does is to enable the EC console command to read the manufacturer access registers.\n\nbattmfgacc 0x54 0x44 0x5 -\u003e returns the operational status register contents\n\nIt\u0027s very handy to have and we usually have this enabled on our projects.",
+      "parentUuid": "09d78340_1362c899",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "d13d84b0f64bede406326957e3eab5f45e869d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
