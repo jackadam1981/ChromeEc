@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "d39262d9_816b3dfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-07-26T00:03:11Z",
+      "side": 1,
+      "message": "will hopefully have",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 13,
+        "endChar": 59
+      },
+      "revId": "b47680c475ddbb4ab2f4b31989e5a0c4fba3d7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1df325_c59c7491",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-07-26T00:03:11Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "b47680c475ddbb4ab2f4b31989e5a0c4fba3d7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba48b7af_b3c674e9",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-07-26T00:03:11Z",
+      "side": 1,
+      "message": "need descriptive comments for all of these",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 35
+      },
+      "revId": "b47680c475ddbb4ab2f4b31989e5a0c4fba3d7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b07b2670_36a204e1",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 7
