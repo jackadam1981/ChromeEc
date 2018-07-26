@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59173bf0_e5692483",
+        "filename": "board/rammus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "Does this apply to rammus battery? I believe you want to handle all of that as part of b/111815315?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5579d61_844f6c3b",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "CC_SYSTEM",
+      "range": {
+        "startLine": 56,
+        "startChar": 41,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d10466_b8864879",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "CC_SYSTEM",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa99ded_2b5b5b86",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "LID_OPEN should be added as well.",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d828ab6_9e1f608f",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "This is not required on Rammus. It was added for a workaround on Nautilus.",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 41
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa0f7d5_fd2a0032",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "This is not required.",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40475515_defb6856",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "Without BOARD_VERSION_CUSTOM, this is of no use.",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 21
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4719f810_227cf195",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "Do you need internal pull-up? in case sub-board is not present?",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcc846a_b3075c0b",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "This should go after all interrupts are defined. Else you will run into compilation issues when CONFIG_POWER_S0IX is not defined.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a0b052_ae1dd0d9",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "There is external pull-up. Do you still need this?",
+      "range": {
+        "startLine": 23,
+        "startChar": 52,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56e46ca6_21b1cd5d",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41cd5923_1c87aa0e",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be configured as GPIO_INPUT | GPIO_PULL_UP to avoid power leakage in suspend states? Same with other reserved pins here.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
