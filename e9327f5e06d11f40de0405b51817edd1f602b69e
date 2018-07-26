@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd005eab_2a760d31",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-26T08:15:14Z",
+      "side": 1,
+      "message": "checkpatch doesn\u0027t like this line:\n\nWARNING: Avoid unnecessary line continuations\n            #216: FILE: board/cr50/tpm2/virtual_nvmem.c:94:\n            +\t\t\t */\t\t\t\t\t\t  \\\n\n\nThis whole macro feels a bit gross, will have a think about how to do something nicer, whilst ideally keeping the config and code separate.",
+      "revId": "e9327f5e06d11f40de0405b51817edd1f602b69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
