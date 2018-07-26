@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "438de24c_44c4234c",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T17:26:08Z",
+      "side": 1,
+      "message": "CC_SYSTEM",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 53
+      },
+      "revId": "81b781b636b5ab0a356c3c769b47def6a35cb401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96d655e_7045a74a",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T17:26:08Z",
+      "side": 1,
+      "message": "CC_SYSTEM",
+      "range": {
+        "startLine": 18,
+        "startChar": 41,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "81b781b636b5ab0a356c3c769b47def6a35cb401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc20764_a33d8aaf",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T17:26:08Z",
+      "side": 1,
+      "message": "nit: It might be helpful to add indexes here -\n\n[X86_SLP_S0_DEASSERTED] \u003d { GPIO_SLP_S0_L.\n                            POWER_SIGNAL_ACTIVE_HIGH | \n                            POWER_SIGNAL_DISABLE_AT_BOOT,\n                            \"SLP_S0_DEASSERTED\" },",
+      "revId": "81b781b636b5ab0a356c3c769b47def6a35cb401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e860aac7_74e3d49b",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T17:26:08Z",
+      "side": 1,
+      "message": "Not for this CL, but ideally this should just be auto-selected by the chipset config.",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "81b781b636b5ab0a356c3c769b47def6a35cb401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
