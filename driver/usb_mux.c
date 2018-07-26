@@ -16,6 +16,9 @@
 
 static int enable_debug_prints;
 
+#define USB_MUX_FLAG_IN_LPM (1 << 0) /* Device is in low power mode. */
+static uint8_t flags[CONFIG_USB_PD_PORT_COUNT];
+
 void usb_mux_init(int port)
 {
 	const struct usb_mux *mux = &usb_muxes[port];
@@ -26,9 +29,58 @@ void usb_mux_init(int port)
 	if (res)
 		CPRINTS("Err: init mux port(%d): %d", port, res);
 
-	/* Apply board specific initialization */
-	if (mux->board_init)
-		mux->board_init(mux);
+	/*
+	 * Apply any initial configuration if present (first init counts as
+	 * leaving LPM).
+	 */
+	if (mux->config_after_lpm){
+		res = mux->config_after_lpm(mux);
+
+		if (res)
+			CPRINTS("Err: config_after_lpm mux port(%d): %d", port,
+				res);
+	}
+}
+
+void usb_mux_enter_lpm(int port)
+{
+	const struct usb_mux *mux = &usb_muxes[port];
+	int res;
+
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
+	/* Set LPM flag */
+	flags[port] |= USB_MUX_FLAG_IN_LPM;
+
+	/* Apply any low power customization if present */
+	if (mux->enter_lpm){
+		res = mux->enter_lpm(mux);
+
+		if (res)
+			CPRINTS("Err: enter_lpm mux port(%d): %d", port, res);
+	}
+}
+
+
+static void check_for_lpm_exit(int port)
+{
+	const struct usb_mux *mux = &usb_muxes[port];
+	int res;
+
+	if (!(flags[port] & USB_MUX_FLAG_IN_LPM))
+		return;
+
+	/* Clear LPM flag */
+	flags[port] &= ~USB_MUX_FLAG_IN_LPM;
+
+	/* Apply any configuration after LPM exit if present */
+	if (mux->config_after_lpm){
+		res = mux->config_after_lpm(mux);
+
+		if (res)
+			CPRINTS("Err: config_after_lpm mux port(%d): %d", port,
+				res);
+	}
 }
 
 /*
@@ -41,6 +93,10 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 	mux_state_t mux_state;
+
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
+	check_for_lpm_exit(port);
 
 #ifdef CONFIG_USB_CHARGER
 	/* Configure USB2.0 */
@@ -68,6 +124,10 @@ int usb_mux_get(int port, const char **dp_str, const char **usb_str)
 	mux_state_t mux_state;
 	const char *dp, *usb;
 
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
+	check_for_lpm_exit(port);
+
 	res = mux->driver->get(mux->port_addr, &mux_state);
 	if (res) {
 		CPRINTS("Err: get mux port(%d): %d", port, res);
@@ -88,6 +148,10 @@ void usb_mux_flip(int port)
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 	mux_state_t mux_state;
+
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
+	check_for_lpm_exit(port);
 
 	res = mux->driver->get(mux->port_addr, &mux_state);
 	if (res) {

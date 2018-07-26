@@ -185,12 +185,12 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0x34,
 		.driver = &ps874x_usb_mux_driver,
-		.board_init = &ps874x_tune_mux,
+		.config_after_lpm = &ps874x_tune_mux,
 	},
 	{
 		.port_addr = 0x20,
 		.driver = &ps874x_usb_mux_driver,
-		.board_init = &ps874x_tune_mux,
+		.config_after_lpm = &ps874x_tune_mux,
 	}
 };
 

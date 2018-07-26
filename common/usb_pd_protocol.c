@@ -645,6 +645,7 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_USBC_SS_MUX
 		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
 			    pd[port].polarity);
+		usb_mux_enter_lpm(port);
 #endif
 		/* Disable TCPC RX */
 		tcpm_set_rx_enable(port, 0);
