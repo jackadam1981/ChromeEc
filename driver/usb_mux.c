@@ -16,19 +16,56 @@
 
 static int enable_debug_prints;
 
+#define USB_MUX_FLAG_IN_LPM (1 << 0) /* Device is in low power mode. */
+static uint8_t flags[CONFIG_USB_PD_PORT_COUNT];
+
+static void enter_lpm(int port)
+{
+	const struct usb_mux *mux = &usb_muxes[port];
+	int res;
+
+	/* Set LPM flag */
+	flags[port] |= USB_MUX_FLAG_IN_LPM;
+
+	/* Apply any low power customization if present */
+	if (mux->enter_lpm) {
+		res = mux->enter_lpm(mux);
+
+		if (res)
+			CPRINTS("Err: enter_lpm mux port(%d): %d", port, res);
+	}
+}
+
+static inline void exit_lpm(int port)
+{
+	/* If we are in low power, initialize device (which clears LPM flag) */
+	if (flags[port] & USB_MUX_FLAG_IN_LPM)
+		usb_mux_init(port);
+}
+
 void usb_mux_init(int port)
 {
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
 	res = mux->driver->init(mux->port_addr);
-	if (res)
+	if (res) {
 		CPRINTS("Err: init mux port(%d): %d", port, res);
+		return;
+	}
+
+	/* Device is always out of LPM after initialization. */
+	flags[port] &= ~USB_MUX_FLAG_IN_LPM;
 
 	/* Apply board specific initialization */
-	if (mux->board_init)
-		mux->board_init(mux);
+	if (mux->board_init) {
+		res = mux->board_init(mux);
+
+		if (res)
+			CPRINTS("Err: board_init mux port(%d): %d", port, res);
+	}
 }
 
 /*
@@ -41,6 +78,10 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 	mux_state_t mux_state;
+
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
+	exit_lpm(port);
 
 #ifdef CONFIG_USB_CHARGER
 	/* Configure USB2.0 */
@@ -59,6 +100,13 @@ void usb_mux_set(int port, enum typec_mux mux_mode,
 		CPRINTS(
 		     "usb/dp mux: port(%d) typec_mux(%d) usb2(%d) polarity(%d)",
 		     port, mux_mode, usb_mode, polarity);
+
+	/*
+	 * If we are completely disconnecting the mux, then we should put it in
+	 * its lowest power state.
+	 */
+	if (mux_mode == TYPEC_MUX_NONE && usb_mode == USB_SWITCH_DISCONNECT)
+		enter_lpm(port);
 }
 
 int usb_mux_get(int port, const char **dp_str, const char **usb_str)
@@ -67,6 +115,10 @@ int usb_mux_get(int port, const char **dp_str, const char **usb_str)
 	int res;
 	mux_state_t mux_state;
 	const char *dp, *usb;
+
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
+	exit_lpm(port);
 
 	res = mux->driver->get(mux->port_addr, &mux_state);
 	if (res) {
@@ -88,6 +140,10 @@ void usb_mux_flip(int port)
 	const struct usb_mux *mux = &usb_muxes[port];
 	int res;
 	mux_state_t mux_state;
+
+	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+
+	exit_lpm(port);
 
 	res = mux->driver->get(mux->port_addr, &mux_state);
 	if (res) {

@@ -76,13 +76,22 @@ struct usb_mux {
 	 * (for i2c muxes) or a port number (for GPIO 'muxes').
 	 */
 	const int port_addr;
+
 	/* Mux driver */
 	const struct usb_mux_driver *driver;
 
 	/**
-	 * Board specific initialization for USB mux that is
-	 * called after mux->driver->init() function and every time the port
-	 * leaves auto-toggle state.
+	 * Optional method that is called after the mux fully disconnects. The
+	 * mux->driver->init() method is called automatically upon the next
+	 * access to the device.
+	 *
+	 * @param mux USB mux to put into low power.
+	 * @return EC_SUCCESS on success, non-zero error code on failure.
+	 */
+	int (*enter_lpm)(const struct usb_mux *mux);
+
+	/**
+	 * Optional method for tuning for USB mux during mux->driver->init().
 	 *
 	 * @param mux USB mux to tune
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
@@ -113,7 +122,7 @@ extern struct usb_mux usb_muxes[];
 /**
  * Initialize USB mux to its default state.
  *
- * @param port  Port number.
+ * @param port Port number.
  */
 void usb_mux_init(int port);
 
