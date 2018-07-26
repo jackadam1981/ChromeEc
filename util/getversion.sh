@@ -122,8 +122,11 @@ echo "#define VERSION \"${ver}\""
 echo "#define BUILDER \"${USER}@`hostname`\""
 
 if [ -n "$global_dirty" ]; then
-    echo "/* Repo is dirty, using time of last compilation */"
-    echo "#define DATE \"$(date '+%F %T')\""
+    echo "/* Repo is dirty, using latest mtime in the tree */"
+    mtime=$(find . -type f \
+        ! -path './.*' ! -path './build/*' -printf "%TY-%Tm-%Td %TT'\n" | \
+        sort -nr | head -n 1 | cut -d. -f 1)
+    echo "#define DATE \"${mtime}\""
 else
     echo "/* Repo is clean, use the commit date of the last commit */"
     # If called from an ebuild we won't have a git repo, so redirect stderr
