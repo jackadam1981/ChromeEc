@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ffff13a_c7f375fd",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T20:39:22Z",
+      "side": 1,
+      "message": "This should probably be changed to CC_SYSTEM. Same for CPRINTF",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 53
+      },
+      "revId": "46530f69199adb269b8f405cc6be9d4efe7995bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b97f4e_c353d831",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T20:39:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be baseboard_tcpc_init?",
+      "revId": "46530f69199adb269b8f405cc6be9d4efe7995bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
