@@ -46,6 +46,52 @@
       "revId": "a5f72f04faf791426b95fa74761ecb73fa189607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb93304_81905808",
+        "filename": "power/icelake.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T17:10:11Z",
+      "side": 1,
+      "message": "I know the other chipsets implement it this way. But this can just go in the switch case below under:\n\nstate POWER_S5:\n\tif (forcing_shutdown) {\n\t\tpower_button_pch_release();\n\t\tforcing_shutdown \u003d 0;\n\t}\n\t...",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "a5f72f04faf791426b95fa74761ecb73fa189607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9481293c_e965ac65",
+        "filename": "power/icelake.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T17:10:11Z",
+      "side": 1,
+      "message": "I see one potential problem because of POWER_G3S5 being handled here. So the way the power sequencing works is:\n\n1. Power sequencing always starts in chipset_task in power/common.c: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/power/common.c#439\n\n2. Consider we are in G3. Loop in chipset task calls power_handle_state with state \u003d G3. No special action taken within this function. It calls common_intel_x86_power_handle_state at the bottom on line 129 with state \u003d G3.\n\n3. common_intel_x86_power_handle_state takes no action on that and control goes back to chipset_task.\n\n4. chipset_task calls power_common_state next which decides if it should transition to G3S5 based on want_g3_exit. Consider this is true and state is now set to G3S5.\n\n5. Next iteration of loop chipset_task calls power_handle_state with state \u003d G3S5. This function will set PP3300_A to 1 and start bringing the AP up i.e. wait for IN_PGOOD_ALL_CORE and then set DSWPWROK and wait for SLP_SUS. Once that is done it will pass control over to common_intel_x86_power_handle_state.\n\n6. common_intel_x86_power_handle_state now checks a number of things to decide if it is okay to boot the AP up : https://chromium.googlesource.com/chromiumos/platform/ec/+/master/power/intel_x86.c#273 by checking battery state of charge and charger state. If it finds that something is not right, then it returns to G3.\n\nThe problem I see here is the order of operations in #5 and #6 above. Shouldn\u0027t we wait until common_intel_x86_power_handle_state decides that it is okay to boot the AP up to enable PP3300_A? There is a chipset_pre_init_callback() present in that function which allows enabling of PP3300_A at the right time: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/power/intel_x86.c#315\n\nI know this code is very similar to cannonlake but I fear that we might run into issues with low battery where the AP/whole system could just brown because PP3300_A was enabled too early.\n\nYou can do that as a follow-up, but I think we should fix this behavior. Also, that way you won\u0027t have to wait for SLP_SUS. Intel common code already handles that after calling chipset_pre_init_callback by waiting for CHIPSET_G3S5_POWERUP_SIGNAL.",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 16
+      },
+      "revId": "a5f72f04faf791426b95fa74761ecb73fa189607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
