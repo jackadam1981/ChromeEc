@@ -151,6 +151,23 @@
     },
     {
       "key": {
+        "uuid": "6aec41ac_eda76eb9",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-07-26T04:25:58Z",
+      "side": 1,
+      "message": "General comment about all GPIOs here: Typically it is helpful if GPIO names used are same as the netnames in schematics.",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4719f810_227cf195",
         "filename": "board/rammus/gpio.inc",
         "patchSetId": 1
