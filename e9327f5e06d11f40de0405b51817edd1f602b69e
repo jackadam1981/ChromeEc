@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ae4985dd_e9284d48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-07-26T18:14:20Z",
+      "side": 1,
+      "message": "please add the TPM2 library counterpart CL here as CQ-DEPEND",
+      "revId": "e9327f5e06d11f40de0405b51817edd1f602b69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd005eab_2a760d31",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 17
