@@ -72,12 +72,14 @@ static void led_update_battery(void)
 	int phase;
 	enum led_states desired_state = led_get_state();
 
+#ifndef PHASER_BATTERY_LED
 	if (desired_state == led_state && period == LED_INDEFINITE)
 		/*
 		 * No change needed if we're on the same state and
 		 * it's configured to be solid
 		 */
 		return;
+#endif
 
 	/*
 	 * If we're in a new valid state, update our ticks and period info.
