@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69f13912_dd28143a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-27T17:03:19Z",
+      "side": 1,
+      "message": "What do you mean?",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "2d33fea4586472758840f213ecb0113ea7008701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1ca91b_288b138f",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-27T17:03:19Z",
+      "side": 1,
+      "message": "You need to separate these conditions. Otherwise (currently), you would be changing the behavior for other irrelevant cases (battery_init() and batt_disconnect_status).",
+      "range": {
+        "startLine": 326,
+        "startChar": 5,
+        "endLine": 328,
+        "endChar": 24
+      },
+      "revId": "2d33fea4586472758840f213ecb0113ea7008701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a8417f_c08c2f6c",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-27T17:03:19Z",
+      "side": 1,
+      "message": "Instead of blindly doing this, can we also check RSOC \u003d\u003d 0?",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "2d33fea4586472758840f213ecb0113ea7008701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
