@@ -155,6 +155,8 @@ int tcpci_tcpm_mux_set(int i2c_addr, mux_state_t mux_state);
 int tcpci_tcpm_mux_get(int i2c_addr, mux_state_t *mux_state);
 int tcpci_get_chip_info(int port, int renew,
 			struct ec_response_pd_chip_info **chip_info);
+int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *mux);
+
 #ifdef CONFIG_USBC_PPC
 int tcpci_tcpm_set_snk_ctrl(int port, int enable);
 int tcpci_tcpm_set_src_ctrl(int port, int enable);
