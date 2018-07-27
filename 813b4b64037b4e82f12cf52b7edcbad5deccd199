@@ -295,6 +295,30 @@
       "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d7d4e3_81adeab4",
+        "filename": "board/cr50/tpm2/virtual_nvmem.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-27T07:09:00Z",
+      "side": 1,
+      "message": "is this better?",
+      "parentUuid": "ee8cbd0b_2685b250",
+      "range": {
+        "startLine": 34,
+        "startChar": 39,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "813b4b64037b4e82f12cf52b7edcbad5deccd199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
