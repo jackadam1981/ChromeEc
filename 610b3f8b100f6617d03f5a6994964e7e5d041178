@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e843fa9_be01461b",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-27T18:23:51Z",
+      "side": 1,
+      "message": "The comment doesn\u0027t make sense as this is in baseboard.c, so I have removed it.",
+      "parentUuid": "09f89a9f_7120976c",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 39
+      },
+      "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9b68365_f5eda2da",
         "filename": "baseboard/dragonegg/baseboard.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "240f9cb6_eab8475b",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-27T18:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b68365_f5eda2da",
+      "range": {
+        "startLine": 168,
+        "startChar": 66,
+        "endLine": 168,
+        "endChar": 67
+      },
+      "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d7e8a2a8_33f1e786",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-27T18:23:51Z",
+      "side": 1,
+      "message": "The EC only spports 2 ports, the 3rd port (C2) uses a standalone TCPC",
+      "parentUuid": "0c4233c0_2efc5aa5",
+      "range": {
+        "startLine": 46,
+        "startChar": 38,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a62a9d4_f9772d92",
         "filename": "baseboard/dragonegg/baseboard.h",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-27T14:03:14Z",
       "side": 1,
       "message": "Does it compile without this define?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3240a7f_1a4a7f7f",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-27T18:23:51Z",
+      "side": 1,
+      "message": "Yes, It does. I have removed this config option. There is a PS8818 which might be used like a mux (it\u0027s a redriver), but I will deal with that when I add support for C1.",
+      "parentUuid": "8a62a9d4_f9772d92",
       "range": {
         "startLine": 47,
         "startChar": 0,
