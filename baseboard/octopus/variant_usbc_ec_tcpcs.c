@@ -60,6 +60,13 @@ static void board_it83xx_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 }
 
+static int ps8751_tune_mux(const struct usb_mux *mux)
+{
+	/* TODO(b/110937880): Tune mux properly below */
+	return i2c_write8(MUX_PORT(mux->port_addr), MUX_ADDR(mux->port_addr),
+			 PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0xB0);
+}
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		/* Driver uses I2C_PORT_USB_MUX as I2C port */
@@ -69,10 +76,12 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 	[USB_PD_PORT_ITE_1] = {
 		/* Use PS8751 as mux only */
-		.port_addr = MUX_PORT_AND_ADDR(
-			I2C_PORT_USBC1, PS8751_I2C_ADDR1),
+		.port_addr =
+			MUX_PORT_AND_ADDR(I2C_PORT_USBC1, PS8751_I2C_ADDR1),
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &board_it83xx_hpd_status,
+		.board_init = &ps8751_tune_mux,
+		.enter_low_power_mode = &tcpci_tcpm_mux_enter_low_power,
 	}
 };
 
