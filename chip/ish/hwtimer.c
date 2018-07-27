@@ -35,6 +35,12 @@ void __hw_clock_event_set(uint32_t deadline)
 	last_deadline = deadline;
 #ifdef CONFIG_ISH_30
 	HPET_TIMER_COMP(1) = deadline * CLOCK_FACTOR;
+#elif defined CONFIG_ISH_50
+	/* deadline is time count with freq of 1MHz*/
+	/* scale deadline  time count with freq of 32kHz */
+	/* 1 count = 30.5 us = 1/32.768kHz. */
+
+	HPET_TIMER_COMP(1) = deadline * 2 / 61;
 #else
 	HPET_TIMER_COMP(1) = deadline;
 #endif
@@ -61,6 +67,8 @@ uint32_t __hw_clock_source_read(void)
 	const uint32_t d = CLOCK_FACTOR;
 	asm ("divl %4" : "=d" (r), "=a" (q) : "0" (hi), "1" (lo), "rm" (d) : "cc");
 	return q;
+#elif defined CONFIG_ISH_50
+	return (HPET_MAIN_COUNTER * 61) << 1;
 #else
 	return HPET_MAIN_COUNTER;
 #endif
@@ -71,6 +79,8 @@ void __hw_clock_source_set(uint32_t ts)
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
 #ifdef CONFIG_ISH_30
 	HPET_MAIN_COUNTER = ts * CLOCK_FACTOR;
+#elif defined CONFIG_ISH_50
+	HPET_MAIN_COUNTER = ts * 2 / 61;
 #else
 	HPET_MAIN_COUNTER = ts;
 #endif
@@ -115,6 +125,8 @@ int __hw_clock_source_init(uint32_t start_t)
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
 #ifdef CONFIG_ISH_30
 	HPET_MAIN_COUNTER = start_t * CLOCK_FACTOR;
+#elif defined CONFIG_ISH_50
+	HPET_MAIN_COUNTER = start_t * 2/61;
 #else
 	HPET_MAIN_COUNTER = start_t;
 #endif
