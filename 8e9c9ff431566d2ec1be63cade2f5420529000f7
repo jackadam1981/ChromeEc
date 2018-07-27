@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67537c2e_9dc0fcbd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-27T15:18:09Z",
+      "side": 1,
+      "message": "The TCPC doesn\u0027t always control the VBUS level, See other CONFIG_USB_PD_VBUS_DETECT_* options.\n\nWe shouldn\u0027t add this",
+      "range": {
+        "startLine": 425,
+        "startChar": 32,
+        "endLine": 425,
+        "endChar": 57
+      },
+      "revId": "8e9c9ff431566d2ec1be63cade2f5420529000f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
