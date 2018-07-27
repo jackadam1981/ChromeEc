@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e30cf0e9_2a1a7068",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-27T07:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae4985dd_e9284d48",
+      "revId": "e9327f5e06d11f40de0405b51817edd1f602b69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd005eab_2a760d31",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 17

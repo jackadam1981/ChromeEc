@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89f5d065_97441dc8",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-07-27T07:08:02Z",
+      "side": 1,
+      "message": "I\u0027ve left these asserts for now, as I thought they serve some purpose as documentation. Should I  convert them into a comment, or just do away with the whole lot? Is there some preferred way to document preconditions like this without doing an actual assert?",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
