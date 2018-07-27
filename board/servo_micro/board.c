@@ -14,6 +14,7 @@
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
+#include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
@@ -168,6 +169,293 @@ static int command_uart_parity(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(parity, command_uart_parity,
 			"usart[2|3|4] [0|1|2]",
 			"Set parity on uart");
+
+/******************************************************************************
+ * Commands for sending the magic non-I2C handshake over I2C bus wires to an
+ * ITE IT8320 EC chip to enable direct firmware update (DFU) over I2C mode.
+ */
+
+#define KHz 1000
+#define MHz (1000 * KHz)
+
+/*
+ * These constants are values that one might want to try changing if
+ * enable_ite_dfu stops working, or does not work on a new ITE EC chip revision.
+ */
+
+#define ITE_DFU_I2C_CMD_ADDR 0xB4  /* 7 bit form is 0x5A */
+#define ITE_DFU_I2C_DATA_ADDR 0x6A  /* 7 bit form is 0x35 */
+
+#define SMCLK_WAVEFORM_PERIOD_HZ (100 * KHz)
+#define SMDAT_WAVEFORM_PERIOD_HZ (200 * KHz)
+
+#define START_DELAY_MS 5
+#define SPECIAL_WAVEFORM_MS 50
+#define PLL_STABLE_MS 10
+
+/*
+ * Digital line levels to hold before (PRE_) or after (POST_) sending the
+ * special waveforms.  0 for low, 1 for high.
+ */
+#define SMCLK_PRE_LEVEL 0
+#define SMDAT_PRE_LEVEL 0
+#define SMCLK_POST_LEVEL 0
+#define SMDAT_POST_LEVEL 0
+
+static int ite_i2c_read_register(uint8_t register_offset, uint8_t *output)
+{
+	int ret;
+	/* Tell the ITE EC which register we want to read. */
+	ret = i2c_xfer(I2C_PORT_MASTER, ITE_DFU_I2C_CMD_ADDR, &register_offset,
+		sizeof(register_offset), NULL, 0, I2C_XFER_SINGLE);
+	if (ret != EC_SUCCESS)
+		return ret;
+	/* Read in the 1 byte version register value. */
+	ret = i2c_xfer(I2C_PORT_MASTER, ITE_DFU_I2C_DATA_ADDR, NULL, 0,
+		output, sizeof(*output), I2C_XFER_SINGLE);
+	return ret;
+}
+
+/* Helper function to read ITE chip ID, for verifying ITE DFU mode. */
+static int cprint_ite_chip_id(void)
+{
+	/*
+	 * Per i2c_read8() implementation, use an array even for single byte
+	 * reads to ensure alignment for DMA on STM32.
+	 */
+	uint8_t chipid1[1];
+	uint8_t chipid2[1];
+	uint8_t chipver[1];
+
+	int ret;
+	int chip_version;
+	int flash_kb;
+
+	i2c_lock(I2C_PORT_MASTER, 1);
+
+	/* Read the CHIPID1 register. */
+	ret = ite_i2c_read_register(0x00, chipid1);
+	if (ret != EC_SUCCESS)
+		goto unlock;
+
+	/* Read the CHIPID2 register. */
+	ret = ite_i2c_read_register(0x01, chipid2);
+	if (ret != EC_SUCCESS)
+		goto unlock;
+
+	/* Read the CHIPVER register. */
+	ret = ite_i2c_read_register(0x02, chipver);
+
+unlock:
+	i2c_lock(I2C_PORT_MASTER, 0);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/*
+	 * Compute chip version and embedded flash size from the CHIPVER value.
+	 *
+	 * Chip version is mapping from bit 3-0
+	 * Flash size is mapping from bit 7-4
+	 *
+	 * Chip Version (bit 3-0)
+	 * 0: AX
+	 * 1: BX
+	 * 2: CX
+	 * 3: DX
+	 *
+	 * CX before flash size (bit 7-4)
+	 * 0:128KB
+	 * 4:192KB
+	 * 8:256KB
+	 *
+	 * DX flash size(bit 7-4)
+	 * 0:128KB
+	 * 2:192KB
+	 * 4:256KB
+	 * 6:384KB
+	 * 8:512KB
+	 */
+	chip_version = chipver[0] & ~(~0 << 3);
+	if (chip_version < 0x3) {
+		/* Chip version is CX or earlier. */
+		switch (chipver[0] >> 4) {
+		case 0:
+			flash_kb = 128;
+			break;
+		case 4:
+			flash_kb = 192;
+			break;
+		case 8:
+			flash_kb = 256;
+			break;
+		default:
+			flash_kb = -2;
+		}
+	} else if (chip_version == 0x3) {
+		/* Chip version is DX. */
+		switch (chipver[0] >> 4) {
+		case 0:
+			flash_kb = 128;
+			break;
+		case 2:
+			flash_kb = 192;
+			break;
+		case 4:
+			flash_kb = 256;
+			break;
+		case 6:
+			flash_kb = 384;
+			break;
+		case 8:
+			flash_kb = 512;
+			break;
+		default:
+			flash_kb = -3;
+		}
+	} else {
+		flash_kb = -1;
+	}
+
+	ccprintf("ITE EC info: CHIPID1=0x%02X CHIPID2=0x%02X CHIPVER=0x%02X ",
+		chipid1[0], chipid2[0], chipver[0]);
+	ccprintf("version=%d flash_KiB=%d\n", chip_version, flash_kb);
+
+	if (chipid1[0] != 0x83)
+		ret = EC_ERROR_HW_INTERNAL;
+
+	return ret;
+}
+
+/*
+ * This must be a macro, not a function, because of how the STM32_TIM_* macros
+ * are defined.
+ */
+#define STM32_RESET_TIM16_OR_TIM17(tim_num) {\
+	STM32_TIM_CR1(tim_num) = 0x0000;\
+	STM32_TIM_CR2(tim_num) = 0x0000;\
+	STM32_TIM_DIER(tim_num) = 0x0000;\
+	STM32_TIM_SR(tim_num) = 0x0000;\
+	STM32_TIM_EGR(tim_num) = 0x0000;\
+	STM32_TIM_CCMR1(tim_num) = 0x0000;\
+	STM32_TIM_CCER(tim_num) = 0x0000;\
+	STM32_TIM_CNT(tim_num) = 0x0000;\
+	STM32_TIM_PSC(tim_num) = 0x0000;\
+	STM32_TIM_ARR(tim_num) = 0xFFFF;\
+	STM32_TIM_RCR(tim_num) = 0x0000;\
+	STM32_TIM_CCR1(tim_num) = 0x0000;\
+	STM32_TIM_BDTR(tim_num) = 0x0000;\
+	STM32_TIM_DCR(tim_num) = 0x0000;\
+	STM32_TIM_DMAR(tim_num) = 0x0000;\
+}
+static void reset_tim16_tim17(void)
+{
+	STM32_RESET_TIM16_OR_TIM17(16);
+	STM32_RESET_TIM16_OR_TIM17(17);
+}
+#undef STM32_RESET_TIM16_OR_TIM17
+
+/* Enable ITE direct firmware update (DFU) mode. */
+static int command_enable_ite_dfu(int argc, char **argv)
+{
+	if (argc > 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	reset_tim16_tim17();
+
+	/* Enable peripheral clocks. */
+	STM32_RCC_APB2ENR |=
+		STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN;
+
+	/* Prescale to 1 MHz and use ARR to achieve NNN KHz periods. */
+	/* This approach is seen in STM's documentation. */
+	STM32_TIM_PSC(16) = (CPU_CLOCK / MHz) - 1;
+	STM32_TIM_PSC(17) = (CPU_CLOCK / MHz) - 1;
+
+	/* Set the waveform periods based on 1 MHz prescale. */
+	STM32_TIM_ARR(16) = (MHz / SMCLK_WAVEFORM_PERIOD_HZ) - 1;
+	STM32_TIM_ARR(17) = (MHz / SMDAT_WAVEFORM_PERIOD_HZ) - 1;
+
+	/* Set output compare 1 mode to PWM mode 1. */
+	STM32_TIM_CCMR1(16) |= STM32_TIM_CCMR1_OC1M_1 | STM32_TIM_CCMR1_OC1M_2;
+	STM32_TIM_CCMR1(17) |= STM32_TIM_CCMR1_OC1M_1 | STM32_TIM_CCMR1_OC1M_2;
+
+	/* Enable output compare 1 preload. */
+	STM32_TIM_CCMR1(16) |= STM32_TIM_CCMR1_OC1PE;
+	STM32_TIM_CCMR1(17) |= STM32_TIM_CCMR1_OC1PE;
+
+	/* Enable output compare 1. */
+	STM32_TIM_CCER(16) |= STM32_TIM_CCER_CC1E;
+	STM32_TIM_CCER(17) |= STM32_TIM_CCER_CC1E;
+
+	/* Enable main output. */
+	STM32_TIM_BDTR(16) |= STM32_TIM_BDTR_MOE;
+	STM32_TIM_BDTR(17) |= STM32_TIM_BDTR_MOE;
+
+	/* Update generation (reinitialize counters). */
+	STM32_TIM_EGR(16) |= STM32_TIM_EGR_UG;
+	STM32_TIM_EGR(17) |= STM32_TIM_EGR_UG;
+
+	/* Enable counters. */
+	STM32_TIM_CR1(16) |= STM32_TIM_CR1_CEN;
+	STM32_TIM_CR1(17) |= STM32_TIM_CR1_CEN;
+
+	/* Set duty cycle to 0% or 100%, pinning each channel low or high. */
+	STM32_TIM_CCR1(16) = SMCLK_PRE_LEVEL ? 0xFFFF : 0x0000;
+	STM32_TIM_CCR1(17) = SMDAT_PRE_LEVEL ? 0xFFFF : 0x0000;
+
+	/* Set PB8 GPIO to alternate mode TIM16_CH1. */
+	/* Set PB9 GPIO to alternate mode TIM17_CH1. */
+	/* PB8 | PB9 */
+	gpio_set_alternate_function(GPIO_B, 1<<8 | 1<<9, 2);
+
+	msleep(START_DELAY_MS);
+
+	/* Set pulse width to half of waveform period. */
+	STM32_TIM_CCR1(16) = (MHz / SMCLK_WAVEFORM_PERIOD_HZ) / 2;
+	STM32_TIM_CCR1(17) = (MHz / SMDAT_WAVEFORM_PERIOD_HZ) / 2;
+
+	msleep(SPECIAL_WAVEFORM_MS);
+
+	/* Set duty cycle to 0% or 100%, pinning each channel low or high. */
+	STM32_TIM_CCR1(16) = SMCLK_POST_LEVEL ? 0xFFFF : 0x0000;
+	STM32_TIM_CCR1(17) = SMDAT_POST_LEVEL ? 0xFFFF : 0x0000;
+
+	msleep(PLL_STABLE_MS);
+
+	/* Set PB8 GPIO to alternate mode I2C1_SCL. */
+	/* Set PB9 GPIO to alternate mode I2C1_DAT. */
+	/* PB8 | PB9 */
+	gpio_set_alternate_function(GPIO_B, 1<<8 | 1<<9, 1);
+
+	/* Disable peripheral clocks. */
+	STM32_RCC_APB2ENR &=
+		~(STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN);
+
+	reset_tim16_tim17();
+
+	return cprint_ite_chip_id();
+}
+DECLARE_CONSOLE_COMMAND(
+	enable_ite_dfu, command_enable_ite_dfu, "",
+	"Enable ITE Direct Firmware Update (DFU) mode");
+
+/* Read ITE chip ID.  Can be used to verify ITE DFU mode. */
+static int command_get_ite_chipid(int argc, char **argv)
+{
+	if (argc > 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	return cprint_ite_chip_id();
+}
+/*
+ * TODO(b/79684405): There is nothing specific about Servo Micro in the
+ * implementation of the "get_ite_chipid" command.  Move the implementation to a
+ * common place so that it need not be reimplemented for every Servo version
+ * that "enable_ite_dfu" is implemented for.
+ */
+DECLARE_CONSOLE_COMMAND(
+	get_ite_chipid, command_get_ite_chipid, "",
+	"Read ITE EC chip ID, version, flash size (must be in DFU mode)");
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.
