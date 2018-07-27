@@ -115,6 +115,15 @@ static int acpi_read(uint8_t addr)
 	}
 }
 
+#ifdef CHIP_FAMILY_IT8320
+static void pm_put_data_out_nwait(uint8_t out)
+{
+	IT83XX_PMC_PMDO(0) = out;
+	while (IT83XX_PMC_PMSTS(0) & EC_LPC_STATUS_TO_HOST)
+		;
+}
+#endif
+
 /*
  * This handles AP writes to the EC via the ACPI I/O port. There are only a few
  * ACPI commands (EC_CMD_ACPI_*), but they are all handled here.
@@ -364,6 +373,31 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		/* Leave burst mode */
 		hook_call_deferred(&acpi_disable_burst_deferred_data, -1);
 		lpc_clear_acpi_status_mask(EC_LPC_STATUS_BURST_MODE);
+	} else {
+#ifdef CHIP_FAMILY_IT8320
+		/* TEST-ONLY */
+		switch (acpi_cmd) {
+		case 0x9:
+			pm_put_data_out_nwait(0x4b);
+			pm_put_data_out_nwait(0x53);
+			pm_put_data_out_nwait(0x43);
+			pm_put_data_out_nwait(0x84);
+			break;
+		case 0xd:
+			pm_put_data_out_nwait(0xf5);
+			pm_put_data_out_nwait(0xf3);
+			break;
+		case 0x8a:
+			pm_put_data_out_nwait(0x0);
+			break;
+		case 0x90:
+			pm_put_data_out_nwait(0x1);
+			pm_put_data_out_nwait(0x0);
+			break;
+		default:
+			break;
+		}
+#endif
 	}
 
 	return retval;
