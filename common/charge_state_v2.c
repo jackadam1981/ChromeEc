@@ -1717,7 +1717,9 @@ void charger_task(void *u)
 			} else
 #endif
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
-			battery_seems_to_be_disconnected = 0;
+			battery_seems_to_be_disconnected =
+				battery_get_disconnect_state() ==
+				BATTERY_DISCONNECTED;
 
 			if (curr.requested_voltage == 0 &&
 			    curr.requested_current == 0 &&
