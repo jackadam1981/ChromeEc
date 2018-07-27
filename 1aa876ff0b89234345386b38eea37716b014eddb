@@ -46,6 +46,30 @@
       "revId": "1aa876ff0b89234345386b38eea37716b014eddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59d2687_bd76101f",
+        "filename": "board/bip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-07-27T16:45:08Z",
+      "side": 1,
+      "message": "This is now fixed to read the correct temperature sensor, and return an error that the part isn\u0027t powered when AC isn\u0027t present.",
+      "parentUuid": "888f1809_77de2cee",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 31
+      },
+      "revId": "1aa876ff0b89234345386b38eea37716b014eddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
