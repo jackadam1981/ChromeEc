@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "068a9d55_92719165",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-27T21:18:18Z",
+      "side": 1,
+      "message": "If we\u0027re removing the desired_state \u003d\u003d led_state return, would you mind setting the initial led_state to something in the led_states enum which is \u003c LED_NUM_STATES?  \n\nOtherwise if our first desired_state is STATE_DEFAULT we could end up referencing an invalid index into the led_bat_state_table later on.  I\u0027m not sure it matters which state it\u0027s initialized to, as long as it corresponds to a valid index to reference later in the function",
+      "revId": "332ce3401010f6a0d7c8357ddfde4241f2502af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b75f77df_7017123f",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 2
