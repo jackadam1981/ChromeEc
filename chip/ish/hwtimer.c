@@ -14,6 +14,8 @@
 
 #ifdef CONFIG_ISH_30
 #define CLOCK_FACTOR 12
+#elif defined(CONFIG_ISH_50) || defined(CONFIG_ISH_40)
+#define CLOCK_FACTOR (2 / 61)
 #endif
 
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
@@ -32,6 +34,11 @@ void __hw_clock_event_set(uint32_t deadline)
 {
 	last_deadline = deadline;
 #ifdef CONFIG_ISH_30
+	HPET_TIMER_COMP(1) = deadline * CLOCK_FACTOR;
+#elif defined(CONFIG_ISH_50) || defined(CONFIG_ISH_40)
+	/* deadline is time count with freq of 1MHz*/
+	/* scale deadline  time count with freq of 32kHz */
+	/* 1 count = 30.5 us = 1/32.768kHz. */
 	HPET_TIMER_COMP(1) = deadline * CLOCK_FACTOR;
 #else
 	HPET_TIMER_COMP(1) = deadline;
@@ -59,6 +66,8 @@ uint32_t __hw_clock_source_read(void)
 	const uint32_t d = CLOCK_FACTOR;
 	asm ("divl %4" : "=d" (r), "=a" (q) : "0" (hi), "1" (lo), "rm" (d) : "cc");
 	return q;
+#elif defined(CONFIG_ISH_50) || defined(CONFIG_ISH_40)
+	return (HPET_MAIN_COUNTER * 61) >> 1;
 #else
 	return HPET_MAIN_COUNTER;
 #endif
@@ -69,6 +78,8 @@ void __hw_clock_source_set(uint32_t ts)
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
 #ifdef CONFIG_ISH_30
 	HPET_MAIN_COUNTER_64 = (uint64_t)ts * CLOCK_FACTOR;
+#elif defined(CONFIG_ISH_50) || defined(CONFIG_ISH_40)
+	HPET_MAIN_COUNTER = ts * CLOCK_FACTOR;
 #else
 	HPET_MAIN_COUNTER = ts;
 #endif
@@ -113,6 +124,8 @@ int __hw_clock_source_init(uint32_t start_t)
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
 #ifdef CONFIG_ISH_30
 	HPET_MAIN_COUNTER_64 = (uint64_t)start_t * CLOCK_FACTOR;
+#elif defined(CONFIG_ISH_50) || defined(CONFIG_ISH_40)
+	HPET_MAIN_COUNTER = start_t * CLOCK_FACTOR;
 #else
 	HPET_MAIN_COUNTER = start_t;
 #endif
@@ -122,7 +135,10 @@ int __hw_clock_source_init(uint32_t start_t)
 	 * Set comparator value. HMC will operate in 64 bit mode.
 	 * HMC is 12MHz, Hence set COMP to 12x of 1MHz.
 	 */
-	HPET_TIMER_COMP_64(0) = (uint64_t)CLOCK_FACTOR << 32; /*0xC00000000ULL;*/
+	HPET_TIMER_COMP_64(0) = (uint64_t)CLOCK_FACTOR << 32;/*0xC00000000ULL;*/
+#elif defined(CONFIG_ISH_50) || defined(CONFIG_ISH_40)
+	/* counter value(with 32KHz clock) equivalent to (2^32-1)uSec */
+	HPET_TIMER_COMP(0) = 0x08637BD0;
 #else
 	/* Set comparator value */
 	HPET_TIMER_COMP(0) = 0XFFFFFFFF;
@@ -162,7 +178,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	HPET_TIMER_CONF_CAP(0) |= timer0_config;
 	HPET_TIMER_CONF_CAP(1) |= timer1_config;
 
-#ifdef CONFIG_ISH_40
+#if defined(CONFIG_ISH_50) || defined(CONFIG_ISH_40)
 	/* Wait for timer to settle. required for ISH 4 */
 	while (HPET_CTRL_STATUS & HPET_T_CONF_CAP_BIT)
 		;
