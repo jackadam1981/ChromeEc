@@ -60,6 +60,73 @@ static void board_it83xx_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 }
 
+static inline int mux_read8(const struct usb_mux *mux, int reg, int *val)
+{
+	return i2c_read8(MUX_PORT(mux->port_addr), MUX_ADDR(mux->port_addr),
+			 reg, val);
+}
+
+static inline int mux_read16(const struct usb_mux *mux, int reg, int *val)
+{
+	return i2c_read16(MUX_PORT(mux->port_addr), MUX_ADDR(mux->port_addr),
+			  reg, val);
+}
+
+static inline int mux_write8(const struct usb_mux *mux, int reg, int val)
+{
+	return i2c_write8(MUX_PORT(mux->port_addr), MUX_ADDR(mux->port_addr),
+			  reg, val);
+}
+
+static inline int mux_write16(const struct usb_mux *mux, int reg, int val)
+{
+	return i2c_write16(MUX_PORT(mux->port_addr), MUX_ADDR(mux->port_addr),
+			   reg, val);
+}
+
+static int ps8751_mux_init(const struct usb_mux *mux)
+{
+	int error;
+	int power_status;
+	int tries = 30;
+
+	/*
+	 * Since the PS8751 is only the MUX (and not the TCPC) we need to
+	 * initialize it. This is borrowed from tcpc_init.
+	 */
+
+	/* Wait for the device to exit low power state */
+	while (1) {
+		error = mux_read8(mux, TCPC_REG_POWER_STATUS, &power_status);
+		/*
+		 * If read succeeds and the uninitialized bit is clear, then
+		 * initalization is complete.
+		 */
+		if (!error && !(power_status & TCPC_REG_POWER_STATUS_UNINIT))
+			break;
+		else if (error && --tries == 0)
+			return error;
+		msleep(10);
+	}
+
+	/* Turn off all alerts and acknowledge any pending IRQ */
+	mux_write16(mux, TCPC_REG_ALERT_MASK, 0);
+	mux_write16(mux, TCPC_REG_ALERT, 0xffff);
+
+	/* TODO(b/110937880): Tune mux properly below */
+	return mux_write8(mux, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0xB0);
+}
+
+static int ps8751_enter_lpm(const struct usb_mux *mux)
+{
+	/*
+	 * Since the PS8751 isn only the MUX (and not the TCPC) we need to put
+	 * the device into LPM ourselve since the PD state machine for the TCPC
+	 * won't do it for us.
+	 */
+	return mux_write8(mux, TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+}
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		/* Driver uses I2C_PORT_USB_MUX as I2C port */
@@ -69,10 +136,12 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 	[USB_PD_PORT_ITE_1] = {
 		/* Use PS8751 as mux only */
-		.port_addr = MUX_PORT_AND_ADDR(
-			I2C_PORT_USBC1, PS8751_I2C_ADDR1),
+		.port_addr =
+			MUX_PORT_AND_ADDR(I2C_PORT_USBC1, PS8751_I2C_ADDR1),
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &board_it83xx_hpd_status,
+		.board_init = &ps8751_mux_init,
+		.enter_lpm = &ps8751_enter_lpm,
 	}
 };
 
