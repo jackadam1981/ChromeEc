@@ -133,6 +133,7 @@ int tcpci_tcpm_get_vbus_level(int port);
 int tcpci_tcpm_select_rp_value(int port, int rp);
 int tcpci_tcpm_set_cc(int port, int pull);
 int tcpci_tcpm_set_polarity(int port, int polarity);
+void tcpci_tcpm_set_vbus_level(int port, int level);
 int tcpci_tcpm_set_vconn(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);

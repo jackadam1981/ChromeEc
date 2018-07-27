@@ -296,12 +296,15 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 			  enable ? TCPC_REG_RX_DETECT_SOP_HRST_MASK : 0);
 }
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 int tcpci_tcpm_get_vbus_level(int port)
 {
 	return tcpc_vbus[port];
 }
-#endif
+
+void tcpci_tcpm_set_vbus_level(int port, int level)
+{
+	tcpc_vbus[port] = level;
+}
 
 int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
 {
@@ -415,11 +418,11 @@ void tcpci_tcpc_alert(int port)
 		/* Read Power Status register */
 		tcpci_tcpm_get_power_status(port, &reg);
 		/* Update VBUS status */
-		tcpc_vbus[port] = reg &
-			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+		tcpci_tcpm_set_vbus_level(
+			port, reg & TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0);
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
 		/* Update charge manager with new VBUS state */
-		usb_charger_vbus_change(port, tcpc_vbus[port]);
+		usb_charger_vbus_change(port, tcpci_tcpm_get_vbus_level(port));
 		pd_event |= TASK_EVENT_WAKE;
 #endif /* CONFIG_USB_PD_VBUS_DETECT_TCPC && CONFIG_USB_CHARGER */
 	}
@@ -556,8 +559,8 @@ int tcpci_tcpm_init(int port)
 	/* Initialize power_status_mask */
 	init_power_status_mask(port);
 	/* Update VBUS status */
-	tcpc_vbus[port] = power_status &
-			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+	tcpci_tcpm_set_vbus_level(
+		port, power_status & TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0);
 	error = init_alert_mask(port);
 	if (error)
 		return error;
