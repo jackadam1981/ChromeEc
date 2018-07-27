@@ -16,6 +16,52 @@
       "revId": "9aa2ef2dfc0889c9fd981670d11c2550d24d7133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a1ec4fa_46293cf5",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-07-27T22:12:31Z",
+      "side": 1,
+      "message": "It is more suitable to define it as GPIO_ALTERNATE.",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "9aa2ef2dfc0889c9fd981670d11c2550d24d7133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7312ded0_ea6e4501",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-07-27T22:12:31Z",
+      "side": 1,
+      "message": "You can put the GPIO_PULL_DOWN flag here and the below line to apply to all the pins.",
+      "range": {
+        "startLine": 147,
+        "startChar": 44,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "9aa2ef2dfc0889c9fd981670d11c2550d24d7133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
