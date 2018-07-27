@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f67085c7_be5a5ef7",
+        "filename": "board/rammus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "I haven\u0027t get the battery spec from partner. So, i added b/111815315 to tracker the status. I think ODM may be can help us to config/implement this part of code.",
+      "parentUuid": "59173bf0_e5692483",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5579d61_844f6c3b",
         "filename": "board/rammus/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a87438c7_1b1cb1b4",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5579d61_844f6c3b",
+      "range": {
+        "startLine": 56,
+        "startChar": 41,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3e3b0668_62d7bada",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89d10466_b8864879",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afa99ded_2b5b5b86",
         "filename": "board/rammus/board.c",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3821d56c_5dde632e",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afa99ded_2b5b5b86",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "b63be4ef_e918854a",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d828ab6_9e1f608f",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 41
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa0f7d5_fd2a0032",
         "filename": "board/rammus/board.h",
         "patchSetId": 1
@@ -125,6 +239,24 @@
       "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884aed67_fd7ca6e5",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa0f7d5_fd2a0032",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "f984020a_ec1c6a6a",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40475515_defb6856",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 21
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aec41ac_eda76eb9",
         "filename": "board/rammus/gpio.inc",
         "patchSetId": 1
@@ -162,6 +318,24 @@
       "writtenOn": "2018-07-26T04:25:58Z",
       "side": 1,
       "message": "General comment about all GPIOs here: Typically it is helpful if GPIO names used are same as the netnames in schematics.",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3c7045_1272b6a4",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "I aligned the GPIOs name with the schematics. The basic rule is removing the \"EC_\" prefix and \"_EC\" postfix. To avoid the build error, i renamed some GPIOs name in board.h",
+      "parentUuid": "6aec41ac_eda76eb9",
       "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -182,6 +356,24 @@
       "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e09544bd_657d2907",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4719f810_227cf195",
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "8cbcaacc_6413aac3",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adcc846a_b3075c0b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22a0b052_ae1dd0d9",
         "filename": "board/rammus/gpio.inc",
         "patchSetId": 1
@@ -219,6 +435,30 @@
       "writtenOn": "2018-07-26T04:25:07Z",
       "side": 1,
       "message": "There is external pull-up. Do you still need this?",
+      "range": {
+        "startLine": 23,
+        "startChar": 52,
+        "endLine": 23,
+        "endChar": 64
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470c0609_e96cfac8",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Yes, we don\u0027t need this. Remove it.",
+      "parentUuid": "22a0b052_ae1dd0d9",
       "range": {
         "startLine": 23,
         "startChar": 52,
@@ -254,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "16f9b1db_daff867e",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e46ca6_21b1cd5d",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 62
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41cd5923_1c87aa0e",
         "filename": "board/rammus/gpio.inc",
         "patchSetId": 1
@@ -270,6 +534,53 @@
         "startChar": 0,
         "endLine": 56,
         "endChar": 44
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c3bb4f_7d0a3615",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "This pin has external pull low. So, i just change it to GPIO_INPUT",
+      "parentUuid": "41cd5923_1c87aa0e",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5772d0_2a60e925",
+        "filename": "board/rammus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-07-27T04:08:25Z",
+      "side": 1,
+      "message": "Sorry, the original comment isn\u0027t correct. Those pins do have function and may be enable later.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 76
       },
       "revId": "af6570bd1b1ebe14e3046f3caf6d00bba4ff0d5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
