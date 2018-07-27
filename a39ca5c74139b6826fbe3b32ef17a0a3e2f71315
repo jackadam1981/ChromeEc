@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39cc43ef_0fbbc9e4",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-27T14:20:03Z",
+      "side": 1,
+      "message": "This is the value of address 0x20 for the battery? This seems weird.",
+      "range": {
+        "startLine": 67,
+        "startChar": 18,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "a39ca5c74139b6826fbe3b32ef17a0a3e2f71315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
