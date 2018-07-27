@@ -628,6 +628,32 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_LPTIM_CNT(n)           STM32_LPTIM_REG(n, 0x1C)
 #define STM32_LPTIM_CFGR2(n)         STM32_LPTIM_REG(n, 0x24)
 
+/* --- Macros for specific bits within STM32 timer and related registers. ---
+ *
+ * These macro names should be identical to the names referenced in official STM
+ * documentation and examples, except with STM32_ prefix added here.  E.g.
+ * FOO_BAR in STM documentation becomes STM32_FOO_BAR here.
+ *
+ * This is a very incomplete set of such macros.  Define more as needed.
+ */
+
+#define STM32_RCC_APB2ENR_TIM16EN (0x1 << 17)
+#define STM32_RCC_APB2ENR_TIM17EN (0x1 << 18)
+
+#define STM32_TIM_CCMR1_OC1M_0 (0x1 << 4)
+#define STM32_TIM_CCMR1_OC1M_1 (0x1 << 5)
+#define STM32_TIM_CCMR1_OC1M_2 (0x1 << 6)
+
+#define STM32_TIM_CCMR1_OC1PE (0x1 << 2)
+
+#define STM32_TIM_CCER_CC1E (0x1 << 0)
+
+#define STM32_TIM_BDTR_MOE (0x1 << 15)
+
+#define STM32_TIM_EGR_UG (0x1 << 0)
+
+#define STM32_TIM_CR1_CEN (0x1 << 0)
+
 /* --- GPIO --- */
 
 #define GPIO_A                       STM32_GPIOA_BASE
