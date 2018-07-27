@@ -22,6 +22,30 @@
       "revId": "3e82bcb2cdc73c435a43db6adf81f6a27ee91f71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dc772f5_97cdcb67",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1286275
+      },
+      "writtenOn": "2018-07-27T15:01:32Z",
+      "side": 1,
+      "message": "Once use ectool to control the battery led state,\nif charging state doesn\u0027t change, the ectool command\n\"ectool led power auto\" won\u0027t adjust power led status immediately.\n\nThe OEM expects the behavior is power led status can be adjusted immediately\nwithout changing the charging state for factory test.",
+      "parentUuid": "71f650d6_893f9463",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 26
+      },
+      "revId": "3e82bcb2cdc73c435a43db6adf81f6a27ee91f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
