@@ -45,6 +45,52 @@
       "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c4233c0_2efc5aa5",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-27T14:03:14Z",
+      "side": 1,
+      "message": "will all 3 ports us the EC at the TCPC?",
+      "range": {
+        "startLine": 46,
+        "startChar": 38,
+        "endLine": 46,
+        "endChar": 45
+      },
+      "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a62a9d4_f9772d92",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-27T14:03:14Z",
+      "side": 1,
+      "message": "Does it compile without this define?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "610b3f8b100f6617d03f5a6994964e7e5d041178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
