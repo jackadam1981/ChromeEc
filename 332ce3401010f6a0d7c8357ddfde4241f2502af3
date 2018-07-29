@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6e292d3_ed9dd902",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1286275
+      },
+      "writtenOn": "2018-07-29T15:57:10Z",
+      "side": 1,
+      "message": "If I didn\u0027t misunderstand, I thought led_state will be changed at Line 82,\nbecause the condition of Line 81 is true.\nI thought desired_state will not be STATE_DEFAULT, \nthe default in charge_get_state() will return PWR_STATE_ERROR.",
+      "parentUuid": "068a9d55_92719165",
+      "revId": "332ce3401010f6a0d7c8357ddfde4241f2502af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b75f77df_7017123f",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 2
