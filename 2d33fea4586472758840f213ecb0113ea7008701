@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71162cf2_54d20f86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-07-30T05:44:55Z",
+      "side": 1,
+      "message": "It means battery_check_disconnect_1() return BATTERY_DISCONNECTED directly.\nThis simulate a no power battery\u0027s behavior: Good I2C response + DFET off.",
+      "parentUuid": "69f13912_dd28143a",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "2d33fea4586472758840f213ecb0113ea7008701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c1ca91b_288b138f",
         "filename": "board/nami/battery.c",
         "patchSetId": 2
