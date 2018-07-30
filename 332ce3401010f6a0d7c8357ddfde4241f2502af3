@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "12c2ee57_0254a742",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-30T14:37:17Z",
+      "side": 1,
+      "message": "Yes, with the current implementation of charge_get_state(), we have all the current returns from it handled in led_get_state() so we shouldn\u0027t hit the case of getting STATE_DEFAULT back.  \n\nHowever, we have an issue we\u0027re fixing in another platform where if we reference an led_state which hasn\u0027t been defined in the led_bat_state_table, then line 98 can hit a divide by zero error and crash the EC.  I\u0027d like to avoid the possibility for any similar crashes in the event that, for example, a new power state is added for another project without altering led_get_state() here.  It\u0027s up to you how defensively you\u0027d like to program it though.",
+      "parentUuid": "f6e292d3_ed9dd902",
+      "revId": "332ce3401010f6a0d7c8357ddfde4241f2502af3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b75f77df_7017123f",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 2
