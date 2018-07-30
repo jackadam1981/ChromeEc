@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4d658b54_d3991702",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-30T23:57:00Z",
+      "side": 1,
+      "message": "Aha, I finally understand why this is \"B no unit\", previously I thought you meant _populate_...A method and then _populate_...B method. I think right now _populate_dummy_stats_no_unit is a clear method name.",
+      "parentUuid": "4de414ee_0a4eeac2",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "f3d34697defa88606ce85eb217e358f45f0d94fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a33bfc3_7acb2a6b",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
