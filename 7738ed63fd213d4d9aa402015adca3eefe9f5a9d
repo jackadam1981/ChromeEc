@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee44b41c_5e17aec2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-07-30T19:51:04Z",
+      "side": 1,
+      "message": "Seems confusing to me to set battery_seems_to_be_disconnected here and again on line 1737, and to call battery_get_disconnect_state() here and again on line 1726.",
+      "revId": "7738ed63fd213d4d9aa402015adca3eefe9f5a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
