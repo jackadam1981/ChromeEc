@@ -85,6 +85,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 /* Called by hook task every 1 sec */
 static void led_second(void)
 {
+	return; /* tonycwlin@ added for power consumption test*/
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		kukui_led_set_battery();
 }
