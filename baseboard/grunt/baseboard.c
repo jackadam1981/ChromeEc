@@ -25,6 +25,7 @@
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "grunt_sensors.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
@@ -324,7 +325,7 @@ static struct mutex g_base_mutex;
  */
 matrix_3x3_t base_standard_ref = {
 	{ FLOAT_TO_FP(1), 0, 0},
-	{ 0, FLOAT_TO_FP(1),  0},
+	{ 0, FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
