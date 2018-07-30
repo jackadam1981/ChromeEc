@@ -362,8 +362,17 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	 * reliable readings over a threshold to disable key scanning.
 	 */
 	if (lid_is_open() &&
-	    (lid_to_base_fp <= FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE)))
+	    (lid_to_base_fp <= FLOAT_TO_FP(SMALL_LID_ANGLE_RANGE))) {
+#ifndef CONFIG_CARE_SMALL_ANGLE
 		reliable = 0;
+#else
+		if ((lid[Z] < CONFIG_Z_DIRECTION) &&
+			(base[Z] < CONFIG_Z_DIRECTION))
+			lid_to_base_fp = 360;
+		else
+			reliable = 0;
+#endif
+	}
 
 	if (reliable) {
 		/*

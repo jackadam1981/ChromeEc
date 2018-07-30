@@ -137,6 +137,9 @@
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_TABLET_MODE
 #define CONFIG_LID_ANGLE_INVALID_CHECK
+#define CONFIG_CARE_SMALL_ANGLE
+/* determine direction by 0.2g */
+#define CONFIG_Z_DIRECTION -3200
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
 /* KB backlight driver */

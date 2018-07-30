@@ -1600,6 +1600,14 @@
 #undef CONFIG_LID_ANGLE_INVALID_CHECK
 
 /*
+ * Add code for preventing we treat 360 degree as small angle.
+ * Unit may meet small angle when it in tablet mode (360 degree),
+ * in this define, we use direction of z-axis to determine
+ * whether it is in tablet mode.
+ */
+#undef CONFIG_CARE_SMALL_ANGLE
+#undef CONFIG_Z_DIRECTION
+/*
  * Use lid angle to detect tablet mode.
  */
 #undef CONFIG_LID_ANGLE_TABLET_MODE
