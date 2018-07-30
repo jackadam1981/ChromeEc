@@ -30,6 +30,9 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+#undef CONFIG_HIBERNATE_DELAY_SEC
+#define CONFIG_HIBERNATE_DELAY_SEC 20
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

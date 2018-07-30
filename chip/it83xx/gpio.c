@@ -605,6 +605,12 @@ void gpio_pre_init(void)
 
 #ifndef CONFIG_USB
 	/*
+	 * Enable clock to USB module.
+	 * So we can config registers of USB controller.
+	 * We will disable clock to USB module in clock_init() later.
+	 */
+	clock_enable_peripheral(CGC_OFFSET_USB, 0, 0);
+	/*
 	 * Disable default pull-down of USB controller (GPH5 and GPH6) if we
 	 * don't use this module.
 	 */

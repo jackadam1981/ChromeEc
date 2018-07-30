@@ -12,6 +12,9 @@
 #include "console.h"
 #include "driver/bc12/bq24392.h"
 #include "driver/ppc/nx20p3483.h"
+#include "driver/ppc/sn5s330.h"
+#include "driver/tcpm/ps8xxx.h"
+#include "driver/usb_mux_it5205.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
@@ -38,6 +41,15 @@ const enum gpio_signal hibernate_wake_pins[] = {
 	 * hibernate mode is enabled.
 	 */
 	GPIO_EC_RST_ODL,
+#endif
+#ifdef CONFIG_USBC_PPC_SN5S330
+	/*
+	 * We need to enable SN5S330's INT pin as a wake up source.
+	 * So SN5S330's VBUS_GOOD interrupt can be used to wake EC up
+	 * when an adapter gets connected.
+	 */
+	GPIO_USB_C0_PD_INT_ODL,
+	GPIO_USB_C1_PD_INT_ODL,
 #endif
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
@@ -294,6 +306,10 @@ void board_hibernate(void)
 		pd_request_source_voltage(port, NX20P3483_SAFE_RESET_VBUS_MV);
 #endif
 
+#ifdef CONFIG_USB_MUX_IT5205
+	it5205_power_down(IT5205_I2C_ADDR1);
+#endif
+
 	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
 		/*
 		 * If Vbus isn't already on this port, then open the SNK path
@@ -303,7 +319,16 @@ void board_hibernate(void)
 		 */
 		if (!pd_is_vbus_present(port))
 			ppc_vbus_sink_enable(port, 1);
+
+#ifdef CONFIG_USBC_PPC_SN5S330
+		/* set the SN5S330 to lowest power module */
+		sn5s330_lowest_power(port);
+#endif
 	}
+
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	ps8xxx_tcpc_sleep_mode(1);
+#endif
 
 	/*
 	 * Delay allows AP power state machine to settle down along
