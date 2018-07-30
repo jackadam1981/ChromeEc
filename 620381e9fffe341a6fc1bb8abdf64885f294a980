@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79efe810_5c7cf120",
+        "filename": "baseboard/grunt/grunt_sensors.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-30T20:52:17Z",
+      "side": 1,
+      "message": "Moot.",
+      "parentUuid": "38da607c_833332ed",
+      "revId": "620381e9fffe341a6fc1bb8abdf64885f294a980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04c06ecc_974cb5c6",
         "filename": "baseboard/grunt/grunt_sensors.h",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "620381e9fffe341a6fc1bb8abdf64885f294a980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1192c3e_7063658a",
+        "filename": "baseboard/grunt/grunt_sensors.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-07-30T20:52:17Z",
+      "side": 1,
+      "message": "I was worried about name control and was thinking too much C++.  Refactored to prefix the matrix name with `grunt` to prevent inadvertently conflicting with some other name.",
+      "parentUuid": "04c06ecc_974cb5c6",
+      "revId": "620381e9fffe341a6fc1bb8abdf64885f294a980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
