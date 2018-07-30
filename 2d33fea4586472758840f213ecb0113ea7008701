@@ -140,6 +140,30 @@
       "revId": "2d33fea4586472758840f213ecb0113ea7008701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c36ccd4d_7f027fb7",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-07-30T18:56:54Z",
+      "side": 1,
+      "message": "What does sb_read(SB_CHARGING_CURRENT, \u0026batt_new.desired_current) return? Maybe we can apply BP_NOT_SURE if the battery is requesting current?",
+      "parentUuid": "ad458081_40f28cef",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "2d33fea4586472758840f213ecb0113ea7008701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
