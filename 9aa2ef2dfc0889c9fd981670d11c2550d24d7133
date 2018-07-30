@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7539c9de_3a48491a",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-07-30T17:04:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a1ec4fa_46293cf5",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "9aa2ef2dfc0889c9fd981670d11c2550d24d7133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7312ded0_ea6e4501",
         "filename": "board/cheza/gpio.inc",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "9aa2ef2dfc0889c9fd981670d11c2550d24d7133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "effa3f75_b13da7fb",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-07-30T17:04:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7312ded0_ea6e4501",
+      "range": {
+        "startLine": 147,
+        "startChar": 44,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "9aa2ef2dfc0889c9fd981670d11c2550d24d7133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
