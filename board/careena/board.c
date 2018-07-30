@@ -26,6 +26,7 @@
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
+#include "grunt_sensors.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
@@ -124,6 +125,13 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 static void board_init(void)
 {
+	/*
+	 * Careena's baseboard is rotated 180 degrees about the +y axis relative
+	 * to the Grunt reference design.
+	 */
+	base_standard_ref[0][0] = FLOAT_TO_FP(-1);
+	base_standard_ref[2][2] = FLOAT_TO_FP(-1);
+
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
 }
