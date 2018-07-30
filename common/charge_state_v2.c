@@ -1527,8 +1527,9 @@ void charger_task(void *u)
 	 * as needed.
 	 */
 	battery_get_params(&curr.batt);
-	prev_bp = curr.batt.is_present;
-	curr.desired_input_current = get_desired_input_current(prev_bp, info);
+	prev_bp = BP_NOT_INIT;
+	curr.desired_input_current = get_desired_input_current(
+			curr.batt.is_present, info);
 
 	while (1) {
 
@@ -1642,6 +1643,12 @@ void charger_task(void *u)
 				CPRINTS("running with no battery and no AC");
 			set_charge_state(ST_IDLE);
 			curr.batt_is_charging = 0;
+			if (!battery_was_removed) {
+				/* This is needed to make charge_get_state
+				 * show correct status to the hook handlers. */
+				battery_was_removed = 1;
+				hook_notify(HOOK_BATTERY_SOC_CHANGE);
+			}
 			battery_was_removed = 1;
 			goto wait_for_it;
 		}
