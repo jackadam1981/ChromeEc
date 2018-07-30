@@ -52,6 +52,24 @@
       "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bac8e84_96836a9a",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-07-30T22:38:35Z",
+      "side": 1,
+      "message": "The issue is that there is no \"make BOARD\u003dchocodile_bec\" target. Probably there ought to be specific chocodile_bec, chocodile_vpdmcu ec firmware builds, but this allows flashing until then. \n\nI can add a TODO(remove) for when those build targets get added.",
+      "parentUuid": "cf66c174_006516f5",
+      "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
