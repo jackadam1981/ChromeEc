@@ -22,6 +22,30 @@
       "revId": "8e9c9ff431566d2ec1be63cade2f5420529000f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e643d7b4_7015cfae",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-07-30T05:51:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67537c2e_9dc0fcbd",
+      "range": {
+        "startLine": 425,
+        "startChar": 32,
+        "endLine": 425,
+        "endChar": 57
+      },
+      "revId": "8e9c9ff431566d2ec1be63cade2f5420529000f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
