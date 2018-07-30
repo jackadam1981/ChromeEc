@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de73fc69_dc4d7b40",
+        "filename": "baseboard/dragonegg/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-30T18:33:27Z",
+      "side": 1,
+      "message": "Please update before submitting",
+      "parentUuid": "20635728_e3e541b1",
+      "revId": "15919cede1f48caad02bfba471dcec2408ae7783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04de34d3_5f942104",
         "filename": "baseboard/dragonegg/usb_pd_policy.c",
         "patchSetId": 7
