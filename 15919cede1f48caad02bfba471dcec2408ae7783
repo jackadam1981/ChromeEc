@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "73abc5a0_9dc468a5",
+        "filename": "baseboard/dragonegg/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-30T20:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de73fc69_dc4d7b40",
+      "revId": "15919cede1f48caad02bfba471dcec2408ae7783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04de34d3_5f942104",
         "filename": "baseboard/dragonegg/usb_pd_policy.c",
         "patchSetId": 7
@@ -57,6 +75,30 @@
       "revId": "15919cede1f48caad02bfba471dcec2408ae7783",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b91ace_da9db83d",
+        "filename": "baseboard/dragonegg/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-07-30T20:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04de34d3_5f942104",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 108,
+        "endChar": 14
+      },
+      "revId": "15919cede1f48caad02bfba471dcec2408ae7783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
