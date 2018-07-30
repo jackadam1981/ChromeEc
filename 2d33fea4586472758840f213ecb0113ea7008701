@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6f08c8e6_bcaadfc8",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-07-30T05:53:49Z",
+      "side": 1,
+      "message": "This is related to batt_disconnect_status and battery_init() is always initialized..\nSo, would you like to check my reply in commit message firstly to see if this still need to separate?",
+      "parentUuid": "0c1ca91b_288b138f",
+      "range": {
+        "startLine": 326,
+        "startChar": 5,
+        "endLine": 328,
+        "endChar": 24
+      },
+      "revId": "2d33fea4586472758840f213ecb0113ea7008701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7a8417f_c08c2f6c",
         "filename": "board/nami/battery.c",
         "patchSetId": 2
@@ -83,6 +107,30 @@
       "writtenOn": "2018-07-27T17:03:19Z",
       "side": 1,
       "message": "Instead of blindly doing this, can we also check RSOC \u003d\u003d 0?",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "2d33fea4586472758840f213ecb0113ea7008701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad458081_40f28cef",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-07-30T05:53:49Z",
+      "side": 1,
+      "message": "A \"HW connected but not able to provide power\" battery is supposed to be treat as BP_NOT_SURE.\nIt doesn\u0027t have to be 0%. I change title of this patch.",
+      "parentUuid": "c7a8417f_c08c2f6c",
       "range": {
         "startLine": 329,
         "startChar": 0,
