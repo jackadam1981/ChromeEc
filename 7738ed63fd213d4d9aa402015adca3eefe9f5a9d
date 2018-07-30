@@ -16,6 +16,24 @@
       "revId": "7738ed63fd213d4d9aa402015adca3eefe9f5a9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a460f576_8488bfa9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1722,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-07-30T19:58:33Z",
+      "side": 1,
+      "message": "I guess we can remove those checks and set.",
+      "parentUuid": "ee44b41c_5e17aec2",
+      "revId": "7738ed63fd213d4d9aa402015adca3eefe9f5a9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
