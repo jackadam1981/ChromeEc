@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b208611_3733d379",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-30T18:29:34Z",
+      "side": 1,
+      "message": "I didn\u0027t not follow why setting the USB clock affect the PPC\u0027s interrupt signal. I didn\u0027t find anything in the linked bug either. Can you help me understand this change?",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
