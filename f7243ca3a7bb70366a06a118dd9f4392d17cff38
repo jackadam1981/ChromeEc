@@ -70,6 +70,24 @@
       "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0bf21ea_e8ee00e5",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-07-30T22:44:27Z",
+      "side": 1,
+      "message": "Sounds good.  We could also speculatively just make chocodile_vpdmcu -\u003e chocodile, since that\u0027s the primary function of the board, and let that fail to build that one since the board hasn\u0027t been made yet.",
+      "parentUuid": "2bac8e84_96836a9a",
+      "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
