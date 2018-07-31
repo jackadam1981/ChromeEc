@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c47ba304_195b2956",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-31T16:43:22Z",
+      "side": 1,
+      "message": "Can do",
+      "parentUuid": "1e6b858c_c0387a0e",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 19
+      },
+      "revId": "ab6dd8055f77b8a88b3619d4ed385adc2bb50086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bcad4f6_724edb35",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-07-31T16:28:55Z",
       "side": 1,
       "message": "I would just return out of this function instead of using a local, thoughts?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "ab6dd8055f77b8a88b3619d4ed385adc2bb50086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9f4eea_5cb37a9e",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-31T16:43:22Z",
+      "side": 1,
+      "message": "That works.  We use the local in the battery states, but we also have a less straightforward mapping there",
+      "parentUuid": "5bcad4f6_724edb35",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "74cd04bf_4e0c4fe2",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-31T16:43:22Z",
+      "side": 1,
+      "message": "I\u0027d say I like the power state mapping if we stick with the S# naming, and I like the chipset state mapping if we rename the states to match the chipset point of view.  Either offers clarity for folks reading the code later",
+      "parentUuid": "a40675f7_a925cab9",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "ab6dd8055f77b8a88b3619d4ed385adc2bb50086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47f9496d_84fdb2dd",
         "filename": "baseboard/octopus/led_states.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b1f07dce_395cf28c",
+        "filename": "baseboard/octopus/led_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-31T16:43:22Z",
+      "side": 1,
+      "message": "I\u0027ll spend some quality time with some function pointers and see how it goes :)",
+      "parentUuid": "47f9496d_84fdb2dd",
+      "range": {
+        "startLine": 143,
+        "startChar": 12,
+        "endLine": 143,
+        "endChar": 28
+      },
+      "revId": "ab6dd8055f77b8a88b3619d4ed385adc2bb50086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43782581_b77b6517",
         "filename": "baseboard/octopus/led_states.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2018-07-31T16:28:55Z",
       "side": 1,
       "message": "can we call is suspend (instead of S3). You comment is still good too",
+      "range": {
+        "startLine": 66,
+        "startChar": 15,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "ab6dd8055f77b8a88b3619d4ed385adc2bb50086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e52859_8c2ff4fd",
+        "filename": "baseboard/octopus/led_states.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-07-31T16:43:22Z",
+      "side": 1,
+      "message": "We can, though I\u0027ve noticed so far in the fleex and phaser OEM docs for LEDs they like to define things in terms of S0, S3 (fleex also calls out S0ix), and S5.  So S3 matches the docs better, but suspend is a more accurate descriptor",
+      "parentUuid": "43782581_b77b6517",
       "range": {
         "startLine": 66,
         "startChar": 15,
