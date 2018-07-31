@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c84c2cf_3411185d",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-31T09:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3aa4848_2d59eae7",
+      "range": {
+        "startLine": 122,
+        "startChar": 41,
+        "endLine": 122,
+        "endChar": 55
+      },
+      "revId": "7885028e3d3cf7016f518e965255fdd770a25b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92985666_1ba871fa",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "7885028e3d3cf7016f518e965255fdd770a25b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1360287_bb2ae4f0",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-31T09:45:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92985666_1ba871fa",
+      "range": {
+        "startLine": 125,
+        "startChar": 25,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "7885028e3d3cf7016f518e965255fdd770a25b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
