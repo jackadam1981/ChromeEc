@@ -15,6 +15,7 @@
 #include "host_command.h"
 #include "led_common.h"
 #include "system.h"
+#include "task.h"
 #include "timer.h"
 #include "util.h"
 
@@ -206,6 +207,7 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	return EC_SUCCESS;
 }
 
+#if 0
 static enum led_states led_get_state(void)
 {
 	int  charge_lvl;
@@ -291,6 +293,7 @@ static void led_update_battery(void)
 	led_set_color_battery(led.state_table[led.state][phase].color);
 	ticks++;
 }
+#endif
 
 static void led_robo_update_power(void)
 {
@@ -323,6 +326,7 @@ static void led_robo_update_power(void)
 
 void led_task(void *u)
 {
+#if 0
 	uint32_t start_time_us;
 	uint32_t task_duration_us;
 
@@ -349,6 +353,7 @@ void led_task(void *u)
 		if (task_duration_us < LED_TICK_TIME_MSEC * MSEC)
 			usleep(LED_TICK_TIME_MSEC * MSEC - task_duration_us);
 	}
+#endif
 }
 
 static void led_init(void)
@@ -373,3 +378,18 @@ static void led_init(void)
 }
 /* Make sure this comes after SKU ID hook */
 DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT + 2);
+
+/* Blink battery led color every second. */
+void led_blink(void *u)
+{
+	while (1) {
+		/* Set battery led color to amber. */
+		led_set_color_battery(LED_COLOR_1);
+		/* Sleep 0.5 sec. */
+		task_wait_event(500 * MSEC);
+		/* Set battery led color to blue. */
+		led_set_color_battery(LED_COLOR_2);
+		/* Sleep 0.5 sec. */
+		task_wait_event(500 * MSEC);
+	}
+}
