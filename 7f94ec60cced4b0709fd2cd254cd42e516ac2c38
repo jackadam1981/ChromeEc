@@ -22,6 +22,30 @@
       "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a35c3b_31147ae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-07-31T10:06:21Z",
+      "side": 1,
+      "message": "At default, there is a 15K pull-down resistor on both GPH5/GPH6 pins (on bip board, these two pins are connected to PPC\u0027s INT pin)\nThis issue has been addressed in CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1105689\n\nThis issue can be reproduced after EC triggers a software reset (eg: wake system up from hibernate or console command \"reboot\").\nThis is becaus 15K pull-down is enabled and USB clock is disabled after the reset.\nAnd the control register of pull-down resistor is belong to the USB module.\nSo we need to ensure USB clock is enabled before setting the control register.",
+      "parentUuid": "4b208611_3733d379",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
