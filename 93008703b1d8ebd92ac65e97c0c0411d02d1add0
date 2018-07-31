@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "046f0dbd_4ad9d38e",
+        "filename": "board/careena/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-07-31T05:48:20Z",
+      "side": 1,
+      "message": "jbruneau suggests this should be push/pull not open drain.",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "93008703b1d8ebd92ac65e97c0c0411d02d1add0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
