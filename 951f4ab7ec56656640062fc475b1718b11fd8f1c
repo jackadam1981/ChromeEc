@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "74a5aec2_8c91ec06",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-31T01:56:02Z",
+      "side": 1,
+      "message": "Probably not helpful here.",
+      "parentUuid": "e60a938e_793c0506",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2694ecb8_fd7b7f46",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 2
@@ -140,6 +164,30 @@
       "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "818c787e_a2f6cf9a",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-31T01:56:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ef734e8_509d58db",
+      "range": {
+        "startLine": 126,
+        "startChar": 24,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "8883a1dd_6691a265",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-31T01:56:02Z",
+      "side": 1,
+      "message": "I am ok with or without _populate_stats. I am ok with adding sample / unit in each test case. I care more about:\n1. using just enough sample for each test case, if you can use 3, then don\u0027t use 4.\n2. Using realistic and easy to understand sample / unit names. eg, sample A with unit mw. fake NaN with string \u0027fake_NaN\u0027.\n3. Samples across different test cases follow consistent naming. eg, keep using ABCD..., or test1, test2, ... don\u0027t mix up the naming. \n\nI\u0027m fine as long as code is concise and easy to read.",
+      "parentUuid": "2bea8f30_8c2aae0b",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f02a3e83_ff564364",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -284,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "e6bb9713_5f51ea9d",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-31T01:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15edc88d_d0e73a78",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f575d8c_533c72c5",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
@@ -328,6 +424,30 @@
       "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95210b90_89a9acbf",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2018-07-31T01:56:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01946fe6_15321daf",
+      "range": {
+        "startLine": 83,
+        "startChar": 14,
+        "endLine": 83,
+        "endChar": 26
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
