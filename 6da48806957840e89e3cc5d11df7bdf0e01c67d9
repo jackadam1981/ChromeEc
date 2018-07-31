@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "aa33b7b0_9b8facaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-31T23:41:40Z",
+      "side": 1,
+      "message": "Needs resolving before commit.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87e68864_4f078078",
         "filename": "chip/g/board_space.h",
         "patchSetId": 6
@@ -64,6 +87,52 @@
         "startChar": 0,
         "endLine": 113,
         "endChar": 15
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c15749d_040d09c3",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3481,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-31T23:41:40Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 3481,
+        "startChar": 15,
+        "endLine": 3481,
+        "endChar": 17
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c9c88e_fdbc2a3f",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-07-31T23:41:40Z",
+      "side": 1,
+      "message": "What params does it take/return?",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 17
       },
       "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
