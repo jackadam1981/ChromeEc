@@ -493,7 +493,11 @@
 #undef CONFIG_DEBUG_BRINGUP
 
 /*****************************************************************************/
-
+/*
+ * This wait time may impacted by other device wake time.
+ * For example, time of battery wake from cutoff(shutdown mode).
+ */
+#define CONFIG_PWRBTN_INIT_WAIT_SEC 1
 /*
  * Support for entering recovery mode using the volume buttons or a dedicated
  * recovery button.  Note that these are *buttons* and not keys in the keyboard
