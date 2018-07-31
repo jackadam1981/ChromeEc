@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87e68864_4f078078",
+        "filename": "chip/g/board_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-31T16:08:06Z",
+      "side": 1,
+      "message": "Yves, what\u0027s the latest on the SN+RMAbits structure we need to store in INFO1? What should struct sn_bits be here?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c508f2_3ff4efc4",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-31T16:08:06Z",
+      "side": 1,
+      "message": "similar to writing board id, writing SN bits should only go forward if the current SN bits value is 0b11..11, i.e. it was never written before. And, if we have RMAbits, this command should check that those bits are all 1s, when SN is written for the 1st time (or just forcefully set those to 1 regardless of the input). Note that even when it is allowed to set SN (factory, possibly RMA; but we don\u0027t allow users who got H1 with no SN stored to just write any SN there) it makes sense to check for 11..11 first - flash_info_physical_write() doesn\u0027t erase the old value and so can only turn 1s into 0s iiuc.\n\nFor setting the RMAbits part, I suggest having a separate command with separate restrictions. That command can still only be called during RMA/factory, but it shouldn\u0027t just accept an arbitrary value from the caller; in fact, it doesn\u0027t need any value from the caller at all - it should always erase the next bit (or, for now, if we decide to have just a single bit meaning \u0027was RMA\u0027d at least once, don\u0027t trust SN\u0027 only erase that bit, if not done yet).",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "792c5948_d34557a5",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-07-31T16:08:06Z",
+      "side": 1,
+      "message": "instead of #ifdef CR50_DEV I suggest having a separate is_writing_sn_allowed() function.\nThat function shall return 1 only if we are in RMA/factory mode - outside of this mode setting SN is not allowed even if it is not set yet. Plus, it can also return 1 if defined(CR50_DEV).\nIf for now we don\u0027t have a method to check if we are in factory/RMA, then ifdef CR50_DEV there is the only case for 1, but that should change.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
