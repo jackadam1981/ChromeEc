@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "099152a4_6837e676",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-31T15:46:43Z",
+      "side": 1,
+      "message": "If we didn\u0027t initialize prev_bp to curr.batt.is_present on line 1521 (but some other uninitialized value), would that also solve this problem?",
+      "range": {
+        "startLine": 1640,
+        "startChar": 4,
+        "endLine": 1640,
+        "endChar": 41
+      },
+      "revId": "6392f5fff954f0c28d694b5ddfb49449e92f6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
