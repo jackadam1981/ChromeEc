@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7937cb84_e5d7be8a",
+        "filename": "board/nami/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-07-31T02:38:00Z",
+      "side": 1,
+      "message": "3200 assume the range is +/- 2g, which can be changed by the host.",
+      "revId": "bbe8a8a9405a626c59bd9641f8d2bb2eff5a63a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9667d6bf_00e9fde0",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-07-31T02:38:00Z",
+      "side": 1,
+      "message": "when lid and base are next to each other, one axis will measure a positive Z component, the other a negative one. So one of the test will always be true.",
+      "revId": "bbe8a8a9405a626c59bd9641f8d2bb2eff5a63a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
