@@ -128,16 +128,17 @@ static int it83xx_rx_data(enum usbpd_port port, int *head, uint32_t *buf)
 static enum tcpc_transmit_complete it83xx_tx_data(
 	enum usbpd_port port,
 	enum tcpm_transmit_type type,
-	uint8_t msg_type,
-	uint8_t length,
+	uint16_t header,
 	const uint32_t *buf)
 {
 	int r;
 	uint32_t evt;
+	uint8_t length = PD_HEADER_CNT(header);
 
-	/* set message type */
-	IT83XX_USBPD_MTSR0(port) =
-		(IT83XX_USBPD_MTSR0(port) & ~0x1f) | (msg_type & 0xf);
+	/* set message header */
+	IT83XX_USBPD_TMHLR(port) = (uint8_t)header;
+	IT83XX_USBPD_TMHHR(port) = (header >> 8);
+
 	/*
 	 * SOP type bit[6~4]:
 	 * on bx version and before:
@@ -259,6 +260,7 @@ static void it83xx_set_power_role(enum usbpd_port port, int power_role)
 {
 	/* PD_ROLE_SINK 0, PD_ROLE_SOURCE 1 */
 	if (power_role == PD_ROLE_SOURCE) {
+		IT83XX_USBPD_CCADCR(port) = 0x8;
 		/* bit0: source */
 		SET_MASK(IT83XX_USBPD_PDMSR(port), (1 << 0));
 		/* bit1: CC1 select Rp */
@@ -266,6 +268,7 @@ static void it83xx_set_power_role(enum usbpd_port port, int power_role)
 		/* bit3: CC2 select Rp */
 		SET_MASK(IT83XX_USBPD_BMCSR(port), (1 << 3));
 	} else {
+		IT83XX_USBPD_CCADCR(port) = 0x4;
 		/* bit0: sink */
 		CLEAR_MASK(IT83XX_USBPD_PDMSR(port), (1 << 0));
 		/* bit1: CC1 select Rd */
@@ -286,8 +289,8 @@ static void it83xx_init(enum usbpd_port port, int role)
 {
 	/* bit7: Reload CC parameter setting. */
 	IT83XX_USBPD_CCPSR0(port) |= (1 << 7);
-	/* reset */
-	IT83XX_USBPD_GCR(port) = 0;
+	/* reset and disable HW auto generate message header */
+	IT83XX_USBPD_GCR(port) = (1 << 5);
 	USBPD_SW_RESET(port);
 	/* set SOP: receive SOP message only.
 	 * bit[7]: SOP" support enable.
@@ -498,8 +501,7 @@ static int it83xx_tcpm_transmit(int port,
 	case TCPC_TX_SOP_DEBUG_PRIME_PRIME:
 		status = it83xx_tx_data(port,
 					type,
-					PD_HEADER_TYPE(header),
-					PD_HEADER_CNT(header),
+					header,
 					data);
 		break;
 	case TCPC_TX_BIST_MODE_2:
