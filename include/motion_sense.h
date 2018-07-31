@@ -16,6 +16,15 @@
 #include "queue.h"
 #include "timer.h"
 
+/* HID structs and variables */
+struct hid_accel_report {
+	uint16_t len;
+	uint8_t id;
+	uint16_t data_x;
+	uint16_t data_y;
+	uint16_t data_z;
+};
+
 enum sensor_state {
 	SENSOR_NOT_INITIALIZED = 0,
 	SENSOR_INITIALIZED = 1,

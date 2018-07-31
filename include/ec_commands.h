@@ -2069,6 +2069,33 @@ struct __ec_todo_packed ec_params_motion_sense {
 	};
 };
 
+/* HID input report */
+struct hid_ec_response_motion_sense {
+	union {
+		/* HID input report header */
+		struct __ec_todo_unpacked {
+			/* 1st byte report id*/
+			uint8_t id;
+
+			/* 2-byte length */
+			uint16_t len;
+			
+		}header;
+		struct __ec_todo_unpacked {
+			/* accel axis values */
+			uint16_t x;
+			uint16_t y;
+			uint16_t z;
+		}
+	
+	}
+	
+	
+	
+	
+
+};
+
 struct __ec_todo_packed ec_response_motion_sense {
 	union {
 		/* Used for MOTIONSENSE_CMD_DUMP */
