@@ -2318,6 +2318,28 @@ static int pd_restart_tcpc(int port)
 }
 #endif
 
+static void initialize_polarity(int port)
+{
+	int cc1, cc2;
+
+	/*
+	 * Set the terminations to match our power
+	 * role.
+	 */
+	tcpm_set_cc(port, pd[port].power_role ?
+		    TYPEC_CC_RP : TYPEC_CC_RD);
+
+	/* Determine the polarity. */
+	tcpm_get_cc(port, &cc1, &cc2);
+	if (pd[port].power_role == PD_ROLE_SINK) {
+		pd[port].polarity =
+			get_snk_polarity(cc1, cc2);
+	} else {
+		pd[port].polarity =
+			(cc1 != TYPEC_CC_VOLT_RD);
+	}
+}
+
 void pd_task(void *u)
 {
 	int head;
@@ -2440,6 +2462,14 @@ void pd_task(void *u)
 	pd[port].vdm_state = VDM_STATE_DONE;
 	set_state(port, this_state);
 	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+#ifdef CONFIG_USB_PD_TCPC
+	/*
+	 * Devices behaving as a PD PHY must initialize their polarity to use
+	 * teh right CC line for communication.
+	 */
+	initialize_polarity(port);
+#endif
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
 	 * If we're not in an explicit contract, set our terminations to match
@@ -2520,24 +2550,7 @@ void pd_task(void *u)
 #endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 			if (pd[port].task_state == PD_STATE_SOFT_RESET) {
-				int cc1, cc2;
-
-				/*
-				 * Set the terminations to match our power
-				 * role.
-				 */
-				tcpm_set_cc(port, pd[port].power_role ?
-					    TYPEC_CC_RP : TYPEC_CC_RD);
-
-				/* Determine the polarity. */
-				tcpm_get_cc(port, &cc1, &cc2);
-				if (pd[port].power_role == PD_ROLE_SINK) {
-					pd[port].polarity =
-						get_snk_polarity(cc1, cc2);
-				} else {
-					pd[port].polarity =
-						(cc1 != TYPEC_CC_VOLT_RD);
-				}
+				initialize_polarity(port);
 			} else
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 			{
