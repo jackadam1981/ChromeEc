@@ -46,6 +46,53 @@
       "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079d7e83_34e2dc27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-31T15:57:20Z",
+      "side": 1,
+      "message": "Ah, I understand now thanks. Can you add b:110237505 to this CL as well.",
+      "parentUuid": "22a35c3b_31147ae9",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75ab6a1e_bba047a1",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-07-31T15:57:20Z",
+      "side": 1,
+      "message": "can you add \"This is important for a software reset as the hardware clock may already be disabled from the previous run\"",
+      "range": {
+        "startLine": 609,
+        "startChar": 4,
+        "endLine": 609,
+        "endChar": 72
+      },
+      "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
