@@ -133,9 +133,6 @@ void board_battery_init(void)
 		info = &info_1;
 	else if (oem == PROJECT_PANTHEON)
 		info = &info_2;
-
-	fuel_gauge = get_gauge_ic();
-	CPRINTS("fuel_gauge=%d\n", fuel_gauge);
 }
 DECLARE_HOOK(HOOK_INIT, board_battery_init, HOOK_PRIO_DEFAULT);
 
@@ -270,6 +267,9 @@ static int battery_check_disconnect_1(void)
 
 static int battery_check_disconnect(void)
 {
+	fuel_gauge = get_gauge_ic();
+	CPRINTS("fuel_gauge=%d\n", fuel_gauge);
+
 	if (oem == PROJECT_AKALI)
 		return battery_check_disconnect_1();
 
