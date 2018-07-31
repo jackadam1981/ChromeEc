@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "00767b81_3bae5789",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-07-31T09:53:21Z",
+      "side": 1,
+      "message": "fair enough, crbug.com/869323 to track an effort to do this, as it\u0027s kind of outside of the scope of each of these individually",
+      "parentUuid": "8883a1dd_6691a265",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "951f4ab7ec56656640062fc475b1718b11fd8f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f02a3e83_ff564364",
         "filename": "extra/usb_power/stats_manager_unittest.py",
         "patchSetId": 2
