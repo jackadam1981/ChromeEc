@@ -133,9 +133,6 @@ void board_battery_init(void)
 		info = &info_1;
 	else if (oem == PROJECT_PANTHEON)
 		info = &info_2;
-
-	fuel_gauge = get_gauge_ic();
-	CPRINTS("fuel_gauge=%d\n", fuel_gauge);
 }
 DECLARE_HOOK(HOOK_INIT, board_battery_init, HOOK_PRIO_DEFAULT);
 
@@ -273,13 +270,17 @@ static int battery_check_disconnect(void)
 	if (oem == PROJECT_AKALI)
 		return battery_check_disconnect_1();
 
-	if (fuel_gauge == GAUGE_TYPE_UNKNOWN)
-		return BATTERY_DISCONNECT_ERROR;
+	if (fuel_gauge == GAUGE_TYPE_UNKNOWN) {
+		fuel_gauge = get_gauge_ic();
+		CPRINTS("fuel_gauge=%d\n", fuel_gauge);
+	}
 
 	if (fuel_gauge == GAUGE_TYPE_TI_BQ40Z50)
 		return battery_check_disconnect_ti_bq40z50();
-	else
+	else if (fuel_gauge == GAUGE_TYPE_RENESAS_RAJ240)
 		return battery_check_disconnect_renesas_raj240();
+
+	return BATTERY_DISCONNECT_ERROR;
 }
 
 static enum battery_present batt_pres_prev; /* Default BP_NO (=0) */
