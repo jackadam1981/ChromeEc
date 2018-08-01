@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8795d47f_a450bb03",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-01T13:58:42Z",
+      "side": 1,
+      "message": "what are they reserved for? Can we use them in the future?",
+      "range": {
+        "startLine": 1124,
+        "startChar": 1,
+        "endLine": 1124,
+        "endChar": 38
+      },
+      "revId": "71113528f1899bbdb43f4c2b714b9990781a0cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d463143a_642b3d46",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-01T13:58:42Z",
+      "side": 1,
+      "message": "Can you add a comment right after line that 0x7f is the end of Bank 0.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 30
+      },
+      "revId": "71113528f1899bbdb43f4c2b714b9990781a0cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
