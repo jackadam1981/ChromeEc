@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fe23606_3eb6a08e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-01T13:07:59Z",
+      "side": 1,
+      "message": "In my experiment, I have never seen fuel_gauge detection fail but the cutoff issue is still observed.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "9add847245c81f351586cb23d90649db7a68bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c31a4c1_f44da9c2",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-01T13:07:59Z",
+      "side": 1,
+      "message": "This is never reached.",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 33
+      },
+      "revId": "9add847245c81f351586cb23d90649db7a68bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
