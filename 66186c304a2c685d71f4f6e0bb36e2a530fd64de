@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0c967a8_8ac51073",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-01T02:19:12Z",
+      "side": 1,
+      "message": "Just pass struct charge_state_data *curr as parameter, so you don\u0027t need to cast.",
+      "revId": "66186c304a2c685d71f4f6e0bb36e2a530fd64de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d02ddf_10e3ea93",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-01T02:19:12Z",
+      "side": 1,
+      "message": "This should be in a common include file (include/charge_state_v2.h)",
+      "revId": "66186c304a2c685d71f4f6e0bb36e2a530fd64de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
