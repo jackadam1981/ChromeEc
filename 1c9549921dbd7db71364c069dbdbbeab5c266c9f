@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4abaa406_3db59c4e",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-08-01T18:24:11Z",
+      "side": 1,
+      "message": "We are checking w/ vendor about the wake time. \nMaybe there is better way to tune this counter?",
+      "range": {
+        "startLine": 317,
+        "startChar": 12,
+        "endLine": 317,
+        "endChar": 14
+      },
+      "revId": "1c9549921dbd7db71364c069dbdbbeab5c266c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
