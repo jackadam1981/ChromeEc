@@ -21,6 +21,7 @@
 /* #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
 
 /* EC Defines */
+#define CONFIG_ADC
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
@@ -58,7 +59,7 @@
  * on the MLB for now. In addition, this config option will likely move to
  * board.h as it likely board dependent and not same across all follower boards.
  */
-#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_PORT_COUNT 2
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_LOGGING
@@ -71,6 +72,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_MUX_VIRTUAL
 #define CONFIG_USBC_PPC_SN5S330		/* C0 PPC */
+#define CONFIG_USBC_PPC_SYV682X		/* C1 PPC */
 #define CONFIG_USBC_PPC_VCONN
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_VCONN
