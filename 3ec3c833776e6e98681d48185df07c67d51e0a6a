@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "de9529d7_3613b2bf",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-01T15:28:42Z",
+      "side": 1,
+      "message": "BRAM_IDX_VALID_FLAGS0? to be consistent with other flags?",
+      "range": {
+        "startLine": 1127,
+        "startChar": 1,
+        "endLine": 1127,
+        "endChar": 21
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48944c46_5035e03c",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-01T15:28:42Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 1142,
+        "startChar": 8,
+        "endLine": 1142,
+        "endChar": 24
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d5c07db_5fbcd0fe",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-01T15:28:42Z",
+      "side": 1,
+      "message": "BRAM_VALID_MAGIC_FIELD0?",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 30
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0c09aef_f31be7a3",
         "filename": "chip/it83xx/system.c",
         "patchSetId": 2
