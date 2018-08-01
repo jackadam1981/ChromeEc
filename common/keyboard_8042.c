@@ -180,6 +180,7 @@ static int kblog_len;			/* Current log length */
  */
 static void kblog_put(char type, uint8_t byte)
 {
+	ccprintf("kblog_put\n");
 	if (kblog_buf && kblog_len < MAX_KBLOG) {
 		kblog_buf[kblog_len].type = type;
 		kblog_buf[kblog_len].byte = byte;
@@ -853,12 +854,15 @@ void keyboard_protocol_task(void *u)
 			/* Handle typematic */
 			if (!typematic_len) {
 				/* Typematic disabled; wait for enable */
+				ccprintf("kbproto: typematic\n");
 				wait = -1;
 			} else if (timestamp_expired(typematic_deadline, &t)) {
 				/* Ready for next typematic keystroke */
-				if (keystroke_enabled)
+				if (keystroke_enabled) {
+					ccprintf("kbproto: i8042_send_to_host\n");
 					i8042_send_to_host(typematic_len,
 							   typematic_scan_code);
+				}
 				typematic_deadline.val = t.val +
 					typematic_inter_delay;
 				wait = typematic_inter_delay;
@@ -871,8 +875,10 @@ void keyboard_protocol_task(void *u)
 			i8042_handle_from_host();
 
 			/* Check if we have data to send to host */
-			if (queue_is_empty(&to_host))
+			if (queue_is_empty(&to_host)) {
+				ccprintf("kbproto: no data to send to host\n");
 				break;
+			}
 
 			/* Handle data waiting for host */
 			if (lpc_keyboard_has_char()) {
@@ -903,6 +909,7 @@ void keyboard_protocol_task(void *u)
 			kblog_put('K', chr);
 
 			/* Write to host. */
+			ccprintf("kblog: lpc_kbrd_put\n");
 			lpc_keyboard_put_char(chr, i8042_irq_enabled);
 			retries = 0;
 		}
