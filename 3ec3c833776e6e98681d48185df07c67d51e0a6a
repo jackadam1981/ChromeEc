@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b29ed8cf_a26c9213",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-01T15:33:19Z",
+      "side": 1,
+      "message": "I like that too (however I would also want to update BRAM_IDX_SCRATCHPAD to BRAM_IDX_SCRATCHPAD0 as well ;) )",
+      "parentUuid": "de9529d7_3613b2bf",
+      "range": {
+        "startLine": 1127,
+        "startChar": 1,
+        "endLine": 1127,
+        "endChar": 21
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48944c46_5035e03c",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 2
