@@ -31,4 +31,6 @@
 #define IT5205_DP_USB            0x03
 #define IT5205_USB               0x07
 
+int it5205_power_down(int i2c_addr);
+
 #endif /* __CROS_EC_USB_MUX_IT5205_H */

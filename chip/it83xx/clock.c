@@ -426,6 +426,17 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	for (i = 0; i < hibernate_wake_pins_used; ++i)
 		gpio_enable_interrupt(hibernate_wake_pins[i]);
 
+	gpio_set_flags_by_mask(GPIO_D, 0x1b, (GPIO_INPUT | GPIO_PULL_DOWN));
+	gpio_set_flags_by_mask(GPIO_J, 0x33, GPIO_INPUT);
+	gpio_set_flags_by_mask(GPIO_L, 0x3, GPIO_INPUT);
+	/* Enable eSPI interface pulldown */
+	gpio_set_flags_by_mask(GPIO_M, 0x7f, (GPIO_INPUT | GPIO_PULL_DOWN));
+
+	/* KSO and KSI pins are configured as GPIO input */
+	IT83XX_KBS_KSOHGCTRL = 0xff;
+	IT83XX_KBS_KSOLGCTRL = 0xff;
+	IT83XX_KBS_KSIGCTRL = 0xff;
+
 	/* EC sleep */
 	ec_sleep = 1;
 	clock_ec_pll_ctrl(EC_PLL_SLEEP);
