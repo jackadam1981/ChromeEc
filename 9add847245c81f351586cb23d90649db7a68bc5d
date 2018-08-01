@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a1f6fdd_e1f18227",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-08-01T13:26:18Z",
+      "side": 1,
+      "message": "Your fail unit, can read get_gauge_ic()?\nSet WP and enter batterycutoff, then plug AC to turn on unit.\nIn this situation,you can see get_gauge_ic() work normally(return right battery vendor name)?",
+      "parentUuid": "8fe23606_3eb6a08e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 59
+      },
+      "revId": "9add847245c81f351586cb23d90649db7a68bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c31a4c1_f44da9c2",
         "filename": "board/nami/battery.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "9add847245c81f351586cb23d90649db7a68bc5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24e4db0_f2769fb7",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-08-01T13:26:18Z",
+      "side": 1,
+      "message": "Yes, I should add an else if for it.",
+      "parentUuid": "4c31a4c1_f44da9c2",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 33
+      },
+      "revId": "9add847245c81f351586cb23d90649db7a68bc5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
