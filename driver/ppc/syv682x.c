@@ -207,6 +207,9 @@ static int syv682x_set_vconn(int port, int enable)
 	if (rv)
 		return rv;
 
+	ccprintf("syv682: vconn: enable = %d, pol = %d, reg 0x%02x\n", enable,
+		 cc_polarity[port], regval);
+
 	if (enable)
 		regval |= cc_polarity[port] ? SYV682X_CONTROL_4_VCONN1 :
 			SYV682X_CONTROL_4_VCONN2;

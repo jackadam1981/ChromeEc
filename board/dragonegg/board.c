@@ -4,7 +4,8 @@
  */
 
 /* DragonEgg board-specific configuration */
-
+#include "adc.h"
+#include "adc_chip.h"
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/sn5s330.h"
@@ -29,6 +30,24 @@ static void ppc_interrupt(enum gpio_signal signal)
 }
 
 #include "gpio_list.h" /* Must come after other header files. */
+
+/******************************************************************************/
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	/* Vbus C0 sensing (10x voltage divider). PPVAR_USB_C0_VBUS */
+	[ADC_VBUS_C0] = {.name = "VBUS_C0",
+			 .factor_mul = 7 * ADC_MAX_MVOLT,
+			 .factor_div = ADC_READ_MAX + 1,
+			 .shift = 0,
+			 .channel = CHIP_ADC_CH1},
+	/* Vbus C1 sensing (10x voltage divider). PPVAR_USB_C1_VBUS */
+	[ADC_VBUS_C1] = {.name = "VBUS_C1",
+			 .factor_mul = (7300 / 1000) * ADC_MAX_MVOLT,
+			 .factor_div = ADC_READ_MAX + 1,
+			 .shift = 0,
+			 .channel = CHIP_ADC_CH0},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /******************************************************************************/
 /* SPI devices */
