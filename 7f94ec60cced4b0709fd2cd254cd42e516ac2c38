@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "185cadf5_e8be43bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-01T04:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "079d7e83_34e2dc27",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75ab6a1e_bba047a1",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dcf83c8_1b0c44da",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-01T04:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ab6a1e_bba047a1",
+      "range": {
+        "startLine": 609,
+        "startChar": 4,
+        "endLine": 609,
+        "endChar": 72
+      },
+      "revId": "7f94ec60cced4b0709fd2cd254cd42e516ac2c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
