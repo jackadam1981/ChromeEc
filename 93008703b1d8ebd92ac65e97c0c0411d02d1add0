@@ -22,6 +22,30 @@
       "revId": "93008703b1d8ebd92ac65e97c0c0411d02d1add0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d1e8d93_a590decd",
+        "filename": "board/careena/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-01T17:07:50Z",
+      "side": 1,
+      "message": "This was resolved to be an error in assembly.  PP3300_A pulls up SYS_RST_ODL via R150.  The EC\u0027s GPIO_SYS_RESET_L maps to net EC_SYS_RST_L which is in turn pulled up via D1 to SYS_RST_ODL.\n\nThis net is signaled by three different sources, each of which is on a separate power domain relative to the AP: The EC, H1, and servo connector.  Both the EC and H1 have transistor guards on their drive: D1 for the EC and Q40 for the H1.  Those guards provide open-drain logic, and allow the signal to cross the power domains.",
+      "parentUuid": "046f0dbd_4ad9d38e",
+      "range": {
+        "startLine": 34,
+        "startChar": 35,
+        "endLine": 34,
+        "endChar": 38
+      },
+      "revId": "93008703b1d8ebd92ac65e97c0c0411d02d1add0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
