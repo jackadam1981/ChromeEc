@@ -15,6 +15,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "system.h"
 #include "task.h"
 #include "time.h"
 #include "util.h"
@@ -893,6 +894,13 @@ static void bd9995x_init(void)
 		return;
 	reg &= ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
 	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg, BD9995X_EXTENDED_COMMAND);
+
+	/*
+	 * No need to proceed with the rest of init if we sysjump'd to this
+	 * image as the input current limit has already been set.
+	 */
+	if (system_jumped_to_this_image())
+		return;
 
 	/* Define battery charging profile */
 	bd9995x_battery_charging_profile_settings();
