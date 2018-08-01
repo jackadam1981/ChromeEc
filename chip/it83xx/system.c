@@ -122,6 +122,33 @@ void chip_pre_init(void)
 	IT83XX_SMB_SLVISELR &= ~(1 << 4);
 }
 
+#define BRAM_VALID_MAGIC 	0x4252414D  /* "BRAM" */
+#define BRAM_VALID_MAGIC_FIELD	(BRAM_VALID_MAGIC & 0xff)
+#define BRAM_VALID_MAGIC_FIELD1	((BRAM_VALID_MAGIC >> 8) & 0xff)
+#define BRAM_VALID_MAGIC_FIELD2	((BRAM_VALID_MAGIC >> 16) & 0xff)
+#define BRAM_VALID_MAGIC_FIELD3	((BRAM_VALID_MAGIC >> 24) & 0xff)
+void chip_bram_valid(void)
+{
+	int i;
+
+	if ((BRAM_VALID_FLAGS != BRAM_VALID_MAGIC_FIELD) ||
+	    (BRAM_VALID_FLAGS1 != BRAM_VALID_MAGIC_FIELD1) ||
+	    (BRAM_VALID_FLAGS2 != BRAM_VALID_MAGIC_FIELD2) ||
+	    (BRAM_VALID_FLAGS3 != BRAM_VALID_MAGIC_FIELD3)) {
+		/*
+		 * Magic does not match, so BRAM must be uninitialized. Clear
+		 * entire Bank0 BRAM, and set magic value.
+		 */
+		for (i = 0; i < BRAM_IDX_VALID_FLAGS; i++)
+			IT83XX_BRAM_BANK0(i) = 0;
+
+		BRAM_VALID_FLAGS = BRAM_VALID_MAGIC_FIELD;
+		BRAM_VALID_FLAGS1 = BRAM_VALID_MAGIC_FIELD1;
+		BRAM_VALID_FLAGS2 = BRAM_VALID_MAGIC_FIELD2;
+		BRAM_VALID_FLAGS3 = BRAM_VALID_MAGIC_FIELD3;
+	}
+}
+
 void system_pre_init(void)
 {
 	/* No initialization required */
