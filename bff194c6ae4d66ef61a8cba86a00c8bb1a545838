@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "974f7bf2_887356f2",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-01T16:11:36Z",
+      "side": 1,
+      "message": "Can you expand on this comment to include what the dedicated setting is? Is this CC_Rd, CC_Open, etc?",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "bff194c6ae4d66ef61a8cba86a00c8bb1a545838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
