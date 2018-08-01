@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00282c2b_c8755304",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-01T00:17:37Z",
+      "side": 1,
+      "message": "This function isn\u0027t designed for the fuel gauge of Akali. What does it return?",
+      "range": {
+        "startLine": 270,
+        "startChar": 14,
+        "endLine": 270,
+        "endChar": 26
+      },
+      "revId": "ed990a5f368f565ceafcac2f707451ea75e6ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d79577a3_b27d9014",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-01T00:17:37Z",
+      "side": 1,
+      "message": "This is basically used to make sure the system boots with enough power from AC when battery power isn\u0027t available. We learned Nami needs 27W. You\u0027re creating different issues by setting this to 15W.",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "ed990a5f368f565ceafcac2f707451ea75e6ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
