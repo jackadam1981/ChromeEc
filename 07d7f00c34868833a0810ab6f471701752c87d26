@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68adb975_27128781",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-01T08:36:03Z",
+      "side": 1,
+      "message": "nit: maybe no comma here, or at least be consistent with the one below",
+      "range": {
+        "startLine": 129,
+        "startChar": 29,
+        "endLine": 129,
+        "endChar": 30
+      },
+      "revId": "07d7f00c34868833a0810ab6f471701752c87d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
