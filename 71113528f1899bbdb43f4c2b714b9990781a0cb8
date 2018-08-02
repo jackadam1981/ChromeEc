@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "accc209f_6e5dafc6",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-02T05:50:21Z",
+      "side": 1,
+      "message": "Yes, we can use them in the future if needed.",
+      "parentUuid": "8795d47f_a450bb03",
+      "range": {
+        "startLine": 1124,
+        "startChar": 1,
+        "endLine": 1124,
+        "endChar": 38
+      },
+      "revId": "71113528f1899bbdb43f4c2b714b9990781a0cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d463143a_642b3d46",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "71113528f1899bbdb43f4c2b714b9990781a0cb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "964430f0_ffe02659",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-02T05:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d463143a_642b3d46",
+      "range": {
+        "startLine": 1130,
+        "startChar": 1,
+        "endLine": 1130,
+        "endChar": 30
+      },
+      "revId": "71113528f1899bbdb43f4c2b714b9990781a0cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

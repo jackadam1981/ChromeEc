@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e6b63948_9ec1c589",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-02T05:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b29ed8cf_a26c9213",
+      "range": {
+        "startLine": 1127,
+        "startChar": 1,
+        "endLine": 1127,
+        "endChar": 21
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48944c46_5035e03c",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d657772_c85e2922",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-02T05:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48944c46_5035e03c",
+      "range": {
+        "startLine": 1142,
+        "startChar": 8,
+        "endLine": 1142,
+        "endChar": 24
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "157d52af_f8817c1c",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-02T05:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d5c07db_5fbcd0fe",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 30
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0c09aef_f31be7a3",
         "filename": "chip/it83xx/system.c",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2018-08-01T13:58:42Z",
       "side": 1,
       "message": "I uploaded a patch set that fixed the formatting here :)",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "3ec3c833776e6e98681d48185df07c67d51e0a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc18b28b_c59271db",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-02T05:50:21Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "e0c09aef_f31be7a3",
       "range": {
         "startLine": 134,
         "startChar": 5,
