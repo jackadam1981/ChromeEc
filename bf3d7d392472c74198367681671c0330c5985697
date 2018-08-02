@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "c43c0aa3_86182533",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-02T23:10:38Z",
+      "side": 1,
+      "message": "Or just: EC_ERROR_HW_INTERNAL or EC_ERROR_ACCESS_DENIED",
+      "parentUuid": "cbac587f_d90b048a",
+      "range": {
+        "startLine": 332,
+        "startChar": 8,
+        "endLine": 332,
+        "endChar": 31
+      },
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "441499d9_6e4a907b",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -318,6 +342,24 @@
     },
     {
       "key": {
+        "uuid": "195c9438_00d64b50",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-02T23:10:38Z",
+      "side": 1,
+      "message": "You can do this in a slightly cleaner fashion like so:\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/board/servo_v4/usb_pd_config.h?l\u003d166\n\n\t\t\t/* USB_DUT_CC1_TX_DATA: PB14 is SPI2 MISO */\n\t\t\tconst struct gpio_info *g \u003d gpio_list +\n\t\t\t\tGPIO_USB_DUT_CC1_TX_DATA;\n\t\t\tgpio_set_alternate_function(g-\u003eport, g-\u003emask, 0);",
+      "parentUuid": "d87de684_9cd9b0ae",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a2dce3_c69a6b1d",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -353,6 +395,30 @@
       "side": 1,
       "message": "Those macro names are from STM\u0027s libraries.  AFAICT they don\u0027t exist in Chromium EC codebase.  I put comments of them so that it\u0027s easy to lookup the relevant STM32F072 documentation for what each of these lines is doing.\n\nI don\u0027t know why the official STM libraries are not used in the Chromium EC codebase, but my guess is their license may not be compatible with the Chromium open source license.  (That\u0027s a total guess, I haven\u0027t checked their licenses, and IANAL).\n\nLet me know if you want me to #define in this file just the macros I\u0027m using here.  I\u0027d rather not put an incomplete set in stm32/registers.h[1] or any common header, and I\u0027d also rather not hold this change up for manually-ish defining the entire set from documentation.  (I\u0027d try to script it from the PDF docs covering the actual registers, but it\u0027d still be a decent chunk of work to get the parsing right, I suspect.)\n\nIdeally we\u0027d just add at least the headers from STM\u0027s own libraries, but I\u0027d want buy-in from someone with much more experience and understanding of open source licensing than myself.\n\n\n[1] https://cs.corp.google.com/chromeos_public/src/platform/ec/chip/stm32/registers.h",
       "parentUuid": "e7a2dce3_c69a6b1d",
+      "range": {
+        "startLine": 450,
+        "startChar": 6,
+        "endLine": 450,
+        "endChar": 25
+      },
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebd6a587_556cfb7a",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-02T23:10:38Z",
+      "side": 1,
+      "message": "Yes, adding these to registers.h would be good.",
+      "parentUuid": "e34031cd_e51b5f0b",
       "range": {
         "startLine": 450,
         "startChar": 6,
