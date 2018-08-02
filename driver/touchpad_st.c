@@ -183,12 +183,20 @@ static int st_tp_parse_finger(struct usb_hid_touchpad_report *report,
 	return i + 1;
 }
 
-static int st_tp_write_hid_report(void)
+/* Read domeswitch level from touchpad, and save in `system_state`.
+ *
+ * After calling this function, use
+ *	`system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL`
+ * to get current value.
+ *
+ * @param domeswitch_changed: will be set to 1 if domeswitch level changed.
+ *
+ * @return error code on failure.
+ */
+static int st_tp_check_domeswitch_state(int *domeswitch_changed)
 {
-	int ret, i, num_finger, num_events, domeswitch_changed = 0;
-	struct usb_hid_touchpad_report report;
+	int ret = st_tp_read_host_buffer_header();
 
-	ret = st_tp_read_host_buffer_header();
 	if (ret)
 		return ret;
 
@@ -201,8 +209,21 @@ static int st_tp_write_hid_report(void)
 			 (rx_buf.buffer_header.dome_switch_level ?
 			  0 : SYSTEM_STATE_DOME_SWITCH_LEVEL),
 			 SYSTEM_STATE_DOME_SWITCH_LEVEL);
-		domeswitch_changed = 1;
+		if (domeswitch_changed)
+			*domeswitch_changed = 1;
+	} else {
+		if (domeswitch_changed)
+			*domeswitch_changed = 0;
 	}
+	return 0;
+}
+
+static int st_tp_write_hid_report(void)
+{
+	int i, num_finger, num_events, domeswitch_changed = 0;
+	struct usb_hid_touchpad_report report;
+
+	st_tp_check_domeswitch_state(&domeswitch_changed);
 
 	num_events = st_tp_read_all_events();
 	if (num_events < 0)
@@ -1008,6 +1029,11 @@ static int st_tp_read_frame(void)
 
 	if (heat_map_addr < 0)
 		goto failed;
+
+	ret = st_tp_check_domeswitch_state(NULL);
+	if (ret)
+		goto failed;
+
 	/* Theoretically, we should read host buffer header to check if data is
 	 * valid, but the data should always be ready when interrupt pin is low.
 	 * Let's skip this check for now.
@@ -1050,6 +1076,10 @@ static int st_tp_read_frame(void)
 #else
 #error "BYTES_PER_PIXEL can only be 1 or 2"
 #endif
+		usb_packet[spi_buffer_index & 1].flags = 0;
+		if (system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL)
+			usb_packet[spi_buffer_index & 1].flags |=
+				USB_FRAME_FLAGS_BUTTON;
 	}
 failed:
 	return ret;
