@@ -6647,7 +6647,7 @@ static int cmd_cbi(int argc, char *argv[])
 	}
 
 	if (!strcasecmp(argv[1], "get")) {
-		struct ec_params_get_cbi p;
+		struct ec_params_get_cbi p = { 0 };
 		uint8_t *r;
 		int i;
 		p.tag = tag;
@@ -6658,6 +6658,7 @@ static int cmd_cbi(int argc, char *argv[])
 				return -1;
 			}
 		}
+
 		rv = ec_command(EC_CMD_GET_CROS_BOARD_INFO, 0, &p, sizeof(p),
 				ec_inbuf, ec_max_insize);
 		if (rv < 0) {
