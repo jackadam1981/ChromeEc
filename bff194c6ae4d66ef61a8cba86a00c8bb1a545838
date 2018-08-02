@@ -22,6 +22,30 @@
       "revId": "bff194c6ae4d66ef61a8cba86a00c8bb1a545838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d52b3d_a37efde0",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-02T08:33:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "974f7bf2_887356f2",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "bff194c6ae4d66ef61a8cba86a00c8bb1a545838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
