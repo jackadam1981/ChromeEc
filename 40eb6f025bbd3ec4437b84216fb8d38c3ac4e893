@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92b276ab_bc74fa58",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-02T07:11:00Z",
+      "side": 1,
+      "message": "nit: Multi-comment style has /* on first line.",
+      "revId": "40eb6f025bbd3ec4437b84216fb8d38c3ac4e893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a83815_493c94b2",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-02T07:11:00Z",
+      "side": 1,
+      "message": "Generic initialization for the rest of the registers.",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 44
+      },
+      "revId": "40eb6f025bbd3ec4437b84216fb8d38c3ac4e893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554ff578_4de64879",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-02T07:11:00Z",
+      "side": 1,
+      "message": "protocol",
+      "range": {
+        "startLine": 79,
+        "startChar": 35,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "40eb6f025bbd3ec4437b84216fb8d38c3ac4e893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
