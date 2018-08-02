@@ -424,6 +424,7 @@ static void keystroke_enable(int enable)
 
 static void keyboard_enable(int enable)
 {
+  CPRINTS("keyboard_enable(%d)\n", enable);
 	if (!keyboard_enabled && enable)
 		CPRINTS("KB enable");
 	else if (keyboard_enabled && !enable)
