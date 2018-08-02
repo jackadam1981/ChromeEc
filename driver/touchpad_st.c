@@ -1003,11 +1003,18 @@ static int st_tp_read_frame(void)
 			      (uint8_t *)&rx_buf, rx_len);
 	if (ret == EC_SUCCESS) {
 #if BYTES_PER_PIXEL == 1
+		int i;
+		uint8_t *dest = usb_packet[spi_buffer_index & 1].frame;
+		uint8_t max_value = 0;
 		/*
 		 * If BYTES_PER_PIXEL = 1, then we can memcpy directly.
 		 * This takes about 0.1ms per frame.
 		 */
 		memcpy(dest, heat_map->frame, ST_TOUCH_COLS * ST_TOUCH_ROWS);
+		for (i = 0; i < ST_TOUCH_COLS * ST_TOUCH_ROWS; i++)
+			max_value |= dest[i];
+		if (max_value == 0) // empty frame
+			return -1;
 #elif BYTES_PER_PIXEL == 2
 		/*
 		 * Down scaling and move data into usb_packet, this takes
@@ -1150,6 +1157,10 @@ static int heatmap_send_packet(struct usb_isochronous_config const *config)
 static int st_tp_usb_set_interface(usb_uint alternate_setting,
 				   usb_uint interface)
 {
+	if ((system_info.release_info & 0xFF) < ST_TP_MIN_HEATMAP_VERSION)
+		/* Heatmap mode is not supported in this version. */
+		return -1;
+
 	if (alternate_setting == 1) {
 		hook_call_deferred(&st_tp_enable_heat_map_data, 0);
 		return 0;
