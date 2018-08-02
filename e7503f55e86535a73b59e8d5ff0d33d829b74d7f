@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4cd7a7c4_1e122df7",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-02T17:31:23Z",
+      "side": 1,
+      "message": "Probably this is the root cause? Can you check if there is more appropriate way to detect battery connectivity?",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 34
+      },
+      "revId": "e7503f55e86535a73b59e8d5ff0d33d829b74d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c00adc10_695a8987",
         "filename": "board/nami/battery.c",
         "patchSetId": 4
