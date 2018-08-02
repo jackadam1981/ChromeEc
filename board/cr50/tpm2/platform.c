@@ -8,6 +8,7 @@
 
 #include "ccd_config.h"
 #include "pinweaver.h"
+#include "tpm_nvmem.h"
 #include "trng.h"
 #include "util.h"
 #include "version.h"
@@ -82,4 +83,16 @@ void _plat__StartupCallback(void)
 	 * so we don't yet need to tell CCD that a real TPM startup has
 	 * occurred.
 	 */
+}
+
+BOOL _plat__ShallKeepSpecialIndex(uint32_t  index,
+				  uint32_t *attrClear,
+				  uint32_t *attrSet)
+{
+	if (index == HR_NV_INDEX + FWMP_NV_INDEX) {
+		*attrClear = (1 << 11); /* WRITELOCKED */
+		*attrSet = 0;
+		return TRUE;
+	}
+	return FALSE;
 }
