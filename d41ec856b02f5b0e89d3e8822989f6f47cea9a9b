@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "7802befd_284811db",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-02T18:36:46Z",
+      "side": 1,
+      "message": "s/impossibly/impossible/",
+      "range": {
+        "startLine": 61,
+        "startChar": 47,
+        "endLine": 61,
+        "endChar": 57
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61585ec9_ea195a85",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-02T18:36:46Z",
+      "side": 1,
+      "message": "no need to define fields which are set to zero.",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee7a003d_01dc3721",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-02T18:36:46Z",
+      "side": 1,
+      "message": "this can be defined as REGISTER_CONFIG(r_index, 0, 0)",
+      "range": {
+        "startLine": 128,
+        "startChar": 8,
+        "endLine": 128,
+        "endChar": 35
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a02d886_4c5e380e",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-02T18:36:46Z",
+      "side": 1,
+      "message": "index is an int value, so if this function is called with the index below 0 due to some invalid parameter use upstack this check will not catch it.\n\nMaybe just iterating through index_config array looking for the right nvIndex?",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c26fe1c_7df5b49d",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-02T18:36:46Z",
+      "side": 1,
+      "message": "I am not sure if this is kept in the text segment or is allocated on the stack on every invocation. Maybe defining it as static const outside the function is less compiler dependent?",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 54
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89f5d065_97441dc8",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
@@ -13,6 +128,47 @@
       "writtenOn": "2018-07-27T07:08:02Z",
       "side": 1,
       "message": "I\u0027ve left these asserts for now, as I thought they serve some purpose as documentation. Should I  convert them into a comment, or just do away with the whole lot? Is there some preferred way to document preconditions like this without doing an actual assert?",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f5f797_bc43d7c7",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-02T18:36:46Z",
+      "side": 1,
+      "message": "as we can\u0027t do anything in assert, I think it would make more sense for this function just to clip the range the caller if trying to read and then only read the valid part(s).",
+      "parentUuid": "89f5d065_97441dc8",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b66267_6313dfe9",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-02T18:36:46Z",
+      "side": 1,
+      "message": "you mean \u0027index space\u0027 when you say header, do I get this right?\n\nWhy is the index space have to be read in its entirety?",
+      "range": {
+        "startLine": 277,
+        "startChar": 12,
+        "endLine": 277,
+        "endChar": 18
+      },
       "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
