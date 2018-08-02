@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eca65699_68f9f85a",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-02T12:03:49Z",
+      "side": 1,
+      "message": "Not sure how much you care about time, but I do ponder how much faster doing the memcpy and max computation in 1 loop would be (you\u0027d probably want to copy/compare 32-bit values, though).",
+      "revId": "455aa7f943b985ab838daeefeeb599573f681fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62683cd6_37002732",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-02T12:03:49Z",
+      "side": 1,
+      "message": "nit: this does not need to be in parentheses",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "455aa7f943b985ab838daeefeeb599573f681fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
