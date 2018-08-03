@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f5a25a46_4b176a30",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-03T06:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c4dfc5d_f7534e5b",
+      "range": {
+        "startLine": 1124,
+        "startChar": 1,
+        "endLine": 1124,
+        "endChar": 38
+      },
+      "revId": "71113528f1899bbdb43f4c2b714b9990781a0cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d463143a_642b3d46",
         "filename": "chip/it83xx/registers.h",
         "patchSetId": 1
