@@ -22,6 +22,30 @@
       "revId": "76d6f012d342e9a60f7e53c85fb15e82aac6518b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c98312f_63952f89",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-03T19:22:12Z",
+      "side": 0,
+      "message": "the actual command is\n\"./util/flash_ec --board\u003dchocodile_bec --image\u003d./ec.bin\"",
+      "parentUuid": "ba8fd184_16db3c76",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 70
+      },
+      "revId": "76d6f012d342e9a60f7e53c85fb15e82aac6518b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
