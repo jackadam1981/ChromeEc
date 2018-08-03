@@ -266,6 +266,7 @@
 #undef CONFIG_BATTERY_BQ20Z453
 #undef CONFIG_BATTERY_BQ27541
 #undef CONFIG_BATTERY_BQ27621
+#undef CONFIG_BATTERY_BQ4050
 #undef CONFIG_BATTERY_MAX17055
 
 /* Compile mock battery support; used by tests. */
@@ -396,6 +397,12 @@
  * Number of batteries, only matters when CONFIG_BATTERY_V2 is used.
  */
 #undef CONFIG_BATTERY_COUNT
+
+/*
+ * Smart battery driver should measure the voltage cell imbalance in the battery
+ * pack.  This requires a battery driver capable of the measurement.
+ */
+#undef CONFIG_BATTERY_MEASURE_IMBALANCE
 
 /*
  * Expose some data when it is needed.
@@ -694,6 +701,15 @@
 
 /* Minimum charger power (in mW) required for powering on. */
 #undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
+
+/* Minimum battery percentage for power on with an imbalanced pack */
+#undef CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON
+
+/*
+ * Maximum battery cell imbalance to accept before considering the pack to be
+ * imbalanced, in millivolts.
+ */
+#undef CONFIG_BATTERY_MAX_IMBALANCE_MV
 
 /* Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8. */
 #undef CONFIG_CHARGER_NARROW_VDC
@@ -3663,6 +3679,7 @@
 #if defined(CONFIG_BATTERY_BQ20Z453) || \
 	defined(CONFIG_BATTERY_BQ27541) || \
 	defined(CONFIG_BATTERY_BQ27621) || \
+	defined(CONFIG_BATTERY_BQ4050) || \
 	defined(CONFIG_BATTERY_MAX17055) || \
 	defined(CONFIG_BATTERY_SMART)
 #define CONFIG_BATTERY
@@ -3789,6 +3806,20 @@
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 15000
 #endif /* !defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) */
 #endif /* defined(HAS_TASK_CHIPSET) */
+
+#ifndef CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON
+#define CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON 5
+#endif
+
+#ifndef CONFIG_BATTERY_MAX_IMBALANCE_MV
+/*
+ * WAG.  Imbalanced battery packs in this situation appear to have balanced
+ * charge very quickly after beginning the charging cycle.  Increasing the value
+ * of CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON will make a system tolerant of
+ * large values of BATTERY_MAX_IMBALANCE_MV.
+ */
+#define CONFIG_BATTERY_MAX_IMBALANCE_MV 200
+#endif
 
 #ifndef HAS_TASK_KEYPROTO
 #undef CONFIG_KEYBOARD_PROTOCOL_8042
