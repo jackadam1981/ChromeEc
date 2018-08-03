@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "639b863d_d1bca9f3",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-08-03T20:31:02Z",
+      "side": 1,
+      "message": "that\u0027s like doing `try: ... except: pass` in python.  How about || true the individual make calls?\n\nBASEBOARD\u003d\"$(make ... || true)\"",
+      "revId": "a037fec679e779fcf7deee75db285b4575e637e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
