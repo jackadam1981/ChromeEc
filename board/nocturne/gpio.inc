@@ -47,7 +47,7 @@ GPIO(USB_C0_DP_HPD,          PIN(C, 5), GPIO_OUT_LOW)
 GPIO(USB_C1_DP_HPD,          PIN(C, 6), GPIO_OUT_LOW)
 
 /* Power Sequencing */
-GPIO(EC_PCH_ACPRESENT,       PIN(7, 3), GPIO_OUT_LOW)
+GPIO(EC_PCH_ACPRESENT,       PIN(7, 3), GPIO_OUT_HIGH)
 
 /* USB-C */
 GPIO(USB_C0_OC_ODL,          PIN(6, 7), GPIO_ODR_HIGH)

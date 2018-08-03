@@ -349,6 +349,17 @@ void board_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
+static int command_sync(int argc, char **argv)
+{
+	gpio_set_level(GPIO_EC_PCH_ACPRESENT, 1);
+	udelay(65);
+	gpio_set_level(GPIO_EC_PCH_ACPRESENT, 0);
+	udelay(65);
+	gpio_set_level(GPIO_EC_PCH_ACPRESENT, 1);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sync, command_sync, NULL, "Generate IRQ to the AP");
+
 int board_get_version(void)
 {
 	static int board_version = -1;
