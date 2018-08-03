@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "864a8fb8_a4d83e29",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-03T02:36:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e8a509_40f61ba8",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "4195466067ca616a14e938eca32b23dbf795fbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42bfad03_d92580a4",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1890a562_9888fb1b",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-03T02:36:52Z",
+      "side": 1,
+      "message": "Move it a little forward.",
+      "parentUuid": "42bfad03_d92580a4",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "4195466067ca616a14e938eca32b23dbf795fbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31947008_8e4abd33",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-02T14:29:59Z",
       "side": 1,
       "message": "these values exists as enum tcpc_cc_pull right now, can you use those instead? (and maybe put a comment here to point to that type instead)",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "4195466067ca616a14e938eca32b23dbf795fbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8aed5b9_40da88f4",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-03T02:36:52Z",
+      "side": 1,
+      "message": "Thanks for the pointer! Replace them with tcpc_cc_pull.",
+      "parentUuid": "31947008_8e4abd33",
       "range": {
         "startLine": 61,
         "startChar": 0,
