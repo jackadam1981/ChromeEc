@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "257e6484_705f9969",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-03T08:46:35Z",
+      "side": 1,
+      "message": "Good point, maybe we can just check if its \u003e0 as well as \u003c _END, to save having to iterate?",
+      "parentUuid": "5a02d886_4c5e380e",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c26fe1c_7df5b49d",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
@@ -105,6 +129,30 @@
       "writtenOn": "2018-08-02T18:36:46Z",
       "side": 1,
       "message": "I am not sure if this is kept in the text segment or is allocated on the stack on every invocation. Maybe defining it as static const outside the function is less compiler dependent?",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 54
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147de301_7f98c2f3",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-03T08:46:35Z",
+      "side": 1,
+      "message": "My understanding/intention was for this to be created on the stack every time. I previously had it defined as static const, and moved it here to save flash - which it did (148 bytes IIRC). \n\nI\u0027m happy to move it back - static const feels more appropriate if it\u0027s an acceptable use of flash",
+      "parentUuid": "6c26fe1c_7df5b49d",
       "range": {
         "startLine": 219,
         "startChar": 1,
@@ -152,6 +200,24 @@
     },
     {
       "key": {
+        "uuid": "4a2ce114_8e4c6371",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-03T08:46:35Z",
+      "side": 1,
+      "message": "I can do this for sure, but as below, this would imply the TPM implementation has changed, and seems like clipping here could lead to weird failures later that are hard to trace back to this?\n\nSorry I\u0027m not up to speed with best practices for handling this kind of error in firmware - in my previous work failing early was generally favored, to simplify debugging (but ofc realise that failing early here isn\u0027t going to leave much in the way of info to debug with)",
+      "parentUuid": "78f5f797_bc43d7c7",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b66267_6313dfe9",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
@@ -163,6 +229,30 @@
       "writtenOn": "2018-08-02T18:36:46Z",
       "side": 1,
       "message": "you mean \u0027index space\u0027 when you say header, do I get this right?\n\nWhy is the index space have to be read in its entirety?",
+      "range": {
+        "startLine": 277,
+        "startChar": 12,
+        "endLine": 277,
+        "endChar": 18
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc933987_fef1a16a",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-03T08:46:35Z",
+      "side": 1,
+      "message": "Sorry yes the comment isn\u0027t clear, I\u0027ll update - by header I mean the \u0027NV_INDEX\u0027 data.\n\nSimilar to above:\n\nI guess it doesn\u0027t *have* to, but it always is (and it wouldn\u0027t make much sense for it to not be) - so I wanted to avoid implementing partial reads as they would not be used, and if they are, then it means the TPM NVRAM implementation has changed, and we should probably be revisiting all of this rather than just allowing partial reads and hoping for the best..\n\nWDYT?",
+      "parentUuid": "e2b66267_6313dfe9",
       "range": {
         "startLine": 277,
         "startChar": 12,
