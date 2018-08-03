@@ -44,13 +44,12 @@ static void set_host_interrupt(int active)
 
 	if (old_active == 0 && active == 1)
 		mkbp_last_event_time = __hw_clock_source_read();
+	gpio_set_level(GPIO_EC_INT_L, !active);
 
 	/* interrupt host by using active low EC_INT signal */
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
 	if (active)
 		host_set_single_event(EC_HOST_EVENT_MKBP);
-#else
-	gpio_set_level(GPIO_EC_INT_L, !active);
 #endif
 
 	old_active = active;
