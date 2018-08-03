@@ -420,6 +420,24 @@
     },
     {
       "key": {
+        "uuid": "a2edeb16_8ceb2a4f",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T20:22:10Z",
+      "side": 1,
+      "message": "Still works at patchset 12.",
+      "parentUuid": "7633ab56_0b66ed3b",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7a2dce3_c69a6b1d",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
