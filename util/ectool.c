@@ -132,6 +132,8 @@ const char help_str[] =
 	"      Prints information about the Fingerprint sensor\n"
 	"  fpmode [capture|deepsleep|fingerdown|fingerup]\n"
 	"      Configure/Read the fingerprint sensor current mode\n"
+	"  fpstats\n"
+	"      Prints timing statisitcs relating to capture and matching\n"
 	"  fptemplate [<infile>|<index 0..2>]\n"
 	"      Add a template if <infile> is provided, else dump it\n"
 	"  forcelidopen <enable>\n"
@@ -1406,6 +1408,39 @@ int cmd_fp_mode(int argc, char *argv[])
 	if (r.mode & FP_MODE_CAPTURE)
 		printf("capture ");
 	printf("\n");
+	return 0;
+}
+
+int cmd_fp_stats(int argc, char *argv[])
+{
+	struct ec_response_fp_stats r;
+	int rv;
+	uint64_t ts;
+
+	rv = ec_command(EC_CMD_FP_STATS, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	ts = (uint64_t)r.overall_t0.hi << 32 | r.overall_t0.lo;
+	printf("FP stats (t0=%lu us):\n", ts);
+	printf("Last capture time:  ");
+	if (r.timestamps_invalid & FPSTATS_CAPTURE_INV)
+		printf("Invalid\n");
+	else
+		printf("%d us\n", r.capture_time_us);
+
+	printf("Last matching time: ");
+	if (r.timestamps_invalid & FPSTATS_MATCHING_INV)
+		printf("Invalid\n");
+	else
+		printf("%d us\n", r.matching_time_us);
+
+	printf("Last overall time:  ");
+	if (r.timestamps_invalid)
+		printf("Invalid\n");
+	else
+		printf("%d us\n", r.overall_time_us);
+
 	return 0;
 }
 
@@ -8214,6 +8249,7 @@ const struct command commands[] = {
 	{"fpframe", cmd_fp_frame},
 	{"fpinfo", cmd_fp_info},
 	{"fpmode", cmd_fp_mode},
+	{"fpstats", cmd_fp_stats},
 	{"fptemplate", cmd_fp_template},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
