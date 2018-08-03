@@ -284,6 +284,24 @@
     },
     {
       "key": {
+        "uuid": "e36a7209_2c1c46f3",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-03T16:38:07Z",
+      "side": 1,
+      "message": "My overall approach: let debug builds fail early, let prod build as robust as possible. \nWe had this discussion. I\u0027m generally suspicious of asserts (cr50 should never die alone), but here they\u0027d reboot the entire system, which is fine; so I was ok to go ahead with them.  Still, I slightly prefer if() -\u003e return. If we go with \u0027if\u0027, the only issue is that we don\u0027t have any mechanism for reporting errors like that (maybe just print on the console to help with debugging, when somebody is looking).\nBut generally up to you.",
+      "parentUuid": "fad657b5_32b7c26c",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b66267_6313dfe9",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
