@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21c4c503_8bef54a7",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Just do:\n\n#define KHZ 1000\n#define MHZ 1000000\n\nThen use xyz * KHZ\n\nThat\u0027s what we do for SECOND, for example",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dbe124_751875d0",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "i2c_read8, I think?\n\nOne problem is that you can\u0027t lock the bus in advance, with that... Do you really need to lock the bus the whole time, actually?",
+      "range": {
+        "startLine": 207,
+        "startChar": 7,
+        "endLine": 207,
+        "endChar": 15
+      },
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed9f7380_68cdb76d",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Slight nicer pattern that avoid extra indentations.\n\nif (ret !\u003d EC_SUCCESS)\n   return ret;\n\nret \u003d ....\nreturn ret;",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83cc7725_b4c53ef2",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Yeah, this is making me think that we should really just use i2c_read8...",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e92289c_3bff2b03",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "nit, comment style has /* alone on first line.",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a14fff_ee29585b",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "I\u0027d just add the unlock: goto target here, sure, you\u0027ll lock the bus a little long, but it makes the code a little simpler to read.",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab648b5_7378b35c",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "How can that possibly happen?",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13affda_e2feb769",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Drop this comment (there are hundreds of other registers in this file that do just that), just add the bits that you need.",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 3
+      },
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae05c3b9_fd0df6c3",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "We do 1 \u003c\u003c 17 (not 0x1) in the rest of the this file, and align the values. Please follow that.",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6652ee8_bfa4955e",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Please define these 2 just below STM32_RCC_APB2ENR, in the relevant family only (STM32F0)",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a209ca4_fc762542",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "ditto: Please define below STM32_TIM_CCMR1(x)",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7768768e_f5a48fd6",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "And ditto for all the others too.",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

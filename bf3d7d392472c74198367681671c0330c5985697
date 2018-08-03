@@ -360,6 +360,24 @@
     },
     {
       "key": {
+        "uuid": "f3ea3dff_2c182f99",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Please do this:\n\nboard/servo_micro/gpio.inc:\nALTERNATE(PIN_MASK(B, 0x0300), 1, MODULE_SOMETHING, 0) /* XYZZ: PB08/PB09 - Description */\n\nHere:\n\ngpio_config_module(MODULE_SOMETHING, 1);\n\nThen disable when you are done:\n\ngpio_config_module(MODULE_SOMETHING, 1);",
+      "parentUuid": "195c9438_00d64b50",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7a2dce3_c69a6b1d",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -431,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "0d384936_67eae911",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Please do not copy anything from STM libraries (I think their licence is quite restrictive).",
+      "parentUuid": "ebd6a587_556cfb7a",
+      "range": {
+        "startLine": 450,
+        "startChar": 6,
+        "endLine": 450,
+        "endChar": 25
+      },
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a711a641_629dc8b8",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -460,6 +502,24 @@
       "side": 1,
       "message": "That is true, but it\u0027s no more code to just call reset_tim16_tim17() since it exists anyways.  I think it\u0027s polite to reset everything, e.g. if another routine using these timers isn\u0027t as defensive.",
       "parentUuid": "a711a641_629dc8b8",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a984223_2de516f3",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-03T02:25:09Z",
+      "side": 1,
+      "message": "Well, what I\u0027m saying is that you don\u0027t actually need either of the calls.\n\nNote that this is EC code where space is quite limited (do a makes savesizes before your change, and make newsizes after your change to get an idea), and we usually sacrifice defensiveness for code space.\n\nIf you define these timers somewhere in board.h (like we do for TIM_CLOCK32, for example), I don\u0027t think it\u0027s so likely we\u0027ll get confused.",
+      "parentUuid": "c08d62d4_036c0a4a",
       "revId": "bf3d7d392472c74198367681671c0330c5985697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
