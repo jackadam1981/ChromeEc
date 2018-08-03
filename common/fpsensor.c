@@ -75,6 +75,12 @@ static uint32_t user_id[FP_CONTEXT_USERID_WORDS];
 static uint32_t fp_events;
 static uint32_t sensor_mode;
 
+/* Timing statistics. */
+static uint32_t last_capture_time_us;
+static uint32_t last_matching_time_us;
+static uint32_t last_overall_time_us;
+static timestamp_t overall_t0;
+
 /* Interrupt line from the fingerprint sensor */
 void fps_event(enum gpio_signal signal)
 {
@@ -141,6 +147,7 @@ static uint32_t fp_process_enroll(void)
 
 static uint32_t fp_process_match(void)
 {
+	timestamp_t t0 = get_time();
 	int res = -1;
 	uint32_t updated = 0;
 	int32_t fgr = -1;
@@ -155,14 +162,17 @@ static uint32_t fp_process_match(void)
 		res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
 	if (res == EC_MKBP_FP_ERR_MATCH_YES_UPDATED)
 		templ_dirty |= updated;
+	last_matching_time_us = time_since32(t0);
 	return EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(res)
 	| ((fgr << EC_MKBP_FP_MATCH_IDX_OFFSET) & EC_MKBP_FP_MATCH_IDX_MASK);
 }
 
 static void fp_process_finger(void)
 {
+	timestamp_t t0 = get_time();
 	int res = fp_sensor_acquire_image_with_mode(fp_buffer,
 			FP_CAPTURE_TYPE(sensor_mode));
+	last_capture_time_us = time_since32(t0);
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
 
@@ -179,6 +189,8 @@ static void fp_process_finger(void)
 
 		/* go back to lower power mode */
 		clock_enable_module(MODULE_FAST_CPU, 0);
+
+		last_overall_time_us = time_since32(overall_t0);
 	}
 }
 #endif /* HAVE_FP_PRIVATE_DRIVER */
@@ -240,6 +252,7 @@ void fp_task(void)
 			else
 				fp_sensor_low_power();
 		} else if (evt & (TASK_EVENT_SENSOR_IRQ | TASK_EVENT_TIMER)) {
+			overall_t0 = get_time();
 			gpio_disable_interrupt(GPIO_FPS_INT);
 			if (sensor_mode & FP_MODE_ANY_DETECT_FINGER) {
 				st = fp_sensor_finger_status();
@@ -411,6 +424,19 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_FRAME, fp_command_frame, EC_VER_MASK(0));
+
+static int fp_command_stats(struct host_cmd_handler_args *args)
+{
+	struct ec_response_fp_stats *r = args->response;
+
+	r->last_capture_time_us = last_capture_time_us;
+	r->last_matching_time_us = last_matching_time_us;
+	r->last_overall_time_us = last_overall_time_us;
+
+	args->response_size = sizeof(struct ec_response_fp_stats);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
 
 static int fp_command_template(struct host_cmd_handler_args *args)
 {
