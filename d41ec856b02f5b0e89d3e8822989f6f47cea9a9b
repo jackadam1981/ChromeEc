@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "7a051955_001d35f9",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2018-08-03T15:49:32Z",
+      "side": 1,
+      "message": "sure, this will work too.",
+      "parentUuid": "257e6484_705f9969",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c26fe1c_7df5b49d",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
@@ -162,6 +186,30 @@
       "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1abe88bc_bef8bc1b",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2018-08-03T15:49:32Z",
+      "side": 1,
+      "message": "ah, I just checked, you are right. I thought the generated code copies the entire structure from somewhere in RO into the copy allocated on the stack, but I guess it just clears the space and sets the only fields which initialized in the template. No need to move this of course.",
+      "parentUuid": "147de301_7f98c2f3",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 54
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -212,6 +260,24 @@
       "side": 1,
       "message": "I can do this for sure, but as below, this would imply the TPM implementation has changed, and seems like clipping here could lead to weird failures later that are hard to trace back to this?\n\nSorry I\u0027m not up to speed with best practices for handling this kind of error in firmware - in my previous work failing early was generally favored, to simplify debugging (but ofc realise that failing early here isn\u0027t going to leave much in the way of info to debug with)",
       "parentUuid": "78f5f797_bc43d7c7",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad657b5_32b7c26c",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2018-08-03T15:49:32Z",
+      "side": 1,
+      "message": "Frankly, I don\u0027t think we should care at this point, neither about this nor about making sure that the entire NV_INDEX space is read below.\n\nDoes TPM2 library enforce when accessing \u0027regular\u0027 indices, this just complicates the code without much benefit. \n\nAndrey, do you have an opinion?",
+      "parentUuid": "4a2ce114_8e4c6371",
       "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
