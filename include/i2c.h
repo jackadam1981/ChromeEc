@@ -247,7 +247,9 @@ int i2c_write16(int port, int slave_addr, int offset, int data);
 
 /**
  * Read an 8-bit register from the slave at 8-bit slave address <slaveaddr>, at
- * the specified 8-bit <offset> in the slave's address space.
+ * the specified 8-bit <offset> in the slave's address space.  A negative offset
+ * means perform only the actual read operation, without first requesting an
+ * address offset to read from.
  */
 int i2c_read8(int port, int slave_addr, int offset, int *data);
 

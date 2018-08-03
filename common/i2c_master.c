@@ -265,10 +265,13 @@ int i2c_read8(int port, int slave_addr, int offset, int *data)
 	/* We use buf[1] here so it's aligned for DMA on STM32 */
 	uint8_t reg, buf[1];
 
-	reg = offset;
-
 	i2c_lock(port, 1);
-	rv = i2c_xfer(port, slave_addr, &reg, 1, buf, 1, I2C_XFER_SINGLE);
+	if (offset >= 0) {
+		reg = offset;
+		rv = i2c_xfer(port, slave_addr, &reg, 1, buf, 1, I2C_XFER_SINGLE);
+	} else {
+		rv = i2c_xfer(port, slave_addr, NULL, 0, buf, 1, I2C_XFER_SINGLE);
+	}
 	i2c_lock(port, 0);
 
 	if (!rv)
