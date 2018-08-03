@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "81301433_005031fb",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21c4c503_8bef54a7",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37dbe124_751875d0",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9edd7d74_2caefd78",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "The write and read use different I2C addresses.  The higher level functions like i2c_read8() don\u0027t support that.\n\nAt one point I actually did play around with having i2c_read8() to support a true read only operation, when given a negative offset.  It looked something like this (recreated for reference):\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1161741\n\nI don\u0027t know if there are legitimate uses for negative offsets though.  If so a separate arg indicating read only would be needed.\n\nWhen nsanders@ saw that while looking over my shoulder (before this was ready for review), he made a point of not liking that change \u0026 preferring direct use of i2c_xfer().  I felt the same way FWIW (preferring i2c_xfer() over complicating i2c_read8() and friends).\n\nAlso, while I don\u0027t think it matters if the I2C lock is held across all 3 reads, I do think it\u0027s correct to hold it across each write+read combo.  Currently i2c_read8(), i2c_write8(), and friends always obtain \u0026 release the lock, and it\u0027s not re-entrant.  So that would require further interface changes/complication to support i2c_write8() + i2c_read8() without releasing the lock between them.",
+      "parentUuid": "37dbe124_751875d0",
+      "range": {
+        "startLine": 207,
+        "startChar": 7,
+        "endLine": 207,
+        "endChar": 15
+      },
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed9f7380_68cdb76d",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 9
@@ -56,6 +98,24 @@
       "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdbf5e0d_079a4e47",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9f7380_68cdb76d",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "e564072b_2762d312",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "83cc7725_b4c53ef2",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e92289c_3bff2b03",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 9
@@ -90,6 +168,24 @@
       "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d59baf5_47436211",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e92289c_3bff2b03",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "26351b57_af62df43",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "I had it that way initially, but this seems more correct.",
+      "parentUuid": "c3a14fff_ee29585b",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cab648b5_7378b35c",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 9
@@ -124,6 +238,24 @@
       "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "872ddff2_306f37d7",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Someone adds it to stm32/registers.h ? :-)  I just wanted to catch duplication.\n\nThat said, with lots of macros in this change now (instead of static variables or functions), I\u0027m not going to bother doing this for each of them.  I\u0027ve deleted this check.",
+      "parentUuid": "cab648b5_7378b35c",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "4afa2528_f1c8de8e",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done.\n\nFWIW that wasn\u0027t at all obvious to me as someone totally new to this.  E.g. the macro functions here like STM32_TIM_CR1(n) are not superstrings of the macro names typically seen in STM documentation or in example code (whether from STM or elsewhere on the public internet), which are timer-number-specific and look like TIM16_CR1 (just a register address value, not a function).\n\nThat\u0027s why I wrote this comment.",
+      "parentUuid": "c13affda_e2feb769",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 3
+      },
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae05c3b9_fd0df6c3",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 9
@@ -164,6 +320,24 @@
       "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b804fd14_d845602c",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae05c3b9_fd0df6c3",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "0fc7dbe9_679ba4d8",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6652ee8_bfa4955e",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a209ca4_fc762542",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 9
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "f5eee4f8_ef72c9b9",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a209ca4_fc762542",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7768768e_f5a48fd6",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 9
@@ -215,6 +425,24 @@
       "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b51ea6_5885f81e",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7768768e_f5a48fd6",
+      "revId": "6971697b537e17cc65d1fa7c30773e384652c61f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

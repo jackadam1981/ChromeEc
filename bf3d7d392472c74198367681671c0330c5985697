@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "7b50e388_5ef4196a",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Hrmm I suppose EC_ERROR_HW_INTERNAL kinda matches.  Done.  (I don\u0027t think this branch is likely to indicate access denial, fwiw.)",
+      "parentUuid": "c43c0aa3_86182533",
+      "range": {
+        "startLine": 332,
+        "startChar": 8,
+        "endLine": 332,
+        "endChar": 31
+      },
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "441499d9_6e4a907b",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -378,6 +402,24 @@
     },
     {
       "key": {
+        "uuid": "7633ab56_0b66ed3b",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Take a look at patchset 12.  Is that what you have in mind?  I can\u0027t test it from home, I\u0027ll let you know if it works when I\u0027m in the office tomorrow i.e. when I have a Servo Micro available. :-)\n\nFYI if you\u0027re counting bytes, the gpio_config_module() calls use 8 more bytes than the gpio_set_alternate_function() calls (23672 bytes free now, vs 23680 bytes free previously).",
+      "parentUuid": "f3ea3dff_2c182f99",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7a2dce3_c69a6b1d",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -473,6 +515,30 @@
     },
     {
       "key": {
+        "uuid": "56e708ba_7b40a07b",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Done in registers.h, just for the macros used here.",
+      "parentUuid": "ebd6a587_556cfb7a",
+      "range": {
+        "startLine": 450,
+        "startChar": 6,
+        "endLine": 450,
+        "endChar": 25
+      },
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a711a641_629dc8b8",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -520,6 +586,24 @@
       "side": 1,
       "message": "Well, what I\u0027m saying is that you don\u0027t actually need either of the calls.\n\nNote that this is EC code where space is quite limited (do a makes savesizes before your change, and make newsizes after your change to get an idea), and we usually sacrifice defensiveness for code space.\n\nIf you define these timers somewhere in board.h (like we do for TIM_CLOCK32, for example), I don\u0027t think it\u0027s so likely we\u0027ll get confused.",
       "parentUuid": "c08d62d4_036c0a4a",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c459e713_dab97093",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-03T07:10:26Z",
+      "side": 1,
+      "message": "Free space remaining with different options for stopping the timers:\n\n        reset_tim16_tim17();\n  *** 23680 bytes still available in flash on servo_micro ****\n\n        STM32_TIM_CR1(16) \u0026\u003d ~STM32_TIM_CR1_CEN;\n        STM32_TIM_CR1(17) \u0026\u003d ~STM32_TIM_CR1_CEN;\n  *** 23720 bytes still available in flash on servo_micro ****\n\n        STM32_TIM_CR1(16) \u003d 0x0000; \n        STM32_TIM_CR1(17) \u003d 0x0000;\n  *** 23736 bytes still available in flash on servo_micro ****\n\n56 extra bytes for the function call to reset all of the registers seems worthwhile to me.",
+      "parentUuid": "7a984223_2de516f3",
       "revId": "bf3d7d392472c74198367681671c0330c5985697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
