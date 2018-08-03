@@ -34,6 +34,24 @@
       "revId": "a037fec679e779fcf7deee75db285b4575e637e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a44eb51_ed3f846c",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-08-03T20:47:45Z",
+      "side": 1,
+      "message": "maybe the error string is sufficient, if you don\u0027t silence it with 2\u003e/dev/null?",
+      "parentUuid": "939c946d_abfb8fad",
+      "revId": "a037fec679e779fcf7deee75db285b4575e637e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
