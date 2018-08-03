@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1c367da_28da7f9b",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-08-03T01:38:42Z",
+      "side": 1,
+      "message": "The root cause is\n1.EC won\u0027t enter pre-charge due to we can get battery information.\n2.EC won\u0027t enter normal charge due to report BP_NO when we get BATTERY_NOT_DISCONNECTED here.\n3.Can\u0027t do any charge to battery cause battery never release discharge_fet.\n\nWe still need to keep this way to detect battery connectivity for prevent_power_on.\nAnd the best solution is to report BP_NOT_SURE for doing charge function to releae discharget_fet and keep prevent_power_on work.\n\nAlso I think it reasonable to report BP_NOT_SURE in this case.\nWe can recognize battery from HW and also can get battery information from gauge.\nBut battery show can\u0027t discharge, so report BP_NOT_SURE for keep trying to charge battery and also prevent power drop when battery can\u0027t support discharge due to power on.\n\nYou can this CL for this fix\u0027s detail.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/346368",
+      "parentUuid": "4cd7a7c4_1e122df7",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 34
+      },
+      "revId": "e7503f55e86535a73b59e8d5ff0d33d829b74d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c00adc10_695a8987",
         "filename": "board/nami/battery.c",
         "patchSetId": 4
