@@ -162,3 +162,24 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 	return BATTERY_NOT_DISCONNECTED;
 }
+
+#ifdef CONFIG_BATTERY_MEASURE_IMBALANCE
+int battery_imbalance_mv(void)
+{
+	int type = get_battery_type();
+
+	/*
+	 * If battery type is unknown, we cannot safely access non-standard
+	 * registers.
+	 */
+	if (type == BATTERY_TYPE_COUNT)
+		return 0;
+
+	return board_battery_info[type].fuel_gauge.imbalance_mv();
+}
+
+int battery_default_imbalance_mv(void)
+{
+	return 0;
+}
+#endif /* CONFIG_BATTERY_MEASURE_IMBALANCE */
