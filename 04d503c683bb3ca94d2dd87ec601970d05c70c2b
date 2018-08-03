@@ -16,6 +16,24 @@
       "revId": "04d503c683bb3ca94d2dd87ec601970d05c70c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ece6c35_4331abdb",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-03T04:23:01Z",
+      "side": 1,
+      "message": "The domeswitch value is stored in `system_state`, which is used by line 1057\n\nComment for st_tp_check_domeswitch_state is updated.",
+      "parentUuid": "63052582_fac255a6",
+      "revId": "04d503c683bb3ca94d2dd87ec601970d05c70c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
