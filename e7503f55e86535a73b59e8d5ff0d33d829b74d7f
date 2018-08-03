@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3f61ee72_ca75af34",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-08-03T03:25:10Z",
+      "side": 1,
+      "message": "I test Akali battery with battery_check_disconnect_renesas_raj240().\nWhen battery not provide power: 0x41 return 0xe000 0000\nWhen battery can provide power: 0x41 return 0xe000 0000\n\nTherefore, battery_check_disconnect_renesas_raj240() is not suitable for Akali battery.",
+      "parentUuid": "a7ea149e_43c983f7",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 34
+      },
+      "revId": "e7503f55e86535a73b59e8d5ff0d33d829b74d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c00adc10_695a8987",
         "filename": "board/nami/battery.c",
         "patchSetId": 4
