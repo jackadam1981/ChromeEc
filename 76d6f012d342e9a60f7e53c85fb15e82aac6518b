@@ -46,6 +46,30 @@
       "revId": "76d6f012d342e9a60f7e53c85fb15e82aac6518b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc2df61_4b19c0bc",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-03T20:14:24Z",
+      "side": 0,
+      "message": "of course, must be asleep at the wheel. I uploaded a new patch set that turns off \u0027-e\u0027 right before the make call so the script can continue if the make system doesn\u0027t recognize the board. Let me know what you think\n\n\nSee https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html",
+      "parentUuid": "2c98312f_63952f89",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 70
+      },
+      "revId": "76d6f012d342e9a60f7e53c85fb15e82aac6518b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
