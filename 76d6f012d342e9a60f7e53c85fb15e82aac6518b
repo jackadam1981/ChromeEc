@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8fd184_16db3c76",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-03T18:56:58Z",
+      "side": 0,
+      "message": "what is the actual error you are getting here? I think we can make it work without having to create the BOARDS_NO_BASEBOARD var.\n\nI tried checking this code out (PatchSet1), and when I run `flash_ec chocodile_bec` I get\nERROR: invalid arguments: \"chocodile_bec\"\n\nWhat else do I need to do to get this to where I can play around with it.\n\nAlso we can also add 2\u003e/dev/null to the end of the make print-baseboard command if the output if causing issue\n\nI am assuming you want to BASEBOARD to be empty string, which should happen if it doesn\u0027t exist.",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 70
+      },
+      "revId": "76d6f012d342e9a60f7e53c85fb15e82aac6518b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
