@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2c870c48_7609ec27",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-03T04:21:28Z",
+      "side": 1,
+      "message": "I think we can make spi_transaction write to usb_packet directly.",
+      "parentUuid": "eca65699_68f9f85a",
+      "revId": "455aa7f943b985ab838daeefeeb599573f681fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62683cd6_37002732",
         "filename": "driver/touchpad_st.h",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "455aa7f943b985ab838daeefeeb599573f681fdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e11cfa2_fe41b2b0",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-03T04:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62683cd6_37002732",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "455aa7f943b985ab838daeefeeb599573f681fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
