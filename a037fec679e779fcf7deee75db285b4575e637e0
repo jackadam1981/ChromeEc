@@ -16,6 +16,24 @@
       "revId": "a037fec679e779fcf7deee75db285b4575e637e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "939c946d_abfb8fad",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-03T20:40:13Z",
+      "side": 1,
+      "message": "I am not a bash haxor, but I think that works too. :)\n\nWe would lose the info print of \"EC build system didn\u0027t recognize ${BOARD}. Assuming no baseboard.\" below though (or we would have to copy the string to both call sites.",
+      "parentUuid": "639b863d_d1bca9f3",
+      "revId": "a037fec679e779fcf7deee75db285b4575e637e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
