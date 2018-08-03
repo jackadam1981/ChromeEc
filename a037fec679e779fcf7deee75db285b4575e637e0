@@ -52,6 +52,24 @@
       "revId": "a037fec679e779fcf7deee75db285b4575e637e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505b2536_26f19ff9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-03T21:18:46Z",
+      "side": 1,
+      "message": "The error message doesn\u0027t tell you anything about baseboard, but I would be okay with that. I\u0027ll let Nick decide :)",
+      "parentUuid": "3a44eb51_ed3f846c",
+      "revId": "a037fec679e779fcf7deee75db285b4575e637e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
