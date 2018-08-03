@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a7ea149e_43c983f7",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-03T02:25:49Z",
+      "side": 1,
+      "message": "Akali\u0027s battery pack uses Renesas raj240, right? Can we possibly use same logic as battery_check_disconnect_renesas_raj240 or similar?",
+      "parentUuid": "c1c367da_28da7f9b",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 34
+      },
+      "revId": "e7503f55e86535a73b59e8d5ff0d33d829b74d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c00adc10_695a8987",
         "filename": "board/nami/battery.c",
         "patchSetId": 4
