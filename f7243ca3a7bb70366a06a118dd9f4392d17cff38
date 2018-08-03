@@ -88,6 +88,24 @@
       "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c0bbdc7_82e373be",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-03T06:21:19Z",
+      "side": 1,
+      "message": "I think this means that using flash_ec without a pre-existing board defined is broken now? What if we made the baseboard a mandatory arg instead for those boards that have a baseboard? Or maybe make it simpler by having them pass in `--board baseboard/foo` and then just parsing that?\n\nI\u0027m okay with this being temporary, but I don\u0027t want us to have a BOARDS_NO_BASEBOARD array (which is the default state).",
+      "parentUuid": "b0bf21ea_e8ee00e5",
+      "revId": "f7243ca3a7bb70366a06a118dd9f4392d17cff38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
