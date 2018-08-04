@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "def9d892_1636e985",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-08-04T01:44:31Z",
+      "side": 1,
+      "message": "You should reset those values, or have some flag that says if the triplet is valid. \n\nOtherwise you could end up with stale data. Say for example fp_sensor_acquire_image_with_mode() fails, in that case you\u0027ll have updated last_capture_time_us but the other values will be from the previous match event.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 21
+      },
+      "revId": "6ae00b75fe4b60f4b886c79bbcb9c30817871ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1984b3_2daa7a9c",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-08-04T01:44:31Z",
+      "side": 1,
+      "message": "Move that before send_mkbp_event()? Otherwise you may have a race condition with the host that would look up the stats right after the IRQ. Not sure if it\u0027s possible in practice, the host commands may not be processed before the end of this task?\n\nnit: I would move it before clock_enable_module(MODULE_FAST_CPU, 0); anyway, since it doesn\u0027t result in overhead for the user, the host has already been notified at that point iiuc?",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 22
+      },
+      "revId": "6ae00b75fe4b60f4b886c79bbcb9c30817871ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4346d2ab_c05675ea",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5061,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-08-04T01:44:31Z",
+      "side": 1,
+      "message": "nit: do you need the last_ prefix? Same for the others?",
+      "range": {
+        "startLine": 5061,
+        "startChar": 10,
+        "endLine": 5061,
+        "endChar": 15
+      },
+      "revId": "6ae00b75fe4b60f4b886c79bbcb9c30817871ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
