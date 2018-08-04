@@ -87,7 +87,11 @@ enum power_state power_handle_state(enum power_state state)
 	common_intel_x86_handle_rsmrst(state);
 
 	switch (state) {
-
+	case POWER_G3:
+		/* If SLP_SUS_L is deasserted, we're no longer in G3. */
+		if (power_has_signals(IN_PCH_SLP_SUS_DEASSERTED))
+			return POWER_S5;
+		break;
 	case POWER_G3S5:
 		/*
 		 * TODO(b/111121615): Should modify this to wait until the
