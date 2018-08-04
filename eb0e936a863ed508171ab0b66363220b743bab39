@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef37385d_9251ec64",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-04T16:29:31Z",
+      "side": 1,
+      "message": "It is not clear to me how SLP_SUS is getting de-asserted in G3 i.e. shouldn\u0027t the state machine go through enabling PP3300_A and passing DSW_PWROK through and then wait for SLP_SUS to be de-asserted? Basically the system should not be going from G3 to S5 directly if the state machine is doing the right thing.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "eb0e936a863ed508171ab0b66363220b743bab39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
