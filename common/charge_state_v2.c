@@ -1772,8 +1772,10 @@ wait_for_it:
 #ifdef CONFIG_CHARGE_MANAGER
 		if (curr.batt.state_of_charge >=
 		    CONFIG_CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT &&
-		    !battery_seems_to_be_disconnected)
+		    !battery_seems_to_be_disconnected) {
+			msleep(500);
 			charge_manager_leave_safe_mode();
+		}
 #endif
 
 		/* Keep the AP informed */
