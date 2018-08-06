@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f4331fa0_4a3075e1",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1243002
+      },
+      "writtenOn": "2018-08-06T17:04:49Z",
+      "side": 1,
+      "message": "OK. SGTM.",
+      "parentUuid": "3c5ff4c4_a1b2e940",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e1e03be_fa3df483",
         "filename": "Makefile.toolchain",
         "patchSetId": 7
@@ -69,6 +87,24 @@
       "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4493799_e45e4ac1",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1243002
+      },
+      "writtenOn": "2018-08-06T17:04:49Z",
+      "side": 1,
+      "message": "OK, I don\u0027t think there\u0027s much we can do here except manually add support for other builds (eg: coverage or UBSAN) if we decide we want them. There won\u0027t be too many of them and none will be essential so having an ASAN build will be useful on its own.",
+      "parentUuid": "d7d636a4_7b7e27ab",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -124,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "647b39df_752866c3",
+        "filename": "chip/host/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1243002
+      },
+      "writtenOn": "2018-08-06T17:04:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f61b9ac_1d321294",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c12a2b0_5a2f51da",
         "filename": "core/host/main.c",
         "patchSetId": 7
@@ -156,6 +210,24 @@
       "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e7ddcc_3caae398",
+        "filename": "core/host/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1243002
+      },
+      "writtenOn": "2018-08-06T17:04:49Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "c0aeea26_978d9a8e",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
