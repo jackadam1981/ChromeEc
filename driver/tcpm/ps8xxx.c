@@ -92,6 +92,33 @@ int ps8xxx_tcpc_get_fw_version(int port, int *version)
 	return tcpc_read(port, FW_VER_REG, version);
 }
 
+int ps8xxx_tcpc_sleep_mode(int port)
+{
+	return tcpc_write(port, 0x23, 0xff);
+}
+
+#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+/*
+ * Read Vbus level directly instead of using the cached version because some
+ * TCPCs do not fire the Vbus level change interrupt correctly after resuming
+ * from low-power mode.
+ *
+ * TODO(b/77639399): Remove this method once PS8751 firmware has updated to
+ * support better handling of vbus detection
+ */
+int ps8xxx_tcpm_get_vbus_level(int port)
+{
+	int reg;
+
+	/* Read Power Status register */
+	if (tcpc_read(port, TCPC_REG_POWER_STATUS, &reg) == EC_SUCCESS)
+		return reg & TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+
+	/* If read failed, report that Vbus is off */
+	return 0;
+}
+#endif
+
 static int ps8xxx_tcpc_bist_mode_2(int port)
 {
 	int rv;
