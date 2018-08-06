@@ -884,18 +884,19 @@ static void bd9995x_init(void)
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
+	/* Define battery charging profile */
+	bd9995x_battery_charging_profile_settings();
+
 	/*
-	 * We disable IADP (here before setting IBUS_LIM_SET and ICC_LIM_SET)
-	 * to prevent voltage on IADP/RESET pin from affecting SEL_ILIM_VAL.
+	 * For testing, we would like to set SW input current limitaiton before
+         * disabling HW IADP so there is no gap between them which left default
+         * setting to 128mA.
 	 */
 	if (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, &reg,
 			  BD9995X_EXTENDED_COMMAND))
 		return;
 	reg &= ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
 	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg, BD9995X_EXTENDED_COMMAND);
-
-	/* Define battery charging profile */
-	bd9995x_battery_charging_profile_settings();
 
 	/* Power save mode when VBUS/VCC is removed. */
 #ifdef CONFIG_BD9995X_POWER_SAVE_MODE
