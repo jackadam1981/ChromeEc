@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eecadd42_cacd6b3d",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1139569
+      },
+      "writtenOn": "2018-08-06T16:45:30Z",
+      "side": 1,
+      "message": "Since chip_bram_valid is already called in init.S, so just restoring the flag.",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "785a978e25427377ce1e35dc8af929b14a37e528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
