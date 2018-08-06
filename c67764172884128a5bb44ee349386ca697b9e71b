@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c5ff4c4_a1b2e940",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-06T08:08:30Z",
+      "side": 1,
+      "message": "I actually refactored this code to use a common host_test Make command, so this is not trivial anymore... We can always rename in the ebuild, if needed.",
+      "parentUuid": "3bba9c1f_0d946a10",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e1e03be_fa3df483",
         "filename": "Makefile.toolchain",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-19T16:06:33Z",
       "side": 1,
       "message": "I don\u0027t know a whole lot about Chrome OS\u0027s build system and I know even less about this package\u0027s build system: does this package inherit cflags set by Chrome OS\u0027s build system (ie: with ebuilds?). If not, I\u0027m not sure what we can do about this but there may be problems down the road if we expect fuzzers to inherit more flags than we currently have (such as if we add UBSAN builds for fuzzers). To avoid problems, I think we would need to manually update this file, Maybe manojgupta should take a look?",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d636a4_7b7e27ab",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-06T08:08:30Z",
+      "side": 1,
+      "message": "EC is special, most of the time we build with coreboot-sdk toolchain for unusual architectures (not the host nor the usual target), so I don\u0027t think we inherit any flags...\n\nBut this is doubly special, as we build tests for the hosts, so potentially we could use ebuild flags... Seems tricky though...",
+      "parentUuid": "1e1e03be_fa3df483",
       "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "5f61b9ac_1d321294",
+        "filename": "chip/host/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-06T08:08:30Z",
+      "side": 1,
+      "message": "This line in particular does not get printed very often, but in general, the EC is not very quiet... Sometimes the output is interesting, though, and I feel that one can still see the fuzzer lines among the rest of the EC output.",
+      "parentUuid": "ce0ee6a8_60323907",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c12a2b0_5a2f51da",
         "filename": "core/host/main.c",
         "patchSetId": 7
@@ -81,6 +135,24 @@
       "writtenOn": "2018-07-19T15:59:40Z",
       "side": 1,
       "message": "Another nit: is it possible to create the main thread in LLVMFuzzerTestOneInput using static initialization? If not can you add a .options file (explained here: https://chromium.googlesource.com/chromiumos/docs/+/master/fuzzing.md#adding-an-options-file) with these contents:\n```\n[env]\nAFL_DRIVER_DONT_DEFER\u003d1\n```\n\nWhen you make the ebuild for this fuzzer?\n\nThe reason why is because creating LLVMFuzzerInitialize will cause the fuzz target when built with AFL to break unless given the options I mentioned above. \nThere are no plans to add AFL to Chrome OS right now, but it seems likely this will happen at some point in the future (we already use AFL in Chrome and OSS-Fuzz).",
+      "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0aeea26_978d9a8e",
+        "filename": "core/host/main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-06T08:08:30Z",
+      "side": 1,
+      "message": "Managed to get rid of this, see latest patchset.",
+      "parentUuid": "2c12a2b0_5a2f51da",
       "revId": "c67764172884128a5bb44ee349386ca697b9e71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
