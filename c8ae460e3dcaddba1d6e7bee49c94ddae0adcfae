@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "3f111302_4401d661",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-08-06T23:39:31Z",
+      "side": 1,
+      "message": "looks like we should have updated the comment in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/969786",
+      "parentUuid": "16ac8a0e_2037cc9c",
+      "range": {
+        "startLine": 412,
+        "startChar": 14,
+        "endLine": 412,
+        "endChar": 16
+      },
+      "revId": "c8ae460e3dcaddba1d6e7bee49c94ddae0adcfae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2270df1f_d27f3255",
         "filename": "board/nocturne/board.c",
         "patchSetId": 1
