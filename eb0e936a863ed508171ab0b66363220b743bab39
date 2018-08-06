@@ -22,6 +22,30 @@
       "revId": "eb0e936a863ed508171ab0b66363220b743bab39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398a37b3_afe43a73",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-06T23:49:11Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why this is required? The way it works is:\n1. Power sequencing always starts in chipset_task in power/common.c: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/power/common.c#439\n\n2. Consider we are in G3. Loop in chipset task calls power_handle_state with state \u003d G3. No special action taken within this function. It calls common_intel_x86_power_handle_state at the bottom on line 129 with state \u003d G3.\n\n3. common_intel_x86_power_handle_state takes no action on that and control goes back to chipset_task.\n\n4. chipset_task calls power_common_state next which decides if it should transition to G3S5 based on want_g3_exit. If this is true, state is now set to G3S5.\n\nWhy do you have to force the state to be G3S5 here in icelake specific code?",
+      "parentUuid": "ef37385d_9251ec64",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "eb0e936a863ed508171ab0b66363220b743bab39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

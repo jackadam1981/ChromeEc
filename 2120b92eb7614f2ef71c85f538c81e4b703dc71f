@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26ba57c4_f6237c2c",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-06T23:49:11Z",
+      "side": 1,
+      "message": "I think Scott is planning to update power_wait_signals_timeout before using it.",
+      "revId": "2120b92eb7614f2ef71c85f538c81e4b703dc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
