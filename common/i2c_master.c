@@ -103,6 +103,18 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 {
 	int i;
 	int ret = EC_SUCCESS;
+	int mutex_idx __attribute__((unused)) = port;
+
+	/**
+	 * According to include/i2c.h, caller must call i2c_lock before and
+	 * after using this API. Without the lock, the data transmission may
+	 * fail due to the race condition. So, add an assert check to avoid
+	 * this problem.
+	 */
+#ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER
+	mutex_idx = i2c_port_to_controller(port);
+#endif
+	assert(mutex_is_locked(port_mutex + mutex_idx));
 
 	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
 #ifdef CONFIG_I2C_XFER_LARGE_READ
