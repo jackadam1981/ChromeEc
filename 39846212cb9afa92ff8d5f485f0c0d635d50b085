@@ -123,6 +123,24 @@
       "revId": "39846212cb9afa92ff8d5f485f0c0d635d50b085",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890c309b_ab9e40be",
+        "filename": "include/tpm_nvmem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-06T18:49:01Z",
+      "side": 1,
+      "message": "Platform.h is in third_party/tpm2. I\u0027d prefer not to put Chrome OS specific stuff (like indexes it uses for various purposes) into generic TPM2 stack. For all such cases we do callbacks into platform/ec, as done here.",
+      "parentUuid": "5effc1af_128f6045",
+      "revId": "39846212cb9afa92ff8d5f485f0c0d635d50b085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
