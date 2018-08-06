@@ -34,6 +34,24 @@
       "revId": "04d503c683bb3ca94d2dd87ec601970d05c70c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b68fa13e_bbf79f8e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-06T02:37:52Z",
+      "side": 1,
+      "message": "Oh, this is really confusing, I don\u0027t really see the point of int *domeswitch_changed then... Just always read the value from system_state.",
+      "parentUuid": "0ece6c35_4331abdb",
+      "revId": "04d503c683bb3ca94d2dd87ec601970d05c70c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
