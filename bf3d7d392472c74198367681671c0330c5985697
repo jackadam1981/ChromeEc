@@ -314,6 +314,24 @@
     },
     {
       "key": {
+        "uuid": "4cca8813_4f94a622",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-06T18:04:47Z",
+      "side": 1,
+      "message": "Well, they have a sensible default until something like this function comes along and uses them. :-)\n\nEither all users of a timer in this codebase should give it a clean reset just prior to use, or they should all give it a clean reset just after use.  Or both (my preference), but if only one, then just prior to use seems safest.\n\nThat way a bug from a timer user forgetting to reset registers will manifest with the usage that\u0027s missing the resets, not a subsequent usage.",
+      "parentUuid": "22767402_cd16efe7",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ea14bf9_194d4795",
         "filename": "board/servo_micro/board.c",
         "patchSetId": 7
@@ -676,6 +694,24 @@
       "side": 1,
       "message": "Sure, 56 bytes seems fine, until people start becoming defensive all over the place and add kilobytes. Maybe it does not matter for servo_micro as we\u0027re unlikely to run out of space, but, again, that\u0027s not how we usually do things in the EC codebase.\n\nMy point is, we\u0027re not doing this anywhere else, don\u0027t do it in new code either.",
       "parentUuid": "c459e713_dab97093",
+      "revId": "bf3d7d392472c74198367681671c0330c5985697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73773544_e3bc4510",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-06T18:04:47Z",
+      "side": 1,
+      "message": "Looking closer at this, most of the 56 bytes are from the compiler making reset_tim16_tim17() an actual function, instead of inlining it as it does with only one callsite.  In either case, the compiler is optimizing for code size.\n\nWith reset_tim16_tim17() as an actual function, which is smallest with 2+ call sites, the function call takes 8 bytes, which is less than the 16 bytes for resetting just 2*1 registers (TIM16 and TIM17), let alone the 2*5 registers that I think should actually be reset to disable all things described as \"enabled\" by the docs.  (I don\u0027t know which of them might actually lead to wasted things happening within the MCU.)\n\nWhat this means is, as soon as there is another command using timers with the I2C lines and therefore hopefully calling reset_tim16_tim17() at its beginning, the compiler will correctly make reset_tim16_tim17() an actual function, and then the call at the end of command_enable_ite_dfu() will be the fewest bytes method of disabling those two timers.\n\nWill there be another command using timers on the I2C lines before we reach the Servo Micro firmware size limit?  That seems difficult to predict.  But I feel that since the reset_tim16_tim17() function call is smallest when there are multiple TIM16+TIM17 users, and it\u0027s simplest \u0026 smallest for humans reading the code, it\u0027s better than inlining a subset of register resets.",
+      "parentUuid": "dd5ad564_6eb07cde",
       "revId": "bf3d7d392472c74198367681671c0330c5985697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

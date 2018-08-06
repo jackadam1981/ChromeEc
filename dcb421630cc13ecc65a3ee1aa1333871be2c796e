@@ -16,6 +16,24 @@
       "revId": "dcb421630cc13ecc65a3ee1aa1333871be2c796e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d4f3e44_f249e6cd",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-06T18:04:47Z",
+      "side": 1,
+      "message": "I agree, but as someone new to this, having the macro names match the documentation is very handy.\n\nI don\u0027t feel super strongly though.  If you really like the more descriptive names, I could add comments with the names from the docs.",
+      "parentUuid": "b1860ec3_1c5793bc",
+      "revId": "dcb421630cc13ecc65a3ee1aa1333871be2c796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
