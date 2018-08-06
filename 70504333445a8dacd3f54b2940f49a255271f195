@@ -69,6 +69,24 @@
       "revId": "70504333445a8dacd3f54b2940f49a255271f195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffa60f27_002e70dd",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-06T03:57:34Z",
+      "side": 1,
+      "message": "Oh, right, I didn\u0027t see the flow.\n\nI think the TODO belongs above command_get_ite_chipid, not here.",
+      "parentUuid": "b090791b_f2d7d219",
+      "revId": "70504333445a8dacd3f54b2940f49a255271f195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1860ec3_1c5793bc",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-06T03:57:34Z",
+      "side": 1,
+      "message": "I ponder if it\u0027s not a little nicer to define to define something like:\n\nSTM32_TIM_CCMR1_OC1M_MASK (7 \u003c\u003c 4)\nSTM32_TIM_CCMR1_OC1M_PWM_MODE_1 (6 \u003c\u003c 4)",
+      "revId": "dcb421630cc13ecc65a3ee1aa1333871be2c796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
