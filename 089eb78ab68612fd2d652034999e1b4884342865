@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5e7e3c7_91c6726e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-08-06T19:54:10Z",
+      "side": 1,
+      "message": "Why 200? Worth a comment or #define? Would this vary for 2S vs 3S battery voltages?",
+      "range": {
+        "startLine": 355,
+        "startChar": 30,
+        "endLine": 355,
+        "endChar": 33
+      },
+      "revId": "089eb78ab68612fd2d652034999e1b4884342865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
