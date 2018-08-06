@@ -219,6 +219,7 @@ static int st_tp_write_hid_report(void)
 	const int old_system_state = system_state;
 	int domeswitch_changed;
 	struct usb_hid_touchpad_report report;
+	static struct usb_hid_touchpad_report prev_report;
 
 	ret = st_tp_check_domeswitch_state();
 	if (ret)
@@ -252,9 +253,34 @@ static int st_tp_write_hid_report(void)
 	if (!num_finger && !domeswitch_changed)  /* nothing changed */
 		return 0;
 
-	report.button = !!(system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL);
+	/* TODO(b/112201001): Remove the following workaround when ST fix their
+	 * firmware.
+	 */
+	for (i = 0; i < prev_report.count; i++) {
+		int j;
+
+		/* this was a finger leaving event. */
+		if (!prev_report.finger[i].tip)
+			continue;
+
+		for (j = 0; j < num_finger; j++)
+			if (report.finger[j].id == prev_report.finger[i].id)
+				break;
+
+		if (j == num_finger && num_finger < ARRAY_SIZE(report.finger))
+			memcpy(&report.finger[num_finger++],
+			       &prev_report.finger[i],
+			       sizeof(report.finger[0]));
+	}
+
+	if (num_finger)
+		/* Do not report zero-finger click events */
+		report.button = !!(system_state &
+				   SYSTEM_STATE_DOME_SWITCH_LEVEL);
 	report.count = num_finger;
 	report.timestamp = irq_ts / USB_HID_TOUCHPAD_TIMESTAMP_UNIT;
+
+	memcpy(&prev_report, &report, sizeof(report));
 
 	set_touchpad_report(&report);
 	return 0;
@@ -904,7 +930,7 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		*data = NULL;
 		*data_size = 0;
 		st_tp_full_initialize_start();
-		return EC_SUCCESS;
+		return EC_RES_SUCCESS;
 	}
 	return EC_RES_INVALID_PARAM;
 }
