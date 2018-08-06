@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c56aa142_2f8ad9d6",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-06T15:59:45Z",
+      "side": 1,
+      "message": "You don\u0027t need this line. Dino was referring to the CL to fix the original problem:\n\n\"During recovery mode switch using wait-ext \u0026 ap-off followed by cold\nreset assertion, reset flag from BRAM was ignored \u0026 hence EC continued\npower on sequence instead of keeping AP in off state. This caused\nfailure in recovery mode switch in FAFT.\"",
+      "revId": "b1a572cc019875b3b5a4eddeaba11f9cd757c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
