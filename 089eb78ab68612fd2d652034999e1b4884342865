@@ -22,6 +22,30 @@
       "revId": "089eb78ab68612fd2d652034999e1b4884342865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc0347a_6519d712",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-06T22:29:39Z",
+      "side": 1,
+      "message": "Yes, I think it is worth a #define, if only to make it easier to change our minds later.\n\nI don\u0027t think it should vary based on the number of cells in the series string.",
+      "parentUuid": "b5e7e3c7_91c6726e",
+      "range": {
+        "startLine": 355,
+        "startChar": 30,
+        "endLine": 355,
+        "endChar": 33
+      },
+      "revId": "089eb78ab68612fd2d652034999e1b4884342865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
