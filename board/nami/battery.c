@@ -6,6 +6,7 @@
  */
 
 #include "battery.h"
+#include "battery_fuel_gauge.h"
 #include "battery_smart.h"
 #include "board.h"
 #include "charge_state.h"
@@ -124,6 +125,15 @@ static enum gauge_type get_gauge_ic(void)
 		return GAUGE_TYPE_RENESAS_RAJ240;
 	else
 		return GAUGE_TYPE_TI_BQ40Z50;
+}
+
+int battery_imbalance_mv(void)
+{
+	if (fuel_gauge == GAUGE_TYPE_TI_BQ40Z50) {
+		return battery_bq4050_imbalance_mv();
+	} else {
+		return 0;
+	}
 }
 
 void board_battery_init(void)
