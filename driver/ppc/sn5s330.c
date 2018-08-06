@@ -595,6 +595,14 @@ void sn5s330_interrupt(int port)
 	hook_call_deferred(&sn5s330_irq_deferred_data, 0);
 }
 
+void sn5s330_lowest_power(int port)
+{
+	write_reg(port, 0x52, 0x04);
+	write_reg(port, 0x53, 0);
+	write_reg(port, 0x51, 0);
+	write_reg(port, 0x58, 0x10);
+}
+
 const struct ppc_drv sn5s330_drv = {
 	.init = &sn5s330_init,
 	.is_sourcing_vbus = &sn5s330_is_sourcing_vbus,
