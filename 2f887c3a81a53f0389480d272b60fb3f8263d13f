@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "f19bdc79_7dc6a0db",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-07T15:55:44Z",
+      "side": 1,
+      "message": "right, sorry - removed",
+      "parentUuid": "c3824eb7_f6fb56cc",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 37
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56969fa4_851e880d",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 21
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "13144cc2_b17da711",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-07T15:55:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56969fa4_851e880d",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 13
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4888a189_4f21da77",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 21
@@ -105,6 +153,30 @@
       "writtenOn": "2018-08-07T15:33:14Z",
       "side": 1,
       "message": "sizeof(TPM_HANDLE)-offset",
+      "range": {
+        "startLine": 269,
+        "startChar": 16,
+        "endLine": 269,
+        "endChar": 34
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377e8ed4_d100603d",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-07T15:55:44Z",
+      "side": 1,
+      "message": "oops, thanks!",
+      "parentUuid": "4888a189_4f21da77",
       "range": {
         "startLine": 269,
         "startChar": 16,

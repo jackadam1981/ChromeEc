@@ -434,6 +434,24 @@
     },
     {
       "key": {
+        "uuid": "ae8ae4f6_c75c0c21",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-07T15:55:44Z",
+      "side": 1,
+      "message": "Updated to zero-out the end",
+      "parentUuid": "1a6dd9f6_9cb14c70",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b66267_6313dfe9",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
