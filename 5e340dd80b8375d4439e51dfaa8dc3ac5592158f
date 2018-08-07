@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "3a7a0941_888fad78",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-07T18:55:11Z",
+      "side": 1,
+      "message": "I can buy that. Then, can we comment that it is stored NULL terminated in the .h file?\n\nAlso, if we are always storing the \\0, then all of the printf don\u0027t need the size parameter.",
+      "parentUuid": "321e4d53_424538a7",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 32
+      },
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "813d0e2b_c9ff3467",
         "filename": "util/cbi-util.c",
         "patchSetId": 1
