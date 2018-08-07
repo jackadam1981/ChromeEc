@@ -22,6 +22,30 @@
       "revId": "d05178bade3cd932a56793cec17de7143d78d538",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f82ec0_f9b39847",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T22:14:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8dd73b7a_6f564361",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 58
+      },
+      "revId": "d05178bade3cd932a56793cec17de7143d78d538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
