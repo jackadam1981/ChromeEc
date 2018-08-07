@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c148870c_c398e109",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:54:16Z",
+      "side": 1,
+      "message": "It\u0027s not BQ40Z50?",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b59eb04a_c4915293",
         "filename": "driver/battery/bq4050.c",
         "patchSetId": 2
