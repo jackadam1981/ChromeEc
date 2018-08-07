@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46d8b3bc_2ac85449",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-07T15:33:14Z",
+      "side": 1,
+      "message": "BRANCH\u003dcr50? Vadim, what\u0027s better here?",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b017389_eac3b3a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-07T15:33:14Z",
+      "side": 1,
+      "message": "we need a test",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3824eb7_f6fb56cc",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-07T15:33:14Z",
+      "side": 1,
+      "message": "we don\u0027t need this anymore, and it\u0027s not correct anymore, right?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 37
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56969fa4_851e880d",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-07T15:33:14Z",
+      "side": 1,
+      "message": "just dest?",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 219,
+        "endChar": 13
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4888a189_4f21da77",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-07T15:33:14Z",
+      "side": 1,
+      "message": "sizeof(TPM_HANDLE)-offset",
+      "range": {
+        "startLine": 269,
+        "startChar": 16,
+        "endLine": 269,
+        "endChar": 34
+      },
+      "revId": "2f887c3a81a53f0389480d272b60fb3f8263d13f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
