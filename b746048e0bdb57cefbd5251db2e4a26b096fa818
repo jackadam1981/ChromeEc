@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b15de31d_bf35ec1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T18:08:31Z",
+      "side": 1,
+      "message": "No.  I\u0027m working with Uday to do some testing in his lab; I don\u0027t have any Nami instances in our office.\n\nThis CL is providing traceability between the custom firmware build I gave him and the source code.  Marking WIP to make that more clear.",
+      "parentUuid": "13cc3d4b_f7cfdc3b",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "b746048e0bdb57cefbd5251db2e4a26b096fa818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b153921d_cbb26ae7",
         "filename": "board/nami/battery.c",
         "patchSetId": 1
