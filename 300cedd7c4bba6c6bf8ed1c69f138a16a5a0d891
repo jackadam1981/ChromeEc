@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02213dc5_e9db17ce",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-07T09:27:35Z",
+      "side": 1,
+      "message": "s/that //",
+      "range": {
+        "startLine": 355,
+        "startChar": 36,
+        "endLine": 355,
+        "endChar": 41
+      },
+      "revId": "300cedd7c4bba6c6bf8ed1c69f138a16a5a0d891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a34e834_7bea46ae",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-07T09:27:35Z",
+      "side": 1,
+      "message": "How about we leave this as-is?  Unless we are committing directly to ToT we should stick to making the minimal amount of changes.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 16
+      },
+      "revId": "300cedd7c4bba6c6bf8ed1c69f138a16a5a0d891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
