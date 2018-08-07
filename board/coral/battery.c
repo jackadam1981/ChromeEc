@@ -868,6 +868,8 @@ int board_cut_off_battery(void)
 
 static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 {
+	return 0;
+
 	/* can not discharge on AC without battery */
 	if (curr->batt.is_present != BP_YES)
 		return 0;
