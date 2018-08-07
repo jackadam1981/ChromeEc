@@ -45,6 +45,29 @@
       "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c5183b_a691908e",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-07T23:52:39Z",
+      "side": 1,
+      "message": "can we print \"vendor cmd in progress\" or something if returncode \u003d\u003d vendor_rc_in_progress?",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 833,
+        "endChar": 0
+      },
+      "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
