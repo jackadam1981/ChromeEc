@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ce98a69_7a7db171",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Its not a typo, although it isn\u0027t entirely clear how TI views the relationship between these parts.\n\nhttp://www.ti.com/product/BQ4050",
+      "parentUuid": "c148870c_c398e109",
+      "range": {
+        "startLine": 13,
+        "startChar": 37,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b59eb04a_c4915293",
         "filename": "driver/battery/bq4050.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca9e566_eb80894f",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Elided.",
+      "parentUuid": "b59eb04a_c4915293",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "65ab6ef9_0c2c2d66",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Used for uint8_t",
+      "parentUuid": "9ac5046d_250c4af9",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a723f22_b2f30e33",
         "filename": "driver/battery/bq4050.c",
         "patchSetId": 2
@@ -91,6 +163,54 @@
       "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e445f29a_0cc0e917",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Elided.",
+      "parentUuid": "9a723f22_b2f30e33",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac0de071_040c62f3",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a723f22_b2f30e33",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +237,54 @@
     },
     {
       "key": {
+        "uuid": "1c4f0c66_390f5d49",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5546f485_e5d5df06",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9896b214_f0c5e60a",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Elided.",
+      "parentUuid": "5546f485_e5d5df06",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5982a47a_b46ddb4c",
         "filename": "driver/battery/bq4050.c",
         "patchSetId": 2
@@ -140,6 +308,54 @@
     },
     {
       "key": {
+        "uuid": "5c9b7fe9_632cd9de",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Elided.",
+      "parentUuid": "5982a47a_b46ddb4c",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "034bec57_e093a4fd",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5982a47a_b46ddb4c",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b2648fc_689e6f34",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -160,6 +376,30 @@
       "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1af08ff_5c083618",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3811,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-07T20:52:34Z",
+      "side": 1,
+      "message": "I added some guidance for adjusting these terms.\n\nWe are really concerned about the minimum cell\u0027s individual state of charge.  But rather than encode a bunch of chemistry-specific knowledge about the cells, we are using imbalance and total pack state of charge (when very low) as a proxy for the weakest cell\u0027s state of charge.\n\nAnother way to think about it: CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON acts to turn off the feature in case we get it wrong.  That way, the worst-case scenario is that the user has to wait just a bit longer before their system can turn on.",
+      "parentUuid": "5b2648fc_689e6f34",
+      "range": {
+        "startLine": 3811,
+        "startChar": 55,
+        "endLine": 3811,
+        "endChar": 56
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
