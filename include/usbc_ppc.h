@@ -106,11 +106,26 @@ struct ppc_drv {
 	 */
 	int (*is_vbus_present)(int port);
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
+
+	/**
+	 * Optional method to put the PPC into its lowest power state. In this
+	 * state it should still fire interrupts if Vbus changes etc. This
+	 * method is only called if the PPC_FLAGS_USE_LOW_POWER_MODE is set on
+	 * the ppc_config_t.flags.
+	 *
+	 * @param port: The Type-C port number.
+	 * @return EC_SUCCESS on success, error otherwise.
+	 */
+	int (*enter_low_power_mode)(int port);
 };
+
+/* Flags for ppc_config_t.flags */
+#define PPC_FLAGS_USE_LOW_POWER_MODE	(1 << 0)
 
 struct ppc_config_t {
 	int i2c_port;
 	int i2c_addr;
+	int flags; /* PPC_FLAGS_ */
 	const struct ppc_drv *drv;
 };
 
@@ -202,5 +217,15 @@ int ppc_vbus_source_enable(int port, int enable);
  * @param port: The Type-C port which overcurrented.
  */
 void board_overcurrent_event(int port);
+
+/**
+ * Put the PPC into its lowest power state. In this state it should still fire
+ * interrupts if Vbus changes etc. This call is a no-op if the
+ * PPC_FLAGS_USE_LOW_POWER_MODE is not set on ppc_config_t.flags.
+ *
+ * @param port: The Type-C port number.
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+int ppc_enter_low_power_mode(int port);
 
 #endif /* !defined(__CROS_EC_USBC_PPC_H) */
