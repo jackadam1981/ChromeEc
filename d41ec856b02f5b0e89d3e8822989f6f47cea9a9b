@@ -416,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "1a6dd9f6_9cb14c70",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-07T15:39:10Z",
+      "side": 1,
+      "message": "good idea. since we don\u0027t know where the allocated buffer is coming from, zeroing it out sounds like a nice idea.",
+      "parentUuid": "5cd85a1e_c3242b34",
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2b66267_6313dfe9",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
