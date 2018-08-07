@@ -45,6 +45,30 @@
       "revId": "300cedd7c4bba6c6bf8ed1c69f138a16a5a0d891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298b7fc5_dca782aa",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-07T09:35:34Z",
+      "side": 1,
+      "message": "Actually, parse_bool doesn\u0027t consume 1|0 IMO\n\nIt parses\n\n        /* off, disable, false, no */                             \n        if (!strcasecmp(s, \"off\") || !strncasecmp(s, \"dis\", 3) || \n        ┊   tolower(*s) \u003d\u003d \u0027f\u0027 || tolower(*s) \u003d\u003d \u0027n\u0027) {           \n                *dest \u003d 0;                                        \n                return 1;                                         \n        }                                                         \n                                                                  \n        /* on, enable, true, yes */                               \n        if (!strcasecmp(s, \"on\") || !strncasecmp(s, \"ena\", 3) ||  \n        ┊   tolower(*s) \u003d\u003d \u0027t\u0027 || tolower(*s) \u003d\u003d \u0027y\u0027) {           \n                *dest \u003d 1;                                        \n                return 1;                                         \n        }",
+      "parentUuid": "1a34e834_7bea46ae",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 16
+      },
+      "revId": "300cedd7c4bba6c6bf8ed1c69f138a16a5a0d891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
