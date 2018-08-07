@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb2c8660_914853d0",
+        "filename": "board/iclrvp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2018-08-07T16:55:38Z",
+      "side": 1,
+      "message": "Vijay: we should undef this for this platform ?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 24
+      },
+      "revId": "48127f9b08820e9bcb1d2036d2c36799a5b0fa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a91b74_6fc8e753",
+        "filename": "board/iclrvp/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2018-08-07T16:55:38Z",
+      "side": 1,
+      "message": "Vijay: I think this GPIO should be configured as below\nGPIO_INT(PG_EC_DSW_PWROK, PIN(E, 5), GPIO_INT_BOTH, power_signal_interrupt)\n\nEC is struck in G3 state and after this change it is now in S5.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "48127f9b08820e9bcb1d2036d2c36799a5b0fa65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
