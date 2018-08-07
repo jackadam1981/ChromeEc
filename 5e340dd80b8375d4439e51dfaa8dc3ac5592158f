@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4437404_3ea25b22",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-08-07T18:39:23Z",
+      "side": 1,
+      "message": "ya. I\u0027ll move it.",
+      "parentUuid": "04367457_5de6dcae",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 48
+      },
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e17d2417_b9a0b34a",
         "filename": "util/cbi-util.c",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b0e28800_26565e31",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-08-07T18:39:23Z",
+      "side": 1,
+      "message": "yes, thanks.",
+      "parentUuid": "e17d2417_b9a0b34a",
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56cd2f80_e046b2b1",
         "filename": "util/cbi-util.c",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2018-08-07T18:09:33Z",
       "side": 1,
       "message": "do we need to store the \\0 since we have the size already?",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 32
+      },
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321e4d53_424538a7",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-08-07T18:39:23Z",
+      "side": 1,
+      "message": "I don\u0027t think it hurts anything and allows for the end user to not have to worry about padding it themselves.",
+      "parentUuid": "56cd2f80_e046b2b1",
       "range": {
         "startLine": 326,
         "startChar": 4,
