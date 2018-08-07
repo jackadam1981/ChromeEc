@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "04367457_5de6dcae",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-07T18:29:55Z",
+      "side": 1,
+      "message": "Isn\u0027t this optional?",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 48
+      },
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17d2417_b9a0b34a",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-07T18:29:55Z",
+      "side": 1,
+      "message": "break; \n\njust in case we end up adding more cases below.",
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56cd2f80_e046b2b1",
         "filename": "util/cbi-util.c",
         "patchSetId": 1
