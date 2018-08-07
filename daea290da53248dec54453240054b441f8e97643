@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff77cbd0_7faab234",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-07T06:41:26Z",
+      "side": 1,
+      "message": "nit: How about move this aside to the \"#define EC_XXXX 0Xa6\"? To follow the command macros above.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "daea290da53248dec54453240054b441f8e97643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da9290f_57d3441e",
+        "filename": "include/keyboard_8042.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-07T06:41:26Z",
+      "side": 1,
+      "message": "Can you also help fix the include order here?\n\n#include \u003cstddef.h\u003e\n\n#include \"button.h\"\n#include \"common.h\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "daea290da53248dec54453240054b441f8e97643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044e8b26_1b586d29",
+        "filename": "include/keyboard_protocol.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-07T06:41:26Z",
+      "side": 1,
+      "message": "How about using enum keyboard_mapping_type explicitly? (also below)",
+      "range": {
+        "startLine": 50,
+        "startChar": 29,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "daea290da53248dec54453240054b441f8e97643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
