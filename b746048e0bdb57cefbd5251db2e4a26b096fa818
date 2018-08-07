@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13cc3d4b_f7cfdc3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:57:59Z",
+      "side": 1,
+      "message": "Do you have updates?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "b746048e0bdb57cefbd5251db2e4a26b096fa818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b153921d_cbb26ae7",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:57:59Z",
+      "side": 1,
+      "message": "It\u0027s often written as \n\n  return fuel_gauge \u003d GAUGE_TYPE_TI_BQ40Z50 ? battery_bq4050_imbalance_mv() : 0;\n\nin this codebase.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 2
+      },
+      "revId": "b746048e0bdb57cefbd5251db2e4a26b096fa818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
