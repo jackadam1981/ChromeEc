@@ -3167,6 +3167,9 @@
 /* PPC is capable of providing VCONN */
 #undef CONFIG_USBC_PPC_VCONN
 
+/* PPC is capable of going into a low power state */
+#undef CONFIG_USBC_PPC_LOW_POWER
+
 /* Support for USB type-c superspeed mux */
 #undef CONFIG_USBC_SS_MUX
 

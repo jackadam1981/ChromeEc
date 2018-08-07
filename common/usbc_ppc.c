@@ -86,6 +86,16 @@ int ppc_vbus_sink_enable(int port, int enable)
 	return ppc_chips[port].drv->vbus_sink_enable(port, enable);
 }
 
+#ifdef CONFIG_USBC_PPC_LOW_POWER
+int ppc_enter_low_power_mode(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	return ppc_chips[port].drv->enter_low_power_mode(port);
+}
+#endif
+
 int ppc_vbus_source_enable(int port, int enable)
 {
 	if ((port < 0) || (port >= ppc_cnt))
