@@ -344,7 +344,7 @@ int i2c_write_block(int port, int slave_addr, int offset, const uint8_t *data,
 	if (len + 1 > I2C_MAX_HOST_PACKET_SIZE)
 		return EC_ERROR_INVAL;
 
-	buf[0] = reg & 0xff;
+	buf[0] = offset & 0xff;
 	memcpy(&buf[1], data, len);
 
 	i2c_lock(port, 1);
