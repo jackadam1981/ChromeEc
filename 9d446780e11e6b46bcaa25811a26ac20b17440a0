@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "503b9520_32ba2f30",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-07T23:18:56Z",
+      "side": 1,
+      "message": "Not a big issue, but all of these are passed by value. Isn\u0027t const unnecessary?",
+      "range": {
+        "startLine": 47,
+        "startChar": 21,
+        "endLine": 47,
+        "endChar": 75
+      },
+      "revId": "9d446780e11e6b46bcaa25811a26ac20b17440a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
