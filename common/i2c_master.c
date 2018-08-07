@@ -322,6 +322,38 @@ exit:
 	return rv;
 }
 
+int i2c_read_block(int port, int slave_addr, int offset, uint8_t *data,
+		    int len)
+{
+	int rv;
+	uint8_t reg_address = offset;
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr, &reg_address, 1, data, len,
+			I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+	return rv;
+}
+
+int i2c_write_block(int port, int slave_addr, int offset, const uint8_t *data,
+		    int len)
+{
+	int rv;
+	uint8_t buf[I2C_MAX_HOST_PACKET_SIZE];
+
+	if (len + 1 > I2C_MAX_HOST_PACKET_SIZE)
+		return EC_ERROR_INVAL;
+
+	buf[0] = reg & 0xff;
+	memcpy(&buf[1], data, len);
+
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, slave_addr, buf, len + 1, NULL, 0,
+		      I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+	return rv;
+}
+
 int get_sda_from_i2c_port(int port, enum gpio_signal *sda)
 {
 	const struct i2c_port_t *i2c_port = get_i2c_port(port);
