@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "56cd2f80_e046b2b1",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-07T18:09:33Z",
+      "side": 1,
+      "message": "do we need to store the \\0 since we have the size already?",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 326,
+        "endChar": 32
+      },
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "813d0e2b_c9ff3467",
         "filename": "util/cbi-util.c",
         "patchSetId": 1
@@ -13,6 +36,29 @@
       "writtenOn": "2018-08-07T17:47:49Z",
       "side": 1,
       "message": "looks like extra d-\u003esize on this line.",
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be5d2b6_29a09231",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6716,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-07T18:09:33Z",
+      "side": 1,
+      "message": "same \\0 here",
+      "range": {
+        "startLine": 6716,
+        "startChar": 25,
+        "endLine": 6716,
+        "endChar": 29
+      },
       "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
