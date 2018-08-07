@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c294abad_ed1f2444",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T01:40:18Z",
+      "side": 1,
+      "message": "Note to myself: This makes basically the function never return disconnected. That means on Akali battery_is_present returns only BP_YES or BP_NOT_SURE if it\u0027s physically connected.",
+      "range": {
+        "startLine": 273,
+        "startChar": 8,
+        "endLine": 273,
+        "endChar": 32
+      },
+      "revId": "d501fa96f200f969118c4d5ca78c46f48c66bf78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
