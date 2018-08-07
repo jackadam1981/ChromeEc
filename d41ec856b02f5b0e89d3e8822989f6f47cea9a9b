@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b237594e_3cd6626e",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-07T16:05:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c51826ae_39efdef5",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee7a003d_01dc3721",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
@@ -297,6 +321,30 @@
       "side": 1,
       "message": "ah, I just checked, you are right. I thought the generated code copies the entire structure from somewhere in RO into the copy allocated on the stack, but I guess it just clears the space and sets the only fields which initialized in the template. No need to move this of course.",
       "parentUuid": "147de301_7f98c2f3",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 54
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b41f75d8_547faeb4",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-07T16:05:48Z",
+      "side": 1,
+      "message": "just to double check: omitting \u0027const\u0027 and leaving it an automatic variable results in the lowest flash space usage, right?",
+      "parentUuid": "1abe88bc_bef8bc1b",
       "range": {
         "startLine": 219,
         "startChar": 1,
