@@ -69,6 +69,30 @@
       "revId": "300cedd7c4bba6c6bf8ed1c69f138a16a5a0d891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ecbf782_d29db4be",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-07T09:38:39Z",
+      "side": 1,
+      "message": "We should either cherry-pick the existing patch to eve-campfire:\n  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/967248\nOr just leave it here unchanged.",
+      "parentUuid": "298b7fc5_dca782aa",
+      "range": {
+        "startLine": 1136,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 16
+      },
+      "revId": "300cedd7c4bba6c6bf8ed1c69f138a16a5a0d891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
