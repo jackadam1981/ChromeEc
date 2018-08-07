@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2192932f_48b6362e",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-07T00:50:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cc11878_21738e29",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 33
+      },
+      "revId": "39846212cb9afa92ff8d5f485f0c0d635d50b085",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40265c24_c16cdd1c",
         "filename": "include/tpm_nvmem.h",
         "patchSetId": 3
