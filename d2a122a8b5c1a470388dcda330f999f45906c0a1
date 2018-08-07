@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b59eb04a_c4915293",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:53:34Z",
+      "side": 1,
+      "message": "It seems not used.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac5046d_250c4af9",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:53:34Z",
+      "side": 1,
+      "message": "I don\u0027t think you need it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a723f22_b2f30e33",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:53:34Z",
+      "side": 1,
+      "message": "nit: this isn\u0027t needed.",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5546f485_e5d5df06",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:53:34Z",
+      "side": 1,
+      "message": "This one either.",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5982a47a_b46ddb4c",
+        "filename": "driver/battery/bq4050.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T17:53:34Z",
+      "side": 1,
+      "message": "nit: This isn\u0027t needed.",
+      "range": {
+        "startLine": 28,
+        "startChar": 17,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "d2a122a8b5c1a470388dcda330f999f45906c0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
