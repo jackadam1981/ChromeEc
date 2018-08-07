@@ -22,6 +22,30 @@
       "revId": "6392f5fff954f0c28d694b5ddfb49449e92f6860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d0e304_bf778fa7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-07T21:29:10Z",
+      "side": 1,
+      "message": "That would change the order we call charger_set_input_current. I\u0027m not sure that\u0027s ok in every single case. That\u0027s why I chose here to have a smaller impact. What do you think?",
+      "parentUuid": "099152a4_6837e676",
+      "range": {
+        "startLine": 1640,
+        "startChar": 4,
+        "endLine": 1640,
+        "endChar": 41
+      },
+      "revId": "6392f5fff954f0c28d694b5ddfb49449e92f6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
