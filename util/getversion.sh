@@ -68,6 +68,7 @@ get_tree_version() {
       vbase="no_version"
     fi
   fi
+  vbase="chop_test1"
   if [[ "${marker}" == "${dirty_marker}" ]]; then
       echo "${vbase}${dc}${marker}"
   else
