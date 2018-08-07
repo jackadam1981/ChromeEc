@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dff441bf_e42bc5c8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-07T07:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff77cbd0_7faab234",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 29
+      },
+      "revId": "daea290da53248dec54453240054b441f8e97643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7da9290f_57d3441e",
         "filename": "include/keyboard_8042.h",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cd067bed_1edc82d1",
+        "filename": "include/keyboard_8042.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-07T07:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da9290f_57d3441e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "daea290da53248dec54453240054b441f8e97643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "044e8b26_1b586d29",
         "filename": "include/keyboard_protocol.h",
         "patchSetId": 12
@@ -68,6 +116,30 @@
       "revId": "daea290da53248dec54453240054b441f8e97643",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc794f61_9e97edce",
+        "filename": "include/keyboard_protocol.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-08-07T07:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "044e8b26_1b586d29",
+      "range": {
+        "startLine": 50,
+        "startChar": 29,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "daea290da53248dec54453240054b441f8e97643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
