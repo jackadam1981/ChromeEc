@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "358eb6d2_33b56973",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-07T15:31:52Z",
+      "side": 1,
+      "message": "I think this channel is not enabled by default - if the purpose of this message is to alert a developer to some error (that they might not be looking for) perhaps it\u0027s better off in another channel?",
+      "range": {
+        "startLine": 300,
+        "startChar": 11,
+        "endLine": 300,
+        "endChar": 17
+      },
+      "revId": "611e35a06ba4a946225f8c700838ebace5e578a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
