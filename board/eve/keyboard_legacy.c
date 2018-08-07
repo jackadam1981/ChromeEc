@@ -12,14 +12,14 @@
 #include "util.h"
 
 /**
- * Special make codes to handle directly. Make code in all code sets should not
- * start with 0xf0 so we can use that to encode special values.
+ * Special make codes for keys to handle directly. Make code in all code sets
+ * should not start with 0xf0 so we can use that to encode special values.
  */
-#define MAKE_PAUSE	0xf000
-#define MAKE_BREAK	0xf001
-#define MAKE_DISP	0xf002
-#define MAKE_DIM	0xf003
-#define MAKE_BRIGHT	0xf004
+#define MK_PAUSE	0xf000
+#define MK_BREAK	0xf001
+#define MK_DISP		0xf002
+#define MK_DIM		0xf003
+#define MK_BRIGHT	0xf004
 
 /* Use SEARCH (before translate) as Fn key. */
 static const struct makecode_entry makecode_fn_key = {
@@ -37,9 +37,9 @@ static const struct makecode_translate_entry legacy_fn_mapping[] = {
 	{{0x003b, 0x0005}, {0xe06a, 0xe038}},  /* F1 => Browser Back */
 	{{0x003c, 0x0006}, {0xe067, 0xe020}},  /* F2 => Browser Refresh */
 	{{0x003d, 0x0004}, {0x0057, 0x0078}},  /* F3 => Full Screen */
-	{{0x003e, 0x000c}, {MAKE_DISP, MAKE_DISP}},  /* F4 => Switch Display */
-	{{0x003f, 0x0003}, {MAKE_DIM, MAKE_DIM}},  /* F5 => Dim Screen */
-	{{0x0040, 0x000b}, {MAKE_BRIGHT, MAKE_BRIGHT}},  /* F6 => Brighten */
+	{{0x003e, 0x000c}, {MK_DISP, MK_DISP}},  /* F4 => Switch Display */
+	{{0x003f, 0x0003}, {MK_DIM, MK_DIM}},  /* F5 => Dim Screen */
+	{{0x0040, 0x000b}, {MK_BRIGHT, MK_BRIGHT}},  /* F6 => Brighten */
 	{{0x0041, 0x0083}, {0xe022, 0xe034}},  /* F7 => Play/Pause */
 	{{0x0042, 0x000a}, {0xe020, 0xe023}},  /* F8 => Mute */
 	{{0x0043, 0x0001}, {0xe02e, 0xe021}},  /* F9 => Vol Down */
@@ -49,14 +49,30 @@ static const struct makecode_translate_entry legacy_fn_mapping[] = {
 	{{0x0004, 0x0026}, {0xe037, 0xe07c}},  /* 2 => SysRq */
 	{{0x0003, 0x001e}, {0x0004, 0x0026}},  /* 3 => PrtScrn */
 	{{0x0005, 0x0025}, {0x0046, 0x007e}},  /* 4 => Scroll Lock */
-	{{0x0006, 0x002e}, {MAKE_PAUSE, MAKE_PAUSE}},  /* 5 => Pause */
-	{{0x0007, 0x0036}, {MAKE_BREAK, MAKE_BREAK}},  /* 6 => Break */
+	{{0x0006, 0x002e}, {MK_PAUSE, MK_PAUSE}},  /* 5 => Pause */
+	{{0x0007, 0x0036}, {MK_BREAK, MK_BREAK}},  /* 6 => Break */
 	{{0x0008, 0x003d}, {0xe052, 0xe070}},  /* 7 => Insert */
 	{{0x0009, 0x003e}, {0xe053, 0xe071}},  /* 8 => Delete */
 	{{0xe048, 0xe075}, {0xe049, 0xe07d}},  /* Up => Page Up */
 	{{0xe050, 0xe072}, {0xe051, 0xe07a}},  /* Down => Page Down */
 	{{0xe04b, 0xe06b}, {0xe047, 0xe06c}},  /* Left => Home */
 	{{0xe04d, 0xe074}, {0xe04f, 0xe069}},  /* Right => End */
+};
+
+static char pause_key_scancode_set1[] = {
+	0xe1, 0x1d, 0x45, 0xe1, 0x9d, 0xc5
+};
+
+static char pause_key_scancode_set2[] = {
+	0xe1, 0x14, 0x77, 0xe1, 0xf0, 0x14, 0xf0, 0x77
+};
+
+static char break_key_scancode_set1[] = {
+	0xe0, 0x46, 0xe0, 0xc6
+};
+
+static char break_key_scancode_set2[] = {
+	0xe0, 0x7e, 0xe0, 0xf0, 0x7e
 };
 
 /* Indicate if the mapping is KEYBOARD_MAPPING_LEGACY. */
@@ -79,6 +95,32 @@ void keyboard_board_mapping_changed(enum keyboard_mapping_type new_mapping)
 	is_legacy_mapping = (new_mapping == KEYBOARD_MAPPING_LEGACY);
 }
 
+static void make_pause_or_break_key(
+		uint16_t make_code, enum scancode_set_list code_set)
+{
+	if (make_code == MK_PAUSE) {
+		if (code_set == SCANCODE_SET_1) {
+			i8042_send_to_host(
+					ARRAY_SIZE(pause_key_scancode_set1),
+					ARRAY_BEGIN(pause_key_scancode_set1));
+		} else if (code_set == SCANCODE_SET_2) {
+			i8042_send_to_host(
+					ARRAY_SIZE(pause_key_scancode_set2),
+					ARRAY_BEGIN(pause_key_scancode_set2));
+		}
+	} else if (make_code == MK_BREAK) {
+		if (code_set == SCANCODE_SET_1) {
+			i8042_send_to_host(
+					ARRAY_SIZE(break_key_scancode_set1),
+					ARRAY_BEGIN(break_key_scancode_set1));
+		} else if (code_set == SCANCODE_SET_2) {
+			i8042_send_to_host(
+					ARRAY_SIZE(break_key_scancode_set2),
+					ARRAY_BEGIN(break_key_scancode_set2));
+		}
+	}
+}
+
 /* Translate legacy keys */
 uint16_t keyboard_board_translate(uint16_t make_code, int8_t pressed,
 				  enum scancode_set_list code_set)
@@ -98,8 +140,25 @@ uint16_t keyboard_board_translate(uint16_t make_code, int8_t pressed,
 	if (!fn_pressed)
 		return make_code;
 
-	/* TODO(hungte): Handle  0xf0XX, which needs more translation. */
-	return makecode_translate(
+	make_code = makecode_translate(
 			make_code, code_set, ARRAY_BEGIN(legacy_fn_mapping),
 			ARRAY_SIZE(legacy_fn_mapping));
+	switch (make_code) {
+	case MK_PAUSE:
+	case MK_BREAK:
+		/* PAUSE and BREAK do not have release events. */
+		if (pressed)
+			make_pause_or_break_key(make_code, code_set);
+		return 0;
+	case MK_DISP:
+		/* TODO(hungte): Send Window+P. */
+		break;
+	case MK_DIM:
+		/* TODO(hungte): Complete how to dim screen. */
+		return 0;
+	case MK_BRIGHT:
+		/* TODO(hungte): Complete how to brighten screen. */
+		return 0;
+	}
+	return make_code;
 }
