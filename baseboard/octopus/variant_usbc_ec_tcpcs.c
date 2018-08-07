@@ -82,11 +82,13 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		.i2c_port = I2C_PORT_USBC0,
 		.i2c_addr = SN5S330_ADDR0,
+		.flags = PPC_FLAGS_USE_LOW_POWER_MODE,
 		.drv = &sn5s330_drv
 	},
 	[USB_PD_PORT_ITE_1] = {
 		.i2c_port = I2C_PORT_USBC1,
 		.i2c_addr = SN5S330_ADDR0,
+		.flags = PPC_FLAGS_USE_LOW_POWER_MODE,
 		.drv = &sn5s330_drv
 	},
 };
