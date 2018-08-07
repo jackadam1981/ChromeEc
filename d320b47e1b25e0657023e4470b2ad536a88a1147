@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b40a187_783d0f81",
+        "filename": "include/keyboard_8042.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-07T07:09:58Z",
+      "side": 1,
+      "message": "Just curious why don\u0027t we need a set3 here?",
+      "range": {
+        "startLine": 44,
+        "startChar": 10,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "d320b47e1b25e0657023e4470b2ad536a88a1147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
