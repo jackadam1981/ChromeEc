@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "24b8d359_22b96db0",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-07T18:29:54Z",
+      "side": 1,
+      "message": "The first one is s a field width indicator.  You can read more in \"man 3 printf\"",
+      "parentUuid": "813d0e2b_c9ff3467",
+      "revId": "5e340dd80b8375d4439e51dfaa8dc3ac5592158f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6be5d2b6_29a09231",
         "filename": "util/ectool.c",
         "patchSetId": 1
