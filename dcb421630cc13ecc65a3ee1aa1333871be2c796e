@@ -34,6 +34,24 @@
       "revId": "dcb421630cc13ecc65a3ee1aa1333871be2c796e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a57a73_100689d8",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-07T05:32:42Z",
+      "side": 1,
+      "message": "Well, please look around in the rest of the header file, this is not usually what we do... I don\u0027t see how having xx_0, xx_1, xx_2 is more descriptive than using some understandable xx_something name.\n\nWon\u0027t block the review for this one though.",
+      "parentUuid": "9d4f3e44_f249e6cd",
+      "revId": "dcb421630cc13ecc65a3ee1aa1333871be2c796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
