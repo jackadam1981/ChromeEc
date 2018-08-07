@@ -68,6 +68,30 @@
       "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f26059_231719ab",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-07T23:57:18Z",
+      "side": 1,
+      "message": "I think you probably want return_code \u0026\u003d ~VENDOR_RC_ERR;",
+      "parentUuid": "fe8c9fb3_eb094435",
+      "range": {
+        "startLine": 833,
+        "startChar": 2,
+        "endLine": 833,
+        "endChar": 31
+      },
+      "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
