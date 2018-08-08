@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "23cbbd75_0613e78f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "You are correct, this wasn\u0027t need before since the mux was the TCPC and we put it into low power mode via TCPC state machine.\n\nSince this is a board-specified function, it won\u0027t put TCPC/MUX into low power mode if you don\u0027t specify anything (which you wouldn\u0027t if you were using it as a TCPC)\n\nLet me know if I need more comments making this more clear",
+      "parentUuid": "b5e61127_d7acc2aa",
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea28e879_a6ea28b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "I moved it",
+      "parentUuid": "75b9b2a3_e5412715",
+      "range": {
+        "startLine": 648,
+        "startChar": 2,
+        "endLine": 648,
+        "endChar": 19
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b3bee7b_f7590989",
         "filename": "driver/usb_mux.c",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4b6308_4c9c73c4",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "I see what you are saying. I think I was trying to distinguish between a power-on-reset init and an exit-low-power-mode init; I don\u0027t think they are 2 separate case. I have combined them and kept the original board_init name.",
+      "parentUuid": "2b3bee7b_f7590989",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "12dd569a_3612840c",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "Yes because the device may be in low power (or half low power mode). We want to know that we tried to enter so we can reinitialize the device upon first access.",
+      "parentUuid": "863fb638_af450c44",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff87cf6b_0d223148",
         "filename": "driver/usb_mux.c",
         "patchSetId": 1
@@ -108,6 +198,30 @@
       "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f660cc_0c36ee84",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "sounds good, updated to exit_lpm",
+      "parentUuid": "ff87cf6b_0d223148",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "9f740efa_9096a5e4",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "You are right: mux could point to invalid memory. Line 93 is just doing pointer arithmetic, it doesn\u0027t actually deference any memory. We do not encounter a fault until we try to deference that invalid memory.\n\nI agree with you in principle; I would much rather declare line 93 after the assert, but our C compiler does not allow declarations of variables after code :(",
+      "parentUuid": "0c65aab2_bc97b98c",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "666f4eb6_1287be96",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "a0315bde_da846976",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "666f4eb6_1287be96",
+      "range": {
+        "startLine": 92,
+        "startChar": 49,
+        "endLine": 92,
+        "endChar": 51
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f8c16a5_a02e3d76",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
@@ -177,6 +339,30 @@
       "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c4961e7_e8ce32d3",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T18:01:07Z",
+      "side": 1,
+      "message": "changed back to board_init",
+      "parentUuid": "5f8c16a5_a02e3d76",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 23
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
