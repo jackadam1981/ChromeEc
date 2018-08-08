@@ -22,6 +22,30 @@
       "revId": "f51dfa29f8f96086c04ff7ce640c7a200cf4fdd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bdeeeab_0c5b3242",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-08T03:25:48Z",
+      "side": 1,
+      "message": "You are correct. I also realized that this if statement fix is not correct since VENDOR_RC_* macros are enumerated. Will correct it soon.\n\nThe original code treated return_code, VENDOR_RC_IN_PROGRESS|VENDOR_RC_ERR as error, and returned vch-\u003eccd_subcommand, which had no valid error codes but the original input, CCD_OPEN. \n\nAs I understand from the code study or from the past CLs, VENDOR_RC_IN_PROGRESS should be treated as normal case, not as error case.",
+      "parentUuid": "a58460a4_21b89318",
+      "range": {
+        "startLine": 833,
+        "startChar": 7,
+        "endLine": 833,
+        "endChar": 42
+      },
+      "revId": "f51dfa29f8f96086c04ff7ce640c7a200cf4fdd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
