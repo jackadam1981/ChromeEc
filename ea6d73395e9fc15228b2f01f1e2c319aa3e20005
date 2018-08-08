@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5229afc2_835a8dab",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-08T00:07:32Z",
+      "side": 0,
+      "message": "Why don\u0027t you just keep this as is and change it to (return_code !\u003d EC_SUCCESS) \u0026\u0026 !(return_code \u0026 VENDOR_RC_IN_PROGRESS)",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 835,
+        "endChar": 2
+      },
+      "revId": "ea6d73395e9fc15228b2f01f1e2c319aa3e20005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
