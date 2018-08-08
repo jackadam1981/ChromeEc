@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5c283ab_641990aa",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-08T22:34:47Z",
+      "side": 1,
+      "message": "Note that this change won\u0027t generate the same i2c transactions as the command it replaces.",
+      "revId": "a9f55d6b90035eaf1175b2ef825ac46755b90ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
