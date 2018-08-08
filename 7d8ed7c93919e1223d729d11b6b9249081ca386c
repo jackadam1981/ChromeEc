@@ -22,6 +22,30 @@
       "revId": "7d8ed7c93919e1223d729d11b6b9249081ca386c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae77b3a7_b6370fda",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-08T21:41:07Z",
+      "side": 1,
+      "message": "I attempted to get rid of it, but the protocol spoken by tcpm/fusb302 is wonky enough that it still uses this entry point.",
+      "parentUuid": "faba1dfc_b27f3e41",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "7d8ed7c93919e1223d729d11b6b9249081ca386c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
