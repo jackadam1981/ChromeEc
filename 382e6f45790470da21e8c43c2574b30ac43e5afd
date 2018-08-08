@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b3bee7b_f7590989",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-08T02:18:05Z",
+      "side": 1,
+      "message": "Hmm... either you name it board_init and make this call look nice or make the other call look nice. I think board_init makes more sense. It just means mux has to be reinitialized every time when exiting LPM.",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "863fb638_af450c44",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-08T02:18:05Z",
+      "side": 1,
+      "message": "You set it even if mux-\u003eenter_lpm returns error?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 36
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff87cf6b_0d223148",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-08T02:18:05Z",
+      "side": 1,
+      "message": "What about just lpm_exit?",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c65aab2_bc97b98c",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-08T02:18:05Z",
+      "side": 1,
+      "message": "At Line 93, port might be already exceeding the array size. Same comment for all the ASSERTs in this file.",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "666f4eb6_1287be96",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-08T02:18:05Z",
+      "side": 1,
+      "message": "it",
+      "range": {
+        "startLine": 92,
+        "startChar": 49,
+        "endLine": 92,
+        "endChar": 51
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f8c16a5_a02e3d76",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-08T02:18:05Z",
+      "side": 1,
+      "message": "What about just after_lpm?",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 23
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
