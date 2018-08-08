@@ -121,6 +121,9 @@ DECLARE_DEFERRED(servo_connect);
  */
 static void servo_detect(void)
 {
+	if (uart_bitbang_is_enabled())
+		return;
+
 	/* Disable interrupts if we had them on for debouncing */
 	gpio_disable_interrupt(GPIO_DETECT_SERVO);
 
