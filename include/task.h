@@ -265,6 +265,16 @@ void mutex_lock(struct mutex *mtx);
  */
 void mutex_unlock(struct mutex *mtx);
 
+/**
+ * Query a mutex is locked or not
+ * @param mtx   A pointer to mutex
+ * @return      Return 1 if mutex is locked. Otherwise, return 0.
+ */
+static inline int mutex_is_locked(struct mutex *mtx)
+{
+	return (mtx && mtx->lock) ? 1 : 0;
+}
+
 struct irq_priority {
 	uint8_t irq;
 	uint8_t priority;

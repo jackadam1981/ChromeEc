@@ -103,6 +103,16 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 {
 	int i;
 	int ret = EC_SUCCESS;
+	int mutex_idx = port;
+	uint8_t need_unlock = 0;
+
+#ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER
+	mutex_idx = i2c_port_to_controller(port);
+#endif
+	if (!mutex_is_locked(port_mutex + mutex_idx)) {
+		need_unlock = 1;
+		i2c_lock(port, 1);
+	}
 
 	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
 #ifdef CONFIG_I2C_XFER_LARGE_READ
@@ -115,6 +125,10 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 		if (ret != EC_ERROR_BUSY)
 			break;
 	}
+
+	if (need_unlock)
+		i2c_lock(port, 0);
+
 	return ret;
 }
 
