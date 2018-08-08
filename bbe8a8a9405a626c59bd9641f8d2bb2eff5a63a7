@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dd0b008b_e5c69c7c",
+        "filename": "board/nami/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-08-08T08:07:20Z",
+      "side": 1,
+      "message": "Yes, actually it is 0.2g here, 1g~16000.\nAny board could base on design to change.",
+      "parentUuid": "7937cb84_e5d7be8a",
+      "revId": "bbe8a8a9405a626c59bd9641f8d2bb2eff5a63a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9667d6bf_00e9fde0",
         "filename": "common/motion_lid.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-31T02:38:00Z",
       "side": 1,
       "message": "when lid and base are next to each other, one axis will measure a positive Z component, the other a negative one. So one of the test will always be true.",
+      "revId": "bbe8a8a9405a626c59bd9641f8d2bb2eff5a63a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4adc4ab_0c46fbc6",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-08-08T08:07:20Z",
+      "side": 1,
+      "message": "I try to identify that unit is in 360 degree, put on a table, and keyboard face down.\nIn this situation, we should return 360 degree instead unreliable.\nAt least, user should be able to enter tablet mode at the moment.",
+      "parentUuid": "9667d6bf_00e9fde0",
       "revId": "bbe8a8a9405a626c59bd9641f8d2bb2eff5a63a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
