@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "842125f1_a213dffb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-08T00:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7592587_3caf72e5",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe8c9fb3_eb094435",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
@@ -92,6 +116,54 @@
       "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab648909_9d0fbcde",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-08T00:39:31Z",
+      "side": 1,
+      "message": "Since I am concerned about foot print and this log won\u0027t be that effectively informative, I am not going to add print text.",
+      "parentUuid": "d7c5183b_a691908e",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 833,
+        "endChar": 0
+      },
+      "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9f83c20_14951b34",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-08T00:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8f26059_231719ab",
+      "range": {
+        "startLine": 833,
+        "startChar": 2,
+        "endLine": 833,
+        "endChar": 31
+      },
+      "revId": "f9e872245e63097475d05be229ea170cb673d8ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

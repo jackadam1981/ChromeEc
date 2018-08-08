@@ -22,6 +22,30 @@
       "revId": "ea6d73395e9fc15228b2f01f1e2c319aa3e20005",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80cbd09b_55f2cf85",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-08T00:39:31Z",
+      "side": 0,
+      "message": "Yes, this one looks simpler.",
+      "parentUuid": "5229afc2_835a8dab",
+      "range": {
+        "startLine": 832,
+        "startChar": 0,
+        "endLine": 835,
+        "endChar": 2
+      },
+      "revId": "ea6d73395e9fc15228b2f01f1e2c319aa3e20005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
