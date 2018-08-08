@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acb9440d_d8ae9aa9",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-08T23:56:06Z",
+      "side": 1,
+      "message": "I think it makes more sense to alphabetize by arg name rather than arg type.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "93e1c32867bf39b76597ad3fd91ead35d363b4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
