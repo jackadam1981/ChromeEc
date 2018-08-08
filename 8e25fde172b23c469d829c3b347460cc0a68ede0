@@ -45,6 +45,30 @@
       "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6b91d19_b16a8ea8",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3171,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-08T00:36:17Z",
+      "side": 1,
+      "message": "If no support \u003d\u003d no low power mode function provided, then it might be sufficient to add check here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1166183/2/common/usbc_ppc.c#95",
+      "parentUuid": "86e01953_5de2525b",
+      "range": {
+        "startLine": 3171,
+        "startChar": 7,
+        "endLine": 3171,
+        "endChar": 32
+      },
+      "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
