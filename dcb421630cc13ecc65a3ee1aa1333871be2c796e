@@ -52,6 +52,24 @@
       "revId": "dcb421630cc13ecc65a3ee1aa1333871be2c796e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f00b9d_ebe0ddc9",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-08T04:14:13Z",
+      "side": 1,
+      "message": "I totally agree that xx_N is less useful on its own.\n\nI\u0027ve added STM32_TIM_CCMR1_OC1M_PWM_MODE_1 by ORing together STM32_TIM_CCMR1_OC1M_{1,2}.  Let me know if that works for you.  If not, I\u0027ll define it as (6 \u003c\u003c 4) as you suggest and move the STM32_TIM_CCMR1_OC1M_{1,2} names to comments.\n\nI didn\u0027t define STM32_TIM_CCMR1_OC1M_MASK because I don\u0027t have a use for it in this change.",
+      "parentUuid": "10a57a73_100689d8",
+      "revId": "dcb421630cc13ecc65a3ee1aa1333871be2c796e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

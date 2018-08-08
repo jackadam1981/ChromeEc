@@ -16,6 +16,24 @@
       "revId": "da774a619ded549665c64a8a4b4e4ed86c64033b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e1807a_93bc9755",
+        "filename": "board/servo_micro/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-08T04:14:13Z",
+      "side": 0,
+      "message": "I don\u0027t want to discourage use of those timers for other purposes.",
+      "parentUuid": "c79c5dc8_1253b8f9",
+      "revId": "da774a619ded549665c64a8a4b4e4ed86c64033b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
