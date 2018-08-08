@@ -46,6 +46,30 @@
       "revId": "6392f5fff954f0c28d694b5ddfb49449e92f6860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9e1287_a773ce61",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T15:59:58Z",
+      "side": 1,
+      "message": "It seems like that should be okay, but I don\u0027t know for sure.\n\nAlso, if you want lower risk, can you add a deferred call to nami\u0027s led call_handler(void) method with should run after all of the tasks have had a chance to initialize. Would that work as well?",
+      "parentUuid": "e3d0e304_bf778fa7",
+      "range": {
+        "startLine": 1640,
+        "startChar": 4,
+        "endLine": 1640,
+        "endChar": 41
+      },
+      "revId": "6392f5fff954f0c28d694b5ddfb49449e92f6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
