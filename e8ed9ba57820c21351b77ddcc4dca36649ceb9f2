@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5918baba_37dd5bf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-08T16:31:39Z",
+      "side": 1,
+      "message": "this clause is not only to mention the formal test verifying this patch, you should describe here how you tested it even if informally. As an idea - you can send a command to read the index as a hex byte sequence through \u0027trunks_send --raw\u0027 IIRC",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "e8ed9ba57820c21351b77ddcc4dca36649ceb9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
