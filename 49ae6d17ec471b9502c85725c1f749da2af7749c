@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50fa597e_6245babc",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T21:31:06Z",
+      "side": 1,
+      "message": "this has always seemed weird to me. If we were treating it as a bool it would make sense, but we are returning this as the error code.",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "49ae6d17ec471b9502c85725c1f749da2af7749c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
