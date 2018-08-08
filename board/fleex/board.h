@@ -22,6 +22,9 @@
 
 #define CONFIG_LED_COMMON
 
+/* Battery */
+#define CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD
+
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
