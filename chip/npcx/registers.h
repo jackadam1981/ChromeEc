@@ -1105,6 +1105,7 @@ enum NPCX_PMC_PWDWN_CTL_T {
 /* PM Channel register field */
 
 /* NPCX_HIPMIE */
+#define NPCX_HIPMIE_IRQE                 0
 #define NPCX_HIPMIE_SCIE                 1
 #define NPCX_HIPMIE_SMIE                 2
 
@@ -1119,6 +1120,7 @@ enum NPCX_PMC_PWDWN_CTL_T {
 #define NPCX_HIPMST_ST2                  6 /* EC_LPC_CMDR_SMI */
 
 /* NPCX_HIPMIC */
+#define NPCX_HIPMIC_IRQB                 0
 #define NPCX_HIPMIC_SMIB                 1
 #define NPCX_HIPMIC_SCIB                 2
 #define NPCX_HIPMIC_SMIPOL               6

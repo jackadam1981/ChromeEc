@@ -1785,6 +1785,11 @@
  */
 #undef CONFIG_NPCX_I2C_OVER_LPC_MSG_LEN
 
+/*
+ * Use NPCX PM3 to generate interrupts.
+ */
+#undef CONFIG_NPCX_FW_CTRL_IRQ
+
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
@@ -2869,6 +2874,14 @@
 #define CONFIG_TEMP_SENSOR
 #endif
 
+
+/******************************************************************************/
+/*
+ * Add PM3 interrupt when HID sensors are used.
+ */
+#ifdef CONFIG_MOTION_SENSE_HID
+#define CONFIG_NPCX_FW_CTRL_IRQ
+#endif
 
 /******************************************************************************/
 /* The Matrix Keyboard Protocol depends on MKBP events. */

@@ -41,6 +41,7 @@
 /* PM channel definitions */
 #define PMC_ACPI     PM_CHAN_1
 #define PMC_HOST_CMD PM_CHAN_2
+#define PMC_FW_IRQ   PM_CHAN_3
 
 /* Super-IO index and register definitions */
 #define SIO_OFFSET      0x4E
@@ -141,6 +142,16 @@ static void lpc_task_disable_irq(void)
 	NPCX_ESPIWE &= ~(ESPIWE_GENERIC | ESPIWE_VW);
 #endif
 }
+
+#ifdef CONFIG_NPCX_FW_CTRL_IRQ
+void lpc_generate_irq(uint8_t level)
+{
+	if (level)
+		SET_BIT(NPCX_HIPMIC(PMC_FW_IRQ), NPCX_HIPMIC_IRQB);
+	else
+		CLEAR_BIT(NPCX_HIPMIC(PMC_FW_IRQ), NPCX_HIPMIC_IRQB);
+}
+#endif
 /**
  * Generate SMI pulse to the host chipset via GPIO.
  *
@@ -849,6 +860,14 @@ void host_register_init(void)
 	/* enable PMC2 */
 	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
+#ifdef CONFIG_NPCX_FW_CTRL_IRQ
+	/* Setting PMC3 */
+	/* LDN register = 0x17 (PMC3) */
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x17);
+	/* Enable PM chan 3 */
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+#endif
+
 	/* Setting SHM */
 	/* LDN register = 0x0F(SHM) */
 	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x0F);
@@ -1113,6 +1132,11 @@ static void lpc_init(void)
 	SET_BIT(NPCX_SMC_STS, NPCX_SMC_STS_HSEM1W);
 	SET_BIT(NPCX_SMC_CTL, NPCX_SMC_CTL_HSEM1_IE);
 	CLEAR_BIT(NPCX_SHCFG, NPCX_SHCFG_SEMW1_DIS);
+#endif
+
+#ifdef CONFIG_NPCX_FW_CTRL_IRQ
+	/* Enable the generation of IRQ */
+	SET_BIT(NPCX_HIPMIE(PMC_FW_IRQ), NPCX_HIPMIE_IRQE);
 #endif
 	lpc_task_enable_irq();
 
