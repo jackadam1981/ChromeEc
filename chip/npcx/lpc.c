@@ -39,6 +39,10 @@
 /* PM channel definitions */
 #define PMC_ACPI     PM_CHAN_1
 #define PMC_HOST_CMD PM_CHAN_2
+#ifdef CONFIG_FIRMWARE_CONTROL_SERIRQ
+#define PMC_FW_IRQ      PM_CHAN_3
+#define FW_CTL_IRQ_NUM   CONFIG_FIRMWARE_CONTROL_SERIRQ
+#endif
 
 /* Super-IO index and register definitions */
 #define SIO_OFFSET      0x4E
@@ -132,6 +136,16 @@ static void lpc_task_disable_irq(void)
 	NPCX_ESPIWE &= ~(ESPIWE_GENERIC | ESPIWE_VW);
 #endif
 }
+
+#ifdef CONFIG_FIRMWARE_CONTROL_SERIRQ
+static void lpc_generate_irq(uint8_t level)
+{
+	if (level)
+		SET_BIT(NPCX_HIPMIC(PMC_FW_IRQ), NPCX_HIPMIC_IRQB);
+	else
+		CLEAR_BIT(NPCX_HIPMIC(PMC_FW_IRQ), NPCX_HIPMIC_IRQB);
+}
+#endif
 /**
  * Generate SMI pulse to the host chipset via GPIO.
  *
@@ -779,6 +793,16 @@ void host_register_init(void)
 	/* enable PMC2 */
 	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
+#ifdef CONFIG_FIRMWARE_CONTROL_SERIRQ
+	/* Setting PMC3 */
+	/* LDN register = 0x17 (PMC3) */
+	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x17);
+	/* Set IRQ number for PM chan 3 */
+	lpc_sib_write_reg(SIO_OFFSET, 0x70, FW_CTL_IRQ_NUM);
+	/* Enable PM chan 3 */
+	lpc_sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+#endif
+
 	/* Setting SHM */
 	/* LDN register = 0x0F(SHM) */
 	lpc_sib_write_reg(SIO_OFFSET, 0x07, 0x0F);
@@ -993,6 +1017,11 @@ static void lpc_init(void)
 	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
 	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SMIE);
 #endif
+
+#ifdef CONFIG_FIRMWARE_CONTROL_SERIRQ
+	/* Enable the generation of IRQ */
+	SET_BIT(NPCX_HIPMIE(PMC_FW_IRQ), NPCX_HIPMIE_IRQE);
+#endif
 	lpc_task_enable_irq();
 
 	/* Sufficiently initialized */
@@ -1074,4 +1103,21 @@ static int command_lpc(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(lpc, command_lpc, "[sci|smi|wake]", "Trigger SCI/SMI");
 
+#endif
+
+#ifdef CONFIG_FIRMWARE_CONTROL_SERIRQ
+static int command_irq(int argc, char **argv)
+{
+	if (argc == 2) {
+		if (!strcasecmp(argv[1], "1"))
+			lpc_generate_irq(1);
+		else if (!strcasecmp(argv[1], "0"))
+			lpc_generate_irq(0);
+		else
+			return EC_ERROR_PARAM1;
+		return EC_SUCCESS;
+	}
+	return EC_ERROR_PARAM1;
+}
+DECLARE_CONSOLE_COMMAND(irq, command_irq, "[0|1]", "Trigger SERIRQ");
 #endif
