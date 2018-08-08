@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1854a70_60a075a6",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-08-08T22:49:16Z",
+      "side": 1,
+      "message": "Well, forgot that __hw_clock_source_read should be as close as possible to gpio_set_level.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "8a1d713707dd3cb7d21ab1e19b7335e9f0fcb36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
