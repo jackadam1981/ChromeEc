@@ -22,6 +22,30 @@
       "revId": "9d446780e11e6b46bcaa25811a26ac20b17440a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b67f736_075d0f7f",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T14:23:38Z",
+      "side": 1,
+      "message": "It just ensures that I don\u0027t change the value during the function itself (like ++port). The rule I like to follow is const all the things until you want/need to change it.",
+      "parentUuid": "503b9520_32ba2f30",
+      "range": {
+        "startLine": 47,
+        "startChar": 21,
+        "endLine": 47,
+        "endChar": 75
+      },
+      "revId": "9d446780e11e6b46bcaa25811a26ac20b17440a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
