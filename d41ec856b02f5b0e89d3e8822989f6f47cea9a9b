@@ -357,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "5a7e508e_3ff97cbe",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-08T16:25:21Z",
+      "side": 1,
+      "message": "Yea it still occupies considerably less flash than static const.",
+      "parentUuid": "b41f75d8_547faeb4",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 54
+      },
+      "revId": "d41ec856b02f5b0e89d3e8822989f6f47cea9a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89f5d065_97441dc8",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 19
