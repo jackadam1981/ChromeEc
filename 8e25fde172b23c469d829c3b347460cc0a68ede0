@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8aa883ac_ee687ddf",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T15:23:03Z",
+      "side": 1,
+      "message": "I changed to this to a flags-based decision.",
+      "parentUuid": "7a79d078_dfcb3ea9",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 55
+      },
+      "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86e01953_5de2525b",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e4ec20_29a28bd0",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T15:23:03Z",
+      "side": 1,
+      "message": "I was split between making this an optional method versus behind a new CONFIG option.\n\nI went ahead and changed it to an optional method behind a flags instead",
+      "parentUuid": "b6b91d19_b16a8ea8",
+      "range": {
+        "startLine": 3171,
+        "startChar": 7,
+        "endLine": 3171,
+        "endChar": 32
+      },
+      "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
