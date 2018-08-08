@@ -23,6 +23,13 @@
 /* Features of eSPI */
 #define CONFIG_HOSTCMD_ESPI
 #define CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS /* Use VW signals instead of GPIOs */
+/* By this definition with an IRQ number, firmware can control the generation of
+ * IRQ for this number via PM channel 3.
+ * A number from 1 to 15 is allowed.
+ * Avoid selecting the same interrupt number for different Logical Devices
+ * because it causes the EC to behave unpredictably.
+ */
+#define CONFIG_FIRMWARE_CONTROL_IRQ    0x0A
 
 /* Optional features */
 #define CONFIG_BOARD_VERSION_GPIO
