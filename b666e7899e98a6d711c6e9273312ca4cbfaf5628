@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "288e9c3b_8f18df02",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-08T20:05:47Z",
+      "side": 1,
+      "message": "This is problematic.\n\nTask A is low priority, and properly locks the I2C port.\n\nTask B is high priority.  It preempts task A and then also fails to lock the I2C port prior to calling i2c_xfer.  It sees that the mutex is locked already and proceeds to use the port.  Error!",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "b666e7899e98a6d711c6e9273312ca4cbfaf5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
