@@ -22,6 +22,30 @@
       "revId": "49ae6d17ec471b9502c85725c1f749da2af7749c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f48d313_36e5d871",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-08T22:32:40Z",
+      "side": 1,
+      "message": "Agreed.  As mentioned in the commentary, I believe that you cannot shortcut out the second transfer without leaving the bus in an improper state.  Its possible that the chip\u0027s driver handles this situation correctly, but I don\u0027t want to have to audit all of them to be sure.",
+      "parentUuid": "50fa597e_6245babc",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "49ae6d17ec471b9502c85725c1f749da2af7749c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
