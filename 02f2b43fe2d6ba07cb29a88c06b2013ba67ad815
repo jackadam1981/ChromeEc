@@ -22,6 +22,30 @@
       "revId": "02f2b43fe2d6ba07cb29a88c06b2013ba67ad815",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8b0462_20db2f32",
+        "filename": "board/bip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-08T08:52:48Z",
+      "side": 1,
+      "message": "The KSO/KSI pins don\u0027t support internal pull-down in GPIO mode.\nAnd this should be okay since these pins are not in floating state.",
+      "parentUuid": "4bb7e82b_ea30e287",
+      "range": {
+        "startLine": 108,
+        "startChar": 42,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "02f2b43fe2d6ba07cb29a88c06b2013ba67ad815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
