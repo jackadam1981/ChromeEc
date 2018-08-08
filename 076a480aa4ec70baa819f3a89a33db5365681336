@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e90a4fd_6695f787",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-08T22:13:53Z",
+      "side": 1,
+      "message": "Add a comment that i2c_lock is called by the caller of this function.",
+      "revId": "076a480aa4ec70baa819f3a89a33db5365681336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc03e39_ab56b4c1",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-08T22:13:53Z",
+      "side": 1,
+      "message": "TIMXXEN may clear register state, worth checking.",
+      "revId": "076a480aa4ec70baa819f3a89a33db5365681336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ce0064a_88f32270",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-08T22:13:53Z",
+      "side": 1,
+      "message": "Typical registers.h implemetation is liek this: \n#define STM32_RCC_ICSCR_MSIRANGE(n)\t((n) \u003c\u003c 13)\n#define STM32_RCC_ICSCR_MSIRANGE_1MHZ\tSTM32_RCC_ICSCR_MSIRANGE(4)\n#define STM32_RCC_ICSCR_MSIRANGE_2MHZ\tSTM32_RCC_ICSCR_MSIRANGE(5)\n#define STM32_RCC_ICSCR_MSIRANGE_MASK\tSTM32_RCC_ICSCR_MSIRANGE(7)",
+      "revId": "076a480aa4ec70baa819f3a89a33db5365681336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
