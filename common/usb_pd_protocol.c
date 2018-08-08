@@ -590,6 +590,13 @@ static inline void set_state(int port, enum pd_states next_state)
 
 	if (next_state == PD_STATE_SRC_DISCONNECTED ||
 	    next_state == PD_STATE_SNK_DISCONNECTED) {
+//#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+		/* tcpm init (leave HW BIST mode) */
+		// [Makefile.rules:152 error] nonzero exit
+		//tcpc_config[port].drv->init(port) ?
+		//	CPRINTF("tcpm init success after disconnect\n"):
+		//	CPRINTF("tcpm init fail after disconnect\n");
+//#endif
 		/* Clear the input current limit */
 		pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
@@ -1512,7 +1519,8 @@ static void handle_ctrl_request(int port, uint16_t head,
 	case PD_CTRL_GET_SOURCE_CAP:
 		res = send_source_cap(port);
 		if ((res >= 0) &&
-		    (pd[port].task_state == PD_STATE_SRC_DISCOVERY))
+		    ((pd[port].task_state == PD_STATE_SRC_DISCOVERY) ||
+		     (pd[port].task_state == PD_STATE_SRC_READY)))
 			set_state(port, PD_STATE_SRC_NEGOCIATE);
 		break;
 	case PD_CTRL_GET_SINK_CAP:
