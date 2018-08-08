@@ -8,6 +8,9 @@
 #include "battery_fuel_gauge.h"
 #include "common.h"
 #include "util.h"
+#include "battery_smart.h"
+#include "hooks.h"
+#include "console.h"
 
 /*
  * Battery info for all bobba battery types. Note that the fields
@@ -179,3 +182,37 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_PANASONIC;
+
+static void battery_check_dfet(void)
+{
+	int rv;
+
+	rv = battery_get_disconnect_state();
+
+	if (rv == BATTERY_DISCONNECT_ERROR)
+		ccprintf("\tBATTERY_DISCONNECT_ERROR\n");
+	else if (rv == BATTERY_DISCONNECTED)
+		ccprintf("\tBATTERY_DISCONNECTED\n");
+	else if (rv == BATTERY_NOT_DISCONNECTED)
+		ccprintf("\tBATTERY_NOT_DISCONNECTED\n");
+	else
+		ccprintf("\tbattery_check_dfet unknown error\n");
+}
+DECLARE_HOOK(HOOK_TICK, battery_check_dfet, HOOK_PRIO_DEFAULT);
+
+static int battery_check_normal_voltage(int argc, char **argv)
+{
+	int rv;
+	int reg;
+
+	rv = sb_read(0x19, &reg);
+
+	if (rv)
+		ccprintf("\tCheck normal voltage error.\n");
+	else
+		ccprintf("\tNormal voltage is %u mV.\n", reg);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(batt_norm_vol, battery_check_normal_voltage,
+				"NULL", "check normal voltage from register");
