@@ -70,6 +70,30 @@
       "revId": "1e5d1d319f1836f4a14eb42c6b4d8e177344941f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a169121a_d5264a77",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-08T00:45:06Z",
+      "side": 1,
+      "message": "Actually, it should be working on Fizz because offsets are different for _A and _B. So, hash is automatically renewed. Sorry for the noise.",
+      "parentUuid": "4b3a28d4_ac17cdc9",
+      "range": {
+        "startLine": 501,
+        "startChar": 1,
+        "endLine": 501,
+        "endChar": 23
+      },
+      "revId": "1e5d1d319f1836f4a14eb42c6b4d8e177344941f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
