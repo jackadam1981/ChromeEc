@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "faebb371_e8ba8401",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-08T18:56:56Z",
+      "side": 1,
+      "message": "\u003e but our C compiler does not allow declarations of variables after code :(\n\nFTR, this is not a limitation of the compiler.  It is a policy choice of the EC team.  See Makefile.toolchain -Wdeclaration-after-statement",
+      "parentUuid": "9f740efa_9096a5e4",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "666f4eb6_1287be96",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
