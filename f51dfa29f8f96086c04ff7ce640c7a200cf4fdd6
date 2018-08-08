@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a58460a4_21b89318",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2018-08-08T02:31:51Z",
+      "side": 1,
+      "message": "I am still confused:  vendor_rc_in_progress is 0x9, any other value with bits 0x1 or 0x8 set would match.\n\nwhy was the original code failing?\n\nlet\u0027s chat about this offline.",
+      "range": {
+        "startLine": 833,
+        "startChar": 7,
+        "endLine": 833,
+        "endChar": 42
+      },
+      "revId": "f51dfa29f8f96086c04ff7ce640c7a200cf4fdd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
