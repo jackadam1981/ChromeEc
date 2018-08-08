@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "66894376_d36eda2e",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-08T19:12:21Z",
+      "side": 1,
+      "message": "Agreed, that is what I was implying by \"our\" :)",
+      "parentUuid": "faebb371_e8ba8401",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 52
+      },
+      "revId": "382e6f45790470da21e8c43c2574b30ac43e5afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "666f4eb6_1287be96",
         "filename": "include/usb_mux.h",
         "patchSetId": 1
