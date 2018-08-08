@@ -93,6 +93,7 @@ struct uart_bitbang_properties bitbang_config = {
 	.uart = UART_EC,
 	.tx_gpio = GPIO_DETECT_SERVO, /* This is TX to EC console. */
 	.rx_gpio = GPIO_EC_TX_CR50_RX,
+	.rx_irq = GC_IRQNUM_GPIO1_GPIO4INT, /* Must match gpoi.inc */
 	/*
 	 * The rx/tx_pinmux_regval values MUST agree with the pin config for
 	 * both the TX and RX GPIOs in gpio.inc.  Don't change one without
@@ -104,19 +105,7 @@ struct uart_bitbang_properties bitbang_config = {
 	.rx_pinmux_regval = GC_PINMUX_GPIO1_GPIO4_SEL,
 };
 
-void ec_tx_cr50_rx(enum gpio_signal signal)
-{
-	uart_bitbang_receive_char();
-	/*
-	 * Let the USART module know that there's new bits to consume.
-	 *
-	 * When programming the EC in bitbang mode the rest of the system is
-	 * shut down, there not much else to do, so this could be processed
-	 * directly on interrupt context the same way it is done with EC
-	 * console output.
-	 */
-	send_data_to_usb(&ec_uart);
-}
+DECLARE_IRQ(GC_IRQNUM_GPIO1_GPIO4INT, uart_bitbang_irq, 0);
 
 const char *device_state_names[] = {
 	"init",
@@ -721,6 +710,8 @@ static void board_init(void)
 	 * machines run in HOOK_SECOND, which first triggers right after
 	 * HOOK_INIT, not at +1.0 seconds.
 	 */
+	bitbang_config.uart_in = ec_uart.producer.queue;
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
