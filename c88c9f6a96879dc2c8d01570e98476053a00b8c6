@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4beb16e6_9b9405f6",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-09T00:07:52Z",
+      "side": 1,
+      "message": "Would this all work after sysjump? If so, can you add a comment?",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572d5f1f_70d76720",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-09T00:07:52Z",
+      "side": 1,
+      "message": "Could you add comment that we set the flag regardless enter_low_power_mode result for blur, blur,...?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a18c87_dc4264e6",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-09T00:07:52Z",
+      "side": 1,
+      "message": "Then, can you even defer it in exit_low_power_mode instead?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bba4f82_4302c180",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-09T00:07:52Z",
+      "side": 1,
+      "message": "Note is needed but enter_low_power_mode is not.",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 11
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
