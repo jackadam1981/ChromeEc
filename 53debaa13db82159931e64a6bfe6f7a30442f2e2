@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f66da94c_86383588",
+        "filename": "common/fan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-09T22:27:15Z",
+      "side": 1,
+      "message": "what is this magic? FAN_STATE_FLAG_THERMAL?\n\nAlso, why not just do\n\n if (thermal_control_enabled[fan])\n   state.flag |\u003d ;",
+      "range": {
+        "startLine": 506,
+        "startChar": 46,
+        "endLine": 506,
+        "endChar": 54
+      },
+      "revId": "53debaa13db82159931e64a6bfe6f7a30442f2e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
