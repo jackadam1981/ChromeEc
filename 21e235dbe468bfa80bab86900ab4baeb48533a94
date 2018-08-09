@@ -22,6 +22,30 @@
       "revId": "21e235dbe468bfa80bab86900ab4baeb48533a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f22872bb_5716f049",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-09T21:46:46Z",
+      "side": 1,
+      "message": "There is smbus_read_block, for example.",
+      "parentUuid": "41680c66_14c46794",
+      "range": {
+        "startLine": 293,
+        "startChar": 13,
+        "endLine": 293,
+        "endChar": 18
+      },
+      "revId": "21e235dbe468bfa80bab86900ab4baeb48533a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
