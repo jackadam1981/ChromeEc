@@ -423,9 +423,13 @@ BUILD_ASSERT(CONFIG_FANS <= EC_FAN_SPEED_ENTRIES);
 /* Saved PWM state across sysjumps */
 struct pwm_fan_state {
 	/* TODO(crosbug.com/p/23530): Still treating all fans as one. */
-	uint16_t fan_rpm;
-	uint8_t fan_en;
+	uint16_t rpm;
+	uint8_t flag;	/* FAN_STATE_FLAG_* */
 };
+
+/* For struct pwm_fan_state.flag */
+#define FAN_STATE_FLAG_ENABLED	(1 << 0)
+#define FAN_STATE_FLAG_PWM	(1 << 1)
 
 static void pwm_fan_init(void)
 {
@@ -443,8 +447,11 @@ static void pwm_fan_init(void)
 	if (prev && version == PWM_HOOK_VERSION && size == sizeof(*prev)) {
 		/* Restore previous state. */
 		for (fan = 0; fan < CONFIG_FANS; fan++) {
-			fan_set_enabled(FAN_CH(fan), prev->fan_en);
-			fan_set_rpm_target(FAN_CH(fan), prev->fan_rpm);
+			fan_set_enabled(FAN_CH(fan),
+					prev->flag & FAN_STATE_FLAG_ENABLED);
+			fan_set_rpm_target(FAN_CH(fan), prev->rpm);
+			fan_set_rpm_mode(FAN_CH(fan),
+					 prev->flag & FAN_STATE_FLAG_PWM);
 		}
 	} else {
 		/* Set initial fan speed */
@@ -495,8 +502,9 @@ static void pwm_fan_preserve_state(void)
 	int fan = 0;
 
 	/* TODO(crosbug.com/p/23530): Still treating all fans as one. */
-	state.fan_en = fan_get_enabled(FAN_CH(fan));
-	state.fan_rpm = fan_get_rpm_target(FAN_CH(fan));
+	state.flag = fan_get_enabled(FAN_CH(fan));
+	state.flag |= fan_get_rpm_mode(FAN_CH(fan)) ? 1 << 1 : 0;
+	state.rpm = fan_get_rpm_target(FAN_CH(fan));
 
 	system_add_jump_tag(PWMFAN_SYSJUMP_TAG, PWM_HOOK_VERSION,
 			    sizeof(state), &state);
