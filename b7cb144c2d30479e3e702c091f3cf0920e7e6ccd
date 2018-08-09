@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f55955b1_6e5ec73e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 24
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-09T23:41:13Z",
+      "side": 1,
+      "message": "btw, does this work? In case of multiple bugs I\u0027m used to having each bug on a separate line:\nBUG\u003db:110971075\nBUG\u003dchromium:846114\n\n(and, at least in CQ-DEPEND case you can use comma-separated, not space-separated list; not sure what\u0027s right for BUG, though)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "b7cb144c2d30479e3e702c091f3cf0920e7e6ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b31e840_b0b884c7",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 24
