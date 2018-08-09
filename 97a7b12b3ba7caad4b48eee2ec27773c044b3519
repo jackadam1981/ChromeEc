@@ -63,6 +63,24 @@
       "revId": "97a7b12b3ba7caad4b48eee2ec27773c044b3519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6cdf0ec_fa42564b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-09T00:07:49Z",
+      "side": 0,
+      "message": "it prints all the time and makes logspam. I can put it back if you\u0027d like",
+      "parentUuid": "20697972_563b86aa",
+      "revId": "97a7b12b3ba7caad4b48eee2ec27773c044b3519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

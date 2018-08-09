@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "845f2016_0c67894a",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-09T00:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8c3b53b_c00371f9",
+      "revId": "82d0bce66fc866d32cd309ef9c48c70875701a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49f39165_0092935b",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "df63a033_f03a9db4",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-09T00:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49f39165_0092935b",
+      "revId": "82d0bce66fc866d32cd309ef9c48c70875701a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "571ada3d_c35c66e6",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 4
@@ -50,6 +86,24 @@
       "revId": "82d0bce66fc866d32cd309ef9c48c70875701a9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23cc8ecd_f58953f7",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-09T00:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571ada3d_c35c66e6",
+      "revId": "82d0bce66fc866d32cd309ef9c48c70875701a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "097680b7_bd75ca0a",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-09T00:07:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb9bf0fb_4bc585ff",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 25
+      },
+      "revId": "82d0bce66fc866d32cd309ef9c48c70875701a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfaff9ef_acd63149",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 4
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "fabd8853_3f483a17",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-09T00:07:49Z",
+      "side": 1,
+      "message": "cc_mode overs both default power role and dts, wasn\u0027t sure how to better convey this.",
+      "parentUuid": "cfaff9ef_acd63149",
+      "range": {
+        "startLine": 635,
+        "startChar": 18,
+        "endLine": 635,
+        "endChar": 20
+      },
+      "revId": "82d0bce66fc866d32cd309ef9c48c70875701a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50bf9584_5c2235a8",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 4
@@ -110,6 +212,30 @@
       "writtenOn": "2018-08-03T05:57:18Z",
       "side": 1,
       "message": "nit: I wonder if this could probably be tErrorRecovery (25ms). (Just to quicken things up a bit)",
+      "range": {
+        "startLine": 659,
+        "startChar": 9,
+        "endLine": 659,
+        "endChar": 12
+      },
+      "revId": "82d0bce66fc866d32cd309ef9c48c70875701a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "020d61f1_3bb03360",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-08-09T00:07:49Z",
+      "side": 1,
+      "message": "Will try",
+      "parentUuid": "50bf9584_5c2235a8",
       "range": {
         "startLine": 659,
         "startChar": 9,
