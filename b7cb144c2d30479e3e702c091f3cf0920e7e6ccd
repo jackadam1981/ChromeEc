@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b31e840_b0b884c7",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-09T23:22:21Z",
+      "side": 1,
+      "message": "should be \u003c\u003d, right? \n(VIRTUAL_NV_INDEX_MAX\u003d0x013fffff) is included in the \u0027virtual range\u0027",
+      "range": {
+        "startLine": 232,
+        "startChar": 48,
+        "endLine": 232,
+        "endChar": 49
+      },
+      "revId": "b7cb144c2d30479e3e702c091f3cf0920e7e6ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
