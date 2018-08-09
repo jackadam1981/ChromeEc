@@ -28,4 +28,19 @@ void button_state_changed(enum keyboard_button_type button, int is_pressed);
  */
 void keyboard_host_write(int data, int is_cmd);
 
+/*
+ * Board specific callback function when a key state is changed.
+ *
+ * A board may watch key events and create some easter eggs, or apply dynamic
+ * translation to the make code (i.e., remap keys).
+ *
+ * Returning EC_SUCCESS implies the make points to a valid make code and should
+ * be processed. Any other failure will abort key processing.
+ *
+ * @param make_code	Pointer to scan code (set 2) of key in action.
+ * @param pressed	Is the key being pressed (1) or released (0).
+ */
+enum ec_error_list keyboard_scancode_callback(uint16_t *make_code,
+					      int8_t pressed);
+
 #endif  /* __CROS_EC_KEYBOARD_8042_H */
