@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0f33d12_61a33cf4",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T16:49:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f05024_0c1a50ec",
+      "range": {
+        "startLine": 21,
+        "startChar": 41,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "80547de2372344391a6f01d00c03d67134ea573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "596859e4_24900af9",
         "filename": "driver/usb_mux.c",
         "patchSetId": 4
