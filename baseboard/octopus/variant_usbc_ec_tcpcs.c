@@ -73,7 +73,6 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.port_addr = IT5205_I2C_ADDR1,
 		.driver = &it5205_usb_mux_driver,
 		.hpd_update = &board_it83xx_hpd_status,
-		.enter_low_power_mode = &it5205_enter_low_power_mode,
 	},
 	[USB_PD_PORT_ITE_1] = {
 		/* Use PS8751 as mux only */
@@ -82,7 +81,6 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &board_it83xx_hpd_status,
 		.board_init = &ps8751_tune_mux,
-		.enter_low_power_mode = &tcpci_tcpm_mux_enter_low_power,
 	}
 };
 
