@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aace7f1_73ef46bc",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-08-09T00:37:57Z",
+      "side": 1,
+      "message": "Todo: figure out if this gpio is actually defined and only use it if it is.\n\nFurquan suggested some kind of CONFIG_EC_INT. But I would like to avoid such a config that will have to get defined for all ARM platforms. Maybe || !defined(CONFIG_MKBP_USE_HOST_EVENT)",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "bdb9b70cc9685e2cb36062107e9a87710ad91879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

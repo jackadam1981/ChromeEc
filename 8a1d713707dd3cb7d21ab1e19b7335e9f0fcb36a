@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e4142353_1c0991fd",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-08-09T00:37:57Z",
+      "side": 1,
+      "message": "Please ignore the derpiness here. #ifdef on a gpio will never actually yield true. I promise that in the past when I have used this CL revision (/2) I did not have this. gpio_set_level actually worked.",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "8a1d713707dd3cb7d21ab1e19b7335e9f0fcb36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1854a70_60a075a6",
         "filename": "common/mkbp_event.c",
         "patchSetId": 2
@@ -22,6 +45,30 @@
       "revId": "8a1d713707dd3cb7d21ab1e19b7335e9f0fcb36a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc2f4799_e7414c06",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-08-09T00:37:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1854a70_60a075a6",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "8a1d713707dd3cb7d21ab1e19b7335e9f0fcb36a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
