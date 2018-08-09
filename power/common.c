@@ -653,7 +653,7 @@ inline void power_set_pause_in_s5(int pause)
 /*****************************************************************************/
 /* Console commands */
 
-static int command_powerinfo(int argc, char **argv)
+int command_powerinfo(int argc, char **argv)
 {
 	/*
 	 * Print power state in same format as state machine.  This is

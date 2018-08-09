@@ -163,7 +163,7 @@ void power_button_interrupt(enum gpio_signal signal)
 /*****************************************************************************/
 /* Console commands */
 
-static int command_powerbtn(int argc, char **argv)
+int command_powerbtn(int argc, char **argv)
 {
 	int ms = 200;  /* Press duration in ms */
 	char *e;

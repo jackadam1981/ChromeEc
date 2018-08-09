@@ -8172,6 +8172,45 @@ int cmd_cec(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_autowake(int argc, char *argv[])
+{
+	struct ec_params_autowake p;
+	struct ec_response_autowake r;
+	int rv;
+	char *e;
+
+	if (argc == 3) {
+		p.wake_from = strtol(argv[1], &e, 0);
+		p.wake_time = strtol(argv[2], &e, 0);
+
+		if (p.wake_from == FROM_S5) {
+			printf("wake from S5\n");
+		} else if (p.wake_from == FROM_S3_S0IX) {
+			printf("wake from S3 or S0ix\n");
+		} else {
+			printf("stop autowake test\n");
+			p.wake_from = FROM_NULL;
+			p.wake_time = 0;
+		}
+
+		if (p.wake_from != FROM_NULL)
+			printf("wake time=%d\n", p.wake_time);
+	}
+
+	rv = ec_command(EC_CMD_MAGIC_AUTOWAKE, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	if (r.out_data != EC_RES_SUCCESS) {
+		fprintf(stderr, "Expected response 0x%08x, got 0x%08x\n",
+			EC_RES_SUCCESS, r.out_data);
+		return -1;
+	}
+
+	return 0;
+}
+
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"addentropy", cmd_add_entropy},
@@ -8288,6 +8327,7 @@ const struct command commands[] = {
 	{"version", cmd_version},
 	{"waitevent", cmd_wait_event},
 	{"wireless", cmd_wireless},
+	{"autowake", cmd_autowake},
 	{NULL, NULL}
 };
 
