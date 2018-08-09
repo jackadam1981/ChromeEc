@@ -5174,6 +5174,20 @@ struct __ec_align_size1 ec_params_charger_control {
  *      EC_VER_MASK(0);
  */
 #define EC_CMD_BOARD_SPECIFIC_BASE 0x3E00
+
+#define EC_CMD_MAGIC_AUTOWAKE 0x3E05
+#define FROM_NULL	(0x1)
+#define FROM_S5		(0x2)
+#define FROM_S3_S0IX	(0x3)
+struct __ec_align4 ec_params_autowake {
+	uint32_t wake_from;
+	uint32_t wake_time;
+};
+
+struct __ec_align4 ec_response_autowake {
+	uint32_t out_data;
+};
+
 #define EC_CMD_BOARD_SPECIFIC_LAST 0x3FFF
 
 /*
