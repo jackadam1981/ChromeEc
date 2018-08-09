@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dc9cc26_0f8fa181",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-08-09T20:49:55Z",
+      "side": 1,
+      "message": "Where\u0027d 30 retries come from?",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc45c0e_477ca49c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-08-09T20:49:55Z",
+      "side": 1,
+      "message": "The return value here should also end up in the return code; what if this first write fails?",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5a0f51b_8c5fedb8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-08-09T20:49:55Z",
+      "side": 1,
+      "message": "Does this comment belong closer to the ifdef, or where this CONFIG option is described?",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1cef4ca_9e1821c7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-08-09T20:49:55Z",
+      "side": 1,
+      "message": "no newline necesssary here",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
