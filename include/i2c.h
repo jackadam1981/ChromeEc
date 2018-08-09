@@ -93,9 +93,6 @@ extern const int i2c_test_dev_used;
  * received data might be capped at CONFIG_I2C_CHIP_MAX_READ_SIZE if
  * CONFIG_I2C_XFER_LARGE_READ is not defined.
  *
- * This is a wrapper function for chip_i2c_xfer(), a low-level chip-dependent
- * function. It must be called between i2c_lock(port, 1) and i2c_lock(port, 0).
- *
  * @param port		Port to access
  * @param slave_addr	Slave device address
  * @param out		Data to send
@@ -106,7 +103,15 @@ extern const int i2c_test_dev_used;
  * @return EC_SUCCESS, or non-zero if error.
  */
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-	     uint8_t *in, int in_size, int flags);
+	     uint8_t *in, int in_size);
+
+/**
+ * Same as i2c_xfer, but the bus is not implicitly locked.  It must be called
+ * between i2c_lock(port, 1) and i2c_lock(port, 0).
+ */
+int i2c_xfer_unlocked(int port, int slave_addr,
+		      const uint8_t *out, int out_size,
+		      uint8_t *in, int in_size, int flags);
 
 #define I2C_LINE_SCL_HIGH (1 << 0)
 #define I2C_LINE_SDA_HIGH (1 << 1)
