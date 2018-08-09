@@ -16,6 +16,24 @@
       "revId": "a9f55d6b90035eaf1175b2ef825ac46755b90ee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23a0775f_16ad4deb",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-09T19:29:59Z",
+      "side": 1,
+      "message": "I was very careful to ensure that the total transactions would be the same.  The only difference is that the block start address and block data are sent in two separate API calls.  The device may see a longer clock period in between the two, depending on the details of the EC\u0027s load at that time, but it should support that for I2C anyway.",
+      "parentUuid": "b5c283ab_641990aa",
+      "revId": "a9f55d6b90035eaf1175b2ef825ac46755b90ee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
