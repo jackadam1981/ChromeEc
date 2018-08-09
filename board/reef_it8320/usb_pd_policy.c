@@ -186,15 +186,83 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 {
 	/* If UFP, try to switch to DFP */
 	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
+			dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
+
 /* ----------------- Vendor Defined Messages ------------------ */
+/* USB configuration */
+#define CONFIG_USB_PID 0x502f
+#define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
+#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
+#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
+
+const uint32_t vdo_idh = VDO_IDH(0, /* data caps as USB host */
+				 1, /* data caps as USB device */
+				 IDH_PTYPE_AMA, /* Alternate mode */
+				 1, /* supports alt modes */
+				 USB_VID_GOOGLE);
+
+const uint32_t vdo_product = VDO_PRODUCT(CONFIG_USB_PID, CONFIG_USB_BCD_DEV);
+
+const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
+				 CONFIG_USB_PD_IDENTITY_SW_VERS,
+				 0, 0, 0, 0, /* SS[TR][12] */
+				 0, /* Vconn power */
+				 0, /* Vconn power required */
+				 1, /* Vbus power required */
+				 AMA_USBSS_BBONLY /* USB SS support */);
+
+static int svdm_response_identity(int port, uint32_t *payload)
+{
+	payload[VDO_I(IDH)] = vdo_idh;
+	/* TODO(tbroch): Do we plan to obtain TID (test ID) for hoho */
+	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
+	payload[VDO_I(PRODUCT)] = vdo_product;
+	payload[VDO_I(AMA)] = vdo_ama;
+	return VDO_I(AMA) + 1;
+}
+
+static int svdm_response_svids(int port, uint32_t *payload)
+{
+	payload[1] = VDO_SVID(USB_SID_DISPLAYPORT, USB_VID_GOOGLE);
+	payload[2] = 0;
+	return 3;
+}
+
+#define OPOS_DP 1
+#define OPOS_GFU 1
+
+const uint32_t vdo_dp_modes[1] =  {
+	VDO_MODE_DP(0,		   /* UFP pin cfg supported : none */
+		    MODE_DP_PIN_C, /* DFP pin cfg supported */
+		    1,		   /* no usb2.0	signalling in AMode */
+		    CABLE_PLUG,	   /* its a plug */
+		    MODE_DP_V13,   /* DPv1.3 Support, no Gen2 */
+		    MODE_DP_SNK)   /* Its a sink only */
+};
+
+const uint32_t vdo_goog_modes[1] =  {
+	VDO_MODE_GOOGLE(MODE_GOOGLE_FU)
+};
+
+static int svdm_response_modes(int port, uint32_t *payload)
+{
+	if (PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) {
+		memcpy(payload + 1, vdo_dp_modes, sizeof(vdo_dp_modes));
+		return ARRAY_SIZE(vdo_dp_modes) + 1;
+	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
+		memcpy(payload + 1, vdo_goog_modes, sizeof(vdo_goog_modes));
+		return ARRAY_SIZE(vdo_goog_modes) + 1;
+	} else {
+		return 0; /* nak */
+	}
+}
+
 const struct svdm_response svdm_rsp = {
-	.identity = NULL,
-	.svids = NULL,
-	.modes = NULL,
+	.identity = &svdm_response_identity,
+	.svids = &svdm_response_svids,
+	.modes = &svdm_response_modes,
 };
 
 int pd_custom_vdm(int port, int cnt, uint32_t *payload,

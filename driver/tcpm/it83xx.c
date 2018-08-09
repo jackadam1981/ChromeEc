@@ -280,6 +280,8 @@ static void it83xx_set_power_role(enum usbpd_port port, int power_role)
 {
 	/* PD_ROLE_SINK 0, PD_ROLE_SOURCE 1 */
 	if (power_role == PD_ROLE_SOURCE) {
+		/* BMC Rx threshold setting of sourcing power */
+		IT83XX_USBPD_CCADCR(port) = 0x8;
 		/* bit0: source */
 		SET_MASK(IT83XX_USBPD_PDMSR(port), (1 << 0));
 		/* bit1: CC1 select Rp */
@@ -287,6 +289,8 @@ static void it83xx_set_power_role(enum usbpd_port port, int power_role)
 		/* bit3: CC2 select Rp */
 		SET_MASK(IT83XX_USBPD_BMCSR(port), (1 << 3));
 	} else {
+		/* BMC Rx threshold setting of sinking power */
+		IT83XX_USBPD_CCADCR(port) = 0x4;
 		/* bit0: sink */
 		CLEAR_MASK(IT83XX_USBPD_PDMSR(port), (1 << 0));
 		/* bit1: CC1 select Rd */
@@ -480,6 +484,7 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 	} else {
 		IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
 		USBPD_DISABLE_BMC_PHY(port);
+		USBPD_SW_RESET(port);  //exit BIST test data mode
 	}
 
 	/* If any PD port is connected, then disable deep sleep */
