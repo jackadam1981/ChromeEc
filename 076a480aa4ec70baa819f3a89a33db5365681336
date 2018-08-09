@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "12c0072e_a91a9abe",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-08-09T02:06:07Z",
+      "side": 1,
+      "message": "Tested, they don\u0027t.  See CL description and diff:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1168644/1",
+      "parentUuid": "edc03e39_ab56b4c1",
+      "revId": "076a480aa4ec70baa819f3a89a33db5365681336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ce0064a_88f32270",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 18
