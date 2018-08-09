@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70aa274d_1e961af8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T21:12:08Z",
+      "side": 1,
+      "message": "This is lifted from tcpci_init in this file. It has been there for a while",
+      "parentUuid": "1dc9cc26_0f8fa181",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcc45c0e_477ca49c",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8597e5b_eb602b8f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T21:12:08Z",
+      "side": 1,
+      "message": "We didn\u0027t care about return values of these before, but I make the function return an error if either of the calls fails.",
+      "parentUuid": "dcc45c0e_477ca49c",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9dc20219_b9d7b5ae",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T21:12:08Z",
+      "side": 1,
+      "message": "Moved comment to driver set up below",
+      "parentUuid": "b5a0f51b_8c5fedb8",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1cef4ca_9e1821c7",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 9
@@ -67,6 +121,24 @@
       "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a488fb_84c583c2",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T21:12:08Z",
+      "side": 1,
+      "message": "Thanks. This snuck back in when I changed the CL order around",
+      "parentUuid": "c1cef4ca_9e1821c7",
+      "revId": "d6441fe430b70f15ff0bcc9a3058cdd94651ecee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
