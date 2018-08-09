@@ -347,15 +347,54 @@ unlock:
 	return ret;
 }
 
+static char PASS_STR[] = "passed";
+static char FAIL_STR[] = "failed";
+
+/*
+ * This must be a macro, not a function, because of how the STM32_TIM_* macros
+ * are defined.
+ */
+#define STM32_CHECK_TIM16_OR_TIM17_REGISTERS(tim_num) {\
+	ccputs("STM32_TIM" #tim_num "_CR1 "); ccputs(STM32_TIM_CR1(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_CR2 "); ccputs(STM32_TIM_CR2(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_DIER "); ccputs(STM32_TIM_DIER(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_SR "); ccputs(STM32_TIM_SR(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_EGR "); ccputs(STM32_TIM_EGR(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_CCMR1 "); ccputs(STM32_TIM_CCMR1(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_CCER "); ccputs(STM32_TIM_CCER(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_CNT "); ccputs(STM32_TIM_CNT(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_PSC "); ccputs(STM32_TIM_PSC(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_ARR "); ccputs(STM32_TIM_ARR(tim_num) == 0xFFFF ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_RCR "); ccputs(STM32_TIM_RCR(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_CCR1 "); ccputs(STM32_TIM_CCR1(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_BDTR "); ccputs(STM32_TIM_BDTR(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_DCR "); ccputs(STM32_TIM_DCR(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+	ccputs("STM32_TIM" #tim_num "_DMAR "); ccputs(STM32_TIM_DMAR(tim_num) == 0x0000 ? PASS_STR : FAIL_STR); ccputs("\n");\
+}
+static void check_tim16_tim17_registers(void)
+{
+	STM32_CHECK_TIM16_OR_TIM17_REGISTERS(16);
+	STM32_CHECK_TIM16_OR_TIM17_REGISTERS(17);
+}
+#undef STM32_CHECK_TIM16_OR_TIM17_REGISTERS
+
 /* Enable ITE direct firmware update (DFU) mode. */
 static int command_enable_ite_dfu(int argc, char **argv)
 {
 	if (argc > 1)
 		return EC_ERROR_PARAM_COUNT;
 
+	ccputs("STM32 timer registers at start:\n");
+	check_tim16_tim17_registers();
+	ccputs("\n");
+
 	/* Enable peripheral clocks. */
 	STM32_RCC_APB2ENR |=
 		STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN;
+
+	ccputs("STM32 timer registers after enabling peripheral clocks:\n");
+	check_tim16_tim17_registers();
+	ccputs("\n");
 
 	/* Reset timer registers which are not otherwise set below. */
 	STM32_TIM_CR2(16) = 0x0000;
@@ -430,13 +469,23 @@ static int command_enable_ite_dfu(int argc, char **argv)
 	/* Set PB9 GPIO to alternate mode I2C1_DAT. */
 	gpio_config_module(MODULE_I2C, 1);
 
+	ccputs("STM32 timer registers at end:\n");
+	check_tim16_tim17_registers();
+	ccputs("\n");
+
+#if 0
 	/* Disable timer counters. */
 	STM32_TIM_CR1(16) = 0x0000;
 	STM32_TIM_CR1(17) = 0x0000;
+#endif
 
 	/* Disable peripheral clocks. */
 	STM32_RCC_APB2ENR &=
 		~(STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN);
+
+	ccputs("STM32 timer registers after disabling peripheral clocks:\n");
+	check_tim16_tim17_registers();
+	ccputs("\n");
 
 	return cprint_ite_chip_id();
 }
