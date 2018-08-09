@@ -622,6 +622,18 @@ int tcpci_tcpm_mux_init(int i2c_port_addr)
 	return i2c_write16(MUX_PORT(i2c_port_addr), MUX_ADDR(i2c_port_addr),
 			   TCPC_REG_ALERT, 0xffff);
 }
+
+/*
+ * Only use this method in configurations that use a TCPC/MUX device as only a
+ * MUX (and not the TCPC). In that case, we need to put the device into LPM via
+ * the mux path since the TCPC path won't do it for us.
+ */
+static int tcpci_tcpm_mux_enter_low_power(int i2c_port_addr)
+{
+	return i2c_write8(MUX_PORT(i2c_port_addr), MUX_ADDR(i2c_port_addr),
+			  TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+}
+
 #else /* !CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY */
 
 /* Nothing to init for mux since TCPC init will take care of it. */
@@ -629,18 +641,8 @@ int tcpci_tcpm_mux_init(int i2c_addr)
 {
 	return EC_SUCCESS;
 }
-#endif /* CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY */
 
-/*
- * Only use this method in configurations that use a TCPC/MUX device as only a
- * MUX (and not the TCPC). In that case, we need to put the device into LPM via
- * the mux path since the TCPC path won't do it for us.
- */
-int tcpci_tcpm_mux_enter_low_power(const struct usb_mux *mux)
-{
-	return i2c_write8(MUX_PORT(mux->port_addr), MUX_ADDR(mux->port_addr),
-			  TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
-}
+#endif /* CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY */
 
 int tcpci_tcpm_mux_set(int i2c_port_addr, mux_state_t mux_state)
 {
@@ -708,9 +710,12 @@ int tcpci_tcpm_mux_get(int i2c_port_addr, mux_state_t *mux_state)
 
 
 const struct usb_mux_driver tcpci_tcpm_usb_mux_driver = {
-	.init = tcpci_tcpm_mux_init,
-	.set = tcpci_tcpm_mux_set,
-	.get = tcpci_tcpm_mux_get,
+	.init = &tcpci_tcpm_mux_init,
+	.set = &tcpci_tcpm_mux_set,
+	.get = &tcpci_tcpm_mux_get,
+#ifdef CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY
+	.enter_low_power_mode = &tcpci_tcpm_mux_enter_low_power,
+#endif
 };
 
 #endif /* CONFIG_USB_PD_TCPM_MUX */
