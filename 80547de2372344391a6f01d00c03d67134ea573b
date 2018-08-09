@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "596859e4_24900af9",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T14:28:42Z",
+      "side": 1,
+      "message": "I also just put in this optimization to skip the set if already in LPM (and setting to LPM)",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 9
+      },
+      "revId": "80547de2372344391a6f01d00c03d67134ea573b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

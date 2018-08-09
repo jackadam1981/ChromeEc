@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a00275f_bfefbf32",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T14:28:42Z",
+      "side": 1,
+      "message": "It will; I added a comment",
+      "parentUuid": "4beb16e6_9b9405f6",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "572d5f1f_70d76720",
         "filename": "driver/usb_mux.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "279e5e54_79a98fd8",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T14:28:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "572d5f1f_70d76720",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6049a4d8_4fa305cf",
+        "filename": "driver/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T14:28:42Z",
+      "side": 1,
+      "message": "I went ahead a removed all of the ASSERTs I added. I left the original one in init; that should be good enough since init should happen first",
+      "parentUuid": "d8a18c87_dc4264e6",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bba4f82_4302c180",
         "filename": "include/usb_mux.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10e2771_689becb5",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T14:28:42Z",
+      "side": 1,
+      "message": "I update the comment. I don\u0027t know if that is what you were going for though. Let me know if I misunderstood.",
+      "parentUuid": "4bba4f82_4302c180",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 11
+      },
+      "revId": "c88c9f6a96879dc2c8d01570e98476053a00b8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
