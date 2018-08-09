@@ -46,6 +46,30 @@
       "revId": "18534c975a4b6e18e934d9a8df81691dc014a24f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83c0ae0_96157a11",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-09T20:39:23Z",
+      "side": 1,
+      "message": "this is very unfortunate, I looked at it in the past, seemed like it would be a big change, but I think it would be great to bring EC codebase to compliance with this.",
+      "parentUuid": "e583f0ac_6dc55bfd",
+      "range": {
+        "startLine": 940,
+        "startChar": 0,
+        "endLine": 940,
+        "endChar": 18
+      },
+      "revId": "18534c975a4b6e18e934d9a8df81691dc014a24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
