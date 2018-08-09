@@ -192,14 +192,11 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S3S5;
 		else if (power_get_signals() & IN_SUSPEND_DEASSERTED)
 			return POWER_S3S0;
+		else
+			return POWER_S3S0;
 		break;
 
 	case POWER_S0:
-		if (!power_has_signals(IN_PGOOD_S0) ||
-		    forcing_shutdown ||
-		    !(power_get_signals() & IN_SUSPEND_DEASSERTED))
-			return POWER_S0S3;
-
 		break;
 
 	case POWER_G3S5:
@@ -243,11 +240,6 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S3S0:
 		power_seq_run(s3s0_power_seq, ARRAY_SIZE(s3s0_power_seq));
-
-		if (power_wait_signals(IN_PGOOD_S0)) {
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
-			return POWER_S0S3;
-		}
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
