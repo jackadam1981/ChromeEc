@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41680c66_14c46794",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-09T21:45:14Z",
+      "side": 1,
+      "message": "Do you think you can find something else? \u0027block\u0027 often appears in the i2c context to mean block of data. If not, I think we should uglify unblocking ones (e.g. i2c_read_internal).",
+      "range": {
+        "startLine": 293,
+        "startChar": 13,
+        "endLine": 293,
+        "endChar": 18
+      },
+      "revId": "21e235dbe468bfa80bab86900ab4baeb48533a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
