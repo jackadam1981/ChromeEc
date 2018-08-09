@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "383087ba_3c50bdbc",
+        "filename": "chip/npcx/cec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2018-08-09T19:30:54Z",
+      "side": 1,
+      "message": "This doesn\u0027t give an error now because it\u0027s not declared anywhere?",
+      "range": {
+        "startLine": 940,
+        "startChar": 0,
+        "endLine": 940,
+        "endChar": 18
+      },
+      "revId": "18534c975a4b6e18e934d9a8df81691dc014a24f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
