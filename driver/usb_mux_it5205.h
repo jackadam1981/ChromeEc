@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_MUX_IT5205_H
 #define __CROS_EC_USB_MUX_IT5205_H
 
+#include "usb_mux.h"
+
 /* I2C interface */
 #define IT5205_I2C_ADDR1 (0x48 << 1)
 #define IT5205_I2C_ADDR2 (0x58 << 1)
@@ -30,5 +32,7 @@
 #define IT5205_DP                0x0f
 #define IT5205_DP_USB            0x03
 #define IT5205_USB               0x07
+
+int it5205_enter_low_power_mode(const struct usb_mux *mux);
 
 #endif /* __CROS_EC_USB_MUX_IT5205_H */
