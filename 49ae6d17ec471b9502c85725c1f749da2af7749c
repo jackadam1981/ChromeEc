@@ -46,6 +46,30 @@
       "revId": "49ae6d17ec471b9502c85725c1f749da2af7749c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8673d834_08ec274e",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T13:23:52Z",
+      "side": 1,
+      "message": "I agree, we need to send out the STOP bit otherwise we will hang the bus",
+      "parentUuid": "0f48d313_36e5d871",
+      "range": {
+        "startLine": 351,
+        "startChar": 4,
+        "endLine": 351,
+        "endChar": 6
+      },
+      "revId": "49ae6d17ec471b9502c85725c1f749da2af7749c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
