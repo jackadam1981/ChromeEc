@@ -22,6 +22,30 @@
       "revId": "4f79234a6a429d28ae1b66a872c78650f9f6aba1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3389ec85_fba4855a",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-09T19:41:19Z",
+      "side": 1,
+      "message": "Done. Thanks!",
+      "parentUuid": "df75c8d0_b10d6dec",
+      "range": {
+        "startLine": 123,
+        "startChar": 23,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "4f79234a6a429d28ae1b66a872c78650f9f6aba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
