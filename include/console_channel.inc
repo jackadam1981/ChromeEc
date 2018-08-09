@@ -62,6 +62,9 @@ CONSOLE_CHANNEL(CC_LIGHTBAR,     "lightbar")
 #ifdef CONFIG_HOSTCMD_X86
 CONSOLE_CHANNEL(CC_LPC,          "lpc")
 #endif
+#ifdef CONFIG_ISH_IPC
+CONSOLE_CHANNEL(CC_IPC,          "ipc")
+#endif
 CONSOLE_CHANNEL(CC_MOTION_LID,   "motionlid")
 CONSOLE_CHANNEL(CC_MOTION_SENSE, "motionsense")
 #ifdef HAS_TASK_PDCMD
