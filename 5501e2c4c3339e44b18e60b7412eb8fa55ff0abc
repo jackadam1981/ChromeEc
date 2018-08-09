@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a39ac49_458a2c91",
+        "filename": "common/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-09T21:52:47Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need to worry about backward compatibility (PWM_HOOK_VERSION) because previous ROs don\u0027t touch this bit.",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 59
+      },
+      "revId": "5501e2c4c3339e44b18e60b7412eb8fa55ff0abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
