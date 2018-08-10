@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1d47a22_2e99089b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-10T20:21:42Z",
+      "side": 1,
+      "message": "Can we make this priority 1. We seemed to have trouble with P0 interrupts and what does this get us?",
+      "range": {
+        "startLine": 108,
+        "startChar": 56,
+        "endLine": 108,
+        "endChar": 57
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70febb9d_5b239677",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-10T20:21:42Z",
+      "side": 1,
+      "message": "you should disable the gpio interrupt before this and reenable it when bitbang is disabled.",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7ca50a_4909d609",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-10T20:21:42Z",
+      "side": 1,
+      "message": "uart_tx_disconnect(UART_EC) configures some pulldowns on the ec uart signals. uartn_enable/disable could mess with things.\n\nWe probably need to work out how CCD_ENABLE_UART_EC and CCD_ENABLE_UART_EC_BITBANG should interact with eachother.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41301bcf_d702a3d4",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-10T20:21:42Z",
+      "side": 1,
+      "message": "This check has to be done after disable interrupts, so the detect servo interrupt doesn\u0027t keep firing.\nThis is also unnecessary. servo_detectable already checks uart_bitbang_is_enabled. We also want to make sure the servo state is set to undetectable so that we don\u0027t disable uart bitbang because we think servo is on.",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd01b969_bb4b5cef",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-10T20:21:42Z",
+      "side": 1,
+      "message": "why are we conditionally including uart_bitbang.h?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
