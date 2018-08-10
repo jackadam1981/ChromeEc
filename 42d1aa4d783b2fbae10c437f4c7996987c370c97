@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a973362_812115f4",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-10T20:03:51Z",
+      "side": 1,
+      "message": "Can we move these functions to uart_bitbang.c?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 0
+      },
+      "revId": "42d1aa4d783b2fbae10c437f4c7996987c370c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2815e5da_ea49b553",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-10T20:03:51Z",
+      "side": 1,
+      "message": "Should we remove this variable too?",
+      "range": {
+        "startLine": 152,
+        "startChar": 31,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "42d1aa4d783b2fbae10c437f4c7996987c370c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
