@@ -72,7 +72,7 @@ static int servo_detectable(void)
 	 * and can be high even if UART TX is disconnected.
 	 */
 	return !(uart_tx_is_connected(UART_EC) ||
-		 uart_bitbang_is_enabled(UART_EC));
+		 uart_bitbang_is_enabled());
 }
 
 /**

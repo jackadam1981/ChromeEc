@@ -1,0 +1,12 @@
+echo gpioset EC_FLASH_SELECT 1 > /dev/ttyUSB1
+sleep 1
+echo ecrst on > /dev/ttyUSB1
+sleep 1
+echo bitbang 2 9600 even > /dev/ttyUSB1
+sleep 1
+echo ecrst off > /dev/ttyUSB1
+sleep 1
+./build/scarlet/util/stm32mon -d /dev/ttyUSB3 -e
+echo gpioset EC_FLASH_SELECT 0 > /dev/ttyUSB1
+echo bitbang 2 disable > /dev/ttyUSB1
+echo ecrst pulse > /dev/ttyUSB1
