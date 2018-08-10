@@ -1,4 +1,4 @@
-Sweetberry USB power monitoring
+# Sweetberry USB power monitoring
 
 This tool allows high speed monitoring of power rails via a special USB
 endpoint. Currently this is implemented for the sweetberry board.
@@ -7,33 +7,52 @@ To use on a board, you'll need two config files, one describing the board,
 a ".board" file, and one describing the particular rails you want to
 monitor in this session, a ".scenario" file.
 
+## Converting from servo_ina configs
 
-Converting from servo_ina configs:
+- Method 1 (not limited to chroot)
 
-Method 1 -
+  Many configs can be found for the servo_ina_board in hdctools/servo/data/.
+  Sweetberry is plug compatible with servo_ina headers, and config files
+  can be converted with the following tool:
 
-Many configs can be found for the servo_ina_board in hdctools/servo/data/.
-Sweetberry is plug compatible with servo_ina headers, and config files
-can be converted with the following tool:
+  ```
+  ./convert_servo_ina.py <board>_r0_loc.py
+  ```
 
-./convert_servo_ina.py <board>_r0_loc.py
+  This will generate <board>_r0_loc.board and <board>_r0_loc.scenario locally,
+  which can be used with powerlog.py.
 
-This will produce <board>_r0_loc.board and <board>_r0_loc.scenario which
-can be used with powerlog.py.
+- Method 2 (recommended for Chrome OS developers, requires chroot)
 
-Method 2 (preferred) -
+  If you are using powerlog.py within the chroot, copy <board>_r0_loc.py to
+  src/third_party/hdctools/servo/data, then add this line to file:
 
-If you are using powerlog.py within the chroot, copy <board>_r0_loc.py to
-src/third_party/hdctools/servo/data, then add line to file:
-config_type = 'sweetberry'
-and run command in terminal:
-sudo emerge hdctools
-The command will install the corresponding .board and .scenario file in the
-chroot. To use powerlog.py use the command:
-./powerlog.py -b <board>_r0_loc.board -c <board>_r0_loc.scenario
-There is no need to specify the absolute path to the .board and .scenario file,
-once they are installed into the chroot. If there is any changes to
-<board>_r0_loc.py, you need to emerge hdctools again.
+  ```python
+  config_type = 'sweetberry'
+  ```
+
+  And run command in chroot:
+
+  ```
+  (Anywhere in chroot, just ONCE) cros_workon --host start dev-util/hdctools
+  ```
+
+  Then every time you make a change to <board>_r0_loc.py, run:
+
+  ```
+  (Anywhere in chroot) sudo emerge dev-util/hdctools
+  ```
+
+  The command will install the corresponding .board and .scenario file in the
+  chroot. To use powerlog.py use the command:
+
+  ```
+  powerlog -b <board>_r0_loc.board -c <board>_r0_loc.scenario
+  ```
+
+  There is no need to specify the absolute path to the .board and .scenario
+  file, once they are installed into the chroot. If there is any changes to
+  <board>_r0_loc.py, you need to emerge hdctools again.
 
 
 Board files:
