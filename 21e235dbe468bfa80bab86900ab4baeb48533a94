@@ -46,6 +46,30 @@
       "revId": "21e235dbe468bfa80bab86900ab4baeb48533a94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b9dad67_fda42c6f",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-10T14:25:56Z",
+      "side": 1,
+      "message": "This function is reading a contiguous sequence of bytes, whose length is defined by the caller.  That\u0027s as good a definition of \"block of data\" as I\u0027m aware of.",
+      "parentUuid": "f22872bb_5716f049",
+      "range": {
+        "startLine": 293,
+        "startChar": 13,
+        "endLine": 293,
+        "endChar": 18
+      },
+      "revId": "21e235dbe468bfa80bab86900ab4baeb48533a94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
