@@ -1512,7 +1512,8 @@ static void handle_ctrl_request(int port, uint16_t head,
 	case PD_CTRL_GET_SOURCE_CAP:
 		res = send_source_cap(port);
 		if ((res >= 0) &&
-		    (pd[port].task_state == PD_STATE_SRC_DISCOVERY))
+		    ((pd[port].task_state == PD_STATE_SRC_DISCOVERY) ||
+		     (pd[port].task_state == PD_STATE_SRC_READY)))
 			set_state(port, PD_STATE_SRC_NEGOCIATE);
 		break;
 	case PD_CTRL_GET_SINK_CAP:
