@@ -213,6 +213,13 @@ static int battery_init(void)
 		!!(batt_status & STATUS_INITIALIZED);
 }
 
+static uint8_t battery_disconnect_grace_period;
+static void battery_disconnect_timer(void)
+{
+	battery_disconnect_grace_period = 2;
+}
+DECLARE_DEFERRED(battery_disconnect_timer);
+
 /*
  * Check for case where both XCHG and XDSG bits are set indicating that even
  * though the FG can be read from the battery, the battery is not able to be
@@ -238,8 +245,27 @@ static int battery_check_disconnect_ti_bq40z50(void)
 
 	if ((data[3] & (BATTERY_DISCHARGING_DISABLED |
 			BATTERY_CHARGING_DISABLED)) ==
-	    (BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED))
-		return BATTERY_DISCONNECTED;
+	    (BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED)) {
+		if (oem != PROJECT_SONA)
+			return BATTERY_DISCONNECTED;
+		/*
+		 * For Sona, we need a workaround to wake up a battery from
+		 * cutoff. We return DISCONNECT_ERROR for the 5 seconds after
+		 * the first call BP_NOT_SURE is reported to chgstv2. It will
+		 * supply precharge current and wakes up the battery from
+		 * cutoff. If the battery is good, we won't come back here.
+		 * If not, after 5 seconds, we will return DISCONNECTED to
+		 * stop charging and avoid damaging the battery.
+		 */
+		if (battery_disconnect_grace_period == 2)
+			return BATTERY_DISCONNECTED;
+		if (battery_disconnect_grace_period == 0)
+			hook_call_deferred(&battery_disconnect_timer_data,
+					   5 * SECOND);
+		ccprintf("Battery disconnect grace period\n");
+		battery_disconnect_grace_period = 1;
+		return BATTERY_DISCONNECT_ERROR;
+	}
 
 	return BATTERY_NOT_DISCONNECTED;
 }
