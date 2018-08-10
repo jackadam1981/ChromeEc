@@ -37,7 +37,7 @@ const struct board_batt_params board_battery_info[] = {
 		.fuel_gauge = {
 			.manuf_name = "BYD",
 			.ship_mode = {
-				.reg_addr = 0x44,
+				.reg_addr = 0x00,
 				.reg_data = { 0x0010, 0x0010 },
 			},
 			.fet = {
@@ -66,7 +66,7 @@ const struct board_batt_params board_battery_info[] = {
 		.fuel_gauge = {
 			.manuf_name = "LGC-LGC3.553",
 			.ship_mode = {
-				.reg_addr = 0x44,
+				.reg_addr = 0x00,
 				.reg_data = { 0x0010, 0x0010 },
 			},
 			.fet = {
