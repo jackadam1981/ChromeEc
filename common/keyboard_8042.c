@@ -265,7 +265,7 @@ static int is_supported_code_set(enum scancode_set_list set)
  * @param scan_code	An array of bytes to store the make or break code in
  * @param len		The number of valid bytes to send in scan_code
  */
-static void scancode_bytes(uint16_t make_code, int8_t pressed,
+static void scancode_bytes(uint32_t make_code, int8_t pressed,
 			   enum scancode_set_list code_set, uint8_t *scan_code,
 			   int32_t *len)
 {
@@ -273,7 +273,14 @@ static void scancode_bytes(uint16_t make_code, int8_t pressed,
 
 	/* Output the make code (from table) */
 	if (make_code >= 0x0100) {
-		scan_code[(*len)++] = make_code >> 8;
+		if (make_code < 0x010000) {
+			scan_code[(*len)++] = make_code >> 8;
+		} else {
+			/* Special key combination like SCANCODE_PAUSE. */
+			ASSERT((make_code >> 8) >= 0x0100);
+			scancode_bytes(make_code >> 8, pressed, code_set,
+				       scan_code, len);
+		}
 		make_code &= 0xff;
 	}
 
@@ -299,9 +306,10 @@ static void scancode_bytes(uint16_t make_code, int8_t pressed,
 static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 					  int8_t pressed,
 					  enum scancode_set_list code_set,
-					  uint8_t *scan_code, int32_t *len)
+					  uint8_t *scan_code, int32_t *len,
+					  int *oneshot)
 {
-	uint16_t make_code;
+	uint32_t make_code;
 
 	ASSERT(scan_code);
 	ASSERT(len);
@@ -314,7 +322,7 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 #ifdef CONFIG_KEYBOARD_SCANCODE_CALLBACK
 	{
 		enum ec_error_list r = keyboard_scancode_callback(
-				&make_code, pressed);
+				&make_code, pressed, oneshot);
 		if (r != EC_SUCCESS)
 			return r;
 	}
@@ -332,6 +340,12 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	}
 
 	scancode_bytes(make_code, pressed, code_set, scan_code, len);
+	if (*oneshot && pressed) {
+		int32_t break_len = 0;
+		scan_code += *len;
+		scancode_bytes(make_code, 0, code_set, scan_code, &break_len);
+		*len += break_len;
+	}
 	return EC_SUCCESS;
 }
 
@@ -369,6 +383,7 @@ static void keyboard_wakeup(void)
 static void set_typematic_key(const uint8_t *scan_code, int32_t len)
 {
 	typematic_deadline.val = get_time().val + typematic_first_delay;
+	ASSERT(len <= sizeof(typematic_scan_code));
 	memcpy(typematic_scan_code, scan_code, len);
 	typematic_len = len;
 }
@@ -380,17 +395,27 @@ void clear_typematic_key(void)
 
 void keyboard_state_changed(int row, int col, int is_pressed)
 {
-	uint8_t scan_code[MAX_SCAN_CODE_LEN];
+	/**
+	 * In one matrix_callback there may be scan codes generated
+	 * as one shot (make+break) so we have to double the buffer.
+	 * Currently the largest sequence is PAUSE (8 bytes).
+	 */
+	uint8_t scan_code[MAX_SCAN_CODE_LEN * 2];
 	int32_t len = 0;
+	int is_oneshot = 0;
 	enum ec_error_list ret;
 
 	CPRINTS5("KB (%d,%d)=%d", row, col, is_pressed);
 
 	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,
-			      &len);
+			      &len, &is_oneshot);
 	if (ret == EC_SUCCESS) {
-		ASSERT(len > 0);
-		if (keystroke_enabled)
+		/**
+		 * One shot means keys should send MAKE+BREAK at when pressed,
+		 * and fire nothing when released. For example PAUSE.
+		 */
+		ASSERT(len > 0 || is_oneshot);
+		if (keystroke_enabled && len)
 			i8042_send_to_host(len, scan_code);
 	}
 
