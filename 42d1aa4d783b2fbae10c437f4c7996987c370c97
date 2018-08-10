@@ -45,6 +45,30 @@
       "revId": "42d1aa4d783b2fbae10c437f4c7996987c370c97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbff4f39_f74031b1",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-10T20:06:05Z",
+      "side": 1,
+      "message": "these functions are removed in the following patch, but let me fix this for consistency.",
+      "parentUuid": "2815e5da_ea49b553",
+      "range": {
+        "startLine": 152,
+        "startChar": 31,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "42d1aa4d783b2fbae10c437f4c7996987c370c97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
