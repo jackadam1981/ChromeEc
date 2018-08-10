@@ -78,6 +78,7 @@ enum scancode_values {
 	SCANCODE_SCROLL_LOCK = 0x007e,
 
 	SCANCODE_CTRL_BREAK = 0xe07e,
+	SCANCODE_PAUSE = 0xe11477,  /* A special value from XT Ctrl+Num. */
 };
 
 #endif /* __CROS_EC_KEYBOARD_8042_SHAREDLIB_H */

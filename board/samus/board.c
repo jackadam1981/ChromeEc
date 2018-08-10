@@ -410,10 +410,11 @@ void jtag_interrupt(enum gpio_signal signal)
 #endif /* CONFIG_LOW_POWER_IDLE */
 
 
-enum ec_error_list keyboard_scancode_callback(uint16_t *make_code,
-					      int8_t pressed)
+enum ec_error_list keyboard_scancode_callback(uint32_t *make_code,
+					      int8_t pressed,
+					      int32_t *oneshot)
 {
-	const uint16_t k = *make_code;
+	const uint32_t k = *make_code;
 	static uint8_t s;
 	static const uint16_t a[] = {
 		SCANCODE_UP, SCANCODE_UP, SCANCODE_DOWN, SCANCODE_DOWN,
