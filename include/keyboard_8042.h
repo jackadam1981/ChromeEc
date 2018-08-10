@@ -42,7 +42,8 @@ void keyboard_host_write(int data, int is_cmd);
  * @param make_code	Pointer to scan code (set 2) of key in action.
  * @param pressed	Is the key being pressed (1) or released (0).
  */
-enum ec_error_list keyboard_scancode_callback(uint16_t *make_code,
-					      int8_t pressed);
+enum ec_error_list keyboard_scancode_callback(uint32_t *make_code,
+					      int8_t pressed,
+					      int32_t *oneshot);
 
 #endif  /* __CROS_EC_KEYBOARD_8042_H */
