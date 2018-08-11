@@ -58,3 +58,8 @@ void vboot_main(void);
  * @return 1: need PD communication. 0: PD communication is not needed.
  */
 int vboot_need_pd_comm(void);
+
+/**
+ * Notify user of any error before verification completes
+ */
+void led_critical(void);

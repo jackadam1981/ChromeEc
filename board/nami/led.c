@@ -363,6 +363,22 @@ static void tick_power(void)
 	hook_call_deferred(&tick_power_data, tick_led(EC_LED_ID_POWER_LED));
 }
 
+static void led_alert(int enable)
+{
+	if (enable) {
+		/* Overwrite the current signal */
+		config_tick(EC_LED_ID_BATTERY_LED, &battery_error);
+		tick_battery();
+	} else {
+		led_charge_hook();
+	}
+}
+
+void led_critical(void)
+{
+	led_alert(1);
+}
+
 static void cancel_tick(enum ec_led_id id)
 {
 	if (id == EC_LED_ID_BATTERY_LED)
