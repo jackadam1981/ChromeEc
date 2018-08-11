@@ -191,8 +191,12 @@ int flash_physical_write(int offset, int size, const char *data)
 	if ((offset + size - 1) / HWBANK_SIZE != bank)
 		return EC_ERROR_INVAL;
 
-	if (unlock(bank) != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
+	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+
+	if (unlock(bank) != EC_SUCCESS) {
+		res = EC_ERROR_UNKNOWN;
+		goto exit_wr;
+	}
 
 	/* Clear previous error status */
 	STM32_FLASH_CCR(bank) = FLASH_CCR_ERR_MASK;
@@ -248,6 +252,7 @@ exit_wr:
 	/* Invalidate D-cache, to make sure we do not read back stale data. */
 	cpu_clean_invalidate_dcache();
 #endif
+	enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 
 	return res;
 }
@@ -266,8 +271,12 @@ int flash_physical_erase(int offset, int size)
 	if ((offset + size - 1) / HWBANK_SIZE != bank)
 		return EC_ERROR_INVAL;
 
-	if (unlock(bank) != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
+	disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+
+	if (unlock(bank) != EC_SUCCESS) {
+		res = EC_ERROR_UNKNOWN;
+		goto exit_er;
+	}
 
 	/* Clear previous error status */
 	STM32_FLASH_CCR(bank) = FLASH_CCR_ERR_MASK;
@@ -324,6 +333,7 @@ exit_er:
 	/* Invalidate D-cache, to make sure we do not read back stale data. */
 	cpu_clean_invalidate_dcache();
 #endif
+	enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
 
 	return res;
 }
