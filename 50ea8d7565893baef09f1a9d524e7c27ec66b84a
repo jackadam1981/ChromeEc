@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a7a2c8d5_cc34f68b",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-11T02:38:11Z",
+      "side": 1,
+      "message": "move gpio_disable_interrupt(GPIO_DETECT_EC) before this.",
+      "parentUuid": "bf16e1e1_8d4d520b",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba7ca50a_4909d609",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "can you please elaborate what \u0027mess with things\u0027 means in this context.\n\nAre you saying that now the pulldown configuration could change as a result of running through a bit bang programming session? Otherwise there is no problem, as the both EC and H1 are actively driving their appropriate UART lines.",
       "parentUuid": "ba7ca50a_4909d609",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1309b5_102df0a5",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-11T02:38:11Z",
+      "side": 1,
+      "message": "These could be called if the state of ec_is_on changes.\n\nuartn_enable(UART_EC); will enable the ec uart peripheral. -\u003e I don\u0027t think this would be too big of a deal because interrupts are disabled.\n\nuartn_disable(UART_EC); will disable the ec uart peripheral. -\u003e I assume this would be best.\n\nuartn_tx_connect(UART_EC); will disconnect ec uart bitbang tx gpio from the pin and connect uart1tx to the pin -\u003e This will completely break uart bitbang\n\nuartn_tx_disconnect(UART_EC); will disconnect ec uart bitbang tx gpio from the pin -\u003e This will also completely break bitbang.\n\nAll of these things are determined based on the ec_is_on. The state of ec_is_on could start as anything. I think the ec state could change from \u0027off\u0027 to \u0027on\u0027 if the DETECT_EC starts out \u0027off\u0027 when bitbang is first enabled and at some point during bitbang DETECT_EC goes high, because the interrupt isn\u0027t disabled. I think this would mean uartn_tx_connect will get called and break bitbang.\n\nBasically you don\u0027t want the state of the EC to change while bitbang is enabled otherwise the bitbang tx signal will be disconnected and bitbang will break. \n\nI think the right way to do things would be to prevent changing the ec uart configuration while bitbang is enabled.",
+      "parentUuid": "68602f74_b9de6953",
       "range": {
         "startLine": 325,
         "startChar": 0,
@@ -225,6 +273,30 @@
       "side": 1,
       "message": "who is \u0027we\u0027 here?\n\nI am adding conditional compilation to avoid exposing uart_bitbang.h to other than Cr50 images which include usart.c, following suite of CONFIG_STREAM_SIGNATURE",
       "parentUuid": "bd01b969_bb4b5cef",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319eb86e_576ab713",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-11T02:38:11Z",
+      "side": 1,
+      "message": "I thought we weren\u0027t supposed to conditionally include things.",
+      "parentUuid": "cc6aeabf_4c540713",
       "range": {
         "startLine": 11,
         "startChar": 0,
