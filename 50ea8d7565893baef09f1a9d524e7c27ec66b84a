@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6146310_033bf55d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-11T01:54:59Z",
+      "side": 1,
+      "message": "making this priority 0 allows to speed up programming, otherwise interrupt latency is not as predictable.\n\nNote that as opposed to the case when this priority was elevated for regular UART drivers here duration of intervals when this interrupt is active is limited to a few bytes sent from the EC.\n\nI did not observe any issues when testing, but if you can suggest a more rigorous test I sure will run it.",
+      "parentUuid": "b1d47a22_2e99089b",
+      "range": {
+        "startLine": 108,
+        "startChar": 56,
+        "endLine": 108,
+        "endChar": 57
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70febb9d_5b239677",
         "filename": "board/cr50/ec_state.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-10T20:21:42Z",
       "side": 1,
       "message": "you should disable the gpio interrupt before this and reenable it when bitbang is disabled.",
+      "range": {
+        "startLine": 107,
+        "startChar": 5,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf16e1e1_8d4d520b",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-11T01:54:59Z",
+      "side": 1,
+      "message": "I moved setting of the bitbang_enabled state such that it is set to TRUE to envelope all possible bit bang related configuration changes.\n\nI think it is sufficient for avoiding race conditions, as none of these actions (bit bang enable, bit bang disable, ec detect) run on interrupt context.",
+      "parentUuid": "70febb9d_5b239677",
       "range": {
         "startLine": 107,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "68602f74_b9de6953",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-11T01:54:59Z",
+      "side": 1,
+      "message": "can you please elaborate what \u0027mess with things\u0027 means in this context.\n\nAre you saying that now the pulldown configuration could change as a result of running through a bit bang programming session? Otherwise there is no problem, as the both EC and H1 are actively driving their appropriate UART lines.",
+      "parentUuid": "ba7ca50a_4909d609",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41301bcf_d702a3d4",
         "filename": "board/cr50/servo_state.c",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8980cc4e_5da4707d",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-11T01:54:59Z",
+      "side": 1,
+      "message": "good point, dropped the check.",
+      "parentUuid": "41301bcf_d702a3d4",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd01b969_bb4b5cef",
         "filename": "chip/g/usart.c",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2018-08-10T20:21:42Z",
       "side": 1,
       "message": "why are we conditionally including uart_bitbang.h?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc6aeabf_4c540713",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-11T01:54:59Z",
+      "side": 1,
+      "message": "who is \u0027we\u0027 here?\n\nI am adding conditional compilation to avoid exposing uart_bitbang.h to other than Cr50 images which include usart.c, following suite of CONFIG_STREAM_SIGNATURE",
+      "parentUuid": "bd01b969_bb4b5cef",
       "range": {
         "startLine": 11,
         "startChar": 0,
