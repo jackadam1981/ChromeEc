@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c992377_26382651",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-11T01:58:14Z",
+      "side": 1,
+      "message": "This should not be done now. cr50 uart speedups won\u0027t make it to prod images for a while.",
+      "range": {
+        "startLine": 912,
+        "startChar": 35,
+        "endLine": 912,
+        "endChar": 40
+      },
+      "revId": "9d5181801d638412bf445555dd64d60cfec2ca3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
