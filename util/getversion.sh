@@ -68,6 +68,7 @@ get_tree_version() {
       vbase="no_version"
     fi
   fi
+  vbase="bobba_led_task"
   if [[ "${marker}" == "${dirty_marker}" ]]; then
       echo "${vbase}${dc}${marker}"
   else

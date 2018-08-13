@@ -14,13 +14,23 @@
 #include "hooks.h"
 #include "led_common.h"
 #include "led_states.h"
+#include "task.h"
+#include "util.h"
 
+#define LED_TICK_TIME (LED_TICK_MSEC * MSEC)
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
+
+int control_state;
+int led_state_control;
+int led_task_sleep;
 
 static enum led_states led_get_state(void)
 {
 	int  charge_lvl;
 	enum led_states new_state = LED_NUM_STATES;
+
+	if (led_state_control)
+		return control_state;
 
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
@@ -195,4 +205,53 @@ static void led_update(void)
 		led_update_power();
 #endif
 }
-DECLARE_HOOK(HOOK_TICK, led_update, HOOK_PRIO_DEFAULT);
+//DECLARE_HOOK(HOOK_TICK, led_update, HOOK_PRIO_DEFAULT);
+
+void led_task(void *u)
+{
+	uint32_t start_time;
+	uint32_t task_duration;
+
+	while (1) {
+
+		if (led_task_sleep) {
+			task_wait_event(-1);
+		} else {
+			start_time = get_time().le.lo;
+
+			led_update();
+
+			task_duration = get_time().le.lo - start_time;
+
+			if (task_duration < LED_TICK_TIME)
+				task_wait_event(LED_TICK_TIME - task_duration);
+		}
+	}
+}
+
+static int command_led(int argc, char **argv)
+{
+	char *e;
+
+	if (!strcasecmp(argv[1], "ctrl")) {
+		led_task_sleep = 0;
+		control_state = strtoi(argv[2], &e, 10);
+		if ((*e == 0) && (control_state < LED_NUM_STATES)) {
+			led_state_control = 1;
+		} else {
+			CPRINTS("Undefined LED state!");
+			led_state_control = 0;
+		}
+	} else if (!strcasecmp(argv[1], "unctrl")) {
+		led_state_control = 0;
+	} else if (!strcasecmp(argv[1], "sleep")) {
+		led_task_sleep = 1;
+	} else if (!strcasecmp(argv[1], "wake")) {
+		led_task_sleep = 0;
+		task_wake(TASK_ID_LED);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ledstate, command_led,
+			"<ctrl|unctrl|sleep|wake [led_state]>",
+			"Force to change led state.");

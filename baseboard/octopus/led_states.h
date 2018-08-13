@@ -10,8 +10,10 @@
 
 #include "ec_commands.h"
 
+#define LED_TICK_MSEC 500
 #define LED_INDEFINITE	UINT8_MAX
-#define LED_ONE_SEC	(1000 / HOOK_TICK_INTERVAL_MS)
+//#define LED_ONE_SEC	(1000 / HOOK_TICK_INTERVAL_MS)
+#define LED_ONE_SEC     (1000 / LED_TICK_MSEC)
 #define LED_OFF         EC_LED_COLOR_COUNT
 
 /*
