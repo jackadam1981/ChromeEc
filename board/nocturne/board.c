@@ -620,10 +620,19 @@ static void board_report_pmic_fault(const char *str)
 
 void board_reset_pd_mcu(void)
 {
+	cprints(CC_USB, "Resetting TCPCs...");
+	cflush();
 	/* GPIO_USB_PD_RST_L resets all the TCPCs. */
 	gpio_set_level(GPIO_USB_PD_RST_L, 0);
 	msleep(10); /* TODO(aaboagye): Verify min hold time. */
 	gpio_set_level(GPIO_USB_PD_RST_L, 1);
+}
+
+void board_set_tcpc_power_mode(int port, int mode)
+{
+	board_reset_pd_mcu();
+	/* Wait 55ms for TCPCs to come back. */
+	msleep(55);
 }
 
 void board_rtc_reset(void)
