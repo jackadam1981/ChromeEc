@@ -1946,13 +1946,23 @@ int charge_prevent_power_on(int power_button_pressed)
 	 * Require a minimum battery level to power on and ensure that the
 	 * battery can prvoide power to the system.
 	 */
-	if (current_batt_params->is_present != BP_YES ||
+	if (current_batt_params->is_present != BP_YES
 #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT
-	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED ||
+	    || battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED
 #endif
-	    current_batt_params->state_of_charge <
-	    CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
+	    ) {
 		prevent_power_on = 1;
+	} else {
+		/* Battery is present and connected.*/
+		if (current_batt_params->state_of_charge < (
+#ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
+			/*  We use lower threshold if AC is present. */
+			extpower_is_present() ?
+			CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC :
+#endif
+				CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON))
+	    		prevent_power_on = 1;
+	}
 
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) && \
 	defined(CONFIG_CHARGE_MANAGER)
@@ -2270,8 +2280,13 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 				 * and external charger power.
 				 */
 				if ((curr.batt.is_present != BP_YES ||
-				     curr.batt.state_of_charge <
-				     CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT)
+				     curr.batt.state_of_charge < (
+#ifdef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
+			/*  We use lower threshold if AC is present. */
+			extpower_is_present() ?
+			CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC :
+#endif
+				     CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT))
 				     && charge_manager_get_power_limit_uw() <
 				     CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
 				     * 1000 && system_is_locked())
