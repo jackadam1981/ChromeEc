@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d23fbb93_22a4c541",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-08-13T20:19:06Z",
+      "side": 1,
+      "message": "Seems odd that tcpc_xfer[_unlocked] is only used by fusb302.c, while tcpci.c uses i2c_xfer.",
+      "revId": "b671ab098ceb8e427ae8723a7692e5d93e4d9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f365a4e6_6794387d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-08-13T20:19:06Z",
+      "side": 1,
+      "message": "Don\u0027t understand this comment, can you clarify please?",
+      "revId": "b671ab098ceb8e427ae8723a7692e5d93e4d9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
