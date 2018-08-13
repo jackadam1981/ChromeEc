@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "387daae5_20da134a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-13T19:11:48Z",
+      "side": 1,
+      "message": "the latest patchset has a check in board/cr50/rdd.c:uart_tx_is_connected()\n\nWhen bitbang is enabled that function always returns false, so there should be no unexpected state transitions. \n\nWhen bitbang is being disabled there are calls to\n\ngpio_reset(bitbang_config.tx_gpio);\ngpio_reset(bitbang_config.rx_gpio);\n\n\nwhich are going to reconfigure the GPIOs as defined in gpio.inc, is this not sufficient?",
+      "parentUuid": "7c1309b5_102df0a5",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41301bcf_d702a3d4",
         "filename": "board/cr50/servo_state.c",
         "patchSetId": 4
