@@ -246,6 +246,116 @@ class Function(object):
 
     return True
 
+class AndesAnalyzer(object):
+  """Disassembly analyzer for Andes architecture.
+
+  Public Methods:
+    AnalyzeFunction: Analyze stack frame and callsites of the function.
+  """
+
+  GENERAL_PURPOSE_REGISTER_SIZE = 4
+
+  # Possible condition code suffixes.
+  CONDITION_CODES = [ 'eq', 'eqz', 'gez', 'gtz', 'lez', 'ltz', 'ne', 'nez',
+                      'eqc', 'nec', 'nezs', 'nes', 'eqs']
+  CONDITION_CODES_RE = '({})'.format('|'.join(CONDITION_CODES))
+
+  IMM_ADDRESS_RE = r'([0-9A-Fa-f]+)\s+<([^>]+)>'
+  # Branch instructions.
+  JUMP_OPCODE_RE = re.compile(r'^(b{0}|j|jr|jr.|jrnez)(\d?|\d\d)$' \
+                  .format(CONDITION_CODES_RE))
+  # Call instructions.
+  CALL_OPCODE_RE = re.compile \
+                  (r'^(jal|jral|jral.|jralnez|beqzal|bltzal|bgezal)(\d)?$')
+  CALL_OPERAND_RE = re.compile(r'^{}$'.format(IMM_ADDRESS_RE))
+  # Ignore lp register because it's for return.
+  INDIRECT_CALL_OPERAND_RE = re.compile \
+                  (r'^\$r\d{1,}$|\$fp$|\$gp$|\$ta$|\$sp$|\$pc$')
+  # TODO: Handle other kinds of store instructions.
+  PUSH_OPCODE_RE = re.compile(r'^push(\d{1,})$')
+  PUSH_OPERAND_RE = re.compile(r'^\$r\d{1,}, \#\d{1,}    \! \{([^\]]+)\}')
+  SMW_OPCODE_RE = re.compile(r'^smw(\.\w\w|\.\w\w\w)$')
+  SMW_OPERAND_RE = re.compile \
+                  (r'^(\$r\d{1,}|\$\w\p), \[\$\w\p\], (\$r\d{1,}|\$\w\p)')
+  OPERANDGRUP_RE = re.compile(r'^\$r\d{1,}\~\$r\d{1,}')
+  OPERANDGRUP1_RE = re.compile(r'^ \{\$r\d{1,}\~\$r\d{1,}\}')
+
+  LWI_OPCODE_RE = re.compile(r'^lwi(\.\w\w)$')
+  LWI_PC_OPERAND_RE = re.compile(r'^\$pc, \[([^\]]+)\]')
+
+  def AnalyzeFunction(self, function_symbol, instructions):
+
+    stack_frame = 0
+    callsites = []
+    for address, opcode, operand_text in instructions:
+      is_jump_opcode = self.JUMP_OPCODE_RE.match(opcode) is not None
+      is_call_opcode = self.CALL_OPCODE_RE.match(opcode) is not None
+
+      if is_jump_opcode or is_call_opcode:
+        is_tail = is_jump_opcode
+
+        result = self.CALL_OPERAND_RE.match(operand_text)
+
+        if result is None:
+          if (self.INDIRECT_CALL_OPERAND_RE.match(operand_text) is not None):
+            # Found an indirect call.
+            callsites.append(Callsite(address, None, is_tail))
+
+        else:
+          target_address = int(result.group(1), 16)
+          # Filter out the in-function target (branches and in-function calls,
+          # which are actually branches).
+          if not (function_symbol.size > 0 and
+                  function_symbol.address < target_address <
+                  (function_symbol.address + function_symbol.size)):
+            # Maybe it is a callsite.
+            callsites.append(Callsite(address, target_address, is_tail))
+
+      elif self.LWI_OPCODE_RE.match(opcode) is not None:
+        result = self.LWI_PC_OPERAND_RE.match(operand_text)
+        if result is not None:
+          # Ignore "lwi $pc, [$sp], xx" because it's usually a return.
+          if result.group(1) != '$sp':
+            # Found an indirect call.
+            callsites.append(Callsite(address, None, True))
+
+      elif self.PUSH_OPCODE_RE.match(opcode) is not None:
+        # Example: push25 $r8, #0    ! {$r6~$r8, $fp, $gp, $lp}
+        if self.PUSH_OPERAND_RE.match(operand_text) is not None:
+          result = self.PUSH_OPERAND_RE.match(operand_text)
+          operandgrup_text = result.group(1)
+          # capture $rx~$ry
+          if self.OPERANDGRUP_RE.match(operandgrup_text) is not None:
+            # capture number & transfer string to integer
+            oprandgruphead = operandgrup_text.split(',')[0]
+            rx=int(filter(str.isdigit, oprandgruphead.split('~')[0]))
+            ry=int(filter(str.isdigit, oprandgruphead.split('~')[1]))
+
+            stack_frame += ((len(operandgrup_text.split(','))+ry-rx) *
+                          self.GENERAL_PURPOSE_REGISTER_SIZE)
+          else:
+            stack_frame += (len(operandgrup_text.split(',')) *
+                          self.GENERAL_PURPOSE_REGISTER_SIZE)
+
+      elif self.SMW_OPCODE_RE.match(opcode) is not None:
+        # Example: smw.adm $r6, [$sp], $r10, #0x2    ! {$r6~$r10, $lp}
+        if self.SMW_OPERAND_RE.match(operand_text) is not None:
+          result = self.SMW_OPERAND_RE.match(operand_text)
+          operandgrup_text = operand_text.split('!')[1]
+          # capture $rx~$ry
+          if self.OPERANDGRUP1_RE.match(operandgrup_text) is not None:
+            # capture number & transfer string to integer
+            oprandgruphead = operandgrup_text.split(',')[0]
+            rx=int(filter(str.isdigit, oprandgruphead.split('~')[0]))
+            ry=int(filter(str.isdigit, oprandgruphead.split('~')[1]))
+
+            stack_frame += ((len(operandgrup_text.split(','))+ry-rx) *
+                          self.GENERAL_PURPOSE_REGISTER_SIZE)
+          else:
+            stack_frame += (len(operandgrup_text.split(',')) *
+                          self.GENERAL_PURPOSE_REGISTER_SIZE)
+
+    return (stack_frame, callsites)
 
 class ArmAnalyzer(object):
   """Disassembly analyzer for ARM architecture.
@@ -470,7 +580,12 @@ class StackAnalyzer(object):
       function_map: Dict of functions.
     """
     # TODO(cheyuw): Select analyzer based on architecture.
-    analyzer = ArmAnalyzer()
+    disasm_lines = [line.strip() for line in disasm_text.splitlines()]
+
+    if (disasm_lines[1].find("arm") != -1):
+      analyzer = ArmAnalyzer()
+    else : #(disasm_lines[1].find("nds") != -1):
+      analyzer = AndesAnalyzer()
 
     # Example: "08028c8c <motion_lid_calc>:"
     function_signature_regex = re.compile(
@@ -558,7 +673,6 @@ class StackAnalyzer(object):
     instructions = []
 
     # Remove heading and tailing spaces for each line.
-    disasm_lines = [line.strip() for line in disasm_text.splitlines()]
     line_index = 0
     while line_index < len(disasm_lines):
       # Get the current line.
