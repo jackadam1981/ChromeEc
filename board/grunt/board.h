@@ -20,6 +20,9 @@
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
+/* Audio */
+#define CONFIG_AUDIO_CODEC
+
 /* Power and battery LEDs */
 #define CONFIG_LED_COMMON
 #define CONFIG_CMD_LEDTEST
