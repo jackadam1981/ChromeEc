@@ -43,6 +43,9 @@
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+uint8_t oem = PROJECT_BOBBA;
+uint16_t sku;
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
@@ -193,7 +196,35 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+static void setup_motion_sensors(void)
+{
+	if (oem == PROJECT_BOBBA) {
+		/* SKU ID of Bobba360 and Sparky360: 9, 25, 26 */
+		if (sku != 9 && sku != 25 && sku != 26) {
+			/* Clamshell Bobba has no accel/gyro */
+			motion_sensor_count = ARRAY_SIZE(motion_sensors) - 2;
+		}
+	}
+}
+
+/* Read CBI from i2c eeprom and initialize variables for board variants */
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_oem_id(&val) == EC_SUCCESS)
+		oem = val;
+	CPRINTSUSB("OEM: %d", oem);
+
+	if (cbi_get_sku_id(&val) == EC_SUCCESS && val <= UINT16_MAX)
+		sku = val;
+	CPRINTSUSB("SKU: %d", sku);
+
+	setup_motion_sensors();
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
 /* Initialize board. */
 static void board_init(void)

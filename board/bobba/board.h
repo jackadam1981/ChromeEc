@@ -25,6 +25,7 @@
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
@@ -94,6 +95,11 @@ enum battery_type {
 	BATTERY_SMP_AP13J7K,
 	BATTERY_PANASONIC_AC15A3J,
 	BATTERY_TYPE_COUNT,
+};
+
+enum oem_id {
+	PROJECT_BOBBA = 0,
+	PROJECT_COUNT,
 };
 
 #endif /* !__ASSEMBLER__ */
