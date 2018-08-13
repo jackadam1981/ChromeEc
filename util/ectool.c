@@ -643,6 +643,7 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_CEC] = "Consumer Electronics Control",
 	[EC_FEATURE_MOTION_SENSE_TIGHT_TIMESTAMPS] =
 		"Tight timestamp for sensors events",
+	[EC_FEATURE_AUDIO_CODEC] = "Audio Codec",
 };
 
 int cmd_inventory(int argc, char *argv[])

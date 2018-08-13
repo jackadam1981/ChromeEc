@@ -22,6 +22,9 @@
 #define CONFIG_KEYBOARD_REFRESH_ROW3
 #define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI3
 
+/* Audio */
+#define CONFIG_AUDIO_CODEC
+
 /* Power and battery LEDs */
 #define CONFIG_LED_COMMON
 #define CONFIG_CMD_LEDTEST
