@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "81a5799c_900339d8",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-13T19:26:34Z",
+      "side": 1,
+      "message": "gpio_reset doesn\u0027t reenable interrupts. Please put a comment ec/servo detect will not work for a second after bitbang is disabled or reenable interrupts on bitbang disable.\n\nWhen bitbang is enabled, uartn_tx_is_connected will be false.\n\nCr50 will always to try to connect uart tx if the EC is on and ccd is connected.\n\nIf the EC is \u0027on\u0027 when bitbang is enabled, I don\u0027t see why ccd_update_state will not run uartn_tx_connect the second after we enable bitbang and break bitbang.",
+      "parentUuid": "387daae5_20da134a",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41301bcf_d702a3d4",
         "filename": "board/cr50/servo_state.c",
         "patchSetId": 4
