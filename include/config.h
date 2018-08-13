@@ -683,11 +683,13 @@
  */
 #undef CONFIG_CHARGER_MAINTAIN_VBAT
 
-/* Minimum battery percentage for power on */
+/* Minimum battery percentage for power on without and with AC */
 #undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+#undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
 
-/* Minimum charger power (in mW) required for powering on. */
+/* Minimum charger power (in mW) required for boot without and with battery. */
 #undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
+#undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT
 
 /* Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8. */
 #undef CONFIG_CHARGER_NARROW_VDC
