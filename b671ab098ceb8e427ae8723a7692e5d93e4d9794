@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c27d141_b442f675",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-13T22:26:19Z",
+      "side": 1,
+      "message": "fusb302 needs to use its own locking scheme to safely manage transfers that are built up out of multiple function calls.  Most of the functions in the tcpci module pick off the correct I2C port by going through tcpc_read* and tcpc_write*.",
+      "parentUuid": "d23fbb93_22a4c541",
+      "revId": "b671ab098ceb8e427ae8723a7692e5d93e4d9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f365a4e6_6794387d",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "b671ab098ceb8e427ae8723a7692e5d93e4d9794",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689bfe98_1e1f2c0a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-13T22:26:19Z",
+      "side": 1,
+      "message": "As written, this symbol\u0027s size is 44 bytes with the coreboot-sdk\u0027s gcc.  If instead I had called i2c_xfer and done the low-power/wakeup dance similar to the other functions in this file directly it would have been 68 bytes.\n\nAside: No platform currently uses this path.  Scarlet and Rainier use the FUSB302, but they don\u0027t use TCPC_LOW_POWER.",
+      "parentUuid": "f365a4e6_6794387d",
+      "revId": "b671ab098ceb8e427ae8723a7692e5d93e4d9794",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
