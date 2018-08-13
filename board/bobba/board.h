@@ -21,7 +21,7 @@
 #define CONFIG_CMD_ACCEL_INFO
 
 #define CONFIG_LED_COMMON
-
+#define CONTROL_LED_BY_TASK
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
