@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27ac02ac_d093cb77",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T22:36:54Z",
+      "side": 1,
+      "message": "According to 8.3.3.3.11 PE_SNK_Get_Source_Cap State\n\nThe SRC is supposed to go back to the SRC_READY state after sending the source caps if it started in SRC_READY.\n\nThe code as is was seems more correct.\n\n\nSee also Figure 8-67 Sink Port State Diagram",
+      "range": {
+        "startLine": 1516,
+        "startChar": 8,
+        "endLine": 1516,
+        "endChar": 49
+      },
+      "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
