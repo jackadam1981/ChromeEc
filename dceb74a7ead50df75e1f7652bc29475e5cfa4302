@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2a83124_0ed44a94",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T22:14:25Z",
+      "side": 1,
+      "message": "why reset when you disable RX. This still doesn\u0027t quite make sense to me.",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 23
+      },
+      "revId": "dceb74a7ead50df75e1f7652bc29475e5cfa4302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
