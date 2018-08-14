@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b760cb6c_5102c916",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:46:02Z",
+      "side": 1,
+      "message": "Can you add to the comment what the threshold value is that you are setting it to? What does 0x08 mean?",
+      "range": {
+        "startLine": 284,
+        "startChar": 28,
+        "endLine": 284,
+        "endChar": 34
+      },
+      "revId": "9208ac620a3b79b72e999901d17e7e01c48997d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
