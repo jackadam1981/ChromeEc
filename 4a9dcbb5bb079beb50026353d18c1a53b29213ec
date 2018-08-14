@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f1205a4_71c20eae",
+        "filename": "board/fleex/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-14T17:34:05Z",
+      "side": 1,
+      "message": "CONFIG_BATTERY_REVIVE_DISCONNECT should be doing essentially the same thing. In the condition that\u0027s described in the commit message, shouldn\u0027t the battery be in a disconnected state (it\u0027s discharge FET would be off).\n\n\t\t\tbattery_seems_to_be_disconnected \u003d\n\t\t\t\tbattery_get_disconnect_state() \u003d\u003d\n\t\t\t\tBATTERY_DISCONNECTED;\n\n\t\t\tif (curr.requested_voltage \u003d\u003d 0 \u0026\u0026\n\t\t\t    curr.requested_current \u003d\u003d 0 \u0026\u0026\n\t\t\t    battery_seems_to_be_disconnected) {\n\t\t\t\t/*\n\t\t\t\t * Battery is in disconnect state. Apply a\n\t\t\t\t * current to kick it out of this state.\n\t\t\t\t */\n\t\t\t\tCPRINTS(\"found battery in disconnect state\");\n\t\t\t\tcurr.requested_voltage \u003d\n\t\t\t\t\tbatt_info-\u003evoltage_max;\n\t\t\t\tcurr.requested_current \u003d\n\t\t\t\t\tbatt_info-\u003eprecharge_current;",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "4a9dcbb5bb079beb50026353d18c1a53b29213ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
