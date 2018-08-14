@@ -480,6 +480,8 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 	} else {
 		IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
 		USBPD_DISABLE_BMC_PHY(port);
+		/* exit BIST test data mode */
+		USBPD_SW_RESET(port);
 	}
 
 	/* If any PD port is connected, then disable deep sleep */
