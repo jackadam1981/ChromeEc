@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "1178e5e6_e21bd97c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-14T18:29:47Z",
+      "side": 1,
+      "message": "I think all state transitions are covered now, any more suggestions to check/modify?",
+      "parentUuid": "81a5799c_900339d8",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 0
+      },
+      "revId": "50ea8d7565893baef09f1a9d524e7c27ec66b84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41301bcf_d702a3d4",
         "filename": "board/cr50/servo_state.c",
         "patchSetId": 4
