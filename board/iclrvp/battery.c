@@ -45,6 +45,7 @@ const struct board_batt_params board_battery_info[] = {
 	/*
 	 * Simplo Battery (SMP-CA-445) Information
 	 * Fuel gauge: BQ30Z554
+	 * TODO: SYSCROS-25972
 	 */
 	[BATTERY_SIMPLO_SMP_CA_445] = {
 		.fuel_gauge = {
