@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f123c09d_ef8ad265",
+        "filename": "board/host/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-14T23:16:41Z",
+      "side": 1,
+      "message": "This will need more work to include the TPM2 code.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "22519d556ed15d4fbe43ef8f040dd0e84447991a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd89566_1b2026ea",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-14T23:16:41Z",
+      "side": 1,
+      "message": "I reordered this file to match the header so I could ifdef out the functions that are included in the standard c headers. This makes it possible to link in external libraries like libprotobuf, libprotobuf-mutator, openssl, etc.",
+      "revId": "22519d556ed15d4fbe43ef8f040dd0e84447991a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0f9e543_b3b7edd6",
+        "filename": "include/trng.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-14T23:16:41Z",
+      "side": 1,
+      "message": "This collides with cstdlib.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "22519d556ed15d4fbe43ef8f040dd0e84447991a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
