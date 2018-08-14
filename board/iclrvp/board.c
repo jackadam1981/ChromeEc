@@ -32,7 +32,7 @@
 
 #include "gpio_list.h"
 
-#define I2C_PORT_PCA555_BOARD_ID_GPIO	IT83XX_I2C_CH_A
+#define I2C_PORT_PCA555_BOARD_ID_GPIO	IT83XX_I2C_CH_B
 #define I2C_ADDR_PCA555_BOARD_ID_GPIO	0x44
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
@@ -61,10 +61,10 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"charger", IT83XX_I2C_CH_A, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
-	{"masterB", IT83XX_I2C_CH_B, 400, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
-	{"masterC", IT83XX_I2C_CH_C, 100, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
-	{"ext_io",  IT83XX_I2C_CH_E, 400, GPIO_I2C_E_SCL, GPIO_I2C_E_SDA},
+	{"charger",  IT83XX_I2C_CH_A, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
+	{"ext_io",   IT83XX_I2C_CH_B, 400, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
+	{"master-E", IT83XX_I2C_CH_E, 400, GPIO_I2C_E_SCL, GPIO_I2C_E_SDA},
+	{"sml",      IT83XX_I2C_CH_F, 400, GPIO_I2C_F_SCL, GPIO_I2C_F_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
