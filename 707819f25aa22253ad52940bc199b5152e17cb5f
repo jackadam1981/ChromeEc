@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd47cb40_a9b9d661",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-14T15:45:25Z",
+      "side": 1,
+      "message": "This field needs to be populated (i.e. set to 1) if the discharge FET register needs to be read from the manufacturer access region of registers. TI fuel gauges have this information at offset 0x54. However, the TI fuel gauge also returns the lower 16 bits of this register at the smart battery register 0x0. I\u0027m not sure that .mfgacc_support should be added here. I think bit 0 here means:\nPRES (Bit 0): System present low\n1 \u003d Active\n0 \u003d Inactive\n\nBut the discharge FET is bit 1 of this register. Can you please verify the spec for this battery requires mfgacc for reading the discharge FET status.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "707819f25aa22253ad52940bc199b5152e17cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
