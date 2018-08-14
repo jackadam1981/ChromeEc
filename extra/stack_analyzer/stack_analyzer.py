@@ -278,7 +278,6 @@ class AndesAnalyzer(object):
   SMW_OPERAND_RE = re.compile(r'^(\$r\d{1,}|\$\w\p), \[\$\w\p\], '
                    r'(\$r\d{1,}|\$\w\p), \#\d\w\d    \! \{([^\]]+)\}')
   OPERANDGRUP_RE = re.compile(r'^\$r\d{1,}\~\$r\d{1,}')
-
   LWI_OPCODE_RE = re.compile(r'^lwi(\.\w\w)$')
   LWI_PC_OPERAND_RE = re.compile(r'^\$pc, \[([^\]]+)\]')
 
