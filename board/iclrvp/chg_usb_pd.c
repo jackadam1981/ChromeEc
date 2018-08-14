@@ -7,6 +7,7 @@
 #include "charge_state_v2.h"
 #include "console.h"
 #include "hooks.h"
+#include "it83xx_pd.h"
 #include "task.h"
 #include "tcpci.h"
 #include "system.h"
@@ -16,23 +17,24 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PTN5110_EXT_GPIO_CONFIG		0x92
-#define PTN5110_EXT_GPIO_CONTROL	0x93
-
-#define PTN5110_EXT_GPIO_FRS_EN			(1 << 6)
-#define PTN5110_EXT_GPIO_EN_SRC			(1 << 5)
-#define PTN5110_EXT_GPIO_EN_SNK1		(1 << 4)
-#define PTN5110_EXT_GPIO_IILIM_5V_VBUS_L	(1 << 3)
-
 enum glkrvp_charge_ports {
 	TYPE_C_PORT_0,
 	TYPE_C_PORT_1,
 	DC_JACK_PORT_0 = DEDICATED_CHARGE_PORT,
 };
 
+/* USB-C TPCP Configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{IT83XX_I2C_CH_B, 0xA0, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{IT83XX_I2C_CH_B, 0xA4, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	[TYPE_C_PORT_0] = {
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
+	[TYPE_C_PORT_1] = {
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_COUNT);
 
@@ -47,50 +49,50 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
+void vbus0_evt(enum gpio_signal signal)
+{
+	task_wake(TASK_ID_PD_C0);
+}
+
+void vbus1_evt(enum gpio_signal signal)
+{
+	task_wake(TASK_ID_PD_C1);
+}
+
+static int board_charger_port_is_sourcing_vbus(int port)
+{
+	/* DC Jack can't source VBUS */
+	if (port == DC_JACK_PORT_0 || port == CHARGE_PORT_NONE)
+		return 0;
+
+	return !gpio_get_level(port ?
+		GPIO_USB_C0_SRC_EN_L : GPIO_USB_C1_SRC_EN_L);
+}
+
 /* TODO: Implement this function and move to appropriate file */
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
 }
 
-static int board_charger_port_is_sourcing_vbus(int port)
-{
-	int reg;
-
-	/* DC Jack can't source VBUS */
-	if (port == DC_JACK_PORT_0 || port == CHARGE_PORT_NONE)
-		return 0;
-
-	if (tcpc_read(port, PTN5110_EXT_GPIO_CONTROL, &reg))
-		return 0;
-
-	return !!(reg & PTN5110_EXT_GPIO_EN_SRC);
-}
-
-static int ptn5110_ext_gpio_enable(int port, int enable, int gpio)
-{
-	int reg;
-	int rv;
-
-	rv = tcpc_read(port, PTN5110_EXT_GPIO_CONTROL, &reg);
-	if (rv)
-		return rv;
-
-	if (enable)
-		reg |= gpio;
-	else
-		reg &= ~gpio;
-
-	return tcpc_write(port, PTN5110_EXT_GPIO_CONTROL, reg);
-}
-
 void board_charging_enable(int port, int enable)
 {
-	ptn5110_ext_gpio_enable(port, enable, PTN5110_EXT_GPIO_EN_SNK1);
+	gpio_set_level(port ? GPIO_USB_C0_SNK_EN_L :
+			GPIO_USB_C1_SNK_EN_L, !enable);
 }
 
 void board_vbus_enable(int port, int enable)
 {
-	ptn5110_ext_gpio_enable(port, enable, PTN5110_EXT_GPIO_EN_SRC);
+	gpio_set_level(port ? GPIO_USB_C0_SRC_EN_L :
+			GPIO_USB_C1_SRC_EN_L, !enable);
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	if (port == DC_JACK_PORT_0)
+		return 1;
+
+	return gpio_get_level(port ?
+		GPIO_USB_C0_VBUS_INT : GPIO_USB_C1_VBUS_INT);
 }
 
 void tcpc_alert_event(enum gpio_signal signal)
@@ -108,35 +110,20 @@ void board_tcpc_init(void)
 		board_reset_pd_mcu();
 
 	/* Enable TCPC0/1 interrupt */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C0_VBUS_INT);
+	gpio_enable_interrupt(GPIO_USB_C1_VBUS_INT);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 int board_tcpc_post_init(int port)
 {
-	int reg;
-	int rv;
-
-	rv = tcpc_read(port, PTN5110_EXT_GPIO_CONFIG, &reg);
-	if (rv)
-		return rv;
-
-	/* Configure PTN5110 External GPIOs as output */
-	reg |=  PTN5110_EXT_GPIO_EN_SRC | PTN5110_EXT_GPIO_EN_SNK1 |
-		PTN5110_EXT_GPIO_IILIM_5V_VBUS_L;
-	rv = tcpc_write(port, PTN5110_EXT_GPIO_CONFIG, reg);
-	if (rv)
-		return rv;
-
-	return ptn5110_ext_gpio_enable(port, 1,
-					PTN5110_EXT_GPIO_IILIM_5V_VBUS_L);
+	return 0;
 }
 
 /* Reset PD MCU */
 void board_reset_pd_mcu(void)
 {
-	/* TODO: Add reset logic */
+	/* Not applicable for ITE */
 }
 
 static inline int board_dc_jack_present(void)
@@ -231,10 +218,10 @@ uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
 
-	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
+	if (gpio_get_level(GPIO_USB_C0_VBUS_INT))
 		status |= PD_STATUS_TCPC_ALERT_0;
 
-	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL))
+	if (gpio_get_level(GPIO_USB_C1_VBUS_INT))
 		status |= PD_STATUS_TCPC_ALERT_1;
 
 	return status;

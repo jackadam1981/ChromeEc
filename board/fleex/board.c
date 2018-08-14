@@ -17,7 +17,7 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
-#include "driver/ppc/nx20p3483.h"
+#include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -45,6 +45,9 @@
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+#define USB_PD_PORT_ANX7447	0
+#define USB_PD_PORT_PS8751	1
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
@@ -61,11 +64,11 @@ static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_PD_C0_INT_ODL:
-		nx20p3483_interrupt(0);
+		nx20p348x_interrupt(0);
 		break;
 
 	case GPIO_USB_PD_C1_INT_ODL:
-		nx20p3483_interrupt(1);
+		nx20p348x_interrupt(1);
 		break;
 
 	default:
@@ -82,8 +85,19 @@ const struct adc_t adc_channels[] = {
 		"TEMP_AMB", NPCX_ADC_CH0, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 	[ADC_TEMP_SENSOR_CHARGER] = {
 		"TEMP_CHARGER", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
+	[ADC_VBUS_C0] = {"VBUS_C0", NPCX_ADC_CH9, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
+	[ADC_VBUS_C1] = {"VBUS_C1", NPCX_ADC_CH4, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+enum adc_channel board_get_vbus_adc(int port)
+{
+	if (port == USB_PD_PORT_ANX7447)
+		return  ADC_VBUS_C0;
+	if (port == USB_PD_PORT_PS8751)
+		return  ADC_VBUS_C1;
+	return ADC_VBUS_C0;
+}
 
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",

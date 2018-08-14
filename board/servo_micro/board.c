@@ -31,8 +31,8 @@
  * Forward UARTs as a USB serial interface.
  */
 
-#define USB_STREAM_RX_SIZE	16
-#define USB_STREAM_TX_SIZE	16
+#define USB_STREAM_RX_SIZE	32
+#define USB_STREAM_TX_SIZE	32
 
 /******************************************************************************
  * Forward USART2 as a simple USB serial interface.
@@ -41,14 +41,17 @@
 static struct usart_config const usart2;
 struct usb_stream_config const usart2_usb;
 
-static struct queue const usart2_to_usb = QUEUE_DIRECT(64, uint8_t,
+static struct queue const usart2_to_usb = QUEUE_DIRECT(256, uint8_t,
 	usart2.producer, usart2_usb.consumer);
 static struct queue const usb_to_usart2 = QUEUE_DIRECT(64, uint8_t,
 	usart2_usb.producer, usart2.consumer);
 
+static struct usart_rx_dma const usart2_rx_dma =
+	USART_RX_DMA(STM32_DMAC_CH5, 32);
+
 static struct usart_config const usart2 =
 	USART_CONFIG(usart2_hw,
-		usart_rx_interrupt,
+		usart2_rx_dma.usart_rx,
 		usart_tx_interrupt,
 		115200,
 		0,
@@ -73,14 +76,17 @@ USB_STREAM_CONFIG_USART_IFACE(usart2_usb,
 static struct usart_config const usart3;
 struct usb_stream_config const usart3_usb;
 
-static struct queue const usart3_to_usb = QUEUE_DIRECT(64, uint8_t,
+static struct queue const usart3_to_usb = QUEUE_DIRECT(256, uint8_t,
 	usart3.producer, usart3_usb.consumer);
 static struct queue const usb_to_usart3 = QUEUE_DIRECT(64, uint8_t,
 	usart3_usb.producer, usart3.consumer);
 
+static struct usart_rx_dma const usart3_rx_dma =
+	USART_RX_DMA(STM32_DMAC_CH3, 32);
+
 static struct usart_config const usart3 =
 	USART_CONFIG(usart3_hw,
-		usart_rx_interrupt,
+		usart3_rx_dma.usart_rx,
 		usart_tx_interrupt,
 		115200,
 		0,
@@ -105,14 +111,17 @@ USB_STREAM_CONFIG_USART_IFACE(usart3_usb,
 static struct usart_config const usart4;
 struct usb_stream_config const usart4_usb;
 
-static struct queue const usart4_to_usb = QUEUE_DIRECT(64, uint8_t,
+static struct queue const usart4_to_usb = QUEUE_DIRECT(256, uint8_t,
 	usart4.producer, usart4_usb.consumer);
 static struct queue const usb_to_usart4 = QUEUE_DIRECT(64, uint8_t,
 	usart4_usb.producer, usart4.consumer);
 
+static struct usart_rx_dma const usart4_rx_dma =
+	USART_RX_DMA(STM32_DMAC_CH6, 32);
+
 static struct usart_config const usart4 =
 	USART_CONFIG(usart4_hw,
-		usart_rx_interrupt,
+		usart4_rx_dma.usart_rx,
 		usart_tx_interrupt,
 		115200,
 		0,
@@ -222,12 +231,13 @@ static int ite_i2c_read_register(uint8_t register_offset, uint8_t *output)
 	 */
 	int ret;
 	/* Tell the ITE EC which register we want to read. */
-	ret = i2c_xfer(I2C_PORT_MASTER, ITE_DFU_I2C_CMD_ADDR, &register_offset,
-		sizeof(register_offset), NULL, 0, I2C_XFER_SINGLE);
+	ret = i2c_xfer_unlocked(I2C_PORT_MASTER, ITE_DFU_I2C_CMD_ADDR,
+		&register_offset, sizeof(register_offset),
+		NULL, 0, I2C_XFER_SINGLE);
 	if (ret != EC_SUCCESS)
 		return ret;
 	/* Read in the 1 byte register value. */
-	ret = i2c_xfer(I2C_PORT_MASTER, ITE_DFU_I2C_DATA_ADDR, NULL, 0,
+	ret = i2c_xfer_unlocked(I2C_PORT_MASTER, ITE_DFU_I2C_DATA_ADDR, NULL, 0,
 		output, sizeof(*output), I2C_XFER_SINGLE);
 	return ret;
 }

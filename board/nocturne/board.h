@@ -40,6 +40,7 @@
 #define CONFIG_HOSTCMD_ESPI
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#define CONFIG_LOW_POWER_IDLE
 #define CONFIG_PWM
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
@@ -261,6 +262,7 @@ int board_get_version(void);
 
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
+void board_set_tcpc_power_mode(int port, int mode);
 
 #endif /* __ASSEMBLER__ */
 

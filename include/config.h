@@ -696,11 +696,25 @@
  */
 #undef CONFIG_CHARGER_MAINTAIN_VBAT
 
-/* Minimum battery percentage for power on */
+/*
+ * Power thresholds for AP boot
+ *
+ * If one of the following conditions is met, EC boots AP:
+ *
+ * 1. Battery charge >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
+ * 2. AC power >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
+ * 3. Battery charge >= CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
+ *    and
+ *    AC power >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT
+ *
+ * Note that CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT/_CHG_MW are thresholds
+ * for the OS boot used by Depthcharge. The OS has higher power requirement
+ * but PD power is also available.
+ */
 #undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
-
-/* Minimum charger power (in mW) required for powering on. */
+#undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
 #undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
+#undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT
 
 /* Minimum battery percentage for power on with an imbalanced pack */
 #undef CONFIG_CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON
@@ -1513,6 +1527,10 @@
 /* If defined, add support for storing some entropy in the rollback region. */
 #undef CONFIG_ROLLBACK_SECRET_SIZE
 
+/* If defined, protect rollback region readback using MPU. */
+#undef CONFIG_ROLLBACK_MPU_PROTECT
+
+
 /*
  * If defined, inject some locally generated entropy when secret is updated,
  * using board_get_entropy function.
@@ -2023,6 +2041,11 @@
  * Allow the keyboard scan code set tables to be modified at runtime.
  */
 #undef CONFIG_KEYBOARD_SCANCODE_MUTABLE
+
+/*
+ * Allow board-specific 8042 keyboard callback when a key state is changed.
+ */
+#undef CONFIG_KEYBOARD_SCANCODE_CALLBACK
 
 /*
  * Call board-supplied keyboard_suppress_noise() function when the debounced
@@ -3708,7 +3731,8 @@
  */
 #if defined(CONFIG_CHARGER_BD9995X) || \
 	defined(CONFIG_CHARGER_RT9466) || \
-	defined(CONFIG_CHARGER_RT9467)
+	defined(CONFIG_CHARGER_RT9467) || \
+	defined(CONFIG_CHARGER_MT6370)
 #define CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 #endif
 

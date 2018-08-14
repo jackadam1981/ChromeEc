@@ -356,14 +356,14 @@ int board_get_version(void)
 
 	if (board_version == -1) {
 		board_version = 0;
-		/* BRD_ID3 is LSb. */
-		if (gpio_get_level(GPIO_EC_BRD_ID3))
-			board_version |= 0x1;
-		if (gpio_get_level(GPIO_EC_BRD_ID2))
-			board_version |= 0x2;
-		if (gpio_get_level(GPIO_EC_BRD_ID1))
-			board_version |= 0x4;
+		/* BRD_ID0 is LSb. */
 		if (gpio_get_level(GPIO_EC_BRD_ID0))
+			board_version |= 0x1;
+		if (gpio_get_level(GPIO_EC_BRD_ID1))
+			board_version |= 0x2;
+		if (gpio_get_level(GPIO_EC_BRD_ID2))
+			board_version |= 0x4;
+		if (gpio_get_level(GPIO_EC_BRD_ID3))
 			board_version |= 0x8;
 	}
 
@@ -404,6 +404,19 @@ static void board_init(void)
 		enable_sensor_irqs();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_lid_change(void)
+{
+	/* This is done in hardware on old revisions. */
+	if (board_get_version() <= 1)
+		return;
+
+	if (lid_is_open())
+		gpio_set_level(GPIO_UHALL_PWR_EN, 1);
+	else
+		gpio_set_level(GPIO_UHALL_PWR_EN, 0);
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, board_lid_change, HOOK_PRIO_DEFAULT);
 
 static void board_pmic_disable_slp_s0_vr_decay(void)
 {
@@ -620,10 +633,21 @@ static void board_report_pmic_fault(const char *str)
 
 void board_reset_pd_mcu(void)
 {
+	cprints(CC_USB, "Resetting TCPCs...");
+	cflush();
 	/* GPIO_USB_PD_RST_L resets all the TCPCs. */
 	gpio_set_level(GPIO_USB_PD_RST_L, 0);
 	msleep(10); /* TODO(aaboagye): Verify min hold time. */
 	gpio_set_level(GPIO_USB_PD_RST_L, 1);
+}
+
+void board_set_tcpc_power_mode(int port, int mode)
+{
+	/* Ignore the "mode" to turn the chip on.  We can only do a reset. */
+	if (mode)
+		return;
+
+	board_reset_pd_mcu();
 }
 
 void board_rtc_reset(void)
