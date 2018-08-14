@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7b942d9_755a88eb",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-14T19:19:14Z",
+      "side": 1,
+      "message": "These literals seem like states -- not actual periods in seconds. Can you please use an enum to indicate logical states?",
+      "range": {
+        "startLine": 260,
+        "startChar": 41,
+        "endLine": 260,
+        "endChar": 42
+      },
+      "revId": "aab030216dd98dc276ba949973585c1124bd59ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
