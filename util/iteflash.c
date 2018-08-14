@@ -354,7 +354,9 @@ static int dbgr_reset(struct ftdi_context *ftdi)
 	/* Reset CPU only, and we keep power state until flashing is done. */
 	ret |= i2c_write_byte(ftdi, 0x2f, 0x20);
 	ret |= i2c_write_byte(ftdi, 0x2e, 0x06);
-	ret |= i2c_write_byte(ftdi, 0x30, 0x40);
+
+	/* Enable Host Global Reset & Global Reset */
+	ret |= i2c_write_byte(ftdi, 0x30, 0x4C);
 
 	ret |= i2c_write_byte(ftdi, 0x27, 0x80);
 	if (ret < 0)
@@ -1420,10 +1422,9 @@ int main(int argc, char **argv)
 terminate:
 
 	/*
-	 * Do not exit DBGR because it wedges the I2C SDA line and we cannot
-	 * perform a cold reset of the EC.
+	 * Enable EC Host Global Reset to reset EC resource and EC domain
 	 */
-
+	dbgr_reset(hnd);
 	/* Close the FTDI USB handle */
 	ftdi_usb_close(hnd);
 	ftdi_free(hnd);
