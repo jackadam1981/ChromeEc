@@ -22,6 +22,30 @@
       "revId": "3c966acf9bd57d62e0938ebba1de37bdde1b44f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cebfeb0_3579b283",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-14T17:20:54Z",
+      "side": 1,
+      "message": "I interpreted it as a reset. Unfortunately, we don\u0027t have per port reset control, and the \"power_mode\" seems to be largely an Analogix specific thing.\n\nAs you mentioned in the depthcharge counterpart, we\u0027ll need to reset the EC after the upgrade to re-initialize both TCPCs again.",
+      "parentUuid": "e86b4ed3_9afecb8f",
+      "range": {
+        "startLine": 631,
+        "startChar": 5,
+        "endLine": 631,
+        "endChar": 30
+      },
+      "revId": "3c966acf9bd57d62e0938ebba1de37bdde1b44f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
