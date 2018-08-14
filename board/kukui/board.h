@@ -26,7 +26,8 @@
 #define CONFIG_SPI_MASTER
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_SWITCH
-#define CONFIG_WATCHDOG_HELP
+#undef CONFIG_WATCHDOG_HELP
+#undef CONFIG_WATCHDOG
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
 

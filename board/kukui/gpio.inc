@@ -40,7 +40,7 @@ GPIO_INT(SYNC_INT,          PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
 GPIO_INT(CHARGER_INT_ODL,   PIN(C, 13), GPIO_INT_FALLING | GPIO_PULL_UP,
          rt946x_interrupt)
 #ifdef SECTION_IS_RO
-GPIO_INT(EMMC_CMD,          PIN(A, 14), GPIO_INT_FALLING,
+GPIO_INT(EMMC_CMD,          PIN(D, 6), GPIO_INT_FALLING,
          emmc_cmd_interrupt)
 #endif
 
