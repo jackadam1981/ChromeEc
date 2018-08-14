@@ -34,6 +34,7 @@
 
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
+#define CONFIG_CHARGE_RAMP_HW
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_INPUT_CURRENT 512
@@ -63,11 +64,12 @@
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_PORT_COUNT 2
-#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_TCPM_ITE83XX
 #define CONFIG_USB_PD_TRY_SRC
-#define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USB_PD_VBUS_DETECT_GPIO
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_BC12_DETECT_BQ24392 /* FSA832L10X */
 
 /* USB MUX */
 #define CONFIG_USBC_SS_MUX
@@ -163,7 +165,8 @@ int board_get_version(void);
 
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);
-void tcpc_alert_event(enum gpio_signal signal);
+void vbus0_evt(enum gpio_signal signal);
+void vbus1_evt(enum gpio_signal signal);
 void board_charging_enable(int port, int enable);
 void board_vbus_enable(int port, int enable);
 
