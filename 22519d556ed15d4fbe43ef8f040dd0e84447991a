@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "eb897d46_287f9a40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-14T23:28:31Z",
+      "side": 1,
+      "message": "how does this test prove that your change is doing what it is supposed to do?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "22519d556ed15d4fbe43ef8f040dd0e84447991a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825832d9_24d8ca3b",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-14T23:28:31Z",
+      "side": 1,
+      "message": "could the single check be \n\nifeq \"$(TEST_BUILD)$(FUZZ_BUILD)\" \"y\"\n\n?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "22519d556ed15d4fbe43ef8f040dd0e84447991a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c17088_b6350c6e",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-14T23:28:31Z",
+      "side": 1,
+      "message": "I know you are not changing this, but this statement looks weird  - who creates  $(out)/$(BLD)/$(d) ?\n\nalso, looks like _dir_create and _dir_y_create could be refactored into a single function (in a separate patch of course).",
+      "range": {
+        "startLine": 28,
+        "startChar": 48,
+        "endLine": 28,
+        "endChar": 66
+      },
+      "revId": "22519d556ed15d4fbe43ef8f040dd0e84447991a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f123c09d_ef8ad265",
         "filename": "board/host/dcrypto.h",
         "patchSetId": 1
