@@ -19,6 +19,70 @@
     },
     {
       "key": {
+        "uuid": "202c4489_0726c891",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:15:28Z",
+      "side": 1,
+      "message": "agreed, please remove oem",
+      "parentUuid": "df6ba0d8_33519252",
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d8b3236_da7481e3",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:15:28Z",
+      "side": 1,
+      "message": "static uint8_t sku;",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee549962_83535366",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:15:28Z",
+      "side": 1,
+      "message": "drop oem branching",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 28
+      },
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5502ac0d_6512400e",
         "filename": "board/bobba/board.c",
         "patchSetId": 2
@@ -36,6 +100,70 @@
     },
     {
       "key": {
+        "uuid": "66035383_0214aa0f",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:15:28Z",
+      "side": 1,
+      "message": "this will set it to 1 (for the lid sensor)",
+      "parentUuid": "5502ac0d_6512400e",
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "312d9ab4_5261ac99",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:15:28Z",
+      "side": 1,
+      "message": "no need for OEM id here",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 28
+      },
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de999118_1eadd0cd",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:15:28Z",
+      "side": 1,
+      "message": "UINT8_MAX",
+      "range": {
+        "startLine": 221,
+        "startChar": 50,
+        "endLine": 221,
+        "endChar": 60
+      },
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6622012_667eb1f7",
         "filename": "board/bobba/board.h",
         "patchSetId": 2
@@ -47,6 +175,24 @@
       "writtenOn": "2018-08-14T16:03:45Z",
       "side": 1,
       "message": "Is this the correct sku id for all the clamshells?",
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6097e1f_e7f5b257",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-14T23:15:28Z",
+      "side": 1,
+      "message": "Let\u0027s remove this as the folder (and firmware image itself) implies the OEM",
+      "parentUuid": "f6622012_667eb1f7",
       "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
