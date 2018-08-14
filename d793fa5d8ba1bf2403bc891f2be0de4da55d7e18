@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5502ac0d_6512400e",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-08-14T10:36:23Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t motion sensors be disabled for clamshell form-factors through setting motion_sensor_count to 0?",
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
