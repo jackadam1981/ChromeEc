@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "df6ba0d8_33519252",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-14T16:03:45Z",
+      "side": 1,
+      "message": "oem is not changing. it\u0027ll be the same in practice. We aren\u0027t sharing firmware across OEMs.  The sku id is what changes. Therefore the oem check doesn\u0027t do anything.",
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5502ac0d_6512400e",
         "filename": "board/bobba/board.c",
         "patchSetId": 2
@@ -13,6 +30,23 @@
       "writtenOn": "2018-08-14T10:36:23Z",
       "side": 1,
       "message": "Why wouldn\u0027t motion sensors be disabled for clamshell form-factors through setting motion_sensor_count to 0?",
+      "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6622012_667eb1f7",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-14T16:03:45Z",
+      "side": 1,
+      "message": "Is this the correct sku id for all the clamshells?",
       "revId": "d793fa5d8ba1bf2403bc891f2be0de4da55d7e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
