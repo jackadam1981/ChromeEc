@@ -22,6 +22,30 @@
       "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f413ec17_92e45bdc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-15T01:20:43Z",
+      "side": 1,
+      "message": "I think this proposed change is mostly correct. If a Get_Source_Cap message is received while in the SRC_READY state, then the state should transition to SRC_Send_Capabilities state. From section 8.3.3.2.6:\n\nThe Policy Engine shall transition to the PE_SRC_Send_Capabilities state when:\n The Device Policy Manager indicates that Source Capabilities have changed or\n A Get_Source_Cap Message is received.\n\nI\u0027m not sure if it should be transitioning to the \"misspelled\" SRC_NEGOCIATE state though as the SRC_CAP message would only be sent one time. In the PE_SRC_Send_Capabilities state, I think SRC_CAP messages should be sent until a GoodCRC message is received. So maybe this case should transition to PD_STATE_SRC_DISCOVERY instead of PD_STATE_SRC_NEGOCIATE",
+      "parentUuid": "27ac02ac_d093cb77",
+      "range": {
+        "startLine": 1516,
+        "startChar": 8,
+        "endLine": 1516,
+        "endChar": 49
+      },
+      "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
