@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e1d0cfd_015972ab",
+        "filename": "include/keyboard_8042.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-15T16:28:05Z",
+      "side": 1,
+      "message": "*make_code is still a valid make code",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "1ccbcf1f44126d9d9deebf7c141ebcedb24f9bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df69c803_729822ac",
+        "filename": "include/keyboard_8042.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-15T16:28:05Z",
+      "side": 1,
+      "message": "return value",
+      "range": {
+        "startLine": 38,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "1ccbcf1f44126d9d9deebf7c141ebcedb24f9bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce419fac_664058cc",
+        "filename": "include/keyboard_8042.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-15T16:28:05Z",
+      "side": 1,
+      "message": "processing of this make code?\n\n(Doesn\u0027t affect other key processing, right?  Might also be good to add:)\n\nIf callback alters *make_code or aborts key processing when pressed\u003d1, it is responsible for also altering/aborting the matching pressed\u003d0 call.",
+      "range": {
+        "startLine": 38,
+        "startChar": 46,
+        "endLine": 38,
+        "endChar": 60
+      },
+      "revId": "1ccbcf1f44126d9d9deebf7c141ebcedb24f9bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
