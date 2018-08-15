@@ -141,6 +141,30 @@
       "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52e090de_8bfeb28e",
+        "filename": "include/i2c.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-15T17:45:37Z",
+      "side": 1,
+      "message": "Yes, exactly.  That\u0027s what I mean by being able to capture statically incorrect locking problems.",
+      "parentUuid": "e1526701_74c2b19b",
+      "range": {
+        "startLine": 109,
+        "startChar": 60,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
