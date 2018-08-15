@@ -22,6 +22,30 @@
       "revId": "4a9dcbb5bb079beb50026353d18c1a53b29213ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1478f86_59227637",
+        "filename": "board/fleex/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-08-15T07:04:21Z",
+      "side": 1,
+      "message": "Verified drain battery can wake up via CONFIG_BATTERY_REVIVE_DISCONNECT.\nBTW, we want to know what is different between CONFIG_BATTERY_REVIVE_DISCONNECT \nand CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD?",
+      "parentUuid": "7f1205a4_71c20eae",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "4a9dcbb5bb079beb50026353d18c1a53b29213ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
