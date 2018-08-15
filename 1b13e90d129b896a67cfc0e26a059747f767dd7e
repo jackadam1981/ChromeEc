@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fe49d1e_b63baa34",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-15T14:04:18Z",
+      "side": 1,
+      "message": "Why is this defined here? This is used only by setup_motion_sensors right now. It can be passed in as a parameter to that function from cbi_init.",
+      "revId": "1b13e90d129b896a67cfc0e26a059747f767dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a183dd8d_922137fc",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-15T14:04:18Z",
+      "side": 1,
+      "message": "base accel? since it still has lid accel?",
+      "range": {
+        "startLine": 204,
+        "startChar": 28,
+        "endLine": 204,
+        "endChar": 33
+      },
+      "revId": "1b13e90d129b896a67cfc0e26a059747f767dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a03106e_64cf9df6",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-15T14:04:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there be an early return here if reading cbi fails or if val \u003e UINT8_MAX?\n\nif (cbi_get_sku_id(\u0026val) !\u003d EC_SUCCESS || val \u003e UINT8_MAX)\n    return;",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 60
+      },
+      "revId": "1b13e90d129b896a67cfc0e26a059747f767dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13f7069_a370be42",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-15T14:04:18Z",
+      "side": 1,
+      "message": "setup_motion_sensors(val);",
+      "range": {
+        "startLine": 218,
+        "startChar": 22,
+        "endLine": 218,
+        "endChar": 23
+      },
+      "revId": "1b13e90d129b896a67cfc0e26a059747f767dd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
