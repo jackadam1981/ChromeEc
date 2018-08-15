@@ -70,6 +70,30 @@
       "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5917bf9_c6263437",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-15T14:35:12Z",
+      "side": 1,
+      "message": "My original comment got off on SRC vs SNK.\n\nReading the spec again, I don\u0027t think that there should be a conditional on the previous task_state. If we send a source cap and it is acked (with a GoodCRC via res \u003e\u003d 0) then we should transition into the PD_STATE_SRC_NEGOCIATE state which waits for a Request message from the SNK otherwise will perform a hard reset.\n\n\"Once a Source_Capabilities Message has been received and acknowledged by a GoodCRC Message, the Sink is required to then send a Request Message within tSenderResponse.\" from 8.3.3.2.3\nPE_SRC_Send_Capabilities State",
+      "parentUuid": "b2bbe744_a399b874",
+      "range": {
+        "startLine": 1516,
+        "startChar": 8,
+        "endLine": 1516,
+        "endChar": 49
+      },
+      "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
