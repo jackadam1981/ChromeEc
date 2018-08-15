@@ -22,6 +22,30 @@
       "revId": "83ba3784b50162e2232da66ab4b07d8931dffaa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f97a854b_b65f755a",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-08-15T08:05:44Z",
+      "side": 0,
+      "message": "Yes, we will have problem on previous implementation if developer try to set  KSO/KSI pins to GPIO mode by calling gpio_set_flags_by_mask() function.\n\nI verified previous implementation by declaring a signal of keyboard pin in gpio.inc.\nAnd in gpio_pre_init() function, we configure KSO/KSI pins by gpio_kbs_pin_gpio_mode() instead of gpio_set_flags_by_mask(). This is why I didn\u0027t find the problem since I don\u0027t use gpio_set_flags_by_mask().",
+      "parentUuid": "9a7f7c0a_f538e123",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 461,
+        "endChar": 33
+      },
+      "revId": "83ba3784b50162e2232da66ab4b07d8931dffaa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
