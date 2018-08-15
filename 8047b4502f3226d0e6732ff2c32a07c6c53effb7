@@ -46,6 +46,52 @@
       "revId": "8047b4502f3226d0e6732ff2c32a07c6c53effb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d9b238_ef49f923",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-15T17:53:54Z",
+      "side": 1,
+      "message": "Can you please verify this bit represents the discharge FET status? If this battery is using the TI FG, then reg 0x0 should be:\n\nManufacturerAccess() 0x0000\nA read word on this command returns the lowest 16 bits of the OperationStatus() data.\n\nWhere OperationStatus() is:\nCHG (Bit 2): CHG FET status\n1 \u003d Active\n0 \u003d Inactive\n\nDSG (Bit 1): DSG FET status\n1 \u003d Active\n0 \u003d Inactive\n\nPRES (Bit 0): System present low\n1 \u003d Active\n0 \u003d Inactive",
+      "range": {
+        "startLine": 46,
+        "startChar": 21,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "8047b4502f3226d0e6732ff2c32a07c6c53effb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f3a960e_15040464",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-15T17:53:54Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 22
+      },
+      "revId": "8047b4502f3226d0e6732ff2c32a07c6c53effb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
