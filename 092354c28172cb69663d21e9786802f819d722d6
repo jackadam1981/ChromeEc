@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bffde858_2422ddf3",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-15T18:18:54Z",
+      "side": 1,
+      "message": "yes, leftovers from moving changes between patches.",
+      "parentUuid": "7e2a5823_8f6946bf",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "092354c28172cb69663d21e9786802f819d722d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa19c3d9_6899cfc1",
         "filename": "chip/g/uart_bitbang.h",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "092354c28172cb69663d21e9786802f819d722d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60d4a37_8f2682ce",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-15T18:18:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa19c3d9_6899cfc1",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "092354c28172cb69663d21e9786802f819d722d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
