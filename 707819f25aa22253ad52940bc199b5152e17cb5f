@@ -22,6 +22,30 @@
       "revId": "707819f25aa22253ad52940bc199b5152e17cb5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7489da_5a67053f",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-08-15T09:10:45Z",
+      "side": 1,
+      "message": "Due to have two gauge IC, BYD/LGC with TI and Simplo with Renesas, we have create an issue tracker to change it. https://partnerissuetracker.corp.google.com/issues/112237278 \nHowever, I will remove .mfgacc_support\u003d1 of BATTERY_LGC/BATTERY_SIMPLO this patch, and create new patch meet TI and Renesas FAT status.",
+      "parentUuid": "dd47cb40_a9b9d661",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "707819f25aa22253ad52940bc199b5152e17cb5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
