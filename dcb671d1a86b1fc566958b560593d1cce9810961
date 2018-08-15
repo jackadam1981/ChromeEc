@@ -46,6 +46,30 @@
       "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bbe744_a399b874",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-15T10:36:44Z",
+      "side": 1,
+      "message": "Scott:The SRC_NEGOCIATE that I mentioned is PD_STATE_SRC_NEGOCIATEOk in code. Ok, I agree your proposal. update new one.",
+      "parentUuid": "f413ec17_92e45bdc",
+      "range": {
+        "startLine": 1516,
+        "startChar": 8,
+        "endLine": 1516,
+        "endChar": 49
+      },
+      "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
