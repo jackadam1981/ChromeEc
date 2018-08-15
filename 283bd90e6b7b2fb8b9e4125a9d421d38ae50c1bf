@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6ff657f_a6ee8d38",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2018-08-15T09:50:44Z",
+      "side": 1,
+      "message": "It has been removed.",
+      "parentUuid": "ae0fb9d3_19e8f9d1",
+      "revId": "283bd90e6b7b2fb8b9e4125a9d421d38ae50c1bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "707609ad_9c87438a",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b74f0115_88282ec2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2018-08-15T09:50:44Z",
+      "side": 1,
+      "message": "It has been added to the class of \"ArmAnalyzer\" and \"AndesAnalyzer\".",
+      "parentUuid": "707609ad_9c87438a",
+      "revId": "283bd90e6b7b2fb8b9e4125a9d421d38ae50c1bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "541b1057_68dd59c7",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2018-08-15T06:10:55Z",
       "side": 1,
       "message": "Again, these if/else should be abstracted in Analyzer class",
+      "revId": "283bd90e6b7b2fb8b9e4125a9d421d38ae50c1bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d7d279_75ede468",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2018-08-15T09:50:44Z",
+      "side": 1,
+      "message": "As stated above.",
+      "parentUuid": "541b1057_68dd59c7",
       "revId": "283bd90e6b7b2fb8b9e4125a9d421d38ae50c1bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
