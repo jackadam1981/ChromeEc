@@ -46,6 +46,30 @@
       "revId": "3c966acf9bd57d62e0938ebba1de37bdde1b44f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ace7c4_117bee23",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-08-15T06:24:25Z",
+      "side": 1,
+      "message": "what about the call to board_set_tcpc_power_mode(cmd-\u003echip, 1)\nusb_pd_protocol.c::pd_control()\n\nmaybe we should just treat \"mode\u003d1\" as a NOP instead of\nforcing a reset.",
+      "parentUuid": "3cebfeb0_3579b283",
+      "range": {
+        "startLine": 631,
+        "startChar": 5,
+        "endLine": 631,
+        "endChar": 30
+      },
+      "revId": "3c966acf9bd57d62e0938ebba1de37bdde1b44f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
