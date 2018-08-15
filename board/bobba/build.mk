@@ -12,4 +12,5 @@ CHIP_VARIANT:=npcx7m6fb
 BASEBOARD:=octopus
 
 board-y=board.o led.o
+board-y+=Battery_test.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
