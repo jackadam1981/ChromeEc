@@ -610,6 +610,15 @@ int tcpci_tcpm_init(int port)
 	if (error)
 		return error;
 
+#ifdef CONFIG_USB_PD_TCPM_TUSB422
+	/*
+	 * VBUS detection is supposed to be enabled by default, however the
+	 * TUSB422 has this disable following reset.
+	 */
+	/* Enable VBUS detection */
+	tcpc_write16(port, TCPC_REG_COMMAND, 0x33);
+#endif
+
 	/* Read chip info here when we know the chip is awake. */
 	tcpm_get_chip_info(port, 1, NULL);
 
