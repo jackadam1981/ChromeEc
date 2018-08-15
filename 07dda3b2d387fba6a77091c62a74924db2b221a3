@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca416f26_82ce74d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-15T15:57:37Z",
+      "side": 1,
+      "message": "What boards have you tested this on?  Is there an actual test procedure?\n\nIf cherry-picking this into a branch, for example, how would we know it picked properly?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3413cc_146fb5c0",
+        "filename": "include/i2c.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-15T15:57:37Z",
+      "side": 1,
+      "message": "This is not enforced, but should be.\n\nAdd i2c_is_locked(port), and check that at the start of i2c_xfer_unlocked().  If the bus is unlocked, then print a warning to the console and fail the command.",
+      "range": {
+        "startLine": 109,
+        "startChar": 60,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
