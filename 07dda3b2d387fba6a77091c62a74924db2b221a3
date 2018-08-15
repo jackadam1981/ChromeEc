@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "670845a2_7458dfad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-15T17:33:32Z",
+      "side": 1,
+      "message": "I\u0027ve tested it on Grunt and Coral.  Grunt has received several days of use with this change, and I explicitly tested USB-PD interaction and TCPC low-power mode with it.  That said, neither of these platforms include a driver that does anything special with bus locking.\n\nIn general, I\u0027m leery of relying on runtime testing to verify that locking behavior is correct.  Race conditions by their very nature cannot be tested with complete certainty.  There is only one module which requires control-flow analysis to verify, all of the others are locally trivial or stackwise.\n\nI verified i2c_command_passthru()\u0027s correctness in the following way.  I am not at all happy that the proof was required in the first place, but I understand that the locking is set up this way to reduce the risk of the host DOSing the I2C port.\n- The variable port_is_locked is correctly initialized to zero, and exclusive to the calling task.\n- port_is_locked is written in exactly one place, at the time the port is locked.\n  - Therefore, the invariant that port_is_locked is true iff the port was locked by this function is satisfied at every control-flow edge.\n- i2c_xfer_unlocked is called from exactly one place by this function.\n- Therefore, i2c_lock() is called exactly once, and it is prior the first call to i2c_xfer_unlocked.\n- There are two control-flow edges out of the function, and both of them establish the postcondition that the bus is unlocked.\n\nThe common/lb_common module is statically verifiable, but you do have to examine all of the callers of lb_init.",
+      "parentUuid": "ca416f26_82ce74d4",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b3413cc_146fb5c0",
         "filename": "include/i2c.h",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97b11ab_4753ff8e",
+        "filename": "include/i2c.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-15T17:33:32Z",
+      "side": 1,
+      "message": "Done.  The enforcement is weak, in that it can have false negatives in the event of a true race.  That said, most errors will fail very quickly when they happen.",
+      "parentUuid": "9b3413cc_146fb5c0",
+      "range": {
+        "startLine": 109,
+        "startChar": 60,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
