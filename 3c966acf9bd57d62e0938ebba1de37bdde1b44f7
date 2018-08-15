@@ -70,6 +70,30 @@
       "revId": "3c966acf9bd57d62e0938ebba1de37bdde1b44f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfaa127e_5892faba",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-15T22:54:19Z",
+      "side": 1,
+      "message": "I was assuming that no one would be calling that. But, sure, I\u0027ve added that case.",
+      "parentUuid": "03ace7c4_117bee23",
+      "range": {
+        "startLine": 631,
+        "startChar": 5,
+        "endLine": 631,
+        "endChar": 30
+      },
+      "revId": "3c966acf9bd57d62e0938ebba1de37bdde1b44f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
