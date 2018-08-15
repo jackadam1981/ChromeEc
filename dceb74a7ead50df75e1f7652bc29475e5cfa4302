@@ -22,6 +22,30 @@
       "revId": "dceb74a7ead50df75e1f7652bc29475e5cfa4302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc4d2bac_ba5222e3",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-15T08:51:15Z",
+      "side": 1,
+      "message": "When pd port partner disconnect, we reset our policy engine, protocol layer, and phy layer in order to leave BIST test data mode. Rx disable and leave BIST test data mode have the same disconnected condition, so I add code here. It also can add in common/usb_pd_protocol by hook_notify.",
+      "parentUuid": "b2a83124_0ed44a94",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 23
+      },
+      "revId": "dceb74a7ead50df75e1f7652bc29475e5cfa4302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
