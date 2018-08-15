@@ -94,6 +94,30 @@
       "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173712a6_6dfe7eef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-15T14:54:02Z",
+      "side": 1,
+      "message": "I didn\u0027t think about the  if ((res \u003e\u003d 0) in this section, which means that the good CRC was received. So yes in this \"if\" clause, it should transition to PD_STATE_SRC_NEGOCIATE. I guess what\u0027s missing here  is handling the case where res \u003c 0, which is handled in PD_STATE_SRC_DISCOVERY by repeatedly sending SRC_CAP messages until the max number of tries.",
+      "parentUuid": "c5917bf9_c6263437",
+      "range": {
+        "startLine": 1516,
+        "startChar": 8,
+        "endLine": 1516,
+        "endChar": 49
+      },
+      "revId": "dcb671d1a86b1fc566958b560593d1cce9810961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
