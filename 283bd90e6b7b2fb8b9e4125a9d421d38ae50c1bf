@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae0fb9d3_19e8f9d1",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-15T06:10:55Z",
+      "side": 1,
+      "message": "TODO can be removed",
+      "revId": "283bd90e6b7b2fb8b9e4125a9d421d38ae50c1bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707609ad_9c87438a",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-15T06:10:55Z",
+      "side": 1,
+      "message": "Maybe we should have:\n\n  disasm_regex \u003d analyzer.getDisasmRegex()\n\n(or something like that...)",
+      "revId": "283bd90e6b7b2fb8b9e4125a9d421d38ae50c1bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541b1057_68dd59c7",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-15T06:10:55Z",
+      "side": 1,
+      "message": "Again, these if/else should be abstracted in Analyzer class",
+      "revId": "283bd90e6b7b2fb8b9e4125a9d421d38ae50c1bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
