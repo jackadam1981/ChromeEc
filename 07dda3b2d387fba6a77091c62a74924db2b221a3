@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b82a1a15_8a617343",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-15T17:41:12Z",
+      "side": 1,
+      "message": "I agree; runtime testing is necessary, but not sufficient.  Can you add some of these details to the commit message?",
+      "parentUuid": "670845a2_7458dfad",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b3413cc_146fb5c0",
         "filename": "include/i2c.h",
         "patchSetId": 6
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Done.  The enforcement is weak, in that it can have false negatives in the event of a true race.  That said, most errors will fail very quickly when they happen.",
       "parentUuid": "9b3413cc_146fb5c0",
+      "range": {
+        "startLine": 109,
+        "startChar": 60,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "07dda3b2d387fba6a77091c62a74924db2b221a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1526701_74c2b19b",
+        "filename": "include/i2c.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-15T17:41:12Z",
+      "side": 1,
+      "message": "Yes, it\u0027s weak enforcement.  But it\u0027ll catch the most likely scenario where someone starts with this code:\n\na() {\n  i2c_xfer_unlocked();\n}\n\nb() {\n  i2c_lock();\n  a();\n  i2c_unlock();\n}\n\nBut then they add:\n\nc() {\n  a();\n}\n\nAnd because a() does not have the hint in the function name that i2c locking is required, they don\u0027t do it.",
+      "parentUuid": "d97b11ab_4753ff8e",
       "range": {
         "startLine": 109,
         "startChar": 60,
