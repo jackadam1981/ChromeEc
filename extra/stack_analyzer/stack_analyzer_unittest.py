@@ -424,7 +424,42 @@ class StackAnalyzerTest(unittest.TestCase):
         [funcs[0x2000], funcs[0x4000], funcs[0x2000]],
     ])
 
-  def testAnalyzeDisassembly(self):
+  def testAndesAnalyzeDisassembly(self):
+    disasm_text = (
+        '\n'
+        'build/{BOARD}/RW/ec.RW.elf:     file format elf32-nds32le'
+        '\n'
+        'Disassembly of section .text:\n'
+        '\n'
+        '00000900 <wook_task>:\n'
+        '   ...\n'
+        '00001000 <hook_task>:\n'
+        '   1000:   fc 42\tpush25 $r10, #16    ! {$r6~$r10, $fp, $gp, $lp}\n'
+        '   1004:   47 70\t\tmovi55 $r0, #1\n'
+        '   1006:   b1 13\tbnezs8 100929de <flash_command_write>\n'
+        '   1008:   00 01 5c fc\tbne    $r6, $r0, 2af6a\n'
+        '00002000 <console_task>:\n'
+        '   2000:   fc 00\t\tpush25 $r6, #0    ! {$r6, $fp, $gp, $lp} \n'
+        '   2002:   f0 0e fc c5\tjal   1000 <hook_task>\n'
+        '   2006:   f0 0e bd 3b\tj  53968 <get_program_memory_addr>\n'
+        '   200a:   de ad be ef\tswi.gp $r0, [ + #-11036]\n'
+        '00004000 <touchpad_calc>:\n'
+        '   4000:   47 70\t\tmovi55 $r0, #1\n'
+        '00010000 <look_task>:'
+    )
+    function_map = self.analyzer.AnalyzeDisassembly(disasm_text)
+    func_hook_task = sa.Function(0x1000, 'hook_task', 48, [
+        sa.Callsite(0x1006, 0x100929de, True, None)])
+    expect_funcmap = {
+        0x1000: func_hook_task,
+        0x2000: sa.Function(0x2000, 'console_task', 16,
+                            [sa.Callsite(0x2002, 0x1000, False, func_hook_task),
+                             sa.Callsite(0x2006, 0x53968, True, None)]),
+        0x4000: sa.Function(0x4000, 'touchpad_calc', 0, []),
+    }
+    self.assertEqual(function_map, expect_funcmap)
+
+  def testArmAnalyzeDisassembly(self):
     disasm_text = (
         '\n'
         'Disassembly of section .text:\n'
