@@ -289,4 +289,5 @@ enum isl9237_fsm_state {
 #define INPUT_I_STEP  4
 
 #define I2C_ADDR_CHARGER ISL923X_ADDR
+extern int charger_discharge_on_ac(int);
 #endif /* __CROS_EC_ISL923X_H */
