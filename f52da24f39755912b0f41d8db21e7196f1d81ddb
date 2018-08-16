@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b79539_539013a8",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-16T00:34:07Z",
+      "side": 1,
+      "message": "common-$(CONFIG_BASE_ATTACHED_SWITCH)+\u003dbase_state.c\n\n(also need to add to include/config.h)",
+      "revId": "f52da24f39755912b0f41d8db21e7196f1d81ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967e50ac_f32bc993",
+        "filename": "include/base_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-16T00:34:07Z",
+      "side": 1,
+      "message": "nit: I\u0027d drop that line, not super useful.",
+      "revId": "f52da24f39755912b0f41d8db21e7196f1d81ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4229c553_08f3f8b4",
+        "filename": "include/base_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-16T00:34:07Z",
+      "side": 1,
+      "message": "nit: I think we usually use this style for function descriptions:\n\n/**\n * Return 1 if base attached, 0 otherwise\n */",
+      "revId": "f52da24f39755912b0f41d8db21e7196f1d81ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
