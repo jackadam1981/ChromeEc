@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3a3f3aa2_5d0f3d3b",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-08-16T14:03:20Z",
+      "side": 1,
+      "message": "Thank you for the notification and sharing. \nConfirming gague spec, It can use ManufacturerAccess() 0x0000, \nthen the lowest 16 bits of the OperationStatus() data of bit1 and bit2 to check FET status \nfor TI gague. And using 0x43 command return data of bit0 and bit1 to check FET status for Renesas gague.",
+      "parentUuid": "19d9b238_ef49f923",
+      "range": {
+        "startLine": 46,
+        "startChar": 21,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "8047b4502f3226d0e6732ff2c32a07c6c53effb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f3a960e_15040464",
         "filename": "board/fleex/battery.c",
         "patchSetId": 2
