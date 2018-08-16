@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "83a2835b_06f6c81e",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-16T18:59:25Z",
+      "side": 1,
+      "message": "Nocturne has CONFIG_POWER_S0IX defined. Shall we switch to PCH_SLP_S0_L?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "03a70c83cabce967d489a6d1a9be4b43f1b4d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1975fe87_670e47d7",
         "filename": "board/meowth_fp/board.c",
         "patchSetId": 1
@@ -46,6 +69,30 @@
       "revId": "03a70c83cabce967d489a6d1a9be4b43f1b4d680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ff2b5a_a1b93437",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-16T18:59:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "71099eb1_42486b23",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "03a70c83cabce967d489a6d1a9be4b43f1b4d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
