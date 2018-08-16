@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "f74bb80f_05e02261",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-16T15:54:05Z",
+      "side": 1,
+      "message": "Rather than extend this if/else chain with extra #defines, it would be easier to read and maintain if this was structured as an array of {soc, available-charger-power} points, provided by a board_ function.",
+      "range": {
+        "startLine": 2000,
+        "startChar": 0,
+        "endLine": 2007,
+        "endChar": 2
+      },
+      "revId": "c4668e6f2319841ae80b4b7db3ad5d081c7c7308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c442f59_018e3355",
         "filename": "include/config.h",
         "patchSetId": 1
