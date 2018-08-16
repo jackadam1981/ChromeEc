@@ -14,6 +14,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <time.h>
 #include <unistd.h>
 
 #include <fmap.h>
@@ -72,7 +73,7 @@ static struct first_response_pdu targ;
 static uint16_t protocol_version;
 static uint16_t header_type;
 static char *progname;
-static char *short_opts = "bd:efg:hjnp:rsS:tuw";
+static char *short_opts = "bd:efg:hjnp:rsS:tuwl";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"binvers",	1,   NULL, 'b'},
@@ -90,6 +91,7 @@ static const struct option long_opts[] = {
 	{"tp_info",	0,   NULL, 't'},
 	{"unlock_rollback",	0,   NULL, 'u'},
 	{"unlock_rw",	0,   NULL, 'w'},
+	{"fetch_log",	0,   NULL, 'l'},
 	{},
 };
 
@@ -125,6 +127,7 @@ static void usage(int errs)
 	       "  -t,--tp_info             Get touchpad information\n"
 	       "  -u,--unlock_rollback     Tell EC to unlock the rollback region\n"
 	       "  -w,--unlock_rw           Tell EC to unlock the RW region\n"
+	       "  -l,--fetch_log           Get console log\n"
 	       "\n", progname, VID, PID);
 
 	exit(errs ? update_error : noop);
@@ -305,9 +308,9 @@ static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
 }
 
 static void xfer(struct usb_endpoint *uep, void *outbuf,
-		 size_t outlen, void *inbuf, size_t inlen)
+		 size_t outlen, void *inbuf, size_t inlen, int allow_less)
 {
-	do_xfer(uep, outbuf, outlen, inbuf, inlen, 0, NULL);
+	do_xfer(uep, outbuf, outlen, inbuf, inlen, allow_less, NULL);
 }
 
 /* Return 0 on error, since it's never gonna be EP 0 */
@@ -495,14 +498,14 @@ static int transfer_block(struct usb_endpoint *uep,
 	int r;
 
 	/* First send the header. */
-	xfer(uep, ufh, sizeof(*ufh), NULL, 0);
+	xfer(uep, ufh, sizeof(*ufh), NULL, 0, 0);
 
 	/* Now send the block, chunk by chunk. */
 	for (transfer_size = 0; transfer_size < payload_size;) {
 		int chunk_size;
 
 		chunk_size = MIN(uep->chunk_len, payload_size - transfer_size);
-		xfer(uep, transfer_data_ptr, chunk_size, NULL, 0);
+		xfer(uep, transfer_data_ptr, chunk_size, NULL, 0, 0);
 		transfer_data_ptr += chunk_size;
 		transfer_size += chunk_size;
 	}
@@ -843,7 +846,8 @@ static void setup_connection(struct transfer_descriptor *td)
  */
 static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 			    void *cmd_body, size_t body_size,
-			    void *resp, size_t *resp_size)
+			    void *resp, size_t *resp_size,
+			    int allow_less)
 {
 	struct update_frame_header *ufh;
 	uint16_t *frame_ptr;
@@ -868,7 +872,8 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 	if (body_size)
 		memcpy(frame_ptr + 1, cmd_body, body_size);
 
-	xfer(uep, ufh, usb_msg_size, resp, resp_size ? *resp_size : 0);
+	xfer(uep, ufh, usb_msg_size, resp, resp_size ? *resp_size : 0,
+	     allow_less);
 
 	free(ufh);
 	return 0;
@@ -886,7 +891,7 @@ static void send_done(struct usb_endpoint *uep)
 
 	/* Send stop request, ignoring reply. */
 	out = htobe32(UPDATE_DONE);
-	xfer(uep, &out, sizeof(out), &out, 1);
+	xfer(uep, &out, sizeof(out), &out, 1, 0);
 }
 
 static void send_subcommand(struct transfer_descriptor *td, uint16_t subcommand,
@@ -897,7 +902,7 @@ static void send_subcommand(struct transfer_descriptor *td, uint16_t subcommand,
 
 	ext_cmd_over_usb(&td->uep, subcommand,
 			cmd_body, body_size,
-			response, &response_size);
+			response, &response_size, 0);
 	printf("sent command %x, resp %x\n", subcommand, response[0]);
 }
 
@@ -965,7 +970,7 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	subcommand = UPDATE_EXTRA_CMD_IMMEDIATE_RESET;
 	ext_cmd_over_usb(&td->uep, subcommand,
 			command_body, command_body_size,
-			&response, &response_size);
+			&response, &response_size, 0);
 
 	printf("reboot not triggered\n");
 }
@@ -993,6 +998,42 @@ static void get_random(uint8_t *data, int len)
 	}
 
 	fclose(fp);
+}
+
+static void read_console(struct transfer_descriptor *td)
+{
+	uint8_t payload[] = { 0x1 };
+	uint8_t response[64];
+	size_t response_size = 64;
+	struct timespec sleep_duration = {  /* 100 ms */
+		.tv_sec = 0,
+		.tv_nsec = 100l * 1000l * 1000l,
+	};
+
+	send_done(&td->uep);
+
+	printf("\n");
+	while (1) {
+		response_size = 1;
+		ext_cmd_over_usb(&td->uep,
+				 UPDATE_EXTRA_CMD_CONSOLE_READ_INIT,
+				 NULL, 0,
+				 response, &response_size, 0);
+
+		while (1) {
+			response_size = 64;
+			ext_cmd_over_usb(&td->uep,
+					 UPDATE_EXTRA_CMD_CONSOLE_READ_NEXT,
+					 payload, sizeof(payload),
+					 response, &response_size, 1);
+			if (response[0] == 0)
+				break;
+			/* make sure it's null-terminated. */
+			response[response_size - 1] = 0;
+			printf((const char *)response);
+		}
+		nanosleep(&sleep_duration, NULL);
+	}
 }
 
 int main(int argc, char *argv[])
@@ -1092,6 +1133,8 @@ int main(int argc, char *argv[])
 		case 'w':
 			extra_command = UPDATE_EXTRA_CMD_UNLOCK_RW;
 			break;
+		case 'l':
+			extra_command = UPDATE_EXTRA_CMD_CONSOLE_READ_INIT;
 		case 0:				/* auto-handled option */
 			break;
 		case '?':
@@ -1161,6 +1204,8 @@ int main(int argc, char *argv[])
 			if (transferred_sections && !no_reset_request)
 				generate_reset_request(&td);
 		}
+	} else if (extra_command == UPDATE_EXTRA_CMD_CONSOLE_READ_INIT) {
+		read_console(&td);
 	} else if (extra_command > -1) {
 		send_subcommand(&td, extra_command,
 				extra_command_data, extra_command_data_len,
