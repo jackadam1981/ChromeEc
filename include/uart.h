@@ -300,4 +300,24 @@ int uart_alt_pad_write_read(uint8_t *tx, int tx_len, uint8_t *rx, int rx_len,
  */
 void uart_default_pad_rx_interrupt(enum gpio_signal signal);
 
+/**
+ * See EC_CMD_CONSOLE_SNAPSHOT.
+ */
+int uart_console_read_buffer_init(void);
+
+/**
+ * Read from uart buffer.
+ *
+ * See EC_CMD_CONSOLE_READ.
+ *
+ * @param type		an ec_console_read_subcmd value.
+ * @param dest		output buffer, it will be a null-terminated string.
+ * @param dest_size	size of output buffer.
+ * @param write_count	number of bytes written (including '\0').
+ */
+int uart_console_read_buffer(uint8_t type,
+			     char *dest,
+			     uint16_t dest_size,
+			     uint16_t *write_count);
+
 #endif  /* __CROS_EC_UART_H */
