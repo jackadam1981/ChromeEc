@@ -117,6 +117,30 @@
       "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c67ef82d_915ba6bd",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3171,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-16T15:34:38Z",
+      "side": 1,
+      "message": "Overall the change looks good to me. But, is it necessary to add a flag for the low power mode here? I ask because my understanding is that all boards using this PPC driver would want to enable low power mode. Thus, only checking if a driver has provided low power mode callback should be sufficient? Or are you envisioning some boards that might use the driver but not the low power mode?",
+      "parentUuid": "24e4ec20_29a28bd0",
+      "range": {
+        "startLine": 3171,
+        "startChar": 7,
+        "endLine": 3171,
+        "endChar": 32
+      },
+      "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
