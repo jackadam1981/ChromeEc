@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "22dd398a_6faff8e3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-16T01:52:14Z",
+      "side": 1,
+      "message": "is GRUP misspelled/abbreviated GROUP? You use it a few times so I\u0027m confused ,-)\n\nI\u0027d either use GROUP or (maybe) GRP",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 16
+      },
+      "revId": "313084c7360d35ecf0f3dbae413a78d28c1c128c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0896f214_fdab6bde",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-16T01:52:14Z",
+      "side": 1,
+      "message": "group?",
+      "range": {
+        "startLine": 385,
+        "startChar": 10,
+        "endLine": 385,
+        "endChar": 26
+      },
+      "revId": "313084c7360d35ecf0f3dbae413a78d28c1c128c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e789350_a4711b97",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 2
