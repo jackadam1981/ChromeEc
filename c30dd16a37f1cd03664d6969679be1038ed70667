@@ -46,6 +46,30 @@
       "revId": "c30dd16a37f1cd03664d6969679be1038ed70667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5cefd9_dcdb1c01",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-16T19:47:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3930075_4ff3ac30",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 70
+      },
+      "revId": "c30dd16a37f1cd03664d6969679be1038ed70667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
