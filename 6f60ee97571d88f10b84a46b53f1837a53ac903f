@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "625c44c9_84dd5e9d",
+        "filename": "chip/g/usb_endpoints.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2018-08-16T16:58:34Z",
+      "side": 1,
+      "message": "Maybe add a comment about what the 2 passes are needed for.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "6f60ee97571d88f10b84a46b53f1837a53ac903f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
