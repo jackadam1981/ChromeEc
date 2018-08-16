@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48ce9b1a_12a1e94c",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-08-16T19:19:22Z",
+      "side": 1,
+      "message": "Looking at b/110468852, the CL to switch to S0ix hasn\u0027t landed yet, so we\u0027re still using S3 atm I think. But yes, we should prepare for S0ix and sleep in both cases so we don\u0027t have to fix the firmware once CL:1108569 lands",
+      "parentUuid": "83a2835b_06f6c81e",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "03a70c83cabce967d489a6d1a9be4b43f1b4d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1975fe87_670e47d7",
         "filename": "board/meowth_fp/board.c",
         "patchSetId": 1
