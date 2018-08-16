@@ -23,16 +23,15 @@ void fps_event(enum gpio_signal signal)
 static void ap_deferred(void)
 {
 	/*
-	 * in S3, SLP_S3_L is 0 (and SLP_S0_L is X).
-	 * in S0, SLP_S3_L is 1 and SLP_S0_L is 1.
 	 * in S5/G3, the FP MCU should not be running.
 	 */
-	int running = gpio_get_level(GPIO_PCH_SLP_S3_L)
-			&& gpio_get_level(GPIO_PCH_SLP_S0_L);
+	int s3 = !gpio_get_level(GPIO_PCH_SLP_S3_L);
 
-	if (running) { /* S0 */
+	if (!s3) { /* S0 */
+		disable_sleep(SLEEP_MASK_AP_RUN);
 		hook_notify(HOOK_CHIPSET_RESUME);
 	} else { /* S3 */
+		enable_sleep(SLEEP_MASK_AP_RUN);
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 	}
 }
