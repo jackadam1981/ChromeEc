@@ -46,6 +46,29 @@
       "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "676c547b_c03c2f4d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-16T15:50:18Z",
+      "side": 1,
+      "message": "Should we reset the caps_count and hard_reset_count variables before transitioning to this state to ensure we send multiple source cap messages?\n\nI think we should also reset the variables in the success case too (when we set the state to negociate)",
+      "range": {
+        "startLine": 1514,
+        "startChar": 3,
+        "endLine": 1514,
+        "endChar": 43
+      },
+      "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
