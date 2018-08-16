@@ -1052,6 +1052,10 @@ enum NPCX_PMC_PWDWN_CTL_T {
 #define NPCX_DP80CTL_SYNCEN              1
 #define NPCX_DP80CTL_RFIFO               4
 #define NPCX_DP80CTL_CIEN                5
+#define NPCX_HOFS1R_IE                   0
+#define NPCX_HOFS1W_IE                   1
+#define NPCX_HOFS2R_IE                   2
+#define NPCX_HOFS2W_IE                   3
 
 /******************************************************************************/
 /* KBC Registers */
