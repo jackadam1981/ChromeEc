@@ -22,6 +22,30 @@
       "revId": "03a70c83cabce967d489a6d1a9be4b43f1b4d680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71099eb1_42486b23",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-08-16T16:55:05Z",
+      "side": 1,
+      "message": "It should sleep in S3. In S3 it should be waiting to be woken up either by the AP going back to S0, or by an IRQ from the FP sensor in case there is a finger present. Does that make sense?",
+      "parentUuid": "1975fe87_670e47d7",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "03a70c83cabce967d489a6d1a9be4b43f1b4d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
