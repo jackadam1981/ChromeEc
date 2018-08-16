@@ -59,13 +59,14 @@
 #define LPC_HOST_TRANSACTION_TIMEOUT_US 5
 #endif
 
+
 static uint32_t host_events;            /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];          /* Event masks for each type */
 static struct	host_packet lpc_packet;
 static struct	host_cmd_handler_args host_cmd_args;
 static uint8_t	host_cmd_flags;         /* Flags from host command */
-static uint8_t	shm_mem_host_cmd[256] __aligned(8);
-static uint8_t	shm_memmap[256] __aligned(8);
+static uint8_t	shm_mem_host_cmd[LPC_HOST_MEM_WINDW_SIZE] __aligned(8);
+static uint8_t	shm_memmap[LPC_HOST_MEM_WINDW_SIZE] __aligned(8);
 /* Params must be 32-bit aligned */
 static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
@@ -247,6 +248,11 @@ static void lpc_update_wake(uint32_t wake_events)
 uint8_t *lpc_get_memmap_range(void)
 {
 	return (uint8_t *)shm_memmap;
+}
+
+uint8_t *lpc_get_mem_host_cmd_range(void)
+{
+	return (uint8_t *)shm_mem_host_cmd;
 }
 
 static void lpc_send_response(struct host_cmd_handler_args *args)

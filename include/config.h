@@ -1776,6 +1776,15 @@
 /* Do not try hold I/O pins at frozen level during deep sleep */
 #undef CONFIG_NO_PINHOLD
 
+/* Nuvoton LPC Communication I2C Driver */
+
+/* Define interrupt to use for incoming i2c message. */
+#undef CONFIG_NPCX_I2C_OVER_LPC_SEM_IRQ
+/* Define memory region to use for semaphore IRQ management. */
+#undef CONFIG_NPCX_I2C_OVER_LPC_SEM_MEM
+/* Define maximum I2C message length we can receive. */
+#undef CONFIG_NPCX_I2C_OVER_LPC_MSG_LEN
+
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 

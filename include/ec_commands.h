@@ -3782,6 +3782,15 @@ struct __ec_align1 ec_params_reboot_ec {
  */
 #define EC_CMD_GET_PANIC_INFO 0x00D3
 
+/*
+ * Switch to Nuvoton I2C over LPC protocol.
+ *
+ * Older protocol must be used when switching back to cros_ec mode, as thei
+ * memory window used for commands is taken over.
+ */
+#define EC_CMD_CROS_TO_NPCX_I2C 0x00D4
+#define EC_CMD_NPCX_I2C_TO_CROS 0x00D5
+
 /*****************************************************************************/
 /*
  * Special commands
