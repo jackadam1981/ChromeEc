@@ -13,6 +13,11 @@
 #define NX20P3483_ADDR2 0xE4
 #define NX20P3483_ADDR3 0xE6
 
+#define NX20P3481_ADDR0 0xE8
+#define NX20P3481_ADDR1 0xEA
+#define NX20P3481_ADDR2 0xEC
+#define NX20P3481_ADDR3 0xEE
+
 /*
  * This PPC hard-codes the over voltage protect of Vbus at 6.8V in dead-battery
  * mode. If we ever are every going to drop the PD rail, we need to first ensure
@@ -47,6 +52,11 @@
 #define NX20P348X_MODE_5V_SRC  2
 #define NX20P348X_MODE_HV_SRC  3
 #define NX20P348X_MODE_STANDBY 4
+
+/* Switch Control Register */
+#define NX20P348X_SWITCH_CONTROL_HVSNK (1 << 0)
+#define NX20P348X_SWITCH_CONTROL_HVSRC (1 << 1)
+#define NX20P348X_SWITCH_CONTROL_5VSRC (1 << 2)
 
 /* Switch Status Register */
 #define NX20P348X_HVSNK_STS (1 << 0)
@@ -84,6 +94,7 @@
 
 /* Interrupt 1 Register Bits */
 #define NX20P348X_INT1_DBEXIT_ERR (1 << 7)
+#define NX20P348X_INT1_FRS_DET    (1 << 6)
 #define NX20P348X_INT1_OV_5VSRC   (1 << 4)
 #define NX20P348X_INT1_RCP_5VSRC  (1 << 3)
 #define NX20P348X_INT1_SC_5VSRC   (1 << 2)
