@@ -2528,6 +2528,18 @@
 #undef CONFIG_TABLET_MODE_SWITCH
 
 /*
+ * Add a physical switch to indicate when we are in tablet mode.
+ * Define TABLET_MODE_GPIO_L and direct its interrupt hander to tablet_mode_isr
+ */
+#undef CONFIG_TABLET_SWITCH
+
+/*
+ * Add a virtual switch to indicate when detachable device has
+ * base attached.
+ */
+#undef CONFIG_BASE_ATTACHED_SWITCH
+
+/*
  * Microchip Trace FIFO Debug Port
  */
 #undef CONFIG_MCHP_TFDP
