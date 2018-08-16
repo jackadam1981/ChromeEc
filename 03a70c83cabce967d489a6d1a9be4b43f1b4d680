@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1975fe87_670e47d7",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-16T16:27:55Z",
+      "side": 1,
+      "message": "I\u0027m confused. In S3, FPMCU should not sleep, right?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "03a70c83cabce967d489a6d1a9be4b43f1b4d680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
