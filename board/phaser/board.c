@@ -35,14 +35,11 @@ static uint16_t sku_id;
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
-		return;
+	const int port = (signal == GPIO_USB_C1_MUX_INT_ODL);
 
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
+	/* Disable level-triggered interrupt until alert handler finishes */
+	gpio_disable_interrupt(signal);
+	schedule_deferred_pd_interrupt(port);
 }
 
 static void ppc_interrupt(enum gpio_signal signal)

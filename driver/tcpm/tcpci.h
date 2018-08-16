@@ -136,6 +136,8 @@ int tcpci_tcpm_set_polarity(int port, int polarity);
 int tcpci_tcpm_set_vconn(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);
+int tcpci_cache_message(int port);
+int tcpci_is_pending_message(int port);
 int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head);
 int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 			uint16_t header, const uint32_t *data);

@@ -18,6 +18,11 @@
 #include "usb_pd_tcpc.h"
 #include "util.h"
 
+#include "console.h"
+
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
 /* Save the selected rp value */
@@ -326,7 +331,10 @@ int tcpci_tcpm_get_vbus_level(int port)
 }
 #endif
 
-int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
+
+
+
+static int internal_get_message(int port, uint32_t *payload, int *head)
 {
 	int rv, cnt, reg = TCPC_REG_RX_DATA;
 
@@ -350,6 +358,71 @@ clear:
 	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS);
 
 	return rv;
+}
+
+
+struct cached_tcpm_message {
+	int header;
+	uint32_t payload[7];
+	uint32_t flags;
+};
+
+#define CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL (1 << 0)
+
+//power of 2 - Reduce to 4 or 8
+#define CACHE_DEPTH (1 << 5)
+#define CACHE_DEPTH_MASK (CACHE_DEPTH - 1)
+
+static struct cached_tcpm_message cached_messages[CONFIG_USB_PD_PORT_COUNT][CACHE_DEPTH];
+static uint8_t cached_messages_head[CONFIG_USB_PD_PORT_COUNT];
+static uint8_t cached_messages_tail[CONFIG_USB_PD_PORT_COUNT];
+
+/* Switch head and tail */
+int tcpci_cache_message(const int port)
+{
+	struct cached_tcpm_message * const tail = &cached_messages[port][cached_messages_tail[port]];
+
+	if (tail->flags) {
+		CPRINTS("C%d RX EC Buffer full!", port);
+		return -1;
+	}
+
+	if (internal_get_message(port, tail->payload, &tail->header))
+		return -1;
+
+	tail->flags = CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL;
+	cached_messages_tail[port] = (cached_messages_tail[port] + 1) & CACHE_DEPTH_MASK;
+
+	CPRINTS("---C%d New tail number %d", port, cached_messages_tail[port]);
+	return EC_SUCCESS;
+}
+
+int tcpci_is_pending_message(const int port)
+{
+	return cached_messages[port][cached_messages_head[port]].flags &
+	       CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL;
+}
+
+int tcpci_tcpm_get_message(const int port, uint32_t *const payload,
+			   int *const header)
+{
+	struct cached_tcpm_message * const head = &cached_messages[port][cached_messages_head[port]];
+
+	if (!(head->flags & CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL)) {
+		CPRINTS("C%d No message in RX buffer!");
+		return -1;
+	}
+
+	*header = head->header;
+
+	memcpy(payload, head->payload, sizeof(head->payload));
+	head->flags = 0;
+
+	cached_messages_head[port] = (cached_messages_head[port] + 1) & CACHE_DEPTH_MASK;
+
+	CPRINTS("---C%d New head number %d", port, cached_messages_head[port]);
+
+	return EC_SUCCESS;
 }
 
 int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
@@ -398,10 +471,15 @@ static int register_mask_reset(int port)
 	return 0;
 }
 
+/*  TODO Update all other alert handlers */
 void tcpci_tcpc_alert(int port)
 {
 	int status;
 	uint32_t pd_event = 0;
+
+	// if (!port) gpio_set_level(GPIO_BAT_LED_ORANGE_L, 0);
+
+	// gpio_set_level(GPIO_BAT_LED_ORANGE_L, 0);
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
@@ -409,6 +487,7 @@ void tcpci_tcpc_alert(int port)
 	 * Check registers to see if we can tell that the TCPC has reset. If
 	 * so, perform tcpc_init inline.
 	 */
+	// doesn;t actully make that big of a difference
 	if (register_mask_reset(port))
 		pd_event |= PD_EVENT_TCPC_RESET;
 
@@ -419,6 +498,33 @@ void tcpci_tcpc_alert(int port)
 	if (status & ~TCPC_REG_ALERT_RX_STATUS)
 		tcpc_write16(port, TCPC_REG_ALERT,
 			     status & ~TCPC_REG_ALERT_RX_STATUS);
+
+
+	/* Happens first b/c state machine is waiting on TX completions */
+	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
+		/* transmit complete */
+		pd_transmit_complete(port, status & TCPC_REG_ALERT_TX_SUCCESS ?
+					   TCPC_TX_COMPLETE_SUCCESS :
+					   TCPC_TX_COMPLETE_FAILED);
+	}
+
+	/* Pull all messages from TCPC into EC memory */
+	while (status & TCPC_REG_ALERT_RX_STATUS) {
+		if (tcpci_cache_message(port)) {
+			break;
+		}
+		/*  wake up immediately */
+		task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
+		tcpm_alert_status(port, &status);
+	}
+
+	gpio_clear_pending_interrupt(port ? GPIO_USB_C1_MUX_INT_ODL : GPIO_USB_C0_MUX_INT_ODL);
+	gpio_enable_interrupt(port ? GPIO_USB_C1_MUX_INT_ODL : GPIO_USB_C0_MUX_INT_ODL);
+
+	// if (!port) gpio_set_level(GPIO_BAT_LED_ORANGE_L, 1);
+
+	// gpio_set_level(GPIO_BAT_LED_ORANGE_L, 1);
+
 
 	if (status & TCPC_REG_ALERT_CC_STATUS) {
 		/* CC status changed, wake task */
@@ -437,20 +543,10 @@ void tcpci_tcpc_alert(int port)
 		pd_event |= TASK_EVENT_WAKE;
 #endif /* CONFIG_USB_PD_VBUS_DETECT_TCPC && CONFIG_USB_CHARGER */
 	}
-	if (status & TCPC_REG_ALERT_RX_STATUS) {
-		/* message received */
-		pd_event |= PD_EVENT_RX;
-	}
 	if (status & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		pd_execute_hard_reset(port);
 		pd_event |= TASK_EVENT_WAKE;
-	}
-	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
-		/* transmit complete */
-		pd_transmit_complete(port, status & TCPC_REG_ALERT_TX_SUCCESS ?
-					   TCPC_TX_COMPLETE_SUCCESS :
-					   TCPC_TX_COMPLETE_FAILED);
 	}
 
 	/*
@@ -597,6 +693,10 @@ int tcpci_tcpm_init(int port)
 	error = init_alert_mask(port);
 	if (error)
 		return error;
+
+
+	gpio_clear_pending_interrupt(port ? GPIO_USB_C1_MUX_INT_ODL : GPIO_USB_C0_MUX_INT_ODL);
+	gpio_enable_interrupt(port ? GPIO_USB_C1_MUX_INT_ODL : GPIO_USB_C0_MUX_INT_ODL);
 
 	/* Read chip info here when we know the chip is awake. */
 	tcpm_get_chip_info(port, 1, NULL);

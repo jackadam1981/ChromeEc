@@ -2328,6 +2328,27 @@ static int pd_restart_tcpc(int port)
 }
 #endif
 
+static uint8_t interrupt_task_id[CONFIG_USB_PD_PORT_COUNT];
+
+void schedule_deferred_pd_interrupt(const int port)
+{
+	task_set_event(interrupt_task_id[port], PD_PROCESS_INTERRUPT, 0);
+}
+
+void pd_int_task(void* p)
+{
+	const int port = (int) p;
+
+	interrupt_task_id[port] = task_get_current();
+
+	while (1) {
+		const int evt = task_wait_event(-1);
+
+		if (evt & PD_PROCESS_INTERRUPT)
+			tcpc_alert(port);
+	}
+}
+
 void pd_task(void *u)
 {
 	int head;
@@ -2586,10 +2607,12 @@ void pd_task(void *u)
 #endif
 
 		/* process any potential incoming message */
-		incoming_packet = evt & PD_EVENT_RX;
+		incoming_packet = tcpci_is_pending_message(port);
 		if (incoming_packet) {
 			if (!tcpm_get_message(port, payload, &head))
 				handle_request(port, head, payload);
+			if (tcpci_is_pending_message(port))
+				task_set_event(task_get_current(), TASK_EVENT_WAKE, 0);
 		}
 
 		if (pd[port].req_suspend_state)
@@ -3575,6 +3598,7 @@ void pd_task(void *u)
 			if (pd[port].last_state != pd[port].task_state) {
 				/* Message ID of soft reset is always 0 */
 				pd[port].msg_id = 0;
+
 				res = send_control(port, PD_CTRL_SOFT_RESET);
 
 				/* if soft reset failed, try hard reset. */
@@ -3772,6 +3796,14 @@ void pd_task(void *u)
 			}
 		}
 #endif
+
+		/*
+		 * If there are still more messages, wake the task up
+		 * immediately after this iteration.
+		 */
+		/*if (tcpci_is_pending_message(port))
+			 What about stuff below changing timeout 
+			timeout = 1;*/
 
 		/* Check for disconnection if we're connected */
 		if (!pd_is_connected(port))

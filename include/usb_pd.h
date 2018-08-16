@@ -49,6 +49,9 @@ enum pd_rx_errors {
  */
 #define PD_EVENT_DEVICE_ACCESSED  (1<<7)
 
+void schedule_deferred_pd_interrupt(const int port);
+#define PD_PROCESS_INTERRUPT  (1<<0)
+
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
 #define PDO_MODES (PDO_MAX_OBJECTS - 1)
@@ -172,6 +175,10 @@ enum pd_rx_errors {
 #define PD_T_TRY_SRC          (125*MSEC) /* Max time for Try.SRC state */
 #define PD_T_TRY_WAIT         (600*MSEC) /* Max time for TryWait.SNK state */
 #define PD_T_SINK_REQUEST     (100*MSEC) /* Wait 100ms before next request */
+
+/* TODO put somwehre else */
+				
+int tcpci_is_pending_message(int port);
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
