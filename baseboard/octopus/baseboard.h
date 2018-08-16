@@ -260,6 +260,7 @@ enum power_signal {
 
 /* Forward declare common (within octopus) board-specific functions */
 void board_reset_pd_mcu(void);
+void board_enable_pd_interrupt(int port, int enable);
 
 #ifdef VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS
 void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);

@@ -6,6 +6,7 @@
 /* Type-C port manager */
 
 #include "anx74xx.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "ps8xxx.h"
 #include "task.h"
@@ -17,6 +18,9 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
+
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
@@ -326,7 +330,28 @@ int tcpci_tcpm_get_vbus_level(int port)
 }
 #endif
 
-int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head)
+struct cached_tcpm_message {
+	int header;
+	uint32_t payload[7];
+	uint32_t flags;
+};
+
+#define CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL (1 << 0)
+
+/* Cache depth needs to be power of 2 for quick modulus operation */
+#define CACHE_DEPTH (1 << 3)
+#define CACHE_DEPTH_MASK (CACHE_DEPTH - 1)
+
+/*
+ * Head points to the index of the first empty slot to put a new RX message.
+ * Tail points to the index of the first message for the PD task to consume.
+ */
+static struct cached_tcpm_message cached_messages[CONFIG_USB_PD_PORT_COUNT]
+						 [CACHE_DEPTH];
+static uint8_t cached_messages_head[CONFIG_USB_PD_PORT_COUNT];
+static uint8_t cached_messages_tail[CONFIG_USB_PD_PORT_COUNT];
+
+int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
 	int rv, cnt, reg = TCPC_REG_RX_DATA;
 
@@ -350,6 +375,64 @@ clear:
 	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS);
 
 	return rv;
+}
+
+int tcpcm_cache_message(const int port)
+{
+	int rv;
+	struct cached_tcpm_message *const head =
+		&cached_messages[port][cached_messages_head[port]];
+
+	if (head->flags) {
+		CPRINTS("C%d RX EC Buffer full!", port);
+		return EC_ERROR_OVERFLOW;
+	}
+
+	/* Call the raw driver without caching */
+	rv = tcpc_config[port].drv->get_message_raw(port, head->payload,
+						    &head->header);
+	if (rv) {
+		CPRINTS("C%d: Could not retrieve RX message (%d)", port, rv);
+		return rv;
+	}
+
+	/* Mark current entry as ready and increment head pointer */
+	head->flags = CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL;
+	cached_messages_head[port] =
+		(cached_messages_head[port] + 1) & CACHE_DEPTH_MASK;
+
+	/* Wake PD task up so it can process incoming RX messages */
+	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
+
+	return EC_SUCCESS;
+}
+
+int tcpm_has_pending_message(const int port)
+{
+	return cached_messages[port][cached_messages_tail[port]].flags &
+	       CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL;
+}
+
+int tcpm_get_message(const int port, uint32_t *const payload, int *const header)
+{
+	struct cached_tcpm_message *const tail =
+		&cached_messages[port][cached_messages_tail[port]];
+
+	if (!(tail->flags & CACHED_MESSAGE_FLAG_NEEDS_RETRIVAL)) {
+		CPRINTS("C%d No message in RX buffer!");
+		return EC_ERROR_BUSY;
+	}
+
+	/* Copy cache data in to parameters */
+	*header = tail->header;
+	memcpy(payload, tail->payload, sizeof(tail->payload));
+
+	/* Mark current entry as free and increment tail pointer */
+	tail->flags = 0;
+	cached_messages_tail[port] =
+		(cached_messages_tail[port] + 1) & CACHE_DEPTH_MASK;
+
+	return EC_SUCCESS;
 }
 
 int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
@@ -400,7 +483,7 @@ static int register_mask_reset(int port)
 
 void tcpci_tcpc_alert(int port)
 {
-	int status;
+	int status = 0;
 	uint32_t pd_event = 0;
 
 	/* Read the Alert register from the TCPC */
@@ -420,6 +503,27 @@ void tcpci_tcpc_alert(int port)
 		tcpc_write16(port, TCPC_REG_ALERT,
 			     status & ~TCPC_REG_ALERT_RX_STATUS);
 
+	/*
+	 * Check for TX complete first b/c PD state machine waits on TX
+	 * completion events. This will send an event to the PD tasks
+	 * immediately
+	 */
+	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
+		/* transmit complete */
+		pd_transmit_complete(port, status & TCPC_REG_ALERT_TX_SUCCESS ?
+					   TCPC_TX_COMPLETE_SUCCESS :
+					   TCPC_TX_COMPLETE_FAILED);
+	}
+
+	/* Pull all RX messages from TCPC into EC memory */
+	while (status & TCPC_REG_ALERT_RX_STATUS) {
+		tcpcm_cache_message(port);
+		tcpm_alert_status(port, &status);
+	}
+
+	/* Enable interrupts again because we should have cleared everything */
+	board_enable_pd_interrupt(port, 1);
+
 	if (status & TCPC_REG_ALERT_CC_STATUS) {
 		/* CC status changed, wake task */
 		pd_event |= PD_EVENT_CC;
@@ -437,20 +541,10 @@ void tcpci_tcpc_alert(int port)
 		pd_event |= TASK_EVENT_WAKE;
 #endif /* CONFIG_USB_PD_VBUS_DETECT_TCPC && CONFIG_USB_CHARGER */
 	}
-	if (status & TCPC_REG_ALERT_RX_STATUS) {
-		/* message received */
-		pd_event |= PD_EVENT_RX;
-	}
 	if (status & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
 		pd_execute_hard_reset(port);
 		pd_event |= TASK_EVENT_WAKE;
-	}
-	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
-		/* transmit complete */
-		pd_transmit_complete(port, status & TCPC_REG_ALERT_TX_SUCCESS ?
-					   TCPC_TX_COMPLETE_SUCCESS :
-					   TCPC_TX_COMPLETE_FAILED);
 	}
 
 	/*
@@ -753,7 +847,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
-	.get_message		= &tcpci_tcpm_get_message,
+	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &tcpci_tcpm_transmit,
 	.tcpc_alert		= &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC

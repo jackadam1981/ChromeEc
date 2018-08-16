@@ -150,10 +150,16 @@ static inline int tcpm_set_rx_enable(int port, int enable)
 	return tcpc_config[port].drv->set_rx_enable(port, enable);
 }
 
-static inline int tcpm_get_message(int port, uint32_t *payload, int *head)
-{
-	return tcpc_config[port].drv->get_message(port, payload, head);
-}
+/*
+ * All implementations get common caching functionality that make use of
+ * get_message_raw driver method.
+ */
+int tcpm_get_message(int port, uint32_t *payload, int *head);
+
+/**
+ * Returns true if the tcpm has cached RX messages waiting to be consumed.
+ */
+int tcpm_has_pending_message(int port);
 
 static inline int tcpm_transmit(int port, enum tcpm_transmit_type type,
 		  uint16_t header, const uint32_t *data)

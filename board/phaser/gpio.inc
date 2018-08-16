@@ -23,8 +23,8 @@ GPIO_INT(EC_VOLUP_BTN_ODL, PIN(7, 5), GPIO_INT_BOTH, button_interrupt)
 GPIO_INT(EC_VOLDN_BTN_ODL, PIN(4, 0), GPIO_INT_BOTH, button_interrupt)
 
 /* USB-C interrupts */
-GPIO_INT(USB_C0_MUX_INT_ODL, PIN(6, 1), GPIO_INT_FALLING, tcpc_alert_event)
-GPIO_INT(USB_C1_MUX_INT_ODL, PIN(F, 5), GPIO_INT_FALLING, tcpc_alert_event)
+GPIO_INT(USB_C0_MUX_INT_ODL, PIN(6, 1), GPIO_INT_LOW, tcpc_alert_event)
+GPIO_INT(USB_C1_MUX_INT_ODL, PIN(F, 5), GPIO_INT_LOW, tcpc_alert_event)
 GPIO_INT(USB_PD_C0_INT_ODL,  PIN(E, 0), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_PD_C1_INT_ODL,  PIN(F, 1), GPIO_INT_FALLING, ppc_interrupt)
 

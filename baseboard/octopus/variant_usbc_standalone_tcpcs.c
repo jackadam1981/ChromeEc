@@ -126,10 +126,25 @@ void board_reset_pd_mcu(void)
 		 * TODO(crbug:846412): After refactor, ensure that battery has
 		 * enough charge to last the reboot as well
 		 */
+		board_enable_pd_interrupt(USB_PD_PORT_PS8751, 0);
 		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 		msleep(PS8XXX_RESET_DELAY_MS);
 		gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
+		board_enable_pd_interrupt(USB_PD_PORT_PS8751, 1);
 	} else {
 		CPRINTS("Skipping C1 TCPC reset because no battery");
+	}
+}
+
+void board_enable_pd_interrupt(const int port, const int enable)
+{
+	const enum gpio_signal signal =
+		port ? GPIO_USB_C1_MUX_INT_ODL : GPIO_USB_C0_MUX_INT_ODL;
+
+	if (enable) {
+		gpio_clear_pending_interrupt(signal);
+		gpio_enable_interrupt(signal);
+	} else {
+		gpio_disable_interrupt(signal);
 	}
 }

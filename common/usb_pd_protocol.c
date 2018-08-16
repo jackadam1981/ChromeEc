@@ -2328,6 +2328,30 @@ static int pd_restart_tcpc(int port)
 }
 #endif
 
+/* Events for pd_int_task which only handles service TCPC interrupts. */
+#define PD_PROCESS_INTERRUPT  (1<<0)
+
+static uint8_t pd_int_task_id[CONFIG_USB_PD_PORT_COUNT];
+
+void schedule_deferred_pd_interrupt(const int port)
+{
+	task_set_event(pd_int_task_id[port], PD_PROCESS_INTERRUPT, 0);
+}
+
+void pd_int_task(void* p)
+{
+	const int port = (int) p;
+
+	pd_int_task_id[port] = task_get_current();
+
+	while (1) {
+		const int evt = task_wait_event(-1);
+
+		if (evt & PD_PROCESS_INTERRUPT)
+			tcpc_alert(port);
+	}
+}
+
 void pd_task(void *u)
 {
 	int head;
@@ -2586,10 +2610,15 @@ void pd_task(void *u)
 #endif
 
 		/* process any potential incoming message */
-		incoming_packet = evt & PD_EVENT_RX;
+		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
-			if (!tcpm_get_message(port, payload, &head))
-				handle_request(port, head, payload);
+			tcpm_get_message(port, payload, &head);
+			handle_request(port, head, payload);
+
+			/* Check if there are any more messages */
+			if (tcpm_has_pending_message(port))
+				task_set_event(task_get_current(),
+					       TASK_EVENT_WAKE, 0);
 		}
 
 		if (pd[port].req_suspend_state)

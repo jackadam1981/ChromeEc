@@ -22,8 +22,8 @@ add:
     - tcpci_tcpm_set_msg_header
   tcpm_set_rx_enable.lto_priv.252[driver/tcpm/tcpm.h:131]:
     - tcpci_tcpm_set_rx_enable
-  tcpm_get_message[driver/tcpm/tcpm.h:136]:
-    - tcpci_tcpm_get_message
+  tcpm_get_message_raw[driver/tcpm/tcpm.h:136]:
+    - tcpci_tcpm_get_message_raw
   tcpm_transmit[driver/tcpm/tcpm.h:142]:
     - ps8xxx_tcpm_transmit
   tcpc_alert[driver/tcpm/tcpm.h:147]:
