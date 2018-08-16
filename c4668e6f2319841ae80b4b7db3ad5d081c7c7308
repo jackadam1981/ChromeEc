@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c2cdb95_9a7b73f1",
+        "filename": "board/nami/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-16T15:11:16Z",
+      "side": 1,
+      "message": "We should update this comment",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 69
+      },
+      "revId": "c4668e6f2319841ae80b4b7db3ad5d081c7c7308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c442f59_018e3355",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-16T15:11:16Z",
+      "side": 1,
+      "message": "What do you think about making a condition to error if one of these new options if defined without the other?\n\ne.g. if (A \u0026\u0026 !B) or (!A \u0026\u0026 B) defined then #error\n\ndown below?",
+      "revId": "c4668e6f2319841ae80b4b7db3ad5d081c7c7308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
