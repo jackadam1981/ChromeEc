@@ -22,6 +22,30 @@
       "revId": "9208ac620a3b79b72e999901d17e7e01c48997d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b82a5a_65f7406f",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-16T04:17:16Z",
+      "side": 1,
+      "message": "Ok, the measuring Rx threshold value are added.",
+      "parentUuid": "b760cb6c_5102c916",
+      "range": {
+        "startLine": 284,
+        "startChar": 28,
+        "endLine": 284,
+        "endChar": 34
+      },
+      "revId": "9208ac620a3b79b72e999901d17e7e01c48997d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
