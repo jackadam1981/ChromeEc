@@ -16,6 +16,7 @@
 #include "rwsig.h"
 #include "sha256.h"
 #include "system.h"
+#include "uart.h"
 #include "update_fw.h"
 #include "usb-stream.h"
 #include "util.h"
@@ -341,6 +342,40 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 			 * On error, or if there is no data to write back, just
 			 * write back response.
 			 */
+			if (response != EC_RES_SUCCESS || write_count == 0)
+				break;
+
+			/* Check that we can write all the data to the queue. */
+			if (write_count > queue_space(&update_to_usb))
+				return EC_RES_BUSY;
+
+			QUEUE_ADD_UNITS(&update_to_usb, data, write_count);
+			return 1;
+		}
+#endif
+#ifdef CONFIG_USB_CONSOLE_READ
+		/* TODO(b/70482333): move this to a new interface, so we can
+		 *	we can support reading log and other commands at the
+		 *	same time?
+		 */
+		case UPDATE_EXTRA_CMD_CONSOLE_READ_INIT: {
+			response = uart_console_read_buffer_init();
+			break;
+		}
+		case UPDATE_EXTRA_CMD_CONSOLE_READ_NEXT: {
+			uint8_t data[64];
+			uint16_t write_count = 0;
+
+			if (data_count != 1) {
+				response = EC_RES_INVALID_PARAM;
+				break;
+			}
+
+			response = uart_console_read_buffer(
+					(buffer + header_size)[0],
+					(char *)data,
+					sizeof(data),
+					&write_count);
 			if (response != EC_RES_SUCCESS || write_count == 0)
 				break;
 
