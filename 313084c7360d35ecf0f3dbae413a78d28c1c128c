@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c3081c73_2bbe299d",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2018-08-16T09:42:41Z",
+      "side": 1,
+      "message": "It is modified, thanks!",
+      "parentUuid": "22dd398a_6faff8e3",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 16
+      },
+      "revId": "313084c7360d35ecf0f3dbae413a78d28c1c128c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0896f214_fdab6bde",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6fc93c02_97744630",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2018-08-16T09:42:41Z",
+      "side": 1,
+      "message": "It is modified, thanks!",
+      "parentUuid": "0896f214_fdab6bde",
+      "range": {
+        "startLine": 385,
+        "startChar": 10,
+        "endLine": 385,
+        "endChar": 26
+      },
+      "revId": "313084c7360d35ecf0f3dbae413a78d28c1c128c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e789350_a4711b97",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-15T16:19:09Z",
       "side": 1,
       "message": "Could do this check anyway, and then\n\nelse:\n  print \"Unsupported architecture\"\n\nso we fail gracefully when we add another architecture.",
+      "range": {
+        "startLine": 662,
+        "startChar": 10,
+        "endLine": 662,
+        "endChar": 47
+      },
+      "revId": "313084c7360d35ecf0f3dbae413a78d28c1c128c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5948ee5_18691140",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2018-08-16T09:42:41Z",
+      "side": 1,
+      "message": "The statement is added, and to test arm, andes or \nother architecture has corresponding execution.",
+      "parentUuid": "6e789350_a4711b97",
       "range": {
         "startLine": 662,
         "startChar": 10,
