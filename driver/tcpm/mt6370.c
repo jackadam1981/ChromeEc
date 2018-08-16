@@ -22,7 +22,7 @@
 static int mt6370_init(int port)
 {
 	int rv;
-
+	CPRINTF(__func__);
 	/* Software reset. */
 	rv = tcpc_write(port, MT6370_REG_SWRESET, 1);
 	if (rv)
@@ -57,16 +57,16 @@ static int mt6370_init(int port)
 
 	return rv;
 }
-
-#ifndef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#include <stdbool.h>
+//#ifndef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 static int mt6370_get_cc(int port, int *cc1, int *cc2)
 {
-	int status;
+	int status, role_ctrl, cc_role;
 	int rv;
-	int role;
-
+	bool act_as_sink, act_as_drp;
+	CPRINTF(__func__);
 	rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
-
+	rv |= tcpc_read(port, TCPC_REG_ROLE_CTRL, &role_ctrl);
 	/* If tcpc read fails, return error and CC as open */
 	if (rv) {
 		*cc1 = TYPEC_CC_VOLT_OPEN;
@@ -77,31 +77,39 @@ static int mt6370_get_cc(int port, int *cc1, int *cc2)
 	*cc1 = TCPC_REG_CC_STATUS_CC1(status);
 	*cc2 = TCPC_REG_CC_STATUS_CC2(status);
 
+	act_as_drp = TCPC_V10_REG_ROLE_CTRL_DRP & role_ctrl;
+
+	if (act_as_drp) {
+		act_as_sink = TCPC_V10_REG_CC_STATUS_DRP_RESULT(status);
+	} else {
+		cc_role =  TCPC_REG_CC_STATUS_CC1(role_ctrl);
+		if (cc_role == TYPEC_CC_RP)
+			act_as_sink = false;
+		else
+			act_as_sink = true;
+	}
+
 	/*
 	 * If status is not open, then OR in termination to convert to
 	 * enum tcpc_cc_voltage_status.
-	 *
-	 * MT6370 TCPC follows USB PD 1.0 protocol. When DRP not auto-toggling,
-	 * it will not update the DRP_RESULT bits in TCPC_REG_CC_STATUS,
-	 * instead, we should check CC1/CC2 bits in TCPC_REG_ROLE_CTRL.
 	 */
-	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
 
 	if (*cc1 != TYPEC_CC_VOLT_OPEN)
-		*cc1 |= (TCPC_REG_ROLE_CTRL_CC1(role) == TYPEC_CC_RD) << 2;
-	if (*cc2 != TYPEC_CC_VOLT_OPEN)
-		*cc2 |= (TCPC_REG_ROLE_CTRL_CC2(role) == TYPEC_CC_RD) << 2;
+		*cc1 |= (act_as_sink << 2);
 
+	if (*cc2 != TYPEC_CC_VOLT_OPEN)
+		*cc2 |= (act_as_sink << 2);
+	CPRINTF("cc1:0x%02x cc2:0x%02x\n",(int)*cc1,(int)*cc2);
 	return rv;
 }
-#endif
+//#endif
 
 /* MT6370 is a TCPCI compatible port controller */
 const struct tcpm_drv mt6370_tcpm_drv = {
 	.init			= &mt6370_init,
 	.release		= &tcpci_tcpm_release,
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	.get_cc			= &tcpci_tcpm_get_cc,
+	.get_cc			= &mt6370_get_cc,//tcpci_tcpm_get_cc
 #else
 	.get_cc			= &mt6370_get_cc,
 #endif

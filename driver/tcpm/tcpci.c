@@ -18,6 +18,11 @@
 #include "usb_pd_tcpc.h"
 #include "util.h"
 
+#include "console.h"
+
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+
 static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 
 /* Save the selected rp value */
@@ -163,6 +168,7 @@ int tcpci_tcpm_get_cc(int port, int *cc1, int *cc2)
 		*cc1 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
 	if (*cc2 != TYPEC_CC_VOLT_OPEN)
 		*cc2 |= TCPC_REG_CC_STATUS_TERM(status) << 2;
+	CPRINTF("cc1:0x%02x cc2:0x%02x\n",(int)*cc1,(int)*cc2);
 
 	return rv;
 }

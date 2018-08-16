@@ -1507,8 +1507,6 @@ void charger_task(void *u)
 	int need_static = 1;
 	const struct charger_info * const info = charger_get_info();
 
-	while (1)
-		task_wait_event(-1);
 
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();

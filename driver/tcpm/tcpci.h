@@ -52,6 +52,9 @@
 #define TCPC_REG_TCPC_CTRL_POLARITY(reg) ((reg) & 0x1)
 
 #define TCPC_REG_ROLE_CTRL         0x1a
+#define TCPC_V10_REG_ROLE_CTRL_DRP (1<<6)
+
+
 #define TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2) \
 		((drp) << 6 | (rp) << 4 | (cc2) << 2 | (cc1))
 #define TCPC_REG_ROLE_CTRL_RP_MASK  0x30
@@ -66,6 +69,13 @@
 #define TCPC_REG_POWER_CTRL_VCONN(reg)    ((reg) & 0x1)
 
 #define TCPC_REG_CC_STATUS         0x1d
+#define TCPC_V10_REG_CC_STATUS_DRP_TOGGLING (1<<5)
+#define TCPC_V10_REG_CC_STATUS_DRP_RESULT(reg) (((reg)&0x10)>>4)
+#define TCPC_V10_REG_CC_STATUS_CC2(reg) (((reg)&0x0C)>>2)
+#define TCPC_V10_REG_CC_STATUS_CC1(reg) ((reg)&0x03)
+
+
+
 #define TCPC_REG_CC_STATUS_LOOK4CONNECTION(reg) ((reg & 0x20) >> 5)
 #define TCPC_REG_CC_STATUS_SET(term, cc1, cc2) \
 		((term) << 4 | ((cc2) & 0x3) << 2 | ((cc1) & 0x3))
