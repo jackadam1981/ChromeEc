@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be36911c_f3535f71",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-16T16:06:51Z",
+      "side": 1,
+      "message": "Is this needed? You can just use val directly and pass that to setup_motion_sensors?",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 16
+      },
+      "revId": "08b70c8a3239dcb538faa40fa3fb561bf6318199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
