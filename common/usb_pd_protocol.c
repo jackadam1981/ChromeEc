@@ -405,18 +405,6 @@ int pd_device_in_low_power(int port)
 	return pd[port].flags & PD_FLAGS_LPM_ENGAGED;
 }
 
-/* This is only called from the PD tasks that owns the port. */
-static void request_low_power_mode(int port, int enable)
-{
-	/* This should only be called from the PD task */
-	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
-
-	if (enable)
-		pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
-	else
-		pd[port].flags &= ~PD_FLAGS_LPM_REQUESTED;
-}
-
 static int reset_device_and_notify(int port)
 {
 	int rv;
@@ -448,7 +436,7 @@ static int reset_device_and_notify(int port)
 	handle_device_access(port);
 
 	/* Clear SW LPM state; the state machine will set it again if needed */
-	request_low_power_mode(port, 0);
+	pd[port].flags &= ~PD_FLAGS_LPM_REQUESTED;
 
 	/* Wake up all waiting tasks (except this task). */
 	waiting_tasks &= ~current_task_mask;
@@ -499,17 +487,6 @@ static int reset_device_and_notify(int port)
 }
 
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
-
-/* Local convenience method for two method currently always called together. */
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-static void pd_set_drp_toggle(int port, int enable)
-{
-	tcpm_set_drp_toggle(port, enable);
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	request_low_power_mode(port, enable);
-#endif
-}
-#endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static int get_bbram_idx(int port)
@@ -575,12 +552,6 @@ static inline void set_state(int port, enum pd_states next_state)
 		return;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	/* Clear flag to allow DRP auto toggle when possible */
-	if (last_state != PD_STATE_DRP_AUTO_TOGGLE)
-		pd[port].flags &= ~PD_FLAGS_TCPC_DRP_TOGGLE;
-#endif
-
 	/* Ignore dual-role toggling between sink and source */
 	if ((last_state == PD_STATE_SNK_DISCONNECTED &&
 	     next_state == PD_STATE_SRC_DISCONNECTED) ||
@@ -2076,12 +2047,6 @@ void pd_update_dual_role_config(int port)
 		set_state(port, PD_STATE_SRC_DISCONNECTED);
 		tcpm_set_cc(port, TYPEC_CC_RP);
 	}
-
-#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
-	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
-	/* When switching drp mode, make sure tcpc is out of standby mode */
-	pd_set_drp_toggle(port, 0);
-#endif
 }
 
 int pd_get_role(int port)
@@ -2601,7 +2566,6 @@ void pd_task(void *u)
 			 * not already auto toggling and not try.src
 			 */
 			if (auto_toggle_supported &&
-			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
 			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
 			    (cc1 == TYPEC_CC_VOLT_OPEN &&
 			     cc2 == TYPEC_CC_VOLT_OPEN)) {
@@ -3087,7 +3051,6 @@ void pd_task(void *u)
 			 * not already auto toggling and not try.src
 			 */
 			if (auto_toggle_supported &&
-			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
 			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
 			    (cc1 == TYPEC_CC_VOLT_OPEN &&
 			     cc2 == TYPEC_CC_VOLT_OPEN)) {
@@ -3703,10 +3666,6 @@ void pd_task(void *u)
 				/* Anything else, keep toggling */
 				next_state = PD_STATE_DRP_AUTO_TOGGLE;
 
-			if (next_state != PD_STATE_DRP_AUTO_TOGGLE) {
-				pd_set_drp_toggle(port, 0);
-			}
-
 			if (next_state == PD_STATE_SNK_DISCONNECTED) {
 				tcpm_set_cc(port, TYPEC_CC_RD);
 				pd_set_power_role(port, PD_ROLE_SINK);
@@ -3724,9 +3683,10 @@ void pd_task(void *u)
 				 */
 				if (drp_state != PD_DRP_TOGGLE_OFF
 				    && drp_state != PD_DRP_FORCE_SINK)
-					tcpm_set_drp_toggle(port, 1);
-				request_low_power_mode(port, 1);
-				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
+					tcpm_enable_drp_toggle(port);
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+				pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
+#endif
 				timeout = -1;
 			}
 			set_state(port, next_state);
