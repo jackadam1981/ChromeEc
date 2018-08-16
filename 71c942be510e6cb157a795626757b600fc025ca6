@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76748fd8_82b7325d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-08-16T01:19:09Z",
+      "side": 1,
+      "message": "This test is would be applicable to all chrome projects.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "71c942be510e6cb157a795626757b600fc025ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8b9129_f318c5d3",
+        "filename": "board/bobba/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-08-16T01:19:09Z",
+      "side": 1,
+      "message": "nit: please use a explicit name to know this is for battery test.",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "71c942be510e6cb157a795626757b600fc025ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ce55ba_5cd5288c",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-08-16T01:19:09Z",
+      "side": 1,
+      "message": "nit: redundant code",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 7
+      },
+      "revId": "71c942be510e6cb157a795626757b600fc025ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
