@@ -77,6 +77,19 @@
 #endif
 
 /*
+ * Mark functions that collide with stdlib so they can be hidden when linking
+ * against libraries that require stdlib. STDLIB_COMPAT(...) should be defined
+ * as empty before including common.h from code that links to cstdlib.
+ */
+#ifndef STDLIB_COMPAT
+#ifdef TEST_FUZZ
+#define STDLIB_COMPAT(...) __attribute__((visibility("hidden"))) __VA_ARGS__
+#else /* TEST_FUZZ */
+#define STDLIB_COMPAT(...) __VA_ARGS__
+#endif /* TEST_FUZZ */
+#endif /* STDLIB_COMPAT */
+
+/*
  * Force the toolchain to keep a symbol even with Link Time Optimization
  * activated.
  *
