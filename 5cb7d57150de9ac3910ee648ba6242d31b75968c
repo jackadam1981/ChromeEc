@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a72ec09d_0c0e99f5",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:02:05Z",
+      "side": 1,
+      "message": "can we just have 2 lines, one for each CONFIG that each includes nx20p34x.o (or will that mess up the compiler including the file twice)?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 5
+      },
+      "revId": "5cb7d57150de9ac3910ee648ba6242d31b75968c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b6d1e3_35f6c187",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:02:05Z",
+      "side": 1,
+      "message": "can we make this an #elif defined(CONFIG_USBC_PPC_NX20P3483) ... #else #error #endif",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "5cb7d57150de9ac3910ee648ba6242d31b75968c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2450d41_394f91cd",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:02:05Z",
+      "side": 1,
+      "message": "did you mean to have this in twice?",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "5cb7d57150de9ac3910ee648ba6242d31b75968c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f069a8f6_a1eaa50b",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:02:05Z",
+      "side": 1,
+      "message": "I didn\u0027t get these comments. Are you supposed to check the CC status first. Also, how does you know this is a false fast role swap?",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 5
+      },
+      "revId": "5cb7d57150de9ac3910ee648ba6242d31b75968c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e30be5_e52f58a9",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:02:05Z",
+      "side": 1,
+      "message": "nit: can you keep the #endif comments consistent here",
+      "range": {
+        "startLine": 426,
+        "startChar": 7,
+        "endLine": 426,
+        "endChar": 51
+      },
+      "revId": "5cb7d57150de9ac3910ee648ba6242d31b75968c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
