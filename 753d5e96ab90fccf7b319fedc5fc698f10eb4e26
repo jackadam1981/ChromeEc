@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d0e7e9_686a9124",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-17T05:08:13Z",
+      "side": 1,
+      "message": "Not a big deal, but this can also be:\ngpio_set_level(GPIO_UHALL_PWR_EN, !!lid_is_open());",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 39
+      },
+      "revId": "753d5e96ab90fccf7b319fedc5fc698f10eb4e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
