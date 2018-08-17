@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec0ffab9_3dce78f6",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:44:51Z",
+      "side": 1,
+      "message": "This used to be decimal 11, now hex 0x12, is that intentional?",
+      "revId": "8f9d5477fa933c359ec3961413eb9a2b1bf3776a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
