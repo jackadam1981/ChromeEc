@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e1ebfac_8c0a3a8b",
+        "filename": "baseboard/octopus/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Can do",
+      "parentUuid": "1781b966_99984343",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 17
+      },
+      "revId": "f9afd7211b2b9f95b6d3da223fb3c1eff8051af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4daa9776_8fc19aaa",
         "filename": "board/bobba/gpio.inc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-17T14:20:33Z",
       "side": 1,
       "message": "we will want followup code to make use of this new reset line",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "f9afd7211b2b9f95b6d3da223fb3c1eff8051af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd843402_de9b9261",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-17T15:12:03Z",
+      "side": 1,
+      "message": "Do we have a bobba or ocotpus bug to put in a TODO?  Or do we need to make one?",
+      "parentUuid": "4daa9776_8fc19aaa",
       "range": {
         "startLine": 102,
         "startChar": 0,
