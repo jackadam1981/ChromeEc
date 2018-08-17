@@ -52,9 +52,6 @@ static void anx74xx_cable_det_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
 
-/* 8-bit I2C address */
-#define DA9313_I2C_ADDR		0xd0
-
 /* GPIO Interrupt Handlers */
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -246,12 +243,6 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 /* Initialize board. */
 static void board_init(void)
 {
-	/*
-	 * Disable SwitchCap auto-boot and make EN pin level-trigger
-	 * TODO(b/77957956): Remove it after hardware fix.
-	 */
-	i2c_write8(I2C_PORT_POWER, DA9313_I2C_ADDR, 0x02, 0x34);
-
 	/* Enable BC1.2 VBUS detection */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_DET_L);
 	gpio_enable_interrupt(GPIO_USB_C1_VBUS_DET_L);
