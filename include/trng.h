@@ -5,6 +5,7 @@
 #ifndef __EC_INCLUDE_TRNG_H
 #define __EC_INCLUDE_TRNG_H
 
+#include <common.h>
 #include <stddef.h>
 #include <stdint.h>
 
@@ -30,7 +31,7 @@ void exit_trng(void);
  *
  * Not supported on all platforms.
  **/
-uint32_t rand(void);
+STDLIB_COMPAT uint32_t rand(void);
 
 /**
  * Output len random bytes into buffer.

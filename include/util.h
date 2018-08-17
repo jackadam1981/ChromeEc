@@ -57,30 +57,30 @@
 #define DIV_ROUND_NEAREST(x, y) (((x) + ((y) / 2)) / (y))
 
 /* Standard library functions */
-int atoi(const char *nptr);
-int isdigit(int c);
-int isspace(int c);
-int isalpha(int c);
-int isprint(int c);
-int memcmp(const void *s1, const void *s2, size_t len);
+STDLIB_COMPAT int atoi(const char *nptr);
+STDLIB_COMPAT int isdigit(int c);
+STDLIB_COMPAT int isspace(int c);
+STDLIB_COMPAT int isalpha(int c);
+STDLIB_COMPAT int isprint(int c);
+STDLIB_COMPAT int memcmp(const void *s1, const void *s2, size_t len);
 int safe_memcmp(const void *s1, const void *s2, size_t len);
-void *memcpy(void *dest, const void *src, size_t len);
-__visible void *memset(void *dest, int c, size_t len);
-void *memmove(void *dest, const void *src, size_t len);
-void *memchr(const void *buffer, int c, size_t n);
-int strcasecmp(const char *s1, const char *s2);
-int strncasecmp(const char *s1, const char *s2, size_t size);
-size_t strlen(const char *s);
-size_t strnlen(const char *s, size_t maxlen);
-char *strncpy(char *dest, const char *src, size_t n);
-int strncmp(const char *s1, const char *s2, size_t n);
+STDLIB_COMPAT void *memcpy(void *dest, const void *src, size_t len);
+STDLIB_COMPAT __visible void *memset(void *dest, int c, size_t len);
+STDLIB_COMPAT void *memmove(void *dest, const void *src, size_t len);
+STDLIB_COMPAT void *memchr(const void *buffer, int c, size_t n);
+STDLIB_COMPAT int strcasecmp(const char *s1, const char *s2);
+STDLIB_COMPAT int strncasecmp(const char *s1, const char *s2, size_t size);
+STDLIB_COMPAT size_t strlen(const char *s);
+STDLIB_COMPAT size_t strnlen(const char *s, size_t maxlen);
+STDLIB_COMPAT char *strncpy(char *dest, const char *src, size_t n);
+STDLIB_COMPAT int strncmp(const char *s1, const char *s2, size_t n);
 
 /* Like strtol(), but for integers. */
-int strtoi(const char *nptr, char **endptr, int base);
-uint64_t strtoul(const char *nptr, char **endptr, int base);
+STDLIB_COMPAT int strtoi(const char *nptr, char **endptr, int base);
+STDLIB_COMPAT uint64_t strtoul(const char *nptr, char **endptr, int base);
 
 /* Like strncpy(), but guarantees null termination. */
-char *strzcpy(char *dest, const char *src, int len);
+STDLIB_COMPAT char *strzcpy(char *dest, const char *src, int len);
 
 /**
  * Parses a boolean option from a string.
@@ -99,9 +99,9 @@ char *strzcpy(char *dest, const char *src, int len);
  *
  * Other strings return 0 and leave *dest unchanged.
  */
-int parse_bool(const char *s, int *dest);
+STDLIB_COMPAT int parse_bool(const char *s, int *dest);
 
-int tolower(int c);
+STDLIB_COMPAT int tolower(int c);
 
 /* 64-bit divide-and-modulo.  Does the equivalent of:
  *
