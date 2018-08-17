@@ -22,6 +22,30 @@
       "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb40233b_f10f0cf5",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-17T06:15:25Z",
+      "side": 1,
+      "message": "yes, I think your is out of date. So, how do I give you the newer datasheet? Send it to your e-mail jettrink@chromium.org?",
+      "parentUuid": "fe65acaf_7e8138ba",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 12
+      },
+      "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
