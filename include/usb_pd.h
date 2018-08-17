@@ -721,12 +721,7 @@ enum pd_states {
 #define PD_FLAGS_PARTNER_USB_COMM  (1 << 14)/* port partner is USB comms */
 #define PD_FLAGS_UPDATE_SRC_CAPS   (1 << 15)/* send new source capabilities */
 #define PD_FLAGS_TS_DTS_PARTNER    (1 << 16)/* partner has rp/rp or rd/rd */
-/*
- * These PD_FLAGS_LPM* flags track the software state (PD_LPM_FLAGS_REQUESTED)
- * and hardware state (PD_LPM_FLAGS_ENGAGED) of the TCPC lower power mode.
- */
-#define PD_FLAGS_LPM_REQUESTED     (1 << 17)/* Tracks SW LPM state */
-#define PD_FLAGS_LPM_ENGAGED       (1 << 18)/* Tracks HW LPM state */
+
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \

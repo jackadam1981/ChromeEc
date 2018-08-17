@@ -104,6 +104,13 @@ enum vdm_states {
 	VDM_STATE_WAIT_RSP_BUSY = 3,
 };
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+enum low_power_states {
+	HIGH_POWER,
+	LOW_POWER,
+};
+#endif
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 /* Port dual-role state */
 enum pd_dual_role_states drp_state[CONFIG_USB_PD_PORT_COUNT] = {
@@ -184,6 +191,11 @@ static struct pd_protocol {
 	int prev_request_mv;
 	/* Time for Try.SRC states */
 	uint64_t try_src_marker;
+#endif
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	enum low_power_states low_power_state;
+	uint64_t low_power_time;
 #endif
 
 	/* PD state for Vendor Defined Messages */
@@ -358,7 +370,6 @@ static void set_vconn(int port, int enable)
 
 /* 10 ms is enough time for any TCPC transaction to complete. */
 #define PD_LPM_DEBOUNCE_US (10 * MSEC)
-static timestamp_t lpm_debounce_deadlines[CONFIG_USB_PD_PORT_COUNT];
 static int tasks_waiting_on_reset[CONFIG_USB_PD_PORT_COUNT];
 
 /* This is only called from the PD tasks that owns the port. */
@@ -367,61 +378,38 @@ static void handle_device_access(int port)
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
-	lpm_debounce_deadlines[port].val = get_time().val + PD_LPM_DEBOUNCE_US;
-	if (pd[port].flags & PD_FLAGS_LPM_ENGAGED) {
-		CPRINTS("TCPC p%d Exited Low Power Mode via bus access", port);
-		pd[port].flags &= ~PD_FLAGS_LPM_ENGAGED;
+	if (pd[port].low_power_state != HIGH_POWER) {
+		pd[port].low_power_state = HIGH_POWER;
+		pd[port].low_power_time = get_time().val;
 	}
 }
 
 /* This can be called from any task. */
 void pd_device_accessed(int port)
 {
-	const int current_task = task_get_current();
-
-	/* If not in the PD TASK that owns data, marshal to that task */
-	if (current_task == PD_PORT_TO_TASK_ID(port)) {
-		/* Ignore any access to device while it is waking up */
-		if (tasks_waiting_on_reset[port] & (1 << current_task))
-			return;
-
+	if (port == TASK_ID_TO_PD_PORT(task_get_current()))
+		/* If we are in the PD task, we can handle immediately. */
 		handle_device_access(port);
-	}
 	else
+		/* Otherwise, we need to notify the PD task via event. */
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			       PD_EVENT_DEVICE_ACCESSED, 0);
 }
 
 int pd_device_in_low_power(int port)
 {
-	const int current_task = task_get_current();
-
-	/*
-	 * If we are actively waking the device up in the PD task, do not
-	 * let TCPC operation wait or retry because we are in low power mode.
-	 */
-	if (port == TASK_ID_TO_PD_PORT(current_task) &&
-	    tasks_waiting_on_reset[port] & (1 << current_task))
-		return 0;
-
-	return pd[port].flags & PD_FLAGS_LPM_ENGAGED;
+	return pd[port].low_power_state == LOW_POWER;
 }
 
 static int reset_device_and_notify(int port)
 {
 	int rv;
 	int task, waiting_tasks;
-	const int current_task_mask = 1 << task_get_current();
 
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
-	/*
-	 * Signal that this task is actively waiting for a wake up, which we
-	 * use to skip recursive wake calls within the tcpc_init method and
-	 * prevent pd_access from changing the HW status until we are done.
-	 */
-	atomic_or(&tasks_waiting_on_reset[port], current_task_mask);
+	pd[port].low_power_state = HIGH_POWER;
 
 	rv = tcpm_init(port);
 	if (rv == EC_SUCCESS)
@@ -429,31 +417,22 @@ static int reset_device_and_notify(int port)
 	else
 		CPRINTS("TCPC p%d init failed!", port);
 
+	/* Wake up all waiting tasks. */
 	waiting_tasks = atomic_read_clear(&tasks_waiting_on_reset[port]);
-
-	/*
-	 * Now that we are done waking up the device, handle device access
-	 * manually because we ignored it while waking up device.
-	 */
-	handle_device_access(port);
-
-	/* Clear SW LPM state; the state machine will set it again if needed */
-	pd[port].flags &= ~PD_FLAGS_LPM_REQUESTED;
-
-	/* Wake up all waiting tasks (except this task). */
-	waiting_tasks &= ~current_task_mask;
 	while (waiting_tasks) {
 		task = __fls(waiting_tasks);
 		waiting_tasks &= ~(1 << task);
 		task_set_event(task, TASK_EVENT_PD_AWAKE, 0);
 	}
 
+	pd[port].low_power_time = get_time().val;
+
 	return rv;
 }
 
 void pd_wait_for_wakeup(int port)
 {
-	if (task_get_current() == PD_PORT_TO_TASK_ID(port)) {
+	if (port == TASK_ID_TO_PD_PORT(task_get_current())) {
 		/* If we are in the PD task, we can directly reset */
 		reset_device_and_notify(port);
 	} else {
@@ -552,6 +531,12 @@ static inline void set_state(int port, enum pd_states next_state)
 
 	if (last_state == next_state)
 		return;
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	if (next_state == PD_STATE_DRP_AUTO_TOGGLE) {
+		pd[port].low_power_time = get_time().val;
+	}
+#endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/* Ignore dual-role toggling between sink and source */
@@ -3648,7 +3633,7 @@ void pd_task(void *u)
 			 * the CC lines did not change, then don't talk with the
 			 * TCPC otherwise we might wake it up.
 			 */
-			if (pd[port].flags & PD_FLAGS_LPM_REQUESTED &&
+			if (pd[port].low_power_state == LOW_POWER &&
 			    !(evt & PD_EVENT_CC))
 				break;
 
@@ -3685,6 +3670,9 @@ void pd_task(void *u)
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				timeout = 2*MSEC;
 			} else {
+				const int64_t time_left =
+					pd[port].low_power_time
+					 + PD_LPM_DEBOUNCE_US - get_time().val;
 				/*
 				 * Staying in PD_STATE_DRP_AUTO_TOGGLE,
 				 * always enter low power mode, and auto-toggle
@@ -3693,10 +3681,18 @@ void pd_task(void *u)
 				 */
 				if (drp_state[port] == PD_DRP_TOGGLE_ON)
 					tcpm_enable_drp_toggle(port);
+
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-				pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
+				if (time_left <= 0) {
+					CPRINTS("TCPC p%d Enter Low Power Mode",
+						port);
+					tcpm_enter_low_power_mode(port);
+					pd[port].low_power_state = LOW_POWER;
+					timeout = -1;
+				} else {
+					timeout = time_left;
+				}
 #endif
-				timeout = -1;
 			}
 			set_state(port, next_state);
 
@@ -3723,23 +3719,6 @@ void pd_task(void *u)
 				timeout = pd[port].timeout - now.val;
 			}
 		}
-
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-		/* Determine if we need to put the TCPC in low power mode */
-		if (pd[port].flags & PD_FLAGS_LPM_REQUESTED &&
-		    !(pd[port].flags & PD_FLAGS_LPM_ENGAGED)) {
-			const int64_t time_left =
-				lpm_debounce_deadlines[port].val - now.val;
-			if (time_left <= 0) {
-				pd[port].flags |= PD_FLAGS_LPM_ENGAGED;
-				tcpm_enter_low_power_mode(port);
-				CPRINTS("TCPC p%d Enter Low Power Mode", port);
-				timeout = -1;
-			} else if (timeout < 0 || timeout > time_left) {
-				timeout = time_left;
-			}
-		}
-#endif
 
 		/* Check for disconnection if we're connected */
 		if (!pd_is_connected(port))
