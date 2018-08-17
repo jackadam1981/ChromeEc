@@ -141,6 +141,30 @@
       "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161f1c19_810fc1e1",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:43:31Z",
+      "side": 1,
+      "message": "With both Ed and Furquan (lightly) opposing the flags, I have removed them for now and we can add them when needed. I did not add the CONFIG option back though.",
+      "parentUuid": "c67ef82d_915ba6bd",
+      "range": {
+        "startLine": 3171,
+        "startChar": 7,
+        "endLine": 3171,
+        "endChar": 32
+      },
+      "revId": "8e25fde172b23c469d829c3b347460cc0a68ede0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
