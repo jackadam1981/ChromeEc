@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd8bc583_2e1e1cce",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:17:50Z",
+      "side": 1,
+      "message": "should be bake the cc_polarity into the flags? (it should only be 1 bit)",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad5b3eaf_25f316cb",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:17:50Z",
+      "side": 1,
+      "message": "I like the comments to added on the sink_enable method, can you add similar ones here too?",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 8
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603e6a39_63bb39d1",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:17:50Z",
+      "side": 1,
+      "message": "nit: can you move this line down to 164 where to are setting the bits that this line clears",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfeb575c_780c7773",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:17:50Z",
+      "side": 1,
+      "message": "is this powering down the channel?",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 7
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
