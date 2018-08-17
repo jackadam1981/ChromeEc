@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56abd13f_0ae0bdd1",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T13:55:51Z",
+      "side": 1,
+      "message": "can you add a comment that this is for C2 (like the above comment)",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 34
+      },
+      "revId": "4448752b9ec0481c16b0f0f850bb0fe47b086439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c91a1c_ada4d943",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T13:55:51Z",
+      "side": 1,
+      "message": "nit: this seems like it should be in a separate CL.",
+      "range": {
+        "startLine": 100,
+        "startChar": 37,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "4448752b9ec0481c16b0f0f850bb0fe47b086439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
