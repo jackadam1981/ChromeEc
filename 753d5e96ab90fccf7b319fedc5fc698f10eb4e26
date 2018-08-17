@@ -22,6 +22,30 @@
       "revId": "753d5e96ab90fccf7b319fedc5fc698f10eb4e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9380d0b0_b9acf6f3",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:02:35Z",
+      "side": 1,
+      "message": "(yeah, and !! should not be required as lid_is_open is a boolean, and gpio_set_level probably does not care in most implementations).",
+      "parentUuid": "c0d0e7e9_686a9124",
+      "range": {
+        "startLine": 415,
+        "startChar": 2,
+        "endLine": 415,
+        "endChar": 39
+      },
+      "revId": "753d5e96ab90fccf7b319fedc5fc698f10eb4e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
