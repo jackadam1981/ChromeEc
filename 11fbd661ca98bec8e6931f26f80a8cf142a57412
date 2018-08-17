@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13270610_d74b80e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:37:00Z",
+      "side": 1,
+      "message": "Which device?\n\nWe really want to test this on whiskers _and_ another \"normal\" EC (say NPCX EC in nocturne, or any other device you can easily get hold of).",
+      "revId": "11fbd661ca98bec8e6931f26f80a8cf142a57412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1eca91e_5d5d3c99",
+        "filename": "include/uart.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:37:00Z",
+      "side": 1,
+      "message": "Needs a bit more description here.",
+      "revId": "11fbd661ca98bec8e6931f26f80a8cf142a57412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
