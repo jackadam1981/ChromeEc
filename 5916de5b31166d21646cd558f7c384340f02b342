@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d77da214_5588d481",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-17T17:18:44Z",
+      "side": 1,
+      "message": "With patch 4, I checked 72 byte saving by converting this into static.",
+      "parentUuid": "41db5d68_f3529001",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "5916de5b31166d21646cd558f7c384340f02b342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ee54373_1640b134",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -87,6 +111,24 @@
       "revId": "5916de5b31166d21646cd558f7c384340f02b342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53885347_23714da1",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-17T17:18:44Z",
+      "side": 1,
+      "message": "Patch 2 removed this and Line 410 as well.",
+      "parentUuid": "9ee54373_1640b134",
+      "revId": "5916de5b31166d21646cd558f7c384340f02b342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
