@@ -2344,6 +2344,45 @@ static int pd_restart_tcpc(int port)
 }
 #endif
 
+#ifdef HAS_TASK_PD_INT_C0
+/* Events for pd_interrupt_handler_task */
+#define PD_PROCESS_INTERRUPT  (1<<0)
+
+static uint8_t pd_int_task_id[CONFIG_USB_PD_PORT_COUNT];
+
+void schedule_deferred_pd_interrupt(const int port)
+{
+	task_set_event(pd_int_task_id[port], PD_PROCESS_INTERRUPT, 0);
+}
+
+void pd_interrupt_handler_task(void *p)
+{
+	const int port = (int) p;
+	const int port_mask = (1 << port);
+
+	pd_int_task_id[port] = task_get_current();
+
+	while (1) {
+		const int evt = task_wait_event(-1);
+
+		if (evt & PD_PROCESS_INTERRUPT) {
+			tcpc_alert(port);
+
+			/*
+			 * The interrupt signal should be de-asserted; if it
+			 * isn't, then we have more work to do. This effectively
+			 * makes the interrupt a level-interrupt instead of an
+			 * edge-interrupt without having to enable/disable a
+			 * real level-interrupt in multiple locations.
+			 */
+			if (tcpc_get_alert_status() & port_mask)
+				task_set_event(task_get_current(),
+					       PD_PROCESS_INTERRUPT, 0);
+		}
+	}
+}
+#endif /* HAS_TASK_PD_INT_C0 */
+
 void pd_task(void *u)
 {
 	int head;
