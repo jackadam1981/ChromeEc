@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7c762ee_8d56ffbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "idea",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379736f1_bf6779a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "comma in between the bugs",
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1278de_22f4a662",
+        "filename": "board/kukui/board_revs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "What\u0027s the point of these defines?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d595880_0fe0bf67",
+        "filename": "board/kukui/board_revs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "Just do\n#define BOARD_REV 0",
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e53cdb8d_138d563e",
+        "filename": "board/kukui/board_revs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "BOARD_REV \u003c 0 || BOARD_REV \u003e 1",
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10eb88ed_4b2c9c91",
+        "filename": "board/kukui/board_revs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer to have this in board.h, rather than a new file.",
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d26dc9_1c489b93",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "This belongs in another CL.\n\nAnd if we think this is useful, probably in another common file.",
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758e6eaa_a79fb360",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T06:34:16Z",
+      "side": 1,
+      "message": "OUT_LOW? OUT_HIGH?",
+      "range": {
+        "startLine": 122,
+        "startChar": 39,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
