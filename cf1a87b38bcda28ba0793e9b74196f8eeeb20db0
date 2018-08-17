@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571111fa_d07fcb5a",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-17T17:22:43Z",
+      "side": 1,
+      "message": "enum is inherently integer IIRC, so the check for range is still necessary here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "cf1a87b38bcda28ba0793e9b74196f8eeeb20db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e4acc1_4017487c",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-17T17:22:43Z",
+      "side": 1,
+      "message": "please double check that no one is searching for \"bit banging mode disabled\"   - maybe just code search for \"bit banging\" ?",
+      "range": {
+        "startLine": 435,
+        "startChar": 12,
+        "endLine": 435,
+        "endChar": 20
+      },
+      "revId": "cf1a87b38bcda28ba0793e9b74196f8eeeb20db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
