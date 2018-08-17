@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7149087_b019db0b",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-17T18:04:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571111fa_d07fcb5a",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "cf1a87b38bcda28ba0793e9b74196f8eeeb20db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e4acc1_4017487c",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "cf1a87b38bcda28ba0793e9b74196f8eeeb20db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40909029_eca09a06",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-17T18:04:20Z",
+      "side": 1,
+      "message": "checked in code search site and under third_party/. Clean.\n\nhttps://cs.corp.google.com/search/?q\u003d%22bit+banging+mode%22\u0026sq\u003dpackage:%5Echromeos_public$\u0026type\u003dcs\n\nhttps://cs.corp.google.com/search/?q\u003d%22bit+banging+mode%22\u0026sq\u003dpackage:%5Echromeos_internal$\u0026type\u003dcs",
+      "parentUuid": "05e4acc1_4017487c",
+      "range": {
+        "startLine": 435,
+        "startChar": 12,
+        "endLine": 435,
+        "endChar": 20
+      },
+      "revId": "cf1a87b38bcda28ba0793e9b74196f8eeeb20db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
