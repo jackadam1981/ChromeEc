@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d826dcb7_52f6cc48",
+        "filename": "baseboard/octopus/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-17T16:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1ebfac_8c0a3a8b",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 17
+      },
+      "revId": "f9afd7211b2b9f95b6d3da223fb3c1eff8051af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4daa9776_8fc19aaa",
         "filename": "board/bobba/gpio.inc",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "f9afd7211b2b9f95b6d3da223fb3c1eff8051af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bc84eb_24f484ef",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-17T16:03:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd843402_de9b9261",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "f9afd7211b2b9f95b6d3da223fb3c1eff8051af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
