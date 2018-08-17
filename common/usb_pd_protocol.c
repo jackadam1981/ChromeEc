@@ -4310,11 +4310,26 @@ static int command_pd(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(pd, command_pd,
-			"dualrole|dump|rwhashtable"
-			"|trysrc [0|1]\n\t<port> "
-			"[tx|bist_rx|bist_tx|charger|clock|dev|disable|enable"
-			"|soft|hash|hard|ping|state|swap [power|data]|"
-			"vdm [ping | curr | vers]]",
+			"dump"
+#ifdef CONFIG_USB_PD_TRY_SRC
+			"|trysrc"
+#endif
+			" [0|1|2]"
+#ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
+			"\n\trwhashtable"
+#endif
+			"\n\t<port>\tstate"
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			"|tx|bist_rx|bist_tx|charger|dev"
+			"\n\t\tdisable|enable|soft|info|hard|ping"
+			"\n\t\tdualrole [on|off|freeze|sink|source]"
+			"\n\t\tswap [power|data|vconn]"
+			"\n\t\tvdm [ping|curr|vers]"
+#ifdef CONFIG_CMD_PD_FLASH
+			"\n\t\tflash [erase|reboot|signature|info|version]"
+#endif /* CONFIG_CMD_PD_FLASH */
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
+			,
 			"USB PD");
 
 #ifdef HAS_TASK_HOSTCMD
