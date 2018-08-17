@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24d85420_9375b238",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-17T19:00:06Z",
+      "side": 1,
+      "message": "could the invariant component of this be defined separately - this would improve readability",
+      "range": {
+        "startLine": 101,
+        "startChar": 24,
+        "endLine": 101,
+        "endChar": 66
+      },
+      "revId": "f40433f68d4ad34e9f0b55ef5ff84909f8ebdbcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67101280_61c36ab6",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-17T19:00:06Z",
+      "side": 1,
+      "message": "just a thought: should this be added conditionally only when a fuzzying build is running?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "f40433f68d4ad34e9f0b55ef5ff84909f8ebdbcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
