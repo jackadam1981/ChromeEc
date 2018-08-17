@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a1ee7c4_3d5ed4c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:43:37Z",
+      "side": 1,
+      "message": "I\u0027d file a new bug. We probably need input from hammerd folks to try to figure out how we want to fetch these logs.",
+      "revId": "7be75f84139d99212b5c549efdc34541475af1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28439b0_54c9e2ae",
+        "filename": "common/usb_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:43:37Z",
+      "side": 1,
+      "message": "Yeah, we need to think about this carefully.\n\nBut if we just fetch logs when feedback is requested, this should not be too much of a problem.",
+      "revId": "7be75f84139d99212b5c549efdc34541475af1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2970ec5_19c80367",
+        "filename": "common/usb_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:43:37Z",
+      "side": 1,
+      "message": "What is this? I can\u0027t immediately figure it out...",
+      "range": {
+        "startLine": 375,
+        "startChar": 5,
+        "endLine": 375,
+        "endChar": 30
+      },
+      "revId": "7be75f84139d99212b5c549efdc34541475af1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f18c58ab_a256f3c7",
+        "filename": "common/usb_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:43:37Z",
+      "side": 1,
+      "message": "How can this happen? Shouldn\u0027t we just set maximum read length to queue_space(\u0026update_to_usb) above?",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 23
+      },
+      "revId": "7be75f84139d99212b5c549efdc34541475af1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53aa0080_df41c00a",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:43:37Z",
+      "side": 1,
+      "message": "Alphabetical order (by short option name)",
+      "revId": "7be75f84139d99212b5c549efdc34541475af1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58da8dd9_a0180cc5",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-17T01:43:37Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7be75f84139d99212b5c549efdc34541475af1d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
