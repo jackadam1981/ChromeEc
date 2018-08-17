@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "192e0e23_6296338d",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:23:31Z",
+      "side": 1,
+      "message": "the parameter value seems backwards. I would expect it to be a 1. Is charger_disharge_on_ac just a really badly named function?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "af3139313b673513f97288412edeb5e6efce6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
