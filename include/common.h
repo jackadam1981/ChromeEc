@@ -77,6 +77,16 @@
 #endif
 
 /*
+ * Mark functions that collide with stdlib so they can be hidden when linking
+ * against libraries that require stdlib.
+ */
+#ifdef TEST_FUZZ
+#define STDLIB_COMPAT __attribute__((visibility("hidden")))
+#else
+#define STDLIB_COMPAT
+#endif
+
+/*
  * Force the toolchain to keep a symbol even with Link Time Optimization
  * activated.
  *
