@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "705b57c8_3c8ece86",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:08:02Z",
+      "side": 1,
+      "message": "did you want to change this config option now that you have ADC to measure?",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "f0be2bad43ad5e8d6619ced4ee0cad54182a64fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c6bc41_650d9b30",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:08:02Z",
+      "side": 1,
+      "message": "this comment says this is a 10x voltage divider circuit, so I would think this would be 10",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "f0be2bad43ad5e8d6619ced4ee0cad54182a64fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
