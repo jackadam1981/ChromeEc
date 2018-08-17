@@ -832,7 +832,7 @@ static int anx74xx_tcpm_get_vbus_level(int port)
 }
 #endif
 
-static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
+static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
 	int reg = 0, rv = EC_SUCCESS;
 	int len = 0;
@@ -920,31 +920,34 @@ void anx74xx_tcpc_alert(int port)
 
 	/* Clear soft irq bit */
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_3,
-			 ANX74XX_REG_CLEAR_SOFT_IRQ);
+		   ANX74XX_REG_CLEAR_SOFT_IRQ);
 
-	if (tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg))
-		return EC_ERROR_UNKNOWN;
+	/* Read main alert register for pending alerts */
+	reg = 0;
+	tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
 
-	/* Don't clear msg received bit, until read it is by TCPM */
-	tcpc_write(port, ANX74XX_REG_RECVD_MSG_INT, (reg & 0xFE));
+	/* Prioritize TX completion because PD state machine is waiting */
+	if (reg & ANX74XX_REG_IRQ_GOOD_CRC_INT)
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
 
-	if (reg & ANX74XX_REG_IRQ_CC_MSG_INT)
-		/* Set a PD_EVENT_RX */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
+	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT)
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
+
+	/* Pull all RX messages from TCPC into EC memory */
+	while (reg & ANX74XX_REG_IRQ_CC_MSG_INT) {
+		tcpm_cache_message(port);
+		tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
+	}
+
+	/* Clear and pending alerts */
+	tcpc_write(port, ANX74XX_REG_RECVD_MSG_INT, reg);
 
 	if (reg & ANX74XX_REG_IRQ_CC_STATUS_INT)
 		/* CC status changed, wake task */
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 
-	if (reg & ANX74XX_REG_IRQ_GOOD_CRC_INT)
-		/* Inform PD about this TX success */
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
-
-	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT)
-		/* let PD does not wait for this */
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
-
-	/* Read and Clear register1 */
+	/* Read and clear extended alert register 1 */
+	reg = 0;
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, reg);
 
@@ -953,7 +956,8 @@ void anx74xx_tcpc_alert(int port)
 		/* ANX hardware clears the request bit */
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
 
-	/* Read and Clear TCPC Alert register2 */
+	/* Read and clear TCPC extended alert register 2 */
+	reg = 0;
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, reg);
 
@@ -1050,7 +1054,7 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.set_vconn		= &anx74xx_tcpm_set_vconn,
 	.set_msg_header		= &anx74xx_tcpm_set_msg_header,
 	.set_rx_enable		= &anx74xx_tcpm_set_rx_enable,
-	.get_message		= &anx74xx_tcpm_get_message,
+	.get_message_raw	= &anx74xx_tcpm_get_message_raw,
 	.transmit		= &anx74xx_tcpm_transmit,
 	.tcpc_alert		= &anx74xx_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC

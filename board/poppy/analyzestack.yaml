@@ -31,9 +31,9 @@ add:
   tcpm_set_rx_enable.lto_priv.252[driver/tcpm/tcpm.h:131]:
     - anx74xx_tcpm_set_rx_enable
     - tcpci_tcpm_set_rx_enable
-  tcpm_get_message[driver/tcpm/tcpm.h:136]:
-    - anx74xx_tcpm_get_message
-    - tcpci_tcpm_get_message
+  tcpm_get_message_raw[driver/tcpm/tcpm.h:136]:
+    - anx74xx_tcpm_get_message_raw
+    - tcpci_tcpm_get_message_raw
   tcpm_transmit[driver/tcpm/tcpm.h:142]:
     - anx74xx_tcpm_transmit
     - ps8xxx_tcpm_transmit

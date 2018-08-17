@@ -15,7 +15,7 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
+#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) &&                            \
 	!defined(CONFIG_USB_PD_DUAL_ROLE)
 #error "DRP auto toggle requires board to have DRP support"
 #error "Please upgrade your board configuration"
@@ -59,24 +59,25 @@ static inline int tcpc_xfer(int port, const uint8_t *out, int out_size,
 }
 
 static inline int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
-			    uint8_t *in, int in_size, int flags)
+				     uint8_t *in, int in_size, int flags)
 {
 	return i2c_xfer_unlocked(tcpc_config[port].i2c_host_port,
-			tcpc_config[port].i2c_slave_addr, out, out_size, in,
-			in_size, flags);
+				 tcpc_config[port].i2c_slave_addr, out,
+				 out_size, in, in_size, flags);
 }
 
 static inline int tcpc_read_block(int port, int reg, uint8_t *in, int size)
 {
 	return i2c_read_block(tcpc_config[port].i2c_host_port,
-			tcpc_config[port].i2c_slave_addr, reg, in, size);
+			      tcpc_config[port].i2c_slave_addr, reg, in, size);
 }
 
-static inline int tcpc_write_block(int port, int reg,
-		const uint8_t *out, int size)
+static inline int tcpc_write_block(int port, int reg, const uint8_t *out,
+				   int size)
 {
 	return i2c_write_block(tcpc_config[port].i2c_host_port,
-			tcpc_config[port].i2c_slave_addr, reg, out, size);
+			       tcpc_config[port].i2c_slave_addr, reg, out,
+			       size);
 }
 
 #else /* !CONFIG_USB_PD_TCPC_LOW_POWER */
@@ -86,10 +87,10 @@ int tcpc_read(int port, int reg, int *val);
 int tcpc_read16(int port, int reg, int *val);
 int tcpc_read_block(int port, int reg, uint8_t *in, int size);
 int tcpc_write_block(int port, int reg, const uint8_t *out, int size);
-int tcpc_xfer(int port, const uint8_t *out, int out_size,
-		uint8_t *in, int in_size);
-int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
-		uint8_t *in, int in_size, int flags);
+int tcpc_xfer(int port, const uint8_t *out, int out_size, uint8_t *in,
+	      int in_size);
+int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size, uint8_t *in,
+		       int in_size, int flags);
 
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
@@ -160,13 +161,14 @@ static inline int tcpm_set_rx_enable(int port, int enable)
 	return tcpc_config[port].drv->set_rx_enable(port, enable);
 }
 
-static inline int tcpm_get_message(int port, uint32_t *payload, int *head)
-{
-	return tcpc_config[port].drv->get_message(port, payload, head);
-}
+/**
+ * Reads a message using get_message_raw driver method and puts it into EC's
+ * cache.
+ */
+int tcpm_cache_message(int port);
 
 static inline int tcpm_transmit(int port, enum tcpm_transmit_type type,
-		  uint16_t header, const uint32_t *data)
+				uint16_t header, const uint32_t *data)
 {
 	return tcpc_config[port].drv->transmit(port, type, header, data);
 }
@@ -219,14 +221,14 @@ static inline int tcpm_enter_low_power_mode(int port)
 #endif
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
-static inline int tcpc_i2c_read(const int port, const int addr,
-				const int reg, int *data)
+static inline int tcpc_i2c_read(const int port, const int addr, const int reg,
+				int *data)
 {
 	return tcpc_read(port, reg, data);
 }
 
-static inline int tcpc_i2c_write(const int port, const int addr,
-				 const int reg, int data)
+static inline int tcpc_i2c_write(const int port, const int addr, const int reg,
+				 int data)
 {
 	return tcpc_write(port, reg, data);
 }
@@ -333,17 +335,6 @@ int tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpm_set_rx_enable(int port, int enable);
 
 /**
- * Read last received PD message.
- *
- * @param port Type-C port number
- * @param payload Pointer to location to copy payload of message
- * @param header of message
- *
- * @return EC_SUCCESS or error
- */
-int tcpm_get_message(int port, uint32_t *payload, int *head);
-
-/**
  * Transmit PD message
  *
  * @param port Type-C port number
@@ -365,5 +356,21 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 void tcpc_alert(int port);
 
 #endif
+
+/*
+ * Gets the next waiting RX message.
+ *
+ * @param port Type-C port number
+ * @param payload Pointer to location to copy payload of message
+ * @param header of message
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_get_message(int port, uint32_t *payload, int *head);
+
+/**
+ * Returns true if the tcpm has RX messages waiting to be consumed.
+ */
+int tcpm_has_pending_message(int port);
 
 #endif
