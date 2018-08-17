@@ -22,6 +22,30 @@
       "revId": "5916de5b31166d21646cd558f7c384340f02b342",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a42f681_1d64499b",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-17T00:19:46Z",
+      "side": 1,
+      "message": "Fixed.\nBTW, can we convert uart_bitbang_config() into static, since there are no other callers outside.\nBy doing so, binary size reduces by 100 bytes, and we can modify parity into unsigned int type without worrying about any side-effect.",
+      "parentUuid": "48d92430_defa4ef9",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "5916de5b31166d21646cd558f7c384340f02b342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
