@@ -4312,11 +4312,10 @@ static int command_pd(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(pd, command_pd,
-			"dualrole|dump|rwhashtable"
-			"|trysrc [0|1]\n\t<port> "
+			"dump|rwhashtable|trysrc [on|off]\n\t<port> "
 			"[tx|bist_rx|bist_tx|charger|clock|dev|disable|enable"
 			"|soft|hash|hard|ping|state|swap [power|data]|"
-			"vdm [ping | curr | vers]]",
+			"vdm [ping|curr|vers]|dualrole [on|off]]",
 			"USB PD");
 
 #ifdef HAS_TASK_HOSTCMD
