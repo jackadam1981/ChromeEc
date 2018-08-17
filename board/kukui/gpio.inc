@@ -5,6 +5,17 @@
  * found in the LICENSE file.
  */
 
+#ifdef SECTION_IS_RW
+#define GPIO_INT_RW(name, pin, flags, signal) GPIO_INT(name, pin, flags, signal)
+#define GPIO_INT_RO(name, pin, flags, signal)
+#elif defined(SECTION_IS_RO)
+#define GPIO_INT_RW(name, pin, flags, signal)
+#define GPIO_INT_RO(name, pin, flags, signal) GPIO_INT(name, pin, flags, signal)
+#else
+#define GPIO_INT_RW(name, pin, flags, signal) GPIO_INT(name, pin, flags, signal)
+#define GPIO_INT_RO(name, pin, flags, signal) GPIO_INT(name, pin, flags, signal)
+#endif
+
 /*
  * Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first.
