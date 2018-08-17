@@ -30,6 +30,12 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	CPRINTS("%s()", __func__, reason);
 	report_ap_reset(reason);
 
+	/* Turn off RMSRST_L  to meet tPCH12 */
+	gpio_set_level(GPIO_EC_PCH_RSMRST_L, 0);
+
+	/* Turn off DSW_PWROK to meet tPCH14 */
+	gpio_set_level(GPIO_EC_PCH_DSW_PWROK, 0);
+
 	/* Turn off DSW load switch. */
 	gpio_set_level(GPIO_EN_PP3300_A, 0);
 
@@ -38,7 +44,8 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 * power_wait_signals_timeout()
 	 */
 	/* Now wait for DSW_PWROK to go away. */
-	while (gpio_get_level(GPIO_PG_EC_DSW_PWROK) && (timeout_ms > 0)) {
+	while (gpio_get_level(GPIO_PG_EC_DSW_PWROK) &&
+	       gpio_get_level(GPIO_PG_EC_RSMRST_ODL) && (timeout_ms > 0)) {
 		msleep(1);
 		timeout_ms--;
 	};
