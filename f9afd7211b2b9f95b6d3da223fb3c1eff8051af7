@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1781b966_99984343",
+        "filename": "baseboard/octopus/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:20:33Z",
+      "side": 1,
+      "message": "can you add a note that this functionality has been moved to the AP for octopus",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 17
+      },
+      "revId": "f9afd7211b2b9f95b6d3da223fb3c1eff8051af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4daa9776_8fc19aaa",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-17T14:20:33Z",
+      "side": 1,
+      "message": "we will want followup code to make use of this new reset line",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "f9afd7211b2b9f95b6d3da223fb3c1eff8051af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
