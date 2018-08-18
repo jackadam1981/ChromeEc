@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb485c3f_1956aa30",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2018-08-18T00:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52b79539_539013a8",
+      "revId": "f52da24f39755912b0f41d8db21e7196f1d81ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "967e50ac_f32bc993",
         "filename": "include/base_state.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "97ced999_9c3ea48f",
+        "filename": "include/base_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2018-08-18T00:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "967e50ac_f32bc993",
+      "revId": "f52da24f39755912b0f41d8db21e7196f1d81ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4229c553_08f3f8b4",
         "filename": "include/base_state.h",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "f52da24f39755912b0f41d8db21e7196f1d81ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77b6d30_0c49c6c5",
+        "filename": "include/base_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2018-08-18T00:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4229c553_08f3f8b4",
+      "revId": "f52da24f39755912b0f41d8db21e7196f1d81ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
