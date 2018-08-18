@@ -41,6 +41,9 @@ static void power_button_handler(void)
 {
 	CPRINTS("power button pressed");
 
+	/* Clear RBOX wakeup interrupt */
+	rbox_clear_wakeup();
+
 	if (physical_detect_press() != EC_SUCCESS) {
 		/* Not consumed by physical detect */
 #ifdef CONFIG_U2F
