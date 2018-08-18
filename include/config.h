@@ -1140,6 +1140,7 @@
  * only supported on CR50.
  */
 #undef CONFIG_DCRYPTO
+#undef CONFIG_DCRYPTO_MOCK
 
 /*
  * When enabled, RSA 2048 bit keygen gets a 40% performance boost,
