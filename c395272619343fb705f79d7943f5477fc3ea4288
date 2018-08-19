@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "331465a6_0b1f394c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-19T23:55:17Z",
+      "side": 1,
+      "message": "nit: I\u0027d add \"base_state: \" prefix, of maybe \"common: \"",
+      "revId": "c395272619343fb705f79d7943f5477fc3ea4288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29ccd819_ba911bbf",
         "filename": "common/keyboard_mkbp.c",
         "patchSetId": 2
@@ -13,6 +30,23 @@
       "writtenOn": "2018-08-18T01:31:46Z",
       "side": 1,
       "message": "nit: keep under 80 cols.",
+      "revId": "c395272619343fb705f79d7943f5477fc3ea4288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55421d80_84215a99",
+        "filename": "include/base_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-19T23:55:17Z",
+      "side": 1,
+      "message": "nit: missing doc for this function",
       "revId": "c395272619343fb705f79d7943f5477fc3ea4288",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
