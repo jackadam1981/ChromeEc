@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c13c8915_8c4cc46b",
+        "filename": "board/host/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "I have renamed it to CONFIG_DCRYPTO_MOCK. Neither branch of the ifdef is hit unless we are building for the host board. The decision is whether to use a real implementation, or a mocked implementation. I have changed the name of the define to reflect this.",
+      "parentUuid": "20d6c074_ae1556c0",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90173989_58c1a458",
         "filename": "chip/host/dcrypto/aes.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8daf99e2_cd6bf558",
+        "filename": "chip/host/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "There is (and should be according to the style) exactly one trailing line at the end of the files.",
+      "parentUuid": "90173989_58c1a458",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "339a2b3b_bc78bbff",
+        "filename": "chip/host/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "This is reached.\n\nOn Cr50 it is used to encrypt the flash storage which is implemented on the host board by a variable in memory. If we actually need this functionality later, more than just the encryption will need to change. I have added a README.md to this directory to make it clear that the functions are not a full implementation and are specifically for fuzzing. It would be fine to build this out if we had a good reason.",
+      "parentUuid": "ddc6863f_22e7e137",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 62
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84956e2a_c5efe34d",
         "filename": "chip/host/dcrypto/app_key.c",
         "patchSetId": 1
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "eb482325_fab54baf",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84956e2a_c5efe34d",
+      "range": {
+        "startLine": 4,
+        "startChar": 3,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07912e85_e0ce9ccd",
         "filename": "chip/host/dcrypto/app_key.c",
         "patchSetId": 1
@@ -99,6 +189,24 @@
       "writtenOn": "2018-08-20T11:28:03Z",
       "side": 1,
       "message": "should this check dcrypto_appkey_init_flag_ !\u003d -1 ?",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef72bc82_cfb07e8d",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "If it needs to, then the check is missing from the Cr50 implementation.\n\nI have tried to keep this code as similar to the Cr50 code as is practical in case it helps find bugs were we didn\u0027t expect it.",
+      "parentUuid": "07912e85_e0ce9ccd",
       "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "d8012ad2_8c112198",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "9bb87bae_6022408b",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f75327_80ba1a46",
         "filename": "chip/host/dcrypto/app_key.c",
         "patchSetId": 1
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "66d7f21a_d3b1e038",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12f75327_80ba1a46",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 70
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46a17bfb_90d753ee",
         "filename": "chip/host/dcrypto/dcrypto.h",
         "patchSetId": 1
@@ -165,6 +321,24 @@
       "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a184672_18891a1d",
+        "filename": "chip/host/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "It is, It has enums, defines, and structs that should be consistent. I could pull them out into the other dcrypto.h",
+      "parentUuid": "46a17bfb_90d753ee",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "91e509ff_e57a96f2",
+        "filename": "chip/host/dcrypto/hmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b6d9f8ad_7fcd97c5",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e36e7bf_c2628ffd",
         "filename": "chip/host/dcrypto/hmac.c",
         "patchSetId": 1
@@ -214,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "1fc3d305_0f884fdb",
+        "filename": "chip/host/dcrypto/hmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "I may just see if I can include the hmac.c from the Cr50 dcrypto. For the purpose of fuzzing it makes sense to use the Cr50 implementations when ever they work on the host board.",
+      "parentUuid": "5e36e7bf_c2628ffd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b07f1c4c_3292feb2",
         "filename": "chip/host/dcrypto/internal.h",
         "patchSetId": 1
@@ -228,6 +450,24 @@
       "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fa8a39_1b9c3863",
+        "filename": "chip/host/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b07f1c4c_3292feb2",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "0d0090db_8896ac1f",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "I am leaving this in for now because they are needed to have a target that can compile and link to test all these changes.",
+      "parentUuid": "738ace1b_043df74f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92ddd167_fc4e8b90",
         "filename": "common/nvcounter.c",
         "patchSetId": 1
@@ -277,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "430fb4f9_a3673d56",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92ddd167_fc4e8b90",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b40fd05_03aeda56",
         "filename": "common/nvmem_vars.c",
         "patchSetId": 1
@@ -297,6 +585,30 @@
       "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91dd537a_78c2701b",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:32:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b40fd05_03aeda56",
+      "range": {
+        "startLine": 347,
+        "startChar": 27,
+        "endLine": 347,
+        "endChar": 46
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
