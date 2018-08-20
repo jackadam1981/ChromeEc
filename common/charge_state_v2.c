@@ -1486,9 +1486,11 @@ static int get_desired_input_current(enum battery_present batt_present,
 		int ilim = charge_manager_get_charger_current();
 		return ilim == CHARGE_CURRENT_UNINITIALIZED ?
 			CHARGE_CURRENT_UNINITIALIZED :
-			MAX(CONFIG_CHARGER_INPUT_CURRENT, ilim);
+			MIN(info->input_current_max,
+			    MAX(CONFIG_CHARGER_INPUT_CURRENT, ilim));
 #else
-		return CONFIG_CHARGER_INPUT_CURRENT;
+		return MIN(CONFIG_CHARGER_INPUT_CURRENT,
+			   info->input_current_max);
 #endif
 	} else {
 #ifdef CONFIG_USB_POWER_DELIVERY
@@ -2199,6 +2201,7 @@ int charge_set_input_current_limit(int ma, int mv)
 	/* Limit input current limit to max limit for this board */
 	ma = MIN(ma, CONFIG_CHARGER_MAX_INPUT_CURRENT);
 #endif
+	ma = MIN(ma, charger_get_info()->input_current_max);
 	curr.desired_input_current = ma;
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 	/* Wake up charger task to allocate current between lid and base. */
@@ -2354,6 +2357,12 @@ static int charge_command_charge_state(struct host_cmd_handler_args *args)
 				chgstate_set_manual_current(val);
 				break;
 			case CS_PARAM_CHG_INPUT_CURRENT:
+#ifdef CONFIG_CHARGER_MAX_INPUT_CURRENT
+				val = MIN(CONFIG_CHARGER_MAX_INPUT_CURRENT,
+					  val);
+#endif
+				val = MIN(charger_get_info()->input_current_max,
+					  val);
 				if (charger_set_input_current(val))
 					rv = EC_RES_ERROR;
 				break;
