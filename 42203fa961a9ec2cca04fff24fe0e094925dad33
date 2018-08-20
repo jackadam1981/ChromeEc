@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0f0b789_3d0a9360",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:32:06Z",
+      "side": 1,
+      "message": "Also reorganizes build targets to move fuzzer tests to its own binary?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f65731f_59620d9d",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:32:06Z",
+      "side": 1,
+      "message": "nit: spaces around \u003d",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112503b5_df8af1d6",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:32:06Z",
+      "side": 1,
+      "message": "nit: makes",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89531c3_b13ab48f",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:32:06Z",
+      "side": 1,
+      "message": "should there be advice here when to use either config?",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 74
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
