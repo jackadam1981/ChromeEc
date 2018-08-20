@@ -51,6 +51,24 @@
       "revId": "3d557183d4810fff85a93d1ac30a2e921746c82a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c041e4c0_c402aa2d",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-20T18:19:48Z",
+      "side": 1,
+      "message": "Making it strictly for the shutdown case was not sufficient.",
+      "parentUuid": "87f0090f_c0203923",
+      "revId": "3d557183d4810fff85a93d1ac30a2e921746c82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
