@@ -16,6 +16,23 @@
       "revId": "649e247abf602cdb1b660ee8090dcb525310b36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab994238_1b9aa49b",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2018-08-20T18:23:13Z",
+      "side": 1,
+      "message": "Heh, I wrote a comment that tried to explain this, but apparently did not publish it.\n\nI commented this out because it requires TABLET_MODE support which we are removing, but I wonder: do we really need to switch DPTF profiles on Nocturne when attaching/detaching base?",
+      "revId": "649e247abf602cdb1b660ee8090dcb525310b36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
