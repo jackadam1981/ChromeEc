@@ -4146,8 +4146,8 @@ static int command_pd(int argc, char **argv)
 		ccprintf("Try.SRC %s\n", pd_try_src_enable ? "on" : "off");
 		return EC_SUCCESS;
 	}
-#endif
-#endif
+#endif /* CONFIG_USB_PD_TRY_SRC */
+#endif /* CONFIG_CMD_PD */
 	/* command: pd <port> <subcmd> [args] */
 	port = strtoi(argv[1], &e, 10);
 	if (argc < 3)
@@ -4251,11 +4251,10 @@ static int command_pd(int argc, char **argv)
 		} else {
 			return EC_ERROR_PARAM_COUNT;
 		}
-#if defined(CONFIG_CMD_PD) && defined(CONFIG_CMD_PD_FLASH)
+#ifdef CONFIG_CMD_PD_FLASH
 	} else if (!strncasecmp(argv[2], "flash", 4)) {
 		return remote_flashing(argc, argv);
 #endif
-#if defined(CONFIG_CMD_PD) && defined(CONFIG_USB_PD_DUAL_ROLE)
 	} else if (!strcasecmp(argv[2], "dualrole")) {
 		if (argc < 4) {
 			ccprintf("dual-role toggling: ");
@@ -4292,9 +4291,8 @@ static int command_pd(int argc, char **argv)
 				return EC_ERROR_PARAM4;
 		}
 		return EC_SUCCESS;
-#endif
 	} else
-#endif
+#endif /* CONFIG_CMD_PD && CONFIG_USB_PD_DUAL_ROLE */
 	if (!strncasecmp(argv[2], "state", 5)) {
 		ccprintf("Port C%d CC%d, %s - Role: %s-%s%s "
 			 "State: %s, Flags: 0x%04x\n",
