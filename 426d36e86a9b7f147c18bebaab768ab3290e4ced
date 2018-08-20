@@ -1,0 +1,302 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20d6c074_ae1556c0",
+        "filename": "board/host/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "Pinweaver showing up in this file feels wrong as the dependency relation is in the other direction.\n\nShouldn\u0027t this rather be gated on whether we\u0027re building for the host? If that his too general, then maybe we should have a HOST_DCRYPTO define instead that testing code can select if it wants the host dcrypto implementation?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90173989_58c1a458",
+        "filename": "chip/host/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "nit: here and elsewhere: remove trailing blank lines",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc6863f_22e7e137",
+        "filename": "chip/host/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "Should we put a NOTREACHED assert here so this call fails if it actually gets invoked? Implementing retroactively a couple years from now and fixing up all callers that have come to implicitly expect no encryption is probably no fun...",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 62
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84956e2a_c5efe34d",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "nit: blank line here",
+      "range": {
+        "startLine": 4,
+        "startChar": 3,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07912e85_e0ce9ccd",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "should this check dcrypto_appkey_init_flag_ !\u003d -1 ?",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb87bae_6022408b",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "should you check dcrypto_appkey_init_flag_ here to verify init()/finish() is being nested correctly?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f75327_80ba1a46",
+        "filename": "chip/host/dcrypto/app_key.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "see other comment",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 70
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a17bfb_90d753ee",
+        "filename": "chip/host/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "This looks like a copy of chip/g/dcrypto/dcrypto.h - why do we need it?",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d9f8ad_7fcd97c5",
+        "filename": "chip/host/dcrypto/hmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "nit: drop",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e36e7bf_c2628ffd",
+        "filename": "chip/host/dcrypto/hmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "This should probably just use openssl HMAC instead of re-implementing HMAC on top of SHA256.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07f1c4c_3292feb2",
+        "filename": "chip/host/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "again: why copy?",
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "738ace1b_043df74f",
+        "filename": "chip/host/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "This change should probably go into a separate CL - it\u0027s got nothing to do with dcrypto",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ddd167_fc4e8b90",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b40fd05_03aeda56",
+        "filename": "common/nvmem_vars.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:28:03Z",
+      "side": 1,
+      "message": "fuzz support infrastructure should ideally go into a third CL",
+      "range": {
+        "startLine": 347,
+        "startChar": 27,
+        "endLine": 347,
+        "endChar": 46
+      },
+      "revId": "426d36e86a9b7f147c18bebaab768ab3290e4ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
