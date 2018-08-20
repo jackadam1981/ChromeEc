@@ -69,6 +69,30 @@
       "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7f894b_9177b5df",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-20T10:22:06Z",
+      "side": 1,
+      "message": "if case:\nI think caps_count and hard_reset_count don\u0027t reset necessarily, because first time \nfrom PD_STATE_SRC_DISCOVERY to PD_STATE_SRC_NEGOCIATE will reset both(means port partner having pd capable). If SRC pd port in PD_STATE_SRC_READY receives PD_CTRL_GET_SOURCE_CAP control message and transits to PD_STATE_SRC_DISCOVERY again. And caps_count \u003e PD_CAPS_COUNT then happen HardReset, caps_count will be reset in PD_STATE_SRC_STARUP, and hard_reset_count will be used to identify hard reset again or disconnect.   \n\nelse case:\nI think caps_count and hard_reset_count don\u0027t reset necessarily. This case I can\u0027t correspond to SRC state diagram of PD3.0 spec. I guess it just responds SRC_CAP and keeps original power contract.\n\n\u003cP.S\u003e\nres \u003e\u003d 0, it means that our PHY receiving GoodCRC.\nres \u003c 0, it means our PHY having not receiving GoodCRC or discarding packet.\nBoth can check in it83xx_tx_data function and Message Transmission Start Register bit[1,2].",
+      "parentUuid": "676c547b_c03c2f4d",
+      "range": {
+        "startLine": 1514,
+        "startChar": 3,
+        "endLine": 1514,
+        "endChar": 43
+      },
+      "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
