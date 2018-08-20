@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "095f5242_1f9efe43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-20T11:38:03Z",
+      "side": 1,
+      "message": "Bummer. Have you considered an alternative where you link all Cr50 stuff into a library that just exposes the fuzzer entry point and hides everything else via linker magic (assuming that exists)? That way, the Cr50 code might not have to change to accommodate linking cstdlib?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0aa10e6b_c61bcb96",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
