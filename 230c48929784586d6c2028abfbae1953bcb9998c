@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05388c51_1ec90557",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-20T04:48:07Z",
+      "side": 1,
+      "message": "How about calling this --follow_log?  Fetch sounds more like a command that will execute once and stop.  Dmesg uses:\n\n       -w, --follow\n              Wait for new messages.  This feature is supported only on\n              systems with a readable /dev/kmsg (since kernel 3.5.0).",
+      "range": {
+        "startLine": 130,
+        "startChar": 14,
+        "endLine": 130,
+        "endChar": 54
+      },
+      "revId": "230c48929784586d6c2028abfbae1953bcb9998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
