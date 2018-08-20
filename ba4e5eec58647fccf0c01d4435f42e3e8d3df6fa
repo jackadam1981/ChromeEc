@@ -45,6 +45,30 @@
       "revId": "ba4e5eec58647fccf0c01d4435f42e3e8d3df6fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212d491f_740a379d",
+        "filename": "include/uart.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-20T05:29:10Z",
+      "side": 1,
+      "message": "Yes (basically it\u0027ll return all the data that is available, since the older data has been overwritten).",
+      "parentUuid": "1fb416a1_eeb33f05",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 39
+      },
+      "revId": "ba4e5eec58647fccf0c01d4435f42e3e8d3df6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
