@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "188132f2_02ac302d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:27:21Z",
+      "side": 1,
+      "message": "That is actually what I did. I used linker \"magic\" to localize the Cr50 stuff so that the Cr50 code uses its own implementation and anything not built into the libec.a static library links against stdlib.",
+      "parentUuid": "095f5242_1f9efe43",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aa10e6b_c61bcb96",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b61d5b5_299b5d84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa10e6b_c61bcb96",
+      "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49dc2d3_95c6d384",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:27:21Z",
+      "side": 1,
+      "message": "I added more explanation on how to use this in practice.\n\nOne thing to note is I set your object file to -rw to test that this works, but I set it back to -y once I added the cr50 fuzzing target.",
+      "parentUuid": "27609d6b_e1613809",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
