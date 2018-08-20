@@ -1210,7 +1210,7 @@ void pd_soft_reset(void)
  */
 static int pd_send_request_msg(int port, int always_send_request)
 {
-	uint32_t rdo, curr_limit, supply_voltage;
+	uint32_t rdo, curr_limit, supply_voltage, select_pgm_rdo;
 	int res;
 
 #ifdef CONFIG_CHARGE_MANAGER
@@ -1234,6 +1234,7 @@ static int pd_send_request_msg(int port, int always_send_request)
 	 * request the max voltage, then select vSafe5V
 	 */
 	res = pd_build_request(port, &rdo, &curr_limit, &supply_voltage,
+			       &select_pgm_rdo,
 			       charging && max_request_allowed ?
 					PD_REQUEST_MAX : PD_REQUEST_VSAFE5V);
 
@@ -1267,6 +1268,12 @@ static int pd_send_request_msg(int port, int always_send_request)
 	res = send_request(port, rdo);
 	if (res < 0)
 		return res;
+#ifdef CONFIG_USB_PD_PPS
+	if (select_pgm_rdo)
+		pd[port].flags |= PD_FLAGS_SET_ON_PPS_REQUEST_MASK;
+	else
+		pd[port].flags &= ~PD_FLAGS_SET_ON_PPS_REQUEST_MASK;
+#endif
 	set_state(port, PD_STATE_SNK_REQUESTED);
 	return EC_SUCCESS;
 }
@@ -2608,6 +2615,11 @@ void pd_task(void *u)
 		if (incoming_packet) {
 			if (!tcpm_get_message(port, payload, &head))
 				handle_request(port, head, payload);
+#ifdef CONFIG_USB_PD_PPS
+		} else if (pd[port].flags & PD_FLAGS_PPS_ENABLED &&
+			   !(pd[port].flags & PD_FLAGS_PPS_REQUESTED)) {
+			pd_send_request_msg(port, 1);
+#endif
 		}
 
 		if (pd[port].req_suspend_state)
@@ -3392,7 +3404,6 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SNK_READY:
 			timeout = 20*MSEC;
-
 			/*
 			 * Don't send any PD traffic if we woke up due to
 			 * incoming packet or if VDO response pending to avoid
@@ -3433,6 +3444,14 @@ void pd_task(void *u)
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
 				break;
 			}
+
+#ifdef CONFIG_USB_PD_PPS
+			if (pd[port].flags & PD_FLAGS_PPS_ENABLED) {
+				pd[port].flags &= ~PD_FLAGS_PPS_REQUESTED;
+				timeout = PD_T_PPS_REQUEST;
+				break;
+			}
+#endif
 
 			/* Sent all messages, don't need to wake very often */
 			timeout = 200*MSEC;

@@ -1,6 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file.
+/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.  * Use of this source code is governed by a BSD-style license that can be * found in the LICENSE file.
  */
 
 #include "atomic.h"
@@ -101,11 +99,18 @@ int pd_find_pdo_index(int port, int max_mv, uint32_t *selected_pdo)
 
 	/* Get max power that is under our max voltage input */
 	for (i = 0; i < pd_src_cap_cnt[port]; i++) {
-		/* its an unsupported Augmented PDO (PD3.0) */
-		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
+		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+#ifdef CONFIG_USB_PD_PPS
+			/* Skip if the voltage range not supported. */
+			if (PDO_PGM_MIN_VOLT_DECODE(src_caps[i]) > max_mv)
+				continue;
+			mv = MIN(max_mv, PDO_PGM_MAX_VOLT_DECODE(src_caps[i]));
+#else
 			continue;
-
-		mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
+#endif
+		} else {
+			mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
+		}
 		/* Skip invalid voltage */
 		if (!mv)
 			continue;
@@ -116,7 +121,12 @@ int pd_find_pdo_index(int port, int max_mv, uint32_t *selected_pdo)
 		if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 			uw = 250000 * (src_caps[i] & 0x3FF);
 		} else {
-			ma = (src_caps[i] & 0x3FF) * 10;
+#ifdef CONFIG_USB_PD_PPS
+			if ((src_caps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
+				ma = PDO_PGM_MAX_CURR_DECODE(src_caps[i]);
+			else
+#endif
+				ma = (src_caps[i] & 0x3FF) * 10;
 			ma = MIN(ma, PD_MAX_CURRENT_MA);
 			uw = ma * mv;
 		}
@@ -152,7 +162,12 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 {
 	int max_ma, uw;
 
-	*mv = ((pdo >> 10) & 0x3FF) * 50;
+#ifdef CONFIG_USB_PD_PPS
+	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
+		*mv = MIN(PDO_PGM_MAX_VOLT_DECODE(pdo), PD_MAX_VOLTAGE_MV);
+	else
+#endif
+		*mv = ((pdo >> 10) & 0x3FF) * 50;
 
 	if (*mv == 0) {
 		CPRINTF("ERR:PDO mv=0\n");
@@ -164,7 +179,12 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 		uw = 250000 * (pdo & 0x3FF);
 		max_ma = 1000 * MIN(1000 * uw, PD_MAX_POWER_MW) / *mv;
 	} else {
-		max_ma = 10 * (pdo & 0x3FF);
+#ifdef CONFIG_USB_PD_PPS
+		if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)
+			max_ma = PDO_PGM_MAX_CURR_DECODE(pdo);
+		else
+#endif
+			max_ma = 10 * (pdo & 0x3FF);
 		max_ma = MIN(max_ma, PD_MAX_POWER_MW * 1000 / *mv);
 	}
 
@@ -172,7 +192,7 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *mv)
 }
 
 int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
-		     enum pd_request_type req_type)
+		     uint32_t *select_pgm_rdo, enum pd_request_type req_type)
 {
 	uint32_t pdo;
 	int pdo_index, flags = 0;
@@ -196,8 +216,12 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
 		flags |= RDO_CAP_MISMATCH;
 
 #ifdef CONFIG_USB_PD_GIVE_BACK
-	/* Tell source we are give back capable. */
-	flags |= RDO_GIVE_BACK;
+#ifdef CONFIG_USB_PD_PPS
+	/* Programmable RDO doesn't use give back flag. */
+	if ((pdo & PDO_TYPE_MASK) != PDO_TYPE_AUGMENTED)
+#endif /* CONFIG_USB_PD_PPS */
+		/* Tell source we are give back capable. */
+		flags |= RDO_GIVE_BACK;
 
 	/*
 	 * BATTERY PDO: Inform the source that the sink will reduce
@@ -210,18 +234,24 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
 	 * current to this minimum level on receipt of a GotoMin Request.
 	 */
 	max_or_min_ma = PD_MIN_CURRENT_MA;
-#else
+#else /* !CONFIG_USB_PD_GIVE_BACK */
 	/*
 	 * Can't give back, so set maximum current and power to operating
 	 * level.
 	 */
 	max_or_min_ma = *ma;
 	max_or_min_mw = uw / 1000;
-#endif
+#endif /* CONFIG_USB_PD_GIVE_BACK */
 
+	*select_pgm_rdo = 0;
 	if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) {
 		int mw = uw / 1000;
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
+#ifdef CONFIG_USB_PD_PPS
+	} else if ((pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+		*select_pgm_rdo = 1;
+		*rdo = RDO_PGM(pdo_index + 1, *mv, max_or_min_ma, flags);
+#endif /* CONFIG_USB_PD_PPS */
 	} else {
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}

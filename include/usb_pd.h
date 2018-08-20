@@ -104,6 +104,10 @@ enum pd_rx_errors {
 				 PDO_BATT_OP_POWER(op_mw) | \
 				 PDO_TYPE_BATTERY)
 
+#define PDO_PGM_MAX_VOLT_DECODE(apdo) (((apdo >> 17) & 0xFF) * 100) /* mV */
+#define PDO_PGM_MIN_VOLT_DECODE(apdo) (((apdo >> 8) & 0xFF) * 100) /* mV */
+#define PDO_PGM_MAX_CURR_DECODE(apdo) ((apdo & 0x7F) * 50) /* mA */
+
 /* RDO : Request Data Object */
 #define RDO_OBJ_POS(n)             (((n) & 0x7) << 28)
 #define RDO_POS(rdo)               (((rdo) >> 28) & 0x7)
@@ -117,6 +121,9 @@ enum pd_rx_errors {
 #define RDO_BATT_OP_POWER(mw)      ((((mw) / 250) & 0x3FF) << 10)
 #define RDO_BATT_MAX_POWER(mw)     ((((mw) / 250) & 0x3FF) << 10)
 
+#define RDO_PGM_OUTPUT_V(mv)       ((((mv) / 20) & 0x7FF) << 9)
+#define RDO_PGM_OP_CURR(ma)        (((ma) / 50) & 0x7F)
+
 #define RDO_FIXED(n, op_ma, max_ma, flags) \
 				(RDO_OBJ_POS(n) | (flags) | \
 				RDO_FIXED_VAR_OP_CURR(op_ma) | \
@@ -127,6 +134,12 @@ enum pd_rx_errors {
 				(RDO_OBJ_POS(n) | (flags) | \
 				RDO_BATT_OP_POWER(op_mw) | \
 				RDO_BATT_MAX_POWER(max_mw))
+
+
+#define RDO_PGM(n, mv, op_ma, flags) \
+				(RDO_OBJ_POS(n) | (flags) | \
+				RDO_PGM_OUTPUT_V(mv) | \
+				RDO_PGM_OP_CURR(op_ma))
 
 /* BDO : BIST Data Object */
 #define BDO_MODE_RECV       (0 << 28)
@@ -173,6 +186,8 @@ enum pd_rx_errors {
 #define PD_T_TRY_SRC          (125*MSEC) /* Max time for Try.SRC state */
 #define PD_T_TRY_WAIT         (600*MSEC) /* Max time for TryWait.SNK state */
 #define PD_T_SINK_REQUEST     (100*MSEC) /* Wait 100ms before next request */
+#define PD_T_PPS_REQUEST     (10*SECOND) /* between 0s and 10s */
+#define PD_T_PPS_TIMEOUT     (15*SECOND) /* between 12s and 15s */
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
@@ -729,6 +744,9 @@ enum pd_states {
  */
 #define PD_FLAGS_LPM_REQUESTED     (1 << 17)/* Tracks SW LPM state */
 #define PD_FLAGS_LPM_ENGAGED       (1 << 18)/* Tracks HW LPM state */
+/* TODO(yllin): Reset flags when no needed. */
+#define PD_FLAGS_PPS_ENABLED       (1 << 19)/* Requested a PPS power */
+#define PD_FLAGS_PPS_REQUESTED     (1 << 20)/* Requested a PPS power */
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -744,7 +762,12 @@ enum pd_states {
 					   PD_FLAGS_TRY_SRC | \
 					   PD_FLAGS_PARTNER_USB_COMM | \
 					   PD_FLAGS_UPDATE_SRC_CAPS | \
-					   PD_FLAGS_TS_DTS_PARTNER)
+					   PD_FLAGS_TS_DTS_PARTNER | \
+					   PD_FLAGS_PPS_ENABLED | \
+					   PD_FLAGS_PPS_REQUESTED)
+/* Flags to set on a PPS request. */
+#define PD_FLAGS_SET_ON_PPS_REQUEST_MASK (PD_FLAGS_PPS_ENABLED | \
+					  PD_FLAGS_PPS_REQUESTED)
 
 /* Per-port battery backed RAM flags */
 #define PD_BBRMFLG_EXPLICIT_CONTRACT (1 << 0)
@@ -1010,7 +1033,7 @@ int pd_get_vdo_ver(int port);
  * @return <0 if invalid, else EC_SUCCESS
  */
 int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
-		     enum pd_request_type req_type);
+		     uint32_t *select_pgm_rdo, enum pd_request_type req_type);
 
 /**
  * Check if max voltage request is allowed (only used if

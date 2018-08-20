@@ -3208,6 +3208,9 @@
 /* Alternative configuration keeping only the TX part of PHY */
 #undef CONFIG_USB_PD_TX_PHY_ONLY
 
+/* Define if support USB PD Programmable Power Supply. */
+#undef CONFIG_USB_PD_PPS
+
 /* Use DAC as reference for comparator at 850mV. */
 #undef CONFIG_PD_USE_DAC_AS_REF
 
