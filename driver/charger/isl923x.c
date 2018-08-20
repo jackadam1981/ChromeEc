@@ -34,6 +34,28 @@
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPUTS(outstr) cputs(CC_CHARGER, outstr)
+
+/*
+ * Saturate the requested current limit to avoid overflow of the current limit
+ * registers.
+ */
+static inline uint16_t saturate_current(int current)
+{
+	/*
+	 * This is a defensive guard in the event that the charge state machine
+	 * fails to honor charger_info.{current_max,input_current_max}.
+	 */
+	if (current < 0) {
+		CPUTS("WARN: Negative current req.");
+		return 0;
+	}
+	if (current > ISL923X_CURRENT_REG_MAX) {
+		CPUTS("WARN: Saturated current req.");
+		return ISL923X_CURRENT_REG_MAX;
+	}
+	return (uint16_t)current;
+}
 
 static int learn_mode;
 
@@ -71,7 +93,8 @@ static inline int raw_write16(int offset, int value)
 
 static int isl9237_set_current(uint16_t current)
 {
-	return raw_write16(ISL923X_REG_CHG_CURRENT, CURRENT_TO_REG(current));
+	return raw_write16(ISL923X_REG_CHG_CURRENT,
+			saturate_current(CURRENT_TO_REG(current)));
 }
 
 static int isl9237_set_voltage(uint16_t voltage)
@@ -84,7 +107,7 @@ static int isl9237_set_voltage(uint16_t voltage)
 int charger_set_input_current(int input_current)
 {
 	int rv;
-	uint16_t reg = AC_CURRENT_TO_REG(input_current);
+	uint16_t reg = saturate_current(AC_CURRENT_TO_REG(input_current));
 
 	rv = raw_write16(ISL923X_REG_ADAPTER_CURRENT1, reg);
 	if (rv)
