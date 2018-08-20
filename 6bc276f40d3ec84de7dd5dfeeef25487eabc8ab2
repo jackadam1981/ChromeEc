@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b007659_4995de5c",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1191329
+      },
+      "writtenOn": "2018-08-20T10:12:55Z",
+      "side": 1,
+      "message": "According to line 8469 and line 8480, the return code of ectool will become \"1\" if ec_command function returns positive values, which means no error.  Is the logic as expected?",
+      "revId": "6bc276f40d3ec84de7dd5dfeeef25487eabc8ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
