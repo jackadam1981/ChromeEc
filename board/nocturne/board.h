@@ -100,6 +100,12 @@
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
+/*
+ * The motionsense task needs to be informed quickly of chipset transitions
+ * since the sensors are powered off in S5.  This way, it will not try to access
+ * the sensors when they are unpowered.
+ */
+#define CONFIG_MOTION_SENSE_HOOK_PRIO (HOOK_PRIO_FIRST+1)
 #define CONFIG_SYNC
 #define CONFIG_SYNC_INT_EVENT TASK_EVENT_CUSTOM(8)
 #define CONFIG_TEMP_SENSOR
