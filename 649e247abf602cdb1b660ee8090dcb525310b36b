@@ -33,6 +33,24 @@
       "revId": "649e247abf602cdb1b660ee8090dcb525310b36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1661b6_50c71112",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-20T23:15:32Z",
+      "side": 1,
+      "message": "I think the name is a misnomer; I believe it\u0027s tied to the wake sources. I had to add it for waking up the AP on base attach/detach. http://b/111803637#comment4\n\nI guess you may have do something similar for this new switch.",
+      "parentUuid": "ab994238_1b9aa49b",
+      "revId": "649e247abf602cdb1b660ee8090dcb525310b36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
