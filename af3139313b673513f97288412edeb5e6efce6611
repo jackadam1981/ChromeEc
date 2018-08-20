@@ -22,6 +22,30 @@
       "revId": "af3139313b673513f97288412edeb5e6efce6611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "920b6dd6_77fcecb7",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-20T20:14:04Z",
+      "side": 1,
+      "message": "charger_discharge_on_ac means that even though AC is connected, turn off the switching converter and run off battery. This is done by enabling learn mode. So calling this with a 0 means to disable learn mode.",
+      "parentUuid": "192e0e23_6296338d",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "af3139313b673513f97288412edeb5e6efce6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
