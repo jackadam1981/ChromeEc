@@ -153,6 +153,30 @@
       "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1fca12c_f80b0266",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-08-20T06:30:21Z",
+      "side": 1,
+      "message": "With an external pull-up to PP1800_AP, I think here it should be GPIO_ODR_HIGH.",
+      "parentUuid": "758e6eaa_a79fb360",
+      "range": {
+        "startLine": 122,
+        "startChar": 39,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "bbed26193ea056cdc1a6b78412a743b41fcf050d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
