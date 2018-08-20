@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "117ce275_42a3e81b",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-20T02:55:21Z",
+      "side": 1,
+      "message": "We still need to check TCPC_REG_CC_STATUS_TERM when TCPC_REG_ROLE_CTRL_DRP is on. So I think we can keep this as is.",
+      "parentUuid": "6ca1f149_aa58e814",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "5f508b582fab9e6cdf044a3c8c21be64c740fa01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91f93143_16c1a707",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5f508b582fab9e6cdf044a3c8c21be64c740fa01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "838a1e74_9c501bdd",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-20T02:55:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91f93143_16c1a707",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "5f508b582fab9e6cdf044a3c8c21be64c740fa01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
