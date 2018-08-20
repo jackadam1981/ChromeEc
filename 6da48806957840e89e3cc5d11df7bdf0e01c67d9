@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d69fcb24_81a02ca2",
+        "filename": "chip/g/board_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-20T14:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8e6fe94_0f3914fe",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8c508f2_3ff4efc4",
         "filename": "chip/g/sn_bits.c",
         "patchSetId": 6
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "2b26c5a4_4a23cc8a",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-20T14:08:25Z",
+      "side": 1,
+      "message": "I think this is addressed now.",
+      "parentUuid": "9c9a1cab_ada7cf7a",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "792c5948_d34557a5",
         "filename": "chip/g/sn_bits.c",
         "patchSetId": 6
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "Good point, though I think perhaps the check you\u0027re describing should be added to the vendor command above? (where I currently have nothing..)\n\nI don\u0027t think factory/RMA would ever have a use for setting the sn bits on the console (seems too error-prone?) so I was mainly having this as a dev utility that could be removed from the prod image to save space. I believe this is the same as the approach used for board id.\n\nWhat do you think?",
       "parentUuid": "792c5948_d34557a5",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43062edf_e7e0524b",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-20T14:08:25Z",
+      "side": 1,
+      "message": "Will check with Yves what the process is going to be for factory / RMA, and add appropriate checks to the vendor commands",
+      "parentUuid": "0f9d8b59_0e894817",
       "range": {
         "startLine": 113,
         "startChar": 0,
@@ -281,6 +353,30 @@
       "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7657046c_3215c512",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-20T14:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74992ddd_127200fe",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 17
+      },
+      "revId": "6da48806957840e89e3cc5d11df7bdf0e01c67d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
