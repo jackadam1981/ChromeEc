@@ -16,6 +16,24 @@
       "revId": "6bc276f40d3ec84de7dd5dfeeef25487eabc8ab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10208d59_90983547",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-20T15:14:33Z",
+      "side": 1,
+      "message": "Good catch, I should have returned \u00270\u0027 after printing the value.",
+      "parentUuid": "9b007659_4995de5c",
+      "revId": "6bc276f40d3ec84de7dd5dfeeef25487eabc8ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
