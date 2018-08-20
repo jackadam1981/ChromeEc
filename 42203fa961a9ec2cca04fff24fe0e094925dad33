@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a19cd246_ca414e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:26:09Z",
+      "side": 1,
+      "message": "That is in a later CL. In this CL they use the same build rule as the reset of the .exe extensions.",
+      "parentUuid": "d0f0b789_3d0a9360",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f65731f_59620d9d",
         "filename": "fuzz/build.mk",
         "patchSetId": 6
@@ -91,6 +115,54 @@
       "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c79f7fd_204312b5",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:26:09Z",
+      "side": 1,
+      "message": "I don\u0027t know, drinkcat@ wrote that comment, I just moved it from test/test_config.h to fuzz/fuzz_config.h in preparation to add more targets, etc.",
+      "parentUuid": "c89531c3_b13ab48f",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 74
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e25032a1_967c9453",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-20T17:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "112503b5_df8af1d6",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
