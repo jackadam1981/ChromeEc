@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb416a1_eeb33f05",
+        "filename": "include/uart.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-08-20T05:23:56Z",
+      "side": 1,
+      "message": "If there is no overlap between previous snapshot and current snapshot (a.k.a. \u003esnapshot size has been written to uart buffer since last snapshot), will this just return the new data starting from current snapshot?  (i.e. ignore the gap in between)",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 39
+      },
+      "revId": "ba4e5eec58647fccf0c01d4435f42e3e8d3df6fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
