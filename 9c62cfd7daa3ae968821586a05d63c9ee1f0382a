@@ -70,6 +70,30 @@
       "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed882561_a668b7ce",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-20T02:18:42Z",
+      "side": 1,
+      "message": "I think I better follow the release flow before, our PM Eddie will send it to you. \nNo, sorry it is Bx v0.3.2.2 datasheet mistake(Dx is right). And I have confirmed with our digital circuit RD, So they will correct it for updating.",
+      "parentUuid": "8af5a7ad_a892169e",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 12
+      },
+      "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
