@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b0ab44_c45dcf9b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-08-20T17:10:34Z",
+      "side": 1,
+      "message": "Set it to HOOK_PRIO_DEFAULT at the end of this file if board.h does not defined it.",
+      "revId": "3d557183d4810fff85a93d1ac30a2e921746c82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a472d3f_e19c01ed",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-08-20T17:10:34Z",
+      "side": 1,
+      "message": "It\u0027s it risky to set up all priority to the same value.\nFor RESUME we may want to stay at default to be sure the sensors are up.",
+      "revId": "3d557183d4810fff85a93d1ac30a2e921746c82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
