@@ -174,7 +174,11 @@ extern unsigned int motion_min_interval;
  * Priority of the motion sense resume/suspend hooks, to be sure associated
  * hooks are scheduled properly.
  */
+#ifdef CONFIG_MOTION_SENSE_HOOK_PRIO
+#define MOTION_SENSE_HOOK_PRIO (CONFIG_MOTION_SENSE_HOOK_PRIO)
+#else
 #define MOTION_SENSE_HOOK_PRIO (HOOK_PRIO_DEFAULT)
+#endif /* CONFIG_MOTION_SENSE_HOOK_PRIO */
 
 #ifdef CONFIG_ACCEL_FIFO
 extern struct queue motion_sense_fifo;

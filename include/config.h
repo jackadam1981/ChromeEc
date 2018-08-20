@@ -1662,6 +1662,13 @@
 #define CONFIG_MOTION_SENSE_SUSPEND_DELAY_US 0
 #define CONFIG_MOTION_SENSE_RESUME_DELAY_US 0
 
+/*
+ * Set the default motion sense hook priority.  By default, this is
+ * HOOK_PRIO_DEFAULT.  But if your board needs something different, you can
+ * define this.
+ */
+#undef CONFIG_MOTION_SENSE_HOOK_PRIO
+
 /* Define motion sensor count in board layer */
 #undef CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /******************************************************************************/
