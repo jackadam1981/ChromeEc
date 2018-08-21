@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06a3980_ca121f52",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-21T01:19:03Z",
+      "side": 1,
+      "message": "do these interrupts still work? I think for the definition to work this needs to be global.\n\nI thought for the interrupt declaration to work this function needs to be global.",
+      "revId": "7b3b8266efabd0e4b607f8fec2a38947b89696be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
