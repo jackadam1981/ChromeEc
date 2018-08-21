@@ -45,6 +45,30 @@
       "revId": "4448752b9ec0481c16b0f0f850bb0fe47b086439",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a21106_347f478f",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-21T01:49:22Z",
+      "side": 1,
+      "message": "Yes, this shouldn\u0027t be part of this CL. It was just using this line for a debug GPIO line. I will remove this change from this CL.",
+      "parentUuid": "12c91a1c_ada4d943",
+      "range": {
+        "startLine": 100,
+        "startChar": 37,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "4448752b9ec0481c16b0f0f850bb0fe47b086439",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
