@@ -20,8 +20,12 @@ fuzz-test-list-host = cr50_fuzz host_command_fuzz
 # Does your object file need to link against cstdlib?
 #   Yes -> use <obj_name>-rw
 # Otherwise use <obj_name>-y
-cr50_fuzz-rw = cr50_fuzz.o
+cr50_fuzz-rw = cr50_fuzz.o PinweaverModel.o
 host_command_fuzz-y = host_command_fuzz.o
 
-$(out)/cr50_fuzz.exe: $(out)/cryptoc/libcryptoc.a
-$(out)/cr50_fuzz.exe: LDFLAGS_EXTRA+=-lcrypto
+$(out)/RW/fuzz/cr50_fuzz.o: $(out)/gen/fuzz/cr50_fuzz.pb.h
+$(out)/RW/fuzz/cr50_fuzz.o: CXXFLAGS+=-I/usr/include/libprotobuf-mutator
+
+$(out)/cr50_fuzz.exe: $(out)/cryptoc/libcryptoc.a $(out)/gen/fuzz/cr50_fuzz.pb.o
+$(out)/cr50_fuzz.exe: LDFLAGS_EXTRA+=-lcrypto -lprotobuf-mutator-libfuzzer \
+  -lprotobuf-mutator -lprotobuf -lpthread
