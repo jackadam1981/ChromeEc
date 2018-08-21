@@ -16,6 +16,24 @@
       "revId": "7b3b8266efabd0e4b607f8fec2a38947b89696be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4454e10a_1bce0d9e",
+        "filename": "chip/g/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-21T16:26:32Z",
+      "side": 1,
+      "message": "I think it doesn\u0027t violate anything since DECLAR_IRQ() creates a wrapper function for uart_ec_tx_interrupt(), and register that wrapper as IRQ handler. \n\n00050040 \u003cuart_ec_tx_interrupt\u003e:\n   50040:\t4b02      \tldr\tr3, [pc, #8]\t; (5004c \u003cuart_ec_tx_interrupt+0xc\u003e)\n   50042:\t2201      \tmovs\tr2, #1\n   50044:\t601a      \tstr\tr2, [r3, #0]\n   50046:\tf009 bb01 \tb.w\t5964c \u003cuart_process_output\u003e\n   5004a:\tbf00      \tnop\n   5004c:\t40600020 \trsbmi\tr0, r0, r0, lsr #32\n\n00050050 \u003cirq_177_handler\u003e:\n   50050:\t4670      \tmov\tr0, lr\n   50052:\tb501      \tpush\t{r0, lr}\n   50054:\tf00a fa84 \tbl\t5a560 \u003ctask_start_irq_handler\u003e\n   50058:\tf7ff fff2 \tbl\t50040 \u003cuart_ec_tx_interrupt\u003e\n   5005c:\te8bd 4001 \tldmia.w\tsp!, {r0, lr}\n   50060:\tf00a baa2 \tb.w\t5a5a8 \u003ctask_resched_if_needed\u003e\n\nHowever, honestly, this CL\u0027s contribution is neither great or consistent. Just made this CL to check the effect as disscussed in b/112778363.",
+      "parentUuid": "a06a3980_ca121f52",
+      "revId": "7b3b8266efabd0e4b607f8fec2a38947b89696be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
