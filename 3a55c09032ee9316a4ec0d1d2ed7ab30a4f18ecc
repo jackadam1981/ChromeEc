@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "581ba166_53940679",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-21T20:56:49Z",
+      "side": 1,
+      "message": "This is not allowed for enums without a type in c++.",
+      "range": {
+        "startLine": 173,
+        "startChar": 25,
+        "endLine": 173,
+        "endChar": 51
+      },
+      "revId": "3a55c09032ee9316a4ec0d1d2ed7ab30a4f18ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

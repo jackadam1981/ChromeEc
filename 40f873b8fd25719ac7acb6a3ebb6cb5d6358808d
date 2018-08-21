@@ -22,6 +22,30 @@
       "revId": "40f873b8fd25719ac7acb6a3ebb6cb5d6358808d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276c66a2_b778490c",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-21T20:56:49Z",
+      "side": 1,
+      "message": "I have written a comment but I have some thought toward making the host implementation use weak functions so they can be mocked instead. This would require changing the pinweaver unit tests which depends on the current behavior of CONFIG_DCRYPTO to handle the cryptoc structs.",
+      "parentUuid": "99d3053c_62e7e7bb",
+      "range": {
+        "startLine": 1143,
+        "startChar": 0,
+        "endLine": 1143,
+        "endChar": 26
+      },
+      "revId": "40f873b8fd25719ac7acb6a3ebb6cb5d6358808d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
