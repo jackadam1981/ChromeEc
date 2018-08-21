@@ -22,6 +22,30 @@
       "revId": "e905663f4fd1814f802ec1fe8020c1dc6268784f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da3472db_41361686",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-21T20:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "978828db_acf1fa3b",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "e905663f4fd1814f802ec1fe8020c1dc6268784f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
