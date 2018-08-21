@@ -1,0 +1,72 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Pinweaver specific model to facilitate fuzzing. */
+
+#ifndef __FUZZ_PINWEAVER_MODEL_H
+#define __FUZZ_PINWEAVER_MODEL_H
+
+#include <memory>
+#include <unordered_map>
+
+extern "C" {
+#define HIDE_EC_STDLIB
+#include "include/pinweaver.h"
+#include "include/pinweaver_types.h"
+};
+
+#include "fuzz/cr50_fuzz.pb.h"
+#include "fuzz/mem_hash_tree.h"
+
+/**
+ * Provides enough state tracking to send valid PinWeaver requests. This is
+ * necessary because of the authentication dependent fields used by the Merkle
+ * tree such as HMACs and a set of sibling path hashes that must be correct to
+ * reach some parts of the PinWeaver code.
+ */
+class PinweaverModel {
+ public:
+  void SendBuffer(uint8_t* buffer_);
+  size_t SerializePinweaver(const fuzz::PinWeaver& pinweaver,
+                            uint8_t* buffer_);
+  /* Executes a request in the form of a fuzz::PinWeaver proto, and updates the
+   * model, so that future requests will be valid.
+   */
+  void ApplyPinweaver(const fuzz::PinWeaver& pinweaver,
+                      uint8_t* buffer_);
+  void Reset();
+
+ private:
+
+  struct leaf_data {
+    std::vector<uint8_t> wrapped_data_;
+    struct pw_request_insert_leaf_t insert_leaf_;
+  };
+
+  struct merkle_tree_t merkle_tree_;
+  MemHashTree mem_hash_tree_;
+  std::unordered_map<uint64_t, std::unique_ptr<struct leaf_data>>
+      leaf_metadata_;
+
+  void GetHmac(const std::string& fuzzer_hmac, uint64_t label,
+               uint8_t hmac[PW_HASH_SIZE]);
+  size_t GetPathHashes(const std::string& fuzzer_hashes, uint64_t label,
+                       uint8_t path_hashes[][PW_HASH_SIZE]);
+
+  size_t SerializeResetTree(const fuzz::PinWeaver& pinweaver,
+                            uint8_t* buffer_);
+  size_t SerializeInsertLeaf(const fuzz::PinWeaver& pinweaver,
+                             uint8_t* buffer_);
+  size_t SerializeRemoveLeaf(const fuzz::PinWeaver& pinweaver,
+                             uint8_t* buffer_);
+
+  void HandleResetTree(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
+  void HandleInsertLeaf(
+      const fuzz::PinWeaver& pinweaver, uint8_t* buffer_,
+      std::unique_ptr<struct leaf_data> metadata);
+  void HandleRemoveLeaf(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
+};
+
+#endif  // __FUZZ_PINWEAVER_MODEL_H

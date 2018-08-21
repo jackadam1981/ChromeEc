@@ -8,9 +8,17 @@
 #include <unistd.h>
 
 #include <cstdint>
-#include <cstdlib>
+#include <unordered_map>
+#include <vector>
+
+#include <src/libfuzzer/libfuzzer_macro.h>
+#include <src/mutator.h>
+
+#include "fuzz/pinweaver_model.h"
+#include "fuzz/cr50_fuzz.pb.h"
 
 extern "C" {
+#define HIDE_EC_STDLIB
 #include "fuzz_config.h"
 #include "nvmem.h"
 #include "nvmem_vars.h"
@@ -21,51 +29,68 @@ extern "C" {
 #define NVMEM_TPM_SIZE ((sizeof((struct nvmem_partition *)0)->buffer) \
   - NVMEM_CR50_SIZE)
 
+using protobuf_mutator::libfuzzer::LoadProtoInput;
+
 extern "C" uint32_t nvmem_user_sizes[NVMEM_NUM_USERS] = {
-	NVMEM_TPM_SIZE,
-	NVMEM_CR50_SIZE
+  NVMEM_TPM_SIZE,
+  NVMEM_CR50_SIZE
 };
 
-extern "C" void rand_bytes(void *buffer, size_t len)
-{
-	size_t x = 0;
+extern "C" void rand_bytes(void *buffer, size_t len) {
+  size_t x = 0;
 
-	for (; x < len; ++x)
-		((uint8_t *)buffer)[x] = rand();
+  for (; x < len; ++x)
+    ((uint8_t *)buffer)[x] = rand();
 }
 
-extern "C" void get_storage_seed(void *buf, size_t *len)
-{
-	memset(buf, 0x77, *len);
+extern "C" void get_storage_seed(void *buf, size_t *len) {
+  memset(buf, 0x77, *len);
 }
 
-extern "C" void run_test(void)
-{
-}
-
-static void assign_pw_field_from_bytes(const uint8_t *data, unsigned int size,
-				       uint8_t *destination, size_t dest_size)
-{
-	if (size >= dest_size) {
-		memcpy(destination, data, dest_size);
-	} else {
-		memcpy(destination, data, size);
-		memset(destination + size, 0, dest_size - size);
-	}
+extern "C" void run_test(void) {
 }
 
 /* Prevent this from being stack allocated. */
 static uint8_t tpm_io_buffer[PW_MAX_MESSAGE_SIZE];
+static PinweaverModel pinweaver_;
 
-extern "C" int test_fuzz_one_input(const uint8_t *data, unsigned int size)
-{
-	struct merkle_tree_t merkle_tree = {};
-	struct pw_request_t *request = (struct pw_request_t *)tpm_io_buffer;
-	struct pw_response_t *response = (struct pw_response_t *)tpm_io_buffer;
+void apply_random_bytes(const fuzz::RandomBytes& random_bytes) {
+  const auto& value = random_bytes.value();
+  if (value.size() >= ARRAY_SIZE(tpm_io_buffer)) {
+    memcpy(tpm_io_buffer, value.data(), ARRAY_SIZE(tpm_io_buffer));
+  } else {
+    memcpy(tpm_io_buffer, value.data(), value.size());
+    memset(tpm_io_buffer + value.size(), 0,
+           ARRAY_SIZE(tpm_io_buffer) - value.size());
+  }
+}
 
-	memset(__host_flash, 0xff, sizeof(__host_flash));
-	pinweaver_init();
-	assign_pw_field_from_bytes(data, size, tpm_io_buffer, sizeof(tpm_io_buffer));
-	pw_handle_request(&merkle_tree, request, response);
-	return 0;
+DEFINE_CUSTOM_PROTO_MUTATOR_IMPL(false, fuzz::FuzzerInput)
+DEFINE_CUSTOM_PROTO_CROSSOVER_IMPL(false, fuzz::FuzzerInput)
+
+extern "C" int test_fuzz_one_input(const uint8_t *data, unsigned int size) {
+  fuzz::FuzzerInput input;
+
+  if (!LoadProtoInput(false, data, size, &input)) {
+    return 0;
+  }
+
+  memset(__host_flash, 0xff, sizeof(__host_flash));
+  srand(0);
+  memset(tpm_io_buffer, 0, sizeof(tpm_io_buffer));
+  pinweaver_.Reset();
+  for (const fuzz::SubAction& action : input.sub_actions()) {
+    switch(action.sub_action_case()) {
+    case fuzz::SubAction::kRandomBytes:
+      apply_random_bytes(action.random_bytes());
+      pinweaver_.SendBuffer(tpm_io_buffer);
+      break;
+    case fuzz::SubAction::kPinweaver:
+      pinweaver_.ApplyPinweaver(action.pinweaver(), tpm_io_buffer);
+      break;
+    case fuzz::SubAction::SUB_ACTION_NOT_SET:
+      break;
+    }
+  }
+  return 0;
 }
