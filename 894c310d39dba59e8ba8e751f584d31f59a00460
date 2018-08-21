@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3557b29_a02cab59",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-21T17:31:38Z",
+      "side": 0,
+      "message": "I\u0027m pretty sure this case is used to handle coming out of power down mode and that\u0027s why anx74xx_tcpm_init is being called. Does this call now happen via the low power entry/exit logic in the usb_pd_protocol.c (TCPM layer)?",
+      "range": {
+        "startLine": 723,
+        "startChar": 12,
+        "endLine": 723,
+        "endChar": 55
+      },
+      "revId": "894c310d39dba59e8ba8e751f584d31f59a00460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
