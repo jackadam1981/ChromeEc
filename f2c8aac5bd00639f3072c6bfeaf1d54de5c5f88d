@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6659a1f_6f5082b8",
+        "filename": "include/trng.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-21T20:58:41Z",
+      "side": 1,
+      "message": "Is STDLIB_COMPAT ever used not in an extern declaration? If not, it should include the trailing semicolon.",
+      "revId": "f2c8aac5bd00639f3072c6bfeaf1d54de5c5f88d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
