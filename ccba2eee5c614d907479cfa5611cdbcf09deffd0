@@ -16,6 +16,24 @@
       "revId": "ccba2eee5c614d907479cfa5611cdbcf09deffd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2880f74d_43509cad",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-21T01:57:38Z",
+      "side": 1,
+      "message": "Puts into gpio.wrap, since some of the include-chain doesn\u0027t contain gpio_list.h.",
+      "parentUuid": "3a154ecc_3a0eb9c1",
+      "revId": "ccba2eee5c614d907479cfa5611cdbcf09deffd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
