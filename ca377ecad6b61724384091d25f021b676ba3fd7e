@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7a848a9_d2ccbcb5",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-21T19:58:12Z",
+      "side": 1,
+      "message": "Should these be in board_header.h, since that\u0027s where the sn_data struct lives?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d45903_1f961171",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-21T19:58:12Z",
+      "side": 1,
+      "message": "SN_HEADER_SIZE",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78752d14_476aa856",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-21T19:58:12Z",
+      "side": 1,
+      "message": "Should check that inc\u003e0 \u0026\u0026 inc\u003c8?  Params passed by vendor commands are untrusted.\n\nMaybe define a constant for the number of RMA bits also, in the header file?\n\nOr should this only allow clearing the immediate next RMA bit?",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 27
+      },
+      "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
