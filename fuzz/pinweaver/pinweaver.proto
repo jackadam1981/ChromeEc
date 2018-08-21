@@ -1,0 +1,63 @@
+// Copyright 2018 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto2";
+
+package fuzz.pinweaver;
+
+message ResetTree {
+  optional uint32 bits_per_level = 1;
+  optional uint32 height = 2;
+}
+
+message InsertLeaf {
+  optional uint64 label = 1;
+  optional bytes delay_schedule = 2;
+  optional bytes low_entropy_secret = 3;
+  optional bytes high_entropy_secret = 4;
+  optional bytes reset_secret = 5;
+  optional bytes path_hashes = 6;
+}
+
+message RemoveLeaf {
+  optional uint64 label = 1;
+  optional bytes leaf_hmac = 2;
+  optional bytes path_hashes = 3;
+}
+
+message TryAuth {
+  optional uint64 label = 1;
+  optional bytes low_entropy_secret = 2;
+  optional bytes unimported_leaf_data = 3;
+}
+
+message ResetAuth {
+  optional uint64 label = 1;
+  optional bytes reset_secret = 2;
+  optional bytes unimported_leaf_data = 3;
+}
+
+message GetLog {
+  optional uint32 index_of_root = 1;
+}
+
+message LogReplay {
+  optional uint32 index_of_root = 1;
+  optional bytes unimported_leaf_data = 2;
+}
+
+message Request {
+  // This represents the actual version + 1 because zero is reserved for
+  // PW_PROTOCOL_VERSION
+  optional uint32 version = 1;
+  oneof request {
+    ResetTree reset_tree = 2;
+    InsertLeaf insert_leaf = 3;
+    RemoveLeaf remove_leaf = 4;
+    TryAuth try_auth = 5;
+    ResetAuth reset_auth = 6;
+    GetLog get_log = 7;
+    LogReplay log_replay = 8;
+  }
+}
