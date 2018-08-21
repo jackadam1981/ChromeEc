@@ -1265,7 +1265,7 @@ void usb_save_suspended_state(void)
 
 }
 
-void usb_restore_suspended_state(void)
+static void usb_restore_suspended_state(void)
 {
 	int i;
 	uint32_t pid;
