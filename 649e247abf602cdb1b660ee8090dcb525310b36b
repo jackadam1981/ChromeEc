@@ -51,6 +51,24 @@
       "revId": "649e247abf602cdb1b660ee8090dcb525310b36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b71ab1e_efd68897",
+        "filename": "board/nocturne/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-21T22:08:17Z",
+      "side": 1,
+      "message": "That\u0027s right. But I think we might eventually need CONFIG_DPTF_DEVICE_ORIENTATION. So, at some point the dependency between tablet mode and dptf device orientation will have to be fixed.",
+      "parentUuid": "9b1661b6_50c71112",
+      "revId": "649e247abf602cdb1b660ee8090dcb525310b36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
