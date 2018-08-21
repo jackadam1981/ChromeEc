@@ -163,6 +163,30 @@
       "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87ce2bcf_8e4f2d63",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-21T00:08:47Z",
+      "side": 1,
+      "message": "I think the default is reasonably good (in practice HCDEBUG_PARAMS only found one bug in a printf, that was not even that harmful).\n\nBut maybe we could do more to adjust verbosity at fuzzing time.",
+      "parentUuid": "9c79f7fd_204312b5",
+      "range": {
+        "startLine": 18,
+        "startChar": 38,
+        "endLine": 18,
+        "endChar": 74
+      },
+      "revId": "42203fa961a9ec2cca04fff24fe0e094925dad33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
