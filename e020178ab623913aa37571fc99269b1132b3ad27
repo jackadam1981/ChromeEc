@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d808f710_c7bb55a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-21T17:31:16Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t make myself clear. I think you\u0027re adding qualifiers to make the conflicting symbols weak in Cr50, correct? Can you alternatively tell the linker to hide *all* cr50 symbols and only expose explicitly whitelisted ones (i.e. the fuzzer entry points that the fuzzer needs to call)?",
+      "parentUuid": "188132f2_02ac302d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aa10e6b_c61bcb96",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
