@@ -203,7 +203,7 @@ int g2f_individual_keypair(p256_int *d, p256_int *pk_x, p256_int *pk_y)
 
 /* ---- Send/receive U2F APDU over TPM vendor commands ---- */
 
-enum vendor_cmd_rc vc_u2f_apdu(enum vendor_cmd_cc code, void *body,
+static enum vendor_cmd_rc vc_u2f_apdu(enum vendor_cmd_cc code, void *body,
 			       size_t cmd_size, size_t *response_size)
 {
 	unsigned retlen;

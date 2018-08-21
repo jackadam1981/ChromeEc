@@ -129,7 +129,7 @@ const char *device_state_name(enum device_state state)
 		return "?";
 }
 
-int board_use_plt_rst(void)
+static int board_use_plt_rst(void)
 {
 	return !!(board_properties & BOARD_USE_PLT_RESET);
 }
@@ -140,7 +140,7 @@ int board_deep_sleep_allowed(void)
 	return !(board_properties & BOARD_DEEP_SLEEP_DISABLED);
 }
 
-int board_rst_pullup_needed(void)
+static int board_rst_pullup_needed(void)
 {
 	return !!(board_properties & BOARD_NEEDS_SYS_RST_PULL_UP);
 }
@@ -584,7 +584,7 @@ static void configure_board_specific_gpios(void)
 	}
 }
 
-void decrement_retry_counter(void)
+static void decrement_retry_counter(void)
 {
 	uint32_t counter = GREG32(PMU, LONG_LIFE_SCRATCH0);
 
@@ -884,7 +884,7 @@ void deassert_sys_rst(void)
 	GWRITE(PINMUX, DIOM0_SEL, 0);
 }
 
-int is_sys_rst_asserted(void)
+static int is_sys_rst_asserted(void)
 {
 	return (GREAD(PINMUX, DIOM0_SEL) == GC_PINMUX_GPIO0_GPIO4_SEL)
 #ifdef CONFIG_CMD_GPIO_EXTENDED

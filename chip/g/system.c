@@ -23,6 +23,10 @@
  */
 #define RW_BOOT_MAX_RETRY_COUNT 5
 
+#if defined(CHIP_FAMILY_CR50)
+static void system_decrement_retry_counter(void);
+#endif
+
 static uint8_t pinhold_on_reset;
 static uint8_t rollback_detected_at_boot;
 
@@ -419,7 +423,7 @@ void system_clear_retry_counter(void)
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG0, 0);
 }
 
-void system_decrement_retry_counter(void)
+static void system_decrement_retry_counter(void)
 {
 	uint32_t val = GREG32(PMU, LONG_LIFE_SCRATCH0);
 

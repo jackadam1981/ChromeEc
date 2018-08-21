@@ -244,7 +244,6 @@ void post_reboot_request(void);
 /* Special controls over EC and AP */
 void assert_sys_rst(void);
 void deassert_sys_rst(void);
-int is_sys_rst_asserted(void);
 void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
@@ -256,8 +255,6 @@ int is_ec_rst_asserted(void);
  */
 void ccd_update_state(void);
 
-int board_use_plt_rst(void);
-int board_rst_pullup_needed(void);
 int board_tpm_uses_i2c(void);
 int board_tpm_uses_spi(void);
 int board_id_is_mismatched(void);

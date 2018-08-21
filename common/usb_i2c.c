@@ -75,7 +75,7 @@ static uint8_t usb_i2c_executable(struct usb_i2c_config const *config)
 	return 1;
 }
 
-void usb_i2c_execute(struct usb_i2c_config const *config)
+static void usb_i2c_execute(struct usb_i2c_config const *config)
 {
 	/* Payload is ready to execute. */
 	uint8_t count       = usb_i2c_read_packet(config);
