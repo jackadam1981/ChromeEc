@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "764982c3_d721934d",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-21T20:18:41Z",
+      "side": 1,
+      "message": "These are unused.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 68
+      },
+      "revId": "af3139313b673513f97288412edeb5e6efce6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "192e0e23_6296338d",
         "filename": "board/dragonegg/board.c",
         "patchSetId": 3
@@ -42,6 +65,29 @@
         "startChar": 2,
         "endLine": 69,
         "endChar": 25
+      },
+      "revId": "af3139313b673513f97288412edeb5e6efce6611",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3554925a_b34eea2c",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-21T20:18:41Z",
+      "side": 1,
+      "message": "Probably you want to add more things in board_init later, but this can also be just:\nDECLARE_HOOK(HOOK_INIT, board_extpower, HOOK_PRIO_DEFAULT);",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 1
       },
       "revId": "af3139313b673513f97288412edeb5e6efce6611",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
