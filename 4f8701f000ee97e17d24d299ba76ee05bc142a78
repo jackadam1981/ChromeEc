@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23ffb413_3a77916c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-21T18:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d8c5278_662e4f90",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "4f8701f000ee97e17d24d299ba76ee05bc142a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e13d12cb_7df2a11a",
         "filename": "chip/g/idle.c",
         "patchSetId": 2
