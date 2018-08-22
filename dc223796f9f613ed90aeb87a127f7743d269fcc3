@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62177d43_ec51d6e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-22T01:12:17Z",
+      "side": 1,
+      "message": "Update this line",
+      "revId": "dc223796f9f613ed90aeb87a127f7743d269fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000836e8_c1bffbb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-22T01:12:17Z",
+      "side": 1,
+      "message": "Tracking bugs are usually nice ,-)",
+      "revId": "dc223796f9f613ed90aeb87a127f7743d269fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abe7fa6_f9b24cd5",
+        "filename": "include/common.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-22T01:12:17Z",
+      "side": 1,
+      "message": "no (...) please, see the other similar macros in this file",
+      "range": {
+        "startLine": 224,
+        "startChar": 23,
+        "endLine": 224,
+        "endChar": 28
+      },
+      "revId": "dc223796f9f613ed90aeb87a127f7743d269fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
