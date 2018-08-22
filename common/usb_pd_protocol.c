@@ -1101,21 +1101,15 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 			port, PD_VDO_VID(payload[0]), payload[0] & 0xFFFF);
 }
 
-static void pd_set_data_role(int port, int role)
+static void update_usb_mux(int port)
 {
-	pd[port].data_role = role;
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-	pd_update_saved_port_flags(port, PD_BBRMFLG_DATA_ROLE, role);
-#endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
-	pd_execute_data_swap(port, role);
-
 #ifdef CONFIG_USBC_SS_MUX
 #ifdef CONFIG_USBC_SS_MUX_DFP_ONLY
 	/*
 	 * Need to connect SS mux for if new data role is DFP.
 	 * If new data role is UFP, then disconnect the SS mux.
 	 */
-	if (role == PD_ROLE_DFP)
+	if (pd[port].data_role == PD_ROLE_DFP)
 		usb_mux_set(port, TYPEC_MUX_USB, USB_SWITCH_CONNECT,
 			    pd[port].polarity);
 	else
@@ -1126,6 +1120,17 @@ static void pd_set_data_role(int port, int role)
 		    pd[port].polarity);
 #endif
 #endif
+}
+
+static void pd_set_data_role(int port, int role)
+{
+	pd[port].data_role = role;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DATA_ROLE, role);
+#endif /* defined(CONFIG_USB_PD_DUAL_ROLE) */
+	pd_execute_data_swap(port, role);
+
+	update_usb_mux(port);
 	pd_update_roles(port);
 }
 
@@ -2040,21 +2045,14 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_try_source, HOOK_PRIO_DEFAULT);
 
 void pd_set_dual_role(int port, enum pd_dual_role_states state)
 {
-	int i;
-
 	drp_state[port] = state;
 
 #ifdef CONFIG_USB_PD_TRY_SRC
 	pd_update_try_source();
 #endif
-
-	/* Inform PD tasks of dual role change. */
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
-		task_set_event(PD_PORT_TO_TASK_ID(i),
-			       PD_EVENT_UPDATE_DUAL_ROLE, 0);
 }
 
-void pd_update_dual_role_config(int port)
+static void pd_update_after_external_role_change(int port)
 {
 	/*
 	 * Change to sink if port is currently a source AND (new DRP
@@ -2083,6 +2081,17 @@ void pd_update_dual_role_config(int port)
 		set_state(port, PD_STATE_SRC_DISCONNECTED);
 		tcpm_set_cc(port, TYPEC_CC_RP);
 	}
+
+#ifdef CONFIG_USBC_SS_MUX
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		/* Disconnect the USB mux when chipset is down to save power */
+		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+			    pd[port].polarity);
+	} else {
+		/* Ensure mux is set properly when chipset is up */
+		update_usb_mux(port);
+	}
+#endif /* CONFIG_USBC_SS_MUX */
 
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
 	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
@@ -2508,8 +2517,8 @@ void pd_task(void *u)
 #endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-		if (evt & PD_EVENT_UPDATE_DUAL_ROLE)
-			pd_update_dual_role_config(port);
+		if (evt & PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE)
+			pd_update_after_external_role_change(port);
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC
@@ -3841,6 +3850,8 @@ static void pd_chipset_resume(void)
 			pd[i].flags |= PD_FLAGS_CHECK_PR_ROLE |
 				       PD_FLAGS_CHECK_DR_ROLE;
 		pd_set_dual_role(i, PD_DRP_TOGGLE_ON);
+		task_set_event(PD_PORT_TO_TASK_ID(i),
+			       PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE, 0);
 	}
 
 	CPRINTS("PD:S3->S0");
@@ -3851,8 +3862,11 @@ static void pd_chipset_suspend(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
+		task_set_event(PD_PORT_TO_TASK_ID(i),
+			       PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE, 0);
+	}
 	CPRINTS("PD:S0->S3");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pd_chipset_suspend, HOOK_PRIO_DEFAULT);
@@ -3864,6 +3878,8 @@ static void pd_chipset_startup(void)
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		pd_set_dual_role(i, PD_DRP_TOGGLE_OFF);
 		pd[i].flags |= PD_FLAGS_CHECK_IDENTITY;
+		task_set_event(PD_PORT_TO_TASK_ID(i),
+			       PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE, 0);
 	}
 	CPRINTS("PD:S5->S3");
 }
@@ -3873,8 +3889,11 @@ static void pd_chipset_shutdown(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		pd_set_dual_role(i, PD_DRP_FORCE_SINK);
+		task_set_event(PD_PORT_TO_TASK_ID(i),
+			       PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE, 0);
+	}
 	CPRINTS("PD:S3->S5");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
@@ -4290,6 +4309,9 @@ static int command_pd(int argc, char **argv)
 					PD_DRP_FORCE_SOURCE);
 			else
 				return EC_ERROR_PARAM4;
+
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+			       PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE, 0);
 		}
 		return EC_SUCCESS;
 #endif
@@ -4364,8 +4386,11 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 	    p->mux >= USB_PD_CTRL_MUX_COUNT)
 		return EC_RES_INVALID_PARAM;
 
-	if (p->role != USB_PD_CTRL_ROLE_NO_CHANGE)
+	if (p->role != USB_PD_CTRL_ROLE_NO_CHANGE) {
 		pd_set_dual_role(p->port, dual_role_map[p->role]);
+		task_set_event(PD_PORT_TO_TASK_ID(p->port),
+			       PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE, 0);
+	}
 
 #ifdef CONFIG_USBC_SS_MUX
 	if (p->mux != USB_PD_CTRL_MUX_NO_CHANGE)

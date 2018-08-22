@@ -42,7 +42,8 @@ enum pd_rx_errors {
 #define PD_EVENT_TX               (1<<3) /* Outgoing packet event */
 #define PD_EVENT_CC               (1<<4) /* CC line change event */
 #define PD_EVENT_TCPC_RESET       (1<<5) /* TCPC has reset */
-#define PD_EVENT_UPDATE_DUAL_ROLE (1<<6) /* DRP state has changed */
+/* Chipset or other input is causing the PD roles/state to change */
+#define PD_EVENT_EXTERNAL_ROLE_STATE_CHANGE   (1<<6)
 /*
  * A task, other than the task owning the PD port, accessed the TCPC. The task
  * that owns the port does not send itself this event.
