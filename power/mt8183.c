@@ -252,6 +252,10 @@ enum power_state power_handle_state(enum power_state state)
 		}
 
 		booted = 1;
+
+		/* HACK: Force eMMC switch to real eMMC */
+		gpio_set_flags(GPIO_BOOTBLOCK_EN_L, GPIO_OUT_HIGH);
+
 		/* Enable S3 power supplies, release AP reset. */
 		power_seq_run(s5s3_power_seq, ARRAY_SIZE(s5s3_power_seq));
 
@@ -315,6 +319,9 @@ enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
 		power_seq_run(s3s5_power_seq, ARRAY_SIZE(s3s5_power_seq));
+
+		/* HACK: Force eMMC switch to float again */
+		gpio_set_flags(GPIO_BOOTBLOCK_EN_L, GPIO_ODR_HIGH);
 
 		/* Start shutting down */
 		return POWER_S5;
