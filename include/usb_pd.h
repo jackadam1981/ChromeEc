@@ -47,8 +47,8 @@ enum pd_rx_errors {
  * A task, other than the task owning the PD port, accessed the TCPC. The task
  * that owns the port does not send itself this event.
  */
-#define PD_EVENT_DEVICE_ACCESSED  (1<<7)
-#define PD_EVENT_DP_DISCONNECT    (1<<8) /* DisplayPort disconnect requested */
+#define PD_EVENT_DEVICE_ACCESSED    (1<<7)
+#define PD_EVENT_POWER_STATE_CHANGE (1<<8) /* Chipset power state changed */
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
@@ -729,6 +729,8 @@ enum pd_states {
  */
 #define PD_FLAGS_LPM_REQUESTED     (1 << 17)/* Tracks SW LPM state */
 #define PD_FLAGS_LPM_ENGAGED       (1 << 18)/* Tracks HW LPM state */
+#define PD_SOC_DOWN                (1 << 19)/* SOC is in S5/G3 */
+
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
