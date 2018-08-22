@@ -22,6 +22,30 @@
       "revId": "5b1ed8f574b076007a634e1de098bae6ba36df60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb4d36c_972e4b63",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-22T07:17:42Z",
+      "side": 1,
+      "message": "Not sure if I follow.\n\nOn rev0, EMMC_CMD is on B15 only. SPI1_NSS on A15 only.\nOn rev1, EMMC_CMD in on B15 and A14, SPI1_NSS on A15 only.\n\nOn rev1, we want EMMC_CMD on A14 (RO only), and SPI1_NSS on A15 (RO+RW).\n\nOn rev0, yes, we could have SPI1_NSS interrupts in RW only, but we\u0027ll deprecate rev0 soon anyway, so I don\u0027t feel it\u0027s really useful... UNIMPLEMENTED(SPI1_NSS) would also work, but we might as well use the real GPIO, since we have it...",
+      "parentUuid": "6c7dff2e_00e20d58",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "5b1ed8f574b076007a634e1de098bae6ba36df60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
