@@ -93,6 +93,30 @@
       "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8433313f_eba9422b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-22T16:14:16Z",
+      "side": 1,
+      "message": "I agree that the else case doesn\u0027t need to reset variables.\n\nI am more concerned about the case where caps_count is already PD_CAPS_COUNT when we receive the PD_CTRL_GET_SOURCE_CAP message and we won\u0027t actually send a SRC_CAP message to the requestor (we will just hard reset instead).\n\nI will let Scott put the +2 on (I will be OOO for the next two days)",
+      "parentUuid": "be7f894b_9177b5df",
+      "range": {
+        "startLine": 1514,
+        "startChar": 3,
+        "endLine": 1514,
+        "endChar": 43
+      },
+      "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
