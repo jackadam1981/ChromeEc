@@ -17,10 +17,10 @@
 /* OPT3001 registers */
 #define OPT3001_REG_RESULT		0x00
 #define OPT3001_REG_CONFIGURE		0x01
-#define OPT3001_RANGE_OFFSET			12
-#define OPT3001_RANGE_MASK			0x0fff
-#define OPT3001_MODE_OFFSET			9
-#define OPT3001_MODE_MASK			0xf9ff
+#define OPT3001_RANGE_OFFSET		12
+#define OPT3001_RANGE_MASK		0x0fff
+#define OPT3001_MODE_OFFSET		9
+#define OPT3001_MODE_MASK		0xf9ff
 enum opt3001_mode {
 	OPT3001_MODE_SUSPEND,
 	OPT3001_MODE_FORCED,
@@ -37,8 +37,11 @@ enum opt3001_mode {
 #define OPT3001_DEVICE_ID		0x3001
 
 /* Min and Max sampling frequency in mHz */
-#define OPT3001_LIGHT_MIN_FREQ          1250
-#define OPT3001_LIGHT_MAX_FREQ          10000
+#define OPT3001_LIGHT_MIN_FREQ		1250
+#define OPT3001_LIGHT_MAX_FREQ		10000
+
+/* Sensor resolution in number of bits */
+#define OPT3001_RESOLUTION		12
 
 #ifdef HAS_TASK_ALS
 int opt3001_init(void);

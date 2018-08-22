@@ -188,6 +188,11 @@ static int opt3001_get_range(const struct motion_sensor_t *s)
 	return (drv_data->scale << 16) | (drv_data->uscale);
 }
 
+static int opt3001_get_resolution(const struct motion_sensor_t *s)
+{
+	return OPT3001_RESOLUTION;
+}
+
 static int opt3001_set_data_rate(const struct motion_sensor_t *s,
 				int rate, int roundup)
 {
@@ -291,6 +296,7 @@ const struct accelgyro_drv opt3001_drv = {
 	.read = opt3001_read_lux,
 	.set_range = opt3001_set_range,
 	.get_range = opt3001_get_range,
+	.get_resolution = opt3001_get_resolution,
 	.set_offset = opt3001_set_offset,
 	.get_offset = opt3001_get_offset,
 	.set_data_rate = opt3001_set_data_rate,
