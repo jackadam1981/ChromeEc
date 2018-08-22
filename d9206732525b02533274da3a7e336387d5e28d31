@@ -22,6 +22,30 @@
       "revId": "d9206732525b02533274da3a7e336387d5e28d31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec694a4e_a7eecf4e",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-22T18:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f75e5cb_3bf33de5",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "d9206732525b02533274da3a7e336387d5e28d31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

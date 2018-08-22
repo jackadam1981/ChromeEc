@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "77da5065_584c9f7f",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-22T18:04:58Z",
+      "side": 1,
+      "message": "To continue our previous discussion. It is possible to hide/locally link these symbols, and export a white-listed set of symbols, but this would be messy in cases where the fuzzer uses internal structs and functions outside of the primary entry point.\n\nThe particular way I implemented this makes it fairly easy to write unit tests or fuzzing targets that use external libraries, but interact with the EC code at a low level without having to maintain a white-list or duplicate set of headers.",
+      "parentUuid": "f6c06602_68fe3d65",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27609d6b_e1613809",
         "filename": "fuzz/build.mk",
         "patchSetId": 3
