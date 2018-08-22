@@ -22,6 +22,30 @@
       "revId": "8fa9dfe30a29387e0419f221b6eacdf74ea425c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f162c6_dd8f2594",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-22T22:53:09Z",
+      "side": 1,
+      "message": "Also, can you add a note that this was determined empirically.\n\nAlso, can you add this same wait for the SNK case (it probably needs it as well)",
+      "parentUuid": "f873c312_5af40e40",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 14
+      },
+      "revId": "8fa9dfe30a29387e0419f221b6eacdf74ea425c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
