@@ -232,7 +232,8 @@ DECLARE_DEFERRED(emmc_check_status);
 
 static void emmc_enable_spi(void)
 {
-	if (emmc_enabled)
+	/* HACK: eMMC emulation disabled. */
+	if (emmc_enabled || 1)
 		return;
 
 	disable_sleep(SLEEP_MASK_EMMC);
@@ -314,6 +315,11 @@ void emmc_task(void *u)
 	enum emmc_cmd cmd;
 	/* Are we currently transmitting data? */
 	int tx = 0;
+
+
+	/* HACK: eMMC emulation disabled. */
+	while (1)
+		task_wait_event(-1);
 
 	rxdma = dma_get_channel(STM32_DMAC_SPI_EMMC_RX);
 
