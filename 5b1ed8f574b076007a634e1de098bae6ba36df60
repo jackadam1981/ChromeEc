@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c7dff2e_00e20d58",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-22T06:49:33Z",
+      "side": 1,
+      "message": "What about:\n\n\nGPIO_INT_RO(EMMC_CMD,       PIN(B, 15), GPIO_INT_FALLING,\n         emmc_cmd_interrupt)\n#if BOARD_REV \u003d\u003d 0\n...\n#elif BOARD_REV \u003e\u003d 1\nGPIO_INT_RW(SPI1_NSS,       PIN(A, 15), GPIO_INT_BOTH,\n         spi_event)\nUNIMPLEMENTED_RO(SPI1_NSS)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "5b1ed8f574b076007a634e1de098bae6ba36df60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
