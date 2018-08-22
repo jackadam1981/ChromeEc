@@ -650,6 +650,11 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 		/* Disable TCPC RX */
 		tcpm_set_rx_enable(port, 0);
+
+#ifdef CHIP_FAMILY_IT83XX
+		/* detect USB PD cc disconnect */
+		hook_notify(HOOK_USB_PD_DISCONNECT);
+#endif// CHIP_FAMILY_IT83XX
 	}
 
 #ifdef CONFIG_LOW_POWER_IDLE
@@ -1514,7 +1519,8 @@ static void handle_ctrl_request(int port, uint16_t head,
 	case PD_CTRL_GET_SOURCE_CAP:
 		res = send_source_cap(port);
 		if ((res >= 0) &&
-		    (pd[port].task_state == PD_STATE_SRC_DISCOVERY))
+		    ((pd[port].task_state == PD_STATE_SRC_DISCOVERY) ||
+		     (pd[port].task_state == PD_STATE_SRC_READY)))
 			set_state(port, PD_STATE_SRC_NEGOCIATE);
 		break;
 	case PD_CTRL_GET_SINK_CAP:

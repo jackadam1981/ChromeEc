@@ -201,6 +201,15 @@ enum hook_type {
 	 * Hook routines will be called from the TICK task.
 	 */
 	HOOK_SECOND,
+
+#ifdef CHIP_FAMILY_IT83XX
+	/*
+	 * Detect USB PD cc disconnect.
+	 *
+	 * Hook routines will be called from the PD task.
+	 */
+	HOOK_USB_PD_DISCONNECT,
+#endif// CHIP_FAMILY_IT83XX
 };
 
 struct hook_data {

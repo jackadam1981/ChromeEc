@@ -56,6 +56,9 @@ static const struct hook_ptrs hook_list[] = {
 #endif
 	{__hooks_tick, __hooks_tick_end},
 	{__hooks_second, __hooks_second_end},
+#ifdef CHIP_FAMILY_IT83XX
+	{__hooks_usb_pd_disconnect, __hooks_usb_pd_disconnect_end},
+#endif
 };
 
 /* Times for deferrable functions */
