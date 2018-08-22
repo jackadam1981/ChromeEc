@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6e1b63fa_afaca07a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-08-22T15:11:44Z",
+      "side": 1,
+      "message": "The comment to gpio_pre_init() says:\n\n * This occurs before clocks or tasks are set up.\n\nThe code at the start of usleep() says:\n\n\t/* If task scheduling has not started, just delay */\n\tif (!task_start_called()) {\n\t\tudelay(us);\n\t\treturn;\n\t}\n\nudelay() uses __hw_clock_source_read() which on npcx just basically calls reads from register NPCX_ITCNT32. I checked other chips and they all seem to read a register too. So that seems OK.\n\nHowever, timer_init() is the thing that calls __hw_clock_source_init() to init the timer, and (from looking at main()) this is called after gpio_pre_init().\n\nStill looking...",
+      "parentUuid": "8a3c95f5_9bc86d13",
+      "revId": "576da301c34c28a6972f3626013fc5f397e2e851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c3bb230_5a5a9b8e",
         "filename": "include/config.h",
         "patchSetId": 2
