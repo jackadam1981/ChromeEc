@@ -46,6 +46,30 @@
       "revId": "5b1ed8f574b076007a634e1de098bae6ba36df60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa14778_65a2c697",
+        "filename": "board/kukui/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-22T09:07:01Z",
+      "side": 1,
+      "message": "Discussed with ayo previously, we have two options for configuring EMMC_CMD:\n\n1. A14 for EMMC_CMD, and B15 for SPI_FLASH, and A15 for SPI1_NSS\n2. B15 for EMMC_CMD, SPI_FLASH in RO, and A15 for SPI1_NSS in RW. So we can save a GPIO pin here.\n\nBut yes, we can still go option 1 here.",
+      "parentUuid": "2bb4d36c_972e4b63",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "5b1ed8f574b076007a634e1de098bae6ba36df60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
