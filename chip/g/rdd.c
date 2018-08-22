@@ -161,15 +161,31 @@ DECLARE_IRQ(GC_IRQNUM_RDD0_INTR_DEBUG_STATE_DETECTED_INT, rdd_interrupt, 1);
  */
 static void rdd_detect(void)
 {
-	/* Handle detecting device */
-	if (force_detected || rdd_is_detected()) {
+	/*
+	 * If Rdd is force detected, ignore all the disconnect stuff. Make
+	 * sure rdd is connected.
+	 */
+	if (force_detected) {
+		rdd_connect();
+		return;
+	}
+	/* CC wasn't detected.  If we're already disconnected, done. */
+	if (state == DEVICE_STATE_DISCONNECTED)
+		return;
+
+	/*
+	 * The pins are in a valid connect range, but it's possible we just
+	 * sampled at the wrong time. Rely on the Rdd interrupt for connect,
+	 * because it will handle making sure the signals have been in a valid
+	 * range for a long enough time.
+	 * Ignore updating the disconnect/debounce state for now. The hook will
+	 * happen again in a second and continue with disconnect then.
+	 */
+	if (rdd_is_detected()) {
 		rdd_connect();
 		return;
 	}
 
-	/* CC wasn't detected.  If we're already disconnected, done. */
-	if (state == DEVICE_STATE_DISCONNECTED)
-		return;
 
 	/* If we were debouncing, we're now sure we're disconnected */
 	if (state == DEVICE_STATE_DEBOUNCING) {
