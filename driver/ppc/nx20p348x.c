@@ -169,6 +169,9 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 	if (rv)
 		return rv;
 
+	/* Give some time for VBUS to ramp up before checking the status */
+	usleep(2000);
+
 	/* Read device status register to get mode */
 	rv = read_reg(port, NX20P348X_DEVICE_STATUS_REG, &status);
 	if (rv)
