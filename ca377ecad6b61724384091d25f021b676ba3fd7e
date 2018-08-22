@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "008c5046_465c4756",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-22T09:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7a848a9_d2ccbcb5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9d45903_1f961171",
         "filename": "chip/g/sn_bits.c",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b6398ace_63c47741",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-22T09:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d45903_1f961171",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78752d14_476aa856",
         "filename": "chip/g/sn_bits.c",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-21T19:58:12Z",
       "side": 1,
       "message": "Should check that inc\u003e0 \u0026\u0026 inc\u003c8?  Params passed by vendor commands are untrusted.\n\nMaybe define a constant for the number of RMA bits also, in the header file?\n\nOr should this only allow clearing the immediate next RMA bit?",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 27
+      },
+      "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b95208_afe2adab",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-22T09:20:11Z",
+      "side": 1,
+      "message": "Good question, I\u0027ve defined a constant for the number of RMA bits, and enforced we don\u0027t increment more than that. \n\nI wanted to accommodate the following uses:\n\n- set RMA indicator, but don\u0027t increment count - IIUC we initially won\u0027t send the serial number back, so this allows us to save the count bits for later while still marking it as RMA\u0027d\n\n- set indicator and increment by 1\n\n- set indicator and increment by several (could just be always 7) such that the count becomes the maximum - to mark it as RMA\u0027d but without a valid count. This could be used if eg a device with an RMA count of 1 is RMA\u0027d, but the new serial number cannot be sent, making count incorrect.\n\nI wrote it like this as it seemed short; happy to add specific functions for the different cases if that\u0027s a good use of space (I\u0027m guessing it won\u0027t add much, and would be cleaner)",
+      "parentUuid": "78752d14_476aa856",
       "range": {
         "startLine": 133,
         "startChar": 20,
