@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+/* test */
+
 /* Common functionality across all chipsets */
 
 #include "charge_state.h"
