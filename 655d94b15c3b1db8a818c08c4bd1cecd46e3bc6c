@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19e06c76_41a40668",
+        "filename": "include/common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-22T00:07:10Z",
+      "side": 1,
+      "message": "Please do like the other attribute, maybe:\n\n#ifdef TEST_FUZZ\n#define __stdlib_compat __attribute__((visibility(\"hidden\")))\n#else /* TEST_FUZZ */\n#define __stdlib_compat\n#endif /* TEST_FUZZ */#define __stdlib_compat\n\nBut since this is for fuzzing only, maybe the name should be something like __fuzz_stdlib_compact? See __test_* below.\n\nAlso, I\u0027d define this below the __test_* below, to keep test stuff in one place.",
+      "revId": "655d94b15c3b1db8a818c08c4bd1cecd46e3bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
