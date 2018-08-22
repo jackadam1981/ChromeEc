@@ -94,6 +94,30 @@
       "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11089873_55fd358a",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-22T16:20:43Z",
+      "side": 1,
+      "message": "how long until we get the new version of the datasheet for the Bx version?\n\n(I also confirmed this in the Dx datasheet)",
+      "parentUuid": "ed882561_a668b7ce",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 12
+      },
+      "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
