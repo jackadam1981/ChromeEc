@@ -222,6 +222,11 @@ int pd_snk_is_vbus_provided(int port)
 
 static void board_init(void)
 {
+	/* Toggle PMIC watchdog so that DRAM calibration does not fail. */
+	gpio_set_level(GPIO_PMIC_WATCHDOG_L, 0);
+	msleep(50);
+	gpio_set_level(GPIO_PMIC_WATCHDOG_L, 1);
+
 	/* Set SPI1 PB13/14/15 pins to high speed */
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000000;
 
