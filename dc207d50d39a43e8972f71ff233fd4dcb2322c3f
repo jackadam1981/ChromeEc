@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75311389_da8e4c81",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2525,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-22T18:40:05Z",
+      "side": 1,
+      "message": "apparently we were racing with CL:1185485. However what you have looks good to me (and you will submit first) We can talk about if we want to consolidate on the other CL.",
+      "range": {
+        "startLine": 2525,
+        "startChar": 12,
+        "endLine": 2525,
+        "endChar": 34
+      },
+      "revId": "dc207d50d39a43e8972f71ff233fd4dcb2322c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
