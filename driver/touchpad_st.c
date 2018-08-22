@@ -297,6 +297,18 @@ static int st_tp_read_host_buffer_header(void)
 			       (uint8_t *)&rx_buf, rx_len);
 }
 
+static int st_tp_read_host_buffer_header_(void) {
+	int ret = st_tp_read_host_buffer_header();
+
+	CPRINTS("header: %02x %02x %02x %02x %02x %02x %02x %02x",
+		rx_buf.bytes[0], rx_buf.bytes[1],
+		rx_buf.bytes[2], rx_buf.bytes[3],
+		rx_buf.bytes[4], rx_buf.bytes[5],
+		rx_buf.bytes[6], rx_buf.bytes[7]);
+
+	return ret;
+}
+
 static int st_tp_send_ack(void)
 {
 	uint8_t tx_buf[] = { ST_TP_CMD_SPI_HOST_BUFFER_ACK };
@@ -894,6 +906,9 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		   uint8_t **data, unsigned int *data_size)
 {
+	static uint8_t buf[8];
+	int num_events;
+
 	if (param_size != 1)
 		return EC_RES_INVALID_PARAM;
 
@@ -903,6 +918,46 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		*data = NULL;
 		*data_size = 0;
 		st_tp_full_initialize_start();
+		return EC_SUCCESS;
+	case 0x02:
+		*data = NULL;
+		*data_size = 0;
+		st_tp_start_scan();
+		return EC_SUCCESS;
+	case 0x03:
+		*data = NULL;
+		*data_size = 0;
+		st_tp_stop_scan();
+		return EC_SUCCESS;
+	case 0x04:
+		*data = NULL;
+		*data_size = 0;
+		st_tp_enable_heat_map();
+		return EC_SUCCESS;
+	case 0x05:
+		*data = NULL;
+		*data_size = 0;
+		st_tp_disable_heat_map();
+		return EC_SUCCESS;
+	case 0x06:
+		*data = buf;
+		*data_size = 8;
+		st_tp_read_host_buffer_header_();
+		memcpy(buf, rx_buf.bytes, 8);
+		return EC_SUCCESS;
+	case 0x07:
+		*data = NULL;
+		*data_size = 0;
+		num_events = st_tp_read_all_events();
+		if (num_events) {
+			int i;
+			for (i = 0; i < num_events; i++) {
+				CPRINTS("event[%d]: id=%d, type=%d",
+					i, rx_buf.events[i].evt_id,
+					rx_buf.events[i].report.report_type);
+			}
+		}
+		st_tp_send_ack();
 		return EC_SUCCESS;
 	}
 	return EC_RES_INVALID_PARAM;
@@ -1294,6 +1349,9 @@ static int command_touchpad_st(int argc, char **argv)
 #else
 		return EC_ERROR_NOT_HANDLED;
 #endif
+	} else if (strcasecmp(argv[1], "read_header") == 0) {
+		st_tp_read_host_buffer_header_();
+		return 0;
 	} else {
 		return EC_ERROR_PARAM1;
 	}
