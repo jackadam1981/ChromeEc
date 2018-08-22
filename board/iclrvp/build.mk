@@ -11,6 +11,6 @@ CHIP:=it83xx
 CHIP_FAMILY:=it8320
 CHIP_VARIANT:=it8320dx
 
-board-y=board.o
+board-y=board.o led.o led_states.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
 board-$(CONFIG_USB_POWER_DELIVERY)+=chg_usb_pd.o usb_pd_policy.o
