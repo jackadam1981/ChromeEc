@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "692eccc6_ad00db83",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-22T16:17:03Z",
+      "side": 1,
+      "message": "Oh yes, my mistake. Must have been tired when reading that code before.",
+      "parentUuid": "117ce275_42a3e81b",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "5f508b582fab9e6cdf044a3c8c21be64c740fa01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91f93143_16c1a707",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 2
