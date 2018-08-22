@@ -70,6 +70,30 @@
       "revId": "5237e255fdc40d9683f696e3481878ee95bc0613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ebfb5e7_6a645431",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-22T18:37:47Z",
+      "side": 1,
+      "message": "I uploaded CL:1185485 which doing something similar (expect for SS MUX low power). Maybe we can re-use that concept?",
+      "parentUuid": "58650708_d83c3c85",
+      "range": {
+        "startLine": 1956,
+        "startChar": 2,
+        "endLine": 1956,
+        "endChar": 21
+      },
+      "revId": "5237e255fdc40d9683f696e3481878ee95bc0613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
