@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b979a4ed_6184c375",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-23T02:02:49Z",
+      "side": 1,
+      "message": "Don\u0027t forget to rest ;)",
+      "parentUuid": "692eccc6_ad00db83",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "5f508b582fab9e6cdf044a3c8c21be64c740fa01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91f93143_16c1a707",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 2
