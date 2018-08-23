@@ -2153,6 +2153,13 @@
 #define CONFIG_LID_SWITCH
 
 /*
+ * Compile detachable base support
+ *
+ * Enabled on all boards that have a detachable base.
+ */
+#undef CONFIG_BOARD_HAS_DETACHABLE_BASE
+
+/*
  * GPIOs to use to detect that the lid is opened.
  *
  * This is a X-macro composed of a list of LID_OPEN(GPIO_xxx) elements defining
