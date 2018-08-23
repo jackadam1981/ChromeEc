@@ -140,6 +140,30 @@
       "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2501ea63_5a72f737",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T01:30:22Z",
+      "side": 1,
+      "message": "Space is at a premium, so this seems fine.  My main concern is making sure bad params to updating the count can\u0027t pollute other fields.",
+      "parentUuid": "49b95208_afe2adab",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 27
+      },
+      "revId": "ca377ecad6b61724384091d25f021b676ba3fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
