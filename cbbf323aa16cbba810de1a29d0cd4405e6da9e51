@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1076fce6_381abf9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-23T17:19:38Z",
+      "side": 1,
+      "message": "There are open bugs about cr50 detecting ccd while voltages are settling. I think the hardware people are looking into leakages, but this invalid connect could also be causing the issue. \n\nCr50 should not be enabling ccd when a valid rdd connect signal hasn\u0027t been seen. This is a cr50 issue.",
+      "parentUuid": "5af9668a_ea162dd7",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "cbbf323aa16cbba810de1a29d0cd4405e6da9e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42ba36fe_ee9b36e6",
         "filename": "chip/g/rdd.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-23T02:37:45Z",
       "side": 1,
       "message": "I am very confused now: function rdd_is_detected() returning true does not actually mean that rdd is detected?\n\nCould this function be unreliable when it is used in rdd ISR?",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 20
+      },
+      "revId": "cbbf323aa16cbba810de1a29d0cd4405e6da9e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5a785a_1abf025f",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-23T17:19:38Z",
+      "side": 1,
+      "message": "Kind of. rdd_is_detected returns true if the cc lines are in the correct voltage range. Not if it is a valid connected state.\n\nWhen the ISR is triggered, the CC lines have been stable for some time. I think that means they\u0027d probably remain stable for a little bit longer.\n\nIf it is unreliable and there is an incorrect read on rdd_is_detected, the map would be set to detect the opposite state, and I think that means the interrupt would trigger again and the second read would correct it.",
+      "parentUuid": "42ba36fe_ee9b36e6",
       "range": {
         "startLine": 188,
         "startChar": 5,
