@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ca41d472_72c0b19c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-23T01:11:38Z",
+      "side": 1,
+      "message": "Why is that?",
+      "range": {
+        "startLine": 20,
+        "startChar": 46,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "6042727f8aca3cd26339a182b1dcb67ae7ca2a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b539ae24_0f99c37b",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-23T01:11:38Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this live in a common location, with callbacks to set forced state? And boards can implement their own version of the callbacks?",
+      "range": {
+        "startLine": 311,
+        "startChar": 11,
+        "endLine": 311,
+        "endChar": 31
+      },
+      "revId": "6042727f8aca3cd26339a182b1dcb67ae7ca2a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d629ad71_e2a57bea",
         "filename": "board/nocturne/base_detect.c",
         "patchSetId": 3
