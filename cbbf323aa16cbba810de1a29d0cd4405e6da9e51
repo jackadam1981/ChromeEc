@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5af9668a_ea162dd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-23T02:37:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand how this could be happening. Is there a good explanation of what\u0027s going on, aren\u0027t CC lines pulled down inside H1?\n\nI don\u0027t think we should be swiping hardware problems under the rug.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "cbbf323aa16cbba810de1a29d0cd4405e6da9e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ba36fe_ee9b36e6",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-23T02:37:45Z",
+      "side": 1,
+      "message": "I am very confused now: function rdd_is_detected() returning true does not actually mean that rdd is detected?\n\nCould this function be unreliable when it is used in rdd ISR?",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 20
+      },
+      "revId": "cbbf323aa16cbba810de1a29d0cd4405e6da9e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
