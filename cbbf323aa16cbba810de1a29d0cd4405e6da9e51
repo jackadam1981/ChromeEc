@@ -93,6 +93,30 @@
       "revId": "cbbf323aa16cbba810de1a29d0cd4405e6da9e51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8842021_dd9f324f",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-23T17:29:02Z",
+      "side": 1,
+      "message": "I did an experiment reading cc1, cc2, RDD_CUR_STABLE_STATE_DEBUG, and RDD_CUR_STABLE_STATE_INVALID in rdd_is_detected. \n\nIn the interrupt rdd_is_detected read STATE_DEBUG would be 1 and STATE_INVALID would be 0. cc1 and cc2 were 3 and 3 for connected. 0 and 0 or 7 and 7 for disconnected.\n\nI disconnected all adapters and suzyq from the DUT.\n\nCr50 goes through the rdd_detect hook once a second. Normally the cc lines would be 0 or 7 the INVALID bit would be 1 and the DEBUG bit would be 0. Occasionally I would see that the cc lines were 3, but the DEBUG bit was 0 and the STABLE bit was 1. This change just ignores that state in rdd_detect, so we can wait for it to become stable or return to the disconnected state.",
+      "parentUuid": "2b5a785a_1abf025f",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 20
+      },
+      "revId": "cbbf323aa16cbba810de1a29d0cd4405e6da9e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
