@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b47fa33_4fcf3b98",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-23T01:14:58Z",
+      "side": 0,
+      "message": "Can\u0027t we just change this call to check the hardware-debounced state?",
+      "range": {
+        "startLine": 165,
+        "startChar": 23,
+        "endLine": 165,
+        "endChar": 41
+      },
+      "revId": "b8af74cc4cf7a304ce8087fc60248ea037aad566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
