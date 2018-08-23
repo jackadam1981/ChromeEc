@@ -117,6 +117,30 @@
       "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c88bcb_ebdd3b7d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-23T10:06:29Z",
+      "side": 1,
+      "message": "It only when we are in PD_STATE_SRC_READY state will have this if case. And first time only having power contract before can transit to PD_STATE_SRC_READY state. Once having power contract  caps_count and hard_reset_count variables must be reset when leaving PD_STATE_SRC_DISCOVERY state. Other cases(ex.PD_STATE_SRC_GET_SNK_CAP or requested power data from SNK can\u0027t match SRC_CAP)which transit to PD_STATE_SRC_READY state won\u0027t increase caps_count. So if SRC port  receives PD_CTRL_GET_SOURCE_CAP control message in PD_STATE_SRC_READY state, the caps_count is still zero. I think there is not the case that you\u0027re concerned.\n\nOk, thanks that.",
+      "parentUuid": "8433313f_eba9422b",
+      "range": {
+        "startLine": 1514,
+        "startChar": 3,
+        "endLine": 1514,
+        "endChar": 43
+      },
+      "revId": "dad5282504e7d7f675cccde27931bf8a35da9556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
