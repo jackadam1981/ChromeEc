@@ -72,9 +72,12 @@ enum base_status {
 	BASE_UNKNOWN = 0,
 	BASE_DISCONNECTED = 1,
 	BASE_CONNECTED = 2,
+	// Default for |forced_state|. Should be set only on |forced_state|.
+	BASE_NO_FORCED_STATE = 3,
 };
 
 static enum base_status current_base_status;
+static enum base_status forced_state = BASE_NO_FORCED_STATE;
 
 /*
  * This function is called whenever there is a change in the base detect
@@ -113,6 +116,16 @@ static void base_detect_deferred(void)
 {
 	uint64_t time_now = get_time().val;
 	int v;
+
+	if (forced_state != BASE_NO_FORCED_STATE) {
+		if (current_base_status != forced_state) {
+			CPRINTS("BD forced  %s",
+				forced_state == BASE_CONNECTED ?
+				"connected" : "disconnected");
+			base_detect_change(forced_state);
+		}
+		return;
+	}
 
 	if (base_detect_debounce_time > time_now) {
 		hook_call_deferred(&base_detect_deferred_data,
@@ -197,3 +210,16 @@ static void base_init(void)
 	gpio_set_level(GPIO_EN_CC_LID_BASE_PULLDN, 1);
 }
 DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_DEFAULT+1);
+
+
+
+void base_force_state(int state)
+{
+	if (state == 1)
+		forced_state = BASE_CONNECTED;
+	else if (state == 0)
+		forced_state = BASE_DISCONNECTED;
+	else
+		forced_state = BASE_NO_FORCED_STATE;
+	hook_call_deferred(&base_detect_deferred_data, 0);
+}
