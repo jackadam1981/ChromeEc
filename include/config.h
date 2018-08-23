@@ -417,6 +417,14 @@
 #undef CONFIG_BOARD_VERSION
 /* The decoding of the GPIOs defining board version is defined in board code */
 #undef CONFIG_BOARD_SPECIFIC_VERSION
+/* The board version function is defined in board code. */
+#undef CONFIG_BOARD_VERSION_CUSTOM
+/*
+ * The board version is encoded with 3 GPIO signals where GPIO_BOARD_VERSION1
+ * is the LSB.
+ */
+#undef CONFIG_BOARD_VERSION_GPIO
+
 
 /* EC responses to a board defined I2C slave address */
 #undef CONFIG_BOARD_I2C_SLAVE_ADDR
@@ -448,6 +456,13 @@
  * matrix.
  */
 #undef CONFIG_BUTTON_TRIGGERED_RECOVERY
+
+/*
+ * Compile detachable base support
+ *
+ * Enabled on all boards that have a detachable base.
+ */
+#undef CONFIG_DETACHABLE_BASE
 
 /*
  * Indicates there is a dedicated recovery button.  Note, that if there are
@@ -2526,6 +2541,11 @@
  * Add a virtual switch to indicate when we are in tablet mode.
  */
 #undef CONFIG_TABLET_MODE_SWITCH
+/*
+ * Add a virtual switch to indicate when detachable device has
+ * base attached.
+ */
+#undef CONFIG_BASE_ATTACHED_SWITCH
 
 /*
  * Microchip Trace FIFO Debug Port
