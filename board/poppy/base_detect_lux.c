@@ -218,3 +218,37 @@ static void base_init(void)
 	gpio_enable_interrupt(GPIO_BASE_DET_A);
 }
 DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_DEFAULT+1);
+
+static int command_setbasestate(int argc, char **argv)
+{
+	if (argc > 1) {
+		if (argv[1][0] == 'f') {
+			if (argc <= 2)
+				return EC_ERROR_PARAM_COUNT;
+
+			if (argv[2][0] == 'a') {
+				gpio_disable_interrupt(GPIO_BASE_DET_A);
+				base_detect_change(BASE_CONNECTED);
+			} else if (argv[2][0] == 'd') {
+				gpio_disable_interrupt(GPIO_BASE_DET_A);
+				base_detect_change(BASE_DISCONNECTED);
+			} else {
+				return EC_ERROR_PARAM2;
+			}
+
+		} else if (argv[1][0] == 'r') {
+			hook_call_deferred(&base_detect_deferred_data,
+				BASE_DETECT_DEBOUNCE_US);
+			gpio_enable_interrupt(GPIO_BASE_DET_A);
+		} else {
+			return EC_ERROR_PARAM1;
+		}
+	}
+
+	CPRINTS("BD: st%d", current_base_status);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(basestate, command_setbasestate,
+			"[force (attach | dettach)| reset]",
+			"Manually force lid state to attached or detached.");
