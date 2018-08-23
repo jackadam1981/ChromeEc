@@ -22,6 +22,30 @@
       "revId": "b8af74cc4cf7a304ce8087fc60248ea037aad566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2ddcdc_2bfe4e90",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-23T01:21:13Z",
+      "side": 0,
+      "message": "No. The fact we switch the DEBUG MAP between detecting disconnect and connect means that STABLE bit doesn\u0027t mean that much. We\u0027d need to check what the debug map is detecting, what state we\u0027re in, and then based on that if we detect connect and the stable bit is 1 we\u0027d want to connect.\nThe thing is the interrupt already does all this for us and we shouldn\u0027t reimplement a worse version here.",
+      "parentUuid": "6b47fa33_4fcf3b98",
+      "range": {
+        "startLine": 165,
+        "startChar": 23,
+        "endLine": 165,
+        "endChar": 41
+      },
+      "revId": "b8af74cc4cf7a304ce8087fc60248ea037aad566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
