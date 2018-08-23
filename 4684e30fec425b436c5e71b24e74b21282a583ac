@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "236ae3cb_970d32c3",
+        "filename": "power/mt8183.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-08-23T05:43:12Z",
+      "side": 1,
+      "message": "How long does the PMIC_PWR_GOOD signal drop to low when forcing it off? Unconditionally waiting 1 second seems a bit long.",
+      "range": {
+        "startLine": 301,
+        "startChar": 3,
+        "endLine": 301,
+        "endChar": 16
+      },
+      "revId": "4684e30fec425b436c5e71b24e74b21282a583ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
