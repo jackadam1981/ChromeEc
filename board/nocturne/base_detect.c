@@ -57,6 +57,8 @@ enum base_detect_state {
 
 static int debug;
 static enum base_detect_state state;
+static int force_state;
+static enum base_detect_state forced_state;
 
 static void enable_base_interrupts(int enable)
 {
@@ -167,6 +169,12 @@ static void base_detect_deferred(void)
 		CPRINTS("BD st%d: att: %dmV det: %dmV", state,
 			attach_reading,
 			detach_reading);
+
+	if (force_state && state != forced_state) {
+		set_state(forced_state);
+		base_detect_changed();
+		return;
+	}
 
 	switch (state) {
 	case BASE_DETACHED:
@@ -285,9 +293,20 @@ static int command_basedetectdebug(int argc, char **argv)
 	if ((argc > 1) && !parse_bool(argv[1], &debug))
 		return EC_ERROR_PARAM1;
 
-	CPRINTS("BD: st%d", state);
+	CPRINTS("BD: %sst%d", force_state ? "forced " : "", state);
 
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(basedebug, command_basedetectdebug, "[ena|dis]",
 			"En/Disable base detection debug");
+
+void base_force_state(int state) {
+	force_state = 1;
+	if (state == 1)
+		forced_state = BASE_ATTACHED;
+	else if (state == 0)
+		forced_state = BASE_DETACHED;
+	else
+		force_state = 0;
+	hook_call_deferred(&base_detect_deferred_data, 0);
+}

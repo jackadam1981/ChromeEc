@@ -238,3 +238,19 @@ static void base_init(void)
 		base_enable();
 }
 DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_DEFAULT+1);
+
+
+void base_force_state(int state) {
+	force_state = 1;
+	if (state == 1) {
+		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		base_detect_change(BASE_CONNECTED);
+	} else if (state == 0) {
+		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		base_detect_change(BASE_DISCONNECTED);
+	} else {
+		base_enable();
+	}
+
+	CPRINTS("BD: st%d", current_base_status);
+}
