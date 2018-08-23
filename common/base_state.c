@@ -7,9 +7,11 @@
 #include "console.h"
 #include "host_command.h"
 #include "hooks.h"
+#include "tablet_mode.h"
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 
+#ifdef CONFIG_BASE_ATTACHED_SWITCH
 /* 1: base attached, 0: otherwise */
 static int base_state;
 
@@ -30,3 +32,26 @@ void base_set_state(int state)
 	/* Notify host of mode change. This likely will wake it up. */
 	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 }
+#endif
+
+static int command_setbasestate(int argc, char **argv)
+{
+	if (argc > 1) {
+		if (argv[1][0] == 'a') {
+			base_force_state(1);
+		} else if (argv[1][0] == 'd') {
+			base_force_state(0);
+		} else if (argv[1][0] == 'r') {
+			base_force_state(2);
+		} else {
+			return EC_ERROR_PARAM1;
+		}
+	}
+
+	CPRINTS("BD: %sst%d", state);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(basestate, command_setbasestate,
+			"[attach | detach | reset]",
+			"Manually force base state to attached or detached.");

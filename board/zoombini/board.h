@@ -57,6 +57,8 @@
 #define CONFIG_SYNC
 #endif
 
+#define CONFIG_BOARD_HAS_DETACHABLE_BASE
+
 #ifdef BOARD_MEOWTH
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
