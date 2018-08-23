@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e61a00b_c7599cc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-23T02:39:51Z",
+      "side": 1,
+      "message": "just in case: can you repeat this a few times:\n\nrm -rf build\nmake buildall -j\n\njust to make sure that the directories are still being created as expected.",
+      "revId": "9e6326613f78489c4951ee4dcbb3b48cf9c468cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af239009_46a81614",
         "filename": "Makefile.rules",
         "patchSetId": 1
