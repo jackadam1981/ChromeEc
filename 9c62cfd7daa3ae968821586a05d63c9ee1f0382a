@@ -118,6 +118,30 @@
       "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e1b3d41_1bfe0805",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-08-23T02:14:14Z",
+      "side": 1,
+      "message": "Our PM Eddie says these couple days. The new Bx datasheet is on our internal release flow.",
+      "parentUuid": "11089873_55fd358a",
+      "range": {
+        "startLine": 284,
+        "startChar": 4,
+        "endLine": 284,
+        "endChar": 12
+      },
+      "revId": "9c62cfd7daa3ae968821586a05d63c9ee1f0382a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
