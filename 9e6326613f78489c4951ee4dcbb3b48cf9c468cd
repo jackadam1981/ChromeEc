@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "45e32020_489b8ecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-23T15:58:33Z",
+      "side": 1,
+      "message": "I tested it an additional three times and all passed without any problems. Also, I have updated the commit message to include the rm -rf build step.",
+      "parentUuid": "9e61a00b_c7599cc8",
+      "revId": "9e6326613f78489c4951ee4dcbb3b48cf9c468cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af239009_46a81614",
         "filename": "Makefile.rules",
         "patchSetId": 1
