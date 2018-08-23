@@ -94,6 +94,11 @@
 #define CONFIG_VOLUME_BUTTONS
 #define CONFIG_WP_ALWAYS
 
+/* Tablet mode */
+#define CONFIG_TABLET_MODE
+#define CONFIG_TABLET_SWITCH
+#define TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
+
 /* Verified boot */
 #define CONFIG_SHA256_UNROLLED
 #define CONFIG_VBOOT_HASH
