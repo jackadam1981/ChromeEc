@@ -25,6 +25,7 @@
 #include "spi.h"
 #include "switch.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "timer.h"
 #include "uart.h"
