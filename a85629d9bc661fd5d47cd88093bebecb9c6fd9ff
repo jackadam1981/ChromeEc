@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06342f52_fe2ae4fc",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-23T19:45:30Z",
+      "side": 1,
+      "message": "what does this return if the parent dies? the init process?",
+      "range": {
+        "startLine": 820,
+        "startChar": 46,
+        "endLine": 820,
+        "endChar": 58
+      },
+      "revId": "a85629d9bc661fd5d47cd88093bebecb9c6fd9ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
