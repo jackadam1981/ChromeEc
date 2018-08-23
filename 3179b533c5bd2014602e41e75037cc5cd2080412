@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "653f254f_156ee6d0",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-23T17:26:34Z",
+      "side": 1,
+      "message": "looks like PCRRead implementation doesn\u0027t rely on this fact (FilterPCr does the job for all sizes), but technically sizeofSelect should be \u003e\u003d PCR_SELECT_MIN (\u003d3). We send 2 here. To avoid incompatibilities if we change the underlying TPM2 stack, let\u0027s fill with zerioes up to PCR_SELECT_MIN and set sizeofSelect to it.",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb7a20d_476f8fe1",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-23T17:26:34Z",
+      "side": 1,
+      "message": "shouldn\u0027t bitmask be uint8_t bitmask[2] instead to avoid converting back and forth between byte order in pcrSelect[] and byte order in wherever this bitmask comes from? then it can be just memcpy() here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 65
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f9383b0_7a5eb301",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-23T17:26:34Z",
+      "side": 1,
+      "message": "PCRRead may return an updated bitmask with unimplemented PCRs excluded from it, so there may be less values if that happens. we may want to check, and probably error out if a requested PCR is actually not implemented.",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f86d2c6_4ecffd28",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-23T17:26:34Z",
+      "side": 1,
+      "message": "intentional or need to rebase? is it sufficient to have 1024 for our purposes?\nI believe, cr50 needs to support both old and new formats, so we can\u0027t just reject old format requests - need to be more flexible than that",
+      "range": {
+        "startLine": 72,
+        "startChar": 33,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3fc4e9_3d02ee0a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-23T17:26:34Z",
+      "side": 1,
+      "message": "should it now be:\n\nif (....minor \u003d\u003d 0) {\n  /* check this */\n} else if (...minor \u003d\u003d 1) {\n  /* check that */\n}\n\nto cover both cases?",
+      "range": {
+        "startLine": 459,
+        "startChar": 1,
+        "endLine": 462,
+        "endChar": 2
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd0dcb9_e0c0626c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-23T17:26:34Z",
+      "side": 1,
+      "message": "well, we need to support old OS images that send it with ver \u003d 0.0, so let\u0027s handle it",
+      "range": {
+        "startLine": 1004,
+        "startChar": 1,
+        "endLine": 1007,
+        "endChar": 2
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587d500b_c10766f2",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-23T17:26:34Z",
+      "side": 1,
+      "message": "%d.%d for major.minor? we may add more versions in the future...",
+      "range": {
+        "startLine": 1124,
+        "startChar": 53,
+        "endLine": 1124,
+        "endChar": 55
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
