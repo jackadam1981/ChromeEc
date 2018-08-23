@@ -7,9 +7,11 @@
 #include "console.h"
 #include "host_command.h"
 #include "hooks.h"
+#include "tablet_mode.h"
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 
+#ifdef CONFIG_BASE_ATTACHED_SWITCH
 /* 1: base attached, 0: otherwise */
 static int base_state;
 
@@ -30,3 +32,4 @@ void base_set_state(int state)
 	/* Notify host of mode change. This likely will wake it up. */
 	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 }
+#endif
