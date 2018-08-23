@@ -25,6 +25,40 @@
     },
     {
       "key": {
+        "uuid": "828f20db_b92eea66",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-23T08:51:55Z",
+      "side": 1,
+      "message": "Pondering if we could do this with only one variable, e.g. by adding a new enum value BASE_NO_FORCED_STATE or something, that is only used in `forced_state`.",
+      "revId": "6042727f8aca3cd26339a182b1dcb67ae7ca2a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8633baef_7836eac8",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-23T08:51:55Z",
+      "side": 1,
+      "message": "Can you just return; here, to avoid indenting the rest of the code?\n\nCalling \"Check again in the appropriate time only if the AP is on.\" does not seem very useful if we are in forced state anyway.",
+      "revId": "6042727f8aca3cd26339a182b1dcb67ae7ca2a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b539ae24_0f99c37b",
         "filename": "board/nocturne/base_detect.c",
         "patchSetId": 3
