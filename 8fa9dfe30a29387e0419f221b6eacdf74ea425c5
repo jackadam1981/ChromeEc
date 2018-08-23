@@ -70,6 +70,30 @@
       "revId": "8fa9dfe30a29387e0419f221b6eacdf74ea425c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f620f09_0d27f886",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-23T14:21:55Z",
+      "side": 1,
+      "message": "I hadn\u0027t seen that review go by. Do you have a link to it?  I\u0027d be curious to see how it does with the 400k speed increase on my yorp",
+      "parentUuid": "e7dbf28a_42dbaae1",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 14
+      },
+      "revId": "8fa9dfe30a29387e0419f221b6eacdf74ea425c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
