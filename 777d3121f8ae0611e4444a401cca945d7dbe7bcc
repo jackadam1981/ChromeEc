@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "39631552_e88ec75a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-08-23T06:32:32Z",
+      "side": 1,
+      "message": "nit, autotests",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "777d3121f8ae0611e4444a401cca945d7dbe7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "741525cd_6fd61f6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-08-23T06:32:32Z",
+      "side": 1,
+      "message": "should contain nocturne, poppy if plan to deploy as regularly run test on lab devices at some point.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "777d3121f8ae0611e4444a401cca945d7dbe7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8073f987_fb1507e7",
         "filename": "board/nocturne/base_detect.c",
         "patchSetId": 2
