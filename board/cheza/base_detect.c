@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Lux base detection code */
+/* Lux base without battery detection code */
 
 #include "adc.h"
 #include "adc_chip.h"
@@ -11,6 +11,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -41,7 +42,7 @@
  * maxing out at 2813).
  */
 #define BASE_DISCONNECTED_CONNECT_MIN_MV 450
-#define BASE_DISCONNECTED_CONNECT_MAX_MV 600
+#define BASE_DISCONNECTED_CONNECT_MAX_MV 650
 
 #define BASE_DISCONNECTED_MIN_MV 2800
 #define BASE_DISCONNECTED_MAX_MV (ADC_MAX_VOLT+1)
@@ -57,7 +58,7 @@
  * a 1M pull-up on lid, and 200K pull-down on base).
  */
 #define BASE_CONNECTED_DISCONNECT_MIN_MV 20
-#define BASE_CONNECTED_DISCONNECT_MAX_MV 40
+#define BASE_CONNECTED_DISCONNECT_MAX_MV 45
 
 #define BASE_CONNECTED_MIN_MV 2050
 #define BASE_CONNECTED_MAX_MV 2300
@@ -75,32 +76,11 @@ enum base_status {
 
 static enum base_status current_base_status;
 
-/**
- * Board-specific routine to indicate if the base is connected.
- */
-int board_is_base_connected(void)
-{
-	return current_base_status == BASE_CONNECTED;
-}
-
-/**
- * Board-specific routine to enable power distribution between lid and base
- * (current can flow both ways).
- *
- * We only allow the base power to be enabled if the detection code knows that
- * the base is connected.
- */
-void board_enable_base_power(int enable)
-{
-	gpio_set_level(GPIO_PPVAR_VAR_BASE,
-		enable && current_base_status == BASE_CONNECTED);
-}
-
 /*
  * This function is called whenever there is a change in the base detect
  * status. Actions taken include:
  * 1. Enable/disable pull-down on half-duplex UART line
- * 2. Disable power transfer between lid and base when unplugged.
+ * 2. Enable/disable power to base.
  * 3. Indicate mode change to host.
  * 4. Indicate tablet mode to host. Current assumption is that if base is
  * disconnected then the system is in tablet mode, else if the base is
@@ -116,16 +96,10 @@ static void base_detect_change(enum base_status status)
 	current_base_status = status;
 
 	/* Enable pull-down if connected. */
-	gpio_set_level(GPIO_EC_COMM_PD, !connected);
-	/* Disable power to/from base as quickly as possible. */
-	if (!connected)
-		board_enable_base_power(0);
+	gpio_set_level(GPIO_EN_CC_LID_BASE_PULLDN, !connected);
 
-	/*
-	 * Wake the charger task (it is responsible for enabling power to the
-	 * base, and providing OTG power to the base if required).
-	 */
-	task_wake(TASK_ID_CHARGER);
+	/* We don't enable dual-battery support. Set the base power directly. */
+	gpio_set_level(GPIO_EN_PPVAR_VAR_BASE, connected);
 
 	tablet_set_mode(!connected);
 }
@@ -196,35 +170,47 @@ void base_detect_interrupt(enum gpio_signal signal)
 	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
 }
 
+static void base_detect_enable(void)
+{
+	/* Enable base detection interrupt. */
+	base_detect_debounce_time = get_time().val;
+	hook_call_deferred(&base_detect_deferred_data, 0);
+	gpio_enable_interrupt(GPIO_CC_LID_BASE_ADC);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, base_detect_enable, HOOK_PRIO_DEFAULT);
+
+static void base_detect_disable(void)
+{
+	/* Disable base detection interrupt and disable power to base. */
+	gpio_disable_interrupt(GPIO_CC_LID_BASE_ADC);
+	base_detect_change(BASE_DISCONNECTED);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, base_detect_disable, HOOK_PRIO_DEFAULT);
+
 static void base_init(void)
 {
 	/*
 	 * Make sure base power and pull-down are off. This will reset the base
 	 * if it is already connected.
 	 */
-	board_enable_base_power(0);
-	gpio_set_level(GPIO_EC_COMM_PD, 1);
-
-	/* Enable base detection interrupt. */
-	hook_call_deferred(&base_detect_deferred_data, BASE_DETECT_DEBOUNCE_US);
-	gpio_enable_interrupt(GPIO_BASE_DET_A);
+	gpio_set_level(GPIO_EN_PPVAR_VAR_BASE, 0);
+	gpio_set_level(GPIO_EN_CC_LID_BASE_PULLDN, 1);
 }
 DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_DEFAULT+1);
 
 void base_force_state(int state)
 {
 	if (state == 1) {
-		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		gpio_disable_interrupt(GPIO_CC_LID_BASE_ADC);
 		base_detect_change(BASE_CONNECTED);
 		CPRINTS("BD forced connected");
 	} else if (state == 0) {
-		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		gpio_disable_interrupt(GPIO_CC_LID_BASE_ADC);
 		base_detect_change(BASE_DISCONNECTED);
 		CPRINTS("BD forced disconnected");
 	} else {
-		hook_call_deferred(&base_detect_deferred_data,
-			BASE_DETECT_DEBOUNCE_US);
-		gpio_enable_interrupt(GPIO_BASE_DET_A);
+		hook_call_deferred(&base_detect_deferred_data, 0);
+		gpio_enable_interrupt(GPIO_CC_LID_BASE_ADC);
 		CPRINTS("BD forced reset");
 	}
 }

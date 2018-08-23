@@ -4,24 +4,25 @@
  */
 
 /*
- * Meowth base detection code.
+ * Nocturne base detection code.
  *
- * Meowth has two analog detection pins with which it monitors to determine the
- * base status: the attach, and detach pins.
+ * Nocturne has two analog detection pins with which it monitors to determine
+ * the base status: the attach, and detach pins.
  *
  * When the voltages cross a certain threshold, after some debouncing, the base
- * is deemed connected.  Meowth then applies the base power and monitors for
+ * is deemed connected.  Nocturne then applies the base power and monitors for
  * power faults from the eFuse as well as base disconnection.  Similarly, once
  * the voltages cross a different threshold, after some debouncing, the base is
- * deemed disconnected.  At this point, Meowth disables the base power.
+ * deemed disconnected.  At this point, Nocturne disables the base power.
  */
 
 #include "adc.h"
+#include "base_state.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "tablet_mode.h"
 #include "timer.h"
 #include "util.h"
 
@@ -57,38 +58,62 @@ enum base_detect_state {
 };
 
 static int debug;
-static enum base_detect_state state;
 static enum base_detect_state forced_state = BASE_NO_FORCED_STATE;
+static enum base_detect_state state;
+
+
+static void enable_base_interrupts(int enable)
+{
+	int (*fn)(enum gpio_signal) = enable ? gpio_enable_interrupt :
+		gpio_disable_interrupt;
+
+	/* This pin is present on boards newer than rev 0. */
+	if (board_get_version() > 0)
+		fn(GPIO_BASE_USB_FAULT_ODL);
+
+	fn(GPIO_BASE_PWR_FAULT_ODL);
+}
+
+static void base_power_enable(int enable)
+{
+	/* Nothing to do if the state is the same. */
+	if (gpio_get_level(GPIO_BASE_PWR_EN) == enable)
+		return;
+
+	if (enable) {
+		/* Apply power to the base only if the AP is on or sleeping. */
+		if (chipset_in_state(CHIPSET_STATE_ON |
+				     CHIPSET_STATE_ANY_SUSPEND)) {
+			gpio_set_level(GPIO_BASE_PWR_EN, 1);
+			/* Allow time for the fault line to rise. */
+			msleep(1);
+			/* Monitor for base power faults. */
+			enable_base_interrupts(1);
+		}
+	} else {
+		/*
+		 * Disable power fault interrupt.  It will read low when base
+		 * power is removed.
+		 */
+		enable_base_interrupts(0);
+		/* Now, remove power to the base. */
+		gpio_set_level(GPIO_BASE_PWR_EN, 0);
+	}
+
+	CPRINTS("BP: %d", enable);
+}
 
 static void base_detect_changed(void)
 {
 	switch (state) {
 	case BASE_DETACHED:
-		/* Indicate that we are in tablet mode. */
-		tablet_set_mode(1);
-
-		/*
-		 * Disable power fault interrupt.  It will read low when base
-		 * power is removed.
-		 */
-		gpio_disable_interrupt(GPIO_BASE_PWR_FLT_L);
-		/* Now, remove power to the base. */
-		gpio_set_level(GPIO_BASE_PWR_EN, 0);
+		base_set_state(0);
+		base_power_enable(0);
 		break;
 
 	case BASE_ATTACHED:
-		/*
-		 * TODO(b/73133611): Note, this simple logic may suffice for
-		 * now, but we may have to revisit this.
-		 */
-		tablet_set_mode(0);
-
-		/* Apply power to the base. */
-		gpio_set_level(GPIO_BASE_PWR_EN, 1);
-		/* Allow time for the fault line to rise. */
-		msleep(1);
-		/* Monitor for base power faults. */
-		gpio_enable_interrupt(GPIO_BASE_PWR_FLT_L);
+		base_set_state(1);
+		base_power_enable(1);
 		break;
 
 	default:
@@ -139,6 +164,17 @@ static void base_detect_deferred(void)
 	int detach_reading;
 	int timeout = DEFAULT_POLL_TIMEOUT_US;
 
+	if (forced_state != BASE_NO_FORCED_STATE) {
+		if (state != forced_state) {
+			CPRINTS("BD forced  %s",
+				forced_state == BASE_ATTACHED ?
+				"attached" : "detached");
+			set_state(forced_state);
+			base_detect_changed();
+		}
+		return;
+	}
+
 	attach_reading = adc_read_channel(ADC_BASE_ATTACH);
 	detach_reading = adc_read_channel(ADC_BASE_DETACH);
 
@@ -146,16 +182,6 @@ static void base_detect_deferred(void)
 		CPRINTS("BD st%d: att: %dmV det: %dmV", state,
 			attach_reading,
 			detach_reading);
-
-	if (forced_state != BASE_NO_FORCED_STATE) {
-		if (state != forced_state) {
-			CPRINTS("BD Forced  %s",
-				forced_state == BASE_ATTACHED ?
-				"attached" : "detached");
-			set_state(forced_state);
-		}
-		return;
-	}
 
 	switch (state) {
 	case BASE_DETACHED:
@@ -201,10 +227,29 @@ static void base_detect_deferred(void)
 		break;
 	};
 
-	/* Check again in the appropriate time. */
-	hook_call_deferred(&base_detect_deferred_data, timeout);
+	/* Check again in the appropriate time only if the AP is on. */
+	if (chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND))
+		hook_call_deferred(&base_detect_deferred_data, timeout);
 };
 DECLARE_HOOK(HOOK_INIT, base_detect_deferred, HOOK_PRIO_INIT_ADC + 1);
+
+static void restart_state_machine(void)
+{
+	/*
+	 * Since we do not poll in anything lower than S3, the base may or may
+	 * not be connected, therefore intentionally set the state to detached
+	 * such that we can detect and power on the base if necessary.
+	 */
+	set_state(BASE_DETACHED);
+	hook_call_deferred(&base_detect_deferred_data, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, restart_state_machine, HOOK_PRIO_DEFAULT);
+
+static void power_off_base(void)
+{
+	base_power_enable(0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, power_off_base, HOOK_PRIO_DEFAULT);
 
 static uint8_t base_power_on_attempts;
 static void clear_base_power_on_attempts_deferred(void)
@@ -220,7 +265,7 @@ static void check_and_reapply_base_power_deferred(void)
 
 	if (base_power_on_attempts < POWER_FAULT_MAX_RETRIES) {
 		CPRINTS("Reapply base pwr");
-		gpio_set_level(GPIO_BASE_PWR_EN, 1);
+		base_power_enable(1);
 		base_power_on_attempts++;
 
 		hook_call_deferred(&clear_base_power_on_attempts_deferred_data,
@@ -233,12 +278,13 @@ DECLARE_DEFERRED(check_and_reapply_base_power_deferred);
 void base_pwr_fault_interrupt(enum gpio_signal s)
 {
 	/* Inverted because active low. */
-	int fault_detected = !gpio_get_level(GPIO_BASE_PWR_FLT_L);
+	int pwr_fault_detected = !gpio_get_level(GPIO_BASE_PWR_FAULT_ODL);
+	int usb_fault_detected = s == GPIO_BASE_USB_FAULT_ODL;
 
-	if (fault_detected) {
+	if (pwr_fault_detected | usb_fault_detected) {
 		/* Turn off base power. */
 		CPRINTS("Base Pwr Flt!");
-		gpio_set_level(GPIO_BASE_PWR_EN, 0);
+		base_power_enable(0);
 
 		/*
 		 * Try and apply power in a bit if maybe it was just a temporary
@@ -256,9 +302,9 @@ static int command_basedetectdebug(int argc, char **argv)
 
 	CPRINTS("BD: %sst%d", forced_state != BASE_NO_FORCED_STATE ?
 						  "forced " : "", state);
-
 	return EC_SUCCESS;
 }
+
 DECLARE_CONSOLE_COMMAND(basedebug, command_basedetectdebug, "[ena|dis]",
 			"En/Disable base detection debug");
 
