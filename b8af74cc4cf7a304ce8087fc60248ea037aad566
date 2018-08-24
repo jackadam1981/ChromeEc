@@ -69,6 +69,30 @@
       "revId": "b8af74cc4cf7a304ce8087fc60248ea037aad566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcc4d558_74df5723",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-24T22:11:22Z",
+      "side": 0,
+      "message": "The rdd_disconnect deferred call will happen a second after the state is set to debouncing if a connect isn\u0027t detected. rdd_disconnect will set the state to disconnect.",
+      "parentUuid": "b2e2cd96_79f9b834",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 28
+      },
+      "revId": "b8af74cc4cf7a304ce8087fc60248ea037aad566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
