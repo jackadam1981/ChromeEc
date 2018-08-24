@@ -99,6 +99,11 @@
 /* Enable Case Closed Debugging */
 #define CONFIG_CASE_CLOSED_DEBUG_V1
 #define CONFIG_PHYSICAL_PRESENCE
+/*
+ * Enable ccd open from the console. This should only be allowed in prePVT
+ * builds.
+ */
+#undef CONFIG_CCD_OPEN_LIMITED
 
 #ifdef CR50_DEV
 /* Enable unsafe dev features for CCD in dev builds */
