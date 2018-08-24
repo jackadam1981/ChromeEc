@@ -8,12 +8,6 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-/*
- * Allow dangerous commands.
- * TODO(b:111816190): Remove this config before production.
- */
-#define CONFIG_SYSTEM_UNLOCKED
-
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
