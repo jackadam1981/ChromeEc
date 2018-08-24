@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab074f61_0fc86501",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-24T02:55:05Z",
+      "side": 1,
+      "message": "nit: why? iiuc, the code below always sets bit 7 (\u0027RMA happened\u0027) to 0. so, if bits 6..0 are not 0b1111111, this bit is already 0. and increment_rma_count(0) in this case is basically NOP. shall we just return success immediately instead of error? that\u0027d allow scripts to call increment_rma_count(0) w/o checking what the current count is first.",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 64
+      },
+      "revId": "2b32b831df4c93fb71e9294bcdacfcc6ddf0277c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
