@@ -507,6 +507,9 @@ void usb_spi_board_enable(struct usb_spi_config const *config)
 	/* Remap SPI2 to DMA channels 6 and 7 */
 	/* STM32F072 SPI2 defaults to using DMA channels 4 and 5 */
 	/* but cros_ec hardcodes a 6/7 assumption in registers.h */
+	/* TODO(chromium:865478): This might break USART4 DMA on these same
+	 * channels 6/7 (or USART4 might break this).
+	 */
 	STM32_SYSCFG_CFGR1 |= (1 << 24);
 
 	/* Configure SPI GPIOs */
@@ -534,6 +537,9 @@ void usb_spi_board_disable(struct usb_spi_config const *config)
 
 	/* Release SPI GPIOs */
 	gpio_config_module(MODULE_SPI_FLASH, 0);
+
+	/* Revert DMA mapping */
+	STM32_SYSCFG_CFGR1 &= ~(1 << 24);
 }
 
 USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI);
@@ -556,6 +562,9 @@ int usb_i2c_board_is_enabled(void) { return 1; }
  */
 static void board_init(void)
 {
+	/* Remap USART3 to DMA channels 2 and 3 */
+	STM32_SYSCFG_CFGR1 |= (1 << 26);
+
 	/* USB to serial queues */
 	queue_init(&usart2_to_usb);
 	queue_init(&usb_to_usart2);
