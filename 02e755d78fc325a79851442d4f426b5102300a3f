@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae21809a_1ef1378d",
+        "filename": "chip/g/board_space.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T13:17:57Z",
+      "side": 1,
+      "message": "I would add something to the tune of\n\n\"Ifo1 space write protection allows to open windows of sizes of power of two, let\u0027s keep different board space fields in different windows\"\n\nwording of course can be improved, but this is the information still missing in the comments.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 65
+      },
+      "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a33d714d_4e01c9c1",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T13:17:57Z",
+      "side": 1,
+      "message": "So, will RMA count have to be ever increased by more than one? Why does this function need a parameter, could it be just always shifting this field one bit to the left?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

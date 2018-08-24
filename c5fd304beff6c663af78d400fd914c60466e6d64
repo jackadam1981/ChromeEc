@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "e7a0cb8a_0514b473",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T13:17:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa362758_250c0cbd",
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82d4fe16_3bda912d",
         "filename": "chip/g/sn_bits.c",
         "patchSetId": 14
@@ -245,6 +263,30 @@
       "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04097dc3_98d5f546",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T13:17:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82dd830d_1ac3e5ca",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 31
+      },
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
