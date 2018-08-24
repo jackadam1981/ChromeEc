@@ -46,6 +46,29 @@
       "revId": "b8af74cc4cf7a304ce8087fc60248ea037aad566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e2cd96_79f9b834",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T17:41:01Z",
+      "side": 0,
+      "message": "without this periodic checking how will transition from \u0027debouncing\u0027 to stable state happen?",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 28
+      },
+      "revId": "b8af74cc4cf7a304ce8087fc60248ea037aad566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
