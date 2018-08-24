@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ee07332_2d8b8a48",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-24T16:02:06Z",
+      "side": 1,
+      "message": "I don\u0027t see a function by this name in the tcpm.h header.  Though it appears the line number for the previous function is incorrect, so I\u0027m not sure how much these .yaml files are maintained after a board has had its firmware branched",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07a7c56_0112582c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2597,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-24T16:02:06Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with our task code yet, but is this the pd_task waking itself?",
+      "range": {
+        "startLine": 2596,
+        "startChar": 4,
+        "endLine": 2597,
+        "endChar": 32
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

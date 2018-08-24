@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75f9d17f_e2fc32bb",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-08-24T16:02:06Z",
+      "side": 0,
+      "message": "Why do we no longer need to mask this interrupt?",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "d5b8d6391fb8a7210b5307c2c96f4e36d3992893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
