@@ -22,6 +22,30 @@
       "revId": "480a7e392fe6fad5cf7ebfabcc11e8ac11309ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6fbfeb6_f6178bb1",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-24T16:38:04Z",
+      "side": 1,
+      "message": "Vestigial, removed.",
+      "parentUuid": "28143c2d_eec44ac7",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "480a7e392fe6fad5cf7ebfabcc11e8ac11309ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
