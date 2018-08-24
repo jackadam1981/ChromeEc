@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b03fe1af_17fbc1dd",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-24T15:51:38Z",
+      "side": 1,
+      "message": "What context is this function called from? chipset task itself? If so, that would make sense why not action is being taken while we \"sleep\". If not, why isn\u0027t chipset task running?",
+      "revId": "771be5d368d5ba6f0c72ba265dfb663414647341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
