@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7c380fa_7d6109c6",
+        "filename": "board/cheza/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-08-24T01:20:49Z",
+      "side": 1,
+      "message": "It\u0027s only 3300 on on r3+ boards. I guess the math works out though when it\u0027s 3500 so we\u0027re all good here.",
+      "revId": "602b241605d62ed50f30dee661c0e048777494f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0858ae_efd640d8",
+        "filename": "board/cheza/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-08-24T01:20:49Z",
+      "side": 1,
+      "message": "That comment doesn\u0027t seem exactly correct :)",
+      "revId": "602b241605d62ed50f30dee661c0e048777494f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
