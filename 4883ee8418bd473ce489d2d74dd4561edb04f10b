@@ -22,6 +22,30 @@
       "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c6ce2c2_8302bb64",
+        "filename": "core/cortex-m0/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-24T22:57:30Z",
+      "side": 1,
+      "message": "ARMv6-M interrupt handlers are similar to ARMv7-M, in that they can be ordinary C functions.  \n\nSo, instead of fixing up the PC-relative address of exception_panic, the default_handler() can just be an ordinary C function that calls exception_panic().",
+      "parentUuid": "063f1bb7_c1319831",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
