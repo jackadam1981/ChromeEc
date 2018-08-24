@@ -22,6 +22,30 @@
       "revId": "2b32b831df4c93fb71e9294bcdacfcc6ddf0277c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fdc5c93_7b640eff",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-24T03:25:01Z",
+      "side": 1,
+      "message": "Agree it is safe to always increment by 0; my reasoning for adding this check is that it if you increment by 0 on a device where the count has already been incremented, you leave it in an inconsistent state.\n\nI was imagining a situation like this:\n\n1. increment RMA count by 1: RMA count can be trusted to represent number of RMAs, and map to the current serial number stored server-side  \n\n2. increment RMA count by 0: RMA count appears valid, but does not correspond to actual number of RMAs, or current serial number stored server-side\n\nMy thinking was that if we disallow this pattern, we can always trust the RMA count to be accurate if the values are 1-6.\n\nIf the RMA indicator is set, and the count is either 0 or 7, then we do not know the number of RMAs the device has been through.",
+      "parentUuid": "ab074f61_0fc86501",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 64
+      },
+      "revId": "2b32b831df4c93fb71e9294bcdacfcc6ddf0277c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
