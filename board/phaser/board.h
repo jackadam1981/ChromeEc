@@ -69,6 +69,18 @@
 
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT TASK_EVENT_CUSTOM(4)
 
+/* Quick charge */
+#define CONFIG_QUICK_CHARGE
+
+/* Battery functions */
+#define SB_OPTIONALMFG_FUNCTION2		0x3e
+
+/* Optional mfg function2 */
+#define SMART_QUICK_CHARGE				(1<<12)
+
+/* Quick charge support */
+#define MODE_QUICK_CHARGE_SUPPORT		(1<<4)
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
