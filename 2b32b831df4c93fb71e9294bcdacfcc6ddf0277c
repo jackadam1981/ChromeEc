@@ -94,6 +94,30 @@
       "revId": "2b32b831df4c93fb71e9294bcdacfcc6ddf0277c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4acfc04c_5ce70dbb",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-24T03:45:54Z",
+      "side": 1,
+      "message": "eh, must be evening...\n\nafter sending the previous comment I realized there is an argument for allowing repeated increment_rma_count(0). If we return an error, that\u0027d require the RMA script, if it wants to make sure that the \u0027RMAed\u0027 bit is set to read \u0026 more importantly parse the sn_data structure to first check what\u0027s the flag value, and then unset it if it\u0027s still set. \nagain, nothing prevents the caller from not sending *anything* during RMA, so the RMA count may still be inaccurate, if we want it or not.\n\nAnd if we do allow repeated increment_rma_count(0), the RMA script can just send increment_rma_count(has_new_sn_been_set), so that the counter can be treated as the number of times we changed SN (which may be useful), not the number of times we did RMA (which is not that important iiuc).",
+      "parentUuid": "b3a019f4_38dad241",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 64
+      },
+      "revId": "2b32b831df4c93fb71e9294bcdacfcc6ddf0277c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
