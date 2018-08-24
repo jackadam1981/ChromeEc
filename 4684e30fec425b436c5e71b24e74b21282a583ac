@@ -22,6 +22,30 @@
       "revId": "4684e30fec425b436c5e71b24e74b21282a583ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da3ea26_c3ae527e",
+        "filename": "power/mt8183.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-24T00:16:30Z",
+      "side": 1,
+      "message": "Yeah, the answer is that we don\u0027t have the hardware to test yet, so we don\u0027t know. 1s is probably too long, yeah. We\u0027ll test and adjust once we get rev1.",
+      "parentUuid": "236ae3cb_970d32c3",
+      "range": {
+        "startLine": 301,
+        "startChar": 3,
+        "endLine": 301,
+        "endChar": 16
+      },
+      "revId": "4684e30fec425b436c5e71b24e74b21282a583ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
