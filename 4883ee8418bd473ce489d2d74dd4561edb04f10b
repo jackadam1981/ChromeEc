@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "063f1bb7_c1319831",
+        "filename": "core/cortex-m0/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-24T22:52:14Z",
+      "side": 1,
+      "message": "We\u0027ve seen LTO-related bugs surrounding pc-relative accesses like this earlier.\n\nPrefer to pass \u0026exception_panic as a register argument to the inline assembly.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
