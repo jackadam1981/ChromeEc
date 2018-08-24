@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a88ccb0_87a827f8",
+        "filename": "chip/g/sn_bits.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-24T03:27:59Z",
+      "side": 1,
+      "message": "why do we have only read_sn_data() in this .h?\nis it because only that is needed by vNVRAM, which is the only caller outside the corresponding .c?\n\nsince we use struct sn_data here, shall we also #include \"board_space.h\" here?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "7907f89798e431529b356d2e89f6b847a77b4c1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
