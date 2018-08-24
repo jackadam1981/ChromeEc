@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5c99f45_68736f3e",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-24T18:05:51Z",
+      "side": 1,
+      "message": "I moved this to be 1 bit within flags where the bit set means CC2, clear means CC1",
+      "parentUuid": "dd8bc583_2e1e1cce",
+      "range": {
+        "startLine": 22,
+        "startChar": 11,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad5b3eaf_25f316cb",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8792a99e_66f203df",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-24T18:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad5b3eaf_25f316cb",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 8
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9bfac8e7_c0e9a82f",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-24T18:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "603e6a39_63bb39d1",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfeb575c_780c7773",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2018-08-17T14:17:50Z",
       "side": 1,
       "message": "is this powering down the channel?",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 7
+      },
+      "revId": "87f58bc4379d14ff429b9d843000325195d8cc1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae870cae_f4de9553",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-24T18:05:51Z",
+      "side": 1,
+      "message": "Yes setting the bit disables the channel. I added a comment here.",
+      "parentUuid": "bfeb575c_780c7773",
       "range": {
         "startLine": 276,
         "startChar": 3,
