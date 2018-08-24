@@ -45,6 +45,30 @@
       "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7740b6_eaff20b7",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-24T16:41:40Z",
+      "side": 1,
+      "message": "not sure about inc \u003e 1. but inc \u003d 0 is a legitimate use case. initially, we don\u0027t want to increment the counter at all, just set the \u0027RMA done at least once\u0027 flag (unset bit 7). The rest of the field _may_ eventually be treated as the \u0027number of SN changes\u0027, not the \u0027number of RMAs\u0027. overall, the exact purpose of this counter is not defined (until we have the final design for RMA, which is not a part of the initial implementation besides the \u0027RMA happened\u0027 bit 7), it\u0027s just reserved here.",
+      "parentUuid": "a33d714d_4e01c9c1",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

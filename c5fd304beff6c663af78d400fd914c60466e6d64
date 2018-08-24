@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "87ca9ff3_a526afbf",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-24T16:41:40Z",
+      "side": 1,
+      "message": "yeah, I also stumbled here, but then saw uint32_t inside. probably this .h was included somewhere else after some other header that had stdint.h inside before, but not anymore. in any case having stdint.h here makes sense.",
+      "parentUuid": "6845e8d9_dc26f8e7",
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18bb832b_649802bf",
         "filename": "chip/g/sn_bits.c",
         "patchSetId": 14
