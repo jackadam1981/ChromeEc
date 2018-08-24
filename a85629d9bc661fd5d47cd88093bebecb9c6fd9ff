@@ -22,6 +22,30 @@
       "revId": "a85629d9bc661fd5d47cd88093bebecb9c6fd9ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a076b568_8dbc2296",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-08-24T00:13:11Z",
+      "side": 1,
+      "message": "yep, when the parent dies your parent becomes pid \u003d\u003d 1.\nhttps://www.ibm.com/developerworks/community/blogs/58e72888-6340-46ac-b488-d31aa4058e9c/entry/an_overview_of_linux_processes21?lang\u003den",
+      "parentUuid": "06342f52_fe2ae4fc",
+      "range": {
+        "startLine": 820,
+        "startChar": 46,
+        "endLine": 820,
+        "endChar": 58
+      },
+      "revId": "a85629d9bc661fd5d47cd88093bebecb9c6fd9ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
