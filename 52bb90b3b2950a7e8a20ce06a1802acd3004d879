@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2b70c98_f3752aeb",
+        "filename": "board/cr50/wp.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-24T03:07:49Z",
+      "side": 1,
+      "message": "This was fine when it was static, but if it\u0027s going to be an interface we should rename it to wp_is_asserted() so it\u0027s clear it refers to the logical state, not the pin level.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "52bb90b3b2950a7e8a20ce06a1802acd3004d879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
