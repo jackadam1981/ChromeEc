@@ -179,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "8049c5d8_2882c1da",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-24T15:02:05Z",
+      "side": 1,
+      "message": "I will mark this resolved since we talked through it on hangouts and agreed that it is worth keeping it this way to make it easier for unit tests to use outside libraries without having to whitelist every internal function they need to invoke.",
+      "parentUuid": "77da5065_584c9f7f",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "e020178ab623913aa37571fc99269b1132b3ad27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27609d6b_e1613809",
         "filename": "fuzz/build.mk",
         "patchSetId": 3
