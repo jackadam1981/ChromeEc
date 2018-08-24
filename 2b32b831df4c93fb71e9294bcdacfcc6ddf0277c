@@ -70,6 +70,30 @@
       "revId": "2b32b831df4c93fb71e9294bcdacfcc6ddf0277c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a019f4_38dad241",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-24T03:35:39Z",
+      "side": 1,
+      "message": "but it was a nit. I\u0027m fine with a stricter approach here",
+      "parentUuid": "f9e780da_347885ef",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 64
+      },
+      "revId": "2b32b831df4c93fb71e9294bcdacfcc6ddf0277c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
