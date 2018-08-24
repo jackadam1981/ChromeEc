@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e49ec71e_1a449e8e",
+        "filename": "chip/g/board_space.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T04:31:27Z",
+      "side": 1,
+      "message": "please add a comment why is this padding needed, what \"protect size\" is about, etc.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f91d21_47fee1e8",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T04:31:27Z",
+      "side": 1,
+      "message": "why did this become necessary? Can includes be arranged alphabetically?",
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18bb832b_649802bf",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T04:31:27Z",
+      "side": 1,
+      "message": "should this and next functions be static?",
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5dc43af_a30c5c63",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T04:31:27Z",
+      "side": 1,
+      "message": "should this function verify that the space has not yet been written?",
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d4fe16_3bda912d",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T04:31:27Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand this:\n\n- who sets inc originally? Or is it starting from 0xff in unerased flash? A comment would help.\n\n- is it possible to increment RMA count several times? If so, the check in line 124 - should it not account for the earlier increments?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "609c501a_9020e7a7",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T04:31:27Z",
+      "side": 1,
+      "message": "with perennial code size crunch I tend to move testing code to gsctool.c - could it be done here too?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 31
+      },
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0005c093_f94f6e05",
+        "filename": "chip/g/sn_bits.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T04:31:27Z",
+      "side": 1,
+      "message": "should this be adeed to board_space.h instead to avoid adding a file? Just a thought..",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "c5fd304beff6c663af78d400fd914c60466e6d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
