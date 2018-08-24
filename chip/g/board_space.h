@@ -51,15 +51,21 @@ struct info1_board_space {
 #define INFO_BOARD_ID_OFFSET		(INFO_BOARD_SPACE_OFFSET + \
 					 offsetof(struct info1_board_space, \
 						  bid))
-/* The number of bytes of INFO1 to request read/write access to. */
-#define INFO_BOARD_ID_PROTECT_SIZE	16
 
 #define INFO_SN_DATA_SIZE		 sizeof(struct sn_data)
 #define INFO_SN_DATA_OFFSET		 (INFO_BOARD_SPACE_OFFSET + \
 					  offsetof(struct info1_board_space, \
 						   sn))
-/* The number of bytes of INFO1 to request read/write access to. */
-#define INFO_SN_DATA_PROTECT_SIZE	 16
+
+/*
+ * Write protection for the INFO1 space allows windows with sizes that are
+ * powers of 2 to be protected. Given the different write restrictions on
+ * the different spaces listed above, we keep them in separate windows.
+ * This implies that each space must occupy a space that has a size which
+ * is a power of two.
+ */
+#define INFO_BOARD_ID_PROTECT_SIZE	16
+#define INFO_SN_DATA_PROTECT_SIZE	16
 
 BUILD_ASSERT((INFO_BOARD_ID_SIZE & 3) == 0);
 BUILD_ASSERT((INFO_BOARD_ID_OFFSET & 3) == 0);

@@ -95,8 +95,10 @@ enum vendor_cmd_cc {
 	 * incremement the count. This is useful to mark that a device has been
 	 * RMA'd, but that we were not able to log the new serial number.
 	 *
-	 * The count cannot be incremented by 0 in this way if it has ever been
-	 * incremented by a non-zero amount.
+	 * Incrementing the count by the maximum RMA count (currently 7) will
+	 * always set the RMA count to the maximum value, regardless of the
+	 * previous value. This can be used with any device, regardless of
+	 * current state, to mark it as RMA'd but with an unknown RMA count.
 	 */
 	VENDOR_CC_SN_INC_RMA = 42,
 

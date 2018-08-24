@@ -131,6 +131,11 @@ static int increment_rma_count(uint8_t inc)
 	 * the number of RMAs. As there are only 7 bits available
 	 * for the count, a value of 0x0000 means the device has
 	 * been RMA'd at least 7 times (but we do not know how many).
+	 *
+	 * We allow incrementing by 0 or n (rather than 0 or 1) so
+	 * that a device in any state can be put into the RMA'd with
+	 * unknown count (0x0000) state with a single call to this
+	 * function.
 	 */
 	sn_data.rma_status <<= inc;
 	sn_data.rma_status &= RMA_INDICATOR;
