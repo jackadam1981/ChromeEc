@@ -149,6 +149,7 @@ void dma_start_rx(const struct dma_option *option, unsigned count,
 	stm32_dma_chan_t *chan = dma_get_channel(option->channel);
 	prepare_channel(option->channel, count, option->periph, memory,
 			STM32_DMA_CCR_MINC | option->flags);
+	ccprintf("dn:%s:%d\n", __func__, __LINE__);
 	dma_go(chan);
 }
 

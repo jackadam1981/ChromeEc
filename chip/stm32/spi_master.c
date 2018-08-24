@@ -242,6 +242,7 @@ static int spi_dma_start(int port, const uint8_t *txdata,
 	if (txdata) {
 		txdma = dma_get_channel(dma_tx_option[port].channel);
 		dma_prepare_tx(&dma_tx_option[port], len, txdata);
+		ccprintf("dn:%s:%d\n", __func__, __LINE__);
 		dma_go(txdma);
 	}
 

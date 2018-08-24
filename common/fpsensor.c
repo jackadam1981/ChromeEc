@@ -91,6 +91,7 @@ void fps_event(enum gpio_signal signal)
 
 static void send_mkbp_event(uint32_t event)
 {
+	ccprintf("dn:mkbp=0x%x\n", event); cflush();
 	atomic_or(&fp_events, event);
 	mkbp_send_event(EC_MKBP_EVENT_FINGERPRINT);
 }
@@ -180,9 +181,12 @@ static void fp_process_finger(void)
 	int res = fp_sensor_acquire_image_with_mode(fp_buffer,
 			FP_CAPTURE_TYPE(sensor_mode));
 	capture_time_us = time_since32(t0);
+	ccprintf("dn:fp_sensor_acquire_image()=%x\n", res); cflush();
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
 
+		res = spi_transaction_flush(&spi_devices[0]);
+		ccprintf("dn:spi_transaction_flush()=0x%x\n", res); cflush();
 		/* we need CPU power to do the computations */
 		clock_enable_module(MODULE_FAST_CPU, 1);
 
@@ -221,6 +225,7 @@ void fp_task(void)
 
 		/* Wait for a sensor IRQ or a new mode configuration */
 		evt = task_wait_event(timeout_us);
+		ccprintf("dn:evt=0x%x mode=0x%x\n", evt, sensor_mode); cflush();
 
 		if (evt & TASK_EVENT_UPDATE_CONFIG) {
 			uint32_t mode = sensor_mode;
@@ -365,6 +370,7 @@ static int fp_command_mode(struct host_cmd_handler_args *args)
 	const struct ec_params_fp_mode *p = args->params;
 	struct ec_response_fp_mode *r = args->response;
 
+	ccprintf("dn:sensor_mode=0x%x\n", p->mode); cflush();
 	if (!(p->mode & FP_MODE_DONT_CHANGE)) {
 		sensor_mode = p->mode;
 		task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG, 0);
