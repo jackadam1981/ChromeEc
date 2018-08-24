@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "101b5d03_92d5d98b",
+        "filename": "board/cheza/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-08-24T20:06:59Z",
+      "side": 1,
+      "message": "Right. Should add more margin for the 3500 case. These are the actual values we saw:\n  BASE_DISCONNECTED_CONNECT 588\n  BASE_DISCONNECTED 2813\n  BASE_CONNECTED_DISCONNECT 35\n  BASE_CONNECTED 2120",
+      "parentUuid": "a7c380fa_7d6109c6",
+      "revId": "602b241605d62ed50f30dee661c0e048777494f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc0858ae_efd640d8",
         "filename": "board/cheza/base_detect.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-08-24T01:20:49Z",
       "side": 1,
       "message": "That comment doesn\u0027t seem exactly correct :)",
+      "revId": "602b241605d62ed50f30dee661c0e048777494f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc0cedbc_99e797d3",
+        "filename": "board/cheza/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-08-24T20:06:59Z",
+      "side": 1,
+      "message": "Set the GPIO directly to simplify the logic.\n\nAlso removed some unnecessary functions, as they are not called in Cheza case.",
+      "parentUuid": "cc0858ae_efd640d8",
       "revId": "602b241605d62ed50f30dee661c0e048777494f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
