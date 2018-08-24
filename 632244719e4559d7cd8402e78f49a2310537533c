@@ -45,6 +45,29 @@
       "revId": "632244719e4559d7cd8402e78f49a2310537533c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b45960_5392e20b",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-24T20:57:55Z",
+      "side": 1,
+      "message": "None of these should be \u0027extern\u0027.  Actually, checkpatch.pl complains about this.  Are you sure your presubmit hooks are set up correctly?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
