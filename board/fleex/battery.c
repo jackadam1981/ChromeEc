@@ -90,6 +90,7 @@ const struct board_batt_params board_battery_info[] = {
 	},
 
 	/* SIMPLO Battery Information */
+	// Matt test upload.
 	[BATTERY_SIMPLO] = {
 		.fuel_gauge = {
 			.manuf_name = "SMP-SDI3.72",
