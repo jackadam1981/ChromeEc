@@ -52,6 +52,24 @@
       "revId": "771be5d368d5ba6f0c72ba265dfb663414647341",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e015ac_612f515a",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-24T18:38:29Z",
+      "side": 1,
+      "message": "I have updated latest patchset to have 2 paths depending upon execution context of board_hibernate.\n\n\u003e Also, why does the hibernate console command not just send an event to the chipset task? \n\nWe don\u0027t have a proper entry point in chipset task to handle the hibernate case. It just happens that powering AP off triggers S3S5 state transition which leads to CHIPSET_SHUTDOWN notification which is handled within chipset task context.\n\nAlso, hibernate console command accepts time to stay in hibernate which are used as parameters to call into system_hibernate directly.\n\nWe can do something like this:\n1. On hibernate console command, set seconds and microseconds for hibernate in some global parameters.\n2. Set reboot_at_shutdown to EC_REBOOT_HIBERNATE\n3. Trigger chipset_force_shutdown\n4. This should now be similar to AP requesting hibernate\n\nI think we should keep the change in octopus to have two paths for board_hibernate and as a follow-up make the change for hibernate console command. Thoughts?",
+      "parentUuid": "b6824957_2b982026",
+      "revId": "771be5d368d5ba6f0c72ba265dfb663414647341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
