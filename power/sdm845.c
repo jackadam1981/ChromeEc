@@ -153,6 +153,25 @@ void chipset_reset_request_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&chipset_reset_request_handler_data, 0);
 }
 
+/**
+ * Interrupt handler on the rising edge of the warm reset signal.
+ *
+ * The warm reset is an async reset. The SPMI transaction may get wedged
+ * and can't recover. Have to do a switchcap off and on sequence to reset
+ * the PMIC and AP to a clear state. Check b/112723105.
+ */
+static void chipset_warm_reset_handler(void)
+{
+	CPRINTS("Rising edge of warm_reset");
+	chipset_reset(CHIPSET_RESET_BOARD_CUSTOM);
+}
+DECLARE_DEFERRED(chipset_warm_reset_handler);
+
+void chipset_warm_reset_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&chipset_warm_reset_handler_data, 0);
+}
+
 static void sdm845_lid_event(void)
 {
 	/* Power task only cares about lid-open events */
@@ -381,6 +400,9 @@ static void power_off(void)
 	/* Call hooks before we drop power rails */
 	hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
+	/* Disable warm reset interrupt */
+	gpio_disable_interrupt(GPIO_WARM_RESET_L);
+
 	/* Do a graceful way to shutdown PMIC/AP first */
 	set_pmic_pwron(0);
 
@@ -462,6 +484,9 @@ static void power_on(void)
 	power_signal_enable_interrupt(GPIO_PMIC_FAULT_L);
 
 	set_pmic_pwron(1);
+
+	/* Enable warm reset interrupt */
+	gpio_enable_interrupt(GPIO_WARM_RESET_L);
 
 	disable_sleep(SLEEP_MASK_AP_RUN);
 

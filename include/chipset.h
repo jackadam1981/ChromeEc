@@ -194,6 +194,14 @@ void chipset_handle_reboot(void);
  */
 void chipset_reset_request_interrupt(enum gpio_signal signal);
 
+/**
+ * Chipset-specific interrupt for warm reset signal.
+ *
+ * It is used in SDM845 chipset power sequence.
+ */
+void chipset_warm_reset_interrupt(enum gpio_signal signal);
+
+
 #ifdef CONFIG_CMD_AP_RESET_LOG
 
 /**

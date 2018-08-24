@@ -33,6 +33,7 @@ GPIO_INT(PS_HOLD,           PIN(D, 4), GPIO_INT_BOTH | GPIO_PULL_DOWN | GPIO_SEL
 GPIO_INT(PMIC_FAULT_L,      PIN(7, 6), GPIO_INT_BOTH | GPIO_SEL_1P8V, power_signal_interrupt)  /* Any PMIC fault? */
 /* When switch-cap is off, the POWER_GOOD signal is floating. Need a pull-down to make it low. */
 GPIO_INT(POWER_GOOD,        PIN(5, 4), GPIO_INT_BOTH | GPIO_PULL_DOWN | GPIO_SEL_1P8V, power_signal_interrupt)  /* SRC_PP1800_S4A from PMIC */
+GPIO_INT(WARM_RESET_L,      PIN(F, 4), GPIO_INT_RISING | GPIO_SEL_1P8V, chipset_warm_reset_interrupt)  /* AP warm reset, triggered by servo/H1 */
 GPIO_INT(SHI_CS_L,          PIN(5, 3), GPIO_INT_FALLING | GPIO_PULL_DOWN | GPIO_SEL_1P8V, shi_cs_event)  /* AP_EC_SPI_CS_L */
 
 GPIO(EC_SELF_RST,           PIN(E, 0), GPIO_OUT_LOW)   /* Self-reset EC */
@@ -44,7 +45,6 @@ GPIO(PROCHOT_L,             PIN(3, 4), GPIO_INPUT)
 
 /* PMIC/AP 1.8V */
 GPIO(PM845_RESIN_L,         PIN(3, 2), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* PMIC reset trigger */
-GPIO(WARM_RESET_L,          PIN(F, 4), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* AP warm reset */
 GPIO(PMIC_KPD_PWR_ODL,      PIN(D, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* PMIC power button */
 GPIO(EC_INT_L,              PIN(A, 2), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* Interrupt line between AP and EC */
 GPIO(AP_SUSPEND_L,          PIN(5, 7), GPIO_INPUT | GPIO_SEL_1P8V)     /* Suspend signal from AP */
