@@ -69,6 +69,30 @@
       "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1ed140_4a468376",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-24T16:48:21Z",
+      "side": 1,
+      "message": "ah, I see. Should the parameter be a boolean then to indicate if a shift by one is required? And a comment describing this would also help.",
+      "parentUuid": "3a7740b6_eaff20b7",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
