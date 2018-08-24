@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acdcc0e8_c18b1ec6",
+        "filename": "chip/stm32/usb_endpoints.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-24T22:27:35Z",
+      "side": 1,
+      "message": "I don\u0027t understand why these functions must be implemented in assembly.\n\nIn the ARMv7 EABI, the first several arguments are passed in registers, and the normal return statement is \u0027bx lr\u0027.  So the body of a function that returns void is normally just \u0027bx lr\u0027 anyway.\n\nIOW, they don\u0027t need to be \u0027naked\u0027, and their bodies can be \u0027return;\u0027 or \u0027return 1;\u0027 as appropriate.",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "1a074cf72c65ad294512da34061bcfc2a7d3e64a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b78a78fc_b3c984db",
+        "filename": "chip/stm32/usb_endpoints.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-24T22:27:35Z",
+      "side": 1,
+      "message": "Same.  \"return 1\" should compile into the same sequence.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "1a074cf72c65ad294512da34061bcfc2a7d3e64a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
