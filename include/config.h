@@ -531,6 +531,8 @@
 #undef CONFIG_CASE_CLOSED_DEBUG_V1
 /* Allow unsafe debugging functionality in V1 configuration */
 #undef CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE
+/* Restrict how ccd open can be run */
+#define CONFIG_CCD_OPEN_LIMITED
 
 /*
  * Capsense chip has buttons, too.
