@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c2857c8_f61b4fe5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-24T20:57:39Z",
+      "side": 1,
+      "message": "You can\u0027t return an error from a function returning void.",
+      "range": {
+        "startLine": 926,
+        "startChar": 9,
+        "endLine": 926,
+        "endChar": 25
+      },
+      "revId": "d5b8d6391fb8a7210b5307c2c96f4e36d3992893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
