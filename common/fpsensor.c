@@ -183,6 +183,7 @@ static void fp_process_finger(void)
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
 
+		res = spi_transaction_flush(&spi_devices[0]);
 		/* we need CPU power to do the computations */
 		clock_enable_module(MODULE_FAST_CPU, 1);
 
