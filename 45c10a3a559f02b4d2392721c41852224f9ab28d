@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "412e1584_643aa4e1",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-24T01:46:24Z",
+      "side": 1,
+      "message": "Changing state in the interrupt handler introduces a race condition.\n\nMove the logic from rdd_is_detected() in here, since nothing else should be allowed to look at the instantaneous cable detect state.  That would update a new global:\n\nint rdd_is_detected_shadow;\n\nAnd then rdd_is_detected() would return rdd_is_detected_shadow.",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 35
+      },
+      "revId": "45c10a3a559f02b4d2392721c41852224f9ab28d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
