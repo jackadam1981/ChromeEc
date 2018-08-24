@@ -686,6 +686,27 @@
  */
 #undef CONFIG_CHARGER_INPUT_CURRENT
 
+/* Define to use Power Delivery State Machine Framework */
+#undef CONFIG_USB_TYPEC_PD_STATE_MACHINES
+
+/*
+ * Define to enable Type-C State Machine. Must be enabled
+ * with CONFIG_USB_TYPEC_PD_STATE_MACHINES
+ */
+#undef CONFIG_USB_TYPEC
+
+/*
+ * Define to enable Protocol Layer State Machine. Must be enabled
+ * with CONFIG_USB_TYPEC_PD_STATE_MACHINES and CONFIG_USB_TYPEC
+ */
+#undef CONFIG_USB_PRL_SM
+
+/*
+ * Define to enable Policy Engine State Machine. Must be enabled
+ * with CONFIG_USB_TYPEC_PD_STATE_MACHINES and CONFIG_USB_TYPEC
+ */
+#undef CONFIG_USB_PE_SM
+
 /*
  * Board specific maximum input current limit, in mA.
  */

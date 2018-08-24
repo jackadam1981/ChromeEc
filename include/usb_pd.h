@@ -49,7 +49,7 @@ enum pd_rx_errors {
  */
 #define PD_EVENT_DEVICE_ACCESSED  (1<<7)
 #define PD_EVENT_DP_DISCONNECT    (1<<8) /* DisplayPort disconnect requested */
-
+#define PD_EVENT_SM               (1<<9) /* PD State machine event */
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
 #define PDO_MODES (PDO_MAX_OBJECTS - 1)
@@ -173,6 +173,10 @@ enum pd_rx_errors {
 #define PD_T_TRY_SRC          (125*MSEC) /* Max time for Try.SRC state */
 #define PD_T_TRY_WAIT         (600*MSEC) /* Max time for TryWait.SNK state */
 #define PD_T_SINK_REQUEST     (100*MSEC) /* Wait 100ms before next request */
+#define PD_T_PD_DEBOUNCE      (15*MSEC)  /* between 10ms and 20ms */
+#define PD_T_CHUNK_SENDER_RESPONSE (25*MSEC)
+#define PD_T_CHUNK_SENDER_REQUEST  (25*MSEC)
+#define PD_T_SWAP_SOURCE_START     (25*MSEC) /* Min of 20ms */
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
@@ -933,8 +937,9 @@ enum pd_data_msg_type {
 /* Used for processing pd header */
 #define PD_HEADER_EXT(header)   (((header) >> 15) & 1)
 #define PD_HEADER_CNT(header)   (((header) >> 12) & 7)
-#define PD_HEADER_TYPE(header)  ((header) & 0xF)
+#define PD_HEADER_TYPE(header)  ((header) & 0x1F)
 #define PD_HEADER_ID(header)    (((header) >> 9) & 7)
+#define PD_HEADER_PROLE(header) (((header) >> 8) & 1)
 #define PD_HEADER_REV(header)   (((header) >> 6) & 3)
 #define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
 
@@ -943,6 +948,9 @@ enum pd_data_msg_type {
 #define PD_EXT_HEADER_CHUNK_NUM(header) (((header) >> 11) & 0xf)
 #define PD_EXT_HEADER_REQ_CHUNK(header) (((header) >> 10) & 1)
 #define PD_EXT_HEADER_DATA_SIZE(header) ((header) & 0x1ff)
+
+/* Used to get extended header from the first 32-bit word of the message */
+#define GET_EXT_HEADER(msg) (msg & 0xffff)
 
 /* K-codes for special symbols */
 #define PD_SYNC1 0x18
