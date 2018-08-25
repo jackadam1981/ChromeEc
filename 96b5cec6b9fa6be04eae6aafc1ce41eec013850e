@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c99fff66_b6789db0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-25T00:58:46Z",
+      "side": 1,
+      "message": "Limit ccd open methods to those considered safe for MP devices?\n\nOr maybe flip it around:\n\n/* Loosen restrictions for ccd open for non-MP devices */\n#undef CONFIG_CCD_OPEN_PREMP",
+      "range": {
+        "startLine": 534,
+        "startChar": 3,
+        "endLine": 534,
+        "endChar": 35
+      },
+      "revId": "96b5cec6b9fa6be04eae6aafc1ce41eec013850e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
