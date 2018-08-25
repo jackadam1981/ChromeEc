@@ -93,6 +93,30 @@
       "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f184b2_54753b23",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-25T01:38:46Z",
+      "side": 1,
+      "message": "I made it an int so that we can do the following things:\n\n- indicate an RMA happened, but not increment count\n- indicate an RMA happened, increment the count\n- indicate an RMA happened, invalidate the count (this would be increment by (7 - current count), or just 7 which is simpler and doesn\u0027t cause any problems)\n\nI\u0027ll add a comment to that effect on Monday",
+      "parentUuid": "3b1ed140_4a468376",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "02e755d78fc325a79851442d4f426b5102300a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
