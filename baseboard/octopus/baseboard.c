@@ -102,7 +102,7 @@ void chipset_pre_init_callback(void)
 	while (!gpio_get_level(GPIO_PP5000_PG) ||
 	       !gpio_get_level(GPIO_PP3300_PG))
 		;
-
+	msleep(50);
 	/* Enable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 1);
 }
