@@ -46,6 +46,30 @@
       "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2bc9a5_b04c014a",
+        "filename": "core/cortex-m0/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2018-08-25T03:15:25Z",
+      "side": 1,
+      "message": "Will take a look into it, but I\u0027m OOO next week.\n\nI tried to be as conservative as possible due to the limited testing I could do myself and therefore kept things like the original as much as possible. Why was this written in assembly in the first place if they\u0027re C ABI compatible?\n\nSince we\u0027re just jumping into exception_panic, couldn\u0027t we define exception_panic as the default handler?",
+      "parentUuid": "1c6ce2c2_8302bb64",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
