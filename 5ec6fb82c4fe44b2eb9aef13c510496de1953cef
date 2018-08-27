@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04cc4c9d_8f6b5143",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-27T20:12:00Z",
+      "side": 1,
+      "message": "Will it also work for vendor commands issued via the debug cable?  Should this be CCD_CAP_OPEN_EXTERNAL?",
+      "range": {
+        "startLine": 106,
+        "startChar": 24,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "5ec6fb82c4fe44b2eb9aef13c510496de1953cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f2b4b30_942b2289",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-27T20:12:00Z",
+      "side": 1,
+      "message": "CCD_CAP_STATE_OPEN_OR_PREPVT?\n\nMaybe this table needs to be defined differently.  Put it outside the main #endif at the bottom of the file, with\n\n#ifdef INCLUDE_CCD_CONFIG_TABLE\n\n#endif\n\nand then the places that need it can\n\n#define INCLUDE_CCD_CONFIG_TABLE\n#include \"ccd_config.h\"\n\nThat way, we could put #ifdefs in the table itself.",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 30
+      },
+      "revId": "5ec6fb82c4fe44b2eb9aef13c510496de1953cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a0bb8c_c2398649",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-27T20:12:00Z",
+      "side": 1,
+      "message": "OpenNoDevMode?  I worry the \u0027/\u0027 will interfere with console parsing at some point.",
+      "range": {
+        "startLine": 168,
+        "startChar": 7,
+        "endLine": 168,
+        "endChar": 10
+      },
+      "revId": "5ec6fb82c4fe44b2eb9aef13c510496de1953cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
