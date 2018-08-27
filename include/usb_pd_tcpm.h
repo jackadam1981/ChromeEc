@@ -256,6 +256,15 @@ struct tcpm_drv {
 	 */
 	int (*enter_low_power_mode)(int port);
 #endif
+
+#ifdef CONFIG_USB_PD_DISCONNCT
+	/**
+	 * Detect USB PD cc disconnect.
+	 *
+	 * @param port Type-C port number
+	 */
+	void (*tcpm_cc_disconnect)(int port);
+#endif
 };
 
 enum tcpc_alert_polarity {

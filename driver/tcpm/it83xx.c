@@ -575,6 +575,12 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 	return EC_SUCCESS;
 }
 
+static void it83xx_tcpm_cc_disconnect(int port)
+{
+	/* exit BIST test data mode */
+	USBPD_SW_RESET(port);
+}
+
 const struct tcpm_drv it83xx_tcpm_drv = {
 	.init			= &it83xx_tcpm_init,
 	.release		= &it83xx_tcpm_release,
@@ -588,4 +594,5 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.get_message		= &it83xx_tcpm_get_message,
 	.transmit		= &it83xx_tcpm_transmit,
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
+	.tcpm_cc_disconnect	= &it83xx_tcpm_cc_disconnect,
 };

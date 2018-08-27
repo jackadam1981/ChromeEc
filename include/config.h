@@ -3075,6 +3075,9 @@
 /* Dynamic USB PD source capability */
 #undef CONFIG_USB_PD_DYNAMIC_SRC_CAP
 
+/* Detect USB PD cc disconnect */
+#undef CONFIG_USB_PD_DISCONNCT
+
 /* Support USB PD flash. */
 #undef CONFIG_USB_PD_FLASH
 

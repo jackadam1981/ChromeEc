@@ -240,6 +240,13 @@ static inline int tcpm_get_chip_info(int port, int renew,
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+#ifdef CONFIG_USB_PD_DISCONNCT
+static inline void tcpm_cc_disconnect(int port)
+{
+	tcpc_config[port].drv->tcpm_cc_disconnect(port);
+}
+#endif
+
 #else
 
 /**

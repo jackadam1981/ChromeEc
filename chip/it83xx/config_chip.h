@@ -134,6 +134,7 @@
 #define CONFIG_ADC
 #define CONFIG_HOSTCMD_X86
 #define CONFIG_SWITCH
+#define CONFIG_USB_PD_DISCONNCT
 
 /* Chip needs to do custom pre-init */
 #define CONFIG_CHIP_PRE_INIT

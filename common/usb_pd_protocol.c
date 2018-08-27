@@ -650,6 +650,10 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 		/* Disable TCPC RX */
 		tcpm_set_rx_enable(port, 0);
+
+#ifdef CONFIG_USB_PD_DISCONNCT
+		tcpm_cc_disconnect(port);
+#endif
 	}
 
 #ifdef CONFIG_LOW_POWER_IDLE
