@@ -38,6 +38,7 @@ BUILD_ASSERT(sizeof(struct st_tp_event_t) == 8);
 BUILD_ASSERT(BYTES_PER_PIXEL == 1);
 
 /* Function prototypes */
+static void st_tp_full_initialize_start(void);
 static int st_tp_read_all_events(void);
 static int st_tp_read_host_buffer_header(void);
 static int st_tp_send_ack(void);
@@ -56,6 +57,8 @@ static int system_state;
 #define SYSTEM_STATE_ENABLE_DOME_SWITCH	(1 << 2)
 #define SYSTEM_STATE_ACTIVE_MODE	(1 << 3)
 #define SYSTEM_STATE_DOME_SWITCH_LEVEL  (1 << 4)
+
+static int shall_reset_tp;
 
 /*
  * Timestamp of last interrupt (32 bits are enough as we divide the value by 100
@@ -78,6 +81,7 @@ static struct {
 		struct st_tp_host_buffer_heat_map_t heat_map;
 		struct st_tp_host_data_header_t data_header;
 		struct st_tp_event_t events[32];
+		uint32_t dump_info[32];
 	} /* anonymous */;
 } __packed rx_buf;
 
@@ -499,6 +503,71 @@ static int st_tp_read_system_info(int reload)
 }
 
 /*
+ * Keep memory and bus on touchpad awake.
+ *
+ * If this is not called before dump_error() and dump_memory(), the received
+ * values might be garbage.
+ */
+static void disable_deep_sleep(void)
+{
+	uint8_t cmd[] = {0xFA, 0x20, 0x00, 0x00, 0x68, 0x08};
+
+	spi_transaction(SPI, cmd, sizeof(cmd), NULL, 0);
+}
+
+static void dump_error(void)
+{
+	uint8_t tx_buf[] = {0xFB, 0x20, 0x01, 0xEF, 0x80};
+	int rx_len = sizeof(rx_buf.dump_info) + ST_TP_DUMMY_BYTE;
+	int i;
+
+	spi_transaction(SPI, tx_buf, sizeof(tx_buf),
+			(uint8_t *)&rx_buf, rx_len);
+
+	for (i = 0; i < ARRAY_SIZE(rx_buf.dump_info); i += 4)
+		CPRINTS("%08x %08x %08x %08x",
+			rx_buf.dump_info[i + 0], rx_buf.dump_info[i + 1],
+			rx_buf.dump_info[i + 2], rx_buf.dump_info[i + 3]);
+}
+
+/*
+ * Dump entire 64K memory on touchpad.
+ *
+ * This is very time consuming.  For now, let's disable this in production
+ * build.
+ */
+static void dump_memory(void)
+{
+#if 0
+	uint32_t size = 0x10000, rx_len = 512;
+	uint32_t offset, i;
+	uint8_t cmd[] = {0xFB, 0x00, 0x10, 0x00, 0x00};
+
+	for (offset = 0; offset < size; offset += 512) {
+		cmd[3] = (offset >> 8) & 0xFF;
+		cmd[4] = (offset >> 0) & 0xFF;
+		spi_transaction(SPI, cmd, sizeof(cmd),
+				(uint8_t *)&rx_buf, rx_len);
+
+		for (i = 0; i < rx_len; i += 32) {
+			CPRINTF("%.4h %.4h %.4h %.4h %.4h %.4h %.4h %.4h\n",
+				rx_buf.bytes + i + 4 * 0,
+				rx_buf.bytes + i + 4 * 1,
+				rx_buf.bytes + i + 4 * 2,
+				rx_buf.bytes + i + 4 * 3,
+				rx_buf.bytes + i + 4 * 4,
+				rx_buf.bytes + i + 4 * 5,
+				rx_buf.bytes + i + 4 * 6,
+				rx_buf.bytes + i + 4 * 7);
+			msleep(8);
+		}
+	}
+	CPRINTF("===============================\n");
+	msleep(8);
+#endif
+}
+
+/*
  * Handles error reports.
  *
  * @return 0 for minor errors, non-zero for major errors (must halt).
@@ -506,13 +575,51 @@ static int st_tp_read_system_info(int reload)
  */
 static int st_tp_handle_error_report(struct st_tp_event_t *e)
 {
+	uint8_t error_type = e->report.report_type;
+
 	if (e->magic != ST_TP_EVENT_MAGIC ||
 	    e->evt_id != ST_TP_EVENT_ID_ERROR_REPORT)
 		return 0;
 
-	CPRINTS("Touchpad error: %x %x", e->report.report_type,
+	CPRINTS("Touchpad error: %x %x", error_type,
 		((e->report.info[0] << 24) | (e->report.info[1] << 16) |
 		 (e->report.info[2] << 8) | (e->report.info[3] << 0)));
+
+	/*
+	 * All of these are "FW shall halt" errors **AND** can be recovered by
+	 * resetting touchpad after dumping errors.
+	 */
+	if (error_type <= ST_TP_ERROR_INVALID_CHIP_VERSION ||
+	    (error_type <= 0x46 && error_type <= 0x4E)) {
+		shall_reset_tp = 1;
+		disable_deep_sleep();
+		dump_error();
+		dump_memory();
+		return 1;
+	}
+
+	/*
+	 * Corrupted firmware configuration, stop scan, wait for firmware
+	 * update.
+	 */
+	if (error_type == ST_TP_ERROR_FW_CONFIG_CRC_HEADER ||
+	    error_type == ST_TP_ERROR_FW_CONFIG_CRC) {
+		st_tp_stop_scan();
+		return 1;
+	}
+
+	/*
+	 * Corrupted panel configuration, a full initialization should fix it.
+	 */
+	if (error_type == ST_TP_ERROR_PANEL_CONFIG_CRC_HEADER ||
+	    error_type == ST_TP_ERROR_PANEL_CONFIG_CRC) {
+		st_tp_full_initialize_start();
+		return 1;
+	}
+
+	/*
+	 * Otherwise, just ignore it.
+	 */
 
 	return 0;
 }
@@ -591,6 +698,7 @@ static void st_tp_init(void)
 	st_tp_read_system_info(0);
 
 	system_state = 0;
+	shall_reset_tp = 0;
 
 	st_tp_start_scan();
 }
@@ -1002,11 +1110,15 @@ void touchpad_task(void *u)
 		event = task_wait_event(-1);
 
 		if (event & TASK_EVENT_WAKE)
-			while (!gpio_get_level(GPIO_TOUCHPAD_INT))
+			while (!shall_reset_tp &&
+			       !gpio_get_level(GPIO_TOUCHPAD_INT))
 				st_tp_read_report();
 
 		if (event & TASK_EVENT_POWER)
 			touchpad_power_control();
+
+		if (shall_reset_tp)
+			st_tp_init();
 	}
 }
 
@@ -1375,6 +1487,11 @@ static int command_touchpad_st(int argc, char **argv)
 #else
 		return EC_ERROR_NOT_HANDLED;
 #endif
+	} else if (strcasecmp(argv[1], "dump") == 0) {
+		disable_deep_sleep();
+		dump_error();
+		dump_memory();
+		return EC_SUCCESS;
 	} else {
 		return EC_ERROR_PARAM1;
 	}
