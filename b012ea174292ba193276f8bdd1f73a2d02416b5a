@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "316678c2_64a2aa47",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-27T11:43:11Z",
+      "side": 1,
+      "message": "(page 0xFF, usage 0xC5) is device certificate.",
+      "parentUuid": "7e760f64_09b9a508",
+      "range": {
+        "startLine": 181,
+        "startChar": 57,
+        "endLine": 181,
+        "endChar": 61
+      },
+      "revId": "b012ea174292ba193276f8bdd1f73a2d02416b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfb68c6d_ac1ff94b",
         "filename": "chip/stm32/usb_hid_touchpad.c",
         "patchSetId": 5
