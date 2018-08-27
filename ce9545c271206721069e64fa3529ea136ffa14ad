@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8caa12a2_0c208f12",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-08-27T21:16:52Z",
+      "side": 1,
+      "message": "nit: s/crash/reboot/ maybe?",
+      "range": {
+        "startLine": 187,
+        "startChar": 55,
+        "endLine": 187,
+        "endChar": 60
+      },
+      "revId": "ce9545c271206721069e64fa3529ea136ffa14ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
