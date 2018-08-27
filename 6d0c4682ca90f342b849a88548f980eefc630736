@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "483f972d_8ebd01b5",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "I think that 2.4A is the max. The EC will actually start ramping its input current limit until the voltage \"sags\" too low, or the charger cuts off VBUS (e.g. due to an OCP event).",
+      "range": {
+        "startLine": 54,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3afbb68f_c06ee9de",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure I would use the word \"negotiate\" for Type-C resistor advertisements. The EC would simply see the advertisement and configure the charge port accordingly.",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee829ac7_8e1c13d0",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "I\u0027d say port partners as either end can issue a soft reset or a hard reset.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "513a41a8_09e99739",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "Hard Resets are designed to simulate a cable disconnect.",
+      "range": {
+        "startLine": 78,
+        "startChar": 55,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1039dc7f_716e0743",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "It does not process any PD messages at all.",
+      "range": {
+        "startLine": 89,
+        "startChar": 18,
+        "endLine": 89,
+        "endChar": 48
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75267d06_c24f19a6",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "This is true for recent systems equipped with Cr50, but prior to that systems had a physical write protect screw.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c8044e_2414cf38",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "this numbered list is all 1?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 1
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c3c57a_48e518ce",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "Why 15.001W ? There could be a PD device that advertises 15W max.",
+      "range": {
+        "startLine": 215,
+        "startChar": 49,
+        "endLine": 215,
+        "endChar": 54
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffae07d_86c35d18",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "same question here. Or is this some markdown syntax?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 1
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b28ff63_91be137a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-27T16:43:05Z",
+      "side": 1,
+      "message": "Seems kinda hacky. Why not just check the charge supplier type?",
+      "range": {
+        "startLine": 748,
+        "startChar": 3,
+        "endLine": 749,
+        "endChar": 29
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
