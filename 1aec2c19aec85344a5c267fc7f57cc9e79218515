@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8683ed7_94792359",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-27T09:58:34Z",
+      "side": 1,
+      "message": "Another implication of this is that if EC headers contain inline functions or macros that use the EC versions of the stdlib functions, you\u0027d be unable to use them from the fuzzer?\n\nFor my curiosity: Is there actually a need for the fuzzer implementation to rely on external libraries? I understand the fuzzer driver code is written in C++ and generally needs stdlib, however the actual fuzzing entrypoint it calls should be fine to operate within the EC environment?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4025ffaa_da2d2abf",
+        "filename": "include/common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-27T09:58:34Z",
+      "side": 1,
+      "message": "I had intended to take a closer look myself at symbol visibility to understand the constraints better... However, when I compile buildfuzztests with the attribute (selection above) removed at commit \"cr50_fuzz: Add minimal fuzzer for pinweaver.\", I don\u0027t get any link errors. What am I missing?",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 67
+      },
+      "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
