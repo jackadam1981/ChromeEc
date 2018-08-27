@@ -16,6 +16,24 @@
       "revId": "a1fa8bf69076395e9d1d874eeb33756fbedce86e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e81049_5c50929c",
+        "filename": "power/sdm845.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-08-27T19:38:29Z",
+      "side": 1,
+      "message": "The value doesn\u0027t change, i.e. 0. Just the name changes.\n\nFor the old: SDM845_POWER_GOOD \u003d 0\nFor the new: SDM845_AP_RST_L \u003d 0; SDM845_POWER_GOOD \u003d 3",
+      "parentUuid": "6bccb501_a4ef9266",
+      "revId": "a1fa8bf69076395e9d1d874eeb33756fbedce86e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

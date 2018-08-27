@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f27bada0_a2f2e7f9",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-08-27T19:38:29Z",
+      "side": 0,
+      "message": "It was actually mapped to the AP_RST_L GPIO. This CL changes it to a correct name.",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "7f3f8308afb350e6d35cce707ca220d87a8aad21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
