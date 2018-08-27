@@ -943,10 +943,14 @@ void assert_ec_rst(void)
 	if (uart_bitbang_is_enabled())
 		task_disable_irq(bitbang_config.rx_irq);
 
+	rbox_cancel_release_ec_rst();
+
 	GWRITE(RBOX, ASSERT_EC_RST, 1);
 }
 void deassert_ec_rst(void)
 {
+	rbox_cancel_release_ec_rst();
+
 	GWRITE(RBOX, ASSERT_EC_RST, 0);
 
 	if (uart_bitbang_is_enabled())

@@ -10,8 +10,12 @@
 #include "system.h"
 #include "timer.h"
 
-#define DELAY_EC_BOOT_USEC	(2 * SECOND)
-DECLARE_DEFERRED(deassert_ec_rst);
+enum RBOX_DEBUG_FLAGS {
+	RBOX_DEBUG_FLAG_EC_RESET_HELD = 0x00000001,
+};
+
+static uint32_t s_rbox_debug_flag;
+
 
 void rbox_clear_wakeup(void)
 {
@@ -34,6 +38,18 @@ int rbox_powerbtn_is_pressed(void)
 	return !GREAD_FIELD(RBOX, CHECK_OUTPUT, PWRB_OUT);
 }
 
+void rbox_cancel_release_ec_rst(void)
+{
+	s_rbox_debug_flag &= (~RBOX_DEBUG_FLAG_EC_RESET_HELD);
+}
+
+void rbox_release_ec_reset_if_held(void)
+{
+	if (s_rbox_debug_flag & RBOX_DEBUG_FLAG_EC_RESET_HELD) {
+		deassert_ec_rst();
+	}
+}
+
 static void rbox_release_ec_reset(void)
 {
 	/* Unfreeze the PINMUX */
@@ -44,7 +60,7 @@ static void rbox_release_ec_reset(void)
 	 */
 	if ((system_get_reset_flags() & RESET_FLAG_POWER_ON) &&
 	    rdd_is_detected() && rbox_powerbtn_is_pressed()) {
-		hook_call_deferred(&deassert_ec_rst_data, DELAY_EC_BOOT_USEC);
+		s_rbox_debug_flag |= RBOX_DEBUG_FLAG_EC_RESET_HELD;
 		return;
 	}
 
@@ -58,6 +74,9 @@ DECLARE_HOOK(HOOK_INIT, rbox_release_ec_reset, HOOK_PRIO_LAST);
 
 static void rbox_init(void)
 {
+	/* Clear debug flag bitmap */
+	s_rbox_debug_flag = 0;
+
 	/* Enable RBOX */
 	clock_enable_module(MODULE_RBOX, 1);
 
