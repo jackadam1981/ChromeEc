@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d530cf9d_e2ac73bd",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-27T09:48:10Z",
+      "side": 1,
+      "message": "comment style, are you uploading with --no-v?!",
+      "range": {
+        "startLine": 142,
+        "startChar": 27,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "22a2bc84eee7160f75bd468e28a23812b9e3c088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae0fbdd_0cf9d232",
+        "filename": "chip/stm32/usb_hid_hw.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-27T09:48:10Z",
+      "side": 1,
+      "message": "\"common.h\"",
+      "revId": "22a2bc84eee7160f75bd468e28a23812b9e3c088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ef5612_eaca5c19",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-27T09:48:10Z",
+      "side": 1,
+      "message": "Sounds like this could be done at init time/once instead.",
+      "revId": "22a2bc84eee7160f75bd468e28a23812b9e3c088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
