@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c88b1d81_9d7a7ed5",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-27T09:52:14Z",
+      "side": 1,
+      "message": "Should not be needed, you are already in Digitizer usage page above",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e8afe53_7c565472",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-27T09:52:14Z",
+      "side": 1,
+      "message": "Why 2?",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d917f665_fadffc11",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-27T09:52:14Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused, but shouldn\u0027t it be:\n\nReport Size (8)\nReport Count (1)\nLogical Maximum (15)\nUsage (Contact Count Maximum)\nFeature (Data,Var,Abs)\nUsage (Pad Type)\nFeature (Data,Var,Abs)\n\nSeems like you\u0027re mixing the 2 usages here?!",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba16a0b_b712c87a",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-27T09:52:14Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
