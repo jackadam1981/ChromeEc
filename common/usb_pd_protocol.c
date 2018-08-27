@@ -296,12 +296,6 @@ int pd_ts_dts_plugged(int port)
 	return pd[port].flags & PD_FLAGS_TS_DTS_PARTNER;
 }
 
-/* Return true if partner port is known to be PD capable. */
-int pd_capable(int port)
-{
-	return pd[port].flags & PD_FLAGS_PREVIOUS_PD_CONN;
-}
-
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 void pd_vbus_low(int port)
 {
@@ -406,7 +400,7 @@ static inline void set_state(int port, enum pd_states next_state)
 #ifdef CONFIG_LOW_POWER_IDLE
 	/* If a PD device is attached then disable deep sleep */
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		if (pd_capable(i))
+		if (pd[i].flags & PD_FLAGS_PREVIOUS_PD_CONN)
 			break;
 	}
 	if (i == CONFIG_USB_PD_PORT_COUNT)
@@ -2466,7 +2460,7 @@ void pd_task(void *u)
 				 * If we have had PD connection with this port
 				 * partner, then start NoResponseTimer.
 				 */
-				if (pd_capable(port))
+				if (pd[port].flags & PD_FLAGS_PREVIOUS_PD_CONN)
 					set_state_timeout(port,
 						get_time().val +
 						PD_T_NO_RESPONSE,
@@ -2965,7 +2959,8 @@ void pd_task(void *u)
 						  get_time().val +
 						  PD_T_SINK_WAIT_CAP,
 						  PD_STATE_HARD_RESET_SEND);
-				else if (pd_capable(port))
+				else if (pd[port].flags &
+					 PD_FLAGS_PREVIOUS_PD_CONN)
 					/* ErrorRecovery */
 					set_state_timeout(port,
 						  get_time().val +
