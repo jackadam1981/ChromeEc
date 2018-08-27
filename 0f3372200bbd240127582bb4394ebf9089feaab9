@@ -16,6 +16,24 @@
       "revId": "0f3372200bbd240127582bb4394ebf9089feaab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fca7cf_0128e800",
+        "filename": "power/sdm845.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-08-27T23:40:37Z",
+      "side": 1,
+      "message": "POWER_GOOD is good enough. Will remove the PS_HOLD check.",
+      "parentUuid": "1e26ef48_c1a911b6",
+      "revId": "0f3372200bbd240127582bb4394ebf9089feaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
