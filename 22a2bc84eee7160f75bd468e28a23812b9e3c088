@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "daed3bd7_9ba4f366",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-27T11:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d530cf9d_e2ac73bd",
+      "range": {
+        "startLine": 142,
+        "startChar": 27,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "22a2bc84eee7160f75bd468e28a23812b9e3c088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aae0fbdd_0cf9d232",
         "filename": "chip/stm32/usb_hid_hw.h",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1b8dedfa_12517c7a",
+        "filename": "chip/stm32/usb_hid_hw.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-27T11:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae0fbdd_0cf9d232",
+      "revId": "22a2bc84eee7160f75bd468e28a23812b9e3c088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23ef5612_eaca5c19",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "22a2bc84eee7160f75bd468e28a23812b9e3c088",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd26491f_6177e6b8",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-27T11:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ef5612_eaca5c19",
+      "revId": "22a2bc84eee7160f75bd468e28a23812b9e3c088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
