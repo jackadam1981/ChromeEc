@@ -70,6 +70,30 @@
       "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234a2a29_2c9296c1",
+        "filename": "core/cortex-m0/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-27T15:35:22Z",
+      "side": 1,
+      "message": "\u003e Why was this written in assembly in the first place if they\u0027re C ABI compatible?\n\nMy best guess is that it kept init.s more self-contained.  Otherwise, you\u0027d have to ask the original author(s).\n\n\u003e Since we\u0027re just jumping into exception_panic, couldn\u0027t we define exception_panic as the default handler?\n\nIn principle, any function pointer compatible with `void (function*)(void)` is a valid entry for the vector table.  I peaked at the definition of exception_panic().  Some of the saved panic information is the caller of the exception_panic.  If exception_panic is directly entered by hardware, then the value of the lr is the special value used by the hardware for recognizing interrupt handler returns.  If tooling attempted to directly match that address with a symbol, it would fail.\n\nBackground: To enable the use of C ABI-compatible interrupt handlers, the core places a special value in the link register that points to the hardware\u0027s reserved address space.  The high 512MB  is reserved for the processor\u0027s own peripherals.  The high few bits of lr are set to indicate that this is an exception return value, and the low few bits tell the hardware some details about how to return from the exception.\n\nSo there is some advantage to a default_handler that just forwards to exception_panic(), because then standard tooling doesn\u0027t need anything special to decode the link register.  It would resolve to default_handler() automatically.",
+      "parentUuid": "7e2bc9a5_b04c014a",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
