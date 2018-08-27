@@ -22,6 +22,30 @@
       "revId": "6b8522a81b83d04202eb1b3d9180f5324fec118f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41af52bb_acab494a",
+        "filename": "include/hwtimer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-08-27T18:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f08c91d_2b58632a",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "6b8522a81b83d04202eb1b3d9180f5324fec118f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
