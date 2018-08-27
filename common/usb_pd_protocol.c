@@ -577,12 +577,6 @@ static inline void set_state(int port, enum pd_states next_state)
 		return;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	/* Clear flag to allow DRP auto toggle when possible */
-	if (last_state != PD_STATE_DRP_AUTO_TOGGLE)
-		pd[port].flags &= ~PD_FLAGS_TCPC_DRP_TOGGLE;
-#endif
-
 	/* Ignore dual-role toggling between sink and source */
 	if ((last_state == PD_STATE_SNK_DISCONNECTED &&
 	     next_state == PD_STATE_SRC_DISCONNECTED) ||
@@ -2629,7 +2623,6 @@ void pd_task(void *u)
 			 * not already auto toggling and not try.src
 			 */
 			if (auto_toggle_supported &&
-			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
 			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
 			    (cc1 == TYPEC_CC_VOLT_OPEN &&
 			     cc2 == TYPEC_CC_VOLT_OPEN)) {
@@ -3115,7 +3108,6 @@ void pd_task(void *u)
 			 * not already auto toggling and not try.src
 			 */
 			if (auto_toggle_supported &&
-			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
 			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
 			    (cc1 == TYPEC_CC_VOLT_OPEN &&
 			     cc2 == TYPEC_CC_VOLT_OPEN)) {
@@ -3745,7 +3737,6 @@ void pd_task(void *u)
 				timeout = 2*MSEC;
 			} else {
 				pd_set_drp_toggle(port, 1);
-				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
 				timeout = -1;
 			}
 			set_state(port, next_state);
