@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e26ef48_c1a911b6",
+        "filename": "power/sdm845.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-08-27T20:06:14Z",
+      "side": 1,
+      "message": "Do we really care if PS_HOLD is low or not? I think we can ignore it and just look at POWER_GOOD.",
+      "revId": "0f3372200bbd240127582bb4394ebf9089feaab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
