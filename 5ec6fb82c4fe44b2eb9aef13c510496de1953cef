@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "78e73e9e_c362eaba",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-27T20:24:03Z",
+      "side": 1,
+      "message": "The CAP_INFO_DATA indices need to match the ccd_capability enum. I think it would be confusing to have multiple lines in the CCD_INFO_DATA struct for one capability.",
+      "parentUuid": "3f2b4b30_942b2289",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 30
+      },
+      "revId": "5ec6fb82c4fe44b2eb9aef13c510496de1953cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3a0bb8c_c2398649",
         "filename": "include/ccd_config.h",
         "patchSetId": 2
