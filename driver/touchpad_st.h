@@ -252,5 +252,20 @@ enum ST_TP_MODE {
 /* A minimum version that supports heatmap mode. */
 #define ST_TP_MIN_HEATMAP_VERSION 0x12
 
+/* Error code, check page 28 on spec */
+#define ST_TP_ERROR_NMI_TRIGGERED		0x01
+#define ST_TP_ERROR_HARD_FAULT			0x02
+#define ST_TP_ERROR_MEMORY_MANAGE_FAULT		0x03
+#define ST_TP_ERROR_BUS_FAULT			0x04
+#define ST_TP_ERROR_USAGE_FAULT			0x05
+#define ST_TP_ERROR_WATCHDOG_EXPIRED		0x06
+#define ST_TP_ERROR_INVALID_CHIP_ID		0x10
+#define ST_TP_ERROR_INVALID_CHIP_VERSION	0x11
+
+#define ST_TP_ERROR_FW_CONFIG_CRC_HEADER	0x21
+#define ST_TP_ERROR_FW_CONFIG_CRC		0x21
+#define ST_TP_ERROR_PANEL_CONFIG_CRC_HEADER	0x22
+#define ST_TP_ERROR_PANEL_CONFIG_CRC		0x23
+
 #endif /* __CROS_EC_TOUCHPAD_ST_H */
 
