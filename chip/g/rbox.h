@@ -12,6 +12,17 @@
 int rbox_powerbtn_is_pressed(void);
 
 /**
+ * Release EC-reset if it was held since the power reset for debugging purpose.
+ */
+void rbox_release_ec_reset_if_held(void);
+
+/**
+ * Cancel EC-reset if the power button was holding it.
+ * Future call to rbox_release_ec_reset_if_held() won't release EC-reset.
+ */
+void rbox_cancel_release_ec_rst(void);
+
+/**
  * Clear the wakeup interrupts
  */
 void rbox_clear_wakeup(void);

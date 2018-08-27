@@ -5,13 +5,12 @@
 
 #include "clock.h"
 #include "hooks.h"
+#include "power_button_cr50.h"
 #include "rdd.h"
 #include "registers.h"
 #include "system.h"
 #include "timer.h"
 
-#define DELAY_EC_BOOT_USEC	(2 * SECOND)
-DECLARE_DEFERRED(deassert_ec_rst);
 
 void rbox_clear_wakeup(void)
 {
@@ -44,7 +43,7 @@ static void rbox_release_ec_reset(void)
 	 */
 	if ((system_get_reset_flags() & RESET_FLAG_POWER_ON) &&
 	    rdd_is_detected() && rbox_powerbtn_is_pressed()) {
-		hook_call_deferred(&deassert_ec_rst_data, DELAY_EC_BOOT_USEC);
+		power_button_release_interrupt_enable();
 		return;
 	}
 

@@ -20,6 +20,7 @@
 #include "init_chip.h"
 #include "nvmem.h"
 #include "nvmem_vars.h"
+#include "power_button_cr50.h"
 #include "rbox.h"
 #include "rdd.h"
 #include "registers.h"
@@ -943,10 +944,14 @@ void assert_ec_rst(void)
 	if (uart_bitbang_is_enabled())
 		task_disable_irq(bitbang_config.rx_irq);
 
+	power_button_release_interrupt_disable();
+
 	GWRITE(RBOX, ASSERT_EC_RST, 1);
 }
 void deassert_ec_rst(void)
 {
+	power_button_release_interrupt_disable();
+
 	GWRITE(RBOX, ASSERT_EC_RST, 0);
 
 	if (uart_bitbang_is_enabled())
