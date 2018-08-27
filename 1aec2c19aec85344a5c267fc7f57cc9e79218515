@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7249d203_77564538",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-27T16:33:51Z",
+      "side": 1,
+      "message": "libprotobuf-mutator depends on protobuf which depends on the c++ standard library which depends on cstdlib as implmented in clang. It is possible to write a fuzzing target without these, but it costs the time required to right a good model with a mutator.\n\nAnother example is openssl which I believe also depends on cstdlib, though I could probably remove this dependency since we don\u0027t really need to do the encryption for real in the fuzzer.",
+      "parentUuid": "f8683ed7_94792359",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4025ffaa_da2d2abf",
         "filename": "include/common.h",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7353536e_8fa6d638",
+        "filename": "include/common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-27T16:33:51Z",
+      "side": 1,
+      "message": "You are probably building the minimal fuzzer which doesn\u0027t have conflicts. You need to be testing with go/crosr/1184107.",
+      "parentUuid": "4025ffaa_da2d2abf",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 67
+      },
+      "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
