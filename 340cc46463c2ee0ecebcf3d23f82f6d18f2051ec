@@ -69,6 +69,30 @@
       "revId": "340cc46463c2ee0ecebcf3d23f82f6d18f2051ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e41777f_25fea0ac",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2503,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-08-27T22:44:51Z",
+      "side": 1,
+      "message": "I would view this a nocturne branch only fix. Aseda wanted to to have it in so that booting from dead battery would work, but I am working on finding the root cause of the issue, but I wasn\u0027t going to have a fix ready in time.",
+      "parentUuid": "17dd3eb7_3946a452",
+      "range": {
+        "startLine": 2502,
+        "startChar": 1,
+        "endLine": 2503,
+        "endChar": 40
+      },
+      "revId": "340cc46463c2ee0ecebcf3d23f82f6d18f2051ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
