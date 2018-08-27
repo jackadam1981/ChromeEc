@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2941e9f3_74c49df8",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-27T17:47:09Z",
+      "side": 1,
+      "message": "I am not that familiar either. I will probably just drop these changes since the firmware branch will be more correct anyway.",
+      "parentUuid": "6ee07332_2d8b8a48",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b07a7c56_0112582c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "98dd6b1e_492a9090",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2597,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-27T17:47:09Z",
+      "side": 1,
+      "message": "Yes you are correct, we are sending this wake event from the PD task itself (I had originally used the task_get_current() to make that more clear but that doesn\u0027t compile on Zinger projects etc).\n\nI \"wake\" this task up so that the task_wait_event(timeout) on line 2503 will immediate return on the next invocation without sleeping (since there is a waiting TASK_EVENT_WAKE event in the task queue)",
+      "parentUuid": "b07a7c56_0112582c",
+      "range": {
+        "startLine": 2596,
+        "startChar": 4,
+        "endLine": 2597,
+        "endChar": 32
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31b45960_5392e20b",
         "filename": "driver/tcpm/stub.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-24T20:57:55Z",
       "side": 1,
       "message": "None of these should be \u0027extern\u0027.  Actually, checkpatch.pl complains about this.  Are you sure your presubmit hooks are set up correctly?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3629b984_d794cbf1",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-27T17:47:09Z",
+      "side": 1,
+      "message": "I agree; however, extern seems to be the way to link other functions in this file. I felt being consistent was better in this case.\n\nI wouldn\u0027t mind putting together cleanup CL for this file removing all of the extern calls.\n\n(I did get the presubmit warnings but felt that consistency was worth more in this case)",
+      "parentUuid": "31b45960_5392e20b",
       "range": {
         "startLine": 26,
         "startChar": 0,

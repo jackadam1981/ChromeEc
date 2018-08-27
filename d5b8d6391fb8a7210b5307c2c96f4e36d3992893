@@ -22,6 +22,30 @@
       "revId": "d5b8d6391fb8a7210b5307c2c96f4e36d3992893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66e56d3_0aa742fa",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-27T17:47:09Z",
+      "side": 0,
+      "message": "We were masking it from the time we serviced this IRQ to the time we actually retrieved the RX buffer (in the PD task). We needed to mask this otherwise the IRQ would keep firing since the RX buffer still had data.\n\nSince we are pulling the RX buffer contents into EC memory, we don\u0027t have to mask the interrupt as we should pull everything into memory. If there are multiple items in the RX buffer, then this IRQ (chip_pd_irq) will get called again immediately and we will cache the subsequent RX messages until they are all consumed in the buffer.",
+      "parentUuid": "75f9d17f_e2fc32bb",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 56
+      },
+      "revId": "d5b8d6391fb8a7210b5307c2c96f4e36d3992893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
