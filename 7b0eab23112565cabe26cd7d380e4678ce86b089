@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "ec51b72e_da5a6fb3",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-27T11:43:00Z",
+      "side": 1,
+      "message": "Just like what we did for \"Confidence, Tip Switch, In Range\", you can declare multiple variables at a time.\n\nThese were copied from: https://chrome-internal-review.googlesource.com/588951",
+      "parentUuid": "2e8afe53_7c565472",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d917f665_fadffc11",
         "filename": "chip/stm32/usb_hid_touchpad.c",
         "patchSetId": 5
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "fb0c64e5_778c2f69",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-27T11:43:00Z",
+      "side": 1,
+      "message": "These was from https://chrome-internal-review.googlesource.com/588951",
+      "parentUuid": "d917f665_fadffc11",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aba16a0b_b712c87a",
         "filename": "chip/stm32/usb_hid_touchpad.c",
         "patchSetId": 5
@@ -64,6 +100,24 @@
       "writtenOn": "2018-08-27T09:52:14Z",
       "side": 1,
       "message": "Why?",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66a7814_3f8712a2",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-27T11:43:00Z",
+      "side": 1,
+      "message": "oops, this should be in next CL...",
+      "parentUuid": "aba16a0b_b712c87a",
       "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
