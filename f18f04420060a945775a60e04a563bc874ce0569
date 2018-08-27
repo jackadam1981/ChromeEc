@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea42078_063086a8",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "is this required?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fb939d_3f81bb93",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "is this required?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f45579bc_9a8c8579",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "are these required?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7538227e_96cdeb8f",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "Maybe add a comment indicating what 0 and 1 mean here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 34,
+        "endLine": 21,
+        "endChar": 42
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9d6730_58e13905",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "I am assuming this comment applies to the whole function syv682x_is_vbus_present?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad1a7c5_62798b5c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be returning 0? Since returning non-zero value could mean vbus is present? Or is that intentional?",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61b90e4b_358f8e53",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "Should the flags[port] bit be updated based on the return value of write_reg or does it not matter?",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 7
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ee6beb_f3d83395",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be regval \u0026\u003d ~SYV682X_OVP_MASK;",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 28
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f828d7da_c28c1405",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "nit: use tabs for consistency with most of the macros below?",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b05cae8_ea777d38",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "nit: one more tab?",
+      "range": {
+        "startLine": 25,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6de89c_e9f083e7",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-27T19:54:27Z",
+      "side": 1,
+      "message": "nit: one more tab?",
+      "range": {
+        "startLine": 30,
+        "startChar": 31,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "f18f04420060a945775a60e04a563bc874ce0569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
