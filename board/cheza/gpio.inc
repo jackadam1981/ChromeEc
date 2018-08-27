@@ -23,7 +23,7 @@ GPIO_INT(ACCEL_GYRO_INT_L,     PIN(D, 3), GPIO_INT_RISING | GPIO_SEL_1P8V, bmi16
 GPIO_INT(AC_PRESENT,        PIN(0, 0), GPIO_INT_BOTH, extpower_interrupt) /* ACOK_OD */
 GPIO_INT(POWER_BUTTON_L,    PIN(0, 1), GPIO_INT_BOTH, power_button_interrupt)  /* EC_PWR_BTN_ODL */
 GPIO_INT(VOLUME_DOWN_L,     PIN(7, 0), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)  /* EC_VOLDN_BTN_ODL */
-GPIO_INT(VOLUME_UP_L,       PIN(1, 1), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)  /* EC_VOLUP_BTN_ODL */
+GPIO_INT(VOLUME_UP_L,       PIN(F, 2), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)  /* EC_VOLUP_BTN_ODL */
 GPIO_INT(WP_L,              PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)  /* EC_WP_ODL */
 GPIO_INT(LID_OPEN,          PIN(D, 2), GPIO_INT_BOTH, lid_interrupt)  /* LID_OPEN_EC */
 GPIO_INT(AP_RST_REQ,        PIN(C, 2), GPIO_INT_RISING | GPIO_PULL_DOWN | GPIO_SEL_1P8V, chipset_reset_request_interrupt)  /* Reset request from AP */
@@ -35,7 +35,6 @@ GPIO_INT(POWER_GOOD,        PIN(5, 4), GPIO_INT_BOTH | GPIO_SEL_1P8V, power_sign
 GPIO_INT(SHI_CS_L,          PIN(5, 3), GPIO_INT_FALLING | GPIO_PULL_DOWN | GPIO_SEL_1P8V, shi_cs_event)  /* AP_EC_SPI_CS_L */
 GPIO_INT(CC_LID_BASE_ADC,   PIN(4, 5), GPIO_INT_BOTH, base_detect_interrupt)  /* Base detection */
 
-GPIO(EC_SELF_RST,           PIN(E, 0), GPIO_OUT_LOW)   /* Self-reset EC */
 GPIO(EC_RST_ODL,            PIN(0, 2), GPIO_INPUT)     /* Wake source: EC reset */
 GPIO(ENTERING_RW,           PIN(E, 1), GPIO_OUT_LOW)   /* EC_ENTERING_RW: Indicate when EC is entering RW code */
 GPIO(CCD_MODE_ODL,          PIN(E, 3), GPIO_INPUT)     /* Case Closed Debug Mode */
@@ -55,17 +54,17 @@ GPIO(VBOB_EN,               PIN(9, 5), GPIO_OUT_LOW)   /* Enable VBOB */
 /* TODO(b/110988793): Default it to LOW and make it a S3 rail once the bug is fixed. */
 GPIO(EN_PP3300_A,           PIN(A, 6), GPIO_OUT_HIGH)  /* Enable PP3300 */
 GPIO(EN_PP5000,             PIN(6, 7), GPIO_OUT_LOW)   /* EN_PP5000_A: Enable PP5000 */
-GPIO(ENABLE_BACKLIGHT,      PIN(2, 6), GPIO_OUT_LOW)   /* EC_BL_DISABLE_L: Backlight disable signal from EC */
+GPIO(ENABLE_BACKLIGHT,      PIN(B, 6), GPIO_OUT_LOW)   /* EC_BL_DISABLE_L: Backlight disable signal from EC */
 
 /* Sensors */
 GPIO(ALS_INT_L,             PIN(5, 0), GPIO_INPUT)     /* ALS sensor interrupt */
-GPIO(P_SENSOR_INT_L,        PIN(1, 4), GPIO_INPUT | GPIO_SEL_1P8V) /* P-sensor interrupt */
+GPIO(P_SENSOR_INT_L,        PIN(F, 3), GPIO_INPUT | GPIO_SEL_1P8V) /* P-sensor interrupt */
 GPIO(RCAM_VSYNC,            PIN(4, 0), GPIO_INPUT)     /* VSYNC from rear camera */
 
 /* Base */
-GPIO(EN_PPVAR_VAR_BASE,     PIN(1, 2), GPIO_OUT_LOW)   /* Power to the base */
-GPIO(EN_CC_LID_BASE_PH,     PIN(0, 7), GPIO_ODR_HIGH)
-GPIO(EN_CC_LID_BASE_PULLDN, PIN(1, 5), GPIO_ODR_HIGH)
+GPIO(EN_PPVAR_VAR_BASE,     PIN(0, 4), GPIO_OUT_LOW)   /* Power to the base */
+GPIO(EN_CC_LID_BASE_PH,     PIN(D, 1), GPIO_ODR_HIGH)
+GPIO(EN_CC_LID_BASE_PULLDN, PIN(D, 0), GPIO_ODR_HIGH)
 GPIO(REVERSE_DOCK_EC,       PIN(C, 6), GPIO_INPUT)     /* Indicate if the dock is reversed */
 GPIO(CC_LID_RX_BASE_TX,     PIN(7, 5), GPIO_INPUT)
 GPIO(CC_LID_RX_BASE_RX,     PIN(8, 6), GPIO_INPUT)
@@ -73,8 +72,8 @@ GPIO(CC_LID_RX_BASE_RX,     PIN(8, 6), GPIO_INPUT)
 /* LEDs */
 GPIO(CHG_LED_Y_C0,          PIN(C, 3), GPIO_OUT_LOW)   /* EC_CHG_LED_Y_C0 */
 GPIO(CHG_LED_W_C0,          PIN(C, 4), GPIO_OUT_LOW)   /* EC_CHG_LED_W_C0 */
-GPIO(CHG_LED_Y_C1,          PIN(3, 1), GPIO_OUT_LOW)   /* EC_CHG_LED_Y_C1 */
-GPIO(CHG_LED_W_C1,          PIN(3, 0), GPIO_OUT_LOW)   /* EC_CHG_LED_W_C1 */
+GPIO(CHG_LED_Y_C1,          PIN(6, 0), GPIO_OUT_LOW)   /* EC_CHG_LED_Y_C1 */
+GPIO(CHG_LED_W_C1,          PIN(C, 0), GPIO_OUT_LOW)   /* EC_CHG_LED_W_C1 */
 
 /*
  * USB HS muxes
@@ -100,11 +99,11 @@ GPIO(USB_C1_HS_MUX_SEL,     PIN(7, 4), GPIO_OUT_LOW)   /* L:D1(hub), H:D2(AP) */
 
 /* USB-C port-0 controls */
 GPIO(USB_C0_PD_RST_R_L,     PIN(F, 1), GPIO_OUT_HIGH)  /* Port-0 TCPC chip reset */
-GPIO(EN_USB_C0_TCPC_PWR,    PIN(6, 0), GPIO_OUT_LOW)   /* Port-0 TCPC power enable */
+GPIO(EN_USB_C0_TCPC_PWR,    PIN(C, 5), GPIO_OUT_LOW)   /* Port-0 TCPC power enable */
 
 /* USB-C port-1 controls */
 GPIO(USB_C1_PD_RST_ODL,     PIN(E, 4), GPIO_ODR_HIGH)  /* Port-1 TCPC chip reset */
-GPIO(EN_USB_C1_5V_OUT,      PIN(C, 0), GPIO_OUT_LOW)   /* Port-1 power switch 5V output */
+GPIO(EN_USB_C1_5V_OUT,      PIN(6, 3), GPIO_OUT_LOW)   /* Port-1 power switch 5V output */
 GPIO(EN_USB_C1_3A,          PIN(5, 6), GPIO_OUT_LOW)   /* Port-1 power switch 3A current */
 GPIO(EN_USB_C1_CHARGE_EC_L, PIN(B, 1), GPIO_OUT_LOW)   /* Port-1 enable charging */
 GPIO(USBC_MUX_CONF1,        PIN(5, 1), GPIO_OUT_HIGH)  /* Port-1 enable DP switch */
@@ -139,8 +138,7 @@ GPIO(SKU_ID2,               PIN(4, 1), GPIO_INPUT)
  * GPIO0 is configured as PVC_PG. When the chip in power down mode, it outputs
  * high-Z. Set pull-down to avoid floating.
  */
-GPIO(DA9313_GPIO0,          PIN(2, 3), GPIO_INPUT | GPIO_PULL_DOWN) /* Switchcap GPIO0 */
-GPIO(DA9313_GPIO1,          PIN(2, 2), GPIO_INPUT | GPIO_PULL_DOWN) /* Switchcap GPIO1 */
+GPIO(DA9313_GPIO0,          PIN(E, 2), GPIO_INPUT | GPIO_PULL_DOWN) /* Switchcap GPIO0 */
 
 /* Alternate functions GPIO definitions */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, GPIO_PULL_UP) /* UART (GPIO64/65) */
@@ -149,7 +147,7 @@ ALTERNATE(PIN_MASK(9, 0x07), 1, MODULE_I2C, 0)             /* I2C1 SDA (GPIO90),
 ALTERNATE(PIN_MASK(8, 0x80), 1, MODULE_I2C, 0)             /* I2C1 SCL (GPIO87) */
 ALTERNATE(PIN_MASK(3, 0x48), 1, MODULE_I2C, 0)             /* I2C5 (GPIO33/36) */
 ALTERNATE(PIN_MASK(B, 0x0C), 1, MODULE_I2C, GPIO_SEL_1P8V) /* I2C7 (GPIOB2/B3) - 1.8V */
-ALTERNATE(PIN_MASK(4, 0x0C), 0, MODULE_ADC, 0)             /* ADC2 (GPIO43), ADC3 (GPIO42) */
+ALTERNATE(PIN_MASK(4, 0x1C), 0, MODULE_ADC, 0)             /* ADC1 (GPIO44), ADC2 (GPIO43), ADC3 (GPIO42) */
 ALTERNATE(PIN_MASK(4, 0xC0), 1, MODULE_SPI, GPIO_SEL_1P8V) /* SHI_SDO (GPIO47), SHI_SDI (GPIO46) */
 ALTERNATE(PIN_MASK(5, 0x28), 1, MODULE_SPI, GPIO_SEL_1P8V) /* SHI_SCLK (GPIO55), SHI_CS# (GPIO53) */
 ALTERNATE(PIN_MASK(B, 0x80), 1, MODULE_PWM, 0)             /* PWM5 (GPIOB7) */
