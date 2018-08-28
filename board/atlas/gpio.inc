@@ -20,6 +20,11 @@ GPIO_INT(SLP_S0_L,		PIN(A, 4), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(SLP_SUS_L_PCH,		PIN(D, 4), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(ROP_EC_ACOK,		PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	extpower_interrupt)
 
+/*GPIO_INT(ROP_EC_ACOK,		PIN(0, 0), GPIO_INT_BOTH | GPIO_PULL_UP| GPIO_HIB_WAKE_HIGH,	extpower_interrupt)*/
+/*GPIO_INT(ROP_EC_ACOK,		PIN(0, 0), GPIO_INT_RISING | GPIO_PULL_UP| GPIO_HIB_WAKE_HIGH,	extpower_interrupt)*/
+
+/* GPIO_INT_HIGH, GPIO_INT_LOW, GPIO_INT_RISING */
+
 /* misc interrupt handler section */
 GPIO_INT(EC_WP_L,		PIN(A, 1), GPIO_INT_BOTH,			switch_interrupt)
 GPIO_INT(LID_OPEN,		PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	lid_interrupt)
@@ -111,7 +116,7 @@ GPIO(NC_GPIOA7,			PIN(A, 7), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(NC_GPIOB0,			PIN(B, 0), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Power Switch Logic (PSL) inputs */
-ALTERNATE(PIN_MASK(0, 0x02), 0, MODULE_PMU, 0)		/* PSL3&GPI01 */
+ALTERNATE(PIN_MASK(0, 0x03), 0, MODULE_PMU, 0)		/* PSL3&GPI01, PSL2&GPI00 */
 ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, 0)		/* GPIOD2 */
 
 /* gpio alternate functions */
