@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e60b3497_94981e56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T18:59:26Z",
+      "side": 1,
+      "message": "debugging is misspelled\n\nalso, debugging case needs to demonstrate actual disconnect/reconnect of the power source, as we discussed, this is how this feature will be used in real life.",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c379231_318a50ea",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -59,6 +82,30 @@
       "writtenOn": "2018-08-28T18:52:05Z",
       "side": 1,
       "message": "We were having issues with our interrupt priorities being flat. Does this need to be priority 1?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6924d903_4994634f",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T18:59:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this matters, this interrupt processing function doing pretty much nothing and being used only after some power on resets, it\u0027s fine to keep it at a common priority.",
+      "parentUuid": "bc4d3bb7_c78da385",
       "range": {
         "startLine": 90,
         "startChar": 1,
