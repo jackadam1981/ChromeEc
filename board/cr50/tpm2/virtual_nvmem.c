@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "virtual_nvmem.h"
+
 #include <string.h>
 
 #include "Global.h"
@@ -125,34 +127,22 @@ struct virtual_nv_index_cfg {
 	REGISTER_CONFIG(r_index, 0, 0)
 
 /*
- * Currently supported virtual NV indexes.
+ * Registration of current virtual indexes.
  *
- * The range for virtual NV indexes is chosen such that all indexes
- * fall within a range designated by the TCG for use by TPM manufacturers,
- * without expectation of consultation with the TCG, or consistent behavior
- * across TPM models. See Table 3 in the 'Registry of reserved TPM 2.0
- * handles and localities' for more details.
+ * Indexes are declared in the virtual_nv_index enum in the header.
  *
- * Active entries in this enum must have a size and data function registered
+ * Active entries of this enum must have a size and data function registered
  * with a REGISTER_CONFIG statement below.
  *
  * Deprecated indices should use the REGISTER_DEPRECATED_CONFIG variant.
- *
- * Values in this enum must be consecutive.
  */
-enum virtual_nv_index {
-	VIRTUAL_NV_INDEX_START = 0x013fff00,
-	VIRTUAL_NV_INDEX_BOARD_ID = VIRTUAL_NV_INDEX_START,
-	VIRTUAL_NV_INDEX_END,
-};
-/* Reserved space for future virtual indexes; this is the last valid index. */
-#define VIRTUAL_NV_INDEX_MAX 0x013fffff
 
 static void GetBoardId(BYTE *to, size_t offset, size_t size);
 
 static const struct virtual_nv_index_cfg index_config[] = {
 	REGISTER_CONFIG(VIRTUAL_NV_INDEX_BOARD_ID,
-			12 /* data_size */, GetBoardId)
+			VIRTUAL_NV_INDEX_BOARD_ID_SIZE,
+			GetBoardId)
 };
 
 /* Check sanity of above config. */
@@ -312,3 +302,5 @@ static void GetBoardId(BYTE *to, size_t offset, size_t size)
 	read_board_id(&board_id_tmp);
 	memcpy(to, ((BYTE *) &board_id_tmp) + offset, size);
 }
+BUILD_ASSERT(VIRTUAL_NV_INDEX_BOARD_ID_SIZE ==
+	     sizeof(struct board_id));
