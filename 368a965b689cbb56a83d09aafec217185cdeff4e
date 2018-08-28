@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b407e4f_3348afab",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-28T10:16:18Z",
+      "side": 1,
+      "message": "Modifing return value to void type.",
+      "parentUuid": "e4814cf4_5979f7fe",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 3
+      },
+      "revId": "368a965b689cbb56a83d09aafec217185cdeff4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "327d5b00_a74aad81",
         "filename": "board/phaser/board.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "368a965b689cbb56a83d09aafec217185cdeff4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811f26e6_ea028a1a",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-28T10:16:18Z",
+      "side": 1,
+      "message": "Amended the format.",
+      "parentUuid": "327d5b00_a74aad81",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 68
+      },
+      "revId": "368a965b689cbb56a83d09aafec217185cdeff4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9b9385ed_08342d8a",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-28T10:16:18Z",
+      "side": 1,
+      "message": "Amended the format.",
+      "parentUuid": "871896ea_b9f74aab",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 277,
+        "endChar": 69
+      },
+      "revId": "368a965b689cbb56a83d09aafec217185cdeff4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91633627_7e5cb580",
         "filename": "board/phaser/board.h",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "427ebdcb_b981f8bb",
+        "filename": "board/phaser/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-28T10:16:18Z",
+      "side": 1,
+      "message": "I have removed the non-standard config option.",
+      "parentUuid": "91633627_7e5cb580",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "368a965b689cbb56a83d09aafec217185cdeff4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef9e1e08_36e13e09",
         "filename": "board/phaser/board.h",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "368a965b689cbb56a83d09aafec217185cdeff4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "728f7a07_1b44cd6e",
+        "filename": "board/phaser/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-28T10:16:18Z",
+      "side": 1,
+      "message": "OK, amended in a file is better.",
+      "parentUuid": "ef9e1e08_36e13e09",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "368a965b689cbb56a83d09aafec217185cdeff4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
