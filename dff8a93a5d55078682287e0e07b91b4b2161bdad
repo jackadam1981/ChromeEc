@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c379231_318a50ea",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-28T18:52:05Z",
+      "side": 1,
+      "message": "Add a comment about why this is needed.",
+      "range": {
+        "startLine": 947,
+        "startChar": 0,
+        "endLine": 947,
+        "endChar": 42
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca2ea3b_68ef7851",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-28T18:52:05Z",
+      "side": 1,
+      "message": "Make the release interrupt function consistent with the other power_button interrupt enable function.\n\nvoid power_button_release_enable_interrupt(int enable)",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4d3bb7_c78da385",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-28T18:52:05Z",
+      "side": 1,
+      "message": "We were having issues with our interrupt priorities being flat. Does this need to be priority 1?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2034ba8_e3a3ebff",
+        "filename": "chip/g/rbox.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-28T18:52:05Z",
+      "side": 1,
+      "message": "This isn\u0027t needed anymore.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
