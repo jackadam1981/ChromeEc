@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cb5f768_168f778d",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-08-28T04:42:33Z",
+      "side": 1,
+      "message": "I don\u0027t think you need all of this s_rbox_debug_flag stuff. I think you can just call deassert_ec_rst from the power button interrupt.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "206ac2b59de8be83a98018f3be1d05d5faadc044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
