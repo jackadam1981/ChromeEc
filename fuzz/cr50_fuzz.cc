@@ -47,12 +47,25 @@ extern "C" void get_storage_seed(void *buf, size_t *len) {
   memset(buf, 0x77, *len);
 }
 
-extern "C" void run_test(void) {
-}
-
 /* Prevent this from being stack allocated. */
 static uint8_t buffer_[PW_MAX_MESSAGE_SIZE];
 static PinweaverModel pinweaver_;
+
+extern "C" void run_test(void) {
+  protobuf_mutator::Mutator::RegisterCustomMutation(
+      fuzz::SubAction::descriptor()->FindFieldByName("pinweaver"),
+      [](google::protobuf::Message* message) {
+        if (message->GetDescriptor() != fuzz::SubAction::descriptor())
+          return;
+        fuzz::SubAction* sub_action = dynamic_cast<fuzz::SubAction*>(message);
+        if (!sub_action->has_pinweaver())
+          return;
+        size_t num_bytes =
+            pinweaver_.SerializePinweaver(sub_action->pinweaver(), buffer_);
+        sub_action->mutable_random_bytes()->set_value(buffer_, num_bytes);
+      }
+  );
+}
 
 void apply_random_bytes(const fuzz::RandomBytes& random_bytes) {
   const auto& value = random_bytes.value();
