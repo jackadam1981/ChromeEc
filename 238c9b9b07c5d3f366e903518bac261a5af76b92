@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f185a567_6f5fe42d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-28T17:23:13Z",
+      "side": 1,
+      "message": "Optional: It would be nice if savesizes and newsizes worked with this feature instead of using the \u0027flat\u0027 files directly.",
+      "range": {
+        "startLine": 315,
+        "startChar": 18,
+        "endLine": 315,
+        "endChar": 26
+      },
+      "revId": "238c9b9b07c5d3f366e903518bac261a5af76b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13c0aa0_69863f3b",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-28T17:23:13Z",
+      "side": 1,
+      "message": "Nit: \u0027remaining\u0027 or \u0027free\u0027 has fewer confusing definitions than \u0027left\u0027 for non-native speakers.",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 358,
+        "endChar": 14
+      },
+      "revId": "238c9b9b07c5d3f366e903518bac261a5af76b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
