@@ -24,8 +24,17 @@ struct pw_request_t* SerializeCommon(const fuzz::PinWeaver& pinweaver,
 // Public member functions.
 //******************************************************************************
 
+PinweaverModel* PinweaverModel::Get() {
+  return default_instance_;
+}
+
 PinweaverModel::PinweaverModel() {
   Reset();
+  default_instance_ = this;
+}
+
+PinweaverModel::~PinweaverModel() {
+  default_instance_ = nullptr;
 }
 
 void PinweaverModel::SendBuffer(fuzz::span<uint8_t> buffer) {
@@ -117,6 +126,8 @@ void PinweaverModel::Reset() {
 //******************************************************************************
 
 constexpr uint8_t PinweaverModel::kNullRootHash[PW_HASH_SIZE];
+
+PinweaverModel* PinweaverModel::default_instance_ = nullptr;
 
 //******************************************************************************
 // Private member functions.
