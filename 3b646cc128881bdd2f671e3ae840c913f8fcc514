@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0ff850c_7088cf07",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-28T00:37:41Z",
+      "side": 1,
+      "message": "So should this be GPIO_ODR_HIGH?  And then just gpio_set_level(0) in HOOK_INIT?\n\n(And is the assumption there that HOOK_INIT takes long enough that we don\u0027t get to it before Cr50 resets us as it starts executing Cr50-RO?)",
+      "range": {
+        "startLine": 76,
+        "startChar": 36,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "3b646cc128881bdd2f671e3ae840c913f8fcc514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
