@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f73c585_5d5546a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-28T21:04:07Z",
+      "side": 1,
+      "message": "Fixed by removing the texts.\nChecked the test result on Sion (Chromebox) as well as on Bob.",
+      "parentUuid": "e60b3497_94981e56",
+      "range": {
+        "startLine": 38,
+        "startChar": 20,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c379231_318a50ea",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3b4f03d6_4b039d2d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-28T21:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c379231_318a50ea",
+      "range": {
+        "startLine": 947,
+        "startChar": 0,
+        "endLine": 947,
+        "endChar": 42
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eca2ea3b_68ef7851",
         "filename": "board/cr50/power_button.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc13d90c_e6ab73f0",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-28T21:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca2ea3b_68ef7851",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "7b2a2651_6db407e4",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-28T21:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6924d903_4994634f",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2034ba8_e3a3ebff",
         "filename": "chip/g/rbox.h",
         "patchSetId": 2
@@ -138,6 +234,30 @@
       "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec97bf9_ca7fbf8a",
+        "filename": "chip/g/rbox.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-28T21:04:07Z",
+      "side": 1,
+      "message": "They were deleted in Patch 3.",
+      "parentUuid": "b2034ba8_e3a3ebff",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "dff8a93a5d55078682287e0e07b91b4b2161bdad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

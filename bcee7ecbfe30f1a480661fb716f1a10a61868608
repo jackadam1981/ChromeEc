@@ -46,6 +46,30 @@
       "revId": "bcee7ecbfe30f1a480661fb716f1a10a61868608",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f958240_9697ec3a",
+        "filename": "board/cr50/power_button_cr50.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-28T21:04:07Z",
+      "side": 1,
+      "message": "Will move this to board/cr50/board.h, because \"include/power_button.h\" pairs to common/power_button.c.",
+      "parentUuid": "2df74c85_7f98bfae",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 50
+      },
+      "revId": "bcee7ecbfe30f1a480661fb716f1a10a61868608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
