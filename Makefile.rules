@@ -160,10 +160,16 @@ buildall: build_boards
 	$(MAKE) runtests
 	@touch .tests-passed
 	@echo "$@ completed successfully!"
-	@echo "Tightest boards' RW images, bytes left:"
-	@grep . build/*/RW/space_left.txt |\
-	 sed 's,build/\([^/]*\)/RW/space_left.txt:\(.*\)$$,\2 \1,' | \
-	 sort -n |head -3 | while read size board; do \
+	@echo "Tightest boards' RW flash images, bytes left:"
+	@grep . build/*/RW/space_left_flash.txt | \
+	 sed 's,build/\([^/]*\)/RW/space_left_flash.txt:\(.*\)$$,\2 \1,' | \
+	 sort -n | head -3 | while read size board; do \
+		printf "%-10s: %6d\n" $$board $$size; \
+	 done
+	@echo "Tightest boards' RW RAM images, bytes left:"
+	@grep . build/*/RW/space_left_ram.txt | \
+	 sed 's,build/\([^/]*\)/RW/space_left_ram.txt:\(.*\)$$,\2 \1,' | \
+	 sort -n | head -3 | while read size board; do \
 		printf "%-10s: %6d\n" $$board $$size; \
 	 done
 
@@ -306,10 +312,12 @@ else
 cmd_size=$(Q)awk '\
   /__image_size =/ {image_size = strtonum($$1)} \
   /^FLASH/ {flash_size = strtonum($$3)} \
+  /__ram_left =/ {ram_left = strtonum($$1)} \
   END {room_left = flash_size - image_size; \
-       print room_left > "$(out)/RW/space_left.txt"; \
-       printf ("  *** %s bytes still available in flash on $(BOARD) ****\n", \
-	       room_left)}' $(out)/RW/$(PROJECT).RW.map
+       print room_left > "$(out)/RW/space_left_flash.txt"; \
+       print ram_left > "$(out)/RW/space_left_ram.txt"; \
+       printf ("  *** %s bytes in flash and %s bytes in RAM still available on $(BOARD) ****\n", \
+	       room_left, ram_left)}' $(out)/RW/$(PROJECT).RW.map
 endif
 
 build/host/%.info: run-%
