@@ -136,6 +136,10 @@
 #undef CONFIG_ROLLBACK_UPDATE
 #endif
 
+#define CONFIG_AES
+#define CONFIG_AES_GCM
+#define CONFIG_HKDF
+
 #define CONFIG_RNG
 
 #define CONFIG_CMD_FLASH

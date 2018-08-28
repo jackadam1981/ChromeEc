@@ -165,6 +165,9 @@
 /* Support AES-GCM */
 #undef CONFIG_AES_GCM
 
+/* Support HKDF key derivation */
+#undef CONFIG_HKDF
+
 /*
  * Some ALS modules may be connected to the EC. We need the command, and
  * specific drivers for each module.
