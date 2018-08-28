@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "23c93eac_f86c08f1",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T14:42:37Z",
+      "side": 1,
+      "message": "power button release interrupts should be enabled only when needed (i.e. when the reset is POR and the power button is pressed).",
+      "revId": "206ac2b59de8be83a98018f3be1d05d5faadc044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d925eff3_b6676c3f",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T14:42:37Z",
+      "side": 1,
+      "message": "this function should disable power button release interrupts.",
+      "revId": "206ac2b59de8be83a98018f3be1d05d5faadc044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cb5f768_168f778d",
         "filename": "chip/g/rbox.c",
         "patchSetId": 1
@@ -19,6 +53,47 @@
         "endLine": 17,
         "endChar": 34
       },
+      "revId": "206ac2b59de8be83a98018f3be1d05d5faadc044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6e5946_50e26b08",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T14:42:37Z",
+      "side": 1,
+      "message": "what if someone entered \u0027ecrst on\u0027 while power button was held pressed?",
+      "parentUuid": "6cb5f768_168f778d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "206ac2b59de8be83a98018f3be1d05d5faadc044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e4d7f0_b388d2f5",
+        "filename": "chip/g/rbox.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T14:42:37Z",
+      "side": 1,
+      "message": "instead of keeping the state, this function should just disable button release interrupt.",
       "revId": "206ac2b59de8be83a98018f3be1d05d5faadc044",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
