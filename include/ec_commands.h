@@ -5033,6 +5033,12 @@ struct __ec_align4 ec_response_fp_info {
 #define FP_FRAME_TEMPLATE_INDEX(offset) ((offset) >> FP_FRAME_INDEX_SHIFT)
 #define FP_FRAME_OFFSET_MASK       0x0FFFFFFF
 
+/* Constants for encryption parameters */
+#define FP_CONTEXT_NONCE_WORDS 12
+#define FP_CONTEXT_USERID_WORDS (32 / sizeof(uint32_t))
+#define FP_CONTEXT_TAG_WORDS 16
+#define FP_CONTEXT_SALT_WORDS 8
+
 struct __ec_align4 ec_params_fp_frame {
 	/*
 	 * The offset contains the template index or FP_FRAME_INDEX_RAW_IMAGE
@@ -5041,6 +5047,13 @@ struct __ec_align4 ec_params_fp_frame {
 	 */
 	uint32_t offset;
 	uint32_t size;
+};
+
+struct __ec_align4 ec_response_fp_frame {
+	uint8_t nonce[FP_CONTEXT_NONCE_WORDS];
+	uint8_t salt[FP_CONTEXT_SALT_WORDS];
+	uint8_t tag[FP_CONTEXT_TAG_WORDS];
+	uint8_t data[];
 };
 
 /* Load a template into the MCU */
@@ -5052,23 +5065,17 @@ struct __ec_align4 ec_params_fp_frame {
 struct __ec_align4 ec_params_fp_template {
 	uint32_t offset;
 	uint32_t size;
+	uint8_t nonce[FP_CONTEXT_NONCE_WORDS];
+	uint8_t salt[FP_CONTEXT_SALT_WORDS];
+	uint8_t tag[FP_CONTEXT_TAG_WORDS];
 	uint8_t data[];
 };
 
 /* Clear the current fingerprint user context and set a new one */
 #define EC_CMD_FP_CONTEXT 0x0406
 
-#define FP_CONTEXT_USERID_WORDS (32 / sizeof(uint32_t))
-#define FP_CONTEXT_NONCE_WORDS (32 / sizeof(uint32_t))
-
 struct __ec_align4 ec_params_fp_context {
 	uint32_t userid[FP_CONTEXT_USERID_WORDS];
-	/* TODO(b/73337313) mostly a placeholder, details to be implemented */
-	uint32_t nonce[FP_CONTEXT_NONCE_WORDS];
-};
-
-struct __ec_align4 ec_response_fp_context {
-	uint32_t nonce[FP_CONTEXT_NONCE_WORDS];
 };
 
 #define EC_CMD_FP_STATS 0x0407
