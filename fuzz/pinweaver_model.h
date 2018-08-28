@@ -25,7 +25,10 @@ extern "C" {
 // reach some parts of the PinWeaver code.
 class PinweaverModel {
  public:
+  static PinweaverModel* Get();
+
   PinweaverModel();
+  ~PinweaverModel();
 
   void SendBuffer(uint8_t* buffer);
   size_t SerializePinweaver(const fuzz::PinWeaver& pinweaver,
@@ -39,6 +42,7 @@ class PinweaverModel {
 
  private:
   static constexpr uint8_t kNullRootHash[PW_HASH_SIZE] = {};
+  static PinweaverModel* default_instance_;
 
   struct leaf_data {
     std::vector<uint8_t> wrapped_data_;
