@@ -22,6 +22,30 @@
       "revId": "da07aed47da9a2f2c0a2d07554a5d3b2f4e919b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a65e74_76bff71d",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-28T06:52:11Z",
+      "side": 1,
+      "message": "d\u0027oh sorry yes, fixed",
+      "parentUuid": "02c8d96f_243ea91f",
+      "range": {
+        "startLine": 127,
+        "startChar": 39,
+        "endLine": 127,
+        "endChar": 45
+      },
+      "revId": "da07aed47da9a2f2c0a2d07554a5d3b2f4e919b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
