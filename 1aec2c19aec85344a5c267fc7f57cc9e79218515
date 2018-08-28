@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a2184fa9_a8acf779",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-28T13:04:07Z",
+      "side": 1,
+      "message": "\u003e libprotobuf-mutator depends on protobuf which depends on the c++ standard library which depends on cstdlib as implmented in clang. It is possible to write a fuzzing target without these, but it costs the time required to right a good model with a mutator.\n\nAck, makes sense. You could technically separate the protobuf handling from the actual fuzzing and linking the former against the cstdlib part, but the latter only against EC. That\u0027d be pretty awkward though, and you\u0027d need custom structs to pass data. So while I\u0027m still not too excited about the stdlib hiding approach (as you have certainly realized by now), I don\u0027t have a better suggestion at this point so I\u0027ll shut up now :)\n\n\u003e Another example is openssl which I believe also depends on cstdlib, though I could probably remove this dependency since we don\u0027t really need to do the encryption for real in the fuzzer.\n\nI guess you could technically keep the dcrypto functions undefined in the ec part, and then link them in with the stdlib-dependent part. Anyhow, I\u0027m already convinced that what you have is the best practical trade-off, so not relevant :)",
+      "parentUuid": "7249d203_77564538",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4025ffaa_da2d2abf",
         "filename": "include/common.h",
         "patchSetId": 12
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "You are probably building the minimal fuzzer which doesn\u0027t have conflicts. You need to be testing with go/crosr/1184107.",
       "parentUuid": "4025ffaa_da2d2abf",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 67
+      },
+      "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6cbab7f_16d09431",
+        "filename": "include/common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-28T13:04:07Z",
+      "side": 1,
+      "message": "Ah, I had tried that but got various build errors regarding libprotobuf-mutator, so wasn\u0027t sure whether that CL is supposed to build at all.\n\nHere\u0027s the error FWIW (it\u0027s possible I\u0027m doing something stupid, I\u0027m not too familiar with platform/ec):\n\n(cr) ((e43b469f3...)) mnissler@toroa ~/trunk/src/platform/ec $ (BOARD\u003dcr50; make -j buildfuzztests)                                 \n  BUILD   host-cr50_fuzz                                                                                                            \n  BUILD   host-host_command_fuzz                                                                                                    \nmake[1]: \u0027build/host/host_command_fuzz/host_command_fuzz.exe\u0027 is up to date.                                                        \nmake obj\u003d/mnt/host/source/src/platform/ec/build/host/cr50_fuzz/cryptoc SUPPORT_UNALIGNED\u003d1 \\                                        \n        CONFIG_UPTO_SHA512\u003dy -C /mnt/host/source/src/third_party/cryptoc\nmake[2]: \u0027/mnt/host/source/src/platform/ec/build/host/cr50_fuzz/cryptoc/libcryptoc.a\u0027 is up to date.                                \n  CXX     RW/fuzz/cr50_fuzz.o                                                                                                       \nfuzz/cr50_fuzz.cc:14:10: fatal error: \u0027src/libfuzzer/libfuzzer_macro.h\u0027 file not found                                              \n#include \u003csrc/libfuzzer/libfuzzer_macro.h\u003e\n         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n1 error generated.                                                                                                                  \nmake[1]: *** [Makefile.rules:444: build/host/cr50_fuzz/RW/fuzz/cr50_fuzz.o] Error 1                                                 \nmake: *** [Makefile.rules:336: host-cr50_fuzz] Error 2",
+      "parentUuid": "7353536e_8fa6d638",
       "range": {
         "startLine": 225,
         "startChar": 29,
