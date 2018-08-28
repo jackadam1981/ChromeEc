@@ -22,6 +22,30 @@
       "revId": "2c9153beaf5db1f386b5d7bab7ff125e38eb61e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c6334e_c3ba4398",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-08-28T21:40:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29ff4086_0b8a0273",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "2c9153beaf5db1f386b5d7bab7ff125e38eb61e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
