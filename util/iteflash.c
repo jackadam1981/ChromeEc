@@ -52,7 +52,7 @@
 #define PAGE_SIZE		(1<<8)
 
 /* Embedded flash block write size for different programming modes. */
-#define FTDI_BLOCK_WRITE_SIZE	(1<<16)
+#define FTDI_BLOCK_WRITE_SIZE	(1<<8)
 
 /* Embedded flash number of pages in a sector erase */
 #define SECTOR_ERASE_PAGES	4
@@ -1793,6 +1793,8 @@ int main(int argc, char **argv)
 	/* Parse command line options */
 	if (parse_parameters(argc, argv, &chnd.conf) < 0)
 		return ret;
+
+	printf("block_write_size=%d\n", chnd.conf.i2c_if->block_write_size);
 
 	/* Open the communications channel. */
 	if (chnd.conf.i2c_if->interface_init &&
