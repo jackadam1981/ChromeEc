@@ -3728,7 +3728,7 @@ void pd_task(void *u)
 				 * us to be dual role.
 				 */
 				if (drp_state[port] == PD_DRP_TOGGLE_ON)
-					tcpm_set_drp_toggle(port, 1);
+					tcpm_enable_drp_toggle(port);
 				pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
 				timeout = -1;
 			}

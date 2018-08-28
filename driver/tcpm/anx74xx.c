@@ -153,7 +153,7 @@ static void anx74xx_set_power_mode(int port, int mode)
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
 	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
 
-static int anx74xx_tcpc_drp_toggle(int port, int enable)
+static int anx74xx_tcpc_drp_toggle(int port)
 {
 	/*
 	 * The ANX3429 always auto-toggles when in low power mode. Since this is
