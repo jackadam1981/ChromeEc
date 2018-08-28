@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7d40228_a7b1a89a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-08-28T16:57:29Z",
+      "side": 1,
+      "message": "If this is currently only working on NPCX, should we add a build-time assert?",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 3
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3cc5969_710c5ac6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-08-28T16:57:29Z",
+      "side": 1,
+      "message": "Use udelay() here to be more clear, since that what will end up getting called?",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 418,
+        "endChar": 8
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e47853_6fce2274",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-08-28T16:57:29Z",
+      "side": 1,
+      "message": "On sysjump we will initialize the timer, tick for a short while, and then (probably) fast-forward the timer in timer_init(). It might be ok since we haven\u0027t started task scheduling, but can you test sysjump a bit to make sure (also make sure there\u0027s no printf time warping)? It might be more future-proof to only do early hwtimer init (or only do early hw_clock_source_set_preload()) on reset boot flow.",
+      "range": {
+        "startLine": 324,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 28
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
