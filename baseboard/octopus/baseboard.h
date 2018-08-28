@@ -209,6 +209,7 @@
 #define CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE USB_CHARGE_MODE_CDP
 #define GPIO_USB1_ILIM_SEL GPIO_USB_A0_CHARGE_EN_L
 #define GPIO_USB2_ILIM_SEL GPIO_USB_A1_CHARGE_EN_L
+#define CONFIG_USB_PORT_POWER_SMART_INVERTED
 
 /*******************************************************************************
  * SoC / PCH Config
