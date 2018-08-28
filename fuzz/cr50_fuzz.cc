@@ -53,6 +53,20 @@ static uint8_t tpm_io_buffer[PW_MAX_MESSAGE_SIZE];
 static PinweaverModel pinweaver_model;
 
 extern "C" void run_test(void) {
+  REGISTER_PROTO_FIELD_MUTATOR(
+      fuzz::SubAction, pinweaver,
+      [](google::protobuf::Message* message) {
+        if (message->GetDescriptor() != fuzz::SubAction::descriptor())
+          return;
+        fuzz::SubAction* sub_action = dynamic_cast<fuzz::SubAction*>(message);
+        if (!sub_action->has_pinweaver())
+          return;
+        size_t num_bytes =
+            pinweaver_model.SerializePinweaver(sub_action->pinweaver(),
+                                               tpm_io_buffer);
+        sub_action->mutable_random_bytes()->set_value(tpm_io_buffer, num_bytes);
+      }
+  );
 }
 
 void apply_random_bytes(const fuzz::RandomBytes& random_bytes) {
