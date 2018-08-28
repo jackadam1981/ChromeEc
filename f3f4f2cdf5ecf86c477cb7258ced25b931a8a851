@@ -16,6 +16,24 @@
       "revId": "f3f4f2cdf5ecf86c477cb7258ced25b931a8a851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74c7e86_29b8825d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-28T22:20:38Z",
+      "side": 1,
+      "message": "Octopus boards should support both DFP and UFP. I there is still some AP firmware work to make UFP work correctly, but it is part of the plan.\n\nWhy do you say that we need to define CONFIG_USBC_SS_MUX_DFP_ONLY?",
+      "parentUuid": "d98f3665_17e6379a",
+      "revId": "f3f4f2cdf5ecf86c477cb7258ced25b931a8a851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
