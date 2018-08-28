@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a64335e3_514d0de7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T16:44:46Z",
+      "side": 1,
+      "message": "what does this mean, how exactly do you pass an empty auth code, please add a better description of the test",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "7f0389c38f13b227532ee8787b5226aba33516cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "214a7ef2_03317a1f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-28T16:44:46Z",
+      "side": 1,
+      "message": "no need to invoke strncmp, \n\nif (!*authcode) \n\nwill suffice.",
+      "revId": "7f0389c38f13b227532ee8787b5226aba33516cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
