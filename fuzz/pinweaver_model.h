@@ -24,7 +24,10 @@
 // reach some parts of the PinWeaver code.
 class PinweaverModel {
  public:
+  static PinweaverModel* Get();
+
   PinweaverModel();
+  ~PinweaverModel();
 
   void SendBuffer(fuzz::span<uint8_t> buffer);
 
@@ -44,6 +47,7 @@ class PinweaverModel {
 
  private:
   static constexpr uint8_t kNullRootHash[PW_HASH_SIZE] = {};
+  static PinweaverModel* default_instance_;
 
   struct LeafData {
     std::vector<uint8_t> wrapped_data;
