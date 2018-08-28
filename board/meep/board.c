@@ -12,6 +12,7 @@
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
+#include "console.h"
 #include "cros_board_info.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_lsm6dsm.h"
@@ -122,6 +123,8 @@ static struct kionix_accel_data g_kx022_data;
 static struct lsm6dsm_data lsm6dsm_g_data;
 static struct lsm6dsm_data lsm6dsm_a_data;
 
+static uint16_t sku_id;
+
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
@@ -196,7 +199,36 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/*
+ * meep is clamshell SKU (SKU ID is 0x01)
+ * and mimrock is convertible SKU (SKU ID is 0x17)
+ */
+static int board_is_convertible(void)
+{
+	return sku_id == 0x17 || sku_id == 0xff;
+}
+
+static void board_set_motion_sensor_count(void)
+{
+	if (board_is_convertible())
+		motion_sensor_count = ARRAY_SIZE(motion_sensors);
+	else
+		motion_sensor_count = 0;
+}
+
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_sku_id(&val) == EC_SUCCESS)
+		sku_id = val;
+	ccprints("SKU: 0x%04x", sku_id);
+
+	board_set_motion_sensor_count();
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
 /* Initialize board. */
 static void board_init(void)
@@ -232,6 +264,7 @@ void lid_angle_peripheral_enable(int enable)
 	if (tablet_get_mode())
 		enable = 0;
 
-	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+	if (board_is_convertible())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
