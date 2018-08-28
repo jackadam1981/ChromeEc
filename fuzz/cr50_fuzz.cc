@@ -50,6 +50,25 @@ extern "C" void get_storage_seed(void *buf, size_t *len) {
 
 // Needed for test targets to build.
 extern "C" void run_test(void) {
+  REGISTER_PROTO_FIELD_MUTATOR(
+      fuzz::SubAction, pinweaver,
+      [](google::protobuf::Message* message) {
+        std::vector<uint8_t> buffer(PW_MAX_MESSAGE_SIZE, 0);
+        auto* pinweaver_model = PinweaverModel::Get();
+        if (pinweaver_model == nullptr)
+          return;
+        if (message->GetDescriptor() != fuzz::SubAction::descriptor())
+          return;
+        fuzz::SubAction* sub_action = dynamic_cast<fuzz::SubAction*>(message);
+        if (!sub_action->has_pinweaver())
+          return;
+        size_t num_bytes =
+            pinweaver_model->SerializePinweaver(
+                sub_action->pinweaver(),
+                fuzz::span<uint8_t>(buffer.data(), buffer.size()));
+        sub_action->mutable_random_bytes()->set_value(buffer.data(), num_bytes);
+      }
+  );
 }
 
 DEFINE_CUSTOM_PROTO_MUTATOR_IMPL(false, fuzz::FuzzerInput)
