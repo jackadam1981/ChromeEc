@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da40ba19_66788ee1",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-28T19:04:15Z",
+      "side": 1,
+      "message": "What is the point of this macro? If this is supposed to be a struct initializer then please use c99 initializers so it\u0027s clear.",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
