@@ -52,7 +52,7 @@
 #define PAGE_SIZE		256
 
 /* Embedded flash block write size for different programming modes. */
-#define FTDI_BLOCK_WRITE_SIZE	65536
+#define FTDI_BLOCK_WRITE_SIZE	(1<<16)
 
 /* Embedded flash number of pages in a sector erase */
 #define SECTOR_ERASE_PAGES	4
@@ -69,7 +69,6 @@
 #define SPI_CMD_EWSR		0x50 /* Enable Write Status Register */
 #define SPI_CMD_WRSR		0x01 /* Write Status Register */
 
-
 /* Size for FTDI outgoing buffer */
 #define FTDI_CMD_BUF_SIZE (1<<12)
 
@@ -79,6 +78,9 @@
 #define RSTS_VFSPIPG		0x20
 #define RSTS_HGRST		0x08
 #define RSTS_GRST		0x04
+
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
 
 /* store custom parameters */
 const char *input_filename;
@@ -1554,6 +1556,8 @@ int main(int argc, char **argv)
 
 	/* Parse command line options */
 	flags = parse_parameters(argc, argv);
+
+	fprintf(stderr, "block_write_size=%d\n", block_write_size());
 
 	/* Open the communications channel. */
 	memset(&chnd, 0, sizeof(chnd));
