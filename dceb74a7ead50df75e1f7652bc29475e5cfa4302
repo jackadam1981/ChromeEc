@@ -94,6 +94,30 @@
       "revId": "dceb74a7ead50df75e1f7652bc29475e5cfa4302",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2431b02c_121522e5",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T17:06:00Z",
+      "side": 1,
+      "message": "I like PatchSet5 better since it is not putting RX disable and the reset together.\n\nI still have slight reservation about making a new tcpm_cc_disconnected method since that method is really a callback instead of a method that performs a task.\n\nI really feel like we should use the hook notify paradigm here instead. It make it more clear (and you shouldn\u0027t need a new config option for it either)",
+      "parentUuid": "ee8ff5b4_045ff409",
+      "range": {
+        "startLine": 483,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 23
+      },
+      "revId": "dceb74a7ead50df75e1f7652bc29475e5cfa4302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
