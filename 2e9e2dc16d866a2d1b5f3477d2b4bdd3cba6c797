@@ -117,6 +117,30 @@
       "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a95e67_5598455c",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-29T01:21:06Z",
+      "side": 1,
+      "message": "ok sure, adding it now - that implies chip/g/board_id.h (soon to be board_space.h) will depend on virtual_nvmem.h in board/cr50/tpm2 - is that ok? should I be rearranging things somehow? thanks!",
+      "parentUuid": "225222de_e792e0c1",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
