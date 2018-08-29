@@ -70,6 +70,30 @@
       "revId": "c7ad3d57d3a10aeab4d2c0853456816c1899af19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91b4a0a8_70944b5f",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T15:30:54Z",
+      "side": 1,
+      "message": "I didn\u0027t see the comment update here. It must have gotten missed in a rebase or something.",
+      "parentUuid": "6bcc2260_d5af463c",
+      "range": {
+        "startLine": 1108,
+        "startChar": 51,
+        "endLine": 1108,
+        "endChar": 58
+      },
+      "revId": "c7ad3d57d3a10aeab4d2c0853456816c1899af19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
