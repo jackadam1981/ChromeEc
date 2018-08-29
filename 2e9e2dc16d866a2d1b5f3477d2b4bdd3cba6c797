@@ -141,6 +141,30 @@
       "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfd2da8_401e6f5c",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-29T01:39:01Z",
+      "side": 1,
+      "message": "I think the dependency on a .h file is not a big deal, no rearranging is needed.",
+      "parentUuid": "93a95e67_5598455c",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
