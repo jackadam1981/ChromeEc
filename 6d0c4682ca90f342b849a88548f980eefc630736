@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d25b69d6_eaadc9fd",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-29T16:59:32Z",
+      "side": 1,
+      "message": "It could be from a battery bank though. ;)",
+      "parentUuid": "3c2f60c4_9032cbaf",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "483f972d_8ebd01b5",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
