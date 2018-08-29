@@ -370,7 +370,8 @@ static void handle_device_access(int port)
 	lpm_debounce_deadlines[port].val = get_time().val + PD_LPM_DEBOUNCE_US;
 	if (pd[port].flags & PD_FLAGS_LPM_ENGAGED) {
 		CPRINTS("TCPC p%d Exited Low Power Mode via bus access", port);
-		pd[port].flags &= ~PD_FLAGS_LPM_ENGAGED;
+		pd[port].flags &= ~(PD_FLAGS_LPM_ENGAGED |
+				    PD_FLAGS_LPM_REQUESTED);
 	}
 }
 
