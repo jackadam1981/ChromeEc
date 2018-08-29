@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a0d0ae4_622e7e4d",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T14:22:25Z",
+      "side": 1,
+      "message": "I didn\u0027t know about those build rules, cool. I updated those rules to use these files instead",
+      "parentUuid": "f185a567_6f5fe42d",
+      "range": {
+        "startLine": 315,
+        "startChar": 18,
+        "endLine": 315,
+        "endChar": 26
+      },
+      "revId": "238c9b9b07c5d3f366e903518bac261a5af76b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c13c0aa0_69863f3b",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "238c9b9b07c5d3f366e903518bac261a5af76b92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5bac36_3744b1ce",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T14:22:25Z",
+      "side": 1,
+      "message": "Good call. I updated it everywhere",
+      "parentUuid": "c13c0aa0_69863f3b",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 358,
+        "endChar": 14
+      },
+      "revId": "238c9b9b07c5d3f366e903518bac261a5af76b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
