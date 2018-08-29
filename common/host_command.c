@@ -17,6 +17,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "wov_chip.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
@@ -976,7 +977,11 @@ static int codec_i2s_enable(struct host_cmd_handler_args *args)
 
 static int codec_i2s_set_config(struct host_cmd_handler_args *args)
 {
+	struct ec_param_codec_i2s *param =
+		(struct ec_param_codec_i2s *)args->params;
 	args->response_size = 0;
+
+	wov_set_i2s_config(CZ_PLAT_CLK, param->i2s_config);
 
 	return EC_RES_SUCCESS;
 }
