@@ -22,6 +22,30 @@
       "revId": "2a013fa9b6b02606fecab942074e0855c0759422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827f8b8b_57b2307e",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-08-29T18:21:42Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters much, but I\u0027ve moved it. I think we\u0027ll be in a lot of trouble if we\u0027re encountering CBI read errors.",
+      "parentUuid": "6499d595_e12816e4",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 50
+      },
+      "revId": "2a013fa9b6b02606fecab942074e0855c0759422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
