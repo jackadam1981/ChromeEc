@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6b06adb_bf6434f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2018-08-29T03:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a64335e3_514d0de7",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "7f0389c38f13b227532ee8787b5226aba33516cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "214a7ef2_03317a1f",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "7f0389c38f13b227532ee8787b5226aba33516cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "075325c7_e814add7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2018-08-29T03:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "214a7ef2_03317a1f",
+      "revId": "7f0389c38f13b227532ee8787b5226aba33516cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
