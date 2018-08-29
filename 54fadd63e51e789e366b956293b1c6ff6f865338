@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0de1b15a_dce508d9",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T17:37:17Z",
+      "side": 1,
+      "message": "You are both correct :)\n\nThe fully comment should be\n/* Called on AP S3/SOix -\u003e S0 transition */\n\n(same applies to the comment on line 296)",
+      "parentUuid": "b6e61ef3_a39860ca",
+      "range": {
+        "startLine": 288,
+        "startChar": 16,
+        "endLine": 288,
+        "endChar": 18
+      },
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2e34f18_5b6e1ad2",
         "filename": "board/phaser/board.c",
         "patchSetId": 6
