@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d6331167_2e4b8b5c",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T15:22:06Z",
+      "side": 1,
+      "message": "What was the result of looking into it?",
+      "parentUuid": "051b3852_4592e6da",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "f0be2bad43ad5e8d6619ced4ee0cad54182a64fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39c6bc41_650d9b30",
         "filename": "board/dragonegg/board.c",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I need to fix the comment (copied from Octopus), but actual ratio is something like 7.3.",
       "parentUuid": "39c6bc41_650d9b30",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "f0be2bad43ad5e8d6619ced4ee0cad54182a64fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d8473c_971bb584",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T15:22:06Z",
+      "side": 1,
+      "message": "Since this is an int, I am a little nervous about the parenthesis. The way it is written, won\u0027t it convert (7300 / 1000) -\u003e 7 then multiple the ASC_MAX_VOLT by 7.\n\nInstead you chould write\n.factor_mul \u003d (ADC_MAX_MVOLT * 73) / 10;\n\n(same comment for below too)",
+      "parentUuid": "83c26167_e46f5c6f",
       "range": {
         "startLine": 39,
         "startChar": 18,
