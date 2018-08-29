@@ -1757,11 +1757,11 @@ static int command_wov(int argc, char **argv)
 			return EC_SUCCESS;
 		}
 		if (strcasecmp(argv[1], "cfgget") == 0) {
-			CPRINTS("mode:%d", wov_get_mode());
-			CPRINTS("sample rate:%d", wov_get_sample_rate());
-			CPRINTS("sample bits:%d", wov_get_sample_depth());
-			CPRINTS("mic source:%d", wov_get_mic_source());
-			CPRINTS("vad sensitivity :%d",
+			ccprintf("mode:%d\n", wov_get_mode());
+			ccprintf("sample rate:%d\n", wov_get_sample_rate());
+			ccprintf("sample bits:%d\n", wov_get_sample_depth());
+			ccprintf("mic source:%d\n", wov_get_mic_source());
+			ccprintf("vad sensitivity :%d\n",
 				wov_get_vad_sensitivity());
 			return EC_SUCCESS;
 		}
