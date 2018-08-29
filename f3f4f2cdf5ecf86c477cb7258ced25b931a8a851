@@ -34,6 +34,24 @@
       "revId": "f3f4f2cdf5ecf86c477cb7258ced25b931a8a851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc36bddd_184333a2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1267937
+      },
+      "writtenOn": "2018-08-29T01:46:38Z",
+      "side": 1,
+      "message": "If CONFIG_USBC_SS_MUX_DFP_ONLY isn\u0027t defined, I test this patch and found ps8751 P3.18[2] won\u0027t be cleared when pd is shutdown. As Octopus boards should support both DFP and UFP, maybe my thought is not right. This macro shouldn\u0027t be defined. Thanks~",
+      "parentUuid": "a74c7e86_29b8825d",
+      "revId": "f3f4f2cdf5ecf86c477cb7258ced25b931a8a851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
