@@ -141,6 +141,30 @@
       "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e1dc856_2b303688",
+        "filename": "include/common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-29T00:22:58Z",
+      "side": 1,
+      "message": "As we discussed try with the -r1 update to the libprotobuf-mutator ebuild.",
+      "parentUuid": "d6cbab7f_16d09431",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 67
+      },
+      "revId": "1aec2c19aec85344a5c267fc7f57cc9e79218515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
