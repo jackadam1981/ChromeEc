@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1800558b_369c536a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T20:11:11Z",
+      "side": 1,
+      "message": "What happens when tcpc_read fails?",
+      "range": {
+        "startLine": 939,
+        "startChar": 2,
+        "endLine": 939,
+        "endChar": 11
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0e2d775_0c72f64a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T20:11:11Z",
+      "side": 1,
+      "message": "The clearing of \u0027reg\u0027, here and above, should be in the parent at the top of the CL chain.",
+      "range": {
+        "startLine": 960,
+        "startChar": 1,
+        "endLine": 960,
+        "endChar": 9
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fceef94_a65cc66a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T20:11:11Z",
+      "side": 1,
+      "message": "First off, see if we have a circular buffer already in the EC.  This implementation is fairly non-idomatic.\n\nSee also https://www.snellman.net/blog/archive/2016-12-13-ring-buffers/",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d45e46_f6686274",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T20:11:11Z",
+      "side": 1,
+      "message": "I\u0027d like to see some consideration given to the thread- and interrupt-safety of these functions.  Is it safe to access a single tcpm port from multiple tasks right now?  Should it be?  Its OK to answer \u0027no\u0027 to both questions and document accordingly, but I would like to see it spelled out explicitly, especially now that one of the functions is being marked as interrupt-safe.\n\nSpeaking of which, the interrupt-safe call should be marked as such at the header file comment, rather than as an implementation comment.",
+      "range": {
+        "startLine": 429,
+        "startChar": 4,
+        "endLine": 429,
+        "endChar": 20
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac438686_97450401",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T20:11:11Z",
+      "side": 1,
+      "message": "instead of cache/get as the verbs, prefer read_enqueue here.",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4db17d6_dbc70143",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T20:11:11Z",
+      "side": 1,
+      "message": "Name to dequeue here.  In the header comment, make it clear that the buffer is mutated by the call (by popping off the entry).",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 368,
+        "endChar": 20
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
