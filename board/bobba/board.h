@@ -24,7 +24,8 @@
 
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
-#define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
+#define CONFIG_ACCELGYRO_BMI160	/* Base accel */
+
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
@@ -58,7 +59,7 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 
-#define CONFIG_ACCEL_LSM6DSM_INT_EVENT TASK_EVENT_CUSTOM(4)
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
