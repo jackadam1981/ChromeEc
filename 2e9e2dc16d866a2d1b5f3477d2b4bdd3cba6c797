@@ -189,6 +189,30 @@
       "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6383cc5_93b109b9",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-29T03:03:29Z",
+      "side": 1,
+      "message": "A separate CL to extract the common .h is fine by me, if that\u0027s what you were asking about.",
+      "parentUuid": "c8f4823d_c1c9d91e",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
