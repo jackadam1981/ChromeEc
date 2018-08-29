@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3c2f60c4_9032cbaf",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T16:56:36Z",
+      "side": 1,
+      "message": "Can we call this wall power (or put it in parenthesis)",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "483f972d_8ebd01b5",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -18,6 +41,29 @@
         "startChar": 10,
         "endLine": 54,
         "endChar": 40
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22da168_974bc2b2",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T16:56:36Z",
+      "side": 1,
+      "message": "are you saying that the complex resistance will have a larger real component (causing the voltage decrease to follow the current increase without too much delay)?\n\nIf my understanding is correct could you just phrase it that we expect the voltage droop from drawing more current to have a relative short delay?",
+      "range": {
+        "startLine": 58,
+        "startChar": 37,
+        "endLine": 58,
+        "endChar": 60
       },
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -117,6 +163,29 @@
     },
     {
       "key": {
+        "uuid": "1bac83c0_ff0d4d89",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T16:56:36Z",
+      "side": 1,
+      "message": "EC in RO that is locked",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75267d06_c24f19a6",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -179,6 +248,29 @@
         "startChar": 1,
         "endLine": 103,
         "endChar": 30
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dad04ca_d93a624d",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T16:56:36Z",
+      "side": 1,
+      "message": "but not limited to",
+      "range": {
+        "startLine": 115,
+        "startChar": 57,
+        "endLine": 116,
+        "endChar": 10
       },
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
