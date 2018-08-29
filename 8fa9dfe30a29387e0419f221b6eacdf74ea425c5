@@ -118,6 +118,30 @@
       "revId": "8fa9dfe30a29387e0419f221b6eacdf74ea425c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4acb5fd_412f3f06",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T15:35:58Z",
+      "side": 1,
+      "message": "I think it makes sense to put Diana\u0027s CL on top of Scott\u0027s CL, and just update the speeds to 400kHz at this point",
+      "parentUuid": "c7add887_872532f3",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 14
+      },
+      "revId": "8fa9dfe30a29387e0419f221b6eacdf74ea425c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
