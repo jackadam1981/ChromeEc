@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "9be5a37c_562b2903",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T20:14:50Z",
+      "side": 1,
+      "message": "Make that \u0027add\u0027 here, and \u0027remove\u0027 below.  I don\u0027t like those names, but we should be consistent through this codebase, and that\u0027s what include/queue.h uses.",
+      "parentUuid": "ac438686_97450401",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4db17d6_dbc70143",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 4
