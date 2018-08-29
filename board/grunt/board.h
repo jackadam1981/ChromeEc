@@ -22,6 +22,7 @@
 
 /* Audio */
 #define CONFIG_AUDIO_CODEC
+#define CONFIG_WAKE_ON_VOICE
 
 /* Power and battery LEDs */
 #define CONFIG_LED_COMMON
