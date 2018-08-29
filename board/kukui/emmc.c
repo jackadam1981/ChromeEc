@@ -28,6 +28,7 @@
  * case we interrupt the transfer, and the BootROM will try again.
  */
 
+#include "chipset.h"
 #include "clock.h"
 #include "console.h"
 #include "dma.h"
@@ -56,6 +57,13 @@
 #else
 #error "Please define EMMC_SPI_PORT in board.h."
 #endif
+
+/* Is eMMC emulation enabled? */
+static int emmc_enabled;
+
+/* Maximum amount of time to wait for AP to boot. */
+static timestamp_t boot_deadline;
+#define BOOT_TIMEOUT (5 * SECOND)
 
 /* 1024 bytes circular buffer is enough for ~0.6ms @ 13Mhz. */
 #define SPI_RX_BUF_BYTES 1024
@@ -211,29 +219,12 @@ static void emmc_init_spi(void)
 }
 DECLARE_HOOK(HOOK_INIT, emmc_init_spi, HOOK_PRIO_INIT_SPI);
 
-static int spi_enabled;
-
-static void emmc_disable_spi(void);
-
-static void emmc_check_status(void)
-{
-	/* Bootblock switch disabled, switch off emulation */
-	if (gpio_get_level(GPIO_BOOTBLOCK_EN_L) == 1) {
-		emmc_disable_spi();
-		return;
-	}
-
-	/*
-	 * TODO(b:110907438): If we reach here, it is likely that the AP failed
-	 * to boot, and we should try to recover from that.
-	 */
-	CPRINTS("emmc: AP failed to boot.");
-}
+static void emmc_check_status(void);
 DECLARE_DEFERRED(emmc_check_status);
 
 static void emmc_enable_spi(void)
 {
-	if (spi_enabled)
+	if (emmc_enabled)
 		return;
 
 	disable_sleep(SLEEP_MASK_EMMC);
@@ -244,17 +235,19 @@ static void emmc_enable_spi(void)
 	STM32_SPI_EMMC_REGS->cr1 &= ~STM32_SPI_CR1_SSI;
 	gpio_enable_interrupt(GPIO_EMMC_CMD);
 
-	spi_enabled = 1;
+	emmc_enabled = 1;
 	CPRINTS("emmc enabled");
 
-	/* Check if AP has booted 5 seconds later. */
-	hook_call_deferred(&emmc_check_status_data, 5*SECOND);
+	boot_deadline.val = get_time().val + BOOT_TIMEOUT;
+
+	/* Check if AP has booted periodically. */
+	hook_call_deferred(&emmc_check_status_data, 100 * MSEC);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, emmc_enable_spi, HOOK_PRIO_FIRST);
 
 static void emmc_disable_spi(void)
 {
-	if (!spi_enabled)
+	if (!emmc_enabled)
 		return;
 
 	/* Cancel check hook. */
@@ -273,10 +266,28 @@ static void emmc_disable_spi(void)
 
 	enable_sleep(SLEEP_MASK_EMMC);
 
-	spi_enabled = 0;
+	emmc_enabled = 0;
 	CPRINTS("emmc disabled");
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, emmc_disable_spi, HOOK_PRIO_FIRST);
+
+static void emmc_check_status(void)
+{
+	/* Bootblock switch disabled, switch off emulation */
+	if (gpio_get_level(GPIO_BOOTBLOCK_EN_L) == 1) {
+		emmc_disable_spi();
+		return;
+	}
+
+	if (timestamp_expired(boot_deadline, NULL)) {
+		CPRINTS("emmc: AP failed to boot.");
+		chipset_force_shutdown(CHIPSET_SHUTDOWN_BOARD_CUSTOM);
+		return;
+	}
+
+	/* Check if AP has booted again, next time. */
+	hook_call_deferred(&emmc_check_status_data, 100 * MSEC);
+}
 
 void emmc_task(void *u)
 {
