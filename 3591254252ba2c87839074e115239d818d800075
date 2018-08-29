@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d7f46b2_ff80c27c",
+        "filename": "include/usb_pd_tcpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-29T16:53:49Z",
+      "side": 1,
+      "message": "Style: #includes should be at the top of the header file, following the #include guard.\n\nTo be self-contained, this header should include inttypes.h and stdint.h (for uint16_t and uint32_t), and gpio.h (for gpio_signal).",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "3591254252ba2c87839074e115239d818d800075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
