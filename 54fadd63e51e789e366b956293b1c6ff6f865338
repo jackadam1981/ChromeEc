@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6e61ef3_a39860ca",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-29T02:46:44Z",
+      "side": 1,
+      "message": "HOOK_CHIPSET_RESUME functions will be called in S3-\u003eS0.\nHOOK_CHIPSET_SUSPEND functions will be called in S0-\u003eS3 and S0-\u003eS0ix.\nCHIPSET_RESET functions will be called in S0-\u003eS3.",
+      "parentUuid": "b602ae7f_b093a9db",
+      "range": {
+        "startLine": 288,
+        "startChar": 16,
+        "endLine": 288,
+        "endChar": 18
+      },
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2e34f18_5b6e1ad2",
         "filename": "board/phaser/board.c",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "274abb5f_e6056c31",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-29T02:46:44Z",
+      "side": 1,
+      "message": "It seems HOOK_CHIPSET_SUSPEND functions can come true as excepted, and it\u0027s no need a hook for CHIPSET_RESET.",
+      "parentUuid": "e2e34f18_5b6e1ad2",
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eccb4ea3_f9ee3af4",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-08-29T02:46:44Z",
+      "side": 1,
+      "message": "HOOK_CHIPSET_SUSPEND functions will be called in S0-\u003eS3 and S0-\u003eS0ix.It\u0027s OK.",
+      "parentUuid": "21a139fc_71bdbf54",
+      "range": {
+        "startLine": 296,
+        "startChar": 22,
+        "endLine": 296,
+        "endChar": 24
+      },
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
