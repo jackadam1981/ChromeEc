@@ -29,14 +29,14 @@ GPIO_INT(WARM_RESET_REQ,    PIN(A, 3),  GPIO_INT_RISING | GPIO_PULL_DOWN,
 GPIO_INT(AP_EC_WATCHDOG_L,  PIN(C, 2),  GPIO_INT_BOTH,
          ap_watchdog_interrupt)
 
-GPIO_INT_RW(ACCEL_INT_ODL,  PIN(A, 4), GPIO_INT_FALLING | GPIO_SEL_1P8V | GPIO_PULL_UP,
+GPIO_INT(ACCEL_INT_ODL,  PIN(A, 4), GPIO_INT_FALLING | GPIO_SEL_1P8V | GPIO_PULL_UP,
          bmi160_interrupt)
 GPIO_INT(CHARGER_INT_ODL,   PIN(C, 13), GPIO_INT_FALLING | GPIO_PULL_UP,
          rt946x_interrupt)
 #if BOARD_REV == 0
 GPIO_INT_RO(EMMC_CMD,       PIN(B, 15), GPIO_INT_FALLING,
          emmc_cmd_interrupt)
-GPIO_INT_RW(SYNC_INT,       PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
+GPIO_INT(SYNC_INT,       PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
 /*
  * rev0 has an interrupt conflict between SPI1_NSS and EMMC_CMD (PIN(x, 15)),
@@ -48,7 +48,7 @@ GPIO_INT_RO(EMMC_CMD,       PIN(A, 14), GPIO_INT_FALLING,
          emmc_cmd_interrupt)
 GPIO_INT(SPI1_NSS,          PIN(A, 15), GPIO_INT_BOTH,
          spi_event)
-GPIO_INT_RW(SYNC_INT,       PIN(A, 8),  GPIO_INT_RISING | GPIO_PULL_DOWN,
+GPIO_INT(SYNC_INT,       PIN(A, 8),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
 GPIO_INT(HALL_INT_L,        PIN(C, 5),  GPIO_INT_FALLING,
          hall_interrupt)

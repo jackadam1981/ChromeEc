@@ -236,13 +236,11 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
 	gpio_enable_interrupt(GPIO_AP_IN_SLEEP_L);
 
-#ifdef SECTION_IS_RW
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
 
 	/* Enable interrupt for the camera vsync. */
 	gpio_enable_interrupt(GPIO_SYNC_INT);
-#endif /* SECTION_IS_RW */
 
 	/* Enable interrupt from PMIC. */
 	gpio_enable_interrupt(GPIO_PMIC_EC_RESETB);
@@ -347,7 +345,6 @@ int board_get_version(void)
 
 /* Motion sensors */
 /* Mutexes */
-#ifdef SECTION_IS_RW
 static struct mutex g_base_mutex;
 
 static struct bmi160_drv_data_t g_bmi160_data;
@@ -404,6 +401,23 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
+	[LID_MAG] = {
+	 .name = "Lid Mag",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_MAG,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = BMI160_ADDR0,
+	 .default_range = 1 << 11, /* 16LSB / uT, fixed */
+	 /** .rot_standard_ref = &mag_standard_ref, */
+	 .rot_standard_ref = NULL,
+	 .min_frequency = BMM150_MAG_MIN_FREQ,
+	 .max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
+	},
 	[VSYNC] = {
 	 .name = "Camera vsync",
 	 .active_mask = SENSOR_ACTIVE_S0,
@@ -417,7 +431,6 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-#endif /* SECTION_IS_RW */
 
 int board_allow_i2c_passthru(int port)
 {

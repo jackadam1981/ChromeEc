@@ -447,7 +447,7 @@ static int set_data_rate(const struct motion_sensor_t *s,
 #ifdef CONFIG_MAG_BMI160_BMM150
 	if (s->type == MOTIONSENSE_TYPE_MAG) {
 		/* Reset the calibration */
-		init_mag_cal(moc);
+		/** init_mag_cal(moc); */
 		/*
 		 * We need at least MIN_BATCH_SIZE amd we must have collected
 		 * for at least MIN_BATCH_WINDOW_US.
@@ -1183,6 +1183,7 @@ static int init(const struct motion_sensor_t *s)
 		raw_write8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR, 0);
 		return EC_ERROR_ACCESS_DENIED;
 	}
+
 
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
