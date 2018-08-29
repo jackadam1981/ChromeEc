@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a07b21a9_59fea564",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-29T00:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7acac46_f7024eb4",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bc55a09_61db8101",
         "filename": "board/cr50/tpm2/virtual_nvmem.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-28T16:35:43Z",
       "side": 1,
       "message": "shouldn\u0027t this assert be next to where the structure is defined?",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 12
+      },
+      "revId": "2e9e2dc16d866a2d1b5f3477d2b4bdd3cba6c797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c853cd5d_2f210b5b",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-08-29T00:47:27Z",
+      "side": 1,
+      "message": "Yea agree it looks a little odd to have this here. \n\nI think I was trying to get at the fact that the readable size of the space is defined by this function, not directly by the size of the struct. Eg, you could imagine in future some function that combines two structs read from different places, or derives some new data from something persistent (I think we have one of these planned).\n\nThat said, I\u0027m happy to move it to be alongside the definition of board_id if you prefer.",
+      "parentUuid": "6bc55a09_61db8101",
       "range": {
         "startLine": 305,
         "startChar": 0,
