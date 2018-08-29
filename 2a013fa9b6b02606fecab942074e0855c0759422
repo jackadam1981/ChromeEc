@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6499d595_e12816e4",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-29T17:43:22Z",
+      "side": 1,
+      "message": "Moving this here makes a failed CBI read use 0 sensors instead of all sensors. I know it is an error scenario, but I slight lean toward trying to use all of the sensor. Thoughts?",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 50
+      },
+      "revId": "2a013fa9b6b02606fecab942074e0855c0759422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
