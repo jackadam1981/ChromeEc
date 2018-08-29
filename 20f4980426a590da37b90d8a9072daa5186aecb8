@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b2de48c_5bcfe6b7",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-08-29T06:55:08Z",
+      "side": 1,
+      "message": "Maybe add a comment for this:\n\n\n/* Retry s5s3 if not zero. */",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 22
+      },
+      "revId": "20f4980426a590da37b90d8a9072daa5186aecb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
