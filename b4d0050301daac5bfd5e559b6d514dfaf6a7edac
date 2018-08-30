@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f17f3c69_cc97c992",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T22:24:40Z",
+      "side": 1,
+      "message": "Summary of offline discussion:\n\nAfter reading N messages in a single call (for N \u003d\u003d 5 or so), disable the TCPC.  I think that board_set_tcpc_power_mode(port, standby) will suffice.",
+      "parentUuid": "8778ff76_5be8474c",
+      "range": {
+        "startLine": 939,
+        "startChar": 2,
+        "endLine": 939,
+        "endChar": 11
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0e2d775_0c72f64a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "There is a common circular buffer but it is a pain to get working in an array form (which we need for the multiple USB ports). Discussed offline.",
       "parentUuid": "6fceef94_a65cc66a",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c039ad3_5df0ec15",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T22:24:40Z",
+      "side": 1,
+      "message": "Much better, thanks!",
+      "parentUuid": "b4040b3e_0137a736",
       "range": {
         "startLine": 393,
         "startChar": 4,
@@ -258,6 +306,30 @@
       "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2856d1c9_72f49bc3",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T22:24:40Z",
+      "side": 1,
+      "message": "The problem with get/cache as the verbs is that they suggest that there is only one entry being saved and accessed.",
+      "parentUuid": "778c51d7_8fecf9f2",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

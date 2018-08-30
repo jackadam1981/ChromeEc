@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8004615c_10ddd2a3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2597,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T22:24:40Z",
+      "side": 1,
+      "message": "Why is message reception handling done this way, instead of while (tcpm_has_pending_message() \u0026\u0026 n_handled_messages++ \u003c MAX_PER_WAKE) or somesuch?",
+      "parentUuid": "98dd6b1e_492a9090",
+      "range": {
+        "startLine": 2596,
+        "startChar": 4,
+        "endLine": 2597,
+        "endChar": 32
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31b45960_5392e20b",
         "filename": "driver/tcpm/stub.c",
         "patchSetId": 2
