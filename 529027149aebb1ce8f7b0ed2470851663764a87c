@@ -68,6 +68,30 @@
       "revId": "529027149aebb1ce8f7b0ed2470851663764a87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237a893b_f55d3846",
+        "filename": "fuzz/cr50_fuzz.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T18:34:19Z",
+      "side": 1,
+      "message": "EC uses kernel C style.\n\nElsewhere in the EC code, we\u0027re not using a g_ prefix or _ suffix.\n\nI\u0027d suggest a less-generic name to indicate the intended use of the buffer.  For example, pw_io_buffer[]",
+      "parentUuid": "28b176d9_a5476a02",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "529027149aebb1ce8f7b0ed2470851663764a87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
