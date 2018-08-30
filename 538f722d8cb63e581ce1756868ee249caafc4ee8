@@ -22,6 +22,30 @@
       "revId": "538f722d8cb63e581ce1756868ee249caafc4ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca61748_29ff3378",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-08-30T23:30:45Z",
+      "side": 0,
+      "message": "yes, of course, we need to discard the dummy bytes.\n\nWith this patch we don\u0027t have to know for sure when the dummy bytes ended in the buffer though. What happens is, we get the first 4 bytes, when this is a \u0027write\u0027 transaction the master would not send any more, because the slave is sending the \u0027back off\u0027 pattern on the MISO line by default. Note that the 4 bytes of header included the number of following data bytes among other things. Instead of trying to figure out exactly how many dummy bytes has been received, the slave just tells the master \u0027go ahead, send the rest of the frame\u0027. Once the master finishes sending the rest of the frame it deasserts the CS line. At this point the slave knows how many data bytes were supposed to be there in the frame (the number was in the header). So the slave just takes this many bytes from the *end* of the frame.",
+      "parentUuid": "a63b6e72_f8bc14c6",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "538f722d8cb63e581ce1756868ee249caafc4ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
