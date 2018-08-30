@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58f03d4b_19843828",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "nit: C++ style guide type name convention is MaskedLabel",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a699a3cf_fc3459d7",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "nit: no space here",
+      "range": {
+        "startLine": 22,
+        "startChar": 17,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5536963b_d2893ad5",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "Add a class comment explaining what this does",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0cbfa19_fab19a2c",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "Unclear what this does. Comment?",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29749939_93e7953b",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "nit: C++ style guide naming convention for constants would be kEmptySubtree. Not sure what applies in this case (not aware of other C++ code in the ec project).",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa8b975_17b431e5",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "This comment would make more sense at the masked_label typedef?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 80
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b1bec8f_48c953aa",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "IIUC, this is essentially a re-implementation of the host-side components in memory. I think we have another copy of that in the cryptohome code base already. Not sure whether sharing makes sense (yet), but it probably does make sense to break this out into a separate class for clarity.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 60
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2454e169_358db502",
+        "filename": "fuzz/PinweaverModel.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "nit: #endif  // __FUZZ_PINWEAVERMODEL_H",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30116db_fa495e01",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "nit: camel_case file names",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 43
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de6ceb1_65f98ff5",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "This might warrant a comment?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3785bccd_64fb1f48",
+        "filename": "fuzz/cr50_fuzz.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "copyright header is missing",
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4924be8e_c319d897",
+        "filename": "fuzz/cr50_fuzz.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:12:51Z",
+      "side": 1,
+      "message": "This probably warrants a comment as well.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "5e3509b016241b5f1d0ec906ee40249df01c05bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
