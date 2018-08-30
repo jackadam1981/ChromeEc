@@ -46,6 +46,30 @@
       "revId": "8645426b1ec6909074aa227b7351369e3a085298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c8a92ae_45dd8448",
+        "filename": "include/common.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-08-30T20:04:55Z",
+      "side": 1,
+      "message": "Ugh.  In that case, I think we should either make the functions have compatible declarations, or rename them to avoid the collisions.\n\nWe\u0027re starting to pull more third-party libraries into the EC codebase, so the collisions will be a problem for more than just fuzzing.",
+      "parentUuid": "161b0063_fc99e7b3",
+      "range": {
+        "startLine": 227,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 40
+      },
+      "revId": "8645426b1ec6909074aa227b7351369e3a085298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
