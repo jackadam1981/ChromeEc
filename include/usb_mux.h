@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_MUX_H
 
 #include "ec_commands.h"
+#include "tcpm.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
 
@@ -46,28 +47,28 @@ struct usb_mux_driver {
 	 * Initialize USB mux. This is called every time the MUX is access after
 	 * being put in a fully disconnected state (low power mode).
 	 *
-	 * @param port_addr Port/address driver-defined parameter.
+	 * @param port usb port of mux
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*init)(int port_addr);
+	int (*init)(int port);
 
 	/**
 	 * Set USB mux state.
 	 *
-	 * @param port_addr Port/address driver-defined parameter.
+	 * @param port usb port of mux
 	 * @param mux_state State to set mux to.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*set)(int port_addr, mux_state_t mux_state);
+	int (*set)(int port, mux_state_t mux_state);
 
 	/**
 	 * Get current state of USB mux.
 	 *
-	 * @param port_addr Port / address driver-defined parameter.
+	 * @param port usb port of mux
 	 * @param mux_state Gets set to current state of mux.
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*get)(int port_addr, mux_state_t *mux_state);
+	int (*get)(int port, mux_state_t *mux_state);
 
 	/**
 	 * Optional method that is called after the mux fully disconnects.
@@ -76,11 +77,13 @@ struct usb_mux_driver {
 	 * where the TCPC is actively used since the PD state machine
 	 * will put the chip into lower power mode.
 	 *
-	 * @param mux USB mux to put into low power.
+	 * @param port usb port of mux
 	 * @return EC_SUCCESS on success, non-zero error code on failure.
 	 */
-	int (*enter_low_power_mode)(int port_addr);
+	int (*enter_low_power_mode)(int port);
 };
+
+#define USB_MUX_FLAG_NOT_TCPC (1 << 0)
 
 /* Describes a USB mux present in the system */
 struct usb_mux {
@@ -89,6 +92,8 @@ struct usb_mux {
 	 * (for i2c muxes) or a port number (for GPIO 'muxes').
 	 */
 	const int port_addr;
+
+	const uint32_t flags;
 
 	/* Mux driver */
 	const struct usb_mux_driver *driver;
@@ -121,6 +126,53 @@ void virtual_hpd_update(int port, int hpd_lvl, int hpd_irq);
 
 /* USB muxes present in system, ordered by PD port #, defined at board-level */
 extern struct usb_mux usb_muxes[];
+
+#ifdef CONFIG_USBC_SS_MUX
+
+static inline int mux_write(int port, int reg, int val)
+{
+	const struct usb_mux *const mux = &usb_muxes[port];
+
+	if (mux->flags & USB_MUX_FLAG_NOT_TCPC)
+		return i2c_write8(MUX_PORT(mux->port_addr),
+				  MUX_ADDR(mux->port_addr), reg, val);
+	else
+		return tcpc_write(port, reg, val);
+}
+
+static inline int mux_read(int port, int reg, int *val)
+{
+	const struct usb_mux *const mux = &usb_muxes[port];
+
+	if (mux->flags & USB_MUX_FLAG_NOT_TCPC)
+		return i2c_read8(MUX_PORT(mux->port_addr),
+				 MUX_ADDR(mux->port_addr), reg, val);
+	else
+		return tcpc_read(port, reg, val);
+}
+
+static inline int mux_write16(int port, int reg, int val)
+{
+	const struct usb_mux *const mux = &usb_muxes[port];
+
+	if (mux->flags & USB_MUX_FLAG_NOT_TCPC)
+		return i2c_write16(MUX_PORT(mux->port_addr),
+				  MUX_ADDR(mux->port_addr), reg, val);
+	else
+		return tcpc_write16(port, reg, val);
+}
+
+static inline int mux_read16(int port, int reg, int *val)
+{
+	const struct usb_mux *const mux = &usb_muxes[port];
+
+	if (mux->flags & USB_MUX_FLAG_NOT_TCPC)
+		return i2c_read16(MUX_PORT(mux->port_addr),
+				 MUX_ADDR(mux->port_addr), reg, val);
+	else
+		return tcpc_read16(port, reg, val);
+}
+#endif
 
 /**
  * Initialize USB mux to its default state.
