@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d6146c47_a501c5d4",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-08-30T18:52:54Z",
+      "side": 1,
+      "message": "Oh that is right. Consider commenting CONFIG_GPIO_INIT_POWER_ON_DELAY_MS in include/config.h \"Implemented only for npcx.\".",
+      "parentUuid": "e9a3d493_2fb11d86",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 3
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3cc5969_710c5ac6",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 4
