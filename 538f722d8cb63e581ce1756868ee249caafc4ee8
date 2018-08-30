@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a63b6e72_f8bc14c6",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-30T23:22:22Z",
+      "side": 0,
+      "message": "to make sure I don\u0027t miss something:\n\nwe still need to bypass the dummy bytes, right? the host could have sent several flow-control-read transactions waiting for LSB set, while we are deciding what to do here.\n\nnot sure about the usefulness of waiting for the byte boundary here. but with that stall_threshold: do we just always rely on the fact that bytecount + stall_threshold \u003d rxbuf_count, because the actual bytes are always the last ones and we only get the next interrupt when the write is complete? can we rely on it?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "538f722d8cb63e581ce1756868ee249caafc4ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
