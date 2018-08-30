@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8778ff76_5be8474c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T18:29:39Z",
+      "side": 1,
+      "message": "reg var isn\u0027t updated and the loop will try again (since ANX74XX_REG_IRQ_CC_MSG_INT was already set). Yes this is an infinite loop, but the interrupt line will never go low if we don\u0027t take care of this which also causes an infinite loop",
+      "parentUuid": "1800558b_369c536a",
+      "range": {
+        "startLine": 939,
+        "startChar": 2,
+        "endLine": 939,
+        "endChar": 11
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0e2d775_0c72f64a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782bc38c_d986409e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T18:29:39Z",
+      "side": 1,
+      "message": "It\u0027s in the CQ now. If it fails, I will add it there",
+      "parentUuid": "a0e2d775_0c72f64a",
+      "range": {
+        "startLine": 960,
+        "startChar": 1,
+        "endLine": 960,
+        "endChar": 9
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b4040b3e_0137a736",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T18:29:39Z",
+      "side": 1,
+      "message": "There is a common circular buffer but it is a pain to get working in an array form (which we need for the multiple USB ports). Discussed offline.",
+      "parentUuid": "6fceef94_a65cc66a",
+      "range": {
+        "startLine": 393,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47d45e46_f6686274",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9e48abb_fdd78c94",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T18:29:39Z",
+      "side": 1,
+      "message": "Added comments",
+      "parentUuid": "47d45e46_f6686274",
+      "range": {
+        "startLine": 429,
+        "startChar": 4,
+        "endLine": 429,
+        "endChar": 20
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "778c51d7_8fecf9f2",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T18:29:39Z",
+      "side": 1,
+      "message": "Since there isn\u0027t a corresponding dequeue method as a first class API, I am tempted to leave the name as it.\n\nThe caller (PD task) doesn\u0027t really know (or care) about the queue. I only need this function to be public because TCPC driver implementation need to be able to read a message in the the (hidden) queue.",
+      "parentUuid": "9be5a37c_562b2903",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4db17d6_dbc70143",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 4
@@ -161,6 +281,30 @@
       "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a11826d_7ccbe2bf",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T18:29:39Z",
+      "side": 1,
+      "message": "See comment above",
+      "parentUuid": "c4db17d6_dbc70143",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 368,
+        "endChar": 20
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
