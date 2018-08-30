@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "695a8433_e7dc7703",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "I\u0027m trying to give a very high-level overview that gets more specific later on. That\u0027s why I go into the AC-isn\u0027t-literally-AC discussion two paragraphs down, and stick with \"AC\" as the specific term.",
+      "parentUuid": "d25b69d6_eaadc9fd",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "483f972d_8ebd01b5",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc06e0d_0a49d988",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "So, that\u0027s what the very next sentence is trying to say.  Apparently it isn\u0027t super-clear, though.  Try this version on.",
+      "parentUuid": "483f972d_8ebd01b5",
+      "range": {
+        "startLine": 54,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ad9fd0f9_1f1a46a3",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22da168_974bc2b2",
+      "range": {
+        "startLine": 58,
+        "startChar": 37,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3afbb68f_c06ee9de",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -115,6 +187,30 @@
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99516ac8_288cd842",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done.  I also clarified the relationship between Type-C Current Source and USB Power Delivery.",
+      "parentUuid": "3afbb68f_c06ee9de",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "60e2efcd_8c850c38",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee829ac7_8e1c13d0",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "513a41a8_09e99739",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -161,6 +281,30 @@
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a303115a_62a2966d",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "513a41a8_09e99739",
+      "range": {
+        "startLine": 78,
+        "startChar": 55,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +354,54 @@
     },
     {
       "key": {
+        "uuid": "27093d00_77355447",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bac83c0_ff0d4d89",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3dbcda1_f9a2e2c5",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1039dc7f_716e0743",
+      "range": {
+        "startLine": 89,
+        "startChar": 18,
+        "endLine": 89,
+        "endChar": 48
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75267d06_c24f19a6",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -230,6 +422,30 @@
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177c25be_d92325ec",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Clarified to \u0027recent\u0027 instead of \u0027most\u0027.  I\u0027m not sure I want to get into the details of write protect on older systems, since this document intends to cover current and future NPI.  I\u0027m not aware of any plans to bring the screw back.",
+      "parentUuid": "75267d06_c24f19a6",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 17
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -256,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "6493f259_e252c7a1",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a128263_ccc2e9ed",
+      "range": {
+        "startLine": 97,
+        "startChar": 49,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e131592f_924f6202",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -276,6 +516,30 @@
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fce07de4_1d7b2434",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e131592f_924f6202",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -302,6 +566,30 @@
     },
     {
       "key": {
+        "uuid": "fa3a7b3f_06e0e51e",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dad04ca_d93a624d",
+      "range": {
+        "startLine": 115,
+        "startChar": 57,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82c8044e_2414cf38",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -322,6 +610,30 @@
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cad0dac1_cd2b8084",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Markdown auto-numbering.\n\nYou can see how the file is rendered using the `gitiles` link at the top left of the Gerrit UI when reviewing an individual markdown file.  I did need to adjust the indent to get the flow to work correctly.",
+      "parentUuid": "82c8044e_2414cf38",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 1
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -348,6 +660,30 @@
     },
     {
       "key": {
+        "uuid": "82cfae50_f86d3549",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Does a source like that actually exist?  If you shipped a 15W-max power supply, I would think that you would just build in a fixed USB Current Source advertisement and stop there.",
+      "parentUuid": "f7c3c57a_48e518ce",
+      "range": {
+        "startLine": 215,
+        "startChar": 49,
+        "endLine": 215,
+        "endChar": 54
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ffae07d_86c35d18",
         "filename": "docs/low_battery_startup.md",
         "patchSetId": 1
@@ -368,6 +704,30 @@
       "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5313a965_1a22326b",
+        "filename": "docs/low_battery_startup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T20:52:01Z",
+      "side": 1,
+      "message": "Yep, its a markdown thing.",
+      "parentUuid": "3ffae07d_86c35d18",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 1
+      },
+      "revId": "6d0c4682ca90f342b849a88548f980eefc630736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
