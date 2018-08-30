@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9a3d493_2fb11d86",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-08-30T18:18:06Z",
+      "side": 1,
+      "message": "But this file is only compiled for that, isn\u0027t it?\n\nchip/npcx subdirectory",
+      "parentUuid": "b7d40228_a7b1a89a",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 3
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3cc5969_710c5ac6",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "49c79c60_319996c7",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-08-30T18:18:06Z",
+      "side": 1,
+      "message": "Yes, was thinking about that.",
+      "parentUuid": "e3cc5969_710c5ac6",
+      "range": {
+        "startLine": 418,
+        "startChar": 2,
+        "endLine": 418,
+        "endChar": 8
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1e47853_6fce2274",
         "filename": "chip/npcx/hwtimer.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb1303c_77d47bee",
+        "filename": "chip/npcx/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-08-30T18:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1e47853_6fce2274",
+      "range": {
+        "startLine": 324,
+        "startChar": 1,
+        "endLine": 324,
+        "endChar": 28
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
