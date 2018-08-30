@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7626668c_2080eef7",
+        "filename": "fuzz/cr50_fuzz.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:02:27Z",
+      "side": 1,
+      "message": "nit: sort",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "529027149aebb1ce8f7b0ed2470851663764a87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48f0decd_124809f0",
+        "filename": "fuzz/cr50_fuzz.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:02:27Z",
+      "side": 1,
+      "message": "nit: no tabs",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "529027149aebb1ce8f7b0ed2470851663764a87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b176d9_a5476a02",
+        "filename": "fuzz/cr50_fuzz.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-08-30T14:02:27Z",
+      "side": 1,
+      "message": "nit: Naming convention for globals is g_buffer per style guide (not sure about ec style though, but trailing underscore looks odd), and you should put a more descriptive name, perhaps g_pinweaver_io_buffer",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "529027149aebb1ce8f7b0ed2470851663764a87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
