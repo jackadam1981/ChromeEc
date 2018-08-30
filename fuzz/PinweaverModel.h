@@ -42,6 +42,7 @@ class PinweaverModel {
 
  private:
   static constexpr uint8_t EMPTY_SUBTREE = 0xff;
+  static const uint8_t NULL_ROOT_HASH[PW_HASH_SIZE];
 
   struct leaf_data {
     std::vector<uint8_t> wrapped_data_;
@@ -49,6 +50,8 @@ class PinweaverModel {
   };
 
   struct merkle_tree_t merkle_tree_;
+  std::vector<std::pair<std::vector<uint8_t>, uint64_t>> root_history_;
+  size_t root_history_head_;
   std::unordered_map<uint64_t, std::unique_ptr<struct leaf_data>>
       leaf_metadata_;
   /* masked_label.first is the label path, this is shifted to the right by the
@@ -65,8 +68,15 @@ class PinweaverModel {
 
   void GetHmac(const std::string& fuzzer_hmac, uint64_t label,
                uint8_t hmac[PW_HASH_SIZE]);
+  size_t GetMetadata(uint64_t label,
+                     struct unimported_leaf_data_t* unimported_leaf_data);
+  size_t GetPathHashes(uint64_t label, uint8_t path_hashes[][PW_HASH_SIZE]);
   size_t GetPathHashes(const std::string& fuzzer_hashes, uint64_t label,
                        uint8_t path_hashes[][PW_HASH_SIZE]);
+
+  void LogRootHash(const uint8_t root_hash[PW_HASH_SIZE], uint64_t label);
+  const uint8_t* GetRootHash(size_t index);
+  uint64_t GetLabel(size_t index);
 
   void UpdatePathHashes(uint64_t label, uint8_t path_hash[PW_HASH_SIZE]);
 
@@ -76,12 +86,24 @@ class PinweaverModel {
                              uint8_t* buffer_);
   size_t SerializeRemoveLeaf(const fuzz::PinWeaver& pinweaver,
                              uint8_t* buffer_);
+  size_t SerializeTryAuth(const fuzz::PinWeaver& pinweaver,
+                          uint8_t* buffer_);
+  size_t SerializeResetAuth(const fuzz::PinWeaver& pinweaver,
+                            uint8_t* buffer_);
+  size_t SerializeGetLog(const fuzz::PinWeaver& pinweaver,
+                         uint8_t* buffer_);
+  size_t SerializeLogReplay(const fuzz::PinWeaver& pinweaver,
+                            uint8_t* buffer_);
 
   void HandleResetTree(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
   void HandleInsertLeaf(
       const fuzz::PinWeaver& pinweaver, uint8_t* buffer_,
       std::unique_ptr<struct leaf_data> metadata);
   void HandleRemoveLeaf(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
+  void HandleTryAuth(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
+  void HandleResetAuth(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
+  void HandleGetLog(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
+  void HandleLogReplay(const fuzz::PinWeaver& pinweaver, uint8_t* buffer_);
 };
 
 #endif
