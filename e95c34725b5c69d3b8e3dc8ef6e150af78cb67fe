@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5ca1256_a809cf58",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T22:21:19Z",
+      "side": 1,
+      "message": "Let\u0027s remove this since it is not really correct.\n\nI am working on a CL:1198043 that should fix this the right way. I didn\u0027t get a chance to finish it today though.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "e95c34725b5c69d3b8e3dc8ef6e150af78cb67fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
