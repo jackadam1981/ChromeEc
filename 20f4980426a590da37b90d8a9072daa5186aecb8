@@ -22,6 +22,30 @@
       "revId": "20f4980426a590da37b90d8a9072daa5186aecb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13220f7a_7a020248",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-08-30T05:08:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b2de48c_5bcfe6b7",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 22
+      },
+      "revId": "20f4980426a590da37b90d8a9072daa5186aecb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
