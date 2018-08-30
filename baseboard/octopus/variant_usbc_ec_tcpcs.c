@@ -34,7 +34,12 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 	[USB_PD_PORT_ITE_1] = {
-		/* TCPC is embedded within EC so no i2c config needed */
+		/*
+		 * TCPC is embedded within EC, but USBC MUX is in PS8751
+		 * so i2c is config needed.
+		 */
+		.i2c_host_port = I2C_PORT_USBC1,
+		.i2c_slave_addr = PS8751_I2C_ADDR1,
 		.drv = &it83xx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
@@ -72,7 +77,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.port_addr = MUX_PORT_AND_ADDR(
 			I2C_PORT_USBC1, PS8751_I2C_ADDR1),
 		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &board_it83xx_hpd_status,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
 };
 
