@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1ae8e37_be22d116",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-30T16:55:38Z",
+      "side": 1,
+      "message": "Do we have any EC that aren\u0027t 64K aligned right now?\n\nIf not, should we issue an error instead to encourage future projects to align at 64K ensuring that software sync is as fast as possible.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
