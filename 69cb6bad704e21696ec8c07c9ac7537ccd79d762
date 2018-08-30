@@ -22,6 +22,30 @@
       "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434a6d6a_6a98f071",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-30T18:29:55Z",
+      "side": 1,
+      "message": "With this change all NPCX boards should move to 32K or 64K block erase. I did not put in an error for 4K intentionally because the erase size is anyways driven based on the RO/RW size. If the ECs have a size which cannot be aligned or cannot be big enough, they don\u0027t have an option but to fall back to sector erase.",
+      "parentUuid": "e1ae8e37_be22d116",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
