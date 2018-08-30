@@ -26,12 +26,36 @@ message PWRemoveLeaf {
   bytes path_hashes = 3;
 }
 
+message PWTryAuth {
+  uint64 label = 1;
+  bytes low_entropy_secret = 2;
+  bytes unimported_leaf_data = 3;
+}
+
+message PWResetAuth {
+  uint64 label = 1;
+  bytes reset_secret = 2;
+  bytes unimported_leaf_data = 3;
+}
+
+message PWGetLog {
+  uint32 index_of_root = 1;
+}
+
+message PWLogReplay {
+  uint32 index_of_root = 1;
+}
+
 message PinWeaver {
   uint32 version = 1;
   oneof request {
     PWResetTree reset_tree = 2;
     PWInsertLeaf insert_leaf = 3;
     PWRemoveLeaf remove_leaf = 4;
+    PWTryAuth try_auth = 5;
+    PWResetAuth reset_auth = 6;
+    PWGetLog get_log = 7;
+    PWLogReplay log_replay = 8;
   }
 }
 

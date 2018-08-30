@@ -61,8 +61,9 @@ extern "C" void run_test(void) {
         if (!sub_action->has_pinweaver())
           return;
         size_t num_bytes =
-            pinweaver_.SerializePinweaver(sub_action->pinweaver(), buffer_);
-        sub_action->mutable_random_bytes()->set_value(buffer_, num_bytes);
+            pinweaver_.SerializePinweaver(sub_action->pinweaver(),
+                                          tpm_io_buffer);
+        sub_action->mutable_random_bytes()->set_value(tpm_io_buffer, num_bytes);
       }
   );
 }
