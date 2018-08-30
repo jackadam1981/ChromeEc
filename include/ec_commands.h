@@ -4224,6 +4224,7 @@ enum mkbp_cec_event {
 
 #define EC_CMD_CODEC_I2S 0x00BC
 #define EC_WOV_I2S_BCLK_RATE 3072000
+#define EC_WOV_I2S_SAMPLE_RATE 48000
 
 enum ec_codec_i2s_subcmd {
 	EC_CODEC_SET_SAMPLE_DEPTH = 0x0,
