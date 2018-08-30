@@ -970,11 +970,22 @@ static int codec_get_gain(struct host_cmd_handler_args *args)
 
 static int codec_i2s_enable(struct host_cmd_handler_args *args)
 {
+	struct ec_param_codec_i2s *param =
+		(struct ec_param_codec_i2s *)args->params;
+
 	args->response_size = 0;
 
-	wov_set_mode(WOV_MODE_OFF);
-	wov_set_i2s_config(EC_WOV_I2S_BCLK_RATE, WOV_DAI_FMT_I2S);
-	wov_set_mode(WOV_MODE_I2S);
+	if (param->i2s_enable) {
+		wov_init();
+		wov_set_mode(WOV_MODE_OFF);
+		wov_set_mic_source(WOV_SRC_STEREO);
+		wov_set_sample_rate(EC_WOV_I2S_SAMPLE_RATE);
+		wov_set_i2s_config(EC_WOV_I2S_BCLK_RATE, WOV_DAI_FMT_I2S);
+		wov_set_mode(WOV_MODE_I2S);
+	} else {
+		wov_set_mode(WOV_MODE_OFF);
+	}
+
 
 	return EC_RES_SUCCESS;
 }
