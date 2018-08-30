@@ -22,6 +22,30 @@
       "revId": "8645426b1ec6909074aa227b7351369e3a085298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161b0063_fc99e7b3",
+        "filename": "include/common.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-08-30T19:04:43Z",
+      "side": 1,
+      "message": "This is a special case, because under some circumstances I need to completely remove the argument. It isn\u0027t shown here because I currently do it by defining:\n#define __stdlib_compat(...)\nwhich erases the conflicting declarations in the source files that need to include ec headers but also depend on libraries that use cstdlib.",
+      "parentUuid": "fc37a8d2_46f80f8d",
+      "range": {
+        "startLine": 227,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 40
+      },
+      "revId": "8645426b1ec6909074aa227b7351369e3a085298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
