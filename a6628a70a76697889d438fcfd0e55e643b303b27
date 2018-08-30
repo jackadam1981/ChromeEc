@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "305a95fc_688615bc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T22:36:05Z",
+      "side": 1,
+      "message": "What\u0027s the advantage of running through the task event system over running a loop right here?",
+      "range": {
+        "startLine": 2382,
+        "startChar": 7,
+        "endLine": 2382,
+        "endChar": 28
+      },
+      "revId": "a6628a70a76697889d438fcfd0e55e643b303b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b06aa4f_14c5a1ba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2384,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-08-30T22:36:05Z",
+      "side": 1,
+      "message": "This condition is wrong.  PD_STATUS_TCPC_ALERT_[0-3] actually occupy bits 3-6 on a zero-index basis.  So the status flags being returned by tcpc_get_alert_status() are not the same as 1 \u003c\u003c port.\n\nSee also include/ec_commands.h.",
+      "range": {
+        "startLine": 2383,
+        "startChar": 4,
+        "endLine": 2384,
+        "endChar": 37
+      },
+      "revId": "a6628a70a76697889d438fcfd0e55e643b303b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
