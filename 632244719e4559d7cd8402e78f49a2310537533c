@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c259ad81_e3be0263",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2597,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-31T18:36:31Z",
+      "side": 1,
+      "message": "Each iteration of this pd_task loop is only designed to handle a single incoming message right now. This call just ensure that the loop will iterate immediately and not wait for a timeout\n\nI added protection in the alert handler though for multiple failed reads",
+      "parentUuid": "8004615c_10ddd2a3",
+      "range": {
+        "startLine": 2596,
+        "startChar": 4,
+        "endLine": 2597,
+        "endChar": 32
+      },
+      "revId": "632244719e4559d7cd8402e78f49a2310537533c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31b45960_5392e20b",
         "filename": "driver/tcpm/stub.c",
         "patchSetId": 2

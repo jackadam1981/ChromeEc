@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9096925d_19f50447",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-31T18:36:31Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "f17f3c69_cc97c992",
+      "range": {
+        "startLine": 939,
+        "startChar": 2,
+        "endLine": 939,
+        "endChar": 11
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0e2d775_0c72f64a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
@@ -330,6 +354,30 @@
       "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf6b87ab_f95932eb",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-31T18:36:31Z",
+      "side": 1,
+      "message": "renamed to tcpm_enqueue_message/tcpm_dequeue_message",
+      "parentUuid": "2856d1c9_72f49bc3",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "b4d0050301daac5bfd5e559b6d514dfaf6a7edac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
