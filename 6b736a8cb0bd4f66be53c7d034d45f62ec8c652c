@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13550f61_8763d72c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-31T20:16:20Z",
+      "side": 1,
+      "message": "Is this true though? What if you have a wake capable device plugged in and enumerated like a USB mouse or keyboard?",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b1d5e5_837640d7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-31T20:16:20Z",
+      "side": 1,
+      "message": "Why do you need a flag for the chipset state? Why not just call chipset_in_state(...)?",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d66fc3_94001324",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-08-31T20:16:20Z",
+      "side": 1,
+      "message": "Why is this broken out into a \"no_wakeup\" function? It seems you wake the task after calling this anyways?",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
