@@ -46,6 +46,30 @@
       "revId": "538f722d8cb63e581ce1756868ee249caafc4ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea43b92_70ff8a07",
+        "filename": "chip/g/sps_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-08-31T00:18:29Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "8ca61748_29ff3378",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 31
+      },
+      "revId": "538f722d8cb63e581ce1756868ee249caafc4ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
