@@ -70,6 +70,30 @@
       "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ebc5a5_6eb303bb",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1264388
+      },
+      "writtenOn": "2018-08-31T10:00:58Z",
+      "side": 1,
+      "message": "CONFIG_FLASH_ERASE_SIZE\tis also used in chip/npcx/spiflashfw/npcx_monitor.c.\n(https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/spiflashfw/npcx_monitor.c#199)\nChange the CONFIG_FLASH_ERASE_SIZE to 32/64 KB may cause problem here because line 206 still uses SECTOR_ERASE command.\nI suggest to fix the problem by the following patch:\ndiff --git a/chip/npcx/config_flash_layout.h b/chip/npcx/config_flash_layout.h\nindex 532f7debc..8161cf176 100644\n--- a/chip/npcx/config_flash_layout.h\n+++ b/chip/npcx/config_flash_layout.h\n@@ -100,6 +100,7 @@\n #define NPCX_ERASE_COMMAND\t\tCMD_SECTOR_ERASE\n #endif\n \n+#define CONFIG_FLASH_ERASE_SECTOR_SIZE 0x1000\n #define CONFIG_FLASH_BANK_SIZE\t\tCONFIG_FLASH_ERASE_SIZE\n #define CONFIG_FLASH_WRITE_SIZE\t\t0x1  /* minimum write size */\n #define CONFIG_FLASH_WRITE_IDEAL_SIZE\t256   /* one page size for write */\ndiff --git a/chip/npcx/spiflashfw/npcx_monitor.c b/chip/npcx/spiflashfw/npcx_monitor.c\nindex ed2d2bbd5..aa531be8f 100644\n--- a/chip/npcx/spiflashfw/npcx_monitor.c\n+++ b/chip/npcx/spiflashfw/npcx_monitor.c\n@@ -196,8 +196,8 @@ void sspi_flash_physical_erase(int offset, int size)\n \tsspi_flash_tristate(0);\n \n \t/* Alignment has been checked in upper layer */\n-\tfor (; size \u003e 0; size -\u003d CONFIG_FLASH_ERASE_SIZE,\n-\t\toffset +\u003d CONFIG_FLASH_ERASE_SIZE) {\n+\tfor (; size \u003e 0; size -\u003d CONFIG_FLASH_ERASE_SECTOR_SIZE,\n+\t\toffset +\u003d CONFIG_FLASH_ERASE_SECTOR_SIZE) {\n \t\t/* Enable write */\n \t\tsspi_flash_write_enable();\n \t\t/* Set erase address */",
+      "parentUuid": "4d94e091_00976a52",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
