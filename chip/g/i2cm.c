@@ -254,11 +254,11 @@ static int i2cm_poll_for_complete(int port)
 		/* Check if the sequence is complete */
 		if (!GREAD_FIELD_I(I2C, port, STATUS, INTB))
 			return EC_SUCCESS;
+
 		/* Not done yet, sleep */
 		usleep(I2CM_POLL_WAIT_US);
 		poll_count++;
 	};
-
 	return EC_ERROR_TIMEOUT;
 }
 
@@ -324,6 +324,7 @@ static int i2cm_execute_sequence(int port, int slave_addr, const uint8_t *out,
 {
 	int rv;
 	uint32_t inst;
+	uint32_t status;
 
 	/* Build sequence instruction */
 	inst = i2cm_build_sequence(port, slave_addr, out, out_size, in,
@@ -338,8 +339,19 @@ static int i2cm_execute_sequence(int port, int slave_addr, const uint8_t *out,
 		return rv;
 
 	/* Check status value for errors */
-	if (GREAD_I(I2C, port, STATUS) & I2CM_ERROR_MASK) {
-		/* If failed, then clear INST register */
+	status = GREAD_I(I2C, port, STATUS);
+	if (status & I2CM_ERROR_MASK) {
+		if (status & GFIELD_MASK(I2C, STATUS, CA_NACK)) {
+			/*
+			 * When getting a NACK the controller stops processing
+			 * instructions set in the INST register, and as such
+			 * does not generate a STOP cycle. Let's request a
+			 * STOP explicitly as the only instruction.
+			 */
+			GWRITE_I(I2C, port, INST, INST_STOP);
+			i2cm_poll_for_complete(port);
+		}
+		/* Clear INST register after processing failure(s). */
 		GWRITE_I(I2C, port, INST, 0);
 		return EC_ERROR_UNKNOWN;
 	}
@@ -481,5 +493,4 @@ void i2cm_init(void)
 
 	for (i = 0; i < i2c_ports_used; i++, p++)
 		i2cm_init_port(p);
-
 }
