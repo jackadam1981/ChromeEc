@@ -94,6 +94,30 @@
       "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261e72e9_148a0520",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-31T16:39:00Z",
+      "side": 1,
+      "message": "Thanks for the pointer CH! I will update the npcx_monitor.c file. I am thinking of using a non CONFIG_ option i.e. something like NPCX_MONITOR_FLASH_ERASE_SIZE macro to make it more explicit why it is being used.",
+      "parentUuid": "51ebc5a5_6eb303bb",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
