@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2ceea71_ce5910fc",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-08-31T22:54:18Z",
+      "side": 1,
+      "message": "Not sure if it should be explicit but it also is assuming RO starts at offset 0 which is always aligned to any of these values.",
+      "revId": "aca41069955dbdd13a1d337689ed6d54da6c9f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
