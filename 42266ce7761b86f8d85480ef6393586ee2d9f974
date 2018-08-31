@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eabfb0de_c35db1fb",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-08-31T20:47:23Z",
+      "side": 1,
+      "message": "Do we need CONFIG_LTO right now?\n\nAdding LTO will prevent us from looking at the lst file with C comments.\nEx: if someone has a PC and ec version it happened on, one can compile the EC, get the lst file and see exactly what line of C code it happened on.\n\nI suggest we only enable this when we\u0027re about to run out of space. I thought we had plenty left, no?",
+      "revId": "42266ce7761b86f8d85480ef6393586ee2d9f974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
