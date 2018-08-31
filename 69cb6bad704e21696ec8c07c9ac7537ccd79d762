@@ -46,6 +46,30 @@
       "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d94e091_00976a52",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1185704
+      },
+      "writtenOn": "2018-08-31T01:48:19Z",
+      "side": 1,
+      "message": "Npcx ec reserves the flexibility which can adjust the size of data and code ram freely. Please refer https://chromium.googlesource.com/chromiumos/platform/ec/+/factory-gru-9017.B/board/kevin/board.h#37. In this case, we move 8k ram from data to code ram since firmware size is not enough. I also think putting in an error for 4K alignment might be unnecessary.",
+      "parentUuid": "434a6d6a_6a98f071",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "69cb6bad704e21696ec8c07c9ac7537ccd79d762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
