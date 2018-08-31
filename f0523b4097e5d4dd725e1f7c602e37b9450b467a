@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07323a8a_5459ea07",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-08-31T17:40:45Z",
+      "side": 1,
+      "message": "Can you add ! \u0026\u0026 p-\u003eflag \u0026 CBI_SET_NO_SYNC?",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 32
+      },
+      "revId": "f0523b4097e5d4dd725e1f7c602e37b9450b467a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
