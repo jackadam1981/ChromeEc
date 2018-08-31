@@ -36,6 +36,8 @@
 #define CONFIG_LED_COMMON
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
+#define CONFIG_FPU
+#define CONFIG_LTO
 #define CONFIG_PWM
 #define CONFIG_PWM_DISPLIGHT
 
