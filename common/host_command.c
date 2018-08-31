@@ -949,6 +949,8 @@ static int codec_set_gain(struct host_cmd_handler_args *args)
 	gain_left = param->gain.left;
 	gain_right = param->gain.right;
 
+	wov_set_gain(gain_left, gain_right);
+
 	return EC_RES_SUCCESS;
 }
 
@@ -981,6 +983,7 @@ static int codec_i2s_enable(struct host_cmd_handler_args *args)
 		wov_set_mic_source(WOV_SRC_STEREO);
 		wov_set_sample_rate(EC_WOV_I2S_SAMPLE_RATE);
 		wov_set_i2s_config(EC_WOV_I2S_BCLK_RATE, WOV_DAI_FMT_I2S);
+		wov_set_gain(gain_left, gain_right);
 		wov_set_mode(WOV_MODE_I2S);
 	} else {
 		wov_set_mode(WOV_MODE_OFF);
