@@ -132,6 +132,24 @@
     },
     {
       "key": {
+        "uuid": "1da221a9_5e875f1c",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-31T17:23:10Z",
+      "side": 1,
+      "message": "What if the device resets in S0ix?",
+      "parentUuid": "274abb5f_e6056c31",
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a139fc_71bdbf54",
         "filename": "board/phaser/board.c",
         "patchSetId": 6
