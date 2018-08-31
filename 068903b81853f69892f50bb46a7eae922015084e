@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d5d9379_7cd570e2",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-08-31T12:41:27Z",
+      "side": 1,
+      "message": "Please rename to GPIO_USB_PD_RST_C0",
+      "range": {
+        "startLine": 209,
+        "startChar": 16,
+        "endLine": 209,
+        "endChar": 36
+      },
+      "revId": "068903b81853f69892f50bb46a7eae922015084e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
