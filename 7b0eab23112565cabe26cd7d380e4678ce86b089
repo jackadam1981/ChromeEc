@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0a535643_1139094d",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-08-31T06:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef7bf0f_ce593d36",
+      "revId": "7b0eab23112565cabe26cd7d380e4678ce86b089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e8afe53_7c565472",
         "filename": "chip/stm32/usb_hid_touchpad.c",
         "patchSetId": 5
