@@ -28,24 +28,21 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
 #define BATFETS_MASK		(0x3)
 #define BATFETS_DISABLED	(0x2)
 
-#define CHARGING_VOLTAGE_MV_SAFE	8400
-#define CHARGING_CURRENT_MA_SAFE	1500
-
 /* TODO(b:111815315): Need to config/implement the battery related code */
 
 static const struct battery_info info = {
-	.voltage_max = 8700,
-	.voltage_normal = 7700,
-	.voltage_min = 6000,
+	.voltage_max = 13200,
+	.voltage_normal = 11550,
+	.voltage_min = 9000,
 	/* Pre-charge values. */
-	.precharge_current = 200, /* mA */
+	.precharge_current = 256, /* mA */
 
 	.start_charging_min_c = 0,
 	.start_charging_max_c = 45,
 	.charging_min_c = 0,
-	.charging_max_c = 50,
-	.discharging_min_c = -20,
-	.discharging_max_c = 70,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
+	.discharging_max_c = 60,
 };
 
 const struct battery_info *battery_get_info(void)
