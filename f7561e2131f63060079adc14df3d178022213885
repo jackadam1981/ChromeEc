@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86df1d5d_c082cb20",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-08-31T03:46:40Z",
+      "side": 1,
+      "message": "Remove this",
+      "revId": "f7561e2131f63060079adc14df3d178022213885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6fb84f_1c174a89",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-08-31T03:46:40Z",
+      "side": 1,
+      "message": "rename this one, maybe rammus_led_set_power_battery",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "f7561e2131f63060079adc14df3d178022213885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
