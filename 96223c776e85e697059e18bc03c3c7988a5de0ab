@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d41dd532_a691f76a",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-31T16:35:44Z",
+      "side": 1,
+      "message": "Update comment to indicate you are waiting for DSW_PWROK and RSMRST_ODL?",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "96223c776e85e697059e18bc03c3c7988a5de0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd6e197_f4ef40f5",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-08-31T16:35:44Z",
+      "side": 1,
+      "message": "Update print?",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "96223c776e85e697059e18bc03c3c7988a5de0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
