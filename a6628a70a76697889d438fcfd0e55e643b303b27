@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aafa1962_d7e65659",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2382,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-31T18:36:46Z",
+      "side": 1,
+      "message": "I updated it to a while loop (which would have catch the below mistake to begin with)",
+      "parentUuid": "305a95fc_688615bc",
+      "range": {
+        "startLine": 2382,
+        "startChar": 7,
+        "endLine": 2382,
+        "endChar": 28
+      },
+      "revId": "a6628a70a76697889d438fcfd0e55e643b303b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b06aa4f_14c5a1ba",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "a6628a70a76697889d438fcfd0e55e643b303b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf78388_ba3bde5c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2384,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-08-31T18:36:46Z",
+      "side": 1,
+      "message": "Thanks you! Fixed.",
+      "parentUuid": "4b06aa4f_14c5a1ba",
+      "range": {
+        "startLine": 2383,
+        "startChar": 4,
+        "endLine": 2384,
+        "endChar": 37
+      },
+      "revId": "a6628a70a76697889d438fcfd0e55e643b303b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
