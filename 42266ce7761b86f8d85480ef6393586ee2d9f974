@@ -16,6 +16,24 @@
       "revId": "42266ce7761b86f8d85480ef6393586ee2d9f974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0beda4fb_962e68a6",
+        "filename": "board/cheza/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-01T02:10:51Z",
+      "side": 1,
+      "message": "First time I hear of lst file ,-) Is there a way to fix CONFIG_LTO so that we can still keep this feature?\n\nGenerally, a smaller EC is a good idea (i.e., makes software sync a little faster, which, if it is in the critical path of boot time, will help boot time).",
+      "parentUuid": "eabfb0de_c35db1fb",
+      "revId": "42266ce7761b86f8d85480ef6393586ee2d9f974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
