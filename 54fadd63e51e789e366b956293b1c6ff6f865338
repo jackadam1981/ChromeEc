@@ -150,6 +150,24 @@
     },
     {
       "key": {
+        "uuid": "71567537_8c0f3dc3",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-09-02T06:53:55Z",
+      "side": 1,
+      "message": "I have tried a few tests as below:\n1) In S0 state and lid is open, send command \u0027powerd_dbus_suspend\u0027 in VT2, board_chipset_suspend() hook will be called then device will be S0ix state, whereafter I send command \u0027reboot\u0027 in EC console or pressing \u0027recovery key + power button\u0027 to reset device, at last board_chipset_resume() hook will be called and device will be S0 state.\n2) In S0 state and logged with user, close lid and device will be S0ix state, whereafter I send command \u0027reboot\u0027 in EC console to reset device, at last board_chipset_suspend() hook will be called and device will be G5 state.",
+      "parentUuid": "1da221a9_5e875f1c",
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a139fc_71bdbf54",
         "filename": "board/phaser/board.c",
         "patchSetId": 6
