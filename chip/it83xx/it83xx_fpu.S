@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "config_chip.h"
+
 /*
  * DLMB register = 0x80189:
  * Disable all interrupts and switching CPU's
@@ -51,6 +53,13 @@ __subsf3:
 	.global	__mulsf3
 	.type	__mulsf3, @function
 __mulsf3:
+#ifdef IT83XX_FPU_MUL_BY_DIV
+        /* save r6-r9 and lp */
+	smw.adm	$r6, [$sp], $r9, #0x2
+	bal __mulsf3_div_div
+	/* restore r6-r9 and lp */
+	lmw.bim	$r6, [$sp], $r9, #0x2
+#else
 	sethi  $r2, 0x80        /* r2 = 0x80000 */
 	addi   $r3, $r2, 0x189  /* r3 = 0x80189 */
 	addi45 $r2, 0x9         /* r2 = 0x80009 */
@@ -60,6 +69,7 @@ __mulsf3:
 	mul33  $r0, $r1
 	mtsr   $r2, $dlmb       /* dlmb = 0x80009 */
 	dsb
+#endif
 	ret5   $lp
 	.size	__mulsf3, .-__mulsf3
 
@@ -79,3 +89,68 @@ __divsf3:
 	dsb
 	ret5   $lp
 	.size	__divsf3, .-__divsf3
+
+#ifdef IT83XX_FPU_MUL_BY_DIV
+#define SIGN	$r2
+#define EXPOA	$r3
+#define MANTA	$r4
+#define VALUA	$r5
+#define EXPOB	$r6
+#define MANTB	$r7
+#define VALUB	$r8
+#define SPROD	$r9
+
+	.text
+	.align	2
+	.global	__mulsf3_div_div
+	.type	__mulsf3_div_div, @function
+__mulsf3_div_div:
+	xor    SPROD, $r1, $r0  /* sign(A xor B) */
+	move   SIGN, #0x80000000
+	and    SPROD, SPROD, SIGN /* store sign bit */
+	slli   VALUA, $r0, 1    /* A<<1, (exponent and mantissa) */
+	slli   VALUB, $r1, 1    /* B<<1, (exponent and mantissa) */
+	srli   EXPOA, VALUA, 24 /* exponent(A) */
+	srli   EXPOB, VALUB, 24 /* exponent(B) */
+	slli   MANTA, VALUA, 7  /* A<<8, mantissa(A) with exponent's LSB */
+	slli   MANTB, VALUB, 7  /* A<<8, mantissa(B) with exponent's LSB */
+	beqz   VALUA, .LFzeroA  /* exponent(A) and mantissa (A) are zero */
+	beqc   EXPOA, 0xff, .LFinfnanA /* A is inf or NaN */
+	beqz   VALUB, .LFzeroB  /* exponent(B) and mantissa (B) are zero */
+	beqc   EXPOB, 0xff, .LFinfnanB /* B is inf or NaN */
+        /* A*B = A/(1/B) */
+	sethi  $r2, 0x80        /* r2 = 0x80000 */
+	addi   $r3, $r2, 0x189  /* r3 = 0x80189 */
+	addi45 $r2, 0x9         /* r2 = 0x80009 */
+	mtsr   $r3, $dlmb       /* dlmb = 0x80189 */
+	dsb
+	sethi  $r5, #0x3f800    /* r5 = 1.0f */
+	divsr  $r1,$r1,$r5,$r1  /* r1 = 1.0f / r1 */
+	divsr  $r0,$r0,$r0,$r1  /* r0 = r0 / r1 */
+	mtsr   $r2, $dlmb       /* dlmb = 0x80009 */
+	dsb
+.LFret:
+	ret5	$lp
+
+.LFzeroA:                       /* A is zero */
+	beqc EXPOB, 0xff, .LFnan/*zero * inf = zero * NaN = NaN */
+.LFzero:
+	move $r0, SPROD         /* return 1 or -1 */
+	b    .LFret
+.LFinfnanA:                     /* exponent(A) is 0xff */
+	bne  MANTA, SIGN, .LFnan/* A is NaN: NaN * B = NaN */
+	beqz VALUB, .LFnan      /* A is inf and B is zero: inf * zero = NaN */
+	bnec EXPOB, 0xff, .LFinf/* B is finite: inf * B = inf */
+.LFinfnanB:                     /* exponent(B) is 0xff */
+	bne  MANTB, SIGN, .LFnan/* B is NaN: A * NaN = NaN */
+.LFinf:
+	move $r0, #0x7f800000
+	or   $r0, $r0, SPROD    /* return inf or -inf */
+	b   .LFret
+.LFzeroB:                       /* B is zero and A is finit */
+	b   .LFzero	        /* B is zero */
+.LFnan:
+	move $r0, #0xffc00000   /* return NaN */
+	b    .LFret
+	.size	__mulsf3_div_div, .-__mulsf3_div_div
+#endif
