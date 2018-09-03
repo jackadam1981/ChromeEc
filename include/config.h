@@ -2093,6 +2093,9 @@
 /* Support common LED interface */
 #undef CONFIG_LED_COMMON
 
+/* Support common OEM LED function*/
+#undef CONFIG_LED_OEM
+
 /* Standard LED behavior according to spec given that we have a red-green
  * bicolor led for charging and one power led
  */
