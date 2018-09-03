@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d81b7296_97ce0bb0",
+        "filename": "common/usb_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-03T07:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "574cc6ef_79820f9a",
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430bf99_320d701c",
         "filename": "common/usb_update.c",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b53cfe_8912881a",
+        "filename": "common/usb_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-03T07:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e430bf99_320d701c",
+      "range": {
+        "startLine": 361,
+        "startChar": 42,
+        "endLine": 361,
+        "endChar": 44
+      },
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "54dc404e_30a31ee8",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-03T07:24:05Z",
+      "side": 1,
+      "message": "In fact, uart_console_read_buffer() guarantees that response is a NULL terminated string.  This is just a safe-guard.",
+      "parentUuid": "7d1623ce_ca392365",
+      "range": {
+        "startLine": 1032,
+        "startChar": 12,
+        "endLine": 1032,
+        "endChar": 29
+      },
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9c327b3_694a2c10",
         "filename": "extra/usb_updater/usb_updater2.c",
         "patchSetId": 7
@@ -79,6 +145,24 @@
       "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eec0c62_383c0470",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-03T07:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c327b3_694a2c10",
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
