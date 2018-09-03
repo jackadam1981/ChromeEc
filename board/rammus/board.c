@@ -62,7 +62,7 @@
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_PD_RST_C0_L))
+	    gpio_get_level(GPIO_USB_PD_RST_C0))
 		return;
 	else if ((signal == GPIO_USB_C1_PD_INT_ODL) &&
 		 !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
@@ -148,11 +148,12 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"i2c_0_0", NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"i2c_0_1", NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"i2c_1",   NPCX_I2C_PORT1,   100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
-	{"i2c_2",   NPCX_I2C_PORT2,   400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
-	{"i2c_3",   NPCX_I2C_PORT3,   400, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
+	{"tcpc0",     I2C_PORT_TCPC0,   400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
+	{"tcpc1",     I2C_PORT_TCPC1,   400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
+	{"battery",   I2C_PORT_BATTERY, 100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
+	{"charger",   I2C_PORT_CHARGER, 100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
+	{"pmic",      I2C_PORT_PMIC,    400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
+	{"accelgyro", I2C_PORT_ACCEL,   400, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -205,10 +206,10 @@ const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 void board_reset_pd_mcu(void)
 {
 	/* Assert reset */
-	gpio_set_level(GPIO_USB_PD_RST_C0_L, 0);
+	gpio_set_level(GPIO_USB_PD_RST_C0, 1);
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 	msleep(1);
-	gpio_set_level(GPIO_USB_PD_RST_C0_L, 1);
+	gpio_set_level(GPIO_USB_PD_RST_C0, 0);
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
 	/* After TEST_R release, anx7447/3447 needs 2ms to finish eFuse
 	 * loading.
@@ -245,7 +246,7 @@ uint16_t tcpc_get_alert_status(void)
 	uint16_t status = 0;
 
 	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_PD_RST_C0_L))
+		if (!gpio_get_level(GPIO_USB_PD_RST_C0))
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
