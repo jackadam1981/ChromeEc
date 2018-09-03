@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab19119_8a795576",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "You can just read it from rollback_get_secret().",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5873713_66f53977",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "Add:\n\nBUILD_ASSERT(SBP_ENC_KEY_LEN \u003c\u003d SHA256_DIGEST_SIZE);\n\nto make sure we don\u0027t do anything wrong in the future.",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484dfdc6_661c7465",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "Looks like the code isn\u0027t going to be functional at all if you don\u0027t enable these options.\n\nI see 2 reasonable ways around this:\n\n1. At beginning of file:\n#if !defined(CONFIG_AES) || !defined(CONFIG_AES_GCM)\n#error \"fpsensor needs AES and AES_GCM\"\n#endif\n\n2. Disable encryption in fp_command_frame if the options are not set. It\u0027s not ideal either as the code that does not use encryption will not even be compile tested...",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "886e6bfa_04959882",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "nit: space after :",
+      "range": {
+        "startLine": 568,
+        "startChar": 17,
+        "endLine": 568,
+        "endChar": 18
+      },
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3911d315_707e6703",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "nit: Don\u0027t really need braces for single line statements.",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eac8e43_a343c213",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "Fold in test above?",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873d5357_13965960",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "EC_RES_UNAVAILABLE maybe? Or even EC_RES_UNKNOWN?",
+      "range": {
+        "startLine": 643,
+        "startChar": 10,
+        "endLine": 643,
+        "endChar": 21
+      },
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65273a2_290105a5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5070,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T05:51:05Z",
+      "side": 1,
+      "message": "So IIUC, we send a bunch of\n\n{ EC_CMD_FP_TEMPLATE, chunk size, nonce\u003ddon\u0027t care, salt\u003ddon\u0027t care, tag\u003ddon\u0027t care, data\u003dtemplate chunk }\n\nand then:\n\n{ EC_CMD_FP_TEMPLATE, FP_TEMPLATE_COMMIT | chunk size, nonce, salt, tag, data }\n\nSending nonce/salt/tag with every chunk seems wasteful, maybe we should have something like:\n\nunion {\n  struct {\n    uint8_t nonce[FP_CONTEXT_NONCE_BYTES];\n    uint8_t salt[FP_CONTEXT_SALT_BYTES];\n    uint8_t tag[FP_CONTEXT_TAG_BYTES];\n  } encryption_metadata;\n  uint8_t data[];\n}\n\nAnd not allow data to be sent with the metadata?",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
