@@ -12,4 +12,5 @@ CHIP_VARIANT:=npcx7m6f
 BASEBOARD:=grunt
 
 board-y=board.o led.o
+board-y+=led_states.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
