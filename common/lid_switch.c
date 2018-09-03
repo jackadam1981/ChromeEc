@@ -140,7 +140,6 @@ DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose,
 
 static int command_lidstate(int argc, char **argv)
 {
-	ccprintf("lid state: %s\n", debounced_lid_open ? "open" : "closed");
 
 	return EC_SUCCESS;
 }
