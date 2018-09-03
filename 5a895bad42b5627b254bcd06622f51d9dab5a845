@@ -52,6 +52,24 @@
       "revId": "5a895bad42b5627b254bcd06622f51d9dab5a845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3c63bf_815f3f6d",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-03T08:01:34Z",
+      "side": 1,
+      "message": "oh wait... EC has its own printf implementation, let me try it",
+      "parentUuid": "17b2616e_56ed2845",
+      "revId": "5a895bad42b5627b254bcd06622f51d9dab5a845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
