@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e67bd86_dec9e862",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-03T08:30:00Z",
+      "side": 1,
+      "message": "A suggestion: Separate the LED state from color, maybe you can add an enum led_state { PWR_ON, PWR_OFF, CHG_OFF, ...} and a function to translate the led_state to led_color.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "bc77215d6b6f1f26ac246a2ed9db223031a2eee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
