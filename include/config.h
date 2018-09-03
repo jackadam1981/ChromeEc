@@ -2131,6 +2131,12 @@
 #undef CONFIG_LED_PWM_COUNT
 
 /*
+ * Support common GPIO-controlled LEDs that conform to the Chrome OS LED
+ * behaviour specification.
+ */
+#undef CONFIG_LED_ONOFF
+
+/*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
  * and the GPIO names will be GPIO_LED..._L.
  */
