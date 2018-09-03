@@ -2131,6 +2131,12 @@
 #undef CONFIG_LED_PWM_COUNT
 
 /*
+ * Support GPIO-controlled LEDs that common state detection which supports
+ * OEM-defined LED behaviour.
+ */
+#undef CONFIG_LED_ONOFF
+
+/*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
  * and the GPIO names will be GPIO_LED..._L.
  */
