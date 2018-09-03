@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "574cc6ef_79820f9a",
+        "filename": "common/usb_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T04:55:57Z",
+      "side": 1,
+      "message": "nit: Multiline comment format is:\n/*\n * TODO(): text\n * text\n * text\n */\n\nNot need to extra indentation in the comment.",
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e430bf99_320d701c",
+        "filename": "common/usb_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T04:55:57Z",
+      "side": 1,
+      "message": "nit, no need for brackets in this case.",
+      "range": {
+        "startLine": 361,
+        "startChar": 42,
+        "endLine": 361,
+        "endChar": 44
+      },
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1623ce_ca392365",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T04:55:57Z",
+      "side": 1,
+      "message": "Doesn\u0027t this drop the last char? Should this be response[response_size] \u003d 0? (then the buffer needs to be one byte larger.",
+      "range": {
+        "startLine": 1032,
+        "startChar": 12,
+        "endLine": 1032,
+        "endChar": 29
+      },
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c327b3_694a2c10",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T04:55:57Z",
+      "side": 1,
+      "message": "Alphabetical order (yeah, \u0027e\u0027 is wrong again...)",
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
