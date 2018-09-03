@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "queue_policies.h"
+#include "printf.h"
 #include "registers.h"
 #include "spi.h"
 #include "task.h"
@@ -234,6 +235,50 @@ static int command_uart_baud(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(baud, command_uart_baud,
 			"usart[2|3|4] rate",
 			"Set baud rate on uart");
+
+/******************************************************************************
+ * Send test data from servo_micro to host.
+ */
+static int command_usart_test(int argc, char **argv)
+{
+	int i;
+	const int count = 8192;
+	struct queue const *queue;
+	char buffer[16];
+	timestamp_t t0, t1;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "usart2"))
+		queue = &usart2_to_usb;
+	else if (!strcasecmp(argv[1], "usart3"))
+		queue = &usart3_to_usb;
+	else if (!strcasecmp(argv[1], "usart4"))
+		queue = &usart4_to_usb;
+	else
+		return EC_ERROR_PARAM1;
+
+	t0 = get_time();
+	for (i = 0; i < count; i++) {
+		int size = snprintf(buffer, sizeof(buffer),
+				"%06x%s", i, (i % 8) == 7 ? "\r\n" : ";;");
+		while (queue_space(queue) < size)
+			msleep(1);
+
+		QUEUE_ADD_UNITS(queue, buffer, size);
+	}
+
+	while (queue_count(queue) > 0)
+		msleep(1);
+	t1 = get_time();
+	ccprintf("%d bytes sent in %ld us\n", count * 8, t1.val - t0.val);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(usart_test, command_usart_test,
+			"usart[2|3|4]",
+			"Send test data to host");
 
 /******************************************************************************
  * Commands for sending the magic non-I2C handshake over I2C bus wires to an
