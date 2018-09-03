@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "7b075a62_f37c8433",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T06:30:59Z",
+      "side": 1,
+      "message": "Option 1 sounds better I think, I\u0027ll do that",
+      "parentUuid": "484dfdc6_661c7465",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "886e6bfa_04959882",
         "filename": "common/fpsensor.c",
         "patchSetId": 4
@@ -144,6 +162,24 @@
       "writtenOn": "2018-09-03T05:51:05Z",
       "side": 1,
       "message": "So IIUC, we send a bunch of\n\n{ EC_CMD_FP_TEMPLATE, chunk size, nonce\u003ddon\u0027t care, salt\u003ddon\u0027t care, tag\u003ddon\u0027t care, data\u003dtemplate chunk }\n\nand then:\n\n{ EC_CMD_FP_TEMPLATE, FP_TEMPLATE_COMMIT | chunk size, nonce, salt, tag, data }\n\nSending nonce/salt/tag with every chunk seems wasteful, maybe we should have something like:\n\nunion {\n  struct {\n    uint8_t nonce[FP_CONTEXT_NONCE_BYTES];\n    uint8_t salt[FP_CONTEXT_SALT_BYTES];\n    uint8_t tag[FP_CONTEXT_TAG_BYTES];\n  } encryption_metadata;\n  uint8_t data[];\n}\n\nAnd not allow data to be sent with the metadata?",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b6c107_8996db69",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5070,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T06:30:59Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what\u0027s happening. I was thinking of checking that the metadata was consistent over the course of the transfer, and then decided against it. I\u0027ll do what you suggest",
+      "parentUuid": "f65273a2_290105a5",
       "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
