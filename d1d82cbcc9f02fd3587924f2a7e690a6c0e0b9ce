@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "8e175e59_5243a4d3",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-03T07:51:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54dc404e_30a31ee8",
+      "range": {
+        "startLine": 1032,
+        "startChar": 12,
+        "endLine": 1032,
+        "endChar": 29
+      },
+      "revId": "d1d82cbcc9f02fd3587924f2a7e690a6c0e0b9ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c327b3_694a2c10",
         "filename": "extra/usb_updater/usb_updater2.c",
         "patchSetId": 7
