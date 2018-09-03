@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b02260f8_572d8a83",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "Done. Kinda. rollback_get_secret() always fails since the secret hasn\u0027t been initialised. See derive_encryption_key() for the current hack",
+      "parentUuid": "1ab19119_8a795576",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5873713_66f53977",
         "filename": "common/fpsensor.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbda93a_624c9d01",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5873713_66f53977",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "93bdb120_80bb3a1d",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b075a62_f37c8433",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "886e6bfa_04959882",
         "filename": "common/fpsensor.c",
         "patchSetId": 4
@@ -94,6 +148,30 @@
     },
     {
       "key": {
+        "uuid": "0bc51f28_e87ce916",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886e6bfa_04959882",
+      "range": {
+        "startLine": 568,
+        "startChar": 17,
+        "endLine": 568,
+        "endChar": 18
+      },
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3911d315_707e6703",
         "filename": "common/fpsensor.c",
         "patchSetId": 4
@@ -111,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "66d3efd6_5e8f266b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3911d315_707e6703",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eac8e43_a343c213",
         "filename": "common/fpsensor.c",
         "patchSetId": 4
@@ -125,6 +221,24 @@
       "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3071a87f_4fc65513",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eac8e43_a343c213",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +262,30 @@
       "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "072a2225_544d2fcf",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "873d5357_13965960",
+      "range": {
+        "startLine": 643,
+        "startChar": 10,
+        "endLine": 643,
+        "endChar": 21
+      },
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +318,24 @@
       "side": 1,
       "message": "Yes, that\u0027s what\u0027s happening. I was thinking of checking that the metadata was consistent over the course of the transfer, and then decided against it. I\u0027ll do what you suggest",
       "parentUuid": "f65273a2_290105a5",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53cd5d61_2e290351",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5070,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-03T19:36:26Z",
+      "side": 1,
+      "message": "I can\u0027t do that actually, it\u0027s not allowed\n\"\nerror: flexible array member in union\n\"",
+      "parentUuid": "13b6c107_8996db69",
       "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
