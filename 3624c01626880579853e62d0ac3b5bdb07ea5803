@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8b55027_07ec52e5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-09-03T09:19:12Z",
+      "side": 1,
+      "message": "Because Minimuffin and zinger boards don\u0027t define CONFIG_COMMON_RUNTIME, linker can\u0027t reference to hook_notify and hooks.o when make build all. So I let both boards behind CONFIG_COMMON_RUNTIME config.",
+      "range": {
+        "startLine": 654,
+        "startChar": 7,
+        "endLine": 654,
+        "endChar": 28
+      },
+      "revId": "3624c01626880579853e62d0ac3b5bdb07ea5803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
