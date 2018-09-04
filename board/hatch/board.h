@@ -29,6 +29,34 @@
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 
+<<<<<<< HEAD   (1ac375 motion: Wake up motion task when sampling rate changes)
+=======
+/* Sensors */
+/* BMI160 Base accel/gyro */
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
+/* BMA253 Lid accel */
+#define CONFIG_ACCEL_BMA255
+#define CONFIG_ACCEL_FORCE_MODE_MASK ((1 << LID_ACCEL) | (1 << LID_ALS))
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#define CONFIG_LID_ANGLE_UPDATE
+/* OPT3001 ALS */
+#define CONFIG_ALS
+#define ALS_COUNT 1
+#define CONFIG_ALS_OPT3001
+#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
+
+/* Volume Button feature */
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L GPIO_EC_VOLDN_BTN_ODL
+
+>>>>>>> CHANGE (4b9a3c motion: Define macros for custom events)
 /* Fan features */
 #define CONFIG_FANS 1
 #undef CONFIG_FAN_INIT_SPEED

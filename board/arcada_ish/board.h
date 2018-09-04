@@ -31,6 +31,33 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
+<<<<<<< HEAD   (1ac375 motion: Wake up motion task when sampling rate changes)
+=======
+#define CONFIG_ACCEL_LNG2DM	 /* Base sensor: LNG2DM (uses LIS2DH driver) */
+#define CONFIG_ACCELGYRO_LSM6DSM /* Lid sensor: LSM6DS3 (uses LSM6DSM driver) */
+
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK  (1 << BASE_ACCEL)
+
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
+
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_HECI
+
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+
+#define CONFIG_TABLET_MODE
+
+/* Host command over HECI */
+#define CONFIG_HOSTCMD_HECI
+
+>>>>>>> CHANGE (4b9a3c motion: Define macros for custom events)
 /* I2C ports */
 #define I2C_PORT_SENSOR ISH_I2C0
 #define CONFIG_CMD_I2C_XFER
