@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b397fba0_d3bc43d4",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-04T18:17:45Z",
+      "side": 1,
+      "message": "This file gets included only when CONFIG_USB_PD_TCPM_TUSB422 is defined. Is this check still necessary?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "3c3211f21d34d24ec1ca6093e75e0611619ea1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef0c100_35819241",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-04T18:17:45Z",
+      "side": 1,
+      "message": "Does auto-selecting CONFIG_USB_PD_TCPM_TCPCI help in case CONFIG_USB_PD_TCPM_TUSB422 is selected?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "3c3211f21d34d24ec1ca6093e75e0611619ea1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
