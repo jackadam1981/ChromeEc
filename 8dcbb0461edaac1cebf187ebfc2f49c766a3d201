@@ -16,6 +16,24 @@
       "revId": "8dcbb0461edaac1cebf187ebfc2f49c766a3d201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b7806c_48fcb6c2",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-04T17:24:50Z",
+      "side": 1,
+      "message": "I like parameters better too, but consistency among octopus boards is the main for this change.\n\nOther boards (and most likely this one in the near future) also need to call board_is_convertible() out side of the init call stack (e.g https://chromium.git.corp.google.com/chromiumos/platform/ec/+/c2154182985c384f8484f03a8d1d2079ba8858c9/board/phaser/board.c#250)",
+      "parentUuid": "183f9a55_1ddbc581",
+      "revId": "8dcbb0461edaac1cebf187ebfc2f49c766a3d201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
