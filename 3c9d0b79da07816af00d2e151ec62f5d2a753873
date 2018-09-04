@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9862fa0e_b34d72da",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-04T18:33:38Z",
+      "side": 1,
+      "message": "don\u0027t you need to mask this anymore? status \u0026 0x7 or something like NX20P348X_SWITCH_CONTROL_MASK\n\nOr are the upper bits just don\u0027t care?",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 14
+      },
+      "revId": "3c9d0b79da07816af00d2e151ec62f5d2a753873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bb17c5_2ea3f06e",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-04T18:33:38Z",
+      "side": 1,
+      "message": "Or just have checks to ensure that the structure callback is not NULL.",
+      "range": {
+        "startLine": 409,
+        "startChar": 44,
+        "endLine": 409,
+        "endChar": 71
+      },
+      "revId": "3c9d0b79da07816af00d2e151ec62f5d2a753873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
