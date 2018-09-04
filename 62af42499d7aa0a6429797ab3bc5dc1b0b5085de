@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "988b597b_4f01c7e9",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-09-04T15:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6146c47_a501c5d4",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 3
+      },
+      "revId": "62af42499d7aa0a6429797ab3bc5dc1b0b5085de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3cc5969_710c5ac6",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 4
