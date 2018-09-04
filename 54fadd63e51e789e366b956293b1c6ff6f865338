@@ -204,6 +204,24 @@
     },
     {
       "key": {
+        "uuid": "2f77ded6_876bc399",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-04T17:35:27Z",
+      "side": 1,
+      "message": "It will be S0. I just looked at  the state transitions in the power state machine again and there will be at least a S0ix-\u003eS0 transition in case of CHIPSET_RESET and that will result in a CHIPSET_RESUME notification: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/power/intel_x86.c#254\n\nSorry about the confusion earlier. I think it should be okay to have just CHIPSET_RESUME here.",
+      "parentUuid": "18546d6f_8025bfd4",
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a139fc_71bdbf54",
         "filename": "board/phaser/board.c",
         "patchSetId": 6
