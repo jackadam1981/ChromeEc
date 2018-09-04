@@ -140,6 +140,30 @@
       "revId": "a52466276c11a731cb8caf595cca9f791005862f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28a0d09_9242cece",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-04T14:17:02Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "4cf78355_5b49b63b",
+      "range": {
+        "startLine": 204,
+        "startChar": 9,
+        "endLine": 204,
+        "endChar": 25
+      },
+      "revId": "a52466276c11a731cb8caf595cca9f791005862f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
