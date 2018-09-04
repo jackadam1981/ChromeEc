@@ -168,6 +168,24 @@
     },
     {
       "key": {
+        "uuid": "303a437a_f79653fa",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-04T17:14:25Z",
+      "side": 1,
+      "message": "Basically in both the above cases, I see that you have forced reboot on EC console which will reset the entire EC state as well. I was just thinking about the case where AP gets reset on its own while it was in S0ix.\n\nConsider this scenario:\n1. AP goes into S0ix\n2. AP sends PLTRST# assert\n3. AP sends PLTRST# de-assert\n\nIn the above scenario, I believe you would see CHIPSET_RESET but not CHIPSET_RESUME?",
+      "parentUuid": "71567537_8c0f3dc3",
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a139fc_71bdbf54",
         "filename": "board/phaser/board.c",
         "patchSetId": 6
