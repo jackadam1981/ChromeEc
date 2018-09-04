@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47bfa70a_aa1e1be9",
+        "filename": "board/meep/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-09-04T13:41:29Z",
+      "side": 1,
+      "message": "This doesn\u0027t match your comment above. If you want to cover the default sku id of 255 please be explicit with a comment as to why.",
+      "range": {
+        "startLine": 230,
+        "startChar": 33,
+        "endLine": 230,
+        "endChar": 37
+      },
+      "revId": "0b84edeefa18d071462d3b76ac36383d7d2f3951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
