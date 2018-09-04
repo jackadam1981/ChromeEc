@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4fe0e68_269f165b",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:57:22Z",
+      "side": 1,
+      "message": "Below, dump_info seems to be uint32_t[32], here it\u0027s uint32_t[128]. Did you mean uint8_t[128]?",
+      "revId": "9afefb861edb8dbc7d2f3b2664444f9c0746bfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b15d3dc_84226f5d",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:57:22Z",
+      "side": 1,
+      "message": "nit: /* on first line",
+      "revId": "9afefb861edb8dbc7d2f3b2664444f9c0746bfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15deab40_a6aa53de",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:57:22Z",
+      "side": 1,
+      "message": "Use a loop please.",
+      "revId": "9afefb861edb8dbc7d2f3b2664444f9c0746bfc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
