@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db82a7a1_2744367a",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:45:31Z",
+      "side": 1,
+      "message": "Does not seem very useful.",
+      "revId": "d0691dcd0682044008b591442dd25bf895d6be75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de8606d_c83fbf14",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:45:31Z",
+      "side": 1,
+      "message": "Why do you need these as globals? (and why do you need them as an array, per finger?) It seems like everytime you set those, you end up using them straight away and never again.",
+      "revId": "d0691dcd0682044008b591442dd25bf895d6be75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efea2aa6_7aef041d",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:45:31Z",
+      "side": 1,
+      "message": "ditto, just remove these.",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 37
+      },
+      "revId": "d0691dcd0682044008b591442dd25bf895d6be75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b51ff8_19804fe8",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:45:31Z",
+      "side": 1,
+      "message": "Just run this to generate secret, should be simple enough:\n./ectool --name\u003dcros_fp addentropy",
+      "revId": "d0691dcd0682044008b591442dd25bf895d6be75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fcb8078_2fddf520",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:45:31Z",
+      "side": 1,
+      "message": "Why? The only thing that matters is that by the time FP_TEMPLATE_COMMIT is set, we need the total size % AES_BLOCK_SIZE \u003d\u003d 0. Right?",
+      "range": {
+        "startLine": 650,
+        "startChar": 6,
+        "endLine": 650,
+        "endChar": 27
+      },
+      "revId": "d0691dcd0682044008b591442dd25bf895d6be75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

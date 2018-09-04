@@ -339,6 +339,24 @@
       "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9f5dd0_e2dca18c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5070,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-04T05:45:31Z",
+      "side": 1,
+      "message": "huh, I see...\n\nMaybe we should just have nonce/salt/tag be a part of the data itself? After all the host does not need to do anything with it, right?\n\ni.e. when you receive the first data chunk (offset 0), you can just cast it to some \"struct encryption_metadata\", parse the members, and then copy over the rest of the data to fp_enc_buffer?",
+      "parentUuid": "53cd5d61_2e290351",
+      "revId": "aa72668785164643d7f0e15fca65aadc314ddcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
