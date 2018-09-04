@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "183f9a55_1ddbc581",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-09-04T17:20:16Z",
+      "side": 1,
+      "message": "Why make this a static? It was a little easier to read when passing this around.\nI can see that other boards work that way but it seems wrong.",
+      "revId": "8dcbb0461edaac1cebf187ebfc2f49c766a3d201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
