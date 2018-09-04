@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5ab15b8_fe93d47c",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-04T23:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41dd532_a691f76a",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "96223c776e85e697059e18bc03c3c7988a5de0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecd6e197_f4ef40f5",
         "filename": "power/icelake.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "96223c776e85e697059e18bc03c3c7988a5de0ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f2d54f_1b95f242",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-04T23:09:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd6e197_f4ef40f5",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "96223c776e85e697059e18bc03c3c7988a5de0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
