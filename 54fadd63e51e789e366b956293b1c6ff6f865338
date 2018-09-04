@@ -186,6 +186,24 @@
     },
     {
       "key": {
+        "uuid": "18546d6f_8025bfd4",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-04T17:22:00Z",
+      "side": 1,
+      "message": "In the scenario you described, what is the final state of the processor. Is it S0ix or S0?",
+      "parentUuid": "303a437a_f79653fa",
+      "revId": "54fadd63e51e789e366b956293b1c6ff6f865338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21a139fc_71bdbf54",
         "filename": "board/phaser/board.c",
         "patchSetId": 6
