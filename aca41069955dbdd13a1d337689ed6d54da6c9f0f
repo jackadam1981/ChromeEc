@@ -16,6 +16,29 @@
       "revId": "aca41069955dbdd13a1d337689ed6d54da6c9f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "778e94d3_0b990922",
+        "filename": "chip/npcx/spiflashfw/npcx_monitor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1264388
+      },
+      "writtenOn": "2018-09-04T06:20:53Z",
+      "side": 1,
+      "message": "Here should be the \",\" rather than the \";\".",
+      "range": {
+        "startLine": 199,
+        "startChar": 55,
+        "endLine": 199,
+        "endChar": 56
+      },
+      "revId": "aca41069955dbdd13a1d337689ed6d54da6c9f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
