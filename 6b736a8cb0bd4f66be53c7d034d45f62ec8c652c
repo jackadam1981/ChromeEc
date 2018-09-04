@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "0ab4216d_a6932dc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-09-04T21:45:15Z",
+      "side": 1,
+      "message": "I don\u0027t believe we wake over USB HID in S5 (We do in S3 or S0ix, so this change doesn\u0027t apply in those states).",
+      "parentUuid": "13550f61_8763d72c",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95bbb1da_9a85612c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-09-04T21:45:15Z",
+      "side": 1,
+      "message": "s/carries/cares/",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97b1d5e5_837640d7",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -36,6 +77,24 @@
       "writtenOn": "2018-08-31T20:16:20Z",
       "side": 1,
       "message": "Why do you need a flag for the chipset state? Why not just call chipset_in_state(...)?",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d0a590_476191a5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-09-04T21:45:15Z",
+      "side": 1,
+      "message": "Agreed; chipset_in_state(CHIPSET_STATE_ANY_OFF) seems like what you want here.",
+      "parentUuid": "97b1d5e5_837640d7",
       "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
