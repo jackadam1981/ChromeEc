@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3a4f20_a8c7aca2",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-04T23:18:30Z",
+      "side": 1,
+      "message": "does our code guarantee that 5V gets selected, confirm the VBUS voltage with an ADC and issue a hard reset or error recovery state if the voltage is still high?\n\nWe\u0027ve seen in the past that some chargers/accessories will behave poorly when trying to change the voltage.  Some will not accept the request, and others will accept the request but not actually change the voltage.\n\nSince it\u0027s important that the voltage be actually reduced, we need to add extra checks and robustness into this change.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "39bc06766af125b60c2979c0b38682c310928314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
