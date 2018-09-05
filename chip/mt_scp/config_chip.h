@@ -27,11 +27,11 @@
 
 /* RW only, no flash
  * +-------------------- 0x0
- * | scp.img tinysys-loader-CM4_A.bin
+ * | free share space
  * +-------------------- 0x005B0
- * | shared buffer 296 * 2
+ * | IPI shared buffer (288 + 8) * 2
  * +-------------------- 0x00800
- * | scp.img tinysys-scp-CM4_A.bin RAM
+ * | scp.img
  * +-------------------- 0x7B800
  * | free share space 2KB
  * +-------------------- 0x7C000
