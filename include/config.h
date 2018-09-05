@@ -1363,6 +1363,12 @@
 #undef CONFIG_INTERNAL_STORAGE
 
 /*
+ * EC code run from RAM only, without fetching from internal or external
+ * storage. Define this CONFIG when there's no flash.
+ */
+#undef CONFIG_EXEC_FROM_RAM
+
+/*
  * Flash is directly mapped into the EC's address space.  If this is not
  * defined, the flash driver must implement flash_physical_read().
  */
