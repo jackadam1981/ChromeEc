@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "33dca046_82c809f1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T17:26:29Z",
+      "side": 1,
+      "message": "Then reg is not written to and the all of the if branches below will skip",
+      "parentUuid": "aaf910e9_9edcd288",
+      "revId": "6d3ca50b2083cf9f94524fd8b8271fc7887b9fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7822d338_bb9a9ce7",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2018-09-05T17:14:37Z",
       "side": 1,
       "message": "Won\u0027t this cause the port to be suspended forever if the cache ever gets full?",
+      "revId": "6d3ca50b2083cf9f94524fd8b8271fc7887b9fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "393523a7_c078ce1a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T17:26:29Z",
+      "side": 1,
+      "message": "potentially, but unlikely because we call into tcpm_alert_status right afterward which performs a i2c transaction which will deschedule this task, which will allow the PD task to consume a message from the RX queue. On the subsequent while loop iteration the RX buffer should have an open slot.\n\nTo upgrade unlikey to virtual impossible, we could add a slight sleep in here to ensure that the PD task gets to run (but I am not a huge fan of this solution - just giving options)",
+      "parentUuid": "7822d338_bb9a9ce7",
       "revId": "6d3ca50b2083cf9f94524fd8b8271fc7887b9fc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
