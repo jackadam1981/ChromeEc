@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe1a2065_c3f23d0a",
+        "filename": "board/meep/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-05T19:41:12Z",
+      "side": 1,
+      "message": "As long as you\u0027re working with meep\u0027s motion sensors, would you mind confirming the lid accelerometer part and then removing this TODO if the KX022 is correct?  It wasn\u0027t available at the time of the initial meep EC image creation",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "55552cdb58e100b12cd13c96696c5be20e9c206a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
