@@ -22,6 +22,30 @@
       "revId": "1f8374e0bd9eb58aad69ee7a623df26f0b19ae68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b6d592_1b5e6f26",
+        "filename": "board/liara/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-05T16:16:24Z",
+      "side": 1,
+      "message": "I have the datasheet for the TI BQ40Z60 management IC, and this command.  The battery ICs that the battery suppliers are using are members of the family that have some programmable constants preset by the factory.\n\nSee TI doc SLUUA04D.",
+      "parentUuid": "ac199148_1a6eaa58",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "1f8374e0bd9eb58aad69ee7a623df26f0b19ae68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
