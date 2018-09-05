@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c2bbcf7_8fc58b57",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T15:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0accac_b3db4edb",
+      "range": {
+        "startLine": 434,
+        "startChar": 15,
+        "endLine": 434,
+        "endChar": 21
+      },
+      "revId": "bff8eeec61536090d48afd78848ec1a76a98e3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71975e76_d2bdb200",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6d40d84f_d70d747e",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T15:42:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71975e76_d2bdb200",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 2
+      },
+      "revId": "bff8eeec61536090d48afd78848ec1a76a98e3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9953216d_504ef2b5",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "bff8eeec61536090d48afd78848ec1a76a98e3b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df7bc58d_7ef1a6c7",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T15:42:11Z",
+      "side": 1,
+      "message": "Updated comment, thanks!",
+      "parentUuid": "9953216d_504ef2b5",
+      "range": {
+        "startLine": 364,
+        "startChar": 10,
+        "endLine": 364,
+        "endChar": 16
+      },
+      "revId": "bff8eeec61536090d48afd78848ec1a76a98e3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
