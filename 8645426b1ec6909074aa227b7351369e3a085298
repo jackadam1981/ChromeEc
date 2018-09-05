@@ -70,6 +70,30 @@
       "revId": "8645426b1ec6909074aa227b7351369e3a085298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c619326_a1f44adb",
+        "filename": "include/common.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-05T15:54:34Z",
+      "side": 1,
+      "message": "I tried changing over to a paradigm as discussed of:\n\nvoid *ec_memset(void *dst, const void *src, size_t n);\n#ifndef memset\n#define memset ec_memset\n#endif\n\nThis worked except for the cases where the compiler implicit added memset and memcpy for explicit struct initialization and struct assignment. For example:\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/common/pinweaver.c?rcl\u003d87b6fed80dbb08e548105c6f2019b1d57c598ea7\u0026l\u003d157\nwas causing a linker error for memset, and here is an example of memcpy:\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/common/ccd_config.c?q\u003dccd_config.c\u0026dr\u003dC\u0026l\u003d765\n\nI am going to change this to a prefix macro like discussed and wrap the declarations in #ifndefs HIDE_EC_STDLIB like discussed.",
+      "parentUuid": "1c8a92ae_45dd8448",
+      "range": {
+        "startLine": 227,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 40
+      },
+      "revId": "8645426b1ec6909074aa227b7351369e3a085298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
