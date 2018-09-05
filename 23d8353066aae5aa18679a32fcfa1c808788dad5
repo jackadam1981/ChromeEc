@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd973bd8_3aad3cdf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2351,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-05T16:30:45Z",
+      "side": 1,
+      "message": "I\u0027m guessing this comes from some macro magic in the EC codebase?",
+      "range": {
+        "startLine": 2351,
+        "startChar": 7,
+        "endLine": 2351,
+        "endChar": 25
+      },
+      "revId": "23d8353066aae5aa18679a32fcfa1c808788dad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0b38d3c_292f14ec",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2363,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-05T16:30:45Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 2363,
+        "startChar": 58,
+        "endLine": 2363,
+        "endChar": 63
+      },
+      "revId": "23d8353066aae5aa18679a32fcfa1c808788dad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
