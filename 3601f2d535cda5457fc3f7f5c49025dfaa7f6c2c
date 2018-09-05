@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "576b90e8_8c5372ac",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-05T09:48:06Z",
+      "side": 1,
+      "message": "sizeof(rx_buf.dump_info)",
+      "range": {
+        "startLine": 527,
+        "startChar": 17,
+        "endLine": 527,
+        "endChar": 19
+      },
+      "revId": "3601f2d535cda5457fc3f7f5c49025dfaa7f6c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a3005b_a0ca944f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-05T09:48:06Z",
+      "side": 1,
+      "message": "rx_len",
+      "range": {
+        "startLine": 552,
+        "startChar": 18,
+        "endLine": 552,
+        "endChar": 21
+      },
+      "revId": "3601f2d535cda5457fc3f7f5c49025dfaa7f6c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
