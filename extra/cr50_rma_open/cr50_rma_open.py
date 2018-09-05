@@ -375,8 +375,16 @@ class RMAOpen(object):
         return not self._running_version_is_older(DEV_MODE_OPEN_PROD)
 
 
+    def _capabilities_allow_open_from_console(self):
+        """Return True if ccd open is Always allowed from usb"""
+        output = self.send_cmd_get_output('ccd')
+        return (re.search('OpenNoDevMode.*Always', output) and
+                re.search('OpenFromUSB.*Always', output))
+
     def _requires_dev_mode_open(self):
         """Return True if the image requires dev mode to open"""
+        if self._capabilities_allow_open_from_console():
+            return False
         # All prod images that support 'open' require dev mode
         if not self.is_prepvt:
             return True
