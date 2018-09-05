@@ -19,6 +19,7 @@ driver-$(CONFIG_SYNC)+=sync.o
 
 # BC1.2 Charger Detection Devices
 driver-$(CONFIG_BC12_DETECT_BQ24392)+=bc12/bq24392.o
+driver-$(CONFIG_BC12_DETECT_MAX1463X)+=bc12/max1463x.o
 driver-$(CONFIG_BC12_DETECT_PI3USB9281)+=bc12/pi3usb9281.o
 
 # Gyrometers
