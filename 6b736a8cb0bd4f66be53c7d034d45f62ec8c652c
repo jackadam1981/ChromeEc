@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "17e3ba60_a09c1568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:53:48Z",
+      "side": 1,
+      "message": "I updated wording from \u0027suspend\u0027 to \u0027off\u0027. When the chipset is off, we won\u0027t need any USB wake sources",
+      "parentUuid": "0ab4216d_a6932dc7",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95bbb1da_9a85612c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -63,6 +87,24 @@
       "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "282dcb2d_3fe14b9a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95bbb1da_9a85612c",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -101,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "a7f85fe2_a3e998ff",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:53:48Z",
+      "side": 1,
+      "message": "It is a sad story. I originally used chipset_in_state(CHIPSET_STATE_ANY_OFF), but when set_usb_mux_with_current_data_role is called, the chipset is still transiting into S5. The chipset is in the S3S5 state which is the (CHIPSET_STATE_SOFT_OFF | CHIPSET_STATE_SUSPEND) state. chipset_in_state(CHIPSET_STATE_ANY_OFF) returns false when in the S3S5 state.\n\nMaybe there is some other way to determine we are transiting into the S5 state without the flag, but I didn\u0027t figure it out.\n\nAlso the chipset_in_state method returns the same things for both S5S3 (turning on) and S3S5 (turning off) which also makes things more difficult for this situation.",
+      "parentUuid": "b1d0a590_476191a5",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53d66fc3_94001324",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
@@ -112,6 +172,24 @@
       "writtenOn": "2018-08-31T20:16:20Z",
       "side": 1,
       "message": "Why is this broken out into a \"no_wakeup\" function? It seems you wake the task after calling this anyways?",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685b8a36_3caaf0d8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:53:48Z",
+      "side": 1,
+      "message": "I didn\u0027t want to wake the PD task up multiple times in the chipset transition functions.\n\nThe public API still needs to wake the task up to handle the new state.",
+      "parentUuid": "53d66fc3_94001324",
       "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
