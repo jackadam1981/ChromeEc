@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac199148_1a6eaa58",
+        "filename": "board/liara/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T15:53:02Z",
+      "side": 1,
+      "message": "I couldn\u0027t find the datasheet, and I couldn\u0027t tell from the linked bug if this was correct. Do you have datasheet for these batteries?",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 29
+      },
+      "revId": "1f8374e0bd9eb58aad69ee7a623df26f0b19ae68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
