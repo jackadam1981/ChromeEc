@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21cbc55_388ba7fc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2373,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-05T15:54:01Z",
+      "side": 1,
+      "message": "This bounds check should be \u003c, not \u003c\u003d.",
+      "range": {
+        "startLine": 2373,
+        "startChar": 25,
+        "endLine": 2373,
+        "endChar": 27
+      },
+      "revId": "5067ffaa7bd1ddb9cef0e46d35ac9e8f736c24fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
