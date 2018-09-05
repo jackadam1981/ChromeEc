@@ -8,6 +8,7 @@
 #include "charge_state_v2.h"
 #include "chipset.h"
 #include "console.h"
+#include "driver/bc12/max1463x.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
@@ -222,6 +223,26 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
+	},
+};
+
+/******************************************************************************/
+/* BC 1.2 chip Configuration */
+const struct max1463x_config_t max1463x_config[CONFIG_USB_PD_PORT_COUNT] = {
+	{
+		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON_ODL,
+		.chg_det_pin = GPIO_USB_C0_BC12_CHG_MAX,
+		.flags = MAX1463X_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON_ODL,
+		.chg_det_pin = GPIO_USB_C1_BC12_CHG_MAX,
+		.flags = MAX1463X_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin = GPIO_USB_C2_BC12_VBUS_ON_ODL,
+		.chg_det_pin = GPIO_USB_C2_BC12_CHG_MAX,
+		.flags = MAX1463X_FLAGS_ENABLE_ACTIVE_LOW,
 	},
 };
 
