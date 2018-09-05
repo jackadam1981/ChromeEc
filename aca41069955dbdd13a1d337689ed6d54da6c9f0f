@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "34ad12c9_9b4b4ee8",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-05T07:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ceea71_ce5910fc",
+      "revId": "aca41069955dbdd13a1d337689ed6d54da6c9f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "778e94d3_0b990922",
         "filename": "chip/npcx/spiflashfw/npcx_monitor.c",
         "patchSetId": 4
