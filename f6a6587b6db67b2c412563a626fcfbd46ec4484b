@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f12954a3_c170fc90",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:19:06Z",
+      "side": 1,
+      "message": "Please add a comment that these ADC are in a 10:1 voltage divider circuit (which explains the *10)",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "f6a6587b6db67b2c412563a626fcfbd46ec4484b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef039ad_2b3677d6",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:19:06Z",
+      "side": 1,
+      "message": "please add a CPRINTF saying that we encountered an unknown port id.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "f6a6587b6db67b2c412563a626fcfbd46ec4484b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec39dca8_09255ca8",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:19:06Z",
+      "side": 1,
+      "message": "nit: can you change the order of these two lines (to keep consistent with the exiting pattern)",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "f6a6587b6db67b2c412563a626fcfbd46ec4484b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd0d512b_ea5b4ba5",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-05T16:19:06Z",
+      "side": 1,
+      "message": "nit: can you put C0 first, please",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 12
+      },
+      "revId": "f6a6587b6db67b2c412563a626fcfbd46ec4484b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
