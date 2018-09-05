@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf910e9_9edcd288",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-09-05T17:14:37Z",
+      "side": 1,
+      "message": "What happens if this tcpc_read fails?",
+      "revId": "6d3ca50b2083cf9f94524fd8b8271fc7887b9fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7822d338_bb9a9ce7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-09-05T17:14:37Z",
+      "side": 1,
+      "message": "Won\u0027t this cause the port to be suspended forever if the cache ever gets full?",
+      "revId": "6d3ca50b2083cf9f94524fd8b8271fc7887b9fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
