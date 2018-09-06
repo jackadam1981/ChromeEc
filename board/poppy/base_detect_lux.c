@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "base_state.h"
 #include "board.h"
 #include "chipset.h"
 #include "common.h"
@@ -16,7 +17,6 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "system.h"
-#include "tablet_mode.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -128,7 +128,7 @@ static void base_detect_change(enum base_status status)
 	 */
 	task_wake(TASK_ID_CHARGER);
 
-	tablet_set_mode(!connected);
+	base_set_state(connected);
 }
 
 static void print_base_detect_value(const char *str, int v)

@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "base_state.h"
 #include "board.h"
 #include "chipset.h"
 #include "common.h"
@@ -15,7 +16,6 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "system.h"
-#include "tablet_mode.h"
 #include "timer.h"
 #include "util.h"
 
@@ -94,7 +94,7 @@ static void base_detect_change(enum base_status status)
 
 	CPRINTS("Base %sconnected", connected ? "" : "not ");
 	gpio_set_level(GPIO_PP3300_DX_BASE, connected);
-	tablet_set_mode(!connected);
+	base_set_state(connected);
 	current_base_status = status;
 }
 

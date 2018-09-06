@@ -7,6 +7,7 @@
 #include "console.h"
 #include "host_command.h"
 #include "hooks.h"
+#include "tablet_mode.h"
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_LID, format, ## args)
 
@@ -25,8 +26,13 @@ void base_set_state(int state)
 
 	base_state = !!state;
 	CPRINTS("base state: %stached", state ? "at" : "de");
+
+#ifdef CONFIG_BASE_ATTACHED_SWITCH
 	hook_notify(HOOK_BASE_ATTACHED_CHANGE);
 
 	/* Notify host of mode change. This likely will wake it up. */
 	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+#else
+	tablet_set_mode(!state);
+#endif
 }
