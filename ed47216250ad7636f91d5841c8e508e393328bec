@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "3bde3aab_f8e58c33",
+        "filename": "chip/scp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T12:21:25Z",
+      "side": 1,
+      "message": "or mt_scp to keep it more generic, maybe.",
+      "parentUuid": "0fcb545d_11ada1bb",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c62fcef_1f31b8c7",
         "filename": "chip/scp/clock.c",
         "patchSetId": 1
