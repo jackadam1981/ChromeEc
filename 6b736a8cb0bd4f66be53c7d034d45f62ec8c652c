@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "743af0cd_07727d49",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-09-06T00:07:57Z",
+      "side": 1,
+      "message": "Is still seems like we could get this information with a chipset() method to provide additional information from that state machine instead of adding a new flag.\n\nThen we can just accept CHIPSET_STATE_ANY_OFF or S3S5.",
+      "parentUuid": "a7f85fe2_a3e998ff",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53d66fc3_94001324",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
