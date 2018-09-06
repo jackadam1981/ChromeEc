@@ -22,6 +22,30 @@
       "revId": "39bc06766af125b60c2979c0b38682c310928314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d8d2885_ca7d94c6",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-09-06T07:01:30Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t do the additional check.\nWe can add extra checks for robustness, but it\u0027ll need more work and test.\nBut I won\u0027t be able to work on this fix until 9/17.\nIf this is urgent, we might need someone else (Amstan?) to take over this work.",
+      "parentUuid": "9a3a4f20_a8c7aca2",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "39bc06766af125b60c2979c0b38682c310928314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
