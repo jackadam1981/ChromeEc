@@ -93,6 +93,30 @@
       "revId": "3c3211f21d34d24ec1ca6093e75e0611619ea1f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9f2718_b60d78d0",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-06T05:50:39Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "46c0ebc0_d572bf45",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "3c3211f21d34d24ec1ca6093e75e0611619ea1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
