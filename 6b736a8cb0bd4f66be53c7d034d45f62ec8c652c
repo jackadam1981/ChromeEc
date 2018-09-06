@@ -179,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "d2d43439_0121e091",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-06T19:50:38Z",
+      "side": 1,
+      "message": "I added a new chipset method in a parent CL. This does feel better now.",
+      "parentUuid": "743af0cd_07727d49",
+      "revId": "6b736a8cb0bd4f66be53c7d034d45f62ec8c652c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53d66fc3_94001324",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 5
