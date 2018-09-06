@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a20c14a8_bb5651cc",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:10:41Z",
+      "side": 1,
+      "message": "\u003e\u003d 0x46 .. \u003c\u003d 0x4E?",
+      "range": {
+        "startLine": 593,
+        "startChar": 6,
+        "endLine": 593,
+        "endChar": 47
+      },
+      "revId": "dc442cf5e0db3db9436a1209ade15cf6a648b72b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
