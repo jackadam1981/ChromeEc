@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "033af08c_45348f1d",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-06T00:14:02Z",
+      "side": 1,
+      "message": "Only the lower 3 bits are defined. I guess a mask could be applied to protect against some new version of nx20348x that adds bits in the future.",
+      "parentUuid": "9862fa0e_b34d72da",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 14
+      },
+      "revId": "3c9d0b79da07816af00d2e151ec62f5d2a753873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1bb17c5_2ea3f06e",
         "filename": "driver/ppc/nx20p348x.c",
         "patchSetId": 3
