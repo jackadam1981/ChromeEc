@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f902e5fb_d93b155f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T12:19:19Z",
+      "side": 1,
+      "message": "Naming is a little odd. For example, NPCX also execs from RAM only.\n\nCan we make the linker scripts changes depend on CONFIG_FLASH being set, instead?",
+      "revId": "8cd7b2dcc116af42483d5065b70c9c457a7f93b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
