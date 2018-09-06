@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a19e975_890d42cc",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea56f82_60e74fb3",
+      "range": {
+        "startLine": 332,
+        "startChar": 8,
+        "endLine": 332,
+        "endChar": 12
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7639dcfb_37173849",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-06T07:38:36Z",
       "side": 1,
       "message": "sizeof(rb_secret) ?",
+      "range": {
+        "startLine": 347,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 21
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125f9019_df9b1b42",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "That doesn\u0027t look right\nsizeof(rb_secret) is CONFIG_ROLLBACK_SECRET_SIZE which can be (and actually is I think) larger than SBP_ENC_KEY_LEN",
+      "parentUuid": "7639dcfb_37173849",
       "range": {
         "startLine": 347,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2dffa3f4_e119b885",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f52d42_bf8e9b04",
+      "range": {
+        "startLine": 481,
+        "startChar": 9,
+        "endLine": 481,
+        "endChar": 12
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25ccfcdd_61c5d5ce",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -85,6 +157,24 @@
       "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a936ef8_3ba147ba",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ccfcdd_61c5d5ce",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "77aea1b0_1531f20e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fec4e04_cb62c10d",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69ecd9d1_95c1085e",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -119,6 +227,24 @@
       "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3734cb_60605853",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69ecd9d1_95c1085e",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "1974c739_617a4d10",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046f13d7_00554648",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe03a879_28cb3a0b",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "c8820d69_5587ea85",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe03a879_28cb3a0b",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce5a83ff_8838f337",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -167,6 +329,30 @@
       "writtenOn": "2018-09-06T07:38:36Z",
       "side": 1,
       "message": "a nice trick to avoid long lines is to do (void *) conversion only.",
+      "range": {
+        "startLine": 560,
+        "startChar": 7,
+        "endLine": 560,
+        "endChar": 50
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73452fb3_be022a9c",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Not sure about the \"nice\" part, but point taken :-)\nDone",
+      "parentUuid": "ce5a83ff_8838f337",
       "range": {
         "startLine": 560,
         "startChar": 7,
@@ -199,6 +385,30 @@
       "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33337d7_59204f0a",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-06T19:05:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0390e3f_fb7b1632",
+      "range": {
+        "startLine": 584,
+        "startChar": 1,
+        "endLine": 584,
+        "endChar": 28
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
