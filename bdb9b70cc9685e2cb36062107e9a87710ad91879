@@ -22,6 +22,30 @@
       "revId": "bdb9b70cc9685e2cb36062107e9a87710ad91879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab73f55_431829d7",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-09-06T18:17:36Z",
+      "side": 1,
+      "message": "Instead, we need to define CONFIG_MKBP_USE_HOST_EVENT out in board.h:\nwe are back to the ARM model where we have a pin for MKBP events.",
+      "parentUuid": "1aace7f1_73ef46bc",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "bdb9b70cc9685e2cb36062107e9a87710ad91879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
