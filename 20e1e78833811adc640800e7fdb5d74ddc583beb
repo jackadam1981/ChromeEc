@@ -2,6 +2,183 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ea56f82_60e74fb3",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "no need to set to 0.",
+      "range": {
+        "startLine": 332,
+        "startChar": 8,
+        "endLine": 332,
+        "endChar": 12
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7639dcfb_37173849",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "sizeof(rb_secret) ?",
+      "range": {
+        "startLine": 347,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 21
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f52d42_bf8e9b04",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "Just return EC_RES_something",
+      "range": {
+        "startLine": 481,
+        "startChar": 9,
+        "endLine": 481,
+        "endChar": 12
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ccfcdd_61c5d5ce",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fec4e04_cb62c10d",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69ecd9d1_95c1085e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046f13d7_00554648",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "This looks wrong, unless you want to do the copy here.",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe03a879_28cb3a0b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "If you keep FP_FRAME_INDEX_RAW_IMAGE as is (with a return) I\u0027d be tempted to refactor this as:\n\nif (FP_FRAME_INDEX_RAW_IMAGE) {\n   ...\n   return ...\n}\n\nif (idx \u003e FP_MAX_FINGER_COUNT)\n   return\n\nif (idx \u003e templ_valid)\n   return\n\nmax_size \u003d ...",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce5a83ff_8838f337",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-06T07:38:36Z",
+      "side": 1,
+      "message": "a nice trick to avoid long lines is to do (void *) conversion only.",
+      "range": {
+        "startLine": 560,
+        "startChar": 7,
+        "endLine": 560,
+        "endChar": 50
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0390e3f_fb7b1632",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
