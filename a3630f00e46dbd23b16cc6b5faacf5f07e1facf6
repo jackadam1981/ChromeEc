@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7ed0e7e_e8f3d54b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-07T16:07:46Z",
+      "side": 1,
+      "message": "Does this mean we are bouncing back and forth between SNK_DISCONNECTED and AUTO_TOGGLE every 2ms?",
+      "range": {
+        "startLine": 2197,
+        "startChar": 3,
+        "endLine": 2198,
+        "endChar": 43
+      },
+      "revId": "a3630f00e46dbd23b16cc6b5faacf5f07e1facf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61e6ed5_90908d04",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-07T16:07:46Z",
+      "side": 1,
+      "message": "nit: to make the if clause, can we put {} around this oneline statement",
+      "range": {
+        "startLine": 2201,
+        "startChar": 4,
+        "endLine": 2201,
+        "endChar": 8
+      },
+      "revId": "a3630f00e46dbd23b16cc6b5faacf5f07e1facf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
