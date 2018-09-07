@@ -66,6 +66,8 @@ static int tp_control;
 #define TP_CONTROL_SHALL_RESET		(1 << 0)
 #define TP_CONTROL_SHALL_INITIALIZE	(1 << 1)
 
+static int dump_memory_on_error;
+
 /*
  * Timestamp of last interrupt (32 bits are enough as we divide the value by 100
  * and then put it in a 16-bit field).
@@ -545,10 +547,12 @@ static void dump_error(void)
  */
 static void dump_memory(void)
 {
-#if 0
 	uint32_t size = 0x10000, rx_len = 512;
 	uint32_t offset, i;
 	uint8_t cmd[] = {0xFB, 0x00, 0x10, 0x00, 0x00};
+
+	if (!dump_memory_on_error)
+		return;
 
 	for (offset = 0; offset < size; offset += 512) {
 		cmd[3] = (offset >> 8) & 0xFF;
@@ -571,7 +575,6 @@ static void dump_memory(void)
 	}
 	CPRINTF("===============================\n");
 	msleep(8);
-#endif
 }
 
 /*
@@ -1486,7 +1489,7 @@ USB_DECLARE_EP(USB_EP_ST_TOUCHPAD_INT, st_tp_interrupt_tx, st_tp_interrupt_tx,
 /* Debugging commands */
 static int command_touchpad_st(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
 	if (strcasecmp(argv[1], "version") == 0) {
 		st_tp_read_system_info(1);
@@ -1516,10 +1519,17 @@ static int command_touchpad_st(int argc, char **argv)
 		dump_error();
 		dump_memory();
 		return EC_SUCCESS;
+	} else if (strcasecmp(argv[1], "memory_dump") == 0) {
+		if (argc < 3)
+			return EC_ERROR_PARAM_COUNT;
+
+		dump_memory_on_error = (strcasecmp(argv[2], "enable") == 0);
+		return EC_SUCCESS;
 	} else {
 		return EC_ERROR_PARAM1;
 	}
 }
 DECLARE_CONSOLE_COMMAND(touchpad_st, command_touchpad_st,
-			"<enable|disable|version>",
+			"<enable | disable | version | calibrate | dump | "
+			"memory_dump <enable|disable>>",
 			"Read write spi. id is spi_devices array index");
