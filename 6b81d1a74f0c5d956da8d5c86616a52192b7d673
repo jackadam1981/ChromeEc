@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d281270_fdb01aa8",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-07T06:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7309ff85_dc6a6616",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86aac3bf_0aab2491",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a9ef65c_112f3cd9",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-07T06:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86aac3bf_0aab2491",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "af3a9462_b5d7711c",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-07T06:29:29Z",
+      "side": 1,
+      "message": "no, \"shall initialize\" can only be cleared after the \"full initialization\" command is done.  The \"0x22\" error will be reported (PANEL_CONFIG_CRC_HEADER) on every bootup, that\u0027s why the previous patch will cause infinite loop.",
+      "parentUuid": "19f1c0bc_a72859a9",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0109197a_60aa8ba3",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 7
@@ -67,6 +121,24 @@
       "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70deb6bf_96fc47e0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-07T06:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0109197a_60aa8ba3",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
