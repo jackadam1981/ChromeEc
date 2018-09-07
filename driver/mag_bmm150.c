@@ -134,8 +134,8 @@ int bmm150_init(const struct motion_sensor_t *s)
 }
 
 void bmm150_temp_compensate_xy(const struct motion_sensor_t *s,
-			       vector_3_t raw,
-			       vector_3_t comp,
+			       intv3_t raw,
+			       intv3_t comp,
 			       int r)
 {
 	int inter, axis;
@@ -173,8 +173,8 @@ void bmm150_temp_compensate_xy(const struct motion_sensor_t *s,
 }
 
 void bmm150_temp_compensate_z(const struct motion_sensor_t *s,
-			      vector_3_t raw,
-			      vector_3_t comp,
+			      intv3_t raw,
+			      intv3_t comp,
 			      int r)
 {
 	int dividend, divisor;
@@ -203,11 +203,11 @@ void bmm150_temp_compensate_z(const struct motion_sensor_t *s,
 }
 
 void bmm150_normalize(const struct motion_sensor_t *s,
-		      vector_3_t v,
+		      intv3_t v,
 		      uint8_t *data)
 {
 	uint16_t r;
-	vector_3_t raw;
+	intv3_t raw;
 	struct mag_cal_t *cal = BMM150_CAL(s);
 
 	/* X and Y are two's complement 13 bits vectors */
@@ -229,7 +229,7 @@ void bmm150_normalize(const struct motion_sensor_t *s,
 }
 
 int bmm150_set_offset(const struct motion_sensor_t *s,
-		      const vector_3_t offset)
+		      const intv3_t offset)
 {
 	struct mag_cal_t *cal = BMM150_CAL(s);
 	cal->bias[X] = offset[X];
@@ -239,7 +239,7 @@ int bmm150_set_offset(const struct motion_sensor_t *s,
 }
 
 int bmm150_get_offset(const struct motion_sensor_t *s,
-		      vector_3_t offset)
+		      intv3_t offset)
 {
 	struct mag_cal_t *cal = BMM150_CAL(s);
 	offset[X] = cal->bias[X];

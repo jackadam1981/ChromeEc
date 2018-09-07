@@ -477,7 +477,7 @@ static int get_offset(const struct motion_sensor_t *s,
 			int16_t    *temp)
 {
 	int i, val, val98;
-	vector_3_t v;
+	intv3_t v;
 
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
@@ -537,7 +537,7 @@ static int set_offset(const struct motion_sensor_t *s,
 			int16_t    temp)
 {
 	int ret, i, val, val98;
-	vector_3_t v = { offset[X], offset[Y], offset[Z] };
+	intv3_t v = { offset[X], offset[Y], offset[Z] };
 
 	rotate_inv(v, *s->rot_standard_ref, v);
 
@@ -648,7 +648,7 @@ end_perform_calib:
 	return ret;
 }
 
-void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
+void normalize(const struct motion_sensor_t *s, intv3_t v, uint8_t *data)
 {
 #ifdef CONFIG_MAG_BMI160_BMM150
 	if (s->type == MOTIONSENSE_TYPE_MAG)
@@ -1037,7 +1037,7 @@ static int load_fifo(struct motion_sensor_t *s)
 #endif  /* CONFIG_ACCEL_FIFO */
 
 
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read(const struct motion_sensor_t *s, intv3_t v)
 {
 	uint8_t data[6];
 	int ret, status = 0;
