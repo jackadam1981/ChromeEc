@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "253e840f_190455c1",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T13:09:12Z",
+      "side": 1,
+      "message": "So you never re-enable deep_sleep? (I assume a reset would do it, but you don\u0027t always reset...",
+      "revId": "12cfe55a16dde188bdc10fee7768a7cd395827d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd5f475c_aaa870cf",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T13:09:12Z",
+      "side": 1,
+      "message": "are present. Or just present.",
+      "range": {
+        "startLine": 648,
+        "startChar": 61,
+        "endLine": 648,
+        "endChar": 69
+      },
+      "revId": "12cfe55a16dde188bdc10fee7768a7cd395827d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc93c63_506df9c6",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T13:09:12Z",
+      "side": 1,
+      "message": "return success or succeed",
+      "range": {
+        "startLine": 648,
+        "startChar": 32,
+        "endLine": 648,
+        "endChar": 39
+      },
+      "revId": "12cfe55a16dde188bdc10fee7768a7cd395827d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
