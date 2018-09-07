@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "02985536_5b99135e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec64ce4a_0f804320",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fcb545d_11ada1bb",
         "filename": "chip/scp/build.mk",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "9a063a07_9ed67054",
+        "filename": "chip/scp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bde3aab_f8e58c33",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c62fcef_1f31b8c7",
         "filename": "chip/scp/clock.c",
         "patchSetId": 1
@@ -77,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "c7372f4c_b18ae71e",
+        "filename": "chip/scp/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c62fcef_1f31b8c7",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a321c926_c1b475a5",
         "filename": "chip/scp/clock.c",
         "patchSetId": 1
@@ -91,6 +151,24 @@
       "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2843e0d_32e8b580",
+        "filename": "chip/scp/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a321c926_c1b475a5",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "6b4629f3_6e5ae1dd",
+        "filename": "chip/scp/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a215d45_56f960c6",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23d5001e_875430e0",
         "filename": "chip/scp/config_chip.h",
         "patchSetId": 1
@@ -131,6 +233,24 @@
       "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da91ca7f_b5026a41",
+        "filename": "chip/scp/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d5001e_875430e0",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "9e38031b_9f3ea8b0",
+        "filename": "chip/scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "150be8d4_94007098",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "548b0181_eede3b7c",
         "filename": "chip/scp/gpio.c",
         "patchSetId": 1
@@ -171,6 +315,24 @@
       "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b130cbb7_f8bc0de4",
+        "filename": "chip/scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done. SCP doesn\u0027t support GPIO_INT_F_BOTH, one minor difference from other chips.",
+      "parentUuid": "548b0181_eede3b7c",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "cec3acfd_385d3aa7",
+        "filename": "chip/scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d851df2_51eafa86",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a52e71d8_dbf6fb36",
         "filename": "chip/scp/gpio.c",
         "patchSetId": 1
@@ -211,6 +397,24 @@
       "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cedd1d_0dffa91f",
+        "filename": "chip/scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a52e71d8_dbf6fb36",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "eac9cdff_77eda62c",
+        "filename": "chip/scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3838492_7c6387cd",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 12
+      },
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5cb3bbf_2c708ad7",
         "filename": "chip/scp/hrtimer.c",
         "patchSetId": 1
@@ -251,6 +479,24 @@
       "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9449db42_33541d1f",
+        "filename": "chip/scp/hrtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5cb3bbf_2c708ad7",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -271,6 +517,24 @@
     },
     {
       "key": {
+        "uuid": "13e982ee_9a9e8555",
+        "filename": "chip/scp/hrtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de4d246a_926e078e",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb5409ae_a0b7835b",
         "filename": "chip/scp/system.c",
         "patchSetId": 1
@@ -285,6 +549,24 @@
       "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776e7e7c_b3eca727",
+        "filename": "chip/scp/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "bb5409ae_a0b7835b",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -311,6 +593,30 @@
     },
     {
       "key": {
+        "uuid": "5df6037e_c98d50e4",
+        "filename": "chip/scp/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23aaaef2_67cdd667",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d9a2313_24c530cc",
         "filename": "chip/scp/uart.c",
         "patchSetId": 1
@@ -328,6 +634,24 @@
     },
     {
       "key": {
+        "uuid": "fb7362c9_085ffa96",
+        "filename": "chip/scp/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9a2313_24c530cc",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d790040_1df91f7c",
         "filename": "chip/scp/uart.c",
         "patchSetId": 1
@@ -342,6 +666,24 @@
       "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc47d042_6eea9985",
+        "filename": "chip/scp/uart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-09-07T07:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d790040_1df91f7c",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
