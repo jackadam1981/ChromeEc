@@ -94,7 +94,7 @@ struct motion_sensor_t {
 	/* i2c address or SPI slave logic GPIO. */
 	uint8_t addr;
 
-	const matrix_3x3_t *rot_standard_ref;
+	const mat33_fp_t *rot_standard_ref;
 
 	/*
 	 * default_range: set by default by the EC.
