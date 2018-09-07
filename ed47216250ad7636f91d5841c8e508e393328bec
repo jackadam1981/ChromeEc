@@ -336,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "86fb681c_ab67e2b1",
+        "filename": "chip/scp/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T08:25:17Z",
+      "side": 1,
+      "message": "Oh, I see what you want, add this to the beginning of this file:\n\n  /* We do not support both-edge interrupts */\n  #define GPIO_INT(name, pin, flags, signal) \\\n\tBUILD_ASSERT(!((flags \u0026 GPIO_INT_F_RISING) \u0026\u0026 \\\n\t\t       (flags \u0026 GPIO_INT_F_FALLING)));\n  #define GPIO(name, pin, flags)\n  #define UNIMPLEMENTED(name)\n  #include \"gpio.wrap\"",
+      "parentUuid": "b130cbb7_f8bc0de4",
+      "revId": "ed47216250ad7636f91d5841c8e508e393328bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d851df2_51eafa86",
         "filename": "chip/scp/gpio.c",
         "patchSetId": 1
