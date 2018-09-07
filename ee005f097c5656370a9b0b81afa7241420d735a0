@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b11526a_18bc9e87",
+        "filename": "util/usb_if.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-07T17:01:27Z",
+      "side": 1,
+      "message": "r",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "ee005f097c5656370a9b0b81afa7241420d735a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad6ffd3_47e4a0a1",
+        "filename": "util/usb_if.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-07T17:01:27Z",
+      "side": 1,
+      "message": "n",
+      "range": {
+        "startLine": 31,
+        "startChar": 76,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "ee005f097c5656370a9b0b81afa7241420d735a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64dab42e_63ee2678",
+        "filename": "util/usb_if.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-07T17:01:27Z",
+      "side": 1,
+      "message": "Add comment for expected usage.\nShould this be paired with usb_findit()?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "ee005f097c5656370a9b0b81afa7241420d735a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
