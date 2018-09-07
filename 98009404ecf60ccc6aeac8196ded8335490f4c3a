@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf680bb2_4fca2363",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-07T11:03:23Z",
+      "side": 1,
+      "message": "else if? or maybe can merge all if statement to switch case",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "98009404ecf60ccc6aeac8196ded8335490f4c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe23d981_2c5fdacc",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-07T11:03:23Z",
+      "side": 1,
+      "message": "else?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "98009404ecf60ccc6aeac8196ded8335490f4c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ba5d52_4f97a12f",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-07T11:03:23Z",
+      "side": 1,
+      "message": "else",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "98009404ecf60ccc6aeac8196ded8335490f4c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
