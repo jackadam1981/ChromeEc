@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d194f5c_9b2c758e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3730,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-07T16:14:19Z",
+      "side": 1,
+      "message": "do we need to set the CC lines in an else case. E.g. if FORCE_SNK then set cc to Rd. Also if PD_DRP_TOGGLE_OFF, we should switch lines to Rd as well (based on comment in usb_pd.h)",
+      "range": {
+        "startLine": 3730,
+        "startChar": 4,
+        "endLine": 3730,
+        "endChar": 44
+      },
+      "revId": "ecba0e8a082fa453e37704ed36e0426eb6ae9c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
