@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbf4a92f_a8d4beab",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-07T19:08:46Z",
+      "side": 1,
+      "message": "if you move this declaration down when it is set, you can make this const too",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "64ed211b03bfaff90edf0594d8c4f5a6cd789e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
