@@ -1413,7 +1413,7 @@ static int command_accel_read_xyz(int argc, char **argv)
 	char *e;
 	int id, n = 1, ret;
 	struct motion_sensor_t *sensor;
-	vector_3_t v;
+	intv3_t v;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;

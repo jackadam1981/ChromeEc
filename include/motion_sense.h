@@ -122,8 +122,8 @@ struct motion_sensor_t {
 
 	/* state parameters */
 	enum sensor_state state;
-	vector_3_t raw_xyz;
-	vector_3_t xyz;
+	intv3_t raw_xyz;
+	intv3_t xyz;
 
 	/* How many flush events are pending */
 	uint32_t flush_pending;
