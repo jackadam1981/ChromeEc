@@ -3141,6 +3141,9 @@
 /* Define if this board can used TCPC-controlled DRP toggle */
 #undef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 
+/* Define if this board can act as a dual-role PD port and perform a fast role swap */
+#undef CONFIG_USB_PD_DUAL_ROLE_FRS
+
 /* Define to reduces VBUS droop caused by inrush current during charging */
 #undef CONFIG_BD9995X_DELAY_INPUT_PORT_SELECT
 

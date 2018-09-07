@@ -223,6 +223,10 @@ static int sn5s330_init(int port)
 	} while (retries < 10);
 
 	/* Set Vbus OVP threshold to ~22.325V. */
+	// may need to revisit how we do OVP, per datasheet flowcharts
+	// FRS_END appears to persist over EC reboots until power is cut, so may
+	// also need to clear it here or be very vigilent about clearing it when
+	// unplugging
 	regval = 0x37;
 	status = i2c_write8(i2c_port, i2c_addr, SN5S330_FUNC_SET5, regval);
 	if (status) {
@@ -352,9 +356,6 @@ static int sn5s330_init(int port)
 	 * for the PP1 overcurrent condition and then clear all pending
 	 * interrupts. If PPC is being used to detect VBUS, then also enable
 	 * interrupts for VBUS presence.
-	 *
-	 * TODO(aaboagye): Unmask fast-role swap events once fast-role swap is
-	 * implemented in the PD stack.
 	 */
 
 	regval = ~SN5S330_ILIM_PP1_MASK;
@@ -394,17 +395,25 @@ static int sn5s330_init(int port)
 	regval = 0xFF;
 #endif  /* CONFIG_USB_PD_VBUS_DETECT_PPC && CONFIG_USB_CHARGER */
 
-	status = i2c_write8(i2c_port, i2c_addr, SN5S330_INT_MASK_RISE_REG3,
-			    regval);
-	if (status) {
-		CPRINTS("ppc p%d: Failed to write INT_MASK_RISE3!", port);
-		return status;
-	}
-
 	status = i2c_write8(i2c_port, i2c_addr, SN5S330_INT_MASK_FALL_REG3,
 			    regval);
 	if (status) {
 		CPRINTS("ppc p%d: Failed to write INT_MASK_FALL3!", port);
+		return status;
+	}
+
+	/*
+	 * If PPC is being used for FRS, enable interrupts for CC FRS signal
+	 * detection and vSafe5V sourcing detection.
+	 */
+#if defined(CONFIG_USB_PD_DUAL_ROLE_FRS)
+	regval &= ~(SN5S330_FRS_SRC_CMPLT_MASK | SN5S330_FRS_CC_DETECT_MASK);
+	CPRINTS("Writing 0x%02X to rise mask reg 3", regval);
+#endif
+	status = i2c_write8(i2c_port, i2c_addr, SN5S330_INT_MASK_RISE_REG3,
+			    regval);
+	if (status) {
+		CPRINTS("ppc p%d: Failed to write INT_MASK_RISE3!", port);
 		return status;
 	}
 
@@ -602,6 +611,35 @@ static int sn5s330_set_vconn(int port, int enable)
 }
 #endif
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+static int sn5s330_frs_enable(int port, int enable)
+{
+	int status;
+
+	/* The FRS_END bit needs to be cleared before FRS_EN can be set
+	 * NOTE: may also need to re-set OVP, since it appears FRS_END causes
+	 * OVP to change to 5 (5.9071 V)
+	 * Seeing some funky interrupt behavior, manually clearing with i2xcfer
+	 * after doing hub unplugs for now
+	status = set_flags(port, SN5S330_FUNC_SET5, SN5S330_FRS_END);
+	if (status) {
+		CPRINTS("ppc p%d: Failed to set FUNC_SET5!", port);
+		return status;
+	}
+*/
+	CPRINTS("ppc p%d: setting FRS bit to %d", port, enable);
+	status = enable ? set_flags(port, SN5S330_FUNC_SET5, SN5S330_FRS_EN)
+			: clr_flags(port, SN5S330_FUNC_SET5, SN5S330_FRS_EN);
+
+	if (status) {
+		CPRINTS("ppc p%d: Failed to set FUNC_SET5!", port);
+		return status;
+	}
+
+	return EC_SUCCESS;
+}
+#endif
+
 static int sn5s330_vbus_sink_enable(int port, int enable)
 {
 	return sn5s330_pp_fet_enable(port, SN5S330_PP2, !!enable);
@@ -640,6 +678,14 @@ static void sn5s330_handle_interrupt(int port)
 	if (rise & SN5S330_VBUS_GOOD_MASK
 	    || fall & SN5S330_VBUS_GOOD_MASK)
 		usb_charger_vbus_change(port, sn5s330_is_vbus_present(port));
+
+	if (rise & SN5S330_FRS_CC_DETECT_MASK)
+		CPRINTS("Saw rising edge of CC detect!");
+
+	if (rise & SN5S330_FRS_SRC_CMPLT_MASK)
+		CPRINTS("Saw rising edge of source complete!");
+	// according to error section, we should probably ignore this if CC not
+	// detected immediately before
 
 	/* Clear the interrupt sources. */
 	write_reg(port, SN5S330_INT_TRIP_RISE_REG3, rise);
@@ -683,5 +729,9 @@ const struct ppc_drv sn5s330_drv = {
 #endif
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &sn5s330_set_vconn,
+#endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+	.set_frs = &sn5s330_frs_enable,
+	// Need: clear FRS_END
 #endif
 };

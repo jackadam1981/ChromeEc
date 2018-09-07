@@ -115,6 +115,17 @@ struct ppc_drv {
 	 * @return EC_SUCCESS on success, error otherwise.
 	 */
 	int (*enter_low_power_mode)(int port);
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+	/**
+	 * Turn on/off the PPC fast role swap feature
+	 *
+	 * @param port: The Type-C port number.
+	 * @param enable: 1: enable FRS 0: disable FRS
+	 * @return EC_SUCCESS on success, error otherwise.
+	 */
+	int (*set_frs)(int port, int enable);
+#endif /* defined(CONFIG_USB_PD_DUAL_ROLE_FRS) */
 };
 
 struct ppc_config_t {
@@ -221,5 +232,14 @@ void board_overcurrent_event(int port);
  * @return EC_SUCCESS on success, error otherwise.
  */
 int ppc_enter_low_power_mode(int port);
+
+/**
+ * Turn on/off fast role swap feature
+ *
+ * @param port: The Type-C port number
+ * @param enable: 1: Turn on the feature, 0: turn off the feature.
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+int ppc_set_frs(int port, int enable);
 
 #endif /* !defined(__CROS_EC_USBC_PPC_H) */

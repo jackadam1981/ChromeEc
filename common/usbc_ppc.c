@@ -107,6 +107,16 @@ int ppc_vbus_source_enable(int port, int enable)
 	return ppc_chips[port].drv->vbus_source_enable(port, enable);
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+int ppc_set_frs(int port, int enable)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	return ppc_chips[port].drv->set_frs(port, enable);
+}
+#endif
+
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 int ppc_is_vbus_present(int port)
 {

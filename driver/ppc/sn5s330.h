@@ -101,6 +101,10 @@ enum sn5s330_pp_idx {
 #define SN5S330_CC_EN			(1 << 4)
 #define SN5S330_VCONN_ILIM_SEL		(1 << 5)
 
+/* FUNC_SET_5 */
+#define SN5S330_FRS_EN			(1 << 6)
+#define SN5S330_FRS_END			(1 << 7)
+
 /* FUNC_SET_8 */
 #define SN5S330_VCONN_DEGLITCH_MASK	(3 << 6)
 #define SN5S330_VCONN_DEGLITCH_63_US	(0 << 6)
@@ -109,6 +113,7 @@ enum sn5s330_pp_idx {
 #define SN5S330_VCONN_DEGLITCH_1280_US	(3 << 6)
 
 /* FUNC_SET_9 */
+#define SN5S330_FRS_COMP_EN_CC		(1 << 0)
 #define SN5S330_FORCE_OVP_EN_SBU	(1 << 1)
 #define SN5S330_PP2_CONFIG		(1 << 2)
 #define SN5S330_OVP_EN_CC		(1 << 4)
@@ -141,8 +146,18 @@ enum sn5s330_pp_idx {
  * The VBUS_GOOD bit indicates VBUS has increased beyond a 4.0V threshold.
  * For rising edge registers, this indicates VBUS has risen above 4.0V.
  * For falling edge registers, this indicates VBUS has fallen below 4.0V.
+ *
+ * The FRS_SRC_CMPLT bit indicates that the PPC has now started sourcing vSafe5V
+ * and once the PD state machine receives a PS_RDY message from the new sink, it
+ * can send its own PS_RDY message.
+ *
+ * The FRS_CC_DETECT bit indicates that an FRS initiation has been sent over the
+ * CC lines by the initial sink and the PD state machine can send a FR_SWAP
+ * message
  */
-#define SN5S330_VBUS_GOOD_MASK (1 << 0)
+#define SN5S330_VBUS_GOOD_MASK		(1 << 0)
+#define SN5S330_FRS_SRC_CMPLT_MASK	(1 << 6)
+#define SN5S330_FRS_CC_DETECT_MASK	(1 << 7)
 
 extern const struct ppc_drv sn5s330_drv;
 

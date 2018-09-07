@@ -184,6 +184,10 @@ static struct pd_protocol {
 	int prev_request_mv;
 	/* Time for Try.SRC states */
 	uint64_t try_src_marker;
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+	/* Requested current for FRS, 0 if not FRS capable */
+	uint32_t frs_curr;
+#endif
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -259,6 +263,9 @@ static const char * const pd_state_names[] = {
 	"BIST_TX",
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	"DRP_AUTO_TOGGLE",
+#endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+	"SNK_GET_FRS_CURR",
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_state_names) == PD_STATE_COUNT);
@@ -828,6 +835,7 @@ static void pd_ca_send_pending(int port)
 				pd[port].ca_buffer) < 0)
 			return;
 
+
 	/* Message was sent, so free up the buffer. */
 	pd[port].ca_buffered = 0;
 }
@@ -1354,6 +1362,18 @@ static void pd_update_pdo_flags(int port, uint32_t pdo)
 	else
 		pd[port].flags &= ~PD_FLAGS_PARTNER_DR_DATA;
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+	if (pdo & PDO_FIXED_FRS_CURR) {
+		// TODO: translate this to something meaningful
+		// Also, do we need to tell the PPC to supply this somehow?
+		pd[port].frs_curr = (pdo & PDO_FIXED_FRS_CURR) >> 23;
+		CPRINTF("Device which supports FRS attached, current: 0x%02x\n",
+			pd[port].frs_curr);
+	}
+	else
+		pd[port].frs_curr = 0;
+#endif
+
 #ifdef CONFIG_CHARGE_MANAGER
 	/*
 	 * Treat device as a dedicated charger (meaning we should charge
@@ -1472,6 +1492,10 @@ static void handle_data_request(int port, uint16_t head,
 		pd_update_pdo_flags(port, payload[0]);
 		if (pd[port].task_state == PD_STATE_SRC_GET_SINK_CAP)
 			set_state(port, PD_STATE_SRC_READY);
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+		else if (pd[port].task_state == PD_STATE_SNK_GET_FRS_CURR)
+			set_state(port, PD_STATE_SNK_READY);
+#endif
 		break;
 #ifdef CONFIG_USB_PD_REV30
 	case PD_DATA_BATTERY_STATUS:
@@ -1516,6 +1540,9 @@ void pd_try_vconn_src(int port)
 	}
 }
 #endif
+
+// add request for FRS with suitable ifdef for CC interrupt to use
+
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 void pd_request_data_swap(int port)
@@ -1590,6 +1617,7 @@ static void handle_ctrl_request(int port, uint16_t head,
 
 		break;
 	case PD_CTRL_PS_RDY:
+		// Add FRS case - we'll get PS_RDY as per figure 7-29
 		if (pd[port].task_state == PD_STATE_SNK_SWAP_SRC_DISABLE) {
 			set_state(port, PD_STATE_SNK_SWAP_STANDBY);
 		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY) {
@@ -1698,6 +1726,7 @@ static void handle_ctrl_request(int port, uint16_t head,
 #endif
 		break;
 	case PD_CTRL_ACCEPT:
+		// Add FRS case - get Accept from FR_Swap per figure 7-29
 		if (pd[port].task_state == PD_STATE_SOFT_RESET) {
 			/*
 			 * For the case that we sent soft reset in SNK_DISCOVERY
@@ -1795,6 +1824,9 @@ static void handle_ctrl_request(int port, uint16_t head,
 		send_control(port, REFUSE(pd[port].rev));
 #endif
 		break;
+		// Error case for receiving FR_Swap - we should always be
+		// initial sink since we have a battery and shouldn't lose power
+		// as the initial source
 	default:
 #ifdef CONFIG_USB_PD_REV30
 		send_control(port, PD_CTRL_NOT_SUPPORTED);
@@ -3612,10 +3644,44 @@ void pd_task(void *u)
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
 				break;
 			}
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+			/* Send get sink cap if haven't received it yet
+			 * (response will have FRS current) */
+			if (!(pd[port].flags & PD_FLAGS_FRS_CURR_REQ) &&
+			      pd[port].flags & PD_FLAGS_PARTNER_DR_POWER) {
+				send_control(port, PD_CTRL_GET_SINK_CAP);
+				set_state(port, PD_STATE_SNK_GET_FRS_CURR);
+				pd[port].flags |= PD_FLAGS_FRS_CURR_REQ;
+				break;
+			}
 
+			// FRS can only be enabled on a connection with an
+			// explicit contract with a supportive port partner
+			if (pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT &&
+			    !(pd[port].flags & PD_FLAGS_FRS_ENABLED) &&
+			    pd[port].frs_curr != 0) {
+				ppc_set_frs(port, 1);
+				pd[port].flags |= PD_FLAGS_FRS_ENABLED;
+			}
+#endif
+			// Need to clear FRS_EN somewhere, not sure where
+			// From plugging/unplugging, bit clears itself on
+			// unplug, but then FUNC5 is 0x85, which means our
+			// OVP is off and FRS_END needs cleared
 			/* Sent all messages, don't need to wake very often */
 			timeout = 200*MSEC;
 			break;
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+                case PD_STATE_SNK_GET_FRS_CURR:
+			// Get peer FRS support, see Tables E-1 and E-2 in PD
+			// spec
+                        if (pd[port].last_state != pd[port].task_state)
+                                set_state_timeout(port,
+                                                  get_time().val +
+                                                  PD_T_SENDER_RESPONSE,
+                                                  PD_STATE_SNK_READY);
+                        break;
+#endif
 		case PD_STATE_SNK_SWAP_INIT:
 			if (pd[port].last_state != pd[port].task_state) {
 				res = send_control(port, PD_CTRL_PR_SWAP);
@@ -3921,6 +3987,18 @@ void pd_task(void *u)
 			break;
 		}
 #endif
+		// Need some new states...
+		// FRS INIT - received CC interrupt, send FR_SWAP
+		//	- goto next state if accept
+		//	- goto error recovery if we time out (soft reset?) or message doesn't
+		//	send (i.e. no GoodCRC, don't soft reset)
+		// FRS_TRANSITION - wait for PS_RDY or timeout (how does
+		//	FRS_SRC_CMPLT interrupt tie in? PPC spec says to wait
+		//	for it but not sure if other chips will have similar
+		//	indicator)
+		//	May be waiting for both PS_RDY and interrupt?  Separate
+		//	states?
+		// FRS_CMPLT - send PS_RDY and go to startup or error recovery
 		default:
 			break;
 		}

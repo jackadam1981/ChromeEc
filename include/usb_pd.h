@@ -83,6 +83,7 @@ enum pd_rx_errors {
 #define PDO_FIXED_EXTERNAL  (1 << 27) /* Externally powered */
 #define PDO_FIXED_COMM_CAP  (1 << 26) /* USB Communications Capable */
 #define PDO_FIXED_DATA_SWAP (1 << 25) /* Data role swap command supported */
+#define PDO_FIXED_FRS_CURR  (3 << 23) /* FRS required current */
 #define PDO_FIXED_PEAK_CURR () /* [21..20] Peak current */
 #define PDO_FIXED_VOLT(mv)  (((mv)/50) << 10) /* Voltage in 50mV units */
 #define PDO_FIXED_CURR(ma)  (((ma)/10) << 0)  /* Max current in 10mA units */
@@ -708,6 +709,11 @@ enum pd_states {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	PD_STATE_DRP_AUTO_TOGGLE,
 #endif
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_FRS
+	PD_STATE_SNK_GET_FRS_CURR,
+#endif
+	// New states for FRS: start, ready or standby, complete?
 	/* Number of states. Not an actual state. */
 	PD_STATE_COUNT,
 };
@@ -740,6 +746,10 @@ enum pd_states {
 #define PD_FLAGS_LPM_ENGAGED       (1 << 18)/* Tracks HW LPM state */
 #define PD_FLAGS_LPM_TRANSITION    (1 << 19)/* Tracks HW LPM transition */
 #endif
+// add flags for FRS requested and the complete interrupt?
+#define PD_FLAGS_FRS_ENABLED	   (1 << 20)/* Tracks whether FRS has been enabled on a sink port */
+#define PD_FLAGS_FRS_CURR_REQ      (1 << 21)/* Tracks whether we made an effort to fill in FRS current */
+
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -755,7 +765,9 @@ enum pd_states {
 					   PD_FLAGS_TRY_SRC | \
 					   PD_FLAGS_PARTNER_USB_COMM | \
 					   PD_FLAGS_UPDATE_SRC_CAPS | \
-					   PD_FLAGS_TS_DTS_PARTNER)
+					   PD_FLAGS_TS_DTS_PARTNER | \
+					   PD_FLAGS_FRS_ENABLED | \
+					   PD_FLAGS_FRS_CURR_REQ)
 
 /* Per-port battery backed RAM flags */
 #define PD_BBRMFLG_EXPLICIT_CONTRACT (1 << 0)

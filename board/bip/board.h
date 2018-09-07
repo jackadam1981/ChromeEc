@@ -24,6 +24,12 @@
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 #define CONFIG_STEINHART_HART_6V0_51K1_47K_4050B
 
+/* Define in other spot?  Probably best to isolate to bip to not affect new protos
+ * Also, add compiler fail if FRS without DUAL ROLE and PD30 */
+#define CONFIG_USB_PD_DUAL_ROLE_FRS
+#define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PID 1 // FIXME: this should be an actual number of some sort
+
 /* Hardware for proto bip does not support ec keyboard backlight control. */
 #undef CONFIG_PWM
 #undef CONFIG_PWM_KBLIGHT
