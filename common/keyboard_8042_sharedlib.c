@@ -65,6 +65,70 @@ SHAREDLIB(const uint8_t scancode_translate_table[128] = {
 	0x57, 0x4e, 0x51, 0x4a, 0x37, 0x49, 0x46, 0x54,
 });
 
+
+#ifdef CONFIG_KEYBOARD_DEBUG
+enum keycap_long_label_idx {
+	KLLI_ESC   = 0x80,
+	KLLI_F1    = 0x81,
+	KLLI_F2    = 0x82,
+	KLLI_F3    = 0x83,
+	KLLI_F4    = 0x84,
+	KLLI_F5    = 0x85,
+	KLLI_F6    = 0x86,
+	KLLI_F7    = 0x87,
+	KLLI_F8    = 0x88,
+	KLLI_F9    = 0x89,
+	KLLI_F10   = 0x8A,
+	KLLI_RSVD1 = 0x8B,
+	KLLI_RSVD2 = 0x8C,
+	KLLI_RSVD3 = 0x8D,
+	KLLI_RSVD4 = 0x8E,
+	KLLI_RSVD5 = 0x8F,
+	KLLI_L_ALT = 0x90,
+	KLLI_R_ALT = 0x91,
+	KLLI_L_CTR = 0x92,
+	KLLI_R_CTR = 0x93,
+	KLLI_L_SHT = 0x94,
+	KLLI_R_SHT = 0x95,
+	KLLI_ENTER = 0x96,
+	KLLI_SPACE = 0x97,
+	KLLI_B_SPC = 0x98,
+	KLLI_TAB   = 0x99,
+	KLLI_SEARC = 0x9A,
+	KLLI_LEFT  = 0x9B,
+	KLLI_RIGHT = 0x9C,
+	KLLI_DOWN  = 0x9D,
+	KLLI_UP    = 0x9E,
+	KLLI_MAX
+};
+
+char keycap_label[KEYBOARD_ROWS][KEYBOARD_COLS] = {
+	{0x00,       KLLI_SEARC, KLLI_F1, 'b',        KLLI_F10,   0x00, 'n',
+	 0x00,       '=',        0x00,    KLLI_R_ALT, 0x00,       0x00},
+	{0x00,       KLLI_ESC,   KLLI_F4, 'g',        KLLI_F7,    0x00, 'h',
+	 0x00,       '\'',       KLLI_F9, 0x00,       KLLI_B_SPC, 0x00},
+	{KLLI_L_CTR, KLLI_TAB,   KLLI_F3, 't',        KLLI_F6,    ']',  'y',
+	 0x00,       '[',        KLLI_F8, 0x00,       0x00,       0x00},
+	{0x00,       '~',        KLLI_F2, '5',        KLLI_F5,    0x00, '6',
+	 0x00,       '-',        0x00,    0x00,       '\\',       0x00},
+	{KLLI_R_CTR, 'a',        'd',     'f',        's',        'k',  'j',
+	 0x00,       ';',        '|',     0x00,       KLLI_ENTER, 0x00},
+	{0x00,       'z',        'c',     'v',        'x',        ',',  'm',
+	 KLLI_L_SHT, '/',        '.',     0x00,       KLLI_SPACE, 0x00},
+	{0x00,       '1',        '3',     '4',        '2',        '8',  '7',
+	 0x00,       '0',        '9',     KLLI_L_ALT, KLLI_DOWN,  KLLI_RIGHT},
+	{0x00,       'q',        'e',     'r',        'w',        'i',  'u',
+	 KLLI_R_SHT, 'p',        'o',     0x00,       KLLI_UP,    KLLI_LEFT},
+};
+
+char *keycap_long_label[KLLI_MAX & KEYCAP_LONG_LABEL_INDEX_BITMASK] = {
+	"ESC",   "F1",    "F2",    "F3",    "F4",    "F5",    "F6",    "F7",
+	"F8",    "F9",    "F10",   "",      "",      "",      "",      "",
+	"L-ALT", "R-ALT", "L-CTR", "R-CTR", "L-SHT", "R-SHT", "ENTER", "SPACE",
+	"B-SPC", "TAB",   "SEARC", "LEFT",  "RIGHT", "DOWN",  "UP",
+};
+#endif
+
 uint8_t scancode_translate_set2_to_1(uint8_t code)
 {
 	if (code & 0x80) {

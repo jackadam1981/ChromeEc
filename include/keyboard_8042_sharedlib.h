@@ -28,6 +28,14 @@ extern const uint16_t scancode_set2[KEYBOARD_ROWS][KEYBOARD_COLS];
 extern const uint8_t scancode_translate_table[];
 extern uint8_t scancode_translate_set2_to_1(uint8_t code);
 
+#ifdef CONFIG_KEYBOARD_DEBUG
+#define KEYCAP_LONG_LABEL_BIT   (0x80)
+#define KEYCAP_LONG_LABEL_INDEX_BITMASK		(~KEYCAP_LONG_LABEL_BIT)
+
+extern char keycap_label[KEYBOARD_ROWS][KEYBOARD_COLS];
+extern char *keycap_long_label[];
+#endif
+
 /* Button scancodes (Power, Volume Down, Volume Up, etc.) */
 extern const struct button_8042_t buttons_8042[KEYBOARD_BUTTON_COUNT];
 
