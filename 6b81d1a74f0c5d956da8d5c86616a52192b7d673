@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7309ff85_dc6a6616",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T05:22:39Z",
+      "side": 1,
+      "message": "Keep it simple:\n\n  tp_control |\u003d TP_CONTROL_SHALL_RESET;",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86aac3bf_0aab2491",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T05:22:39Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f1c0bc_a72859a9",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T05:22:39Z",
+      "side": 1,
+      "message": "\u0026\u003d ~TP_CONTROL_SHALL_RESET .\n\nDoes reset imply initialize? If so, tp_control \u003d 0;",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0109197a_60aa8ba3",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-07T05:22:39Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6b81d1a74f0c5d956da8d5c86616a52192b7d673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
