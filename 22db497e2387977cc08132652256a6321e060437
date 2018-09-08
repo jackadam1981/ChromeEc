@@ -22,6 +22,30 @@
       "revId": "22db497e2387977cc08132652256a6321e060437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7d92cd9_f6d8655b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-09-08T00:36:16Z",
+      "side": 1,
+      "message": "oh wait. I see the !\u003d now.\n\nIt\u0027s weird that \u0027level\u0027 is actually !level. Can we change this to asserted or something?",
+      "parentUuid": "412db4d7_31a34ec3",
+      "range": {
+        "startLine": 963,
+        "startChar": 49,
+        "endLine": 963,
+        "endChar": 54
+      },
+      "revId": "22db497e2387977cc08132652256a6321e060437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
