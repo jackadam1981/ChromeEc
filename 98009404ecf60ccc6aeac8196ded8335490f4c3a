@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5ec2577_7e54226f",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-08T01:35:18Z",
+      "side": 1,
+      "message": "Actually, you can also have a const table mapping all led states to the led on/off conditions:\n\n#define LED_ON 1\n#define LED_OFF 0\n\nstatic const struct {\n    char led1:1;\n    char led2:1;\n    char pwr:1;\n} led_state_table[] \u003d {\n    [LED_STATE_CHARGE] \u003d {\n          .led1 \u003d LED_OFF, .led2 \u003d LED_ON, .pwr \u003d LED_OFF,\n    }\n    ...\n}\n\nAnd then have a function:\nconfig_led_state(enum led_state state)\n{\n    gpio_set_level(GPIO_CHG_LED1, led_state_table[state].led1);\n    gpio_set_level(GPIO_CHG_LED2, led_state_table[state].led2);\n    gpio_set_level(GPIO_PWR_LED, led_state_table[state].pwr);\n}\n\nThoughts?",
+      "parentUuid": "cf680bb2_4fca2363",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "98009404ecf60ccc6aeac8196ded8335490f4c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe23d981_2c5fdacc",
         "filename": "board/rammus/led.c",
         "patchSetId": 4
