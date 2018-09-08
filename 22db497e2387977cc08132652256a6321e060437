@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "412db4d7_31a34ec3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-09-08T00:20:27Z",
+      "side": 1,
+      "message": "EC_RST is active low. \n\nIf you set ASSERT_EC_RST to 1, I think the CHECK_OUTPUT will be 0 when it\u0027s asserted???",
+      "range": {
+        "startLine": 963,
+        "startChar": 49,
+        "endLine": 963,
+        "endChar": 54
+      },
+      "revId": "22db497e2387977cc08132652256a6321e060437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
