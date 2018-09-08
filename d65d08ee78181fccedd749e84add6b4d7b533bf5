@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "663e756c_f0af064a",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-08T00:41:38Z",
+      "side": 1,
+      "message": "The mapping from row,col to key may still be different - for example on eve, there\u0027s a runtime check to change mapping per device motherboard version, and also dynamic mapping in legacy mode. So I still feel it may be better if you do the translation by make_code.\n\nBut well, 99% of devices should be using the fixed table so if you really want to use the label from row,col.",
+      "range": {
+        "startLine": 388,
+        "startChar": 16,
+        "endLine": 388,
+        "endChar": 38
+      },
+      "revId": "d65d08ee78181fccedd749e84add6b4d7b533bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09832ea2_38503eb7",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-08T00:41:38Z",
+      "side": 1,
+      "message": "if you want to put this in sharedlib, it should be declared as \nSHAREDLIB(const char key...",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "d65d08ee78181fccedd749e84add6b4d7b533bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e55a12_379e8f98",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-08T00:41:38Z",
+      "side": 1,
+      "message": "SHAREDLIB(const char * const keycap...",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "d65d08ee78181fccedd749e84add6b4d7b533bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
