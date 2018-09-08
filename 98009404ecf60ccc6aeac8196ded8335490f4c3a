@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "edf2bfc2_5614a9ca",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-08T03:42:24Z",
+      "side": 1,
+      "message": "Yes, i agree with Furquan. That is more clear than current code.",
+      "parentUuid": "f5ec2577_7e54226f",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "98009404ecf60ccc6aeac8196ded8335490f4c3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe23d981_2c5fdacc",
         "filename": "board/rammus/led.c",
         "patchSetId": 4
