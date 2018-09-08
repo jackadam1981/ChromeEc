@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd03163_7ace9a53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-08T05:11:09Z",
+      "side": 1,
+      "message": "At least nocturne, maybe poppy",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69388f3_a612beae",
+        "filename": "board/cheza/base_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-08T05:11:09Z",
+      "side": 1,
+      "message": "nit: too many blank lines, 1 is enough",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db119049_243bc0dc",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-08T05:11:09Z",
+      "side": 1,
+      "message": "Can\u0027t you do something similar to what you do on poppy, where you disable interrupts, and also do hook_call_deferred(\u0026base_detect_deferred_data, -1); to make sure the deferred task does not get called again?",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65145140_b1360d92",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 2192,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-08T05:11:09Z",
+      "side": 1,
+      "message": "Try to keep alphabetical order.\n\nAlso, I\u0027d just call this CONFIG_DETACHABLE_BASE, the \"BOARD_HAS_\" thing is implicit in many of these options.",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
