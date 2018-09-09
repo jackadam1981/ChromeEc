@@ -251,8 +251,13 @@ static void charge_manager_fill_power_info(int port,
 	else
 		/* Find highest priority supplier */
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-			if (available_charge[i][port].current > 0 &&
-			    available_charge[i][port].voltage > 0 &&
+			if (available_charge[i][port].voltage > 0 &&
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+				(available_charge[i][port].current > 0 ||
+				 i == CHARGE_SUPPLIER_DEDICATED) &&
+#else
+				available_charge[i][port].current > 0 &&
+#endif
 			    (sup == CHARGE_SUPPLIER_NONE ||
 			     supplier_priority[i] <
 			     supplier_priority[sup] ||
