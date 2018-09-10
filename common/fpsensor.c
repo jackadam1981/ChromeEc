@@ -73,6 +73,8 @@ static uint32_t templ_valid;
 static uint32_t templ_dirty;
 /* Current user ID */
 static uint32_t user_id[FP_CONTEXT_USERID_WORDS];
+/* Ready to encrypt a template */
+static int encryption_available = EC_RES_UNAVAILABLE;
 
 #define CPRINTF(format, args...) cprintf(CC_FP, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_FP, format, ## args)
@@ -94,6 +96,8 @@ static uint32_t user_id[FP_CONTEXT_USERID_WORDS];
 
 /* Delay between 2 s of the sensor to detect finger removal */
 #define FINGER_POLLING_DELAY (100*MSEC)
+/* Minimum delay between two encrypted messages. */
+#define ENCRYPTION_MAX_RATE (1000*MSEC)
 
 static uint32_t fp_events;
 static uint32_t sensor_mode;
@@ -518,6 +522,12 @@ static int aes_gcm_decrypt(uint8_t *key, int key_size, uint8_t *plaintext,
 	return EC_RES_SUCCESS;
 }
 
+static void encryption_available_deferred(void)
+{
+	encryption_available = EC_RES_SUCCESS;
+}
+DECLARE_DEFERRED(encryption_available_deferred);
+
 static int fp_command_frame(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_frame *params = args->params;
@@ -553,6 +563,12 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 	/* Templates are numbered from 1 in this host request. */
 	fgr = idx - 1;
 	if (!offset) {
+		if (encryption_available == EC_RES_BUSY)
+			return EC_RES_BUSY;
+		encryption_available = EC_RES_BUSY;
+		/* b/114160734: Not more than 1 encrypted message per second. */
+		hook_call_deferred(&encryption_available_deferred_data,
+				   ENCRYPTION_MAX_RATE);
 		/* Host has requested the first chunk, do the encryption. */
 		memset(fp_enc_buffer, 0, sizeof(fp_enc_buffer));
 		/* The beginning of the buffer contains nonce/salt/tag. */
