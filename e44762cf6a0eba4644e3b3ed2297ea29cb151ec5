@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4ff2e82_438a68e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-09-10T15:50:31Z",
+      "side": 1,
+      "message": "Don\u0027t quite understand how  this field works. Is it just a indication to the developers that  \"This patch will be cherry picked into above mentioned branches too ?\" or is there a script somewhere parsing thus field trying to cherry pick the commit ?",
+      "parentUuid": "2dd03163_7ace9a53",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69388f3_a612beae",
         "filename": "board/cheza/base_detect.c",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511e5253_4318bca1",
+        "filename": "board/cheza/base_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-09-10T15:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a69388f3_a612beae",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "033ab31c_04dbdfbc",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-09-10T15:50:31Z",
+      "side": 1,
+      "message": "I might be missing something here, but currently we don\u0027t depend on interrupt to identify the lid state on nocturne. Instead we have the differed task scheduled after every |DEFAULT_POLL_TIMEOUT_US|. When you force a state, you bail out without scheduling the differed task again. SO effectively |base_detect_deferred| should not be called again when the state is forced.  I see a bug to make this interrupt based (b/74239259).",
+      "parentUuid": "db119049_243bc0dc",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65145140_b1360d92",
         "filename": "include/config.h",
         "patchSetId": 12
@@ -67,6 +121,24 @@
       "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d00354_61912b26",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 2192,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2018-09-10T15:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65145140_b1360d92",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
