@@ -570,6 +570,7 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
+	//ccprintf("port %d sw_reset", port); //test TASK_ID_TO_PD_PORT
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }

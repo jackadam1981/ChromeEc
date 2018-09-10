@@ -586,7 +586,7 @@ int flash_pre_init(void)
 		/* Protect the entire flash of DBGR interface */
 		flash_protect_banks(0,
 			CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE,
-			FLASH_WP_DBGR);
+			FLASH_WP_DBGR); //mark test
 		/*
 		 * Write protect is asserted.  If we want RO flash protected,
 		 * protect it now.
