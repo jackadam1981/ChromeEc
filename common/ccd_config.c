@@ -64,6 +64,15 @@ enum ccd_capability_state {
 	CCD_CAP_STATE_COUNT
 };
 
+/*
+ * CCD command header; including the subcommand code used to demultiplex
+ * various CCD commands over the same TPM vendor command.
+ */
+struct ccd_vendor_cmd_header {
+	struct tpm_cmd_header tpm_header;
+	uint8_t ccd_subcommand;
+} __packed;
+
 /* Size of password salt and digest in bytes */
 #define CCD_PASSWORD_SALT_SIZE 4
 #define CCD_PASSWORD_DIGEST_SIZE 16
@@ -786,7 +795,7 @@ static int do_ccd_password(char *password)
 
 static int command_ccd_password(int argc, char **argv)
 {
-	struct tpm_cmd_header *tpmh;
+	struct ccd_vendor_cmd_header *vch;
 	int rv;
 	size_t password_size;
 	size_t command_size;
@@ -802,32 +811,33 @@ static int command_ccd_password(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 	}
 
-	command_size = sizeof(struct tpm_cmd_header) + password_size;
-	rv = shared_mem_acquire(command_size, (char **)&tpmh);
+	command_size = sizeof(*vch) + password_size;
+	rv = shared_mem_acquire(command_size, (char **)&vch);
 	if (rv != EC_SUCCESS)
 		return rv;
 
 	/* Build the extension command to set/clear CCD password. */
-	tpmh->tag = htobe16(0x8001); /* TPM_ST_NO_SESSIONS */
-	tpmh->size = htobe32(command_size);
-	tpmh->command_code = htobe32(TPM_CC_VENDOR_BIT_MASK);
-	tpmh->subcommand_code = htobe16(VENDOR_CC_CCD_PASSWORD);
-	memcpy(tpmh + 1, argv[1], password_size);
-	tpm_alt_extension(tpmh, command_size);
+	vch->tpm_header.tag = htobe16(0x8001); /* TPM_ST_NO_SESSIONS */
+	vch->tpm_header.size = htobe32(command_size);
+	vch->tpm_header.command_code = htobe32(TPM_CC_VENDOR_BIT_MASK);
+	vch->tpm_header.subcommand_code = htobe16(VENDOR_CC_CCD);
+	vch->ccd_subcommand = CCDV_PASSWORD;
+
+	memcpy(vch + 1, argv[1], password_size);
+	tpm_alt_extension(&vch->tpm_header, command_size);
 
 	/*
 	 * Return status in the command code field now, in case of error,
 	 * error code is the first byte after the header.
 	 */
-	if (tpmh->command_code) {
-		ccprintf("Password setting error %d\n",
-			 ((uint8_t *)(tpmh + 1))[0]);
+	if (vch->tpm_header.command_code) {
+		ccprintf("Password setting error %d\n", vch->ccd_subcommand);
 		rv = EC_ERROR_UNKNOWN;
 	} else {
 		rv = EC_SUCCESS;
 	}
 
-	shared_mem_release(tpmh);
+	shared_mem_release(vch);
 	return EC_SUCCESS;
 }
 
@@ -1118,13 +1128,110 @@ DECLARE_SAFE_CONSOLE_COMMAND(ccd, command_ccd,
 
 /*
  * Handle the VENDOR_CC_CCD_PASSWORD command.
+ * Password handling on Cr50 passes the following states:
  *
- * The payload of the command is a text string to use to set the password. The
- * text string set to 'clear' has a special effect though, it clears the
- * password instead of setting it.
+ * - password setting is not allowed after Cr50 reset until an upstart (as
+ *   opposed to resume) TPM startup happens, as signalled by the TPM callback.
+ *   After the proper TPM reset the state changes to 'POST_RESET_STATE' which
+ *   means that the device was just reset/rebooted (not resumed) and no user
+ *   logged in yet.
+ *
+ *  - if the owner logs in in this state, the state changes to
+ *    'PASSWORD_ALLOWED_STATE'. The owner can open crosh session and set the
+ *    password.
+ *
+ *   - when the owner logs out or any user but the owner logs in, the state
+ *     changes to PASSWORD_NOT_ALLOWED_STATE and does not change until TPM is
+ *     reset. This makes sure that password can be set only by the owner and
+ *     only before anybody else logged in.
  */
-static enum vendor_cmd_rc ccd_password(enum vendor_cmd_cc code,
-				       void *buf,
+enum password_reset_phase {
+	POST_RESET_STATE,
+	PASSWORD_ALLOWED_STATE,
+	PASSWORD_NOT_ALLOWED_STATE
+};
+
+static uint8_t password_state = PASSWORD_NOT_ALLOWED_STATE;
+
+void ccd_tpm_reset_callback(void)
+{
+	CPRINTS("%s: TPM Startup processed", __func__);
+	password_state = POST_RESET_STATE;
+}
+
+/*
+ * Handle the VENDOR_CC_MANAGE_CCD_PASSWORD command.
+ *
+ * The payload of the command is a single byte Boolean which sets the controls
+ * if CCD password can be set or not.
+ *
+ * After reset the pasword can not be set using VENDOR_CC_CCD_PASSWORD; once
+ * this command is received with value of True, the phase stars when the
+ * password can be set. As soon as this command is received with a value of
+ * False, the password can not be set any more until device is rebooted, even
+ * if this command is re-sent with the value of True.
+ */
+static enum vendor_cmd_rc manage_ccd_password(enum vendor_cmd_cc code,
+					      void *buf,
+					      size_t input_size,
+					      size_t *response_size)
+{
+	uint8_t prev_state = password_state;
+	/* The vendor command status code. */
+	enum vendor_cmd_rc rv = VENDOR_RC_SUCCESS;
+	/* Actual error code. */
+	uint8_t error_code = EC_SUCCESS;
+
+	do {
+		int value;
+
+		if (input_size != 1) {
+			rv = VENDOR_RC_INTERNAL_ERROR;
+			error_code = EC_ERROR_PARAM1;
+			break;
+		}
+
+		value = *((uint8_t *)buf);
+
+		if (!value) {
+			/* No more password setting allowed. */
+			password_state = PASSWORD_NOT_ALLOWED_STATE;
+			break;
+		}
+
+		if (password_state == POST_RESET_STATE) {
+			/* The only way to allow password setting. */
+			password_state = PASSWORD_ALLOWED_STATE;
+			break;
+		}
+
+		password_state = PASSWORD_NOT_ALLOWED_STATE;
+		rv = VENDOR_RC_BOGUS_ARGS;
+		error_code = EC_ERROR_INVAL;
+	} while (0);
+
+	if (prev_state != password_state)
+		CPRINTF("%s: state change from %d to %d\n",
+			__func__, prev_state, password_state);
+
+	if (rv == VENDOR_RC_SUCCESS) {
+		*response_size = 0;
+	} else {
+		*response_size = 1;
+		((uint8_t *)buf)[0] = error_code;
+	}
+
+	return rv;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_MANAGE_CCD_PWD, manage_ccd_password);
+
+/*
+ * Handle the CCVD_PASSWORD subcommand.
+ *
+ * The payload of the command is a text string to use to set or clear the
+ * password.
+ */
+static enum vendor_cmd_rc ccd_password(void *buf,
 				       size_t input_size,
 				       size_t *response_size)
 {
@@ -1152,8 +1259,54 @@ static enum vendor_cmd_rc ccd_password(enum vendor_cmd_cc code,
 	*response_size = 0;
 	return VENDOR_RC_SUCCESS;
 }
-DECLARE_VENDOR_COMMAND(VENDOR_CC_CCD_PASSWORD, ccd_password);
 
+/*
+ * Common TPM Vendor command handler used to demultiplex various CCD commands
+ * which need to be available both throuh CLI and over /dev/tpm0.
+ */
+static enum vendor_cmd_rc ccd_vendor(enum vendor_cmd_cc code,
+				     void *buf,
+				     size_t input_size,
+				     size_t *response_size)
+{
+	enum vendor_cmd_rc (*handler)(void *x, size_t y, size_t *t);
+	char *buffer;
+	enum vendor_cmd_rc rc;
+
+	/*
+	 * buf points to the next byte after tpm header, i.e. to the CCD
+	 * subcommand. Cache the pointer to make it easier to access and
+	 * manipulate.
+	 */
+	buffer = buf;
+
+	/* Pick what to do based on subcommand. */
+	switch (buffer[0]) {
+	case CCDV_PASSWORD:
+		handler = ccd_password;
+		break;
+
+	default:
+		CPRINTS("%s:%d - unknown subcommand\n", __func__, __LINE__);
+		break;
+	}
+
+	if (handler) {
+		rc = handler(buf + 1, input_size - 1, response_size);
+
+		/*
+		 * Move response up for the master to see it in the right
+		 * place in the response buffer.
+		 */
+		memmove(buf, buf + 1, *response_size);
+	} else {
+		rc = VENDOR_RC_NO_SUCH_SUBCOMMAND;
+		*response_size = 0;
+	}
+
+	return rc;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_CCD, ccd_vendor);
 
 static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 					  void *buf,
