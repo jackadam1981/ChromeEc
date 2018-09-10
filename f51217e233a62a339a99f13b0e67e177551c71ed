@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "29e71bea_d83d4e5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-09-10T06:25:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e476e5_fd2af009",
+      "revId": "f51217e233a62a339a99f13b0e67e177551c71ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93ad7ebd_bfce45fe",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "321dbe62_88049da6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-09-10T06:25:29Z",
+      "side": 1,
+      "message": "fp: fixed point type.\nhttp://go/ec-git/include/math_util.h#27",
+      "parentUuid": "93ad7ebd_bfce45fe",
+      "range": {
+        "startLine": 27,
+        "startChar": 29,
+        "endLine": 27,
+        "endChar": 31
+      },
+      "revId": "f51217e233a62a339a99f13b0e67e177551c71ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd5bb80e_a4e016b0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2018-09-10T05:37:54Z",
       "side": 1,
       "message": "Does this naming convention come from somewhere? I feel like I\u0027ve seen it in some library but can\u0027t find it now... Would be nice to be able to say that we reuse the convention of library xyz.",
+      "revId": "f51217e233a62a339a99f13b0e67e177551c71ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328d3c94_8518e563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-09-10T06:25:29Z",
+      "side": 1,
+      "message": "I did check the OpenCL datatype for vector type naming: https://www.khronos.org/registry/OpenCL/sdk/1.2/docs/man/xhtml/dataTypes.html\nThe naming rule OpenCL using is like $type + n, but considering we have types like uint8, I add a character \u0027v\u0027 between the types and nums.\n\nFor matrix type naming, I just tried to have minimum modification from the original naming rule.",
+      "parentUuid": "dd5bb80e_a4e016b0",
       "revId": "f51217e233a62a339a99f13b0e67e177551c71ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
