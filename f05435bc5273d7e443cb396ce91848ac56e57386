@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5f5fb64_193466e9",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-10T18:58:46Z",
+      "side": 1,
+      "message": "Should r6-r9 be reallocated to the call-clobbered range of r16-r19?  That way they wouldn\u0027t need to be saved and restored by __mulsf3.  You could also set __mulsf3 to be an alias of __mulsf3_div_div.\n\n\nRef: AndeStar Instruction Set Architecture Manual, sec 1.4, table 1 describes r6-r14 as callee-saved, and r16-r25 as call-clobbered.  Is GCC complying with this procedure call standard, or is it using another one?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
