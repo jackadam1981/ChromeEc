@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c0a9109b_ec709bbf",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-10T21:22:55Z",
+      "side": 1,
+      "message": "Gotcha! Done.",
+      "parentUuid": "5582169b_93c89954",
+      "range": {
+        "startLine": 347,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 21
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3f52d42_bf8e9b04",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -354,6 +378,24 @@
       "side": 1,
       "message": "Not done, I\u0027d get rid of the else\u0027s.",
       "parentUuid": "c8820d69_5587ea85",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "175c8edd_6aca7543",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-10T21:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "582349d0_8fe201cf",
       "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
