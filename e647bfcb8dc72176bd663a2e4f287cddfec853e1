@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd6612c_aaf90179",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-10T06:08:59Z",
+      "side": 1,
+      "message": "Easier: Just record the current time in a timestamp_t:\ntimestamp_t last_encrypt \u003d get_time();\n\nOr, maybe better, record the deadline and use timestamp_expired().\n\ntimestamp_t is 64-bit, so it does not roll around. It\u0027s also ok (in both cases) to leave it initialized at 0 (timestamp always starts from 0 on RO boot).",
+      "revId": "e647bfcb8dc72176bd663a2e4f287cddfec853e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
