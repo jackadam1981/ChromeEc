@@ -1367,6 +1367,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_FMPI2C4EN             (1 << 24)
 
 #define STM32_RCC_APB2ENR               REG32(STM32_RCC_BASE + 0x44)
+#define STM32_RCC_APB2ENR_ADC1EN        (1 << 8) /* STM32F4 */
 
 #define STM32_RCC_PB2_USART6            (1 << 5)
 #define STM32_RCC_SYSCFGEN		(1 << 14)
