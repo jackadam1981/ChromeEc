@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6120737_e2b00c5e",
+        "filename": "board/aleena/led_states.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-10T16:01:16Z",
+      "side": 1,
+      "message": "Does Aleena have a power led? If not, then this isn\u0027t needed.",
+      "range": {
+        "startLine": 122,
+        "startChar": 12,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "7d232a0c3d211655f7e384185f6ad9dc5ef744fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
