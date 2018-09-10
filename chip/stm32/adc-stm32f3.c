@@ -195,8 +195,12 @@ int adc_read_channel(enum adc_channel ch)
 	/* Clear EOC bit */
 	STM32_ADC_SR &= ~(1 << 1);
 
-	/* Start conversion */
+	/* Start conversion (TODO: Do we need SWSTART for F3? */
+#if defined(CHIP_FAMILY_STM32F4)
+	STM32_ADC_CR2 |= (1 << 0) | (1 << 30); /* ADON = 1, SWSTART = 1 */
+#else
 	STM32_ADC_CR2 |= (1 << 0); /* ADON */
+#endif
 
 	/* Wait for EOC bit set */
 	deadline.val = get_time().val + ADC_SINGLE_READ_TIMEOUT;
