@@ -233,6 +233,27 @@ static int charge_manager_get_source_current(int port)
 	}
 }
 
+/*
+ * Find highest priority supplier considering available current, voltage,
+ * priority, and available power.
+ */
+static enum charge_supplier find_supplier(int port, enum charge_supplier sup,
+					  int min_cur)
+{
+	int i;
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
+		if (available_charge[i][port].current > min_cur &&
+		    available_charge[i][port].voltage > 0 &&
+		    (sup == CHARGE_SUPPLIER_NONE ||
+		     supplier_priority[i] < supplier_priority[sup] ||
+		     (supplier_priority[i] == supplier_priority[sup] &&
+		      POWER(available_charge[i][port]) >
+			POWER(available_charge[sup][port]))))
+		sup = i;
+	}
+	return sup;
+}
+
 /**
  * Fills passed power_info structure with current info about the passed port.
  *
@@ -243,24 +264,17 @@ static void charge_manager_fill_power_info(int port,
 	struct ec_response_usb_pd_power_info *r)
 {
 	int sup = CHARGE_SUPPLIER_NONE;
-	int i;
 
 	/* Determine supplier information to show. */
-	if (port == charge_port)
+	if (port == charge_port) {
 		sup = charge_supplier;
-	else
-		/* Find highest priority supplier */
-		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-			if (available_charge[i][port].current > 0 &&
-			    available_charge[i][port].voltage > 0 &&
-			    (sup == CHARGE_SUPPLIER_NONE ||
-			     supplier_priority[i] <
-			     supplier_priority[sup] ||
-			    (supplier_priority[i] ==
-			     supplier_priority[sup] &&
-			     POWER(available_charge[i][port]) >
-			     POWER(available_charge[sup][port]))))
-				sup = i;
+	} else {
+		/* Consider available current */
+		sup = find_supplier(port, sup, 0);
+		if (sup == CHARGE_SUPPLIER_NONE)
+			/* Ignore available current */
+			sup = find_supplier(port, sup, -1);
+	}
 
 	/* Fill in power role */
 	if (charge_port == port)
