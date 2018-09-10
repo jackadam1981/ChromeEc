@@ -22,6 +22,29 @@
       "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b099ae1_f80a3d4c",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-10T21:22:36Z",
+      "side": 1,
+      "message": "Can you benchmark this routine versus a software floating-point multiply that is implemented entirely with the integer ISA?\n\nDivision is typically much slower than multiplication.  Assuming that the it8320dx uses a functional unit similar to that described in Tables 47 and 49 of the FPU extension manual, you are suffering ~46 cycles of latency just for the barriers and sequential divisions + ~20 more for special-case handling + 4 register save/restore.\n\nFor a comparison, ARMv4 could implement __mulsf3 in 28 instructions [0].  Granted that these are very different machines, it sounds like mulsf3_div_div has performance similar to or worse than an optimized softfloat library.\n\n\n[0]: https://gcc.gnu.org/ml/gcc-patches/2004-10/msg01018.html",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 43
+      },
+      "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
