@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5461b69f_ad671a08",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-10T07:56:32Z",
+      "side": 1,
+      "message": "if you return some EC_RES value below, do the same here.",
+      "range": {
+        "startLine": 345,
+        "startChar": 9,
+        "endLine": 345,
+        "endChar": 11
+      },
+      "revId": "8fb92959d9676e832a4111d6f61bd71f23567f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51bc129f_f3d3d163",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-10T07:56:32Z",
+      "side": 1,
+      "message": "if you return some EC_RES value below, do the same here.",
+      "range": {
+        "startLine": 345,
+        "startChar": 9,
+        "endLine": 345,
+        "endChar": 11
+      },
+      "revId": "8fb92959d9676e832a4111d6f61bd71f23567f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

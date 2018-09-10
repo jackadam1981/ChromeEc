@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5582169b_93c89954",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-10T07:56:32Z",
+      "side": 1,
+      "message": "Yes, sizeof(rb_secret) is what you want:\nvoid hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,\n                 const uint8_t *message, const int message_len);\n\nYou definitely want to use all of your rb_secret to generate your key_buf. Else you\u0027re just throwing away entropy.",
+      "parentUuid": "125f9019_df9b1b42",
+      "range": {
+        "startLine": 347,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 21
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3f52d42_bf8e9b04",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -318,6 +342,24 @@
     },
     {
       "key": {
+        "uuid": "582349d0_8fe201cf",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-10T07:56:32Z",
+      "side": 1,
+      "message": "Not done, I\u0027d get rid of the else\u0027s.",
+      "parentUuid": "c8820d69_5587ea85",
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce5a83ff_8838f337",
         "filename": "common/fpsensor.c",
         "patchSetId": 6
@@ -353,6 +395,30 @@
       "side": 1,
       "message": "Not sure about the \"nice\" part, but point taken :-)\nDone",
       "parentUuid": "ce5a83ff_8838f337",
+      "range": {
+        "startLine": 560,
+        "startChar": 7,
+        "endLine": 560,
+        "endChar": 50
+      },
+      "revId": "20e1e78833811adc640800e7fdb5d74ddc583beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ab3254_1dc7cc9b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-10T07:56:32Z",
+      "side": 1,
+      "message": "s/nice/interesting/ ,-P",
+      "parentUuid": "73452fb3_be022a9c",
       "range": {
         "startLine": 560,
         "startChar": 7,
