@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4255c913_c3883c3e",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-09-10T21:28:58Z",
+      "side": 1,
+      "message": "Made it mutable, like scancode_set2. For now, \"eve\" is the only board requiring it mutable.\n\nI prefer mapping from row+col rather than from make_code, because I intended smaller size of mapping table: 104 bytes (8x13) versus  132 bytes (0x00~0x0083) or more.",
+      "parentUuid": "663e756c_f0af064a",
+      "range": {
+        "startLine": 388,
+        "startChar": 16,
+        "endLine": 388,
+        "endChar": 38
+      },
+      "revId": "d65d08ee78181fccedd749e84add6b4d7b533bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09832ea2_38503eb7",
         "filename": "common/keyboard_8042_sharedlib.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e7cf8b07_f9fcf229",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-09-10T21:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09832ea2_38503eb7",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "d65d08ee78181fccedd749e84add6b4d7b533bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75e55a12_379e8f98",
         "filename": "common/keyboard_8042_sharedlib.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "d65d08ee78181fccedd749e84add6b4d7b533bf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c7d07a6_b9e19ffb",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-09-10T21:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e55a12_379e8f98",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "d65d08ee78181fccedd749e84add6b4d7b533bf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
