@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e12b2a1e_0c64d82d",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-11T00:21:13Z",
+      "side": 1,
+      "message": "char * const",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "98cea1bd4bfc1c82f1d4d0164db47e16a1da8a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea96af7e_d281ca09",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-09-11T00:21:13Z",
+      "side": 1,
+      "message": "const char * const",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "98cea1bd4bfc1c82f1d4d0164db47e16a1da8a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
