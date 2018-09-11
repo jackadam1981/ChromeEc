@@ -153,6 +153,30 @@
       "revId": "bdb9b70cc9685e2cb36062107e9a87710ad91879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963b9c2d_ed0f2df3",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-09-11T17:38:49Z",
+      "side": 1,
+      "message": "I assume you are suggesting to key off of board_get_version()?\n\nDo you happen to know the value that corresponds to \"GPIO pin\"? Or will we need to define a new one for this purpose?",
+      "parentUuid": "c26feea6_17a9a4b9",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "bdb9b70cc9685e2cb36062107e9a87710ad91879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
