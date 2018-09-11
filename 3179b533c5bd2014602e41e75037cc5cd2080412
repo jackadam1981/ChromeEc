@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2eb922d0_f4661b7a",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653f254f_156ee6d0",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fb7a20d_476f8fe1",
         "filename": "board/cr50/pinweaver_tpm_imports.c",
         "patchSetId": 15
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "68134d7e_252dcba6",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fb7a20d_476f8fe1",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 65
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f9383b0_7a5eb301",
         "filename": "board/cr50/pinweaver_tpm_imports.c",
         "patchSetId": 15
@@ -59,6 +107,30 @@
       "writtenOn": "2018-08-23T17:26:34Z",
       "side": 1,
       "message": "PCRRead may return an updated bitmask with unimplemented PCRs excluded from it, so there may be less values if that happens. we may want to check, and probably error out if a requested PCR is actually not implemented.",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1fc7623_3a68858f",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "IIUC, the value if select-\u003epcrSelect is changed if there are too many PCR indexes requested in selection. So, I\u0027m comparing with the value from selection that we have after PCRRead.",
+      "parentUuid": "2f9383b0_7a5eb301",
       "range": {
         "startLine": 37,
         "startChar": 18,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "27b5a1f5_3ecb86b6",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Intentional. It\u0027s the max size that can be taken by the path to the leaf. Had to decrease it, since the new leaf is bigger now. So, less space left for the path.",
+      "parentUuid": "5f86d2c6_4ecffd28",
+      "range": {
+        "startLine": 72,
+        "startChar": 33,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c3fc4e9_3d02ee0a",
         "filename": "common/pinweaver.c",
         "patchSetId": 15
@@ -114,6 +210,30 @@
       "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e974819_524f93bc",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c3fc4e9_3d02ee0a",
+      "range": {
+        "startLine": 459,
+        "startChar": 1,
+        "endLine": 462,
+        "endChar": 2
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "09c7d250_714b0760",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd0dcb9_e0c0626c",
+      "range": {
+        "startLine": 1004,
+        "startChar": 1,
+        "endLine": 1007,
+        "endChar": 2
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "587d500b_c10766f2",
         "filename": "common/pinweaver.c",
         "patchSetId": 15
@@ -160,6 +304,30 @@
       "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a988e1c0_14e2fccf",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587d500b_c10766f2",
+      "range": {
+        "startLine": 1124,
+        "startChar": 53,
+        "endLine": 1124,
+        "endChar": 55
+      },
+      "revId": "3179b533c5bd2014602e41e75037cc5cd2080412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

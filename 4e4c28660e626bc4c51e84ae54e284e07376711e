@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b4bb5e8_7ddb8446",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd984054_0b7b6dee",
+      "range": {
+        "startLine": 60,
+        "startChar": 69,
+        "endLine": 60,
+        "endChar": 72
+      },
+      "revId": "4e4c28660e626bc4c51e84ae54e284e07376711e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b6068c5_d28d5ecb",
         "filename": "common/pinweaver.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f3845f55_9d58f1e3",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b6068c5_d28d5ecb",
+      "range": {
+        "startLine": 72,
+        "startChar": 34,
+        "endLine": 72,
+        "endChar": 37
+      },
+      "revId": "4e4c28660e626bc4c51e84ae54e284e07376711e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad03295c_fab229c3",
         "filename": "common/pinweaver.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-06-22T16:01:31Z",
       "side": 1,
       "message": "This is where the logic for upgrades existing leafs which do not have the PCR field set. We will need to decide how to handle this and might need to add a separate upgrade message for specifying the missing fields.\n\nWe also may need to specify, a major version change if stripping the fields would break the security.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 1
+      },
+      "revId": "4e4c28660e626bc4c51e84ae54e284e07376711e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de468609_a4b68fad",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "I\u0027ve implemented the migration in a separate function (seal_to_pcr).",
+      "parentUuid": "ad03295c_fab229c3",
       "range": {
         "startLine": 95,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0a918e2c_5f7cee25",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "The bitmask \u003d 0 will make the auth skip this check.",
+      "parentUuid": "910633f2_dd31223f",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 42
+      },
+      "revId": "4e4c28660e626bc4c51e84ae54e284e07376711e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7551d1cc_3002f2e1",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "4e4c28660e626bc4c51e84ae54e284e07376711e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a174ac_9a18cf41",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-11T16:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7551d1cc_3002f2e1",
+      "range": {
+        "startLine": 20,
+        "startChar": 29,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "4e4c28660e626bc4c51e84ae54e284e07376711e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
