@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "065c9660_a06a487a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-11T18:23:11Z",
+      "side": 1,
+      "message": "Why not use task_wake()?",
+      "revId": "7fdbe282d79bcb23f9507b3a128998e44285b451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
