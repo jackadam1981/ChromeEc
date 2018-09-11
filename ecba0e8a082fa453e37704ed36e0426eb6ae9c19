@@ -22,6 +22,30 @@
       "revId": "ecba0e8a082fa453e37704ed36e0426eb6ae9c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a9aa59c_b81af1ae",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3730,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-11T21:45:23Z",
+      "side": 1,
+      "message": "Isn\u0027t that already take care of by pd_update_dual_role_config()?",
+      "parentUuid": "2d194f5c_9b2c758e",
+      "range": {
+        "startLine": 3730,
+        "startChar": 4,
+        "endLine": 3730,
+        "endChar": 44
+      },
+      "revId": "ecba0e8a082fa453e37704ed36e0426eb6ae9c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
