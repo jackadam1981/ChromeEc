@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d4d10b0_3bb4b3a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-09-11T20:13:50Z",
+      "side": 1,
+      "message": "nit, a deferred",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 38
+      },
+      "revId": "d3ab83c3fe6634508e5a4dfb76a70dc3368224cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8dbc061_5260dadd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-09-11T20:13:50Z",
+      "side": 1,
+      "message": "format nit .. have both lists and prose ... lets choose one.  I like,\n\nWe have two implementations for managing base status.  One is interrupt driven while the other is a polling via a task.\n\nBoards current implementations then are:\n- interrupts: lux, soraka, cheza\n- polling task: nocturne, zoombini\n\nFor forcing base connect and disconnect,\n- interrupts: Disable interrupts and set forced base state.\n- polling task: Stop periodic task and set forced base state.\n\nOn reset,\n- interrupts: Schedule deferred task immediately and enable interrupts.\n- polling task: Clear forced base state and begin rescheduling periodic task.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 60
+      },
+      "revId": "d3ab83c3fe6634508e5a4dfb76a70dc3368224cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f742e5e3_e6348e6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-09-11T20:13:50Z",
+      "side": 1,
+      "message": "I\u0027d add b:37223093",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "d3ab83c3fe6634508e5a4dfb76a70dc3368224cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
