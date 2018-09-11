@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "644fc4a5_92770677",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-11T13:46:24Z",
+      "side": 1,
+      "message": "Right, just an indication for devs.",
+      "parentUuid": "c4ff2e82_438a68e6",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69388f3_a612beae",
         "filename": "board/cheza/base_detect.c",
         "patchSetId": 12
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "I might be missing something here, but currently we don\u0027t depend on interrupt to identify the lid state on nocturne. Instead we have the differed task scheduled after every |DEFAULT_POLL_TIMEOUT_US|. When you force a state, you bail out without scheduling the differed task again. SO effectively |base_detect_deferred| should not be called again when the state is forced.  I see a bug to make this interrupt based (b/74239259).",
       "parentUuid": "db119049_243bc0dc",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6b6df72_35a70ae7",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-11T13:46:24Z",
+      "side": 1,
+      "message": "Right, base_detect_deferred_data is called periodically (it reschedules itself, when done).\n\nIf you do hook_call_deferred(\u0026base_detect_deferred_data, -1); in this function, that\u0027ll make sure the hook call is cancelled (-1 does that), so it won\u0027t get run again, so it won\u0027t reschedule itself.",
+      "parentUuid": "033ab31c_04dbdfbc",
       "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
