@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab2b81e6_d765b62c",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-11T16:08:48Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to split this from the case where the PCR criteria is present. It is fine to have the valid_pcr_criteria field and it be all NULL so the code for serializing, deserializing, and interpreting this can be simpler.",
+      "range": {
+        "startLine": 230,
+        "startChar": 39,
+        "endLine": 230,
+        "endChar": 41
+      },
+      "revId": "2abeb0cbcfb61060eb79ec76fdea31603da49c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
