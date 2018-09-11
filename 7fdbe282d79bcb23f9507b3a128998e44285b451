@@ -16,6 +16,24 @@
       "revId": "7fdbe282d79bcb23f9507b3a128998e44285b451",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341f26d5_27db5c2e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-11T19:23:06Z",
+      "side": 1,
+      "message": "I could have. It just felt a little weird to have no event causing the wake up -- even though there will probably only ever be a single reason to wake the task.\n\nI would be okay removing under the yagni principle",
+      "parentUuid": "065c9660_a06a487a",
+      "revId": "7fdbe282d79bcb23f9507b3a128998e44285b451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
