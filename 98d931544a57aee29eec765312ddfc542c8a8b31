@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "fa3bf517_4d8bc4d5",
+        "filename": "fuzz/cr50_fuzz.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T21:04:12Z",
+      "side": 1,
+      "message": "If there is no blank line and a line break terminating line 82, all is good (I think gerrit rendering also changed at some point regarding that?)",
+      "parentUuid": "90ee6d14_3daebd7d",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d650bce_869e04e2",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 16
@@ -128,6 +146,29 @@
       "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb1cde9b_79e4ae8d",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T21:04:12Z",
+      "side": 1,
+      "message": "using plain arrays in the function signatures vs. std::vector in the hash_tree_ map leads to quite a bit of boilerplate. Consider using a single type (possibly std::array\u003cuint8_t, PW_HASH_SIZE\u003e)?",
+      "range": {
+        "startLine": 17,
+        "startChar": 26,
+        "endLine": 17,
+        "endChar": 57
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
