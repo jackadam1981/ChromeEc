@@ -46,6 +46,30 @@
       "revId": "ecba0e8a082fa453e37704ed36e0426eb6ae9c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7442a7_d2770a64",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3730,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-12T17:13:08Z",
+      "side": 1,
+      "message": "it should be, I was just worrying myself for no reason.",
+      "parentUuid": "8a9aa59c_b81af1ae",
+      "range": {
+        "startLine": 3730,
+        "startChar": 4,
+        "endLine": 3730,
+        "endChar": 44
+      },
+      "revId": "ecba0e8a082fa453e37704ed36e0426eb6ae9c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
