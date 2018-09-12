@@ -1,0 +1,273 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cb7f329_66823fff",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "Non-trivially-destructible globals are banned by the styleguide: https://google.github.io/styleguide/cppguide.html#Static_and_Global_Variables",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c906871a_e7660ee3",
+        "filename": "fuzz/cr50_fuzz.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "nit: here and elsewere: no trailing blank lines",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d650bce_869e04e2",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "C++ style comment",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d59a9f_f53bd72a",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "What is this return value good for?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 69
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0e7d50_07f2bb2f",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "nit: excess blank line",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d781774c_e33f165b",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "nit: copyright header is missing",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "593692c4_98a2ea3f",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "nit: Use C++ style comments in C++ code",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 3
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f0fd97_44af6a62",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "nit: remove stray blank line",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad4e8706_f948e46c",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "This is inconsistent with GetLeaf. Should either consistently include \"hash\" in the name or not at all (latter is more reasonable given that \"hash\" is already in the class name).",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76748fdc_7115c006",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "Convention is to put a newline before access specifiers.",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e14323b9_d5865914",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "I find it odd to have this struct here since its function is unclear without checking the implementation. You could add a comment, but it\u0027s probably clearer to must store height and bits_per_level as members instead (and pass them to Reset()). Then you can also get rid of the pinweaver includes.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed8a45e_31753e91",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "nit: C++ style comment",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2144e7ae_64d46d4b",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-09-12T13:35:12Z",
+      "side": 1,
+      "message": "nit: data members go after functions",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
