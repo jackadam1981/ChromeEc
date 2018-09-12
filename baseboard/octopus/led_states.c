@@ -50,8 +50,14 @@ static enum led_states led_get_state(void)
 #endif
 				new_state = STATE_DISCHARGE_S0;
 		}
-		else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
-			new_state = STATE_DISCHARGE_S3;
+		else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+#ifdef BOARD_MEEP
+			if (board_is_convertible() == 0)
+				new_state = STATE_DISCHARGE_S3_BLINK;
+			else
+#endif
+				new_state = STATE_DISCHARGE_S3;
+		}
 		else
 			new_state = STATE_DISCHARGE_S5;
 		break;
