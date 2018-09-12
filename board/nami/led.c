@@ -445,7 +445,7 @@ void config_leds(enum led_charge_state charge)
 
 static void call_handler(void)
 {
-	int soc;
+	int soc, batt_status, batt_is_full;
 	enum charge_state cs;
 
 	if (!led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
@@ -454,6 +454,11 @@ static void call_handler(void)
 	cs = charge_get_state();
 	soc = get_display_percentage();
 	cprints(CC_CHARGER, "display_battery_percentage: %d%%", soc);
+	if (battery_status(&batt_status) != 0)
+		batt_is_full = 0;
+	else
+		batt_is_full = batt_status & STATUS_FULLY_CHARGED;
+
 	if (soc < 0)
 		cs = PWR_STATE_ERROR;
 
@@ -468,7 +473,7 @@ static void call_handler(void)
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 	case PWR_STATE_CHARGE:
-		if (soc >= 100)
+		if ((soc >= 100) || batt_is_full)
 			config_leds(LED_STATE_FULL);
 		else
 			config_leds(LED_STATE_CHARGE);
