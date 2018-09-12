@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bcf62a1_7953d108",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-09-12T10:25:29Z",
+      "side": 1,
+      "message": "I don\u0027t understand this \u0027same port\u0027 comment. Why would there be two suppliers on a single port? What\u0027s the definition of port in this case?",
+      "revId": "28a3a5846fa2478433d075ed75367fd2f6ba4cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7232f910_8506ce11",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-09-12T10:25:29Z",
+      "side": 1,
+      "message": "Can you please break this out into individual conditions w/ comments to make it clearer. Let the compiler optimize the result. You should be able to negate some of the logic and \u0027continue\u0027 to bypass the initial check.",
+      "revId": "28a3a5846fa2478433d075ed75367fd2f6ba4cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
