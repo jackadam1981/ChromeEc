@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "32dfb3c7_cc88d0a5",
+        "filename": "board/cheza/base_detect.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-12T02:45:36Z",
+      "side": 1,
+      "message": "nit: Use C style comments.",
+      "revId": "0d75abfaf4570492bd439f91f8bfe15bdf468ac6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fbffa0e_5acbf038",
         "filename": "common/base_state.c",
         "patchSetId": 13

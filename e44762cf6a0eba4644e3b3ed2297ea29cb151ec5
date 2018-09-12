@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2df7c42d_fd61ded6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-12T02:45:36Z",
+      "side": 1,
+      "message": "The former.",
+      "parentUuid": "c4ff2e82_438a68e6",
+      "revId": "e44762cf6a0eba4644e3b3ed2297ea29cb151ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69388f3_a612beae",
         "filename": "board/cheza/base_detect.c",
         "patchSetId": 12
