@@ -369,6 +369,7 @@ static void bc12_detect(int port)
 		charge_manager_update_charge(type, port, &charge);
 	} else { /* Detachment: update available charge to 0 */
 		charge.current = 0;
+		charge.voltage = 0;
 		charge_manager_update_charge(
 					CHARGE_SUPPLIER_PROPRIETARY,
 					port,

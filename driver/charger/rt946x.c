@@ -927,6 +927,7 @@ void usb_charger_task(void *u)
 		/* VBUS detach event */
 		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
 			charge.current = 0;
+			charge.voltage = 0;
 			charge_manager_update_charge(bc12_type, 0, &charge);
 			rt946x_enable_bc12_detection(1);
 		}
