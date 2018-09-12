@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dec7d73a_783b1438",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0cb7f329_66823fff",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c906871a_e7660ee3",
         "filename": "fuzz/cr50_fuzz.proto",
         "patchSetId": 16
@@ -36,6 +60,24 @@
       "writtenOn": "2018-09-12T13:35:12Z",
       "side": 1,
       "message": "nit: here and elsewere: no trailing blank lines",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90ee6d14_3daebd7d",
+        "filename": "fuzz/cr50_fuzz.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "My understanding it is normal/required to have a EOL on the last non blank line. Were you thinking there were two blank lines at the end of the file?",
+      "parentUuid": "c906871a_e7660ee3",
       "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "3c430dba_36932d3c",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d650bce_869e04e2",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7d59a9f_f53bd72a",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 16
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "db25c595_f86b8c55",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "I wrote a comment in the header for this function. This is used by the serializers in pinweaver_model to report how much buffer they used.",
+      "parentUuid": "f7d59a9f_f53bd72a",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 69
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e0e7d50_07f2bb2f",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 16
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "10cd45ef_58d1e25a",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0e7d50_07f2bb2f",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d781774c_e33f165b",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 16
@@ -119,6 +227,24 @@
       "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7beb819f_beac39bd",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d781774c_e33f165b",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "e35112c8_3ad8f22a",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "593692c4_98a2ea3f",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 3
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16f0fd97_44af6a62",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 16
@@ -159,6 +309,24 @@
       "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec1b6f1_8dece878",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16f0fd97_44af6a62",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "d086eb6a_e5516848",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4e8706_f948e46c",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 22
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76748fdc_7115c006",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 16
@@ -199,6 +391,24 @@
       "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6beef608_7c4888ed",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76748fdc_7115c006",
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "0dfe8a86_28156f55",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done.\nWhen I put it here I weighted the option of just pulling out the height and bits_per_level, but then I was using get_path_auxiliary_hash_count(...), so I leaned on the side of leaving in the dependency.",
+      "parentUuid": "e14323b9_d5865914",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 36
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ed8a45e_31753e91",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 16
@@ -248,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "678bd1f9_f628d42f",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed8a45e_31753e91",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2144e7ae_64d46d4b",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 16
@@ -268,6 +526,30 @@
       "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2403a280_eb99bd80",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-12T20:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2144e7ae_64d46d4b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "98d931544a57aee29eec765312ddfc542c8a8b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
