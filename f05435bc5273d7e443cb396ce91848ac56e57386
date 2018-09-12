@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "62805a4c_2b646ec0",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-12T16:53:17Z",
+      "side": 1,
+      "message": "Thank you for this clarification.",
+      "parentUuid": "9ee6d6bb_c1ded07b",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b099ae1_f80a3d4c",
         "filename": "chip/it83xx/it83xx_fpu.S",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "The following is the result we measured:\n(Environment: CPU clock is 48Mhz and pull the __mulsf3 routine into the section of ram code)\n-  This patch: 3 ~ 4 us.\n-  Software floating-point multiply of GCC: 4 ~ 5 us.\n(https://github.com/gcc-mirror/gcc/blob/26f8bcbd5ca246308c1dfc17e71d01ccc5741e74/libgcc/config/nds32/lib1asmsrc-mculib.S#L2099)\n-  Software floating-point multiply of Andes official version : 3 ~ 4 us.\n\nIT8320\u0027s floating-point division takes 32 cycles, so these two instructions will take total 64 cycles.\nPlus additional 24 instructions, __mulsf3 will take 1.83us (ideally, 1/48M*88).\nAs you mentioned, this patch has performance similar to floating-point library of official version if we pull code into ram. The difference is that this patch saves a little bit of code space.\n\nWe will also look into the URL to see if we are able to leverage the routine with N8 CPU’s instructions.",
       "parentUuid": "8b099ae1_f80a3d4c",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 43
+      },
+      "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f993fd3b_fcba4da4",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-12T16:53:17Z",
+      "side": 1,
+      "message": "Thank you for benchmarking this function on your hardware.\n\nHow large is the space savings between your internal soft-float multiply and this function?  We would prefer to use a software floating-point multiplication routine instead of a/(1.0/b) unless there is a strongly compelling reason to do otherwise.",
+      "parentUuid": "529bdc39_fda46ee4",
       "range": {
         "startLine": 128,
         "startChar": 0,

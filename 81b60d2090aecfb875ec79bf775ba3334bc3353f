@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2690ac9b_51acedea",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-12T16:53:17Z",
+      "side": 1,
+      "message": "Nit: Is this the default NaN for your core?  I understand that this accelerator is not using the default fpu instructions for NDS32, but it looks like the Andes FPU extension normally uses 0xffffffff as the default quiet NaN.",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
