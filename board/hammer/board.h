@@ -71,6 +71,11 @@
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
 
+#ifdef BOARD_WHISKERS
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 1024
+#endif
+
 /* Optional features */
 /*
  * TODO(b:65697962): Reenable low-power-idle on wand without breaking EC-EC
