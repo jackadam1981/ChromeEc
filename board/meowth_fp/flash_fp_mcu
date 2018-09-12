@@ -76,6 +76,7 @@ echo "${SPIID}" > /sys/bus/spi/drivers/spidev/bind
 
 sleep 0.5
 
+stm32mon -U -s ${SPIDEV}
 stm32mon -u -p -s ${SPIDEV} -e -w $1
 
 # unload spidev

@@ -810,15 +810,19 @@ int command_erase(int fd, uint16_t count, uint16_t start)
 int command_read_unprotect(int fd)
 {
 	int res;
+	int retries = EXT_ERASE_TIMEOUT / DEFAULT_TIMEOUT;
 
 	res = send_command(fd, CMD_RU, NULL, 0, NULL, 0, 1);
-	if (res < 0)
-		return -EIO;
+	/*
+	 * Read unprotect can trigger a mass erase, which can take long time
+	 * (e.g. 13s+ on STM32H7)
+	 */
+	while ((res == -ETIMEDOUT) && --retries)
+		res = wait_for_ack(fd);
 
-	/* Wait for the ACK */
-	if (wait_for_ack(fd) < 0) {
+	if (res < 0) {
 		fprintf(stderr, "Failed to get read-protect ACK\n");
-		return -EINVAL;
+		return res;
 	}
 	printf("Flash read unprotected.\n");
 
