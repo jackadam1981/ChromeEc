@@ -29,6 +29,7 @@
 
 #define CONFIG_LED_COMMON
 #define OCTOPUS_POWER_LED
+#define meep_board
 
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
@@ -107,6 +108,8 @@ enum battery_type {
 	BATTERY_SIMPLO_ATL,
 	BATTERY_TYPE_COUNT,
 };
+
+int board_is_convertible(void);
 
 #endif /* !__ASSEMBLER__ */
 
