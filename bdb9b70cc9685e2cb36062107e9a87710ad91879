@@ -177,6 +177,30 @@
       "revId": "bdb9b70cc9685e2cb36062107e9a87710ad91879",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f669c6_98d83b36",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-09-12T00:04:58Z",
+      "side": 1,
+      "message": "When you will have the latest device, check gpioget from the EC console and look at EC_BRD_IDx\nLook at https://drive.google.com/file/d/17LQVNWIM8JYzTbez7YwO8C2eNAuxp0za/view?pli\u003d1 page 25 for info.\n\nOn my device, I have:\n 1* EC_BRD_ID0\n  0  EC_BRD_ID1\n  0  EC_BRD_ID2\n  0  EC_BRD_ID3",
+      "parentUuid": "963b9c2d_ed0f2df3",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "bdb9b70cc9685e2cb36062107e9a87710ad91879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
