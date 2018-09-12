@@ -61,6 +61,8 @@
 #define CONFIG_WP_STORAGE_OFF           CONFIG_EC_PROTECTED_STORAGE_OFF
 #define CONFIG_WP_STORAGE_SIZE          CONFIG_EC_PROTECTED_STORAGE_SIZE
 
+/* We want to prevent flash readout. */
+#define CONFIG_FLASH_READOUT_PROTECTION
 
 /* the UART console is on USART1 */
 #undef CONFIG_UART_CONSOLE
