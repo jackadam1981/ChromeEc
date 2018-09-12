@@ -76,6 +76,10 @@ echo "${SPIID}" > /sys/bus/spi/drivers/spidev/bind
 
 sleep 0.5
 
+# TODO(b:111330723): Figure out why we need to call stm32mon with -U only first,
+# and why we need to add a 0.5s delay.
+stm32mon -U -s ${SPIDEV}
+sleep 0.5
 stm32mon -u -p -s ${SPIDEV} -e -w $1
 
 # unload spidev
