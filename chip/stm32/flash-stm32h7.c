@@ -171,6 +171,21 @@ static int set_wp(int enabled)
 	return commit_optb();
 }
 
+#ifdef CONFIG_FLASH_READOUT_PROTECTION
+static int enable_rdp(void)
+{
+	int rv;
+
+	rv = unlock_optb();
+	if (rv)
+		return rv;
+	/* Any value but 0xaa/0xcc set level 1. */
+	STM32_FLASH_OPTSR_PRG(0) &= ~FLASH_OPTSR_RDP_MASK;
+
+	return commit_optb();
+}
+#endif
+
 /*****************************************************************************/
 /* Physical layer APIs */
 
@@ -447,8 +462,21 @@ int flash_pre_init(void)
 		 */
 		if ((prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT) &&
 		    !(prot_flags & EC_FLASH_PROTECT_RO_NOW)) {
-			int rv = flash_set_protect(EC_FLASH_PROTECT_RO_NOW,
-						   EC_FLASH_PROTECT_RO_NOW);
+			int rv;
+
+#ifdef CONFIG_FLASH_READOUT_PROTECTION
+			/*
+			 * Set a permanent protection by increasing RDP to level
+			 * 1, trying to unprotect the flash will trigger a full
+			 * erase.
+			 */
+			rv = enable_rdp();
+			if (rv)
+				return rv;
+#endif
+
+			rv = flash_set_protect(EC_FLASH_PROTECT_RO_NOW,
+					       EC_FLASH_PROTECT_RO_NOW);
 			if (rv)
 				return rv;
 
