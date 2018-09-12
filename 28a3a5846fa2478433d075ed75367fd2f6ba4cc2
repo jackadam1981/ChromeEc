@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a8e88a6d_2dc45da5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-09-12T16:40:08Z",
+      "side": 1,
+      "message": "I think the code assumes each physical port can be configured for different suppliers simultaneously. For example, a USB-C port can be connected to CHARGE_SUPPLIER_PD (with PD contract) or CHARGE_SUPPLIER_TYPEC (without PD contract). In this example, the former always wins because of priority. And as soon as the contract is breached, the charge manager will use the latter.\n\nI\u0027m trying to emphasize a 0 current supplier will be recognized only if there is no traditionally valid (volt \u003e0 \u0026\u0026 current \u003e0) supplier on the port.",
+      "parentUuid": "4bcf62a1_7953d108",
+      "revId": "28a3a5846fa2478433d075ed75367fd2f6ba4cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7232f910_8506ce11",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
