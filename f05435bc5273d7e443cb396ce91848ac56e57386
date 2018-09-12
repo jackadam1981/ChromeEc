@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ee6d6bb_c1ded07b",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-09-12T10:03:53Z",
+      "side": 1,
+      "message": "The IT8320 doesn\u0027t have r16-r19, because the option of “reduced register configuration.”\nSo the total number of general registers is 16.\nPlease take a look at \"Table- 4 Registers for Reduced Register Configuration\".",
+      "parentUuid": "f5f5fb64_193466e9",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b099ae1_f80a3d4c",
         "filename": "chip/it83xx/it83xx_fpu.S",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-10T21:22:36Z",
       "side": 1,
       "message": "Can you benchmark this routine versus a software floating-point multiply that is implemented entirely with the integer ISA?\n\nDivision is typically much slower than multiplication.  Assuming that the it8320dx uses a functional unit similar to that described in Tables 47 and 49 of the FPU extension manual, you are suffering ~46 cycles of latency just for the barriers and sequential divisions + ~20 more for special-case handling + 4 register save/restore.\n\nFor a comparison, ARMv4 could implement __mulsf3 in 28 instructions [0].  Granted that these are very different machines, it sounds like mulsf3_div_div has performance similar to or worse than an optimized softfloat library.\n\n\n[0]: https://gcc.gnu.org/ml/gcc-patches/2004-10/msg01018.html",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 43
+      },
+      "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529bdc39_fda46ee4",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-09-12T10:03:53Z",
+      "side": 1,
+      "message": "The following is the result we measured:\n(Environment: CPU clock is 48Mhz and pull the __mulsf3 routine into the section of ram code)\n-  This patch: 3 ~ 4 us.\n-  Software floating-point multiply of GCC: 4 ~ 5 us.\n(https://github.com/gcc-mirror/gcc/blob/26f8bcbd5ca246308c1dfc17e71d01ccc5741e74/libgcc/config/nds32/lib1asmsrc-mculib.S#L2099)\n-  Software floating-point multiply of Andes official version : 3 ~ 4 us.\n\nIT8320\u0027s floating-point division takes 32 cycles, so these two instructions will take total 64 cycles.\nPlus additional 24 instructions, __mulsf3 will take 1.83us (ideally, 1/48M*88).\nAs you mentioned, this patch has performance similar to floating-point library of official version if we pull code into ram. The difference is that this patch saves a little bit of code space.\n\nWe will also look into the URL to see if we are able to leverage the routine with N8 CPU’s instructions.",
+      "parentUuid": "8b099ae1_f80a3d4c",
       "range": {
         "startLine": 128,
         "startChar": 0,
