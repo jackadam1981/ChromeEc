@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "31335751_c3514011",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-13T20:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16cbe37_d0971bec",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "4b14d7acd98aa742bcbbc8592faf08b09aa83222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a991c7a6_92cc8a34",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4b14d7acd98aa742bcbbc8592faf08b09aa83222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63db261c_3afd7247",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-13T20:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a991c7a6_92cc8a34",
+      "range": {
+        "startLine": 2242,
+        "startChar": 24,
+        "endLine": 2242,
+        "endChar": 25
+      },
+      "revId": "4b14d7acd98aa742bcbbc8592faf08b09aa83222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
