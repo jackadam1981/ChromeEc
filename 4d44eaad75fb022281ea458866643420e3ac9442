@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cf4d373_3e7f20a3",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-13T00:04:42Z",
+      "side": 1,
+      "message": "Suggest keeping the comment, but picking some value here.\n\nOtherwise, each user still needs to pick an arbitrary value, but it\u0027s not one we can grep for.",
+      "range": {
+        "startLine": 2098,
+        "startChar": 0,
+        "endLine": 2098,
+        "endChar": 41
+      },
+      "revId": "4d44eaad75fb022281ea458866643420e3ac9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "074aebf1_c99b47d4",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-13T00:04:42Z",
+      "side": 1,
+      "message": "If you just waited for the mass erase delay above, why do you need to wait for it again?",
+      "range": {
+        "startLine": 832,
+        "startChar": 1,
+        "endLine": 835,
+        "endChar": 37
+      },
+      "revId": "4d44eaad75fb022281ea458866643420e3ac9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
