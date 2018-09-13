@@ -86,6 +86,12 @@ static inline int int_sqrtf(fp_inter_t x)
 {
 	return sqrtf(x);
 }
+
+/* If the platform support FPU, just return sqrtf. */
+fp_t fp_sqrtf(fp_t x)
+{
+	return sqrtf(x);
+}
 #else
 static int int_sqrtf(fp_inter_t x)
 {
@@ -124,7 +130,12 @@ static int int_sqrtf(fp_inter_t x)
 		}
 	}
 }
-#endif
+
+fp_t fp_sqrtf(fp_t x)
+{
+	return int_sqrtf(x) << (FP_BITS / 2);
+}
+#endif /* CONFIG_FPU */
 
 int vector_magnitude(const intv3_t v)
 {
