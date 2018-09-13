@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0686ad6_14426926",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-13T07:13:26Z",
+      "side": 1,
+      "message": "May i know why do you want to increase the time?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "71723aa7a203fb63bf480bd85fa22c21d2196dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5fd422a_667b3cc9",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-13T07:13:26Z",
+      "side": 1,
+      "message": "Could you please change it to uint8_t led1:1;",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "71723aa7a203fb63bf480bd85fa22c21d2196dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac8fcb9_8d3ef6f1",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-13T07:13:26Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "71723aa7a203fb63bf480bd85fa22c21d2196dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c55c68_c27fadc7",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-13T07:13:26Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 9
+      },
+      "revId": "71723aa7a203fb63bf480bd85fa22c21d2196dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fffd9d_6c08ef85",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-13T07:13:26Z",
+      "side": 1,
+      "message": "change to \u0027chipset_state\u0027",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 18
+      },
+      "revId": "71723aa7a203fb63bf480bd85fa22c21d2196dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
