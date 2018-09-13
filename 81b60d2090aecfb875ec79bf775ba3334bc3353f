@@ -46,6 +46,30 @@
       "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4258d35_18dda1d4",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-13T20:46:12Z",
+      "side": 1,
+      "message": "I agree that these are both NaN, there are many forms of quiet NaN.  I just think that the compatibility with hardware floating-point will be better if you use the hardware\u0027s default quiet NaN instead of a different (yet still valid) NaN.",
+      "parentUuid": "c440faab_d9f13932",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
