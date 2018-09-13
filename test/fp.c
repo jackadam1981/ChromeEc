@@ -11,6 +11,7 @@
  */
 #include "common.h"
 
+#include "mat33.h"
 #include "math_util.h"
 #include "test_util.h"
 #include "vec3.h"
@@ -19,10 +20,12 @@
 #define NORM_TOLERANCE FLOAT_TO_FP(0.01f)
 #define NORM_SQUARED_TOLERANCE FLOAT_TO_FP(0.0f)
 #define DOT_TOLERANCE FLOAT_TO_FP(0.001f)
+#define EIGENBASIS_TOLERANCE FLOAT_TO_FP(0.03f)
 #elif defined(TEST_FLOAT) && defined(CONFIG_FPU)
 #define NORM_TOLERANCE FLOAT_TO_FP(0.0f)
 #define NORM_SQUARED_TOLERANCE FLOAT_TO_FP(0.0f)
 #define DOT_TOLERANCE FLOAT_TO_FP(0.0f)
+#define EIGENBASIS_TOLERANCE FLOAT_TO_FP(0.02f)
 #else
 #error "No such test configuration."
 #endif
@@ -123,6 +126,122 @@ static int test_fpv3_norm(void)
 	return EC_SUCCESS;
 }
 
+static int test_mat33_fp_init_zero(void)
+{
+	const int N = 3;
+	int i, j;
+	mat33_fp_t a;
+
+	for (i = 0; i < N; ++i)
+		for (j = 0; j < N; ++j)
+			a[i][j] = FLOAT_TO_FP(55.66f);
+
+	mat33_fp_init_zero(a);
+
+	for (i = 0; i < N; ++i)
+		for (j = 0; j < N; ++j)
+			TEST_ASSERT(a[i][j] == FLOAT_TO_FP(0.0f));
+
+	return EC_SUCCESS;
+}
+
+static int test_mat33_fp_init_diagonal(void)
+{
+	const int N = 3;
+	int i, j;
+	mat33_fp_t a;
+	fp_t v = FLOAT_TO_FP(-3.45f);
+
+	for (i = 0; i < N; ++i)
+		for (j = 0; j < N; ++j)
+			a[i][j] = FLOAT_TO_FP(55.66f);
+
+	mat33_fp_init_diagonal(a, v);
+
+	for (i = 0; i < N; ++i)
+		for (j = 0; j < N; ++j) {
+			if (i == j)
+				TEST_ASSERT(a[i][j] == v);
+			else
+				TEST_ASSERT(a[i][j] == FLOAT_TO_FP(0.0f));
+		}
+
+	return EC_SUCCESS;
+}
+
+static int test_mat33_fp_scalar_mul(void)
+{
+	const int N = 3;
+	int i, j;
+	float scale = 3.11f;
+	mat33_float_t a = {
+		{1.0f, 2.0f, 3.0f},
+		{1.1f, 2.2f, 3.3f},
+		{0.38f, 13.2f, 88.3f} };
+	mat33_fp_t fpa;
+
+	for (i = 0; i < N; ++i)
+		for (j = 0; j < N; ++j)
+			fpa[i][j] = FLOAT_TO_FP(a[i][j]);
+
+	for (i = 0; i < N; ++i)
+		for (j = 0; j < N; ++j)
+			a[i][j] *= scale;
+
+	mat33_fp_scalar_mul(fpa, FLOAT_TO_FP(scale));
+
+	for (i = 0; i < N; ++i)
+		for (j = 0; j < N; ++j) {
+			TEST_ASSERT(IS_FP_EQUAL(fpa[i][j], FLOAT_TO_FP(a[i][j]),
+						FLOAT_TO_FP(0.005f)));
+		}
+
+	return EC_SUCCESS;
+}
+
+static int test_mat33_fp_maxind(void)
+{
+
+	return EC_SUCCESS;
+}
+
+static int test_mat33_fp_get_eigenbasis(void)
+{
+	mat33_fp_t s = {
+		{FLOAT_TO_FP(4.0f), FLOAT_TO_FP(2.0f), FLOAT_TO_FP(2.0f)},
+		{FLOAT_TO_FP(2.0f), FLOAT_TO_FP(4.0f), FLOAT_TO_FP(2.0f)},
+		{FLOAT_TO_FP(2.0f), FLOAT_TO_FP(2.0f), FLOAT_TO_FP(4.0f)}
+	};
+	fpv3_t e_vals;
+	mat33_fp_t e_vecs;
+	int i, j;
+
+	/* Golden result from float version. */
+	mat33_fp_t gold_vecs = {
+		{FLOAT_TO_FP(0.55735206f), FLOAT_TO_FP(0.55735206f),
+		 FLOAT_TO_FP(0.55735206f)},
+		{FLOAT_TO_FP(0.70710677f), FLOAT_TO_FP(-0.70710677f),
+		 FLOAT_TO_FP(0.0f)},
+		{FLOAT_TO_FP(-0.40824828f), FLOAT_TO_FP(-0.40824828f),
+		 FLOAT_TO_FP(0.81649655f)}
+	};
+	fpv3_t gold_vals = {FLOAT_TO_FP(8.0f), FLOAT_TO_FP(2.0f),
+			    FLOAT_TO_FP(2.0f)};
+
+	mat33_fp_get_eigenbasis(s, e_vals, e_vecs);
+
+	for (i = 0; i < 3; ++i) {
+		TEST_ASSERT(IS_FP_EQUAL(gold_vals[i], e_vals[i],
+					EIGENBASIS_TOLERANCE));
+		for (j = 0; j < 3; ++j) {
+			TEST_ASSERT(IS_FP_EQUAL(gold_vecs[i][j], e_vecs[i][j],
+						EIGENBASIS_TOLERANCE));
+		}
+	}
+
+	return EC_SUCCESS;
+}
+
 void run_test(void)
 {
 	test_reset();
@@ -131,6 +250,11 @@ void run_test(void)
 	RUN_TEST(test_fpv3_dot);
 	RUN_TEST(test_fpv3_norm_squared);
 	RUN_TEST(test_fpv3_norm);
+	RUN_TEST(test_mat33_fp_init_zero);
+	RUN_TEST(test_mat33_fp_init_diagonal);
+	RUN_TEST(test_mat33_fp_scalar_mul);
+	RUN_TEST(test_mat33_fp_maxind);
+	RUN_TEST(test_mat33_fp_get_eigenbasis);
 
 	test_print_result();
 }
