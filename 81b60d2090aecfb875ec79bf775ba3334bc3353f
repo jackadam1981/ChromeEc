@@ -22,6 +22,30 @@
       "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c440faab_d9f13932",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-09-13T08:44:35Z",
+      "side": 1,
+      "message": "The followings are descriptions of a bit-wise IEEE floating-point standard single precision (32-bit) NaN:\ns111 1111 1xxx xxxx xxxx xxxx xxxx xxxx where s is the sign (most often ignored in applications) and the x sequence represents a non-zero number (the value zero encodes infinities). The first bit from x is used to determine the type of NaN: \"quiet NaN\" or \"signaling NaN\". The remaining bits encode a payload (most often ignored in applications).\n\nSo I think it should be OK no matter we use 0xffc00000 or 0xffffffff as the quiet NaN. Do you want me to change it to 0xffffffff?",
+      "parentUuid": "2690ac9b_51acedea",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

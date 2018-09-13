@@ -141,6 +141,30 @@
       "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8da01304_4edbf449",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-09-13T08:44:35Z",
+      "side": 1,
+      "message": "We can save 136 bytes with this patch.\n(This patch takes 136 bytes, official takes 272 bytes)\n\nWe need to pull __mulsf3 into the ram code section (static cache, called ILM on IT8320) or soft-float multiply has a worse performance than this patch. This is because CPU needs to fetch the code from e-flash if the code is not yet in IMMU (dynamic cache), results in larger latency.\n\nThe current 4K bytes ILM is almost full, we need to enable one more ILM if we are using software floating-point multiplication routine. We will occupy 4K bytes memory space though.",
+      "parentUuid": "f993fd3b_fcba4da4",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 43
+      },
+      "revId": "f05435bc5273d7e443cb396ce91848ac56e57386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
