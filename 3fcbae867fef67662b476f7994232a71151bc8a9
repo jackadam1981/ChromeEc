@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0105e783_414f6b30",
+        "filename": "board/rammus/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-13T10:37:50Z",
+      "side": 1,
+      "message": "This isn\u0027t bad but if anyone ends up changing the values of CHIPSET_STATE_* then this logic could break badly. A future proof way of handling this could be to simple have a big if else block:\nif (chipset_in_state(...))\n    do-something-for-this-state;\nelse if (...)\n    ...",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "3fcbae867fef67662b476f7994232a71151bc8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
