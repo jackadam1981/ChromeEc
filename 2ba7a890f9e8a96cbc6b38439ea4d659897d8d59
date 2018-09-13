@@ -70,6 +70,30 @@
       "revId": "2ba7a890f9e8a96cbc6b38439ea4d659897d8d59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089a004c_31376692",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-09-13T17:25:51Z",
+      "side": 1,
+      "message": "It is the maximum number of interrupt event we can get from hardware sensors. If we have more than 8 sensors (assuming each sensors use a single interrupt line), we will need to revisit.",
+      "parentUuid": "c6dbdc93_7a7c63ba",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "2ba7a890f9e8a96cbc6b38439ea4d659897d8d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
