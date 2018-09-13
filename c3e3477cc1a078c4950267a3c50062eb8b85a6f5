@@ -22,6 +22,30 @@
       "revId": "c3e3477cc1a078c4950267a3c50062eb8b85a6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5601d3cd_ce11f7ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-13T18:44:04Z",
+      "side": 1,
+      "message": "That is what is looks like. Because of size limitations, we could choose not to add this to Eve and everything should still work. (I don\u0027t even know if Eve would take this change into their firmware branch even)",
+      "parentUuid": "2f317b0d_d0746b88",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "c3e3477cc1a078c4950267a3c50062eb8b85a6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
