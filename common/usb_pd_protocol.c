@@ -560,6 +560,11 @@ static inline void set_state(int port, enum pd_states next_state)
 	if (last_state == next_state)
 		return;
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	if (next_state != PD_STATE_DRP_AUTO_TOGGLE)
+		exit_low_power_mode(port);
+#endif
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	/* Clear flag to allow DRP auto toggle when possible */
@@ -2102,6 +2107,11 @@ void pd_set_dual_role(int port, enum pd_dual_role_states state)
 /* This must only be called from the PD task */
 static void pd_update_dual_role_config(int port)
 {
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	/* When switching drp mode, make sure tcpc is out of standby mode */
+	exit_low_power_mode(port);
+#endif
+
 	/*
 	 * Change to sink if port is currently a source AND (new DRP
 	 * state is force sink OR new DRP state is either toggle off
@@ -2129,11 +2139,6 @@ static void pd_update_dual_role_config(int port)
 		set_state(port, PD_STATE_SRC_DISCONNECTED);
 		tcpm_set_cc(port, TYPEC_CC_RP);
 	}
-
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	/* When switching drp mode, make sure tcpc is out of standby mode */
-	exit_low_power_mode(port);
-#endif
 }
 
 int pd_get_role(int port)
@@ -3817,24 +3822,23 @@ void pd_task(void *u)
 				/* Anything else, keep toggling */
 				next_state = PD_STATE_DRP_AUTO_TOGGLE;
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-			if (next_state != PD_STATE_DRP_AUTO_TOGGLE)
-				exit_low_power_mode(port);
-#endif
-
-			if (next_state == PD_STATE_SNK_DISCONNECTED) {
-				tcpm_set_cc(port, TYPEC_CC_RD);
-				pd_set_power_role(port, PD_ROLE_SINK);
-				timeout = 2*MSEC;
-			} else if (next_state == PD_STATE_SRC_DISCONNECTED) {
-				tcpm_set_cc(port, TYPEC_CC_RP);
-				pd_set_power_role(port, PD_ROLE_SOURCE);
-				timeout = 2*MSEC;
-			} else {
+			if (next_state == PD_STATE_DRP_AUTO_TOGGLE) {
 				tcpm_enable_drp_toggle(port);
 				pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
 				pd[port].flags |= PD_FLAGS_TCPC_DRP_TOGGLE;
 				timeout = -1;
+			} else {
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+				exit_low_power_mode(port);
+#endif
+				if (next_state == PD_STATE_SNK_DISCONNECTED) {
+					tcpm_set_cc(port, TYPEC_CC_RD);
+					pd_set_power_role(port, PD_ROLE_SINK);
+				} else {
+					tcpm_set_cc(port, TYPEC_CC_RP);
+					pd_set_power_role(port, PD_ROLE_SOURCE);
+				}
+				timeout = 2*MSEC;
 			}
 			set_state(port, next_state);
 
