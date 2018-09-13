@@ -648,7 +648,13 @@ void pd_hw_init(int port, int role)
 		phy->tim_tx->ccmr1 = val;
 	else
 		phy->tim_tx->ccmr2 = val;
+
+#ifdef CONFIG_USBC_CTVPD
+	/* FIXME: Remove on next revision of board */
+	phy->tim_tx->ccer = 0xc;
+#else
 	phy->tim_tx->ccer = 1 << ((TIM_TX_CCR_IDX(port) - 1) * 4);
+#endif
 	phy->tim_tx->bdtr = 0x8000;
 	/* set prescaler to /1 */
 	phy->tim_tx->psc = 0;
