@@ -46,6 +46,30 @@
       "revId": "c3e3477cc1a078c4950267a3c50062eb8b85a6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c62d9c_70913a36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-13T22:13:45Z",
+      "side": 1,
+      "message": "Looks like most of the loss of RAM is in the task stacks.  I\u0027m showing 400 and 432 bytes consumed on my Careena system for ports 0 and 1, respectively.  That\u0027s well under TASK_STACK_SIZE, which is what the Grunt family is using instead of LARGER_TASK_STACK_SIZE.  Doing the same for Eve would get you another ~250 bytes back.  That\u0027s not enough for another task stack, but it would leave more margin for changes in .data and .bss.",
+      "parentUuid": "5601d3cd_ce11f7ea",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "c3e3477cc1a078c4950267a3c50062eb8b85a6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
