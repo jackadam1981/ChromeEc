@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a89e8b1b_bf03f33e",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-13T16:37:33Z",
+      "side": 1,
+      "message": "That\u0027s a good suggestion, and the assembly is going to be the same anyway if we pick 0x00.",
+      "parentUuid": "7cf4d373_3e7f20a3",
+      "range": {
+        "startLine": 2098,
+        "startChar": 0,
+        "endLine": 2098,
+        "endChar": 41
+      },
+      "revId": "4d44eaad75fb022281ea458866643420e3ac9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "074aebf1_c99b47d4",
         "filename": "util/stm32mon.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-13T00:04:42Z",
       "side": 1,
       "message": "If you just waited for the mass erase delay above, why do you need to wait for it again?",
+      "range": {
+        "startLine": 832,
+        "startChar": 1,
+        "endLine": 835,
+        "endChar": 37
+      },
+      "revId": "4d44eaad75fb022281ea458866643420e3ac9442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55c3774c_bcdae2db",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-13T16:37:33Z",
+      "side": 1,
+      "message": "Cleaned up a bit. I think the original comment was wrong (but the spec could be clearer, TBH).\n\nExperimentally, it works like this:\n\u003d\u003e CMD_RU\n\u003c\u003d ACK (send_command reads that one)\nmass erase delay here\n\u003c\u003d ACK\nBoard resets itself.",
+      "parentUuid": "074aebf1_c99b47d4",
       "range": {
         "startLine": 832,
         "startChar": 1,
