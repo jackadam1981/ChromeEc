@@ -1,0 +1,578 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Test USB Protocol Layer module.
+ */
+#include "common.h"
+#include "crc.h"
+#include "task.h"
+#include "test_util.h"
+#include "timer.h"
+#include "tcpm.h"
+#include "usb_emsg.h"
+#include "usb_pe_sm.h"
+#include "usb_pd.h"
+#include "usb_pd_test_util.h"
+#include "usb_prl_sm.h"
+#include "util.h"
+
+#define PORT0 0
+#define PORT1 1
+
+static uint32_t test_data[] = {
+	0x00010203, 0x04050607, 0x08090a0b, 0x0c0d0e0f,
+	0x10111213, 0x14151617, 0x1819a0b0, 0xc0d0e0f0,
+	0x20212223, 0x24252627, 0x28292a2b, 0x2c2d2e2f,
+	0x30313233, 0x34353637, 0x38393a3b, 0x3c3d3e3f,
+	0x40414243, 0x44454647, 0x48494a4b, 0x4c4d4e4f,
+	0x50515253, 0x54555657, 0x58595a5b, 0x5c5d5e5f,
+	0x60616263, 0x64656667, 0x68696a6b, 0x6c6d6e6f,
+	0x70717273, 0x74757677, 0x78797a7b, 0x7c7d7e7f,
+	0x80818283, 0x84858687, 0x88898a8b, 0x8c8d8e8f,
+	0x90919293, 0x94959697, 0x98999a9b, 0x9c9d9e9f,
+	0xa0a1a2a3, 0xa4a5a6a7, 0xa8a9aaab, 0xacadaeaf,
+	0xb0b1b2b3, 0xb4b5b6b7, 0xb8b9babb, 0xbcbdbebf,
+	0xc0c1c2c3, 0xc4c5c6c7, 0xc8c9cacb, 0xcccdcecf,
+	0xd0d1d2d3, 0xd4d5d6d7, 0xd8d9dadb, 0xdcdddedf,
+	0xe0e1e2e3, 0xe4e5e6e7, 0xe8e9eaeb, 0xecedeeef,
+	0xf0f1f2f3, 0xf4f5f6f7, 0xf8f9fafb, 0xfcfdfeff,
+	0x11
+};
+
+static struct pd_prl {
+	int rev;
+	int pd_enable;
+	int power_role;
+	int data_role;
+	int msg_tx_id;
+	int msg_rx_id;
+
+	int mock_pe_message_sent;
+	int mock_pe_error;
+	int mock_pe_hard_reset_sent;
+	int mock_pe_got_hard_reset;
+	int mock_pe_pass_up_message;
+	int mock_got_soft_reset;
+} pd_port[CONFIG_USB_PD_PORT_COUNT];
+
+static void init_port(int port, int rev)
+{
+	pd_port[port].rev = rev;
+	pd_port[port].pd_enable = 0;
+	pd_port[port].power_role = PD_ROLE_SINK;
+	pd_port[port].data_role = PD_ROLE_UFP;
+	pd_port[port].msg_tx_id = 0;
+	pd_port[port].msg_rx_id = 0;
+	tcpm_init(port);
+	tcpm_set_polarity(port, 0);
+	tcpm_set_rx_enable(port, 0);
+}
+
+void inc_tx_id(int port)
+{
+	pd_port[port].msg_tx_id = (pd_port[port].msg_tx_id + 1) & 7;
+}
+
+static void simulate_rx_msg(int port, uint16_t header, int cnt,
+							const uint32_t *data)
+{
+	int i;
+
+	pd_test_rx_set_preamble(port, 1);
+	pd_test_rx_msg_append_sop(port);
+	pd_test_rx_msg_append_short(port, header);
+
+	crc32_init();
+	crc32_hash16(header);
+
+	for (i = 0; i < cnt; ++i) {
+		pd_test_rx_msg_append_word(port, data[i]);
+		crc32_hash32(data[i]);
+	}
+
+	pd_test_rx_msg_append_word(port, crc32_result());
+
+	pd_test_rx_msg_append_eop(port);
+	pd_test_rx_msg_append_last_edge(port);
+
+	pd_simulate_rx(port);
+}
+
+static void simulate_goodcrc(int port, int role, int id)
+{
+	simulate_rx_msg(port, PD_HEADER(PD_CTRL_GOOD_CRC, role, role, id, 0,
+						pd_port[port].rev, 0), 0, NULL);
+}
+
+static int verify_ctrl_msg_transmission(int port,
+						enum pd_ctrl_msg_type msg_type)
+{
+	if (!pd_test_tx_msg_verify_sop(port))
+		return 0;
+
+	if (!pd_test_tx_msg_verify_short(port,
+			PD_HEADER(msg_type, pd_port[port].power_role,
+			pd_port[port].data_role, pd_port[port].msg_tx_id, 0,
+			pd_port[port].rev, 0)))
+		return 0;
+
+	if (!pd_test_tx_msg_verify_crc(port))
+		return 0;
+
+	if (!pd_test_tx_msg_verify_eop(port))
+		return 0;
+
+	return 1;
+}
+
+static int simulate_send_ctrl_msg_request_from_pe(int port,
+	enum tcpm_transmit_type type, enum pd_ctrl_msg_type msg_type)
+{
+	pd_port[port].mock_pe_error = -1;
+	pd_port[port].mock_pe_message_sent = 0;
+	prl_send_ctrl_msg(port, type, msg_type);
+	task_wait_event(40 * MSEC);
+
+	return verify_ctrl_msg_transmission(port, msg_type);
+}
+
+static int verify_data_msg_transmission(int port,
+				enum pd_data_msg_type msg_type, int len)
+{
+	int i;
+	int num_words = (len + 3) >> 2;
+	int data_obj_in_bytes;
+	unsigned int td;
+
+	if (!pd_test_tx_msg_verify_sop(port))
+		return 0;
+
+	if (!pd_test_tx_msg_verify_short(port,
+			PD_HEADER(msg_type, pd_port[port].power_role,
+			pd_port[port].data_role, pd_port[port].msg_tx_id,
+			num_words, pd_port[port].rev, 0)))
+		return 0;
+
+	for (i = 0; i < num_words; i++) {
+		td = test_data[i];
+		data_obj_in_bytes = (i + 1) * 4;
+		if (data_obj_in_bytes > len) {
+			switch (data_obj_in_bytes - len) {
+			case 1:
+				td &= 0x00ffffff;
+				break;
+			case 2:
+				td &= 0x0000ffff;
+				break;
+			case 3:
+				td &= 0x000000ff;
+				break;
+			}
+		}
+
+		if (!pd_test_tx_msg_verify_word(port, td))
+			return 0;
+	}
+
+	if (!pd_test_tx_msg_verify_crc(port))
+		return 0;
+
+	if (!pd_test_tx_msg_verify_eop(port))
+		return 0;
+
+	return 1;
+}
+
+static int simulate_send_data_msg_request_from_pe(int port,
+	enum tcpm_transmit_type type, enum pd_ctrl_msg_type msg_type, int len)
+{
+	int i;
+	unsigned char *buf = (unsigned char *)emsg[port].buf;
+	unsigned char *td = (unsigned char *)test_data;
+
+	pd_port[port].mock_pe_error = -1;
+	pd_port[port].mock_pe_message_sent = 0;
+
+	for (i = 0; i < len; i++)
+		buf[i] = td[i];
+
+	emsg[port].len = len;
+
+	prl_send_data_msg(port, type, msg_type);
+	task_wait_event(30 * MSEC);
+
+	return verify_data_msg_transmission(port, msg_type, len);
+}
+
+
+static void enable_prl(int port, int en)
+{
+	tcpm_set_rx_enable(port, en);
+
+	pd_port[port].pd_enable = en;
+	pd_port[port].msg_tx_id = 0;
+	pd_port[port].msg_rx_id = 0;
+
+	/* Init PRL */
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(10 * MSEC);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(10 * MSEC);
+
+	prl_set_rev(port, pd_port[port].rev);
+}
+
+static void cycle_through_state_machine(int port, unsigned int num,
+							unsigned int time)
+{
+	int i;
+
+	for (i = 0; i < num; i++) {
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(time);
+	}
+}
+
+
+int tc_get_power_role(int port)
+{
+	return pd_port[port].power_role;
+}
+
+int tc_get_data_role(int port)
+{
+	return pd_port[port].data_role;
+}
+
+void pe_report_error(int port, enum pe_error e)
+{
+	pd_port[port].mock_pe_error = e;
+}
+
+void pe_got_hard_reset(int port)
+{
+	pd_port[port].mock_pe_got_hard_reset = 1;
+}
+
+void pe_pass_up_message(int port)
+{
+	pd_port[port].mock_pe_pass_up_message = 1;
+}
+
+void pe_message_sent(int port)
+{
+	pd_port[port].mock_pe_message_sent = 1;
+}
+
+void pe_hard_reset_sent(int port)
+{
+	pd_port[port].mock_pe_hard_reset_sent = 1;
+}
+
+void pe_got_soft_reset(int port)
+{
+	pd_port[port].mock_got_soft_reset = 1;
+}
+
+static int test_initial_states(void)
+{
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	TEST_ASSERT(get_prl_tx_state_id(port) ==
+				PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+	TEST_ASSERT(get_rch_state_id(port) ==
+				RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
+	TEST_ASSERT(get_tch_state_id(port) ==
+				TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+	TEST_ASSERT(get_prl_hr_state_id(port) ==
+				PRL_HR_WAIT_FOR_PE_HARD_RESET_COMPLETE);
+
+	return EC_SUCCESS;
+}
+
+static int test_ctrl_msg_request_received(void)
+{
+	int i;
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	/*
+	 * TEST: Control message transmission and tx_id increment
+	 */
+	for (i = 0; i < 10; i++) {
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(40 * MSEC);
+
+		TEST_ASSERT(get_prl_tx_state_id(port) ==
+					PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+
+		TEST_ASSERT(simulate_send_ctrl_msg_request_from_pe(port,
+						TCPC_TX_SOP, PD_CTRL_ACCEPT));
+
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(30 * MSEC);
+
+		simulate_goodcrc(port, pd_port[port].power_role,
+						pd_port[port].msg_tx_id);
+		inc_tx_id(port);
+
+		cycle_through_state_machine(port, 3, 10 * MSEC);
+
+		TEST_ASSERT(pd_port[port].mock_pe_message_sent);
+		TEST_ASSERT(pd_port[port].mock_pe_error < 0);
+	}
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
+static int test_ctrl_msg_request_received_with_retry_and_fail(void)
+{
+	int i;
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	/*
+	 * TEST: Control message transmission fail with retry
+	 */
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(40 * MSEC);
+
+	TEST_ASSERT(get_prl_tx_state_id(port) ==
+			PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+
+	TEST_ASSERT(simulate_send_ctrl_msg_request_from_pe(port,
+					TCPC_TX_SOP, PD_CTRL_ACCEPT));
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(30 * MSEC);
+
+	simulate_goodcrc(port, pd_port[port].power_role,
+					pd_port[port].msg_tx_id);
+
+	/* Do not increment tx_id so phy layer will not transmit message */
+
+	cycle_through_state_machine(port, 3, 10 * MSEC);
+
+	TEST_ASSERT(pd_port[port].mock_pe_message_sent);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(40 * MSEC);
+
+	TEST_ASSERT(get_prl_tx_state_id(port) ==
+					PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+
+	pd_port[port].mock_pe_message_sent = 0;
+	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
+	task_wait_event(30 * MSEC);
+
+	for (i = 0; i < N_RETRY_COUNT + 1; i++) {
+		cycle_through_state_machine(port, 8, 10 * MSEC);
+
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(PD_T_TCPC_TX_TIMEOUT);
+
+		TEST_ASSERT(pd_port[port].mock_pe_message_sent == 0);
+		if (i == N_RETRY_COUNT)
+			TEST_ASSERT(pd_port[port].mock_pe_error == ERR_PRL_TX);
+		else
+			TEST_ASSERT(pd_port[port].mock_pe_error < 0);
+	}
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
+static int test_ctrl_msg_request_received_with_retry_and_success(void)
+{
+	int i;
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	/*
+	 * TEST: Control message transmission fail with retry
+	 */
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(40 * MSEC);
+
+	TEST_ASSERT(get_prl_tx_state_id(port) ==
+				PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+
+	pd_port[port].mock_pe_error = -1;
+	pd_port[port].mock_pe_message_sent = 0;
+
+	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
+	task_wait_event(40 * MSEC);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(40 * MSEC);
+
+	simulate_goodcrc(port, pd_port[port].power_role,
+						pd_port[port].msg_tx_id);
+
+	/* Do not increment tx_id. */
+
+	cycle_through_state_machine(port, 3, 10 * MSEC);
+
+	TEST_ASSERT(pd_port[port].mock_pe_message_sent);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(40 * MSEC);
+
+	TEST_ASSERT(get_prl_tx_state_id(port) ==
+				PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+
+	pd_port[port].mock_pe_message_sent = 0;
+	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
+	task_wait_event(30 * MSEC);
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(30 * MSEC);
+
+	for (i = 0; i < N_RETRY_COUNT + 1; i++) {
+		if (i == N_RETRY_COUNT)
+			inc_tx_id(port);
+
+		simulate_goodcrc(port, pd_port[port].power_role,
+						pd_port[port].msg_tx_id);
+
+		cycle_through_state_machine(port, 8, 10 * MSEC);
+
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(PD_T_TCPC_TX_TIMEOUT);
+
+		if (i == N_RETRY_COUNT)
+			TEST_ASSERT(pd_port[port].mock_pe_message_sent);
+		else
+			TEST_ASSERT(pd_port[port].mock_pe_message_sent == 0);
+		TEST_ASSERT(pd_port[port].mock_pe_error < 0);
+	}
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
+static int test_data_msg_request_received(void)
+{
+	int i;
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	/*
+	 * TEST: Data  message transmission with 1 to 28 bytes
+	 */
+	for (i = 1; i <= 28; i++) {
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(40 * MSEC);
+
+		TEST_ASSERT(get_prl_tx_state_id(port) ==
+					PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+
+		TEST_ASSERT(simulate_send_data_msg_request_from_pe(port,
+					TCPC_TX_SOP, PD_DATA_SOURCE_CAP, i));
+
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(30 * MSEC);
+
+		simulate_goodcrc(port, pd_port[port].power_role,
+						pd_port[port].msg_tx_id);
+		inc_tx_id(port);
+
+		cycle_through_state_machine(port, 3, 10 * MSEC);
+
+		TEST_ASSERT(pd_port[port].mock_pe_message_sent);
+		TEST_ASSERT(pd_port[port].mock_pe_error < 0);
+	}
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
+static int test_data_msg_request_received_to_much_data(void)
+{
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	/*
+	 * TEST: Data message with length greater than 28-bytes should fail
+	 */
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(40 * MSEC);
+
+	TEST_ASSERT(get_prl_tx_state_id(port) ==
+				PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
+
+	/* Try to send 29-bytes */
+	TEST_ASSERT(!simulate_send_data_msg_request_from_pe(port,
+					TCPC_TX_SOP, PD_DATA_SOURCE_CAP, 29));
+
+	task_wake(PD_PORT_TO_TASK_ID(port));
+	task_wait_event(30 * MSEC);
+
+	cycle_through_state_machine(port, 3, 10 * MSEC);
+
+	TEST_ASSERT(!pd_port[port].mock_pe_message_sent);
+	TEST_ASSERT(pd_port[port].mock_pe_error = ERR_TCH_XMIT);
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
+int pd_task(void *u)
+{
+	int port = PORT0;
+	int evt;
+
+	while (1) {
+		evt = task_wait_event(-1);
+
+		tcpc_run(port, evt);
+		protocol_layer(port, evt, pd_port[port].pd_enable);
+	}
+
+	return EC_SUCCESS;
+}
+
+void run_test(void)
+{
+	test_reset();
+
+	/* Test PD 2.0 Protocol */
+	init_port(PORT0, PD_REV20);
+	RUN_TEST(test_initial_states);
+	RUN_TEST(test_ctrl_msg_request_received);
+	RUN_TEST(test_ctrl_msg_request_received_with_retry_and_fail);
+	RUN_TEST(test_ctrl_msg_request_received_with_retry_and_success);
+	RUN_TEST(test_data_msg_request_received);
+	RUN_TEST(test_data_msg_request_received_to_much_data);
+
+	/* TODO(shurst): More PD 2.0 Tests */
+
+	/* Test PD 3.0 Protocol */
+	init_port(PORT0, PD_REV30);
+	RUN_TEST(test_initial_states);
+	RUN_TEST(test_ctrl_msg_request_received);
+	RUN_TEST(test_ctrl_msg_request_received_with_retry_and_fail);
+	RUN_TEST(test_ctrl_msg_request_received_with_retry_and_success);
+	RUN_TEST(test_data_msg_request_received);
+	RUN_TEST(test_data_msg_request_received_to_much_data);
+
+	/* TODO(shurst): More PD 3.0 Tests */
+
+	test_print_result();
+}
+
