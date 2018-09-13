@@ -7,7 +7,11 @@
 
 #define __CROS_EC_VEC_4_H
 
+#include "math_util.h"
+
+/* TODO(b:113364863): Replace all float* types with fixed-point type fp_t. */
 typedef float floatv4_t[4];
+typedef fp_t fpv4_t[4];
 
 #endif  /* __CROS_EC_VEC_4_H */
 
