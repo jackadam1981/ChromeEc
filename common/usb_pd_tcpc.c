@@ -298,11 +298,19 @@ int prepare_message(int port, uint16_t header, uint8_t cnt,
 	int off, i;
 	/* 64-bit preamble */
 	off = pd_write_preamble(port);
+#ifdef CONFIG_USBC_CTVPD
+	/* Start Of Packet: 2x Sync-1 + 2x Sync-3 */
+	off = pd_write_sym(port, off, BMC(PD_SYNC1));
+	off = pd_write_sym(port, off, BMC(PD_SYNC1));
+	off = pd_write_sym(port, off, BMC(PD_SYNC3));
+	off = pd_write_sym(port, off, BMC(PD_SYNC3));
+#else
 	/* Start Of Packet: 3x Sync-1 + 1x Sync-2 */
 	off = pd_write_sym(port, off, BMC(PD_SYNC1));
 	off = pd_write_sym(port, off, BMC(PD_SYNC1));
 	off = pd_write_sym(port, off, BMC(PD_SYNC1));
 	off = pd_write_sym(port, off, BMC(PD_SYNC2));
+#endif
 	/* header */
 	off = encode_short(port, off, header);
 
@@ -637,17 +645,29 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	while (bit > 0) {
 		bit = pd_dequeue_bits(port, bit, 20, &val);
 		if (val == PD_SOP) {
+#ifdef CONFIG_USBC_CTVPD
+			return PD_RX_ERR_UNSUPPORTED_SOP;
+#else
 			break;
+#endif
 		} else if (val == PD_SOP_PRIME) {
+#ifdef CONFIG_USBC_CTVPD
+			break;
+#else
 			CPRINTF("SOP'\n");
 			return PD_RX_ERR_UNSUPPORTED_SOP;
+#endif
 		} else if (val == PD_SOP_PRIME_PRIME) {
 			CPRINTF("SOP''\n");
 			return PD_RX_ERR_UNSUPPORTED_SOP;
 		}
 	}
 	if (bit < 0) {
+#ifdef CONFIG_USBC_CTVPD
+		msg = "SOP'";
+#else
 		msg = "SOP";
+#endif
 		goto packet_err;
 	}
 
@@ -794,6 +814,9 @@ int tcpc_run(int port, int evt)
 	if ((evt & PD_EVENT_TX) && pd[port].rx_enabled) {
 		switch (pd[port].tx_type) {
 		case TCPC_TX_SOP:
+#ifdef CONFIG_USBC_CTVPD
+		case TCPC_TX_SOP_PRIME:
+#endif
 			res = send_validate_message(port,
 					pd[port].tx_head,
 					pd[port].tx_data);
@@ -859,7 +882,7 @@ int tcpc_run(int port, int evt)
 #endif
 }
 
-#ifndef CONFIG_USB_POWER_DELIVERY
+#if !defined(CONFIG_USB_POWER_DELIVERY) && !defined(CONFIG_USBC_CTVPD)
 void pd_task(void *u)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
