@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f87c640_ef0904fb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2607,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-14T20:56:21Z",
+      "side": 1,
+      "message": "What do you think about \n\nif (TASK_EVENT_CUSTOM(evt) || evt \u0026 TASK_EVENT_WAKE)",
+      "range": {
+        "startLine": 2607,
+        "startChar": 6,
+        "endLine": 2607,
+        "endChar": 29
+      },
+      "revId": "2af5113d2faef9190493880429c88ceb0e1237e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
