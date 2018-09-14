@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "20f0aac3_df28bc8d",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-14T16:19:43Z",
+      "side": 1,
+      "message": "After talking to +mnissler@chromium.org, to support a roll back of CrOS we probably need Cr50 to be able to convert 00 requests to 01 requests here. This check will block 00 requests as this is written.\n\nSo ideally you would change this comparision to:\nif (request-\u003eheader.version \u003e PW_PROTOCOL_VERSION)\nwith an:\nelse if (request-\u003eheader.version \u003c PW_PROTOCOL_VERSION)\nthat calls a compatibility layer function that takes the request as an argument and returns whether the transformation succeeded or failed. This would involve moving part of the message to make space for the new fields and assigning them to the default values. This will mean you only need to change the one pw_handle_insert_leaf function to handle your new fields and write a new function that converts the request from the 00 type to the 01 type.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 5,
+        "endLine": 1575,
+        "endChar": 51
+      },
+      "revId": "d2489f19068ab58186504bdae3e56a0854a08f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2bedb51_6aac481e",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-14T16:19:43Z",
+      "side": 1,
+      "message": "For scalability and maintainability, I think we shouldn\u0027t add previous versions to this struct but hide this in a compatibility layer/function that is called on the request when the protocol comparison fails",
+      "range": {
+        "startLine": 357,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 50
+      },
+      "revId": "d2489f19068ab58186504bdae3e56a0854a08f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6773c127_d7610916",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 22
