@@ -16,6 +16,47 @@
       "revId": "5d5e6b48c1b26a3a9f187bf356fbc6a127276d94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2e0c11_2a8318a7",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-14T03:49:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8276662d_17d0e3fe",
+      "revId": "5d5e6b48c1b26a3a9f187bf356fbc6a127276d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85f418b2_d04480a7",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-14T03:49:21Z",
+      "side": 1,
+      "message": "break the loop if we need to react on touchpad errors.",
+      "range": {
+        "startLine": 1131,
+        "startChar": 10,
+        "endLine": 1131,
+        "endChar": 48
+      },
+      "revId": "5d5e6b48c1b26a3a9f187bf356fbc6a127276d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
