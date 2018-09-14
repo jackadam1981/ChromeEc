@@ -70,6 +70,30 @@
       "revId": "c3e3477cc1a078c4950267a3c50062eb8b85a6f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2191ca88_28db987d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-14T20:47:21Z",
+      "side": 1,
+      "message": "Thank you for pointing out the task size. I did mean to make the size the default which does save a little bit of space. We shouldn\u0027t need more space than the default looking at the analyzestack for meep.\n\nMy original script to introduce these tasks copied over the stack size from the PD task which it shouldn\u0027t have.",
+      "parentUuid": "f9c62d9c_70913a36",
+      "range": {
+        "startLine": 31,
+        "startChar": 59,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "c3e3477cc1a078c4950267a3c50062eb8b85a6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
