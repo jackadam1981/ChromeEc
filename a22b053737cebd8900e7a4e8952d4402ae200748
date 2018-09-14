@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cfe04051_a3c994ba",
+        "filename": "board/chocodile_vpdmcu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "changed",
+      "parentUuid": "e3d32a82_28961e67",
+      "range": {
+        "startLine": 44,
+        "startChar": 66,
+        "endLine": 44,
+        "endChar": 67
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8086864a_3959b061",
         "filename": "board/chocodile_vpdmcu/board.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc24e1ef_e28b12f1",
+        "filename": "board/chocodile_vpdmcu/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8086864a_3959b061",
+      "range": {
+        "startLine": 48,
+        "startChar": 41,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "99732949_eb06e9ab",
+        "filename": "board/chocodile_vpdmcu/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9defb06_73cd0303",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 12
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "898e277d_23229608",
         "filename": "board/chocodile_vpdmcu/board.h",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f6be36_c7239ad2",
+        "filename": "board/chocodile_vpdmcu/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "898e277d_23229608",
+      "range": {
+        "startLine": 48,
+        "startChar": 37,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "56981db9_49b680cf",
+        "filename": "board/chocodile_vpdmcu/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e70dfd1e_5c7860cc",
+      "range": {
+        "startLine": 68,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac55eedf_072624b3",
         "filename": "board/chocodile_vpdmcu/board.h",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110dbba0_79a66ffb",
+        "filename": "board/chocodile_vpdmcu/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac55eedf_072624b3",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "04dbf054_cdbc2e54",
+        "filename": "board/chocodile_vpdmcu/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Taken from a .lds file:\n * Note that this file is included by assembly (.S) files.  Any C-isms such as\n * struct definitions or enums in a sub-configuration file MUST be guarded with\n * #ifndef __ASSEMBLER__ to prevent those C-isms from being evaluated by the\n * assembler.",
+      "parentUuid": "b545a12c_75f6aa00",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac71b96c_2bd4ebe0",
         "filename": "board/chocodile_vpdmcu/build.mk",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2018-09-13T22:00:02Z",
       "side": 1,
       "message": "are we going to get a consoleless ro+rw in the future?  is there going to be some way to update?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 70
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1323eef6_5e761c41",
+        "filename": "board/chocodile_vpdmcu/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "I\u0027m not familiar on how that would work. Could you direct me to someone who is?",
+      "parentUuid": "ac71b96c_2bd4ebe0",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "1b0c8d10_24478bf7",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7dab9c8_4980ce7f",
+      "range": {
+        "startLine": 19,
+        "startChar": 49,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aea0200_78962a72",
         "filename": "board/chocodile_vpdmcu/gpio.inc",
         "patchSetId": 4
@@ -229,6 +445,30 @@
       "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58116ca7_c6bfd895",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aea0200_78962a72",
+      "range": {
+        "startLine": 49,
+        "startChar": 39,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "004f08d2_b78a8cf7",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52e868ad_088ee898",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 49
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86d3e2b6_49284213",
         "filename": "board/chocodile_vpdmcu/gpio.inc",
         "patchSetId": 4
@@ -275,6 +539,30 @@
       "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce5fde5_c3c81df8",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-14T01:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d3e2b6_49284213",
+      "range": {
+        "startLine": 71,
+        "startChar": 26,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
