@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26dfaad7_efec8cea",
+        "filename": "board/aleena/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-14T15:57:56Z",
+      "side": 1,
+      "message": "Remove the reference to Bobba",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "089225a34f29944317c52078d0c724ba5e453441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c6660dd_68b52962",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-14T15:57:56Z",
+      "side": 1,
+      "message": "Since the shared LED on/off code isn\u0027t enforcing any particular behavior in the different states, it would make more sense to say this is common state detection which supports OEM-defined LED behavior",
+      "range": {
+        "startLine": 2134,
+        "startChar": 0,
+        "endLine": 2135,
+        "endChar": 27
+      },
+      "revId": "089225a34f29944317c52078d0c724ba5e453441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f7bb7e_bc121bab",
+        "filename": "include/led_onoff_states.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-14T15:57:56Z",
+      "side": 1,
+      "message": "Define should match the new file name more closely since this is no longer a baseboard file",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 33
+      },
+      "revId": "089225a34f29944317c52078d0c724ba5e453441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
