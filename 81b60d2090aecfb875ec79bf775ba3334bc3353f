@@ -70,6 +70,30 @@
       "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25922659_c30c5fbb",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-09-14T09:56:18Z",
+      "side": 1,
+      "message": "IT8320 doesn\u0027t have default hardware NaN.\nIf the operation is return NaN, the format will be:\nexponent field \u003d 0xff, mantissa field \u003d a non-zero number (not a constant value, depend on operation result)\n\nWe use 0xffc00000 as NaN is the same with GCC library routine.\nhttps://github.com/gcc-mirror/gcc/blob/26f8bcbd5ca246308c1dfc17e71d01ccc5741e74/libgcc/config/nds32/lib1asmsrc-mculib.S#L2249\nDo we need to change it to 0xffffffff?",
+      "parentUuid": "d4258d35_18dda1d4",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
