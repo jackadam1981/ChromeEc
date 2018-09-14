@@ -94,6 +94,30 @@
       "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87772c75_61b8d725",
+        "filename": "chip/it83xx/it83xx_fpu.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-09-14T14:30:16Z",
+      "side": 1,
+      "message": "\u003e IT8320 doesn\u0027t have default hardware NaN.If the operation is return NaN, the format will be:\nexponent field \u003d 0xff, mantissa field \u003d a non-zero number (not a constant value, depend on operation result)\n\nOK, this is fine, then.  Thanks!",
+      "parentUuid": "25922659_c30c5fbb",
+      "range": {
+        "startLine": 114,
+        "startChar": 12,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "81b60d2090aecfb875ec79bf775ba3334bc3353f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
