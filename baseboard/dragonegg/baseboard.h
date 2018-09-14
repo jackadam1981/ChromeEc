@@ -51,8 +51,14 @@
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_DEVICE_CHEMISTRY  "LION"
 #define CONFIG_BATTERY_FUEL_GAUGE
-#define CONFIG_BATTERY_HW_PRESENT_CUSTOM
-#define CONFIG_BATTERY_PRESENT_CUSTOM
+/*
+ * TODO(b/111704193): The signal GPIO_EC_BATT_PRES_ODL has an issue
+ * where it's floating (?) at ~2V when it should be low when the battery
+ * is connected. The signal will read correctly following a cold reset
+ * and the battery is connected, but following a warm reboot, it reads
+ * high. Once the HW issue is resolved remove the comment.
+ */
+#define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_ODL
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_SMART
 
