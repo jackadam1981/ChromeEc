@@ -160,6 +160,20 @@ good:
 	memcpy(secret, data.secret, sizeof(data.secret));
 	return EC_SUCCESS;
 }
+
+static int hc_rollback_has_entropy(struct host_cmd_handler_args *args)
+{
+	uint8_t secret[CONFIG_ROLLBACK_SECRET_SIZE];
+	int ret;
+
+	ret = rollback_get_secret(secret);
+	memset(secret, 0, sizeof(secret));
+
+	return (ret == EC_SUCCESS) ? EC_RES_SUCCESS : EC_RES_ERROR;
+}
+DECLARE_HOST_COMMAND(EC_CMD_HAS_ENTROPY,
+		     hc_rollback_has_entropy,
+		     EC_VER_MASK(0));
 #endif
 
 int rollback_lock(void)

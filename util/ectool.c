@@ -146,6 +146,8 @@ const char help_str[] =
 	"      Set the value of GPIO signal\n"
 	"  hangdetect <flags> <event_msec> <reboot_msec> | stop | start\n"
 	"      Configure or start/stop the hang detect timer\n"
+	"  hasentropy\n"
+	"      Checks if the secret's entropy has been initialized\n"
 	"  hello\n"
 	"      Checks for basic communication with EC\n"
 	"  hibdelay [sec]\n"
@@ -450,6 +452,15 @@ int cmd_add_entropy(int argc, char *argv[])
 	rv = -EECRESULT-EC_RES_TIMEOUT;
 out:
 	fprintf(stderr, "Failed to add entropy: %d\n", rv);
+	return rv;
+}
+
+int cmd_has_entropy(int argc, char *argv[])
+{
+	int rv = ec_command(EC_CMD_HAS_ENTROPY, 0, NULL, 0, NULL, 0);
+
+	printf("Entropy source has%sbeen set\n", rv == EC_RES_SUCCESS ?
+	       " " : " NOT ");
 	return rv;
 }
 
@@ -8342,6 +8353,7 @@ const struct command commands[] = {
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
+	{"hasentropy", cmd_has_entropy},
 	{"hello", cmd_hello},
 	{"hibdelay", cmd_hibdelay},
 	{"hostsleepstate", cmd_hostsleepstate},
