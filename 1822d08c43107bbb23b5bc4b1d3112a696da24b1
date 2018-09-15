@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "541d1930_9ceb15d2",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "8",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1886b92b_45e0ad0e",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "not gonna pretend I understand what\u0027s going on here, but isn\u0027t (1\u003c\u003c22) for EXTI_COMP2_MASK?",
+      "range": {
+        "startLine": 60,
+        "startChar": 37,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d5d6fe_7f957919",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "this changes based on the pull-up. see tables 4-28, 4-29, 4-30 in the Type-C spec",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e66bd11_a06988da",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "return?",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9711f9_12317441",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "In the Rd case, any judgement of USB vs 1.5 vs 3.0 would be wrong, since our Rd is not accurate.  The best we can say is \"there\u0027s an Rp\"",
+      "range": {
+        "startLine": 177,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 44
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e3284f_5218141b",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "GPO_HZ",
+      "range": {
+        "startLine": 208,
+        "startChar": 19,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bdd9013_2e571804",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "this could be wrong depending on the choice of Rp",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 49
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558c48c9_a8893009",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "any concerns about glitching? (same with other IOs)",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 47
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9cfbe0_8f29f773",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "are we OK having all of these as non-inlined functions?",
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b5720a_8b460ec4",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "doesn\u0027t this depend on the pull used?",
+      "range": {
+        "startLine": 468,
+        "startChar": 25,
+        "endLine": 468,
+        "endChar": 42
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726e2fe8_76cbd05a",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "active low",
+      "range": {
+        "startLine": 478,
+        "startChar": 36,
+        "endLine": 478,
+        "endChar": 48
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9daf1b8_f5f41abc",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "is this right? there\u0027s two types of billboards, anyway",
+      "range": {
+        "startLine": 493,
+        "startChar": 40,
+        "endLine": 493,
+        "endChar": 53
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb78a1a_2c1e41a4",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "glitching? (below too)",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 22
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9bc9c0_fad71ef9",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "vpd_pwr is an enum; should you be using it directly here?",
+      "range": {
+        "startLine": 558,
+        "startChar": 40,
+        "endLine": 558,
+        "endChar": 42
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171875c9_585c546b",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we can actually return all these, since the Rd we provide is inaccurate.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253a071e_02260f85",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "there\u0027s two possible billboards though",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 35
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "813ca520_f23cdb61",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "we never want this and cc2 enabled at the same time, so I\u0027d rather this API be something like vpd_passthrough_cc(int cc)",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04cb7f7d_bdcdea8d",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "branch \u003d\u003d master, so probably need to explicitly say \"chocodile\"",
+      "range": {
+        "startLine": 660,
+        "startChar": 45,
+        "endLine": 660,
+        "endChar": 50
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e28e7476_57f79cad",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-15T00:07:08Z",
+      "side": 1,
+      "message": "should this be in the #else?",
+      "range": {
+        "startLine": 816,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 19
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
