@@ -4886,6 +4886,11 @@ struct __ec_align4 ec_response_adc_read {
 	int32_t adc_value;
 };
 
+/*
+ * Has the device secret been set?
+ */
+#define EC_CMD_HAS_ENTROPY	0x0124
+
 
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
