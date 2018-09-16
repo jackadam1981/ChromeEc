@@ -16,6 +16,24 @@
       "revId": "11936960cd68064561d348f39372717f6efd8e9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c08686_c8989ad0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-09-16T04:09:53Z",
+      "side": 1,
+      "message": "no, it\u0027s one character more",
+      "parentUuid": "91196268_ed04a4c6",
+      "revId": "11936960cd68064561d348f39372717f6efd8e9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
