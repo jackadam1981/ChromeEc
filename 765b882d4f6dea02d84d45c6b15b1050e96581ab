@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c511455b_d9927631",
+        "filename": "common/aes-gcm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-17T21:25:23Z",
+      "side": 0,
+      "message": "Still removing this, mostly because I don\u0027t want to have to move ctr128_f definition.",
+      "revId": "765b882d4f6dea02d84d45c6b15b1050e96581ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
