@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6c40730_b339bbbf",
+        "filename": "board/iclrvp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2018-09-17T16:30:07Z",
+      "side": 1,
+      "message": "C0 - use for DSW_DPWROK",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "e3bd9ae3dd54bff721b6d937564efecef2c453f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99e467ec_1eba7d0b",
+        "filename": "board/iclrvp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2018-09-17T16:30:07Z",
+      "side": 1,
+      "message": "L3 - use for POWER_BUTTON_L",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 73
+      },
+      "revId": "e3bd9ae3dd54bff721b6d937564efecef2c453f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01186cbe_7d49bbe1",
+        "filename": "board/iclrvp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2018-09-17T16:30:07Z",
+      "side": 1,
+      "message": "I1 and E4 are unused",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "e3bd9ae3dd54bff721b6d937564efecef2c453f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
