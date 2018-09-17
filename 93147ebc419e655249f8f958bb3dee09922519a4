@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "9f61c846_25cf367d",
+        "filename": "common/aes-gcm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-17T16:07:29Z",
+      "side": 1,
+      "message": "I think I need to see this function, but it doesn\u0027t show up in code search.",
+      "range": {
+        "startLine": 58,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "93147ebc419e655249f8f958bb3dee09922519a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a05969d9_9d1fb4c4",
+        "filename": "common/aes-gcm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-17T16:07:29Z",
+      "side": 1,
+      "message": "Oh man, you can\u0027t compile with C99?",
+      "revId": "93147ebc419e655249f8f958bb3dee09922519a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67d1e34d_f6e698d9",
         "filename": "core/cortex-m/ghash.S",
         "patchSetId": 6

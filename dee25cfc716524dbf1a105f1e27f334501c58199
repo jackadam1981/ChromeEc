@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "642914f9_072a8c79",
+        "filename": "common/aes-gcm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-17T16:07:29Z",
+      "side": 0,
+      "message": "This change, for example, doesn\u0027t seem necessary and would complicate resyncing in the future.",
+      "revId": "dee25cfc716524dbf1a105f1e27f334501c58199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c333c405_ba4c3e3b",
+        "filename": "common/aes-gcm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-17T16:07:29Z",
+      "side": 0,
+      "message": "(likewise this stuff, which should be dropped by the preprocessor.)",
+      "revId": "dee25cfc716524dbf1a105f1e27f334501c58199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
