@@ -16,6 +16,24 @@
       "revId": "dee25cfc716524dbf1a105f1e27f334501c58199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f0e8bec_520f980f",
+        "filename": "core/cortex-m/ghash.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-17T21:22:27Z",
+      "side": 1,
+      "message": "Done, hopefully that makes sense.",
+      "parentUuid": "e8630ff3_b428e5ff",
+      "revId": "dee25cfc716524dbf1a105f1e27f334501c58199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
