@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1530bb42_fd20ba46",
+        "filename": "board/bip/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-17T14:11:20Z",
+      "side": 1,
+      "message": "nit: these declaration should fit on one line now",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "bc2093d5a0403fa915c31b182615e3bd3c3ede3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd07353d_95aaac9e",
+        "filename": "board/meep/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-17T14:11:20Z",
+      "side": 1,
+      "message": "nit: can yo use\nif (!board_is_convertible())\nisntead",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "bc2093d5a0403fa915c31b182615e3bd3c3ede3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
