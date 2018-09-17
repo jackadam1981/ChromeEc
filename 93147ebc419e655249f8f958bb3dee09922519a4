@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "396e9a43_c2b0f709",
+        "filename": "common/aes-gcm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-17T21:50:21Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "ed515e7c_dbab4655",
+      "range": {
+        "startLine": 58,
+        "startChar": 22,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "93147ebc419e655249f8f958bb3dee09922519a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a05969d9_9d1fb4c4",
         "filename": "common/aes-gcm.c",
         "patchSetId": 6
