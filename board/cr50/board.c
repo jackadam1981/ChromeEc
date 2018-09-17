@@ -328,6 +328,20 @@ static void set_up_battery_cutoff_monitor(void)
 	BUILD_ASSERT(((flags) & GPIO_INT_BOTH) != GPIO_INT_BOTH);
 #include "gpio.wrap"
 
+/**
+ * Reset wake logic
+ *
+ * If any wake pins are edge triggered, the pad logic latches the wakeup. Clear
+ * and restore EXITEN0 to reset the wakeup logic.
+ */
+static void reset_wake_logic(void)
+{
+	uint32_t exiten = GREG32(PINMUX, EXITEN0);
+
+	GREG32(PINMUX, EXITEN0) = 0;
+	GREG32(PINMUX, EXITEN0) = exiten;
+}
+
 static void init_pmu(void)
 {
 	clock_enable_module(MODULE_PMU, 1);
@@ -448,11 +462,6 @@ void board_configure_deep_sleep_wakepins(void)
 static void init_interrupts(void)
 {
 	int i;
-	uint32_t exiten = GREG32(PINMUX, EXITEN0);
-
-	/* Clear wake pin interrupts */
-	GREG32(PINMUX, EXITEN0) = 0;
-	GREG32(PINMUX, EXITEN0) = exiten;
 
 	/* Enable all GPIO interrupts */
 	for (i = 0; i < gpio_ih_count; i++)
@@ -528,15 +537,6 @@ static void configure_board_specific_gpios(void)
 		/* Enable powerdown exit on DIOM0 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
-	/*
-	 * If the TPM_RST_L signal is already high when cr50 wakes up or
-	 * transitions to high before we are able to configure the gpio then
-	 * we will have missed the edge and the tpm reset isr will not get
-	 * called. Check that we haven't already missed the rising edge. If we
-	 * have alert tpm_rst_isr.
-	 */
-	if (gpio_get_level(GPIO_TPM_RST_L))
-		hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
 }
 
 void decrement_retry_counter(void)
@@ -561,7 +561,7 @@ static void board_init(void)
 		decrement_retry_counter();
 	configure_board_specific_gpios();
 	init_pmu();
-	init_interrupts();
+	reset_wake_logic();
 	init_trng();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
@@ -571,6 +571,20 @@ static void board_init(void)
 	initvars();
 
 	system_update_rollback_mask();
+
+	if (!chip_factory_mode()) {
+	  init_interrupts();
+		/*
+		 * If the TPM_RST_L signal is already high when cr50 wakes up or
+		 * transitions to high before we are able to configure the gpio then
+		 * we will have missed the edge and the tpm reset isr will not get
+		 * called. Check that we haven't already missed the rising edge. If we
+		 * have alert tpm_rst_isr.
+		 */
+		if (gpio_get_level(GPIO_TPM_RST_L))
+			hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
+	}
+
 
 	/* Indication that firmware is running, for debug purposes. */
 	GREG32(PMU, PWRDN_SCRATCH16) = 0xCAFECAFE;
