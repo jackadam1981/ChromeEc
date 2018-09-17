@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7577317e_548ae10a",
+        "filename": "board/aleena/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-17T14:25:46Z",
+      "side": 1,
+      "message": "can you break this into 2 CLs: one for the common LED code, and one for the aleena change",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "2d37a6bb26e6ec0ca03f80bceb9e81255105a172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f59f92_57153661",
+        "filename": "board/aleena/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-17T14:25:46Z",
+      "side": 1,
+      "message": "we typically put all of the alternate configuration at the bottom on the file. Please move these normal GPIO declarations up please.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 61
+      },
+      "revId": "2d37a6bb26e6ec0ca03f80bceb9e81255105a172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df2a3fa_1fcbae4f",
+        "filename": "common/led_onoff_states.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-17T14:25:46Z",
+      "side": 1,
+      "message": "should we have similar init code for the power LED (if OEM_POWER_LED is defined)",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 50
+      },
+      "revId": "2d37a6bb26e6ec0ca03f80bceb9e81255105a172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9271cd61_21ad78ae",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-17T14:25:46Z",
+      "side": 1,
+      "message": "what are your thoughts about the following comment and name?\n\n/* Support GPIO-controlled LEDs for common battery/power states through a board-defined lookup table. */\n#undef CONFIG_LED_LOOKUP_CONTROL",
+      "range": {
+        "startLine": 2134,
+        "startChar": 0,
+        "endLine": 2137,
+        "endChar": 23
+      },
+      "revId": "2d37a6bb26e6ec0ca03f80bceb9e81255105a172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
