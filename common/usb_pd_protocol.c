@@ -1642,6 +1642,8 @@ static void handle_request(int port, uint16_t head,
 		 * go to the unattached state.
 		 */
 		if (tcpm_set_cc(port, TYPEC_CC_OPEN) == EC_SUCCESS) {
+			int cc1, cc2;
+			int count = 3;
 			/* Do not drive VBUS or VCONN. */
 			pd_power_supply_reset(port);
 #ifdef CONFIG_USBC_VCONN
@@ -1650,8 +1652,16 @@ static void handle_request(int port, uint16_t head,
 			usleep(PD_T_ERROR_RECOVERY);
 
 			/* Restore terminations. */
-			tcpm_set_cc(port, DUAL_ROLE_IF_ELSE(port, TYPEC_CC_RD,
-							    TYPEC_CC_RP));
+			while (count-- > 0) {
+				tcpm_set_cc(port, DUAL_ROLE_IF_ELSE(
+						port, TYPEC_CC_RD,
+						TYPEC_CC_RP));
+				tcpm_get_cc(port, &cc1, &cc2);
+				if (cc1 != TYPEC_CC_VOLT_OPEN &&
+						cc2 != TYPEC_CC_VOLT_OPEN)
+					break;
+				usleep(PD_T_ERROR_RECOVERY);
+			}
 		}
 		set_state(port,
 			  DUAL_ROLE_IF_ELSE(port,
