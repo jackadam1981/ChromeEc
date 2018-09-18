@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "61ae62d0_e3b8a436",
+        "filename": "common/led_onoff_states.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-18T23:39:37Z",
+      "side": 1,
+      "message": "I\u0027d like to change \"OEM_BATT_FUEL_LOW_LED\" to \"CONFIG_LED_ONOFF_STATES_BAT_LOW\" (and document in config.h).",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "2d37a6bb26e6ec0ca03f80bceb9e81255105a172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b843cc09_685a6bcb",
+        "filename": "common/led_onoff_states.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-18T23:39:37Z",
+      "side": 1,
+      "message": "I\u0027d like to change \"OEM_POWER_LED\" to \"CONFIG_LED_ONOFF_STATES_POWER_LED\" (and document in config.h).",
+      "range": {
+        "startLine": 121,
+        "startChar": 7,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "2d37a6bb26e6ec0ca03f80bceb9e81255105a172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9df2a3fa_1fcbae4f",
         "filename": "common/led_onoff_states.c",
         "patchSetId": 8
@@ -82,6 +128,30 @@
       "writtenOn": "2018-09-17T14:25:46Z",
       "side": 1,
       "message": "what are your thoughts about the following comment and name?\n\n/* Support GPIO-controlled LEDs for common battery/power states through a board-defined lookup table. */\n#undef CONFIG_LED_LOOKUP_CONTROL",
+      "range": {
+        "startLine": 2134,
+        "startChar": 0,
+        "endLine": 2137,
+        "endChar": 23
+      },
+      "revId": "2d37a6bb26e6ec0ca03f80bceb9e81255105a172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d707ca_6d5f67e4",
+        "filename": "include/config.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 2137,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-18T23:39:37Z",
+      "side": 1,
+      "message": "I like the comment but not the name. Best I can think of (and following the file name) is:\n\n/* Support GPIO-controlled LEDs for common battery/power states through a board-defined lookup table. */\n#undef CONFIG_LED_ONOFF_STATES",
+      "parentUuid": "9271cd61_21ad78ae",
       "range": {
         "startLine": 2134,
         "startChar": 0,
