@@ -46,6 +46,30 @@
       "revId": "39bc06766af125b60c2979c0b38682c310928314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0632982_c4b5a87c",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-09-18T22:33:14Z",
+      "side": 1,
+      "message": "I tried to initiate a hard reset to the partner port right after we lock/unlock PD voltage. However, it causes a PD loop. Here is what happened.\n\n(1) When rt946x reports charge termination, we lock PD to 5V.\n(2) We ask the partner port to hard reset.\n(3) Partner port does a hard reset, which looks like a AC on/off to rt946x. In this case, rt946x always restarts charging before re-entering charge termination.\n(4) Since rt946x restarts charging, we unlock PD voltage from 5V.\n(5) We ask partner port to hard reset.\n(6) rt946x charges the device until it reports charge termination again. Then go to (1) again...\n\nSo I\u0027d say let\u0027s land the current patch.\nAt least I verified it works with my PD charger.\nNote that we\u0027re dealing with a rare case to begin with.\nIMO the \u0027chargers/accessories that behave poorly when trying to change the voltage\u0027 is a rare case in a rare case.",
+      "parentUuid": "0d8d2885_ca7d94c6",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "39bc06766af125b60c2979c0b38682c310928314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
