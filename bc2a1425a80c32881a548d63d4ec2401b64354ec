@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b411b76_30a0b62a",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-18T18:55:25Z",
+      "side": 1,
+      "message": "can we update this comment of keep the 0 assignment explicit. (I think I like the explicit assigning a little more just in case lines in between here and the declaration update the current variable)",
+      "range": {
+        "startLine": 369,
+        "startChar": 11,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "bc2a1425a80c32881a548d63d4ec2401b64354ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
