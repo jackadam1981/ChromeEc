@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30602c42_d54a43da",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b3e3e4_45a85c34",
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeeb7598_5c77f904",
         "filename": "common/fpsensor.c",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2018-09-17T16:07:43Z",
       "side": 1,
       "message": "This is ok so long as this salt is *only* used for this purpose.",
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ecf3b07_38a0abf3",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "Good point. That\u0027s the case, that\u0027s the only thing we use it for. I\u0027ve added a comment in the header to make it more explicit.",
+      "parentUuid": "aeeb7598_5c77f904",
       "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ffa54884_c5c10360",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e192b83_64933b94",
+      "range": {
+        "startLine": 478,
+        "startChar": 44,
+        "endLine": 478,
+        "endChar": 54
+      },
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9eaba286_50b92858",
         "filename": "common/fpsensor.c",
         "patchSetId": 9
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "c6ccb370_ae04044f",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eaba286_50b92858",
+      "range": {
+        "startLine": 505,
+        "startChar": 44,
+        "endLine": 505,
+        "endChar": 54
+      },
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "155553e7_d71a2710",
         "filename": "common/fpsensor.c",
         "patchSetId": 9
@@ -93,6 +177,30 @@
       "writtenOn": "2018-09-17T16:07:43Z",
       "side": 1,
       "message": "(I don\u0027t have enough context to know whether this is sufficiently attacker controlled to possibly overflow.)",
+      "range": {
+        "startLine": 537,
+        "startChar": 6,
+        "endLine": 537,
+        "endChar": 27
+      },
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9072ae24_f0b0b97e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "Yes, both those parameters are set by code running on the AP so we have to check",
+      "parentUuid": "155553e7_d71a2710",
       "range": {
         "startLine": 537,
         "startChar": 6,
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "ccb8141e_da17191e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "I\u0027ve tweaked it a bit, ptal :-)",
+      "parentUuid": "5e445668_944e183c",
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2f61ac3_b5fb0b30",
         "filename": "common/fpsensor.c",
         "patchSetId": 9
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "3c6e702a_930fc04b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "Done. I actually moved the clearing of templ_dirty to the first transfer, it only needs to be done once.",
+      "parentUuid": "a2f61ac3_b5fb0b30",
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0ac3617_5745d9f3",
         "filename": "common/fpsensor.c",
         "patchSetId": 9
@@ -150,6 +294,30 @@
       "writtenOn": "2018-09-17T16:07:43Z",
       "side": 1,
       "message": "(ditto about being unable to check overflow.)",
+      "range": {
+        "startLine": 622,
+        "startChar": 6,
+        "endLine": 622,
+        "endChar": 27
+      },
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5435cde7_88878e0d",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-18T03:37:54Z",
+      "side": 1,
+      "message": "Same thing, they come from code running on the AP so we need to check them",
+      "parentUuid": "a0ac3617_5745d9f3",
       "range": {
         "startLine": 622,
         "startChar": 6,
