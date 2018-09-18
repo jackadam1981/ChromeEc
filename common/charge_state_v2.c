@@ -1831,6 +1831,12 @@ wait_for_it:
 		}
 #endif
 
+#ifdef CONFIG_BOARD_OVERRIDE_CHARGE_REQUEST
+		/* Allow the board to override how to charge the battery. */
+		board_override_charge_request(&curr.requested_voltage,
+					      &curr.requested_current);
+#endif /* CONFIG_BOARD_OVERRIDE_CHARGE_REQUEST */
+
 		/* Apply external limits */
 		if (curr.requested_current > user_current_limit)
 			curr.requested_current = user_current_limit;

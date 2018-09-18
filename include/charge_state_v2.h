@@ -115,5 +115,14 @@ void board_base_reset(void);
  */
 int board_critical_shutdown_check(struct charge_state_data *curr);
 
+/**
+ * Board-specific routine to arbitrarily override the charge request from the
+ * battery pack.
+ *
+ * @param desired_volt_mv: pointer to desired voltage from the battery pack.
+ * @param desired_curr_ma: pointer to desired current from the battery pack.
+ */
+void board_override_charge_request(int *desired_volt_mv, int *desired_curr_ma);
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
 
