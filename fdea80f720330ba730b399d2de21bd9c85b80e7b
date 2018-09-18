@@ -1,0 +1,278 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "521c7c0c_7f599178",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "Has this been posted upstream? Or derived from upstream changes?",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27f7af81_b9ab45a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "Please list a bug number: either a new one or one of the open ISH bugs. I\u0027m aware of\n   b:78601949\n   b:113238573",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34e8cc2_1ece407b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "Can drop BRANCH\u003d - I\u0027ve not seen that used since gerrit keeps track of branches.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf7aaa0_4669bd68",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "I\u0027m wondering if this is the right response. Silently doing nothing would allow callers to \"get away with it\".\n\nThe original code was very broken (unsigned roll over) in this case and I\u0027m pretty sure any caller passing 0 in would likely hang/timeout/reset or something \"bad\".\n\nMy thinking is the code should either not check or be a bit noisier about it, perhaps WARN_ON_ONCE().",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 9
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c61f19e_869d2002",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "lines 292-296 repeat exactly what lines 303-309 do. Please delete 289-299 and instead \n\n1) data_cmd \u003d DATA_CMD_READ_VAL\n   if (len \u003d\u003d 1)\n      data_cmd |\u003d DATA_CMD_STOP_VAL;\n\n   and continue using data_cmd to setup the i2c_mmio_write() after (flags \u0026 I2C_XFER_RESTART) are tested (and possibly also set DATA_CMD_RESTART_VAL).\n\n    My goal here is to have one i2c_mmio_write(base, IC_DATA_CMD, data_cmd) call before the for loop.\n\n2) add \"if (len \u003d\u003d 1) return\" immediately before the \"for len\" loop at line 311.",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e290ae97_1a61c407",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "This implementation is not acceptable: Using global var for this isn\u0027t necessary and really not a good coding style.\n\nPlease\n1) drop all uses of \"restart_flag\" variable\n2) pass \"flags\" to i2c_write_read_commands() (it\u0027s called once from chip_i2c_xfer())\n3) In line 303, test (flags \u0026 I2C_XFER_RESTART) just like in i2c_init_transaction()",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 44
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7f079c_3e8362a7",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "Please add a comment explaining why udelay(1) is needed here.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35affbb1_f9592b3d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "Coding style: please structure the code this way (both here and lines 303-306)\n\ndata_cmd \u003d DATA_CMD_READ_VAL;\nif (!oversize)\n    data_cmd |\u003d DATA_CMD_STOP_VAL;\ni2c_mmio_write(base, IC_DATA_CMD, data_cmd);\n\nSame 4 lines of code but much easier to comment/read.",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cda69c4_ce768df8",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "rd_size is only used inside the while() loop. Please move this declaration to the beginning of the while loop.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3ff8ac_5e003800",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "Same things as rd_size.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9141282_04d4b863",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "We don\u0027t need \"oversize_flag\" - please remove. Pass \"in_size\" here instead. If in_size is non-zero, we know more data is coming after the FIFO is drained.",
+      "range": {
+        "startLine": 377,
+        "startChar": 46,
+        "endLine": 377,
+        "endChar": 59
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8169bb95_7ca3b68c",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "By adding a \"break\" to the else case, inverting the logic makes the code more readable:\n  if (ctx-\u003einterrupts \u0026 M_TX_ABRT) {\n       ctx-\u003eerror_flag \u003d 1;\n       break; /* when bus abort, no more reading !*/\n   }\n\ndon\u0027t need an \"else\" case here.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01554257_602082f3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "Do we need to test is_read again?\nWe only enter the \"main while\" loop if \"is_read\" is true.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7628fb_878bad7f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-09-18T20:55:46Z",
+      "side": 1,
+      "message": "There are many extraneous white space changes in this CL: please drop all of them from this CL.\n\nIf you feel strongly about these white space changes, please post them in a separate patch and I\u0027ll approve it.\n\nI don\u0027t mind white space changes to lines of code that are changing anyway. But please not anything else - just makes the code review slightly harder.",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 30
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
