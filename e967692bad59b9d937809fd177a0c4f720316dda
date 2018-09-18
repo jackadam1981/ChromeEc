@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7f9414e5_b815f9ec",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-18T15:03:03Z",
+      "side": 1,
+      "message": "Ok, going to assume that within the macros and structs, the types and masks are such that integer overflow cannot occur within a |uint32_t| then. (I.e. that |params-\u003esize| isn\u0027t so large that it, plus |offset| wraps around and seems small when checked against |sizeof(fp_buffer)|.",
+      "parentUuid": "9072ae24_f0b0b97e",
+      "range": {
+        "startLine": 537,
+        "startChar": 6,
+        "endLine": 537,
+        "endChar": 27
+      },
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e445668_944e183c",
         "filename": "common/fpsensor.c",
         "patchSetId": 9
