@@ -450,6 +450,13 @@
 #undef CONFIG_BOARD_HAS_BEFORE_RSMRST
 
 /*
+ * Allow the board to arbitrarily override the charge request from the battery
+ * pack.  If defined, the board must implement
+ * board_override_charge_request(...).
+ */
+#undef CONFIG_BOARD_OVERRIDE_CHARGE_REQUEST
+
+/*
  * Call board_config_post_gpio_init() after GPIOs are initialized.  See
  * include/board_config.h for more information.
  */
