@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88b23555_6e9a721a",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-18T15:47:56Z",
+      "side": 1,
+      "message": "Or just put it in #ifdef CONFIG_CMD_TASK_RESET",
+      "range": {
+        "startLine": 938,
+        "startChar": 9,
+        "endLine": 938,
+        "endChar": 20
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a6482e_9b86fe0d",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-18T15:47:56Z",
+      "side": 1,
+      "message": "Is it safe for a task to call task_reset() on itself, as long as wait\u003d0?",
+      "range": {
+        "startLine": 280,
+        "startChar": 58,
+        "endLine": 281,
+        "endChar": 22
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
