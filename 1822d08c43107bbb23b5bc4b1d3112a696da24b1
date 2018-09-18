@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af4e7e72_ce6667e7",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541d1930_9ceb15d2",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1886b92b_45e0ad0e",
         "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-15T00:07:08Z",
       "side": 1,
       "message": "not gonna pretend I understand what\u0027s going on here, but isn\u0027t (1\u003c\u003c22) for EXTI_COMP2_MASK?",
+      "range": {
+        "startLine": 60,
+        "startChar": 37,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291f0f7d_563213ee",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "This macro is the mask for external interrupts 21 and 22. 21 is for CMP1 and 22 is for CMP2. I need to update the comment.",
+      "parentUuid": "1886b92b_45e0ad0e",
       "range": {
         "startLine": 60,
         "startChar": 37,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4e197dcb_a51c2640",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d5d6fe_7f957919",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e66bd11_a06988da",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2a54bf_97826dcb",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e66bd11_a06988da",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 6
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "005ef6b3_94cb045a",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "see comment for vpd_ct_get_cc in vpd_api.h",
+      "parentUuid": "4c9711f9_12317441",
+      "range": {
+        "startLine": 177,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 44
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6e3284f_5218141b",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd52098_9f439d84",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6e3284f_5218141b",
+      "range": {
+        "startLine": 208,
+        "startChar": 19,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e50f4af9_31166f42",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Fixed in CC_RA macro",
+      "parentUuid": "3bdd9013_2e571804",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 49
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "558c48c9_a8893009",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 5
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "dd63f6bc_170df848",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "558c48c9_a8893009",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 47
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b9cfbe0_8f29f773",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 5
@@ -200,6 +392,24 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed66d6d3_aea7bc1e",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "I inlined them.",
+      "parentUuid": "0b9cfbe0_8f29f773",
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "5cbe58cf_8eca8a41",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "The function has been removed along with vpd_read_cc2_ct",
+      "parentUuid": "71b5720a_8b460ec4",
+      "range": {
+        "startLine": 468,
+        "startChar": 25,
+        "endLine": 468,
+        "endChar": 42
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "726e2fe8_76cbd05a",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 5
@@ -246,6 +480,30 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4659e5_127b614c",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "726e2fe8_76cbd05a",
+      "range": {
+        "startLine": 478,
+        "startChar": 36,
+        "endLine": 478,
+        "endChar": 48
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "5e91dd2d_ae6609d9",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9daf1b8_f5f41abc",
+      "range": {
+        "startLine": 493,
+        "startChar": 40,
+        "endLine": 493,
+        "endChar": 53
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bb78a1a_2c1e41a4",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 5
@@ -292,6 +574,30 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be2ca3bb_cf5eab1d",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bb78a1a_2c1e41a4",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 22
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "06163172_d95ab836",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "vpd_pwr enum only has 2 entries but this should be changed to make things clear.",
+      "parentUuid": "6c9bc9c0_fad71ef9",
+      "range": {
+        "startLine": 558,
+        "startChar": 40,
+        "endLine": 558,
+        "endChar": 42
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "171875c9_585c546b",
         "filename": "board/chocodile_vpdmcu/vpd_api.h",
         "patchSetId": 5
@@ -338,6 +668,30 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699e0464_d441ef58",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171875c9_585c546b",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -364,6 +718,30 @@
     },
     {
       "key": {
+        "uuid": "94b33cbc_224d7040",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "253a071e_02260f85",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 35
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "813ca520_f23cdb61",
         "filename": "board/chocodile_vpdmcu/vpd_api.h",
         "patchSetId": 5
@@ -384,6 +762,30 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572aa3a1_eaaf61a2",
+        "filename": "board/chocodile_vpdmcu/vpd_api.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "813ca520_f23cdb61",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -410,6 +812,30 @@
     },
     {
       "key": {
+        "uuid": "e254b88f_297f6729",
+        "filename": "chip/stm32/usb_pd_phy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04cb7f7d_bdcdea8d",
+      "range": {
+        "startLine": 660,
+        "startChar": 45,
+        "endLine": 660,
+        "endChar": 50
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e28e7476_57f79cad",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 5
@@ -430,6 +856,30 @@
       "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41959017_76ad3a2a",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-18T15:36:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e28e7476_57f79cad",
+      "range": {
+        "startLine": 816,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 19
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
