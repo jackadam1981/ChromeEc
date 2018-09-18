@@ -2179,6 +2179,18 @@
 #undef CONFIG_LED_PWM_COUNT
 
 /*
+ * Support GPIO-controlled LEDs for common battery/power
+ * states through a board-defined lookup table.
+ */
+#undef CONFIG_LED_ONOFF_STATES
+
+/*
+ * Adds a power LED under the control of the board-defined lookup table.
+ * Must be used with the CONFIG_LED_ONOFF_STATES option.
+ */
+#undef CONFIG_LED_POWER_LED
+
+/*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
  * and the GPIO names will be GPIO_LED..._L.
  */
