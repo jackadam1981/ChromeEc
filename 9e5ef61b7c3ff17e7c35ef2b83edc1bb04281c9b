@@ -22,6 +22,30 @@
       "revId": "9e5ef61b7c3ff17e7c35ef2b83edc1bb04281c9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86d897e_a2d725f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-18T22:25:44Z",
+      "side": 1,
+      "message": "That\u0027s a good point; thanks for the pointer. However, Opal says after testing that it\u0027s still insufficient. The new approach is to actively discharge the battery which I think won\u0027t work with CONFIG_CHARGER_PROFILE_OVERRIDE.",
+      "parentUuid": "eac05ea9_061e8092",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "9e5ef61b7c3ff17e7c35ef2b83edc1bb04281c9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
