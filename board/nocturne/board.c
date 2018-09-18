@@ -46,6 +46,12 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/*
+ * We need to stop charging the battery when the DRAM temperature sensor gets
+ * over 47 C (320 K), and resume charging once it cools back down.
+ */
+#define DRAM_CRITICAL_TEMP_K 320
+
 static void tcpc_alert_event(enum gpio_signal s)
 {
 #ifdef HAS_TASK_PDCMD
@@ -426,6 +432,21 @@ static void board_lid_change(void)
 		gpio_set_level(GPIO_UHALL_PWR_EN, 0);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, board_lid_change, HOOK_PRIO_DEFAULT);
+
+void board_override_charge_request(int *desired_volt_mv, int *desired_curr_ma)
+{
+	int t_dram;
+
+	/*
+	 * The DRAM temperature sensor is only available when the AP is on,
+	 * therefore only inhibit charging when we can actually read a
+	 * temperature.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ON) &&
+	    !temp_sensor_read(TEMP_SENSOR_DRAM, &t_dram) &&
+	    (t_dram > DRAM_CRITICAL_TEMP_K))
+		*desired_curr_ma = 0;
+}
 
 static void board_pmic_disable_slp_s0_vr_decay(void)
 {
