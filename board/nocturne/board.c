@@ -47,6 +47,12 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/*
+ * We need to stop charging the battery when the DRAM temperature sensor gets
+ * over 47 C (320 K), and resume charging once it cools back down.
+ */
+#define DRAM_CRITICAL_TEMP_K 320
+
 static void tcpc_alert_event(enum gpio_signal s)
 {
 #ifdef HAS_TASK_PDCMD
