@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b82f0bf8_3ad93bdf",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-19T17:42:04Z",
+      "side": 1,
+      "message": "JFYI, trunks/cryptohome needs to know the leaf version because it needs to decide if the leaf needs migration or not. Other options for that would be:\n1 - trunks asks pinweaver if the leaf needs migration.\n2 - cryptohome saves (in the vault_keyset) the protocol used when the leaf was created.\n\nThe first option means an extra request to pinweaver at every user authentication. The second means information kept in two places that has to be updated. If is discussed in DD, and we decided to just decode the leaf and check the version.\n\nThe make_compatible function for response seems to allow us to get rid of protocol_version in the insert_leaf. I will try to make it and see how it works.",
+      "parentUuid": "3e04bb38_7a231d14",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884a3bda_92fce115",
         "filename": "common/pinweaver.c",
         "patchSetId": 24
