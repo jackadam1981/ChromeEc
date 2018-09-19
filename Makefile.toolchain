@@ -18,6 +18,8 @@ endif
 # Default to clang if TEST_ASAN is enabled
 ifneq ($(TEST_ASAN),)
 CC=clang
+else
+CC=gcc
 endif
 
 # Extract cc-name
