@@ -12,12 +12,6 @@
 typedef float floatv3_t[3];
 typedef fp_t fpv3_t[3];
 
-/* TODO(b:113364863): Replace all float* types with fixed-point type fp_t. */
-void floatv3_scalar_mul(floatv3_t v, float c);
-float floatv3_dot(const floatv3_t v, const floatv3_t w);
-float floatv3_norm_squared(const floatv3_t v);
-float floatv3_norm(const floatv3_t v);
-
 /* fixed-point */
 void fpv3_scalar_mul(fpv3_t v, fp_t c);
 fp_t fpv3_dot(const fpv3_t v, const fpv3_t w);
