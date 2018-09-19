@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41fdeb16_e1746ce2",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-19T16:07:46Z",
+      "side": 1,
+      "message": "Done. The change means request is not const anymore, and insert_leaf receives additionally the protocol version to deduct the leaf version (for protocol 0, it has to insert the leaf with version 00).",
+      "parentUuid": "20f0aac3_df28bc8d",
+      "range": {
+        "startLine": 1575,
+        "startChar": 5,
+        "endLine": 1575,
+        "endChar": 51
+      },
+      "revId": "d2489f19068ab58186504bdae3e56a0854a08f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2bedb51_6aac481e",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 22
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "de5bc68f_5cff0f5b",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-19T16:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2bedb51_6aac481e",
+      "range": {
+        "startLine": 357,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 50
+      },
+      "revId": "d2489f19068ab58186504bdae3e56a0854a08f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6773c127_d7610916",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 22
@@ -68,6 +116,30 @@
       "revId": "d2489f19068ab58186504bdae3e56a0854a08f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e5e2ccc_befc1308",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-19T16:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6773c127_d7610916",
+      "range": {
+        "startLine": 389,
+        "startChar": 13,
+        "endLine": 389,
+        "endChar": 15
+      },
+      "revId": "d2489f19068ab58186504bdae3e56a0854a08f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
