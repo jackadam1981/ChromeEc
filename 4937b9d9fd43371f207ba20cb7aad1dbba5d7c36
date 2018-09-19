@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "64ecbbcc_8d9e68f6",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-19T17:52:10Z",
+      "side": 1,
+      "message": "The current cryptohome behavior doesn\u0027t perform migration, so as long as you only perform migration if the leaf version is less than what you expect it should be OK for future versions. \n\nThe version fields are supposed to remain at the same offset for backwards and forwards compatibility.",
+      "parentUuid": "b82f0bf8_3ad93bdf",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884a3bda_92fce115",
         "filename": "common/pinweaver.c",
         "patchSetId": 24
