@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "287ece2a_2714eb63",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-19T17:00:09Z",
+      "side": 1,
+      "message": "Unfortunately the protocol version is required also to decide the leaf_version that will be inserted (see line 977).",
+      "parentUuid": "f3c785d6_db31c627",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884a3bda_92fce115",
         "filename": "common/pinweaver.c",
         "patchSetId": 24
