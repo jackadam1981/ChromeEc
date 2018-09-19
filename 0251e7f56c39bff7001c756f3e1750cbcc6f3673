@@ -45,6 +45,30 @@
       "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c01da0_c2e233cf",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-09-19T00:34:42Z",
+      "side": 1,
+      "message": "Good question, it can call task_reset() on itself safely iff, wait\u003d0 \u0026\u0026 resets are disabled when it calls task_reset()\n\nI had been thinking (though I realise I failed to document this) that we wouldn\u0027t support tasks resetting themselves, as I wasn\u0027t sure there was much of a use case for this (eg they could achieve the same result using some normal logic). \n\nThat said, it should be very simple to support this - happy to go ahead and do that if you think it\u0027s useful",
+      "parentUuid": "76a6482e_9b86fe0d",
+      "range": {
+        "startLine": 280,
+        "startChar": 58,
+        "endLine": 281,
+        "endChar": 22
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
