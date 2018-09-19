@@ -46,6 +46,30 @@
       "revId": "bc2a1425a80c32881a548d63d4ec2401b64354ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65a4ea7_5b695771",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-19T22:40:13Z",
+      "side": 1,
+      "message": "Either\n- remove \"update available charge to 0\" or\n- add charge.voltage \u003d 0 line back (even though that should be what the value already is)",
+      "parentUuid": "e3be38d6_784b7fbd",
+      "range": {
+        "startLine": 369,
+        "startChar": 11,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "bc2a1425a80c32881a548d63d4ec2401b64354ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
