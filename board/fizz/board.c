@@ -58,6 +58,11 @@ static uint16_t board_version;
 static uint8_t oem;
 static uint8_t sku;
 
+int is_project_karma(void)
+{
+	return (oem == OEM_KARMA) ? 1 : 0;
+}
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
@@ -81,7 +86,14 @@ DECLARE_DEFERRED(adp_in_deferred);
 static void adp_in_deferred(void)
 {
 	struct charge_port_info pi = { 0 };
-	int level = gpio_get_level(GPIO_ADP_IN_L);
+	int level;
+
+	if (is_project_karma()) {
+		/* Project Karma only support BARRELJACK. */
+		level = 0;
+	} else {
+		level = gpio_get_level(GPIO_ADP_IN_L);
+	}
 
 	/* Debounce */
 	if (level == adp_in_state)
@@ -111,7 +123,8 @@ static void adp_in_deferred(void)
 /* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
 void adp_in(enum gpio_signal signal)
 {
-	if (adp_in_state == gpio_get_level(GPIO_ADP_IN_L))
+	if (!is_project_karma() &&
+		adp_in_state == gpio_get_level(GPIO_ADP_IN_L))
 		return;
 	hook_call_deferred(&adp_in_deferred_data, ADP_DEBOUNCE_MS * MSEC);
 }
@@ -468,6 +481,9 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 #define GPIO_U42_P GPIO_TYPE_C_60W
 #define GPIO_U22_C GPIO_TYPE_C_65W
 
+/* Karma: Mapping to the old schematics */
+#define GPIO_U22_90W GPIO_TYPE_C_65W
+
 /*
  * Board version 2.1 or before uses a different current monitoring circuitry.
  */
@@ -515,6 +531,19 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 */
 	led_alert(charge_ma * charge_mv <
 			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000);
+
+	if (is_project_karma()) {
+		/*
+		 * Karma has two types of charger: 90W, 135W.
+		 * 135W charger offers 7.1A/19V.
+		 * 90W charger offers 4.74A/19V.
+		 */
+		if (charge_ma < 7100) {
+			/* GPIO_U22_90W high means 90W charger */
+			gpio_set_level(GPIO_U22_90W, 1);
+		}
+		return;
+	}
 
 	/*
 	 * In terms of timing, this should always work because
@@ -686,6 +715,7 @@ enum bj_adapter {
 	BJ_90W_19V,
 	BJ_65W_19P5V,
 	BJ_90W_19P5V,
+	BJ_135W_19V,
 };
 
 /* BJ adapter specs */
@@ -694,6 +724,7 @@ static const struct charge_port_info bj_adapters[] = {
 	[BJ_90W_19V] = { .current = 4740, .voltage = 19000 },
 	[BJ_65W_19P5V] = { .current = 3330, .voltage = 19500 },
 	[BJ_90W_19P5V] = { .current = 4620, .voltage = 19500 },
+	[BJ_135W_19V] = { .current = 7100, .voltage = 19000 },
 };
 
 /*
@@ -708,6 +739,20 @@ static const struct charge_port_info bj_adapters[] = {
  * KBL-U Celeron 3865	0	65
  */
 #define BJ_ADAPTER_90W_MASK (1 << 4 | 1 << 5 | 1 << 6)
+
+/*
+ * Project Karma:
+ * Bit masks to map SKU ID to BJ adapter wattage. 1:135W 0:90W
+ * KBL-R i7 8550U	4	135
+ * KBL-R i5 8250U	5	135
+ * KBL-R i3 8130U	6	135
+ * KBL-U i7 7600	3	135
+ * KBL-U i5 7500	2	135
+ * KBL-U i3  7100	1	90
+ * KBL-U Celeron 3965	7	90
+ * KBL-U Celeron 3865	0	90
+ */
+#define BJ_ADAPTER_135W_MASK (1 << 4 | 1 << 5 | 1 << 6 | 1 << 3 | 1 << 2)
 
 static void setup_bj(void)
 {
@@ -726,6 +771,10 @@ static void setup_bj(void)
 	case OEM_WUKONG_M:
 		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
 			BJ_90W_19V : BJ_65W_19V;
+		break;
+	case OEM_KARMA:
+		bj = (BJ_ADAPTER_135W_MASK & (1 << sku)) ?
+			BJ_135W_19V : BJ_90W_19V;
 		break;
 	default:
 		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
@@ -758,8 +807,13 @@ static void board_charge_manager_init(void)
 			charge_manager_update_charge(j, i, NULL);
 	}
 
-	port = gpio_get_level(GPIO_ADP_IN_L) ?
+	if (is_project_karma()) {
+		/* Project Karma only support BARRELJACK. */
+		port = CHARGE_PORT_BARRELJACK;
+	} else {
+		port = gpio_get_level(GPIO_ADP_IN_L) ?
 			CHARGE_PORT_TYPEC0 : CHARGE_PORT_BARRELJACK;
+	}
 	CPRINTS("Power source is p%d (%s)", port,
 		port == CHARGE_PORT_TYPEC0 ? "USB-C" : "BJ");
 

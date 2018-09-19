@@ -235,6 +235,7 @@ enum OEM_ID {
 	OEM_WUKONG_A = 4,
 	OEM_WUKONG_M = 5,
 	OEM_BLEEMO = 6,
+	OEM_KARMA = 7,
 	/* Number of OEM IDs */
 	OEM_COUNT
 };
@@ -264,6 +265,7 @@ void board_set_tcpc_power_mode(int port, int mode);
 int board_get_battery_soc(void);
 void led_alert(int enable);
 void led_critical(void);
+int is_project_karma(void);
 
 #endif /* !__ASSEMBLER__ */
 
