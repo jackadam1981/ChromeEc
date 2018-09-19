@@ -81,7 +81,8 @@ DECLARE_DEFERRED(adp_in_deferred);
 static void adp_in_deferred(void)
 {
 	struct charge_port_info pi = { 0 };
-	int level = gpio_get_level(GPIO_ADP_IN_L);
+	//int level = gpio_get_level(GPIO_ADP_IN_L);
+	int level = 0;
 
 	/* Debounce */
 	if (level == adp_in_state)
@@ -111,8 +112,8 @@ static void adp_in_deferred(void)
 /* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
 void adp_in(enum gpio_signal signal)
 {
-	if (adp_in_state == gpio_get_level(GPIO_ADP_IN_L))
-		return;
+	//if (adp_in_state == gpio_get_level(GPIO_ADP_IN_L))
+	//	return;
 	hook_call_deferred(&adp_in_deferred_data, ADP_DEBOUNCE_MS * MSEC);
 }
 
@@ -760,8 +761,9 @@ static void board_charge_manager_init(void)
 			charge_manager_update_charge(j, i, &cpi);
 	}
 
-	port = gpio_get_level(GPIO_ADP_IN_L) ?
-			CHARGE_PORT_TYPEC0 : CHARGE_PORT_BARRELJACK;
+	//port = gpio_get_level(GPIO_ADP_IN_L) ?
+	//		CHARGE_PORT_TYPEC0 : CHARGE_PORT_BARRELJACK;
+	port = CHARGE_PORT_BARRELJACK;
 	CPRINTS("Power source is p%d (%s)", port,
 		port == CHARGE_PORT_TYPEC0 ? "USB-C" : "BJ");
 
