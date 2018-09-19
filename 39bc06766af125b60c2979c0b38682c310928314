@@ -94,6 +94,30 @@
       "revId": "39bc06766af125b60c2979c0b38682c310928314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030279b1_51e23c27",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-09-19T20:54:41Z",
+      "side": 1,
+      "message": "Yeah, the point is we\u0027d only trigger hard reset after we lock and if the voltage doesn\u0027t go below 5.5 within X amount of time (or, you know, actually implement it the way the PD state machine recommends).  After which, if we hard-reset, we would stay locked and not go above 5V.",
+      "parentUuid": "e50313a2_d591fab5",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "39bc06766af125b60c2979c0b38682c310928314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
