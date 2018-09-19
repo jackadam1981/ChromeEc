@@ -43,6 +43,9 @@ GPIO_INT(WP_L,		 PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)		/* EC_WP_ODL */
 GPIO_INT(TABLET_MODE_L,  PIN(8, 6), GPIO_INT_BOTH, tablet_mode_isr)
 
 GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt)
+
+#include "gpio_npcx.inc"
+
 GPIO(LID_ACCEL_INT_L,		PIN(5, 0), GPIO_INPUT | GPIO_SEL_1P8V)
 
 /* Define PCH_SLP_S0_L after all interrupts if CONFIG_POWER_S0IX not defined. */
@@ -149,10 +152,6 @@ GPIO(WFCAM_VSYNC,	 PIN(0, 3), GPIO_INPUT)	/* TP only */
 
 /* Overcurrent event to host */
 GPIO(USB_C_OC,      PIN(3, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
-
-/* Strap pins */
-GPIO(GPO66_NC,       PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP) /* GPO66_ARM_L_X86 */
-GPIO(GPOB6_NC,       PIN(B, 6), GPIO_INPUT | GPIO_PULL_UP) /* EC_GP_SEL_ODL */
 
 /* Misc */
 GPIO(CCD_MODE_ODL,   	   PIN(E, 3), GPIO_INPUT)

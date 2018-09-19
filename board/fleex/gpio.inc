@@ -40,6 +40,9 @@ GPIO_INT(WP_L,		 PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)		/* EC_WP_ODL */
 GPIO_INT(TABLET_MODE_L,	 PIN(8, 6), GPIO_INT_BOTH, tablet_mode_isr)
 
 GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt)
+
+#include "gpio_npcx.inc"
+
 GPIO(LID_ACCEL_INT_L,		PIN(5, 0), GPIO_INPUT | GPIO_SEL_1P8V)
 
 /* Define PCH_SLP_S0_L after all interrupts if CONFIG_POWER_S0IX not defined. */

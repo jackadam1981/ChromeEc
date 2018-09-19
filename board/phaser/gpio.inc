@@ -43,6 +43,9 @@ GPIO_INT(WP_L,		 PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)		/* EC_WP_ODL */
 GPIO_INT(TABLET_MODE_L,  PIN(8, 6), GPIO_INT_BOTH, tablet_mode_isr)
 
 GPIO_INT(BASE_SIXAXIS_INT_L,    PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt)
+
+#include "gpio_npcx.inc"
+
 GPIO(LID_ACCEL_INT_L,		PIN(5, 0), GPIO_INPUT | GPIO_SEL_1P8V)
 
 /* Define PCH_SLP_S0_L after all interrupts if CONFIG_POWER_S0IX not defined. */
@@ -145,10 +148,6 @@ GPIO(KB_BL_PWR_EN, 	 PIN(6, 2), GPIO_OUT_LOW)
 
 /* Overcurrent event to host */
 GPIO(USB_C_OC,           PIN(3, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
-
-/* Strap pins */
-GPIO(GPO66_NC,           PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(GPOB6_NC,           PIN(B, 6), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Keyboard pins */
 ALTERNATE(PIN_MASK(3, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_INPUT)	/* KSI_00-01 */
