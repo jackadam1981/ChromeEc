@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3c785d6_db31c627",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-19T16:43:49Z",
+      "side": 1,
+      "message": "Instead of passing protocol_version through it makes sense to update\nrequest-\u003eheader.data_length\nin make_compatible().",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884a3bda_92fce115",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-19T16:43:49Z",
+      "side": 1,
+      "message": "It is preferable to calculate the new pointer offset and use memmove over using a large stack allocated temporary variable with memcpy twice.",
+      "range": {
+        "startLine": 1564,
+        "startChar": 3,
+        "endLine": 1564,
+        "endChar": 49
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc9df4fd_c24119b4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-19T16:43:49Z",
+      "side": 1,
+      "message": "Update request-\u003eheader.data_length to reflect the new size of the data (add the size of the new field).",
+      "range": {
+        "startLine": 1574,
+        "startChar": 2,
+        "endLine": 1574,
+        "endChar": 3
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
