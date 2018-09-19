@@ -153,6 +153,33 @@ void chipset_reset_request_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&chipset_reset_request_handler_data, 0);
 }
 
+void chipset_warm_reset_interrupt(enum gpio_signal signal)
+{
+	if (!gpio_get_level(GPIO_WARM_RESET_L)) {
+		/*
+		 * Overdrive AP_RST_L to hold AP. Overdrive PS_HOLD to emulate
+		 * AP being up to trick the PMIC into thinking there’s nothing
+		 * weird going on.
+		 */
+		gpio_set_flags(GPIO_AP_RST_L, GPIO_INT_BOTH | GPIO_SEL_1P8V |
+			       GPIO_OUT_LOW);
+		gpio_set_flags(GPIO_PS_HOLD, GPIO_INT_BOTH | GPIO_SEL_1P8V |
+			       GPIO_OUT_HIGH);
+	} else {
+		/*
+		 * High-Z both AP_RST_L and PS_HOLD. Cold reset the PMIC,
+		 * doing S0->S5->S0 transition, to recover the system.
+		 */
+		gpio_set_flags(GPIO_AP_RST_L, GPIO_INT_BOTH | GPIO_SEL_1P8V);
+		gpio_set_flags(GPIO_PS_HOLD, GPIO_INT_BOTH | GPIO_SEL_1P8V);
+		/*
+		 * TODO(b/112723105): Do S0->S5->S0 transition here when we
+		 * fix the current leak. On a board with the current leak
+		 * issue, an AP reboot loop happens.
+		 */
+	}
+}
+
 static void sdm845_lid_event(void)
 {
 	/* Power task only cares about lid-open events */
@@ -328,8 +355,9 @@ enum power_state power_chipset_init(void)
 	int init_power_state;
 	uint32_t reset_flags = system_get_reset_flags();
 
-	/* Enable reboot control input from AP */
+	/* Enable interrupts */
 	gpio_enable_interrupt(GPIO_AP_RST_REQ);
+	gpio_enable_interrupt(GPIO_WARM_RESET_L);
 
 	/*
 	 * Force the AP shutdown unless we are doing SYSJUMP. Otherwise,
