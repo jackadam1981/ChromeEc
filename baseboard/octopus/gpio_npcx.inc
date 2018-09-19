@@ -1,0 +1,5 @@
+
+/* Strap pins */
+GPIO(GPO66_NC,       PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(GPOB6_NC,       PIN(B, 6), GPIO_INPUT | GPIO_PULL_UP)
+
