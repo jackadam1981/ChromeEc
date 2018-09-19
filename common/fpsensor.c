@@ -545,21 +545,33 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 	void *out = args->response;
 	uint32_t idx = FP_FRAME_GET_BUFFER_INDEX(params->offset);
 	uint32_t offset = params->offset & FP_FRAME_OFFSET_MASK;
+	uint32_t size = params->size;
+	uint32_t buffer_size;
 	uint32_t fgr;
 	uint8_t key[SBP_ENC_KEY_LEN];
 	struct ec_fp_template_encryption_metadata *enc_info;
 	int ret;
 
+	if (size > args->response_max)
+		return EC_RES_INVALID_PARAM;
+
+	buffer_size = (idx == FP_FRAME_INDEX_RAW_IMAGE) ?
+	    sizeof(fp_buffer) : sizeof(fp_enc_buffer);
+
 	if (idx == FP_FRAME_INDEX_RAW_IMAGE) {
+		/* The host requested a frame. */
 		if (system_is_locked())
 			return EC_RES_ACCESS_DENIED;
 		if (!is_raw_capture(sensor_mode))
 			offset += FP_SENSOR_IMAGE_OFFSET;
-		if (params->size + offset > sizeof(fp_buffer) ||
-		    params->size > args->response_max)
+
+		if (size > buffer_size || offset > buffer_size)
 			return EC_RES_INVALID_PARAM;
-		memcpy(out, fp_buffer + offset, params->size);
-		args->response_size = params->size;
+		if (size + offset > buffer_size)
+			return EC_RES_INVALID_PARAM;
+
+		memcpy(out, fp_buffer + offset, size);
+		args->response_size = size;
 		return EC_RES_SUCCESS;
 	}
 
@@ -572,8 +584,9 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	if (fgr >= templ_valid)
 		return EC_RES_UNAVAILABLE;
-	if (offset + params->size > sizeof(fp_enc_buffer) ||
-	    params->size > args->response_max)
+	if (size > buffer_size || offset > buffer_size)
+		return EC_RES_INVALID_PARAM;
+	if (size + offset > buffer_size)
 		return EC_RES_INVALID_PARAM;
 
 	if (!offset) {
@@ -611,8 +624,8 @@ static int fp_command_frame(struct host_cmd_handler_args *args)
 		}
 		templ_dirty &= ~(1 << fgr);
 	}
-	memcpy(out, fp_enc_buffer + offset, params->size);
-	args->response_size = params->size;
+	memcpy(out, fp_enc_buffer + offset, size);
+	args->response_size = size;
 
 	return EC_RES_SUCCESS;
 }
@@ -649,6 +662,9 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_template *params = args->params;
 	uint32_t size = params->size & ~FP_TEMPLATE_COMMIT;
+	int xfer_complete = params->size & FP_TEMPLATE_COMMIT;
+	uint32_t buffer_size = sizeof(fp_enc_buffer);
+	uint32_t offset = params->offset;
 	uint32_t idx = templ_valid;
 	uint8_t key[SBP_ENC_KEY_LEN];
 	struct ec_fp_template_encryption_metadata *enc_info;
@@ -658,14 +674,17 @@ static int fp_command_template(struct host_cmd_handler_args *args)
 	if (idx >= FP_MAX_FINGER_COUNT)
 		return EC_RES_OVERFLOW;
 
-	if ((args->params_size !=
-	     size + offsetof(struct ec_params_fp_template, data)) ||
-	    (params->offset + size > sizeof(fp_enc_buffer)))
+	if (args->params_size !=
+	    size + offsetof(struct ec_params_fp_template, data))
+		return EC_RES_INVALID_PARAM;
+	if (size > buffer_size || offset > buffer_size)
+		return EC_RES_INVALID_PARAM;
+	if (size + offset > buffer_size)
 		return EC_RES_INVALID_PARAM;
 
-	memcpy(&fp_enc_buffer[params->offset], params->data, size);
+	memcpy(&fp_enc_buffer[offset], params->data, size);
 
-	if (params->size & FP_TEMPLATE_COMMIT) {
+	if (xfer_complete) {
 		/*
 		 * The complete encrypted template has been received, start
 		 * decryption.
