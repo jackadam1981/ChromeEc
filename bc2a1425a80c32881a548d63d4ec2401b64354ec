@@ -22,6 +22,30 @@
       "revId": "bc2a1425a80c32881a548d63d4ec2401b64354ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3be38d6_784b7fbd",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-09-19T16:43:25Z",
+      "side": 1,
+      "message": "Can you explain how you want the comment to be updated? FYI, this part will be changed by CL:1226125 and passing NULL will make things clearer.",
+      "parentUuid": "2b411b76_30a0b62a",
+      "range": {
+        "startLine": 369,
+        "startChar": 11,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "bc2a1425a80c32881a548d63d4ec2401b64354ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
