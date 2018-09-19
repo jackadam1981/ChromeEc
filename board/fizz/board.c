@@ -81,7 +81,8 @@ DECLARE_DEFERRED(adp_in_deferred);
 static void adp_in_deferred(void)
 {
 	struct charge_port_info pi = { 0 };
-	int level = gpio_get_level(GPIO_ADP_IN_L);
+	//int level = gpio_get_level(GPIO_ADP_IN_L);
+	int level = 0;
 
 	/* Debounce */
 	if (level == adp_in_state)
@@ -111,8 +112,8 @@ static void adp_in_deferred(void)
 /* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
 void adp_in(enum gpio_signal signal)
 {
-	if (adp_in_state == gpio_get_level(GPIO_ADP_IN_L))
-		return;
+	//if (adp_in_state == gpio_get_level(GPIO_ADP_IN_L))
+	//	return;
 	hook_call_deferred(&adp_in_deferred_data, ADP_DEBOUNCE_MS * MSEC);
 }
 
@@ -758,8 +759,9 @@ static void board_charge_manager_init(void)
 			charge_manager_update_charge(j, i, NULL);
 	}
 
-	port = gpio_get_level(GPIO_ADP_IN_L) ?
-			CHARGE_PORT_TYPEC0 : CHARGE_PORT_BARRELJACK;
+	//port = gpio_get_level(GPIO_ADP_IN_L) ?
+	//		CHARGE_PORT_TYPEC0 : CHARGE_PORT_BARRELJACK;
+	port = CHARGE_PORT_BARRELJACK;
 	CPRINTS("Power source is p%d (%s)", port,
 		port == CHARGE_PORT_TYPEC0 ? "USB-C" : "BJ");
 
@@ -835,3 +837,24 @@ void board_rtc_reset(void)
 	udelay(100);
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }
+
+static void reinit_gpio(void)
+{
+    CPRINTS("\n\n\n\t reinit_gpio\n\n\n");
+
+    /* Change PIN(C, 5) to GPIO_INPUT */
+    //set direction as input
+    NPCX_PDIR(gpio_list[GPIO_ADP_IN_L].port)
+        &= ~gpio_list[GPIO_ADP_IN_L].mask;
+
+    /* Change PIN(6, 7) to GPIO_OUT_HIGH */
+    //set direction as output
+    //0x40081000 (gpio base address) + 0x6 (port) * 0x2000L (offset) + 0x02 (direction) = 0x4008D002
+        //mask = 1 << 7 = 0x80
+    REG8(0x4008D002) |= (0x80);
+
+    //set level as output high
+    //0x40081000 (gpio base address) + 0x6 (port) * 0x2000L (offset) + 0x00 (data out) = 0x4008D000
+    REG8(0x4008D000) |= (0x80);
+}
+DECLARE_HOOK(HOOK_INIT, reinit_gpio, HOOK_PRIO_FIRST);
