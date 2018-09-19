@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc9a6c6d_dae8978b",
+        "filename": "board/nocturne/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-09-19T17:57:44Z",
+      "side": 1,
+      "message": "This might need to be \u003e\u003d\n\nLet me check with thermal team.",
+      "range": {
+        "startLine": 125,
+        "startChar": 13,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "4c436ab44b321fd7729fdec385182dd374b73c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
