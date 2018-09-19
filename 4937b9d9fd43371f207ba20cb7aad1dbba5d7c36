@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "9681cbce_08108634",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-19T17:58:37Z",
+      "side": 1,
+      "message": "I thought about this a little more and this does raise somewhat of a problem because if you want to migrate from not using PCR values to using them and Cr50 gives you a new version of the leaf you would need to be able to check whether or not to replace the leaf by reading\nstruct leaf_public_data_t.\n\n+mnissler@chromium.org Do you have an opinion on the cleanest way to handle this?",
+      "parentUuid": "64ecbbcc_8d9e68f6",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884a3bda_92fce115",
         "filename": "common/pinweaver.c",
         "patchSetId": 24
