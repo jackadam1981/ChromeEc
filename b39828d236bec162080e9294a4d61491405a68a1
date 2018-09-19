@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38f58b07_a8d12cc0",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-19T13:10:53Z",
+      "side": 1,
+      "message": "let\u0027s rename this file to match the config name  (we do it when we can): led_lookup_control.o",
+      "range": {
+        "startLine": 80,
+        "startChar": 37,
+        "endLine": 80,
+        "endChar": 53
+      },
+      "revId": "b39828d236bec162080e9294a4d61491405a68a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9712eeb_2c136e10",
+        "filename": "common/led_onoff_states.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-19T13:10:53Z",
+      "side": 1,
+      "message": "Since this is common code now, let\u0027s rename this to CONFIG_LED_POWER_LED",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 20
+      },
+      "revId": "b39828d236bec162080e9294a4d61491405a68a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
