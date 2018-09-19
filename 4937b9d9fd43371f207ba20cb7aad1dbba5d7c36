@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3e04bb38_7a231d14",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-19T17:05:40Z",
+      "side": 1,
+      "message": "Trunks and cryptohome shouldn\u0027t really care about the leaf format. They are supposed to treat the leaf like a black box except the unencrypted part which is append only within a major version.\n\nIf they won\u0027t accept the new leaf format, then there are bugs we need to fix on that end. We may need a make_compatible for the response if the new leaf format doesn\u0027t work.",
+      "parentUuid": "287ece2a_2714eb63",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884a3bda_92fce115",
         "filename": "common/pinweaver.c",
         "patchSetId": 24
