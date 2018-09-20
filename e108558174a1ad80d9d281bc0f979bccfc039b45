@@ -50,6 +50,24 @@
       "revId": "e108558174a1ad80d9d281bc0f979bccfc039b45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8d9506_f5f7b5a3",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-20T16:01:03Z",
+      "side": 1,
+      "message": "That\u0027s by design, the EC is only decrypting the messages that it has encrypted itself. Its not exchanging messages with someone else, it\u0027s securing data that only itself can decipher later. So messages encrypted by the EC will be deciphered by the EC too, so the derived keys have to be identical. For more context, see the thread on crypto-help (sending link offline)",
+      "parentUuid": "b43f6634_e089b73d",
+      "revId": "e108558174a1ad80d9d281bc0f979bccfc039b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
