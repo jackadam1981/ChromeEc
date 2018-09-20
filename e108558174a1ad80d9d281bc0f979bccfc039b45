@@ -68,6 +68,24 @@
       "revId": "e108558174a1ad80d9d281bc0f979bccfc039b45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ef6d29d_3e6b148f",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T16:07:41Z",
+      "side": 1,
+      "message": "Thanks for the clarification. Since there\u0027s only one sender here, this is fine.",
+      "parentUuid": "1e8d9506_f5f7b5a3",
+      "revId": "e108558174a1ad80d9d281bc0f979bccfc039b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
