@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ce45528_11ba4011",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T13:44:46Z",
+      "side": 1,
+      "message": "Good call. Done.",
+      "parentUuid": "cb4b3396_c614f12e",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "864d0d47_65a7b35d",
         "filename": "common/cbi.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c85308_b549c89d",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T13:44:46Z",
+      "side": 1,
+      "message": "You\u0027re right. I do change the data for that struct, just not through have pointer. Updated",
+      "parentUuid": "864d0d47_65a7b35d",
+      "range": {
+        "startLine": 164,
+        "startChar": 44,
+        "endLine": 164,
+        "endChar": 49
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f9042f2a_ba9a81de",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T13:44:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b2100002_9466d558",
+      "range": {
+        "startLine": 170,
+        "startChar": 19,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72463370_2b20cf74",
         "filename": "common/cbi.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b8459dd6_b02a7d74",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T13:44:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "72463370_2b20cf74",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "981deb1b_db41e12f",
         "filename": "common/cbi.c",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f585cedf_0cc4fe62",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T13:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "981deb1b_db41e12f",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 20
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
