@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e4c2766_3d6dd04f",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T14:26:41Z",
+      "side": 1,
+      "message": "putting control-flow behind defines make the code difficult to trace. Can you put these returns and breaks inline instead?",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "3b4b272e4ff63d5a6507c970d78c7f1f44c54e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da9adb9_992bdae6",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T14:26:41Z",
+      "side": 1,
+      "message": "what does SUPER_SIG mean?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "3b4b272e4ff63d5a6507c970d78c7f1f44c54e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc850c31_f8ec4a26",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-20T14:26:41Z",
+      "side": 1,
+      "message": "machine",
+      "range": {
+        "startLine": 77,
+        "startChar": 20,
+        "endLine": 77,
+        "endChar": 26
+      },
+      "revId": "3b4b272e4ff63d5a6507c970d78c7f1f44c54e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
