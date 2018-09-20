@@ -531,6 +531,9 @@ static int init(const struct motion_sensor_t *s)
 	} else {
 		/* Write 0x00 to the internal register for KX022 */
 		reg = KX022_INTERNAL;
+#ifdef CONFIG_ACCEL_KX022_INIT_DELAY_MS
+		msleep(CONFIG_ACCEL_KX022_INIT_DELAY_MS);
+#endif
 		ret = raw_write8(s->port, s->addr, reg, 0x0);
 		if (ret != EC_SUCCESS) {
 			/*

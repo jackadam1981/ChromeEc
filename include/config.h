@@ -64,6 +64,9 @@
 #undef CONFIG_ACCEL_BMA255
 #undef CONFIG_ACCEL_KXCJ9
 #undef CONFIG_ACCEL_KX022
+
+/* KX022 init delay time */
+#undef CONFIG_ACCEL_KX022_INIT_DELAY_MS
 /*
  * lis2dh and lis2de have the same register interface but different
  * supported resolution. In normal mode, lis2dh works in 10-bit resolution,
