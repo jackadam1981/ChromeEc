@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffa3b120_b79b9151",
+        "filename": "common/math_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-20T14:56:06Z",
+      "side": 1,
+      "message": "The more precise way to do it should be:\n\nint_sqrtf((fp_inter_t)x \u003c\u003c FP_BITS);\n\nSo that you still have some precision in the last FP_BITS/2 bits.\n\nfp_inter_t is 64-bit, so you should not have any overflow issue.",
+      "revId": "b839014a5c28537b834e90e27feb8612bfc146ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
