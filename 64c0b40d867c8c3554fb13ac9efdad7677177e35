@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb4b3396_c614f12e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-09-20T01:28:36Z",
+      "side": 1,
+      "message": "tag? Field is better for consistency. A tag is just part of a field.",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864d0d47_65a7b35d",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-09-20T01:28:36Z",
+      "side": 1,
+      "message": "You\u0027re not supposed to say this because you have memmove, right?",
+      "range": {
+        "startLine": 164,
+        "startChar": 44,
+        "endLine": 164,
+        "endChar": 49
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2100002_9466d558",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-09-20T01:28:36Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 170,
+        "startChar": 19,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72463370_2b20cf74",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-09-20T01:28:36Z",
+      "side": 1,
+      "message": "Can you remove this cast?",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "981deb1b_db41e12f",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-09-20T01:28:36Z",
+      "side": 1,
+      "message": "nit: can you unify this EC_SUCCESS with the one above?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 20
+      },
+      "revId": "64c0b40d867c8c3554fb13ac9efdad7677177e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
