@@ -22,6 +22,30 @@
       "revId": "01dfcfd30452d08356fb0102cd3c98fade7df2d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8023535e_a3a94da2",
+        "filename": "test/aes.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T23:38:10Z",
+      "side": 1,
+      "message": "(Sorry, this was my fault. 16 is correct.)",
+      "parentUuid": "e788f42f_1cdf95a0",
+      "range": {
+        "startLine": 365,
+        "startChar": 13,
+        "endLine": 365,
+        "endChar": 15
+      },
+      "revId": "01dfcfd30452d08356fb0102cd3c98fade7df2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
