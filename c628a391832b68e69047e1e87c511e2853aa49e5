@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f9125eb_d2f51e3d",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-09-20T18:40:29Z",
+      "side": 1,
+      "message": "It is a bit odd to see the same sequence in each function.  Did you consider having separate functions for entry/run/exit and using function pointers to call them?\n\nit would save a level of indent for all the actual code (which is having a hard time fitting in 80cols) but I admittedly have not considered all the edge cases of SUPER and not.",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 16
+      },
+      "revId": "c628a391832b68e69047e1e87c511e2853aa49e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab462315_af6870f6",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-09-20T18:40:29Z",
+      "side": 1,
+      "message": "thanks for clearing this up, I was finding RUN_SIG_DONE confusing..",
+      "revId": "c628a391832b68e69047e1e87c511e2853aa49e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
