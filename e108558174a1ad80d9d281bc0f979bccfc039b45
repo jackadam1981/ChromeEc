@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ca4127e_92323c3c",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T15:51:19Z",
+      "side": 1,
+      "message": "(nit: const uint8_t * for |plaintext| and |nonce|?)",
+      "revId": "e108558174a1ad80d9d281bc0f979bccfc039b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c42c4fa_d059ebae",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T15:51:19Z",
+      "side": 1,
+      "message": "(nit: const uint8_t * for |nonce| and |tag|?)",
+      "revId": "e108558174a1ad80d9d281bc0f979bccfc039b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b43f6634_e089b73d",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T15:51:19Z",
+      "side": 1,
+      "message": "Sorry, I should have seen this before but I\u0027m uncomfortable with this. Someone can echo a message right back and get it to decrypt correctly. Could you add a parameter to |derive_encryption_key| that\u0027s just a 0 or 1 that indicates whether the message is from the EC or to it? That 0/1 would be an additional byte of input to HMAC-SHA256 and thus make the derived keys different in these two cases. Then a message encrypted *by* the EC cannot be echoed right back to it and be valid.",
+      "revId": "e108558174a1ad80d9d281bc0f979bccfc039b45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
