@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d801bfc7_c6a7a93a",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-20T17:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4c2766_3d6dd04f",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "3b4b272e4ff63d5a6507c970d78c7f1f44c54e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2da9adb9_992bdae6",
         "filename": "include/usb_sm.h",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4be0536c_17443fdf",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-20T17:54:01Z",
+      "side": 1,
+      "message": "Taken from the design doc:\nThe SUPER_SIG should not be used in the switch statement. It is used by the framework to get the state\u0027s super state.",
+      "parentUuid": "2da9adb9_992bdae6",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 10
+      },
+      "revId": "3b4b272e4ff63d5a6507c970d78c7f1f44c54e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc850c31_f8ec4a26",
         "filename": "include/usb_sm.h",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "3b4b272e4ff63d5a6507c970d78c7f1f44c54e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abf699c_737d3551",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-20T17:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc850c31_f8ec4a26",
+      "range": {
+        "startLine": 77,
+        "startChar": 20,
+        "endLine": 77,
+        "endChar": 26
+      },
+      "revId": "3b4b272e4ff63d5a6507c970d78c7f1f44c54e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
