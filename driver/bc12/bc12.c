@@ -4,7 +4,7 @@
  */
 
 /*
- * BQ24392 USB BC 1.2 Charger Detector driver.
+ * USB BC 1.2 Charger Detector driver.
  *
  * NOTE: The driver assumes that CHG_AL_N and SW_OPEN are not connected,
  * therefore the value of CHG_DET indicates whether the source is NOT a
@@ -12,7 +12,7 @@
  * the system will have to charge ramp.
  */
 
-#include "bq24392.h"
+#include "bc12.h"
 #include "cannonlake.h"
 #include "charge_manager.h"
 #include "chipset.h"
@@ -36,10 +36,10 @@
  * @return 1 if charger detect is activated (high when active high or
  *	low with active low), otherwise 0.
  */
-static int is_chg_det_activated(const struct bq24392_config_t * const cfg)
+static int is_chg_det_activated(const struct bc12_config_t * const cfg)
 {
 	return !!gpio_get_level(cfg->chg_det_pin) ^
-		!!(cfg->flags & BQ24392_FLAGS_CHG_DET_ACTIVE_LOW);
+		!!(cfg->flags & BC12_FLAGS_CHG_DET_ACTIVE_LOW);
 }
 
 /**
@@ -50,11 +50,11 @@ static int is_chg_det_activated(const struct bq24392_config_t * const cfg)
  *	low).
  */
 static void activate_chip_enable(
-	const struct bq24392_config_t * const cfg, const int enable)
+	const struct bc12_config_t * const cfg, const int enable)
 {
 	gpio_set_level(
 		cfg->chip_enable_pin,
-		!!enable ^ !!(cfg->flags & BQ24392_FLAGS_ENABLE_ACTIVE_LOW));
+		!!enable ^ !!(cfg->flags & BC12_FLAGS_ENABLE_ACTIVE_LOW));
 }
 
 /**
@@ -64,7 +64,7 @@ static void activate_chip_enable(
  */
 static void bc12_detect(const int port)
 {
-	const struct bq24392_config_t * const cfg = &bq24392_config[port];
+	const struct bc12_config_t * const cfg = &bc12_config[port];
 	struct charge_port_info new_chg;
 
 	/*
@@ -100,13 +100,13 @@ static void bc12_detect(const int port)
 }
 
 /**
- * Turn off the BQ24392 detector.
+ * Turn off the BC12 detector.
  *
  * @param port: Which USB Type-C port's BC1.2 detector to turn off.
  */
 static void power_down_ic(const int port)
 {
-	const struct bq24392_config_t * const cfg = &bq24392_config[port];
+	const struct bc12_config_t * const cfg = &bc12_config[port];
 	struct charge_port_info no_chg = { 0 };
 
 	/* Turn off the IC. */
@@ -124,6 +124,7 @@ static void power_down_ic(const int port)
 static void detect_or_power_down_ic(const int port)
 {
 	int vbus_present;
+	const struct bc12_config_t * const cfg = &bc12_config[port];
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	vbus_present = tcpm_get_vbus_level(port);
@@ -132,20 +133,24 @@ static void detect_or_power_down_ic(const int port)
 #endif /* !defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) */
 
 	if (vbus_present) {
-		/* Turn on the 5V rail to allow the chip to be powered. */
+		if (cfg->flags & BC12_FLAGS_PP5000_EN_CTRL)
+			/*
+			 * Turn on the 5V rail to allow the chip to be powered.
+			 */
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
-		power_5v_enable(task_get_current(), 1);
+			power_5v_enable(task_get_current(), 1);
 #else
-		gpio_set_level(GPIO_EN_PP5000, 1);
+			gpio_set_level(GPIO_EN_PP5000, 1);
 #endif
 		bc12_detect(port);
 	} else {
 		power_down_ic(port);
+		if (cfg->flags & BC12_FLAGS_PP5000_EN_CTRL)
 		/* Issue a request to turn off the rail. */
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
-		power_5v_enable(task_get_current(), 0);
+			power_5v_enable(task_get_current(), 0);
 #else
-		gpio_set_level(GPIO_EN_PP5000, 0);
+			gpio_set_level(GPIO_EN_PP5000, 0);
 #endif
 	}
 }
@@ -169,14 +174,14 @@ void usb_charger_task(void *u)
 
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
-	/* The BQ24392 automatically sets up the USB 2.0 high-speed switches. */
+	/* The BC12 automatically sets up the USB 2.0 high-speed switches. */
 }
 
 #if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
 int usb_charger_ramp_allowed(int supplier)
 {
 	/*
-	 * Due to the limitations in the application of the BQ24392, we
+	 * Due to the limitations in the application of the BC12, we
 	 * don't quite know exactly what we're plugged into.  Therefore,
 	 * the supplier type will be CHARGE_SUPPLIER_OTHER.
 	 */
@@ -185,7 +190,7 @@ int usb_charger_ramp_allowed(int supplier)
 
 int usb_charger_ramp_max(int supplier, int sup_curr)
 {
-	/* Use the current limit that was decided by the BQ24392. */
+	/* Use the current limit that was decided by the BC12. */
 	if (supplier == CHARGE_SUPPLIER_OTHER)
 		return sup_curr;
 	else

@@ -3798,6 +3798,12 @@
 #endif
 
 /*****************************************************************************/
+/* BC1.2 USB Charger chips that can use the standard driver */
+#if defined(CONFIG_BC12_DETECT_BQ24392)
+#define CONFIG_BC12_DETECT_STANDARD
+#endif
+
+/*****************************************************************************/
 /*
  * Define CONFIG_USB_PD_VBUS_MEASURE_CHARGER if the charger on the board
  * supports VBUS measurement.

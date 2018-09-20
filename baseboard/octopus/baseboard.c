@@ -10,7 +10,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
-#include "driver/bc12/bq24392.h"
+#include "driver/bc12/bc12.h"
 #include "driver/ppc/nx20p348x.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -76,16 +76,18 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 
 /******************************************************************************/
 /* BC 1.2 chip Configuration */
-const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct bc12_config_t bc12_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON,
 		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET_L,
-		.flags = BQ24392_FLAGS_CHG_DET_ACTIVE_LOW,
+		.flags = BC12_FLAGS_CHG_DET_ACTIVE_LOW |
+		BC12_FLAGS_PP5000_EN_CTRL,
 	},
 	{
 		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON,
 		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET_L,
-		.flags = BQ24392_FLAGS_CHG_DET_ACTIVE_LOW,
+		.flags = BC12_FLAGS_CHG_DET_ACTIVE_LOW |
+		BC12_FLAGS_PP5000_EN_CTRL,
 	},
 };
 
