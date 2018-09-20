@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "a02bcb1d_f1a01652",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-20T01:18:54Z",
+      "side": 1,
+      "message": "That\u0027s a good point. We\u0027ll detect the overflow because args-\u003eresponse_max is 544 bytes so the next check would fail. Still, clearer validation would be good. I\u0027m adding follow-up CL:1234750 that will make the checks more obvious and also some AP tests to try to break the interface. See b/116065496",
+      "parentUuid": "7f9414e5_b815f9ec",
+      "range": {
+        "startLine": 537,
+        "startChar": 6,
+        "endLine": 537,
+        "endChar": 27
+      },
+      "revId": "e967692bad59b9d937809fd177a0c4f720316dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e445668_944e183c",
         "filename": "common/fpsensor.c",
         "patchSetId": 9
