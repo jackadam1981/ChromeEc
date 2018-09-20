@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14db7f0f_aabf0f6c",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-20T20:26:30Z",
+      "side": 1,
+      "message": "Actually I had considered doing just that but for a different reason. Having macros littered throughout a function greatly reduces readability, so I was thinking of using the macros to determine which function pointer to call. Something like this:\n\n#if defined(CONFIG_USB_TYPEC_VPD)\n\n    // Only call the function if sig is not SUPER\n    if (sig !\u003d SUPER)\n       ret \u003d (*tc_vpd_state_error_recovery[sig])(port);\n\n#elif defined(CONFIG_USB_TYPEC_VPD_CT)\n\n    // Or add a dummy function, for SUPER, to the table that does nothing \n    ret \u003d (*tc_vpd_ct_state_error_recovery[sig])(port);\n\n#endif\n\n     return SUPER(ret, sig, tc_state_host_open_ct_open);\n\n\nDuplicated code in the function pointers would be moved to a separate inlined function.",
+      "parentUuid": "9f9125eb_d2f51e3d",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 16
+      },
+      "revId": "c628a391832b68e69047e1e87c511e2853aa49e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab462315_af6870f6",
         "filename": "include/usb_sm.h",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "c628a391832b68e69047e1e87c511e2853aa49e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba15646a_4fad9ea6",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-09-20T20:26:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab462315_af6870f6",
+      "revId": "c628a391832b68e69047e1e87c511e2853aa49e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
