@@ -46,6 +46,29 @@
       "revId": "cdc531a9250d74403af5117d76f4389b603292fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72358d44_8f15381f",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-20T19:48:25Z",
+      "side": 1,
+      "message": "Factory mode is just asserting DIOB4 - which is easy to do, since there\u0027s a 10k pulldown (so an exposed pad).  An attacker who opens the case can easily do this.\n\nLooking at existing calls to chip_factory_mode(), Cr50 still apparently responds to all TPM commands in factory mode; it just ignores reset requests.\n\nI think we should only ignore reset request if the TPM is already in the erased state.  That should cover the factory (which never initializes the TPM) without opening a security hole.",
+      "range": {
+        "startLine": 698,
+        "startChar": 2,
+        "endLine": 698,
+        "endChar": 20
+      },
+      "revId": "cdc531a9250d74403af5117d76f4389b603292fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
