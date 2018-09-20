@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "192a2fc3_be5fc8b0",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-09-20T08:19:12Z",
+      "side": 1,
+      "message": "No need to read leaf_public_data_t. Please see https://chromium-review.googlesource.com/c/chromiumos/platform2/+/1124856, the code in PinweaverLECredentialBackend::NeedsPCRBinding. We parse unimported_leaf_data_t and as you said, the header will not change. And even if it changes in the future, it will change the leaf only after both cryptohome and pinweaver have reached the version that changes it. Because we always will use the protocol version that both can understand.\n\nThese are the possible scenarios for changes:\n1. old cryptohome + old cr50 -\u003e new cryptohome + new cr50 -\u003e migration needed\n2. old cryptohome + old cr50 -\u003e new cryptohome + old cr50 -\u003e no migration\n3. old cryptohome + old cr50 -\u003e old cryptohome + new cr50 -\u003e no migration\n4. old cryptohome + new cr50 -\u003e new cryptohome + new cr50 -\u003e migration needed\n5. new cryptohome + old cr50 -\u003e new cryptohome + new cr50 -\u003e migration needed\n\nThe migration is done ONLY when user authenticates. When we insert the leaf, trunks knows the protocol used and knows the version the leaf is inserted in. No need to parse anything.",
+      "parentUuid": "9681cbce_08108634",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884a3bda_92fce115",
         "filename": "common/pinweaver.c",
         "patchSetId": 24
