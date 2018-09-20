@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aff3c86_8d48dd45",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-20T04:20:24Z",
+      "side": 1,
+      "message": "Why does read protection imply we don\u0027t want write protection?\n\nDon\u0027t we want to keep *ourselves* from writing RO?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 5
+      },
+      "revId": "77af98ad512cdff4e934f7ff13071321cefb1942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
