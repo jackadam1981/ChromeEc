@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1a324a1_b4185986",
+        "filename": "common/vec3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-20T15:01:10Z",
+      "side": 1,
+      "message": "Duplicate\n\nAnd you are did so, right? So drop the comment?",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "d7e5a70aab4a9830db6a62c3abacc1593b894af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dad4d0c_ef5254f1",
+        "filename": "test/fp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-20T15:01:10Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "d7e5a70aab4a9830db6a62c3abacc1593b894af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2153f1b_11f0d7c2",
+        "filename": "test/fp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-20T15:01:10Z",
+      "side": 1,
+      "message": "Why do you need CONFIG_FPU? Seems like you use fixed points always.",
+      "revId": "d7e5a70aab4a9830db6a62c3abacc1593b894af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
