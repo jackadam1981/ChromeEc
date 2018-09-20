@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd059537_f37294bb",
+        "filename": "common/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T15:38:31Z",
+      "side": 1,
+      "message": "nit: s/need/needs/",
+      "range": {
+        "startLine": 166,
+        "startChar": 15,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "c0ab8f1bbb6cbe3ea90ce8f8e28a7bc55eff83be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d46adb_ebd034e2",
+        "filename": "test/aes.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T15:38:31Z",
+      "side": 1,
+      "message": "sizeof(out) is incorrect (i.e. 4) here, right? (And 2× below.)",
+      "range": {
+        "startLine": 44,
+        "startChar": 39,
+        "endLine": 44,
+        "endChar": 50
+      },
+      "revId": "c0ab8f1bbb6cbe3ea90ce8f8e28a7bc55eff83be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5084e1de_adc00aea",
+        "filename": "test/aes.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T15:38:31Z",
+      "side": 1,
+      "message": "It\u0027s a little odd that you\u0027re encrypting here, but then checking (rather than generating) the tag. I would tend to just have tag be an output buffer (i.e. `uint8_t tag[12] \u003d {0}`) and call CRYPTO_gcm128_tag here.) However, your call.",
+      "revId": "c0ab8f1bbb6cbe3ea90ce8f8e28a7bc55eff83be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aace5a4_57dd60bd",
+        "filename": "test/aes.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-09-20T15:38:31Z",
+      "side": 1,
+      "message": "(ditto about sizeof(block) here.)",
+      "range": {
+        "startLine": 403,
+        "startChar": 41,
+        "endLine": 403,
+        "endChar": 54
+      },
+      "revId": "c0ab8f1bbb6cbe3ea90ce8f8e28a7bc55eff83be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
