@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "a3ce9174_60c6ed02",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-09-20T13:42:23Z",
+      "side": 1,
+      "message": "So I talked with Mattias during our 1-on-1 yesterday and we are in agreement we don\u0027t want the complexity to fall on the side of Cr50 effectively downgrading leaves (by not sending the latest leaf format). This would make it difficult to reason about the security of the Cr50 code in the future.\n\nleaf_public_data_t should move to pinweaver_types.h and trunks utility needs to expose whether or not a leaf is bound to a PCR. Since it has access to pinweaver_types.h it can check the version and pcr bindings as necessary. That way cryptohome just needs to check if a leaf is bound to a PCR using this function to know if it needs to replace a leaf with the PCR bound version.",
+      "parentUuid": "192a2fc3_be5fc8b0",
+      "range": {
+        "startLine": 936,
+        "startChar": 6,
+        "endLine": 938,
+        "endChar": 27
+      },
+      "revId": "4937b9d9fd43371f207ba20cb7aad1dbba5d7c36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884a3bda_92fce115",
         "filename": "common/pinweaver.c",
         "patchSetId": 24
