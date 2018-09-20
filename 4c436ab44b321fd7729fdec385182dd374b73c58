@@ -22,6 +22,30 @@
       "revId": "4c436ab44b321fd7729fdec385182dd374b73c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db071c56_e6c4aa6f",
+        "filename": "board/nocturne/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-20T04:07:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc9a6c6d_dae8978b",
+      "range": {
+        "startLine": 125,
+        "startChar": 13,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "4c436ab44b321fd7729fdec385182dd374b73c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
