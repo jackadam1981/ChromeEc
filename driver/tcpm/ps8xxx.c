@@ -12,6 +12,8 @@
  */
 
 #include "common.h"
+#include "console.h"
+#include "hooks.h"
 #include "ps8xxx.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -135,6 +137,40 @@ static int ps8xxx_tcpm_release(int port)
 
 	return tcpci_tcpm_release(port);
 }
+
+#if defined(CONFIG_USB_PD_TCPM_PS8751) && \
+	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC)
+
+#define PS8751_MIN_FIRMWARE_FOR_VBUS_DETECT 0x39
+/**
+ * Check firmware version of PS8751 to ensure that it can detect Vbus properly
+ * See b/109769787#comment7
+ */
+static void ps8751_fw_notification_check(void)
+{
+	int port;
+	struct ec_response_pd_chip_info *info;
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; ++port) {
+		uint8_t fw_version;
+
+		if (tcpc_config[port].drv != &ps8xxx_tcpm_drv)
+			continue;
+		if (tcpm_get_chip_info(port, 0, &info))
+			continue;
+
+		/* Downcast from 64-bit to 8-bit version */
+		fw_version = info->fw_version_number;
+
+		if (fw_version < PS8751_MIN_FIRMWARE_FOR_VBUS_DETECT)
+			ccprintf("\n\n-----Need to upgrade PS8751 firmware on "
+				 "C%d from 0x%x to 0x%x-----\n\n",
+				 port, fw_version,
+				 PS8751_MIN_FIRMWARE_FOR_VBUS_DETECT);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, ps8751_fw_notification_check, HOOK_PRIO_DEFAULT);
+#endif /* PS8751 && VBUS_DETECT_TCPC */
 
 const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= &tcpci_tcpm_init,
