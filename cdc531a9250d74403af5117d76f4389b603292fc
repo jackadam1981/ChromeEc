@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76a50238_e35a2ed5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1244425
+      },
+      "writtenOn": "2018-09-20T17:27:39Z",
+      "side": 1,
+      "message": "Is this PULL_UP to avoid triggering wake up logic? I think this should be okay since we are ignoring tpm reset requests.",
+      "range": {
+        "startLine": 1484,
+        "startChar": 32,
+        "endLine": 1484,
+        "endChar": 44
+      },
+      "revId": "cdc531a9250d74403af5117d76f4389b603292fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
