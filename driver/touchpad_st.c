@@ -591,30 +591,8 @@ static void dump_memory(void)
 	msleep(8);
 }
 
-/*
- * Handles error reports.
- *
- * @param suppress_error: log and don't react on errors.
- *
- * @return 0 for minor errors, 1 for major errors (should not handle non-error
- *   events).
- */
-static int st_tp_handle_error_report(struct st_tp_event_t *e,
-				     int suppress_error)
+static int st_tp_handle_error(uint8_t error_type)
 {
-	uint8_t error_type = e->report.report_type;
-
-	if (e->magic != ST_TP_EVENT_MAGIC ||
-	    e->evt_id != ST_TP_EVENT_ID_ERROR_REPORT)
-		return 0;
-
-	CPRINTS("Touchpad error: %x %x", error_type,
-		((e->report.info[0] << 24) | (e->report.info[1] << 16) |
-		 (e->report.info[2] << 8) | (e->report.info[3] << 0)));
-
-	if (suppress_error)
-		return 0;
-
 	if (error_type <= 0x4E) {
 		enable_deep_sleep(0);
 		dump_error();
@@ -623,7 +601,7 @@ static int st_tp_handle_error_report(struct st_tp_event_t *e,
 	}
 
 	/*
-	 * Suggest action: memory Dump and power cycle.
+	 * Suggest action: memory dump and power cycle.
 	 */
 	if (error_type <= 0x06 ||
 	    (error_type >= 0x47 && error_type <= 0x4E)) {
@@ -666,6 +644,29 @@ static int st_tp_handle_error_report(struct st_tp_event_t *e,
 	 * Otherwise, just ignore it.
 	 */
 	return 0;
+}
+
+/*
+ * Handles error reports.
+ *
+ * @param suppress_error: log and don't react on errors.
+ *
+ * @return 0 for minor errors, 1 for major errors (should not handle non-error
+ *   events).
+ */
+static int st_tp_handle_error_report(struct st_tp_event_t *e,
+				     int suppress_error)
+{
+	uint8_t error_type = e->report.report_type;
+
+	CPRINTS("Touchpad error: %x %x", error_type,
+		((e->report.info[0] << 24) | (e->report.info[1] << 16) |
+		 (e->report.info[2] << 8) | (e->report.info[3] << 0)));
+
+	if (suppress_error)
+		return 0;
+
+	return st_tp_handle_error(error_type);
 }
 
 /*
@@ -1159,6 +1160,124 @@ static void touchpad_power_control(void)
 		st_tp_stop_scan();
 }
 
+/*
+ * Hang detection by reading system counter.
+ *
+ * @return non-zero on error.
+ */
+static int touchpad_read_counter(void)
+{
+	static uint32_t prev_count;
+	uint32_t count;
+	int ret;
+	int rx_len = 2 + ST_TP_DUMMY_BYTE;
+	uint8_t cmd_read_counter[] = {
+		0xFB, 0x00, 0x10, 0xff, 0xff
+	};
+
+	ret = st_tp_load_host_data(ST_TP_MEM_ID_SYSTEM_INFO);
+	if (ret)
+		return ret;
+	st_tp_read_host_data_memory(0x0082, &rx_buf, rx_len);
+
+	/* fill in counter address, the byte order is reversed */
+	cmd_read_counter[3] = rx_buf.bytes[1];
+	cmd_read_counter[4] = rx_buf.bytes[0];
+
+	spi_transaction(SPI, cmd_read_counter, sizeof(cmd_read_counter),
+			(uint8_t *)&rx_buf, 4 + ST_TP_DUMMY_BYTE);
+
+	count = rx_buf.dump_info[0];
+
+	CPRINTS("idle_count = %08x", count);
+	if (count != prev_count) {
+		prev_count = count;
+		return 0;
+	}
+
+	CPRINTS("counter doesn't change...");
+	return 1;
+}
+
+/*
+ * Try to detect memory corruption or silent error.
+ */
+static int touchpad_detect_error(void)
+{
+	uint8_t tx_dump_error[] = {
+		0xFB, 0x20, 0x01, 0xEF, 0x80
+	};
+	uint32_t dump_info[2];
+	uint8_t tx_dump_memory[] = {
+		0xFB, 0x00, 0x10, 0x00, 0x00
+	};
+	uint32_t dump_memory[16];
+	int i;
+	int error_detected = 0;
+
+	enable_deep_sleep(0);
+	spi_transaction(SPI, tx_dump_error, sizeof(tx_dump_error),
+			(uint8_t *)&rx_buf,
+			sizeof(dump_info) + ST_TP_DUMMY_BYTE);
+	memcpy(dump_info, rx_buf.bytes, sizeof(dump_info));
+
+	spi_transaction(SPI, tx_dump_memory, sizeof(tx_dump_memory),
+			(uint8_t *)&rx_buf,
+			sizeof(dump_memory) + ST_TP_DUMMY_BYTE);
+	memcpy(dump_memory, rx_buf.bytes, sizeof(dump_memory));
+	enable_deep_sleep(1);
+
+	CPRINTS("check error dump: %08x %08x", dump_info[0], dump_info[1]);
+	CPRINTS("check memory dump:");
+	for (i = 0; i < sizeof(dump_memory); i += 32) {
+		CPRINTF("%.4h %.4h %.4h %.4h %.4h %.4h %.4h %.4h\n",
+			rx_buf.bytes + i + 4 * 0,
+			rx_buf.bytes + i + 4 * 1,
+			rx_buf.bytes + i + 4 * 2,
+			rx_buf.bytes + i + 4 * 3,
+			rx_buf.bytes + i + 4 * 4,
+			rx_buf.bytes + i + 4 * 5,
+			rx_buf.bytes + i + 4 * 6,
+			rx_buf.bytes + i + 4 * 7);
+	}
+
+	error_detected |= touchpad_read_counter();
+
+	for (i = 0; i < ARRAY_SIZE(dump_memory); i++)
+		if (dump_memory[i] != 0xCCCCCCCC)
+			error_detected = 1;
+
+	switch (dump_info[0]) {
+	case 0xAA55AA55:
+		/* Magic bits is normal, everything is fine. */
+		break;
+	case 0xFA5005AF:
+		/*
+		 * Magic bits indicates there are errors, and somehow, we didn't
+		 * received error events.
+		 *
+		 * st_tp_handle_error will set `tp_control` for us, so we can
+		 * return directly if it is set.
+		 */
+		if (st_tp_handle_error(dump_info[1]))
+			return 1;
+		break;
+	default:
+		/*
+		 * Memory corruption?! There's no need to do error dump, because
+		 * memory is corrupted, just reset...
+		 */
+		error_detected = 1;
+		break;
+	}
+
+	if (error_detected) {
+		tp_control |= TP_CONTROL_SHALL_RESET;
+		return 1;
+	}
+	return 0;
+}
+
 void touchpad_task(void *u)
 {
 	uint32_t event;
@@ -1167,7 +1286,11 @@ void touchpad_task(void *u)
 	touchpad_power_control();
 
 	while (1) {
-		event = task_wait_event(-1);
+		/* wait for at most 1 minute */
+		event = task_wait_event(60 * 1000 * 1000);
+
+		if (event & TASK_EVENT_TIMER)
+			touchpad_detect_error();
 
 		if (event & TASK_EVENT_WAKE)
 			while (!tp_control &&
