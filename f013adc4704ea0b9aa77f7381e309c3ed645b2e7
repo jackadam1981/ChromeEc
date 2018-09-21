@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50417cc4_57aea0f4",
+        "filename": "board/rammus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-21T00:55:46Z",
+      "side": 1,
+      "message": "The BATFETS_MASK is 0x6. It looks like the data[3] will not be used. Why do you need to add data[3]? Moreover, please attach the battery spec to the issue tracker.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 21
+      },
+      "revId": "f013adc4704ea0b9aa77f7381e309c3ed645b2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
