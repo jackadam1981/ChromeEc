@@ -292,6 +292,8 @@ void fp_task(void)
 				timeout_us = -1;
 			if (mode & FP_MODE_ANY_WAIT_IRQ)
 				gpio_enable_interrupt(GPIO_FPS_INT);
+			else if (mode & FP_MODE_RESET_SENSOR)
+				fp_sensor_init();
 			else
 				fp_sensor_low_power();
 		} else if (evt & (TASK_EVENT_SENSOR_IRQ | TASK_EVENT_TIMER)) {
