@@ -290,10 +290,14 @@ void fp_task(void)
 				timeout_us = FINGER_POLLING_DELAY;
 			else
 				timeout_us = -1;
-			if (mode & FP_MODE_ANY_WAIT_IRQ)
+			if (mode & FP_MODE_ANY_WAIT_IRQ) {
 				gpio_enable_interrupt(GPIO_FPS_INT);
-			else
+			} else if (mode & FP_MODE_RESET_SENSOR) {
+				sensor_mode &= ~FP_MODE_RESET_SENSOR;
+				fp_sensor_init();
+			} else {
 				fp_sensor_low_power();
+			}
 		} else if (evt & (TASK_EVENT_SENSOR_IRQ | TASK_EVENT_TIMER)) {
 			overall_t0 = get_time();
 			timestamps_invalid = 0;
