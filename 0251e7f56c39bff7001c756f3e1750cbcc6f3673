@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dee9bc9e_f9a3cd2d",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-09-21T03:00:03Z",
+      "side": 1,
+      "message": "At the moment the logic to do reset is spread across at least two tasks, so I\u0027m not sure it\u0027s possible to do the whole reset with interrupts disabled.\n\nIf portability is an issue (though I am guessing this operation wouldn\u0027t be hard to re-implement on other architectures - it is very similar to the other atomic operations) then it should be possible to make a small tweak to the design so that we just have the same state variable as now and protect it with a standard mutex rather than using these operations, which could then be removed.\n\nI guess I went with this (other than because it was kinda fun ;) because it\u0027s faster and requires less code and less RAM.",
+      "parentUuid": "3c5c9198_e910b7ef",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1923b17_a87d9f00",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-21T02:29:22Z",
       "side": 1,
       "message": "does this have to be uint32_t? i.e. could TASK_RESET_xxxx variables fit in one byte?",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 15
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647f52ec_c694d8e9",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-09-21T03:00:03Z",
+      "side": 1,
+      "message": "Yes it can be smaller, we just need NUM_TASKS+3 bits, I will update once the rest of the design is agreed",
+      "parentUuid": "c1923b17_a87d9f00",
       "range": {
         "startLine": 147,
         "startChar": 7,
@@ -82,6 +130,30 @@
       "writtenOn": "2018-09-21T02:29:22Z",
       "side": 1,
       "message": "I wonder what is the reason for this gap in bit assignments, hopefully no one uses this implicitly :)",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb5f4d8f_e68157bc",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-09-21T03:00:03Z",
+      "side": 1,
+      "message": "Yes good point - I wanted to ask you guys about this ;)",
+      "parentUuid": "a137c1b3_9801013e",
       "range": {
         "startLine": 43,
         "startChar": 38,
@@ -152,6 +224,30 @@
       "writtenOn": "2018-09-21T02:29:22Z",
       "side": 1,
       "message": "I am not sure what the utility would be of calling task_reset(), also, not sure we need the \u0027wait\u0027 option: yes, tpm_reset sometimes does have to wait, but I am not sure task_reset() needs this, we  should be able to use some other means in case then TPM reset needs to be confirmed.",
+      "range": {
+        "startLine": 285,
+        "startChar": 29,
+        "endLine": 285,
+        "endChar": 38
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7dde802_699c5b5e",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-09-21T03:00:03Z",
+      "side": 1,
+      "message": "Sorry not sure I follow, do you mean utility of a task calling task_reset() on itself?\n\nI added the wait option as it\u0027s currently needed for tpm_reset_request() and I thought we were trying to move as much of that logic as possible into a generic place.. In the current design, supporting wait does not add much complexity.",
+      "parentUuid": "d2e7e0cd_33b66219",
       "range": {
         "startLine": 285,
         "startChar": 29,
