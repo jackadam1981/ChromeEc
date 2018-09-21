@@ -45,6 +45,30 @@
       "revId": "fde7a46e4642d9db164117005901176d38634149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c25ebe_1211dc44",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-09-21T03:25:59Z",
+      "side": 1,
+      "message": "Do you mean directly loop here ? Or to follow task, like timeout at #526 ?\n* delay is only needed at initial read, we\u0027ll update patch.",
+      "parentUuid": "42ea8c21_5eb45cf5",
+      "range": {
+        "startLine": 531,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 6
+      },
+      "revId": "fde7a46e4642d9db164117005901176d38634149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
