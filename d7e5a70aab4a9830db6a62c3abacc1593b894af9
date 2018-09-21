@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2e0b90a1_8c418302",
+        "filename": "common/vec3.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-09-21T08:52:48Z",
+      "side": 1,
+      "message": "We still have FPU functions.\nTo use FPU functions, have to define CONFIG_FPU, then it would use floating point version.\nTo use fixed-point functions, have to undef CONFIG_FPU, then it would use fixed-point version.\n\nThe trick is in math_utils.h:\n\n  if defined(CONFIG_FPU)\n    typedef float fp_t;      \n    typedef float fp_inter_t;\n    // and also other macros e.g. FLOAT_TO_FP\n  else\n    typedef int32_t fp_t;      \n    typedef int64_t fp_inter_t;",
+      "parentUuid": "6ac07a16_14dfec16",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "d7e5a70aab4a9830db6a62c3abacc1593b894af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dad4d0c_ef5254f1",
         "filename": "test/fp.c",
         "patchSetId": 1
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "e8713fd5_ad459709",
+        "filename": "test/fp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-09-21T08:52:48Z",
+      "side": 1,
+      "message": "We use sqrtf for golden result reference.",
+      "parentUuid": "2dad4d0c_ef5254f1",
+      "revId": "d7e5a70aab4a9830db6a62c3abacc1593b894af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2153f1b_11f0d7c2",
         "filename": "test/fp.c",
         "patchSetId": 1
@@ -77,6 +119,24 @@
       "writtenOn": "2018-09-20T15:01:10Z",
       "side": 1,
       "message": "Why do you need CONFIG_FPU? Seems like you use fixed points always.",
+      "revId": "d7e5a70aab4a9830db6a62c3abacc1593b894af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4868eee1_f7966c5e",
+        "filename": "test/fp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-09-21T08:52:48Z",
+      "side": 1,
+      "message": "As explained above. So does this test have two version.\nTo test float, have to define CONFIG_FPU.\nTo test fixed-point, have to undef CONFIG_FPU.\n\nI wrote both tests to prevent from breaking those functions while migrating.",
+      "parentUuid": "d2153f1b_11f0d7c2",
       "revId": "d7e5a70aab4a9830db6a62c3abacc1593b894af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
