@@ -4962,6 +4962,8 @@ struct __ec_align2 ec_params_fp_sensor_config {
 #define FP_MODE_ENROLL_IMAGE   (1<<5)
 /* Try to match the current finger image */
 #define FP_MODE_MATCH          (1<<6)
+/* Reset and re-initialize the sensor. */
+#define FP_MODE_RESET         (1<<7)
 /* special value: don't change anything just read back current mode */
 #define FP_MODE_DONT_CHANGE    (1<<31)
 

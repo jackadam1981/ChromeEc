@@ -1399,7 +1399,7 @@ int cmd_fp_mode(int argc, char *argv[])
 		else if (!strncmp(argv[i], "match", 5))
 			mode |= FP_MODE_MATCH;
 		else if (!strncmp(argv[i], "reset", 5))
-			mode = 0;
+			mode = FP_MODE_RESET;
 		else if (!strncmp(argv[i], "capture", 7))
 			mode |= FP_MODE_CAPTURE;
 		/* capture types */
