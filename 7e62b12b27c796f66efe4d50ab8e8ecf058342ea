@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcd1937e_4a481cb6",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-09-21T22:22:32Z",
+      "side": 1,
+      "message": "this is a bit messy and not properly enforced throughout the codebase, but  the value returned in *pbuf is supposed to be from the EC error value scope, and the value returned by vendor command handler should be from the VENDOR_RC_ error value scope (which does not even have an appropriate value).\n\nCan you please add VENDOR_RC_ACCESS_DENIED to enum vendor_cmd_rc and use it here?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 15
+      },
+      "revId": "7e62b12b27c796f66efe4d50ab8e8ecf058342ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
