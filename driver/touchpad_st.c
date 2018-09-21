@@ -1140,7 +1140,6 @@ static int touchpad_should_enable(void)
 	enable = enable && !tp_control;
 
 	return enable;
-
 }
 
 /* Make a decision on touchpad power, based on USB and tablet mode status. */
@@ -1158,6 +1157,83 @@ static void touchpad_power_control(void)
 		st_tp_stop_scan();
 }
 
+/*
+ * Try to detect memory corruption or silent error.
+ */
+static int touchpad_detect_error(void)
+{
+	uint8_t tx_dump_error[] = {
+		0xFB, 0x20, 0x01, 0xEF, 0x80
+	};
+	uint32_t dump_info[2];
+	uint8_t tx_dump_memory[] = {
+		0xFB, 0x00, 0x10, 0x00, 0x00
+	};
+	uint32_t dump_memory[16];
+	int i;
+	int error_detected = 0;
+
+	enable_deep_sleep(0);
+	spi_transaction(SPI, tx_dump_error, sizeof(tx_dump_error),
+			(uint8_t *)&rx_buf,
+			sizeof(dump_info) + ST_TP_DUMMY_BYTE);
+	memcpy(dump_info, rx_buf.bytes, sizeof(dump_info));
+
+	spi_transaction(SPI, tx_dump_memory, sizeof(tx_dump_memory),
+			(uint8_t *)&rx_buf,
+			sizeof(dump_memory) + ST_TP_DUMMY_BYTE);
+	memcpy(dump_memory, rx_buf.bytes, sizeof(dump_memory));
+	enable_deep_sleep(1);
+
+	CPRINTS("error dump magic=%08x", dump_info[0]);
+	CPRINTS("memory magic:");
+	for (i = 0; i < sizeof(dump_memory); i += 32) {
+		CPRINTF("%.4h %.4h %.4h %.4h %.4h %.4h %.4h %.4h\n",
+			rx_buf.bytes + i + 4 * 0,
+			rx_buf.bytes + i + 4 * 1,
+			rx_buf.bytes + i + 4 * 2,
+			rx_buf.bytes + i + 4 * 3,
+			rx_buf.bytes + i + 4 * 4,
+			rx_buf.bytes + i + 4 * 5,
+			rx_buf.bytes + i + 4 * 6,
+			rx_buf.bytes + i + 4 * 7);
+	}
+
+	for (i = 0; i < ARRAY_SIZE(dump_memory); i++)
+		if (dump_memory[i] != 0xCCCCCCCC)
+			error_detected = 1;
+
+	switch (dump_info[0]) {
+	case 0xAA55AA55:
+		/* Magic bits is normal, everything is fine. */
+		break;
+	case 0xFA5005AF:
+		/*
+		 * Magic bits indicates there are errors, and somehow, we didn't
+		 * received error events.
+		 */
+		if (dump_info[1] == 2) {
+			/* hard fault */
+			dump_error();
+			error_detected = 1;
+		}
+		break;
+	default:
+		/*
+		 * Memory corruption?! There's no need to do error dump, because
+		 * memory is corrupted, just reset...
+		 */
+		error_detected = 1;
+		break;
+	}
+
+	if (error_detected) {
+		tp_control |= TP_CONTROL_SHALL_RESET;
+		return 1;
+	}
+	return 0;
+}
+
 void touchpad_task(void *u)
 {
 	uint32_t event;
@@ -1166,7 +1242,11 @@ void touchpad_task(void *u)
 	touchpad_power_control();
 
 	while (1) {
-		event = task_wait_event(-1);
+		/* wait for at most 1 minute */
+		event = task_wait_event(60 * 1000 * 1000);
+
+		if (event & TASK_EVENT_TIMER)
+			touchpad_detect_error();
 
 		if (event & TASK_EVENT_WAKE)
 			while (!tp_control &&
