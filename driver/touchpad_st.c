@@ -1116,10 +1116,8 @@ void touchpad_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_TOUCHPAD);
 }
 
-/* Make a decision on touchpad power, based on USB and tablet mode status. */
-static void touchpad_power_control(void)
+static int touchpad_should_enable(void)
 {
-	static int enabled = 1;
 	int enable = 1;
 
 #ifdef CONFIG_USB_SUSPEND
@@ -1131,6 +1129,15 @@ static void touchpad_power_control(void)
 	enable = enable && !tablet_get_mode();
 #endif
 
+	return enable;
+}
+
+/* Make a decision on touchpad power, based on USB and tablet mode status. */
+static void touchpad_power_control(void)
+{
+	const int enabled = !!(system_state & SYSTEM_STATE_ACTIVE_MODE);
+	int enable = touchpad_should_enable();
+
 	if (enabled == enable)
 		return;
 
@@ -1138,8 +1145,49 @@ static void touchpad_power_control(void)
 		st_tp_start_scan();
 	else
 		st_tp_stop_scan();
+}
 
-	enabled = enable;
+/*
+ * Try to detect memory corruption or silent error.
+ */
+static int touchpad_detect_error(void)
+{
+	uint8_t tx_buf[] = {
+		0xFB, 0x20, 0x01, 0xEF, 0x80
+	};
+	int rx_len = 4 * 2;
+
+	enable_deep_sleep(0);
+	spi_transaction(SPI, tx_buf, sizeof(tx_buf),
+			(uint8_t *)&rx_buf, rx_len);
+	enable_deep_sleep(1);
+
+	CPRINTS("detect error: magic=%08x", rx_buf.dump_info[0]);
+	switch (rx_buf.dump_info[0]) {
+	case 0xAA55AA55:
+		/* Magic bits is normal, everything is fine. */
+		break;
+	case 0xFA5005AF:
+		/*
+		 * Magic bits indicates there are errors, and somehow, we didn't
+		 * received error events.
+		 */
+		if (rx_buf.dump_info[1] == 2) {
+			/* hard fault */
+			dump_error();
+			tp_control |= TP_CONTROL_SHALL_RESET;
+			return 1;
+		}
+		break;
+	default:
+		/*
+		 * Memory corruption?! There's no need to do error dump, because
+		 * memory is corrupted, just reset...
+		 */
+		tp_control |= TP_CONTROL_SHALL_RESET;
+		return 1;
+	}
+	return 0;
 }
 
 void touchpad_task(void *u)
@@ -1150,7 +1198,12 @@ void touchpad_task(void *u)
 	touchpad_power_control();
 
 	while (1) {
-		event = task_wait_event(-1);
+		/* wait for at most 1 minute */
+		event = task_wait_event(60 * 1000 * 1000);
+
+		if (event & TASK_EVENT_TIMER)
+			if (!touchpad_detect_error())
+				continue;
 
 		if (event & TASK_EVENT_WAKE)
 			while (!tp_control &&
