@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1f32b7b_b67ba208",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-21T22:26:37Z",
+      "side": 1,
+      "message": "Instead of relying on 64-bit integers, can you just do this here:\n\nif (size \u003e sizeof(fp_buffer) || offset \u003e sizeof(fp_buffer))\n    return EC_RES_INVALID_PARAM;\n\nThat\u0027ll be enough to prevent overflows, as sizeof(fp_buffer) can\u0027t be anywhere near 2**31.",
+      "revId": "13703bf40dc0c1f7635fbb82c750762ecef424b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
