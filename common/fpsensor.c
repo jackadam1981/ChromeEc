@@ -421,19 +421,51 @@ static int fp_command_passthru(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_PASSTHRU, fp_command_passthru, EC_VER_MASK(0));
 
-static int fp_command_sensor_config(struct host_cmd_handler_args *args)
+static int validate_fp_mode(const uint32_t mode)
 {
-	/* const struct ec_params_fp_sensor_config *p = args->params; */
+	uint32_t valid_algo_modes = 0;
+	uint32_t capture_type = FP_CAPTURE_TYPE(mode);
+	uint32_t algo_mode = mode &
+	    ~(FP_MODE_CAPTURE_TYPE_MASK << FP_MODE_CAPTURE_TYPE_SHIFT);
 
-	return EC_RES_UNAVAILABLE;
+	switch (capture_type) {
+	case FP_CAPTURE_VENDOR_FORMAT:
+	case FP_CAPTURE_SIMPLE_IMAGE:
+	case FP_CAPTURE_PATTERN0:
+	case FP_CAPTURE_PATTERN1:
+	case FP_CAPTURE_QUALITY_TEST:
+	case FP_CAPTURE_RESET_TEST:
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+
+	valid_algo_modes |= FP_MODE_DEEPSLEEP;
+	valid_algo_modes |= FP_MODE_FINGER_DOWN;
+	valid_algo_modes |= FP_MODE_FINGER_UP;
+	valid_algo_modes |= FP_MODE_CAPTURE;
+	valid_algo_modes |= FP_MODE_ENROLL_SESSION;
+	valid_algo_modes |= FP_MODE_ENROLL_IMAGE;
+	valid_algo_modes |= FP_MODE_MATCH;
+	valid_algo_modes |= FP_MODE_DONT_CHANGE;
+
+	if (algo_mode & ~valid_algo_modes)
+		return EC_ERROR_INVAL;
+
+	return EC_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_SENSOR_CONFIG, fp_command_sensor_config,
-		     EC_VER_MASK(0));
 
 static int fp_command_mode(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_mode *p = args->params;
 	struct ec_response_fp_mode *r = args->response;
+	int ret;
+
+	ret = validate_fp_mode(p->mode);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Invalid FP mode 0x%x", p->mode);
+		return EC_RES_INVALID_PARAM;
+	}
 
 	if (!(p->mode & FP_MODE_DONT_CHANGE)) {
 		sensor_mode = p->mode;
@@ -633,7 +665,7 @@ static int fp_command_stats(struct host_cmd_handler_args *args)
 	r->timestamps_invalid = timestamps_invalid;
 	r->template_matched = template_matched;
 
-	args->response_size = sizeof(struct ec_response_fp_stats);
+	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
@@ -788,6 +820,9 @@ int command_fpcapture(int argc, char **argv)
 	uint32_t mode;
 	int rc;
 
+	if (system_is_locked())
+		return EC_RES_ACCESS_DENIED;
+
 	if (argc >= 2) {
 		char *e;
 
@@ -813,6 +848,9 @@ int command_fpenroll(int argc, char **argv)
 	uint32_t event;
 	static const char * const enroll_str[] = {"OK", "Low Quality",
 						  "Immobile", "Low Coverage"};
+
+	if (system_is_locked())
+		return EC_RES_ACCESS_DENIED;
 
 	do {
 		int tries = 1000;

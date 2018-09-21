@@ -4922,22 +4922,6 @@ struct __ec_align2 ec_params_fp_passthru {
 	uint8_t data[];		/* Data to send */
 };
 
-/* Fingerprint sensor configuration command: prototyping ONLY */
-#define EC_CMD_FP_SENSOR_CONFIG 0x0401
-
-#define EC_FP_SENSOR_CONFIG_MAX_REGS 16
-
-struct __ec_align2 ec_params_fp_sensor_config {
-	uint8_t count;		/* Number of setup registers */
-	/*
-	 * the value to send to each of the 'count' setup registers
-	 * is stored in the 'data' array for 'len' bytes just after
-	 * the previous one.
-	 */
-	uint8_t len[EC_FP_SENSOR_CONFIG_MAX_REGS];
-	uint8_t data[];
-};
-
 /* Configure the Fingerprint MCU behavior */
 #define EC_CMD_FP_MODE 0x0402
 
