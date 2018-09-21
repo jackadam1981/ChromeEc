@@ -46,6 +46,12 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/*
+ * We need to throttle AP when the DRAM temperature sensor gets
+ * over 48 C (321 K), and stop throttling once it cools back down.
+ */
+#define DRAM_THROTTLE_TEMP_K	321
+
 static void tcpc_alert_event(enum gpio_signal s)
 {
 #ifdef HAS_TASK_PDCMD
@@ -739,6 +745,40 @@ static void board_chipset_reset(void)
 	board_report_pmic_fault("CHIPSET RESET");
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, board_chipset_reset, HOOK_PRIO_DEFAULT);
+
+static int should_throttle_ap(void)
+{
+	int t_dram;
+
+	/*
+	 * The DRAM temperature sensor is only available when the AP is on,
+	 * therefore only inhibit charging when we can actually read a
+	 * temperature.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ON) &&
+	    !temp_sensor_read(TEMP_SENSOR_DRAM, &t_dram) &&
+	    (t_dram >= DRAM_THROTTLE_TEMP_K))
+		return 1;
+	else
+		return 0;
+}
+
+static void board_throttle_ap(void)
+{
+	static uint8_t throttle_ap;
+	int enable_throttle;
+
+	enable_throttle = should_throttle_ap();
+	if (enable_throttle != throttle_ap) {
+		throttle_ap = enable_throttle;
+		if (enable_throttle) {
+			chipset_throttle_cpu(1);
+		} else {
+			chipset_throttle_cpu(0);
+		}
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, board_throttle_ap, HOOK_PRIO_DEFAULT);
 
 uint16_t tcpc_get_alert_status(void)
 {
