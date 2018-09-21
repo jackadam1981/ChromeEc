@@ -1206,9 +1206,14 @@ void touchpad_task(void *u)
 				continue;
 
 		if (event & TASK_EVENT_WAKE)
-			while (!tp_control &&
-			       !gpio_get_level(GPIO_TOUCHPAD_INT))
+			while (1) {
 				st_tp_read_report();
+				if (tp_control ||
+				    gpio_get_level(GPIO_TOUCHPAD_INT))
+					break;
+				if (system_state & SYSTEM_STATE_ENABLE_HEAT_MAP)
+					usleep(1);
+			}
 
 		/*
 		 * React on touchpad errors.
@@ -1238,6 +1243,7 @@ void touchpad_task(void *u)
 #if defined(CONFIG_USB_SUSPEND) || defined(CONFIG_TABLET_MODE)
 static void touchpad_power_change(void)
 {
+	CPRINTS("set power change event");
 	task_set_event(TASK_ID_TOUCHPAD, TASK_EVENT_POWER, 0);
 }
 #endif
@@ -1325,10 +1331,11 @@ static int st_tp_read_frame(void)
 	 */
 #if ST_TP_DUMMY_BYTE == 1
 	BUILD_ASSERT(sizeof(usb_packet[0].flags) == 1);
-	uint8_t *rx_buf = &usb_packet[spi_buffer_index & 1].flags;
+	uint8_t *frame_buf = &usb_packet[spi_buffer_index & 1].flags;
 #else
-	uint8_t *rx_buf = usb_packet[spi_buffer_index & 1].frame;
+	uint8_t *frame_buf = usb_packet[spi_buffer_index & 1].frame;
 #endif
+	uint8_t header_flags;
 
 	if (heat_map_addr < 0)
 		goto failed;
@@ -1337,13 +1344,27 @@ static int st_tp_read_frame(void)
 	if (ret)
 		goto failed;
 
+	/* st_tp_check_domeswitch_state() reads entire buffer for us */
+	header_flags = rx_buf.buffer_header.flags;
+	if (header_flags & ST_TP_BUFFER_HEADER_EVT_FIFO_NOT_EMPTY) {
+		ret = st_tp_read_all_events(0);
+		if (ret < 0) {
+			CPRINTS("BOOM!!");
+			goto failed;
+		}
+	}
+#if 0
+	/* somehow, frame is not ready */
+	if (!(header_flags & ST_TP_BUFFER_HEADER_HEAT_MAP_MT_RDY))
+		return -1;
+#endif
 	/*
 	 * Theoretically, we should read host buffer header to check if data is
 	 * valid, but the data should always be ready when interrupt pin is low.
 	 * Let's skip this check for now.
 	 */
 	ret = spi_transaction(SPI, tx_buf, sizeof(tx_buf),
-			      (uint8_t *)rx_buf, rx_len);
+			      (uint8_t *)frame_buf, rx_len);
 	if (ret == EC_SUCCESS) {
 		int i;
 		uint8_t *dest = usb_packet[spi_buffer_index & 1].frame;
@@ -1351,9 +1372,10 @@ static int st_tp_read_frame(void)
 
 		for (i = 0; i < ST_TOUCH_COLS * ST_TOUCH_ROWS; i++)
 			max_value |= dest[i];
+#if 0
 		if (max_value == 0) // empty frame
 			return -1;
-
+#endif
 		usb_packet[spi_buffer_index & 1].flags = 0;
 		if (system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL)
 			usb_packet[spi_buffer_index & 1].flags |=
