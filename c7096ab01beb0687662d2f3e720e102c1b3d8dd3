@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e7f42267_f8770015",
+        "filename": "common/led_onoff_states.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2018-09-21T02:36:00Z",
+      "side": 1,
+      "message": "Original for OEM spec , not common designed",
+      "parentUuid": "6b6b1736_b15ce98f",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "c7096ab01beb0687662d2f3e720e102c1b3d8dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1417791e_2b033f66",
         "filename": "include/config.h",
         "patchSetId": 4
