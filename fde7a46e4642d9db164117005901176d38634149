@@ -69,6 +69,30 @@
       "revId": "fde7a46e4642d9db164117005901176d38634149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f46a40_6ca05552",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2018-09-21T06:54:19Z",
+      "side": 1,
+      "message": "- motion_sense_init() has 3 times retry\n- I was able to see this odd on my Yorp2, but only when it is powering on from G3, while your case looks to me S5 powering on also hits it.\n- Is your error case like mine? when it comes to i2c_write8() failure.\n\nIn order to dig it more, I hacked i2c driver a bit, it looks to me there is margin that the bus master gets NACK; I post my S3 and G5 powering on cases (be noticed that because of Heisenberg principle, extra log consumes MIPS which generates uncertainty):\n\ndiff --git a/chip/npcx/i2c.c b/chip/npcx/i2c.c\n--- a/chip/npcx/i2c.c\n+++ b/chip/npcx/i2c.c\n@@ -675,7 +677,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,\n        p_status-\u003etask_waiting \u003d TASK_ID_INVALID;\n \n        CPRINTS(\"-Err:0x%02x\\n\", p_status-\u003eerr_code);\n-\n+       if (p_status-\u003eerr_code !\u003d SMB_OK) cprints(CC_I2C, \"HP: Err\u003d%d\\n\", p_status-\u003eerr_code);\n        return (p_status-\u003eerr_code \u003d\u003d SMB_OK) ? EC_SUCCESS : EC_ERROR_UNKNOWN;\n }\n\ndiff --git a/driver/accel_kionix.c b/driver/accel_kionix.c\nindex d486d4bcd..4f4134d24 100644\n--- a/driver/accel_kionix.c\n+++ b/driver/accel_kionix.c\n@@ -532,6 +532,7 @@ static int init(const struct motion_sensor_t *s)\n                /* Write 0x00 to the internal register for KX022 */\n                reg \u003d KX022_INTERNAL;\n                ret \u003d raw_write8(s-\u003eport, s-\u003eaddr, reg, 0x0);\n+               CPRINTF(\"HP: ret\u003d%d\\n\", ret);\n                if (ret !\u003d EC_SUCCESS) {\n\nS5-\u003eS3-\u003eS0:\n[10039.952597 PD:S5-\u003eS3]\n[10039.953377 power state 2 \u003d S3, in 0x00e7]\n[10039.953946 power state 7 \u003d S3-\u003eS0, in 0x00e7]\n[10039.955365 PD:S3-\u003eS0]\n[10039.955819 USB charge p0 m2]\n[10039.956184 USB charge p1 m2]\n[10039.956724 power state 3 \u003d S0, in 0x00e7]\n10039.948028 SW 0x03]\n]\n[10039.958811 HP: Err\u003d8\n]\nHP: ret\u003d1  # note: this is EC_ERROR_UNKNOWN\n[10039.959564 HP: Err\u003d8\n]\n[10039.960190 HP: Err\u003d8\n]\nHP: ret\u003d1\n[10039.960824 HP: Err\u003d8\n]\nHP: ret\u003d0\n[10039.971601 Lid Accel: MS Done Init type:0x0 range:4]\n\n\nG3-\u003eS5-\u003eS3-\u003eS0:\n[10106.559365 power state 5 \u003d G3-\u003eS5, in 0x0[10106.560066 PB PCH pwrbtn\u003dLOW]\n[10106.560416 PB task 10 \u003d was-off, wait 198414]\n080]\n[10106.561649 SW 0x03]\n[10106.563693 event set 0x0000000000000004]\n[10106.584079 Pass through GPIO_RSMRST_L_PGOOD: 1]\n[10106.584743 power state 1 \u003d S5, in 0x00e0]\n[10106.679991 power state 1 \u003d S5, in 0x00e7]\n[10106.680639 power state 6 \u003d S5-\u003eS3, in 0x00e7]\n[10106.681198 mux_state \u003d 0x1, mux_type \u003d 0x1]\n[10106.683065 PD:S5-\u003eS3]\n[10106.684231 power state 2 \u003d S3, in 0x00e7]\n[10106.684680 power state 7 \u003d S3-\u003eS0, in 0x00e7]\n[10106.686099 PD:S3-\u003eS0]\n[10106.686672 USB charge p0 m2]\n[10106.687037 USB charge p1 m2]\n[10106.687456 power state 3 \u003d S0, in 0x00e7]\n]\n[10106.689325 HP: Err\u003d8\n]\nHP: ret\u003d1\n[10106.689958 HP: Err\u003d8\n]\n[10106.690533 HP: Err\u003d8\n]\nHP: ret\u003d1\n[10106.691286 HP: Err\u003d8\n]\n[10106.691861 HP: Err\u003d8\n]\nHP: ret\u003d1\n[10106.692614 HP: Err\u003d8\n]\n[10106.692955 Lid Accel: 0: init failed: 1]\n[10106.698267 Base Accel: MS Done Init type:0x0 range:4]",
+      "parentUuid": "a8c25ebe_1211dc44",
+      "range": {
+        "startLine": 531,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 6
+      },
+      "revId": "fde7a46e4642d9db164117005901176d38634149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
