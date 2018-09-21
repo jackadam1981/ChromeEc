@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a95fa45_06ab6d79",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-21T23:53:43Z",
+      "side": 1,
+      "message": "It would be nice if we could disable the hook once the AP is off / suspend, and only enable it if it\u0027s on.",
+      "revId": "eb433e6feb8759301d1693e7ebfbff6fbe80bf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0816c8e_e449c57b",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-21T23:53:43Z",
+      "side": 1,
+      "message": "chipset_throttle_cpu(enable_throttle) ?",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 3
+      },
+      "revId": "eb433e6feb8759301d1693e7ebfbff6fbe80bf42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
