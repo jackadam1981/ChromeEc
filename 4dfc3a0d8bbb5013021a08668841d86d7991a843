@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d98da12_14ffe68f",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-22T00:48:37Z",
+      "side": 1,
+      "message": "I\u0027ve swapped the mask and the bitshift instead, it makes more sense for the mask to be 0x7 \u003c\u003c 28 than the other way around,",
+      "parentUuid": "17c035b5_db91a0cc",
+      "range": {
+        "startLine": 428,
+        "startChar": 22,
+        "endLine": 429,
+        "endChar": 64
+      },
+      "revId": "4dfc3a0d8bbb5013021a08668841d86d7991a843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe3d686a_256c8580",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b4d107fa_422af9f0",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-22T00:48:37Z",
+      "side": 1,
+      "message": "Done, I\u0027ve created an enum",
+      "parentUuid": "fe3d686a_256c8580",
+      "revId": "4dfc3a0d8bbb5013021a08668841d86d7991a843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2beed900_2184316d",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "4dfc3a0d8bbb5013021a08668841d86d7991a843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72de745b_e5d6fb52",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-22T00:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2beed900_2184316d",
+      "revId": "4dfc3a0d8bbb5013021a08668841d86d7991a843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
