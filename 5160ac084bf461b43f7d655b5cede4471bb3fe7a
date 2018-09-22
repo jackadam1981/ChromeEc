@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12af6634_6f3d1b4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-22T01:06:35Z",
+      "side": 1,
+      "message": "Is that true? Don\u0027t you need to call first some fp_sensor_release() function that would call the sensor/algo release methods? Otherwise you might end up with leaked memory resources for example.",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "5160ac084bf461b43f7d655b5cede4471bb3fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8794f72f_f16cd7a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-22T01:06:35Z",
+      "side": 1,
+      "message": "nocturne",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "5160ac084bf461b43f7d655b5cede4471bb3fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea3fba4_b2aa5f65",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4966,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-22T01:06:35Z",
+      "side": 1,
+      "message": "nit: call it FP_MODE_RESET_SENSOR\nOtherwise it\u0027s possible to confuse it with the old interpretation where \"reset\" would simply set the mode back to 0",
+      "range": {
+        "startLine": 4966,
+        "startChar": 8,
+        "endLine": 4966,
+        "endChar": 21
+      },
+      "revId": "5160ac084bf461b43f7d655b5cede4471bb3fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
