@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82532ee4_f77f5389",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-22T04:12:20Z",
+      "side": 1,
+      "message": "This makes me a little uncomfortable.\n\nMaybe:\n\nbuffer_size \u003d sizeof(fp_enc_buffer);\n\nif (...)\n  buffer_size \u003d  sizeof(fp_buffer);\n\n\nOr \n\nif (...) {\n  buffer_size \u003d  sizeof(fp_buffer);\n}\n\nbuffer_size \u003d sizeof(fp_enc_buffer);",
+      "revId": "6da38a7c5fec5369df9f62cb1ac2e92d3e500ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac79ab48_34aba645",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-22T04:12:20Z",
+      "side": 1,
+      "message": "Maybe merge the 3 tests in one.",
+      "revId": "6da38a7c5fec5369df9f62cb1ac2e92d3e500ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ce3bee_41ab32bf",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-22T04:12:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6da38a7c5fec5369df9f62cb1ac2e92d3e500ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b71ebf0b_f7940a20",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-22T04:12:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6da38a7c5fec5369df9f62cb1ac2e92d3e500ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
