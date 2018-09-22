@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a227af30_f262cdc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2018-09-22T21:49:15Z",
+      "side": 1,
+      "message": "I can see bio_algorithm_destroy(), which removes the bio_sensor related state. Do you think it is better to just call this during fp_sensor_init() every time ? It will simplify the fp_sensor_init() calling logic.",
+      "parentUuid": "12af6634_6f3d1b4b",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "5160ac084bf461b43f7d655b5cede4471bb3fe7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8794f72f_f16cd7a6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
