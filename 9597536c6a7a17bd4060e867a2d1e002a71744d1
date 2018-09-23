@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2c767de_e8c10c2e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-23T01:06:23Z",
+      "side": 1,
+      "message": "Can you also unset the FP_MODE_RESET_SENSOR bit of sensor_mode?",
+      "range": {
+        "startLine": 295,
+        "startChar": 3,
+        "endLine": 296,
+        "endChar": 21
+      },
+      "revId": "9597536c6a7a17bd4060e867a2d1e002a71744d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
