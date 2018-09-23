@@ -76,6 +76,15 @@ void set_pwm_led_color(enum pwm_led_id id, int color)
 
 static void set_led_color(int color)
 {
+#if CONFIG_LED_PWM_COUNT >= 2
+#ifdef CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY
+	enum charge_state chg_st = charge_get_state();
+	int active_chg_port = charge_manager_get_active_charge_port();
+	enum pwm_led_id inactive_pwm_id;
+	enum ec_led_id inactive_ec_id;
+#endif /* CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY */
+#endif /* CONFIG_LED_PWM_COUNT >= 2 */
+
 	/*
 	 *  We must check if auto control is enabled since the LEDs may be
 	 *  controlled from the AP at anytime.
@@ -89,6 +98,25 @@ static void set_led_color(int color)
 	if (led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED))
 		if (!ignore_set_led_color(PWM_LED1, color))
 			set_pwm_led_color(PWM_LED1, color);
+
+#ifdef CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY
+	if ((chg_st != PWR_STATE_CHARGE_NEAR_FULL) &&
+	    (chg_st != PWR_STATE_CHARGE))
+		return;
+
+	/*
+	 * Make sure that we turn off the other LED if we're not charging from
+	 * that port.
+	 */
+	inactive_pwm_id = active_chg_port ? PWM_LED0 : PWM_LED1;
+	if (inactive_pwm_id == PWM_LED0)
+		inactive_ec_id = EC_LED_ID_LEFT_LED;
+	else
+		inactive_ec_id = EC_LED_ID_RIGHT_LED;
+
+	if (led_auto_control_is_enabled(inactive_ec_id))
+		set_pwm_led_color(inactive_pwm_id, -1);
+#endif /* CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY */
 #endif /* CONFIG_LED_PWM_COUNT >= 2 */
 }
 
