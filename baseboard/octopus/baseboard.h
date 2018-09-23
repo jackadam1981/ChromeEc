@@ -252,6 +252,11 @@
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_SWITCH
 #define TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
+/*
+ * TBD: reason and time for sensor resume delay
+ */
+#undef  CONFIG_MOTION_SENSE_RESUME_DELAY_US
+#define CONFIG_MOTION_SENSE_RESUME_DELAY_US (10 * MSEC)
 
 #ifndef __ASSEMBLER__
 
