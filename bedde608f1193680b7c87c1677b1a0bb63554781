@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36dc192f_508d3ef9",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-09-24T19:12:23Z",
+      "side": 1,
+      "message": "I created a issuetracker for this. commit message updated with issue number. Somehow I have problem to add your email in the CC list. It says this issue is domain restricted.",
+      "parentUuid": "1c936a61_7976bcf5",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5da69bc_965dac47",
         "filename": "chip/ish/registers.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cad992f_46c7eeab",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-09-24T19:12:23Z",
+      "side": 1,
+      "message": "Sent out shared ISH EDS with google doc link.",
+      "parentUuid": "b5da69bc_965dac47",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
