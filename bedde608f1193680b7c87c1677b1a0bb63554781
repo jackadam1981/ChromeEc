@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c936a61_7976bcf5",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-24T15:14:08Z",
+      "side": 1,
+      "message": "do you have a crbug.com or an issuetracker issue for this work?",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5da69bc_965dac47",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-24T15:14:08Z",
+      "side": 1,
+      "message": "Can you point me to documentation I can access internally to verify this?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
