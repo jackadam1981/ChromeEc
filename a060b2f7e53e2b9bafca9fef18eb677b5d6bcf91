@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "042a5a9f_222663a4",
+        "filename": "common/math_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-24T03:32:52Z",
+      "side": 1,
+      "message": "This just helps narrow the range, since we know that if x \u003c rmax, sqrt(x) \u003c sqrt(rmax). And sqrt(0x7fffffff) \u003c 0xb504 \u003c 0x7fff.\n\n(yes, this function could do better...)",
+      "revId": "a060b2f7e53e2b9bafca9fef18eb677b5d6bcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4819b07e_686dc4c6",
+        "filename": "common/math_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-24T03:32:52Z",
+      "side": 1,
+      "message": "This loses a bit of precision for any x \u003e 1.0.\n\nSay x \u003d 2.0 \u003d\u003e x \u003d 2 \u003c\u003c 16\n\npreshift_x \u003d 2 \u003c\u003c 32 ( \u003e INT32_MAX)\n\nSo you will do sqrt(2 \u003c\u003c 16) \u003c\u003c 8 \u003d \n(Math.sqrt(2 \u003c\u003c 16).round.to_i \u003c\u003c 8) / 2.0**16\n\u003d\u003e 1.4140625\n\nBut int_sqrtf is able to handle 64-bit input:\n\n(Math.sqrt(2 \u003c\u003c 32).round.to_i) / 2.0**16\n\u003d\u003e 1.414215087890625\n\npreshift_x can\u0027t overflow, so you can just use this always:\n\nreturn int_sqrtf(preshift_x);",
+      "revId": "a060b2f7e53e2b9bafca9fef18eb677b5d6bcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
