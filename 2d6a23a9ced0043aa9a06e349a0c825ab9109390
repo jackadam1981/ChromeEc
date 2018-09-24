@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f556019d_14c47de6",
+        "filename": "board/nocturne/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-24T01:38:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this happen only when the system is in its lowest power state i.e. G3?",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "2d6a23a9ced0043aa9a06e349a0c825ab9109390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
