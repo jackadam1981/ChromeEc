@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "992f9f76_e97be176",
+        "filename": "board/nocturne/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-24T18:06:16Z",
+      "side": 1,
+      "message": "Should there be an early return here if active_chg_port is CHARGE_PORT_NONE?",
+      "revId": "cc52887bdf9e87fdab648ac815641162cf5eac47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
