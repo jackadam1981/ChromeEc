@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b06c28ff_2164ab55",
+        "filename": "common/math_util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-24T16:07:03Z",
+      "side": 1,
+      "message": "Without this if, you\u0027d bisect 0-0x7fffffff (which would be fine but slow).\n\nWith this, you bisect 0-0x7fff. But yes, it could be optimized to 0-0xb505.",
+      "parentUuid": "28b9d3e3_a6d9c3ae",
+      "revId": "a060b2f7e53e2b9bafca9fef18eb677b5d6bcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4819b07e_686dc4c6",
         "filename": "common/math_util.c",
         "patchSetId": 2
