@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74c941a0_481e1ee7",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-24T18:40:40Z",
+      "side": 1,
+      "message": "Would it be cleaner if ignore_set_led_color was updated to just return the color that should be used by set_led_color for a given led id? Then you won\u0027t need any extra logic in set_led_color:\n\nstatic int get_led_id_color(enum pwm_led_id id, int color)\n{\n#ifdef CONFIG_LED_PWM_ACTIVE_CHARGE_PORT_ONLY\n    if (color \u003d\u003d -1)\n        return -1;\n\n    if (led_is_pulsing)\n        return color;\n\n    if ((int)id !\u003d active_chg_port)\n        return -1;\n#endif\n    return color;\n}\n\nstatic void set_led_color(int color)\n{\n\t/*\n\t *  We must check if auto control is enabled since the LEDs may be\n\t *  controlled from the AP at anytime.\n\t */\n\tif ((led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) ||\n\t    (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED)))\n\t\tset_pwm_led_color(PWM_LED0, get_led_id_color(PWM_LED0, color));\n\n#if CONFIG_LED_PWM_COUNT \u003e\u003d 2\n\tif (led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED))\n\t\tset_pwm_led_color(PWM_LED1, get_led_id_color(PWM_LED1, color));\n#endif\n}\n\nThoughts?",
+      "revId": "096a7be69d22c8eeb017d9f2894a4e949169d128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
