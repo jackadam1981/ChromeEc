@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57ee5cb1_5face7f1",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-09-24T18:22:19Z",
+      "side": 1,
+      "message": "You might want to add some hysteresis.",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "92e31e5922f441a827c2c23790219deb645a1f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b45530d_4d772cb1",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-09-24T18:22:19Z",
+      "side": 1,
+      "message": "throttle AP?",
+      "range": {
+        "startLine": 758,
+        "startChar": 19,
+        "endLine": 758,
+        "endChar": 35
+      },
+      "revId": "92e31e5922f441a827c2c23790219deb645a1f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
