@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d7bf5d8_33fe25a7",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-09-24T21:14:47Z",
+      "side": 1,
+      "message": "No need now. Use CONFIG_THROTTLE_AP instead.",
+      "parentUuid": "57ee5cb1_5face7f1",
+      "range": {
+        "startLine": 53,
+        "startChar": 29,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "92e31e5922f441a827c2c23790219deb645a1f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b45530d_4d772cb1",
         "filename": "board/nocturne/board.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "92e31e5922f441a827c2c23790219deb645a1f7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f7dda26_a6f7fdd9",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-09-24T21:14:47Z",
+      "side": 1,
+      "message": "No need now. Use CONFIG_THROTTLE_AP instead.",
+      "parentUuid": "6b45530d_4d772cb1",
+      "range": {
+        "startLine": 758,
+        "startChar": 19,
+        "endLine": 758,
+        "endChar": 35
+      },
+      "revId": "92e31e5922f441a827c2c23790219deb645a1f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
