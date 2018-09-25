@@ -66,6 +66,8 @@ static int tp_control;
 #define TP_CONTROL_SHALL_HALT		(1 << 0)
 #define TP_CONTROL_SHALL_RESET		(1 << 1)
 #define TP_CONTROL_SHALL_INITIALIZE	(1 << 2)
+#define TP_CONTROL_RESETTING		(1 << 3)
+#define TP_CONTROL_INITIALIZING		(1 << 4)
 
 /*
  * Number of times we have reset the touchpad because of errors.
@@ -731,6 +733,8 @@ static int st_tp_reset(void)
 /* Initialize the controller ICs after reset */
 static void st_tp_init(void)
 {
+	tp_control = TP_CONTROL_RESETTING;
+
 	if (st_tp_reset())
 		return;
 	/*
@@ -740,7 +744,7 @@ static void st_tp_init(void)
 	st_tp_read_system_info(0);
 
 	system_state = 0;
-	tp_control &= ~TP_CONTROL_SHALL_RESET;
+	tp_control &= ~TP_CONTROL_RESETTING;
 
 	st_tp_start_scan();
 }
@@ -955,11 +959,10 @@ static int st_tp_write_flash(int offset, int size, const uint8_t *data)
 	return EC_SUCCESS;
 }
 
-static int st_tp_check_command_echo(const uint8_t *cmd,
-				    const size_t len)
+static int st_tp_check_command_echo(const uint8_t *cmd, const size_t len)
 {
 	int num_events, i;
-	num_events = st_tp_read_all_events(0);
+	num_events = st_tp_read_all_events(1);
 	if (num_events < 0)
 		return -num_events;
 
@@ -969,7 +972,7 @@ static int st_tp_check_command_echo(const uint8_t *cmd,
 		if (e->evt_id == ST_TP_EVENT_ID_STATUS_REPORT &&
 		    e->report.report_type == ST_TP_STATUS_CMD_ECHO &&
 		    memcmp(e->report.info, cmd, MIN(4, len)) == 0)
-			return 0;
+			return EC_SUCCESS;
 	}
 	return -EC_ERROR_BUSY;
 }
@@ -985,7 +988,7 @@ static void st_tp_full_initialize_end(void)
 	ret = st_tp_check_command_echo(tx_buf, sizeof(tx_buf));
 	if (ret == EC_SUCCESS) {
 		CPRINTS("Full panel initialization completed.");
-		tp_control &= ~TP_CONTROL_SHALL_INITIALIZE;
+		tp_control &= ~TP_CONTROL_INITIALIZING;
 		st_tp_init();
 	} else if (ret == -EC_ERROR_BUSY) {
 		hook_call_deferred(&st_tp_full_initialize_end_data, 100 * MSEC);
@@ -998,6 +1001,10 @@ static void st_tp_full_initialize_start(void)
 {
 	uint8_t tx_buf[] = { ST_TP_CMD_WRITE_SYSTEM_COMMAND, 0x00, 0x03 };
 
+	if (tp_control == TP_CONTROL_INITIALIZING)
+		return;
+
+	tp_control = TP_CONTROL_INITIALIZING;
 	st_tp_stop_scan();
 	if (st_tp_reset())
 		return;
@@ -1130,6 +1137,8 @@ static void touchpad_power_control(void)
 #ifdef CONFIG_TABLET_MODE
 	enable = enable && !tablet_get_mode();
 #endif
+	/* touchpad is not ready. */
+	enable = enable && !tp_control;
 
 	if (enabled == enable)
 		return;
