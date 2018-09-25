@@ -1072,6 +1072,7 @@ static int st_tp_panel_init_start(int full)
 		old_cx_version = get_cx_version(
 				system_info.release_info & 0xFF);
 
+	CPRINTS("%s: stop scan", __func__);
 	st_tp_stop_scan();
 	ret = st_tp_reset();
 	if (ret)
@@ -1088,7 +1089,7 @@ static int st_tp_panel_init_start(int full)
 		full = old_cx_version != new_cx_version;
 	}
 
-	if (full) {  /* should perform full panel initialization */
+	if (full || 1) {  /* should perform full panel initialization */
 		tx_buf[2] = 0x3;
 		tp_control = TP_CONTROL_INIT_FULL;
 	} else {
@@ -1249,13 +1250,16 @@ static void touchpad_power_control(void)
 	const int enabled = !!(system_state & SYSTEM_STATE_ACTIVE_MODE);
 	int enable = touchpad_should_enable();
 
+	CPRINTS("%s: enabled=%d enable=%d", __func__, enabled, enable);
 	if (enabled == enable)
 		return;
 
 	if (enable)
 		st_tp_start_scan();
-	else
+	else {
+		CPRINTS("%s: stop scan", __func__);
 		st_tp_stop_scan();
+	}
 }
 
 static void touchpad_read_idle_count(void)
@@ -1380,6 +1384,7 @@ void touchpad_task(void *u)
 			tp_control = TP_CONTROL_SHALL_RESET;
 			st_tp_init();
 		} else if (tp_control & TP_CONTROL_SHALL_HALT) {
+			CPRINTS("shall halt");
 			tp_control = 0;
 			st_tp_stop_scan();
 		}
