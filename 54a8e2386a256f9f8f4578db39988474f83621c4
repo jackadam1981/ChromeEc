@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3796a08b_3f26153e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-25T23:17:14Z",
+      "side": 1,
+      "message": "You can refactor this whole function like this:\n\nif (tp_control)\n   return 0;\n\nif (usb_is_suspended() \u0026\u0026 !usb_is_remote_wakeup_enabled())\n   return 0;\n\nif (tablet_get_mode())\n   return 0;\n\nreturn 1;",
+      "revId": "54a8e2386a256f9f8f4578db39988474f83621c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f1dceb_783adc52",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-09-25T23:17:14Z",
+      "side": 1,
+      "message": "nit: drop this empty line",
+      "revId": "54a8e2386a256f9f8f4578db39988474f83621c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
