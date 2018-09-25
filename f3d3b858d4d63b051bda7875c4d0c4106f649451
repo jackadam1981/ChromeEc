@@ -22,6 +22,30 @@
       "revId": "f3d3b858d4d63b051bda7875c4d0c4106f649451",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f0df02_1a2ab830",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-09-25T16:26:02Z",
+      "side": 1,
+      "message": "you mean \n*pbuf \u003d EC_ERROR_ACCESS_DENIED; /* ... the value returned in *pbuf is supposed to be from the EC error value scope */\nreturn VENDOR_RC_NOT_ALLOWED; /* ... the value returned by vendor command handler should be from the VENDOR_RC_ error value scope */\n\n?",
+      "parentUuid": "91f4969b_7c93284e",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 15
+      },
+      "revId": "f3d3b858d4d63b051bda7875c4d0c4106f649451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
