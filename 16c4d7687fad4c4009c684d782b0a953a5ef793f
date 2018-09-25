@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca7e4e49_cdfb063e",
+        "filename": "board/rammus/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-25T01:32:35Z",
+      "side": 1,
+      "message": "Can you use data[3] XDSG(bit 5) and XCHG(bit 6) to determine the battery disconnection? If so, maybe you can refer to poppy.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "16c4d7687fad4c4009c684d782b0a953a5ef793f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
