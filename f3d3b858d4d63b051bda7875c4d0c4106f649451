@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91f4969b_7c93284e",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-09-25T14:23:40Z",
+      "side": 1,
+      "message": "it should be\n\n*pbuf \u003d EC_ERROR_ACCESS_DENIED\nreturn EC_ERROR_ACCESS_DENIED;\n\ni.e. the body of the message includes the EC error, and the return value of the function - the VC error.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 15
+      },
+      "revId": "f3d3b858d4d63b051bda7875c4d0c4106f649451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
