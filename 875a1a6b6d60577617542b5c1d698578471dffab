@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfd5a97e_f4ef9a0c",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-25T19:56:52Z",
+      "side": 1,
+      "message": "instead of using this layer of indirection (in the c code), let\u0027s make each register definition a REG32 by itself e.g. \n#define ISH_GPIO_GCCR REG32(ISH_GPIO_BASE + 0x000)\n#define ISH_GPIO_GPLR REG32(ISH_GPIO_BASE + 0x004)",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "875a1a6b6d60577617542b5c1d698578471dffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
