@@ -16,6 +16,24 @@
       "revId": "096fe2af1421d772868f047b479e213c8355f76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456c7257_7a2dee34",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-25T18:01:58Z",
+      "side": 1,
+      "message": "If we did that, then there are 2 entry points for driver customization. There is already a get_chip_info driver method that chips can chose to override if they don\u0027t follow the TCPCI spec. However, all of the drivers today seem to follow the spec.\n\nWe have set this precedent before of more specific driver functions callomg the more general tcpci functions to do more of the work (tcpci_init is a good example).\n\nI kind of think of this as the base class for many TCPC drivers and a sub-class can call the super method if needed.\n\n---\n\nYour suggestion would work, I think it may be a little more confusing with the 2 config points: get_chip_info and get_fw_version (which is only used if you set get_chip_info to tcpci_get_chip_info)",
+      "parentUuid": "fc36fcb4_b972d923",
+      "revId": "096fe2af1421d772868f047b479e213c8355f76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
