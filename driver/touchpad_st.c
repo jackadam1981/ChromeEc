@@ -1020,6 +1020,7 @@ static void st_tp_full_initialize_end(void)
 		tp_control &= ~TP_CONTROL_INITIALIZING;
 		st_tp_init();
 	} else if (ret == -EC_ERROR_BUSY) {
+		CPRINTS("full panel initialization: busy, will check again.");
 		hook_call_deferred(&st_tp_full_initialize_end_data, 100 * MSEC);
 	} else {
 		CPRINTS("Full Panel initialization failed: %x", -ret);
@@ -1034,6 +1035,7 @@ static void st_tp_full_initialize_start(void)
 		return;
 
 	tp_control = TP_CONTROL_INITIALIZING;
+	CPRINTS("%s: stop scan", __func__);
 	st_tp_stop_scan();
 	if (st_tp_reset())
 		return;
@@ -1176,13 +1178,16 @@ static void touchpad_power_control(void)
 	const int enabled = !!(system_state & SYSTEM_STATE_ACTIVE_MODE);
 	int enable = touchpad_should_enable();
 
+	CPRINTS("%s: enabled=%d enable=%d", __func__, enabled, enable);
 	if (enabled == enable)
 		return;
 
 	if (enable)
 		st_tp_start_scan();
-	else
+	else {
+		CPRINTS("%s: stop scan", __func__);
 		st_tp_stop_scan();
+	}
 }
 
 static void touchpad_read_idle_count(void)
@@ -1307,6 +1312,7 @@ void touchpad_task(void *u)
 			tp_control = TP_CONTROL_SHALL_RESET;
 			st_tp_init();
 		} else if (tp_control & TP_CONTROL_SHALL_HALT) {
+			CPRINTS("shall halt");
 			tp_control = 0;
 			st_tp_stop_scan();
 		}
