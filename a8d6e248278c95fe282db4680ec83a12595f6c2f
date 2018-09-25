@@ -16,6 +16,24 @@
       "revId": "a8d6e248278c95fe282db4680ec83a12595f6c2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af883b6_715e23bb",
+        "filename": "chip/npcx/i2c_over_lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-09-25T21:04:14Z",
+      "side": 1,
+      "message": "I am calling i2c_hid_process from common/i2c_over_lpc_common.c.\nI used a static variable, npcx_iol_msg. The implementation may change if the i2c message can be very big, but it does not matter for i2c_hid_process().",
+      "parentUuid": "202b3265_431e1e98",
+      "revId": "a8d6e248278c95fe282db4680ec83a12595f6c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
