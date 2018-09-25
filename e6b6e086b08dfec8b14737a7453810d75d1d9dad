@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70e28030_b0ec4132",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-25T16:45:49Z",
+      "side": 1,
+      "message": "Why use PD_T_DEBOUNCE?",
+      "range": {
+        "startLine": 1594,
+        "startChar": 21,
+        "endLine": 1594,
+        "endChar": 34
+      },
+      "revId": "e6b6e086b08dfec8b14737a7453810d75d1d9dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
