@@ -22,6 +22,30 @@
       "revId": "7e62b12b27c796f66efe4d50ab8e8ecf058342ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b3149c7_8a6acd01",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-09-25T03:14:08Z",
+      "side": 1,
+      "message": "Is this ok? \n\nIt looks like this is used in place of EC_ERROR_ACCESS_DENIED as part of ccd, so hopefully sensible - if not I\u0027ll add VENDOR_RC_ACCESS_DENIED",
+      "parentUuid": "dcd1937e_4a481cb6",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 15
+      },
+      "revId": "7e62b12b27c796f66efe4d50ab8e8ecf058342ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
