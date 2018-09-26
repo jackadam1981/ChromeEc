@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7895e673_649565fd",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T15:05:17Z",
+      "side": 1,
+      "message": "What do you think about switching the order of these statements? If we started using the flag as the cache value, then we would want it to be updated before we called usb_charger_vbus_change\n\nAlso tcpci_tcpc_alert always calls usb_charger_vbus_change (even if vbus didn\u0027t actually change)",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "c419dc7a9bbea34e5ea7685923c1e3db68a627db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
