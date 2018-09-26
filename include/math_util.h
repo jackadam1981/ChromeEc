@@ -68,10 +68,7 @@ static inline fp_t fp_mul(fp_t a, fp_t b)
 /**
  * Division - return (a / b)
  */
-static inline fp_t fp_div(fp_t a, fp_t b)
-{
-	return (fp_t)(((fp_inter_t)a << FP_BITS) / b);
-}
+fp_t fp_div(fp_t a, fp_t b);
 #endif
 
 /**
