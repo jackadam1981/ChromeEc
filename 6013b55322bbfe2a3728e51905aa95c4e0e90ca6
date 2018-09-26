@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6937c4f_835ca93e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-26T19:58:53Z",
+      "side": 1,
+      "message": "Can do",
+      "parentUuid": "251de0d7_4f0fa461",
+      "range": {
+        "startLine": 353,
+        "startChar": 36,
+        "endLine": 353,
+        "endChar": 43
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28a4a897_ee0337a8",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-26T19:28:57Z",
       "side": 1,
       "message": "should we only wait if we changed to this value (i.e. we weren\u0027t SNK_TX_NG before)",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 13
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ff7bf5_b8271c9c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-26T19:58:53Z",
+      "side": 1,
+      "message": "Yes, we only need to wait after initially changing Rp.  With the way the code is currently set up, we *should* only be calling this when we start an AMS, and the after it\u0027s complete we\u0027ll transition back into the ready state before we start another AMS.  \n\nIf we want to be extra safe, we could add a CC check before this point in sink_can_xmit().",
+      "parentUuid": "28a4a897_ee0337a8",
       "range": {
         "startLine": 360,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "18144a1b_54d6c4e7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-26T19:58:53Z",
+      "side": 1,
+      "message": "For the specific case of a PR_SWAP, we should be setting our CC to Rd, correct? \n\nI definitely understand your unease here though.  If, for example, we ended up in a scenario where we started an AMS and never transitioned out of/back into our ready state then we could inadvertently leave NG set and block all sink attempts at starting an AMS.  I checked the code and I don\u0027t believe we have any messages that currently do this (with the exception of ping, which isn\u0027t listed as an AMS anywhere I can find).\n\nIt does occur to me that we should probably be setting SINK_TX_OK when an AMS start message send fails.  I\u0027ll work on that.",
+      "parentUuid": "e2a11959_e2aae672",
+      "range": {
+        "startLine": 672,
+        "startChar": 3,
+        "endLine": 672,
+        "endChar": 35
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46bfcfec_8e78e0fc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-09-26T19:28:57Z",
       "side": 1,
       "message": "let\u0027s create a define for this 0\n\nmaybe AMS_START and NOT_AMS_START",
+      "range": {
+        "startLine": 923,
+        "startChar": 66,
+        "endLine": 923,
+        "endChar": 68
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a268053_69c4a6d1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-26T19:58:53Z",
+      "side": 1,
+      "message": "Sounds good.  I\u0027m not sure about NOT_AMS_START but I\u0027m blanking on a smoother phrasing for it right now",
+      "parentUuid": "46bfcfec_8e78e0fc",
       "range": {
         "startLine": 923,
         "startChar": 66,
