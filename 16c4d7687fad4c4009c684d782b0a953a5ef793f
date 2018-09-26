@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d6862737_7c178419",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-09-26T06:51:40Z",
+      "side": 1,
+      "message": "Moreover, do you check the status by asserting battery disconnection pin?",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "16c4d7687fad4c4009c684d782b0a953a5ef793f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca7e4e49_cdfb063e",
         "filename": "board/rammus/battery.c",
         "patchSetId": 3
