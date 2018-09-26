@@ -14,6 +14,7 @@
 #include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
+#include "ite_sync.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "i2cs.h"
@@ -639,6 +640,7 @@ static void board_init(void)
 	init_pmu();
 	reset_wake_logic();
 	init_trng();
+	maybe_trigger_ite_sync();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
