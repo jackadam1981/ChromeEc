@@ -201,11 +201,6 @@ static struct pd_protocol {
 	uint32_t dev_rw_hash[PD_RW_HASH_SIZE/4];
 	enum ec_current_image current_image;
 #ifdef CONFIG_USB_PD_REV30
-	/* PD Collision avoidance buffer */
-	uint16_t ca_buffered;
-	uint16_t ca_header;
-	uint32_t ca_buffer[PDO_MAX_OBJECTS];
-	enum tcpm_transmit_type ca_type;
 	/* protocol revision */
 	uint8_t rev;
 #endif
@@ -353,6 +348,18 @@ static void set_vconn(int port, int enable)
 #endif
 }
 #endif /* defined(CONFIG_USBC_VCONN) */
+
+#ifdef CONFIG_USB_PD_REV30
+static void sink_can_xmit(int port, int rp)
+{
+	tcpm_select_rp_value(port, rp);
+	tcpm_set_cc(port, TYPEC_CC_RP);
+
+	/* We must wait tSinkTx before sending a message */
+	if (rp == SINK_TX_NG)
+		msleep(16);
+}
+#endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 
@@ -657,6 +664,15 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 	}
 
+#ifdef CONFIG_USB_PD_REV30
+	/* Upon entering SRC_READY, it is safe for the sink to transmit */
+	if (next_state == PD_STATE_SRC_READY) {
+		if (pd[port].rev == PD_REV30 &&
+			pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT)
+			sink_can_xmit(port, SINK_TX_OK);
+	}
+#endif
+
 #ifdef CONFIG_LOW_POWER_IDLE
 	/* If a PD device is attached then disable deep sleep */
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
@@ -682,19 +698,6 @@ static void inc_id(int port)
 	pd[port].msg_id = (pd[port].msg_id + 1) & PD_MESSAGE_ID_COUNT;
 }
 
-#ifdef CONFIG_USB_PD_REV30
-static void sink_can_xmit(int port, int rp)
-{
-	tcpm_select_rp_value(port, rp);
-	tcpm_set_cc(port, TYPEC_CC_RP);
-}
-
-static inline void pd_ca_reset(int port)
-{
-	pd[port].ca_buffered = 0;
-}
-#endif
-
 void pd_transmit_complete(int port, int status)
 {
 	if (status == TCPC_TX_COMPLETE_SUCCESS)
@@ -705,7 +708,7 @@ void pd_transmit_complete(int port, int status)
 }
 
 static int pd_transmit(int port, enum tcpm_transmit_type type,
-		       uint16_t header, const uint32_t *data)
+		       uint16_t header, const uint32_t *data, int ams_start)
 {
 	int evt;
 
@@ -716,21 +719,22 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	/* Source-coordinated collision avoidance */
 	/*
 	 * In order to avoid message collisions due to asynchronous Messaging
-	 * sent from the Sink, the Source sets Rp to SinkTxOk to indicate to
-	 * the Sink that it is ok to initiate an AMS. When the Source wishes
-	 * to initiate an AMS it sets Rp to SinkTxNG. When the Sink detects
-	 * that Rp is set to SinkTxOk it May initiate an AMS. When the Sink
-	 * detects that Rp is set to SinkTxNG it Shall Not initiate an AMS
-	 * and Shall only send Messages that are part of an AMS the Source has
-	 * initiated. Note that this restriction applies to SOP* AMS’s i.e.
-	 * for both Port to Port and Port to Cable Plug communications.
+	 * sent from the Sink, the Source sets Rp to SinkTxOk (3A) to indicate
+	 * to the Sink that it is ok to initiate an AMS. When the Source wishes
+	 * to initiate an AMS, it sets Rp to SinkTxNG (1.5A).
+	 * When the Sink detects that Rp is set to SinkTxOk, it May initiate an
+	 * AMS. When the Sink detects that Rp is set to SinkTxNG it Shall Not
+	 * initiate an AMS and Shall only send Messages that are part of an AMS
+	 * the Source has initiated.
+	 * Note that this restriction applies to SOP* AMS’s i.e. for both Port
+	 * to Port and Port to Cable Plug communications.
 	 *
 	 * This starts after an Explicit Contract is in place
 	 * PD R3 V1.1 Section 2.5.2.
 	 *
 	 * Note: a Sink can still send Hard Reset signaling at any time.
 	 */
-	if ((pd[port].rev == PD_REV30) &&
+	if ((pd[port].rev == PD_REV30) && ams_start &&
 		(pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT)) {
 		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			/*
@@ -749,18 +753,8 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 			if (cc1 == TYPEC_CC_VOLT_SNK_1_5 ||
 				cc2 == TYPEC_CC_VOLT_SNK_1_5) {
 				/* Sink can't transmit now. */
-				/* Check if message is already buffered. */
-				if (pd[port].ca_buffered)
-					return -1;
-
-				/* Buffer message and send later. */
-				pd[port].ca_type = type;
-				pd[port].ca_header = header;
-				memcpy(pd[port].ca_buffer,
-					data, sizeof(uint32_t) *
-					PD_HEADER_CNT(header));
-				pd[port].ca_buffered = 1;
-				return 1;
+				/* Return failure, pd_task can retry later */
+				return -1;
 			}
 		}
 	}
@@ -770,47 +764,12 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	/* Wait until TX is complete */
 	evt = task_wait_event_mask(PD_EVENT_TX, PD_T_TCPC_TX_TIMEOUT);
 
-#ifdef CONFIG_USB_PD_REV30
-	/*
-	 * If the source just completed a transmit, tell
-	 * the sink it can transmit if it wants to.
-	 */
-	if ((pd[port].rev == PD_REV30) &&
-			(pd[port].power_role == PD_ROLE_SOURCE) &&
-			(pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT)) {
-		sink_can_xmit(port, SINK_TX_OK);
-	}
-#endif
-
 	if (evt & TASK_EVENT_TIMER)
 		return -1;
 
 	/* TODO: give different error condition for failed vs discarded */
 	return pd[port].tx_status == TCPC_TX_COMPLETE_SUCCESS ? 1 : -1;
 }
-
-#ifdef CONFIG_USB_PD_REV30
-static void pd_ca_send_pending(int port)
-{
-	int cc1;
-	int cc2;
-
-	/* Check if a message has been buffered. */
-	if (!pd[port].ca_buffered)
-		return;
-
-	tcpm_get_cc(port, &cc1, &cc2);
-	if ((cc1 != TYPEC_CC_VOLT_SNK_1_5) &&
-			(cc2 != TYPEC_CC_VOLT_SNK_1_5))
-		if (pd_transmit(port, pd[port].ca_type,
-				pd[port].ca_header,
-				pd[port].ca_buffer) < 0)
-			return;
-
-	/* Message was sent, so free up the buffer. */
-	pd[port].ca_buffered = 0;
-}
-#endif
 
 static void pd_update_roles(int port)
 {
@@ -824,15 +783,34 @@ static int send_control(int port, int type)
 	uint16_t header = PD_HEADER(type, pd[port].power_role,
 				pd[port].data_role, pd[port].msg_id, 0,
 				pd_get_rev(port), 0);
+	/*
+	 * For PD 3.0, collision avoidance logic needs to know if this message
+	 * will begin a new Atomic Message Sequence (AMS)
+	 */
+	int ams_start = type == PD_CTRL_GOTO_MIN || type == PD_CTRL_PR_SWAP ||
+			type == PD_CTRL_FR_SWAP  || type == PD_CTRL_DR_SWAP ||
+			type == PD_CTRL_VCONN_SWAP ||
+			type == PD_CTRL_GET_STATUS ||
+			type == PD_CTRL_GET_SINK_CAP ||
+			type == PD_CTRL_GET_PPS_STATUS ||
+			type == PD_CTRL_GET_SOURCE_CAP ||
+			type == PD_CTRL_GET_COUNTRY_CODES ||
+			type == PD_CTRL_GET_SOURCE_CAP_EXT;
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, NULL);
+
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, NULL, ams_start);
 	if (debug_level >= 2)
 		CPRINTF("C%d CTRL[%d]>%d\n", port, type, bit_len);
 
 	return bit_len;
 }
 
-static int send_source_cap(int port)
+/*
+ * Note: Source capabilities may either be in an existing AMS (ex. as a
+ * response to Get_Source_Cap), or the beginning of an AMS for a power
+ * negotiation.
+ */
+static int send_source_cap(int port, int ams_start)
 {
 	int bit_len;
 #if defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP) || \
@@ -855,7 +833,7 @@ static int send_source_cap(int port)
 			pd[port].data_role, pd[port].msg_id, src_pdo_cnt,
 			pd_get_rev(port), 0);
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, src_pdo);
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, src_pdo, ams_start);
 	if (debug_level >= 2)
 		CPRINTF("C%d srcCAP>%d\n", port, bit_len);
 
@@ -942,7 +920,7 @@ static int send_battery_cap(int port, uint32_t *payload)
 		}
 	}
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, (uint32_t *)msg);
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, (uint32_t *)msg, 0);
 	if (debug_level >= 2)
 		CPRINTF("C%d batCap>%d\n", port, bit_len);
 	return bit_len;
@@ -1009,7 +987,7 @@ static int send_battery_status(int port,  uint32_t *payload)
 		msg = BSDO_CAP(BSDO_CAP_UNKNOWN);
 	}
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &msg);
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &msg, 0);
 	if (debug_level >= 2)
 		CPRINTF("C%d batStat>%d\n", port, bit_len);
 
@@ -1025,7 +1003,7 @@ static void send_sink_cap(int port)
 			pd[port].data_role, pd[port].msg_id, pd_snk_pdo_cnt,
 			pd_get_rev(port), 0);
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo);
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo, 0);
 	if (debug_level >= 2)
 		CPRINTF("C%d snkCAP>%d\n", port, bit_len);
 }
@@ -1037,7 +1015,8 @@ static int send_request(int port, uint32_t rdo)
 			pd[port].data_role, pd[port].msg_id, 1,
 			pd_get_rev(port), 0);
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &rdo);
+	/* Note: ams_start will need to be 1 if ever used for PPS keep alive */
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &rdo, 0);
 	if (debug_level >= 2)
 		CPRINTF("C%d REQ>%d\n", port, bit_len);
 
@@ -1056,7 +1035,7 @@ static int send_bist_cmd(int port)
 			pd[port].data_role, pd[port].msg_id, 1,
 			pd_get_rev(port), 0);
 
-	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &bdo);
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &bdo, 1);
 	CPRINTF("C%d BIST>%d\n", port, bit_len);
 
 	return bit_len;
@@ -1089,6 +1068,12 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 			return;
 		} else {
 			pd[port].vdm_state = VDM_STATE_DONE;
+#ifdef CONFIG_USB_PD_REV30
+			if (pd[port].rev == PD_REV30 &&
+			    pd[port].power_role == PD_ROLE_SOURCE &&
+			    pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT)
+				sink_can_xmit(port, SINK_TX_OK);
+#endif
 		}
 	}
 
@@ -1165,7 +1150,6 @@ void pd_execute_hard_reset(int port)
 
 #ifdef CONFIG_USB_PD_REV30
 	pd[port].rev = PD_REV30;
-	pd_ca_reset(port);
 #endif
 	/*
 	 * Fake set last state to hard reset to make sure that the next
@@ -1409,15 +1393,6 @@ static void handle_data_request(int port, uint16_t head,
 				pd_update_saved_port_flags(
 					port, PD_BBRMFLG_EXPLICIT_CONTRACT, 1);
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
-#ifdef CONFIG_USB_PD_REV30
-				/*
-				 * Start Source-coordinated collision
-				 * avoidance
-				 */
-				if (pd[port].rev == PD_REV30 &&
-					pd[port].power_role == PD_ROLE_SOURCE)
-					sink_can_xmit(port, SINK_TX_OK);
-#endif
 				pd[port].requested_idx = RDO_POS(payload[0]);
 				set_state(port, PD_STATE_SRC_ACCEPTED);
 				return;
@@ -1437,7 +1412,7 @@ static void handle_data_request(int port, uint16_t head,
 			if ((payload[0] >> 28) == 5) {
 				/* bist data object mode is 2 */
 				pd_transmit(port, TCPC_TX_BIST_MODE_2, 0,
-					    NULL);
+					    NULL, 0);
 				/* Set to appropriate port disconnected state */
 				set_state(port, DUAL_ROLE_IF_ELSE(port,
 						PD_STATE_SNK_DISCONNECTED,
@@ -1537,7 +1512,7 @@ static void handle_ctrl_request(int port, uint16_t head,
 		if (pd[port].task_state == PD_STATE_SRC_READY)
 			set_state(port, PD_STATE_SRC_DISCOVERY);
 		else {
-			res = send_source_cap(port);
+			res = send_source_cap(port, 0);
 			if ((res >= 0) &&
 			    (pd[port].task_state == PD_STATE_SRC_DISCOVERY))
 				set_state(port, PD_STATE_SRC_NEGOCIATE);
@@ -1945,7 +1920,7 @@ static void pd_vdm_send_state_machine(int port)
 				   (int)pd[port].vdo_count,
 				   pd_get_rev(port), 0);
 		res = pd_transmit(port, TCPC_TX_SOP, header,
-				  pd[port].vdo_data);
+				  pd[port].vdo_data, 1);
 		if (res < 0) {
 			pd[port].vdm_state = VDM_STATE_ERR_SEND;
 		} else {
@@ -2497,7 +2472,6 @@ void pd_task(void *u)
 #ifdef CONFIG_USB_PD_REV30
 	/* Set Revision to highest */
 	pd[port].rev = PD_REV30;
-	pd_ca_reset(port);
 #endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -2594,10 +2568,6 @@ void pd_task(void *u)
 #endif
 
 	while (1) {
-#ifdef CONFIG_USB_PD_REV30
-		/* send any pending messages */
-		pd_ca_send_pending(port);
-#endif
 		/* process VDM messages last */
 		pd_vdm_send_state_machine(port);
 
@@ -2607,7 +2577,7 @@ void pd_task(void *u)
 			/* cut the power */
 			pd_execute_hard_reset(port);
 			/* notify the other side of the issue */
-			pd_transmit(port, TCPC_TX_HARD_RESET, 0, NULL);
+			pd_transmit(port, TCPC_TX_HARD_RESET, 0, NULL, 1);
 		}
 
 		/* wait for next event/packet or timeout expiration */
@@ -2945,7 +2915,7 @@ void pd_task(void *u)
 			/* Send source cap some minimum number of times */
 			if (caps_count < PD_CAPS_COUNT) {
 				/* Query capabilities of the other side */
-				res = send_source_cap(port);
+				res = send_source_cap(port, 1);
 				/* packet was acked => PD capable device) */
 				if (res >= 0) {
 					set_state(port,
@@ -3016,7 +2986,7 @@ void pd_task(void *u)
 
 			/* Send updated source capabilities to our partner */
 			if (pd[port].flags & PD_FLAGS_UPDATE_SRC_CAPS) {
-				res = send_source_cap(port);
+				res = send_source_cap(port, 1);
 				if (res >= 0) {
 					set_state(port,
 						  PD_STATE_SRC_NEGOCIATE);
@@ -3737,7 +3707,7 @@ void pd_task(void *u)
 			/* try sending hard reset until it succeeds */
 			if (!hard_reset_sent) {
 				if (pd_transmit(port, TCPC_TX_HARD_RESET,
-						0, NULL) < 0) {
+						0, NULL, 1) < 0) {
 					timeout = 10*MSEC;
 					break;
 				}
@@ -3784,7 +3754,7 @@ void pd_task(void *u)
 						PD_STATE_SRC_DISCONNECTED));
 			break;
 		case PD_STATE_BIST_TX:
-			pd_transmit(port, TCPC_TX_BIST_MODE_2, 0, NULL);
+			pd_transmit(port, TCPC_TX_BIST_MODE_2, 0, NULL, 1);
 			/* Delay at least enough to finish sending BIST */
 			timeout = PD_T_BIST_TRANSMIT + 20*MSEC;
 			/* Set to appropriate port disconnected state */
