@@ -26,6 +26,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "mkbp_event.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -390,8 +391,17 @@ void board_hibernate(void)
 		;
 }
 
+static int mkbp_uses_gpio(void)
+{
+	return (board_get_version() & 0x2) == 0x2;
+}
+
 static void board_init(void)
 {
+	set_mkbp_event_notifier(mkbp_uses_gpio() ?
+				mkbp_event_notifier_gpio :
+				mkbp_event_notifier_host);
+
 	/* Enable USB Type-C interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
