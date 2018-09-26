@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cd062bc_33789192",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T21:15:46Z",
+      "side": 1,
+      "message": "let\u0027s pull this out into a constant in usb_pd.h\n\nPD_T_SINK_TX or something that fits with the style there",
+      "range": {
+        "startLine": 366,
+        "startChar": 9,
+        "endLine": 366,
+        "endChar": 11
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552aebdf_60c6faa9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T21:15:46Z",
+      "side": 1,
+      "message": "\"ams will need to be AMS_START\" ...",
+      "range": {
+        "startLine": 1041,
+        "startChar": 10,
+        "endLine": 1041,
+        "endChar": 38
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b210eb4_89557813",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T21:15:46Z",
+      "side": 1,
+      "message": "AMS enum here please",
+      "range": {
+        "startLine": 1538,
+        "startChar": 31,
+        "endLine": 1538,
+        "endChar": 32
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40078bc5_381f1f2a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2942,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T21:15:46Z",
+      "side": 1,
+      "message": "AMS here too",
+      "range": {
+        "startLine": 2942,
+        "startChar": 32,
+        "endLine": 2942,
+        "endChar": 33
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac2483f_a36d0924",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T21:15:46Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 3013,
+        "startChar": 32,
+        "endLine": 3013,
+        "endChar": 33
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d24f361_65877f4e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T21:15:46Z",
+      "side": 1,
+      "message": "this looks like a good change, but it almost belongs in another CL",
+      "range": {
+        "startLine": 3027,
+        "startChar": 5,
+        "endLine": 3033,
+        "endChar": 6
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28950bd_10d6786d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3738,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T21:15:46Z",
+      "side": 1,
+      "message": "does a hard reset have to reset AMS collision detection rules? I thought it was an exception",
+      "range": {
+        "startLine": 3738,
+        "startChar": 15,
+        "endLine": 3738,
+        "endChar": 24
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
