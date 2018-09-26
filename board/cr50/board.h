@@ -379,4 +379,13 @@ enum nvmem_users {
 #ifndef CONFIG_RMA_AUTH_USE_P256
 #define CONFIG_CURVE25519
 #endif
+
+#define CONFIG_CCD_ITE_PROGRAMMING
+
+/* Allowed read/write count for USB over I2C */
+#undef CONFIG_USB_I2C_MAX_WRITE_COUNT
+#undef CONFIG_USB_I2C_MAX_READ_COUNT
+#define CONFIG_USB_I2C_MAX_WRITE_COUNT 508
+#define CONFIG_USB_I2C_MAX_READ_COUNT 506
+
 #endif /* __CROS_EC_BOARD_H */
