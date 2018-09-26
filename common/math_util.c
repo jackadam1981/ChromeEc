@@ -6,6 +6,7 @@
 /* Common math functions. */
 
 #include "common.h"
+#include "console.h"
 #include "math.h"
 #include "math_util.h"
 #include "util.h"
@@ -129,6 +130,29 @@ static int int_sqrtf(fp_inter_t x)
 			return r;
 		}
 	}
+}
+
+/**
+ * Division which handles divided-by-zero - return (a / b)
+ */
+fp_t fp_div_dbz(fp_t a, fp_t b)
+{
+	/*
+	 * Fixed-point numbers has limited value range.  It is very easy to
+	 * be trapped in a divided-by-zero error especially when doing
+	 * magnetometer calculation.  We only use fixed-point operations for
+	 * motion sensors now, so the precision and correctness for these
+	 * operations is not the most important point to consider.  Here
+	 * we just let divided-by-zero result becomes INT32_MAX, to prevent
+	 * the system failure.
+	 */
+	if (b == FLOAT_TO_FP(0)) {
+		cprints(CC_ACCEL, "Fixed-point divied-by-zero occurs. Returns "
+				  "INT32_MAX.");
+		return INT32_MAX;
+	}
+
+	return fp_div(a, b);
 }
 
 fp_t fp_sqrtf(fp_t x)

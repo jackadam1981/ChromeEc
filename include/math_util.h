@@ -56,6 +56,12 @@ static inline fp_t fp_div(fp_t a, fp_t b)
 {
 	return a / b;
 }
+
+/* Don't handle divided-by-zero with FPU, since this should be rare. */
+static inline fp_t fp_div_dbz(fp_t a, fp_t b)
+{
+	return fp_div(a, b);
+}
 #else
 /**
  * Multiplication - return (a * b)
@@ -72,6 +78,11 @@ static inline fp_t fp_div(fp_t a, fp_t b)
 {
 	return (fp_t)(((fp_inter_t)a << FP_BITS) / b);
 }
+
+/**
+ * Division which handles divided-by-zero - return (a / b)
+ */
+fp_t fp_div_dbz(fp_t a, fp_t b);
 #endif
 
 /**
