@@ -46,6 +46,30 @@
       "revId": "875a1a6b6d60577617542b5c1d698578471dffab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63be23f9_44a5dce8",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T14:13:53Z",
+      "side": 1,
+      "message": "I don\u0027t think it is worth having the REG32 macro everywhere; it is just noise.\n\nI didn\u0027t find many uses of ISH_IPC or ISH_UART in code yet; I would prefer if we updated those macros to also include the REG32 within their definition (in another CL).\n\nPlease see [0] for a pre-existing example from ISH code\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/8649d800a9dd9c23de199029b2db25827f687925/chip/ish/hpet.h#47",
+      "parentUuid": "e0036108_d29e5843",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 20
+      },
+      "revId": "875a1a6b6d60577617542b5c1d698578471dffab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
