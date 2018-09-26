@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "251de0d7_4f0fa461",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T19:28:57Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment this method saying we should use SINK_TX_OK pr SINK_TX_NG for the rp value",
+      "range": {
+        "startLine": 353,
+        "startChar": 36,
+        "endLine": 353,
+        "endChar": 43
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a4a897_ee0337a8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T19:28:57Z",
+      "side": 1,
+      "message": "should we only wait if we changed to this value (i.e. we weren\u0027t SNK_TX_NG before)",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 13
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a11959_e2aae672",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T19:28:57Z",
+      "side": 1,
+      "message": "This is definitely one of the exit conditions. I am a little nervous that we may not end an AMS this way and our cc lines are incorrect, maybe a PR_SWAP (since we will end in the SNK_READY state)?",
+      "range": {
+        "startLine": 672,
+        "startChar": 3,
+        "endLine": 672,
+        "endChar": 35
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46bfcfec_8e78e0fc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T19:28:57Z",
+      "side": 1,
+      "message": "let\u0027s create a define for this 0\n\nmaybe AMS_START and NOT_AMS_START",
+      "range": {
+        "startLine": 923,
+        "startChar": 66,
+        "endLine": 923,
+        "endChar": 68
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
