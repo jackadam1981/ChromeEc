@@ -3695,6 +3695,12 @@
 #error Include config.h instead of board.h!
 #endif
 
+/*
+ * Define this to enable ITE EC programming by CCD using the INA i2c
+ * interface.
+ */
+#undef CONFIG_CCD_ITE_PROGRAMMING
+
 #include "config_chip.h"
 #include "board.h"
 
