@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ff1868bc_fdb516ef",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T20:27:38Z",
+      "side": 1,
+      "message": "Also, how does this interact with line 634?",
+      "parentUuid": "18144a1b_54d6c4e7",
+      "range": {
+        "startLine": 672,
+        "startChar": 3,
+        "endLine": 672,
+        "endChar": 35
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46bfcfec_8e78e0fc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Sounds good.  I\u0027m not sure about NOT_AMS_START but I\u0027m blanking on a smoother phrasing for it right now",
       "parentUuid": "46bfcfec_8e78e0fc",
+      "range": {
+        "startLine": 923,
+        "startChar": 66,
+        "endLine": 923,
+        "endChar": 68
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f3e561_ea17cfae",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T20:27:38Z",
+      "side": 1,
+      "message": "agreed, you\u0027ll come up with something better. Thanks the hard part!",
+      "parentUuid": "7a268053_69c4a6d1",
       "range": {
         "startLine": 923,
         "startChar": 66,
