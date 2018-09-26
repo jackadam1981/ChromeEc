@@ -355,6 +355,7 @@ static int command_keepalive(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(keepalive, command_keepalive, "[enable | disable]",
 			"Enable CCD keepalive.  Prevents SBU sampling.");
 
+
 static void check_for_disconnect(void);
 DECLARE_DEFERRED(check_for_disconnect);
 static void check_for_disconnect(void)
