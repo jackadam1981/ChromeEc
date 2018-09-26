@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "835a0d05_ce2b772d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-26T23:10:01Z",
+      "side": 1,
+      "message": "Did you verify that other uses of MKBP work fine on nocturne? tablet mode switch, volume buttons, etc.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "6e241aebf9c4b9e2fd64ade14097942a8534d3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9777f56_29e13049",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-26T23:10:01Z",
+      "side": 1,
+      "message": "It might be better to split this CL into two:\n1. Common changes\n2. Nocturne specific changes",
+      "revId": "6e241aebf9c4b9e2fd64ade14097942a8534d3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
