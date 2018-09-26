@@ -555,7 +555,7 @@ static int config_i2c(struct ftdi_context *ftdi)
 
 static int send_special_waveform(struct ftdi_context *ftdi)
 {
-	int ret;
+	int ret, retry;
 	int i;
 	uint64_t *wave;
 	uint8_t release_lines[] = {SET_BITS_LOW, 0, 0};
@@ -622,8 +622,18 @@ static int send_special_waveform(struct ftdi_context *ftdi)
 		/* wait for PLL stable for 5ms (plus remaining USB transfers) */
 		usleep(10 * MSEC);
 
-		/* If we can talk to chip, then we can break the retry loop */
-		ret = check_chipid(ftdi);
+		if (spi_flash_follow_mode(ftdi, "enter follow mode") >= 0) {
+			spi_flash_follow_mode_exit(ftdi, "exit follow mode");
+			/*
+			 * If we can talk to chip, then we can break the retry
+			 * loop
+			 */
+			ret = check_chipid(ftdi);
+		} else {
+			if (!(++retry % 10))
+				printf("!please reset EC if flashing sequence"
+						" is not starting!\n");
+		}
 
 	} while (ret != 0);
 
@@ -1386,28 +1396,18 @@ int main(int argc, char **argv)
 	}
 
 	if (flags & FLAG_ERASE || output_filename) {
-
-		if (is8320dx) {
-			/*
-			 * Do Sector Erase  twice to avoid the watchdog
-			 * reset during flash
-			 * Erase first sector to prevent watchdog reset
-			 * from happening
-			 */
-			command_erase2(hnd, flash_size, 0, 1);
-			/* Call DBGR Rest to clear the EC lock status */
-			dbgr_reset(hnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
-			if (config_i2c(hnd) < 0)
-				goto terminate;
-
+		/* Call DBGR Rest to clear the EC lock status */
+		dbgr_reset(hnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
+		/*
+		 * Let EC to enter the flash follow mode ASAP after DBGR reset.
+		 * So EC will be stayed there forever and no more sequence.
+		 */
+		spi_flash_follow_mode(hnd, "stop EC after dbgr reset");
+		if (is8320dx)
 			/* Do Normal Erase Function */
 			command_erase2(hnd, flash_size, 0, 0);
-		} else {
+		else
 			command_erase(hnd, flash_size, 0);
-			/* Call DBGR Rest to clear the EC lock status */
-			dbgr_reset(hnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
-		}
-
 	}
 
 	if (output_filename) {
