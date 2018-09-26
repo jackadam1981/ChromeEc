@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "85741404_361d8ed2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-26T21:37:07Z",
+      "side": 1,
+      "message": "Any other code paths you can think of that would leave you concerned about our exit from NG?",
+      "parentUuid": "074ec275_bccecacd",
+      "range": {
+        "startLine": 672,
+        "startChar": 3,
+        "endLine": 672,
+        "endChar": 35
+      },
+      "revId": "6013b55322bbfe2a3728e51905aa95c4e0e90ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46bfcfec_8e78e0fc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
