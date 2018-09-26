@@ -19,6 +19,7 @@
 #include "sha256.h"
 #include "spi.h"
 #include "system.h"
+#include "registers.h"
 #include "task.h"
 #include "trng.h"
 #include "timer.h"
@@ -211,6 +212,12 @@ static void fp_process_finger(void)
 	if (!res) {
 		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
 
+		STM32_PWR_D3CR |= (3 << 14);
+		while (!(STM32_PWR_D3CR & (1 << 13)))
+			;
+		ccprintf("dn: PWR_D3CR %08x\n", STM32_PWR_D3CR);
+		cflush();
+
 		/* Clean up SPI before clocking up to avoid hang on the dsb
 		 * in dma_go. Ignore the return value to let the WDT reboot
 		 * the MCU (and avoid getting trapped in the loop).
@@ -232,6 +239,13 @@ static void fp_process_finger(void)
 
 		/* go back to lower power mode */
 		clock_enable_module(MODULE_FAST_CPU, 0);
+
+		STM32_PWR_D3CR &= ~(3 << 14);
+		STM32_PWR_D3CR |= (1 << 14);
+		while (!(STM32_PWR_D3CR & (1 << 13)))
+			;
+		ccprintf("dn: PWR_D3CR %08x\n", STM32_PWR_D3CR);
+		cflush();
 	} else {
 		timestamps_invalid |= FPSTATS_CAPTURE_INV;
 	}
