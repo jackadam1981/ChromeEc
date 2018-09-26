@@ -46,6 +46,30 @@
       "revId": "c419dc7a9bbea34e5ea7685923c1e3db68a627db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7f52a60_09354f8b",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T16:43:00Z",
+      "side": 1,
+      "message": "We would need a local variable if we changed the order. Also, why can we just call usb_charger_vbus_changed every time (like the TCPC code does).\n\nthinking about this more, the usb_charger_vbus_change should probably do the change detection so all callers don\u0027t have to re implement the change detection",
+      "parentUuid": "5e8b8318_fe61d57d",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "c419dc7a9bbea34e5ea7685923c1e3db68a627db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
