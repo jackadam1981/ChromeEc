@@ -117,8 +117,6 @@ int system_is_reboot_warm(void)
 
 void chip_pre_init(void)
 {
-	/* bit4, enable debug mode through SMBus */
-	IT83XX_SMB_SLVISELR &= ~(1 << 4);
 }
 
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */
@@ -185,11 +183,12 @@ void system_reset(int flags)
 	}
 
 	/*
-	 * bit4, disable debug mode through SMBus.
+	 * bit7, disable debug mode through SMBus temporarily, so EC is able to
+	 * recognize special waveform immediately after soft reset.
 	 * If we are in debug mode, we need disable it before triggering
 	 * a soft reset or reset will fail.
 	 */
-	IT83XX_SMB_SLVISELR |= (1 << 4);
+	IT83XX_SMB_SLVISELR |= (1 << 7);
 
 	/* bit0: enable watchdog hardware reset. */
 #ifdef IT83XX_ETWD_HW_RESET_SUPPORT
