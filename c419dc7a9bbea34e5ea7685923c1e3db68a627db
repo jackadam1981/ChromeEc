@@ -22,6 +22,30 @@
       "revId": "c419dc7a9bbea34e5ea7685923c1e3db68a627db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e8b8318_fe61d57d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-26T16:04:41Z",
+      "side": 1,
+      "message": "If the order is changed, then VBUS changes can\u0027t be determine. This check is intended to functionally similar to the sn5s330 which has an interrupt for VBUS status change, and that\u0027s used as the trigger to call usb_charger_vbus_change()",
+      "parentUuid": "7895e673_649565fd",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "c419dc7a9bbea34e5ea7685923c1e3db68a627db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
