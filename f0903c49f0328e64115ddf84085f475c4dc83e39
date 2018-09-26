@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5fe8f99_fbaa27fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T14:25:39Z",
+      "side": 1,
+      "message": "I don\u0027t think anyone is using another variant of this family, can we name is MAX14637? (I know the ...6 was used but it didn\u0027t work)",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "f0903c49f0328e64115ddf84085f475c4dc83e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf41f93_db345faa",
+        "filename": "driver/bc12/max1463x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T14:25:39Z",
+      "side": 1,
+      "message": "CC_USBCHARGE if probably better, right?",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "f0903c49f0328e64115ddf84085f475c4dc83e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b713bd_d9058067",
+        "filename": "driver/bc12/max1463x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T14:25:39Z",
+      "side": 1,
+      "message": "we should be able to use pd_is_vbus_present(port) here instead right?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "f0903c49f0328e64115ddf84085f475c4dc83e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd254df8_b220c675",
+        "filename": "driver/bc12/max1463x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-26T14:25:39Z",
+      "side": 1,
+      "message": "Octopus will want to use this driver (since it actually uses the MAX14637) and it also uses the power rail code. Can you add it here too?",
+      "revId": "f0903c49f0328e64115ddf84085f475c4dc83e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
