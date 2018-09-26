@@ -17,6 +17,12 @@
 
 static uint32_t events;
 uint32_t mkbp_last_event_time;
+static mkbp_event_notifier mkbp_notifier;
+
+void set_mkbp_event_notifier(mkbp_event_notifier f)
+{
+	mkbp_notifier = f;
+}
 
 static void set_event(uint8_t event_type)
 {
@@ -33,6 +39,19 @@ static int event_is_set(uint8_t event_type)
 	return events & (1 << event_type);
 }
 
+#ifndef CONFIG_MKBP_USE_HOST_EVENT
+void mkbp_event_notifier_gpio(int active)
+{
+	gpio_set_level(GPIO_EC_INT_L, !active);
+}
+#endif
+
+void mkbp_event_notifier_host(int active)
+{
+	if (active)
+		host_set_single_event(EC_HOST_EVENT_MKBP);
+}
+
 /**
  * Assert host keyboard interrupt line.
  */
@@ -45,13 +64,15 @@ static void set_host_interrupt(int active)
 	if (old_active == 0 && active == 1)
 		mkbp_last_event_time = __hw_clock_source_read();
 
-	/* interrupt host by using active low EC_INT signal */
+	if (mkbp_notifier) {
+		mkbp_notifier(active);
+	} else {
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
-	if (active)
-		host_set_single_event(EC_HOST_EVENT_MKBP);
+		mkbp_event_notifier_host(active);
 #else
-	gpio_set_level(GPIO_EC_INT_L, !active);
+		mkbp_event_notifier_gpio(active);
 #endif
+	}
 
 	old_active = active;
 	interrupt_enable();

@@ -28,6 +28,23 @@ extern uint32_t mkbp_last_event_time;
  */
 int mkbp_send_event(uint8_t event_type);
 
+/**
+ * Enables dynamic decision on how to route MKBP events to the AP.
+ *
+ * Some boards may need different mechanisms to report a new event to
+ * the AP, depending on HW / SW configuration that can only be dynamically
+ * discovered at runtime. The host_mkbp_event_helper is called in
+ * mkbp_event.c:set_host_interrupt in order to enable this dynamic reporting.
+ *
+ * If no helper is configured, the decision is predicated upon whether
+ * CONFIG_MKBP_USE_HOST_EVENT is defined.
+ */
+typedef void(*mkbp_event_notifier)(int active);
+void set_mkbp_event_notifier(mkbp_event_notifier f);
+
+void mkbp_event_notifier_gpio(int active);
+void mkbp_event_notifier_host(int active);
+
 /*
  * The struct to store the event source definition.  The get_data routine is
  * responsible for returning the event data when queried by the AP.  The
