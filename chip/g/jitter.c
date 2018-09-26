@@ -11,36 +11,49 @@
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
-void init_jittery_clock(int highsec)
+void init_jittery_clock_locking_optional(int highsec, int enable,
+					 int lock_required)
 {
-	unsigned trimfast = GR_FUSE(RC_JTR_OSC60_CC_TRIM);
-	unsigned trim48 = GR_FUSE(RC_JTR_OSC48_CC_TRIM);
-	unsigned delta = (trim48 - trimfast);
-	/* For metastability reasons, avoid clk_jtr ~= clk_timer, make
-	 * a keepout region around 24MHz of about 0.75MHz, about 3/16 of the
-	 * the delta from trimfast and trim48 */
-	unsigned skiplow = (trim48 << 4) - (delta * 6);
-	unsigned skiphigh = (trim48 << 4) + (delta * 6);
-	unsigned setting = trimfast << 4;
-	unsigned stepx16;
-	unsigned bankval;
-	int bank;
 
-	if (highsec)
-		stepx16 = (delta * 7) >> 1;
-	else
-		stepx16 = 2 * (trim48 - trimfast);
+	if (runlevel_is_high()) {
+		uint32_t trimfast = GR_FUSE(RC_JTR_OSC60_CC_TRIM);
+		uint32_t trim48 = GR_FUSE(RC_JTR_OSC48_CC_TRIM);
+		uint32_t delta = (trim48 - trimfast);
+		/*
+		 * For metastability reasons, avoid clk_jtr ~= clk_timer, make
+		 * a keepout region around 24MHz of about 0.75MHz, about 3/16
+		 * of the the delta from trimfast and trim48
+		 */
+		uint32_t skiplow = (trim48 << 4) - (delta * 6);
+		uint32_t skiphigh = (trim48 << 4) + (delta * 6);
+		uint32_t setting = trimfast << 4;
+		uint32_t stepx16;
+		uint32_t bankval;
+		int bank;
 
-	for (bank = 0; bank < 16; bank++) {
-		/* saturate at 0xff */
-		bankval = (setting > 0xfff) ? 0xff : (setting >> 4);
+		if (highsec)
+			stepx16 = (delta * 7) >> 1;
+		else
+			stepx16 = 2 * (trim48 - trimfast);
 
-		if (runlevel_is_high())
+		for (bank = 0; bank < 16; bank++) {
+
+			if (!enable) {
+				GR_XO_JTR_JITTERY_TRIM_BANK(bank) = trim48;
+				continue;
+			}
+			/* saturate at 0xff */
+			bankval = (setting > 0xfff) ? 0xff : (setting >> 4);
+
 			GR_XO_JTR_JITTERY_TRIM_BANK(bank) = bankval;
 
-		setting += stepx16;
-		if ((setting > skiplow) && (setting < skiphigh))
-			setting = skiphigh;
+			setting += stepx16;
+			if ((setting > skiplow) && (setting < skiphigh))
+				setting = skiphigh;
+		}
+	} else {
+		CPRINTS("%s: insufficient run level", __func__);
+
 	}
 
 	GWRITE_FIELD(XO, CLK_JTR_TRIM_CTRL, RC_COARSE_TRIM_SRC, 2);
@@ -49,11 +62,16 @@ void init_jittery_clock(int highsec)
 	GREG32(XO, CLK_JTR_JITTERY_TRIM_EN) = 1;
 	GREG32(XO, CLK_JTR_SYNC_CONTENTS) = 0;
 
-	/* Writing any value locks things until the next hard reboot */
-	/* crosbug.com/p/54916
-	   GREG32(XO, CFG_WR_EN) = 0;
-	   GREG32(XO, JTR_CTRL_EN) = 0;
-	*/
+	if (lock_required) {
+		/* Writing any value locks things until the next hard reboot */
+		GREG32(XO, CFG_WR_EN) = 0;
+		GREG32(XO, JTR_CTRL_EN) = 0;
+	}
+}
+
+void init_jittery_clock(int highsec)
+{
+	init_jittery_clock_locking_optional(highsec, 1, 1);
 }
 
 void init_sof_clock(void)

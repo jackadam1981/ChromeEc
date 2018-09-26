@@ -623,6 +623,8 @@ static void  check_board_id_mismatch(void)
 /* Initialize board. */
 static void board_init(void)
 {
+	int lock_jitter;
+
 #ifdef CR50_DEV
 	static enum ccd_state ccd_init_state = CCD_STATE_OPENED;
 #else
@@ -639,8 +641,6 @@ static void board_init(void)
 	init_pmu();
 	reset_wake_logic();
 	init_trng();
-	init_jittery_clock(1);
-	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
 	/* Initialize the persistent storage. */
@@ -658,6 +658,12 @@ static void board_init(void)
 
 	/* Load case-closed debugging config.  Must be after initvars(). */
 	ccd_config_init(ccd_init_state);
+
+	lock_jitter = !ccd_is_cap_enabled(CCD_CAP_EC_FLASH);
+
+	/* Do not lock jitter config if EC flash is enabled. */
+	init_jittery_clock_locking_optional(1, 1, lock_jitter);
+	init_runlevel(lock_jitter ? PERMISSION_MEDIUM : PERMISSION_HIGH);
 
 	system_update_rollback_mask_with_both_imgs();
 
