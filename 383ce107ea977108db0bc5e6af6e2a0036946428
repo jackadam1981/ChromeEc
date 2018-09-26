@@ -22,6 +22,30 @@
       "revId": "383ce107ea977108db0bc5e6af6e2a0036946428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104d2797_fa14fed5",
+        "filename": "chip/stm32/adc-stm32f3.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1177024
+      },
+      "writtenOn": "2018-09-26T22:50:48Z",
+      "side": 1,
+      "message": "It looks like it\u0027s there but it\u0027s bit 22 see [1] section 12.12.3 vs bit 30 in [2] section 12.12.3 I\u0027ll keep the ifdef, since I can\u0027t really test on HW.\nThat being said looking at the reference manual for the STM32F373 ([1]) it looks like it would be required, too. \n\nThanks for your review\n\n[1] https://www.st.com/content/ccc/resource/technical/document/reference_manual/fa/06/c7/15/3b/2a/4c/f1/DM00041563.pdf/files/DM00041563.pdf/jcr:content/translations/en.DM00041563.pdf\n[2]\nhttps://www.st.com/content/ccc/resource/technical/document/reference_manual/group0/4f/7b/2b/bd/04/b3/49/25/DM00180369/files/DM00180369.pdf/jcr:content/translations/en.DM00180369.pdf",
+      "parentUuid": "2961bca2_11aae6be",
+      "range": {
+        "startLine": 199,
+        "startChar": 39,
+        "endLine": 199,
+        "endChar": 60
+      },
+      "revId": "383ce107ea977108db0bc5e6af6e2a0036946428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
