@@ -10,6 +10,8 @@
 
 #include <stdint.h>
 
+#include "console.h"
+
 #ifdef CONFIG_FPU
 typedef float fp_t;
 typedef float fp_inter_t;
@@ -70,6 +72,21 @@ static inline fp_t fp_mul(fp_t a, fp_t b)
  */
 static inline fp_t fp_div(fp_t a, fp_t b)
 {
+	/*
+	 * Fixed-point numbers has limited value range.  It is very easy to
+	 * be trapped in a divided-by-zero error especially when doing
+	 * magnetometer calculation.  We only use fixed-point operations for
+	 * motion sensors now, so the precision and correctness for these
+	 * operations is not the most important point to consider.  Here
+	 * we just let divided-by-zero result becomes INT32_MAX, to prevent
+	 * the system failure.
+	 */
+	if (b == FLOAT_TO_FP(0)) {
+		ccprintf("Fixed-point divied-by-zero occurs. Returns "
+			 "INT32_MAX.\n");
+		return INT32_MAX;
+	}
+
 	return (fp_t)(((fp_inter_t)a << FP_BITS) / b);
 }
 #endif
