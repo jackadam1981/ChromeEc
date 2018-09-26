@@ -24,6 +24,8 @@
 #include "usb_isochronous.h"
 #include "util.h"
 
+#undef ENABLE_DEEP_SLEEP
+
 /* Console output macros */
 #define CC_TOUCHPAD CC_USB
 #define CPUTS(outstr) cputs(CC_TOUCHPAD, outstr)
@@ -532,6 +534,10 @@ static void enable_deep_sleep(int enable)
 {
 	uint8_t cmd[] = {0xFA, 0x20, 0x00, 0x00, 0x68, enable ? 0x0B : 0x08};
 
+#ifndef ENABLE_DEEP_SLEEP
+	if (enable)
+		return;
+#endif
 	spi_transaction(SPI, cmd, sizeof(cmd), NULL, 0);
 }
 
@@ -749,6 +755,8 @@ static void st_tp_init(void)
 	tp_control &= ~TP_CONTROL_RESETTING;
 
 	touchpad_power_control();
+	/* disable deep sleep */
+	enable_deep_sleep(0);
 }
 DECLARE_DEFERRED(st_tp_init);
 
