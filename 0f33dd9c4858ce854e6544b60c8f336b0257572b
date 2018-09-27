@@ -118,6 +118,30 @@
       "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215937fa_8dfe00c4",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-09-27T18:33:48Z",
+      "side": 1,
+      "message": "I can make 0 explicitly here. In register.h\nThe following code, I will make change in this way: \n/* ISH GPIO has only one port */\n#define ISH_GPIO_PORT_0 0                                \u003d\u003d\u003eremove this\n/* Chip-independent aliases for port base group */\n#define GPIO_0 ISH_GPIO_PORT_0                           \u003d\u003d\u003eremove this\n#define DUMMY_GPIO_BANK ISH_GPIO_PORT_0                  \u003d\u003d\u003e define as 0.\n\nIf it\u0027s OK, I will push new change. thanks.",
+      "parentUuid": "377781d2_e1587dbf",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
