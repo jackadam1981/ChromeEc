@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "06ff655d_d1d4e28a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T15:23:46Z",
+      "side": 1,
+      "message": "Oh, I just made a name up without looking, let\u0027s use the existing one especially if that is within the spec already",
+      "parentUuid": "6550a452_8b18169d",
+      "range": {
+        "startLine": 366,
+        "startChar": 9,
+        "endLine": 366,
+        "endChar": 11
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "552aebdf_60c6faa9",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -188,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "2d17c9fe_65f59eaa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T15:23:46Z",
+      "side": 1,
+      "message": "You could also pull this change into a parent CL.",
+      "parentUuid": "8a927e16_e8c628ee",
+      "range": {
+        "startLine": 3027,
+        "startChar": 5,
+        "endLine": 3033,
+        "endChar": 6
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d28950bd_10d6786d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -247,6 +295,30 @@
       "side": 1,
       "message": "Okay, found it in section 6.9: Note: A Sink can still send Hard Reset signaling at any time.\n\nFrom the source point of view, I believe we\u0027ll still want to set NG since it\u0027s listed as an AMS",
       "parentUuid": "c09a03f9_68ff2493",
+      "range": {
+        "startLine": 3738,
+        "startChar": 15,
+        "endLine": 3738,
+        "endChar": 24
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac78d435_b0969a6b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3738,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T15:23:46Z",
+      "side": 1,
+      "message": "if we are a sink here and we set this to AMS_START, then won\u0027t we fail to send the hard reset if the port partner (src) is pulling the CC line low?",
+      "parentUuid": "a8361166_a5ef2c14",
       "range": {
         "startLine": 3738,
         "startChar": 15,
