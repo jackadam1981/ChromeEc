@@ -22,6 +22,30 @@
       "revId": "3fb0c7d3cd9aeec8928a52874cc5b95679394607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f53082_b0f71e85",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-27T22:29:06Z",
+      "side": 1,
+      "message": "yay for a 2nd set of eyes. it morphed into something simpler.",
+      "parentUuid": "5facfb3a_df14e422",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "3fb0c7d3cd9aeec8928a52874cc5b95679394607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
