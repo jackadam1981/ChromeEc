@@ -14,6 +14,9 @@
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
 #define CONFIG_CMD_AP_RESET_LOG
 
+/* Audio */
+#define CONFIG_AUDIO_CODEC
+
 /*
  * By default, enable all console messages excepted event and HC:
  * The sensor stack is generating a lot of activity.
