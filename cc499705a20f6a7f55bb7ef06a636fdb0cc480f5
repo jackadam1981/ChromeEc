@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "8958c08d_a8d9e574",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-09-27T03:06:17Z",
+      "side": 1,
+      "message": "we may need to support a bit of kludge here.\ni think get_chip_info may get called with renew\u003d0 when we\ndon\u0027t know for sure that the chip is awake.\nsee tcpci_tcpm_init().",
+      "revId": "cc499705a20f6a7f55bb7ef06a636fdb0cc480f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c44b6d17_e6db41ab",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-09-27T03:06:17Z",
+      "side": 1,
+      "message": "ok, where does this code wake up the chip as noted in the\nupdated comment?  we do need a dummy read + 10ms delay for\nthe psXXXX before proceeding.",
+      "range": {
+        "startLine": 619,
+        "startChar": 9,
+        "endLine": 619,
+        "endChar": 20
+      },
+      "revId": "cc499705a20f6a7f55bb7ef06a636fdb0cc480f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5042b5f_4b4ec0da",
         "filename": "util/ectool.c",
         "patchSetId": 3
