@@ -70,6 +70,30 @@
       "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd5c928b_e2ea624e",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-27T21:33:15Z",
+      "side": 1,
+      "message": "Without this change as a whole, the higher priority tasks never do any work. I didn\u0027t see how else the hi-priority tasks would be woken up.\n\nWithout the portion within the ifdef, like I mentioned, the 87W charger doesn\u0027t work. Somehow the combination of the two does, but I don\u0027t really have the time to determine why.",
+      "parentUuid": "0f650dd6_961be669",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 6
+      },
+      "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
