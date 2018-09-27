@@ -22,6 +22,30 @@
       "revId": "173a6f4f9760e9ff411b8d783530e70d5b6d7b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d0f754_1203c0bc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-27T21:47:06Z",
+      "side": 1,
+      "message": "IIRC, it was toggling back and forth pretty quickly. I\u0027d need to go back and collect logs.",
+      "parentUuid": "cddef7d1_8d7b37a8",
+      "range": {
+        "startLine": 2474,
+        "startChar": 4,
+        "endLine": 2475,
+        "endChar": 19
+      },
+      "revId": "173a6f4f9760e9ff411b8d783530e70d5b6d7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
