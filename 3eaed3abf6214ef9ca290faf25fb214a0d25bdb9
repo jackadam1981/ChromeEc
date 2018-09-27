@@ -22,6 +22,30 @@
       "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae81282d_1cfcd5b3",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-27T06:07:54Z",
+      "side": 1,
+      "message": "I seem to; without it, we don\u0027t successfully charge w/ the Apple 87W.",
+      "parentUuid": "2e50d154_4f4842a0",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 6
+      },
+      "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
