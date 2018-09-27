@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5facfb3a_df14e422",
+        "filename": "board/nocturne/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-27T22:25:33Z",
+      "side": 1,
+      "message": "It\u0027s minor, but since you only care about ver \u003c 2 it seems like the switch is overkill here as opposed to\n\nif (board_get_version \u003c 2)\n         if(port \u003d\u003d 0)\n\nelse\n         ppc_set_sbu()",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 8
+      },
+      "revId": "3fb0c7d3cd9aeec8928a52874cc5b95679394607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
