@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cddef7d1_8d7b37a8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T21:43:38Z",
+      "side": 1,
+      "message": "why isn\u0027t your tcpc alert line de-asserting? it should be. Maybe it is related to my comment on CL:1247625",
+      "range": {
+        "startLine": 2474,
+        "startChar": 4,
+        "endLine": 2475,
+        "endChar": 19
+      },
+      "revId": "173a6f4f9760e9ff411b8d783530e70d5b6d7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
