@@ -48,6 +48,8 @@ static int st_tp_start_scan(void);
 static int st_tp_stop_scan(void);
 static int st_tp_update_system_state(int new_state, int mask);
 static void touchpad_power_control(void);
+static int write_hwreg_cmd32(uint32_t address, uint32_t data);
+static int write_hwreg_cmd8(uint32_t address, uint8_t data);
 
 /* Global variables */
 /*
@@ -716,9 +718,11 @@ static int st_tp_read_all_events(int suppress_error)
 static int st_tp_reset(void)
 {
 	int i, num_events, retry = 100;
-
+#if 0
 	board_touchpad_reset();
-
+#else
+	write_hwreg_cmd8(0x20000024, 0x80);
+#endif
 	while (retry--) {
 		num_events = st_tp_read_all_events(1);
 		if (num_events < 0)
