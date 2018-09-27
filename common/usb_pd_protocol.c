@@ -1728,10 +1728,10 @@ static void handle_ctrl_request(int port, uint16_t head,
 					PD_STATE_SNK_SWAP_SNK_DISABLE,
 					PD_STATE_SRC_SWAP_SNK_DISABLE));
 		} else {
-			send_control(port, REFUSE(pd[port].rev));
+			send_control(port, PD_CTRL_REJECT);
 		}
 #else
-		send_control(port, REFUSE(pd[port].rev));
+		send_control(port, PD_CTRL_REJECT);
 #endif
 		break;
 	case PD_CTRL_DR_SWAP:
@@ -1745,7 +1745,7 @@ static void handle_ctrl_request(int port, uint16_t head,
 			if (send_control(port, PD_CTRL_ACCEPT) >= 0)
 				pd_dr_swap(port);
 		} else {
-			send_control(port, REFUSE(pd[port].rev));
+			send_control(port, PD_CTRL_REJECT);
 
 		}
 		break;
