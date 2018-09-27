@@ -46,6 +46,30 @@
       "revId": "383ce107ea977108db0bc5e6af6e2a0036946428",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d23226_ef4a68a2",
+        "filename": "chip/stm32/adc-stm32f3.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-09-27T05:15:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "104d2797_fa14fed5",
+      "range": {
+        "startLine": 199,
+        "startChar": 39,
+        "endLine": 199,
+        "endChar": 60
+      },
+      "revId": "383ce107ea977108db0bc5e6af6e2a0036946428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
