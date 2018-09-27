@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "363249bc_88d58d34",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T21:33:34Z",
+      "side": 1,
+      "message": "this probably isn\u0027t the place for this since you are just cherry picking, but I would expect you to only look at the bit that we have unmasked for the alert handler instead of all of the bits",
+      "range": {
+        "startLine": 774,
+        "startChar": 14,
+        "endLine": 774,
+        "endChar": 49
+      },
+      "revId": "20e6880e4efd74a2afbf3ed86b3bf38488284d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
