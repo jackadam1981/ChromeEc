@@ -46,6 +46,30 @@
       "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f6a69e1_5b71bf18",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-09-27T15:02:01Z",
+      "side": 1,
+      "message": "I don\u0027t understand why the presence of GPIO_0 is in a common macro. What does GPIO_0 mean here? What type is gpio_list? If it\u0027s a struct (which I assume because of the comma usage here then use a struct initializer:\n\n{ .field1 \u003d foo, field2 \u003d bar }",
+      "parentUuid": "83f31615_f4786f16",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
