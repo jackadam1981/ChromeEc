@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc84a382_07c9615f",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T14:01:38Z",
+      "side": 1,
+      "message": "We actually should be able to drop the renew/caching concept if the only reason for having it was the PS8751 low power mode / sleep issue. If we want the caching for speed other reasons, then it is okay to keep it; it is not hurting anything.\n\nSince CL:1143710 any access to the PS8751 while it is in LPM/sleep will wait for the device to re-initialize then proceed with the i2c communication.",
+      "parentUuid": "8958c08d_a8d9e574",
+      "revId": "cc499705a20f6a7f55bb7ef06a636fdb0cc480f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c44b6d17_e6db41ab",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "cc499705a20f6a7f55bb7ef06a636fdb0cc480f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f303054_bf63b426",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T14:01:38Z",
+      "side": 1,
+      "message": "It is in tcpc_read16 [0]. See also CL:1143710.\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/80769acb65ddf155170b3d119fd88ec0623e68ed/driver/tcpm/tcpci.c#76",
+      "parentUuid": "c44b6d17_e6db41ab",
+      "range": {
+        "startLine": 619,
+        "startChar": 9,
+        "endLine": 619,
+        "endChar": 20
+      },
+      "revId": "cc499705a20f6a7f55bb7ef06a636fdb0cc480f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
