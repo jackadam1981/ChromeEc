@@ -328,6 +328,30 @@
       "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f793e12_0cb514d4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3738,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-27T19:48:39Z",
+      "side": 1,
+      "message": "There\u0027s already an exception coded into the cc check in pd_transmit, line 759",
+      "parentUuid": "ac78d435_b0969a6b",
+      "range": {
+        "startLine": 3738,
+        "startChar": 15,
+        "endLine": 3738,
+        "endChar": 24
+      },
+      "revId": "d9b7865f2d5ca2cd1ec6a4f0f9a0211264b8a223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
