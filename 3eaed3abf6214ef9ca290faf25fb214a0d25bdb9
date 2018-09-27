@@ -142,6 +142,30 @@
       "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2cb2d4e_ae595d43",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-09-27T23:10:29Z",
+      "side": 1,
+      "message": "I will have to look back at the high priority interrupt changes again, but my understanding was that the host_command_pd_send_status wasn\u0027t required. If you have tested all possible combinations and it works without issues, I am okay giving a +2 since you are running out of time.",
+      "parentUuid": "9c91c2d8_822fdc24",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 6
+      },
+      "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
