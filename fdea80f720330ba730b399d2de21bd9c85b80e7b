@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b07167ad_282511cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "This is derived from upstream(EC tree) patch and added new features and bug fixes.",
+      "parentUuid": "521c7c0c_7f599178",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27f7af81_b9ab45a5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2018-09-18T20:55:46Z",
       "side": 1,
       "message": "Please list a bug number: either a new one or one of the open ISH bugs. I\u0027m aware of\n   b:78601949\n   b:113238573",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74490cd5_6a68e6d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "b:b:78601949 is i2c driver controller by host Linux kernel. \nThis driver is for i2c module controlled by ISH, which is for different i2c IP module.",
+      "parentUuid": "27f7af81_b9ab45a5",
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "15dff006_db59aa2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b34e8cc2_1ece407b",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bf7aaa0_4669bd68",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 7
@@ -73,6 +127,30 @@
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1c0444_395b67e6",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bf7aaa0_4669bd68",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 9
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +217,24 @@
     },
     {
       "key": {
+        "uuid": "b5b047ad_2fe9345f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Tx data in transmission before \u0027Restart\u0027 are still in FIFO and writing 64 RD commands to DATA_CMD register(FIFO control) cannot be done completely due to Tx data(about to be transmitted).  Adding 1 usec delay allows time for Tx data in FIFO to be completed.",
+      "parentUuid": "7b7f079c_3e8362a7",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35affbb1_f9592b3d",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 7
@@ -162,6 +258,30 @@
     },
     {
       "key": {
+        "uuid": "0e50b846_a8ff9584",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35affbb1_f9592b3d",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cda69c4_ce768df8",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 7
@@ -179,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "33ef6c44_8326801a",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1cda69c4_ce768df8",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f3ff8ac_5e003800",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 7
@@ -190,6 +328,24 @@
       "writtenOn": "2018-09-18T20:55:46Z",
       "side": 1,
       "message": "Same things as rd_size.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c86c4c4_12eda6e3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "begin_indx will be updated every iteration in the while loop.\nI think defining \u0026 initializing this variable still should be outside loop.",
+      "parentUuid": "4f3ff8ac_5e003800",
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -219,6 +375,30 @@
     },
     {
       "key": {
+        "uuid": "e2cc2f07_a73068c7",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9141282_04d4b863",
+      "range": {
+        "startLine": 377,
+        "startChar": 46,
+        "endLine": 377,
+        "endChar": 59
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8169bb95_7ca3b68c",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 7
@@ -236,6 +416,24 @@
     },
     {
       "key": {
+        "uuid": "274160cc_38347d85",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8169bb95_7ca3b68c",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01554257_602082f3",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 7
@@ -250,6 +448,24 @@
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc113cb_0cac08fa",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01554257_602082f3",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -273,6 +489,30 @@
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720b37d5_17a2e4b2",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-27T19:35:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a7628fb_878bad7f",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 30
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
