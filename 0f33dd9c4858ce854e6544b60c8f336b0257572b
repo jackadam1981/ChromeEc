@@ -22,6 +22,30 @@
       "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f31615_f4786f16",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-09-27T01:13:32Z",
+      "side": 1,
+      "message": "Hi Aaron,this one is used to initialize gpio_list[]. since there is only one gpio port, I just put GPIO_0 which is 0 here. I\u0027m not quite get the comment, could you explain more? Thanks.",
+      "parentUuid": "da40ba19_66788ee1",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
