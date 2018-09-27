@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00f48553_a1356a37",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T22:18:53Z",
+      "side": 1,
+      "message": "nit: spacing",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fca264f2_5d3e5ccf",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T22:18:53Z",
+      "side": 1,
+      "message": "this should proably happen after we set the initial value below of the output register otherwise we might be a glitch on the output",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c8ca247_d2a2af5b",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T22:18:53Z",
+      "side": 1,
+      "message": "should you just make this an else clause (so un-configured gpios will be the safer input designation)?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38fc60b3_81db595d",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T22:18:53Z",
+      "side": 1,
+      "message": "this should probably be an else if",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8359e3ab_79861d11",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T22:18:53Z",
+      "side": 1,
+      "message": "this probably shouldn\u0027t return since we need to set up the rest of the GPIO pins",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8df67e_ef176d32",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T22:18:53Z",
+      "side": 1,
+      "message": "ISH doesn\u0027t seem to support level trigger, only edge trigger, right?\n\nIf that is the case then we shouldn\u0027t honor the level-trigger GPIO defines (GPIO_INT_F_LOW and GPIO_INT_F_HIGH)",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 57
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c80280_3fa87e34",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T22:18:53Z",
+      "side": 1,
+      "message": "can you add a comment for this? Why are we doing this?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
