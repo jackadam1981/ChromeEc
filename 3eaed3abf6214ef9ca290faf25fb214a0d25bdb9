@@ -118,6 +118,30 @@
       "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c91c2d8_822fdc24",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-27T21:43:47Z",
+      "side": 1,
+      "message": "I believe other chargers worked, but I\u0027d have to go back and check.",
+      "parentUuid": "6cd7a23e_367c15d6",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 6
+      },
+      "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
