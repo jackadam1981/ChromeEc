@@ -70,6 +70,30 @@
       "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "138800c0_78391fca",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-09-27T18:09:57Z",
+      "side": 1,
+      "message": "gpio_list[] is extracted from gpio.inc(through gpio.wrap) by expanding macro GPIO(). It\u0027s of struct type as below. As a result, GPIO_PIN has to provide port and mask, here GPIO_0 is used as port. GPIO_0 is essentially 0 since we only have port 0 for ISH GPIO port.\n\n\nstruct gpio_info {\n\t/* Signal name */\n\tconst char *name;\n\n\t/* Port base address */\n\tuint32_t port;\n\n\t/* Bitmask on that port (1 \u003c\u003c N; 0 \u003d signal not implemented) */\n\tuint32_t mask;\n\n\t/* Flags (GPIO_*; see above) */\n\tuint32_t flags;\n};\n\n\n#define GPIO(name, pin, flags) {#name, GPIO_##pin, flags},\n#define GPIO_INT(name, pin, flags, signal) GPIO(name, pin, flags)\n\n/* GPIO signal list. */\nconst struct gpio_info gpio_list[] \u003d {\n\t#include \"gpio.wrap\"            \n};",
+      "parentUuid": "2f6a69e1_5b71bf18",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
