@@ -14,26 +14,6 @@
 typedef float mat33_float_t[3][3];
 typedef size_t sizev3_t[3];
 
-/*
- * TODO(b:113364863): Remove all float* functions after migration finished.
- * Since that all float* functions can be accessed with fp* functions with
- * CONFIG_FPU enabled.
- */
-void init_zero_matrix(mat33_float_t A);
-void init_diagonal_matrix(mat33_float_t A, float x);
-
-void mat33_float_scalar_mul(mat33_float_t A, float c);
-
-void mat33_float_swap_rows(mat33_float_t A, const size_t i, const size_t j);
-
-void mat33_float_get_eigenbasis(mat33_float_t S, floatv3_t eigenvals,
-				mat33_float_t eigenvecs);
-
-size_t mat33_float_maxind(mat33_float_t A, size_t k);
-
-void mat33_float_rotate(mat33_float_t A, float c, float s,
-		  size_t k, size_t l, size_t i, size_t j);
-
 /* fixed-point */
 void mat33_fp_init_zero(mat33_fp_t A);
 void mat33_fp_init_diagonal(mat33_fp_t A, fp_t x);

@@ -16,18 +16,6 @@ typedef float mat44_float_t[4][4];
 typedef fp_t mat44_fp_t[4][4];
 typedef size_t sizev4_t[4];
 
-/*
- * TODO(b:113364863): Remove all float* functions after migration finished.
- * Since that all float* functions can be accessed with fp* functions with
- * CONFIG_FPU enabled.
- */
-void mat44_float_decompose_lup(mat44_float_t LU, sizev4_t pivot);
-
-void mat44_float_swap_rows(mat44_float_t A, const size_t i, const size_t j);
-
-void mat44_float_solve(mat44_float_t A, floatv4_t x, const floatv4_t b,
-		       const sizev4_t pivot);
-
 /* fixed-point */
 void mat44_fp_decompose_lup(mat44_fp_t LU, sizev4_t pivot);
 
