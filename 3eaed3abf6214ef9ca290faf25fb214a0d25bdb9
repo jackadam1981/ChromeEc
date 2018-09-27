@@ -46,6 +46,30 @@
       "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f650dd6_961be669",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T21:30:21Z",
+      "side": 1,
+      "message": "Hmm, I am surprised that you still need this. Does the interrupt handler still work? without this. You have the higher priority tasks right?",
+      "parentUuid": "ae81282d_1cfcd5b3",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 6
+      },
+      "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
