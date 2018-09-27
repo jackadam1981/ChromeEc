@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca605c9_0064e9db",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2018-09-27T23:29:37Z",
+      "side": 1,
+      "message": "Excellent explanation, thank you.\n\nDo you think that we could define a function that would wait for FIFO to become idle and use it before engaging the FIFO? This way we could not have to wait after every write, but only if we wanted to read something (or write in a quick succession), thus speeding up pure writes.\n\nI\u0027d be OK with such optimization, it it is possible at all, to be in a separate CL.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 48
+      },
+      "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22808391_ebdb008e",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2018-09-27T23:29:37Z",
+      "side": 1,
+      "message": "I believe Grant misspoke a bit. This variable should be defined outside the loop, but I would move its initialization to just above the \"while\" loop where this variable is used.",
+      "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
