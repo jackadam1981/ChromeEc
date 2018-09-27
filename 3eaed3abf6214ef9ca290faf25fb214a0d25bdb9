@@ -94,6 +94,30 @@
       "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd7a23e_367c15d6",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-27T21:41:56Z",
+      "side": 1,
+      "message": "I realized I never added the schedule_deferred_pd_interrupt to every board (I will go back and do that soon).\n\nThat should be all you need though. Do other chargers work, or does only the 87W charger not work with only schedule_deferred_pd_interrupt",
+      "parentUuid": "cd5c928b_e2ea624e",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 6
+      },
+      "revId": "3eaed3abf6214ef9ca290faf25fb214a0d25bdb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
