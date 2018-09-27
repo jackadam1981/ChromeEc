@@ -13,6 +13,10 @@
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
 
+/* Audio */
+#define CONFIG_AUDIO_CODEC
+#define CONFIG_WAKE_ON_VOICE
+
 /*
  * By default, enable all console messages excepted event and HC:
  * The sensor stack is generating a lot of activity.
