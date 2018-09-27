@@ -54,16 +54,26 @@ static int ignore_set_led_color(enum pwm_led_id id, int color)
 
 void set_pwm_led_color(enum pwm_led_id id, int color)
 {
+#ifdef CONFIG_LED_PWM_ACTIVE_LOW
+	struct pwm_led duty = { 100, 100, 100 };
+#else
 	struct pwm_led duty = { 0 };
+#endif
 
 	if ((id >= CONFIG_LED_PWM_COUNT) || (id < 0) ||
 	    (color >= EC_LED_COLOR_COUNT) || (color < -1))
 		return;
 
 	if (color != -1) {
+#ifdef CONFIG_LED_PWM_ACTIVE_LOW
+		duty.ch0 -= led_color_map[color].ch0;
+		duty.ch1 -= led_color_map[color].ch1;
+		duty.ch2 -= led_color_map[color].ch2;
+#else
 		duty.ch0 = led_color_map[color].ch0;
 		duty.ch1 = led_color_map[color].ch1;
 		duty.ch2 = led_color_map[color].ch2;
+#endif
 	}
 
 	if (pwm_leds[id].ch0 != PWM_LED_NO_CHANNEL)
