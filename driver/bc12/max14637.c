@@ -123,6 +123,7 @@ static void power_down_ic(const int port)
 static void detect_or_power_down_ic(const int port)
 {
 	int vbus_present;
+	const struct max14637_config_t * const cfg = &max14637_config[port];
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	vbus_present = tcpm_get_vbus_level(port);
@@ -132,19 +133,21 @@ static void detect_or_power_down_ic(const int port)
 
 	if (vbus_present) {
 		/* Turn on the 5V rail to allow the chip to be powered. */
+		if (cfg->flags & MAX14637_FLAGS_PP5000_EN_CTRL)
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
-		power_5v_enable(task_get_current(), 1);
+			power_5v_enable(task_get_current(), 1);
 #else
-		gpio_set_level(GPIO_EN_PP5000, 1);
+			gpio_set_level(GPIO_EN_PP5000, 1);
 #endif
 		bc12_detect(port);
 	} else {
 		power_down_ic(port);
 		/* Issue a request to turn off the rail. */
+		if (cfg->flags & MAX14637_FLAGS_PP5000_EN_CTRL)
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
-		power_5v_enable(task_get_current(), 0);
+			power_5v_enable(task_get_current(), 0);
 #else
-		gpio_set_level(GPIO_EN_PP5000, 0);
+			gpio_set_level(GPIO_EN_PP5000, 0);
 #endif
 	}
 }

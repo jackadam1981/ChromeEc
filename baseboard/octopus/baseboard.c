@@ -80,12 +80,14 @@ const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON,
 		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET_L,
-		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW |
+		MAX14637_FLAGS_PP5000_EN_CTRL,
 	},
 	{
 		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON,
 		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET_L,
-		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW |
+		MAX14637_FLAGS_PP5000_EN_CTRL,
 	},
 };
 

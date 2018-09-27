@@ -9,6 +9,7 @@
 
 #define MAX14637_FLAGS_ENABLE_ACTIVE_LOW		(1 << 0)
 #define MAX14637_FLAGS_CHG_DET_ACTIVE_LOW		(1 << 1)
+#define MAX14637_FLAGS_PP5000_EN_CTRL			(1 << 2)
 
 struct max14637_config_t {
 	/*
