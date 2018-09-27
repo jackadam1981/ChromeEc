@@ -94,6 +94,30 @@
       "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377781d2_e1587dbf",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-09-27T18:14:38Z",
+      "side": 1,
+      "message": "If you are needing it be 0 then explicitly use \u00270\u0027. I don\u0027t think GPIO_0 buys anything. And add a comment. \u00270 is used here for port. There are no different ports\u0027 or something like that.",
+      "parentUuid": "138800c0_78391fca",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 30
+      },
+      "revId": "0f33dd9c4858ce854e6544b60c8f336b0257572b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
