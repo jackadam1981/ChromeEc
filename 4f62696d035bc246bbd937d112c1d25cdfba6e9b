@@ -22,6 +22,29 @@
       "revId": "4f62696d035bc246bbd937d112c1d25cdfba6e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d8122b_5e3e34be",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-09-28T17:04:08Z",
+      "side": 1,
+      "message": "Is this ! intentional?  Otherwise, we\u0027re calling this deferred function every time the config changes...",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "4f62696d035bc246bbd937d112c1d25cdfba6e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
