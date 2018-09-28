@@ -105,6 +105,24 @@
       "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c093aa2_c2d9893d",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-28T16:59:15Z",
+      "side": 1,
+      "message": "Then I will change this to:\n\n#if defined(CONFIG_POWER_PP5000_CONTROL) \u0026\u0026 defined(HAS_TASK_CHIPSET)\t\n\tpower_5v_enable(task_get_current(), 1);\n#endif\n\nand get rid of the new flag bit I had added.",
+      "parentUuid": "aae63876_dbac91b0",
+      "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
