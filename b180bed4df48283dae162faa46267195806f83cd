@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8de26b2f_0d3bc82b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-28T15:31:39Z",
+      "side": 1,
+      "message": "this one should probably still be a non_supported",
+      "range": {
+        "startLine": 1734,
+        "startChar": 21,
+        "endLine": 1734,
+        "endChar": 35
+      },
+      "revId": "b180bed4df48283dae162faa46267195806f83cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
