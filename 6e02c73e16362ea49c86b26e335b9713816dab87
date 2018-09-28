@@ -46,6 +46,30 @@
       "revId": "6e02c73e16362ea49c86b26e335b9713816dab87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79521df_931e173a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-28T14:22:44Z",
+      "side": 1,
+      "message": "I meant to say, this is *not* a design pattern I would recommend on new designs.",
+      "parentUuid": "10bdaa3b_9d15d568",
+      "range": {
+        "startLine": 156,
+        "startChar": 9,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "6e02c73e16362ea49c86b26e335b9713816dab87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
