@@ -28,6 +28,9 @@
 #include "uart.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
 static void ppc_interrupt(enum gpio_signal signal)
 {
 
@@ -144,3 +147,25 @@ static void board_init(void)
 	board_extpower();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+int board_get_version(void)
+{
+	static int ver;
+
+	if (ver) {
+		/*
+		 * Read the board EC ID on the strappings
+		 * using binary encoding: 0 = 0, 1 = 1.
+		 */
+		uint8_t id0, id1, id2;
+
+		id0 = gpio_get_level(GPIO_BOARD_VERSION1);
+		id1 = gpio_get_level(GPIO_BOARD_VERSION2);
+		id2 = gpio_get_level(GPIO_BOARD_VERSION3);
+
+		ver = (id2 * 4) + (id1 * 2) + id0;
+		CPRINTS("Board ID = %d", ver);
+	}
+
+	return ver;
+}

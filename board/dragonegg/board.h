@@ -18,6 +18,9 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/* EC */
+#define CONFIG_BOARD_VERSION_CUSTOM
+
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 #define CONFIG_VOLUME_BUTTONS
@@ -65,7 +68,9 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+/* Board specific handlers */
 int board_get_battery_soc(void);
+int board_get_version(void);
 void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
 
 #endif /* !__ASSEMBLER__ */
