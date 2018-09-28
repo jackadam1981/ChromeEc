@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9816d157_bff439d7",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-09-28T18:40:41Z",
+      "side": 1,
+      "message": "Looking elsewhere in the code base, the attribute weak has been used to allow redefining core function in board.c. for instance, see __attribute__((weak)) int board_is_lid_angle_tablet_mode for inspiration.",
+      "revId": "8e7be6d98bfed9a91d13316919f1c4847aadae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
