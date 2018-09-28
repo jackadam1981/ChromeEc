@@ -16,6 +16,24 @@
       "revId": "8e7be6d98bfed9a91d13316919f1c4847aadae2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3c325d_4a038c2b",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-09-28T23:03:00Z",
+      "side": 1,
+      "message": "Done.\n\nOne difference is that - with the __weak__ model - the check for \"is this GPIO vs. eSPI\" needs to happen at every event, whereas using a function pointer, one could do the check once, and then always call the right function always.\n\nAdmittedly, I have not done a benchmark, and it\u0027s possible that there is little, if any, difference between the indirect function call and the board_get_version() check.",
+      "parentUuid": "9816d157_bff439d7",
+      "revId": "8e7be6d98bfed9a91d13316919f1c4847aadae2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
