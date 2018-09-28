@@ -51,6 +51,24 @@
       "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "874a00c8_d7c70e6a",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-28T16:43:38Z",
+      "side": 1,
+      "message": "It would be nice if we could just do:\n    #ifdef CONFIG_POWER_PP5000_CONTROL\n        power_5v_enable(task_get_current(), 1);\n    #endif\nand not mention GPIO_EN_PP5000, and not need to add MAX14637_FLAGS_PP5000_EN_CTRL",
+      "parentUuid": "efd5dda3_803a4bf5",
+      "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
