@@ -26,6 +26,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "mkbp_event.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -388,6 +389,19 @@ void board_hibernate(void)
 	/* Wait for power to be cut. */
 	while (1)
 		;
+}
+
+static int mkbp_uses_gpio(void)
+{
+	return (board_get_version() & 0x2) == 0x2;
+}
+
+void send_mkbp_event(int active)
+{
+	if (mkbp_uses_gpio())
+		send_mkbp_event_gpio(active);
+	else
+		send_mkbp_event_host(active);
 }
 
 static void board_init(void)
