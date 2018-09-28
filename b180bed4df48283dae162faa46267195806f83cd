@@ -46,6 +46,30 @@
       "revId": "b180bed4df48283dae162faa46267195806f83cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d12ca2_2b46d69a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-09-28T16:32:52Z",
+      "side": 1,
+      "message": "I find the spec wording is tripping me up here.  The Not_supported section specifies that \"Returning a Not_Supported Message is assumed in this specification and has not been called out explicitly except in Section 6.12\".  \n\nBut it specifically is called out as a valid VCONN_swap response: \"The recipient\nof the Message Shall respond by sending an Accept Message, Reject Message, Wait Message or Not_Supported Message.\"  and is not in the PR_swap response list.",
+      "parentUuid": "0121462f_0d644e44",
+      "range": {
+        "startLine": 1734,
+        "startChar": 21,
+        "endLine": 1734,
+        "endChar": 35
+      },
+      "revId": "b180bed4df48283dae162faa46267195806f83cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
