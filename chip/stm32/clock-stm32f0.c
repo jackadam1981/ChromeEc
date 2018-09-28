@@ -400,9 +400,6 @@ void clock_enable_module(enum module_id module, int enable)
 			STM32_RCC_APB2ENR &= ~STM32_RCC_APB2ENR_ADCEN;
 		return;
 	}
-
-	CPRINTS("Module %d is not supported for clock %s\n",
-		module, enable ? "enable" : "disable");
 }
 
 void rtc_init(void)
