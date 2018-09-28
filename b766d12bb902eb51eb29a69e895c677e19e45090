@@ -33,6 +33,24 @@
       "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd5dda3_803a4bf5",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-28T16:33:06Z",
+      "side": 1,
+      "message": "Do you know more about the context of this section. It\u0027s nocturne/grunt/octopus/dragonegg platforms that are using these bc 1.2 ICs. I had thought initially about a different config option to not call this section for dragonegg, but since there were already 2 being used here I didn\u0027t want to add a 3rd. I had also thought about a board/baseboard callback function, which could be guarded by a config option (or just have a do nothing function if there is nothing to do). If thee is a board callback, then grunt wouldn\u0027t need to define GPIO_EN_PP5000",
+      "parentUuid": "3247bdcd_709bd72f",
+      "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
