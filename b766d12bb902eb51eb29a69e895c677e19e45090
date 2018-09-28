@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bb9de771_7fd553c2",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-28T16:20:26Z",
+      "side": 1,
+      "message": "No need to add the flag for grunt, since it doesn\u0027t have PP5000 rail\ncontrol.",
+      "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3247bdcd_709bd72f",
         "filename": "driver/bc12/max14637.c",
         "patchSetId": 1
