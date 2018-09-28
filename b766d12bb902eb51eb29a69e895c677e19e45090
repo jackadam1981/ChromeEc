@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3247bdcd_709bd72f",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-28T16:17:11Z",
+      "side": 1,
+      "message": "It would be nice if this didn\u0027t assume the existence of GPIO_EN_PP5000.\nThis GPIO doesn\u0027t exist on Grunt, so I had to add \"UNIMPLEMENTED(EN_PP5000)\" in gpio.inc to be able to build with this driver.",
+      "revId": "b766d12bb902eb51eb29a69e895c677e19e45090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
