@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "628d932e_216528f1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-28T20:12:09Z",
+      "side": 1,
+      "message": "I think this should be a reject (since we support Vconn swap, but we can\u0027t at the moment)",
+      "range": {
+        "startLine": 1761,
+        "startChar": 21,
+        "endLine": 1761,
+        "endChar": 52
+      },
+      "revId": "ec6cc15bbcb5795e762a38274ded13b929100695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

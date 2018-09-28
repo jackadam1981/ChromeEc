@@ -70,6 +70,30 @@
       "revId": "b180bed4df48283dae162faa46267195806f83cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98bdadeb_808901c8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1734,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-09-28T20:12:09Z",
+      "side": 1,
+      "message": "The way I read \"Table 6-61 Applicability of Control Messages\" when we receive a PR_SWAP and we are only a sink, we should respond with NS (Not Supported)",
+      "parentUuid": "63d12ca2_2b46d69a",
+      "range": {
+        "startLine": 1734,
+        "startChar": 21,
+        "endLine": 1734,
+        "endChar": 35
+      },
+      "revId": "b180bed4df48283dae162faa46267195806f83cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
