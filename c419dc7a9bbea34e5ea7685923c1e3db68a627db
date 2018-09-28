@@ -70,6 +70,30 @@
       "revId": "c419dc7a9bbea34e5ea7685923c1e3db68a627db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b94b3792_d3bfe0e0",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-09-28T00:44:54Z",
+      "side": 1,
+      "message": "TCPC alert would only be called when something (not necessarily a VBUS change), but some change is happening. But, this function will be just be called continuously when in a connection.\n\nThe other key thing to note is that this function itself is temporary, as this PPC doesn\u0027t fully support VBUS detection, but for now DragonEgg requires VBUS_DETECT_PPC to be defined.",
+      "parentUuid": "e7f52a60_09354f8b",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 45
+      },
+      "revId": "c419dc7a9bbea34e5ea7685923c1e3db68a627db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
