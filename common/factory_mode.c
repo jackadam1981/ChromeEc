@@ -16,25 +16,38 @@
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 
 static uint8_t ccd_hook_active;
+static uint8_t reset_required_;
+
+static void factory_enable_failed(void)
+{
+	ccd_hook_active = 0;
+	CPRINTS("factory enable failed");
+
+	if (reset_required_) {
+		reset_required_ = 0;
+		deassert_ec_rst();
+	}
+}
+DECLARE_DEFERRED(factory_enable_failed);
 
 static void ccd_config_changed(void)
 {
 	if (!ccd_hook_active)
 		return;
 
+	ccd_hook_active = 0;
+
+	if (!reset_required_) {
+		hook_call_deferred(&factory_enable_failed_data, -1);
+		return;
+	}
+	reset_required_ = 0;
+
 	CPRINTS("%s: saved, rebooting\n", __func__);
 	cflush();
 	system_reset(SYSTEM_RESET_HARD);
 }
 DECLARE_HOOK(HOOK_CCD_CHANGE, ccd_config_changed, HOOK_PRIO_LAST);
-
-static void factory_enable_failed(void)
-{
-	ccd_hook_active = 0;
-	CPRINTS("factory enable failed");
-	deassert_ec_rst();
-}
-DECLARE_DEFERRED(factory_enable_failed);
 
 /* The below time constants are way longer than should be required in practice:
  *
@@ -55,13 +68,16 @@ static void factory_enable_deferred(void)
 {
 	int rv;
 
-	CPRINTS("%s: reset TPM\n", __func__);
-
 	/*
 	 * Let's make sure the rest of the system is out of the way while TPM
 	 * is being wiped out.
 	 */
-	assert_ec_rst();
+	tpm_stop();
+
+	CPRINTS("%s: reset TPM\n", __func__);
+
+	if (reset_required_)
+		assert_ec_rst();
 
 	if (tpm_reset_request(1, 1) != EC_SUCCESS) {
 		CPRINTS("%s: TPM reset failed\n", __func__);
@@ -71,7 +87,7 @@ static void factory_enable_deferred(void)
 
 	tpm_reinstate_nvmem_commits();
 
-	CPRINTS("%s: TPM reset done, enabling factory mode\n", __func__);
+	CPRINTS("%s: TPM reset done, enabling factory mode", __func__);
 
 	ccd_hook_active = 1;
 	rv = ccd_reset_config(CCD_RESET_FACTORY);
@@ -86,9 +102,11 @@ static void factory_enable_deferred(void)
 }
 DECLARE_DEFERRED(factory_enable_deferred);
 
-void enable_ccd_factory_mode(void)
+void enable_ccd_factory_mode(int reset_required)
 {
 	delay_sleep_by(DISABLE_SLEEP_TIME);
+
+	reset_required_ = !!reset_required;
 	hook_call_deferred(&factory_enable_deferred_data,
 		TPM_PROCESSING_TIME);
 }
