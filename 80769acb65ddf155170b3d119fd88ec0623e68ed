@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7df77ced_9125994c",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-09-28T16:10:20Z",
+      "side": 0,
+      "message": "Looks like all these #includes in the board.c files (everything except zoombini) could just be deleted instead, since only the baseboard uses the header, I think.",
+      "revId": "80769acb65ddf155170b3d119fd88ec0623e68ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
