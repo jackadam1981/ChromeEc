@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b663437_732c11e5",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-09-29T22:03:47Z",
+      "side": 1,
+      "message": "cache the result, board_get_version is expensive.",
+      "revId": "0df81aadbefe66a2b7890eee7ece032788a0e2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
