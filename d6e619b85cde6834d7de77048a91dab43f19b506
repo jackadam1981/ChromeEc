@@ -16,6 +16,24 @@
       "revId": "d6e619b85cde6834d7de77048a91dab43f19b506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1045c070_c168f37e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-09-29T20:09:24Z",
+      "side": 1,
+      "message": "Maybe not, but none of the boards on the branch use this driver.",
+      "parentUuid": "3fe90a53_98f6fe88",
+      "revId": "d6e619b85cde6834d7de77048a91dab43f19b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
