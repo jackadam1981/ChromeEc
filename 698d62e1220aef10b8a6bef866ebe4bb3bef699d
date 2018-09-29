@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ed97752_afeba983",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-09-29T17:27:57Z",
+      "side": 0,
+      "message": "I understand you don\u0027t want FIFO for the [secondary] lid accel.\nInstead of removing the code, as the sensor can be used in the base ase well, let\u0027s introduce a separate CONFIG_ to disable FIFO selectively.",
+      "revId": "698d62e1220aef10b8a6bef866ebe4bb3bef699d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
