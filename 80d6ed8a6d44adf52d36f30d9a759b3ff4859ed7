@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1feea084_bf3f1c7a",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-29T00:10:35Z",
+      "side": 1,
+      "message": "Yes, I will create a separate patch. \nIn this patch, I will move these lines after \u0027i2c_write_buffer()\u0027 is called under \ncondition, \u0027if (in_size \u003e (ISH_I2C_FIFO_SIZE - out_size))\u0027.",
+      "parentUuid": "5ca605c9_0064e9db",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 48
+      },
+      "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22808391_ebdb008e",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 8
@@ -39,6 +63,42 @@
       "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "415174d0_f788289d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-29T00:10:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22808391_ebdb008e",
+      "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "955db62a_484d479e",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-09-29T00:10:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22808391_ebdb008e",
+      "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
