@@ -16,6 +16,24 @@
       "revId": "5087723490bcad60a4e833e106170e861bd1a159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "483f95fa_28423527",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-09-30T06:07:43Z",
+      "side": 1,
+      "message": "OK, I\u0027ll upload a CL to fix this. Since the latest code has set base/lid sensor active_mask to S0_S3(This has been verified to work well), I\u0027ll do that for Gyro.",
+      "parentUuid": "80b9034c_7f80db37",
+      "revId": "5087723490bcad60a4e833e106170e861bd1a159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

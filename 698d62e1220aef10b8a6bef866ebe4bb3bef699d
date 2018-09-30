@@ -16,6 +16,24 @@
       "revId": "698d62e1220aef10b8a6bef866ebe4bb3bef699d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc8eb32_add5a661",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1247406
+      },
+      "writtenOn": "2018-09-30T06:07:43Z",
+      "side": 0,
+      "message": "When uploading this CL, only phaser use this code. In order to keep the code clean, I removed extra code. Do you need me to add them back? If so, I\u0027ll upload a CL after China National Holiday.",
+      "parentUuid": "1ed97752_afeba983",
+      "revId": "698d62e1220aef10b8a6bef866ebe4bb3bef699d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
