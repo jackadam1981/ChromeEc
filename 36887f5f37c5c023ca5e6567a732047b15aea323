@@ -16,6 +16,24 @@
       "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "417da39f_05684e34",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-09-30T23:04:52Z",
+      "side": 1,
+      "message": "It\u0027s not padding, it\u0027s the 1-byte counter concatenated at the end, see https://tools.ietf.org/html/rfc5869#section-2.3\nSince we\u0027re only doing 1 iteration, it\u0027s 0x01.",
+      "parentUuid": "ac54e99a_29cfe50d",
+      "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
