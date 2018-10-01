@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6962cbd6_8f6d0a73",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T16:51:00Z",
+      "side": 1,
+      "message": "Yes that either (1\u003c\u003c3) or 8 would be the next free bit value.\n\nPlease also move this INT_EVENT define to line 68 (below the other define)",
+      "parentUuid": "1d4e0a0c_c6701f16",
+      "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40844c57_e6636e3f",
         "filename": "board/bobba/gpio.inc",
         "patchSetId": 1
