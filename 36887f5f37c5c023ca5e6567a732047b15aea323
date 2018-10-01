@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "cee66be0_a69ff6ce",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-01T17:56:47Z",
+      "side": 1,
+      "message": "Isn\u0027t it just a matter of declaring these as \u0027volatile\u0027?\n\nAlso, there is memclear in private-cr51/common/crypta/common/crypta_utils.c.",
+      "parentUuid": "fe273027_7602bced",
+      "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac54e99a_29cfe50d",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -141,6 +159,29 @@
       "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "227755e8_0c53f172",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-01T17:56:47Z",
+      "side": 1,
+      "message": "Do you need this? It looks you spared an extra byte for the counter but you aren\u0027t using it.",
+      "range": {
+        "startLine": 371,
+        "startChar": 25,
+        "endLine": 371,
+        "endChar": 28
+      },
+      "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
