@@ -34,6 +34,24 @@
       "revId": "5087723490bcad60a4e833e106170e861bd1a159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74747c27_48d53ea1",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T15:17:50Z",
+      "side": 1,
+      "message": "We would want to keep S0_S3 based on the sensor\u0027s rail lifetime (instead of adding S5)",
+      "parentUuid": "483f95fa_28423527",
+      "revId": "5087723490bcad60a4e833e106170e861bd1a159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
