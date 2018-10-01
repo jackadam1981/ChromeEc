@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9a2ff40_21d15cb1",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-10-01T19:47:59Z",
+      "side": 1,
+      "message": "This makes me sad a little bit. We used to do __hw_clock_source_read right next to the gpio_set_level, now it\u0027s 2 function calls away.\n\nIt\u0027s probably fine though.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "64489896597a1221714fc582d95fa7534a90428c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
