@@ -34,6 +34,40 @@
       "revId": "a8d6e248278c95fe282db4680ec83a12595f6c2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0a6a2b_66b1d899",
+        "filename": "include/i2c_over_lpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1145289
+      },
+      "writtenOn": "2018-10-01T22:50:16Z",
+      "side": 1,
+      "message": "Does this assume that only the host writes and only the core reads?",
+      "revId": "a8d6e248278c95fe282db4680ec83a12595f6c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f085712_a8b287a1",
+        "filename": "include/i2c_over_lpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1145289
+      },
+      "writtenOn": "2018-10-01T22:50:16Z",
+      "side": 1,
+      "message": "Is host request for AP requests and core for sensor hub?",
+      "revId": "a8d6e248278c95fe282db4680ec83a12595f6c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
