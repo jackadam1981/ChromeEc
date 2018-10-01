@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36e74888_689491cf",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T18:19:36Z",
+      "side": 0,
+      "message": "this fixes the weird merge from earlier. yay!",
+      "range": {
+        "startLine": 1021,
+        "startChar": 6,
+        "endLine": 1021,
+        "endChar": 12
+      },
+      "revId": "de528ccf6f06fd62e2df1a31215d26e929870ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
