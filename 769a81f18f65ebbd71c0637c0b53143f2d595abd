@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4de833e_8c12c6e4",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-01T10:20:49Z",
+      "side": 1,
+      "message": "I know this code is copied, but battery_is_present() returns a BP_* value, and presumably, is_present is a boolean.\n\nWould battery_is_present() !\u003d BP_NO be more appropriate? Logically, it should be the same, as BP_NO \u003d 0, but still, probably clearer.",
+      "range": {
+        "startLine": 273,
+        "startChar": 20,
+        "endLine": 273,
+        "endChar": 38
+      },
+      "revId": "769a81f18f65ebbd71c0637c0b53143f2d595abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dff5a62_1b6bfcf9",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-01T10:20:49Z",
+      "side": 1,
+      "message": "Seems a bit extreme to set all the bad flags, include stuff that is clearly not accurate like BATT_FLAG_IMBALANCED_CELL, can we just keep flags \u003d 0?",
+      "revId": "769a81f18f65ebbd71c0637c0b53143f2d595abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
