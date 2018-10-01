@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a3c05440_9401d3c9",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-10-01T15:19:17Z",
+      "side": 1,
+      "message": "C compilers are notorious for eliminating calls to memset like this because they can establish that it\u0027s a \"dead\" write. Do you have a memset_s or a reason to believe that the compiler won\u0027t drop this?\n\n(Ditto twice below.)",
+      "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac54e99a_29cfe50d",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -52,6 +69,24 @@
       "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58bd50d5_fb825a20",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2018-10-01T15:19:17Z",
+      "side": 1,
+      "message": "HMAC(prk, user_id || 0x01) isn\u0027t stronger than HMAC(prk, user_id) in isolation. But I still think it\u0027s worth doing. The problem with doing something custom is that the rollback secret is fixed across different versions of firmware therefore we have to worry about the composition of all uses of that key across time. That\u0027s simpler if standard constructions are used.\n\nAlready we\u0027ve switched from using the PRK directly to expanding it. So now we have to ponder  the composition of a system that uses the PRK directly with AES-GCM, and one expands it like this. As it happens, there\u0027s no common core between AES, GHASH, and SHA-256 so I think it\u0027s ok. But you can see that if AES-HMAC-SHA256 had been used rather than AES-GCM, that could have been a problem.",
+      "parentUuid": "1497abb1_8529e8b6",
+      "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
