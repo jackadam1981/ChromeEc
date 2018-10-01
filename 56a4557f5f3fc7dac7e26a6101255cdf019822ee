@@ -22,6 +22,30 @@
       "revId": "56a4557f5f3fc7dac7e26a6101255cdf019822ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868abbec_edb5e135",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-01T20:22:38Z",
+      "side": 1,
+      "message": "I see; I was under the assumption that coreboot does not rely on the IRQ to talk to the MKBP. If that assumption is incorrect, then it does change things a bit\n\nOTOH, we still need to synchronize this between the EC and coreboot, because the EC code relies solely on board_get_version() to decide the notification to send, so if the firmware does not expose the new path, then DVT will not work",
+      "parentUuid": "1cc6b648_0859a41d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "56a4557f5f3fc7dac7e26a6101255cdf019822ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
