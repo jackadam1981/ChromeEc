@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d4e0a0c_c6701f16",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-10-01T15:55:50Z",
+      "side": 1,
+      "message": "May as well use TASK_EVENT_CUSTOM(1 \u003c\u003c 3) here.",
+      "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40844c57_e6636e3f",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-10-01T15:55:50Z",
+      "side": 1,
+      "message": "This signal is EC_AP_INT_ODL; as it\u0027s open-drain low, I believe you want GPIO_INT_FALLING here. This line is pulled up to 1.8, so this should be configured as GPIO_SEL_1P8V as well.",
+      "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
