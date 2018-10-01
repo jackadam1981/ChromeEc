@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cc6b648_0859a41d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-01T18:54:57Z",
+      "side": 1,
+      "message": "I think there is one problem. Nocturne uses vup/vdn buttons for navigation at the firmware screens. And firmware currently depends on MKBP events to get the volume press/release information. Once this CL is checked in, firmware screens will stop working with volume buttons. This change will have to be coordinated with another change in depthcharge to read the interrupt status just like we do for cr50 interrupts using gpe status.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "56a4557f5f3fc7dac7e26a6101255cdf019822ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
