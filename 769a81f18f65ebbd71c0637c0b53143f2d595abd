@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71ef3dca_80a978f5",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-01T10:53:53Z",
+      "side": 1,
+      "message": "Actually battery_is_present() also returns BP_NOT_SURE, and there some codes handle BP_NOT_SURE in charge_state_v2. Not sure if it is a good idea to make it just a boolean value here? What do you think?",
+      "parentUuid": "d4de833e_8c12c6e4",
+      "range": {
+        "startLine": 273,
+        "startChar": 20,
+        "endLine": 273,
+        "endChar": 38
+      },
+      "revId": "769a81f18f65ebbd71c0637c0b53143f2d595abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dff5a62_1b6bfcf9",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "769a81f18f65ebbd71c0637c0b53143f2d595abd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9072fb1f_2ba57e6c",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-01T10:53:53Z",
+      "side": 1,
+      "message": "Done. flags would be cleared by memset.",
+      "parentUuid": "2dff5a62_1b6bfcf9",
+      "revId": "769a81f18f65ebbd71c0637c0b53143f2d595abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
