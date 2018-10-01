@@ -242,4 +242,13 @@ struct lsm6dsm_data {
 
 #define LSM6DSM_MAIN_SENSOR(_s) ((_s) - (_s)->type)
 
+#ifdef CONFIG_ACCEL_FIFO
+int config_fifo(const struct motion_sensor_t *accel);
+#else
+static inline int config_fifo(const struct motion_sensor_t *accel)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+#endif /* CONFIG_ACCEL_FIFO */
+
 #endif /* __CROS_EC_ACCELGYRO_LSM6DSM_H */
