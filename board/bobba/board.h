@@ -33,6 +33,10 @@
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
+/* Camera VSYNC */
+#define CONFIG_SYNC
+#define CONFIG_SYNC_INT_EVENT TASK_EVENT_CUSTOM(5)
+
 /* USB PD */
 #undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
@@ -91,6 +95,7 @@ enum sensor_id {
 	LID_ACCEL,
 	BASE_ACCEL,
 	BASE_GYRO,
+	VSYNC,
 	SENSOR_COUNT
 };
 
