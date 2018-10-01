@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2120186_758a6b8f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T20:53:31Z",
+      "side": 1,
+      "message": "why uint32_t instead of int or uint8_t?\n\nDoes this function really need to update the value of the calling method?",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "809658bf_e73126e6",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T20:53:31Z",
+      "side": 1,
+      "message": "how long do we expect this to take. This will potentially starve other tasks. Should we add a sleep in here to deschedule this task?",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 49
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c94d2de_fd9fec83",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T20:53:31Z",
+      "side": 1,
+      "message": "is_read is the same as (in_size \u003e 0), why do we need both conditions here?",
+      "range": {
+        "startLine": 340,
+        "startChar": 19,
+        "endLine": 340,
+        "endChar": 26
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a21b0c_f14bd7d4",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T20:53:31Z",
+      "side": 1,
+      "message": "it would be cleaner if the logic to restart only once lived in this function (chip_i2c_xfer) instead of passing a variable that gets updated into a sub-function",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 17
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a14b3e3_38998942",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T20:53:31Z",
+      "side": 1,
+      "message": "Please use the MSEC define to make the unit more clear",
+      "range": {
+        "startLine": 363,
+        "startChar": 47,
+        "endLine": 363,
+        "endChar": 51
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

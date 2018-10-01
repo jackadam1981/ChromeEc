@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6afcb0c6_ad5c1a58",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T20:53:31Z",
+      "side": 0,
+      "message": "let\u0027s remove this define now on line 24",
+      "range": {
+        "startLine": 241,
+        "startChar": 13,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "3e8b72c29464d614df1a2bd5082fd06a1ff06f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
