@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "34ca1f5d_69a98c30",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-10-01T18:34:51Z",
+      "side": 1,
+      "message": "There\u0027s also a always_memset, but my understanding is they\u0027re provided by the hardware/firmware, that\u0027s not available for us",
+      "parentUuid": "cee66be0_a69ff6ce",
+      "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac54e99a_29cfe50d",
         "filename": "common/fpsensor.c",
         "patchSetId": 1
@@ -173,6 +191,30 @@
       "writtenOn": "2018-10-01T17:56:47Z",
       "side": 1,
       "message": "Do you need this? It looks you spared an extra byte for the counter but you aren\u0027t using it.",
+      "range": {
+        "startLine": 371,
+        "startChar": 25,
+        "endLine": 371,
+        "endChar": 28
+      },
+      "revId": "36887f5f37c5c023ca5e6567a732047b15aea323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a283b811_85fec752",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-10-01T18:34:51Z",
+      "side": 1,
+      "message": "sizeof(message) - 1 is the index of the last byte of the \"message\" array, i.e. the index of the counter.",
+      "parentUuid": "227755e8_0c53f172",
       "range": {
         "startLine": 371,
         "startChar": 25,
