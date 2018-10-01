@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d2f0d430_06643f5e",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-01T11:16:54Z",
+      "side": 1,
+      "message": "Argh. You are right, \"enum battery_present\", should have checked, sorry about that.\n\nThanks.",
+      "parentUuid": "71ef3dca_80a978f5",
+      "range": {
+        "startLine": 273,
+        "startChar": 20,
+        "endLine": 273,
+        "endChar": 38
+      },
+      "revId": "769a81f18f65ebbd71c0637c0b53143f2d595abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dff5a62_1b6bfcf9",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 1
