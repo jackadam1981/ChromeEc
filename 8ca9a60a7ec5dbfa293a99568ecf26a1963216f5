@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5a2357a_4e53180d",
+        "filename": "board/aleena/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-01T18:51:18Z",
+      "side": 1,
+      "message": "Please move these lines up to line 90, so they are out of the ALTERNATE() section.",
+      "revId": "8ca9a60a7ec5dbfa293a99568ecf26a1963216f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
