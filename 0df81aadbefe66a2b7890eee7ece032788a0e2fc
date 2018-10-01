@@ -16,6 +16,24 @@
       "revId": "0df81aadbefe66a2b7890eee7ece032788a0e2fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88dd203a_1b9084a7",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-01T17:30:33Z",
+      "side": 1,
+      "message": "It\u0027s already cached in board_get_version() itself",
+      "parentUuid": "4b663437_732c11e5",
+      "revId": "0df81aadbefe66a2b7890eee7ece032788a0e2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
