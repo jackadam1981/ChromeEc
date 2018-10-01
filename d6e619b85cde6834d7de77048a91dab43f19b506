@@ -34,6 +34,24 @@
       "revId": "d6e619b85cde6834d7de77048a91dab43f19b506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9c0315_b44dadf4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-01T15:31:42Z",
+      "side": 1,
+      "message": "Oh, this does seem like something got messed up with the rebase somehow. ToT is okay though.",
+      "parentUuid": "1045c070_c168f37e",
+      "revId": "d6e619b85cde6834d7de77048a91dab43f19b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
