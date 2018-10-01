@@ -51,6 +51,24 @@
       "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc7c21b_573513cf",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-01T23:01:37Z",
+      "side": 1,
+      "message": "I think WFCAM_VSYNC and EC_AP_INT_ODL are different pins:\nWFCAM_VSYNC - GPIO03\nEC_AP_INT_ODL - GPIO94",
+      "parentUuid": "40844c57_e6636e3f",
+      "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
