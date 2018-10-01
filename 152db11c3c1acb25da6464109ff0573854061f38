@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f1eaa50_cd52d5dc",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-01T17:48:15Z",
+      "side": 1,
+      "message": "We probably want to force a failure for PW_SEAL_TO_PCR since it doesn\u0027t exist in version 0.",
+      "range": {
+        "startLine": 1529,
+        "startChar": 2,
+        "endLine": 1529,
+        "endChar": 3
+      },
+      "revId": "152db11c3c1acb25da6464109ff0573854061f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96b1ad8_2234e56d",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2422,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-01T17:48:15Z",
+      "side": 1,
+      "message": "Please add tests for PW_SEAL_TO_PCR and protocol version 0 insert leaf success.",
+      "range": {
+        "startLine": 2422,
+        "startChar": 5,
+        "endLine": 2422,
+        "endChar": 19
+      },
+      "revId": "152db11c3c1acb25da6464109ff0573854061f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
