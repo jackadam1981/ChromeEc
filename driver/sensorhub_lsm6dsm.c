@@ -1,0 +1,257 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/*
+ * Sensor Hub Driver for LSM6DSM acce/gyro module to enable connecting
+ * external sensors like magnetometer
+ */
+
+#include "driver/accelgyro_lsm6dsm.h"
+#include "driver/sensorhub_lsm6dsm.h"
+#include "driver/stm_mems_common.h"
+
+static int set_reg_bit_field(const struct motion_sensor_t *s,
+					uint8_t reg, uint8_t bit_field)
+{
+	int tmp;
+	int ret;
+
+	ret = st_raw_read8(s->port, s->addr, reg, &tmp);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	tmp |= bit_field;
+	return st_raw_write8(s->port, s->addr, reg, tmp);
+}
+
+static int clear_reg_bit_field(const struct motion_sensor_t *s,
+					uint8_t reg, uint8_t bit_field)
+{
+	int tmp;
+	int ret;
+
+	ret = st_raw_read8(s->port, s->addr, reg, &tmp);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	tmp &= ~(bit_field);
+	return st_raw_write8(s->port, s->addr, reg, tmp);
+}
+
+static inline int enable_sensorhub_func(const struct motion_sensor_t *s)
+{
+	return set_reg_bit_field(s, LSM6DSM_CTRL10_ADDR,
+						LSM6DSM_EMBED_FUNC_EN);
+}
+
+static inline int disable_sensorhub_func(const struct motion_sensor_t *s)
+{
+	return clear_reg_bit_field(s, LSM6DSM_CTRL10_ADDR,
+						LSM6DSM_EMBED_FUNC_EN);
+}
+
+static inline int enable_ereg_bank_acc(const struct motion_sensor_t *s)
+{
+	return set_reg_bit_field(s, LSM6DSM_FUNC_CFG_ACC_ADDR,
+							LSM6DSM_FUNC_CFG_EN);
+}
+
+static inline int disable_ereg_bank_acc(const struct motion_sensor_t *s)
+{
+	return clear_reg_bit_field(s, LSM6DSM_FUNC_CFG_ACC_ADDR,
+							LSM6DSM_FUNC_CFG_EN);
+}
+
+static inline int enable_aux_i2c_master(const struct motion_sensor_t *s)
+{
+	return set_reg_bit_field(s, LSM6DSM_MASTER_CFG_ADDR,
+							LSM6DSM_I2C_MASTER_ON);
+}
+
+static inline int disable_aux_i2c_master(const struct motion_sensor_t *s)
+{
+	return clear_reg_bit_field(s, LSM6DSM_MASTER_CFG_ADDR,
+							LSM6DSM_I2C_MASTER_ON);
+}
+
+static int enable_i2c_pass_through(const struct motion_sensor_t *s,
+							int *cache)
+{
+	int ret;
+
+	ret = st_raw_read8(s->port, s->addr, LSM6DSM_MASTER_CFG_ADDR, cache);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Fake set sensor hub to external trigger event and wait for 500ms */
+	ret = set_reg_bit_field(s, LSM6DSM_MASTER_CFG_ADDR,
+						LSM6DSM_EXT_TRIGGER_EN);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	msleep(500);
+	ret = clear_reg_bit_field(s, LSM6DSM_MASTER_CFG_ADDR,
+			(LSM6DSM_EXT_TRIGGER_EN | LSM6DSM_I2C_MASTER_ON));
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	return st_raw_write8(s->port, s->addr,
+			LSM6DSM_MASTER_CFG_ADDR, LSM6DSM_I2C_PASS_THRU_MODE);
+}
+
+static inline int disable_i2c_pass_through(const struct motion_sensor_t *s,
+								int cache)
+{
+	return st_raw_write8(s->port, s->addr, LSM6DSM_MASTER_CFG_ADDR,
+				(cache & (~LSM6DSM_I2C_PASS_THRU_MODE)));
+}
+
+static inline int power_down_accel(const struct motion_sensor_t *s,
+						int *cache)
+{
+	int ret;
+
+	ret = st_raw_read8(s->port, s->addr, LSM6DSM_CTRL1_ADDR, cache);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	return st_raw_write8(s->port, s->addr, LSM6DSM_CTRL1_ADDR,
+					((*cache) & LSM6DSM_XL_ODR_MASK));
+}
+
+static inline int restore_accel(const struct motion_sensor_t *s, int cache)
+{
+	return st_raw_write8(s->port, s->addr,
+				LSM6DSM_CTRL1_ADDR, cache);
+}
+
+static int config_slv0_read(const struct motion_sensor_t *s, uint8_t addr,
+						uint8_t reg, uint8_t len)
+{
+	int ret;
+
+	ret = st_raw_write8(s->port, s->addr, LSM6DSM_SLV0_ADD_ADDR,
+					(addr << LSM6DSM_SLV0_ADDR_SHFT) | 1);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = st_raw_write8(s->port, s->addr, LSM6DSM_SLV0_SUBADD_ADDR,	reg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/*
+	 * No decimation for external sensor 0,
+	 * Number of sensors connected to external sensor hub 1
+	 */
+	ret = st_raw_write8(s->port, s->addr, LSM6DSM_SLV0_CONFIG_ADDR,
+					(len & LSM6DSM_SLV0_NUM_OPS_MASK));
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	return 0;
+}
+
+int sensorhub_set_ext_data_rate(const struct motion_sensor_t *s,
+						int rate, int rnd)
+{
+	int xl_rate;
+	struct stprivate_data *data = s->drv_data;
+
+	xl_rate = st_get_data_rate(LSM6DSM_MAIN_SENSOR(s));
+	data->base.odr = MIN(rate, xl_rate);
+	config_fifo(LSM6DSM_MAIN_SENSOR(s));
+	return EC_SUCCESS;
+}
+
+int sensorhub_config_ext_reg(const struct motion_sensor_t *s,
+				uint8_t slv_addr, uint8_t reg, uint8_t val)
+{
+	int ret;
+	int tmp;
+
+	ret = enable_i2c_pass_through(s, &tmp);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = st_raw_write8(s->port, slv_addr, reg, val);
+	disable_i2c_pass_through(s, tmp);
+	return ret;
+}
+
+int sensorhub_config_slv0_read(const struct motion_sensor_t *s,
+			uint8_t slv_addr, uint8_t reg, int len)
+{
+	int tmp_xl_cfg;
+	int ret;
+
+	ret = power_down_accel(s, &tmp_xl_cfg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = enable_ereg_bank_acc(s);
+	if (ret != EC_SUCCESS)
+		goto out_restore_accel;
+
+	ret = config_slv0_read(s, slv_addr, reg, len);
+	disable_ereg_bank_acc(s);
+	if (ret != EC_SUCCESS)
+		goto out_restore_accel;
+
+	ret = enable_sensorhub_func(s);
+	if (ret != EC_SUCCESS)
+		goto out_restore_accel;
+
+	ret = enable_aux_i2c_master(s);
+	if (ret != EC_SUCCESS)
+		disable_sensorhub_func(s);
+
+out_restore_accel:
+	restore_accel(s, tmp_xl_cfg);
+	return ret;
+}
+
+int sensorhub_slv0_data_read(const struct motion_sensor_t *s, intv3_t v)
+{
+	uint8_t raw[OUT_XYZ_SIZE];
+	int ret;
+
+	/*
+	 * Accel/Gyro is already reading slave 0 data into the sensorhub1
+	 * register as soon as the accel is in power-up mode. So return the
+	 * contents of that register.
+	 */
+	ret = st_raw_read_n_noinc(s->port, s->addr, LSM6DSM_SENSORHUB1_REG,
+							raw, OUT_XYZ_SIZE);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Apply precision, sensitivity and rotation vector */
+	st_normalize(s, v, raw);
+	return EC_SUCCESS;
+}
+
+int sensorhub_check_and_rst(const struct motion_sensor_t *s, uint8_t slv_addr,
+					uint8_t whoami_reg, uint8_t whoami_val,
+					uint8_t rst_reg, uint8_t rst_val)
+{
+	int ret, tmp;
+	int tmp_master_cfg;
+
+	ret = enable_i2c_pass_through(s, &tmp_master_cfg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = st_raw_read8(s->port, slv_addr, whoami_reg, &tmp);
+	if (ret != EC_SUCCESS)
+		goto err_disable_i2c_pt;
+
+	if (tmp != whoami_val)
+		goto err_disable_i2c_pt;
+
+	ret = st_raw_write8(s->port, slv_addr, rst_reg, rst_val);
+err_disable_i2c_pt:
+	disable_i2c_pass_through(s, tmp_master_cfg);
+	return ret;
+}
