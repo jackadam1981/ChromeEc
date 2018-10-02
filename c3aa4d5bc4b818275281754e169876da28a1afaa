@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "633245e6_48eacc8c",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-10-02T04:15:01Z",
+      "side": 1,
+      "message": "Port is always a small number, so we could conceivably re-purpose the high order bits as API version if we wanted to do that.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9add4458_d955f656",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-10-02T04:15:01Z",
+      "side": 1,
+      "message": "nit: 32k as in read, since the MSB is used as a continuation flag",
+      "range": {
+        "startLine": 68,
+        "startChar": 29,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba01a7c_d2989482",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-10-02T04:15:01Z",
+      "side": 1,
+      "message": "Is there any code that currently does 127 \u003c write length \u003c 256? This change wouldn\u0027t be backwards compatible. Not to say we shoudln\u0027t do it but we\u0027d need to be careful. \n\nitspeter@ changed read max from 60 --\u003e 32768 so there was no previous possibility of length greater than 127.",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
