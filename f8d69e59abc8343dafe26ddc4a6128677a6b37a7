@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b133999a_ab21fb98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-02T00:37:10Z",
+      "side": 1,
+      "message": "this will not survive repo upload precheck,\n\nbranch, bug and test fields are needed. feel free to use  \u0027none\u0027 for the first two, but please describe how this was tested.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "f8d69e59abc8343dafe26ddc4a6128677a6b37a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
