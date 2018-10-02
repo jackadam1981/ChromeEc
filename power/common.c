@@ -219,22 +219,43 @@ enum power_state power_get_state(void)
 /* If host doesn't program s0ix lazy wake mask, use default s0ix mask */
 #define DEFAULT_WAKE_MASK_S0IX  (EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) | \
 				EC_HOST_EVENT_MASK(EC_HOST_EVENT_MODE_CHANGE))
+
+static int power_state_needs_wake_mask_reset(enum power_state state)
+{
+	/* If host has not got back to S0, don't reset the wake mask. */
+	if (state != POWER_S0)
+		return 0;
+
+#ifdef CONFIG_POWER_S0IX
+	/*
+	 * In S0, check to ensure that the host has sent S0ix resume command
+	 * before resetting the wake mask. This could be a periodic wake from
+	 * S0ix without host actually waking all the way up.
+	 */
+	if (power_get_host_sleep_state() == HOST_SLEEP_EVENT_S0IX_SUSPEND)
+		return 0;
+#endif
+
+	return 1;
+}
+
  /*
-  * Set wake mask on edge of sleep state entry
-  * 1. On transition to S0, wake mask is reset.
+  * Set wake mask for x86 host:
+  * 1. On transition to S0, wake mask is reset. If resuming from S0ix, reset
+  * wake mask only after host command to resume from S0ix is received.
   * 2. In non-S0 states, active mask set by host gets a higher preference.
   * 3. If host has not set any active mask, then check if a lazy mask exists
   *    for the current power state.
   * 4. If state is S0ix and no lazy or active wake mask is set, then use default
   *    S0ix mask to be compatible with older BIOS versions.
   *
-  * @param state New sleep state
+  * @param state Sleep state for which the mask needs to be set
   */
-static void power_set_active_wake_mask(enum power_state state)
+void power_set_active_wake_mask(enum power_state state)
 {
 	host_event_t wake_mask;
 
-	if (state == POWER_S0)
+	if (power_state_needs_wake_mask_reset(state))
 		wake_mask = 0;
 	else if (lpc_is_active_wm_set_by_host())
 		return;
