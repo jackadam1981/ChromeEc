@@ -835,3 +835,30 @@ void board_rtc_reset(void)
 	udelay(100);
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }
+
+static void set_oz554_reg(void)
+{
+	int val;
+	CPRINTS("\t set_oz554_reg!");
+	i2c_write8(NPCX_I2C_PORT1, 0x62, 0x01, 0x43);
+	i2c_write8(NPCX_I2C_PORT1, 0x62, 0x02, 0x65);
+	i2c_write8(NPCX_I2C_PORT1, 0x62, 0x03, 0x00);
+	i2c_write8(NPCX_I2C_PORT1, 0x62, 0x04, 0x00);
+	i2c_write8(NPCX_I2C_PORT1, 0x62, 0x05, 0x97);
+	i2c_write8(NPCX_I2C_PORT1, 0x62, 0x00, 0xF2);
+
+	i2c_read8(NPCX_I2C_PORT1, 0x62, 0x00, &val);
+	CPRINTS("\t Read from register 0x00 is 0x%02X", val);
+	i2c_read8(NPCX_I2C_PORT1, 0x62, 0x01, &val);
+	CPRINTS("\t Read from register 0x01 is 0x%02X", val);
+	i2c_read8(NPCX_I2C_PORT1, 0x62, 0x02, &val);
+	CPRINTS("\t Read from register 0x02 is 0x%02X", val);
+	i2c_read8(NPCX_I2C_PORT1, 0x62, 0x03, &val);
+	CPRINTS("\t Read from register 0x03 is 0x%02X", val);
+	i2c_read8(NPCX_I2C_PORT1, 0x62, 0x04, &val);
+	CPRINTS("\t Read from register 0x04 is 0x%02X", val);
+	i2c_read8(NPCX_I2C_PORT1, 0x62, 0x05, &val);
+	CPRINTS("\t Read from register 0x05 is 0x%02X", val);
+}
+DECLARE_HOOK(HOOK_SECOND, set_oz554_reg, HOOK_PRIO_DEFAULT);
+
