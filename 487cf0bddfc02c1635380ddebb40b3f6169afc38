@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7163c5db_85e2e89b",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-02T17:52:13Z",
+      "side": 1,
+      "message": "For big size data reading in a single i2c transaction with the following format,\n\u003cS\u003e\u003cAddr\u003e\u003cW\u003e\u003ccmd0\u003e\u003ccmd1\u003e...\u003ccmd-n\u003e\u003cSr\u003e\u003cAddr\u003e\u003cR\u003e\u003cdata0\u003e...\u003cdata\u003c63\u003e\u003cdata64\u003e...\u003cdata123\u003e\u003cdata124\u003e.....\u003cdata-nnn\u003e\u003cP\u003e.\n\n\u0027Restart\u0027 flag should be set at the beginning of data only once while writing to data_cmd register and only chip_i2c_xfer() knows when to insert this bit.\nAnd \u0027restart_flag\u0027 should be kept outside this function and to avoid defining \u0027restart_flag\u0027 as global, this variable is kept inside chip_i2c_xfer() and passed to this function. \nThis variable can be uint8_t is good enough but ISH is 32bit CPU and 32bit memory access must be more efficient.",
+      "parentUuid": "e2120186_758a6b8f",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "809658bf_e73126e6",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-01T20:53:31Z",
       "side": 1,
       "message": "how long do we expect this to take. This will potentially starve other tasks. Should we add a sleep in here to deschedule this task?",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 49
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1838ee09_38e00a10",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-02T17:52:13Z",
+      "side": 1,
+      "message": "This driver does not consider to write big data(more than FIFO size, 64) to the slave, assuming Write data is mainly commands and WR commands are typically small(2 ~ 6 bytes, (@ 1MHz, (9 bit x 1usec + ACK delay(7usec) \u003d 16uS per byte), 32usec ~ 100 usec.\nBut i2c_write_buffer() already initiate transmission when reached to here, only 1 ~ 2 bytes are still in FIFO and actual time will be shorter.\nIf we want to send big number of data, we need to use Tx FIFO Threshhold interrupt like inside while() loop.  This will be implemented later if needed and currently we don\u0027t have slave device to test.",
+      "parentUuid": "809658bf_e73126e6",
       "range": {
         "startLine": 334,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bb91ca49_1e0f7479",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-02T17:52:13Z",
+      "side": 1,
+      "message": "Agree, it is redundant and will be removed.",
+      "parentUuid": "8c94d2de_fd9fec83",
+      "range": {
+        "startLine": 340,
+        "startChar": 19,
+        "endLine": 340,
+        "endChar": 26
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0a21b0c_f14bd7d4",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2018-10-01T20:53:31Z",
       "side": 1,
       "message": "it would be cleaner if the logic to restart only once lived in this function (chip_i2c_xfer) instead of passing a variable that gets updated into a sub-function",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 17
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44aa5828_7f82b9a6",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-02T17:52:13Z",
+      "side": 1,
+      "message": "Do you mean adding all body of i2c_write_read_command() function and remove the function ?",
+      "parentUuid": "f0a21b0c_f14bd7d4",
       "range": {
         "startLine": 360,
         "startChar": 5,
@@ -114,6 +210,30 @@
       "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa249d8a_32a4942f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-02T17:52:13Z",
+      "side": 1,
+      "message": "Yes, I will change.",
+      "parentUuid": "8a14b3e3_38998942",
+      "range": {
+        "startLine": 363,
+        "startChar": 47,
+        "endLine": 363,
+        "endChar": 51
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
