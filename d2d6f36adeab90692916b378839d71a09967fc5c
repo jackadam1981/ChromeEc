@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0ae32516_118aa4f4",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-02T17:44:44Z",
+      "side": 1,
+      "message": "This is where it\u0027s overriden: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1247343\n\nHappy to add a declaration in a follow-up CL.",
+      "parentUuid": "30344f18_9910d452",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62ecc5f3_a62a477d",
         "filename": "include/mkbp_event.h",
         "patchSetId": 4
