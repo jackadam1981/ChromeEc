@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "ac7f9b0e_11bfee33",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-02T18:26:01Z",
+      "side": 1,
+      "message": "\u003e EC should be built with -Wstrict-prototypes -Wmissing-prototypes and -Werror. Your CLs would trip it up as it\u0027s poor practice to not have proper declarations.\n\nI suspect QC built this code according to the current settings before letting the CL through. Feel free to submit a CL to add these flags to the compilation, but I don\u0027t think my CL is to blame for their absence.\n\n\u003e As I noted previously you haven\u0027t sorted out how to handle multiple implementations of this function. It\u0027s creating a bit of a mess. This function is living in global namespace along w/ also having compilation unit local implementations. Which one is right? And when you add a board-specific implementation how does one ensure there aren\u0027t bugs being introduced in utilizing this?\n\nI would imagine one would test their code to the best extent possible, as for every other CL one writes",
+      "parentUuid": "9e6ab195_a38ee3eb",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62ecc5f3_a62a477d",
         "filename": "include/mkbp_event.h",
         "patchSetId": 4
