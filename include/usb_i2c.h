@@ -22,45 +22,66 @@
  *   - CONFIG_USB_I2C_MAX_WRITE_COUNT / CONFIG_USB_I2C_MAX_READ_COUNT have to
  *     be defined properly based on the use cases.
  *
- *   - Read less than 128 (0x80) bytes.
- *   +------+------+----+----+---------------+
+ *   Generic i2c over USB encapsulation is as follows:
+ *
+ *   +------+------+-||-+-||-+---------------+
  *   | port | addr | wc | rc | write payload |
  *   +------+------+----+----+---------------+
- *   |  1B  |  1B  | 1B | 1B |  < 256 bytes  |
+ *   |  1B  |  1B  | .. | .. |   wc bytes    |
  *   +------+------+----+----+---------------+
  *
- *   - Read less than 32768 (0x8000) bytes.
- *   +------+------+----+----+-----+----------+---------------+
- *   | port | addr | wc | rc | rc1 | reserved | write payload |
- *   +------+------+----+----+----------------+---------------+
- *   |  1B  |  1B  | 1B | 1B |  1B |    1B    |  < 256 bytes  |
- *   +------+------+----+----+----------------+---------------+
+ *   The wc field could be either one or three bytes in size:
+ *   - when size of write data is less than 255 bytes, the size of the wc
+ *     field is 1 byte, it contains the actual size of the write data. If more
+ *     than 254 bytes need to be written, the the size of wc field becomes
+ *     3 bytes: 0xff:size >> 8:size & 0xff, i.e. a prefix of 0xff and then the
+ *     actual size of the write payload in network byte order.
  *
- *   - Special notes for rc and rc1:
- *     If the most significant bit in rc is set (rc >= 0x80), this indicates
- *     that we want to read back more than 127 bytes, so the first byte of
- *     data contains rc1 (read count continuation), and the final read count
- *     will be (rc1 << 7) | (rc & 0x7F).
+ *   The rc filed could be either one or three bytes in size: If the most
+ *     significant bit in rc is set (rc >= 0x80), this indicates that we want
+ *     to read back more than 127 bytes, so the first byte of data contains
+ *     rc1 (read count continuation), and the final read count will be (rc1 <<
+ *     7) | (rc & 0x7F), and then an extra reserved byte is added to the
+ *     packet.
+ *
+ *   - Read less than 128 (0x80) bytes.
+ *   +------+------+-||-+-----+---------------+
+ *   | port | addr | wc | rc0 | write payload |
+ *   +------+------+----+-----+---------------+
+ *   |  1B  |  1B  | .. | 1B  |    wc bytes   |
+ *   +------+------+----+-----+---------------+
+ *
+ *   - Read between 128 and 32768 (0x8000) bytes.
+ *   +------+------+-||-+-----+-----+----------+---------------+
+ *   | port | addr | wc | rc0 | rc1 | reserved | write payload |
+ *   +------+------+----+-----+----------------+---------------+
+ *   |  1B  |  1B  | .. | 1B  |  1B |    1B    |    wc bytes   |
+ *   +------+------+----+-----+----------------+---------------+
+ *
+ *   - Write less than 255 (0xff) bytes.
+ *   +------+------+-----+-||-+---------------+
+ *   | port | addr | wc0 | rc | write payload |
+ *   +------+------+-----+----+---------------+
+ *   |  1B  |  1B  | 1B  | .. |  < 255 bytes  |
+ *   +------+------+-----+----+---------------+
+ *
+ *   - Write between 255 to  65535 (0xffff) bytes.
+ *   +------+------+--------+-----+-----+-||-+--------------------+
+ *   | port | addr | prefix | wc0 | wc1 | rc |   write payload    |
+ *   +------+------+--------+-----+-----+----+--------------------+
+ *   |  1B  |  1B  |  0xff  | 1B  |  1B | .. |  255..65535 bytes  |
+ *   +------+------+--------+-----+-----+----+--------------------+
  *
  *   Fields:
  *   - port: port address, 1 byte, i2c interface index.
  *
  *   - addr: slave address, 1 byte, i2c 7-bit bus address.
  *
- *   - wc: write count, 1 byte, zero based count of bytes to write. If the
- *         indicated write count cause the payload + header exceeds 64 bytes,
- *         Following packets are expected to continue the payload without
- *         header.
+ *   - wc: write count, see note above
  *
- *   - rc: read count, 1 byte, zero based count of bytes to read. To read more
- *         than 127 (0x7F) bytes please see the special notes above.
+ *   - rc: read count, see note above
  *
  *   - data: payload of data to write. See wc above for more information.
- *
- *   - rc1: extended read count, 1 byte. An extended version indicates we want
- *          to read more data. While the most significant bits is set in read
- *          count (rc >= 0x80), rc1 will concatenate with rc together. See the
- *          special notes above for concatenating details.
  *
  *   - reserved: reserved byte, 1 byte.
  *
