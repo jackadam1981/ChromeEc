@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f4ba2e5_adef06cf",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-02T01:37:15Z",
+      "side": 1,
+      "message": "This seems to be doing the same thing as the default code under CONFIG_BOARD_VERSION_GPIO in system_get_board_version. Do you really need CONFIG_BOARD_VERSION_CUSTOM for dragonegg?",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 21
+      },
+      "revId": "2b7d7ee58d363765625af405de1e724ec0a826fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
