@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "30344f18_9910d452",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-02T17:42:09Z",
+      "side": 1,
+      "message": "If it\u0027s a global that can be overridden (the point of weak) then it should have a global declaration and it should be commented with the intended usage. As it currently stands it\u0027s just free-floating global w/ no documentation with expected usage. Who\u0027s calling this function anyway if the existing users are all local to the compilation unit? And, if one wanted to call it what would they do? And how would that resolve with the existing users. I think one should solve the existing local-to-compilation-unit usage w/ this proposed change. And what is the difference w.r.t. mkbp_send_event()? Naming alone is confusing.",
+      "parentUuid": "2342f936_15e88ea0",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62ecc5f3_a62a477d",
         "filename": "include/mkbp_event.h",
         "patchSetId": 4
