@@ -28,8 +28,25 @@ extern uint32_t mkbp_last_event_time;
  */
 int mkbp_send_event(uint8_t event_type);
 
-void send_mkbp_event_gpio(int active);
-void send_mkbp_event_host(int active);
+/*
+ * Set MKBP active event status on the AP.
+ *
+ * This communicates to the AP whether an MKBP event is currently available
+ * for processing. It is used by mkbp_send_event().
+ *
+ * @param active  1 if there is an event, 0 otherwise
+ */
+void mkbp_set_host_active(int active);
+
+/*
+ * Set a GPIO in order to communicate an MKBP event to the AP.
+ */
+void mkbp_set_host_active_via_gpio(int active);
+
+/*
+ * Use EC_HOST_EVENT in order to communicate an MKBP event to the AP.
+ */
+void mkbp_set_host_active_via_event(int active);
 
 /*
  * The struct to store the event source definition.  The get_data routine is
