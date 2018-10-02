@@ -46,6 +46,30 @@
       "revId": "56a4557f5f3fc7dac7e26a6101255cdf019822ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d386fc_a17a4af0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-02T01:49:18Z",
+      "side": 1,
+      "message": "This is how it is handled on depthcharge side: https://cs.corp.google.com/chromeos_public/src/platform/depthcharge/src/drivers/input/mkbp/mkbp.c?q\u003dmkbp+file:%5Esrc/platform/depthcharge/+package:%5Echromeos_public$\u0026g\u003d0\u0026l\u003d45\n\nCONFIG_DRIVER_INPUT_MKBP_NO_INTERRUPT is defined for all x86 boards. But fixing this on depthcharge side won\u0027t be just removing this config. Instead, cros_ec_interrupt_pending will have to be provided which queries gpe_sts to indicate if interrupt was actually triggered.",
+      "parentUuid": "868abbec_edb5e135",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "56a4557f5f3fc7dac7e26a6101255cdf019822ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
