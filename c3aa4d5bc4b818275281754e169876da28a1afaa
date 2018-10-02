@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "307dc480_b1b63589",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-02T04:22:33Z",
+      "side": 1,
+      "message": "ah, this is not a bad idea, a few bits extension would be enough.",
+      "parentUuid": "633245e6_48eacc8c",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9add4458_d955f656",
         "filename": "include/usb_i2c.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cd1d35e8_9a180dfd",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-02T04:22:33Z",
+      "side": 1,
+      "message": "this comment is about write, read is in line 54",
+      "parentUuid": "9add4458_d955f656",
+      "range": {
+        "startLine": 68,
+        "startChar": 29,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fba01a7c_d2989482",
         "filename": "include/usb_i2c.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-02T04:15:01Z",
       "side": 1,
       "message": "Is there any code that currently does 127 \u003c write length \u003c 256? This change wouldn\u0027t be backwards compatible. Not to say we shoudln\u0027t do it but we\u0027d need to be careful. \n\nitspeter@ changed read max from 60 --\u003e 32768 so there was no previous possibility of length greater than 127.",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34826dfc_2f6fc691",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-02T04:22:33Z",
+      "side": 1,
+      "message": "this is a bit misleading, but the only rejected value would be 255, which becomes the prefix (previous byte) indicating that write length is in two following bytes.\n\nFor write sizes below 255 there would be just one byte.",
+      "parentUuid": "fba01a7c_d2989482",
       "range": {
         "startLine": 70,
         "startChar": 30,
