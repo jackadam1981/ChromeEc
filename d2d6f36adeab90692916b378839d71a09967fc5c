@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38747c2d_c2f0e164",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-02T14:22:46Z",
+      "side": 1,
+      "message": "Where\u0027s the declaration for this? It\u0027s marked weak. But not global declaration. Moreover, it seems this symbol exists locally in other compilation units. This needs to be fixed up unless I am missing something.",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ecc5f3_a62a477d",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-02T14:22:46Z",
+      "side": 1,
+      "message": "Why aren\u0027t there comments here describing when one should be used over the other? Please follow up and add the appropriate comments.",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
