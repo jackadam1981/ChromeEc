@@ -82,6 +82,12 @@
 /* Delay between power-on the system and power-on the PMIC */
 #define SYSTEM_POWER_ON_DELAY		(10 * MSEC)
 
+/* Delay to confirm the power lost */
+#define POWER_LOST_CONFIRM_DELAY        (350 * MSEC)
+
+/* Delay to wait VBOB rail drop */
+#define VBOB_DROP_DELAY			(200 * MSEC)
+
 /* TODO(crosbug.com/p/25047): move to HOOK_POWER_BUTTON_CHANGE */
 /* 1 if the power button was pressed last time we checked */
 static char power_button_was_pressed;
@@ -151,6 +157,36 @@ DECLARE_DEFERRED(chipset_reset_request_handler);
 void chipset_reset_request_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&chipset_reset_request_handler_data, 0);
+}
+
+/* AP reset GPIO interrupt handlers */
+static void chipset_ap_reset_handler(void)
+{
+	/*
+	 * Check if it is a short-pulse, i.e. backing to high.
+	 * Do nothing if it stays low. Since the POWER_GOOD drops and
+	 * then triggers power-off sequence.
+	 */
+	if (gpio_get_level(GPIO_AP_RST_L)) {
+		CPRINTS("AP_RST_L short pulse -> cold reset");
+		chipset_reset(CHIPSET_RESET_AP_REQ);
+	}
+}
+DECLARE_DEFERRED(chipset_ap_reset_handler);
+
+void chipset_ap_reset_interrupt(enum gpio_signal signal)
+{
+	/*
+	 * On the falling edge, debounce to check if it is a short-pulse.
+	 * Make sure it is not triggered by previous AP_RST_L short-pulse
+	 * or console reboot command to avoid a reboot loop.
+	 */
+	if (!gpio_get_level(GPIO_AP_RST_L) && !bypass_power_lost_trigger)
+		hook_call_deferred(&chipset_ap_reset_handler_data,
+				   POWER_LOST_CONFIRM_DELAY);
+
+	/* Record the power signal timing */
+	power_signal_interrupt(signal);
 }
 
 static void sdm845_lid_event(void)
@@ -330,6 +366,7 @@ enum power_state power_chipset_init(void)
 
 	/* Enable reboot control input from AP */
 	gpio_enable_interrupt(GPIO_AP_RST_REQ);
+	gpio_enable_interrupt(GPIO_AP_RST_L);
 
 	/*
 	 * Force the AP shutdown unless we are doing SYSJUMP. Otherwise,
@@ -385,7 +422,6 @@ static void power_off(void)
 	set_pmic_pwron(0);
 
 	/* Disable signal interrupts, as they are floating when switchcap off */
-	power_signal_disable_interrupt(GPIO_AP_RST_L);
 	power_signal_disable_interrupt(GPIO_PMIC_FAULT_L);
 
 	/* Force to switch off all rails */
@@ -458,7 +494,6 @@ static void power_on(void)
 	usleep(SYSTEM_POWER_ON_DELAY);
 
 	/* Enable signal interrupts */
-	power_signal_enable_interrupt(GPIO_AP_RST_L);
 	power_signal_enable_interrupt(GPIO_PMIC_FAULT_L);
 
 	set_pmic_pwron(1);
@@ -608,6 +643,9 @@ void chipset_reset(enum chipset_reset_reason reason)
 	bypass_power_lost_trigger = 1;
 	power_off();
 	bypass_power_lost_trigger = 0;
+
+	/* Extra delay to ensure VBOB drop */
+	usleep(VBOB_DROP_DELAY);
 
 	/* Issue a request to initiate a power-on sequence */
 	power_request = POWER_REQ_ON;
