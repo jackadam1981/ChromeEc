@@ -547,6 +547,7 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 		 */
 		s0ix_notify = S0IX_NOTIFY_SUSPEND;
 		lpc_s0ix_suspend_clear_masks();
+		power_set_active_wake_mask(POWER_S0ix);
 		power_signal_enable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*
@@ -558,9 +559,11 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 		/* clear host events */
 		while (lpc_get_next_host_event() != 0)
 			;
+		power_set_active_wake_mask(POWER_S0);
 		lpc_s0ix_resume_restore_masks();
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_DEFAULT_RESET) {
+		power_set_active_wake_mask(POWER_S0);
 		power_signal_disable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	}
 #endif

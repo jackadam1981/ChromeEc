@@ -183,6 +183,23 @@ int power_get_pause_in_s5(void);
  */
 void power_set_pause_in_s5(int pause);
 
+#ifdef CONFIG_HOSTCMD_X86
+/**
+ * Set wake mask for host:
+ * 1. On transition to S0, wake mask is reset. If resuming from S0ix, reset
+ * wake mask only after host command to resume from S0ix is received.
+ * 2. In non-S0 states, active mask set by host gets a higher preference.
+ * 3. If host has not set any active mask, then check if a lazy mask exists
+ *    for the current power state.
+ * 4. If state is S0ix and no lazy or active wake mask is set, then use default
+ *    S0ix mask to be compatible with older BIOS versions.
+ *
+ * @param state Sleep state for which the mask needs to be set
+ */
+void power_set_active_wake_mask(enum power_state state);
+
+#endif /* CONFIG_HOSTCMD_X86 */
+
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 /**
  * Get sleep state of host, as reported by the host.
