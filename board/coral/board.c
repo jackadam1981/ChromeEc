@@ -280,6 +280,7 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 static int ps8751_tune_mux(const struct usb_mux *mux)
 {
+	CPRINTS("test");
 	/* 0x98 sets lower EQ of DP port (4.5db) */
 	i2c_write8(NPCX_I2C_PORT0_1, 0x16, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION,
 		   0x98);
