@@ -140,6 +140,30 @@
       "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79b3ac17_09ea4e0b",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-10-02T04:51:10Z",
+      "side": 1,
+      "message": "Ah yes, I see! I misread it, you\u0027d already taken care of this case. Never mind my comments then.",
+      "parentUuid": "34826dfc_2f6fc691",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "c3aa4d5bc4b818275281754e169876da28a1afaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
