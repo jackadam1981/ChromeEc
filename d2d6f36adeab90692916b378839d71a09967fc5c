@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2342f936_15e88ea0",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-02T17:34:03Z",
+      "side": 1,
+      "message": "It is a static in other compilation units, whereas this one is exported - unless I misunderstand things, making this __weak__ affects the linkage (as in, a non-static non-weak other symbol of the same name will be the one that ends up used at link time to resolve this name), but local static symbols don\u0027t get resolved at link time anyway\n\nIf you feel strongly about it and want a rename, sure by all means - but I don\u0027t think there\u0027s a bug here.. Feel free to correct me",
+      "parentUuid": "38747c2d_c2f0e164",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62ecc5f3_a62a477d",
         "filename": "include/mkbp_event.h",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "005d4942_62396483",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-02T17:34:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62ecc5f3_a62a477d",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
