@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "9e6ab195_a38ee3eb",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-02T18:20:39Z",
+      "side": 1,
+      "message": "EC should be built with -Wstrict-prototypes -Wmissing-prototypes and -Werror. Your CLs would trip it up as it\u0027s poor practice to not have proper declarations.\n\nAs I noted previously you haven\u0027t sorted out how to handle multiple implementations of this function. It\u0027s creating a bit of a mess. This function is living in global namespace along w/ also having compilation unit local implementations. Which one is right? And when you add a board-specific implementation how does one ensure there aren\u0027t bugs being introduced in utilizing this?",
+      "parentUuid": "0ae32516_118aa4f4",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62ecc5f3_a62a477d",
         "filename": "include/mkbp_event.h",
         "patchSetId": 4
