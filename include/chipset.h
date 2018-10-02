@@ -183,6 +183,7 @@ static inline void power_interrupt(enum gpio_signal signal) { }
 static inline void chipset_handle_espi_reset_assert(void) { }
 static inline void chipset_handle_reboot(void) { }
 static inline void chipset_reset_request_interrupt(enum gpio_signal signal) { }
+static inline void chipset_ap_reset_interrupt(enum gpio_signal signal) { }
 static inline void chipset_warm_reset_interrupt(enum gpio_signal signal) { }
 static inline void chipset_power_signal_interrupt(enum gpio_signal signal) { }
 
@@ -208,6 +209,14 @@ void chipset_handle_reboot(void);
 void chipset_reset_request_interrupt(enum gpio_signal signal);
 
 /**
+ * GPIO interrupt handler of AP reset signal.
+ *
+ * It is used in SDM845 chipset power sequence.
+ */
+void chipset_ap_reset_interrupt(enum gpio_signal signal);
+
+/**
+
  * GPIO interrupt handler of warm reset signal from servo or H1.
  *
  * It is used in SDM845 chipset power sequence.
