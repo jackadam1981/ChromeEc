@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8336aff_164d8d90",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2766,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-03T19:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98a06097_5f79446f",
+      "range": {
+        "startLine": 2765,
+        "startChar": 5,
+        "endLine": 2766,
+        "endChar": 47
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f44c137_a6a5964a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c97abf7_6384b962",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4124,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-03T19:57:59Z",
+      "side": 1,
+      "message": "I don\u0027t think the added complexity is justified for an infrequently-used error handling path.  By definition, if this thing is a hot spot, there are more important concerns.\n\nBut if we\u0027re going down that road, I\u0027d rather just use leading-zero-count instead of find-last-set.  Its a pinch smaller, since you don\u0027t have to subtract off the bias, and fls is pedagogically awful.  Its undefined for x\u003d\u003d\u003d0.  Even though that\u0027s not an obstacle for this logic, its a bad habit that I don\u0027t want to encourage when it isn\u0027t required.",
+      "parentUuid": "4f44c137_a6a5964a",
+      "range": {
+        "startLine": 4123,
+        "startChar": 1,
+        "endLine": 4124,
+        "endChar": 36
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a717790f_351111d1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4133,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-03T19:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6b496d8_2c27e4fa",
+      "range": {
+        "startLine": 4133,
+        "startChar": 42,
+        "endLine": 4133,
+        "endChar": 53
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0208290_a607eb29",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c096081a_7877da85",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4096,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-03T19:57:59Z",
+      "side": 1,
+      "message": "Elided.",
+      "parentUuid": "f0208290_a607eb29",
+      "range": {
+        "startLine": 4096,
+        "startChar": 12,
+        "endLine": 4096,
+        "endChar": 38
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
