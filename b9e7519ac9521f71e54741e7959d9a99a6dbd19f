@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "04c0fbaf_b8247b26",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-03T17:27:24Z",
+      "side": 1,
+      "message": "I moved this around, as tpm_stop() needs to be issued after tpm reset.",
+      "parentUuid": "8e8b6930_3bc0eb99",
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "467480a0_3b706e14",
         "filename": "common/factory_mode.c",
         "patchSetId": 2
@@ -114,6 +132,30 @@
       "side": 1,
       "message": "The behavior of reset_required_ seems a little strange to me, because it looks like it can change while this factory enable process is running. If someone staggers a factory enable from the AP and a factory enable from the console, reset_required_ can change in the middle of the process. Yes it\u0027s unlikely, but this doesn\u0027t seem like the right way to do things.\n\nI was thinking it\u0027s safest to always deassert ec_reset, but I\u0027m not so sure.",
       "parentUuid": "2bf6e158_3d0ef609",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84250311_504b1399",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-03T17:27:24Z",
+      "side": 1,
+      "message": "I don\u0027t understand the model you are describing, but in any case \"reset_required_ \u003d\u003d False\" means there is no asserted reset, so there is no reason to invoke this deferred function.",
+      "parentUuid": "e7970d0f_c6e2a5dc",
       "range": {
         "startLine": 94,
         "startChar": 0,
