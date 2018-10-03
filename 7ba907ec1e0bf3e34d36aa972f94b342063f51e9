@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2c9c7671_f4401ee8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-03T00:47:07Z",
+      "side": 1,
+      "message": "Can remove this unless you have other changes you want to land.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "7ba907ec1e0bf3e34d36aa972f94b342063f51e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "171a4ff7_947468fd",
         "filename": "board/nocturne/gpio.inc",
         "patchSetId": 3
