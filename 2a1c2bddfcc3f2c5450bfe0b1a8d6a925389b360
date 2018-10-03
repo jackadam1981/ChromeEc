@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "193dd981_d3458304",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T20:03:59Z",
+      "side": 1,
+      "message": "I think that __builtin_clz is inverted from what we want\n\nif port \u003d 0, then pd_ports_to_resume is 1, and __fls is 0 and __builtin_clz is 31",
+      "parentUuid": "8c97abf7_6384b962",
+      "range": {
+        "startLine": 4123,
+        "startChar": 1,
+        "endLine": 4124,
+        "endChar": 36
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6b496d8_2c27e4fa",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
