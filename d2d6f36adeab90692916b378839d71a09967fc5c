@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "92b82abc_929c95d1",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-03T05:43:27Z",
+      "side": 1,
+      "message": "bug added: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d891602",
+      "parentUuid": "8bd32624_3e80bd2c",
+      "revId": "d2d6f36adeab90692916b378839d71a09967fc5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62ecc5f3_a62a477d",
         "filename": "include/mkbp_event.h",
         "patchSetId": 4
