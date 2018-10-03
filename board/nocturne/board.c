@@ -26,6 +26,8 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "lpc.h"
+#include "mkbp_event.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -390,6 +392,20 @@ void board_hibernate(void)
 		;
 }
 
+static int mkbp_uses_gpio(void)
+{
+	return (board_get_version() & 0x2) == 0x2;
+}
+
+void mkbp_set_host_active(int active)
+{
+	if (mkbp_uses_gpio())
+		mkbp_set_host_active_via_gpio(active);
+
+	/* Always send the host event for compatibility */
+	mkbp_set_host_active_via_event(active);
+}
+
 static void board_init(void)
 {
 	/* Enable USB Type-C interrupts. */
@@ -399,6 +415,18 @@ static void board_init(void)
 	/* Enable sensor IRQs if we're in S0. */
 	if (chipset_in_state(CHIPSET_STATE_ON))
 		enable_sensor_irqs();
+
+	if (mkbp_uses_gpio()) {
+		/*
+		 * If this board uses GPIO for MKBP notification,
+		 * set the host_event as well, but don't actually trigger the
+		 * SCI interrupt, as nobody will be listening for it anyway.
+		 */
+		host_event_t host_event_mask =
+			lpc_get_host_event_mask(LPC_HOST_EVENT_SCI);
+		host_event_mask &= ~EC_HOST_EVENT_MASK(EC_HOST_EVENT_MKBP);
+		lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, host_event_mask);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
