@@ -45,6 +45,30 @@
       "revId": "dae488d88dbb0e204678762f9fb6ba5223f1fdc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f373185_c20bdc96",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-03T18:56:03Z",
+      "side": 1,
+      "message": "There\u0027s a certain elegance to that.  Plus it has the advantage of being very visible if someone is adding a new enum pd_ctrl_msg_type which needs to be considered an AMS start.  I\u0027ll work on it",
+      "parentUuid": "6d184eda_ac528ef2",
+      "range": {
+        "startLine": 808,
+        "startChar": 21,
+        "endLine": 818,
+        "endChar": 42
+      },
+      "revId": "dae488d88dbb0e204678762f9fb6ba5223f1fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
