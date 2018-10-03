@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9e4f977_a5957c8a",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-03T18:05:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46281bee_d78a6772",
+      "range": {
+        "startLine": 863,
+        "startChar": 1,
+        "endLine": 863,
+        "endChar": 20
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31ad21ec_e7cd465b",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "eec765acb8cd9132ca3bca315a37236957399874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d9f87cf_2421845f",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-03T18:05:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ad21ec_e7cd465b",
+      "range": {
+        "startLine": 868,
+        "startChar": 0,
+        "endLine": 871,
+        "endChar": 2
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "97e6ed3b_c3f604d7",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-03T18:05:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9a29f47_11ec267b",
+      "range": {
+        "startLine": 922,
+        "startChar": 5,
+        "endLine": 922,
+        "endChar": 14
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c2176fe_4dbb47a6",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2018-07-25T18:44:17Z",
       "side": 1,
       "message": "Why not just break or return?",
+      "range": {
+        "startLine": 972,
+        "startChar": 3,
+        "endLine": 972,
+        "endChar": 12
+      },
+      "revId": "eec765acb8cd9132ca3bca315a37236957399874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91acf85a_f153295f",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-03T18:05:17Z",
+      "side": 1,
+      "message": "Get rid of the while loop altogether. Use the interrupt register to tell if the FIFO is empty or not.",
+      "parentUuid": "0c2176fe_4dbb47a6",
       "range": {
         "startLine": 972,
         "startChar": 3,
