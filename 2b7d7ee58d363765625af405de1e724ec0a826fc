@@ -22,6 +22,30 @@
       "revId": "2b7d7ee58d363765625af405de1e724ec0a826fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaaf26a5_04ff65de",
+        "filename": "board/dragonegg/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-03T23:56:11Z",
+      "side": 1,
+      "message": "No, I probably don\u0027t need a custom one. I had taken this from Eve thinking it was using gpio_ternary() function. But, subsequently found out that was supported by HW and just modified this function.",
+      "parentUuid": "2f4ba2e5_adef06cf",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 21
+      },
+      "revId": "2b7d7ee58d363765625af405de1e724ec0a826fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
