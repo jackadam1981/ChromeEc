@@ -57,6 +57,9 @@
 #define ST_TOUCH_FORCE_SIZE	(ST_TOUCH_ROWS * BYTES_PER_PIXEL)
 #define ST_TOUCH_SENSE_SIZE	(ST_TOUCH_COLS * BYTES_PER_PIXEL)
 
+typedef uint8_t force_t;
+typedef uint8_t sense_t;
+
 #define ST_TP_MEM_ID_SYSTEM_INFO	0x01
 
 #define ST_TP_FLASH_OFFSET_CODE (0x0000 << 2)
@@ -186,10 +189,8 @@ struct st_tp_host_buffer_header_t {
 
 struct st_tp_host_buffer_heat_map_t {
 	uint8_t frame[ST_TOUCH_FRAME_SIZE];
-#if 0  /* we are not using these now */
-	uint8_t force[ST_TOUCH_FORCE_SIZE];
-	uint8_t sense[ST_TOUCH_SENSE_SIZE];
-#endif
+	force_t force[ST_TOUCH_ROWS];
+	sense_t sense[ST_TOUCH_COLS];
 } __packed;
 
 struct st_tp_event_t {

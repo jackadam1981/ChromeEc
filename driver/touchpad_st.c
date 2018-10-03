@@ -103,7 +103,6 @@ static struct {
 	union {
 		uint8_t bytes[512];
 		struct st_tp_host_buffer_header_t buffer_header;
-		struct st_tp_host_buffer_heat_map_t heat_map;
 		struct st_tp_host_data_header_t data_header;
 		struct st_tp_event_t events[32];
 		uint32_t dump_info[32];
@@ -135,11 +134,7 @@ struct st_tp_usb_packet_t {
 	 */
 	uint8_t flags;
 
-	/*
-	 * This will be `st_tp_host_buffer_heat_map_t.frame` but each pixel
-	 * will be scaled to 8 bits value.
-	 */
-	uint8_t frame[ST_TOUCH_ROWS * ST_TOUCH_COLS];
+	struct st_tp_host_buffer_heat_map_t heat_map;
 } __packed;
 
 /* Next buffer index SPI will write to. */
@@ -1455,7 +1450,7 @@ static void print_frame(void)
 			for (j = 0; j < ST_TOUCH_COLS; j++) {
 				index = i * ST_TOUCH_COLS;
 				index += (ST_TOUCH_COLS - j - 1); // flip X
-				v = packet->frame[index];
+				v = packet->heat_map.frame[index];
 
 				if (v > 0)
 					debug_line[j] = '0' + v * 10 / 256;
@@ -1473,7 +1468,8 @@ static void print_frame(void)
 static int st_tp_read_frame(void)
 {
 	int ret = EC_SUCCESS;
-	int rx_len = ST_TOUCH_FRAME_SIZE + ST_TP_DUMMY_BYTE;
+	/* -1 is for flags */
+	const int rx_len = ST_TP_DUMMY_BYTE + sizeof(usb_packet[0]) - 1;
 	int heat_map_addr = get_heat_map_addr();
 	uint8_t tx_buf[] = {
 		ST_TP_CMD_READ_SPI_HOST_BUFFER,
@@ -1493,7 +1489,7 @@ static int st_tp_read_frame(void)
 	BUILD_ASSERT(sizeof(usb_packet[0].flags) == 1);
 	uint8_t *rx_buf = &usb_packet[spi_buffer_index & 1].flags;
 #else
-	uint8_t *rx_buf = usb_packet[spi_buffer_index & 1].frame;
+	uint8_t *rx_buf = &usb_packet[spi_buffer_index & 1].heat_map;
 #endif
 
 	ret = st_tp_read_all_events(0);
@@ -1516,7 +1512,7 @@ static int st_tp_read_frame(void)
 			      (uint8_t *)rx_buf, rx_len);
 	if (ret == EC_SUCCESS) {
 		int i;
-		uint8_t *dest = usb_packet[spi_buffer_index & 1].frame;
+		uint8_t *dest = usb_packet[spi_buffer_index & 1].heat_map.frame;
 		uint8_t max_value = 0;
 
 		for (i = 0; i < ST_TOUCH_COLS * ST_TOUCH_ROWS; i++)
