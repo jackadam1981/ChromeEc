@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d72cb94a_1aec1e45",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-03T14:39:30Z",
+      "side": 1,
+      "message": "Can you add a comment about tpm_stop here. We need to make sure this doesn\u0027t accidentally get removed in the future.",
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467480a0_3b706e14",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-03T14:39:30Z",
+      "side": 1,
+      "message": "you check this in factory_enable_failed. Why do we also need this here?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
