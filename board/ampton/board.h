@@ -17,9 +17,6 @@
 #define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L GPIO_EC_VOLDN_BTN_ODL
 
-/* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-
 /* Sensors */
 /* TODO(b/115502220): Ampton/Apel: confirm thermistor parts */
 #define CONFIG_TEMP_SENSOR
