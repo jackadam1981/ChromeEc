@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "44ab5e20_6854880d",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-03T15:56:30Z",
+      "side": 1,
+      "message": "isn\u0027t this what the comment in lines 68..71 is about?\n\nAlso, do we accidentally remove code? The reviewers should catch things like that ;)",
+      "parentUuid": "d72cb94a_1aec1e45",
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "467480a0_3b706e14",
         "filename": "common/factory_mode.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2018-10-03T14:39:30Z",
       "side": 1,
       "message": "you check this in factory_enable_failed. Why do we also need this here?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bf6e158_3d0ef609",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-03T15:56:30Z",
+      "side": 1,
+      "message": "If reset is not required - there is no point in starting this timer, as the only thing which factory_enable_failed() does is deasserting the reset, which would not be asserted if reset_required_ is false.\n\nThis all is a bit of a mess, what happens is that the ccd_config_changed() callback above runs before line 91 is executed, but I am not sure if this is guaranteed.\n\nnote that factory_enable_failed() is also called in line 92, so that function before deasserting the reset should check if it was asserted.",
+      "parentUuid": "467480a0_3b706e14",
       "range": {
         "startLine": 94,
         "startChar": 0,
