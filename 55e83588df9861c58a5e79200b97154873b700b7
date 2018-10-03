@@ -22,6 +22,30 @@
       "revId": "55e83588df9861c58a5e79200b97154873b700b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92a4416b_b2cb22ba",
+        "filename": "baseboard/dragonegg/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-03T23:55:40Z",
+      "side": 1,
+      "message": "My thought was to remove it once I had verified P1 behavior.",
+      "parentUuid": "f5e8d9a5_3f82797d",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "55e83588df9861c58a5e79200b97154873b700b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
