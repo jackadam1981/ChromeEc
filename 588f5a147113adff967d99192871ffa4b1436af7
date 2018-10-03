@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08f49e74_0112044e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2770,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T20:06:35Z",
+      "side": 1,
+      "message": "Thinking about this again, this could fill up again in between the file we clean it (here) and when we set the disable bit which stops the interrupt for firing. Maybe we should clear it on resume instead?",
+      "range": {
+        "startLine": 2769,
+        "startChar": 3,
+        "endLine": 2770,
+        "endChar": 47
+      },
+      "revId": "588f5a147113adff967d99192871ffa4b1436af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
