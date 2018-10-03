@@ -16,6 +16,24 @@
       "revId": "7ba907ec1e0bf3e34d36aa972f94b342063f51e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545a17d5_28351e49",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-10-03T00:28:52Z",
+      "side": 1,
+      "message": "That what Yorp did. Use 1.8V with USB_C_OC when CPU is config to 3.3V.\n\nSee CL:1092391\nCommit message claims that strap pins to input + PU save power but it is not.\nWhat actually save power is the 1.8V change.",
+      "parentUuid": "171a4ff7_947468fd",
+      "revId": "7ba907ec1e0bf3e34d36aa972f94b342063f51e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
