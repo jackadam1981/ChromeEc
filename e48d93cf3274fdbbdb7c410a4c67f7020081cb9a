@@ -63,6 +63,24 @@
       "revId": "e48d93cf3274fdbbdb7c410a4c67f7020081cb9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd09228_b0cd7283",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-10-03T01:27:26Z",
+      "side": 1,
+      "message": "Didn\u0027t try yet because schematic said 3.3V for these channels.\n\nWill try tomorrow.",
+      "parentUuid": "f7c0d01a_de263f97",
+      "revId": "e48d93cf3274fdbbdb7c410a4c67f7020081cb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
