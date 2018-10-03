@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98a06097_5f79446f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2766,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T17:15:32Z",
+      "side": 1,
+      "message": "let\u0027s add a comment justify why we clear the queue. e.g. we want the resume to start from a clean state not having any left over RX messages to process (and RX overflow buffers can cause port suspension)",
+      "range": {
+        "startLine": 2765,
+        "startChar": 5,
+        "endLine": 2766,
+        "endChar": 47
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f44c137_a6a5964a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T17:15:32Z",
+      "side": 1,
+      "message": "we can change this to\n\nwhile (suspended_ports){\n   port \u003d __fls(suspended_ports);\n   suspended_ports \u0026\u003d ~ (1 \u003c\u003c port);\n   pd_set_suspend(port, 0);\n}\n\nand we rely on the pd_deferred_resume to not schedule bad ports",
+      "range": {
+        "startLine": 4123,
+        "startChar": 1,
+        "endLine": 4124,
+        "endChar": 36
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6b496d8_2c27e4fa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4133,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T17:15:32Z",
+      "side": 1,
+      "message": "there is a SECOND define we can use here",
+      "range": {
+        "startLine": 4133,
+        "startChar": 42,
+        "endLine": 4133,
+        "endChar": 53
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0208290_a607eb29",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4096,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T17:15:32Z",
+      "side": 1,
+      "message": "I would rather not add this new config option if we don\u0027t have to (I am assuming this is for space limitations)\n\nCONFIG_USB_PD_TCPM_ANX74XX already requires CONFIG_USB_PD_TCPM_TCPCI by one of the first lines in anx74xx.c",
+      "range": {
+        "startLine": 4096,
+        "startChar": 12,
+        "endLine": 4096,
+        "endChar": 38
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
