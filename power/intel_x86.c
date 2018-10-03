@@ -513,7 +513,7 @@ static host_event_t backup_smi_mask;
  * BIOS is not involved in the suspend path, EC needs to take care of clearing
  * these masks.
  */
-static void lpc_s0ix_suspend_clear_masks(void)
+void lpc_s0ix_suspend_clear_masks(void)
 {
 	backup_sci_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SCI);
 	backup_smi_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI);
@@ -546,7 +546,6 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 		 * notification needs to be sent to listeners.
 		 */
 		s0ix_notify = S0IX_NOTIFY_SUSPEND;
-		lpc_s0ix_suspend_clear_masks();
 		power_signal_enable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
 	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
 		/*

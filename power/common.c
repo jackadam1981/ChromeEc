@@ -246,6 +246,11 @@ static void power_set_active_wake_mask(enum power_state state)
 #endif
 
 	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
+
+#ifdef CONFIG_POWER_S0IX
+	if (state == POWER_S0ix)
+		lpc_s0ix_suspend_clear_masks();
+#endif
 }
 #else
 static void power_set_active_wake_mask(enum power_state state) { }
