@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8e8b6930_3bc0eb99",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-03T16:09:54Z",
+      "side": 1,
+      "message": "This is the type of thing to slip through the cracks. It is better to have it explicitly written, so it\u0027s easier to catch.\n\nI think that comment makes sense for the ec_rst line. Just say disable TPM so it can\u0027t be used after we erase it or something.",
+      "parentUuid": "44ab5e20_6854880d",
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "467480a0_3b706e14",
         "filename": "common/factory_mode.c",
         "patchSetId": 2
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "If reset is not required - there is no point in starting this timer, as the only thing which factory_enable_failed() does is deasserting the reset, which would not be asserted if reset_required_ is false.\n\nThis all is a bit of a mess, what happens is that the ccd_config_changed() callback above runs before line 91 is executed, but I am not sure if this is guaranteed.\n\nnote that factory_enable_failed() is also called in line 92, so that function before deasserting the reset should check if it was asserted.",
       "parentUuid": "467480a0_3b706e14",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 23
+      },
+      "revId": "b9e7519ac9521f71e54741e7959d9a99a6dbd19f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7970d0f_c6e2a5dc",
+        "filename": "common/factory_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-03T16:09:54Z",
+      "side": 1,
+      "message": "The behavior of reset_required_ seems a little strange to me, because it looks like it can change while this factory enable process is running. If someone staggers a factory enable from the AP and a factory enable from the console, reset_required_ can change in the middle of the process. Yes it\u0027s unlikely, but this doesn\u0027t seem like the right way to do things.\n\nI was thinking it\u0027s safest to always deassert ec_reset, but I\u0027m not so sure.",
+      "parentUuid": "2bf6e158_3d0ef609",
       "range": {
         "startLine": 94,
         "startChar": 0,
