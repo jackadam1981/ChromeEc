@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7db50813_1f9d013d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-03T18:02:52Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "dae488d88dbb0e204678762f9fb6ba5223f1fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d184eda_ac528ef2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-03T18:02:52Z",
+      "side": 1,
+      "message": "What about creating a bit mask (AMS_MSG_TYPE_MASK)in usb_pd.h just under enum pd_ctrl_msg_type which is the OR of 1 \u003c\u003c msg_type for all of these messages. Then AND that with 1 \u003c\u003c type here instead of having to perform all of the ORing each time.",
+      "range": {
+        "startLine": 808,
+        "startChar": 21,
+        "endLine": 818,
+        "endChar": 42
+      },
+      "revId": "dae488d88dbb0e204678762f9fb6ba5223f1fdc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
