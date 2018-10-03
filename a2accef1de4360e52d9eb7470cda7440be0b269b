@@ -46,6 +46,30 @@
       "revId": "a2accef1de4360e52d9eb7470cda7440be0b269b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91fb62fb_e03d8769",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T17:16:41Z",
+      "side": 1,
+      "message": "I think the board customization should be on a board level (since it is so closely tied with specific hardware changes)",
+      "parentUuid": "ab80d4d3_22958fd4",
+      "range": {
+        "startLine": 133,
+        "startChar": 40,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "a2accef1de4360e52d9eb7470cda7440be0b269b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
