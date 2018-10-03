@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cbc5194_fdc3e2be",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-10-03T06:45:23Z",
+      "side": 1,
+      "message": "We talked about being able to set some of the bits of the BoardID.Flags very early in the factory, most notably the board phase (bits 0-6) and the pre-MP bit (bit 7). This allows to mark devices that don\u0027t have a brand code in pre-MP and quickly get them out of ZT eligibility. See comment about that in go/zte-floors.\n\nI suggest that the test here is limited to checking that BoardID.Type  (and maybe BoardID.Type_Inverted if you want as here) hasn\u0027t been written but leave BoardID.Flags out of this so we have that flexibility later.\n\nWe\u0027ll need a corresponding change in the bid command to allow writing type/type_inverted even after flags have been written.",
+      "revId": "a703173d397b3fbdff6737636639780137de39e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
