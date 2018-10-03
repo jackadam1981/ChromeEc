@@ -70,6 +70,30 @@
       "revId": "a2accef1de4360e52d9eb7470cda7440be0b269b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b593fa_2aac01a5",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-03T17:29:33Z",
+      "side": 1,
+      "message": "Makes sense.  I can\u0027t think of any code changes we could do here to help enforce the the open drain setting for protos/EVT units.  \n\nWe do already have some helpful giant comment blocks on the USB2_OTG_ID GPIO which should provide a reminder to whichever developer is implementing the next hardware revision changes to set open drain :) http://cs/chromeos_public/src/platform/ec/board/meep/gpio.inc?l\u003d137\u0026rcl\u003d77a5ab046c0e55756aa1eeef8749301459570e0c",
+      "parentUuid": "91fb62fb_e03d8769",
+      "range": {
+        "startLine": 133,
+        "startChar": 40,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "a2accef1de4360e52d9eb7470cda7440be0b269b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
