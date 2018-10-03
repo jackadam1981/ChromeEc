@@ -2761,6 +2761,16 @@ void pd_task(void *u)
 		}
 #endif
 
+		if (pd[port].req_suspend_state) {
+			/*
+			 * Drain out any pending messages to make the resume
+			 * sequence a bit more reliable.
+			 */
+			while (tcpm_has_pending_message(port))
+				tcpm_dequeue_message(port, payload, &head);
+			set_state(port, PD_STATE_SUSPENDED);
+		}
+
 		/* process any potential incoming message */
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
@@ -2772,9 +2782,6 @@ void pd_task(void *u)
 				task_set_event(PD_PORT_TO_TASK_ID(port),
 					       TASK_EVENT_WAKE, 0);
 		}
-
-		if (pd[port].req_suspend_state)
-			set_state(port, PD_STATE_SUSPENDED);
 
 		/* if nothing to do, verify the state of the world in 500ms */
 		this_state = pd[port].task_state;
@@ -4109,6 +4116,29 @@ void pd_set_suspend(int port, int enable)
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
 }
+
+#ifdef CONFIG_USB_PD_TCPM_TCPCI
+static uint32_t pd_ports_to_resume;
+static void resume_pd_port(void)
+{
+	uint32_t port;
+	uint32_t suspended_ports = atomic_read_clear(&pd_ports_to_resume);
+
+	while (suspended_ports) {
+		port = __builtin_clz(suspended_ports);
+		suspended_ports &= ~(1 << port);
+		pd_set_suspend(port, 0);
+	}
+}
+DECLARE_DEFERRED(resume_pd_port);
+
+void pd_deferred_resume(int port)
+{
+	atomic_or(&pd_ports_to_resume, 1 << port);
+	hook_call_deferred(&resume_pd_port_data, SECOND);
+}
+
+#endif  /* CONFIG_USB_PD_DEFERRED_RESUME */
 
 int pd_is_port_enabled(int port)
 {
