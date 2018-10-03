@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7c286cee_b86c807f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T16:43:14Z",
+      "side": 1,
+      "message": "let\u0027s put a comment here explain that this code is optimized for small write transaction (since that is typical). If we need to transfer larger transactions, then we should wait on the TX fifo interrupt instead.\n\nHow much of a difference it is to just wait on the interrupt handler now? It doesn\u0027t seem that much more complex, and then we wouldn\u0027t need to worry about this code tripping us up in the future.",
+      "parentUuid": "1838ee09_38e00a10",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 49
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c94d2de_fd9fec83",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Do you mean adding all body of i2c_write_read_command() function and remove the function ?",
       "parentUuid": "f0a21b0c_f14bd7d4",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 17
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340829e1_515ef0a4",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-03T16:43:14Z",
+      "side": 1,
+      "message": "I think passing a variable by value is cleaner and easier to understand here. This function (chip_i2c_xfter) would contain the logic to set that value to 1 when it is the first transfer and 0 otherwise - no pass by reference needed.",
+      "parentUuid": "44aa5828_7f82b9a6",
       "range": {
         "startLine": 360,
         "startChar": 5,
