@@ -22,6 +22,47 @@
       "revId": "e48d93cf3274fdbbdb7c410a4c67f7020081cb9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc85f0a0_286eb3aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-03T01:13:22Z",
+      "side": 1,
+      "message": "Yes there is; Plug in a USB device (like a keyboard), gpioset usb_c1_oc_odl 0, then the keyboard shouldn\u0027t function (I believe dmesg will complain about an overcurrent condition). Then `gpioset usb_c1_oc_odl 1` and the keyboard should start working again.",
+      "parentUuid": "0f0d9e78_592bdb44",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "e48d93cf3274fdbbdb7c410a4c67f7020081cb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c0d01a_de263f97",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-03T01:13:22Z",
+      "side": 1,
+      "message": "It looks like all of these are safe to enable the low-voltage select as well. Does doing so make a difference?",
+      "revId": "e48d93cf3274fdbbdb7c410a4c67f7020081cb9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
