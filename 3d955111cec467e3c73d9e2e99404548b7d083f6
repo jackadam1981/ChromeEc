@@ -22,6 +22,30 @@
       "revId": "3d955111cec467e3c73d9e2e99404548b7d083f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8109b16_8c46cc3f",
+        "filename": "board/dragonegg/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-03T00:36:36Z",
+      "side": 1,
+      "message": "When I changed it, it broke the build and I thought that was in common code. But, looking again, I realized this signal name is just used in board.h, so I can fix it here. I\u0027ve made that change. The _OD isn\u0027t even in the schematic, so I\u0027m not sure where I got that from initially.",
+      "parentUuid": "28a20dab_6e9aa5ba",
+      "range": {
+        "startLine": 68,
+        "startChar": 24,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "3d955111cec467e3c73d9e2e99404548b7d083f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
