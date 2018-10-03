@@ -4092,5 +4092,10 @@
 #define CONFIG_USB_PD_TCPM_ANX74XX
 #endif
 
+/* 'Deferred port resume' is a feature strictly required by some drivers */
+#if defined(CONFIG_USB_PD_TCPM_ANX74XX) || defined(CONFIG_USB_PD_TCPM_TCPCI)
+#define CONFIG_USB_PD_DEFERRED_RESUME
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
 
