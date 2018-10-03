@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b0c90f2_87ad9bf3",
+        "filename": "test/fp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-03T09:14:23Z",
+      "side": 1,
+      "message": "Explicitly",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "7e9ae76a2760f73943ec44431325cda2b9ae030f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73148cc1_f9cb7255",
+        "filename": "test/fp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-03T09:14:23Z",
+      "side": 1,
+      "message": "Thinking about this, I\u0027m not sure if it\u0027s the best idea to do the computation for the \"golden value\" result, as well. Especially for the case below where you call sqrtf (BTW, these tests should be able to run on the MCU as well, where sqrtf might not be available).\n\nInstead, I\u0027d do something like this, with precomputed results.\n\n\tconst int N \u003d 3;\n\tconst float s \u003d 2.0f;\n\tconst floatv3_t r \u003d {1.0f, 2.0f, 4.0f};\n        /* Golden result t \u003d s * r; */\n\tconst floatv3_t t \u003d {2.0f, 4.0f, 8.0f};\n\tint i;\n\tfpv3_t a;\n\n\tfor (i \u003d 0; i \u003c N; ++i)\n\t\ta[i] \u003d FLOAT_TO_FP(r[i]);\n\n\tfpv3_scalar_mul(a, FLOAT_TO_FP(s));\n\n\tfor (i \u003d 0; i \u003c N; ++i)\n\t   TEST_ASSERT(IS_FPV3_VECTOR_EQUAL(a, FLOAT_TO_FP(t[i]), FLOAT_TO_FP(0.0f)));\n\n\treturn EC_SUCCESS;",
+      "revId": "7e9ae76a2760f73943ec44431325cda2b9ae030f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
