@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65131a84_cfdc5f0b",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:22:41Z",
+      "side": 1,
+      "message": "should we use another value like xFF to indicate cascade mode. Otherwise won\u0027t ADDR1 trigger a false positive here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9bf579_4dfce4a4",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:22:41Z",
+      "side": 1,
+      "message": "maybe we can just make this an earlyer return condition (here and other methods)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37dbd59_c8856db7",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:22:41Z",
+      "side": 1,
+      "message": "will the value of range match LIS2MDL_RANGE?",
+      "range": {
+        "startLine": 60,
+        "startChar": 58,
+        "endLine": 60,
+        "endChar": 63
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54636f84_ec566948",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:22:41Z",
+      "side": 1,
+      "message": "how do we know to use ADDR0. Should this be defined within the driver?",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
