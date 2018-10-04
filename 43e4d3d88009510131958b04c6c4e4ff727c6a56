@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "cd04a1ee_f2208d68",
+        "filename": "common/mat33.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-04T07:02:23Z",
+      "side": 1,
+      "message": "You fixed the one above, not this one.",
+      "parentUuid": "778bd290_8dfb38b8",
+      "revId": "43e4d3d88009510131958b04c6c4e4ff727c6a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5af1b50b_21a8c428",
         "filename": "common/mat33.c",
         "patchSetId": 1
@@ -119,6 +137,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5af1b50b_21a8c428",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "43e4d3d88009510131958b04c6c4e4ff727c6a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae8dbb7_6a31df37",
+        "filename": "common/mat33.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-04T07:02:23Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "65d37e82_0ea72c20",
       "range": {
         "startLine": 142,
         "startChar": 28,
