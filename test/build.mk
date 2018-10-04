@@ -42,7 +42,7 @@ test-list-host+=bklight_lid bklight_passthru interrupt timer_dos button
 test-list-host+=math_util motion_lid sbs_charging_v2 battery_get_params_smart
 test-list-host+=lightbar inductive_charging usb_pd fan charge_manager
 test-list-host+=charge_manager_drp_charging charge_ramp
-test-list-host+=rsa rsa3 kasa
+test-list-host+=rsa rsa3 kasa float fp
 endif
 
 battery_get_params_smart-y=battery_get_params_smart.o
@@ -87,3 +87,5 @@ utils-y=utils.o
 battery_get_params_smart-y=battery_get_params_smart.o
 lightbar-y=lightbar.o
 fan-y=fan.o
+float-y=fp.o
+fp-y=fp.o
