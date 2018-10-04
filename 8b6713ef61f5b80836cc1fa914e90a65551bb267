@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e21cfa4_7c638234",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-04T02:13:11Z",
+      "side": 1,
+      "message": "be overridden by ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "8b6713ef61f5b80836cc1fa914e90a65551bb267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c3f54d_cac07926",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-04T02:13:11Z",
+      "side": 1,
+      "message": "It\u0027s also the default implementation of mkbp_set_host_active() when CONFIG_MKBP_USE_HOST_EVENT is defined. That\u0027s helpful to know.",
+      "revId": "8b6713ef61f5b80836cc1fa914e90a65551bb267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
