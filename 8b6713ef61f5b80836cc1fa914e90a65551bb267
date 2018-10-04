@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28c6c402_f5536951",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-04T17:36:05Z",
+      "side": 1,
+      "message": "Yes, thanks for catching!\n\nDone.",
+      "parentUuid": "5e21cfa4_7c638234",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "8b6713ef61f5b80836cc1fa914e90a65551bb267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c3f54d_cac07926",
         "filename": "include/mkbp_event.h",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "8b6713ef61f5b80836cc1fa914e90a65551bb267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b397a257_94523078",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-04T17:36:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7c3f54d_cac07926",
+      "revId": "8b6713ef61f5b80836cc1fa914e90a65551bb267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
