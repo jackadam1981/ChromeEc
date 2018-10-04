@@ -22,6 +22,30 @@
       "revId": "588f5a147113adff967d99192871ffa4b1436af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fed7228_1329126b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2770,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-04T15:52:48Z",
+      "side": 1,
+      "message": "I moved it into the state actions clause immediately following the portions that suspend or release the TCPC.  There is still a hole in that the TCPC\u0027s own buffer(s) may have a stale entry.  Filed chromium:892175 to track this remainder.",
+      "parentUuid": "08f49e74_0112044e",
+      "range": {
+        "startLine": 2769,
+        "startChar": 3,
+        "endLine": 2770,
+        "endChar": 47
+      },
+      "revId": "588f5a147113adff967d99192871ffa4b1436af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

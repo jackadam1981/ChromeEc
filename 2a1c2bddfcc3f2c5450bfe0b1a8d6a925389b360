@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "750e4d92_408cd229",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4124,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-04T15:52:48Z",
+      "side": 1,
+      "message": "Yep, I had leading/trailing backwards.",
+      "parentUuid": "193dd981_d3458304",
+      "range": {
+        "startLine": 4123,
+        "startChar": 1,
+        "endLine": 4124,
+        "endChar": 36
+      },
+      "revId": "2a1c2bddfcc3f2c5450bfe0b1a8d6a925389b360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6b496d8_2c27e4fa",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
