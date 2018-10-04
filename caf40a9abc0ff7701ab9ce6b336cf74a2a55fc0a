@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af543029_118b8da8",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-10-04T17:54:47Z",
+      "side": 1,
+      "message": "Why don\u0027t we do high-to-low instead? Is there a difference?\n\nI\u0027m nervous that instead of resetting we\u0027ll just be waking up from hibernate if we do the rising edge. Isn\u0027t there a slight difference between the wake-from-hibernate boot and reset?",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 79
+      },
+      "revId": "caf40a9abc0ff7701ab9ce6b336cf74a2a55fc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
