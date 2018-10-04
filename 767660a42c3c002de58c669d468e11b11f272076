@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9437164b_e469fe73",
+        "filename": "common/math_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-04T06:59:02Z",
+      "side": 1,
+      "message": "division-by-zero\n\nreturns (a / b) if b !\u003d 0, INT32_MAX if b \u003d\u003d 0.",
+      "range": {
+        "startLine": 136,
+        "startChar": 26,
+        "endLine": 136,
+        "endChar": 33
+      },
+      "revId": "767660a42c3c002de58c669d468e11b11f272076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a6713ea_5cde8ccc",
+        "filename": "common/math_util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-04T06:59:02Z",
+      "side": 1,
+      "message": "Do we really need to print a warning, then?",
+      "revId": "767660a42c3c002de58c669d468e11b11f272076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
