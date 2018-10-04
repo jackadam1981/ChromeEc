@@ -29,6 +29,18 @@
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3630A
 
+/* Strip out some motion sensing support */
+#undef CONFIG_ACCEL_INTERRUPTS
+#undef CONFIG_ACCEL_KX022
+#undef CONFIG_CMD_ACCELS
+#undef CONFIG_CMD_ACCEL_INFO
+#undef CONFIG_ACCELGYRO_BMI160
+#undef CONFIG_TABLET_MODE
+#undef CONFIG_LID_ANGLE
+#undef CONFIG_LID_ANGLE_TABLET_MODE
+#undef CONFIG_LID_ANGLE_INVALID_CHECK
+#undef CONFIG_LID_ANGLE_UPDATE
+
 #ifndef __ASSEMBLER__
 
 enum pwm_channel {
