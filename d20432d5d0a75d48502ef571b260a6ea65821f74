@@ -22,6 +22,30 @@
       "revId": "d20432d5d0a75d48502ef571b260a6ea65821f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d8fbb4_32829318",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T21:08:29Z",
+      "side": 1,
+      "message": "I\u0027ve never seen for that EC code. Maybe we could do a larger scale change and update everything",
+      "parentUuid": "1c9c719b_b130d0b5",
+      "range": {
+        "startLine": 496,
+        "startChar": 45,
+        "endLine": 496,
+        "endChar": 52
+      },
+      "revId": "d20432d5d0a75d48502ef571b260a6ea65821f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
