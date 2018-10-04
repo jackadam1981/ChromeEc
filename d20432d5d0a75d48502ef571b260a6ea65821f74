@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c9c719b_b130d0b5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-04T19:53:04Z",
+      "side": 1,
+      "message": "Consider making \u0027prevent\u0027 a bool, from \u003cstdbool.h\u003e",
+      "range": {
+        "startLine": 496,
+        "startChar": 45,
+        "endLine": 496,
+        "endChar": 52
+      },
+      "revId": "d20432d5d0a75d48502ef571b260a6ea65821f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
