@@ -22,6 +22,30 @@
       "revId": "caf40a9abc0ff7701ab9ce6b336cf74a2a55fc0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a00617_af52c599",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-04T19:39:40Z",
+      "side": 1,
+      "message": "The procedure of VCC1 power-up (waking up from hibernate) reset is a superset of VCC1_RST reset.\n\nAccording to the datasheet, on VCC1 power-up reset, EC performs the following:\n* Enables the Low-Frequency Clock Generator (LFCG).\n* Loads default values to all the bits marked as “reset by VCC1 Power-Up reset”.\n* Enables all the pins powered by VCC1.\n* Performs all actions done by a VCC1_RST reset.\n\nAnd VCC1_RST reset is triggered by a low level, following a high-to-low transition.\n\nChanging it high-to-low edge is still a VCC1 power-up reset. It wakes up and EC is in some undocumented state until VCC1_RST goes high.\n\nIf we really want to a VCC1_RST reset, the only way is to do a double VCC1_RST pulse, but it seems not feasible.",
+      "parentUuid": "af543029_118b8da8",
+      "range": {
+        "startLine": 42,
+        "startChar": 3,
+        "endLine": 42,
+        "endChar": 79
+      },
+      "revId": "caf40a9abc0ff7701ab9ce6b336cf74a2a55fc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
