@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8a1f584_9b11ad51",
+        "filename": "board/meep/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:25:40Z",
+      "side": 1,
+      "message": "we probably want this on in S3 (just like the base accel). It was missed earlier.",
+      "range": {
+        "startLine": 201,
+        "startChar": 17,
+        "endLine": 201,
+        "endChar": 33
+      },
+      "revId": "d32c4c0dd51ab47e4c8537c1771cfca23b0a8b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edf00ab_7a9ae500",
+        "filename": "board/meep/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:25:40Z",
+      "side": 1,
+      "message": "S0 and S3",
+      "range": {
+        "startLine": 218,
+        "startChar": 17,
+        "endLine": 218,
+        "endChar": 33
+      },
+      "revId": "d32c4c0dd51ab47e4c8537c1771cfca23b0a8b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ab8fc4_81fa4578",
+        "filename": "board/meep/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:25:40Z",
+      "side": 1,
+      "message": "we might want to add another field to the struct definition that makes it more clear that we have a cascade relationship",
+      "range": {
+        "startLine": 226,
+        "startChar": 10,
+        "endLine": 226,
+        "endChar": 23
+      },
+      "revId": "d32c4c0dd51ab47e4c8537c1771cfca23b0a8b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fabe898e_fca71fc6",
+        "filename": "board/meep/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:25:40Z",
+      "side": 1,
+      "message": "from my earlier comment, depending on the order here seems really brittle for the macro I pointed out",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 9
+      },
+      "revId": "d32c4c0dd51ab47e4c8537c1771cfca23b0a8b7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
