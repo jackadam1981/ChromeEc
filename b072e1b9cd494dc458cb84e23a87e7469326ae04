@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a281f67a_415dfb5e",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "As much as I like these help methods, it is causing us to re-read the same register multiple time in the function. Can we directly write to the LSM6DSM_MASTER_CFG_ADDR within enable_i2c_pass_through instead?",
+      "range": {
+        "startLine": 95,
+        "startChar": 7,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6dfe6e_8f84f9d5",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "why do we need to sleep here? also the comment says 500ms",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aaaeefb_3f2e369c",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "why do we use a cache here instead of reading and writing?  (I am not against it, just want to understand)",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc57f523_e438751d",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "won\u0027t the returned cache be out of date (i.e. not include the XL_ODR_MASK bit)",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c24d858e_10df2267",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "this seems like a weird name for the contents of this function. it is just writing the parameter to the CTRL1_ADDR. why does that necessarily restore the accel?",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e912e29f_e07d7b26",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "is it worth returning an error if len doessn\u0027t fit (i.e. len \u0026 MASK !\u003d len)",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "421b0f9f_8c7bd47d",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "this macro seems brittle to me. it it depending on the main senor config being the correct offset from the \"virtual\" sensor by their type.\n\nCan we do this another way?",
+      "range": {
+        "startLine": 186,
+        "startChar": 28,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bbafa71_b96d229b",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "what is len for?",
+      "range": {
+        "startLine": 211,
+        "startChar": 34,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fac2c606_cd9b6ecf",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "what is ereg?",
+      "range": {
+        "startLine": 223,
+        "startChar": 13,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb930c78_90281db0",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "does this reset the external sensor?",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 279,
+        "endChar": 27
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc76e48_d5ef4e7a",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-04T20:17:32Z",
+      "side": 1,
+      "message": "shouldn\u0027t really need this; it is implied by the build.mk and it won\u0027t link correctly if you don\u0027t have this file (either way it is a compile error)\n\nWhat would be calling this an need the unimplemented version?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
