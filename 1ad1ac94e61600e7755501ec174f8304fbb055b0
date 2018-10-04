@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c97d148_6d0cac18",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-04T01:13:33Z",
+      "side": 1,
+      "message": "GPIO_EC_INT_L is generally not defined if the board is statically configured to use host events via CONFIG_MKBP_USE_HOST_EVENT\n\nI am happy to add a comment if that would be helpful",
+      "parentUuid": "ef33546c_0b45b636",
+      "revId": "1ad1ac94e61600e7755501ec174f8304fbb055b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "463da0a0_e9974af3",
         "filename": "include/mkbp_event.h",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "1ad1ac94e61600e7755501ec174f8304fbb055b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8372153d_9bfa4a45",
+        "filename": "include/mkbp_event.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-04T01:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463da0a0_e9974af3",
+      "revId": "1ad1ac94e61600e7755501ec174f8304fbb055b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
