@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee7b5cce_6dac743b",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-05T01:10:43Z",
+      "side": 1,
+      "message": "ST calls this 3, so keep it that way?",
+      "revId": "b3f3390fac65887c37bb1169bc754cdd748746fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30aa42b_9fc41292",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-05T01:10:43Z",
+      "side": 1,
+      "message": "ditto: 2",
+      "revId": "b3f3390fac65887c37bb1169bc754cdd748746fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106deb08_26111bea",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-05T01:10:43Z",
+      "side": 1,
+      "message": "ditto: 1",
+      "revId": "b3f3390fac65887c37bb1169bc754cdd748746fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
