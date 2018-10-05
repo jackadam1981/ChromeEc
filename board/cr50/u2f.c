@@ -13,6 +13,7 @@
 #include "registers.h"
 #include "signed_header.h"
 #include "system.h"
+#include "tpm_nvmem_ops.h"
 #include "tpm_vendor_cmds.h"
 #include "u2f.h"
 #include "u2f_impl.h"
@@ -63,12 +64,14 @@ enum u2f_mode {
 };
 
 static uint32_t salt[8];
+static uint32_t salt_kek[8];
 static uint8_t u2f_mode = MODE_UNSET;
 static const uint8_t k_salt = NVMEM_VAR_U2F_SALT;
 
 static int load_state(void)
 {
 	const struct tuple *t_salt = getvar(&k_salt, sizeof(k_salt));
+	int write_salt_kek = 0;
 
 	if (!t_salt) {
 		/* create random salt */
@@ -81,6 +84,30 @@ static int load_state(void)
 		writevars();
 	} else {
 		memcpy(salt, tuple_val(t_salt), sizeof(salt));
+	}
+
+	if (read_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK,
+				  sizeof(salt_kek), salt_kek) ==
+	    tpm_read_not_found) {
+		memcpy(salt_kek, salt, sizeof(salt_kek));
+		write_salt_kek = 1;
+	} else {
+		uint32_t value = 0;
+		int i;
+
+		for (i = 0; i < ARRAY_SIZE(salt_kek); i++)
+			value |= salt_kek[i];
+
+		if (value == 0) {
+			if (!DCRYPTO_ladder_random(salt_kek))
+				return 0;
+			write_salt_kek = 1;
+		}
+	}
+
+	if (write_salt_kek) {
+		write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK,
+				       sizeof(salt_kek), salt_kek, 1);
 	}
 
 	return 1;
