@@ -69,6 +69,24 @@
       "revId": "f9c787d2ca5c428fa31689acffbfb18dce4f3fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f290c0_d02a4116",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-05T19:00:26Z",
+      "side": 1,
+      "message": "I think what Gwendal is pointing out is that with hostevent-only MKBP, SCI mask gets cleared on entry into S0ix thus preventing any SCIs being sent to the AP. On the other hand, with interrupt-only MKBP, interrupt would still get asserted to the AP and that might probably interfere with the host\u0027s sleep.\n\nTo answer Gwendal\u0027s question: I don\u0027t think this interrupt will be marked as a wake capable interrupt on the host and so it should not wake the system up from S0ix.",
+      "parentUuid": "9675608b_6a75ec76",
+      "revId": "f9c787d2ca5c428fa31689acffbfb18dce4f3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
