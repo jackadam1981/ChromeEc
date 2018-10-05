@@ -328,6 +328,30 @@
       "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d65e031b_aab46791",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T13:21:21Z",
+      "side": 1,
+      "message": "I guess my question is more of when does this happen? Why do we need to protect against this?\n\nAlso, there is a comment paradigm of *g \u003d gpio_list + signal that can reduce gpio_list[signal]. to g-\u003e; See https://chromium.git.corp.google.com/chromiumos/platform/ec/+/634494ec964ac288222e7cd85f83d55a64aca7a1/chip/g/gpio.c#290",
+      "parentUuid": "19112234_31b462a8",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
