@@ -22,6 +22,30 @@
       "revId": "b4cc4d3d9dd7a7504fb469b22c060eb1c03ca4b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac714ac1_5b31c123",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-05T19:01:18Z",
+      "side": 1,
+      "message": "We should probably cherry-pick this to nocturne branch. I will let +Aseda decide.",
+      "parentUuid": "cace7a7d_80bb1656",
+      "range": {
+        "startLine": 26,
+        "startChar": 7,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "b4cc4d3d9dd7a7504fb469b22c060eb1c03ca4b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
