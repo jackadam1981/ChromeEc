@@ -35,9 +35,11 @@
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+static volatile int test_reset_reg;
 
 test_mockable __keep int main(void)
 {
+	test_reset_reg = NPCX_RSTCTL;
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 	/*
 	 * Now that we have started execution, we no longer need the loader.
@@ -121,6 +123,9 @@ test_mockable __keep int main(void)
 			CPRINTS("UART initialized after sysjump");
 		} else {
 			CPUTS("\n\n--- UART initialized after reboot ---\n");
+			ccprintf("test_reset_reg is 0x%x\n", test_reset_reg);
+			ccprintf("NPCX_RSTCTL is 0x%x\n", NPCX_RSTCTL);
+			cflush();
 			CPUTS("[Reset cause: ");
 			system_print_reset_flags();
 			CPUTS("]\n");
