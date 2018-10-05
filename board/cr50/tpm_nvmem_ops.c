@@ -6,7 +6,8 @@
 
 #include "common.h"
 #include "console.h"
-#include "tpm_nvmem_read.h"
+#include "tpm_nvmem_ops.h"
+#include "string.h"
 
 /* These come from the tpm2 tree. */
 #include "Global.h"
@@ -53,3 +54,54 @@ enum tpm_read_rv read_tpm_nvmem(uint16_t obj_index,
 
 	return tpm_read_success;
 }
+
+enum tpm_read_rv read_tpm_nvmem_hidden(uint16_t object_index,
+				       uint16_t object_size,
+				       void *obj_value)
+{
+	if (NvGetHiddenObject(HR_HIDDEN | object_index,
+			  object_size,
+				  obj_value) == TPM_RC_SUCCESS) {
+		return tpm_read_success;
+	} else {
+		return tpm_read_not_found;
+	}
+}
+
+enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
+					 uint16_t object_size,
+					 void *obj_value)
+{
+	enum tpm_write_rv ret = tpm_write_fail;
+
+	if (NvIsUndefinedHiddenObject(HR_HIDDEN | object_index) &&
+	    NvAddHiddenObject(HR_HIDDEN | object_index,
+			      object_size,
+			      obj_value) == TPM_RC_SUCCESS) {
+		ret = tpm_write_created;
+	} else if (NvWriteHiddenObject(HR_HIDDEN | object_index,
+				       object_size,
+				       obj_value) == TPM_RC_SUCCESS) {
+		ret = tpm_write_updated;
+	}
+
+	return ret;
+}
+
+
+static int store(int argc, char **argv)
+{
+	write_tpm_nvmem_hidden(0x101, 10, "1234567890");
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(storep, store, "", "");
+
+static int load(int argc, char **argv)
+{
+	char tmp[100] = {};
+
+	read_tpm_nvmem_hidden(0x101, 10, tmp);
+	ccprintf("%s\n", tmp);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(loadp, load, "", "");
