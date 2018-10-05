@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c788166_e7bad117",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-05T01:01:29Z",
+      "side": 1,
+      "message": "nit: one line? Or at least 2...",
+      "revId": "7f6a4cb28bd3755935d581c5a9f3f0b3e46a8d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1f1a7f_eb00e63d",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-05T01:01:29Z",
+      "side": 1,
+      "message": "if (prev_idle_count \u003d\u003d info \u0026\u0026 touch_slot \u003d\u003d 0) {\n   tp_control |\u003d TP_CONTROL_SHALL_RESET;\n   return;\n}\n\nprev_idle_count \u003d info;",
+      "revId": "7f6a4cb28bd3755935d581c5a9f3f0b3e46a8d9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
