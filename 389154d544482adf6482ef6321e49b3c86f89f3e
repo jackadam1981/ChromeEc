@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5ab3b16_100c7217",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T14:17:09Z",
+      "side": 1,
+      "message": "we have been reused lpc for host communication of any kind lpc/espi etc. IPC is similar right? We wouldn\u0027t have both lpc and ipc on the same chip every for host communication, right?",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 39
+      },
+      "revId": "389154d544482adf6482ef6321e49b3c86f89f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
