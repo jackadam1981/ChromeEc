@@ -93,6 +93,30 @@
       "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f79fb06_be3a53f9",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-05T21:05:39Z",
+      "side": 1,
+      "message": "Have you checked the register contents with a charger plugged in to C1? On my yorp proto 2 at least, it seems like there are other GPIOs in use.  From the yorp sub-board schematic, it looks like GPIOs 0, 1, and 2 are going to the PPC.  No idea what GPIO5 is doing on though.\n\n\u003e i2cxfer r 2 0x12 0x44     \n0x27 [39]\n\u003e i2cxfer r 2 0x12 0x45\n0x06 [6]",
+      "parentUuid": "7e746ef2_fd6a5a2a",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
