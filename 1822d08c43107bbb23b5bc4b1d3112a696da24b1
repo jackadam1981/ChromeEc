@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "1b8fc51e_fd8f9434",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-05T23:50:58Z",
+      "side": 1,
+      "message": "I think I was asking because you have EXTI_COMP2_MASK below...",
+      "parentUuid": "291f0f7d_563213ee",
+      "range": {
+        "startLine": 60,
+        "startChar": 37,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "1822d08c43107bbb23b5bc4b1d3112a696da24b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99d5d6fe_7f957919",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 5

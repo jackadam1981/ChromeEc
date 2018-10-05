@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4525338d_501d89b3",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-05T23:50:58Z",
+      "side": 1,
+      "message": "not sure how good for readability it is to silently reference non-constants in a define.  maybe it\u0027s fine...",
+      "range": {
+        "startLine": 38,
+        "startChar": 56,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d24ec5_7d093908",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-05T23:50:58Z",
+      "side": 1,
+      "message": "is the pull-up being left on here?\nalso, does this function update the IO to be an output, since in BB_SRC it\u0027s set to be an input?",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 503,
+        "endChar": 16
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba2d554_23797d89",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-05T23:50:58Z",
+      "side": 1,
+      "message": "prime",
+      "range": {
+        "startLine": 302,
+        "startChar": 19,
+        "endLine": 302,
+        "endChar": 20
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d5c1d28_df190caf",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-05T23:50:58Z",
+      "side": 1,
+      "message": "is this too heavy-handed? which errors do you want to silence",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 71
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
