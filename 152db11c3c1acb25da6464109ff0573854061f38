@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6f6ec86_212d1897",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-05T09:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f1eaa50_cd52d5dc",
+      "range": {
+        "startLine": 1529,
+        "startChar": 2,
+        "endLine": 1529,
+        "endChar": 3
+      },
+      "revId": "152db11c3c1acb25da6464109ff0573854061f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d96b1ad8_2234e56d",
         "filename": "test/pinweaver.c",
         "patchSetId": 26
@@ -45,6 +69,30 @@
       "revId": "152db11c3c1acb25da6464109ff0573854061f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d34731_7ed2460a",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 2422,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-05T09:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d96b1ad8_2234e56d",
+      "range": {
+        "startLine": 2422,
+        "startChar": 5,
+        "endLine": 2422,
+        "endChar": 19
+      },
+      "revId": "152db11c3c1acb25da6464109ff0573854061f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
