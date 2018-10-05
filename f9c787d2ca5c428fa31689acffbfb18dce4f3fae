@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8ce613ec_27383dc5",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-05T17:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9286782_e15faedb",
+      "revId": "f9c787d2ca5c428fa31689acffbfb18dce4f3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbcee2e8_1b6d9915",
         "filename": "board/nocturne/board.c",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2018-10-05T08:14:32Z",
       "side": 1,
       "message": "Note to self: in static void lpc_s0ix_suspend_clear_masks(void), when we enter S01x, we are cleaing the SCI mask. Won\u0027t that prevent the AP from receiving sensor interrupt when the CPU is [pseudo]sleeping when there are no GPIO between AP and EC?",
+      "revId": "f9c787d2ca5c428fa31689acffbfb18dce4f3fae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9675608b_6a75ec76",
+        "filename": "board/nocturne/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-05T17:36:49Z",
+      "side": 1,
+      "message": "Wouldn\u0027t mkbp_uses_gpio() return false and this code not execute in that case?",
+      "parentUuid": "fbcee2e8_1b6d9915",
       "revId": "f9c787d2ca5c428fa31689acffbfb18dce4f3fae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
