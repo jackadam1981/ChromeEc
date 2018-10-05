@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fbf6757_7ee53ab6",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-05T13:42:41Z",
+      "side": 1,
+      "message": "Because the leaves may be automatically migrated from 0.0, 0.1. It might make sense to allow seal_to_pcr under the following circumstances:\n\n1) Both the previous leaf configuration and the configuration are valid at the time of the change.\n2) The new configuration is more restrictive than the previous configuration (the old bitmask is a subset of the new bitmask).\n\nSince this is a design issue it probably needs to be discussed in a wider setting like the design doc.",
+      "range": {
+        "startLine": 1100,
+        "startChar": 4,
+        "endLine": 1100,
+        "endChar": 48
+      },
+      "revId": "426fd3b3766a2bf03fcc69b85e163ceb410d74f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71107da9_17201140",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1492,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-05T13:42:41Z",
+      "side": 1,
+      "message": "When I try to run the tests, I get the following error:\ntest/pinweaver.c: In function ‘handle_insert_leaf_old_protocol_success’:\ntest/pinweaver.c:1488:2: error: ISO C90 forbids mixed declarations and code [-Werror\u003ddeclaration-after-statement]\n  const int hash_count \u003d\n  ^\ncc1: all warnings being treated as errors\n\nNote, that I ran the tests inside the Chrome OS chroot in ~/trunk/src/platform/ec.",
+      "range": {
+        "startLine": 1488,
+        "startChar": 0,
+        "endLine": 1492,
+        "endChar": 53
+      },
+      "revId": "426fd3b3766a2bf03fcc69b85e163ceb410d74f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
