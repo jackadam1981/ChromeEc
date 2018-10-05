@@ -2327,6 +2327,9 @@
 /* Use Virtual Wire for Platform Reset instead of a sideband signal */
 #undef CONFIG_HOSTCMD_ESPI_PLTRST_IS_VWIRE
 
+/* Support IP interface */
+#undef CONFIG_ISH_IPC
+
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
 
