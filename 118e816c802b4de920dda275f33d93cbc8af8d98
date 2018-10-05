@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8b3c960_20423367",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-05T14:31:56Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be based on this capability. It is not obvious that this capability means jitter is never locked down. \nIt decreases security and all boards can use CCD_CAP_EC_FLASH, but most boards don\u0027t have an ite ec, so this isn\u0027t even necessary on those boards.\n\nI think we should have a console command that is sent to allow unlocking jitter, after that command is sent reboot cr50 then the ec can be flashed. That is what we discussed on the bug.",
+      "range": {
+        "startLine": 662,
+        "startChar": 35,
+        "endLine": 662,
+        "endChar": 51
+      },
+      "revId": "118e816c802b4de920dda275f33d93cbc8af8d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
