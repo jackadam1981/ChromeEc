@@ -35,10 +35,6 @@
 /* I2C ports */
 #define I2C_PORT_TP ISH_I2C0
 
-/* Sensor */
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_HOST_EVENT
-
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
 
