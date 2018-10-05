@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "eb0e1124_34063625",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-05T23:18:02Z",
+      "side": 1,
+      "message": "Yes,I will change.",
+      "parentUuid": "437c938a_f9d0b9ce",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "809658bf_e73126e6",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "let\u0027s put a comment here explain that this code is optimized for small write transaction (since that is typical). If we need to transfer larger transactions, then we should wait on the TX fifo interrupt instead.\n\nHow much of a difference it is to just wait on the interrupt handler now? It doesn\u0027t seem that much more complex, and then we wouldn\u0027t need to worry about this code tripping us up in the future.",
       "parentUuid": "1838ee09_38e00a10",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 49
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05d2a3c_f37f880f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-05T23:18:02Z",
+      "side": 1,
+      "message": "Yes, I will add comments. \nI don\u0027t think the code is complex but I don\u0027t have a slave device to test.",
+      "parentUuid": "7c286cee_b86c807f",
       "range": {
         "startLine": 334,
         "startChar": 2,
@@ -250,6 +298,30 @@
       "side": 1,
       "message": "I think passing a variable by value is cleaner and easier to understand here. This function (chip_i2c_xfter) would contain the logic to set that value to 1 when it is the first transfer and 0 otherwise - no pass by reference needed.",
       "parentUuid": "44aa5828_7f82b9a6",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 17
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0461248e_b08e0996",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-05T23:18:02Z",
+      "side": 1,
+      "message": "I will pass value, (!begin_indx \u0026\u0026 restart_flag)) instead of pointer.\nand i2c_write_read_commands() will be changed accordingly.",
+      "parentUuid": "340829e1_515ef0a4",
       "range": {
         "startLine": 360,
         "startChar": 5,
