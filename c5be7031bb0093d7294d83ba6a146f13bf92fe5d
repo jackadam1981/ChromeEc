@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eec00069_9d211160",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T13:15:17Z",
+      "side": 1,
+      "message": "what happens if you just leave this undefined when CONFIG_ACCEL_FIFO isn\u0027t present. Do you get an build error during buildall? If not, let\u0027s remove this definition.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 7
+      },
+      "revId": "c5be7031bb0093d7294d83ba6a146f13bf92fe5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
