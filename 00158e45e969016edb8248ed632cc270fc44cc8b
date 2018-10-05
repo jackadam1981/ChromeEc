@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3354197_f4e0be2e",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T13:34:47Z",
+      "side": 1,
+      "message": "This is much better. Thank you!\n\nIf we directly encode restart flag here, then we don\u0027t need to look at another section of the function to know what is going on:\n\nbegin_indx \u003d\u003d 0 \u0026\u0026 (flag \u0026 I2C_XFER_RESTART)",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 358,
+        "endChar": 34
+      },
+      "revId": "00158e45e969016edb8248ed632cc270fc44cc8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

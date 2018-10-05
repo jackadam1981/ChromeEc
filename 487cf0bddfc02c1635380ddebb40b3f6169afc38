@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "437c938a_f9d0b9ce",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T13:34:47Z",
+      "side": 1,
+      "message": "32-bit access is good with me. Let\u0027s make it an \u0027int\u0027 then just like more_data. Both are not \"booleans\" and unint32_t implies another type of data",
+      "parentUuid": "7163c5db_85e2e89b",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "809658bf_e73126e6",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
