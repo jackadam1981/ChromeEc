@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a7c6e93_d0fa0fe9",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T13:28:36Z",
+      "side": 1,
+      "message": "can you update this to:\n\n.port \u003d (p), .mask \u003d (m)\n\nSee https://chromium.git.corp.google.com/chromiumos/platform/ec/+/634494ec964ac288222e7cd85f83d55a64aca7a1/chip/g/config_chip.h#59",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 48
+      },
+      "revId": "5e689b19edb357640490f6c6744a538145a3dde8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
