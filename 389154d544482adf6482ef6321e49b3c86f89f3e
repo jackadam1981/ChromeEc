@@ -22,6 +22,30 @@
       "revId": "389154d544482adf6482ef6321e49b3c86f89f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47569be8_bfbc3d1c",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-05T16:27:47Z",
+      "side": 1,
+      "message": "Yes, ISH does have only IPC, NOT LPC. \nWe can reuse LPC channel for IPC but it might be confusing and I defined dedicate IPC channel.",
+      "parentUuid": "f5ab3b16_100c7217",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 39
+      },
+      "revId": "389154d544482adf6482ef6321e49b3c86f89f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
