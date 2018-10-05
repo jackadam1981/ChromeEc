@@ -352,6 +352,30 @@
       "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f01afda9_e4bbcd05",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-05T22:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65e031b_aab46791",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "c2f228d56f86b8065428d0476ae1333307a0b47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
