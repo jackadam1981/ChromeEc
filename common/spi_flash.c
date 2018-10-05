@@ -151,20 +151,22 @@ int spi_flash_set_status(int reg1, int reg2)
  */
 int spi_flash_read(uint8_t *buf_usr, unsigned int offset, unsigned int bytes)
 {
-	int i, read_size, ret, spi_addr;
-	uint8_t cmd[4];
+	int i, read_size, ret;
+	uint32_t spi_addr;
+	uint8_t cmd[5;
 	if (offset + bytes > CONFIG_FLASH_SIZE)
 		return EC_ERROR_INVAL;
 	cmd[0] = SPI_FLASH_READ;
 	for (i = 0; i < bytes; i += read_size) {
 		spi_addr = offset + i;
-		cmd[1] = (spi_addr >> 16) & 0xFF;
-		cmd[2] = (spi_addr >> 8) & 0xFF;
-		cmd[3] = spi_addr & 0xFF;
+		cmd[1] = (spi_addr >> 24) & 0xFF;
+		cmd[2] = (spi_addr >> 16) & 0xFF;
+		cmd[3] = (spi_addr >> 8) & 0xFF;
+		cmd[4] = spi_addr & 0xFF;
 		read_size = MIN((bytes - i), SPI_FLASH_MAX_READ_SIZE);
 		ret = spi_transaction(SPI_FLASH_DEVICE,
 			cmd,
-			4,
+			5,
 			buf_usr + i,
 			read_size);
 		if (ret != EC_SUCCESS)
@@ -184,7 +186,7 @@ int spi_flash_read(uint8_t *buf_usr, unsigned int offset, unsigned int bytes)
  */
 static int spi_flash_erase_block(unsigned int offset, unsigned int block)
 {
-	uint8_t cmd[4];
+	uint8_t cmd[5];
 	int rv = EC_SUCCESS;
 
 	/* Invalid block size */
@@ -202,11 +204,12 @@ static int spi_flash_erase_block(unsigned int offset, unsigned int block)
 
 	/* Compose instruction */
 	cmd[0] = (block == 4) ? SPI_FLASH_ERASE_4KB : SPI_FLASH_ERASE_32KB;
-	cmd[1] = (offset >> 16) & 0xFF;
-	cmd[2] = (offset >> 8) & 0xFF;
-	cmd[3] = offset & 0xFF;
+	cmd[1] = (offset >> 24) & 0xFF;
+	cmd[2] = (offset >> 16) & 0xFF;
+	cmd[3] = (offset >> 8) & 0xFF;
+	cmd[4] = offset & 0xFF;
 
-	rv = spi_transaction(SPI_FLASH_DEVICE, cmd, 4, NULL, 0);
+	rv = spi_transaction(SPI_FLASH_DEVICE, cmd, 5, NULL, 0);
 	if (rv)
 		return rv;
 
@@ -301,16 +304,17 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 			return rv;
 
 		/* Copy data to send buffer; buffers may overlap */
-		memmove(buf + 4, data, write_size);
+		memmove(buf + 5, data, write_size);
 
 		/* Compose instruction */
 		buf[0] = SPI_FLASH_PAGE_PRGRM;
-		buf[1] = (offset) >> 16;
-		buf[2] = (offset) >> 8;
-		buf[3] = offset;
+		buf[1] = (offset) >> 24;
+		buf[2] = (offset) >> 16;
+		buf[3] = (offset) >> 8;
+		buf[4] = offset;
 
 		rv = spi_transaction(SPI_FLASH_DEVICE,
-				     buf, 4 + write_size, NULL, 0);
+				     buf, 5 + write_size, NULL, 0);
 		if (rv)
 			return rv;
 

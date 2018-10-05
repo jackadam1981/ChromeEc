@@ -42,10 +42,10 @@
  * Instruction (1) + Address (3) + Data (256) = 260
  * Limited by chip maximum input length of write instruction
  */
-#define SPI_FLASH_MAX_MESSAGE_SIZE	(SPI_FLASH_MAX_WRITE_SIZE + 4)
+#define SPI_FLASH_MAX_MESSAGE_SIZE	(SPI_FLASH_MAX_WRITE_SIZE + 5)
 
 /* Maximum single read size in bytes. Limited by size of the message buffer */
-#define SPI_FLASH_MAX_READ_SIZE		(SPI_FLASH_MAX_MESSAGE_SIZE - 4)
+#define SPI_FLASH_MAX_READ_SIZE		(SPI_FLASH_MAX_MESSAGE_SIZE - 5)
 
 /* Status register write protect structure */
 enum spi_flash_wp {
