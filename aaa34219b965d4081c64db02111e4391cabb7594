@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a9e6d11_327b2b65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T20:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98a519d8_3af2651f",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2860d583_7c6c6e7e",
         "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-05T16:19:42Z",
       "side": 1,
       "message": "What else is in this register?  Should this be a read/modify/write?",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e746ef2_fd6a5a2a",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-05T20:39:47Z",
+      "side": 1,
+      "message": "The register (and the next one) contain the GPIOX controls. We are only using GPIO3 right now, so we can just write directly the value we want since we know the other values will and should be 0.\n\nIf we want to use more gpios in the future, I think we should have a local cache (instead of using read/modify/write). I really want this to be fast since the SoC is asynchronously booting and I want the data lines to be present when it boots",
+      "parentUuid": "2860d583_7c6c6e7e",
       "range": {
         "startLine": 167,
         "startChar": 0,
