@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98a519d8_3af2651f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-05T16:19:42Z",
+      "side": 1,
+      "message": "nit: g",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2860d583_7c6c6e7e",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-05T16:19:42Z",
+      "side": 1,
+      "message": "What else is in this register?  Should this be a read/modify/write?",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
