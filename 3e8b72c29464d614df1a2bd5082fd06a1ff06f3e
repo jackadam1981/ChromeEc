@@ -46,6 +46,30 @@
       "revId": "3e8b72c29464d614df1a2bd5082fd06a1ff06f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e236f2f_667efbba",
+        "filename": "include/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-06T02:09:16Z",
+      "side": 1,
+      "message": "Do you mean in case of ( Tx_size !\u003d 0) \u0026\u0026 (Rx_Size !\u003d 0), Restart should be asserted automatically without RESTART_FLAG explicitly ?",
+      "parentUuid": "2972421f_8e5605a4",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 33
+      },
+      "revId": "3e8b72c29464d614df1a2bd5082fd06a1ff06f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
