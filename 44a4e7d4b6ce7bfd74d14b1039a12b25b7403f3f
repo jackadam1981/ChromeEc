@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5d1acca_4926f4f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-07T00:58:43Z",
+      "side": 1,
+      "message": "synchronous",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "44a4e7d4b6ce7bfd74d14b1039a12b25b7403f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf2590a_08659d21",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-07T00:58:43Z",
+      "side": 1,
+      "message": "well, no need to call it start, since you\u0027re waiting for the result?\n\nCall it st_tp_full_initialize?",
+      "range": {
+        "startLine": 1046,
+        "startChar": 11,
+        "endLine": 1046,
+        "endChar": 38
+      },
+      "revId": "44a4e7d4b6ce7bfd74d14b1039a12b25b7403f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2eb224_774faff7",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-07T00:58:43Z",
+      "side": 1,
+      "message": "Please add a timeout, at the very least a counter to 100 (10 seconds?) or something.",
+      "revId": "44a4e7d4b6ce7bfd74d14b1039a12b25b7403f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579550f7_3681f058",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-07T00:58:43Z",
+      "side": 1,
+      "message": "nit: \"ongoing\". One word",
+      "range": {
+        "startLine": 1074,
+        "startChar": 38,
+        "endLine": 1074,
+        "endChar": 46
+      },
+      "revId": "44a4e7d4b6ce7bfd74d14b1039a12b25b7403f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
