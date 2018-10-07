@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e101072a_19396a86",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-07T01:10:10Z",
+      "side": 1,
+      "message": "write",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "6be66400760d0203d8dcfc6773f6d6e83e0c7c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb5e7139_14c33dd5",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-07T01:10:10Z",
+      "side": 1,
+      "message": "The only command we can ever send on this special address is \"send ITE programming sequence\"?\n\nSeems like we should at least look at the first byte of written data as a command code.  0x00 \u003d send ITE programming sequence, 0x01-0xFF\u003dreserved.\n\nOtherwise, when it turns out that the next ITE chip requires a slightly different sequence, how will we handle that?",
+      "range": {
+        "startLine": 40,
+        "startChar": 14,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "6be66400760d0203d8dcfc6773f6d6e83e0c7c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa351612_46cd6989",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-07T01:10:10Z",
+      "side": 1,
+      "message": "EC reset?",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "6be66400760d0203d8dcfc6773f6d6e83e0c7c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bd69cc_5625af2b",
+        "filename": "chip/g/ite_sync.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-07T01:10:10Z",
+      "side": 1,
+      "message": "sync?",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "6be66400760d0203d8dcfc6773f6d6e83e0c7c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
