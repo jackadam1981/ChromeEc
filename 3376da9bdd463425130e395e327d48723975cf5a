@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02152466_86b73ad0",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-08T14:43:31Z",
+      "side": 1,
+      "message": "ok, will change",
+      "parentUuid": "84761373_130c7478",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "3376da9bdd463425130e395e327d48723975cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4781996c_a77a58da",
         "filename": "common/usb_i2c.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-07T23:46:33Z",
       "side": 1,
       "message": "recursion is usually a bad idea in EC code (not _so_ bad here as you can\u0027t recurse more than once, but, still...).\n\nMaybe you can move the if block above to a separate function?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "3376da9bdd463425130e395e327d48723975cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de438a37_fef91d89",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-08T14:43:31Z",
+      "side": 1,
+      "message": "It seems to me perfectly fine here: the recursion is guaranteed not to go deeper than one level, it is documented and makes the code simpler.",
+      "parentUuid": "4781996c_a77a58da",
       "range": {
         "startLine": 96,
         "startChar": 0,
