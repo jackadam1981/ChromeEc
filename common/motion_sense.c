@@ -27,6 +27,230 @@
 #include "task.h"
 #include "util.h"
 
+/* HID-specific headers */
+#include "i2c_hid.h"
+#include "i2c_over_lpc_.h"
+
+/* Register definition */
+#define HID_DESC_REGISTER               0x0001
+#define REPORT_DESC_REGISTER            0x1000
+#define INPUT_REPORT_REGISTER           0x2000
+#define COMMAND_REGISTER                0x3000
+#define DATA_REGISTER                   0x3000
+
+/* I2C-HID commands */
+#define I2C_HID_CMD_RESET               0x01
+#define I2C_HID_CMD_GET_REPORT          0x02
+#define I2C_HID_CMD_SET_REPORT          0x03
+#define I2C_HID_CMD_GET_IDLE            0x04
+#define I2C_HID_CMD_SET_IDLE            0x05
+#define I2C_HID_CMD_GET_PROTOCOL        0x06
+#define I2C_HID_CMD_SET_PROTOCOL        0x07
+#define I2C_HID_CMD_SET_POWER           0x08
+
+/* HID Report Types*/
+#define INPUT_REPORT_TYPE               0x01
+#define OUTPUT_REPORT_TYPE              0x02
+#define FEATURE_REPORT_TYPE             0x03
+
+/* 2 bytes for length + 1 byte for report ID */
+#define I2C_HID_HEADER_SIZE             3
+/* Report IDs for sensors. Although they map to the indices in 
+motion_sensors[], we can't use 0 as ID for complex HID devices'*/
+#define REPORT_ID_BASE_ACCEL            0x01
+#define REPORT_ID_LID_ACCEL             0x02
+#define REPORT_ID_BASE_GYRO             0x03
+#define REPORT_ID_BASE_MAG              0x04
+#define REPORT_ID_LID_LIGHT             0x05
+
+/* Report ID for feature reports. Need this in order to know which
+features to set. Strictly speaking the features are not TLCs but there's
+no other way of knowing how to index the feature unless the Usage Page
+is part of the host request. */
+#define REPORT_ID_BASE_ACCEL_POLLING_INTERVAL            0x06
+#define REPORT_ID_BASE_ACCEL_SENSOR_STATE            0x07
+#define REPORT_ID_BASE_ACCEL_POWER_STATE            0x08
+#define REPORT_ID_BASE_ACCEL_CHANGE_SENSITIVITY            0x09
+#define REPORT_ID_BASE_ACCEL_SENSOR_STATUS            0x0A
+#define REPORT_ID_BASE_ACCEL_REPORT_INTERVAL            0x0B
+#define REPORT_ID_BASE_ACCEL_CONN_TYPE            0x0C
+
+#define INVALID_ID                       -1
+/* Reports (double buffered) */
+struct hid_accel_input_report input_reports[2];
+struct hid_accel_feature_report feature_reports[2];
+
+/* Current active report buffer index */
+int report_active_index;
+
+/* Sensor odr */
+uint32_t base_accel_odr;
+
+/* HID function declarations */
+static int i2c_hid_command_process(int len, uint8_t* buffer,
+                                   void (*send_response)(int len));
+
+struct __attribute__ ((__packed__)) hid_descriptor {
+        uint16_t wHIDDescLength;
+        uint16_t bcdVersion;
+        uint16_t wReportDescLength;
+        uint16_t wReportDescRegister;
+        uint16_t wInputRegister;
+        uint16_t wMaxInputLength;
+        uint16_t wOutputRegister;
+        uint16_t wMaxOutputLength;
+        uint16_t wCommandRegister;
+        uint16_t wDataRegister;
+        uint16_t wVersionID;
+        uint32_t reserved;
+};
+
+/* Usage ID, Usage page. Implementing sensors as separate TLCs. Max size 64kb */
+static const uint8_t report_desc[] = {
+// input reports (transmit)
+        0x05, 0x20,                    /* Usage Page (Sensors) */
+        0x09, 0x73,                    /* Usage Sensor Type (3D Accel) */
+        // 1. Report ID for accel
+        0x85, REPORT_ID_BASE_ACCEL,      /* Report ID (3DAccel) */
+        0x19, 0x01,                    /* HID_USAGE_MIN_8 */
+        0x29, 0x02,                    /* HID_USAGE_MAX_8 */
+        0xA1, 0x01,                    /* Collection (Application: Accel TLC) */
+        // 2. Sensor state
+        0x0A, 0x01, 0x02,                 /* HID_USAGE_SENSOR_STATE */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 6,                          /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A, 0x00, 0x08,                      /* SENSOR_STATE_UNKNOWN*/
+        0x0A, 0x01, 0x08,                      /* SENSOR_STATE_READY*/
+        0x0A, 0x02, 0x08,                      /* SENSOR_STATE_NOT_AVAILABLE*/
+        0x0A, 0x03, 0x08,                      /* SENSOR_STATE_NO_DATA */
+        0x0A, 0x04, 0x08,                      /* SENSOR_STATE_INITIALIZING*/
+        0x0A, 0x05, 0x08,                      /* SENSOR_STATE_ACCESS_DENIED,*/
+        0x0A, 0x06, 0x08,                      /* SENSOR_STATE_ERROR*/
+        0x81, 0x03,                            /* HID_INPUT(Const_Arr_Abs) */
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 3. Sensor event
+        0x0A,0x02,0x02,                   /* HID_USAGE_SENSOR_EVENT */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 16,                         /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A,0x10,0x08,                        /* SENSOR_EV_UNKNOWN */
+        0x0A,0x11,0x08,                        /* SENSOR_EV_STATE_CHANGED */
+        0x0A,0x12,0x08,                        /* SENSOR_EV_PROPERTY_CHANGED */
+        0x0A,0x13,0x08,                        /* SENSOR_EV_DATA_UPDATED */
+        0x0A,0x14,0x08,                        /* SENSOR_EV_POLL_RESPONSE */
+        0x0A,0x15,0x08,                        /* SENSOR_EV_CHANGE_SENSITIVITY*/
+        0x0A,0x16,0x08,                        /* SENSOR_EV_MAX_REACHED */
+        0x0A,0x17,0x08,                        /* SENSOR_EV_MIN_REACHED */
+        0x0A,0x18,0x08,                        /* SENSOR_EV_HIGH_THRESHOLD_CROSS_UPWARD*/
+        0x0A,0x19,0x08,                        /* SENSOR_EV_HIGH_THRESHOLD_CROSS_DOWNWARD*/
+        0x0A,0x1A,0x08,                        /* SENSOR_EV_LOW_THRESHOLD_CROSS_UPWARD*/
+        0x0A,0x1B,0x08,                        /* SENSOR_EV_LOW_THRESHOLD_CROSS_DOWNWARD*/
+        0x0A,0x1C,0x08,                        /* SENSOR_EV_ZERO_THRESHOLD_CROSS_UPWARD*/
+        0x0A,0x1D,0x08,                        /* SENSOR_EV_ZERO_THRESHOLD_CROSS_DOWNWARD*/
+        0x0A,0x1E,0x08                         /* SENSOR_EV_PERIOD_EXCEEDED */
+        0x0A,0x1F,0x08                         /* SENSOR_EV_FREQUENCY_EXCEEDED*/
+        0x0A,0x20,0x08                         /* SENSOR_EV_COMPLEX_TRIGGER */
+        0x81, 0x03,                            /* HID_INPUT(Const_Arr_Abs) */
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 4. X, Y, Z axis accel readings
+        0x0A, 0x53, 0x04,                 /* MOTION_ACCELERATION_X_AXIS*/
+        0x0A,0x54,0x04,                   /* MOTION_ACCELERATION_Y_AXIS */
+        0x0A,0x55,0x04,                   /* MOTION_ACCELERATION_Z_AXIS*/
+        0x16, 0x01, 0x80,                 /* LOGICAL_MINIMUM (-32767)*/
+        0x2A,0xFF,0x7F,                   /* LOGICAL_MAXIMUM (32767)*/
+        0x075,16,                         /* HID_REPORT_SIZE */
+        0x95, 3,                          /* HID_REPORT_COUNT */
+        0x55,0x0E,                        /* HID_UNIT_EXPONENT*/
+        0x81, 0x02,                       /* HID_INPUT(Const_Arr_Abs) */
+
+// feature reports (xmit/receive)
+        // 1. Reporting state
+        0x0A, 0x16, 0x03,                 /*SENSOR_PROPERTY_REPORTING_STATE*/
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 5,                          /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A,0x40,0x08,                        /* REPORTING_STATE_NO_EVENTS */
+        0x0A,0x41,0x08,                        /* REPORTING_STATE_ALL_EVENTS*/
+        0x0A,0x42,0x08,                        /* REPORTING_STATE_THRESHOLD_EVENTS*/
+        0x0A,0x43,0x08,                        /* REPORTING_STATE_NO_EVENTS_WAKE*/
+        0x0A,0x44,0x08,                        /* REPORTING_STATE_ALL_EVENTS_WAKE*/
+        0x0A,0x45,0x08,                        /* REPORTING_STATE_THRESHOLD_EVENTS_WAKE*/
+        0xB1,0x02,                             /* HID_FEATURE(Data_Arr_Abs)*/
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 2. Power state
+        0x0A, 0x19, 0x03,                 /*SENSOR_PROPERTY_POWER_STATE*/
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 5,                          /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A,0x50,0x08,                        /* POWER_STATE_UNDEFINED  */
+        0x0A,0x51,0x08,                        /* POWER_STATE_D0_FULL_POWER */
+        0x0A,0x52,0x08,                        /* POWER_STATE_D1_LOW_POWER*/
+        0x0A,0x53,0x08,                        /* POWER_STATE_D2_STANDBY_WITH_WAKE*/
+        0x0A,0x54,0x08,                        /* POWER_STATE_D3_SLEEP_WITH_WAKE */
+        0x0A,0x55,0x08,                        /* POWER_STATE_D4_POWER_OFF */
+        0xB1,0x02,                             /* HID_FEATURE(Data_Arr_Abs)*/
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 3. Change sensitivity
+        0x0A,0x0F,0x03,                   /* SENSOR_PROPERTY_CHANGE_SENSITIVITY_ABS*/
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x26,0xFF,0xFF,                   /* LOGICAL_MAX_16*/
+        0x75,16,                          /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT*/
+        0x55,0x0E,                        /* HID_UNIT_EXPONENT*/
+        0xB1,0x02,                        /* HID_FEATURE(Data_Arr_Abs)*/
+        // 4. Sensor status
+        0x0A,0x03,0x03,                   /* SENSOR_PROPERTY_SENSOR_STATUS */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x55, 0xFF,0xFF,0xFF,0xFF,        /* HID_LOGICAL_MAX_32 */
+        0x75,32,                          /* HID_REPORT_SIZE */
+        0xB1,0x02,                        /* HID_FEATURE(Data_Arr_Abs)*/
+        // 5. Report Interval or polling interval/ odr
+        0x0A,0x0E,0x03,                   /* SENSOR_PROPERTY_REPORT_INTERVAL*/
+        0x85, REPORT_ID_BASE_ACCEL_POLLING_INTERVAL, /* Report ID */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x55, 0xFF,0xFF,0xFF,0xFF,        /* HID_LOGICAL_MAX_32 */
+        0x75,32,                          /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT*/
+        0x55, 0,                          /* HID_UNIT_EXPONENT*/
+        0xB1,0x02,                        /* HID_FEATURE(Data_Arr_Abs)*/
+        // 6. Connection type
+        0x0A,0x09,0x03,                   /* SENSOR_PROPERTY_SENSOR_CONNECTION_TYPE*/
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 5,                          /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A,0x30,0x08,                        /* CONNECTION_TYPE_PC_INTEGRATED*/
+        0x0A,0x31,0x08,                        /* CONNECTION_TYPE_PC_ATTACHED*/
+        0x0A,0x32,0x08,                        /* CONNECTION_TYPE_PC_EXTERNAL*/
+        0xB1,0x02,                             /* HID_FEATURE(Data_Arr_Abs)*/
+        0xC0,                             /* HID_END_COLLECTION*/
+
+};
+
+/* Map feature report ID to report/ sensor ID*/
+static int hid_get_sensorid_from_featureid(int feature_id) {
+	if (feature_id <= 0) {
+		return INVALID_ID;
+	} else {
+		switch(feature_id) {
+		case(6 || 7 || 8 || 9 || 10 || 11 || 12):
+			return REPORT_ID_BASE_ACCEL;
+		}
+	
+	}
+
+}
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
@@ -1081,6 +1305,240 @@ static struct motion_sensor_t
 			__builtin_ctz(CONFIG_GESTURE_DETECTION_MASK));
 #endif
 	return host_sensor_id_to_real_sensor(host_id);
+}
+
+/* HID functions */
+static struct hid_descriptor hid_desc = {
+	.wHIDDescLength = 30,
+	.bcdVersion = 0x0100,
+	.wReportDescLength = sizeof(report_desc),
+	.wReportDescRegister = REPORT_DESC_REGISTER,
+	.wInputRegister = INPUT_REPORT_REGISTER,
+	.wMaxInputLength = I2C_HID_HEADER_SIZE + sizeof(struct hid_accel_report),
+	.wOutputRegister = 0,
+	.wMaxOutputLength = 0,
+	.wCommandRegister = COMMAND_REGISTER,
+	.wDataRegister = DATA_REGISTER
+};
+
+static size_t hid_fill_buffer(uint8_t* buffer, uint8_t report_id, const void* data,
+			  size_t data_len)
+{
+	size_t response_len = I2C_HID_HEADER_SIZE + data_len;
+	buffer[0] = response_len & 0xFF;
+	buffer[1] = (response_len >> 8) & 0xFF;
+	buffer[2] = report_id;
+	memcpy(buffer + I2C_HID_HEADER_SIZE, data, data_len);
+	return response_len;
+}
+
+/* Fill input report with data so that fill_buffer can use it*/
+static void hid_compile_input(int report_id, &input_reports[report_active_index])
+{
+	struct motion_sensor_t *sensor;
+	struct hid_accel_input_report *input = &input_reports[report_active_index ^ 1];
+	sensor = host_sensor_id_to_real_sensor(report_id);
+	if (sensor == NULL)
+		return EC_RES_INVALID_PARAM;
+	mutex_lock(&g_sensor_mutex);
+	input->x = sensor->xyz[X];
+	input->y = sensor->xyz[Y];
+	input->z = sensor->xyz[Z];
+
+
+
+}
+
+/* Extracts report data from |buffer| into |data|.
+ *
+ * |buffer| is expected to contain the values written to the command register
+ * followed by the values written to the data register, upon receiving a
+ * SET_REPORT command, in the following byte sequence format:
+ *
+ *   00 30 - command register address (0x3000)
+ *   xx    - report type and ID
+ *   03    - SET_REPORT
+ *   00 30 - data register address (0x3000)
+ *   xx xx - length
+ *   xx    - report ID
+ *   xx... - report data
+ *
+ * Note that command register and data register have the same address. Also,
+ * any report ID >= 15 requires an extra byte after the SET_REPORT byte, which
+ * is not supported here as we don't have any report ID >= 15.
+ *
+ * In summary, we expect |buffer| contains at least 10 bytes where the report
+ * data starts at buffer[9]. If |buffer| contains the incorrect number bytes,
+ * we ignore the report.
+ */
+static void extract_report(size_t len, uint8_t* buffer, void* data,
+			   size_t data_len)
+{
+	if (len == 9 + data_len)
+		memcpy(data, buffer + 9, data_len);
+}
+
+
+/* Function to map hid report IDs to motion sensor. */
+static struct motion_sensor_t
+	*hid_host_sensor_id_to_real_sensor(int report_id)
+{
+	struct motion_sensor_t *sensor;
+	int report_id_mapped;
+	if (report_id > motion_sensor_count || report_id == 0)
+		return NULL;
+	/* As we can't use report ID of 0, we map to motion_sensors[] by 
+	subtracting 1 from the report ID */
+	report_id_mapped = report_id - 1;
+	sensor = &motion_sensors[report_id];
+
+	/* if sensor is powered and initialized, return match */
+	if (SENSOR_ACTIVE(sensor) && (sensor->state == SENSOR_INITIALIZED))
+		return sensor;
+
+	/* If no match then the EC currently doesn't support ID received. */
+	return NULL;
+}
+
+void i2c_hid_process(int read, int len, uint8_t* buffer,
+		     void (*send_response)(int len))
+{
+	int reg;
+	size_t response_len;
+
+	if (len == 0) {
+		reg = INPUT_REPORT_REGISTER;
+	} else {
+		reg = buffer[1] << 8 | buffer[0];
+	}
+
+	switch (reg) {
+	/* Return HID descr to host */
+	case HID_DESC_REGISTER:
+		memcpy(buffer, &hid_desc, sizeof(hid_desc));
+		send_response(sizeof(hid_desc));
+		break;
+	/* Return Report descr to host */
+	case REPORT_DESC_REGISTER:
+		memcpy(buffer, &report_desc, sizeof(report_desc));
+		send_response(sizeof(report_desc));
+		break;
+	/* Return input report to host */
+	case INPUT_REPORT_REGISTER:
+		if (pending_reset) {
+			ccprintf("I2C-HID: reset done\n");
+			pending_reset = 0;
+			buffer[0] = 0;
+			buffer[1] = 0;
+			send_response(2);
+			gpio_set_level(GPIO_INT_L, 1);
+			return;
+		}
+		response_len = hid_fill_buffer(buffer, REPORT_ID_3D_ACCEL,
+					   &input_reports[report_active_index],
+					   sizeof(struct input_reports));
+		send_response(response_len);
+		gpio_set_level(GPIO_INT_L, 1);
+		break;
+	/* Process cmd from host */
+	case COMMAND_REGISTER:
+		i2c_hid_command_process(len, buffer, send_response);
+		break;
+	default:
+		// Ignore invalid register.
+		return;
+	}
+}
+
+static int i2c_hid_command_process(int len, uint8_t* buffer,
+				   void (*send_response)(int len))
+{
+	uint8_t command = buffer[3] & 0x0F;
+	uint8_t data = buffer[2];
+	uint8_t power_state = 0;
+	uint8_t report_id = data & 0x0F;
+	size_t response_len;
+	uint8_t host_sensor_id = 0;
+	struct motion_sensor_t *sensor;
+	int i, ret = EC_RES_INVALID_PARAM;
+
+	switch (command) {
+	case I2C_HID_CMD_RESET:
+		ccprintf("I2C-HID: command reset\n");
+		cflush();
+		board_reset_tsc();
+		i2c_hid_init();
+		break;
+	/* For both input and feature reports */
+	case I2C_HID_CMD_GET_REPORT:
+		ccprintf("I2C-HID: command get_report (%04x)\n", report_id);
+		switch (report_id) {
+		case REPORT_ID_3D_ACCEL:
+			response_len =
+				fill_report(buffer, report_id,
+					    &input_reports[report_active_index],
+					    sizeof(struct input_reports));
+			break;
+		default:
+			response_len = 2;
+			buffer[0] = response_len;
+			buffer[1] = 0;
+			break;
+		}
+		send_response(response_len);
+		break;
+	case I2C_HID_CMD_SET_REPORT:
+		ccprintf("I2C-HID: command set_report (%04x)\n", report_id);
+		switch (report_id) {
+		case REPORT_ID_BASE_ACCEL_POLLING_INTERVAL:
+			extract_report(len, buffer, &base_accel_odr,
+				       sizeof(base_accel_odr));
+			host_sensor_id = hid_get_sensorid_from_featureid(report_id);
+			sensor = hid_host_sensor_id_to_real_sensor(host_sensor_id);
+
+			if (sensor == NULL)
+				return EC_RES_INVALID_PARAM;
+
+		/* Set new data rate if the feature report data has a value. */
+		if (base_accel_odr != EC_MOTION_SENSE_NO_VALUE) {
+			/*
+			 * To be sure timestamps are calculated properly,
+			 * Send an event to have a timestamp inserted in the
+			 * FIFO.
+			 */
+			motion_sense_insert_timestamp(__hw_clock_source_read());
+			sensor->config[SENSOR_CONFIG_AP].odr = base_accel_odr;
+
+			ret = motion_sense_set_data_rate(sensor);
+			if (ret != EC_SUCCESS)
+				return EC_RES_INVALID_PARAM;
+
+			/*
+			 * The new ODR may suspend sensor, leaving samples
+			 * in the FIFO. Flush it explicitly.
+			 */
+			task_set_event(TASK_ID_MOTIONSENSE,
+					TASK_EVENT_MOTION_ODR_CHANGE, 0);
+
+			/*
+			 * If the sensor was suspended before, or now
+			 * suspended, we have to recalculate the EC sampling
+			 * rate
+			 */
+			motion_sense_set_motion_intervals();
+		}
+			break;
+		default:
+			break;
+		}
+		break;
+
+	case I2C_HID_CMD_SET_POWER:
+	
+		break;
+		
+	}
+	return 0;
 }
 
 static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
