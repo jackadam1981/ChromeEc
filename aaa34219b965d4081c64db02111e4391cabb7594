@@ -117,6 +117,30 @@
       "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db381b04_2ab25aa4",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-08T16:34:04Z",
+      "side": 1,
+      "message": "Thanks for keeping me in check. The testing I performed, didn\u0027t show this to be the case but apparently I did it wrong because now I see what you see. Updated the code to be safer",
+      "parentUuid": "6f79fb06_be3a53f9",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 11
+      },
+      "revId": "aaa34219b965d4081c64db02111e4391cabb7594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
