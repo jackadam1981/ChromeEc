@@ -614,6 +614,38 @@ static void dump_memory(void)
 	msleep(8);
 }
 
+static void dump_flash(void)
+{
+	uint32_t size = 128 * 1024, rx_len = 512 + ST_TP_DUMMY_BYTE;
+	uint32_t offset, i;
+	uint8_t cmd[] = {0xFB, 0x00, 0x00, 0x00, 0x00};
+
+	for (offset = 0; offset < size; offset += 512) {
+		watchdog_reload();
+
+		cmd[2] = (offset >> 16) & 0xFF;
+		cmd[3] = (offset >> 8) & 0xFF;
+		cmd[4] = (offset >> 0) & 0xFF;
+		spi_transaction(SPI, cmd, sizeof(cmd),
+				(uint8_t *)&rx_buf, rx_len);
+
+		for (i = 0; i < rx_len - ST_TP_DUMMY_BYTE; i += 32) {
+			CPRINTF("%.4h %.4h %.4h %.4h %.4h %.4h %.4h %.4h\n",
+				rx_buf.bytes + i + 4 * 0,
+				rx_buf.bytes + i + 4 * 1,
+				rx_buf.bytes + i + 4 * 2,
+				rx_buf.bytes + i + 4 * 3,
+				rx_buf.bytes + i + 4 * 4,
+				rx_buf.bytes + i + 4 * 5,
+				rx_buf.bytes + i + 4 * 6,
+				rx_buf.bytes + i + 4 * 7);
+			msleep(8);
+		}
+	}
+	CPRINTF("===============================\n");
+	msleep(8);
+}
+
 /*
  * Set `tp_control` if there are any actions should be taken.
  */
@@ -1863,6 +1895,15 @@ static int command_touchpad_st(int argc, char **argv)
 			return EC_ERROR_PARAM2;
 
 		ccprintf("memory_dump: %d\n", dump_memory_on_error);
+		return EC_SUCCESS;
+	} else if (strcasecmp(argv[1], "erase_flash") == 0) {
+		st_tp_stop_scan();
+		st_tp_prepare_for_update(0);
+		return EC_SUCCESS;
+	} else if (strcasecmp(argv[1], "dump_flash") == 0) {
+		enable_deep_sleep(0);
+		dump_flash();
+		enable_deep_sleep(1);
 		return EC_SUCCESS;
 	} else {
 		return EC_ERROR_PARAM1;
