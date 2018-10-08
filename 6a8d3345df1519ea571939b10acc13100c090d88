@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5038ff5b_c57bb8b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-08T14:43:00Z",
+      "side": 1,
+      "message": "\"forcing the PD task to sleep for 18ms has some drawbacks,\nat least this won\u0027t work at all on systems without TCPC.\"\nThis was the comment I received when I used usleep in the\ninitial implementation. That\u0027s why the buffer was added.",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 387,
+        "endChar": 23
+      },
+      "revId": "6a8d3345df1519ea571939b10acc13100c090d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
