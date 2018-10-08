@@ -32,6 +32,7 @@
 #define CPRINTS(format, args...) cprints(CC_TOUCHPAD, format, ## args)
 
 #define TASK_EVENT_POWER  TASK_EVENT_CUSTOM(1)
+#define TASK_EVENT_TP_UPDATED  TASK_EVENT_CUSTOM(2)
 
 #define SPI (&(spi_devices[SPI_ST_TP_DEVICE_ID]))
 
@@ -40,7 +41,7 @@ BUILD_ASSERT(BYTES_PER_PIXEL == 1);
 
 /* Function prototypes */
 static int st_tp_panel_init(int full);
-static int st_tp_read_all_events(int suppress_error);
+static int st_tp_read_all_events(int show_error);
 static int st_tp_read_host_buffer_header(void);
 static int st_tp_send_ack(void);
 static int st_tp_start_scan(void);
@@ -59,6 +60,7 @@ static int system_state;
 #define SYSTEM_STATE_ENABLE_DOME_SWITCH	(1 << 2)
 #define SYSTEM_STATE_ACTIVE_MODE	(1 << 3)
 #define SYSTEM_STATE_DOME_SWITCH_LEVEL	(1 << 4)
+#define SYSTEM_STATE_READY		(1 << 5)
 
 /*
  * Pending action for touchpad.
@@ -68,10 +70,11 @@ static int tp_control;
 #define TP_CONTROL_SHALL_HALT		(1 << 0)
 #define TP_CONTROL_SHALL_RESET		(1 << 1)
 #define TP_CONTROL_SHALL_INIT		(1 << 2)
-#define TP_CONTROL_SHALL_DUMP_ERROR	(1 << 3)
-#define TP_CONTROL_RESETTING		(1 << 4)
-#define TP_CONTROL_INIT			(1 << 5)
-#define TP_CONTROL_INIT_FULL		(1 << 6)
+#define TP_CONTROL_SHALL_INIT_FULL	(1 << 3)
+#define TP_CONTROL_SHALL_DUMP_ERROR	(1 << 4)
+#define TP_CONTROL_RESETTING		(1 << 5)
+#define TP_CONTROL_INIT			(1 << 6)
+#define TP_CONTROL_INIT_FULL		(1 << 7)
 
 /*
  * Number of times we have reset the touchpad because of errors.
@@ -265,9 +268,9 @@ static int st_tp_write_hid_report(void)
 	domeswitch_changed = ((old_system_state ^ system_state) &
 			      SYSTEM_STATE_DOME_SWITCH_LEVEL);
 
-	num_events = st_tp_read_all_events(0);
-	if (num_events < 0)
-		return -num_events;
+	num_events = st_tp_read_all_events(1);
+	if (tp_control)
+		return 1;
 
 	memset(&report, 0, sizeof(report));
 	report.id = REPORT_ID_TOUCHPAD;
@@ -638,7 +641,10 @@ static void dump_flash(void)
 	msleep(8);
 }
 
-static int st_tp_handle_error(uint8_t error_type)
+/*
+ * Set `tp_control` if there are any actions should be taken.
+ */
+static void st_tp_handle_error(uint8_t error_type)
 {
 	tp_control |= TP_CONTROL_SHALL_DUMP_ERROR;
 
@@ -651,7 +657,7 @@ static int st_tp_handle_error(uint8_t error_type)
 	    error_type == 0xF3 ||
 	    (error_type >= 0x47 && error_type <= 0x4E)) {
 		tp_control |= TP_CONTROL_SHALL_RESET;
-		return 1;
+		return;
 	}
 
 	/*
@@ -659,8 +665,9 @@ static int st_tp_handle_error(uint8_t error_type)
 	 */
 	if ((error_type >= 0x20 && error_type <= 0x25) ||
 	    (error_type >= 0x2E && error_type <= 0x46)) {
+		CPRINTS("tp shall halt");
 		tp_control |= TP_CONTROL_SHALL_HALT;
-		return 1;
+		return;
 	}
 
 	/*
@@ -668,7 +675,12 @@ static int st_tp_handle_error(uint8_t error_type)
 	 */
 	if (error_type >= 0x28 && error_type <= 0x2A) {
 		tp_control |= TP_CONTROL_SHALL_INIT;
-		return 1;
+		return;
+	}
+
+	if (error_type >= 0xA0 && error_type <= 0xA6) {
+		tp_control |= TP_CONTROL_SHALL_INIT_FULL;
+		return;
 	}
 
 	/*
@@ -682,25 +694,14 @@ static int st_tp_handle_error(uint8_t error_type)
 		} else {
 			tp_control |= TP_CONTROL_SHALL_HALT;
 		}
-		return 1;
+		return;
 	}
-
-	/*
-	 * Otherwise, just ignore it.
-	 */
-	return 0;
 }
 
 /*
  * Handles error reports.
- *
- * @param suppress_error: log and don't react on errors.
- *
- * @return 0 for minor errors, 1 for major errors (should not handle non-error
- *   events).
  */
-static int st_tp_handle_error_report(struct st_tp_event_t *e,
-				     int suppress_error)
+static void st_tp_handle_error_report(struct st_tp_event_t *e)
 {
 	uint8_t error_type = e->report.report_type;
 
@@ -708,10 +709,7 @@ static int st_tp_handle_error_report(struct st_tp_event_t *e,
 		((e->report.info[0] << 0) | (e->report.info[1] << 8) |
 		 (e->report.info[2] << 16) | (e->report.info[3] << 24)));
 
-	if (suppress_error)
-		return 0;
-
-	return st_tp_handle_error(error_type);
+	st_tp_handle_error(error_type);
 }
 
 static void st_tp_handle_status_report(struct st_tp_event_t *e)
@@ -757,12 +755,14 @@ static void st_tp_handle_status_report(struct st_tp_event_t *e)
 /*
  * Read all events, and handle errors.
  *
- * @param suppress_error: succeed even if error events present.
+ * When there are error events, suggested action will be saved in `tp_control`.
  *
- * @return number of events available on success, or negative error code on
- *         failure.
+ * @param show_error: weather EC should read and dump error or not.
+ *   ***If this is true, rx_buf.events[] will be cleared.***
+ *
+ * @return number of events available
  */
-static int st_tp_read_all_events(int suppress_error)
+static int st_tp_read_all_events(int show_error)
 {
 	uint8_t cmd = ST_TP_CMD_READ_ALL_EVENTS;
 	int rx_len = sizeof(rx_buf.events) + ST_TP_DUMMY_BYTE;
@@ -779,25 +779,26 @@ static int st_tp_read_all_events(int suppress_error)
 		if (e->magic != ST_TP_EVENT_MAGIC)
 			break;
 
-		if (e->evt_id == ST_TP_EVENT_ID_ERROR_REPORT)
-			ret |= st_tp_handle_error_report(e, suppress_error);
-
-		if (e->evt_id == ST_TP_EVENT_ID_STATUS_REPORT)
+		switch (e->evt_id) {
+		case ST_TP_EVENT_ID_ERROR_REPORT:
+			st_tp_handle_error_report(e);
+			break;
+		case ST_TP_EVENT_ID_STATUS_REPORT:
 			st_tp_handle_status_report(e);
-	}
-
-	if (!suppress_error) {
-		if (tp_control & TP_CONTROL_SHALL_DUMP_ERROR) {
-			enable_deep_sleep(0);
-			dump_error();
-			dump_memory();
-			enable_deep_sleep(1);
-			tp_control &= ~TP_CONTROL_SHALL_DUMP_ERROR;
+			break;
 		}
-
-		if (ret)
-			return -ret;
 	}
+
+	if (show_error && (tp_control & TP_CONTROL_SHALL_DUMP_ERROR)) {
+		enable_deep_sleep(0);
+		dump_error();
+		dump_memory();
+		enable_deep_sleep(1);
+		/* rx_buf.events[] is invalid now */
+		i = 0;
+	}
+	tp_control &= ~TP_CONTROL_SHALL_DUMP_ERROR;
+
 	return i;
 }
 
@@ -812,9 +813,12 @@ static int st_tp_reset(void)
 	board_touchpad_reset();
 
 	while (retry--) {
-		num_events = st_tp_read_all_events(1);
-		if (num_events < 0)
-			return -num_events;
+		num_events = st_tp_read_all_events(0);
+
+		if (!(tp_control & (TP_CONTROL_INIT | TP_CONTROL_INIT_FULL)) &&
+		    (tp_control & (TP_CONTROL_SHALL_HALT |
+				   TP_CONTROL_SHALL_RESET)))
+			break;
 
 		for (i = 0; i < num_events; i++) {
 			struct st_tp_event_t *e = &rx_buf.events[i];
@@ -835,18 +839,23 @@ static int st_tp_reset(void)
 /* Initialize the controller ICs after reset */
 static void st_tp_init(void)
 {
-	tp_control = TP_CONTROL_RESETTING;
+	tp_control = 0;
+	system_state = 0;
 
 	if (st_tp_reset())
 		return;
+
+	if (tp_control) {
+		CPRINTS("tp_control = %x", tp_control);
+		return;
+	}
 	/*
 	 * On boot, ST firmware will load system info to host data memory,
 	 * So we don't need to reload it.
 	 */
 	st_tp_read_system_info(0);
 
-	system_state = 0;
-	tp_control &= ~TP_CONTROL_RESETTING;
+	system_state = SYSTEM_STATE_READY;
 
 	touchpad_power_control();
 }
@@ -1067,9 +1076,7 @@ static int st_tp_write_flash(int offset, int size, const uint8_t *data)
 static int st_tp_check_command_echo(const uint8_t *cmd, const size_t len)
 {
 	int num_events, i;
-	num_events = st_tp_read_all_events(1);
-	if (num_events < 0)
-		return -num_events;
+	num_events = st_tp_read_all_events(0);
 
 	for (i = 0; i < num_events; i++) {
 		struct st_tp_event_t *e = &rx_buf.events[i];
@@ -1079,7 +1086,7 @@ static int st_tp_check_command_echo(const uint8_t *cmd, const size_t len)
 		    memcmp(e->report.info, cmd, MIN(4, len)) == 0)
 			return EC_SUCCESS;
 	}
-	return -EC_ERROR_BUSY;
+	return EC_ERROR_BUSY;
 }
 
 static uint8_t get_cx_version(uint8_t tp_version)
@@ -1120,17 +1127,18 @@ static int st_tp_panel_init(int full)
 	if (tp_control & (TP_CONTROL_INIT | TP_CONTROL_INIT_FULL))
 		return EC_ERROR_BUSY;
 
-	st_tp_stop_scan();
-	ret = st_tp_reset();
-	if (ret)
-		return ret;
-
-	if (full || 1) {  /* should perform full panel initialization */
+	if (full || (tp_control & TP_CONTROL_SHALL_INIT_FULL)) {
+		/* should perform full panel initialization */
 		tx_buf[2] = 0x3;
 		tp_control = TP_CONTROL_INIT_FULL;
 	} else {
 		tp_control = TP_CONTROL_INIT;
 	}
+
+	st_tp_stop_scan();
+	ret = st_tp_reset();
+	if (ret)
+		return ret;
 
 	CPRINTS("Start panel initialization (full=%d)", full);
 	spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
@@ -1146,9 +1154,9 @@ static int st_tp_panel_init(int full)
 			tp_control &= ~(TP_CONTROL_INIT | TP_CONTROL_INIT_FULL);
 			st_tp_init();
 			return EC_SUCCESS;
-		} else if (ret == -EC_ERROR_BUSY) {
+		} else if (ret == EC_ERROR_BUSY) {
 			CPRINTS("Panel initialization on going...");
-		} else {
+		} else if (tp_control) {
 			CPRINTS("Panel initialization failed: %x", -ret);
 			return -ret;
 		}
@@ -1172,10 +1180,20 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 		const struct st_tp_fw_header_t *header;
 		uint8_t old_cx_version;
 		uint8_t new_cx_version;
+		int retry;
 
 		header = (const struct st_tp_fw_header_t *)data;
 		if (header->signature != 0xAA55AA55)
 			return EC_ERROR_INVAL;
+
+		for (retry = 50; retry > 0; retry--) {
+			watchdog_reload();
+			if (system_state & SYSTEM_STATE_READY)
+				break;
+			if (retry % 10 == 0)
+				CPRINTS("orz...");
+			msleep(100);
+		}
 
 		old_cx_version = get_cx_version(system_info.release_info);
 		new_cx_version = get_cx_version(header->release_info);
@@ -1253,7 +1271,7 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		CPRINTS("header: %.*h", *data_size, buf);
 		return EC_SUCCESS;
 	case ST_TP_DEBUG_CMD_READ_EVENTS:
-		num_events = st_tp_read_all_events(1);
+		num_events = st_tp_read_all_events(0);
 		if (num_events) {
 			int i;
 
@@ -1405,7 +1423,42 @@ void touchpad_task(void *u)
 {
 	uint32_t event;
 
-	st_tp_init();
+	while (1) {
+		for (event = 0; event < 3; event ++) {
+			CPRINTS("st_tp_init: trial %d", event + 1);
+			st_tp_init();
+
+			if (system_state & SYSTEM_STATE_READY)
+				break;
+			/*
+			 * React on touchpad errors.
+			 */
+			if (tp_control & TP_CONTROL_SHALL_INIT_FULL) {
+				/* suppress other handlers */
+				tp_control = TP_CONTROL_SHALL_INIT_FULL;
+				st_tp_panel_init(1);
+			} else if (tp_control & TP_CONTROL_SHALL_INIT) {
+				/* suppress other handlers */
+				tp_control = TP_CONTROL_SHALL_INIT;
+				st_tp_panel_init(0);
+			} else if (tp_control & TP_CONTROL_SHALL_RESET) {
+				/* suppress other handlers */
+				tp_control = TP_CONTROL_SHALL_RESET;
+			} else if (tp_control & TP_CONTROL_SHALL_HALT) {
+				CPRINTS("shall halt");
+				tp_control = 0;
+				break;
+			}
+		}
+
+		if (system_state & SYSTEM_STATE_READY)
+			break;
+
+		/* failed to init, mark it as ready to allow upgrade */
+		system_state = SYSTEM_STATE_READY;
+		/* wait for upgrade complete */
+		task_wait_event_mask(TASK_EVENT_TP_UPDATED, -1);
+	}
 	touchpad_power_control();
 
 	while (1) {
@@ -1429,10 +1482,14 @@ void touchpad_task(void *u)
 		/*
 		 * React on touchpad errors.
 		 */
-		if (tp_control & TP_CONTROL_SHALL_INIT) {
+		if (tp_control & TP_CONTROL_SHALL_INIT_FULL) {
+			/* suppress other handlers */
+			tp_control = TP_CONTROL_SHALL_INIT_FULL;
+			st_tp_panel_init(1);
+		} else if (tp_control & TP_CONTROL_SHALL_INIT) {
 			/* suppress other handlers */
 			tp_control = TP_CONTROL_SHALL_INIT;
-			st_tp_panel_init(1);
+			st_tp_panel_init(0);
 		} else if (tp_control & TP_CONTROL_SHALL_RESET) {
 			/* suppress other handlers */
 			tp_control = TP_CONTROL_SHALL_RESET;
@@ -1548,8 +1605,8 @@ static int st_tp_read_frame(void)
 	uint8_t *rx_buf = &usb_packet[spi_buffer_index & 1].heat_map;
 #endif
 
-	ret = st_tp_read_all_events(0);
-	if (ret < 0)
+	st_tp_read_all_events(1);
+	if (tp_control)
 		goto failed;
 
 	if (heat_map_addr < 0)
