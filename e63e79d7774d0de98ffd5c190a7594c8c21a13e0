@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37d10363_11c50e4b",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-10-08T16:48:49Z",
+      "side": 1,
+      "message": "I recently learned this once I started using a servo v4, but the servo_type for a servo v4 w/ ccd is: servo_v4_with_ccd_cr50. This means it matches the servo regex and the ccd regex. I\u0027m wondering if we should change the servo regex match anything that doesn\u0027t have ccd_cr50?",
+      "range": {
+        "startLine": 192,
+        "startChar": 36,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "e63e79d7774d0de98ffd5c190a7594c8c21a13e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
