@@ -22,6 +22,30 @@
       "revId": "6a8d3345df1519ea571939b10acc13100c090d88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea7b325_ea799c2a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-08T16:18:42Z",
+      "side": 1,
+      "message": "Interesting.  Do you know what the drawbacks are?\n\nThe issue I was having with the buffer initially was that our PD states would get out of sync with what had actually been sent.  Acting as a sink, we\u0027d get a VCONN_Swap from the PD 3.0 hub, then we\u0027d go ahead and buffer Accept and turn on VCONN without the Accept having been sent.  \n\nPart of the issue there was that the hub was holding NG for the duration of the AMS, so we wouldn\u0027t send anything with the previous code.  If we add the buffer back, then I\u0027d imagine there also needs to be some communication to the states for when their message has been successfully sent so they can perform other actions in the correct order.",
+      "parentUuid": "5038ff5b_c57bb8b8",
+      "range": {
+        "startLine": 387,
+        "startChar": 2,
+        "endLine": 387,
+        "endChar": 23
+      },
+      "revId": "6a8d3345df1519ea571939b10acc13100c090d88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
