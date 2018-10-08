@@ -70,6 +70,30 @@
       "revId": "2f019a639a8238483de3f1048a4a3ca9b61e3958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43eb2299_0352670e",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-08T23:29:16Z",
+      "side": 0,
+      "message": "this patch is required only to prepare to add HECI/IPC bus protocol which replaces host command protocol.\nIf we remove these 2 tasks at the initial Atlas_ish board file, exiting HOST command base implementation might be broken.  We are in the middle of switching from HC to HECI. \nI think we\u0027d better separate out this patch from initial board files.",
+      "parentUuid": "8e0d36df_76523a1a",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "2f019a639a8238483de3f1048a4a3ca9b61e3958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
