@@ -70,6 +70,24 @@
       "revId": "5087723490bcad60a4e833e106170e861bd1a159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85889195_b557dc58",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-08T18:09:26Z",
+      "side": 1,
+      "message": "It should be initialized once when transition from S5 to S3/S0ix\n\nMaybe you were seeing error with initialization before CL:1239974 was submitted?",
+      "parentUuid": "87507775_dad9480c",
+      "revId": "5087723490bcad60a4e833e106170e861bd1a159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
