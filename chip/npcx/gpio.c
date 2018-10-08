@@ -477,7 +477,7 @@ void gpio_pre_init(void)
 		 * the alternate mode needs the wake up input even though the
 		 * normal gpio definition doesn't have an ISR.
 		 */
-		if ((g->flags & GPIO_SEL_1P8V) && !gpio_is_i2c_pin(i))
+		if (!gpio_is_i2c_pin(i))
 			gpio_enable_wake_up_input(i, 0);
 	}
 #endif
