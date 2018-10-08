@@ -46,6 +46,30 @@
       "revId": "e63e79d7774d0de98ffd5c190a7594c8c21a13e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d0efb9_ffb6b0e2",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-10-08T18:03:23Z",
+      "side": 1,
+      "message": "Yeah, grunt works with servo v4 w/ (servo micro or ccd).",
+      "parentUuid": "65d661f1_edf61f27",
+      "range": {
+        "startLine": 192,
+        "startChar": 36,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "e63e79d7774d0de98ffd5c190a7594c8c21a13e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
