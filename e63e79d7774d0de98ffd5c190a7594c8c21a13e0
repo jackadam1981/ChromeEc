@@ -22,6 +22,30 @@
       "revId": "e63e79d7774d0de98ffd5c190a7594c8c21a13e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d661f1_edf61f27",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-08T18:02:00Z",
+      "side": 1,
+      "message": "That makes sense. Is grunt working with servo v4 right now. I could test that out with grunt",
+      "parentUuid": "37d10363_11c50e4b",
+      "range": {
+        "startLine": 192,
+        "startChar": 36,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "e63e79d7774d0de98ffd5c190a7594c8c21a13e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
