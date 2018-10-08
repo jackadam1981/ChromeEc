@@ -89,13 +89,15 @@ static const struct dma_option dma_rx_option = {
 /* Setup DMA to transfer bootblock. */
 static void bootblock_transfer(void)
 {
+	static int transfer_try;
+
 	dma_chan_t *txdma = dma_get_channel(STM32_DMAC_SPI_EMMC_TX);
 
 	dma_prepare_tx(&dma_tx_option, sizeof(bootblock_raw_data),
 		       bootblock_raw_data);
 	dma_go(txdma);
 
-	CPRINTS("transfer");
+	CPRINTS("transfer %d", ++transfer_try);
 }
 
 /* Abort an ongoing transfer. */

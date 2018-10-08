@@ -52,8 +52,14 @@ void header_format(FILE *fin, FILE *fout)
 	fprintf(fout,
 		"static const uint8_t %s[] __attribute__((aligned(4))) =\n"
 		"{\n"
+		/*
+		 * For some reason, SPI+DMA sometimes fails to transmit the
+		 * first few bytes: flush the FIFO before sending ack
+		 * (see b/117253718).
+		 */
+		"\t0xff, 0xff, 0xff, 0xff,\n"
 		"\t0xff, 0x97, /* Acknowledge boot mode: 1 S=0 010 E=1 11 */\n"
-		"\t0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,\n",
+		"\t0xff, 0xff, 0xff, 0xff,\n",
 		BLOCK_RAW_DATA);
 
 	for (blk = 0;; blk++) {
