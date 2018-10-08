@@ -52,6 +52,24 @@
       "revId": "5087723490bcad60a4e833e106170e861bd1a159",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87507775_dad9480c",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2018-10-08T11:17:25Z",
+      "side": 1,
+      "message": "If .active_mask of BASE_GYRO is configured as SENSOR_ACTIVE_S0, Base Gyro will be initialized once when system recover S0 state from S0ix state. If .active_mask of BASE_GYRO is configured as SENSOR_ACTIVE_S0_S3, it will not be initialized.",
+      "parentUuid": "74747c27_48d53ea1",
+      "revId": "5087723490bcad60a4e833e106170e861bd1a159",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
