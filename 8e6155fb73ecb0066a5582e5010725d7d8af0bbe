@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b2a4e5b_0e980b02",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-09T00:24:08Z",
+      "side": 1,
+      "message": "move the changes in a new file, like motion_sense_hid.c\n\nConsider writing unit test at the same time. Take motion_lid for exmaple: when sending a GET_REPORT_HID for axis value, check the return packet is correct.\n\nCheck your packed with https://github.com/abend0c1/hidrdd",
+      "revId": "8e6155fb73ecb0066a5582e5010725d7d8af0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6e6bde_dc9ef011",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-09T00:24:08Z",
+      "side": 1,
+      "message": "you need to send something back, a reponse with the proper error code.",
+      "revId": "8e6155fb73ecb0066a5582e5010725d7d8af0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5b1ae7_eaa8f644",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1502,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-09T00:24:08Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "8e6155fb73ecb0066a5582e5010725d7d8af0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b2da1a_370bc1eb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1503,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-09T00:24:08Z",
+      "side": 1,
+      "message": "this does not make sense, EC_MOTION_SENSE_NO_VALUE is not part of HID interface.",
+      "revId": "8e6155fb73ecb0066a5582e5010725d7d8af0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1317373e_a676fad8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-09T00:24:08Z",
+      "side": 1,
+      "message": "space.\nRun --verify when using repo upload",
+      "revId": "8e6155fb73ecb0066a5582e5010725d7d8af0bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
