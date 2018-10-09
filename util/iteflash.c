@@ -82,6 +82,8 @@
 
 /* store custom parameters */
 const char *input_filename;
+static size_t read_base;
+static size_t read_size;
 const char *output_filename;
 static int usb_vid = SERVO_USB_VID;
 static int usb_pid = SERVO_USB_PID;
@@ -1489,6 +1491,49 @@ void display_usage(char *program)
 	exit(2);
 }
 
+static void parse_read_options(const char *str)
+{
+	/* This is a memory leak, but who cares in this case. */
+	char *copy = strdup(str);
+	char *base, *size;
+
+	input_filename = copy;
+
+	base = strchr(copy, ':');
+	if (!base)
+		return;
+
+	*base++ = '\0';
+	if (!*base) {
+		fprintf(stderr,	"missing read address base specification %s\n",
+			str);
+		exit(1);
+	}
+	read_base = strtoul(base, &size, 16);
+
+	if (!size)
+		return;
+
+	if (*size++ != ':') {
+		fprintf(stderr,
+			"wrong read address base specification %s\n",
+			str);
+		exit(1);
+	}
+	if (!*size) {
+		fprintf(stderr,	"missing read area size specification %s\n",
+			str);
+		exit(1);
+	}
+	read_size = strtoul(size, &size, 16);
+
+	if (size && *size) {
+		fprintf(stderr,	"wrong read address size specification %s\n",
+			str);
+		exit(1);
+	}
+}
+
 int parse_parameters(int argc, char **argv)
 {
 	int opt, idx;
@@ -1520,7 +1565,7 @@ int parse_parameters(int argc, char **argv)
 			usb_pid = strtol(optarg, NULL, 16);
 			break;
 		case 'r':
-			input_filename = optarg;
+			parse_read_options(optarg);
 			break;
 		case 's':
 			usb_serial = optarg;
@@ -1603,7 +1648,11 @@ int main(int argc, char **argv)
 		command_write_unprotect(&chnd);
 
 	if (input_filename) {
-		ret = read_flash(&chnd, input_filename, 0, flash_size);
+		size_t base, size;
+
+		base = read_base;
+		size = read_size ? read_size : flash_size;
+		ret = read_flash(&chnd, input_filename, base, size);
 
 		if (ret)
 			goto terminate;
