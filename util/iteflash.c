@@ -95,6 +95,8 @@ struct iteflash_config {
 	int usb_pid;
 	const char *usb_serial;
 	const struct i2c_interface *i2c_if;
+	size_t read_base;
+	size_t read_size;
 };
 
 struct common_hnd {
@@ -1288,15 +1290,29 @@ failed_erase:
 }
 
 /* Return zero on success, a negative error value on failures. */
-static int read_flash(struct common_hnd *chnd, const char *filename,
-		      uint32_t offset, uint32_t size)
+static int read_flash(struct common_hnd *chnd)
 {
 	int res;
 	FILE *hnd;
-	uint8_t *buffer = malloc(size);
+	uint8_t *buffer;
+	const char *filename = chnd->conf.input_filename;
+	size_t offset = chnd->conf.read_base;
+	size_t size;
 
+	if (!offset && !chnd->conf.read_size) {
+		size = chnd->flash_size;
+	} else {
+		size = chnd->conf.read_size;
+		if ((size + offset) > chnd->flash_size) {
+			fprintf(stderr,
+				"Error: Read range exceeds flash size!\n");
+			return -EINVAL;
+		}
+	}
+
+	buffer = malloc(size);
 	if (!buffer) {
-		fprintf(stderr, "Cannot allocate %d bytes\n", size);
+		fprintf(stderr, "Cannot allocate %zd bytes\n", size);
 		return -ENOMEM;
 	}
 
@@ -1309,7 +1325,7 @@ static int read_flash(struct common_hnd *chnd, const char *filename,
 
 	if (!size)
 		size = chnd->flash_size;
-	printf("Reading %d bytes at 0x%08x\n", size, offset);
+	printf("Reading %zd bytes at %#08zx\n", size, offset);
 	res = command_read_pages(chnd, offset, size, buffer);
 	if (res > 0) {
 		if (fwrite(buffer, res, 1, hnd) != 1)
@@ -1598,8 +1614,9 @@ static void display_usage(char *program)
 			"to use\n");
 	fprintf(stderr, "--i[interface] <1> : FTDI interface: A=1, B=2, ...\n");
 	fprintf(stderr, "--p[roduct] <0x1234> : USB product ID\n");
-	fprintf(stderr, "--r[ead] <file> : read the flash content and "
-			"write it into <file>\n");
+	fprintf(stderr, "--r[ead] <file>[:offset[:size]] : read flash contents"
+		" and write them into <file>. <offset> and <size> allow\n"
+		"to read just a slice of the file\n");
 	fprintf(stderr, "--s[erial] <serialname> : USB serial string\n");
 	fprintf(stderr, "--u[nprotect] : remove flash write protect\n");
 	fprintf(stderr, "--v[endor] <0x1234> : USB vendor ID\n");
@@ -1612,9 +1629,57 @@ static void display_usage(char *program)
 	exit(2);
 }
 
+
+static void parse_read_options(char *str, struct iteflash_config *conf)
+{
+	char *base, *size;
+
+	conf->input_filename = str;
+	base = strchr(str, ':');
+
+	do {
+		if (!base)
+			return;
+
+		*base++ = '\0';
+		if (!*base) {
+			fprintf(stderr,
+				"missing read address base specification\n");
+			break;
+		}
+
+		conf->read_base = strtoul(base, &size, 16);
+		if (!size)
+			return;
+
+		if (*size++ != ':') {
+			fprintf(stderr,
+				"wrong read address base specification\n");
+			break;
+		}
+		if (!*size) {
+			fprintf(stderr,
+				"missing read area size specification\n");
+			break;
+		}
+		conf->read_size = strtoul(size, &size, 16);
+
+		if (size && *size) {
+			fprintf(stderr,
+				"wrong read address size specification\n");
+			break;
+		}
+		return;
+	} while (0);
+
+	exit(1);
+}
+
 static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 {
 	int opt, idx;
+
+	conf->send_waveform = 1;
 
 	while ((opt = getopt_long(argc, argv, "?dehc:i:p:r:s:uv:W:w:",
 				  longopts, &idx)) != -1) {
@@ -1647,7 +1712,7 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 			conf->usb_pid = strtol(optarg, NULL, 16);
 			break;
 		case 'r':
-			conf->input_filename = optarg;
+			parse_read_options(optarg, conf);
 			break;
 		case 's':
 			conf->usb_serial = optarg;
@@ -1662,10 +1727,10 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 			if (!strcmp(optarg, "0") ||
 			    !strcasecmp(optarg, "false")) {
 				conf->send_waveform = 0;
-			} else if (!strcmp(optarg, "1") ||
-				   !strcasecmp(optarg, "true")) {
-				conf->send_waveform = 1;
-			} else {
+				break;
+			}
+
+			if (strcmp(optarg, "1") && strcasecmp(optarg, "true")) {
 				fprintf(stderr, "Unexpected -W / "
 					"--special-waveform value: %s\n",
 					optarg);
@@ -1746,8 +1811,7 @@ int main(int argc, char **argv)
 		command_write_unprotect(&chnd);
 
 	if (chnd.conf.input_filename) {
-		ret = read_flash(&chnd, chnd.conf.input_filename, 0,
-			chnd.flash_size);
+		ret = read_flash(&chnd);
 		if (ret)
 			goto terminate;
 	}
