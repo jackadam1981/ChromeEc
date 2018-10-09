@@ -118,9 +118,45 @@ static int nx20p348x_discharge_vbus(int port, int enable)
 
 	status = write_reg(port, NX20P348X_DEVICE_CONTROL_REG, regval);
 	if (status) {
-		CPRINTS("Failed to %s vbus discharge",
-			enable ? "enable" : "disable");
+		CPRINTS("C%d: Failed to %s vbus discharge",
+			port, enable ? "enable" : "disable");
 		return status;
+	}
+
+	return EC_SUCCESS;
+}
+
+#define NX20P348X_SWITCH_STATUS_INTERVAL_USEC		(5*MSEC)
+#define NX20P348X_SWITCH_STATUS_MAX_DEBOUNCE_USEC	(50*MSEC)
+
+/**
+ * Wait for the status register to reflect the desired mask. Typical debounce
+ * is 15 ms, but there isn't an upper bound. Emperically 50 ms seems to cover
+ * most scenarios.
+ */
+static int nx20p348x_wait_for_status_update(int port, int desired_mask)
+{
+	int error, status;
+	timestamp_t deadline = get_time();
+
+	deadline.val += NX20P348X_SWITCH_STATUS_MAX_DEBOUNCE_USEC;
+	do {
+		usleep(NX20P348X_SWITCH_STATUS_INTERVAL_USEC);
+		error = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
+		status &= NX20P348X_SWITCH_STATUS_MASK;
+	} while (!timestamp_expired(deadline, NULL) &&
+		 (error || status != desired_mask));
+
+	if (error) {
+		CPRINTS("C%d Error reading PPC status register", port);
+		return error;
+	}
+
+	if (status != desired_mask) {
+		CPRINTS("C%d PPC status reg did not update to 0x%x! (current: "
+			"0x%x)",
+			port, desired_mask, status);
+		return EC_ERROR_UNKNOWN;
 	}
 
 	return EC_SUCCESS;
@@ -128,7 +164,6 @@ static int nx20p348x_discharge_vbus(int port, int enable)
 
 static int nx20p348x_vbus_sink_enable(int port, int enable)
 {
-	int status;
 	int rv;
 	int control = enable ? NX20P348X_SWITCH_CONTROL_HVSNK : 0;
 
@@ -149,23 +184,15 @@ static int nx20p348x_vbus_sink_enable(int port, int enable)
 		return rv;
 
 	/*
-	 * Read switch status register. The bit definitions for switch control
-	 * and switch status resister are identical, so the control value can be
-	 * compared against the status value. The control switch has a debounce
-	 * (15 msec) before the status will reflect the control command.
+	 * Wait for switch status register to updated. The bit definitions for
+	 * switch control and switch status resister are identical, so the
+	 * control value can be compared against the status value.
 	 */
-	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
-	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
-	if (rv)
-		return rv;
-
-	return (status & NX20P348X_SWITCH_STATUS_MASK) == control ?
-		EC_SUCCESS : EC_ERROR_UNKNOWN;
+	return nx20p348x_wait_for_status_update(port, control);
 }
 
 static int nx20p348x_vbus_source_enable(int port, int enable)
 {
-	int status;
 	int rv;
 	int control = enable ? NX20P348X_SWITCH_CONTROL_5VSRC : 0;
 
@@ -186,18 +213,13 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 		return rv;
 
 	/*
-	 * Read switch status register. The bit definitions for switch control
-	 * and switch status resister are identical, so the control value can be
-	 * compared against the status value. The control switch has a debounce
-	 * (15 msec) before the status will reflect the control command.
+	 * Wait for switch status register to updated. The bit definitions for
+	 * switch control and switch status resister are identical, so the
+	 * control value can be compared against the status value.
 	 */
-	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
-	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
+	rv = nx20p348x_wait_for_status_update(port, control);
 	if (rv)
 		return rv;
-
-	if ((status & NX20P348X_SWITCH_STATUS_MASK) != control)
-		return EC_ERROR_UNKNOWN;
 
 	/* Cache the Vbus state */
 	if (enable)
