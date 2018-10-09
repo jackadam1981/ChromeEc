@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c7fb6d8_35aea74d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4921,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-09T23:00:34Z",
+      "side": 1,
+      "message": "this will always be the case on fizz and similar devices\nthat have no battery by design.",
+      "range": {
+        "startLine": 4921,
+        "startChar": 26,
+        "endLine": 4921,
+        "endChar": 32
+      },
+      "revId": "5b11e30eb529367d10b9e3f7946f8d1e639a7ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
