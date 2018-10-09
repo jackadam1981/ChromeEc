@@ -94,6 +94,30 @@
       "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4416b4_9f26522c",
+        "filename": "core/cortex-m0/vecttable.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-09T21:50:51Z",
+      "side": 1,
+      "message": "On a careful reading of the exception_panic(), it looks like they really did want to keep the lr as the special exn_return value.\n\n- \u0027b\u0027 has a reach of only +/- 2 kB on ARMv6-M\n- \u0027bl\u0027 would clobber the link register\n\nTherefore, this form will perform a long tail call to exception_panic.",
+      "parentUuid": "234a2a29_2c9296c1",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "4883ee8418bd473ce489d2d74dd4561edb04f10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
