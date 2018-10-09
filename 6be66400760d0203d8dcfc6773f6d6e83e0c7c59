@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4aa0bf12_d476e6f4",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-09T18:21:57Z",
+      "side": 1,
+      "message": "I have the same thought, the usb_i2c_register_cros_cmd_handler() mechanism should dispatch among multiple commands using first byte, or maybe first two bytes, of the I2C message payload.  There should be a canonical list (enum?) of command numbers, so that e.g. CR50 and Servo Micro will naturally use the same number for the same functionality (which on Servo Micro is available via console command right now, but not via I2C yet).",
+      "parentUuid": "fb5e7139_14c33dd5",
+      "range": {
+        "startLine": 40,
+        "startChar": 14,
+        "endLine": 40,
+        "endChar": 62
+      },
+      "revId": "6be66400760d0203d8dcfc6773f6d6e83e0c7c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa351612_46cd6989",
         "filename": "chip/g/ite_flash.c",
         "patchSetId": 2
