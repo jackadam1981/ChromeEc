@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d336d7e9_b2cc99f0",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-09T23:50:38Z",
+      "side": 1,
+      "message": "this value should be large enough to accommodate the size of the read queue. It is not possible today, but conceivably could exceed 2^16. I\u0027ll add a comment.",
+      "parentUuid": "79e2c182_f3ddddeb",
+      "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79e824bb_331150a0",
         "filename": "common/usb_i2c.c",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f731a44f_9bfab3d8",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-09T23:50:38Z",
+      "side": 1,
+      "message": "I don\u0027t think we should account for multiple usb_i2c channels, will add a comment to the .h file.",
+      "parentUuid": "79e824bb_331150a0",
+      "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b6aee72_4d0baa5b",
         "filename": "common/usb_i2c.c",
         "patchSetId": 5
@@ -47,6 +83,30 @@
       "writtenOn": "2018-10-09T23:02:30Z",
       "side": 1,
       "message": "I think this would be more readable as one line:\n\n  write_count \u003d ((peek[0] \u0026 0xf0) \u003c\u003c 4) | peek[2];\n\nOr since write_count is only used for expected_size:\n\n  /* 4 header bytes + the write count */\n  expected_size \u003d 4 + (((peek[0] \u0026 0xf0) \u003c\u003c 4) | peek[2]);\n\nOr if you prefer (hopefully result in same compiled code):\n\n  /* header bytes */\n  expected_size \u003d 4;\n  /* write count */\n  expected_size +\u003d ((peek[0] \u0026 0xf0) \u003c\u003c 4) | peek[2];",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 54
+      },
+      "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e822209_efc6284d",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-09T23:50:38Z",
+      "side": 1,
+      "message": "peek[0] is 8 bits in size, I don\u0027t want to rely on compiler to promote it to larger sizes, I think it is better to be explicit.\n\nI think keeping write_count does not cost much, but makes the code clearer.",
+      "parentUuid": "2b6aee72_4d0baa5b",
       "range": {
         "startLine": 83,
         "startChar": 0,

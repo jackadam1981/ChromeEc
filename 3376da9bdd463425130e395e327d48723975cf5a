@@ -141,6 +141,30 @@
       "revId": "3376da9bdd463425130e395e327d48723975cf5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba8d61f0_ae887a91",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-09T23:50:38Z",
+      "side": 1,
+      "message": "good idea, down with recursion and goto.",
+      "parentUuid": "3e1e3bb2_4281d97f",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "3376da9bdd463425130e395e327d48723975cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
