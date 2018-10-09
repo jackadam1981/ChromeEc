@@ -29,4 +29,6 @@ void ite_sync(volatile uint16_t *gpio_addr, uint16_t both_zero,
 	      uint16_t one_zero, uint16_t zero_one, uint16_t both_one,
 	      uint32_t half_period_ticks, uint32_t total_ticks_required);
 
+void maybe_trigger_ite_sync(void);
+
 #endif

@@ -7,10 +7,13 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "init_chip.h"
 #include "ite_sync.h"
 #include "registers.h"
+#include "scratch_reg1.h"
+#include "system.h"
 #include "timer.h"
 #include "usb_i2c.h"
 
@@ -30,18 +33,12 @@ static void suppress_jitter(void)
 	wreg(0x4009A6D0, 0);
 }
 
-static void restore_jitter(void)
-{
-	init_jittery_clock_locking_optional(1, 1, 0);
-}
-
 /*
  * Callback invoked by usb_i2c bridge when a wite to a special I2C address is
  * requested. We don't really care about any data in this case, when invoked
  * disable jitter, generate sync sequence and enable jitter back.
  */
-static int ite_sync_handler(void *data_in, size_t in_size,
-			    void *data_out, size_t out_size)
+void maybe_trigger_ite_sync(void)
 {
 	volatile uint16_t *gpio_addr;
 	uint32_t cycle_count;
@@ -49,9 +46,17 @@ static int ite_sync_handler(void *data_in, size_t in_size,
 	uint16_t both_one;
 	uint16_t one_zero;
 	uint16_t zero_one;
+	uint32_t lls1;
 
-	if (!ccd_is_cap_enabled(CCD_CAP_EC_FLASH))
-		return USB_I2C_DISABLED;
+	lls1 = GREG32(PMU, LONG_LIFE_SCRATCH1);
+
+	if (!(lls1 & BOARD_ITE_EC_SYNC_NEEDED))
+		return;
+
+	/* Clear the sync required bit. */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+	GREG32(PMU, LONG_LIFE_SCRATCH1) = lls1 & ~BOARD_ITE_EC_SYNC_NEEDED;
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
 
 	/* Let's pulse the EC while preparing to sync up. */
 	assert_ec_rst();
@@ -83,14 +88,13 @@ static int ite_sync_handler(void *data_in, size_t in_size,
 
 	cycle_count = 2 * ITE_SYNC_TIME / ITE_PERIOD_TIME;
 
-	suppress_jitter();
 	interrupt_disable();
+	suppress_jitter();
 
 	ite_sync(gpio_addr, both_zero, one_zero, zero_one, both_one,
 		 HALF_PERIOD_TICKS, HALF_PERIOD_TICKS * cycle_count);
 
 	interrupt_enable();
-	restore_jitter();
 
 	/* Restore I2C configuration. */
 	gpio_set_flags(GPIO_I2C_SCL_INA, GPIO_PULL_UP);
@@ -99,16 +103,44 @@ static int ite_sync_handler(void *data_in, size_t in_size,
 		GC_PINMUX_I2C0_SCL_SEL;
 	REG32(GBASE(PINMUX) + GOFFSET(PINMUX, DIOB1_SEL)) =
 		GC_PINMUX_I2C0_SDA_SEL;
+}
 
-	/* Make sure i2c controller is in a good shape. */
-	i2cm_init();
+static void deferred_ite_sync_reset(void)
+{
+	/* Enable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+	GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_ITE_EC_SYNC_NEEDED;
+	/* Disable writing to the long life register */
+	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
 
-	return USB_I2C_SUCCESS;
+	system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED |
+		     SYSTEM_RESET_HARD);
+}
+DECLARE_DEFERRED(deferred_ite_sync_reset);
+
+#define CROS_CMD_ITE_SYNC    0
+static int ite_sync_preparer(void *data_in, size_t in_size,
+			     void *data_out, size_t out_size)
+{
+
+	if (in_size != 1)
+		return USB_I2C_WRITE_COUNT_INVALID;
+
+	if (*((uint8_t *)data_in) != CROS_CMD_ITE_SYNC)
+		return USB_I2C_UNSUPPORTED_COMMAND;
+
+	if (!ccd_is_cap_enabled(CCD_CAP_EC_FLASH))
+		return USB_I2C_DISABLED;
+
+	/* Let the usb reply to make it to the host. */
+	hook_call_deferred(&deferred_ite_sync_reset_data, 10 * MSEC);
+
+	return 0;
 }
 
 static void register_ite_sync(void)
 {
-	usb_i2c_register_cros_cmd_handler(ite_sync_handler);
+	usb_i2c_register_cros_cmd_handler(ite_sync_preparer);
 }
 
 DECLARE_HOOK(HOOK_INIT, register_ite_sync, HOOK_PRIO_DEFAULT);

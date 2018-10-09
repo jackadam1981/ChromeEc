@@ -704,6 +704,18 @@ static int ccd_trigger_special_waveform(struct usb_endpoint *uep)
 
 	if (response[0])
 		return -response[0];
+	/*
+	 * The target is about to get reset, let's shut down the USB
+	 * connection.
+	 */
+	usb_shut_down(uep);
+
+	sleep(3);
+	if (usb_findit(usb_vid, usb_pid, CR50_I2C_SUBCLASS,
+		       CR50_I2C_PROTOCOL, uep)) {
+		fprintf(stderr, "%s: failed to reconnect\n", __func__);
+		return -1;
+	}
 
 	return 0;
 }
@@ -1558,8 +1570,9 @@ int main(int argc, char **argv)
 	/* Open the communications channel. */
 	memset(&chnd, 0, sizeof(chnd));
 	if (flags & FLAG_CCD_MODE) {
-		usb_findit(usb_vid, usb_pid, CR50_I2C_SUBCLASS,
-			   CR50_I2C_PROTOCOL, &chnd.uep);
+		if (usb_findit(usb_vid, usb_pid, CR50_I2C_SUBCLASS,
+			       CR50_I2C_PROTOCOL, &chnd.uep))
+			return 1;
 		chnd.iftype = CCD_IF;
 		printf("Using CCD device%s\n",
 		       usb_serial ? ", ignoring serial number" : "");
