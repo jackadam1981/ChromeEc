@@ -1,0 +1,354 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3784922d_5f1fc206",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "Passing a large number here will break things below. Why not just declare the sha256_of_selected_pcr parameter as an array of 32 bytes?",
+      "range": {
+        "startLine": 19,
+        "startChar": 65,
+        "endLine": 19,
+        "endChar": 74
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21519399_2b4f40a4",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "can you use PCRComputeCurrentDigest instead?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 61
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c74bb6_80d78540",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "nit: these need better names",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 10
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "213b5fbc_b3566b71",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "we should return an error here.",
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976a38ae_471d506b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "memcmp?",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 21
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2c98f16_f10863bd",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "This is fragile in that the code will need updating if the sizes change in the future. Can this be rewritten to use offsetof to determine the size of the prefix applicable in the old version?",
+      "range": {
+        "startLine": 472,
+        "startChar": 25,
+        "endLine": 474,
+        "endChar": 37
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda5ee90_c6305581",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "I think this would be clearer if the code where to switch() over received versions to determine the expected size, then perform the size comparison afterwards.",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 2
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24be4136_b860fc02",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "this is still 2.",
+      "range": {
+        "startLine": 1012,
+        "startChar": 17,
+        "endLine": 1012,
+        "endChar": 18
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10737801_c1bcbbee",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here. The code should internally migrate to the new format so we don\u0027t need to take version numbers into account when making decisions.",
+      "range": {
+        "startLine": 1031,
+        "startChar": 0,
+        "endLine": 1032,
+        "endChar": 66
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee289fb0_d733c2cb",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "It feels wrong that this relies on copying bytes at member offsets. It\u0027d be better if we had a less fragile way to do conversion... I don\u0027t know of a good way unfortunately right now but will think more about it.",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1408,
+        "endChar": 31
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5941b1d_c4a2e115",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37616a1_7dc3355c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "nit: ditto re copying bytes...",
+      "range": {
+        "startLine": 1426,
+        "startChar": 0,
+        "endLine": 1427,
+        "endChar": 26
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be3a34ec_c436142b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "nit: feels like this should just call make_compatible, with the version mismatches being handled in the function itself.",
+      "range": {
+        "startLine": 1455,
+        "startChar": 0,
+        "endLine": 1461,
+        "endChar": 2
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8958ad_f31f11af",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "nit: make this unconditional?",
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "902d71b8_04a47ead",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b17a88_63629948",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be simpler to just declare this as a single uint32_t ?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

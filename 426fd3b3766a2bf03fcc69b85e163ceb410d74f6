@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "461c6c89_4ea1825f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T14:28:42Z",
+      "side": 1,
+      "message": "Ah, your proposal to return the reset secret is also a good solution. I think I might prefer that actually given that it minimizes the changes required on the Cr50 side and is more conservative in maintaining the invariant that leaves cannot be changed unless you know the low entropy credential.",
+      "parentUuid": "411500c8_68819204",
+      "range": {
+        "startLine": 1100,
+        "startChar": 4,
+        "endLine": 1100,
+        "endChar": 48
+      },
+      "revId": "426fd3b3766a2bf03fcc69b85e163ceb410d74f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71107da9_17201140",
         "filename": "test/pinweaver.c",
         "patchSetId": 29
