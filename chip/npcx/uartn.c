@@ -192,7 +192,12 @@ static void uartn_set_fifo_mode(uint8_t uart_num)
 					(1 << NPCX_UFTCTL_TEMPTY_EN) |
 					(1 << NPCX_UFTCTL_NXIMPEN));
 }
-
+#elif defined(CONFIG_NPCX_UART_RESET_MODE)
+static void uartn_reset_mode(uint8_t uart_num)
+{
+	/* Disable the UART FIFO mode */
+	NPCX_UMDSL(uart_num) = 0;
+}
 #endif
 
 static void uartn_config(uint8_t uart_num)
@@ -234,6 +239,8 @@ static void uartn_config(uint8_t uart_num)
 	NPCX_UFRS(uart_num) = 0x00;
 #ifdef NPCX_UART_FIFO_SUPPORT
 	uartn_set_fifo_mode(uart_num);
+#elif defined (CONFIG_NPCX_UART_RESET_MODE)
+	uartn_reset_mode(uart_num);
 #endif
 	NPCX_UART_RX_INT_EN(uart_num);
 }
