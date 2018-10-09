@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b3bc165f_821bb1cf",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-09T18:20:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02152466_86b73ad0",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 45
+      },
+      "revId": "3376da9bdd463425130e395e327d48723975cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4781996c_a77a58da",
         "filename": "common/usb_i2c.c",
         "patchSetId": 3
