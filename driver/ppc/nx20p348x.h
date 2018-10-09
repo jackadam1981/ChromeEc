@@ -67,7 +67,6 @@
 #define NX20P348X_HVSNK_STS (1 << 0)
 #define NX20P348X_HVSRC_STS (1 << 1)
 #define NX20P348X_5VSRC_STS (1 << 2)
-#define NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC 25
 #define NX20P348X_SWITCH_STATUS_MASK 0x7
 
 /* Internal 5V VBUS Switch Current Limit Settings (min) */
