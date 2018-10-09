@@ -358,6 +358,9 @@ static void write_keyboard_report(void)
 	 */
 	usb_wake();
 }
+#ifdef CONFIG_KEYBOARD_TABLET_MODE_SWITCH
+DECLARE_DEFERRED(write_keyboard_report);
+#endif
 
 #ifdef CONFIG_USB_HID_KEYBOARD_BACKLIGHT
 
@@ -407,6 +410,11 @@ static void hid_keyboard_event(enum usb_ep_event evt)
 			  NULL, 0
 #endif
 			  );
+
+#ifdef CONFIG_KEYBOARD_TABLET_MODE_SWITCH
+		hook_call_deferred(&write_keyboard_report_data, 100*MSEC);
+#endif
+
 		return;
 	}
 
