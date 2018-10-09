@@ -51,6 +51,16 @@ static const struct max17055_batt_profile batt_profile[] = {
 	},
 };
 
+static const struct max17055_alert_profile alert_profile[] = {
+	[BATTERY_SIMPLO] = {
+		.v_alert_mxmn		= VALRT_DISABLE,
+		/* max: 60, min: 0*/
+		.t_alert_mxmn		= 0x3c00,
+		.s_alert_mxmn		= SALRT_DISABLE,
+		.i_alert_mxmn		= IALRT_DISABLE,
+	},
+};
+
 const struct battery_info *battery_get_info(void)
 {
 	return &info[BATT_ID];
@@ -59,6 +69,11 @@ const struct battery_info *battery_get_info(void)
 const struct max17055_batt_profile *max17055_get_batt_profile(void)
 {
 	return &batt_profile[BATT_ID];
+}
+
+const struct max17055_alert_profile *max17055_get_alert_profile(void)
+{
+	return &alert_profile[BATT_ID];
 }
 
 int board_cut_off_battery(void)
