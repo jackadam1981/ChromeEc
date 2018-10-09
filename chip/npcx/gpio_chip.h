@@ -52,7 +52,7 @@ void npcx_uart2gpio(void);
 void npcx_gpio2uart(void);
 
 /* Set input buffer of all 1.8v i2c ports. */
-void gpio_enable_1p8v_i2c_wake_up_input(int enable);
+void gpio_enable_i2c_wake_up_input(int enable);
 
 /*
  * Include the MIWU, alternative and low-Voltage macro functions for GPIOs
