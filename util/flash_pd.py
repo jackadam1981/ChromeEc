@@ -21,7 +21,7 @@ import time
 import serial
 # TODO(tbroch): Discuss adding hdctools as an EC package RDEPENDS
 from servo import client
-from servo import multiservo
+from servo import servo_parsing
 
 VERSION = '0.0.2'
 
@@ -294,7 +294,7 @@ def parse_args():
                     help='Only erase RW portion and exit.')
   parser.add_option('-V', '--versiononly', action='store_true', default=False,
                     help='Only read version and exit.')
-  multiservo.add_multiservo_parser_options(parser)
+  servo_parsing.add_servo_parsing_rc_options(parser)
 
   parser.set_usage(parser.get_usage() + examples)
   (options, args) = parser.parse_args()
