@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "411500c8_68819204",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-09T13:46:57Z",
+      "side": 1,
+      "message": "Thank you for looking into this Mattias.\n1) Insert + delete works, I have tested a prototype already. The change in pinweaver is just to return reset_secret together with he_secret from try_auth. The latest revision of this CL contains it. It requires only PIN to authenticate, and the plan is to migrate when the PIN is used.\n4) This proposal would work too. One difference is, we would migrate when user authenticates with password (instead of PIN). I like this proposal more than seal_to_pcr because it looks like a good way to provide API for future migrations. At the same time, if we compare it with the method from 1, I see the following pro-cons:\n\npro for 1:\n- Doesn\u0027t complicate pinweaver API.\n- It is the way the migrations of VK currently happen (insert + delete).\n\npro for 4:\n- It\u0027s faster (only one request to pinweaver)\n- It\u0027s less risk of one operation failing.\n\nI slightly prefer 4, but don\u0027t see any blocking in either approach.",
+      "parentUuid": "c090fb6e_9b6a2955",
+      "range": {
+        "startLine": 1100,
+        "startChar": 4,
+        "endLine": 1100,
+        "endChar": 48
+      },
+      "revId": "426fd3b3766a2bf03fcc69b85e163ceb410d74f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71107da9_17201140",
         "filename": "test/pinweaver.c",
         "patchSetId": 29
