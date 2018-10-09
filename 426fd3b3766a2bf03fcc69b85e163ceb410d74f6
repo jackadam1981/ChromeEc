@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c090fb6e_9b6a2955",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-09T12:59:38Z",
+      "side": 1,
+      "message": "Sorry for the delay on this, but here are my thoughts after digging in a bit:\n\n1) Delete+recreate will likely not work out, because you don\u0027t have a point in time where you know both the reset secret and the low-entropy credential. The former is only available when logging in via password, the latter is only available when logging in via PIN.\n2) The issue of critical information not being available on all login paths has come up before. This lead to https://docs.google.com/document/d/1eSrEQfqR3lP9ABLEl971PqgMtNrtzYMUZrOz2k4df6Q/edit which also describes a migration strategy that will allow us to fix up existing accounts behind the scenes. Given that we\u0027re hitting this case yet again, we should probably bite the bullet and implement this rather sooner than later. I wouldn\u0027t want to consider this a prerequisite for the PCR locking feature though.\n3) Given #1, if we want to migrate existing PINs, we have no choice but to provide a migration path facilitated by Cr50, such as the seal_to_pcr proposed here.\n4) I don\u0027t think seal_to_pcr as proposed is a good way to handle this though - it feels too ad-hoc and limited in usefulness. Here\u0027s a counter-proposal: How about providing an PW_UPDATE_LEAF command that allows to update the public portion of the leaf metadata? It would be authenticated by the *reset secret* (so not duplicate rate limiting) and could hopefully reuse quite a bit of the leaf insertion code. Then, cryptohome migration code can look at the leaf metadata, intentionally lock out all non-migrated leaves, which will enforce a password sign-in which can then use the reset secret to reset and migrate the leaf. A nice side effect is that this will also give us the ability to update delay schedules if we want to do this in the future.\n\nWDYT?",
+      "parentUuid": "5fbf6757_7ee53ab6",
+      "range": {
+        "startLine": 1100,
+        "startChar": 4,
+        "endLine": 1100,
+        "endChar": 48
+      },
+      "revId": "426fd3b3766a2bf03fcc69b85e163ceb410d74f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71107da9_17201140",
         "filename": "test/pinweaver.c",
         "patchSetId": 29
