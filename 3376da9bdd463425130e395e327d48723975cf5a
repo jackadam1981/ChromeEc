@@ -117,6 +117,30 @@
       "revId": "3376da9bdd463425130e395e327d48723975cf5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1e3bb2_4281d97f",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-09T23:02:30Z",
+      "side": 1,
+      "message": "This particular recursion call might as well be a jump/goto into the first line after \"if (expected_size) {\" .  It would be cheaper, and IMO easier to understand the intent.\n\nThat said, I\u0027d rather this simply start with \"if (!expected_size) {...}\" , and avoid the need for either recursion or goto here.  I don\u0027t think that would add any complexity.",
+      "parentUuid": "de438a37_fef91d89",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "3376da9bdd463425130e395e327d48723975cf5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
