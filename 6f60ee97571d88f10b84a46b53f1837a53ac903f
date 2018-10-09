@@ -45,6 +45,30 @@
       "revId": "6f60ee97571d88f10b84a46b53f1837a53ac903f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8574258_946f507f",
+        "filename": "chip/g/usb_endpoints.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-09T21:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a69d964f_ded248f2",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "6f60ee97571d88f10b84a46b53f1837a53ac903f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
