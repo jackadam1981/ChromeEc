@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "1d60e689_bacc0ddd",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-10T15:02:25Z",
+      "side": 1,
+      "message": "ok, made it shorter",
+      "parentUuid": "a7d0d3af_d7829b9b",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 54
+      },
+      "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c079792b_cdd9baec",
         "filename": "include/usb_i2c.h",
         "patchSetId": 5
@@ -190,6 +214,24 @@
       "side": 1,
       "message": "The top 4 bits would be used as a protocol version number, to ensure compatibility.  Version 0 would be the current 1 byte write count protocol.  Version 1 could be a 2 byte write count protocol that is otherwise identical to version 0.\n\nI think that is what Nick had in mind, FWIW.",
       "parentUuid": "0db2deba_d2eb2d8f",
+      "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a01a4da_d95e0d02",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-10T15:02:25Z",
+      "side": 1,
+      "message": "12 bits of write count is enough, I would rather avoid adding another byte to the message.",
+      "parentUuid": "a4e1c6a4_fae22ecf",
       "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
