@@ -94,6 +94,30 @@
       "revId": "2f019a639a8238483de3f1048a4a3ca9b61e3958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33713ba_4927ca14",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-10T14:01:45Z",
+      "side": 0,
+      "message": "Right now the following is your CL patch set order\n\n(parent)\n1263897\n1263896\n1263895\n1003393\n\nI am suggesting than you do the following\n\n(parent)\n1263896\n1263895\n1263897 (with 1003393 fully merged into 1263897)",
+      "parentUuid": "43eb2299_0352670e",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "2f019a639a8238483de3f1048a4a3ca9b61e3958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
