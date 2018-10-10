@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b6076fa_c36218c0",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-10T20:00:21Z",
+      "side": 1,
+      "message": "I was under the impression (based on a question I had asked the vendor) that the debounce time required for correctly reading the switch status register was based on the HV SNK Switch Debounce time which is spec\u0027d at 15 msec typical. I think we should understand why 25 msec isn\u0027t sufficient. I updated the issue with the response I got in the email.",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 45
+      },
+      "revId": "57046f384b63f7e86257eccfa7c89f1b58a3b11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9c67204_4b38c15b",
         "filename": "driver/ppc/nx20p348x.c",
         "patchSetId": 3
