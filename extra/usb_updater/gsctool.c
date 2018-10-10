@@ -1657,6 +1657,58 @@ static void process_wp(struct transfer_descriptor *td)
 		"forced disabled");
 }
 
+#define FOUR_FF_BYTES	0xFFFFFFFF
+/*
+ * Parse and print the board information in detail.
+ */
+static void print_board_info(uint32_t bid_type, uint32_t bid_type_inv,
+			uint32_t bid_flags)
+{
+	uint32_t i;
+
+	/* Display board id type in ASCII */
+	printf("\tBoard Name: ");
+	if (bid_type == FOUR_FF_BYTES) {
+		if (bid_type_inv == FOUR_FF_BYTES)
+			printf("not programmed");
+		else
+			printf("%.8X", bid_type);
+	} else {
+		i = 32;
+		while (i >= 8) {
+			uint8_t ch;
+
+			i -= 8;
+			ch = (bid_type >> i) & 0xFF;
+
+			printf("%c", ('!' <= ch  && '}' >= ch) ? ch : '_');
+		}
+	}
+	printf("\n");
+
+	/* Display the build phase*/
+	printf("\tPhase     : ");
+	if (bid_flags == FOUR_FF_BYTES) {
+		printf("not programmed\n");
+	} else {
+		if (bid_flags == 0x7f7f || bid_flags == 0xff7f)
+			printf("prePVT");
+		else if (bid_flags == 0x7f80 || bid_flags == 0xff80)
+			printf("MP");
+		else if (bid_flags == 0x8080 &&
+			 (bid_type == 0x5A5A4146 || bid_type == 0x5A5A4352))
+			/*
+			 * Exceptionally, Eve PreMP has 0x8080 for this instead.
+			 * bid_type should be either 'ZZAF' or 'ZZCR'
+			 */
+			printf("MP");
+		else if (bid_flags == 0xff00)
+			printf("unknown (0x%.2X)", bid_flags);
+		else
+			printf("invalid (0x%.2X)", bid_flags);
+	}
+	printf("\n");
+}
 
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action,
@@ -1672,9 +1724,17 @@ void process_bid(struct transfer_descriptor *td,
 				    bid, &response_size);
 
 		if (response_size == sizeof(*bid)) {
+			uint32_t bid_type = be32toh(bid->type);
+			uint32_t bid_type_inv = be32toh(bid->type_inv);
+			uint32_t bid_flags = be32toh(bid->flags);
+
 			printf("Board ID space: %08x:%08x:%08x\n",
-			       be32toh(bid->type), be32toh(bid->type_inv),
-			       be32toh(bid->flags));
+			       bid_type, bid_type_inv, bid_flags);
+
+			if (verbose_mode)
+				print_board_info(bid_type, bid_type_inv,
+						bid_flags);
+
 			return;
 		}
 		fprintf(stderr, "Error reading board ID: response size %zd,"
