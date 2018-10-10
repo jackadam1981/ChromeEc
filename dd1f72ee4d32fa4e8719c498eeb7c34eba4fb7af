@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a7d0d3af_d7829b9b",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-10T06:58:28Z",
+      "side": 1,
+      "message": "How about an explicit cast w/o the separate variable?\n\n  /* header bytes */\n  expected_size \u003d 4;\n  /* write count */\n  expected_size +\u003d ((size_t)(peek[0] \u0026 0xf0) \u003c\u003c 4) | peek[2];",
+      "parentUuid": "8e822209_efc6284d",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 54
+      },
+      "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c079792b_cdd9baec",
         "filename": "include/usb_i2c.h",
         "patchSetId": 5
@@ -148,6 +172,24 @@
       "side": 1,
       "message": "missed this comment.\n\nI am pretty sure 4K is adequate, and doing it this way allows us to be fully compatible with the earlier version.",
       "parentUuid": "c079792b_cdd9baec",
+      "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e1c6a4_fae22ecf",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-10T06:58:28Z",
+      "side": 1,
+      "message": "The top 4 bits would be used as a protocol version number, to ensure compatibility.  Version 0 would be the current 1 byte write count protocol.  Version 1 could be a 2 byte write count protocol that is otherwise identical to version 0.\n\nI think that is what Nick had in mind, FWIW.",
+      "parentUuid": "0db2deba_d2eb2d8f",
       "revId": "dd1f72ee4d32fa4e8719c498eeb7c34eba4fb7af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
