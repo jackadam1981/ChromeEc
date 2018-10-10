@@ -37,6 +37,41 @@
     },
     {
       "key": {
+        "uuid": "b091386e_26c8a0ca",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-10T17:41:18Z",
+      "side": 1,
+      "message": "ok. I missed the || in there. It still seems wrong to be manipulating potential uninitialized variable. I\u0027m guessing the static checkers will complain.\n\nIt\u0027s easier (to me) to read by putting the check in the loop:\n\nif (!error \u0026\u0026 status \u003d\u003d desired_mask)\n   break;",
+      "parentUuid": "85ad29e9_506ce7e5",
+      "revId": "57046f384b63f7e86257eccfa7c89f1b58a3b11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acc57a5b_7dbebfe0",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-10T17:41:18Z",
+      "side": 1,
+      "message": "I\u0027d put ht format string on single line -- despite exceeding 80 chars. It\u0027s typically a policy that is allowed so people can grep for messages in the code base.",
+      "revId": "57046f384b63f7e86257eccfa7c89f1b58a3b11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da89706f_0220e0e6",
         "filename": "driver/ppc/nx20p348x.c",
         "patchSetId": 3
