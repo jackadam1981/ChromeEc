@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "60fc5842_1cb6bfb6",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-10T18:20:38Z",
+      "side": 1,
+      "message": "Looks like gerrit\u0027s fault. However, removed one tab to have an alignment in terminal view.",
+      "parentUuid": "dfe5af3b_bd691926",
+      "range": {
+        "startLine": 177,
+        "startChar": 25,
+        "endLine": 177,
+        "endChar": 50
+      },
+      "revId": "8e9e632d2926f55dac3c886374711ba43564308b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "588b736a_7a3ed514",
         "filename": "include/ccd_config.h",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "8e9e632d2926f55dac3c886374711ba43564308b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4bcb5a_2f32164d",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-10T18:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "588b736a_7a3ed514",
+      "revId": "8e9e632d2926f55dac3c886374711ba43564308b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
