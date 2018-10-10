@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "ffa52f8f_2563fd9c",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-10T17:23:32Z",
+      "side": 1,
+      "message": "Can you make this refactor part of a different CL?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "6a87139ffb882fccb4a0d3c3507df71c8a00c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "231738a7_13a2af90",
         "filename": "common/ccd_config.c",
         "patchSetId": 3
@@ -41,6 +64,29 @@
         "startChar": 27,
         "endLine": 66,
         "endChar": 44
+      },
+      "revId": "6a87139ffb882fccb4a0d3c3507df71c8a00c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef84905_4cbb0dae",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-10T17:23:32Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be part of the default check. I think CCD config: default should only describe the capability settings.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 11
       },
       "revId": "6a87139ffb882fccb4a0d3c3507df71c8a00c201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
