@@ -16,6 +16,24 @@
       "revId": "7581554e96cdc0a57c3450486f373dc1aa642e57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62045d6d_6f290949",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-10T22:58:59Z",
+      "side": 1,
+      "message": "Maybe \"Caps are default\" or \"Caps are modified\"?\nThis is not the entire CCD state, though, since that also includes whether it\u0027s locked, whether a password is set, etc.",
+      "parentUuid": "880784a3_c8f13345",
+      "revId": "7581554e96cdc0a57c3450486f373dc1aa642e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
