@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4bf899fb_01a64529",
+        "filename": "board/atlas_ish/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-10T23:23:59Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "cf183c5b_7328d12f",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 23
+      },
+      "revId": "34b954cee9782e1467baeee7a3fd2d1bbdd76ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d42db89e_9891c81d",
         "filename": "board/atlas_ish/board.h",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "32f534c2_fd488957",
+        "filename": "board/atlas_ish/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-10T23:23:59Z",
+      "side": 1,
+      "message": "Atlas doesn\u0027t enable sensor in ISH. So removed.",
+      "parentUuid": "d42db89e_9891c81d",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 10
+      },
+      "revId": "34b954cee9782e1467baeee7a3fd2d1bbdd76ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b27e22fc_7a3debaf",
         "filename": "board/atlas_ish/ec.tasklist",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "34b954cee9782e1467baeee7a3fd2d1bbdd76ec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7f327a_2c9c46cc",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-10T23:23:59Z",
+      "side": 1,
+      "message": "We don\u0027t need, so removed.",
+      "parentUuid": "b27e22fc_7a3debaf",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 67
+      },
+      "revId": "34b954cee9782e1467baeee7a3fd2d1bbdd76ec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
