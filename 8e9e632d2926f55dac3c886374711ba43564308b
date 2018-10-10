@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfe5af3b_bd691926",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-10T18:14:33Z",
+      "side": 1,
+      "message": "is this properly aligned and gerrit displays it wrong? If not - please align properly.",
+      "range": {
+        "startLine": 177,
+        "startChar": 25,
+        "endLine": 177,
+        "endChar": 50
+      },
+      "revId": "8e9e632d2926f55dac3c886374711ba43564308b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588b736a_7a3ed514",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-10T18:14:33Z",
+      "side": 1,
+      "message": "why extra white space?",
+      "revId": "8e9e632d2926f55dac3c886374711ba43564308b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
