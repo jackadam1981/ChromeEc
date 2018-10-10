@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc4b37f0_2b93787f",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-10T16:50:13Z",
+      "side": 1,
+      "message": "Doesn\u0027t need () since it\u0027s already a single value",
+      "range": {
+        "startLine": 64,
+        "startChar": 22,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "6a87139ffb882fccb4a0d3c3507df71c8a00c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231738a7_13a2af90",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-10T16:50:13Z",
+      "side": 1,
+      "message": "Remove; sizeof(uint8_t) is explicitly 1",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "6a87139ffb882fccb4a0d3c3507df71c8a00c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70c14a5_2582e404",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-10T16:50:13Z",
+      "side": 1,
+      "message": "\"Default: %s\", (... ? \"yes\" : \"no\")\n\n(\"CCD\" is implied by the whole command, and \"Config\" really refers to the entire config\")",
+      "range": {
+        "startLine": 1574,
+        "startChar": 9,
+        "endLine": 1574,
+        "endChar": 30
+      },
+      "revId": "6a87139ffb882fccb4a0d3c3507df71c8a00c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c84322_bd5e0a06",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-10T16:50:13Z",
+      "side": 1,
+      "message": "Just build in the shift, as in ccd_flag above.\n\nCCD_INDICATOR_HAS_PASSWORD \u003d (1 \u003c\u003c 0)",
+      "range": {
+        "startLine": 213,
+        "startChar": 34,
+        "endLine": 213,
+        "endChar": 38
+      },
+      "revId": "6a87139ffb882fccb4a0d3c3507df71c8a00c201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
