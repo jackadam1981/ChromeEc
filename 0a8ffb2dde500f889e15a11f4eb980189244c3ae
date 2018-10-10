@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34f21357_c6aeb084",
+        "filename": "board/nocturne/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-10-10T23:57:18Z",
+      "side": 1,
+      "message": "You said pull up in commit message and it is pull down here.",
+      "range": {
+        "startLine": 77,
+        "startChar": 53,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "0a8ffb2dde500f889e15a11f4eb980189244c3ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
