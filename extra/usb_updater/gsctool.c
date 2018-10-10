@@ -1657,6 +1657,58 @@ static void process_wp(struct transfer_descriptor *td)
 		"forced disabled");
 }
 
+/*
+ *
+ */
+static void print_board_info(uint32_t bid_type, uint32_t bid_flags)
+{
+	uint32_t i;
+
+	/* Display board id type in ASCII */
+	printf("  Board Name: ");
+	if (bid_type == 0xFFFFFFFF) {
+		printf("not programmed\n");
+	} else {
+		i = 32;
+		while (i >= 8) {
+			uint8_t ch;
+
+			i -= 8;
+			ch = (bid_type >> i) & 0xFF;
+
+			printf("%c", ('!' <= ch  && '}' >= ch) ? ch : '_');
+		}
+		printf("\n");
+	}
+
+	/* Display the build phase*/
+	if (bid_flags == 0xFFFFFFFF) {
+		printf("  Features  : not programmed\n");
+		printf("  Phase     : not programmed\n");
+	} else {
+		uint32_t feature = bid_flags >> 8;
+		uint32_t phase = bid_flags & 0xFF;
+
+		/*
+		 * Feature bits should be 0x7F.
+		 * Exceptionally, Eve PreMP has 0x80 for this instead.
+		 */
+		printf("  Features  : ");
+		if ((feature != 0x7F) &&
+		    (feature != 0x80 || bid_type != 0x5A5A4146)) {
+			printf("unknown (0x%.2X)\n", feature);
+		} else
+			printf("ok\n");
+
+		printf("  Phase     : ");
+		if (phase <= 0x7F && phase > 0)
+			printf("DEV (0x%.2X)\n", phase);
+		else if (phase == 0x80)
+			printf("MP\n");
+		else
+			printf("unknown (0x%.2X)\n", phase);
+	}
+}
 
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action,
@@ -1672,9 +1724,16 @@ void process_bid(struct transfer_descriptor *td,
 				    bid, &response_size);
 
 		if (response_size == sizeof(*bid)) {
+			uint32_t bid_type = be32toh(bid->type);
+			uint32_t bid_type_inv = be32toh(bid->type_inv);
+			uint32_t bid_flags = be32toh(bid->flags);
+
 			printf("Board ID space: %08x:%08x:%08x\n",
-			       be32toh(bid->type), be32toh(bid->type_inv),
-			       be32toh(bid->flags));
+			       bid_type, bid_type_inv, bid_flags);
+
+			if (verbose_mode)
+				print_board_info(bid_type, bid_flags);
+
 			return;
 		}
 		fprintf(stderr, "Error reading board ID: response size %zd,"
