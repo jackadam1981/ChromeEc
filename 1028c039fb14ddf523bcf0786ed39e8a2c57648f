@@ -22,6 +22,30 @@
       "revId": "1028c039fb14ddf523bcf0786ed39e8a2c57648f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0aa5ce_bf35fd27",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4944,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-10T17:02:23Z",
+      "side": 1,
+      "message": "You are right. The remaining_capacity should be 0 if no battery. Will revert this CL.\n\nFor the reboot loop, I will do more investigation to root the cause.",
+      "parentUuid": "ce6d6a39_7fc8ae61",
+      "range": {
+        "startLine": 4940,
+        "startChar": 3,
+        "endLine": 4944,
+        "endChar": 4
+      },
+      "revId": "1028c039fb14ddf523bcf0786ed39e8a2c57648f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
