@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "738fe24b_6c9fc534",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1525,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-10T01:55:29Z",
+      "side": 1,
+      "message": "should the name of this field change to make clear that it is more than just \u0027has password\u0027?\n\nalso, there is a name collision - there is function \u0027ccd_has_password() in the codebase, so changing the field name would help there too.",
+      "range": {
+        "startLine": 1525,
+        "startChar": 36,
+        "endLine": 1525,
+        "endChar": 52
+      },
+      "revId": "f2d95be196419c526b46ad5dcc471b9285740413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
