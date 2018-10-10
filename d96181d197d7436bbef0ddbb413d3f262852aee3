@@ -163,6 +163,30 @@
       "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c5293aa_3c1ba95e",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T18:14:45Z",
+      "side": 1,
+      "message": "Based on your other suggestion about adding a new field to indicate if the sensor is in cascade mode, I think we can handle ADDR0/ADDR1 as well as MASTER_SENSOR situation using that change. I will think about it and make that change.",
+      "parentUuid": "48a0dd06_e02ebdd5",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
