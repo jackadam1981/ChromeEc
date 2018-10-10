@@ -201,8 +201,23 @@ struct ccd_info_response {
 	uint32_t ccd_flags;
 	uint8_t ccd_state;
 	uint8_t ccd_force_disabled;
-	uint8_t ccd_has_password;
+	/*
+	 * A bitmap indicating ccd internal state.
+	 *   BIT0 : has_password? (0 = NONE, 1 = SET)
+	 *   BIT1 : is reset to default mode? (0 = NO, 1 = YES)
+	 */
+	uint8_t ccd_indicator_bitmap;
 } __packed;
+
+enum ccd_indicator_shift {
+	CCD_INDICATOR_SHIFT_HAS_PASSWORD = 0,
+	CCD_INDICATOR_SHIFT_RESET_DEFAULT = 1,
+
+
+	/* Add any item above here. */
+	CCD_INDICATOR_SHIFT_COUNT
+	/* Do not add any item below here. */
+};
 
 /**
  * Initialize CCD configuration at boot.
