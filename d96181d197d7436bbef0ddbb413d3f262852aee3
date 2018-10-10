@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "482c96ea_10897ba9",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T18:02:53Z",
+      "side": 1,
+      "message": "This is passed by us in the board file. For cascade mode, I am passing the slave address of accel/gyro module which is different than this one.",
+      "parentUuid": "65131a84_cfdc5f0b",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b9bf579_4dfce4a4",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "1f7c33e4_9a550de9",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T18:02:53Z",
+      "side": 1,
+      "message": "I am not sure. But the range is non-configurable from data sheet perspective.",
+      "parentUuid": "b37dbd59_c8856db7",
+      "range": {
+        "startLine": 60,
+        "startChar": 58,
+        "endLine": 60,
+        "endChar": 63
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54636f84_ec566948",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2018-10-04T20:22:41Z",
       "side": 1,
       "message": "how do we know to use ADDR0. Should this be defined within the driver?",
+      "range": {
+        "startLine": 96,
+        "startChar": 35,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a0dd06_e02ebdd5",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T18:02:53Z",
+      "side": 1,
+      "message": "I can add another config item whether to use ADDR0 or ADDR1. That way depending on our hardware configuration we can define that config item and pick ADDR0 or ADDR1",
+      "parentUuid": "54636f84_ec566948",
       "range": {
         "startLine": 96,
         "startChar": 35,
