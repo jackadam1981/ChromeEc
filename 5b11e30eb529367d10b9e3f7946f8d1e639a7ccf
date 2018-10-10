@@ -46,6 +46,53 @@
       "revId": "5b11e30eb529367d10b9e3f7946f8d1e639a7ccf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d699bf60_83af8f71",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4921,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-10T00:09:16Z",
+      "side": 1,
+      "message": "Checked board/fizz/ec.tasklist, no charger task.",
+      "parentUuid": "d0229765_ddb8c021",
+      "range": {
+        "startLine": 4921,
+        "startChar": 26,
+        "endLine": 4921,
+        "endChar": 32
+      },
+      "revId": "5b11e30eb529367d10b9e3f7946f8d1e639a7ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d9a84d2_cc067d3c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4936,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-10T00:09:16Z",
+      "side": 1,
+      "message": "I looked a bit at the Fizz schematic. This function checks the GPIO USB_C0_VBUS_WAKE_L, which senses the voltage level on a net coming from either the Type-C port VBUS or the DC 19V barrel jack. When either one is hot, it is True. As the board needs power, means it is always True. So the TCPC firmware will never get updated. Daisuke, Dexter, please correct me if it is not the case.",
+      "range": {
+        "startLine": 4936,
+        "startChar": 6,
+        "endLine": 4936,
+        "endChar": 35
+      },
+      "revId": "5b11e30eb529367d10b9e3f7946f8d1e639a7ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
