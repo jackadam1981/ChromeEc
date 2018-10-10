@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "880784a3_c8f13345",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-10T22:04:58Z",
+      "side": 1,
+      "message": "not sure what others think about this, so to your discretion:\n\nhere and in gsctool it would be clearer to read \u0027CCD is in default state\u0027 and \u0027CCD is NOT in default stat\u0027",
+      "revId": "7581554e96cdc0a57c3450486f373dc1aa642e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
