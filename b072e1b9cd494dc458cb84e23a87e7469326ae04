@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ed25198_59942e3a",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "Quite a lot of registers are shared with multiple sensors and multiple configs.\n\nIf we blindly write to the registers, we might overwrite some other configuration and we may observe some unintended consequences. This helper function ensures that we are touching only those that we care about and leaving other configuration undisturbed.",
+      "parentUuid": "a281f67a_415dfb5e",
+      "range": {
+        "startLine": 95,
+        "startChar": 7,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b6dfe6e_8f84f9d5",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-04T20:17:32Z",
       "side": 1,
       "message": "why do we need to sleep here? also the comment says 500ms",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c68dc37_4052bb9c",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "I will fix the comment. Initially I added 500 ms and tuned it to 50 ms.\n\nRegarding the reason for the delay, it is a long story.\nData from external sensor can be handled using two types of triggers. One - every time the accelerometer data is ready, accel/gyro module can read external sensor data. The other approach is the external sensors themselves will trigger an interrupt when their data is ready. For the second approach, the external sensors data ready line has to be connected to the INT2 line of the accel/gyro module. In our case it is not connected. So we have to use accelerometer data ready as a trigger to read the external sensors.\n\nNow to use the I2C Pass through mode so that we can access external sensor register directly/quickly, we have to ensure that the sensor hub is not accessing the external sensors as part of the trigger(especially since I2C bus being slow). Hence we fake changed the external trigger and wait for some time to ensure that accel/gyro module is not reading external sensor data. This is the reason for the delay. The minimum recommendation is 5 ms as per one of the programming manual I read.\n\nI can tune this number further and see if there is any issue.",
+      "parentUuid": "3b6dfe6e_8f84f9d5",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "66cc2b8e_8e21eb38",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "So in this case, if the I2C master in accel/gyro is used as a pass-through, then it cannot be in master mode.\n\nBut if it were previously in master mode, then we have to ensure that it is switched back to that state after coming out of pass through mode. Pass through mode is primarily used to configure the registers in external sensors directly by EC. This will help expedite the configuration. Else EC has to write a lot of configuration to accel/gyro module which in turn will write to external sensors.",
+      "parentUuid": "3aaaeefb_3f2e369c",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc57f523_e438751d",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2018-10-04T20:17:32Z",
       "side": 1,
       "message": "won\u0027t the returned cache be out of date (i.e. not include the XL_ODR_MASK bit)",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a384b0_ad891bd8",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "Returned cache should have the accelerometer Output Data Rate Information. This function helps to ensure that the accelerometer is disabled for now. Later after finishing whatever we want to do, the cache will ensure that the accelerometer data rate is set to its original value and if it was previously enabled, it will continue to remain so.",
+      "parentUuid": "bc57f523_e438751d",
       "range": {
         "startLine": 136,
         "startChar": 8,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "96e6bb40_aeb37649",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "The content of the CTRL1_ADDR has configuration of accelerometer Data Rate \u0026 if I am not wrong, decimation setting. If that data rate is 0, then no data is generated by accel - equivalent to power down mode. By using the cache, we are just restoring the accel module to whatever state it was before disabling it.",
+      "parentUuid": "c24d858e_10df2267",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e912e29f_e07d7b26",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2018-10-04T20:17:32Z",
       "side": 1,
       "message": "is it worth returning an error if len doessn\u0027t fit (i.e. len \u0026 MASK !\u003d len)",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 38
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767363a4_811dd324",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "Sure, will do.",
+      "parentUuid": "e912e29f_e07d7b26",
       "range": {
         "startLine": 170,
         "startChar": 5,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "abf7f04d_a5d91644",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "Let me see another way",
+      "parentUuid": "421b0f9f_8c7bd47d",
+      "range": {
+        "startLine": 186,
+        "startChar": 28,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bbafa71_b96d229b",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2018-10-04T20:17:32Z",
       "side": 1,
       "message": "what is len for?",
+      "range": {
+        "startLine": 211,
+        "startChar": 34,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d84eb51_fc71c037",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "External sensors can have 1 to 6 registers to read. The len field is for that. In magnetometer, we have 6 registers to read.",
+      "parentUuid": "0bbafa71_b96d229b",
       "range": {
         "startLine": 211,
         "startChar": 34,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "ef837387_8661b1b1",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "Embedded register bank. These are the register banks associated with external sensors. There can be 4 such external sensor slaves attached to the sensor hub and hence 4 such register banks. The access to them are disabled by default. This helper function enables accessing it.",
+      "parentUuid": "fac2c606_cd9b6ecf",
+      "range": {
+        "startLine": 223,
+        "startChar": 13,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb930c78_90281db0",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "fbabe0ae_70ad1b59",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "eb930c78_90281db0",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 279,
+        "endChar": 27
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edc76e48_d5ef4e7a",
         "filename": "driver/sensorhub_lsm6dsm.h",
         "patchSetId": 2
@@ -243,6 +483,30 @@
       "writtenOn": "2018-10-04T20:17:32Z",
       "side": 1,
       "message": "shouldn\u0027t really need this; it is implied by the build.mk and it won\u0027t link correctly if you don\u0027t have this file (either way it is a compile error)\n\nWhat would be calling this an need the unimplemented version?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da364d8_0d3d9bb1",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-10T17:52:16Z",
+      "side": 1,
+      "message": "Let me present a hypothetical scenario.\n\nMagnetometer that we are trying to add can be either in cascade mode with accel/gyro module or can be directly connected through SPI/I2C. This entire sensor hub module comes into picture only when in cascade mode.\n\nWhen magnetometer is directly connected, then the magnetometer code will still refer to the function but will not use it. With this arrangement, we can simply disable/not define the Sensor hub without re-writing the magnetometer driver(except for adding support to direct connection). That way the compilation will work fine, stubbed out functions will be used and we dont need to build the sensor hub driver in direct mode(saving some code space).",
+      "parentUuid": "edc76e48_d5ef4e7a",
       "range": {
         "startLine": 17,
         "startChar": 0,
