@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "61809d65_92dc556f",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-10T16:02:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4525338d_501d89b3",
+      "range": {
+        "startLine": 38,
+        "startChar": 56,
+        "endLine": 38,
+        "endChar": 70
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0d24ec5_7d093908",
         "filename": "board/chocodile_vpdmcu/vpd_api.c",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f9dd34b_1e10fbce",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-10T16:02:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0d24ec5_7d093908",
+      "range": {
+        "startLine": 503,
+        "startChar": 2,
+        "endLine": 503,
+        "endChar": 16
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a2800cfd_2f1a0f18",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-10T16:02:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba2d554_23797d89",
+      "range": {
+        "startLine": 302,
+        "startChar": 19,
+        "endLine": 302,
+        "endChar": 20
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d5c1d28_df190caf",
         "filename": "common/usb_pd_tcpc.c",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27f4190_d010b198",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-10T16:02:09Z",
+      "side": 1,
+      "message": "The messages were distracting while I was debugging. The check has been removed.",
+      "parentUuid": "4d5c1d28_df190caf",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 71
+      },
+      "revId": "dc354ea579d6dd9a8f03c7fa5135374d9be926a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
