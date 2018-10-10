@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4595ab71_680e9dd6",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-10T23:13:13Z",
+      "side": 1,
+      "message": "don\u0027t CC_RD and CC_NC also need to change in the same way as CC_RA?",
+      "range": {
+        "startLine": 41,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b14f830_152b9028",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-10T23:13:13Z",
+      "side": 1,
+      "message": "pretty sure this should be 1",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8084cf2_7a6ba1a1",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-10T23:13:13Z",
+      "side": 1,
+      "message": "I don\u0027t think we do, unless we\u0027re implementing alternate modes on SOP\u0027 (which we probably shouldn\u0027t be)",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 37
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9ccd2a_a662800c",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-10T23:13:13Z",
+      "side": 1,
+      "message": "this should probably be the same as whatever the usb device chip returns",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 26
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbab481_c0ddcec5",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-10T23:13:13Z",
+      "side": 1,
+      "message": "ifdef CONFIG_USB_TYPEC_VPD_CT",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
