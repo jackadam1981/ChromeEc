@@ -93,6 +93,30 @@
       "revId": "5b11e30eb529367d10b9e3f7946f8d1e639a7ccf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f775cccb_600b1a56",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4936,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-10T13:38:56Z",
+      "side": 1,
+      "message": "The schematics I looked at may be out of date, but it looks like ADP_IN_L is for the barrel jack and USB_C0_VBUS_DET_L is for USB-C only. If that is the case, then we will only upgrade the firmware when the user is using the barrel jack for power.",
+      "parentUuid": "9d9a84d2_cc067d3c",
+      "range": {
+        "startLine": 4936,
+        "startChar": 6,
+        "endLine": 4936,
+        "endChar": 35
+      },
+      "revId": "5b11e30eb529367d10b9e3f7946f8d1e639a7ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

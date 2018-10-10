@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce6d6a39_7fc8ae61",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4944,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-10T13:38:56Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be needed as the below line should catch this scenario since remaining_capacity was initially set to 0 battery_get_params should either set remaining_capacity correctly (to 0 when there is no battery) or set BATT_FLAG_BAD_REMAINING_CAPACITY\n\nThere seems like there is a problem with the version of battery_get_params you are using. We should fix that instead",
+      "range": {
+        "startLine": 4940,
+        "startChar": 3,
+        "endLine": 4944,
+        "endChar": 4
+      },
+      "revId": "1028c039fb14ddf523bcf0786ed39e8a2c57648f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
