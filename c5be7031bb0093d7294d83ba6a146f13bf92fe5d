@@ -46,6 +46,30 @@
       "revId": "c5be7031bb0093d7294d83ba6a146f13bf92fe5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7c666b5_cf6b7323",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-10T17:18:12Z",
+      "side": 1,
+      "message": "Does this have any code size impacts. Hopefully the compiler will remove all of these unimplemented methods if the go unused. Can you verify that.\n\nThe EC has very limited space so unfortunately this could be a concern if this pattern were widely adopted in the EC codebase.\n\nIf this doesn\u0027t have size impacts, maybe we should think about doing this at a wider level.",
+      "parentUuid": "4d0a54cf_ae58c074",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 7
+      },
+      "revId": "c5be7031bb0093d7294d83ba6a146f13bf92fe5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
