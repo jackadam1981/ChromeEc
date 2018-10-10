@@ -15,8 +15,12 @@
 #define KEYBOARD_IDS 2
 #endif
 
-/* Keyboard matrix is 13 output columns x 8 input rows */
+/* Keyboard matrix is 13 (or 15 with keypad) output columns x 8 input rows */
+#ifdef CONFIG_KEYBOARD_KEYPAD
+#define KEYBOARD_COLS 15
+#else
 #define KEYBOARD_COLS 13
+#endif
 #define KEYBOARD_ROWS 8
 
 #define KEYBOARD_ROW_TO_MASK(r) (1 << (r))
