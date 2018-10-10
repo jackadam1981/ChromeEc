@@ -57,6 +57,30 @@
       "revId": "57046f384b63f7e86257eccfa7c89f1b58a3b11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f67a3b7_2939b981",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-10T17:04:16Z",
+      "side": 1,
+      "message": "from 5ms to 20ms\n\nMost cases it is around 5ms too, we are actually saving 20ms most of the time.\n\nWeirdly enough, I am not really seeing wait times longer than 25ms. Maybe the act of reading the i2c registers on the PPC pulls it out of some internal low power mode to process the GPIO input (wild guess).\n\nWithout this change, the error rate for plugging in an external monitor on spark is relatively high with the root cause being the status register not matching the desired state (which then sets off a chain reaction in the pd state machine that will prevent the monitor from connecting)\n\nI can get back into that state by making both internal and max 25ms. I start seeing this error message (status reg did not update). When I use 5 and 50 ms, I don\u0027t see the \"status reg did not update\" error message.",
+      "parentUuid": "da89706f_0220e0e6",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 31
+      },
+      "revId": "57046f384b63f7e86257eccfa7c89f1b58a3b11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
