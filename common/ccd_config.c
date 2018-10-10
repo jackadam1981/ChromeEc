@@ -60,6 +60,11 @@ struct ccd_vendor_cmd_header {
 	uint8_t ccd_subcommand;
 } __packed;
 
+/* Macros regarding ccd_capabilities */
+#define CCD_CAP_BITS		(2)
+#define CCD_CAP_BITMASK	((1 << CCD_CAP_BITS) - 1)
+#define CCD_CAPS_PER_BYTE	(sizeof(uint8_t) * 8 / CCD_CAP_BITS)
+
 /* Size of password salt and digest in bytes */
 #define CCD_PASSWORD_SALT_SIZE 4
 #define CCD_PASSWORD_DIGEST_SIZE 16
@@ -162,7 +167,10 @@ static void raw_set_flag(enum ccd_flag flag, int value)
 static enum ccd_capability_state raw_get_cap(enum ccd_capability cap,
 					     int translate_default)
 {
-	int c =	(config.capabilities[cap / 4] >> (2 * (cap % 4))) & 3;
+	const uint32_t index = cap / CCD_CAPS_PER_BYTE;
+	const uint32_t shift = (cap % CCD_CAPS_PER_BYTE) * CCD_CAP_BITS;
+
+	int c =	(config.capabilities[index] >> shift) & CCD_CAP_BITMASK;
 
 	if (c == CCD_CAP_STATE_DEFAULT && translate_default)
 		c = cap_info[cap].default_state;
@@ -182,8 +190,31 @@ static enum ccd_capability_state raw_get_cap(enum ccd_capability cap,
 static void raw_set_cap(enum ccd_capability cap,
 			    enum ccd_capability_state state)
 {
-	config.capabilities[cap / 4] &= ~(3 << (2 * (cap % 4)));
-	config.capabilities[cap / 4] |= (state & 3) << (2 * (cap % 4));
+	const uint32_t index = cap / CCD_CAPS_PER_BYTE;
+	const uint32_t shift = (cap % CCD_CAPS_PER_BYTE) * CCD_CAP_BITS;
+
+	config.capabilities[index] &= ~(CCD_CAP_BITMASK << shift);
+	config.capabilities[index] |= (state & CCD_CAP_BITMASK) << shift;
+}
+
+/**
+ * Check CCD configuration is reset to default value.
+ *
+ * @return 1 if it is in default mode.
+ *         0 otherwise.
+ */
+static int raw_check_config_is_default(void)
+{
+	uint32_t i;
+
+	if (ccd_state != CCD_STATE_LOCKED)
+		return 0;
+
+	for (i = 0; i < CCD_CAP_COUNT; i++)
+		if (raw_get_cap(i, 0) != CCD_CAP_STATE_DEFAULT)
+			return 0;
+
+	return 1;
 }
 
 /**
@@ -686,6 +717,9 @@ static int command_ccd_info(void)
 	ccprintf("TPM:%s%s\n",
 		 board_fwmp_allows_unlock() ? "" : " fwmp_lock",
 		 board_vboot_dev_mode_enabled() ? " dev_mode" : "");
+
+	ccprintf("CCD Config: %sdefault\n", raw_check_config_is_default() ?
+		 "" : "not ");
 
 	ccputs("Use 'ccd help' to print subcommands\n");
 	return EC_SUCCESS;
@@ -1312,8 +1346,8 @@ static enum vendor_cmd_rc ccd_get_info(struct vendor_cmd_params *p)
 		int shift;
 
 		/* Each capability takes 2 bits. */
-		index = i / (32/2);
-		shift = (i % (32/2)) * 2;
+		index = i / (32 / CCD_CAP_BITS);
+		shift = (i % (32 / CCD_CAP_BITS)) * CCD_CAP_BITS;
 		response.ccd_caps_current[index] |= raw_get_cap(i, 1) << shift;
 		response.ccd_caps_defaults[index] |=
 			cap_info[i].default_state << shift;
@@ -1321,7 +1355,10 @@ static enum vendor_cmd_rc ccd_get_info(struct vendor_cmd_params *p)
 
 	response.ccd_flags = htobe32(raw_get_flags());
 	response.ccd_state = ccd_get_state();
-	response.ccd_has_password = raw_has_password();
+	response.ccd_indicator_bitmap = raw_has_password()
+				<< CCD_INDICATOR_SHIFT_HAS_PASSWORD;
+	response.ccd_indicator_bitmap |= raw_check_config_is_default()
+				<< CCD_INDICATOR_SHIFT_IS_DEFAULT;
 	response.ccd_force_disabled = force_disabled;
 	for (i = 0; i < ARRAY_SIZE(response.ccd_caps_current); i++) {
 		response.ccd_caps_current[i] =

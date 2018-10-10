@@ -1522,7 +1522,8 @@ static void print_ccd_info(void *response, size_t response_size)
 	/* Now report CCD state on the console. */
 	printf("State: %s\n", ccd_info.ccd_state > ARRAY_SIZE(state_names) ?
 	       "Error" : state_names[ccd_info.ccd_state]);
-	printf("Password: %s\n", ccd_info.ccd_has_password ? "Set" : "None");
+	printf("Password: %s\n", ccd_info.ccd_indicator_bitmap &
+		      (1 << CCD_INDICATOR_SHIFT_HAS_PASSWORD) ? "Set" : "None");
 	printf("Flags: %#06x\n", ccd_info.ccd_flags);
 	printf("Capabilities, current and default:\n");
 	for (i = 0; i < CCD_CAP_COUNT; i++) {
@@ -1570,6 +1571,8 @@ static void print_ccd_info(void *response, size_t response_size)
 			caps_bitmap |= (1 << i);
 	}
 	printf("CCD caps bitmap: %#x\n", caps_bitmap);
+	printf("CCD Config: %sdefault\n", (ccd_info.ccd_indicator_bitmap &
+		      (1 << CCD_INDICATOR_SHIFT_IS_DEFAULT)) ? "" : "not ");
 }
 
 static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
