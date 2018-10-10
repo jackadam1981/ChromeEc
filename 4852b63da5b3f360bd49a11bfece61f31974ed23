@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "756d48b8_3cafca33",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3784922d_5f1fc206",
+      "range": {
+        "startLine": 19,
+        "startChar": 65,
+        "endLine": 19,
+        "endChar": 74
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21519399_2b4f40a4",
         "filename": "board/cr50/pinweaver_tpm_imports.c",
         "patchSetId": 32
@@ -45,6 +69,30 @@
       "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b83cea95_89f94ee6",
+        "filename": "board/cr50/pinweaver_tpm_imports.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21519399_2b4f40a4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 61
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f7f9f1bd_d82f820a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65c74bb6_80d78540",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 10
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "213b5fbc_b3566b71",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -85,6 +157,24 @@
       "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0954d180_754ea7d8",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "213b5fbc_b3566b71",
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "68b21f3d_66be328e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "976a38ae_471d506b",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 21
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2c98f16_f10863bd",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -122,6 +236,30 @@
       "writtenOn": "2018-10-09T14:28:42Z",
       "side": 1,
       "message": "This is fragile in that the code will need updating if the sizes change in the future. Can this be rewritten to use offsetof to determine the size of the prefix applicable in the old version?",
+      "range": {
+        "startLine": 472,
+        "startChar": 25,
+        "endLine": 474,
+        "endChar": 37
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0847aa0a_5510369a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "We could have an offset in the middle of wrapped_leaf_data_t, but there\u0027s no change in unimported_leaf_data_t. So, if unimported_leaf_data_t changes later, or if the secured part from wrapped_leaf_data_t changes we would have the same problem.\n\nWhat about a constant value? Or recursion?\nreturn expected_payload_len(minor_version + 1) - PW_VALID_PCR_CRITERIA_SIZE;",
+      "parentUuid": "c2c98f16_f10863bd",
       "range": {
         "startLine": 472,
         "startChar": 25,
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "2d2d0754_2122da29",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda5ee90_c6305581",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 2
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24be4136_b860fc02",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "db21490a_4afe0bec",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24be4136_b860fc02",
+      "range": {
+        "startLine": 1012,
+        "startChar": 17,
+        "endLine": 1012,
+        "endChar": 18
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10737801_c1bcbbee",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -191,6 +377,30 @@
       "writtenOn": "2018-10-09T14:28:42Z",
       "side": 1,
       "message": "This shouldn\u0027t be here. The code should internally migrate to the new format so we don\u0027t need to take version numbers into account when making decisions.",
+      "range": {
+        "startLine": 1031,
+        "startChar": 0,
+        "endLine": 1032,
+        "endChar": 66
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3faf4d54_71d6f9a4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "I don\u0027t understand. validate_request_with_wrapped_leaf which is called right before this, does the validation of the leaf and checks the hmac. We cannot change the leaf before the hmac is computed and validated, because it would affect the computed hmac. The migration happens here in the else branch. Do you suggest doing it inside validate_request_with_wrapped_leaf, after decrypt_leaf is done?",
+      "parentUuid": "10737801_c1bcbbee",
       "range": {
         "startLine": 1031,
         "startChar": 0,
@@ -243,6 +453,24 @@
     },
     {
       "key": {
+        "uuid": "5fb4d9ee_5986946f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5941b1d_c4a2e115",
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d37616a1_7dc3355c",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -289,6 +517,30 @@
     },
     {
       "key": {
+        "uuid": "8a701afd_8705d191",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1461,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be3a34ec_c436142b",
+      "range": {
+        "startLine": 1455,
+        "startChar": 0,
+        "endLine": 1461,
+        "endChar": 2
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f8958ad_f31f11af",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -303,6 +555,24 @@
       "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce57c8a7_09918cde",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8958ad_f31f11af",
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -329,6 +599,30 @@
     },
     {
       "key": {
+        "uuid": "44e09923_37469b83",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "902d71b8_04a47ead",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5b17a88_63629948",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 32
@@ -340,6 +634,30 @@
       "writtenOn": "2018-10-09T14:28:42Z",
       "side": 1,
       "message": "wouldn\u0027t it be simpler to just declare this as a single uint32_t ?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3ac640c_82b064f8",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-10T12:27:42Z",
+      "side": 1,
+      "message": "It\u0027s the same format as TPML_PCR_SELECTION is using, so that we could just memcpy without splitting the bits manually.",
+      "parentUuid": "b5b17a88_63629948",
       "range": {
         "startLine": 117,
         "startChar": 1,
