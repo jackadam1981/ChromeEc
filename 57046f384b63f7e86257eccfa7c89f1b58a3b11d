@@ -34,6 +34,29 @@
       "revId": "57046f384b63f7e86257eccfa7c89f1b58a3b11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da89706f_0220e0e6",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-10T14:32:16Z",
+      "side": 1,
+      "message": "So when the errors occur, I\u0027m guessing you hit this statement?  About how long does it typically end up taking when the USB-C connection is ultimately successful?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 31
+      },
+      "revId": "57046f384b63f7e86257eccfa7c89f1b58a3b11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
