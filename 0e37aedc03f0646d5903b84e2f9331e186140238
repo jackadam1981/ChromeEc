@@ -22,6 +22,30 @@
       "revId": "0e37aedc03f0646d5903b84e2f9331e186140238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5db3ac_50884069",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T20:56:25Z",
+      "side": 1,
+      "message": "I agree it really throws me off when I see this enum definition. I will make a followup CL that renames these enum values wholesale",
+      "parentUuid": "f4a2e770_8f161974",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "0e37aedc03f0646d5903b84e2f9331e186140238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
