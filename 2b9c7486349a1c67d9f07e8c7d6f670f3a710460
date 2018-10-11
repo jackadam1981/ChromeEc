@@ -51,6 +51,24 @@
       "revId": "2b9c7486349a1c67d9f07e8c7d6f670f3a710460",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24af9143_93fc0a5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-11T01:39:34Z",
+      "side": 1,
+      "message": "I was able to verify that the EEPROM can be written. It just needs to be initialized once (which requires to add \u0027flags\u0027 to the ectool command.",
+      "parentUuid": "6b61b69e_91635066",
+      "revId": "2b9c7486349a1c67d9f07e8c7d6f670f3a710460",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
