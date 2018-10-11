@@ -68,6 +68,53 @@
       "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab75b1d_cd1191ea",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-11T21:57:38Z",
+      "side": 1,
+      "message": "Actually, it\u0027s not new code. I guess it\u0027s ok then.",
+      "parentUuid": "fce57652_3bde1437",
+      "range": {
+        "startLine": 886,
+        "startChar": 0,
+        "endLine": 890,
+        "endChar": 39
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a34f923_23a93a8c",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-11T21:57:38Z",
+      "side": 1,
+      "message": "I would mention this change in the CL description.",
+      "range": {
+        "startLine": 929,
+        "startChar": 4,
+        "endLine": 929,
+        "endChar": 31
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
