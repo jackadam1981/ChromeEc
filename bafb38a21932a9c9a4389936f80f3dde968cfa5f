@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17b48295_855c157c",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-10-11T09:17:50Z",
+      "side": 1,
+      "message": "We might need to ignore the pins have GPIO_SEL_1P8V flag. The input buffer of them are already disabled.",
+      "revId": "bafb38a21932a9c9a4389936f80f3dde968cfa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
