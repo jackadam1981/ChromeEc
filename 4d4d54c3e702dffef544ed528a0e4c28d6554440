@@ -22,6 +22,30 @@
       "revId": "4d4d54c3e702dffef544ed528a0e4c28d6554440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1403c3d5_b3e233d3",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-10-11T21:11:43Z",
+      "side": 1,
+      "message": "Leave the quotes on \"$SERVO_TYPE\". You don\u0027t need them on the $SUPPORTED_SERVO otherwise: If the pattern is stored in a shell variable, quoting the variable expansion forces the entire pattern to be matched as a string. \nThat explains why it used to work.",
+      "parentUuid": "f917287a_6c2d07d4",
+      "range": {
+        "startLine": 354,
+        "startChar": 4,
+        "endLine": 354,
+        "endChar": 39
+      },
+      "revId": "4d4d54c3e702dffef544ed528a0e4c28d6554440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
