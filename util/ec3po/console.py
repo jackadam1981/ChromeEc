@@ -907,10 +907,14 @@ def StartLoop(console, command_active):
       while not console.oobm_queue.empty():
         console.logger.debug('OOBM queue ready for reading.')
         console.ProcessOOBMQueue()
+
   except KeyboardInterrupt:
     pass
+
+  # Is suppressing all exceptions actually necessary or desirable?
   except:
     traceback.print_exc()
+
   finally:
     # Unregister poll.
     ep.unregister(console.master_pty)
@@ -921,8 +925,6 @@ def StartLoop(console, command_active):
     os.close(console.master_pty)
     os.close(console.interface_pty)
     console.logger.debug('Exit ec3po console loop for %s', console.user_pty)
-    # Exit.
-    sys.exit(0)
 
 
 def main(argv):
