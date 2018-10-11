@@ -249,10 +249,23 @@
 #endif
 
 /* SPI Module */
+#ifndef NPCX_WOV_SUPPORT
 #define NPCX_ALT_SPIP_MISO ALT(9, 5, NPCX_ALT(0, SPIP_SL)) /* SPIP_MISO */
 #define NPCX_ALT_SPIP_CS1  ALT(A, 5, NPCX_ALT(0, SPIP_SL)) /* SPIP_CS1  */
 #define NPCX_ALT_SPIP_MOSI ALT(A, 3, NPCX_ALT(0, SPIP_SL)) /* SPIP_MOSI */
 #define NPCX_ALT_SPIP_SCLK ALT(A, 1, NPCX_ALT(0, SPIP_SL)) /* SPIP_SCLK */
+#else
+/*
+ * When NPCX_WOV_SUPPORT is defined the gpio_alt_sel() function will find
+ * NPCX_ALT_SPIP_CS1 for the I2S_SYNC pin, causing bit 0 of DEVALT0 to get set
+ * and this can conflict with bit 3 of DEVALT0. Removing the ALT() portions when
+ * WOV support is include to ensure that (A,5) selects NPCX_ALT_I2S_SYNC below.
+ */
+#define NPCX_ALT_SPIP_MISO /* SPIP_MISO */
+#define NPCX_ALT_SPIP_CS1  /* SPIP_CS1  */
+#define NPCX_ALT_SPIP_MOSI /* SPIP_MOSI */
+#define NPCX_ALT_SPIP_SCLK /* SPIP_SCLK */
+#endif
 
 /* PWM Module */
 #define NPCX_ALT_PWM0 ALT(C, 3, NPCX_ALT(4, PWM0_SL)) /* PWM0 */
