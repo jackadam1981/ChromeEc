@@ -104,11 +104,6 @@ static inline int tcpm_release(int port)
 	return tcpc_config[port].drv->release(port);
 }
 
-static inline int tcpm_get_cc(int port, int *cc1, int *cc2)
-{
-	return tcpc_config[port].drv->get_cc(port, cc1, cc2);
-}
-
 static inline int tcpm_get_vbus_level(int port)
 {
 	return tcpc_config[port].drv->get_vbus_level(port);
@@ -229,17 +224,6 @@ static inline int tcpm_get_chip_info(int port, int renew,
 #elif defined(CONFIG_USB_PD_TCPC_SELF)
 
 /**
- * Read the CC line status.
- *
- * @param port Type-C port number
- * @param cc1 pointer to CC status for CC1
- * @param cc2 pointer to CC status for CC2
- *
- * @return EC_SUCCESS or error
- */
-int tcpm_get_cc(int port, int *cc1, int *cc2);
-
-/**
  * Read VBUS
  *
  * @param port Type-C port number
@@ -340,6 +324,17 @@ void tcpc_alert(int port);
  * @return EC_SUCCESS or error
  */
 int tcpm_init(int port);
+
+/**
+ * Read the CC line status.
+ *
+ * @param port Type-C port number
+ * @param cc1 pointer to CC status for CC1
+ * @param cc2 pointer to CC status for CC2
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_get_cc(int port, int *cc1, int *cc2);
 
 /**
  * Gets the next waiting RX message.

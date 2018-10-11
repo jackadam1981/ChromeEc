@@ -144,6 +144,26 @@ int tcpm_init(int port)
 	return rv;
 }
 
+int tcpm_get_cc(int port, int *cc1, int *cc2)
+{
+	static int prev_cc1;
+	static int prev_cc2;
+
+	const int rv = tcpc_config[port].drv->get_cc(port, cc1, cc2);
+
+	if (pd_debug_level() >= 3 && rv == EC_SUCCESS) {
+		if (prev_cc1 != *cc1 || prev_cc2 != *cc2)
+			CPRINTF("C%d CC lines status changed: cc1 %d->%d, cc2 "
+				"%d->%d\n",
+				port, prev_cc1, *cc1, prev_cc2, *cc2);
+
+		prev_cc1 = *cc1;
+		prev_cc2 = *cc2;
+	}
+
+	return rv;
+}
+
 struct cached_tcpm_message {
 	uint32_t header;
 	uint32_t payload[7];
