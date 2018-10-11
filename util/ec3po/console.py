@@ -817,26 +817,33 @@ def IsPrintable(byte):
   """
   return byte >= ord(' ') and byte <= ord('~')
 
-def StartLoop(console, command_active):
+def StartLoop(console, command_active, shutdown_pipe=None):
   """Starts the infinite loop of console processing.
 
   Args:
     console: A Console object that has been properly initialzed.
     command_active: multiprocessing.Value indicating if servod owns
         the console, or user owns the console. This prevents input collisions.
+    shutdown_pipe: A file object for a pipe or equivalent that becomes readable
+      (not blocked) to indicate that the loop should exit.  Can be None to never
+      exit the loop.
   """
-  console.logger.debug('Console is being served on %s.', console.user_pty)
-  console.logger.debug('Console master is on %s.', console.master_pty)
-  console.logger.debug('Command interface is being served on %s.',
-      console.interface_pty)
-  console.logger.debug(console)
-
   try:
+    console.logger.debug('Console is being served on %s.', console.user_pty)
+    console.logger.debug('Console master is on %s.', console.master_pty)
+    console.logger.debug('Command interface is being served on %s.',
+        console.interface_pty)
+    console.logger.debug(console)
+
     # This checks for HUP to indicate if the user has connected to the pty.
     ep = select.epoll()
     ep.register(console.master_pty, select.EPOLLHUP)
 
-    while True:
+    # This is used instead of "break" to avoid exiting the loop in the middle of
+    # an iteration.
+    continue_looping = True
+
+    while continue_looping:
       # Check to see if pts is connected to anything
       events = ep.poll(0)
       master_connected = not events
@@ -846,6 +853,8 @@ def StartLoop(console, command_active):
                    console.cmd_pipe, console.dbg_pipe]
       if master_connected:
         read_list.append(console.master_pty)
+      if shutdown_pipe is not None:
+        read_list.append(shutdown_pipe)
 
       # Check if any input is ready, or wait for .1 sec and re-poll if
       # a user has connected to the pts.
@@ -855,28 +864,30 @@ def StartLoop(console, command_active):
       ready_for_reading = select_output[0]
 
       for obj in ready_for_reading:
-        if obj is console.master_pty and not command_active.value:
-          # Convert to bytes so we can look for non-printable chars such as
-          # Ctrl+A, Ctrl+E, etc.
-          try:
-            line = bytearray(os.read(console.master_pty, CONSOLE_MAX_READ))
-            console.logger.debug('Input from user: %s, locked:%s',
+        if obj is console.master_pty:
+          if not command_active.value:
+            # Convert to bytes so we can look for non-printable chars such as
+            # Ctrl+A, Ctrl+E, etc.
+            try:
+              line = bytearray(os.read(console.master_pty, CONSOLE_MAX_READ))
+              console.logger.debug('Input from user: %s, locked:%s',
+                  str(line).strip(), command_active.value)
+              for i in line:
+                # Handle each character as it arrives.
+                console.HandleChar(i)
+            except OSError:
+              console.logger.debug('Ptm read failed, probably user disconnect.')
+
+        elif obj is console.interface_pty:
+          if command_active.value:
+            # Convert to bytes so we can look for non-printable chars such as
+            # Ctrl+A, Ctrl+E, etc.
+            line = bytearray(os.read(console.interface_pty, CONSOLE_MAX_READ))
+            console.logger.debug('Input from interface: %s, locked:%s',
                 str(line).strip(), command_active.value)
             for i in line:
               # Handle each character as it arrives.
               console.HandleChar(i)
-          except OSError:
-            console.logger.debug('Ptm read failed, probably user disconnect.')
-
-        if obj is console.interface_pty and command_active.value:
-          # Convert to bytes so we can look for non-printable chars such as
-          # Ctrl+A, Ctrl+E, etc.
-          line = bytearray(os.read(console.interface_pty, CONSOLE_MAX_READ))
-          console.logger.debug('Input from interface: %s, locked:%s',
-              str(line).strip(), command_active.value)
-          for i in line:
-            # Handle each character as it arrives.
-            console.HandleChar(i)
 
         elif obj is console.cmd_pipe:
           data = console.cmd_pipe.recv()
@@ -904,25 +915,31 @@ def StartLoop(console, command_active):
           if command_active.value:
             os.write(console.interface_pty, data)
 
+        elif obj is shutdown_pipe:
+          console.logger.debug(
+              'ec3po console received shutdown pipe unblocked notification')
+          continue_looping = False
+
       while not console.oobm_queue.empty():
         console.logger.debug('OOBM queue ready for reading.')
         console.ProcessOOBMQueue()
+
   except KeyboardInterrupt:
     pass
+
+  # Is suppressing all exceptions actually necessary or desirable?
   except:
     traceback.print_exc()
+
   finally:
-    # Unregister poll.
     ep.unregister(console.master_pty)
-    # Close pipes.
     console.dbg_pipe.close()
     console.cmd_pipe.close()
-    # Close file descriptor.
     os.close(console.master_pty)
     os.close(console.interface_pty)
+    if shutdown_pipe is not None:
+      shutdown_pipe.close()
     console.logger.debug('Exit ec3po console loop for %s', console.user_pty)
-    # Exit.
-    sys.exit(0)
 
 
 def main(argv):
