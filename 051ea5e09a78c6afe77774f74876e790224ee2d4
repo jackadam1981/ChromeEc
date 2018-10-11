@@ -46,6 +46,30 @@
       "revId": "051ea5e09a78c6afe77774f74876e790224ee2d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6270fd5_4f779667",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-11T00:28:27Z",
+      "side": 1,
+      "message": "Eve also had the brand ZZCR so you\u0027d need to check that too. Also any bobs or reefs that booted that version of chromeos may have 0xff7f as board id flags. \nfeature would be 0xff not 0x80 on those boards.",
+      "parentUuid": "d976143e_f9d0ddf8",
+      "range": {
+        "startLine": 1698,
+        "startChar": 26,
+        "endLine": 1698,
+        "endChar": 48
+      },
+      "revId": "051ea5e09a78c6afe77774f74876e790224ee2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
