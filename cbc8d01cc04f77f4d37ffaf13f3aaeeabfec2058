@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb66fce5_8efe3501",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T15:38:03Z",
+      "side": 0,
+      "message": "why are you removing this line, just to add it back in the child CL?",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "cbc8d01cc04f77f4d37ffaf13f3aaeeabfec2058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
