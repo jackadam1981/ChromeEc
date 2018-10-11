@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "564265b2_b1145931",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "typo? \"one\"?",
+      "range": {
+        "startLine": 340,
+        "startChar": 33,
+        "endLine": 340,
+        "endChar": 35
+      },
+      "revId": "00158e45e969016edb8248ed632cc270fc44cc8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3354197_f4e0be2e",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 10
@@ -46,6 +69,30 @@
       "revId": "00158e45e969016edb8248ed632cc270fc44cc8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "716dafb1_d71898dc",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85aaf49a_5e37561a",
+      "range": {
+        "startLine": 358,
+        "startChar": 4,
+        "endLine": 358,
+        "endChar": 34
+      },
+      "revId": "00158e45e969016edb8248ed632cc270fc44cc8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -97,6 +97,47 @@
     },
     {
       "key": {
+        "uuid": "ef81db5a_5ed331d0",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Please leave this as unsigned - there are minor performance advantages to using unsigned values. \"flags\" in general should never be signed types.",
+      "parentUuid": "eb0e1124_34063625",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0af0ff_aa186e51",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Are CMD_RESTART_VAL and CMD_STOP_VAL mutually exclusive?\n\nI\u0027m wondering if the \"else\" should be dropped here to handle \"len\u003d1\" case differently.",
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "809658bf_e73126e6",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
@@ -192,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "aa407d68_2516398b",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "If the HW fails, this loop will tightly bind the CPU:\n1) please add a retry counter to limit how long it might loop here.\n2) and as mentioned in the bug, consider adding cpu_relax() call to the loop.",
+      "parentUuid": "c05d2a3c_f37f880f",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 49
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c94d2de_fd9fec83",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
@@ -236,6 +301,30 @@
       "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bfa6bf5_edcd9697",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb91ca49_1e0f7479",
+      "range": {
+        "startLine": 340,
+        "startChar": 19,
+        "endLine": 340,
+        "endChar": 26
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -331,6 +420,30 @@
       "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9784bbac_551f7fdd",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0461248e_b08e0996",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 17
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

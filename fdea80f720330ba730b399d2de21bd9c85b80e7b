@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "10990ca6_a91b0cfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Ok - my gut feeling is this should be at least three patches - one for each bit of functional change.  The parts that come from upstream should be tagged (ie prefix the topic) UPSTREAM. The rest should be tagged with FROMLIST (posted but not accepted) or FROMGIT (accepted by maintainer but not merged into mainline kernel yet).",
+      "parentUuid": "b07167ad_282511cf",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27f7af81_b9ab45a5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "b:b:78601949 is i2c driver controller by host Linux kernel. \nThis driver is for i2c module controlled by ISH, which is for different i2c IP module.",
       "parentUuid": "27f7af81_b9ab45a5",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "469d3f09_a409419b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Sure - my examples might be wrong - but they are just examples. Please add a bug reference since it will help manage the work/testing/rollout.",
+      "parentUuid": "74490cd5_6a68e6d8",
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -104,6 +140,23 @@
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f1daa2e_b000ad93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Please be a bit more specific: which i2C device? Which test?\nAny command line you used to verify functionality should be listed here.",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -177,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "07f3c569_203ba6ed",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c61f19e_869d2002",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 2
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e290ae97_1a61c407",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 7
@@ -197,6 +274,30 @@
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90129f4c_a1500528",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e290ae97_1a61c407",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 44
+      },
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -349,6 +450,24 @@
       "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c02b082_9c6e387d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-11T18:06:55Z",
+      "side": 1,
+      "message": "Ah! Sorry! You (and dtor) are correct. Ignore this comment. :)",
+      "parentUuid": "0c86c4c4_12eda6e3",
+      "revId": "fdea80f720330ba730b399d2de21bd9c85b80e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
