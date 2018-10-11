@@ -22,6 +22,30 @@
       "revId": "051ea5e09a78c6afe77774f74876e790224ee2d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d976143e_f9d0ddf8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-11T00:23:42Z",
+      "side": 1,
+      "message": "go/cr50-boardid-lock says that Eve\u0027s BoardID is \u0027ZZAF\u0027 (0x5A5A4146).\ngo/cr50-board-id-in-factory says that Eve PreMP has 0x80 instead of 0x7F.",
+      "parentUuid": "d96eea53_fa9f10d6",
+      "range": {
+        "startLine": 1698,
+        "startChar": 26,
+        "endLine": 1698,
+        "endChar": 48
+      },
+      "revId": "051ea5e09a78c6afe77774f74876e790224ee2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
