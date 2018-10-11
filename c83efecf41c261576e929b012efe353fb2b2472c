@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddf1c48d_adb3b0e2",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-11T20:24:08Z",
+      "side": 1,
+      "message": "Can this be made clearer (and avoid duplicating with line 21)?",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 70
+      },
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7013b3fd_15439879",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-11T20:24:08Z",
+      "side": 1,
+      "message": "Instead of \"adapters\" vs \"\"normal\" devices\", maybe \"is a\" vs \"connected to\" a TCPC?",
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420b3ca5_2bac7d31",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-11T20:24:08Z",
+      "side": 1,
+      "message": "Was the .h version always the same as the .c version before?",
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
