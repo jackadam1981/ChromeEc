@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "3421d58d_8990d716",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T08:33:47Z",
+      "side": 1,
+      "message": "from",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "850a73c1ca5b18db3d34450cb59b7fac4c3c3b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df6f6675_044aa0df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T08:33:47Z",
+      "side": 1,
+      "message": "nit: Celcius",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "850a73c1ca5b18db3d34450cb59b7fac4c3c3b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa6ab60_03b789cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T08:33:47Z",
+      "side": 1,
+      "message": ", and see that when the battery temperature reaches 30 C, GAUGE_INT_ODL is\nasserted, and charger_task is woken up.",
+      "revId": "850a73c1ca5b18db3d34450cb59b7fac4c3c3b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da8aded7_9c4a46b1",
         "filename": "board/kukui/board.c",
         "patchSetId": 6
