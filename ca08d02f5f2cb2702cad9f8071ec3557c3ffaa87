@@ -22,6 +22,30 @@
       "revId": "ca08d02f5f2cb2702cad9f8071ec3557c3ffaa87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774aa6c1_551b5782",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-11T21:44:09Z",
+      "side": 1,
+      "message": "these are not all boards there are, but these are which somehow make cherry-picks more difficult. \n\nI guess we could drop all of them, it just does not seem to be necessary at this time.",
+      "parentUuid": "d225099d_b318f70b",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "ca08d02f5f2cb2702cad9f8071ec3557c3ffaa87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
