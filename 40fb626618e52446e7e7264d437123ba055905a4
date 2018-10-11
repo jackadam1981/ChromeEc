@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f72e918_0220dc06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "If you want to provide a link, please use a public link. e.g. https://datasheets.maximintegrated.com/en/ds/MAX17055.pdf",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c3eb17_09201d0d",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "I\u0027d define all these as shifts 0x0002 \u003d\u003e (1 \u003c\u003c 1)",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ade5cc_d70a734e",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "Sounds like initial/disable values, not resolution.",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43f9c3d7_a9caab9c",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "Fits in 1 line?",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dfbc2eb_df95c174",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "supports",
+      "range": {
+        "startLine": 169,
+        "startChar": 12,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb6e5d38_58595b74",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "voltage is outside of the v_alert_mxmn range",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 38
+      },
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac2d311_ee50880c",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "VALRT_DISABLE\n\nAlso, tell people to use MAX17055_VALRTTH_REG to setup the range (or whatever is needed)",
+      "range": {
+        "startLine": 179,
+        "startChar": 30,
+        "endLine": 179,
+        "endChar": 36
+      },
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb6c4d9_6f03d3d2",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-11T10:05:58Z",
+      "side": 1,
+      "message": "Why would you ever need to _get_ the alert profile?",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
