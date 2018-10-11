@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ba4e0d13_cf586a10",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "True, I meant locally within this function (enable_i2c_pass_through) we are reading LSM6DSM_MASTER_CFG_ADDR 3 times and writing to it 3 times. We only need to read it once and write to it 3 times.\n\nWe should not have other driver accesses in between line 87 and line 95 (and if we were to have them, then the helper function wouldn\u0027t be able to guarantee that another driver didn\u0027t also access the register in the middle of set_reg_bit_field)",
+      "parentUuid": "7ed25198_59942e3a",
+      "range": {
+        "startLine": 95,
+        "startChar": 7,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b6dfe6e_8f84f9d5",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I will fix the comment. Initially I added 500 ms and tuned it to 50 ms.\n\nRegarding the reason for the delay, it is a long story.\nData from external sensor can be handled using two types of triggers. One - every time the accelerometer data is ready, accel/gyro module can read external sensor data. The other approach is the external sensors themselves will trigger an interrupt when their data is ready. For the second approach, the external sensors data ready line has to be connected to the INT2 line of the accel/gyro module. In our case it is not connected. So we have to use accelerometer data ready as a trigger to read the external sensors.\n\nNow to use the I2C Pass through mode so that we can access external sensor register directly/quickly, we have to ensure that the sensor hub is not accessing the external sensors as part of the trigger(especially since I2C bus being slow). Hence we fake changed the external trigger and wait for some time to ensure that accel/gyro module is not reading external sensor data. This is the reason for the delay. The minimum recommendation is 5 ms as per one of the programming manual I read.\n\nI can tune this number further and see if there is any issue.",
       "parentUuid": "3b6dfe6e_8f84f9d5",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d243a789_a35ead41",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "That\u0027s fair, can you add a comment above the sleep stating the reason (external trigger plus bus contention etc).",
+      "parentUuid": "1c68dc37_4052bb9c",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "44e709a7_94484997",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "Looking at this more, we shouldn\u0027t need to clear bit LSM6DSM_I2C_PASS_THRU_MODE since the cache was taken before LSM6DSM_I2C_PASS_THRU_MODE was set in enable_i2c_pass_through.\n\nShouldn\u0027t we just restore the value of LSM6DSM_MASTER_CFG_ADDR to what it was before we called enable_i2c_pass_through (similar to restore_accel)?",
+      "parentUuid": "66cc2b8e_8e21eb38",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc57f523_e438751d",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "a2b1b66f_8783b20e",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "Of course; don\u0027t know how I missed that the first time through.",
+      "parentUuid": "76a384b0_ad891bd8",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 136,
+        "endChar": 13
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c24d858e_10df2267",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -225,6 +321,30 @@
       "side": 1,
       "message": "The content of the CTRL1_ADDR has configuration of accelerometer Data Rate \u0026 if I am not wrong, decimation setting. If that data rate is 0, then no data is generated by accel - equivalent to power down mode. By using the cache, we are just restoring the accel module to whatever state it was before disabling it.",
       "parentUuid": "c24d858e_10df2267",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aeb0024_52232dc5",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "Maybe we can just call this function restore_ctrl1() since that is closer to what it is doing\n\nAlso we could rename disable_i2c_pass_through to restore_master_cfg() as well.",
+      "parentUuid": "96e6bb40_aeb37649",
       "range": {
         "startLine": 139,
         "startChar": 0,
@@ -378,6 +498,30 @@
     },
     {
       "key": {
+        "uuid": "65ed3fa3_270007a2",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "I missed it use the first time through. I see it now on line 230",
+      "parentUuid": "7d84eb51_fc71c037",
+      "range": {
+        "startLine": 211,
+        "startChar": 34,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fac2c606_cd9b6ecf",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -413,6 +557,30 @@
       "side": 1,
       "message": "Embedded register bank. These are the register banks associated with external sensors. There can be 4 such external sensor slaves attached to the sensor hub and hence 4 such register banks. The access to them are disabled by default. This helper function enables accessing it.",
       "parentUuid": "fac2c606_cd9b6ecf",
+      "range": {
+        "startLine": 223,
+        "startChar": 13,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb22a9b_c212ce78",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "can we add this explanation as a comment above this line. I think that would help",
+      "parentUuid": "ef837387_8661b1b1",
       "range": {
         "startLine": 223,
         "startChar": 13,
@@ -472,6 +640,30 @@
     },
     {
       "key": {
+        "uuid": "4e980048_bc212784",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "let\u0027s make it clear in the documentation that it is resetting the external sensors and not the sensor hub",
+      "parentUuid": "fbabe0ae_70ad1b59",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 279,
+        "endChar": 27
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edc76e48_d5ef4e7a",
         "filename": "driver/sensorhub_lsm6dsm.h",
         "patchSetId": 2
@@ -512,6 +704,53 @@
         "startChar": 0,
         "endLine": 17,
         "endChar": 31
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3dae664_33bccbb7",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "Per our offline discussion, let\u0027s remove this for now",
+      "parentUuid": "9da364d8_0d3d9bb1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5321ef86_473d4c61",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:43:06Z",
+      "side": 1,
+      "message": "let\u0027s add documentation to all of these function declarations please",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
       },
       "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
