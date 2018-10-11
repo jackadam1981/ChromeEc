@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f7340169_90384630",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T21:03:05Z",
+      "side": 1,
+      "message": "True, but the names are very well scoped and we shouldn\u0027t run into a collision.\n\nPutting it in a header file would make it more consistent with the rest of the EC codebase",
+      "parentUuid": "08514006_adc27cdd",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65131a84_cfdc5f0b",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
