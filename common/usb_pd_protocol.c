@@ -4334,6 +4334,11 @@ void pd_update_contract(int port)
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
+int pd_debug_level(void)
+{
+	return debug_level;
+}
+
 static int command_pd(int argc, char **argv)
 {
 	int port;
