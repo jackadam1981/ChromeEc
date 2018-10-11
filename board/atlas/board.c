@@ -418,6 +418,10 @@ static void board_pmic_init(void)
 	/* VRMODECTRL - disable low-power mode for all rails */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
 		   BD99992GW_REG_VRMODECTRL, 0x1f);
+
+	/* * VCCIOCNT - VCCIOVSEL 0.850V */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
+		   BD99992GW_REG_VCCIOCNT, 0x3a);
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 
