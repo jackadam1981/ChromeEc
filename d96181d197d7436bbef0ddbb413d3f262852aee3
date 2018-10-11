@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08514006_adc27cdd",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T18:27:27Z",
+      "side": 1,
+      "message": "I added them since these definitions are required/used only inside the driver. Putting them in the header file make them usable by other drivers even if not required.",
+      "parentUuid": "fa7291eb_363973b7",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65131a84_cfdc5f0b",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -163,6 +187,30 @@
       "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9bb5a8_39529b9c",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T18:27:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b1958ef5_e0c31984",
+      "range": {
+        "startLine": 60,
+        "startChar": 58,
+        "endLine": 60,
+        "endChar": 63
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
