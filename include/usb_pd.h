@@ -1045,6 +1045,9 @@ int pd_is_max_request_allowed(void);
  */
 void pd_device_accessed(int port);
 
+/** Returns the current debug level for console output */
+int pd_debug_level(void);
+
 /**
  * Prevents the TCPC from going back into low power mode. Invocations must be
  * called in a pair from the same task, otherwise the TCPC will never re-enter

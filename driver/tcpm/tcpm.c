@@ -144,6 +144,27 @@ int tcpm_init(int port)
 	return rv;
 }
 
+int tcpm_get_cc(int port, int *cc1, int *cc2)
+{
+	static int prev_cc1[CONFIG_USB_PD_PORT_COUNT];
+	static int prev_cc2[CONFIG_USB_PD_PORT_COUNT];
+
+	const int rv = tcpc_config[port].drv->get_cc(port, cc1, cc2);
+
+	if (rv)
+		return rv;
+
+	if (pd_debug_level() >= 3 &&
+	    (prev_cc1[port] != *cc1 || prev_cc2[port] != *cc2))
+		CPRINTF("C%d CC lines status changed: cc1 %d->%d, cc2 %d->%d\n",
+			port, prev_cc1[port], *cc1, prev_cc2[port], *cc2);
+
+	prev_cc1[port] = *cc1;
+	prev_cc2[port] = *cc2;
+
+	return EC_SUCCESS;
+}
+
 struct cached_tcpm_message {
 	uint32_t header;
 	uint32_t payload[7];
