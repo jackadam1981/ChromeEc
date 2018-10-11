@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d0677d5_101c2d0d",
+        "filename": "board/chocodile_vpdmcu/vpd_api.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-11T18:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4595ab71_680e9dd6",
+      "range": {
+        "startLine": 41,
+        "startChar": 37,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b14f830_152b9028",
         "filename": "common/usb_pe_sm.c",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba2f7c8_10500c05",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-11T18:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b14f830_152b9028",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4332fd00_c7cc62b2",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-11T18:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8084cf2_7a6ba1a1",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 37
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d9ccd2a_a662800c",
         "filename": "common/usb_pe_sm.c",
         "patchSetId": 12
@@ -82,6 +154,30 @@
       "writtenOn": "2018-10-10T23:13:13Z",
       "side": 1,
       "message": "this should probably be the same as whatever the usb device chip returns",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 26
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c447eaca_8d04e8c8",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-11T18:37:39Z",
+      "side": 1,
+      "message": "What is \"usb device chip\"? The spec. states \"set the bcdDevice field to a version number relevant to the release version of the product.\"",
+      "parentUuid": "5d9ccd2a_a662800c",
       "range": {
         "startLine": 188,
         "startChar": 3,
@@ -114,6 +210,30 @@
       "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3566b41f_5ba03996",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-11T18:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbab481_c0ddcec5",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 197,
+        "endChar": 20
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
