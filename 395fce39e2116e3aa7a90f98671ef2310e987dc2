@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14c9e6e5_f175b998",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1307956
+      },
+      "writtenOn": "2018-10-11T23:45:37Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the value for bEndpointAddress come from the interface descriptor? I would suggest looking for the first IN and the first OUT endpoint that can be found in the interface descriptor, similar to how it\u0027s done at https://github.com/pyusb/pyusb/blob/master/docs/tutorial.rst#lets-get-it-started\nAs the code stands, it assumes that for a given interface, the two values for bEndpointAddress are 0x81 + bInterfaceNumber and 0x1 + bInterfaceNumber. This assumption might be true for a specific device, but I\u0027m not sure if there\u0027s a guarantee for this.",
+      "revId": "395fce39e2116e3aa7a90f98671ef2310e987dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
