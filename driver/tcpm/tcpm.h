@@ -98,21 +98,6 @@ static inline void tcpc_lock(int port, int lock)
 	i2c_lock(tcpc_config[port].i2c_host_port, lock);
 }
 
-/* TCPM driver wrapper function */
-static inline int tcpm_init(int port)
-{
-	int rv;
-
-	rv = tcpc_config[port].drv->init(port);
-	if (rv)
-		return rv;
-
-	/* Board specific post TCPC init */
-	if (board_tcpc_post_init)
-		rv = board_tcpc_post_init(port);
-
-	return rv;
-}
 
 static inline int tcpm_release(int port)
 {
@@ -244,15 +229,6 @@ static inline int tcpm_get_chip_info(int port, int renew,
 #elif defined(CONFIG_USB_PD_TCPC_SELF)
 
 /**
- * Initialize TCPM driver and wait for TCPC readiness.
- *
- * @param port Type-C port number
- *
- * @return EC_SUCCESS or error
- */
-int tcpm_init(int port);
-
-/**
  * Read the CC line status.
  *
  * @param port Type-C port number
@@ -355,6 +331,15 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 void tcpc_alert(int port);
 
 #endif /* CONFIG_USB_PD_TCPC_SELF && CONFIG_USB_PD_TCPC_MANAGER */
+
+/**
+ * Initialize TCPM driver and wait for TCPC readiness.
+ *
+ * @param port Type-C port number
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_init(int port);
 
 /**
  * Gets the next waiting RX message.
