@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7ac6c5f0_7e514cec",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba4e0d13_cf586a10",
+      "range": {
+        "startLine": 95,
+        "startChar": 7,
+        "endLine": 95,
+        "endChar": 24
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b6dfe6e_8f84f9d5",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "49b9e3d6_21fc0ae7",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d243a789_a35ead41",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aaaeefb_3f2e369c",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -203,6 +251,30 @@
       "side": 1,
       "message": "Looking at this more, we shouldn\u0027t need to clear bit LSM6DSM_I2C_PASS_THRU_MODE since the cache was taken before LSM6DSM_I2C_PASS_THRU_MODE was set in enable_i2c_pass_through.\n\nShouldn\u0027t we just restore the value of LSM6DSM_MASTER_CFG_ADDR to what it was before we called enable_i2c_pass_through (similar to restore_accel)?",
       "parentUuid": "66cc2b8e_8e21eb38",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dcc15c5_da6305aa",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "True, I will just write the cache back without clearing I2C_PASS_THROUGH_MODE.",
+      "parentUuid": "44e709a7_94484997",
       "range": {
         "startLine": 120,
         "startChar": 5,
@@ -354,6 +426,30 @@
       "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94c1298_8565aa88",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7aeb0024_52232dc5",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -593,6 +689,30 @@
     },
     {
       "key": {
+        "uuid": "0bb070a2_46fab028",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dcb22a9b_c212ce78",
+      "range": {
+        "startLine": 223,
+        "startChar": 13,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb930c78_90281db0",
         "filename": "driver/sensorhub_lsm6dsm.c",
         "patchSetId": 2
@@ -661,6 +781,30 @@
       "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69820e10_aac2a399",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e980048_bc212784",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 279,
+        "endChar": 27
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -735,6 +879,30 @@
     },
     {
       "key": {
+        "uuid": "fd5d573c_8cda81ce",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d3dae664_33bccbb7",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5321ef86_473d4c61",
         "filename": "driver/sensorhub_lsm6dsm.h",
         "patchSetId": 2
@@ -755,6 +923,30 @@
       "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a91d1e5_f447c8d5",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-11T17:14:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5321ef86_473d4c61",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
