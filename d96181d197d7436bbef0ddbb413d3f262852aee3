@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa7291eb_363973b7",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:44:53Z",
+      "side": 1,
+      "message": "we typically define these in the header file for the driver. Can we move them there?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65131a84_cfdc5f0b",
         "filename": "driver/mag_lis2mdl.c",
         "patchSetId": 2
@@ -107,6 +130,30 @@
       "side": 1,
       "message": "I am not sure. But the range is non-configurable from data sheet perspective.",
       "parentUuid": "b37dbd59_c8856db7",
+      "range": {
+        "startLine": 60,
+        "startChar": 58,
+        "endLine": 60,
+        "endChar": 63
+      },
+      "revId": "d96181d197d7436bbef0ddbb413d3f262852aee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1958ef5_e0c31984",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-11T16:44:53Z",
+      "side": 1,
+      "message": "should we return an error if it doesn\u0027t match? Seems like something would go wrong if they don\u0027t match",
+      "parentUuid": "1f7c33e4_9a550de9",
       "range": {
         "startLine": 60,
         "startChar": 58,
