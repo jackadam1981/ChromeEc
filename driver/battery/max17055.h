@@ -12,6 +12,9 @@
 #define MAX17055_DEVICE_ID          0x4010
 
 #define REG_STATUS                  0x00
+#define REG_VALRTTH                 0x01
+#define REG_TALRTTH                 0x02
+#define REG_SALRTTH                 0x03
 #define REG_AT_RATE                 0x04
 #define REG_REMAINING_CAPACITY      0x05
 #define REG_STATE_OF_CHARGE         0x06
@@ -27,6 +30,9 @@
 #define REG_CYCLE_COUNT             0x17
 #define REG_DESIGN_CAPACITY         0x18
 #define REG_AVERAGE_VOLTAGE         0x19
+#define REG_MAX_MIN_TEMP            0x1a
+#define REG_MAX_MIN_VOLT            0x1b
+#define REG_MAX_MIN_CURR            0x1c
 #define REG_CHARGE_TERM_CURRENT     0x1e
 #define REG_TIME_TO_FULL            0x20
 #define REG_DEVICE_NAME             0x21
@@ -42,17 +48,41 @@
 #define REG_DQACC                   0x45
 #define REG_DPACC                   0x46
 #define REG_STATUS2                 0xb0
+#define REG_IALRTTH                 0xb4
 #define REG_HIBCFG                  0xba
 #define REG_CONFIG2                 0xbb
 #define REG_TIMERH                  0xbe
 #define REG_MODELCFG                0xdb
 
 /* Status reg (0x00) flags */
-#define STATUS_POR                  0x0002
-#define STATUS_BST                  0x0008
+#define STATUS_POR                  (1 << 1)
+#define STATUS_IMN                  (1 << 2)
+#define STATUS_BST                  (1 << 3)
+#define STATUS_IMX                  (1 << 6)
+#define STATUS_VMN                  (1 << 8)
+#define STATUS_TMN                  (1 << 9)
+#define STATUS_SMN                  (1 << 10)
+#define STATUS_VMX                  (1 << 12)
+#define STATUS_TMX                  (1 << 13)
+#define STATUS_SMX                  (1 << 14)
+#define STATUS_ALL_ALRT                                                        \
+	(STATUS_IMN | STATUS_IMX | STATUS_VMN | STATUS_VMX | STATUS_TMN |      \
+	 STATUS_TMX | STATUS_SMN | STATUS_SMX)
+
+/* Alert disable values (0x01, 0x02, 0x03, 0xb4) */
+#define VALRT_DISABLE               0xff00
+#define TALRT_DISABLE               0x7f80
+#define SALRT_DISABLE               0xff00
+#define IALRT_DISABLE               0x7f80
 
 /* Config reg (0x1d) flags */
+#define CONF_AEN                    0x0004
+#define CONF_IS                     0x0800
+#define CONF_VS                     0x1000
+#define CONF_TS                     0x2000
+#define CONF_SS                     0x4000
 #define CONF_TSEL                   0x8000
+#define CONF_ALL_STICKY             (CONF_IS | CONF_VS | CONF_TS | CONF_SS)
 
 /* FStat reg (0x3d) flags */
 #define FSTAT_DNR                   0x0001
@@ -85,6 +115,12 @@
  */
 #define MAX17055_VEMPTY_REG(ve_mv, vr_mv) \
 	(((ve_mv / 10) << 7) | (vr_mv / 40))
+
+#define MAX17055_MAX_MIN_REG(mx, mn) (((mx) << 8) | ((mn)))
+#define MAX17055_VALRTTH_REG(mx, mn) MAX17055_MAX_MIN_REG(mx, mn)
+#define MAX17055_TALRTTH_REG(mx, mn) MAX17055_MAX_MIN_REG(mx, mn)
+#define MAX17055_SALRTTH_REG(mx, mn) MAX17055_MAX_MIN_REG(mx, mn)
+#define MAX17055_IALRTTH_REG(mx, mn) MAX17055_MAX_MIN_REG(mx, mn)
 
 /*
  * max17055 needs some special battery parameters for fuel gauge
@@ -127,4 +163,57 @@ struct max17055_batt_profile {
 /* Return the special battery parameters max17055 needs. */
 const struct max17055_batt_profile *max17055_get_batt_profile(void);
 
+#ifdef CONFIG_BATTERY_MAX17055_ALERT
+/*
+ * max17055 supports alert on voltage, current, state-of-charge, and
+ * temperature.  To enable this feature, the information of the limit range is
+ * needed.
+ */
+struct max17055_alert_profile {
+	/*
+	 * Sets voltage upper and lower limits that generate an alert if
+	 * voltage is outside of the v_alert_mxmn range.
+	 * The upper 8 bits set the maximum value and the lower 8 bits set the
+	 * minimum value. Interrupt threshold limits are selectable with 20mV
+	 * resolution.
+	 * To disable voltage alert: write VALRT_DISABLE to MAX17055_VALRTTH_REG
+	 */
+	uint16_t v_alert_mxmn;
+	/*
+	 * Sets temperature upper and lower limits that generate an alert if
+	 * temperature is outside of the t_alert_mxmn range.
+	 * The upper 8 bits set the maximum value and the lower 8 bits set the
+	 * minimum value. Interrupt threshold limits are stored in
+	 * 2’s-complement format with 1°C resolution.
+	 * To disable temperature alert: write TALRT_DISABLE to
+	 * MAX17055_TALRTTH_REG
+	 */
+	uint16_t t_alert_mxmn;
+	/*
+	 * Sets reported state-of-charge upper and lower limits that generate
+	 * an alert if SOC is outside of the s_alert_mxmn range.
+	 * The upper 8 bits set the maximum value and the lower 8 bits set the
+	 * minimum value. Interrupt threshold limits are configurable with 1%
+	 * resolution.
+	 * To disable temperature alert: write SALRT_DISABLE to
+	 * MAX17055_SALRTTH_REG
+	 */
+	uint16_t s_alert_mxmn;
+	/*
+	 * Sets current upper and lower limits that generate an alert if
+	 * current is outside of the i_alert_mxmn range.
+	 * The upper 8 bits set the maximum value and the lower 8 bits set the
+	 * minimum value. Interrupt threshold limits are selectable with
+	 * 0.4mV/R SENSE resolution.
+	 * To disable current alert: write IALRT_DISABLE to
+	 * MAX17055_ICHGTERM_REG
+	 */
+	uint16_t i_alert_mxmn;
+};
+
+/*
+ * Return the battery/system's alert threshoulds that max17055 needs.
+ */
+const struct max17055_alert_profile *max17055_get_alert_profile(void);
+#endif /* CONFIG_BATTERY_MAX17055_ALERT */
 #endif /* __CROS_EC_MAX17055_H */
