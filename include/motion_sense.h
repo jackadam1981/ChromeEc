@@ -78,6 +78,7 @@ struct motion_sensor_t {
 	const struct accelgyro_drv *drv;
 	struct mutex *mutex;
 	void *drv_data;
+	const void *parent;
 
 	/* i2c port */
 	uint8_t port;
