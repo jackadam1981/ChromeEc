@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6898d41_90066a87",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-11T21:37:43Z",
+      "side": 1,
+      "message": "Why not CPRINTS?",
+      "range": {
+        "startLine": 865,
+        "startChar": 2,
+        "endLine": 865,
+        "endChar": 9
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0237da7_65d27941",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-11T21:37:43Z",
+      "side": 1,
+      "message": "we were",
+      "range": {
+        "startLine": 871,
+        "startChar": 33,
+        "endLine": 871,
+        "endChar": 37
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fce57652_3bde1437",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-11T21:37:43Z",
+      "side": 1,
+      "message": "Hmmm... this isn\u0027t clear to me. Can you explain why we can\u0027t avoid writing to FIFO when sensors are all suspended and why we can\u0027t clear FIFO when sensors are suspended?",
+      "range": {
+        "startLine": 886,
+        "startChar": 0,
+        "endLine": 890,
+        "endChar": 39
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
