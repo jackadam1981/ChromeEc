@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c20eb7c3_cb618518",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-12T04:03:46Z",
+      "side": 1,
+      "message": "define 20 as a macro",
+      "range": {
+        "startLine": 122,
+        "startChar": 37,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "ddd17b2225619c9b29886aef6ae98fa3ffc8dd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a826917e_a1b5b924",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-12T04:03:46Z",
+      "side": 1,
+      "message": "A bit reluctant to use floats here, in case we accidentally use that at runtime...\n\nI\u0027d do:\n\n/* Current resolution: 0.4mV/RSENSE */\n#define MAX17055_IALRTTH_MUL (10*BATTERY_MAX17055_RSENSE)\n#define MAX17055_IALRTTH_DIV 4\n\nThen:\n(mx) * MAX17055_IALRTTH_MUL / MAX17055_IALRTTH_DIV\n\nWDYT?",
+      "revId": "ddd17b2225619c9b29886aef6ae98fa3ffc8dd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
