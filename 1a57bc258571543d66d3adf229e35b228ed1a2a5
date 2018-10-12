@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "a425cfca_ef1c75eb",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "oh right, I was thinking bcdVersion (for USB).  This should probably be incremented once chocodile ships in some form...maybe a #define in the board.h?",
+      "parentUuid": "c447eaca_8d04e8c8",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 26
+      },
+      "revId": "1a57bc258571543d66d3adf229e35b228ed1a2a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5dbab481_c0ddcec5",
         "filename": "common/usb_pe_sm.c",
         "patchSetId": 12

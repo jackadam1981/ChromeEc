@@ -1,0 +1,393 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b81ee7bd_7649ca42",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "maybe it\u0027s obvious if I dig into it a little, but how does this deal with wraparound?",
+      "range": {
+        "startLine": 876,
+        "startChar": 5,
+        "endLine": 876,
+        "endChar": 48
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "540b44bc_e4268630",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "does this code only run in the case of PD3?  PD2 doesn\u0027t have this flow control.",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "588883c4_325696c2",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "ditto on wraparound (not going to highlight other instances)",
+      "range": {
+        "startLine": 1044,
+        "startChar": 6,
+        "endLine": 1044,
+        "endChar": 61
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe520f9_e269df2c",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 1123,
+        "startChar": 2,
+        "endLine": 1123,
+        "endChar": 6
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a1be7e_4ff1c0ce",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "abort",
+      "range": {
+        "startLine": 1124,
+        "startChar": 11,
+        "endLine": 1124,
+        "endChar": 16
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b117aa82_1fd3cd57",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "is this implicit or something?",
+      "range": {
+        "startLine": 1162,
+        "startChar": 4,
+        "endLine": 1162,
+        "endChar": 34
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d7a868_6f70b952",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "seems like this kind of resetting of state should be put into its own function, since you do it a few times",
+      "range": {
+        "startLine": 1164,
+        "startChar": 4,
+        "endLine": 1166,
+        "endChar": 43
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc2b876_88915444",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "again",
+      "range": {
+        "startLine": 1185,
+        "startChar": 3,
+        "endLine": 1185,
+        "endChar": 33
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea6497c_47ed49a2",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "all the byte_num stuff seems a bit magicky to me; can this be commented better?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b48d885_0cda4db9",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "any risk of buffer overflow from maliciously-crafted packets?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e528f2a_6456c5d6",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "it\u0027s not an error if num_bytes_received \u003e data_size?\nhonest question; not sure what the spec says on this.",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3815bf97_d19171b0",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "your mixture of tabs and spaces here frightens and confuses me",
+      "range": {
+        "startLine": 1312,
+        "startChar": 2,
+        "endLine": 1312,
+        "endChar": 10
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53984f25_7d96e625",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "I\u0027m guessing not, but is there any chance of overrun here?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db042a62_820cb6ac",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "unnecessary mask?",
+      "range": {
+        "startLine": 1542,
+        "startChar": 32,
+        "endLine": 1542,
+        "endChar": 38
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84068272_d8d7ab52",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "why is the bounds check after setting the header?  seems clearer to put it immediately after setting num, or use a MIN macro (if that exists)",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d2c29b_4afbab05",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "also unnecessary",
+      "range": {
+        "startLine": 1664,
+        "startChar": 40,
+        "endLine": 1664,
+        "endChar": 44
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fafe48a_c3e00bb5",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1762,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 1762,
+        "startChar": 1,
+        "endLine": 1762,
+        "endChar": 2
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea544ae_c5c61e63",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "I feel like there should be a bunch of protocol\u003d\u003dPD3 checks scattered around this file...",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e2b11e_e8612eea",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1893,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T20:05:32Z",
+      "side": 1,
+      "message": "what if it\u0027s an old message (msid \u003c msg_id) or we think we might have somehow missed one (msid \u003e msg_id+1)?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
