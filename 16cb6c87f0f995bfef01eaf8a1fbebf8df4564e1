@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6bf544e2_0e7108c0",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-12T16:47:46Z",
+      "side": 1,
+      "message": "Done, http://crbug.com/894870 filed.",
+      "parentUuid": "7fb8fe12_968a1dd7",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 914,
+        "endChar": 66
+      },
+      "revId": "16cb6c87f0f995bfef01eaf8a1fbebf8df4564e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4ca882d_76373175",
         "filename": "util/ec3po/interpreter.py",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2018-10-12T11:20:03Z",
       "side": 1,
       "message": "ditto",
+      "revId": "16cb6c87f0f995bfef01eaf8a1fbebf8df4564e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b4d371_e6e0a4fd",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-12T16:47:46Z",
+      "side": 1,
+      "message": "Done, http://crbug.com/894870 filed.",
+      "parentUuid": "c4ca882d_76373175",
       "revId": "16cb6c87f0f995bfef01eaf8a1fbebf8df4564e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
