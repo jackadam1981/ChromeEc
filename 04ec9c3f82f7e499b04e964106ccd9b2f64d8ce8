@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8e5030bc_194208af",
+        "filename": "board/kalista/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-10-12T07:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1875da48_f330d977",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "04ec9c3f82f7e499b04e964106ccd9b2f64d8ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4090588f_593438dc",
         "filename": "board/kalista/board.h",
         "patchSetId": 2
@@ -92,6 +116,30 @@
       "revId": "04ec9c3f82f7e499b04e964106ccd9b2f64d8ce8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e318e5d8_9e930c75",
+        "filename": "board/kalista/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-10-12T07:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4090588f_593438dc",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 6
+      },
+      "revId": "04ec9c3f82f7e499b04e964106ccd9b2f64d8ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
