@@ -133,6 +133,9 @@
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 
+/* Wake on Voice */
+#define CONFIG_WAKE_ON_VOICE
+
 /* TODO(b/79163120): Use correct PD delay values, copied from Lux for rev-0 */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY   30000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY  250000 /* us */
