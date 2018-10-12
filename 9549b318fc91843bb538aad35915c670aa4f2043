@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9efcc6a4_03be122c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-12T02:10:10Z",
+      "side": 1,
+      "message": "it would be good to add actual examples here",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "9549b318fc91843bb538aad35915c670aa4f2043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa67af1_f05b9370",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1684,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-12T02:10:10Z",
+      "side": 1,
+      "message": "what is being checked here, this is really hard to parse. also, come to think of it space could be made part of the board ID, even if accidentally/unintentionally.\n\nWhy not to write:\nif (ch \u003c 0x20 || ch \u003e\u003d 0x80)\n   ch \u003d \u0027?\u0027;\n\nand comment that this is covering all printable ascii range. And of course  ? could also be part of the board ID, but what can we do :)",
+      "range": {
+        "startLine": 1684,
+        "startChar": 16,
+        "endLine": 1684,
+        "endChar": 50
+      },
+      "revId": "9549b318fc91843bb538aad35915c670aa4f2043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
