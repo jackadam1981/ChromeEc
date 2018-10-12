@@ -388,6 +388,309 @@
       "revId": "20706cc975503e6680919af5bef17f86a65cd829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89eee59_dcd60423",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "no\n(also below)",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 11
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd0eecc_8c71bcf7",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "seems like this could be combined with the following loop",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a333572_ffc656c7",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "won\u0027t this hit i\u003d\u003d-1?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d9e281_e0f4e877",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "indentation. you might want to add braces for the for loop",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e453621e_76d2ba8e",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "this comment isn\u0027t very informative; it just reiterates what the code says.  better off saying something to the point that there\u0027s no need to exit a super state that has shared ancestry with the target",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bd1b84_6452025f",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "is it possible that you could be transitioning between two states with different nesting depths, and this would cause them to not be matched up properly at the ancestor?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c39342_2c4e6ce2",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "seems like this too could be combined with the next loop",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49389ddd_5a91bef3",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "is there actually any point in looping over i\u003d\u003d0?",
+      "range": {
+        "startLine": 112,
+        "startChar": 37,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b70faf1_587443ef",
+        "filename": "common/usb_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "do you actually need to ifdef out the loop here?  I guess it doesn\u0027t hurt to hand-optimize out the loop...",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffb47e3_661f8e5a",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "this could be a nice opportunity to make polarity an enum or #define (POLARITY_CC1 and POLARITY_CC2 or something)",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78348177_3158961a",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "if it\u0027s an error to define both, there should probably be an assert somewhere\n\nif this is the only place where defining both is a problem, maybe reorder these conditions",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec38fea1_f5fa5c54",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "but all the checks are for CONFIG_SM_NESTING_NUM\u003e0?",
+      "range": {
+        "startLine": 706,
+        "startChar": 28,
+        "endLine": 706,
+        "endChar": 61
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986a456f_f26e1b2f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "it\u0027s ok to be aliased with source?",
+      "range": {
+        "startLine": 937,
+        "startChar": 8,
+        "endLine": 937,
+        "endChar": 24
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d6f81fb_3db90372",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "really this means PD3, right?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acecb043_18fa4885",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-12T21:42:37Z",
+      "side": 1,
+      "message": "this ordering seems odd to me, but I\u0027m assuming that\u0027s how it was done before",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
