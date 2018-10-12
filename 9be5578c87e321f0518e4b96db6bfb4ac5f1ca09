@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c9183e3_356bae95",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-12T18:19:31Z",
+      "side": 1,
+      "message": "Since this patch isn\u0027t touching these functions, I\u0027m going to mark this as resolved. We should try to \"fix\" issues introduced by this patch with comments here and post new CLs (upstream first!) to address everything else.\n\nI\u0027ll look at upstream code to determine when REG32() was added and hopefully why.\n\nREG32() is currently only defined by i915 driver. And I see no reason why REG32() should be used here. We have enough readl/writel variants that should cover any issues encountered by normal drivers (which i2c is).",
+      "parentUuid": "cb8089bb_77f55da3",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bda2308_543ddf0c",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-12T01:05:14Z",
       "side": 1,
       "message": "as grant points out,\nwhat is supposed happen for len\u003d\u003d1?\nare you still supposed to set STOP_VAL?\n\ni think this would be simpler if the 1st/last iteration\nwere hoisted outside the loop - kind of the way it\nwas originally.  the main loop itself remains trivial.\nit might make sense to do a block write API for it\nif it turns out to be a common thing.",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6095af3_f198985a",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-12T18:19:31Z",
+      "side": 1,
+      "message": "I don\u0027t see any advantage to hoisting first/last cases outside the loop - it just makes it harder to understand because the code in all three cases has to handle all the same flags. The code as-is is quite easy to read/understand.\n\nI haven\u0027t seen a response yet regarding len\u003d1 case.",
+      "parentUuid": "3bda2308_543ddf0c",
       "range": {
         "startLine": 281,
         "startChar": 2,
@@ -65,6 +113,70 @@
         "endLine": 339,
         "endChar": 38
       },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dfa3535_739ea553",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-12T18:19:31Z",
+      "side": 1,
+      "message": "Yes. :/\n\nHere is my proposed alternative:\n/* Tell device to send no more than ISH_I2C_FIFO_SIZE bytes\n * in order to avoid overflowing the ISH FIFO.\n */",
+      "parentUuid": "5b320ba0_f0950639",
+      "range": {
+        "startLine": 339,
+        "startChar": 11,
+        "endLine": 339,
+        "endChar": 38
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5b2c14_a42ea7f0",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-12T18:19:31Z",
+      "side": 1,
+      "message": "Typo? \"threshold\"\n\nThis comment isn\u0027t helpful either and would be if it explained what the \"effect\" of setting rx_threshold is.",
+      "range": {
+        "startLine": 347,
+        "startChar": 9,
+        "endLine": 347,
+        "endChar": 20
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d8d862_71bc17d0",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-12T18:19:31Z",
+      "side": 1,
+      "message": "comment not needed here.",
       "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
