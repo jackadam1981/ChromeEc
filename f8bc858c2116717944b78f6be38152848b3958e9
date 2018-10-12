@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6c395904_b2a25940",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-12T18:26:49Z",
+      "side": 1,
+      "message": "I want to have a timestamp. Note this should never happen unless the EC is stuck elsewhere, as we trigger an interrupt as soon as there is at least one datum in the FIFO.",
+      "parentUuid": "f6898d41_90066a87",
+      "range": {
+        "startLine": 865,
+        "startChar": 2,
+        "endLine": 865,
+        "endChar": 9
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0237da7_65d27941",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 3
@@ -69,6 +93,30 @@
       "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3dc8a6_9caed14d",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-12T18:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0237da7_65d27941",
+      "range": {
+        "startLine": 871,
+        "startChar": 33,
+        "endLine": 871,
+        "endChar": 37
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "7e0f6244_92afcae5",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-12T18:26:49Z",
+      "side": 1,
+      "message": "I learnt the hard way when writing the driver, originally for Pixel C. \nreading all the FIFO clear the FIFO register.\nBut if the fifo is already empty (we use to do that when load_fifo was not called from the interrupt) produces weird results.",
+      "parentUuid": "7ab75b1d_cd1191ea",
+      "range": {
+        "startLine": 886,
+        "startChar": 0,
+        "endLine": 890,
+        "endChar": 39
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a34f923_23a93a8c",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 3
@@ -139,6 +211,30 @@
       "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "228b6527_a482d1a2",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-12T18:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a34f923_23a93a8c",
+      "range": {
+        "startLine": 929,
+        "startChar": 4,
+        "endLine": 929,
+        "endChar": 31
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
