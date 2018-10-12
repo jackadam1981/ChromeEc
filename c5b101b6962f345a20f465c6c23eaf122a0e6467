@@ -22,6 +22,30 @@
       "revId": "c5b101b6962f345a20f465c6c23eaf122a0e6467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7088ade9_2f0eb128",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T16:15:21Z",
+      "side": 1,
+      "message": "Also can we make this type sensor_config_t* (that is what is will be right)?",
+      "parentUuid": "a0aa7b77_0257cd67",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "c5b101b6962f345a20f465c6c23eaf122a0e6467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
