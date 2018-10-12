@@ -4063,6 +4063,7 @@ static const struct {
 	{ ST_CMD_SIZE, ST_RSP_SIZE(lid_angle) },
 	ST_BOTH_SIZES(fifo_int_enable),
 	ST_BOTH_SIZES(spoof),
+	ST_BOTH_SIZES(sensor_scale),
 };
 BUILD_ASSERT(ARRAY_SIZE(ms_command_sizes) == MOTIONSENSE_NUM_CMDS);
 
