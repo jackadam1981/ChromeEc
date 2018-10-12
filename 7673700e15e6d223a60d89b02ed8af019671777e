@@ -22,6 +22,29 @@
       "revId": "7673700e15e6d223a60d89b02ed8af019671777e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6da204_28ad17c6",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-12T17:01:47Z",
+      "side": 1,
+      "message": "Should this condition cause the function to return an error?  It looks like ret would have EC_SUCCESS here",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 2
+      },
+      "revId": "7673700e15e6d223a60d89b02ed8af019671777e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
