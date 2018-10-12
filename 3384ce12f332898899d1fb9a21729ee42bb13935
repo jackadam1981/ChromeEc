@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0752ecac_d3b12894",
+        "filename": "board/atlas_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T13:34:48Z",
+      "side": 1,
+      "message": "We should create a new CONFIG_HOSTCMD_IPC isntead of using LPC here. Then IPC can define the common CONFIG_HOSTCMD_X86",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92d5702_76d1017b",
+        "filename": "board/atlas_ish/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T13:34:48Z",
+      "side": 1,
+      "message": "We will want these i2c0 lines defined as gpios as well. This allows the i2c_master.c to control the i2c lines as gpio to unstick the i2c bus when needed. Even though we define them as GPIO here, there will use the alternate mode (of i2c) most of the time.",
+      "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
