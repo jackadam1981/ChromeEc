@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "84fc6917_0f3c984f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3224,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-12T19:13:35Z",
+      "side": 1,
+      "message": "Alternative naming suggestion:\nCONFIG_USB_PD_TCPC_SELF    -\u003e CONFIG_USB_PD_EC_IS_TCPC\nCONFIG_USB_PD_TCPC_MANAGER -\u003e CONFIG_USB_PD_EXTERNAL_TCPC",
+      "revId": "7e0d92d212d000486bdedb7937d7f2b77db1c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81e3a827_badda5a5",
         "filename": "include/config.h",
         "patchSetId": 1
