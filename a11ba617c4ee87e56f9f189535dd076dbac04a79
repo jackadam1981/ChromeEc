@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91c9835c_560b3ea7",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T16:18:21Z",
+      "side": 1,
+      "message": "nit: more a consitency nit. Can you invert this logic to match the rest of your function definitions:\n\nif (!s-\u003eparent)\n return UNIMPLEMENTED;\n\n/* comment */\nreturn EC_SUCCESS",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "a11ba617c4ee87e56f9f189535dd076dbac04a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
