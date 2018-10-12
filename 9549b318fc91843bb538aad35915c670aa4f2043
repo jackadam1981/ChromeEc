@@ -93,6 +93,30 @@
       "revId": "9549b318fc91843bb538aad35915c670aa4f2043",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2455b5af_e92ba6fc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1684,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-12T17:58:51Z",
+      "side": 1,
+      "message": "Oops. 0x7F not 0x79.",
+      "parentUuid": "091fff40_2d439eaa",
+      "range": {
+        "startLine": 1684,
+        "startChar": 16,
+        "endLine": 1684,
+        "endChar": 50
+      },
+      "revId": "9549b318fc91843bb538aad35915c670aa4f2043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
