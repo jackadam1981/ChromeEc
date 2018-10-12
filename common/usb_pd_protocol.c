@@ -2450,7 +2450,7 @@ static void pd_init_tasks(void)
 }
 #endif /* CONFIG_COMMON_RUNTIME */
 
-#ifndef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_MANAGER
 static int pd_restart_tcpc(int port)
 {
 	if (board_set_tcpc_power_mode) {
@@ -2554,7 +2554,7 @@ void pd_task(void *u)
 #endif
 
 	this_state = res ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE(port);
-#ifndef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_MANAGER
 	if (!res) {
 		struct ec_response_pd_chip_info_v1 *info;
 
@@ -2700,7 +2700,7 @@ void pd_task(void *u)
 			pd_update_dual_role_config(port);
 #endif
 
-#ifdef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_SELF
 		/*
 		 * run port controller task to check CC and/or read incoming
 		 * messages
@@ -3244,12 +3244,12 @@ void pd_task(void *u)
 			}
 			break;
 		case PD_STATE_SUSPENDED: {
-#ifndef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_MANAGER
 			int rstatus;
 #endif
 			CPRINTS("TCPC p%d suspended!", port);
 			pd[port].req_suspend_state = 0;
-#ifdef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_SELF
 			pd_rx_disable_monitoring(port);
 			pd_hw_release(port);
 			pd_power_supply_reset(port);
@@ -3264,7 +3264,7 @@ void pd_task(void *u)
 			/* Wait for resume */
 			while (pd[port].task_state == PD_STATE_SUSPENDED)
 				task_wait_event(-1);
-#ifdef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_SELF
 			pd_hw_init(port, PD_ROLE_DEFAULT(port));
 			CPRINTS("TCPC p%d resumed!", port);
 #else
@@ -4833,7 +4833,7 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO,
 		     hc_remote_pd_dev_info,
 		     EC_VER_MASK(0));
 
-#ifndef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_MANAGER
 #ifdef CONFIG_EC_CMD_PD_CHIP_INFO
 static int hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 {

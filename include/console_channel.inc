@@ -98,7 +98,7 @@ CONSOLE_CHANNEL(CC_TPM,          "tpm")
 #endif
 CONSOLE_CHANNEL(CC_USB,          "usb")
 CONSOLE_CHANNEL(CC_USBCHARGE,    "usbcharge")
-#if defined(CONFIG_USB_POWER_DELIVERY) || defined(CONFIG_USB_PD_TCPC)
+#if defined(CONFIG_USB_POWER_DELIVERY) || defined(CONFIG_USB_PD_TCPC_SELF)
 CONSOLE_CHANNEL(CC_USBPD,        "usbpd")
 #endif
 CONSOLE_CHANNEL(CC_VBOOT,        "vboot")

@@ -12,7 +12,7 @@
 #include "usb_pd_tcpm.h"
 
 /* If we are a TCPC but do not a TCPM, then we implement the slave TCPCI */
-#if defined(CONFIG_USB_PD_TCPC) && !defined(CONFIG_USB_PD_TCPM_STUB)
+#if defined(CONFIG_USB_PD_TCPC_SELF) && !defined(CONFIG_USB_PD_TCPM_STUB)
 #define TCPCI_I2C_SLAVE
 #endif
 
