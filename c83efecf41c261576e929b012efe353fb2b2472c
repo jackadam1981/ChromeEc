@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "26971b58_5a71dbd1",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-12T16:04:47Z",
+      "side": 1,
+      "message": "I assume you\u0027ll incorporate the \"manager\" terminology here? I would maybe say \"for boards that implement the TCPC layer on the EC and use the config option CONFIG_USB_PD_TCPC (e.g. Zinger, servo_v4 ...)",
+      "parentUuid": "23a45d1e_3eca41d0",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 70
+      },
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7013b3fd_15439879",
         "filename": "driver/tcpm/tcpm.c",
         "patchSetId": 1
