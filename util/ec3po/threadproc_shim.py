@@ -12,10 +12,6 @@ This contains only the multiprocessing objects or threading-oriented equivalents
 that are actually in use by ec3po.  There is no need for further functionality,
 because this shim will be deleted after the migration is complete.
 
-TODO(b/79684405): After both platform/ec/ and third_party/hdctools/ sides of
-ec3po have been updated to use this library, replace the multiprocessing
-implementations with threading-oriented equivalents.
-
 TODO(b/79684405): Stop using multiprocessing.Pipe.  The
 multiprocessing.Connection objects it returns serialize and deserialize objects
 (via Python pickling), which is necessary for sending them between processes,
@@ -37,15 +33,16 @@ wait until after completing the TODO above to stop using multiprocessing.Pipe!
 """
 
 # Imports to bring objects into this namespace for users of this module.
+from Queue import Queue
 from multiprocessing import Pipe
-from multiprocessing import Process as ThreadOrProcess
-from multiprocessing import Queue
-from multiprocessing import Value
+from threading import Thread as ThreadOrProcess
 
-# TODO(b/79684405): Change to False when switching to threading.
-USING_SUBPROCS = True
+USING_SUBPROCS = False
 
 
 def CallIf(subprocs=None, threads=None, default=None):
-  # TODO(b/79684405): s/subprocs/threads/g when switching to threading.
-  return subprocs() if subprocs is not None else default
+  return threads() if threads is not None else default
+
+
+def Value(ctype, *args):
+  return ctype(*args)
