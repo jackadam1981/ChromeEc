@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf7062c7_3c060f77",
+        "filename": "board/meep/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T16:20:44Z",
+      "side": 1,
+      "message": "Seeing this in action, I do think this makes it pretty clear.",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "c93512186971d4e3f017e922254fc06c9e1270c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88b83ea4_6be9d360",
+        "filename": "board/meep/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T16:20:44Z",
+      "side": 1,
+      "message": "this reminds me, the previous CL should but a\n\n#ifndef CONFIG_SENSORHUB_LSM6DSM\n#error Need sensor hub support\n#endif\n\nat the top of the magnometer file which will help direct user to have both of these defines",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "c93512186971d4e3f017e922254fc06c9e1270c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
