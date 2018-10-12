@@ -315,6 +315,24 @@
       "revId": "40fb626618e52446e7e7264d437123ba055905a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a213c57_43814706",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-12T03:04:08Z",
+      "side": 1,
+      "message": "Sorry, I missed that this needs to be provided by the board. Sounds good, then.",
+      "parentUuid": "f59a3090_09363a37",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

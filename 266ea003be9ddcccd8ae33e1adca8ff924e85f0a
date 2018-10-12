@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24696758_59488df4",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-12T03:04:08Z",
+      "side": 1,
+      "message": "Understand the issue here, but I\u0027d just have;\n\n#ifdef CONFIG_BATTERY_MAX17055_ALERT\nconst struct max17055_alert_profile *alert_profile \u003d\n\t\t\tmax17055_get_alert_profile();\n#endif\n\nat the beginning of the function, and not have this separate block.",
+      "revId": "266ea003be9ddcccd8ae33e1adca8ff924e85f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fbfa497_f35cf3e0",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-12T03:04:08Z",
+      "side": 1,
+      "message": "Same thing (1 \u003c\u003c x). It just makes it much easier to review when comparing with the datasheet.",
+      "revId": "266ea003be9ddcccd8ae33e1adca8ff924e85f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e783c6e4_37c06cd9",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-12T03:04:08Z",
+      "side": 1,
+      "message": "I\u0027d have all these functions do the appropriate scaling.\n\ne.g. MAX17055_VALRTTH_REG(mx, mn) should do the appropriate voltage scaling.",
+      "revId": "266ea003be9ddcccd8ae33e1adca8ff924e85f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa965f7f_8dc2517b",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-12T03:04:08Z",
+      "side": 1,
+      "message": "I\u0027d reword the sentence:\n\n\"Use MAX17055_VALRTTH_REG(max, min) to setup the desired range, VALRT_DISABLE to disable the alert.\"\n\n(but see my comment above, the board should not need to know the required resolution/scaling)",
+      "range": {
+        "startLine": 179,
+        "startChar": 30,
+        "endLine": 179,
+        "endChar": 73
+      },
+      "revId": "266ea003be9ddcccd8ae33e1adca8ff924e85f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
