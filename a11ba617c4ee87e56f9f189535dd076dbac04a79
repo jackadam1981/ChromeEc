@@ -22,6 +22,29 @@
       "revId": "a11ba617c4ee87e56f9f189535dd076dbac04a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22e04430_bd4d1ad3",
+        "filename": "driver/mag_lis2mdl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-12T17:23:20Z",
+      "side": 1,
+      "message": "It\u0027s probably good to include a comment here similar to what you see in accelgyro_lsm6dsm.c to explain the funky casting we do with this driver structure",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "a11ba617c4ee87e56f9f189535dd076dbac04a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
