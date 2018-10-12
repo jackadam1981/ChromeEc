@@ -142,6 +142,30 @@
       "revId": "2f019a639a8238483de3f1048a4a3ca9b61e3958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6db9a9_72ab882d",
+        "filename": "board/atlas_ish/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T13:38:58Z",
+      "side": 0,
+      "message": "Then let\u0027s change the description of this change to document that it was working before under a host command paradigm, and now we are moving it to a HECI paradigm. Both ways works.",
+      "parentUuid": "3850b74d_75e797e4",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "2f019a639a8238483de3f1048a4a3ca9b61e3958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
