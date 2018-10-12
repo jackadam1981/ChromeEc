@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23a45d1e_3eca41d0",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T15:35:08Z",
+      "side": 1,
+      "message": "Try to make it better. Let me know what you think",
+      "parentUuid": "ddf1c48d_adb3b0e2",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 70
+      },
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7013b3fd_15439879",
         "filename": "driver/tcpm/tcpm.c",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b28e20f1_0a7ab555",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T15:35:08Z",
+      "side": 1,
+      "message": "Move this comment up.",
+      "parentUuid": "7013b3fd_15439879",
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "420b3ca5_2bac7d31",
         "filename": "driver/tcpm/tcpm.c",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2018-10-11T20:24:08Z",
       "side": 1,
       "message": "Was the .h version always the same as the .c version before?",
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7794f4e2_9786cc3a",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T15:35:08Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you are getting at.\n\n\nThis function was defined in-line (as this impl) and also as a function prototype depending on the presence of CONFIG_USB_PD_TCPC in the .h file\n\nMoving the impl here makes both versions in the .h file the same, so it got moved down.",
+      "parentUuid": "420b3ca5_2bac7d31",
       "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
