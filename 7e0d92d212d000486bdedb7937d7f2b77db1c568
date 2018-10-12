@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3a14953_248e9128",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T21:45:04Z",
+      "side": 1,
+      "message": "Done. Cherry picked this change on v2.3.0 (latest servo_v4 branch) and negotiate with DUT POWER still works",
+      "parentUuid": "fd71984b_14d88b54",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "7e0d92d212d000486bdedb7937d7f2b77db1c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84fc6917_0f3c984f",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "7e0d92d212d000486bdedb7937d7f2b77db1c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624be0c8_1b3fccf9",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3224,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T21:45:04Z",
+      "side": 1,
+      "message": "external makes me a little nervous since the ITE TCPC are embedded within the EC hardware (but we still interact with them like they are external devices).\n\nPer our offline discussion, we are going to keep the existing names",
+      "parentUuid": "84fc6917_0f3c984f",
+      "revId": "7e0d92d212d000486bdedb7937d7f2b77db1c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "7e0d92d212d000486bdedb7937d7f2b77db1c568",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2936ec_4b9a2dce",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3733,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T21:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81e3a827_badda5a5",
+      "range": {
+        "startLine": 3733,
+        "startChar": 58,
+        "endLine": 3733,
+        "endChar": 59
+      },
+      "revId": "7e0d92d212d000486bdedb7937d7f2b77db1c568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
