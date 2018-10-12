@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "db1d7e69_e72b6513",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T16:47:50Z",
+      "side": 1,
+      "message": "I did in patchset 2. See what you think",
+      "parentUuid": "26971b58_5a71dbd1",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 70
+      },
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7013b3fd_15439879",
         "filename": "driver/tcpm/tcpm.c",
         "patchSetId": 1
