@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1068f060_531b2507",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-12T16:19:04Z",
+      "side": 1,
+      "message": "I still see this in patchset 4.",
+      "parentUuid": "f6898d41_90066a87",
+      "range": {
+        "startLine": 865,
+        "startChar": 2,
+        "endLine": 865,
+        "endChar": 9
+      },
+      "revId": "f8bc858c2116717944b78f6be38152848b3958e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0237da7_65d27941",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 3
