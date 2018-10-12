@@ -3212,8 +3212,16 @@
 /* Use comparator module for PD RX interrupt */
 #define CONFIG_USB_PD_RX_COMP_IRQ
 
-/* Use TCPC module (type-C port controller) */
-#undef CONFIG_USB_PD_TCPC
+/*
+ * If the EC firmware itself is the TCPC (type-C port controller), then define
+ * CONFIG_USB_PD_TCPC_SELF (e.g. Zinger). Otherwise CONFIG_USB_PD_TCPC_MANAGER
+ * will get defined automatically if CONFIG_USB_POWER_DELIVERY is also defined.
+ *
+ * CONFIG_USB_PD_TCPC_MANAGER means the EC manages another TCPC, which is most
+ * likely off chip (e.g. Chromebook).
+ */
+#undef CONFIG_USB_PD_TCPC_SELF
+#undef CONFIG_USB_PD_TCPC_MANAGER
 
 /* Enable TCPC to enter low power mode */
 #undef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -3715,6 +3723,23 @@
 	!defined(CONFIG_HOSTCMD_LPC) && \
 	!defined(CONFIG_HOSTCMD_ESPI)
 #error Must select one type of host communication bus.
+#endif
+
+/******************************************************************************/
+/*
+ * Automatically define CONFIG_USB_PD_TCPC_MANAGER if CONFIG_USB_POWER_DELIVERY
+ * is defined but CONFIG_USB_PD_TCPC_SELF is not already defined.
+ *
+ * Effectively if CONFIG_USB_POWER_DELIVERY is defined, the either
+ * CONFIG_USB_PD_TCPC_SELF or CONFIG_USB_PD_TCPC_MANAGER will be defined as
+ * well.
+ */
+#if defined(CONFIG_USB_POWER_DELIVERY) && !defined(CONFIG_USB_PD_TCPC_SELF)
+#define CONFIG_USB_PD_TCPC_MANAGER
+#endif
+
+#if defined(CONFIG_USB_PD_TCPC_SELF) && defined(CONFIG_USB_PD_TCPC_MANAGER)
+#error Must select either SELF or MANAGER for TCPC
 #endif
 
 /******************************************************************************/

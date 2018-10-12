@@ -21,7 +21,7 @@
 #error "Please upgrade your board configuration"
 #endif
 
-#ifndef CONFIG_USB_PD_TCPC
+#ifdef CONFIG_USB_PD_TCPC_MANAGER
 extern const struct tcpc_config_t tcpc_config[];
 
 /* I2C wrapper functions - get I2C port / slave addr from config struct. */
@@ -241,7 +241,7 @@ static inline int tcpm_get_chip_info(int port, int renew,
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
-#else
+#elif defined(CONFIG_USB_PD_TCPC_SELF)
 
 /**
  * Initialize TCPM driver and wait for TCPC readiness.
@@ -354,7 +354,7 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
  */
 void tcpc_alert(int port);
 
-#endif
+#endif /* CONFIG_USB_PD_TCPC_SELF && CONFIG_USB_PD_TCPC_MANAGER */
 
 /**
  * Gets the next waiting RX message.
@@ -379,4 +379,4 @@ int tcpm_has_pending_message(int port);
  */
 void tcpm_clear_pending_messages(int port);
 
-#endif
+#endif /* __CROS_EC_USB_PD_TCPM_TCPM_H */

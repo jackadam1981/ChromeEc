@@ -241,7 +241,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #endif
 /*
- * #define CONFIG_USB_PD_TCPC
+ * #define CONFIG_USB_PD_TCPC_SELF
  * #define CONFIG_USB_PD_TCPM_STUB
  */
 #if 0
