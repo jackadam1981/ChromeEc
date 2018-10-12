@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d727311a_897bea42",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T16:13:51Z",
+      "side": 1,
+      "message": "couldn\u0027t this allow be MOTIONSENSE_TYPE_GYRO (since the sensor is actually both)?\n\nShould we check the parent field maybe?",
+      "range": {
+        "startLine": 212,
+        "startChar": 22,
+        "endLine": 212,
+        "endChar": 44
+      },
+      "revId": "7673700e15e6d223a60d89b02ed8af019671777e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -947,6 +947,30 @@
       "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c60115a_00680b6a",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-12T16:13:51Z",
+      "side": 1,
+      "message": "Thank you for the documentation!\n\nnit: Can we change the formatting a little match the ec codebase style. See usb_pd.h for an example",
+      "parentUuid": "0a91d1e5_f447c8d5",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
