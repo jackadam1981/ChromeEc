@@ -58,7 +58,13 @@
 #define CONFIG_MKBP_USE_HOST_EVENT
 
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
+
 #ifndef __ASSEMBLER__
+
+/* support factory keyboard test */
+#define CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
 
 #include "gpio_signal.h"
 #include "registers.h"
