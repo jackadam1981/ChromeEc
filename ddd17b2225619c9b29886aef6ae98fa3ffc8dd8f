@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f97e3f66_b664c802",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T05:01:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c20eb7c3_cb618518",
+      "range": {
+        "startLine": 122,
+        "startChar": 37,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "ddd17b2225619c9b29886aef6ae98fa3ffc8dd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a826917e_a1b5b924",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "ddd17b2225619c9b29886aef6ae98fa3ffc8dd8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70acb9b3_b6876bbf",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T05:01:35Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "a826917e_a1b5b924",
+      "revId": "ddd17b2225619c9b29886aef6ae98fa3ffc8dd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
