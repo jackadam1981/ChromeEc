@@ -685,13 +685,14 @@ void ccd_disable(void)
 static int command_ccd_info(void)
 {
 	int i;
+	uint32_t *capa_ptr = (uint32_t *)config.capabilities;
 
 	ccprintf("State: %s%s\n", ccd_state_names[ccd_state],
 		 force_disabled ? " (Disabled)" : "");
 	ccprintf("Password: %s\n", raw_has_password() ? "set" : "none");
 	ccprintf("Flags: 0x%06x\n", raw_get_flags());
 
-	ccprintf("Capabilities: %.8h\n", config.capabilities);
+	ccprintf("Capabilities: %08X%08X\n", *(capa_ptr + 1), *capa_ptr);
 	for (i = 0; i < CCD_CAP_COUNT; i++) {
 		int c = raw_get_cap(i, 0);
 
