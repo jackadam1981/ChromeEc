@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "207d900e_49ddbf44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f72e918_0220dc06",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7c3eb17_09201d0d",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "40fb626618e52446e7e7264d437123ba055905a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61129e70_5dc4aa4d",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c3eb17_09201d0d",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fee233e0_cb1dfa08",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ade5cc_d70a734e",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43f9c3d7_a9caab9c",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
@@ -67,6 +121,24 @@
       "revId": "40fb626618e52446e7e7264d437123ba055905a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae185100_1f1f54eb",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43f9c3d7_a9caab9c",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "422b82dd_61b55874",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dfbc2eb_df95c174",
+      "range": {
+        "startLine": 169,
+        "startChar": 12,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb6e5d38_58595b74",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
@@ -113,6 +209,30 @@
       "revId": "40fb626618e52446e7e7264d437123ba055905a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbdb8f55_475820b4",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb6e5d38_58595b74",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 38
+      },
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "12518d92_7fd57fef",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cac2d311_ee50880c",
+      "range": {
+        "startLine": 179,
+        "startChar": 30,
+        "endLine": 179,
+        "endChar": 36
+      },
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbb6c4d9_6f03d3d2",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
@@ -153,6 +297,24 @@
       "revId": "40fb626618e52446e7e7264d437123ba055905a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f59a3090_09363a37",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-12T02:24:26Z",
+      "side": 1,
+      "message": "Different batteries could have different alert thresholds, e.g. temperature. https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/kukui/battery.c#104\n\nSo we have to get alert profile according to the battery kind.",
+      "parentUuid": "dbb6c4d9_6f03d3d2",
+      "revId": "40fb626618e52446e7e7264d437123ba055905a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
