@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b5a5094_0792fb7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-12T17:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efcc6a4_03be122c",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 43
+      },
+      "revId": "9549b318fc91843bb538aad35915c670aa4f2043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fa67af1_f05b9370",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "9549b318fc91843bb538aad35915c670aa4f2043",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "091fff40_2d439eaa",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1684,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-12T17:53:48Z",
+      "side": 1,
+      "message": "Will use 0x79 instead of 0x80 (DEL).",
+      "parentUuid": "6fa67af1_f05b9370",
+      "range": {
+        "startLine": 1684,
+        "startChar": 16,
+        "endLine": 1684,
+        "endChar": 50
+      },
+      "revId": "9549b318fc91843bb538aad35915c670aa4f2043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
