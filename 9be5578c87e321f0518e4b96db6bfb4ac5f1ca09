@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb8089bb_77f55da3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-12T01:05:14Z",
+      "side": 1,
+      "message": "the (uint32_t) cast seems out of place here and the next fn.",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bda2308_543ddf0c",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-12T01:05:14Z",
+      "side": 1,
+      "message": "as grant points out,\nwhat is supposed happen for len\u003d\u003d1?\nare you still supposed to set STOP_VAL?\n\ni think this would be simpler if the 1st/last iteration\nwere hoisted outside the loop - kind of the way it\nwas originally.  the main loop itself remains trivial.\nit might make sense to do a block write API for it\nif it turns out to be a common thing.",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b320ba0_f0950639",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-12T01:05:14Z",
+      "side": 1,
+      "message": "isn\u0027t this comment just a repeat of the following line?",
+      "range": {
+        "startLine": 339,
+        "startChar": 11,
+        "endLine": 339,
+        "endChar": 38
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f31fdf8_d99523f7",
+        "filename": "chip/ish/ish_i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-12T01:05:14Z",
+      "side": 1,
+      "message": "given how this is used,\nmaybe make this the bit mask instead of bit position?",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
