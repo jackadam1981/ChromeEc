@@ -46,6 +46,30 @@
       "revId": "c5b101b6962f345a20f465c6c23eaf122a0e6467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd77e882_c7422d4e",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-12T16:48:02Z",
+      "side": 1,
+      "message": "I thought about it too. But felt magnetometer will have unnecessary knowledge about internals of accel/gyro module. So stopped at void *. Currently except for referring to its parent, magnetometer does not need it for anything else. May be we can revisit when we cross the bridge?\n\nWill add the comment explaining the usage.",
+      "parentUuid": "7088ade9_2f0eb128",
+      "range": {
+        "startLine": 81,
+        "startChar": 13,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "c5b101b6962f345a20f465c6c23eaf122a0e6467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
