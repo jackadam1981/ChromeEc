@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "c3f3bd7d_7a751391",
+        "filename": "driver/tcpm/tcpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-12T17:17:33Z",
+      "side": 1,
+      "message": "Looks good.",
+      "parentUuid": "db1d7e69_e72b6513",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 8,
+        "endChar": 70
+      },
+      "revId": "c83efecf41c261576e929b012efe353fb2b2472c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7013b3fd_15439879",
         "filename": "driver/tcpm/tcpm.c",
         "patchSetId": 1
