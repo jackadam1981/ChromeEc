@@ -180,6 +180,24 @@
     },
     {
       "key": {
+        "uuid": "31baf18f_3655b440",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T01:24:39Z",
+      "side": 1,
+      "message": "My comment here is wrong. \u0027repeated start\u0027 is for read after \u0027write command\u0027. This function is READ only, not for write.",
+      "parentUuid": "a99156b7_0db5832e",
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "809658bf_e73126e6",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
