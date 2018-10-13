@@ -1,0 +1,86 @@
+/* Copyright (c) 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef __HECI_CLIENT_H
+#define __HECI_CLIENT_H
+
+#include <stdint.h>
+#include <stddef.h>
+
+#include "hooks.h"
+
+#define HECI_MAX_NUM_OF_CLIENTS			2
+
+#define HECI_MAX_MSG_SIZE			4960
+#define HECI_MAX_MSGS				3
+
+#define HECI_ERR_INVALID_HANDLE			-1
+#define HECI_ERR_TOO_BIG_MSG_SIZE		-2
+#define HECI_ERR_TOO_MANY_MSG_ITEMS		-3
+#define HECI_ERR_NO_CRED_FROM_CLIENT_IN_HOST	-4
+#define HECI_ERR_CLIENT_IS_NOT_CONNECTED	-5
+
+#define HECI_INVALID_HANDLE			0xFF
+
+struct heci_guid {
+	uint32_t data1;
+	uint16_t data2;
+	uint16_t data3;
+	uint8_t data4[8];
+};
+
+struct heci_client_callbacks {
+	int (*initialize)(uint8_t heci_handle);
+	void (*new_msg_received)(uint8_t heci_handle, uint8_t *msg,
+				 uint32_t msg_size);
+	void (*disconnected)(uint8_t heci_handle);
+
+	int (*suspend)(uint8_t heci_handle);
+	int (*resume)(uint8_t heci_handle);
+};
+
+struct heci_client {
+	struct heci_guid protocol_id;
+	uint32_t max_msg_size;
+	uint8_t protocol_ver;
+	uint8_t max_n_of_connections;
+	uint8_t dma_header_length :7;
+	uint8_t dma_enabled :1;
+
+	const struct heci_client_callbacks *cbs;
+};
+
+struct heci_msg_item {
+	size_t size;
+	uint8_t *buf;
+};
+
+struct heci_msg_list {
+	int num_of_items;
+	struct heci_msg_item *items[HECI_MAX_MSGS];
+};
+
+/*
+ * Do not call this function directly.
+ * The function should be called by only by HECI_CLIENT_ENTRY()
+ */
+uint8_t heci_register_client(const struct heci_client *client);
+int heci_set_client_data(uint8_t heci_handle, void *data);
+void *heci_get_client_data(uint8_t heci_handle);
+/* send client msg */
+int heci_send_msg(uint8_t heci_handle, uint8_t *buf, size_t buf_size);
+/* send client msgs(using list of buffer&size) */
+int heci_send_msgs(uint8_t heci_handle, struct heci_msg_list *msg_list);
+/* send msg to fixed client(system level client) */
+int heci_send_fixed_client_msg(uint8_t fw_addr, uint8_t *buf, size_t buf_size);
+
+#define HECI_CLIENT_ENTRY(heci_client) \
+	void _heci_entry_##heci_client(void) \
+	{ \
+		heci_register_client(&(heci_client)); \
+	} \
+	DECLARE_HOOK(HOOK_INIT, _heci_entry_##heci_client, HOOK_PRIO_LAST - 1)
+
+#endif /* __HECI_CLIENT_H */
