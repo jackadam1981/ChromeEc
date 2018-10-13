@@ -22,6 +22,7 @@ chip-$(CONFIG_I2C)+=i2c.o
 chip-$(CONFIG_HOSTCMD_LPC)+=ipc.o
 chip-$(HAS_TASK_IPC_MNG)+=ipc_heci.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
+chip-$(HAS_TASK_HECI_RX)+=heci.o system_state_subsys.o
 
 # location of the scripts and keys used to pack the SPI flash image
 SCRIPTDIR:=./chip/${CHIP}/util
