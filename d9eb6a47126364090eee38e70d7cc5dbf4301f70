@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2fc92dc_741d8151",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-13T00:29:44Z",
+      "side": 1,
+      "message": "The problem is bmi160_interrupt does not know the sensor id. You could imagine a device with 2 identical sensors. I toyed with the idea of adding a context pointer to the interrupt handler [https://bugs.chromium.org/p/chromium/issues/detail?id\u003d822362] but it was kind of shut down.",
+      "parentUuid": "b1e1ebd8_49644637",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1777b8f_b740d451",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c5e9c91_c7eba5aa",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-13T00:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1777b8f_b740d451",
+      "range": {
+        "startLine": 41,
+        "startChar": 60,
+        "endLine": 41,
+        "endChar": 64
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0885f03c_a049bc46",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-13T00:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9782684_a55a316c",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43659027_7a8def79",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ca2c7fca_a68b00cb",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-13T00:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43659027_7a8def79",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85c700a1_18fe2dba",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2018-10-11T15:21:04Z",
       "side": 1,
       "message": "should you also send it through the TASK_EVENT_MOTION_INTERRUPT_MASK macro just in case _sensor_id breaches 8  so we don\u0027t start aliasing HW interrupts into SW interrupts?",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd8fb7d_c7cc5a94",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-13T00:29:44Z",
+      "side": 1,
+      "message": "I am not sure what you mean. I could use the sensor_id enum to defined the maximal number of sensor interrupt, but we may want multiple interrupt per sensor in the future, or none.",
+      "parentUuid": "85c700a1_18fe2dba",
       "range": {
         "startLine": 48,
         "startChar": 8,
