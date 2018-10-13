@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "4c42c4a4_8f0ef550",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef81db5a_5ed331d0",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 13
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f0af0ff_aa186e51",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 9
@@ -132,6 +156,24 @@
       "writtenOn": "2018-10-11T18:06:55Z",
       "side": 1,
       "message": "Are CMD_RESTART_VAL and CMD_STOP_VAL mutually exclusive?\n\nI\u0027m wondering if the \"else\" should be dropped here to handle \"len\u003d1\" case differently.",
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99156b7_0db5832e",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "No, they are not exclusive in case len \u003d\u003d 1.  \nI think you catch bug. Thank you\n(current Elan device has only \u0027even\u0027 numbers of commands without stop and \u0027repeated Start\u0027 for reading.)\n\nIf \u0027len\u0027 \u003d\u003d 1 (only 1 byte command to write), \u0027DATA_CMD_STOP_VAL\u0027 is still needed.\nI will add following line after line 288 to make code to be more generic.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nif (i \u003d\u003d 0) ....     {\n\n\n          if (len \u003d\u003d 1)\n              data_cmd |\u003d DATA_CMD_STOP_VAL;\n}",
+      "parentUuid": "3f0af0ff_aa186e51",
       "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -245,6 +287,30 @@
       "side": 1,
       "message": "If the HW fails, this loop will tightly bind the CPU:\n1) please add a retry counter to limit how long it might loop here.\n2) and as mentioned in the bug, consider adding cpu_relax() call to the loop.",
       "parentUuid": "c05d2a3c_f37f880f",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 49
+      },
+      "revId": "487cf0bddfc02c1635380ddebb40b3f6169afc38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975908ba_938ca4d5",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "I will add loop count. \nI will investigate and as separate patch.",
+      "parentUuid": "aa407d68_2516398b",
       "range": {
         "startLine": 334,
         "startChar": 2,

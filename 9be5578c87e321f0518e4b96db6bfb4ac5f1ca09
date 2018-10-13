@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6e38f659_e05bed32",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c9183e3_356bae95",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 16
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bda2308_543ddf0c",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 11
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I don\u0027t see any advantage to hoisting first/last cases outside the loop - it just makes it harder to understand because the code in all three cases has to handle all the same flags. The code as-is is quite easy to read/understand.\n\nI haven\u0027t seen a response yet regarding len\u003d1 case.",
       "parentUuid": "3bda2308_543ddf0c",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2bee881_4b93fff7",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "I will add followings for the case of (len \u003d\u003d 1) case. \n\nif (i \u003d\u003d 0) ....     {\n\n          if (len \u003d\u003d 1)\n              data_cmd |\u003d DATA_CMD_STOP_VAL;\n}",
+      "parentUuid": "e6095af3_f198985a",
       "range": {
         "startLine": 281,
         "startChar": 2,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "de247013_82d3882e",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "Yes,correct. \nIf reading data size is more than FIFO_SIZE(ex. Heatmap data is 600+ bytes and has to be read in single i2c transaction (START ----- RESTART ---- STOP)) and this slave device does not support to send multiple chunks.  Instead, host driver(this driver) controls/sends FIFO_SIZE number of clocks so that slave to supply data to host per each clock.",
+      "parentUuid": "4dfa3535_739ea553",
+      "range": {
+        "startLine": 339,
+        "startChar": 11,
+        "endLine": 339,
+        "endChar": 38
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db5b2c14_a42ea7f0",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 11
@@ -166,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "8f12d5ee_e2b34d50",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "Thanks.  Will fix.",
+      "parentUuid": "db5b2c14_a42ea7f0",
+      "range": {
+        "startLine": 347,
+        "startChar": 9,
+        "endLine": 347,
+        "endChar": 20
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9d8d862_71bc17d0",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 11
@@ -183,6 +279,24 @@
     },
     {
       "key": {
+        "uuid": "838e9cea_137d0750",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9d8d862_71bc17d0",
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f31fdf8_d99523f7",
         "filename": "chip/ish/ish_i2c.h",
         "patchSetId": 11
@@ -194,6 +308,30 @@
       "writtenOn": "2018-10-12T01:05:14Z",
       "side": 1,
       "message": "given how this is used,\nmaybe make this the bit mask instead of bit position?",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb5f9d8e_a0c0919b",
+        "filename": "chip/ish/ish_i2c.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-13T00:21:04Z",
+      "side": 1,
+      "message": "I keep this style since initial code was written this way.\nIf we want to use bitmask here, we\u0027d better change other registers with bitmask as well.",
+      "parentUuid": "3f31fdf8_d99523f7",
       "range": {
         "startLine": 101,
         "startChar": 17,
