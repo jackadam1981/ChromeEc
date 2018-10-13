@@ -553,9 +553,28 @@ cleanup() {
 		dut_control ${MCU}_uart_bitbang_en:off
 	fi
 
+	if [ -n "$board_is_npcx_internal_spi" ]; then
+		# Set GP_SEL# as default to disable GP mode when ec reboots
+		if [ $board_is_npcx_internal_spi -eq 0 ]; then
+			dut_control fw_up:off
+		fi
+
+		if  ! on_raiden || [[ "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
+			# Turn off SPI1 interface on servo
+			dut_control spi1_vref:off spi1_buf_en:off
+			if [[ ! "${SERVO_TYPE}" =~ "servo_micro" ]] ; then
+				dut_control spi1_buf_on_flex_en:off
+			fi
+
+		else
+			rm $L
+		fi
+	fi
+
 	if ! on_raiden || $(servo_has_cold_reset); then
 		ec_reset
 	fi
+
 }
 trap cleanup EXIT
 
@@ -795,7 +814,6 @@ function flash_flashrom() {
 	# Therefore, temporarily ignore errors so we can capture the return
 	# value.
 	set +e
-	local board_is_npcx_internal_spi
 	$(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}")
 	board_is_npcx_internal_spi=$?
 	set -e # Okay, don't ignore errors anymore.
@@ -925,6 +943,7 @@ function flash_flashrom() {
 
 	# Do not save/restore servo settings
 	save=
+	board_is_npcx_internal_spi=
 }
 
 function flash_stm32() {
