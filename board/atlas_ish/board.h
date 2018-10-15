@@ -70,6 +70,8 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+void touchpad_event(enum gpio_signal signal);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
