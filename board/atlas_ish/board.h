@@ -75,6 +75,8 @@
 #undef CONFIG_ADC
 #undef CONFIG_SHA256
 
+void touchpad_event(enum gpio_signal signal);
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
