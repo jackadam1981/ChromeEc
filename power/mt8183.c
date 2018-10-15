@@ -211,8 +211,6 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_G3S5:
 		forcing_shutdown = 0;
 
-		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
-
 		/* Power up to next state */
 		return POWER_S5;
 
@@ -332,8 +330,7 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("Forcing PMIC off");
 			gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
 			msleep(5);
-
-			return POWER_S5G3;
+			gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
 #endif
 		}
 
