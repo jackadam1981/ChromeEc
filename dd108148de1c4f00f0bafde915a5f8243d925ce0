@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22c34305_9955561e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-15T17:25:32Z",
+      "side": 1,
+      "message": "maybe go with fw_slot, since the only reason to have two parts here is two slots on the H1 side. but maybe we don\u0027t even need this since both parts are supposed to be identical in terms of f/w versions and Board ID restrictions. so, what we should do instead is (a) check that indeed info-for-slot-A \u003d\u003d info-for-slot-B (and return an error if it is not), and (b) print info for RO, RW and BID omitting the slot/part qualifier:\nIMAGE_RW\u003d...\nIMAGE_BID_STRING\u003d...\n(and as said in the other CL, possibly, support -M\u003dIMAGE_RO, which would just print the RO revision w/o any prefixes).\n\n+vbendeb for his opinion",
+      "range": {
+        "startLine": 1313,
+        "startChar": 13,
+        "endLine": 1313,
+        "endChar": 20
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cf6345_4e51a871",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-15T17:25:32Z",
+      "side": 1,
+      "message": "As said above, maybe just check that identical \u0026 take what\u0027s reported for the \"slot\" A and go with IMAGE_RO\u003d, IMAGE_RW\u003d",
+      "range": {
+        "startLine": 1340,
+        "startChar": 6,
+        "endLine": 1340,
+        "endChar": 24
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5567112e_0947c0f5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-15T17:25:32Z",
+      "side": 1,
+      "message": "that may be confusing. on H1 side BoardID doesn\u0027t depend on the f/w slot. \nas said above, both parts/slots in an image file are supposed to have the same firmware and the same Board ID restrictions set for the f/w. check that they are idential and just report IMAGE_BID_STRING\u003d, IMAGE_BID_MASK\u003d, etc",
+      "range": {
+        "startLine": 1388,
+        "startChar": 21,
+        "endLine": 1388,
+        "endChar": 45
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def16bdf_4352e0e9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-15T17:25:32Z",
+      "side": 1,
+      "message": "the idea is with machine output is that we don\u0027t need the calling script to parse the output line, so at least let\u0027s have separate BID_STRING\u003d, BID_MASK\u003d, BID_FLAGS\u003d. Or, possibly, support -M\u003dBID_MASK and print just the mask w/o any prefixes.",
+      "range": {
+        "startLine": 1389,
+        "startChar": 45,
+        "endLine": 1389,
+        "endChar": 57
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
