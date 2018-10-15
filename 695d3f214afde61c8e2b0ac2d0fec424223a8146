@@ -46,6 +46,30 @@
       "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "263b0218_97cf05ad",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-15T22:38:25Z",
+      "side": 1,
+      "message": "Hi Grant, \nIn EC(ISH) code, cpu_relax() is not defined.\nand chip/ish is product specific(ISH SOC with x86).\nI am sure where(header file) to put this inline assembly.  \n/core/minuteIA is x86-ISH CPU but header files are not supposed to included in chip/ish. \nhow about chip/ish/config_chip.h ?\n\nAnd there are other files in chip/ and uses simple ARM specific in-line assembly code.",
+      "parentUuid": "5d34979d_e1dce354",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
