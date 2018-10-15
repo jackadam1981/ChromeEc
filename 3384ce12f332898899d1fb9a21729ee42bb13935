@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2baa088_f9825957",
+        "filename": "board/atlas_ish/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-15T21:38:58Z",
+      "side": 1,
+      "message": "Quite a while ago we were using IPC+host command to develop ISH firmware, to avoid build error and to change common code as little as possible, we began with using LPC flag. And IPC+HC is verified based on this. Now our direction is changed to IPC+HECI, definitely we will modify the flags to better accommodate this situation.\n\nFor this patch, could we keep the old flag and do not make change in this initial commit?\n\nThis is because of this patch is known with IPC+HC and host CROS_EC_ISH driver is working(we would like to keep this as record), if flag is changed, we have to verify this old path again, but currently we are working on IPC+HECI, resource is limited for this. Also we have multiple HECI patches which use this version in code base, if we change the flag now, all those will be affected. \n\nMy thinking is after HECI code is in place, we will sort out the way to use flags to support IPC, IPC+HC, IPC+HECI. We can submit a new patch to solve this.",
+      "parentUuid": "0752ecac_d3b12894",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e92d5702_76d1017b",
         "filename": "board/atlas_ish/gpio.inc",
         "patchSetId": 8
