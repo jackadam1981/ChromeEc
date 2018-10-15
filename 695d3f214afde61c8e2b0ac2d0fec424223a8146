@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "827dd859_1f0e3055",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-15T19:59:39Z",
+      "side": 1,
+      "message": "can you add a comment about what this line is accomplishing, please?",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
