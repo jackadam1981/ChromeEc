@@ -22,6 +22,30 @@
       "revId": "cbc8d01cc04f77f4d37ffaf13f3aaeeabfec2058",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5c994b_f2152e70",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2018-10-15T09:47:29Z",
+      "side": 0,
+      "message": "Remove this initial setting.\nUpdate the new patch.",
+      "parentUuid": "eb66fce5_8efe3501",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "cbc8d01cc04f77f4d37ffaf13f3aaeeabfec2058",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
