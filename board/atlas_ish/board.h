@@ -32,6 +32,9 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
+/* HID subsystem */
+#define CONFIG_HID_SUBSYS
+
 /* I2C ports */
 #define I2C_PORT_TP ISH_I2C0
 
