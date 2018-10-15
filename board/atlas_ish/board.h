@@ -32,6 +32,11 @@
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 
+/* HID subsystem */
+#if defined(HAS_TASK_IPC_MNG) && defined(HAS_TASK_HECI_RX)
+#define CONFIG_HID_SUBSYS
+#endif
+
 /* I2C ports */
 #define I2C_PORT_TP ISH_I2C0
 
