@@ -75,7 +75,7 @@ static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
 	    !gpio_get_level(GPIO_USB_C0_PD_RST_L))
-		printf("123456789");
+		printf("12345678");
 		return;
 	else if ((signal == GPIO_USB_C1_PD_INT_ODL) &&
 		 gpio_get_level(GPIO_USB_C1_PD_RST))
