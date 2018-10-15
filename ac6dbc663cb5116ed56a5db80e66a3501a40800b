@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "893f8fc5_22b7d1c7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-15T17:00:17Z",
+      "side": 1,
+      "message": "shouldn\u0027t be GSC_ON_USB_RO_FW_VER in -M case.\n-M is just a formatting of what gsctool gets from cr50.\nin case of -s it reads it from /dev/tpm0 instead of usb, in case of -t it uses trunks_send, in case of -a it cycles through all possibilities until it finds some cr50 attached. so, shouldn\u0027t be \"_ON_USB\" in the name. we can just go with FW_RW\u003d..., or FW_ACTIVE_RW\u003d... \nor, possibly, have -M\u003dRW and just print \"0.3.10\" in that case",
+      "range": {
+        "startLine": 2239,
+        "startChar": 26,
+        "endLine": 2239,
+        "endChar": 46
+      },
+      "revId": "ac6dbc663cb5116ed56a5db80e66a3501a40800b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
