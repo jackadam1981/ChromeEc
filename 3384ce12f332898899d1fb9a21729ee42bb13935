@@ -117,6 +117,24 @@
       "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10da07cf_dbf299b7",
+        "filename": "board/atlas_ish/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-15T21:47:09Z",
+      "side": 1,
+      "message": "I2C pins and GPIO pins in ISH are different pins. ISH has 8 GPIO pins, but I2C pins are not one of them. Those pins can be configured as host gpio pins too. But configuration is done by coreboot. So ISH couldn\u0027t do much in this case.",
+      "parentUuid": "d71d1317_6b77fbb5",
+      "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
