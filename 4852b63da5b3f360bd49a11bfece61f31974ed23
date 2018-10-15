@@ -436,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "5a78c724_cd010e5a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-15T21:11:18Z",
+      "side": 1,
+      "message": "We could have a struct that has pointers to the various fields like the imported leaf vs unimported leaf. The downside of that is we also need to keep track of the lengths of the value of each pointer since different protocol versions would have different lengths.",
+      "parentUuid": "ee289fb0_d733c2cb",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1408,
+        "endChar": 31
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5941b1d_c4a2e115",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -658,6 +682,30 @@
       "side": 1,
       "message": "It\u0027s the same format as TPML_PCR_SELECTION is using, so that we could just memcpy without splitting the bits manually.",
       "parentUuid": "b5b17a88_63629948",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c37fb3cd_032e4a19",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-15T21:11:18Z",
+      "side": 1,
+      "message": "uint16_t would allow a same size memcpy but the Endianess would be a factor if you ever used it as a number. IMO it would be preferable to use uint16_t instead of a static array because it reduces the potential for misunderstandings related to sizeof(). IIRC sizeof(bitmask) would actually give you the size of (uint8_t*).",
+      "parentUuid": "b3ac640c_82b064f8",
       "range": {
         "startLine": 117,
         "startChar": 1,
