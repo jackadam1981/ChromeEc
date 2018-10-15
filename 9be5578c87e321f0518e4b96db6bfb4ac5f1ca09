@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "e666f929_63056b16",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-15T18:50:55Z",
+      "side": 1,
+      "message": "Kyoung, can you just remove the word \"else\" from line 286 and add a blank line in front of that?\n\nI don\u0027t think you need a special \"if (len \u003d\u003d1)\" test.",
+      "parentUuid": "d2bee881_4b93fff7",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b320ba0_f0950639",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 11
