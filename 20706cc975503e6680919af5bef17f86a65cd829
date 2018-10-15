@@ -691,6 +691,517 @@
       "revId": "20706cc975503e6680919af5bef17f86a65cd829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51603bb4_8e43b92a",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "uint8_t for consistency?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 4
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba47b3d1_184c7f54",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "this one in particular is correct",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 2
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0a916b5_4dd1d5d5",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "wait so if you somehow call this function twice before tc_state_attached_snk runs, the timer doesn\u0027t actually get reset?\n\nmaybe |\u003d 1 would be a better choice (0-\u003e1, 1-\u003e1, 2-\u003e3); i.e., support_timer_reset is a bitmask with RESET_REQUEST\u003d1\u003c\u003c0 and RESET_COMPLETED\u003d1\u003c\u003c1",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234bfe5b_0cf41b13",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "is this not implemented?",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c0c237_27a7356f",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "is this the right variable?  unclear if this is meant to be CC electrical debounce, or dual-role toggling stuff",
+      "range": {
+        "startLine": 507,
+        "startChar": 45,
+        "endLine": 507,
+        "endChar": 57
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf8420f_3070d576",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "maybe these should be a #define, like PD_CC_INVALID, or _UNSET, _UNKNOWN, _UNTESTED, etc...",
+      "range": {
+        "startLine": 572,
+        "startChar": 26,
+        "endLine": 572,
+        "endChar": 28
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5e5a11_dd9aa82c",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "I think this needs to be conditioned on CC; seems like the spec says you should wait indefinitely in this state if Rp is there but VBUS/Vconn is not yet applied",
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "414ebbd1_104f1ad7",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "does the spec say you present this, even if nothing is attached to the charge-through port?",
+      "range": {
+        "startLine": 702,
+        "startChar": 2,
+        "endLine": 705,
+        "endChar": 5
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f252c0_2470c52c",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "a wild tab appears",
+      "range": {
+        "startLine": 933,
+        "startChar": 41,
+        "endLine": 933,
+        "endChar": 42
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f212e0_a9ab588a",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "this was probably copied from attachwait.snk...this also needs to be conditioned on CC",
+      "range": {
+        "startLine": 1115,
+        "startChar": 2,
+        "endLine": 1115,
+        "endChar": 55
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990b31ad_e708cf24",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "since everything else is matching the spec, maybe the timer constants should resemble the spec as well?",
+      "range": {
+        "startLine": 1161,
+        "startChar": 42,
+        "endLine": 1161,
+        "endChar": 55
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0f6ca7_65dd6ac5",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "I think this timer should be set just once, upon state entry",
+      "range": {
+        "startLine": 1162,
+        "startChar": 1,
+        "endLine": 1162,
+        "endChar": 57
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22bfe5d_f146b0cd",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "nit: there\u0027s no actual debouncing here; if the instantaneous state of CC is NONE tDRPTry after entering this state, transition",
+      "range": {
+        "startLine": 1176,
+        "startChar": 2,
+        "endLine": 1176,
+        "endChar": 25
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b11f160_daa8bfe7",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "why are we explicitly enabling this for entry into ct_try_snk?  Shouldn\u0027t it have come from a state that already had SOP\u0027 enabled?  It\u0027s not like we enforce the other state requirements if they\u0027re redundant from previous states (such as isolation)...\n\nIn the same vein, the assumed state could probably be better documented in comments.",
+      "range": {
+        "startLine": 1206,
+        "startChar": 1,
+        "endLine": 1210,
+        "endChar": 18
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e50cf7_5183208f",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "I\u0027m a little unclear as to why this is an instance variable for a port.  It seems like most usages of it are like a local variable (guaranteed write before read within a function), and cases where state is preserved (like this one) seem a bit strange.\n\nFor instance, the cases above don\u0027t handle what happens when the Rd in an Rd+Ra drops away and you\u0027re left with an NC+Ra.  If Rd dropped away while transitioning into this state, you could be stuck here forever, because new_cc_state\u003d\u003d-1.  Similarly, if CC initially misdetected as Ra+Ra then debounced to NC+Ra, you would resolve as PD_CC_AUDIO_ACC, which is clearly wrong.\n\nOne could say this is just a bug (the spec says you should be doing the Rd || Rd and then Ra \u0026\u0026 Ra before checking NC _||_ NC), but that would have been more obvious had new_cc_state not been an instance variable to begin with.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 26,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b67bbb_2cd53f0d",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "BB_SNK?",
+      "range": {
+        "startLine": 1376,
+        "startChar": 23,
+        "endLine": 1376,
+        "endChar": 29
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0901511f_d69c11ab",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "is this going to break SOP\u0027 PD communication with the host if we\u0027re speaking to it while toggling on the charge-through side?",
+      "range": {
+        "startLine": 1463,
+        "startChar": 1,
+        "endLine": 1467,
+        "endChar": 18
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9547fd89_9517b7a9",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1513,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "(cc_is_rp(cc1) !\u003d cc_is_rp(cc2))?",
+      "range": {
+        "startLine": 1512,
+        "startChar": 4,
+        "endLine": 1513,
+        "endChar": 38
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "427e6278_c80bb87a",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 1542,
+        "startChar": 1,
+        "endLine": 1542,
+        "endChar": 2
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53395a6d_6aae0a88",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "nit: using role_swap would be more consistent with your usage patterns, I think",
+      "range": {
+        "startLine": 1602,
+        "startChar": 10,
+        "endLine": 1602,
+        "endChar": 21
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839e6b0f_3bca1388",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "set to CT_CC1 or CT_CC2?  Then you can pass it directly to vpd_ct_cc_sel",
+      "range": {
+        "startLine": 1648,
+        "startChar": 10,
+        "endLine": 1648,
+        "endChar": 15
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4f1eda_a00d10e8",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1684,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "1?",
+      "range": {
+        "startLine": 1684,
+        "startChar": 25,
+        "endLine": 1684,
+        "endChar": 26
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f91ff3_7e07755b",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-15T18:06:27Z",
+      "side": 1,
+      "message": "nit: extra spaces here and below",
+      "range": {
+        "startLine": 1780,
+        "startChar": 26,
+        "endLine": 1780,
+        "endChar": 27
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
