@@ -25,6 +25,9 @@ chip-$(CONFIG_HECI)+=heci.o system_state_subsys.o
 chip-$(CONFIG_HID_SUBSYS)+=hid_subsys.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
 
+# HID device example
+chip-y+=tsc.o tsc_touch_pad.o i2c_hid_master.o
+
 # location of the scripts and keys used to pack the SPI flash image
 SCRIPTDIR:=./chip/${CHIP}/util
 
