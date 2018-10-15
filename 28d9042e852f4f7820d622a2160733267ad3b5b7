@@ -45,6 +45,30 @@
       "revId": "28d9042e852f4f7820d622a2160733267ad3b5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88465187_22b6ea74",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-15T19:59:44Z",
+      "side": 1,
+      "message": "I had conditionalized it since there were multiple exit paths in the flashrom() function before we can enable the GP mode.\n\nAnyways Jett pointed me to a concise ways of restoring the servo setting for servo_v4 with servo_micro. Same as the approach taken by servo v2.",
+      "parentUuid": "c0bbc80a_4ca5b256",
+      "range": {
+        "startLine": 556,
+        "startChar": 5,
+        "endLine": 556,
+        "endChar": 9
+      },
+      "revId": "28d9042e852f4f7820d622a2160733267ad3b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
