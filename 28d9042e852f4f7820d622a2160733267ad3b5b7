@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87a2195c_8710deda",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-15T14:18:54Z",
+      "side": 1,
+      "message": "{} around variables and below",
+      "range": {
+        "startLine": 556,
+        "startChar": 11,
+        "endLine": 556,
+        "endChar": 37
+      },
+      "revId": "28d9042e852f4f7820d622a2160733267ad3b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0bbc80a_4ca5b256",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-15T14:18:54Z",
+      "side": 1,
+      "message": "Why is this path conditionalized? Wouldn\u0027t it be applicable to most paths? Also, this variable as a proxy platform may not be correct. What about another platform utilizing npcx_internal but has a different design than the one you are targeting?",
+      "range": {
+        "startLine": 556,
+        "startChar": 5,
+        "endLine": 556,
+        "endChar": 9
+      },
+      "revId": "28d9042e852f4f7820d622a2160733267ad3b5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
