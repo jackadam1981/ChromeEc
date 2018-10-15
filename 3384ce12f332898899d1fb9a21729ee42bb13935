@@ -39,6 +39,24 @@
       "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7609da9_efac1894",
+        "filename": "board/atlas_ish/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-15T21:10:08Z",
+      "side": 1,
+      "message": "In ISH, its i2c pins can be configured as ISH-i2c or HOST-GPIO at boot time by coreboot.\nSame for ISH-GPIOs can be configured as HOST-GPIOs at boot time by coreboot as well. \nWith current ISH silicon, ISH-GPIO and ISH-I2c are physically different pins and cannot be configured by ISH itself.",
+      "parentUuid": "e92d5702_76d1017b",
+      "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
