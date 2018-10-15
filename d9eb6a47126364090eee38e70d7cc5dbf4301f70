@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "862b74b2_19ab2c08",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-15T19:53:24Z",
+      "side": 1,
+      "message": "If added the interrupt gpio_signal value to the motion_sensor_t for each sensor, then we could make a generic interrupt handler for all sensors that interpreted the gpio signal and converter it to the _senor_id (or corresponding software task event id). Would that work?",
+      "parentUuid": "c2fc92dc_741d8151",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1777b8f_b740d451",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "I am not sure what you mean. I could use the sensor_id enum to defined the maximal number of sensor interrupt, but we may want multiple interrupt per sensor in the future, or none.",
       "parentUuid": "85c700a1_18fe2dba",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78a83ff5_711220ed",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-15T19:53:24Z",
+      "side": 1,
+      "message": "I was getting after the condition when _sensor_id was greater than 8 and we didn\u0027t realized we needed to update TASK_EVENT_MOTION_INTERRUPT_NUM yet.\n\nif we defined line 48 as below\n\n#define TASK_EVENT_MOTION_SENSOR_INTERRUPT(_sensor_id) \\\n\t(TASK_EVENT_MOTION_INTERRUPT_MASK( \\\n\t\t1 \u003c\u003c (TASK_EVENT_MOTION_FIRST_HW_EVENT_BIT + (_sensor_id))))\n\n\nThen the interrupt value for a sensor_id of 10 (for example) would get set to 0, which would hopefully make it clear that it wasn\u0027t working; otherwise a senor_id value of 10 would alias to 3rd software task event, which might be harder to tell something was going wrong.",
+      "parentUuid": "ddd8fb7d_c7cc5a94",
       "range": {
         "startLine": 48,
         "startChar": 8,
