@@ -75,6 +75,24 @@
       "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71d1317_6b77fbb5",
+        "filename": "board/atlas_ish/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-15T21:28:34Z",
+      "side": 1,
+      "message": "Yes.\nIf you see schematic, ISH-i2c-SCL can be HOST-GPIO in physical pin level.",
+      "parentUuid": "16d895d6_15f1f217",
+      "revId": "3384ce12f332898899d1fb9a21729ee42bb13935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
