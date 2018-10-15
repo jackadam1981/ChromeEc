@@ -22,6 +22,30 @@
       "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d34979d_e1dce354",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-15T21:44:40Z",
+      "side": 1,
+      "message": "This is the x86 implementation of cpu_relax(). See arch/x86/include/asm/processor.h.\n\nKyoung, please do not include x86 assembler in arch independent files. Please use cpu_relax() since this is \"self documenting\" and will \"do the right thing\" for all architectures.",
+      "parentUuid": "827dd859_1f0e3055",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
