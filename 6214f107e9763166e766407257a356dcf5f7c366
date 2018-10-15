@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "973677b8_d45d10a5",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-10-15T03:55:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a8e537_f4aa6180",
+      "revId": "6214f107e9763166e766407257a356dcf5f7c366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d465495f_48cb8195",
         "filename": "driver/touchpad_st.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2018-10-08T08:16:11Z",
       "side": 1,
       "message": "Can you check if the Cx table is erased, instead of using a static variable?\n\nYou\u0027ll need to do that check too on normal st_tp_init, right? (in case the calibration gets aborted)",
+      "range": {
+        "startLine": 1176,
+        "startChar": 26,
+        "endLine": 1176,
+        "endChar": 44
+      },
+      "revId": "6214f107e9763166e766407257a356dcf5f7c366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ecc408_1a1b718c",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-10-15T03:55:26Z",
+      "side": 1,
+      "message": "For normal init, ST will send out error events if CX is invalid.",
+      "parentUuid": "d465495f_48cb8195",
       "range": {
         "startLine": 1176,
         "startChar": 26,
