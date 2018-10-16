@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54dc0cac_73faf7cb",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-16T21:18:53Z",
+      "side": 1,
+      "message": "nit: even if each part of ver is indeed full uint32_t, the max is 10+1+10+1+10+1",
+      "range": {
+        "startLine": 207,
+        "startChar": 26,
+        "endLine": 207,
+        "endChar": 29
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9beb0b94_109bba0d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-16T21:18:53Z",
+      "side": 1,
+      "message": "bool?",
+      "range": {
+        "startLine": 1311,
+        "startChar": 11,
+        "endLine": 1311,
+        "endChar": 14
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a80526_9ca5b755",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-16T21:18:53Z",
+      "side": 1,
+      "message": "no need for const",
+      "range": {
+        "startLine": 1311,
+        "startChar": 5,
+        "endLine": 1311,
+        "endChar": 10
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826c3916_acbcca7c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-16T21:18:53Z",
+      "side": 1,
+      "message": "constexpr?\nare we C or C++ here, I forgot?",
+      "range": {
+        "startLine": 1326,
+        "startChar": 1,
+        "endLine": 1326,
+        "endChar": 6
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e1c55d_3cc96892",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-16T21:18:53Z",
+      "side": 1,
+      "message": "kNumSlots if const",
+      "range": {
+        "startLine": 1326,
+        "startChar": 14,
+        "endLine": 1326,
+        "endChar": 23
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66216b52_51933c91",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1414,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-16T21:18:53Z",
+      "side": 1,
+      "message": "am i right that there are no scripts that use RO_B and RW_B already?",
+      "range": {
+        "startLine": 1413,
+        "startChar": 2,
+        "endLine": 1414,
+        "endChar": 30
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
