@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c674bda6_2636ac14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T06:34:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5460703_c6ed742c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ae35008_e8632160",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c2aea95_be3ed134",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T06:34:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae35008_e8632160",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "45a154fb_4d70097f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T06:34:18Z",
+      "side": 1,
+      "message": "Applied most of the suggestions except for filtering support for -M. Supporting filtering means either supported keys should show in usage or people need to read the code to get them. I think neither of them is ideal.\n\nAlso, I didn\u0027t remove \"_A\" from the output of gsctool -b (the redundant RO_B and RW_B parts are removed though) because there are still some scripts in platform/ec and platform/factory parsing gsctool -b. I added a TODO in this function instead.",
+      "parentUuid": "1ede37ac_adeb03fa",
+      "range": {
+        "startLine": 1313,
+        "startChar": 13,
+        "endLine": 1313,
+        "endChar": 20
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43cf6345_4e51a871",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -115,6 +187,30 @@
       "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee1b7c0_6e06a17a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T06:34:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43cf6345_4e51a871",
+      "range": {
+        "startLine": 1340,
+        "startChar": 6,
+        "endLine": 1340,
+        "endChar": 24
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "00880182_f8f55c35",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T06:34:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5567112e_0947c0f5",
+      "range": {
+        "startLine": 1388,
+        "startChar": 21,
+        "endLine": 1388,
+        "endChar": 45
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "def16bdf_4352e0e9",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -161,6 +281,30 @@
       "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3feaa8a7_b3f2c7a5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T06:34:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "def16bdf_4352e0e9",
+      "range": {
+        "startLine": 1389,
+        "startChar": 45,
+        "endLine": 1389,
+        "endChar": 57
+      },
+      "revId": "dd108148de1c4f00f0bafde915a5f8243d925ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
