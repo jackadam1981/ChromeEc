@@ -22,6 +22,30 @@
       "revId": "f0021f8cf07798d50415c2ef489cdf79d2f51572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ce8eda_7c013284",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-10-16T01:57:21Z",
+      "side": 1,
+      "message": "i considered that, but this is the only register we\u0027re missing here.\nin theory, we\u0027ll save 2 register writes this way as the other\ntwo of the 4 writes are just restoring their initial value.\nmaybe it does make more sense to call the function.",
+      "parentUuid": "433310c1_0ed76200",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 0
+      },
+      "revId": "f0021f8cf07798d50415c2ef489cdf79d2f51572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
