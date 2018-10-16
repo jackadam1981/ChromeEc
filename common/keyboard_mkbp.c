@@ -72,6 +72,7 @@ static uint32_t mkbp_switch_state;
 #ifndef HAS_TASK_KEYSCAN
 /* Keys simulated-pressed */
 static uint8_t __bss_slow simulated_key[KEYBOARD_COLS];
+uint8_t keyboard_cols = KEYBOARD_COLS;
 #endif /* !defined(HAS_TASK_KEYSCAN) */
 
 /* Config for mkbp protocol; does not include fields from scan config */
@@ -98,7 +99,7 @@ static int get_data_size(enum ec_mkbp_event e)
 {
 	switch (e) {
 	case EC_MKBP_EVENT_KEY_MATRIX:
-		return KEYBOARD_COLS;
+		return keyboard_cols;
 
 #ifdef CONFIG_HOST_EVENT64
 	case EC_MKBP_EVENT_HOST_EVENT64:
@@ -442,7 +443,7 @@ static int mkbp_get_info(struct host_cmd_handler_args *args)
 
 		/* Version 0 just returns info about the keyboard. */
 		r->rows = KEYBOARD_ROWS;
-		r->cols = KEYBOARD_COLS;
+		r->cols = keyboard_cols;
 		/* This used to be "switches" which was previously 0. */
 		r->reserved = 0;
 
@@ -537,7 +538,7 @@ static int command_mkbp_keyboard_press(int argc, char **argv)
 		int i, j;
 
 		ccputs("Simulated keys:\n");
-		for (i = 0; i < KEYBOARD_COLS; ++i) {
+		for (i = 0; i < keyboard_cols; ++i) {
 			if (simulated_key[i] == 0)
 				continue;
 			for (j = 0; j < KEYBOARD_ROWS; ++j)
@@ -550,7 +551,7 @@ static int command_mkbp_keyboard_press(int argc, char **argv)
 		char *e;
 
 		c = strtoi(argv[1], &e, 0);
-		if (*e || c < 0 || c >= KEYBOARD_COLS)
+		if (*e || c < 0 || c >= keyboard_cols)
 			return EC_ERROR_PARAM1;
 
 		r = strtoi(argv[2], &e, 0);
