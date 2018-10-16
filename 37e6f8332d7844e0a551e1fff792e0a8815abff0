@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67c80961_91fc8b23",
+        "filename": "util/ec3po/threadproc_shim.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-10-16T06:41:49Z",
+      "side": 1,
+      "message": "small docstring to clarify you essentially get a noop if your condition isn\u0027t met (and describe the args)",
+      "revId": "37e6f8332d7844e0a551e1fff792e0a8815abff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
