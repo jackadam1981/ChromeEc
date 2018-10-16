@@ -28,7 +28,7 @@ void keyboard_raw_init(void)
 
 	/* Initialize col_mask */
 	col_mask = 0;
-	for (i = 0; i < KEYBOARD_COLS; i++)
+	for (i = 0; i < keyboard_cols; i++)
 		col_mask |= gpio_list[GPIO_KB_OUT00 + i].mask;
 
 	/* Ensure interrupts are disabled */
