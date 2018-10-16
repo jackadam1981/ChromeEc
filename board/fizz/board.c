@@ -60,13 +60,17 @@ static uint8_t sku;
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
-		return;
+	int port = -1;
 
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
+	switch (signal) {
+	case GPIO_USB_C0_PD_INT_ODL:
+		port = 0;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
 }
 
 #define ADP_DEBOUNCE_MS		1000  /* Debounce time for BJ plug/unplug */
