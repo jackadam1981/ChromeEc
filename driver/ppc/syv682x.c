@@ -126,7 +126,7 @@ static int syv682x_vbus_source_enable(int port, int enable)
 			    SYV682X_CONTROL_1_PWR_ENB);
 		/* Disable HV Sink path */
 		regval |= SYV682X_CONTROL_1_HV_DR;
-	} else {
+	} else if (flags[port] & SYV682X_FLAGS_SOURCE_ENABLED) {
 		/*
 		 * No need to change the voltage path or channel direction. But,
 		 * turn both paths off.
