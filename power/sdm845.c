@@ -153,8 +153,30 @@ void chipset_reset_request_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&chipset_reset_request_handler_data, 0);
 }
 
+/* Cold reset AP after warm_reset-toggling finished */
+static void chipset_warm_reset_finished(void)
+{
+	CPRINTS("warm_reset-toggling finished -> cold reset AP");
+	chipset_reset(CHIPSET_RESET_AP_REQ);
+}
+DECLARE_DEFERRED(chipset_warm_reset_finished);
+
 void chipset_warm_reset_interrupt(enum gpio_signal signal)
 {
+	/*
+	 * The warm_reset signal is pulled-up by a rail from PMIC. If the
+	 * power state is not a ON state, the signal is meaningless.
+	 * The following actions may cause issues, e.g. current leak to
+	 * mess-up the power sequence, a reboot loop (when S5 -> S0,
+	 * PMIC is powered -> warm_reset is pulled high -> reboot).
+	 *
+	 * The check of bypass_power_lost_trigger avoids triggered by a
+	 * previous warm_reset toggling, which will result a reboot loop.
+	 */
+	if (!chipset_in_state(CHIPSET_STATE_ON) ||
+	    bypass_power_lost_trigger)
+		return;
+
 	if (!gpio_get_level(GPIO_WARM_RESET_L)) {
 		/*
 		 * Overdrive AP_RST_L to hold AP. Overdrive PS_HOLD to emulate
@@ -172,11 +194,9 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 		 */
 		gpio_set_flags(GPIO_AP_RST_L, GPIO_INT_BOTH | GPIO_SEL_1P8V);
 		gpio_set_flags(GPIO_PS_HOLD, GPIO_INT_BOTH | GPIO_SEL_1P8V);
-		/*
-		 * TODO(b/112723105): Do S0->S5->S0 transition here when we
-		 * fix the current leak. On a board with the current leak
-		 * issue, an AP reboot loop happens.
-		 */
+
+		/* Do S0->S5->S0 transition. */
+		hook_call_deferred(&chipset_warm_reset_finished_data, 0);
 	}
 }
 
