@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4bc7205d_f1cafa8b",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-16T17:43:05Z",
+      "side": 1,
+      "message": "That would be inefficient as it increases the code used and force the interrupt handler to scan on the performance path motion_sensors array for decoding the right sensor_id.",
+      "parentUuid": "862b74b2_19ab2c08",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1777b8f_b740d451",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "I was getting after the condition when _sensor_id was greater than 8 and we didn\u0027t realized we needed to update TASK_EVENT_MOTION_INTERRUPT_NUM yet.\n\nif we defined line 48 as below\n\n#define TASK_EVENT_MOTION_SENSOR_INTERRUPT(_sensor_id) \\\n\t(TASK_EVENT_MOTION_INTERRUPT_MASK( \\\n\t\t1 \u003c\u003c (TASK_EVENT_MOTION_FIRST_HW_EVENT_BIT + (_sensor_id))))\n\n\nThen the interrupt value for a sensor_id of 10 (for example) would get set to 0, which would hopefully make it clear that it wasn\u0027t working; otherwise a senor_id value of 10 would alias to 3rd software task event, which might be harder to tell something was going wrong.",
       "parentUuid": "ddd8fb7d_c7cc5a94",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a31c02e6_7cf9a838",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-16T17:43:05Z",
+      "side": 1,
+      "message": "Added a CL for checking such condition.",
+      "parentUuid": "78a83ff5_711220ed",
       "range": {
         "startLine": 48,
         "startChar": 8,
