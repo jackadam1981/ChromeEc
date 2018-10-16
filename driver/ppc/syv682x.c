@@ -138,10 +138,17 @@ static int syv682x_vbus_source_enable(int port, int enable)
 	if (rv)
 		return rv;
 
-	if (enable)
+	if (enable) {
 		flags[port] |= SYV682X_FLAGS_SOURCE_ENABLED;
-	else
+#if defined(CONFIG_USB_CHARGER) && defined(CONFIG_USB_PD_VBUS_DETECT_PPC)
+		usb_charger_vbus_change(port, 1);
+#endif
+	} else {
 		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
+#if defined(CONFIG_USB_CHARGER) && defined(CONFIG_USB_PD_VBUS_DETECT_PPC)
+		usb_charger_vbus_change(port, 0);
+#endif
+	}
 
 	return EC_SUCCESS;
 }
