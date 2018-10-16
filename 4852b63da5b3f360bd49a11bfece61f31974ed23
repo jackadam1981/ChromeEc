@@ -460,6 +460,30 @@
     },
     {
       "key": {
+        "uuid": "1ace3ca4_f2eba097",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-16T13:13:39Z",
+      "side": 1,
+      "message": "IMHO, the cleanest would be to have a definition of old structure (for insert_req and for try_auth_resp) and use that for conversions, considering that is the data type trunks is sending to us.\nAt some point, like 3 versions after this lands, the code that makes the requests compatible could be dropped and the old structures removed.",
+      "parentUuid": "5a78c724_cd010e5a",
+      "range": {
+        "startLine": 1396,
+        "startChar": 0,
+        "endLine": 1408,
+        "endChar": 31
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5941b1d_c4a2e115",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -706,6 +730,30 @@
       "side": 1,
       "message": "uint16_t would allow a same size memcpy but the Endianess would be a factor if you ever used it as a number. IMO it would be preferable to use uint16_t instead of a static array because it reduces the potential for misunderstandings related to sizeof(). IIRC sizeof(bitmask) would actually give you the size of (uint8_t*).",
       "parentUuid": "b3ac640c_82b064f8",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e4cd4a5_1af0460d",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-16T13:13:39Z",
+      "side": 1,
+      "message": "Well, it was patchset 15 of this CL when Andrey expressed the preference for array of uint8_t instead of uint16_t (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1112014/15/board/cr50/pinweaver_tpm_imports.c#33).",
+      "parentUuid": "c37fb3cd_032e4a19",
       "range": {
         "startLine": 117,
         "startChar": 1,
