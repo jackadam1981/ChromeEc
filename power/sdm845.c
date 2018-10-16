@@ -156,6 +156,14 @@ void chipset_reset_request_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&chipset_reset_request_handler_data, 0);
 }
 
+/* Cold reset AP after warm_reset-toggling finished */
+static void chipset_warm_reset_finished(void)
+{
+	CPRINTS("warm_reset-toggling finished -> cold reset AP");
+	chipset_reset(CHIPSET_RESET_AP_REQ);
+}
+DECLARE_DEFERRED(chipset_warm_reset_finished);
+
 void chipset_warm_reset_interrupt(enum gpio_signal signal)
 {
 	/*
@@ -206,7 +214,8 @@ void chipset_warm_reset_interrupt(enum gpio_signal signal)
 				       GPIO_SEL_1P8V);
 			ap_rst_overdriven = 0;
 
-			/* TODO(b/112723105): Do S0->S5->S0 transition here. */
+			hook_call_deferred(&chipset_warm_reset_finished_data,
+					   0);
 		}
 		/* If not overdriven, just a normal power-up, do nothing. */
 	}
