@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a3fe00cb_1deb4847",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-16T01:26:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f3004ac_690dde2f",
+      "range": {
+        "startLine": 869,
+        "startChar": 1,
+        "endLine": 869,
+        "endChar": 63
+      },
+      "revId": "364f9827edf13b7eaf1748891f1eed8818c1b3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f6c69b6_a81829b3",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c12c58d1_b2520dd7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-16T01:26:26Z",
+      "side": 1,
+      "message": "We could define CONFIG_CMD_GPIO_EXTENDED then use gpio_get_flags. That uses a extra 100 bytes or so.",
+      "parentUuid": "9f6c69b6_a81829b3",
+      "range": {
+        "startLine": 870,
+        "startChar": 8,
+        "endLine": 870,
+        "endChar": 39
+      },
+      "revId": "364f9827edf13b7eaf1748891f1eed8818c1b3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74873dd4_f4f2f299",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-16T01:20:10Z",
       "side": 1,
       "message": "why is this not an input any more? I mean even if we can\u0027t trust the level read from it, should it be guaranteed that it is not driving the output?\n\nOr does \u00270\u0027 mean \u0027not connected\u0027 in this case?",
+      "range": {
+        "startLine": 157,
+        "startChar": 34,
+        "endLine": 157,
+        "endChar": 35
+      },
+      "revId": "364f9827edf13b7eaf1748891f1eed8818c1b3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a89e326_67bea1a7",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-16T01:26:26Z",
+      "side": 1,
+      "message": "The 0 here means it\u0027s not an input\n\nReading 0 could mean the signal is high or low. I guess it could be used to make sure we\u0027re not driving it high.",
+      "parentUuid": "74873dd4_f4f2f299",
       "range": {
         "startLine": 157,
         "startChar": 34,
