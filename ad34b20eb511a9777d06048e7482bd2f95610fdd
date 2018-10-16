@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89d9c404_ea6de784",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-16T21:09:54Z",
+      "side": 1,
+      "message": "The last time I traced through this logic, the only thing that was actually keeping us from handling events in the TCPC suspended state was the GPIO level on the PD_RST_L pins.",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "ad34b20eb511a9777d06048e7482bd2f95610fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
