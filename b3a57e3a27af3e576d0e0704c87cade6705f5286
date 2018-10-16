@@ -22,6 +22,52 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33524028_2061aa9c",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-16T06:50:33Z",
+      "side": 1,
+      "message": "is there a particular CPU limitation that encourages the use\nof uint8_t across function calls?\nfor \u003cpeer\u003e and \u003cprotocol\u003e, it seems that you might as well\nname the enums and use them here.",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa7e421f_d7ef1a4b",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-16T06:50:33Z",
+      "side": 1,
+      "message": "maybe introduce a typedef for handles.",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
