@@ -22,6 +22,30 @@
       "revId": "9ee4ba35997b0a433da55406a62740083a75d663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b47be14_07ee1f27",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T07:01:21Z",
+      "side": 1,
+      "message": "Done.\nBut why? Both format and __format__ work.",
+      "parentUuid": "91de003c_01498a8c",
+      "range": {
+        "startLine": 1856,
+        "startChar": 15,
+        "endLine": 1856,
+        "endChar": 21
+      },
+      "revId": "9ee4ba35997b0a433da55406a62740083a75d663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
