@@ -22,6 +22,30 @@
       "revId": "837016e32dd225cfaa5d855c638df23791e0f1e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed64ff12_fd1d788a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-10-16T21:21:21Z",
+      "side": 1,
+      "message": "i think this code base could use bool in a ton of places, but it isn\u0027t currently ...",
+      "parentUuid": "9460a868_0a8665e8",
+      "range": {
+        "startLine": 1960,
+        "startChar": 1,
+        "endLine": 1960,
+        "endChar": 4
+      },
+      "revId": "837016e32dd225cfaa5d855c638df23791e0f1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
