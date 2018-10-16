@@ -83,6 +83,9 @@
 /* Also use the cr50 as a second factor authentication */
 #define CONFIG_U2F
 
+/* Add support for getting gpio flags */
+#define CONFIG_CMD_GPIO_EXTENDED
+
 /* USB configuration */
 #define CONFIG_USB
 #define CONFIG_USB_CONSOLE

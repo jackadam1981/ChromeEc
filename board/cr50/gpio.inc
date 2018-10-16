@@ -76,8 +76,12 @@ GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
 GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
 GPIO(AP_FLASH_SELECT, PIN(0, 2), GPIO_OUT_LOW)
 
-/* Pull this low to reset the AP. (We reset the EC with the RBOX.) */
-GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_INPUT)
+/*
+ * Pull this low to reset the AP. (We reset the EC with the RBOX.)
+ * This is pseudo open drain. This specific gpio is used in board.c. If the pin
+ * is changed from (0,4), you must update the use in board.c.
+ */
+GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_ODR_HIGH)
 
 /*
  * Indicate to EC when CCD is enabled. EC can pull this down too, to tell us if
@@ -146,10 +150,11 @@ PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
 PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
 /*
- * To allow the EC to drive the signal we set sys_rst_l_out as an input here and
- * only change it to an output when we want to assert the signal.
+ * The EC reference voltage may not match VDDIOM, so we can't trust SYS_RST_L as
+ * an input. The pin is pseudo open drain, so SYS_RST_L is asserted will be
+ * determined by checking if output is enabled.
  */
-PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
+PINMUX(GPIO(SYS_RST_L_OUT),   M0, 0)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
 PINMUX(GPIO(BATT_PRES_L),     M2, 0)
 PINMUX(GPIO(I2C_SCL_INA),     B0, DIO_INPUT)
