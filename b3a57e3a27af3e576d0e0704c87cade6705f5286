@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c15fcdd_b1cc0b87",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-16T06:27:13Z",
+      "side": 1,
+      "message": "did you mean to enable this task in this patch\nso the new files added in this patch also get\ncompiled?",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
