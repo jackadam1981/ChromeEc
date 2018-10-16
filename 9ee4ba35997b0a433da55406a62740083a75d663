@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91de003c_01498a8c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-10-16T06:54:47Z",
+      "side": 1,
+      "message": "should be __format__",
+      "range": {
+        "startLine": 1856,
+        "startChar": 15,
+        "endLine": 1856,
+        "endChar": 21
+      },
+      "revId": "9ee4ba35997b0a433da55406a62740083a75d663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
