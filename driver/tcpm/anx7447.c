@@ -38,7 +38,6 @@
 
 struct anx_state {
 	int i2c_slave_addr;
-	int mux_state;
 };
 
 static struct anx_state anx[CONFIG_USB_PD_PORT_COUNT];
@@ -472,11 +471,7 @@ void anx7447_tcpc_clear_hpd_status(int port)
 #ifdef CONFIG_USB_PD_TCPM_MUX
 static int anx7447_mux_init(int port)
 {
-	/* Nothing to do here, ANX initializes its muxes
-	 * as (MUX_USB_ENABLED | MUX_DP_ENABLED)
-	 */
-	anx[port].mux_state = MUX_USB_ENABLED | MUX_DP_ENABLED;
-
+	/* No work to do since TCPC init sets up device. */
 	return EC_SUCCESS;
 }
 
@@ -537,16 +532,36 @@ static int anx7447_mux_set(int port, mux_state_t mux_state)
 	rv |= mux_write(port, ANX7447_REG_TCPC_SWITCH_1, sw_sel);
 	rv |= mux_write(port, ANX7447_REG_TCPC_AUX_SWITCH, aux_sw);
 
-	anx[port].mux_state = mux_state;
-
 	return rv;
 }
 
 /* current mux state */
 static int anx7447_mux_get(int port, mux_state_t *mux_state)
 {
-	*mux_state = anx[port].mux_state;
+	int rv;
+	int reg;
+	mux_state_t state = 0;
 
+	/* Assume that all information is encoded correctly in switch 0 */
+	rv = mux_read(port, ANX7447_REG_TCPC_SWITCH_0, &reg);
+	if (rv)
+		return rv;
+
+	if (reg & 0x30)  {
+		state |= USB_PD_MUX_USB_ENABLED;
+
+		if (reg & 0x10)
+			state |= USB_PD_MUX_POLARITY_INVERTED;
+	}
+
+	if (reg & 0x03) {
+		state |= USB_PD_MUX_DP_ENABLED;
+
+		if (reg & 0x02)
+			state |= USB_PD_MUX_POLARITY_INVERTED;
+	}
+
+	*mux_state = state;
 	return EC_SUCCESS;
 }
 #endif /* CONFIG_USB_PD_TCPM_MUX */
