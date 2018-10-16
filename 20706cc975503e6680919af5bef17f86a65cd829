@@ -1202,6 +1202,75 @@
       "revId": "20706cc975503e6680919af5bef17f86a65cd829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2fe4643_99956474",
+        "filename": "include/usb_tc_vpd_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-16T17:44:19Z",
+      "side": 1,
+      "message": "yeah, this *definitely* doesn\u0027t need to be an instance variable",
+      "range": {
+        "startLine": 36,
+        "startChar": 19,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f1c2f8_4859c321",
+        "filename": "include/usb_tc_vpd_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-16T17:44:19Z",
+      "side": 1,
+      "message": "similar to the charge-through state machine; you\u0027re supposed to wait indefinitely in this state if the CC pins are right",
+      "range": {
+        "startLine": 271,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 57
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ec83b4_9d55730b",
+        "filename": "include/usb_tc_vpd_sm.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-16T17:44:19Z",
+      "side": 1,
+      "message": "is it guaranteed that CC_RP3A0_RD_L is driven low before DB_EN_OD goes low?",
+      "range": {
+        "startLine": 400,
+        "startChar": 1,
+        "endLine": 400,
+        "endChar": 26
+      },
+      "revId": "20706cc975503e6680919af5bef17f86a65cd829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
