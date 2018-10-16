@@ -22,6 +22,30 @@
       "revId": "ac6dbc663cb5116ed56a5db80e66a3501a40800b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f6fe7e_eb45f5b5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T05:50:55Z",
+      "side": 1,
+      "message": "Removed GSC_ON_USB.\n\nI prefer not to add filter support to -M. Usage doesn\u0027t print out any supported keys (and I think we don\u0027t want to either), which means people need to read the code to know what keys are supported. I think we can do the filtering in debugd instead.",
+      "parentUuid": "893f8fc5_22b7d1c7",
+      "range": {
+        "startLine": 2239,
+        "startChar": 26,
+        "endLine": 2239,
+        "endChar": 46
+      },
+      "revId": "ac6dbc663cb5116ed56a5db80e66a3501a40800b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

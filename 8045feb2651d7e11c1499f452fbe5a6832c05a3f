@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b855be21_8710a7c6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T05:50:55Z",
+      "side": 1,
+      "message": "Done. Thanks for the info!\nBtw, I couldn\u0027t find __attribte__((__printf__)). I think you mean __attribte__((format(__printf__)))?",
+      "parentUuid": "b9d579a8_f3736fd9",
+      "revId": "8045feb2651d7e11c1499f452fbe5a6832c05a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27bd540e_1a54d169",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "38725b89_4baaf6a7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T05:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27bd540e_1a54d169",
+      "revId": "8045feb2651d7e11c1499f452fbe5a6832c05a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5034cf93_1408d30a",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 9
@@ -50,6 +86,24 @@
       "revId": "8045feb2651d7e11c1499f452fbe5a6832c05a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b480b5f6_803868b3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-16T05:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5034cf93_1408d30a",
+      "revId": "8045feb2651d7e11c1499f452fbe5a6832c05a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
