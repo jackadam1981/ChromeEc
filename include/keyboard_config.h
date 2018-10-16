@@ -19,6 +19,8 @@
 #define KEYBOARD_COLS 13
 #define KEYBOARD_ROWS 8
 
+extern uint8_t keyboard_cols;
+
 #define KEYBOARD_ROW_TO_MASK(r) (1 << (r))
 
 /* Columns and masks for keys we particularly care about */
