@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d579a8_f3736fd9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-10-16T04:35:35Z",
+      "side": 1,
+      "message": "if you\u0027re going to make a printf passthrough, you should use __attribte__((__printf__)) so the compiler knows this.  there should be plenty of examples in the tree already.",
+      "revId": "8045feb2651d7e11c1499f452fbe5a6832c05a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27bd540e_1a54d169",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-10-16T04:35:35Z",
+      "side": 1,
+      "message": "include the key in the error message ?",
+      "revId": "8045feb2651d7e11c1499f452fbe5a6832c05a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5034cf93_1408d30a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1869,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-10-16T04:35:35Z",
+      "side": 1,
+      "message": "include the format ?",
+      "revId": "8045feb2651d7e11c1499f452fbe5a6832c05a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
