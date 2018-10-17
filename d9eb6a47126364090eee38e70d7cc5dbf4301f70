@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3b0fd0b9_d038530d",
+        "filename": "board/atlas/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T14:01:12Z",
+      "side": 1,
+      "message": "This could even decease overall code size if a board has more than one sensor driver as we would only need a single interrupt handler instead of one for each driver. The number of sensors is going to be less than 10 so the interrupt handler would need ~20-40 extra instructions for scanning in an interrupt handler. That should take less than 50uSec on our EC processors, right? 50usec delay seems worth getting rid of a manual config point that we can determine automatically.\n\nLet me know if my numbers are way off or what a reasonable trade off would be.",
+      "parentUuid": "4bc7205d_f1cafa8b",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "d9eb6a47126364090eee38e70d7cc5dbf4301f70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1777b8f_b740d451",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
