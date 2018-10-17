@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dc97fe7_906de5bb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-17T00:18:40Z",
+      "side": 1,
+      "message": "I realize that this is being done to handle the case for DragonEgg, but should this be \n#if defined(HAS_TASK_PD_INT_C0) || defined(HAS_TASK_PD_INT_C2) || defined(HAS_TASK_PD_INT_C2)\n\nOr maybe just the comment includes reference to systems that have ITE EC (built in TCPC), but an additional port with an separate TCPC. Instead of making this appear to ony be needed for DragonEgg,",
+      "range": {
+        "startLine": 2465,
+        "startChar": 4,
+        "endLine": 2465,
+        "endChar": 62
+      },
+      "revId": "65ab6cc7c9d9cab7191df86eb42377aa50cbde21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
