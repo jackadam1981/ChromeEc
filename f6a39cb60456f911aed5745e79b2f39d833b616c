@@ -34,6 +34,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fddb622_a43a08f1",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-17T18:55:44Z",
+      "side": 1,
+      "message": "is this something Randall mentioned in passing the other day? Is this a plan of record now? Note that Cr50 will not write a flag value unless current setting is 0xffffffff",
+      "parentUuid": "4f9f1c36_86ef9cfb",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
