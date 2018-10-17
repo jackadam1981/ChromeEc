@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f9579e5_99082d1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-17T00:08:13Z",
+      "side": 1,
+      "message": "What\u0027s the reason for this Create-only change? Without a bug it\u0027s hard to understand context, if any.",
+      "revId": "0dfe84f7d09e79c6dbe61e2a2a4fc5af921afe04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f706f98a_14f4edda",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-17T00:08:13Z",
+      "side": 1,
+      "message": "Does this really need to be events 1 and 2?\n\nIf not, it\u0027d make your macros a little nicer if TASK_EVENT_MOTION_FIRST_HW_EVENT_BIT was 0.",
+      "revId": "0dfe84f7d09e79c6dbe61e2a2a4fc5af921afe04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
