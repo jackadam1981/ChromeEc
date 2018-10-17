@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42fe8089_6ef5b739",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-17T23:43:37Z",
+      "side": 1,
+      "message": "I will change it",
+      "parentUuid": "d02a09b3_a4aacc46",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "2dc0f72d715deb3eee780e17f3c9749e8cb10e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87d61a21_5ff9f612",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-17T13:40:08Z",
       "side": 1,
       "message": "this section looks incorrect in patchset 14",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 37
+      },
+      "revId": "2dc0f72d715deb3eee780e17f3c9749e8cb10e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8700a4fc_ffe84d0c",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-17T23:43:37Z",
+      "side": 1,
+      "message": "Sorry, it\u0027s a mistake.",
+      "parentUuid": "87d61a21_5ff9f612",
       "range": {
         "startLine": 286,
         "startChar": 0,

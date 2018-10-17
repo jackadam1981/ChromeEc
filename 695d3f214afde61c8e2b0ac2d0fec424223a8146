@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "bdec7241_cd7ebbd3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-17T23:43:37Z",
+      "side": 1,
+      "message": "\u0027pause\u0027 and \u0027rep : nop\u0027 are equivalent but \u0027rep : nop\u0027 is more compatible with older x86 architecture.  For ISH\u0027s Lakemont core, both of them are working.\n\nwith \u0027rep: nop\u0027(or pause), the number of loop count are around 15% less and it saves CPU cycle and power.\n\nConstant 500:\nat 1MBps i2c speed, to wait for command data (2 bytes ~ 6 bytes) to be flushed from FIFO, it took ~ 125 loop counts without \u0027pause\u0027 and it is  ~ 102 counts. with \u0027pause\u0027 for 6 bytes command data. (about 8usec for 6 bytes including configuring \u0027repeated restart and read.   2 bytes command takes 28 loops.)\nIf 400Kbps is selected, the count will be 2.5 times more counts and 10 times for 100Kbps. \nI change from 500 to 2000 for 100Kbps support just in case.",
+      "parentUuid": "039d60c4_f36dc28a",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
@@ -162,6 +186,24 @@
     },
     {
       "key": {
+        "uuid": "9be6d782_64e3d2a1",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-17T23:43:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "31f8b408_92885d4f",
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21062812_c6f29f66",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
@@ -173,6 +215,24 @@
       "writtenOn": "2018-10-17T13:54:49Z",
       "side": 1,
       "message": "if the register is truly 16-bits why are we using 32-bit accesses?",
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6845f441_d5a29a00",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-17T23:43:37Z",
+      "side": 1,
+      "message": "This resister is 16bit and ISH is 32bit CPU.\nThe intention of 16 casting is to extract only lower 16bit, (0xFFFF \u0026 ....).",
+      "parentUuid": "21062812_c6f29f66",
       "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
