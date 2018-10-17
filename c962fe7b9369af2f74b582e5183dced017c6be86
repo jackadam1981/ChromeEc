@@ -22,6 +22,30 @@
       "revId": "c962fe7b9369af2f74b582e5183dced017c6be86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b4e551e_c9c812bc",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-17T17:47:35Z",
+      "side": 1,
+      "message": "I added more detail in the comment below to explain why the disable path is conditional.\n\nI don\u0027t think a bit can be used to track the sink path as that happens automatically prior to calling syv682x_vbus_sink_enable() which is where this flag would need to be set. The call pd_power_supply_reset(0) precedes in time the call to ppc_init(). But, since the there is no auto-enable of the source path, it\u0027s a safe assumption that the source path can\u0027t be enabled without the flag being set.",
+      "parentUuid": "c235ee53_b0f71f2f",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 56
+      },
+      "revId": "c962fe7b9369af2f74b582e5183dced017c6be86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
