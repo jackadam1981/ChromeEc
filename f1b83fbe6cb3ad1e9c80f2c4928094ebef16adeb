@@ -16,6 +16,29 @@
       "revId": "f1b83fbe6cb3ad1e9c80f2c4928094ebef16adeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8433cc_4bd6b7b3",
+        "filename": "board/atlas_ish/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-17T02:25:31Z",
+      "side": 1,
+      "message": "let\u0027s change to 1MHz in initial version.",
+      "range": {
+        "startLine": 27,
+        "startChar": 29,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "f1b83fbe6cb3ad1e9c80f2c4928094ebef16adeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
