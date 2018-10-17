@@ -22,6 +22,30 @@
       "revId": "a071eb70d7f89f56bd892c6a34376293c6ddc94c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c2444d5_b5527c7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-17T17:57:21Z",
+      "side": 1,
+      "message": "I changed. But I was told not to add \u0027BRANCH\u003d\u0027 any more from other patches and I didn\u0027t add here.",
+      "parentUuid": "1176c184_ee027d25",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "a071eb70d7f89f56bd892c6a34376293c6ddc94c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
