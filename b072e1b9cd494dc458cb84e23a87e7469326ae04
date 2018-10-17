@@ -971,6 +971,30 @@
       "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861f88e2_ecd53d98",
+        "filename": "driver/sensorhub_lsm6dsm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T15:34:29Z",
+      "side": 1,
+      "message": "Let\u0027s update the comment style to match",
+      "parentUuid": "7c60115a_00680b6a",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "b072e1b9cd494dc458cb84e23a87e7469326ae04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
