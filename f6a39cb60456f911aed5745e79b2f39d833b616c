@@ -16,6 +16,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9f1c36_86ef9cfb",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-17T18:39:33Z",
+      "side": 1,
+      "message": "just to double-check: the idea is to allow setting S/N on some special boards that have .Flags (indicating prepvt) but not .Type set at factory? and we don\u0027t need to allow S/N writes on prepvt boards that have BID.Type also set?",
+      "parentUuid": "2ceac748_3297ca9e",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
