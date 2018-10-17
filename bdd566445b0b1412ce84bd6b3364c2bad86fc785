@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "331f1759_6b8d8fe5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T18:58:40Z",
+      "side": 1,
+      "message": "EC doesn\u0027t have the IS_ENABLED concept/macro. It is all ifdefs :(",
+      "parentUuid": "f4872c65_1e320561",
+      "range": {
+        "startLine": 2909,
+        "startChar": 4,
+        "endLine": 2909,
+        "endChar": 8
+      },
+      "revId": "bdd566445b0b1412ce84bd6b3364c2bad86fc785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61632338_dd6fe2db",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bdd566445b0b1412ce84bd6b3364c2bad86fc785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ed6476_31db84a3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2917,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T18:58:40Z",
+      "side": 1,
+      "message": "good call. I reordered things a bit to make more sense.",
+      "parentUuid": "61632338_dd6fe2db",
+      "range": {
+        "startLine": 2915,
+        "startChar": 6,
+        "endLine": 2917,
+        "endChar": 45
+      },
+      "revId": "bdd566445b0b1412ce84bd6b3364c2bad86fc785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
