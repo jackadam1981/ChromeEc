@@ -2901,17 +2901,24 @@ void pd_task(void *u)
 				/* initial data role for source is DFP */
 				pd_set_data_role(port, PD_ROLE_DFP);
 
-				if (new_cc_state == PD_CC_DEBUG_ACC)
+				if (new_cc_state == PD_CC_DEBUG_ACC) {
 					pd[port].flags |=
 						PD_FLAGS_TS_DTS_PARTNER;
-
+				}
 #ifdef CONFIG_USBC_VCONN
-				/*
-				 * Start sourcing Vconn before Vbus to ensure
-				 * we are within USB Type-C Spec 1.3 tVconnON
-				 */
-				set_vconn(port, 1);
-				pd[port].flags |= PD_FLAGS_VCONN_ON;
+				else {
+					/*
+					 * Start sourcing Vconn before Vbus to
+					 * ensure we are within USB Type-C
+					 * Spec 1.3 tVconnON.
+					 *
+					 * Do not source Vconn when debug
+					 * accesory is detected.
+					 * Section 4.5.2.2.17.1 in USB spec v1-3
+					 */
+					set_vconn(port, 1);
+					pd[port].flags |= PD_FLAGS_VCONN_ON;
+				}
 #endif
 
 #ifndef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
