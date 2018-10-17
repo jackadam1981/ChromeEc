@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c235ee53_b0f71f2f",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T14:06:17Z",
+      "side": 1,
+      "message": "your CL comment is really helpful. Please add a comment inline saying we only want to disable the FET if it was previously on (since we absolute need to then), otherwise we will run the risk of turning of the SNK path when we don\u0027t want to.\n\nAlso, what about store EN_SNK_FET and EN_SRC_FET as to different bits and only turning off the FET if both are off (instead of leaving the FET on incase the SNK might be on), and leaving the FETs on if either bit is set?",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 56
+      },
+      "revId": "c962fe7b9369af2f74b582e5183dced017c6be86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
