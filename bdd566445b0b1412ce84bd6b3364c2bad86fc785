@@ -22,6 +22,29 @@
       "revId": "bdd566445b0b1412ce84bd6b3364c2bad86fc785",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61632338_dd6fe2db",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2917,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-17T18:03:33Z",
+      "side": 1,
+      "message": "I feel like this comment is in the wrong place. It\u0027s say don\u0027t source VCONN and then the first line of code is set_vconn(port,1). I would move this comment to right above the #ifdef",
+      "range": {
+        "startLine": 2915,
+        "startChar": 6,
+        "endLine": 2917,
+        "endChar": 45
+      },
+      "revId": "bdd566445b0b1412ce84bd6b3364c2bad86fc785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
