@@ -9,7 +9,13 @@
 
 #include "gsctool.h"
 
+/*
+ * Runs RO verification on the target specified in td using the description file
+ * desc_file_name. If show_machine_output is set, target's board ID will be
+ * outputted in a machine-friendly format.
+ */
 int verify_ro(struct transfer_descriptor *td,
-	      const char *desc_file_name);
+	      const char *desc_file_name,
+	      bool show_machine_output);
 
 #endif // __EXTRA_USB_UPDATER_VERIFY_RO_H
