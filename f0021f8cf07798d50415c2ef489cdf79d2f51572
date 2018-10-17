@@ -46,6 +46,30 @@
       "revId": "f0021f8cf07798d50415c2ef489cdf79d2f51572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d86690_2bb3a860",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-10-17T05:46:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ce8eda_7c013284",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 0
+      },
+      "revId": "f0021f8cf07798d50415c2ef489cdf79d2f51572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
