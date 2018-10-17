@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c133c474_e19cd4cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-17T16:38:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08e975bc_80d28434",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "2048642082fe0164a6dfdd0a3e811f9ca7e1f9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d2d20b9_4e3caa22",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "2048642082fe0164a6dfdd0a3e811f9ca7e1f9e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "912e6f54_b4634fe2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-10-17T16:38:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d2d20b9_4e3caa22",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "2048642082fe0164a6dfdd0a3e811f9ca7e1f9e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
