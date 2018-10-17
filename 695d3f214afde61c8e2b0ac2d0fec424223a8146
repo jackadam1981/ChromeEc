@@ -118,6 +118,64 @@
       "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039d60c4_f36dc28a",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-17T13:54:49Z",
+      "side": 1,
+      "message": "\u003e This file is actually chip/arch specific, so it is okay to have raw assembly for this arch in this file.\n\nThere\u0027s no need to have inline assembly in a driver for a peripheral. If you want a nop instruction provide an inline function (lives in some header file) that has the semantics you desire. \n\nWhat is the reason for doing a pause here anyway? What are the expectations for status to be set accordingly. Also, I see a hard coded \u0027500\u0027 below. That is assuming quite a lot of things: ish core speed, execution timing of pause, and somehow that works out to 500? This is a brittle construct.\n\nAlso, why is\u0027rep nop\u0027 being employed instead of \u0027pause\u0027 ?",
+      "parentUuid": "c8e389bd_465dd0ba",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f8b408_92885d4f",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-17T13:54:49Z",
+      "side": 1,
+      "message": "long line",
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21062812_c6f29f66",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-17T13:54:49Z",
+      "side": 1,
+      "message": "if the register is truly 16-bits why are we using 32-bit accesses?",
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
