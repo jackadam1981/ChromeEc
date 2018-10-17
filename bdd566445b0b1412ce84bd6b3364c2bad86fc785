@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4872c65_1e320561",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2018-10-17T17:58:38Z",
+      "side": 1,
+      "message": "Can you do an else if (IS_ENABLED(CONFIG_USBC_VCONN)) and remove the ifdef?",
+      "range": {
+        "startLine": 2909,
+        "startChar": 4,
+        "endLine": 2909,
+        "endChar": 8
+      },
+      "revId": "bdd566445b0b1412ce84bd6b3364c2bad86fc785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
