@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "47d2de9b_6ad11b57",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-17T23:41:57Z",
+      "side": 1,
+      "message": "I\u0027m not sure. I\u0027d still follow C++ style here.",
+      "parentUuid": "f2e7f7a7_22ddd17e",
+      "range": {
+        "startLine": 1326,
+        "startChar": 14,
+        "endLine": 1326,
+        "endChar": 23
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66216b52_51933c91",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 7
