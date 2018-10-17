@@ -22,6 +22,30 @@
       "revId": "513c137bcb43b1efcdb88ca0f0f62678fe1a553a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "794c1f80_46291a9a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-17T17:48:44Z",
+      "side": 1,
+      "message": "Good point, that\u0027s much cleaner and avoids the need to add braces to the if/else clause for the case where this call isn\u0027t compiled in.",
+      "parentUuid": "bd2332b7_afad6ede",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "513c137bcb43b1efcdb88ca0f0f62678fe1a553a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
