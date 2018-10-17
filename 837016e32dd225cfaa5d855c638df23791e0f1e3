@@ -46,6 +46,30 @@
       "revId": "837016e32dd225cfaa5d855c638df23791e0f1e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f84fea9_9b8f278a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-17T01:29:29Z",
+      "side": 1,
+      "message": "Done.\nOthers could be changed to bool in a separate CL.",
+      "parentUuid": "ed64ff12_fd1d788a",
+      "range": {
+        "startLine": 1960,
+        "startChar": 1,
+        "endLine": 1960,
+        "endChar": 4
+      },
+      "revId": "837016e32dd225cfaa5d855c638df23791e0f1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
