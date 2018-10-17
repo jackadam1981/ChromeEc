@@ -70,6 +70,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "891c7b80_37b199e9",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-17T22:59:12Z",
+      "side": 1,
+      "message": "I\u0027m also curious in what situation we would only know the .Type halfway through the factory process?",
+      "parentUuid": "fcb03277_c227b0a1",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
