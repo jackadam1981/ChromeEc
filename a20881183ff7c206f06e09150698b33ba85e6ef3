@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a1d1029_df584ba5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-17T03:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54dc0cac_73faf7cb",
+      "range": {
+        "startLine": 207,
+        "startChar": 26,
+        "endLine": 207,
+        "endChar": 29
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9beb0b94_109bba0d",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 7
@@ -68,6 +92,54 @@
       "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce00b189_f5fab695",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-17T03:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9beb0b94_109bba0d",
+      "range": {
+        "startLine": 1311,
+        "startChar": 11,
+        "endLine": 1311,
+        "endChar": 14
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "379c2939_e999e84e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-17T03:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a80526_9ca5b755",
+      "range": {
+        "startLine": 1311,
+        "startChar": 5,
+        "endLine": 1311,
+        "endChar": 10
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "f2e7f7a7_22ddd17e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-17T03:16:02Z",
+      "side": 1,
+      "message": "kNumSlots is the C++ constant naming style. I think we don\u0027t follow that in C? Example:\nhttps://chromium.git.corp.google.com/chromiumos/platform/ec/+/32afcfbca13f7f44f84015828be5898a055b4082/extra/usb_updater/verify_ro.c?pli\u003d1#195",
+      "parentUuid": "65e1c55d_3cc96892",
+      "range": {
+        "startLine": 1326,
+        "startChar": 14,
+        "endLine": 1326,
+        "endChar": 23
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac6c2413_02f47dbc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-17T03:16:02Z",
+      "side": 1,
+      "message": "This is C.",
+      "parentUuid": "826c3916_acbcca7c",
+      "range": {
+        "startLine": 1326,
+        "startChar": 1,
+        "endLine": 1326,
+        "endChar": 6
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66216b52_51933c91",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 7
@@ -137,6 +257,30 @@
       "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "161a33a3_e27a742d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1414,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-17T03:16:02Z",
+      "side": 1,
+      "message": "Yes, I did the check and didn\u0027t find any *_B usage.",
+      "parentUuid": "66216b52_51933c91",
+      "range": {
+        "startLine": 1413,
+        "startChar": 2,
+        "endLine": 1414,
+        "endChar": 30
+      },
+      "revId": "a20881183ff7c206f06e09150698b33ba85e6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
