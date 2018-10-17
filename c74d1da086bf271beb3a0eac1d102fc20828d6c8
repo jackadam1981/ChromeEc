@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2aeeb49_39f8866d",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T13:28:17Z",
+      "side": 1,
+      "message": "this register isn\u0027t documented in my datasheet. Do I have an out of date datasheet?",
+      "range": {
+        "startLine": 772,
+        "startChar": 8,
+        "endLine": 772,
+        "endChar": 27
+      },
+      "revId": "c74d1da086bf271beb3a0eac1d102fc20828d6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "294e0b65_92c763f8",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T13:28:17Z",
+      "side": 1,
+      "message": "since you are using the 65.536kHz clock, can\u0027t you just iterate 0x100 times to get exactly 1 second?",
+      "range": {
+        "startLine": 132,
+        "startChar": 18,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "c74d1da086bf271beb3a0eac1d102fc20828d6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
