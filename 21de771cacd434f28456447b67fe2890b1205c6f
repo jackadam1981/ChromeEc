@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c27f590_c60de699",
+        "filename": "board/atlas_ish/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-17T04:18:38Z",
+      "side": 1,
+      "message": "can we make these I2C_PORT_TP_SCL and I2C_PORT_TP_SDA\nand define these in board.h to the actual pin names\nin the same part of the file\nwhere you define I2C_PORT_TP?",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "21de771cacd434f28456447b67fe2890b1205c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a7fa63_5a8e683c",
+        "filename": "board/atlas_ish/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-17T04:18:38Z",
+      "side": 1,
+      "message": "2018, but who is counting...",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "21de771cacd434f28456447b67fe2890b1205c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cc1413_2d63b674",
+        "filename": "board/atlas_ish/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-17T04:18:38Z",
+      "side": 1,
+      "message": "this is the only one used in common code.",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "21de771cacd434f28456447b67fe2890b1205c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337541d8_a94407e1",
+        "filename": "board/atlas_ish/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-17T04:18:38Z",
+      "side": 1,
+      "message": "let\u0027s use the names from the schematics here to avoid confusion.\nso, ISH_I2C0_SCL...",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "21de771cacd434f28456447b67fe2890b1205c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
