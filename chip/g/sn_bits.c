@@ -165,10 +165,10 @@ static enum vendor_cmd_rc vc_sn_set_hash(enum vendor_cmd_cc code,
 
 	/*
 	 * Only allow writing sn bits if we can successfully verify
-	 * that the board ID has not been writen yet.
+	 * that the board ID type has not been writen yet.
 	 */
 	if (read_board_id(&bid) != EC_SUCCESS ||
-	    ~(bid.type & bid.type_inv & bid.flags) != 0) {
+	    ~(bid.type & bid.type_inv) != 0) {
 		*pbuf = EC_ERROR_ACCESS_DENIED;
 		return *pbuf;
 	}
