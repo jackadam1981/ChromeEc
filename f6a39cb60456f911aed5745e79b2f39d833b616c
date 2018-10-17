@@ -52,6 +52,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb03277_c227b0a1",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-17T22:56:28Z",
+      "side": 1,
+      "message": "Yea I don\u0027t think this change makes sense on it\u0027s own - it should go along with the change to writing the board id (allowing only the prepvt flag to be set, and allowing board id to be written if it is). \n\nIs there full agreement from everyone on doing this? Have factory team been looped into this plan and agree it\u0027s feasible?",
+      "parentUuid": "9fddb622_a43a08f1",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
