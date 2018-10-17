@@ -94,6 +94,30 @@
       "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e389bd_465dd0ba",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T13:40:08Z",
+      "side": 1,
+      "message": "This file is actually chip/arch specific, so it is okay to have raw assembly for this arch in this file.\n\nYou can define a macro at the top of this file for CPU_RELAX or leave it inline with a comment stating its function and purpose.",
+      "parentUuid": "ebcc9913_2b5670f6",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
