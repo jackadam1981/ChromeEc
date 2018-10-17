@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd2332b7_afad6ede",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-17T14:07:36Z",
+      "side": 1,
+      "message": "you could drop this down to after the if (enable) and write\n\nusb_charge_vbus_change(port, enable)\n\ninstead of writing it both places.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "513c137bcb43b1efcdb88ca0f0f62678fe1a553a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
