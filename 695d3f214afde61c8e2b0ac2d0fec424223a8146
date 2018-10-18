@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "eb9bd585_a5e8a616",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-18T21:54:13Z",
+      "side": 1,
+      "message": "When measured with a logic analyzer (last byte sent till \u0027Sr\u0027) is small (~ 8 uSec) but the majority of time is to prepare sending \u0027Sr\u0027 and this loop is even quicker/shorter.(regardless sending 2 bytes(28 counts) or 6 bytes(102 counts), the measured time is still almost same(~8uSec).  \nRegardless of using loop counter or timer, do we really need to set the limit of loop?\nIf we set the limitation(count or timelimit), these limit is hard to calculate and has to be based on observation.",
+      "parentUuid": "9a420d96_3feb8795",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
