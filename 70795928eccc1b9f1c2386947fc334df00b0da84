@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "165cc177_0b25e3c8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2872,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Because I\u0027m having pd_set_power_supply_ready() return a failure, in PD_STATE_HARD_RESET_RECOVER, we will transition to SRC_DISCONNECTED. I don\u0027t want to clear the counter then because the port should remain latched off. Essentially, I only want to clear the counter when we *detect* a disconnect.",
+      "parentUuid": "a501bc90_5c484a04",
+      "range": {
+        "startLine": 2872,
+        "startChar": 4,
+        "endLine": 2872,
+        "endChar": 30
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b437c5b_353507b5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -65,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9976afbc_f43df7b0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4357,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Hmm, yes it\u0027s probably best to indicate the OC condition in pd_handle_overcurrent(), but I actually think we shouldn\u0027t deassert the OC pin until we\u0027re just about to enable VBUS again. That doesn\u0027t happen exactly right here, but I think I should do that in SRC_STARTUP.",
+      "parentUuid": "c4488fca_5c276ff7",
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a17a24c6_ddb9f57e",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 1
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "6edaf03f_c11de2ec",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a17a24c6_ddb9f57e",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b08c398_1b7a8917",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 1
@@ -99,6 +165,30 @@
       "writtenOn": "2018-10-18T16:54:22Z",
       "side": 1,
       "message": "Can we say Source path disabled until physical disconnect (or something like that). Every time over current is detected, the source path (FET) is disabled, right?",
+      "range": {
+        "startLine": 47,
+        "startChar": 41,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eee2a9e_6532d271",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack. Yes, every time OC occurs, the source path is disabled.",
+      "parentUuid": "7b08c398_1b7a8917",
       "range": {
         "startLine": 47,
         "startChar": 41,
@@ -134,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "285249f9_bbeefe0f",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack. Although the values may be the same, the reasoning is different.",
+      "parentUuid": "dbe19c6e_ecfebb36",
+      "range": {
+        "startLine": 81,
+        "startChar": 32,
+        "endLine": 81,
+        "endChar": 49
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39f342c0_d8c3bd1a",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 1
@@ -145,6 +259,30 @@
       "writtenOn": "2018-10-18T16:54:22Z",
       "side": 1,
       "message": "Why are we returning access denied here?",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d917549f_0349cf3a",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Maybe EC_ERROR_BUSY is better? Essentially to indicate, \"yes, I got your request, but I\u0027ll do it in a bit.\"",
+      "parentUuid": "39f342c0_d8c3bd1a",
       "range": {
         "startLine": 87,
         "startChar": 9,
@@ -180,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "937a94fb_2c185c29",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "For the cases where the port is latched off, not due to rapid cycling, I didn\u0027t want to add a delay unnecessarily.",
+      "parentUuid": "2045a20a_c93958e6",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94eaf882_7672bb33",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 1
@@ -200,6 +362,30 @@
       "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bbe1ddb_1e6a06a6",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94eaf882_7672bb33",
+      "range": {
+        "startLine": 160,
+        "startChar": 15,
+        "endLine": 160,
+        "endChar": 60
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "b6e9cba5_c5500900",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18306a17_6fb8eeaa",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 60
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9931f785_a35ed2a6",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -240,6 +450,24 @@
       "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641a0d9b_51998dac",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9931f785_a35ed2a6",
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "a7fd76b7_d8ad469b",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18c483e3_1df679e6",
+      "range": {
+        "startLine": 14,
+        "startChar": 66,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eea1aff9_bb40d59e",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 1
@@ -286,6 +538,30 @@
       "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e0fb829_236cb658",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-18T23:51:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eea1aff9_bb40d59e",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 70
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
