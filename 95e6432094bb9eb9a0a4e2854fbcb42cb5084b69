@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "528943d5_816b7feb",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T19:20:24Z",
+      "side": 1,
+      "message": "KEYBOARD_COLS_MAX?  If keyboard cols start out as outputs, and then we reduce the count, we\u0027d leave some as outputs...",
+      "range": {
+        "startLine": 284,
+        "startChar": 45,
+        "endLine": 284,
+        "endChar": 58
+      },
+      "revId": "95e6432094bb9eb9a0a4e2854fbcb42cb5084b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc2e3826_eb66579e",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T19:20:24Z",
+      "side": 1,
+      "message": "Actually, this one\u0027s tricky.  Will a non-numpad keyboard have its ID bits following its actual column count or the the maximum?",
+      "range": {
+        "startLine": 300,
+        "startChar": 28,
+        "endLine": 300,
+        "endChar": 49
+      },
+      "revId": "95e6432094bb9eb9a0a4e2854fbcb42cb5084b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c8bdbf_a82d561c",
+        "filename": "common/keyboard_test.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T19:20:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this just be the actual count of columns?",
+      "range": {
+        "startLine": 81,
+        "startChar": 19,
+        "endLine": 81,
+        "endChar": 36
+      },
+      "revId": "95e6432094bb9eb9a0a4e2854fbcb42cb5084b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
