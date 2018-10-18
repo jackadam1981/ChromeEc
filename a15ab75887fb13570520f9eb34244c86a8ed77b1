@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af3a4931_a5b4a11a",
+        "filename": "board/atlas_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T16:57:47Z",
+      "side": 1,
+      "message": "why do you have this guard?\n\nThe previous CLs add these tasks for this specific board, and this is board-specific code",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 58
+      },
+      "revId": "a15ab75887fb13570520f9eb34244c86a8ed77b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
