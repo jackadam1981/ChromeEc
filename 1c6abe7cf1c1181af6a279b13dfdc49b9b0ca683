@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "878cbe55_34ff1116",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T06:51:59Z",
+      "side": 1,
+      "message": "Again, theoretically it should have the same range so both should be ssize_t.\n\nBut since there\u0027s clear limitation(HID_SUBSYS_MAX_PAYLOAD_SIZE) and it is callback, I don\u0027t think there\u0027s issue. Many Linux functions get size_t but return int.\nIt\u0027s because those functions don\u0027t want to accept negative for buffer size but still want to return error(negative) and there\u0027s clear limitation in buffer size.\n\nFor me, having size_t(or ssize_t) for both buf_size and return means there\u0027s no limitation. like memcpy and strncpy don\u0027t have limitation check.",
+      "parentUuid": "6e591627_48fbbb38",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "1c6abe7cf1c1181af6a279b13dfdc49b9b0ca683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "836d1dba_c34063b2",
         "filename": "chip/ish/hid_device.h",
         "patchSetId": 5
