@@ -22,6 +22,30 @@
       "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ba4484_c800bc04",
+        "filename": "chip/ish/ish_fwst.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T03:16:52Z",
+      "side": 1,
+      "message": "I\u0027m sorry. it\u0027s my mistake. I changed the name but I didn\u0027t apply it with this patch since I believe it should be done separately. Anyway, I changed it to the previous name.",
+      "parentUuid": "2c8f9b31_455354d9",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
