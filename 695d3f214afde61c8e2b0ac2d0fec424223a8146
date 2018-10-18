@@ -265,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "cb5ffcbb_ecff4d55",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-18T23:23:11Z",
+      "side": 1,
+      "message": "New implementation with hw timer will be like this:\n\n#define I2C_TX_FLUSH_TIMEOUT 200;\n\n\texpire_ts \u003d __hw_clock_source_read() + I2C_TX_FLUSH_TIMEOUT;\n\n\tif (in_size \u003e (ISH_I2C_FIFO_SIZE - out_size)) {\n\t\t\n\t\twhile ((i2c_mmio_read(ctx-\u003ebase, IC_STATUS) \u0026\n\t\t\t(1 \u003c\u003c IC_STATUS_TFE)) \u003d\u003d 0) {\n\n\t\t\tif (__hw_clock_source_read() \u003e\u003d expire_ts) {\n\t\t\t\tctx-\u003eerror_flag \u003d 1;\n\t\t\t\tbreak;\n\t\t\t}\n\t\t\tCPU_RELAX();\n\t\t}\n\t}",
+      "parentUuid": "eb9bd585_a5e8a616",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
