@@ -22,6 +22,30 @@
       "revId": "16151fa764685e4b99c5a99af107f9ffc69f61ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c945953_ce2f3994",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-18T17:40:23Z",
+      "side": 1,
+      "message": "Boards with/without a keypad will set KEYBOARD_COLS to 15 and 13, respectively. This is a build time config (to avoid allocating space unnecessarily).\n\nFor the binary which supports both keyboards, we can let it change the size dynamically (through an API as you suggested).",
+      "parentUuid": "29c36633_bcca419d",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "16151fa764685e4b99c5a99af107f9ffc69f61ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
