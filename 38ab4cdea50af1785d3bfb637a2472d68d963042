@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae8c6ba4_96de31a5",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T02:46:48Z",
+      "side": 1,
+      "message": "Suggest KEYBOARD_COLS_MAX and define it to 15? 16?\nAlso maybe KEYBOARD_COLS_NO_NUMPAD and KEYBOARD_COLS_WITH_NUMPAD\nAnd if you feel snarky, KEYBOARD_COLS_TABLET\u003d0 ;)\n\nThat will force you to find all places to change.\nSuch as the definition of struct keyboard_scan_config in keyboard_scan.h, which still uses this.",
+      "parentUuid": "4937c499_847f9ce9",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "38ab4cdea50af1785d3bfb637a2472d68d963042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf86c6f0_ae145fc0",
         "filename": "include/keyboard_config.h",
         "patchSetId": 3
