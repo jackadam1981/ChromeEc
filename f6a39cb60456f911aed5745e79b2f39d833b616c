@@ -219,6 +219,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d280ff2c_ff2fb56f",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000316
+      },
+      "writtenOn": "2018-10-18T17:07:43Z",
+      "side": 1,
+      "message": "Could we just write a totally-random serial number into PreMP boards just before setting the PreMP flag?\n\nThen you could match against that on your test server.",
+      "parentUuid": "27ce3396_28858687",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
