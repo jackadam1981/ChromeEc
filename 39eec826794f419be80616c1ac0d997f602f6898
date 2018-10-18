@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "214228d5_8bac86a0",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-18T23:36:13Z",
+      "side": 1,
+      "message": "\u003e Why fpstore after routine call ? \n\u003e \u003d\u003d\u003e we don\u0027t allow FPU math operation in interrupt context and it should be in tasks.  \n\nHow are you preventing that? Are you disabling fpu instructions w/ a flag flip?\n\n\u003e \n\u003e FPU context will not saved if current_task (currently interrupted task) will resume after this interrupt.(we don\u0027t have to save it.) \n\u003e If different task is scheduled, FPU context will be stored current_task\u0027s stack and new task\u0027s previously stored-FPU context(as well as CPU context) will be restored. \n\u003e CPU context should be stored(pusha) regardless.",
+      "parentUuid": "6d0a2ff3_97b5a8de",
+      "revId": "39eec826794f419be80616c1ac0d997f602f6898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36edb981_912f4677",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 6

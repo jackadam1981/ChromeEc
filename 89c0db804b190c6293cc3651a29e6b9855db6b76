@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ee58362_2f439259",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-18T23:36:13Z",
+      "side": 1,
+      "message": "Why are we doing all this work here? I feel like we should just be jmp\u0027ing to the epilogue that is common code. We\u0027re consuming all thee bytes for each instance of DECLARE_IRQ_ usage.\n\nI would expect the sequence to be:\n\npusha\nadd $1, __in_isr\npush $irq_epilogue\njmp #routine\n\n\nin switch.S:\n\n.global irq_epilogue\nirq_epilogue:\npush $0\npush $0\ncall switch_handler\naddl $0x08, %esp\ntest %eax, %eax\njz 1f\n...\npopa\niret\n\nit could be broken up more, but currently you are duplicating many code paths that are the same in both switch.S and here. I don\u0027t understand why all of this duplicated.",
+      "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
