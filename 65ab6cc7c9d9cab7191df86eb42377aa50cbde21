@@ -22,6 +22,30 @@
       "revId": "65ab6cc7c9d9cab7191df86eb42377aa50cbde21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de93b182_7b0a9bfa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T17:31:16Z",
+      "side": 1,
+      "message": "I added c0, c1, and c2. That does feel more correct looking at it again. I removed the comment about dragongg",
+      "parentUuid": "8dc97fe7_906de5bb",
+      "range": {
+        "startLine": 2465,
+        "startChar": 4,
+        "endLine": 2465,
+        "endChar": 62
+      },
+      "revId": "65ab6cc7c9d9cab7191df86eb42377aa50cbde21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
