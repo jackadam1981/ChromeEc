@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93add938_a46a065b",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T17:01:25Z",
+      "side": 1,
+      "message": "pick a config here, we normally don\u0027t unconditionally include somethign",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "6a06b3cb01a61953305f6ddf4d688c486d865d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0609d020_31c92bad",
+        "filename": "chip/ish/i2c_hid_master.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T17:01:25Z",
+      "side": 1,
+      "message": "s/HIS/HID/",
+      "range": {
+        "startLine": 6,
+        "startChar": 5,
+        "endLine": 6,
+        "endChar": 6
+      },
+      "revId": "6a06b3cb01a61953305f6ddf4d688c486d865d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de1068d_6e027af7",
+        "filename": "chip/ish/i2c_hid_master.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T17:01:25Z",
+      "side": 1,
+      "message": "nit: Please remove the spaces at the end of lines (here and other places in file)\n\nrepo presubmit checks should catch these kinds of error, are you using presubmit check before uploading?",
+      "range": {
+        "startLine": 127,
+        "startChar": 50,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "6a06b3cb01a61953305f6ddf4d688c486d865d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
