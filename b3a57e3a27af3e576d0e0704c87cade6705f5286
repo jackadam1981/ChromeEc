@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5afcc749_9fe1ea6a",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T03:53:27Z",
+      "side": 1,
+      "message": "or ... name the existing enum containing IPC_PROTOCOL_* and use\nthat as a type here.  not sure we have strict type checking on\nenums enabled, but hopefully coverity will catch any misuse.\n\nsame with the IPC_PEER_* enum.",
+      "parentUuid": "1dd4bc8e_f3d70886",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa7e421f_d7ef1a4b",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 5

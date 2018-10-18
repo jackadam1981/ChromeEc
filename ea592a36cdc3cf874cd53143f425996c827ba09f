@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5420e82_ee7c9535",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T03:53:27Z",
+      "side": 1,
+      "message": "most of these macros would be cleaner if they were\nimplemented as static inline functions.\nfor example, you already have ipc_get_if_ctx()\nwhich is almost this macro.",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "ea592a36cdc3cf874cd53143f425996c827ba09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29ff2bd4_66888796",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T03:53:27Z",
+      "side": 1,
+      "message": "if you\u0027re going to pass in a size_t and return\nbuf_size on success,\nyou\u0027ll want to return a ssize_t.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "ea592a36cdc3cf874cd53143f425996c827ba09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
