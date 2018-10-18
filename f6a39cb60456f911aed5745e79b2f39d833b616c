@@ -201,6 +201,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ce3396_28858687",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-10-18T16:51:50Z",
+      "side": 1,
+      "message": "Specifically, what I want to be able to do is to TEST Zero-Touch with a Pre-MP board (assuming DVTs and such early machines are using Pre-MP boards). That TEST will be against the TEST PCA and DMServer. In production, non-MP devices are not allowed to use ZT. In Google3, see https://cs.corp.google.com/piper///depot/google3/java/com/google/wireless/android/enterprise/devicemanagement/chrome/operations/CertificateBasedRegisterDeviceOperation.java?rcl\u003d215474308\u0026l\u003d365 (the flag there is only set to true for the test DMServer).",
+      "parentUuid": "33381fa3_e792458d",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
