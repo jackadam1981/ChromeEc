@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "3c2a5f99_b0a35fc9",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T05:26:07Z",
+      "side": 1,
+      "message": "I don\u0027t think validity of variable of enum type is checked in both compile time and run-time.\n\nEven although I don\u0027t think it is there but let\u0027s say there\u0027s compile time range check is there.\nI don\u0027t see big benefit using enum with name for protocol. Because I still need \"_COUNT\" in enum which is invalid as an input from user but should be used to check validity of protocol value from IPC. Due to this, even if I use enum XXX type, I still have to check if the protocol from user is _COUNT or not since _COUNT in enum but is not valid input from user.",
+      "parentUuid": "5afcc749_9fe1ea6a",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa7e421f_d7ef1a4b",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 5
@@ -164,6 +188,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99324d06_126b73b6",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T05:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa07418_782d3565",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

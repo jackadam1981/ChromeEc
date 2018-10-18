@@ -45,6 +45,30 @@
       "revId": "ea592a36cdc3cf874cd53143f425996c827ba09f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18bec4aa_257c55d1",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T05:26:07Z",
+      "side": 1,
+      "message": "Yes, just before release, I also considered to changing size_t to ssize_t but because\n- input buffer size cannot be negative.\n- we have limit in size of input and return error if it\u0027s longer than limit. so I don\u0027t need to worry about different ranges bet \"buf_size\" and return size.\n- the limit is clearly defined in this file.\n- I\u0027m lazy(?) : If it\u0027s only this then I would change but there\u0027re several places so I didn\u0027t change while justifying with the above.\n\nIf you really cannot accept this than I\u0027ll change",
+      "parentUuid": "29ff2bd4_66888796",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "ea592a36cdc3cf874cd53143f425996c827ba09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
