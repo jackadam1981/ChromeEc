@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c8f9b31_455354d9",
+        "filename": "chip/ish/ish_fwst.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-18T00:55:26Z",
+      "side": 1,
+      "message": "in registers.h, it seems to be defined ad IPC_ISH_FWSTS. did you rename it in registers.h ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
