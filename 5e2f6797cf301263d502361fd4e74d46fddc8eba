@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "328bb7d8_134f6808",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T04:16:38Z",
+      "side": 1,
+      "message": "(fw_addr)",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 11
+      },
+      "revId": "5e2f6797cf301263d502361fd4e74d46fddc8eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc82043_35a24a2a",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T04:16:38Z",
+      "side": 1,
+      "message": "you actually don\u0027t want to truncate to 8 bits here because that\ndefeats some of the bound checking in HECI_IS_VALID_CLIENT_ADDR.",
+      "range": {
+        "startLine": 84,
+        "startChar": 29,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "5e2f6797cf301263d502361fd4e74d46fddc8eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a3cc90_d9ab87c7",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T04:16:38Z",
+      "side": 1,
+      "message": "i think you actually want uintptr_t instead of uint32_t here.\nhandle should probably be (handle).",
+      "range": {
+        "startLine": 84,
+        "startChar": 39,
+        "endLine": 84,
+        "endChar": 47
+      },
+      "revId": "5e2f6797cf301263d502361fd4e74d46fddc8eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e895b8e3_f6ca925a",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T04:16:38Z",
+      "side": 1,
+      "message": "(fw_addr)",
+      "range": {
+        "startLine": 85,
+        "startChar": 59,
+        "endLine": 85,
+        "endChar": 66
+      },
+      "revId": "5e2f6797cf301263d502361fd4e74d46fddc8eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ea5d72_88eaec31",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T04:16:38Z",
+      "side": 1,
+      "message": "do you need this cast?  if so, it should probably be intptr_t.",
+      "range": {
+        "startLine": 85,
+        "startChar": 49,
+        "endLine": 85,
+        "endChar": 59
+      },
+      "revId": "5e2f6797cf301263d502361fd4e74d46fddc8eba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
