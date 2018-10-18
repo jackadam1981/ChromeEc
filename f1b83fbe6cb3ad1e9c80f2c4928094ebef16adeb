@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "147ac04e_60452a03",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-18T18:22:03Z",
+      "side": 0,
+      "message": "this is necessary for older HC based build.  \nWhy don\u0027t we use conditional flag, \"#ifdef CONFIG_HOSTCMD_LPC\" ?",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 1
+      },
+      "revId": "f1b83fbe6cb3ad1e9c80f2c4928094ebef16adeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
