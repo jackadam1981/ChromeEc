@@ -13,3 +13,4 @@ BASEBOARD:=octopus
 
 board-y=board.o
 board-$(CONFIG_BATTERY_SMART)+=battery.o
+board-$(CONFIG_LED_COMMON)+=led.o
