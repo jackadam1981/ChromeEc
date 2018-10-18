@@ -13,6 +13,7 @@
 
 #include "common.h"
 #include "gpio.h"
+#include "keyboard_config.h"
 
 /* Column values for keyboard_raw_drive_column() */
 enum keyboard_column_index {
@@ -77,5 +78,13 @@ static inline void keyboard_raw_gpio_interrupt(enum gpio_signal signal) { }
  * @return non-zero if keyboard pins are shorted.
  */
 int keyboard_factory_test_scan(void);
+
+static inline int keyboard_raw_get_cols(void) {
+	return keyboard_cols;
+}
+
+static inline void keyboard_raw_set_cols(int cols) {
+	keyboard_cols = cols;
+}
 
 #endif  /* __CROS_EC_KEYBOARD_RAW_H */
