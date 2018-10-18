@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c13a05b1_bf093e26",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-18T23:51:13Z",
+      "side": 1,
+      "message": "It\u0027s currently a unused feature. If a keyboard maker puts ID pins right after scan columns, we can\u0027t support variable column size with a single binary. Comments added.",
+      "parentUuid": "bc2e3826_eb66579e",
+      "range": {
+        "startLine": 300,
+        "startChar": 28,
+        "endLine": 300,
+        "endChar": 49
+      },
+      "revId": "95e6432094bb9eb9a0a4e2854fbcb42cb5084b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04c8bdbf_a82d561c",
         "filename": "common/keyboard_test.c",
         "patchSetId": 5
