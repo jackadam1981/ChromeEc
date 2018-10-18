@@ -129,6 +129,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a752a580_328545ee",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-18T03:55:36Z",
+      "side": 1,
+      "message": "Ok so IIUC, the goal is to reduce the number of early prototype devices that might be able to impersonate a serial number for ZTE?\n\nAre we planning to just flip the \u0027premp\u0027 bit (bit 7 in flags) from 1 to 0 in the case where we flash a PreMP image? \n\nIf so, then those devices will never be eligible for ZTE, so don\u0027t need a serial number, and we don\u0027t need this change?",
+      "parentUuid": "d1d93511_d51e00b8",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
