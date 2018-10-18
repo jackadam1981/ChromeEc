@@ -272,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "8cdb3e51_fc58d3c1",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-18T09:37:39Z",
+      "side": 1,
+      "message": "The expected_payload_len solution you have now seems reasonable.",
+      "parentUuid": "0847aa0a_5510369a",
+      "range": {
+        "startLine": 472,
+        "startChar": 25,
+        "endLine": 474,
+        "endChar": 37
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bda5ee90_c6305581",
         "filename": "common/pinweaver.c",
         "patchSetId": 32
@@ -401,6 +425,30 @@
       "side": 1,
       "message": "I don\u0027t understand. validate_request_with_wrapped_leaf which is called right before this, does the validation of the leaf and checks the hmac. We cannot change the leaf before the hmac is computed and validated, because it would affect the computed hmac. The migration happens here in the else branch. Do you suggest doing it inside validate_request_with_wrapped_leaf, after decrypt_leaf is done?",
       "parentUuid": "10737801_c1bcbbee",
+      "range": {
+        "startLine": 1031,
+        "startChar": 0,
+        "endLine": 1032,
+        "endChar": 66
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c01d10_c9b0799d",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-18T09:37:39Z",
+      "side": 1,
+      "message": "Yes, all version checks should go with the decoding logic ( so whatever \"business logic\" we have doesn\u0027t have to worry about versioning. We might even consider hoisting validate_request_with_wrapped_leaf to pw_handle_request so all the decoding / version compat handling can be in one place? Allen, WDYT?",
+      "parentUuid": "3faf4d54_71d6f9a4",
       "range": {
         "startLine": 1031,
         "startChar": 0,
@@ -754,6 +802,30 @@
       "side": 1,
       "message": "Well, it was patchset 15 of this CL when Andrey expressed the preference for array of uint8_t instead of uint16_t (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1112014/15/board/cr50/pinweaver_tpm_imports.c#33).",
       "parentUuid": "c37fb3cd_032e4a19",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "4852b63da5b3f360bd49a11bfece61f31974ed23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42fd524d_183c7e59",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 32
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-10-18T09:37:39Z",
+      "side": 1,
+      "message": "I agree with Allen. And instead of memcpy you can just write\n\npcrSelect[0] \u003d bitmask;\npcrSelect[1] \u003d (bitmask \u003e\u003e 8);\n\nWhich is simple and IMHO clearer than the memcpy.\n\nLet\u0027s see what Andrey says though - it\u0027s possible the convoluted assignment logic with the loop just seemed overly complex to him?",
+      "parentUuid": "8e4cd4a5_1af0460d",
       "range": {
         "startLine": 117,
         "startChar": 1,
