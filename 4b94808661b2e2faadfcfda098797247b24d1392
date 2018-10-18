@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b9dc639_bd2dde58",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T02:43:10Z",
+      "side": 1,
+      "message": "Should we have two constants\n\nKEYBOARD_COLS_WITH_NUMPAD\nKEYBOARD_COLS_NO_NUMPAD",
+      "range": {
+        "startLine": 948,
+        "startChar": 18,
+        "endLine": 948,
+        "endChar": 20
+      },
+      "revId": "4b94808661b2e2faadfcfda098797247b24d1392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
