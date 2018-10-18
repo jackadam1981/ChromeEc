@@ -22,6 +22,30 @@
       "revId": "dedad8e5fc60ea6cd2c8e2c69f7fa716658bdc5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e4f2e66_0a89f982",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T17:33:49Z",
+      "side": 1,
+      "message": "I liked the consistency across all of the boards, but I could be convinced to turn this entire IRS into line 70 (with 0 hard-coded as the port) if you feel strongly about it.",
+      "parentUuid": "bdfddeaf_1bc0e046",
+      "range": {
+        "startLine": 62,
+        "startChar": 9,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "dedad8e5fc60ea6cd2c8e2c69f7fa716658bdc5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
