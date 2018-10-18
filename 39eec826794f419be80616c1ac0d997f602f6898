@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d0a2ff3_97b5a8de",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-18T19:57:20Z",
+      "side": 1,
+      "message": "Why fpstore after routine call ? \n\u003d\u003d\u003e we don\u0027t allow FPU math operation in interrupt context and it should be in tasks.  \n\nFPU context will not saved if current_task (currently interrupted task) will resume after this interrupt.(we don\u0027t have to save it.) \nIf different task is scheduled, FPU context will be stored current_task\u0027s stack and new task\u0027s previously stored-FPU context(as well as CPU context) will be restored. \nCPU context should be stored(pusha) regardless.",
+      "parentUuid": "928ad30d_c281bbc6",
+      "revId": "39eec826794f419be80616c1ac0d997f602f6898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36edb981_912f4677",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2018-10-17T20:06:13Z",
       "side": 1,
       "message": "Why aren\u0027t we just guarding around the frstor and fnsave? Does the continuation with \u0027\\\u0027 causing grief? It seems really silly to duplicate all this logic.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 21
+      },
+      "revId": "39eec826794f419be80616c1ac0d997f602f6898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33d920f_626d8c1b",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-18T19:57:20Z",
+      "side": 1,
+      "message": "Changed with external macro.",
+      "parentUuid": "36edb981_912f4677",
       "range": {
         "startLine": 87,
         "startChar": 0,
