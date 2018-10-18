@@ -22,6 +22,30 @@
       "revId": "1f29eb34036e7454910820e4281f172c8b583e8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7386ad_ef44776b",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-10-18T18:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f454bd8a_be4844f9",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "1f29eb34036e7454910820e4281f172c8b583e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
