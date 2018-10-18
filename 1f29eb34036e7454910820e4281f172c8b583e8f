@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f454bd8a_be4844f9",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T02:20:04Z",
+      "side": 1,
+      "message": "This was actually a bit easier to read before.  Suggest splitting the long lines into 4+4 rather than 6+2.",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "1f29eb34036e7454910820e4281f172c8b583e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
