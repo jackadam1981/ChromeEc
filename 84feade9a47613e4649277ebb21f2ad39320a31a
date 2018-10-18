@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10a92da9_e1e8051a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T17:21:57Z",
+      "side": 1,
+      "message": "I am a little behind on these register value.\n\nWhat do all of the constant represent?\n\nI figured 0xa0 and 0 are the register address and value you want to write, but what is everything else?",
+      "range": {
+        "startLine": 514,
+        "startChar": 29,
+        "endLine": 517,
+        "endChar": 39
+      },
+      "revId": "84feade9a47613e4649277ebb21f2ad39320a31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
