@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4937c499_847f9ce9",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T02:31:27Z",
+      "side": 1,
+      "message": "No longer true?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "38ab4cdea50af1785d3bfb637a2472d68d963042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf86c6f0_ae145fc0",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T02:31:27Z",
+      "side": 1,
+      "message": "Can this be keyboard_raw_get_cols() in keyboard_raw.h?\n\nThat is, don\u0027t expose a mutable global variable.  If keyboard_raw.c isn\u0027t figuring out the size on its own, then it\u0027d be ok to have keyboard_raw_set_cols() as well.\n\nBut just keyboard_cols makes it hard to tell who\u0027s changing it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "38ab4cdea50af1785d3bfb637a2472d68d963042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
