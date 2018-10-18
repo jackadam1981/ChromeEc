@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e591627_48fbbb38",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T06:06:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ded44601_3f782560",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "1c6abe7cf1c1181af6a279b13dfdc49b9b0ca683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "836d1dba_c34063b2",
         "filename": "chip/ish/hid_device.h",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "1c6abe7cf1c1181af6a279b13dfdc49b9b0ca683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8905b1ee_2a94862e",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T06:06:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "836d1dba_c34063b2",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "1c6abe7cf1c1181af6a279b13dfdc49b9b0ca683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
