@@ -16,6 +16,24 @@
       "revId": "90aba9adad1340a12c8916cf6f4c6a292a3e4f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29cf54a6_ac97942b",
+        "filename": "power/sdm845.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-18T22:15:04Z",
+      "side": 1,
+      "message": "It does the best to handle all the combinations of WARM_RESET_L and POWER_GOOD. In most cases, the POWER_GOOD won\u0027t drop. It may happen on some transitional cases, like:\n * warm_reset holds down during the S0 -\u003e S5;\nor debug scenarios, like:\n * when warm_reset holding low, someone types \"apshutdown\".",
+      "parentUuid": "49866e99_4eae9d3d",
+      "revId": "90aba9adad1340a12c8916cf6f4c6a292a3e4f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
