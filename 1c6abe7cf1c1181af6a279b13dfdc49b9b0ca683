@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ded44601_3f782560",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T04:24:11Z",
+      "side": 1,
+      "message": "all of these functions returning a value related to size_t buf_size\nshould probably return ssize_t.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 4
+      },
+      "revId": "1c6abe7cf1c1181af6a279b13dfdc49b9b0ca683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836d1dba_c34063b2",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-18T04:24:11Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 35,
+        "startChar": 20,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "1c6abe7cf1c1181af6a279b13dfdc49b9b0ca683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
