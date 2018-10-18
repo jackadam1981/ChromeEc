@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ab88612f_a9b86485",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T02:39:53Z",
+      "side": 1,
+      "message": "set?",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ceac748_3297ca9e",
         "filename": "chip/g/sn_bits.c",
         "patchSetId": 1
@@ -85,6 +108,24 @@
       "side": 1,
       "message": "I\u0027m also curious in what situation we would only know the .Type halfway through the factory process?",
       "parentUuid": "fcb03277_c227b0a1",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1d93511_d51e00b8",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T02:39:53Z",
+      "side": 1,
+      "message": "We should know early on in the build if this is PreMP or MP Cr50, since we flash one or the other of them.\n\nBut if this is Proto0 or EVT, we never get to factory finalize so never write the BoardID or SN.\n\nThe idea is that we should write what we know early, so that PreMP systems can never claim to be MP systems, at least as far as their usability for zero-touch is concerned.",
+      "parentUuid": "891c7b80_37b199e9",
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
