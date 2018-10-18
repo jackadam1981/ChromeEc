@@ -237,6 +237,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1446b8e4_436a21a1",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-10-18T19:08:13Z",
+      "side": 1,
+      "message": "I am sure we could, but we would also need the full SN to be in the VPD since INFO1 only has bits of a hash. So at that point we\u0027re basically asking the factory for a more complicated step, which may not be reasonable, rather than some in dev and test being able to write the SN and bits they want as needed.",
+      "parentUuid": "d280ff2c_ff2fb56f",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
