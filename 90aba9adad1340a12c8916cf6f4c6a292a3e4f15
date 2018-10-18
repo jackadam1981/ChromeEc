@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49866e99_4eae9d3d",
+        "filename": "power/sdm845.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-10-18T21:12:44Z",
+      "side": 1,
+      "message": "When would the interrupt occur while POWER_GOOD drops? Assuming the pull up is inside the PMIC, I can\u0027t figure out when this would happen except for a case where the AP is rebooting or shutting down at exactly the same time as the warm reset signal being asserted. I suppose that is possible?\n\nJust saying this feels racy but I don\u0027t think we can do anything better without making PS_HOLD pure output on EC and adding extra hardware to tie PS_HOLD up to the POWER_GOOD signal externally.",
+      "revId": "90aba9adad1340a12c8916cf6f4c6a292a3e4f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
