@@ -22,6 +22,30 @@
       "revId": "ad34b20eb511a9777d06048e7482bd2f95610fdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ce06575_432edc6e",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-18T17:48:22Z",
+      "side": 1,
+      "message": "The tcpc_alert_mask contains the ignore if RST asserted logic\n\nFor ignoring the alert while in PD suspend, the higher priority task loop looks for pd_disabled (or something like that)",
+      "parentUuid": "89d9c404_ea6de784",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "ad34b20eb511a9777d06048e7482bd2f95610fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
