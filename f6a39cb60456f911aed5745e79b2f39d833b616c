@@ -183,6 +183,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33381fa3_e792458d",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-10-18T16:23:44Z",
+      "side": 1,
+      "message": "But that\u0027s assuming that testing only starts with prod boards. Isn\u0027t that a big assumption?",
+      "parentUuid": "2c20da3a_faf7d6e3",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
