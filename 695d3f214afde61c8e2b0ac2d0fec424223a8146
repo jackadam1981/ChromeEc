@@ -289,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "d55c26f2_241a8d5b",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-18T23:51:50Z",
+      "side": 1,
+      "message": "Jett, \n\nInterrupt based(Tx FIFO threshold interrupt) implementation is for CPU does other task while data are transmitted to the slave device and when the transmission is done, i2c_Xfer driver resumes rest of work.  In current situation, as I mentioned above, waiting time for both Tx of 6 byte + preparing Rx is around 8 uSec and the implementation might be less efficient and I think small wait loop will be more efficient.   When we have a situation for sending big size data to slave device, then, we can revise driver later.  For Trackpad and sensors are all Rx data size is big but Tx(commands) are small.",
+      "parentUuid": "cb5ffcbb_ecff4d55",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
