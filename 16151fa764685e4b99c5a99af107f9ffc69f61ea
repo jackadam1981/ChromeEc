@@ -46,6 +46,30 @@
       "revId": "16151fa764685e4b99c5a99af107f9ffc69f61ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260888a3_92f66233",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-18T18:12:10Z",
+      "side": 1,
+      "message": "Ok, so the constant is really KEYBOARD_COLS_MAX.  Can we call it that to avoid confusion?",
+      "parentUuid": "3c945953_ce2f3994",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "16151fa764685e4b99c5a99af107f9ffc69f61ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
