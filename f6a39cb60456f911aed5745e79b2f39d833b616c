@@ -165,6 +165,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c20da3a_faf7d6e3",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-18T04:58:54Z",
+      "side": 1,
+      "message": "Right - I can\u0027t think of any situations where writing a serial number to one of these devices would enable testing that couldn\u0027t be done with a normal prod board with serial number.",
+      "parentUuid": "10889a6a_88740c60",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
