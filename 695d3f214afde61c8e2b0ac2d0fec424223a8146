@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "9a420d96_3feb8795",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000034
+      },
+      "writtenOn": "2018-10-18T19:37:37Z",
+      "side": 1,
+      "message": "Aaron, the x86 implementation of cpu_relax() in linux kernel is the accepted method for reducing power consumption of tight polling loops. Given how long this code has been in the linux kernel (more than a decade?), I\u0027m willing to assume there is no looming issue.",
+      "parentUuid": "ac000cf9_329b7470",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
