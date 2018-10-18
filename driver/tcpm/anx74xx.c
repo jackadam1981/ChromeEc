@@ -746,9 +746,10 @@ static int anx74xx_tcpm_set_polarity(int port, int polarity)
 	return rv;
 }
 
-static int anx74xx_tcpc_get_fw_version(int port, int *version)
+static int anx74xx_tcpc_get_fw_version(int port, int renew, int *version)
 {
-	return tcpc_read(port, ANX74XX_REG_FW_VERSION, version);
+	return tcpci_get_fw_version(port, renew,
+			ANX74XX_REG_FW_VERSION, version);
 }
 
 static int anx74xx_tcpm_set_vconn(int port, int enable)
@@ -1053,7 +1054,7 @@ static int anx74xx_get_chip_info(int port, int renew,
 	if (rv)
 		return rv;
 
-	rv = anx74xx_tcpc_get_fw_version(port, &val);
+	rv = anx74xx_tcpc_get_fw_version(port, renew, &val);
 
 	if (rv)
 		return rv;

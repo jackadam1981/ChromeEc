@@ -649,6 +649,32 @@ int tcpci_get_chip_info(int port, int renew,
 }
 
 /*
+ * The first call to this function will cache the firmware version,
+ * which can then be read without worrying about chip states.
+ */
+int tcpci_get_fw_version(int port, int renew, int reg, int *version)
+{
+	static int cached_version[CONFIG_USB_PD_PORT_COUNT];
+	int error;
+
+	if (port >= CONFIG_USB_PD_PORT_COUNT)
+		return EC_ERROR_INVAL;
+
+	if (cached_version[port] && !renew) {
+		*version = cached_version[port];
+		return EC_SUCCESS;
+	}
+
+	error = tcpc_read(port, reg, version);
+	if (error)
+		return error;
+
+	cached_version[port] = *version;
+
+	return EC_SUCCESS;
+}
+
+/*
  * Dissociate from the TCPC.
  */
 
