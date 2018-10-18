@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d66a1460_dd1bea57",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "I guess these are the fields within ACC_ADDR register? Looking at the rest of the file, it seems like the register fields are aligned with one extra tab? Probably good to do the same here",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67858f3_65102bfd",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df688699_197fed1d",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "In this case, cache never gets restored to master_cfg.",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 12
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1115a194_2cc5fc4a",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "why tab?",
+      "range": {
+        "startLine": 130,
+        "startChar": 64,
+        "endLine": 130,
+        "endChar": 65
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd592155_12a90389",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "What does this bit indicate? Should there be a macro for it?",
+      "range": {
+        "startLine": 161,
+        "startChar": 40,
+        "endLine": 161,
+        "endChar": 41
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37d815f_e34c3f6c",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "tab?",
+      "range": {
+        "startLine": 168,
+        "startChar": 64,
+        "endLine": 168,
+        "endChar": 65
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e008569_c093b074",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a read-modify-write? You will end up overwriting SLV_RATE and AUX_SENS. Is that intentional?",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 38
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f89cc5ec_44dab483",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "EC_SUCCESS?",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 9
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea704ecd_ccc90849",
+        "filename": "driver/sensorhub_lsm6dsm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-18T06:18:49Z",
+      "side": 1,
+      "message": "Check return value?",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 22
+      },
+      "revId": "28469c1039502e0e7b341b38ae0610c6b8ba1520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
