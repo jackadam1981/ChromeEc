@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad692ad0_215d175f",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T18:02:10Z",
+      "side": 1,
+      "message": "this is for testing. no review required",
+      "parentUuid": "93add938_a46a065b",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "6a06b3cb01a61953305f6ddf4d688c486d865d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0609d020_31c92bad",
         "filename": "chip/ish/i2c_hid_master.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fb0b5f78_adf752f5",
+        "filename": "chip/ish/i2c_hid_master.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T18:02:10Z",
+      "side": 1,
+      "message": "Codes are from Google and probably not ready to submit. \nthis patch is for Google to use as baseline for their development.\nOnly for testing. no review required.\nThere\u0027ll be chance to review when this is submitted from Google for review.",
+      "parentUuid": "0609d020_31c92bad",
+      "range": {
+        "startLine": 6,
+        "startChar": 5,
+        "endLine": 6,
+        "endChar": 6
+      },
+      "revId": "6a06b3cb01a61953305f6ddf4d688c486d865d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4de1068d_6e027af7",
         "filename": "chip/ish/i2c_hid_master.h",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "6a06b3cb01a61953305f6ddf4d688c486d865d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff3668e_75c71674",
+        "filename": "chip/ish/i2c_hid_master.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-18T18:02:10Z",
+      "side": 1,
+      "message": "no, I\u0027m new to this. Thank you, it would be really helpful if you give me the instruction for \"presubmit check\".\n\nCodes are from Google and probably not ready to submit. \nThis patch is for testing. no review required.\nThere\u0027ll be chance to review when new one is submitted from Google for review.",
+      "parentUuid": "4de1068d_6e027af7",
+      "range": {
+        "startLine": 127,
+        "startChar": 50,
+        "endLine": 127,
+        "endChar": 51
+      },
+      "revId": "6a06b3cb01a61953305f6ddf4d688c486d865d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
