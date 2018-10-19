@@ -22,6 +22,30 @@
       "revId": "b70cb82f88e7fc912c9f3279eda67e9ad8a26de6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a52224_4a388bc4",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-19T17:39:27Z",
+      "side": 1,
+      "message": "I think you\u0027re right that it\u0027s not needed. Let me give it a try.",
+      "parentUuid": "51310495_c41dc65b",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "b70cb82f88e7fc912c9f3279eda67e9ad8a26de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
