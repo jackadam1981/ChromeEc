@@ -291,6 +291,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4891d659_6a4f26f6",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-10-19T01:12:42Z",
+      "side": 1,
+      "message": "So it\u0027s not about requiring pre-MP boards for testing, it\u0027s about not excluding them from being able to do all the enterprise flows of Chrome OS in a test environment.",
+      "parentUuid": "b91b5c12_42f12938",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
