@@ -164,6 +164,30 @@
       "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2cc9e8e_dcc9a4ac",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-19T17:34:42Z",
+      "side": 1,
+      "message": "Alrighty, I\u0027ve kept denied.",
+      "parentUuid": "3410de43_08031c8b",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 31
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
