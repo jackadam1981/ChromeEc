@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb2f87ee_4ea4130d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T17:25:25Z",
+      "side": 1,
+      "message": "we can remove this function and call tcpci_get_fw_version directly below",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 1
+      },
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb8aa32_16421063",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T17:25:25Z",
+      "side": 1,
+      "message": "we can remove this too",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 1
+      },
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c379d05_add77ad0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T17:25:25Z",
+      "side": 1,
+      "message": "I\u0027m tempted to remove this cache and see if *version has a non-zero value. If it does and we aren\u0027t renewing just return. (we already have static memory that is caching this value, no need to use more memory to cache the same thing in a memory limited environment)\n\nI would also be okay will directly encoding the following\n\nif (!(*chip_info)-\u003efw_version_number || renew) {\n  tcpc_read(port, RW_REG, \u0026val);\n  (*chip_info)-\u003efw_version_number \u003d val;\n}\n\nin the parade and analogix drivers\n\n(I am also okay if you want to keep this function too - just an alternative)",
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
