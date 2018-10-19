@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5c85394_964c8e1b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3900,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-19T16:52:59Z",
+      "side": 1,
+      "message": "Yes, we only care about the src path.",
+      "parentUuid": "50933714_4e2137a3",
+      "range": {
+        "startLine": 3893,
+        "startChar": 0,
+        "endLine": 3900,
+        "endChar": 37
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e0b2e19_0a37769a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f9779740_031c2f45",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4359,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-19T16:52:59Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "3e0b2e19_0a37769a",
+      "range": {
+        "startLine": 4359,
+        "startChar": 12,
+        "endLine": 4359,
+        "endChar": 16
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "600b94c5_720bc0bb",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-19T14:53:09Z",
       "side": 1,
       "message": "I liked BUSY, do you want to return that here too (and below)?",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 31
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66f2f5b6_1e599b4e",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-19T16:52:59Z",
+      "side": 1,
+      "message": "I think in these cases it\u0027s different; the request to enable VCONN or VBUS when the port is latched off will never be fulfilled.\n\nWhat do you think?",
+      "parentUuid": "600b94c5_720bc0bb",
       "range": {
         "startLine": 177,
         "startChar": 9,
