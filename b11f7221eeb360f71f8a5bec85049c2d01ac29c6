@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fca9a01_1563860b",
+        "filename": "include/keyboard_raw.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-19T00:51:46Z",
+      "side": 1,
+      "message": "Can you do something like this:\n\n#ifdef CONFIG_KEYBOARD_LANGUAGE_ID\nassert(0);  /* Gotta pick; see keyboard_scan.c */\n#endif\n\nThat way, people won\u0027t mix and match.",
+      "revId": "b11f7221eeb360f71f8a5bec85049c2d01ac29c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
