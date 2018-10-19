@@ -7,7 +7,10 @@
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/syv682x.h"
+#include "hooks.h"
 #include "i2c.h"
+#include "system.h"
+#include "timer.h"
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
@@ -18,6 +21,7 @@
 #define SYV682X_FLAGS_CC_POLARITY (1 << 1)
 #define SYV682X_FLAGS_VBUS_PRESENT (1 << 2)
 static uint8_t flags[CONFIG_USB_PD_PORT_COUNT];
+static volatile uint32_t vbus_discharge_en;
 
 #define SYV682X_VBUS_DET_THRESH_MV 4000
 
@@ -36,6 +40,26 @@ static int write_reg(uint8_t port, int reg, int regval)
 			  reg,
 			  regval);
 }
+
+static int syv682x_fdsg_enable(int port, int enable)
+{
+	int regval;
+	int rv;
+
+	rv = read_reg(port, SYV682X_CONTROL_2_REG, &regval);
+	if (rv)
+		return rv;
+
+	ccprintf("syv682x: vbus dsg = %d\n", enable);
+
+	if (enable)
+		regval |= SYV682X_CONTROL_2_FDSG;
+	else
+		regval &= ~SYV682X_CONTROL_2_FDSG;
+
+	return write_reg(port, SYV682X_CONTROL_2_REG, regval);
+}
+
 
 static int syv682x_is_sourcing_vbus(int port)
 {
@@ -56,6 +80,12 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		return rv;
 
 	if (enable) {
+		/*
+		 * VBUS discharge should not be enabled at this point. However,
+		 * since there is nothing in chip preventing it from being
+		 * enabled when a power path is enabled, always disable it.
+		 */
+		syv682x_fdsg_enable(port, 0);
 		/* Select high voltage path */
 		regval |= SYV682X_CONTROL_1_CH_SEL;
 		/* Select Sink mode and turn on the channel */
@@ -121,6 +151,12 @@ static int syv682x_vbus_source_enable(int port, int enable)
 		return rv;
 
 	if (enable) {
+		/*
+		 * VBUS discharge should not be enabled at this point. However,
+		 * since there is nothing in chip preventing it from being
+		 * enabled when a power path is enabled, always disable it.
+		 */
+		syv682x_fdsg_enable(port, 0);
 		/* Select 5V path and turn on channel */
 		regval &= ~(SYV682X_CONTROL_1_CH_SEL |
 			    SYV682X_CONTROL_1_PWR_ENB);
@@ -193,21 +229,46 @@ static int syv682x_set_vbus_source_current_limit(int port,
 	return write_reg(port, SYV682X_CONTROL_1_REG, regval);
 }
 
+static void syv682x_check_for_vsafe0V(void);
+DECLARE_DEFERRED(syv682x_check_for_vsafe0V);
+
+static void syv682x_check_for_vsafe0V(void)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		if (vbus_discharge_en & (1 << i)) {
+			int status;
+			int rv;
+
+			rv = read_reg(i, SYV682X_STATUS_REG, &status);
+			if (rv) {
+				hook_call_deferred(&syv682x_check_for_vsafe0V_data,
+						   10*MSEC);
+			} else if (status & SYV682X_STATUS_VSAFE_0V) {
+				atomic_clear(&vbus_discharge_en, 1 << i);
+				syv682x_fdsg_enable(i, 0);
+				ccprintf("syv682x[%d]: disable vbus discharge\n", i);
+			} else {
+				hook_call_deferred(&syv682x_check_for_vsafe0V_data,
+						   10*MSEC);
+			}
+		}
+	}
+}
+
 static int syv682x_discharge_vbus(int port, int enable)
 {
-	int regval;
 	int rv;
 
-	rv = read_reg(port, SYV682X_CONTROL_2_REG, &regval);
-	if (rv)
-		return rv;
+	rv = syv682x_fdsg_enable(port, enable);
 
-	if (enable)
-		regval |= SYV682X_CONTROL_2_FDSG;
-	else
-		regval &= ~SYV682X_CONTROL_2_FDSG;
+	if (!rv && enable) {
+		atomic_or(&vbus_discharge_en, 1 << port);
+		hook_call_deferred(&syv682x_check_for_vsafe0V_data, 10*MSEC);
+	}
 
-	return write_reg(port, SYV682X_CONTROL_2_REG, regval);
+	return rv;
 }
 
 #ifdef CONFIG_USBC_PPC_POLARITY

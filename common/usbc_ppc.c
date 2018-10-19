@@ -65,6 +65,7 @@ int ppc_discharge_vbus(int port, int enable)
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
 
+	ccprintf("ppc[%d]: vbus dsg = %d\n", port, enable);
 	return ppc_chips[port].drv->discharge_vbus(port, enable);
 }
 
