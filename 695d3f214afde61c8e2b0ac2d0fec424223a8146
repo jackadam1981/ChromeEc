@@ -313,6 +313,30 @@
     },
     {
       "key": {
+        "uuid": "f8c83707_8a9a5ff7",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-19T17:07:07Z",
+      "side": 1,
+      "message": "All I was saying is:\n\n1. don\u0027t open code inline assembly into a driver. Make a proper helper function.\n2. literals like \u0027500\u0027 only empirically work today based on the machine being tested. If one knows expected timing of transaction use a time check to terminate the loop. cpu_relax() calls can be within in the loop but not open coded (see #1).\n\nThose requests make the code less prone to problems on future designs that need to be debugged. The first, admittedly, is more about aesthetics, but it\u0027s also portability. The reality is that this i2c host controller is just a synopsis design where the driver should just work regardless of the platform it\u0027s being used on.",
+      "parentUuid": "d55c26f2_241a8d5b",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
