@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab4a315e_9350a5c9",
+        "filename": "board/ampton/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-10-19T03:26:28Z",
+      "side": 1,
+      "message": "It seems to me that led.o in board level is for board specific control therefore it can be just\n\n  board-y\u003dboard.o led.o\n\nAnd LED_COMMON is for ec command and other common control so actually we can support board specific behavior only but without LED_COMMON.",
+      "revId": "1a20e5d13c13af07014d71095e71deef172924d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
