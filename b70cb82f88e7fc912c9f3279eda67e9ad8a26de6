@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51310495_c41dc65b",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T17:38:30Z",
+      "side": 1,
+      "message": "do we still need the clear_oc_tbl_scheduled. If we are in a loop, then we will keep postponing until the looping stops (when the device has been removed permanently). Does that still work?",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "b70cb82f88e7fc912c9f3279eda67e9ad8a26de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
