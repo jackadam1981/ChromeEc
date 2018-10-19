@@ -33,12 +33,10 @@ static int event_is_set(uint8_t event_type)
 	return events & (1 << event_type);
 }
 
-#ifndef CONFIG_MKBP_USE_HOST_EVENT
-void mkbp_set_host_active_via_gpio(int active)
+void mkbp_set_host_active_via_gpio(enum gpio_signal pin, int active)
 {
-	gpio_set_level(GPIO_EC_INT_L, !active);
+	gpio_set_level(pin, !active);
 }
-#endif
 
 void mkbp_set_host_active_via_event(int active)
 {
@@ -51,7 +49,7 @@ __attribute__((weak)) void mkbp_set_host_active(int active)
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
 	mkbp_set_host_active_via_event(active);
 #else
-	mkbp_set_host_active_via_gpio(active);
+	mkbp_set_host_active_via_gpio(GPIO_EC_INT_L, active);
 #endif
 }
 

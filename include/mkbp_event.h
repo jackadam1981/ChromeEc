@@ -45,8 +45,11 @@ void mkbp_set_host_active(int active);
  * Communicate an MKBP event to the host via a dedicated GPIO pin.
  *
  * This can be used if the board schematic has a pin reserved for this purpose.
+ *
+ * @param pin  The GPIO pin to use for this communication.
+ * @param active  1 if there is an event, 0 otherwise
  */
-void mkbp_set_host_active_via_gpio(int active);
+void mkbp_set_host_active_via_gpio(enum gpio_signal pin, int active);
 
 /*
  * Communicate an MKBP event to the AP via EC_HOST_EVENT.

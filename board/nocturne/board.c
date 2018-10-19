@@ -400,7 +400,7 @@ static int mkbp_uses_gpio(void)
 void mkbp_set_host_active(int active)
 {
 	if (mkbp_uses_gpio())
-		mkbp_set_host_active_via_gpio(active);
+		mkbp_set_host_active_via_gpio(GPIO_EC_INT_L, active);
 
 	/*
 	 * Always send the host event for compatibility.
