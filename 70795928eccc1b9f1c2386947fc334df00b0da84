@@ -366,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "c282e84d_858654b8",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T14:53:09Z",
+      "side": 1,
+      "message": "Since the over current scenario is rare, I would lean toward having the delay all the time to make the code more simple. (I think we could get rid of the clear_oc_event_att stuff entirely).\n\nI think it is reasonable for us to implement a cool-down of the port when OC happens. If the user tries another dongle, the port will be re-enabled by the time that they get it.\n\nIs a wait period of 1-second enough? how quickly does the fake disconnect loop happen?",
+      "parentUuid": "937a94fb_2c185c29",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "70795928eccc1b9f1c2386947fc334df00b0da84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94eaf882_7672bb33",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 1

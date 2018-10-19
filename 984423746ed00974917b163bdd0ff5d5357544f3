@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50933714_4e2137a3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3900,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T14:53:09Z",
+      "side": 1,
+      "message": "can we move this up to the SRC_DISCONNECTED state where is is about to transition there?\n\nThat way both SRC_DIS and SRC__DIS_DEBOUCE will reset the counter when each state detects open CC lines before transitioning to the next state. We only care about the reset in the SRC path, right?",
+      "range": {
+        "startLine": 3893,
+        "startChar": 0,
+        "endLine": 3900,
+        "endChar": 37
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0b2e19_0a37769a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4359,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T14:53:09Z",
+      "side": 1,
+      "message": "can we move all board_overcurrent_event(port, 0) calls to here?\n\nI am afraid we will miss one of the transition paths in the statemachine, and this is the guaranteed entry point after calling board_overcurrent_event(port, 1);",
+      "range": {
+        "startLine": 4359,
+        "startChar": 12,
+        "endLine": 4359,
+        "endChar": 16
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "600b94c5_720bc0bb",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T14:53:09Z",
+      "side": 1,
+      "message": "I liked BUSY, do you want to return that here too (and below)?",
+      "range": {
+        "startLine": 177,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 31
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
