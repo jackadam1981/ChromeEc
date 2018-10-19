@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c6c53891_945caf7e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3900,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T20:11:47Z",
+      "side": 1,
+      "message": "I think set_state would be a nicer catch all if we can make that work. If we do it there, then we might even be able to remove it in the other 2 SRC_DIS* cases too.",
+      "parentUuid": "9422c714_de2053dd",
+      "range": {
+        "startLine": 3893,
+        "startChar": 0,
+        "endLine": 3900,
+        "endChar": 37
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e0b2e19_0a37769a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
