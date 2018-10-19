@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "9834a2ef_23e0920d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T20:17:49Z",
+      "side": 1,
+      "message": "Well if we inline the above code snippet directly in ps8xxx_get_chip_info and anx74xx_get_chip_info then we wouldn\u0027t need to pass fw_version_number around",
+      "parentUuid": "9df1dc13_dd7721c7",
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30d41804_379d6530",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 1
