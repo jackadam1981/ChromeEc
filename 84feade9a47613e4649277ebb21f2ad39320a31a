@@ -22,6 +22,30 @@
       "revId": "84feade9a47613e4649277ebb21f2ad39320a31a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ece1d0_44b561f8",
+        "filename": "util/iteflash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2018-10-19T10:18:43Z",
+      "side": 1,
+      "message": "The register just set the protection area of eflash.(0-512K)\nWe use the DBGR path to program the eflash, so we just only need to un-protect the DBGR path.\nIt will set the eflash as un-protect status by using DBGR path.",
+      "parentUuid": "10a92da9_e1e8051a",
+      "range": {
+        "startLine": 514,
+        "startChar": 29,
+        "endLine": 517,
+        "endChar": 39
+      },
+      "revId": "84feade9a47613e4649277ebb21f2ad39320a31a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
