@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5271e22a_2a510da2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-19T02:30:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160b3838_aa034f71",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "338f8eef3f15cfa523c88fdec17b5a782763294e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd577e5e_6cb8f860",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 10
