@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4be94d50_5ea93d15",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2018-10-19T17:57:56Z",
+      "side": 1,
+      "message": "I thought about this, but I wasn\u0027t sure if there might be a scenario in the future where we wanted to check the firmware version without checking all of the chip info, so I left it just in case - I\u0027ll remove it now!",
+      "parentUuid": "cb2f87ee_4ea4130d",
+      "range": {
+        "startLine": 749,
+        "startChar": 0,
+        "endLine": 753,
+        "endChar": 1
+      },
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fb8aa32_16421063",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3033d741_1163b9e7",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2018-10-19T17:57:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4fb8aa32_16421063",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 1
+      },
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +124,24 @@
       "writtenOn": "2018-10-19T17:50:12Z",
       "side": 1,
       "message": "+1 to removing this cache and also to inlining the logic into the other two drivers.  Refactoring this way should also work out to less code space overall, too (see make savesizes and newsizes targets to compare).",
+      "parentUuid": "9c379d05_add77ad0",
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9df1dc13_dd7721c7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2018-10-19T17:57:56Z",
+      "side": 1,
+      "message": "Just to make sure I understand: the static memory you\u0027re referencing is *chip_info, right? So if we wanted to keep the function I wrote, we\u0027d actually have to pass it \u0026((*chip_info)-\u003efw_version_number) and not the local int val we\u0027re currently using?",
       "parentUuid": "9c379d05_add77ad0",
       "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
