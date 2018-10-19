@@ -93,6 +93,30 @@
       "revId": "c74d1da086bf271beb3a0eac1d102fc20828d6c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab75a26d_97fa26a3",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T15:42:53Z",
+      "side": 1,
+      "message": "Sorry I meant 0x10000",
+      "parentUuid": "a69b9cc1_95beaef0",
+      "range": {
+        "startLine": 132,
+        "startChar": 18,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "c74d1da086bf271beb3a0eac1d102fc20828d6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
