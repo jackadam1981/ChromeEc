@@ -5,8 +5,14 @@
 
 /* Header for tablet_mode.c */
 
+#ifdef CONFIG_TABLET_MODE
+
 /* Return 1 if in tablet mode, 0 otherwise */
 int tablet_get_mode(void);
 void tablet_set_mode(int mode);
 
+#else
 
+static inline int tablet_get_mode(void) { return 0; }
+
+#endif
