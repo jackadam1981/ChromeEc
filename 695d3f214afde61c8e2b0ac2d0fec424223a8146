@@ -361,6 +361,30 @@
     },
     {
       "key": {
+        "uuid": "b1469e46_0bde769d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-19T17:20:26Z",
+      "side": 1,
+      "message": "We have time functions. Calculate the deadline and break when deadline is exceeding based on current value of time.",
+      "parentUuid": "68838d1b_864d09eb",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
