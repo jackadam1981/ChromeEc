@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9422c714_de2053dd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3900,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-19T18:18:57Z",
+      "side": 1,
+      "message": "It looks like I missed a case. After pd_execute_hard_reset(), we can end up in SNK_DISCONNECTED and therefore not clearing the OC events.\n\nAlso, somehow there was a transition to DRP auto toggle without a call to clear the events. Maybe I can put this back here? Or perhaps in set_state.",
+      "parentUuid": "f5c85394_964c8e1b",
+      "range": {
+        "startLine": 3893,
+        "startChar": 0,
+        "endLine": 3900,
+        "endChar": 37
+      },
+      "revId": "984423746ed00974917b163bdd0ff5d5357544f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e0b2e19_0a37769a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
