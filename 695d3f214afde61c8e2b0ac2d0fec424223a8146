@@ -337,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "68838d1b_864d09eb",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-19T17:15:32Z",
+      "side": 1,
+      "message": "Sounds good. Does the current implementation of the loop meet those requests? What should be done about the literal of 2000 (was 500). Do we make it a timer based decision instead of an iteration based decision?",
+      "parentUuid": "f8c83707_8a9a5ff7",
+      "range": {
+        "startLine": 336,
+        "startChar": 3,
+        "endLine": 336,
+        "endChar": 41
+      },
+      "revId": "695d3f214afde61c8e2b0ac2d0fec424223a8146",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31f8b408_92885d4f",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 12
