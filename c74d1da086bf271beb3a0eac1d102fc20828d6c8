@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24c5e66c_e2d9bb6c",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2018-10-19T02:49:03Z",
+      "side": 1,
+      "message": "Currently datasheet isn\u0027t documented the register.\nWe will update a new datasheet to you.",
+      "parentUuid": "c2aeeb49_39f8866d",
+      "range": {
+        "startLine": 772,
+        "startChar": 8,
+        "endLine": 772,
+        "endChar": 27
+      },
+      "revId": "c74d1da086bf271beb3a0eac1d102fc20828d6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "294e0b65_92c763f8",
         "filename": "chip/it83xx/system.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c74d1da086bf271beb3a0eac1d102fc20828d6c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69b9cc1_95beaef0",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2018-10-19T02:49:03Z",
+      "side": 1,
+      "message": "1/65.536 \u003d 0.01525 ms\n0.01525 * 33  \u003d 0.5 ms\n0.01525 * 66  \u003d 1 ms\n0.01525 * 132 \u003d 2 ms\n0.01525 * 256 \u003d 3.90625 ms\n\n0x100 times only 3.90625 ms\n\nYou can reference Datasheet P.470",
+      "parentUuid": "294e0b65_92c763f8",
+      "range": {
+        "startLine": 132,
+        "startChar": 18,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "c74d1da086bf271beb3a0eac1d102fc20828d6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
