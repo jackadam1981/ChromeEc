@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8759e91b_2fe47b5d",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "what if this is 0b11?",
+      "range": {
+        "startLine": 209,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 41
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8d5331_6f6f6621",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "I\u0027m still unclear on how protocol version fallback works.  If we (as a PD3 device) are communicating with a PD2 device, how does our code avoid sending/accepting extended messages or attempting to obey PD3 flow control rules?\n\nI\u0027m OK with everything using this codebase to support PD3.  Unless you think it\u0027s important to be able to still make a PD2-only device while still using this stack to save space or whatever, it seems like it\u0027s going to really complicate the code and testing to have #ifdefs to be able to implement a PD2-only device.",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 26
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3c88d26_e93bc239",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "and then it proceeds to do the memcpy anyway?",
+      "range": {
+        "startLine": 1291,
+        "startChar": 3,
+        "endLine": 1291,
+        "endChar": 12
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26f5f848_2549fbb7",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "same comment as above?",
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370fdd3c_048c1240",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "not 8?",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdab2a06_739649f9",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "bubbling up a comment that was buried in a longer rant: the spec says you should be doing the Rd || Rd and then Ra \u0026\u0026 Ra before checking NC _||_ NC\n\nif you don\u0027t want to implement it in that way, you\u0027ll need an else statement to cover all cases.",
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e62884e_e1397c81",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "you could combine the two branches with (tc[port].ct_cc ? cc2 : cc1) \u003d\u003d TYPEC_CC_VOLT_OPEN, but I\u0027m not sure if that\u0027s actually an improvement",
+      "range": {
+        "startLine": 1668,
+        "startChar": 1,
+        "endLine": 1669,
+        "endChar": 32
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dce1d55_47c375be",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-19T22:05:14Z",
+      "side": 1,
+      "message": "same !\u003d logic could work here too",
+      "range": {
+        "startLine": 1735,
+        "startChar": 0,
+        "endLine": 1735,
+        "endChar": 41
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
