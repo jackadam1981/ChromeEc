@@ -62,6 +62,47 @@
       "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727f214a_5ccfc0ae",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-19T17:50:12Z",
+      "side": 1,
+      "message": "+1 to removing this cache and also to inlining the logic into the other two drivers.  Refactoring this way should also work out to less code space overall, too (see make savesizes and newsizes targets to compare).",
+      "parentUuid": "9c379d05_add77ad0",
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d41804_379d6530",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-19T17:50:12Z",
+      "side": 1,
+      "message": "If this function stays, then it needs a doxycomment for the parameters.",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 24
+      },
+      "revId": "e8246fcad16976430f8e86b864ef6d0f09a2fe47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
