@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "a4a7026e_a09af087",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-19T02:08:27Z",
+      "side": 1,
+      "message": "i\u0027m happy with doing a runtime bounds check.\n\nin addition to that, it\u0027s helpful to developers to specify\nthe type as an enum because that is a clear indication of\nwhat the valid inputs are.\n\ng++ would be stricter here than gcc, but we do run\ncoverity on the EC codebase, and i\u0027m hoping it\u0027ll\ncatch the cases that gcc won\u0027t.",
+      "parentUuid": "3c2a5f99_b0a35fc9",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa7e421f_d7ef1a4b",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 5
