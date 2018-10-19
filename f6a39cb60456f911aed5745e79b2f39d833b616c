@@ -273,6 +273,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b91b5c12_42f12938",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-10-19T01:07:48Z",
+      "side": 1,
+      "message": "Because they\u0027re the first ones out when we test other parts of Chrome OS etc.? The eve I use for development and testing for example are DVTs because that\u0027s what Chromestop sent me. Arbitrarily blocking those boards from being able to be used for a part of Chrome OS doesn\u0027t seem like a good idea. Just like preventing erasure of INFO1 would make your life quite difficult you said, preventing non-MP boards from doing core parts of the enterprise flows for Chrome OS would make testing and development much more difficult too.",
+      "parentUuid": "71c54eb2_e018f5d2",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
