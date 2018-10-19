@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "277b814b_82e29451",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-19T02:12:40Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "bd577e5e_6cb8f860",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "338f8eef3f15cfa523c88fdec17b5a782763294e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "948b5963_0f74369f",
         "filename": "chip/ish/config_chip.h",
         "patchSetId": 10
@@ -68,6 +92,30 @@
       "revId": "338f8eef3f15cfa523c88fdec17b5a782763294e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a208aca_134c39a2",
+        "filename": "chip/ish/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-19T02:12:40Z",
+      "side": 1,
+      "message": "Yes. Done.",
+      "parentUuid": "948b5963_0f74369f",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "338f8eef3f15cfa523c88fdec17b5a782763294e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
