@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6548d32_9bf2315b",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-19T14:27:17Z",
+      "side": 1,
+      "message": "I am sorry, I have not been following this patch\u0027s discussion, but what is the point of using that special vararg function.\n\nwhat\u0027s wrong with using printf and adding a comment that the format should not be changed.\n\nOr am I missing something?",
+      "revId": "b526a83418305ffda533e66958adde8385588f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
