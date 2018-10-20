@@ -52,6 +52,24 @@
       "revId": "b526a83418305ffda533e66958adde8385588f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43af88a1_27b38600",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-10-20T00:23:16Z",
+      "side": 1,
+      "message": "There are 2 purposes of wrapping everything in print_machine_output(). 1) Like what Mike said, it\u0027s more for sanity check. We can do more sanity check in an isolated function without adding code that is sort of unrelated to the purpose of this block here. 2) I have many print_machine_output() calls in the child CLs. Having a separate function avoids redundant format check or comments. Does that make sense? Other reviewers have any opinion or comment?",
+      "parentUuid": "6ac843d4_e5419526",
+      "revId": "b526a83418305ffda533e66958adde8385588f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
