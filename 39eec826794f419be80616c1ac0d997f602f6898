@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3d622a13_6e247350",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-20T19:33:07Z",
+      "side": 1,
+      "message": "Hi Aaron,  do you think FPU context should be store for every interrupt and FPU operation should be allowed inside interrupt ? \nI checked ARM code and it does not save FPU context at the beginning of interrupt and there is no flag to disable explicitly.",
+      "parentUuid": "214228d5_8bac86a0",
+      "revId": "39eec826794f419be80616c1ac0d997f602f6898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36edb981_912f4677",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 6
