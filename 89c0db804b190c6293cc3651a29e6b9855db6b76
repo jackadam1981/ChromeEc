@@ -16,6 +16,24 @@
       "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb860c3c_431e73b8",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-20T23:12:22Z",
+      "side": 1,
+      "message": "We will investigate how to. \nEven if lines of code are duplicated from __switchto, there is difference.\n__swichto is handling SW interrupt which is only related to IOAPIC but DECLARE_IRQ is handling device interrupt whose interrupt path has additional IOAPIC specified by \u0027vector\u0027 and IOAPIC EIO should be cleared at the end(\"movl $\"#vector \", (0xFEC00040)\\n\") and due to this, it was hard to\nreuse code in __switchto. If we have to develop new common shared code, this code should receive \u0027vector\u0027 and flag for either SW IRQ or not as parameters.  This is why we copied code to DECLARE_IRQ.   \n\nFrom comment, I think you want to save FPU context every IRQ and assuming IRQ can use FP operation. Am I understanding correct ?\nFrom cortex-M code, ARM does not save FPU context every IRQ and save only when there is task switch to new task.",
+      "parentUuid": "7ee58362_2f439259",
+      "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
