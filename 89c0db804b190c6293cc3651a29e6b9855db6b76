@@ -34,6 +34,24 @@
       "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e234efe_289f4d14",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-21T22:28:55Z",
+      "side": 1,
+      "message": "For the vast majority of the sequence the instructions are the same. Putting all this in a macro will make it such that every invocation will duplicate the instruction stream instead of reusing it. It\u0027s your call, but I think the code duplication is leading to divergence (this CL) as well as unnecessary program size bloat.",
+      "parentUuid": "eb860c3c_431e73b8",
+      "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

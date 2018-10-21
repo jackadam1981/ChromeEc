@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "f30b6280_ee4ce684",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-21T22:28:55Z",
+      "side": 1,
+      "message": "I think you\u0027ll have hard to debug issues if you don\u0027t. I was trying to understand how one could ensure floating point is not used in interrupt handlers.",
+      "parentUuid": "3d622a13_6e247350",
+      "revId": "39eec826794f419be80616c1ac0d997f602f6898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36edb981_912f4677",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 6
