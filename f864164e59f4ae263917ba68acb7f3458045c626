@@ -16,6 +16,24 @@
       "revId": "f864164e59f4ae263917ba68acb7f3458045c626",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326bfad1_1dd8e891",
+        "filename": "chip/ish/ish_i2c.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-22T18:00:43Z",
+      "side": 1,
+      "message": "it is uSec. \nSince uSEC is default and is not defined in timer.h, \nI changed macro name to I2C_TX_FLUSH_TIMEOUT_USEC.\n/* Time units in microseconds */\n#define MSEC         1000\n#define SECOND    1000000",
+      "parentUuid": "4487d7a9_61f2a110",
+      "revId": "f864164e59f4ae263917ba68acb7f3458045c626",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
