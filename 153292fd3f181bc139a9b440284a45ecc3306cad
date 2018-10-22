@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4e9d03d_efd16637",
+        "filename": "power/sdm845.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-10-22T20:18:08Z",
+      "side": 1,
+      "message": "Ideally you should hold this pin low until you\u0027re in S5. You don\u0027t want the AP to start booting again before we get to S5, might cause glitches.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "153292fd3f181bc139a9b440284a45ecc3306cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
