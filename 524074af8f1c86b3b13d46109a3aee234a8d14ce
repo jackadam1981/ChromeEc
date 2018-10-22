@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4ffe8e2d_fb2249db",
+        "filename": "power/mt8183.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-22T15:33:45Z",
+      "side": 1,
+      "message": "This CPRINTS (and the one below) is redundant with the one produced by chipset_reset() itself.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "941f3e79_269c0b45",
         "filename": "power/mt8183.c",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 1,
         "endLine": 120,
         "endChar": 13
+      },
+      "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833875f5_32980e7f",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-22T15:33:45Z",
+      "side": 1,
+      "message": "Heads-up: there is also a table of these names in coreboot.",
+      "range": {
+        "startLine": 721,
+        "startChar": 13,
+        "endLine": 721,
+        "endChar": 21
       },
       "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
