@@ -144,7 +144,11 @@ void chipset_reset(enum chipset_reset_reason reason)
 	report_ap_reset(reason);
 
 	cflush();
-	system_reset(SYSTEM_RESET_HARD);
+	if (reason == CHIPSET_RESET_AP_WATCHDOG)
+		system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_AP_WATCHDOG);
+	else
+		system_reset(SYSTEM_RESET_HARD);
+
 
 	/* This should not be reachable. */
 	while (1)
