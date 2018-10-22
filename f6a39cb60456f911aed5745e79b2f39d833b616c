@@ -309,6 +309,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12e11df_9b5f76f9",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-22T03:11:36Z",
+      "side": 1,
+      "message": "ok so the goal is to reduce the number of early stage devices that are eligible for [production] ZTE, whilst still allowing an arbitrary SN to be written to those devices so they can be used for testing.\n\nThis requires changes in:\n- cr50 board ID code\n- cr50 SN bits code\n- factory tooling\n- board ID validation in asbestos? (to check for premp bit on otherwise valid field) \n- qa borgconfig for asbestos to ignore above validation\n\nThe plan all makes sense, but above is a fair bit of work, not to mention additional complexity and room for error.\n\nChromestop in Taipei at least has many PVT devices and obtaining one is never a problem - if there is any chance of doing this in your office, and there are no other reasons to test on DVT devices, then I\u0027d suggest we just skip doing the above. \n\nIf it\u0027s possible to test on a PVT device but is still important to reduce the number of early stage devices eligible for ZTE, perhaps we could do this by just writing the fixed \u0027premp\u0027 board id (ZZCR), which would presumably only need a change to factory tooling.",
+      "parentUuid": "4891d659_6a4f26f6",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
