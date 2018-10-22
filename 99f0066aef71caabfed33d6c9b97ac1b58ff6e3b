@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d28cb27c_d47d10be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:06:47Z",
+      "side": 1,
+      "message": "It would be more appropriate for a bug to be created that tracked the specific build or test failure you are working on",
+      "parentUuid": "01174a90_f9798eb7",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "99f0066aef71caabfed33d6c9b97ac1b58ff6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a7f10e9_bbadfb54",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "We don\u0027t have watchdog in place yet. We will implement panic.c at a late time.\nBecause build is broken, this patch is to pass the build.",
       "parentUuid": "6a7f10e9_bbadfb54",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "99f0066aef71caabfed33d6c9b97ac1b58ff6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffcd18d_453278ff",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:06:47Z",
+      "side": 1,
+      "message": "How does this break a build?\n\nIs a test failing without this?\n\nCan you add a comment TODO saying what we plan to do in the future and this is only a work around until then",
+      "parentUuid": "2aa862d1_6c776140",
       "range": {
         "startLine": 52,
         "startChar": 1,
