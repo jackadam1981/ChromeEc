@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36be0e5f_87b0b4a9",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:27:08Z",
+      "side": 1,
+      "message": "I am confused by this comment. are you talking about line 202 is not applied for Dx version?\n\nCan you add a new configuration that uses this work around similar to IT83XX_FPU_MUL_BY_DIV",
+      "range": {
+        "startLine": 204,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 61
+      },
+      "revId": "0f9e624182b9773ca7a9d61d1d209cf01d3a372d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
