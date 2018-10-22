@@ -70,6 +70,24 @@
       "revId": "b526a83418305ffda533e66958adde8385588f2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b968ab7_d0b79880",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-22T23:48:40Z",
+      "side": 1,
+      "message": "This -M option helps to simplify the scripts that use it. I\u0027m ready to +2 :)\nJust wanted to give a chance for the owners to review in case I missed some issues with the code.",
+      "parentUuid": "43af88a1_27b38600",
+      "revId": "b526a83418305ffda533e66958adde8385588f2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
