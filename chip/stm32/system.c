@@ -33,9 +33,17 @@
 /* We use 16-bit BKP / BBRAM entries. */
 #define STM32_BKP_ENTRIES (STM32_BKP_BYTES / 2)
 
+/* Use 32-bit for reset flags, if we have space for it. */
+#if !defined(CONFIG_HOSTCMD_VBNV_CONTEXT) || STM32_BKP_ENTRIES > 10
+#define CONFIG_STM32_RESET_FLAGS_EXTENDED
+#endif
+
 enum bkpdata_index {
 	BKPDATA_INDEX_SCRATCHPAD,	     /* General-purpose scratchpad */
 	BKPDATA_INDEX_SAVED_RESET_FLAGS,     /* Saved reset flags */
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	BKPDATA_INDEX_SAVED_RESET_FLAGS_2,   /* Saved reset flags (cont) */
+#endif
 #ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
 	BKPDATA_INDEX_VBNV_CONTEXT0,
 	BKPDATA_INDEX_VBNV_CONTEXT1,
@@ -152,12 +160,19 @@ static void check_reset_cause(void)
 	uint32_t raw_cause = STM32_RCC_RESET_CAUSE;
 	uint32_t pwr_status = STM32_PWR_RESET_CAUSE;
 
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	flags |= bkpdata_read(BKPDATA_INDEX_SAVED_RESET_FLAGS_2) << 16;
+#endif
+
 	/* Clear the hardware reset cause by setting the RMVF bit */
 	STM32_RCC_RESET_CAUSE |= RESET_CAUSE_RMVF;
 	/* Clear SBF in PWR_CSR */
 	STM32_PWR_RESET_CAUSE_CLR |= RESET_CAUSE_SBF_CLR;
 	/* Clear saved reset flags */
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, 0);
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, 0);
+#endif
 
 	if (raw_cause & RESET_CAUSE_WDG) {
 		/*
@@ -343,9 +358,17 @@ void system_reset(int flags)
 	if (flags & SYSTEM_RESET_HARD)
 		save_flags |= RESET_FLAG_HARD;
 
+	if (flags & SYSTEM_RESET_AP_WATCHDOG)
+		save_flags |= RESET_FLAG_AP_WATCHDOG;
+
+#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags & 0xffff);
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, save_flags >> 16);
+#else
 	/* Reset flags are 32-bits, but BBRAM entry is only 16 bits. */
 	ASSERT(!(save_flags >> 16));
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags);
+#endif
 
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
