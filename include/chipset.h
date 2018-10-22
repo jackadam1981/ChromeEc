@@ -202,9 +202,17 @@ void chipset_handle_reboot(void);
 /**
  * GPIO interrupt handler of reset request from AP.
  *
- * It is used in SDM845 chipset power sequence.
+ * It is used in SDM845/MT8183 chipset power sequence.
  */
 void chipset_reset_request_interrupt(enum gpio_signal signal);
+
+/**
+ * GPIO interrupt handler of watchdog from AP.
+ *
+ * It is used in MT8183 chipset, where it must be setup to trigger on falling
+ * edge only.
+ */
+void chipset_watchdog_interrupt(enum gpio_signal signal);
 
 #ifdef CONFIG_CMD_AP_RESET_LOG
 
