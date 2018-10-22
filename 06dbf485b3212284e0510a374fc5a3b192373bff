@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e204e6c_63899b89",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-10-22T20:15:33Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mean that we now don\u0027t do a S0-\u003eS5 transition properly when the PMIC is unhappy?\n\nEdit: Oh... i see, you chain power_signal_interrupt after it. It\u0027s a little bit runabout way of doing it, and also masks what it\u0027s actually doing. POWER_GOOD is mainly used for power signaling, the fact that we\u0027re using it in the warm reset code is just to solve an edge case, not its primary purpose.",
+      "range": {
+        "startLine": 34,
+        "startChar": 87,
+        "endLine": 34,
+        "endChar": 115
+      },
+      "revId": "06dbf485b3212284e0510a374fc5a3b192373bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "160c8ec1_5e42cb1f",
+        "filename": "power/sdm845.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-10-22T20:15:33Z",
+      "side": 1,
+      "message": "Nit: should do PS_HOLD first. Otherwise you have a little bit of a race condition (the AP might release the PS HOLD as soon as we assert AP_RST_L). Realistically the PMIC probably has a timeout, but who knows?",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 42
+      },
+      "revId": "06dbf485b3212284e0510a374fc5a3b192373bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
