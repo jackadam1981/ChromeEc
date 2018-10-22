@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38744cce_4fa6320f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4359,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:20:56Z",
+      "side": 1,
+      "message": "nit: more of a style opinion option if you like it:\n\nwhile(ports) {\n int port \u003d __fls(ports);\n ports \u0026\u003d ~(1 \u003c\u003c port);\n ... do stuff...\n}",
+      "range": {
+        "startLine": 4358,
+        "startChar": 1,
+        "endLine": 4359,
+        "endChar": 28
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9feba141_bbdbf56f",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:20:56Z",
+      "side": 1,
+      "message": "should this be (1 \u003c\u003c i)  left shift vs right shift?\n\n\nCan you use port instead of i, it will just make this a little easier to read",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b0bb3a0_3642d267",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:20:56Z",
+      "side": 1,
+      "message": "nit: unnecessary set of ()",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0121b323_207389b7",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:20:56Z",
+      "side": 1,
+      "message": "We don\u0027t have this case anymore, right?",
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7e35ec_ea7f38ce",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-22T21:20:56Z",
+      "side": 1,
+      "message": "what do you think about making this one sided: ppc_snk_disconnected(port) and only letting the PD state machine update when it detects a disconnect.\n\nInternally, the PPC will know when it is asked to source Vbus, and we can set it to 1 there. Thoughts?",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
