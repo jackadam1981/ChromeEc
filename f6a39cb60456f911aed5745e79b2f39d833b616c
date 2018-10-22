@@ -327,6 +327,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2957ea7_b82676f4",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-22T07:21:58Z",
+      "side": 1,
+      "message": "Yeah, the real goal is to ship early stage devices in a state where they can\u0027t pretend to be a real device.  Writing the entire PreMP board ID would be sufficient.\n\nWhat if we change the code which writes the serial numbers so that it will allow writing if *either*:\n   1) BoardID has not yet been set\n   2) BoardID has been set to ZZCR / PreMP flags\n\nThen we can just blindly write the BoardID to ZZCR early in proto/EVT factory runs and leave the serial number field blank.  When devices arrive at Google, we can write whatever serial number we want for ZTE testing.  But since BoardID has already been written to ZZCR, they\u0027ll never match any real MP device.",
+      "parentUuid": "c12e11df_9b5f76f9",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
