@@ -11,5 +11,3 @@ CHIP_VARIANT:=npcx5m6g
 BASEBOARD:=fizz
 
 board-y=board.o
-board-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
-board-y+=led.o
