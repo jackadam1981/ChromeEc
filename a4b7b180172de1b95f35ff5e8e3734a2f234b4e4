@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2aad6ec3_e6851751",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2018-10-22T18:06:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96d1da89_e4b9f374",
+      "range": {
+        "startLine": 1051,
+        "startChar": 6,
+        "endLine": 1051,
+        "endChar": 37
+      },
+      "revId": "a4b7b180172de1b95f35ff5e8e3734a2f234b4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e0bffdd_b3dccd9c",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "revId": "a4b7b180172de1b95f35ff5e8e3734a2f234b4e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66880fe2_3138d311",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2018-10-22T18:06:39Z",
+      "side": 1,
+      "message": "I like your first suggestion of `if (expr \u003d\u003d 0 || expr \u003d\u003d -1 || renew)` - with it, we\u0027re clearly testing the expected cases where we\u0027d need to read from the tcpc, and nothing else.",
+      "parentUuid": "83067888_7594a553",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 37
+      },
+      "revId": "a4b7b180172de1b95f35ff5e8e3734a2f234b4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
