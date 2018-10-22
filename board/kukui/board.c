@@ -54,24 +54,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
-static void warm_reset_request_interrupt(enum gpio_signal signal)
-{
-	CPRINTS("AP wants warm reset");
-	chipset_reset(CHIPSET_RESET_AP_REQ);
-}
-
-static void ap_watchdog_interrupt(enum gpio_signal signal)
-{
-	int level = gpio_get_level(GPIO_AP_EC_WATCHDOG_L);
-
-	CPRINTS("AP watchdog level %d", level);
-	/*
-	 * TODO(b:109900671): Handle AP watchdog, when necessary, for now, just
-	 * mirror input to output.
-	 */
-	gpio_set_level(GPIO_PMIC_WATCHDOG_L, level);
-}
-
 #if BOARD_REV >= 1
 static void hall_interrupt(enum gpio_signal signal)
 {

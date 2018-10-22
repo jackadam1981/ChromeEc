@@ -98,6 +98,30 @@ static const struct power_seq_op s3s5_power_seq[] = {
 };
 
 static int forcing_shutdown;
+/* AP_SYS_RST_L released */
+static int ap_on;
+
+void chipset_reset_request_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("AP wants warm reset");
+	chipset_reset(CHIPSET_RESET_AP_REQ);
+}
+
+/*
+ * Triggers on falling edge of AP watchdog line only. This happens in either of
+ * 2 cases:
+ *  - EC asserted GPIO_AP_SYS_RST_L, so the AP has shut down and AP watchdog
+ *    falls as well. This is _not_ a watchdog reset.
+ *  - AP asserts watchdog while GPIO_AP_SYS_RST_L is high: this is a real
+ *    AP-initiated reset.
+ */
+void chipset_watchdog_interrupt(enum gpio_signal signal)
+{
+	if (ap_on) {
+		CPRINTS("AP watchdog reset");
+		chipset_reset(CHIPSET_RESET_AP_WATCHDOG);
+	}
+}
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
@@ -270,6 +294,7 @@ enum power_state power_handle_state(enum power_state state)
 		}
 
 		booted = 1;
+		ap_on = 1;
 		/* Enable S3 power supplies, release AP reset. */
 		power_seq_run(s5s3_power_seq, ARRAY_SIZE(s5s3_power_seq));
 
@@ -332,6 +357,7 @@ enum power_state power_handle_state(enum power_state state)
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
+		ap_on = 0;
 		power_seq_run(s3s5_power_seq, ARRAY_SIZE(s3s5_power_seq));
 
 		/* Start shutting down */
