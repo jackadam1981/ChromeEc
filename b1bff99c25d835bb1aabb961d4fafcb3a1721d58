@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28ffae1c_24dfd591",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "I plan not to support PD2.0 only devices, so this should just use the same revision.",
+      "parentUuid": "8759e91b_2fe47b5d",
+      "range": {
+        "startLine": 209,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 41
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d8d5331_6f6f6621",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-19T22:05:14Z",
       "side": 1,
       "message": "I\u0027m still unclear on how protocol version fallback works.  If we (as a PD3 device) are communicating with a PD2 device, how does our code avoid sending/accepting extended messages or attempting to obey PD3 flow control rules?\n\nI\u0027m OK with everything using this codebase to support PD3.  Unless you think it\u0027s important to be able to still make a PD2-only device while still using this stack to save space or whatever, it seems like it\u0027s going to really complicate the code and testing to have #ifdefs to be able to implement a PD2-only device.",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 26
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8624328_0313b847",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "Unless anyone has an objection, I\u0027m not going to support PD2.0 only devices. But the spec does state that all PD3.0 devices must be backwards compatible with PD2.0.",
+      "parentUuid": "9d8d5331_6f6f6621",
       "range": {
         "startLine": 878,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c5d32523_cdc18ad7",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1291,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3c88d26_e93bc239",
+      "range": {
+        "startLine": 1291,
+        "startChar": 3,
+        "endLine": 1291,
+        "endChar": 12
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26f5f848_2549fbb7",
         "filename": "include/usb_tc_vpd_ct_sm.h",
         "patchSetId": 14
@@ -85,6 +157,24 @@
       "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca668f33_655f8a03",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26f5f848_2549fbb7",
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "67050ad1_3304303d",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370fdd3c_048c1240",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdab2a06_739649f9",
         "filename": "include/usb_tc_vpd_ct_sm.h",
         "patchSetId": 14
@@ -125,6 +239,24 @@
       "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "094fefb3_5e51e765",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdab2a06_739649f9",
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "c0874b03_7ae01820",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "I like it.",
+      "parentUuid": "4e62884e_e1397c81",
+      "range": {
+        "startLine": 1668,
+        "startChar": 1,
+        "endLine": 1669,
+        "endChar": 32
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dce1d55_47c375be",
         "filename": "include/usb_tc_vpd_ct_sm.h",
         "patchSetId": 14
@@ -171,6 +327,30 @@
       "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d81e558_48288347",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-22T17:53:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dce1d55_47c375be",
+      "range": {
+        "startLine": 1735,
+        "startChar": 0,
+        "endLine": 1735,
+        "endChar": 41
+      },
+      "revId": "b1bff99c25d835bb1aabb961d4fafcb3a1721d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
