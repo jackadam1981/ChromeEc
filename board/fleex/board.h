@@ -13,6 +13,9 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
+/* Customization for common octopus code */
+#define OCTOPUS_MAX_CHARGE_MA 2850 /* b/117907836 */
+
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO

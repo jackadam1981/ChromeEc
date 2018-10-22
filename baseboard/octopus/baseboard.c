@@ -251,6 +251,9 @@ int board_set_active_charge_port(int port)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
+#ifdef OCTOPUS_MAX_CHARGE_MA
+	charge_ma = MIN(OCTOPUS_MAX_CHARGE_MA, charge_ma);
+#endif
 	charge_set_input_current_limit(MAX(charge_ma,
 					   CONFIG_CHARGER_INPUT_CURRENT),
 				       charge_mv);
