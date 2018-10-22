@@ -200,6 +200,17 @@ static void clock_set_pll(enum pll_freq_idx idx)
 		 * change PLL.
 		 */
 		IT83XX_GPIO_GPCRM5 = (IT83XX_GPIO_GPCRM5 & ~0xc0) | (1 << 7);
+		/*
+		 * The above workaround is not applying on DX version.
+		 * We have to set VCC power status as power-off, then PLL change
+		 * (include EC clock frequency) is succeed even CS# is low.
+		 *
+		 * The operation of turning VCC off is harmless for other
+		 * version.
+		 * The VCC power status will be treated as power-on later in
+		 * clock_init().
+		 */
+		IT83XX_GCTRL_RSTS = (IT83XX_GCTRL_RSTS & ~0xc0);
 #endif
 		/* Update PLL settings. */
 		clock_pll_changed();
