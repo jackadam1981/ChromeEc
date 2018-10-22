@@ -46,6 +46,30 @@
       "revId": "241658e9b1fe05c990048444f4bdff9d4d12f984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ca2217_e6a940db",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-22T08:34:03Z",
+      "side": 1,
+      "message": "uh oh.  which datasheet rev. are u using?  i\u0027m looking at:\nTSZ02201-0A1A0A900180-1-2\n18.Aug.2016 Rev.002\n\ndo we need to ping one of the EE folks to get us\npower measurements?",
+      "parentUuid": "ac37acb3_aa9b43e3",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 0
+      },
+      "revId": "241658e9b1fe05c990048444f4bdff9d4d12f984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
