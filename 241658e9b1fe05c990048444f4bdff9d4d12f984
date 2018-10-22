@@ -22,6 +22,30 @@
       "revId": "241658e9b1fe05c990048444f4bdff9d4d12f984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac37acb3_aa9b43e3",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1233074
+      },
+      "writtenOn": "2018-10-22T06:23:27Z",
+      "side": 1,
+      "message": "The default setting of this reg is 0x2a, if we decide to do that, the output voltage will be Vnom - 2.5%, which is not a bad idea but we need to have a power measurement to ensure the lost on PCB will not exceed extra -2.5%. (Although PAG says -6.7% but still recommends -5% maximum). My suggestion is to keep this one and we can evaluate further to see if we can reduce the output to Vnom - 2.5%.",
+      "parentUuid": "924be0e6_f2b908a8",
+      "range": {
+        "startLine": 322,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 0
+      },
+      "revId": "241658e9b1fe05c990048444f4bdff9d4d12f984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
