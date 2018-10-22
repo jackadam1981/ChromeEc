@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "656f7d6e_b0baf9b4",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00ca045_735e4b06",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 50
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33d0f22f_947dcd2d",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-13T14:01:19Z",
       "side": 1,
       "message": "Lots of variables and bit fiddling here, not exactly readable (e.g. num_siblings is used both as a count and a mask). The way we made this readable in cryptohome was to introduce Label class that simplifies working with labels. See https://chromium.git.corp.google.com/chromiumos/platform2/+/95812fdebefc538a79bd84913aa15af6b2344775/cryptohome/sign_in_hash_tree.cc#73 for the corresponding code (which is much clearer to read IMHO).\n\nI\u0027m not sure there\u0027s a good way to share this code, but it would probably be better than re-implementing all this. platform/ec depending on cryptohome would be backwards. Maybe it makes sense to break the fuzzer out into a separate package that can pull both cryptohome bits and platform/ec?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 69
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2469d12b_361c0a08",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "I don\u0027t see a particularly good way of sharing the code. There are some possibilities but they are ugly and involve building a static library on either the cryptohome side or the EC side and finishing up on the other side.\n\nI took a look at the label class and it doesn\u0027t provide the path traversal functionality I am using, so I would have to jump through extra hoops to use it. One possibility would be to pull this logic out into a signal TraversePath() function that would provide a callback and pull the duplicate logic out of these two functions.",
+      "parentUuid": "33d0f22f_947dcd2d",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5b313014_54e1d4d9",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "81a3ef9d_84182bea",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc4749b_104b4aa1",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 17
@@ -91,6 +163,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2509ef7_c7c8412c",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "I am trying to avoid having to perform copies for every level of abstraction so I implemented a span class (since we build for c++14 instead of c++2a / c++20). I have used this in the place of pointers.",
+      "parentUuid": "7fc4749b_104b4aa1",
+      "range": {
+        "startLine": 32,
+        "startChar": 31,
+        "endLine": 32,
+        "endChar": 49
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c5e1bc9c_8da7f2a0",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e47d25f2_3bf24190",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 1
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5919a73f_4fe4c10f",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 17
@@ -137,6 +257,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba36b71_dadd6a80",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5919a73f_4fe4c10f",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 36,
+        "endChar": 58
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1f0a1401_adbbfe85",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9992bdc6_793508d1",
+      "range": {
+        "startLine": 14,
+        "startChar": 29,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5940bc2_05e2abba",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 17
@@ -183,6 +351,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3da717fc_a712bac7",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5940bc2_05e2abba",
+      "range": {
+        "startLine": 76,
+        "startChar": 39,
+        "endLine": 76,
+        "endChar": 67
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "cb273eb1_e9ba34b3",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c57b3b_5ba836b7",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a62b749e_e9af6ea1",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 17
@@ -252,6 +468,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d478b9a4_6726aa32",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62b749e_e9af6ea1",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "54f8a656_43f2780a",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ae872a_7d04519e",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88255cae_0833b79c",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 17
@@ -298,6 +562,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e4420b4_18a0ea33",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88255cae_0833b79c",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "78b674f4_514ae296",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670fe727_c2c6fe3c",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42abcdc5_fd8539e2",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 17
@@ -344,6 +656,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a2f7cf_1edd2e34",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42abcdc5_fd8539e2",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +729,54 @@
     },
     {
       "key": {
+        "uuid": "e3ee2794_7eb6d15e",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a644e52b_f0ed3fc7",
+      "range": {
+        "startLine": 77,
+        "startChar": 6,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1449438_a4ae07d5",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3030ac64_7b76d88a",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "957d0197_c1e22fe9",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 17
@@ -413,6 +797,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574ed011_9f22678e",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "I don\u0027t know a good way of doing that without making the names really long. I will add a comment above.",
+      "parentUuid": "957d0197_c1e22fe9",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 74
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +847,30 @@
     },
     {
       "key": {
+        "uuid": "53602ffa_e8059caf",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d6ace2_ceb1476a",
+      "range": {
+        "startLine": 92,
+        "startChar": 31,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f7c125f_ef8eb8e4",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 17
@@ -459,6 +891,30 @@
       "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "176f1827_68f32e5a",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-22T17:49:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f7c125f_ef8eb8e4",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 21
+      },
+      "revId": "80c6168532bf1f0e047c29758eb14eb1dfe5fddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
