@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6438866c_a6ce3b33",
+        "filename": "power/mt8183.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-22T16:15:39Z",
+      "side": 1,
+      "message": "Another alternative is to disable and enable this interrupt at the GPIO layer on the CHIPSET_STARTUP and CHIPSET_SHUTDOWN hooks.",
+      "parentUuid": "941f3e79_269c0b45",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "833875f5_32980e7f",
         "filename": "util/ectool.c",
         "patchSetId": 2
