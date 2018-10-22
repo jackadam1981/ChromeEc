@@ -45,6 +45,9 @@ enum bkpdata_index {
 	BKPDATA_INDEX_VBNV_CONTEXT5,
 	BKPDATA_INDEX_VBNV_CONTEXT6,
 	BKPDATA_INDEX_VBNV_CONTEXT7,
+#else
+	/* If VBNV is enabled, there is no space to save the next 16 bits. */
+	BKPDATA_INDEX_SAVED_RESET_FLAGS_2,   /* Saved reset flags (cont) */
 #endif
 #ifdef CONFIG_SOFTWARE_PANIC
 	BKPDATA_INDEX_SAVED_PANIC_REASON,    /* Saved panic reason */
@@ -152,12 +155,19 @@ static void check_reset_cause(void)
 	uint32_t raw_cause = STM32_RCC_RESET_CAUSE;
 	uint32_t pwr_status = STM32_PWR_RESET_CAUSE;
 
+#ifndef CONFIG_HOSTCMD_VBNV_CONTEXT
+	flags |= bkpdata_read(BKPDATA_INDEX_SAVED_RESET_FLAGS_2) << 16;
+#endif
+
 	/* Clear the hardware reset cause by setting the RMVF bit */
 	STM32_RCC_RESET_CAUSE |= RESET_CAUSE_RMVF;
 	/* Clear SBF in PWR_CSR */
 	STM32_PWR_RESET_CAUSE_CLR |= RESET_CAUSE_SBF_CLR;
 	/* Clear saved reset flags */
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, 0);
+#ifndef CONFIG_HOSTCMD_VBNV_CONTEXT
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, 0);
+#endif
 
 	if (raw_cause & RESET_CAUSE_WDG) {
 		/*
@@ -343,9 +353,17 @@ void system_reset(int flags)
 	if (flags & SYSTEM_RESET_HARD)
 		save_flags |= RESET_FLAG_HARD;
 
+	if (flags & SYSTEM_RESET_AP_WATCHDOG)
+		save_flags |= RESET_FLAG_AP_WATCHDOG;
+
+#ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
 	/* Reset flags are 32-bits, but BBRAM entry is only 16 bits. */
 	ASSERT(!(save_flags >> 16));
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags);
+#else
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags & 0xffff);
+	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS_2, save_flags >> 16);
+#endif
 
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
