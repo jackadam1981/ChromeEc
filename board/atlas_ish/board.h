@@ -61,6 +61,7 @@
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_SWITCH
 #undef CONFIG_WATCHDOG
+#undef CONFIG_HOSTCMD_LPC
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_ACCELS
