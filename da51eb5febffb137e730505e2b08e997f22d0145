@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84af55ec_3307a11b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4359,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-23T00:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38744cce_4fa6320f",
+      "range": {
+        "startLine": 4358,
+        "startChar": 1,
+        "endLine": 4359,
+        "endChar": 28
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9feba141_bbdbf56f",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-22T21:20:56Z",
       "side": 1,
       "message": "should this be (1 \u003c\u003c i)  left shift vs right shift?\n\n\nCan you use port instead of i, it will just make this a little easier to read",
+      "range": {
+        "startLine": 71,
+        "startChar": 10,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d883522a_5979656e",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-23T00:46:57Z",
+      "side": 1,
+      "message": "good catch; it should be left shift.",
+      "parentUuid": "9feba141_bbdbf56f",
       "range": {
         "startLine": 71,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ffddba4_58739678",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-23T00:46:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b0bb3a0_3642d267",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0121b323_207389b7",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 5
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "fcbd4538_a97618a2",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-23T00:46:57Z",
+      "side": 1,
+      "message": "Yep, removed.",
+      "parentUuid": "0121b323_207389b7",
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da7e35ec_ea7f38ce",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 5
@@ -99,6 +189,30 @@
       "writtenOn": "2018-10-22T21:20:56Z",
       "side": 1,
       "message": "what do you think about making this one sided: ppc_snk_disconnected(port) and only letting the PD state machine update when it detects a disconnect.\n\nInternally, the PPC will know when it is asked to source Vbus, and we can set it to 1 there. Thoughts?",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "da51eb5febffb137e730505e2b08e997f22d0145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c84b7b0_a0675bca",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-23T00:46:57Z",
+      "side": 1,
+      "message": "But there are times where we may not source VBUS (or even attempt to source VBUS) because the port is latched off.",
+      "parentUuid": "da7e35ec_ea7f38ce",
       "range": {
         "startLine": 210,
         "startChar": 5,
