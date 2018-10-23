@@ -22,6 +22,30 @@
       "revId": "e4f34dcf7ff001f48a51ad4e2f6e518de5dbec17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f614758d_0c68c36f",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-23T05:55:42Z",
+      "side": 0,
+      "message": "No, should be enough to have WATCHDOG follow AP_SYS_RST.\n\nFiled b/118206857, there is still some logic missing here. Thanks.",
+      "parentUuid": "323b05dd_8e5168ee",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "e4f34dcf7ff001f48a51ad4e2f6e518de5dbec17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

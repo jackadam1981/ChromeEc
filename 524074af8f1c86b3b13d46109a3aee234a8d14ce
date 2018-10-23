@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5d1d84c9_935ca712",
+        "filename": "power/mt8183.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-23T05:55:42Z",
+      "side": 1,
+      "message": "Yeah, my first version was reading back the GPIO (hence the somewhat mismatched comment)...\n\nI like the idea of disabling interrupts, doing that in latest version.",
+      "parentUuid": "6438866c_a6ce3b33",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "833875f5_32980e7f",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -83,6 +107,30 @@
       "writtenOn": "2018-10-22T15:33:45Z",
       "side": 1,
       "message": "Heads-up: there is also a table of these names in coreboot.",
+      "range": {
+        "startLine": 721,
+        "startChar": 13,
+        "endLine": 721,
+        "endChar": 21
+      },
+      "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83826d2_13dec5de",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-23T05:55:42Z",
+      "side": 1,
+      "message": "Ouch. Wouldn\u0027t it then be better if the array was in ec_commands.h then?\n\nActually, I think all these string arrays should be in ec_commands.h.",
+      "parentUuid": "833875f5_32980e7f",
       "range": {
         "startLine": 721,
         "startChar": 13,
