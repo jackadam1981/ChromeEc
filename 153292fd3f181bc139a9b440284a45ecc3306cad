@@ -22,6 +22,30 @@
       "revId": "153292fd3f181bc139a9b440284a45ecc3306cad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a7269d_c354f2c3",
+        "filename": "power/sdm845.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-23T18:24:47Z",
+      "side": 1,
+      "message": "Holding these signals make PMIC unhappy, i.e. PMIC_FAULT_L will be asserted when doing the graceful PMIC power-off process. To prevent the temporary AP boot-up, have to directly force switchcap off here. Will make another change for it.",
+      "parentUuid": "e4e9d03d_efd16637",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "153292fd3f181bc139a9b440284a45ecc3306cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
