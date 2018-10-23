@@ -22,6 +22,30 @@
       "revId": "22c64b9e545fe6ccf2da85a4254b2c30ee06876d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "263d7a7a_a085c824",
+        "filename": "board/atlas_ish/build.mk",
+        "patchSetId": 16
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-23T21:50:13Z",
+      "side": 1,
+      "message": "Hi Caveh, \n\nI just roll back to PS14. PS15\u002616 was uploaded unintentionally along with other patches\u0027 update by other developer.\n\nThis board file patch is baseline for many other patches. Whenever upper chain patches, which using old version of this one by the time they are created, has update, this baseline patch will be overwritten by old version. May I know if anything is pending for code approval? I\u0027m afraid this could happen again if other developer forget to update their version of this patch.\n\nThanks.\n\nLi",
+      "parentUuid": "d08efece_f1c86745",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "22c64b9e545fe6ccf2da85a4254b2c30ee06876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
