@@ -188,6 +188,7 @@ static int st_tp_parse_finger(struct usb_hid_touchpad_report *report,
 			      int i)
 {
 	const int id = event->finger.touch_id;
+	const int logical_max_y = 1080;
 
 	/* This is not a finger */
 	if (event->finger.touch_type == ST_TP_TOUCH_TYPE_INVALID)
@@ -220,8 +221,12 @@ static int st_tp_parse_finger(struct usb_hid_touchpad_report *report,
 
 		report->finger[i].x = (CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X -
 				       event->finger.x);
-		report->finger[i].y = (CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y -
-				       event->finger.y);
+		report->finger[i].y = logical_max_y - event->finger.y;
+		/* rescale Y value, so the resolution of X and Y are the same */
+		report->finger[i].y = (report->finger[i].y *
+				       CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X *
+				       CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y /
+				       CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X);
 		break;
 	case ST_TP_EVENT_ID_LEAVE_POINTER:
 		report->finger[i].id = id;
