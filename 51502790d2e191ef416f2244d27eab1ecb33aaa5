@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ba19ce0b_cc2f0fd3",
+        "filename": "core/nds32/__divdi3.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-23T16:30:22Z",
+      "side": 1,
+      "message": "This core has only 16 registers.\n\nIt is a little unusual to change the calling convention, but because it is clearly documented and this function is not exported from the file (it is effectively C \u0027static\u0027 by not being annotated \u0027global\u0027), I think its fine.  Saving it once in the caller is an optimization.\n\nI would prefer that the comment be reworded to to use GCC\u0027s jargon, though:\n\n\"This function uses a custom calling convention, with register DHI ($r10) call-clobbered instead of callee-saved.\"",
+      "parentUuid": "d0b2c46e_a0b289b4",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 58
+      },
+      "revId": "51502790d2e191ef416f2244d27eab1ecb33aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5844ed0d_03381bb6",
         "filename": "core/nds32/__divdi3.S",
         "patchSetId": 1
