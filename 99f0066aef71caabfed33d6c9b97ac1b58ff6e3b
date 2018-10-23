@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7fc07cbc_26dcc0da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-23T19:41:17Z",
+      "side": 1,
+      "message": "Created https://partnerissuetracker.corp.google.com/u/1/issues/118296923.\nFail to CC your chromium email(domain restricted), CC\u0027ed google.com email",
+      "parentUuid": "d28cb27c_d47d10be",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "99f0066aef71caabfed33d6c9b97ac1b58ff6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a7f10e9_bbadfb54",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 1
@@ -165,6 +189,30 @@
       "revId": "99f0066aef71caabfed33d6c9b97ac1b58ff6e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a39a0e2_e09cb954",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-10-23T19:41:17Z",
+      "side": 1,
+      "message": "TODO added.\nSince noreturn attribute added later, build error generated.\nPlease refer to patch:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/742916",
+      "parentUuid": "6b2bb3e0_17dd9912",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "99f0066aef71caabfed33d6c9b97ac1b58ff6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
