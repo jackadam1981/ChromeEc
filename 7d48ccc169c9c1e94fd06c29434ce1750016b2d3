@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac55f810_7eed342e",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-23T21:54:35Z",
+      "side": 1,
+      "message": "Does the setter need to know this?",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "7d48ccc169c9c1e94fd06c29434ce1750016b2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05540de_d18a505e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-23T21:54:35Z",
+      "side": 1,
+      "message": "Is there any particular reason to not have two commands: one to set the scale and one to get the scale?",
+      "range": {
+        "startLine": 2261,
+        "startChar": 1,
+        "endLine": 2261,
+        "endChar": 29
+      },
+      "revId": "7d48ccc169c9c1e94fd06c29434ce1750016b2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
