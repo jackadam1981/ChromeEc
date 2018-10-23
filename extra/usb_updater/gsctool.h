@@ -74,7 +74,8 @@ struct board_id {
 enum board_id_action {
 	bid_none,
 	bid_get,
-	bid_set
+	bid_set,
+	bid_get_rlz,
 };
 
 /*
