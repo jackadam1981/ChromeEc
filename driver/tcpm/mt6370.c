@@ -58,6 +58,21 @@ static int mt6370_init(int port)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int mt6370_set_low_power_mode(int port, int en)
+{
+	int reg;
+
+	if (en)
+		reg = MT6370_REG_BMCIO_LPEN;
+	else
+		reg = MT6370_REG_BMCIO_OSC_EN | MT6370_REG_VBUS_DET_EN |
+		      MT6370_REG_BMCIO_BG_EN;
+
+	return tcpc_write(port, MT6370_REG_BMC_CTRL, reg);
+}
+#endif
+
 static int mt6370_get_cc(int port, int *cc1, int *cc2)
 {
 	int status;
@@ -102,6 +117,29 @@ static int mt6370_get_cc(int port, int *cc1, int *cc2)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int mt6370_drp_toggle(int port)
+{
+	int rv;
+
+	rv = tcpci_tcpc_drp_toggle(port);
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	if (rv)
+		return rv;
+
+	/*
+	 * Note: MT6370 low power mode must be enabled right before connecting
+	 * any CC cables and also rigth after enabling the DRP auto-toggling.
+	 * So here would be the best appropriate place.
+	 */
+	rv = mt6370_set_low_power_mode(port, 1);
+#endif
+
+	return rv;
+}
+#endif
+
 /* MT6370 is a TCPCI compatible port controller */
 const struct tcpm_drv mt6370_tcpm_drv = {
 	.init			= &mt6370_init,
@@ -123,11 +161,14 @@ const struct tcpm_drv mt6370_tcpm_drv = {
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	.drp_toggle		= &tcpci_tcpc_drp_toggle,
+	.drp_toggle		= &mt6370_drp_toggle,
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 #ifdef CONFIG_USBC_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
+#endif
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif
 };
