@@ -141,6 +141,30 @@
       "revId": "99f0066aef71caabfed33d6c9b97ac1b58ff6e3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2bb3e0_17dd9912",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-23T18:36:02Z",
+      "side": 1,
+      "message": "ec/include/panic.h has \"__attribute__((noreturn))\" for compiler to generate build error if the function returns. So the function shouldn\u0027t return to avoid build error.\n\nvoid software_panic(uint32_t reason, uint32_t info) __attribute__((noreturn));",
+      "parentUuid": "7ffcd18d_453278ff",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "99f0066aef71caabfed33d6c9b97ac1b58ff6e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
