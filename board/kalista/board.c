@@ -81,7 +81,8 @@ DECLARE_DEFERRED(adp_in_deferred);
 static void adp_in_deferred(void)
 {
 	struct charge_port_info pi = { 0 };
-	int level = gpio_get_level(GPIO_ADP_IN_L);
+	/* BJ */
+	int level = 0;
 
 	/* Debounce */
 	if (level == adp_in_state)
@@ -111,8 +112,6 @@ static void adp_in_deferred(void)
 /* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
 void adp_in(enum gpio_signal signal)
 {
-	if (adp_in_state == gpio_get_level(GPIO_ADP_IN_L))
-		return;
 	hook_call_deferred(&adp_in_deferred_data, ADP_DEBOUNCE_MS * MSEC);
 }
 
@@ -221,7 +220,6 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_USB2_ENABLE,
 	GPIO_USB3_ENABLE,
 	GPIO_USB4_ENABLE,
-	GPIO_USB5_ENABLE,
 };
 
 void board_reset_pd_mcu(void)
@@ -461,49 +459,9 @@ static void board_extpower(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 
-/* Mapping to the old schematics */
-#define GPIO_U42_P GPIO_TYPE_C_60W
-#define GPIO_U22_C GPIO_TYPE_C_65W
-
-/*
- * Board version 2.1 or before uses a different current monitoring circuitry.
- */
-static void set_charge_limit(int charge_ma)
-{
-	/*
-	 * We have two FETs connected to two registers: PR257 & PR258.
-	 * These control thresholds of the over current monitoring system.
-	 *
-	 *                              PR257, PR258
-	 * For 4.62A (90W BJ adapter),     on,   off
-	 * For 3.33A (65W BJ adapter),    off,    on
-	 * For 3.00A (Type-C adapter),    off,   off
-	 *
-	 * The over current monitoring system doesn't support less than 3A
-	 * (e.g. 2.25A, 2.00A). These current most likely won't be enough to
-	 * power the system. However, if they're needed, EC can monitor
-	 * PMON_PSYS and trigger H_PROCHOT by itself.
-	 */
-	if (charge_ma >= 4620) {
-		gpio_set_level(GPIO_U42_P, 1);
-		gpio_set_level(GPIO_U22_C, 0);
-	} else if (charge_ma >= 3330) {
-		gpio_set_level(GPIO_U42_P, 0);
-		gpio_set_level(GPIO_U22_C, 1);
-	} else if (charge_ma >= 3000) {
-		gpio_set_level(GPIO_U42_P, 0);
-		gpio_set_level(GPIO_U22_C, 0);
-	} else {
-		/* TODO(http://crosbug.com/p/65013352) */
-		CPRINTS("Current %dmA not supported", charge_ma);
-	}
-}
-
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	int p87w = 0, p65w = 0, p60w = 0;
-
 	/*
 	 * Turn on/off power shortage alert. Performs the same check as
 	 * system_can_boot_ap(). It's repeated here because charge_manager
@@ -514,63 +472,15 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 			CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000);
 
 	/*
-	 * In terms of timing, this should always work because
-	 * HOOK_PRIO_CHARGE_MANAGER_INIT is notified after HOOK_PRIO_INIT_I2C.
-	 * If CBI isn't initialized or contains invalid data, we assume it's
-	 * a new board.
+	 * Kalista has two types of charger: 90W, 135W.
+	 * 135W charger offers 7.1A/19V.
+	 * 90W charger offers 4.74A/19V.
 	 */
-	if (0 < board_version && board_version < 0x0202)
-		return set_charge_limit(charge_ma);
-	/*
-	 * We have three FETs connected to three registers: PR257, PR258,
-	 * PR7824. These control the thresholds of the current monitoring
-	 * system.
-	 *
-	 *                               PR257  PR7824 PR258
-	 *   For BJ (65W or 90W)           off     off   off
-	 *   For 4.35A (87W)                on     off   off
-	 *   For 3.25A (65W)               off     off    on
-	 *   For 3.00A (60W)               off      on   off
-	 *
-	 * The system power consumption is capped by PR259, which is stuffed
-	 * differently depending on the SKU (65W v.s. 90W or U42 v.s. U22).
-	 * So, we only need to monitor type-c adapters. For example:
-	 *
-	 *   a 90W system powered by 65W type-c charger
-	 *   b 65W system powered by 60W type-c charger
-	 *   c 65W system powered by 87W type-c charger
-	 *
-	 * In a case such as (c), we actually do not need to monitor the current
-	 * because the max is capped by PR259.
-	 *
-	 * AP is expected to read type-c adapter wattage from EC and control
-	 * power consumption to avoid over-current or system browns out.
-	 *
-	 */
-	if (supplier != CHARGE_SUPPLIER_DEDICATED) {
-		/* Apple 87W charger offers 4.3A @20V. */
-		if (charge_ma >= 4300) {
-			p87w = 1;
-		} else if (charge_ma >= 3250) {
-			p65w = 1;
-		} else if (charge_ma >= 3000) {
-			p60w = 1;
-		} else {
-			/*
-			 * TODO:http://crosbug.com/p/65013352.
-	 		 * The current monitoring system doesn't support lower
-	 		 * current. These currents are most likely not enough to
-	 		 * power the system. However, if they're needed, EC can
-	 		 * monitor PMON_PSYS and trigger H_PROCHOT by itself.
-	 		 */
-			p60w = 1;
-			CPRINTS("Current %dmA not supported", charge_ma);
-		}
+	if (charge_ma < 7100) {
+		/* GPIO_U22_90W high means 90W charger */
+		gpio_set_level(GPIO_U22_90W, 1);
 	}
-
-	gpio_set_level(GPIO_TYPE_C_87W, p87w);
-	gpio_set_level(GPIO_TYPE_C_65W, p65w);
-	gpio_set_level(GPIO_TYPE_C_60W, p60w);
+	return;
 }
 
 enum battery_present battery_is_present(void)
@@ -683,6 +593,7 @@ enum bj_adapter {
 	BJ_90W_19V,
 	BJ_65W_19P5V,
 	BJ_90W_19P5V,
+	BJ_135W_19V,
 };
 
 /* BJ adapter specs */
@@ -691,6 +602,7 @@ static const struct charge_port_info bj_adapters[] = {
 	[BJ_90W_19V] = { .current = 4740, .voltage = 19000 },
 	[BJ_65W_19P5V] = { .current = 3330, .voltage = 19500 },
 	[BJ_90W_19P5V] = { .current = 4620, .voltage = 19500 },
+	[BJ_135W_19V] = { .current = 7100, .voltage = 19000 },
 };
 
 /*
@@ -705,6 +617,20 @@ static const struct charge_port_info bj_adapters[] = {
  * KBL-U Celeron 3865	0	65
  */
 #define BJ_ADAPTER_90W_MASK (1 << 4 | 1 << 5 | 1 << 6)
+
+/*
+ * Project Kalista:
+ * Bit masks to map SKU ID to BJ adapter wattage. 1:135W 0:90W
+ * KBL-R i7 8550U	4	135
+ * KBL-R i5 8250U	5	135
+ * KBL-R i3 8130U	6	135
+ * KBL-U i7 7600	3	135
+ * KBL-U i5 7500	2	135
+ * KBL-U i3  7100	1	90
+ * KBL-U Celeron 3965	7	90
+ * KBL-U Celeron 3865	0	90
+ */
+#define BJ_ADAPTER_135W_MASK (1 << 4 | 1 << 5 | 1 << 6 | 1 << 3 | 1 << 2)
 
 static void setup_bj(void)
 {
@@ -723,6 +649,10 @@ static void setup_bj(void)
 	case OEM_WUKONG_M:
 		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
 			BJ_90W_19V : BJ_65W_19V;
+		break;
+	case OEM_KALISTA:
+		bj = (BJ_ADAPTER_135W_MASK & (1 << sku)) ?
+			BJ_135W_19V : BJ_90W_19V;
 		break;
 	default:
 		bj = (BJ_ADAPTER_90W_MASK & (1 << sku)) ?
@@ -755,8 +685,7 @@ static void board_charge_manager_init(void)
 			charge_manager_update_charge(j, i, NULL);
 	}
 
-	port = gpio_get_level(GPIO_ADP_IN_L) ?
-			CHARGE_PORT_TYPEC0 : CHARGE_PORT_BARRELJACK;
+	port = CHARGE_PORT_BARRELJACK;
 	CPRINTS("Power source is p%d (%s)", port,
 		port == CHARGE_PORT_TYPEC0 ? "USB-C" : "BJ");
 
