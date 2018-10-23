@@ -22,6 +22,30 @@
       "revId": "9ef276c826c15198629f2ade42fa36abdf276a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eaacd1a_5b2e7c86",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-23T01:52:48Z",
+      "side": 1,
+      "message": "Hi Jett, \n\nSince IPC/HECI protocol implementation related patches depends on these 2 task flag without config flag, I think in this case, using Task flags seems better way.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1279363/10/chip/ish/build.mk\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1279432/7/chip/ish/build.mk",
+      "parentUuid": "f14376be_beb3a3e2",
+      "range": {
+        "startLine": 66,
+        "startChar": 35,
+        "endLine": 66,
+        "endChar": 89
+      },
+      "revId": "9ef276c826c15198629f2ade42fa36abdf276a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
