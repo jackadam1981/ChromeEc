@@ -55,7 +55,7 @@ GPIO(PROCHOT_L,             PIN(3, 4), GPIO_INPUT)
 /* PMIC/AP 1.8V */
 GPIO(PM845_RESIN_L,         PIN(3, 2), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* PMIC reset trigger */
 GPIO(WARM_RESET_L,          PIN(F, 4), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* AP warm reset */
-GPIO(PMIC_KPD_PWR_ODL,      PIN(D, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* PMIC power button */
+GPIO(PMIC_KPD_PWR_ODL,      PIN(D, 6), GPIO_OUT_HIGH)  /* PMIC power button */
 GPIO(EC_INT_L,              PIN(A, 2), GPIO_ODR_HIGH | GPIO_SEL_1P8V)  /* Interrupt line between AP and EC */
 GPIO(AP_SUSPEND_L,          PIN(5, 7), GPIO_INPUT | GPIO_SEL_1P8V)     /* Suspend signal from AP */
 
