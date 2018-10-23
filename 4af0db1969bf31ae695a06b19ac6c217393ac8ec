@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d86dad33_fd8ceac2",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-23T16:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6962cbd6_8f6d0a73",
+      "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40844c57_e6636e3f",
         "filename": "board/bobba/gpio.inc",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I think WFCAM_VSYNC and EC_AP_INT_ODL are different pins:\nWFCAM_VSYNC - GPIO03\nEC_AP_INT_ODL - GPIO94",
       "parentUuid": "40844c57_e6636e3f",
+      "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a30a8148_cf227eca",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-23T16:31:21Z",
+      "side": 1,
+      "message": "It looks like the camera rail for this is 3.3V, and it doesn\u0027t have an _ODL suffix so I am going to keep rising edge for now until we know otherwise.",
+      "parentUuid": "adc7c21b_573513cf",
       "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
