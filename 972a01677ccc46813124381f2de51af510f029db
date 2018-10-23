@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e06e0af0_bea51dc6",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-10-23T20:15:54Z",
+      "side": 1,
+      "message": "This seems identical for most of the batteries.\nCan you make this ship_mode_info_default so we don\u0027t need to duplicate this?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "972a01677ccc46813124381f2de51af510f029db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa784628_e952883a",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-10-23T20:15:54Z",
+      "side": 1,
+      "message": "And then you can point to ship_mode_info_default here.",
+      "range": {
+        "startLine": 148,
+        "startChar": 20,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "972a01677ccc46813124381f2de51af510f029db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bbde408_8ba43f0d",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-10-23T20:15:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 162,
+        "startChar": 21,
+        "endLine": 162,
+        "endChar": 42
+      },
+      "revId": "972a01677ccc46813124381f2de51af510f029db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87849cf5_beb6e0d9",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-10-23T20:15:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 169,
+        "startChar": 21,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "972a01677ccc46813124381f2de51af510f029db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bac762_46b6eb83",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-10-23T20:15:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 176,
+        "startChar": 21,
+        "endLine": 176,
+        "endChar": 45
+      },
+      "revId": "972a01677ccc46813124381f2de51af510f029db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
