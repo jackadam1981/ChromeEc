@@ -22,9 +22,9 @@ GPIO_INT(PCH_SLP_SUS_L,		PIN(6, 2), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(RSMRST_L_PGOOD,	PIN(B, 0), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(PMIC_DPWROK,		PIN(C, 7), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(WP_L,			PIN(9, 3), GPIO_INT_BOTH,			switch_interrupt)
-GPIO_INT(ADP_IN_L,		PIN(C, 5), GPIO_INT_BOTH | GPIO_PULL_UP,	adp_in)	/* Low: BJ detected */
 GPIO_INT(USB_C0_VBUS_WAKE_L,	PIN(9, 7), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus0_evt)
 GPIO_INT(RECOVERY_L,		PIN(8, 2), GPIO_INT_BOTH, button_interrupt)	/* Recovery button */
+GPIO(ADP_IN_L,			PIN(C, 5), GPIO_INPUT)                          /* Kalista doesn't use GPIOC5 currently. */
 GPIO(PCH_RTCRST,		PIN(E, 7), GPIO_OUT_LOW)			/* RTCRST# to SOC */
 GPIO(WLAN_OFF_L,		PIN(7, 2), GPIO_OUT_LOW)			/* Disable WLAN */
 GPIO(PP3300_DX_WLAN,		PIN(A, 7), GPIO_OUT_LOW)			/* Enable WLAN 3.3V Power */
@@ -44,6 +44,7 @@ GPIO(TYPE_C_60W,		PIN(3, 3), GPIO_OUTPUT | GPIO_PULL_DOWN)
 GPIO(TYPE_C_65W,		PIN(3, 4), GPIO_OUTPUT | GPIO_PULL_DOWN)
 GPIO(TYPE_C_87W,		PIN(4, 4), GPIO_OUTPUT | GPIO_PULL_DOWN)
 GPIO(POWER_RATE,		PIN(7, 1), GPIO_INPUT)				/* High: i3/5/7. Low: Celeron */
+GPIO(PP3300_USB_PD_EN,		PIN(6, 7), GPIO_OUT_HIGH)                       /* Initialize PP3300_USB_PD_EN as output high */
 
 /* Fizz specific pins */
 GPIO(LAN_PWR_EN,		PIN(8, 3), GPIO_OUT_HIGH)			/* Ethernet power enabled */
@@ -88,15 +89,15 @@ GPIO(CEC_OUT,			PIN(3, 6), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
 GPIO(CEC_IN,			PIN(4, 0), GPIO_INPUT)
 GPIO(CEC_PULL_UP,		PIN(D, 3), GPIO_OUT_HIGH)
 
-/* Board ID */
-GPIO(BOARD_VERSION1,		PIN(C, 4), GPIO_INPUT)	/* Board ID bit0 */
-GPIO(BOARD_VERSION2,		PIN(C, 2), GPIO_INPUT)	/* Board ID bit1 */
-GPIO(BOARD_VERSION3,		PIN(0, 1), GPIO_INPUT)	/* Board ID bit2 */
+/* Speaker */
+GPIO(SPKR5,			PIN(C, 2), GPIO_INPUT)
 
 /* Test points */
 GPIO(TP248,			PIN(5, 7), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIO57 */
 GPIO(TP249,			PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPO66_ARM_L */
 GPIO(TP250,			PIN(3, 5), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIO35_TEST_L */
+GPIO(TP128,			PIN(C, 4), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIOC4 */
+GPIO(TP129,			PIN(0, 1), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIO01 */
 
 /* Alternate functions GPIO definitions */
 ALTERNATE(PIN_MASK(6, 0x30), 1, MODULE_UART, 0)		/* GPIO64-65 */		/* UART from EC to Servo */
