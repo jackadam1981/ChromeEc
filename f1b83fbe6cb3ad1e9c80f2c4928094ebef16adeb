@@ -22,6 +22,30 @@
       "revId": "f1b83fbe6cb3ad1e9c80f2c4928094ebef16adeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d3f92f_a34c980e",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-10-23T04:14:07Z",
+      "side": 0,
+      "message": "Even for the old HC ipc. This is not the right place. It should be moved to the beginning of the old IPC task. Let me add that change.",
+      "parentUuid": "147ac04e_60452a03",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 1
+      },
+      "revId": "f1b83fbe6cb3ad1e9c80f2c4928094ebef16adeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
