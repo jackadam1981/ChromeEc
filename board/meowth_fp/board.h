@@ -98,6 +98,10 @@
 #define CONFIG_WATCHDOG_HELP
 #define CONFIG_WP_ACTIVE_HIGH
 
+/* Define the MKBP events which are allowed to wakeup AP in S3. */
+#define CONFIG_MKBP_WAKEUP_MASK \
+		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_MKBP))
+
 /* SPI configuration for the fingerprint sensor */
 #define CONFIG_SPI_MASTER
 #define CONFIG_SPI_FP_PORT  2 /* SPI4: third master config */
