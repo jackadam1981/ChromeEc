@@ -513,6 +513,12 @@
 #undef CONFIG_BRINGUP
 
 /*
+ * Define this to enable ITE EC programming by CCD using the INA i2c
+ * interface.
+ */
+#undef CONFIG_CCD_ITE_PROGRAMMING
+
+/*
  * Enable debug prints / asserts that may helpful for debugging board bring-up,
  * but probably shouldn't be enabled for production for performance reasons.
  */
