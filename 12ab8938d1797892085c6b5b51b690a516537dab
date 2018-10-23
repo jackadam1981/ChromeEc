@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a70f4f5_4bef438a",
+        "filename": "chip/npcx/gpio_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-23T00:16:34Z",
+      "side": 1,
+      "message": "Looks ugly to define and then undef. Better to move the above SPI Module definition to the #else clause.",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 24
+      },
+      "revId": "12ab8938d1797892085c6b5b51b690a516537dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
