@@ -2528,18 +2528,17 @@ void pd_task(void *u)
 				timeout = 5*MSEC;
 				break;
 			}
-			/* If in Try.SRC state, then don't need to debounce */
-			if (!(pd[port].flags & PD_FLAGS_TRY_SRC)) {
-				/* Debounce the cc state */
-				if (new_cc_state != pd[port].cc_state) {
-					pd[port].cc_debounce = get_time().val +
-						PD_T_CC_DEBOUNCE;
+			/* Debounce the cc state */
+			if (new_cc_state != pd[port].cc_state) {
+				pd[port].cc_debounce = get_time().val +
+					(pd[port].flags & PD_FLAGS_TRY_SRC ?
+							PD_T_TRY_CC_DEBOUNCE :
+							PD_T_CC_DEBOUNCE);
 					pd[port].cc_state = new_cc_state;
-					break;
-				} else if (get_time().val <
-					   pd[port].cc_debounce) {
-					break;
-				}
+				pd[port].cc_state = new_cc_state;
+				break;
+			} else if (get_time().val < pd[port].cc_debounce) {
+				break;
 			}
 
 			/* Debounce complete */
