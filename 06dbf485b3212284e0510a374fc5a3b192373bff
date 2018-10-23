@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7cc728b_dfac1671",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-23T18:23:37Z",
+      "side": 1,
+      "message": "It is not trivial. I added a comment to note it.",
+      "parentUuid": "7e204e6c_63899b89",
+      "range": {
+        "startLine": 34,
+        "startChar": 87,
+        "endLine": 34,
+        "endChar": 115
+      },
+      "revId": "06dbf485b3212284e0510a374fc5a3b192373bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "160c8ec1_5e42cb1f",
         "filename": "power/sdm845.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "06dbf485b3212284e0510a374fc5a3b192373bff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad622230_27e46c96",
+        "filename": "power/sdm845.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-23T18:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160c8ec1_5e42cb1f",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 42
+      },
+      "revId": "06dbf485b3212284e0510a374fc5a3b192373bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
