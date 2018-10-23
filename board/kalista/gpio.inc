@@ -22,7 +22,6 @@ GPIO_INT(PCH_SLP_SUS_L,		PIN(6, 2), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(RSMRST_L_PGOOD,	PIN(B, 0), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(PMIC_DPWROK,		PIN(C, 7), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(WP_L,			PIN(9, 3), GPIO_INT_BOTH,			switch_interrupt)
-GPIO_INT(ADP_IN_L,		PIN(C, 5), GPIO_INT_BOTH | GPIO_PULL_UP,	adp_in)	/* Low: BJ detected */
 GPIO_INT(USB_C0_VBUS_WAKE_L,	PIN(9, 7), GPIO_INT_BOTH | GPIO_PULL_UP,	vbus0_evt)
 GPIO_INT(RECOVERY_L,		PIN(8, 2), GPIO_INT_BOTH, button_interrupt)	/* Recovery button */
 GPIO(PCH_RTCRST,		PIN(E, 7), GPIO_OUT_LOW)			/* RTCRST# to SOC */
@@ -40,10 +39,9 @@ GPIO(CCD_MODE_ODL,		PIN(6, 3), GPIO_INPUT)				/* Case Closed Debug Mode */
 GPIO(EC_HAVEN_RESET_ODL,	PIN(0, 2), GPIO_ODR_HIGH)			/* H1 Reset */
 GPIO(ENTERING_RW,		PIN(7, 6), GPIO_OUTPUT)				/* EC Entering RW */
 GPIO(PMIC_INT_L,		PIN(6, 0), GPIO_INPUT)				/* PMIC interrupt */
-GPIO(TYPE_C_60W,		PIN(3, 3), GPIO_OUTPUT | GPIO_PULL_DOWN)
-GPIO(TYPE_C_65W,		PIN(3, 4), GPIO_OUTPUT | GPIO_PULL_DOWN)
-GPIO(TYPE_C_87W,		PIN(4, 4), GPIO_OUTPUT | GPIO_PULL_DOWN)
+GPIO(U22_90W,			PIN(3, 4), GPIO_OUTPUT | GPIO_PULL_DOWN)
 GPIO(POWER_RATE,		PIN(7, 1), GPIO_INPUT)				/* High: i3/5/7. Low: Celeron */
+GPIO(PP3300_USB_PD_EN,		PIN(6, 7), GPIO_OUT_HIGH)                       /* Initialize PP3300_USB_PD_EN as output high */
 
 /* Fizz specific pins */
 GPIO(LAN_PWR_EN,		PIN(8, 3), GPIO_OUT_HIGH)			/* Ethernet power enabled */
@@ -72,7 +70,6 @@ GPIO(I2C3_SDA,			PIN(D, 0), GPIO_INPUT)				/* EC_THEM_SDA */
 /* 5V enables: INPUT=1.5A, OUT_LOW=OFF, OUT_HIGH=3A */
 GPIO(USB_C0_5V_EN,		PIN(4, 2), GPIO_OUT_LOW | GPIO_PULL_UP)		/* C0 5V Enable */
 GPIO(USB_C0_CHARGE_L,		PIN(C, 0), GPIO_OUT_LOW)			/* C0 Charge enable */
-GPIO(AC_JACK_CHARGE_L,		PIN(C, 3), GPIO_OUT_LOW)			/* AC jack charge enable */
 GPIO(USB_C0_PD_RST_ODL,		PIN(0, 3), GPIO_OUT_LOW)			/* C0 PD Reset */
 GPIO(USB_C0_DP_HPD,		PIN(9, 4), GPIO_INPUT)				/* C0 DP Hotplug Detect */
 GPIO(USB_C0_TCPC_PWR,		PIN(8, 4), GPIO_OUT_LOW)			/* Enable C0 TCPC Power */
@@ -81,21 +78,25 @@ GPIO(USB1_ENABLE,		PIN(3, 2), GPIO_OUT_LOW)			/* Rear port, bottom */
 GPIO(USB2_ENABLE,		PIN(C, 6), GPIO_OUT_LOW)			/* Rear port, top */
 GPIO(USB3_ENABLE,		PIN(A, 1), GPIO_OUT_LOW)			/* Rear port, single */
 GPIO(USB4_ENABLE,		PIN(0, 0), GPIO_OUT_LOW)			/* Front port 1 */
-GPIO(USB5_ENABLE,		PIN(B, 1), GPIO_OUT_LOW)			/* Front port 2 */
 GPIO(USB_A_CHARGE_EN_L,		PIN(A, 5), GPIO_OUT_LOW)
 
 GPIO(CEC_OUT,			PIN(3, 6), GPIO_OUT_HIGH | GPIO_OPEN_DRAIN)
 GPIO(CEC_IN,			PIN(4, 0), GPIO_INPUT)
 GPIO(CEC_PULL_UP,		PIN(D, 3), GPIO_OUT_HIGH)
 
-/* Board ID */
-GPIO(BOARD_VERSION1,		PIN(C, 4), GPIO_INPUT)	/* Board ID bit0 */
-GPIO(BOARD_VERSION2,		PIN(C, 2), GPIO_INPUT)	/* Board ID bit1 */
-GPIO(BOARD_VERSION3,		PIN(0, 1), GPIO_INPUT)	/* Board ID bit2 */
+/* Speaker */
+GPIO(SPKR5,			PIN(C, 2), GPIO_INPUT)
 
 /* Test points */
+GPIO(TP48,			PIN(B, 1), GPIO_INPUT)		/* EC_GPIOB1 */
+GPIO(TP52,			PIN(C, 3), GPIO_INPUT)		/* EC_GPIOC3 */
+GPIO(TP120,			PIN(4, 4), GPIO_INPUT)		/* EC_GPIO44 */
+GPIO(TP121,			PIN(3, 3), GPIO_INPUT)		/* EC_GPIO33 */
+GPIO(TP123,			PIN(C, 5), GPIO_INPUT)		/* EC_GPIOC5 */
+GPIO(TP127,			PIN(6, 6), GPIO_INPUT)		/* EC_GPO66 */
+GPIO(TP128,			PIN(C, 4), GPIO_INPUT)		/* EC_GPIOC4 */
+GPIO(TP129,			PIN(0, 1), GPIO_INPUT)		/* EC_GPIO01 */
 GPIO(TP248,			PIN(5, 7), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIO57 */
-GPIO(TP249,			PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPO66_ARM_L */
 GPIO(TP250,			PIN(3, 5), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIO35_TEST_L */
 
 /* Alternate functions GPIO definitions */
