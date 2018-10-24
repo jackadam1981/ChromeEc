@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9efd308a_91e4d3bc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2889,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T20:39:06Z",
+      "side": 1,
+      "message": "The way I read the spec (and match it with our implementation), I expect the following instead\n\nif (pd[port].flags \u0026 PD_FLAGS_TRY_SRC)\n  cc_debouce \u003d time + PD_T_TRY_CC_DEBOUNCE\nelse \n  cc_debouce \u003d time + PD_T_CC_DEBOUNCE",
+      "range": {
+        "startLine": 2887,
+        "startChar": 4,
+        "endLine": 2889,
+        "endChar": 28
+      },
+      "revId": "546be58cad3936545820ef0eb9d431247b09a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
