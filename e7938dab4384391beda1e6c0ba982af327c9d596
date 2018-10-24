@@ -16,6 +16,24 @@
       "revId": "e7938dab4384391beda1e6c0ba982af327c9d596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7119c06c_0f54dc3f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-10-24T09:49:14Z",
+      "side": 1,
+      "message": "oops, that was really wrong...\n\nSo, the (unscaled) logical dimension is 2160 * 1080, while physical dimension is 1030 * 750.\n\nWe want to make Y resolution equals to X, so the logical dimension should be 2160 * 1573.\n\nAnd the scaling formula should be:\n\n  scaled_y \u003d unscaled_y * 1573 / 1080",
+      "parentUuid": "dcf17515_d2731ddc",
+      "revId": "e7938dab4384391beda1e6c0ba982af327c9d596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
