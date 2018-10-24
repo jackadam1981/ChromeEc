@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a028421b_56d7bc6c",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:41:09Z",
+      "side": 1,
+      "message": "could we try both permutations and disabled -e while we do it? or put it in a test (so we would have to temporarily disable -e)",
+      "range": {
+        "startLine": 736,
+        "startChar": 15,
+        "endLine": 739,
+        "endChar": 24
+      },
+      "revId": "91e4438180aa6c55d4cfe4155176641ad4a259c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
