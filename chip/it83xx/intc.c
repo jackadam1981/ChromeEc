@@ -13,6 +13,29 @@
 #include "usb_pd.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
+/* non-zero init value */
+int msgid_last = 0xFF;
+
+int chk_msgID_repeat(int port)
+{
+	int msgtype = PD_HEADER_TYPE(IT83XX_USBPD_RMH(port));
+	int msgid = PD_HEADER_ID(IT83XX_USBPD_RMH(port));
+
+	/*
+	 * check if repeat MessageID, if yes don't respond subsequent
+	 * messages, expect SoftReset.
+	 */
+	if (msgid == msgid_last && !(msgtype == 0x0D/*softreset*/)) {
+		/* If clear this bit, USBPD receives next packet */
+		IT83XX_USBPD_MRSR(port) = USBPD_REG_MASK_RX_MSG_VALID;
+		/* MsgID repeat */
+		return 1;
+	}
+	msgid_last = msgid;
+	/* MsgID not repeat */
+	return 0;
+}
+
 static void chip_pd_irq(enum usbpd_port port)
 {
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
@@ -21,11 +44,13 @@ static void chip_pd_irq(enum usbpd_port port)
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+		msgid_last = 0xFF;
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
-			tcpm_enqueue_message(port);
+			if (!(chk_msgID_repeat(port)))
+				tcpm_enqueue_message(port);
 			/* clear RX done interrupt */
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
 		}
