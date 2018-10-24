@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5d84afb_5f737bde",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T19:32:46Z",
+      "side": 1,
+      "message": "Can we start by doing an atomic_read_clear then we can loop on the set bits. E.g.\n\nint ports \u003d atomic_read_clear(\u0026vbus_discharge_en);\n\nwhile (ports) {\n  int port \u003d __fls(ports);\n  ports \u0026\u003d ~(1 \u003c\u003c port);\n\n  read_reg(port, STATUS, \u0026status)\n\n  if()\n   discharvhe(0);\n  else {\n    atomic_set(\u0026vbus_discharge_en, 1 \u003c\u003c port);\n    hook_call_deferred;\n  }",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "a9fa11bf17f7ccb3de1e8cbf96daf3720f1121c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
