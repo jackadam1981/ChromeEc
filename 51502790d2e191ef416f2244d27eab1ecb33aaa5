@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ac80e0f_9c637510",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-24T10:24:05Z",
+      "side": 1,
+      "message": "__divdi3 will invoke them during a 64-bit division, so the other functions should be functional if __divdi3 works as expected.",
+      "parentUuid": "6cb38ca5_57c622ed",
+      "range": {
+        "startLine": 15,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "51502790d2e191ef416f2244d27eab1ecb33aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0b2c46e_a0b289b4",
         "filename": "core/nds32/__divdi3.S",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ff30cc3d_0e55abe8",
+        "filename": "core/nds32/__divdi3.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-24T10:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba19ce0b_cc2f0fd3",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 58
+      },
+      "revId": "51502790d2e191ef416f2244d27eab1ecb33aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5844ed0d_03381bb6",
         "filename": "core/nds32/__divdi3.S",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "51502790d2e191ef416f2244d27eab1ecb33aaa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de564d1_f288d724",
+        "filename": "core/nds32/__divdi3.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-24T10:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5844ed0d_03381bb6",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 8
+      },
+      "revId": "51502790d2e191ef416f2244d27eab1ecb33aaa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
