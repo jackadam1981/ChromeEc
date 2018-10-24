@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77f3e2a6_f0f8f910",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:49:07Z",
+      "side": 1,
+      "message": "What are your thoughts about creating a new CONFIG for Extended reset flag.\n\nOn the STM32 it would be a compiler error if both flags were defined (for the space reason you already listed).\n\nThe ifdef else works here okay (because of the comment) but other places where you see ifndef CONFIG_HOSTCMD_VBNV_CONTEXT doesn\u0027t really make sense why we are talking about reset reasons.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "7dc91c8e97e9bde8461adba9dc43865bc6f919de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
