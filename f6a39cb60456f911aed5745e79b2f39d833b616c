@@ -363,6 +363,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28f9b2a_de99360b",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-24T16:54:52Z",
+      "side": 1,
+      "message": "ZZCR is a brand code for internal or development device.  I added a hint to the doc.",
+      "parentUuid": "9127b1d9_cef7312f",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
