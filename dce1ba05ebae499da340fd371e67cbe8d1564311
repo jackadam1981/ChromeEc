@@ -16,6 +16,23 @@
       "revId": "dce1ba05ebae499da340fd371e67cbe8d1564311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e326490_260b4681",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-24T13:05:54Z",
+      "side": 1,
+      "message": "Wait, if we just set the logical max here to 1080, why won\u0027t Chrome/kernel do the scaling properly? Or is it not able to use different scales for x and y dimensions?",
+      "revId": "dce1ba05ebae499da340fd371e67cbe8d1564311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
