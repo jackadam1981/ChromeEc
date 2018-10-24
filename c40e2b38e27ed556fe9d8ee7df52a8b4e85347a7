@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afc2803e_efdb8a58",
+        "filename": "include/chipset.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2018-10-24T06:42:55Z",
+      "side": 1,
+      "message": "`BOARD\u003dkukui make test` failed with \"build/kukui/utils/RO/board/kukui/board.o:(.rodata+0x134): undefined reference to `chipset_watchdog_interrupt\u0027\".\nI think an empty chipset_watchdog_interrupt is also needed here.",
+      "revId": "c40e2b38e27ed556fe9d8ee7df52a8b4e85347a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
