@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf17515_d2731ddc",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-24T09:32:33Z",
+      "side": 1,
+      "message": "This does not look right.\n\nYou have y (logical) * x (logical) * y (mm) / x (mm), so the units are (logical**2).\n\nUnits should be (logical)\n\nreport-\u003efinger[i].y * CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X /\t\t\t       CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y\nsounds more correct?\n\nBut I\u0027m not sure how wrong the units are in ST FW...",
+      "revId": "e7938dab4384391beda1e6c0ba982af327c9d596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
