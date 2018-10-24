@@ -164,6 +164,30 @@
       "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a1b9996_77cbd15c",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-24T01:28:53Z",
+      "side": 1,
+      "message": "Those are just constants, right?\n\nWould it work to just have the array as is in the header file?",
+      "parentUuid": "7b6fde2b_baddc678",
+      "range": {
+        "startLine": 721,
+        "startChar": 13,
+        "endLine": 721,
+        "endChar": 21
+      },
+      "revId": "524074af8f1c86b3b13d46109a3aee234a8d14ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
