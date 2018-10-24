@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2959321a_c26ace07",
+        "filename": "power/sdm845.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-10-24T22:51:02Z",
+      "side": 1,
+      "message": "If we are confident enough, probably don\u0027t need this safeguard.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "37602125c22d9aa38ac2bc7e8ba67125645108b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
