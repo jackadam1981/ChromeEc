@@ -103,7 +103,12 @@ BOARDS_STM32_DFU=(
 	stm32f446e-eval
 	tigertail
 )
-
+BOARDS_SUPPLEMENTAL_SERVO=(
+	hammer
+	staff
+	whiskers
+	wand
+)
 BOARDS_NPCX_5M5G_JTAG=(
 	npcx_evb
 	npcx_evb_arm
@@ -728,10 +733,10 @@ function claim_pty() {
 
 function get_serial() {
 	if [[ "${SERVO_TYPE}" =~ "servo_v4_with_servo_micro" ]]; then
-		if [[ -z "${BOARD}" ]]; then
-			sn_ctl="servo_micro_"
-		else
+                if $(in_array "${BOARDS_EXTRA_SERVO[@]}" "${BOARD}"); then
 			sn_ctl="servo_micro_for_${BOARD}_"
+		else
+			sn_ctl="servo_micro_"
 		fi
 	elif [[ "${SERVO_TYPE}" =~ "_with_ccd" ]] ; then
 		sn_ctl="ccd_"
@@ -740,6 +745,8 @@ function get_serial() {
 		sn_ctl=""
 	fi
 
+	( >&2 echo ${DUT_CONTROL_CMD} "${sn_ctl}serialname" )
+	( >&2 echo $( ${DUT_CONTROL_CMD} "${sn_ctl}serialname") )
 	SERIALNAME=$(${DUT_CONTROL_CMD} "${sn_ctl}serialname" | cut -d: -f2)
 	echo $SERIALNAME
 }
