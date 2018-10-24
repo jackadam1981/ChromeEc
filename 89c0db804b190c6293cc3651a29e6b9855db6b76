@@ -52,6 +52,24 @@
       "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a50d9f_0fc6432a",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-10-24T18:36:24Z",
+      "side": 1,
+      "message": "Aaron,  DECLARE_IRQ and __switchto are critical code and might need quite review and testing if we make changes.  If you agree, I will make changes in new CL and pursue this CL for merge. \nAnd If needed, why don\u0027t we add comments that FPU should not be used inside interrupt routine.",
+      "parentUuid": "9e234efe_289f4d14",
+      "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
