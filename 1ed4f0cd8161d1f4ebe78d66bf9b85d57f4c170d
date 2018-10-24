@@ -46,6 +46,30 @@
       "revId": "1ed4f0cd8161d1f4ebe78d66bf9b85d57f4c170d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02093a2e_b2aaba4f",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-24T21:38:46Z",
+      "side": 1,
+      "message": "Scott and I went back and forth on what the right approach would be here.  I\u0027ve also tested moving the flag line up and that definitely fixes the problem, but this also seems like a pretty reasonable sanity check to make sure we\u0027re sinking if something is being detected as a charger.  \n\nChanging the driver does have a smaller scope.  The most awkward part about fixing the issue that way is that we don\u0027t really know whether we\u0027ve successfully sourced Vbus during that 25ms wait, but the flag could also be viewed as whether we\u0027re just trying to source it (as opposed to definitely sourcing it)",
+      "parentUuid": "125a4b03_4952ac9b",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "1ed4f0cd8161d1f4ebe78d66bf9b85d57f4c170d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
