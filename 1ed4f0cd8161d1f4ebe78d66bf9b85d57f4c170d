@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "125a4b03_4952ac9b",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:09:19Z",
+      "side": 1,
+      "message": "should we change nx20p348x_vbus_source_enable instead?\n\nWe could move up the Vbus flag cache change up to line 188 (and then then restore it if the status read fails)",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "1ed4f0cd8161d1f4ebe78d66bf9b85d57f4c170d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
