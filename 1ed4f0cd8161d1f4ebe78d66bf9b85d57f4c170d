@@ -22,6 +22,30 @@
       "revId": "1ed4f0cd8161d1f4ebe78d66bf9b85d57f4c170d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "809ef941_bb40620d",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-10-24T21:37:59Z",
+      "side": 1,
+      "message": "This also fixes the issue and we had discussed that approach. I was thinking both fixes should be put in. However, once concern about the 2nd fix that Furquan mentioned to me was that the charger state machine has been separated from the USB PD side and this would violate that idea. \n\nIf that\u0027s not an issue and this part of the change is kept, then I think it should at least be guarded by CONFIG_USB_POWER_DELIVERY.",
+      "parentUuid": "125a4b03_4952ac9b",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "1ed4f0cd8161d1f4ebe78d66bf9b85d57f4c170d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
