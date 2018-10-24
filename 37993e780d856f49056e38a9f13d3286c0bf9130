@@ -39,6 +39,29 @@
       "revId": "37993e780d856f49056e38a9f13d3286c0bf9130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04bb69e3_0c8b81cb",
+        "filename": "test/pinweaver.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-24T16:37:18Z",
+      "side": 1,
+      "message": "It probably makes sense to test the pcr matching logic by creating a global variable you use to set the sha256_of_selected_pcr from. With it you can use this as a MOCK and test the case where the PCR matches or doesn\u0027t match and make sure you get the correct error/return codes.",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 1
+      },
+      "revId": "37993e780d856f49056e38a9f13d3286c0bf9130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
