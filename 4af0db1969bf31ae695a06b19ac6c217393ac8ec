@@ -123,6 +123,24 @@
       "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2d0b57_844ba660",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2018-10-24T04:02:00Z",
+      "side": 1,
+      "message": "From the image when I verified VSYNC pin with scope, I think GPIO_SEL_1P8V is still needed.\nhttps://b.corp.google.com/issues/77984311#comment3",
+      "parentUuid": "80c10814_17187dc7",
+      "revId": "4af0db1969bf31ae695a06b19ac6c217393ac8ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
