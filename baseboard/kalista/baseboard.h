@@ -233,13 +233,7 @@ enum mft_channel {
 };
 
 enum OEM_ID {
-	OEM_KENCH = 0,
-	OEM_TEEMO = 1,
-	OEM_SION = 2,
-	OEM_WUKONG_N = 3,
-	OEM_WUKONG_A = 4,
-	OEM_WUKONG_M = 5,
-	OEM_BLEEMO = 6,
+	OEM_KARMA = 7,
 	/* Number of OEM IDs */
 	OEM_COUNT
 };
@@ -255,7 +249,7 @@ enum OEM_ID {
 /* delay to turn on/off vconn */
 #define PD_VCONN_SWAP_DELAY		5000   /* us */
 
-/* Define typical operating power. Since Fizz doesn't have a battery to charge,
+/* Define typical operating power. Since Kalista doesn't have a battery,
  * we're not interested in any power lower than the AP power-on threshold. */
 #define PD_OPERATING_POWER_MW	CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
 #define PD_MAX_POWER_MW		100000
