@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f9df958_715f8043",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-24T23:22:20Z",
+      "side": 1,
+      "message": "please note that this is the default/initial value for this\nregister so you could simply remove both writes to 0x37.",
+      "range": {
+        "startLine": 383,
+        "startChar": 51,
+        "endLine": 383,
+        "endChar": 55
+      },
+      "revId": "c4a67e230c2c55b407bc346d2b1a3cd963b4efd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
