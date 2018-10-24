@@ -345,6 +345,24 @@
       "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9127b1d9_cef7312f",
+        "filename": "chip/g/sn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-10-24T05:28:49Z",
+      "side": 1,
+      "message": "Let\u0027s move the discussion to go/zte-floors. What is ZZCR though? I couldn\u0027t find that acronym in go/cr50-boardid-lock which is my reference for all things BoardID.",
+      "parentUuid": "f2957ea7_b82676f4",
+      "revId": "f6a39cb60456f911aed5745e79b2f39d833b616c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
