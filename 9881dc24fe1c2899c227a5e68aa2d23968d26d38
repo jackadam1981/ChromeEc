@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a4e95d3_edda71f8",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:36:51Z",
+      "side": 1,
+      "message": "nit: double space",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06039564_26907c7d",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:36:51Z",
+      "side": 1,
+      "message": "why use typedef enum here instead of just enum ipc_peer_id_t\n\n(here and below)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd67a5e_cbd4eda1",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:36:51Z",
+      "side": 1,
+      "message": "This might just be my ignorance here, but can you add a comment for what PMC and CSME are, please?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "476a5a5d_52763627",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:36:51Z",
+      "side": 1,
+      "message": "it would be nice to have comments for these too like you do just below",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a4b7c33_804c92be",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-24T21:36:51Z",
+      "side": 1,
+      "message": "why does this need to be true?\n\nAlso is this also true for write as well?\n\nIf this is supposed to be our generated host communication protocol layer, I do not believe that common code will honor this constraint. Should we add extra protection for this now?",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
