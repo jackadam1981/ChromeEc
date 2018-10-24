@@ -13,6 +13,7 @@
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
 #define CONFIG_CMD_AP_RESET_LOG
+#define CONFIG_CMD_GPIO_EXTENDED
 
 /*
  * By default, enable all console messages excepted event and HC:

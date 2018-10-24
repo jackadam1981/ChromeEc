@@ -111,9 +111,8 @@ void gpio_set_flags(enum gpio_signal signal, int flags)
 #ifdef CONFIG_CMD_GPIO_EXTENDED
 int gpio_get_flags(enum gpio_signal signal)
 {
-	const struct gpio_info *g = gpio_list + signal;
-
-	return gpio_get_flags_by_mask(g->port, g->mask);
+	/* gpio_get_flags_by_mask() not implemented yet for npcx chip */
+	return 0;
 }
 #endif
 
