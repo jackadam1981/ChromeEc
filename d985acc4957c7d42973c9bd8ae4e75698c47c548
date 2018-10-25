@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62867693_6e123fe1",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-25T14:10:01Z",
+      "side": 1,
+      "message": "It took me a little while to figure out why you used 10 here (b/c that is the lowest there is and then next up has 32).\n\n\nCan you change this number to \u003e\u003d 32 (or something that would fit all of the flags below) or make a comment that if the number of entries is greater than 10, then we assume the next size up is 32 entries?",
+      "range": {
+        "startLine": 37,
+        "startChar": 65,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "d985acc4957c7d42973c9bd8ae4e75698c47c548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd34cdf_4e76ff9f",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-25T14:10:01Z",
+      "side": 1,
+      "message": "Will this assert fail on boards that have CONFIG_HOSTCMD_VBNV_CONTEXT and also use the SYS_RESET_AP_WATCHDOG flag?\n\nShould we move line 361 down into the \"#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED\" block?",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 29
+      },
+      "revId": "d985acc4957c7d42973c9bd8ae4e75698c47c548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
