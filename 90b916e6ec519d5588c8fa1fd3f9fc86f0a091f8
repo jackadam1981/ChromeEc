@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "672a6a8b_23dd0043",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-10-25T17:27:58Z",
+      "side": 1,
+      "message": "You might want to make a bug for this. To keep everything tracked in the same place. You could then link 4.14 kernel patches to the same spot.",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "287c4ae0_652ffbba",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-10-25T17:27:58Z",
+      "side": 1,
+      "message": "Maybe remove this header. This pin has nothing to do with camera.",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
