@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bb8e8d3_7784bd21",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-25T23:49:50Z",
+      "side": 1,
+      "message": "I think either name makes sense - the waveform is sent, even if this function delegates that job.  I think consistency across the I2C interface types outweighs being extra specific here.",
+      "parentUuid": "31262768_40c5fb62",
+      "range": {
+        "startLine": 738,
+        "startChar": 15,
+        "endLine": 738,
+        "endChar": 19
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86e40db6_f3b34e5a",
         "filename": "util/iteflash.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7490845_eeed42f5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-25T23:49:50Z",
+      "side": 1,
+      "message": "This is related, because the inconsistent wave arg had to go.\n\nStill want a separate patch?\n\nAlso, if it\u0027s really worth avoiding the re-alloc, I could cleanly fit this into common_hnd.  However I\u0027m skeptical that the retry logic is actually needed, I haven\u0027t once had to retry sending the waveform to the Bip I\u0027m typically testing with, so for now I lean away from optimizing this and towards getting rid of the retry logic in the future.",
+      "parentUuid": "86e40db6_f3b34e5a",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 2
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cd279b86_8c956a6e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-25T23:49:50Z",
+      "side": 1,
+      "message": "The more nuanced plan is that flash_ec will invoke the CR50 special waveform command via dut-control/servod, because it has to.\n\nWe can keep invocation of it here as well, but AFAIK you and or other CR50 firmware dev testing it / working on it will be the only users of it, so it\u0027s not clear that there is value in keep extra complexity here.\n\nThat said, I got rid of the TODO commend so we can punt on what can eventually be deleted from iteflash. :-)",
+      "parentUuid": "de794f68_feab3542",
+      "range": {
+        "startLine": 836,
+        "startChar": 3,
+        "endLine": 839,
+        "endChar": 70
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "756418dc_b7e02079",
         "filename": "util/iteflash.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75339f3d_728ab2dd",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-25T23:49:50Z",
+      "side": 1,
+      "message": "With the upcoming Linux i2c-dev support.",
+      "parentUuid": "756418dc_b7e02079",
+      "range": {
+        "startLine": 847,
+        "startChar": 0,
+        "endLine": 849,
+        "endChar": 12
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
