@@ -46,6 +46,30 @@
       "revId": "766f5faf156c5b3cc2402d45e66fd3868528b050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65cafe5c_ec50cf79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-25T14:25:34Z",
+      "side": 1,
+      "message": "This is good information we should capture in an issue (that we then link from this CL via BUG\u003d) Can you please create one?",
+      "parentUuid": "6f76f244_364bdfea",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "766f5faf156c5b3cc2402d45e66fd3868528b050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
