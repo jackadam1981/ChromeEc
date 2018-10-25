@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "36c0e2da_d3eae403",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-25T02:52:32Z",
+      "side": 1,
+      "message": "or is it core/minute-ia?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ac8d01_b1bc7bd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-25T02:52:32Z",
+      "side": 1,
+      "message": "should we have a tracking bug for ISH/minute-ia ISA support patches?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ee58362_2f439259",
         "filename": "core/minute-ia/irq_handler.h",
         "patchSetId": 7
