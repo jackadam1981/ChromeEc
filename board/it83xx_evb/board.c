@@ -179,6 +179,122 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+#define llong_type int64_t
+#define ullong_type uint64_t
+#define LLONG_MAX 9223372036854775807LL
+#define LLONG_MIN (-LLONG_MAX - 1LL)
+
+int isupper(int ch)
+{
+	return ((ch >= 'A' && ch <= 'Z') || (ch >= 0xC0 && ch <= 0xDD));
+}
+
+llong_type strtoll(const char *nptr, char **endptr, register int base)
+{
+	const char *s = nptr;
+	ullong_type acc;
+	int c;
+	ullong_type cutoff;
+	int neg = 0, any, cutlim;
+
+	/*
+	 * Skip white space and pick up leading +/- sign if any.
+	 * If base is 0, allow 0x for hex and 0 for octal, else
+	 * assume decimal; if base is already 16, allow 0x.
+	 */
+	do {
+		c = *s++;
+	} while (isspace(c));
+	if (c == '-') {
+		neg = 1;
+		c = *s++;
+	} else if (c == '+')
+		c = *s++;
+	if ((base == 0 || base == 16) &&
+	    c == '0' && (*s == 'x' || *s == 'X')) {
+		c = s[1];
+		s += 2;
+		base = 16;
+	}
+	if (base == 0)
+		base = c == '0' ? 8 : 10;
+
+	cutoff = neg ? -(ullong_type)LLONG_MIN : LLONG_MAX;
+	cutlim = cutoff % (ullong_type)base;
+	cutoff /= (ullong_type)base;
+	for (acc = 0, any = 0;; c = *s++) {
+		if (isdigit(c))
+			c -= '0';
+		else if (isalpha(c))
+			c -= isupper(c) ? 'A' - 10 : 'a' - 10;
+		else
+			break;
+		if (c >= base)
+			break;
+		if (any < 0 || acc > cutoff || (acc == cutoff && c > cutlim))
+			any = -1;
+		else {
+			any = 1;
+			acc *= base;
+			acc += c;
+		}
+	}
+	if (any < 0) {
+		acc = neg ? LLONG_MIN : LLONG_MAX;
+		//errno = ERANGE;
+	} else if (neg)
+		acc = -acc;
+	if (endptr != 0)
+		*endptr = (char *) (any ? s - 1 : nptr);
+	return acc;
+}
+
+static int command_lldiv(int argc, char **argv)
+{
+	static int64_t dividend;
+	static int64_t divisor;
+	char *e;
+
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+	dividend = strtoll(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+	divisor = strtoll(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	ccprintf("%ld / %ld = %ld\n", dividend, divisor, dividend/divisor);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lldiv, command_lldiv,
+			"dividend divisor",
+			"signed 64 bit division");
+
+static int command_ulldiv(int argc, char **argv)
+{
+	static uint64_t dividend;
+	static uint64_t divisor;
+	char *e;
+
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+	dividend = strtoul(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+	divisor = strtoul(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	ccprintf("%ld / %ld = %ld\n", dividend, divisor, dividend/divisor);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ulldiv, command_ulldiv,
+			"dividend divisor",
+			"unsigned 64 bit division");
+
 /*
  * I2C channels (A, B, and C) are using the same timing registers (00h~07h)
  * at default.
