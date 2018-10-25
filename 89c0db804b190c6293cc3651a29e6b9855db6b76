@@ -70,6 +70,24 @@
       "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05afdf09_7b7ac6b8",
+        "filename": "core/minute-ia/irq_handler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-25T02:45:18Z",
+      "side": 1,
+      "message": "You can do it in a follow up CL. It\u0027s fairly straight forward.",
+      "parentUuid": "05a50d9f_0fc6432a",
+      "revId": "89c0db804b190c6293cc3651a29e6b9855db6b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
