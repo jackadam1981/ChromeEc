@@ -22,6 +22,30 @@
       "revId": "7598f66cd5deecfd694685d60b6fad15e089280f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb51172e_ea31af5c",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-25T15:26:00Z",
+      "side": 1,
+      "message": "I think since the flag restoration doesn\u0027t fit into the success path, I\u0027ll stick with having the errors return early.  I\u0027m more of a \"goto\" fan when it involves cleanup that both errors and successes need to take",
+      "parentUuid": "ca1c92de_bd80f36e",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "7598f66cd5deecfd694685d60b6fad15e089280f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
