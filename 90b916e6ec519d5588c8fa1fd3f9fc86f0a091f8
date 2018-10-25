@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d1446142_e3c0a917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-25T20:09:41Z",
+      "side": 1,
+      "message": "There technically is a bug for the 4.14 patches - crbug:896347\n\nLet me file a specific one for \"bobba EC_INT_L setup\"",
+      "parentUuid": "672a6a8b_23dd0043",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "287c4ae0_652ffbba",
         "filename": "board/bobba/gpio.inc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-25T17:27:58Z",
       "side": 1,
       "message": "Maybe remove this header. This pin has nothing to do with camera.",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d93a04c5_7a383e13",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-25T20:09:41Z",
+      "side": 1,
+      "message": "Changed the wording - let me know if you like the new header better",
+      "parentUuid": "287c4ae0_652ffbba",
       "range": {
         "startLine": 137,
         "startChar": 3,
@@ -68,6 +116,30 @@
       "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f30abd7_cea22e1e",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-10-25T20:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa87170_4959774e",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 40
+      },
+      "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
