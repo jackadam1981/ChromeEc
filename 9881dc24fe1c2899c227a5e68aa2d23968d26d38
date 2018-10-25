@@ -272,6 +272,29 @@
     },
     {
       "key": {
+        "uuid": "c324ebd8_2518b80b",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2018-10-25T21:57:26Z",
+      "side": 1,
+      "message": "But this is wrong. If HOST is super fast so \n\n\"write_payload_and_drbl()\" -\u003e super fast host reads data and generates CLR interrupt -\u003e (or super slow ISH) \"ctx-\u003eis_tx_ipc_busy \u003d 1\"\n\nthen there will be problem. I\u0027ll fix this.",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 273,
+        "endChar": 25
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06039564_26907c7d",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
