@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "967c4659_e1d018f9",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-25T14:31:05Z",
+      "side": 1,
+      "message": "should call mt6370 low power mode first? I thought the TCPCI IDLE command was the last thing you were supposed to do otherwise you risk waking the device back up.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "2a8d887156316165d337c4081d51d26dd6811789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "625f092f_0dabb028",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 5
@@ -30,6 +53,24 @@
       "writtenOn": "2018-10-25T11:38:55Z",
       "side": 1,
       "message": "Where do you set low power mode to 0 again?",
+      "revId": "2a8d887156316165d337c4081d51d26dd6811789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb51840b_2447fb79",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-25T14:31:05Z",
+      "side": 1,
+      "message": "There isn\u0027t an explict exit low power mode anymore, the init gets call when the state machine wants to pull the device out of low power mode again.\n\nTo Nicolas\u0027s point, we should probably drop the \"int en\" parameter to mt6370 and/or make sure the appropriate setting are make in the init function.",
+      "parentUuid": "625f092f_0dabb028",
       "revId": "2a8d887156316165d337c4081d51d26dd6811789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
