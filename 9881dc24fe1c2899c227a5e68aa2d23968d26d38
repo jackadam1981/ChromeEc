@@ -25,6 +25,115 @@
     },
     {
       "key": {
+        "uuid": "474efe7e_376b0b0c",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-10-25T04:24:49Z",
+      "side": 1,
+      "message": "you\u0027ll want (peer_id) here.\ndon\u0027t think you need the outermost (parens) here\nsince you don\u0027t have to worry about expansion\nor operators.",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4382731_2e4e1f54",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-10-25T04:24:49Z",
+      "side": 1,
+      "message": "const struct... for all of these setters",
+      "range": {
+        "startLine": 197,
+        "startChar": 45,
+        "endLine": 197,
+        "endChar": 51
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6260b2_052e5238",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-10-25T04:24:49Z",
+      "side": 1,
+      "message": "do you need a memory barrier here or is this all conveniently in-order?",
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70561594_8641a751",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-10-25T04:24:49Z",
+      "side": 1,
+      "message": "hmmm...\nmsg \u003d (struct ipc_msg *)q-\u003ebuffer + tail",
+      "range": {
+        "startLine": 256,
+        "startChar": 9,
+        "endLine": 257,
+        "endChar": 28
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65c6478_224032c5",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-10-25T04:24:49Z",
+      "side": 1,
+      "message": "should this happen after writing the payload?",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 32
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06039564_26907c7d",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
