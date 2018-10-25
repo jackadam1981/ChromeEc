@@ -22,6 +22,30 @@
       "revId": "766f5faf156c5b3cc2402d45e66fd3868528b050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f76f244_364bdfea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-25T08:19:49Z",
+      "side": 1,
+      "message": "Sorry Vadim, I missed this comment.\n\nYes, this patch is used to fix the following symptom:\nWe flash a crashed image (panic is asserted continually) into the EC.\nAt previous implementation, we disable debug mode via SMBus to ensure the soft reboot sequence won’t break. But this will also cause EC unable to recognize special waveform until we re-enable debug mode.\nUnder this condition, it will be hard to let EC enter DBGR mode when triggering reboot sequence continuously.\n\nI flash a crashed  image into EC and check if reboot still works.\nThen run iteflash to see if it still stuck at the following step or not:\n\"Waiting for the EC power-on sequence ...\"",
+      "parentUuid": "fac50160_aa9001da",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "766f5faf156c5b3cc2402d45e66fd3868528b050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
