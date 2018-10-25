@@ -28,6 +28,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "mkbp_event.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
