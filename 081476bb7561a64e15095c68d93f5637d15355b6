@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51a53670_a496c046",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T21:23:12Z",
+      "side": 1,
+      "message": "import_leaf() just sets unimported_leaf_data-\u003ehead to \u0026imported_leaf_data-\u003ehead. so, head-\u003epub_len comes from the original data. \n\niiuc, the only place we check pub_len is in validate_leaf_header, and the only check we have there is that if minor is one of the known versions then pub_len + sec_len \u003d\u003d expected_len. so, for unknown minors for the current major any pub_len is accepted. and even for known minors, pub_len can be \u003e sizeof(leaf_public_data_t) if sec_len is small? \n\nshall we additionally check imported_leaf_data-\u003ehead-\u003epub_len before doing memcpy with it here? or maybe this extra check already exists and I\u0027m missing it.",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ddd520c_7dd4018c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T21:23:12Z",
+      "side": 1,
+      "message": "what should happen if major \u003d\u003d PW_LEAF_MAJOR_VERSION and minor \u003e PW_LEAF_MINOR_VERSION?",
+      "range": {
+        "startLine": 479,
+        "startChar": 1,
+        "endLine": 479,
+        "endChar": 2
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b9d860_0a13069f",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-25T21:23:12Z",
+      "side": 1,
+      "message": "so, remind me again: we decided to change that? \nwhat happens if we have this new version of cr50 running on the same device with old OS that uses PW_MAX_PATH_SIZE of 1536 and sends PW_INSERT_LEAF with protocol_version\u003d0 and h_aux height of 16? \n\nwhat happens to devices that are already using PINs and have already created trees with old height: iiuc, validate_request_with_path() \u003e validate_tree() \u003e validate_tree_parameters() will fail, so old PINs will stop working? or do I miss something?",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
