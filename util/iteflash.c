@@ -101,6 +101,7 @@ struct iteflash_config {
 	char *input_filename;
 	char *output_filename;
 	int send_waveform;  /* boolean */
+	int skip_reflash;  /* boolean */
 	int erase;  /* boolean */
 	int i2c_mux; /* boolean */
 	int debug;  /* boolean */
@@ -1816,6 +1817,7 @@ static const struct option longopts[] = {
 	{"product", 1, 0, 'p'},
 	{"range", 1, 0, 'R'},
 	{"read", 1, 0, 'r'},
+	{"skip-reflash", 0, 0, 'S'},
 	{"send-waveform", 1, 0, 'W'},
 	{"serial", 1, 0, 's'},
 	{"vendor", 1, 0, 'v'},
@@ -1852,6 +1854,9 @@ static void display_usage(const char *program)
 		"\tin hex.\n");
 	fprintf(stderr, "-r, --read <file> : Read the flash content and"
 			" write it into <file>.\n");
+	fprintf(stderr, "-S, --skip-reflash : Skip performing the actual "
+		"reflash.\n\tThis is only useful with --send-waveform=1,\n"
+		"\totherwise this program will have nothing to do.");
 	fprintf(stderr, "-s, --serial <serialname> : USB serial string\n");
 	fprintf(stderr, "-v, --vendor <0x1234> : USB vendor ID\n");
 	fprintf(stderr, "-W, --send-waveform <0|1|false|true> : Send the"
@@ -1955,6 +1960,9 @@ static int parse_parameters(int argc, char **argv, struct iteflash_config *conf)
 		case 'r':
 			ret = strdup_with_errmsg(optarg, &conf->input_filename,
 				"-r / --read");
+			break;
+		case 'S':
+			conf->skip_reflash = 1;
 			break;
 		case 's':
 			ret = strdup_with_errmsg(optarg, &conf->usb_serial,
@@ -2073,6 +2081,11 @@ int main(int argc, char **argv)
 	if (ret)
 		goto return_after_init;
 
+	if (chnd.conf.skip_reflash) {
+		ret = 0;
+		goto return_skip_reflash;
+	}
+
 	if (chnd.conf.input_filename) {
 		ret = read_flash(&chnd);
 		if (ret)
@@ -2113,6 +2126,7 @@ int main(int argc, char **argv)
 		config_i2c_mux(&chnd, I2C_MUX_CMD_NONE);
 	}
 
+ return_skip_reflash:
 	if (chnd.conf.i2c_if->interface_shutdown) {
 		other_ret = chnd.conf.i2c_if->interface_shutdown(&chnd);
 		if (!ret && other_ret)
