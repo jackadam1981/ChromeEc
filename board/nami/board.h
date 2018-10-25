@@ -62,6 +62,9 @@
 	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_PD_GET_LOG_ENTRY, \
 	EC_CMD_MOTION_SENSE_CMD
 
+/* support factory keyboard test */
+#define CONFIG_KEYBOARD_FACTORY_TEST
+
 /* EC console commands */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
@@ -212,6 +215,8 @@
 #define I2C_ADDR_EEPROM		0xa0
 
 #ifndef __ASSEMBLER__
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
 
 #include "gpio_signal.h"
 #include "registers.h"
