@@ -73,7 +73,6 @@
 /* Size for FTDI outgoing buffer */
 #define FTDI_CMD_BUF_SIZE (1<<12)
 
-
 /* Reset Status */
 #define RSTS_VCCDO_PW_ON	0x40
 #define RSTS_VFSPIPG		0x20
@@ -94,28 +93,45 @@ static int is8320dx;
 /* debug traces : default OFF*/
 static int debug;
 
-/* optional command flags */
-enum {
-	FLAG_UNPROTECT      = 0x01,
-	FLAG_ERASE          = 0x02,
-	FLAG_CCD_MODE       = 0x04
-};
+struct common_hnd;
 
-enum interface_type {
-	FTDI_IF,
-	CCD_IF
+/* For all callback return values, zero indicates success, non-zero failure. */
+struct i2c_interface {
+	/* Optional, may be NULL. */
+	int (*interface_init)(struct common_hnd *chnd);
+	/* Always called if non-NULL, even if special waveform is skipped! */
+	/* Optional, may be NULL. */
+	int (*interface_post_waveform)(struct common_hnd *chnd);
+	/* Optional, may be NULL. */
+	int (*interface_shutdown)(struct common_hnd *chnd);
+	/* Optional, may be NULL (unsupported for this I2C interface type). */
+	int (*send_special_waveform)(struct common_hnd *chnd);
+	/* Required, must not be NULL. */
+	int (*byte_transfer)(struct common_hnd *chnd, uint8_t addr,
+		uint8_t *data, int write, int numbytes);
 };
 
 struct common_hnd {
-	enum interface_type iftype;
+	const struct i2c_interface *i2c_if;
 	union {
 		struct ftdi_context *ftdi_hnd;
 		struct usb_endpoint uep;
 	};
 };
 
+/*
+ * Optional command line flags.  All are zero-initialized, so all default to
+ * zero values when not specified on the command line.
+ */
+struct flag_settings {
+	int send_waveform;  /* boolean */
+	int unprotect;  /* boolean */
+	int erase;  /* boolean */
+	const struct i2c_interface *i2c_if;
+};
+
 /* number of bytes to send consecutively before checking for ACKs */
-#define TX_BUFFER_LIMIT	32
+#define FTDI_TX_BUFFER_LIMIT	32
 
 /* For backwards compatibility let FTDI value be the default. */
 static int block_write_size_ = FTDI_BLOCK_WRITE_SIZE;
@@ -129,7 +145,7 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 {
 	int ret, i, j, remaining_data, ack_idx;
 	int tx_buffered = 0;
-	static uint8_t ack[TX_BUFFER_LIMIT];
+	static uint8_t ack[FTDI_TX_BUFFER_LIMIT];
 	uint8_t *b = ptr;
 	uint8_t failed_ack = 0;
 
@@ -153,10 +169,10 @@ static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
 		tx_buffered++;
 
 		/*
-		 * On the last byte, or every TX_BUFFER_LIMIT bytes, read the
-		 * ACK bits.
+		 * On the last byte, or every FTDI_TX_BUFFER_LIMIT bytes, read
+		 * the ACK bits.
 		 */
-		if (i == tcnt-1 || (tx_buffered == TX_BUFFER_LIMIT)) {
+		if (i == tcnt-1 || (tx_buffered == FTDI_TX_BUFFER_LIMIT)) {
 			/* write data */
 			ret = ftdi_write_data(ftdi, buf, b - buf);
 			if (ret < 0) {
@@ -248,8 +264,14 @@ static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 	return ret;
 }
 
+static inline int i2c_byte_transfer(struct common_hnd *chnd, uint8_t addr,
+			     uint8_t *data, int write, int numbytes)
+{
+	return chnd->i2c_if->byte_transfer(chnd, addr, data, write, numbytes);
+}
+
 #define USB_I2C_HEADER_SIZE 4
-static int ccd_i2c_byte_transfer(struct usb_endpoint *uep, uint8_t addr,
+static int ccd_i2c_byte_transfer(struct common_hnd *chnd, uint8_t addr,
 				 uint8_t *data, int write, int numbytes)
 {
 	uint8_t usb_buffer[USB_I2C_HEADER_SIZE + numbytes +
@@ -294,7 +316,7 @@ static int ccd_i2c_byte_transfer(struct usb_endpoint *uep, uint8_t addr,
 	}
 
 	response_size = 0;
-	usb_trx(uep, usb_buffer,
+	usb_trx(&chnd->uep, usb_buffer,
 		write ? sizeof(usb_buffer) : USB_I2C_HEADER_SIZE + extra,
 		usb_buffer, sizeof(usb_buffer), 1, &response_size);
 
@@ -327,18 +349,14 @@ static int ccd_i2c_byte_transfer(struct usb_endpoint *uep, uint8_t addr,
 	return 0;
 }
 
-static int i2c_byte_transfer(struct common_hnd *chnd, uint8_t addr,
-			     uint8_t *data, int write, int numbytes)
+static int ftdi_i2c_byte_transfer(struct common_hnd *chnd, uint8_t addr,
+				  uint8_t *data, int write, int numbytes)
 {
 	int ret, rets;
 	static uint8_t buf[FTDI_CMD_BUF_SIZE];
 	uint8_t *b;
 	uint8_t slave_addr;
 	struct ftdi_context *ftdi;
-
-	if (chnd->iftype == CCD_IF)
-		return ccd_i2c_byte_transfer(&chnd->uep, addr,
-					     data, write, numbytes);
 
 	ret = 0;
 	b = buf;
@@ -649,7 +667,7 @@ failed_read_status:
 	return ret;
 }
 
-static int config_i2c(struct ftdi_context *ftdi)
+static int ftdi_config_i2c(struct ftdi_context *ftdi)
 {
 	int ret;
 	uint8_t buf[5];
@@ -703,7 +721,7 @@ static int config_i2c(struct ftdi_context *ftdi)
 #define SPECIAL_BUFFER_SIZE \
 	(((SPECIAL_LEN_USEC * SPECIAL_FREQ * 2 / USEC) + 7) & ~7)
 
-static int ccd_trigger_special_waveform(struct usb_endpoint *uep)
+static int ccd_send_special_waveform(struct common_hnd *chnd)
 {
 	uint8_t response[20];
 	size_t rsize;
@@ -715,7 +733,8 @@ static int ccd_trigger_special_waveform(struct usb_endpoint *uep)
 		CROS_CMD_ITE_SYNC
 	};
 
-	usb_trx(uep, req, sizeof(req), response, sizeof(response), 1, &rsize);
+	usb_trx(&chnd->uep, req, sizeof(req), response, sizeof(response), 1,
+		&rsize);
 
 	if (rsize < USB_I2C_HEADER_SIZE)
 		return -1;
@@ -726,17 +745,26 @@ static int ccd_trigger_special_waveform(struct usb_endpoint *uep)
 	return 0;
 }
 
-static int ftdi_send_special_waveform(struct ftdi_context *ftdi, uint64_t *wave)
+static int ftdi_send_special_waveform(struct common_hnd *chnd)
 {
 	int ret;
 	int i;
 	uint8_t release_lines[] = {SET_BITS_LOW, 0, 0};
+	uint64_t *wave;
+	struct ftdi_context *ftdi = chnd->ftdi_hnd;
+
+	wave = malloc(SPECIAL_BUFFER_SIZE);
+	if (!wave) {
+		fprintf(stderr, "malloc(%zu) failed\n",
+			(size_t)SPECIAL_BUFFER_SIZE);
+		return -1;
+	}
 
 	/* Reset the FTDI into a known state */
 	ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_RESET);
 	if (ret) {
 		fprintf(stderr, "failed to reset FTDI\n");
-		return ret;
+		goto free_and_return;
 	}
 
 	/*
@@ -746,14 +774,14 @@ static int ftdi_send_special_waveform(struct ftdi_context *ftdi, uint64_t *wave)
 	ret = ftdi_set_baudrate(ftdi, 160000);
 	if (ret) {
 		fprintf(stderr, "failed to set bitbang clock\n");
-		return ret;
+		goto free_and_return;
 	}
 
 	/* Enable asynchronous bit-bang mode */
 	ret = ftdi_set_bitmode(ftdi, 0xFF, BITMODE_BITBANG);
 	if (ret) {
 		fprintf(stderr, "failed to set bitbang mode\n");
-		return ret;
+		goto free_and_return;
 	}
 
 	/* do usb special waveform */
@@ -783,34 +811,33 @@ static int ftdi_send_special_waveform(struct ftdi_context *ftdi, uint64_t *wave)
 	/* clean everything to go back to regular I2C communication */
 	ftdi_usb_purge_buffers(ftdi);
 	ftdi_set_bitmode(ftdi, 0xff, BITMODE_RESET);
-	config_i2c(ftdi);
+	ftdi_config_i2c(ftdi);
 	ftdi_write_data(ftdi, release_lines, sizeof(release_lines));
 
+ free_and_return:
+	free(wave);
 	return ret;
 }
 
 static int send_special_waveform(struct common_hnd *chnd)
 {
 	int ret;
-	uint64_t *wave;
 	int iterations;
 
-	if (chnd->iftype == FTDI_IF)
-		wave = malloc(SPECIAL_BUFFER_SIZE);
-	else
-		wave = NULL;
+	if (!chnd->i2c_if->send_special_waveform) {
+		fprintf(stderr, "This binary does not support sending the ITE "
+			"special waveform with the chosen I2C interface.\n");
+		return -1;
+	}
 
+	/* Is this printed log line accurate here?  Is this FTDI-specific? */
 	printf("Waiting for the EC power-on sequence ...");
 	fflush(stdout);
 
 	iterations = 0;
 
 	do {
-		if (chnd->iftype == FTDI_IF)
-			ret = ftdi_send_special_waveform(chnd->ftdi_hnd, wave);
-		else
-			ret = ccd_trigger_special_waveform(&chnd->uep);
-
+		ret = chnd->i2c_if->send_special_waveform(chnd);
 		if (ret)
 			break;
 
@@ -822,7 +849,7 @@ static int send_special_waveform(struct common_hnd *chnd)
 			spi_flash_follow_mode_exit(chnd, "exit follow mode");
 			/*
 			 * If we can talk to chip, then we can break the retry
-			 * loop
+			 * loop.
 			 */
 			ret = check_chipid(chnd);
 
@@ -835,7 +862,7 @@ static int send_special_waveform(struct common_hnd *chnd)
 			ret = -1;
 			if (!(iterations % 10))
 				printf("!please reset EC if flashing sequence"
-						" is not starting!\n");
+					" is not starting!\n");
 		}
 
 	} while (ret && (iterations++ < 10));
@@ -845,8 +872,6 @@ static int send_special_waveform(struct common_hnd *chnd)
 	else
 		printf(" Done.\n");
 
-	if (wave)
-		free(wave);
 	return ret;
 }
 
@@ -1464,15 +1489,80 @@ open_failed:
 	return NULL;
 }
 
+static int ccd_i2c_interface_init(struct common_hnd *chnd)
+{
+	int ret;
+	usb_vid = CR50_USB_VID;
+	usb_pid = CR50_USB_PID;
+	block_write_size_ = PAGE_SIZE;
+	ret = usb_findit(usb_vid, usb_pid, CR50_I2C_SUBCLASS, CR50_I2C_PROTOCOL,
+		&chnd->uep);
+	if (ret < 0) {
+		fprintf(stderr, "%s: usb_findit() returned %d error", __func__,
+			ret);
+		return ret;
+	}
+	printf("Using CCD device%s\n",
+		usb_serial ? ", ignoring serial number" : "");
+	return 0;
+}
+
+static int ftdi_i2c_interface_init(struct common_hnd *chnd)
+{
+	chnd->ftdi_hnd = open_ftdi_device(usb_vid, usb_pid, usb_interface,
+		usb_serial);
+	if (chnd->ftdi_hnd == NULL)
+		return -1;
+	return 0;
+}
+
+static int ftdi_i2c_interface_post_waveform(struct common_hnd *chnd)
+{
+	int ret;
+
+	ret = ftdi_config_i2c(chnd->ftdi_hnd);
+	if (ret < 0)
+		return ret;
+
+	ret = check_chipid(chnd);
+	if (ret < 0)
+		return ret;
+
+	return 0;
+}
+
+/* Close the FTDI USB handle */
+static int ftdi_i2c_interface_shutdown(struct common_hnd *chnd)
+{
+	ftdi_usb_close(chnd->ftdi_hnd);
+	ftdi_free(chnd->ftdi_hnd);
+	return 0;
+}
+
+static const struct i2c_interface ccd_i2c_interface = {
+	.interface_init = ccd_i2c_interface_init,
+	.send_special_waveform = ccd_send_special_waveform,
+	.byte_transfer = ccd_i2c_byte_transfer,
+};
+
+static const struct i2c_interface ftdi_i2c_interface = {
+	.interface_init = ftdi_i2c_interface_init,
+	.interface_post_waveform = ftdi_i2c_interface_post_waveform,
+	.interface_shutdown = ftdi_i2c_interface_shutdown,
+	.send_special_waveform = ftdi_send_special_waveform,
+	.byte_transfer = ftdi_i2c_byte_transfer,
+};
+
 static const struct option longopts[] = {
-	{"ccd", 0, 0, 'c'},
 	{"debug", 0, 0, 'd'},
 	{"erase", 0, 0, 'e'},
 	{"help", 0, 0, 'h'},
+	{"i2c-interface", 0, 0, 'c'},
 	{"interface", 1, 0, 'i'},
 	{"product", 1, 0, 'p'},
 	{"read", 1, 0, 'r'},
 	{"serial", 1, 0, 's'},
+	{"send-waveform", 1, 0, 'W'},
 	{"unprotect", 0, 0, 'u'},
 	{"vendor", 1, 0, 'v'},
 	{"write", 1, 0, 'w'},
@@ -1481,12 +1571,13 @@ static const struct option longopts[] = {
 
 void display_usage(char *program)
 {
-	fprintf(stderr, "Usage: %s [-c] [-d] [-v <VID>] [-p <PID>] [-i <1|2>] "
-		"[-s <serial>] [-u] [-e] [-r <file>] [-w <file>]\n", program);
-	fprintf(stderr, "--c[cd] : use CCD interface instead of FTDI, make "
-			"sure this option is included before -p and or -v\n");
+	fprintf(stderr, "Usage: %s [-d] [-v <VID>] [-p <PID>] "
+		"[-c <linux|ccd|ftdi>] [-i <1|2>] [-s <serial>] [-u] [-e] "
+		"[-r <file>] [-W <0|1|false|true>] [-w <file>]\n", program);
 	fprintf(stderr, "--d[ebug] : output debug traces\n");
 	fprintf(stderr, "--e[rase] : erase all the flash content\n");
+	fprintf(stderr, "-c, --i2c_interface <linux|ccd|ftdi> : I2C interface "
+			"to use\n");
 	fprintf(stderr, "--i[interface] <1> : FTDI interface: A=1, B=2, ...\n");
 	fprintf(stderr, "--p[roduct] <0x1234> : USB product ID\n");
 	fprintf(stderr, "--r[ead] <file> : read the flash content and "
@@ -1494,30 +1585,42 @@ void display_usage(char *program)
 	fprintf(stderr, "--s[erial] <serialname> : USB serial string\n");
 	fprintf(stderr, "--u[nprotect] : remove flash write protect\n");
 	fprintf(stderr, "--v[endor] <0x1234> : USB vendor ID\n");
+	/*
+	 * TODO(b/79684405): Remember to update this help output after changing
+	 * the default value of the --send-waveform / send_waveform setting.
+	 */
+	fprintf(stderr, "-W, --send-waveform <0|1|false|true> : Send the "
+			"specal waveform?  Default is false, subject to change."
+			"  Set to false if ITE direct firmware update mode has "
+			"already been enabled.\n");
 	fprintf(stderr, "--w[rite] <file> : read <file> and "
 			"write it to flash\n");
 	exit(2);
 }
 
-int parse_parameters(int argc, char **argv)
+int parse_parameters(int argc, char **argv, struct flag_settings *flags)
 {
 	int opt, idx;
-	int flags = 0;
 
-	while ((opt = getopt_long(argc, argv, "?cdehi:p:r:s:uv:w:",
+	while ((opt = getopt_long(argc, argv, "?dehc:i:p:r:s:uv:W:w:",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'c':
-			flags |= FLAG_CCD_MODE;
-			usb_vid = CR50_USB_VID;
-			usb_pid = CR50_USB_PID;
-			block_write_size_ = PAGE_SIZE;
+			if (!strcmp(optarg, "ccd")) {
+				flags->i2c_if = &ccd_i2c_interface;
+			} else if (!strcmp(optarg, "ftdi")) {
+				flags->i2c_if = &ftdi_i2c_interface;
+			} else {
+				fprintf(stderr, "Unexpected -c / "
+					"--i2c-interface value: %s\n", optarg);
+				return -1;
+			}
 			break;
 		case 'd':
 			debug = 1;
 			break;
 		case 'e':
-			flags |= FLAG_ERASE;
+			flags->erase = 1;
 			break;
 		case 'h':
 		case '?':
@@ -1536,17 +1639,30 @@ int parse_parameters(int argc, char **argv)
 			usb_serial = optarg;
 			break;
 		case 'u':
-			flags |= FLAG_UNPROTECT;
+			flags->unprotect = 1;
 			break;
 		case 'v':
 			usb_vid = strtol(optarg, NULL, 16);
+			break;
+		case 'W':
+			if (!strcmp(optarg, "0") || !strcmp(optarg, "false")) {
+				flags->send_waveform = 0;
+			} else if (!strcmp(optarg, "1") ||
+				   !strcmp(optarg, "true")) {
+				flags->send_waveform = 1;
+			} else {
+				fprintf(stderr, "Unexpected -W / "
+					"--special-waveform value: %s\n",
+					optarg);
+				return -1;
+			}
 			break;
 		case 'w':
 			output_filename = optarg;
 			break;
 		}
 	}
-	return flags;
+	return 0;
 }
 
 static void sighandler(int signum)
@@ -1570,45 +1686,38 @@ static void register_sigaction(void)
 
 int main(int argc, char **argv)
 {
-	struct common_hnd chnd;
-	int ret = 1;
-	int flags;
+	int ret = 1, other_ret;
+	struct common_hnd chnd = {};
+	/* Default flag settings. */
+	struct flag_settings flags = {
+		.send_waveform = 0,
+		.unprotect = 0,
+		.erase = 0,
+		.i2c_if = &ftdi_i2c_interface,
+	};
 
 	/* Parse command line options */
-	flags = parse_parameters(argc, argv);
+	if (parse_parameters(argc, argv, &flags) < 0)
+		return ret;
+
+	chnd.i2c_if = flags.i2c_if;
 
 	/* Open the communications channel. */
-	memset(&chnd, 0, sizeof(chnd));
-	if (flags & FLAG_CCD_MODE) {
-		usb_findit(usb_vid, usb_pid, CR50_I2C_SUBCLASS,
-			   CR50_I2C_PROTOCOL, &chnd.uep);
-		chnd.iftype = CCD_IF;
-		printf("Using CCD device%s\n",
-		       usb_serial ? ", ignoring serial number" : "");
-	} else {
-		chnd.ftdi_hnd = open_ftdi_device(usb_vid, usb_pid,
-						 usb_interface, usb_serial);
-		if (chnd.ftdi_hnd == NULL)
-			return 1;
-		chnd.iftype = FTDI_IF;
-	}
+	if (chnd.i2c_if->interface_init && chnd.i2c_if->interface_init(&chnd))
+		return ret;
 
-	/* Register signal handler after opening USB handle. */
+	/* Register signal handler after opening the communications channel. */
 	register_sigaction();
 
 	/* Trigger embedded monitor detection */
-	if (send_special_waveform(&chnd) < 0)
+	if (flags.send_waveform && send_special_waveform(&chnd))
 		goto terminate;
 
-	if (chnd.iftype == FTDI_IF) {
-		if (config_i2c(chnd.ftdi_hnd) < 0)
-			goto terminate;
+	if (chnd.i2c_if->interface_post_waveform &&
+	    chnd.i2c_if->interface_post_waveform(&chnd))
+		goto terminate;
 
-		if (check_chipid(&chnd) < 0)
-			goto terminate;
-	}
-
-	if (flags & FLAG_UNPROTECT)
+	if (flags.unprotect)
 		command_write_unprotect(&chnd);
 
 	if (input_filename) {
@@ -1618,7 +1727,7 @@ int main(int argc, char **argv)
 			goto terminate;
 	}
 
-	if (flags & FLAG_ERASE) {
+	if (flags.erase) {
 		if (is8320dx)
 			/* Do Normal Erase Function */
 			command_erase2(&chnd, flash_size, 0, 0);
@@ -1646,16 +1755,18 @@ int main(int argc, char **argv)
 
 	/* Normal exit */
 	ret = 0;
-terminate:
 
+terminate:
 	/*
 	 * Enable EC Host Global Reset to reset EC resource and EC domain
 	 */
 	dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
-	/* Close the FTDI USB handle */
-	if (chnd.iftype == FTDI_IF) {
-		ftdi_usb_close(chnd.ftdi_hnd);
-		ftdi_free(chnd.ftdi_hnd);
+
+	if (chnd.i2c_if->interface_shutdown) {
+		other_ret = chnd.i2c_if->interface_shutdown(&chnd);
+		if (!ret && other_ret)
+			ret = other_ret;
 	}
+
 	return ret;
 }
