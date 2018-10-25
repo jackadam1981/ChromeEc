@@ -45,6 +45,29 @@
       "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa87170_4959774e",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-25T19:13:12Z",
+      "side": 1,
+      "message": "From the schematic, it looks like we have a 1.8V pullup on this pin so you\u0027ll want: \nGPIO_ODR_HIGH\n\nI don\u0027t believe you\u0027ll need GPIO_SEL_1P8V since this pin is set by our Vspi voltage, which is 1.8V on this board.",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 40
+      },
+      "revId": "90b916e6ec519d5588c8fa1fd3f9fc86f0a091f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
