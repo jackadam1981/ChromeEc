@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "915815cf_143aecc9",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "Please just use the ISO C99 typenames.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 19
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67938d7_8d931701",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "Likewise, please use INT64_MAX and INT64_MIN for these.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28dea54d_aa7ece93",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "Prefer to add \u0027isupper\u0027 to common/util.c.  You can rely on LTO and ffunction-sections to elide the code on targets that don\u0027t use it.",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 11
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17cccf96_f2f200ae",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "We definitely don\u0027t need to support anything other than 7-bit ASCII in the EC.",
+      "range": {
+        "startLine": 189,
+        "startChar": 37,
+        "endLine": 189,
+        "endChar": 63
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d298167_89b0f420",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "Prefer to add strotoll to common/util.c",
+      "range": {
+        "startLine": 192,
+        "startChar": 11,
+        "endLine": 192,
+        "endChar": 18
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7036c125_8696069e",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "Remove the \u0027register\u0027 keyword.  Its a deprecated hint, and doesn\u0027t make sense in an argument context.",
+      "range": {
+        "startLine": 192,
+        "startChar": 52,
+        "endLine": 192,
+        "endChar": 60
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "167e12dc_8d226e23",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "Neither dividend nor divisor should be static.",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 24
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e966ba7_5448f434",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-25T18:55:19Z",
+      "side": 1,
+      "message": "Neither dividend nor divisor should be static.",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 7
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
