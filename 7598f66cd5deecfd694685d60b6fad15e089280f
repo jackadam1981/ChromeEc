@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca1c92de_bd80f36e",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-25T13:52:45Z",
+      "side": 1,
+      "message": "optional: you could turn this into the goto error; paradigm, and have the error label at the end so we always restored the flags and returned rv when there was a error.\n\nEither way is okay, just another option :)",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "7598f66cd5deecfd694685d60b6fad15e089280f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
