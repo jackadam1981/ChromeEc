@@ -25,7 +25,7 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
+#define PDO_FIXED_FLAGS (PDO_FIXED_EXTERNAL | PDO_FIXED_DATA_SWAP | \
 			 PDO_FIXED_COMM_CAP)
 
 const uint32_t pd_src_pdo[] = {
@@ -59,9 +59,6 @@ int board_vbus_source_enabled(int port)
 
 int pd_set_power_supply_ready(int port)
 {
-	/* Disable charging */
-	gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
-
 	/* Enable VBUS source */
 	gpio_set_level(GPIO_USB_C0_5V_EN, 1);
 
@@ -90,19 +87,6 @@ int pd_board_checks(void)
 	return EC_SUCCESS;
 }
 
-int pd_check_power_swap(int port)
-{
-	/* If type-c port is supplying power, we never swap PR (to source) */
-	if (port == charge_manager_get_active_charge_port())
-		return 0;
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
-
 int pd_check_data_swap(int port, int data_role)
 {
 	/* Allow data swap if we are a UFP, otherwise don't allow */
@@ -117,28 +101,10 @@ int pd_check_vconn_swap(int port)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Do nothing */
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)
 {
-	/*
-	 * If partner is dual-role power and dualrole toggling is on, consider
-	 * if a power swap is necessary.
-	 */
-	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
-	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
-		/*
-		 * If we are a sink and partner is not externally powered, then
-		 * swap to become a source. If we are source and partner is
-		 * externally powered, swap to become a sink.
-		 */
-		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
-
-		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
-			pd_request_power_swap(port);
-	}
 }
 
 void pd_check_dr_role(int port, int dr_role, int flags)
@@ -147,6 +113,7 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
+
 /* ----------------- Vendor Defined Messages ------------------ */
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
