@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e419be99_986bc12c",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-25T11:38:55Z",
+      "side": 1,
+      "message": "reg \u003d MT6370_REG_VBUS_DET_EN;\n\nthen reg |\u003d below",
+      "revId": "2a8d887156316165d337c4081d51d26dd6811789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "625f092f_0dabb028",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-25T11:38:55Z",
+      "side": 1,
+      "message": "Where do you set low power mode to 0 again?",
+      "revId": "2a8d887156316165d337c4081d51d26dd6811789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
