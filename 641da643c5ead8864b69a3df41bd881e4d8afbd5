@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1d7f4f9_794c7607",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T20:00:11Z",
+      "side": 1,
+      "message": "patch description should explain why this change is necessary.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6612d7f0_cee95754",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T20:00:11Z",
+      "side": 1,
+      "message": "this test does not actually demonstrate anything, you should add here generated output.",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e16cff_cfe4268a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T20:00:11Z",
+      "side": 1,
+      "message": "this patch is out of sync with the tree, another version has been added, -M which modified output of existing command line options to limit the output and enforce strict formatting.\n\nYou should capitalize on that, when -M is present in the command line along with -i - have the board ID printed the way you like.",
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62fe88a_6063ceb6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1682,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T20:00:11Z",
+      "side": 1,
+      "message": "did you use \u0027repo upload\u0027 to upload this patch? I wonder why preupload check missed the 80 cols violation.",
+      "range": {
+        "startLine": 1682,
+        "startChar": 3,
+        "endLine": 1682,
+        "endChar": 10
+      },
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
