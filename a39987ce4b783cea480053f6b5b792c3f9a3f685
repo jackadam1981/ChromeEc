@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31262768_40c5fb62",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T23:02:34Z",
+      "side": 1,
+      "message": "technically speaking this function does not send the waveform, it triggers its generation by H1, the original name makes more sense.",
+      "range": {
+        "startLine": 738,
+        "startChar": 15,
+        "endLine": 738,
+        "endChar": 19
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e40db6_f3b34e5a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T23:02:34Z",
+      "side": 1,
+      "message": "this is unrelated to refactoring, should be in a separate patch.",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 2
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de794f68_feab3542",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T23:02:34Z",
+      "side": 1,
+      "message": "please do not remove ccd specialwaveform generation from here: one does not need flash ec to program ITE floash over ccd.",
+      "range": {
+        "startLine": 836,
+        "startChar": 3,
+        "endLine": 839,
+        "endChar": 70
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "756418dc_b7e02079",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-25T23:02:34Z",
+      "side": 1,
+      "message": "when would this happen?",
+      "range": {
+        "startLine": 847,
+        "startChar": 0,
+        "endLine": 849,
+        "endChar": 12
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
