@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95aaddf5_4a27f425",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-26T18:56:56Z",
+      "side": 1,
+      "message": "Do we also need to guard on low power idle? You already have to build a special image that has debugging on, so there isn\u0027t any change of this getting into released code.",
+      "range": {
+        "startLine": 711,
+        "startChar": 15,
+        "endLine": 711,
+        "endChar": 48
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe9db61_d42d3db4",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-26T18:56:56Z",
+      "side": 1,
+      "message": "Command used to disable input buffer of gpios one by bone to investigate power consumption",
+      "range": {
+        "startLine": 712,
+        "startChar": 3,
+        "endLine": 712,
+        "endChar": 31
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d3fcf7_e68efeaa",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-26T18:56:56Z",
+      "side": 1,
+      "message": "Please add more help text here. This shows up when you type \u0027help list\u0027",
+      "range": {
+        "startLine": 798,
+        "startChar": 56,
+        "endLine": 798,
+        "endChar": 62
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31bd978_620c7636",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-10-26T18:56:56Z",
+      "side": 1,
+      "message": "can we call this \"gpiodisable\" instead?",
+      "range": {
+        "startLine": 798,
+        "startChar": 24,
+        "endLine": 798,
+        "endChar": 34
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
