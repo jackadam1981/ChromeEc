@@ -324,6 +324,13 @@ static void isl923x_init(void)
 			ISL923X_C2_ADAPTER_DEBOUNCE_150))
 		goto init_fail;
 
+	/*
+	 * Set adater current Prochot# threshold to maximum value
+	 * so Prochot# assertion is effectively disabled.
+	 */
+	if (raw_write16(ISL923X_REG_PROCHOT_AC, ISL923X_PROCHOT_AC_REG_MAX))
+		goto init_fail;
+
 #ifdef CONFIG_CHARGE_RAMP_HW
 #ifdef CONFIG_CHARGER_ISL9237
 	if (raw_read16(ISL923X_REG_CONTROL0, &reg))
