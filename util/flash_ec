@@ -521,23 +521,30 @@ cleanup() {
 		kill -CONT ${pid}
 	done
 
-	if [ "${CHIP}" == "it83xx" ] ; then
-		info "Reinitialize ftdi_i2c interface"
-		dut_control ftdii2c_cmd:init
-		dut_control ftdii2c_cmd:open
-		dut_control ftdii2c_cmd:setclock
+	if [ "${CHIP}" == "it83xx" ]; then
+		if [ "${SERVO_TYPE}" = "servo_v2" ]; then
+			info "Reinitialize ftdi_i2c interface"
+			dut_control ftdii2c_cmd:init
+			dut_control ftdii2c_cmd:open
+			dut_control ftdii2c_cmd:setclock
+		fi
 
 		# Reset the dut mux if it exists
 		if $(servo_has_dut_i2c_mux); then
-			# Ensure servo i2c mux is on so we can talk to dut
-			dut_control i2c_mux_en:on
-			dut_control i2c_mux:remote_adc
+			if [ "${SERVO_TYPE}" = "servo_v2" ]; then
+				# Ensure servo i2c mux is on so we can talk to
+				# the dut.
+				dut_control i2c_mux_en:on
+				dut_control i2c_mux:remote_adc
+			fi
 
 			# Turn off dut i2c mux
 			dut_control dut_i2c_mux:none
 
-			# Turn off servo i2c mux
-			dut_control i2c_mux_en:off
+			if [ "${SERVO_TYPE}" = "servo_v2" ]; then
+				# Turn off servo i2c mux
+				dut_control i2c_mux_en:off
+			fi
 		fi
 
 	fi
@@ -1033,8 +1040,10 @@ function flash_it83xx() {
 		die "no iteflash util found."
 	fi
 
-	dut_control i2c_mux_en:on
-	dut_control i2c_mux:remote_adc
+	if [ "${SERVO_TYPE}" = "servo_v2" ]; then
+		dut_control i2c_mux_en:on
+		dut_control i2c_mux:remote_adc
+	fi
 
 	# Now the we have enabled the I2C mux on the servo to talk to the dut,
 	# we need to switch the I2C mux on the dut to allow ec programing (if
@@ -1046,11 +1055,45 @@ function flash_it83xx() {
 	# Ensure that the AP is off while we are flashing the EC
 	servo_ec_hard_reset
 
-	info "Close connection to ftdi_i2c interface"
-	dut_control ftdii2c_cmd:close
+	# TODO(b/79684405): Flip to default of 0.  Assume presence of
+	# enable_ite_dfu dut-control command.  Set to 1 only for Servo v2, and
+	# only until its special waveform functionality is split off into a
+	# separate binary.
+	local iteflash_send_waveform=1
+	if [ "${SERVO_TYPE}" = "servo_v2" ]; then
+		info "Close connection to ftdi_i2c interface"
+		dut_control ftdii2c_cmd:close
+	elif [[ "${SERVO_TYPE}" =~ "(^|_with_)servo_micro$" ]]; then
+		info "Enabling ITE direct firmware update (DFU) mode"
+		dut_control enable_ite_dfu
+		iteflash_send_waveform=0
+	fi
 
 	info "Run iteflash..."
-	sudo ${ITEFLASH} --erase --send-waveform=1 --write="${IMG}"
+	if [ "${FLAGS_verbose}" = ${FLAGS_TRUE} ]; then
+		local debug_opt="-d"
+	else
+		local debug_opt=""
+	fi
+	# TODO(b/79684405): Stop special-casing Servo v2.  Have iteflash use
+	# Linux i2c-dev interface for all Servo types.
+	if [ "${SERVO_TYPE}" = "servo_v2" ]; then
+		sudo ${ITEFLASH} $debug_opt --erase --write="${IMG}" --i2c-interface=ftdi --send-waveform="$iteflash_send_waveform"
+	else
+		if false; then
+		local dut_i2c_dev="$(${DUT_CONTROL_CMD} dut_i2c_dev)" ||
+			die "dut-control dut_i2c_dev exited $? (non-zero)"
+		dut_i2c_dev="$(
+			echo "$dut_i2c_dev" | sed -e 's/^dut_i2c_dev://')"
+		else
+		dut_i2c_dev="/dev/i2c-5"
+		fi
+		[ -z "$dut_i2c_dev" ] &&
+			die "dut-control dut_i2c_dev failed to return a path"
+		[ ! -e "$dut_i2c_dev" ] &&
+			die "dut-control dut_i2c_dev returned non-existent path $dut_i2c_dev"
+		sudo ${ITEFLASH} $debug_opt --erase --write="${IMG}" --i2c-interface=linux --i2c-dev-path="$dut_i2c_dev" --send-waveform="$iteflash_send_waveform"
+	fi
 }
 
 function flash_lm4() {
