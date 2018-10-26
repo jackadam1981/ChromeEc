@@ -230,9 +230,18 @@ enum power_state power_get_state(void)
   *
   * @param state New sleep state
   */
-static void power_set_active_wake_mask(enum power_state state)
+
+static void power_update_wake_mask_deferred(void);
+DECLARE_DEFERRED(power_update_wake_mask_deferred);
+
+static void power_update_wake_mask_deferred(void)
 {
 	host_event_t wake_mask;
+	enum power_state state;
+
+	hook_call_deferred(&power_update_wake_mask_deferred_data, -1);
+
+	state = power_get_state();
 
 	if (state == POWER_S0)
 		wake_mask = 0;
@@ -247,8 +256,15 @@ static void power_set_active_wake_mask(enum power_state state)
 
 	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
 }
+
+static void power_set_active_wake_mask(void)
+{
+	hook_call_deferred(&power_update_wake_mask_deferred_data,
+			   5 * MSEC);
+}
+
 #else
-static void power_set_active_wake_mask(enum power_state state) { }
+static void power_set_active_wake_mask(void) { }
 #endif
 
 /**
@@ -471,7 +487,7 @@ void chipset_task(void *u)
 		/* Handle state changes */
 		if (new_state != state) {
 			power_set_state(new_state);
-			power_set_active_wake_mask(new_state);
+			power_set_active_wake_mask();
 		}
 	}
 }
