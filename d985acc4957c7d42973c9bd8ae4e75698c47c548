@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d961462_484ff64d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-26T02:32:38Z",
+      "side": 1,
+      "message": "I used 10 because that\u0027s exactly what you need to fit SCRATCH+RESET_FLAGS+VBNV context (8), so if you need another index, you need more than 10.\n\nI\u0027ll try to clarify the comment.",
+      "parentUuid": "62867693_6e123fe1",
+      "range": {
+        "startLine": 37,
+        "startChar": 65,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "d985acc4957c7d42973c9bd8ae4e75698c47c548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bd34cdf_4e76ff9f",
         "filename": "chip/stm32/system.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-25T14:10:01Z",
       "side": 1,
       "message": "Will this assert fail on boards that have CONFIG_HOSTCMD_VBNV_CONTEXT and also use the SYS_RESET_AP_WATCHDOG flag?\n\nShould we move line 361 down into the \"#ifdef CONFIG_STM32_RESET_FLAGS_EXTENDED\" block?",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 29
+      },
+      "revId": "d985acc4957c7d42973c9bd8ae4e75698c47c548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1aedd58_7e0ef341",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-10-26T02:32:38Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "3bd34cdf_4e76ff9f",
       "range": {
         "startLine": 369,
         "startChar": 1,
