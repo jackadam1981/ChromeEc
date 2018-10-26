@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecf17200_8df2e9ad",
+        "filename": "baseboard/kalista/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-10-26T13:34:06Z",
+      "side": 1,
+      "message": "should be 4?",
+      "range": {
+        "startLine": 124,
+        "startChar": 23,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "120b7858a0a34a98aca73db1c7b2841d749b94ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be883bb2_6ae2f9ca",
+        "filename": "board/karma/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-10-26T13:34:06Z",
+      "side": 1,
+      "message": "Maybe can remove this too?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "120b7858a0a34a98aca73db1c7b2841d749b94ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

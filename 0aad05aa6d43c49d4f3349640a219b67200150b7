@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "688c250a_92411011",
+        "filename": "baseboard/kalista/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-10-26T13:34:06Z",
+      "side": 0,
+      "message": "Need to keep this. Otherwise, \u0027make BOARD\u003dkarma tests\u0027 error.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "0aad05aa6d43c49d4f3349640a219b67200150b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
