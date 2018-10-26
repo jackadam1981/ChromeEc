@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b9e4023_cfbe988c",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-26T23:47:00Z",
+      "side": 1,
+      "message": "This is already done by the weak function since you are removing the define for CONFIG_MKBP_USE_HOST_EVENT.",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 1
+      },
+      "revId": "0bbf23e5a342092fe73a5921b8773829b8465ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
