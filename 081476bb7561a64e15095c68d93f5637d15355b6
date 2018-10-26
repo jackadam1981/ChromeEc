@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "f2e84895_73e7dc1a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-26T20:15:29Z",
+      "side": 1,
+      "message": "ok, so, to make sure I get it right: safe_memcmp(hmac, request-\u003eunimported_leaf_data.hmac, sizeof(hmac)) which is done right before calling decrypt_leaf_data() is what protects us from bad sizes. this way we know that whatever we have in imported_leaf_data structure was created an hmac-ed by cr50. and cr50 would never put a too long size in the structure. correct?\n\nif so, sounds good. I\u0027d still prefer that min(pub_len, sizeof(leaf_public_data_t)) or even \"if (pub_len \u003e sizeof(leaf_public_data_t)) return error;\" approach, just to protect from bugs in cr50 itself. but it indeed becomes optional.",
+      "parentUuid": "b838359f_e18b469a",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ddd520c_7dd4018c",
         "filename": "common/pinweaver.c",
         "patchSetId": 37
