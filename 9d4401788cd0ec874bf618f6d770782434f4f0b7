@@ -22,6 +22,30 @@
       "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9925d86b_8b71cdb8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-10-26T23:58:09Z",
+      "side": 1,
+      "message": "I believe this is a reasonable name.\nThe code that parses it has already been tested.\n\nI will change it if you feel strongly about it.",
+      "parentUuid": "d0fd5b66_b9107895",
+      "range": {
+        "startLine": 1816,
+        "startChar": 5,
+        "endLine": 1816,
+        "endChar": 12
+      },
+      "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
