@@ -1555,15 +1555,15 @@ int system_can_boot_ap(void)
 		power_good = 1;
 #endif
 
-#ifdef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
-#ifdef CONFIG_CHARGE_MANAGER
+#if defined(CONFIG_CHARGE_MANAGER) && defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON)
 	if (!power_good) {
 		pow = charge_manager_get_power_limit_uw() / 1000;
 		if (pow >= CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON)
 			power_good = 1;
 	}
-#endif /* CONFIG_CHARGE_MANAGER */
-#endif /* CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
+#else
+	power_good = 1;
+#endif /* CONFIG_CHARGE_MANAGER && CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
 
 	if (!power_good)
 		CPRINTS("Not enough power to boot: chg=%d pwr=%d", soc, pow);
