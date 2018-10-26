@@ -22,6 +22,30 @@
       "revId": "7d6232ca7d0e4ba70340f6840e7b646cb8054db3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c58c36_00274dab",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-26T21:59:08Z",
+      "side": 1,
+      "message": "I used ccprints instead of CPRINTS so the channel is CC_COMMAND instead of CC_USBCHARGE, but both should be decorated the same.\n\n#define ccprints(format, args...) cprints(CC_COMMAND, format, ## args)\n#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)",
+      "parentUuid": "c0ffad8a_97a7f240",
+      "range": {
+        "startLine": 522,
+        "startChar": 1,
+        "endLine": 522,
+        "endChar": 9
+      },
+      "revId": "7d6232ca7d0e4ba70340f6840e7b646cb8054db3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
