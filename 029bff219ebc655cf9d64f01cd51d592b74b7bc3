@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8df57677_0576afc2",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "\u0027always called\u0027 and \u0027optional\u0027 are mutually exclusive, please clarify the comment.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a87b5ee_b88a4eba",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "all this STR business just avoid writing\n\n (\"malloc (%d) failed\\n\", SPECIAL_BUFFER_SIZE) ?\n\nI think using printf format is much better readable.",
+      "range": {
+        "startLine": 761,
+        "startChar": 27,
+        "endLine": 761,
+        "endChar": 52
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "496cbdb4_fbc5edc1",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "I did not have this, but later found out that error must be returned here if  usb_findit() fails.",
+      "range": {
+        "startLine": 1500,
+        "startChar": 1,
+        "endLine": 1501,
+        "endChar": 14
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7353d9_9ff37836",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "doesn\u0027t this interface need a shutdown to gracefully close the usb connection.",
+      "range": {
+        "startLine": 1539,
+        "startChar": 34,
+        "endLine": 1539,
+        "endChar": 51
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4410e1_6255323b",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "missing closing angle bracket",
+      "range": {
+        "startLine": 1572,
+        "startChar": 8,
+        "endLine": 1572,
+        "endChar": 22
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae5e0b63_8de6015d",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "should this and strcmp in line 1648 be strncmp",
+      "range": {
+        "startLine": 1645,
+        "startChar": 32,
+        "endLine": 1645,
+        "endChar": 38
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4d951f_6c284ec2",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "there is nothing wrong with updating flash_ec in the same patch - it is in the same directory, logically closely related.",
+      "range": {
+        "startLine": 1685,
+        "startChar": 1,
+        "endLine": 1688,
+        "endChar": 4
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0847a35d_96c89450",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "can\u0027t you just write\n\n\tstruct common_hnd chnd \u003d {}\n\nand avoid defining zero_init_common_hnd ?",
+      "range": {
+        "startLine": 1699,
+        "startChar": 1,
+        "endLine": 1699,
+        "endChar": 47
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c6e1a9d0_f9d56e30",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "since both names make sense, let\u0027s not change the name for no good reason. I in fact think that trigger is a better description of what this function does, and indicates that this is different from what fidi method does.",
+      "parentUuid": "5bb8e8d3_7784bd21",
+      "range": {
+        "startLine": 738,
+        "startChar": 15,
+        "endLine": 738,
+        "endChar": 19
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86e40db6_f3b34e5a",
         "filename": "util/iteflash.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "This is related, because the inconsistent wave arg had to go.\n\nStill want a separate patch?\n\nAlso, if it\u0027s really worth avoiding the re-alloc, I could cleanly fit this into common_hnd.  However I\u0027m skeptical that the retry logic is actually needed, I haven\u0027t once had to retry sending the waveform to the Bip I\u0027m typically testing with, so for now I lean away from optimizing this and towards getting rid of the retry logic in the future.",
       "parentUuid": "86e40db6_f3b34e5a",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 2
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0c48daf_4d1e2623",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7490845_eeed42f5",
       "range": {
         "startLine": 767,
         "startChar": 0,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "ca628a1f_42fce3e5",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd279b86_8c956a6e",
+      "range": {
+        "startLine": 836,
+        "startChar": 3,
+        "endLine": 839,
+        "endChar": 70
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "756418dc_b7e02079",
         "filename": "util/iteflash.c",
         "patchSetId": 2
@@ -178,6 +250,30 @@
       "side": 1,
       "message": "With the upcoming Linux i2c-dev support.",
       "parentUuid": "756418dc_b7e02079",
+      "range": {
+        "startLine": 847,
+        "startChar": 0,
+        "endLine": 849,
+        "endChar": 12
+      },
+      "revId": "a39987ce4b783cea480053f6b5b792c3f9a3f685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11522f2b_0d6bf000",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T23:10:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75339f3d_728ab2dd",
       "range": {
         "startLine": 847,
         "startChar": 0,
