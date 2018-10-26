@@ -38,6 +38,9 @@
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/* TODO(b/118477809): Need to use virtual HPD event */
+#define USBC_HPD_GPIO
+
 /******************************************************************************/
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
@@ -142,6 +145,31 @@ static void baseboard_chipset_shutdown(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 
+#ifdef USBC_HPD_GPIO
+static void board_dragonegg_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	/* HPD GPIOs */
+	static const enum gpio_signal hpd_gpio[CONFIG_USB_PD_PORT_COUNT] = {
+		[USB_PD_PORT_ITE_0] = GPIO_EC_USB_C0_HPD,
+		[USB_PD_PORT_ITE_1] = GPIO_EC_USB_C1_HPD,
+		[USB_PD_PORT_TUSB422_2] = GPIO_EC_USB_C2_HPD,
+	};
+
+	enum gpio_signal gpio = hpd_gpio[port];
+
+	/* Update the virtual mux about hpd */
+	virtual_hpd_update(port, hpd_lvl, hpd_irq);
+
+	/* Set HPD gpio level */
+	gpio_set_level(gpio, hpd_lvl);
+	if (hpd_irq) {
+		gpio_set_level(gpio, 0);
+		msleep(1);
+		gpio_set_level(gpio, 1);
+	}
+}
+#endif
+
 void board_hibernate(void)
 {
 	int timeout_ms = 20;
@@ -209,18 +237,30 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		.driver = &virtual_usb_mux_driver,
+#ifdef USBC_HPD_GPIO
+		.hpd_update = &board_dragonegg_hpd_update,
+#else
 		.hpd_update = &virtual_hpd_update,
+#endif
 	},
 
 	[USB_PD_PORT_ITE_1] = {
 		.driver = &virtual_usb_mux_driver,
+#ifdef USBC_HPD_GPIO
+		.hpd_update = &board_dragonegg_hpd_update,
+#else
 		.hpd_update = &virtual_hpd_update,
+#endif
 	},
 
 	[USB_PD_PORT_TUSB422_2] = {
 		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
+#ifdef USBC_HPD_GPIO
+		.hpd_update = &board_dragonegg_hpd_update,
+#else
 		.hpd_update = &virtual_hpd_update,
+#endif
 	},
 };
 
