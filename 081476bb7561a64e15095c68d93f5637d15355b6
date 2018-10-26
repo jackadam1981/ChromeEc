@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "b838359f_e18b469a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-26T19:41:51Z",
+      "side": 1,
+      "message": "We do have checks to make sure the pub_length an sec_length match with the overall packet size reported in the header length field.\nThe HMAC has to be valid for the leaf to be accepted, so it would have to to be created by a valid version to be used.\n\nWe do need to make sure we don\u0027t run into a case were we have a pointer to the pub or sec section that isn\u0027t full length with fields that are accessed because accesses to that pointer might be invalid see:\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/common/pinweaver.c?rcl\u003db83e555952336d583c19b26bfe026908ca70e196\u0026l\u003d95 \n\nThis happens:\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/common/pinweaver.c?rcl\u003db83e555952336d583c19b26bfe026908ca70e196\u0026l\u003d467\n\nFor this reason we need to set a minimum value for pub_len that is at least big enough for the label.",
+      "parentUuid": "3f0c221b_8dab8de3",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ddd520c_7dd4018c",
         "filename": "common/pinweaver.c",
         "patchSetId": 37
