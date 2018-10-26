@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "4ae35f3b_efd1ec50",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T17:40:07Z",
+      "side": 1,
+      "message": "You should not be adding a new command line option.\n\n-M qualifier should change gsctool behaviour to print Board ID in the format you like. \n\nAlso, note that this is not RLZ code, as board ID could be set to anything intentionally or by accident. It is supposed to match RLZ code, but is not guaranteed.",
+      "parentUuid": "10766cc5_9c9687f3",
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a62fe88a_6063ceb6",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b3b4830_1643ce2e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-26T17:40:07Z",
+      "side": 1,
+      "message": "this should not be needed any more if -M qualifies -i invocation.",
+      "range": {
+        "startLine": 560,
+        "startChar": 10,
+        "endLine": 560,
+        "endChar": 65
+      },
+      "revId": "8931448b0e2c3a44bf4499d9c38b86901f886135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
