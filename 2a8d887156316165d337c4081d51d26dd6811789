@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e3a3794a_4b12097a",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-26T01:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e419be99_986bc12c",
+      "revId": "2a8d887156316165d337c4081d51d26dd6811789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "967c4659_e1d018f9",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "2a8d887156316165d337c4081d51d26dd6811789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b5f483_611d7843",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-26T01:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "967c4659_e1d018f9",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "2a8d887156316165d337c4081d51d26dd6811789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +113,24 @@
       "side": 1,
       "message": "There isn\u0027t an explict exit low power mode anymore, the init gets call when the state machine wants to pull the device out of low power mode again.\n\nTo Nicolas\u0027s point, we should probably drop the \"int en\" parameter to mt6370 and/or make sure the appropriate setting are make in the init function.",
       "parentUuid": "625f092f_0dabb028",
+      "revId": "2a8d887156316165d337c4081d51d26dd6811789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef238205_8319cf41",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-10-26T01:15:32Z",
+      "side": 1,
+      "message": "As Jett said, the state machine will re-init the TCPC when un-plug the type-c port.\nMy intention is to keep this off-document register (it doesn\u0027t exist in the datasheet) settings in the source code.\nBut I am also fine to remove \"int en\" since the init function should reset this register.",
+      "parentUuid": "eb51840b_2447fb79",
       "revId": "2a8d887156316165d337c4081d51d26dd6811789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
