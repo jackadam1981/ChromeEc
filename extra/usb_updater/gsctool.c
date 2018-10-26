@@ -213,7 +213,7 @@ struct upgrade_pkt {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikMmO:oPprstUuVvw";
+static char *short_opts = "aBbcd:F:fhIikMmO:oPpRrstUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -233,6 +233,7 @@ static const struct option long_opts[] = {
 	{"openbox_rma",                 1,   NULL, 'O'},
 	{"password",	                0,   NULL, 'P'},
 	{"post_reset",	                0,   NULL, 'p'},
+	{"rlz",                         0,   NULL, 'R'},
 	{"rma_auth",	                2,   NULL, 'r'},
 	{"systemdev",	                0,   NULL, 's'},
 	{"tpm_mode",                    1,   NULL, 'm'},
@@ -556,6 +557,7 @@ static void usage(int errs)
 	       "                           Set or clear CCD password. Use\n"
 	       "                           'clear:<cur password>' to clear it\n"
 	       "  -p,--post_reset          Request post reset after transfer\n"
+	       "  -R,--rlz                 Request the board RLZ code\n"
 	       "  -r,--rma_auth [auth_code]\n"
 	       "                           Request RMA challenge, process "
 	       "RMA authentication code\n"
@@ -1789,7 +1791,7 @@ void process_bid(struct transfer_descriptor *td,
 {
 	size_t response_size;
 
-	if (bid_action == bid_get) {
+	if ((bid_action == bid_get) || (bid_action == bid_get_rlz)) {
 
 		response_size = sizeof(*bid);
 		send_vendor_command(td, VENDOR_CC_GET_BOARD_ID,
@@ -1814,12 +1816,29 @@ void process_bid(struct transfer_descriptor *td,
 				"BID_FLAGS", "%08x", be32toh(bid->flags));
 
 		} else {
-			printf("Board ID space: %08x:%08x:%08x\n",
-			       be32toh(bid->type),
-			       be32toh(bid->type_inv),
-			       be32toh(bid->flags));
+			if (bid_action == bid_get) {
+				printf("Board ID space: %08x:%08x:%08x\n",
+				       be32toh(bid->type),
+				       be32toh(bid->type_inv),
+				       be32toh(bid->flags));
+			}
 		}
 
+		if (bid_action == bid_get_rlz) {
+			for (int i = 0; i < 4; i++) {
+				if (!isalnum(((const char *)bid)[i])) {
+					printf("RLZ: invalid\n");
+					break;
+				}
+			}
+
+			printf("RLZ: %c%c%c%c\n",
+				((const char *)bid)[0],
+				((const char *)bid)[1],
+				((const char *)bid)[2],
+				((const char *)bid)[3]);
+			return;
+		}
 		return;
 	}
 
@@ -2155,6 +2174,9 @@ int main(int argc, char *argv[])
 				optarg = argv[optind++];
 
 			rma_auth_code = optarg;
+			break;
+		case 'R':
+			bid_action = bid_get_rlz;
 			break;
 		case 's':
 			if (td.ep_type || try_all_transfer) {
