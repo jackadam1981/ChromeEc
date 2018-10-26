@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "10766cc5_9c9687f3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-10-26T17:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df856f27_8196a4d8",
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a62fe88a_6063ceb6",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -127,6 +145,30 @@
       "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d2bf39_e1d3408e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1682,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-10-26T17:33:18Z",
+      "side": 1,
+      "message": "What do you guys normally do about the signed off line in the commit message?",
+      "parentUuid": "0b236132_2d0707d9",
+      "range": {
+        "startLine": 1682,
+        "startChar": 3,
+        "endLine": 1682,
+        "endChar": 10
+      },
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
