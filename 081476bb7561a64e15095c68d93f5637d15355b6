@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "543f9760_57edbc9e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-26T14:46:23Z",
+      "side": 1,
+      "message": "We intentionally left out a check to see if pub_len was equal to the struct size because we do want to be able to drop fields for rollback. In the case we create a new version that we don\u0027t want to allow rollbacks for, all that is needed is to increment the major version.",
+      "parentUuid": "ac6b532a_4e3fbfe4",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ddd520c_7dd4018c",
         "filename": "common/pinweaver.c",
         "patchSetId": 37
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "ba13655d_93431a91",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-26T14:46:23Z",
+      "side": 1,
+      "message": "In this case we want to allow a roll back that effectively loses the data in the extra fields. If we don\u0027t want that behavior, we can increment the major version.",
+      "parentUuid": "a866c0d5_e55dc4e1",
+      "range": {
+        "startLine": 479,
+        "startChar": 1,
+        "endLine": 479,
+        "endChar": 2
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9b9d860_0a13069f",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 37
@@ -130,6 +178,54 @@
       "writtenOn": "2018-10-26T09:27:04Z",
       "side": 1,
       "message": "In current code we use the aux height \u003d 14 / 2 \u003d 7 (https://cs.corp.google.com/chromeos_public/src/platform2/cryptohome/le_credential_backend.h?type\u003dcs\u0026q\u003dkLengthLabels\u0026sq\u003dpackage:\u0026g\u003d0\u0026l\u003d17).\n\nAnd we don\u0027t change the height of the tree IIUC. When the tree is full, we just return that a new label cannot be created. So, I don\u0027t see how we could have a request with height \u003e 10.\n\nThis constant had to be decreased because the size of leaf_public_data_t has increased and the validation from here: https://cs.corp.google.com/chromeos_public/src/platform/ec/common/pinweaver.c?q\u003dPW_MAX_PATH_SIZE+file:%5Esrc/+package:%5Echromeos_public$\u0026dr\u003dC\u0026l\u003d37\nwould fail.",
+      "parentUuid": "d9b9d860_0a13069f",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa67d0c1_b2037681",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-26T14:46:23Z",
+      "side": 1,
+      "message": "Igor is right about the logic behind our dropping the max path length like this. Had we allowed for tree resizing this would potentially break the case where the tree parameters led to packets that were too big. Those packets would be rejected.",
+      "parentUuid": "a0a810ea_b550b7af",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce61a7b_f6acb24e",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-26T14:46:23Z",
+      "side": 1,
+      "message": "So far we have only used a fixed height and fan out so it should be safe to make this change. The new messages wouldn\u0027t fit with the previous max path size, so this change is needed.",
       "parentUuid": "d9b9d860_0a13069f",
       "range": {
         "startLine": 410,
