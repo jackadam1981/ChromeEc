@@ -142,6 +142,25 @@ static void baseboard_chipset_shutdown(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 
+/* TODO(b/118477809): Need to use virtual HPD event */
+static void board_dragonegg_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	enum gpio_signal hpd_gpio[CONFIG_USB_PD_PORT_COUNT] = {
+		[USB_PD_PORT_ITE_0] = GPIO_EC_USB_C0_HPD_ODL,
+		[USB_PD_PORT_ITE_1] = GPIO_EC_USB_C1_HPD_ODL,
+		[USB_PD_PORT_TUSB422_2] = GPIO_EC_USB_C2_HPD_ODL,
+	};
+	enum gpio_signal gpio = hpd_gpio[port];
+
+	/* Set HPD gpio level */
+	gpio_set_level(gpio, !hpd_lvl);
+	if (hpd_irq) {
+		gpio_set_level(gpio, 0);
+		msleep(1);
+		gpio_set_level(gpio, 1);
+	}
+}
+
 void board_hibernate(void)
 {
 	int timeout_ms = 20;
@@ -209,18 +228,24 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+		/* TODO(b/118477809): Need to use virtual HPD event */
+		/* .hpd_update = &virtual_hpd_update, */
+		.hpd_update = &board_dragonegg_hpd_update,
 	},
 
 	[USB_PD_PORT_ITE_1] = {
 		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+		/* TODO(b/118477809): Need to use virtual HPD event */
+		/* .hpd_update = &virtual_hpd_update, */
+		.hpd_update = &board_dragonegg_hpd_update,
 	},
 
 	[USB_PD_PORT_TUSB422_2] = {
 		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+		/* TODO(b/118477809): Need to use virtual HPD event */
+		/* .hpd_update = &virtual_hpd_update, */
+		.hpd_update = &board_dragonegg_hpd_update,
 	},
 };
 
