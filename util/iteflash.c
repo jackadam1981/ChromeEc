@@ -6,13 +6,17 @@
  */
 
 #include <errno.h>
+#include <fcntl.h>
 #include <ftdi.h>
 #include <getopt.h>
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
 #include <signal.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/ioctl.h>
 #include <time.h>
 #include <unistd.h>
 
@@ -105,6 +109,7 @@ struct i2c_interface {
 	/* Always called, even if special waveform is skipped! */
 	/* Optional, may be NULL. */
 	int (*interface_post_waveform)(struct common_hnd *chnd);
+	/* Called exactly once if and only if interface_init() succeeded. */
 	/* Optional, may be NULL. */
 	int (*interface_shutdown)(struct common_hnd *chnd);
 	/* Optional, may be NULL (unsupported for this I2C interface type). */
@@ -112,14 +117,6 @@ struct i2c_interface {
 	/* Required, must not be NULL. */
 	int (*byte_transfer)(struct common_hnd *chnd, uint8_t addr,
 		uint8_t *data, int write, int numbytes);
-};
-
-struct common_hnd {
-	const struct i2c_interface *i2c_if;
-	union {
-		struct ftdi_context *ftdi_hnd;
-		struct usb_endpoint uep;
-	};
 };
 
 /*
@@ -130,8 +127,31 @@ struct flag_settings {
 	int send_waveform;  /* boolean */
 	int unprotect;  /* boolean */
 	int erase;  /* boolean */
+	char *i2c_dev_path;
 	const struct i2c_interface *i2c_if;
 };
+
+struct common_hnd {
+	const struct flag_settings *flags;
+	const struct i2c_interface *i2c_if;
+	union {
+		int i2c_dev_fd;
+		struct usb_endpoint uep;
+		struct ftdi_context *ftdi_hnd;
+	};
+};
+
+/* This releases any memory owned by *flags.  This does NOT free chnd itself! */
+/* Not all pointers in chnd necessarily point to memory owned by it. */
+static void flags_release(struct flag_settings *flags)
+{
+	void *ptr;
+	if (flags->i2c_dev_path) {
+		ptr = flags->i2c_dev_path;
+		flags->i2c_dev_path = NULL;
+		free(ptr);
+	}
+}
 
 /* number of bytes to send consecutively before checking for ACKs */
 #define FTDI_TX_BUFFER_LIMIT	32
@@ -141,6 +161,49 @@ static int block_write_size_ = FTDI_BLOCK_WRITE_SIZE;
 static int block_write_size(void)
 {
 	return block_write_size_;
+}
+
+static inline int i2c_byte_transfer(struct common_hnd *chnd, uint8_t addr,
+				    uint8_t *data, int write, int numbytes)
+{
+	return chnd->i2c_if->byte_transfer(chnd, addr, data, write, numbytes);
+}
+
+static const struct i2c_msg zero_init_i2c_msg;
+static const struct i2c_rdwr_ioctl_data zero_init_i2c_rdwr_ioctl_data;
+
+static int linux_i2c_byte_transfer(struct common_hnd *chnd, uint8_t addr,
+				   uint8_t *data, int write, int numbytes)
+{
+	int ret, err;
+	struct i2c_msg i2cmsg = zero_init_i2c_msg;
+	struct i2c_rdwr_ioctl_data msgset = zero_init_i2c_rdwr_ioctl_data;
+
+	printf("%s(chnd=%p, addr=%hhu, data=%p, write=%d, numbytes=%d) called"
+		"\n", __func__, chnd, addr, data, write, numbytes);
+
+	i2cmsg.addr = addr;
+	if (!write)
+		i2cmsg.flags |= I2C_M_RD;
+	i2cmsg.buf = data;
+	i2cmsg.len = numbytes;
+
+	msgset.msgs = &i2cmsg;
+	msgset.nmsgs = 1;
+
+	ret = ioctl(chnd->i2c_dev_fd, I2C_RDWR, &msgset);
+	if (ret < 0) {
+		err = errno;
+		fprintf(stderr, "%s: ioctl() failed with return value %d and "
+			"errno %d\n", __func__, ret, err);
+		if (ret == -1 && err)
+			ret = -abs(err);
+	} else {
+		printf("%s: ioctl() succeeded with return value %d\n", __func__,
+			ret);
+		ret = 0;
+	}
+	return ret;
 }
 
 static int i2c_add_send_byte(struct ftdi_context *ftdi, uint8_t *buf,
@@ -265,12 +328,6 @@ static int i2c_add_recv_bytes(struct ftdi_context *ftdi, uint8_t *buf,
 	} while (rcnt);
 
 	return ret;
-}
-
-static inline int i2c_byte_transfer(struct common_hnd *chnd, uint8_t addr,
-			     uint8_t *data, int write, int numbytes)
-{
-	return chnd->i2c_if->byte_transfer(chnd, addr, data, write, numbytes);
 }
 
 #define USB_I2C_HEADER_SIZE 4
@@ -1321,19 +1378,22 @@ int write_flash(struct common_hnd *chnd, const char *filename,
 	uint8_t *buffer = malloc(size);
 
 	if (!buffer) {
-		fprintf(stderr, "Cannot allocate %d bytes\n", size);
+		fprintf(stderr, "%s: Cannot allocate %d bytes\n", __func__,
+			size);
 		return -ENOMEM;
 	}
 
 	hnd = fopen(filename, "r");
 	if (!hnd) {
-		fprintf(stderr, "Cannot open file %s for reading\n", filename);
+		fprintf(stderr, "%s: Cannot open file %s for reading\n",
+			__func__, filename);
 		free(buffer);
 		return -EIO;
 	}
 	res = fread(buffer, 1, size, hnd);
 	if (res <= 0) {
-		fprintf(stderr, "Cannot read %s\n", filename);
+		fprintf(stderr, "%s: Failed to read %d bytes from %s with "
+			"ferror() %d\n", __func__, size, filename, ferror(hnd));
 		free(buffer);
 		return -EIO;
 	}
@@ -1342,7 +1402,7 @@ int write_flash(struct common_hnd *chnd, const char *filename,
 	printf("Writing %d bytes at 0x%08x\n", res, offset);
 	written = command_write_pages(chnd, offset, res, buffer);
 	if (written != res) {
-		fprintf(stderr, "Error writing to flash\n");
+		fprintf(stderr, "%s: Error writing to flash\n", __func__);
 		free(buffer);
 		return -EIO;
 	}
@@ -1369,21 +1429,24 @@ int write_flash2(struct common_hnd *chnd, const char *filename,
 	uint8_t *buffer = malloc(size);
 
 	if (!buffer) {
-		fprintf(stderr, "Cannot allocate %d bytes\n", size);
+		fprintf(stderr, "%s: Cannot allocate %d bytes\n", __func__,
+			size);
 		return -ENOMEM;
 	}
 
 	hnd = fopen(filename, "r");
 	if (!hnd) {
-		fprintf(stderr, "Cannot open file %s for reading\n", filename);
+		fprintf(stderr, "%s: Cannot open file %s for reading\n",
+			__func__, filename);
 		free(buffer);
 		return -EIO;
 	}
 	res = fread(buffer, 1, size, hnd);
 	if (res <= 0) {
-		fprintf(stderr, "Cannot read %s\n", filename);
-		free(buffer);
+		fprintf(stderr, "%s: Failed to read %d bytes from %s with "
+			"ferror() %d\n", __func__, size, filename, ferror(hnd));
 		fclose(hnd);
+		free(buffer);
 		return -EIO;
 	}
 	fclose(hnd);
@@ -1405,7 +1468,7 @@ int write_flash2(struct common_hnd *chnd, const char *filename,
 
 	if (written != res) {
 failed_write:
-		fprintf(stderr, "Error writing to flash\n");
+		fprintf(stderr, "%s: Error writing to flash\n", __func__);
 		free(buffer);
 		return -EIO;
 	}
@@ -1421,13 +1484,15 @@ int verify_flash(struct common_hnd *chnd, const char *filename,
 		uint32_t offset)
 {
 	int res;
+	int size = flash_size;
 	int file_size;
 	FILE *hnd;
-	uint8_t *buffer  = malloc(flash_size);
-	uint8_t *buffer2 = malloc(flash_size);
+	uint8_t *buffer  = malloc(size);
+	uint8_t *buffer2 = malloc(size);
 
 	if (!buffer || !buffer2) {
-		fprintf(stderr, "Cannot allocate %d bytes\n", flash_size);
+		fprintf(stderr, "%s: Cannot allocate %d bytes\n", __func__,
+			size);
 		free(buffer);
 		free(buffer2);
 		return -ENOMEM;
@@ -1435,21 +1500,24 @@ int verify_flash(struct common_hnd *chnd, const char *filename,
 
 	hnd = fopen(filename, "r");
 	if (!hnd) {
-		fprintf(stderr, "Cannot open file %s for reading\n", filename);
+		fprintf(stderr, "%s: Cannot open file %s for reading\n",
+			__func__, filename);
 		res = -EIO;
 		goto exit;
 	}
 
-	file_size = fread(buffer, 1, flash_size, hnd);
-	fclose(hnd);
+	file_size = fread(buffer, 1, size, hnd);
 	if (file_size <= 0) {
-		fprintf(stderr, "Cannot read %s\n", filename);
+		fprintf(stderr, "%s: Failed to read %d bytes from %s with "
+			"ferror() %d\n", __func__, size, filename, ferror(hnd));
+		fclose(hnd);
 		res = -EIO;
 		goto exit;
 	}
+	fclose(hnd);
 
 	printf("Verify %d bytes at 0x%08x\n", file_size, offset);
-	res = command_read_pages(chnd, offset, flash_size, buffer2);
+	res = command_read_pages(chnd, offset, size, buffer2);
 	if (res > 0)
 		res = memcmp(buffer, buffer2, file_size);
 
@@ -1490,6 +1558,45 @@ static struct ftdi_context *open_ftdi_device(int vid, int pid,
 open_failed:
 	ftdi_free(ftdi);
 	return NULL;
+}
+
+static int linux_i2c_interface_init(struct common_hnd *chnd)
+{
+	int err;
+	if (!chnd->flags->i2c_dev_path) {
+		fprintf(stderr, "Must set --i2c_dev_path when using "
+				"Linux i2c-dev interface.\n");
+		return -1;
+	}
+	printf("Attempting to open Linux i2c-dev path %s\n",
+		chnd->flags->i2c_dev_path);
+	chnd->i2c_dev_fd = open(chnd->flags->i2c_dev_path, O_RDWR);
+	if (chnd->i2c_dev_fd < 0) {
+		err = errno;
+		perror("Failed to open Linux i2c-dev file path with error");
+		fprintf(stderr, "Linux i2c-dev file path from --i2c_dev_path "
+			"is: %s\n", chnd->flags->i2c_dev_path);
+		return err ? err : -1;
+	}
+	printf("Successfully opened Linux i2c-dev path %s\n",
+		chnd->flags->i2c_dev_path);
+	return 0;
+}
+
+static int linux_i2c_interface_shutdown(struct common_hnd *chnd)
+{
+	int err;
+	printf("Attempting to close Linux i2c-dev file descriptor %d\n",
+		chnd->i2c_dev_fd);
+	if (close(chnd->i2c_dev_fd)) {
+		err = errno;
+		perror("Failed to close Linux i2c-dev file descriptor with "
+			"error");
+		return err ? err : -1;
+	}
+	printf("Successfully closed Linux i2c-dev file descriptor %d\n",
+		chnd->i2c_dev_fd);
+	return 0;
 }
 
 static int ccd_i2c_interface_init(struct common_hnd *chnd)
@@ -1536,6 +1643,12 @@ static int ftdi_i2c_interface_shutdown(struct common_hnd *chnd)
 	return 0;
 }
 
+static const struct i2c_interface linux_i2c_interface = {
+	.interface_init = linux_i2c_interface_init,
+	.interface_shutdown = linux_i2c_interface_shutdown,
+	.byte_transfer = linux_i2c_byte_transfer,
+};
+
 static const struct i2c_interface ccd_i2c_interface = {
 	.interface_init = ccd_i2c_interface_init,
 	.send_special_waveform = ccd_send_special_waveform,
@@ -1554,12 +1667,13 @@ static const struct option longopts[] = {
 	{"debug", 0, 0, 'd'},
 	{"erase", 0, 0, 'e'},
 	{"help", 0, 0, 'h'},
+	{"i2c-dev-path", 0, 0, 'D'},
 	{"i2c-interface", 0, 0, 'c'},
 	{"interface", 1, 0, 'i'},
 	{"product", 1, 0, 'p'},
 	{"read", 1, 0, 'r'},
-	{"serial", 1, 0, 's'},
 	{"send-waveform", 1, 0, 'W'},
+	{"serial", 1, 0, 's'},
 	{"unprotect", 0, 0, 'u'},
 	{"vendor", 1, 0, 'v'},
 	{"write", 1, 0, 'w'},
@@ -1573,8 +1687,10 @@ void display_usage(char *program)
 		"[-r <file>] [-W <0|1|false|true>] [-w <file>]\n", program);
 	fprintf(stderr, "--d[ebug] : output debug traces\n");
 	fprintf(stderr, "--e[rase] : erase all the flash content\n");
-	fprintf(stderr, "-c, --i2c_interface <linux|ccd|ftdi> : I2C interface "
-			"to use\n");
+	fprintf(stderr, "-D, --i2c-dev-path /dev/i2c-<N> : Path to "
+			"Linux i2c-dev file\n");
+	fprintf(stderr, "-c, --i2c-interface <linux|ccd|ftdi> : I2C interface "
+			"to use; only applicable with --i2c-interface=linux\n");
 	fprintf(stderr, "--i[interface] <1> : FTDI interface: A=1, B=2, ...\n");
 	fprintf(stderr, "--p[roduct] <0x1234> : USB product ID\n");
 	fprintf(stderr, "--r[ead] <file> : read the flash content and "
@@ -1597,20 +1713,32 @@ void display_usage(char *program)
 
 int parse_parameters(int argc, char **argv, struct flag_settings *flags)
 {
-	int opt, idx;
+	int opt, idx, ret = -1;
 
-	while ((opt = getopt_long(argc, argv, "?dehc:i:p:r:s:uv:w:",
+	while ((opt = getopt_long(argc, argv, "?dehD:c:i:p:r:s:uv:w:",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'c':
-			if (!strcmp(optarg, "ccd")) {
+			if (!strcmp(optarg, "linux")) {
+				flags->i2c_if = &linux_i2c_interface;
+			} else if (!strcmp(optarg, "ccd")) {
 				flags->i2c_if = &ccd_i2c_interface;
 			} else if (!strcmp(optarg, "ftdi")) {
 				flags->i2c_if = &ftdi_i2c_interface;
 			} else {
 				fprintf(stderr, "Unexpected -c / "
 					"--i2c-interface value: %s\n", optarg);
-				return -1;
+				goto return_now;
+			}
+			break;
+		case 'D':
+			flags->i2c_dev_path = strdup(optarg);
+			if (!flags->i2c_dev_path) {
+				ret = errno ? errno : -1;
+				fprintf(stderr, "strdup() of %zu size string of"
+					" --i2c-dev-path arg value failed.\n",
+					strlen(optarg));
+				goto return_now;
 			}
 			break;
 		case 'd':
@@ -1651,7 +1779,7 @@ int parse_parameters(int argc, char **argv, struct flag_settings *flags)
 				fprintf(stderr, "Unexpected -W / "
 					"--special-waveform value: %s\n",
 					optarg);
-				return -1;
+				goto return_now;
 			}
 			break;
 		case 'w':
@@ -1659,7 +1787,12 @@ int parse_parameters(int argc, char **argv, struct flag_settings *flags)
 			break;
 		}
 	}
-	return 0;
+
+	ret = 0;
+ return_now:
+	if (ret)
+		flags_release(flags);
+	return ret;
 }
 
 static void sighandler(int signum)
@@ -1702,31 +1835,40 @@ int main(int argc, char **argv)
 	if (parse_parameters(argc, argv, &flags) < 0)
 		return ret;
 
+	chnd.flags = &flags;
 	chnd.i2c_if = flags.i2c_if;
 
 	/* Open the communications channel. */
 	if (chnd.i2c_if->interface_init && chnd.i2c_if->interface_init(&chnd))
-		return ret;
+		goto return_after_parse;
 
 	/* Register signal handler after opening the communications channel. */
 	register_sigaction();
 
 	/* Trigger embedded monitor detection */
 	if (flags.send_waveform && send_special_waveform(&chnd))
-		goto terminate;
+		goto return_after_init;
 
-	if (chnd.i2c_if->interface_post_waveform &&
-	    chnd.i2c_if->interface_post_waveform(&chnd))
-		goto terminate;
+	if (chnd.i2c_if->interface_post_waveform) {
+		if (chnd.i2c_if->interface_post_waveform(&chnd))
+			goto return_after_init;
+	} else {
+		ret = check_chipid(&chnd);
+		if (ret) {
+			fprintf(stderr, "Failed to get ITE chip ID.  This "
+				"could be because the ITE direct firmware "
+				"update (DFU) mode is not enabled.\n");
+			goto return_after_init;
+		}
+	}
 
 	if (flags.unprotect)
 		command_write_unprotect(&chnd);
 
 	if (input_filename) {
 		ret = read_flash(&chnd, input_filename, 0, flash_size);
-
 		if (ret)
-			goto terminate;
+			goto return_after_init;
 	}
 
 	if (flags.erase) {
@@ -1735,30 +1877,26 @@ int main(int argc, char **argv)
 			command_erase2(&chnd, flash_size, 0, 0);
 		else
 			command_erase(&chnd, flash_size, 0);
-
 		/* Call DBGR Rest to clear the EC lock status after erasing */
 		dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
 	}
 
 	if (output_filename) {
-
 		if (is8320dx)
 			ret = write_flash2(&chnd, output_filename, 0);
 		else
 			ret = write_flash(&chnd, output_filename, 0);
-
 		if (ret)
-			goto terminate;
-
+			goto return_after_init;
 		ret = verify_flash(&chnd, output_filename, 0);
 		if (ret)
-			goto terminate;
+			goto return_after_init;
 	}
 
 	/* Normal exit */
 	ret = 0;
 
-terminate:
+ return_after_init:
 	/*
 	 * Enable EC Host Global Reset to reset EC resource and EC domain
 	 */
@@ -1770,5 +1908,7 @@ terminate:
 			ret = other_ret;
 	}
 
+ return_after_parse:
+	flags_release(&flags);
 	return ret;
 }
