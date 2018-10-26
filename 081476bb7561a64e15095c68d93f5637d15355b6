@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3f0c221b_8dab8de3",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-26T18:20:28Z",
+      "side": 1,
+      "message": "It\u0027s all fine, but what happens if I current send a command with major\u003d0 (current), minor\u003d2 (\u003ecurrent) and some bogus length. Are we protected from that?",
+      "parentUuid": "543f9760_57edbc9e",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ddd520c_7dd4018c",
         "filename": "common/pinweaver.c",
         "patchSetId": 37
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "So far we have only used a fixed height and fan out so it should be safe to make this change. The new messages wouldn\u0027t fit with the previous max path size, so this change is needed.",
       "parentUuid": "d9b9d860_0a13069f",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e652d37_194f8c6a",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-26T18:20:28Z",
+      "side": 1,
+      "message": "if the currently used tree height (and as the result, the h_aux.size()) is below the new reduced max, then no problem indeed - the existing devices with already established PINs will continue to work. \nif that was not the case, we\u0027d need some migration on the host side, I guess.",
+      "parentUuid": "aa67d0c1_b2037681",
       "range": {
         "startLine": 410,
         "startChar": 0,
