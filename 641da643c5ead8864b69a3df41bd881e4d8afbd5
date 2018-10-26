@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "df856f27_8196a4d8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-10-26T00:16:04Z",
+      "side": 1,
+      "message": "I thought that patch had been abandoned.\nI will rebase, refresh the patch and take a look at -M",
+      "parentUuid": "80e16cff_cfe4268a",
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a62fe88a_6063ceb6",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -76,6 +94,30 @@
       "writtenOn": "2018-10-25T20:00:11Z",
       "side": 1,
       "message": "did you use \u0027repo upload\u0027 to upload this patch? I wonder why preupload check missed the 80 cols violation.",
+      "range": {
+        "startLine": 1682,
+        "startChar": 3,
+        "endLine": 1682,
+        "endChar": 10
+      },
+      "revId": "641da643c5ead8864b69a3df41bd881e4d8afbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b236132_2d0707d9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1682,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-10-26T00:16:04Z",
+      "side": 1,
+      "message": "I looked at this.  It doesn\u0027t actually show \u003e 80 characters.  (At least on my editor)\nI will take another look.",
+      "parentUuid": "a62fe88a_6063ceb6",
       "range": {
         "startLine": 1682,
         "startChar": 3,
