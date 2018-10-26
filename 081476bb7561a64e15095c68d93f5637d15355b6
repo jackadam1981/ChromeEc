@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac6b532a_4e3fbfe4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-26T09:27:04Z",
+      "side": 1,
+      "message": "You are right, we don\u0027t explicitly check that pub_len \u003c\u003d sizeof(leaf_public_data_t). An indirect check is done in hmac validation, where the header data is included in the hash.\n\nConsidering that we might want to keep the possibility of handling the leaves from the future, I think it\u0027s safer to go with min(pub_len, sizeof(leaf_public_data_t)) in memcpy and not apply an explicit check on pub_len.",
+      "parentUuid": "51a53670_a496c046",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ddd520c_7dd4018c",
         "filename": "common/pinweaver.c",
         "patchSetId": 37
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a866c0d5_e55dc4e1",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-26T09:27:04Z",
+      "side": 1,
+      "message": "Seems like it was decided in the initial implementation to allow this use case, there\u0027s a test that checks it: https://cs.corp.google.com/chromeos_public/src/platform/ec/test/pinweaver.c?q\u003dpinweaver.c+file:%5Esrc/+package:%5Echromeos_public$\u0026dr\u0026l\u003d2030\n\nI guess the intent is to be able to handle the rollback of CR50 code. Allen, do you have more information on this?",
+      "parentUuid": "4ddd520c_7dd4018c",
+      "range": {
+        "startLine": 479,
+        "startChar": 1,
+        "endLine": 479,
+        "endChar": 2
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9b9d860_0a13069f",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 37
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-25T21:23:12Z",
       "side": 1,
       "message": "so, remind me again: we decided to change that? \nwhat happens if we have this new version of cr50 running on the same device with old OS that uses PW_MAX_PATH_SIZE of 1536 and sends PW_INSERT_LEAF with protocol_version\u003d0 and h_aux height of 16? \n\nwhat happens to devices that are already using PINs and have already created trees with old height: iiuc, validate_request_with_path() \u003e validate_tree() \u003e validate_tree_parameters() will fail, so old PINs will stop working? or do I miss something?",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 29
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a810ea_b550b7af",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-26T09:27:04Z",
+      "side": 1,
+      "message": "In current code we use the aux height \u003d 14 / 2 \u003d 7 (https://cs.corp.google.com/chromeos_public/src/platform2/cryptohome/le_credential_backend.h?type\u003dcs\u0026q\u003dkLengthLabels\u0026sq\u003dpackage:\u0026g\u003d0\u0026l\u003d17).\n\nAnd we don\u0027t change the height of the tree IIUC. When the tree is full, we just return that a new label cannot be created. So, I don\u0027t see how we could have a request with height \u003e 10.\n\nThis constant had to be decreased because the size of leaf_public_data_t has increased and the validation from here: https://cs.corp.google.com/chromeos_public/src/platform/ec/common/pinweaver.c?q\u003dPW_MAX_PATH_SIZE+file:%5Esrc/+package:%5Echromeos_public$\u0026dr\u003dC\u0026l\u003d37\nwould fail.",
+      "parentUuid": "d9b9d860_0a13069f",
       "range": {
         "startLine": 410,
         "startChar": 0,
