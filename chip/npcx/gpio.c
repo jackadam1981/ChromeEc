@@ -263,13 +263,60 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 			gpio_alt_sel(port, pin, func);
 }
 
+static int show_more(enum gpio_signal signal)
+{
+       if ((signal == GPIO_PCH_PWRBTN_L) ||
+		signal == GPIO_EN_PWR_A
+	)
+               return 1;
+       else
+               return 0;
+}
+
+static int show_hint(enum gpio_signal signal)
+{
+       if (signal == GPIO_WP_L ||
+               signal == GPIO_BAT_LED_ORANGE_L ||
+               signal == GPIO_BAT_LED_BLUE_L ||
+               signal == GPIO_KBD_KSO2 ||
+		signal == GPIO_EC_BATT_PRES_L
+		|| signal == GPIO_VOLUME_UP_L
+		|| signal == GPIO_VOLUME_DOWN_L
+		|| signal == GPIO_USB_C0_PD_RST_L
+		|| signal == GPIO_USB_C1_PD_RST_L
+		|| signal == GPIO_EN_USB_C0_TCPC_PWR
+		|| signal == GPIO_EN_USB_A0_5V
+		|| signal == GPIO_EN_USB_A1_5V
+          )
+               return 0;
+       else
+               return 1;
+}
+
+
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
+	if (show_hint(signal)) {
+               if (show_more(signal))
+                       ccprintf("*****");
+               ccprintf("gpio.get [%s] is %d\n", gpio_list[signal].name
+                                               ,!!(NPCX_PDIN(gpio_list[signal].port) & gpio_list[signal].mask));
+               cflush();
+       }
+
 	return !!(NPCX_PDIN(gpio_list[signal].port) & gpio_list[signal].mask);
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
+	if (show_hint(signal)) {
+               if (show_more(signal)){
+                       ccprintf("*****");
+                       ccprintf("*****");
+                       ccprintf("*****");
+		}
+               ccprintf("gpio.set [%s] to %d\n", gpio_list[signal].name, value); cflush();
+       }
 	if (value)
 		NPCX_PDOUT(gpio_list[signal].port) |=  gpio_list[signal].mask;
 	else
