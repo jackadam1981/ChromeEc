@@ -7,6 +7,12 @@
 #include "endian.h"
 #include "registers.h"
 #include "trng.h"
+#include "console.h"
+
+#define LOG_ERROR(msg) 	\
+	do { \
+		ccprintf("ERR [%s:%d]: %s\n" ,__func__, __LINE__, msg);  \
+	} while (0)
 
 static void ladder_init(void)
 {
@@ -287,3 +293,227 @@ int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
 	dcrypto_release_sha_hw();
 	return !error;
 }
+
+void DCRYPTO_ladder_revoke(void)
+{
+	/* Revoke certificates */
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL0, 0xFFFFFFFF);
+
+#if 0
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL1,
+		GC_KEYMGR_CERT_REVOKE_CTRL1_DERIVE_TESTMODE_PASSWORD_ROOTKEY_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_DERIVE_TESTMODE_PASSWORD_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_DERIVE_STAGE2_FIRMWARE_HIK0_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_DERIVE_STAGE2_FIRMWARE_HIK1_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_DERIVE_STAGE2_FIRMWARE_HIK2_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_STAGE2_HIK0_FIRMWARE_HASH_CHAIN_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_FW2_HIK0_CHAIN_LAST_LINK_EXPORT_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_STAGE2_HIK1_FIRMWARE_HASH_CHAIN_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_FW2_HIK1_CHAIN_LAST_LINK_EXPORT_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_STAGE2_HIK2_FIRMWARE_HASH_CHAIN_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_FW2_HIK2_CHAIN_LAST_LINK_EXPORT_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_GET_STIRRED_RANDOM_DATA_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_STIR_RANDOM_DATA_AND_UPDATE_RSR_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_STIR_RANDOM_DATA_INTO_USRS_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL1_HIK0_ISR0_KEYS_MASK|
+		GC_KEYMGR_CERT_REVOKE_CTRL1_HIK0_USR_KEYS_MASK|
+		0);
+#endif
+
+#if 0
+	REG16(GBASE(KEYMGR) + GOFFSET(KEYMGR, CERT_REVOKE_CTRL2)) =
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HIK1_ISR1_KEYS_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HIK1_USR_KEYS_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HIK2_ISR2_KEYS_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HIK2_USR_KEYS_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HIK0_HMAC_USER_DATA_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HIK1_HMAC_USER_DATA_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HIK2_HMAC_USER_DATA_MASK |
+		GC_KEYMGR_CERT_REVOKE_CTRL2_HASH_ROM_FOR_RBC_MASK |
+		0;
+#endif
+
+	/* Wipe out the hidden keys cached in AES and SHA engines. */
+	GWRITE_FIELD(KEYMGR, AES_USE_HIDDEN_KEY, ENABLE, 0);
+	GWRITE_FIELD(KEYMGR, SHA_USE_HIDDEN_KEY, ENABLE, 0);
+
+	/* Clear usr_ready[] */
+	memset(usr_ready, 0, sizeof(usr_ready));
+}
+
+#ifdef CR50_DEV
+static void _dump_registers(void) {
+	cflush();
+	ccprintf(" -----------------------------------------\n");
+	ccprintf("CERT_REVOKE_CTRL[0-2]: %08X %08X %04X\n",
+					GREG32(KEYMGR, CERT_REVOKE_CTRL0),
+					GREG32(KEYMGR, CERT_REVOKE_CTRL1),
+					REG16(GBASE(KEYMGR) + GOFFSET(KEYMGR, CERT_REVOKE_CTRL2))
+					);
+	ccprintf("HKEY_ERR_FLAGS       : %08X\n",
+		GREG32(KEYMGR, HKEY_ERR_FLAGS));
+	ccprintf("AES_CTRL             : %08X\n", GREG32(KEYMGR, AES_CTRL));
+	ccprintf("AES_USE_HIDDEN_      : %08X\n",
+		GREG32(KEYMGR, AES_USE_HIDDEN_KEY));
+	cflush();
+
+	ccprintf("HKEY_FRR[0-7]        : %08X %08X %08X %08X %08X %08X %08X %08X\n",
+					GREG32(KEYMGR, HKEY_FRR0),
+					GREG32(KEYMGR, HKEY_FRR1),
+					GREG32(KEYMGR, HKEY_FRR2),
+					GREG32(KEYMGR, HKEY_FRR3),
+					GREG32(KEYMGR, HKEY_FRR4),
+					GREG32(KEYMGR, HKEY_FRR5),
+					GREG32(KEYMGR, HKEY_FRR6),
+					GREG32(KEYMGR, HKEY_FRR7));
+	ccprintf(" -----------------------------------------\n");
+	cflush();
+}
+
+/**
+ * Test function: Do the cipher before and after DCRYPTO_ladder_revoke.
+                  Compare the result
+ */
+static int test_keyladder_revocation(int argc, char *argv[])
+{
+	uint32_t appid = 0;
+	uint8_t sha1_digest[SHA_DIGEST_SIZE];
+	uint32_t inp0[SHA256_DIGEST_WORDS] = {0};
+	uint32_t enc1[SHA256_DIGEST_WORDS] = {0};	// Encrypt result
+	uint32_t dec2[SHA256_DIGEST_WORDS] = {0};	// Decrypt result before revocation
+	uint32_t dec3[SHA256_DIGEST_WORDS] = {0};	// Decrypt result after revocation
+	int retval = EC_ERROR_UNKNOWN;
+	uint32_t *buf_debug = NULL;
+	int do_revoke = 1;
+
+	rand_bytes(inp0, sizeof(inp0));
+	rand_bytes(enc1, sizeof(enc1) / 2);	// fill with garbage just the half
+	rand_bytes(dec2, sizeof(dec2) / 2);	// fill with garbage just the half
+	rand_bytes(dec3, sizeof(dec3) / 2);	// fill with garbage just the half
+
+	rand_bytes(sha1_digest, sizeof(sha1_digest));
+
+	/* Warm Up: practice cipher for all appid */
+	for (appid = 0; appid < 7; appid++)
+		DCRYPTO_app_cipher(appid, sha1_digest, enc1, inp0, sizeof(enc1));
+
+	appid = (argc > 1) ? atoi(argv[1]) : 0;
+
+	if (argc > 2)
+		do_revoke = memcmp(argv[2], "0", 1);
+
+	/*
+	 * Use the built in dcrypto engine to generate the sha1 hash of the
+	 * buffer.
+	 */
+
+	ccprintf("                  appid  %d\n", appid);
+	ccprintf("            revoke test  %s\n", do_revoke ? "TRUE" : "FALSE");
+	ccprintf("            sha1_digest  %.20h\n", sha1_digest);
+	ccprintf("                   inp0  %.32h\n", inp0);
+
+	do {
+		/*  */
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, enc1, inp0, sizeof(enc1))) {
+			LOG_ERROR("cipher(inp0) fails");
+			buf_debug = enc1;
+			break;
+		}
+		ccprintf("     cipher(inp0)->enc1  %.32h\n", enc1);
+
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, dec2, enc1, sizeof(dec2))) {
+			LOG_ERROR("cipher(enc1) fails");
+			buf_debug = dec2;
+			break;
+		}
+		ccprintf("     cipher(enc1)->dec2  %.32h\n", dec2);
+
+#if 1
+		/* Check whether cipher() result is consistent. */
+		memset(usr_ready, 0, sizeof(usr_ready));
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, dec2, enc1, sizeof(dec2))) {
+			LOG_ERROR("cipher(enc1) fails");
+			buf_debug = dec2;
+			break;
+		}
+		ccprintf("     cipher(enc1)->dec2  %.32h\n", dec2);
+		/* Check whether cipher() result is consistent. */
+		memset(usr_ready, 0, sizeof(usr_ready));
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, dec2, enc1, sizeof(dec2))) {
+			LOG_ERROR("cipher(enc1) fails");
+			buf_debug = dec2;
+			break;
+		}
+		ccprintf("     cipher(enc1)->dec2  %.32h\n", dec2);
+#endif
+
+		if (!DCRYPTO_equals(inp0, dec2, sizeof(enc1))) {
+			LOG_ERROR("inp0 != cipher(cipher(inp0))");
+			buf_debug = dec2;
+			break;
+		}
+
+		_dump_registers();
+		/*   */
+		if (do_revoke) {
+			ccprintf("  [ keyladder revocation ]\n");
+			DCRYPTO_ladder_revoke();
+		}
+
+		/*   */
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, dec3, enc1, sizeof(dec3))) {
+			LOG_ERROR("cipher(dec3) fails");
+			buf_debug = dec3;
+			break;
+
+		}
+		ccprintf("     cipher(enc1)->dec3  %.32h\n", dec3);
+
+		/*   */
+		if (do_revoke && DCRYPTO_equals(dec2, dec3, sizeof(dec3))) {
+			LOG_ERROR("Revocation didn't affect cipher result");
+			buf_debug = dec3;
+			break;
+		}
+
+#if 1
+		/* Check whether cipher() result is random. */
+		memset(usr_ready, 0, sizeof(usr_ready));
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, dec3, enc1,
+			sizeof(dec3))) {
+			LOG_ERROR("cipher(dec3) fails");
+			buf_debug = dec3;
+			break;
+
+		}
+		ccprintf("     cipher(enc1)->dec3  %.32h\n", dec3);
+
+		/*   */
+		memset(usr_ready, 0, sizeof(usr_ready));
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, dec3, enc1,
+			sizeof(dec3))) {
+			LOG_ERROR("cipher(dec3) fails");
+			buf_debug = dec3;
+			break;
+
+		}
+		ccprintf("     cipher(enc1)->dec3  %.32h\n", dec3);
+#endif
+
+		retval = EC_SUCCESS;
+	} while(0);
+
+	_dump_registers();
+	if (retval) {
+		if (buf_debug)
+			ccprintf("          last output    %.32h\n", buf_debug);
+		GREG32(KEYMGR, HKEY_ERR_FLAGS) = 0xFFFFFFFF;
+	}
+
+	return retval;
+}
+DECLARE_CONSOLE_COMMAND(testc, test_keyladder_revocation,
+			NULL,
+			"Test Keyladder Revocation");
+#endif
+
