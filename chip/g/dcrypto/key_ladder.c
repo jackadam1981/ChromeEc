@@ -287,3 +287,118 @@ int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
 	dcrypto_release_sha_hw();
 	return !error;
 }
+
+int DCRYPTO_ladder_revoke(void)
+{
+	int appid;
+
+	/* Clear usr_ready[] */
+	memset(usr_ready, 0, sizeof(usr_ready));
+
+	/* Wipe AES Hidden key information */
+	GWRITE_FIELD(KEYMGR, AES_CTRL, ENABLE, 0);
+	GWRITE(KEYMGR, AES_WIPE_SECRETS, 1);
+	for (appid = 0; appid <= PINWEAVER; ++appid) {
+		/* Enable hidden key usage, each appid gets its own
+		 * USR, with USR0 starting at 0x2a0.
+		 */
+		GWRITE(KEYMGR, AES_USE_HIDDEN_KEY, 0x2a0 + (appid * 2));
+		GWRITE(KEYMGR, SHA_USE_HIDDEN_KEY, 0x2a0 + (appid * 2));
+	}
+	GWRITE_FIELD(KEYMGR, AES_CTRL, ENABLE, CTRL_ENABLE);
+
+	/* Wait for key-expansion. */
+	GREG32(KEYMGR, AES_KEY_START) = 1;
+	while (GREG32(KEYMGR, AES_KEY_START))
+		;
+
+	/* Set IV. */
+	GR_KEYMGR_AES_CTR(0) = 0;
+	GR_KEYMGR_AES_CTR(1) = 0;
+	GR_KEYMGR_AES_CTR(2) = 0;
+	GR_KEYMGR_AES_CTR(3) = 0;
+
+	/* Revoke certificates */
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL0, 0xFFFFFFFF);
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL1, 0xFFFFFFFF);
+	REG16(GBASE(KEYMGR) + GOFFSET(KEYMGR, CERT_REVOKE_CTRL2)) = 0xFFFF;
+
+	/* Check for errors (e.g. USR not correctly setup. */
+	return !GREG32(KEYMGR, HKEY_ERR_FLAGS);
+}
+
+#ifdef CR50_DEV
+#include "console.h"
+static int test_keyladder_revocation(int argc, char *argv[])
+{
+	uint32_t appid = 0;
+	uint32_t digest[SHA256_DIGEST_WORDS];
+	uint32_t in[SHA256_DIGEST_WORDS] = {0,};
+	uint32_t out1[SHA256_DIGEST_WORDS] = {0,};
+	uint32_t out2[SHA256_DIGEST_WORDS];
+	uint32_t out3[SHA256_DIGEST_WORDS];
+	int retval;
+
+	if (argc > 1)
+		appid = atoi(argv[1]);
+
+	rand_bytes(in, sizeof(in));
+	rand_bytes(digest, sizeof(digest));
+	rand_bytes(out2, sizeof(out2));
+	rand_bytes(out3, sizeof(out3));
+
+	ccprintf("KEYMGR_CERT_REVOKE_CTRL: %.10h\n",
+			GREG32_ADDR(KEYMGR, CERT_REVOKE_CTRL0));
+	ccprintf("                 digest  %.32h\n", digest);
+	ccprintf("                     in  %.32h\n", in);
+
+	/**/
+	if (!DCRYPTO_app_cipher(appid, digest, out1, in, sizeof(out1))) {
+		ccprintf("[%s:%d] app_cipher\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("     cipher(in)  ->out1  %.32h\n", out1);
+
+	if (!DCRYPTO_app_cipher(appid, digest, out2, out1, sizeof(out2))) {
+		ccprintf("[%s:%d] app_cipher\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("     cipher(out1)->out2  %.32h\n", out2);
+
+	if (!DCRYPTO_equals(in, out2, sizeof(out1))) {
+		ccprintf("[%s:%d] two results are different.\n",
+			__func__, __LINE__);
+	//		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("\n");
+
+	/*   */
+	retval = DCRYPTO_ladder_revoke();
+	if (!retval) {
+		ccprintf("[%s:%d] CRYPTO_ladder_revoke failed.\n",
+			__func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("KEYMGR_CERT_REVOKE_CTRL: %.10h\n",
+			GREG32_ADDR(KEYMGR, CERT_REVOKE_CTRL0));
+	/*   */
+
+	if (!DCRYPTO_app_cipher(appid, digest, out3, out1, sizeof(out3))) {
+		ccprintf("%s app_cipher %d\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("     cipher(out1)->out3  %.32h\n", out3);
+
+	if (DCRYPTO_equals(out2, out3, sizeof(out3))) {
+		ccprintf("[%s:%d] two results are same.\n",
+			 __func__, __LINE__);
+		// return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(testc, test_keyladder_revocation,
+			NULL,
+			"Test Keyladder Revocation");
+#endif
+
