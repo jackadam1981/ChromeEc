@@ -7,6 +7,12 @@
 #include "endian.h"
 #include "registers.h"
 #include "trng.h"
+#include "console.h"
+
+#define LOG_ERROR() 	\
+	do { \
+		ccprintf("ERR [%s:%d]\n" ,__func__, __LINE__);  \
+	} while (0)
 
 static void ladder_init(void)
 {
@@ -287,3 +293,154 @@ int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
 	dcrypto_release_sha_hw();
 	return !error;
 }
+
+int DCRYPTO_ladder_revoke(void)
+{
+	int appid;
+
+	/* Clear usr_ready[] */
+	memset(usr_ready, 0, sizeof(usr_ready));
+
+	/* Revoke certificates */
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL0, 0xFFFFFFFF);
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL1, 0xFFFFFFFF);
+	REG16(GBASE(KEYMGR) + GOFFSET(KEYMGR, CERT_REVOKE_CTRL2)) = 0xFFFF;
+
+	/* Wipe AES Hidden key information */
+	GWRITE(KEYMGR, AES_WIPE_SECRETS, 1);
+
+	for (appid = 0; appid <= PINWEAVER; ++appid) {
+		/* Disable hidden key usage, each appid gets its own
+		 * USR, with USR0 starting at 0x2a0.
+		 */
+		GWRITE(KEYMGR, AES_USE_HIDDEN_KEY, 0x2a0 + (appid * 2));
+		GWRITE(KEYMGR, SHA_USE_HIDDEN_KEY, 0x2a0 + (appid * 2));
+	}
+
+	/* Check for errors (e.g. USR not correctly setup. */
+	if (GREG32(KEYMGR, HKEY_ERR_FLAGS)) {
+		LOG_ERROR();
+		return 0;
+	}
+
+	return 1;
+}
+
+#ifdef CR50_DEV
+static void _dump_registers(void) {
+	ccprintf(" -----------------------------------------\n");
+	ccprintf("KEYMGR_CERT_REVOKE_CTRL: %.10h\n",
+		GREG32_ADDR(KEYMGR, CERT_REVOKE_CTRL0));
+	ccprintf("  KEYMGR_HKEY_ERR_FLAGS  %08X\n",
+		GREG32(KEYMGR, HKEY_ERR_FLAGS));
+	ccprintf(" -----------------------------------------\n");
+	cflush();
+}
+
+/**
+ * Test function: Do the cipher before and after DCRYPTO_ladder_revoke.
+                  Compare the result
+ */
+static int test_keyladder_revocation(int argc, char *argv[])
+{
+	uint32_t appid = 0;
+	uint8_t sha1_digest[SHA_DIGEST_SIZE];
+	uint32_t in[SHA256_DIGEST_WORDS] = {0};
+	uint32_t out1[SHA256_DIGEST_WORDS] = {0};
+	uint32_t out2[SHA256_DIGEST_WORDS] = {0};
+	uint32_t out3[SHA256_DIGEST_WORDS] = {0};
+	int retval = EC_SUCCESS;
+	uint32_t *buf_debug = NULL;
+	int do_revoke = 1;
+
+	if (argc > 1)
+		appid = atoi(argv[1]);
+
+	if (argc > 2)
+		do_revoke = memcmp(argv[2], "0", 1);
+
+	rand_bytes(in, sizeof(in));
+	rand_bytes(out1, sizeof(out1) / 2);	// fill with garbage
+	rand_bytes(out2, sizeof(out2) / 2);	// fill with garbage
+	rand_bytes(out3, sizeof(out3) / 2);	// fill with garbage
+
+	/*
+	 * Use the built in dcrypto engine to generate the sha1 hash of the
+	 * buffer.
+	 */
+	DCRYPTO_SHA1_hash(in, sizeof(in), sha1_digest);
+
+	_dump_registers();
+
+	ccprintf("                  appid  %d\n", appid);
+	ccprintf("            revoke test  %s\n", do_revoke ? "TRUE" : "FALSE");
+	ccprintf("            sha1_digest  %.20h\n", sha1_digest);
+	ccprintf("                     in  %.32h\n", in);
+
+	do {
+		/*  */
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, out1, in, sizeof(out1))) {
+			LOG_ERROR();
+			buf_debug = out1;
+			retval = EC_ERROR_UNKNOWN;
+
+			break;
+		}
+		ccprintf("     cipher(in)  ->out1  %.32h\n", out1);
+
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, out2, out1, sizeof(out2))) {
+			LOG_ERROR();
+			buf_debug = out2;
+			retval = EC_ERROR_UNKNOWN;
+			break;
+		}
+		ccprintf("     cipher(out1)->out2  %.32h\n", out2);
+
+		if (!DCRYPTO_equals(in, out2, sizeof(out1))) {
+			LOG_ERROR();
+			retval = EC_ERROR_UNKNOWN;
+			break;
+		}
+
+		/*   */
+		if (do_revoke) {
+			ccprintf("  <---- ladder revocation --->\n");
+			if (!DCRYPTO_ladder_revoke()) {
+				LOG_ERROR();
+				retval = EC_ERROR_UNKNOWN;
+				break;
+			}
+		}
+
+		/*   */
+		if (!DCRYPTO_app_cipher(appid, sha1_digest, out3, out1, sizeof(out3))) {
+			LOG_ERROR();
+			buf_debug = out3;
+			retval = EC_ERROR_UNKNOWN;
+			break;
+
+		}
+		ccprintf("     cipher(out1)->out3  %.32h\n", out3);
+
+		/*   */
+		if (do_revoke && DCRYPTO_equals(out2, out3, sizeof(out3))) {
+			LOG_ERROR();
+			buf_debug = out3;
+			retval = EC_ERROR_UNKNOWN;
+			break;
+		}
+	} while(0);
+
+	_dump_registers();
+	if (retval) {
+		ccprintf("          last output    %.32h\n", buf_debug);
+		GREG32(KEYMGR, HKEY_ERR_FLAGS) = 0xFFFFFFFF;
+	}
+
+	return retval;
+}
+DECLARE_CONSOLE_COMMAND(testc, test_keyladder_revocation,
+			NULL,
+			"Test Keyladder Revocation");
+#endif
+
