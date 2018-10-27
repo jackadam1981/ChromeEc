@@ -46,6 +46,30 @@
       "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c79d988_a406aefa",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-27T00:05:13Z",
+      "side": 1,
+      "message": "frankly, I think you should:  this value could be set to anything, i.e. it is not guaranteed to match RLZ value reported by mosys.\n\nOf course it will most of the time, but still. One other thing which just came to mind: what if board ID is not set, this field would be 0xffffffff - what would be printed then. \n\nMaybe it it should be printing ? unless the byte is a upper case letter?",
+      "parentUuid": "9925d86b_8b71cdb8",
+      "range": {
+        "startLine": 1816,
+        "startChar": 5,
+        "endLine": 1816,
+        "endChar": 12
+      },
+      "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
