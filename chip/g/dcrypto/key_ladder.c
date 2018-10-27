@@ -287,3 +287,10 @@ int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
 	dcrypto_release_sha_hw();
 	return !error;
 }
+
+void DCRYPTO_ladder_revoke(void)
+{
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL0, 0xFFFFFFFF);
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL1, 0xFFFFFFFF);
+	REG16(GBASE(KEYMGR) + GOFFSET(KEYMGR, CERT_REVOKE_CTRL2)) = 0xFFFF;
+}

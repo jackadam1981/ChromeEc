@@ -85,3 +85,72 @@ int DCRYPTO_appkey_derive(enum dcrypto_appid appid, const uint32_t input[8],
 	name_hash(appid, digest);
 	return !!dcrypto_ladder_derive(appid, digest, input, output);
 }
+
+#ifdef CR50_DEV
+static int test_keyladder_revocation(int argc, char *argv[])
+{
+	uint32_t app_id = 0;
+	uint32_t digest[SHA256_DIGEST_WORDS];
+	uint32_t in[SHA256_DIGEST_WORDS] = {0,};
+	uint32_t out1[SHA256_DIGEST_WORDS] = {0,};
+	uint32_t out2[SHA256_DIGEST_WORDS] = {0,};
+	uint32_t out3[SHA256_DIGEST_WORDS] = {0,};
+
+	if (argc > 1)
+		app_id = atoi(argv[1]);
+
+	name_hash(app_id, digest);
+
+	ccprintf("KEYMGR_CERT_REVOKE_CTRL: %.10h\n",
+			GREG32_ADDR(KEYMGR, CERT_REVOKE_CTRL0));
+	ccprintf("\n");
+	ccprintf("digest              %.32h\n", digest);
+	ccprintf("in                  %.32h\n", in);
+
+	/**/
+	if (!DCRYPTO_app_cipher(app_id, digest, out1, in, sizeof(out1))) {
+		ccprintf("%s app_cipher %d\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("cipher(in)  ->out1  %.32h\n", out1);
+
+	if (!DCRYPTO_app_cipher(app_id, digest, out2, out1, sizeof(out2))) {
+		ccprintf("%s app_cipher %d\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("cipher(out1)->out2  %.32h\n", out2);
+
+	if (!DCRYPTO_equals(in, out2, sizeof(out1))) {
+		ccprintf("two results are different. %s %d\n",
+			__func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	ccprintf("\n");
+
+	DCRYPTO_ladder_revoke();
+
+	ccprintf("KEYMGR_CERT_REVOKE_CTRL: %.10h\n",
+			GREG32_ADDR(KEYMGR, CERT_REVOKE_CTRL0));
+
+	if (!DCRYPTO_app_cipher(app_id, digest, out3, out1, sizeof(out3))) {
+		ccprintf("%s app_cipher %d\n", __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+	ccprintf("cipher(out1)->out3  %.32h\n", out3);
+
+	if (DCRYPTO_equals(out2, out3, sizeof(out3))) {
+		ccprintf("out2 and out3 are same, not expected. %s %d\n",
+			 __func__, __LINE__);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	ccprintf("\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(testc, test_keyladder_revocation,
+			NULL,
+			"Test Keyladder Revocation");
+#endif
+
