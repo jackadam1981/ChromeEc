@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edbfd1d7_a44153f8",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-27T03:07:15Z",
+      "side": 1,
+      "message": "I thought you were supposed to clear bits, not set them?\n\nalso, out of curiosity, what do you read after you write these?",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 7
+      },
+      "revId": "587f716e602b494529463fdc78d00047537bc365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
