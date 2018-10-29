@@ -51,6 +51,24 @@
       "revId": "dce1ba05ebae499da340fd371e67cbe8d1564311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd11b65_8e69f615",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-10-29T08:11:18Z",
+      "side": 1,
+      "message": "Please check issue tracker b/118363768.\n\nLinux kernel and chromeOS can handle different resolution (that is, if you draw a 45 degree line on touchpad, the cursor will also move in roughly 45 degree).  However, \"webplot\" program could not handle different resolution properly.  \"webplot\" is used in touchpad quality test.  Therefore, this issue can be solved by updating webplot.  But it might be easier and more reliable to solve by EC or ST FW (it\u0027s hard to make sure if all programs handle different resolutions properly).",
+      "parentUuid": "dd2d4c78_d35dc687",
+      "revId": "dce1ba05ebae499da340fd371e67cbe8d1564311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
