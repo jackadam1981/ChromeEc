@@ -85,6 +85,7 @@ struct batt_params {
 	int desired_current;  /* Charging current desired by battery (mA) */
 	int remaining_capacity;  /* Remaining capacity in mAh */
 	int full_capacity;    /* Capacity in mAh (might change occasionally) */
+	int display_charge;
 	int status;	      /* Battery status */
 	enum battery_present is_present; /* Is the battery physically present */
 	int flags;            /* Flags */
@@ -402,5 +403,12 @@ void battery_memmap_set_index(enum battery_index index);
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_BATTERY
 extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
 #endif
+
+/*
+ * Convert actual battery percentage to display percentage. The result can
+ * exceed 100 because battery_full_soc is usually smaller than 100.
+ * It can be negative iif there is an error.
+ */
+void get_display_charge(struct batt_params *batt);
 
 #endif /* __CROS_EC_BATTERY_H */
