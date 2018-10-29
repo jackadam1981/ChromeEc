@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3785f6f6_f6328348",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-29T22:40:29Z",
+      "side": 1,
+      "message": "we do in line 55 below to cover the case when this is called when access is not enabled. Printing here 16 times in case when this function was called to init clock without jitter does not seem very useful.",
+      "parentUuid": "0798b71c_71aa1ed8",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "868884b18e08b2e9f6f6ec78d50181a74a498bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6ac3a0e_ac37b9b3",
         "filename": "chip/g/jitter.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-29T22:15:07Z",
       "side": 1,
       "message": "What does trim48 mean/do?",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "868884b18e08b2e9f6f6ec78d50181a74a498bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde835e3_4923baec",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-29T22:40:29Z",
+      "side": 1,
+      "message": "I\u0027ll add a commment.",
+      "parentUuid": "d6ac3a0e_ac37b9b3",
       "range": {
         "startLine": 42,
         "startChar": 40,
