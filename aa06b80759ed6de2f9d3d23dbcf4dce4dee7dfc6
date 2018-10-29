@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2cc0d352_58cbfd51",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "915815cf_143aecc9",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 19
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a67938d7_8d931701",
         "filename": "board/it83xx_evb/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c8a0b6c7_403ed216",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a67938d7_8d931701",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28dea54d_aa7ece93",
         "filename": "board/it83xx_evb/board.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-25T18:55:19Z",
       "side": 1,
       "message": "Prefer to add \u0027isupper\u0027 to common/util.c.  You can rely on LTO and ffunction-sections to elide the code on targets that don\u0027t use it.",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 11
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8340c9d7_239344ae",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "I will split this CL into three parts after review.",
+      "parentUuid": "28dea54d_aa7ece93",
       "range": {
         "startLine": 187,
         "startChar": 4,
@@ -91,6 +163,30 @@
       "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29781a1c_c3b0c376",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cccf96_f2f200ae",
+      "range": {
+        "startLine": 189,
+        "startChar": 37,
+        "endLine": 189,
+        "endChar": 63
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "b6a42f3d_281001b1",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d298167_89b0f420",
+      "range": {
+        "startLine": 192,
+        "startChar": 11,
+        "endLine": 192,
+        "endChar": 18
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad78b0c1_10827935",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7036c125_8696069e",
+      "range": {
+        "startLine": 192,
+        "startChar": 52,
+        "endLine": 192,
+        "endChar": 60
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "167e12dc_8d226e23",
         "filename": "board/it83xx_evb/board.c",
         "patchSetId": 1
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "153524f4_31ab889d",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "167e12dc_8d226e23",
+      "range": {
+        "startLine": 254,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 24
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e966ba7_5448f434",
         "filename": "board/it83xx_evb/board.c",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "311a82e8_d8548304",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e966ba7_5448f434",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 7
+      },
+      "revId": "aa06b80759ed6de2f9d3d23dbcf4dce4dee7dfc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
