@@ -94,6 +94,30 @@
       "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3eeae814_45eed260",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-10-29T23:50:38Z",
+      "side": 1,
+      "message": "It\u0027s specified to be RLZ elsewhere in Chrome OS, and the system will not function otherwise. It is guaranteed to match RLZ reported by mosys on properly provisioned systems.\n\nNote that nonascii values should not cause failure.",
+      "parentUuid": "6c79d988_a406aefa",
+      "range": {
+        "startLine": 1816,
+        "startChar": 5,
+        "endLine": 1816,
+        "endChar": 12
+      },
+      "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
