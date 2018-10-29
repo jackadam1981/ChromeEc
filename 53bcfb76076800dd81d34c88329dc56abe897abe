@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "890f620c_e6c0747e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T22:16:42Z",
+      "side": 1,
+      "message": "Consider putting the combo of usb_findit + the globals and constants used as args into a common function, for use here and in main().  It should get inlined and not cause any compiled code difference.  It would serve to ensure the usb_findit() args don\u0027t accidentally drift.\n\n(I don\u0027t feel strongly about this, you can skip this if you really don\u0027t like it.)",
+      "revId": "53bcfb76076800dd81d34c88329dc56abe897abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
