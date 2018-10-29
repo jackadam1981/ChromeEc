@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb32f773_8bbcad16",
+        "filename": "core/nds32/__divdi3.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:38:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3128b6f_cec38082",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 29
+      },
+      "revId": "9651a66f3976b46ec3f2b0bff3848d60982fc551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69ab7c7f_052c4af7",
         "filename": "core/nds32/__divdi3.S",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-25T19:06:48Z",
       "side": 1,
       "message": "Its not clear to me why you need the .align directives.  All of the preceeding instructions must be 2-byte aligned anyway, and there isn\u0027t a 1-byte NOP instruction for the assembler to insert if it needed to do so.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 7
+      },
+      "revId": "9651a66f3976b46ec3f2b0bff3848d60982fc551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0772751e_69885531",
+        "filename": "core/nds32/__divdi3.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-29T10:38:17Z",
+      "side": 1,
+      "message": "NDS32 CPU supports 16-bit/32-bit mixed-length instruction set.\nWe will get an extra penalty (latency) under this condition:\nUnaligned 32-bit instruction fetch after pipeline flushes (redirect or resume events).\n\nSo we won’t get the extra latency if this label is word-aligned here.",
+      "parentUuid": "69ab7c7f_052c4af7",
       "range": {
         "startLine": 189,
         "startChar": 2,
