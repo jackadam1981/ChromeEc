@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0053d5b_1ae0ccb6",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-29T17:09:03Z",
+      "side": 1,
+      "message": "tablet_mode returns 0 or 1. You make assumption is EC_ACPI_MEM_TBMD_MASK is 0x1 as well.\nWhat about tablet_get_mode() \u003c\u003c EC_ACPI_MEM_TBMD_SHIFT instead.",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "882c0827_2f3c0211",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-29T17:09:03Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685f20cf_4be46ba8",
+        "filename": "include/acpi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-29T17:09:03Z",
+      "side": 1,
+      "message": "Given  wifi driver could use DPFT, to meet FCC requirement, it would be preferable to be by default in the lowest power state.",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
