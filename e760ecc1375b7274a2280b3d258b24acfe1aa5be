@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7cd8ce31_4dcb96e9",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-29T19:16:23Z",
+      "side": 1,
+      "message": "I had added the \"\u0026 EC_ACPI_MEM_TBMD_MASK\" just to make it consistent with the DDPN mask (also most likely the compiler would get rid of it?). But I can remove it if it seems better.",
+      "parentUuid": "a0053d5b_1ae0ccb6",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "882c0827_2f3c0211",
         "filename": "common/acpi.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39b5e75_59127985",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-29T19:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "882c0827_2f3c0211",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +101,24 @@
       "side": 1,
       "message": "Beside, in case of detachable, you can not assume the base is connected from the get go.",
       "parentUuid": "685f20cf_4be46ba8",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a081df_ddf8bcad",
+        "filename": "include/acpi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-29T19:16:23Z",
+      "side": 1,
+      "message": "The reason why I chose the DPTF_PROFILE_DEFAULT\u003d1 is for two reasons:\n1. Not all devices support multi-DPTF profiles. In that case defaulting to value of 1 is safer since the host will always stick to using the one given profile.\n\n2. Even if we start with value of 1 on devices supporting multiple profiles, base detection logic / lid angle detection logic (motion sense task) should trigger detection and identify the right device state as soon as the relevant task has started. This should trigger an update to the DPTF profile (which will most likely happen even before the DPTF daemon on host is up and running).\n\nDo you think it is still better to start with profile # 2 for lower values?",
+      "parentUuid": "5119b947_5d662895",
       "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
