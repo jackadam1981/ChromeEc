@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4f3400e8_b5df193b",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8df57677_0576afc2",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a87b5ee_b88a4eba",
         "filename": "util/iteflash.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0099d1_4998ec71",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a87b5ee_b88a4eba",
+      "range": {
+        "startLine": 761,
+        "startChar": 27,
+        "endLine": 761,
+        "endChar": 52
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "22d970f4_320236ec",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "496cbdb4_fbc5edc1",
+      "range": {
+        "startLine": 1500,
+        "startChar": 1,
+        "endLine": 1501,
+        "endChar": 14
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b7353d9_9ff37836",
         "filename": "util/iteflash.c",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0887ed5_36d2ebd9",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "Did I accidentally delete that?  If so point me at which lines it\u0027s on in the base revision (checked in revision), I\u0027ll fix this CL to maintain it.\n\nIf that\u0027s not already in iteflash, I don\u0027t want to add it in this refactoring CL.  This CL shouldn\u0027t make any functional changes besides new --send-waveform option.  I did make an exception for checking the usb_findit() return value, but that\u0027s just to fail early, so it seems at very low risk of being wrong.  Adding CCD USB connection closing would be a bigger functional change.",
+      "parentUuid": "6b7353d9_9ff37836",
+      "range": {
+        "startLine": 1539,
+        "startChar": 34,
+        "endLine": 1539,
+        "endChar": 51
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "919490bf_50a3dbdb",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ee4410e1_6255323b",
+      "range": {
+        "startLine": 1572,
+        "startChar": 8,
+        "endLine": 1572,
+        "endChar": 22
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae5e0b63_8de6015d",
         "filename": "util/iteflash.c",
         "patchSetId": 8
@@ -137,6 +257,30 @@
       "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a40e39b_884310ec",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "AFAIK the null terminator is the only indication getopt gives of the end of optarg.  I could first use strlen(), but that would be no different than just using strcmp().\n\nOr are you suggesting that there be a sanity limit, which if exceeded would cause this routine to fail loudly?",
+      "parentUuid": "ae5e0b63_8de6015d",
+      "range": {
+        "startLine": 1645,
+        "startChar": 32,
+        "endLine": 1645,
+        "endChar": 38
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d33feaef_2cd671a9",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4d951f_6c284ec2",
+      "range": {
+        "startLine": 1685,
+        "startChar": 1,
+        "endLine": 1688,
+        "endChar": 4
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0847a35d_96c89450",
         "filename": "util/iteflash.c",
         "patchSetId": 8
@@ -183,6 +351,30 @@
       "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14c204cd_563ffd77",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-29T21:37:40Z",
+      "side": 1,
+      "message": "In modern C yes.\n\nI could _swear_ that was giving me compilation errors before, due to this codebase being compiled under some very old C standard predating that.  However I just tried it now and it compiles, so...done, and yay?\n\nI did do a repo sync this morning.  Maybe someone just updated the compiler options used here?  Seems like quite a coincidence though.  Maybe I was making some syntactical typo or such before.",
+      "parentUuid": "0847a35d_96c89450",
+      "range": {
+        "startLine": 1699,
+        "startChar": 1,
+        "endLine": 1699,
+        "endChar": 47
+      },
+      "revId": "029bff219ebc655cf9d64f01cd51d592b74b7bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
