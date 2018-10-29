@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d7fb753_81d22ef9",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-10-29T05:56:14Z",
+      "side": 1,
+      "message": "I added this because the command will call some functions like gpio_enable_wake_up_input() or gpio_is_i2c_pin() which are only compiled when CONFIG_LOW_POWER_IDLE is defined.",
+      "parentUuid": "95aaddf5_4a27f425",
+      "range": {
+        "startLine": 711,
+        "startChar": 15,
+        "endLine": 711,
+        "endChar": 48
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfe9db61_d42d3db4",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cf8b47_6d1756ad",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-10-29T05:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe9db61_d42d3db4",
+      "range": {
+        "startLine": 712,
+        "startChar": 3,
+        "endLine": 712,
+        "endChar": 31
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e90766a8_89effc91",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-10-29T05:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e31bd978_620c7636",
+      "range": {
+        "startLine": 798,
+        "startChar": 24,
+        "endLine": 798,
+        "endChar": 34
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e929ebd1_3f34ded1",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-10-29T05:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75d3fcf7_e68efeaa",
+      "range": {
+        "startLine": 798,
+        "startChar": 56,
+        "endLine": 798,
+        "endChar": 62
+      },
+      "revId": "431b08ef1714a7da31be83c4012b5799d3f4df42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
