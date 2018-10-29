@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e17b8a0_f8a180f3",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-29T20:49:59Z",
+      "side": 1,
+      "message": "Likewise, add this to builtin/stdint.h",
+      "range": {
+        "startLine": 182,
+        "startChar": 8,
+        "endLine": 182,
+        "endChar": 17
+      },
+      "revId": "113c96d94b5609ce8861aaaa2ad3a56bba6e364d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada8f35b_9c472a14",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-29T20:49:59Z",
+      "side": 1,
+      "message": "Parens are not needed on return statements.",
+      "range": {
+        "startLine": 186,
+        "startChar": 31,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "113c96d94b5609ce8861aaaa2ad3a56bba6e364d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e85b6a1_1126e612",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-29T20:49:59Z",
+      "side": 1,
+      "message": "nit: If one branch of an if/else has curly braces, then all of the branches should have them.",
+      "range": {
+        "startLine": 208,
+        "startChar": 3,
+        "endLine": 208,
+        "endChar": 7
+      },
+      "revId": "113c96d94b5609ce8861aaaa2ad3a56bba6e364d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c7f2dea_9814aaa4",
+        "filename": "board/it83xx_evb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-29T20:49:59Z",
+      "side": 1,
+      "message": "nit: additional blank line before this statement.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 13
+      },
+      "revId": "113c96d94b5609ce8861aaaa2ad3a56bba6e364d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
