@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b33c413_e815d2be",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-29T22:31:47Z",
+      "side": 1,
+      "message": "Can we also add a ITE_SYNC_SUCCESSFUL bit and set that after generate_ite_sync? If something goes wrong and there\u0027s some sort of H1 reset it would be good to know ITE_SYNC wasn\u0027t successful?\nOr can we add something to check if the ite sync sequence was sent during init?",
+      "range": {
+        "startLine": 637,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 53
+      },
+      "revId": "96f982865fde449b3a5458f97e137c16a96b32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367e9f89_73998e2f",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-29T22:31:47Z",
+      "side": 1,
+      "message": "Where did 508 and 506 come from?",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 41
+      },
+      "revId": "96f982865fde449b3a5458f97e137c16a96b32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
