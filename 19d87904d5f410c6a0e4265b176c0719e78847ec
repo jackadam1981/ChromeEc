@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c6f1f4a_de25ce95",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-29T18:57:11Z",
+      "side": 1,
+      "message": "Note this code should not be used when the device has a hall sensor.\n\nCONFIG_LID_ANGLE_TABLET_MODE is defined only when there is no hall sensor, but I am guessing in the future that may change since EC will trigger tablet mode switch even when there is a hall sensor.",
+      "revId": "19d87904d5f410c6a0e4265b176c0719e78847ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67c6991_40a5ec04",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-29T18:57:11Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "19d87904d5f410c6a0e4265b176c0719e78847ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2ab4bb_a6bfbbaa",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-10-29T18:57:11Z",
+      "side": 1,
+      "message": "#endif   /* CONFIG_LID_ANGLE_TABLET_MODE */",
+      "revId": "19d87904d5f410c6a0e4265b176c0719e78847ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
