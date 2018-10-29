@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efcdc0bf_32b7dc59",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-29T22:23:29Z",
+      "side": 1,
+      "message": "Can you add a comment about what this is?",
+      "range": {
+        "startLine": 34,
+        "startChar": 6,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "17584ab4f911acc2e4343f4263eb39026b0814e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99889934_78b85ccc",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-29T22:23:29Z",
+      "side": 1,
+      "message": "Can you add a comment for which pins you\u0027re connecting to what gpios?\nAlso comment that this is disconnecting the pins from the i2cm to gpios.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 29
+      },
+      "revId": "17584ab4f911acc2e4343f4263eb39026b0814e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0c969bc_d1a9d1aa",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-29T22:23:29Z",
+      "side": 1,
+      "message": "These are just configured as GPIO_INPUT in gpio.inc. Are the pullups needed for ite programming?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 48
+      },
+      "revId": "17584ab4f911acc2e4343f4263eb39026b0814e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
