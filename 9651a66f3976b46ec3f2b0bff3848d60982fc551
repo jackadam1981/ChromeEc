@@ -93,6 +93,30 @@
       "revId": "9651a66f3976b46ec3f2b0bff3848d60982fc551",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014e3c25_90083020",
+        "filename": "core/nds32/__divdi3.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-10-29T21:12:37Z",
+      "side": 1,
+      "message": "Looks like the .align directive has platform-dependent behavior.  On some platforms (including x86), it is a number of bytes, and on others (including ARM) it is a power of two.\n\nPlease double-check GNU GAS to see if it is treating .align as a power-of-two (like .p2align) or as a number of bytes (like .balign) on the NDS32 platform.\n\nSee also https://sourceware.org/binutils/docs/as/Align.html#Align",
+      "parentUuid": "0772751e_69885531",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 7
+      },
+      "revId": "9651a66f3976b46ec3f2b0bff3848d60982fc551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
