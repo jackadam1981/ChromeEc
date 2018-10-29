@@ -556,3 +556,72 @@ static void battery_init(void)
 DECLARE_HOOK(HOOK_INIT, battery_init, HOOK_PRIO_DEFAULT);
 #endif /* HAS_TASK_HOSTCMD */
 #endif /* CONFIG_BATTERY_V2 */
+
+#ifdef CONFIG_GET_DISPLAY_CHARGE
+/*
+ * We have a battery policy that we consider everything above (currently) 94%
+ * of full_capacity as 'full'. It is for the following purposes and advantages:
+ *
+ * 1. Avoid Rohm charger's high pitch noise at high charge.
+ * 2. Avoid showing discharge state while AC is plugged (because gas gauge
+ *    cycles charge-discharge to extend battery life)
+ * 3. Detect full state of battery packs which don't update full_capacity (as
+ *    battery ages).
+ *
+ * We want a single place where this policy is enforced and it is ACPI
+ * (battery.asl). ACPI converts every capacity reading above full_capacity to
+ * full_capacity. Thus, the kernel, powerd, and all other user space programs
+ * get 'full' state consistently. Of course, they don't know how full the
+ * battery is. It could be anywhere between 94% and 100%.
+ *
+ * The only parameter needed to enforce this policy is BATTERY_ACPI_FULL_SHIFT,
+ * which is used to calculate the full threshold.
+ *
+ * The following parameters are used only to get the display percentage.
+ * Display percentages are used, for example, to blink a LED at low charge.
+ *
+ * battery_shutdown_soc:
+ * The soc at which powerd shuts down the system. Powerd reads it from
+ * low_battery_shutdown_percent.
+ *
+ * battery_full_soc
+ * The charge above which powerd considers the battery is full. Powerd reads it
+ * from power_supply_full_factor.
+ *
+ * TODO: Get battery_shutdown_soc from powerd
+ * TODO: Get battery_full_soc from powerd and apply it to running ACPI
+ */
+
+#define BATTERY_ACPI_FULL_SHIFT	4
+static const int battery_shutdown_soc = 4;
+static const int battery_full_soc = 94;
+
+void get_display_charge(struct batt_params *batt)
+{
+	int rem, cap, numer, denom;
+
+	rem = batt->remaining_capacity;
+	cap = batt->full_capacity;
+
+	if (rem <= 0 || cap <= 0)
+		return;
+
+	/* ACPI converts remaining capacity to full capacity if it's within
+	 * 1/16 (~6%) of the full capacity. */
+	if (rem > (cap - (cap >> BATTERY_ACPI_FULL_SHIFT))) {
+		batt->display_charge = 100;
+		return;
+	}
+
+	/*
+	 * Powerd uses the following equation to calculate display percentage:
+	 *   soc = rem/cap * 100;
+	 *   100 * (soc - battery_shutdown_soc) /
+	 *         (battery_full_soc - battery_shutdown_soc);
+	 */
+	numer = (100 * rem - cap * battery_shutdown_soc) * 100;
+	denom = cap * (battery_full_soc - battery_shutdown_soc);
+	/* Rounding (instead of truncating) */
+	batt->display_charge = (numer + denom / 2) / denom;
+}
+#endif
