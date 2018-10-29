@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4dc9693c_5f545d7f",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-29T17:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13c0efc7_b350f1bd",
+      "range": {
+        "startLine": 208,
+        "startChar": 34,
+        "endLine": 208,
+        "endChar": 40
+      },
+      "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2699074_1b026f67",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 15
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b05305a8_90b39d29",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-29T17:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2699074_1b026f67",
+      "range": {
+        "startLine": 1206,
+        "startChar": 4,
+        "endLine": 1206,
+        "endChar": 8
+      },
+      "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6b0907f_8d017908",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 15
@@ -59,6 +107,30 @@
       "writtenOn": "2018-10-24T18:32:49Z",
       "side": 1,
       "message": "bubbling up an unaddressed comment (you really should go back through those to make sure everything\u0027s resolved): what happens if msid !\u003d port.msd_id+1? shouldn\u0027t it be an error if we\u0027ve gone backwards or skipped message ids?",
+      "range": {
+        "startLine": 1948,
+        "startChar": 3,
+        "endLine": 1951,
+        "endChar": 37
+      },
+      "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19fd5459_f0955ff7",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-29T17:40:07Z",
+      "side": 1,
+      "message": "The spec only seems to care if the values are different or the same:\n\n1. For subsequent Messages, if MessageID value in a received Message is the same as the stored value, the receiver Shall return a GoodCRC Message with that MessageID value and drop the Message\n\n2. If MessageID value in the received Message is different than the stored value, the receiver Shall return a GoodCRC Message with the new MessageID value, store a copy of the new MessageID value and process the Message.",
+      "parentUuid": "b6b0907f_8d017908",
       "range": {
         "startLine": 1948,
         "startChar": 3,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d008b185_46180b99",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-29T17:40:07Z",
+      "side": 1,
+      "message": "I agree. I\u0027ll add test cases to make sure these invalid/reserved bits are being handled properly.",
+      "parentUuid": "a9816d6c_83740ca8",
+      "range": {
+        "startLine": 944,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 2
+      },
+      "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fea819f9_b8c8944d",
         "filename": "include/usb_tc_vpd_ct_sm.h",
         "patchSetId": 15
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fff4f1a5_e9481272",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-29T17:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fea819f9_b8c8944d",
+      "range": {
+        "startLine": 38,
+        "startChar": 54,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a43aea2_9d46dd5a",
         "filename": "include/usb_tc_vpd_ct_sm.h",
         "patchSetId": 15
@@ -137,6 +257,30 @@
       "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6905c17_8c1e1e43",
+        "filename": "include/usb_tc_vpd_ct_sm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-29T17:40:07Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "2a43aea2_9d46dd5a",
+      "range": {
+        "startLine": 1310,
+        "startChar": 36,
+        "endLine": 1310,
+        "endChar": 38
+      },
+      "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
