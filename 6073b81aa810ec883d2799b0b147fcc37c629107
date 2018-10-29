@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0caf3747_192ddc25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-29T23:31:08Z",
+      "side": 1,
+      "message": "This should have a CQ-DEPEND on the coreboot CL that sets up the GPIO for MKBP interrupt.",
+      "revId": "6073b81aa810ec883d2799b0b147fcc37c629107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
