@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "1de70c99_38ecbc88",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1144419
+      },
+      "writtenOn": "2018-10-29T08:53:52Z",
+      "side": 1,
+      "message": "I\u0027ve set to use min of lengths. When we have a leaf from the future, it\u0027s possible that pub_len from head is bigger than the sizeof public_data. So, it\u0027s good to copy the minimum in that case, because the new fields should come at the end of public_data structure.",
+      "parentUuid": "f2e84895_73e7dc1a",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 41
+      },
+      "revId": "081476bb7561a64e15095c68d93f5637d15355b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ddd520c_7dd4018c",
         "filename": "common/pinweaver.c",
         "patchSetId": 37
