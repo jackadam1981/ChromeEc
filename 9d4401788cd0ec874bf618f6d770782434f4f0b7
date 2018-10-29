@@ -70,6 +70,30 @@
       "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98447184_6e6243d0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-10-29T23:46:53Z",
+      "side": 1,
+      "message": "All of the unsupported boards will do the same thing.  \nThere won\u0027t be a matching verify_ro.db file.\n\nLooking at: https://docs.google.com/document/d/1zYkJ-P9kgGtCASUce4GyZhOOGLds3aeNyGxByt6NLkM/edit\n\nIt appears that valid RLZ codes are all uppercase.\n\nModified the code to use isupper() instead.  Thanks for the catch.\n\nTested:\nPositive - valid Nocturne\nPositive - valid Eve\nNegative - invalid Nocturne\nNegative - invalid Eve\nNegative - unknown (Sona)\nNegative - 0xffffffff (Eng Device)",
+      "parentUuid": "6c79d988_a406aefa",
+      "range": {
+        "startLine": 1816,
+        "startChar": 5,
+        "endLine": 1816,
+        "endChar": 12
+      },
+      "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
