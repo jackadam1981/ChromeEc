@@ -78,7 +78,7 @@ static int charge_request(int voltage, int current);
 static const struct battery_info *batt_info;
 static struct charge_state_data curr;
 static enum charge_state_v2 prev_state;
-static int prev_ac, prev_charge, prev_full;
+static int prev_ac, prev_charge, prev_full, prev_disp_charge;
 static enum battery_present prev_bp;
 static int is_full; /* battery not accepting current */
 static enum ec_charge_control_mode chg_ctl_mode;
@@ -1813,9 +1813,11 @@ wait_for_it:
 		    (charge_base != prev_charge_base) ||
 #endif
 		    (is_full != prev_full) ||
-		    (curr.state != prev_state)) {
+		    (curr.state != prev_state) ||
+		    (curr.batt.display_pct != prev_disp_charge)) {
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
+			prev_disp_charge = curr.batt.display_pct;
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 			prev_charge_base = charge_base;
 #endif
@@ -2116,6 +2118,11 @@ int charge_get_percent(void)
 	 * anything.
 	 */
 	return is_full ? 100 : curr.batt.state_of_charge;
+}
+
+int charge_get_display_charge(void)
+{
+	return curr.batt.display_pct;
 }
 
 int charge_get_battery_temp(int idx, int *temp_ptr)
