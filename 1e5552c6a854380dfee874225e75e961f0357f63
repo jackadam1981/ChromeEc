@@ -22,6 +22,30 @@
       "revId": "1e5552c6a854380dfee874225e75e961f0357f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cefd81fc_d624745b",
+        "filename": "chip/g/ite_sync.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-29T19:27:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6454e6e_66b138ff",
+      "range": {
+        "startLine": 18,
+        "startChar": 22,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "1e5552c6a854380dfee874225e75e961f0357f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
