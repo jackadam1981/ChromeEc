@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b1d3cc9e_fcec0027",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-29T18:24:26Z",
+      "side": 1,
+      "message": "weird, okay",
+      "parentUuid": "19fd5459_f0955ff7",
+      "range": {
+        "startLine": 1948,
+        "startChar": 3,
+        "endLine": 1951,
+        "endChar": 37
+      },
+      "revId": "dc823428b93762ade47bbbdc01c8bcf7bd5117cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9816d6c_83740ca8",
         "filename": "include/usb_pd.h",
         "patchSetId": 15

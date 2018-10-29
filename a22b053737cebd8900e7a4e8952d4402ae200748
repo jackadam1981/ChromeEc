@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "d4bf8bc9_94bb4911",
+        "filename": "board/chocodile_vpdmcu/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-29T18:24:26Z",
+      "side": 1,
+      "message": "Probably aaboagye@\nWe did it before on zinger, hoho, and dingdong.",
+      "parentUuid": "1323eef6_5e761c41",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 70
+      },
+      "revId": "a22b053737cebd8900e7a4e8952d4402ae200748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7dab9c8_4980ce7f",
         "filename": "board/chocodile_vpdmcu/gpio.inc",
         "patchSetId": 4

@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4b8d2da_4304ba57",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-29T18:24:26Z",
+      "side": 1,
+      "message": "should this be removed, since EXTI_COMP_MASK includes it?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "bdc57c1bf6a1eee504cd3756e71252d1cefd2e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a168ea_a4fd40c9",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-29T18:24:26Z",
+      "side": 1,
+      "message": "do we want to make this a #define for the board?",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 4
+      },
+      "revId": "bdc57c1bf6a1eee504cd3756e71252d1cefd2e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a514c1_97b09844",
+        "filename": "include/usb_tc_vpd_sm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-29T18:24:26Z",
+      "side": 1,
+      "message": "is it guaranteed that CC_RP3A0_RD_L is driven low before DB_EN_OD goes low?",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "bdc57c1bf6a1eee504cd3756e71252d1cefd2e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

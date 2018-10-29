@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b17c3aed_4f8cd115",
+        "filename": "common/usb_tc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-10-29T18:24:26Z",
+      "side": 1,
+      "message": "I think this has been resolved",
+      "parentUuid": "14db7f0f_aabf0f6c",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 16
+      },
+      "revId": "c628a391832b68e69047e1e87c511e2853aa49e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab462315_af6870f6",
         "filename": "include/usb_sm.h",
         "patchSetId": 8
