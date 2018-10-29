@@ -22,6 +22,30 @@
       "revId": "f88ad31f3f3053fea606b5e53b6faa5de21fa5c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b02d75f_6f8a8182",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-29T23:09:23Z",
+      "side": 1,
+      "message": "It was chosen based on the values observed on KBL which is ~2msec. So, the deferred timeout value is kept as double of that i.e. 5msec. I have updated the comment to reflect that.",
+      "parentUuid": "7448f724_1f15f80a",
+      "range": {
+        "startLine": 273,
+        "startChar": 5,
+        "endLine": 273,
+        "endChar": 15
+      },
+      "revId": "f88ad31f3f3053fea606b5e53b6faa5de21fa5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
