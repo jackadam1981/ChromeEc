@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01f1930e_e8ea4883",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-29T18:18:09Z",
+      "side": 1,
+      "message": "Why are we hiding the 64-bit register access behind a macro that isn\u0027t marked 64-bit like the COMP register one below?",
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbf3744_13d43cbd",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-29T18:18:09Z",
+      "side": 1,
+      "message": "Why is assembly required to perform the div? Shouldn\u0027t 64-bit division just work?",
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e08112e_60267cde",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-29T18:18:09Z",
+      "side": 1,
+      "message": "You should be casting this value to a 64-bit number so that the result is 64-bit and set in the counter register.",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c445872_5d570a17",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-29T18:18:09Z",
+      "side": 1,
+      "message": "ignoring the poor choice of a variable name (_t) this needs the same treatment for 64-bit accesses. Also, sprinkling all these #ifdefs around makes for the some hard to read code. Is there a reason you can\u0027t hide most of this away with some simple inline helper functions?",
+      "range": {
+        "startLine": 117,
+        "startChar": 21,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcf699c_fe9ce0c4",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-10-29T18:18:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure I\u0027m following this comment and constant. From what I can gather is that 0x100000000ULL \u003d\u003d 1MHz So the hpet is ticking at what rate? That seems to be very very fast where 0x100000000  ticks \u003d\u003d 1us ?",
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
