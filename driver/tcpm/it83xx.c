@@ -328,6 +328,10 @@ static void it83xx_set_data_role(enum usbpd_port port, int pd_role)
 
 static void it83xx_init(enum usbpd_port port, int role)
 {
+	ccprints(" tcpm init in it83xx ");
+	/* init non-zero value */
+	init_msgidlast_var(msgid_last, port);
+	ccprints("init msgid_last[%d] = %d", port, msgid_last[port]);
 	/* bit7: Reload CC parameter setting. */
 	IT83XX_USBPD_CCPSR0(port) |= (1 << 7);
 	/* reset and disable HW auto generate message header */
@@ -570,6 +574,9 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
+	/* init non-zero value */
+	init_msgidlast_var(msgid_last, port);
+	ccprints("discon msgid_last[%d] = %d", port, msgid_last[port]);
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }
