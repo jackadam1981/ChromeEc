@@ -122,6 +122,24 @@
       "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044b1bdd_8368647a",
+        "filename": "include/acpi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-29T22:24:31Z",
+      "side": 1,
+      "message": "I guess you are worried about the case where lid angle calculation is not reliable and hence motion lid task not being able to set the right profile? And hence it is better to choose lower values by default?",
+      "parentUuid": "54a081df_ddf8bcad",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
