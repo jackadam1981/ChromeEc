@@ -251,6 +251,9 @@ static void board_init(void)
 
 	/* Enable interrupt for the camera vsync. */
 	gpio_enable_interrupt(GPIO_WFCAM_VSYNC);
+
+	/* Enable interrupt for custon feature */
+	gpio_enable_interrupt(GPIO_BAR);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -283,3 +286,15 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+static void bar_deferred(void)
+{
+	if (gpio_get_level(GPIO_BAR) == 1) {
+		/* do something */
+		;
+	}
+}
+DECLARE_DEFERRED(bar_deferred);
+void bar_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&bar_deferred_data, 30 * MSEC);
+}
