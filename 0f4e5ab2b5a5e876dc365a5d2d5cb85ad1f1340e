@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1704212_5e756035",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-30T00:15:58Z",
+      "side": 1,
+      "message": "How do you guarantee that the entire window is filled after base seems to be detached?\n\nWould it help to just have a running_sum and sample_size such that every time a new reading is obtained, running_sum +\u003d new_reading; sample_size++; and then average_detach_mv can just return running_sum / sample_size. And running_sum and sample_size can  be reset to 0 when base_seems_detached. Thoughts?",
+      "range": {
+        "startLine": 181,
+        "startChar": 17,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "0f4e5ab2b5a5e876dc365a5d2d5cb85ad1f1340e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
