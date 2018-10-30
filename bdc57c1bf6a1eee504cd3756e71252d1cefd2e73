@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "adcf3aef_e4d17039",
+        "filename": "board/chocodile_vpdmcu/usb_pd_config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-30T16:08:27Z",
+      "side": 1,
+      "message": "We should keep this. EXTI_COMP_MASK is used to initialize the comps. EXTI_COMP2_MASK is only used for detection of the COMP2 interrupt.",
+      "parentUuid": "d4b8d2da_4304ba57",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "bdc57c1bf6a1eee504cd3756e71252d1cefd2e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22a168ea_a4fd40c9",
         "filename": "common/usb_pe_sm.c",
         "patchSetId": 16
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "481ad1b2_b6885a56",
+        "filename": "common/usb_pe_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-30T16:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a168ea_a4fd40c9",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 4
+      },
+      "revId": "bdc57c1bf6a1eee504cd3756e71252d1cefd2e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a514c1_97b09844",
         "filename": "include/usb_tc_vpd_sm.h",
         "patchSetId": 16
@@ -68,6 +116,30 @@
       "revId": "bdc57c1bf6a1eee504cd3756e71252d1cefd2e73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d88aeca_40176e0d",
+        "filename": "include/usb_tc_vpd_sm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-10-30T16:08:27Z",
+      "side": 1,
+      "message": "It is now.",
+      "parentUuid": "b6a514c1_97b09844",
+      "range": {
+        "startLine": 393,
+        "startChar": 1,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "bdc57c1bf6a1eee504cd3756e71252d1cefd2e73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
