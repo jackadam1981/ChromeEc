@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ee2783b_fb42dcc6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-10-30T02:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e2902ad_23c2cee9",
+      "range": {
+        "startLine": 713,
+        "startChar": 56,
+        "endLine": 713,
+        "endChar": 60
+      },
+      "revId": "d5de82f75d3327eabba1de0775c8f4532484a34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bdbf04d_6515192f",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 5
@@ -68,6 +92,54 @@
       "revId": "d5de82f75d3327eabba1de0775c8f4532484a34b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39158702_8189450a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-10-30T02:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bdbf04d_6515192f",
+      "range": {
+        "startLine": 806,
+        "startChar": 32,
+        "endLine": 806,
+        "endChar": 42
+      },
+      "revId": "d5de82f75d3327eabba1de0775c8f4532484a34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d274a06_8afe843a",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-10-30T02:15:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78ac644_493c7cb6",
+      "range": {
+        "startLine": 806,
+        "startChar": 49,
+        "endLine": 806,
+        "endChar": 61
+      },
+      "revId": "d5de82f75d3327eabba1de0775c8f4532484a34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
