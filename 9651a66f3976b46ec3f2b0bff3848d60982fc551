@@ -117,6 +117,30 @@
       "revId": "9651a66f3976b46ec3f2b0bff3848d60982fc551",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c5f31d_12857050",
+        "filename": "core/nds32/__divdi3.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-10-30T10:03:38Z",
+      "side": 1,
+      "message": "The .align is treating as power-of-two on the NDS32 platform.\nSo \".align 2\" is 4-byte aligned here.",
+      "parentUuid": "014e3c25_90083020",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 7
+      },
+      "revId": "9651a66f3976b46ec3f2b0bff3848d60982fc551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
