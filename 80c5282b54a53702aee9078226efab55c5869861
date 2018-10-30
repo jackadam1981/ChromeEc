@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c28ecef7_dbd92a89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-30T20:37:15Z",
+      "side": 1,
+      "message": "What does the output look like when the firmware versions don\u0027t match?\n\nWhat happens when the inactive image has been corrupted in the case where they match and the case where they don\u0027t match?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "80c5282b54a53702aee9078226efab55c5869861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
