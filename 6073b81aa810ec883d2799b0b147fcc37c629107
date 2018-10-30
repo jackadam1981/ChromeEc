@@ -34,6 +34,24 @@
       "revId": "6073b81aa810ec883d2799b0b147fcc37c629107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ce0edf_7f58b846",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-30T18:01:59Z",
+      "side": 1,
+      "message": "I was just noting that CQ-DEPEND will be required eventually. Also, it would be good to add CQ-DEPEND in coreboot commit message to ensure that the uploader knows about the dependency.",
+      "parentUuid": "5218a338_d4b63db2",
+      "revId": "6073b81aa810ec883d2799b0b147fcc37c629107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
