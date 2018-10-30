@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_FAN_H
 #define __CROS_EC_FAN_H
 
+#include "assert.h"
+
 struct fan_conf {
 	unsigned int flags;
 	/* Hardware channel number (the meaning is chip-specific) */
@@ -115,5 +117,25 @@ enum fan_status fan_get_status(int ch);
 
 /* Initialize the HW according to the desired flags */
 void fan_channel_setup(int ch, unsigned int flags);
+
+/*
+ * Number of fans.
+ *
+ * Use fan_get_count and fan_set_count to access it. It should be set only
+ * before HOOK_INIT/HOOK_PRIO_DEFAULT.
+ */
+extern int fan_count;
+
+static inline int fan_get_count(void)
+{
+	return fan_count;
+}
+
+static inline void fan_set_count(int count)
+{
+	/* You can only decrease the count. */
+	assert(count <= CONFIG_FANS);
+	fan_count = count;
+}
 
 #endif  /* __CROS_EC_FAN_H */

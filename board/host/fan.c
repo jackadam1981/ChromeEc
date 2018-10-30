@@ -5,6 +5,7 @@
 
 /* Mocked fan implementation for tests */
 
+#include "common.h"
 #include "fan.h"
 #include "util.h"
 
