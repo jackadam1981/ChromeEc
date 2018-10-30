@@ -140,6 +140,24 @@
       "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35dd48f6_7e38c7b0",
+        "filename": "include/acpi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-10-30T19:02:22Z",
+      "side": 1,
+      "message": "Done. I have updated this enum to be set to 1 if MULTI_PROFILE_DPTF is not supported and set to 2 otherwise.",
+      "parentUuid": "044b1bdd_8368647a",
+      "revId": "e760ecc1375b7274a2280b3d258b24acfe1aa5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
