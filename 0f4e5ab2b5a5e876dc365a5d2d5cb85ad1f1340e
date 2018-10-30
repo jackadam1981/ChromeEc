@@ -22,6 +22,30 @@
       "revId": "0f4e5ab2b5a5e876dc365a5d2d5cb85ad1f1340e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea72b9d5_8ea20392",
+        "filename": "board/nocturne/base_detect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-10-30T00:38:10Z",
+      "side": 1,
+      "message": "Assuming the hooks task isn\u0027t starved, we should have 4 additional samples. Including some historical data is okay. If we didn\u0027t get enough samples for the average to fall beneath the threshold, the next time around should include more samples and if it\u0027s truly disconnected, the average should be less than before.\n\nI don\u0027t want to use too few samples, I\u0027d prefer to use historical samples.",
+      "parentUuid": "c1704212_5e756035",
+      "range": {
+        "startLine": 181,
+        "startChar": 17,
+        "endLine": 181,
+        "endChar": 28
+      },
+      "revId": "0f4e5ab2b5a5e876dc365a5d2d5cb85ad1f1340e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
