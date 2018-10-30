@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42e2b1d4_43fc0e5c",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-30T19:21:50Z",
+      "side": 1,
+      "message": "Don\u0027t leak this memory in the non-exit() cases.  It\u0027s barely any more lines.",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c19d87d_ac0fc34a",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-30T19:21:50Z",
+      "side": 1,
+      "message": "If https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1300373 lands first, update this to return int success (0) / failure (negative).  Have parse_parameters() pass on the failure, and let the exit() decision happen in main().\n\nIf this CL lands first, no changes needed, I\u0027ll make that update in my CL.\n\n[I\u0027m marking this as Resolved since the aforementioned CL hasn\u0027t landed yet.]",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ec8c8a7_6b23de65",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1590,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-10-30T19:21:50Z",
+      "side": 1,
+      "message": "Make the read byte range a separate option.  That way the acceptable set of filename characters is not unnecessarily limited.",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
