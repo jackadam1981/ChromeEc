@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3bf0d0_6bbb903a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-30T22:17:47Z",
+      "side": 1,
+      "message": "Change to BRANCH\u003dgrunt",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "a95ad0fcce984f477c42719bc116dbcc6b4f28df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "800bebca_78383ef7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-30T22:17:47Z",
+      "side": 1,
+      "message": "Hopefully with this change, \"ectool kbfactorytest\" passes. If so, change to \"TEST\u003dectool kbfactorytest\" and mark verified +1.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "a95ad0fcce984f477c42719bc116dbcc6b4f28df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6a88b8_52d48c68",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-10-30T22:17:47Z",
+      "side": 1,
+      "message": "Please change this comment to something like:\n/*\n * Map keyboard connector pins to EC GPIO pins for factory test.\n * Pins mapped to {-1, -1} are skipped.\n * The connector has 30 pins total, and there is no pin 0.\n */",
+      "revId": "a95ad0fcce984f477c42719bc116dbcc6b4f28df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
