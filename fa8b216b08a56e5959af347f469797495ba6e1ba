@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aea50f9_f5b3d69e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-30T00:08:23Z",
+      "side": 1,
+      "message": "could you also add a line describing the problem and solution?",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "fa8b216b08a56e5959af347f469797495ba6e1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c61ed5ad_1a56aaf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-30T00:08:23Z",
+      "side": 1,
+      "message": "i think it be helpful to have a tracking bug so we have better\nvisibility into the changes going in.",
+      "range": {
+        "startLine": 12,
+        "startChar": 72,
+        "endLine": 12,
+        "endChar": 79
+      },
+      "revId": "fa8b216b08a56e5959af347f469797495ba6e1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
