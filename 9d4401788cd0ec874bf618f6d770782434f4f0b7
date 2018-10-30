@@ -118,6 +118,30 @@
       "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ce0c1d9_a4d0628a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1816,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-30T02:42:23Z",
+      "side": 1,
+      "message": "Board ID field of the H1 Info1 space:\n\n- can be set to anything in test setup\n- can be left uninitialized for whatever reason\n- could be combined with a mask which would allow it to cover a set of RLZs\n- could be redefined to be something else tomorrow\n\nYes, it should be the same as RLZ in most cases as of today, but calling it RLZ is misleading, as RLZ is what comes from the firmware and reported by \u0027mosys platform brand\u0027. \n\nI just don\u0027t understand why is this such a big deal to name it BID TEXT of BID ASCII or whatever you find appropriate and stay factually correct.\n\nReplacing BID_RLZ with BID_ASCII in multiple files can be done with a single sed command:\n\nsed -i \u0027s/BID_RLZ/BID_ASCII/\u0027 *",
+      "parentUuid": "3eeae814_45eed260",
+      "range": {
+        "startLine": 1816,
+        "startChar": 5,
+        "endLine": 1816,
+        "endChar": 12
+      },
+      "revId": "9d4401788cd0ec874bf618f6d770782434f4f0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
