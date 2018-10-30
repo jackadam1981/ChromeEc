@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aada7c67_871bb9e8",
+        "filename": "include/fan.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-30T22:40:55Z",
+      "side": 1,
+      "message": "Why not fan_get_count()?\n\nExposing global variables invites changing, either intentionally or accidentally:\n\nif (fan_count \u003d 2) {\n}",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "6d7aabf8f5644c219e37a661845f0465866c8a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
