@@ -93,6 +93,30 @@
       "revId": "fa8b216b08a56e5959af347f469797495ba6e1ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a80252_0e885fdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-10-30T02:30:07Z",
+      "side": 1,
+      "message": "yes, but what is your motivation?  if you only want to\nredo the original patch, the revert will still look\nlike a new patch that reverses the original patch, then\nyou have to submit a 3rd patch to do what you really\nwant.  probably not worth reverting at this point.",
+      "parentUuid": "2a31ef60_9bfdf317",
+      "range": {
+        "startLine": 12,
+        "startChar": 72,
+        "endLine": 12,
+        "endChar": 79
+      },
+      "revId": "fa8b216b08a56e5959af347f469797495ba6e1ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
