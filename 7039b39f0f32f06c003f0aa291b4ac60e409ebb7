@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0df275b9_176acbc5",
+        "filename": "util/flash_ec",
+        "patchSetId": 16
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-30T21:15:48Z",
+      "side": 1,
+      "message": "please wrap this line",
+      "range": {
+        "startLine": 1053,
+        "startChar": 19,
+        "endLine": 1053,
+        "endChar": 48
+      },
+      "revId": "7039b39f0f32f06c003f0aa291b4ac60e409ebb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa343d97_54968c81",
+        "filename": "util/iteflash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-30T21:15:48Z",
+      "side": 1,
+      "message": "is this parameter unused? Is it here because of the prototype - can you name it \u0027unused\u0027 in this case",
+      "range": {
+        "startLine": 133,
+        "startChar": 46,
+        "endLine": 133,
+        "endChar": 56
+      },
+      "revId": "7039b39f0f32f06c003f0aa291b4ac60e409ebb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
