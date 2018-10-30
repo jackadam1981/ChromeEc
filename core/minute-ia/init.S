@@ -292,6 +292,9 @@ __idt_ptr:
 			# (8N - 1). N = 256 - the number of vectors
 	.long __idt	# Base address of IDT
 
+gdt_descriptor:
+	.word    0x17
+	.long     0xfffff000
 
 .section .init
 .code32
@@ -302,7 +305,7 @@ __idt_ptr:
 
 # Entry point - core is already set to 32-bit linear mode by ISH ROM
 reset:
-
+	lgdtl  gdt_descriptor
 	# Disabling interrupts initially. It will be enabled when tasks start
 	cli
 
