@@ -22,6 +22,30 @@
       "revId": "80c5282b54a53702aee9078226efab55c5869861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b555695_c6054143",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-30T20:43:13Z",
+      "side": 1,
+      "message": "Sorry. Just realized this is the -b option.\n\nWhat exactly does it print when they don\u0027t match?",
+      "parentUuid": "c28ecef7_dbd92a89",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "80c5282b54a53702aee9078226efab55c5869861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
