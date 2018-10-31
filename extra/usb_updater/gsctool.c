@@ -1329,6 +1329,8 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 	const size_t kNumSlots = 2;
 	const size_t kNumSectionsPerSlot = 2;
 
+	bool are_two_slots_identical = true;
+
 	// String representation of FW version (<epoch>:<major>:<minor>), one
 	// string for each FW section.
 	char ro_fw_ver[kNumSlots][MAX_FW_VER_LENGTH];
@@ -1340,7 +1342,7 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 		uint32_t flags;
 	} bid[kNumSlots];
 
-	char bid_string[MAX_BOARD_ID_LENGTH];
+	char bid_string[kNumSlots][MAX_BOARD_ID_LENGTH];
 
 	size_t i;
 
@@ -1349,6 +1351,9 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 			(const struct SignedHeader *)
 				((uintptr_t)image + sections[i].offset);
 		const size_t slot_idx = i / kNumSectionsPerSlot;
+
+		uint32_t cur_bid;
+		size_t j;
 
 		if (sections[i].name[1] == 'O') {
 			// RO
@@ -1370,54 +1375,69 @@ static int show_headers_versions(const void *image, bool show_machine_output)
 		bid[slot_idx].mask =
 			h->board_id_type_mask ^ SIGNED_HEADER_PADDING;
 		bid[slot_idx].flags = h->board_id_flags ^ SIGNED_HEADER_PADDING;
+
+		/*
+		 * If board ID is an ASCII string (as it ought to be), print
+		 * it as 4 symbols, otherwise print it as an 8 digit hex.
+		 */
+		cur_bid = bid[slot_idx].id;
+		for (j = 0; j < sizeof(cur_bid); ++j)
+			if (!isalnum(((const char *)&cur_bid)[j]))
+				break;
+
+		if (j == sizeof(cur_bid)) {
+			cur_bid = be32toh(cur_bid);
+			snprintf(bid_string[slot_idx], MAX_BOARD_ID_LENGTH,
+				 "%.4s", (const char *)&cur_bid);
+		} else {
+			snprintf(bid_string[slot_idx], MAX_BOARD_ID_LENGTH,
+				 "%08x", cur_bid);
+		}
 	}
 
+	// TODO(garryxiao): once we decide to remove slot B from the output,
+	// return -1 from the following three if blocks if slot A and B are not
+	// identical.
 	if (strncmp(ro_fw_ver[0], ro_fw_ver[1], MAX_FW_VER_LENGTH) != 0) {
 		fprintf(stderr,
-			"Error: RO FW versions in the 2 slots do not match.\n");
-		return -1;
+			"Warning: RO FW versions in the 2 slots do not match."
+			"\n");
+		are_two_slots_identical = false;
 	}
 
 	if (strncmp(rw_fw_ver[0], rw_fw_ver[1], MAX_FW_VER_LENGTH) != 0) {
 		fprintf(stderr,
-			"Error: RW FW versions in the 2 slots do not match.\n");
-		return -1;
+			"Warning: RW FW versions in the 2 slots do not match."
+			"\n");
+		are_two_slots_identical = false;
 	}
 
 	if (memcmp(&bid[0], &bid[1], sizeof(struct board_id)) != 0) {
 		fprintf(stderr,
-			"Error: board IDs in the 2 slots do not match.\n");
-		return -1;
-	}
-
-	/*
-	 * If board ID is an ASCII string (as it ought to be), print
-	 * it as 4 symbols, otherwise print it as an 8 digit hex.
-	 */
-	for (i = 0; i < sizeof(bid[0].id); ++i)
-		if (!isalnum(((const char *)&bid[0].id)[i]))
-			break;
-
-	if (i == sizeof(bid[0].id)) {
-		bid[0].id = be32toh(bid[0].id);
-		snprintf(bid_string, MAX_BOARD_ID_LENGTH,
-			 "%.4s", (const char *)&bid);
-	} else {
-		snprintf(bid_string, MAX_BOARD_ID_LENGTH, "%08x", bid[0].id);
+			"Warning: board IDs in the 2 slots do not match.\n");
+		are_two_slots_identical = false;
 	}
 
 	if (show_machine_output) {
+		if (!are_two_slots_identical)
+			return -1;
+
 		print_machine_output("IMAGE_RO_FW_VER", "%s", ro_fw_ver[0]);
 		print_machine_output("IMAGE_RW_FW_VER", "%s", rw_fw_ver[0]);
-		print_machine_output("IMAGE_BID_STRING", "%s", bid_string);
+		print_machine_output("IMAGE_BID_STRING", "%s", bid_string[0]);
 		print_machine_output("IMAGE_BID_MASK", "%08x", bid[0].mask);
 		print_machine_output("IMAGE_BID_FLAGS", "%08x", bid[0].flags);
 	} else {
 		// TODO(garryxiao): remove "_A" from RO and RW after updating
 		// scripts that use gsctool.
-		printf("RO_A:%s RW_A:%s[%s:%08x:%08x]\n",
+		printf("RO_A:%s RW_A:%s[%s:%08x:%08x] ",
 		       ro_fw_ver[0], rw_fw_ver[0],
-		       bid_string, bid[0].mask, bid[0].flags);
+		       bid_string[0], bid[0].mask, bid[0].flags);
+		// TODO(garryxiao): remove slot B from the output once it's safe
+		// to do so.
+		printf("RO_B:%s RW_B:%s[%s:%08x:%08x]\n",
+		       ro_fw_ver[1], rw_fw_ver[1],
+		       bid_string[1], bid[1].mask, bid[1].flags);
 	}
 
 	return 0;
