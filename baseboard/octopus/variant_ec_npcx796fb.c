@@ -41,5 +41,6 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] = { .channel = 3, .flags = 0, .freq = 100 },
+	[PWM_TEST]	 = { .channel = 2, .flags = 0, .freq = 5 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);

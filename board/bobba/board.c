@@ -31,6 +31,8 @@
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "switch.h"
 #include "system.h"
 #include "tablet_mode.h"
@@ -264,11 +266,15 @@ DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 /* Initialize board. */
 static void board_init(void)
 {
+	int custom_duty = 50;
+
 	/* Enable Base Accel interrupt */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
 	/* Enable interrupt for the camera vsync. */
 	gpio_enable_interrupt(GPIO_WFCAM_VSYNC);
+
+	pwm_set_duty(pwm_channels[PWM_TEST].channel, custom_duty);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
