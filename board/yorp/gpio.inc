@@ -116,6 +116,8 @@ GPIO(EN_USB_A0_5V,	 PIN(6, 7), GPIO_OUT_LOW)	/* Enable A0 5V Charging */
 GPIO(EN_USB_A1_5V,	 PIN(9, 6), GPIO_OUT_LOW)	/* Enable A1 5V Charging */
 GPIO(USB_A0_CHARGE_EN_L, PIN(A, 2), GPIO_OUT_HIGH)	/* Enable A0 1.5A Charging */
 GPIO(USB_A1_CHARGE_EN_L, PIN(A, 0), GPIO_OUT_HIGH)	/* Enable A1 1.5A Charging */
+
+GPIO(USB_C0_PD_RST_ODL,  PIN(8, 3), GPIO_ODR_HIGH)	/* C0 PD Reset */
 GPIO(USB_C0_BC12_VBUS_ON,   PIN(6, 3), GPIO_OUT_LOW)	/* C0 BC1.2 Power */
 GPIO(USB_C0_BC12_CHG_DET_L, PIN(9, 5), GPIO_INPUT)	/* C0 BC1.2 Detect */
 GPIO(USB_C0_HPD_1V8_ODL, PIN(C, 5), GPIO_INPUT |	/* C0 DP Hotplug Detect */
@@ -134,7 +136,7 @@ UNIMPLEMENTED(USB_C0_PD_RST)
  * 3.3V on the EC side. So, configure it as ODR so that the EC never drives it
  * high.
  */
-GPIO(USB2_OTG_ID,	 PIN(8, 3), GPIO_ODR_LOW)	/* OTG ID */
+/* GPIO(USB2_OTG_ID,	 PIN(8, 3), GPIO_ODR_LOW)*/	/* OTG ID */
 
 /* LED */
 GPIO(BAT_LED_ORANGE_L,	 PIN(C, 3), GPIO_OUT_HIGH)	/* LED_1_L */

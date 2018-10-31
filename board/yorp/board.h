@@ -11,6 +11,7 @@
 /* Select Baseboard features */
 #define VARIANT_OCTOPUS_EC_NPCX796FB
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
+#define VARIANT_OCTOPUS_SEC_NPCX796FB
 #include "baseboard.h"
 
 /* EC console commands  */
