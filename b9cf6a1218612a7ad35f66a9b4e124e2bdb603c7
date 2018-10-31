@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5ecd45_9c299793",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-10-31T16:51:01Z",
+      "side": 1,
+      "message": "Add a TODO to adjust this when boards are present? I don\u0027t know if these matric values are correct.",
+      "revId": "b9cf6a1218612a7ad35f66a9b4e124e2bdb603c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1b9acc_01c28b08",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-10-31T16:51:01Z",
+      "side": 1,
+      "message": "I feel like we\u0027ve had 2g for the lid accel on other Octopus projects. Not sure how to check if this is right.",
+      "revId": "b9cf6a1218612a7ad35f66a9b4e124e2bdb603c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
