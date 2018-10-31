@@ -94,6 +94,30 @@
       "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd4a8cc8_201dab53",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1412,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-31T22:15:14Z",
+      "side": 1,
+      "message": "As discussed offline, for dev images, the second RO slot is not filled in, and gets -1.-1.-1 as a version. Ex:\nRO_A:4919.0.0 RW_A:0.4.10[00000000:00000000:00000000] RO_B:-1.-1.-1 RW_B:0.4.10[00000000:00000000:00000000]\n\nWe could check for that and alwasy allow RO_B\u003d-1.-1.-1, but instead for simplicity I suggest removing the A\u003d\u003dB check completely, even for -M case. Just print the versions from slot A for -M w/o verifying that slot B is the same. If \u0026 when we have reasons to check A\u003d\u003dB, we can add a better logic.",
+      "parentUuid": "29b0c6b7_b50d397d",
+      "range": {
+        "startLine": 1404,
+        "startChar": 0,
+        "endLine": 1412,
+        "endChar": 0
+      },
+      "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
