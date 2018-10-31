@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9532caf8_370e5d9b",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T04:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "547d5f1b_c8e40e26",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "3c72f988dfe685d6ad4853d941aca82fe9ec1948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9389a103_2be98d7e",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "19f062a8_bd70472f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T04:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9389a103_2be98d7e",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "3c72f988dfe685d6ad4853d941aca82fe9ec1948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03d38c1c_c8e104b9",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
@@ -82,6 +130,30 @@
       "writtenOn": "2018-10-25T22:25:49Z",
       "side": 1,
       "message": "shall we check for result \u003d\u003d success here in case read_tpm_nvmem_hidden() can return other error codes in the future?",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "3c72f988dfe685d6ad4853d941aca82fe9ec1948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd0e8d0_57a9631c",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T04:33:02Z",
+      "side": 1,
+      "message": "Hm, I guess that \u0027not_found\u0027 explicitly says that it has never been initialized, and that we should do so. If we re-initialize on some transient error that might be a bad thing? (similar to that salesforce bug)",
+      "parentUuid": "03d38c1c_c8e104b9",
       "range": {
         "startLine": 94,
         "startChar": 3,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ac25fe7e_54737fdc",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T04:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bdbbdd1_50d246b2",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "3c72f988dfe685d6ad4853d941aca82fe9ec1948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c06f2e2d_4e874eca",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "0a56d7c2_acc4620a",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T04:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c06f2e2d_4e874eca",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 24
+      },
+      "revId": "3c72f988dfe685d6ad4853d941aca82fe9ec1948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dea3a3a4_4d6895df",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
@@ -160,6 +280,30 @@
       "revId": "3c72f988dfe685d6ad4853d941aca82fe9ec1948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e2ba90_139d4c51",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T04:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea3a3a4_4d6895df",
+      "range": {
+        "startLine": 110,
+        "startChar": 39,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "3c72f988dfe685d6ad4853d941aca82fe9ec1948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
