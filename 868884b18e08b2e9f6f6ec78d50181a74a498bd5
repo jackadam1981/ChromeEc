@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "45232e2d_ab3d5147",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-31T22:44:37Z",
+      "side": 1,
+      "message": "I am a bit reluctant to add print statements for a no particularly good reason: we did not print anything before in this function, and we still invoke init_jittery_clock() from board.c, so nothing changes from this point of view. Who is going to be watching for that string?\n\nIt would be good to add an autotest to confirm that clock is jittery, but this might be tricky (and take more space in flash than the printout :)\n\nLet\u0027s see what Randall thinks.\n\nAlso, what did you have in mind: adding something like\n\nprintf(\"jitter %s\\n\", enable ? \"enabled\" : \"disabled\");\n\nin line 23?",
+      "parentUuid": "8b5c7dd1_13187ff2",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "868884b18e08b2e9f6f6ec78d50181a74a498bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6ac3a0e_ac37b9b3",
         "filename": "chip/g/jitter.c",
         "patchSetId": 1
@@ -117,6 +141,30 @@
       "revId": "868884b18e08b2e9f6f6ec78d50181a74a498bd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7272d69e_fa3b61b9",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-31T22:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fde835e3_4923baec",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "868884b18e08b2e9f6f6ec78d50181a74a498bd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
