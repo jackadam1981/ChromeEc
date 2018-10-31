@@ -22,6 +22,30 @@
       "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec2a485_32561f4c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1412,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-31T21:54:10Z",
+      "side": 1,
+      "message": "\u003e The firmware version may be different in the two sections.\n\nTechnically, it may, but it should never be different for the properly built images. This output is for \"gsctool -b\", which reports versions for the image file. Not for \"gsctool -f\", which reports version for the two cr50 slots on the chip (where they indeed can and often are different).\n\nScripts that consume \"-b -M\" are expected to do that to check that the image file version is \u003e\u003d what is already running in cr50, before deciding on further update actions. If the image is improperly built (and would install one image if inactive slot is A, and a different one if inactive slot is B), we\u0027d rather get an error here.",
+      "parentUuid": "c58a98b5_7cec4f1c",
+      "range": {
+        "startLine": 1404,
+        "startChar": 0,
+        "endLine": 1412,
+        "endChar": 0
+      },
+      "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
