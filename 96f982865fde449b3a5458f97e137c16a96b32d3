@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a1d660f8_94743a5f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-31T17:17:41Z",
+      "side": 1,
+      "message": "If we\u0027re looking for \"we think ITE EC should be in programming mode\", it\u0027d need to be more than just a success bit.  If the EC resets out of programming mode, then the success bit would be stale.\n\nSeems like the way to figure this out is to try ITE EC operations.  If they work, we\u0027re in programming mode.  If not, then we\u0027ll need to reset and try again, regardless of what mode we think we should be in.",
+      "parentUuid": "e53481cf_3c9f686f",
+      "range": {
+        "startLine": 637,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 53
+      },
+      "revId": "96f982865fde449b3a5458f97e137c16a96b32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "367e9f89_73998e2f",
         "filename": "board/cr50/board.h",
         "patchSetId": 5
