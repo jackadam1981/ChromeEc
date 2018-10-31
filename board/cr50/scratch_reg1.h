@@ -54,11 +54,23 @@
 #define BOARD_ITE_EC_SYNC_NEEDED     (1 << 15)
 
 /*
+ * Enable delayed write protect disable for systems that can be opened
+ * in less than 2 minutes
+ */
+#define BOARD_WP_DISABLE_DELAY       (1 << 15)
+/*
+ * Enable custom options required for the closed source EC on the
+ * Sarien/Arcada boards
+ */
+#define BOARD_SARIEN_CUSTOM_OPTIONS (1 << 16)
+
+/*
  * Macro to capture all properties related to board strapping pins. This must be
  * updated if additional strap related properties are added.
  */
 #define BOARD_ALL_PROPERTIES (BOARD_SLAVE_CONFIG_SPI | BOARD_SLAVE_CONFIG_I2C \
 	| BOARD_NEEDS_SYS_RST_PULL_UP | BOARD_USE_PLT_RESET | \
-	BOARD_DEEP_SLEEP_DISABLED | BOARD_DETECT_AP_WITH_UART)
+	BOARD_DEEP_SLEEP_DISABLED | BOARD_DETECT_AP_WITH_UART | \
+	BOARD_WP_DISABLE_DELAY | BOARD_SARIEN_CUSTOM_OPTIONS)
 
 #endif  /* ! __EC_BOARD_CR50_SCRATCH_REG1_H */
