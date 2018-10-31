@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c88bdb2_dc72d10f",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-10-31T18:23:40Z",
+      "side": 1,
+      "message": "this is a strict aliasing violation.  you need to declare a char[4] buffer on the stack and memcpy the memory out of bid that you care about.",
+      "revId": "9a74f9714e891ba7d5c2b0175aad6daefb9165da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
