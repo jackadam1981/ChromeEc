@@ -22,6 +22,29 @@
       "revId": "fc5d1bd550f1a6e2d171c236fd8099a33024fb28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc84aa2d_c7c1e315",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-31T23:09:45Z",
+      "side": 1,
+      "message": "we never use this function, do we need it?",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "fc5d1bd550f1a6e2d171c236fd8099a33024fb28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
