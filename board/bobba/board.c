@@ -301,3 +301,24 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+static int command_foo(int argc, char **argv)
+{
+	NPCX_PWDWN_CTL(CGC_OFFSET_PWM) &= ~(0x4);
+	NPCX_PRSC(2) = 0x002d;
+	NPCX_CTR(2) = 0xfec1;
+	NPCX_DCR(2) = 0x7f60;
+	NPCX_DEVALT(4) |= 0x4;
+	NPCX_PWMCTL(2) |= 0x80;
+
+	ccprintf("NPCX_PWDWN_CTL(1) =0x%x\n", NPCX_PWDWN_CTL(1));
+	ccprintf("NPCX_CTR(2)=0x%x\n", NPCX_CTR(2));
+	ccprintf("NPCX_DCR(2)=0x%x\n", NPCX_DCR(2));
+	ccprintf("NPCX_DEVALT(4)=0x%x\n", NPCX_DEVALT(4));
+	ccprintf("NPCX_PWMCTL(2)=0x%x\n", NPCX_PWMCTL(2));
+	ccprintf("NPCX_PRSC(2)=0x%x\n", NPCX_PRSC(2));
+	// ccprintf("NPCX_PWMCTLEX(2)=0x%x\n\n", NPCX_PWMCTLEX(2));
+	cflush();
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cmd, command_foo, NULL, NULL);
