@@ -76,6 +76,7 @@ static uint32_t templ_dirty;
 static uint32_t user_id[FP_CONTEXT_USERID_WORDS];
 /* Ready to encrypt a template. */
 static timestamp_t encryption_deadline;
+static uint8_t tpm_seed[FP_CONTEXT_TPM_BYTES];
 
 #define CPRINTF(format, args...) cprintf(CC_FP, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_FP, format, ## args)
@@ -343,6 +344,13 @@ void fp_task(void)
 #endif /* !HAVE_FP_PRIVATE_DRIVER */
 }
 
+static int fp_tpm_seed_is_set(void)
+{
+	uint8_t tpm_seed_zero[sizeof(tpm_seed)] = {0};
+
+	return safe_memcmp(tpm_seed, tpm_seed_zero, sizeof(tpm_seed));
+}
+
 static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 {
 	int ret;
@@ -350,10 +358,16 @@ static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 	uint8_t prk[SHA256_DIGEST_SIZE];
 	uint8_t rb_secret[CONFIG_ROLLBACK_SECRET_SIZE];
 	uint8_t message[sizeof(user_id) + 1];
+	uint8_t ikm[sizeof(rb_secret) + sizeof(tpm_seed)];
 
 	BUILD_ASSERT(SBP_ENC_KEY_LEN <= SHA256_DIGEST_SIZE);
 	BUILD_ASSERT(SBP_ENC_KEY_LEN <= CONFIG_ROLLBACK_SECRET_SIZE);
 	BUILD_ASSERT(sizeof(user_id) == SHA256_DIGEST_SIZE);
+
+	if (!fp_tpm_seed_is_set()) {
+		CPRINTS("Seed hasn't been set.");
+		return EC_RES_ERROR;
+	}
 
 	ret = rollback_get_secret(rb_secret);
 	if (ret != EC_SUCCESS) {
@@ -365,9 +379,12 @@ static int derive_encryption_key(uint8_t *out_key, uint8_t *salt)
 	 * Derive a key with the "extract" step of HKDF
 	 * https://tools.ietf.org/html/rfc5869#section-2.2
 	 */
-	hmac_SHA256(prk, salt, FP_CONTEXT_SALT_BYTES, rb_secret,
-		    sizeof(rb_secret));
+	/* IKM is the concatenation of rb_secret and the seed from the TPM. */
+	memcpy(ikm, rb_secret, sizeof(rb_secret));
+	memcpy(ikm + sizeof(rb_secret), tpm_seed, sizeof(tpm_seed));
+	hmac_SHA256(prk, salt, FP_CONTEXT_SALT_BYTES, ikm, sizeof(ikm));
 	memset(rb_secret, 0, sizeof(rb_secret));
+	memset(ikm, 0, sizeof(ikm));
 
 	/*
 	 * Only 1 "expand" step of HKDF since the size of the "info" context
@@ -781,6 +798,25 @@ static int fp_command_context(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_CONTEXT, fp_command_context, EC_VER_MASK(0));
+
+static int fp_command_tpm_seed(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_seed *params = args->params;
+
+	if (params->struct_version != FP_TEMPLATE_FORMAT_VERSION) {
+		CPRINTS("Invalid seed format %d", params->struct_version);
+		return EC_RES_INVALID_PARAM;
+	}
+
+	if (fp_tpm_seed_is_set()) {
+		CPRINTS("Seed has already been set.");
+		return EC_RES_ACCESS_DENIED;
+	}
+	memcpy(tpm_seed, params->seed, sizeof(tpm_seed));
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_SEED, fp_command_tpm_seed, EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_FPSENSOR_DEBUG
 /* --- Debug console commands --- */
