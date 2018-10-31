@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c33a4a6_760d3136",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-31T17:05:16Z",
+      "side": 1,
+      "message": "Can do.  I\u0027ll file a bug for it",
+      "parentUuid": "9a5ecd45_9c299793",
+      "revId": "b9cf6a1218612a7ad35f66a9b4e124e2bdb603c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f1b9acc_01c28b08",
         "filename": "board/ampton/board.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-10-31T16:51:01Z",
       "side": 1,
       "message": "I feel like we\u0027ve had 2g for the lid accel on other Octopus projects. Not sure how to check if this is right.",
+      "revId": "b9cf6a1218612a7ad35f66a9b4e124e2bdb603c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7822dcf_485824cc",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-10-31T17:05:16Z",
+      "side": 1,
+      "message": "It looks like there\u0027s a change in the works to move meep to 2, but bobba and yorp still have 4.  Would this be part of the accelerometer tuning?",
+      "parentUuid": "3f1b9acc_01c28b08",
       "revId": "b9cf6a1218612a7ad35f66a9b4e124e2bdb603c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
