@@ -16,6 +16,29 @@
       "revId": "0cf781e2c5e0fe67774c5562b071848809a1a689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831c6080_eb15b0fe",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-31T18:35:28Z",
+      "side": 1,
+      "message": "Ah, here\u0027s where the other CCD options went.\n\nYes, this file is somewhat of a mess due to inconsistent naming (CONFIG_DEDICATED_RECOVERY_BUTTON vs. CONFIG_BUTTON_DEDICATED_RECOVERY)",
+      "range": {
+        "startLine": 562,
+        "startChar": 1,
+        "endLine": 563,
+        "endChar": 0
+      },
+      "revId": "0cf781e2c5e0fe67774c5562b071848809a1a689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
