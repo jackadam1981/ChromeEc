@@ -46,6 +46,30 @@
       "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75fac61_2239ffb7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1412,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-10-31T21:59:48Z",
+      "side": 1,
+      "message": "I think the RO versions are often different on debug images.",
+      "parentUuid": "3ec2a485_32561f4c",
+      "range": {
+        "startLine": 1404,
+        "startChar": 0,
+        "endLine": 1412,
+        "endChar": 0
+      },
+      "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
