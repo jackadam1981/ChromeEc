@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c58a98b5_7cec4f1c",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1412,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2018-10-31T15:49:58Z",
+      "side": 1,
+      "message": "The firmware version may be different in the two sections.\nThe Board Id should match.\n\nI would have left the top two as warnings and the third as an Error.\n\nI am OK with it either way.",
+      "range": {
+        "startLine": 1404,
+        "startChar": 0,
+        "endLine": 1412,
+        "endChar": 0
+      },
+      "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
