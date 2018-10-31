@@ -4224,7 +4224,7 @@ enum mkbp_cec_event {
 /* Commands for I2S recording on audio codec. */
 
 #define EC_CMD_CODEC_I2S 0x00BC
-#define EC_WOV_I2S_BCLK_RATE 3072000
+#define EC_WOV_I2S_BCLK_RATE 1536000
 #define EC_WOV_I2S_SAMPLE_RATE 48000
 
 enum ec_codec_i2s_subcmd {
