@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c14f04df_8a6e9dad",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-31T17:06:01Z",
+      "side": 1,
+      "message": "Note that NDS32 and RISC-V (at least, without RV32A) do not have true atomic ops so are disabling interrupts around multi-instruction operations.  So while this is cool on ARM, it\u0027s actually larger on those architectures than just disabling interrupts or using a mutex.",
+      "parentUuid": "21837766_4c19c76b",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1923b17_a87d9f00",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "It seems the gap was created with the TASK_EVENT_I2C_IDLE stuff above was added:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/363992/20/include/task.h\n\n..so hopefully it\u0027s ok to re-use this now?",
       "parentUuid": "eb5f4d8f_e68157bc",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b5302a4_b19495df",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-10-31T17:06:01Z",
+      "side": 1,
+      "message": "Yes, it was created when the idle-event became a one-event-per-port range.\n\nSo it\u0027s ok to reuse now.",
+      "parentUuid": "d9c8c599_2b2351f6",
       "range": {
         "startLine": 43,
         "startChar": 38,
