@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09f84b75_13e6687d",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-31T23:05:30Z",
+      "side": 1,
+      "message": "nit: align",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864de3f2_f7bc1ffe",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-31T23:05:30Z",
+      "side": 1,
+      "message": "do we care that in this case the cached chain of nvram objects has actually already been updated?\ndo we need a separate error code?",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 22
+      },
+      "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
