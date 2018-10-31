@@ -46,6 +46,23 @@
       "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "462ccb3e_6ad58e3b",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-10-31T19:49:10Z",
+      "side": 0,
+      "message": "still tons of whitespace changes, let\u0027s keep them in a separate patch.",
+      "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
