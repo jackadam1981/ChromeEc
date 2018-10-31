@@ -106,5 +106,9 @@ extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
 extern const struct tcpm_drv it83xx_tcpm_drv;
 /* Disable integrated pd module */
 void it83xx_disable_pd_module(int port);
+/* Store each port last message id of received packet */
+extern int message_id_last[USBPD_PORT_COUNT];
+/* Init last message id variable of received packet */
+extern void init_message_id_last_var(int port);
 
 #endif /* __CROS_EC_DRIVER_TCPM_IT83XX_H */
