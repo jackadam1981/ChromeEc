@@ -45,6 +45,30 @@
       "revId": "fc5d1bd550f1a6e2d171c236fd8099a33024fb28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1035110_f5c0107d",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-10-31T23:15:26Z",
+      "side": 1,
+      "message": "used in CL:1309493, I see now :)",
+      "parentUuid": "bc84aa2d_c7c1e315",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "fc5d1bd550f1a6e2d171c236fd8099a33024fb28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
