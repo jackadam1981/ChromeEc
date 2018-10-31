@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8404c83_7cf9818e",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b920d78_549cc450",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 58
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c18c064b_ccefe12c",
         "filename": "fuzz/cr50_fuzz.cc",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09376abf_400432b4",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18c064b_ccefe12c",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "07b456c9_91279454",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aecaa0f_5275f3e8",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18eed302_2c474190",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 19
@@ -91,6 +163,30 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b68f32_954cacfc",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18eed302_2c474190",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 84
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1aec9468_181d079e",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6303febc_4515c7d4",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 67
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e7f44b0_2ef2ae22",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 19
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "ad9f6aa5_4448e367",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e7f44b0_2ef2ae22",
+      "range": {
+        "startLine": 39,
+        "startChar": 49,
+        "endLine": 39,
+        "endChar": 61
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01ff879_f68c8f74",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 19
@@ -154,6 +298,24 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e05f8d_93907593",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01ff879_f68c8f74",
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "73b8adb5_6a5d33e1",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ba0b607_eaf39c12",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00bf0844_eb13bd85",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 19
@@ -200,6 +386,30 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0dce16_c1094a82",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00bf0844_eb13bd85",
+      "range": {
+        "startLine": 72,
+        "startChar": 40,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "1b4a3f9e_39335673",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Ok. This ended up getting removed though.",
+      "parentUuid": "d13867ec_c9f7c4ea",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 45
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b34ddbd4_46c1e49a",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 19
@@ -240,6 +474,24 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4cac096_c98bbfa5",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b34ddbd4_46c1e49a",
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -266,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "6ea8f59f_494d5eae",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "That is a much better way of doing it. I am not sure why I decided to put everything in one data structure.",
+      "parentUuid": "de7c2a30_3cdd965f",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40bd3487_ae8cad05",
         "filename": "fuzz/mem_hash_tree.h",
         "patchSetId": 19
@@ -286,6 +562,30 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7ef3c18_a1a00ecd",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40bd3487_ae8cad05",
+      "range": {
+        "startLine": 53,
+        "startChar": 34,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "0b6f9619_89301b1d",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Yes, I had intended on deleting this.",
+      "parentUuid": "d055d585_d2b0bcba",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a360f1fb_50ec24fb",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 19
@@ -332,6 +656,30 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1587400c_7a31c814",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a360f1fb_50ec24fb",
+      "range": {
+        "startLine": 44,
+        "startChar": 15,
+        "endLine": 44,
+        "endChar": 16
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -358,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "6da1a940_b92526de",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "363a151e_db476e66",
+      "range": {
+        "startLine": 68,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38af965f_6a3fffbd",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 19
@@ -381,6 +753,30 @@
     },
     {
       "key": {
+        "uuid": "7543f204_0b04322e",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38af965f_6a3fffbd",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ea190d9_70119fac",
         "filename": "fuzz/span.h",
         "patchSetId": 19
@@ -395,6 +791,24 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a14549_521f2e14",
+        "filename": "fuzz/span.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea190d9_70119fac",
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -421,6 +835,30 @@
     },
     {
       "key": {
+        "uuid": "1e6c4295_8432026e",
+        "filename": "fuzz/span.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "I had used this at one point, but it looks like it isn\u0027t used anymore so I am going to remove it, but if I add it back I will use subspan, first, or last.",
+      "parentUuid": "09a49d4f_d13b6b33",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57045729_19e8ae6c",
         "filename": "fuzz/span.h",
         "patchSetId": 19
@@ -444,6 +882,30 @@
     },
     {
       "key": {
+        "uuid": "2da9847e_550fcf67",
+        "filename": "fuzz/span.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57045729_19e8ae6c",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 54
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b6e0334_4ef37888",
         "filename": "fuzz/span.h",
         "patchSetId": 19
@@ -464,6 +926,30 @@
       "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec54544b_5a2798bb",
+        "filename": "fuzz/span.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-10-31T00:07:25Z",
+      "side": 1,
+      "message": "I originally wrote it this way because I was missing a constructor that allowed conversion from span\u003cT\u003e to span\u003cconst T\u003e. I added the constructor and now this function is not needed.",
+      "parentUuid": "0b6e0334_4ef37888",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 10
+      },
+      "revId": "faab3fe506a7886768424539614f659e0d9e61fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
