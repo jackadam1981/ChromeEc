@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "21837766_4c19c76b",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T06:14:40Z",
+      "side": 1,
+      "message": "Are you guys ok with this approach?",
+      "parentUuid": "dee9bc9e_f9a3cd2d",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1923b17_a87d9f00",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8bf8dd39_6da21131",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T06:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88b23555_6e9a721a",
+      "range": {
+        "startLine": 938,
+        "startChar": 9,
+        "endLine": 938,
+        "endChar": 20
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a137c1b3_9801013e",
         "filename": "include/task.h",
         "patchSetId": 2
@@ -154,6 +202,30 @@
       "side": 1,
       "message": "Yes good point - I wanted to ask you guys about this ;)",
       "parentUuid": "a137c1b3_9801013e",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c8c599_2b2351f6",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T06:14:40Z",
+      "side": 1,
+      "message": "It seems the gap was created with the TASK_EVENT_I2C_IDLE stuff above was added:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/363992/20/include/task.h\n\n..so hopefully it\u0027s ok to re-use this now?",
+      "parentUuid": "eb5f4d8f_e68157bc",
       "range": {
         "startLine": 43,
         "startChar": 38,
@@ -213,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "a2414dc7_2e587073",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T06:14:40Z",
+      "side": 1,
+      "message": "IIRC the conclusion here was that we didn\u0027t think it was useful for a task to be able to reset itself using this mechanism - I\u0027ve documented that and enforced it in the task_reset function",
+      "parentUuid": "89c01da0_c2e233cf",
+      "range": {
+        "startLine": 280,
+        "startChar": 58,
+        "endLine": 281,
+        "endChar": 22
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2e7e0cd_33b66219",
         "filename": "include/task.h",
         "patchSetId": 2
@@ -257,6 +353,30 @@
       "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736cf49d_7fa4eabf",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-10-31T06:14:40Z",
+      "side": 1,
+      "message": "I think we discussed this and the conclusion was to include this, please correct me if I am misremembering though!",
+      "parentUuid": "f7dde802_699c5b5e",
+      "range": {
+        "startLine": 285,
+        "startChar": 29,
+        "endLine": 285,
+        "endChar": 38
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
