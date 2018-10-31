@@ -1171,10 +1171,8 @@ void wov_start_i2s_capture(void)
 
 	CLEAR_BIT(NPCX_WOV_FIFO_CNT, NPCX_WOV_FIFO_CNT_I2S_FFRST);
 
-	//wov_interrupt_enable(WOV_I2SFIFO_OVERRUN_INT_INDX, 1);
-
-        // This will cause watchdog crash!
-	//wov_interrupt_enable(WOV_I2SFIFO_UNDERRUN_INT_INDX, 1);
+	wov_interrupt_enable(WOV_I2SFIFO_OVERRUN_INT_INDX, 1);
+	wov_interrupt_enable(WOV_I2SFIFO_UNDERRUN_INT_INDX, 1);
 }
 
 /**
