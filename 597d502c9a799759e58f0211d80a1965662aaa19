@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eb48a34_e0a2971a",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-10-31T22:34:22Z",
+      "side": 1,
+      "message": "Perhaps do this last, once revoke is known to have succeeded.",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83384279_670d3fc9",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-10-31T22:34:22Z",
+      "side": 1,
+      "message": "Per the specs, these certs default to 0x2, perhaps they need to be zero\u0027d?\nhttps://android-io.teams.x20web.corp.google.com/specs/haven/revB2/submod/keymgr/KEYMGR_CERT_REVOKE_CTRL0.html",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f80fa4_5f09acad",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-10-31T22:34:22Z",
+      "side": 1,
+      "message": "There\u0027s no need to cycle through the app-ids.  Also, just disable hidden-key usage, set these to zero: KEYMGR_AES_USE_HIDDEN_KEY_ENABLE, KEYMGR_SHA_USE_HIDDEN_KEY_ENABLE.",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7bcb5bb_c58fa627",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2018-10-31T22:34:22Z",
+      "side": 1,
+      "message": "You really won\u0027t see any errors unless you try to run the key-ladder -- so above here you could try to run a  key-ladder step and expect an error (since the certs should have been disabled).",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
