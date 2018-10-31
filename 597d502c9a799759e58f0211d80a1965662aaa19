@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e0bb90d5_0a673784",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-31T22:39:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6eb48a34_e0a2971a",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83384279_670d3fc9",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "068a3b93_b6ba0e33",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-31T22:39:08Z",
+      "side": 1,
+      "message": "This code writes MASK, which is 0x03 to clear them:\nhttps://cs.corp.google.com/piper///depot/google3/security/haven/cros_loader/cros_loader.c?q\u003dREVOKE+file:%5E//depot/google3/security/haven/cros_loader/+package:%5Epiper$\u0026dr\u003dCSs\u0026l\u003d34",
+      "parentUuid": "83384279_670d3fc9",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "02856031_04c14033",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-31T22:39:08Z",
+      "side": 1,
+      "message": "I did this code instead of Line 316~317, but no good:\n\n\tGWRITE_FIELD(KEYMGR, AES_USE_HIDDEN_KEY, INDEX,\n\t\t0x2a0 + (appid * 2));\n\tGWRITE_FIELD(KEYMGR, AES_USE_HIDDEN_KEY, ENABLE, 0);",
+      "parentUuid": "b9f80fa4_5f09acad",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7bcb5bb_c58fa627",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77546139_979835f2",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-10-31T22:39:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7bcb5bb_c58fa627",
+      "revId": "597d502c9a799759e58f0211d80a1965662aaa19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
