@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d7702af_0ba18ce7",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-10-31T05:59:12Z",
+      "side": 1,
+      "message": "Do we need to undo the pullup on this pin when PP5000 is off? I\u0027m worried that the pullup will leak power back into the power switch unless that chip is blocking that pullup somehow.",
+      "range": {
+        "startLine": 127,
+        "startChar": 52,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "43f1de9a0d10a12b8e85a3e9347ce640e50463c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
