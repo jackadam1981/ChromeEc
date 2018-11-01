@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cbb1808_f3a398d0",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-11-01T17:45:35Z",
+      "side": 1,
+      "message": "Can we add EC_CMD_GET_NEXT_EVENT, EC_CMD_MOTION_SENSE_CMD to this list?\n\nThese are the commands that the kernel uses to read the sensor FIFO",
+      "revId": "096a179e0c7e7e1845e61ab40392d33a60b9694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
