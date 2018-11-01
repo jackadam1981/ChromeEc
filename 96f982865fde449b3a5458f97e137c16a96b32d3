@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "8d52bc0d_2e364747",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-01T17:31:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0d286b5_ce1a202e",
+      "range": {
+        "startLine": 637,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 53
+      },
+      "revId": "96f982865fde449b3a5458f97e137c16a96b32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "367e9f89_73998e2f",
         "filename": "board/cr50/board.h",
         "patchSetId": 5
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "1db92c23_d266947d",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 41
+      },
+      "revId": "96f982865fde449b3a5458f97e137c16a96b32d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "542f99de_8adc0c32",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-01T17:31:54Z",
+      "side": 1,
+      "message": "508 and 506 aren\u0027t powers of 2. What adds to them to get them to 512?",
+      "parentUuid": "bdd07445_ae1ed671",
       "range": {
         "startLine": 394,
         "startChar": 0,
