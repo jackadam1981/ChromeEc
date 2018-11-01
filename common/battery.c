@@ -21,6 +21,10 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+/* See config.h for details */
+const static int batt_host_full_factor = CONFIG_BATT_HOST_FULL_FACTOR;
+const static int batt_host_shutdown_pct = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
+
 #ifdef CONFIG_BATTERY_V2
 /*
  * Store battery information in these 2 structures. Main (lid) battery is always
@@ -200,6 +204,12 @@ static void print_battery_info(void)
 	if (check_print_error(battery_full_charge_capacity(&value)))
 		ccprintf("%d mAh\n", value);
 
+#ifdef CONFIG_CHARGER_V2
+	print_item_name("Display:");
+	value = charge_get_display_charge();
+	ccprintf("%d.%d %%\n", value / 10, value % 10);
+#endif
+
 	print_item_name("  Design:");
 	if (check_print_error(battery_design_capacity(&value)))
 		ccprintf("%d mAh\n", value);
@@ -227,6 +237,12 @@ static void print_battery_info(void)
 		}
 		ccprintf("%dh:%d\n", hour, minute);
 	}
+
+	print_item_name("full_factor:");
+	ccprintf("0.%d\n", batt_host_full_factor);
+
+	print_item_name("shutdown_soc:");
+	ccprintf("%d %%\n", batt_host_shutdown_pct);
 }
 
 void print_battery_debug(void)
@@ -556,6 +572,73 @@ static void battery_init(void)
 DECLARE_HOOK(HOOK_INIT, battery_init, HOOK_PRIO_DEFAULT);
 #endif /* HAS_TASK_HOSTCMD */
 #endif /* CONFIG_BATTERY_V2 */
+
+void battery_compensate_params(struct batt_params *batt)
+{
+	int numer, denom;
+	int *remain = &(batt->remaining_capacity);
+	int full = batt->full_capacity;
+
+	if ((batt->flags & BATT_FLAG_BAD_FULL_CAPACITY) ||
+			(batt->flags & BATT_FLAG_BAD_REMAINING_CAPACITY))
+		return;
+
+	if (*remain <= 0 || full <= 0)
+		return;
+
+	/* Some batteries don't update full capacity as often. */
+	if (*remain > full)
+		*remain = full;
+
+	/*
+	 * EC calculates the display SoC like how Powerd used to do. Powerd
+	 * reads the display SoC from the EC. This design allows the system to
+	 * behave consistently on a single SoC value across all power states.
+	 *
+	 * Display SoC is computed as follows:
+	 *
+	 *   actual_soc = 100 * remain / full
+	 *
+	 *		   actual_soc - shutdown_pct
+	 *   display_soc = --------------------------- x 1000
+	 *		   full_factor - shutdown_pct
+	 *
+	 *		   (100 * remain / full) - shutdown_pct
+	 *		 = ------------------------------------ x 1000
+	 *		        full_factor - shutdown_pct
+	 *
+	 *		   100 x remain - full x shutdown_pct
+	 *		 = ----------------------------------- x 1000
+	 *		   full x (full_factor - shutdown_pct)
+	 */
+	numer = 1000 * ((100 * *remain) - (full * batt_host_shutdown_pct));
+	denom = full * (batt_host_full_factor - batt_host_shutdown_pct);
+	/* Rounding (instead of truncating) */
+	batt->display_charge = (numer + denom / 2) / denom;
+	if (batt->display_charge < 0)
+		batt->display_charge = 0;
+	if (batt->display_charge > 1000)
+		batt->display_charge = 1000;
+}
+
+#ifdef CONFIG_CHARGER
+static enum ec_status battery_display_soc(struct host_cmd_handler_args *args)
+{
+	struct ec_response_display_soc *r = args->response;
+
+	r->display_soc = charge_get_display_charge();
+	r->full_factor = batt_host_full_factor * 10;
+	r->shutdown_soc = batt_host_shutdown_pct * 10;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_DISPLAY_SOC, battery_display_soc, EC_VER_MASK(0));
+#endif
+
+__overridable void board_battery_compensate_params(struct batt_params *batt)
+{
+}
 
 __attribute__((weak)) int get_battery_manufacturer_name(char *dest, int size)
 {
