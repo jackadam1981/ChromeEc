@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7280ffa4_bfa3eddb",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-01T00:05:51Z",
+      "side": 1,
+      "message": "CONFIG_DPTF_MULTI_PROFILE can be defined even if there is a hall sensor. When a hall sensor is present (for instance eve), in enable_input_devices, based on board_set_tablet_mode(), we can set the dptf profile as well.\n\nCONFIG_LID_ANGLE_TABLET_MODE should be defined for all clamshell\nFor checking DPTF, introduce a new variable CONFIG_DPFT_LID_ANGLE (which is the current value of CONFIG_LID_ANGLE_TABLET_MODE) that use the lid angle to set the DDPN.",
+      "parentUuid": "2ffde129_d293dacc",
+      "revId": "19d87904d5f410c6a0e4265b176c0719e78847ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a67c6991_40a5ec04",
         "filename": "common/motion_lid.c",
         "patchSetId": 2
