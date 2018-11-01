@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "66f61f8f_13da581c",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-01T22:13:18Z",
+      "side": 1,
+      "message": "Some how your comment did not pop-up in my emails yesterday. I think I have done something similar to what you commented here as part of this and follow-up CLs. Also, I have udpated eve as a reference for those boards that use hall sensor. Please let me know if this looks good to you.",
+      "parentUuid": "7280ffa4_bfa3eddb",
+      "revId": "19d87904d5f410c6a0e4265b176c0719e78847ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a67c6991_40a5ec04",
         "filename": "common/motion_lid.c",
         "patchSetId": 2
