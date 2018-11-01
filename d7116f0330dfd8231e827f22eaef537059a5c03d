@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e5eb0f1_22ac6add",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-01T01:39:41Z",
+      "side": 1,
+      "message": "For the cases where the system is in S3/S5.\n\n1. bat_level \u003e BAT_LEVEL_PD_LIMIT\n   a. pd_limit_en \u003d 0 at beginning of the function\n      \u003d\u003e !pd_limit_en \u0026\u0026 (bat_level \u003e BAT_LEVEL_PD_LIMIT) is true, so\n         pd_limit_5v(1);\n   b. pd_limit_en \u003d 1 at beginning of the function\n      \u003d\u003e None of the tests are true, so\n         pd_limit_5v(1);\n\n2. bat_level \u003c BAT_LEVEL_PD_LIMIT\n   a. pd_limit_en \u003d 0 at beginning of the function\n      \u003d\u003e None of the tests are true, so\n         pd_limit_5v(0);\n   b. pd_limit_en \u003d 1 at beginning of the function\n      \u003d\u003e pd_limit_en \u0026\u0026 (bat_level \u003c BAT_LEVEL_PD_LIMIT) is true, so\n         pd_limit_5v(0);\n\n(btw, there is some hysteresis when bat_level \u003d\u003d BAT_LEVEL_PD_LIMIT, is that desired? I don\u0027t think bat_level fluctuates a lot, so this should not be required?)\n\nFor the cases where the system is in S0:\n  - pd_limited_en is set to 0, no matter it\u0027s previous state.\n\nSo basically you don\u0027t need pd_limit_en to be static (the result is the same in all cases).\n\nI think a simple expression like this, matching the comment above the function, should do it:\n\npd_limit_en \u003d chipset_in_state(CHIPSET_STATE_ANY_OFF |\n\t\t\t      CHIPSET_STATE_ANY_SUSPEND) \u0026\u0026 bat_level \u003e BAT_LEVEL_PD_LIMIT;",
+      "revId": "d7116f0330dfd8231e827f22eaef537059a5c03d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
