@@ -1588,6 +1588,7 @@ void charger_task(void *u)
 
 		charger_get_params(&curr.chg);
 		battery_get_params(&curr.batt);
+		battery_compensate_params(&curr.batt);
 
 		if (prev_bp != curr.batt.is_present) {
 			prev_bp = curr.batt.is_present;

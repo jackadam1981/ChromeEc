@@ -403,4 +403,6 @@ void battery_memmap_set_index(enum battery_index index);
 extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
 #endif
 
+void battery_compensate_params(struct batt_params *batt);
+
 #endif /* __CROS_EC_BATTERY_H */
