@@ -45,6 +45,7 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT <= EC_USB_PD_MAX_PORTS);
  *
  * Can be limited to constant debug_level by CONFIG_USB_PD_DEBUG_LEVEL
  */
+#define CONFIG_USB_PD_DEBUG_LEVEL 1
 #ifdef CONFIG_USB_PD_DEBUG_LEVEL
 static const int debug_level = CONFIG_USB_PD_DEBUG_LEVEL;
 #else
@@ -2784,8 +2785,10 @@ void pd_task(void *u)
 			}
 			/* Wait for CC debounce and VBUS present */
 			if (get_time().val < pd[port].cc_debounce ||
-			    !pd_is_vbus_present(port))
+			    !pd_is_vbus_present(port)) {
+			    	ccprints("pd_is_vbus_present(%d)", port, pd_is_vbus_present(port));
 				break;
+			}
 
 			if (pd_try_src_enable &&
 			    !(pd[port].flags & PD_FLAGS_TRY_SRC)) {

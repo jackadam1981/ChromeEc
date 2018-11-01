@@ -962,7 +962,6 @@ int charger_discharge_on_ac(int enable)
 	if ((reg ^ reg_copy) & BD9995X_CMD_CHGOP_SET2_CHOP_ALL)
 		CPRINTS("bd9995x: Chop Mode change, new val = %d",
 			reg & BD9995X_CMD_CHGOP_SET2_CHOP_ALL);
-
 	/*
 	 * Suspend USB charging and DC/DC converter so that BATT_LEARN mode
 	 * doesn't auto exit if VBAT < VSYSVAL_THL_SET and also it helps to
