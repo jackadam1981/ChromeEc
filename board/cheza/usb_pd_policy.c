@@ -327,8 +327,6 @@ static int svdm_dp_config(int port, uint32_t *payload)
 static void svdm_dp_post_config(int port)
 {
 	dp_flags[port] |= DP_FLAGS_DP_ON;
-	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
-		return;
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
@@ -339,11 +337,6 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	const struct usb_mux *mux = &usb_muxes[port];
 
 	dp_status[port] = payload[1];
-	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
-		if (lvl)
-			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
-		return 1;
-	}
 
 	mux->hpd_update(port, lvl, irq);
 
