@@ -22,6 +22,30 @@
       "revId": "43f1de9a0d10a12b8e85a3e9347ce640e50463c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa7e1cb_7a54482c",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-01T23:58:44Z",
+      "side": 1,
+      "message": "Right. Will fix it in another patch.",
+      "parentUuid": "2d7702af_0ba18ce7",
+      "range": {
+        "startLine": 127,
+        "startChar": 52,
+        "endLine": 127,
+        "endChar": 64
+      },
+      "revId": "43f1de9a0d10a12b8e85a3e9347ce640e50463c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
