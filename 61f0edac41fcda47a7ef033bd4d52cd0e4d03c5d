@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1625d52a_f46953d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-01T22:15:02Z",
+      "side": 1,
+      "message": "This change should be a NO-OP from host side since it ignores the profile and uses default values if mainboard in coreboot does not provide different sets of temperature thresholds.",
+      "revId": "61f0edac41fcda47a7ef033bd4d52cd0e4d03c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
