@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06f91efe_65f8a604",
+        "filename": "util/iteflash.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 1,
+      "message": "wow, never heard of this type before - what does it do, makes the compiler wrap code modifying this variable with some signal processing aware code?",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "cc153f1422dd61a7f7923e574305313ccc7ebe18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

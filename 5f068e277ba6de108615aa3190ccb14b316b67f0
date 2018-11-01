@@ -81,6 +81,24 @@
       "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69196125_10bb0482",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 0,
+      "message": "I\u0027m sorry to hear that this took 30 minutes, \u0027git reset HEAD~\u0027 and \u0027git add -p util/iteflash.c\u0027 should have taken 3 minutes at most.\n\nDid you do it some other way?",
+      "parentUuid": "b78e395d_9437e97b",
+      "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

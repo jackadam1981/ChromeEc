@@ -46,6 +46,133 @@
       "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea77eb5d_41619def",
+        "filename": "util/flash_ec",
+        "patchSetId": 17
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 1,
+      "message": "I don\u0027t really see this as a problem: you submit a stack of two patches instead of one, this would not make commit queue propagation time any longer.\n\nHaving a proper process, where there are no drive by edits has its merits, it is worth some extra effort.",
+      "parentUuid": "47629cbd_1f1e0eb5",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 26
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d834154c_30d48464",
+        "filename": "util/flash_ec",
+        "patchSetId": 17
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 1,
+      "message": "I hate to say this, but here and in line 1042 still two more unrelated changes :)\n\nah, you already fixed that!",
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f48c2246_16ea7822",
+        "filename": "util/flash_ec",
+        "patchSetId": 17
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 1,
+      "message": "from looking at iteflas.c ftdi is still a default, no need to add it here?",
+      "range": {
+        "startLine": 1053,
+        "startChar": 20,
+        "endLine": 1053,
+        "endChar": 40
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c462331c_f368a4b9",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 1,
+      "message": "ah, I missed that debug used to be a file scope variable.",
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdbc81b_ecfe8cf2",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 1,
+      "message": "just a nit: could cache chnd-\u003econf.debug in a local variable.",
+      "range": {
+        "startLine": 368,
+        "startChar": 55,
+        "endLine": 368,
+        "endChar": 71
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6811b24b_be02ea20",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T00:48:40Z",
+      "side": 1,
+      "message": "another nit: comments are supposed to be sentences ending with a period.",
+      "range": {
+        "startLine": 485,
+        "startChar": 3,
+        "endLine": 485,
+        "endChar": 13
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
