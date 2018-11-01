@@ -119,8 +119,17 @@ enum tpm_modes {
 };
 
 /*
- * This function returns the current TPM_MODE value.
+ * This function returns whether TPM mode was ever disabled before
+ * since the hard reset.
+ *
+ * Returns 1 if tpm was ever disabled since the latest reset, or
+ *         0 otherwise.
  */
-enum tpm_modes get_tpm_mode(void);
+int tpm_was_disabled_before(void);
+
+/*
+ * Display TPM Mode information on console.
+ */
+void print_tpm_mode(void);
 
 #endif	/* __CROS_EC_TPM_REGISTERS_H */

@@ -23,6 +23,7 @@
  *	SCRATCH17 - deep sleep count
  *	SCRATCH18 - Preserving USB_DCFG through deep sleep
  *	SCRATCH19 - Preserving USB data sequencing PID through deep sleep
+ *      SCRATCH20 - Bit [1:0]: TPM mode
  *
  * PWRDN_SCRATCH 28 - 31 - Reserved for boot rom
  */
