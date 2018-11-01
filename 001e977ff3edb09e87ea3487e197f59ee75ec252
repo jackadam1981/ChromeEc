@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa3667f4_fdbe7b6c",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-01T01:24:56Z",
+      "side": 1,
+      "message": "nit, spaces around 0",
+      "range": {
+        "startLine": 350,
+        "startChar": 44,
+        "endLine": 350,
+        "endChar": 45
+      },
+      "revId": "001e977ff3edb09e87ea3487e197f59ee75ec252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1dc8c4_d2079044",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-01T01:24:56Z",
+      "side": 1,
+      "message": "Creating a variable on the stack seems inefficient, why not loop over the tpm_seed?\n\nYou can probably do something like this, to keep the \"safe_\" part of the comparison:\n\nzero \u003d 0;\n\nfor ...\n   zero |\u003d tpm_seed[i];\n\nreturn zero !\u003d 0;",
+      "revId": "001e977ff3edb09e87ea3487e197f59ee75ec252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e82510_d38b2281",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-01T01:24:56Z",
+      "side": 1,
+      "message": "I\u0027d just do a !\u003d, and get rid of the strdup. And print the actual vs expected length so it\u0027s easier to get it right.",
+      "range": {
+        "startLine": 1485,
+        "startChar": 18,
+        "endLine": 1485,
+        "endChar": 19
+      },
+      "revId": "001e977ff3edb09e87ea3487e197f59ee75ec252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
