@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0aef5907_9685d28f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-01T17:55:56Z",
+      "side": 1,
+      "message": "1) I just worry that we add more failure statuses in the future and forget to update this code. \n2) yes, we can just replace them with a single success (and have a separate OUT flag parameter if you think differentiating is important, but the callers can always check if the object existed by reading it before doing write).\n3) in this particular case, since we are only calling this write if read returned read_not_found above, shouldn\u0027t it always be just \u0027!\u003d created\u0027 here (\u0027updated\u0027 would also be unexpected...)?",
+      "parentUuid": "a2316cf3_cf567f15",
+      "range": {
+        "startLine": 116,
+        "startChar": 47,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "fc5d1bd550f1a6e2d171c236fd8099a33024fb28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc84aa2d_c7c1e315",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
