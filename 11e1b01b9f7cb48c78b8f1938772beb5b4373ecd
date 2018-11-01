@@ -22,6 +22,30 @@
       "revId": "11e1b01b9f7cb48c78b8f1938772beb5b4373ecd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c62b7e8e_d03b92aa",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T18:02:53Z",
+      "side": 1,
+      "message": "this register is written by the RO on every reboot.",
+      "parentUuid": "efa8a6ec_b23c8345",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "11e1b01b9f7cb48c78b8f1938772beb5b4373ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
