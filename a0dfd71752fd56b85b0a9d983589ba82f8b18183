@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3aeb9d7_78ba00dc",
+        "filename": "common/acpi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-11-01T22:16:47Z",
+      "side": 1,
+      "message": "it seems to be initialized to 2 if multi profile is enabled",
+      "range": {
+        "startLine": 42,
+        "startChar": 66,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "a0dfd71752fd56b85b0a9d983589ba82f8b18183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
