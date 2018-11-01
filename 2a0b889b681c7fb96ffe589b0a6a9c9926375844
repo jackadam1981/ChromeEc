@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "666081f2_d98911ed",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-01T17:50:57Z",
+      "side": 1,
+      "message": "\u003e what would we do if we knew the RAM copy was updated but the commit failed?\n\nwe\u0027ve created a generic function here. I don\u0027t know what use cases it will have.\npossibly every NvCommit() fail should just trigger re-reading in-memory representation from flash to stay consistent (or mark RAM representation as \u0027invalid\u0027, so that further operations with it fail - after all, commit failure is a big deal). then it\u0027s indeed not up to this function to make a distinction.\n\nand in u2f cases specifically, the difference between write \u0026 commit fails should not be important. in either case it should do the same thing (assuming we let the underlying nvmem layer care about the consistency).\n\ngiven the coming change in how nvmem objects are stored, I\u0027m going to move this discussion on what should happen on commit failure there, and accept this CL.",
+      "parentUuid": "74358cb9_1fbc11ca",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 22
+      },
+      "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32a1f87b_7965f0ea",
         "filename": "board/cr50/tpm_nvmem_ops.h",
         "patchSetId": 6
