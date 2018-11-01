@@ -118,6 +118,30 @@
       "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a41251e_bff617c8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1412,
+      "author": {
+        "id": 1300049
+      },
+      "writtenOn": "2018-11-01T02:21:19Z",
+      "side": 1,
+      "message": "Completely removed the A\u003d\u003dB check.",
+      "parentUuid": "fd4a8cc8_201dab53",
+      "range": {
+        "startLine": 1404,
+        "startChar": 0,
+        "endLine": 1412,
+        "endChar": 0
+      },
+      "revId": "1ac9d10e2f3201e84c3bfcafd2168d9c8cffe5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
