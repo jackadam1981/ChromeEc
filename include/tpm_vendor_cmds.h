@@ -78,6 +78,14 @@ enum vendor_cmd_cc {
 	 * If the input size is zero, it won't change TPM_MODE.
 	 * If either the input size is zero or the input value is valid,
 	 * it will response with the current tpm_mode value in uint8_t format.
+	 *
+	 *  Return code:
+	 *   VENDOR_RC_SUCCESS: successfully done.
+	 *   VENDOR_RC_INTERNAL_ERROR: failed for internal reason.
+	 *   VENDOR_RC_NOT_ALLOWED: failed in changing TPM_MODE,
+	 *                           since it is already set.
+	 *   VENDOR_RC_NO_SUCH_SUBCOMMAND: failed because the given sub-command
+	 *                                  is unknown.
 	 */
 	VENDOR_CC_TPM_MODE = 40,
 	/*
