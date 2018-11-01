@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d89c4d6b_d093fd69",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T22:53:04Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary, we are disabling the ladder only on \u0027disable\u0027 command, and at that time we won\u0027t be able to receive any other command anyways.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "0be5e547177ed80cdce4da4c827ecf0f331e94db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
