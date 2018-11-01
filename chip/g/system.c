@@ -129,12 +129,16 @@ void system_reset(int flags)
 
 	/*
 	 * On CR50 we want every reset be hard reset, causing the entire
-	 * chromebook to reboot: we don't want the TPM reset while the AP
-	 * stays up.
+	 * chromebook to reboot, except one case, SYSTEM_RESET_SOFT_H1.
+	 * Once H1 Keyladder is disabled, then it can be re-enabled back
+	 * through a reset. Meanwhile, we don't want it to reset EC during
+	 * a system S3 resume. For this reason, we allow a soft reset
+	 * exceptionally.
 	 */
-	GR_PMU_GLOBAL_RESET = GC_PMU_GLOBAL_RESET_KEY;
+	if ((flags & SYSTEM_RESET_SOFT_H1) == 0) {
 #else
 	if (flags & SYSTEM_RESET_HARD) {
+#endif  /* ^^^^^^^ CHIP_FAMILY_CR50 Not defined */
 		/* Reset the full microcontroller */
 		GR_PMU_GLOBAL_RESET = GC_PMU_GLOBAL_RESET_KEY;
 	} else {
@@ -166,7 +170,7 @@ void system_reset(int flags)
 			GC_PMU_LOW_POWER_DIS_START_LSB,
 			1);
 	}
-#endif  /* ^^^^^^^ CHIP_FAMILY_CR50 Not defined */
+
 
 	/* Wait for reboot; should never return  */
 	while (1)

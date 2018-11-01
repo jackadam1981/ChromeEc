@@ -287,3 +287,21 @@ int dcrypto_ladder_derive(enum dcrypto_appid appid, const uint32_t salt[8],
 	dcrypto_release_sha_hw();
 	return !error;
 }
+
+void DCRYPTO_ladder_revoke(void)
+{
+	/* Revoke certificates */
+	GWRITE(KEYMGR, CERT_REVOKE_CTRL0, 0xffffffff);
+
+	/* Wipe out the hidden keys cached in AES and SHA engines. */
+	GWRITE_FIELD(KEYMGR, AES_USE_HIDDEN_KEY, ENABLE, 0);
+	GWRITE_FIELD(KEYMGR, SHA_USE_HIDDEN_KEY, ENABLE, 0);
+
+	/* Clear usr_ready[] */
+	memset(usr_ready, 0, sizeof(usr_ready));
+}
+
+int DCRYPTO_ladder_is_revoked(void)
+{
+	return GREAD(KEYMGR, CERT_REVOKE_CTRL0) == 0;
+}

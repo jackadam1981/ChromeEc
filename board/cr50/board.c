@@ -849,6 +849,11 @@ int flash_regions_to_enable(struct g_flash_region *regions,
  */
 static void deferred_tpm_rst_isr(void)
 {
+	if (DCRYPTO_ladder_is_revoked()) {
+		system_reset(SYSTEM_RESET_SOFT_H1);
+		return;
+	}
+
 	CPRINTS("%s", __func__);
 
 	/*
@@ -1412,6 +1417,8 @@ static int command_sysinfo(int argc, char **argv)
 	ccprintf("TPM MODE:    %s (%d)\n",
 		(tpm_mode == TPM_MODE_DISABLED) ? "disabled" : "enabled",
 		tpm_mode);
+	ccprintf("Key Ladder:  %s\n",
+		DCRYPTO_ladder_is_revoked() ? ", disabled" : "enabled");
 
 	return EC_SUCCESS;
 }

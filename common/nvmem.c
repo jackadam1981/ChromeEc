@@ -601,3 +601,10 @@ int nvmem_commit(void)
 	/* Write active partition to NvMem */
 	return nvmem_save();
 }
+
+void nvmem_clear_cache(void)
+{
+	nvmem_lock_cache();
+	memset(nvmem_cache, 0xff, NVMEM_PARTITION_SIZE);
+	nvmem_release_cache();  /* Unlocked by nvmem_save() below. */
+}

@@ -279,6 +279,10 @@ const char *system_get_build_info(void);
  * Indicate that this reset was triggered by an AP watchdog
  */
 #define SYSTEM_RESET_AP_WATCHDOG        (1 << 5)
+/*
+ * Soft reset for H1.
+ */
+#define SYSTEM_RESET_SOFT_H1            (1 << 6)
 
 /**
  * Reset the system.
