@@ -7,15 +7,22 @@
 #include "config.h"
 #include "Global.h"
 #include "console.h"
+#include "dcrypto.h"
 #include "extension.h"
 #include "hooks.h"
+#include "system.h"
 #include "timer.h"
 #include "tpm_registers.h"
 #include "tpm_vendor_cmds.h"
 
 #define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 
-DECLARE_DEFERRED(tpm_stop);
+static void disable_tpm(void)
+{
+	tpm_stop();
+	DCRYPTO_ladder_revoke();
+}
+DECLARE_DEFERRED(disable_tpm);
 
 /*
  * On TPM reset event, tpm_reset_now() in tpm_registers.c clears TPM2 BSS memory
@@ -39,10 +46,22 @@ static enum vendor_cmd_rc set_tpm_mode(struct vendor_cmd_params *p)
 		if (s_tpm_mode != TPM_MODE_ENABLED_TENTATIVE)
 			return VENDOR_RC_NOT_ALLOWED;
 		mode_val = buffer[0];
+		/*
+		 * If it is to be disabled, call tpm_stop() deferred so that
+		 * this vendor command can be responded before TPM stops.
+		 *
+		 * If TPM_MODE is to be enabled but Key Ladder is revoked
+		 * (possibly done by the previous AltOS boot), then do hard-
+		 * reset to restore Key Ladder.
+		 */
 		if (mode_val == TPM_MODE_DISABLED)
-			hook_call_deferred(&tpm_stop_data, 10 * MSEC);
-		else if (mode_val != TPM_MODE_ENABLED)
+			hook_call_deferred(&disable_tpm_data, 10 * MSEC);
+		else if (mode_val == TPM_MODE_ENABLED) {
+			if (DCRYPTO_is_ladder_revoked())
+				system_reset(SYSTEM_RESET_HARD);
+		} else
 			return VENDOR_RC_NOT_ALLOWED;
+
 		s_tpm_mode = mode_val;
 	}
 
@@ -57,4 +76,3 @@ enum tpm_modes get_tpm_mode(void)
 {
 	return s_tpm_mode;
 }
-
