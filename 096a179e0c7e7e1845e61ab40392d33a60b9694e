@@ -34,6 +34,24 @@
       "revId": "096a179e0c7e7e1845e61ab40392d33a60b9694e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d88de1_04e55beb",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-11-01T20:14:15Z",
+      "side": 1,
+      "message": "One way to see them happen is to grab the script from CL:1242213 and run it on your board - essentially, you have to poke at the cros_ec_sensors_ring FIFO to get them to happen",
+      "parentUuid": "82f2fc36_4c9e4f69",
+      "revId": "096a179e0c7e7e1845e61ab40392d33a60b9694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
