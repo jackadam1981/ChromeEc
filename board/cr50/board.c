@@ -1364,9 +1364,10 @@ static int command_sysinfo(int argc, char **argv)
 	ccprintf("Rollback:    %s\n", rollback_str);
 
 	tpm_mode = get_tpm_mode();
-	ccprintf("TPM MODE:    %s (%d)\n",
+	ccprintf("TPM MODE:    %s (%d)%s\n",
 		(tpm_mode == TPM_MODE_DISABLED) ? "disabled" : "enabled",
-		tpm_mode);
+		tpm_mode,
+		DCRYPTO_is_ladder_revoked() ? ", KeyLadder revoked" : "");
 
 	return EC_SUCCESS;
 }
