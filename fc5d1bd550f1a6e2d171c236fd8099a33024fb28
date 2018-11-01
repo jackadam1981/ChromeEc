@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2316cf3_cf567f15",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-01T04:50:27Z",
+      "side": 1,
+      "message": "there are two success statuses - created and updated, I can update to check for one of those if you\u0027d prefer, it just seemed a bit messy to do so\n\n(or just replace those two statuses with a single success - I\u0027m not sure we need to differentiate)",
+      "parentUuid": "3b615003_2863d18b",
+      "range": {
+        "startLine": 116,
+        "startChar": 47,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "fc5d1bd550f1a6e2d171c236fd8099a33024fb28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc84aa2d_c7c1e315",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
