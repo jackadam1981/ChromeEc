@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b894c086_ce58aada",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-11-01T21:10:45Z",
+      "side": 1,
+      "message": "Might be useful to print this value in print_battery_params()",
+      "revId": "be62e1172425b47386762253ac9af9f37f84c228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d430da9d_63103b37",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-11-01T21:10:45Z",
+      "side": 1,
+      "message": "a quick comment here would be helpful for people who try to understand this in the future",
+      "revId": "be62e1172425b47386762253ac9af9f37f84c228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94191a6d_d21bb194",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-11-01T21:10:45Z",
+      "side": 1,
+      "message": "this one doesn\u0027t seem to be used?",
+      "revId": "be62e1172425b47386762253ac9af9f37f84c228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
