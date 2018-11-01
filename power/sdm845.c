@@ -473,8 +473,7 @@ static void power_off(void)
 	/* If it is forced down, wait to ensure POWER_GOOD down */
 	wait_pmic_pwron(0, FORCE_OFF_RESPONSE_TIMEOUT);
 
-	/* Turn off the 3.3V and 5V rails. */
-	gpio_set_level(GPIO_EN_PP3300_A, 0);
+	/* Turn off the 5V rail. */
 #ifdef CONFIG_POWER_PP5000_CONTROL
 	power_5v_enable(task_get_current(), 0);
 #else /* !defined(CONFIG_POWER_PP5000_CONTROL) */
@@ -527,8 +526,7 @@ static void power_on(void)
 	 */
 	hook_notify(HOOK_CHIPSET_PRE_INIT);
 
-	/* Enable the 3.3V and 5V rail. */
-	gpio_set_level(GPIO_EN_PP3300_A, 1);
+	/* Enable the 5V rail. */
 #ifdef CONFIG_POWER_PP5000_CONTROL
 	power_5v_enable(task_get_current(), 1);
 #else /* !defined(CONFIG_POWER_PP5000_CONTROL) */
