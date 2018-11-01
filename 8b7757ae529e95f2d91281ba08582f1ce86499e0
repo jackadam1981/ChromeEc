@@ -16,6 +16,47 @@
       "revId": "8b7757ae529e95f2d91281ba08582f1ce86499e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b3215bb_d1259d34",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-01T18:00:38Z",
+      "side": 1,
+      "message": "I\u0027m personally fine with it being in the same CL.",
+      "parentUuid": "74ffa5af_d006235e",
+      "revId": "8b7757ae529e95f2d91281ba08582f1ce86499e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b52355_668ace36",
+        "filename": "board/cr50/tpm2/platform.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-01T18:00:38Z",
+      "side": 1,
+      "message": "nit: tab :P",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "8b7757ae529e95f2d91281ba08582f1ce86499e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
