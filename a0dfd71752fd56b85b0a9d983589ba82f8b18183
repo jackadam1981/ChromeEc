@@ -22,6 +22,30 @@
       "revId": "a0dfd71752fd56b85b0a9d983589ba82f8b18183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3038f88_f3830144",
+        "filename": "common/acpi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-01T22:26:18Z",
+      "side": 1,
+      "message": "Aah yes.. Fixed it now.",
+      "parentUuid": "e3aeb9d7_78ba00dc",
+      "range": {
+        "startLine": 42,
+        "startChar": 66,
+        "endLine": 42,
+        "endChar": 67
+      },
+      "revId": "a0dfd71752fd56b85b0a9d983589ba82f8b18183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
