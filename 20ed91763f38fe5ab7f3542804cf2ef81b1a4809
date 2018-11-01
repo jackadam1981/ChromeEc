@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d93139d5_e3000d6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-01T22:58:57Z",
+      "side": 1,
+      "message": "Not yet. Will modify this test so that it can verify the CERT_REVOKE_CTRL register value.\nMeanwhile, manually checking it with \"md\" command at console.",
+      "parentUuid": "8d5da74d_0cc0074c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "20ed91763f38fe5ab7f3542804cf2ef81b1a4809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3b012c5_0e48b634",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "42fcbb8f_a29ac0d8",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-01T22:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b012c5_0e48b634",
+      "range": {
+        "startLine": 49,
+        "startChar": 41,
+        "endLine": 49,
+        "endChar": 50
+      },
+      "revId": "20ed91763f38fe5ab7f3542804cf2ef81b1a4809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20fe52c7_b2d4818a",
         "filename": "chip/g/dcrypto/dcrypto.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "20ed91763f38fe5ab7f3542804cf2ef81b1a4809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2b5070_c573f6ba",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-01T22:58:57Z",
+      "side": 1,
+      "message": "It gets restored to the default value after H1 power reset, and the value get adjusted by cros_loader.\n\nThanks for reminding me this. It is a problem when it is a Cros mode after warm boot from AltOS. \nWrote more detail in b/118504817#4.",
+      "parentUuid": "20fe52c7_b2d4818a",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 33
+      },
+      "revId": "20ed91763f38fe5ab7f3542804cf2ef81b1a4809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

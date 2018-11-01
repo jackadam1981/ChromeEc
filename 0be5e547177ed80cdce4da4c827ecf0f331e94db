@@ -22,6 +22,30 @@
       "revId": "0be5e547177ed80cdce4da4c827ecf0f331e94db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3993c66a_d7313052",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-01T22:58:57Z",
+      "side": 1,
+      "message": "I have an concern in Cros warm reboot from AltOS.\nMore detail is in b/118504817, comment#4 and comment#5.",
+      "parentUuid": "d89c4d6b_d093fd69",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "0be5e547177ed80cdce4da4c827ecf0f331e94db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
