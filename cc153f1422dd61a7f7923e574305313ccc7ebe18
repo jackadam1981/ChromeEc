@@ -22,6 +22,30 @@
       "revId": "cc153f1422dd61a7f7923e574305313ccc7ebe18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be32ba8_33616eb9",
+        "filename": "util/iteflash.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T21:58:30Z",
+      "side": 1,
+      "message": "It\u0027s an integer type whose access is guaranteed to be atomic even in the face of signal interrupts.  AFAIK it\u0027s never wrapped with special instructions, rather it\u0027s a type that can be written to or read from (not both of course) in a single instruction (based on the target architecture).\n\nAFAIK no other type in C or C++ has the same guarantee.\n\nOn its own sig_atomic_t is just an integer type, there is nothing else special about it, so volatile is also needed to prevent the compiler from optimizing away repeated reads of it.",
+      "parentUuid": "06f91efe_65f8a604",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "cc153f1422dd61a7f7923e574305313ccc7ebe18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

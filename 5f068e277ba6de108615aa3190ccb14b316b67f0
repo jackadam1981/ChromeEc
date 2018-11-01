@@ -99,6 +99,24 @@
       "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51e71829_376607a8",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T21:58:30Z",
+      "side": 0,
+      "message": "I created a new branch for the no-op cleanup CL using \"repo start.\"  I then remade those changes, then rebased the branch with this CL on the cleanup CL branch using \"git rebase \u003ccleanup_branch\u003e.\"  Then I had to rebase two more branches in the same way, and redo all of that each time I modified the cleanup CL.  At least once I made a mistake in how I resolved merge conflicts during the rebasing, which led to situations like duplicate CLs in the relation chain, which I had to figure out how to get rid safely.  I\u0027m still not sure why that happened based on my command history.\n\nThere was also a point at which I thought git checkout --ours meant the change in the current branch, but it turned out to mean take the change from the base branch being merged in.\n\nI am new to git.",
+      "parentUuid": "69196125_10bb0482",
+      "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6c5633a6_7754dc29",
+        "filename": "util/flash_ec",
+        "patchSetId": 17
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T21:58:30Z",
+      "side": 1,
+      "message": "I did revert this already.\n\nIt takes longer because Gerrit seems to always serialize changes to the same file, even when they\u0027re in a relation chain together.  After separating the no-op cleanup, this CL showed as \"merge conflict\" - that\u0027s because of the cleanup CL editing the same file.  Thus no way to bundle the cleanup CL and the next CL in the same CQ run.  Sometimes CQ only takes a few hours, but often it takes days of retries to get past unrelated failures.\n\nI might be doing something wrong to cause the \"merge conflict\" status in these scenarios.  I\u0027m new to git and gerrit.",
+      "parentUuid": "ea77eb5d_41619def",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 26
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d834154c_30d48464",
         "filename": "util/flash_ec",
         "patchSetId": 17
@@ -113,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "0d290cd2_de6e4e4e",
+        "filename": "util/flash_ec",
+        "patchSetId": 17
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T21:58:30Z",
+      "side": 1,
+      "message": "Future-proofing.  Granted it doesn\u0027t really matter since the same CL that switches the default will also edit this file, but I like the explicit intent here, since the rest of this is written assuming Servo v2 / FTDI.",
+      "parentUuid": "f48c2246_16ea7822",
+      "range": {
+        "startLine": 1053,
+        "startChar": 20,
+        "endLine": 1053,
+        "endChar": 40
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c462331c_f368a4b9",
         "filename": "util/iteflash.c",
         "patchSetId": 17
@@ -127,6 +175,24 @@
       "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603e7e2e_c53de2dc",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T21:58:30Z",
+      "side": 1,
+      "message": "[marking resolved]",
+      "parentUuid": "c462331c_f368a4b9",
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -153,6 +219,30 @@
     },
     {
       "key": {
+        "uuid": "d38ff85c_274134e4",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T21:58:30Z",
+      "side": 1,
+      "message": "Hrmm...I\u0027ve decided not to because it\u0027s not used in a loop within the function.  I don\u0027t feel strongly about that though.",
+      "parentUuid": "cbdbc81b_ecfe8cf2",
+      "range": {
+        "startLine": 368,
+        "startChar": 55,
+        "endLine": 368,
+        "endChar": 71
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6811b24b_be02ea20",
         "filename": "util/iteflash.c",
         "patchSetId": 17
@@ -173,6 +263,30 @@
       "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5f43c7_9c8e83a4",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T21:58:30Z",
+      "side": 1,
+      "message": "This is a pre-existing comment that I just fixed the whitespace formatting of.  I wouldn\u0027t mind turning this into a sentence, but I don\u0027t think I understand exactly what this is doing well enough to clarify this comment.\n\nTurning all the comments in this file into sentences could be its own CL...not one I want to put in this relation chain though.",
+      "parentUuid": "6811b24b_be02ea20",
+      "range": {
+        "startLine": 485,
+        "startChar": 3,
+        "endLine": 485,
+        "endChar": 13
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
