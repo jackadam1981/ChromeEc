@@ -758,6 +758,8 @@ static int update_static_battery_info(void)
 	*(int *)host_get_memmap(EC_MEMMAP_BATT_RATE) = 0;
 	*(int *)host_get_memmap(EC_MEMMAP_BATT_CAP) = 0;
 	*(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC) = 0;
+	*(int *)host_get_memmap(EC_MEMMAP_BATT_FULL_SHIFT) =
+			BATTERY_ACPI_FULL_SHIFT;
 	if (extpower_is_present())
 		batt_flags |= EC_BATT_FLAG_AC_PRESENT;
 	*host_get_memmap(EC_MEMMAP_BATT_FLAG) = batt_flags;
