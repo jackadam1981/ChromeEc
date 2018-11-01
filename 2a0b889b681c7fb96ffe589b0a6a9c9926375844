@@ -222,6 +222,30 @@
       "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07bb7d31_e1945f59",
+        "filename": "board/cr50/tpm_nvmem_ops.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-01T15:50:00Z",
+      "side": 1,
+      "message": "that\u0027s right, I forgot that read_tpm_nvmem calls initialization explicitly.",
+      "parentUuid": "3d641dfd_caa4c824",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
