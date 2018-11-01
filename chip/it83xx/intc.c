@@ -11,8 +11,47 @@
 #include "task.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "console.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
+/* Store each port last message id of received packet */
+static int message_id_last[USBPD_PORT_COUNT];
+
+/* Init last received message id variable */
+void init_message_id_last_var(int port)
+{
+	/* Init invalid value (message id = 0 ~ 7) */
+	message_id_last[port] = 0xff;
+}
+
+static int check_message_id_repeat(int port)
+{
+	uint16_t msg_header = IT83XX_USBPD_RMH(port);
+	int msg_id = PD_HEADER_ID(msg_header);
+	int msg_type = PD_HEADER_TYPE(msg_header);
+	/* pre-set not repeat */
+	int ret = 0;
+
+	/*
+	 * Check if repeat message id, if yes don't respond subsequent
+	 * messages, expect softreset.
+	 */
+	if (message_id_last[port] == msg_id) {
+		/* ctrl request */
+		if (!PD_HEADER_CNT(msg_header)) {
+			if ((msg_type != PD_CTRL_SOFT_RESET) ||
+				(msg_type != PD_CTRL_ACCEPT)) {
+				ccprints("msg id repeated: p[%d] id=%d type=%d",
+				port, msg_id, msg_type);
+				ret = 1;
+			}
+		}
+	}
+
+	message_id_last[port] = msg_id;
+	return ret;
+}
+
 static void chip_pd_irq(enum usbpd_port port)
 {
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
@@ -21,11 +60,14 @@ static void chip_pd_irq(enum usbpd_port port)
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+		/* Init last received message id variable */
+		init_message_id_last_var(port);
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
-			tcpm_enqueue_message(port);
+			if (!(check_message_id_repeat(port)))
+				tcpm_enqueue_message(port);
 			/* clear RX done interrupt */
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
 		}
