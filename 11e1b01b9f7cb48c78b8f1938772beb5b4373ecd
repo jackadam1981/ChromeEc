@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efa8a6ec_b23c8345",
+        "filename": "chip/g/ite_flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-01T18:01:49Z",
+      "side": 1,
+      "message": "If for some reason something bad happens during ite_sync that causes cr50 to reboot, nothing extremely bad (like something that could prevent cr50 from booting) will happen if this register isn\u0027t restored right?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "11e1b01b9f7cb48c78b8f1938772beb5b4373ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
