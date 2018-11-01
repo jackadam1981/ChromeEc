@@ -327,26 +327,17 @@ static int svdm_dp_config(int port, uint32_t *payload)
 static void svdm_dp_post_config(int port)
 {
 	dp_flags[port] |= DP_FLAGS_DP_ON;
-	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
-		return;
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
-	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	int mf_pref = PD_VDO_DPSTS_MF_PREF(payload[1]);
 	const struct usb_mux *mux = &usb_muxes[port];
 
 	dp_status[port] = payload[1];
-	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
-		if (lvl)
-			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
-		return 1;
-	}
 
-	if (irq)
-		mux->hpd_update(port, lvl, 1);
+	mux->hpd_update(port, lvl, 1);
 
 	if (lvl)
 		usb_mux_set(port, mf_pref ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
