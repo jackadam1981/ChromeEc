@@ -492,6 +492,44 @@
 #undef CONFIG_BATTERY_MEASURE_IMBALANCE
 
 /*
+ * Some batteries don't update full capacity timely or don't update it at all.
+ * On such systems, compensation is required to guarantee remaining_capacity
+ * will be equal to full_capacity eventually. This used to be done in ACPI.
+ *
+ * Powerd uses CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE as the threshold for low
+ * battery shutdown.
+ *
+ * We want to show the low battery alert whenever we can. Thus, we make EC not
+ * inhibit power-on even if it knows the host would immediately shut down. To
+ * get that behavior, we need:
+ *
+ *   MIN_BAT_PCT_FOR_POWER_ON < HOST_SHUTDOWN_PER = BATTERY_LEVEL_SHUTDOWN
+ *
+ * Thus, we set them as follows by default:
+ *
+ *   CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON = 2 (don't boot if soc < 2%)
+ *   CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE = 2    (shutdown if soc <= 2%)
+ *   BATTERY_LEVEL_SHUTDOWN = 3                  (shutdown if soc < 3%)
+ *
+ * This produces the following behavior:
+ *
+ * - If soc = 1%, system doesn't boot. User wouldn't know why.
+ * - If soc = 2%, system boots. Alert is shown. System immediately shuts down.
+ * - If battery discharges to 2% while the system is running, system shuts down.
+ *   If that happens while a user is away, they can press the power button to
+ *   learn what happened.
+ */
+#define CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE	2  /* shutdown if soc <= 2% */
+
+/*
+ * Powerd's full_factor. The value comes from:
+ *   src/platform2/power_manager/default_prefs/power_supply_full_factor
+ *
+ * This value is used by the host to calculate the ETA for full charge.
+ */
+#define CONFIG_BATT_HOST_FULL_FACTOR		97
+
+/*
  * Expose some data when it is needed.
  * For example, battery disconnect state
  */
@@ -811,8 +849,8 @@
  * analog signaling.  If the AP requires greater than 15W to boot, then see
  * CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW.
  */
-#undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
-#undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 2  /* Don't boot if soc < 2% */
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC	1
 /* Default: 15000 */
 #undef CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
 /* Default: Disabled */
