@@ -119,8 +119,8 @@ enum tpm_modes {
 };
 
 /*
- * This function returns the current TPM_MODE value.
+ * Display TPM Mode information on console.
  */
-enum tpm_modes get_tpm_mode(void);
+void print_tpm_mode(void);
 
 #endif	/* __CROS_EC_TPM_REGISTERS_H */
