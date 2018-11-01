@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "aa9d1ef1_69e3d38c",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T22:12:50Z",
+      "side": 1,
+      "message": "Ah, I had misread this snapshot has having the leak in the case where there was no read size specified.",
+      "parentUuid": "fd353d70_260c85e9",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c19d87d_ac0fc34a",
         "filename": "util/iteflash.c",
         "patchSetId": 4
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "c50ec1ad_bc6e2392",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T22:12:50Z",
+      "side": 1,
+      "message": "As part of that rebase, change this to not call exit() directly.  Instead have this return int 0 on success, negative on failure.  Have parse_parameters() pass on a non-zero or negative return value from parse_read_options(), so that the exit ultimately ends up being main() returning non-zero.\n\n(I don\u0027t fundamentally object to use of exit() btw, but I think once that other CL is submitted, avoiding exit() here will be cleaner and more consistent.  Also, avoiding exit() makes unittests for functions like this slightly simpler, should we ever write unittests for this.)",
+      "parentUuid": "c76d8c69_ebacc07d",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ec8c8a7_6b23de65",
         "filename": "util/iteflash.c",
         "patchSetId": 4
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "honestly, I don\u0027t think we should worry about file name in this case - this would usually be a test run, the operator chooses the name, let them not chose a name with colons :)\n\nI like the simplicity of this, no need to add yet another command line parameter, check for consistency of the parameter set, etc.",
       "parentUuid": "3ec8c8a7_6b23de65",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "462bb983_c32f8626",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1590,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T22:12:50Z",
+      "side": 1,
+      "message": "A separate flag seems much more natural to me as a user.  It also seems at worst no more complex to implement, and maybe simpler, since this can stay as simple as \"input_filename \u003d optarg\" here.",
+      "parentUuid": "701883b4_59760f87",
       "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
