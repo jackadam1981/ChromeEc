@@ -22,6 +22,30 @@
       "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47629cbd_1f1e0eb5",
+        "filename": "util/flash_ec",
+        "patchSetId": 17
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T00:21:29Z",
+      "side": 1,
+      "message": "See other comment about principle vs practical reality with how long CQ takes, and the overhead of managing the local git branches while waiting for CQ to get the cleanup changes in.\n\nI\u0027ve reverted this cleanup here, to be bundled in a later flash_ec change that touches more of this function anyways.",
+      "parentUuid": "b6d99e2b_015d96ee",
+      "range": {
+        "startLine": 531,
+        "startChar": 5,
+        "endLine": 531,
+        "endChar": 26
+      },
+      "revId": "fb15afc612a11b7ef3fb04c992bde3de4d6c7816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -63,6 +63,24 @@
       "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b78e395d_9437e97b",
+        "filename": "util/iteflash.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-01T00:21:29Z",
+      "side": 0,
+      "message": "In principle I agree, but the 1-3 days it typically takes to get a CL through the CQ raises the bar for what\u0027s worth submitting separately.\n\nI just spent ~ 30 minutes with git to separate this out this time.  I don\u0027t think it was time well spent, but here you go. :-)\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1311758",
+      "parentUuid": "462ccb3e_6ad58e3b",
+      "revId": "5f068e277ba6de108615aa3190ccb14b316b67f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
