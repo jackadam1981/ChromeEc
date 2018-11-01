@@ -851,6 +851,11 @@ static void deferred_tpm_rst_isr(void)
 {
 	CPRINTS("%s", __func__);
 
+	if (DCRYPTO_ladder_is_revoked()) {
+		system_reset(0);
+		return;
+	}
+
 	/*
 	 * TPM reset is used to detect the AP, connect AP. Let the AP state
 	 * machine know the AP is on.
@@ -1409,9 +1414,10 @@ static int command_sysinfo(int argc, char **argv)
 	ccprintf("Rollback:    %s\n", rollback_str);
 
 	tpm_mode = get_tpm_mode();
-	ccprintf("TPM MODE:    %s (%d)\n",
+	ccprintf("TPM MODE:    %s (%d)%s\n",
 		(tpm_mode == TPM_MODE_DISABLED) ? "disabled" : "enabled",
-		tpm_mode);
+		tpm_mode,
+		DCRYPTO_ladder_is_revoked() ? ", KeyLadder revoked" : "");
 
 	return EC_SUCCESS;
 }

@@ -119,7 +119,7 @@ void system_reset(int flags)
 	/* Disable interrupts to avoid task swaps during reboot */
 	interrupt_disable();
 
-#if defined(CHIP_FAMILY_CR50)
+#if 0// defined(CHIP_FAMILY_CR50)
 	/*
 	 * Decrement the retry counter on manually triggered reboots.  We were
 	 * able to process the console command, therefore we're probably okay.
