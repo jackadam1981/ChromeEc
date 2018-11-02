@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73a90cc2_064ca3b7",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-02T16:51:18Z",
+      "side": 1,
+      "message": "You may use the same alignment style as line 124, more consistent.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 12
+      },
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33f8bb8_6744fb1b",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-02T16:51:18Z",
+      "side": 1,
+      "message": "The inverted bit changes the devalt polarity. Changing the comment like below makes more sense.\n\n/*\n * alt.inverted \u003d\u003d 0:\n *   !!(devalt \u0026 alt_mask) \u003d\u003d 0 -\u003e GPIO\n *   !!(devalt \u0026 alt_mask) \u003d\u003d 1 -\u003e Alternate\n * alt.inverted \u003d\u003d 1:\n *   !!(devalt \u0026 alt_mask) \u003d\u003d 0 -\u003e Alternate\n *   !!(devalt \u0026 alt_mask) \u003d\u003d 1 -\u003e GPIO\n */",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
