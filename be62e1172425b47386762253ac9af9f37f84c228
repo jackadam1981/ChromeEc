@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70a4e405_9369b2f1",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-02T00:57:56Z",
+      "side": 1,
+      "message": "Done in crrev.com/c/1313475.",
+      "parentUuid": "b894c086_ce58aada",
+      "revId": "be62e1172425b47386762253ac9af9f37f84c228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d430da9d_63103b37",
         "filename": "common/battery.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "910e146b_006cf3c2",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-02T00:57:56Z",
+      "side": 1,
+      "message": "Done in battery.h.",
+      "parentUuid": "d430da9d_63103b37",
+      "revId": "be62e1172425b47386762253ac9af9f37f84c228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94191a6d_d21bb194",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2018-11-01T21:10:45Z",
       "side": 1,
       "message": "this one doesn\u0027t seem to be used?",
+      "revId": "be62e1172425b47386762253ac9af9f37f84c228",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba8c92f3_980ddc81",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-02T00:57:56Z",
+      "side": 1,
+      "message": "Moved to crrev.com/c/1309033.",
+      "parentUuid": "94191a6d_d21bb194",
       "revId": "be62e1172425b47386762253ac9af9f37f84c228",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
