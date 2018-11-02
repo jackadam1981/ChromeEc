@@ -22,6 +22,30 @@
       "revId": "6353c225c8e497014e311038399bba2e9e88bf08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007a18a5_51c8f608",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-02T22:35:40Z",
+      "side": 1,
+      "message": "Right. Removed",
+      "parentUuid": "a645ffc3_d399d271",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 9
+      },
+      "revId": "6353c225c8e497014e311038399bba2e9e88bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
