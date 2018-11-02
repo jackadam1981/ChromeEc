@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a645ffc3_d399d271",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-02T19:40:28Z",
+      "side": 1,
+      "message": "This isn\u0027t required if the line below is removed.",
+      "range": {
+        "startLine": 330,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 9
+      },
+      "revId": "6353c225c8e497014e311038399bba2e9e88bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
