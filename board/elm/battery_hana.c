@@ -20,6 +20,9 @@ enum battery_type {
 	SMP011,
 	LGC,
 	SUNWODA01,
+	SMP02,
+	LGC02,
+	SUNWODA02,
 	BATTERY_TYPE_COUNT,
 	DEFAULT_BATTERY_TYPE = SIMPLO,
 };
@@ -125,6 +128,51 @@ static const struct battery_info info_sunwoda01 = {
 	.discharging_max_c = 60,
 };
 
+static const struct battery_info info_smp02 = {
+	.voltage_max = 13050,
+	.voltage_normal = 11250,
+	.voltage_min = 9000,
+	/* Pre-charge values. */
+	.precharge_current = 186, /* mA */
+
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = -20,
+	.discharging_max_c = 60,
+};
+
+static const struct battery_info info_lgc02 = {
+	.voltage_max = 13050,
+	.voltage_normal = 11400,
+	.voltage_min = 9000,
+	/* Pre-charge values. */
+	.precharge_current = 181, /* mA */
+
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = -20,
+	.discharging_max_c = 73,
+};
+
+static const struct battery_info info_sunwoda02 = {
+	.voltage_max = 13050,
+	.voltage_normal = 11250,
+	.voltage_min = 9000,
+	/* Pre-charge values. */
+	.precharge_current = 200, /* mA */
+
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 60,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = -20,
+	.discharging_max_c = 60,
+};
+
 static const struct battery_device support_batteries[BATTERY_TYPE_COUNT] = {
 	[SIMPLO] = {
 		.manuf		= "SMP",
@@ -159,6 +207,27 @@ static const struct battery_device support_batteries[BATTERY_TYPE_COUNT] = {
 		.device		= "L18D3PG5",
 		.design_mv	= 11250,
 		.battery_info	= &info_sunwoda01,
+		.ship_mode_info	= &ship_mode_info_default,
+	},
+	[SMP02] = {
+		.manuf		= "smp",
+		.device		= "L17M3PB0",
+		.design_mv	= 11250,
+		.battery_info	= &info_smp02,
+		.ship_mode_info	= &ship_mode_info_default,
+	},
+	[LGC02] = {
+		.manuf		= "lgc",
+		.device		= "L17L3PB0",
+		.design_mv	= 11400,
+		.battery_info	= &info_lgc02,
+		.ship_mode_info	= &ship_mode_info_default,
+	},
+	[SUNWODA02] = {
+		.manuf		= "sunwoda",
+		.device		= "L18D3PG1",
+		.design_mv	= 11250,
+		.battery_info	= &info_sunwoda02,
 		.ship_mode_info	= &ship_mode_info_default,
 	},
 };
