@@ -94,6 +94,30 @@
       "revId": "766f5faf156c5b3cc2402d45e66fd3868528b050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98b007f0_876af138",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2018-11-02T05:53:08Z",
+      "side": 1,
+      "message": "The bug number already modify in the commit description.\nAnything still need fix in the patch ?\n...\n\nBUG\u003db:118584434\nBRANCH\u003dnone\nTEST\u003dThe soft reset still works when EC in debug mode.\n...",
+      "parentUuid": "6db823a3_ef484b30",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "766f5faf156c5b3cc2402d45e66fd3868528b050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
