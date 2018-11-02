@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "aaa4bdb3_c23c781b",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-02T08:30:06Z",
+      "side": 1,
+      "message": "Good point - I\u0027ve done 3 for now, do you think I should do 2 as well? I don\u0027t have a feel for what a good API is here, but don\u0027t particularly like how it is now.",
+      "parentUuid": "0aef5907_9685d28f",
+      "range": {
+        "startLine": 116,
+        "startChar": 47,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "fc5d1bd550f1a6e2d171c236fd8099a33024fb28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc84aa2d_c7c1e315",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
