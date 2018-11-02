@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6ffabc9_fe6cb9fd",
+        "filename": "include/charge_state.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-02T17:00:24Z",
+      "side": 1,
+      "message": "Isn\u0027t this the current displayed charge in 10ths of a percent (1000\u003d100.0%)?",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "add5ec59270f2733d893639047618466d1f51ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
