@@ -141,18 +141,37 @@ void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
  * @param state		State array to print
  * @param msg		Description of state
  */
+static int get_KSI(uint8_t row)
+{
+	int i;
+
+	for (i = 0; i < 8; ++i) {
+		if (row & (1 << i))
+			return i;
+	}
+
+	return -1;
+}
+extern uint16_t scancode_set2[KEYBOARD_ROWS][KEYBOARD_COLS];
 static void print_state(const uint8_t *state, const char *msg)
 {
 	int c;
+	int kso;
 
 	CPRINTF("[%T KB %s:", msg);
-	for (c = 0; c < KEYBOARD_COLS; c++) {
-		if (state[c])
+	for (c = 0, kso = 0; c < KEYBOARD_COLS; c++) {
+		if (state[c]) {
 			CPRINTF(" %02x", state[c]);
-		else
+			kso = c;
+		} else {
 			CPUTS(" --");
+		}
 	}
-	CPUTS("]\n");
+
+	if (get_KSI(state[kso]) == -1)
+		CPUTS("]\n");
+	else
+		ccprintf("], KSO=%d, KSI=%d, scancode=0x%x\n", kso, get_KSI(state[kso]), scancode_set2[get_KSI(state[kso])][kso]);
 }
 
 /**
