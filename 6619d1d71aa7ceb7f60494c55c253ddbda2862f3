@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "7d5ec174_deb87380",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-02T02:16:34Z",
+      "side": 1,
+      "message": "good idea, will hold off util refactoring patch lands.",
+      "parentUuid": "c50ec1ad_bc6e2392",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ec8c8a7_6b23de65",
         "filename": "util/iteflash.c",
         "patchSetId": 4
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "A separate flag seems much more natural to me as a user.  It also seems at worst no more complex to implement, and maybe simpler, since this can stay as simple as \"input_filename \u003d optarg\" here.",
       "parentUuid": "701883b4_59760f87",
+      "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ecf61f_4d6a9ade",
+        "filename": "util/iteflash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1590,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-02T02:16:34Z",
+      "side": 1,
+      "message": "ok, let\u0027s see what others think, I feel that this does not deserve a separate flag which needs to be checked for consistency against other command line flags and will almost never be used anyways (the major goal for adding this is to speed up autotests).",
+      "parentUuid": "462bb983_c32f8626",
       "revId": "6619d1d71aa7ceb7f60494c55c253ddbda2862f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

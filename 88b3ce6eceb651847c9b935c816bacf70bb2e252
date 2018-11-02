@@ -16,6 +16,24 @@
       "revId": "88b3ce6eceb651847c9b935c816bacf70bb2e252",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd2417f5_7880dd06",
+        "filename": "util/iteflash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1526,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-02T02:16:34Z",
+      "side": 1,
+      "message": "file name is trimmed in line 1531.",
+      "parentUuid": "d48c38b6_bc49fdc6",
+      "revId": "88b3ce6eceb651847c9b935c816bacf70bb2e252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
