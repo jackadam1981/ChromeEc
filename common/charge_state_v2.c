@@ -69,6 +69,8 @@
 static timestamp_t uvp_throttle_start_time;
 #endif /* CONFIG_THROTTLE_AP_ON_BAT_OLTAGE */
 
+int battery_level_near_full = BATTERY_LEVEL_NEAR_FULL;
+
 static int charge_request(int voltage, int current);
 
 /*
@@ -2021,11 +2023,11 @@ int charge_prevent_power_on(int power_button_pressed)
 
 static int battery_near_full(void)
 {
-	if (curr.batt.state_of_charge < BATTERY_LEVEL_NEAR_FULL)
+	if (curr.batt.state_of_charge < battery_level_near_full)
 		return 0;
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
-	if (charge_base > -1 && charge_base < BATTERY_LEVEL_NEAR_FULL)
+	if (charge_base > -1 && charge_base < battery_level_near_full)
 		return 0;
 #endif
 

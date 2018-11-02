@@ -273,6 +273,8 @@ void board_reset_pd_mcu(void)
 	msleep(2);
 }
 
+extern int battery_level_near_full;
+
 void board_tcpc_init(void)
 {
 	int port;
@@ -293,6 +295,9 @@ void board_tcpc_init(void)
 		const struct usb_mux *mux = &usb_muxes[port];
 		mux->hpd_update(port, 0, 0);
 	}
+
+	if (oem == PROJECT_VAYNE)
+		battery_level_near_full = 94;
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
 
