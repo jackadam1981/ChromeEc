@@ -26,7 +26,7 @@
 			 PDO_FIXED_COMM_CAP)
 
 /* Source PDOs */
-const uint32_t pd_src_pdo[] = {
+uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000,  3000, PDO_FIXED_FLAGS),
 		PDO_FIXED(12000, 3000, PDO_FIXED_FLAGS),
 		PDO_FIXED(20000, 3000, PDO_FIXED_FLAGS),

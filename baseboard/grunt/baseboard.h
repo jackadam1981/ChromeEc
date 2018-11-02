@@ -57,6 +57,8 @@
 #define CONFIG_CHARGER_V2
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
+/* TODO: DO NOT COMMIT, review this option in some more detail, first. */
+#define CONFIG_CHARGE_MANAGER_DRP_CHARGING
 
 /*
  * This limit impairs compatibility with BC1.2 chargers that are not actually
@@ -110,6 +112,7 @@
 #define CONFIG_USB_PD_DISCHARGE_PPC
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_PORT_COUNT 2
 #define CONFIG_USB_PD_TCPC_LOW_POWER

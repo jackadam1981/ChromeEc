@@ -1459,10 +1459,17 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 		 int count);
 
 /* Power Data Objects for the source and the sink */
+#if defined(CONFIG_USB_PD_DYNAMIC_SRC_CAP)
+extern uint32_t pd_src_pdo[];
+extern const int pd_src_pdo_cnt;
+extern uint32_t pd_src_pdo_max[];
+extern const int pd_src_pdo_max_cnt;
+#else
 extern const uint32_t pd_src_pdo[];
 extern const int pd_src_pdo_cnt;
 extern const uint32_t pd_src_pdo_max[];
 extern const int pd_src_pdo_max_cnt;
+#endif
 extern const uint32_t pd_snk_pdo[];
 extern const int pd_snk_pdo_cnt;
 

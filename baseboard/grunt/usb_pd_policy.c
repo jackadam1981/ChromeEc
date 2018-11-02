@@ -23,7 +23,7 @@
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
-const uint32_t pd_src_pdo[] = {
+uint32_t pd_src_pdo[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
@@ -34,6 +34,37 @@ const uint32_t pd_snk_pdo[] = {
 	PDO_VAR(4750, 21000, 3000),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
+
+/* The default (and Grunt) "low power charger" warning threshold */
+#define LOW_POWER_CHARGER_WARNING_THRESH 20000000
+
+int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
+{
+	size_t i = 0;
+	/*
+	 * A crude heuristic, based on the threshold of the "low power charger"
+	 * warning.  Most chromebooks will only supply 5V * 3A  max anyway, so
+	 * a chromebook-chromebook connection set up this way should favor the
+	 * one with AC power, if either one has it.
+	 */
+	if (charge_manager_get_power_limit_uw()
+	    > LOW_POWER_CHARGER_WARNING_THRESH) {
+		for (i = 0; i != pd_src_pdo_cnt; ++i)
+			pd_src_pdo[i] |= PDO_FIXED_EXTERNAL;
+	} else {
+		for (i = 0; i != pd_src_pdo_cnt; ++i)
+			pd_src_pdo[i] &= ~PDO_FIXED_EXTERNAL;
+	}
+
+	*src_pdo = pd_src_pdo;
+	return pd_src_pdo_cnt;
+}
+
+int __attribute__((weak))charge_manager_get_power_limit_uw(void)
+{
+	/* This definition is provided solely for genvif. */
+	return LOW_POWER_CHARGER_WARNING_THRESH + 1;
+}
 
 int pd_board_checks(void)
 {
