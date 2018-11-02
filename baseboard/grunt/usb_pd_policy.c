@@ -103,24 +103,36 @@ int pd_check_power_swap(int port)
 	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
 }
 
+/*
+ * If partner is dual-role power and dualrole toggling is on, consider if a
+ * power swap is necessary.
+ */
 void pd_check_pr_role(int port, int pr_role, int flags)
 {
-	/*
-	 * If partner is dual-role power and dualrole toggling is on, consider
-	 * if a power swap is necessary.
-	 */
 	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
 	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
 		/*
-		 * If we are a sink and partner is not externally powered, then
-		 * swap to become a source. If we are source and partner is
-		 * externally powered, swap to become a sink.
+		 * Prefer the side that is externally powered when one side is
+		 * powered and the other is not.  In the case that the user has
+		 * specifically requested to draw power from this port, respect
+		 * their choice.
 		 */
 		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
+		int self_extpower = charge_manager_get_power_limit_uw()
+			> LOW_POWER_CHARGER_WARNING_THRESH;
+		int prefer_sink = charge_manager_get_override() == port;
+		int prefer_source = charge_manager_get_override() ==
+			OVERRIDE_DONT_CHARGE;
 
-		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
-			pd_request_power_swap(port);
+		if (pr_role == PD_ROLE_SINK && !prefer_sink) {
+			if (prefer_source ||
+			    (!partner_extpower && self_extpower))
+				pd_request_power_swap(port);
+		}
+		if (pr_role == PD_ROLE_SOURCE && !prefer_source) {
+			if (prefer_sink || (partner_extpower && !self_extpower))
+				pd_request_power_swap(port);
+		}
 	}
 }
 
