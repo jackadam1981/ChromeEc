@@ -22,6 +22,30 @@
       "revId": "b90f983deb55eea1311e73e79314acc8b0d58666",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce903294_e4184a69",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-02T19:38:25Z",
+      "side": 1,
+      "message": "Found that my next patch was wrong, making the irq always 1. Fixed it.\n\nActually this line should be unchanged.",
+      "parentUuid": "a372dc8d_d0f2aa6c",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 8
+      },
+      "revId": "b90f983deb55eea1311e73e79314acc8b0d58666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
