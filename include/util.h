@@ -79,6 +79,7 @@ __stdlib_compat int strncmp(const char *s1, const char *s2, size_t n);
 /* Like strtol(), but for integers. */
 __stdlib_compat int strtoi(const char *nptr, char **endptr, int base);
 __stdlib_compat uint64_t strtoul(const char *nptr, char **endptr, int base);
+__stdlib_compat int64_t strtol(const char *nptr, char **endptr, int base);
 
 /* Like strncpy(), but guarantees null termination. */
 __stdlib_compat char *strzcpy(char *dest, const char *src, int len);
