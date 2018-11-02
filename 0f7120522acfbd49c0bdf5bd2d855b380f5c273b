@@ -22,6 +22,30 @@
       "revId": "0f7120522acfbd49c0bdf5bd2d855b380f5c273b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d712f79c_4c40b112",
+        "filename": "board/karma/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-11-02T15:42:08Z",
+      "side": 1,
+      "message": "This idea is from test points, just declare first to fit the HW schematic.",
+      "parentUuid": "5c98363f_77264365",
+      "range": {
+        "startLine": 82,
+        "startChar": 43,
+        "endLine": 82,
+        "endChar": 54
+      },
+      "revId": "0f7120522acfbd49c0bdf5bd2d855b380f5c273b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
