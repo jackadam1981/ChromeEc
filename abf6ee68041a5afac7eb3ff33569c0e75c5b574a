@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb9450b6_40aee89b",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-02T19:38:27Z",
+      "side": 1,
+      "message": "would it be preferrable to always read salt from nvmem to save sram space?",
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e40d17_cf05eddb",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-02T19:38:27Z",
+      "side": 1,
+      "message": "could it be that salt has not yet been initialized?",
+      "range": {
+        "startLine": 241,
+        "startChar": 28,
+        "endLine": 241,
+        "endChar": 36
+      },
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
