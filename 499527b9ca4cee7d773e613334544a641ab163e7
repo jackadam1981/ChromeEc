@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edc51bab_38408bee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-02T17:53:23Z",
+      "side": 1,
+      "message": "The title is the same as a recently-landed CL:1296429.\nIt took me a while to find out it\u0027s not duplicate.\nCan you tweak the title a bit, like \"hana:Add more battery information\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "499527b9ca4cee7d773e613334544a641ab163e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9eae4e5_57a027a0",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-02T17:53:23Z",
+      "side": 1,
+      "message": "Isn\u0027t it the same as battery_info info_smp011?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "499527b9ca4cee7d773e613334544a641ab163e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d230e2b4_2f543b4a",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-02T17:53:23Z",
+      "side": 1,
+      "message": "Isn\u0027t it the same as battery_info info_lgc?",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "499527b9ca4cee7d773e613334544a641ab163e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f947c9b_007a5121",
+        "filename": "board/elm/battery_hana.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-02T17:53:23Z",
+      "side": 1,
+      "message": "Isn\u0027t it the same as battery_info info_sunwoda01?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "499527b9ca4cee7d773e613334544a641ab163e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
