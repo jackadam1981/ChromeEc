@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "bea3267f_ae699fcc",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-02T17:14:51Z",
+      "side": 1,
+      "message": "It is a hard reset that restores the register value, not power-on reset.",
+      "parentUuid": "ff2b5070_c573f6ba",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 33
+      },
+      "revId": "20ed91763f38fe5ab7f3542804cf2ef81b1a4809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45987fc4_e304b36d",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 1
