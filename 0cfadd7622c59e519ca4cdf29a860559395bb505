@@ -45,6 +45,40 @@
       "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643e0741_33c781a4",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-03T00:55:17Z",
+      "side": 1,
+      "message": "just\n\nreturn !!(devalt \u0026 alt_mask) ^ map-\u003ealt.inverted;",
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2acf667_e2ffc72b",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-03T00:55:17Z",
+      "side": 1,
+      "message": "ditto, return IS_BIT_SET(NPCX_LV_GPIO_CTL(i), j);",
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
