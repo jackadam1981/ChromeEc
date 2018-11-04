@@ -116,7 +116,7 @@ common-$(HAS_TASK_HOSTCMD)+=host_command.o
 common-$(HAS_TASK_PDCMD)+=host_command_pd.o
 common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o keyboard_info.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
-common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o sensor_common.o
+common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o sensor_common.o motion_sense_hid.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
 common-$(HAS_TASK_IOLCMD)+=i2c_over_lpc_common.o
 
