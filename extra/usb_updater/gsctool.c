@@ -12,6 +12,8 @@
 #include <getopt.h>
 #include <libusb.h>
 #include <openssl/sha.h>
+#include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -194,10 +196,24 @@ struct upgrade_pkt {
  */
 #define MAX_BUF_SIZE	500
 
+/*
+ * Max. length of the board ID string representation.
+ *
+ * Board ID is either a 4-character ASCII alphanumeric string or an 8-digit
+ * hex.
+ */
+#define MAX_BOARD_ID_LENGTH 9
+
+/*
+ * Max. length of FW version in the format of <epoch>.<major>.<minor>
+ * (3 uint32_t string representation + 2 separators + NULL terminator).
+ */
+#define MAX_FW_VER_LENGTH 33
+
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikmO:oPprstUuVvw";
+static char *short_opts = "aBbcd:F:fhIikMmO:oPprstUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -213,6 +229,7 @@ static const struct option long_opts[] = {
 	{"factory",	                1,   NULL, 'F'},
 	{"fwver",	                0,   NULL, 'f'},
 	{"help",	                0,   NULL, 'h'},
+	{"machine",	                0,   NULL, 'M'},
 	{"openbox_rma",                 1,   NULL, 'O'},
 	{"password",	                0,   NULL, 'P'},
 	{"post_reset",	                0,   NULL, 'p'},
@@ -491,8 +508,7 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 /* Release USB device and return error to the OS. */
 static void shut_down(struct usb_endpoint *uep)
 {
-	libusb_close(uep->devh);
-	libusb_exit(NULL);
+	usb_shut_down(uep);
 	exit(update_error);
 }
 
@@ -527,6 +543,8 @@ static void usage(int errs)
 	       "                           ID could be 32 bit hex or 4 "
 	       "character string.\n"
 	       "  -k,--ccd_lock            Lock CCD\n"
+	       "  -M,--machine             Output in a machine-friendly way. "
+	       "Effective with -b, -f, -i, and -O.\n"
 	       "  -m,--tpm_mode [enable|disable]\n"
 	       "                           Change or query tpm_mode\n"
 	       "  -O,--openbox_rma <desc_file>\n"
@@ -592,120 +610,6 @@ static uint8_t *get_file_or_die(const char *filename, size_t *len_ptr)
 	return data;
 }
 
-#define USB_ERROR(m, r) \
-	fprintf(stderr, "%s:%d, %s returned %d (%s)\n", __FILE__, __LINE__, \
-		m, r, libusb_strerror(r))
-
-/*
- * Actual USB transfer function, the 'allow_less' flag indicates that the
- * valid response could be shortef than allotted memory, the 'rxed_count'
- * pointer, if provided along with 'allow_less' lets the caller know how mavy
- * bytes were received.
- */
-static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
-		    void *inbuf, int inlen, int allow_less,
-		    size_t *rxed_count)
-{
-
-	int r, actual;
-
-	/* Send data out */
-	if (outbuf && outlen) {
-		actual = 0;
-		r = libusb_bulk_transfer(uep->devh, uep->ep_num,
-					 outbuf, outlen,
-					 &actual, 1000);
-		if (r < 0) {
-			USB_ERROR("libusb_bulk_transfer", r);
-			exit(update_error);
-		}
-		if (actual != outlen) {
-			fprintf(stderr, "%s:%d, only sent %d/%d bytes\n",
-				__FILE__, __LINE__, actual, outlen);
-			shut_down(uep);
-		}
-	}
-
-	/* Read reply back */
-	if (inbuf && inlen) {
-
-		actual = 0;
-		r = libusb_bulk_transfer(uep->devh, uep->ep_num | 0x80,
-					 inbuf, inlen,
-					 &actual, 1000);
-		if (r < 0) {
-			USB_ERROR("libusb_bulk_transfer", r);
-			exit(update_error);
-		}
-		if ((actual != inlen) && !allow_less) {
-			fprintf(stderr, "%s:%d, only received %d/%d bytes\n",
-				__FILE__, __LINE__, actual, inlen);
-			shut_down(uep);
-		}
-
-		if (rxed_count)
-			*rxed_count = actual;
-	}
-}
-
-static void xfer(struct usb_endpoint *uep, void *outbuf,
-		 size_t outlen, void *inbuf, size_t inlen)
-{
-	do_xfer(uep, outbuf, outlen, inbuf, inlen, 0, NULL);
-}
-
-/* Return 0 on error, since it's never gonna be EP 0 */
-static int find_endpoint(const struct libusb_interface_descriptor *iface,
-			 struct usb_endpoint *uep)
-{
-	const struct libusb_endpoint_descriptor *ep;
-
-	if (iface->bInterfaceClass == 255 &&
-	    iface->bInterfaceSubClass == SUBCLASS &&
-	    iface->bInterfaceProtocol == PROTOCOL &&
-	    iface->bNumEndpoints) {
-		ep = &iface->endpoint[0];
-		uep->ep_num = ep->bEndpointAddress & 0x7f;
-		uep->chunk_len = ep->wMaxPacketSize;
-		return 1;
-	}
-
-	return 0;
-}
-
-/* Return -1 on error */
-static int find_interface(struct usb_endpoint *uep)
-{
-	int iface_num = -1;
-	int r, i, j;
-	struct libusb_device *dev;
-	struct libusb_config_descriptor *conf = 0;
-	const struct libusb_interface *iface0;
-	const struct libusb_interface_descriptor *iface;
-
-	dev = libusb_get_device(uep->devh);
-	r = libusb_get_active_config_descriptor(dev, &conf);
-	if (r < 0) {
-		USB_ERROR("libusb_get_active_config_descriptor", r);
-		goto out;
-	}
-
-	for (i = 0; i < conf->bNumInterfaces; i++) {
-		iface0 = &conf->interface[i];
-		for (j = 0; j < iface0->num_altsetting; j++) {
-			iface = &iface0->altsetting[j];
-			if (find_endpoint(iface, uep)) {
-				iface_num = i;
-				goto out;
-			}
-		}
-	}
-
-out:
-	libusb_free_config_descriptor(conf);
-	return iface_num;
-}
-
 /* Returns true if parsed. */
 static int parse_vidpid(const char *input, uint16_t *vid_ptr, uint16_t *pid_ptr)
 {
@@ -729,55 +633,18 @@ static int parse_vidpid(const char *input, uint16_t *vid_ptr, uint16_t *pid_ptr)
 	return 1;
 }
 
-
-static void usb_findit(uint16_t vid, uint16_t pid, struct usb_endpoint *uep)
-{
-	int iface_num, r;
-
-	memset(uep, 0, sizeof(*uep));
-
-	r = libusb_init(NULL);
-	if (r < 0) {
-		USB_ERROR("libusb_init", r);
-		exit(update_error);
-	}
-
-	printf("open_device %04x:%04x\n", vid, pid);
-	/* NOTE: This doesn't handle multiple matches! */
-	uep->devh = libusb_open_device_with_vid_pid(NULL, vid, pid);
-	if (!uep->devh) {
-		fprintf(stderr, "Can't find device\n");
-		exit(update_error);
-	}
-
-	iface_num = find_interface(uep);
-	if (iface_num < 0) {
-		fprintf(stderr, "USB FW update not supported by that device\n");
-		shut_down(uep);
-	}
-	if (!uep->chunk_len) {
-		fprintf(stderr, "wMaxPacketSize isn't valid\n");
-		shut_down(uep);
-	}
-
-	printf("found interface %d endpoint %d, chunk_len %d\n",
-	       iface_num, uep->ep_num, uep->chunk_len);
-
-	libusb_set_auto_detach_kernel_driver(uep->devh, 1);
-	r = libusb_claim_interface(uep->devh, iface_num);
-	if (r < 0) {
-		USB_ERROR("libusb_claim_interface", r);
-		shut_down(uep);
-	}
-
-	printf("READY\n-------\n");
-}
-
 struct update_pdu {
 	uint32_t block_size; /* Total block size, include this field's size. */
 	struct upgrade_command cmd;
 	/* The actual payload goes here. */
 };
+
+static void do_xfer(struct usb_endpoint *uep, void *outbuf, int outlen,
+		    void *inbuf, int inlen, int allow_less, size_t *rxed_count)
+{
+	if (usb_trx(uep, outbuf, outlen, inbuf, inlen, allow_less, rxed_count))
+		shut_down(uep);
+}
 
 static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 			  uint8_t *transfer_data_ptr, size_t payload_size)
@@ -788,14 +655,14 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 	int r;
 
 	/* First send the header. */
-	xfer(uep, updu, sizeof(*updu), NULL, 0);
+	do_xfer(uep, updu, sizeof(*updu), NULL, 0, 0, NULL);
 
 	/* Now send the block, chunk by chunk. */
 	for (transfer_size = 0; transfer_size < payload_size;) {
 		int chunk_size;
 
 		chunk_size = MIN(uep->chunk_len, payload_size - transfer_size);
-		xfer(uep, transfer_data_ptr, chunk_size, NULL, 0);
+		do_xfer(uep, transfer_data_ptr, chunk_size, NULL, 0, 0, NULL);
 		transfer_data_ptr += chunk_size;
 		transfer_size += chunk_size;
 	}
@@ -1198,7 +1065,7 @@ static void send_done(struct usb_endpoint *uep)
 
 	/* Send stop request, ignoring reply. */
 	out = htobe32(UPGRADE_DONE);
-	xfer(uep, &out, sizeof(out), &out, 1);
+	do_xfer(uep, &out, sizeof(out), &out, 1, 0, NULL);
 }
 
 /* Returns number of successfully transmitted image sections. */
@@ -1393,65 +1260,154 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	printf("reboot %s\n", reset_type);
 }
 
-static int show_headers_versions(const void *image)
+/*
+ * Machine output is formatted as "key=value", one key-value pair per line, and
+ * parsed by other programs (e.g., debugd). The value part should be specified
+ * in the printf-like way. For example:
+ *
+ *           print_machine_output("date", "%d/%d/%d", 2018, 1, 1),
+ *
+ * which outputs this line in console:
+ *
+ *           date=2018/1/1
+ *
+ * The key part should not contain '=' or newline. The value part may contain
+ * special characters like spaces, quotes, brackets, but not newlines. The
+ * newline character means end of value.
+ *
+ * Any output format change in this function may require similar changes on the
+ * programs that are using this gsctool.
+ */
+__attribute__((__format__(__printf__, 2, 3)))
+static void print_machine_output(const char *key, const char *format, ...)
 {
+	va_list args;
+
+	if (strchr(key, '=') != NULL || strchr(key, '\n') != NULL) {
+		fprintf(stderr,
+			"Error: key %s contains '=' or a newline character.\n",
+			key);
+		return;
+	}
+
+	if (strchr(format, '\n') != NULL) {
+		fprintf(stderr,
+			"Error: value format %s contains a newline character. "
+			"\n",
+			format);
+		return;
+	}
+
+	va_start(args, format);
+
+	printf("%s=", key);
+	vprintf(format, args);
+	printf("\n");
+
+	va_end(args);
+}
+
+/*
+ * Prints out the header, including FW versions and board IDs, of the given
+ * image. Output in a machine-friendly format if show_machine_output is true.
+ */
+static int show_headers_versions(const void *image, bool show_machine_output)
+{
+	// There are 2 FW slots in an image, and each slot has 2 sections, RO
+	// and RW. The 2 slots should have identical FW versions and board IDs.
 	const struct {
 		const char *name;
-		uint32_t    offset;
+		uint32_t offset;
 	} sections[] = {
-		{"RO_A", CONFIG_RO_MEM_OFF},
-		{"RW_A", CONFIG_RW_MEM_OFF},
-		{"RO_B", CHIP_RO_B_MEM_OFF},
-		{"RW_B", CONFIG_RW_B_MEM_OFF}
+		// Slot A
+		{"RO", CONFIG_RO_MEM_OFF},
+		{"RW", CONFIG_RW_MEM_OFF},
+		// Slot B
+		{"RO", CHIP_RO_B_MEM_OFF},
+		{"RW", CONFIG_RW_B_MEM_OFF}
 	};
+	const size_t kNumSlots = 2;
+	const size_t kNumSectionsPerSlot = 2;
+
+	// String representation of FW version (<epoch>:<major>:<minor>), one
+	// string for each FW section.
+	char ro_fw_ver[kNumSlots][MAX_FW_VER_LENGTH];
+	char rw_fw_ver[kNumSlots][MAX_FW_VER_LENGTH];
+
+	struct board_id {
+		uint32_t id;
+		uint32_t mask;
+		uint32_t flags;
+	} bid[kNumSlots];
+
+	char bid_string[kNumSlots][MAX_BOARD_ID_LENGTH];
+
 	size_t i;
 
 	for (i = 0; i < ARRAY_SIZE(sections); i++) {
-		const struct SignedHeader *h;
+		const struct SignedHeader *h =
+			(const struct SignedHeader *)
+				((uintptr_t)image + sections[i].offset);
+		const size_t slot_idx = i / kNumSectionsPerSlot;
+
+		uint32_t cur_bid;
 		size_t j;
-		uint32_t bid;
-		uint32_t bid_mask;
-		uint32_t bid_flags;
 
-		h = (const struct SignedHeader *)((uintptr_t)image +
-						  sections[i].offset);
-		printf("%s%s:%d.%d.%d", i ? " " : "", sections[i].name,
-		       h->epoch_, h->major_, h->minor_);
-
-		if (sections[i].name[1] != 'W')
+		if (sections[i].name[1] == 'O') {
+			// RO
+			snprintf(ro_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
+				 "%u.%u.%u", h->epoch_, h->major_, h->minor_);
+			// No need to read board ID in an RO section.
 			continue;
-
-		/*
-		 * For read/write sections print the board ID fields'
-		 * contents, which are stored XORed with a padding value.
-		 */
-		bid = h->board_id_type ^ SIGNED_HEADER_PADDING;
-		bid_mask = h->board_id_type_mask ^ SIGNED_HEADER_PADDING;
-		bid_flags = h->board_id_flags ^ SIGNED_HEADER_PADDING;
-
-		/* Beginning of a board ID section of the string. */
-		printf("[");
-
-		/*
-		 * If board ID is an ASCII string (as it ought to be), print
-		 * it as 4 symbols, otherwise print it as an 8 digit hex.
-		 */
-		for (j = 0; j < sizeof(bid); j++)
-			if (!isalnum(((const char *)&bid)[j]))
-				break;
-
-		if (j == sizeof(bid)) {
-			/* Convert it for proper string representation. */
-			bid = be32toh(bid);
-			printf("%.4s", (const char *)&bid);
 		} else {
-			printf("%08x", bid);
+			// RW
+			snprintf(rw_fw_ver[slot_idx], MAX_FW_VER_LENGTH,
+				 "%u.%u.%u", h->epoch_, h->major_, h->minor_);
 		}
 
-		/* Print the rest of the board ID fields. */
-		printf(":%08x:%08x]", bid_mask, bid_flags);
+		/*
+		 * For RW sections, retrieves the board ID fields' contents,
+		 * which are stored XORed with a padding value.
+		 */
+		bid[slot_idx].id = h->board_id_type ^ SIGNED_HEADER_PADDING;
+		bid[slot_idx].mask =
+			h->board_id_type_mask ^ SIGNED_HEADER_PADDING;
+		bid[slot_idx].flags = h->board_id_flags ^ SIGNED_HEADER_PADDING;
+
+		/*
+		 * If board ID is a 4-uppercase-letter string (as it ought to
+		 * be), print it as 4 letters, otherwise print it as an 8-digit
+		 * hex.
+		 */
+		cur_bid = bid[slot_idx].id;
+		for (j = 0; j < sizeof(cur_bid); ++j)
+			if (!isupper(((const char *)&cur_bid)[j]))
+				break;
+
+		if (j == sizeof(cur_bid)) {
+			cur_bid = be32toh(cur_bid);
+			snprintf(bid_string[slot_idx], MAX_BOARD_ID_LENGTH,
+				 "%.4s", (const char *)&cur_bid);
+		} else {
+			snprintf(bid_string[slot_idx], MAX_BOARD_ID_LENGTH,
+				 "%08x", cur_bid);
+		}
 	}
-	printf("\n");
+
+	if (show_machine_output) {
+		print_machine_output("IMAGE_RO_FW_VER", "%s", ro_fw_ver[0]);
+		print_machine_output("IMAGE_RW_FW_VER", "%s", rw_fw_ver[0]);
+		print_machine_output("IMAGE_BID_STRING", "%s", bid_string[0]);
+		print_machine_output("IMAGE_BID_MASK", "%08x", bid[0].mask);
+		print_machine_output("IMAGE_BID_FLAGS", "%08x", bid[0].flags);
+	} else {
+		printf("RO_A:%s RW_A:%s[%s:%08x:%08x] ",
+		       ro_fw_ver[0], rw_fw_ver[0],
+		       bid_string[0], bid[0].mask, bid[0].flags);
+		printf("RO_B:%s RW_B:%s[%s:%08x:%08x]\n",
+		       ro_fw_ver[1], rw_fw_ver[1],
+		       bid_string[1], bid[1].mask, bid[1].flags);
+	}
 
 	return 0;
 }
@@ -1674,7 +1630,8 @@ static void print_ccd_info(void *response, size_t response_size)
 	/* Now report CCD state on the console. */
 	printf("State: %s\n", ccd_info.ccd_state > ARRAY_SIZE(state_names) ?
 	       "Error" : state_names[ccd_info.ccd_state]);
-	printf("Password: %s\n", ccd_info.ccd_has_password ? "Set" : "None");
+	printf("Password: %s\n", (ccd_info.ccd_indicator_bitmap &
+		      CCD_INDICATOR_BIT_HAS_PASSWORD) ? "Set" : "None");
 	printf("Flags: %#06x\n", ccd_info.ccd_flags);
 	printf("Capabilities, current and default:\n");
 	for (i = 0; i < CCD_CAP_COUNT; i++) {
@@ -1684,11 +1641,13 @@ static void print_ccd_info(void *response, size_t response_size)
 		int cap_current;
 		int cap_default;
 
-		index = i / (32/2);
-		shift = (i % (32/2)) * 2;
+		index = i / (32 / CCD_CAP_BITS);
+		shift = (i % (32 / CCD_CAP_BITS)) * CCD_CAP_BITS;
 
-		cap_current = (ccd_info.ccd_caps_current[index] >> shift) & 3;
-		cap_default = (ccd_info.ccd_caps_defaults[index] >> shift) & 3;
+		cap_current = (ccd_info.ccd_caps_current[index] >> shift)
+							 & CCD_CAP_BITMASK;
+		cap_default = (ccd_info.ccd_caps_defaults[index] >> shift)
+							 & CCD_CAP_BITMASK;
 
 		if (ccd_info.ccd_force_disabled) {
 			is_enabled = 0;
@@ -1722,6 +1681,8 @@ static void print_ccd_info(void *response, size_t response_size)
 			caps_bitmap |= (1 << i);
 	}
 	printf("CCD caps bitmap: %#x\n", caps_bitmap);
+	printf("Capabilities are %s.\n", (ccd_info.ccd_indicator_bitmap &
+		 CCD_INDICATOR_BIT_ALL_CAPS_DEFAULT) ? "default" : "modified");
 }
 
 static void process_ccd_state(struct transfer_descriptor *td, int ccd_unlock,
@@ -1812,7 +1773,8 @@ static void process_wp(struct transfer_descriptor *td)
 
 void process_bid(struct transfer_descriptor *td,
 		 enum board_id_action bid_action,
-		 struct board_id *bid)
+		 struct board_id *bid,
+		 bool show_machine_output)
 {
 	size_t response_size;
 
@@ -1823,16 +1785,47 @@ void process_bid(struct transfer_descriptor *td,
 				    bid, sizeof(*bid),
 				    bid, &response_size);
 
-		if (response_size == sizeof(*bid)) {
-			printf("Board ID space: %08x:%08x:%08x\n",
-			       be32toh(bid->type), be32toh(bid->type_inv),
-			       be32toh(bid->flags));
-			return;
+		if (response_size != sizeof(*bid)) {
+			fprintf(stderr,
+				"Error reading board ID: response size %zd, "
+				"first byte %#02x\n",
+				response_size,
+				response_size ? *(uint8_t *)&bid : -1);
+			exit(update_error);
 		}
-		fprintf(stderr, "Error reading board ID: response size %zd,"
-			" first byte %#02x\n", response_size,
-			response_size ? *(uint8_t *)&bid : -1);
-		exit(update_error);
+
+		if (show_machine_output) {
+			print_machine_output(
+				"BID_TYPE", "%08x", be32toh(bid->type));
+			print_machine_output(
+				"BID_TYPE_INV", "%08x", be32toh(bid->type_inv));
+			print_machine_output(
+				"BID_FLAGS", "%08x", be32toh(bid->flags));
+
+			for (int i = 0; i < 4; i++) {
+				if (!isupper(((const char *)bid)[i])) {
+					print_machine_output(
+						"BID_RLZ", "%s", "????");
+					return;
+				}
+			}
+
+			print_machine_output(
+				"BID_RLZ", "%c%c%c%c",
+				((const char *)bid)[0],
+				((const char *)bid)[1],
+				((const char *)bid)[2],
+				((const char *)bid)[3]);
+		} else {
+			if (bid_action == bid_get) {
+				printf("Board ID space: %08x:%08x:%08x\n",
+				       be32toh(bid->type),
+				       be32toh(bid->type_inv),
+				       be32toh(bid->flags));
+			}
+		}
+
+		return;
 	}
 
 	if (bid_action == bid_set) {
@@ -2058,6 +2051,7 @@ int main(int argc, char *argv[])
 	int wp = 0;
 	int try_all_transfer = 0;
 	int tpm_mode = 0;
+	bool show_machine_output = false;
 
 	const char *exclusive_opt_error =
 		"Options -a, -s and -t are mutually exclusive\n";
@@ -2135,6 +2129,9 @@ int main(int argc, char *argv[])
 			break;
 		case 'k':
 			ccd_lock = 1;
+			break;
+		case 'M':
+			show_machine_output = true;
 			break;
 		case 'm':
 			tpm_mode = 1;
@@ -2252,7 +2249,7 @@ int main(int argc, char *argv[])
 		fetch_header_versions(data);
 
 		if (binary_vers)
-			exit(show_headers_versions(data));
+			exit(show_headers_versions(data, show_machine_output));
 	} else {
 		if (optind < argc)
 			printf("Ignoring binary image %s\n", argv[optind]);
@@ -2268,7 +2265,10 @@ int main(int argc, char *argv[])
 	}
 
 	if (td.ep_type == usb_xfer) {
-		usb_findit(vid, pid, &td.uep);
+		if (usb_findit(vid, pid, USB_SUBCLASS_GOOGLE_CR50,
+			       USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE,
+			       &td.uep))
+			exit(update_error);
 	} else if (td.ep_type == dev_xfer) {
 		td.tpm_fd = open("/dev/tpm0", O_RDWR);
 		if (td.tpm_fd < 0) {
@@ -2281,7 +2281,7 @@ int main(int argc, char *argv[])
 	}
 
 	if (openbox_desc_file)
-		return verify_ro(&td, openbox_desc_file);
+		return verify_ro(&td, openbox_desc_file, show_machine_output);
 
 	if (ccd_unlock || ccd_open || ccd_lock || ccd_info)
 		process_ccd_state(&td, ccd_unlock, ccd_open,
@@ -2291,7 +2291,7 @@ int main(int argc, char *argv[])
 		process_password(&td);
 
 	if (bid_action != bid_none)
-		process_bid(&td, bid_action, &bid);
+		process_bid(&td, bid_action, &bid, show_machine_output);
 
 	if (rma)
 		process_rma(&td, rma_auth_code);
@@ -2331,13 +2331,22 @@ int main(int argc, char *argv[])
 			generate_reset_request(&td);
 
 		if (show_fw_ver) {
-			printf("Current versions:\n");
-			printf("RO %d.%d.%d\n", targ.shv[0].epoch,
-			       targ.shv[0].major,
-			       targ.shv[0].minor);
-			printf("RW %d.%d.%d\n", targ.shv[1].epoch,
-			       targ.shv[1].major,
-			       targ.shv[1].minor);
+			if (show_machine_output) {
+				print_machine_output("RO_FW_VER", "%d.%d.%d",
+						     targ.shv[0].epoch,
+						     targ.shv[0].major,
+						     targ.shv[0].minor);
+				print_machine_output("RW_FW_VER", "%d.%d.%d",
+						     targ.shv[1].epoch,
+						     targ.shv[1].major,
+						     targ.shv[1].minor);
+			} else {
+				printf("Current versions:\n");
+				printf("RO %d.%d.%d\n", targ.shv[0].epoch,
+				       targ.shv[0].major, targ.shv[0].minor);
+				printf("RW %d.%d.%d\n", targ.shv[1].epoch,
+				       targ.shv[1].major, targ.shv[1].minor);
+			}
 		}
 	}
 

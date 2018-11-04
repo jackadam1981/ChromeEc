@@ -16,15 +16,17 @@
 /* Time to wait for TCPC to complete transmit */
 #define PD_T_TCPC_TX_TIMEOUT  (100*MSEC)
 
+/* Detected resistor values of port partner */
 enum tcpc_cc_voltage_status {
 	TYPEC_CC_VOLT_OPEN = 0,
-	TYPEC_CC_VOLT_RA = 1,
-	TYPEC_CC_VOLT_RD = 2,
-	TYPEC_CC_VOLT_SNK_DEF = 5,
-	TYPEC_CC_VOLT_SNK_1_5 = 6,
-	TYPEC_CC_VOLT_SNK_3_0 = 7,
+	TYPEC_CC_VOLT_RA = 1,	  /* Port partner is applying Ra */
+	TYPEC_CC_VOLT_RD = 2,	  /* Port partner is applying Rd */
+	TYPEC_CC_VOLT_RP_DEF = 5, /* Port partner is applying Rp (0.5A) */
+	TYPEC_CC_VOLT_RP_1_5 = 6, /* Port partner is applying Rp (1.5A) */
+	TYPEC_CC_VOLT_RP_3_0 = 7, /* Port partner is applying Rp (3.0A) */
 };
 
+/* Resistor types we apply on our side of the CC lines */
 enum tcpc_cc_pull {
 	TYPEC_CC_RA = 0,
 	TYPEC_CC_RP = 1,
@@ -32,6 +34,7 @@ enum tcpc_cc_pull {
 	TYPEC_CC_OPEN = 3,
 };
 
+/* Pull-up values we apply as a SRC to advertise different current limits */
 enum tcpc_rp_value {
 	TYPEC_RP_USB = 0,
 	TYPEC_RP_1A5 = 1,
@@ -158,7 +161,7 @@ struct tcpm_drv {
 	int (*set_rx_enable)(int port, int enable);
 
 	/**
-	 * Read last received PD message.
+	 * Read received PD message from the TCPC
 	 *
 	 * @param port Type-C port number
 	 * @param payload Pointer to location to copy payload of message
@@ -166,7 +169,7 @@ struct tcpm_drv {
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*get_message)(int port, uint32_t *payload, int *head);
+	int (*get_message_raw)(int port, uint32_t *payload, int *head);
 
 	/**
 	 * Transmit PD message
@@ -202,11 +205,10 @@ struct tcpm_drv {
 	 * Enable TCPC auto DRP toggling.
 	 *
 	 * @param port Type-C port number
-	 * @param enable 1: Enable 0: Disable
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*drp_toggle)(int port, int enable);
+	int (*drp_toggle)(int port);
 #endif
 
 	/**
@@ -219,7 +221,7 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	int (*get_chip_info)(int port, int renew,
-			struct ec_response_pd_chip_info **info);
+			struct ec_response_pd_chip_info_v1 **info);
 
 #ifdef CONFIG_USBC_PPC
 	/**

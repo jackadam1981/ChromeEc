@@ -15,10 +15,12 @@ driver-$(CONFIG_ACCELGYRO_BMI160)+=accelgyro_bmi160.o
 driver-$(CONFIG_MAG_BMI160_BMM150)+=mag_bmm150.o
 driver-$(CONFIG_ACCELGYRO_LSM6DSM)+=accelgyro_lsm6dsm.o stm_mems_common.o
 driver-$(CONFIG_ACCEL_LIS2D_COMMON)+=accel_lis2dh.o stm_mems_common.o
+driver-$(CONFIG_MAG_LIS2MDL)+=mag_lis2mdl.o
+driver-$(CONFIG_SENSORHUB_LSM6DSM)+=sensorhub_lsm6dsm.o
 driver-$(CONFIG_SYNC)+=sync.o
 
 # BC1.2 Charger Detection Devices
-driver-$(CONFIG_BC12_DETECT_BQ24392)+=bc12/bq24392.o
+driver-$(CONFIG_BC12_DETECT_MAX14637)+=bc12/max14637.o
 driver-$(CONFIG_BC12_DETECT_PI3USB9281)+=bc12/pi3usb9281.o
 
 # Gyrometers
@@ -83,6 +85,7 @@ driver-$(CONFIG_REGULATOR_IR357X)+=regulator_ir357x.o
 driver-$(CONFIG_TEMP_SENSOR_ADT7481)+=temp_sensor/adt7481.o
 driver-$(CONFIG_TEMP_SENSOR_BD99992GW)+=temp_sensor/bd99992gw.o
 driver-$(CONFIG_TEMP_SENSOR_EC_ADC)+=temp_sensor/ec_adc.o
+driver-$(CONFIG_TEMP_SENSOR_F75303)+=temp_sensor/f75303.o
 driver-$(CONFIG_TEMP_SENSOR_G781)+=temp_sensor/g78x.o
 driver-$(CONFIG_TEMP_SENSOR_G782)+=temp_sensor/g78x.o
 driver-$(CONFIG_TEMP_SENSOR_SB_TSI)+=temp_sensor/sb_tsi.o
@@ -90,7 +93,7 @@ driver-$(CONFIG_TEMP_SENSOR_TMP006)+=temp_sensor/tmp006.o
 driver-$(CONFIG_TEMP_SENSOR_TMP112)+=temp_sensor/tmp112.o
 driver-$(CONFIG_TEMP_SENSOR_TMP411)+=temp_sensor/tmp411.o
 driver-$(CONFIG_TEMP_SENSOR_TMP432)+=temp_sensor/tmp432.o
-driver-$(CONFIG_TEMP_SENSOR_F75303)+=temp_sensor/f75303.o
+driver-$(CONFIG_TEMP_SENSOR_TMP468)+=temp_sensor/tmp468.o
 
 # Touchpads
 driver-$(CONFIG_TOUCHPAD_ELAN)+=touchpad_elan.o
@@ -106,13 +109,12 @@ driver-$(CONFIG_USB_PD_TCPM_TCPCI)+=tcpm/tcpci.o
 driver-$(CONFIG_USB_PD_TCPM_FUSB302)+=tcpm/fusb302.o
 driver-$(CONFIG_USB_PD_TCPM_MT6370)+=tcpm/mt6370.o
 driver-$(CONFIG_USB_PD_TCPM_ITE83XX)+=tcpm/it83xx.o
-driver-$(CONFIG_USB_PD_TCPM_ANX3429)+=tcpm/anx74xx.o
-driver-$(CONFIG_USB_PD_TCPM_ANX740X)+=tcpm/anx74xx.o
-driver-$(CONFIG_USB_PD_TCPM_ANX741X)+=tcpm/anx74xx.o
+driver-$(CONFIG_USB_PD_TCPM_ANX74XX)+=tcpm/anx74xx.o
 driver-$(CONFIG_USB_PD_TCPM_ANX7688)+=tcpm/anx7688.o
 driver-$(CONFIG_USB_PD_TCPM_ANX7447)+=tcpm/anx7447.o
 driver-$(CONFIG_USB_PD_TCPM_PS8751)+=tcpm/ps8xxx.o
 driver-$(CONFIG_USB_PD_TCPM_PS8805)+=tcpm/ps8xxx.o
+driver-$(CONFIG_USB_PD_TCPM_TUSB422)+=tcpm/tusb422.o
 
 # USB mux high-level driver
 driver-$(CONFIG_USBC_SS_MUX)+=usb_mux.o
@@ -126,6 +128,10 @@ driver-$(CONFIG_USB_MUX_VIRTUAL)+=usb_mux_virtual.o
 
 # Type-C Power Path Controllers (PPC)
 driver-$(CONFIG_USBC_PPC_SN5S330)+=ppc/sn5s330.o
+ifeq ($(CONFIG_USBC_PPC_NX20P3481)$(CONFIG_USBC_PPC_NX20P3483),y)
+driver-y += ppc/nx20p348x.o
+endif
+driver-$(CONFIG_USBC_PPC_SYV682X)+=ppc/syv682x.o
 driver-$(CONFIG_USBC_PPC_NX20P3483)+=ppc/nx20p348x.o
 
 # video converters

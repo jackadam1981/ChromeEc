@@ -24,7 +24,6 @@
 #define CONFIG_CROS_BOARD_INFO
 #define CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
 #define CONFIG_DPTF
-#define CONFIG_DPTF_DEVICE_ORIENTATION
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
 #define CONFIG_I2C
@@ -32,6 +31,7 @@
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
+#define CONFIG_KEYBOARD_KEYPAD
 #define CONFIG_LED_COMMON
 #define CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
@@ -286,6 +286,7 @@ enum oem_id {
 };
 
 #define SKU_ID_MASK_CONVERTIBLE	(1 << 9)
+#define SKU_ID_MASK_KEYPAD	(1 << 15)
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
 /*
@@ -314,7 +315,7 @@ void board_set_tcpc_power_mode(int port, int mode);
 /* These should be referenced only after  HOOK_INIT:HOOK_PRIO_INIT_I2C+1. */
 extern uint16_t board_version;
 extern uint8_t oem;
-extern uint16_t sku;
+extern uint32_t sku;
 
 #endif /* !__ASSEMBLER__ */
 

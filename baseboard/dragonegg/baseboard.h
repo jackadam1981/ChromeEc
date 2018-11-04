@@ -21,10 +21,20 @@
 /* #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
 
 /* EC Defines */
+#define CONFIG_ADC
 #define CONFIG_PWM
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
+
+/* CBI */
+/*
+ * TODO (b/117174246): When EEPROMs are programmed, can use EEPROM for board
+ * version. But for P0/P1 boards rely on GPIO signals.
+ */
+/* #define CONFIG_BOARD_VERSION_CBI */
+#define CONFIG_CROS_BOARD_INFO
+#define CONFIG_CRC8
 
 /* Common Keyboard Defines */
 #define CONFIG_CMD_KEYBOARD
@@ -35,8 +45,7 @@
 
 /* Common charger defines */
 #define CONFIG_CHARGE_MANAGER
-/* TODO (b/111309500): Enable this option when support for MAX14637 is added */
-/* #define CONFIG_CHARGE_RAMP_HW */
+#define CONFIG_CHARGE_RAMP_HW
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_BQ25710
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
@@ -55,18 +64,23 @@
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_SMART
 
+/* BC 1.2 Detection */
+#define CONFIG_BC12_DETECT_MAX14637
+#define CONFIG_USB_CHARGER
+
 /* USB Type C and USB PD defines */
 #undef CONFIG_USB_PD_TCPC_LOW_POWER
 #undef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
 #define CONFIG_USB_PD_TCPM_ITE83XX	/* C0 & C1 TCPC: ITE EC */
+#define CONFIG_USB_PD_TCPM_TUSB422	/* C1 TCPC: TUSB422 */
 #define CONFIG_USB_POWER_DELIVERY
 /*
  * TODO (b/111281797): DragonEgg has 3 ports. Only adding support for the port
  * on the MLB for now. In addition, this config option will likely move to
  * board.h as it likely board dependent and not same across all follower boards.
  */
-#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_PORT_COUNT 3
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_LOGGING
@@ -75,10 +89,16 @@
 #define CONFIG_USB_PD_DISCHARGE_PPC
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
+/*
+ * TODO(b/113541930): ADC measurements are available for port 0 and 1, but not
+ * port 2.
+ */
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_MUX_VIRTUAL
 #define CONFIG_USBC_PPC_SN5S330		/* C0 PPC */
+#define CONFIG_USBC_PPC_SYV682X		/* C1 PPC */
+#define CONFIG_USBC_PPC_NX20P3481		/* C2 PPC */
 #define CONFIG_USBC_PPC_VCONN
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_VCONN

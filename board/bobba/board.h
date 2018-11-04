@@ -16,9 +16,6 @@
 /* I2C bus configuraiton */
 #define I2C_PORT_ACCEL	I2C_PORT_SENSOR
 
-/* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
@@ -26,44 +23,50 @@
 #define CONFIG_LED_COMMON
 
 /* Sensors */
-#define CONFIG_ACCEL_KX022		/* Lid accel */
+#define CONFIG_ACCEL_KX022	/* Lid accel */
 #define CONFIG_ACCELGYRO_BMI160	/* Base accel */
+#define CONFIG_SYNC		/* Camera VSYNC */
 
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
-#define CONFIG_VOLUME_BUTTONS
-#define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
-#define GPIO_VOLUME_DOWN_L GPIO_EC_VOLDN_BTN_ODL
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCEL_FIFO 1024 /* Power of 2 */
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+
+/* Motion Sense Task Events */
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT	TASK_EVENT_CUSTOM(1 << 2)
+#define CONFIG_SYNC_INT_EVENT			TASK_EVENT_CUSTOM(1 << 3)
 
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 
-#define CONFIG_TABLET_MODE
-#define CONFIG_TABLET_SWITCH
-#define TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
+/* USB PD */
+#undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
+#define CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
+
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L GPIO_EC_VOLDN_BTN_ODL
 
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_THERMISTOR
 #define CONFIG_STEINHART_HART_3V3_13K7_47K_4050B
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 
-#define CONFIG_DPTF
-
-#define CONFIG_ACCEL_INTERRUPTS
-/* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 1024
-
-/* Depends on how fast the AP boots and typical ODRs */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 
-#define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
 #ifndef __ASSEMBLER__
+
+/* support factory keyboard test */
+#define CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
 
 #include "gpio_signal.h"
 #include "registers.h"
@@ -71,6 +74,8 @@
 enum adc_channel {
 	ADC_TEMP_SENSOR_AMB,		/* ADC0 */
 	ADC_TEMP_SENSOR_CHARGER,	/* ADC1 */
+	ADC_VBUS_C0,			/* ADC9 */
+	ADC_VBUS_C1,			/* ADC4 */
 	ADC_CH_COUNT
 };
 
@@ -91,6 +96,7 @@ enum sensor_id {
 	LID_ACCEL,
 	BASE_ACCEL,
 	BASE_GYRO,
+	VSYNC,
 	SENSOR_COUNT
 };
 

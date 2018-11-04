@@ -61,6 +61,11 @@
 #define CONFIG_WP_STORAGE_OFF           CONFIG_EC_PROTECTED_STORAGE_OFF
 #define CONFIG_WP_STORAGE_SIZE          CONFIG_EC_PROTECTED_STORAGE_SIZE
 
+/*
+ * We want to prevent flash readout, and use it as indicator of protection
+ * status.
+ */
+#define CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
 
 /* the UART console is on USART1 */
 #undef CONFIG_UART_CONSOLE
@@ -127,6 +132,9 @@
  */
 #define CONFIG_ROLLBACK
 #define CONFIG_ROLLBACK_SECRET_SIZE 32
+
+#define CONFIG_ROLLBACK_MPU_PROTECT
+
 /*
  * We do not use any "locally" generated entropy: this is normally used
  * to add local entropy when the main source of entropy is remote.
@@ -135,6 +143,9 @@
 #ifdef SECTION_IS_RW
 #undef CONFIG_ROLLBACK_UPDATE
 #endif
+
+#define CONFIG_AES
+#define CONFIG_AES_GCM
 
 #define CONFIG_RNG
 

@@ -13,15 +13,9 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
-/* Enable PSL hibernate mode. */
-#define CONFIG_HIBERNATE_PSL
-
 #define CONFIG_VOLUME_BUTTONS
 #define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L GPIO_EC_VOLDN_BTN_ODL
-
-/* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
@@ -31,11 +25,13 @@
 #define OCTOPUS_POWER_LED
 
 /* Sensors */
-/* TODO(b/111842131): confirm lid accelerometer matches yorp */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
+#define CONFIG_SENSORHUB_LSM6DSM
+#define CONFIG_MAG_LIS2MDL
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
 /* USB PD */
 #undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
@@ -48,17 +44,10 @@
 #define CONFIG_LID_ANGLE_TABLET_MODE
 #define CONFIG_LID_ANGLE_INVALID_CHECK
 
-#define CONFIG_TABLET_MODE
-#define CONFIG_TABLET_SWITCH
-#define TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
-
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_THERMISTOR
 #define CONFIG_STEINHART_HART_3V3_13K7_47K_4050B
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
-
-#define CONFIG_DPTF
-#define CONFIG_DPTF_DEVICE_ORIENTATION
 
 #define CONFIG_ACCEL_INTERRUPTS
 /* FIFO size is in power of 2. */
@@ -68,6 +57,8 @@
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
+
+#define CONFIG_KEYBOARD_FACTORY_TEST
 
 #define OCTOPUS_BATT_FUEL_LOW_LED 10
 
@@ -102,6 +93,7 @@ enum sensor_id {
 	LID_ACCEL,
 	BASE_ACCEL,
 	BASE_GYRO,
+	BASE_MAG,
 	SENSOR_COUNT
 };
 
@@ -114,6 +106,13 @@ enum battery_type {
 	BATTERY_SIMPLO_ATL,
 	BATTERY_TYPE_COUNT,
 };
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
+
+int board_is_convertible(void);
 
 #endif /* !__ASSEMBLER__ */
 

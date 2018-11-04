@@ -61,7 +61,7 @@
 #define CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD 30
 /* All data won't fit in data RAM.  So, moving boundary slightly. */
 #undef CONFIG_RO_SIZE
-#define CONFIG_RO_SIZE (104 * 1024)
+#define CONFIG_RO_SIZE (108 * 1024)
 #define CONFIG_SCI_GPIO GPIO_PCH_SCI_L
 /* We're space constrained on GLaDOS, so reduce the UART TX buffer size. */
 #undef CONFIG_UART_TX_BUF_SIZE
@@ -141,6 +141,9 @@
 #undef CONFIG_CMD_TEMP_SENSOR
 #undef CONFIG_CMD_TIMERINFO
 #undef CONFIG_CONSOLE_CMDHELP
+#ifdef SECTION_IS_RO
+#undef CONFIG_CMD_BATTFAKE
+#endif
 
 #ifndef __ASSEMBLER__
 

@@ -46,6 +46,7 @@ GPIO(BATT_PRES_L,            PIN(3, 4), GPIO_INPUT)                  /* Battery 
 GPIO(CCD_MODE_ODL,           PIN(6, 3), GPIO_INPUT)                  /* Case Closed Debug Mode */
 GPIO(ENTERING_RW,            PIN(7, 6), GPIO_OUTPUT)                 /* EC Entering RW */
 GPIO(ROP_EC_INT_L,           PIN(6, 0), GPIO_INPUT)                  /* PMIC interrupt */
+GPIO(KB_BL_EN,               PIN(7, 1), GPIO_OUT_LOW)                /* Keyboard backlight enable */
 #ifndef CONFIG_POWER_S0IX
 GPIO(SLP_S0_L,               PIN(7, 5), GPIO_INPUT)
 #endif
@@ -60,7 +61,7 @@ GPIO(BRD_ID_EN,              PIN(0, 2), GPIO_OUT_LOW)                /* Enable f
 /* Reserved, for the lid accelerator interrupt */
 GPIO(LID_ACCEL_INT_L,        PIN(D, 2), GPIO_INPUT | GPIO_SEL_1P8V | GPIO_PULL_UP)  /* LID Accelerator interrupt */
 /* Reserved, changing touchpad interrupt behavior for wakeup */
-GPIO(TP_INT_CONN,            PIN(C, 2), GPIO_INPUT | GPIO_PULL_UP)   /* Touchpad interrupt */
+GPIO(TP_INT_CONN,            PIN(C, 2), GPIO_INPUT)                  /* Touchpad interrupt */
 /* Reserved, output low to enable touchpad interrupt by default */
 GPIO(TP_INT_EN,              PIN(A, 1), GPIO_OUT_LOW)                /* Enable Touchpad interrupt */
 
@@ -83,7 +84,7 @@ GPIO(EN_USB_C0_CHARGE_EC_L,  PIN(C, 0), GPIO_OUT_LOW)                /* C0 Charg
 GPIO(EN_USB_C1_5V_OUT,       PIN(B, 1), GPIO_OUT_LOW)                /* C1 5V Enable */
 GPIO(EN_USB_C1_3A,           PIN(3, 5), GPIO_OUT_LOW)                /* C1 3A Enable */
 GPIO(EN_USB_C1_CHARGE_EC_L,  PIN(C, 3), GPIO_OUT_LOW)                /* C1 Charge enable */
-GPIO(USB_PD_RST_C0_L,        PIN(0, 3), GPIO_OUT_LOW)                /* C0 PD Reset */
+GPIO(USB_PD_RST_C0,          PIN(0, 3), GPIO_OUT_LOW)                /* C0 PD Reset */
 GPIO(USB_C1_PD_RST_ODL,      PIN(7, 4), GPIO_ODR_HIGH)               /* C1 PD Reset */
 GPIO(USB_C0_DP_HPD,          PIN(9, 4), GPIO_INPUT)                  /* C0 DP Hotplug Detect */
 GPIO(USB_C1_DP_HPD,          PIN(A, 5), GPIO_INPUT)                  /* C1 DP Hotplug Detect */

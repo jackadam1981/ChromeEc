@@ -14,10 +14,11 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
-#include "driver/bc12/bq24392.h"
+#include "driver/bc12/max14637.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -40,6 +41,7 @@
 #include "temp_sensor.h"
 #include "thermistor.h"
 #include "usb_mux.h"
+#include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -100,14 +102,31 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
+void tcpc_alert_event(enum gpio_signal signal)
+{
+	int port;
+
+	if (signal == GPIO_USB_C0_PD_INT_ODL) {
+		if (!gpio_get_level(GPIO_USB_C0_PD_RST_L))
+			return;
+		port = 0;
+	}
+
+	if (signal == GPIO_USB_C1_PD_INT_ODL) {
+		if (!gpio_get_level(GPIO_USB_C1_PD_RST_L))
+			return;
+		port = 1;
+	}
+
+	schedule_deferred_pd_interrupt(port);
+}
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
-		.port_addr = USB_PD_PORT_ANX74XX,
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_PS8751] = {
-		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		/* TODO(ecgh): ps8751_tune_mux needed? */
@@ -129,16 +148,16 @@ struct ppc_config_t ppc_chips[] = {
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 /* BC 1.2 chip Configuration */
-const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON_L,
 		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET,
-		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
+		.flags = MAX14637_FLAGS_ENABLE_ACTIVE_LOW,
 	},
 	[USB_PD_PORT_PS8751] = {
 		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON_L,
 		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET,
-		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
+		.flags = MAX14637_FLAGS_ENABLE_ACTIVE_LOW,
 	},
 };
 
@@ -186,6 +205,15 @@ static void baseboard_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
+
+int board_is_i2c_port_powered(int port)
+{
+	if (port != I2C_PORT_SENSOR)
+		return 1;
+
+	/* Sensor power (lid accel, gyro) is off in S5 (and G3). */
+	return chipset_in_state(CHIPSET_STATE_ANY_OFF) ? 0 : 1;
+}
 
 int board_set_active_charge_port(int port)
 {
@@ -311,13 +339,13 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
-matrix_3x3_t grunt_base_standard_ref = {
+mat33_fp_t grunt_base_standard_ref = {
 	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0, FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
-matrix_3x3_t lid_standard_ref = {
+mat33_fp_t lid_standard_ref = {
 	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0, FLOAT_TO_FP(1),  0},
 	{ 0, 0, FLOAT_TO_FP(1)}
@@ -340,7 +368,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv_data = &g_kx022_data,
 	 .port = I2C_PORT_SENSOR,
 	 .addr = KX022_ADDR1,
-	 .rot_standard_ref = (const matrix_3x3_t *)&lid_standard_ref,
+	 .rot_standard_ref = (const mat33_fp_t *)&lid_standard_ref,
 	 .default_range = 2, /* g, enough for laptop. */
 	 .min_frequency = KX022_ACCEL_MIN_FREQ,
 	 .max_frequency = KX022_ACCEL_MAX_FREQ,
@@ -364,7 +392,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = I2C_PORT_SENSOR,
 	 .addr = BMI160_ADDR0,
 	 .default_range = 2, /* g, enough for laptop */
-	 .rot_standard_ref = (const matrix_3x3_t *)&grunt_base_standard_ref,
+	 .rot_standard_ref = (const mat33_fp_t *)&grunt_base_standard_ref,
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
 	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
 	 .config = {
@@ -392,13 +420,13 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = I2C_PORT_SENSOR,
 	 .addr = BMI160_ADDR0,
 	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = (const matrix_3x3_t *)&grunt_base_standard_ref,
+	 .rot_standard_ref = (const mat33_fp_t *)&grunt_base_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
 };
 
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #ifndef TEST_BUILD
 void lid_angle_peripheral_enable(int enable)
@@ -447,13 +475,9 @@ static int board_read_sku_adc(enum adc_channel chan)
 	return -1;
 }
 
-uint32_t system_get_sku_id(void)
+static uint32_t board_get_adc_sku_id(void)
 {
-	static uint32_t sku_id = -1;
 	int sku_id1, sku_id2;
-
-	if (sku_id != -1)
-		return sku_id;
 
 	sku_id1 = board_read_sku_adc(ADC_SKU_ID1);
 	sku_id2 = board_read_sku_adc(ADC_SKU_ID2);
@@ -461,8 +485,57 @@ uint32_t system_get_sku_id(void)
 	if (sku_id1 < 0 || sku_id2 < 0)
 		return 0;
 
-	sku_id = (sku_id2 << 4) | sku_id1;
+	return (sku_id2 << 4) | sku_id1;
+}
+
+static int board_get_gpio_board_version(void)
+{
+	return
+		(!!gpio_get_level(GPIO_BOARD_VERSION1) << 0) |
+		(!!gpio_get_level(GPIO_BOARD_VERSION2) << 1) |
+		(!!gpio_get_level(GPIO_BOARD_VERSION3) << 2);
+}
+
+static int board_version;
+static uint32_t sku_id;
+
+static void cbi_init(void)
+{
+	board_version = board_get_gpio_board_version();
+	sku_id = board_get_adc_sku_id();
+
+	/*
+	 * Use board version and SKU ID from CBI EEPROM if the board supports
+	 * it and the SKU ID set via resistors + ADC is not valid.
+	 */
+#ifdef CONFIG_CROS_BOARD_INFO
+	if (sku_id == 0 || sku_id == 0xff) {
+		uint32_t val;
+
+		if (cbi_get_board_version(&val) == EC_SUCCESS)
+			board_version = val;
+		if (cbi_get_sku_id(&val) == EC_SUCCESS)
+			sku_id = val;
+	}
+#endif
+
+	ccprints("Board Version: %d (0x%x)", board_version, board_version);
+	ccprints("SKU: %d (0x%x)", sku_id, sku_id);
+}
+/*
+ * Reading the SKU resistors requires the ADC module. If we are using EEPROM
+ * then we also need the I2C module, but that is available before ADC.
+ */
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_ADC + 1);
+
+uint32_t system_get_sku_id(void)
+{
 	return sku_id;
+}
+
+int board_get_version(void)
+{
+	return board_version;
 }
 
 /*
@@ -489,7 +562,8 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 	 * check if the current device is one of them and return
 	 * the default value - with backlight here.
 	 */
-	if (sku == 16 || sku == 17 || sku == 20 || sku == 21)
+	if (sku == 16 || sku == 17 || sku == 20 || sku == 21 || sku == 32
+		|| sku == 33)
 		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
 	else
 		return flags0;

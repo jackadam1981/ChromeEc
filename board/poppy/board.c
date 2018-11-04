@@ -142,22 +142,6 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 }
 #endif
 
-static int command_attach_base(int argc, char **argv)
-{
-	tablet_set_mode(0);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(attachbase, command_attach_base,
-		NULL, "Simulate attach base");
-
-static int command_detach_base(int argc, char **argv)
-{
-	tablet_set_mode(1);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(detachbase, command_detach_base,
-		NULL, "Simulate detach base");
-
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */
@@ -241,12 +225,10 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0, /* don't care / unused */
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = 1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
@@ -746,27 +728,27 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 };
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t mag_standard_ref = {
+const mat33_fp_t mag_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0,  FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
 #ifdef BOARD_SORAKA
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ 0,  FLOAT_TO_FP(-1),  0},
 	{FLOAT_TO_FP(1),  0,  0},
 	{ 0,  0, FLOAT_TO_FP(1)}
 };
 
 /* For rev3 and older */
-const matrix_3x3_t lid_standard_ref_old = {
+const mat33_fp_t lid_standard_ref_old = {
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0,  FLOAT_TO_FP(-1),  0},
 	{ 0,  0, FLOAT_TO_FP(1)}
 };
 #else
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0,  FLOAT_TO_FP(-1),  0},
 	{ 0,  0, FLOAT_TO_FP(1)}

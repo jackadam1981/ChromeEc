@@ -158,7 +158,6 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0, /* port idx */
 		.driver    = &anx7688_usb_mux_driver,
 	},
 };
@@ -441,7 +440,7 @@ BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 static struct mutex g_lid_mutex;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0,  0, FLOAT_TO_FP(1)}

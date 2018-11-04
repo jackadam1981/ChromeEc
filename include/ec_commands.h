@@ -4721,6 +4721,20 @@ struct __ec_align2 ec_response_pd_chip_info {
 	};
 };
 
+struct __ec_align2 ec_response_pd_chip_info_v1 {
+	uint16_t vendor_id;
+	uint16_t product_id;
+	uint16_t device_id;
+	union {
+		uint8_t fw_version_string[8];
+		uint64_t fw_version_number;
+	};
+	union {
+		uint8_t min_req_fw_version_string[8];
+		uint64_t min_req_fw_version_number;
+	};
+};
+
 /* Run RW signature verification and get status */
 #define EC_CMD_RWSIG_CHECK_STATUS	0x011C
 
@@ -4886,6 +4900,17 @@ struct __ec_align4 ec_response_adc_read {
 	int32_t adc_value;
 };
 
+/*
+ * Read back rollback info
+ */
+#define EC_CMD_ROLLBACK_INFO		0x0124
+
+struct __ec_align4 ec_response_rollback_info {
+	int32_t id; /* Incrementing number to indicate which region to use. */
+	int32_t rollback_min_version;
+	int32_t rw_rollback_version;
+};
+
 
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
@@ -4911,59 +4936,63 @@ struct __ec_align2 ec_params_fp_passthru {
 	uint8_t data[];		/* Data to send */
 };
 
-/* Fingerprint sensor configuration command: prototyping ONLY */
-#define EC_CMD_FP_SENSOR_CONFIG 0x0401
-
-#define EC_FP_SENSOR_CONFIG_MAX_REGS 16
-
-struct __ec_align2 ec_params_fp_sensor_config {
-	uint8_t count;		/* Number of setup registers */
-	/*
-	 * the value to send to each of the 'count' setup registers
-	 * is stored in the 'data' array for 'len' bytes just after
-	 * the previous one.
-	 */
-	uint8_t len[EC_FP_SENSOR_CONFIG_MAX_REGS];
-	uint8_t data[];
-};
-
 /* Configure the Fingerprint MCU behavior */
 #define EC_CMD_FP_MODE 0x0402
 
 /* Put the sensor in its lowest power mode */
-#define FP_MODE_DEEPSLEEP     (1<<0)
+#define FP_MODE_DEEPSLEEP      (1<<0)
 /* Wait to see a finger on the sensor */
-#define FP_MODE_FINGER_DOWN   (1<<1)
+#define FP_MODE_FINGER_DOWN    (1<<1)
 /* Poll until the finger has left the sensor */
-#define FP_MODE_FINGER_UP     (1<<2)
+#define FP_MODE_FINGER_UP      (1<<2)
 /* Capture the current finger image */
-#define FP_MODE_CAPTURE       (1<<3)
-/* Capture types defined in bits [30..28] */
-#define FP_MODE_CAPTURE_TYPE_SHIFT 28
-#define FP_MODE_CAPTURE_TYPE_MASK  0x7
-/* Full blown vendor-defined capture (produces 'frame_size' bytes) */
-#define FP_CAPTURE_VENDOR_FORMAT 0
-/* Simple raw image capture (produces width x height x bpp bits) */
-#define FP_CAPTURE_SIMPLE_IMAGE  1
-/* Self test pattern (e.g. checkerboard) */
-#define FP_CAPTURE_PATTERN0      2
-/* Self test pattern (e.g. inverted checkerboard) */
-#define FP_CAPTURE_PATTERN1      3
-/* Capture for Quality test with fixed contrast */
-#define FP_CAPTURE_QUALITY_TEST  4
-/* Capture for pixel reset value test */
-#define FP_CAPTURE_RESET_TEST    5
-/* Extracts the capture type from the sensor 'mode' word */
-#define FP_CAPTURE_TYPE(mode) (((mode) >> FP_MODE_CAPTURE_TYPE_SHIFT) \
-					& FP_MODE_CAPTURE_TYPE_MASK)
+#define FP_MODE_CAPTURE        (1<<3)
 /* Finger enrollment session on-going */
 #define FP_MODE_ENROLL_SESSION (1<<4)
 /* Enroll the current finger image */
 #define FP_MODE_ENROLL_IMAGE   (1<<5)
 /* Try to match the current finger image */
 #define FP_MODE_MATCH          (1<<6)
+/* Reset and re-initialize the sensor. */
+#define FP_MODE_RESET_SENSOR   (1<<7)
 /* special value: don't change anything just read back current mode */
 #define FP_MODE_DONT_CHANGE    (1<<31)
+
+#define FP_VALID_MODES (FP_MODE_DEEPSLEEP      | \
+			FP_MODE_FINGER_DOWN    | \
+			FP_MODE_FINGER_UP      | \
+			FP_MODE_CAPTURE        | \
+			FP_MODE_ENROLL_SESSION | \
+			FP_MODE_ENROLL_IMAGE   | \
+			FP_MODE_MATCH          | \
+			FP_MODE_RESET_SENSOR   | \
+			FP_MODE_DONT_CHANGE)
+
+/* Capture types defined in bits [30..28] */
+#define FP_MODE_CAPTURE_TYPE_SHIFT 28
+#define FP_MODE_CAPTURE_TYPE_MASK  (0x7 << FP_MODE_CAPTURE_TYPE_SHIFT)
+/*
+ * This enum must remain ordered, if you add new values you must ensure that
+ * FP_CAPTURE_TYPE_MAX is still the last one.
+ */
+enum fp_capture_type {
+	/* Full blown vendor-defined capture (produces 'frame_size' bytes) */
+	FP_CAPTURE_VENDOR_FORMAT = 0,
+	/* Simple raw image capture (produces width x height x bpp bits) */
+	FP_CAPTURE_SIMPLE_IMAGE = 1,
+	/* Self test pattern (e.g. checkerboard) */
+	FP_CAPTURE_PATTERN0 = 2,
+	/* Self test pattern (e.g. inverted checkerboard) */
+	FP_CAPTURE_PATTERN1 = 3,
+	/* Capture for Quality test with fixed contrast */
+	FP_CAPTURE_QUALITY_TEST = 4,
+	/* Capture for pixel reset value test */
+	FP_CAPTURE_RESET_TEST = 5,
+	FP_CAPTURE_TYPE_MAX,
+};
+/* Extracts the capture type from the sensor 'mode' word */
+#define FP_CAPTURE_TYPE(mode) (((mode) & FP_MODE_CAPTURE_TYPE_MASK) \
+				       >> FP_MODE_CAPTURE_TYPE_SHIFT)
 
 struct __ec_align4 ec_params_fp_mode {
 	uint32_t mode; /* as defined by FP_MODE_ constants */
@@ -5022,6 +5051,7 @@ struct __ec_align4 ec_response_fp_info {
 	uint16_t template_max;   /* maximum number of fingers/templates */
 	uint16_t template_valid; /* number of valid fingers/templates */
 	uint32_t template_dirty; /* bitmap of templates with MCU side changes */
+	uint32_t template_version; /* version of the template format */
 };
 
 /* Get the last captured finger frame or a template content */
@@ -5029,9 +5059,35 @@ struct __ec_align4 ec_response_fp_info {
 
 /* constants defining the 'offset' field which also contains the frame index */
 #define FP_FRAME_INDEX_SHIFT       28
+/* Frame buffer where the captured image is stored */
 #define FP_FRAME_INDEX_RAW_IMAGE    0
-#define FP_FRAME_TEMPLATE_INDEX(offset) ((offset) >> FP_FRAME_INDEX_SHIFT)
+/* First frame buffer holding a template */
+#define FP_FRAME_INDEX_TEMPLATE     1
+#define FP_FRAME_GET_BUFFER_INDEX(offset) ((offset) >> FP_FRAME_INDEX_SHIFT)
 #define FP_FRAME_OFFSET_MASK       0x0FFFFFFF
+
+/* Constants for encryption parameters */
+#define FP_CONTEXT_NONCE_BYTES 12
+#define FP_CONTEXT_USERID_WORDS (32 / sizeof(uint32_t))
+#define FP_CONTEXT_TAG_BYTES 16
+#define FP_CONTEXT_SALT_BYTES 16
+#define FP_CONTEXT_TPM_BYTES 32
+
+struct ec_fp_template_encryption_metadata {
+	/*
+	 * Version of the structure format (N=3).
+	 */
+	uint16_t struct_version;
+	/* Reserved bytes, set to 0. */
+	uint16_t reserved;
+	/*
+	 * The salt is *only* ever used for key derivation. The nonce is unique,
+	 * a different one is used for every message.
+	 */
+	uint8_t nonce[FP_CONTEXT_NONCE_BYTES];
+	uint8_t salt[FP_CONTEXT_SALT_BYTES];
+	uint8_t tag[FP_CONTEXT_TAG_BYTES];
+};
 
 struct __ec_align4 ec_params_fp_frame {
 	/*
@@ -5058,17 +5114,8 @@ struct __ec_align4 ec_params_fp_template {
 /* Clear the current fingerprint user context and set a new one */
 #define EC_CMD_FP_CONTEXT 0x0406
 
-#define FP_CONTEXT_USERID_WORDS (32 / sizeof(uint32_t))
-#define FP_CONTEXT_NONCE_WORDS (32 / sizeof(uint32_t))
-
 struct __ec_align4 ec_params_fp_context {
 	uint32_t userid[FP_CONTEXT_USERID_WORDS];
-	/* TODO(b/73337313) mostly a placeholder, details to be implemented */
-	uint32_t nonce[FP_CONTEXT_NONCE_WORDS];
-};
-
-struct __ec_align4 ec_response_fp_context {
-	uint32_t nonce[FP_CONTEXT_NONCE_WORDS];
 };
 
 #define EC_CMD_FP_STATS 0x0407
@@ -5086,6 +5133,18 @@ struct __ec_align2 ec_response_fp_stats {
 	} overall_t0;
 	uint8_t timestamps_invalid;
 	int8_t template_matched;
+};
+
+#define EC_CMD_FP_SEED 0x0408
+struct __ec_align4 ec_params_fp_seed {
+	/*
+	 * Version of the structure format (N=3).
+	 */
+	uint16_t struct_version;
+	/* Reserved bytes, set to 0. */
+	uint16_t reserved;
+	/* Seed from the TPM. */
+	uint8_t seed[FP_CONTEXT_TPM_BYTES];
 };
 
 /*****************************************************************************/

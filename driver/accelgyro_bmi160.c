@@ -389,41 +389,32 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	normalized_rate = BMI160_REG_TO_ODR(reg_val);
 	if (rnd && (normalized_rate < rate)) {
 		reg_val++;
-		normalized_rate *= 2;
+		normalized_rate = BMI160_REG_TO_ODR(reg_val);
 	}
 
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
-		if (reg_val > BMI160_ODR_1600HZ) {
-			reg_val = BMI160_ODR_1600HZ;
-			normalized_rate = 1600000;
-		} else if (reg_val < BMI160_ODR_0_78HZ) {
-			reg_val = BMI160_ODR_0_78HZ;
-			normalized_rate = 780;
-		}
+		if (normalized_rate > MIN(BMI160_ACCEL_MAX_FREQ,
+					CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ) ||
+		    normalized_rate < BMI160_ACCEL_MIN_FREQ)
+			return EC_RES_INVALID_PARAM;
 		break;
 	case MOTIONSENSE_TYPE_GYRO:
-		if (reg_val > BMI160_ODR_3200HZ) {
-			reg_val = BMI160_ODR_3200HZ;
-			normalized_rate = 3200000;
-		} else if (reg_val < BMI160_ODR_25HZ) {
-			reg_val = BMI160_ODR_25HZ;
-			normalized_rate = 25000;
-		}
+		if (normalized_rate > MIN(BMI160_GYRO_MAX_FREQ,
+					CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ) ||
+		    normalized_rate < BMI160_GYRO_MIN_FREQ)
+			return EC_RES_INVALID_PARAM;
 		break;
+#ifdef CONFIG_MAG_BMI160_BMM150
 	case MOTIONSENSE_TYPE_MAG:
 		/* We use the regular preset we can go about 100Hz */
-		if (reg_val > BMI160_ODR_100HZ) {
-			reg_val = BMI160_ODR_100HZ;
-			normalized_rate = 100000;
-		} else if (reg_val < BMI160_ODR_0_78HZ) {
-			reg_val = BMI160_ODR_0_78HZ;
-			normalized_rate = 780;
-		}
+		if (reg_val > BMI160_ODR_100HZ || reg_val < BMI160_ODR_0_78HZ)
+			return EC_RES_INVALID_PARAM;
 		break;
+#endif
 
 	default:
-		return -1;
+		return EC_RES_INVALID_PARAM;
 	}
 
 	/*
@@ -484,7 +475,7 @@ static int get_offset(const struct motion_sensor_t *s,
 			int16_t    *temp)
 {
 	int i, val, val98;
-	vector_3_t v;
+	intv3_t v;
 
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
@@ -544,7 +535,7 @@ static int set_offset(const struct motion_sensor_t *s,
 			int16_t    temp)
 {
 	int ret, i, val, val98;
-	vector_3_t v = { offset[X], offset[Y], offset[Z] };
+	intv3_t v = { offset[X], offset[Y], offset[Z] };
 
 	rotate_inv(v, *s->rot_standard_ref, v);
 
@@ -656,7 +647,7 @@ end_perform_calib:
 	return ret;
 }
 
-void normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
+void normalize(const struct motion_sensor_t *s, intv3_t v, uint8_t *data)
 {
 #ifdef CONFIG_MAG_BMI160_BMM150
 	if (s->type == MOTIONSENSE_TYPE_MAG)
@@ -835,112 +826,138 @@ static int bmi160_decode_header(struct motion_sensor_t *s,
  * We put raw data in hub fifo and process data from there.
  * @s Pointer to sensor data.
  *
+ * Read only up to  bmi160_buffer. If more reads are needed, we will be called
+ * again by the interrupt routine.
+ *
  * NOTE: If a new driver supports this function, be sure to add a check
  * for spoof_mode in order to load the sensor stack with the spoofed
  * data.  See accelgyro_bmi160.c::load_fifo for an example.
  */
 static int load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 {
-	int done = 0;
 	struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
+	uint16_t length;
+	enum fifo_state state = FIFO_HEADER;
+	uint8_t *bp = bmi160_buffer;
+	uint32_t beginning;
+
 
 	if (s->type != MOTIONSENSE_TYPE_ACCEL)
 		return EC_SUCCESS;
 
-	do {
-		enum fifo_state state = FIFO_HEADER;
-		uint8_t *bp = bmi160_buffer;
-		uint32_t beginning;
+	raw_read_n(s->port, s->addr, BMI160_FIFO_LENGTH_0,
+			(uint8_t *)&length, sizeof(length));
+	length &= BMI160_FIFO_LENGTH_MASK;
 
-		if (!(data->flags &
-		      (BMI160_FIFO_ALL_MASK << BMI160_FIFO_FLAG_OFFSET))) {
-			/*
-			 * The FIFO was disable while were processing it.
-			 *
-			 * Flush potential left over:
-			 * When sensor is resumed, we won't read old data.
-			 */
-			raw_write8(s->port, s->addr, BMI160_CMD_REG,
-				   BMI160_CMD_FIFO_FLUSH);
-			return EC_SUCCESS;
-		}
+	/*
+	 * We have not requested timestamp, no extra frame to read.
+	 * if we have too much to read, read the whole buffer.
+	 */
+	if (length == 0) {
+		CPRINTS("unexpected empty FIFO");
+		return EC_SUCCESS;
+	}
 
-		raw_read_n(s->port, s->addr, BMI160_FIFO_DATA, bmi160_buffer,
-				sizeof(bmi160_buffer));
-		beginning = *(uint32_t *)bmi160_buffer;
+	/* Add one byte to get an empty FIFO frame.*/
+	length++;
+
+	if (length > sizeof(bmi160_buffer))
+		CPRINTS("unexpected large FIFO: %d", length);
+	length = MIN(length, sizeof(bmi160_buffer));
+
+	if (!(data->flags &
+	     (BMI160_FIFO_ALL_MASK << BMI160_FIFO_FLAG_OFFSET))) {
 		/*
-		 * FIFO is invalid when reading while the sensors are all
-		 * suspended.
-		 * Instead of returning the empty frame, it can return a
-		 * pattern that looks like a valid header: 84 or 40.
-		 * If we see those, assume the sensors have been disabled
-		 * while this thread was running.
+		 * The FIFO was disabled while we were processing it.
+		 *
+		 * Flush potential left over:
+		 * When sensor is resumed, we won't read old data.
 		 */
-		if (beginning == 0x84848484 ||
-		    (beginning & 0xdcdcdcdc) == 0x40404040) {
-			CPRINTS("Suspended FIFO: accel ODR/rate: %d/%d: 0x%08x",
+		raw_write8(s->port, s->addr, BMI160_CMD_REG,
+				BMI160_CMD_FIFO_FLUSH);
+		return EC_SUCCESS;
+	}
+
+
+	raw_read_n(s->port, s->addr, BMI160_FIFO_DATA, bmi160_buffer,
+			length);
+	beginning = *(uint32_t *)bmi160_buffer;
+	/*
+	 * FIFO is invalid when reading while the sensors are all
+	 * suspended.
+	 * Instead of returning the empty frame, it can return a
+	 * pattern that looks like a valid header: 84 or 40.
+	 * If we see those, assume the sensors have been disabled
+	 * while this thread was running.
+	 */
+	if (beginning == 0x84848484 ||
+			(beginning & 0xdcdcdcdc) == 0x40404040) {
+		CPRINTS("Suspended FIFO: accel ODR/rate: %d/%d: 0x%08x",
 				BASE_ODR(s->config[SENSOR_CONFIG_AP].odr),
 				get_data_rate(s),
 				beginning);
-			return EC_SUCCESS;
-		}
+		return EC_SUCCESS;
+	}
 
-		while (!done && bp != BUFFER_END(bmi160_buffer)) {
-			switch (state) {
-			case FIFO_HEADER: {
-				enum fifo_header hdr = *bp++;
-				if (bmi160_decode_header(s, hdr, last_ts, &bp))
-					continue;
-				/* Other cases */
-				hdr &= 0xdc;
-				switch (hdr) {
-				case BMI160_EMPTY:
-					done = 1;
-					break;
-				case BMI160_SKIP:
-					state = FIFO_DATA_SKIP;
-					break;
-				case BMI160_TIME:
-					state = FIFO_DATA_TIME;
-					break;
-				case BMI160_CONFIG:
-					state = FIFO_DATA_CONFIG;
-					break;
-				default:
-					CPRINTS("Unknown header: 0x%02x @ %d",
-						hdr, bp - bmi160_buffer);
-					raw_write8(s->port, s->addr,
-						   BMI160_CMD_REG,
-						   BMI160_CMD_FIFO_FLUSH);
-					done = 1;
-				}
+	while (bp < bmi160_buffer + length) {
+		switch (state) {
+		case FIFO_HEADER: {
+			enum fifo_header hdr = *bp++;
+
+			if (bmi160_decode_header(s, hdr, last_ts, &bp))
+				continue;
+			/* Other cases */
+			hdr &= 0xdc;
+			switch (hdr) {
+			case BMI160_EMPTY:
+				return EC_SUCCESS;
+			case BMI160_SKIP:
+				state = FIFO_DATA_SKIP;
 				break;
-			}
-			case FIFO_DATA_SKIP:
-				CPRINTS("skipped %d frames", *bp++);
-				state = FIFO_HEADER;
+			case BMI160_TIME:
+				state = FIFO_DATA_TIME;
 				break;
-			case FIFO_DATA_CONFIG:
-				CPRINTS("config change: 0x%02x", *bp++);
-				state = FIFO_HEADER;
-				break;
-			case FIFO_DATA_TIME:
-				if (bp + 3 > BUFFER_END(bmi160_buffer)) {
-					bp = BUFFER_END(bmi160_buffer);
-					continue;
-				}
-				/* We are not requesting timestamp */
-				CPRINTS("timestamp %d", (bp[2] << 16) |
-					(bp[1] << 8) | bp[0]);
-				state = FIFO_HEADER;
-				bp += 3;
+			case BMI160_CONFIG:
+				state = FIFO_DATA_CONFIG;
 				break;
 			default:
-				CPRINTS("Unknown data: 0x%02x", *bp++);
-				state = FIFO_HEADER;
+				CPRINTS("Unknown header: 0x%02x @ %d",
+						hdr, bp - bmi160_buffer);
+				raw_write8(s->port, s->addr,
+						BMI160_CMD_REG,
+						BMI160_CMD_FIFO_FLUSH);
+				return EC_ERROR_NOT_HANDLED;
 			}
+			break;
 		}
-	} while (!done);
+		case FIFO_DATA_SKIP:
+			CPRINTS("@ %d - %d, skipped %d frames",
+					bp - bmi160_buffer, length, *bp);
+			bp++;
+			state = FIFO_HEADER;
+			break;
+		case FIFO_DATA_CONFIG:
+			CPRINTS("@ %d - %d, config change: 0x%02x",
+					bp - bmi160_buffer, length, *bp);
+			bp++;
+			state = FIFO_HEADER;
+			break;
+		case FIFO_DATA_TIME:
+			if (bp + 3 > BUFFER_END(bmi160_buffer)) {
+				bp = BUFFER_END(bmi160_buffer);
+				continue;
+			}
+			/* We are not requesting timestamp */
+			CPRINTS("timestamp %d", (bp[2] << 16) |
+					(bp[1] << 8) | bp[0]);
+			state = FIFO_HEADER;
+			bp += 3;
+			break;
+		default:
+			CPRINTS("Unknown data: 0x%02x", *bp++);
+			state = FIFO_HEADER;
+		}
+	}
 	return EC_SUCCESS;
 }
 #endif  /* CONFIG_ACCEL_FIFO */
@@ -989,12 +1006,11 @@ static int config_interrupt(const struct motion_sensor_t *s)
 #endif
 
 #ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
-	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH,
-		BMI160_LATCH_FOREVER);
+	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH, BMI160_LATCH_5MS);
 #else
 	/* Also, configure int2 as an external input. */
 	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH,
-		BMI160_INT2_INPUT_EN | BMI160_LATCH_FOREVER);
+		BMI160_INT2_INPUT_EN | BMI160_LATCH_5MS);
 #endif
 
 	/* configure int1 as an interrupt */
@@ -1129,7 +1145,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 #endif  /* CONFIG_ACCEL_INTERRUPTS */
 
 
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read(const struct motion_sensor_t *s, intv3_t v)
 {
 	uint8_t data[6];
 	int ret, status = 0;
@@ -1153,8 +1169,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	ret = raw_read_n(s->port, s->addr, get_xyz_reg(s->type), data, 6);
 
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T %s type:0x%X RD XYZ Error %d]",
-			s->name, s->type, ret);
+		CPRINTS("%s: type:0x%X RD XYZ Error %d", s->name, s->type, ret);
 		return ret;
 	}
 	normalize(s, v, data);

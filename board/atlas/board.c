@@ -151,9 +151,9 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 const struct i2c_port_t i2c_ports[]  = {
 	{"power",   I2C_PORT_POWER,   100,
 	 GPIO_EC_I2C0_POWER_SCL,      GPIO_EC_I2C0_POWER_SDA},
-	{"tcpc0",   I2C_PORT_TCPC0,   400,
+	{"tcpc0",   I2C_PORT_TCPC0,   1000,
 	 GPIO_EC_I2C1_USB_C0_SCL,     GPIO_EC_I2C1_USB_C0_SDA},
-	{"tcpc1",   I2C_PORT_TCPC1,   400,
+	{"tcpc1",   I2C_PORT_TCPC1,   1000,
 	 GPIO_EC_I2C2_USB_C1_SCL,     GPIO_EC_I2C2_USB_C1_SDA},
 	{"sensor",  I2C_PORT_SENSOR,  100,
 	 GPIO_EC_I2C3_SENSOR_3V3_SCL, GPIO_EC_I2C3_SENSOR_3V3_SDA},
@@ -184,12 +184,10 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = 1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
@@ -322,15 +320,6 @@ static void board_pmic_disable_slp_s0_vr_decay(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x34, 0x2a);
 
 	/*
-	 * V100ACNT:
-	 * Bits 7:6 (00) - Disable low power mode on SLP_S0# assertion
-	 * Bits 5:4 (01) - Nominal voltage 1.0V
-	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
-	 * Bits 1:0 (10) - VR set to AUTO operating mode
-	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x1a);
-
-	/*
 	 * V085ACNT:
 	 * Bits 7:6 (00) - Disable low power mode on SLP_S0# assertion
 	 * Bits 5:4 (11) - Nominal voltage 0.85V
@@ -359,15 +348,6 @@ static void board_pmic_enable_slp_s0_vr_decay(void)
 	 * Bits 1:0 (10) - VR set to AUTO operating mode
 	 */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x34, 0x6a);
-
-	/*
-	 * V100ACNT:
-	 * Bits 7:6 (01) - Enable low power mode on SLP_S0# assertion
-	 * Bits 5:4 (01) - Nominal voltage 1.0V
-	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
-	 * Bits 1:0 (10) - VR set to AUTO operating mode
-	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x5a);
 
 	/*
 	 * V085ACNT:
@@ -410,16 +390,11 @@ static void board_pmic_init(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
 		   BD99992GW_REG_DISCHGCNT3, 0x04);
 
-	/*
-	 * Set V085ACNT / V0.85A Control Register:
-	 * Nominal output = 0.85V.
-	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
-		   BD99992GW_REG_V085ACNT, 0x2a);
-
 	/* VRMODECTRL - disable low-power mode for all rails */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992,
 		   BD99992GW_REG_VRMODECTRL, 0x1f);
+
+	board_pmic_disable_slp_s0_vr_decay();
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 
@@ -577,7 +552,7 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 };
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0,  FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}

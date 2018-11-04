@@ -59,9 +59,10 @@
 
 #define ST_TP_MEM_ID_SYSTEM_INFO	0x01
 
-#define ST_TP_FLASH_OFFSET_CODE (0x0000 << 2)
-#define ST_TP_FLASH_OFFSET_CONFIG (0x7C00 << 2)
-#define ST_TP_FLASH_OFFSET_CX (0x7000 << 2)
+#define ST_TP_FLASH_OFFSET_CODE		(0x0000 << 2)
+#define ST_TP_FLASH_OFFSET_PANEL_CFG	(0x6800 << 2)
+#define ST_TP_FLASH_OFFSET_CX		(0x7000 << 2)
+#define ST_TP_FLASH_OFFSET_CONFIG	(0x7C00 << 2)
 
 
 struct st_tp_host_data_header_t {
@@ -223,7 +224,10 @@ struct st_tp_event_t {
 		} __packed finger;
 
 		struct {
-#define ST_TP_STATUS_CMD_ECHO 0x1
+#define ST_TP_STATUS_CMD_ECHO	0x1
+#define ST_TP_STATUS_FRAME_DROP	0x3
+#define ST_TP_STATUS_FCAL	0x5
+#define ST_TP_STATUS_BEACON	0x9
 			uint8_t report_type;
 			uint8_t info[4];
 			uint8_t reserved;
@@ -233,6 +237,20 @@ struct st_tp_event_t {
 	unsigned minor_high:2;
 	unsigned reserved:1;
 	unsigned evt_left:5;
+} __packed;
+
+struct st_tp_fw_header_t {
+	uint32_t signature;
+	uint32_t ftb_ver;
+	uint32_t chip_id;
+	uint32_t svn_ver;
+	uint32_t fw_ver;
+	uint32_t config_id;
+	uint32_t config_ver;
+	uint8_t reserved[8];
+	uint64_t release_info;
+	uint32_t sec_size[4];
+	uint32_t crc;
 } __packed;
 
 enum ST_TP_MODE {

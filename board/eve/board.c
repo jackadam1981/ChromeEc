@@ -226,12 +226,10 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0,
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = 1,
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
@@ -489,7 +487,10 @@ static void board_init(void)
 	if (board_get_version() == 4) {
 		/* Set F13 to new defined key on EVT */
 		CPRINTS("Overriding F13 scan code");
-		scancode_set2[3][9] = 0xe007;
+		scancode_set2[9][3] = 0xe007;
+#ifdef CONFIG_KEYBOARD_DEBUG
+		keycap_label[9][3] = KLLI_F13;
+#endif
 	}
 #endif
 }
@@ -786,13 +787,13 @@ static struct si114x_drv_data_t g_si114x_data = {
 };
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t mag_standard_ref = {
+const mat33_fp_t mag_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0,  FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0,  FLOAT_TO_FP(-1), 0},
 	{ 0,  0, FLOAT_TO_FP(1)}

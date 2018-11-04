@@ -911,6 +911,11 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_PWR_CPUCR_CSSF        (1 << 9)
 #define STM32_PWR_CPUCR_RUN_D3      (1 << 11)
 #define STM32_PWR_D3CR              REG32(STM32_PWR_BASE + 0x18)
+#define STM32_PWR_D3CR_VOS1         (3 << 14)
+#define STM32_PWR_D3CR_VOS2         (2 << 14)
+#define STM32_PWR_D3CR_VOS3         (1 << 14)
+#define STM32_PWR_D3CR_VOSMASK      (3 << 14)
+#define STM32_PWR_D3CR_VOSRDY       (1 << 13)
 #define STM32_PWR_WKUPCR            REG32(STM32_PWR_BASE + 0x20)
 #define STM32_PWR_WKUPFR            REG32(STM32_PWR_BASE + 0x24)
 #define STM32_PWR_WKUPEPR           REG32(STM32_PWR_BASE + 0x28)
@@ -1175,6 +1180,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_APB1RSTR          REG32(STM32_RCC_BASE + 0x10)
 #define STM32_RCC_AHBENR            REG32(STM32_RCC_BASE + 0x14)
 #define STM32_RCC_APB2ENR           REG32(STM32_RCC_BASE + 0x18)
+#define STM32_RCC_APB2ENR_ADCEN     (1 << 9) /* STM32F3/F0 */
 #define STM32_RCC_APB2ENR_TIM16EN   (1 << 17)
 #define STM32_RCC_APB2ENR_TIM17EN   (1 << 18)
 #define STM32_RCC_DBGMCUEN          (1 << 22)
@@ -1366,6 +1372,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_FMPI2C4EN             (1 << 24)
 
 #define STM32_RCC_APB2ENR               REG32(STM32_RCC_BASE + 0x44)
+#define STM32_RCC_APB2ENR_ADC1EN        (1 << 8) /* STM32F4 */
 
 #define STM32_RCC_PB2_USART6            (1 << 5)
 #define STM32_RCC_SYSCFGEN		(1 << 14)
@@ -2093,6 +2100,11 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_FLASH_OPTSR_CUR(bank)       STM32_FLASH_REG(bank, 0x1C)
 #define STM32_FLASH_OPTSR_PRG(bank)       STM32_FLASH_REG(bank, 0x20)
 #define  FLASH_OPTSR_BUSY                 (1 << 0)   /* only in OPTSR_CUR */
+#define  FLASH_OPTSR_RDP_MASK             (0xFF << 8)
+#define  FLASH_OPTSR_RDP_LEVEL_0          (0xAA << 8)
+/* RDP Level 1: Anything but 0xAA/0xCC */
+#define  FLASH_OPTSR_RDP_LEVEL_1          (0x00 << 8)
+#define  FLASH_OPTSR_RDP_LEVEL_2          (0xCC << 8)
 #define  FLASH_OPTSR_RSS1                 (1 << 26)
 #define  FLASH_OPTSR_RSS2                 (1 << 27)
 #define STM32_FLASH_OPTCCR(bank)          STM32_FLASH_REG(bank, 0x24)
@@ -2169,6 +2181,12 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_ADC_SR               REG32(STM32_ADC1_BASE + 0x00)
 #define STM32_ADC_CR1              REG32(STM32_ADC1_BASE + 0x04)
 #define STM32_ADC_CR2              REG32(STM32_ADC1_BASE + 0x08)
+#define STM32_ADC_CR2_ADON         (1 << 0)
+#define STM32_ADC_CR2_CONT         (1 << 1)
+#define STM32_ADC_CR2_CAL          (1 << 2)
+#define STM32_ADC_CR2_RSTCAL       (1 << 3)
+#define STM32_ADC_CR2_ALIGN        (1 << 11)
+#define STM32_ADC_CR2_SWSTART      (1 << 30)
 #define STM32_ADC_SMPR1            REG32(STM32_ADC1_BASE + 0x0C)
 #define STM32_ADC_SMPR2            REG32(STM32_ADC1_BASE + 0x10)
 #define STM32_ADC_JOFR(n)          REG32(STM32_ADC1_BASE + 0x14 + ((n)&3) * 4)

@@ -18,8 +18,6 @@
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-
 /* Power and battery LEDs */
 #define CONFIG_LED_COMMON
 #define CONFIG_CMD_LEDTEST
@@ -41,17 +39,22 @@
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3630A
 
+#define CONFIG_BATTERY_BQ4050
+#define CONFIG_BATTERY_MEASURE_IMBALANCE
+
 #ifndef __ASSEMBLER__
 
 enum pwm_channel {
 	PWM_CH_KBLIGHT = 0,
-	PWM_CH_LED1_AMBER,
-	PWM_CH_LED2_BLUE,
+	PWM_CH_LED1_WHITE,
+	PWM_CH_LED2_AMBER,
 	PWM_CH_COUNT
 };
 
 enum battery_type {
 	BATTERY_PANASONIC,
+	BATTERY_SUNWODA,
+	BATTERY_SIMPLO,
 	BATTERY_TYPE_COUNT,
 };
 

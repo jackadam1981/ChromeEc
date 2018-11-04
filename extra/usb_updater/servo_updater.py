@@ -128,16 +128,20 @@ def do_updater_version(vidpid, iface, serialno):
   """
   vers = do_version(vidpid, iface, serialno)
 
-  m = re.search('_v1.1.(\d\d\d\d)', vers)
+  # Servo versions below 58 are from servo-9040.B. Versions starting with _v2
+  # are newer than anything _v1, no need to check the exact number. Updater
+  # version is not directly queryable.
+  if re.search('_v[2-9]\.\d', vers):
+    return 6
+  m = re.search('_v1\.1\.(\d\d\d\d)', vers)
   if m:
     version_number = int(m.group(1))
-    # Servo versions below 58 are from servo-9040.B.
-    # Updater version is not directly queryable.
     if version_number < 5800:
       return 2
     else:
       return 6
-  return 0
+  raise ServoUpdaterException(
+      "Can't determine updater target from vers: [%s]" % vers)
 
 def findfiles(cname, fname):
   """Select config and firmware binary files.

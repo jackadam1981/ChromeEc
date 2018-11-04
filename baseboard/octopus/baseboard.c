@@ -10,7 +10,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
-#include "driver/bc12/bq24392.h"
+#include "driver/bc12/max14637.h"
 #include "driver/ppc/nx20p348x.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -76,16 +76,16 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 
 /******************************************************************************/
 /* BC 1.2 chip Configuration */
-const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON,
 		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET_L,
-		.flags = BQ24392_FLAGS_CHG_DET_ACTIVE_LOW,
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
 	},
 	{
 		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON,
 		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET_L,
-		.flags = BQ24392_FLAGS_CHG_DET_ACTIVE_LOW,
+		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
 	},
 };
 
@@ -170,6 +170,15 @@ void chipset_do_shutdown(void)
 		;
 }
 
+int board_is_i2c_port_powered(int port)
+{
+	if (port != I2C_PORT_SENSOR)
+		return 1;
+
+	/* Sensor rails are off in S5/G3 */
+	return chipset_in_state(CHIPSET_STATE_ANY_OFF) ? 0 : 1;
+}
+
 /******************************************************************************/
 /* Power Delivery and charing functions */
 
@@ -251,6 +260,13 @@ int board_set_active_charge_port(int port)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
+	/*
+	 * Empirically, the charger seems to draw a little more current that
+	 * it is set to, so we reduce our limit by 5%.
+	 */
+#ifdef VARIANT_OCTOPUS_CHARGER_ISL9238
+	charge_ma = (charge_ma * 95) / 100;
+#endif
 	charge_set_input_current_limit(MAX(charge_ma,
 					   CONFIG_CHARGER_INPUT_CURRENT),
 				       charge_mv);

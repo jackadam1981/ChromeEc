@@ -12,6 +12,7 @@
 #define CONFIG_BRINGUP
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
+#define CONFIG_CMD_AP_RESET_LOG
 
 /*
  * By default, enable all console messages excepted event and HC:
@@ -26,19 +27,25 @@
 #define NPCX7_PWM1_SEL    0  /* GPIO C2 is not used as PWM1. */
 
 /* Internal SPI flash on NPCX7 */
-#define CONFIG_FLASH_SIZE (512 * 1024) /* It's really 1MB. */
+#define CONFIG_FLASH_SIZE (1024 * 1024)  /* 1MB internal spi flash */
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
+#define CONFIG_HOSTCMD_FLASH_SPI_INFO
 
 /* EC Modules */
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define CONFIG_LED_COMMON
+#define CONFIG_LOW_POWER_IDLE
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_FPU
 #define CONFIG_PWM
 #define CONFIG_PWM_DISPLIGHT
+
+#define CONFIG_VBOOT_HASH
+
+#define CONFIG_DETACHABLE_BASE
 
 #undef CONFIG_PECI
 
@@ -113,6 +120,10 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 
+/* RTC */
+#define CONFIG_CMD_RTC
+#define CONFIG_HOSTCMD_RTC
+
 /* Sensors */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
@@ -138,8 +149,8 @@
 #define CONFIG_POWER_COMMON
 #define CONFIG_POWER_PP5000_CONTROL
 
-/* TODO(b/79348203): Enable EC hibernate */
-#undef CONFIG_HIBERNATE
+/* NPCX Features */
+#define CONFIG_HIBERNATE_PSL
 
 /* I2C Ports */
 #define I2C_PORT_BATTERY I2C_PORT_POWER
@@ -161,6 +172,7 @@ enum power_signal {
 	SDM845_PS_HOLD,
 	SDM845_PMIC_FAULT_L,
 	SDM845_POWER_GOOD,
+	SDM845_WARM_RESET,
 	/* Number of power signals */
 	POWER_SIGNAL_COUNT
 };

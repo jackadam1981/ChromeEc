@@ -54,10 +54,20 @@ static void anx74xx_cable_det_interrupt(enum gpio_signal signal);
 /* GPIO Interrupt Handlers */
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
+	int port = -1;
+
+	switch (signal) {
+	case GPIO_USB_C0_PD_INT_ODL:
+		port = 0;
+		break;
+	case GPIO_USB_C1_PD_INT_ODL:
+		port = 1;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
 }
 
 static void vbus0_evt(enum gpio_signal signal)
@@ -115,6 +125,15 @@ static void ppc_interrupt(enum gpio_signal signal)
 	sn5s330_interrupt(0);
 }
 
+/* Wake-up pins for hibernate */
+const enum gpio_signal hibernate_wake_pins[] = {
+	GPIO_LID_OPEN,
+	GPIO_AC_PRESENT,
+	GPIO_POWER_BUTTON_L,
+	GPIO_EC_RST_ODL,
+};
+const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
 /* ADC channels */
 const struct adc_t adc_channels[] = {
 	/* Base detection */
@@ -145,15 +164,15 @@ const struct adc_t adc_channels[] = {
 		0
 	},
 	/*
-	 * ISL9238 PSYS output is 1.44 uA/W over 12.4K resistor, to read
-	 * 0.8V @ 45 W, i.e. 56250 uW/mV. Using ADC_MAX_VOLT*56250 and
+	 * ISL9238 PSYS output is 1.44 uA/W over 5.6K resistor, to read
+	 * 0.8V @ 99 W, i.e. 124000 uW/mV. Using ADC_MAX_VOLT*124000 and
 	 * ADC_READ_MAX+1 as multiplier/divider leads to overflows, so we
 	 * only divide by 2 (enough to avoid precision issues).
 	 */
 	[ADC_PSYS] = {
 		"PSYS",
 		NPCX_ADC_CH3,
-		ADC_MAX_VOLT * 56250 * 2 / (ADC_READ_MAX + 1),
+		ADC_MAX_VOLT * 124000 * 2 / (ADC_READ_MAX + 1),
 		2,
 		0
 	},
@@ -185,6 +204,10 @@ const struct power_signal_info power_signal_list[] = {
 		GPIO_POWER_GOOD,
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"POWER_GOOD"},
+	[SDM845_WARM_RESET] = {
+		GPIO_WARM_RESET_L,
+		POWER_SIGNAL_ACTIVE_HIGH,
+		"WARM_RESET_L"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
@@ -225,12 +248,10 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = USB_PD_PORT_ANX3429,
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
@@ -474,7 +495,7 @@ static struct mutex g_lid_mutex;
 static struct bmi160_drv_data_t g_bmi160_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0,  FLOAT_TO_FP(-1),  0},
 	{ 0,  0, FLOAT_TO_FP(1)}

@@ -118,7 +118,6 @@ GPIO(EN_USB_A0_5V,	 PIN(6, 7), GPIO_OUT_LOW)	/* Enable A0 5V Charging */
 GPIO(EN_USB_A1_5V,	 PIN(9, 6), GPIO_OUT_LOW)	/* Enable A1 5V Charging */
 GPIO(USB_A0_CHARGE_EN_L, PIN(A, 2), GPIO_OUT_HIGH)	/* Enable A0 1.5A Charging */
 GPIO(USB_A1_CHARGE_EN_L, PIN(A, 0), GPIO_OUT_HIGH)	/* Enable A1 1.5A Charging */
-/* USB_C0_PD_RST_L isn't connected to PIN(6,2) since ANX TCPC doesn't have reset */
 GPIO(USB_C0_BC12_VBUS_ON,   PIN(6, 3), GPIO_OUT_LOW)	/* C0 BC1.2 Power */
 GPIO(USB_C0_BC12_CHG_DET_L, PIN(9, 5), GPIO_INPUT)	/* C0 BC1.2 Detect */
 GPIO(USB_C0_HPD_1V8_ODL, PIN(C, 5), GPIO_INPUT |	/* C0 DP Hotplug Detect */
@@ -128,6 +127,10 @@ GPIO(USB_C1_BC12_VBUS_ON,   PIN(B, 1), GPIO_OUT_LOW)	/* C1 BC1.2 Power */
 GPIO(USB_C1_BC12_CHG_DET_L, PIN(E, 4), GPIO_INPUT)	/* C1 BC1.2 Detect */
 GPIO(USB_C1_HPD_1V8_ODL, PIN(C, 6), GPIO_INPUT |	/* C1 DP Hotplug Detect */
 				    GPIO_SEL_1P8V)
+
+/* Not implemented in hardware yet */
+UNIMPLEMENTED(USB_C0_PD_RST)
+
 /*
  * USB2_OTG_ID is 1.8V pin on the SoC side with an internal pull-up. However, it
  * 3.3V on the EC side. So, configure it as ODR so that the EC never drives it
@@ -150,6 +153,9 @@ GPIO(USB_C_OC,           PIN(3, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
 GPIO(GPO66_NC,           PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPOB6_NC,           PIN(B, 6), GPIO_INPUT | GPIO_PULL_UP)
 
+/* Misc. */
+GPIO(CCD_MODE_ODL,       PIN(E, 3), GPIO_INPUT)
+
 /* Keyboard pins */
 ALTERNATE(PIN_MASK(3, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_INPUT)	/* KSI_00-01 */
 ALTERNATE(PIN_MASK(2, 0xFC), 0, MODULE_KEYBOARD_SCAN, GPIO_INPUT)	/* KSI_02-07 */
@@ -168,6 +174,8 @@ ALTERNATE(PIN_MASK(D, 0x03), 0, MODULE_I2C, 0)		/* I2C3 */
 ALTERNATE(PIN_MASK(F, 0x0C), 0, MODULE_I2C, 0)		/* I2C4 */
 ALTERNATE(PIN_MASK(B, 0x0C), 0, MODULE_I2C, GPIO_SEL_1P8V) /* I2C7 - 1.8V */
 ALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)		/* ADC0-1 */
+ALTERNATE(PIN_MASK(4, 0x02), 0, MODULE_ADC, 0)         /* ADC4 */
+ALTERNATE(PIN_MASK(F, 0x01), 0, MODULE_ADC, 0)         /* ADC9 */
 ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)		/* PWM3: KB_BL_PWM */
 
 /* Power Switch Logic (PSL) inputs */

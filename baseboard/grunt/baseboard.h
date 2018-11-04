@@ -29,21 +29,22 @@
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BACKLIGHT_LID_ACTIVE_LOW
-#define CONFIG_BOARD_VERSION_GPIO
+#define CONFIG_BOARD_VERSION_CUSTOM
 #define CONFIG_EC_FEATURE_BOARD_OVERRIDE
 #define CONFIG_HIBERNATE_PSL
 #define CONFIG_HOSTCMD_LPC
 #define CONFIG_HOSTCMD_SKUID
 #define CONFIG_CMD_AP_RESET_LOG
 #define CONFIG_I2C
+#define CONFIG_I2C_BUS_MAY_BE_UNPOWERED
 #define CONFIG_I2C_MASTER
+#define CONFIG_LTO
 #define CONFIG_PWM
 #define CONFIG_PWM_KBLIGHT
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_THERMISTOR_NCP15WB
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VOLUME_BUTTONS
-#define CONFIG_LTO
 
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_FUEL_GAUGE
@@ -51,7 +52,7 @@
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_SMART
 
-#define CONFIG_BC12_DETECT_BQ24392
+#define CONFIG_BC12_DETECT_MAX14637
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_V2
 #define CONFIG_CHARGE_MANAGER
@@ -100,9 +101,6 @@
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
-#define CONFIG_KEYBOARD_REFRESH_ROW3
-#define CONFIG_KEYBOARD_IGNORE_REFRESH_BOOT_KEY
-#define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI3
 
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_CMD_PD_CONTROL
@@ -131,12 +129,10 @@
 #define CONFIG_USB_PORT_POWER_DUMB
 #define USB_PORT_COUNT 2
 
-/* TODO(b/69683108): Use correct PD delay values */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY	30000  /* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000 /* us */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
 #define PD_VCONN_SWAP_DELAY		5000 /* us */
 
-/* TODO(b/69683178): Use correct PD power values */
 #define PD_OPERATING_POWER_MW	15000
 #define PD_MAX_POWER_MW		45000
 #define PD_MAX_CURRENT_MA	3000
@@ -156,6 +152,9 @@
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15001
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 3
 
+/* Increase length of history buffer for port80 messages. */
+#undef CONFIG_PORT80_HISTORY_LEN
+#define CONFIG_PORT80_HISTORY_LEN 256
 
 #define I2C_PORT_BATTERY	I2C_PORT_POWER
 #define I2C_PORT_CHARGER	I2C_PORT_POWER
@@ -170,24 +169,7 @@
 /* Sensors */
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
-#define CONFIG_ACCELGYRO_BMI160
-#define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
-#define CONFIG_ACCEL_INTERRUPTS
-#define CONFIG_ACCEL_KX022
-#define CONFIG_CMD_ACCELS
-#define CONFIG_CMD_ACCEL_INFO
-#define CONFIG_TABLET_MODE
-#define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_TABLET_MODE
-#define CONFIG_LID_ANGLE_INVALID_CHECK
-#define CONFIG_LID_ANGLE_UPDATE
-#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
-#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
-/*
- * Slew rate on the PP1800_SENSOR load switch requires a short delay on startup.
- */
-#undef  CONFIG_MOTION_SENSE_RESUME_DELAY_US
-#define CONFIG_MOTION_SENSE_RESUME_DELAY_US (10 * MSEC)
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
 /* Thermal */
 #define CONFIG_TEMP_SENSOR_SB_TSI
@@ -252,12 +234,17 @@ enum sensor_id {
  * Boards within the Grunt family may need to modify this definition at
  * board_init() time.
  */
-extern matrix_3x3_t grunt_base_standard_ref;
+extern mat33_fp_t grunt_base_standard_ref;
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
 void board_reset_pd_mcu(void);
+
+/* Common definition for the USB PD interrupt handlers. */
+void tcpc_alert_event(enum gpio_signal signal);
+
+int board_get_version(void);
 
 #endif /* !__ASSEMBLER__ */
 

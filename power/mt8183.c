@@ -35,8 +35,8 @@
 /* All inputs in the right state for S0 */
 #define IN_ALL_S0		(IN_PGOOD_S0 | IN_SUSPEND_DEASSERTED)
 
-/* Long power key press to force shutdown in S0 */
-#define FORCED_SHUTDOWN_DELAY	(8 * SECOND)
+/* Long power key press to force shutdown in S0. go/crosdebug */
+#define FORCED_SHUTDOWN_DELAY	(10 * SECOND)
 
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
@@ -45,6 +45,12 @@
 
 /* Maximum time it should for PMIC to turn on after toggling PMIC_EN_ODL. */
 #define PMIC_EN_TIMEOUT (300 * MSEC)
+
+/*
+ * Amount of time we need to hold PMIC_FORCE_RESET_ODL to ensure PMIC is really
+ * off and will not restart on its own.
+ */
+#define PMIC_FORCE_RESET_TIME (10 * SECOND)
 
 /* Data structure for a GPIO operation for power sequencing */
 struct power_seq_op {
@@ -93,6 +99,25 @@ static const struct power_seq_op s3s5_power_seq[] = {
 
 static int forcing_shutdown;
 
+void chipset_reset_request_interrupt(enum gpio_signal signal)
+{
+	chipset_reset(CHIPSET_RESET_AP_REQ);
+}
+
+/*
+ * Triggers on falling edge of AP watchdog line only. The falling edge can
+ * happen in these 2 cases:
+ *  - AP asserts watchdog while the AP is on: this is a real AP-initiated reset.
+ *  - EC asserted GPIO_AP_SYS_RST_L, so the AP is in reset and AP watchdog falls
+ *    as well. This is _not_ a watchdog reset. We mask these cases by disabling
+ *    the interrupt just before shutting down the AP, and re-enabling it just
+ *    after starting the AP.
+ */
+void chipset_watchdog_interrupt(enum gpio_signal signal)
+{
+	chipset_reset(CHIPSET_RESET_AP_WATCHDOG);
+}
+
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	CPRINTS("%s(%d)", __func__, reason);
@@ -115,11 +140,16 @@ DECLARE_DEFERRED(chipset_force_shutdown_button);
 /* If chipset needs to be reset, EC also reboots to RO. */
 void chipset_reset(enum chipset_reset_reason reason)
 {
+	int flags = SYSTEM_RESET_HARD;
+
 	CPRINTS("%s: %d", __func__, reason);
 	report_ap_reset(reason);
 
 	cflush();
-	system_reset(SYSTEM_RESET_HARD);
+	if (reason == CHIPSET_RESET_AP_WATCHDOG)
+		flags |= SYSTEM_RESET_AP_WATCHDOG;
+
+	system_reset(flags);
 
 	/* This should not be reachable. */
 	while (1)
@@ -128,13 +158,23 @@ void chipset_reset(enum chipset_reset_reason reason)
 
 enum power_state power_chipset_init(void)
 {
+	/* Enable reboot / watchdog / sleep control inputs from AP */
+	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
+	gpio_enable_interrupt(GPIO_AP_IN_SLEEP_L);
+
 	if (system_jumped_to_this_image()) {
 		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
 			disable_sleep(SLEEP_MASK_AP_RUN);
 			CPRINTS("already in S0");
 			return POWER_S0;
 		}
-	} else if (!(system_get_reset_flags() & RESET_FLAG_AP_OFF)) {
+	} else if (system_get_reset_flags() & RESET_FLAG_AP_OFF) {
+		/* Force shutdown from S5 if the PMIC is already up. */
+		if (power_get_signals() & IN_PGOOD_PMIC) {
+			forcing_shutdown = 1;
+			return POWER_S5;
+		}
+	} else {
 		/* Auto-power on */
 		chipset_exit_hard_off();
 	}
@@ -145,6 +185,17 @@ enum power_state power_chipset_init(void)
 
 	return POWER_G3;
 }
+
+/*
+ * If we have to force reset the PMIC, we only need to do so for a few seconds,
+ * then we need to release the GPIO to prevent leakage in G3.
+ */
+static void release_pmic_force_reset(void)
+{
+	CPRINTS("Releasing PMIC force reset");
+	gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
+}
+DECLARE_DEFERRED(release_pmic_force_reset);
 
 /**
  * Step through the power sequence table and do corresponding GPIO operations.
@@ -168,6 +219,12 @@ static void power_seq_run(const struct power_seq_op *power_seq_ops,
 
 enum power_state power_handle_state(enum power_state state)
 {
+	/*
+	 * Set if we already had a rising edge on AP_SYS_RST_L. If so, any
+	 * subsequent boot attempt will require an EC reset.
+	 */
+	static int booted;
+
 	/* Retry S5->S3 transition, if not zero. */
 	static int s5s3_retry;
 
@@ -205,6 +262,7 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_G3S5:
 		forcing_shutdown = 0;
 
+		hook_call_deferred(&release_pmic_force_reset_data, -1);
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 1);
 
 		/* Power up to next state */
@@ -218,8 +276,8 @@ enum power_state power_handle_state(enum power_state state)
 			gpio_set_level(GPIO_PMIC_EN_ODL, 1);
 		}
 
-		/* If EC is in RW, reboot to RO. */
-		if (system_get_image_copy() != SYSTEM_IMAGE_RO) {
+		/* If EC is in RW, or has already booted once, reboot to RO. */
+		if (system_get_image_copy() != SYSTEM_IMAGE_RO || booted) {
 			/*
 			 * TODO(b:109850749): How quickly does the EC come back
 			 * up? Would IN_PGOOD_PMIC be ready by the time we are
@@ -227,7 +285,7 @@ enum power_state power_handle_state(enum power_state state)
 			 * after debounce (32 ms), minus PMIC_EN_PULSE_MS above.
 			 * It would be good to avoid another _EN pulse above.
 			 */
-			chipset_reset(CHIPSET_RESET_INIT);
+			chipset_reset(CHIPSET_RESET_AP_REQ);
 		}
 
 		/*
@@ -245,8 +303,10 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		}
 
+		booted = 1;
 		/* Enable S3 power supplies, release AP reset. */
 		power_seq_run(s5s3_power_seq, ARRAY_SIZE(s5s3_power_seq));
+		gpio_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
@@ -307,6 +367,7 @@ enum power_state power_handle_state(enum power_state state)
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
+		gpio_disable_interrupt(GPIO_AP_EC_WATCHDOG_L);
 		power_seq_run(s3s5_power_seq, ARRAY_SIZE(s3s5_power_seq));
 
 		/* Start shutting down */
@@ -325,6 +386,8 @@ enum power_state power_handle_state(enum power_state state)
 			CPRINTS("Forcing PMIC off");
 			gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
 			msleep(5);
+			hook_call_deferred(&release_pmic_force_reset_data,
+				PMIC_FORCE_RESET_TIME);
 
 			return POWER_S5G3;
 #endif

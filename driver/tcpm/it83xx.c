@@ -16,6 +16,7 @@
 #include "util.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "hooks.h"
 
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) || \
 	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
@@ -83,13 +84,13 @@ static enum tcpc_cc_voltage_status it83xx_get_cc(
 
 		switch (ufp_volt) {
 		case USBPD_UFP_STATE_SNK_DEF:
-			cc_state |= (TYPEC_CC_VOLT_SNK_DEF & 3);
+			cc_state |= (TYPEC_CC_VOLT_RP_DEF & 3);
 			break;
 		case USBPD_UFP_STATE_SNK_1_5:
-			cc_state |= (TYPEC_CC_VOLT_SNK_1_5 & 3);
+			cc_state |= (TYPEC_CC_VOLT_RP_1_5 & 3);
 			break;
 		case USBPD_UFP_STATE_SNK_3_0:
-			cc_state |= (TYPEC_CC_VOLT_SNK_3_0 & 3);
+			cc_state |= (TYPEC_CC_VOLT_RP_3_0 & 3);
 			break;
 		case USBPD_UFP_STATE_SNK_OPEN:
 			cc_state = TYPEC_CC_VOLT_OPEN;
@@ -124,7 +125,7 @@ static enum tcpc_cc_voltage_status it83xx_get_cc(
 	return cc_state;
 }
 
-static int it83xx_rx_data(enum usbpd_port port, int *head, uint32_t *buf)
+static int it83xx_tcpm_get_message_raw(int port, uint32_t *buf, int *head)
 {
 	int cnt = PD_HEADER_CNT(IT83XX_USBPD_RMH(port));
 
@@ -517,15 +518,6 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 	return EC_SUCCESS;
 }
 
-static int it83xx_tcpm_get_message(int port, uint32_t *payload, int *head)
-{
-	int ret = it83xx_rx_data(port, head, payload);
-	/* un-mask RX done interrupt */
-	IT83XX_USBPD_IMR(port) &= ~USBPD_REG_MASK_MSG_RX_DONE;
-
-	return ret;
-}
-
 static int it83xx_tcpm_transmit(int port,
 			enum tcpm_transmit_type type,
 			uint16_t header,
@@ -562,9 +554,9 @@ static int it83xx_tcpm_transmit(int port,
 }
 
 static int it83xx_tcpm_get_chip_info(int port, int renew,
-			struct ec_response_pd_chip_info **chip_info)
+			struct ec_response_pd_chip_info_v1 **chip_info)
 {
-	static struct ec_response_pd_chip_info i;
+	static struct ec_response_pd_chip_info_v1 i;
 
 	*chip_info = &i;
 	i.vendor_id = USB_VID_ITE;
@@ -574,6 +566,15 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 
 	return EC_SUCCESS;
 }
+
+static void it83xx_tcpm_sw_reset(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+	/* exit BIST test data mode */
+	USBPD_SW_RESET(port);
+}
+
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it83xx_tcpm_sw_reset, HOOK_PRIO_DEFAULT);
 
 const struct tcpm_drv it83xx_tcpm_drv = {
 	.init			= &it83xx_tcpm_init,
@@ -585,7 +586,7 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.set_vconn		= &it83xx_tcpm_set_vconn,
 	.set_msg_header		= &it83xx_tcpm_set_msg_header,
 	.set_rx_enable		= &it83xx_tcpm_set_rx_enable,
-	.get_message		= &it83xx_tcpm_get_message,
+	.get_message_raw	= &it83xx_tcpm_get_message_raw,
 	.transmit		= &it83xx_tcpm_transmit,
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
 };

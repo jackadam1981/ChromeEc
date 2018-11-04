@@ -34,6 +34,8 @@
 #include "i2c.h"
 #include "isl923x.h"
 #include "keyboard_backlight.h"
+#include "keyboard_config.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "math_util.h"
@@ -69,7 +71,7 @@
 
 uint16_t board_version;
 uint8_t oem = PROJECT_NAMI;
-uint16_t sku;
+uint32_t sku;
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -228,12 +230,10 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = USB_PD_PORT_ANX7447,
 		.driver = &anx7447_usb_mux_driver,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	}
@@ -683,19 +683,19 @@ static struct kionix_accel_data g_kx022_data;
 static struct accelgyro_saved_data_t g_bma255_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
-const matrix_3x3_t rotation_x180_z90 = {
+const mat33_fp_t rotation_x180_z90 = {
 	{ 0, FLOAT_TO_FP(-1), 0 },
 	{ FLOAT_TO_FP(-1), 0, 0 },
 	{ 0, 0, FLOAT_TO_FP(-1) }
@@ -894,9 +894,9 @@ static void cbi_init(void)
 		oem = val;
 	CPRINTS("OEM: %d", oem);
 
-	if (cbi_get_sku_id(&val) == EC_SUCCESS && val <= UINT16_MAX)
+	if (cbi_get_sku_id(&val) == EC_SUCCESS)
 		sku = val;
-	CPRINTS("SKU: 0x%04x", sku);
+	CPRINTS("SKU: 0x%08x", sku);
 
 	if (board_version < 0x300)
 		/* Previous boards have GPIO42 connected to TP_INT_CONN */
@@ -907,6 +907,26 @@ static void cbi_init(void)
 	setup_fans();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	/*
+	 * F3 key scan cycle completed but scan input is not
+	 * charging to logic high when EC start scan next
+	 * column for "T" key, so we set .output_settle_us
+	 * to 80us from 50us.
+	 */
+	.output_settle_us = 80,
+	.debounce_down_us = 9 * MSEC,
+	.debounce_up_us = 30 * MSEC,
+	.scan_period_us = 3 * MSEC,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = 100 * MSEC,
+	.actual_key_mask = {
+		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfe, 0xff, 0xff, 0xff,  /* full set */
+	},
+};
 
 static void board_init(void)
 {
@@ -943,28 +963,17 @@ static void board_init(void)
 	/* Enable Accel/Gyro interrupt for convertibles. */
 	if (sku & SKU_ID_MASK_CONVERTIBLE)
 		gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
+
+#ifndef TEST_BUILD
+	/* Disable scanning KSO13 & 14 if keypad isn't present. */
+	if (!(sku & SKU_ID_MASK_KEYPAD)) {
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
+		keyscan_config.actual_key_mask[11] = 0xfa;
+		keyscan_config.actual_key_mask[12] = 0xca;
+	}
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-/* Keyboard scan setting */
-struct keyboard_scan_config keyscan_config = {
-	/*
-	 * F3 key scan cycle completed but scan input is not
-	 * charging to logic high when EC start scan next
-	 * column for "T" key, so we set .output_settle_us
-	 * to 80us from 50us.
-	 */
-	.output_settle_us = 80,
-	.debounce_down_us = 9 * MSEC,
-	.debounce_up_us = 30 * MSEC,
-	.scan_period_us = 3 * MSEC,
-	.min_post_scan_delay_us = 1000,
-	.poll_timeout_us = 100 * MSEC,
-	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
-		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
-	},
-};
 
 int board_is_lid_angle_tablet_mode(void)
 {
