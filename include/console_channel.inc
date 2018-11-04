@@ -50,6 +50,7 @@ CONSOLE_CHANNEL(CC_LPC,          "lpc")
 #endif
 CONSOLE_CHANNEL(CC_MOTION_LID,   "motionlid")
 CONSOLE_CHANNEL(CC_MOTION_SENSE, "motionsense")
+CONSOLE_CHANNEL(CC_MOTION_SENSE_HID, "motionsensehid")
 #ifdef HAS_TASK_PDCMD
 CONSOLE_CHANNEL(CC_PD_HOST_CMD,  "pdhostcm")
 #endif
