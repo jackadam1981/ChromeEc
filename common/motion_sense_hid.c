@@ -27,10 +27,161 @@
 #include "task.h"
 #include "util.h"
 
+/* HID-specific headers */
+#include "i2c_hid.h"
+//#include "i2c_over_lpc_.h"
+
+#define INVALID_ID                       -1
+/* Reports (double buffered) */
+struct hid_accel_input_report input_reports[2];
+struct hid_accel_feature_report feature_reports[2];
+
+/* Current active report buffer index */
+int report_active_index;
+
+/* Sensor odr */
+uint32_t base_accel_odr;
+
+/* Usage ID, Usage page. Implementing sensors as separate TLCs. Max size 64kb */
+static const uint8_t report_desc[] = {
+// input reports (transmit)
+        0x05, 0x20,                    /* Usage Page (Sensors) */
+        0x09, 0x73,                    /* Usage Sensor Type (3D Accel) */
+        // Report ID for accel
+        0x85, REPORT_ID_BASE_ACCEL,      /* Report ID (3DAccel) */
+        0x19, 0x01,                    /* HID_USAGE_MIN_8 */
+        0x29, 0x02,                    /* HID_USAGE_MAX_8 */
+        0xA1, 0x01,                    /* Collection (Application: Accel TLC) */
+        // 1. Sensor state
+        0x0A, 0x01, 0x02,                 /* HID_USAGE_SENSOR_STATE */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 6,                          /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A, 0x00, 0x08,                      /* SENSOR_STATE_UNKNOWN*/
+        0x0A, 0x01, 0x08,                      /* SENSOR_STATE_READY*/
+        0x0A, 0x02, 0x08,                      /* SENSOR_STATE_NOT_AVAILABLE*/
+        0x0A, 0x03, 0x08,                      /* SENSOR_STATE_NO_DATA */
+        0x0A, 0x04, 0x08,                      /* SENSOR_STATE_INITIALIZING*/
+        0x0A, 0x05, 0x08,                      /* SENSOR_STATE_ACCESS_DENIED,*/
+        0x0A, 0x06, 0x08,                      /* SENSOR_STATE_ERROR*/
+        0x81, 0x03,                            /* HID_INPUT(Const_Arr_Abs) */
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 2. Sensor event
+        0x0A,0x02,0x02,                   /* HID_USAGE_SENSOR_EVENT */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 16,                         /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A,0x10,0x08,                        /* SENSOR_EV_UNKNOWN */
+        0x0A,0x11,0x08,                        /* SENSOR_EV_STATE_CHANGED */
+        0x0A,0x12,0x08,                        /* SENSOR_EV_PROPERTY_CHANGED */
+        0x0A,0x13,0x08,                        /* SENSOR_EV_DATA_UPDATED */
+        0x0A,0x14,0x08,                        /* SENSOR_EV_POLL_RESPONSE */
+        0x0A,0x15,0x08,                        /* SENSOR_EV_CHANGE_SENSITIVITY*/
+        0x0A,0x16,0x08,                        /* SENSOR_EV_MAX_REACHED */
+        0x0A,0x17,0x08,                        /* SENSOR_EV_MIN_REACHED */
+        0x0A,0x18,0x08,                        /* SENSOR_EV_HIGH_THRESHOLD_CROSS_UPWARD*/
+        0x0A,0x19,0x08,                        /* SENSOR_EV_HIGH_THRESHOLD_CROSS_DOWNWARD*/
+        0x0A,0x1A,0x08,                        /* SENSOR_EV_LOW_THRESHOLD_CROSS_UPWARD*/
+        0x0A,0x1B,0x08,                        /* SENSOR_EV_LOW_THRESHOLD_CROSS_DOWNWARD*/
+        0x0A,0x1C,0x08,                        /* SENSOR_EV_ZERO_THRESHOLD_CROSS_UPWARD*/
+        0x0A,0x1D,0x08,                        /* SENSOR_EV_ZERO_THRESHOLD_CROSS_DOWNWARD*/
+        0x0A,0x1E,0x08,                         /* SENSOR_EV_PERIOD_EXCEEDED */
+        0x0A,0x1F,0x08,                         /* SENSOR_EV_FREQUENCY_EXCEEDED*/
+        0x0A,0x20,0x08,                         /* SENSOR_EV_COMPLEX_TRIGGER */
+        0x81, 0x03,                            /* HID_INPUT(Const_Arr_Abs) */
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 3. X, Y, Z axis accel readings
+        0x0A, 0x53, 0x04,                 /* MOTION_ACCELERATION_X_AXIS*/
+        0x0A,0x54,0x04,                   /* MOTION_ACCELERATION_Y_AXIS */
+        0x0A,0x55,0x04,                   /* MOTION_ACCELERATION_Z_AXIS*/
+        0x16, 0x01, 0x80,                 /* LOGICAL_MINIMUM (-32767)*/
+        0x2A,0xFF,0x7F,                   /* LOGICAL_MAXIMUM (32767)*/
+        0x075,16,                         /* HID_REPORT_SIZE */
+        0x95, 3,                          /* HID_REPORT_COUNT */
+        0x55,0x0E,                        /* HID_UNIT_EXPONENT*/
+        0x81, 0x02,                       /* HID_INPUT(Const_Arr_Abs) */
+
+// feature reports (xmit/receive)
+        // 1. Reporting state
+        0x0A, 0x16, 0x03,                 /*SENSOR_PROPERTY_REPORTING_STATE*/
+        0x85, REPORT_ID_BASE_ACCEL_REPORTING_STATE, /* Report ID */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 5,                          /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A,0x40,0x08,                        /* REPORTING_STATE_NO_EVENTS */
+        0x0A,0x41,0x08,                        /* REPORTING_STATE_ALL_EVENTS*/
+        0x0A,0x42,0x08,                        /* REPORTING_STATE_THRESHOLD_EVENTS*/
+        0x0A,0x43,0x08,                        /* REPORTING_STATE_NO_EVENTS_WAKE*/
+        0x0A,0x44,0x08,                        /* REPORTING_STATE_ALL_EVENTS_WAKE*/
+        0x0A,0x45,0x08,                        /* REPORTING_STATE_THRESHOLD_EVENTS_WAKE*/
+        0xB1,0x02,                             /* HID_FEATURE(Data_Arr_Abs)*/
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 2. Power state
+        0x0A, 0x19, 0x03,                 /*SENSOR_PROPERTY_POWER_STATE*/
+        0x85, REPORT_ID_BASE_ACCEL_POWER_STATE, /* Report ID */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x25, 5,                          /* HID_LOGICAL_MAX_8*/
+        0x075, 8,                         /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT */
+        0xA1, 0x02,                       /* HID_COLLECTION, (Logical) */
+        0x0A,0x50,0x08,                        /* POWER_STATE_UNDEFINED  */
+        0x0A,0x51,0x08,                        /* POWER_STATE_D0_FULL_POWER */
+        0x0A,0x52,0x08,                        /* POWER_STATE_D1_LOW_POWER*/
+        0x0A,0x53,0x08,                        /* POWER_STATE_D2_STANDBY_WITH_WAKE*/
+        0x0A,0x54,0x08,                        /* POWER_STATE_D3_SLEEP_WITH_WAKE */
+        0x0A,0x55,0x08,                        /* POWER_STATE_D4_POWER_OFF */
+        0xB1,0x02,                             /* HID_FEATURE(Data_Arr_Abs)*/
+        0xC0,                             /* HID_END_COLLECTION*/
+        // 3. Change sensitivity
+        0x0A,0x0F,0x03,                   /* SENSOR_PROPERTY_CHANGE_SENSITIVITY_ABS*/
+        0x85, REPORT_ID_BASE_ACCEL_CHANGE_SENSITIVITY, /* Report ID */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x26,0xFF,0xFF,                   /* LOGICAL_MAX_16*/
+        0x75,16,                          /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT*/
+        0x55,0x0E,                        /* HID_UNIT_EXPONENT*/
+        0xB1,0x02,                        /* HID_FEATURE(Data_Arr_Abs)*/
+        // 4. Sensor status
+        0x0A,0x03,0x03,                   /* SENSOR_PROPERTY_SENSOR_STATUS */
+        0x85, REPORT_ID_BASE_ACCEL_SENSOR_STATUS, /* Report ID */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x55, 0xFF,0xFF,0xFF,0xFF,        /* HID_LOGICAL_MAX_32 */
+        0x75,32,                          /* HID_REPORT_SIZE */
+        0xB1,0x02,                        /* HID_FEATURE(Data_Arr_Abs)*/
+        // 5. Sampling rate/ odr
+        0x0A,0x17,0x03,                   /* SENSOR_PROPERTY_REPORT_INTERVAL*/
+        0x85, REPORT_ID_BASE_ACCEL_SAMPLING_RATE, /* Report ID */
+        0x15, 0,                          /* HID_LOGICAL_MIN_8 */
+        0x55, 0xFF,0xFF,0xFF,0xFF,        /* HID_LOGICAL_MAX_32 */
+        0x75,32,                          /* HID_REPORT_SIZE */
+        0x95, 1,                          /* HID_REPORT_COUNT*/
+        0x55, 0,                          /* HID_UNIT_EXPONENT*/
+        0xB1,0x02,                        /* HID_FEATURE(Data_Arr_Abs)*/
+};
+
+/* Map feature report ID to report/ sensor ID*/
+static int hid_get_sensorid_from_featureid(int feature_id) {
+	if (feature_id <= 0) {
+		return INVALID_ID;
+	} else {
+		switch(feature_id) {
+		case(6 || 7 || 8 || 9 || 10 || 11 || 12):
+			return REPORT_ID_BASE_ACCEL;
+		}
+	}
+	return -1;
+}
+
 /* Console output macros */
-#define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
-#define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
+#define CPUTS(outstr) cputs(CC_MOTION_SENSE_HID, outstr)
+#define CPRINTS(format, args...) cprints(CC_MOTION_SENSE_HID, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE_HID, format, ## args)
 
 #ifdef CONFIG_ORIENTATION_SENSOR
 /*
@@ -207,7 +358,6 @@ static inline int motion_sensor_in_forced_mode(
 }
 
 
-
 /* Minimal amount of time since last collection before triggering a new one */
 static inline int motion_sensor_time_to_read(const timestamp_t *ts,
 		const struct motion_sensor_t *sensor)
@@ -299,42 +449,6 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	mutex_unlock(&g_sensor_mutex);
 	return 0;
 }
-
-static int motion_sense_set_ec_rate_from_ap(
-		const struct motion_sensor_t *sensor,
-		unsigned int new_rate_us)
-{
-	int odr_mhz = sensor->drv->get_data_rate(sensor);
-
-	if (new_rate_us == 0)
-		return 0;
-	if (motion_sensor_in_forced_mode(sensor))
-		/*
-		 * AP EC sampling rate does not matter: we will collect at the
-		 * requested sensor frequency.
-		 */
-		goto end_set_ec_rate_from_ap;
-	if (odr_mhz == 0)
-		goto end_set_ec_rate_from_ap;
-
-	/*
-	 * If the EC collection rate is close to the sensor data rate,
-	 * given variation from the EC scheduler, it is possible that a sensor
-	 * will not present any measurement for a given time slice, and then 2
-	 * measurement for the next. That will create a large interval between
-	 * 2 measurements.
-	 * To prevent that, increase the EC period by 5% to be sure to get at
-	 * least one measurement at every collection time.
-	 * We will apply that correction only if the ec rate is within 10% of
-	 * the data rate.
-	 */
-	if (SECOND * 1100 / odr_mhz > new_rate_us)
-		new_rate_us = new_rate_us / 100 * 105;
-
-end_set_ec_rate_from_ap:
-	return MAX(new_rate_us, motion_min_interval);
-}
-
 
 /*
  * motion_sense_select_ec_rate
@@ -433,7 +547,7 @@ static int motion_sense_set_motion_intervals(void)
 	 * Wake up the motion sense task: we want to sensor task to take
 	 * in account the new period right away.
 	 */
-	task_wake(TASK_ID_MOTIONSENSE);
+	task_wake(TASK_ID_MOTIONSENSEHID);
 	return motion_interval;
 }
 
@@ -453,7 +567,7 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
 		sensor->state = SENSOR_INIT_ERROR;
 	} else {
 		sensor->state = SENSOR_INITIALIZED;
-		motion_sense_set_data_rate(sensor);
+		motion_sense_set_data_rate(sensor); 
 	}
 	return ret;
 }
@@ -891,7 +1005,7 @@ static void check_and_queue_gestures(uint32_t *event)
  *    1 in the A/B(lid, display) and 1 in the C/D(base, keyboard)
  * Gyro Sensor (optional)
  */
-void motion_sense_task(void *u)
+void motion_sense_hid_task(void *u)
 {
 	int i, ret, wait_us;
 	timestamp_t ts_begin_task, ts_end_task;
@@ -1068,420 +1182,236 @@ static struct motion_sensor_t
 	return NULL;
 }
 
-static struct motion_sensor_t
-	*host_sensor_id_to_motion_sensor(int host_id)
+/* HID functions */
+static struct hid_descriptor hid_desc = {
+	.wHIDDescLength = 30,
+	.bcdVersion = 0x0100,
+	.wReportDescLength = sizeof(report_desc),
+	.wReportDescRegister = REPORT_DESC_REGISTER,
+	.wInputRegister = INPUT_REPORT_REGISTER,
+	.wMaxInputLength = I2C_HID_HEADER_SIZE + sizeof(struct hid_accel_input_report),
+	.wOutputRegister = 0,
+	.wMaxOutputLength = 0,
+	.wCommandRegister = COMMAND_REGISTER,
+	.wDataRegister = DATA_REGISTER
+};
+
+size_t hid_fill_buffer(uint8_t* buffer, uint8_t report_id, const void* data,
+			  size_t data_len)
 {
-#ifdef CONFIG_GESTURE_HOST_DETECTION
-	if (host_id == MOTION_SENSE_ACTIVITY_SENSOR_ID)
-		/*
-		 * Return the info for the first sensor that
-		 * support some gestures.
-		 */
-		return host_sensor_id_to_real_sensor(
-			__builtin_ctz(CONFIG_GESTURE_DETECTION_MASK));
-#endif
-	return host_sensor_id_to_real_sensor(host_id);
+	size_t response_len = I2C_HID_HEADER_SIZE + data_len;
+	buffer[0] = response_len & 0xFF;
+	buffer[1] = (response_len >> 8) & 0xFF;
+	buffer[2] = report_id;
+	memcpy(buffer + I2C_HID_HEADER_SIZE, data, data_len);
+	return response_len;
 }
 
-static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
+/* Fill input report struct with data so that fill_buffer can use it*/
+int hid_compile_input(int report_id)
 {
-	const struct ec_params_motion_sense *in = args->params;
-	struct ec_response_motion_sense *out = args->response;
 	struct motion_sensor_t *sensor;
-	int i, ret = EC_RES_INVALID_PARAM, reported;
-
-	switch (in->cmd) {
-	case MOTIONSENSE_CMD_DUMP:
-		out->dump.module_flags =
-			(*(host_get_memmap(EC_MEMMAP_ACC_STATUS)) &
-			 EC_MEMMAP_ACC_STATUS_PRESENCE_BIT) ?
-			MOTIONSENSE_MODULE_FLAG_ACTIVE : 0;
-		out->dump.sensor_count = ALL_MOTION_SENSORS;
-		args->response_size = sizeof(out->dump);
-		reported = MIN(ALL_MOTION_SENSORS, in->dump.max_sensor_count);
-		mutex_lock(&g_sensor_mutex);
-		for (i = 0; i < reported; i++) {
-			out->dump.sensor[i].flags =
-				MOTIONSENSE_SENSOR_FLAG_PRESENT;
-			if (i < motion_sensor_count) {
-				sensor = &motion_sensors[i];
-				/* casting from int to s16 */
-				out->dump.sensor[i].data[X] = sensor->xyz[X];
-				out->dump.sensor[i].data[Y] = sensor->xyz[Y];
-				out->dump.sensor[i].data[Z] = sensor->xyz[Z];
-			} else {
-				memset(out->dump.sensor[i].data, 0,
-				       3 * sizeof(int16_t));
-			}
-		}
-		mutex_unlock(&g_sensor_mutex);
-		args->response_size += reported *
-			sizeof(struct ec_response_motion_sensor_data);
-		break;
-
-	case MOTIONSENSE_CMD_DATA:
-		sensor = host_sensor_id_to_real_sensor(
-				in->sensor_odr.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-
-		out->data.flags = 0;
-
-		mutex_lock(&g_sensor_mutex);
-		out->data.data[X] = sensor->xyz[X];
-		out->data.data[Y] = sensor->xyz[Y];
-		out->data.data[Z] = sensor->xyz[Z];
-		mutex_unlock(&g_sensor_mutex);
-		args->response_size = sizeof(out->data);
-		break;
-
-	case MOTIONSENSE_CMD_INFO:
-		sensor = host_sensor_id_to_motion_sensor(
-				in->sensor_odr.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-
-#ifdef CONFIG_GESTURE_HOST_DETECTION
-		if (in->sensor_odr.sensor_num ==
-		    MOTION_SENSE_ACTIVITY_SENSOR_ID)
-			out->info.type = MOTIONSENSE_TYPE_ACTIVITY;
-		else
-#endif
-			out->info.type = sensor->type;
-
-		out->info.location = sensor->location;
-		out->info.chip = sensor->chip;
-		if (args->version >= 3) {
-			out->info_3.min_frequency = sensor->min_frequency;
-			/*
-			 * Make sure reported max frequency for this sensor
-			 * doesn't exceed the max sensor frequency the EC is
-			 * capable of supporting
-			 */
-			out->info_3.max_frequency = MIN(sensor->max_frequency,
-					CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ);
-			out->info_3.fifo_max_event_count = MAX_FIFO_EVENT_COUNT;
-			args->response_size = sizeof(out->info_3);
-		} else {
-			args->response_size = sizeof(out->info);
-		}
-		break;
-
-	case MOTIONSENSE_CMD_EC_RATE:
-		sensor = host_sensor_id_to_real_sensor(
-				in->sensor_odr.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-
-		/*
-		 * Set new sensor sampling rate when AP is on, if the data arg
-		 * has a value.
-		 */
-		if (in->ec_rate.data != EC_MOTION_SENSE_NO_VALUE) {
-			sensor->config[SENSOR_CONFIG_AP].ec_rate =
-				motion_sense_set_ec_rate_from_ap(
-					sensor, in->ec_rate.data * MSEC);
-			/* Bound the new sampling rate. */
-			motion_sense_set_motion_intervals();
-		}
-
-		out->ec_rate.ret = motion_sense_ec_rate(sensor) / MSEC;
-
-		args->response_size = sizeof(out->ec_rate);
-		break;
-
-	case MOTIONSENSE_CMD_SENSOR_ODR:
-		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_real_sensor(
-				in->sensor_odr.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-
-		/* Set new data rate if the data arg has a value. */
-		if (in->sensor_odr.data != EC_MOTION_SENSE_NO_VALUE) {
-#ifdef CONFIG_ACCEL_FIFO
-			/*
-			 * To be sure timestamps are calculated properly,
-			 * Send an event to have a timestamp inserted in the
-			 * FIFO.
-			 */
-			motion_sense_insert_timestamp(__hw_clock_source_read());
-#endif
-			sensor->config[SENSOR_CONFIG_AP].odr =
-				in->sensor_odr.data |
-				(in->sensor_odr.roundup ? ROUND_UP_FLAG : 0);
-
-			ret = motion_sense_set_data_rate(sensor);
-			if (ret != EC_SUCCESS)
-				return EC_RES_INVALID_PARAM;
-
-#ifdef CONFIG_ACCEL_FIFO
-			/*
-			 * The new ODR may suspend sensor, leaving samples
-			 * in the FIFO. Flush it explicitly.
-			 */
-			task_set_event(TASK_ID_MOTIONSENSE,
-					TASK_EVENT_MOTION_ODR_CHANGE, 0);
-#endif
-			/*
-			 * If the sensor was suspended before, or now
-			 * suspended, we have to recalculate the EC sampling
-			 * rate
-			 */
-			motion_sense_set_motion_intervals();
-		}
-
-		out->sensor_odr.ret = sensor->drv->get_data_rate(sensor);
-
-		args->response_size = sizeof(out->sensor_odr);
-
-		break;
-
-	case MOTIONSENSE_CMD_SENSOR_RANGE:
-		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_real_sensor(
-				in->sensor_range.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-		/* Set new range if the data arg has a value. */
-		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
-			if (!sensor->drv->set_range)
-				return EC_RES_INVALID_COMMAND;
-
-			if (sensor->drv->set_range(sensor,
-						in->sensor_range.data,
-						in->sensor_range.roundup)
-					!= EC_SUCCESS) {
-				return EC_RES_INVALID_PARAM;
-			}
-		}
-
-		if (!sensor->drv->get_range)
-			return EC_RES_INVALID_COMMAND;
-
-		out->sensor_range.ret = sensor->drv->get_range(sensor);
-		args->response_size = sizeof(out->sensor_range);
-		break;
-
-	case MOTIONSENSE_CMD_SENSOR_OFFSET:
-		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_real_sensor(
-				in->sensor_offset.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-		/* Set new range if the data arg has a value. */
-		if (in->sensor_offset.flags & MOTION_SENSE_SET_OFFSET) {
-			if (!sensor->drv->set_offset)
-				return EC_RES_INVALID_COMMAND;
-
-			ret = sensor->drv->set_offset(sensor,
-						in->sensor_offset.offset,
-						in->sensor_offset.temp);
-			if (ret != EC_SUCCESS)
-				return ret;
-		}
-
-		if (!sensor->drv->get_offset)
-			return EC_RES_INVALID_COMMAND;
-
-		ret = sensor->drv->get_offset(sensor, out->sensor_offset.offset,
-				&out->sensor_offset.temp);
-		if (ret != EC_SUCCESS)
-			return ret;
-		args->response_size = sizeof(out->sensor_offset);
-		break;
-
-	case MOTIONSENSE_CMD_PERFORM_CALIB:
-		/* Verify sensor number is valid. */
-		sensor = host_sensor_id_to_real_sensor(
-				in->sensor_offset.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-		if (!sensor->drv->perform_calib)
-			return EC_RES_INVALID_COMMAND;
-
-		ret = sensor->drv->perform_calib(sensor);
-		if (ret != EC_SUCCESS)
-			return ret;
-		ret = sensor->drv->get_offset(sensor, out->sensor_offset.offset,
-				&out->sensor_offset.temp);
-		if (ret != EC_SUCCESS)
-			return ret;
-		args->response_size = sizeof(out->sensor_offset);
-		break;
-
-#ifdef CONFIG_ACCEL_FIFO
-	case MOTIONSENSE_CMD_FIFO_FLUSH:
-		sensor = host_sensor_id_to_real_sensor(
-				in->sensor_odr.sensor_num);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-
-		atomic_add(&sensor->flush_pending, 1);
-
-		task_set_event(TASK_ID_MOTIONSENSE,
-			       TASK_EVENT_MOTION_FLUSH_PENDING, 0);
-		/* pass-through */
-	case MOTIONSENSE_CMD_FIFO_INFO:
-		motion_sense_get_fifo_info(&out->fifo_info);
-		for (i = 0; i < motion_sensor_count; i++) {
-			out->fifo_info.lost[i] = motion_sensors[i].lost;
-			motion_sensors[i].lost = 0;
-		}
-		motion_sense_fifo_lost = 0;
-		args->response_size = sizeof(out->fifo_info) +
-			sizeof(uint16_t) * motion_sensor_count;
-		break;
-
-	case MOTIONSENSE_CMD_FIFO_READ:
-		mutex_lock(&g_sensor_mutex);
-		reported = MIN((args->response_max - sizeof(out->fifo_read)) /
-			       motion_sense_fifo.unit_bytes,
-			       MIN(queue_count(&motion_sense_fifo),
-				   in->fifo_read.max_data_vector));
-		reported = queue_remove_units(&motion_sense_fifo,
-				out->fifo_read.data, reported);
-		mutex_unlock(&g_sensor_mutex);
-		out->fifo_read.number_data = reported;
-		args->response_size = sizeof(out->fifo_read) + reported *
-			motion_sense_fifo.unit_bytes;
-		break;
-	case MOTIONSENSE_CMD_FIFO_INT_ENABLE:
-		switch (in->fifo_int_enable.enable) {
-		case 0:
-		case 1:
-			fifo_int_enabled = in->fifo_int_enable.enable;
-			/* fallthrough */
-		case EC_MOTION_SENSE_NO_VALUE:
-			out->fifo_int_enable.ret = fifo_int_enabled;
-			args->response_size = sizeof(out->fifo_int_enable);
-			break;
-		default:
-			return EC_RES_INVALID_PARAM;
-		}
-		break;
-#else
-	case MOTIONSENSE_CMD_FIFO_INFO:
-		/* Only support the INFO command, to tell there is no FIFO. */
-		memset(&out->fifo_info, 0, sizeof(out->fifo_info));
-		args->response_size = sizeof(out->fifo_info);
-		break;
-#endif
-#ifdef CONFIG_GESTURE_HOST_DETECTION
-	case MOTIONSENSE_CMD_LIST_ACTIVITIES: {
-		uint32_t enabled, disabled, mask, i;
-
-		out->list_activities.enabled = 0;
-		out->list_activities.disabled = 0;
-		ret = EC_RES_SUCCESS;
-		mask = CONFIG_GESTURE_DETECTION_MASK;
-		while (mask && ret == EC_RES_SUCCESS) {
-			i = get_next_bit(&mask);
-			sensor = &motion_sensors[i];
-			ret = sensor->drv->list_activities(sensor,
-					&enabled, &disabled);
-			if (ret == EC_RES_SUCCESS) {
-				out->list_activities.enabled |= enabled;
-				out->list_activities.disabled |= disabled;
-			}
-		}
-		if (ret != EC_RES_SUCCESS)
-			return ret;
-		args->response_size = sizeof(out->list_activities);
-		break;
-	}
-	case MOTIONSENSE_CMD_SET_ACTIVITY: {
-		uint32_t enabled, disabled, mask, i;
-
-		mask = CONFIG_GESTURE_DETECTION_MASK;
-		ret = EC_RES_SUCCESS;
-		while (mask && ret == EC_RES_SUCCESS) {
-			i = get_next_bit(&mask);
-			sensor = &motion_sensors[i];
-			sensor->drv->list_activities(sensor,
-					&enabled, &disabled);
-			if ((1 << in->set_activity.activity) &
-			    (enabled | disabled))
-				ret = sensor->drv->manage_activity(sensor,
-						in->set_activity.activity,
-						in->set_activity.enable,
-						&in->set_activity);
-		}
-		if (ret != EC_RES_SUCCESS)
-			return ret;
-		args->response_size = 0;
-		break;
-	}
-#endif /* defined(CONFIG_GESTURE_HOST_DETECTION) */
-
-#ifdef CONFIG_ACCEL_SPOOF_MODE
-	case MOTIONSENSE_CMD_SPOOF: {
-		sensor = host_sensor_id_to_real_sensor(in->spoof.sensor_id);
-		if (sensor == NULL)
-			return EC_RES_INVALID_PARAM;
-
-		switch (in->spoof.spoof_enable) {
-		case MOTIONSENSE_SPOOF_MODE_DISABLE:
-			/* Disable spoof mode. */
-			sensor->in_spoof_mode = 0;
-			break;
-
-		case MOTIONSENSE_SPOOF_MODE_CUSTOM:
-			/*
-			 * Enable spoofing, but use provided component values.
-			 */
-			sensor->spoof_xyz[X] = (int)in->spoof.components[X];
-			sensor->spoof_xyz[Y] = (int)in->spoof.components[Y];
-			sensor->spoof_xyz[Z] = (int)in->spoof.components[Z];
-			sensor->in_spoof_mode = 1;
-			break;
-
-		case MOTIONSENSE_SPOOF_MODE_LOCK_CURRENT:
-			/*
-			 * Enable spoofing, but lock to current sensor
-			 * values.  raw_xyz already has the values we want.
-			 */
-			sensor->spoof_xyz[X] = sensor->raw_xyz[X];
-			sensor->spoof_xyz[Y] = sensor->raw_xyz[Y];
-			sensor->spoof_xyz[Z] = sensor->raw_xyz[Z];
-			sensor->in_spoof_mode = 1;
-			break;
-
-		case MOTIONSENSE_SPOOF_MODE_QUERY:
-			/* Querying the spoof status of the sensor. */
-			out->spoof.ret = sensor->in_spoof_mode;
-			args->response_size = sizeof(out->spoof);
-			break;
-
-		default:
-			return EC_RES_INVALID_PARAM;
-		}
-
-		/*
-		 * Only print the status when spoofing is enabled or disabled.
-		 */
-		if (in->spoof.spoof_enable != MOTIONSENSE_SPOOF_MODE_QUERY)
-			print_spoof_mode_status((int)(sensor - motion_sensors));
-
-		break;
-	}
-#endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */
-
-	default:
-		/* Call other users of the motion task */
-#ifdef CONFIG_LID_ANGLE
-		if (ret == EC_RES_INVALID_PARAM)
-			ret = host_cmd_motion_lid(args);
-#endif
-		return ret;
-	}
-
-	return EC_RES_SUCCESS;
+	struct hid_accel_input_report *input;
+	sensor = host_sensor_id_to_real_sensor(report_id);
+	if (sensor == NULL)
+		return EC_RES_INVALID_PARAM;
+	mutex_lock(&g_sensor_mutex);
+	input->x = sensor->xyz[X];
+	input->y = sensor->xyz[Y];
+	input->z = sensor->xyz[Z];
+	//&input_reports[report_active_index ^ 1] = input;
+	return 0;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_MOTION_SENSE_CMD,
-		     host_cmd_motion_sense,
-		     EC_VER_MASK(1) | EC_VER_MASK(2) | EC_VER_MASK(3));
+/* Extracts report data from |buffer| into |data|.
+ *
+ * |buffer| is expected to contain the values written to the command register
+ * followed by the values written to the data register, upon receiving a
+ * SET_REPORT command, in the following byte sequence format:
+ *
+ *   00 30 - command register address (0x3000)
+ *   xx    - report type and ID
+ *   03    - SET_REPORT
+ *   00 30 - data register address (0x3000)
+ *   xx xx - length
+ *   xx    - report ID
+ *   xx... - report data
+ *
+ * Note that command register and data register have the same address. Also,
+ * any report ID >= 15 requires an extra byte after the SET_REPORT byte, which
+ * is not supported here as we don't have any report ID >= 15.
+ *
+ * In summary, we expect |buffer| contains at least 10 bytes where the report
+ * data starts at buffer[9]. If |buffer| contains the incorrect number bytes,
+ * we ignore the report.
+ */
+int extract_report(uint64_t len, uint8_t* buffer, void* data,
+			   uint64_t data_len)
+{
+	if (len == 9 + data_len)
+		memcpy(data, buffer + 9, data_len);
+		ccprintf("Read back data set %x\n", *((int*)data));
+		return *((int*)data);
+}
+
+
+/* Function to map hid report IDs to motion sensor. */
+static struct motion_sensor_t
+	*hid_host_sensor_id_to_real_sensor(int report_id)
+{
+	struct motion_sensor_t *sensor;
+	int report_id_mapped;
+	if (report_id > motion_sensor_count || report_id == 0)
+		return NULL;
+	/* As we can't use report ID of 0, we map to motion_sensors[] by 
+	subtracting 1 from the report ID */
+	report_id_mapped = report_id - 1;
+	sensor = &motion_sensors[report_id_mapped];
+
+	/* if sensor is powered and initialized, return match */
+	if (SENSOR_ACTIVE(sensor) && (sensor->state == SENSOR_INITIALIZED))
+		return sensor;
+
+	/* If no match then the EC currently doesn't support ID received. */
+	return NULL;
+}
+
+int i2c_hid_process(int data_len, uint8_t* buffer,
+		     void (*send_response)(int len))
+{
+	int reg;
+	size_t response_len;
+	uint32_t data_set;
+
+	if (data_len == 0) {
+		reg = INPUT_REPORT_REGISTER;
+	} else {
+		reg = buffer[1] << 8 | buffer[0];
+	}
+
+	switch (reg) {
+	/* Return HID descr to host */
+	case HID_DESC_REGISTER:
+		memcpy(buffer, &hid_desc, sizeof(hid_desc));
+		send_response(sizeof(hid_desc));
+		return 0;
+	/* Return Report descr to host */
+	case REPORT_DESC_REGISTER:
+		memcpy(buffer, &report_desc, sizeof(report_desc));
+		send_response(sizeof(report_desc));
+		return 0;
+	/* Return input report to host */
+	case INPUT_REPORT_REGISTER:
+	// Need to add code to check if reset is pending. Not sure of GPIO used
+		hid_compile_input(REPORT_ID_BASE_ACCEL);
+		response_len = hid_fill_buffer(buffer, REPORT_ID_BASE_ACCEL,
+					   &input_reports[report_active_index],
+					   sizeof(struct hid_accel_input_report));
+		send_response(response_len);
+		//gpio_set_level(GPIO_INT_L, 1);
+		return 0;
+	/* Process cmd from host */
+	case COMMAND_REGISTER:
+		data_set = i2c_hid_command_process(data_len, buffer, send_response);
+		return data_set;
+	default:
+		// Ignore invalid register.
+		return 0;
+	}
+}
+
+int i2c_hid_command_process(int len, uint8_t* buffer,
+				   void (*send_response)(int len))
+{
+	uint8_t command = buffer[3] & 0x0F;
+	uint8_t report_type_id = buffer[2];
+	uint8_t report_id = report_type_id & 0x0F;
+	size_t response_len;
+	uint8_t host_sensor_id = 0;
+	uint32_t data_set;
+	struct motion_sensor_t *sensor;
+	int ret = EC_RES_INVALID_PARAM;
+
+	switch (command) {
+	case I2C_HID_CMD_RESET:
+		ccprintf("I2C-HID: command reset\n");
+		// Need to implement this
+
+		return 0;
+	/* For both input and feature reports */
+	case I2C_HID_CMD_GET_REPORT:
+		ccprintf("I2C-HID: command get_report (%04x)\n", report_id);
+		switch (report_id) {
+		case REPORT_ID_BASE_ACCEL:
+			response_len =
+				hid_fill_buffer(buffer, report_id,
+					    &input_reports[report_active_index],
+					    sizeof(struct hid_accel_input_report));
+			return 0;
+		default:
+			response_len = 2;
+			buffer[0] = response_len;
+			buffer[1] = 0;
+			return 0;
+		}
+		send_response(response_len);
+		return 0;
+	case I2C_HID_CMD_SET_REPORT:
+		ccprintf("I2C-HID: command set_report (%04x)\n", report_id);
+		switch (report_id) {
+		case REPORT_ID_BASE_ACCEL_SAMPLING_RATE:
+			data_set = extract_report(len, buffer, &base_accel_odr,
+				       sizeof(base_accel_odr));
+			host_sensor_id = hid_get_sensorid_from_featureid(report_id);
+			sensor = hid_host_sensor_id_to_real_sensor(host_sensor_id);
+
+			if (sensor == NULL)
+				return EC_RES_INVALID_PARAM;
+
+			/* Set new data rate if the feature report data has a value. */
+			if (base_accel_odr == data_set) {
+				/*
+			 	* To be sure timestamps are calculated properly,
+			 	* Send an event to have a timestamp inserted in the
+			 	* FIFO.
+			 	*/
+				motion_sense_insert_timestamp(__hw_clock_source_read());
+				sensor->config[SENSOR_CONFIG_AP].odr = base_accel_odr;
+
+				ret = motion_sense_set_data_rate(sensor);
+				if (ret != EC_SUCCESS)
+					return EC_RES_INVALID_PARAM;
+
+				/*
+			 	* The new ODR may suspend sensor, leaving samples
+			 	* in the FIFO. Flush it explicitly.
+			 	*/
+				task_set_event(TASK_ID_MOTIONSENSEHID,
+					TASK_EVENT_MOTION_ODR_CHANGE, 0);
+
+				/*
+			 	* If the sensor was suspended before, or now
+			 	* suspended, we have to recalculate the EC sampling
+			 	* rate
+			 	*/
+				motion_sense_set_motion_intervals();
+				return base_accel_odr;
+		}
+			return 0;
+		default:
+			return 0;
+		}
+		return 0;
+
+	case I2C_HID_CMD_SET_POWER:
+		// Dummy call to avoid compile errors
+		i2c_hid_process(sizeof(buffer), buffer, send_response);
+		return 0;
+		
+	}
+	return 0;
+}
+
 
 /*****************************************************************************/
 /* Console commands */
@@ -1733,7 +1663,7 @@ static int command_display_accel_info(int argc, char **argv)
 			return EC_ERROR_PARAM2;
 
 		motion_interval = val * MSEC;
-		task_wake(TASK_ID_MOTIONSENSE);
+		task_wake(TASK_ID_MOTIONSENSEHID);
 
 	}
 
