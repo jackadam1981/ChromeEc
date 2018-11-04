@@ -1122,6 +1122,17 @@
 #undef CONFIG_FW_PSTATE_SIZE
 
 /*
+ * Set spoof x, y, z values for base accel sensor in motion_sensors array.
+ * This is used for testing HID reports.
+ */
+#undef CONFIG_HID_SENSOR_SPOOF_MODE
+
+/*
+ * Only defined if HID protocol is used with sensors vs cros_ec
+ */
+#define CONFIG_HID_SENSORS
+
+/*
  * Reuse the space that was occupied in RAM by the little firmware (LFW) loader
  * with the section ".bss.slow" instead.
  */
