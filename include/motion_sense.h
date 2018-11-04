@@ -203,6 +203,18 @@ void sensor_init_done(const struct motion_sensor_t *sensor, int range);
  */
 void sensor_board_proc_double_tap(void);
 
+void motion_sense_insert_timestamp(void);
+
+int motion_sense_set_data_rate(struct motion_sensor_t *sensor);
+
+enum sensor_config motion_sense_get_ec_config(void);
+
+int motion_sense_set_motion_intervals(void);
+
+int motion_sense_ec_rate(struct motion_sensor_t *sensor);
+
+inline int motion_sense_init(struct motion_sensor_t *sensor);
+
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 /* Add an extra sensor. We may need to add more */
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
