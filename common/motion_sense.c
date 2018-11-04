@@ -36,6 +36,7 @@
  * Sampling interval for measuring acceleration and calculating lid angle.
  */
 test_export_static unsigned int motion_interval;
+struct mutex g_sensor_mutex;
 
 /* Delay between FIFO interruption. */
 static unsigned int motion_int_interval;
@@ -60,14 +61,6 @@ static int accel_disp;
 #define MOTION_SENSOR_INT_ADJUSTMENT_US 10
 
 /*
- * Mutex to protect sensor values between host command task and
- * motion sense task:
- * When we process CMD_DUMP, we want to be sure the motion sense
- * task is not updating the sensor values at the same time.
- */
-static struct mutex g_sensor_mutex;
-
-/*
  * Current power level (S0, S3, S5, ...)
  */
 test_export_static enum chipset_state_mask sensor_active;
@@ -90,7 +83,6 @@ struct queue motion_sense_fifo = QUEUE_NULL(CONFIG_ACCEL_FIFO,
 		struct ec_response_motion_sensor_data);
 static int motion_sense_fifo_lost;
 
-static void motion_sense_insert_timestamp(void);
 
 void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 				struct motion_sensor_t *sensor,
@@ -152,7 +144,7 @@ static void motion_sense_insert_flush(struct motion_sensor_t *sensor)
 	motion_sense_fifo_add_unit(&vector, sensor, 0);
 }
 
-static void motion_sense_insert_timestamp(void)
+void motion_sense_insert_timestamp(void)
 {
 	struct ec_response_motion_sensor_data vector;
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
@@ -189,7 +181,7 @@ static inline int motion_sensor_time_to_read(const timestamp_t *ts,
 			  sensor->last_collection + SECOND * 950 / rate_mhz);
 }
 
-static enum sensor_config motion_sense_get_ec_config(void)
+enum sensor_config motion_sense_get_ec_config(void)
 {
 	switch (sensor_active) {
 	case SENSOR_ACTIVE_S0:
@@ -343,7 +335,7 @@ static int motion_sense_select_ec_rate(
  *
  * Return the EC rate, in us.
  */
-static int motion_sense_ec_rate(struct motion_sensor_t *sensor)
+int motion_sense_ec_rate(struct motion_sensor_t *sensor)
 {
 	int ec_rate = 0, ec_rate_from_cfg;
 
@@ -369,7 +361,7 @@ static int motion_sense_ec_rate(struct motion_sensor_t *sensor)
  *
  * Note: Not static to be tested.
  */
-static int motion_sense_set_motion_intervals(void)
+int motion_sense_set_motion_intervals(void)
 {
 	int i, sensor_ec_rate, ec_rate = 0, ec_int_rate = 0;
 	struct motion_sensor_t *sensor;
@@ -406,7 +398,7 @@ static int motion_sense_set_motion_intervals(void)
 	return motion_interval;
 }
 
-static inline int motion_sense_init(struct motion_sensor_t *sensor)
+inline int motion_sense_init(struct motion_sensor_t *sensor)
 {
 	int ret, cnt = 3;
 
@@ -954,6 +946,48 @@ static struct motion_sensor_t
 	return host_sensor_id_to_real_sensor(host_id);
 }
 
+int set_odr(struct motion_sensor_t *sensor, void *data, int is_hid)
+{
+	int ret;
+	struct ec_params_motion_sense *input_param;
+	#ifdef CONFIG_ACCEL_FIFO
+			/*
+			 * To be sure timestamps are calculated properly,
+			 * Send an event to have a timestamp inserted in the
+			 * FIFO.
+			 */
+			motion_sense_insert_timestamp();
+#endif
+	if (is_hid) {
+		sensor->config[SENSOR_CONFIG_AP].odr = *(int *)data;
+	} else {
+		input_param =
+		(struct ec_params_motion_sense *) data;
+		sensor->config[SENSOR_CONFIG_AP].odr =
+		input_param->sensor_odr.data |
+		(input_param->sensor_odr.roundup ? ROUND_UP_FLAG : 0);
+	}
+	ret = motion_sense_set_data_rate(sensor);
+	if (ret != EC_SUCCESS)
+		return EC_RES_INVALID_PARAM;
+
+#ifdef CONFIG_ACCEL_FIFO
+	/*
+	 * The new ODR may suspend sensor, leaving samples
+	 * in the FIFO. Flush it explicitly.
+	 */
+	task_set_event(TASK_ID_MOTIONSENSE,
+					TASK_EVENT_MOTION_ODR_CHANGE, 0);
+#endif
+	/*
+	 * If the sensor was suspended before, or now
+	 * suspended, we have to recalculate the EC sampling
+	 * rate
+	 */
+	motion_sense_set_motion_intervals();
+	return ret;
+}
+
 static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_motion_sense *in = args->params;
@@ -1070,36 +1104,8 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 		/* Set new data rate if the data arg has a value. */
 		if (in->sensor_odr.data != EC_MOTION_SENSE_NO_VALUE) {
-#ifdef CONFIG_ACCEL_FIFO
-			/*
-			 * To be sure timestamps are calculated properly,
-			 * Send an event to have a timestamp inserted in the
-			 * FIFO.
-			 */
-			motion_sense_insert_timestamp();
-#endif
-			sensor->config[SENSOR_CONFIG_AP].odr =
-				in->sensor_odr.data |
-				(in->sensor_odr.roundup ? ROUND_UP_FLAG : 0);
+			set_odr(sensor, (void *)in, 0);
 
-			ret = motion_sense_set_data_rate(sensor);
-			if (ret != EC_SUCCESS)
-				return EC_RES_INVALID_PARAM;
-
-#ifdef CONFIG_ACCEL_FIFO
-			/*
-			 * The new ODR may suspend sensor, leaving samples
-			 * in the FIFO. Flush it explicitly.
-			 */
-			task_set_event(TASK_ID_MOTIONSENSE,
-					TASK_EVENT_MOTION_ODR_CHANGE, 0);
-#endif
-			/*
-			 * If the sensor was suspended before, or now
-			 * suspended, we have to recalculate the EC sampling
-			 * rate
-			 */
-			motion_sense_set_motion_intervals();
 		}
 
 		out->sensor_odr.ret = sensor->drv->get_data_rate(sensor);
