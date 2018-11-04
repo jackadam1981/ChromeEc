@@ -203,6 +203,45 @@ void sensor_init_done(const struct motion_sensor_t *sensor, int range);
  */
 void sensor_board_proc_double_tap(void);
 
+/**
+ * Insert timestamp into the FIFO
+ */
+void motion_sense_insert_timestamp(void);
+
+/**
+ * Set the sensor data rate. It is altered when the AP change the data
+ * rate or when the power state changes.
+ *
+ * @param sensor sensor for which to set the new data rate
+ */
+int motion_sense_set_data_rate(struct motion_sensor_t *sensor);
+
+/**
+ * If sensor is active, return the power states for which it is active
+ */
+enum sensor_config motion_sense_get_ec_config(void);
+
+/**
+ * Set the wake up interval for the motion sense thread.
+ * It is set to the highest frequency one of the sensors need to be polled at.
+ */
+int motion_sense_set_motion_intervals(void);
+
+/**
+ * Calculate the sensor ec rate. It will be used to set the motion task polling
+ * rate.
+ *
+ * @param sensor sensor for which to calculate the data rate
+ */
+int motion_sense_ec_rate(struct motion_sensor_t *sensor);
+
+/**
+ * Initialize the sensor
+ *
+ * @param sensor sensor to be initialized
+ */
+inline int motion_sense_init(struct motion_sensor_t *sensor);
+
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 /* Add an extra sensor. We may need to add more */
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
