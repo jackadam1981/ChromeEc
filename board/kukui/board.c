@@ -14,6 +14,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
 #include "driver/sync.h"
 #include "driver/tcpm/mt6370.h"
@@ -54,24 +55,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
-static void warm_reset_request_interrupt(enum gpio_signal signal)
-{
-	CPRINTS("AP wants warm reset");
-	chipset_reset(CHIPSET_RESET_AP_REQ);
-}
-
-static void ap_watchdog_interrupt(enum gpio_signal signal)
-{
-	int level = gpio_get_level(GPIO_AP_EC_WATCHDOG_L);
-
-	CPRINTS("AP watchdog level %d", level);
-	/*
-	 * TODO(b:109900671): Handle AP watchdog, when necessary, for now, just
-	 * mirror input to output.
-	 */
-	gpio_set_level(GPIO_PMIC_WATCHDOG_L, level);
-}
-
 #if BOARD_REV >= 1
 static void hall_interrupt(enum gpio_signal signal)
 {
@@ -80,7 +63,7 @@ static void hall_interrupt(enum gpio_signal signal)
 
 static void gauge_interrupt(enum gpio_signal signal)
 {
-	/* TODO(b/111378620): Impelement gauge_interrupt */
+	task_wake(TASK_ID_CHARGER);
 }
 #endif
 
@@ -147,7 +130,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
@@ -231,11 +213,6 @@ static void board_init(void)
 	/* Enable charger interrupts */
 	gpio_enable_interrupt(GPIO_CHARGER_INT_ODL);
 
-	/* Enable reboot / shutdown / sleep control inputs from AP */
-	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
-	gpio_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
-	gpio_enable_interrupt(GPIO_AP_IN_SLEEP_L);
-
 #ifdef SECTION_IS_RW
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_ODL);
@@ -246,6 +223,9 @@ static void board_init(void)
 
 	/* Enable interrupt from PMIC. */
 	gpio_enable_interrupt(GPIO_PMIC_EC_RESETB);
+
+	/* Enable gauge interrupt from max17055 */
+	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -353,10 +333,17 @@ static struct mutex g_base_mutex;
 static struct bmi160_drv_data_t g_bmi160_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0,  FLOAT_TO_FP(-1),  0},
 	{ 0,  0, FLOAT_TO_FP(1)}
+};
+
+/* Matrix to rotate accelrator into standard reference frame */
+const mat33_fp_t mag_standard_ref = {
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0,  FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -403,6 +390,23 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
+	},
+	[LID_MAG] = {
+	 .name = "Lid Mag",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_MAG,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = I2C_PORT_ACCEL,
+	 .addr = BMI160_ADDR0,
+	 .default_range = 1 << 11, /* 16LSB / uT, fixed */
+	 .rot_standard_ref = &mag_standard_ref,
+	 .rot_standard_ref = NULL,
+	 .min_frequency = BMM150_MAG_MIN_FREQ,
+	 .max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
 	},
 	[VSYNC] = {
 	 .name = "Camera vsync",

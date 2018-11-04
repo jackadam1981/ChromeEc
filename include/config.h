@@ -78,6 +78,8 @@
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
+#undef CONFIG_MAG_LIS2MDL
+#undef CONFIG_SENSORHUB_LSM6DSM
 
 /* Support for BMI160 hardware orientation sensor */
 #undef CONFIG_BMI160_ORIENTATION_SENSOR
@@ -158,6 +160,12 @@
  */
 #define CONFIG_ADC_PROFILE_SINGLE
 #undef CONFIG_ADC_PROFILE_FAST_CONTINUOUS
+
+/* Support AES symmetric-key algorithm */
+#undef CONFIG_AES
+
+/* Support AES-GCM */
+#undef CONFIG_AES_GCM
 
 /*
  * Some ALS modules may be connected to the EC. We need the command, and
@@ -268,6 +276,12 @@
 #undef CONFIG_BATTERY_BQ27621
 #undef CONFIG_BATTERY_BQ4050
 #undef CONFIG_BATTERY_MAX17055
+
+/*
+ * MAX17055 support alert on voltage, current, temperature, and state-of-charge.
+ */
+#undef CONFIG_BATTERY_MAX17055_ALERT
+
 
 /* Compile mock battery support; used by tests. */
 #undef CONFIG_BATTERY_MOCK
@@ -514,6 +528,13 @@
 #undef CONFIG_BUTTON_TRIGGERED_RECOVERY
 
 /*
+ * Compile detachable base support
+ *
+ * Enabled on all boards that have a detachable base.
+ */
+#undef CONFIG_DETACHABLE_BASE
+
+/*
  * Indicates there is a dedicated recovery button.  Note, that if there are
  * volume buttons, a dedicated recovery button is not needed.  This is intended
  * because if a board has volume buttons, they can do everything a dedicated
@@ -531,6 +552,8 @@
 #undef CONFIG_CASE_CLOSED_DEBUG_V1
 /* Allow unsafe debugging functionality in V1 configuration */
 #undef CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE
+/* Enable ITE EC programming by CCD using the INA i2c interface. */
+#undef CONFIG_CCD_ITE_PROGRAMMING
 /* Loosen Open restrictions for prePVT devices */
 #undef CONFIG_CCD_OPEN_PREPVT
 
@@ -1157,8 +1180,17 @@
 /*
  * When enabled, build in support for software & hardware crypto;
  * only supported on CR50.
+ *
+ * If this is enabled on the host board, a minimal implementation is included to
+ * allow fuzzing targets to fuzz code that depends on dcrypto.
  */
 #undef CONFIG_DCRYPTO
+/*
+ * This provides struct definitions and function declarations that can be
+ * implemented by unit tests for testing code that depends on dcrypto.
+ * This should not be set at the same time as CONFIG_DCRYPTO.
+ */
+#undef CONFIG_DCRYPTO_MOCK
 
 /*
  * When enabled, RSA 2048 bit keygen gets a 40% performance boost,
@@ -1348,9 +1380,6 @@
  */
 #undef CONFIG_FAN_UPDATE_PERIOD
 
-/* Send event when mode change, host read acpi memory and select DPTF table */
-#undef CONFIG_DPTF_DEVICE_ORIENTATION
-
 /*****************************************************************************/
 /* Flash configuration */
 
@@ -1423,6 +1452,28 @@
  * CONFIG_FLASH_PSTATE_BANK is not defined).
  */
 #undef CONFIG_FLASH_PSTATE_LOCKED
+
+/*
+ * Enable readout protection.
+ */
+#undef CONFIG_FLASH_READOUT_PROTECTION
+
+/*
+ * Use Read-out protection status as PSTATE, i.e. after RDP is enabled, we never
+ * allow RO protection to be disabled.
+ *
+ * This is used when we want to prevent read-back of some critical region (e.g.
+ * rollback), even in DFU/BOOT0 mode.
+ *
+ * Note that this significantly changes the behaviour or flash protection,
+ * as this tie EC_FLASH_PROTECT_RO_AT_BOOT with RDP status: it makes no
+ * sense to be able to unlock RO protection if RDP is enabled, as a custom RO
+ * could allow protected regions readback.
+ *
+ * TODO(crbug.com/888109): Implementation is currently only available on
+ * STM32H7, and requires more documentation.
+ */
+#undef CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
 
 /*
  * For flash that is segemented in different regions.
@@ -2026,9 +2077,6 @@
 #undef CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
 #undef CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI3
 
-/* Some boards see the refresh key pressed on boot when triggering recovery. */
-#undef CONFIG_KEYBOARD_IGNORE_REFRESH_BOOT_KEY
-
 /* Enable extra debugging output from keyboard modules */
 #undef CONFIG_KEYBOARD_DEBUG
 
@@ -2118,6 +2166,11 @@
  * Add support for keyboards with language ID pins
  */
 #undef CONFIG_KEYBOARD_LANGUAGE_ID
+
+/*
+ * Enable keypad (a palm-sized keyboard section usually placed on the far right)
+ */
+#undef CONFIG_KEYBOARD_KEYPAD
 /*****************************************************************************/
 
 /* Support common LED interface */
@@ -2159,6 +2212,24 @@
  * PWM LED policy?  Currently, this may be at most 2.
  */
 #undef CONFIG_LED_PWM_COUNT
+
+/*
+ * Support GPIO-controlled LEDs for common battery/power
+ * states through a board-defined lookup table.
+ */
+#undef CONFIG_LED_ONOFF_STATES
+
+/*
+ * Set the battery charge percentage for optional STATE_DISCHARGE_S0_BAT_LOW
+ * provided by CONFIG_LED_ONOFF_STATES.
+ */
+#undef CONFIG_LED_ONOFF_STATES_BAT_LOW
+
+/*
+ * Adds a power LED under the control of the board-defined lookup table.
+ * Must be used with the CONFIG_LED_ONOFF_STATES option.
+ */
+#undef CONFIG_LED_POWER_LED
 
 /*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
@@ -2854,6 +2925,7 @@
 #undef CONFIG_TEMP_SENSOR_TMP006	/* TI TMP006 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP411	/* TI TMP411 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP432	/* TI TMP432 sensor, on I2C bus */
+#undef CONFIG_TEMP_SENSOR_TMP468	/* TI TMP468 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_F75303	/* Fintek  F75303 sensor, on I2C bus */
 
 /* Compile common code for thermistor support */
@@ -3181,6 +3253,7 @@
 #undef CONFIG_USB_PD_TCPM_PS8751
 #undef CONFIG_USB_PD_TCPM_PS8805
 #undef CONFIG_USB_PD_TCPM_MT6370
+#undef CONFIG_USB_PD_TCPM_TUSB422
 
 /*
  * Adds an EC console command to erase the ANX7447 OCM flash.
@@ -3194,14 +3267,6 @@
  * 18h CONFIG_STANDARD_OUTPUT to steer the high-speed muxes.
  */
 #undef CONFIG_USB_PD_TCPM_MUX
-
-/*
- * Use this option if any TCPC/MUX chip is only being used as a mux and the
- * board's tcpc_config_t does not specify the chip. When this option is defined,
- * all TPCPI mux drivers must use the MUX_PORT_AND_ADDR define to pack the port
- * and address together.
- */
-#undef CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY
 
 /*
  * The TCPM must know whether VBUS is present in order to make proper state
@@ -3250,8 +3315,10 @@
 #undef CONFIG_USBC_PPC_POLARITY
 
 /* USB Type-C Power Path Controllers (PPC) */
+#undef CONFIG_USBC_PPC_NX20P3481
 #undef CONFIG_USBC_PPC_NX20P3483
 #undef CONFIG_USBC_PPC_SN5S330
+#undef CONFIG_USBC_PPC_SYV682X
 
 /* PPC is capable of providing VCONN */
 #undef CONFIG_USBC_PPC_VCONN
@@ -3308,7 +3375,7 @@
 #undef CONFIG_USB_CHARGER
 
 /* External BC1.2 charger detection devices. */
-#undef CONFIG_BC12_DETECT_BQ24392
+#undef CONFIG_BC12_DETECT_MAX14637
 #undef CONFIG_BC12_DETECT_PI3USB9281
 /* Number of Pericom PI3USB9281 chips present in system */
 #undef CONFIG_BC12_DETECT_PI3USB9281_CHIP_COUNT
@@ -3610,6 +3677,12 @@
  * allows to nail different images to different boards.
  */
 #undef CONFIG_BOARD_ID_SUPPORT
+
+/*
+ * Define this if serial number support is required. For g chip based boards
+ * it allows a verifiable serial number to be stored / certified.
+ */
+#undef CONFIG_SN_BITS_SUPPORT
 
 /*
  * Define this to enable Cros Board Info support. I2C_EEPROM_PORT and
@@ -4010,5 +4083,27 @@
 #ifdef CONFIG_MAG_BMI160_BMM150
 #define CONFIG_BMI160_SEC_I2C
 #endif
+
+/*
+ * TODO(crbug.com/888109): Makes sure RDP as PSTATE is only enabled where it
+ * makes sense.
+ */
+#ifdef CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
+#ifdef CONFIG_FLASH_PSTATE
+#error "Flash readout protection and PSTATE may not work as intended."
+#endif
+
+#ifndef CHIP_FAMILY_STM32H7
+#error "Flash readout protection only implemented on STM32H7."
+#endif
+#endif /* CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE */
+
+#if defined(CONFIG_USB_PD_TCPM_ANX3429) || \
+	defined(CONFIG_USB_PD_TCPM_ANX740X) || \
+	defined(CONFIG_USB_PD_TCPM_ANX7471)
+/* Note: ANX7447 is handled by its own driver, not ANX74XX. */
+#define CONFIG_USB_PD_TCPM_ANX74XX
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
 

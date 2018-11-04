@@ -18,6 +18,11 @@
 #undef CONFIG_VBOOT_HASH
 #undef CONFIG_USB_PD_LOGGING
 
+#ifdef TEST_AES
+#define CONFIG_AES
+#define CONFIG_AES_GCM
+#endif
+
 #ifdef TEST_BASE32
 #define CONFIG_BASE32
 #endif
@@ -47,6 +52,16 @@
 
 #ifdef TEST_MATH_UTIL
 #define CONFIG_MATH_UTIL
+#endif
+
+#ifdef TEST_FLOAT
+#define CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
+#endif
+
+#ifdef TEST_FP
+#undef CONFIG_FPU
+#define CONFIG_MAG_CALIBRATE
 #endif
 
 #ifdef TEST_MOTION_LID
@@ -266,6 +281,7 @@ enum nvmem_vars {
 #endif	/* TEST_NVMEM_VARS */
 
 #ifdef TEST_PINWEAVER
+#define CONFIG_DCRYPTO_MOCK
 #define CONFIG_PINWEAVER
 #define CONFIG_SHA256
 #endif /* TEST_PINWEAVER */

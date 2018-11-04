@@ -43,14 +43,14 @@ static int dp_set_hpd(int port, int enable)
 	int reg;
 	int rv;
 
-	rv = tcpc_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
+	rv = mux_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
 	if (rv)
 		return rv;
 	if (enable)
 		reg |= IN_HPD;
 	else
 		reg &= ~IN_HPD;
-	return tcpc_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
+	return mux_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
 static int dp_set_irq(int port, int enable)
@@ -59,14 +59,14 @@ static int dp_set_irq(int port, int enable)
 	int reg;
 	int rv;
 
-	rv = tcpc_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
+	rv = mux_read(port, MUX_IN_HPD_ASSERTION_REG, &reg);
 	if (rv)
 		return rv;
 	if (enable)
 		reg |= HPD_IRQ;
 	else
 		reg &= ~HPD_IRQ;
-	return tcpc_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
+	return mux_write(port, MUX_IN_HPD_ASSERTION_REG, reg);
 }
 
 void ps8xxx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
@@ -85,11 +85,6 @@ void ps8xxx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 	}
 	/* enforce 2-ms delay between HPD pulses */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
-}
-
-int ps8xxx_tcpc_get_fw_version(int port, int *version)
-{
-	return tcpc_read(port, FW_VER_REG, version);
 }
 
 static int ps8xxx_tcpc_bist_mode_2(int port)
@@ -136,6 +131,38 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
+static int ps8xxx_get_chip_info(int port, int renew,
+			struct ec_response_pd_chip_info_v1 **chip_info)
+{
+	int val;
+	int rv = tcpci_get_chip_info(port, renew, chip_info);
+
+	if (rv)
+		return rv;
+
+	if ((*chip_info)->fw_version_number == 0 ||
+		(*chip_info)->fw_version_number == -1 || renew) {
+		rv = tcpc_read(port, FW_VER_REG, &val);
+
+		if (rv)
+			return rv;
+
+		(*chip_info)->fw_version_number = val;
+	}
+
+#if defined(CONFIG_USB_PD_TCPM_PS8751) && \
+	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC)
+	/*
+	 * Min firmware version of PS8751 to ensure that it can detect Vbus
+	 * properly. See b/109769787#comment7
+	 */
+	(*chip_info)->min_req_fw_version_number = 0x39;
+#endif
+
+	return rv;
+}
+
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= &tcpci_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
@@ -149,7 +176,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
-	.get_message		= &tcpci_tcpm_get_message,
+	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &ps8xxx_tcpm_transmit,
 	.tcpc_alert		= &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
@@ -162,7 +189,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
-	.get_chip_info		= &tcpci_get_chip_info,
+	.get_chip_info		= &ps8xxx_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif

@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "dma.h"
@@ -194,8 +195,12 @@ int adc_read_channel(enum adc_channel ch)
 	/* Clear EOC bit */
 	STM32_ADC_SR &= ~(1 << 1);
 
-	/* Start conversion */
-	STM32_ADC_CR2 |= (1 << 0); /* ADON */
+	/* Start conversion (Note: For now only confirmed on F4) */
+#if defined(CHIP_FAMILY_STM32F4)
+	STM32_ADC_CR2 |= STM32_ADC_CR2_ADON | STM32_ADC_CR2_SWSTART;
+#else
+	STM32_ADC_CR2 |= STM32_ADC_CR2_ADON;
+#endif
 
 	/* Wait for EOC bit set */
 	deadline.val = get_time().val + ADC_SINGLE_READ_TIMEOUT;
@@ -222,7 +227,7 @@ static void adc_init(void)
 	 * APB2 clock is 16MHz. ADC clock prescaler is /2.
 	 * So the ADC clock is 8MHz.
 	 */
-	STM32_RCC_APB2ENR |= (1 << 9);
+	clock_enable_module(MODULE_ADC, 1);
 
 	/*
 	 * ADC clock is divided with respect to AHB, so no delay needed
@@ -232,21 +237,21 @@ static void adc_init(void)
 
 	if (!adc_powered()) {
 		/* Power on ADC module */
-		STM32_ADC_CR2 |= (1 << 0);  /* ADON */
+		STM32_ADC_CR2 |= STM32_ADC_CR2_ADON;
 
 		/* Reset calibration */
-		STM32_ADC_CR2 |= (1 << 3);  /* RSTCAL */
-		while (STM32_ADC_CR2 & (1 << 3))
+		STM32_ADC_CR2 |= STM32_ADC_CR2_RSTCAL;
+		while (STM32_ADC_CR2 & STM32_ADC_CR2_RSTCAL)
 			;
 
 		/* A/D Calibrate */
-		STM32_ADC_CR2 |= (1 << 2);  /* CAL */
-		while (STM32_ADC_CR2 & (1 << 2))
+		STM32_ADC_CR2 |= STM32_ADC_CR2_CAL;
+		while (STM32_ADC_CR2 & STM32_ADC_CR2_CAL)
 			;
 	}
 
 	/* Set right alignment */
-	STM32_ADC_CR2 &= ~(1 << 11);
+	STM32_ADC_CR2 &= ~STM32_ADC_CR2_ALIGN;
 
 	/* Set sample time of all channels */
 	STM32_ADC_SMPR1 = SMPR1_EXPAND(CONFIG_ADC_SAMPLE_TIME);

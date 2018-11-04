@@ -233,6 +233,35 @@ static int charge_manager_get_source_current(int port)
 	}
 }
 
+/*
+ * Find a supplier considering available current, voltage, power, and priority.
+ */
+static enum charge_supplier find_supplier(int port, enum charge_supplier sup,
+					  int min_cur)
+{
+	int i;
+	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
+		if (available_charge[i][port].current <= min_cur ||
+		    available_charge[i][port].voltage <= 0)
+			/* Doesn't meet volt or current requirement. Skip it. */
+			continue;
+		if (sup == CHARGE_SUPPLIER_NONE)
+			/* Haven't found any yet. Take it unconditionally. */
+			sup = i;
+		else if (supplier_priority[sup] < supplier_priority[i])
+			/* There is already a higher priority supplier. */
+			continue;
+		else if (supplier_priority[i] < supplier_priority[sup])
+			/* This has a higher priority. Take it. */
+			sup = i;
+		else if (POWER(available_charge[i][port]) >
+			 POWER(available_charge[sup][port]))
+			/* Priority is tie. Take it if power is higher. */
+			sup = i;
+	}
+	return sup;
+}
+
 /**
  * Fills passed power_info structure with current info about the passed port.
  *
@@ -243,24 +272,17 @@ static void charge_manager_fill_power_info(int port,
 	struct ec_response_usb_pd_power_info *r)
 {
 	int sup = CHARGE_SUPPLIER_NONE;
-	int i;
 
 	/* Determine supplier information to show. */
-	if (port == charge_port)
+	if (port == charge_port) {
 		sup = charge_supplier;
-	else
-		/* Find highest priority supplier */
-		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-			if (available_charge[i][port].current > 0 &&
-			    available_charge[i][port].voltage > 0 &&
-			    (sup == CHARGE_SUPPLIER_NONE ||
-			     supplier_priority[i] <
-			     supplier_priority[sup] ||
-			    (supplier_priority[i] ==
-			     supplier_priority[sup] &&
-			     POWER(available_charge[i][port]) >
-			     POWER(available_charge[sup][port]))))
-				sup = i;
+	} else {
+		/* Consider available current */
+		sup = find_supplier(port, sup, 0);
+		if (sup == CHARGE_SUPPLIER_NONE)
+			/* Ignore available current */
+			sup = find_supplier(port, sup, -1);
+	}
 
 	/* Fill in power role */
 	if (charge_port == port)
@@ -583,8 +605,10 @@ static void charge_manager_refresh(void)
 		 * Zero the available charge on the rejected port so that
 		 * it is no longer chosen.
 		 */
-		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
+		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
 			available_charge[i][new_port].current = 0;
+			available_charge[i][new_port].voltage = 0;
+		}
 	}
 
 	active_charge_port_initialized = 1;
@@ -886,6 +910,9 @@ void charge_manager_update_charge(int supplier,
 				  int port,
 				  const struct charge_port_info *charge)
 {
+	struct charge_port_info zero = {0};
+	if (!charge)
+		charge = &zero;
 	charge_manager_make_change(CHANGE_CHARGE, supplier, port, charge);
 }
 

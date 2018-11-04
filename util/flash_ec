@@ -46,6 +46,7 @@ die() {
 
 
 BOARDS_IT83XX=(
+	ampton
 	bip
 	dragonegg
 	glkrvp_ite
@@ -62,6 +63,8 @@ BOARDS_STM32=(
 	blaze
 	chell_pd
 	coffeecake
+	chocodile_bec
+	chocodile_vpdmcu
 	elm
 	glados_pd
 	hammer
@@ -125,6 +128,7 @@ BOARDS_NPCX_SPI=(
 	nami
 	nautilus
 	poppy
+	rammus
 	reef
 	soraka
 )
@@ -143,8 +147,13 @@ BOARDS_NPCX_INT_SPI=(
 )
 
 BOARDS_NPCX_UUT=(
+	bobba
 	cheza
+	fleex
 	grunt
+	meep
+	phaser
+	yorp
 )
 
 BOARDS_NRF51=(
@@ -170,6 +179,7 @@ BOARDS_RAIDEN=(
 	nami
 	nautilus
 	poppy
+	rammus
 	reef
 	scarlet
 	soraka
@@ -180,8 +190,18 @@ BOARDS_RAIDEN=(
 # i.e., If a board needs to use one CHIP when connected via a Suzy-Q and another
 # chip when connected via a Servo.
 declare -A VALID_CHIP_COMBO
+VALID_CHIP_COMBO["bobba.npcx_spi"]="(servo_micro|servo_v2)"
+VALID_CHIP_COMBO["bobba.npcx_uut"]="ccd_cr50"
+VALID_CHIP_COMBO["fleex.npcx_spi"]="(servo_micro|servo_v2)"
+VALID_CHIP_COMBO["fleex.npcx_uut"]="ccd_cr50"
+VALID_CHIP_COMBO["grunt.npcx_spi"]="(servo_micro|servo_v2)"
 VALID_CHIP_COMBO["grunt.npcx_uut"]="ccd_cr50"
-VALID_CHIP_COMBO["grunt.npcx_spi"]="servo"
+VALID_CHIP_COMBO["meep.npcx_spi"]="(servo_micro|servo_v2)"
+VALID_CHIP_COMBO["meep.npcx_uut"]="ccd_cr50"
+VALID_CHIP_COMBO["phaser.npcx_spi"]="(servo_micro|servo_v2)"
+VALID_CHIP_COMBO["phaser.npcx_uut"]="ccd_cr50"
+VALID_CHIP_COMBO["yorp.npcx_spi"]="(servo_micro|servo_v2)"
+VALID_CHIP_COMBO["yorp.npcx_uut"]="ccd_cr50"
 
 DEFAULT_PORT="${SERVOD_PORT:-9999}"
 BITBANG_RATE="9600"  # Could be overwritten by a command line option.
@@ -332,7 +352,7 @@ else
 	for i in "${SUPPORTED_CHIPS[@]}"; do
 		SUPPORTED_SERVO="${VALID_CHIP_COMBO["${BOARD}.${i}"]}"
 		if [[ -z "$SUPPORTED_SERVO" || \
-				"$SERVO_TYPE" =~ "$SUPPORTED_SERVO" ]]; then
+				"$SERVO_TYPE" =~ $SUPPORTED_SERVO ]]; then
 			FILTERED_CHIPS+=("$i")
 		fi
 
@@ -409,27 +429,28 @@ ec_reset() {
 
 # force the EC to boot in serial monitor mode
 toad_ec_boot0() {
-	dut_control boot_mode:yes
+	dut_control boot_mode:$1
 }
 
 ccd_ec_boot0() {
-	info "Using CCD $1."
-	dut_control ccd_ec_boot_mode_$1:on
+	info "Using CCD $2."
+	dut_control ccd_ec_boot_mode_$2:$1
 }
 
 servo_ec_boot0() {
-	dut_control ec_boot_mode:on
+	dut_control ec_boot_mode:$1
 }
 
 servo_usbpd_boot0() {
-	dut_control usbpd_boot_mode:on
+	dut_control usbpd_boot_mode:$1
 }
 
 servo_sh_boot0() {
-	dut_control sh_boot_mode:on
+	dut_control sh_boot_mode:$1
 }
 
-ec_enable_boot0() {
+ec_switch_boot0() {
+	on_value=$1
 	# Enable programming GPIOs
 	if $(in_array "${BOARDS_STM32_PROG_EN[@]}" "${BOARD}"); then
 		dut_control prog_en:yes
@@ -440,8 +461,23 @@ ec_enable_boot0() {
 		stype=servo
 	else
 		stype=${SERVO_TYPE}
+		if [[ "${SERVO_TYPE}" =~ "toad" ]] ; then
+			if [[ "${on_value}" == "on" ]] ; then
+				on_value="yes"
+			else
+				on_value="no"
+			fi
+		fi
 	fi
-	eval ${stype}_${MCU}_boot0 $1
+	eval ${stype}_${MCU}_boot0 "${on_value}" $2
+}
+
+ec_enable_boot0() {
+	ec_switch_boot0 "on" $1
+}
+
+ec_disable_boot0() {
+	ec_switch_boot0 "off" $1
 }
 
 # Returns 0 on success (if on beaglebone)
@@ -543,14 +579,23 @@ fi
 
 # Get baseboard from build system if present
 BASEBOARD=
+
+# We do not want to exit script if make call fails; we turn -e back on after
+# setting BASEBOARD
+set +e
 if [[ -n "${EC_DIR}" ]]; then
-	BASEBOARD=$(make --quiet -C ${EC_DIR} BOARD=${BOARD} print-baseboard)
+	BASEBOARD=$(make --quiet -C ${EC_DIR} BOARD=${BOARD} print-baseboard \
+		2>/dev/null)
 elif [[ -d "${HOME}/trunk/src/platform/ec" ]]; then
 	BASEBOARD=$(make --quiet -C ${HOME}/trunk/src/platform/ec \
-		BOARD=${BOARD} print-baseboard)
+		BOARD=${BOARD} print-baseboard 2>/dev/null)
 else
 	info "Could not find ec build folder to calculate baseboard."
 fi
+if [ $? -ne 0 ]; then
+	info "EC build system didn't recognize ${BOARD}. Assuming no baseboard."
+fi
+set -e
 
 if [[ -n "${BASEBOARD}" ]]; then
 	EMERGE_BUILD=/build/${BASEBOARD}/firmware/${BOARD}/${EC_FILE}
@@ -594,6 +639,7 @@ function servo_ec_uart() {
 
 # Servo variables management
 case "${BOARD}" in
+        chocodile_bec ) MCU="usbpd" ;;
 	oak_pd|samus_pd|strago_pd ) MCU="usbpd" ;;
 	chell_pd|glados_pd ) MCU="usbpd" ;;
 	meowth_fp|nocturne_fp ) MCU="usbpd" ;;
@@ -627,6 +673,7 @@ toad_VARS="${MCU}_uart_parity ${MCU}_uart_baudrate boot_mode"
 
 if $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
 	servo_v2_VARS+=" fw_up"
+	servo_micro_VARS+=" fw_up"
 fi
 # Some servo boards use the same controls.
 servo_v3_VARS="${servo_v2_VARS}"
@@ -1003,7 +1050,8 @@ function flash_it83xx() {
 	dut_control ftdii2c_cmd:close
 
 	info "Run iteflash..."
-	sudo ${ITEFLASH} -w ${IMG}
+	sudo "${ITEFLASH}" --i2c-interface=ftdi --send-waveform=1 --erase \
+		--write="${IMG}"
 }
 
 function flash_lm4() {
@@ -1079,6 +1127,10 @@ function flash_npcx_uut() {
 	ec_reset
 
 	# Have to wait a bit for EC boot-up
+	sleep 0.1
+
+	# For CCD, disable the trigger pin for normal UART operation
+	ec_disable_boot0 "uut"
 	sleep 0.1
 
 	# Remove the prefix "/dev/" because uartupdatetool will add it.

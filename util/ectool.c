@@ -134,6 +134,8 @@ const char help_str[] =
 	"      Prints information about the Fingerprint sensor\n"
 	"  fpmode [capture|deepsleep|fingerdown|fingerup]\n"
 	"      Configure/Read the fingerprint sensor current mode\n"
+	"  fpseed\n"
+	"      Sets the value of the TPM seed.\n"
 	"  fpstats\n"
 	"      Prints timing statisitcs relating to capture and matching\n"
 	"  fptemplate [<infile>|<index 0..2>]\n"
@@ -229,6 +231,8 @@ const char help_str[] =
 	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump>"
 			" [at-shutdown|switch-slot]\n"
 	"      Reboot EC to RO or RW\n"
+	"  rollbackinfo\n"
+	"      Print rollback block information\n"
 	"  rtcget\n"
 	"      Print real-time clock\n"
 	"  rtcgetalarm\n"
@@ -276,7 +280,7 @@ const char help_str[] =
 	"      Control USB PD/type-C\n"
 	"  usbpdmuxinfo\n"
 	"      Get USB-C SS mux info\n"
-	"  usbpdpower\n"
+	"  usbpdpower [port]\n"
 	"      Get USB PD power information\n"
 	"  version\n"
 	"      Prints EC version\n"
@@ -635,6 +639,8 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_HOST_EVENT64] = "64-bit host events",
 	[EC_FEATURE_EXEC_IN_RAM] = "Execute code in RAM",
 	[EC_FEATURE_CEC] = "Consumer Electronics Control",
+	[EC_FEATURE_MOTION_SENSE_TIGHT_TIMESTAMPS] =
+		"Tight timestamp for sensors events",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -714,6 +720,7 @@ static const char *reset_cause_to_str(uint16_t cause)
 		"reset: debug warm reboot",
 		"reset: at AP's request",
 		"reset: during EC initialization",
+		"reset: AP watchdog",
 	};
 	BUILD_ASSERT(ARRAY_SIZE(reset_causes) == CHIPSET_RESET_COUNT);
 
@@ -764,7 +771,8 @@ int cmd_uptimeinfo(int argc, char *argv[])
 		"usb-resume",
 		"rdd",
 		"rbox",
-		"security"
+		"security",
+		"ap-watchdog"
 	};
 
 	struct ec_response_uptime_info r;
@@ -1305,6 +1313,25 @@ int cmd_rwsig_action(int argc, char *argv[])
 	return ec_command(EC_CMD_RWSIG_ACTION, 0, &req, sizeof(req), NULL, 0);
 }
 
+int cmd_rollback_info(int argc, char *argv[])
+{
+	struct ec_response_rollback_info r;
+	int rv;
+
+	rv = ec_command(EC_CMD_ROLLBACK_INFO, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "ERROR: EC_CMD_ROLLBACK_INFO failed: %d\n", rv);
+		return rv;
+	}
+
+	/* Print versions */
+	printf("Rollback block id:    %d\n", r.id);
+	printf("Rollback min version: %d\n", r.rollback_min_version);
+	printf("RW rollback version:  %d\n", r.rw_rollback_version);
+
+	return rv;
+}
+
 #define FP_FRAME_INDEX_SIMPLE_IMAGE -1
 
 /*
@@ -1398,6 +1425,8 @@ int cmd_fp_mode(int argc, char *argv[])
 			mode |= FP_MODE_ENROLL_IMAGE | FP_MODE_ENROLL_SESSION;
 		else if (!strncmp(argv[i], "match", 5))
 			mode |= FP_MODE_MATCH;
+		else if (!strncmp(argv[i], "reset_sensor", 12))
+			mode = FP_MODE_RESET_SENSOR;
 		else if (!strncmp(argv[i], "reset", 5))
 			mode = 0;
 		else if (!strncmp(argv[i], "capture", 7))
@@ -1438,6 +1467,29 @@ int cmd_fp_mode(int argc, char *argv[])
 		printf("capture ");
 	printf("\n");
 	return 0;
+}
+
+int cmd_fp_seed(int argc, char *argv[])
+{
+	struct ec_params_fp_seed p;
+	const char *seed = argv[1];
+	int rv;
+
+	if (argc == 1) {
+		printf("Missing seed argument.\n");
+		return 1;
+	}
+	if (strlen(seed) != FP_CONTEXT_TPM_BYTES) {
+		printf("Invalid seed '%s' is %zd bytes long instead of %d.\n",
+		       seed, strlen(seed), FP_CONTEXT_TPM_BYTES);
+		return 1;
+	}
+	printf("Setting seed '%s'\n", seed);
+	p.struct_version = 3;
+	memcpy(p.seed, seed, FP_CONTEXT_TPM_BYTES);
+
+	rv = ec_command(EC_CMD_FP_SEED, 0, &p, sizeof(p), NULL, 0);
+	return rv;
 }
 
 int cmd_fp_stats(int argc, char *argv[])
@@ -1503,9 +1555,10 @@ int cmd_fp_info(int argc, char *argv[])
 	}
 
 	if (cmdver == 1) {
-		printf("Templates: size %d count %d/%d dirty bitmap %x\n",
-		       r.template_size, r.template_valid, r.template_max,
-		       r.template_dirty);
+		printf("Templates: version %d size %d count %d/%d"
+		       " dirty bitmap %x\n",
+		       r.template_version, r.template_size, r.template_valid,
+		       r.template_max, r.template_dirty);
 	}
 
 	return 0;
@@ -5119,6 +5172,7 @@ int cmd_usb_pd_power(int argc, char *argv[])
 	struct ec_response_usb_pd_power_info *r =
 		(struct ec_response_usb_pd_power_info *)ec_inbuf;
 	int num_ports, i, rv;
+	char *e;
 
 	rv = ec_command(EC_CMD_USB_PD_PORTS, 0, NULL, 0,
 			ec_inbuf, ec_max_insize);
@@ -5126,15 +5180,31 @@ int cmd_usb_pd_power(int argc, char *argv[])
 		return rv;
 	num_ports = ((struct ec_response_usb_pd_ports *)r)->num_ports;
 
-	for (i = 0; i < num_ports; i++) {
-		p.port = i;
+	if (argc < 2) {
+		for (i = 0; i < num_ports; i++) {
+			p.port = i;
+			rv = ec_command(EC_CMD_USB_PD_POWER_INFO, 0,
+					&p, sizeof(p),
+					ec_inbuf, ec_max_insize);
+			if (rv < 0)
+				return rv;
+
+			printf("Port %d: ", i);
+			print_pd_power_info(r);
+		}
+	} else {
+		p.port = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad port.\n");
+			return -1;
+		}
 		rv = ec_command(EC_CMD_USB_PD_POWER_INFO, 0,
 				&p, sizeof(p),
 				ec_inbuf, ec_max_insize);
 		if (rv < 0)
 			return rv;
 
-		printf("Port %d: ", i);
+		printf("Port %d: ", p.port);
 		print_pd_power_info(r);
 	}
 
@@ -7854,9 +7924,10 @@ int cmd_pd_control(int argc, char *argv[])
 int cmd_pd_chip_info(int argc, char *argv[])
 {
 	struct ec_params_pd_chip_info p;
-	struct ec_response_pd_chip_info r;
+	struct ec_response_pd_chip_info_v1 r;
 	char *e;
 	int rv;
+	int cmdver = 1;
 
 	if (argc < 2 || 3 < argc) {
 		fprintf(stderr, "Usage: %s <port> [renew(on/off)]\n", argv[0]);
@@ -7879,7 +7950,11 @@ int cmd_pd_chip_info(int argc, char *argv[])
 		p.renew = val;
 	}
 
-	rv = ec_command(EC_CMD_PD_CHIP_INFO, 0, &p, sizeof(p), &r, sizeof(r));
+	if (!ec_cmd_version_supported(EC_CMD_PD_CHIP_INFO, cmdver))
+		cmdver = 0;
+
+	rv = ec_command(EC_CMD_PD_CHIP_INFO, cmdver, &p, sizeof(p), &r,
+			sizeof(r));
 	if (rv < 0)
 		return rv;
 
@@ -7887,14 +7962,16 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	printf("product_id: 0x%x\n", r.product_id);
 	printf("device_id: 0x%x\n", r.device_id);
 
-	switch (r.vendor_id) {
-	case ANX74XX_VENDOR_ID:
-	case PS8XXX_VENDOR_ID:
+	if (r.fw_version_number != -1)
 		printf("fw_version: 0x%" PRIx64 "\n", r.fw_version_number);
-		break;
-	default:
+	else
 		printf("fw_version: UNSUPPORTED\n");
-	}
+
+	if (cmdver >= 1)
+		printf("min_req_fw_version: 0x%" PRIx64 "\n",
+		       r.min_req_fw_version_number);
+	else
+		printf("min_req_fw_version: UNSUPPORTED\n");
 
 	return 0;
 }
@@ -8299,6 +8376,7 @@ const struct command commands[] = {
 	{"fpframe", cmd_fp_frame},
 	{"fpinfo", cmd_fp_info},
 	{"fpmode", cmd_fp_mode},
+	{"fpseed", cmd_fp_seed},
 	{"fpstats", cmd_fp_stats},
 	{"fptemplate", cmd_fp_template},
 	{"gpioget", cmd_gpio_get},
@@ -8346,6 +8424,7 @@ const struct command commands[] = {
 	{"pwmsetduty", cmd_pwm_set_duty},
 	{"readtest", cmd_read_test},
 	{"reboot_ec", cmd_reboot_ec},
+	{"rollbackinfo", cmd_rollback_info},
 	{"rtcget", cmd_rtc_get},
 	{"rtcgetalarm", cmd_rtc_get_alarm},
 	{"rtcset", cmd_rtc_set},

@@ -1234,8 +1234,14 @@ enum PM_CHANNEL_T {
 /* BBRAM register fields */
 #define NPCX_BKUP_STS_IBBR               7
 #if defined(CHIP_VARIANT_NPCX7M6FB) || defined(CHIP_VARIANT_NPCX7M7WB)
+#define NPCX_BKUP_STS_VSBY_STS           1
+#define NPCX_BKUP_STS_VCC1_STS           0
+#define NPCX_BKUP_STS_ALL_MASK \
+	((1 << NPCX_BKUP_STS_IBBR) | (1 << NPCX_BKUP_STS_VSBY_STS) | \
+	(1 << NPCX_BKUP_STS_VCC1_STS))
 #define NPCX_BBRAM_SIZE                 128  /* Size of BBRAM */
 #else
+#define NPCX_BKUP_STS_ALL_MASK (1 << NPCX_BKUP_STS_IBBR)
 #define NPCX_BBRAM_SIZE                  64  /* Size of BBRAM */
 #endif
 
@@ -1842,6 +1848,8 @@ enum {
 #define CMD_WRITE_STATUS_REG             0x01
 #define CMD_FLASH_PROGRAM                0x02
 #define CMD_SECTOR_ERASE                 0x20
+#define CMD_BLOCK_32K_ERASE              0x52
+#define CMD_BLOCK_64K_ERASE              0xd8
 #define CMD_PROGRAM_UINT_SIZE            0x08
 #define CMD_PAGE_SIZE                    0x00
 #define CMD_READ_ID_TYPE                 0x47

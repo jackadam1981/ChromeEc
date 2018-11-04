@@ -261,15 +261,25 @@ static struct pd_port_controller {
 
 static int rx_buf_is_full(int port)
 {
-	/* Buffer is full if the tail is 1 ahead of head */
+	/*
+	 * TODO: Refactor these to use the incrementing-counter idiom instead of
+	 * the wrapping-counter idiom to reclaim the last buffer entry.
+	 *
+	 * Buffer is full if the tail is 1 ahead of head.
+	 */
 	int diff = pd[port].rx_buf_tail - pd[port].rx_buf_head;
 	return (diff == 1) || (diff == -RX_BUFFER_SIZE);
 }
 
-static int rx_buf_is_empty(int port)
+int rx_buf_is_empty(int port)
 {
 	/* Buffer is empty if the head and tail are the same */
 	return pd[port].rx_buf_tail == pd[port].rx_buf_head;
+}
+
+void rx_buf_clear(int port)
+{
+	pd[port].rx_buf_tail = pd[port].rx_buf_head;
 }
 
 static void rx_buf_increment(int port, int *buf_ptr)
@@ -736,11 +746,11 @@ static int cc_voltage_to_status(int port, int cc_volt, int cc_sel)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	else if (pd[port].cc_pull == TYPEC_CC_RD) {
 		if (cc_volt >= TYPE_C_SRC_3000_THRESHOLD)
-			return TYPEC_CC_VOLT_SNK_3_0;
+			return TYPEC_CC_VOLT_RP_3_0;
 		else if (cc_volt >= TYPE_C_SRC_1500_THRESHOLD)
-			return TYPEC_CC_VOLT_SNK_1_5;
+			return TYPEC_CC_VOLT_RP_1_5;
 		else if (CC_RP(cc_volt))
-			return TYPEC_CC_VOLT_SNK_DEF;
+			return TYPEC_CC_VOLT_RP_DEF;
 		else
 			return TYPEC_CC_VOLT_OPEN;
 	}
@@ -884,7 +894,7 @@ void pd_task(void *u)
 
 void pd_rx_event(int port)
 {
-	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
+	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
 }
 
 int tcpc_alert_status(int port, int *alert)

@@ -38,6 +38,8 @@ GPIO_INT(EC_VOLUP_BTN_ODL,	PIN(7, 5), GPIO_INT_BOTH, button_interrupt)
 GPIO_INT(EC_VOLDN_BTN_ODL,	PIN(4, 0), GPIO_INT_BOTH, button_interrupt)
 
 GPIO_INT(BASE_SIXAXIS_INT_L,	PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, bmi160_interrupt)
+GPIO_INT(WFCAM_VSYNC,		PIN(0, 3), GPIO_INT_RISING , sync_interrupt)
+
 GPIO(LID_ACCEL_INT_L,		PIN(5, 0), GPIO_INPUT | GPIO_SEL_1P8V)
 
 /* Define PCH_SLP_S0_L after all interrupts if CONFIG_POWER_S0IX not defined. */
@@ -72,6 +74,20 @@ GPIO(EN_P3300_TRACKPAD_ODL,	PIN(3, 3), GPIO_ODR_HIGH)
 GPIO(EC_BATT_PRES_L, 	 PIN(E, 5), GPIO_INPUT)
 
 /*
+ * EC_RST_ODL acts as a wake source from PSL hibernate mode. However, it does
+ * not need to be an interrupt for normal EC operations. Thus, configure it as
+ * GPIO_INPUT with wake on low-to-high edge using GPIO_HIB_WAKE_HIGH so that PSL
+ * common code can configure PSL_IN correctly.
+ *
+ * Reason for choosing low-to-high edge for waking from hibernate is to avoid
+ * the double reset - one because of PSL_IN wake and other because of VCC1_RST
+ * being asserted. Also, it should be fine to have the EC in hibernate when H1
+ * or servo wants to hold the EC in reset since VCC1 will be down and so entire
+ * EC logic (except PSL) as well as AP will be in reset.
+ */
+GPIO(EC_RST_ODL,	PIN(0, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH)
+
+/*
  * PCH_PROCHOT_ODL is primarily for monitoring the PROCHOT# signal which is
  * normally driven by the PMIC. The EC can also drive this signal in the event
  * that the ambient or charger temperature sensors exceeds their thresholds.
@@ -99,7 +115,6 @@ GPIO(EN_USB_A0_5V,	 PIN(6, 7), GPIO_OUT_LOW)	/* Enable A0 5V Charging */
 GPIO(EN_USB_A1_5V,	 PIN(9, 6), GPIO_OUT_LOW)	/* Enable A1 5V Charging */
 GPIO(USB_A0_CHARGE_EN_L, PIN(A, 2), GPIO_OUT_HIGH)	/* Enable A0 1.5A Charging */
 GPIO(USB_A1_CHARGE_EN_L, PIN(A, 0), GPIO_OUT_HIGH)	/* Enable A1 1.5A Charging */
-/* TODO(b/112756630): octopus: add reset logic for C0 TCPC */
 GPIO(USB_C0_PD_RST,	 PIN(8, 3), GPIO_OUT_LOW)	/* C0 PD Reset */
 GPIO(USB_C0_BC12_VBUS_ON,   PIN(6, 3), GPIO_OUT_LOW)	/* C0 BC1.2 Power */
 GPIO(USB_C0_BC12_CHG_DET_L, PIN(9, 5), GPIO_INPUT)	/* C0 BC1.2 Detect */
@@ -120,8 +135,10 @@ GPIO(LED_3_L,		 PIN(D, 7), GPIO_OUT_HIGH)
 GPIO(KB_BL_PWR_EN, 	 PIN(6, 2), GPIO_OUT_LOW)
 
 /* Camera */
-GPIO(WFCAM_VSYNC,	PIN(0, 3), GPIO_INPUT) 	/* TP only */
 GPIO(CAM_SOC_EC_SYNC,	PIN(9, 4), GPIO_INPUT)
+
+/* Misc. */
+GPIO(CCD_MODE_ODL,	PIN(E, 3), GPIO_INPUT)
 
 /* Keyboard pins */
 ALTERNATE(PIN_MASK(3, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_INPUT)	/* KSI_00-01 */
@@ -141,4 +158,12 @@ ALTERNATE(PIN_MASK(D, 0x03), 0, MODULE_I2C, 0)		/* I2C3 */
 ALTERNATE(PIN_MASK(F, 0x0C), 0, MODULE_I2C, 0)		/* I2C4 */
 ALTERNATE(PIN_MASK(B, 0x0C), 0, MODULE_I2C, (GPIO_INPUT | GPIO_SEL_1P8V)) /* 1.8V I2C7 */
 ALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)		/* ADC0-1 */
+ALTERNATE(PIN_MASK(4, 0x02), 0, MODULE_ADC, 0)		/* ADC4 */
+ALTERNATE(PIN_MASK(F, 0x01), 0, MODULE_ADC, 0)		/* ADC9 */
 ALTERNATE(PIN_MASK(8, 0x01), 0, MODULE_PWM, 0)		/* PWM3: KB_BL_PWM */
+
+/* Power Switch Logic (PSL) inputs */
+ALTERNATE(PIN_MASK(D, 0x04), 0, MODULE_PMU, 0)		/* GPIOD2 = LID_OPEN */
+ALTERNATE(PIN_MASK(0, 0x07), 0, MODULE_PMU, 0)		/* GPIO00 = ACOK_OD,
+							   GPIO01 = MECH_PWR_BTN_ODL
+							   GPIO02 = EC_RST_ODL */

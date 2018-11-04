@@ -17,16 +17,16 @@
  */
 struct accel_orientation {
 	/* Rotation matrix to rotate positive 90 degrees around the hinge. */
-	matrix_3x3_t rot_hinge_90;
+	mat33_fp_t rot_hinge_90;
 
 	/*
 	 * Rotation matrix to rotate 180 degrees around the hinge. The value
 	 * here should be rot_hinge_90 ^ 2.
 	 */
-	matrix_3x3_t rot_hinge_180;
+	mat33_fp_t rot_hinge_180;
 
 	/* Vector pointing along hinge axis. */
-	vector_3_t hinge_axis;
+	intv3_t hinge_axis;
 };
 
 /* Link global structure for orientation. This must be defined in board.c. */

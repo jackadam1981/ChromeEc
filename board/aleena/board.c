@@ -14,10 +14,6 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
-#include "driver/accel_kionix.h"
-#include "driver/accel_kx022.h"
-#include "driver/accelgyro_bmi160.h"
-#include "driver/bc12/bq24392.h"
 #include "driver/led/lm3630a.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx74xx.h"
@@ -30,7 +26,6 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
-#include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -49,22 +44,6 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
-
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
-			!gpio_get_level(GPIO_USB_C0_PD_RST_L))
-		return;
-
-	if ((signal == GPIO_USB_C1_PD_INT_ODL) &&
-			!gpio_get_level(GPIO_USB_C1_PD_RST_L))
-		return;
-
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
-}
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static void anx74xx_cable_det_handler(void)
@@ -120,25 +99,11 @@ const struct pwm_t pwm_channels[] = {
 		.flags = 0,
 		.freq = 100,
 	},
-	[PWM_CH_LED1_AMBER] = {
-		.channel = 0,
-		.flags = (PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_ACTIVE_LOW
-			  | PWM_CONFIG_DSLEEP),
-		.freq = 100,
-	},
-	[PWM_CH_LED2_BLUE] =   {
-		.channel = 2,
-		.flags = (PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_ACTIVE_LOW
-			  | PWM_CONFIG_DSLEEP),
-		.freq = 100,
-	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 static void board_init(void)
 {
-	/* Enable Gyro interrupts */
-	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

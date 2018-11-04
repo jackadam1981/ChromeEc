@@ -13,6 +13,16 @@
  */
 
 /*
+ * By default, enable all console messages excepted HC, ACPI and event:
+ * The sensor stack is generating a lot of activity.
+ */
+#define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
+#define CONFIG_SUPPRESSED_HOST_COMMANDS \
+	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_USB_PD_DISCOVERY,\
+	EC_CMD_USB_PD_POWER_INFO, EC_CMD_PD_GET_LOG_ENTRY, \
+	EC_CMD_MOTION_SENSE_CMD, EC_CMD_GET_NEXT_EVENT
+
+/*
  * Variant EC defines. Pick one:
  * VARIANT_OCTOPUS_EC_NPCX796FB
  * VARIANT_OCTOPUS_EC_ITE8320
@@ -38,6 +48,9 @@
 	#define I2C_PORT_CHARGER	NPCX_I2C_PORT4_1
 	#define I2C_PORT_SENSOR		NPCX_I2C_PORT7_0
 	#define I2C_ADDR_EEPROM		0xA0
+
+	/* Enable PSL hibernate mode. */
+	#define CONFIG_HIBERNATE_PSL
 
 	/* EC variant determines USB-C variant */
 	#define VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
@@ -67,6 +80,7 @@
 /* Common EC defines */
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#define CONFIG_I2C_BUS_MAY_BE_UNPOWERED
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
@@ -75,6 +89,7 @@
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_PWM
+#define CONFIG_DPTF
 
 /* Port80 -- allow larger buffer for port80 messages */
 #undef CONFIG_PORT80_HISTORY_LEN
@@ -159,7 +174,6 @@
 	#define CONFIG_USB_PD_TCPM_ITE83XX	/* C0 & C1 TCPC: ITE EC */
 	#define CONFIG_USB_MUX_IT5205		/* C0 MUX: IT5205 */
 	#define CONFIG_USB_PD_TCPM_PS8751	/* C1 Mux: PS8751 */
-	#define CONFIG_USB_PD_TCPM_TCPCI_MUX_ONLY
 	#define CONFIG_USBC_PPC_SN5S330		/* C0 & C1 PPC: each SN5S330 */
 	#define CONFIG_USBC_PPC_VCONN
 #else
@@ -183,7 +197,7 @@
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_TCPCI
-#define CONFIG_BC12_DETECT_BQ24392
+#define CONFIG_BC12_DETECT_MAX14637
 #define CONFIG_CMD_PD_CONTROL
 #define CONFIG_CMD_PPC_DUMP
 
@@ -240,7 +254,23 @@
 #define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
 #define CONFIG_PWM_KBLIGHT
 
+/*******************************************************************************
+ * Sensor Config
+ */
+
+/* Common Sensor Defines */
+#define CONFIG_TABLET_MODE
+#define CONFIG_TABLET_SWITCH
+#define TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
+/*
+ * Slew rate on the PP1800_SENSOR load switch requires a short delay on startup.
+ */
+#undef  CONFIG_MOTION_SENSE_RESUME_DELAY_US
+#define CONFIG_MOTION_SENSE_RESUME_DELAY_US (10 * MSEC)
+
 #ifndef __ASSEMBLER__
+
+#include "gpio_signal.h"
 
 enum power_signal {
 #ifdef CONFIG_POWER_S0IX
@@ -264,6 +294,10 @@ void board_reset_pd_mcu(void);
 
 #ifdef VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS
 void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
+#endif
+
+#ifdef VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
+void tcpc_alert_event(enum gpio_signal signal);
 #endif
 
 #endif /* !__ASSEMBLER__ */

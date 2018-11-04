@@ -23,7 +23,6 @@ GPIO_INT(WP_L,			PIN(A, 1), GPIO_INT_BOTH,			switch_interrupt)
 GPIO_INT(VOLUME_DOWN_L,		PIN(7, 0), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
 GPIO_INT(VOLUME_UP_L,		PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
 GPIO_INT(USB_C0_CABLE_DET,	PIN(3, 7), GPIO_INT_RISING,			anx74xx_cable_det_interrupt)
-GPIO_INT(6AXIS_INT_L,		PIN(8, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V,	bmi160_interrupt)
 
 GPIO(EN_PWR_A,			PIN(E, 2), GPIO_OUT_LOW)			/* Enable Power */
 GPIO(EN_PP1800_SENSOR,		PIN(6, 7), GPIO_OUT_LOW)			/* Enable Power */
@@ -40,9 +39,6 @@ GPIO(CPU_PROCHOT,		PIN(3, 4), GPIO_INPUT | GPIO_SEL_1P8V)		/* PROCHOT to SOC */
 GPIO(APU_ALERT_L,		PIN(A, 2), GPIO_INPUT)				/* Alert to SOC */
 GPIO(3AXIS_INT_L,		PIN(5, 0), GPIO_INPUT | GPIO_SEL_1P8V)		/* 3 Axis Accel */
 GPIO(KB_BL_EN,			PIN(F, 2), GPIO_OUT_LOW)			/* Enable KB Backlight */
-
-/* We don't have 5V rail control but the BQ24392 driver expects the GPIO */
-UNIMPLEMENTED(EN_PP5000)
 
 /* I2C pins - these will be reconfigured for alternate function below */
 GPIO(I2C0_SCL,			PIN(B, 5), GPIO_INPUT)				/* EC_I2C_POWER_SCL */
@@ -88,6 +84,10 @@ GPIO(BOARD_VERSION3,		PIN(8, 0), GPIO_INPUT)
 GPIO(SKU_ID1,			PIN(F, 0), GPIO_INPUT)
 GPIO(SKU_ID2,			PIN(4, 1), GPIO_INPUT)
 
+/* LED */
+GPIO(BAT_LED_ORANGE_L,	 PIN(C, 3), GPIO_OUT_HIGH)				/* LED_1_L */
+GPIO(BAT_LED_BLUE_L,	 PIN(C, 4), GPIO_OUT_HIGH)				/* LED_2_L */
+
 /* Alternate functions GPIO definitions */
 /* Cr50 requires no pull-ups on UART pins. */
 ALTERNATE(PIN_MASK(6, 0x30), 0, MODULE_UART, 0)					/* UART from EC to Servo */
@@ -102,7 +102,6 @@ ALTERNATE(PIN_MASK(4, 0x02), 0, MODULE_ADC, 0)					/* ADC4 */
 ALTERNATE(PIN_MASK(F, 0x02), 0, MODULE_ADC, 0)					/* ADC8 */
 ALTERNATE(PIN_MASK(F, 0x01), 0, MODULE_ADC, 0)					/* ADC9 */
 ALTERNATE(PIN_MASK(B, 0x80), 0, MODULE_PWM, 0)					/* KB Backlight */
-ALTERNATE(PIN_MASK(C, 0x18), 0, MODULE_PWM, 0) 					/* LED 1 & 2 */
 
 /* Keyboard Pins */
 ALTERNATE(PIN_MASK(3, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_INPUT)		/* KSI_00-01 */

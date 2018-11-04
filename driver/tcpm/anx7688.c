@@ -132,19 +132,18 @@ static void anx7688_tcpc_alert(int port)
 
 	rv = tcpc_read16(port, TCPC_REG_ALERT, &alert);
 	/* process and clear alert status */
-	tcpci_tcpm_drv.tcpc_alert(port);
+	tcpci_tcpc_alert(port);
 
 	if (!rv && (alert & ANX7688_VENDOR_ALERT))
 		anx7688_update_hpd_enable(port);
 }
 
-static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
+static int anx7688_mux_set(int port, mux_state_t mux_state)
 {
 	int reg = 0;
 	int rv, polarity;
-	int port = i2c_addr; /* use port index in port_addr field */
 
-	rv = tcpc_read(port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
+	rv = mux_read(port, TCPC_REG_CONFIG_STD_OUTPUT, &reg);
 	if (rv != EC_SUCCESS)
 		return rv;
 
@@ -155,14 +154,14 @@ static int anx7688_mux_set(int i2c_addr, mux_state_t mux_state)
 		reg |= TCPC_REG_CONFIG_STD_OUTPUT_MUX_DP;
 
 	/* ANX7688 needs to set bit0 */
-	rv = tcpc_read(port, TCPC_REG_TCPC_CTRL, &polarity);
+	rv = mux_read(port, TCPC_REG_TCPC_CTRL, &polarity);
 	if (rv != EC_SUCCESS)
 		return rv;
 
 	/* copy the polarity from TCPC_CTRL[0], take care clear then set */
 	reg &= ~TCPC_REG_TCPC_CTRL_POLARITY(1);
 	reg |= TCPC_REG_TCPC_CTRL_POLARITY(polarity);
-	return tcpc_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
+	return mux_write(port, TCPC_REG_CONFIG_STD_OUTPUT, reg);
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
@@ -194,7 +193,7 @@ const struct tcpm_drv anx7688_tcpm_drv = {
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
-	.get_message		= &tcpci_tcpm_get_message,
+	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &tcpci_tcpm_transmit,
 	.tcpc_alert		= &anx7688_tcpc_alert,
 };

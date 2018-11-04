@@ -62,7 +62,7 @@
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_PD_RST_C0_L))
+	    gpio_get_level(GPIO_USB_PD_RST_C0))
 		return;
 	else if ((signal == GPIO_USB_C1_PD_INT_ODL) &&
 		 !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
@@ -174,12 +174,10 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_PS8751] = {
-		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_ANX7447] = {
-		.port_addr = USB_PD_PORT_ANX7447,
 		.driver = &anx7447_usb_mux_driver,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	}
@@ -205,10 +203,10 @@ const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 void board_reset_pd_mcu(void)
 {
 	/* Assert reset */
-	gpio_set_level(GPIO_USB_PD_RST_C0_L, 0);
+	gpio_set_level(GPIO_USB_PD_RST_C0, 1);
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 0);
 	msleep(1);
-	gpio_set_level(GPIO_USB_PD_RST_C0_L, 1);
+	gpio_set_level(GPIO_USB_PD_RST_C0, 0);
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
 	/* After TEST_R release, anx7447/3447 needs 2ms to finish eFuse
 	 * loading.
@@ -245,7 +243,7 @@ uint16_t tcpc_get_alert_status(void)
 	uint16_t status = 0;
 
 	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_PD_RST_C0_L))
+		if (!gpio_get_level(GPIO_USB_PD_RST_C0))
 			status |= PD_STATUS_TCPC_ALERT_0;
 	}
 
@@ -337,15 +335,6 @@ static void board_pmic_disable_slp_s0_vr_decay(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x34, 0x2a);
 
 	/*
-	 * V100ACNT:
-	 * Bits 7:6 (00) - Disable low power mode on SLP_S0# assertion
-	 * Bits 5:4 (01) - Nominal voltage 1.0V
-	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
-	 * Bits 1:0 (10) - VR set to AUTO operating mode
-	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x1a);
-
-	/*
 	 * V085ACNT:
 	 * Bits 7:6 (00) - Disable low power mode on SLP_S0# assertion
 	 * Bits 5:4 (11) - Nominal voltage 1.0V
@@ -376,15 +365,6 @@ static void board_pmic_enable_slp_s0_vr_decay(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x34, 0x6a);
 
 	/*
-	 * V100ACNT:
-	 * Bits 7:6 (01) - Enable low power mode on SLP_S0# assertion
-	 * Bits 5:4 (01) - Nominal voltage 1.0V
-	 * Bits 3:2 (10) - VR set to AUTO on SLP_S0# de-assertion
-	 * Bits 1:0 (10) - VR set to AUTO operating mode
-	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x37, 0x5a);
-
-	/*
 	 * V085ACNT:
 	 * Bits 7:6 (01) - Enable low power mode on SLP_S0# assertion
 	 * Bits 5:4 (11) - Nominal voltage 1.0V
@@ -409,8 +389,15 @@ static void board_pmic_init(void)
 	if (system_jumped_to_this_image())
 		return;
 
-	/* DISCHGCNT3 - enable 100 ohm discharge on V1.00A */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x04);
+	/*
+	 * DISCHGCNT2 - enable 100 ohm discharge on
+	 * V5A_DS3/V33A_DSW/V33A_PCH/V1.8A
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3d, 0x55);
+	/* DISCHGCNT3 - enable 100 ohm discharge on V1.8U_25U/V1.00A */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x44);
+	/* DISCHGCNT4 - enable 100 ohm discharge on v1.8S */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3f, 0x04);
 
 	board_pmic_disable_slp_s0_vr_decay();
 
@@ -563,13 +550,13 @@ static struct bmi160_drv_data_t g_bmi160_data;
 static struct accelgyro_saved_data_t g_bma255_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
-	{ FLOAT_TO_FP(-1), 0, 0 },
-	{ 0,  FLOAT_TO_FP(1), 0 },
+const mat33_fp_t base_standard_ref = {
+	{ FLOAT_TO_FP(1), 0, 0 },
+	{ 0,  FLOAT_TO_FP(-1), 0 },
 	{ 0, 0, FLOAT_TO_FP(-1) }
 };
 
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0, 0 },
 	{ 0,  FLOAT_TO_FP(1), 0 },
 	{ 0, 0, FLOAT_TO_FP(-1) }
@@ -674,6 +661,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESET, board_chipset_reset, HOOK_PRIO_DEFAULT);
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
+	gpio_set_level(GPIO_KB_BL_EN, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -681,5 +669,20 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
+	gpio_set_level(GPIO_KB_BL_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S5 -> S3 transition */
+static void board_chipset_startup(void)
+{
+	gpio_set_level(GPIO_EN_PP3300_TRACKPAD, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S3 -> S5 transition */
+static void board_chipset_shutdown(void)
+{
+	gpio_set_level(GPIO_EN_PP3300_TRACKPAD, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);

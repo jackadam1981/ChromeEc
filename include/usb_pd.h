@@ -38,7 +38,6 @@ enum pd_rx_errors {
 };
 
 /* Events for USB PD task */
-#define PD_EVENT_RX               (1<<2) /* Incoming packet event */
 #define PD_EVENT_TX               (1<<3) /* Outgoing packet event */
 #define PD_EVENT_CC               (1<<4) /* CC line change event */
 #define PD_EVENT_TCPC_RESET       (1<<5) /* TCPC has reset */
@@ -47,8 +46,15 @@ enum pd_rx_errors {
  * A task, other than the task owning the PD port, accessed the TCPC. The task
  * that owns the port does not send itself this event.
  */
-#define PD_EVENT_DEVICE_ACCESSED  (1<<7)
-#define PD_EVENT_DP_DISCONNECT    (1<<8) /* DisplayPort disconnect requested */
+#define PD_EVENT_DEVICE_ACCESSED    (1<<7)
+#define PD_EVENT_POWER_STATE_CHANGE (1<<8) /* Chipset power state changed */
+
+/* Ensure TCPC is out of low power mode before handling these events. */
+#define PD_EXIT_LOW_POWER_EVENT_MASK \
+	(PD_EVENT_CC | \
+	 PD_EVENT_UPDATE_DUAL_ROLE | \
+	 PD_EVENT_POWER_STATE_CHANGE | \
+	 TASK_EVENT_WAKE)
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
@@ -725,10 +731,15 @@ enum pd_states {
 #define PD_FLAGS_TS_DTS_PARTNER    (1 << 16)/* partner has rp/rp or rd/rd */
 /*
  * These PD_FLAGS_LPM* flags track the software state (PD_LPM_FLAGS_REQUESTED)
- * and hardware state (PD_LPM_FLAGS_ENGAGED) of the TCPC lower power mode.
+ * and hardware state (PD_LPM_FLAGS_ENGAGED) of the TCPC low power mode.
+ * PD_FLAGS_LPM_TRANSITION is set while the HW is transitioning into or out of
+ * low power (when PD_LPM_FLAGS_ENGAGED is changing).
  */
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 #define PD_FLAGS_LPM_REQUESTED     (1 << 17)/* Tracks SW LPM state */
 #define PD_FLAGS_LPM_ENGAGED       (1 << 18)/* Tracks HW LPM state */
+#define PD_FLAGS_LPM_TRANSITION    (1 << 19)/* Tracks HW LPM transition */
+#endif
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -973,6 +984,9 @@ enum pd_data_msg_type {
 
 /* --- Policy layer functions --- */
 
+/** Schedules the interrupt handler for the TCPC on a high priority task. */
+void schedule_deferred_pd_interrupt(int port);
+
 /* Request types for pd_build_request() */
 enum pd_request_type {
 	PD_REQUEST_VSAFE5V,
@@ -1030,6 +1044,18 @@ int pd_is_max_request_allowed(void);
  * @param port USB-C port number
  */
 void pd_device_accessed(int port);
+
+/**
+ * Prevents the TCPC from going back into low power mode. Invocations must be
+ * called in a pair from the same task, otherwise the TCPC will never re-enter
+ * low power mode.
+ *
+ * Note: This will not wake the device up if it is in LPM.
+ *
+ * @param port USB-C port number
+ * @param prevent 1 to prevent this port from entering LPM
+ */
+void pd_prevent_low_power_mode(int port, int prevent);
 
 /**
  * Returns true if this TCPC is in low power mode and a failed i2c transaction
@@ -1621,6 +1647,12 @@ int pd_rx_started(int port);
  * @param enable pass 0 to resume, anything else to suspend
  */
 void pd_set_suspend(int port, int enable);
+
+/**
+ * Resume the PD task for a port after a period of time has elapsed.
+ * @param port USB-C port number
+ */
+void pd_deferred_resume(int port);
 
 /**
  * Check if the port has been initialized and PD task has not been

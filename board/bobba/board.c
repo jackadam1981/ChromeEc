@@ -15,9 +15,9 @@
 #include "cros_board_info.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_bmi160.h"
-#include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/sync.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -44,17 +44,28 @@
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
-		return;
+#define USB_PD_PORT_ANX7447	0
+#define USB_PD_PORT_PS8751	1
 
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
-}
+static uint8_t sku_id;
+
+/*
+ * We have total 30 pins for keyboard connecter {-1, -1} mean
+ * the N/A pin that don't consider it and reserve index 0 area
+ * that we don't have pin 0.
+ */
+const int keyboard_factory_scan_pins[][2] = {
+		{-1, -1}, {0, 5}, {1, 1}, {1, 0}, {0, 6},
+		{0, 7}, {-1, -1}, {-1, -1}, {1, 4}, {1, 3},
+		{-1, -1}, {1, 6}, {1, 7}, {3, 1}, {2, 0},
+		{1, 5}, {2, 6}, {2, 7}, {2, 1}, {2, 4},
+		{2, 5}, {1, 2}, {2, 3}, {2, 2}, {3, 0},
+		{-1, -1}, {0, 4}, {-1, -1}, {8, 2}, {-1, -1},
+		{-1, -1},
+};
+
+const int keyboard_factory_scan_pins_used =
+			ARRAY_SIZE(keyboard_factory_scan_pins);
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -81,8 +92,23 @@ const struct adc_t adc_channels[] = {
 		"TEMP_AMB", NPCX_ADC_CH0, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 	[ADC_TEMP_SENSOR_CHARGER] = {
 		"TEMP_CHARGER", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
+	/* Vbus sensing (1/10 voltage divider). */
+	[ADC_VBUS_C0] = {
+		"VBUS_C0", NPCX_ADC_CH9, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
+	[ADC_VBUS_C1] = {
+		"VBUS_C1", NPCX_ADC_CH4, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+enum adc_channel board_get_vbus_adc(int port)
+{
+	if (port == USB_PD_PORT_ANX7447)
+		return  ADC_VBUS_C0;
+	if (port == USB_PD_PORT_PS8751)
+		return  ADC_VBUS_C1;
+	CPRINTSUSB("Unknown vbus adc port id: %d", port);
+	return ADC_VBUS_C0;
+}
 
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
@@ -109,10 +135,26 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ FLOAT_TO_FP(1), 0,  0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
+};
+
+/*
+ * Sparky360 SKU ID 26 has AR Cam, and move base accel/gryo to AR Cam board.
+ * AR Cam board has about -16° bias with motherboard through Y axis.
+ * Rotation matrix with -16° through Y axis:
+ *     | cos(-16°)      0       sin(-16°)|
+ * R = |    0           1           0    |
+ *     |-sin(-16°)      0       cos(-16°)|
+ *
+ * base_ar_cam_ref = R * base_standard_ref
+ */
+const mat33_fp_t base_ar_cam_ref = {
+	{ 0, FLOAT_TO_FP(-0.96126), FLOAT_TO_FP(0.27564)},
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(0.27564), FLOAT_TO_FP(0.96126)}
 };
 
 /* sensor private data */
@@ -147,7 +189,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 	[BASE_ACCEL] = {
 	 .name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -175,7 +217,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 	[BASE_GYRO] = {
 	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -189,23 +231,53 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
+	[VSYNC] = {
+	.name = "Camera VSYNC",
+	.active_mask = SENSOR_ACTIVE_S0,
+	.chip = MOTIONSENSE_CHIP_GPIO,
+	.type = MOTIONSENSE_TYPE_SYNC,
+	.location = MOTIONSENSE_LOC_CAMERA,
+	.drv = &sync_drv,
+	.default_range = 0,
+	.min_frequency = 0,
+	.max_frequency = 1,
+	},
 };
 
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
-static void setup_motion_sensors(uint8_t sku_id)
+static int board_is_convertible(void)
 {
-	/* SKU ID of Bobba360 and Sparky360: 9, 25, 26 */
-	if (sku_id != 9 && sku_id != 25 && sku_id != 26) {
-		/* Clamshell Bobba has no motion sensors. */
+	/* SKU ID of Bobba360, Sparky360, & unprovisioned: 9, 10, 11, 12, 25, 26, 255 */
+	return sku_id == 9 || sku_id == 10 || sku_id == 11 || sku_id == 12
+		|| sku_id == 25 || sku_id == 26 || sku_id == 255;
+}
+
+static int board_with_ar_cam(void)
+{
+	/* SKU ID of Sparky360 with AR Cam: 26 */
+	return sku_id == 26;
+}
+
+static void board_update_sensor_config_from_sku(void)
+{
+	if (board_is_convertible()) {
+		motion_sensor_count = ARRAY_SIZE(motion_sensors);
+	} else {
 		motion_sensor_count = 0;
+		tablet_disable_switch();
+	}
+
+	/* Sparky360 with AR Cam: base accel/gyro sensor is on AR Cam board. */
+	if (board_with_ar_cam()) {
+		motion_sensors[BASE_ACCEL].rot_standard_ref = &base_ar_cam_ref;
+		motion_sensors[BASE_GYRO].rot_standard_ref = &base_ar_cam_ref;
 	}
 }
 
 /* Read CBI from i2c eeprom and initialize variables for board variants */
 static void cbi_init(void)
 {
-	uint8_t sku_id;
 	uint32_t val;
 
 	if (cbi_get_sku_id(&val) != EC_SUCCESS || val > UINT8_MAX)
@@ -213,7 +285,7 @@ static void cbi_init(void)
 	sku_id = val;
 	CPRINTSUSB("SKU: %d", sku_id);
 
-	setup_motion_sensors(sku_id);
+	board_update_sensor_config_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -222,6 +294,9 @@ static void board_init(void)
 {
 	/* Enable Base Accel interrupt */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+
+	/* Enable interrupt for the camera vsync. */
+	gpio_enable_interrupt(GPIO_WFCAM_VSYNC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -250,7 +325,7 @@ void lid_angle_peripheral_enable(int enable)
 	 */
 	if (tablet_get_mode())
 		enable = 0;
-
-	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+	if (board_is_convertible())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif

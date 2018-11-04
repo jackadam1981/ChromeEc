@@ -18,7 +18,9 @@
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
+/* Work around Grunt KSI03 HW bug and rework (b/79758966) */
+#define CONFIG_KEYBOARD_REFRESH_ROW3
+#define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI3
 
 /* Power and battery LEDs */
 #define CONFIG_LED_COMMON
@@ -40,6 +42,26 @@
 
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3630A
+
+/* Motion sensing drivers */
+#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCEL_KX022
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+#define CONFIG_TABLET_MODE
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_TABLET_MODE
+#define CONFIG_LID_ANGLE_INVALID_CHECK
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+/*
+ * Slew rate on the PP1800_SENSOR load switch requires a short delay on startup.
+ */
+#undef  CONFIG_MOTION_SENSE_RESUME_DELAY_US
+#define CONFIG_MOTION_SENSE_RESUME_DELAY_US (10 * MSEC)
 
 #ifndef __ASSEMBLER__
 

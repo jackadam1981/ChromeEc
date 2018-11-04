@@ -249,7 +249,7 @@ static int rollback_update(int32_t next_min_version,
 	struct rollback_data *data = (struct rollback_data *)block;
 	BUILD_ASSERT(sizeof(block) >= sizeof(*data));
 	uintptr_t offset;
-	int region;
+	int region, ret;
 
 	if (flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_NOW)
 		return EC_ERROR_ACCESS_DENIED;
@@ -305,10 +305,11 @@ static int rollback_update(int32_t next_min_version,
 	if (flash_erase(offset, CONFIG_FLASH_ERASE_SIZE))
 		return EC_ERROR_UNKNOWN;
 
-	if (flash_write(offset, sizeof(block), block))
-		return EC_ERROR_UNKNOWN;
+	unlock_rollback();
+	ret = flash_write(offset, sizeof(block), block);
+	lock_rollback();
 
-	return EC_SUCCESS;
+	return ret;
 }
 
 int rollback_update_version(int32_t next_min_version)
@@ -459,3 +460,26 @@ static int command_rollback_info(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(rollbackinfo, command_rollback_info,
 			     NULL,
 			     "Print rollback info");
+
+static int host_command_rollback_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_rollback_info *r = args->response;
+	int min_region;
+	struct rollback_data data;
+
+	min_region = get_latest_rollback(&data);
+
+	if (min_region < 0)
+		return EC_RES_UNAVAILABLE;
+
+	r->id = data.id;
+	r->rollback_min_version = data.rollback_min_version;
+	r->rw_rollback_version = system_get_rollback_version(SYSTEM_IMAGE_RW);
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_ROLLBACK_INFO,
+		     host_command_rollback_info,
+		     EC_VER_MASK(0));

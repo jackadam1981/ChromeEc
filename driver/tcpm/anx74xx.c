@@ -7,6 +7,7 @@
 
 /* Type-C port manager for Analogix's anx74xx chips */
 
+#include "console.h"
 #include "anx74xx.h"
 #include "task.h"
 #include "tcpci.h"
@@ -22,6 +23,9 @@
 #error "ANX74xx is using part of standard TCPCI control"
 #error "Please upgrade your board configuration"
 #endif
+
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 struct anx_state {
 	int	polarity;
@@ -141,27 +145,36 @@ static void anx74xx_set_power_mode(int port, int mode)
 		/* Update cable cable det signal */
 		anx74xx_update_cable_det(port, mode);
 		/*
-		 * The final piece of entering low power mode is setting the
-		 * RESET_L signal low, which is done via
-		 * anx74xx_enter_low_power_mode which is called at least 10ms
-		 * after setting cable_det low (above).
+		 * Delay between setting cable_det low and setting RESET_L low
+		 * as recommended the ANX3429 datasheet.
 		 */
+		msleep(1);
+		/* Put chip into standby mode */
+		board_set_tcpc_power_mode(port, mode);
 	}
 }
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static int anx74xx_enter_low_power_mode(int port)
+#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
+	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
+
+static int anx74xx_tcpc_drp_toggle(int port)
 {
 	/*
-	 * The delay between setting cable_det low (in anx74xx_set_power_mode)
-	 * and setting RESET_L low in (board_set_tcpc_power_mode) is at least
-	 * 1 ms. This should be taken care of by the PD_LM_DEBOUCE_US delay of
-	 * 10ms, but we want to protect against any future tweaks of that value.
+	 * The ANX3429 always auto-toggles when in low power mode. Since this is
+	 * not configurable, there is nothing to do here. DRP auto-toggle will
+	 * happen once low power mode is set via anx74xx_enter_low_power_mode().
+	 * Note: this means the ANX3429 auto-toggles in PD_DRP_FORCE_SINK mode,
+	 * which is undesirable (b/72007056).
 	 */
-	msleep(1);
-	board_set_tcpc_power_mode(port, ANX74XX_STANDBY_MODE);
 	return EC_SUCCESS;
 }
+
+static int anx74xx_enter_low_power_mode(int port)
+{
+	anx74xx_set_power_mode(port, ANX74XX_STANDBY_MODE);
+	return EC_SUCCESS;
+}
+
 #endif
 
 void anx74xx_tcpc_set_vbus(int port, int enable)
@@ -200,12 +213,12 @@ void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 {
 	int reg;
 
-	tcpc_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
+	mux_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
 	if (hpd_lvl)
 		reg |= ANX74XX_REG_HPD_OUT_DATA;
 	else
 		reg &= ~ANX74XX_REG_HPD_OUT_DATA;
-	tcpc_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+	mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
 
 	if (hpd_irq) {
 		uint64_t now = get_time().val;
@@ -213,12 +226,12 @@ void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 		if (now < hpd_deadline[port])
 			usleep(hpd_deadline[port] - now);
 
-		tcpc_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
+		mux_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
 		reg &= ~ANX74XX_REG_HPD_OUT_DATA;
-		tcpc_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+		mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
 		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
 		reg |= ANX74XX_REG_HPD_OUT_DATA;
-		tcpc_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+		mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
 	}
 	/* enforce 2-ms delay between HPD pulses */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -234,10 +247,8 @@ void anx74xx_tcpc_clear_hpd_status(int port)
 }
 
 #ifdef CONFIG_USB_PD_TCPM_MUX
-static int anx74xx_tcpm_mux_init(int i2c_addr)
+static int anx74xx_tcpm_mux_init(int port)
 {
-	int port = i2c_addr;
-
 	/* Nothing to do here, ANX initializes its muxes
 	 * as (MUX_USB_ENABLED | MUX_DP_ENABLED)
 	 */
@@ -250,9 +261,9 @@ static int anx74xx_tcpm_mux_enter_safe_mode(int port)
 {
 	int reg;
 
-	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg |
+	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg |
 		       ANX74XX_REG_MODE_TRANS))
 		return EC_ERROR_UNKNOWN;
 
@@ -264,9 +275,9 @@ static int anx74xx_tcpm_mux_exit_safe_mode(int port)
 {
 	int reg;
 
-	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg &
+	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg &
 		       ~ANX74XX_REG_MODE_TRANS))
 		return EC_ERROR_UNKNOWN;
 
@@ -290,18 +301,18 @@ static int anx74xx_tcpm_mux_exit(int port)
 		return EC_ERROR_UNKNOWN;
 
 	/* Disconnect aux from sbu */
-	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg & 0xf))
+	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg & 0xf))
 		return EC_ERROR_UNKNOWN;
 
 	/* Clear Bit[7:0] R_SWITCH */
-	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
+	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
 		return EC_ERROR_UNKNOWN;
 	/* Clear Bit[7:4] R_SWITCH_H */
-	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg))
+	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg & 0x0f))
+	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg & 0x0f))
 		return EC_ERROR_UNKNOWN;
 
 	/* Exit safe mode */
@@ -324,7 +335,7 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 	 * about setting the correct value for the upper 4 bits of analog_ctrl_2
 	 * here.
 	 */
-	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
 
 	/* Assume aux_p/n lines are not connected */
@@ -338,7 +349,7 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 			reg |= ANX74XX_REG_AUX_SWAP_SET_CC1;
 	}
 	/* Write new aux <-> sbu settings */
-	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
+	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
 		return EC_ERROR_UNKNOWN;
 
 	return EC_SUCCESS;
@@ -356,7 +367,7 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 		return anx74xx_tcpm_mux_exit(port);
 	}
 
-	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg);
+	rv = mux_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 	reg &= 0x0f;
@@ -394,9 +405,9 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 		return EC_ERROR_UNKNOWN;
 
 	/* Write updated pin assignment */
-	rv = tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_1, pin_cfg);
+	rv = mux_write(port, ANX74XX_REG_ANALOG_CTRL_1, pin_cfg);
 	/* Write Rswitch config bits */
-	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg);
+	rv |= mux_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
@@ -415,10 +426,8 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 }
 
 /* current mux state  */
-static int anx74xx_tcpm_mux_get(int i2c_addr, mux_state_t *mux_state)
+static int anx74xx_tcpm_mux_get(int port, mux_state_t *mux_state)
 {
-	int port = i2c_addr;
-
 	*mux_state = anx[port].mux_state;
 
 	return EC_SUCCESS;
@@ -578,15 +587,15 @@ static int anx74xx_check_cc_type(int cc_reg)
 		break;
 
 	case BIT_VALUE_OF_SNK_CC_DEFAULT:
-		cc = TYPEC_CC_VOLT_SNK_DEF;
+		cc = TYPEC_CC_VOLT_RP_DEF;
 		break;
 
 	case BIT_VALUE_OF_SNK_CC_1_P_5:
-		cc = TYPEC_CC_VOLT_SNK_1_5;
+		cc = TYPEC_CC_VOLT_RP_1_5;
 		break;
 
 	case BIT_VALUE_OF_SNK_CC_3_P_0:
-		cc = TYPEC_CC_VOLT_SNK_3_0;
+		cc = TYPEC_CC_VOLT_RP_3_0;
 		break;
 
 	default:
@@ -714,35 +723,6 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
-#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
-	defined(CONFIG_USB_PD_TCPC_LOW_POWER)
-static void anx74xx_handle_power_mode(int port, int mode)
-{
-	if (mode == ANX74XX_STANDBY_MODE) {
-		anx74xx_set_power_mode(port, mode);
-	} else if (anx[port].prev_mode != ANX74XX_NORMAL_MODE) {
-		/*
-		 * TODO: Interrupt high follows CC line hence ignore multiple
-		 * interrupts.
-		 */
-		anx74xx_tcpm_init(port);
-	}
-}
-
-static int anx74xx_tcpc_drp_toggle(int port, int enable)
-{
-	/*
-	 * When using low power mode, this function is an entry to point to
-	 * bring the ANX3429 in to or out of standby mode. DRP toggle is
-	 * associated with the chip being in standby mode.
-	 */
-	anx74xx_handle_power_mode(port, enable ? ANX74XX_STANDBY_MODE :
-				  ANX74XX_NORMAL_MODE);
-
-	return EC_SUCCESS;
-}
-#endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE && CONFIG_USB_PD_TCPC_LOW_POWER */
-
 static int anx74xx_tcpm_set_polarity(int port, int polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
@@ -764,11 +744,6 @@ static int anx74xx_tcpm_set_polarity(int port, int polarity)
 	anx74xx_tcpm_mux_set(port, mux_state);
 #endif
 	return rv;
-}
-
-int anx74xx_tcpc_get_fw_version(int port, int *version)
-{
-	return tcpc_read(port, ANX74XX_REG_FW_VERSION, version);
 }
 
 static int anx74xx_tcpm_set_vconn(int port, int enable)
@@ -832,7 +807,7 @@ static int anx74xx_tcpm_get_vbus_level(int port)
 }
 #endif
 
-static int anx74xx_tcpm_get_message(int port, uint32_t *payload, int *head)
+static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
 	int reg = 0, rv = EC_SUCCESS;
 	int len = 0;
@@ -914,37 +889,64 @@ static int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,
 	return ret;
 }
 
+/*
+ * Don't let the TCPC try to pull from the RX buffer forever. We typical only
+ * have 1 or 2 messages waiting.
+ */
+#define MAX_ALLOW_FAILED_RX_READS 10
+
 void anx74xx_tcpc_alert(int port)
 {
 	int reg;
+	int failed_attempts;
 
 	/* Clear soft irq bit */
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_3,
-			 ANX74XX_REG_CLEAR_SOFT_IRQ);
+		   ANX74XX_REG_CLEAR_SOFT_IRQ);
 
-	if (tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg))
-		return;
+	/* Read main alert register for pending alerts */
+	reg = 0;
+	tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg);
 
-	/* Don't clear msg received bit, until read it is by TCPM */
-	tcpc_write(port, ANX74XX_REG_RECVD_MSG_INT, (reg & 0xFE));
+	/* Prioritize TX completion because PD state machine is waiting */
+	if (reg & ANX74XX_REG_IRQ_GOOD_CRC_INT)
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
 
-	if (reg & ANX74XX_REG_IRQ_CC_MSG_INT)
-		/* Set a PD_EVENT_RX */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX, 0);
+	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT)
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
+
+	/* Pull all RX messages from TCPC into EC memory */
+	failed_attempts = 0;
+	while (reg & ANX74XX_REG_IRQ_CC_MSG_INT) {
+		if (tcpm_enqueue_message(port))
+			++failed_attempts;
+		if (tcpc_read(port, ANX74XX_REG_IRQ_SOURCE_RECV_MSG, &reg))
+			++failed_attempts;
+
+		/* Ensure we don't loop endlessly */
+		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
+			CPRINTF("C%d Cannot consume RX buffer after %d failed "
+				"attempts!", port, failed_attempts);
+			/*
+			 * The port is in a bad state, we don't want to consume
+			 * all EC resources so suspend the port for a little
+			 * while.
+			 */
+			pd_set_suspend(port, 1);
+			pd_deferred_resume(port);
+			return;
+		}
+	}
+
+	/* Clear all pending alerts */
+	tcpc_write(port, ANX74XX_REG_RECVD_MSG_INT, reg);
 
 	if (reg & ANX74XX_REG_IRQ_CC_STATUS_INT)
 		/* CC status changed, wake task */
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 
-	if (reg & ANX74XX_REG_IRQ_GOOD_CRC_INT)
-		/* Inform PD about this TX success */
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
-
-	if (reg & ANX74XX_REG_IRQ_TX_FAIL_INT)
-		/* let PD does not wait for this */
-		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
-
-	/* Read and Clear register1 */
+	/* Read and clear extended alert register 1 */
+	reg = 0;
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, reg);
 
@@ -953,7 +955,8 @@ void anx74xx_tcpc_alert(int port)
 		/* ANX hardware clears the request bit */
 		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
 
-	/* Read and Clear TCPC Alert register2 */
+	/* Read and clear TCPC extended alert register 2 */
+	reg = 0;
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, reg);
 
@@ -1036,6 +1039,37 @@ static int anx74xx_tcpm_init(int port)
 	return EC_SUCCESS;
 }
 
+static int anx74xx_get_chip_info(int port, int renew,
+			struct ec_response_pd_chip_info_v1 **chip_info)
+{
+	int rv = tcpci_get_chip_info(port, renew, chip_info);
+	int val;
+
+	if (rv)
+		return rv;
+
+	if ((*chip_info)->fw_version_number == 0 ||
+		(*chip_info)->fw_version_number == -1 || renew) {
+		rv = tcpc_read(port, ANX74XX_REG_FW_VERSION, &val);
+
+		if (rv)
+			return rv;
+
+		(*chip_info)->fw_version_number = val;
+	}
+
+#ifdef CONFIG_USB_PD_TCPM_ANX3429
+	/*
+	 * Min firmware version of ANX3429 to ensure that false SOP' detection
+	 * doesn't occur for e-marked cables. See b/116255749#comment8 and
+	 * b/64752060#comment11
+	 */
+	(*chip_info)->min_req_fw_version_number = 0x16;
+#endif
+
+	return rv;
+}
+
 /*
  * Dissociate from the TCPC.
  */
@@ -1058,18 +1092,16 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.set_vconn		= &anx74xx_tcpm_set_vconn,
 	.set_msg_header		= &anx74xx_tcpm_set_msg_header,
 	.set_rx_enable		= &anx74xx_tcpm_set_rx_enable,
-	.get_message		= &anx74xx_tcpm_get_message,
+	.get_message_raw	= &anx74xx_tcpm_get_message_raw,
 	.transmit		= &anx74xx_tcpm_transmit,
 	.tcpc_alert		= &anx74xx_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &anx74xx_tcpc_discharge_vbus,
 #endif
-	.get_chip_info		= &tcpci_get_chip_info,
+	.get_chip_info		= &anx74xx_get_chip_info,
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
 		defined(CONFIG_USB_PD_TCPC_LOW_POWER)
 	.drp_toggle		= &anx74xx_tcpc_drp_toggle,
-#endif
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &anx74xx_enter_low_power_mode,
 #endif
 };

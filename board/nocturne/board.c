@@ -26,6 +26,8 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "lpc.h"
+#include "mkbp_event.h"
 #include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
@@ -159,7 +161,7 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 };
 
 /* Matrix to rotate accel/gyro into standard reference frame. */
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ 0, FLOAT_TO_FP(1),  0},
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0,  0, FLOAT_TO_FP(1)}
@@ -300,16 +302,13 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
-/* The port_addr members are PD port numbers, not I2C port numbers. */
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 
 	{
-		.port_addr = 1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
@@ -391,6 +390,26 @@ void board_hibernate(void)
 	/* Wait for power to be cut. */
 	while (1)
 		;
+}
+
+static int mkbp_uses_gpio(void)
+{
+	return board_get_version() >= 2;
+}
+
+void mkbp_set_host_active(int active)
+{
+	if (mkbp_uses_gpio())
+		mkbp_set_host_active_via_gpio(active);
+
+	/*
+	 * Always send the host event for compatibility.
+	 * On board versions 2 and newer, the firmware is configured
+	 * to not actually trigger an SCI on MKBP events. This means that
+	 * the EC can send host event notifications without concern for the
+	 * board version and expect the right thing to happen.
+	 */
+	mkbp_set_host_active_via_event(active);
 }
 
 static void board_init(void)

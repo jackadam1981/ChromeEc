@@ -8,10 +8,14 @@
 #include "charge_state_v2.h"
 #include "chipset.h"
 #include "console.h"
+#include "driver/bc12/max14637.h"
+#include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
+#include "driver/tcpm/tusb422.h"
 #include "espi.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -25,6 +29,8 @@
 #include "util.h"
 
 #define USB_PD_PORT_ITE_0	0
+#define USB_PD_PORT_ITE_1	1
+#define USB_PD_PORT_TUSB422_2	2
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
@@ -162,6 +168,19 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.drv = &it83xx_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
+
+	[USB_PD_PORT_ITE_1] = {
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
+
+	[USB_PD_PORT_TUSB422_2] = {
+		.i2c_host_port = I2C_PORT_USBC1C2,
+		.i2c_slave_addr = TUSB422_I2C_ADDR,
+		.drv = &tusb422_tcpm_drv,
+		.pol = TCPC_ALERT_ACTIVE_LOW,
+	},
 };
 
 /******************************************************************************/
@@ -172,14 +191,56 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 		.i2c_addr = SN5S330_ADDR0,
 		.drv = &sn5s330_drv
 	},
+
+	[USB_PD_PORT_ITE_1] = {
+		.i2c_port = I2C_PORT_USBC1C2,
+		.i2c_addr = SYV682X_ADDR0,
+		.drv = &syv682x_drv
+	},
+
+	[USB_PD_PORT_TUSB422_2] = {
+		.i2c_port = I2C_PORT_USBC1C2,
+		.i2c_addr = NX20P3481_ADDR2,
+		.drv = &nx20p348x_drv,
+	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
-	{
+	[USB_PD_PORT_ITE_0] = {
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+	},
+
+	[USB_PD_PORT_ITE_1] = {
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+	},
+
+	[USB_PD_PORT_TUSB422_2] = {
 		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
+	},
+};
+
+/******************************************************************************/
+/* BC 1.2 chip Configuration */
+const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_COUNT] = {
+	{
+		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON_ODL,
+		.chg_det_pin = GPIO_USB_C0_BC12_CHG_MAX,
+		.flags = MAX14637_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON_ODL,
+		.chg_det_pin = GPIO_USB_C1_BC12_CHG_MAX,
+		.flags = MAX14637_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+	{
+		.chip_enable_pin = GPIO_USB_C2_BC12_VBUS_ON_ODL,
+		.chg_det_pin = GPIO_USB_C2_BC12_CHG_MAX,
+		.flags = MAX14637_FLAGS_ENABLE_ACTIVE_LOW,
 	},
 };
 
@@ -189,18 +250,28 @@ void baseboard_tcpc_init(void)
 {
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_TCPPC_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C2_TCPPC_INT_ODL);
+
+	/* Enable TCPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C2_TCPC_INT_ODL);
+
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 uint16_t tcpc_get_alert_status(void)
 {
+	uint16_t status = 0;
 	/*
 	 * Since C0/C1 TCPC are embedded within EC, we don't need the PDCMD
 	 * tasks.The (embedded) TCPC status since chip driver code will
 	 * handles its own interrupts and forward the correct events to
 	 * the PD_C0 task. See it83xx/intc.c
 	 */
-	return 0;
+
+	if (!gpio_get_level(GPIO_USB_C2_TCPC_INT_ODL))
+		status = PD_STATUS_TCPC_ALERT_2;
+
+	return status;
 }
 
 /**
@@ -235,7 +306,6 @@ int board_set_active_charge_port(int port)
 
 	if (!is_valid_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
-
 
 	if (port == CHARGE_PORT_NONE) {
 		CPRINTSUSB("Disabling all charger ports");

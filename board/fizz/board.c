@@ -201,17 +201,15 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 			TCPC_ALERT_ACTIVE_LOW},
 };
 
-static int ps8751_tune_mux(const struct usb_mux *mux)
+static int ps8751_tune_mux(int port)
 {
 	/* 0x98 sets lower EQ of DP port (4.5db) */
-	i2c_write8(I2C_PORT_TCPC0, I2C_ADDR_TCPC0,
-			   PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+	mux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 	return EC_SUCCESS;
 }
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		.board_init = &ps8751_tune_mux,
@@ -276,17 +274,17 @@ uint16_t tcpc_get_alert_status(void)
 }
 
 /*
+ * TMP431 has one local and one remote sensor.
+ *
  * Temperature sensors data; must be in same order as enum temp_sensor_id.
  * Sensor index and name must match those present in coreboot:
  *     src/mainboard/google/${board}/acpi/dptf.asl
  */
 const struct temp_sensor_t temp_sensors[] = {
-	{"TMP432_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP431_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
 			TMP432_IDX_LOCAL, 4},
-	{"TMP432_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP431_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
 			TMP432_IDX_REMOTE1, 4},
-	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-			TMP432_IDX_REMOTE2, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -300,9 +298,8 @@ struct ec_thermal_config thermal_params[] = {
 	 * fan_off, fan_max
 	 */
 	{{0, C_TO_K(80), C_TO_K(81)}, {0, C_TO_K(78), 0},
-		C_TO_K(4), C_TO_K(76)},	/* TMP432_Internal */
-	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
-	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
+		C_TO_K(4), C_TO_K(76)},	/* TMP431_Internal */
+	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP431_Sensor_1 */
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
@@ -750,13 +747,12 @@ static void setup_bj(void)
 static void board_charge_manager_init(void)
 {
 	enum charge_port port;
-	struct charge_port_info cpi = { 0 };
 	int i, j;
 
 	/* Initialize all charge suppliers to 0 */
 	for (i = 0; i < CHARGE_PORT_COUNT; i++) {
 		for (j = 0; j < CHARGE_SUPPLIER_COUNT; j++)
-			charge_manager_update_charge(j, i, &cpi);
+			charge_manager_update_charge(j, i, NULL);
 	}
 
 	port = gpio_get_level(GPIO_ADP_IN_L) ?

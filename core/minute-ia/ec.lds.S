@@ -128,6 +128,10 @@ SECTIONS
 		KEEP(*(.rodata.HOOK_SECOND))
 		__hooks_second_end = .;
 
+                __hooks_usb_pd_disconnect = .;
+                KEEP(*(.rodata.HOOK_USB_PD_DISCONNECT))
+                __hooks_usb_pd_disconnect_end = .;
+
 		__deferred_funcs = .;
 		KEEP(*(.rodata.deferred))
 		__deferred_funcs_end = .;
@@ -151,10 +155,12 @@ SECTIONS
 		*(.bss*);
 		*(COMMON*);
 
-		# Reserve space for deferred function firing times.  Each time
-		# is a uint64_t, each func is a 32-bit pointer, thus the scaling
-		# factor of two.  The 8 byte alignment of uint64_t is required
-		# by the ABI.
+		/*
+		 * Reserve space for deferred function firing times.
+		 * Each time is a uint64_t, each func is a 32-bit
+		 * pointer, thus the scaling factor of two.  The 8
+		 * byte alignment of uint64_t is required by the ABI.
+		 */
 
 		 . = ALIGN(8);
 		 __deferred_until = .;
@@ -163,9 +169,20 @@ SECTIONS
 
 		 __bss_end = .;
 		__bss_size_words = (__bss_end - __bss_start) / 4;
+
+        	/*
+		 * Shared memory buffer must be at the end of
+        	 * preallocated RAM, so it can expand to use all the
+        	 * remaining RAM.
+		 */
+        	__shared_mem_buf = .;
 	}
 
-	#TODO: Adjust __image_size to proper value for core minute-ia later
+	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
+			(CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
+		"Not enough space for shared memory.")
+
+	/* TODO: Adjust __image_size to proper value for core minute-ia later */
 	__image_size = . - CONFIG_ISH_BOOT_START;
 
 	def_irq_low  = ABSOLUTE(default_int_handler) & 0xFFFF;

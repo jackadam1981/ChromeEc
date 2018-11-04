@@ -413,13 +413,12 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
  * results taking up to 10ms before I2C communication with PS8751
  * is stable. Don't know how to fix this.
  */
-static int ps8751_tune_mux(const struct usb_mux *mux)
+static int ps8751_tune_mux(int port)
 {
 	int rv;
 
 	/* 0x98 sets lower EQ of DP port (4.5db) */
-	rv = i2c_write8(MCHP_I2C_PORT2, 0x16,
-		PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+	rv = mux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 
 	/* TCPCI spec. delay msleep(6); */
 
@@ -433,12 +432,10 @@ static int ps8751_tune_mux(const struct usb_mux *mux)
  */
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
-		.port_addr = USB_PD_PORT_ANX74XX,
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
 	[USB_PD_PORT_PS8751] = {
-		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		.board_init = &ps8751_tune_mux,
@@ -963,13 +960,13 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ FLOAT_TO_FP(1), 0,  0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
 };
 
-const matrix_3x3_t mag_standard_ref = {
+const mat33_fp_t mag_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0,  FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}

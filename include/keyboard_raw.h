@@ -11,14 +11,16 @@
 #ifndef __CROS_EC_KEYBOARD_RAW_H
 #define __CROS_EC_KEYBOARD_RAW_H
 
+#include "assert.h"
 #include "common.h"
 #include "gpio.h"
+#include "keyboard_config.h"
 
 /* Column values for keyboard_raw_drive_column() */
 enum keyboard_column_index {
 	KEYBOARD_COLUMN_ALL = -2,  /* Drive all columns */
 	KEYBOARD_COLUMN_NONE = -1, /* Drive no columns (tri-state all) */
-	/* 0 ~ KEYBOARD_COLS-1 for the corresponding column */
+	/* 0 ~ KEYBOARD_COLS_MAX-1 for the corresponding column */
 };
 
 /**
@@ -77,5 +79,22 @@ static inline void keyboard_raw_gpio_interrupt(enum gpio_signal signal) { }
  * @return non-zero if keyboard pins are shorted.
  */
 int keyboard_factory_test_scan(void);
+
+static inline int keyboard_raw_get_cols(void) {
+	return keyboard_cols;
+}
+
+static inline void keyboard_raw_set_cols(int cols) {
+#ifdef CONFIG_KEYBOARD_LANGUAGE_ID
+	/* Keyboard ID is probably encoded right after the last column. Scanner
+	 * would read keyboard ID if the column size is decreased. */
+	assert(cols == KEYBOARD_COLS_MAX);
+#else
+	/* We can only decrease the column size. You have to assume a larger
+	 * grid (and reduce scanning size if the keyboard has no keypad). */
+	assert(cols <= KEYBOARD_COLS_MAX);
+#endif
+	keyboard_cols = cols;
+}
 
 #endif  /* __CROS_EC_KEYBOARD_RAW_H */

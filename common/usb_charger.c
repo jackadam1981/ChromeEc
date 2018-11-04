@@ -18,6 +18,7 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "stddef.h"
 #include "task.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
@@ -25,14 +26,12 @@
 
 static void update_vbus_supplier(int port, int vbus_level)
 {
-	struct charge_port_info charge;
+	struct charge_port_info charge = {0};
 
-	charge.voltage = USB_CHARGER_VOLTAGE_MV;
-
-	if (vbus_level && !usb_charger_port_is_sourcing_vbus(port))
+	if (vbus_level && !usb_charger_port_is_sourcing_vbus(port)) {
+		charge.voltage = USB_CHARGER_VOLTAGE_MV;
 		charge.current = USB_CHARGER_MIN_CURR_MA;
-	else
-		charge.current = 0;
+	}
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, port, &charge);
 }
@@ -85,27 +84,19 @@ void usb_charger_vbus_change(int port, int vbus_level)
 static void usb_charger_init(void)
 {
 	int i;
-	struct charge_port_info charge_none;
 
 	/* Initialize all charge suppliers */
-	charge_none.voltage = USB_CHARGER_VOLTAGE_MV;
-	charge_none.current = 0;
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
 		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
-					     i,
-					     &charge_none);
+					     i, NULL);
 		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
-					     i,
-					     &charge_none);
+					     i, NULL);
 		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
-					     i,
-					     &charge_none);
+					     i, NULL);
 		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
-					     i,
-					     &charge_none);
+					     i, NULL);
 		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
-					     i,
-					     &charge_none);
+					     i, NULL);
 		/* Initialize VBUS supplier based on whether VBUS is present. */
 		update_vbus_supplier(i, pd_is_vbus_present(i));
 	}

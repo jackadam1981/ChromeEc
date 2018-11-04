@@ -126,6 +126,9 @@ GPIO(USB_C1_BC12_CHG_DET_L, PIN(E, 4), GPIO_INPUT)	/* C1 BC1.2 Detect */
 GPIO(USB_C1_HPD_1V8_ODL, PIN(C, 6), GPIO_INPUT |	/* C1 DP Hotplug Detect */
 				    GPIO_SEL_1P8V)
 
+/* Not implemented in hardware */
+UNIMPLEMENTED(USB_C0_PD_RST)
+
 /*
  * USB2_OTG_ID is 1.8V pin on the SoC side with an internal pull-up. However, it
  * 3.3V on the EC side. So, configure it as ODR so that the EC never drives it
@@ -150,6 +153,9 @@ GPIO(USB_C_OC,      PIN(3, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
 /* Strap pins */
 GPIO(GPO66_NC,       PIN(6, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPOB6_NC,       PIN(B, 6), GPIO_INPUT | GPIO_PULL_UP)
+
+/* Misc. */
+GPIO(CCD_MODE_ODL,   PIN(E, 3), GPIO_INPUT)
 
 /* Keyboard pins */
 ALTERNATE(PIN_MASK(3, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_INPUT)	/* KSI_00-01 */

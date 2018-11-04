@@ -40,7 +40,7 @@ SECTIONS
     } > SHARED_LIB
 #endif
     .text : {
-        STRINGIFY(OUTDIR/core/CORE/init.o) (.text.vecttable)
+	*(.text.vecttable)
         . = ALIGN(4);
         __image_data_offset = .;
         KEEP(*(.rodata.ver))
@@ -158,6 +158,10 @@ SECTIONS
         KEEP(*(.rodata.HOOK_SECOND))
         __hooks_second_end = .;
 
+        __hooks_usb_pd_disconnect = .;
+        KEEP(*(.rodata.HOOK_USB_PD_DISCONNECT))
+        __hooks_usb_pd_disconnect_end = .;
+
         __deferred_funcs = .;
         KEEP(*(.rodata.deferred))
         __deferred_funcs_end = .;
@@ -168,6 +172,10 @@ SECTIONS
         __usb_desc_end = .;
         . = ALIGN(4);
         KEEP(*(.rodata.usb_ep))
+        KEEP(*(.rodata.usb_ep.usb_ep_tx))
+        KEEP(*(.rodata.usb_ep.usb_ep_rx))
+        KEEP(*(.rodata.usb_ep.usb_ep_event))
+        KEEP(*(.rodata.usb_ep.usb_iface_request))
 
         . = ALIGN(4);
         *(.rodata*)

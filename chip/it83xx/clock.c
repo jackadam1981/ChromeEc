@@ -200,6 +200,16 @@ static void clock_set_pll(enum pll_freq_idx idx)
 		 * change PLL.
 		 */
 		IT83XX_GPIO_GPCRM5 = (IT83XX_GPIO_GPCRM5 & ~0xc0) | (1 << 7);
+#ifdef IT83XX_ESPI_INHIBIT_CS_BY_VCC_OFF
+		/*
+		 * On DX version, we have to turn off VCC before changing PLL
+		 * sequence or sequence will fail if CS# pin is low.
+		 *
+		 * The VCC power status will be treated as power-on later in
+		 * clock_init().
+		 */
+		IT83XX_GCTRL_RSTS = (IT83XX_GCTRL_RSTS & ~0xc0);
+#endif
 #endif
 		/* Update PLL settings. */
 		clock_pll_changed();
@@ -339,11 +349,10 @@ static void clock_htimer_enable(void)
 	uint32_t c;
 
 	/* change event timer clock source to 32.768 KHz */
-#if 0
-	c = TIMER_CNT_8M_32P768K(IT83XX_ETWD_ETXCNTOR(EVENT_EXT_TIMER));
-#else
-	/* TODO(crosbug.com/p/55044) */
+#ifdef IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
 	c = TIMER_CNT_8M_32P768K(ext_observation_reg_read(EVENT_EXT_TIMER));
+#else
+	c = TIMER_CNT_8M_32P768K(IT83XX_ETWD_ETXCNTOR(EVENT_EXT_TIMER));
 #endif
 	clock_event_timer_clock_change(EXT_PSR_32P768K_HZ, c);
 }
@@ -357,11 +366,10 @@ static int clock_allow_low_power_idle(void)
 		et_ctrl_regs[EVENT_EXT_TIMER].mask)
 		return 0;
 
-#if 0
-	if (EVENT_TIMER_COUNT_TO_US(IT83XX_ETWD_ETXCNTOR(EVENT_EXT_TIMER)) <
-#else
-	/* TODO(crosbug.com/p/55044) */
+#ifdef IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
 	if (EVENT_TIMER_COUNT_TO_US(ext_observation_reg_read(EVENT_EXT_TIMER)) <
+#else
+	if (EVENT_TIMER_COUNT_TO_US(IT83XX_ETWD_ETXCNTOR(EVENT_EXT_TIMER)) <
 #endif
 		SLEEP_SET_HTIMER_DELAY_USEC)
 		return 0;

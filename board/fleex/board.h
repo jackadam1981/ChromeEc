@@ -13,14 +13,12 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
-/* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 
 #define CONFIG_LED_COMMON
+#define OCTOPUS_BATT_FUEL_LOW_LED 10
 
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DE		/* Lid accel */
@@ -42,10 +40,6 @@
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
-
-#define CONFIG_TABLET_MODE
-#define CONFIG_TABLET_SWITCH
-#define TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
 
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_THERMISTOR

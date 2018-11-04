@@ -16,12 +16,16 @@ common-$(CONFIG_ACCELGYRO_LSM6DSM)+=math_util.o
 common-$(CONFIG_ACCEL_LIS2DH)+=math_util.o
 common-$(CONFIG_ACCEL_KXCJ9)+=math_util.o
 common-$(CONFIG_ACCEL_KX022)+=math_util.o
+ifneq ($(CORE),cortex-m)
+common-$(CONFIG_AES)+=aes.o
+endif
+common-$(CONFIG_AES_GCM)+=aes-gcm.o
 common-$(CONFIG_CMD_ADC)+=adc.o
 common-$(HAS_TASK_ALS)+=als.o
 common-$(CONFIG_AP_HANG_DETECT)+=ap_hang_detect.o
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
 common-$(CONFIG_BASE32)+=base32.o
-common-$(CONFIG_BASE_ATTACHED_SWITCH)+=base_state.o
+common-$(CONFIG_DETACHABLE_BASE)+=base_state.o
 common-$(CONFIG_BATTERY)+=battery.o
 common-$(CONFIG_BATTERY_FUEL_GAUGE)+=battery_fuel_gauge.o
 common-$(CONFIG_BLUETOOTH_LE)+=bluetooth_le.o
@@ -77,6 +81,7 @@ common-$(CONFIG_KEYBOARD_TEST)+=keyboard_test.o
 common-$(CONFIG_LED_COMMON)+=led_common.o
 common-$(CONFIG_LED_POLICY_STD)+=led_policy_std.o
 common-$(CONFIG_LED_PWM)+=led_pwm.o
+common-$(CONFIG_LED_ONOFF_STATES)+=led_onoff_states.o
 common-$(CONFIG_LID_ANGLE)+=motion_lid.o math_util.o
 common-$(CONFIG_LID_ANGLE_UPDATE)+=lid_angle.o
 common-$(CONFIG_LID_SWITCH)+=lid_switch.o
@@ -158,6 +163,11 @@ ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3
 $(out)/RO/common/rsa.o: CFLAGS+=-O3
 endif
+
+# AES-GCM code needs C99, else we'd have to move many variables declarations
+# around.
+$(out)/RW/common/aes-gcm.o: CFLAGS+=-std=c99 -Wno-declaration-after-statement
+$(out)/RO/common/aes-gcm.o: CFLAGS+=-std=c99 -Wno-declaration-after-statement
 
 ifneq ($(CONFIG_BOOTBLOCK),)
 build-util-bin += gen_emmc_transfer_data

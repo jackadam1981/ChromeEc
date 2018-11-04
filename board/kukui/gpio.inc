@@ -25,29 +25,23 @@ GPIO_INT(AP_IN_SLEEP_L,     PIN(C, 12), GPIO_INT_BOTH | GPIO_PULL_DOWN,
 GPIO_INT(PMIC_EC_RESETB,    PIN(B, 7),  GPIO_INT_BOTH | GPIO_PULL_DOWN,
          power_signal_interrupt)
 GPIO_INT(WARM_RESET_REQ,    PIN(A, 3),  GPIO_INT_RISING | GPIO_PULL_DOWN,
-         warm_reset_request_interrupt)
-GPIO_INT(AP_EC_WATCHDOG_L,  PIN(C, 2),  GPIO_INT_BOTH,
-         ap_watchdog_interrupt)
+         chipset_reset_request_interrupt)
+GPIO_INT(AP_EC_WATCHDOG_L,  PIN(C, 2),  GPIO_INT_FALLING,
+         chipset_watchdog_interrupt)
 
 GPIO_INT_RW(ACCEL_INT_ODL,  PIN(A, 4), GPIO_INT_FALLING | GPIO_SEL_1P8V | GPIO_PULL_UP,
          bmi160_interrupt)
 GPIO_INT(CHARGER_INT_ODL,   PIN(C, 13), GPIO_INT_FALLING | GPIO_PULL_UP,
          rt946x_interrupt)
-#if BOARD_REV == 0
 GPIO_INT_RO(EMMC_CMD,       PIN(B, 15), GPIO_INT_FALLING,
-         emmc_cmd_interrupt)
-GPIO_INT_RW(SYNC_INT,       PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
-         sync_interrupt)
-/*
- * rev0 has an interrupt conflict between SPI1_NSS and EMMC_CMD (PIN(x, 15)),
- * let's just ignore interrupts as host command won't work anyway.
- */
-GPIO(SPI1_NSS,              PIN(A, 15), GPIO_INPUT)
-#elif BOARD_REV >= 1
-GPIO_INT_RO(EMMC_CMD,       PIN(A, 14), GPIO_INT_FALLING,
          emmc_cmd_interrupt)
 GPIO_INT(SPI1_NSS,          PIN(A, 15), GPIO_INT_BOTH,
          spi_event)
+#if BOARD_REV == 0
+GPIO_INT_RW(SYNC_INT,       PIN(A, 5),  GPIO_INT_RISING | GPIO_PULL_DOWN,
+         sync_interrupt)
+GPIO(SPI1_NSS,              PIN(A, 15), GPIO_INPUT)
+#elif BOARD_REV >= 1
 GPIO_INT_RW(SYNC_INT,       PIN(A, 8),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
 GPIO_INT(HALL_INT_L,        PIN(C, 5),  GPIO_INT_FALLING,
@@ -105,7 +99,7 @@ GPIO(EC_INT_L,             PIN(B, 12), GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
 GPIO(EC_BOARD_ID_EN_L,     PIN(C, 15), GPIO_ODR_HIGH) /* EC_BOARD_ID_EN_ODL */
 GPIO(USB_C0_DISCHARGE,     PIN(B, 0),  GPIO_OUT_LOW)
 GPIO(USB_C0_DP_POLARITY,   PIN(C, 14), GPIO_OUT_LOW)
-GPIO(USB_C0_HPD_OD,        PIN(F, 1),  GPIO_OUT_LOW)
+GPIO(USB_C0_HPD_OD,        PIN(F, 1),  GPIO_ODR_HIGH)
 GPIO(BOOTBLOCK_MUX_OE,     PIN(C, 4),  GPIO_ODR_HIGH)
 GPIO(BOOTBLOCK_EN_L,       PIN(C, 1),  GPIO_ODR_HIGH)
 #if BOARD_REV == 0

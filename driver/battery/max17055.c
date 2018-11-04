@@ -264,8 +264,19 @@ void battery_get_params(struct batt_params *batt)
 {
 	int reg = 0;
 
-	/* Reset flags */
-	batt->flags = 0;
+	/* Reset params */
+	memset(batt, 0, sizeof(struct batt_params));
+	/*
+	 * Assuming the battery is responsive as long as
+	 * max17055 finds battery is present.
+	 */
+	batt->is_present = battery_is_present();
+
+	if (batt->is_present == BP_YES)
+		batt->flags |= BATT_FLAG_RESPONSIVE;
+	else if (batt->is_present == BP_NO)
+		/* Battery is not present, gauge won't report useful info. */
+		return;
 
 	if (max17055_read(REG_TEMPERATURE, &reg))
 		batt->flags |= BATT_FLAG_BAD_TEMPERATURE;
@@ -297,15 +308,6 @@ void battery_get_params(struct batt_params *batt)
 
 	if (battery_full_charge_capacity(&batt->full_capacity))
 		batt->flags |= BATT_FLAG_BAD_FULL_CAPACITY;
-
-	/*
-	 * Assuming the battery is responsive as long as
-	 * max17055 finds battery is present.
-	 */
-	batt->is_present = battery_is_present();
-
-	if (batt->is_present == BP_YES)
-		batt->flags |= BATT_FLAG_RESPONSIVE;
 
 	/*
 	 * Charging allowed if both desired voltage and current are nonzero
@@ -421,6 +423,10 @@ static void max17055_init(void)
 {
 	int reg;
 	int retries = 80;
+#ifdef CONFIG_BATTERY_MAX17055_ALERT
+	const struct max17055_alert_profile *alert_profile =
+		max17055_get_alert_profile();
+#endif
 
 	if (!max17055_probe()) {
 		CPRINTS("Wrong max17055 id!");
@@ -478,6 +484,25 @@ static void max17055_init(void)
 			}
 		}
 	}
+
+#ifdef CONFIG_BATTERY_MAX17055_ALERT
+	/* Set voltage alert range */
+	MAX17055_WRITE_DEBUG(REG_VALRTTH, alert_profile->v_alert_mxmn);
+	/* Set temperature alert range */
+	MAX17055_WRITE_DEBUG(REG_TALRTTH, alert_profile->t_alert_mxmn);
+	/* Set state-of-charge alert range */
+	MAX17055_WRITE_DEBUG(REG_SALRTTH, alert_profile->s_alert_mxmn);
+	/* Set current alert range */
+	MAX17055_WRITE_DEBUG(REG_IALRTTH, alert_profile->i_alert_mxmn);
+
+	/* Disable all sticky bits; enable alert AEN */
+	MAX17055_READ_DEBUG(REG_CONFIG, &reg);
+	MAX17055_WRITE_DEBUG(REG_CONFIG, (reg & ~CONF_ALL_STICKY) | CONF_AEN);
+
+	/* Clear alerts */
+	MAX17055_READ_DEBUG(REG_STATUS, &reg);
+	MAX17055_WRITE_DEBUG(REG_STATUS, reg & ~STATUS_ALL_ALRT);
+#endif
 
 	CPRINTS("max17055 configuration succeeded!");
 }

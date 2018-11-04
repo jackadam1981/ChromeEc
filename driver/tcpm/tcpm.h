@@ -160,13 +160,14 @@ static inline int tcpm_set_rx_enable(int port, int enable)
 	return tcpc_config[port].drv->set_rx_enable(port, enable);
 }
 
-static inline int tcpm_get_message(int port, uint32_t *payload, int *head)
-{
-	return tcpc_config[port].drv->get_message(port, payload, head);
-}
+/**
+ * Reads a message using get_message_raw driver method and puts it into EC's
+ * cache.
+ */
+int tcpm_enqueue_message(int port);
 
 static inline int tcpm_transmit(int port, enum tcpm_transmit_type type,
-		  uint16_t header, const uint32_t *data)
+				uint16_t header, const uint32_t *data)
 {
 	return tcpc_config[port].drv->transmit(port, type, header, data);
 }
@@ -205,9 +206,9 @@ static inline int tcpm_auto_toggle_supported(int port)
 	return !!tcpc_config[port].drv->drp_toggle;
 }
 
-static inline int tcpm_set_drp_toggle(int port, int enable)
+static inline int tcpm_enable_drp_toggle(int port)
 {
-	return tcpc_config[port].drv->drp_toggle(port, enable);
+	return tcpc_config[port].drv->drp_toggle(port);
 }
 #endif
 
@@ -233,7 +234,7 @@ static inline int tcpc_i2c_write(const int port, const int addr,
 #endif
 
 static inline int tcpm_get_chip_info(int port, int renew,
-				     struct ec_response_pd_chip_info **info)
+				     struct ec_response_pd_chip_info_v1 **info)
 {
 	if (tcpc_config[port].drv->get_chip_info)
 		return tcpc_config[port].drv->get_chip_info(port, renew, info);
@@ -333,17 +334,6 @@ int tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpm_set_rx_enable(int port, int enable);
 
 /**
- * Read last received PD message.
- *
- * @param port Type-C port number
- * @param payload Pointer to location to copy payload of message
- * @param header of message
- *
- * @return EC_SUCCESS or error
- */
-int tcpm_get_message(int port, uint32_t *payload, int *head);
-
-/**
  * Transmit PD message
  *
  * @param port Type-C port number
@@ -365,5 +355,28 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 void tcpc_alert(int port);
 
 #endif
+
+/**
+ * Gets the next waiting RX message.
+ *
+ * @param port Type-C port number
+ * @param payload Pointer to location to copy payload of PD message
+ * @param header The header of PD message
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_dequeue_message(int port, uint32_t *payload, int *header);
+
+/**
+ * Returns true if the tcpm has RX messages waiting to be consumed.
+ */
+int tcpm_has_pending_message(int port);
+
+/**
+ * Clear any pending messages in the RX queue.  This function must be
+ * called from the same context as the caller of tcpm_dequeue_message to avoid
+ * race conditions.
+ */
+void tcpm_clear_pending_messages(int port);
 
 #endif

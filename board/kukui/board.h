@@ -55,6 +55,7 @@
 #define CONFIG_CHARGER_ILIM_PIN_DISABLED
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_HOST_COMMAND_STATUS
+#define CONFIG_CMD_AP_RESET_LOG
 
 /* Required for FAFT */
 #define CONFIG_CMD_BUTTON
@@ -90,6 +91,9 @@
 
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
+#define CONFIG_MAG_BMI160_BMM150
+#define BMI160_SEC_ADDR BMM150_ADDR0  /* 8-bit address */
+#define CONFIG_MAG_CALIBRATE
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
@@ -130,6 +134,7 @@
 #define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_MAX17055
+#define CONFIG_BATTERY_MAX17055_ALERT
 
 /* Battery parameters for max17055 ModelGauge m5 algorithm. */
 #define BATTERY_MAX17055_RSENSE             5     /* m-ohm */
@@ -211,6 +216,7 @@ enum power_signal {
 enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
+	LID_MAG,
 	VSYNC,
 };
 

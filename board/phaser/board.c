@@ -32,19 +32,13 @@
 #include "util.h"
 #include "battery_smart.h"
 
-static uint16_t sku_id;
+#define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
-		return;
+#define USB_PD_PORT_ANX7447	0
+#define USB_PD_PORT_PS8751	1
 
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
-}
+static uint8_t sku_id;
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -71,8 +65,23 @@ const struct adc_t adc_channels[] = {
 		"TEMP_AMB", NPCX_ADC_CH0, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 	[ADC_TEMP_SENSOR_CHARGER] = {
 		"TEMP_CHARGER", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
+	/* Vbus sensing (1/10 voltage divider). */
+	[ADC_VBUS_C0] = {
+		"VBUS_C0", NPCX_ADC_CH9, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
+	[ADC_VBUS_C1] = {
+		"VBUS_C1", NPCX_ADC_CH4, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+enum adc_channel board_get_vbus_adc(int port)
+{
+	if (port == USB_PD_PORT_ANX7447)
+		return  ADC_VBUS_C0;
+	if (port == USB_PD_PORT_PS8751)
+		return  ADC_VBUS_C1;
+	CPRINTSUSB("Unknown vbus adc port id: %d", port);
+	return ADC_VBUS_C0;
+}
 
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
@@ -113,7 +122,7 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Matrix to rotate lid and base sensor into standard reference frame */
-const matrix_3x3_t standard_rot_ref = {
+const mat33_fp_t standard_rot_ref = {
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
@@ -185,7 +194,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_GYRO] = {
 	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -205,15 +214,17 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 static int board_is_convertible(void)
 {
-	return sku_id == 2 || sku_id == 3 || sku_id == 255;
+	return sku_id == 2 || sku_id == 3 || sku_id == 4 || sku_id == 255;
 }
 
-static void board_set_motion_sensor_count(void)
+static void board_update_sensor_config_from_sku(void)
 {
-	if (board_is_convertible())
+	if (board_is_convertible()) {
 		motion_sensor_count = ARRAY_SIZE(motion_sensors);
-	else
+	} else {
 		motion_sensor_count = 0;
+		tablet_disable_switch();
+	}
 }
 
 static void cbi_init(void)
@@ -224,7 +235,7 @@ static void cbi_init(void)
 		sku_id = val;
 	ccprints("SKU: 0x%04x", sku_id);
 
-	board_set_motion_sensor_count();
+	board_update_sensor_config_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 

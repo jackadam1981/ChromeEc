@@ -4,7 +4,7 @@
  */
 
 /*
- * BQ24392 USB BC 1.2 Charger Detector driver.
+ * MAX14637 USB BC 1.2 Charger Detector driver.
  *
  * NOTE: The driver assumes that CHG_AL_N and SW_OPEN are not connected,
  * therefore the value of CHG_DET indicates whether the source is NOT a
@@ -12,7 +12,7 @@
  * the system will have to charge ramp.
  */
 
-#include "bq24392.h"
+#include "max14637.h"
 #include "cannonlake.h"
 #include "charge_manager.h"
 #include "chipset.h"
@@ -36,10 +36,10 @@
  * @return 1 if charger detect is activated (high when active high or
  *	low with active low), otherwise 0.
  */
-static int is_chg_det_activated(const struct bq24392_config_t * const cfg)
+static int is_chg_det_activated(const struct max14637_config_t * const cfg)
 {
 	return !!gpio_get_level(cfg->chg_det_pin) ^
-		!!(cfg->flags & BQ24392_FLAGS_CHG_DET_ACTIVE_LOW);
+		!!(cfg->flags & MAX14637_FLAGS_CHG_DET_ACTIVE_LOW);
 }
 
 /**
@@ -50,11 +50,11 @@ static int is_chg_det_activated(const struct bq24392_config_t * const cfg)
  *	low).
  */
 static void activate_chip_enable(
-	const struct bq24392_config_t * const cfg, const int enable)
+	const struct max14637_config_t * const cfg, const int enable)
 {
 	gpio_set_level(
 		cfg->chip_enable_pin,
-		!!enable ^ !!(cfg->flags & BQ24392_FLAGS_ENABLE_ACTIVE_LOW));
+		!!enable ^ !!(cfg->flags & MAX14637_FLAGS_ENABLE_ACTIVE_LOW));
 }
 
 /**
@@ -64,7 +64,7 @@ static void activate_chip_enable(
  */
 static void bc12_detect(const int port)
 {
-	const struct bq24392_config_t * const cfg = &bq24392_config[port];
+	const struct max14637_config_t * const cfg = &max14637_config[port];
 	struct charge_port_info new_chg;
 
 	/*
@@ -100,20 +100,19 @@ static void bc12_detect(const int port)
 }
 
 /**
- * Turn off the BQ24392 detector.
+ * Turn off the MAX14637 detector.
  *
  * @param port: Which USB Type-C port's BC1.2 detector to turn off.
  */
 static void power_down_ic(const int port)
 {
-	const struct bq24392_config_t * const cfg = &bq24392_config[port];
-	struct charge_port_info no_chg = { 0 };
+	const struct max14637_config_t * const cfg = &max14637_config[port];
 
 	/* Turn off the IC. */
 	activate_chip_enable(cfg, 0);
 
 	/* Let charge manager know there's no more charge available. */
-	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, &no_chg);
+	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, NULL);
 }
 
 /**
@@ -132,20 +131,16 @@ static void detect_or_power_down_ic(const int port)
 #endif /* !defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) */
 
 	if (vbus_present) {
-		/* Turn on the 5V rail to allow the chip to be powered. */
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
+		/* Turn on the 5V rail to allow the chip to be powered. */
 		power_5v_enable(task_get_current(), 1);
-#else
-		gpio_set_level(GPIO_EN_PP5000, 1);
 #endif
 		bc12_detect(port);
 	} else {
 		power_down_ic(port);
-		/* Issue a request to turn off the rail. */
 #if defined(CONFIG_POWER_PP5000_CONTROL) && defined(HAS_TASK_CHIPSET)
+		/* Issue a request to turn off the rail. */
 		power_5v_enable(task_get_current(), 0);
-#else
-		gpio_set_level(GPIO_EN_PP5000, 0);
 #endif
 	}
 }
@@ -169,14 +164,16 @@ void usb_charger_task(void *u)
 
 void usb_charger_set_switches(int port, enum usb_switch setting)
 {
-	/* The BQ24392 automatically sets up the USB 2.0 high-speed switches. */
+	/*
+	 * The MAX14637 automatically sets up the USB 2.0 high-speed switches.
+	 */
 }
 
 #if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
 int usb_charger_ramp_allowed(int supplier)
 {
 	/*
-	 * Due to the limitations in the application of the BQ24392, we
+	 * Due to the limitations in the application of the MAX14637, we
 	 * don't quite know exactly what we're plugged into.  Therefore,
 	 * the supplier type will be CHARGE_SUPPLIER_OTHER.
 	 */
@@ -185,7 +182,7 @@ int usb_charger_ramp_allowed(int supplier)
 
 int usb_charger_ramp_max(int supplier, int sup_curr)
 {
-	/* Use the current limit that was decided by the BQ24392. */
+	/* Use the current limit that was decided by the MAX14637. */
 	if (supplier == CHARGE_SUPPLIER_OTHER)
 		return sup_curr;
 	else

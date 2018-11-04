@@ -13,7 +13,8 @@ test-list-y ?= pingpong timer_calib timer_dos timer_jump mutex utils utils_str
 ifneq ($(TEST_LIST_HOST),)
 test-list-host=$(TEST_LIST_HOST)
 else
-test-list-host = base32
+test-list-host = aes
+test-list-host += base32
 test-list-host += battery_get_params_smart
 test-list-host += bklight_lid
 test-list-host += bklight_passthru
@@ -28,6 +29,8 @@ test-list-host += entropy
 test-list-host += extpwr_gpio
 test-list-host += fan
 test-list-host += flash
+test-list-host += float
+test-list-host += fp
 test-list-host += hooks
 test-list-host += host_command
 test-list-host += inductive_charging
@@ -66,6 +69,8 @@ test-list-host += vboot
 test-list-host += x25519
 endif
 
+
+aes-y=aes.o
 base32-y=base32.o
 battery_get_params_smart-y=battery_get_params_smart.o
 bklight_lid-y=bklight_lid.o
@@ -121,4 +126,6 @@ usb_pd_rev30-y=usb_pd.o
 utils-y=utils.o
 utils_str-y=utils_str.o
 vboot-y=vboot.o
+float-y=fp.o
+fp-y=fp.o
 x25519-y=x25519.o

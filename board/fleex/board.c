@@ -16,7 +16,6 @@
 #include "cros_board_info.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
-#include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/anx7447.h"
@@ -49,17 +48,7 @@
 #define USB_PD_PORT_ANX7447	0
 #define USB_PD_PORT_PS8751	1
 
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
-		return;
-
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
-}
+static uint8_t sku_id;
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -125,13 +114,13 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t lid_standard_ref = {
+const mat33_fp_t lid_standard_ref = {
 	{ 0, FLOAT_TO_FP(1),  0},
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
 };
 
- const matrix_3x3_t base_standard_ref = {
+ const mat33_fp_t base_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
@@ -142,7 +131,6 @@ static struct stprivate_data g_lis2dh_data;
 static struct lsm6dsm_data lsm6dsm_g_data;
 static struct lsm6dsm_data lsm6dsm_a_data;
 
-static uint16_t sku_id;
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
@@ -175,7 +163,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_ACCEL] = {
 	 .name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3_S5,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -204,7 +192,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_GYRO] = {
 	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_BASE,
@@ -227,12 +215,14 @@ static int board_is_convertible(void)
 	return sku_id == 0x21 || sku_id == 0x22 || sku_id == 0xff;
 }
 
-static void board_set_motion_sensor_count(void)
+static void board_update_sensor_config_from_sku(void)
 {
-	if (board_is_convertible())
+	if (board_is_convertible()) {
 		motion_sensor_count = ARRAY_SIZE(motion_sensors);
-	else
+	} else {
 		motion_sensor_count = 0;
+		tablet_disable_switch();
+	}
 }
 
 static void cbi_init(void)
@@ -243,7 +233,7 @@ static void cbi_init(void)
 		sku_id = val;
 	ccprints("SKU: 0x%04x", sku_id);
 
-	board_set_motion_sensor_count();
+	board_update_sensor_config_from_sku();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 

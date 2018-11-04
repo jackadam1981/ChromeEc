@@ -9,7 +9,6 @@
 #include "common.h"
 
 /* Charge port that indicates no active port */
-#define CHARGE_SUPPLIER_NONE -1
 #define CHARGE_PORT_NONE -1
 #define CHARGE_CEIL_NONE -1
 
@@ -31,6 +30,7 @@ defined(TEST_BUILD)
 
 /* Commonly-used charge suppliers listed in no particular order */
 enum charge_supplier {
+	CHARGE_SUPPLIER_NONE = -1,
 	CHARGE_SUPPLIER_PD,
 	CHARGE_SUPPLIER_TYPEC,
 	CHARGE_SUPPLIER_TYPEC_DTS,
@@ -57,9 +57,10 @@ struct charge_port_info {
 /**
  * Called by charging tasks to update their available charge.
  *
- * @param supplier		Charge supplier to update.
- * @param port			Charge port to update.
- * @param charge		Charge port current / voltage.
+ * @param supplier	Charge supplier to update.
+ * @param port		Charge port to update.
+ * @param charge	Charge port current / voltage. If NULL, current = 0
+ * 			voltage = 0 will be used.
  */
 void charge_manager_update_charge(int supplier,
 				  int port,

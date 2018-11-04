@@ -86,10 +86,16 @@ static inline int int_sqrtf(fp_inter_t x)
 {
 	return sqrtf(x);
 }
+
+/* If the platform support FPU, just return sqrtf. */
+fp_t fp_sqrtf(fp_t x)
+{
+	return sqrtf(x);
+}
 #else
 static int int_sqrtf(fp_inter_t x)
 {
-	int rmax = 0x7fffffff;
+	int rmax = INT32_MAX;
 	int rmin = 0;
 
 	/* Short cut if x is 32-bit value */
@@ -124,9 +130,16 @@ static int int_sqrtf(fp_inter_t x)
 		}
 	}
 }
-#endif
 
-int vector_magnitude(const vector_3_t v)
+fp_t fp_sqrtf(fp_t x)
+{
+	fp_inter_t preshift_x = (fp_inter_t)x << FP_BITS;
+
+	return int_sqrtf(preshift_x);
+}
+#endif /* CONFIG_FPU */
+
+int vector_magnitude(const intv3_t v)
 {
 	fp_inter_t sum =   (fp_inter_t)v[0] * v[0] +
 			(fp_inter_t)v[1] * v[1] +
@@ -135,7 +148,7 @@ int vector_magnitude(const vector_3_t v)
 	return int_sqrtf(sum);
 }
 
-fp_t cosine_of_angle_diff(const vector_3_t v1, const vector_3_t v2)
+fp_t cosine_of_angle_diff(const intv3_t v1, const intv3_t v2)
 {
 	fp_inter_t dotproduct;
 	fp_inter_t denominator;
@@ -176,13 +189,13 @@ fp_t cosine_of_angle_diff(const vector_3_t v1, const vector_3_t v2)
  * rotate a vector v
  *  - support input v and output res are the same vector
  */
-void rotate(const vector_3_t v, const matrix_3x3_t R, vector_3_t res)
+void rotate(const intv3_t v, const mat33_fp_t R, intv3_t res)
 {
 	fp_inter_t t[3];
 
 	if (R == NULL) {
 		if (v != res)
-			memcpy(res, v, sizeof(vector_3_t));
+			memcpy(res, v, sizeof(intv3_t));
 		return;
 	}
 
@@ -204,14 +217,14 @@ void rotate(const vector_3_t v, const matrix_3x3_t R, vector_3_t res)
 	res[2] = FP_TO_INT(t[2]);
 }
 
-void rotate_inv(const vector_3_t v, const matrix_3x3_t R, vector_3_t res)
+void rotate_inv(const intv3_t v, const mat33_fp_t R, intv3_t res)
 {
 	fp_inter_t t[3];
 	fp_t deter;
 
 	if (R == NULL) {
 		if (v != res)
-			memcpy(res, v, sizeof(vector_3_t));
+			memcpy(res, v, sizeof(intv3_t));
 		return;
 	}
 

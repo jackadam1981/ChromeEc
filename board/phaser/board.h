@@ -13,15 +13,13 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
-/* Enable PSL hibernate mode. */
-#define CONFIG_HIBERNATE_PSL
+/* USB PD */
+#undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
+#define CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 
 #define CONFIG_VOLUME_BUTTONS
 #define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L GPIO_EC_VOLDN_BTN_ODL
-
-/* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
 #define CONFIG_LED_COMMON
 #define OCTOPUS_POWER_LED
@@ -48,13 +46,6 @@
 #define CONFIG_LID_ANGLE_INVALID_CHECK
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
-#define CONFIG_TABLET_MODE
-#define CONFIG_TABLET_SWITCH
-#define TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
-
-#define CONFIG_DPTF
-#define CONFIG_DPTF_DEVICE_ORIENTATION
-
 /* Interrupt and fifo are only used for base accelerometer
  * and the lid sensor is polled real-time (in forced mode).
  */
@@ -77,6 +68,8 @@
 enum adc_channel {
 	ADC_TEMP_SENSOR_AMB,		/* ADC0 */
 	ADC_TEMP_SENSOR_CHARGER,	/* ADC1 */
+	ADC_VBUS_C0,            /* ADC9 */
+	ADC_VBUS_C1,            /* ADC4 */
 	ADC_CH_COUNT,
 };
 

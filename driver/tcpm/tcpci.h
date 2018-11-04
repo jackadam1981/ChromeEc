@@ -137,12 +137,12 @@ int tcpci_tcpm_set_polarity(int port, int polarity);
 int tcpci_tcpm_set_vconn(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);
-int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head);
+int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head);
 int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 			uint16_t header, const uint32_t *data);
 int tcpci_tcpm_release(int port);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-int tcpci_tcpc_drp_toggle(int port, int enable);
+int tcpci_tcpc_drp_toggle(int port);
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpci_enter_low_power_mode(int port);
@@ -155,7 +155,7 @@ int tcpci_tcpm_mux_init(int i2c_addr);
 int tcpci_tcpm_mux_set(int i2c_addr, mux_state_t mux_state);
 int tcpci_tcpm_mux_get(int i2c_addr, mux_state_t *mux_state);
 int tcpci_get_chip_info(int port, int renew,
-			struct ec_response_pd_chip_info **chip_info);
+			struct ec_response_pd_chip_info_v1 **chip_info);
 #ifdef CONFIG_USBC_PPC
 int tcpci_tcpm_set_snk_ctrl(int port, int enable);
 int tcpci_tcpm_set_src_ctrl(int port, int enable);

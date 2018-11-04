@@ -77,8 +77,17 @@
 #define IT83XX_USBPD_CC_VOLTAGE_DETECTOR_INDEPENDENT
 /* For IT8320BX, we have to write 0xff to clear pending bit.*/
 #define IT83XX_ESPI_VWCTRL1_WRITE_FF_CLEAR
+/* For IT8320BX, we have to read observation register of external timer two
+ * times to get correct time.
+ */
+#define IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
 #elif defined(CHIP_VARIANT_IT8320DX)
 #define CONFIG_FLASH_SIZE  0x00080000
+/*
+ * Set VCC power status as power-off, then PLL change
+ * (include EC clock frequency) is succeed even CS# is low.
+ */
+#define IT83XX_ESPI_INHIBIT_CS_BY_VCC_OFF
 /* The slave frequency is adjustable (bit[2-0] at register IT83XX_ESPI_GCAC1) */
 #define IT83XX_ESPI_SLAVE_MAX_FREQ_CONFIGURABLE
 /*
@@ -89,6 +98,13 @@
 /* Watchdog reset supports hardware reset. */
 /* TODO(b/111264984): watchdog hardware reset function failed. */
 #undef IT83XX_ETWD_HW_RESET_SUPPORT
+/*
+ * (b/112452221):
+ * Floating-point multiplication single-precision is failed on DX version,
+ * so we use the formula "A/(1/B)" to replace a multiplication operation
+ * (A*B = A/(1/B)).
+ */
+#define IT83XX_FPU_MUL_BY_DIV
 /*
  * More GPIOs can be set as 1.8v input.
  * Please refer to gpio_1p8v_sel[] for 1.8v GPIOs.

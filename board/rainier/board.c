@@ -135,7 +135,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
@@ -350,7 +349,7 @@ static struct mutex g_base_mutex;
 static struct bmi160_drv_data_t g_bmi160_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(1),  0},
 	{ FLOAT_TO_FP(-1), 0,  0},
 	{ 0,  0, FLOAT_TO_FP(1)}

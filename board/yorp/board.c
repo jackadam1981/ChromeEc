@@ -14,7 +14,6 @@
 #include "cros_board_info.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_lsm6dsm.h"
-#include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/anx7447.h"
@@ -44,18 +43,6 @@
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
-
-static void tcpc_alert_event(enum gpio_signal signal)
-{
-	if ((signal == GPIO_USB_C1_MUX_INT_ODL) &&
-	    !gpio_get_level(GPIO_USB_C1_PD_RST_ODL))
-		return;
-
-#ifdef HAS_TASK_PDCMD
-	/* Exchange status with TCPCs */
-	host_command_pd_send_status(PD_CHARGE_NO_CHANGE);
-#endif
-}
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -110,7 +97,7 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t base_standard_ref = {
+const mat33_fp_t base_standard_ref = {
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ FLOAT_TO_FP(1), 0,  0},
 	{ 0, 0,  FLOAT_TO_FP(1)}
@@ -179,7 +166,7 @@ struct motion_sensor_t motion_sensors[] = {
 
 	[BASE_GYRO] = {
 	 .name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
 	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_BASE,
