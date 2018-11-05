@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "902884f8_be6d688c",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-11-05T22:35:01Z",
+      "side": 1,
+      "message": "maybe should test VCONN\u003d3V?",
+      "range": {
+        "startLine": 24,
+        "startChar": 30,
+        "endLine": 24,
+        "endChar": 37
+      },
+      "revId": "b500f7517911eb8dabea5ad394edb6f4e8b359c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
