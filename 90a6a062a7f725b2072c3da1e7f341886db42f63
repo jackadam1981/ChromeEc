@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5bd35081_19aa0be4",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-05T22:35:46Z",
+      "side": 1,
+      "message": "[resolved]",
+      "parentUuid": "809b7852_4810ea66",
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a87fe2b_0486d148",
         "filename": "util/iteflash.c",
         "patchSetId": 10
@@ -108,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "e450cada_b6caf0be",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-05T22:35:46Z",
+      "side": 1,
+      "message": "[resolved]",
+      "parentUuid": "91192246_ffd4d551",
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5260326_597a7ebb",
         "filename": "util/iteflash.c",
         "patchSetId": 10
@@ -143,6 +179,30 @@
       "side": 1,
       "message": "added a separate patch to fix this.",
       "parentUuid": "d5260326_597a7ebb",
+      "range": {
+        "startLine": 1682,
+        "startChar": 1,
+        "endLine": 1683,
+        "endChar": 0
+      },
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30ac0ba_04b86d6e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1683,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-05T22:35:46Z",
+      "side": 1,
+      "message": "This line still needs to be remove from this CL.  (Set default values at struct initialization.)",
+      "parentUuid": "bf131b3d_912ae443",
       "range": {
         "startLine": 1682,
         "startChar": 1,
