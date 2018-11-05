@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "23dd3bdc_656c957f",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-05T09:03:38Z",
+      "side": 1,
+      "message": "Is changing size here safe to do after the malloc()?  How about deleting this, optionally with erroring early for a zero size?  (Handling zero read size gracefully would be fine by me as well, maybe even preferable.)",
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a87fe2b_0486d148",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-05T09:03:38Z",
+      "side": 1,
+      "message": "I still think the offset:size should be a separate option.  That seems more natural to me, and it avoids any issues with a colon in a filename.",
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5260326_597a7ebb",
         "filename": "util/iteflash.c",
         "patchSetId": 10
