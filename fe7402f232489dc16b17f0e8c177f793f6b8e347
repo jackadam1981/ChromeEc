@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "65f112f6_e8938689",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-05T18:01:51Z",
+      "side": 1,
+      "message": "I am not sure why this comment applies, as this patch does not change the behavior of jitter configuration. \n\nIt is irrelevant what is in GR_XO_JTR_JITTERY_TRIM_BANK because on one hand the inti code makes sure that these registers are written when the device is booting up and on the other hand, if the function is invoked when run level is low it can not modify the configuration anyways.",
+      "parentUuid": "b48ac6fc_4f8aa0e0",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "fe7402f232489dc16b17f0e8c177f793f6b8e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c05b9f21_919d7c72",
         "filename": "chip/g/jitter.c",
         "patchSetId": 7
@@ -83,6 +107,30 @@
       "writtenOn": "2018-11-05T17:42:36Z",
       "side": 1,
       "message": "GR_XO_JTR_JITTERY_TRIM_BANK is also locked by JTR_CTRL_EN why are we checking the runlevel, but not the lock? If it is locked what happens? Does the write to the register just not work or does it cause cr50 to reboot?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "fe7402f232489dc16b17f0e8c177f793f6b8e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12695c75_e93856e9",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-05T18:01:51Z",
+      "side": 1,
+      "message": "The only useful action of the code in the if() clause is writing into GR_XO_JTR_JITTERY_TRIM_BANK register, and this is not allowed unless run level is high, so the code runs conditional on run level being high.\n\nwriting when the register is locked does not cause exceptions, it just does not have any effect.",
+      "parentUuid": "c05b9f21_919d7c72",
       "range": {
         "startLine": 24,
         "startChar": 5,
