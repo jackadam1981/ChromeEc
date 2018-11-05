@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a7b88c4_75c7088c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-05T17:42:36Z",
+      "side": 1,
+      "message": "the statement is a little confusing, because the fact it prints means we are locking it",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "fe7402f232489dc16b17f0e8c177f793f6b8e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48ac6fc_4f8aa0e0",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-05T17:42:36Z",
+      "side": 1,
+      "message": "If we aren\u0027t at high runlevel, we can\u0027t enable jittery clock. Right? What is in GR_XO_JTR_JITTERY_TRIM_BANK by default?",
+      "range": {
+        "startLine": 21,
+        "startChar": 17,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "fe7402f232489dc16b17f0e8c177f793f6b8e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05b9f21_919d7c72",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-05T17:42:36Z",
+      "side": 1,
+      "message": "GR_XO_JTR_JITTERY_TRIM_BANK is also locked by JTR_CTRL_EN why are we checking the runlevel, but not the lock? If it is locked what happens? Does the write to the register just not work or does it cause cr50 to reboot?",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "fe7402f232489dc16b17f0e8c177f793f6b8e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
