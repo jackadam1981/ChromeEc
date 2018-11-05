@@ -52,6 +52,24 @@
       "revId": "6073b81aa810ec883d2799b0b147fcc37c629107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "762f2a28_4bcf6104",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-05T18:23:50Z",
+      "side": 1,
+      "message": "CL pulled in here: https://chromium-review.googlesource.com/c/chromiumos/third_party/coreboot/+/1318068",
+      "parentUuid": "80ce0edf_7f58b846",
+      "revId": "6073b81aa810ec883d2799b0b147fcc37c629107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
