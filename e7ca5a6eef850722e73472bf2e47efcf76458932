@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fdfd631_744f5be6",
+        "filename": "common/battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-05T18:29:21Z",
+      "side": 1,
+      "message": "nit: can you add parenthesis around these operation to make it clear the order of operations, please",
+      "range": {
+        "startLine": 591,
+        "startChar": 10,
+        "endLine": 591,
+        "endChar": 22
+      },
+      "revId": "e7ca5a6eef850722e73472bf2e47efcf76458932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

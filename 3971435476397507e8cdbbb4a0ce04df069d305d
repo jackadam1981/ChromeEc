@@ -22,6 +22,30 @@
       "revId": "3971435476397507e8cdbbb4a0ce04df069d305d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e7b412_ae6c4191",
+        "filename": "include/battery.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-05T18:29:21Z",
+      "side": 1,
+      "message": "I have also seen the work permillage (I don\u0027t know if that is more confusing though)",
+      "parentUuid": "54d1a813_142e5f92",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "3971435476397507e8cdbbb4a0ce04df069d305d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
