@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb0a8aef_4250af46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-05T18:00:22Z",
+      "side": 1,
+      "message": "I am not sure how to help here - this is the name of the function, and it provides optional locking.",
+      "parentUuid": "7a7b88c4_75c7088c",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "fe7402f232489dc16b17f0e8c177f793f6b8e347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b48ac6fc_4f8aa0e0",
         "filename": "chip/g/jitter.c",
         "patchSetId": 7
