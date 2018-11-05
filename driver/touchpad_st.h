@@ -265,6 +265,9 @@ enum ST_TP_MODE {
 #define ST_TP_DEBUG_CMD_READ_BUF_HEADER		0x04
 #define ST_TP_DEBUG_CMD_READ_EVENTS		0x05
 
+#define ST_TP_DEBUG_CMD_SPI_WRITE		0xff
+#define ST_TP_DEBUG_CMD_SPI_READ		0xfe
+
 #define ST_TP_HEAT_MAP_THRESHOLD 10
 
 /* A minimum version that supports heatmap mode. */

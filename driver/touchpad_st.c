@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "registers.h"
+#include "shared_mem.h"
 #include "spi.h"
 #include "task.h"
 #include "tablet_mode.h"
@@ -1221,11 +1222,100 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 	return EC_SUCCESS;
 }
 
+/* Debugging commands need to allocate a <=1k buffer. */
+SHARED_MEM_CHECK_SIZE(1024);
+
+int touchpad_debug_spi_passthrough(const uint8_t *param,
+				   unsigned int param_size,
+				   uint8_t **data, unsigned int *data_size)
+{
+	static uint8_t *buffer;
+	static unsigned int buffer_size;
+	unsigned int offset;
+
+	/*
+	 * param[0] = 0xff
+	 * param[1-2] = read-back length, 0 <= length <= 1024
+	 * param[3] = command length
+	 * param[4-16] = SPI command (tx buffer)
+	 */
+	if (param[0] == ST_TP_DEBUG_CMD_SPI_WRITE) {
+		unsigned int tx_len = param[3];
+		unsigned int rx_len = (param[1] << 8) | param[2];
+		const uint8_t *tx_buf = param + 4;
+		int ret;
+
+		if (param_size < 5 || param_size != tx_len + 4 || rx_len > 1024)
+			return EC_RES_INVALID_PARAM;
+
+		if (buffer) {
+			shared_mem_release(buffer);
+			buffer = NULL;
+		}
+
+		buffer_size = rx_len;
+		if (rx_len > 0) {
+			if (shared_mem_acquire(
+				buffer_size, (char **)&buffer) != EC_SUCCESS) {
+				buffer = NULL;
+				buffer_size = 0;
+				return EC_RES_BUSY;
+			}
+
+			memset(buffer, 0, buffer_size);
+		}
+
+		ret = spi_transaction(SPI, tx_buf, tx_len, buffer, rx_len);
+
+		if (ret)
+			return EC_RES_BUS_ERROR;
+
+		return EC_RES_SUCCESS;
+	}
+
+	/*
+	 * ST_TP_DEBUG_CMD_SPI_READ: retrieve previously read data from buffer,
+	 * in blocks of 64 bytes.
+	 *
+	 * param[0] = 0xfe
+	 * param[1] = offset (in number of blocks)
+	 */
+	if (param_size != 2)
+		return EC_RES_INVALID_PARAM;
+
+	offset = param[1] * 64;
+
+	if (!buffer)
+		return EC_RES_UNAVAILABLE;
+
+	if (offset >= buffer_size) {
+		shared_mem_release(buffer);
+		buffer = NULL;
+		*data = NULL;
+		*data_size = 0;
+
+		return EC_RES_OVERFLOW;
+	}
+
+	*data = buffer + offset;
+	*data_size = MIN(64, buffer_size - offset);
+
+	return EC_RES_SUCCESS;
+}
+
 int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		   uint8_t **data, unsigned int *data_size)
 {
 	static uint8_t buf[8];
 	int num_events;
+
+	if (param_size == 0)
+		return EC_RES_INVALID_PARAM;
+
+	if (*param == ST_TP_DEBUG_CMD_SPI_READ ||
+	    *param == ST_TP_DEBUG_CMD_SPI_WRITE)
+		return touchpad_debug_spi_passthrough(param, param_size, data,
+						      data_size);
 
 	if (param_size != 1)
 		return EC_RES_INVALID_PARAM;
