@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "809b7852_4810ea66",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-05T20:21:52Z",
+      "side": 1,
+      "message": "good catch, removed this check.",
+      "parentUuid": "23dd3bdc_656c957f",
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a87fe2b_0486d148",
         "filename": "util/iteflash.c",
         "patchSetId": 10
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "91192246_ffd4d551",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-05T20:21:52Z",
+      "side": 1,
+      "message": "added -R",
+      "parentUuid": "357c5f1d_f42e7c5f",
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5260326_597a7ebb",
         "filename": "util/iteflash.c",
         "patchSetId": 10
@@ -83,6 +119,30 @@
       "writtenOn": "2018-11-03T01:21:43Z",
       "side": 1,
       "message": "this is a leftover from testing, I can remove this.",
+      "range": {
+        "startLine": 1682,
+        "startChar": 1,
+        "endLine": 1683,
+        "endChar": 0
+      },
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf131b3d_912ae443",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1683,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-05T20:21:52Z",
+      "side": 1,
+      "message": "added a separate patch to fix this.",
+      "parentUuid": "d5260326_597a7ebb",
       "range": {
         "startLine": 1682,
         "startChar": 1,
