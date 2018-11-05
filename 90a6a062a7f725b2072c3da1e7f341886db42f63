@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "357c5f1d_f42e7c5f",
+        "filename": "util/iteflash.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-05T17:00:27Z",
+      "side": 1,
+      "message": "How about --read-range or --range?  Could either skip having a single char version, or use -R for the single char.  Format can be same offset:size just without the filename part.",
+      "parentUuid": "cdded05e_d45b13ef",
+      "revId": "90a6a062a7f725b2072c3da1e7f341886db42f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5260326_597a7ebb",
         "filename": "util/iteflash.c",
         "patchSetId": 10
