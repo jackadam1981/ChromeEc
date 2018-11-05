@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed9d2de8_99983d46",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-05T03:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a90cc2_064ca3b7",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 12
+      },
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d33f8bb8_6744fb1b",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b1b42afd_e7fd8f88",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-05T03:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d33f8bb8_6744fb1b",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 6
+      },
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "643e0741_33c781a4",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "5df6332d_c0afa08e",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-05T03:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "643e0741_33c781a4",
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2acf667_e2ffc72b",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f4b70c4_be2c71ea",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-05T03:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2acf667_e2ffc72b",
+      "revId": "0cfadd7622c59e519ca4cdf29a860559395bb505",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
