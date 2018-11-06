@@ -34,6 +34,24 @@
       "revId": "b65421706d8a992c7e7e8330b9dccdf5a2c36ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6d0937_9dc45a09",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-06T23:01:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure how the payload size work, but we use this interface for flashrom on servo_micro/CCD, so I\u0027d guess it\u0027s flexible enough.",
+      "parentUuid": "0f7efa91_dd16d6d5",
+      "revId": "b65421706d8a992c7e7e8330b9dccdf5a2c36ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
