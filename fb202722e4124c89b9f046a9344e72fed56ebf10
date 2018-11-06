@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d83199f_2dce22f1",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-06T18:38:42Z",
+      "side": 1,
+      "message": "this seems like something we should add to common code instead of board specific board. This would be helpful to almost all chromebooks on ToT",
+      "range": {
+        "startLine": 53,
+        "startChar": 20,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "fb202722e4124c89b9f046a9344e72fed56ebf10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cddf38b_c7a36fda",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-06T18:38:42Z",
+      "side": 1,
+      "message": "why did plankton change?",
+      "revId": "fb202722e4124c89b9f046a9344e72fed56ebf10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
