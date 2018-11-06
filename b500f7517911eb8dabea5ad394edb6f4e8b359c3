@@ -22,6 +22,30 @@
       "revId": "b500f7517911eb8dabea5ad394edb6f4e8b359c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d5e56f2_3d1f006b",
+        "filename": "test/usb_typec_ctvpd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-11-06T01:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "902884f8_be6d688c",
+      "range": {
+        "startLine": 24,
+        "startChar": 30,
+        "endLine": 24,
+        "endChar": 37
+      },
+      "revId": "b500f7517911eb8dabea5ad394edb6f4e8b359c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
