@@ -16,6 +16,24 @@
       "revId": "b65421706d8a992c7e7e8330b9dccdf5a2c36ced",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7efa91_dd16d6d5",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-11-06T11:15:50Z",
+      "side": 1,
+      "message": "Oh, I forgot we have this interface..\nHowever, I\u0027m not sure if 62 bytes read payload will be enough.\nDo we have sample code to utilize this interface?",
+      "parentUuid": "8b6aadf4_37117493",
+      "revId": "b65421706d8a992c7e7e8330b9dccdf5a2c36ced",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
