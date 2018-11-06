@@ -22,6 +22,30 @@
       "revId": "97c6609f8dc889a2e70daea5147776bb6c2bdbe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda7e25f_4be8b865",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-06T16:26:59Z",
+      "side": 1,
+      "message": "Either way should work.  I\u0027d say that in general the \"chipset_in_state\" function is a bit easier to read, but the transitioning one is more correct (especially since we shouldn\u0027t care about the sensor values as we transition anyway)",
+      "parentUuid": "11eb193e_c9419a75",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 24
+      },
+      "revId": "97c6609f8dc889a2e70daea5147776bb6c2bdbe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
