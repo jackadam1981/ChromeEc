@@ -75,11 +75,26 @@ static const struct battery_info info_3 = {
 	.discharging_max_c = 60,
 };
 
+/* Panasonic AP18F4M (Bard/Ekko) */
+static const struct battery_info info_4 = {
+	.voltage_max = 8700,
+	.voltage_normal = 7380,
+	.voltage_min = 5500,
+	.precharge_current = 256,
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
+	.discharging_max_c = 60,
+};
+
 enum gauge_type {
 	GAUGE_TYPE_UNKNOWN = 0,
 	GAUGE_TYPE_TI_BQ40Z50,
 	GAUGE_TYPE_RENESAS_RAJ240,
 	GAUGE_TYPE_AKALI,
+	GAUGE_TYPE_BARD_EKKO,
 };
 
 static const struct battery_info *info = &info_0;
@@ -109,9 +124,10 @@ static int sb_get_mac(uint16_t cmd, uint8_t *data, int len)
 static enum gauge_type get_gauge_ic(void)
 {
 	uint8_t data[11];
-
 	if (oem == PROJECT_AKALI)
 		return GAUGE_TYPE_AKALI;
+	if ((oem == PROJECT_BARD) || (oem == PROJECT_EKKO))
+		return GAUGE_TYPE_BARD_EKKO;
 
 	/* 0x0002 is for 'Firmware Version' (p91 in BQ40Z50-R2 TRM).
 	 * We can't use sb_read_mfgacc because the command won't be included
@@ -131,6 +147,11 @@ void board_battery_init(void)
 	/* Only static config because gauge may not be initialized yet */
 	if (oem == PROJECT_AKALI) {
 		info = &info_3;
+		sb_ship_mode_reg = 0x3A;
+		sb_shutdown_data = 0xC574;
+		return;
+	} else if ((oem == PROJECT_BARD) || (oem == PROJECT_EKKO)) {
+		info = &info_4;
 		sb_ship_mode_reg = 0x3A;
 		sb_shutdown_data = 0xC574;
 		return;
@@ -307,6 +328,19 @@ static int battery_check_disconnect_1(void)
 	return BATTERY_DISCONNECT_ERROR;
 }
 
+static int battery_check_disconnect_2(void)
+{
+	int batt_discharge_fet;
+
+	if (sb_read(SB_MANUFACTURER_ACCESS, &batt_discharge_fet))
+		return BATTERY_DISCONNECT_ERROR;
+
+	/* Bit 13: Discharge FET status (1: Off, 0: On) */
+	if (!(batt_discharge_fet & 0x2000))
+		return BATTERY_NOT_DISCONNECTED;
+
+	return BATTERY_DISCONNECT_ERROR;
+}
 static int battery_check_disconnect(void)
 {
 	if (!battery_init())
@@ -320,6 +354,8 @@ static int battery_check_disconnect(void)
 	switch (fuel_gauge) {
 	case GAUGE_TYPE_AKALI:
 		return battery_check_disconnect_1();
+	case GAUGE_TYPE_BARD_EKKO:
+		return battery_check_disconnect_2();
 	case GAUGE_TYPE_TI_BQ40Z50:
 		return battery_check_disconnect_ti_bq40z50();
 	case GAUGE_TYPE_RENESAS_RAJ240:
