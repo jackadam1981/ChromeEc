@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5abf537_879eb392",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-06T18:29:34Z",
+      "side": 1,
+      "message": "This logic definitely seems like an improvement. Again, I think this is really something we should do across the board (punt intended)",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 3
+      },
+      "revId": "643880724884a0aad3de0bc44f491e444f9810a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
