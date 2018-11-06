@@ -46,6 +46,30 @@
       "revId": "e7ca5a6eef850722e73472bf2e47efcf76458932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c01b6d06_01d5a1a9",
+        "filename": "common/battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-06T21:04:51Z",
+      "side": 1,
+      "message": "I won\u0027t push on it then. I generally agree with this sentiment though: https://softwareengineering.stackexchange.com/a/201187",
+      "parentUuid": "a7f1a85d_0a1931cb",
+      "range": {
+        "startLine": 591,
+        "startChar": 10,
+        "endLine": 591,
+        "endChar": 22
+      },
+      "revId": "e7ca5a6eef850722e73472bf2e47efcf76458932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
