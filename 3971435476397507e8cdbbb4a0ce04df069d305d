@@ -46,6 +46,30 @@
       "revId": "3971435476397507e8cdbbb4a0ce04df069d305d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6064591_5cdc8343",
+        "filename": "include/battery.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-06T19:10:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "59e7b412_ae6c4191",
+      "range": {
+        "startLine": 88,
+        "startChar": 41,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "3971435476397507e8cdbbb4a0ce04df069d305d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
