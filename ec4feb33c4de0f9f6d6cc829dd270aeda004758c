@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af818cb1_153cd00b",
+        "filename": "board/delan/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1284593
+      },
+      "writtenOn": "2018-11-06T07:56:58Z",
+      "side": 1,
+      "message": "The specification for the BYD battery for discharging is 0 .. 70C, and the charging specification is 0 .. 60C.\n\nWe do not want the 4.2.5 over-temperature protection limits, we want the 2.13 and 2.15 nominal temperature ranges.",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "ec4feb33c4de0f9f6d6cc829dd270aeda004758c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
