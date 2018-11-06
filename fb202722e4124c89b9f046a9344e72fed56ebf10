@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f1b68159_009d61f7",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-06T20:25:14Z",
+      "side": 1,
+      "message": "I concur on the \"do not commit\" for this config.  This option actually breaks the first item on the USB-PD power swap test list.  With it enabled, one chromebook will automatically start charging from the other, and then it disregards all user attempts to set the power source back to battery.  \n\nWhat inspired including this config?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 42
+      },
+      "revId": "fb202722e4124c89b9f046a9344e72fed56ebf10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d83199f_2dce22f1",
         "filename": "baseboard/grunt/usb_pd_policy.c",
         "patchSetId": 1
