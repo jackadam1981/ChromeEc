@@ -277,12 +277,18 @@ enum mft_channel {
 	MFT_CH_COUNT,
 };
 
+/*
+ * Bard and Ekko proto system are using old cbi OEM_ID.
+ * Define PROJECT_BARD and PROJECT for these system.
+ */
 enum oem_id {
 	PROJECT_AKALI = 1,
 	PROJECT_VAYNE = 3,
 	PROJECT_SONA,
 	PROJECT_PANTHEON,
 	PROJECT_NAMI,
+	PROJECT_BARD,
+	PROJECT_EKKO,
 	PROJECT_COUNT,
 };
 
