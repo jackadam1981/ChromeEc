@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b96cda5e_3036162e",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2018-11-06T20:45:29Z",
+      "side": 1,
+      "message": "okay I will change it",
+      "parentUuid": "a74e3f47_3a90c356",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 5
+      },
+      "revId": "8deaf5bcc0a0beca9b11b7e351d8d26ba6d1643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3222022f_3f287d14",
         "filename": "baseboard/dragonegg/baseboard.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-06T18:09:41Z",
       "side": 1,
       "message": "nit: I would remove this .hpd_update \u003d virtual since it just adds noise. You can leave the TODO though",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 42
+      },
+      "revId": "8deaf5bcc0a0beca9b11b7e351d8d26ba6d1643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75aed48_247c01fe",
+        "filename": "baseboard/dragonegg/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2018-11-06T20:45:29Z",
+      "side": 1,
+      "message": "okay. How about we can add a local ifdef and keep both code so that its easy to cleanup when we test with virtual hpd code",
+      "parentUuid": "3222022f_3f287d14",
       "range": {
         "startLine": 232,
         "startChar": 2,
