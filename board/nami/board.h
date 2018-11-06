@@ -88,6 +88,8 @@
 #define CONFIG_BATTERY_SMART
 #define CONFIG_PWR_STATE_DISCHARGE_FULL
 #define CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD
+#undef  CONFIG_BATT_HOST_FULL_FACTOR
+#define CONFIG_BATT_HOST_FULL_FACTOR	100
 
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
@@ -169,6 +171,7 @@
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_PORT_COUNT 2
+#define CONFIG_USB_PD_MAX_TOTAL_SOURCE_CURRENT 4500
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
 #define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_TCPM_MUX
@@ -317,6 +320,9 @@ void board_set_tcpc_power_mode(int port, int mode);
 extern uint16_t board_version;
 extern uint8_t oem;
 extern uint32_t sku;
+
+/* SKU_ID[24:31] are dedicated to OEM customization */
+#define CBI_SKU_CUSTOM_FIELD(val)	((val & 0xffffffff) >> 24)
 
 #endif /* !__ASSEMBLER__ */
 
