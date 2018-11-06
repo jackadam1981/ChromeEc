@@ -277,12 +277,18 @@ enum mft_channel {
 	MFT_CH_COUNT,
 };
 
+/*
+ * PROJECT_BARD and PROJECT EKKO is used for proto system
+ * that used old OEM_ID.
+ */
 enum oem_id {
 	PROJECT_AKALI = 1,
 	PROJECT_VAYNE = 3,
 	PROJECT_SONA,
 	PROJECT_PANTHEON,
 	PROJECT_NAMI,
+	PROJECT_BARD,
+	PROJECT_EKKO,
 	PROJECT_COUNT,
 };
 

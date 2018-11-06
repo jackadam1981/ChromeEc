@@ -75,6 +75,39 @@ static const struct battery_info info_3 = {
 	.discharging_max_c = 60,
 };
 
+/* Panasonic AP18F4M (Bard/Ekko) */
+static const struct battery_info info_4 = {
+	.voltage_max = 8700,
+	.voltage_normal = 7380,
+	.voltage_min = 5500,
+	.precharge_current = 256,
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
+	.discharging_max_c = 60,
+};
+
+struct battery_gauge_info {
+	const char *device_name;
+};
+
+enum battery_type {
+	BATTERY_TYPE_AP15 = 0,
+	BATTERY_TYPE_AP18,
+	BATTERY_TYPE_COUNT,
+};
+
+static const struct battery_gauge_info gauge_info[] = {
+	[BATTERY_TYPE_AP15] = {
+		.device_name = "AP15O5L",
+	},
+	[BATTERY_TYPE_AP18] = {
+		.device_name = "AP18F4M",
+	},
+};
+
 enum gauge_type {
 	GAUGE_TYPE_UNKNOWN = 0,
 	GAUGE_TYPE_TI_BQ40Z50,
@@ -86,6 +119,7 @@ static const struct battery_info *info = &info_0;
 static int sb_ship_mode_reg = SB_MANUFACTURER_ACCESS;
 static int sb_shutdown_data = 0x0010;
 static enum gauge_type fuel_gauge;
+static enum battery_type akali_battery_type;
 
 const struct battery_info *battery_get_info(void)
 {
@@ -109,8 +143,8 @@ static int sb_get_mac(uint16_t cmd, uint8_t *data, int len)
 static enum gauge_type get_gauge_ic(void)
 {
 	uint8_t data[11];
-
-	if (oem == PROJECT_AKALI)
+	if ((oem == PROJECT_AKALI) || (oem == PROJECT_BARD) ||
+	    (oem == PROJECT_EKKO))
 		return GAUGE_TYPE_AKALI;
 
 	/* 0x0002 is for 'Firmware Version' (p91 in BQ40Z50-R2 TRM).
@@ -128,9 +162,25 @@ static enum gauge_type get_gauge_ic(void)
 
 void board_battery_init(void)
 {
+	char device_name[32];
+	int i;
+
+	for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
+		if (!battery_device_name(device_name, sizeof(device_name))) {
+			if (!strcasecmp(device_name,
+					gauge_info[i].device_name)) {
+				akali_battery_type = i;
+				break;
+			}
+		}
+	}
 	/* Only static config because gauge may not be initialized yet */
-	if (oem == PROJECT_AKALI) {
-		info = &info_3;
+	if ((oem == PROJECT_AKALI) || (oem == PROJECT_BARD) ||
+	    (oem == PROJECT_EKKO)) {
+		if (akali_battery_type == BATTERY_TYPE_AP15)
+			info = &info_3;
+		else if (akali_battery_type == BATTERY_TYPE_AP18)
+			info = &info_4;
 		sb_ship_mode_reg = 0x3A;
 		sb_shutdown_data = 0xC574;
 		return;
@@ -300,9 +350,15 @@ static int battery_check_disconnect_1(void)
 	if (sb_read(SB_MANUFACTURER_ACCESS, &batt_discharge_fet))
 		return BATTERY_DISCONNECT_ERROR;
 
-	/* Bit 15: Discharge FET status (1: On, 0: Off) */
-	if (batt_discharge_fet & 0x4000)
-		return BATTERY_NOT_DISCONNECTED;
+	if (akali_battery_type == BATTERY_TYPE_AP15) {
+		/* Bit 15: Discharge FET status (1: On, 0: Off) */
+		if (batt_discharge_fet & 0x4000)
+			return BATTERY_NOT_DISCONNECTED;
+	} else if (akali_battery_type == BATTERY_TYPE_AP18) {
+		/* Bit 13: Discharge FET status (1: Off, 0: On) */
+		if (!(batt_discharge_fet & 0x2000))
+			return BATTERY_NOT_DISCONNECTED;
+	}
 
 	return BATTERY_DISCONNECT_ERROR;
 }
