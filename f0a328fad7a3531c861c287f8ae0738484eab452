@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c4b4614_c5a29963",
+        "filename": "util/iteflash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-11-06T01:02:23Z",
+      "side": 1,
+      "message": "Oh right, I forgot that as of current ToT this boiler plate is still necessary.  This will become slightly cleaner after the CL that adds i2c-dev support.  [No further changes needed in this CL.]",
+      "range": {
+        "startLine": 1723,
+        "startChar": 0,
+        "endLine": 1724,
+        "endChar": 14
+      },
+      "revId": "f0a328fad7a3531c861c287f8ae0738484eab452",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
