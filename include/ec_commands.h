@@ -5,6 +5,8 @@
 
 /* Host communication command constants for Chrome EC */
 
+/* clang-format off */
+
 #ifndef __CROS_EC_EC_COMMANDS_H
 #define __CROS_EC_EC_COMMANDS_H
 
@@ -5316,3 +5318,5 @@ struct __ec_align_size1 ec_params_charger_control {
 #endif  /* !__ACPI__ */
 
 #endif  /* __CROS_EC_EC_COMMANDS_H */
+
+/* clang-format on */
