@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dccfc9e_9173e754",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4780,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T16:43:24Z",
+      "side": 1,
+      "message": "nit: can you fix the nul -\u003e null here, please (while we are here)",
+      "range": {
+        "startLine": 4780,
+        "startChar": 54,
+        "endLine": 4780,
+        "endChar": 57
+      },
+      "revId": "be41224481baadd71fd12596bebe4a5916fe77bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
