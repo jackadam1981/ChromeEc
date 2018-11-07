@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4c56f8_aeef8260",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T21:31:29Z",
+      "side": 1,
+      "message": "it almost seems like we should have an absolute window (of maybe 5mA) that we don\u0027t notifiy again, but it is goes out of the absolute 5mA window, then we notify.\n\nI am slightly concerned about the initial case that introduced this window. Maybe the answer is to change from a relative/sliding window into an absolute window. Then if a batter keeps bumping up by 2mA at a time, it will eventually get to the OS after 2~3 updates.",
+      "range": {
+        "startLine": 830,
+        "startChar": 3,
+        "endLine": 833,
+        "endChar": 57
+      },
+      "revId": "211d6195300c0f99ea029fcff4da259a10a82f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fac9a5b1_405ce89e",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T21:31:29Z",
+      "side": 1,
+      "message": "Should we set this on some boards that needed it originally, like samus?",
+      "range": {
+        "startLine": 439,
+        "startChar": 8,
+        "endLine": 439,
+        "endChar": 32
+      },
+      "revId": "211d6195300c0f99ea029fcff4da259a10a82f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
