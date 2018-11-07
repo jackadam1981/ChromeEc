@@ -905,8 +905,8 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 			buffer[0] = rv;
 			return VENDOR_RC_INTERNAL_ERROR;
 		}
-	} else if (!board_battery_is_present()) {
-		/* Open allowed with no password if battery is removed */
+	} else if (board_user_has_ownership()) {
+		/* Open allowed with no password if user is present */
 	} else if ((ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_DEV_MODE) ||
 		    (board_vboot_dev_mode_enabled())) &&
 		   (ccd_is_cap_enabled(CCD_CAP_OPEN_FROM_USB) ||
@@ -940,9 +940,9 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 	if (!is_long && ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_SHORT_PP))
 		need_pp = 0;
 
-	/* Bypass physical presence check entirely if battery is removed */
+	/* Bypass physical presence check entirely if user is present */
 	if (ccd_is_cap_enabled(CCD_CAP_REMOVE_BATTERY_BYPASSES_PP) &&
-	    !board_battery_is_present()) {
+	    board_user_has_ownership()) {
 		need_pp = 0;
 	}
 
@@ -1030,9 +1030,9 @@ static enum vendor_cmd_rc ccd_unlock(struct vendor_cmd_params *p)
 	if (ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_SHORT_PP))
 		need_pp = 0;
 
-	/* Bypass physical presence check entirely if battery is removed */
+	/* Bypass physical presence check entirely if user is present */
 	if (ccd_is_cap_enabled(CCD_CAP_REMOVE_BATTERY_BYPASSES_PP) &&
-	    !board_battery_is_present()) {
+	    board_user_has_ownership()) {
 		need_pp = 0;
 	}
 
@@ -1463,8 +1463,9 @@ static enum vendor_cmd_rc ccd_disable_factory_mode(enum vendor_cmd_cc code,
 		}
 
 		/* Check if physical presence is required to unlock. */
+
 		if (!ccd_is_cap_enabled(CCD_CAP_REMOVE_BATTERY_BYPASSES_PP) ||
-		    board_battery_is_present()) {
+		    !board_user_has_ownership()) {
 			const uint8_t required_capabilities[] = {
 				CCD_CAP_OPEN_WITHOUT_TPM_WIPE,
 				CCD_CAP_UNLOCK_WITHOUT_AP_REBOOT,

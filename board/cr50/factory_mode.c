@@ -107,7 +107,7 @@ static enum vendor_cmd_rc vc_factory_reset(enum vendor_cmd_cc code,
 	if (input_size)
 		return VENDOR_RC_BOGUS_ARGS;
 
-	if (board_battery_is_present() || !board_fwmp_allows_unlock() ||
+	if (!board_user_has_ownership() || !board_fwmp_allows_unlock() ||
 	    ccd_has_password())
 		return VENDOR_RC_NOT_ALLOWED;
 

@@ -157,6 +157,11 @@ int board_tpm_uses_spi(void)
 	return !!(board_properties & BOARD_SLAVE_CONFIG_SPI);
 }
 
+int board_wp_disable_delay_required(void)
+{
+	return !!(board_properties & BOARD_WP_DISABLE_DELAY);
+}
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {

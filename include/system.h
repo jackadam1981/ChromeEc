@@ -446,6 +446,10 @@ enum {
 	SLEEP_MASK_JTAG     = (1 << 16), /* JTAG is in use. */
 	SLEEP_MASK_CONSOLE  = (1 << 17), /* Console is in use. */
 
+	SLEEP_MASK_BOARD_OWNERSHIP = (1 << 18), /* Physical presence via
+						 * board ownership ongoing
+						 */
+
 	SLEEP_MASK_FORCE_NO_LOW_SPEED = (1 << 31)  /* Force disable. */
 };
 
@@ -461,12 +465,12 @@ extern uint32_t sleep_mask;
  */
 
 #ifndef CONFIG_LOW_POWER_S0
-#define DEEP_SLEEP_ALLOWED           (!(sleep_mask & 0x0000ffff))
+#define DEEP_SLEEP_ALLOWED           (!(sleep_mask & 0x0007ffff))
 #else
-#define DEEP_SLEEP_ALLOWED           (!(sleep_mask & 0x0000ffff & \
+#define DEEP_SLEEP_ALLOWED           (!(sleep_mask & 0x0007ffff & \
 				       (~SLEEP_MASK_AP_RUN)))
 #endif
-#define LOW_SPEED_DEEP_SLEEP_ALLOWED (!(sleep_mask & 0xffff0000))
+#define LOW_SPEED_DEEP_SLEEP_ALLOWED (!(sleep_mask & 0xfff80000))
 
 /**
  * Enable low power sleep mask. For low power sleep to take affect, all masks
