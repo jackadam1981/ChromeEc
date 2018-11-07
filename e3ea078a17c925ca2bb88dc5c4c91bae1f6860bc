@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec5a3af0_58c7be26",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-07T18:26:14Z",
+      "side": 1,
+      "message": "Better to use drp_state[port] to see what the policy has been set to?",
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ce81176_494d97f9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3351,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-07T18:26:14Z",
+      "side": 1,
+      "message": "Would it be better to use \"drp_state[port] \u003d\u003d PD_DRP_TOGGLE_ON\" instead here?",
+      "range": {
+        "startLine": 3351,
+        "startChar": 7,
+        "endLine": 3351,
+        "endChar": 41
+      },
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7313489e_c4e3a957",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3979,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-07T18:26:14Z",
+      "side": 1,
+      "message": "I think the goal of this CL is to only be in PD_STATE_DRP_AUTO_TOGGLE when (drp_state[port] \u003d\u003d PD_DRP_TOGGLE_ON). Is that correct? If so, the comment and \"if (...)\" here should be removed, so that tcpm_enable_drp_toggle() is always called. Or, perhaps tcpm_enable_drp_toggle() should instead be called on entry to PD_STATE_DRP_AUTO_TOGGLE?",
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff75f7d8_ccf27933",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3981,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-07T18:26:14Z",
+      "side": 1,
+      "message": "The purpose of PD_FLAGS_TCPC_DRP_TOGGLE is unclear to me. I have a neglected CL:1194347 to remove it.",
+      "range": {
+        "startLine": 3981,
+        "startChar": 22,
+        "endLine": 3981,
+        "endChar": 46
+      },
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
