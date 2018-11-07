@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed7c1eaa_558b4378",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6753,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T21:39:39Z",
+      "side": 1,
+      "message": "can we add that this should be 0 for string types too?",
+      "range": {
+        "startLine": 6753,
+        "startChar": 13,
+        "endLine": 6753,
+        "endChar": 47
+      },
+      "revId": "a9ec7b5b008dd7259631339b52db2b7faa8f8f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
