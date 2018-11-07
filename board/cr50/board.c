@@ -66,6 +66,7 @@
 #include "Implementation.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
 #define NVMEM_TPM_SIZE ((sizeof((struct nvmem_partition *)0)->buffer) \
 			- NVMEM_CR50_SIZE)
@@ -157,6 +158,11 @@ int board_tpm_uses_spi(void)
 	return !!(board_properties & BOARD_SLAVE_CONFIG_SPI);
 }
 
+int board_wp_disable_delay_required(void)
+{
+	return !!(board_properties & BOARD_WP_DISABLE_DELAY);
+}
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {
@@ -241,7 +247,8 @@ static struct board_cfg board_cfg_table[] = {
 	{
 		.strap_cfg = 0x20,
 		.board_properties = BOARD_SLAVE_CONFIG_I2C |
-			BOARD_USE_PLT_RESET,
+			BOARD_USE_PLT_RESET |
+			BOARD_WP_DISABLE_DELAY,	// FIXME - not for submit!
 	},
 	/* Rowan: DIOA12 = 5k PD, DIOA6 = 5k PU */
 	{
@@ -1307,6 +1314,8 @@ static void init_board_properties(void)
 
 	properties = GREG32(PMU, LONG_LIFE_SCRATCH1);
 
+	CPRINTF("Init board properties: 0x%08x\n", properties);
+
 	/*
 	 * This must be a power on reset or maybe restart due to a software
 	 * update from a version not setting the register.
@@ -1319,6 +1328,8 @@ static void init_board_properties(void)
 		 */
 		properties &= ~BOARD_ALL_PROPERTIES;
 		properties |= get_properties();
+
+		CPRINTF("   hard reset: 0x%08x\n", properties);
 		/*
 		 * Now save the properties value for future use.
 		 *
@@ -1331,6 +1342,7 @@ static void init_board_properties(void)
 		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
 	}
 	/* Save this configuration setting */
+	CPRINTF("   final board properties: 0x%08x\n", properties);
 	board_properties = properties;
 }
 DECLARE_HOOK(HOOK_INIT, init_board_properties, HOOK_PRIO_FIRST);
