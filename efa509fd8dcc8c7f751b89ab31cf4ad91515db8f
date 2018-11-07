@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5f5808af_877d63a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5af4b14_f1dc126a",
+      "revId": "efa509fd8dcc8c7f751b89ab31cf4ad91515db8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fa8b351_d13c47f8",
         "filename": "util/signer/ec_RW-manifest-prod.json",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-11-07T01:09:40Z",
       "side": 1,
       "message": "The existing script specifies this in hex, and https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/1321410/2 requires hex.",
+      "revId": "efa509fd8dcc8c7f751b89ab31cf4ad91515db8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a7f86ab_bbb23bb2",
+        "filename": "util/signer/ec_RW-manifest-prod.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-07T01:13:54Z",
+      "side": 1,
+      "message": "do you mean that the script in crrev.com/c/1321410 requires 0x prefix?\n\nIn the end of the day this value is consumed by the xml parser, and it takes both decimal and hex values.",
+      "parentUuid": "7fa8b351_d13c47f8",
       "revId": "efa509fd8dcc8c7f751b89ab31cf4ad91515db8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
