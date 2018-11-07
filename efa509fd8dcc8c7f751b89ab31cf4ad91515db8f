@@ -69,6 +69,24 @@
       "revId": "efa509fd8dcc8c7f751b89ab31cf4ad91515db8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56117a17_ca3c4d45",
+        "filename": "util/signer/ec_RW-manifest-prod.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1108834
+      },
+      "writtenOn": "2018-11-07T01:20:14Z",
+      "side": 1,
+      "message": "Correct.\n\nThe signer script doesn\u0027t easily have access to the json/xml parser so it felt easier to always ensure that the manifest includes hex since we\u0027ll be changing the manifest in the branch.  I\u0027d rather keep that code simple than trying to do complex verification in awk.",
+      "parentUuid": "8a7f86ab_bbb23bb2",
+      "revId": "efa509fd8dcc8c7f751b89ab31cf4ad91515db8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
