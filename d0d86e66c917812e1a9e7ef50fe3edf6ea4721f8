@@ -46,6 +46,30 @@
       "revId": "d0d86e66c917812e1a9e7ef50fe3edf6ea4721f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c332e3a_56a5737d",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1110931
+      },
+      "writtenOn": "2018-11-07T16:52:47Z",
+      "side": 0,
+      "message": "Default value is 1A which means V100ACNT disabled by default.",
+      "parentUuid": "82a98b30_575d2369",
+      "range": {
+        "startLine": 436,
+        "startChar": 45,
+        "endLine": 436,
+        "endChar": 49
+      },
+      "revId": "d0d86e66c917812e1a9e7ef50fe3edf6ea4721f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
