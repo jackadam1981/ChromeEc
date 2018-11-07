@@ -5,6 +5,8 @@
 
 /* Handy clever tricks */
 
+/* clang-format off */
+
 #ifndef __CROS_EC_COMPILE_TIME_MACROS_H
 #define __CROS_EC_COMPILE_TIME_MACROS_H
 
@@ -36,3 +38,5 @@
 #define member_size(type, member) sizeof(((type *)0)->member)
 
 #endif /* __CROS_EC_COMPILE_TIME_MACROS_H */
+
+/* clang-format on */

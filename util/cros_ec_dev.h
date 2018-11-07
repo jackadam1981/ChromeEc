@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+/* clang-format off */
+
 #ifndef __UTIL_CROS_EC_DEV_H
 #define __UTIL_CROS_EC_DEV_H
 
@@ -88,3 +90,5 @@ struct cros_ec_readmem_v2 {
 #define CROS_EC_DEV_IOCEVENTMASK_V2	_IO(CROS_EC_DEV_IOC_V2, 2)
 
 #endif /* __UTIL_CROS_EC_DEV_H */
+
+/* clang-format on */
