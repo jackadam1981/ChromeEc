@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44ca115e_5a70205d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T14:34:18Z",
+      "side": 1,
+      "message": "Was this the result or a typo?\nShouldn\u0027t this be:\nUnplug P0: (1.5A *3A)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "54a02fd7e7f64a8d663d9fc558642bbd8a9f4e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc80b6e_ebf66f79",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T14:34:18Z",
+      "side": 1,
+      "message": "\u003e\u003d 2 (since dragonegg has 3)",
+      "range": {
+        "startLine": 93,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 42
+      },
+      "revId": "54a02fd7e7f64a8d663d9fc558642bbd8a9f4e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47446f29_74c67d55",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T14:34:18Z",
+      "side": 1,
+      "message": "does this assume only 2 ports?\n\nCan you add a comment as to what you are doing here",
+      "range": {
+        "startLine": 1069,
+        "startChar": 27,
+        "endLine": 1069,
+        "endChar": 32
+      },
+      "revId": "54a02fd7e7f64a8d663d9fc558642bbd8a9f4e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8edfc1c_787856df",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3514,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T14:34:18Z",
+      "side": 1,
+      "message": "Can we re-tool this so it can handle \u003e\u003d2 ports instead of \u003d\u003d 2 (dragonegg)",
+      "range": {
+        "startLine": 3514,
+        "startChar": 8,
+        "endLine": 3514,
+        "endChar": 31
+      },
+      "revId": "54a02fd7e7f64a8d663d9fc558642bbd8a9f4e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51cea4fc_6fbc8324",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3515,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T14:34:18Z",
+      "side": 1,
+      "message": "Won\u0027t it need to be even higher to account for USB-A BC12 outbound charging as well",
+      "range": {
+        "startLine": 3515,
+        "startChar": 8,
+        "endLine": 3515,
+        "endChar": 45
+      },
+      "revId": "54a02fd7e7f64a8d663d9fc558642bbd8a9f4e65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
