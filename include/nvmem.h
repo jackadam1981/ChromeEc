@@ -106,6 +106,15 @@ int nvmem_init(void);
  */
 int nvmem_get_error_state(void);
 
+/*
+ * Attempt lock the NVMEM cache lock, but don't block execution if it fails
+ *
+ *
+ *  @return EC_SUCCESS on if the NVMEM cache was successfully locked,
+ *          EC_ERROR_BUSY if mutex is already locked by another task
+ */
+int nvmem_lock_cache_nonblocking(void);
+
 /**
  * Compare 'size' amount of bytes in NvMem
  *

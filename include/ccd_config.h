@@ -43,6 +43,14 @@ enum ccd_flag {
 
 	/* Flags that can be set via ccd_set_flags(); fill from top down */
 
+	/*
+	 * This bit tracks whether the user successfully proved ownership
+	 * through battery removal and power button presses.
+	 *
+	 * This bit is set only if BOARD_WP_DISABLE_DELAY is enabled.
+	 */
+	CCD_FLAG_MET_OWNERSHIP_REQ = (1 << 21),
+
 	/* Override write protect at boot */
 	CCD_FLAG_OVERRIDE_WP_AT_BOOT = (1 << 22),
 
