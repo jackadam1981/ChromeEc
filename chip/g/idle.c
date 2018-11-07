@@ -33,11 +33,13 @@ static enum {
 
 static int idle_default;
 
+uint32_t deep_sleep_mask;
+
 static const char *const idle_name[] = {
-	"invalid",
-	"wfi",
-	"sleep",
-	"deep sleep",
+	[DONT_KNOW] = "invalid",
+	[IDLE_WFI] = "wfi",
+	[IDLE_SLEEP] = "sleep",
+	[IDLE_DEEP_SLEEP] = "deep sleep",
 };
 BUILD_ASSERT(ARRAY_SIZE(idle_name) == NUM_CHOICES);
 
@@ -62,6 +64,7 @@ static int command_idle(int argc, char **argv)
 
 	ccprintf("idle action: %s\n", idle_name[idle_action]);
 	ccprintf("deep sleep count: %u\n", GREG32(PMU, PWRDN_SCRATCH17));
+	ccprintf("deep sleep mask: %08x\n", deep_sleep_mask);
 
 	return EC_SUCCESS;
 }
@@ -186,14 +189,22 @@ void clock_refresh_console_in_use(void)
 	delay_sleep_by(10 * SECOND);
 }
 
-void disable_deep_sleep(void)
+void disable_deep_sleep(uint32_t mask)
 {
-	idle_action = idle_default;
+	atomic_or(&deep_sleep_mask, mask);
+
+	/* If any bits are set, disable deep sleep */
+	if (deep_sleep_mask)
+		idle_action = idle_default;
 }
 
-void enable_deep_sleep(void)
+void enable_deep_sleep(uint32_t mask)
 {
-	idle_action = IDLE_DEEP_SLEEP;
+	atomic_clear(&deep_sleep_mask, mask);
+
+	/* Only enable deep sleep when all bits are clear */
+	if (deep_sleep_mask == 0)
+		idle_action = IDLE_DEEP_SLEEP;
 }
 
 static void idle_init(void)
@@ -209,6 +220,8 @@ static void idle_init(void)
 	} else {
 		idle_default = IDLE_SLEEP;
 	}
+
+	deep_sleep_mask = DEEP_SLEEP_MASK_DEFAULT;
 }
 DECLARE_HOOK(HOOK_INIT, idle_init, HOOK_PRIO_DEFAULT - 1);
 

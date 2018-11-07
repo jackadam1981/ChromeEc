@@ -449,6 +449,27 @@ enum {
 	SLEEP_MASK_FORCE_NO_LOW_SPEED = (1 << 31)  /* Force disable. */
 };
 
+enum {
+	DEEP_SLEEP_MASK_AP		= (1 << 0), /* Deep sleep disabled when
+						     * AP is running
+						     */
+	DEEP_SLEEP_MASK_BOARD_OWNERSHIP	= (1 << 1), /* Board ownership physical
+						     * detection in progress
+						     */
+};
+
+/*
+ * Not all APs support deep sleep, so the deep_sleep_mask has this bit set
+ * by default.  APs that support deep sleep will clear this bit.
+ */
+#define DEEP_SLEEP_MASK_DEFAULT		(DEEP_SLEEP_MASK_AP)
+
+/*
+ * Current deep sleep mask.  You may read from this variable, but must NOT
+ * modify it; use enable_deep_sleep() or disable_deep_sleep() to do that.
+ */
+extern uint32_t deep_sleep_mask;
+
 /*
  * Current sleep mask. You may read from this variable, but must NOT
  * modify it; use enable_sleep() or disable_sleep() to do that.
@@ -524,13 +545,13 @@ void delay_sleep_by(uint32_t us);
 
 /*
  **
- * Funtctions to control deep sleep behavior. When disabled - the device never
+ * Functions to control deep sleep behavior. When disabled - the device never
  * falls into deep sleep (the lowest power consumption state exit of which
  * usually happens through the regular reset vector with just a few bits of
  * state preserved).
  */
-void disable_deep_sleep(void);
-void enable_deep_sleep(void);
+void disable_deep_sleep(uint32_t mask);
+void enable_deep_sleep(uint32_t mask);
 
 /**
  * Use hibernate module to set up an RTC interrupt at a given

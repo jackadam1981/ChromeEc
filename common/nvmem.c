@@ -227,6 +227,22 @@ static void nvmem_lock_cache(void)
 	nvmem_mutex.task = task_get_current();
 }
 
+int nvmem_lock_cache_nonblocking(void)
+{
+	int rv;
+
+	if (nvmem_mutex.task == task_get_current())
+		rv = EC_SUCCESS;
+	else if (nvmem_mutex.task != TASK_ID_COUNT)
+		rv = EC_ERROR_BUSY;
+	else {
+		nvmem_lock_cache();
+		rv = EC_SUCCESS;
+	}
+
+	return (rv);
+}
+
 static void nvmem_release_cache(void)
 {
 	if (nvmem_mutex.write_in_progress || !commits_enabled)

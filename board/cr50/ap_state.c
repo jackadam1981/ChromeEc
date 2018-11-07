@@ -75,7 +75,7 @@ static void set_ap_off(void)
 	 * support.  It happens to be correlated with ARM vs x86 at present.
 	 */
 	if (board_deep_sleep_allowed())
-		enable_deep_sleep();
+		enable_deep_sleep(DEEP_SLEEP_MASK_AP);
 }
 
 /**
@@ -96,7 +96,7 @@ void set_ap_on(void)
 	ccd_update_state();
 
 	if (board_deep_sleep_allowed())
-		disable_deep_sleep();
+		disable_deep_sleep(DEEP_SLEEP_MASK_AP);
 }
 
 /**
