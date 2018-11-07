@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4465e162_986059ad",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2018-11-07T19:22:00Z",
+      "side": 1,
+      "message": "okay I will remove from board/dragonegg/board.h",
+      "parentUuid": "2e4218ac_e70bc3db",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "efad10e91fa8a761e3b8a914b58e0ebf0cfeb2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b61f54de_dbe43650",
         "filename": "baseboard/dragonegg/baseboard.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-07T18:40:06Z",
       "side": 1,
       "message": "I don\u0027t see how these are related to ESPI VW support. The commit message doesn\u0027t mention why these are being added.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "efad10e91fa8a761e3b8a914b58e0ebf0cfeb2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16fbe640_c6125ecb",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2018-11-07T19:22:00Z",
+      "side": 1,
+      "message": "need for PD events.\nThis patch is for entire host command configs.\nI will add more details",
+      "parentUuid": "b61f54de_dbe43650",
       "range": {
         "startLine": 19,
         "startChar": 0,
