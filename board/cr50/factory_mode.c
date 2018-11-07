@@ -89,8 +89,8 @@ int board_is_first_factory_boot(void)
  * the device. Cr50 also checks ccd isn't disabled by the FWMP or ccd password.
  *
  * checks:
- * - batt_is_present - Factory reset can only be done if HW write protect is
- *              removed.
+ * - board_user_has_ownership - Factory reset can only be done if HW write
+ *              protect is removed.
  * - FWMP disables ccd -  If FWMP has disabled ccd, then we can't bypass it with
  *              a factory reset.
  * - CCD password is set - If there is a password, someone will have to use that
@@ -107,7 +107,7 @@ static enum vendor_cmd_rc vc_factory_reset(enum vendor_cmd_cc code,
 	if (input_size)
 		return VENDOR_RC_BOGUS_ARGS;
 
-	if (board_battery_is_present() || !board_fwmp_allows_unlock() ||
+	if (!board_user_has_ownership() || !board_fwmp_allows_unlock() ||
 	    ccd_has_password())
 		return VENDOR_RC_NOT_ALLOWED;
 

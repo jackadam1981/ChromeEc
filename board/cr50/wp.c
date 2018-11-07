@@ -17,18 +17,271 @@
 #include "tpm_nvmem_ops.h"
 #include "tpm_registers.h"
 #include "util.h"
+#include "physical_presence.h"
 
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
 
-/**
- * Return non-zero if battery is present
+#ifdef CR50_DEV
+/*
+ * Under development mode, use a shorter timer to prove physical presence
  */
-int board_battery_is_present(void)
+#define BATT_REMOVE_PHYSICAL_PRESENCE_TIME	(30 * SECOND)
+#define BUTTON_PRESS_TIMEOUT			(30 * SECOND)
+#else
+#define BUTTON_PRESS_TIMEOUT			(5 * MINUTE)
+#define BATT_REMOVE_PHYSICAL_PRESENCE_TIME	(2 * MINUTE)
+#endif
+
+/* Board user ownership (UO) states */
+enum board_uo_state {
+	BOARD_UO_NOT_OWNED,
+	BOARD_UO_BATT_REMOVAL_WAIT,
+	BOARD_UO_BUTTON_PRESS_WAIT,
+	BOARD_UO_FAILED,
+	BOARD_UO_USER_OWNED,
+
+	BOARD_UO_STATES,	/* must be last */
+} current_uo_state;
+
+/*
+ * For Chromebooks that take less than 2 minutes to open, the board
+ * properties set the BOARD_WP_DISABLE_DELAY flag.  This forces
+ * a 2 minute delay after battery removal before disabling the
+ * write protect to the SPI.
+ */
+static timestamp_t batt_removal_time;
+static timestamp_t button_press_timeout;
+
+enum board_uo_state current_uo_state;
+
+/**
+ * Return non-zero if battery is present.  Always reflects
+ * the current battery state.
+ */
+static int board_battery_is_present(void)
 {
 	/* Invert because battery-present signal is active low */
 	return !gpio_get_level(GPIO_BATT_PRES_L);
 }
+
+static void batt_removal_done_async(void)
+{
+	CPRINTS("Battery removal complete, enabling unlock");
+
+	if (!ccd_get_flag(CCD_FLAG_MET_OWNERSHIP_REQ)) {
+		/*
+		 * Set the CCD_FLAG_MET_OWNERSHIP_REQ.  This prevents the
+		 * physical presence check process from restarting following
+		 * a reboot or power cycle.
+		 */
+		ccd_set_flag(CCD_FLAG_MET_OWNERSHIP_REQ, 1);
+	}
+
+	/*
+	 * All physical presence requirements met, transition to the
+	 * USER_OWNED state.
+	 */
+	current_uo_state = BOARD_UO_USER_OWNED;
+}
+
+/**
+ * Return non-zero if the user has proven they are physically present
+ * with the unit.
+ *
+ * For most systems, removal of the battery is sufficient as the case
+ * takes more than 2 minutes to open.  On other systems, this routine
+ * enforces a 2 minute delay after battery removal and requires the user to
+ * press the power button 5 times quickly following the battery removal
+ * delay.
+ *
+ * @return 1 if user physical presence requirements met, 0 otherwise
+ *
+ */
+int board_user_has_ownership(void)
+{
+	timestamp_t current_time;
+	int rv;
+	int bp = board_battery_is_present();
+	int user_has_ownership;
+
+	/* Battery is present implies no physical ownership */
+	if (bp)	{
+		/* Abort/cleanup any board ownership actions */
+		if (current_uo_state == BOARD_UO_BATT_REMOVAL_WAIT)
+			CPRINTS("Battery inserted, unlock aborted");
+
+		if (current_uo_state == BOARD_UO_BUTTON_PRESS_WAIT) {
+			/*
+			 * Stop the physical button check that was
+			 * initiated by this module.
+			 */
+			CPRINTS("Battery inserted, physical detect abort");
+			physical_detect_abort();
+		}
+
+		if (ccd_get_flag(CCD_FLAG_MET_OWNERSHIP_REQ)) {
+			/*
+			 * Clear CCD_FLAG_MET_OWNERSHIP_REQ due to battery
+			 * insertion.  The user must restart the process
+			 * to enable an additional unlock.
+			 */
+			ccd_set_flag(CCD_FLAG_MET_OWNERSHIP_REQ, 0);
+		}
+
+		if (board_wp_disable_delay_required())
+			enable_deep_sleep(DEEP_SLEEP_MASK_BOARD_OWNERSHIP);
+
+		current_uo_state = BOARD_UO_NOT_OWNED;
+		batt_removal_time.val = 0;
+		button_press_timeout.val = 0;
+		return 0;
+	}
+
+	/*
+	 * Battery removal immediately indicates user ownership if the board
+	 * is hard to open.
+	 *
+	 * The CCD_FLAG_MET_OWNERSHIP_REQ stored in NVMEM indicates that the
+	 * user proved ownership on a previous boot and the battery is still
+	 * removed.
+	 */
+	if (!board_wp_disable_delay_required() ||
+		ccd_get_flag(CCD_FLAG_MET_OWNERSHIP_REQ))
+		current_uo_state = BOARD_UO_USER_OWNED;
+
+	/*
+	 * Board options require a delay after battery removal
+	 * removal is detected prior to allowing actions that require
+	 * a physical presence/
+	 */
+	current_time = get_time();
+
+	/* All intermediate states indicate no ownership */
+	user_has_ownership = 0;
+
+	switch (current_uo_state) {
+	case BOARD_UO_USER_OWNED:
+		user_has_ownership = 1;
+		enable_deep_sleep(DEEP_SLEEP_MASK_BOARD_OWNERSHIP);
+		break;
+
+	case BOARD_UO_FAILED:
+	default:
+		/*
+		 * The user failed to press the power button following the
+		 * battery removal delay.  This state is also possible if the
+		 * user had started a CCD open and then removed the battery.
+		 */
+		enable_deep_sleep(DEEP_SLEEP_MASK_BOARD_OWNERSHIP);
+		break;
+
+	case BOARD_UO_NOT_OWNED:
+		/* New transition of battery presence TRUE to FALSE */
+		batt_removal_time.val = current_time.val +
+				BATT_REMOVE_PHYSICAL_PRESENCE_TIME;
+
+		CPRINTS("Battery Removal: %d seconds delay before unlock",
+				BATT_REMOVE_PHYSICAL_PRESENCE_TIME / SECOND);
+
+		current_uo_state = BOARD_UO_BATT_REMOVAL_WAIT;
+
+		disable_deep_sleep(DEEP_SLEEP_MASK_BOARD_OWNERSHIP);
+
+		break;
+
+	case BOARD_UO_BATT_REMOVAL_WAIT:
+		if (timestamp_expired(batt_removal_time, &current_time)) {
+			/*
+			 * Battery removal time expired. Now require the user
+			 * to tap the power button to prove ownership.  Use the
+			 * existing physical detect with the short format which
+			 * only requires 5 power button presses within 5
+			 * seconds.
+			 *
+			 * TODO: add a new physical detection type that
+			 * requires 5 button presses within 5 seconds, but has
+			 * an overall timeout of several minutes.
+			 */
+			CPRINTF("Battery removal requirement met");
+			rv = physical_detect_start(0, batt_removal_done_async);
+			if (rv != EC_SUCCESS) {
+				/*
+				 * Physical presence check via the power button
+				 * is already in progress, mark the battery
+				 * removal process as failed.  This state will
+				 * only be cleared by a battery insertion or a
+				 * reboot.
+				 */
+				CPRINTF("Physical detect already in progress, "
+					"battery removal unlock failed");
+				current_uo_state = BOARD_UO_FAILED;
+			} else {
+				button_press_timeout.val = current_time.val +
+					BUTTON_PRESS_TIMEOUT;
+
+				current_uo_state = BOARD_UO_BUTTON_PRESS_WAIT;
+			}
+		}
+		break;
+
+	case BOARD_UO_BUTTON_PRESS_WAIT:
+		if (timestamp_expired(button_press_timeout, &current_time)) {
+			/*
+			 * Timeout waiting for the user to press the
+			 * power button to complete proof of ownership
+			 */
+			physical_detect_abort();
+			current_uo_state = BOARD_UO_FAILED;
+		}
+		break;
+	}
+
+	return user_has_ownership;
+}
+
+#ifdef CR50_DEV
+
+static const char * const user_ownership_state[] = {
+	[BOARD_UO_NOT_OWNED]		= "not_owned",
+	[BOARD_UO_BATT_REMOVAL_WAIT]	= "batt_removal_wait",
+	[BOARD_UO_BUTTON_PRESS_WAIT]	= "button_press_wait",
+	[BOARD_UO_FAILED]		= "failed",
+	[BOARD_UO_USER_OWNED]		= "user_owned",
+};
+BUILD_ASSERT(ARRAY_SIZE(user_ownership_state) == BOARD_UO_STATES);
+
+static int command_bp(int argc, char **argv)
+{
+	int bp = board_battery_is_present();
+
+	if (argc > 1) {
+		/*
+		 * For development builds only, override the board properties
+		 * to enable the WP disable delay.
+		 */
+		if (strncasecmp(argv[1], "force", strlen("force")) == 0)
+			board_properties_enable_wp_disable_delay();
+	}
+
+	CPRINTF("Battery present state    = %d\n", bp);
+	CPRINTF("Current UO state         = %d - %s\n", current_uo_state,
+		user_ownership_state[current_uo_state]);
+	CPRINTF("CCD Flag Met Ownership   = %d\n",
+		ccd_get_flag(CCD_FLAG_MET_OWNERSHIP_REQ));
+	CPRINTF("Current time             = %d\n", (get_time().val/SECOND));
+	CPRINTF("Battery Removal Time     = %d\n",
+		(batt_removal_time.val/SECOND));
+	CPRINTF("Button Press Timeout     = %d\n",
+		(button_press_timeout.val/SECOND));
+
+	return EC_SUCCESS;
+}
+
+DECLARE_SAFE_CONSOLE_COMMAND(bp, command_bp,
+			     "[force]",
+			     "Get the battery state and user ownership info");
+#endif
 
 /**
  * Set the current write protect state in RBOX and long life scratch register.
@@ -65,16 +318,16 @@ int wp_is_asserted(void)
 
 static void check_wp_battery_presence(void)
 {
-	int bp = board_battery_is_present();
+	int user_present = board_user_has_ownership();
 
-	/* If we're forcing WP, ignore battery detect */
+	/* If we're forcing WP, ignore battery detect/physical presence */
 	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP)
 		return;
 
-	/* Otherwise, mirror battery */
-	if (bp != wp_is_asserted()) {
-		CPRINTS("WP %d", bp);
-		set_wp_state(bp);
+	/* Otherwise, set WP state the opposite of the user ownership state */
+	if (user_present == wp_is_asserted()) {
+		CPRINTS("WP %d", !user_present);
+		set_wp_state(!user_present);
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, check_wp_battery_presence, HOOK_PRIO_DEFAULT);
@@ -97,8 +350,8 @@ static void force_write_protect(int force, int wp_en)
 	} else {
 		/* Stop forcing write protect. */
 		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~BOARD_FORCING_WP;
-		/* Use battery presence as the value for write protect. */
-		wp_en = board_battery_is_present();
+		/* Set write protect to opposite the user ownership state */
+		wp_en = !board_user_has_ownership();
 	}
 
 	/* Disable writing to the long life register */
@@ -210,7 +463,7 @@ void init_wp_state(void)
 				     BOARD_WP_ASSERTED);
 		} else {
 			/* Write protected if battery is present */
-			set_wp_state(board_battery_is_present());
+			set_wp_state(!board_user_has_ownership());
 		}
 	} else {
 		set_wp_follow_ccd_config();

@@ -264,6 +264,10 @@ int board_use_plt_rst(void);
 int board_rst_pullup_needed(void);
 int board_tpm_uses_i2c(void);
 int board_tpm_uses_spi(void);
+int board_wp_disable_delay_required(void);
+#ifdef CR50_DEV
+void board_properties_enable_wp_disable_delay(void);
+#endif
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
@@ -278,7 +282,7 @@ void power_button_record(void);
 void power_button_release_enable_interrupt(int enable);
 
 /* Functions needed by CCD config */
-int board_battery_is_present(void);
+int board_user_has_ownership(void);
 int board_fwmp_allows_unlock(void);
 int board_vboot_dev_mode_enabled(void);
 void board_reboot_ap(void);

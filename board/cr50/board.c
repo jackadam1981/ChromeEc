@@ -110,16 +110,16 @@ struct uart_bitbang_properties bitbang_config = {
 DECLARE_IRQ(GC_IRQNUM_GPIO1_GPIO4INT, uart_bitbang_irq, 0);
 
 const char *device_state_names[] = {
-	"init",
-	"init_debouncing",
-	"init_rx_only",
-	"disconnected",
-	"off",
-	"undetectable",
-	"connected",
-	"on",
-	"debouncing",
-	"unknown"
+	[DEVICE_STATE_INIT] = "init",
+	[DEVICE_STATE_INIT_DEBOUNCING] = "init_debouncing",
+	[DEVICE_STATE_INIT_RX_ONLY] = "init_rx_only",
+	[DEVICE_STATE_DISCONNECTED] = "disconnected",
+	[DEVICE_STATE_OFF] = "off",
+	[DEVICE_STATE_UNDETECTABLE] = "undetectable",
+	[DEVICE_STATE_CONNECTED] = "connected",
+	[DEVICE_STATE_ON] = "on",
+	[DEVICE_STATE_DEBOUNCING] = "debouncing",
+	[DEVICE_STATE_UNKNOWN] = "unknown"
 };
 BUILD_ASSERT(ARRAY_SIZE(device_state_names) == DEVICE_STATE_COUNT);
 
@@ -156,6 +156,19 @@ int board_tpm_uses_spi(void)
 {
 	return !!(board_properties & BOARD_SLAVE_CONFIG_SPI);
 }
+
+int board_wp_disable_delay_required(void)
+{
+	return !!(board_properties & BOARD_WP_DISABLE_DELAY);
+}
+
+#ifdef CR50_DEV
+/* Allow run-time override to force BOARD_WP_DISABLE_DELAY board option */
+void board_properties_enable_wp_disable_delay(void)
+{
+	board_properties |= BOARD_WP_DISABLE_DELAY;
+}
+#endif
 
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
