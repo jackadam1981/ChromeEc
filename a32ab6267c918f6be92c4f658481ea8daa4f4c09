@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0702c6e7_9e3a7dd6",
+        "filename": "common/battery.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T16:37:47Z",
+      "side": 1,
+      "message": "should this be (remain \u003e batt-\u003efull_capacity) instead and the next line use batt-\u003efull_capacity instead of full?\n\nI can\u0027t quite tell",
+      "range": {
+        "startLine": 581,
+        "startChar": 6,
+        "endLine": 581,
+        "endChar": 19
+      },
+      "revId": "a32ab6267c918f6be92c4f658481ea8daa4f4c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
