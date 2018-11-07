@@ -21,14 +21,169 @@
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
 
+#define BATT_REMOVE_PHYSICAL_PRESENCE_TIME	(2 * MINUTE)
+
+/*
+ * For Chromebooks that take less than 2 minutes to open, the board
+ * properties set the BOARD_WP_DISABLE_DELAY flag.  This forces
+ * a 2 minute delay after battery removal before disabling the
+ * write protect to the SPI.
+ */
+static timestamp_t bp_phys_presence_time;
+static timestamp_t bp_phys_presence_debug_time;
+
+
 /**
- * Return non-zero if battery is present
+ * Return non-zero if battery is present.  Always reflects
+ * the current battery state.
  */
 int board_battery_is_present(void)
 {
 	/* Invert because battery-present signal is active low */
 	return !gpio_get_level(GPIO_BATT_PRES_L);
 }
+
+/**
+ * Return non-zero if battery is removed and any required
+ * delay to indicate physical presence has elapsed.
+ *
+ * @return 1 if physical presence requirements met, 0 otherwise
+ *
+ */
+int board_physical_presence_battery_is_removed(void)
+{
+	timestamp_t current_time;
+	int bp = board_battery_is_present();
+
+	/* Battery is present */
+	if (bp)	{
+
+		if (bp_phys_presence_time.val != 0)
+			CPRINTS("Battery Removal delay aborted");
+
+		/* Enable writing to the long life register */
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+		/* Clear physical presence flag due to battery insertion */
+		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~BOARD_FORCE_PHYS_PRESENCE;
+		/* Disable writing to the long life register */
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+		// FIMXE - clear persistent state that bypasses delayed
+		// battery state
+		bp_phys_presence_time.val = 0;
+		bp_phys_presence_debug_time.val = 0;
+		return 0;
+	}
+
+	/*
+	 * Default behavior - board is hard to open (> 2 minutes) so
+	 * battery removal immediately indicates physical presence.
+	 */
+	if (!board_wp_disable_delay_required())
+		return 1;
+
+	/*
+	 * Allow the WP to get automatically disabled on a reset if the
+	 * battery was removed on the last boot, and the delay criteria
+	 * was satisfied.
+	 */
+	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCE_PHYS_PRESENCE) {
+		// FIXME - temporary debug not for submit
+		if (bp_phys_presence_debug_time.val == 0) {
+			CPRINTS("Force Physical Presence");
+			bp_phys_presence_debug_time.val = 1;
+		}
+		return 1;
+	}
+
+	/*
+	 * Board options require a delay after battery removal
+	 * removal is detected prior to allowing actions that require
+	 * a physical presence/
+	 */
+	current_time = get_time();
+
+	if (bp_phys_presence_time.val == 0) {
+		/* New transition of battery presence TRUE to FALSE */
+		bp_phys_presence_time.val = current_time.val +
+				(BATT_REMOVE_PHYSICAL_PRESENCE_TIME);
+		bp_phys_presence_debug_time.val = current_time.val +
+				(30 * SECOND);
+
+		CPRINTS("Battery Removal: %d seconds delay before unlock",
+				BATT_REMOVE_PHYSICAL_PRESENCE_TIME / SECOND);
+	}
+
+	if (timestamp_expired(bp_phys_presence_time, &current_time)) {
+		/*
+		 * Battery removal time expired meeting physical presence
+		 * requirements
+		 */
+
+		/* Enable writing to the long life register */
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
+		/*
+		 * Force subsequent resets to recognize physical presence
+		 * criteria.  This is cleared once the battery is installed
+		 */
+		GREG32(PMU, LONG_LIFE_SCRATCH1) |= BOARD_FORCE_PHYS_PRESENCE;
+		/* Disable writing to the long life register */
+		GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+		return 1;
+	}
+
+	/*
+	 * This timestamp check could be used to prompt the user for additional
+	 * physical presence checks (such as pressing power button).
+	 */
+	if (timestamp_expired(bp_phys_presence_debug_time, &current_time)) {
+		uint32_t elapsed_seconds;
+
+		elapsed_seconds = (uint32_t)((bp_phys_presence_time.val
+				- current_time.val)
+				/ SECOND);
+		CPRINTS("Battery Removal: delay remaining %d", elapsed_seconds);
+		bp_phys_presence_debug_time.val = current_time.val +
+				(30 * SECOND);
+	}
+
+	/* WP disable is still delayed */
+	return 0;
+}
+
+//
+// FIXME - temporary debug for testing battery removal delay
+//
+static int command_bp(int argc, char **argv)
+{
+	int bp = board_battery_is_present();
+	int val = 1;
+
+//	(void)argc;
+//	(void)argv;
+	if (argc > 1) {
+		if (parse_bool(argv[1], &val)) {
+			CPRINTF("Current time           = %d\n",
+				(get_time().val/SECOND));
+			CPRINTF("Physical Presence time = %d\n",
+				(bp_phys_presence_time.val/SECOND));
+			CPRINTF("Debug time             = %d\n",
+				(bp_phys_presence_debug_time.val/SECOND));
+			(void)val;
+		}
+	}
+
+	CPRINTF("Battery present state %d\n", bp);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_SAFE_CONSOLE_COMMAND(bp, command_bp,
+			     "",
+			     "Get the current battery presence level");
+//
+// FIXME - end of test
 
 /**
  * Set the current write protect state in RBOX and long life scratch register.
@@ -65,16 +220,16 @@ int wp_is_asserted(void)
 
 static void check_wp_battery_presence(void)
 {
-	int bp = board_battery_is_present();
+	int physical_presence = board_physical_presence_battery_is_removed();
 
-	/* If we're forcing WP, ignore battery detect */
+	/* If we're forcing WP, ignore battery detect/physical presence */
 	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_FORCING_WP)
 		return;
 
-	/* Otherwise, mirror battery */
-	if (bp != wp_is_asserted()) {
-		CPRINTS("WP %d", bp);
-		set_wp_state(bp);
+	/* Otherwise, set WP state to match batter physical presence check */
+	if (physical_presence == wp_is_asserted()) {
+		CPRINTS("WP %d", !physical_presence);
+		set_wp_state(!physical_presence);
 	}
 }
 DECLARE_HOOK(HOOK_SECOND, check_wp_battery_presence, HOOK_PRIO_DEFAULT);
@@ -98,7 +253,7 @@ static void force_write_protect(int force, int wp_en)
 		/* Stop forcing write protect. */
 		GREG32(PMU, LONG_LIFE_SCRATCH1) &= ~BOARD_FORCING_WP;
 		/* Use battery presence as the value for write protect. */
-		wp_en = board_battery_is_present();
+		wp_en = !board_physical_presence_battery_is_removed();
 	}
 
 	/* Disable writing to the long life register */
@@ -210,7 +365,8 @@ void init_wp_state(void)
 				     BOARD_WP_ASSERTED);
 		} else {
 			/* Write protected if battery is present */
-			set_wp_state(board_battery_is_present());
+			set_wp_state(
+				!board_physical_presence_battery_is_removed());
 		}
 	} else {
 		set_wp_follow_ccd_config();

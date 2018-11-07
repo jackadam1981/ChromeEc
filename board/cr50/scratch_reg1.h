@@ -70,6 +70,13 @@
 #define BOARD_CLOSED_SOURCE_SET1     (1 << 17)
 
 /*
+ * Stores whether a successful physical presence challenge
+ * has been met by having the battery removed for a long time.
+ * This is only used when the board options specify BOARD_WP_DISABLE_DELAY
+ */
+#define BOARD_FORCE_PHYS_PRESENCE    (1 << 18)
+
+/*
  * Macro to capture all properties related to board strapping pins. This must be
  * updated if additional strap related properties are added.
  */
