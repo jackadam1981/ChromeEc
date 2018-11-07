@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b08a5eea_44b69c1b",
+        "filename": "common/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-07T21:33:54Z",
+      "side": 1,
+      "message": "should we updated remain after this line too?",
+      "range": {
+        "startLine": 587,
+        "startChar": 2,
+        "endLine": 587,
+        "endChar": 34
+      },
+      "revId": "a2a711d959fe1d43595daac9586db41b9828cfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
