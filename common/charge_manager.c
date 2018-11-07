@@ -88,6 +88,11 @@ BUILD_ASSERT(sizeof(source_port_bitmap)*8 >= CONFIG_USB_PD_PORT_COUNT);
 #endif
 static uint8_t source_port_last_rp[CONFIG_USB_PD_PORT_COUNT];
 
+#ifdef CONFIG_USB_PD_KEEP_MAX_SOURCE_CURRENT
+/* CONFIG_USB_PD_KEEP_MAX_SOURCE_CURRENT make no sense for single port system */
+BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT == 2);
+#endif
+
 /*
  * charge_manager initially operates in safe mode until asked to leave (through
  * charge_manager_leave_safe_mode()). While in safe mode, the following
@@ -1044,7 +1049,7 @@ int charge_manager_get_power_limit_uw(void)
 void charge_manager_source_port(int port, int enable)
 {
 	uint32_t prev_bitmap = source_port_bitmap;
-	int p;
+	int p, rp;
 
 	if (enable)
 		atomic_or(&source_port_bitmap, 1 << port);
@@ -1057,12 +1062,17 @@ void charge_manager_source_port(int port, int enable)
 
 	/* Set port limit according to policy */
 	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++) {
-		/*
-		 * if we are the only active source port or there is none,
-		 * advertise all the available power.
-		 */
-		int rp = (source_port_bitmap & ~(1 << p)) ? CONFIG_USB_PD_PULLUP
-			: CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT;
+		if (source_port_bitmap & ~(1 << p)) {
+			/* Other port is active source */
+			rp = CONFIG_USB_PD_PULLUP;
+#ifdef CONFIG_USB_PD_KEEP_MAX_SOURCE_CURRENT
+			if (source_port_last_rp[1 - p] != TYPEC_RP_3A0)
+				rp = CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT;
+#endif
+		} else {
+			/* Other port is inactive */
+			rp = CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT;
+		}
 
 		source_port_last_rp[p] = rp;
 
