@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e4218ac_e70bc3db",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-11-07T18:40:06Z",
+      "side": 1,
+      "message": "This is already defined in board/dragonegg/board.h . I\u0027m not sure which location makes the most sense. I may have put in board.h before I populated baseboard.h. However, it should only be defined in one place.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "efad10e91fa8a761e3b8a914b58e0ebf0cfeb2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b61f54de_dbe43650",
+        "filename": "baseboard/dragonegg/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-11-07T18:40:06Z",
+      "side": 1,
+      "message": "I don\u0027t see how these are related to ESPI VW support. The commit message doesn\u0027t mention why these are being added.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "efad10e91fa8a761e3b8a914b58e0ebf0cfeb2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
