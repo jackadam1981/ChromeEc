@@ -3499,6 +3499,24 @@
  */
 #undef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 
+/*
+ * If this is defined, the source current will be set to the highest value
+ * meeting the following conditions:
+ *
+ *   1. total current won't exceed system budget
+ *   2. source current of the other port won't change
+ *
+ * For example, when P0 is supplying 3A and P1 is plugged, P1 gets 1.5A. When
+ * P0 is supplying 1.5A and P1 is plugged, P1 gets 3A.
+ *
+ * This works under the following assumptions:
+ *
+ *   1. There are two PD ports.
+ *   2. Total system budget is 4.5A or higher
+ *   3. CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is set to 3A
+ */
+#undef CONFIG_USB_PD_KEEP_MAX_SOURCE_CURRENT
+
 
 /******************************************************************************/
 /* stm32f4 dwc usb configs. */
