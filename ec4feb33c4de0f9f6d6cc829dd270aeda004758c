@@ -22,6 +22,30 @@
       "revId": "ec4feb33c4de0f9f6d6cc829dd270aeda004758c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24afaecc_ea8324af",
+        "filename": "board/delan/battery.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2018-11-07T01:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af818cb1_153cd00b",
+      "range": {
+        "startLine": 59,
+        "startChar": 25,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "ec4feb33c4de0f9f6d6cc829dd270aeda004758c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
