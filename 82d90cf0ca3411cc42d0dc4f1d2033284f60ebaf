@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5f215d49_e93be233",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-08T18:58:50Z",
+      "side": 1,
+      "message": "Since all the current boards are using the same name, I think it is good to reduce the duplication. There are already some other GPIO_* things in grunt baseboard.",
+      "parentUuid": "1b496e6b_de85f692",
+      "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "600c1823_a0c5da68",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "That seems a little long.  Is there a shorter synonym for \"dedicated\"? \n\nAlternatively, this config could be leveraged in a shared interrupt pin if the board callback had a way of distinguishing whether the PPC needed attention (or serviced the other chip on the pin before checking the GPIO).  That just seems beyond the scope of fixing this grunt bug",
       "parentUuid": "600c1823_a0c5da68",
+      "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68e2a237_2d879244",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3327,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-08T18:58:50Z",
+      "side": 1,
+      "message": "I don\u0027t feel too strongly about it, but \"LEVEL_INT\" seemed confusing since the SN5S330 always has level interrupts, whether or not the EC happens to have a dedicated pin for them.",
+      "parentUuid": "bb0c3eb3_0b2cd654",
       "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
