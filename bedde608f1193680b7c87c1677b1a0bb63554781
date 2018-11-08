@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f8ce7fde_9078b1f8",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-11-08T03:43:13Z",
+      "side": 1,
+      "message": "ok, jett\u0027s on the CC list.",
+      "parentUuid": "d913822e_d367774c",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5da69bc_965dac47",
         "filename": "chip/ish/registers.h",
         "patchSetId": 4
@@ -237,6 +261,30 @@
       "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129e87a0_5d771063",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-11-08T03:43:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d339a83d_a1471ff8",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 36
+      },
+      "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
