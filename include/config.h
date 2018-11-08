@@ -1890,6 +1890,9 @@
 /* Set SKU ID from AP */
 #undef CONFIG_HOSTCMD_AP_SET_SKUID
 
+/* AP power sequence command */
+#undef  CONFIG_HOSTCMD_POWER_AP
+
 /* List of host commands whose debug output will be suppressed */
 #undef CONFIG_SUPPRESSED_HOST_COMMANDS
 
