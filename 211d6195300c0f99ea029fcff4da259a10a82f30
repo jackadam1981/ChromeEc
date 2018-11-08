@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dab64252_afde970f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-08T17:51:30Z",
+      "side": 1,
+      "message": "Can you elaborate an absolute window? What\u0027s the pivot value? We have to save the last pivot value in somewhere non-volatile. \n\nI think it\u0027s better to let each board manage the minimum step for simplicity.",
+      "parentUuid": "2b4c56f8_aeef8260",
+      "range": {
+        "startLine": 830,
+        "startChar": 3,
+        "endLine": 833,
+        "endChar": 57
+      },
+      "revId": "211d6195300c0f99ea029fcff4da259a10a82f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fac9a5b1_405ce89e",
         "filename": "include/config.h",
         "patchSetId": 13
