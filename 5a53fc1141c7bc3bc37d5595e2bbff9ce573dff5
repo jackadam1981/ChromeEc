@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ba04975_69332539",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3362,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-08T22:46:22Z",
+      "side": 1,
+      "message": "Need to add this to PD_STATE_SRC_DISCONNECTED as well? Since now it is possible for PD_FLAGS_LPM_REQUESTED to be set there too.",
+      "revId": "5a53fc1141c7bc3bc37d5595e2bbff9ce573dff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
