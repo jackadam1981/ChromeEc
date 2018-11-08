@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1b496e6b_de85f692",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-08T18:49:08Z",
+      "side": 1,
+      "message": "Okay.  Do you enforce that the GPIOs will all be named the same across the grunt boards?  My initial thought had been that since gpio.inc is still board-level, this may need to be too",
+      "parentUuid": "cbf7289d_f69c6e98",
+      "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "600c1823_a0c5da68",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-11-08T18:40:03Z",
       "side": 1,
       "message": "Change to CONFIG_USBC_PPC_DEDICATED_INTERRUPT_PIN?",
+      "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb0c3eb3_0b2cd654",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-08T18:49:08Z",
+      "side": 1,
+      "message": "That seems a little long.  Is there a shorter synonym for \"dedicated\"? \n\nAlternatively, this config could be leveraged in a shared interrupt pin if the board callback had a way of distinguishing whether the PPC needed attention (or serviced the other chip on the pin before checking the GPIO).  That just seems beyond the scope of fixing this grunt bug",
+      "parentUuid": "600c1823_a0c5da68",
       "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
