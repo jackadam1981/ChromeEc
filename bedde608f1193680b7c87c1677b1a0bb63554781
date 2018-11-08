@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d913822e_d367774c",
+        "filename": "chip/ish/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-11-08T03:04:55Z",
+      "side": 1,
+      "message": "https://partnerissuetracker.corp.google.com/u/1/issues/116451255",
+      "parentUuid": "48f923be_cec1340d",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "bedde608f1193680b7c87c1677b1a0bb63554781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5da69bc_965dac47",
         "filename": "chip/ish/registers.h",
         "patchSetId": 4
