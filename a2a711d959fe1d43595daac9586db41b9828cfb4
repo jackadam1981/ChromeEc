@@ -46,6 +46,30 @@
       "revId": "a2a711d959fe1d43595daac9586db41b9828cfb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "293c8376_00ea9190",
+        "filename": "common/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-08T17:10:59Z",
+      "side": 1,
+      "message": "Haha, of course. Thanks!",
+      "parentUuid": "46aa898b_398b76cb",
+      "range": {
+        "startLine": 587,
+        "startChar": 2,
+        "endLine": 587,
+        "endChar": 34
+      },
+      "revId": "a2a711d959fe1d43595daac9586db41b9828cfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
