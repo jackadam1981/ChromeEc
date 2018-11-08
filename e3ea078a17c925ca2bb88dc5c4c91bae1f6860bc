@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "6ace761b_fc7ac468",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3979,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-08T18:13:19Z",
+      "side": 1,
+      "message": "\u003e I think this is the only way to ensure we don\u0027t enable toggling if we\u0027re leaving PD_STATE_DRP_AUTO_TOGGLE\n\nI agree we shouldn\u0027t call tcpm_enable_drp_toggle() if we are leaving PD_STATE_DRP_AUTO_TOGGLE.\nBut if we are leaving PD_STATE_DRP_AUTO_TOGGLE then we won\u0027t be in this else block, will we?\nI\u0027m suggesting the \"if (drp_state[port] \u003d\u003d PD_DRP_TOGGLE_ON)\" on line 3979 should be removed, because we are inside the line 3972 else block, which means next_state \u003d\u003d PD_STATE_DRP_AUTO_TOGGLE, and therefore we always want to call tcpm_enable_drp_toggle().",
+      "parentUuid": "a5aa35d6_71283476",
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff75f7d8_ccf27933",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
