@@ -17,6 +17,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "wov_chip.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
@@ -985,6 +986,7 @@ static int codec_i2s_enable(struct host_cmd_handler_args *args)
 		wov_set_gain(gain_left, gain_right);
 		wov_set_mode(WOV_MODE_I2S);
 	} else {
+		ccprintf("codec: wov_mode_off\n");
 		wov_set_mode(WOV_MODE_OFF);
 	}
 
@@ -993,7 +995,11 @@ static int codec_i2s_enable(struct host_cmd_handler_args *args)
 
 static int codec_i2s_set_config(struct host_cmd_handler_args *args)
 {
+	struct ec_param_codec_i2s *param =
+		(struct ec_param_codec_i2s *)args->params;
 	args->response_size = 0;
+
+	wov_set_i2s_config(EC_WOV_I2S_BCLK_RATE, param->i2s_config);
 
 	return EC_RES_SUCCESS;
 }
