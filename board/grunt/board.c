@@ -83,6 +83,14 @@ static void ppc_interrupt(enum gpio_signal signal)
 	sn5s330_interrupt(port);
 }
 
+int ppc_get_alert_status(int port)
+{
+	if (port == 0)
+		return gpio_get_level(GPIO_USB_C0_SWCTL_INT_ODL) == 0;
+	else
+		return gpio_get_level(GPIO_USB_C1_SWCTL_INT_ODL) == 0;
+}
+
 #include "gpio_list.h"
 
 /* I2C port map. */
