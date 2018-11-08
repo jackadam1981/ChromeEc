@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1c8ff98_478ee3d1",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-08T23:19:11Z",
+      "side": 1,
+      "message": "omit the",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 13
+      },
+      "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2a62bb_16310def",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-08T23:19:11Z",
+      "side": 1,
+      "message": "I don\u0027t think I have seen this in board files ever. I think this might be a host side only thing (for host side EC tools)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508bbc38_b2d065b6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-08T23:19:11Z",
+      "side": 1,
+      "message": "This seems backwards to me. I would expect this to be logical_present, and the raw gpio value to be physical presence.",
+      "range": {
+        "startLine": 224,
+        "startChar": 5,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
