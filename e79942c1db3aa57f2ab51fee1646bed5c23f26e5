@@ -22,6 +22,30 @@
       "revId": "e79942c1db3aa57f2ab51fee1646bed5c23f26e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d16b366_bd451e1f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2270,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-11-08T16:55:22Z",
+      "side": 1,
+      "message": "Going to suspend doesn\u0027t set PD_DRP_FORCE_SINK, but PD_DRP_TOGGLE_OFF instead. Although, the default role for a dual role port is a sink anyways.\n\nInitially, I had this forcing snk_disconnected, but then thought about using the default role instead in case some board wanted to have a default source role.",
+      "parentUuid": "383f608d_29e664e3",
+      "range": {
+        "startLine": 2270,
+        "startChar": 16,
+        "endLine": 2270,
+        "endChar": 23
+      },
+      "revId": "e79942c1db3aa57f2ab51fee1646bed5c23f26e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
