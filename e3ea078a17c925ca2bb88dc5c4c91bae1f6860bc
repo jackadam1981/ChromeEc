@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6ed0c93_c1570df9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-11-08T02:49:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec5a3af0_58c7be26",
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ce81176_494d97f9",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "efe3171a_ec582377",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3351,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-11-08T02:49:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3ce81176_494d97f9",
+      "range": {
+        "startLine": 3351,
+        "startChar": 7,
+        "endLine": 3351,
+        "endChar": 41
+      },
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7313489e_c4e3a957",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "430c4c1f_67a6fe68",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3979,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-11-08T02:49:58Z",
+      "side": 1,
+      "message": "We should enable DRP toggle only if we decide to stay in PD_STATE_DRP_AUTO_TOGGLE. Since the API to disable toggling has been removed, I think this is the only way to ensure we don\u0027t enable toggling if we\u0027re leaving PD_STATE_DRP_AUTO_TOGGLE.",
+      "parentUuid": "7313489e_c4e3a957",
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff75f7d8_ccf27933",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -70,6 +130,30 @@
       "writtenOn": "2018-11-07T18:26:14Z",
       "side": 1,
       "message": "The purpose of PD_FLAGS_TCPC_DRP_TOGGLE is unclear to me. I have a neglected CL:1194347 to remove it.",
+      "range": {
+        "startLine": 3981,
+        "startChar": 22,
+        "endLine": 3981,
+        "endChar": 46
+      },
+      "revId": "e3ea078a17c925ca2bb88dc5c4c91bae1f6860bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ac892de_d28f34bd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3981,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-11-08T02:49:58Z",
+      "side": 1,
+      "message": "Seems like it\u0027s related to re-entering this state and Try.Src as well.",
+      "parentUuid": "ff75f7d8_ccf27933",
       "range": {
         "startLine": 3981,
         "startChar": 22,
