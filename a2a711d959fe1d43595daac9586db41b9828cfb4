@@ -22,6 +22,30 @@
       "revId": "a2a711d959fe1d43595daac9586db41b9828cfb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46aa898b_398b76cb",
+        "filename": "common/battery.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-08T01:02:36Z",
+      "side": 1,
+      "message": "We return at line 589. So, remain won\u0027t be used.",
+      "parentUuid": "b08a5eea_44b69c1b",
+      "range": {
+        "startLine": 587,
+        "startChar": 2,
+        "endLine": 587,
+        "endChar": 34
+      },
+      "revId": "a2a711d959fe1d43595daac9586db41b9828cfb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
