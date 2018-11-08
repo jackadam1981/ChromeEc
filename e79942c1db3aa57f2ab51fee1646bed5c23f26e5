@@ -46,6 +46,30 @@
       "revId": "e79942c1db3aa57f2ab51fee1646bed5c23f26e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a7944a_95d244a1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2270,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-08T17:02:32Z",
+      "side": 1,
+      "message": "Would it cause problems to make force_sink -\u003e sink; force_src -\u003e src; and toggle_off/freeze -\u003e default\n\nThat seems like the expected behavior. What are your thoughts?",
+      "parentUuid": "2d16b366_bd451e1f",
+      "range": {
+        "startLine": 2270,
+        "startChar": 16,
+        "endLine": 2270,
+        "endChar": 23
+      },
+      "revId": "e79942c1db3aa57f2ab51fee1646bed5c23f26e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
