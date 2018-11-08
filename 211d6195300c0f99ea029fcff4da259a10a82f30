@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "81c6b091_d70587aa",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-08T18:58:12Z",
+      "side": 1,
+      "message": "Static variables would be gone once EC resets. So, the new pivot would be a new full capacity, which may have shifted.",
+      "parentUuid": "8e8493cd_724102c6",
+      "range": {
+        "startLine": 830,
+        "startChar": 3,
+        "endLine": 833,
+        "endChar": 57
+      },
+      "revId": "211d6195300c0f99ea029fcff4da259a10a82f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fac9a5b1_405ce89e",
         "filename": "include/config.h",
         "patchSetId": 13
