@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbf7289d_f69c6e98",
+        "filename": "board/aleena/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-08T18:40:03Z",
+      "side": 1,
+      "message": "I think these are all the same for grunt, so could move into baseboard.",
+      "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "600c1823_a0c5da68",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3327,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-08T18:40:03Z",
+      "side": 1,
+      "message": "Change to CONFIG_USBC_PPC_DEDICATED_INTERRUPT_PIN?",
+      "revId": "82d90cf0ca3411cc42d0dc4f1d2033284f60ebaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
