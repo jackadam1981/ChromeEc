@@ -16,6 +16,24 @@
       "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93bfa725_aa256112",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-11-09T20:10:00Z",
+      "side": 1,
+      "message": "In TPM design, `publicInfo` (`extra` is the hash of `publicInfo` field) of EK is well-known. The access control is at the TPM command authorization. It can use the endorsement primary seed (for EK), only if it pass the authorization check from CreatePrimary command. So, if someone can\u0027t pass the authorization, even he provide correct EK template, it will still create the other key.\n\nActually, the first 2 bytes of extra will be 00 0b (TPM_ALG_SHA256), and the rest is a SHA256 digest, totally 34 bytes. So `extra` is not possible to be equal to TPM2_ECC_EK_NAME_CR50, which is only 4 bytes and starts with C2 E0.",
+      "parentUuid": "4bef88a1_bbc76371",
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
