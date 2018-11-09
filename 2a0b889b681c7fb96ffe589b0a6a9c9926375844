@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "bf4c6c00_0fd7e452",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-09T07:30:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a24bfd37_e9d06ef3",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "623816b6_be056b32",
         "filename": "board/cr50/tpm_nvmem_ops.c",
         "patchSetId": 6
@@ -199,6 +223,30 @@
       "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "938a96d7_e119048c",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-09T07:30:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "666081f2_d98911ed",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 22
+      },
+      "revId": "2a0b889b681c7fb96ffe589b0a6a9c9926375844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
