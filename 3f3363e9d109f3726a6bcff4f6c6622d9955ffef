@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "720df255_883e0b56",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-09T03:07:59Z",
+      "side": 1,
+      "message": "you should never hardcode -I paths -- it breaks cross-compilation.  i thought you were going to use full \u003clibprotobuf-mutator/xxx\u003e includes in source files to avoid this ?",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d949d920_11d4926f",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-09T03:07:59Z",
+      "side": 1,
+      "message": "i don\u0027t think we normally do this ?  just drop this comment block ?",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24cf813_455bc689",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-09T03:07:59Z",
+      "side": 1,
+      "message": "header files that have C ABI linkage should declare them themselves so people including them don\u0027t have to do this.  glancing at the existing files, it seems some headers in here already do.",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90dd259c_05aa40bb",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-09T03:07:59Z",
+      "side": 1,
+      "message": "move this into dcrypto.h",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf951b7_c416892d",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-09T03:07:59Z",
+      "side": 1,
+      "message": "this should be moved into the pinweaver headers",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
