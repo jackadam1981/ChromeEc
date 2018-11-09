@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bef88a1_bbc76371",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-11-09T18:56:06Z",
+      "side": 1,
+      "message": "Also check that incoming extra is not equal to TPM2_ECC_EK_NAME_CR50, to make sure a random other path does not access the EK?\nI\u0027m not sure where the access control around EK usage is.",
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
