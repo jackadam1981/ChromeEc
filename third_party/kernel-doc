@@ -1062,10 +1062,10 @@ sub dump_struct($$) {
     my $x = shift;
     my $file = shift;
 
-    if ($x =~ /(struct|union)\s+(\w+)\s*\{(.*)\}/) {
-	my $decl_type = $1;
-	$declaration_name = $2;
-	my $members = $3;
+    if ($x =~ /(struct|union)(\s+__ec_align[_a-z124]*)?\s+(\w+)\s*\{(.*)\}/) {
+	my $decl_type = $2;
+	$declaration_name = $3;
+	my $members = $4;
 
 	# ignore members marked private:
 	$members =~ s/\/\*\s*private:.*?\/\*\s*public:.*?\*\///gosi;
