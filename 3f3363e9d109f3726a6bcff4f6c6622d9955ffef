@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "004bc9e3_b6fd682f",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-09T18:49:38Z",
+      "side": 1,
+      "message": "I may have to fix upstream header path problems to make this change.\n\n/usr/include/libprotobuf-mutator/src/libfuzzer/libfuzzer_macro.h:23:10: fatal error: \u0027port/protobuf.h\u0027 file not found\n#include \"port/protobuf.h\"",
+      "parentUuid": "720df255_883e0b56",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d949d920_11d4926f",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 21
@@ -33,6 +51,24 @@
       "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7951647_4fdeda28",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-09T18:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d949d920_11d4926f",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a7ff81c1_9f2ed6b9",
+        "filename": "fuzz/mem_hash_tree.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-09T18:49:38Z",
+      "side": 1,
+      "message": "I will make a separate parent CL for this.",
+      "parentUuid": "e24cf813_455bc689",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90dd259c_05aa40bb",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 21
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "cbc1657f_584eea39",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 21
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-09T18:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90dd259c_05aa40bb",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccf951b7_c416892d",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 21
@@ -84,6 +156,24 @@
       "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9572226d_06bab8a0",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-09T18:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccf951b7_c416892d",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
