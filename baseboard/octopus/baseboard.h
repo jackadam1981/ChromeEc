@@ -53,7 +53,11 @@
 	#define CONFIG_HIBERNATE_PSL
 
 	/* EC variant determines USB-C variant */
-	#define VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
+	#if defined(VARIANT_OCTOPUS_SEC_NPCX796FB)
+		#define VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS_SEC
+	#else
+		#define VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
+	#endif
 
 	/* Allow the EC to enter deep sleep in S0 */
 	#define CONFIG_LOW_POWER_S0
@@ -167,6 +171,14 @@
 	#define CONFIG_USB_PD_TCPM_PS8751	/* C1 TCPC: PS8751 */
 	#define CONFIG_USB_PD_VBUS_DETECT_TCPC
 	#define CONFIG_USBC_PPC_NX20P3483
+#elif defined(VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS_SEC)
+        #define CONFIG_USB_PD_TCPC_LOW_POWER
+        #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+        #define CONFIG_USB_PD_TCPM_ANX7447      /* C0 TCPC: ANX7447QN */
+        #define CONFIG_USB_PD_TCPM_ANX7447_OCM_ERASE_COMMAND
+        #define CONFIG_USB_PD_TCPM_PS8751       /* C1 TCPC: PS8751 */
+        #define CONFIG_USB_PD_VBUS_DETECT_TCPC
+        #define CONFIG_USBC_PPC_NX20P3483
 #elif defined(VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS)
 	#undef CONFIG_USB_PD_TCPC_LOW_POWER
 	#undef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -296,7 +308,8 @@ void board_reset_pd_mcu(void);
 void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
 #endif
 
-#ifdef VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
+#if (defined(VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS) \
+		|| defined(VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS_SEC))
 void tcpc_alert_event(enum gpio_signal signal);
 #endif
 
