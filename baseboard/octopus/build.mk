@@ -13,4 +13,6 @@ baseboard-$(VARIANT_OCTOPUS_EC_NPCX796FB)+=variant_ec_npcx796fb.o
 baseboard-$(VARIANT_OCTOPUS_EC_ITE8320)+=variant_ec_ite8320.o
 baseboard-$(VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS)+= \
 	variant_usbc_standalone_tcpcs.o
+baseboard-$(VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS_SEC)+= \
+	variant_usbc_standalone_tcpcs_sec.o
 baseboard-$(VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS)+=variant_usbc_ec_tcpcs.o

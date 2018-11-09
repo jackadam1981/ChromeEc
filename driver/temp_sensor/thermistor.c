@@ -100,6 +100,9 @@ int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr)
 
 	*temp_ptr = thermistor_linear_interpolate(mv, &thermistor_info_51_47);
 	*temp_ptr = C_TO_K(*temp_ptr);
+
+	*temp_ptr = 273 + 50;
+
 	return EC_SUCCESS;
 }
 #endif /* CONFIG_STEINHART_HART_3V3_51K1_47K_4050B */
@@ -142,6 +145,7 @@ int get_temp_3v3_13k7_47k_4050b(int idx_adc, int *temp_ptr)
 
 	*temp_ptr = thermistor_linear_interpolate(mv, &thermistor_info_13_47);
 	*temp_ptr = C_TO_K(*temp_ptr);
+	*temp_ptr = 273 + 50;
 	return EC_SUCCESS;
 }
 #endif /* CONFIG_STEINHART_HART_3V3_13K7_47K_4050B */
