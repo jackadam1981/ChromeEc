@@ -140,6 +140,30 @@
       "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "366ce188_3ac0fe9e",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-09T19:18:15Z",
+      "side": 1,
+      "message": "yeah, I like board_user_is_present() or board_user_has_ownership() or something like that. I think that would help.",
+      "parentUuid": "3ee28b21_6a8c7b10",
+      "range": {
+        "startLine": 224,
+        "startChar": 5,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
