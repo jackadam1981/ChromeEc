@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "de61f461_0bfc3925",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-09T19:05:34Z",
+      "side": 1,
+      "message": "check out platform2/chaps/Makefile for how to utilize the pkg-config files in a Makefile env\n\nyou\u0027ll need to update the ebuild too to do `tc-export PKG_CONFIG`",
+      "parentUuid": "004bc9e3_b6fd682f",
+      "revId": "3f3363e9d109f3726a6bcff4f6c6622d9955ffef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d949d920_11d4926f",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 21
