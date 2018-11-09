@@ -129,14 +129,21 @@ CRYPT_RESULT _cpri__EccPointMultiply(
 	}
 }
 
-static const TPM2B_32_BYTE_VALUE ECC_TEMPLATE_EK_EXTRA = {
-	.t = {32, {
-			0xC2, 0xE0, 0x31, 0x93, 0x40, 0xFB, 0x48, 0xF1,
-			0x02, 0x53, 0x9E, 0xA9, 0x83, 0x63, 0xF8, 0x1E,
-			0x2D, 0x30, 0x6E, 0x91, 0x8D, 0xD7, 0x78, 0xAB,
-			0xF0, 0x54, 0x73, 0xA2, 0xA6, 0x0D, 0xAE, 0x09,
-		}
-	}
+/* The name field of TPM2B_NAME is a TPMT_HA */
+static const uint8_t TPM2_ECC_EK_NAME_TEMPLATE[] = {
+	/* TPM_ALG_SHA256 in big endian. */
+	0x00, 0x0b,
+	/* SHA256 digest of the default template TPMT_PUBLIC. */
+	0x0f, 0x12, 0x77, 0xa2, 0xf3, 0xf3, 0x82, 0xe7,
+	0xf7, 0x5d, 0xb4, 0x66, 0xfa, 0xc2, 0x34, 0x18,
+	0x2a, 0x8d, 0x62, 0xf9, 0x7d, 0xfb, 0xaa, 0xe7,
+	0xb0, 0x6f, 0xdf, 0x52, 0xbd, 0xa5, 0x14, 0x67
+};
+
+// The 4 byte truncation of wrong template
+// c2e0319340fb48f102539ea98363f81e2d306e918dd778abf05473a2a60dae09
+static const uint8_t TPM2_ECC_EK_NAME_CR50[] = {
+	0xc2, 0xe0, 0x31, 0x93
 };
 
 /* Key generation based on FIPS-186.4 section B.1.2 (Key Generation by
@@ -176,11 +183,13 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 	/* TODO(ngm): CRBUG/P/55260: the personalize code uses only
 	 * the first 4 bytes of extra.
 	 */
-	if (extra && extra->size == ECC_TEMPLATE_EK_EXTRA.b.size &&
+	if (extra && extra->size == sizeof(TPM2_ECC_EK_NAME_TEMPLATE) &&
 		memcmp(extra->buffer,
-		       ECC_TEMPLATE_EK_EXTRA.b.buffer,
-		       ECC_TEMPLATE_EK_EXTRA.b.size) == 0) {
-		memcpy(truncated_extra.b.buffer, extra->buffer, 4);
+		       TPM2_ECC_EK_NAME_TEMPLATE,
+		       sizeof(TPM2_ECC_EK_NAME_TEMPLATE)) == 0) {
+		memcpy(truncated_extra.b.buffer,
+		       TPM2_ECC_EK_NAME_CR50,
+		       truncated_extra.b.size);
 		local_extra = &truncated_extra.b;
 	} else {
 		local_extra = extra;
