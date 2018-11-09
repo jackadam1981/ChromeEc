@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6adf5c24_1ccc3f3f",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-09T19:42:04Z",
+      "side": 1,
+      "message": "I am finding this hard to read. Can we separate this into 2 section. One section that updates the batt-\u003e... field, and the other section to prepare the right variables for the below calculation.\n\n\nalso lfcc is a pretty non-descripte variable name, can we use something else?",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 602,
+        "endChar": 2
+      },
+      "revId": "838732e8db0aa5648245e67bd7b7c16db62434ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116a19de_f80a12e5",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-09T19:42:04Z",
+      "side": 1,
+      "message": "reading this again, can we flip the order of these two parameters. That way the percentage is first and the mA is second in the line.",
+      "range": {
+        "startLine": 609,
+        "startChar": 25,
+        "endLine": 609,
+        "endChar": 54
+      },
+      "revId": "838732e8db0aa5648245e67bd7b7c16db62434ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
