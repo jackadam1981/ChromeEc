@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b23f4d98_4b03c2c8",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-09T23:02:25Z",
+      "side": 1,
+      "message": "How about getting rid of batt_host_full_factor? I can make it much simpler if we only support batt_host_full_factor \u003d\u003d 100. All future boards should set batt_host_full_factor to 100 and existing boards have already branched.",
+      "parentUuid": "6adf5c24_1ccc3f3f",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 602,
+        "endChar": 2
+      },
+      "revId": "838732e8db0aa5648245e67bd7b7c16db62434ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "116a19de_f80a12e5",
         "filename": "common/battery.c",
         "patchSetId": 2
