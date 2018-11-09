@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9e482fab_a98b8234",
+        "filename": "common/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-09T23:04:58Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "b23f4d98_4b03c2c8",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 602,
+        "endChar": 2
+      },
+      "revId": "838732e8db0aa5648245e67bd7b7c16db62434ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "116a19de_f80a12e5",
         "filename": "common/battery.c",
         "patchSetId": 2
