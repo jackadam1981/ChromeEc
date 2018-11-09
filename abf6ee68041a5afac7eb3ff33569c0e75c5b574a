@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5dc67e52_4bdd9d9f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-09T07:29:11Z",
+      "side": 1,
+      "message": "I spoke with Andrey and we\u0027d like to keep this here for now; we can remove it if/when we need to reclaim the sram space",
+      "parentUuid": "cb9450b6_40aee89b",
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3e40d17_cf05eddb",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2018-11-02T19:38:27Z",
       "side": 1,
       "message": "could it be that salt has not yet been initialized?",
+      "range": {
+        "startLine": 241,
+        "startChar": 28,
+        "endLine": 241,
+        "endChar": 36
+      },
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6eacfd_23b5d8e7",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-09T07:29:11Z",
+      "side": 1,
+      "message": "sorry I\u0027m not sure I follow..",
+      "parentUuid": "f3e40d17_cf05eddb",
       "range": {
         "startLine": 241,
         "startChar": 28,
