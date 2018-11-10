@@ -37,7 +37,9 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
 /* Masks for power signals */
-#define IN_POWER_GOOD POWER_SIGNAL_MASK(SDM845_POWER_GOOD)
+#define IN_POWER_GOOD	POWER_SIGNAL_MASK(SDM845_POWER_GOOD)
+#define IN_AP_RST_L	POWER_SIGNAL_MASK(SDM845_AP_RST_L)
+
 
 /* Long power key press to force shutdown */
 #define DELAY_FORCE_SHUTDOWN		(8 * SECOND)
@@ -66,6 +68,9 @@
 
 /* Wait for polling the AP on signal */
 #define PMIC_POWER_AP_WAIT		(1 * MSEC)
+
+/* Wait for issuing a low pulse to the PMIC reset trigger */
+#define PMIC_RESET_TOGGLE_WAIT		(20 * MSEC)
 
 /* The timeout of the check if the system can boot AP */
 #define CAN_BOOT_AP_CHECK_TIMEOUT	(500 * MSEC)
@@ -664,12 +669,35 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 
 void chipset_reset(enum chipset_reset_reason reason)
 {
-	/*
-	 * Before we can reprogram the PMIC to make the PMIC RESIN_N pin as
-	 * reset pin and zero-latency. We do cold reset instead.
-	 */
+	int rv;
+
 	CPRINTS("%s(%d)", __func__, reason);
 	report_ap_reset(reason);
+
+	/*
+	 * Warm reset sequence:
+	 * 1. Issue a low pulse to PM845_RESIN_L, which triggers PMIC
+	 *    to do a warm reset (requiring reprogramming PMIC registers
+	 *    to make PM845_RESIN_L as a warm reset trigger).
+	 * 2. PMIC then issues a low pulse to AP_RST_L to reset AP.
+	 *    EC monitors the signal to see any low pulse.
+	 *    2.1. If a low pulse found, done.
+	 *    2.2. If a low pulse not found (the above PMIC registers
+	 *         not programmed or programmed wrong), issue a request
+	 *         to initiate a cold reset power sequence.
+	 */
+
+	/* The host command is used to hard reset AP. Check b/119261783 */
+	if (reason != CHIPSET_RESET_HOST_CMD) {
+		gpio_set_level(GPIO_PM845_RESIN_L, 0);
+		usleep(PMIC_RESET_TOGGLE_WAIT);
+		gpio_set_level(GPIO_PM845_RESIN_L, 1);
+
+		rv = power_wait_signals_timeout(IN_AP_RST_L,
+						PMIC_POWER_AP_RESPONSE_TIMEOUT);
+		if (rv == EC_SUCCESS)
+			return;
+	}
 
 	/* Issue a request to initiate a reset sequence */
 	power_request = POWER_REQ_RESET;
