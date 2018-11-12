@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7eef73c8_62bbf47e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-12T18:11:41Z",
+      "side": 1,
+      "message": "What\u0027s the error? What command are you (or make) running? I think system headers shouldn\u0027t affect firmware build.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "4d98a9fb8888184b753342f55b959dd1bff4d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37210f21_1232ae1e",
         "filename": "common/util.c",
         "patchSetId": 5
