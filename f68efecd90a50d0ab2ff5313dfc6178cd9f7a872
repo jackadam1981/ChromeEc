@@ -22,6 +22,30 @@
       "revId": "f68efecd90a50d0ab2ff5313dfc6178cd9f7a872",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f01b9619_c1a11c84",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-12T18:58:37Z",
+      "side": 0,
+      "message": "It is the tcpc_get_alert function in all of the boards that do this check now (we were just doing it twice before):\n\nhttps://cs.corp.google.com/search/?q\u003df:(grunt%7Cliara%7Cdelan%7Ccareena%7Caleena)+tcpc_get_alert\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)",
+      "parentUuid": "fa529209_2e658a99",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "f68efecd90a50d0ab2ff5313dfc6178cd9f7a872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
