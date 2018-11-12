@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa529209_2e658a99",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-12T18:39:29Z",
+      "side": 0,
+      "message": "I\u0027m not totally confident that the new code will cover this check.  I checked pd_is_port_enabled, which checks on the port\u0027s task_state.  From there, it\u0027s tricky to trace any path that will definitely result in this check returning false while we\u0027re resetting.\n\nDo the other boards that use this case statement style have reset lines?",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "f68efecd90a50d0ab2ff5313dfc6178cd9f7a872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
