@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8354fd79_41eca745",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-12T22:41:35Z",
+      "side": 1,
+      "message": "You are correct with the intended behavior.  The battery must be removed for two minutes before a WP disable is allowed.  But as I understand the code, this timer can only start once the firmware detects the battery is removed.  The battery removal can either be while power is off, or while the Cr50 is running - but both paths are detected by the check_wp_battery_presence() hook.",
+      "parentUuid": "6dd77ea4_79e45329",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 57
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "caa8596f_2bc26b98",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -157,6 +181,30 @@
     },
     {
       "key": {
+        "uuid": "7ffd96a8_8b454cb5",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-12T22:41:35Z",
+      "side": 1,
+      "message": "You\u0027re correct, I\u0027ll change this.",
+      "parentUuid": "77def293_f9cd1e03",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa5c12a8_8dd6a8c9",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
@@ -194,6 +242,30 @@
       "range": {
         "startLine": 90,
         "startChar": 39,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f44a5b3_1a8ceb92",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-12T22:41:35Z",
+      "side": 1,
+      "message": "My testing showed that this was at least retained through a reboot (initiated from the Cr50 console).  What other persistent storage could be used to store this state?",
+      "parentUuid": "aa5c12a8_8dd6a8c9",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
         "endLine": 90,
         "endChar": 64
       },
