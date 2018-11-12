@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ddf47ab_288f37bf",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "still not parenthesized, i.e. currently is\n\nsizeof (a)-\u003ebuffer\n\nbut should be\n\nsizeof((a)-\u003ebuffer)\n\nto make it obvious and less confusing since even though sizeof is technically an operator, it\u0027ll be more obvious when spelled like a function.",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 57
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc04dc6_cc68d958",
+        "filename": "fuzz/cr50_fuzz.proto",
+        "patchSetId": 22
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "nit: might call this PinWeaverRequest. Also, while we\u0027re at naming: Might want to add a \"package pinweaver\" declaration at the top of this file and dropping the PW prefixes. \"RandomBytes\" and \"FuzzerInput\" are pretty generic names that are prone to clash.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b456bfc_8083f418",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "No else block needed - while this makes sense logically, convention is to put all the code after an if-then-early-exit block at the function nesting level.",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d6ce60a_e2f916ca",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "nit: fan_out - 1",
+      "range": {
+        "startLine": 29,
+        "startChar": 52,
+        "endLine": 29,
+        "endChar": 64
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b3f0da_30ce6f47",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be \u003d\u003d ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5331e2c8_34a2dc3e",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "nit: std::array, and then make the std::copy lines below plain assignments.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa1a848_ff0935a5",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "nit: fan_out - 1",
+      "range": {
+        "startLine": 69,
+        "startChar": 52,
+        "endLine": 69,
+        "endChar": 64
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47384420_dde8d6fe",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "nit: std::array + assignment below.",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1621e2d6_5c772ecb",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "side note (no action required): given we\u0027re seeing all this ad-hoc serialization code pop up, we should really consider converting this to protobuf or somesuch, and also make sure we do that right away for the next project like this.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 1
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6ddff36_7d76e4ed",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "What is this good for? I failed to find the place we use it. Regardless, add a comment explaining why we track this.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80575c05_0f0c9d37",
+        "filename": "fuzz/pinweaver_model.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "Instead of a vector and an index, can we use a std::deque? Probably more readable that way.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 111,
+        "endChar": 71
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b91b5caf_c9160601",
+        "filename": "fuzz/span.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-12T15:12:07Z",
+      "side": 1,
+      "message": "should this use std::begin() and std::end() instead of .data() and .size() instead?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 75
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
