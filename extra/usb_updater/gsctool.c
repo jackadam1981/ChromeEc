@@ -2059,6 +2059,11 @@ int main(int argc, char *argv[])
 	char *factory_mode_arg;
 	char *tpm_mode_arg = NULL;
 
+	// Sets buffering type to unbuffered so that outputs can be written to
+	// pipe instantly. This is needed when the cr50-verify-ro.sh execution
+	// in verify_ro is moved from crosh to debugd.
+	setvbuf(stdout, NULL, _IONBF, 0);
+
 	progname = strrchr(argv[0], '/');
 	if (progname)
 		progname++;
