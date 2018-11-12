@@ -142,6 +142,34 @@ void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 	task_wake(TASK_ID_KEYSCAN);
 }
 
+static int get_KSI(uint8_t row)
+{
+	int i;
+
+	for (i = 0; i < 8; ++i) {
+		if (row & (1 << i))
+			return i;
+	}
+
+	return -1;
+}
+extern uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
+
+static uint16_t key_id[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
+	{ -1,  -1,  58,  -1,  64,  -1,  -1,  -1},
+	{ 30, 110,  16,   1,  31,  46,   2,  17},
+	{112, 115, 114, 113,  33,  48,   4,  19},
+	{ 50,  35,  21,   6,  34,  49,   5,  20},
+	{119, 118, 117, 116,  32,  47,   3,  18},
+	{ 56,  -1,  28,  -1,  38,  53,   9,  24},
+	{ 51,  36,  22,   7,  37,  52,   8,  23},
+	{ -1,  -1,  45,  -1,  -1,  44,  -1,  57},
+	{ 13,  41,  27,  12,  40,  55,  11,  26},
+	{ -1, 122, 121,  66,  39,  54,  10,  25},
+	{ 62,  -1,  14,  -1,  42,  -1,  60,  -1},
+	{ -1,  15,  -1,  29,  43,  61,  84,  83},
+	{ -1,  -1,  -1,  63,  -1,  -1,  89,  79},
+};
 /**
  * Print the keyboard state.
  *
@@ -151,15 +179,27 @@ void keyboard_scan_enable(int enable, enum kb_scan_disable_masks mask)
 static void print_state(const uint8_t *state, const char *msg)
 {
 	int c;
+	int kso;
 
 	CPRINTF("[%T KB %s:", msg);
-	for (c = 0; c < keyboard_cols; c++) {
-		if (state[c])
+	for (c = 0, kso = 0; c < KEYBOARD_COLS_MAX; c++) {
+		if (state[c]) {
 			CPRINTF(" %02x", state[c]);
-		else
+			kso = c;
+		} else {
 			CPUTS(" --");
+		}
 	}
-	CPUTS("]\n");
+
+	if (get_KSI(state[kso]) == -1)
+		CPUTS("]\n");
+	else
+		ccprintf("], KSO=%d, KSI=%d, scancode=0x%x, key_id=%d\n",
+				kso,
+				get_KSI(state[kso]),
+				scancode_set2[kso][get_KSI(state[kso])],
+				key_id[kso][get_KSI(state[kso])]
+			);
 }
 
 /**
