@@ -320,6 +320,8 @@ int verify_ro(struct transfer_descriptor *td,
 	memcpy(rlz_code, &bid.type, sizeof(rlz_code) - 1);
 	rlz_code[sizeof(rlz_code) - 1] = '\0';
 
+	printf("before parser_find_board\n");
+
 	while (!parser_find_board(desc_file_name, rlz_code)) {
 
 		/*
