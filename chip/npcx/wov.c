@@ -25,8 +25,8 @@
 #define CPUTS(...)
 #define CPRINTS(...)
 #else
-#define CPUTS(outstr) cputs(CC_WOV, outstr)
-#define CPRINTS(format, args...) cprints(CC_WOV, format, ## args)
+#define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #endif
 
 /* WOV FIFO status. */
@@ -172,6 +172,14 @@ static struct wov_cfifo_buf cfifo_buf;
 static wov_call_back_t callback_fun;
 
 const uint32_t voice_buffer[VOICE_BUF_SIZE] = {0};
+
+#define WOV_RATE_ERROR_THRESH_MSEC 10
+#define WOV_RATE_ERROR_THRESH 5
+
+static int irq_underrun_count;
+static int irq_overrun_count;
+static uint32_t wov_i2s_underrun_tstamp;
+static uint32_t wov_i2s_overrun_tstamp;
 
 #define WOV_CALLBACK(event)                  \
 	{                                    \
@@ -536,6 +544,38 @@ static enum ec_error_list wov_set_mic_source_l(void)
 	return EC_SUCCESS;
 }
 
+static void wov_over_under_deferred(void)
+{
+	CPRINTS("wov: Under/Over run error: under = %d, over = %d",
+		irq_underrun_count, irq_overrun_count);
+}
+DECLARE_DEFERRED(wov_over_under_deferred);
+
+static void wov_under_over_error_handler(int *count, uint32_t *last_time)
+{
+	uint32_t time_delta_msec;
+	uint32_t current_time = get_time().le.lo;
+
+	//gpio_set_level(GPIO_SCOPE_TRIGGER, 1);
+	if (!(*count)) {
+		*last_time = current_time;
+		(*count)++;
+	} else {
+		time_delta_msec = (current_time - *last_time) / MSEC;
+		*last_time = current_time;
+		if (time_delta_msec < WOV_RATE_ERROR_THRESH_MSEC)
+			(*count)++;
+		else
+			*count = 0;
+
+		if (*count >= WOV_RATE_ERROR_THRESH) {
+			wov_stop_i2s_capture();
+			hook_call_deferred(&wov_over_under_deferred_data, 0);
+		}
+	}
+	//gpio_set_level(GPIO_SCOPE_TRIGGER, 0);
+}
+
 /**
  * WoV interrupt handler.
  *
@@ -547,6 +587,7 @@ void wov_interrupt_handler(void)
 {
 	uint32_t wov_status;
 	uint32_t wov_inten;
+
 
 	wov_inten = GET_FIELD(NPCX_WOV_WOV_INTEN, NPCX_WOV_STATUS_BITS);
 	wov_status = wov_inten &
@@ -587,12 +628,16 @@ void wov_interrupt_handler(void)
 	if (WOV_IS_I2S_FIFO_OVERRUN(wov_status)) {
 		WOV_CALLBACK(WOV_EVENT_ERROR_I2S_FIFO_OVERRUN);
 		wov_i2s_fifo_reset();
+		wov_under_over_error_handler(&irq_overrun_count,
+					     &wov_i2s_overrun_tstamp);
 	}
 
 	/* I2S FIFO is underrun. Reset the I2S FIFO and inform the FW. */
 	if (WOV_IS_I2S_FIFO_UNDERRUN(wov_status)) {
 		WOV_CALLBACK(WOV_EVENT_ERROR_I2S_FIFO_UNDERRUN);
 		wov_i2s_fifo_reset();
+		wov_under_over_error_handler(&irq_underrun_count,
+					     &wov_i2s_underrun_tstamp);
 	}
 
 
@@ -1166,6 +1211,10 @@ void wov_i2s_fifo_reset(void)
  */
 void wov_start_i2s_capture(void)
 {
+	/* Clear counters used to track for underrun/overrun errors */
+	irq_underrun_count = 0;
+	irq_overrun_count = 0;
+
 	/* Clear the I2S status bits in WoV status register. */
 	SET_FIELD(NPCX_WOV_STATUS, NPCX_WOV_STATUS_BITS, 0x18);
 
@@ -1757,11 +1806,11 @@ static int command_wov(int argc, char **argv)
 			return EC_SUCCESS;
 		}
 		if (strcasecmp(argv[1], "cfgget") == 0) {
-			ccprintf("mode:%d\n", wov_get_mode());
-			ccprintf("sample rate:%d\n", wov_get_sample_rate());
-			ccprintf("sample bits:%d\n", wov_get_sample_depth());
-			ccprintf("mic source:%d\n", wov_get_mic_source());
-			ccprintf("vad sensitivity :%d\n",
+			CPRINTS("mode:%d", wov_get_mode());
+			CPRINTS("sample rate:%d", wov_get_sample_rate());
+			CPRINTS("sample bits:%d", wov_get_sample_depth());
+			CPRINTS("mic source:%d", wov_get_mic_source());
+			CPRINTS("vad sensitivity :%d",
 				wov_get_vad_sensitivity());
 			return EC_SUCCESS;
 		}
