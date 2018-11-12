@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a019c17_6ca78d74",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-12T16:22:17Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem to match the ish_chrome-2018-11-02 code drop. I am guessing that this implementation is choosing to use different vector mapping table order than the aforementioned implementation, right?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "107bcd5700a84009f6d4c2d83c7bd157c15714c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
