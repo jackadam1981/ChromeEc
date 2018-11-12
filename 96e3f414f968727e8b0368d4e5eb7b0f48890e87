@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd77ea4_79e45329",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T19:45:57Z",
+      "side": 1,
+      "message": "I thought the design was to check that the battery was removed for 2 minutes not make the user wait 2 minutes after the battery was removed.",
+      "range": {
+        "startLine": 15,
+        "startChar": 31,
+        "endLine": 16,
+        "endChar": 57
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa5c12a8_8dd6a8c9",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T19:45:57Z",
+      "side": 1,
+      "message": "This is lost everytime h1 reboots or loses power. Do we want to have this delay whenever that happens?",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
