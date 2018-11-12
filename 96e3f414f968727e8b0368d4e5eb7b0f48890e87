@@ -25,6 +25,138 @@
     },
     {
       "key": {
+        "uuid": "caa8596f_2bc26b98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "How much extra space does this take?",
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d33719a_01a96dce",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "This is probably a longer message than needed. to reduce space used maybe change to init brdprop",
+      "range": {
+        "startLine": 1317,
+        "startChar": 10,
+        "endLine": 1317,
+        "endChar": 31
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3fe7ff_ce8b508d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "This wasn\u0027t necessarily a hard reset. maybe change to just reset",
+      "range": {
+        "startLine": 1332,
+        "startChar": 14,
+        "endLine": 1332,
+        "endChar": 24
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74b0e7f_527a3b93",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "Can you make lines 80 characters long unless it\u0027s a new paragraph or list.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 58
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9c83e11_5237faaf",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "This debug stuff isn\u0027t needed. Remove it or move it to only cr50_dev images. We run into a lot of cr50 space issues. Generally if something isn\u0027t necessary we remove it or move it to dbg images.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77def293_f9cd1e03",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "factory_mode.c also checks board_battery_is_present. That needs to be changed to the new function name.",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa5c12a8_8dd6a8c9",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
@@ -41,6 +173,69 @@
         "startChar": 5,
         "endLine": 90,
         "endChar": 64
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3706c635_e7785f53",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "I think this board property should be board_met_ownership_req",
+      "range": {
+        "startLine": 90,
+        "startChar": 39,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b89bc33_994f6232",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "You should disable sleep while we\u0027re waiting for this. If the AP is off, cr50 could enter deep sleep and bp_phys_presence_time would be reset.",
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3cedab_9ad721f2",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "This is actually remaining_seconds not elapsed_seconds right?",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 17
       },
       "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

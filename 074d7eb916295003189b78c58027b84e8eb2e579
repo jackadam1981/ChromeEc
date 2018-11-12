@@ -164,6 +164,30 @@
       "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0e33a0_e6baf1cf",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-12T22:27:47Z",
+      "side": 1,
+      "message": "In general I think the naming in this patch is weird. In terms of cr50 naming schemes physical presence refers specifically to power button pressing and battery presence refers specifically to BATT_PRES_L(DIOM2). \nMaybe these names will make more sense when physical presence stuff is incorporated, but right now I find the names really confusing, because this patch only really covers battery presence, but all of the names seem to emphasize physical presence.\n\nI think jett is right maybe a board_user_has_ownership or something would be good, because we could determine what \"owned\" means based on the board properties, but I think maybe that renaming should be done in the physical presence patch??????",
+      "parentUuid": "366ce188_3ac0fe9e",
+      "range": {
+        "startLine": 224,
+        "startChar": 5,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
