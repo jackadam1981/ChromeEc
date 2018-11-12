@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a229bfba_9af80f67",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1127079
+      },
+      "writtenOn": "2018-11-12T11:33:36Z",
+      "side": 1,
+      "message": "Please modify the comment to suggest that this store-\u003erestore is not limited to S0ix anymore.",
+      "revId": "4ed5b33bb49b3022fa9101da2d472bc11064f2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
