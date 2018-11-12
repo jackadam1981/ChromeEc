@@ -292,6 +292,24 @@
     },
     {
       "key": {
+        "uuid": "a4906b02_d53f42c9",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-12T23:31:44Z",
+      "side": 1,
+      "message": "Is the recommended process to call disable_deep_sleep()/enable_deep_sleep(), or use the delay_sleep_by() call?",
+      "parentUuid": "2b89bc33_994f6232",
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f3cedab_9ad721f2",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
