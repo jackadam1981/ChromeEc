@@ -22,6 +22,30 @@
       "revId": "107bcd5700a84009f6d4c2d83c7bd157c15714c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35a18015_dab877aa",
+        "filename": "chip/ish/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2018-11-12T19:37:21Z",
+      "side": 1,
+      "message": "FreeRTOS code drop? Yes, we use different mapping.",
+      "parentUuid": "5a019c17_6ca78d74",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "107bcd5700a84009f6d4c2d83c7bd157c15714c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
