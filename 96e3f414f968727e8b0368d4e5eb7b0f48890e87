@@ -328,6 +328,24 @@
     },
     {
       "key": {
+        "uuid": "945e4bfd_ed802254",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-13T00:18:57Z",
+      "side": 1,
+      "message": "Or we can add support for using a mask to disable deep sleep. Right now we only use the state of PLT_RST_L or SYS_RST_L to disable deep sleep in ap_state.c. you could modify enable_deep_sleep and disable_deep_sleep to have an arg to mask whats disabling deep sleep.",
+      "parentUuid": "72e786fb_8518cbc6",
+      "revId": "96e3f414f968727e8b0368d4e5eb7b0f48890e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f3cedab_9ad721f2",
         "filename": "board/cr50/wp.c",
         "patchSetId": 2
