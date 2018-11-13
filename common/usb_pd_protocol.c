@@ -2539,6 +2539,7 @@ void pd_task(void *u)
 	int caps_count = 0, hard_reset_sent = 0;
 	int snk_cap_count = 0;
 	int evt;
+	//int i = 0;
 
 #ifdef CONFIG_COMMON_RUNTIME
 	pd_init_tasks();
@@ -3087,7 +3088,8 @@ void pd_task(void *u)
 			break;
 		case PD_STATE_SRC_READY:
 			timeout = PD_T_SOURCE_ACTIVITY;
-
+			//i = IT83XX_USBPD_TCDCR(port);
+			//ccprints("IT83XX_USBPD_TCDCR 0x%x", i);
 			/*
 			 * Don't send any PD traffic if we woke up due to
 			 * incoming packet or if VDO response pending to avoid
@@ -3993,6 +3995,8 @@ void pd_task(void *u)
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
 				timeout = 10*MSEC;
+				//i = IT83XX_USBPD_TCDCR(port);
+				//ccprints("IT83XX_USBPD_TCDCR 0x%x", i);
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 				/*
 				 * If Try.SRC is configured, then ATTACHED_SRC
