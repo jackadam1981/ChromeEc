@@ -16,6 +16,24 @@
       "revId": "881c6df09d694bbd3a34df43b1090cd743032f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba8438ee_ee2b456f",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-13T18:34:29Z",
+      "side": 1,
+      "message": "Yeah, it makes sense. We don\u0027t want to invoke shell every time the var is dereferenced. I fixed the above cases too.",
+      "parentUuid": "dfca608f_f545875d",
+      "revId": "881c6df09d694bbd3a34df43b1090cd743032f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
