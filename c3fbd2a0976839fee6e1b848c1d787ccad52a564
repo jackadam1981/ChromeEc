@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3ef97d9_3ba0c508",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-13T20:19:23Z",
+      "side": 1,
+      "message": "Are you planning to add batt_discharge_fet here? If not, you don\u0027t need to use a struct. You can simply do: const char device_name[] \u003d { \"AP15O5L\",\"AP18F4M\", };.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96d527c_0b7bd092",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-13T20:19:23Z",
+      "side": 1,
+      "message": "Can you create static enum battery_type get_battery_type(void)? You can return BATTERY_TYPE_COUNT (or BATTERY_TYPE_UNKNOWN) for other boards.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bf90ea_eac3280e",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-13T20:19:23Z",
+      "side": 1,
+      "message": "Let\u0027s use switch statement.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ec9b45_457d3564",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-13T20:19:23Z",
+      "side": 1,
+      "message": "I don\u0027t understand this. Can you rephrase it?",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 24
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
