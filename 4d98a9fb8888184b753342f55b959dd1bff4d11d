@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed6000ae_a70650cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2018-11-13T06:12:59Z",
+      "side": 1,
+      "message": "In the \"make buildall\" stage, the error messages present the util header file\nincluded from chip/host/system.c which have conflicting types for \u0027strtoll\u0027.   \nAnd previous declaration of \u0027strtoll\u0027 was under the path /usr/include/stdlib.h.",
+      "parentUuid": "7eef73c8_62bbf47e",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "4d98a9fb8888184b753342f55b959dd1bff4d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37210f21_1232ae1e",
         "filename": "common/util.c",
         "patchSetId": 5
