@@ -162,7 +162,7 @@ static uint32_t task_reset_state[TASK_ID_COUNT] = {
 /* Sanity checks about static task invariants */
 BUILD_ASSERT(TASK_ID_COUNT <= sizeof(unsigned) * 8);
 BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
-BUILD_ASSERT(((1 << TASK_ID_COUNT) & TASK_RESET_STATE_MASK) == 0);
+BUILD_ASSERT((1 << TASK_ID_COUNT) < TASK_RESET_LOCK);
 
 /* Stacks for all tasks */
 #define TASK(n, r, d, s)  + s
