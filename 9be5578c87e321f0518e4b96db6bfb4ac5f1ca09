@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "b8f40151_80e8a314",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-11-13T22:53:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de247013_82d3882e",
+      "range": {
+        "startLine": 339,
+        "startChar": 11,
+        "endLine": 339,
+        "endChar": 38
+      },
+      "revId": "9be5578c87e321f0518e4b96db6bfb4ac5f1ca09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db5b2c14_a42ea7f0",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 11
