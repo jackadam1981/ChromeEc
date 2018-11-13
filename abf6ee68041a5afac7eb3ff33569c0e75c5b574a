@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9f20e3c7_46fe7886",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-13T22:48:31Z",
+      "side": 1,
+      "message": "I think the main thing we discussed was that it saved iterating through the NV list each time it was needed.",
+      "parentUuid": "b6d76953_06afd123",
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3e40d17_cf05eddb",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 7
