@@ -683,6 +683,7 @@ int tcpci_tcpm_init(int port)
 	int tries = TCPM_INIT_TRIES;
 
 	while (1) {
+		msleep(15);
 		error = tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
 		/*
 		 * If read succeeds and the uninitialized bit is clear, then
