@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc8d689_eca2a362",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-11-13T23:14:48Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "8a95a4a02e1e4759c7a6256e9dda1621b3b90d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4b3dca_f9208f3b",
+        "filename": "chip/ish/ipc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-11-13T23:14:48Z",
+      "side": 1,
+      "message": "what are these magic numbers?  we should define constants\nfor them if we don\u0027t already have them.",
+      "range": {
+        "startLine": 382,
+        "startChar": 50,
+        "endLine": 382,
+        "endChar": 57
+      },
+      "revId": "8a95a4a02e1e4759c7a6256e9dda1621b3b90d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
