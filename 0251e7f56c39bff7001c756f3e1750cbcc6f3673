@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3ae29a76_65a4f972",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-13T09:17:41Z",
+      "side": 1,
+      "message": "Removed these, and disabling interrupts as agreed over chat.",
+      "parentUuid": "c14f04df_8a6e9dad",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1923b17_a87d9f00",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Yes it can be smaller, we just need NUM_TASKS+3 bits, I will update once the rest of the design is agreed",
       "parentUuid": "c1923b17_a87d9f00",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 15
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fae9b9c_1a5fd9cf",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-13T09:17:41Z",
+      "side": 1,
+      "message": "Do you still want me to reduce the size here? At least uint16_t should be fine for the forseeable future I guess?",
+      "parentUuid": "647f52ec_c694d8e9",
       "range": {
         "startLine": 147,
         "startChar": 7,
@@ -283,6 +331,30 @@
       "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3ba1dc_4a4a781b",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-13T09:17:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b5302a4_b19495df",
+      "range": {
+        "startLine": 43,
+        "startChar": 38,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "0251e7f56c39bff7001c756f3e1750cbcc6f3673",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
