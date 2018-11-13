@@ -22,6 +22,30 @@
       "revId": "46e5f0b1f5850528e174604a53a17be9f56e1e6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44edb1a1_579077ac",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-13T21:18:44Z",
+      "side": 1,
+      "message": "Yes, that was the plan. I added a comment as such.",
+      "parentUuid": "bb833717_a6198e54",
+      "range": {
+        "startLine": 149,
+        "startChar": 44,
+        "endLine": 149,
+        "endChar": 57
+      },
+      "revId": "46e5f0b1f5850528e174604a53a17be9f56e1e6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
