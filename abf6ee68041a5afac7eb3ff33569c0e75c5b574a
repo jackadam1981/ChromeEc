@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "46b046a0_8ea9c006",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-13T22:59:07Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this would be negligible compared to time u2f process takes.",
+      "parentUuid": "9f20e3c7_46fe7886",
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3e40d17_cf05eddb",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 7
