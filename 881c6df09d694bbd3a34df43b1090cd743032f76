@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfca608f_f545875d",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-13T18:27:07Z",
+      "side": 1,
+      "message": "when you use $(shell...), you should assign with :\u003d unless you have a strong reason not to.  i get the code above isn\u0027t using it, but that\u0027s broken too ;).\n\nwhen you only use \u003d, the $(...) gets expanded multiple times, so every compile command will run multiple $(shell...) invocations for every file it tries to compile/link.\n\nif you look at the chaps example, it uses :\u003d too.",
+      "revId": "881c6df09d694bbd3a34df43b1090cd743032f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
