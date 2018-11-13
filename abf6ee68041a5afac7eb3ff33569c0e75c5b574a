@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b6d76953_06afd123",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-13T17:57:04Z",
+      "side": 1,
+      "message": "just curious, what would be the advantages of keeping a copy in SRAM?\n\nbut if you guys prefer doing it this way - fine with me.",
+      "parentUuid": "5dc67e52_4bdd9d9f",
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3e40d17_cf05eddb",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 7
@@ -81,6 +99,30 @@
       "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28f75dad_c8b5b6ec",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-13T17:57:04Z",
+      "side": 1,
+      "message": "ah, never mind, I misread the code.",
+      "parentUuid": "ec6eacfd_23b5d8e7",
+      "range": {
+        "startLine": 241,
+        "startChar": 28,
+        "endLine": 241,
+        "endChar": 36
+      },
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
