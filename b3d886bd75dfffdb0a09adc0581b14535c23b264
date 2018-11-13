@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deec914a_936af4db",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs_sec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-13T22:42:00Z",
+      "side": 1,
+      "message": "Is it necessary to make an entire second standalone TCPC file for this configuration?  Could there, instead, be a board-level config to indicate whether port 0 has a PS TCPC since it seems like a lot of this code is shared?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 77
+      },
+      "revId": "b3d886bd75dfffdb0a09adc0581b14535c23b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77c1797_9a47ec0e",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-13T22:42:00Z",
+      "side": 1,
+      "message": "Have datasheets for the batteries been uploaded to Drive and shared?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "b3d886bd75dfffdb0a09adc0581b14535c23b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed57854c_bddd9587",
+        "filename": "board/casta/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-13T22:42:00Z",
+      "side": 1,
+      "message": "Casta proto boards should be fully supported, please remove",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 13
+      },
+      "revId": "b3d886bd75dfffdb0a09adc0581b14535c23b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40cd881_ded619b7",
+        "filename": "board/casta/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-13T22:42:00Z",
+      "side": 1,
+      "message": "If the casta units will all be clamshells, this can simply be removed",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "b3d886bd75dfffdb0a09adc0581b14535c23b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c864a5e7_ed8c6726",
+        "filename": "board/casta/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-13T22:42:00Z",
+      "side": 1,
+      "message": "The led_set_color_battery function appears to be expecting green and red instead of white and amber",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 45
+      },
+      "revId": "b3d886bd75dfffdb0a09adc0581b14535c23b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113881da_7f95b9af",
+        "filename": "board/casta/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-13T22:42:00Z",
+      "side": 1,
+      "message": "Same here, led_set_color_power appears to be expecting blue",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 43
+      },
+      "revId": "b3d886bd75dfffdb0a09adc0581b14535c23b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
