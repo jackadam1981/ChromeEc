@@ -6,6 +6,8 @@
 /* System module for emulator */
 
 #include <stdlib.h>
+#include <string.h>
+#define HIDE_EC_STDLIB
 
 #include "common.h"
 #include "host_test.h"

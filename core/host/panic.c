@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#define HIDE_EC_STDLIB
 
 #include "common.h"
 #include "panic.h"
