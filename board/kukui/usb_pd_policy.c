@@ -254,6 +254,7 @@ static int svdm_dp_status(int port, uint32_t *payload)
 				   (!!(dp_flags[port] & DP_FLAGS_DP_ON)),
 				   0, /* power low? ... no */
 				   (!!(dp_flags[port] & DP_FLAGS_DP_ON)));
+	CPRINTS("svdm_dp_status");
 	return 2;
 };
 
@@ -261,6 +262,8 @@ static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
 	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
+
+	CPRINTS("svdm_dp_config");
 
 	if (!pin_mode)
 		return 0;
@@ -282,8 +285,10 @@ static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
 static void svdm_dp_post_config(int port)
 {
 	dp_flags[port] |= DP_FLAGS_DP_ON;
-	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
+	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING)) {
+		CPRINTS("svdm_dp_post_config !HI_PENDING");
 		return;
+	}
 
 	gpio_set_level(GPIO_USB_C0_HPD_OD, 1);
 	gpio_set_level(GPIO_USB_C0_DP_OE_L, 0);
@@ -291,6 +296,7 @@ static void svdm_dp_post_config(int port)
 
 	/* set the minimum time delay (2ms) for the next HPD IRQ */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+	CPRINTS("svdm_dp_post_config HPD=1, OE=0");
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
@@ -305,6 +311,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
 		if (lvl)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		CPRINTS("svdm_dp_attention !DP_ON");
 		return 1;
 	}
 
@@ -324,8 +331,9 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+		CPRINTS("svdm_dp_attention set HPD=0~1, DP_OE_L=0");
 	} else if (irq & !cur_lvl) {
-		CPRINTF("ERR:HPD:IRQ&LOW\n");
+		CPRINTF("svdm_dp_attention ERR:HPD:IRQ&LOW\n");
 		return 0; /* nak */
 	} else {
 		gpio_set_level(GPIO_USB_C0_HPD_OD, lvl);
@@ -333,6 +341,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 		gpio_set_level(GPIO_USB_C0_DP_POLARITY, pd_get_polarity(port));
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+		CPRINTS("svdm_dp_attention set HPD=%d, DP_OE_L=%d *", lvl, !lvl);
 	}
 	/* ack*/
 	return 1;
@@ -343,6 +352,7 @@ static void svdm_exit_dp_mode(int port)
 	svdm_safe_dp_mode(port);
 	gpio_set_level(GPIO_USB_C0_HPD_OD, 0);
 	gpio_set_level(GPIO_USB_C0_DP_OE_L, 1);
+	CPRINTS("svdm_exit_dp_mode set HPD=0, DP_OE_L=1");
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
