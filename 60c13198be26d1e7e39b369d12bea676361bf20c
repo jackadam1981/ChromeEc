@@ -46,6 +46,30 @@
       "revId": "60c13198be26d1e7e39b369d12bea676361bf20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b5d5ee_f675675f",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-13T05:55:16Z",
+      "side": 1,
+      "message": "It can wake up from drained battery.\nPlease check log on issue comment #4.",
+      "parentUuid": "1db2fd77_7711f735",
+      "range": {
+        "startLine": 342,
+        "startChar": 1,
+        "endLine": 342,
+        "endChar": 33
+      },
+      "revId": "60c13198be26d1e7e39b369d12bea676361bf20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
