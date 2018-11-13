@@ -11,6 +11,7 @@
 #include "task.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "console.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
 static void chip_pd_irq(enum usbpd_port port)
@@ -20,20 +21,33 @@ static void chip_pd_irq(enum usbpd_port port)
 	/* check status */
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
-		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+		IT83XX_USBPD_ISR(port) |= USBPD_REG_MASK_HARD_RESET_DETECT;
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
 			tcpm_enqueue_message(port);
 			/* clear RX done interrupt */
-			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
+			IT83XX_USBPD_ISR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
 		}
 		if (USBPD_IS_TX_DONE(port)) {
 			/* clear TX done interrupt */
-			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
+			IT83XX_USBPD_ISR(port) |= USBPD_REG_MASK_MSG_TX_DONE;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
+		}
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+		//if ((REG8(IT83XX_USBPD_BASE(port)+0x67) & 0x01) != 0) {
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+			ccprints("ISR : USBPD_IS_PLUG_IN_OUT_DETECT");
+			//if (pd[port].power_role == PD_ROLE_SOURCE)
+			//uint8_t saved_flags;
+			//pd_get_saved_port_flags(port, &saved_flags);
+			//if (saved_flags == PD_ROLE_SOURCE)
+				task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_CC, 0);
 		}
 	}
 }
