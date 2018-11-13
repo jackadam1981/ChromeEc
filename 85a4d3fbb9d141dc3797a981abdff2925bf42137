@@ -16,6 +16,24 @@
       "revId": "85a4d3fbb9d141dc3797a981abdff2925bf42137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a509b6e_22ac7871",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-11-13T04:01:14Z",
+      "side": 1,
+      "message": "I thought it should have it\u0027s own CL.",
+      "parentUuid": "4682ed8c_2766d728",
+      "revId": "85a4d3fbb9d141dc3797a981abdff2925bf42137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
