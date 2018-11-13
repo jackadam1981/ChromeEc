@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dfdcc9b_d040ffc2",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-13T15:07:36Z",
+      "side": 1,
+      "message": "Since the schematics just list this net as \"EC_GPIO03\", should the name here be different?",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 17
+      },
+      "revId": "a8da37cc1394f7f1f416582ca810391ced893c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
