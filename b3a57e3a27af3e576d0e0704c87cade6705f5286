@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9a0ac357_3b16ec63",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-11-13T23:23:40Z",
+      "side": 1,
+      "message": "ok, fair enough... looks like we need the next 3 or 4 patches in this\nstack to really exercise this code.",
+      "parentUuid": "24078d21_a27d8af5",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33524028_2061aa9c",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 5
