@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1551611_065c8bb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T04:53:29Z",
+      "side": 1,
+      "message": "I think Jett asked me not to refer to board phases. Instead he asked me to refer to the board version themselves.",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63eb9903_31c008f5",
+        "filename": "board/meep/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T04:53:29Z",
+      "side": 1,
+      "message": "We can keep board_id as uint32_t since that is the type at the called location.",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3124191_abde6f4d",
+        "filename": "board/meep/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T04:53:29Z",
+      "side": 1,
+      "message": "Is there a convention for the pin names to choose?\n\nIs it pin name in the schematics. If it is not connected then use the default signal name if it is default signal else alternate signal name if alternate function is selected?",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
