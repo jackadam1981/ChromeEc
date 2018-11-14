@@ -22,6 +22,30 @@
       "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3172d44b_36e58806",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-14T21:39:20Z",
+      "side": 1,
+      "message": "If you want to use host libraries that depend on glibc in tests, the preferred way would be to change:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/Makefile.rules#436\nTo have a generic condition like USE_HOST_GLIBC and then have your test set it.\n\nHIDE_EC_STDLIB should only be used for test code that requires linking outside libraries. We want the host EC code to use the internal implementations of these functions so that they get test coverage.",
+      "parentUuid": "21531183_5cc6cb9d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
