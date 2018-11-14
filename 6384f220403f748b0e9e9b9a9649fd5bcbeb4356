@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d859746f_9c71b18f",
+        "filename": "third_party/kernel-doc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-14T19:05:22Z",
+      "side": 1,
+      "message": "Note that this is a different license than Chromium EC.  This code must remain in third_party and cannot be included in the EC codebase.\n\nYes, this is inconvenient.  But important.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 34
+      },
+      "revId": "6384f220403f748b0e9e9b9a9649fd5bcbeb4356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
