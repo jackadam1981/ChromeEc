@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "ffaccfb1_c6d759ad",
+        "filename": "board/meep/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T05:09:24Z",
+      "side": 1,
+      "message": "In another change, it is marked as Open Drain but is driven neither low nor high. Should we do the same here.",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3124191_abde6f4d",
         "filename": "board/meep/gpio.inc",
         "patchSetId": 1
