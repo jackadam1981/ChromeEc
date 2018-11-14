@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe03ddc1_961bed82",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-14T02:50:47Z",
+      "side": 1,
+      "message": "Scott, I wonder to know if the original PD_T_TRY_WAIT(600ms) setting used to solve some issue?\nUsing PD_T_TRY_WAIT(600ms) this long time to test GRL USBPD, tester considers we disconnect when reconnect. So we failed in some PHY test item.",
+      "range": {
+        "startLine": 2852,
+        "startChar": 7,
+        "endLine": 2852,
+        "endChar": 20
+      },
+      "revId": "df19b3187c2af964fbe202fb6d4e718ce7912926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
