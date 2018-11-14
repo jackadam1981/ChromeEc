@@ -179,6 +179,52 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+static int command_lldiv(int argc, char **argv)
+{
+	int64_t dividend;
+	int64_t divisor;
+	char *e;
+
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+	dividend = strtoll(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+	divisor = strtoll(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	ccprintf("%ld / %ld = %ld\n", dividend, divisor, dividend/divisor);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lldiv, command_lldiv,
+			"dividend divisor",
+			"signed 64 bit division");
+
+static int command_ulldiv(int argc, char **argv)
+{
+	uint64_t dividend;
+	uint64_t divisor;
+	char *e;
+
+	if (argc != 3)
+		return EC_ERROR_PARAM_COUNT;
+	dividend = strtoul(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+	divisor = strtoul(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	ccprintf("%ld / %ld = %ld\n", dividend, divisor, dividend/divisor);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ulldiv, command_ulldiv,
+			"dividend divisor",
+			"unsigned 64 bit division");
+
 /*
  * I2C channels (A, B, and C) are using the same timing registers (00h~07h)
  * at default.
