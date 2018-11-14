@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d49cdee_0c8cc482",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T23:01:33Z",
+      "side": 1,
+      "message": "would making this uint8_t make sense since the max value is only 7",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "523a7292_f2b3250d",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T23:01:33Z",
+      "side": 1,
+      "message": "can we call this consume_repeat_message(int port)",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c459a99_0c8ded63",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T23:01:33Z",
+      "side": 1,
+      "message": "can we drop the extra set of () around the function call, please",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03d86a9_65877112",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T23:01:33Z",
+      "side": 1,
+      "message": "transmit",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444d83aa_70926c5c",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T23:01:33Z",
+      "side": 1,
+      "message": "transmit\n\nAlso invalidate (instead of invalid)",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 11
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18130ba3_71dc08d6",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T23:01:33Z",
+      "side": 1,
+      "message": "can we rename this to invalidate_last_message_id(int port), please",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
