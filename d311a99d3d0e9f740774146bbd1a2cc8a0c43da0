@@ -85,6 +85,24 @@
       "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac3aa9f_90b20041",
+        "filename": "board/meep/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T17:36:30Z",
+      "side": 1,
+      "message": "I try to pick the name straight from the schematic when possible (and if I can\u0027t, I put it in the comments next to it)",
+      "parentUuid": "dbc86592_9e88a132",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
