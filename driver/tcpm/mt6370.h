@@ -104,6 +104,13 @@
 #define MT6370_REG_BMCIO_OSC_EN			(1 << 0)
 
 /*
+ * MT6370_REG_OVP_FLAG_SEL
+ */
+
+#define MT6370_MASK_DISCHARGE_LVL		0x03
+#define MT6370_REG_DISCHARGE_LVL		(1 << 0)
+
+/*
  * MT6370_REG_RT_STATUS				0x97
  */
 
@@ -175,5 +182,8 @@
 #define MT6370_REG_I2CRST_SET(en, tout)		((en << 7) | (tout & 0x0f))
 
 extern const struct tcpm_drv mt6370_tcpm_drv;
+
+/* Enable VCONN discharge. */
+int mt6370_vconn_discharge(int port);
 
 #endif /* __CROS_EC_USB_PD_TCPM_MT6370_H */
