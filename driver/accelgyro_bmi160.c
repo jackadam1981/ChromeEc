@@ -605,10 +605,18 @@ static int perform_calib(const struct motion_sensor_t *s)
 	case MOTIONSENSE_TYPE_ACCEL:
 		/* We assume the device is laying flat for calibration */
 		if (s->rot_standard_ref == NULL ||
-		    (*s->rot_standard_ref)[2][2] > INT_TO_FP(0))
+		    (*s->rot_standard_ref)[2][2] == INT_TO_FP(1))
 			val = BMI160_FOC_ACC_PLUS_1G;
-		else
+		else if ((*s->rot_standard_ref)[2][2] == INT_TO_FP(-1))
 			val = BMI160_FOC_ACC_MINUS_1G;
+		else {
+			/*
+			 * If rotation reference matrix is not integer-based,
+			 * skip calibration.
+			 */
+			ret = 0;
+			goto end_perform_calib;
+		}
 		val = (BMI160_FOC_ACC_0G << BMI160_FOC_ACC_X_OFFSET) |
 			(BMI160_FOC_ACC_0G << BMI160_FOC_ACC_Y_OFFSET) |
 			(val << BMI160_FOC_ACC_Z_OFFSET);
