@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac5fd8f4_86df8029",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T19:01:46Z",
+      "side": 1,
+      "message": "and returns TRUE if if_value matched.",
+      "range": {
+        "startLine": 546,
+        "startChar": 42,
+        "endLine": 546,
+        "endChar": 62
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a7e33e_d32277c0",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T19:01:46Z",
+      "side": 1,
+      "message": "this should be static",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 3
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c0d654_04cedf67",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T19:01:46Z",
+      "side": 1,
+      "message": "why is \u0027while(1)\u0027 needed?",
+      "range": {
+        "startLine": 588,
+        "startChar": 2,
+        "endLine": 588,
+        "endChar": 11
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b96380_f5258e5d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T19:01:46Z",
+      "side": 1,
+      "message": "is this the same logic as in\n\nif (!resetes_disabled)\n  *state \u003d waiter_id;\n\nwhich is better readable.",
+      "range": {
+        "startLine": 704,
+        "startChar": 1,
+        "endLine": 704,
+        "endChar": 59
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08276761_0a4e194d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-14T19:01:46Z",
+      "side": 1,
+      "message": "I know this is a copy and paste, but task_init[id] could be cached as a pointer \u0027task_init + id\u0027",
+      "range": {
+        "startLine": 892,
+        "startChar": 18,
+        "endLine": 892,
+        "endChar": 33
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
