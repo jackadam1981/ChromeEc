@@ -50,6 +50,24 @@
       "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc86592_9e88a132",
+        "filename": "board/meep/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T04:57:46Z",
+      "side": 1,
+      "message": "Also based on the convention and the other patch from Jett rename the pin as EC_GPIO03(no underscore between GPIO and pin number).",
+      "parentUuid": "c3124191_abde6f4d",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
