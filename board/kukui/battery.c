@@ -11,6 +11,7 @@
 #include "console.h"
 #include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
+#include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -82,7 +83,13 @@ const struct max17055_alert_profile *max17055_get_alert_profile(void)
 
 int board_cut_off_battery(void)
 {
-	return rt946x_cutoff_battery();
+	int rv;
+
+	rv = rt946x_por_reset();
+	rv |= mt6370_vconn_discharge(0);
+	rv |= rt946x_cutoff_battery();
+
+	return rv;
 }
 
 enum battery_disconnect_state battery_get_disconnect_state(void)
