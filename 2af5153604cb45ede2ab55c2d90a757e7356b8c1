@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4ad680f_f4c779bf",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T05:07:31Z",
+      "side": 1,
+      "message": "A nit-pick: board_id type can uint32_t since that is the type of the argument at the caller.",
+      "range": {
+        "startLine": 231,
+        "startChar": 48,
+        "endLine": 231,
+        "endChar": 56
+      },
+      "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ac82fb_f277f37e",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T05:07:31Z",
+      "side": 1,
+      "message": "Not sure if it is \"GPIO83 used to be\" or \"GPIO83 used by\".",
+      "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0d495c_c61bfee1",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-14T05:07:31Z",
+      "side": 1,
+      "message": "Can we rename as EC_GPIO03, since that is the way it is defined in the other fleex change. Just to be consistent.",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 15
+      },
+      "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
