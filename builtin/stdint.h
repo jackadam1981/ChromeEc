@@ -78,5 +78,8 @@ typedef int64_t            int_fast64_t;
 #ifndef INT64_MAX
 #define INT64_MAX INT64_C(9223372036854775807)
 #endif
+#ifndef INT64_MIN
+#define INT64_MIN (-INT64_MAX - 1LL)
+#endif
 
 #endif /* __CROS_EC_STDINT_H__ */

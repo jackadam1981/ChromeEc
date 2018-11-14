@@ -197,6 +197,75 @@ uint64_t strtoul(const char *nptr, char **endptr, int base)
 	return result;
 }
 
+int64_t strtoll(const char *nptr, char **endptr, int base)
+{
+	int64_t result = 0;
+	uint64_t cutoff;
+	int neg = 0, any = 0, cutlim;
+	int negrem = 8, posrem = 7;
+	int c = '\0';
+
+	if (endptr)
+		*endptr = (char *)nptr;
+
+	while ((c = *nptr++) && isspace(c))
+		;
+
+	if (c == '-') {
+		neg = 1;
+		c = *nptr++;
+	} else if (c == '+')
+		c = *nptr++;
+
+	if (c == '0' && *nptr == 'x') {
+		base = 16;
+		c = nptr[1];
+		nptr += 2;
+	} else if (base == 0)
+		base = 10;
+
+	cutoff = neg ? INT64_MIN : INT64_MAX;
+
+	/*To find the remainder of INT64_MAX(INT64_MIN) divided by the base=16*/
+	if (base == 16)
+		cutlim = cutoff & ((uint64_t)base - 1);
+	/*To find the remainder of INT64_MAX(INT64_MIN) divided by the base=10*/
+	else
+		cutlim = neg ? negrem : posrem;
+
+	cutoff /= (uint64_t)base;
+
+	while (c) {
+		if (c >= '0' && c < '0' + MIN(base, 10))
+			c = c - '0';
+		else if (c >= 'A' && c < 'A' + base - 10)
+			c = c - 'A' + 10;
+		else if (c >= 'a' && c < 'a' + base - 10)
+			c = c - 'a' + 10;
+		else
+			break;
+
+		if (any < 0 || result > cutoff ||
+			(result == cutoff && c > cutlim))
+			any = -1;
+		else {
+			any = 1;
+			result = result * base + c;
+		}
+
+		if (endptr)
+			*endptr = (char *)nptr;
+		c = *nptr++;
+	}
+
+	if (any < 0)
+		result = neg ? INT64_MIN : INT64_MAX;
+	else if (neg)
+		result = -result;
+
+	return result;
+}
+
 int parse_bool(const char *s, int *dest)
 {
 	/* off, disable, false, no */
