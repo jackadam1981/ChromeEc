@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "7606a180_714aac85",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-14T01:52:35Z",
+      "side": 1,
+      "message": "Yea.. that said, if we are going to not keep a copy in SRAM for salt_kek, we should probably also remove the copy of salt? If we do that, it seems like a change that should be separate?",
+      "parentUuid": "46b046a0_8ea9c006",
+      "revId": "abf6ee68041a5afac7eb3ff33569c0e75c5b574a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3e40d17_cf05eddb",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 7
