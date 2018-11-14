@@ -16,6 +16,24 @@
       "revId": "9d368a50012e023f0c00bb11b17138467e9cf4fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a47b8d_9a48f5a0",
+        "filename": "board/ampton/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T20:30:34Z",
+      "side": 1,
+      "message": "+1 we need GPIO_SEL_1P8V",
+      "parentUuid": "5036a687_2351c212",
+      "revId": "9d368a50012e023f0c00bb11b17138467e9cf4fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
