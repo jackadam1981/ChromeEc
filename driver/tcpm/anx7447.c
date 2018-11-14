@@ -544,6 +544,34 @@ static int anx7447_mux_set(int port, mux_state_t mux_state)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int anx7447_enter_low_power_mode(int port)
+{
+       int rv;
+
+       rv = i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  TCPC_REG_ALERT_MASK, 0x0);
+
+	rv |= i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  ANX7447_REG_ANALOG_CTRL_10, 0x80);
+
+	rv |= i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  TCPC_REG_ROLE_CTRL, 0x4a);
+
+	rv |= i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  TCPC_REG_COMMAND, TCPC_REG_COMMAND_LOOK4CONNECTION);
+
+	rv |= i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr,
+			  TCPC_REG_COMMAND, TCPC_REG_COMMAND_I2CIDLE);
+	 return rv;
+}
+#endif
+
 /* current mux state */
 static int anx7447_mux_get(int port, mux_state_t *mux_state)
 {
@@ -582,7 +610,7 @@ const struct tcpm_drv anx7447_tcpm_drv = {
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
+	.enter_low_power_mode	= &anx7447_enter_low_power_mode,
 #endif
 };
 
