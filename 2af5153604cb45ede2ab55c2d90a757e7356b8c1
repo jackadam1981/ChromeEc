@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23d556c1_285dc645",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T21:33:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ad680f_f4c779bf",
+      "range": {
+        "startLine": 231,
+        "startChar": 48,
+        "endLine": 231,
+        "endChar": 56
+      },
+      "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78ac82fb_f277f37e",
         "filename": "board/phaser/board.c",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e9dee3_baef9686",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T21:33:51Z",
+      "side": 1,
+      "message": "used to be, thanks for catching that",
+      "parentUuid": "78ac82fb_f277f37e",
+      "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5688a603_6c47f5b7",
+        "filename": "board/phaser/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T21:33:51Z",
+      "side": 1,
+      "message": "I do like keeping it the same as the schemtics. It is unfortunate that the schematics don\u0027t line up though",
+      "parentUuid": "fd0d495c_c61bfee1",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 15
+      },
+      "revId": "2af5153604cb45ede2ab55c2d90a757e7356b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
