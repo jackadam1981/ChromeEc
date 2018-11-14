@@ -22,6 +22,30 @@
       "revId": "c9e4d9ae0ceeb2350cbec22fcdff114e0f666628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5038da7d_39175a6b",
+        "filename": "board/karma/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-14T21:08:57Z",
+      "side": 1,
+      "message": "Agreed, especially the higheset priority task. Let\u0027s used deferred",
+      "parentUuid": "45da2acc_ca9f4ff1",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "c9e4d9ae0ceeb2350cbec22fcdff114e0f666628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
