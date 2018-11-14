@@ -47,8 +47,8 @@ static int virtual_get_mux(int port, mux_state_t *mux_state)
 
 void virtual_hpd_update(int port, int hpd_lvl, int hpd_irq)
 {
-	hpd_irq_state[port] = hpd_irq;
-	if (hpd_irq)
+	hpd_irq_state[port] = hpd_lvl;
+	//if (hpd_irq)
 		host_set_single_event(EC_HOST_EVENT_USB_MUX);
 }
 
