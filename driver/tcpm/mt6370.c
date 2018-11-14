@@ -118,6 +118,20 @@ static int mt6370_enter_low_power_mode(int port)
 }
 #endif
 
+int mt6370_vconn_discharge(int port)
+{
+	int rv, reg;
+
+	rv = tcpc_read(port, MT6370_REG_OVP_FLAG_SEL, &reg);
+	rv |= tcpc_write(port, MT6370_REG_OVP_FLAG_SEL,
+			 (reg & ~MT6370_MASK_DISCHARGE_LVL) |
+				 MT6370_REG_DISCHARGE_LVL);
+	rv |= tcpc_read(port, MT6370_REG_BMC_CTRL, &reg);
+	rv |= tcpc_write(port, MT6370_REG_BMC_CTRL,
+			 reg | MT6370_REG_DISCHARGE_EN);
+	return rv;
+}
+
 /* MT6370 is a TCPCI compatible port controller */
 const struct tcpm_drv mt6370_tcpm_drv = {
 	.init			= &mt6370_init,
