@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45da2acc_ca9f4ff1",
+        "filename": "board/karma/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-14T17:08:39Z",
+      "side": 1,
+      "message": "I think we should use deferred calls. Using a task for one time init like this is very resource wasteful.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "c9e4d9ae0ceeb2350cbec22fcdff114e0f666628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
