@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ef21cc2_befb3356",
+        "filename": "third_party/kernel-doc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-14T19:10:17Z",
+      "side": 1,
+      "message": "This should have \n\n/* BEGIN EC MODIFICATION: description */\n\n/* END EC MODIFICATION */\n\notherwise it\u0027s going to be hard to pull in and three-way merge any subsequent changes to kernel-doc.",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1065,
+        "endChar": 78
+      },
+      "revId": "d341a35fc45d41e7937ab6c66d15fc697dbf47b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
