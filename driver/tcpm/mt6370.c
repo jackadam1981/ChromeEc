@@ -19,6 +19,20 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/* i2c_read function which won't wake TCPC from low power mode. */
+static int mt6370_i2c_read8(int port, int reg, int *val)
+{
+	return i2c_read8(tcpc_config[port].i2c_host_port,
+			 tcpc_config[port].i2c_slave_addr, reg, val);
+}
+
+/* i2c_write function which won't wake TCPC from low power mode. */
+static int mt6370_i2c_write8(int port, int reg, int val)
+{
+	return i2c_write8(tcpc_config[port].i2c_host_port,
+			  tcpc_config[port].i2c_slave_addr, reg, val);
+}
+
 static int mt6370_init(int port)
 {
 	int rv;
@@ -117,6 +131,25 @@ static int mt6370_enter_low_power_mode(int port)
 	return tcpci_enter_low_power_mode(port);
 }
 #endif
+
+int mt6370_vconn_discharge(int port)
+{
+	int val;
+
+	/*
+	 * Read/Write to mt6370 in low-power mode may return fail, but it is
+	 * actually read/written. So here we just skip it's return value.
+	 */
+	mt6370_i2c_read8(port, MT6370_REG_OVP_FLAG_SEL, &val);
+	mt6370_i2c_write8(port, MT6370_REG_OVP_FLAG_SEL,
+			  (val & ~MT6370_MASK_DISCHARGE_LVL) |
+				  MT6370_REG_DISCHARGE_LVL);
+	mt6370_i2c_read8(port, MT6370_REG_BMC_CTRL, &val);
+	mt6370_i2c_write8(port, MT6370_REG_BMC_CTRL,
+				val | MT6370_REG_DISCHARGE_EN);
+
+	return EC_SUCCESS;
+}
 
 /* MT6370 is a TCPCI compatible port controller */
 const struct tcpm_drv mt6370_tcpm_drv = {

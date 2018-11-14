@@ -92,6 +92,8 @@
 #define RT946X_REG_CORECTRL1		0x01
 #define RT946X_REG_CORECTRL2		0x02
 #define RT946X_REG_CORECTRL_RST		RT946X_REG_CORECTRL2
+#define MT6370_REG_RSTPASCODE1		0x03
+#define MT6370_REG_RSTPASCODE2		0x04
 #define RT946X_REG_CHGCTRL1		0x11
 #define RT946X_REG_CHGCTRL2		0x12
 #define RT946X_REG_CHGCTRL3		0x13
@@ -243,12 +245,17 @@
 #define RT946X_SHIFT_SHIP_MODE	7
 #define RT946X_SHIFT_TE		4
 #define RT946X_SHIFT_ILMTSEL	2
+#define RT946X_SHIFT_CFO_EN	1
 #define RT946X_SHIFT_CHG_EN	0
 
 #define RT946X_MASK_SHIP_MODE	(1 << RT946X_SHIFT_SHIP_MODE)
 #define RT946X_MASK_TE		(1 << RT946X_SHIFT_TE)
 #define RT946X_MASK_ILMTSEL	(0x3 << RT946X_SHIFT_ILMTSEL)
+#define RT946X_MASK_CFO_EN	(1 << RT946X_SHIFT_CFO_EN)
 #define RT946X_MASK_CHG_EN	(1 << RT946X_SHIFT_CHG_EN)
+
+/* ========== RSTPASCODE1 0x03 (mt6370) ============ */
+#define MT6370_MASK_RSTPASCODE1	0xA9
 
 /* ========== CHGCTRL3 0x03 ============ */
 #define RT946X_SHIFT_AICR	2
@@ -256,6 +263,9 @@
 
 #define RT946X_MASK_AICR	(0x3F << RT946X_SHIFT_AICR)
 #define RT946X_MASK_ILIMEN	(1 << RT946X_SHIFT_ILIMEN)
+
+/* ========== RSTPASCODE2 0x04 (mt6370) ============ */
+#define MT6370_MASK_RSTPASCODE2	0x96
 
 /* ========== CHGCTRL4 0x04 ============ */
 #define RT946X_SHIFT_CV	1
@@ -474,6 +484,9 @@
 #endif
 
 /* RT946x specific interface functions */
+
+/* Power on reset */
+int rt946x_por_reset(void);
 
 /* Interrupt handler for rt946x */
 void rt946x_interrupt(enum gpio_signal signal);

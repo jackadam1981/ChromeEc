@@ -11,10 +11,12 @@
 #include "console.h"
 #include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
+#include "driver/tcpm/mt6370.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "usb_pd.h"
 #include "util.h"
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
@@ -24,6 +26,8 @@
 
 #define BATTERY_SIMPLO_CHARGE_MIN_TEMP 0
 #define BATTERY_SIMPLO_CHARGE_MAX_TEMP 60
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 enum battery_type {
 	BATTERY_SIMPLO = 0,
@@ -82,7 +86,13 @@ const struct max17055_alert_profile *max17055_get_alert_profile(void)
 
 int board_cut_off_battery(void)
 {
-	return rt946x_cutoff_battery();
+	rt946x_por_reset();
+	/* sleep awhile after power-on-reset. */
+	usleep(750);
+	mt6370_vconn_discharge(0);
+	rt946x_cutoff_battery();
+
+	return EC_SUCCESS;
 }
 
 enum battery_disconnect_state battery_get_disconnect_state(void)
