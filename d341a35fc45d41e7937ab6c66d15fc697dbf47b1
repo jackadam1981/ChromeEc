@@ -46,6 +46,30 @@
       "revId": "d341a35fc45d41e7937ab6c66d15fc697dbf47b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93819c96_9e2db1cc",
+        "filename": "third_party/kernel-doc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-14T20:22:08Z",
+      "side": 1,
+      "message": "That\u0027s fine too.",
+      "parentUuid": "7411cefc_926da315",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1065,
+        "endChar": 78
+      },
+      "revId": "d341a35fc45d41e7937ab6c66d15fc697dbf47b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
