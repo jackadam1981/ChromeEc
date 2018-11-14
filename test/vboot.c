@@ -6,6 +6,9 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
+#define HIDE_EC_STDLIB
+
 #include "common.h"
 #include "rsa.h"
 #include "test_util.h"
