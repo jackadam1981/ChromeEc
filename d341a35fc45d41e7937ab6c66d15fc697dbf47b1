@@ -22,6 +22,30 @@
       "revId": "d341a35fc45d41e7937ab6c66d15fc697dbf47b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7411cefc_926da315",
+        "filename": "third_party/kernel-doc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2018-11-14T19:27:46Z",
+      "side": 1,
+      "message": "Alternatively, I could probably move the __ec_align* stuff to be at the end of the definitions, like:\n\nstruct foo {\n  ...\n} __ec_alignBAR;\n\nto match how kernel definitions usually place the __packed. I think this doesn\u0027t trip up the existing script.",
+      "parentUuid": "1ef21cc2_befb3356",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1065,
+        "endChar": 78
+      },
+      "revId": "d341a35fc45d41e7937ab6c66d15fc697dbf47b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
