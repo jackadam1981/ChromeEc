@@ -236,6 +236,30 @@
       "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eebb709a_44dae55e",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-14T23:27:56Z",
+      "side": 1,
+      "message": "Patchset 3 changed naming to board_user_has_ownership().",
+      "parentUuid": "be2e9f92_bf1f8f9f",
+      "range": {
+        "startLine": 224,
+        "startChar": 5,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "074d7eb916295003189b78c58027b84e8eb2e579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
