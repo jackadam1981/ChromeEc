@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1b2755f_d92891db",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs_sec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2018-11-14T00:55:34Z",
+      "side": 1,
+      "message": "If VARIANT_OCTOPUS_USBC_* is not defined, there is error on build. \ntcpc configuration is on variant_usbc_*.c and variant_ec_*.c and \nbaseboard code can\u0027t include casta\u0027s board.h.\nSo I add new definition and file for 2 parade IC.",
+      "parentUuid": "deec914a_936af4db",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 77
+      },
+      "revId": "b3d886bd75dfffdb0a09adc0581b14535c23b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d77c1797_9a47ec0e",
         "filename": "board/casta/battery.c",
         "patchSetId": 2
