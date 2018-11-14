@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "adc38cd8_085d813d",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-14T19:08:16Z",
+      "side": 1,
+      "message": "the bug is WontFix. looks like there is no TODO anymore. so let\u0027s just keep the comment that we truncate and a ref to the bug, and remove the TODO part.",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b11737df_45980e85",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-14T19:08:16Z",
+      "side": 1,
+      "message": "let\u0027s modernize: it\u0027s actually \"b/35576109\", right?",
+      "range": {
+        "startLine": 184,
+        "startChar": 15,
+        "endLine": 184,
+        "endChar": 30
+      },
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bef88a1_bbc76371",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 2
@@ -31,6 +77,52 @@
       "side": 1,
       "message": "In TPM design, `publicInfo` (`extra` is the hash of `publicInfo` field) of EK is well-known. The access control is at the TPM command authorization. It can use the endorsement primary seed (for EK), only if it pass the authorization check from CreatePrimary command. So, if someone can\u0027t pass the authorization, even he provide correct EK template, it will still create the other key.\n\nActually, the first 2 bytes of extra will be 00 0b (TPM_ALG_SHA256), and the rest is a SHA256 digest, totally 34 bytes. So `extra` is not possible to be equal to TPM2_ECC_EK_NAME_CR50, which is only 4 bytes and starts with C2 E0.",
       "parentUuid": "4bef88a1_bbc76371",
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ab7b30_94ff3399",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-14T19:08:16Z",
+      "side": 1,
+      "message": "Can we avoid memcpy?\nconst struct { UINT16 size; BYTE buf[4]; } TPM2_ECC_EK_NAME_CR50 \u003d { 4, { 0xc2, 0xe0, 0x31, 0x93 } };\nlocal_extra \u003d (TPM2B *)\u0026TPM2_ECC_EK_NAME_CR50;\n\n_cpri__KDFa should have taken const TPM2B* as contextU since it is an IN parameter. too bad it doesn\u0027t, and I don\u0027t want to go and change it. so, let\u0027s treat it as a legacy API and convert const TPM2B* to TPM2B* for its use.",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 8
+      },
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dcb0625_b42b848e",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-14T19:08:16Z",
+      "side": 1,
+      "message": "if we don\u0027t eliminate memcpy altogether (see above), this is quite fragile: what if we change truncated_extra.b.size in the future? it\u0027s easy to forget to change this.\n\nI\u0027d actually establish some constant:\n  const size_t TRUNCATED_PERSONALIZE_EXTRA_SIZE \u003d 4;\n  \nand use it in the rest of the code:\n  BUILD_ASSERT(sizeof(TPM2_ECC_EK_NAME_CR50) \u003d\u003d TRUNCATED_PERSONALIZE_EXTRA_SIZE);\n  TPM2B_4_BYTE_VALUE truncated_extra \u003d { .t \u003d {TRUNCATED_PERSONALIZE_EXTRA_SIZE} };\n  memcpy(truncated_extra.b.buffer, TPM2_ECC_EK_NAME_CR50,\n         TRUNCATED_PERSONALIZE_EXTRA_SIZE);",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 31
+      },
       "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
