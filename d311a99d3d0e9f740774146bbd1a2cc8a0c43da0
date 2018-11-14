@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee02eac4_2f5bb1f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-14T20:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1551611_065c8bb3",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63eb9903_31c008f5",
         "filename": "board/meep/board.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "399de0d7_b6d946b3",
+        "filename": "board/meep/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-14T20:36:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63eb9903_31c008f5",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffaccfb1_c6d759ad",
         "filename": "board/meep/board.c",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f20fab3f_afa5eddf",
+        "filename": "board/meep/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-14T20:36:00Z",
+      "side": 1,
+      "message": "Setting it to open drain low is the most consistent with the previous GPIO behavior for board version 0, so I\u0027d like to keep it that way.  Then, if by any very small chance the GPIO was driven high before our update is called, we\u0027ll correctly be setting it low again",
+      "parentUuid": "ffaccfb1_c6d759ad",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -103,6 +157,24 @@
       "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44324e94_33599de1",
+        "filename": "board/meep/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-14T20:36:00Z",
+      "side": 1,
+      "message": "I\u0027d like to stick with the schematic naming here.  It\u0027s very convenient to have the exact schematic name for the purposes of grepping",
+      "parentUuid": "dac3aa9f_90b20041",
+      "revId": "d311a99d3d0e9f740774146bbd1a2cc8a0c43da0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
