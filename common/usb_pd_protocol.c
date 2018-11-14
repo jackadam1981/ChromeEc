@@ -1064,7 +1064,6 @@ static int send_request(int port, uint32_t rdo)
 
 	return bit_len;
 }
-
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -1307,6 +1306,9 @@ static int pd_send_request_msg(int port, int always_send_request)
 	pd[port].curr_limit = curr_limit;
 	pd[port].supply_voltage = supply_voltage;
 	pd[port].prev_request_mv = supply_voltage;
+#ifdef LET_SRC_SEND_SFRST
+	res = send_control(port, PD_CTRL_ACCEPT);
+#endif //LET_SNK_SEND_SFRST
 	res = send_request(port, rdo);
 	if (res < 0)
 		return res;
@@ -3028,7 +3030,16 @@ void pd_task(void *u)
 			/* Send source cap some minimum number of times */
 			if (caps_count < PD_CAPS_COUNT) {
 				/* Query capabilities of the other side */
-				res = send_source_cap(port);
+#ifdef LET_SNK_SEND_HDRST
+				if (HdRstCnt == 0)
+					/*
+					 * Do not send SRC_Cap => let SNK count
+					 * timeout, send HardReset to us
+					 */
+					res = -1;
+				else
+#endif //LET_SNK_SEND_HDRST
+					res = send_source_cap(port);
 				/* packet was acked => PD capable device) */
 				if (res >= 0) {
 					set_state(port,

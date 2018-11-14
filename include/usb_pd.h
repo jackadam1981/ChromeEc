@@ -9,7 +9,11 @@
 #define __CROS_EC_USB_PD_H
 
 #include "common.h"
-
+//#define LET_SRC_SEND_SFRST
+//#define LET_SNK_SEND_HDRST
+#ifdef LET_SNK_SEND_HDRST
+extern int HdRstCnt;
+#endif //LET_SNK_SEND_HDRST
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 
