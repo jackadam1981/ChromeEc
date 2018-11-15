@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e694e72_a2dc04ee",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-15T05:43:44Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "3d49cdee_0c8cc482",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "523a7292_f2b3250d",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-14T23:01:33Z",
       "side": 1,
       "message": "can we call this consume_repeat_message(int port)",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8842b92_a59a9f48",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-15T05:43:44Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "523a7292_f2b3250d",
       "range": {
         "startLine": 31,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "af488494_b1da9feb",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-15T05:43:44Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "4c459a99_0c8ded63",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f03d86a9_65877112",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2018-11-14T23:01:33Z",
       "side": 1,
       "message": "transmit",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf783b6a_438f32b0",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-15T05:43:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03d86a9_65877112",
       "range": {
         "startLine": 213,
         "startChar": 7,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6c235ae1_b190229e",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-15T05:43:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "444d83aa_70926c5c",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 235,
+        "endChar": 11
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18130ba3_71dc08d6",
         "filename": "driver/tcpm/it83xx_pd.h",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2018-11-14T23:01:33Z",
       "side": 1,
       "message": "can we rename this to invalidate_last_message_id(int port), please",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 35
+      },
+      "revId": "a10e6380ee481c715c5dd9e263cca7dae493525c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b30afba_43bb9bfc",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-15T05:43:44Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "18130ba3_71dc08d6",
       "range": {
         "startLine": 110,
         "startChar": 12,
