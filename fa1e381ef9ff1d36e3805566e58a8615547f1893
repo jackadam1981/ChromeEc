@@ -261,6 +261,30 @@
       "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe29d54_73be7af8",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-15T21:45:43Z",
+      "side": 1,
+      "message": "When an user presses the power button for 3s, the menu shows up. Most of the users will release the power button and then tap the \"power off\" menu. If they want a force shutdown, they will hold the power button and not tap the menu. I don\u0027t think anyone would still hold pressing the power button and also tap the menu. Do we need to handle this weird use case?",
+      "parentUuid": "f85e8dee_5baab0da",
+      "range": {
+        "startLine": 552,
+        "startChar": 4,
+        "endLine": 552,
+        "endChar": 36
+      },
+      "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
