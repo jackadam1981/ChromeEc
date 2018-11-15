@@ -70,6 +70,30 @@
       "revId": "c9e4d9ae0ceeb2350cbec22fcdff114e0f666628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "525bfd4f_f3f1c30e",
+        "filename": "board/karma/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T02:51:49Z",
+      "side": 1,
+      "message": "Please use HOOK_INIT and remove it from ec.tasklist.",
+      "parentUuid": "41bfc4b6_9c9c1b5d",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "c9e4d9ae0ceeb2350cbec22fcdff114e0f666628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
