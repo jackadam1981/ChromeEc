@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4f92659_5931c3a2",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:13:08Z",
+      "side": 1,
+      "message": "Let\u0027s assign -1.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b623274_5ba801e8",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:13:08Z",
+      "side": 1,
+      "message": "We should cache the result because this would be generating i2c repeatedly.",
+      "range": {
+        "startLine": 156,
+        "startChar": 7,
+        "endLine": 156,
+        "endChar": 24
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a527a43_2462085b",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:13:08Z",
+      "side": 1,
+      "message": "Please print error for BATTERY_TYPE_UNKNOWN. If it\u0027s UNKNOWN, we use info_0. Do we have hazard concern?",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 17
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6776af0d_f38d3875",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:13:08Z",
+      "side": 1,
+      "message": "Can you move this to the CL description?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
