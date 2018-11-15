@@ -45,6 +45,30 @@
       "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9d936e_7a525400",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-15T06:03:27Z",
+      "side": 1,
+      "message": "power_seq_version 0 is for Kevin/Bob/Gru (clamshell/convertible).\npower_seq_version 1 is for Scarlet rev0. Actually we can clean this up. \npower_seq_version 2 is for Scarlet rev1+.\n\nI think CONFIG_CHIPSET_POWER_SEQ_VERSION is still valuable because we can use this to support multiple different power sequences in one platform. A new config like CONFIG_CHIPSET_POWER_SEQ_TABLET can at most get us one additional power sequence for tablet.",
+      "parentUuid": "80334a79_8e0b6f4c",
+      "range": {
+        "startLine": 552,
+        "startChar": 4,
+        "endLine": 552,
+        "endChar": 36
+      },
+      "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
