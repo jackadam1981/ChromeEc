@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05cb712f_db64f61f",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:38:10Z",
+      "side": 1,
+      "message": "nit: I think LED_FACTORY is enough.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "e8f48bc7bd4313c9a51a43720564dde2c4bc0804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463d8cbf_79c6b157",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:38:10Z",
+      "side": 1,
+      "message": "Your change is breaking display percentage. Your tree is out of date. Please run repo sync.",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 30
+      },
+      "revId": "e8f48bc7bd4313c9a51a43720564dde2c4bc0804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a6f27c_c4f254bc",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:38:10Z",
+      "side": 1,
+      "message": "OEM ID is printed every time EC boots. Also, it can be printed by cbi command. So, let\u0027s not do this.",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 30
+      },
+      "revId": "e8f48bc7bd4313c9a51a43720564dde2c4bc0804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c01e29_b4e277c6",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:38:10Z",
+      "side": 1,
+      "message": "Why don\u0027t we use \u0027factory\u0027?",
+      "range": {
+        "startLine": 553,
+        "startChar": 34,
+        "endLine": 553,
+        "endChar": 38
+      },
+      "revId": "e8f48bc7bd4313c9a51a43720564dde2c4bc0804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
