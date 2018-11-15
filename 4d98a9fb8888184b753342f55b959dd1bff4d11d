@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3681598d_e4faac5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-15T18:02:06Z",
+      "side": 1,
+      "message": "Ideally, we wouldn\u0027t be mixing host and ec headers which I think is leading to this problem. How is it we are ending up with the host definition of int64_t instead of the ec version? We should probably correct it to use the ec version unless it doesn\u0027t result in a 64-bit int type.",
+      "parentUuid": "d5f9ded6_73ee27e6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "4d98a9fb8888184b753342f55b959dd1bff4d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37210f21_1232ae1e",
         "filename": "common/util.c",
         "patchSetId": 5
