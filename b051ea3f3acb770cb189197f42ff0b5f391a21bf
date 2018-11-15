@@ -151,6 +151,29 @@
     },
     {
       "key": {
+        "uuid": "3b1b0b86_e97258e1",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:17:53Z",
+      "side": 1,
+      "message": "looking at this again, we should probably define CONFIG_BOARD_HAS_RTC_RESET in octopus baseboard. See other boards that define this (and in power/intel_x86.c)",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 42
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bf4eee3_2ef9d457",
         "filename": "board/fleex/gpio.inc",
         "patchSetId": 2
@@ -208,6 +231,30 @@
       "writtenOn": "2018-11-15T22:13:42Z",
       "side": 1,
       "message": "I wouldn\u0027t add a pull to these lines since they are connected to the SoC and it will probably drive it",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4387a969_ee3f8e6d",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:17:53Z",
+      "side": 1,
+      "message": "Also, we should add GPIO_SEL_1P8V since they are on the SoC 1.8V rails",
+      "parentUuid": "bbd0defc_3cefbe13",
       "range": {
         "startLine": 159,
         "startChar": 0,
