@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "d5f9ded6_73ee27e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T17:49:33Z",
+      "side": 1,
+      "message": "The problem is that we use host\u0027s definition of int64_t which expands to \u0027signed long int\u0027 (while we use internal declaration for strtoll in util.h). When it runs for firmware, int64_t expands to \u0027long long int\u0027, defined in builtin/stdint.h.\n\nDefining HIDE_EC_STDLIB makes compilers use host\u0027s declarations but the definition still comes from internal implementation. So, util.c will still be exercised. \n\nI think we should define strtoll as \u0027long long int\u0027 because that\u0027s how we define int64_t for firmware. (We don\u0027t need to define HIDE_EC_STDLIB.)\n\nWhat do you think? I assume compilers guarantee the results would be the same between long long int compiled by x64-gcc v.s. ARM-gcc.",
+      "parentUuid": "012c2ee5_1c150f54",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "4d98a9fb8888184b753342f55b959dd1bff4d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37210f21_1232ae1e",
         "filename": "common/util.c",
         "patchSetId": 5
