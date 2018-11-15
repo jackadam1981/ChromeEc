@@ -70,6 +70,30 @@
       "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5cc3ea0_b9d4cf93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-15T17:41:05Z",
+      "side": 1,
+      "message": "Here is the error output: https://paste.googleplex.com/4987924957364224\n\n+rspangler@chromium.org I wasn\u0027t aware we were already linking against cstdlib for the tests but it makes sense that would for stdout. Do you have any recommendations on how to take care of this type checking problem? We could build all the tests using libec.a and build the object(s) that require cstdlib outside the library.",
+      "parentUuid": "ba6a6e45_b2d917c2",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
