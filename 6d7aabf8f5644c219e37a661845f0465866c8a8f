@@ -22,6 +22,30 @@
       "revId": "6d7aabf8f5644c219e37a661845f0465866c8a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c03147f_79586167",
+        "filename": "include/fan.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-15T19:03:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aada7c67_871bb9e8",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "6d7aabf8f5644c219e37a661845f0465866c8a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
