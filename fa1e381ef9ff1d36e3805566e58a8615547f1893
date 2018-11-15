@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "d217f14a_66f9e0a5",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-15T19:45:32Z",
+      "side": 1,
+      "message": "You guys should double-check that this is actually what\u0027s being used on existing tablets/detachables in practice, I wouldn\u0027t blindly trust some doc floating around somewhere. (Aseda, do you know?)",
+      "parentUuid": "e672cbd5_8b5dcf71",
+      "range": {
+        "startLine": 74,
+        "startChar": 32,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80334a79_8e0b6f4c",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Thanks for explaining.",
       "parentUuid": "2b9d936e_7a525400",
+      "range": {
+        "startLine": 552,
+        "startChar": 4,
+        "endLine": 552,
+        "endChar": 36
+      },
+      "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8087c8a_2101e6f8",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-15T19:45:32Z",
+      "side": 1,
+      "message": "\u003e So when holding the power button for 10s. It initiates a power-on again. I think we have rk3399 clamshell, right?\n\nI think this may be a real problem here, right? Don\u0027t tablets also have the behavior in the OS where they do a clean shutdown when you press power for 3s?\n\nSo with this code, if you held the power button until the machine shut off, it would immediately turn on again after release. That seems wrong. I think what you really want is to confirm that chipset_in_state(CHIPSET_STATE_ANY_OFF) is true when the user starts pressing it, and only then power on the machine on release.",
+      "parentUuid": "1e2df12c_20c511a6",
       "range": {
         "startLine": 552,
         "startChar": 4,
