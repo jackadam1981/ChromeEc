@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2c044c0d_89fbb292",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-15T17:24:14Z",
+      "side": 1,
+      "message": "I am not able to reproduce this error. I renamed strtol(...) to strtoll(...) and ran make -j buildall without any errors. Did you run this inside the chrome os chroot?\n\nFrom the chromeos source checkout run:\n./chromite/bin/cros_sdk\n\nThen cd to the ec folder:\ncd ../platform/ec\n\nThen run make -j buildall",
+      "parentUuid": "ed6000ae_a70650cd",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "4d98a9fb8888184b753342f55b959dd1bff4d11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37210f21_1232ae1e",
         "filename": "common/util.c",
         "patchSetId": 5
