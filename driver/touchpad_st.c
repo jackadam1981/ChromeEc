@@ -298,7 +298,9 @@ static int st_tp_write_hid_report(void)
 	if (!num_finger && !domeswitch_changed)  /* nothing changed */
 		return 0;
 
-	report.button = !!(system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL);
+	if (num_finger)  /* Don't report 0 finger click. */
+		report.button = !!(system_state &
+				   SYSTEM_STATE_DOME_SWITCH_LEVEL);
 	report.count = num_finger;
 	report.timestamp = irq_ts / USB_HID_TOUCHPAD_TIMESTAMP_UNIT;
 
