@@ -49,7 +49,7 @@ enum led_color {
 	LED_AMBER,
 	LED_WHITE,
 	LED_WARM_WHITE,
-
+	LED_FACTORY_TEST,
 	/* Number of colors, not a color itself */
 	LED_COLOR_COUNT
 };
@@ -173,6 +173,7 @@ const static led_patterns power_pattern_2 = {
  * Discharge in S3:  Amber on 1 sec off 3 sec
  * Discharge in S5:  Off
  * Battery Error:    Amber on 1sec off 1sec
+ * Factory mode      Blue on 2sec Amber on 2sec
  */
 const static led_patterns battery_pattern_3 = {
 	/* discharging: s0, s3, s5 */
@@ -189,6 +190,8 @@ static led_patterns const *patterns[2];
 static struct led_pattern battery_error = {LED_AMBER, BLINK(10)};
 /* Pattern for low state of charge. Only battery LED is supported. */
 static struct led_pattern low_battery = {LED_WHITE, BLINK(10)};
+/* Pattern for factory testing. Blue on 2sec Amber on 2sec. */
+static struct led_pattern battery_factory = {LED_FACTORY_TEST, BLINK(20)};
 static int low_battery_soc;
 static void led_charge_hook(void);
 static enum led_power_state power_state;
@@ -196,6 +199,7 @@ static enum led_power_state power_state;
 static void led_init(void)
 {
 	uint32_t oem = PROJECT_NAMI;
+
 	cbi_get_oem_id(&oem);
 
 	switch (oem) {
@@ -207,7 +211,6 @@ static void led_init(void)
 		patterns[0] = &battery_pattern_1;
 		patterns[1] = &power_pattern_1;
 		battery_error.pulse = BLINK(5);
-		low_battery_soc = 100;
 		break;
 	case PROJECT_PANTHEON:
 		patterns[0] = &battery_pattern_2;
@@ -257,13 +260,26 @@ static int set_color_battery(enum led_color color, int duty)
 		led1 = 1;
 		led2 = 1;
 		break;
+	case LED_FACTORY_TEST:
+		led1 = 1;
+		led2 = 1;
+		break;
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
 
-	pwm_set_duty(PWM_CH_LED1, led1 ? duty : 0);
-	pwm_set_duty(PWM_CH_LED2, led2 ? duty : 0);
-
+	if (color != LED_FACTORY_TEST) {
+		pwm_set_duty(PWM_CH_LED1, led1 ? duty : 0);
+		pwm_set_duty(PWM_CH_LED2, led2 ? duty : 0);
+	} else {
+		if (duty == 100) {
+			pwm_set_duty(PWM_CH_LED1, led1 ? 100 : 0);
+			pwm_set_duty(PWM_CH_LED2, led2 ? 0 : 0);
+		} else {
+			pwm_set_duty(PWM_CH_LED2, led2 ? 100 : 0);
+			pwm_set_duty(PWM_CH_LED1, led1 ? 0 : 0);
+		}
+	}
 	return EC_SUCCESS;
 }
 
@@ -296,7 +312,7 @@ static struct {
 	uint8_t pulse;
 } tick[2];
 
-static void config_tick(enum ec_led_id id, const struct led_pattern *pattern)
+static void config_tick(enum ec_led_id id, struct led_pattern *pattern)
 {
 	uint32_t stride = PULSE_INTERVAL(pattern->pulse);
 	if (IS_PULSING(pattern->pulse)) {
@@ -316,6 +332,7 @@ static void config_tick(enum ec_led_id id, const struct led_pattern *pattern)
  * When pulsing, brightness is incremented by <duty_inc> every <interval> usec
  * from 0 to 100%. Then it's decremented from 100% to 0.
  */
+
 static void pulse_led(enum ec_led_id id)
 {
 	if (tick[id].duty + tick[id].duty_inc > 100) {
@@ -341,6 +358,7 @@ static uint32_t tick_led(enum ec_led_id id)
 
 	if (led_auto_control_is_enabled(id))
 		pulse_led(id);
+
 	if (tick[id].alternate)
 		/* Skip 2 phases (rising & falling) */
 		next = PULSE_INTERVAL(tick[id].pulse) * 2;
@@ -372,14 +390,13 @@ static void cancel_tick(enum ec_led_id id)
 		hook_call_deferred(&tick_power_data, -1);
 }
 
-static void start_tick(enum ec_led_id id, const struct led_pattern *pattern)
+static void start_tick(enum ec_led_id id, struct led_pattern *pattern)
 {
 	if (!pattern->pulse) {
 		cancel_tick(id);
 		set_color(id, pattern->color, 100);
 		return;
 	}
-
 	config_tick(id, pattern);
 	if (id == EC_LED_ID_BATTERY_LED)
 		tick_battery();
@@ -395,57 +412,64 @@ static void led_alert(int enable)
 		led_charge_hook();
 }
 
-void config_led(enum ec_led_id id, enum led_charge_state charge)
+static void led_factory(int enable)
+{
+	if (enable)
+		start_tick(EC_LED_ID_BATTERY_LED, &battery_factory);
+	else
+		led_charge_hook();
+}
+
+void config_one_led(enum ec_led_id id, enum led_charge_state charge)
 {
 	const led_patterns *pattern;
-
+	struct led_pattern p;
 	pattern = patterns[id];
 	if (!pattern)
 		return;	/* This LED isn't present */
-
-	start_tick(id, &(*pattern)[charge][power_state]);
+	if (id == EC_LED_ID_BATTERY_LED &&
+			charge == LED_STATE_DISCHARGE &&
+			charge_get_percent() < low_battery_soc)
+		p = low_battery;
+	else
+		p = (*pattern)[charge][power_state];
+	start_tick(id, &p);
 }
 
 void config_leds(enum led_charge_state charge)
 {
-	config_led(EC_LED_ID_BATTERY_LED, charge);
-	config_led(EC_LED_ID_POWER_LED, charge);
+	config_one_led(EC_LED_ID_BATTERY_LED, charge);
+	config_one_led(EC_LED_ID_POWER_LED, charge);
 }
 
 static void call_handler(void)
 {
-	int soc;
-	enum charge_state cs;
-
 	if (!led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		return;
 
-	cs = charge_get_state();
-	soc = charge_get_display_charge();
-	if (soc < 0)
-		cs = PWR_STATE_ERROR;
-
-	switch (cs) {
+	switch (charge_get_state()) {
 	case PWR_STATE_DISCHARGE:
 	case PWR_STATE_DISCHARGE_FULL:
-		if (soc < low_battery_soc)
-			start_tick(EC_LED_ID_BATTERY_LED, &low_battery);
-		else
-			config_led(EC_LED_ID_BATTERY_LED, LED_STATE_DISCHARGE);
-		config_led(EC_LED_ID_POWER_LED, LED_STATE_DISCHARGE);
+		config_leds(LED_STATE_DISCHARGE);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
+		config_leds(LED_STATE_FULL);
+		break;
 	case PWR_STATE_CHARGE:
-		if (soc >= 1000)
-			config_leds(LED_STATE_FULL);
-		else
-			config_leds(LED_STATE_CHARGE);
+		config_leds(LED_STATE_CHARGE);
 		break;
 	case PWR_STATE_ERROR:
 		/* It doesn't matter what 'charge' state we pass because power
 		 * LED (if it exists) is orthogonal to battery state. */
-		config_led(EC_LED_ID_POWER_LED, 0);
+		config_one_led(EC_LED_ID_POWER_LED, 0);
 		led_alert(1);
+		break;
+	case PWR_STATE_IDLE: /* External power connected in IDLE */
+		if (charge_get_flags() & CHARGE_FLAG_FORCE_IDLE) {
+			config_one_led(EC_LED_ID_POWER_LED, 0);
+			led_factory(1);
+		} else
+			config_leds(LED_STATE_DISCHARGE);
 		break;
 	default:
 		;
@@ -483,17 +507,23 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, led_charge_hook, HOOK_PRIO_DEFAULT);
 
 static void print_config(enum ec_led_id id)
 {
+	uint32_t oem = PROJECT_NAMI;
+
+	cbi_get_oem_id(&oem);
+
 	ccprintf("ID:%d\n", id);
 	ccprintf("  Color:%d\n", tick[id].color);
 	ccprintf("  Duty:%d\n", tick[id].duty);
 	ccprintf("  Duty Increment:%d\n", tick[id].duty_inc);
 	ccprintf("  Interval:%d\n", tick[id].interval);
+	ccprintf("OEM ID:%d\n", oem);
 }
 
 static int command_led(int argc, char **argv)
 {
 	enum ec_led_id id = EC_LED_ID_BATTERY_LED;
 	static int alert = 0;
+	static int factory;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
@@ -520,13 +550,16 @@ static int command_led(int argc, char **argv)
 		s5();
 	} else if (!strcasecmp(argv[1], "conf")) {
 		print_config(id);
+	} else if (!strcasecmp(argv[1], "test")) {
+		factory = !factory;
+		led_factory(factory);
 	} else {
 		return EC_ERROR_PARAM1;
 	}
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(led, command_led,
-			"[debug|red|green|amber|off|alert|s0|s3|s5|conf]",
+			"[debug|red|green|amber|off|alert|s0|s3|s5|conf|test]",
 			"Turn on/off LED.");
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
