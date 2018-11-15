@@ -309,6 +309,30 @@
       "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc9bc53_08506532",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2018-11-15T22:05:10Z",
+      "side": 1,
+      "message": "I think it makes sense to be conservative here. We also shouldn\u0027t assume that the current OS behavior will stay that way forever if we can help it. If the user starts pressing the power button while the machine is on and releases it when it is off, then no matter how exactly it got there I think the right thing to do is to stay off.",
+      "parentUuid": "b099f387_9d689f73",
+      "range": {
+        "startLine": 552,
+        "startChar": 4,
+        "endLine": 552,
+        "endChar": 36
+      },
+      "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
