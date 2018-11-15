@@ -259,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "b57ab4d3_0bd56209",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-15T01:28:36Z",
+      "side": 1,
+      "message": "the cr50 system timer continues counting in deep sleep. When it expires, cr50 wakes up briefly, resets it then enters deep sleep. This happens every about once every hour and a half.\n\ndeep sleep power is like 1.5mw regular sleep is 7mw and active power is 50mw.\n\nIf there is a device that isn\u0027t owned but has the battery or wp screw removed, then that device will start this process every time it resumes from deep sleep. That means once every hour and a half cr50 will consume 50mW for 7 minutes when the device is suspended/off.\n\nI think this is a lot of power. Will we just say if you remove the battery or write protect screw, then your power consumption doesn\u0027t matter?",
+      "parentUuid": "53d4ca0b_e240e61e",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 449,
+        "endChar": 28
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a818471_f4b3336d",
         "filename": "include/system.h",
         "patchSetId": 3
