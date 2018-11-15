@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4aee8dd_addf7d8d",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T21:42:20Z",
+      "side": 1,
+      "message": "please use CC_USB channel for this print",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "18c46d7f04790f01a6a08aa714e8bbef002912a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
