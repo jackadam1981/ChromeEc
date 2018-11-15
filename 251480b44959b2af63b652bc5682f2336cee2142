@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f681f0d_1c6f27c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-15T00:20:42Z",
+      "side": 1,
+      "message": "Disconnect suzyq, turn off the AP, and remove the battery. Make sure cr50 enters regular sleep, but doesn\u0027t enter deep sleep while the delay is being processed.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e8fb4bd_c32a2edf",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-15T00:20:42Z",
+      "side": 1,
+      "message": "Can you rename this to current_uo_state?",
+      "range": {
+        "startLine": 54,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1917c899_011c347b",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-15T00:20:42Z",
+      "side": 1,
+      "message": "This is already set to 0 in line 99.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 24
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2d56db1_cf39de31",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-15T00:20:42Z",
+      "side": 1,
+      "message": "I think we should have this information in prod images.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 44
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca368ff8_8d978606",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-15T00:20:42Z",
+      "side": 1,
+      "message": "change to \"has owned the device\"",
+      "range": {
+        "startLine": 943,
+        "startChar": 52,
+        "endLine": 943,
+        "endChar": 62
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a818471_f4b3336d",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-15T00:20:42Z",
+      "side": 1,
+      "message": "I am not sure what this does, but it almost certainly does not only disable deep sleep. It looks like idle.c uses this to determine if cr50 can enter any form of sleep. It uses idle_action to determine if it should enter regular sleep or deep sleep.",
+      "range": {
+        "startLine": 470,
+        "startChar": 8,
+        "endLine": 470,
+        "endChar": 26
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
