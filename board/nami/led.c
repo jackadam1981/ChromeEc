@@ -49,7 +49,7 @@ enum led_color {
 	LED_AMBER,
 	LED_WHITE,
 	LED_WARM_WHITE,
-
+	LED_FACTORY,
 	/* Number of colors, not a color itself */
 	LED_COLOR_COUNT
 };
@@ -189,6 +189,8 @@ static led_patterns const *patterns[2];
 static struct led_pattern battery_error = {LED_AMBER, BLINK(10)};
 /* Pattern for low state of charge. Only battery LED is supported. */
 static struct led_pattern low_battery = {LED_WHITE, BLINK(10)};
+/* Pattern for factory testing. Blue on 2sec Amber on 2sec. */
+static struct led_pattern battery_factory = {LED_FACTORY, BLINK(20)};
 static int low_battery_soc;
 static void led_charge_hook(void);
 static enum led_power_state power_state;
@@ -257,12 +259,26 @@ static int set_color_battery(enum led_color color, int duty)
 		led1 = 1;
 		led2 = 1;
 		break;
+	case LED_FACTORY:
+		led1 = 1;
+		led2 = 1;
+		break;
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
 
-	pwm_set_duty(PWM_CH_LED1, led1 ? duty : 0);
-	pwm_set_duty(PWM_CH_LED2, led2 ? duty : 0);
+	if (color != LED_FACTORY) {
+		pwm_set_duty(PWM_CH_LED1, led1 ? duty : 0);
+		pwm_set_duty(PWM_CH_LED2, led2 ? duty : 0);
+	} else {
+		if (duty == 100) {
+			pwm_set_duty(PWM_CH_LED1, led1 ? 100 : 0);
+			pwm_set_duty(PWM_CH_LED2, led2 ? 0 : 0);
+		} else {
+			pwm_set_duty(PWM_CH_LED2, led2 ? 100 : 0);
+			pwm_set_duty(PWM_CH_LED1, led1 ? 0 : 0);
+		}
+	}
 
 	return EC_SUCCESS;
 }
@@ -395,6 +411,14 @@ static void led_alert(int enable)
 		led_charge_hook();
 }
 
+static void led_factory(int enable)
+{
+	if (enable)
+		start_tick(EC_LED_ID_BATTERY_LED, &battery_factory);
+	else
+		led_charge_hook();
+}
+
 void config_led(enum ec_led_id id, enum led_charge_state charge)
 {
 	const led_patterns *pattern;
@@ -447,6 +471,14 @@ static void call_handler(void)
 		config_led(EC_LED_ID_POWER_LED, 0);
 		led_alert(1);
 		break;
+	case PWR_STATE_IDLE: /* External power connected in IDLE */
+		if (charge_get_flags() & CHARGE_FLAG_FORCE_IDLE)
+			led_factory(1);
+		else if (soc < low_battery_soc)
+			start_tick(EC_LED_ID_BATTERY_LED, &low_battery);
+		else
+			config_led(EC_LED_ID_BATTERY_LED, LED_STATE_DISCHARGE);
+		break;
 	default:
 		;
 	}
@@ -494,6 +526,7 @@ static int command_led(int argc, char **argv)
 {
 	enum ec_led_id id = EC_LED_ID_BATTERY_LED;
 	static int alert = 0;
+	static int factory;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
@@ -520,13 +553,16 @@ static int command_led(int argc, char **argv)
 		s5();
 	} else if (!strcasecmp(argv[1], "conf")) {
 		print_config(id);
+	} else if (!strcasecmp(argv[1], "factory")) {
+		factory = !factory;
+		led_factory(factory);
 	} else {
 		return EC_ERROR_PARAM1;
 	}
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(led, command_led,
-			"[debug|red|green|amber|off|alert|s0|s3|s5|conf]",
+			"[debug|red|green|amber|off|alert|s0|s3|s5|conf|factory]",
 			"Turn on/off LED.");
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
