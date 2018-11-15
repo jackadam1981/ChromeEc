@@ -100,8 +100,6 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
-const char *gauge_device_name[] = { "AP15O5L", "AP18F4M", };
-
 enum gauge_type {
 	GAUGE_TYPE_UNKNOWN = 0,
 	GAUGE_TYPE_TI_BQ40Z50,
@@ -155,17 +153,15 @@ static enum gauge_type get_gauge_ic(void)
 
 static enum battery_type get_battery_type(void)
 {
-	char device_name[32];
-
-	if (!battery_device_name(device_name, sizeof(device_name))) {
-		if (!strcasecmp(device_name,
-					gauge_device_name[BATTERY_TYPE_AP15]))
-			return BATTERY_TYPE_AP15;
-		else if (!strcasecmp(device_name,
-					gauge_device_name[BATTERY_TYPE_AP18]))
-			return BATTERY_TYPE_AP18;
-	}
-	return BATTERY_TYPE_UNKNOWN;
+	if ((sku == 0x29e1) || (sku == 0x2be7))
+		return BATTERY_TYPE_AP15;
+	else if ((sku == 0x118e3) || (sku == 0x18e3) ||
+		 (sku == 0x118e1) || (sku == 0x18e1) ||
+		 (sku == 0x19ce3) || (sku == 0x9ce3) ||
+		 (sku == 0x19ce1) || (sku == 0x9ce1))
+		return BATTERY_TYPE_AP18;
+	else
+		return BATTERY_TYPE_UNKNOWN;
 }
 
 void board_battery_init(void)
