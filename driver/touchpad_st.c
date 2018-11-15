@@ -262,16 +262,11 @@ static int st_tp_check_domeswitch_state(void)
 static int st_tp_write_hid_report(void)
 {
 	int ret, i, num_finger, num_events;
-	const int old_system_state = system_state;
-	int domeswitch_changed;
 	struct usb_hid_touchpad_report report;
 
 	ret = st_tp_check_domeswitch_state();
 	if (ret)
 		return ret;
-
-	domeswitch_changed = ((old_system_state ^ system_state) &
-			      SYSTEM_STATE_DOME_SWITCH_LEVEL);
 
 	num_events = st_tp_read_all_events(1);
 	if (tp_control)
@@ -295,7 +290,7 @@ static int st_tp_write_hid_report(void)
 		}
 	}
 
-	if (!num_finger && !domeswitch_changed)  /* nothing changed */
+	if (!num_finger)
 		return 0;
 
 	report.button = !!(system_state & SYSTEM_STATE_DOME_SWITCH_LEVEL);
