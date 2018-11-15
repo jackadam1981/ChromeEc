@@ -237,6 +237,30 @@
       "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f85e8dee_5baab0da",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-15T21:30:40Z",
+      "side": 1,
+      "message": "(To be clear, the tablet clean shutdown is 3s power button press + select \u0027power off\u0027 on the menu. This part is fine. However, the tablet hard shutdown is 10s power button press, which will be a problem since the device would re-boot when power button is released. source: go/crosdebug)",
+      "parentUuid": "45f157fd_7290c05a",
+      "range": {
+        "startLine": 552,
+        "startChar": 4,
+        "endLine": 552,
+        "endChar": 36
+      },
+      "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
