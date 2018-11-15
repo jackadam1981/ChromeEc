@@ -285,6 +285,30 @@
       "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b099f387_9d689f73",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-15T21:56:29Z",
+      "side": 1,
+      "message": "Here is the scenario:\n1. 0s: The user press power button\n2. 3s: \u0027power off\u0027 menu pops up, but the user can ignore it and keep holding the power button.\n3. 8s: The devices still shuts off (a.k.a. hard shutdown).\n4. 8+s: The user releases the power button, and then the device boots again!",
+      "parentUuid": "cfe29d54_73be7af8",
+      "range": {
+        "startLine": 552,
+        "startChar": 4,
+        "endLine": 552,
+        "endChar": 36
+      },
+      "revId": "fa1e381ef9ff1d36e3805566e58a8615547f1893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
