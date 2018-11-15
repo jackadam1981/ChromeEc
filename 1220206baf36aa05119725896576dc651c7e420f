@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05b78dd6_1e4914b4",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-15T15:15:36Z",
+      "side": 1,
+      "message": "Don\u0027t you risk losing the dome switch release event by doing this?\n\nI imagine something like this:\n\nTime 0: 1 finger on\nTime 1: 1 finger on, domeswitch on \u003d\u003e send event\nTime 2: 0 finger on, domeswitch on \u003d\u003e send event\nTime 3: 0 finger on, domeswitch off \u003d\u003e do not send event ?!?\n\nI\u0027m not sure if the race between time 2/3 can actually happen, but it may be wise to send the dome switch release event.",
+      "revId": "1220206baf36aa05119725896576dc651c7e420f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
