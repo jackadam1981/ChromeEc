@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "dbb12d7e_e6a00358",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-11-15T11:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b11737df_45980e85",
+      "range": {
+        "startLine": 184,
+        "startChar": 15,
+        "endLine": 184,
+        "endChar": 30
+      },
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78b64669_06ca9b7f",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-11-15T11:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adc38cd8_085d813d",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bef88a1_bbc76371",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 2
@@ -103,6 +151,30 @@
       "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a281ca5_3767d2e0",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2018-11-15T11:45:04Z",
+      "side": 1,
+      "message": "I prefer this one. I wanted to do that before, but there is not const in _cpri__KDFa so that it make me no confidence to cast the pointer to non-const one like this.",
+      "parentUuid": "57ab7b30_94ff3399",
+      "range": {
+        "startLine": 191,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 8
+      },
+      "revId": "d51b8ebf832adc65bfc805e12efc6bc00d4ba7db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
