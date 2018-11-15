@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "231f4124_c8772b21",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T21:32:38Z",
+      "side": 1,
+      "message": "this looks good, can you also add a gpio_set_flag to make this input not float when the sensor isn\u0027t stuffed. Please see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1336287/1/board/phaser/board.c",
+      "revId": "1be07964cfcb026b4db35f96982a7bc10c2eb9f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
