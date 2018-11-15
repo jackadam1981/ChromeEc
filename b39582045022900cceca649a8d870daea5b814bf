@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b43d276_2ec3416d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2065,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-15T04:15:21Z",
+      "side": 1,
+      "message": "Not a big deal, but how about using\n\nsetlinebuf(stdout);\n\n?\n\n(I\u0027m guessing that generally having some buffering is better if possible?)",
+      "revId": "b39582045022900cceca649a8d870daea5b814bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
