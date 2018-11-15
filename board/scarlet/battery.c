@@ -30,7 +30,8 @@
 
 #define TEMP_OUT_OF_RANGE TEMP_ZONE_COUNT
 
-#define BAT_LEVEL_PD_LIMIT 90
+#define BAT_LEVEL_PD_LIMIT  90
+#define PD_CHECK_DELAY_MSEC (100 * MSEC)
 
 static uint8_t batt_id = 0xff;
 
@@ -302,7 +303,7 @@ static void pd_limit_5v(uint8_t en)
  * When the board is in S3/S5 and battery level > BAT_LEVEL_PD_LIMIT,
  * we limit PD voltage to 5V.
  */
-static void board_pd_voltage(void)
+static void board_pd_voltage_deferred(void)
 {
 	uint8_t pd_limit_en;
 	int bat_level;
@@ -312,6 +313,13 @@ static void board_pd_voltage(void)
 		CHIPSET_STATE_ANY_SUSPEND) && bat_level > BAT_LEVEL_PD_LIMIT;
 
 	pd_limit_5v(pd_limit_en);
+}
+DECLARE_DEFERRED(board_pd_voltage_deferred);
+
+static void board_pd_voltage(void)
+{
+	hook_call_deferred(&board_pd_voltage_deferred_data,
+			   PD_CHECK_DELAY_MSEC);
 }
 DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, board_pd_voltage, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_pd_voltage, HOOK_PRIO_DEFAULT);
