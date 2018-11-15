@@ -48,6 +48,53 @@
     },
     {
       "key": {
+        "uuid": "681d9a51_a1f4b0b0",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-15T01:00:57Z",
+      "side": 1,
+      "message": "yes, using the same string for types and variable names makes it more difficult to browse the code.",
+      "parentUuid": "8e8fb4bd_c32a2edf",
+      "range": {
+        "startLine": 54,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0535fd7b_ae76e65b",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-15T01:00:57Z",
+      "side": 1,
+      "message": "why not combine the two checks in one if statment?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 39
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1917c899_011c347b",
         "filename": "board/cr50/wp.c",
         "patchSetId": 3
@@ -94,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "ca19888a_c5852d6a",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-15T01:00:57Z",
+      "side": 1,
+      "message": "I don\u0027t think we should waste all this space on strings, let\u0027s keep it in debug images only.",
+      "parentUuid": "f2d56db1_cf39de31",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 44
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca368ff8_8d978606",
         "filename": "common/ccd_config.c",
         "patchSetId": 3
@@ -110,6 +181,29 @@
         "startChar": 52,
         "endLine": 943,
         "endChar": 62
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63b49de8_8298633a",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-15T01:00:57Z",
+      "side": 1,
+      "message": "do we really need this - should\u0027t this be necessary only during CCD sesssions were sleep is disabled anyways.\n\nYes, conceivably one could be trying this from the console, but it is easier to plug in SuzyQ than to have a provision for this in the code.",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 449,
+        "endChar": 28
       },
       "revId": "251480b44959b2af63b652bc5682f2336cee2142",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
