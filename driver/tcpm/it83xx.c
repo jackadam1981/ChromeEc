@@ -328,6 +328,7 @@ static void it83xx_set_data_role(enum usbpd_port port, int pd_role)
 
 static void it83xx_init(enum usbpd_port port, int role)
 {
+	int i = 0;
 	/* bit7: Reload CC parameter setting. */
 	IT83XX_USBPD_CCPSR0(port) |= (1 << 7);
 	/* reset and disable HW auto generate message header */
@@ -341,6 +342,8 @@ static void it83xx_init(enum usbpd_port port, int role)
 	IT83XX_USBPD_PDMSR(port) = USBPD_REG_MASK_SOP_ENABLE;
 	/* W/C status */
 	IT83XX_USBPD_ISR(port) = 0xff;
+	IT83XX_USBPD_TCDCR(port) |= USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+	IT83XX_USBPD_TCDCR(port) |= USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
 	/* enable cc, select cc1 and Rd. */
 	IT83XX_USBPD_CCGCR(port) = 0xd;
 	/* change data role as the same power role */
@@ -349,9 +352,15 @@ static void it83xx_init(enum usbpd_port port, int role)
 	it83xx_set_power_role(port, role);
 	/* disable all interrupts */
 	IT83XX_USBPD_IMR(port) = 0xff;
-	/* enable tx done and reset detect interrupt */
+	/* enable tx done, reset and plug out detect interrupt */
 	IT83XX_USBPD_IMR(port) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
 					USBPD_REG_MASK_HARD_RESET_DETECT);
+	IT83XX_USBPD_TCDCR(port) &= ~(USBPD_REG_MASK_TYPEC_PLUG_IN_OUT_ISR |
+					USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
+					USBPD_REG_PLUG_IN_OUT_SELECT);
+	//IT83XX_USBPD_TCDCR(port) |= USBPD_REG_PLUG_IN_OUT_SELECT; //tst pl-out
+	i = IT83XX_USBPD_TCDCR(port);
+	ccprints("P%d init IT83XX_USBPD_TCDCR 0x%x", port, i);
 	IT83XX_USBPD_CCPSR(port) = 0xff;
 	/* cc connect */
 	IT83XX_USBPD_CCCSR(port) = 0;

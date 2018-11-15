@@ -11,10 +11,31 @@
 #include "task.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "console.h"
+//#include "system.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
+//static int get_bbram_idx(int port)
+//{
+//	switch (port) {
+//	case 2:
+//		return SYSTEM_BBRAM_IDX_PD2;
+
+//	case 1:
+//		return SYSTEM_BBRAM_IDX_PD1;
+
+//	case 0:
+//		return SYSTEM_BBRAM_IDX_PD0;
+
+//	default:
+//		return -1;
+//	}
+//}
+
 static void chip_pd_irq(enum usbpd_port port)
 {
+	int i = 0, cc1, cc2;
+	//uint8_t saved_flg;
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
@@ -34,6 +55,53 @@ static void chip_pd_irq(enum usbpd_port port)
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
+		}
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+			i = ((IT83XX_USBPD_TCDCR(port) &
+				USBPD_REG_PLUG_IN_OUT_SELECT) >> 3);
+			ccprints("ISR: P%d PLUG_DTCT %d (IN=0 OUT=1)", port, i);
+
+			//i = system_get_bbram(get_bbram_idx(port), &saved_flg);
+			//ccprints("P%d BBRAM Role %d", port,
+			//	(saved_flg & PD_BBRMFLG_POWER_ROLE) >> 1);
+			cc1 = USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) >> 1;
+			cc2 = USBPD_GET_CC2_PULL_REGISTER_SELECTION(port) >> 3;
+			ccprints("P%d assert cc1 %d cc2 %d (Rp=1 Rd=0)", port,
+				cc1, cc2);
+			/*
+			 * Plug in and out detect toggle, except when we're SNK
+			 * to detect plug out which is monitoring Vbus volt by
+			 * polling.
+			 */
+			if ((cc1 == TYPEC_CC_RP) || (cc2 == TYPEC_CC_RP)) {
+				IT83XX_USBPD_TCDCR(port) ^=
+					USBPD_REG_PLUG_IN_OUT_SELECT;
+				i = tcpc_config[port].drv->get_cc(port, &cc1,
+					&cc2);
+				if ((cc1 == TYPEC_CC_VOLT_RD &&
+					cc2 == TYPEC_CC_VOLT_RD) ||
+					(cc1 == TYPEC_CC_VOLT_RA &&
+					cc2 == TYPEC_CC_VOLT_RA))
+					/*
+					 * We're SRC to detect audio/debug plug
+					 * out.
+					 */
+					IT83XX_USBPD_TCDCR(port) |=
+					  USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+				else
+					/* We're SRC to detect SNK plug out */
+					IT83XX_USBPD_TCDCR(port) &=
+					 ~USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+			}
+
+			//if ((saved_flg & PD_BBRMFLG_POWER_ROLE)!=PD_ROLE_SINK)
+			//	IT83XX_USBPD_TCDCR(port) ^=
+			//		USBPD_REG_PLUG_IN_OUT_SELECT;
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_CC, 0);
 		}
 	}
 }
