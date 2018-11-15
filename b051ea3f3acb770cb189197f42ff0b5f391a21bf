@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c40b3523_b139be3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "can you also include your power test measurement results here too, please?",
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cad5b78_c2aed05f",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "this should also have GPIO_SEL_1P8V",
+      "range": {
+        "startLine": 145,
+        "startChar": 38,
+        "endLine": 145,
+        "endChar": 48
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0025dd73_09b4924b",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "this has an external pull to ground (R137). We are in a drive fight with it. We should remove this pull resistor and let the the external resistor handle it for us.",
+      "range": {
+        "startLine": 148,
+        "startChar": 41,
+        "endLine": 148,
+        "endChar": 53
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd5cb76_b1385236",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "I would actually expect this to be added to the keyboard pins section below (line 170)\n\nUpdate to PIN_MASK(0, 0xF0)",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 51
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b399360d_d8aeebca",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "This is actually used for the ADC. Fleex is missing the line in the alternate function section below (I have another CL:1337456 for ADC clean up which adds it).\n\nSince we will have the alternate function, we can drop this line.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 68
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c83241_c3ba2d6b",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "We should drop the pull on this since it is going to another IC (unless the other\u0027s IC says that it floats the pin, but I am pretty sure it is always driving it)",
+      "range": {
+        "startLine": 151,
+        "startChar": 43,
+        "endLine": 151,
+        "endChar": 55
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0355bbb7_d05c0ee8",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "same. let\u0027s drop the pull here",
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf4eee3_2ef9d457",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "I would expect this to be configured int the keyboard pins section below too like:\n\nALTERNATE(PIN_MASK(8, 0x04), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH)\t/* KSO_14 */",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 51
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75518e73_e81e62f1",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "We are going to merge conflict :)  CL:1332467",
+      "range": {
+        "startLine": 157,
+        "startChar": 5,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd0defc_3cefbe13",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "I wouldn\u0027t add a pull to these lines since they are connected to the SoC and it will probably drive it",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a2b41a1_b684aef7",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "This will be configured as ADC in CL:1337456. We can drop this",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 72
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c469f80a_1f1bf995",
+        "filename": "board/fleex/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-15T22:13:42Z",
+      "side": 1,
+      "message": "there is an external pull on this (R197). We don\u0027t need one here.",
+      "range": {
+        "startLine": 163,
+        "startChar": 39,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "b051ea3f3acb770cb189197f42ff0b5f391a21bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
