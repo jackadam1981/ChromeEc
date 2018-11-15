@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5311f819_7ab94fb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-15T17:27:09Z",
+      "side": 1,
+      "message": "Are the debug commands that show sleep stats?",
+      "parentUuid": "8f681f0d_1c6f27c4",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e8fb4bd_c32a2edf",
         "filename": "board/cr50/wp.c",
         "patchSetId": 3
@@ -283,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "031f4dbb_6450a33f",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-15T17:27:09Z",
+      "side": 1,
+      "message": "So is the proposal is to use delay_sleep_by() at the start of the process?  Setting the delay time to ((BATT_REMOVE_PHYSICAL_PRESENCE_TIME + BUTTON_PRESS_TIMEOUT)/MSEC) - or 7 minutes.",
+      "parentUuid": "b57ab4d3_0bd56209",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 449,
+        "endChar": 28
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a818471_f4b3336d",
         "filename": "include/system.h",
         "patchSetId": 3
@@ -294,6 +342,30 @@
       "writtenOn": "2018-11-15T00:20:42Z",
       "side": 1,
       "message": "I am not sure what this does, but it almost certainly does not only disable deep sleep. It looks like idle.c uses this to determine if cr50 can enter any form of sleep. It uses idle_action to determine if it should enter regular sleep or deep sleep.",
+      "range": {
+        "startLine": 470,
+        "startChar": 8,
+        "endLine": 470,
+        "endChar": 26
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6fc7c7e_ec1b8625",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-15T17:27:09Z",
+      "side": 1,
+      "message": "This change will be reverted if the code switches to delaying sleep instead of disable_sleep/enable_sleep.",
+      "parentUuid": "5a818471_f4b3336d",
       "range": {
         "startLine": 470,
         "startChar": 8,
