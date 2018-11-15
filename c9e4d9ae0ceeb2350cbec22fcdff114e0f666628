@@ -46,6 +46,30 @@
       "revId": "c9e4d9ae0ceeb2350cbec22fcdff114e0f666628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41bfc4b6_9c9c1b5d",
+        "filename": "board/karma/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-11-15T02:27:41Z",
+      "side": 1,
+      "message": "Got it! I will use hook_call_deferred here.\nIf I use deferred here, do I need to change flash_edid to HOOK_INIT, or keep it as a task?",
+      "parentUuid": "5038da7d_39175a6b",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "c9e4d9ae0ceeb2350cbec22fcdff114e0f666628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
