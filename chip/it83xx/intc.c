@@ -11,10 +11,13 @@
 #include "task.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "console.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
 static void chip_pd_irq(enum usbpd_port port)
 {
+	int i = 0;
+	//int cc1, cc2;
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
@@ -34,6 +37,54 @@ static void chip_pd_irq(enum usbpd_port port)
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
+		}
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+			/*
+			 * when tcpc detect plug in, then disable it to avoid
+			 * keeping interrupt. And when polling disconnect will
+			 * enable it again.
+			 */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+			i = ((IT83XX_USBPD_TCDCR(port) &
+				USBPD_REG_PLUG_IN_OUT_SELECT) >> 3);
+			ccprints("P%d ISR: PLUG_DTCT %d (IN=0 OUT=1)", port, i);
+#if 0 //we are SRC, toggle to detect plug out
+			cc1 = USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) >> 1;
+			cc2 = USBPD_GET_CC2_PULL_REGISTER_SELECTION(port) >> 3;
+			ccprints("P%d assert cc1 %d cc2 %d (Rp=1 Rd=0)", port,
+				cc1, cc2);
+			/*
+			 * If we are SRC, toggle Plug in and out detect. When
+			 * we are SNK, detect plug out is monitoring Vbus volt
+			 * by polling.
+			 */
+			if ((cc1 == TYPEC_CC_RP) || (cc2 == TYPEC_CC_RP)) {
+				IT83XX_USBPD_TCDCR(port) ^=
+					USBPD_REG_PLUG_IN_OUT_SELECT;
+				i = tcpc_config[port].drv->get_cc(port, &cc1,
+					&cc2);
+				if ((cc1 == TYPEC_CC_VOLT_RD &&
+					cc2 == TYPEC_CC_VOLT_RD) ||
+					(cc1 == TYPEC_CC_VOLT_RA &&
+					cc2 == TYPEC_CC_VOLT_RA))
+					/*
+					 * We're SRC to detect audio/debug plug
+					 * out.
+					 */
+					IT83XX_USBPD_TCDCR(port) |=
+					  USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+				else
+					/* We're SRC to detect SNK plug out */
+					IT83XX_USBPD_TCDCR(port) &=
+					 ~USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+			}
+#endif //we are SRC, toggle to detect plug out
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_CC, 0);
 		}
 	}
 }
