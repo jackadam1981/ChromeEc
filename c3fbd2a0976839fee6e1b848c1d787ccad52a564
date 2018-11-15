@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "993e5246_cf7a9be0",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-15T15:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ef97d9_3ba0c508",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d96d527c_0b7bd092",
         "filename": "board/nami/battery.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59e61e36_8b4bcb11",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-15T15:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d96d527c_0b7bd092",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d1b6e222_0648240c",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-15T15:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61bf90ea_eac3280e",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48ec9b45_457d3564",
         "filename": "board/nami/board.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e24e551_103edf72",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-15T15:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48ec9b45_457d3564",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 24
+      },
+      "revId": "c3fbd2a0976839fee6e1b848c1d787ccad52a564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
