@@ -235,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "53d4ca0b_e240e61e",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-15T01:20:31Z",
+      "side": 1,
+      "message": "this should be addressed by delaying sleep after power for a few minutes. Having this whole logic of using yet another bit in the mask and having the code to call enable/disable sleep in multiple places is not worth it IMO.\n\nThe power on sleep delay increase may be conditional on this property (delayed WP).",
+      "parentUuid": "5dbabb72_8c0e6e1c",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 449,
+        "endChar": 28
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a818471_f4b3336d",
         "filename": "include/system.h",
         "patchSetId": 3
