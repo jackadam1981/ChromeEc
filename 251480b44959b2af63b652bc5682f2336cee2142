@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "0f74386f_3d47cc71",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-15T17:35:30Z",
+      "side": 1,
+      "message": "the proposal is to delay entering sleep post reset if battery is disconnected.\n\nJust add a call to delay_sleep_by(interval); to board startup code, to be invoked if running with battery disconnected (and maybe only on devices where the appropriate property is set by strapping resistors)",
+      "parentUuid": "031f4dbb_6450a33f",
+      "range": {
+        "startLine": 449,
+        "startChar": 1,
+        "endLine": 449,
+        "endChar": 28
+      },
+      "revId": "251480b44959b2af63b652bc5682f2336cee2142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a818471_f4b3336d",
         "filename": "include/system.h",
         "patchSetId": 3
