@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d28742bd_22ddf482",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-11-16T18:49:04Z",
+      "side": 1,
+      "message": "In practice, it seems like we still toggle on the open pin and do enter LPM.",
+      "parentUuid": "15d547db_417afb03",
+      "range": {
+        "startLine": 2335,
+        "startChar": 0,
+        "endLine": 2339,
+        "endChar": 0
+      },
+      "revId": "9d6e3e8e0bfa5d90e8c28a542424e6ade05fdd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "278488c0_a7991709",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "9d6e3e8e0bfa5d90e8c28a542424e6ade05fdd4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a797f37d_87615b5a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4009,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-11-16T18:49:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "278488c0_a7991709",
+      "range": {
+        "startLine": 4009,
+        "startChar": 3,
+        "endLine": 4009,
+        "endChar": 44
+      },
+      "revId": "9d6e3e8e0bfa5d90e8c28a542424e6ade05fdd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
