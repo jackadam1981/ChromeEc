@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ac28a30_9949182b",
+        "filename": "board/phaser/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-16T05:22:52Z",
+      "side": 1,
+      "message": "Given that we moved board_get_vbus_adc definition to baseboard.c, can\u0027t we move the adc_channel enum to baseboard.h?\n\nAlso I see ADC_VBUS_C0 \u0026 ADC_BUS_C1 are enumerated in different order for meep \u0026 fleex compared to phaser \u0026 bobba. Is it fine?",
+      "revId": "a438c4924be44ffcdc9dba3826cb02dd035c284c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
