@@ -22,6 +22,30 @@
       "revId": "0d7db60483a5212a709f34c9f05c2dd2d5f5b156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f19b25f2_ff9bef93",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3067,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-16T21:07:03Z",
+      "side": 1,
+      "message": "Good call, especially since the USB flash drives will hang out in DISCOVERY\n\nIf the timeout is below, then we\u0027ll be overwriting the 10 ms timeout for the transition to negotiate when that happens",
+      "parentUuid": "1424a556_29319b7d",
+      "range": {
+        "startLine": 3067,
+        "startChar": 14,
+        "endLine": 3067,
+        "endChar": 36
+      },
+      "revId": "0d7db60483a5212a709f34c9f05c2dd2d5f5b156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
