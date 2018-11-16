@@ -22,6 +22,29 @@
       "revId": "9d6e3e8e0bfa5d90e8c28a542424e6ade05fdd4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "278488c0_a7991709",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4009,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-16T16:09:31Z",
+      "side": 1,
+      "message": "can we keep the setting and clearing LPM flag together in the next_state function. The comment about setting the LPM flag still seems good here though as a breadcrumb",
+      "range": {
+        "startLine": 4009,
+        "startChar": 3,
+        "endLine": 4009,
+        "endChar": 44
+      },
+      "revId": "9d6e3e8e0bfa5d90e8c28a542424e6ade05fdd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
