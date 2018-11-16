@@ -4239,10 +4239,11 @@ struct __ec_align1 ec_params_usb_pd_mux_info {
 };
 
 /* Flags representing mux state */
-#define USB_PD_MUX_USB_ENABLED       (1 << 0)
-#define USB_PD_MUX_DP_ENABLED        (1 << 1)
-#define USB_PD_MUX_POLARITY_INVERTED (1 << 2)
-#define USB_PD_MUX_HPD_IRQ           (1 << 3)
+#define USB_PD_MUX_USB_ENABLED       (1 << 0) /* USB connected */
+#define USB_PD_MUX_DP_ENABLED        (1 << 1) /* DP connected */
+#define USB_PD_MUX_POLARITY_INVERTED (1 << 2) /* CC line Polarity inverted */
+#define USB_PD_MUX_HPD_IRQ           (1 << 3) /* HPD IRQ is asserted */
+#define USB_PD_MUX_HPD_LVL           (1 << 4) /* HPD level is asserted */
 
 struct __ec_align1 ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
