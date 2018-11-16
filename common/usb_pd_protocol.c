@@ -2325,11 +2325,18 @@ static enum pd_states drp_auto_toggle_next_state(int port, int cc1, int cc2)
 				next_state = PD_STATE_SNK_DISCONNECTED;
 			else
 				next_state = PD_STATE_DRP_AUTO_TOGGLE;
-		} else
+		} else {
 			next_state = PD_STATE_SRC_DISCONNECTED;
-	} else
+		}
+	} else {
 		/* Anything else, keep toggling */
 		next_state = PD_STATE_DRP_AUTO_TOGGLE;
+	}
+
+	/* If we have detected a connection, don't go into LPM anymore. */
+	if ((cc1 != TYPEC_CC_VOLT_OPEN) || (cc2 != TYPEC_CC_VOLT_OPEN))
+		pd[port].flags &= ~PD_FLAGS_LPM_REQUESTED;
+
 	return next_state;
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
@@ -3994,13 +4001,14 @@ void pd_task(void *u)
 			/* Check for connection */
 			tcpm_get_cc(port, &cc1, &cc2);
 
-			next_state = drp_auto_toggle_next_state(port, cc1, cc2);
-
 			/*
 			 * Always stay in low power mode since we are waiting
-			 * for a connection.
+			 * for a connection.  drp_auto_toggle_next_state() may
+			 * unset the LPM flag if it detects a connection.
 			 */
 			pd[port].flags |= PD_FLAGS_LPM_REQUESTED;
+
+			next_state = drp_auto_toggle_next_state(port, cc1, cc2);
 
 			if (next_state == PD_STATE_SNK_DISCONNECTED) {
 				tcpm_set_cc(port, TYPEC_CC_RD);
