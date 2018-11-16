@@ -25,6 +25,7 @@
 #define ARGS_MASK_OEM_ID		(1 << 2)
 #define ARGS_MASK_SIZE			(1 << 3)
 #define ARGS_MASK_SKU_ID		(1 << 4)
+#define ARGS_MASK_MODEL_ID		(1 << 5)
 
 /* TODO: Set it by macro */
 const char cmd_name[] = "cbi-util";
@@ -37,6 +38,7 @@ enum {
 	OPT_SKU_ID,
 	OPT_DRAM_PART_NUM,
 	OPT_OEM_NAME,
+	OPT_MODEL_ID,
 	OPT_SIZE,
 	OPT_ERASE_BYTE,
 	OPT_SHOW_ALL,
@@ -50,6 +52,7 @@ static const struct option opts_create[] = {
 	{"sku_id", 1, 0, OPT_SKU_ID},
 	{"dram_part_num", 1, 0, OPT_DRAM_PART_NUM},
 	{"oem_name", 1, 0, OPT_OEM_NAME},
+	{"model_id", 1, 0, OPT_MODEL_ID},
 	{"size", 1, 0, OPT_SIZE},
 	{"erase_byte", 1, 0, OPT_ERASE_BYTE},
 	{NULL, 0, 0, 0}
@@ -67,7 +70,8 @@ static const char *field_name[] = {
 	"OEM_ID",
 	"SKU_ID",
 	"DRAM_PART_NUM",
-	"OEM_NAME"
+	"OEM_NAME",
+	"MODEL_ID",
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
@@ -79,6 +83,7 @@ const char help_create[] =
 	"  --board_version <value>     Board version\n"
 	"  --oem_id <value>            OEM ID\n"
 	"  --sku_id <value>            SKU ID\n"
+	"  --model_id <value>          Model ID\n"
 	"  --size <size>               Size of output file in bytes\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF and field size can\n"
 	"be optionally specified by <value:size> notation: e.g. 0xabcd:4.\n"
@@ -240,6 +245,7 @@ static int cmd_create(int argc, char **argv)
 		struct integer_field ver;
 		struct integer_field oem;
 		struct integer_field sku;
+		struct integer_field model;
 		const char *dram_part_num;
 		const char *oem_name;
 	} bi;
@@ -305,11 +311,17 @@ static int cmd_create(int argc, char **argv)
 		case OPT_OEM_NAME:
 			bi.oem_name = optarg;
 			break;
+		case OPT_MODEL_ID:
+			if (parse_integer_field(optarg, &bi.model))
+				return -1;
+			set_mask |= ARGS_MASK_MODEL_ID;
+			break;
 		}
 	}
 
 	if (set_mask != (ARGS_MASK_BOARD_VERSION | ARGS_MASK_FILENAME |
-			ARGS_MASK_OEM_ID | ARGS_MASK_SIZE | ARGS_MASK_SKU_ID)) {
+			ARGS_MASK_OEM_ID | ARGS_MASK_SIZE | ARGS_MASK_SKU_ID |
+			ARGS_MASK_MODEL_ID)) {
 		fprintf(stderr, "Missing required arguments\n");
 		print_help_create();
 		return -1;
@@ -330,6 +342,7 @@ static int cmd_create(int argc, char **argv)
 	p = cbi_set_data(p, CBI_TAG_BOARD_VERSION, &bi.ver.val, bi.ver.size);
 	p = cbi_set_data(p, CBI_TAG_OEM_ID, &bi.oem.val, bi.oem.size);
 	p = cbi_set_data(p, CBI_TAG_SKU_ID, &bi.sku.val, bi.sku.size);
+	p = cbi_set_data(p, CBI_TAG_MODEL_ID, &bi.model.val, bi.model.size);
 	if (bi.dram_part_num != NULL) {
 		p = cbi_set_data(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num,
 				strlen(bi.dram_part_num) + 1);
@@ -458,6 +471,7 @@ static int cmd_show(int argc, char **argv)
 	print_integer(buf, CBI_TAG_BOARD_VERSION);
 	print_integer(buf, CBI_TAG_OEM_ID);
 	print_integer(buf, CBI_TAG_SKU_ID);
+	print_integer(buf, CBI_TAG_MODEL_ID);
 	print_string(buf, CBI_TAG_DRAM_PART_NUM);
 	print_string(buf, CBI_TAG_OEM_NAME);
 
