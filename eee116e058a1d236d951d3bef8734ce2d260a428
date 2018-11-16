@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "296db0d3_9d805e62",
+        "filename": "include/fan.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-16T22:08:08Z",
+      "side": 1,
+      "message": "putting this definition here exposes this variable to anyone that includes this header file. Instead can you define fan_get_count and non-inline function and define them in fan.c (and you can make fan_count static there too)",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "eee116e058a1d236d951d3bef8734ce2d260a428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
