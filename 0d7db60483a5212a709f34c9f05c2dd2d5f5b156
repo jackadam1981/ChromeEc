@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1424a556_29319b7d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3067,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-16T20:53:01Z",
+      "side": 1,
+      "message": "if caps_count \u003e\u003d PD_CAPS_COUNT \u0026\u0026 next_src_cap \u003c\u003d now.val\n\nthen timeout value will be very high here. We should  check that next_src_cap is in the future still before updating timeout\n\nAlso you could remove the timeout\u003d from both else cases and put it below (your call)",
+      "range": {
+        "startLine": 3067,
+        "startChar": 14,
+        "endLine": 3067,
+        "endChar": 36
+      },
+      "revId": "0d7db60483a5212a709f34c9f05c2dd2d5f5b156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
