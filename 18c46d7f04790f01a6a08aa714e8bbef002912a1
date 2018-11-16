@@ -22,6 +22,30 @@
       "revId": "18c46d7f04790f01a6a08aa714e8bbef002912a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70fcd67d_ae8f1617",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-11-16T09:34:35Z",
+      "side": 1,
+      "message": "Done.\nBut I think this print message which we don\u0027t respond is an important information in debug.\nSo should I really use CC_USBPD channel?",
+      "parentUuid": "c4aee8dd_addf7d8d",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "18c46d7f04790f01a6a08aa714e8bbef002912a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
