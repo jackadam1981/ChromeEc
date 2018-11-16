@@ -16,6 +16,24 @@
       "revId": "1220206baf36aa05119725896576dc651c7e420f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef5b695_0f416f95",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-11-16T04:56:15Z",
+      "side": 1,
+      "message": "sheckylin@, do you think we still this CL after your change is merged?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/xorg-conf/+/1325263/6/40-touchpad-cmt.conf",
+      "parentUuid": "05b78dd6_1e4914b4",
+      "revId": "1220206baf36aa05119725896576dc651c7e420f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
