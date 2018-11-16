@@ -4965,6 +4965,7 @@ struct ec_params_usb_pd_mux_info {
 #define USB_PD_MUX_DP_ENABLED        BIT(1) /* DP connected */
 #define USB_PD_MUX_POLARITY_INVERTED BIT(2) /* CC line Polarity inverted */
 #define USB_PD_MUX_HPD_IRQ           BIT(3) /* HPD IRQ is asserted */
+#define USB_PD_MUX_HPD_LVL           BIT(4) /* HPD level is asserted */
 
 struct ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
