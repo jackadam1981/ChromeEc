@@ -57,6 +57,7 @@
 static uint8_t board_version;
 static uint32_t oem;
 static uint32_t sku;
+static int prevent_power_on = 1;
 
 enum bj_adapter {
 	BJ_90W_19V,
@@ -590,4 +591,15 @@ void board_rtc_reset(void)
 	gpio_set_level(GPIO_PCH_RTCRST, 1);
 	udelay(100);
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
+}
+
+int board_prevent_power_on(void)
+{
+	return prevent_power_on;
+}
+
+static void release_prevent_power_on(void)
+{
+	prevent_power_on = 0;
+	task_wake(TASK_ID_POWERBTN);
 }

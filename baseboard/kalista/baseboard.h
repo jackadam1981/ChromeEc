@@ -18,6 +18,7 @@
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BOARD_VERSION_CBI
+#define CONFIG_BOARD_DELAY_INIT_ON
 #define CONFIG_BOARD_HAS_RTC_RESET
 #define CONFIG_CRC8
 #define CONFIG_CEC
@@ -259,6 +260,7 @@ enum OEM_ID {
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
 int board_get_battery_soc(void);
+int board_prevent_power_on(void);
 void led_alert(int enable);
 void led_critical(void);
 
