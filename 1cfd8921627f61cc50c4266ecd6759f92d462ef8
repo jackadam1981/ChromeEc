@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18119c68_d7c2afd3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-16T21:05:10Z",
+      "side": 1,
+      "message": "Change this to wp_delay otherwise the enable_wp_disable_delay name is super confusing. WP_DELAY is informative enough.",
+      "range": {
+        "startLine": 160,
+        "startChar": 10,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "1cfd8921627f61cc50c4266ecd6759f92d462ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf08c18e_5be80e61",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-16T21:05:10Z",
+      "side": 1,
+      "message": "Add a comment that this must be first?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "1cfd8921627f61cc50c4266ecd6759f92d462ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
