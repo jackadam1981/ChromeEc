@@ -12,7 +12,6 @@
 #include "util.h"
 
 static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_COUNT];
-static int hpd_irq_state[CONFIG_USB_PD_PORT_COUNT];
 
 static int virtual_init(int port)
 {
@@ -40,15 +39,25 @@ static int virtual_set_mux(int port, mux_state_t mux_state)
 static int virtual_get_mux(int port, mux_state_t *mux_state)
 {
 	*mux_state = virtual_mux_state[port];
-	*mux_state |= hpd_irq_state[port] ? USB_PD_MUX_HPD_IRQ : 0;
 
 	return EC_SUCCESS;
 }
 
 void virtual_hpd_update(int port, int hpd_lvl, int hpd_irq)
 {
-	hpd_irq_state[port] = hpd_irq;
+	mux_state_t prev_mux = virtual_mux_state[port];
+
+	if (hpd_lvl)
+		virtual_mux_state[port] |= USB_PD_MUX_HPD_LVL;
+	else
+		virtual_mux_state[port] &= ~USB_PD_MUX_HPD_LVL;
+
 	if (hpd_irq)
+		virtual_mux_state[port] |= USB_PD_MUX_HPD_IRQ;
+	else
+		virtual_mux_state[port] &= ~USB_PD_MUX_HPD_IRQ;
+
+	if (virtual_mux_state[port] != prev_mux)
 		host_set_single_event(EC_HOST_EVENT_USB_MUX);
 }
 
