@@ -107,9 +107,13 @@ static int nx20p348x_discharge_vbus(int port, int enable)
 	int regval;
 	int status;
 
+	CPRINTS("Going to %sable vbus discharge", enable ? "en" : "dis");
 	status = read_reg(port, NX20P348X_DEVICE_CONTROL_REG, &regval);
-	if (status)
+	if (status) {
+		CPRINTS("Failed to read control register during %s "
+			"vbus discharge", enable ? "enable" : "disable");
 		return status;
+	}
 
 	if (enable)
 		regval |= NX20P348X_CTRL_VBUSDIS_EN;
