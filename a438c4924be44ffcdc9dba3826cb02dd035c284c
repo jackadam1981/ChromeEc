@@ -16,6 +16,24 @@
       "revId": "a438c4924be44ffcdc9dba3826cb02dd035c284c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c70a85d_36cd5436",
+        "filename": "board/phaser/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-16T15:48:54Z",
+      "side": 1,
+      "message": "Not all of the boards have the same adc channels (e.g. yorp). If they did, I agree that we should move this to baseboard as well.\n\nThe enumeration order isn\u0027t really important, but I updated it because I like consistency too :)",
+      "parentUuid": "2ac28a30_9949182b",
+      "revId": "a438c4924be44ffcdc9dba3826cb02dd035c284c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
