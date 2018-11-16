@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbcb6267_f0b94b53",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-16T18:26:31Z",
+      "side": 1,
+      "message": "I think we should add model_id to cbi:\n\n  (oem, model)\n  (1, 0) --\u003e Akali\n  (1, 1) --\u003e Ekko\n  (1, 2) --\u003e Bard\n\nI\u0027ll write patches for cbi.c and cbi-util.c. Released devices will return error on model_id. So, we\u0027ll take it as model_id\u003d0.\n\nEven if we use sku_id, we should mask the lower 24 bits first.",
+      "range": {
+        "startLine": 158,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 39
+      },
+      "revId": "33590f10b9afbbc503ae6b5cc314459ae33abe3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
