@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1df3fa67_28079cda",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-16T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0e3ba4e_9665b706",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4f92659_5931c3a2",
         "filename": "board/nami/battery.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5d358e_28435b12",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-16T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f92659_5931c3a2",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 21
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "11ebdf96_69b98839",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-16T00:57:29Z",
+      "side": 1,
+      "message": "Print error for BATTERY_TYPE_UNKNOWN is Done",
+      "parentUuid": "9c5fce49_39f9643c",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 17
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dae2d12_a30e0ae9",
         "filename": "board/nami/battery.c",
         "patchSetId": 4
@@ -212,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "9ecedeee_2e715397",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-16T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dae2d12_a30e0ae9",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 8
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6776af0d_f38d3875",
         "filename": "board/nami/board.h",
         "patchSetId": 4
@@ -232,6 +328,30 @@
       "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e71551_9674618f",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-16T00:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6776af0d_f38d3875",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "76356c1580b541b3cc6f0918dd086d8da46ffa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
