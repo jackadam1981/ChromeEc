@@ -337,7 +337,10 @@ static void state_machine(uint64_t tnow)
 			pwrbtn_state = PWRBTN_STATE_IDLE;
 			break;
 		}
-
+#ifdef CONFIG_BOARD_DELAY_INIT_ON
+		if (board_prevent_power_on())
+			task_wait_event(-1);
+#endif
 #ifdef CONFIG_CHARGER
 		/*
 		 * If not able to power on, try again later, to allow time for

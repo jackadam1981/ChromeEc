@@ -517,6 +517,11 @@
  */
 #undef CONFIG_BOARD_SYS_PRE_INIT
 
+/*
+ * Delay PWRBTN_STATE_INIT_ON to support custom feature
+ */
+#undef CONFIG_BOARD_DELAY_INIT_ON
+
 /* Permanent LM4 boot configuration */
 #undef CONFIG_BOOTCFG_VALUE
 
