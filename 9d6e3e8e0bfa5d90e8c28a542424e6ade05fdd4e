@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15d547db_417afb03",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1000298
+      },
+      "writtenOn": "2018-11-16T03:24:27Z",
+      "side": 1,
+      "message": "Hmm... so this will only enter a LPM if both CC1 and CC2 are Open?\n\nWhat happens if you leave an EMCA (emarked cable) attached dangling? You should see open on one side, but the Ra pulldown on the other.",
+      "range": {
+        "startLine": 2335,
+        "startChar": 0,
+        "endLine": 2339,
+        "endChar": 0
+      },
+      "revId": "9d6e3e8e0bfa5d90e8c28a542424e6ade05fdd4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
