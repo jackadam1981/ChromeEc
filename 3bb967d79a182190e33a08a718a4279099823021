@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f0ddda_3b4971fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-16T23:19:26Z",
+      "side": 1,
+      "message": "nit: by Richtek",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01464dbb_cfcb56c8",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-16T23:19:26Z",
+      "side": 1,
+      "message": "Can you explain why we need this? (or is this just part of the RichTek recommended procedure?)",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f52553d3_60c348ef",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-16T23:19:26Z",
+      "side": 1,
+      "message": "I don\u0027t see anything in the bug that describes the issue further.\n\nWhy is it a concern/interesting that reset takes 6.5ms?",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f151c63d_61224e5d",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-16T23:19:26Z",
+      "side": 1,
+      "message": "If the read operation fails, how to guarantee that the value in val is correct, and that you\u0027re not writing garbage back?",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd41eb2_0ec19df2",
+        "filename": "driver/tcpm/mt6370.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-16T23:19:26Z",
+      "side": 1,
+      "message": "Enable",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 9
+      },
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
