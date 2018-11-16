@@ -46,6 +46,30 @@
       "revId": "a20f9fc5709c4b80ee422adce55ad7d8165b7d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e161b07c_4b79aea6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-16T21:22:45Z",
+      "side": 1,
+      "message": "This is correct one.\n119628522",
+      "parentUuid": "c01f152a_7cc8f2e5",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a20f9fc5709c4b80ee422adce55ad7d8165b7d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
