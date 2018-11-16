@@ -253,6 +253,12 @@ int cbi_get_oem_id(uint32_t *id)
 	return cbi_get_board_info(CBI_TAG_OEM_ID, (uint8_t *)id, &size);
 }
 
+int cbi_get_model_id(uint32_t *id)
+{
+	uint8_t size = sizeof(*id);
+	return cbi_get_board_info(CBI_TAG_MODEL_ID, (uint8_t *)id, &size);
+}
+
 static int hc_cbi_get(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;
@@ -287,7 +293,8 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 #ifndef CONFIG_SYSTEM_UNLOCKED
 	/* These fields are not allowed to be reprogrammed regardless the
 	 * hardware WP state. They're considered as a part of the hardware. */
-	if (p->tag == CBI_TAG_BOARD_VERSION || p->tag == CBI_TAG_OEM_ID)
+	if (p->tag == CBI_TAG_BOARD_VERSION || p->tag == CBI_TAG_OEM_ID ||
+			p->tag == CBI_TAG_MODEL_ID)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
@@ -367,6 +374,7 @@ static void dump_cbi(void)
 
 	print_tag("BOARD_VERSION", cbi_get_board_version(&val), &val);
 	print_tag("OEM_ID", cbi_get_oem_id(&val), &val);
+	print_tag("MODEL_ID", cbi_get_model_id(&val), &val);
 	print_tag("SKU_ID", cbi_get_sku_id(&val), &val);
 }
 
