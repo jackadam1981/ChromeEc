@@ -46,6 +46,30 @@
       "revId": "18c46d7f04790f01a6a08aa714e8bbef002912a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88ebb6f4_bfcb79fb",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-16T15:42:42Z",
+      "side": 1,
+      "message": "CC_USBPD is on by default, so we will see this message in all most all cases. The channels are used to categorize information so we can easily turn it off if a developer is focusing on another area of the EC code and doesn\u0027t want extra console output.",
+      "parentUuid": "70fcd67d_ae8f1617",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "18c46d7f04790f01a6a08aa714e8bbef002912a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
