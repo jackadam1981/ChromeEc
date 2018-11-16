@@ -3394,6 +3394,7 @@ void pd_task(void *u)
 				tcpm_set_cc(port, TYPEC_CC_RP);
 				timeout = 2*MSEC;
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
+				ccprints("go trysrc");
 				/* Set flag after the state change */
 				pd[port].flags |= PD_FLAGS_TRY_SRC;
 				break;
