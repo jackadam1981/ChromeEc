@@ -11,10 +11,15 @@
 #include "task.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "console.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
+extern void switch_plug_out_type(int port, int *cc1, int *cc2);
+
 static void chip_pd_irq(enum usbpd_port port)
 {
+	int i = 0;
+	int cc1, cc2;
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
@@ -34,6 +39,35 @@ static void chip_pd_irq(enum usbpd_port port)
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
+		}
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+			/*
+			 * When tcpc detect plug in:
+			 * If we are sink, then setting detect plug out to avoid
+			 * keeping interrupt or maybe happen task starvation.
+			 * (actully sink detecting plug out is monitoring Vbus
+			 * volt by polling)
+			 * If we are source, then setting detect plug out.
+			 * After all when polling disconnect will toggle it
+			 * again.
+			 */
+			i = ((IT83XX_USBPD_TCDCR(port) &
+				USBPD_REG_PLUG_IN_OUT_SELECT) >> 3);
+			ccprints("P%d ISR: PLUG_DTCT %d (IN=0 OUT=1)", port, i);
+			/* switch to detect plug out interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_SELECT;
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+			//i = ((IT83XX_USBPD_TCDCR(port) &
+			//	USBPD_REG_PLUG_IN_OUT_DETECT_STAT));
+			//ccprints("P%d ISR STAT %d", port, i);
+
+			switch_plug_out_type(port, &cc1, &cc2);
+
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_CC, 0);
 		}
 	}
 }
