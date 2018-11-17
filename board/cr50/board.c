@@ -120,7 +120,8 @@ const char *device_state_names[] = {
 	"connected",
 	"on",
 	"debouncing",
-	"unknown"
+	"unknown",
+	"ignored"
 };
 BUILD_ASSERT(ARRAY_SIZE(device_state_names) == DEVICE_STATE_COUNT);
 
