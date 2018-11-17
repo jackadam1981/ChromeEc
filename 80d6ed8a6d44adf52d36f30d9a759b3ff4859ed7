@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "cb641559_b18a67a1",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-17T02:32:18Z",
+      "side": 1,
+      "message": "This code was implemented differently in patch-16 and new CL with FIFO interrupt will be efficient and implemented only when \u0027write\u0027 data size is big enough.",
+      "parentUuid": "0c02395a_d04997a7",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 48
+      },
+      "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22808391_ebdb008e",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 8
@@ -120,6 +144,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "22808391_ebdb008e",
+      "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48d522df_e4c7e137",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-17T02:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "955db62a_484d479e",
       "revId": "80d6ed8a6d44adf52d36f30d9a759b3ff4859ed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
