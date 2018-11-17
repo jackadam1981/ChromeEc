@@ -117,6 +117,16 @@ static int mkbp_get_next_event(struct host_cmd_handler_args *args)
 	uint8_t *resp = args->response;
 	const struct mkbp_event_source *src;
 
+	/*
+	 * The EC can signal to the AP that there are multiple MKBP events
+	 * available for retrieval by setting the MSB of the event type.
+	 * If the MKBP synchronization is happening by means of a GPIO
+	 * pin that is seen as a Level IRQ by the host, this allows reducing
+	 * the number of times the host enters its IRQ handler before all
+	 * the events are consumed.
+	 */
+	const uint8_t more_events_flag = 0x80;
+
 	do {
 		/*
 		 * Find the next event to service.  We do this in a round-robin
@@ -164,6 +174,8 @@ static int mkbp_get_next_event(struct host_cmd_handler_args *args)
 
 	if (!events)
 		set_host_interrupt(0);
+	else
+		resp[0] |= more_events_flag;
 
 	if (data_size < 0)
 		return EC_RES_ERROR;
