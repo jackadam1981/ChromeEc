@@ -3270,6 +3270,12 @@ struct ec_result_keyscan_seq_ctrl {
  */
 #define EC_CMD_GET_NEXT_EVENT 0x0067
 
+/* EC can provide more MKBP events to host */
+#define EC_MKBP_HAS_MORE_EVENTS   0x80
+
+/* The mask to apply to get the raw event type */
+#define EC_MKBP_MORE_EVENTS_MASK  0x7F
+
 enum ec_mkbp_event {
 	/* Keyboard matrix changed. The event data is the new matrix state. */
 	EC_MKBP_EVENT_KEY_MATRIX = 0,
