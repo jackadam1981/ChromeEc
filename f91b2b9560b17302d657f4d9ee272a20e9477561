@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a935168_37aa61c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-11-17T02:45:31Z",
+      "side": 1,
+      "message": "With how the patch is implemented, this is not the case. Someone would need to run \u0027ccdblock ec ena\u0027 to get servo detection to start working again. \n\nDo you think this is necessary? Detection will start working once ccd is disabled or cr50 reboots.",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "f91b2b9560b17302d657f4d9ee272a20e9477561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
