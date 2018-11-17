@@ -42,7 +42,14 @@ enum ccd_block_flags {
 	 * interfering with servo, in the case where both CCD and servo is
 	 * connected but servo isn't properly detected.
 	 */
-	CCD_BLOCK_SERVO_SHARED = (1 << 2)
+	CCD_BLOCK_SERVO_SHARED = (1 << 2),
+
+	/*
+	 * If the board is incorrectly detecting that servo is connected, use
+	 * ccd block to ignore the servo connect detection. This will force
+	 * the servo ports to be enabled even though servo is "connected".
+	 */
+	CCD_BLOCK_IGNORE_SERVO = (1 << 3)
 };
 
 /* Which UARTs are blocked by console command */
@@ -92,7 +99,8 @@ void uartn_tx_connect(int uart)
 	 * something to transmit) and servo is disconnected (we won't be
 	 * drive-fighting with servo).
 	 */
-	if (servo_is_connected() || !ccd_ext_is_enabled())
+	if ((servo_is_connected() && !(ccd_block & CCD_BLOCK_IGNORE_SERVO)) ||
+	    !ccd_ext_is_enabled())
 		return;
 
 	if (uart == UART_AP) {
@@ -245,8 +253,9 @@ static void ccd_state_change_hook(void)
 
 	/* Then disable flags we can't have */
 
-	/* Servo takes over UART TX, I2C, and SPI */
-	if (servo_is_connected() || (ccd_block & CCD_BLOCK_SERVO_SHARED))
+	/* Servo takes over UART TX, I2C, and SPI. */
+	if ((servo_is_connected() && !(ccd_block & CCD_BLOCK_IGNORE_SERVO)) ||
+	    (ccd_block & CCD_BLOCK_SERVO_SHARED))
 		flags_want &= ~(CCD_ENABLE_UART_AP_TX | CCD_ENABLE_UART_EC_TX |
 				CCD_ENABLE_UART_EC_BITBANG | CCD_ENABLE_I2C |
 				CCD_ENABLE_SPI);
@@ -404,6 +413,8 @@ static void print_ccd_ports_blocked(void)
 		ccputs(" EC");
 	if (ccd_block & CCD_BLOCK_SERVO_SHARED)
 		ccputs(" SERVO");
+	if (ccd_block & CCD_BLOCK_IGNORE_SERVO)
+		ccputs(" IGNORE_SERVO");
 	if (!ccd_block)
 		ccputs(" (none)");
 	ccputs("\n");
@@ -444,6 +455,8 @@ static int command_ccd_block(int argc, char **argv)
 			block_flag = CCD_BLOCK_EC_UART;
 		else if (!strcasecmp(argv[1], "SERVO"))
 			block_flag = CCD_BLOCK_SERVO_SHARED;
+		else if (!strcasecmp(argv[1], "IGNORE_SERVO"))
+			block_flag = CCD_BLOCK_IGNORE_SERVO;
 		else
 			return EC_ERROR_PARAM1;
 
