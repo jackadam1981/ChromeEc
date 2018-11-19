@@ -7,6 +7,14 @@
 #ifndef __CROS_EC_PHYSICAL_PRESENCE_H
 #define __CROS_EC_PHYSICAL_PRESENCE_H
 
+enum pp_detect_type {
+	PP_DETECT_SHORT,
+	PP_DETECT_LONG,
+	PP_DETECT_EXTENDED,
+
+	PP_DETECT_TYPE_COUNT,
+};
+
 /**
  * Start physical presence detect.
  *
@@ -15,12 +23,13 @@
  *
  * On failure or abort, callback() will not be called.
  *
- * @param is_long	Use long (!=0) or short (0) sequence)
+ * @param type		Use PHYSICAL_DETECT_SHORT, PHYSICAL_DETECT_LONG,
+ *         or PHYSICAL_DETECT_EXTENDED sequence
  * @param callback	Function to call when successful
  * @return EC_SUCCESS, EC_BUSY if detect already in progress, or other
  *	   non-zero error code if error.
  */
-int physical_detect_start(int is_long, void (*callback)(void));
+int physical_detect_start(enum pp_detect_type type, void (*callback)(void));
 
 /**
  * Check if a physical detect attempt is in progress
