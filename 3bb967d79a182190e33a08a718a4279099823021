@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "37bfdb0d_6134d7a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T02:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36f0ddda_3b4971fc",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01464dbb_cfcb56c8",
         "filename": "board/kukui/battery.c",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "3bb967d79a182190e33a08a718a4279099823021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c6249b_cf95aa03",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T02:10:42Z",
+      "side": 1,
+      "message": "Yes, it is part of the Richtek\u0027s recommended procedure.\nPlease see b/116682788 #2 and #5.",
+      "parentUuid": "01464dbb_cfcb56c8",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "565f8140_cfdeed6c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T02:10:42Z",
+      "side": 1,
+      "message": "6.5 ms is concluded by my previous experiment and also Richtek\u0027s comments in b/116682788 #5.\n\nFor mt6370, we are using soft reset now, which only takes 1 ns, so we don\u0027t need to schedule a sleep before mt6370_vconn_discharge().\nIf using a hard reset, then we need a sleep before mt6370_vconn_discharge().",
+      "parentUuid": "f52553d3_60c348ef",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f151c63d_61224e5d",
         "filename": "driver/tcpm/mt6370.c",
         "patchSetId": 7
@@ -64,6 +118,24 @@
       "writtenOn": "2018-11-16T23:19:26Z",
       "side": 1,
       "message": "If the read operation fails, how to guarantee that the value in val is correct, and that you\u0027re not writing garbage back?",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fb49f1f_06642c8a",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T02:10:42Z",
+      "side": 1,
+      "message": "I guess it\u0027s related to making i2c idle when entering the TCPC low power mode.\n\nI already sent a mail to Richtek to ask about the i2c write failure, and how should we deal with it.\n\nBefore they replying, I would like to make it as is.",
+      "parentUuid": "f151c63d_61224e5d",
       "revId": "3bb967d79a182190e33a08a718a4279099823021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -90,6 +162,30 @@
       "revId": "3bb967d79a182190e33a08a718a4279099823021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c6157a_88be46ef",
+        "filename": "driver/tcpm/mt6370.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T02:10:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd41eb2_0ec19df2",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 9
+      },
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
