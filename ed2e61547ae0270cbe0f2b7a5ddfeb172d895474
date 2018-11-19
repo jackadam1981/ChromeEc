@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fe01968_3d0753b8",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-19T03:23:38Z",
+      "side": 1,
+      "message": "Hard reset, may take several milliseconds.",
+      "revId": "ed2e61547ae0270cbe0f2b7a5ddfeb172d895474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0c1476_b35ab966",
+        "filename": "driver/tcpm/mt6370.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-19T03:23:38Z",
+      "side": 1,
+      "message": "Should this default value be a #define in the header file?",
+      "range": {
+        "startLine": 138,
+        "startChar": 29,
+        "endLine": 140,
+        "endChar": 29
+      },
+      "revId": "ed2e61547ae0270cbe0f2b7a5ddfeb172d895474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
