@@ -877,7 +877,7 @@ static int ccd_command_wrapper(int argc, char *password,
 
 static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 {
-	int is_long = 1;
+	enum pp_detect_type type = PP_DETECT_LONG;
 	int need_pp = 1;
 	int rv;
 	char *buffer = p->buffer;
@@ -948,8 +948,9 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 
 	/* Reduce physical presence if enabled via config */
 	if (ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_LONG_PP))
-		is_long = 0;
-	if (!is_long && ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_SHORT_PP))
+		type = PP_DETECT_SHORT;
+	if ((type == PP_DETECT_SHORT) &&
+	    ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_SHORT_PP))
 		need_pp = 0;
 
 	/* Bypass physical presence check entirely if user has owned device */
@@ -961,7 +962,7 @@ static enum vendor_cmd_rc ccd_open(struct vendor_cmd_params *p)
 	if (need_pp) {
 		/* Start physical presence detect */
 		ccprintf("Starting CCD open...\n");
-		rv = physical_detect_start(is_long, ccd_open_done_async);
+		rv = physical_detect_start(type, ccd_open_done_async);
 		if (rv != EC_SUCCESS) {
 			p->out_size = 1;
 			buffer[0] = rv;
@@ -1051,7 +1052,7 @@ static enum vendor_cmd_rc ccd_unlock(struct vendor_cmd_params *p)
 	if (need_pp) {
 		/* Start physical presence detect */
 		ccprintf("Starting CCD unlock...\n");
-		rv = physical_detect_start(0, ccd_unlock_done);
+		rv = physical_detect_start(PP_DETECT_SHORT, ccd_unlock_done);
 		if (rv != EC_SUCCESS) {
 			p->out_size = 1;
 			buffer[0] = rv;
@@ -1113,7 +1114,7 @@ static int command_ccd_testlab(int argc, char **argv)
 	ccprintf("Requesting change of test lab flag.\n");
 	if (newflag)
 		ccprintf("NOTE: THIS WILL MAKE THIS DEVICE INSECURE!!!\n");
-	return physical_detect_start(0, ccd_testlab_toggle);
+	return physical_detect_start(PP_DETECT_SHORT, ccd_testlab_toggle);
 }
 
 #ifdef CONFIG_CASE_CLOSED_DEBUG_V1_UNSAFE

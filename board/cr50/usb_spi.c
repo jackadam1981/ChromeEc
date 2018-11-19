@@ -536,7 +536,8 @@ static enum vendor_cmd_rc spi_hash_set_device(int dev, int gang_mode,
 		 * that's more bookkeeping, so for now the only way to
 		 * skip physical presence is to have access to both.
 		 */
-		int rv = physical_detect_start(0, spi_hash_pp_done);
+		int rv = physical_detect_start(PP_DETECT_SHORT,
+			spi_hash_pp_done);
 
 		if (rv == EC_SUCCESS)
 			return VENDOR_RC_IN_PROGRESS;

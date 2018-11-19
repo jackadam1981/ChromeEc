@@ -12,6 +12,7 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "stdbool.h"
 
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_CCD, format, ## args)
@@ -24,6 +25,7 @@
 #define PP_LONG_PRESS_COUNT (PP_SHORT_PRESS_COUNT + 2)
 #define PP_LONG_PRESS_MIN_INTERVAL_US (2 * SECOND)
 #define PP_LONG_PRESS_MAX_INTERVAL_US (300 * SECOND)
+#define PP_EXTENDED_MAX_TIME_US (30 * SECOND)
 #else
 /* Stricter physical presence for non-dev builds */
 #define PP_SHORT_PRESS_COUNT 5
@@ -32,6 +34,7 @@
 #define PP_LONG_PRESS_COUNT (PP_SHORT_PRESS_COUNT + 4)
 #define PP_LONG_PRESS_MIN_INTERVAL_US (60 * SECOND)
 #define PP_LONG_PRESS_MAX_INTERVAL_US (300 * SECOND)
+#define PP_EXTENDED_MAX_TIME_US (5 * MINUTE)
 #endif
 
 enum pp_detect_state {
@@ -39,7 +42,9 @@ enum pp_detect_state {
 	PP_DETECT_AWAITING_PRESS,
 	PP_DETECT_BETWEEN_PRESSES,
 	PP_DETECT_FINISHING,
-	PP_DETECT_ABORT
+	PP_DETECT_ABORT,
+
+	PP_DETECT_STATES,
 };
 
 /* Physical presence state machine data */
@@ -48,6 +53,15 @@ static void (*pp_detect_callback)(void);
 static uint8_t pp_press_count;
 static uint8_t pp_press_count_needed;
 static uint64_t pp_last_press;  /* Time of last press */
+static timestamp_t pp_extended_timeout; /* Max wait for extended press */
+static bool pp_extended_type;
+
+static const char * const pp_string[] = {
+	[PP_DETECT_SHORT] = "short",
+	[PP_DETECT_LONG] = "long",
+	[PP_DETECT_EXTENDED] = "extended",
+};
+//BUILD_ASSERT(ARRAY_SIZE(pp_string) == PP_DETECT_TYPES);
 
 /*
  * We need a mutex because physical_detect_start() and physical_detect_abort()
@@ -71,6 +85,12 @@ static int pp_detect_in_progress(void)
  * could be preempted by calls to physical_presence_start() or
  * physical_presence_abort().
  */
+static void physical_detect_prompt(void);
+DECLARE_DEFERRED(physical_detect_prompt);
+static void physical_detect_check_press(void);
+DECLARE_DEFERRED(physical_detect_check_press);
+static void physical_detect_done(void);
+DECLARE_DEFERRED(physical_detect_done);
 
 /**
  * Clean up at end of physical detect sequence.
@@ -91,6 +111,33 @@ static void physical_detect_done(void)
 		CPRINTF("\nPhysical presence check aborted.\n");
 		pp_detect_callback = NULL;
 	} else if (pp_press_count < pp_press_count_needed) {
+		if ((pp_extended_type) &&
+		    !timestamp_expired(pp_extended_timeout, NULL)) {
+			CPRINTF("Extended physical presence timeout - retry\n");
+
+			/*
+			 * PP_DETECT_EXTENDED: the user failed to press the
+			 * button 5 times within the required short interval
+			 * but the overall timeout has not expired.
+			 *
+			 * Reset the press count and re-arm the short interval
+			 * timeout.
+			 */
+			pp_press_count = 0;
+			pp_last_press = get_time().val;
+			pp_detect_state = PP_DETECT_BETWEEN_PRESSES;
+
+			mutex_unlock(&pp_mutex);
+
+			/* Re-arm the next short interval */
+			hook_call_deferred(&physical_detect_check_press_data,
+				-1);
+			hook_call_deferred(&physical_detect_prompt_data,
+					   PP_SHORT_PRESS_MIN_INTERVAL_US);
+			hook_call_deferred(&physical_detect_done_data,
+					   PP_SHORT_PRESS_MAX_INTERVAL_US);
+			return;
+		}
 		CPRINTF("\nPhysical presence check timeout.\n");
 		pp_detect_callback = NULL;
 	}
@@ -118,7 +165,6 @@ static void physical_detect_done(void)
 	pp_detect_state = PP_DETECT_IDLE;
 	mutex_unlock(&pp_mutex);
 }
-DECLARE_DEFERRED(physical_detect_done);
 
 /**
  * Print a prompt when we've hit the minimum wait time
@@ -128,7 +174,6 @@ static void physical_detect_prompt(void)
 	pp_detect_state = PP_DETECT_AWAITING_PRESS;
 	CPRINTF("\n\nPress the physical button now!\n\n");
 }
-DECLARE_DEFERRED(physical_detect_prompt);
 
 /**
  * Handle a physical present button press
@@ -200,12 +245,12 @@ static void physical_detect_check_press(void)
 pdpress_exit:
 	mutex_unlock(&pp_mutex);
 }
-DECLARE_DEFERRED(physical_detect_check_press);
 
 /******************************************************************************/
 /* Interface */
 
-int physical_detect_start(int is_long, void (*callback)(void))
+int physical_detect_start(enum pp_detect_type type,
+				void (*callback)(void))
 {
 	mutex_lock(&pp_mutex);
 
@@ -215,8 +260,31 @@ int physical_detect_start(int is_long, void (*callback)(void))
 		return EC_ERROR_BUSY;
 	}
 
-	pp_press_count_needed = is_long ? PP_LONG_PRESS_COUNT :
-			PP_SHORT_PRESS_COUNT;
+	pp_extended_type = false;
+	pp_extended_timeout.val = 0;
+
+	switch (type) {
+	case PP_DETECT_SHORT:
+		pp_press_count_needed = PP_SHORT_PRESS_COUNT;
+		break;
+
+	/* Default to long physical presence algorithm */
+	default:
+	case PP_DETECT_LONG:
+		pp_press_count_needed = PP_LONG_PRESS_COUNT;
+		break;
+	case PP_DETECT_EXTENDED:
+		/*
+		 * Require the same number of short presses, but with a longer
+		 * total timeout.
+		 */
+		pp_press_count_needed = PP_SHORT_PRESS_COUNT;
+		pp_extended_type = true;
+		pp_extended_timeout.val = get_time().val +
+			PP_EXTENDED_MAX_TIME_US;
+		break;
+	}
+
 	pp_press_count = 0;
 	pp_last_press = get_time().val;
 	pp_detect_callback = callback;
@@ -227,7 +295,7 @@ int physical_detect_start(int is_long, void (*callback)(void))
 	hook_call_deferred(&physical_detect_check_press_data, -1);
 	board_physical_presence_enable(1);
 
-	CPRINTS("PP start %s", is_long ? "long" : "short");
+	CPRINTS("PP start %s", pp_string[type]);
 
 	/* Initial timeout is for a short press */
 	hook_call_deferred(&physical_detect_prompt_data,
@@ -292,14 +360,23 @@ static void pp_test_callback(void)
 	ccprintf("\nPhysical presence good\n");
 }
 
+static const char * const pp_state_name[] = {
+	[PP_DETECT_IDLE] = "idle",
+	[PP_DETECT_AWAITING_PRESS] = "await press",
+	[PP_DETECT_BETWEEN_PRESSES] = "between press",
+	[PP_DETECT_FINISHING] = "finishing",
+	[PP_DETECT_ABORT] = "abort",
+};
+BUILD_ASSERT(ARRAY_SIZE(pp_state_name) == PP_DETECT_STATES);
 /**
  * Test physical presence.
  */
 static int command_ppresence(int argc, char **argv)
 {
 	/* Print current status */
-	ccprintf("PP state: %d, %d/%d, dt=%.6ld\n",
-		 pp_detect_state, pp_press_count, pp_press_count_needed,
+	ccprintf("PP state: %d-%s, %d/%d, dt=%.6ld\n",
+		 pp_detect_state, pp_state_name[pp_detect_state],
+		 pp_press_count, pp_press_count_needed,
 		 get_time().val - pp_last_press);
 
 	/* With no args, simulate a button press */
@@ -309,9 +386,12 @@ static int command_ppresence(int argc, char **argv)
 	}
 
 	if (!strcasecmp(argv[1], "short")) {
-		return physical_detect_start(0, pp_test_callback);
+		return physical_detect_start(PP_DETECT_SHORT, pp_test_callback);
 	} else if (!strcasecmp(argv[1], "long")) {
-		return physical_detect_start(1, pp_test_callback);
+		return physical_detect_start(PP_DETECT_LONG, pp_test_callback);
+	} else if (!strcasecmp(argv[1], "ext")) {
+		return physical_detect_start(PP_DETECT_EXTENDED,
+			pp_test_callback);
 	} else if (!strcasecmp(argv[1], "abort")) {
 		physical_detect_abort();
 		return EC_SUCCESS;
@@ -320,7 +400,7 @@ static int command_ppresence(int argc, char **argv)
 	}
 }
 DECLARE_SAFE_CONSOLE_COMMAND(ppresence, command_ppresence,
-			     "[short | long | abort]",
+			     "[short | long | ext | abort]",
 			     "Test physical presence press or sequence");
 
 #endif

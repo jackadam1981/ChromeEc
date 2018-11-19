@@ -42,7 +42,7 @@ enum board_uo_state {
 	BOARD_UO_USER_OWNED,
 
 	BOARD_UO_STATES,	/* must be last */
-} current_uo_state;
+};
 
 /*
  * For Chromebooks that take less than 2 minutes to open, the board
@@ -226,7 +226,8 @@ int board_user_has_ownership(void)
 			 * an overall timeout of several minutes.
 			 */
 			CPRINTF("Battery removal requirement met");
-			rv = physical_detect_start(0, batt_removal_done_async);
+			rv = physical_detect_start(PP_DETECT_EXTENDED,
+				batt_removal_done_async);
 			if (rv != EC_SUCCESS) {
 				/*
 				 * Physical presence check via the power button
