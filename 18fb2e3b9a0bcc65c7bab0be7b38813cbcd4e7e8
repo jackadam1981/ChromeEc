@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af2cdb2e_54303b83",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-19T10:52:32Z",
+      "side": 1,
+      "message": "if (num_finger \u0026\u0026 (system_state \u0026 SYSTEM_STATE_DOME_SWITCH_LEVEL))\n   report.button \u003d 1;",
+      "revId": "18fb2e3b9a0bcc65c7bab0be7b38813cbcd4e7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
