@@ -74,10 +74,19 @@
 
 /* SCP to SPM interrupt */
 #define SCP_SPM_INT			REG32(SCP_CFG_BASE + 0x20)
+#define   SPM_INT_A2SPM			(1 << 0)
+#define   SPM_INT_B2SPM			(1 << 1)
 #define SCP_SPM_INT2			REG32(SCP_CFG_BASE + 0x24)
 
-#define SCP_GIPC			REG32(SCP_CFG_BASE + 0x28)
-#define SCP_COMM_INT			REG32(SCP_CFG_BASE + 0x2C)
+/*
+ * AP side to SCP IPC
+ * APMCU writes 1 bit to trigger ith IPC to SCP.
+ * SCP writes 1 bit to ith bit to clear ith IPC.
+ */
+#define SCP_GIPC_IN			REG32(SCP_CFG_BASE + 0x28)
+  #define SCP_GIPC_IN_CLEAR_IPCN(n)	(1 << (n))
+  #define SCP_GPIC_IN_CLEAR_ALL		0x7FFFF
+#define SCP_CONN_INT			REG32(SCP_CFG_BASE + 0x2C)
 
 /* 8 general purpose registers, 0 ~ 7 */
 #define SCP_GPR				REG32_ADDR(SCP_CFG_BASE + 0x50)
