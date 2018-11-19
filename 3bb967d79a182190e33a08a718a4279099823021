@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "7844c7be_9135bca4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T03:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bce673_b5cb5808",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01464dbb_cfcb56c8",
         "filename": "board/kukui/battery.c",
         "patchSetId": 7
@@ -108,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "9466a72e_f5f3c5e0",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T03:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "375a177d_d2d0b4e9",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f52553d3_60c348ef",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 7
@@ -155,6 +191,24 @@
       "side": 1,
       "message": "Oh, so we never use hard reset. This needs to be described in this comment, and/or in the bug (I\u0027m still having issues parsing what is written there).",
       "parentUuid": "565f8140_cfdeed6c",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a21bf0f_76765b36",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-19T03:07:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bca72e4_8c843400",
       "revId": "3bb967d79a182190e33a08a718a4279099823021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
