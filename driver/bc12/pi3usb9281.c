@@ -31,11 +31,6 @@
 
 /* Wait after a charger is detected to debounce pin contact order */
 #define PI3USB9281_DETECT_DEBOUNCE_DELAY_MS 1000
-/*
- * Wait after reset, before re-enabling attach interrupt, so that the
- * spurious attach interrupt from certain ports is ignored.
- */
-#define PI3USB9281_RESET_DEBOUNCE_DELAY_MS 100
 
 /* Store the state of our USB data switches so that they can be restored. */
 static int usb_switch_state[CONFIG_USB_PD_PORT_COUNT];
@@ -165,19 +160,6 @@ int pi3usb9281_enable_interrupts(int port)
 	return pi3usb9281_write_ctrl(port, ctrl & ~PI3USB9281_CTRL_INT_DIS);
 }
 
-static int pi3usb9281_disable_interrupts(int port)
-{
-	uint8_t ctrl = pi3usb9281_read(port, PI3USB9281_REG_CONTROL);
-	int rv;
-
-	if (ctrl == 0xee)
-		return EC_ERROR_UNKNOWN;
-
-	rv = pi3usb9281_write_ctrl(port, ctrl | PI3USB9281_CTRL_INT_DIS);
-	pi3usb9281_get_interrupts(port);
-	return rv;
-}
-
 static int pi3usb9281_get_interrupts(int port)
 {
 	return pi3usb9281_read(port, PI3USB9281_REG_INT);
@@ -226,31 +208,6 @@ static int pi3usb9281_reset(int port)
 	return rv;
 }
 
-static int pi3usb9281_set_switch_manual(int port, int val)
-{
-	int res = EC_ERROR_UNKNOWN;
-	uint8_t ctrl;
-
-	select_chip(port);
-	ctrl = pi3usb9281_read_u(port, PI3USB9281_REG_CONTROL);
-
-	if (ctrl != 0xee) {
-		if (val)
-			ctrl &= ~PI3USB9281_CTRL_AUTO;
-		else
-			ctrl |= PI3USB9281_CTRL_AUTO;
-		res = pi3usb9281_write_ctrl_u(port, ctrl);
-	}
-
-	unselect_chip(port);
-	return res;
-}
-
-static int pi3usb9281_set_pins(int port, uint8_t val)
-{
-	return pi3usb9281_write(port, PI3USB9281_REG_MANUAL, val);
-}
-
 static int pi3usb9281_set_switches(int port, int open)
 {
 	int res = EC_ERROR_UNKNOWN;
@@ -296,54 +253,6 @@ static void bc12_detect(int port)
 		device_type = charger_status = 0;
 	} else {
 		/* Set device type */
-		device_type = pi3usb9281_get_device_type(port);
-		charger_status = pi3usb9281_get_charger_status(port);
-	}
-
-	/* Debounce pin plug order if we detect a charger */
-	if (device_type || PI3USB9281_CHG_STATUS_ANY(charger_status)) {
-		/* next operation might trigger a detach interrupt */
-		pi3usb9281_disable_interrupts(port);
-		/*
-		 * Ensure D+/D- are open before resetting
-		 * Note: we can't simply call pi3usb9281_set_switches() because
-		 * another task might override it and set the switches closed.
-		 */
-		pi3usb9281_set_switch_manual(port, 1);
-		pi3usb9281_set_pins(port, 0);
-
-		/* Delay to debounce pin attach order */
-		msleep(PI3USB9281_DETECT_DEBOUNCE_DELAY_MS);
-
-		/*
-		 * Trigger chip reset to refresh detection registers.
-		 * WARNING: This reset is acceptable for samus_pd,
-		 * but may not be acceptable for devices that have
-		 * an OTG / device mode, as we may be interrupting
-		 * the connection.
-		 */
-		pi3usb9281_reset(port);
-		/*
-		 * Restore data switch settings - switches return to
-		 * closed on reset until restored.
-		 */
-		usb_charger_set_switches(port, USB_SWITCH_RESTORE);
-		/* Clear possible disconnect interrupt */
-		pi3usb9281_get_interrupts(port);
-		/* Mask attach interrupt */
-		pi3usb9281_set_interrupt_mask(port,
-					      0xff &
-					      ~PI3USB9281_INT_ATTACH);
-		/* Re-enable interrupts */
-		pi3usb9281_enable_interrupts(port);
-		msleep(PI3USB9281_RESET_DEBOUNCE_DELAY_MS);
-
-		/* Clear possible attach interrupt */
-		pi3usb9281_get_interrupts(port);
-		/* Re-enable attach interrupt */
-		pi3usb9281_set_interrupt_mask(port, 0xff);
-
-		/* Re-read ID registers */
 		device_type = pi3usb9281_get_device_type(port);
 		charger_status = pi3usb9281_get_charger_status(port);
 	}
