@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b2bce673_b5cb5808",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-19T02:31:28Z",
+      "side": 1,
+      "message": "drop \"the\" ,-)",
+      "parentUuid": "37bfdb0d_6134d7a0",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01464dbb_cfcb56c8",
         "filename": "board/kukui/battery.c",
         "patchSetId": 7
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "375a177d_d2d0b4e9",
+        "filename": "board/kukui/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-19T02:31:28Z",
+      "side": 1,
+      "message": "Okay. Can you please add a short comment in the code?",
+      "parentUuid": "d7c6249b_cf95aa03",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f52553d3_60c348ef",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 7
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "6.5 ms is concluded by my previous experiment and also Richtek\u0027s comments in b/116682788 #5.\n\nFor mt6370, we are using soft reset now, which only takes 1 ns, so we don\u0027t need to schedule a sleep before mt6370_vconn_discharge().\nIf using a hard reset, then we need a sleep before mt6370_vconn_discharge().",
       "parentUuid": "f52553d3_60c348ef",
+      "revId": "3bb967d79a182190e33a08a718a4279099823021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bca72e4_8c843400",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-19T02:31:28Z",
+      "side": 1,
+      "message": "Oh, so we never use hard reset. This needs to be described in this comment, and/or in the bug (I\u0027m still having issues parsing what is written there).",
+      "parentUuid": "565f8140_cfdeed6c",
       "revId": "3bb967d79a182190e33a08a718a4279099823021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
