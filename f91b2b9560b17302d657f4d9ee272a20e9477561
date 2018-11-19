@@ -22,6 +22,52 @@
       "revId": "f91b2b9560b17302d657f4d9ee272a20e9477561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbef09e_527320d7",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-19T15:26:49Z",
+      "side": 1,
+      "message": "\u0027If ...\u0027 seems to imply that this happens automatically, maybe the comment should be \u0027in case of broken hardware when automatic servo detection does not work, use this for manual override...\u0027 or something along these lines.",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "f91b2b9560b17302d657f4d9ee272a20e9477561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a98388b_8f6d0ed4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-19T15:26:49Z",
+      "side": 1,
+      "message": "should this check be moved into servo_is_connected()? After all we don\u0027t trust the heuristics we use to determine if servo is connected or not, we might also always return false from that function?",
+      "range": {
+        "startLine": 102,
+        "startChar": 32,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "f91b2b9560b17302d657f4d9ee272a20e9477561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
