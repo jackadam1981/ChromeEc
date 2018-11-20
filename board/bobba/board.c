@@ -329,3 +329,30 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+static void do_something(void)
+{
+	int i, sum;
+
+	for (sum = 0, i = 0; i < 10000; ++i)
+		sum += i;
+	ccprintf("sum=%d\n", sum);
+}
+static int command_time_test(int argc, char **argv)
+{
+	timestamp_t previous_timestamp;
+	uint64_t executing_time;
+
+	previous_timestamp = get_time();
+	do_something();
+	executing_time = get_time().val - previous_timestamp.val;
+
+	ccprintf("executing time = %.6ld s or %.6ld ms or %.6ld us\n\n",
+			executing_time,
+			executing_time * 1000,
+			executing_time * 1000 * 1000);
+	cflush();
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(timetest, command_time_test, NULL, NULL);
