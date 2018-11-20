@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "88a2deee_b831b9f5",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-20T15:53:28Z",
+      "side": 1,
+      "message": "For the record: Zero-copy semantics are certainly nice, but not a priority here. I.e. in a situation where I\u0027d choose between zero-copy operation and bullet-proof serialization, I\u0027d always go for the latter :)",
+      "parentUuid": "2bc57dba_385bcddf",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 1
+      },
+      "revId": "536caf38349f6da4c570b80e2c5d6300808185b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6ddff36_7d76e4ed",
         "filename": "fuzz/pinweaver_model.h",
         "patchSetId": 22
