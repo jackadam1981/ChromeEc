@@ -140,6 +140,30 @@
       "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d3f862_c58b1724",
+        "filename": "board/nami/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-20T21:11:21Z",
+      "side": 1,
+      "message": "We\u0027re testing LED not charging, right? Can you plumb EC_CMD_LED_CONTROL to led_factory?",
+      "parentUuid": "69b0d968_7cf358e8",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 8
+      },
+      "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
