@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c519c34_7dff3928",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-11-20T21:23:29Z",
+      "side": 1,
+      "message": "PMIC_RESIN_PULSE_LENGTH perhaps? The comment could use some rewording too, it wasn\u0027t really apparent what it does without reading the code down there.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e63a3f2_dc35f7a0",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-11-20T21:23:29Z",
+      "side": 1,
+      "message": "I would reorganize this function a little bit. It has signs of how it evolved.\n\nThe switchcap whacking is an exceptional case, maybe the rv condition checking should look for an error instead of a success, same for the reason \u003d\u003d CHIPSET_RESET_HOST_CMD.\n\nPerhaps:\n\nif (reason \u003d\u003d CHIPSET_RESET_HOST_CMD)\n    goto cold_reset; // Host really wanted a cold_reset, don\u0027t even try asking the pmic for a nice reset.\n\n// Ask the pmic nicely, Hope the pmic register was programmed for this functionality\ngpio_set_level(GPIO_PM845_RESIN_L, 0);\nusleep(PMIC_RESET_TOGGLE_WAIT);\ngpio_set_level(GPIO_PM845_RESIN_L, 1);\n\nrv \u003d power_wait_signals_timeout....;\nif (!rv) { // pmic was not programmed yet, so it didn\u0027t listen\ncold_reset:\n    // force the ap to reset by power cycling everything\n    power_request \u003d POWER_REQ_RESET;\n    task_wake(TASK_ID_CHIPSET);\n}",
+      "range": {
+        "startLine": 670,
+        "startChar": 5,
+        "endLine": 670,
+        "endChar": 18
+      },
+      "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f508835_e5b42ff7",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-11-20T21:23:29Z",
+      "side": 1,
+      "message": "I would rephrase this, punctuate that we\u0027re power cycling the PMIC because it didn\u0027t listen to us.",
+      "range": {
+        "startLine": 702,
+        "startChar": 4,
+        "endLine": 702,
+        "endChar": 49
+      },
+      "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
