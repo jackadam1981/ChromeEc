@@ -73,6 +73,8 @@
 
 	/* EC variant determines USB-C variant */
 	#define VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS
+	#define USB_PD_PORT_ITE_0	0
+	#define USB_PD_PORT_ITE_1	1
 #else
 	#error Must define a VARIANT_OCTOPUS_EC
 #endif /* VARIANT_OCTOPUS_EC */

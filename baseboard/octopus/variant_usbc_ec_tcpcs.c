@@ -22,9 +22,6 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
-#define USB_PD_PORT_ITE_0	0
-#define USB_PD_PORT_ITE_1	1
-
 /******************************************************************************/
 /* USB-C TPCP Configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
@@ -43,6 +40,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 /******************************************************************************/
 /* USB-C MUX Configuration */
 
+#ifndef VARIANT_OCTOPUS_USBC_CUSTOM_MUX
 /* TODO(crbug.com/826441): Consolidate this logic with other impls */
 static void board_it83xx_hpd_status(int port, int hpd_lvl, int hpd_irq)
 {
@@ -76,6 +74,7 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
 };
+#endif /* VARIANT_OCTOPUS_USBC_CUSTOM_MUX */
 
 /******************************************************************************/
 /* USB-C PPC Configuration */
