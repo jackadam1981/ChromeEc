@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f94978cd_dd425808",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-20T22:46:35Z",
+      "side": 1,
+      "message": "default: return a protocol error.",
+      "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3efff308_8f2c78b9",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-20T22:46:35Z",
+      "side": 1,
+      "message": "you can merge ipc_read and ipc_read_nonblock by adding a parameter (block or nonblock).",
+      "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c8f9b31_455354d9",
         "filename": "chip/ish/ish_fwst.h",
         "patchSetId": 6
