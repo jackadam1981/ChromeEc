@@ -13,6 +13,8 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
+#undef VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS
+
 /* I2C bus configuraiton */
 #define I2C_PORT_ACCEL	I2C_PORT_SENSOR
 
