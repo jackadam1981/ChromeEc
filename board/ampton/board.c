@@ -60,6 +60,31 @@ int ppc_get_alert_status(int port)
 #include "gpio_list.h" /* Must come after other header files. */
 
 /******************************************************************************/
+/* USB-C MUX Configuration */
+
+#define USB_PD_PORT_ITE_0 0
+#define USB_PD_PORT_ITE_1 1
+
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+	[USB_PD_PORT_ITE_0] = {
+		/* Use PS8751 as mux only */
+		.port_addr = MUX_PORT_AND_ADDR(
+			I2C_PORT_USBC0, PS8751_I2C_ADDR1),
+		.flags = USB_MUX_FLAG_NOT_TCPC,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+	},
+	[USB_PD_PORT_ITE_1] = {
+		/* Use PS8751 as mux only */
+		.port_addr = MUX_PORT_AND_ADDR(
+			I2C_PORT_USBC1, PS8751_I2C_ADDR1),
+		.flags = USB_MUX_FLAG_NOT_TCPC,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+	}
+};
+
+/******************************************************************************/
 /* ADC channels */
 const struct adc_t adc_channels[] = {
 	/* Vbus C0 sensing (10x voltage divider). PPVAR_USB_C0_VBUS */
