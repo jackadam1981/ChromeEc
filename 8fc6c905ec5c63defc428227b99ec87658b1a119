@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcb8a334_32d3ae33",
+        "filename": "board/nami/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-20T01:04:58Z",
+      "side": 1,
+      "message": "You don\u0027t need to set these.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 11
+      },
+      "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a66f72a8_3e397f8b",
+        "filename": "board/nami/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-20T01:04:58Z",
+      "side": 1,
+      "message": "These can be simplified:\n\n    pwm_set_duty(PWM_CH_LED1, duty ? 100 : 0);\n    pwm_set_duty(PWM_CH_LED2, duty ? 0 : 100);",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 3
+      },
+      "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08cc2b61_1c944d19",
+        "filename": "board/nami/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-20T01:04:58Z",
+      "side": 1,
+      "message": "Can you explain when this happens?",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 8
+      },
+      "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

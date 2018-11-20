@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "d0a37419_06700489",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-20T01:04:58Z",
+      "side": 1,
+      "message": "nit: please put back the blank line.",
+      "revId": "e8f48bc7bd4313c9a51a43720564dde2c4bc0804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "463d8cbf_79c6b157",
         "filename": "board/nami/led.c",
         "patchSetId": 2
