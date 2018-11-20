@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0aa1705a_af0159cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-20T04:15:13Z",
+      "side": 1,
+      "message": "Revised at patch-12:\n\nish-ipc: remove IPC/Host command related flag\n\nRemove flag related to IPC interface \u0026 Host command protocol\nto add new IPC \u0026 HECI protocol",
+      "parentUuid": "3015fc5c_cfc7ae02",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "fdc09c6d09d928a3209c477213f0d6cb5cfc0ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cedb0886_aaa5f697",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-13T22:59:36Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "fdc09c6d09d928a3209c477213f0d6cb5cfc0ce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e6d71f8_448f5ccc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-20T04:15:13Z",
+      "side": 1,
+      "message": "Revised at patch 12:\nBUG\u003db:79676054",
+      "parentUuid": "cedb0886_aaa5f697",
       "range": {
         "startLine": 11,
         "startChar": 4,
