@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c4d65f_44ad4435",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-11-20T21:26:20Z",
+      "side": 1,
+      "message": "Are you sure these bools are required? Is there no simpler way to organize this?",
+      "range": {
+        "startLine": 707,
+        "startChar": 26,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d3f463_ab5fedb2",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-11-20T21:26:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this print be in POWER_S3S5?",
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
