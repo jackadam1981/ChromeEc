@@ -11,6 +11,7 @@
 /* Select Baseboard features */
 #define VARIANT_OCTOPUS_EC_ITE8320
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
+
 #include "baseboard.h"
 
 /* I2C bus configuraiton */

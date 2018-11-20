@@ -22,9 +22,6 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
-#define USB_PD_PORT_ITE_0	0
-#define USB_PD_PORT_ITE_1	1
-
 /******************************************************************************/
 /* USB-C TPCP Configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
@@ -102,8 +99,8 @@ void variant_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 }
-/* Called after the baseboard_tcpc_init (via +2) */
-DECLARE_HOOK(HOOK_INIT, variant_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
+/* Called after the baseboard_tcpc_init (via +3) */
+DECLARE_HOOK(HOOK_INIT, variant_tcpc_init, HOOK_PRIO_INIT_I2C + 3);
 
 uint16_t tcpc_get_alert_status(void)
 {
