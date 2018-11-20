@@ -16,6 +16,24 @@
       "revId": "5ace558d978a13edc44a209b30bd8e1a1c1f2f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e6d3287_934d8dce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-20T04:19:48Z",
+      "side": 1,
+      "message": "There is no bug filed for this CL.\n\"LPC\" channel will represent any host communication related debug message channels.",
+      "parentUuid": "ef890b46_1b2786ff",
+      "revId": "5ace558d978a13edc44a209b30bd8e1a1c1f2f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
