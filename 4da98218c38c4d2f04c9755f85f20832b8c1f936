@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4f50cc8_f795a39e",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-20T03:15:01Z",
+      "side": 1,
+      "message": "Well it\u0027s not MSEC if you write 100*MSEC (it\u0027s microseconds)\n\nJust PD_CHECK_DELAY",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 27
+      },
+      "revId": "4da98218c38c4d2f04c9755f85f20832b8c1f936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
