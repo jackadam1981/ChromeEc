@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78cddfb7_605a174a",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-21T20:34:48Z",
+      "side": 1,
+      "message": "Priority for the standalone variant_tcpc_init would need changed too, since it also relies on +2 to be called after baseboard_tcpc_init",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 103,
+        "endChar": 66
+      },
+      "revId": "c3c87a430a92077aa641c09cdd6aade83989a0f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
