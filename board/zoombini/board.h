@@ -57,6 +57,9 @@
 #define CONFIG_SYNC
 #endif
 
+/* Increase maximal ODR to 208Hz */
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 208000
+
 #ifdef BOARD_MEOWTH
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024

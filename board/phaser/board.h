@@ -42,6 +42,9 @@
 #define CONFIG_LID_ANGLE_INVALID_CHECK
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
+/* Increase maximal ODR to 208Hz */
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 208000
+
 /* Interrupt and fifo are only used for base accelerometer
  * and the lid sensor is polled real-time (in forced mode).
  */
