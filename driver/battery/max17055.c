@@ -264,19 +264,22 @@ void battery_get_params(struct batt_params *batt)
 {
 	int reg = 0;
 
-	/* Reset params */
-	memset(batt, 0, sizeof(struct batt_params));
+	/* Reset flags */
+	batt->flags = 0;
+
 	/*
 	 * Assuming the battery is responsive as long as
 	 * max17055 finds battery is present.
 	 */
 	batt->is_present = battery_is_present();
 
-	if (batt->is_present == BP_YES)
+	if (batt->is_present == BP_YES) {
 		batt->flags |= BATT_FLAG_RESPONSIVE;
-	else if (batt->is_present == BP_NO)
+	} else if (batt->is_present == BP_NO) {
 		/* Battery is not present, gauge won't report useful info. */
+		memset(batt, 0, sizeof(struct batt_params));
 		return;
+	}
 
 	if (max17055_read(REG_TEMPERATURE, &reg))
 		batt->flags |= BATT_FLAG_BAD_TEMPERATURE;
