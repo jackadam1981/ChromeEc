@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "71e1e614_f46a3583",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-21T00:03:56Z",
+      "side": 1,
+      "message": "I don\u0027t like goto inside an if. I recommend we make a function for the cold_reset() part and call that in the if condition for the CHIPSET_RESET_HOST_CMD case and return immmediately for the \"exceptional\" case and do the button gpio toggle after the if condition and fallback to call cold_reset() if it fails the power_wait_signals() part.",
+      "parentUuid": "6e63a3f2_dc35f7a0",
+      "range": {
+        "startLine": 670,
+        "startChar": 5,
+        "endLine": 670,
+        "endChar": 18
+      },
+      "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f508835_e5b42ff7",
         "filename": "power/sdm845.c",
         "patchSetId": 1
