@@ -22,6 +22,30 @@
       "revId": "b6ff2357ba4754afb696b0d98a771a6efd3d5cf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02538573_cd521b7a",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2018-11-21T01:11:30Z",
+      "side": 1,
+      "message": "No. Only the search key is moved to the 4th bit of the 1st column.",
+      "parentUuid": "b8e31bc6_b855227a",
+      "range": {
+        "startLine": 924,
+        "startChar": 5,
+        "endLine": 924,
+        "endChar": 6
+      },
+      "revId": "b6ff2357ba4754afb696b0d98a771a6efd3d5cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
