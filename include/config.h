@@ -1925,6 +1925,18 @@
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
 /*****************************************************************************/
+/* IPI configuration */
+
+/* EC support Inter-Processor Interrupt. */
+#undef CONFIG_IPI
+
+/* IPC share buffer size. */
+#undef CONFIG_IPC_SHARE_BUF_SIZE
+
+/* IPI share buffer address. */
+#undef CONFIG_IPI_SHARE_BUFFER_ADDR
+
+/*****************************************************************************/
 /* Current/Power monitor */
 
 /*

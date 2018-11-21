@@ -17,3 +17,4 @@ chip-$(CONFIG_COMMON_TIMER)+=hrtimer.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_I2C)+=i2c.o
+chip-$(CONFIG_IPI)+=ipi.o

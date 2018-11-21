@@ -71,6 +71,7 @@
 #define   IPC_SCP2HOST_SSHUB		0xff0000
 #define   WDT_INT			0x100
 #define   IPC_SCP2HOST                  0xff
+#define   IPC_SCP2HOST_BIT		0x1
 
 /* SCP to SPM interrupt */
 #define SCP_SPM_INT			REG32(SCP_CFG_BASE + 0x20)
