@@ -128,6 +128,10 @@ uint32_t get_feature_flags1(void)
 #ifdef CONFIG_ACCEL_FIFO
 		| EC_FEATURE_MASK_1(EC_FEATURE_MOTION_SENSE_TIGHT_TIMESTAMPS)
 #endif
+/* TODO(yllin): May need another config flag naming for this. */
+#ifdef CONFIG_IPI
+		| EC_FEATURE_MASK_1(EC_FEATURE_SCP)
+#endif
 		;
 #ifdef CONFIG_EC_FEATURE_BOARD_OVERRIDE
 	result = board_override_feature_flags1(result);

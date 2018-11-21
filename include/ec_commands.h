@@ -1330,6 +1330,8 @@ enum ec_feature_code {
 	EC_FEATURE_CEC = 35,
 	/* EC supports tight sensor timestamping. */
 	EC_FEATURE_MOTION_SENSE_TIGHT_TIMESTAMPS = 36,
+	/* EC Supports SCP. */
+	EC_FEATURE_SCP =37,
 };
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))

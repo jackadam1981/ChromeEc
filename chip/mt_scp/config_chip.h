@@ -56,6 +56,11 @@
 #define LARGER_TASK_STACK_SIZE 640
 #define VENTI_TASK_STACK_SIZE 768
 
+/* IPI */
+#define CONFIG_IPC_SHARE_BUF_SIZE 288
+/* IPI buffer starting from 510KB */
+#define CONFIG_IPC_SHARE_BUFFER_ADDR (CONFIG_RAM_BASE + 0x7F800)
+
 #define CONFIG_CHIP_PRE_INIT
 
 #define GPIO_PIN(num) ((num) / 32), ((num) % 32)
