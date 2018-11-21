@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0069ae0c_05f5a251",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3277,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-21T01:24:58Z",
+      "side": 1,
+      "message": "Maybe this should be named EC_MKBP_EVENT_TYPE_MASK? since MORE_EVENTS_MASK kind of implies that this is the mask used to get MORE_EVENTS?",
+      "range": {
+        "startLine": 3277,
+        "startChar": 16,
+        "endLine": 3277,
+        "endChar": 27
+      },
+      "revId": "7b5b9b5c5b034ff1e07896656970b289a34f084d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b19f915_1c9f2d50",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3318,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-21T01:24:58Z",
+      "side": 1,
+      "message": "Maybe we should add EC_MKBP_EVENT_MAX_TYPE \u003d 0x7f just to indicate that event types can only grow up to this value. We still have a long way to go in order to reach that, but I think it just makes it easier to understand. Thoughts?",
+      "revId": "7b5b9b5c5b034ff1e07896656970b289a34f084d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
