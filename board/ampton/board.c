@@ -218,7 +218,7 @@ static void board_update_sensor_config_from_sku(void)
 		motion_sensor_count = ARRAY_SIZE(motion_sensors);
 	} else {
 		motion_sensor_count = 0;
-		tablet_disable_switch();
+		hall_sensor_disable();
 	}
 }
 
