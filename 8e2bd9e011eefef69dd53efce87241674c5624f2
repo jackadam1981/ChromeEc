@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5dc6bf6_55a3c987",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-21T19:24:21Z",
+      "side": 1,
+      "message": "Why is this the right implementation for this?  It\u0027s identical to chipset_in_state().",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "8e2bd9e011eefef69dd53efce87241674c5624f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
