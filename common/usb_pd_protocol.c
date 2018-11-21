@@ -2849,7 +2849,7 @@ void pd_task(void *u)
 				tcpm_set_cc(port, TYPEC_CC_RD);
 				next_role_swap = get_time().val + PD_T_DRP_SNK;
 				pd[port].try_src_marker = get_time().val
-					+ PD_T_TRY_WAIT;
+					+ PD_T_DEBOUNCE;
 
 				/* Swap states quickly */
 				timeout = 2*MSEC;
@@ -2874,7 +2874,13 @@ void pd_task(void *u)
 				new_cc_state = PD_CC_AUDIO_ACC;
 			} else {
 				/* No UFP */
+//#ifdef CONFIG_USB_PD_DUAL_ROLE
+//				pd_set_power_role(port, PD_ROLE_SINK);
+//				tcpm_set_cc(port, TYPEC_CC_RD);
+//				set_state(port, PD_STATE_SNK_DISCONNECTED);
+//#else
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
+//#endif //CONFIG_USB_PD_DUAL_ROLE
 				timeout = 5*MSEC;
 				break;
 			}
@@ -4005,7 +4011,7 @@ void pd_task(void *u)
 					tcpm_set_cc(port, TYPEC_CC_RD);
 					/* Set timer for TryWait.SNK state */
 					pd[port].try_src_marker = get_time().val
-						+ PD_T_TRY_WAIT;
+						+ PD_T_DEBOUNCE;
 					/* Advance to TryWait.SNK state */
 					set_state(port,
 						  PD_STATE_SNK_DISCONNECTED);
