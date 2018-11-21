@@ -3448,6 +3448,9 @@ enum ec_host_event_mask_type {
 	/* Active wake mask */
 	EC_HOST_EVENT_ACTIVE_WAKE_MASK,
 
+	/* Lazy SCI Mask */
+	EC_HOST_EVENT_LAZY_SCI_MASK,
+
 	/* Lazy wake mask for S0ix */
 	EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX,
 

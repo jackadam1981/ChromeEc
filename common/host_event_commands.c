@@ -229,13 +229,14 @@ static host_event_t events_copy_b;
 
 /* Lazy wake masks */
 #ifdef CONFIG_HOSTCMD_X86
-static struct lazy_wake_masks {
+static struct lazy_masks {
+	host_event_t sci_lazy_mask;
 	host_event_t s3_lazy_wm;
 	host_event_t s5_lazy_wm;
 #ifdef CONFIG_POWER_S0IX
 	host_event_t s0ix_lazy_wm;
 #endif
-} lazy_wm;
+} lazy_mask;
 #endif
 
 static void host_events_atomic_or(host_event_t *e, host_event_t m)
@@ -616,16 +617,19 @@ static int host_event_action_get(struct host_cmd_handler_args *args)
 	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
 		r->value = lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);
 		break;
+	case EC_HOST_EVENT_LAZY_SCI_MASK:
+		r->value = lazy_mask.sci_lazy_mask;
+		break;
 #ifdef CONFIG_POWER_S0IX
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX:
-		r->value = lazy_wm.s0ix_lazy_wm;
+		r->value = lazy_mask.s0ix_lazy_wm;
 		break;
 #endif
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S3:
-		r->value = lazy_wm.s3_lazy_wm;
+		r->value = lazy_mask.s3_lazy_wm;
 		break;
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S5:
-		r->value = lazy_wm.s5_lazy_wm;
+		r->value = lazy_mask.s5_lazy_wm;
 		break;
 #endif
 	default:
@@ -658,16 +662,19 @@ static int host_event_action_set(struct host_cmd_handler_args *args)
 		active_wm_set_by_host = !!mask_value;
 		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, mask_value);
 		break;
+	case EC_HOST_EVENT_LAZY_SCI_MASK:
+		lazy_mask.sci_lazy_mask = mask_value;
+		break;
 #ifdef CONFIG_POWER_S0IX
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX:
-		lazy_wm.s0ix_lazy_wm = mask_value;
+		lazy_mask.s0ix_lazy_wm = mask_value;
 		break;
 #endif
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S3:
-		lazy_wm.s3_lazy_wm = mask_value;
+		lazy_mask.s3_lazy_wm = mask_value;
 		break;
 	case EC_HOST_EVENT_LAZY_WAKE_MASK_S5:
-		lazy_wm.s5_lazy_wm = mask_value;
+		lazy_mask.s5_lazy_wm = mask_value;
 		break;
 #endif
 	default:
@@ -730,14 +737,14 @@ int get_lazy_wake_mask(enum power_state state, host_event_t *mask)
 
 	switch (state) {
 	case POWER_S5:
-		*mask = lazy_wm.s5_lazy_wm;
+		*mask = lazy_mask.s5_lazy_wm;
 		break;
 	case POWER_S3:
-		*mask = lazy_wm.s3_lazy_wm;
+		*mask = lazy_mask.s3_lazy_wm;
 		break;
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0ix:
-		*mask = lazy_wm.s0ix_lazy_wm;
+		*mask = lazy_mask.s0ix_lazy_wm;
 		break;
 #endif
 	default:
@@ -752,23 +759,23 @@ static void preserve_lazy_wm(void)
 {
 	system_add_jump_tag(LAZY_WAKE_MASK_SYSJUMP_TAG,
 			    LAZY_WAKE_MASK_HOOK_VERSION,
-			    sizeof(lazy_wm),
-			    &lazy_wm);
+			    sizeof(lazy_mask),
+			    &lazy_mask);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, preserve_lazy_wm, HOOK_PRIO_DEFAULT);
 
 static void restore_lazy_wm(void)
 {
-	const struct lazy_wake_masks *wm_state;
+	const struct lazy_masks *mask_state;
 	int version, size;
 
-	wm_state = (const struct lazy_wake_masks *)
+	mask_state = (const struct lazy_masks *)
 			system_get_jump_tag(LAZY_WAKE_MASK_SYSJUMP_TAG,
 				 &version, &size);
 
-	if (wm_state && (version == LAZY_WAKE_MASK_HOOK_VERSION) &&
-	    (size == sizeof(lazy_wm))) {
-		lazy_wm = *wm_state;
+	if (mask_state && (version == LAZY_WAKE_MASK_HOOK_VERSION) &&
+	    (size == sizeof(lazy_mask))) {
+		lazy_mask = *mask_state;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, restore_lazy_wm, HOOK_PRIO_INIT_CHIPSET + 1);
