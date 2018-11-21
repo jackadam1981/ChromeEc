@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5b26589_8b575065",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "The fuzzer doesn\u0027t die because of that error, which is a bit concerning. After fixing that problem, the coverage increases much faster.",
+      "parentUuid": "2bdbb741_f626d2cc",
+      "range": {
+        "startLine": 44,
+        "startChar": 18,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9117499_8c7947f7",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 25
@@ -45,6 +69,30 @@
       "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d850bad2_2b50d0ca",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9117499_8c7947f7",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 48
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0f31ff21_bb0e38ad",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a25f413_0a07620d",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d78b4b1_222f062f",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 25
@@ -91,6 +163,30 @@
       "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "012479a0_953878e5",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "It was a side effect of me replacing the old proto name with the new proto name. Fixed.",
+      "parentUuid": "4d78b4b1_222f062f",
+      "range": {
+        "startLine": 61,
+        "startChar": 39,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2bc25f54_04513ac8",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f462933c_dea8655c",
+      "range": {
+        "startLine": 70,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e658b54_6d083ab9",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 25
@@ -137,6 +257,30 @@
       "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ce160d_bacd774e",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "I added a comment. If we reach this point, the fuzzer has already decided not to use random bytes so it is empty. There is a unimported_leaf_data field that takes the place of this field if it is set by the fuzzer.",
+      "parentUuid": "3e658b54_6d083ab9",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 13
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c676f309_7de14c93",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b232bc34_cd5e66fa",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 62
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14075d8f_822a30f9",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 25
@@ -183,6 +351,30 @@
       "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c09385c_9c7abc79",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14075d8f_822a30f9",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 62
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "d9f5dadb_ab7cab3f",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d782d019_4b011b94",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 72
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cd06885_562debad",
         "filename": "fuzz/span.h",
         "patchSetId": 25
@@ -229,6 +445,30 @@
       "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426a7c90_01eb6d51",
+        "filename": "fuzz/span.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T17:40:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd06885_562debad",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "2c52b18c5a46b9d95cdf6a80727a4a2545728035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
