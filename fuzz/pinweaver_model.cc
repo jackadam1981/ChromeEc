@@ -6,6 +6,9 @@
 
 #include "board/host/dcrypto.h"
 
+#include <cinttypes>
+#include <cstdio>
+
 namespace {
 
 struct pw_request_t* SerializeCommon(const fuzz::pinweaver::Request& pinweaver,
@@ -92,7 +95,10 @@ uint32_t PinweaverModel::ApplyRequest(const fuzz::pinweaver::Request& pinweaver,
               leaf_data.reset_secret.begin());
   }
 
+  pw_message_type_t type = request->header.type;
   pw_handle_request(&merkle_tree_, request, response);
+  printf("RESULT: type(0x%02x) 0x%08x\n", type.v, response->header.result_code);
+  fflush(stdout);
   if (response->header.result_code != EC_SUCCESS &&
       pinweaver.request_case() != fuzz::pinweaver::Request::kTryAuth) {
     return response->header.result_code;
