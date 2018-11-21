@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c3cf3ac6_76408a48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-11-21T00:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54022920_af3e2add",
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c15fcdd_b1cc0b87",
         "filename": "chip/ish/build.mk",
         "patchSetId": 5
