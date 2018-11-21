@@ -727,6 +727,23 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT,
 		     host_command_host_event,
 		     EC_VER_MASK(0));
 
+static int host_command_init_ec_events(struct host_cmd_handler_args *args)
+{
+	if (lazy_mask.sci_lazy_mask) {
+		lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, 0);
+		/* clear host events */
+		while (lpc_get_next_host_event() != 0)
+			;
+		lpc_set_host_event_mask(LPC_HOST_EVENT_SCI,
+				lazy_mask.sci_lazy_mask);
+	}
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_INIT_EC_EVENTS,
+		     host_command_init_ec_events,
+		     EC_VER_MASK(0));
+
+
 #define LAZY_WAKE_MASK_SYSJUMP_TAG		0x4C4D /* LM - Lazy Mask*/
 #define LAZY_WAKE_MASK_HOOK_VERSION		1
 

@@ -3461,7 +3461,8 @@ enum ec_host_event_mask_type {
 	EC_HOST_EVENT_LAZY_WAKE_MASK_S5,
 };
 
-#define EC_CMD_HOST_EVENT       0x00A4
+#define EC_CMD_HOST_EVENT    	    0x00A4
+#define EC_CMD_INIT_EC_EVENTS       0x00A5
 
 /*****************************************************************************/
 /* Switch commands */
