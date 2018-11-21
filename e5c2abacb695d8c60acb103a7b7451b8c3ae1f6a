@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dcb2b15d_8d67dce2",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-21T05:45:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac5fd8f4_86df8029",
+      "range": {
+        "startLine": 546,
+        "startChar": 42,
+        "endLine": 546,
+        "endChar": 62
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28a7e33e_d32277c0",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a549bcb9_b58fafa3",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-21T05:45:31Z",
+      "side": 1,
+      "message": "Oops sorry, fixed.",
+      "parentUuid": "28a7e33e_d32277c0",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 3
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7814c2a5_a45b5b1b",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-21T05:45:31Z",
+      "side": 1,
+      "message": "IIUC, sleep(-1) results in a sleep for ~1.2 hours - this is forever in practice; the while(1) is to make it forever in theory as well :)",
+      "parentUuid": "a9c0d654_04cedf67",
+      "range": {
+        "startLine": 588,
+        "startChar": 2,
+        "endLine": 588,
+        "endChar": 11
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1b96380_f5258e5d",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ddd07446_e7f60cc6",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-21T05:45:31Z",
+      "side": 1,
+      "message": "lmk which you prefer",
+      "parentUuid": "f1b96380_f5258e5d",
+      "range": {
+        "startLine": 704,
+        "startChar": 1,
+        "endLine": 704,
+        "endChar": 59
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08276761_0a4e194d",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2018-11-14T19:01:46Z",
       "side": 1,
       "message": "I know this is a copy and paste, but task_init[id] could be cached as a pointer \u0027task_init + id\u0027",
+      "range": {
+        "startLine": 892,
+        "startChar": 18,
+        "endLine": 892,
+        "endChar": 33
+      },
+      "revId": "e5c2abacb695d8c60acb103a7b7451b8c3ae1f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf17805_574fab9d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-21T05:45:31Z",
+      "side": 1,
+      "message": "Perhaps a stupid question, but what would the type of that pointer be? AFAICT tasks_init is an array of an unnamed struct\n\nI guess I was also assuming that the compiler would take care of this..",
+      "parentUuid": "08276761_0a4e194d",
       "range": {
         "startLine": 892,
         "startChar": 18,
