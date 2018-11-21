@@ -2018,6 +2018,21 @@
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
 /*****************************************************************************/
+/* IPI configuration.  Support mt_scp only for now. */
+
+/* EC support Inter-Processor Interrupt. */
+#undef CONFIG_IPI
+
+/*
+ * IPC0/IPI shared object address. This is the starting address of the send
+ * object and the receive object.  Each object contains a buffer "shared_buf".
+ */
+#undef CONFIG_IPC_SHARED_OBJ_ADDR
+
+/* "shared_buf" size of ipc_shared_obj. */
+#undef CONFIG_IPC_SHARED_OBJ_SHARED_BUF_SIZE
+
+/*****************************************************************************/
 /* Current/Power monitor */
 
 /*
