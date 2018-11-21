@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b98792c_e232787b",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2018-11-21T00:08:49Z",
+      "side": 1,
+      "message": "Agreed. We have POWER_G3S5, can\u0027t that do what POWER_S5 does of return POWER_S5 and then have it pass the check_for_power_on_event() value to the CPRINTS? Passing around global state in a state machine is hard to reason about because the state machine carries state while traversing the state graph.",
+      "parentUuid": "33c4d65f_44ad4435",
+      "range": {
+        "startLine": 707,
+        "startChar": 26,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d3f463_ab5fedb2",
         "filename": "power/sdm845.c",
         "patchSetId": 2
