@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bb7ffc4_55faae67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-11-21T20:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89dcbdfa_39299867",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "8e2bd9e011eefef69dd53efce87241674c5624f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5dc6bf6_55a3c987",
         "filename": "include/chipset.h",
         "patchSetId": 1
