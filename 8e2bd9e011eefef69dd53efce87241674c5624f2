@@ -46,6 +46,30 @@
       "revId": "8e2bd9e011eefef69dd53efce87241674c5624f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63937285_d7e38665",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-21T20:14:55Z",
+      "side": 1,
+      "message": "Ah, I see the #else up on line 105 now.\n\nYes, in that case, this looks correct.",
+      "parentUuid": "32fa34cd_001a6400",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 27
+      },
+      "revId": "8e2bd9e011eefef69dd53efce87241674c5624f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
