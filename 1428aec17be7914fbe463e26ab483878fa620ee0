@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "f56df176_8076638f",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 27
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-21T19:14:28Z",
+      "side": 1,
+      "message": "I added the self test in a follow up CL.",
+      "parentUuid": "686af837_8335a3c6",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "1428aec17be7914fbe463e26ab483878fa620ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82785f0d_f0d764a5",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 27
