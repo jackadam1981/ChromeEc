@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f3433bb_5da5a9c2",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-11-21T06:40:11Z",
+      "side": 1,
+      "message": "Put these two definitions into baseboard.h then we don\u0027t need to declare it in two places.",
+      "revId": "1a6f1398825a330556b48a4526140ca957dc1255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
