@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0c9cffc_b44a8dae",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-21T08:32:34Z",
+      "side": 1,
+      "message": "There\u0027s no protocol error at this level.\nThis function is about how to interpret input available in IPC.\nThe validity of the protocol is checked at the very early stage.",
+      "parentUuid": "f94978cd_dd425808",
+      "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3efff308_8f2c78b9",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b5e648_0c73bfaf",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-21T08:32:34Z",
+      "side": 1,
+      "message": "Yes, I know I can but I prefer not to have additional parameter. If you are worrying about the redundant code that checks validity of parameters, I can think about how to reduce or remove the redundancy. But as you know, that\u0027s not just about either blocking or non-blocking since other interface functions are also have similar validity check at the beginning of them.",
+      "parentUuid": "3efff308_8f2c78b9",
+      "revId": "91873fa4a6950773a1fb1fff8c067bdd80c0e01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
