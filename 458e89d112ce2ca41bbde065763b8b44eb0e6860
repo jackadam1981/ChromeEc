@@ -104,6 +104,24 @@
       "revId": "458e89d112ce2ca41bbde065763b8b44eb0e6860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf9e16fa_a2654e99",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3324,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-21T22:35:16Z",
+      "side": 1,
+      "message": "Actually, this is not needed, we have already defined EC_MKBP_EVENT_COUNT.",
+      "parentUuid": "43ed303e_079d35bf",
+      "revId": "458e89d112ce2ca41bbde065763b8b44eb0e6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
