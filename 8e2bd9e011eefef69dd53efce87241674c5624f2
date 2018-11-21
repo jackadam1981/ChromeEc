@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "89dcbdfa_39299867",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-21T20:17:52Z",
+      "side": 1,
+      "message": "Actually, it would help to change the description a bit\n\nchipset: Provide default chipset_in_or_transitioning_to_state \n\nIf HAS_TASK_CHIPSET is not defined, common/power.c is not compiled.  So provide a default implementation which indicates the chipset is always off.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "8e2bd9e011eefef69dd53efce87241674c5624f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5dc6bf6_55a3c987",
         "filename": "include/chipset.h",
         "patchSetId": 1
