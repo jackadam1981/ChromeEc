@@ -216,8 +216,6 @@ void system_pre_init(void)
 	scp_enable_pirq();
 	/* Init dram mapping */
 	scp_memmap_init();
-	/* Init inter processor communication */
-	/* scp_ipi_init(); */
 }
 
 void system_reset(int flags)

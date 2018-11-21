@@ -11,6 +11,7 @@
 #define CONFIG_FLASH_SIZE 0x40000 /* Image file size: 256KB */
 #undef  CONFIG_LID_SWITCH
 #undef  CONFIG_FW_INCLUDE_RO
+#define CONFIG_IPI
 
 #undef  CONFIG_UART_CONSOLE
 /*
