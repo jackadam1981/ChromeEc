@@ -16,5 +16,6 @@ chip-y=clock.o gpio.o system.o uart.o
 chip-$(CONFIG_CHIP_MEMORY_REGIONS)+=stepping_stone.o
 chip-$(CONFIG_COMMON_TIMER)+=hrtimer.o
 chip-$(CONFIG_I2C)+=i2c.o
+chip-$(CONFIG_IPI)+=ipi.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
