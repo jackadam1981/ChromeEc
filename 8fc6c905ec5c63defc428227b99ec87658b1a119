@@ -164,6 +164,30 @@
       "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75284e3_5c4de387",
+        "filename": "board/nami/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-11-21T09:06:22Z",
+      "side": 1,
+      "message": "We are making LED shows \u0027Factory mode\u0027. Factory image will use `ectool chargecontrol idle` or `ectool chargecontrol discharge` during their process. That change EC\u0027s charge status.\nAnd then LED color will be changed via led_charge_hook().\n\n\u0027Factory mode\u0027 can refer https://partnerissuetracker.corp.google.com/u/0/issues/111775507 comment#16 .",
+      "parentUuid": "d0d3f862_c58b1724",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 8
+      },
+      "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
