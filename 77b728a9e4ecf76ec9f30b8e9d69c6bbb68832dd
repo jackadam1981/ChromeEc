@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49bdd9bc_9b289a82",
+        "filename": "board/aleena/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-21T21:02:32Z",
+      "side": 1,
+      "message": "Change name from \"led_1\" to \"led_amber\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "77b728a9e4ecf76ec9f30b8e9d69c6bbb68832dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acbf417c_5053afd3",
+        "filename": "board/aleena/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-11-21T21:02:32Z",
+      "side": 1,
+      "message": "Change name from \"led_2\" to \"led_blue\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "77b728a9e4ecf76ec9f30b8e9d69c6bbb68832dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
