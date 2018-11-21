@@ -1,0 +1,602 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "422fbc72_123a2acf",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "nit: alphabetical order",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b438f6f_00ee8b49",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "ditto: Alphabetical",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345de720_96518dad",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "What is this? Can we define the bit as a #define?",
+      "range": {
+        "startLine": 23,
+        "startChar": 59,
+        "endLine": 23,
+        "endChar": 60
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75bea384_9f01d9c2",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 24,
+        "startChar": 62,
+        "endLine": 24,
+        "endChar": 63
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68fd7255_b0114720",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Do this on one line?\n\nSCP_CLK_ON_CTRL \u003d (SCP_CLK_ON_CTRL \u0026 ~HIGH_FINAL_VAL_MASK) | 0x300;\n\nAnd again, defining 0x300 would be nice.\n\nLots of similar ones below (one line, define the reg values)",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860ef1cd_97aaed88",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "super nit: usually /* is alone on first line for multiline comments:\n\n/*\n * Set legacy wakeup\n *  - ...\n */",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f49ca0b_f4305b17",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Alphabetical?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e75c00df_14b9e48b",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "maybe put this in a shift variable?\n\nint shift \u003d (bit \u0026 7) \u003c\u003c 2;",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e186f48_4a8a657f",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Add TODO or implement?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "099d5966_efdd7472",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "This seems to be read, but never written?!",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ef0aa3_bfdd17e6",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Reverse the tests (else g may be out of bound)",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f001261_94c80404",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14f5651_1a951162",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad0227a5_ca176486",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "I\u0027m a bit worried there might be a potential race here, if this is called between the time SCP_TIMER_VAL overflows and sys_high gets updated. E.g. if we try to read system with with interrupts disabled (which may happen, sadly...)\n\nFor now, maybe a TODO is good enough.",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56fc57db_0cb05cd0",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Why do you need event_deadline to be a global variable?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58f6706e_2763b7ac",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Why do you need those? (and what is MCLK?) BCLK does not seem to be used?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5149517_df776ffd",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "is the cast needed?",
+      "range": {
+        "startLine": 179,
+        "startChar": 9,
+        "endLine": 179,
+        "endChar": 17
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc4f271_0d25e487",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "No top clock? ,-)",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0c3c8b_6e66e58e",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "I\u0027d just put that in the main registers.h",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee9fa40_ee4badc6",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "What is DLAB?\n\n(Divisor Latch Access)",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8dc19f_f1a9fa2c",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21247555_c417fb27",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "This looks a tiny by overkill, since cali always \u003d 32.\n\nMaybe just a if below to use 12 or 16 for osc 1 or 2?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad1e54c_da5ed2b3",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "osc is 1 or 2, but your array index should be 0 or 1.",
+      "range": {
+        "startLine": 101,
+        "startChar": 22,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb3fabb_7ee2719a",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Should this register have a different name?\n\nSomething like AP_ULPOSC_CON(osc) and AP_ULPOSC_CON2(osc) maybe?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c049d01e_c1152ca2",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "nit: Single blank line",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d0704e_1adeb08c",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 23
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19d2cc88_8dbc2761",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "Can we document a bit better what this does? (probably ok to not have define for this)",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7939f45a_6b812398",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "#define please",
+      "range": {
+        "startLine": 247,
+        "startChar": 16,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a241da3_52fa1526",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "We unset CONFIG_HIBERNATE, do we even need to implement this?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bd80196_cf584d48",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "This is a weird way to clear the interrupt, you need to toggle to 0 then back to 1? The write operation is not enough?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726cea69_2607dac2",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "nit: drop blank line",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c257c3db_a8a21429",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-21T22:18:44Z",
+      "side": 1,
+      "message": "uart_rx_interrupt?",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
