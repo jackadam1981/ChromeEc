@@ -7,6 +7,26 @@
 #include <algorithm>
 #include <cassert>
 
+#include <cinttypes>
+#include <cstdio>
+template <unsigned int N>
+void PrintArray(const std::array<uint8_t, N> data) {
+  printf("HASH ");
+  for (const uint8_t datum : data) {
+    printf("%02x", datum);
+  }
+  printf("\n");
+  fflush(stdout);
+}
+void PrintRaw(uint8_t* data, size_t num) {
+  printf("HASH ");
+  for (size_t x = 0; x < num; ++x) {
+    printf("%02x", data[x]);
+  }
+  printf("\n");
+  fflush(stdout);
+}
+
 MemHashTree::MemHashTree() : bits_per_level_(0), height_(0) {}
 
 bool MemHashTree::GetLeaf(uint64_t label, fuzz::span<uint8_t> leaf_hash) const {
@@ -18,6 +38,8 @@ bool MemHashTree::GetLeaf(uint64_t label, fuzz::span<uint8_t> leaf_hash) const {
   }
 
   std::copy(itr->second.begin(), itr->second.end(), leaf_hash.begin());
+  PrintArray<SHA256_DIGEST_SIZE>(itr->second);
+  PrintRaw(leaf_hash.begin(), SHA256_DIGEST_SIZE);
   return true;
 }
 
@@ -64,6 +86,7 @@ void MemHashTree::UpdatePath(uint64_t label,
     assert(path_hash.size() == SHA256_DIGEST_SIZE);
     std::copy(path_hash.begin(), path_hash.end(), hash.begin());
     hash_tree_[MaskedLabel(label, 0)] = hash;
+    PrintArray<SHA256_DIGEST_SIZE>(hash);
   }
 
   uint8_t fan_out = 1 << bits_per_level_;
