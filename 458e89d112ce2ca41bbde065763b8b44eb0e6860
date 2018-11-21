@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01ee9106_63dd287e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-21T19:38:22Z",
+      "side": 1,
+      "message": "On all platforms where there is a GPIO interrupt line between EC and AP for MKBP events, the EC will keep ...",
+      "revId": "458e89d112ce2ca41bbde065763b8b44eb0e6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94160860_845e165e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3273,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-21T19:38:22Z",
+      "side": 1,
+      "message": "To match other .h file:\n#define EC_MKBP_HAS_MORE_EVENTS_SHIFT 7\n#define EC_MKBP_HAS_MORE_EVENTS (1 \u003c\u003c EC_MKBP_HAS_MORE_EVENTS_SHIFT)\n#define EC_MKBP_EVENT_TYPE_MASK ((1 \u003c\u003c EC_MKBP_HAS_MORE_EVENTS_SHIFT) - 1)",
+      "revId": "458e89d112ce2ca41bbde065763b8b44eb0e6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ed303e_079d35bf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3324,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-21T19:38:22Z",
+      "side": 1,
+      "message": "replace 7f EC_MKBP_EVENT_TYPE_MASK, in case we add more flags...",
+      "revId": "458e89d112ce2ca41bbde065763b8b44eb0e6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
