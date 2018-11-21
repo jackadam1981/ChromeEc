@@ -33,6 +33,7 @@
 #define BAT_LEVEL_PD_LIMIT 85
 
 static uint8_t batt_id = 0xff;
+int chipset_in_or_transitioning_to_state(int state_mask);
 
 /* Do not change the enum values. We directly use strap gpio level to index. */
 enum battery_type {
