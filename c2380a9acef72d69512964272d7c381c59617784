@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce5b7fc2_789502ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-11-21T09:33:03Z",
+      "side": 1,
+      "message": "on the type-c port in mainboard.",
+      "revId": "c2380a9acef72d69512964272d7c381c59617784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95bd4b9_70b98a77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-11-21T09:33:03Z",
+      "side": 1,
+      "message": "Do you really test this function on EVT?",
+      "revId": "c2380a9acef72d69512964272d7c381c59617784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "819aad2c_e168d769",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-11-21T09:33:03Z",
+      "side": 1,
+      "message": "no necessary for using \u0026 because array name itself is a pointer already",
+      "revId": "c2380a9acef72d69512964272d7c381c59617784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
