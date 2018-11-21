@@ -446,6 +446,8 @@ enum {
 	SLEEP_MASK_JTAG     = (1 << 16), /* JTAG is in use. */
 	SLEEP_MASK_CONSOLE  = (1 << 17), /* Console is in use. */
 
+	SLEEP_MASK_IPI      = (1 << 18), /* IPI communications ongoing */
+
 	SLEEP_MASK_FORCE_NO_LOW_SPEED = (1 << 31)  /* Force disable. */
 };
 
