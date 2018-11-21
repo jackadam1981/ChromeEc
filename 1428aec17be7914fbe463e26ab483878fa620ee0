@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "54f2c0c0_7dfe4469",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 27
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-21T23:53:05Z",
+      "side": 1,
+      "message": "that is what CPPFLAGS is for.  it\u0027s pre-processor flags for C \u0026 C++.  usually -D/-I go in there.\n\nwhat\u0027s the problem with putting LIBPROTOBUF_MUTATOR_CFLAGS into CPPFLAGS ?",
+      "parentUuid": "41acec5d_36a0840b",
+      "revId": "1428aec17be7914fbe463e26ab483878fa620ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75c30017_fc519aab",
         "filename": "fuzz/cr50_fuzz.cc",
         "patchSetId": 27
