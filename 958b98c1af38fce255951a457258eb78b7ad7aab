@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a48a9cf_68859683",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T01:54:26Z",
+      "side": 1,
+      "message": "128 bytes on the stack in a large number of function looks scary. Be sure a heci_msg are not stack on top of each other.",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e100c67a_e7a4545d",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T01:54:26Z",
+      "side": 1,
+      "message": "not needed as heci_header is already 32 bit.",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11466d9c_f7dc06b8",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T01:54:26Z",
+      "side": 1,
+      "message": "To save code space, could it be a call to heci_send_msgs with a single list item.",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d80aec4_32c9c81a",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T01:54:26Z",
+      "side": 1,
+      "message": "while(1) should be avoided:\nfor (i \u003d 0, msg_offset \u003d 0; i \u003c msg_list-\u003enum_of_items; msg_offset \u003d\u003d msg_item-\u003esize ? i++,msg_offset\u003d0 ) {\n// msg_item does not have to be set a for loop entry\n  msg_item \u003d msg_list-\u003eitems[i];\n  ....",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
