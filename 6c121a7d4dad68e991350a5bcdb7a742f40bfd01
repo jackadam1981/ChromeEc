@@ -46,6 +46,30 @@
       "revId": "6c121a7d4dad68e991350a5bcdb7a742f40bfd01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ba0350_57e38d2e",
+        "filename": "board/nami/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-22T05:13:30Z",
+      "side": 1,
+      "message": "1.Already same ID in new CBI file.\nThese are for proto system with old CBI file.\n2.Yes, need MODEL_ID or SKU_ID to different battery control.\nBut I think this can be done in crrev.com/c/1337251.",
+      "parentUuid": "3f0f8a92_239c8719",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 14
+      },
+      "revId": "6c121a7d4dad68e991350a5bcdb7a742f40bfd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
