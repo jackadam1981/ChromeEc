@@ -148,7 +148,24 @@ static int show_charge_state(void)
 	 * Solid Green == Charging (near full)
 	 * Fast Flash Red == Charging error or battery not present
 	 */
-	if (chg_st == PWR_STATE_CHARGE) {
+#if 0
+	static timestamp_t previous_time;
+#endif
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		// period = totoal, 16 ticks = 4 * 4 ticks = 4 s
+		// ontime = 4 ticks = 4 * 250 ms = 1 s
+		pulse_leds(CONFIG_LED_PWM_CHARGE_ERROR_COLOR, 4, 16);
+#if 0
+		previous_time = get_time();
+		if (previous_time.val == 0)
+			previous_time = get_time();
+		
+		else {
+			ccprintf("diff = %.6ld ms\n", (get_time().val - previous_time.val)*1000);
+			previous_time.val = 0;
+		}
+#endif
+	} else if (chg_st == PWR_STATE_CHARGE) {
 		led_is_pulsing = 0;
 		set_led_color(CONFIG_LED_PWM_CHARGE_COLOR);
 	} else if (chg_st == PWR_STATE_CHARGE_NEAR_FULL) {
