@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abf40d97_1af30528",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-11-22T07:08:10Z",
+      "side": 1,
+      "message": "Do we need this? There has no follow extensions.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be1e41a_5c2e00c0",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-11-22T07:08:10Z",
+      "side": 1,
+      "message": "IMHO, while(1) is not good here. If the i2c read failed, for example the EEPROM was broken, this loop will never exit. Moreover, the AP may be powered on during i2c read failed, the wrong EDID may be read by AP, continue trying to read/write is meaningless.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "078535af_e749fb79",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-11-22T07:08:10Z",
+      "side": 1,
+      "message": "The EDID needs to be programmed before AP powered on, right? if wait here, the AP maybe powered on after a few retries.",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
