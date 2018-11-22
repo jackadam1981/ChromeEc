@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e5a4563_436bbd00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-22T16:36:48Z",
+      "side": 1,
+      "message": "If you get rid of the multiple entry into IRQ handler, does it still play well with the timestamping of events?",
+      "range": {
+        "startLine": 11,
+        "startChar": 25,
+        "endLine": 12,
+        "endChar": 59
+      },
+      "revId": "1f80828371c1fb46215444309490db9d7517882d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

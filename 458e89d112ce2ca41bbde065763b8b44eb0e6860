@@ -140,6 +140,24 @@
       "revId": "458e89d112ce2ca41bbde065763b8b44eb0e6860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d0127d_94a70602",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3324,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-22T16:36:48Z",
+      "side": 1,
+      "message": "Yeah I think it makes it clear what this event type can grow to in the future.",
+      "parentUuid": "35fd8ee1_41d2cf74",
+      "revId": "458e89d112ce2ca41bbde065763b8b44eb0e6860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
