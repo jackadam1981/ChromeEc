@@ -1,0 +1,276 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53ba63e0_25d8f789",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "merge the error space with the existing error space. (see include/common.h)",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17e2f8a_5402a71e",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "file a bug, will be required for sensor support.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1c8665_a1a38d42",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "prefix macro variable with _ to spot naming error.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "077e7a0f_541b9ed6",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "HID_SUBSYS_DEV_HANDLE_TO_HID_DEV, to HID_SUBSYS_HANDLE_TO_HID_DEV to be consistent HID_HANDLE_TO_DEV_ID below, or use DEV_HANDLE instead of HANDLE line 97.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08dac936_3ffc6382",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "rename dev_id to dev_handle.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eefdc5f7_bb0c877d",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "it is possible? it is really bad, should be an assert at best, or removed.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963860c7_1cae2b27",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "\u003e\u003d",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e21f8d_fc1b4982",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "try to preserve the return code for debugging.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f077e9b5_d9e90389",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "set hid_device here",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cdccd25_0096d356",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "if (!hid_device)",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e0e70b_14891b22",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "return a proper error code.\n\nThe caller is not using the error code, I think you need to send back a message with an error, as you do in line 281.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da947141_6c6d9ea1",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "use variable ret, as return can either be size or an error code.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2deb797f_6dacccc8",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "not needed for single instruction",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac13084_51063624",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "remove line.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "992b47d4_db5059bf",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "are you sure? The host expects an answer, tell it the packet is invalid.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e235c02e_589543e5",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-22T04:56:41Z",
+      "side": 1,
+      "message": "you override line 333.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
