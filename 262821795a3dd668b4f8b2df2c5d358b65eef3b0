@@ -139,6 +139,30 @@
     },
     {
       "key": {
+        "uuid": "58559315_ab31e12c",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-22T08:53:05Z",
+      "side": 1,
+      "message": "so,\nL1 starting from 0x7b800\nIPI buffer staring from 0x7f800",
+      "parentUuid": "acb2e9c1_c03134a1",
+      "range": {
+        "startLine": 31,
+        "startChar": 35,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f49ca0b_f4305b17",
         "filename": "chip/mt_scp/config_chip.h",
         "patchSetId": 8
