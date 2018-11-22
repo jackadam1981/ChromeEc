@@ -314,6 +314,30 @@
     },
     {
       "key": {
+        "uuid": "6b175208_88345e8b",
+        "filename": "fuzz/span.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "Heh, please do feel empowered to stick with the macros, I agree they were much cleaner vs. the current patchset. We\u0027re ultimately optimizing for readability. I made the suggestion to switch to templates because I was under the impression that these would work just as well as the macro you originally had. In particular, I think the template versions only make sense if they can be done as drop-in replacements for the original macros you had. That might not be the case though, so please don\u0027t feel obliged to follow suggestions blindly!",
+      "parentUuid": "3654de38_c815413f",
+      "range": {
+        "startLine": 53,
+        "startChar": 51,
+        "endLine": 53,
+        "endChar": 52
+      },
+      "revId": "1428aec17be7914fbe463e26ab483878fa620ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36a5c06_3cb7a0cc",
         "filename": "fuzz/span.h",
         "patchSetId": 27
@@ -349,6 +373,30 @@
       "side": 1,
       "message": "For the case:\nToSpan(F field[N])\nresults in the odd edge case where \"sizeof(*field) is equal to \"sizeof(F)\" instead of \"sizeof(F) * N\" and what I want is the size of the whole array, not just a single element.",
       "parentUuid": "f36a5c06_3cb7a0cc",
+      "range": {
+        "startLine": 55,
+        "startChar": 52,
+        "endLine": 55,
+        "endChar": 57
+      },
+      "revId": "1428aec17be7914fbe463e26ab483878fa620ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f239ea6_8498e89a",
+        "filename": "fuzz/span.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "Ah, bummer. Note that this can be fixed either by taking the address of the array variable, e.g.\n\nuint8_t buffer[4];\nToSpan(\u0026buffer);\n\nOr you could just use references instead to save the \u0026 operators (the style guide advises to use pointer types instead of mutable references though, but again remember that readability is king ultimately):\n\ntemplate\u003ctypename F\u003e\nstd::span\u003cuint8_t\u003e ToSpan(F\u0026 field) {\n  return std::span\u003cuint8_t\u003e(reinterpret_cast\u003cuint8_t*\u003e(\u0026field), sizeof(field));\n}\n\ntemplate\u003ctypename F\u003e\nstd::span\u003cconst uint8_t\u003e ToSpan(const F\u0026 field) {\n  return std::span\u003cconst uint8_t\u003e(reinterpret_cast\u003cconst uint8_t*\u003e(\u0026field), sizeof(field));\n}",
+      "parentUuid": "8416e356_0d1fc9ec",
       "range": {
         "startLine": 55,
         "startChar": 52,

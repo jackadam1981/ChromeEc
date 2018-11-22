@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f98117e5_8ef2ad73",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "nit: stray space",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d90c3c1b_7419b4ef",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "I assume you\u0027ve put the -1 to make a value of 0 indicate \"default version\". While that works, it has the confusing side-effect of an off-by-one between the proto field and the version in the request.\n\nSuggestion: Change the check to pinweaver.has_version(), drop the -1.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c649129_05a056b1",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "nit: comment is stale now that the code fills in zeroes.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 74
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66feb9de_6bd8f0ac",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "Should there be another CopyWithPadding invocation here for the unimported_leaf_data proto field?",
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f4fe902_e3dc628a",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "CopyWithPadding for the unimporated_leaf_data proto field?",
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec9e71b_319c216b",
+        "filename": "fuzz/span.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-22T11:34:08Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
