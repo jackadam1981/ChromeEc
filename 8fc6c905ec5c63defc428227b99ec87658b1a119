@@ -188,6 +188,30 @@
       "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698b76cc_b2703608",
+        "filename": "board/nami/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-22T01:08:05Z",
+      "side": 1,
+      "message": "Ah, I see. Could you add that to the comment? Then, the CL looks good.",
+      "parentUuid": "d75284e3_5c4de387",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 8
+      },
+      "revId": "8fc6c905ec5c63defc428227b99ec87658b1a119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
