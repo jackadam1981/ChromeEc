@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8afc1dc3_d44f51c0",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-11-23T11:41:59Z",
+      "side": 1,
+      "message": "Maybe you can just output the error message instead of while(1). Without the correct EDID, can the display output correctly? If not, we maybe can add a led state to indicate this kind of error to speed up the debugging/RMA process. Just my two cents.",
+      "parentUuid": "26834c29_64f5ae63",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "078535af_e749fb79",
         "filename": "board/karma/panel.c",
         "patchSetId": 3
