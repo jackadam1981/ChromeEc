@@ -35,6 +35,7 @@
 
 #define CONFIG_ACCEL_KX022	/* Lid accel */
 #define CONFIG_ACCELGYRO_BMI160	/* Base accel */
+#define CONFIG_SYNC		/* Camera VSYNC */
 
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* Sensors without hardware FIFO are in forced mode */
@@ -63,7 +64,8 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 
-#define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(1 << 2)
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT	TASK_EVENT_CUSTOM(1 << 2)
+#define CONFIG_SYNC_INT_EVENT		  	TASK_EVENT_CUSTOM(1 << 3)
 
 #ifndef __ASSEMBLER__
 
@@ -90,6 +92,7 @@ enum sensor_id {
 	LID_ACCEL,
 	BASE_ACCEL,
 	BASE_GYRO,
+	VSYNC,
 	SENSOR_COUNT
 };
 
