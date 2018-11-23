@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2717428_b38117b5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-11-23T17:46:34Z",
+      "side": 1,
+      "message": "Brackets [] indicate optional arguments. Ideally, we do want this syntax and we want the command to print the SN Bits (or RMA bits below) when given no arguments, but neither the code in CL nor the documentation (which only says Set) do this.\n\nRemove the brackets if the reading will be done in another CL, or add reading to this CL.\n\nAlso, why does gsctool use this weird syntax for arguments where everything is separated by a colon? Maybe the -i command set a bad precedent (which could be fixed with backwards compatibility), but I think it would be much nicer and expected to have -S, --sn-nbits SN_1 SN_2 SN_3 here. This will require a small change in the parsing of the command line but arguments won\u0027t be as contrived anymore.",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714a131d_e6117c69",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-11-23T17:46:34Z",
+      "side": 1,
+      "message": "Same comment re: [] and wanting to read the bits too.",
+      "range": {
+        "startLine": 550,
+        "startChar": 27,
+        "endLine": 550,
+        "endChar": 28
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d076c938_39dcf505",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-11-23T17:46:34Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like you are enforcing the syntax you want here (as there is no explicit check for \u0027:\u0027). But again I think the command should take one separate arg per hex number.",
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
