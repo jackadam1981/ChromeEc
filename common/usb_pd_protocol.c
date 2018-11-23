@@ -1405,6 +1405,9 @@ static void handle_data_request(int port, uint16_t head,
 			/* Source will resend source cap on failure */
 			pd_send_request_msg(port, 1);
 		}
+		//error handler
+		//if (pd[port].task_state == PD_STATE_SRC_NEGOCIATE)
+		//	set_state(port, PD_STATE_SOFT_RESET);
 		break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	case PD_DATA_REQUEST:
@@ -2849,7 +2852,7 @@ void pd_task(void *u)
 				tcpm_set_cc(port, TYPEC_CC_RD);
 				next_role_swap = get_time().val + PD_T_DRP_SNK;
 				pd[port].try_src_marker = get_time().val
-					+ PD_T_TRY_WAIT;
+					+ PD_T_DEBOUNCE;
 
 				/* Swap states quickly */
 				timeout = 2*MSEC;
@@ -2874,7 +2877,13 @@ void pd_task(void *u)
 				new_cc_state = PD_CC_AUDIO_ACC;
 			} else {
 				/* No UFP */
+//#ifdef CONFIG_USB_PD_DUAL_ROLE
+//				pd_set_power_role(port, PD_ROLE_SINK);
+//				tcpm_set_cc(port, TYPEC_CC_RD);
+//				set_state(port, PD_STATE_SNK_DISCONNECTED);
+//#else
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
+//#endif //CONFIG_USB_PD_DUAL_ROLE
 				timeout = 5*MSEC;
 				break;
 			}
@@ -2891,6 +2900,26 @@ void pd_task(void *u)
 					break;
 				}
 			}
+
+#if 0 //try.SRC to attached.SRC debounce
+			/* Debounce the cc state */
+			if (new_cc_state != pd[port].cc_state) {
+				/*
+				 * If in Try.SRC state, then neeed a shorter
+				 * debounce time.
+				 */
+				if (!(pd[port].flags & PD_FLAGS_TRY_SRC))
+					pd[port].cc_debounce = get_time().val +
+						PD_T_CC_DEBOUNCE;
+				else
+					pd[port].cc_debounce = get_time().val +
+						PD_T_TRY_CC_DEBOUNCE;
+				pd[port].cc_state = new_cc_state;
+				break;
+			} else if (get_time().val < pd[port].cc_debounce) {
+				break;
+			}
+#endif //try.SRC to attached.SRC debounce
 
 			/* Debounce complete */
 			/* UFP is attached */
@@ -3362,6 +3391,11 @@ void pd_task(void *u)
 				new_cc_state = PD_CC_DFP_ATTACHED;
 			} else {
 				/* No connection any more */
+				//replace: set state PD_STATE_SNK_DISCONNECTED
+//				pd_set_power_role(port, PD_ROLE_SOURCE);
+//				tcpm_set_cc(port, TYPEC_CC_RP);
+//				set_state(port, PD_STATE_SRC_DISCONNECTED);
+
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
 				timeout = 5*MSEC;
 				break;
@@ -4005,7 +4039,7 @@ void pd_task(void *u)
 					tcpm_set_cc(port, TYPEC_CC_RD);
 					/* Set timer for TryWait.SNK state */
 					pd[port].try_src_marker = get_time().val
-						+ PD_T_TRY_WAIT;
+						+ PD_T_DEBOUNCE;
 					/* Advance to TryWait.SNK state */
 					set_state(port,
 						  PD_STATE_SNK_DISCONNECTED);
