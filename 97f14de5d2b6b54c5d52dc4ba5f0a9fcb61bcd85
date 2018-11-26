@@ -22,6 +22,30 @@
       "revId": "97f14de5d2b6b54c5d52dc4ba5f0a9fcb61bcd85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4439cf64_e48c4825",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T21:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a080830d_d8284b60",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "97f14de5d2b6b54c5d52dc4ba5f0a9fcb61bcd85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
