@@ -929,6 +929,7 @@ DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
 
 static uint8_t gain_left;
 static uint8_t gain_right;
+static uint32_t bclk;
 
 typedef int (*codec_i2s_func)(struct host_cmd_handler_args *args);
 
@@ -1011,6 +1012,17 @@ static int codec_i2s_set_tdm_config(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+static int codec_i2s_set_bclk(struct host_cmd_handler_args *args)
+{
+	args->response_size = 0;
+
+	struct ec_param_codec_i2s *param =
+		(struct ec_param_codec_i2s *)args->params;
+	bclk = param->bclk;
+
+	return EC_RES_SUCCESS;
+}
+
 static int codec_i2s(struct host_cmd_handler_args *args)
 {
 	struct ec_param_codec_i2s *param =
@@ -1023,6 +1035,7 @@ static int codec_i2s(struct host_cmd_handler_args *args)
 		codec_i2s_enable,
 		codec_i2s_set_config,
 		codec_i2s_set_tdm_config,
+		codec_i2s_set_bclk,
 	};
 
 	if (param->cmd < EC_CODEC_I2S_MAX)
