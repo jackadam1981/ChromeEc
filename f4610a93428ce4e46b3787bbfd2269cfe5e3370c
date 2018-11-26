@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6640f13_950e10f4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-26T19:22:38Z",
+      "side": 1,
+      "message": "Newly defined SYSTEM_RESET_SOFT_H1, which will reset H1 only, not EC.",
+      "range": {
+        "startLine": 853,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 37
+      },
+      "revId": "f4610a93428ce4e46b3787bbfd2269cfe5e3370c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
