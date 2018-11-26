@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd244848_cdb51d2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-26T17:57:46Z",
+      "side": 1,
+      "message": "I don\u0027t understand where this assertion is coming from. Is this just for a quick lookup? Also, it\u0027s not really mandatory in that we\u0027ve not needed it until this CL. There needs to be proper guidance and coordination on the field usage in CBI.",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
