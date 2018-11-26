@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "bdcd0db4_cb1badde",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-11-26T12:20:41Z",
+      "side": 1,
+      "message": "[1] When I2C slave is busy, it can reject host command. All you have to do is do it again later. Therefore, it is better to give a retry. Adding while(1) or not depends on the action after wrong EDID. (no infinite loop if decide to power on, infinite loop/retry/no retry if decide to stay power off)\n\n[2] Without the correct EDID, there might be nothing on your screen (I am  more tend to assume unknown fail will happen). EDID is important information for panel signals. It should be correct.\n\n[3] I am OK with LED as long as you have spec. for it.",
+      "parentUuid": "8afc1dc3_d44f51c0",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "078535af_e749fb79",
         "filename": "board/karma/panel.c",
         "patchSetId": 3
