@@ -239,7 +239,7 @@ int rt946x_por_reset(void)
 
 static int rt946x_reset_to_zero(void)
 {
-	int rv = 0;
+	int rv;
 
 	rv = charger_set_current(0);
 	if (rv)
@@ -861,11 +861,112 @@ static void rt946x_init(void)
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
 
 #ifdef HAS_TASK_USB_CHG
-static int rt946x_get_bc12_device_type(void)
+/* Input a mt6370 charger_type and output a bc12 type */
+int rt946x_get_bc_12_device_type(int charger_type)
 {
+	switch(charger_type) {
+	case MT6370_CHG_TYPE_SDP:
+	case MT6370_CHG_TYPE_SDPNSTD:
+		return CHARGE_SUPPLIER_BC12_SDP;
+	case MT6370_CHG_TYPE_CDP:
+		return CHARGE_SUPPLIER_BC12_CDP;
+	case MT6370_CHG_TYPE_DCP:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_SAMSUNG_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	default:
+		return CHARGE_SUPPLIER_NONE;
+	}
+}
+
+static int mt6370_detect_apple_samsung_ta(int usb_stat)
+{
+	int ret, reg;
+	int chg_type = (usb_stat & MT6370_MASK_USB_STATUS) >> MT6370_SHIFT_USB_STATUS;
+	int dcd_timeout = usb_stat & MT6370_MASK_DCD_TIMEOUT;
+	int dp_0_9v, dp_1_5v, dp_2_3v, dm_2_3v;
+
+	/* Only SDP/CDP/DCP could possibly be Apple/Samsung TA */
+	if (chg_type != MT6370_CHG_TYPE_SDPNSTD &&
+	    chg_type != MT6370_CHG_TYPE_CDP &&
+	    chg_type != MT6370_CHG_TYPE_DCP)
+		return chg_type;
+
+	if (chg_type == MT6370_CHG_TYPE_SDPNSTD ||
+		chg_type == MT6370_CHG_TYPE_CDP)
+		if (!dcd_timeout)
+			return chg_type;
+
+	/* Check D+ > 0.9V */
+	ret = rt946x_update_bits(
+		MT6370_REG_QCSTATUS2, MT6360_MASK_CHECK_DPDM,
+			MT6370_MASK_APP_SS_EN | MT6370_MASK_APP_SS_PL);
+	if (ret)
+		return chg_type;
+
+	ret = rt946x_read8(MT6370_REG_QCSTATUS2, &reg);
+	if (ret)
+		return chg_type;
+	dp_0_9v = reg & MT6370_MASK_SS_OUT;
+
+	/* Normal port */
+	if (!dp_0_9v)
+		return chg_type;
+
+	/* Check D+ > 1.5V */
+	ret = rt946x_read8(MT6370_REG_QCSTATUS2, &reg);
+	if (ret)
+		return chg_type;
+	dp_1_5v = reg & MT6370_MASK_APP_OUT;
+
+	/* Samsung charger */
+	if (!dp_1_5v)
+		return MT6370_CHG_TYPE_SAMSUNG_CHARGER;
+
+	/* Check DP > 2.3 V */
+	ret = rt946x_update_bits(MT6370_REG_QCSTATUS2,
+				 MT6360_MASK_CHECK_DPDM,
+				 MT6370_MASK_APP_REF |
+				 MT6370_MASK_APP_SS_PL |
+				 MT6370_MASK_APP_SS_EN);
+	if (ret)
+		return chg_type;
+
+	ret = rt946x_read8(MT6370_REG_QCSTATUS2, &reg);
+	if (ret)
+		return chg_type;
+	dp_2_3v = reg & MT6370_MASK_APP_OUT;
+
+	/* Apple charger */
+	if (!dp_2_3v && !dm_2_3v)
+		/* Apple 2.5W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_0_5A_CHARGER;
+	else if (!dp_2_3v && dm_2_3v)
+		/* Apple 5W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_1_0A_CHARGER;
+	else if (dp_2_3v && !dm_2_3v)
+		/* Apple 10W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_2_1A_CHARGER;
+	else
+		/* Apple 12W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_2_4A_CHARGER;
+
+	return chg_type;
+}
+
+static int rt946x_get_bc12_device_type(int charger_type)
+{
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 	int reg;
 
-#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 	if (rt946x_read8(RT946X_REG_DPDM1, &reg))
 		return CHARGE_SUPPLIER_NONE;
 
@@ -880,16 +981,18 @@ static int rt946x_get_bc12_device_type(void)
 		return CHARGE_SUPPLIER_NONE;
 	}
 #elif defined(CONFIG_CHARGER_MT6370)
-	if (rt946x_read8(MT6370_REG_USBSTATUS1, &reg))
-		return CHARGE_SUPPLIER_NONE;
-
-	switch ((reg & MT6370_MASK_USB_STATUS) >> MT6370_SHIFT_USB_STATUS) {
+	switch (charger_type) {
 	case MT6370_CHG_TYPE_SDP:
 	case MT6370_CHG_TYPE_SDPNSTD:
 		return CHARGE_SUPPLIER_BC12_SDP;
 	case MT6370_CHG_TYPE_CDP:
 		return CHARGE_SUPPLIER_BC12_CDP;
 	case MT6370_CHG_TYPE_DCP:
+	case MT6370_CHG_TYPE_SAMSUNG_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:
 		return CHARGE_SUPPLIER_BC12_DCP;
 	default:
 		return CHARGE_SUPPLIER_NONE;
@@ -897,13 +1000,32 @@ static int rt946x_get_bc12_device_type(void)
 #endif
 }
 
+/* returns a mt6370 charger_type */
+int rt946x_get_charger_type(void)
+{
+	int reg;
+
+	if (rt946x_read8(MT6370_REG_USBSTATUS1, &reg))
+		return CHARGE_SUPPLIER_NONE;
+	return mt6370_detect_apple_samsung_ta(reg);
+}
+
 static int rt946x_get_bc12_ilim(int charge_supplier)
 {
 	switch (charge_supplier) {
-	case CHARGE_SUPPLIER_BC12_CDP:
-	case CHARGE_SUPPLIER_BC12_DCP:
+	case MT6370_CHG_TYPE_CDP:
+	case MT6370_CHG_TYPE_DCP:
+	case MT6370_CHG_TYPE_SAMSUNG_CHARGER:
 		return 1500;
-	case CHARGE_SUPPLIER_BC12_SDP:
+	case MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:
+		return 500;
+	case MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:
+		return 1000;
+	case MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:
+		return 2100;
+	case MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:
+		return 2400;
+	case MT6370_CHG_TYPE_SDP:
 	default:
 		return USB_CHARGER_MIN_CURR_MA;
 	}
@@ -918,6 +1040,9 @@ void usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
+#if defined(CONFIG_CHARGER_MT6370)
+	int chg_type;
+#endif
 	int reg = 0;
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
@@ -926,13 +1051,24 @@ void usb_charger_task(void *u)
 
 		/* VBUS attach event */
 		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
-			bc12_type = rt946x_get_bc12_device_type();
+#if defined(CONFIG_CHARGER_MT6370)
+			chg_type = rt946x_get_charger_type();
+			bc12_type = rt946x_get_bc12_device_type(chg_type);
+
 			if (bc12_type != CHARGE_SUPPLIER_NONE) {
-				chg.current = rt946x_get_bc12_ilim(bc12_type);
+				chg.current = rt946x_get_bc12_ilim(chg_type);
 				charge_manager_update_charge(bc12_type,
 							     0, &chg);
 				rt946x_enable_bc12_detection(0);
 			}
+#else
+			bc12_type = rt946x_get_bc12_device_type();
+			if (bc12_type != CHARGE_SUPPLIER_NONE) {
+				chg.current = rt946x_get_bc12_ilim(bc12_type);
+				charge_manager_update_charge(bc12_type, 0, &chg);
+				rt946x_enable_bc12_detection(0);
+			}
+#endif
 		}
 
 		/* VBUS detach event */
