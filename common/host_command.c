@@ -952,6 +952,7 @@ static int codec_set_gain(struct host_cmd_handler_args *args)
 
 	wov_set_gain(gain_left, gain_right);
 
+	ccprintf("Command set_gain %u %u\n", gain_left, gain_right);
 	return EC_RES_SUCCESS;
 }
 
@@ -967,6 +968,7 @@ static int codec_get_gain(struct host_cmd_handler_args *args)
 	resp->left = gain_left;
 	resp->right = gain_right;
 
+	ccprintf("Command get_gain %u %u\n", gain_left, gain_right);
 	return EC_RES_SUCCESS;
 }
 
@@ -983,7 +985,7 @@ static int codec_i2s_enable(struct host_cmd_handler_args *args)
 		wov_set_mode(WOV_MODE_OFF);
 		wov_set_mic_source(WOV_SRC_STEREO);
 		wov_set_sample_rate(EC_WOV_I2S_SAMPLE_RATE);
-		wov_set_i2s_config(EC_WOV_I2S_BCLK_RATE, WOV_DAI_FMT_I2S);
+		wov_set_i2s_config(bclk, WOV_DAI_FMT_I2S);
 		wov_set_gain(gain_left, gain_right);
 		wov_set_mode(WOV_MODE_I2S);
 	} else {
@@ -1000,7 +1002,7 @@ static int codec_i2s_set_config(struct host_cmd_handler_args *args)
 		(struct ec_param_codec_i2s *)args->params;
 	args->response_size = 0;
 
-	wov_set_i2s_config(EC_WOV_I2S_BCLK_RATE, param->i2s_config);
+	wov_set_i2s_config(bclk, param->i2s_config);
 
 	return EC_RES_SUCCESS;
 }
@@ -1014,11 +1016,13 @@ static int codec_i2s_set_tdm_config(struct host_cmd_handler_args *args)
 
 static int codec_i2s_set_bclk(struct host_cmd_handler_args *args)
 {
-	args->response_size = 0;
-
 	struct ec_param_codec_i2s *param =
 		(struct ec_param_codec_i2s *)args->params;
+
 	bclk = param->bclk;
+	args->response_size = 0;
+
+	ccprintf("set bclk:%u", bclk);
 
 	return EC_RES_SUCCESS;
 }
