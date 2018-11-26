@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "caa9cef3_cdd80e02",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 27
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T22:02:55Z",
+      "side": 1,
+      "message": "Ah, that makes sense. I have made the change even though C is not able to use libprotobuf or libprotobuf-mutator.",
+      "parentUuid": "54f2c0c0_7dfe4469",
+      "revId": "1428aec17be7914fbe463e26ab483878fa620ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75c30017_fc519aab",
         "filename": "fuzz/cr50_fuzz.cc",
         "patchSetId": 27

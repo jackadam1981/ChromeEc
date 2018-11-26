@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08db3c4b_fe4939ef",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T22:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98117e5_8ef2ad73",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d90c3c1b_7419b4ef",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 30
@@ -45,6 +69,30 @@
       "revId": "777097d148bb96d39de4874905333c888a6465f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ffa91f_4721a3b9",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T22:02:55Z",
+      "side": 1,
+      "message": "This required downgrading to proto2 syntax (which is why I didn\u0027t do it earlier).",
+      "parentUuid": "d90c3c1b_7419b4ef",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9e14a090_54a6f386",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T22:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c649129_05a056b1",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 74
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66feb9de_6bd8f0ac",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 30
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "d26dd411_4b625407",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T22:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66feb9de_6bd8f0ac",
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f4fe902_e3dc628a",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 30
@@ -102,6 +192,24 @@
       "revId": "777097d148bb96d39de4874905333c888a6465f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08cade4d_cddd285c",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T22:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4fe902_e3dc628a",
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -125,6 +233,30 @@
       "revId": "777097d148bb96d39de4874905333c888a6465f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503560f2_37a6d5f8",
+        "filename": "fuzz/span.h",
+        "patchSetId": 30
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-26T22:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec9e71b_319c216b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
