@@ -22,6 +22,30 @@
       "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0052eac8_701127ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-26T23:21:04Z",
+      "side": 1,
+      "message": "+1. I don\u0027t see a reason why this field has to be mandatory. \n\nAlso, it was not very clear from the commit message as to how \"model id\" is supposed to differ from \"sku id\"(Some details from the bug and another linked CL from the bug helped provide some info/motivation). Basically, I would like to understand if certain attribute requires distinguishing id, shouldn\u0027t it be accounted for in the SKU ID itself? How would one decide if some component change should affect MODEL v/s SKU?\n\nIt would be good to have some bug/doc detailing the requirement for \"model id\" and how it should be used when creating CBI and allocating IDs.",
+      "parentUuid": "cd244848_cdb51d2d",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
