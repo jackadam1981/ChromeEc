@@ -215,26 +215,13 @@ static inline int rt946x_enable_hz(int en)
 
 int rt946x_por_reset(void)
 {
-	int rv, val;
+	int rv = 0;
 
-#ifdef CONFIG_CHARGER_MT6370
-	/* Soft reset. It takes only 1ns for resetting. b/116682788 */
-	val = RT946X_MASK_SOFT_RST;
-	/*
-	 * MT6370 has to set passcodes before resetting all the registers and
-	 * logics.
-	 */
-	rv = rt946x_write8(MT6370_REG_RSTPASCODE1, MT6370_MASK_RSTPASCODE1);
-	rv |= rt946x_write8(MT6370_REG_RSTPASCODE2, MT6370_MASK_RSTPASCODE2);
-#else
-	/* Hard reset, may take several milliseconds. */
-	val = RT946X_MASK_RST;
 	rv = rt946x_enable_hz(0);
-#endif
 	if (rv)
 		return rv;
 
-	return rt946x_set_bit(RT946X_REG_CORECTRL_RST, val);
+	return rt946x_set_bit(RT946X_REG_CORECTRL_RST, RT946X_MASK_RST);
 }
 
 static int rt946x_reset_to_zero(void)
@@ -861,6 +848,81 @@ static void rt946x_init(void)
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
 
 #ifdef HAS_TASK_USB_CHG
+static int mt6370_detect_apple_samsung_ta(int usb_stat)
+{
+	int ret = 0, reg;
+	int chg_type = (usb_stat & MT6370_MASK_USB_STATUS) >> MT6370_SHIFT_USB_STATUS;
+	int dcd_timeout = usb_stat & MT6370_MASK_DCD_TIMEOUT;
+	int dp_0_9v = 0, dp_1_5v = 0, dp_2_3v = 0, dm_2_3v = 0;
+
+	/* Only SDP/CDP/DCP could possibly be Apple/Samsung TA */
+	if (chg_type != MT6370_CHG_TYPE_SDPNSTD &&
+	    chg_type != MT6370_CHG_TYPE_CDP &&
+	    chg_type != MT6370_CHG_TYPE_DCP)
+		return chg_type;
+
+	if (chg_type == MT6370_CHG_TYPE_SDPNSTD ||
+		chg_type == MT6370_CHG_TYPE_CDP)
+		if (!dcd_timeout)
+			return chg_type;
+
+	/* Check D+ > 0.9V */
+	ret = rt946x_update_bits(
+		MT6370_REG_QCSTATUS2, MT6360_MASK_CHECK_DPDM,
+			MT6370_MASK_APP_SS_EN | MT6370_MASK_APP_SS_PL);
+	if (ret)
+		return chg_type;
+
+	ret = rt946x_read8(MT6370_REG_QCSTATUS2, &reg);
+	if (ret)
+		return chg_type;
+	dp_0_9v = reg & MT6370_MASK_SS_OUT;
+
+	/* Normal port */
+	if (!dp_0_9v)
+		return chg_type;
+
+	/* Check D+ > 1.5V */
+	ret = rt946x_read8(MT6370_REG_QCSTATUS2, &reg);
+	if (ret)
+		return chg_type;
+	dp_1_5v = reg & MT6370_MASK_APP_OUT;
+
+	/* Samsung charger */
+	if (!dp_1_5v)
+		return MT6370_CHG_TYPE_SAMSUNG_CHARGER;
+
+	/* Check DP > 2.3 V */
+	ret = rt946x_update_bits(MT6370_REG_QCSTATUS2,
+				 MT6360_MASK_CHECK_DPDM,
+				 MT6370_MASK_APP_REF |
+				 MT6370_MASK_APP_SS_PL |
+				 MT6370_MASK_APP_SS_EN);
+	if (ret)
+		return chg_type;
+
+	ret = rt946x_read8(MT6370_REG_QCSTATUS2, &reg);
+	if (ret)
+		return chg_type;
+	dp_2_3v = reg & MT6370_MASK_APP_OUT;
+
+	/* Apple charger */
+	if (!dp_2_3v && !dm_2_3v)
+		/* Apple 2.5W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_0_5A_CHARGER;
+	else if (!dp_2_3v && dm_2_3v)
+		/* Apple 5W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_1_0A_CHARGER;
+	else if (dp_2_3v && !dm_2_3v)
+		/* Apple 10W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_2_1A_CHARGER;
+	else
+		/* Apple 12W charger */
+		chg_type = MT6370_CHG_TYPE_APPLE_2_4A_CHARGER;
+
+	return chg_type;
+}
+
 static int rt946x_get_bc12_device_type(void)
 {
 	int reg;
@@ -883,13 +945,23 @@ static int rt946x_get_bc12_device_type(void)
 	if (rt946x_read8(MT6370_REG_USBSTATUS1, &reg))
 		return CHARGE_SUPPLIER_NONE;
 
-	switch ((reg & MT6370_MASK_USB_STATUS) >> MT6370_SHIFT_USB_STATUS) {
+	switch (mt6370_detect_apple_samsung_ta(reg)) {
 	case MT6370_CHG_TYPE_SDP:
 	case MT6370_CHG_TYPE_SDPNSTD:
 		return CHARGE_SUPPLIER_BC12_SDP;
 	case MT6370_CHG_TYPE_CDP:
 		return CHARGE_SUPPLIER_BC12_CDP;
 	case MT6370_CHG_TYPE_DCP:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_SAMSUNG_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	case MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:
 		return CHARGE_SUPPLIER_BC12_DCP;
 	default:
 		return CHARGE_SUPPLIER_NONE;
@@ -902,7 +974,16 @@ static int rt946x_get_bc12_ilim(int charge_supplier)
 	switch (charge_supplier) {
 	case CHARGE_SUPPLIER_BC12_CDP:
 	case CHARGE_SUPPLIER_BC12_DCP:
+	case CHARGE_SUPPLIER_SAMSUNG_CHARGER:
 		return 1500;
+	case CHARGE_SUPPLIER_APPLE_0_5A_CHARGER:
+		return 500;
+	case CHARGE_SUPPLIER_APPLE_1_0A_CHARGER:
+		return 1000;
+	case CHARGE_SUPPLIER_APPLE_2_1A_CHARGER:
+		return 2100;
+	case CHARGE_SUPPLIER_APPLE_2_4A_CHARGER:
+		return 2400;
 	case CHARGE_SUPPLIER_BC12_SDP:
 	default:
 		return USB_CHARGER_MIN_CURR_MA;
@@ -980,12 +1061,7 @@ int rt946x_is_charge_done(void)
 
 int rt946x_cutoff_battery(void)
 {
-	int val = RT946X_MASK_SHIP_MODE;
-
-#ifdef CONFIG_CHARGER_MT6370
-	val |= RT946X_MASK_TE | RT946X_MASK_CFO_EN | RT946X_MASK_CHG_EN;
-#endif
-	return rt946x_set_bit(RT946X_REG_CHGCTRL2, val);
+	return rt946x_set_bit(RT946X_REG_CHGCTRL2, RT946X_MASK_SHIP_MODE);
 }
 
 int rt946x_enable_charge_termination(int en)
