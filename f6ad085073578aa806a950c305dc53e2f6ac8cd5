@@ -81,6 +81,24 @@
       "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d077d49_cb723f56",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T18:33:00Z",
+      "side": 1,
+      "message": "From the NPCX spec, it appears the KSO pins are defaulting to KSO, which is probably why the configuration has been okay without them.  I\u0027ll still add them for completeness.\n\nFor the RTCRST, are we planning on doing RTC resets in octopus?",
+      "parentUuid": "01c326ce_9df64e86",
+      "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
