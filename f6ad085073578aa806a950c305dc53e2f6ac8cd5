@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "955caec3_5d375e5e",
+        "filename": "baseboard/octopus/variant_ec_npcx796fb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:57:33Z",
+      "side": 1,
+      "message": "nit: #ifndef VARIANT_OCTOPUS_NO_SENSORS",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
