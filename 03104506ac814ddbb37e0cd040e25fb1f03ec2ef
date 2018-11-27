@@ -70,6 +70,30 @@
       "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b19f335_0288b009",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-27T14:51:06Z",
+      "side": 1,
+      "message": "So it\u0027s a field for a quick lookup. And it\u0027s not mandatory and dependent on an implementation of encoding features into sku id that doesn\u0027t hold for all platforms.",
+      "parentUuid": "82566059_95e30334",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
