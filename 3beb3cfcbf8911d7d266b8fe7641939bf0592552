@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9f8bec60_1138bce8",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:17:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6d3ff4_e2853074",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6de827e7_2043d2eb",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 4
