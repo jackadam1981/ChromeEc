@@ -545,7 +545,7 @@ static void usage(int errs)
 	       "  -k,--ccd_lock            Lock CCD\n"
 	       "  -M,--machine             Output in a machine-friendly way. "
 	       "Effective with -b, -f, -i, and -O.\n"
-	       "  -m,--tpm_mode [enable|disable]\n"
+	       "  -m,--tpm_mode [enable|disable|get]\n"
 	       "                           Change or query tpm_mode\n"
 	       "  -O,--openbox_rma <desc_file>\n"
 	       "                           Verify other device's RO integrity\n"
@@ -1992,10 +1992,13 @@ static int process_tpm_mode(struct transfer_descriptor *td,
 		command_size = 0;
 	} else if (!strcasecmp(arg, "disable")) {
 		command_size = sizeof(command_body);
-		command_body = (uint8_t) TPM_MODE_DISABLED;
+		command_body = (uint8_t) VENDOR_SC_DISABLE_TPM;
 	} else if (!strcasecmp(arg, "enable")) {
 		command_size = sizeof(command_body);
-		command_body = (uint8_t) TPM_MODE_ENABLED;
+		command_body = (uint8_t) VENDOR_SC_ENABLE_TPM;
+	} else if (!strcasecmp(arg, "get")) {
+		command_size = sizeof(command_body);
+		command_body = (uint8_t) VENDOR_SC_GET_TPM_MODE;
 	} else {
 		fprintf(stderr, "Invalid tpm mode arg: %s.\n", arg);
 		return update_error;
