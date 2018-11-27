@@ -131,6 +131,24 @@
       "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b25cd0_a036d868",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:49:41Z",
+      "side": 1,
+      "message": "Looking at this again. I think we should ifdef out the i2c_port_t for I2C7 for this board",
+      "parentUuid": "6dadad4b_6624888e",
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
