@@ -22,6 +22,30 @@
       "revId": "9abdb4b09556b09407f02a5831095821bcb5767f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635ae09b_c5ecd661",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-27T21:14:01Z",
+      "side": 1,
+      "message": "Sorry we are not using SKU_ID[24]. So, the CLs I uploaded should work. Please program SKU_ID as follows and test the CLs:\n\n  $ val\u003d$(ectool cbi get 2); ectool cbi set 2 $(($val | 0x1000000))",
+      "parentUuid": "902e6666_536ff377",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "9abdb4b09556b09407f02a5831095821bcb5767f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
