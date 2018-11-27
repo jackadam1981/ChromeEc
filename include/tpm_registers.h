@@ -118,6 +118,14 @@ enum tpm_modes {
 	TPM_MODE_MAX,
 };
 
+/* TPM mode */
+enum tpm_mode_vendor_subcommands {
+	VENDOR_SC_ENABLE_TPM = 1,
+	VENDOR_SC_DISABLE_TPM = 2,
+	VENDOR_SC_GET_TPM_MODE = 3,
+	VENDOR_SC_MAX,
+};
+
 /*
  * This function returns the current TPM_MODE value.
  */
