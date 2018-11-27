@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a424a62_f52eb3c4",
+        "filename": "fuzz/usb_pd_fuzz.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1243002
+      },
+      "writtenOn": "2018-11-27T14:08:26Z",
+      "side": 1,
+      "message": "Is this called by LLVMFuzzerTestOneInput which is defined elsewhere?",
+      "range": {
+        "startLine": 182,
+        "startChar": 4,
+        "endLine": 182,
+        "endChar": 23
+      },
+      "revId": "65568c4254b3ac627b158ec8c1fadc017682d04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
