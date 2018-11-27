@@ -22,6 +22,30 @@
       "revId": "33590f10b9afbbc503ae6b5cc314459ae33abe3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298c6dbe_ec6413af",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-27T02:05:42Z",
+      "side": 1,
+      "message": "\u003e Even if we use sku_id, we should mask the lower 24 bits first.\n\nCan you address this?",
+      "parentUuid": "dbcb6267_f0b94b53",
+      "range": {
+        "startLine": 158,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 39
+      },
+      "revId": "33590f10b9afbbc503ae6b5cc314459ae33abe3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
