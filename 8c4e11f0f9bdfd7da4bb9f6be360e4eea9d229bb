@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9ec3dbb_dd63efb2",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T18:42:27Z",
+      "side": 1,
+      "message": "these should probably be configured at 1.8V right? here and other boards",
+      "range": {
+        "startLine": 152,
+        "startChar": 29,
+        "endLine": 154,
+        "endChar": 44
+      },
+      "revId": "8c4e11f0f9bdfd7da4bb9f6be360e4eea9d229bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
