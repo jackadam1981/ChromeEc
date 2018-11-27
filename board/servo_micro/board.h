@@ -83,6 +83,31 @@
 #define I2C_PORT_MASTER 0
 
 /*
+ * As of 2018-11-27 the default for both is 60 bytes.  These larger values allow
+ * for reflashing of ITE EC chips over I2C
+ * (https://issuetracker.google.com/79684405) in reasonably speedy fashion.  If
+ * the EC firmware defaults are ever raised significantly, consider removing
+ * these overrides.
+ *
+ * As of 2018-11-27 the actual maximum write size supported by the I2C-over-USB
+ * protocol is (1<<12)-1, and the maximum read size supported is
+ * (1<<15)-1.  However compile time assertions require that these values be
+ * powers of 2 after overheads are included.  Thus, the write limit set here
+ * /should/ be (1<<12)-4 and the read limit should be (1<<15)-6, however those
+ * ideal limits are not actually possible because servo_micro lacks sufficient
+ * spare memory for them.  With symmetrical limits, the maximum that currently
+ * fits is (1<<11)-4 write limit and (1<<11)-6 read limit, leaving 1404 bytes of
+ * RAM available.  In order to not squeeze servo_micro RAM usage quite so
+ * tightly, these lower limits of (1<<9)-4 writes and (1<<9)-6 reads are used,
+ * leaving 6012 bytes of RAM available.  Previously, with the default 60 byte
+ * limits, 7356 bytes of RAM was available.
+*/
+#undef CONFIG_USB_I2C_MAX_WRITE_COUNT
+#undef CONFIG_USB_I2C_MAX_READ_COUNT
+#define CONFIG_USB_I2C_MAX_WRITE_COUNT ((1<<9) - 4)
+#define CONFIG_USB_I2C_MAX_READ_COUNT ((1<<9) - 6)
+
+/*
  * Allow dangerous commands all the time, since we don't have a write protect
  * switch.
  */
