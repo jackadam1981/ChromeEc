@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12289f99_51658417",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-27T04:55:23Z",
+      "side": 1,
+      "message": "Can we make this static?  And what\u0027s the issue with directly setting to sizeof(uint8_t)?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de827e7_2043d2eb",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-27T04:55:23Z",
+      "side": 1,
+      "message": "Change to:\n\n  p-\u003ein_size !\u003d expected_size",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51acd0c7_6d2dd0a5",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-27T04:55:23Z",
+      "side": 1,
+      "message": "Remove this altogether after changing the above condition.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b041b0_da46f23a",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-27T04:55:23Z",
+      "side": 1,
+      "message": "Move this right above \"switch()\".",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0132075d_d1b66c55",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-27T04:55:23Z",
+      "side": 1,
+      "message": "This should probably not use the same variable for both the expected \"input size\" and the expected \"output size\".  Can we move this to a separate variable, or simply use sizeof(uint8_t) here?",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ef384e_bb72ce6f",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-27T04:55:23Z",
+      "side": 1,
+      "message": "Would there be any issue with using 0 instead of 3?\n\nThat way, if we have any different modes in the future, their values can correspond to one another across tpm_modes and tpm_mode_vendor_subcommands.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54f3952_a71824c5",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-11-27T04:55:23Z",
+      "side": 1,
+      "message": "Update this comment.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 65
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
