@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "832c30cf_9a274387",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "Can you describe the test procedure here?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c86625_2930fa4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "Please use 118791032, which tracks the charger BC1.2 support.\n\nhttps://issuetracker.google.com/118791032",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285e270b_03b56cad",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "You don\u0027t need this.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d0ed836_5c175b4c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "The return value should be consistent for this function.\n\nIt includes CHG_TYPE and also the success/failure return value.\n\nConsidering the usage of this function, we should treat this function to return the CHG_TYPE in all cases.\nThat is, on failure, replace the\n\n  return ret;\n\nto\n  \n  return MT6370_CHG_TYPE_NONE;",
+      "range": {
+        "startLine": 865,
+        "startChar": 11,
+        "endLine": 865,
+        "endChar": 41
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aaad906_43736577",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "0 for false, and else for true.",
+      "range": {
+        "startLine": 870,
+        "startChar": 0,
+        "endLine": 870,
+        "endChar": 72
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ca47e9_ad8ec15f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "No curly braces {} if it is one-line statement. (so does line 880)",
+      "range": {
+        "startLine": 879,
+        "startChar": 35,
+        "endLine": 879,
+        "endChar": 36
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd9f1a2_fab1eedf",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "Can we have a macro for the value?",
+      "range": {
+        "startLine": 887,
+        "startChar": 24,
+        "endLine": 887,
+        "endChar": 34
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8726f54_1fd22a88",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "if (ret)\n          return ret;",
+      "range": {
+        "startLine": 888,
+        "startChar": 0,
+        "endLine": 889,
+        "endChar": 13
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b5c6070_93ec5185",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "Can we have a macro for this value? and also line 894.",
+      "range": {
+        "startLine": 904,
+        "startChar": 17,
+        "endLine": 904,
+        "endChar": 23
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4597cf87_ad3b92fa",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "also this.",
+      "range": {
+        "startLine": 912,
+        "startChar": 23,
+        "endLine": 912,
+        "endChar": 34
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d15e844_cec8c6ab",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "Use a macro instead?",
+      "range": {
+        "startLine": 919,
+        "startChar": 17,
+        "endLine": 919,
+        "endChar": 23
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a59f4e32_13683255",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "No curly braces for one-line statement.",
+      "range": {
+        "startLine": 922,
+        "startChar": 26,
+        "endLine": 922,
+        "endChar": 28
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5637b1fe_417f5d18",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "Can we also have the same apple/samsung charger support for rt9466/rt9467 here?",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 943,
+        "endChar": 68
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed56b29_1e46806e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "mt6370_detect_apple_samsung_ta(reg)\n\nand delete 961 line.",
+      "range": {
+        "startLine": 963,
+        "startChar": 9,
+        "endLine": 963,
+        "endChar": 15
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d7de47_ed7181b8",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-27T05:31:08Z",
+      "side": 1,
+      "message": "Can you map the type of the charger to the current limit here?",
+      "range": {
+        "startLine": 977,
+        "startChar": 11,
+        "endLine": 977,
+        "endChar": 31
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
