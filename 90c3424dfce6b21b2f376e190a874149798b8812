@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c07664d8_7f8a58cf",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T20:37:30Z",
+      "side": 1,
+      "message": "sorry for more super nits: this could be #ifdef VARIANT_OCTO...\n\n\nyour call either way though ;)",
+      "revId": "90c3424dfce6b21b2f376e190a874149798b8812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
