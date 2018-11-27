@@ -63,6 +63,24 @@
       "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c326ce_9df64e86",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T18:14:14Z",
+      "side": 1,
+      "message": "I was thinking GPIO cleanup would be best around board version 1, depending on how much GPIO churn there seems to be between board versions.\n\nI\u0027m not sure that KSO13 and KSO14 are in the other yorp variants either.  I\u0027ll take a look at it",
+      "parentUuid": "687ef2eb_f02a9944",
+      "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
