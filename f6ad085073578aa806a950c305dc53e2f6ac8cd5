@@ -99,6 +99,24 @@
       "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca8866ef_c9aeba9e",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T18:46:15Z",
+      "side": 1,
+      "message": "We do plan on doing the RTC reset b/119678692. We might as well add it now :)",
+      "parentUuid": "3d077d49_cb723f56",
+      "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
