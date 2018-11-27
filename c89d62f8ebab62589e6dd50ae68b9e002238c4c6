@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "239591a2_3e7e2991",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 32
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "stale comment ?",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e79a5f_70c38a1a",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "i guess you\u0027re reformatting this file to match Chromium C++ style ?  if so, you should adjust all the pointers so the * is next to the type and not the variable.",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ea15df_ab9243f5",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "imo you should cast the pointer outside of the for loop and use that inside",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd21864_6fcf217c",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "missing space after the \"switch\"",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "740ddf02_b38689ee",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "is this static_cast necessary ?  seems like the code would work fine w/out it.",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffe3ad6_5388b343",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "is this static_cast necessary ?  seems like the code would work fine w/out it.",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdef3757_5ce0e78d",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "this looks like it\u0027ll have alignment problems.  seems like you should declare a static buffer and memcpy it in instead.  or instead of returning a pointer, you return a struct by value ... i don\u0027t think the overhead of doing so would be a big deal.",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79206eab_c209bbd9",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "same alignment problems here and the next line",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1031fc_616f80c1",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "missing space after the \"switch\"",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e177edd5_1cf8ab76",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "only one space after the \"case\"",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bfdd983_e9283873",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "same alignment problems here and the next line",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3089e079_ae7b1adc",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "only one space after the \u003d\u003d",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2424d33_39b4d7b9",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "missing space after the \"switch\"",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d637d3cd_1c3d8074",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "only one space after the \"case\"",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db354fff_eb5edb01",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "alignment issues with the cast",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1064eedd_e92a324a",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "alignment issues with the cast",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c526441a_d5f5ad7b",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "alignment issues with the cast",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498d7549_4bbdc3b2",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-11-27T20:55:39Z",
+      "side": 1,
+      "message": "alignment issues with the cast",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
