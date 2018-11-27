@@ -94,6 +94,52 @@
       "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317df275_3b685f5e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4905,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T18:29:38Z",
+      "side": 1,
+      "message": "we should give guidance on when to use this and what information is stores. It is unclear how this is different than SKU id (from looking at the code)",
+      "range": {
+        "startLine": 4905,
+        "startChar": 27,
+        "endLine": 4905,
+        "endChar": 53
+      },
+      "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8265688d_74d47a0c",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T18:29:38Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be required. Octopus will not use this field",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 324,
+        "endChar": 21
+      },
+      "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
