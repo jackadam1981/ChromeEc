@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f8b086fa_d465b893",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3273,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T19:57:59Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "0aa1b350_757a3a6d",
+      "range": {
+        "startLine": 3273,
+        "startChar": 32,
+        "endLine": 3273,
+        "endChar": 37
+      },
+      "revId": "1f80828371c1fb46215444309490db9d7517882d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94446cb4_0a749320",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "You mean instead of having EC_MKBP_EVENT_MAX_TYPE just put in the assert?\n\nWorks for me. I\u0027ll post a new CL with the change",
       "parentUuid": "94446cb4_0a749320",
+      "range": {
+        "startLine": 3322,
+        "startChar": 1,
+        "endLine": 3326,
+        "endChar": 50
+      },
+      "revId": "1f80828371c1fb46215444309490db9d7517882d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7241e5fc_41f9951b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3326,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T19:57:59Z",
+      "side": 1,
+      "message": "Yes, instead of the MAX_TYPE item.",
+      "parentUuid": "4f9432d3_bb9658a7",
       "range": {
         "startLine": 3322,
         "startChar": 1,
