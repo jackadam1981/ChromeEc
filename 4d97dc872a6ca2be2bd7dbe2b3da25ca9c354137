@@ -33,6 +33,24 @@
       "revId": "4d97dc872a6ca2be2bd7dbe2b3da25ca9c354137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355ae90b_2db60488",
+        "filename": "board/fleex/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-27T19:28:51Z",
+      "side": 1,
+      "message": "Actually, there is a wider problem:\nWe set .max_frequency in board.c to what the sensor could support, and MIN() with EC_MAX_SENSOR_FREQ when the kernel ask for the info.\nWe would always returns 208Hz, and the kernel may ask that frequency, so it will fails for sensors with 200Hz, 400Hz setting, where the EC will want to round a 208Hz request to 400Hz.\nThat\u0027s a problem if we match a LSM6DSL with kionix accel in a convertible for instance.",
+      "parentUuid": "5fd13b2c_5f03bc81",
+      "revId": "4d97dc872a6ca2be2bd7dbe2b3da25ca9c354137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
