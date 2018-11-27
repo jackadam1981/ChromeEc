@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "178baa55_7cb89d72",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Hm.. I think I understand what you mean but since I\u0027m new to EC.\nCan you give me some examples ?",
+      "parentUuid": "53ba63e0_25d8f789",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e17e2f8a_5402a71e",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c52fd638_219f2d72",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e17e2f8a_5402a71e",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1c8665_a1a38d42",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -47,6 +83,24 @@
       "writtenOn": "2018-11-22T04:56:41Z",
       "side": 1,
       "message": "prefix macro variable with _ to spot naming error.",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d352559a_0b9ca3f8",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "sorry I don\u0027t understand what you mean. can I get a little more explanation ?",
+      "parentUuid": "1f1c8665_a1a38d42",
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d964ef74_789d3388",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "077e7a0f_541b9ed6",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08dac936_3ffc6382",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -84,6 +156,24 @@
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5291517e_94317642",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08dac936_3ffc6382",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "b7b82264_b47f809b",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "This is firmware and we don\u0027t support things like plug-and-play so actually this is not possible. I\u0027ll remove.",
+      "parentUuid": "eefdc5f7_bb0c877d",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "963860c7_1cae2b27",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -118,6 +226,24 @@
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4501aaae_6c2ef717",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "calls to this function is serialized since it\u0027s called by hook task in it\u0027s HOOK_INIT stage.\nIt\u0027s not possible to be more than HID_SUBSYS_MAX_HID_DEVICES.",
+      "parentUuid": "963860c7_1cae2b27",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "ffb301bb_259304d1",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04e21f8d_fc1b4982",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f077e9b5_d9e90389",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -152,6 +296,24 @@
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185cc7cc_e3e0fcce",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f077e9b5_d9e90389",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "dbc9ea88_a3020cfe",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8cdccd25_0096d356",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09e0e70b_14891b22",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -186,6 +366,24 @@
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2fad96a_58403255",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "This shouldn\u0027t happen. host is not ready to handle this error.\nso for now, I\u0027ll add ASSERT().",
+      "parentUuid": "09e0e70b_14891b22",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +404,24 @@
     },
     {
       "key": {
+        "uuid": "31525060_332ea279",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da947141_6c6d9ea1",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2deb797f_6dacccc8",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -220,6 +436,24 @@
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "409d6801_d899ce16",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "I know but I prefer to have it for the case I need to use more than one line for the single statement due to 80 char limit. I do this for readability. But since you want, I\u0027ll change.",
+      "parentUuid": "2deb797f_6dacccc8",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +474,24 @@
     },
     {
       "key": {
+        "uuid": "41b36db8_eac6a00f",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dac13084_51063624",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "992b47d4_db5059bf",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "0eb0d406_048ab66c",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "992b47d4_db5059bf",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e235c02e_589543e5",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -271,6 +541,24 @@
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3022b3ad_328e635c",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:16:17Z",
+      "side": 1,
+      "message": "Oh.. forgot to remove. I did in purpose to indicate that flags and status are not used by host.\nWe need better interface with host.\n\ndone.",
+      "parentUuid": "e235c02e_589543e5",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
