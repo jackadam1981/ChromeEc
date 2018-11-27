@@ -70,6 +70,30 @@
       "revId": "6c121a7d4dad68e991350a5bcdb7a742f40bfd01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f2aa707_9b490c32",
+        "filename": "board/nami/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-27T02:11:39Z",
+      "side": 1,
+      "message": "Let\u0027s use SKU_ID for now, then. \n\n\u003e These are for proto system with old CBI file.\n\nWhy do we need to support proto boards? If we have to support them, let\u0027s reprogram CBI (by ectool). How many proto boards are there? I can give you ec.bin which allows changing OEM_ID. SKU_ID is always rewritable as long as a battery is removed.",
+      "parentUuid": "73ba0350_57e38d2e",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 14
+      },
+      "revId": "6c121a7d4dad68e991350a5bcdb7a742f40bfd01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
