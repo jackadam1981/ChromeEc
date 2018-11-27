@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c49d205_602cf56f",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T21:53:59Z",
+      "side": 1,
+      "message": "this seems like a board or baseboard specific setting at this point since octopus doesn\u0027t use the bit flag approach for sku id.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "1334b9e640e00bdba74d8d733dd8351c97b276ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
