@@ -208,6 +208,10 @@ const struct power_signal_info power_signal_list[] = {
 		GPIO_WARM_RESET_L,
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"WARM_RESET_L"},
+	[SDM845_SUSPEND_ASSERTED] = {
+		GPIO_AP_SUSPEND_L,
+		POWER_SIGNAL_ACTIVE_LOW,
+		"SUSPEND_ASSERTED"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
