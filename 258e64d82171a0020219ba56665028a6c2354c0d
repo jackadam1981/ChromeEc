@@ -46,6 +46,30 @@
       "revId": "258e64d82171a0020219ba56665028a6c2354c0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3de8e3a_65456ddd",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T21:00:11Z",
+      "side": 1,
+      "message": "Thank you for the pointer. This matrix matches the Y axis rotation.\n\nWhen I do the matrix multiplication described in this comment (base_ar_cam_ref \u003d R * base_standard_ref) I get the following matrix instead:\n\n[ 0,  -0.98,   -0.17 ]\n[ 1,   0   ,    0    ]\n[ 0,  -0.17,    0.98 ]\n\nthe top right should be\n[0.98 0 -.17]\n\nX\n\n[\n0\n0\n1\n]\n\nWhat am I missing?",
+      "parentUuid": "0b6f5876_7c6364ec",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 19
+      },
+      "revId": "258e64d82171a0020219ba56665028a6c2354c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
