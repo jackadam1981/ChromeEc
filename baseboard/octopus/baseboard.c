@@ -214,6 +214,13 @@ void baseboard_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
+void board_rtc_reset(void)
+{
+	gpio_set_level(GPIO_PCH_RTCRST, 1);
+	udelay(100);
+	gpio_set_level(GPIO_PCH_RTCRST, 0);
+}
+
 int board_set_active_charge_port(int port)
 {
 	int is_valid_port = (port >= 0 &&
