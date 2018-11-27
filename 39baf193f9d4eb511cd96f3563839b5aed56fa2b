@@ -22,6 +22,30 @@
       "revId": "39baf193f9d4eb511cd96f3563839b5aed56fa2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd57b72_0e7a7460",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-11-27T23:38:36Z",
+      "side": 1,
+      "message": "I tested this sequence: unplug battery, then run \"ccd open\", starting the PP long check.  After 2 minutes, the battery removal process fails, and the current_uo_state is set to BOARD_UO_FAILED.  The PP long check continues and the CCD open is successful.  The user then force WP disabled through the Cr50 console.",
+      "parentUuid": "22769fd8_f7ec54d8",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 29
+      },
+      "revId": "39baf193f9d4eb511cd96f3563839b5aed56fa2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
