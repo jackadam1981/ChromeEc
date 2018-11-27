@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a900f81d_8e7133ca",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:11:56Z",
+      "side": 1,
+      "message": "Of course, no doubt. As you can see in code, it\u0027s only declared when we have to send out data into IPC H/W so there\u0027s no case more than one item in stack.",
+      "parentUuid": "0a48a9cf_68859683",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e100c67a_e7a4545d",
         "filename": "chip/ish/heci.c",
         "patchSetId": 13
@@ -33,6 +51,24 @@
       "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cdd7e7a_4a90a1b1",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:11:56Z",
+      "side": 1,
+      "message": "I know but let\u0027s keep it to indicate this structure is for inter processor communication",
+      "parentUuid": "e100c67a_e7a4545d",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4bcd3524_e398dcf3",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:11:56Z",
+      "side": 1,
+      "message": "Actually we have enough space for code and this is a function from API which can be called many times in short time. This is faster way to send single msg than using heci_send_msgs. heci_send_msgs is there for sending multiple msgs efficiently.",
+      "parentUuid": "11466d9c_f7dc06b8",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d80aec4_32c9c81a",
         "filename": "chip/ish/heci.c",
         "patchSetId": 13
@@ -67,6 +121,24 @@
       "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a043a5dc_f21c04f1",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-11-27T03:11:56Z",
+      "side": 1,
+      "message": "First, I want to say this is not just normal bad \"while (1)\" but still you\u0027re right it may be a lazy implementation.\n\nBut I don\u0027t think we should use \"for\" loop with conditional increment. \"for\" loop is suitable for the case that needs to increment value(s) for each iteration. Besides, in your \"for\", I don\u0027t like extra execution(\"msg_item \u003d msg_list-\u003eitems[i]\" and \"i \u003c msg_list-\u003enum_of_items\") although \"i\" is not changed.\n\nPeople hates \"while (1)\" mainly because it\u0027s hard to read. so, here, I believe what we need are simple and accurate comments.",
+      "parentUuid": "9d80aec4_32c9c81a",
+      "revId": "958b98c1af38fce255951a457258eb78b7ad7aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
