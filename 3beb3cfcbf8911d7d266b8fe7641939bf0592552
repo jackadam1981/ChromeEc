@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9da25537_dc64b9c0",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:13:16Z",
+      "side": 1,
+      "message": "Still this will support zero in in_size \u003d 0.",
+      "parentUuid": "6de827e7_2043d2eb",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 32
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51acd0c7_6d2dd0a5",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 4
