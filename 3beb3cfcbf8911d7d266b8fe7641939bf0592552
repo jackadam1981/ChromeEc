@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "f9d74b7a_55f4dd89",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ef384e_bb72ce6f",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 28
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e54f3952_a71824c5",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 4
@@ -256,6 +280,30 @@
       "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1415a04_4d3df45c",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:12:14Z",
+      "side": 1,
+      "message": "Zero input size is still supported.",
+      "parentUuid": "e54f3952_a71824c5",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 65
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
