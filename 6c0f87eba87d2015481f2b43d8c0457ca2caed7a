@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a08b4c0_9195440d",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-27T20:17:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c519c34_7dff3928",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e63a3f2_dc35f7a0",
         "filename": "power/sdm845.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b4b6ba7a_53167ea0",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-27T20:17:21Z",
+      "side": 1,
+      "message": "Good suggestion. Fixed it.",
+      "parentUuid": "71e1e614_f46a3583",
+      "range": {
+        "startLine": 670,
+        "startChar": 5,
+        "endLine": 670,
+        "endChar": 18
+      },
+      "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f508835_e5b42ff7",
         "filename": "power/sdm845.c",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d071ae4d_21c6594d",
+        "filename": "power/sdm845.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-27T20:17:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f508835_e5b42ff7",
+      "range": {
+        "startLine": 702,
+        "startChar": 4,
+        "endLine": 702,
+        "endChar": 49
+      },
+      "revId": "6c0f87eba87d2015481f2b43d8c0457ca2caed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
