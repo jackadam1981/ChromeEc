@@ -110,12 +110,20 @@ void tpm_alt_extension(struct tpm_cmd_header *tpmh, size_t buffer_size);
 #define TPM2_PCR_Read		0x0000017e
 #define TPM2_Startup		0x00000144
 
-/* TPM mode */
+/* TPM modes */
 enum tpm_modes {
 	TPM_MODE_ENABLED_TENTATIVE = 0,
 	TPM_MODE_ENABLED = 1,
 	TPM_MODE_DISABLED = 2,
 	TPM_MODE_MAX,
+};
+
+/* TPM mode Vendor Subcommands */
+enum tpm_mode_vendor_subcommands {
+	VENDOR_SC_ENABLE_TPM = 1,
+	VENDOR_SC_DISABLE_TPM = 2,
+	VENDOR_SC_GET_TPM_MODE = 3,
+	VENDOR_SC_MAX,
 };
 
 /*
