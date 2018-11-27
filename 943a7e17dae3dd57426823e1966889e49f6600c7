@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c5c54ba_2aaaf658",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-27T17:31:25Z",
+      "side": 1,
+      "message": "\"User\" and \"Ownership\" are heavily overloaded terms.  Also, even though we\u0027ve been awful about it, every new function should have a docstring comment similar to power_button_release_enable_interrupt() above, so it\u0027s obvious what functions do without needing to read the implementation.\n\nDoes this function mean \"case opened long enough we\u0027re willing to deassert WP\"?  If so, maybe call it one of\n\nboard_case_open_long()\nboard_exposed_long_enough()\n\nor something like that.",
+      "range": {
+        "startLine": 285,
+        "startChar": 10,
+        "endLine": 285,
+        "endChar": 28
+      },
+      "revId": "943a7e17dae3dd57426823e1966889e49f6600c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2123bb72_087c3536",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-27T17:31:25Z",
+      "side": 1,
+      "message": "ignored if BOARD_WP_DISABLE_DELAY is disabled (in which case, battery removal alone is sufficient)",
+      "range": {
+        "startLine": 50,
+        "startChar": 16,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "943a7e17dae3dd57426823e1966889e49f6600c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
