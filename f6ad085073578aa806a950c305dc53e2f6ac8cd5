@@ -46,6 +46,23 @@
       "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "687ef2eb_f02a9944",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-27T18:06:05Z",
+      "side": 1,
+      "message": "I am not sure if we want to cleanup unused GPIOs later or do we want to do it here since we are doing cleanup for other variants already.\n\nDefinition for KSO_13/14 seems missing. Same for other missing GPIOs like EC_PCH_RTCRST.",
+      "revId": "f6ad085073578aa806a950c305dc53e2f6ac8cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
