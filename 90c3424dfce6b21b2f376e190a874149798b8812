@@ -34,6 +34,24 @@
       "revId": "90c3424dfce6b21b2f376e190a874149798b8812",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3efaaf6_68bc6158",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T21:58:26Z",
+      "side": 1,
+      "message": "agreed, that is the mental model I follow: use ifdef or ifndef unless there are multiple conditions or an elif case.",
+      "parentUuid": "9ac784a8_e7f3736d",
+      "revId": "90c3424dfce6b21b2f376e190a874149798b8812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
