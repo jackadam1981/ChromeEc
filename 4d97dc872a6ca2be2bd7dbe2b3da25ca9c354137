@@ -51,6 +51,24 @@
       "revId": "4d97dc872a6ca2be2bd7dbe2b3da25ca9c354137",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0046b9_7822ee57",
+        "filename": "board/fleex/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T21:29:03Z",
+      "side": 1,
+      "message": "I like the idea of bumping CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ to 208000 as well.\n\nWhat if we added a condition to [0] that checked if odr \u003d\u003d EX_MAX, then set roundup to false? That would cover add the scenarios that I can think of\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/9ba8fc3405d362ef503311560c21dcfcdfe67030/common/motion_sense.c#269",
+      "parentUuid": "355ae90b_2db60488",
+      "revId": "4d97dc872a6ca2be2bd7dbe2b3da25ca9c354137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
