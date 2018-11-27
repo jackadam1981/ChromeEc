@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f6b2987_0e31e3a3",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-27T17:43:40Z",
+      "side": 1,
+      "message": "pp_type_is_extended?",
+      "range": {
+        "startLine": 57,
+        "startChar": 12,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "0b8916790bff26d29b6db471a92a68dd913341df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2770e998_c9524cd3",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-27T17:43:40Z",
+      "side": 1,
+      "message": "pp_desc?",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 35
+      },
+      "revId": "0b8916790bff26d29b6db471a92a68dd913341df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c05e05_886087a7",
+        "filename": "include/physical_presence.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-11-27T17:43:40Z",
+      "side": 1,
+      "message": "PP_DETECT_COUNT or PP_DETECT_TYPE_COUNT",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "0b8916790bff26d29b6db471a92a68dd913341df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
