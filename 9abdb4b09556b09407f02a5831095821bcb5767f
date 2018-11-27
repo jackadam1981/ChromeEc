@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "902e6666_536ff377",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-27T20:09:50Z",
+      "side": 1,
+      "message": "What do you use SKU_ID[24] for? You seem using it to for some feature but I don\u0027t have any code or info about it.\n\nAnyway, assuming it\u0027s not used, we\u0027ll encode battery type in SKU_ID[24:25]. 0: AP15 (Akali/Akali360) 1: AP18  (Bard, Ekko).\n\nI uploaded CLs (1351514, 1319731). Please try them. You need to modify SKU_ID accordingly by ectool:\n\n  $ val\u003d$(ectool cbi get 2); ectool cbi set 2 $(($val | 0x10000))",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "9abdb4b09556b09407f02a5831095821bcb5767f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
