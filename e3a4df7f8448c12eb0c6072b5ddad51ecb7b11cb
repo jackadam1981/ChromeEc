@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "86a961d3_89b2ec6b",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-27T20:17:09Z",
+      "side": 1,
+      "message": "The issue happens on POWER_S3. It now moves the power-off process to POWER_S3S5. The POWER_GOOD signal in POWER_S3 may still be high. So we can\u0027t differentiate the transition among S3 -\u003e S3S5, S3 -\u003e S3S0, and S3 -\u003e S3. Introducing this flag can differentiate them:\n * shutdown_from_s0 !\u003d 0: the transition of S3 -\u003e S3S5\n * shutdown_from_s0 \u003d\u003d 0 \u0026\u0026 AP_SUSPEND_L \u003d\u003d 0: the transition of S3 -\u003e S3 (not there yet)\n * shutdown_from_s0 \u003d\u003d 0 \u0026\u0026 AP_SUSPEND_L \u003d\u003d 1: the transition of S3 -\u003e S3S0",
+      "parentUuid": "9b98792c_e232787b",
+      "range": {
+        "startLine": 707,
+        "startChar": 26,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d3f463_ab5fedb2",
         "filename": "power/sdm845.c",
         "patchSetId": 2
@@ -60,6 +84,24 @@
       "writtenOn": "2018-11-20T21:26:20Z",
       "side": 1,
       "message": "Shouldn\u0027t this print be in POWER_S3S5?",
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82e1b41a_66e735a7",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-27T20:17:09Z",
+      "side": 1,
+      "message": "If doing so, the flag needs to be cleared at POWER_S3S5 instead of POWER_S3. Is it OK?",
+      "parentUuid": "63d3f463_ab5fedb2",
       "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
