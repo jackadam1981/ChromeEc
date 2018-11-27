@@ -10,10 +10,15 @@
 #include "common.h"
 #include "ec_commands.h"
 
-#define CBI_VERSION_MAJOR	0
-#define CBI_VERSION_MINOR	0
-#define CBI_EEPROM_SIZE		256
+#define CBI_VERSION_MAJOR		0
+#define CBI_VERSION_MINOR		0
+#define CBI_EEPROM_SIZE			256
 static const uint8_t cbi_magic[] = { 0x43, 0x42, 0x49 };  /* 'C' 'B' 'I' */
+
+/*
+ * SKU_ID[24:31] are dedicated to OEM customization. Encoding varies OEM to OEM.
+ */
+#define CBI_SKU_CUSTOM_FIELD(val)	((val & 0xffffff) >> 24)
 
 struct cbi_header {
 	uint8_t magic[3];
