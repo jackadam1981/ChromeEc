@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b50b2af1_36e9de7b",
+        "filename": "board/meep/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T18:38:20Z",
+      "side": 1,
+      "message": "this appears to be floating as well since the R172 is DNS",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 21
+      },
+      "revId": "ec01384324971b7d5134d8b76051a86ed369580f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
