@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d55cfb5_e87e787a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T01:39:48Z",
+      "side": 1,
+      "message": "I am undoing this, because CR50\u0027s self reset is too risky. CR50 might lose a TPM command during H1 reset.",
+      "range": {
+        "startLine": 852,
+        "startChar": 0,
+        "endLine": 856,
+        "endChar": 0
+      },
+      "revId": "27b71182e53c3abb21891003fc445b6e8cb2d617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85466e6e_2651184a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1421,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T01:39:48Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1421,
+        "startChar": 34,
+        "endLine": 1421,
+        "endChar": 35
+      },
+      "revId": "27b71182e53c3abb21891003fc445b6e8cb2d617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

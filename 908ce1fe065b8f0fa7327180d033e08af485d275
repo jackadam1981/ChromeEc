@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "223ff70e_da2e79df",
+        "filename": "common/nvmem.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T01:39:48Z",
+      "side": 1,
+      "message": "Prevent the data flush while Key Ladder is revoked.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "908ce1fe065b8f0fa7327180d033e08af485d275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
