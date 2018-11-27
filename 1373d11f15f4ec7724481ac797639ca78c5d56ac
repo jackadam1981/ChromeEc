@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94d24b8b_723ad670",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:25:19Z",
+      "side": 1,
+      "message": "what do you think about if def\u0027ing these 3 lines instead so we know that the port number and host_port are the same in either configuration?",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e503621e_2776a95d",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:25:19Z",
+      "side": 1,
+      "message": "casta",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e08d26_6f588f56",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:25:19Z",
+      "side": 1,
+      "message": "we can\u0027t have a pullup on a 1.8 signal (since it would need to be open drain to enable 1.8V level voltages)\n\nMaybe we can specifiy this as UNIMPLEMENTED and if that doesn\u0027t work, we will have to remove it from the i2c configuration struct in baseboard.",
+      "range": {
+        "startLine": 106,
+        "startChar": 21,
+        "endLine": 106,
+        "endChar": 36
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7418ded_06f39fe0",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:25:19Z",
+      "side": 1,
+      "message": "let\u0027s pull it to ground since it is completely not connected. (and all other NCs that we still needed to define).\n\nWe still will need to go through any pins that are omitted in this file and add pull down resistors when we get to more mature stages in the project though.",
+      "range": {
+        "startLine": 112,
+        "startChar": 31,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248bc31a_c99b694d",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:25:19Z",
+      "side": 1,
+      "message": "GPIO_ODR_HIGH\n\nOtherwise we would keep C0 in reset at startup (and we would override the external pullup resistor (not that big of a deal though))",
+      "range": {
+        "startLine": 116,
+        "startChar": 39,
+        "endLine": 116,
+        "endChar": 51
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dadad4b_6624888e",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T16:25:19Z",
+      "side": 1,
+      "message": "this may need to update depending on other i2c changes",
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
