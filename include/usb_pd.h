@@ -167,6 +167,7 @@ enum pd_rx_errors {
 #define PD_T_DRP_SNK           (40*MSEC) /* toggle time for sink DRP */
 #define PD_T_DRP_SRC           (30*MSEC) /* toggle time for source DRP */
 #define PD_T_DEBOUNCE          (15*MSEC) /* between 10ms and 20ms */
+#define PD_T_TRY_CC_DEBOUNCE   (15*MSEC) /* between 10ms and 20ms */
 #define PD_T_SINK_ADJ          (55*MSEC) /* between PD_T_DEBOUNCE and 60ms */
 #define PD_T_SRC_RECOVER      (760*MSEC) /* between 660ms and 1000ms */
 #define PD_T_SRC_RECOVER_MAX (1000*MSEC) /* 1000ms */
