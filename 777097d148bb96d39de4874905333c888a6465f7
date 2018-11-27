@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b79684c2_604ca1f7",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-11-27T15:51:20Z",
+      "side": 1,
+      "message": "Ah, so if you want to stick with proto3, then the recommended way apparently is https://github.com/protocolbuffers/protobuf/blob/master/src/google/protobuf/wrappers.proto#L96\n\nMy main point was that we should avoid these confusing off-by-one semantics.",
+      "parentUuid": "46ffa91f_4721a3b9",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "777097d148bb96d39de4874905333c888a6465f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c649129_05a056b1",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 30
