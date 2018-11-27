@@ -22,6 +22,30 @@
       "revId": "65568c4254b3ac627b158ec8c1fadc017682d04d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398d9115_e22ea37a",
+        "filename": "fuzz/usb_pd_fuzz.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2018-11-27T21:40:53Z",
+      "side": 1,
+      "message": "It is as per the file https://cs.corp.google.com/chromeos_public/src/platform/ec/core/host/main.c but I do not much about the EC ebuild config.",
+      "parentUuid": "0a424a62_f52eb3c4",
+      "range": {
+        "startLine": 182,
+        "startChar": 4,
+        "endLine": 182,
+        "endChar": 23
+      },
+      "revId": "65568c4254b3ac627b158ec8c1fadc017682d04d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
