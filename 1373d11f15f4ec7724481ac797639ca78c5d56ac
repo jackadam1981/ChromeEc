@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2e8d1bf_3da4a4d2",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T17:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d24b8b_723ad670",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e503621e_2776a95d",
         "filename": "board/casta/battery.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55df5071_94c4e496",
+        "filename": "board/casta/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T17:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e503621e_2776a95d",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 28
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c944e8a1_6ecf7f82",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T17:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e08d26_6f588f56",
+      "range": {
+        "startLine": 106,
+        "startChar": 21,
+        "endLine": 106,
+        "endChar": 36
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7418ded_06f39fe0",
         "filename": "board/casta/gpio.inc",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f9714b7c_6ab21790",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T17:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7418ded_06f39fe0",
+      "range": {
+        "startLine": 112,
+        "startChar": 31,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248bc31a_c99b694d",
         "filename": "board/casta/gpio.inc",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "423282d6_60433f1f",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T17:33:21Z",
+      "side": 1,
+      "message": "Good catch, I missed that in the TCPC change",
+      "parentUuid": "248bc31a_c99b694d",
+      "range": {
+        "startLine": 116,
+        "startChar": 39,
+        "endLine": 116,
+        "endChar": 51
+      },
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -149,6 +269,24 @@
       "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d48fc6aa_1b9893ec",
+        "filename": "board/casta/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-27T17:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b25cd0_a036d868",
+      "revId": "1373d11f15f4ec7724481ac797639ca78c5d56ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
