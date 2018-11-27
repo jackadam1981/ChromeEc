@@ -22,6 +22,52 @@
       "revId": "1f80828371c1fb46215444309490db9d7517882d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a689214_6a0fb74b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3273,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T17:30:07Z",
+      "side": 1,
+      "message": "nit: should we call this bit instead of shift?",
+      "range": {
+        "startLine": 3273,
+        "startChar": 32,
+        "endLine": 3273,
+        "endChar": 37
+      },
+      "revId": "1f80828371c1fb46215444309490db9d7517882d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94446cb4_0a749320",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3326,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T17:30:07Z",
+      "side": 1,
+      "message": "can we make this a BUILD_ASSERT instead right below this definition?\n\nBUILD_ASSERT(EC_MKBP_EVENT_COUNT \u003c\u003d EC_MKBP_EVENT_TYPE_MASK)",
+      "range": {
+        "startLine": 3322,
+        "startChar": 1,
+        "endLine": 3326,
+        "endChar": 50
+      },
+      "revId": "1f80828371c1fb46215444309490db9d7517882d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
