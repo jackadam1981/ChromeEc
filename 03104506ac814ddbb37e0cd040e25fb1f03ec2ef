@@ -46,6 +46,30 @@
       "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82566059_95e30334",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-27T09:34:19Z",
+      "side": 1,
+      "message": "In nami, sku id is created by feature table and might be same in different project(Akali vs Bard/Ekko).\nEven they are different, it will be a big effort in the future if project add new sku.\nIn our case, Akali use different battery with Bard/Ekko.\nSo we use sku id to get different battery config.\nIf Bard/Ekko create new sku, then we need update CL for new SKU.\nAnd if unfortunately we have same sku id with Akali, it will be a big problem to get correct battery config.\nI think model id will be very helpful for getting correct battery config.",
+      "parentUuid": "0052eac8_701127ed",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "03104506ac814ddbb37e0cd040e25fb1f03ec2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
