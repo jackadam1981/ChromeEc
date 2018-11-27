@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a6d3ff4_e2853074",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:00:22Z",
+      "side": 1,
+      "message": "No issue. In previous CL, got a comment to convert sizeof(uint8_t) into 1, because it is too obvious.",
+      "parentUuid": "12289f99_51658417",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 45
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6de827e7_2043d2eb",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d9e0322c_902043b6",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:00:22Z",
+      "side": 1,
+      "message": "Still I need this way as I described above.",
+      "parentUuid": "51acd0c7_6d2dd0a5",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 35
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2b041b0_da46f23a",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 4
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "960c14bf_a67cf6fb",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:00:22Z",
+      "side": 1,
+      "message": "line 45 needs mode_val.",
+      "parentUuid": "f2b041b0_da46f23a",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 23
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0132075d_d1b66c55",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 4
@@ -114,6 +186,30 @@
       "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab80111_81b67271",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-11-27T05:00:22Z",
+      "side": 1,
+      "message": "Actually, expected_size for input is either zero or 1. expected_size for output is 1. \nIf you insist, I can separate the variables, but don\u0027t feel it necessary.",
+      "parentUuid": "0132075d_d1b66c55",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "3beb3cfcbf8911d7d266b8fe7641939bf0592552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
