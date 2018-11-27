@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65788e97_f703b0a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-27T19:22:06Z",
+      "side": 1,
+      "message": "Also, try 200 and 204 (with roundup enabled) to be sure the ODR is set at 208Mhz",
+      "revId": "4d97dc872a6ca2be2bd7dbe2b3da25ca9c354137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd13b2c_5f03bc81",
+        "filename": "board/fleex/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-27T19:22:06Z",
+      "side": 1,
+      "message": "Instead, increase CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ to 208Hz, as we will forget for other board. If an EC support 200Hz, it won\u0027t mind 208hz",
+      "revId": "4d97dc872a6ca2be2bd7dbe2b3da25ca9c354137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
