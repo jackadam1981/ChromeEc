@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a09a878_acb4ea31",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T17:45:10Z",
+      "side": 1,
+      "message": "Please add a comment saying that we want this function to run after cbi_init has run",
+      "range": {
+        "startLine": 215,
+        "startChar": 65,
+        "endLine": 215,
+        "endChar": 69
+      },
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae712510_b5d1aff8",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T17:45:10Z",
+      "side": 1,
+      "message": "I am a little weary about define these here since they will get used for every C file that is compiled (while building any octopus variant)\n\nInstead, let\u0027s copy these definition to the board file that you need them in. These are really only defined to make the code easier to read in the C file (instead of having a 0 or 1 by itself).\n\nPlease drop them from here and copy them to where you need",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b555a3ef_d2af4fa4",
+        "filename": "board/ampton/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-27T17:45:10Z",
+      "side": 1,
+      "message": "this change doesn\u0027t seem to belong in the CL, or what am I missing?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
