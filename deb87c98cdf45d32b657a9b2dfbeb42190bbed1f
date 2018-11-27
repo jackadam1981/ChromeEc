@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d9fde1e_94ed26cc",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-27T05:41:45Z",
+      "side": 1,
+      "message": "Oops sorry, brackets removed.\n\nThere isn\u0027t a vendor command to read the data, as it can be done by reading the NVRAM space (eg with tpmc) - so I don\u0027t plan to add support for reading here. \n\nI\u0027m guessing the convention for the args is due to the way getopt_long parses the command line.",
+      "parentUuid": "c2717428_b38117b5",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c0ed02a7_97f06cc8",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-27T05:41:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714a131d_e6117c69",
+      "range": {
+        "startLine": 550,
+        "startChar": 27,
+        "endLine": 550,
+        "endChar": 28
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d076c938_39dcf505",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc246798_fb61857a",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-27T05:41:45Z",
+      "side": 1,
+      "message": "Right, it just skips a char as whether it\u0027s a : or something else isn\u0027t really important, but you\u0027re right it should just do what it says, fixed.",
+      "parentUuid": "d076c938_39dcf505",
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
