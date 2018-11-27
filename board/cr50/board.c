@@ -157,6 +157,11 @@ int board_tpm_uses_spi(void)
 	return !!(board_properties & BOARD_SLAVE_CONFIG_SPI);
 }
 
+int board_uses_closed_source_set1(void)
+{
+	return !!(board_properties & BOARD_CLOSED_SOURCE_SET1);
+}
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {
@@ -545,6 +550,44 @@ void board_configure_deep_sleep_wakepins(void)
 static void deferred_tpm_rst_isr(void);
 DECLARE_DEFERRED(deferred_tpm_rst_isr);
 
+static void configure_closed_source_set1_gpios(void)
+{
+	ccprintf("\nClosed Source Set1: configuring factory mode GPIOs\n");
+
+	/*
+	 * Connect GPIO outputs to pads:
+	 *     GPIO0_12 (FACTORY_MODE)      : B0
+	 *     GPIO0_13 (EXIT_FACTORY_MODE) : B1
+	 *     GPIO0_11 (CHROME_SEL)        : B7
+	 */
+	GWRITE(PINMUX, DIOB0_SEL, GC_PINMUX_GPIO0_GPIO12_SEL);
+	GWRITE(PINMUX, DIOB1_SEL, GC_PINMUX_GPIO0_GPIO13_SEL);
+	GWRITE(PINMUX, DIOB7_SEL, GC_PINMUX_GPIO0_GPIO11_SEL);
+
+	/*
+	 * Connect pads to GPIO inputs
+	 */
+	GWRITE(PINMUX, GPIO0_GPIO12_SEL, GC_PINMUX_DIOB0_SEL);
+	GWRITE(PINMUX, GPIO0_GPIO13_SEL, GC_PINMUX_DIOB1_SEL);
+	GWRITE(PINMUX, GPIO0_GPIO11_SEL, GC_PINMUX_DIOB7_SEL);
+
+	/* Enable inputs from pads */
+	GWRITE_FIELD(PINMUX, DIOB0_CTL, IE, 1);
+	GWRITE_FIELD(PINMUX, DIOB1_CTL, IE, 1);
+	GWRITE_FIELD(PINMUX, DIOB7_CTL, IE, 1);
+
+	/* Disable pulls on the B1 pad (I2C_SDA_SCL/EXIT_FACTORY_MODE) */
+	GWRITE_FIELD(PINMUX, DIOB1_CTL, PU, 0);
+	GWRITE_FIELD(PINMUX, DIOB1_CTL, PD, 0);
+
+	/* Enable falling edge interrupt on I2C_SDA_SCL/EXIT_FACTORY_MODE */
+	gpio_set_flags(GPIO_I2C_SDA_INA, GPIO_INPUT | GPIO_INT_F_FALLING);
+
+	/* Disable factory mode */
+	gpio_set_flags(GPIO_I2C_SCL_INA, GPIO_OUT_LOW);
+	/* Disable factory mode */
+}
+
 static void configure_board_specific_gpios(void)
 {
 	/* Add a pullup to sys_rst_l */
@@ -597,7 +640,42 @@ static void configure_board_specific_gpios(void)
 		/* Enable powerdown exit on DIOM0 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
+
+	if (board_uses_closed_source_set1())
+		configure_closed_source_set1_gpios();
 }
+
+// FIXME - for debug only, force configuration of Sarien GPIOs
+static int sarien_gpios(int argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+
+	configure_closed_source_set1_gpios();
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(sarien, sarien_gpios,
+	"", "Configure Sarien factory mode GPIOs");
+
+// FIXME - for debug only, display current Sarien GPIOs
+static int sarien_fact_mode(int argc, char **argv)
+{
+	(void)argc;
+	(void)argv;
+
+	ccprintf("FACTORY_MODE      = %d\n",
+		gpio_get_level(GPIO_I2C_SCL_INA));
+	ccprintf("CHROME_SEL        = %d\n",
+		gpio_get_level(GPIO_EN_PP3300_INA_L));
+	ccprintf("EXIT_FACTORY_MODE = %d\n",
+		gpio_get_level(GPIO_I2C_SDA_INA));
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(factory, sarien_fact_mode,
+	"", "Display Sarien factory mode GPIOs");
+
 
 void decrement_retry_counter(void)
 {

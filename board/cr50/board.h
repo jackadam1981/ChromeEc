@@ -6,6 +6,9 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* FIXME - for internal testing, not for checkin */
+#define CONFIG_CMD_GPIO_EXTENDED
+
 /*
  * The default watchdog timeout is 1.6 seconds, but there are some legitimate
  * flash-intensive TPM operations that actually take close to that long to
@@ -264,6 +267,7 @@ int board_use_plt_rst(void);
 int board_rst_pullup_needed(void);
 int board_tpm_uses_i2c(void);
 int board_tpm_uses_spi(void);
+int board_uses_closed_source_set1(void);
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
