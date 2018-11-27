@@ -15,7 +15,11 @@
 
 #define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
 
-DECLARE_DEFERRED(tpm_stop);
+static void disable_tpm(void)
+{
+	tpm_stop();
+}
+DECLARE_DEFERRED(disable_tpm);
 
 /*
  * On TPM reset event, tpm_reset_now() in tpm_registers.c clears TPM2 BSS memory
@@ -24,37 +28,52 @@ DECLARE_DEFERRED(tpm_stop);
  */
 static enum tpm_modes s_tpm_mode __attribute__((section(".bss.Tpm2_common")));
 
-static enum vendor_cmd_rc set_tpm_mode(struct vendor_cmd_params *p)
+static enum vendor_cmd_rc process_tpm_mode(struct vendor_cmd_params *p)
 {
+	static const size_t expected_size = 1;	// sizeof(uint8_t)
 	uint8_t mode_val;
 	uint8_t *buffer;
 
 	p->out_size = 0;
 
-	if (p->in_size > sizeof(uint8_t))
+	if (p->in_size > expected_size)
 		return VENDOR_RC_NOT_ALLOWED;
 
 	buffer = (uint8_t *)p->buffer;
-	if (p->in_size == sizeof(uint8_t)) {
-		if (s_tpm_mode != TPM_MODE_ENABLED_TENTATIVE)
-			return VENDOR_RC_NOT_ALLOWED;
+	if (p->in_size == expected_size) {
 		mode_val = buffer[0];
-		if (mode_val == TPM_MODE_DISABLED)
-			hook_call_deferred(&tpm_stop_data, 10 * MSEC);
-		else if (mode_val != TPM_MODE_ENABLED)
+		if (mode_val != VENDOR_SC_GET_TPM_MODE &&
+		    s_tpm_mode != TPM_MODE_ENABLED_TENTATIVE)
 			return VENDOR_RC_NOT_ALLOWED;
-		s_tpm_mode = mode_val;
+
+		switch (mode_val) {
+		case VENDOR_SC_ENABLE_TPM:
+			s_tpm_mode = TPM_MODE_ENABLED;
+			break;
+		case VENDOR_SC_DISABLE_TPM:
+			/*
+			 * If it is to be disabled, call disable_tpm() deferred
+			 * so that this vendor command can be responded to
+			 * before TPM stops.
+			 */
+			s_tpm_mode = TPM_MODE_DISABLED;
+			hook_call_deferred(&disable_tpm_data, 10 * MSEC);
+			break;
+		case VENDOR_SC_GET_TPM_MODE:
+			break;
+		default:
+			return VENDOR_RC_NO_SUCH_SUBCOMMAND;
+		}
 	}
 
-	p->out_size = sizeof(uint8_t);
-	buffer[0] = (uint8_t) s_tpm_mode;
+	p->out_size = expected_size;
+	buffer[0] = (uint8_t)s_tpm_mode;
 
 	return VENDOR_RC_SUCCESS;
 }
-DECLARE_VENDOR_COMMAND_P(VENDOR_CC_TPM_MODE, set_tpm_mode);
+DECLARE_VENDOR_COMMAND_P(VENDOR_CC_TPM_MODE, process_tpm_mode);
 
 enum tpm_modes get_tpm_mode(void)
 {
 	return s_tpm_mode;
 }
-
