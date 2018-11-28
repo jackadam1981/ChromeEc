@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "f315d398_d9f5ea7a",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-11-28T08:42:01Z",
+      "side": 1,
+      "message": "oh, yes. usb_muxes is the correct one.",
+      "parentUuid": "471b7fac_57fac0e9",
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b555a3ef_d2af4fa4",
         "filename": "board/ampton/gpio.inc",
         "patchSetId": 9
