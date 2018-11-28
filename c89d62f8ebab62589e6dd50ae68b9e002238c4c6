@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "10f6904f_6c827eaf",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T17:09:39Z",
+      "side": 1,
+      "message": "Unfortunately C and C++ are both grouped into \"LANGUAGE: Cpp\". I just copied the .clang-format from platform2 to fuzz/ long enough to run clang format.",
+      "parentUuid": "5d1b2ea9_bd3d533a",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0ea15df_ab9243f5",
         "filename": "fuzz/cr50_fuzz.cc",
         "patchSetId": 32
