@@ -71,6 +71,23 @@
     },
     {
       "key": {
+        "uuid": "95881046_6d5342d2",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-11-28T03:59:23Z",
+      "side": 1,
+      "message": "We might also want to comment / remind readers about this configuration might be override by each boards?",
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b555a3ef_d2af4fa4",
         "filename": "board/ampton/gpio.inc",
         "patchSetId": 9
@@ -82,6 +99,30 @@
       "writtenOn": "2018-11-27T17:45:10Z",
       "side": 1,
       "message": "this change doesn\u0027t seem to belong in the CL, or what am I missing?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8080926_a5643be3",
+        "filename": "board/ampton/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-11-28T03:59:23Z",
+      "side": 1,
+      "message": "PS8751 has a RST pin connected to EC so we need to take the one in MB from reset asserting just like the one in the DB below.",
+      "parentUuid": "b555a3ef_d2af4fa4",
       "range": {
         "startLine": 104,
         "startChar": 5,
