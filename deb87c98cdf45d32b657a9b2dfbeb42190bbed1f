@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3e9c00da_2dc477d5",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2018-11-28T01:04:04Z",
+      "side": 1,
+      "message": "Yea I can see it\u0027s a little weird to have writes but not reads here, but AFAICT this tool currently only sends vendor commands or performs device maintenance, I guess it\u0027s nicer to avoid adding unnecessary clutter to it. \n\nIf ease of use is the concern, maybe we can add a simple script that wraps the relevant tpmc call? It should be just a line or two.\n\nThe addresses won\u0027t change, so baking them into a script should not be a problem.\n\ntpmc read \u003cindex\u003e \u003csize\u003e\n\nboard id:\ntpmc read 0x3fff00 0xc\n\nsn bits:\ntpmc read 0x3fff01 0x10\n\nIf you want a single entry point for managing sn bits, perhaps that script can also wrap the gsctool commands for writes",
+      "parentUuid": "4ab486de_180fd5e4",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
