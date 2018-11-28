@@ -70,6 +70,24 @@
       "revId": "9dc9a7b83676dd4ab768755c21fe4d5109cf0e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3565cba_03f7deb4",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-28T19:31:25Z",
+      "side": 1,
+      "message": "That bug is assuming a specific use-case that doesn\u0027t apply fully in all the factory conditions. If one wants to apply this because of certain platform factory conditions it should be configurable -- not hard coded policy that would apply to everyone. The examples I gave are realistic in the reef/coral platform as well as octopus if model_id and oem_id were employed.\n\nYes, I\u0027m saying board version stays. Other fields go or are configurable to be included in this check. We need flexibility, and this hard-coded policy has larger implications on the factory side of things if cbi were used and these fields were deployed in reef/coral/octopus.",
+      "parentUuid": "820f6a8b_9ae83ec3",
+      "revId": "9dc9a7b83676dd4ab768755c21fe4d5109cf0e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
