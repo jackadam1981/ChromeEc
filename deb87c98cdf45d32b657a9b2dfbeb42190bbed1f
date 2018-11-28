@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "9e5819c4_6975dbb4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-11-28T05:23:28Z",
+      "side": 1,
+      "message": "I was simply going to test for the existence of gsctool rather than making things tpm-version aware. Would that be a mistake?",
+      "parentUuid": "a5d8d18f_55dcc9ec",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
