@@ -60,7 +60,7 @@
 #elif defined CONFIG_ISH_30
 #define ISH_HPET_CLK_FREQ		12000000	/* 12 MHz clock */
 
-#elif defined CONFIG_ISH_40
+#elif (defined CONFIG_ISH_40 || defined CONFIG_ISH_50)
 #define ISH_HPET_CLK_FREQ		32768		/* 32.768 KHz clock */
 #endif
 
