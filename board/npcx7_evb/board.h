@@ -10,10 +10,18 @@
 
 /*
  * npcx7 EVB version:
- * 1 - for EVB version 1 which supports npcx7m6f/npcx7m6g
- * 2 - for EVB version 2 which supports npcx7m7wb/npcx7m6fb
+ * 1 - for EVB version 1 which supports npcx7m6g
+ * 2 - for EVB version 2 which supports npcx7m6f/npcx7m6fb/npcx7m6fc
+ * 3 - for EVB version 3 which supports npcx7m7wb
  */
+#if defined(CHIP_VARIANT_NPCX7M6G)
+#define BOARD_VERSION  1
+#elif defined(CHIP_VARIANT_NPCX7M6F) || defined(CHIP_VARIANT_NPCX7M6FB)  || \
+		defined(CHIP_VARIANT_NPCX7M6FC)
 #define BOARD_VERSION  2
+#elif defined(CHIP_VARIANT_NPCX7M7WB)
+#define BOARD_VERSION  3
+#endif
 
 /* EC modules */
 #define CONFIG_ADC
@@ -54,18 +62,25 @@
 #define CONFIG_FANS 1
 
 /* Internal spi-flash on npcx7 ec */
-#define CONFIG_FLASH_SIZE 0x00100000 /* 1MB internal spi flash */
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_SPI_FLASH
 #define CONFIG_SPI_FLASH_REGS
+#if defined(CHIP_VARIANT_NPCX7M6FC)
+#define CONFIG_SPI_FLASH_W25Q40 /* Internal spi flash type */
+#define CONFIG_FLASH_SIZE 0x00080000 /* 512 KB internal spi flash */
+#else
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal spi flash type */
+#define CONFIG_FLASH_SIZE 0x00100000 /* 1 MB internal spi flash */
+#endif
 
 /* New features on npcx7 ec */
 #define CONFIG_KEYBOARD_KSO_HIGH_DRIVE /* Quasi-bidirectional buf for KSOs */
-#if (BOARD_VERSION == 2)
+#if (BOARD_VERSION >= 2)
 #define CONFIG_HIBERNATE_PSL /* Use PSL (Power Switch Logic) for hibernate */
 #define CONFIG_CLOCK_SRC_EXTERNAL /* Use external 32kHz OSC as LFCLK source */
+#if (BOARD_VERSION == 3)
 #define CONFIG_WAKE_ON_VOICE /* Use Audio front-end for Wake-on-Voice */
+#endif
 #undef CONFIG_FANS /* Remove fan application */
 #define CONFIG_FANS 0
 #else
@@ -83,7 +98,7 @@
  * used. Instead, it defines which pinouts (GPIO10/11 or GPIO64/65) are
  * connected to "UART1" controller.
  */
-#if (BOARD_VERSION == 2)
+#if (BOARD_VERSION >= 2)
 #define NPCX_UART_MODULE2  1 /* 1:GPIO64/65 as UART1 */
 #else
 #define NPCX_UART_MODULE2  0 /* 0:GPIO10/11 as UART1 */
