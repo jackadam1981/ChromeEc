@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29df76f6_b3bf70dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-28T17:11:09Z",
+      "side": 1,
+      "message": "did \u0027repo upload\u0027 not complain about missing BRANCH\u003d ?",
+      "revId": "db546874301f01986bbcd637f572d4a2b44ddb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "558cc618_cc74f372",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-28T17:11:09Z",
+      "side": 1,
+      "message": "you should test this change and describe the results here.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "db546874301f01986bbcd637f572d4a2b44ddb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5333da1f_728c9b2e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-11-28T17:11:09Z",
+      "side": 1,
+      "message": "if you name this \u0027debug\u0027 you\u0027d not have to change anything else in the file",
+      "range": {
+        "startLine": 229,
+        "startChar": 12,
+        "endLine": 229,
+        "endChar": 25
+      },
+      "revId": "db546874301f01986bbcd637f572d4a2b44ddb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
