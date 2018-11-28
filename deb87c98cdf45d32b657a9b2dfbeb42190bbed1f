@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "b501f40f_9781924d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-11-28T01:42:03Z",
+      "side": 1,
+      "message": "\u003e AFAICT this tool currently only sends vendor commands or performs device maintenance, I guess it\u0027s nicer to avoid adding unnecessary clutter to it. \n\nI think it\u0027s more important to have a good user interface as the tool than worry about \"only sending vendor commands.\" If the argument here is that we only send vendor commands, and that for the Board ID we have one to set it and one to read it, then I\u0027m going to make the argument that we should add the \"missing\" vendor commands for SN Bits and RMA count. Right? Then gscftool can call them.\n\nBut I don\u0027t really care if we have a vendor command for read if gscftool is the only customer (though I\u0027d like to know why we have one for Board ID and who calls it?). I do care a lot, however, that we can both set and read the data here like we do for the Board ID. It makes sense, doesn\u0027t it?",
+      "parentUuid": "ad1cde33_2dad55c0",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
