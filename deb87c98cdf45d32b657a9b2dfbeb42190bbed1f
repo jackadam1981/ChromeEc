@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "a5d8d18f_55dcc9ec",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-28T02:19:16Z",
+      "side": 1,
+      "message": "yes, we shouldn\u0027t be stopping/restarting trunksd outside of debug/testing (and possibly factory) environment. so, unless it is done before trunksd is started, tpmc won\u0027t work for those scenarios.\n\ndidn\u0027t realize we need to pass it to session_manager for some reason. and, generally, yes, calling some CLI tool in upstart script is better than making session_manager call tpm_manager over dbus to read nvram, assuming that\u0027s ok from the critical path performance point of view. if we add reading SN to session_manager\u0027s pre-start, (a) this time will be added to time before login-visible, (b) session_manager\u0027s upstart will need to be made tpm-version-aware as gsctool is available only for cr50 (not just USE\u003dtpm2, but USE\u003dcr50_onboard).",
+      "parentUuid": "60248538_a0aa07bd",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
