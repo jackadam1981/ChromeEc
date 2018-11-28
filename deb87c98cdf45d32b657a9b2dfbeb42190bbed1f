@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "ad1cde33_2dad55c0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-28T01:18:50Z",
+      "side": 1,
+      "message": "the only issue with tpmc that it requires trunksd stopped, so the factory scripts need to take care of that and then restarting the daemon. gsctool works with and without trunksd running.\nwe can teach tpmc to send commands to trunksd if it\u0027s running, but that\u0027s a separate thing.",
+      "parentUuid": "3e9c00da_2dc477d5",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
