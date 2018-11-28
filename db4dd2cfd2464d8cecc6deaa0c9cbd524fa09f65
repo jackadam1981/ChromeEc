@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6c0b669_70d7bb13",
+        "filename": "driver/accelgyro_lsm6ds0.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-28T23:38:55Z",
+      "side": 1,
+      "message": "See table 59 for LSM6DSO (not LSM6DSO) at https://drive.google.com/file/d/0B0QMFp-kNwSBZkpVcnNram45UmM/view?usp\u003dsharing",
+      "parentUuid": "0e86b0c6_b47eb6f4",
+      "range": {
+        "startLine": 122,
+        "startChar": 68,
+        "endLine": 122,
+        "endChar": 74
+      },
+      "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28068a7e_8a7878e0",
         "filename": "driver/mag_bmm150.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-28T20:57:02Z",
       "side": 1,
       "message": "I couldn\u0027t find where SPECIAL comes from. Can you elaborate here, please?",
+      "range": {
+        "startLine": 90,
+        "startChar": 25,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66607796_d022f0d1",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-28T23:38:55Z",
+      "side": 1,
+      "message": "SPECIAL is magnetometer preset used by the only board that uses the BMM150.\nOther presets are LOW_POWER, REGULAR, HIGH_ACCURACY.\nWe will alter this code when we use another preset.",
+      "parentUuid": "28068a7e_8a7878e0",
       "range": {
         "startLine": 90,
         "startChar": 25,
