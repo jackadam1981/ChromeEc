@@ -36,12 +36,6 @@
 #include "usb_descriptor.h"
 #include "verify_ro.h"
 
-#ifdef DEBUG
-#define debug printf
-#else
-#define debug(fmt, args...)
-#endif
-
 /*
  * This file contains the source code of a Linux application used to update
  * CR50 device firmware.
@@ -231,6 +225,17 @@ static const struct option long_opts[] = {
 };
 
 
+/* Helper to print debug messages when verbose flag is specified. */
+static void debug_printf(const char *fmt, ...)
+{
+	va_list args;
+
+	if (verbose_mode) {
+		va_start(args, fmt);
+		vprintf(fmt, args);
+		va_end(args);
+	}
+}
 
 /* Helpers to convert between binary and hex ascii and back. */
 static char to_hexascii(uint8_t c)
@@ -279,7 +284,7 @@ static int ts_write(const void *out, size_t len)
 
 	/* Make it a proper zero terminated string. */
 	full_command[sizeof(full_command) - 1] = 0;
-	debug("cmd: %s\n", full_command);
+	debug_printf("cmd: %s\n", full_command);
 	tpm_output = popen(full_command, "r");
 	if (tpm_output)
 		return len;
@@ -304,8 +309,8 @@ static int ts_read(void *buf, size_t max_rx_size)
 	if (rv > 0)
 		rv -= 1; /* Discard the \n character added by trunks_send. */
 
-	debug("response of size %d, max rx size %zd: %s\n",
-	      rv, max_rx_size, response);
+	debug_printf("response of size %d, max rx size %zd: %s\n",
+		     rv, max_rx_size, response);
 
 	pclose_rv = pclose(tpm_output);
 	if (pclose_rv < 0) {
@@ -374,7 +379,7 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 	uint32_t rv;
 	const size_t rx_size = sizeof(outbuf);
 
-	debug("%s: sending to %#x %d bytes\n", __func__, addr, size);
+	debug_printf("%s: sending to %#x %d bytes\n", __func__, addr, size);
 
 	out->tag = htobe16(0x8001);
 	out->subcmd = htobe16(subcmd);
@@ -402,10 +407,10 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 	{
 		int i;
 
-		debug("Writing %d bytes to TPM at %x\n", len, addr);
+		debug_printf("Writing %d bytes to TPM at %x\n", len, addr);
 		for (i = 0; i < 20; i++)
-			debug("%2.2x ", outbuf[i]);
-		debug("\n");
+			debug_printf("%2.2x ", outbuf[i]);
+		debug_printf("\n");
 	}
 #endif
 	switch (td->ep_type) {
@@ -457,16 +462,14 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 		break;
 	}
 
-#ifdef DEBUG
-	debug("Read %d bytes from TPM\n", len);
+	debug_printf("Read %d bytes from TPM\n", len);
 	if (len > 0) {
 		int i;
 
 		for (i = 0; i < len; i++)
-			debug("%2.2x ", outbuf[i]);
-		debug("\n");
+			debug_printf("%2.2x ", outbuf[i]);
+		debug_printf("\n");
 	}
-#endif
 	len = len - response_offset;
 	if (len < 0) {
 		fprintf(stderr, "Problems reading from TPM, got %d bytes\n",
