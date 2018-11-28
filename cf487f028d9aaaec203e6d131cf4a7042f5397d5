@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "2bf2eaaa_39b73c95",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-11-28T06:42:26Z",
+      "side": 1,
+      "message": "1. It is supported by protocol itself.\n2. There might be more than one slave one the same bus. It helps for synchronization.",
+      "parentUuid": "8b87e587_5fa6b5a5",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "078535af_e749fb79",
         "filename": "board/karma/panel.c",
         "patchSetId": 3
