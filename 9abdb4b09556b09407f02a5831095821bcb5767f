@@ -46,6 +46,30 @@
       "revId": "9abdb4b09556b09407f02a5831095821bcb5767f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615e1f4c_981e7b1a",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-11-28T02:07:05Z",
+      "side": 1,
+      "message": "This custom field will implement by our factory using ectool or by CPFE?",
+      "parentUuid": "635ae09b_c5ecd661",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "9abdb4b09556b09407f02a5831095821bcb5767f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
