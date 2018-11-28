@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "082023cf_11007811",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-28T18:43:50Z",
+      "side": 1,
+      "message": "should we do data validation here before setting it?\n\nensure both positive and ang + hys is less than 360 (or something like that)",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 27
+      },
+      "revId": "c6fb12a3c3026a33b7832827c6198e730d462ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642647ed_b9998ced",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-28T18:43:50Z",
+      "side": 1,
+      "message": "ANG isntead of NUM. (either was is really okay though, just a thought)",
+      "range": {
+        "startLine": 4138,
+        "startChar": 32,
+        "endLine": 4138,
+        "endChar": 35
+      },
+      "revId": "c6fb12a3c3026a33b7832827c6198e730d462ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f222dd0_7e11e633",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4503,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-28T18:43:50Z",
+      "side": 1,
+      "message": "should we add else if (argc !\u003d 2) { return -1;}",
+      "range": {
+        "startLine": 4503,
+        "startChar": 2,
+        "endLine": 4503,
+        "endChar": 3
+      },
+      "revId": "c6fb12a3c3026a33b7832827c6198e730d462ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
