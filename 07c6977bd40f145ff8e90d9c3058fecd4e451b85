@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66c51a69_b1d03ff5",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-28T20:19:50Z",
+      "side": 1,
+      "message": "nit: I didn\u0027t notice this at first, but can you change this to hys (or something similar). I got deg and ang mixed up with reading the function.",
+      "range": {
+        "startLine": 215,
+        "startChar": 60,
+        "endLine": 215,
+        "endChar": 63
+      },
+      "revId": "07c6977bd40f145ff8e90d9c3058fecd4e451b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
