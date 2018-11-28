@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa400d9_4b1a5323",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-28T19:01:02Z",
+      "side": 1,
+      "message": "This actually seems wrong. Why would model id be protected when !unlocked. Imagine model_id is used by the decision for setting is done at assembly time with a production firmware. One wouldn\u0027t be able to set this field during factory assembly.\n\nSimilarly oem_id equally seems wrong here if multiple oems were using a common PCBA.",
+      "revId": "9dc9a7b83676dd4ab768755c21fe4d5109cf0e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
