@@ -88,6 +88,24 @@
       "revId": "9dc9a7b83676dd4ab768755c21fe4d5109cf0e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84ff7f95_ff9c4b85",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-28T23:21:16Z",
+      "side": 1,
+      "message": "I remember we suggested making OEM_ID configurable on the board exactly for the reason: keeping PCBAs mutable (for lots of benefits) but we got hard push back from the factory team (comments #7 through #14). Basically, they don\u0027t trust ODMs and it sounded a generic statement not a platform/ODM specific concern.\n\nI\u0027m moving MODEL_ID out of the cage but for OEM_ID, we need to get approval from the factory team.",
+      "parentUuid": "d3565cba_03f7deb4",
+      "revId": "9dc9a7b83676dd4ab768755c21fe4d5109cf0e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
