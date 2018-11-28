@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4ab486de_180fd5e4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-11-28T00:43:52Z",
+      "side": 1,
+      "message": "We\u0027re going to need to have access to the SN Bits and RMA count on the factory and RMA floors, and also as part of Chrome OS startup (e.g. https://docs.google.com/document/d/1r1lO653UNIDqoj_oVtED5wLQFp5b_4igdVtaA1G25jU/edit#heading\u003dh.f2h7486rvn5s where the idea would be to use, e.g. gsctool -S to see if we have SN Bits that are not simply all f).\n\nIIRC, using tpmc is a bit arcane, but more importantly requires knowing the exact addresses to look at (and maybe some address translation too)? I don\u0027t think that\u0027s something that is friendly for the above use cases. Could this be done inside gsctool instead even without a vendor command? Or would we need a vendor command?",
+      "parentUuid": "7d9fde1e_94ed26cc",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
