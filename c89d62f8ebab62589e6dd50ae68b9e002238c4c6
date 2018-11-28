@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f23f43f3_906655d6",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 32
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "239591a2_3e7e2991",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9e79a5f_70c38a1a",
         "filename": "fuzz/cr50_fuzz.cc",
         "patchSetId": 32
@@ -30,6 +48,24 @@
       "writtenOn": "2018-11-27T20:55:39Z",
       "side": 1,
       "message": "i guess you\u0027re reformatting this file to match Chromium C++ style ?  if so, you should adjust all the pointers so the * is next to the type and not the variable.",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d1b2ea9_bd3d533a",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "I fixed the style issues that I noticed, but I wonder if there is a way to reconfigure clang format in the ec subdirectory to treat .cc files and headers with corresponding .cc files differently than the c files which follow kernel style.",
+      "parentUuid": "e9e79a5f_70c38a1a",
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "08caa74b_0aaaa6d7",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ea15df_ab9243f5",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdd21864_6fcf217c",
         "filename": "fuzz/cr50_fuzz.cc",
         "patchSetId": 32
@@ -67,6 +121,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e542ccbe_888aadd4",
+        "filename": "fuzz/cr50_fuzz.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd21864_6fcf217c",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "4f3c7806_74cc874f",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "740ddf02_b38689ee",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ffe3ad6_5388b343",
         "filename": "fuzz/mem_hash_tree.cc",
         "patchSetId": 32
@@ -101,6 +191,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225b2cb8_2c1573b3",
+        "filename": "fuzz/mem_hash_tree.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ffe3ad6_5388b343",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "483aab1f_9a8194fd",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "I have added checks to guarantee alignment.",
+      "parentUuid": "bdef3757_5ce0e78d",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79206eab_c209bbd9",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 32
@@ -135,6 +261,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2798453_0dfe95f4",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79206eab_c209bbd9",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "0f0a0e18_383a0abc",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1031fc_616f80c1",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e177edd5_1cf8ab76",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 32
@@ -169,6 +331,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341fc3c4_59f0ab46",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e177edd5_1cf8ab76",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "c8ff3b04_50f6c287",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bfdd983_e9283873",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3089e079_ae7b1adc",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 32
@@ -203,6 +401,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e984953_97a8d39c",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3089e079_ae7b1adc",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "3fa0fd55_43abcfe2",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2424d33_39b4d7b9",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d637d3cd_1c3d8074",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 32
@@ -237,6 +471,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe4bc52_6f73a06c",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d637d3cd_1c3d8074",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -257,6 +509,24 @@
     },
     {
       "key": {
+        "uuid": "4814375e_10e5b726",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db354fff_eb5edb01",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1064eedd_e92a324a",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 32
@@ -271,6 +541,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47b81ee_0e20f49f",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1064eedd_e92a324a",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -291,6 +579,24 @@
     },
     {
       "key": {
+        "uuid": "5055d4bd_ab31ab4e",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c526441a_d5f5ad7b",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "498d7549_4bbdc3b2",
         "filename": "fuzz/pinweaver_model.cc",
         "patchSetId": 32
@@ -305,6 +611,24 @@
       "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd121d95_7169e17f",
+        "filename": "fuzz/pinweaver_model.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-11-28T00:12:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "498d7549_4bbdc3b2",
+      "revId": "c89d62f8ebab62589e6dd50ae68b9e002238c4c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
