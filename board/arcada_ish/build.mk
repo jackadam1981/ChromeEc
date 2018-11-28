@@ -7,7 +7,7 @@
 #
 
 CHIP:=ish
-CHIP_FAMILY:=ish3
-CHIP_VARIANT:=ish3p0
+CHIP_FAMILY:=ish5
+CHIP_VARIANT:=ish5p0
 
 board-y=board.o

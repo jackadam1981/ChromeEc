@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Atlas ISH board configuration */
+/* Arcada ISH board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -24,7 +24,7 @@
 /* ISH specific*/
 #undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_CLOCK_CRYSTAL
-#define CONFIG_ISH_UART_0
+#define CONFIG_ISH_UART_1
 /* EC */
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
@@ -32,14 +32,14 @@
 #define CONFIG_I2C_MASTER
 
 /* I2C ports */
-#define I2C_PORT_TP ISH_I2C0
+#define I2C_PORT_SENSOR ISH_I2C0
 #define GPIO_I2C_PORT_TP_SCL GPIO_ISH_I2C0_SCL
 #define GPIO_I2C_PORT_TP_SDA GPIO_ISH_I2C0_SDA
 
 /* Undefine unfeatures */
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_I2C_SCAN
-#undef CONFIG_CMD_I2C_XFER
+#define CONFIG_CMD_I2C_XFER
 #undef CONFIG_CMD_KEYBOARD
 #undef CONFIG_CMD_POWER_AP
 #undef CONFIG_CMD_POWERINDEBUG
