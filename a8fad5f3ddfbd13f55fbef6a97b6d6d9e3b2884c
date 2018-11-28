@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "130b0917_8447436a",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2018-11-28T10:23:01Z",
+      "side": 1,
+      "message": "Ok, I had added the comment for usb_muxes.",
+      "parentUuid": "f315d398_d9f5ea7a",
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b555a3ef_d2af4fa4",
         "filename": "board/ampton/gpio.inc",
         "patchSetId": 9
