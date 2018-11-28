@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "083843aa_fee90ff5",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2018-11-28T08:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a09a878_acb4ea31",
+      "range": {
+        "startLine": 215,
+        "startChar": 65,
+        "endLine": 215,
+        "endChar": 69
+      },
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae712510_b5d1aff8",
         "filename": "baseboard/octopus/baseboard.h",
         "patchSetId": 9
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c3670153_4329e2de",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2018-11-28T08:33:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae712510_b5d1aff8",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95881046_6d5342d2",
         "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
         "patchSetId": 9
@@ -82,6 +130,24 @@
       "writtenOn": "2018-11-28T03:59:23Z",
       "side": 1,
       "message": "We might also want to comment / remind readers about this configuration might be override by each boards?",
+      "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "471b7fac_57fac0e9",
+        "filename": "baseboard/octopus/variant_usbc_ec_tcpcs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2018-11-28T08:33:56Z",
+      "side": 1,
+      "message": "Do you mean the \"usb_muxes\" might be override by each boards?",
+      "parentUuid": "95881046_6d5342d2",
       "revId": "a8fad5f3ddfbd13f55fbef6a97b6d6d9e3b2884c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
