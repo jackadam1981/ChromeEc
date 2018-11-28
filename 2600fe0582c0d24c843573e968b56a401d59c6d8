@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d532a28_fa6ec3f6",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-28T14:36:35Z",
+      "side": 1,
+      "message": "parens around macro arguments",
+      "revId": "2600fe0582c0d24c843573e968b56a401d59c6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e96a9f_11c01e4c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2650,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-28T14:36:35Z",
+      "side": 1,
+      "message": "Some more commentary here might be helpful for explaining how this field works/behaves.",
+      "revId": "2600fe0582c0d24c843573e968b56a401d59c6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd6cd999_5baf2011",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4481,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-28T14:36:35Z",
+      "side": 1,
+      "message": "Add a comment here that setting NO_VALUE is how to get the fields.",
+      "revId": "2600fe0582c0d24c843573e968b56a401d59c6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c16a0a82_62a661f8",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4484,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-28T14:36:35Z",
+      "side": 1,
+      "message": "extra line?",
+      "revId": "2600fe0582c0d24c843573e968b56a401d59c6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
