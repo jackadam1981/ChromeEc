@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "255bd7eb_57f0680e",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1161144
+      },
+      "writtenOn": "2018-11-28T01:48:00Z",
+      "side": 1,
+      "message": "Use of a vendor command to read the Board ID: https://cs.corp.google.com/chromeos_public/src/platform/ec/extra/usb_updater/gsctool.c?rcl\u003d9ba8fc3405d362ef503311560c21dcfcdfe67030\u0026l\u003d1784\n\nSo why not do the same for SN Bits and RMA Counts and be done like for the Board ID then? Just provide whatever mechanism you want, that doesn\u0027t have weird interactions with other daemons (like tpmc requires trunksd to be stopped), here, whether it is through a vendor command or some other way.",
+      "parentUuid": "b501f40f_9781924d",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
