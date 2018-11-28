@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e86b0c6_b47eb6f4",
+        "filename": "driver/accelgyro_lsm6ds0.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-28T20:57:02Z",
+      "side": 1,
+      "message": "this matches the code in the implementation file (assuming the lowest 3 values are ignored), but I am having trouble lining this up with the lsm6ds0 datasheet",
+      "range": {
+        "startLine": 122,
+        "startChar": 68,
+        "endLine": 122,
+        "endChar": 74
+      },
+      "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28068a7e_8a7878e0",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-28T20:57:02Z",
+      "side": 1,
+      "message": "I couldn\u0027t find where SPECIAL comes from. Can you elaborate here, please?",
+      "range": {
+        "startLine": 90,
+        "startChar": 25,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
