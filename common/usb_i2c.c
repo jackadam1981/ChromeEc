@@ -21,6 +21,10 @@
 #include "usb_i2c.h"
 
 
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+
+
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 #define MAX_BYTES_IN_ONE_READING 254
 
@@ -124,30 +128,44 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 		offset = 2;
 	}
 
-	if (!count || (!read_count && !write_count))
+#if 0
+	ccprintf("%s() called.  count=%lu portindex=%d slave_addr=0x%02hhX, write_count=%d read_count=%d offset=%d\n", __func__, count, portindex, slave_addr, write_count, read_count, offset);
+#endif
+
+	if (!count || (!read_count && !write_count)) {
+		ccprintf("%s: Doing nothing due to !count || (!read_count && !write_count).  count=%lu read_count=%d write_count=%d\n", __func__, count, read_count, write_count);
 		return;
+	}
 
 	if (!usb_i2c_board_is_enabled()) {
 		config->buffer[0] = USB_I2C_DISABLED;
-	} else if (write_count > CONFIG_USB_I2C_MAX_WRITE_COUNT ||
-		write_count != (count - 4 - offset)) {
+		ccprintf("%s: Failing due to !usb_i2c_board_is_enabled().\n", __func__);
+	} else if (write_count > CONFIG_USB_I2C_MAX_WRITE_COUNT) {
 		config->buffer[0] = USB_I2C_WRITE_COUNT_INVALID;
+		ccprintf("%s: Failing due to write_count > CONFIG_USB_I2C_MAX_WRITE_COUNT.  write_count=%d CONFIG_USB_I2C_MAX_WRITE_COUNT=" STR(CONFIG_USB_I2C_MAX_WRITE_COUNT) "\n", __func__, write_count);
+	} else if (write_count != (count - 4 - offset)) {
+		config->buffer[0] = USB_I2C_WRITE_COUNT_INVALID;
+		ccprintf("%s: Failing due to write_count != (count - 4 - offset).  write_count=%d, count=%lu offset=%d\n", __func__, write_count, count, offset);
 	} else if (read_count > CONFIG_USB_I2C_MAX_READ_COUNT) {
 		config->buffer[0] = USB_I2C_READ_COUNT_INVALID;
+		ccprintf("%s: Failing due to read_count > CONFIG_USB_I2C_MAX_READ_COUNT.  read_count=%d CONFIG_USB_I2C_MAX_READ_COUNT=" STR(CONFIG_USB_I2C_MAX_READ_COUNT) "\n", __func__, read_count);
 	} else if (portindex >= i2c_ports_used) {
 		config->buffer[0] = USB_I2C_PORT_INVALID;
+		ccprintf("%s: Failing due to portindex >= i2c_ports_used. portindex=%d i2c_ports_used=%u\n", __func__, portindex, i2c_ports_used);
 	} else if (slave_addr == USB_I2C_CMD_ADDR) {
 		/*
 		 * This is a non-i2c command, invoke the handler if it has
 		 * been registered, if not - report the appropriate error.
 		 */
-		if (!cros_cmd_handler)
+		if (!cros_cmd_handler) {
 			config->buffer[0] = USB_I2C_MISSING_HANDLER;
-		else
+			ccprintf("%s: Failing due to slave_addr == USB_I2C_CMD_ADDR && !cros_cmd_handler.  slave_addr=0x%02hhX\n", __func__, slave_addr);
+		} else {
 			config->buffer[0] = cros_cmd_handler(config->buffer + 2,
 							     write_count,
 							     config->buffer + 2,
 							     read_count);
+		}
 	} else {
 		int ret;
 
