@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ca5cb64_e5b20950",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-28T21:04:40Z",
+      "side": 1,
+      "message": "nit: looks like we use spaces (in most cases after the first tab) in other entries. in general, deserves clean up, but let\u0027s at least not add anther style to the mix :)",
+      "range": {
+        "startLine": 237,
+        "startChar": 13,
+        "endLine": 237,
+        "endChar": 15
+      },
+      "revId": "fa06c0164bc019e3a0b4162c59225c40840b782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d71455_0c2215d7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-28T21:04:40Z",
+      "side": 1,
+      "message": "nit: can we name it response_code?\n\"if (response)\" below is confusing: the first impression is that it means \"if we got a non-NULL response buffer\"\nwhile \"if (response_code ! \u003d 0)\" would be unambiguous at the first glance",
+      "range": {
+        "startLine": 1909,
+        "startChar": 9,
+        "endLine": 1909,
+        "endChar": 17
+      },
+      "revId": "fa06c0164bc019e3a0b4162c59225c40840b782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdae7692_4119adbf",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-28T21:04:40Z",
+      "side": 1,
+      "message": "don\u0027t we need to check the return value of this command? what if sending it failed (e.g. old cr50 version returned \"unknown command\"). even if response and response_size are filled, it\u0027s better to report the actual error, not that response size is invalid.",
+      "range": {
+        "startLine": 1915,
+        "startChar": 1,
+        "endLine": 1915,
+        "endChar": 20
+      },
+      "revId": "fa06c0164bc019e3a0b4162c59225c40840b782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d942da00_922810f7",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1938,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-28T21:04:40Z",
+      "side": 1,
+      "message": "is it worth reusing the same variable here? I\u0027d create a separate uint8_t response_code for better readability",
+      "range": {
+        "startLine": 1938,
+        "startChar": 8,
+        "endLine": 1938,
+        "endChar": 11
+      },
+      "revId": "fa06c0164bc019e3a0b4162c59225c40840b782f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

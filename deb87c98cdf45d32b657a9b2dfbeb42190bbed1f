@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "b429a203_1c7c5d07",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-11-28T21:04:40Z",
+      "side": 1,
+      "message": "\u003e I was simply going to test for the existence of gsctool \n\nsounds ok",
+      "parentUuid": "9e5819c4_6975dbb4",
+      "range": {
+        "startLine": 547,
+        "startChar": 24,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "deb87c98cdf45d32b657a9b2dfbeb42190bbed1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714a131d_e6117c69",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
