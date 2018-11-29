@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e91c073_1d4abd78",
+        "filename": "baseboard/octopus/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-29T23:07:19Z",
+      "side": 1,
+      "message": "bah, not in this CL, but this should really be renamed to pd_do_dr_role or the pd_reset_data_swap should happen in common code",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "2a2e46fb4aac583231ce5bf2ae21a7a9d033b697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
