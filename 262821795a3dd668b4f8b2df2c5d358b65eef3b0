@@ -720,6 +720,24 @@
     },
     {
       "key": {
+        "uuid": "1b6e6d40_0f0ac005",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "MTK use a UART IP that similar to 8250. This file defines part of the common 8250 registers plus MTK extension. If you consider merge it into registers.h is better, I will do that in another change.",
+      "parentUuid": "fd0c3c8b_6e66e58e",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1ee9fa40_ee4badc6",
         "filename": "chip/mt_scp/serial_reg.h",
         "patchSetId": 8
@@ -734,6 +752,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a32699e4_4e905997",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Yes. But DLAB is the common name for this bit in 8250 world.",
+      "parentUuid": "1ee9fa40_ee4badc6",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -754,6 +790,24 @@
     },
     {
       "key": {
+        "uuid": "56c6edcf_390823e0",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8dc19f_f1a9fa2c",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21247555_c417fb27",
         "filename": "chip/mt_scp/system.c",
         "patchSetId": 8
@@ -765,6 +819,24 @@
       "writtenOn": "2018-11-21T22:18:44Z",
       "side": 1,
       "message": "This looks a tiny by overkill, since cali always \u003d 32.\n\nMaybe just a if below to use 12 or 16 for osc 1 or 2?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63fd926_89ce8568",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Add TODO. This is a partial ULPOSC config. Need chip vendor support to implement ULPOSC calibration.",
+      "parentUuid": "21247555_c417fb27",
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -794,6 +866,30 @@
     },
     {
       "key": {
+        "uuid": "e3fe1bb2_ddfbbdb0",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fad1e54c_da5ed2b3",
+      "range": {
+        "startLine": 101,
+        "startChar": 22,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbb3fabb_7ee2719a",
         "filename": "chip/mt_scp/system.c",
         "patchSetId": 8
@@ -805,6 +901,30 @@
       "writtenOn": "2018-11-21T22:18:44Z",
       "side": 1,
       "message": "Should this register have a different name?\n\nSomething like AP_ULPOSC_CON(osc) and AP_ULPOSC_CON2(osc) maybe?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4faa8fe4_3ee8d077",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Will do. This function will be moved to clock and rename this register. Add TODO.",
+      "parentUuid": "cbb3fabb_7ee2719a",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -834,6 +954,24 @@
     },
     {
       "key": {
+        "uuid": "886dd555_2bf2e0df",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c049d01e_c1152ca2",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25d0704e_1adeb08c",
         "filename": "chip/mt_scp/system.c",
         "patchSetId": 8
@@ -857,6 +995,30 @@
     },
     {
       "key": {
+        "uuid": "26840f1c_891311ce",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "This is one of the undocumented AP TOP CLOCK registers. When b[13] \u003d\u003d 1, system is under normal size DRAM mode, which is default, and SCP will use the remap configuration below. There\u0027s no any detail about how to remap physical address either.",
+      "parentUuid": "25d0704e_1adeb08c",
+      "range": {
+        "startLine": 202,
+        "startChar": 6,
+        "endLine": 202,
+        "endChar": 23
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19d2cc88_8dbc2761",
         "filename": "chip/mt_scp/system.c",
         "patchSetId": 8
@@ -871,6 +1033,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0192244e_e5477473",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "No, I have no access to these register detail.",
+      "parentUuid": "19d2cc88_8dbc2761",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -897,6 +1077,30 @@
     },
     {
       "key": {
+        "uuid": "0447e702_5def3047",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Done. SCP doesn\u0027t support watchdog reset. Hence we won\u0027t have watchdog based hard reset. ASSERT added and remove watchdog reset here. The watchdog module will be modified to support warm reset.",
+      "parentUuid": "7939f45a_6b812398",
+      "range": {
+        "startLine": 247,
+        "startChar": 16,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a241da3_52fa1526",
         "filename": "chip/mt_scp/system.c",
         "patchSetId": 8
@@ -911,6 +1115,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489aef8d_a3c046b6",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a241da3_52fa1526",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -931,6 +1153,24 @@
     },
     {
       "key": {
+        "uuid": "b10f6ae3_bd571060",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "No it\u0027s not enough. This uart interrupt needs to enable by toggle 0 then 1 to restart.",
+      "parentUuid": "4bd80196_cf584d48",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "726cea69_2607dac2",
         "filename": "chip/mt_scp/uart.c",
         "patchSetId": 8
@@ -945,6 +1185,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d1fb0c_4606a2cb",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "726cea69_2607dac2",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -968,6 +1226,30 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1e36b7_b2df2b01",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T06:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c257c3db_a8a21429",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 20
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
