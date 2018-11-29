@@ -336,6 +336,15 @@ enum wov_mic_source wov_get_mic_source(void);
 void wov_mute(int enable);
 
 /**
+ * Gets gain values
+ *
+ * @param   *left_chan_gain  - Left channel gain.
+ * @param   *right_chan_gain - Right channel gain
+ * @return  None
+ */
+void wov_get_gain(int *left_chan_gain, int *right_chan_gain);
+
+/**
  * Sets gain
  *
  * @param		left_chan_gain	- Left channel gain.
