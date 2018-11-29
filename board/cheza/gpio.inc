@@ -145,6 +145,8 @@ GPIO(BOARD_VERSION3,        PIN(8, 0), GPIO_INPUT)     /* BRD_ID3 */
 GPIO(SKU_ID1,               PIN(F, 0), GPIO_INPUT)
 GPIO(SKU_ID2,               PIN(4, 1), GPIO_INPUT)
 
+GPIO(SCOPE_TRIGGER,         PIN(3, 5), GPIO_OUT_LOW)
+
 /* Switchcap */
 /*
  * GPIO0 is configured as PVC_PG. When the chip in power down mode, it outputs
@@ -167,3 +169,9 @@ ALTERNATE(PIN_MASK(D, 0x04), 1, MODULE_PMU, 0)             /* PSL_IN1 (GPIOD2) -
 ALTERNATE(PIN_MASK(0, 0x01), 1, MODULE_PMU, 0)             /* PSL_IN2 (GPIO00) - ACOK_OD */
 ALTERNATE(PIN_MASK(0, 0x02), 1, MODULE_PMU, 0)             /* PSL_IN3 (GPIO01) - EC_PWR_BTN_ODL */
 ALTERNATE(PIN_MASK(0, 0x04), 1, MODULE_PMU, 0)             /* PSL_IN4 (GPIO02) - EC_RST_ODL */
+#ifdef CONFIG_WAKE_ON_VOICE
+/* ALTERNATE(PIN_MASK(A, 0xA0), 1,  MODULE_WOV, 0) */ /* I2S_SYNC/I2S_SCLK  GPIOA5/A7 */
+ALTERNATE(PIN_MASK(A, 0xA0), 1,  MODULE_WOV, 0)
+ALTERNATE(PIN_MASK(B, 0x01), 1,  MODULE_WOV, 0) /* I2S_SDAT           GPIOB0    */
+ALTERNATE(PIN_MASK(9, 0x90), 1,  MODULE_WOV, 0) /* DMIC_CLK/DMIC_IN   GPIO94/97 */
+#endif
