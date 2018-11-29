@@ -106,6 +106,24 @@
       "revId": "9dc9a7b83676dd4ab768755c21fe4d5109cf0e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fe4625_6b3b62c5",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-11-29T00:47:40Z",
+      "side": 1,
+      "message": "We can follow up in another CL to make it configurable and default it to the current behavior. Then we can override it. Or at least file a bug tracking that. I\u0027m just noting that there have been real business cases where (regardless of our confidence in factory) making oem id modifiable is required for inventory management purposes.",
+      "parentUuid": "84ff7f95_ff9c4b85",
+      "revId": "9dc9a7b83676dd4ab768755c21fe4d5109cf0e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
