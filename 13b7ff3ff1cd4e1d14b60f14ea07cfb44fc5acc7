@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "930e83d7_7ecd10a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-11-29T20:51:13Z",
+      "side": 1,
+      "message": "My understanding is that it should point at every FW branch you\u0027d wish to target the change to.  Unfortunately I can\u0027t find anything definitive in documentation.  Perhaps I should add note here: https://www.chromium.org/chromium-os/ec-development#TOC-Firmware-Branches\n\nHere\u0027s an example of a similar change as well,\n\nhttps://chromium-review.googlesource.com/q/%2522pd:+prefer+CD+pin+assignments+over+EF+for+USBC-%253EUSBC+case.%2522+status:merged",
+      "parentUuid": "d4277ea9_4bf76a0c",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "13b7ff3ff1cd4e1d14b60f14ea07cfb44fc5acc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "355f1b60_b8e82e88",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
