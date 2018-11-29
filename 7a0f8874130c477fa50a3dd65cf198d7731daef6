@@ -46,6 +46,30 @@
       "revId": "7a0f8874130c477fa50a3dd65cf198d7731daef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2febdd_6bf9e341",
+        "filename": "board/npcx7_evb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-29T14:50:09Z",
+      "side": 1,
+      "message": "Seems like we should do \n\n#ifdef CHIP_VARIANT_NPCX7M7WB\ninstead of\nBOARD_VERSION \u003d\u003d 3\n\n(and maybe not even create board version 3)",
+      "parentUuid": "fccf5949_bba4de9c",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "7a0f8874130c477fa50a3dd65cf198d7731daef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
