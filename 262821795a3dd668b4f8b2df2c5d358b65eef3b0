@@ -738,6 +738,24 @@
     },
     {
       "key": {
+        "uuid": "61518cf4_0b6481a6",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b6e6d40_0f0ac005",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee9fa40_ee4badc6",
         "filename": "chip/mt_scp/serial_reg.h",
         "patchSetId": 8
@@ -767,6 +785,24 @@
       "side": 1,
       "message": "Yes. But DLAB is the common name for this bit in 8250 world.",
       "parentUuid": "1ee9fa40_ee4badc6",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02a9f0db_895994b6",
+        "filename": "chip/mt_scp/serial_reg.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a32699e4_4e905997",
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -1048,6 +1084,24 @@
       "side": 1,
       "message": "No, I have no access to these register detail.",
       "parentUuid": "19d2cc88_8dbc2761",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d3a83c3_d1d2ce6e",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Understood. Can we get MTK to describe how this works? This seems quite critical to understand how DRAM is remapped to SCP memory space.\n\nAlso, I\u0027d much rather have default settings that don\u0027t give access to most of the AP address space...",
+      "parentUuid": "0192244e_e5477473",
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59c28906_cc7281c6",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Please document this. A little table earlier in this file would be great.",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b646b7_f5ab5157",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Why is this commented out?",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad25594_d4427f1e",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Modifying parameters is usually not a great idea. I\u0027d create a new variable, e.g.:\n\nint osc_index \u003d osc - 1;",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff348d37_d998edcb",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "IMHO you are probably better off separating this into scp_set_clock_high_enable and _disable functions, since your function does nothing similar in the on and off paths.\n\nI\u0027m ok to wait until you move this to clock.c.",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8cddec2_a29b2c3b",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Extra blank line",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5360395_369ddb16",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Shouldn\u0027t make a big difference (hopefully the compiler folds the constant), but we usually use #define for constant.",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c4dd94c_0214d905",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "Wait, so the task basically does nothing when UARTN \u003c SCP_UART_COUNT? Can we just ifdef the whole thing out, then?",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece90e25_c73eeb32",
+        "filename": "chip/mt_scp/watchdog.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "does this matter? Or setting to 0 would be fine too?",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0981e7c2_92ced3b7",
+        "filename": "chip/mt_scp/watchdog.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:02:57Z",
+      "side": 1,
+      "message": "There is not key when setting the WDT registers? That sounds scary...",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
