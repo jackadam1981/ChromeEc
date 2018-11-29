@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1114c684_9004ca21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-29T07:13:04Z",
+      "side": 1,
+      "message": "Did you check that the following scenarios work fine:\n1. warm reboot of host (reboot from AP console) -- multiple iterations\n2. cold reboot of device (reboot from EC console) -- multiple iterations\n3. suspend/resume stress test with s3 and s0ix\n4. wake from ec hibernate",
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa4444e_4546b94b",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-29T07:13:04Z",
+      "side": 1,
+      "message": "How was this 100usec decided?",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
