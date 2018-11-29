@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "02d61cfe_f773f0aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-29T16:28:20Z",
+      "side": 1,
+      "message": "Did 1 \u0026 2. Will do 3 \u0026 4 as well.",
+      "parentUuid": "1114c684_9004ca21",
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3aa4444e_4546b94b",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2018-11-29T07:13:04Z",
       "side": 1,
       "message": "How was this 100usec decided?",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca9e4a16_f2fef992",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-11-29T16:28:20Z",
+      "side": 1,
+      "message": "I used other boards that does RTC reset as reference. All of them to my knowledge are using 100 usec. Hence chose that value.",
+      "parentUuid": "3aa4444e_4546b94b",
       "range": {
         "startLine": 220,
         "startChar": 8,
