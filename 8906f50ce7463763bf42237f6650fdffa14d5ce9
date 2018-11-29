@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0707e7b_730d6ab2",
+        "filename": "board/kukui_scp/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:08:58Z",
+      "side": 1,
+      "message": "/* TODO: Remove this */",
+      "revId": "8906f50ce7463763bf42237f6650fdffa14d5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a97ab7ce_639df540",
+        "filename": "board/kukui_scp/ec.tasklist",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:08:58Z",
+      "side": 1,
+      "message": "IIUC, uart_task is not needed if using SCP UART, so maybe #if it out?",
+      "revId": "8906f50ce7463763bf42237f6650fdffa14d5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d4594d_b69c60e5",
+        "filename": "board/kukui_scp/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-11-29T13:08:58Z",
+      "side": 1,
+      "message": "Why do we have 2 alternate settings here? Are there different boards that are reworked differently? If not, can we just have one?",
+      "revId": "8906f50ce7463763bf42237f6650fdffa14d5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
