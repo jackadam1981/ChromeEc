@@ -205,10 +205,15 @@ static void led_init(void)
 		patterns[0] = &battery_pattern_0;
 		break;
 	case PROJECT_SONA:
-		patterns[0] = &battery_pattern_1;
-		patterns[1] = &power_pattern_1;
-		battery_error.pulse = BLINK(5);
-		low_battery_soc = 100;
+		if (model == MODEL_SYNDRA) {
+			/* Syndra doesn't have power LED */
+			patterns[0] = &battery_pattern_3;
+		} else {
+			patterns[0] = &battery_pattern_1;
+			patterns[1] = &power_pattern_1;
+			battery_error.pulse = BLINK(5);
+			low_battery_soc = 100;
+		}
 		break;
 	case PROJECT_PANTHEON:
 		patterns[0] = &battery_pattern_2;
