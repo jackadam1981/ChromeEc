@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4277ea9_4bf76a0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-29T20:03:31Z",
+      "side": 1,
+      "message": "How is the BRANCH tag generally used?  We cut our octopus branch this week, and I wanted to make sure we pick this up from master.  Beyond that, I\u0027ve only ever worked on master changes with \"BRANCH\u003dNone\"",
+      "parentUuid": "abde8493_f886a845",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "13b7ff3ff1cd4e1d14b60f14ea07cfb44fc5acc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "355f1b60_b8e82e88",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-29T18:32:50Z",
       "side": 1,
       "message": "can we add detail about which dongles were used including whether they had the non-zero SVIDs",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "13b7ff3ff1cd4e1d14b60f14ea07cfb44fc5acc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eac27e5_5f400298",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-29T20:03:31Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll clarify the testing done here.  I should have specified that the problem dongle is one we don\u0027t have, but the OEM should be testing with it tonight.  \n\nThe dongles I\u0027ve tested with all end in zero SVIDs, and don\u0027t experience any regressions with this change: hoho (2 VDOs), apple (2 VDOs), DA200 (1 VDO), and a 7magic hub (1 VDO).",
+      "parentUuid": "355f1b60_b8e82e88",
       "range": {
         "startLine": 17,
         "startChar": 16,
