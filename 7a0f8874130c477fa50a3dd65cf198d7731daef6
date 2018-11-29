@@ -22,6 +22,30 @@
       "revId": "7a0f8874130c477fa50a3dd65cf198d7731daef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fccf5949_bba4de9c",
+        "filename": "board/npcx7_evb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-29T01:44:50Z",
+      "side": 1,
+      "message": "Yes, it is intended to do that in the CL.\nWoV is only supported in the npcx7m7wb. Before this CL, npcx7m6f(x) and npcx7m7wb share the same \nBOARD_VERSION (\u003d2). I have to manually undef/define the CONFIG_WAKE_ON_VOICE when I switched the chip variant between npcx7m6f(x) and npcx7m7wb. It is annoying. So I decide to add BOARD_VERSION \u003d 3 for npcx7m7wb.",
+      "parentUuid": "dd91ea49_7d664cc2",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "7a0f8874130c477fa50a3dd65cf198d7731daef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
