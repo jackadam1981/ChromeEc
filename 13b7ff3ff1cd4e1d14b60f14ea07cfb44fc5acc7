@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abde8493_f886a845",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-11-29T18:32:50Z",
+      "side": 1,
+      "message": "Should we expand this to include the list of other DFPs that would benefit from the change.\n\nThink the list has grown to: \n  coral,eve,fizz,glados,gru,grunt,nami,nocturne,oak,octopus,poppy,reef,samus,scarlet,smaug",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "13b7ff3ff1cd4e1d14b60f14ea07cfb44fc5acc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355f1b60_b8e82e88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-11-29T18:32:50Z",
+      "side": 1,
+      "message": "can we add detail about which dongles were used including whether they had the non-zero SVIDs",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 31
+      },
+      "revId": "13b7ff3ff1cd4e1d14b60f14ea07cfb44fc5acc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
