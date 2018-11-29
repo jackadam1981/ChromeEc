@@ -70,6 +70,8 @@
 	IS_MASK_SET(IT83XX_USBPD_ISR(port), USBPD_REG_MASK_MSG_TX_DONE)
 #define USBPD_IS_RX_DONE(port)           \
 	IS_MASK_SET(IT83XX_USBPD_ISR(port), USBPD_REG_MASK_MSG_RX_DONE)
+#define USBPD_IS_PLUG_IN_OUT_DETECT(port)\
+	IS_MASK_SET(IT83XX_USBPD_TCDCR(port), USBPD_REG_PLUG_IN_OUT_DETECT_STAT)
 
 enum usbpd_cc_pin {
 	USBPD_CC_PIN_1,
@@ -106,5 +108,10 @@ extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
 extern const struct tcpm_drv it83xx_tcpm_drv;
 /* Disable integrated pd module */
 void it83xx_disable_pd_module(int port);
+/* Invalidate last received message id variable */
+extern void invalidate_last_message_id(int port);
+
+//#define DETECT_PLUG_OUT_ISR
+#define DETECT_PLUG_IN_ISR
 
 #endif /* __CROS_EC_DRIVER_TCPM_IT83XX_H */

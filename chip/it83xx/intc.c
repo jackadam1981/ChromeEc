@@ -11,21 +11,76 @@
 #include "task.h"
 #include "tcpm.h"
 #include "usb_pd.h"
+#include "console.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
+#ifdef DETECT_PLUG_OUT_ISR
+extern void switch_plug_out_type(int port, int *cc1, int *cc2);
+#endif //DETECT_PLUG_OUT_ISR
+/* Store each port last message id of received packet */
+static uint8_t message_id_last[USBPD_PORT_COUNT];
+
+/* Invalidate last received message id variable */
+void invalidate_last_message_id(int port)
+{
+	/*
+	 * Message id starts from 0 to 7. If static global variable
+	 * message_id_last is initialed 0, it will occur repetitive message id
+	 * with first received packet, so we initial an invalid value 0xff.
+	 */
+	message_id_last[port] = 0xff;
+}
+
+static int consume_repeat_message(int port)
+{
+	uint16_t msg_header = IT83XX_USBPD_RMH(port);
+	int msg_id = PD_HEADER_ID(msg_header);
+	/* pre-set not repeat */
+	int ret = 0;
+
+	/*
+	 * Check does message id repeat? if yes don't respond subsequent
+	 * messages, except softreset control request.
+	 */
+	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
+	    PD_HEADER_CNT(msg_header) == 0)
+		invalidate_last_message_id(port);
+	else if (message_id_last[port] != msg_id)
+		message_id_last[port] = msg_id;
+	else if (message_id_last[port] == msg_id) {
+		/* If clear this bit, USBPD receives next packet */
+		IT83XX_USBPD_MRSR(port) = USBPD_REG_MASK_RX_MSG_VALID;
+		CPRINTS("receive repetitive msg id: p[%d] id=%d", port, msg_id);
+		ret = 1;
+	}
+
+	return ret;
+}
+
 static void chip_pd_irq(enum usbpd_port port)
 {
+#ifdef DETECT_PLUG_IN_ISR
+	int i = 0;
+#endif //DETECT_PLUG_OUT_ISR
+#ifdef DETECT_PLUG_OUT_ISR
+	int cc1, cc2;
+#endif //DETECT_PLUG_OUT_ISR
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+		/* Invalidate last received message id variable */
+		invalidate_last_message_id(port);
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
-			tcpm_enqueue_message(port);
+			if (!consume_repeat_message(port))
+				tcpm_enqueue_message(port);
 			/* clear RX done interrupt */
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
 		}
@@ -35,6 +90,44 @@ static void chip_pd_irq(enum usbpd_port port)
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
 		}
+#ifdef DETECT_PLUG_IN_ISR
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+			i = ((IT83XX_USBPD_TCDCR(port) &
+				USBPD_REG_PLUG_IN_OUT_SELECT) >> 3);
+			ccprints("P%d ISR: PLUG_DTCT %d (IN=0 OUT=1)", port, i);
+#ifndef DETECT_PLUG_OUT_ISR
+			/*
+			 * When tcpc detect plug in, then disable it.
+			 * Because any cc volt changes (include pd negotiation)
+			 * would trigger plug in interrupt, frequently plug in
+			 * interrupt and wakeup pd task may cause task
+			 * starvation or device dead (ex.receive lots SRC_Cap).
+			 *
+			 * After all when polling disconnect will enable
+			 * detecting plug in again.
+			 */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+#endif //DETECT_PLUG_OUT_ISR
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+#ifdef DETECT_PLUG_OUT_ISR
+			/*
+			 * When tcpc detect plug in:
+			 * If we are sink, disable it. Because sink detecting
+			 * plug out is monitoring Vbus volt by polling.
+			 * If we are source, then setting detect plug out.
+			 *
+			 * After all when polling disconnect will enable
+			 * detecting plug in again.
+			 */
+			switch_plug_out_type(port, &cc1, &cc2);
+#endif //DETECT_PLUG_OUT_ISR
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_CC, 0);
+		}
+#endif //DETECT_PLUG_IN_ISR
 	}
 }
 #endif
