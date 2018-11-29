@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "b21249ee_73c1cc76",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2018-11-29T01:37:32Z",
+      "side": 1,
+      "message": "If i understand correctly, only two masters will be on the same i2c bus, i.e, EC and PS8625. EC needs to flash the EDID before PS8625 read it out. So, what will cause the EDID EEPROM busy? If PS8625 read prior than EC in some cases, then we should fix it and shouldn\u0027t let it happens, right?",
+      "parentUuid": "2bf2eaaa_39b73c95",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "078535af_e749fb79",
         "filename": "board/karma/panel.c",
         "patchSetId": 3
