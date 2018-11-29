@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a57ac1cd_d7e1f88a",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422fbc72_123a2acf",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b438f6f_00ee8b49",
         "filename": "chip/mt_scp/build.mk",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7600aa_2df1ef67",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b438f6f_00ee8b49",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "c3b356c3_0281377a",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "\u003e Do this on one line?\n\u003e \n\u003e SCP_CLK_ON_CTRL \u003d (SCP_CLK_ON_CTRL \u0026 ~HIGH_FINAL_VAL_MASK) | 0x300;\nDone.\n\n\u003e \n\u003e And again, defining 0x300 would be nice.\nThe register setting is not described in datasheet. Probably can\u0027t do this.\n\n\u003e \n\u003e Lots of similar ones below (one line, define the reg values)",
+      "parentUuid": "68fd7255_b0114720",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "860ef1cd_97aaed88",
         "filename": "chip/mt_scp/clock.c",
         "patchSetId": 8
@@ -113,6 +167,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a591dac_8873b695",
+        "filename": "chip/mt_scp/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "860ef1cd_97aaed88",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "34b71854_7c43a269",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done. But vendor suggest to move RAM_BASE to 0x800 and use [0,0x800) as shared buffer.",
+      "parentUuid": "58559315_ab31e12c",
+      "range": {
+        "startLine": 31,
+        "startChar": 35,
+        "endLine": 31,
+        "endChar": 40
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f49ca0b_f4305b17",
         "filename": "chip/mt_scp/config_chip.h",
         "patchSetId": 8
@@ -177,6 +273,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5999481e_0696c946",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f49ca0b_f4305b17",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "e65c03b2_03333ac9",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e75c00df_14b9e48b",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e186f48_4a8a657f",
         "filename": "chip/mt_scp/gpio.c",
         "patchSetId": 8
@@ -217,6 +355,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec880634_e719a03f",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e186f48_4a8a657f",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "ca8bc894_9778c11e",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done.\nThat was part of a new gpio impl accidentally merged into this change. Thanks a lot for finding this!",
+      "parentUuid": "099d5966_efdd7472",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05ef0aa3_bfdd17e6",
         "filename": "chip/mt_scp/gpio.c",
         "patchSetId": 8
@@ -251,6 +425,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f5470db_840d9433",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05ef0aa3_bfdd17e6",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -271,6 +463,24 @@
     },
     {
       "key": {
+        "uuid": "42c215d0_6db97f01",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f001261_94c80404",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f14f5651_1a951162",
         "filename": "chip/mt_scp/gpio.c",
         "patchSetId": 8
@@ -288,6 +498,24 @@
     },
     {
       "key": {
+        "uuid": "3a4e27cb_23867772",
+        "filename": "chip/mt_scp/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14f5651_1a951162",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad0227a5_ca176486",
         "filename": "chip/mt_scp/hrtimer.c",
         "patchSetId": 8
@@ -299,6 +527,24 @@
       "writtenOn": "2018-11-21T22:18:44Z",
       "side": 1,
       "message": "I\u0027m a bit worried there might be a potential race here, if this is called between the time SCP_TIMER_VAL overflows and sys_high gets updated. E.g. if we try to read system with with interrupts disabled (which may happen, sadly...)\n\nFor now, maybe a TODO is good enough.",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f601f1bc_8432e6c3",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Add TODO. Will add timer interrupt status checking later.",
+      "parentUuid": "ad0227a5_ca176486",
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -322,6 +568,24 @@
     },
     {
       "key": {
+        "uuid": "820ac058_0a726e08",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56fc57db_0cb05cd0",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58f6706e_2763b7ac",
         "filename": "chip/mt_scp/hrtimer.c",
         "patchSetId": 8
@@ -333,6 +597,24 @@
       "writtenOn": "2018-11-21T22:18:44Z",
       "side": 1,
       "message": "Why do you need those? (and what is MCLK?) BCLK does not seem to be used?",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a65b8f2b_b11ab74b",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "This follows vendor\u0027s sample implementation. MCLK and BCLK are used by peripherals, but not timers. I will check clock tree once we get more info. Add TODO here.",
+      "parentUuid": "58f6706e_2763b7ac",
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -362,6 +644,30 @@
     },
     {
       "key": {
+        "uuid": "1e10201f_914e7305",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5149517_df776ffd",
+      "range": {
+        "startLine": 179,
+        "startChar": 9,
+        "endLine": 179,
+        "endChar": 17
+      },
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc4f271_0d25e487",
         "filename": "chip/mt_scp/registers.h",
         "patchSetId": 8
@@ -376,6 +682,24 @@
       "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6417199c_bc61f1fd",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-11-29T05:20:10Z",
+      "side": 1,
+      "message": "Done. Removed for now, will add it back once we have top clock implementation.",
+      "parentUuid": "7fc4f271_0d25e487",
+      "revId": "262821795a3dd668b4f8b2df2c5d358b65eef3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
