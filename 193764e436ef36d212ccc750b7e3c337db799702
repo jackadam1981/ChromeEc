@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "522270fe_63ebfcb1",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-11-29T17:57:38Z",
+      "side": 1,
+      "message": "This demonstrates a good use of model ID. Syndra inherits all Sona\u0027s behavior except power LED. It allows us to do it by a simple \u0026 clean change like this.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 37
+      },
+      "revId": "193764e436ef36d212ccc750b7e3c337db799702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
