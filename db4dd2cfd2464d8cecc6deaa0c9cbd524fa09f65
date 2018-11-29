@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b37cfe98_c547fb9b",
+        "filename": "driver/accelgyro_lsm6ds0.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-29T14:44:39Z",
+      "side": 1,
+      "message": "Thank you for the reference!",
+      "parentUuid": "c6c0b669_70d7bb13",
+      "range": {
+        "startLine": 122,
+        "startChar": 68,
+        "endLine": 122,
+        "endChar": 74
+      },
+      "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28068a7e_8a7878e0",
         "filename": "driver/mag_bmm150.h",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "SPECIAL is magnetometer preset used by the only board that uses the BMM150.\nOther presets are LOW_POWER, REGULAR, HIGH_ACCURACY.\nWe will alter this code when we use another preset.",
       "parentUuid": "28068a7e_8a7878e0",
+      "range": {
+        "startLine": 90,
+        "startChar": 25,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f858136_17af2d39",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-11-29T14:44:39Z",
+      "side": 1,
+      "message": "I still couldn\u0027t find where it was defined in any board file. This code it pretty hard to follow without comments",
+      "parentUuid": "66607796_d022f0d1",
       "range": {
         "startLine": 90,
         "startChar": 25,
