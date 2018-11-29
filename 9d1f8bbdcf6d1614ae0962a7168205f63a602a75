@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8028962_d8e46aa5",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 0,
+      "message": "mt6370 need this to do a quick soft-reset for battery cut-off, so please leave this as is.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 70
+      },
+      "revId": "9d1f8bbdcf6d1614ae0962a7168205f63a602a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222802c4_0d4c6316",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 0,
+      "message": "Please keep this as it. Or do you have any concern for the mt6370 part?",
+      "range": {
+        "startLine": 983,
+        "startChar": 0,
+        "endLine": 988,
+        "endChar": 49
+      },
+      "revId": "9d1f8bbdcf6d1614ae0962a7168205f63a602a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f2a4df_5b1e7545",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 0,
+      "message": "Please keep these registers, mt6370 need them for soft-reset. And also registers listed below.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "9d1f8bbdcf6d1614ae0962a7168205f63a602a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

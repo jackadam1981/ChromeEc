@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "69d7a2fd_d27725e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "ping",
+      "parentUuid": "41c86625_2930fa4a",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "9b04d32378e71cd63b7df3a2004744502ff6450b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "285e270b_03b56cad",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1

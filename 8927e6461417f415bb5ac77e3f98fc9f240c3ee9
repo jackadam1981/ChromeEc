@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f5dc3df_48cd39d9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "Apple and samsung charger are proprietary, so I would prefer not to put them here. (this is a common file shared across many boards)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db696ff_f908b819",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "You don\u0027t need this, since rv will be assigned in the following statements.",
+      "range": {
+        "startLine": 218,
+        "startChar": 7,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db69527_892bf9ae",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "You don\u0027t need this, since there is no use-before-assign case.",
+      "range": {
+        "startLine": 853,
+        "startChar": 8,
+        "endLine": 853,
+        "endChar": 12
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a4e218_06fcac27",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "also this. (and the rest \u003d 0 in this line)",
+      "range": {
+        "startLine": 856,
+        "startChar": 12,
+        "endLine": 856,
+        "endChar": 16
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a830af14_af3f640c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "How about we split this into two functions:\n\n/* Input a mt6370 charger_type and output a bc12 type */\nint rt946x_get_bc_12_device_type(int charger_type)\n{\n        switch(charger_type) {\n\tcase MT6370_CHG_TYPE_SDP:\n\tcase MT6370_CHG_TYPE_SDPNSTD:\n\t\treturn CHARGE_SUPPLIER_BC12_SDP;\n\tcase MT6370_CHG_TYPE_CDP:\n\t\treturn CHARGE_SUPPLIER_BC12_CDP;\n\tcase MT6370_CHG_TYPE_DCP:\n\t\treturn CHARGE_SUPPLIER_BC12_DCP;\n\tcase MT6370_CHG_TYPE_SAMSUNG_CHARGER:\n\t\treturn CHARGE_SUPPLIER_BC12_DCP;\n\tcase MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:\n\t\treturn CHARGE_SUPPLIER_BC12_DCP;\n\tcase MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:\n\t\treturn CHARGE_SUPPLIER_BC12_DCP;\n\tcase MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:\n\t\treturn CHARGE_SUPPLIER_BC12_DCP;\n\tcase MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:\n\t\treturn CHARGE_SUPPLIER_BC12_DCP;\n\tdefault:\n\t\treturn CHARGE_SUPPLIER_NONE;\n        }\n}\n\n/* returns a mt6370 charger_type */\nint rt946x_get_charger_type(void)\n{\n         /* ... */\n         return mt6370_detect_apple_samsung_ta(reg);\n}\n\n\nand change rt946x_get_bc12_ilim to consume a mt6370 charger_type.\n\n\nso that we can leave the apple/samsung charger stuffs in the mt6370 driver.",
+      "range": {
+        "startLine": 926,
+        "startChar": 11,
+        "endLine": 926,
+        "endChar": 38
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e17bad1_0aacbc33",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1010,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "According to the fix above, you may need to change this to\n\n  chg_type \u003d rt946x_get_charger_type();\n\n\nand\n\n  bc12_type \u003d rt946x_get_bc12_device_type(chg_type);",
+      "range": {
+        "startLine": 1010,
+        "startChar": 0,
+        "endLine": 1010,
+        "endChar": 45
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbeb3abf_aff91755",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "chg_type",
+      "range": {
+        "startLine": 1012,
+        "startChar": 39,
+        "endLine": 1012,
+        "endChar": 48
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c84da22_735507df",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-11-29T02:48:51Z",
+      "side": 1,
+      "message": "Also remove this.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 36
+      },
+      "revId": "8927e6461417f415bb5ac77e3f98fc9f240c3ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
