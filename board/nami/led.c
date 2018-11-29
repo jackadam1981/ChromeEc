@@ -199,10 +199,6 @@ static enum led_power_state power_state;
 
 static void led_init(void)
 {
-	uint32_t oem = PROJECT_NAMI;
-
-	cbi_get_oem_id(&oem);
-
 	switch (oem) {
 	case PROJECT_NAMI:
 	case PROJECT_VAYNE:
