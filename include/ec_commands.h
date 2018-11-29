@@ -4362,7 +4362,8 @@ enum ec_codec_i2s_subcmd {
 	EC_CODEC_I2S_ENABLE = 0x3,
 	EC_CODEC_I2S_SET_CONFIG = 0x4,
 	EC_CODEC_I2S_SET_TDM_CONFIG = 0x5,
-	EC_CODEC_I2S_MAX = 0x6,
+	EC_CODEC_I2S_SET_BCLK = 0x6,
+	EC_CODEC_I2S_MAX = 0x7,
 };
 
 enum ec_sample_depth_value {
@@ -4420,6 +4421,11 @@ struct __ec_todo_packed ec_param_codec_i2s{
 		        uint8_t adjacent_to_ch0;
 		        uint8_t adjacent_to_ch1;
 		} tdm_param;
+
+		/*
+		 * EC_CODEC_I2S_SET_BCLK
+		 */
+		uint32_t bclk;
 	};
 };
 
