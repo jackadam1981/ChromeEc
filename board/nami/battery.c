@@ -298,16 +298,25 @@ static int battery_check_disconnect_ti_bq40z50(void)
 		 * stop charging and avoid damaging the battery.
 		 */
 		if (disconnect_grace_period ==
-				BATTERY_DISCONNECT_GRACE_PERIOD_OVER)
+				BATTERY_DISCONNECT_GRACE_PERIOD_OVER) {
+			CPRINTS("Battery disconnect confirmed");
 			return BATTERY_DISCONNECTED;
+		}
 		if (disconnect_grace_period ==
-				BATTERY_DISCONNECT_GRACE_PERIOD_OFF)
+				BATTERY_DISCONNECT_GRACE_PERIOD_OFF) {
+			CPRINTS("Battery disconnect debouncing...");
 			hook_call_deferred(&battery_disconnect_timer_data,
-					   5 * SECOND);
-		ccprintf("Battery disconnect grace period\n");
+					   6 * SECOND);
+		}
 		disconnect_grace_period = BATTERY_DISCONNECT_GRACE_PERIOD_ON;
 		return BATTERY_DISCONNECT_ERROR;
 	}
+
+	if (disconnect_grace_period == BATTERY_DISCONNECT_GRACE_PERIOD_ON) {
+		hook_call_deferred(&battery_disconnect_timer_data, -1);
+		CPRINTS("Battery not disconnected");
+	}
+	disconnect_grace_period = BATTERY_DISCONNECT_GRACE_PERIOD_OFF;
 
 	return BATTERY_NOT_DISCONNECTED;
 }
