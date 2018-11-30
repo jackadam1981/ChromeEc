@@ -70,6 +70,30 @@
       "revId": "7a0f8874130c477fa50a3dd65cf198d7731daef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ebc61b_50c5c3a0",
+        "filename": "board/npcx7_evb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-30T10:49:50Z",
+      "side": 1,
+      "message": "Indeed, creating board version 3 which is only used to define CONFIG_WAKE_ON_VOICE seems redundant. Update patch 2 to remove the board version 3 and use CHIP_VARIANT_NPCX7M7WB to define CONFIG_WAKE_ON_VOICE as you suggested.",
+      "parentUuid": "3e2febdd_6bf9e341",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "7a0f8874130c477fa50a3dd65cf198d7731daef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
