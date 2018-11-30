@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de7f6962_66b8f66e",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-30T15:42:43Z",
+      "side": 1,
+      "message": "It might make sense to add a compile time error in case CONFIG_TABLET_MODE_SWITCH is selected, but CONFIG_TABLET_MODE isn\u0027t.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "954eff50b9d15a87b71fbf0ad919e7785215969e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
