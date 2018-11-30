@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b04ba32a_14d27d10",
+        "filename": "board/meep/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-11-30T15:59:07Z",
+      "side": 1,
+      "message": "This is actually 1P8V. But EC actually doesn\u0027t use this, so probably won\u0027t matter much.",
+      "range": {
+        "startLine": 153,
+        "startChar": 38,
+        "endLine": 153,
+        "endChar": 48
+      },
+      "revId": "06e807c78ef628e385e8a0c3ca2a25014dc12a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
