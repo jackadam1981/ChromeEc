@@ -252,3 +252,5 @@ void vboot_main(void)
 	/* Failed to jump. Need recovery. */
 	request_recovery();
 }
+
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, vboot_main, HOOK_PRIO_LAST);
