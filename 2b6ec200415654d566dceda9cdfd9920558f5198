@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ae56cab_8c5b5241",
+        "filename": "chip/npcx/audio_codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2018-11-30T09:59:46Z",
+      "side": 1,
+      "message": "Hi Scott, I verified that on my latest kernel sandbox refs/sandbox/cychiang/ec_codec_1130 , I can remove this wov_set_i2s_fmt.\n\nThanks!",
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
