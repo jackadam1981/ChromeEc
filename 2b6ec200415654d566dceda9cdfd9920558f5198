@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "2473d1b6_b52f759a",
+        "filename": "chip/npcx/audio_codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-30T23:39:49Z",
+      "side": 1,
+      "message": "It is done in build.mk. Don\u0027t need this #ifdef.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18a783ff_7fda05c1",
+        "filename": "chip/npcx/audio_codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-30T23:39:49Z",
+      "side": 1,
+      "message": "Extra space",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57faf7dd_fe5aee93",
+        "filename": "chip/npcx/audio_codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-30T23:39:49Z",
+      "side": 1,
+      "message": "Do it be an error, or implicitly disable it like this?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba4cbef_035049cd",
+        "filename": "chip/npcx/audio_codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-30T23:39:49Z",
+      "side": 1,
+      "message": "The error code of wov_set_sample_depth() has different meaning and not for host command. Can\u0027t directly return it.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8e5414_2d64eced",
+        "filename": "chip/npcx/audio_codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-30T23:39:49Z",
+      "side": 1,
+      "message": "Can just assign it to sizeof(*resp) to avoid the extra variable.",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 26
+      },
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ae56cab_8c5b5241",
         "filename": "chip/npcx/audio_codec.c",
         "patchSetId": 1
@@ -13,6 +128,52 @@
       "writtenOn": "2018-11-30T09:59:46Z",
       "side": 1,
       "message": "Hi Scott, I verified that on my latest kernel sandbox refs/sandbox/cychiang/ec_codec_1130 , I can remove this wov_set_i2s_fmt.\n\nThanks!",
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbbb4d76_78ae6110",
+        "filename": "chip/npcx/audio_codec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-30T23:39:49Z",
+      "side": 1,
+      "message": "Similar, different meaning of error code.",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33009127_643ca125",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4418,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-11-30T23:39:49Z",
+      "side": 1,
+      "message": "Probably EC_CODEC_CMD_COUNT? not some attribute related to I2S like above",
+      "range": {
+        "startLine": 4418,
+        "startChar": 10,
+        "endLine": 4418,
+        "endChar": 17
+      },
       "revId": "2b6ec200415654d566dceda9cdfd9920558f5198",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
