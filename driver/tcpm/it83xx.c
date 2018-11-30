@@ -350,6 +350,10 @@ static void it83xx_init(enum usbpd_port port, int role)
 	IT83XX_USBPD_PDMSR(port) = USBPD_REG_MASK_SOP_ENABLE;
 	/* W/C status */
 	IT83XX_USBPD_ISR(port) = 0xff;
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+	IT83XX_USBPD_TCDCR(port) |= (USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
+					USBPD_REG_PLUG_IN_OUT_DETECT_STAT);
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	/* enable cc, select cc1 and Rd. */
 	IT83XX_USBPD_CCGCR(port) = 0xd;
 	/* change data role as the same power role */
@@ -358,9 +362,14 @@ static void it83xx_init(enum usbpd_port port, int role)
 	it83xx_set_power_role(port, role);
 	/* disable all interrupts */
 	IT83XX_USBPD_IMR(port) = 0xff;
-	/* enable tx done and reset detect interrupt */
+	/* enable tx done, reset detect and type-c plug in interrupt */
 	IT83XX_USBPD_IMR(port) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
 					USBPD_REG_MASK_HARD_RESET_DETECT);
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+	IT83XX_USBPD_TCDCR(port) &= ~(USBPD_REG_MASK_TYPEC_PLUG_IN_OUT_ISR |
+					USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
+					USBPD_REG_PLUG_IN_OUT_SELECT);
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	IT83XX_USBPD_CCPSR(port) = 0xff;
 	/* cc connect */
 	IT83XX_USBPD_CCCSR(port) = 0;
@@ -581,6 +590,10 @@ static void it83xx_tcpm_sw_reset(void)
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	/* Invalidate last received message id variable */
 	invalidate_last_message_id(port);
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+	/* Enable detect type-c plug in interrupt*/
+	IT83XX_USBPD_TCDCR(port) &= ~USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }
