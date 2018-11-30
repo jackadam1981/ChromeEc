@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9c08ba0_cb853a13",
+        "filename": "chip/npcx/wov_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-30T10:58:24Z",
+      "side": 1,
+      "message": "nit: it seems like we don\u0027t need the \"*\" here.",
+      "range": {
+        "startLine": 341,
+        "startChar": 12,
+        "endLine": 341,
+        "endChar": 13
+      },
+      "revId": "737199f8d4b11e65e69e79483c2e7efdfab0d7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32cfc68f_ccb41867",
+        "filename": "chip/npcx/wov_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-11-30T10:58:24Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 342,
+        "startChar": 12,
+        "endLine": 342,
+        "endChar": 13
+      },
+      "revId": "737199f8d4b11e65e69e79483c2e7efdfab0d7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
