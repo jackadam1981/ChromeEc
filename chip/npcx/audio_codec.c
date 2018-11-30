@@ -81,11 +81,6 @@ static int codec_i2s_enable(struct host_cmd_handler_args *args)
 		/* Mode must be WOV_MODE_OFF to change sample rate */
 		wov_set_mode(WOV_MODE_OFF);
 		wov_set_sample_rate(EC_WOV_I2S_SAMPLE_RATE);
-		/*
-		 * TODO(b/): This call will not be necessary when kernel fixes
-		 * bug so that codec_i2s_set_fmt() method is called.
-		 */
-		wov_set_i2s_fmt(WOV_DAI_FMT_I2S);
 		/* Start i2s stream */
 		rv = wov_set_mode(WOV_MODE_I2S);
 	} else {
