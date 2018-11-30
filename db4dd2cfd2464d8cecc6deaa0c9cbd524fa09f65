@@ -141,6 +141,30 @@
       "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1eabd31_7a86af49",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-11-30T00:24:48Z",
+      "side": 1,
+      "message": "grep -r max_frequency board | grep SPECIAL\nboard/poppy/board.c:     .max_frequency \u003d BMM150_MAG_MAX_FREQ(SPECIAL),\nboard/reef/board.c:      .max_frequency \u003d BMM150_MAG_MAX_FREQ(SPECIAL),\nboard/eve/board.c:       .max_frequency \u003d BMM150_MAG_MAX_FREQ(SPECIAL),\nboard/reef_mchp/board.c:         .max_frequency \u003d BMM150_MAG_MAX_FREQ(SPECIAL),\nboard/kukui/board.c:     .max_frequency \u003d BMM150_MAG_MAX_FREQ(SPECIAL),\n\nBut none are using BMM150, we had placement issues.",
+      "parentUuid": "4f858136_17af2d39",
+      "range": {
+        "startLine": 90,
+        "startChar": 25,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "db4dd2cfd2464d8cecc6deaa0c9cbd524fa09f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
