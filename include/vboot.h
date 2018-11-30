@@ -49,6 +49,9 @@ int vboot_verify(const uint8_t *data, int len,
 
 /**
  * Entry point of EC EFS
+ *
+ * It runs in an anonymous context (pre-task_start) and also in a hook task.
+ * You may adjust the stack size accordingly (for RSA & SHA256).
  */
 void vboot_main(void);
 
