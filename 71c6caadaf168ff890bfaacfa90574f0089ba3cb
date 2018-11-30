@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c1928baa_ead0389f",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-30T02:33:48Z",
+      "side": 1,
+      "message": "agree.   \nWill change to HPET_MAIN_COUNTER_64.",
+      "parentUuid": "01f1930e_e8ea4883",
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6cbf3744_13d43cbd",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6551e946_2847e8d1",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-30T02:33:48Z",
+      "side": 1,
+      "message": "I think regular division operator, \u0027/\u0027, didn\u0027t work for 64bit value.  \nThis inline assembly div was recommended for better performance/optimization by Vincent in patchset3.",
+      "parentUuid": "6cbf3744_13d43cbd",
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e08112e_60267cde",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 8
@@ -47,6 +83,30 @@
       "writtenOn": "2018-10-29T18:18:09Z",
       "side": 1,
       "message": "You should be casting this value to a 64-bit number so that the result is 64-bit and set in the counter register.",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e94b70_d1085273",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-30T02:33:48Z",
+      "side": 1,
+      "message": "Yes, I will add casting.\n\nHPET_MAIN_COUNTER_64 \u003d (uint64_t)(ts * CLOCK_FACTOR);",
+      "parentUuid": "8e08112e_60267cde",
       "range": {
         "startLine": 73,
         "startChar": 21,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "b7ac5dc4_57f41c48",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-30T02:33:48Z",
+      "side": 1,
+      "message": "(uint64_t) casting will be added.\nIf you don\u0027t mind, we will find way to remove conditional flag in next CL when ISH5.0 is supported.",
+      "parentUuid": "5c445872_5d570a17",
+      "range": {
+        "startLine": 117,
+        "startChar": 21,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffcf699c_fe9ce0c4",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 8
@@ -93,6 +177,24 @@
       "writtenOn": "2018-10-29T18:18:09Z",
       "side": 1,
       "message": "I\u0027m not sure I\u0027m following this comment and constant. From what I can gather is that 0x100000000ULL \u003d\u003d 1MHz So the hpet is ticking at what rate? That seems to be very very fast where 0x100000000  ticks \u003d\u003d 1us ?",
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4093090_8e44380f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-11-30T02:33:48Z",
+      "side": 1,
+      "message": "When HOST_MAIN_COUNTER_64 and HPET_TIMER_COMP_64(0) matches, HOST_MAIN_COUNTER_64 will be cleared and then there will be an interrupt and this interrupt will update upper 64bit value of time value, \"clksrc_high\".\n\nwith 1MHz clock, when HOST_MAIN_COUNTER reaches 0xFFFF FFFF (or 0x1 0000 0000), uppper 64bit value shoould be updated(1 uSec resolution) \nWith ISH3.0, input clock is 12MHz, HOST_MAIN_COUNTER_64 should be \u002712 x\u0027 when uppper 64 bit (clksrc_high) is increase.",
+      "parentUuid": "ffcf699c_fe9ce0c4",
       "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
