@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "66c6ec7f_4239c34d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-30T17:43:01Z",
+      "side": 1,
+      "message": "Were you able to confirm that the RTC was successfully reset as well?  If I remember correctly, you may be able to see it in the eventlog timestamps",
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3aa4444e_4546b94b",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "I used other boards that does RTC reset as reference. All of them to my knowledge are using 100 usec. Hence chose that value.",
       "parentUuid": "3aa4444e_4546b94b",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f959aaaf_d7f49a93",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-11-30T17:43:01Z",
+      "side": 1,
+      "message": "Is this a value we need to get from an SoC datasheet or similar?",
+      "parentUuid": "ca9e4a16_f2fef992",
       "range": {
         "startLine": 220,
         "startChar": 8,
