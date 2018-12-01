@@ -233,9 +233,7 @@ static struct mutex g_base_mutex;
  * Motion Sense
  */
 
-struct lsm6dsm_data lsm6dsm_a_data;
-struct lsm6dsm_data lsm6dsm_g_data;
-struct lsm6dsm_data lsm6dsm_m_data;
+struct lsm6dsm_data lsm6dsm_data;
 
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
@@ -246,7 +244,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.location = MOTIONSENSE_LOC_LID,
 		.drv = &lsm6dsm_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &lsm6dsm_a_data,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+				MOTIONSENSE_TYPE_ACCEL),
 		.port = I2C_PORT_SENSOR,
 		.addr = LSM6DSM_ADDR0,
 		.rot_standard_ref = NULL,
@@ -269,7 +268,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.location = MOTIONSENSE_LOC_LID,
 		.drv = &lsm6dsm_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &lsm6dsm_g_data,
+		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+				MOTIONSENSE_TYPE_GYRO),
 		.port = I2C_PORT_SENSOR,
 		.addr = LSM6DSM_ADDR0,
 		.rot_standard_ref = NULL,
