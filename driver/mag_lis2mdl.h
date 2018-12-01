@@ -4,6 +4,7 @@
  */
 
 /* LIS2MSL magnetometer module for Chrome EC */
+#include "accelgyro.h"
 
 #ifndef __CROS_EC_MAG_LIS2MDL_H
 #define __CROS_EC_MAG_LIS2MDL_H
@@ -33,7 +34,11 @@
 #error "EC too slow for magnetometer"
 #endif
 
-extern const struct accelgyro_drv lis2mdl_drv;
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+int lis2mdl_thru_lsm6dsm_read(const struct motion_sensor_t *s, uint8_t *v);
+int lis2mdl_thru_lsm6dsm_init(const struct motion_sensor_t *s);
+#endif
+
 
 #endif /* __CROS_EC_MAG_LIS2MDL_H */
 

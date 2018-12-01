@@ -177,7 +177,7 @@ enum dev_fifo {
 	FIFO_DEV_INVALID = -1,
 	FIFO_DEV_GYRO = 0,
 	FIFO_DEV_ACCEL,
-#ifdef CONFIG_MAG_LIS2MDL
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 	FIFO_DEV_MAG,
 #endif
 	FIFO_DEV_NUM,
@@ -256,7 +256,7 @@ struct fstatus {
 
 /* FS register address/mask for Acc/Gyro sensors */
 #define LSM6DSM_RANGE_REG(_sensor)  (LSM6DSM_ACCEL_FS_ADDR + (_sensor))
-#define LSM6DSM_RANGE_MASK  		0x0c
+#define LSM6DSM_RANGE_MASK		0x0c
 
 /* Status register bitmask for Acc/Gyro data ready */
 enum lsm6dsm_status {
@@ -269,7 +269,7 @@ enum lsm6dsm_status {
 #define LSM6DSM_STS_GDA_MASK		0x02
 
 /* Sensor resolution in number of bits: fixed 16 bit */
-#define LSM6DSM_RESOLUTION      	16
+#define LSM6DSM_RESOLUTION		16
 
 extern const struct accelgyro_drv lsm6dsm_drv;
 
@@ -293,16 +293,12 @@ struct lsm6dsm_fifo_data {
 	int total_samples_in_pattern;
 };
 
-/*
- * Please refer to b:110013316, motion_sensor_t.drv_data field should
- * use this data type pointer rather than stprivate_data type pointer.
- * Use stprivate_data type will lead to random corrupted runtime data
- * since stprivate_data is smaller than required once CONFIG_ACCEL_FIFO
- * is defined.
- */
 struct lsm6dsm_data {
-	/* Must be first: ST generic accelerometer data. */
-	struct stprivate_data a_data;
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	struct stprivate_data st_data[3];
+#else
+	struct stprivate_data st_data[2];
+#endif
 #ifdef CONFIG_ACCEL_FIFO
 	struct lsm6dsm_fifo_data config;
 	struct lsm6dsm_fifo_data current;
@@ -310,10 +306,10 @@ struct lsm6dsm_data {
 #endif
 };
 
-#define LSM6DSM_MAIN_SENSOR(_s) ((_s) - (_s)->type)
+#define LSM6DSM_GET_DATA(_s) ((struct lsm6dsm_data *)((_s)->drv_data))
 
-#ifdef CONFIG_ACCEL_FIFO
-int accelgyro_config_fifo(const struct motion_sensor_t *accel);
-#endif /* CONFIG_ACCEL_FIFO */
+#define LSM6DSM_ST_DATA(g, type) (&(&(g))->st_data[(type)])
+
+#define LSM6DSM_MAIN_SENSOR(_s) ((_s) - (_s)->type)
 
 #endif /* __CROS_EC_ACCELGYRO_LSM6DSM_H */

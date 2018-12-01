@@ -188,31 +188,11 @@ static int config_slv0_read(const struct motion_sensor_t *s, uint8_t addr,
 	return EC_SUCCESS;
 }
 
-int sensorhub_set_ext_data_rate(const struct motion_sensor_t *s,
-					int rate, int rnd, int *ret_rate)
-{
-	int xl_rate;
-	int ret = EC_SUCCESS;
-
-	if (!s || s->parent)
-		return EC_ERROR_INVAL;
-
-	xl_rate = st_get_data_rate(s);
-	*ret_rate = MIN(rate, xl_rate);
-#ifdef CONFIG_ACCEL_FIFO
-	ret = accelgyro_config_fifo(s);
-#endif
-	return ret;
-}
-
 int sensorhub_config_ext_reg(const struct motion_sensor_t *s,
 				uint8_t slv_addr, uint8_t reg, uint8_t val)
 {
 	int ret;
 	int tmp;
-
-	if (!s || s->parent)
-		return EC_ERROR_INVAL;
 
 	ret = enable_i2c_pass_through(s, &tmp);
 	if (ret != EC_SUCCESS) {
@@ -231,9 +211,6 @@ int sensorhub_config_slv0_read(const struct motion_sensor_t *s,
 {
 	int tmp_xl_cfg;
 	int ret;
-
-	if (!s || s->parent)
-		return EC_ERROR_INVAL;
 
 	if (len <= 0 || len > OUT_XYZ_SIZE) {
 		CPRINTF("%s: %s type:0x%x Invalid length: %d\n",
@@ -281,13 +258,9 @@ out_restore_ctrl1:
 	return ret;
 }
 
-int sensorhub_slv0_data_read(const struct motion_sensor_t *s, intv3_t v)
+int sensorhub_slv0_data_read(const struct motion_sensor_t *s, uint8_t *raw)
 {
-	uint8_t raw[OUT_XYZ_SIZE];
 	int ret;
-
-	if (!s || s->parent)
-		return EC_ERROR_INVAL;
 
 	/*
 	 * Accel/Gyro is already reading slave 0 data into the sensorhub1
@@ -301,9 +274,6 @@ int sensorhub_slv0_data_read(const struct motion_sensor_t *s, intv3_t v)
 			__func__, s->name, s->type, ret);
 		return ret;
 	}
-
-	/* Apply precision, sensitivity and rotation vector */
-	st_normalize(s, v, raw);
 	return EC_SUCCESS;
 }
 
@@ -313,9 +283,6 @@ int sensorhub_check_and_rst(const struct motion_sensor_t *s, uint8_t slv_addr,
 {
 	int ret, tmp;
 	int tmp_master_cfg;
-
-	if (!s || s->parent)
-		return EC_ERROR_INVAL;
 
 	ret = enable_i2c_pass_through(s, &tmp_master_cfg);
 	if (ret != EC_SUCCESS) {
