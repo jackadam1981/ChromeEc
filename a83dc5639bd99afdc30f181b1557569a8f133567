@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9145b2a5_05babefe",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-12-01T01:51:05Z",
+      "side": 1,
+      "message": "Can you append \"_L\" to this to indicate that it\u0027s active low?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "a83dc5639bd99afdc30f181b1557569a8f133567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07cf3e2_b1d6d1b9",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-12-01T01:51:05Z",
+      "side": 1,
+      "message": "typo: \u0027behind\u0027",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 18
+      },
+      "revId": "a83dc5639bd99afdc30f181b1557569a8f133567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

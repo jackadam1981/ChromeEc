@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "aedb4e40_edcefd09",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-12-01T01:51:05Z",
+      "side": 1,
+      "message": "What are your thoughts about adding an API to query charge manager of the supplier type?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 52
+      },
+      "revId": "ad4cc380e3380764d389eaf7246f9d77d9f53fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e37b796_3c5ebdfb",
         "filename": "driver/pi3usb9281.h",
         "patchSetId": 2
