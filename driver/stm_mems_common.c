@@ -6,6 +6,7 @@
 /**
  * Commons acc/gyro function for ST sensors in Chrome EC
  */
+#include "accelgyro_lsm6dsm.h"
 #include "stm_mems_common.h"
 
 /**

@@ -10,8 +10,10 @@
  */
 
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/mag_lis2mdl.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "mag_cal.h"
 #include "math_util.h"
 #include "task.h"
 #include "timer.h"
@@ -71,7 +73,7 @@ static int config_interrupt(const struct motion_sensor_t *s)
  * @s: Motion sensor pointer: must be MOTIONSENSE_TYPE_ACCEL.
  * @fmode: BYPASS or CONTINUOUS
  */
-int accelgyro_fifo_disable(const struct motion_sensor_t *s)
+static int accelgyro_fifo_disable(const struct motion_sensor_t *s)
 {
 	return st_raw_write8(s->port, s->addr, LSM6DSM_FIFO_CTRL5_ADDR, 0x00);
 }
@@ -90,17 +92,19 @@ static void fifo_reset_pattern(struct lsm6dsm_data *private)
 /**
  * set_fifo_params - Configure internal FIFO parameters
  *
+ * s must be the accelerometer sensor.
+ *
  * Configure FIFO decimator to have every time the right pattern
  * with acc/gyro
  */
-int accelgyro_fifo_enable(const struct motion_sensor_t *s)
+static int accelgyro_fifo_enable(const struct motion_sensor_t *s)
 {
 	int err, i, rate;
 	uint8_t decimator[FIFO_DEV_NUM] = { 0 };
 	unsigned int min_odr = LSM6DSM_ODR_MAX_VAL;
 	unsigned int max_odr = 0;
 	uint8_t odr_reg_val;
-	struct lsm6dsm_data *private = s->drv_data;
+	struct lsm6dsm_data *private = LSM6DSM_GET_DATA(s);
 	/* In FIFO sensors are mapped in a different way. */
 	uint8_t agm_maps[] = {
 		MOTIONSENSE_TYPE_GYRO,
@@ -213,7 +217,8 @@ static int fifo_next(struct lsm6dsm_data *private)
 static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 			   uint16_t flen, uint32_t int_ts)
 {
-	struct lsm6dsm_data *private = accel->drv_data;
+	struct motion_sensor_t *s;
+	struct lsm6dsm_data *private = LSM6DSM_GET_DATA(accel);
 	/* In FIFO sensors are mapped in a different way. */
 	uint8_t agm_maps[] = {
 		MOTIONSENSE_TYPE_GYRO,
@@ -239,18 +244,28 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 			private->samples_to_discard[next_fifo]--;
 		} else {
 			id = agm_maps[next_fifo];
-			axis = (accel + id)->raw_xyz;
+			s = accel + id;
+			axis = s->raw_xyz;
 
 			/* Apply precision, sensitivity and rotation. */
-			st_normalize(accel + id, axis, fifo);
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+			if (s->type == MOTIONSENSE_TYPE_MAG) {
+				lis2mdl_normalize(s, axis, fifo);
+				rotate(axis, *s->rot_standard_ref, axis);
+			} else
+#endif
+			{
+				st_normalize(s, axis, fifo);
+			}
+
+
 			vect.data[X] = axis[X];
 			vect.data[Y] = axis[Y];
 			vect.data[Z] = axis[Z];
 
 			vect.flags = 0;
-			vect.sensor_num = accel - motion_sensors + id;
-			motion_sense_fifo_add_data(&vect, accel + id, 3,
-						   int_ts);
+			vect.sensor_num = s - motion_sensors;
+			motion_sense_fifo_add_data(&vect, s, 3, int_ts);
 		}
 
 		fifo += OUT_XYZ_SIZE;
@@ -361,19 +376,11 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 {
 	int err;
 	uint8_t ctrl_reg, reg_val;
-	/*
-	 * Since 'stprivate_data a_data;' is the first member of lsm6dsm_data,
-	 * the address of lsm6dsm_data is the same as a_data's. Using this
-	 * fact, we can do the following conversion. This conversion is equal
-	 * to:
-	 *     struct lsm6dsm_data *lsm_data = s->drv_data;
-	 *     struct stprivate_data *data = &lsm_data->a_data;
-	 */
 	struct stprivate_data *data = s->drv_data;
 	int newrange = range;
 
-	ctrl_reg = LSM6DSM_RANGE_REG(s->type);
-	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
+	switch (s->type) {
+	case MOTIONSENSE_TYPE_ACCEL:
 		/* Adjust and check rounded value for acc. */
 		if (rnd && (newrange < LSM6DSM_ACCEL_NORMALIZE_FS(newrange)))
 			newrange *= 2;
@@ -382,7 +389,8 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 			newrange = LSM6DSM_ACCEL_FS_MAX_VAL;
 
 		reg_val = LSM6DSM_ACCEL_FS_REG(newrange);
-	} else {
+		break;
+	case MOTIONSENSE_TYPE_GYRO:
 		/* Adjust and check rounded value for gyro. */
 		reg_val = LSM6DSM_GYRO_FS_REG(range);
 		if (rnd && (range > LSM6DSM_GYRO_NORMALIZE_FS(reg_val)))
@@ -391,16 +399,19 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 		if (reg_val > LSM6DSM_GYRO_FS_MAX_REG_VAL)
 			reg_val = LSM6DSM_GYRO_FS_MAX_REG_VAL;
 		newrange = LSM6DSM_GYRO_NORMALIZE_FS(reg_val);
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
 	}
 
+	ctrl_reg = LSM6DSM_RANGE_REG(s->type);
 	mutex_lock(s->mutex);
 	err = st_write_data_with_mask(s, ctrl_reg, LSM6DSM_RANGE_MASK, reg_val);
 	if (err == EC_SUCCESS)
 		/* Save internally gain for speed optimization. */
 		data->base.range = newrange;
 	mutex_unlock(s->mutex);
-
-	return EC_SUCCESS;
+	return err;
 }
 
 /**
@@ -411,38 +422,22 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
  */
 static int get_range(const struct motion_sensor_t *s)
 {
-	/*
-	 * Since 'stprivate_data a_data;' is the first member of lsm6dsm_data,
-	 * the address of lsm6dsm_data is the same as a_data's. Using this
-	 * fact, we can do the following conversion. This conversion is equal
-	 * to:
-	 *     struct lsm6dsm_data *lsm_data = s->drv_data;
-	 *     struct stprivate_data *data = &lsm_data->a_data;
-	 */
 	struct stprivate_data *data = s->drv_data;
 
 	return data->base.range;
 }
 
 /**
- * set_data_rate
+ * lsm6dsm_set_data_rate
  * @s: Motion sensor pointer
  * @range: Rate (mHz)
  * @rnd: Round up/down flag
  *
  * For mag in cascade with lsm6dsm/l we use acc trigger and FIFO decimator
  */
-static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
+int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 {
-	int ret, normalized_rate = 0;
-	/*
-	 * Since 'stprivate_data a_data;' is the first member of lsm6dsm_data,
-	 * the address of lsm6dsm_data is the same as a_data's. Using this
-	 * fact, we can do the following conversion. This conversion is equal
-	 * to:
-	 *     struct lsm6dsm_data *lsm_data = s->drv_data;
-	 *     struct stprivate_data *data = &lsm_data->a_data;
-	 */
+	int ret = EC_SUCCESS, normalized_rate = 0;
 	struct stprivate_data *data = s->drv_data;
 	uint8_t ctrl_reg, reg_val = 0;
 
@@ -454,7 +449,6 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 		return ret;
 	}
 #endif
-	ctrl_reg = LSM6DSM_ODR_REG(s->type);
 	if (rate > 0) {
 		reg_val = LSM6DSM_ODR_TO_REG(rate);
 		normalized_rate = LSM6DSM_REG_TO_ODR(reg_val);
@@ -465,12 +459,40 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 		}
 		if (normalized_rate < LSM6DSM_ODR_MIN_VAL ||
 		    normalized_rate > MIN(LSM6DSM_ODR_MAX_VAL,
-			    CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ))
+				CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ))
 			return EC_RES_INVALID_PARAM;
 	}
 
-	mutex_lock(s->mutex);
-	ret = st_write_data_with_mask(s, ctrl_reg, LSM6DSM_ODR_MASK, reg_val);
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	/*
+	 * TODO(b:110143516) Improve data rate selection:
+	 * Sensor is always running at 100Hz, even when not used.
+	 */
+	if (s->type == MOTIONSENSE_TYPE_MAG) {
+		struct mag_cal_t *cal = LIS2MDL_CAL(s);
+
+		init_mag_cal(cal);
+		/*
+		 * Magnetometer ODR is calculating at 100Hz, but we are reading
+		 * less often.
+		 */
+		if (normalized_rate > 0)
+			cal->batch_size = MAX(
+				MAG_CAL_MIN_BATCH_SIZE,
+				(normalized_rate * 1000) /
+					MAG_CAL_MIN_BATCH_WINDOW_US);
+		else
+			cal->batch_size = 0;
+		CPRINTS("Batch size: %d", cal->batch_size);
+		mutex_lock(s->mutex);
+	} else
+#endif
+	{
+		mutex_lock(s->mutex);
+		ctrl_reg = LSM6DSM_ODR_REG(s->type);
+		ret = st_write_data_with_mask(s, ctrl_reg, LSM6DSM_ODR_MASK,
+					      reg_val);
+	}
 	if (ret == EC_SUCCESS) {
 		data->base.odr = normalized_rate;
 #ifdef CONFIG_ACCEL_FIFO
@@ -531,27 +553,19 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	xyz_reg = get_xyz_reg(s->type);
 
 	/* Read data bytes starting at xyz_reg. */
-	ret = st_raw_read_n_noinc(s->port, s->addr, xyz_reg, raw, OUT_XYZ_SIZE);
+	ret = st_raw_read_n_noinc(s->port, s->addr, xyz_reg, raw,
+			OUT_XYZ_SIZE);
 	if (ret != EC_SUCCESS)
 		return ret;
 
 	/* Apply precision, sensitivity and rotation vector. */
 	st_normalize(s, v, raw);
-
 	return EC_SUCCESS;
 }
 
 static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
-	/*
-	 * Since 'stprivate_data a_data;' is the first member of lsm6dsm_data,
-	 * the address of lsm6dsm_data is the same as a_data's. Using this
-	 * fact, we can do the following conversion. This conversion is equal
-	 * to:
-	 *     struct lsm6dsm_data *lsm_data = s->drv_data;
-	 *     struct stprivate_data *data = &lsm_data->a_data;
-	 */
 	struct stprivate_data *data = s->drv_data;
 	uint8_t ctrl_reg, reg_val = 0;
 
@@ -592,12 +606,7 @@ static int init(const struct motion_sensor_t *s)
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
-#ifdef CONFIG_MAG_LIS2MDL
-		/*
-		 * TODO: Check for pass-through mode instead of magnetometer
-		 * config.
-		 */
-
+#ifdef CONFIG_LSM6DSM_SEC_I2C
 		/*
 		 * Reboot to reload memory content as pass-through mode can get
 		 * stuck.
@@ -669,7 +678,7 @@ const struct accelgyro_drv lsm6dsm_drv = {
 	.set_range = set_range,
 	.get_range = get_range,
 	.get_resolution = st_get_resolution,
-	.set_data_rate = set_data_rate,
+	.set_data_rate = lsm6dsm_set_data_rate,
 	.get_data_rate = st_get_data_rate,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
