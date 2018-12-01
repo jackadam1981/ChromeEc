@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9508d601_d5c2224c",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-01T01:29:02Z",
+      "side": 1,
+      "message": "Revoking more certificates. \nWith CTRL1 revoked, the encrypt attempt won\u0027t get error, but will be processed with a random key.\n\nThe detail about behavior difference is b/67419184#15.",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 47
+      },
+      "revId": "5c75f4aa838b09f923623a9cd4c6cdf9fe1f5633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
