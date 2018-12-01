@@ -22,6 +22,30 @@
       "revId": "954eff50b9d15a87b71fbf0ad919e7785215969e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3209230e_f4a438b8",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-01T01:01:14Z",
+      "side": 1,
+      "message": "It\u0027s kind of \"built-in\" now. After removing the inline, build will just fail as CONFIG_TABLET_MODE_SWITCH code will try to call tablet_get_mode.",
+      "parentUuid": "de7f6962_66b8f66e",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 26
+      },
+      "revId": "954eff50b9d15a87b71fbf0ad919e7785215969e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
