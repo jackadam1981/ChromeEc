@@ -22,6 +22,52 @@
       "revId": "ba869b76c01d0c6faf36e2fc0e53114f50d46b68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0095b9d_a768725b",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-12-02T14:30:54Z",
+      "side": 1,
+      "message": "Code looks OK.\nConsider to call to wov_under_over_error_handler function prior calling to wov_i2s_fifo_reset, in order to reset the FIFO lately as possible.",
+      "range": {
+        "startLine": 629,
+        "startChar": 35,
+        "endLine": 630,
+        "endChar": 0
+      },
+      "revId": "ba869b76c01d0c6faf36e2fc0e53114f50d46b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9076de11_7295b8fd",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-12-02T14:30:54Z",
+      "side": 1,
+      "message": "Code looks OK.\nConsider to call to wov_under_over_error_handler function prior calling to wov_i2s_fifo_reset, in order to reset the FIFO lately as possible.",
+      "range": {
+        "startLine": 637,
+        "startChar": 36,
+        "endLine": 638,
+        "endChar": 0
+      },
+      "revId": "ba869b76c01d0c6faf36e2fc0e53114f50d46b68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
