@@ -62,6 +62,30 @@
       "revId": "db546874301f01986bbcd637f572d4a2b44ddb61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e470b556_2183d3ba",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2018-12-03T07:48:20Z",
+      "side": 1,
+      "message": "I figured `debug_printf` was a slightly more descriptive name.  But I can change it back to `debug`.",
+      "parentUuid": "5333da1f_728c9b2e",
+      "range": {
+        "startLine": 229,
+        "startChar": 12,
+        "endLine": 229,
+        "endChar": 25
+      },
+      "revId": "db546874301f01986bbcd637f572d4a2b44ddb61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
