@@ -10,7 +10,7 @@ test-list-y=pingpong timer_calib timer_dos timer_jump mutex utils utils_str
 #disable: powerdemo
 
 test-list-$(BOARD_BDS)+=
-test-list-$(BOARD_PIT)+=kb_scan stress
+test-list-$(BOARD_PIT)+= kb_scan stress
 
 # Samus has board-specific chipset code, and the tests don't
 # compile with it. Disable them for now.
@@ -61,6 +61,7 @@ test-list-host += lightbar
 test-list-host += math_util
 test-list-host += motion_lid
 test-list-host += mutex
+test-list-host += npcx_i2c_over_lpc
 test-list-host += nvmem
 test-list-host += nvmem_vars
 test-list-host += pingpong
@@ -104,6 +105,7 @@ lightbar-y=lightbar.o
 math_util-y=math_util.o
 motion_lid-y=motion_lid.o
 mutex-y=mutex.o
+npcx_i2c_over_lpc-y=npcx_i2c_over_lpc.o
 nvmem-y=nvmem.o
 nvmem_vars-y=nvmem_vars.o
 pingpong-y=pingpong.o
