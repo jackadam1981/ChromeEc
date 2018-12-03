@@ -117,6 +117,20 @@ int system_is_reboot_warm(void)
 
 void chip_pre_init(void)
 {
+	int i;
+
+	/* bit0, EC is in smb-dbgr debug mode mode */
+	if (IT83XX_GCTRL_DBGROS & (1 << 0)) {
+		/*
+		 * Wait 1 seconds if EC is in DBGR mode.
+		 * EC will be stayed here (no following sequence, eg:
+		 * enable watchdog/write protect...) if EC receives the
+		 * command of entering follow mode from iteflash.
+		 */
+		for (i = 0; i < 0x10000; i++)
+			/* delay ~15.25us */
+			IT83XX_GCTRL_WNCKR = 0;
+	}
 }
 
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */
