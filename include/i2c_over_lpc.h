@@ -10,8 +10,10 @@
 #define __CROS_EC_I2C_OVER_LPC_H
 
 #include "common.h"
+
 #ifndef TEST_BUILD
 #include "chip/npcx/lpc_chip.h"
+#define NPCX_IOL_SEM         NPCX_SHAW_SEM(1)
 #else
 #define NPCX_IOL_SEM         msg_from_host->semaphore
 #endif
@@ -63,6 +65,7 @@ struct __packed npcx_iol_msg {
 
 enum npcx_iol_state {
 	IOL_IDLE,
+	IOL_HOST_COMMAND_IN_PROGESS,
 	IOL_HOST_REQUEST_ACK,
 	IOL_HOST_REQUEST_CONT_ACK,
 	IOL_CORE_SEND_BEGIN,

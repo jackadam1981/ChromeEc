@@ -1038,6 +1038,10 @@ enum NPCX_PMC_PWDWN_CTL_T {
 #define NPCX_SMC_CTL_HOSTWAIT            7
 #define NPCX_FLASH_SIZE_STALL_HOST       6
 #define NPCX_FLASH_SIZE_RD_BURST         7
+#define NPCX_SHCFG_IMAEN                 0
+#define NPCX_SHCFG_IMA_DIS               5
+#define NPCX_SHCFG_SEMW2_DIS             6
+#define NPCX_SHCFG_SEMW1_DIS             7
 #define NPCX_WIN_PROT_RW1L_RP            0
 #define NPCX_WIN_PROT_RW1L_WP            1
 #define NPCX_WIN_PROT_RW1H_RP            2
@@ -1057,6 +1061,10 @@ enum NPCX_PMC_PWDWN_CTL_T {
 #define NPCX_DP80CTL_SYNCEN              1
 #define NPCX_DP80CTL_RFIFO               4
 #define NPCX_DP80CTL_CIEN                5
+#define NPCX_HOFS1R_IE                   0
+#define NPCX_HOFS1W_IE                   1
+#define NPCX_HOFS2R_IE                   2
+#define NPCX_HOFS2W_IE                   3
 
 /******************************************************************************/
 /* KBC Registers */
