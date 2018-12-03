@@ -10,8 +10,10 @@
 #define __CROS_EC_I2C_OVER_LPC_H
 
 #include "common.h"
+
 #ifndef TEST_BUILD
 #include "chip/npcx/lpc_chip.h"
+#define NPCX_IOL_SEM         NPCX_SHAW_SEM(1)
 #else
 #define LPC_HOST_MEM_WINDW_SIZE 32
 #define NPCX_IOL_SEM         msg_from_host->semaphore

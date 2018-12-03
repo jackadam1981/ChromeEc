@@ -18,6 +18,13 @@
 uint8_t *lpc_get_memmap_range(void);
 
 /**
+ * Return a pointer to the host command range buffer.
+ *
+ * This buffer is under control of the lpc host command handler.
+ */
+uint8_t *lpc_get_mem_host_cmd_range(void);
+
+/**
  * Return true if keyboard data is waiting for the host to read (TOH is still
  * set).
  */
