@@ -335,6 +335,11 @@
 /* Current version of ACPI memory address space */
 #define EC_ACPI_MEM_VERSION_CURRENT 2
 
+/*
+ * Define the HID Descriptor Address used for querying the HID descriptor
+ * of the device served by the Nuvoton pseudo i2c controller.
+ */
+#define EC_ACPI_HID_DESCRIPTOR_ADDR 0x10
 
 /*
  * This header file is used in coreboot both in C and ACPI code.  The ACPI code
@@ -3777,6 +3782,21 @@ struct __ec_align1 ec_params_reboot_ec {
  * for details.
  */
 #define EC_CMD_GET_PANIC_INFO 0x00D3
+
+/*
+ * Switch to Alternate OS Mode.
+ *
+ * Indicate the host OS will not have a cros ec stack. It may have an alternate
+ * way to communicate to the EC. For instance, Nuvoton EC can use a proprietary
+ * protocol to present an i2c controller to the host.
+ */
+#define EC_CMD_CROS_TO_ALTERNATE 0x00D4
+
+/*
+ * Simple Host command protocol V1 must be used when switching back to cros_ec
+ * mode, as their memory window used for commands is taken over.
+ */
+#define EC_CMD_ALTERNATE_TO_CROS 0x00D5
 
 /*****************************************************************************/
 /*
