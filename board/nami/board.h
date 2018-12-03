@@ -321,6 +321,13 @@ extern uint16_t board_version;
 extern uint8_t oem;
 extern uint32_t sku;
 
+/* Specific prevention of disabling I2C passthru for Nami
+ * TODO(b/120265210): Remove once there is a long-term solution landed.
+ */
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+#error "Please look on the status of b/120265210 before set this flag."
+#endif /* CONFIG_I2C_PASSTHRU_RESTRICTED */
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
