@@ -47,6 +47,8 @@ static struct option long_opts[] = {
 
 const char help_str[] =
 	"Commands:\n"
+	"  altmode <on>\n"
+	"      Enable/Disable AltOS mode.\n"
 	"  autofanctrl <on>\n"
 	"      Turn on automatic fan speed control.\n"
 	"  backlight <enabled>\n"
@@ -1929,6 +1931,38 @@ static int get_num_fans(void)
 	}
 
 	return idx;
+}
+
+int cmd_alt_os_mode(int argc, char *argv[])
+{
+	int enable, rv;
+	char *e;
+
+	if (argc != 2) {
+		printf("Usage: %s 0|1\n", argv[0]);
+		return -1;
+	}
+	enable = strtol(argv[1], &e, 0);
+	if ((e && *e) || (enable < 0) || (enable > 1)) {
+		printf("Usage: %s 0|1\n", argv[0]);
+		return -1;
+	}
+	/* Request I/O privilege */
+	if (iopl(3) < 0) {
+		perror("Error getting I/O privilege");
+		return -3;
+	}
+
+	if (enable) {
+		rv = ec_command(EC_CMD_CROS_TO_ALTERNATE, 0, NULL, 0, NULL, 0);
+	} else {
+		/* Use V1 protocol */
+		outb(EC_CMD_ALTERNATE_TO_CROS, EC_LPC_ADDR_HOST_CMD);
+		usleep(10000);
+		rv = inb(EC_LPC_ADDR_HOST_DATA);
+	}
+	printf("%s: return value %d\n", argv[0], rv);
+	return -1;
 }
 
 int cmd_thermal_auto_fan_ctrl(int argc, char *argv[])
@@ -7198,6 +7232,7 @@ int cmd_pd_write_log(int argc, char *argv[])
 
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"altmode", cmd_alt_os_mode},
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
 	{"backlight", cmd_lcd_backlight},
 	{"battery", cmd_battery},
