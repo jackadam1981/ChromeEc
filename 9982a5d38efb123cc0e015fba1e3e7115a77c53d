@@ -93,6 +93,30 @@
       "revId": "9982a5d38efb123cc0e015fba1e3e7115a77c53d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d895c2a_5ede16f1",
+        "filename": "chip/ish/ish_i2c.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T18:11:25Z",
+      "side": 1,
+      "message": "We can change in a follow up CL, that is fine. Thank you",
+      "parentUuid": "3c8ac55b_964f3012",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "9982a5d38efb123cc0e015fba1e3e7115a77c53d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
