@@ -69,6 +69,13 @@
 #define USB_PD_PORT_PS8751	0
 #define USB_PD_PORT_ANX7447	1
 
+/* Specific prevention of disabling I2C passthru for Nami
+ * TODO(b/120265210): Remove once there is an alternative landed.
+ */
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+#error "Please look on the status of b/120265210 before set this flag."
+#endif /* CONFIG_I2C_PASSTHRU_RESTRICTED */
+
 uint16_t board_version;
 uint8_t oem = PROJECT_NAMI;
 uint32_t sku;
