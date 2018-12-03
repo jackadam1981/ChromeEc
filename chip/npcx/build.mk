@@ -33,6 +33,7 @@ chip-$(CONFIG_HOSTCMD_SPS)+=shi.o
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
+chip-$(HAS_TASK_IOLCMD)+=i2c_over_lpc.o
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 
 # spi flash program fw for openocd

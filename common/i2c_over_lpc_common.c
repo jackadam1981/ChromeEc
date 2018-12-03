@@ -116,6 +116,15 @@ void npcx_iol_task(void *u)
 		sem = NPCX_IOL_SEM;
 		CPRINTS("In state %d, sem 0x%02x, event 0x%08x",
 			npcx_iol_msg_state, sem, event);
+		if (npcx_iol_msg_state == IOL_HOST_COMMAND_IN_PROGESS) {
+			/*
+			 * A crosec host command is in progress.
+			 * It has priority over I2C over LPC, so ignore that
+			 * command.
+			 */
+			continue;
+		}
+
 		if ((sem & NPCX_IOL_HOST_REQUEST) &&
 		    (npcx_iol_msg_state != IOL_IDLE)) {
 			/*
