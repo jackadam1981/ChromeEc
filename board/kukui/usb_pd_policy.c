@@ -63,10 +63,18 @@ int board_vbus_source_enabled(int port)
 int pd_set_power_supply_ready(int port)
 {
 
+#ifdef BOARD_FLAPJACK
+	gpio_set_level(GPIO_NCP3902_EN,1);
+#else
 	pd_set_vbus_discharge(port, 0);
+#endif
 	/* Provide VBUS */
 	vbus_en = 1;
+#ifdef BOARD_FLAPJACK
+	gpio_set_level(GPIO_EN_PP5000_USBC,1);
+#else
 	charger_enable_otg_power(1);
+#endif
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -81,10 +89,17 @@ void pd_power_supply_reset(int port)
 	prev_en = vbus_en;
 	/* Disable VBUS */
 	vbus_en = 0;
+#ifdef BOARD_FLAPJACK
+	if (prev_en){
+		gpio_set_level(GPIO_EN_PP5000_USBC,0);
+		gpio_set_level(GPIO_NCP3902_EN,0);
+	}
+#else
 	charger_enable_otg_power(0);
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
 		pd_set_vbus_discharge(port, 1);
+#endif
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
