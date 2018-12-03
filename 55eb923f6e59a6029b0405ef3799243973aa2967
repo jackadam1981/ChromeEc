@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bf1f9c9_fe1ba542",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T18:18:34Z",
+      "side": 1,
+      "message": "transmit",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "55eb923f6e59a6029b0405ef3799243973aa2967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3fe02d9_668b8c02",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T18:18:34Z",
+      "side": 1,
+      "message": "why split up these register accesses from line 354?\n\nAlso, can you add more comments explain what and why you are updating this register",
+      "revId": "55eb923f6e59a6029b0405ef3799243973aa2967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e168f84_991a4385",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T18:18:34Z",
+      "side": 1,
+      "message": "can you add\n\", since the USB-C task has detected a physical disconnected \"",
+      "range": {
+        "startLine": 594,
+        "startChar": 33,
+        "endLine": 594,
+        "endChar": 42
+      },
+      "revId": "55eb923f6e59a6029b0405ef3799243973aa2967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
