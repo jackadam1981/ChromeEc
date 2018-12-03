@@ -62,11 +62,18 @@ int board_vbus_source_enabled(int port)
 
 int pd_set_power_supply_ready(int port)
 {
-
-	pd_set_vbus_discharge(port, 0);
-	/* Provide VBUS */
-	vbus_en = 1;
-	charger_enable_otg_power(1);
+	if(system_get_board_version() >= 3){
+		gpio_set_level(GPIO_PP1800_S3_EN,1);
+		/* Provide VBUS */
+		vbus_en = 1;
+		gpio_set_level(GPIO_PP3300_S3_EN,1);
+	}else{
+		pd_set_vbus_discharge(port, 1);
+		/* Provide VBUS */
+		vbus_en = 1;
+		//charger_enable_otg_power(1);
+		gpio_set_level(GPIO_USB_ID,0);
+	}
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -81,10 +88,21 @@ void pd_power_supply_reset(int port)
 	prev_en = vbus_en;
 	/* Disable VBUS */
 	vbus_en = 0;
-	charger_enable_otg_power(0);
+	if(system_get_board_version() >= 3){
+		if (prev_en){
+			gpio_set_level(GPIO_PP3300_S3_EN,0);
+			gpio_set_level(GPIO_PP1800_S3_EN,0);
+		}
+	}else{
+		if (prev_en){
+			gpio_set_level(GPIO_USB_ID,1);
+			pd_set_vbus_discharge(port, 0);
+		}
+	}
+	//charger_enable_otg_power(0);
 	/* Enable discharge if we were previously sourcing 5V */
-	if (prev_en)
-		pd_set_vbus_discharge(port, 1);
+	//if (prev_en)
+	//	pd_set_vbus_discharge(port, 1);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);

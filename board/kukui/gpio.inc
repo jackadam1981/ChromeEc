@@ -107,7 +107,7 @@ GPIO(USB_C0_DP_OE_L,       PIN(C, 5),  GPIO_OUT_HIGH)
 GPIO(OTG_EN,               PIN(A, 6),  GPIO_OUT_LOW)
 #elif BOARD_REV >= 1
 GPIO(USB_C0_DP_OE_L,       PIN(A, 5),  GPIO_OUT_HIGH)
-GPIO(USB_ID,               PIN(A, 13), GPIO_ODR_HIGH)
+GPIO(USB_ID,               PIN(A, 13), GPIO_OUT_HIGH)
 #endif
 
 /* USART1: PA9/PA10 */
