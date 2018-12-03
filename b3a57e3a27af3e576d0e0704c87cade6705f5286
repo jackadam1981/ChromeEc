@@ -125,6 +125,420 @@
     },
     {
       "key": {
+        "uuid": "b83b4b58_bc3b8304",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "where can I find a document for this? Also can you point me to the datasheets I need to review this?\n\nIf you could put them in a ISH tab in the MoW doc (Ravi Yerraguntla uploads them)",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0a4d4f1_dd18791a",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "what does if mean here? Can you add more comments here please",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e266a0ee_443f2724",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "can you add a comment as to why and when you would do this (does is send an interrupt on the Host)?",
+      "range": {
+        "startLine": 197,
+        "startChar": 19,
+        "endLine": 197,
+        "endChar": 44
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16879cba_ce70e170",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "Can you add a comment saying that we write 32-bits at a time until we we have less than 32-bit left then we write in 8-bit increments",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e7c51d9_e1b95c42",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "Let\u0027s bounds check this payload_size to ensure that it will fit in a ipc_msg struct",
+      "range": {
+        "startLine": 242,
+        "startChar": 35,
+        "endLine": 242,
+        "endChar": 47
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4453b02d_935fa306",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "why the unbalanced mutex unlock?",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 33
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d23407a4_6009818a",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "Can you file a new partner issue to track this TODO please?",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 357,
+        "endChar": 71
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8121dd75_e5301945",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "since these prints are compiled out most of the time, do you think it would be worth printing different message until a max size violation versus a disabled protocol ignore?",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 24
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3952839_94261375",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "do you need to protect his queue access in a mutex? If not can you add comments to why not",
+      "range": {
+        "startLine": 405,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 27
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10ca30c_a6c2c80b",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "we shouldn\u0027t fix this in this CL, but the style of EC code is to make the IPC_PISR define itself the register instead of wrapping it in REG32\n\ne.g.\nuint32_t pisr \u003d IPC_PISR;",
+      "range": {
+        "startLine": 435,
+        "startChar": 17,
+        "endLine": 435,
+        "endChar": 22
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6032f2d1_595d77c1",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "why do you have to check the mask register as well? Won\u0027t the bit in pisr not be set if the mask register didn\u0027t allow it?",
+      "range": {
+        "startLine": 439,
+        "startChar": 40,
+        "endLine": 439,
+        "endChar": 44
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2bdedf_d1284a8d",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "why reuse the same method for both irqs? Why not create 2 target methods, one for each IRQ?",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 0
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc2f5ad_32516f48",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "do you need to do this check in the mutex lock? If not, it could be an early return without the need for a mutex unlock",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 40
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84735ad5_3865d97f",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "Can the IPC_BUILD_HANDLE return an invalid handle. The code doesn\u0027t seem to be able to return invalid here. I might be missing the intent of the comment though.",
+      "range": {
+        "startLine": 534,
+        "startChar": 1,
+        "endLine": 534,
+        "endChar": 51
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6893bd6d_cbba7be3",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "should we add what type of message it was (the drbl)?",
+      "range": {
+        "startLine": 551,
+        "startChar": 19,
+        "endLine": 551,
+        "endChar": 26
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f539ef1_696a3042",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "for the following functions, please add function comment headers explain what task context you expect the methods to be called in:\n\nipc_read\ndo_ipc_read\nipc_read_nonblock",
+      "range": {
+        "startLine": 620,
+        "startChar": 8,
+        "endLine": 620,
+        "endChar": 19
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e271497_326972b5",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "while (1)",
+      "range": {
+        "startLine": 668,
+        "startChar": 1,
+        "endLine": 668,
+        "endChar": 11
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4435704b_e3fced13",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "Please create a partner issue for this TODO",
+      "range": {
+        "startLine": 685,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 4
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33524028_2061aa9c",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 5

@@ -342,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "ca744041_08fc1e64",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "\"typedef enum\" to define an enum never occurs in the entire EC codebase. This is just a style decision make by the EC codebase, and it is worthwhile enforcing a consistent style throughout the codebase.",
+      "parentUuid": "e8c2dff2_f2a79233",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dd67a5e_cbd4eda1",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
@@ -476,6 +500,53 @@
         "startChar": 3,
         "endLine": 58,
         "endChar": 66
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5a1935_9e15b4fc",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "I believe that this doorbell communication will be the basis for the the host communication commands (https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/ec_commands.h).\n\nThe host communication does not always happen on the same \"IPC\" task. Sometime is happens on another task.\n\nI don\u0027t think we need a callback. I was wondering what makes this code not task (thread) safe? Should we add a few more mutex locks or atomic operations perhaps?",
+      "parentUuid": "8c2c4872_7e1d351b",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc0874a_6855ebf1",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T23:17:38Z",
+      "side": 1,
+      "message": "we can have a single method that takes in a timeout. -1 is typical for INDEFINTE, and 0 is used for no wait. Thoughts?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 71
       },
       "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
