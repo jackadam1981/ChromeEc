@@ -541,6 +541,13 @@ static void cbi_init(void)
  */
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_ADC + 1);
 
+static void sensor_init(void)
+{
+	if (!board_is_convertible())
+		motion_sensor_count = 0;
+}
+DECLARE_HOOK(HOOK_INIT, sensor_init, HOOK_PRIO_DEFAULT);
+
 uint32_t system_get_sku_id(void)
 {
 	return sku_id;
@@ -557,7 +564,10 @@ int board_get_version(void)
  */
 static int board_is_convertible(void)
 {
-	return system_get_sku_id() == 6;
+	uint32_t sku = system_get_sku_id();
+
+	/* Kasumi: 0x50 ~ 0x5F */
+	return (sku == 6 || (sku >= 0x50 && sku <= 0x5F));
 }
 
 int board_is_lid_angle_tablet_mode(void)
