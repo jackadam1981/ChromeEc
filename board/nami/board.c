@@ -33,6 +33,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "isl923x.h"
+#include "keyboard_8042_sharedlib.h"
 #include "keyboard_backlight.h"
 #include "keyboard_config.h"
 #include "keyboard_raw.h"
@@ -931,6 +932,13 @@ struct keyboard_scan_config keyscan_config = {
 	},
 };
 
+#define swap(a, b) \
+	do { \
+		long t = (a); \
+		(a) = (b); \
+		(b) = t; \
+	} while (0) \
+
 static void board_init(void)
 {
 	int reg;
@@ -977,6 +985,13 @@ static void board_init(void)
 		keyscan_config.actual_key_mask[12] = 0xca;
 	}
 #endif
+	if (sku & SKU_ID_MASK_UK2)
+		/*
+		 * Observed on Shyvana with UK keyboard,
+		 *   \|:     0x0061->0x61->0x56
+		 *   r-ctrl: 0xe014->0x14->0x1d
+		 */
+		swap(scancode_set2[0][4], scancode_set2[7][2]);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
