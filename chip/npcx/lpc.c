@@ -59,13 +59,14 @@
 #define LPC_HOST_TRANSACTION_TIMEOUT_US 5
 #endif
 
+
 static uint32_t host_events;            /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];          /* Event masks for each type */
 static struct	host_packet lpc_packet;
 static struct	host_cmd_handler_args host_cmd_args;
 static uint8_t	host_cmd_flags;         /* Flags from host command */
-static uint8_t	shm_mem_host_cmd[256] __aligned(8);
-static uint8_t	shm_memmap[256] __aligned(8);
+static uint8_t	shm_mem_host_cmd[LPC_HOST_MEM_WINDW_SIZE] __aligned(8);
+static uint8_t	shm_memmap[LPC_HOST_MEM_WINDW_SIZE] __aligned(8);
 /* Params must be 32-bit aligned */
 static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
@@ -249,6 +250,11 @@ uint8_t *lpc_get_memmap_range(void)
 	return (uint8_t *)shm_memmap;
 }
 
+uint8_t *lpc_get_mem_host_cmd_range(void)
+{
+	return (uint8_t *)shm_mem_host_cmd;
+}
+
 static void lpc_send_response(struct host_cmd_handler_args *args)
 {
 	uint8_t *out;
@@ -266,25 +272,28 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 		size = 0;
 	}
 
-	/* New-style response */
-	lpc_host_args->flags =
+	if (args->response_max != 0) {
+		/* New-style response */
+		lpc_host_args->flags =
 			(host_cmd_flags & ~EC_HOST_ARGS_FLAG_FROM_HOST) |
 			EC_HOST_ARGS_FLAG_TO_HOST;
 
-	lpc_host_args->data_size = size;
+		lpc_host_args->data_size = size;
 
-	csum = args->command + lpc_host_args->flags +
+		csum = args->command + lpc_host_args->flags +
 			lpc_host_args->command_version +
 			lpc_host_args->data_size;
 
-	for (i = 0, out = (uint8_t *)args->response; i < size; i++, out++)
-		csum += *out;
+		for (i = 0, out = (uint8_t *)args->response; i < size;
+		     i++, out++)
+			csum += *out;
 
-	lpc_host_args->checksum = (uint8_t)csum;
+		lpc_host_args->checksum = (uint8_t)csum;
 
-	/* Fail if response doesn't fit in the param buffer */
-	if (size > EC_PROTO2_MAX_PARAM_SIZE)
-		args->result = EC_RES_INVALID_RESPONSE;
+		/* Fail if response doesn't fit in the param buffer */
+		if (size > EC_PROTO2_MAX_PARAM_SIZE)
+			args->result = EC_RES_INVALID_RESPONSE;
+	}
 
 	/* Write result to the data byte.  This sets the TOH status bit. */
 	NPCX_HIPMDO(PMC_HOST_CMD) = args->result;
@@ -584,10 +593,11 @@ static void handle_host_write(int is_cmd)
 
 	host_cmd_args.result = EC_RES_SUCCESS;
 	host_cmd_args.send_response = lpc_send_response;
-	host_cmd_flags = lpc_host_args->flags;
 
+	switch (host_cmd_args.command) {
 	/* See if we have an old or new style command */
-	if (host_cmd_args.command == EC_COMMAND_PROTOCOL_3) {
+	case EC_COMMAND_PROTOCOL_3:
+		host_cmd_flags = lpc_host_args->flags;
 		lpc_packet.send_response = lpc_send_response_packet;
 
 		lpc_packet.request = (const void *)shm_mem_host_cmd;
@@ -604,10 +614,18 @@ static void handle_host_write(int is_cmd)
 
 		host_packet_receive(&lpc_packet);
 		return;
-
-	} else {
-		/* Old style command, now unsupported */
-		host_cmd_args.result = EC_RES_INVALID_COMMAND;
+	case EC_CMD_CROS_TO_ALTERNATE:
+	case EC_CMD_ALTERNATE_TO_CROS:
+		/*
+		 * Allow these commands to go though without accessing the
+		 * shared memory.
+		 */
+		host_cmd_args.response_max = 0;
+		break;
+	default:
+		/* Unsupported old style command */
+		host_cmd_flags = lpc_host_args->flags;
+		host_cmd_args.result = EC_RES_INVALID_HEADER;
 	}
 
 	/* Hand off to host command handler */
