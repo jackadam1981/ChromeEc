@@ -80,10 +80,14 @@
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 2
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
-#define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_OTG
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_VIRTUAL
+
+#ifdef BOARD_FLAPJACK
+/* Flpajack power distribution support. */
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#endif
 
 /* Increase tx buffer size, as we'd like to stream EC log to AP. */
 #undef CONFIG_UART_TX_BUF_SIZE
@@ -137,6 +141,11 @@
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_MAX17055
 #define CONFIG_BATTERY_MAX17055_ALERT
+
+#ifdef BOARD_FLAPJACK
+/* Flpajack power distribution support. */
+#define CONFIG_USB_PD_DISCHARGE_GPIO
+#endif
 
 /* Battery parameters for max17055 ModelGauge m5 algorithm. */
 #define BATTERY_MAX17055_RSENSE             5     /* m-ohm */

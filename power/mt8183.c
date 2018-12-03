@@ -71,6 +71,7 @@ BUILD_ASSERT(GPIO_COUNT < 256);
 static const struct power_seq_op s5s3_power_seq[] = {
 	/* Release PMIC watchdog. */
 	{ GPIO_PMIC_WATCHDOG_L, 1, 0 },
+	/* Flapjack: invalid setting for P0b? */
 	{ GPIO_PP3300_S3_EN, 1, 2 },
 	{ GPIO_PP1800_S3_EN, 1, 2 },
 	/* Turn on AP. */
@@ -91,6 +92,7 @@ static const struct power_seq_op s0s3_power_seq[] = {
 static const struct power_seq_op s3s5_power_seq[] = {
 	/* Turn off AP. */
 	{ GPIO_AP_SYS_RST_L, 0, 0 },
+	/* Flapjack: invalid setting for P0b? */
 	{ GPIO_PP1800_S3_EN, 0, 2 },
 	{ GPIO_PP3300_S3_EN, 0, 2 },
 	/* Assert watchdog to PMIC (there may be a 1.6ms debounce) */
