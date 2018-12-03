@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "i2c_over_lpc.h"
 #include "keyboard_protocol.h"
 #include "lpc.h"
 #include "lpc_chip.h"
@@ -58,6 +59,7 @@
 #else
 #define LPC_HOST_TRANSACTION_TIMEOUT_US 5
 #endif
+
 
 static uint32_t host_events;            /* Currently pending SCI/SMI events */
 static uint32_t event_mask[3];          /* Event masks for each type */
@@ -105,6 +107,9 @@ static void lpc_task_enable_irq(void)
 	task_enable_irq(NPCX_IRQ_KBC_IBF);
 	task_enable_irq(NPCX_IRQ_PM_CHAN_IBF);
 	task_enable_irq(NPCX_IRQ_PORT80);
+#ifdef HAS_TASK_IOLCMD
+	task_enable_irq(NPCX_IRQ_SHM);
+#endif
 #ifdef CONFIG_ESPI
 	task_enable_irq(NPCX_IRQ_ESPI);
 	/* Virtual Wire: SLP_S3/4/5, SUS_STAT, PLTRST, OOB_RST_WARN */
@@ -122,6 +127,9 @@ static void lpc_task_disable_irq(void)
 	task_disable_irq(NPCX_IRQ_KBC_IBF);
 	task_disable_irq(NPCX_IRQ_PM_CHAN_IBF);
 	task_disable_irq(NPCX_IRQ_PORT80);
+#ifdef HAS_TASK_IOLCMD
+	task_disable_irq(NPCX_IRQ_SHM);
+#endif
 #ifdef CONFIG_ESPI
 	task_disable_irq(NPCX_IRQ_ESPI);
 	/* Virtual Wire: SLP_S3/4/5, SUS_STAT, PLTRST, OOB_RST_WARN */
@@ -266,30 +274,37 @@ static void lpc_send_response(struct host_cmd_handler_args *args)
 		size = 0;
 	}
 
-	/* New-style response */
-	lpc_host_args->flags =
+	if (args->response_max != 0) {
+		/* New-style response */
+		lpc_host_args->flags =
 			(host_cmd_flags & ~EC_HOST_ARGS_FLAG_FROM_HOST) |
 			EC_HOST_ARGS_FLAG_TO_HOST;
 
-	lpc_host_args->data_size = size;
+		lpc_host_args->data_size = size;
 
-	csum = args->command + lpc_host_args->flags +
+		csum = args->command + lpc_host_args->flags +
 			lpc_host_args->command_version +
 			lpc_host_args->data_size;
 
-	for (i = 0, out = (uint8_t *)args->response; i < size; i++, out++)
-		csum += *out;
+		for (i = 0, out = (uint8_t *)args->response; i < size;
+		     i++, out++)
+			csum += *out;
 
-	lpc_host_args->checksum = (uint8_t)csum;
+		lpc_host_args->checksum = (uint8_t)csum;
 
-	/* Fail if response doesn't fit in the param buffer */
-	if (size > EC_PROTO2_MAX_PARAM_SIZE)
-		args->result = EC_RES_INVALID_RESPONSE;
+		/* Fail if response doesn't fit in the param buffer */
+		if (size > EC_PROTO2_MAX_PARAM_SIZE)
+			args->result = EC_RES_INVALID_RESPONSE;
+	}
 
 	/* Write result to the data byte.  This sets the TOH status bit. */
 	NPCX_HIPMDO(PMC_HOST_CMD) = args->result;
 	/* Clear processing flag */
 	CLEAR_BIT(NPCX_HIPMST(PMC_HOST_CMD), NPCX_HIPMST_F0);
+#ifdef HAS_TASK_IOLCMD
+	/* The command is now complete. the host may use i2c over lpc. */
+	npcx_iol_msg_state = IOL_IDLE;
+#endif
 }
 
 static void lpc_send_response_packet(struct host_packet *pkt)
@@ -302,6 +317,10 @@ static void lpc_send_response_packet(struct host_packet *pkt)
 	NPCX_HIPMDO(PMC_HOST_CMD) = pkt->driver_result;
 	/* Clear processing flag */
 	CLEAR_BIT(NPCX_HIPMST(PMC_HOST_CMD), NPCX_HIPMST_F0);
+#ifdef HAS_TASK_IOLCMD
+	/* The command is now complete. the host may use i2c over lpc. */
+	npcx_iol_msg_state = IOL_IDLE;
+#endif
 }
 
 int lpc_keyboard_has_char(void)
@@ -584,10 +603,11 @@ static void handle_host_write(int is_cmd)
 
 	host_cmd_args.result = EC_RES_SUCCESS;
 	host_cmd_args.send_response = lpc_send_response;
-	host_cmd_flags = lpc_host_args->flags;
 
+	switch (host_cmd_args.command) {
 	/* See if we have an old or new style command */
-	if (host_cmd_args.command == EC_COMMAND_PROTOCOL_3) {
+	case EC_COMMAND_PROTOCOL_3:
+		host_cmd_flags = lpc_host_args->flags;
 		lpc_packet.send_response = lpc_send_response_packet;
 
 		lpc_packet.request = (const void *)shm_mem_host_cmd;
@@ -604,12 +624,20 @@ static void handle_host_write(int is_cmd)
 
 		host_packet_receive(&lpc_packet);
 		return;
-
-	} else {
-		/* Old style command, now unsupported */
-		host_cmd_args.result = EC_RES_INVALID_COMMAND;
+	default:
+		/* Unsupported old style command */
+		host_cmd_flags = lpc_host_args->flags;
+		host_cmd_args.result = EC_RES_INVALID_HEADER;
 	}
 
+#ifdef HAS_TASK_IOLCMD
+	/*
+	 * Interrupt I2C over LPC command.
+	 *
+	 * It can happen when the host reboot while in a command.
+	 */
+	npcx_iol_msg_state = IOL_HOST_COMMAND_IN_PROGRESS;
+#endif
 	/* Hand off to host command handler */
 	host_command_received(&host_cmd_args);
 }
@@ -1071,6 +1099,20 @@ static void lpc_init(void)
 	 */
 	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SCIE);
 	SET_BIT(NPCX_HIPMIE(PMC_ACPI), NPCX_HIPMIE_SMIE);
+#endif
+#ifdef HAS_TASK_IOLCMD
+	npcx_iol_msg_state = IOL_IDLE;
+	msg_from_host = (struct npcx_iol_msg *)shm_mem_host_cmd;
+	/* Reset Semaphore. */
+	NPCX_IOL_SEM = 0;
+
+	/*
+	 * Enable SHM interrupt on byte 0 of host command range,
+	 * used by semaphore.
+	 */
+	SET_BIT(NPCX_SMC_STS, NPCX_SMC_STS_HSEM1W);
+	SET_BIT(NPCX_SMC_CTL, NPCX_SMC_CTL_HSEM1_IE);
+	CLEAR_BIT(NPCX_SHCFG, NPCX_SHCFG_SEMW1_DIS);
 #endif
 	lpc_task_enable_irq();
 
