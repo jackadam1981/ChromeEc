@@ -335,6 +335,11 @@
 /* Current version of ACPI memory address space */
 #define EC_ACPI_MEM_VERSION_CURRENT 2
 
+/*
+ * Define the HID Descriptor Address used for querying the HID descriptor
+ * of the device served by the Nuvoton pseudo i2c controller.
+ */
+#define EC_ACPI_HID_DESCRIPTOR_ADDR 0x10
 
 /*
  * This header file is used in coreboot both in C and ACPI code.  The ACPI code
