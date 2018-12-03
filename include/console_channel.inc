@@ -36,7 +36,7 @@ CONSOLE_CHANNEL(CC_GPIO,         "gpio")
 #ifdef HAS_TASK_HOSTCMD
 CONSOLE_CHANNEL(CC_HOSTCMD,      "hostcmd")
 #endif
-#ifdef CONFIG_I2C
+#if defined(CONFIG_I2C) || defined(HAS_TASK_IOLCMD)
 CONSOLE_CHANNEL(CC_I2C,          "i2c")
 #endif
 CONSOLE_CHANNEL(CC_KEYBOARD,     "keyboard")

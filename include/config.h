@@ -1770,6 +1770,16 @@
 /* Do not try hold I/O pins at frozen level during deep sleep */
 #undef CONFIG_NO_PINHOLD
 
+/* Nuvoton LPC Communication I2C Driver */
+
+/*
+ * Define maximum I2C message length we can receive.
+ * The Nuvoton I2C over LPC use a small memory region to send the i2c
+ * packet, but the packet has to be fully reassembled in memory before
+ * upper layer can process it.
+ */
+#undef CONFIG_NPCX_I2C_OVER_LPC_MSG_LEN
+
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
@@ -2908,6 +2918,10 @@
 
 #if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
+#endif
+
+#if (defined HAS_TASK_IOLCMD) && (!defined CONFIG_NPCX_I2C_OVER_LPC_MSG_LEN)
+#error "Need to specify the maximal packet size the EC can receive"
 #endif
 
 #endif  /* __CROS_EC_CONFIG_H */
