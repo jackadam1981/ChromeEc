@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70617961_4a0309b6",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-12-03T09:41:01Z",
+      "side": 1,
+      "message": "I think this should be somewhere we can confirm it\u0027ll be evaluated. For example, outside __ASSEMBLER__, or in the board.c.",
+      "range": {
+        "startLine": 330,
+        "startChar": 7,
+        "endLine": 330,
+        "endChar": 37
+      },
+      "revId": "8d58b83dde69d2a2b9eba67ce94a26c7249e9eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
