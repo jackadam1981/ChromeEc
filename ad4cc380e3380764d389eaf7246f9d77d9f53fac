@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "93aca6dd_25c59cd1",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-12-03T22:28:29Z",
+      "side": 1,
+      "message": "Checked the other BC1.2 chip, i.e. MAX14637. It doesn\u0027t report what exact device type it detects. It just reports the need of charging with full current or limited 100mA through a GPIO. So it is impossible to differentiate DCP with CDP. If generalizing it to an API, MAX14637 may just returns an unknown type.",
+      "parentUuid": "aedb4e40_edcefd09",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 52
+      },
+      "revId": "ad4cc380e3380764d389eaf7246f9d77d9f53fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e37b796_3c5ebdfb",
         "filename": "driver/pi3usb9281.h",
         "patchSetId": 2

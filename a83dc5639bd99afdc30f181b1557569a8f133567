@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8902a74_3fee585d",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-12-03T22:28:29Z",
+      "side": 1,
+      "message": "People expect this variable name matches the netname of the schematic. Add a comment to note it instead of renaming it. I will file a bug to rename the schematic netname.",
+      "parentUuid": "9145b2a5_05babefe",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "a83dc5639bd99afdc30f181b1557569a8f133567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a07cf3e2_b1d6d1b9",
         "filename": "board/cheza/usb_pd_policy.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "a83dc5639bd99afdc30f181b1557569a8f133567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd2e58c_c669b1c6",
+        "filename": "board/cheza/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-12-03T22:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a07cf3e2_b1d6d1b9",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 108,
+        "endChar": 18
+      },
+      "revId": "a83dc5639bd99afdc30f181b1557569a8f133567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
