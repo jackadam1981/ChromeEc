@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bab1c4a_e54a3791",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T21:40:39Z",
+      "side": 1,
+      "message": "is ish 5 this same?",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1982cda6_d55be1f0",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T21:40:39Z",
+      "side": 1,
+      "message": "CLOCK_FACTOR doesn\u0027t appear to be used for the non-ish-3.0 case. Can we remove this define?\n\nAlso, can you add a comment saying that we are scaling the 1Mhz close to 12 Mhz (or the actual correct phrase)",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef8e420_c8d95a6f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T21:40:39Z",
+      "side": 1,
+      "message": "why is raw assembly needed inline here? Can we not rely on a normal uint64 divide operation?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 76
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066bf932_abb44c1a",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T21:40:39Z",
+      "side": 1,
+      "message": "Can you replace this with (CLOCK_FACTOR \u003c\u003c 36)",
+      "range": {
+        "startLine": 127,
+        "startChar": 25,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45df2e77_551c420a",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-03T21:40:39Z",
+      "side": 1,
+      "message": "What about ISH_50? Does this also apply here?",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 20
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
