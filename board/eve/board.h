@@ -79,6 +79,8 @@
 #define CONFIG_TABLET_MODE
 #undef CONFIG_PECI
 
+#define CONFIG_NPCX_I2C_OVER_LPC_MSG_LEN 1024
+
 /* Battery */
 #define CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF
 #define CONFIG_BATTERY_CUT_OFF
@@ -118,6 +120,7 @@
 #define CONFIG_PWR_STATE_DISCHARGE_FULL
 
 /* Sensor */
+#define CONFIG_MOTION_SENSE_HID
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_ACCEL_KXCJ9
@@ -141,7 +144,7 @@
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 1024
+#define CONFIG_ACCEL_FIFO 512
 
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
