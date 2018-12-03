@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "a596ddbd_7777f893",
+        "filename": "board/karma/panel.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-12-03T02:42:53Z",
+      "side": 1,
+      "message": "ok, all retries will be removed.",
+      "parentUuid": "b21249ee_73c1cc76",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "cf487f028d9aaaec203e6d131cf4a7042f5397d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "078535af_e749fb79",
         "filename": "board/karma/panel.c",
         "patchSetId": 3
