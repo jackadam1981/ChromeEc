@@ -324,6 +324,13 @@ extern uint32_t sku;
 /* SKU_ID[24:31] are dedicated to OEM customization */
 #define CBI_SKU_CUSTOM_FIELD(val)	((val) >> 24)
 
+/* Specific prevention of disabling I2C passthru for Nami
+ * TODO(b/120265210): Remove once there is a long-term solution landed.
+ */
+#ifdef CONFIG_I2C_PASSTHRU_RESTRICTED
+#error "Please look on the status of b/120265210 before set this flag."
+#endif /* CONFIG_I2C_PASSTHRU_RESTRICTED */
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
