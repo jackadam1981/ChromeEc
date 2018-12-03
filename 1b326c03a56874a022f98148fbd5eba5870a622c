@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0ddb2e6_95fbe887",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-12-03T19:17:38Z",
+      "side": 1,
+      "message": "Can using gpio_set_flags replace all of this?\nI think gpio_set_flags(I2C_SDA_INA, GPIO_OUTPUT | GPIO_INPUT) will handle setting up the pin as an output and will remove the pullup or pulldown.",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 40
+      },
+      "revId": "1b326c03a56874a022f98148fbd5eba5870a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
