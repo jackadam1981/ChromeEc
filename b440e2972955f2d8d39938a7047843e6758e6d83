@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "317ef12c_6d9bab18",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-04T18:19:33Z",
+      "side": 1,
+      "message": "Can you describe in comments what each of these means?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994fc570_97d24134",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-04T18:19:33Z",
+      "side": 1,
+      "message": "Please add build assert for ARRAY_SIZE(oz554_order) \u003d\u003d I2C_ADDR_OZ554 below the array definition.",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d02835_aafe5abd",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-04T18:19:33Z",
+      "side": 1,
+      "message": "Does it make sense to keep writing the rest if one fails?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e3cfb5_def21656",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-04T18:19:33Z",
+      "side": 1,
+      "message": "Shall we hook CHIPSET_SHUTDOWN, LID_CHANGE, etc. to enable/disable the interrupt?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 22
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
