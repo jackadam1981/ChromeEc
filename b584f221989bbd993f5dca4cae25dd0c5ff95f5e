@@ -22,6 +22,30 @@
       "revId": "b584f221989bbd993f5dca4cae25dd0c5ff95f5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a947f93_b36564fa",
+        "filename": "board/ampton/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-12-04T04:08:38Z",
+      "side": 1,
+      "message": "Try to reset it during RO reboot is one task but keep it leave from RST state initially is another basic topic to keep chip in working mode.",
+      "parentUuid": "ee5e97fc_af560660",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "b584f221989bbd993f5dca4cae25dd0c5ff95f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
