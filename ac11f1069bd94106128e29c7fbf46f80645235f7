@@ -46,6 +46,30 @@
       "revId": "ac11f1069bd94106128e29c7fbf46f80645235f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d63154_32bd4e3f",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-12-04T19:16:01Z",
+      "side": 1,
+      "message": "SMI_L line is used for USB in some octopus boards. So moving it below PLTRST_L \u0026 SYS_RESET_L lines which are consistently used in all octopus boards.",
+      "parentUuid": "d51e5096_eecd405b",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "ac11f1069bd94106128e29c7fbf46f80645235f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
