@@ -48,6 +48,7 @@ static void usb0_evt(enum gpio_signal signal);
 static void usb1_evt(enum gpio_signal signal);
 static void ppc_interrupt(enum gpio_signal signal);
 static void anx74xx_cable_det_interrupt(enum gpio_signal signal);
+static void usb1_oc_evt(enum gpio_signal signal);
 
 #include "gpio_list.h"
 
@@ -123,6 +124,19 @@ static void ppc_interrupt(enum gpio_signal signal)
 {
 	/* Only port-0 uses PPC chip */
 	sn5s330_interrupt(0);
+}
+
+static void usb1_oc_evt_deferred(void)
+{
+	/* Only port-1 has overcurrent GPIO interrupt */
+	board_overcurrent_event(0);
+}
+DECLARE_DEFERRED(usb1_oc_evt_deferred);
+
+static void usb1_oc_evt(enum gpio_signal signal)
+{
+	/* Switch the context to handle the event */
+	hook_call_deferred(&usb1_oc_evt_deferred_data, 0);
 }
 
 /* Wake-up pins for hibernate */
@@ -357,6 +371,7 @@ static void board_init(void)
 	/* Enable BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C1_OC_ODL);
 
 	/* Enable interrupt for BMI160 sensor */
 	gpio_enable_interrupt(GPIO_ACCEL_GYRO_INT_L);
@@ -478,7 +493,7 @@ int board_is_sourcing_vbus(int port)
 
 void board_overcurrent_event(int port)
 {
-	/* TODO(waihong): Notify AP? */
+	/* TODO(b/120231371): Notify AP */
 	CPRINTS("p%d: overcurrent!", port);
 }
 
