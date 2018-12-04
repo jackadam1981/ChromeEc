@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c70a04b2_800e2453",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-04T17:05:18Z",
+      "side": 1,
+      "message": "This is for the case when H1 wakes up while AP is still sleeping, like CCD cable pulg-in event.",
+      "parentUuid": "85c97f21_729294fd",
+      "range": {
+        "startLine": 18,
+        "startChar": 31,
+        "endLine": 18,
+        "endChar": 59
+      },
+      "revId": "a7546e8417bb8191f573f23d1f13f1b8d8c2fa70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27bd0cd4_fe8f9eac",
         "filename": "common/nvmem.c",
         "patchSetId": 11
