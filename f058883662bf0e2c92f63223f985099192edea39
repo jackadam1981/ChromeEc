@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0d4def2c_afab0681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-12-04T20:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02d61cfe_f773f0aa",
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66c6ec7f_4239c34d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2018-11-30T17:43:01Z",
       "side": 1,
       "message": "Were you able to confirm that the RTC was successfully reset as well?  If I remember correctly, you may be able to see it in the eventlog timestamps",
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b2112e6_41cd1edf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-12-04T20:13:54Z",
+      "side": 1,
+      "message": "As per our discussion in mail, it seems CMOS contents are not reset as part of RTC reset. Hence no change in timestamps.",
+      "parentUuid": "66c6ec7f_4239c34d",
       "revId": "f058883662bf0e2c92f63223f985099192edea39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -137,6 +173,30 @@
       "side": 1,
       "message": "It should ideally be in EDS or PDG, but it could very well be missing :).",
       "parentUuid": "f959aaaf_d7f49a93",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "f058883662bf0e2c92f63223f985099192edea39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9dd0cbc_c1c0f05b",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-12-04T20:13:54Z",
+      "side": 1,
+      "message": "I did not spot them either in EDS(both vol1 \u0026 vol2) or PDG. But with the interval, BIOS observed the RPS (RTC Power Status) bit set. BIOS cleared it. Also in response to RTC reset, FSP requested host reset during verstage.",
+      "parentUuid": "bfdbaff1_444a37b2",
       "range": {
         "startLine": 220,
         "startChar": 8,
