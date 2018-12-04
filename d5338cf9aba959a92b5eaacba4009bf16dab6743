@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d4a4c8d_ece17afd",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-04T19:03:38Z",
+      "side": 1,
+      "message": "needed?",
+      "revId": "d5338cf9aba959a92b5eaacba4009bf16dab6743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8494b02_35dbcd2c",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-04T19:03:38Z",
+      "side": 1,
+      "message": "This variable already exits. When do you set it?",
+      "revId": "d5338cf9aba959a92b5eaacba4009bf16dab6743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47552cb5_a799a248",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-04T19:03:38Z",
+      "side": 1,
+      "message": "This variable already exits. When do you set it?",
+      "revId": "d5338cf9aba959a92b5eaacba4009bf16dab6743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55bfe6e5_6b7809dc",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-04T19:03:38Z",
+      "side": 1,
+      "message": "This is cut and paste code, move the definition if needed instead.",
+      "revId": "d5338cf9aba959a92b5eaacba4009bf16dab6743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbb8373_e7816533",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-04T19:03:38Z",
+      "side": 1,
+      "message": "looks cut and paste from command_accel_data_rate. why?",
+      "revId": "d5338cf9aba959a92b5eaacba4009bf16dab6743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c6b5f10_cba9dffc",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-04T19:03:38Z",
+      "side": 1,
+      "message": "looks cut and paste from command_accel_read_xyz. why?",
+      "revId": "d5338cf9aba959a92b5eaacba4009bf16dab6743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c91802_62a6f2eb",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-04T19:03:38Z",
+      "side": 1,
+      "message": "you can use motion_sense channel. Channels are expensive.",
+      "revId": "d5338cf9aba959a92b5eaacba4009bf16dab6743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
