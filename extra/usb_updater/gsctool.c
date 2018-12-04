@@ -207,7 +207,7 @@ struct upgrade_pkt {
 static int verbose_mode;
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "aBbcd:F:fhIikMmO:oPprstUuVvw";
+static char *short_opts = "aBbcd:F:fhIikMmO:oPprR:stUuVvw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"any",		                0,   NULL, 'a'},
@@ -227,6 +227,7 @@ static const struct option long_opts[] = {
 	{"openbox_rma",                 1,   NULL, 'O'},
 	{"password",	                0,   NULL, 'P'},
 	{"post_reset",	                0,   NULL, 'p'},
+	{"reset",	                1,   NULL, 'R'},
 	{"rma_auth",	                2,   NULL, 'r'},
 	{"systemdev",	                0,   NULL, 's'},
 	{"tpm_mode",                    2,   NULL, 'm'},
@@ -559,6 +560,7 @@ static void usage(int errs)
 	       "                           Set or clear CCD password. Use\n"
 	       "                           'clear:<cur password>' to clear it\n"
 	       "  -p,--post_reset          Request post reset after transfer\n"
+	       "  -R,--reset MSEC          Reset H1 in MSEC milliseconds\n"
 	       "  -r,--rma_auth [auth_code]\n"
 	       "                           Request RMA challenge, process "
 	       "RMA authentication code\n"
@@ -2028,6 +2030,51 @@ static int process_tpm_mode(struct transfer_descriptor *td,
 	return rv;
 }
 
+/*
+ * Request CR50 to reset.
+ */
+static int process_reset(struct transfer_descriptor *td,
+				const char *arg)
+{
+	int rv;
+	size_t command_size;
+	size_t response_size;
+	uint16_t command_body = 0;
+	uint16_t delay_msec = 0;
+	uint8_t response;
+	char *e;
+
+	if (!arg) {
+		fprintf(stderr, "Invalid reset arg: NULL\n");
+		return update_error;
+	}
+
+	delay_msec = (uint16_t) strtoul(arg, &e, 0);
+	if (*e) {
+		fprintf(stderr, "Invalid reset arg: %s\n", arg);
+		return update_error;
+	}
+	command_body = htobe16(delay_msec);
+	command_size = sizeof(command_body);
+	response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_IMMEDIATE_RESET,
+				&command_body, command_size,
+				&response, &response_size);
+	if (rv) {
+		fprintf(stderr, "Error %d in resetting H1 in %d msec\n",
+			rv, delay_msec);
+		return update_error;
+	}
+	if (response_size != sizeof(response)) {
+		fprintf(stderr, "Error in the size of response, %zu\n",
+			response_size);
+		return update_error;
+	}
+
+	return rv;
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -2061,6 +2108,7 @@ int main(int argc, char *argv[])
 	int factory_mode = 0;
 	char *factory_mode_arg;
 	char *tpm_mode_arg = NULL;
+	char *reset_arg = NULL;
 
 	// Explicitly sets buffering type to line buffered so that output lines
 	// can be written to pipe instantly. This is needed when the
@@ -2160,6 +2208,9 @@ int main(int argc, char *argv[])
 		case 'P':
 			password = 1;
 			break;
+		case 'R':
+			reset_arg = optarg;
+			break;
 		case 'r':
 			rma = 1;
 
@@ -2238,6 +2289,7 @@ int main(int argc, char *argv[])
 	    !show_fw_ver &&
 	    !openbox_desc_file &&
 	    !tpm_mode &&
+	    !reset_arg &&
 	    !wp) {
 		if (optind >= argc) {
 			fprintf(stderr,
@@ -2317,6 +2369,9 @@ int main(int argc, char *argv[])
 
 		exit(rv);
 	}
+
+	if (reset_arg)
+		return process_reset(&td, reset_arg);
 
 	if (data || show_fw_ver) {
 
