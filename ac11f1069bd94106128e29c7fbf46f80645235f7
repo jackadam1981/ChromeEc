@@ -70,6 +70,30 @@
       "revId": "ac11f1069bd94106128e29c7fbf46f80645235f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537639e7_836d95d7",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2018-12-04T20:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33d63154_32bd4e3f",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 62
+      },
+      "revId": "ac11f1069bd94106128e29c7fbf46f80645235f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
