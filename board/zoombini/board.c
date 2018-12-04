@@ -300,15 +300,15 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 #ifdef BOARD_MEOWTH
 	[VSYNC] = {
-	 .name = "Camera vsync",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_GPIO,
-	 .type = MOTIONSENSE_TYPE_SYNC,
-	 .location = MOTIONSENSE_LOC_CAMERA,
-	 .drv = &sync_drv,
-	 .default_range = 0,
-	 .min_frequency = 0,
-	 .max_frequency = 1,
+		.name = "Camera vsync",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_GPIO,
+		.type = MOTIONSENSE_TYPE_SYNC,
+		.location = MOTIONSENSE_LOC_CAMERA,
+		.drv = &sync_drv,
+		.default_range = 0,
+		.min_frequency = 0,
+		.max_frequency = 1,
 	},
 #endif
 };
