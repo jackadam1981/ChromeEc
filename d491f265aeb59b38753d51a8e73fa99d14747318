@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d13548d2_66f2831c",
+        "filename": "chip/g/post_reset.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-04T23:42:34Z",
+      "side": 1,
+      "message": "what\u0027s the point of returning one byte of a two byte value?\n\nLet\u0027s just have this command never return any data, just return the status - success or not.",
+      "revId": "d491f265aeb59b38753d51a8e73fa99d14747318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
