@@ -366,6 +366,30 @@
     },
     {
       "key": {
+        "uuid": "59abc4cf_af920ccd",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "OK, I totally understand. Can I get the code guide for EC ? So that I can reduce my mistake here ?",
+      "parentUuid": "ca744041_08fc1e64",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd67a5e_cbd4eda1",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
@@ -531,6 +555,30 @@
     },
     {
       "key": {
+        "uuid": "8308a910_5a78f1e2",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "It\u0027s nothing for me to add a mutex or using some other mechanism but there should be enough reason. I did this to remove unnecessary execution. I briefly checked host command when I implement this and I couldn\u0027t find any need making \"read\" to be thread-safe.\n\nTo suport host command, we just need to create ipc_host_comm task and let it wait on ipc and call \"host_packet_receive()\" when there\u0027s host command msg from host.\n\nProbably I missed something. That\u0027s why I asked you to share your solution. Please give me the case we need \"read\" thread-safe with an example.\n\nThis is FW which doesn\u0027t support any runtime loading\u0026binding and also it is tested\u0026verified during compile\u0026build\u0026test time.",
+      "parentUuid": "8d5a1935_9e15b4fc",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cc0874a_6855ebf1",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
@@ -551,6 +599,30 @@
       "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1aae1e7_95696f89",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "No problem. I\u0027ll do that.",
+      "parentUuid": "0cc0874a_6855ebf1",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 71
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

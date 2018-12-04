@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "4c06a664_90a40c05",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b05bbcff_b74ef4d7",
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b83b4b58_bc3b8304",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -145,6 +163,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "769fdfe7_454aea21",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "This code is counterpart of Linux Host Driver which is upstream so interface doc is available in \"\u003ckernel_root\u003e/Documentation/hid/intel-ish-hid.txt\"",
+      "parentUuid": "b83b4b58_bc3b8304",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -171,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2645acec_5bcf35b0",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0a4d4f1_dd18791a",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e266a0ee_443f2724",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -191,6 +257,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67239254_642afb84",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Oh.. sorry for the confusion. It\u0027s enabling interrupt.\nI\u0027ll change the name  xx_disable_yy xx_enable_yy",
+      "parentUuid": "e266a0ee_443f2724",
+      "range": {
+        "startLine": 197,
+        "startChar": 19,
+        "endLine": 197,
+        "endChar": 44
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -217,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "cc93b741_af6cd2f2",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "16879cba_ce70e170",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e7c51d9_e1b95c42",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -237,6 +351,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47968209_78a40a7a",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "this STATIC function is called either after bounds check or originally from \"ipc_msg struct\".",
+      "parentUuid": "1e7c51d9_e1b95c42",
+      "range": {
+        "startLine": 242,
+        "startChar": 35,
+        "endLine": 242,
+        "endChar": 47
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "73e02105_5ee675c9",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Hm.. I don\u0027t understand what you mean by \"unbalanced unlock\". Do you mean I need to use \"goto\" here ? I don\u0027t mind to use \"goto\".",
+      "parentUuid": "4453b02d_935fa306",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 33
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d23407a4_6009818a",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -274,6 +436,30 @@
       "writtenOn": "2018-12-03T23:17:38Z",
       "side": 1,
       "message": "Can you file a new partner issue to track this TODO please?",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 357,
+        "endChar": 71
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4026e9ef_edaa4fdb",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "This is just a small note(my habit) for me to not to forget to check if other peers(PMC or CSME) still need \"rx complete\" msg as ACK or not when I start to implement IPC for PMC and/or CSME. So I could know if I can use this function for other peers.\n\nDo you think I need to file a new issue for this ? or Remove \"TODO\" ?",
+      "parentUuid": "d23407a4_6009818a",
       "range": {
         "startLine": 357,
         "startChar": 1,
@@ -309,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "d2825807_f6c40795",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8121dd75_e5301945",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 24
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3952839_94261375",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -332,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "abd4d600_f3280f93",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "No need. I\u0027ll add comments.",
+      "parentUuid": "f3952839_94261375",
+      "range": {
+        "startLine": 405,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 27
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e10ca30c_a6c2c80b",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -343,6 +577,30 @@
       "writtenOn": "2018-12-03T23:17:38Z",
       "side": 1,
       "message": "we shouldn\u0027t fix this in this CL, but the style of EC code is to make the IPC_PISR define itself the register instead of wrapping it in REG32\n\ne.g.\nuint32_t pisr \u003d IPC_PISR;",
+      "range": {
+        "startLine": 435,
+        "startChar": 17,
+        "endLine": 435,
+        "endChar": 22
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4c0ad70_43810d96",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e10ca30c_a6c2c80b",
       "range": {
         "startLine": 435,
         "startChar": 17,
@@ -378,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "f51a3b63_1f7ece1e",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Yes, unfortunately status bit(pisr) works regardless of pimr.",
+      "parentUuid": "6032f2d1_595d77c1",
+      "range": {
+        "startLine": 439,
+        "startChar": 40,
+        "endLine": 439,
+        "endChar": 44
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b2bdedf_d1284a8d",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -398,6 +680,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0239fab_c08d05f8",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "No special reason. I\u0027ll split",
+      "parentUuid": "3b2bdedf_d1284a8d",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 0
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -424,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "0f6d0341_35438eb2",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "yes, we need the check in the mutex locked.",
+      "parentUuid": "0bc2f5ad_32516f48",
+      "range": {
+        "startLine": 510,
+        "startChar": 1,
+        "endLine": 510,
+        "endChar": 40
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84735ad5_3865d97f",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -447,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "7e491601_8f2fe9b7",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "It was for me to be careful if I add more protocol or peers.\nBut since I added BUILD_ASSERT in ipc_heci.h. I don\u0027t need to be.\nI\u0027ll remove it.",
+      "parentUuid": "84735ad5_3865d97f",
+      "range": {
+        "startLine": 534,
+        "startChar": 1,
+        "endLine": 534,
+        "endChar": 51
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6893bd6d_cbba7be3",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -467,6 +821,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4256aacf_63f60c37",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6893bd6d_cbba7be3",
+      "range": {
+        "startLine": 551,
+        "startChar": 19,
+        "endLine": 551,
+        "endChar": 26
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -516,6 +894,30 @@
     },
     {
       "key": {
+        "uuid": "f03d296e_98685494",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e271497_326972b5",
+      "range": {
+        "startLine": 668,
+        "startChar": 1,
+        "endLine": 668,
+        "endChar": 11
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4435704b_e3fced13",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -536,6 +938,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1471107b_b52ee4d2",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-04T23:48:10Z",
+      "side": 1,
+      "message": "Again, this is for me(my habit) not to forget to put corresponding code here when I start to implement interface to other peers(PMC, CSME). Not small code will be added for PMC and CSME and modifying this part is one of them.",
+      "parentUuid": "4435704b_e3fced13",
+      "range": {
+        "startLine": 685,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 4
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
