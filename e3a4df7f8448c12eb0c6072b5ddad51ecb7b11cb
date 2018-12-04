@@ -73,6 +73,29 @@
     },
     {
       "key": {
+        "uuid": "7820a552_0b0e5ed5",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-12-04T02:40:06Z",
+      "side": 1,
+      "message": "nit: I think these two variables and the return of check_for_power_on_event() can be uint8_t. It\u0027s not likely POWER_ON_EVENT_COUNT will bloat to \u003e255, right? The same for check_for_power_off_event(). Surely, this optimization should be another CL.",
+      "range": {
+        "startLine": 707,
+        "startChar": 1,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d3f463_ab5fedb2",
         "filename": "power/sdm845.c",
         "patchSetId": 2
