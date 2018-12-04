@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "eb54f76e_a28a9b64",
+        "filename": "chip/npcx/wov_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-12-04T22:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3db143dc_5255ed2c",
+      "range": {
+        "startLine": 341,
+        "startChar": 12,
+        "endLine": 341,
+        "endChar": 13
+      },
+      "revId": "737199f8d4b11e65e69e79483c2e7efdfab0d7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32cfc68f_ccb41867",
         "filename": "chip/npcx/wov_chip.h",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "737199f8d4b11e65e69e79483c2e7efdfab0d7f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e50286_5e0ba3cb",
+        "filename": "chip/npcx/wov_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-12-04T22:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32cfc68f_ccb41867",
+      "range": {
+        "startLine": 342,
+        "startChar": 12,
+        "endLine": 342,
+        "endChar": 13
+      },
+      "revId": "737199f8d4b11e65e69e79483c2e7efdfab0d7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
