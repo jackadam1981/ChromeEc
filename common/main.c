@@ -166,9 +166,6 @@ test_mockable __keep int main(void)
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();
 #endif
-#if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
-	button_init();
-#endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
 
 #if defined(CONFIG_VBOOT_EFS)
 	/*
@@ -176,6 +173,13 @@ test_mockable __keep int main(void)
 	 * AP. This has to be done here because vboot_main may jump to RW.
 	 */
 	chipset_handle_reboot();
+#endif
+
+#if defined(CONFIG_DEDICATED_RECOVERY_BUTTON) || defined(CONFIG_VOLUME_BUTTONS)
+	button_init();
+#endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
+
+#if defined(CONFIG_VBOOT_EFS)
 	/*
 	 * For RO, it behaves as follows:
 	 *   In recovery, it enables PD communication and returns.

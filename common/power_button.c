@@ -139,6 +139,8 @@ static void power_button_change_deferred(void)
 #ifdef CONFIG_VBOOT_EFS
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
 			new_pressed && !system_is_in_rw()) {
+		while (raw_power_button_pressed())
+			;
 		CPRINTS("cold reset");
 		cflush();
 		system_reset(0);
