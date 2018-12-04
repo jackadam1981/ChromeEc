@@ -191,12 +191,15 @@ static uint32_t fp_process_match(void)
 	/* match finger against current templates */
 	template_matched = -1;
 	CPRINTS("Matching/%d ...", templ_valid);
-	if (templ_valid)
+	if (templ_valid > 0)
 		res = fp_finger_match(fp_template[0], templ_valid, fp_buffer,
 				      &fgr, &updated);
 	CPRINTS("Match =>%d (finger %d)", res, fgr);
 	if (res < 0) {
-		res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
+		if (templ_valid > 0)
+			res = EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;
+		else
+			res = EC_MKBP_FP_ERR_MATCH_NO_TEMPLATES;
 		timestamps_invalid |= FPSTATS_MATCHING_INV;
 	} else {
 		template_matched = (int8_t)fgr;
