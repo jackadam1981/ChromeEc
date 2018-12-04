@@ -46,6 +46,53 @@
       "revId": "92fed103ca7e4f58f557761d8c97f50a73becb25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48051d2f_d6102b7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-04T21:02:52Z",
+      "side": 1,
+      "message": "Sounds good. This basically enables another code path that will allow the 15W charger even though we set CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW to 18W.",
+      "parentUuid": "806e83eb_cd3be8a3",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "92fed103ca7e4f58f557761d8c97f50a73becb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2a1c41b_427fe3b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-04T21:02:52Z",
+      "side": 1,
+      "message": "Please add more details for the verification you performed please",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "92fed103ca7e4f58f557761d8c97f50a73becb25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
