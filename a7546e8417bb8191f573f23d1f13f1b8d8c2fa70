@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "85c97f21_729294fd",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-04T16:56:26Z",
+      "side": 1,
+      "message": "by design this information is handled by the AP, it will send the command to disable key ladder when booting.",
+      "parentUuid": "be901511_3b3043a2",
+      "range": {
+        "startLine": 18,
+        "startChar": 31,
+        "endLine": 18,
+        "endChar": 59
+      },
+      "revId": "a7546e8417bb8191f573f23d1f13f1b8d8c2fa70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27bd0cd4_fe8f9eac",
         "filename": "common/nvmem.c",
         "patchSetId": 11
