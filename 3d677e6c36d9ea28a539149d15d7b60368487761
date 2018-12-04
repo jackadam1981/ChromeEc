@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d07f5b6_095328f9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3796,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-04T17:36:08Z",
+      "side": 1,
+      "message": "How could this command ever be sent if you don\u0027t have a cros ec stack?",
+      "range": {
+        "startLine": 3796,
+        "startChar": 0,
+        "endLine": 3796,
+        "endChar": 39
+      },
+      "revId": "3d677e6c36d9ea28a539149d15d7b60368487761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
