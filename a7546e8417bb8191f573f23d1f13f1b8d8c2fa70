@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7c96f5c_639a89a1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-04T02:22:29Z",
+      "side": 1,
+      "message": "Key Ladder and cached NVRAM objects shall be disabled on wake-up if TPM used to be disabled.\nHowever, TPM interface still needs to be on so that it can process TPM commands during S3 resume.",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 2
+      },
+      "revId": "a7546e8417bb8191f573f23d1f13f1b8d8c2fa70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9dc1560_e6e39c67",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-04T02:22:29Z",
+      "side": 1,
+      "message": "got more lines to print, and decided to separate them.",
+      "range": {
+        "startLine": 1420,
+        "startChar": 1,
+        "endLine": 1420,
+        "endChar": 15
+      },
+      "revId": "a7546e8417bb8191f573f23d1f13f1b8d8c2fa70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be901511_3b3043a2",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-04T02:22:29Z",
+      "side": 1,
+      "message": "This register value survives through deep-sleeps.\nI let it remember if the TPM was ever disabled, so that it can decide whether to disable Key Ladder or not on wake-up.",
+      "range": {
+        "startLine": 18,
+        "startChar": 31,
+        "endLine": 18,
+        "endChar": 59
+      },
+      "revId": "a7546e8417bb8191f573f23d1f13f1b8d8c2fa70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27bd0cd4_fe8f9eac",
+        "filename": "common/nvmem.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-04T02:22:29Z",
+      "side": 1,
+      "message": "Just in case that any valid-but-dirty NVRAM objects have not been flushed yet.\nnvmem_commit() releases the nvmem cache lock.",
+      "range": {
+        "startLine": 621,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 13
+      },
+      "revId": "a7546e8417bb8191f573f23d1f13f1b8d8c2fa70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
