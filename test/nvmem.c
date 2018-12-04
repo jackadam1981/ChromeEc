@@ -696,6 +696,10 @@ static void run_test_setup(void)
 	test_reset();
 }
 
+void nvmem_wipe_cache(void)
+{
+}
+
 void run_test(void)
 {
 	run_test_setup();

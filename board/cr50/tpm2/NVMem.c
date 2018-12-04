@@ -18,6 +18,9 @@
 #include "assert.h"
 #include "nvmem.h"
 
+#include "Global.h"
+#include "NV_fp.h"
+
 /* Local state */
 static struct {
 #ifndef CONFIG_FLASH_NVMEM
@@ -219,4 +222,15 @@ void _plat__ClearNvAvail(void)
 {
 	local_state.s_NvIsAvailable = FALSE;
 	return;
+}
+
+void nvmem_wipe_cache(void)
+{
+	/*
+	 * Inclusive list of NV indices not to be wiped out when invalidating
+	 * the cache.
+	 */
+	const uint16_t whitelist_range[] = { 0x1007, 0x100b };
+
+	NvWipeCache(whitelist_range);
 }

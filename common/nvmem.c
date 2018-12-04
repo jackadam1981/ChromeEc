@@ -615,9 +615,8 @@ int nvmem_commit(void)
 void nvmem_clear_cache(void)
 {
 	nvmem_lock_cache();
-	/*
-	 * TODO(b/119221935): Clear areas that should be protected within
-	 *                    nvmem_cache.
-	 */
-	nvmem_release_cache();
+
+	nvmem_wipe_cache();
+
+	nvmem_save();
 }
