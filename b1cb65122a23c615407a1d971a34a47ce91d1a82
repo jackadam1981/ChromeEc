@@ -22,6 +22,30 @@
       "revId": "b1cb65122a23c615407a1d971a34a47ce91d1a82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b676c4_fba76ff4",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2018-12-04T15:07:49Z",
+      "side": 1,
+      "message": "Yes. One can find definition in the Intel Architecture Software Developer Guide Volume 3A, Chapter 2, Section 2.5 CONTROL REGISTERS\nhttps://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-3a-part-1-manual.pdf",
+      "parentUuid": "9add70a7_ae979530",
+      "range": {
+        "startLine": 351,
+        "startChar": 9,
+        "endLine": 351,
+        "endChar": 24
+      },
+      "revId": "b1cb65122a23c615407a1d971a34a47ce91d1a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
