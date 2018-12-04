@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "248c5d77_2aeb19f8",
+        "filename": "common/i2c_over_lpc_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-04T17:41:17Z",
+      "side": 1,
+      "message": "Nuvoton I2C",
+      "range": {
+        "startLine": 8,
+        "startChar": 13,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "ffda448cc0eec7b9f049ddee21419a661743ab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6051d117_d9079857",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-04T17:41:17Z",
+      "side": 1,
+      "message": "What values do these take when defined?  Length is pretty obvious, and maybe interrupt is a GPIO enum, but not sure what to use for memory region.",
+      "range": {
+        "startLine": 1781,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 0
+      },
+      "revId": "ffda448cc0eec7b9f049ddee21419a661743ab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47160fe4_f318c421",
+        "filename": "include/i2c_over_lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-04T17:41:17Z",
+      "side": 1,
+      "message": "Needs TODO?",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "ffda448cc0eec7b9f049ddee21419a661743ab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
