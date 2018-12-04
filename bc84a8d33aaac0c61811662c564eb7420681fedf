@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "b794ac3f_bdae00d8",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-04T00:34:29Z",
+      "side": 1,
+      "message": "is this reg mutually exclusive with HPET_TIMER_COMP_64?",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1982cda6_d55be1f0",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
@@ -41,6 +64,29 @@
         "startChar": 1,
         "endLine": 18,
         "endChar": 22
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53f5283_8f7e9e9d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-04T00:34:29Z",
+      "side": 1,
+      "message": "no ifdef here, CLOCK_FACTOR is already CONFIG_ISH_30 specific.\nor is this supposed to be HPET_TIMER_COMP_64()?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 6
       },
       "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -71,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "a45dbfae_bf165858",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-04T00:34:29Z",
+      "side": 1,
+      "message": "this cast doesn\u0027t really do anything here.\ndo you need 64 bit multiply?",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "066bf932_abb44c1a",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
@@ -82,6 +151,30 @@
       "writtenOn": "2018-12-03T21:40:39Z",
       "side": 1,
       "message": "Can you replace this with (CLOCK_FACTOR \u003c\u003c 36)",
+      "range": {
+        "startLine": 127,
+        "startChar": 25,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7acdc23b_5b6def10",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-04T00:34:29Z",
+      "side": 1,
+      "message": "we\u0027ll also need a 64 bit cast here,\nbut i bet gcc will catch that.",
+      "parentUuid": "066bf932_abb44c1a",
       "range": {
         "startLine": 127,
         "startChar": 25,
