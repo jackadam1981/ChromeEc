@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "761abe89_ef99dbde",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-05T06:19:54Z",
+      "side": 1,
+      "message": "You are doing argument checking, be defensive. It will catch improperly formatted objects.",
+      "parentUuid": "5e179569_259045e2",
+      "range": {
+        "startLine": 121,
+        "startChar": 39,
+        "endLine": 121,
+        "endChar": 43
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "808f8e2f_5aaf3beb",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14

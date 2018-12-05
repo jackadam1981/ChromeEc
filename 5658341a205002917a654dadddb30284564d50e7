@@ -265,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "9748a9fd_d998fb1e",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-05T06:19:54Z",
+      "side": 1,
+      "message": "You are doing argument checking, be defensive. It will catch improperly formatted objects.",
+      "parentUuid": "4501aaae_6c2ef717",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04e21f8d_fc1b4982",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -399,6 +417,24 @@
       "side": 1,
       "message": "This shouldn\u0027t happen. host is not ready to handle this error.\nso for now, I\u0027ll add ASSERT().",
       "parentUuid": "09e0e70b_14891b22",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53db7ee7_3a26aa2f",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-05T06:19:54Z",
+      "side": 1,
+      "message": "Do not assert on malformed host command. You will not pass fuzzer tests. https://en.wikipedia.org/wiki/Fuzzing",
+      "parentUuid": "d2fad96a_58403255",
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
