@@ -283,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "dd719bba_74c3116f",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T17:56:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9748a9fd_d998fb1e",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04e21f8d_fc1b4982",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
@@ -435,6 +453,24 @@
       "side": 1,
       "message": "Do not assert on malformed host command. You will not pass fuzzer tests. https://en.wikipedia.org/wiki/Fuzzing",
       "parentUuid": "d2fad96a_58403255",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53556922_fcc5d8a2",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T17:56:41Z",
+      "side": 1,
+      "message": "OK, then I\u0027ll send a message that can cause host to reset ISH. after resetting, host driver gets reset notification from ISH and resets the driver itself.",
+      "parentUuid": "53db7ee7_3a26aa2f",
       "revId": "5658341a205002917a654dadddb30284564d50e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
