@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b98607cf_5c682b4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T19:34:16Z",
+      "side": 1,
+      "message": "how does this work - is this using servo or ccd?\n\nDoes this work with CCD directly?",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "8722da89f2c75ae13fbdc991833f4c07e8e22df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f6833d_a1393b0e",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T19:34:16Z",
+      "side": 1,
+      "message": "this is quite a drastic change, was this function not working before?",
+      "revId": "8722da89f2c75ae13fbdc991833f4c07e8e22df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
