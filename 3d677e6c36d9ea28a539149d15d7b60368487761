@@ -22,6 +22,30 @@
       "revId": "3d677e6c36d9ea28a539149d15d7b60368487761",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d055b6eb_9ea62881",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3796,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-05T06:05:39Z",
+      "side": 1,
+      "message": "On LPC based EC, writing to EC_LPC_ADDR_HOST_CMD. \nI documented our conversation about this mode here: https://docs.google.com/document/d/120P8kGHjwE_fhXbPzIO67shxS8ilRFnuIX7K-mhWI4M/edit#heading\u003dh.sn0vkmsa9lrg",
+      "parentUuid": "3d07f5b6_095328f9",
+      "range": {
+        "startLine": 3796,
+        "startChar": 0,
+        "endLine": 3796,
+        "endChar": 39
+      },
+      "revId": "3d677e6c36d9ea28a539149d15d7b60368487761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
