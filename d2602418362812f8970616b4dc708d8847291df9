@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3c25f23_2c179b55",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-05T22:44:49Z",
+      "side": 0,
+      "message": "See earlier comment about #ifndef CONFIG_DCRYPTO",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 18
+      },
+      "revId": "d2602418362812f8970616b4dc708d8847291df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b868fa9e_8d9f3f73",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-05T22:44:49Z",
+      "side": 0,
+      "message": "See earlier comment about #ifndef CONFIG_DCRYPTO",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "d2602418362812f8970616b4dc708d8847291df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
