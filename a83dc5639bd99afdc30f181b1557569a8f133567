@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8ce969a9_175cb57a",
+        "filename": "board/cheza/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-12-05T23:17:16Z",
+      "side": 1,
+      "message": "Removed the comment of active-high or active-low. The current comment is clear for people to know what it is muxed to.",
+      "parentUuid": "7b66a376_5de1c2ca",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "a83dc5639bd99afdc30f181b1557569a8f133567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a07cf3e2_b1d6d1b9",
         "filename": "board/cheza/usb_pd_policy.c",
         "patchSetId": 4
