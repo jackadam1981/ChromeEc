@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "59a435dd_b500b434",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-05T00:31:31Z",
+      "side": 1,
+      "message": "b/119221935#comment34 didn\u0027t mention 0x1009 yet, which is \u0027Chrome OS Firmware Backup\u0027.\nCould you (or Andrey) confirm this also should be in a white list?",
+      "range": {
+        "startLine": 233,
+        "startChar": 37,
+        "endLine": 233,
+        "endChar": 53
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "542cc66c_7ab3c8be",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
