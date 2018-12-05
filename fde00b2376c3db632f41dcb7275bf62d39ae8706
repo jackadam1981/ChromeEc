@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3790e59_967dd4cb",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T21:06:24Z",
+      "side": 1,
+      "message": "can you add a comment that bit4 is for PD 3.0 and should be benign (and set to 0) for PD 2.0",
+      "range": {
+        "startLine": 947,
+        "startChar": 0,
+        "endLine": 947,
+        "endChar": 49
+      },
+      "revId": "fde00b2376c3db632f41dcb7275bf62d39ae8706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
