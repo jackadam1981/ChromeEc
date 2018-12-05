@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "b5972c01_a161fa88",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T00:32:13Z",
+      "side": 1,
+      "message": "re 3: oh, I misread what NvWipeCache does. So, we preserve everything in 0x1007..0x100b range. I thought we are passing the list. That works in the current situation, as long as we don\u0027t add something that requires a list in the future.",
+      "parentUuid": "b1e5dcb1_ab86f35f",
+      "range": {
+        "startLine": 233,
+        "startChar": 36,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "542cc66c_7ab3c8be",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
