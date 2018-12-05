@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7924de62_72b84b94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-12-05T18:50:51Z",
+      "side": 1,
+      "message": "We try to keep this short, 60 chars\n\nAlso please use imperative tense\n\nHow about \"ec-devutils: Install config files in a better place\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "36d2125c3eae1f1e147bf92c915ef34af14b2861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7563dd28_f9a4ce52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-12-05T18:50:51Z",
+      "side": 1,
+      "message": "Please insert a short commit message explaining why. I know you have it in the bug, but it is good to add a motivation to each CL",
+      "revId": "36d2125c3eae1f1e147bf92c915ef34af14b2861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09c1a04a_910003af",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-12-05T18:50:51Z",
+      "side": 1,
+      "message": "Looks like an inadvertent change?",
+      "range": {
+        "startLine": 1188,
+        "startChar": 0,
+        "endLine": 1189,
+        "endChar": 0
+      },
+      "revId": "36d2125c3eae1f1e147bf92c915ef34af14b2861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
