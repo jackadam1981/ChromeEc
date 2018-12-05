@@ -154,10 +154,11 @@ static int show_charge_state(void)
 	} else if (chg_st == PWR_STATE_CHARGE_NEAR_FULL) {
 		led_is_pulsing = 0;
 		set_led_color(CONFIG_LED_PWM_NEAR_FULL_COLOR);
-	} else if ((battery_is_present() != BP_YES) ||
+	} else if (/*(battery_is_present() != BP_YES) ||*/
 		   (chg_st == PWR_STATE_ERROR)) {
 		/* 500 ms period, 50% duty cycle. */
-		pulse_leds(CONFIG_LED_PWM_CHARGE_ERROR_COLOR, 1, 2);
+		//pulse_leds(CONFIG_LED_PWM_CHARGE_ERROR_COLOR, 1, 2);
+		pulse_leds(EC_LED_COLOR_BLUE, 1, 2);
 	} else {
 		/* Discharging or not charging. */
 #ifdef CONFIG_LED_PWM_CHARGE_STATE_ONLY
