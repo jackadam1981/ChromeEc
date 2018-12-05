@@ -961,7 +961,7 @@ static int command_write_pages(struct common_hnd *chnd, uint32_t address,
 			block_write_size : remaining;
 		addr_H = (address >> 16) & 0xFF;
 		addr_M = (address >> 8) & 0xFF;
-		addr_L = (address) & 0xFF;
+		addr_L = address & 0xFF;
 
 		draw_spinner(remaining, size);
 
@@ -1086,9 +1086,9 @@ static int command_write_pages2(struct common_hnd *chnd, uint32_t address,
 		goto failed_write;
 	}
 
-	BA = address>>16;
-	A1 = address>>8;
-	A0 = 0;
+	BA = (address >> 16) & 0xFF;
+	A1 = (address >> 8) & 0xFF;
+	A0 = address & 0xFF;
 
 	res = i2c_byte_transfer(chnd, I2C_DATA_ADDR, &BA, 1, 1);
 	res |= i2c_byte_transfer(chnd, I2C_DATA_ADDR, &A1, 1, 1);
