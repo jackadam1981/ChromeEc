@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "69a43fe5_14730bff",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-05T18:07:32Z",
+      "side": 1,
+      "message": "Can we add some clues here?\n\n/* GPIO to use for incoming i2c message */\n/* Start memory address to use for semaphore IRQ management */\n/* Maximum I2C message length in bytes */\n\nIs the memory address in EC memory space, host memory space, or host IO space?\n\nThat is, header files should have enough information it\u0027s not necessary to look at the implementation, or know that some other (unreferenced) doc exists.",
+      "parentUuid": "4611739b_b92f4596",
+      "range": {
+        "startLine": 1781,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 0
+      },
+      "revId": "ffda448cc0eec7b9f049ddee21419a661743ab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47160fe4_f318c421",
         "filename": "include/i2c_over_lpc.h",
         "patchSetId": 1
