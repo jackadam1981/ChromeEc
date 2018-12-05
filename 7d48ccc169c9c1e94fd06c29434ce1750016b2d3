@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "3bc9edcd_7242bebe",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-05T05:58:11Z",
+      "side": 1,
+      "message": "In ec_commands.h:\n\n\t\t\t * Temperature at calibration, in units of 0.01 C\n\t\t\t * 0x8000: invalid / unknown.\n\ndefined as EC_MOTION_SENSE_INVALID_CALIB_TEMP",
+      "parentUuid": "6a536fea_a343eccb",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "7d48ccc169c9c1e94fd06c29434ce1750016b2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d05540de_d18a505e",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
