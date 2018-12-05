@@ -22,6 +22,30 @@
       "revId": "02686082c54ca13a0d1d1fee7bdea93cbc1502b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "353cb6b5_dff8e674",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1315025
+      },
+      "writtenOn": "2018-12-05T22:37:22Z",
+      "side": 1,
+      "message": "Sounds good to me. Patch updated. atlas_ish board is also updated to accommodate. CHIP_FAMILY is mainly used for now but CHIP_VARIANT is reserved for future change on minor revisions (v5.1, v5.2...).",
+      "parentUuid": "cd6710d1_8d14979d",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "02686082c54ca13a0d1d1fee7bdea93cbc1502b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
