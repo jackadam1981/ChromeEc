@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c772b804_30e9c8c5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3792,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-05T18:02:42Z",
+      "side": 1,
+      "message": "-\u003e Host command protocol V1?  Move comment for TO_CROS down below 3795?",
+      "range": {
+        "startLine": 3792,
+        "startChar": 3,
+        "endLine": 3792,
+        "endChar": 8
+      },
+      "revId": "3d677e6c36d9ea28a539149d15d7b60368487761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d07f5b6_095328f9",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
