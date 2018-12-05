@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b0bb3d6_aa9d8a3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-12-05T00:37:57Z",
+      "side": 1,
+      "message": "Kasumi360 should be SKU 52.",
+      "revId": "2ea4d2cd1fdd510f01f2c37a275cbc82edf3c370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871d36b3_75711761",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-12-05T00:37:57Z",
+      "side": 1,
+      "message": "Kasumi360 sku_id should be 52",
+      "revId": "2ea4d2cd1fdd510f01f2c37a275cbc82edf3c370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
