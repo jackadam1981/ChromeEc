@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "a3831159_18e2ce46",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-05T22:32:45Z",
+      "side": 1,
+      "message": "It looks like ec-utils does the same thing of replacing HOSTCC with CC:\nhttps://chromium.googlesource.com/chromiumos/overlays/chromiumos-overlay/+/19b1b91d/chromeos-base/ec-utils/ec-utils-9999.ebuild#37\n\nI fixed CROSS_COMPILE to use the prefix and it ended up with the same error I get before setting --sys_root\u003d${SYS_ROOT}, so I think we should probably land this to fix the fuzzer build and fix the ${CC} issue in a follow up.",
+      "parentUuid": "6856ef07_f1be6556",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "5ff5e0ea39f4ddab908749bda053de0372d427de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb49db56_81c1e92b",
         "filename": "Makefile.toolchain",
         "patchSetId": 1
