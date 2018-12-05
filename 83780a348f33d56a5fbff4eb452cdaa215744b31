@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc09a5a8_10850c63",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T00:49:44Z",
+      "side": 1,
+      "message": "the thing is that this function needs to call a function in the tpm2 library, this sure is a better place than common/nvmem.c, but sure not ideal\nmaybe I should put it in a separate file in this directory?",
+      "parentUuid": "b881981c_b660e945",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 21
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1e5dcb1_ab86f35f",
         "filename": "board/cr50/tpm2/NVMem.c",
         "patchSetId": 1
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "38d33a3f_06ea4114",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T00:49:44Z",
+      "side": 1,
+      "message": "1) ok\n2) I think passing the range is fine, if we ever need to change the set of the indices to retain we can change this interface.",
+      "parentUuid": "b5972c01_a161fa88",
+      "range": {
+        "startLine": 233,
+        "startChar": 36,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "542cc66c_7ab3c8be",
         "filename": "board/cr50/tpm2/tpm_mode.c",
         "patchSetId": 1
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "6cec0d02_d2c9d331",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T00:49:44Z",
+      "side": 1,
+      "message": "yes, this is the idea",
+      "parentUuid": "542cc66c_7ab3c8be",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ceff4578_416b8429",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -153,6 +225,30 @@
       "writtenOn": "2018-12-05T00:29:53Z",
       "side": 1,
       "message": "won\u0027t this (attempt to) write the now-empty cache to flash? why do we need it?",
+      "range": {
+        "startLine": 621,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 11
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b6f672_5c0df2ea",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T00:49:44Z",
+      "side": 1,
+      "message": "this is needed to remove the lock on nvmem accesses. It will not write into flash when ladder is disabled.",
+      "parentUuid": "ceff4578_416b8429",
       "range": {
         "startLine": 621,
         "startChar": 1,
