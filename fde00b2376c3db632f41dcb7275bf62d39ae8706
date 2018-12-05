@@ -22,6 +22,30 @@
       "revId": "fde00b2376c3db632f41dcb7275bf62d39ae8706",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c24119f_fa1a6ceb",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-12-05T21:16:28Z",
+      "side": 1,
+      "message": "That would be a good breadcrumb in case something using PD 2.0 was setting that bit and breaks our type detection.  It just destroys my \"one-line CL\" cred :)",
+      "parentUuid": "d3790e59_967dd4cb",
+      "range": {
+        "startLine": 947,
+        "startChar": 0,
+        "endLine": 947,
+        "endChar": 49
+      },
+      "revId": "fde00b2376c3db632f41dcb7275bf62d39ae8706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
