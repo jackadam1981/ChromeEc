@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66868c3c_bdeef378",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-12-05T13:33:18Z",
+      "side": 1,
+      "message": "One important factor is about 15W (5V3A) in RO and 18W (9V3A - 27W) in RW so probably you should make sure items below when battery is 0%:\n  1. BC 1.2 (ex: 5V/1.5A or \u003c 3A) can\u0027t let EC RO boots AP.\n  2. Type C charger without PD (ex: 5V / 3A) can\u0027t boot into kernel.\n  3. Type C charger with PD in 18W or more can boot into kernel.",
+      "revId": "86b831f3e57d4efefd68947c4feeff381054338c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
