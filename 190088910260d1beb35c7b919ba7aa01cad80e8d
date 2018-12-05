@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d207e1f_32b0cc4b",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T02:05:56Z",
+      "side": 1,
+      "message": "changed to use the updated name. \n\nI think this file can be considered an interface to NV.c, and then this function belongs here, but if you think it should be in a separate file I can move it.",
+      "revId": "190088910260d1beb35c7b919ba7aa01cad80e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
