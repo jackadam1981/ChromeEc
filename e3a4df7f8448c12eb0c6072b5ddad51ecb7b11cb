@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5e5b87b8_e3764323",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-12-05T23:53:15Z",
+      "side": 1,
+      "message": "Changed them to uint8_t.",
+      "parentUuid": "7820a552_0b0e5ed5",
+      "range": {
+        "startLine": 707,
+        "startChar": 1,
+        "endLine": 707,
+        "endChar": 42
+      },
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63d3f463_ab5fedb2",
         "filename": "power/sdm845.c",
         "patchSetId": 2
