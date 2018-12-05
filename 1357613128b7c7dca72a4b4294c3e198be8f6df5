@@ -22,6 +22,30 @@
       "revId": "1357613128b7c7dca72a4b4294c3e198be8f6df5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c707e6_f2fdd22e",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-12-05T22:10:53Z",
+      "side": 1,
+      "message": "I have made them the same.",
+      "parentUuid": "904c5eb0_ee803a2f",
+      "range": {
+        "startLine": 1541,
+        "startChar": 30,
+        "endLine": 1541,
+        "endChar": 68
+      },
+      "revId": "1357613128b7c7dca72a4b4294c3e198be8f6df5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
