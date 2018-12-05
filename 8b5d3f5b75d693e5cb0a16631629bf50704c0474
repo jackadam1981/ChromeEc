@@ -52,6 +52,24 @@
       "revId": "8b5d3f5b75d693e5cb0a16631629bf50704c0474",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807ffac5_71ab4642",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-12-05T03:10:44Z",
+      "side": 1,
+      "message": "No, we don\u0027t want that. Otherwise the higher-level layers will report that:\n\u0027when there is a matching failure caused by \"No template\", then the matching duration is xxx ms\u0027 where xxx comes randomly from a previous matching operations. So we need to mark the matching duration as invalid.\n\nThe \"internal error\" case does update the duration with an irrelevant number, true. But leaving the old value would be just as irrelevant. The important thing is that the value is marked as invalid, so it is ignored by the users of the \"API\". But yes, it would be equivalent to update |matching_time_us| only in the case where fp_finger_match() doesn\u0027t error. I really don\u0027t have a strong preference for that :-)\n\nDoes that make sense?",
+      "parentUuid": "ef0346ab_9b18b5ab",
+      "revId": "8b5d3f5b75d693e5cb0a16631629bf50704c0474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
