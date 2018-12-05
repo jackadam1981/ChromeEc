@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46fdc4b8_4c89c442",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "For now, I don\u0027t know how many HID devices will be connected to EC. Do you know ? but still I believe this is the right approach for API.\n\nWhen I design API, first, I should think about how to make it easy for users(clients) to use. That\u0027s my first priority. So I usually create code(client application) first while pretending all API functions are already ready to use. and then see if they are easy and simple. if not, modify here and there to make more simple and easy to use. Try to use common and well-known mechanism. here \"easy\" also includes how to hide any underlying details so that make users to focus on their area. They don\u0027t need to learn. Honestly, I don\u0027t think I introduced any cognitive overhead cost here.",
+      "parentUuid": "302154a5_8f5bcd65",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997bfa06_3a27035c",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "Values are defined\u0026used for communicating with host driver.\nI\u0027ll add comments.",
+      "parentUuid": "41736276_13b49dca",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98056adc_b154aaed",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "Values are defined\u0026used for communicating with host driver which is already upstreamed.",
+      "parentUuid": "09d4e285_89c50f02",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96380e5b_2b6d2f2a",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -91,6 +163,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca9be380_a166894c",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "This is used for communicating with host driver. so it is for transmission.",
+      "parentUuid": "96380e5b_2b6d2f2a",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b8447259_d829f679",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c841bbaf_a71ee572",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 24
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f8db6c2_2eb94940",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -137,6 +257,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3092417c_feb098c6",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "As I mentioned above. It is from host driver which is already upstreamed and used by other product.",
+      "parentUuid": "0f8db6c2_2eb94940",
+      "range": {
+        "startLine": 68,
+        "startChar": 7,
+        "endLine": 68,
+        "endChar": 14
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "853cab8f_50e21baa",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "no need. all error, range and validity check are handled at the entry of API or entry of handler for packet from host driver.",
+      "parentUuid": "572492a6_caade933",
+      "range": {
+        "startLine": 95,
+        "startChar": 45,
+        "endLine": 95,
+        "endChar": 57
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1007a7c_6d70784a",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -183,6 +351,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d217cc5_dcaaa904",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "We can apply better encoding with saying whatever reasons(security, robust) but I don\u0027t want to be serious for FW. but still don\u0027t want to use 0 for handle.",
+      "parentUuid": "c1007a7c_6d70784a",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "5e179569_259045e2",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "This function cannot be called from a few context simultaneously because it is only called by hook_task which means calls are serialized automatically.",
+      "parentUuid": "3a6e4346_0c527bee",
+      "range": {
+        "startLine": 121,
+        "startChar": 39,
+        "endLine": 121,
+        "endChar": 43
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "808f8e2f_5aaf3beb",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -229,6 +445,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fdb207a_7e7ee491",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-05T05:27:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "808f8e2f_5aaf3beb",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 46
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
