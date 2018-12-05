@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b881981c_b660e945",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T00:29:53Z",
+      "side": 1,
+      "message": "looks like this .c is dedicated to defining _plat__* functions used by tpm2 stack.\nsince nvmem_wipe_cache() is called from nvmem_clear_cache() only, and is actually declared in nvmem.h, shall it be defined in nvmem.c instead?",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 21
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e5dcb1_ab86f35f",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T00:29:53Z",
+      "side": 1,
+      "message": "1) let\u0027s add 0x100b to platform/ec/include/tpm_nvmem.h and use those names here. 0x1007 is already defined there.\n\n2) so, firmware anti-rollback and recovery hash. do we care about preserving kernel anti-rollback (0x1008)? \nas we discussed, we don\u0027t seem to need FWMP (0x100a): an attempt to switch to dev mode would invoke booting Chrome OS, so switching to enabled state.\n\n3) don\u0027t we need to make it flexible and somehow pass the size of whitelist_range to NvWipeCache() - either as an extra parameter or by setting the last list member to 0 to indicate the end of the list? Right now it is hardcoded on NvWipeCache side that the list contains 2 numbers, which seems wrong.",
+      "range": {
+        "startLine": 233,
+        "startChar": 36,
+        "endLine": 233,
+        "endChar": 55
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "542cc66c_7ab3c8be",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T00:29:53Z",
+      "side": 1,
+      "message": "for my understanding: why do we enable commits here? to make sure that the results of TPM2_Shutdown make it to flash before we disable the keyladder?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceff4578_416b8429",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T00:29:53Z",
+      "side": 1,
+      "message": "won\u0027t this (attempt to) write the now-empty cache to flash? why do we need it?",
+      "range": {
+        "startLine": 621,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 11
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
