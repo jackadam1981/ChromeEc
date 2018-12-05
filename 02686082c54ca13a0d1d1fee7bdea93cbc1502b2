@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd6710d1_8d14979d",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-12-05T02:34:25Z",
+      "side": 1,
+      "message": "i see we\u0027re adding board.h defines for\nCONFIG_ISH_30\nCONFIG_ISH_40\nCONFIG_ISH_50\nto distinguish between the \"chips\" implemented on the\nassociated SoC.\n\nit seems we have a more structured mechanism for such\ndistinctions.  can we do this in build.mk?\nuse the CHIP_FAMILY\u003d...\nor CHIP_VARIANT\u003d... as appropriate?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "02686082c54ca13a0d1d1fee7bdea93cbc1502b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
