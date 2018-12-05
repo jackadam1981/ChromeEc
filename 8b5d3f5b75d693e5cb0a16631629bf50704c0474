@@ -34,6 +34,24 @@
       "revId": "8b5d3f5b75d693e5cb0a16631629bf50704c0474",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0346ab_9b18b5ab",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2018-12-05T02:51:04Z",
+      "side": 1,
+      "message": "\u003e Right, but the value is left over from a previous match in that case\n\nIsn\u0027t that what we want? We didn\u0027t actually perform a call to fp_finger_match in this case, so the timing from the last time we did perform a match should still be valid?\n\nIt does seem ambiguous to me since the error case updates the timestamp and marks it invalid, so I\u0027ll defer to your preference.",
+      "parentUuid": "d84a7fde_ee2f21cb",
+      "revId": "8b5d3f5b75d693e5cb0a16631629bf50704c0474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
