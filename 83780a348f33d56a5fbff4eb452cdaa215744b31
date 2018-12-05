@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5b3ab0ef_8118c30a",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T02:13:48Z",
+      "side": 1,
+      "message": "hmm, I don\u0027t think any of the functions here called a tpm2 library before too. though I get we don\u0027t want to have it in common code.\nwhat about platform/ec/board/cr50/tpm_nvmem_ops.c?",
+      "parentUuid": "fc09a5a8_10850c63",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 21
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1e5dcb1_ab86f35f",
         "filename": "board/cr50/tpm2/NVMem.c",
         "patchSetId": 1
@@ -249,6 +273,30 @@
       "side": 1,
       "message": "this is needed to remove the lock on nvmem accesses. It will not write into flash when ladder is disabled.",
       "parentUuid": "ceff4578_416b8429",
+      "range": {
+        "startLine": 621,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 11
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da60846_01f5ed52",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T02:13:48Z",
+      "side": 1,
+      "message": "feels a bit dangerous. one day somebody decides to clear the cache before disabling keyladder (or regardless of doing it) and will corrupt the flash data.\ncan we do something like nvmem_release_cache() instead, as before?",
+      "parentUuid": "71b6f672_5c0df2ea",
       "range": {
         "startLine": 621,
         "startChar": 1,
