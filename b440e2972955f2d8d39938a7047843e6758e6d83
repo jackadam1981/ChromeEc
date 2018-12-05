@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5f9d943_8d171874",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-12-05T12:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317ef12c_6d9bab18",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "994fc570_97d24134",
         "filename": "board/karma/board.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c18b00_8da350df",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-12-05T12:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "994fc570_97d24134",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7a3d149f_867ebfca",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-12-05T12:08:10Z",
+      "side": 1,
+      "message": "okay, add \"break\" here",
+      "parentUuid": "72d02835_aafe5abd",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1e3cfb5_def21656",
         "filename": "board/karma/board.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058bf91f_db702522",
+        "filename": "board/karma/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1267183
+      },
+      "writtenOn": "2018-12-05T12:08:10Z",
+      "side": 1,
+      "message": "Karma is AIO project, no need to consider LID case.\nWe use CHIPSET_RESUME to enable the interrupt, CHIPSET_SHUTDOWN to disable the interrupt.",
+      "parentUuid": "b1e3cfb5_def21656",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 22
+      },
+      "revId": "b440e2972955f2d8d39938a7047843e6758e6d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
