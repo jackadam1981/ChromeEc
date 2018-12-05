@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac83aac_e6662936",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T23:16:32Z",
+      "side": 1,
+      "message": "As I read through this again, I am realizing more.\n\nIs the intent to create a new task for every type of protocol (e.g. Management, HECI, etc) that can be transmitted on this doorbell interface? If so, then we will have multiple tasks reading from the same register set (and blocking each other if they are slow to read because they are processing the previous command or something).\n\nShould we create a rx_queue that buffers the raw data; That way, only a single task (and interrupt context) are accessing these registers. I think we would want a similar paradigm for TX, i.e. only a single task is access these host_ish registers. We already have the queue for it, so let\u0027s make a single task read/write to these registers.\n\nI still think having separate tasks to process the different protocols makes sense, they just read and write to the TX and RX buffers instead of directly to the doorbell registers themselves.",
+      "range": {
+        "startLine": 660,
+        "startChar": 5,
+        "endLine": 660,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

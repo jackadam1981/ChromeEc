@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4702490d_59efd060",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T23:16:32Z",
+      "side": 1,
+      "message": "Let\u0027s put that link in the comment in the code, please",
+      "parentUuid": "769fdfe7_454aea21",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0a4d4f1_dd18791a",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5
@@ -413,6 +437,30 @@
       "side": 1,
       "message": "Hm.. I don\u0027t understand what you mean by \"unbalanced unlock\". Do you mean I need to use \"goto\" here ? I don\u0027t mind to use \"goto\".",
       "parentUuid": "4453b02d_935fa306",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 33
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81535907_98637366",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T23:16:32Z",
+      "side": 1,
+      "message": "Thank you for the update!",
+      "parentUuid": "73e02105_5ee675c9",
       "range": {
         "startLine": 266,
         "startChar": 2,
@@ -962,6 +1010,30 @@
       "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1340c76_158dc9ff",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T23:16:32Z",
+      "side": 1,
+      "message": "I think it is fine to have the TODO :) I also think it is a good idea to track this work in http://partnerissuetracker.corp.google.com as well.",
+      "parentUuid": "1471107b_b52ee4d2",
+      "range": {
+        "startLine": 685,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 4
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

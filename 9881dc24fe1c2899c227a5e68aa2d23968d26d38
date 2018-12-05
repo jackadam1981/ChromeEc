@@ -390,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "db381a14_5e88a248",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T23:16:32Z",
+      "side": 1,
+      "message": "Unfortunately all I can find are the following links [0] and [1] -- neither of which call this out. The general rule is to look at how other code in the codebase is written and follow that pattern to stay consistent. Reviews will also help trying to keep style consistent.\n\n\n[0] https://www.chromium.org/chromium-os/ec-development#TOC-Coding-style\n[1] https://chromium.googlesource.com/chromiumos/docs/+/master/development_basics.md#programming-languages-and-style-c-2",
+      "parentUuid": "59abc4cf_af920ccd",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd67a5e_cbd4eda1",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
@@ -567,6 +591,30 @@
       "side": 1,
       "message": "It\u0027s nothing for me to add a mutex or using some other mechanism but there should be enough reason. I did this to remove unnecessary execution. I briefly checked host command when I implement this and I couldn\u0027t find any need making \"read\" to be thread-safe.\n\nTo suport host command, we just need to create ipc_host_comm task and let it wait on ipc and call \"host_packet_receive()\" when there\u0027s host command msg from host.\n\nProbably I missed something. That\u0027s why I asked you to share your solution. Please give me the case we need \"read\" thread-safe with an example.\n\nThis is FW which doesn\u0027t support any runtime loading\u0026binding and also it is tested\u0026verified during compile\u0026build\u0026test time.",
       "parentUuid": "8d5a1935_9e15b4fc",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a19aff16_d167395b",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T23:16:32Z",
+      "side": 1,
+      "message": "If (task affinity of calls) is something we want to enforce and count on for the first revision, I am okay with it if we check for a violation of this in all of the API methods and return early with an error next to a comment saying we should check the task safety of this implementation before allowing cross task access. Basically I don\u0027t want only this comment to enforce this constraint because it could easily be missed.\n\nAlso, see my next comment on task structure, this may not be an issue if limit all register access to a single task anyway and all other tasks are reading and writing to a queue instead.",
+      "parentUuid": "8308a910_5a78f1e2",
       "range": {
         "startLine": 58,
         "startChar": 3,
