@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66b3af96_eb51db61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-12-05T00:37:38Z",
+      "side": 1,
+      "message": "The dependency goes the other way. You need to have added the error to the header before the biod CL can land or biod won\u0027t compile.\nThe actual runtime behaviour of the firmware itself will not change after this particular CL lands, only when we submit a different CL that uprevs the FPMCU firmware, such as CL:*709211",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "a1f2beba4ee7c38b98b9aecb96d2e6e46e4d7b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a5f07e_8def269b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-12-05T00:37:38Z",
+      "side": 1,
+      "message": "That\u0027s redundant, correct?",
+      "range": {
+        "startLine": 194,
+        "startChar": 16,
+        "endLine": 194,
+        "endChar": 20
+      },
+      "revId": "a1f2beba4ee7c38b98b9aecb96d2e6e46e4d7b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec9a1a7_18a56024",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-12-05T00:37:38Z",
+      "side": 1,
+      "message": "Can you fold that into the previous test?\n\nif (templ_valid) {\n  res \u003d fp_finger_match();\n  CPRINTS(\"Match...\")\n  if (res \u003c 0) {\n     ...\n  }\n} else {\n  CPRINTS(\"No enrolled templates\");\n  res \u003d EC_MKBP_FP_ERR_MATCH_NO_TEMPLATES;\n  timestamps_invalid |\u003d FPSTATS_MATCHING_INV;\n}",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 22
+      },
+      "revId": "a1f2beba4ee7c38b98b9aecb96d2e6e46e4d7b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
