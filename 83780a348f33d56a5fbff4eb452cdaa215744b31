@@ -354,6 +354,30 @@
       "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc7ada88_59281123",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-05T20:33:10Z",
+      "side": 1,
+      "message": "\u003e nvmem_save() changes the mutex holder tas_id value to \u0027none\u0027 which allows the next lock to proceed. I would rather not duplicate this functionality in a different place.\n\nisn\u0027t it nvmem_release_cache() that does that? nvmem_save() calls it after attempting to flash_physical_erase/write if the hash of what\u0027s in cache doesn\u0027t match the physical flash contents. the only other thing it does is explicitly saying nvmem_mutex.write_in_progress \u003d 0, which is useful to ensure that nvmem_release_cache actually does something.",
+      "parentUuid": "5c6a7b8b_220f36fa",
+      "range": {
+        "startLine": 621,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 11
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
