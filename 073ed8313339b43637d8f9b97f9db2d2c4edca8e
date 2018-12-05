@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f06a0a87_4a1066b2",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T21:01:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we will have that many HID device connected.\n\nIt is common in the EC codebase for the actual driver to register its own hook to register itself\n\nI have include just a few example were driver\u0027s write their own private initialization hook to perform their own registration/initialization. \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/d2602418362812f8970616b4dc708d8847291df9/driver/charger/bd9995x.c#1007\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/d2602418362812f8970616b4dc708d8847291df9/driver/charger/bq2589x.c#347\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/d2602418362812f8970616b4dc708d8847291df9/driver/temp_sensor/tmp006.c#149\n\n\nUsing this macro in a implementation file just make the reader need to find the macro definition to understand what it is doing. I would prefer to see the hook method to be explicitly defined in each driver implementation file (instead of using this macro).\n\nGwendal/Caveh, can you add your preference (keep, remove, don\u0027t care)?",
+      "parentUuid": "46fdc4b8_4c89c442",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -375,6 +399,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8622a43e_0f16eb70",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-05T21:01:08Z",
+      "side": 1,
+      "message": "What is the value for having the handle layer of indirection, why not use index for all calls? Most \"index/handle/port\" identifiers in this EC codebase are 0-based. What is the concern for using 0-based identifier?",
+      "parentUuid": "6d217cc5_dcaaa904",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
