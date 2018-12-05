@@ -39,6 +39,24 @@
       "revId": "8722da89f2c75ae13fbdc991833f4c07e8e22df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07128803_bf66e2cf",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-12-05T19:42:43Z",
+      "side": 1,
+      "message": "See http://b/79684405 #29 - #36.  Previously this worked only for block sizes that were multiples of 1\u003c\u003c16.\n\nSince the FTDI block write size is exactly that, it worked, but smaller block write sizes for CCD and Servo Micro needed this change to work for non-DX chips.  The DX revision chips use command_write_pages2(), which until my pending change assumes multiple of 1\u003c\u003c8 block write size, so it works for CCD with a block_write_size of exactly that, but not i2c-dev due to Servo Micro being limited to 254 B block_write_size so far.",
+      "parentUuid": "59f6833d_a1393b0e",
+      "revId": "8722da89f2c75ae13fbdc991833f4c07e8e22df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
