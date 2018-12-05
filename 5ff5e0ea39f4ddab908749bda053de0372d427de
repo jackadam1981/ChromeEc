@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "722c850b_456d9fb0",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-05T20:53:35Z",
+      "side": 1,
+      "message": "then you can set CC to the right value when you build the fuzz targets\n\n emake buildfuzztests CC\u003d\"$(tc-getCC)\"",
+      "parentUuid": "670dac72_dcc02994",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "5ff5e0ea39f4ddab908749bda053de0372d427de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb49db56_81c1e92b",
         "filename": "Makefile.toolchain",
         "patchSetId": 1
