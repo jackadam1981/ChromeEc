@@ -16,6 +16,24 @@
       "revId": "8b5d3f5b75d693e5cb0a16631629bf50704c0474",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d84a7fde_ee2f21cb",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-12-05T02:38:53Z",
+      "side": 1,
+      "message": "Right, but the value is left over from a previous match in that case. I think you need to add:\n\ntimestamps_invalid |\u003d FPSTATS_MATCHING_INV;\n\nSame as the normal failure case. That way the upper layers know they should ignore the value of matching_time_us",
+      "parentUuid": "4cb41db8_da6c4099",
+      "revId": "8b5d3f5b75d693e5cb0a16631629bf50704c0474",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
