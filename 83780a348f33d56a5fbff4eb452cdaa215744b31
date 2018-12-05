@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3e3930ac_c9c9136a",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T02:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b3ab0ef_8118c30a",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 21
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1e5dcb1_ab86f35f",
         "filename": "board/cr50/tpm2/NVMem.c",
         "patchSetId": 1
@@ -297,6 +321,30 @@
       "side": 1,
       "message": "feels a bit dangerous. one day somebody decides to clear the cache before disabling keyladder (or regardless of doing it) and will corrupt the flash data.\ncan we do something like nvmem_release_cache() instead, as before?",
       "parentUuid": "71b6f672_5c0df2ea",
+      "range": {
+        "startLine": 621,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 11
+      },
+      "revId": "83780a348f33d56a5fbff4eb452cdaa215744b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c6a7b8b_220f36fa",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-05T02:56:29Z",
+      "side": 1,
+      "message": "this is actually a common pattern in nvmem operations:\n\nlock the cache\nperform write operations\ncall nvmem_save()\n\nnvmem_save() changes the mutex holder tas_id value to \u0027none\u0027 which allows the next lock to proceed. I would rather not duplicate this functionality in a different place.",
+      "parentUuid": "1da60846_01f5ed52",
       "range": {
         "startLine": 621,
         "startChar": 1,
