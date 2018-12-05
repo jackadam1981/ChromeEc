@@ -858,26 +858,18 @@ static int send_special_waveform(struct common_hnd *chnd)
 		usleep(10 * MSEC);
 
 		if (spi_flash_follow_mode(chnd, "enter follow mode") >= 0) {
-
 			spi_flash_follow_mode_exit(chnd, "exit follow mode");
 			/*
 			 * If we can talk to chip, then we can break the retry
 			 * loop.
 			 */
 			ret = check_chipid(chnd);
-
-			/* disable watchdog before programming sequence */
-			if (!ret) {
-				dbgr_disable_watchdog(chnd);
-				dbgr_disable_protect_path(chnd);
-			}
 		} else {
 			ret = -1;
 			if (!(iterations % 10))
 				printf("!please reset EC if flashing sequence"
 					" is not starting!\n");
 		}
-
 	} while (ret && (iterations++ < 10));
 
 	if (ret)
@@ -1808,6 +1800,10 @@ int main(int argc, char **argv)
 	if (chnd.conf.i2c_if->interface_post_waveform &&
 	    chnd.conf.i2c_if->interface_post_waveform(&chnd))
 		goto terminate;
+
+	/* disable watchdog before programming sequence */
+	dbgr_disable_watchdog(&chnd);
+	dbgr_disable_protect_path(&chnd);
 
 	if (chnd.conf.input_filename) {
 		ret = read_flash(&chnd);
