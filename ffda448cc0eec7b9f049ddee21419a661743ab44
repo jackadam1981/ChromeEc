@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4611739b_b92f4596",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-05T06:09:37Z",
+      "side": 1,
+      "message": "It is shared between the host and EC, like the shared io memory region. Using nuvoton docs, \n5 and 0xff80 respectively:\nSee https://docs.google.com/document/d/120P8kGHjwE_fhXbPzIO67shxS8ilRFnuIX7K-mhWI4M/edit#heading\u003dh.sn0vkmsa9lrg",
+      "parentUuid": "6051d117_d9079857",
+      "range": {
+        "startLine": 1781,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 0
+      },
+      "revId": "ffda448cc0eec7b9f049ddee21419a661743ab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47160fe4_f318c421",
         "filename": "include/i2c_over_lpc.h",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2018-12-04T17:41:17Z",
       "side": 1,
       "message": "Needs TODO?",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "ffda448cc0eec7b9f049ddee21419a661743ab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4011daea_d2fb67c8",
+        "filename": "include/i2c_over_lpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-05T06:09:37Z",
+      "side": 1,
+      "message": "Yes, I will plug the hid stack, as defined by rose driver or the new atlas stack.",
+      "parentUuid": "47160fe4_f318c421",
       "range": {
         "startLine": 74,
         "startChar": 3,
