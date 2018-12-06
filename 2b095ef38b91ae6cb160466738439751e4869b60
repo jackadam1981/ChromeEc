@@ -48,6 +48,213 @@
     },
     {
       "key": {
+        "uuid": "1b2cfd05_e3d92782",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "s/trackpad/sensor/",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a6ac7e6_6845de23",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "this is fine to leave for now, but we should create a http://partnerissuetracker.corp.google.com bug to come back and clean this up (and put it in the comments here)",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af5f574_2de7989c",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "s/unfeatures/features/",
+      "range": {
+        "startLine": 39,
+        "startChar": 12,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b53d3dd_1e047dea",
+        "filename": "board/arcada_ish/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "let\u0027s move this out the the undefined features section",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba26347_5386263b",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "will the trackpad be connected through ish for arcada, I thought that was only for atlas. In the meantime, can we remove this code and add it here when we are ready",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49872eb7_cd2cda8f",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "Let\u0027s update this comment to say we don\u0027t have a ENTERING_RW signal wired to the cr50 but common code needs it to be defined.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 46
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900f1b8a_02581ce3",
+        "filename": "board/arcada_ish/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "Put a TODO before ISH_I2C0_S** saying we do want to fill these in correctly. Only ENTERING_RW is needed for common code.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e352d04b_c68bd8da",
+        "filename": "board/atlas_ish/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "while this change is good. I would also prefer to see this pulled out into a parent patch (using CHIP_FAMILY). Then this CL will only be adding/touching arcada_ish files.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a0028b5_713322c2",
+        "filename": "chip/ish/ipc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:36:50Z",
+      "side": 1,
+      "message": "this change is good, but doesn\u0027t belong in the CL. Can you break it out of this CL, please?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f901fbb_1128124f",
         "filename": "chip/ish/uart_defs.h",
         "patchSetId": 6
