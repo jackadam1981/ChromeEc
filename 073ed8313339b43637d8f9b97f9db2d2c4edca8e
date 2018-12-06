@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "4c3a6c21_a06d04fd",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-06T01:19:11Z",
+      "side": 1,
+      "message": "remove, but i\u0027m not strongly opposed.  i doubt\nthere are enough use cases for this to help.\nit would make a lot of sense if we\u0027re populating\nlarge tables like a GPIO pin list, etc.\n\ni don\u0027t like is the ## operator for constructing\nsymbols because it makes them hard to find in the\nsrc for people who aren\u0027t intimately familiar with\nwhat\u0027s going on.",
+      "parentUuid": "f06a0a87_4a1066b2",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
