@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f4305f_cdca7af3",
+        "filename": "board/nami/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-12-06T18:15:50Z",
+      "side": 1,
+      "message": "This has an implied type.  So maybe call the macro swaplong()?  Which seems excessive, since scancode_set2 is only uint16_t.\n\nShould this live in util.h?",
+      "range": {
+        "startLine": 937,
+        "startChar": 2,
+        "endLine": 937,
+        "endChar": 6
+      },
+      "revId": "b1633803d921af7a3b4622582f38232b0554e510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
