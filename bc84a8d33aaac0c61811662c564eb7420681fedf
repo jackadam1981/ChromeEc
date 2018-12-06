@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4fc35a22_5698f82a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:02:52Z",
+      "side": 1,
+      "message": "I was thinking there would be code support in the CL for ISH5, but it sounds like it will be a followup CL. If that is true, then we can remove the mention of ISH5 here.",
+      "parentUuid": "8ed4ac60_4b6464f8",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b794ac3f_bdae00d8",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 12
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "For HPET 1/2 timers(x\u003d1 or 2), only this 32bit definition is valid.\nFor HPET 0 timer(x\u003d0), with configuration control register(HPET_TIMER_CONF_CAP(0)), 64bit definition or 32bit definition can be used. \nFor ISH 3.0, 64 bit mode is configured.",
       "parentUuid": "b794ac3f_bdae00d8",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64757958_7471cff9",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:02:52Z",
+      "side": 1,
+      "message": "Please put the above CL comment in the code as a comment. It is helpful to understand these definitions and when they are valid to use.",
+      "parentUuid": "eda235f7_deb8f9ec",
       "range": {
         "startLine": 58,
         "startChar": 8,
@@ -355,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "8da5ab92_75915966",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:02:52Z",
+      "side": 1,
+      "message": "Yes, \u003c\u003c 32 is correct. I counted an extra 0 by accident the first time.",
+      "parentUuid": "1e89e886_9d792770",
+      "range": {
+        "startLine": 127,
+        "startChar": 25,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45df2e77_551c420a",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
@@ -399,6 +471,30 @@
       "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d004e330_63dd4e95",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:02:52Z",
+      "side": 1,
+      "message": "sounds good. Also as a heads up CONFIG_ISH_40 is changing to CHIP_FAMILY_ISH4 (See CL:1354302)",
+      "parentUuid": "923ddb38_32fe705c",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 20
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
