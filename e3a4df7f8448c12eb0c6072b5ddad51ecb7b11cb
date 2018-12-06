@@ -170,6 +170,24 @@
       "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95054e02_f1a51639",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-12-06T01:16:47Z",
+      "side": 1,
+      "message": "The new patchset moves the CPRINTS() to POWER_S3 after adding logic to check the shutdown event during suspend (suspend not working yet until some change later on).",
+      "parentUuid": "710f6c2f_fcf0154d",
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
