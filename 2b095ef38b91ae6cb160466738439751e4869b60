@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ca383bf_ac3ff4d0",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-06T01:48:33Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8a1179_a12823df",
+        "filename": "board/arcada_ish/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-06T01:48:33Z",
+      "side": 1,
+      "message": "do we need these 3 includes?",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f901fbb_1128124f",
+        "filename": "chip/ish/uart_defs.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-06T01:48:33Z",
+      "side": 1,
+      "message": "the outer parens are probably overkill here,\nbut i would prefer to see:\ndefined(FOO)\ninstead of:\ndefined FOO\nas that is by far the most popular syntax.\n\ncomment also applies the rest of this patch.",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 5
+      },
+      "revId": "2b095ef38b91ae6cb160466738439751e4869b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
