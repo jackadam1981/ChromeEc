@@ -22,6 +22,30 @@
       "revId": "3a9aae1fded954cbcadad5af96b0ff552775d293",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0beee9bf_c167dbd3",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2018-12-06T09:43:45Z",
+      "side": 1,
+      "message": "Fixed on CL 1365155, thanks.",
+      "parentUuid": "ec985004_215169af",
+      "range": {
+        "startLine": 601,
+        "startChar": 31,
+        "endLine": 601,
+        "endChar": 33
+      },
+      "revId": "3a9aae1fded954cbcadad5af96b0ff552775d293",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -46,6 +46,30 @@
       "revId": "3ba5d5ca8159bd0c352182c6d6122c8cc97f006f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "026de62d_69027522",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2018-12-06T09:43:45Z",
+      "side": 1,
+      "message": "Fixed on CL 1365155",
+      "parentUuid": "49966b59_429a88f3",
+      "range": {
+        "startLine": 610,
+        "startChar": 9,
+        "endLine": 610,
+        "endChar": 23
+      },
+      "revId": "3ba5d5ca8159bd0c352182c6d6122c8cc97f006f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
