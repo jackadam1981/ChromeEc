@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "2dab0578_ea0e3d4d",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-12-06T01:18:47Z",
+      "side": 1,
+      "message": "that ebuild looks fine to me.  the make environment defines all of the utilities as build-time tools, so it uses HOSTCC.  in the context of that ebuild, the build-time tools are also the board-time tools, so it sets HOSTCC to CC to get the right builds.\n\nthese hand written Makefiles are a nightmare.  they don\u0027t have any documentation explaining their use scenarios.  BUILD*/HOST* vars are used to build the build-time programs (what ec-utils provides, but in that case build\u003d\u003dboard), while the CC/etc... vars are used to build the ec-time programs (the firmware blobs).  fuzzers break this world view because, iiuc, you\u0027re trying to fuzz objects that are built/linked into the ec firmware (which are built with an incompatible toolchain), but do so using the board\u0027s toolchain.",
+      "parentUuid": "a3831159_18e2ce46",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "5ff5e0ea39f4ddab908749bda053de0372d427de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb49db56_81c1e92b",
         "filename": "Makefile.toolchain",
         "patchSetId": 1
