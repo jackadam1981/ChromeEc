@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "4c1423d5_26a89bca",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-06T00:53:40Z",
+      "side": 1,
+      "message": "\u003e\u003e Most \"handle\" identifiers in this EC codebase are 0-based\nFor me, 0 is NULL, invalid handle, and not-suitable for indicating some valid thing(object, whatever) since many well-known APIs don\u0027t use 0 for valid handle. I don\u0027t like returning 0 for valid handle.\n\nI see most ECOS API has different error handling from Linux or other OS.\n\nAnyway, I don\u0027t care. I\u0027ll change it.",
+      "parentUuid": "8622a43e_0f16eb70",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a6e4346_0c527bee",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
