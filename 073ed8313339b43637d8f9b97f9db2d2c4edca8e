@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "0894697f_68c22f56",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-06T02:14:46Z",
+      "side": 1,
+      "message": "Oh.. sorry.. don\u0027t need to be after IPC init.\nbut anyway, still I don\u0027t like the driver developer should care about the registration should be done in hook task and priority should higher than HID and HECI (\"HOOK_INIT with \"HOOK_PRIO_LAST - 2\" )\n\n\u003e\u003e it would make a lot of sense if we\u0027re populating large tables like a GPIO pin list, etc.\nThis was my first implementation(still I have it like below) but it requires HID developer to modify the list when they add their device driver. so I removed because I like simple and easy to use.\n\nAlso, I though about using table constructed macro like DECLARE_IRQ or HOST_COMMAND.. but didn\u0027t want to modify linker script and still need to maintain order in initialization of layers.\n\n\n-------- hid_device_list.c -----------\n#include \"hid_device_list.h\"\n#include \"util.h\"\n\nstruct hid_device_list_item {\n    void (*entry)(void);\n};\n\n#define DECLARE_HID_DEVICE_ENTRY(name) \\\n        extern void entry_##name(void)\n\n#define HID_DEVICE_ENTRY(name) \\\n    { \\\n        .entry \u003d entry_##name, \\\n    }\n\n/* add hid device here */\nDECLARE_HID_DEVICE_ENTRY(dummy_hid_device);\n\nstruct hid_device_list_item hid_device_list[] \u003d {\n        HID_DEVICE_ENTRY(dummy_hid_device),\n};\n\nint hid_subsys_call_hid_device_entry_point(void)\n{\n    int i;\n    int num_of_devices \u003d ARRAY_SIZE(hid_device_list);\n\n    if (num_of_devices \u003e HID_SUBSYS_MAX_HID_DEVICES) {\n        // assert....\n        return -1;\n    }\n\n    for (i \u003d 0; i \u003c num_of_devices; i++)\n        hid_device_list-\u003eentry();\n\n        return i;\n}",
+      "parentUuid": "fa213cb2_d9ed10b4",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
