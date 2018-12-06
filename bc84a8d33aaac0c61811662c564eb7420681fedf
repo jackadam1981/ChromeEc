@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ed4ac60_4b6464f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "Yes, ISH5.0 uses 32KHz clock.",
+      "parentUuid": "2bab1c4a_e54a3791",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b794ac3f_bdae00d8",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-04T00:34:29Z",
       "side": 1,
       "message": "is this reg mutually exclusive with HPET_TIMER_COMP_64?",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda235f7_deb8f9ec",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "For HPET 1/2 timers(x\u003d1 or 2), only this 32bit definition is valid.\nFor HPET 0 timer(x\u003d0), with configuration control register(HPET_TIMER_CONF_CAP(0)), 64bit definition or 32bit definition can be used. \nFor ISH 3.0, 64 bit mode is configured.",
+      "parentUuid": "b794ac3f_bdae00d8",
       "range": {
         "startLine": 58,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bf70a38b_bf205568",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "Yes, I will remove it.",
+      "parentUuid": "1982cda6_d55be1f0",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a53f5283_8f7e9e9d",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
@@ -82,6 +154,30 @@
       "writtenOn": "2018-12-04T00:34:29Z",
       "side": 1,
       "message": "no ifdef here, CLOCK_FACTOR is already CONFIG_ISH_30 specific.\nor is this supposed to be HPET_TIMER_COMP_64()?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e276c534_f1c9ea9b",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "Yes, No #ifdef here and \nHPET_TIMER_COMP(1) \u003d deadline * CLOCK_FACTOR;  \nis good enough.  \nWill change it.\nHPET_TIMER_COMP(1) is hpet timer 1, not 0. It is 32bit only.",
+      "parentUuid": "a53f5283_8f7e9e9d",
       "range": {
         "startLine": 36,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a5fdc95d_50435125",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "It was changed for better performance / optimization from patch-3.(patch 3 for more details.)",
+      "parentUuid": "9ef8e420_c8d95a6f",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 76
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a45dbfae_bf165858",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
@@ -128,6 +248,30 @@
       "writtenOn": "2018-12-04T00:34:29Z",
       "side": 1,
       "message": "this cast doesn\u0027t really do anything here.\ndo you need 64 bit multiply?",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 33
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f65223b_73147104",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "Yes it is for better readability and per Aaron\u0027s comment in patch-8.",
+      "parentUuid": "a45dbfae_bf165858",
       "range": {
         "startLine": 73,
         "startChar": 25,
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "1e89e886_9d792770",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "(CLOCK_FACTOR \u003c\u003c 32) instead of 36 ?",
+      "parentUuid": "7acdc23b_5b6def10",
+      "range": {
+        "startLine": 127,
+        "startChar": 25,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45df2e77_551c420a",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
@@ -198,6 +366,30 @@
       "writtenOn": "2018-12-03T21:40:39Z",
       "side": 1,
       "message": "What about ISH_50? Does this also apply here?",
+      "range": {
+        "startLine": 167,
+        "startChar": 7,
+        "endLine": 167,
+        "endChar": 20
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923ddb38_32fe705c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T04:59:08Z",
+      "side": 1,
+      "message": "For ISH 5.0, we are working on alternative solution for hpet-0 due to difficulty in conversion from 32KHz to 1MHz. ISH 5.0 support be in separate CL.",
+      "parentUuid": "45df2e77_551c420a",
       "range": {
         "startLine": 167,
         "startChar": 7,
