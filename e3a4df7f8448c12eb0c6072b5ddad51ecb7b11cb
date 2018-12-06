@@ -152,6 +152,24 @@
       "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710f6c2f_fcf0154d",
+        "filename": "power/sdm845.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-12-06T00:04:27Z",
+      "side": 1,
+      "message": "Even though it doesn\u0027t change anything logically..., it might makes more sense to move the print to POWER_S3, right before returning POWER_S3S5.",
+      "parentUuid": "82e1b41a_66e735a7",
+      "revId": "e3a4df7f8448c12eb0c6072b5ddad51ecb7b11cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
