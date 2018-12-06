@@ -16,6 +16,24 @@
       "revId": "86b831f3e57d4efefd68947c4feeff381054338c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3d40fd_a4126d62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2018-12-06T03:56:08Z",
+      "side": 1,
+      "message": "1. BC 1.2 (ex: 5V/1.5A or \u003c 3A) can\u0027t let EC RO boots AP.\n  -- Yes, it can\u0027t let EC RO boots.\n  2. Type C charger without PD (ex: 5V / 3A) can\u0027t boot into kernel.\n  -- Yes, it can\u0027t boot into kernel\n  3. Type C charger with PD in 18W or more can boot into kernel.\n  -- Since we don\u0027t have a 18W adapter, the 15V/3A can boot into kernel",
+      "parentUuid": "66868c3c_bdeef378",
+      "revId": "86b831f3e57d4efefd68947c4feeff381054338c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
