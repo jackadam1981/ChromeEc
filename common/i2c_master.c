@@ -33,6 +33,8 @@
 #define I2C_CONTROLLER_COUNT I2C_PORT_COUNT
 #endif
 
+#define I2C_DEBUG_SLAVE_ADDR 0xE4
+
 static struct mutex port_mutex[I2C_CONTROLLER_COUNT];
 /* A bitmap of the controllers which are currently servicing a request. */
 static uint32_t i2c_port_active_list;
@@ -286,10 +288,12 @@ int i2c_read8(int port, int slave_addr, int offset, int *data)
 	uint8_t buf;
 
 	reg = offset;
-
 	rv = i2c_xfer(port, slave_addr, &reg, 1, &buf, 1);
 	if (!rv)
 		*data = buf;
+
+	if (slave_addr == I2C_DEBUG_SLAVE_ADDR)
+		ccprintf("[r8,%x,%x,%x,%x]", port, slave_addr, offset, *data);
 
 	return rv;
 }
@@ -300,6 +304,9 @@ int i2c_write8(int port, int slave_addr, int offset, int data)
 
 	buf[0] = offset;
 	buf[1] = data;
+
+	if (slave_addr == I2C_DEBUG_SLAVE_ADDR)
+		ccprintf("[w8,%x,%x,%x,%x]", port, slave_addr, offset, data);
 
 	return i2c_xfer(port, slave_addr, buf, 2, 0, 0);
 }
