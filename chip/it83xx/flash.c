@@ -34,6 +34,12 @@
 /* Auto address increment programming */
 #define FLASH_CMD_AAI_WORD     0xAD
 
+#define FLASH_TEXT_START ((uint32_t) &__flash_text_start)
+/* The default tag index of immu. */
+#define IMMU_TAG_INDEX_BY_DEFAULT 0x7E000
+/* immu cache size is 8K bytes. */
+#define IMMU_SIZE                 0x2000
+
 static int stuck_locked;
 static int inconsistent_locked;
 static int all_protected;
@@ -79,14 +85,36 @@ enum dlm_address_view {
 	SCAR12_ILM12_DLM12 = 0x8C000, /* DLM ~ 0x8CFFF immu cache */
 };
 
-void FLASH_DMA_CODE dma_reset_immu(void)
+void FLASH_DMA_CODE dma_reset_immu(int fill_immu)
 {
+#if CONFIG_FLASH_SIZE == 0x80000
+	volatile int immu __unused;
+	const uint32_t *ptr = (uint32_t *)FLASH_TEXT_START;
+	int i = 0;
+#endif
+
 	/* Immu tag sram reset */
 	IT83XX_GCTRL_MCCR |= 0x10;
 	/* Make sure the immu(dynamic cache) is reset */
 	asm volatile ("dsb");
 	IT83XX_GCTRL_MCCR &= ~0x10;
 	asm volatile ("dsb");
+
+	/*
+	 * Workaround for (b:111808417):
+	 * After immu reset, we will fill the immu cache with 8KB data
+	 * that are outside address 0x7e000 ~ 0x7ffff.
+	 * When CPU tries to fetch contents from address 0x7e000 ~ 0x7ffff,
+	 * immu will re-fetch the missing contents inside 0x7e000 ~ 0x7ffff.
+	 */
+#if CONFIG_FLASH_SIZE == 0x80000
+	if (fill_immu) {
+		while (i < IMMU_SIZE) {
+			immu = *ptr++;
+			i += sizeof(*ptr);
+		}
+	}
+#endif
 }
 
 void FLASH_DMA_CODE dma_flash_follow_mode(void)
@@ -367,7 +395,7 @@ int FLASH_DMA_CODE flash_physical_write(int offset, int size, const char *data)
 	interrupt_disable();
 
 	dma_flash_aai_write(offset, size, data);
-	dma_reset_immu();
+	dma_reset_immu((offset + size) >= IMMU_TAG_INDEX_BY_DEFAULT);
 	ret = dma_flash_verify(offset, size, data);
 
 	interrupt_enable();
@@ -405,7 +433,7 @@ int FLASH_DMA_CODE flash_physical_erase(int offset, int size)
 		dma_flash_erase(offset, FLASH_CMD_SECTOR_ERASE);
 		offset += FLASH_SECTOR_ERASE_SIZE;
 	}
-	dma_reset_immu();
+	dma_reset_immu((v_addr + v_size) >= IMMU_TAG_INDEX_BY_DEFAULT);
 	ret = dma_flash_verify(v_addr, v_size, NULL);
 
 	interrupt_enable();
