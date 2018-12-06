@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "26f51ab0_dd93d318",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-06T06:18:26Z",
+      "side": 1,
+      "message": "Caveh,\n\n\u003e\u003e i don\u0027t like is the ## operator for constructing symbols because it makes them hard to find in the src for people who aren\u0027t intimately familiar with what\u0027s going on.\n\nI understand what you mean since I doesn\u0027t like it. but my one(##hid_dev) is simple and what you see in the macro is everything. It\u0027s not complicated like DECLARE_XXX in ECOS.\n\nHonestly I wanted to survive with \"static\" like below but I got multi definition error due to how DECLARE_HOOK() works. so I added \"##hid_dev\".\n\n#define HID_DEVICE_ENTRY(hid_dev) \\\n\tstatic void _hid_dev_entry(void) \\\n\t{ \\\n\t\thid_subsys_register_device(\u0026(hid_dev)); \\\n\t} \\\n\tDECLARE_HOOK(HOOK_INIT, _hid_dev_entry, HOOK_PRIO_LAST - 2)\n\n#endif /* __HID_DEVICE_H */",
+      "parentUuid": "b1d64043_5e1ad855",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
