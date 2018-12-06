@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "fa213cb2_d9ed10b4",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-06T01:57:32Z",
+      "side": 1,
+      "message": "This should be kept. Since HID device is running on top of(and using) HID and HECI framework, if we remove this then we should ask each HID device driver to make sure to call \"hid_subsys_register_device()\" before HID/HECI runs but after IPC initialize which is HOOK_INIT with \"HOOK_PRIO_LAST - 2\".",
+      "parentUuid": "4c3a6c21_a06d04fd",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
