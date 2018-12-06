@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f636ad8d_96184ae9",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:45:28Z",
+      "side": 1,
+      "message": "can we names this condition IMMU_UPPER_MEMORY_INVALID (or something like that) and define that at the top of this file when CONFIG_FLASH_SIZE \u003d\u003d 0x8000",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e3cbe4_a19573f9",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:45:28Z",
+      "side": 1,
+      "message": "you should be able to defined all of the variables inside the if block on line 112. That way we wouldn\u0027t need to different sections.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bd4f0f_9f09bbc7",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:45:28Z",
+      "side": 1,
+      "message": "nit: can you put the comments inside the define, just so we know they all go together.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 4
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c87932_e60023df",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T16:45:28Z",
+      "side": 1,
+      "message": "can you build bip and ensure there isn\u0027t a warning for an unused parameter variable. if there is, can you potentially add the __unused tag to the parameter",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
