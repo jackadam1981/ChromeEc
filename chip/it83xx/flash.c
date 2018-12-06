@@ -243,7 +243,8 @@ uint8_t FLASH_DMA_CODE dma_flash_indirect_fast_read(int addr)
 	return IT83XX_SMFI_ECINDDR;
 }
 
-int FLASH_DMA_CODE dma_flash_verify(int addr, int size, const char *data)
+int FLASH_DMA_CODE dma_flash_verify(int addr, int size, const char *data,
+                                    int *mErr, int *mI, uint8_t *mData)
 {
 	int i;
 	uint8_t *wbuf = (uint8_t *)data;
@@ -252,14 +253,22 @@ int FLASH_DMA_CODE dma_flash_verify(int addr, int size, const char *data)
 	/* verify for erase */
 	if (data == NULL) {
 		for (i = 0; i < size; i++) {
-			if (flash[i] != 0xFF)
+			if (flash[i] != 0xFF) {
+                                *mI = i;
+                                *mData = flash[i];
+                                *mErr = 1;
 				return EC_ERROR_UNKNOWN;
+                        }
 		}
 	/* verify for write */
 	} else {
 		for (i = 0; i < size; i++) {
-			if (flash[i] != wbuf[i])
+			if (flash[i] != wbuf[i]) {
+                                *mI = i;
+                                *mData = flash[i];
+                                *mErr = 1;
 				return EC_ERROR_UNKNOWN;
+                        }
 		}
 	}
 
@@ -351,6 +360,9 @@ int FLASH_DMA_CODE flash_physical_write(int offset, int size, const char *data)
 {
 	int ret = EC_ERROR_UNKNOWN;
 
+        uint8_t mData = 0;
+        int mI = 65536, mErr = 0;
+
 	if (flash_dma_code_enabled == 0)
 		return EC_ERROR_ACCESS_DENIED;
 
@@ -368,7 +380,7 @@ int FLASH_DMA_CODE flash_physical_write(int offset, int size, const char *data)
 
 	dma_flash_aai_write(offset, size, data);
 	dma_reset_immu();
-	ret = dma_flash_verify(offset, size, data);
+	ret = dma_flash_verify(offset, size, data, &mErr, &mI, &mData);
 
 	interrupt_enable();
 
@@ -387,6 +399,12 @@ int FLASH_DMA_CODE flash_physical_erase(int offset, int size)
 {
 	int v_size = size, v_addr = offset, ret = EC_ERROR_UNKNOWN;
 
+        uint8_t mData = 0;
+        int mI = 0xFFFFFFFF, mErr = 0;
+        int loop = 0;
+	uint8_t *flash = (uint8_t *)v_addr;
+
+        ccprints("marco it83xx: %x %x\n", offset, size);
 	if (flash_dma_code_enabled == 0)
 		return EC_ERROR_ACCESS_DENIED;
 
@@ -398,6 +416,7 @@ int FLASH_DMA_CODE flash_physical_erase(int offset, int size)
 	 * EC-indirect follow mode to access flash, interrupts need to be
 	 * disabled.
 	 */
+        ccprints("marco it83xx: interrupt disable\n", offset, size);
 	interrupt_disable();
 
 	/* Always use sector erase command (1K bytes) */
@@ -406,9 +425,14 @@ int FLASH_DMA_CODE flash_physical_erase(int offset, int size)
 		offset += FLASH_SECTOR_ERASE_SIZE;
 	}
 	dma_reset_immu();
-	ret = dma_flash_verify(v_addr, v_size, NULL);
+        while (loop < 10000)
+          loop++;
+	ret = dma_flash_verify(v_addr, v_size, NULL, &mErr, &mI, &mData);
 
 	interrupt_enable();
+        ccprints("marco it83xx: interrupt enabled %d\n", ret);
+        ccprints("marco it83xx: mErr %x, %x, data %x\n", mErr, mI, mData);
+        ccprints("marco it83xx: %x\n", flash[0]);
 
 	return ret;
 }
