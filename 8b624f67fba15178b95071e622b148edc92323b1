@@ -22,6 +22,30 @@
       "revId": "8b624f67fba15178b95071e622b148edc92323b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea70b3d_77d0da8b",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T23:47:43Z",
+      "side": 1,
+      "message": "Need 64bit result. \nWill change to following line:\nHPET_MAIN_COUNTER_64 \u003d (uint64_t)ts * CLOCK_FACTOR;",
+      "parentUuid": "c6eee911_885461be",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "8b624f67fba15178b95071e622b148edc92323b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

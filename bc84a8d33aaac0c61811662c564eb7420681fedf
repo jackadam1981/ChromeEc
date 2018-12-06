@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "10f3adb4_362880e9",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T23:47:43Z",
+      "side": 1,
+      "message": "Yes, I will add.",
+      "parentUuid": "64757958_7471cff9",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1982cda6_d55be1f0",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
@@ -415,6 +439,30 @@
       "side": 1,
       "message": "Yes, \u003c\u003c 32 is correct. I counted an extra 0 by accident the first time.",
       "parentUuid": "1e89e886_9d792770",
+      "range": {
+        "startLine": 127,
+        "startChar": 25,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e26a282c_427bed9f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-06T23:47:43Z",
+      "side": 1,
+      "message": "I will change it.",
+      "parentUuid": "8da5ab92_75915966",
       "range": {
         "startLine": 127,
         "startChar": 25,
