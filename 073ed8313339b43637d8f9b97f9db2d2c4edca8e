@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "feb90d35_f87421a7",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "I like the array idea. For EC code, it is common for each individual board to define a array structure for all of the drivers it wants to use.\n\nIf each hid device publicly defined it standard structures/driver, then each board file (e.g. atlas_ish or arcada_ish) would create an array with only the drivers is wanted and potentially any other board level configuration/tuning required.\n\nBelow are a few examples for other drivers. Applying it here: this code would declare an external hid_config_t array structure that would be initialized in every board file that used this driver. Then the ipc_init (or correct function) would just iterate over this array at the correct time.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/93eee0a9e77bb8bb9726998eb84940ada6010d14/include/usbc_ppc.h#126\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/93eee0a9e77bb8bb9726998eb84940ada6010d14/board/nocturne/board.c#285\n\n\nWhat are your thoughts?",
+      "parentUuid": "26f51ab0_dd93d318",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -591,6 +615,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f865f3_99f454d7",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "I agree that a handle of value 0 is a little weird when it is an opaque identifier.\n\nI was getting at that we don\u0027t need any extra layer of handle vs index. I don\u0027t see what it buys us here and it is adding complexity (or at least increases the likelihood of an off-by-1 error) since both handle and index are of the same type.\n\nI think opaque handles are a good idea in some situations, but I don\u0027t think the extra layer is justified here.",
+      "parentUuid": "4c1423d5_26a89bca",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

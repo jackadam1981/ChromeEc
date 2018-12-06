@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a25a7956_1d833085",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "please update the comments to specify that negtive is an error code, 0 is success, and positive is the number of bytes written to buf\n\nFor all method callbacks in the struct please.",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53350f99_f60251e8",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -46,6 +69,145 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ad6d010_b1fa287a",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "Didn\u0027t see an update (and this was marked as resolved)",
+      "parentUuid": "b39dd56a_11f2a7e7",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf51b3e_563c4e57",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "should we return before leaving this if block? Otherwise we will multiple heci messages right?",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e12c78_4cadee17",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "Shouldn\u0027t each implementation set the correct payload[0] value (to 1?) ? and return 1",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678eb2e1_b9af6744",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "why wouldn\u0027t each device want to set an error code. I didn\u0027t quite understand this comment",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 60
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44e99752_cc08f5c1",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "should we add a debug print here that it was discarded for debugging purposes",
+      "range": {
+        "startLine": 372,
+        "startChar": 15,
+        "endLine": 373,
+        "endChar": 7
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d8f5eda_2f7e8ab1",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-06T17:47:35Z",
+      "side": 1,
+      "message": "what is the expect format of this return value? I didn\u0027t see any comment headers around the heci_client_callbacks struct. Please add them\n\nFrom this implementation, I am guessing negative is error, and 0 and positive are success.",
+      "range": {
+        "startLine": 388,
+        "startChar": 7,
+        "endLine": 388,
+        "endChar": 10
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
