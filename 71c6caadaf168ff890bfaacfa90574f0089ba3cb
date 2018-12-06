@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "1c89b7b1_9fbdc5bf",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-06T07:13:32Z",
+      "side": 1,
+      "message": "https://yarchive.net/comp/linux/64bit_divide.html\n(see last comment)\n\nit\u0027s probably safe here since\nthe 64 bit counter won\u0027t wrap around in our lifetime,\nso we won\u0027t hit the case where the 32 bit quotient\njumps back to 0 without wrapping around.\nthe comparator is set to CLOCK_FACTOR * 2^32, so\nthis effectively emulates 32-bit wrap-around.",
+      "parentUuid": "6551e946_2847e8d1",
+      "revId": "71c6caadaf168ff890bfaacfa90574f0089ba3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e08112e_60267cde",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 8

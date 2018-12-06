@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6eee911_885461be",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-06T07:13:32Z",
+      "side": 1,
+      "message": "that\u0027s a nop.  one of the operands must be cast.",
+      "range": {
+        "startLine": 67,
+        "startChar": 25,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "8b624f67fba15178b95071e622b148edc92323b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
