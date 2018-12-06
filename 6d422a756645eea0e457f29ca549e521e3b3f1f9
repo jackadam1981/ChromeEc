@@ -22,6 +22,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0fc4f2_3b2ba3da",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-06T00:37:27Z",
+      "side": 1,
+      "message": "I got it. Actually the first version(still I have like below) kept one for each protocol for\n- not to block other protocol service\n- handle emergency msg.\nit makes sense because upper layer has its own flow control which is mostly (stop and wait). but I thought it\u0027s too much for sensor handling. but OK, as you wish, I\u0027ll come up with better one tomorrow.\n\nstruct ipc_msg_event {\n    uint8_t enabled;\n    task_id_t task_id;\n    uint32_t event;\n\n    struct ipc_msg last_msg; /* do we need validity flag for msg ? */\n};\n\n....\n\nstatic void ipc_interrupt_handler(void)\n{\n    struct ipc_if_ctx *ctx;\n    uint32_t pisr \u003d REG32(IPC_PISR);\n    uint32_t pimr \u003d REG32(IPC_PIMR);\n    uint32_t busy_clear \u003d REG32(IPC_BUSY_CLEAR);\n    uint32_t drbl_val, payload_size;\n    uint8_t protocol;\n\n    if ((pisr \u0026 IPC_PISR_HOST2ISH_BIT) \u0026\u0026 (pimr \u0026 IPC_PIMR_HOST2ISH_BIT)) {\n        ipc_clear_pimr_host_db();\n\n        ctx \u003d ipc_get_if_ctx(IPC_PEER_HOST_ID);\n        drbl_val \u003d REG32(ctx-\u003ein_drbl_reg);\n        protocol \u003d IPC_DB_PROTOCOL(drbl_val);\n        payload_size \u003d IPC_DB_MSG_LENGTH(drbl_val);\n\n        CPRINTF(\"!! int[d\u003d0x%0x, p\u003d%d !!\\n\", drbl_val, protocol );\n\n        /* send event */\n        if (ctx-\u003emsg_events[protocol].enabled) {\n            ctx-\u003emsg_events[protocol].last_msg.db_val \u003d drbl_val;\n            memcpy(ctx-\u003emsg_events[protocol].last_msg.payload,\n                   (void *)ctx-\u003ein_msg_reg, payload_size);\n\n            task_set_event(ctx-\u003emsg_events[protocol].task_id,\n                       ctx-\u003emsg_events[protocol].event, 0);\n        } else {\n            CPRINTS(\"discard msg and make ipc available\");\n            REG32(ctx-\u003ein_drbl_reg) \u003d 0;\n            ipc_set_pimr_host_db();\n            ipc_send_cmpl_indication(IPC_BUILD_HOST_MNG_HANDLE());\n        }\n    }\n\n    if ((busy_clear \u0026 IPC_DB_CLR_STS_ISH2HOST_BIT) \u0026\u0026\n        (pimr \u0026 IPC_PIMR_ISH2HOST_CLR_BIT)) {\n        ctx \u003d ipc_get_if_ctx(IPC_PEER_HOST_ID);\n        mutex_unlock(\u0026ctx-\u003ewrite_lock);\n\n        REG32(IPC_BUSY_CLEAR) \u003d ctx-\u003eclr_bit;\n    }\n}",
+      "parentUuid": "5ac83aac_e6662936",
+      "range": {
+        "startLine": 660,
+        "startChar": 5,
+        "endLine": 660,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

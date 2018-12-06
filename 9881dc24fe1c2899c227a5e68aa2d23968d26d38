@@ -414,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "c8e7b551_52dbdb2d",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-06T00:37:27Z",
+      "side": 1,
+      "message": "got it. thank you",
+      "parentUuid": "db381a14_5e88a248",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd67a5e_cbd4eda1",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
@@ -615,6 +639,30 @@
       "side": 1,
       "message": "If (task affinity of calls) is something we want to enforce and count on for the first revision, I am okay with it if we check for a violation of this in all of the API methods and return early with an error next to a comment saying we should check the task safety of this implementation before allowing cross task access. Basically I don\u0027t want only this comment to enforce this constraint because it could easily be missed.\n\nAlso, see my next comment on task structure, this may not be an issue if limit all register access to a single task anyway and all other tasks are reading and writing to a queue instead.",
       "parentUuid": "8308a910_5a78f1e2",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f16e34_b3eab52f",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-06T00:37:27Z",
+      "side": 1,
+      "message": "Yes, currently the API checks current task and returns error if it\u0027s not the task open IPC.",
+      "parentUuid": "a19aff16_d167395b",
       "range": {
         "startLine": 58,
         "startChar": 3,
