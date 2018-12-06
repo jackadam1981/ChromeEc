@@ -16,7 +16,7 @@ $(error ERROR: GNU make version $(min_make_version) or higher required.)
 endif
 
 # Default to clang if TEST_ASAN is enabled
-ifneq ($(TEST_ASAN),)
+ifneq ($(TEST_FUZZ)$(TEST_ASAN)$(TEST_MSAN)$(TEST_UBSAN),)
 CC=clang
 endif
 
