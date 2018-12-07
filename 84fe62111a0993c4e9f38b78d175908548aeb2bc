@@ -16,6 +16,24 @@
       "revId": "84fe62111a0993c4e9f38b78d175908548aeb2bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ecb2979_3f61de2d",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-07T04:58:42Z",
+      "side": 1,
+      "message": "Done. Do you have a Bard to try? I think patchset 3 doesn\u0027t work. scancode_set2 has to be remapped. It\u0027s done in patchset 4.",
+      "parentUuid": "a75358c6_2f0fc3c6",
+      "revId": "84fe62111a0993c4e9f38b78d175908548aeb2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
