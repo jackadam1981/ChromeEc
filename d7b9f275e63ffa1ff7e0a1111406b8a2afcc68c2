@@ -22,6 +22,30 @@
       "revId": "d7b9f275e63ffa1ff7e0a1111406b8a2afcc68c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48864546_f6a84718",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2018-12-07T18:14:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89ecc65_b6fdbf4c",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 32
+      },
+      "revId": "d7b9f275e63ffa1ff7e0a1111406b8a2afcc68c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
