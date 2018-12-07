@@ -124,6 +124,8 @@ test-list-y=
 
 ifneq ($(CONFIG_RW_B),)
 $(out)/$(PROJECT).obj: $(out)/RW/ec.RW_B.flat
+
+hex: $(out)/RW/ec.RW_B.hex
 endif
 
 ifneq ($(CR50_DEV),)
