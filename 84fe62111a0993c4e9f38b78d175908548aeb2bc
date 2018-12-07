@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a75358c6_2f0fc3c6",
+        "filename": "board/nami/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-12-07T02:19:17Z",
+      "side": 1,
+      "message": "Because search key change position to col\u003d0, row\u003d3 only on keypad(Bard only).\nWe should use SKU_ID_MASK_KEYPAD or MODEL_BARD for this.",
+      "revId": "84fe62111a0993c4e9f38b78d175908548aeb2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
