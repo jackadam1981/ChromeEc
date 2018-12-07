@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f500b189_6b9a29ca",
+        "filename": "chip/g/post_reset.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-07T17:45:49Z",
+      "side": 1,
+      "message": "can you please also drop this and the one in line 48",
+      "range": {
+        "startLine": 58,
+        "startChar": 42,
+        "endLine": 58,
+        "endChar": 44
+      },
+      "revId": "aa897273d235549058e6f7e52e13b85d42f9d88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
