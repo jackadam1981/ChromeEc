@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecdc2159_958f5e77",
+        "filename": "chip/g/post_reset.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-07T18:21:31Z",
+      "side": 1,
+      "message": "sorry, I should have thought about this earlier:\n\nmaybe we should not use deferred function if timeout is 0. This would maintain existing behavior when reset request would succeed even if HOOKS task is stuck for any reason.",
+      "revId": "b7ad7e2a44e61e8684ffdd3059732c990b816c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
