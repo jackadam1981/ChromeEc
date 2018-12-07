@@ -122,7 +122,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	HPET_TIMER_CONF_CAP(0) |= timer0_config;
 	HPET_TIMER_CONF_CAP(1) |= timer1_config;
 
-#if defined CONFIG_ISH_40
+#if defined(CHIP_FAMILY_ISH4) || defined(CHIP_FAMILY_ISH5)
 	/* Wait for timer to settle. required for ISH 4 */
 	while (HPET_CTRL_STATUS & HPET_T_CONF_CAP_BIT)
 		;
