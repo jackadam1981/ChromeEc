@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77e6da1b_8c61f85c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-07T01:25:43Z",
+      "side": 1,
+      "message": "cast the operand.",
+      "range": {
+        "startLine": 111,
+        "startChar": 25,
+        "endLine": 111,
+        "endChar": 33
+      },
+      "revId": "2567928c2507cf00e76afa264a722a7697ae3a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258d2ff3_fb8eb807",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-07T01:25:43Z",
+      "side": 1,
+      "message": "the compiler should be generating a warning here.\nneed cast on left hand side.",
+      "range": {
+        "startLine": 121,
+        "startChar": 26,
+        "endLine": 121,
+        "endChar": 38
+      },
+      "revId": "2567928c2507cf00e76afa264a722a7697ae3a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
