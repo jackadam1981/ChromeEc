@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "6a69ffa9_be13f72a",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-07T16:51:58Z",
+      "side": 1,
+      "message": "Just a reminder to add these comment, please",
+      "parentUuid": "10f3adb4_362880e9",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "bc84a8d33aaac0c61811662c564eb7420681fedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1982cda6_d55be1f0",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 12
