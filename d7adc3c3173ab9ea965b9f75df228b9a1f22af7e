@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45f75de5_e86e05a8",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-12-07T03:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f636ad8d_96184ae9",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 32
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43e3cbe4_a19573f9",
         "filename": "chip/it83xx/flash.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "996b5e50_a16b8234",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-12-07T03:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43e3cbe4_a19573f9",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 11
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b33c2c95_04d6bbe0",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-12-07T03:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bd4f0f_9f09bbc7",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 4
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5c87932_e60023df",
         "filename": "chip/it83xx/flash.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-12-06T16:45:28Z",
       "side": 1,
       "message": "can you build bip and ensure there isn\u0027t a warning for an unused parameter variable. if there is, can you potentially add the __unused tag to the parameter",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "d7adc3c3173ab9ea965b9f75df228b9a1f22af7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1137ac3_b6e1de3e",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-12-07T03:32:14Z",
+      "side": 1,
+      "message": "Yes, there is no error when building bip and other boards.",
+      "parentUuid": "f5c87932_e60023df",
       "range": {
         "startLine": 117,
         "startChar": 1,
