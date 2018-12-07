@@ -680,8 +680,12 @@ void chipset_reset(enum chipset_reset_reason reason)
 	CPRINTS("%s(%d)", __func__, reason);
 	report_ap_reset(reason);
 
-	/* The host command is used to hard reset AP. Check b/119261783 */
-	if (reason == CHIPSET_RESET_HOST_CMD) {
+	/*
+	 * The host command and the GPIO requested by AP are used to hard reset
+	 * AP. Check b/119261783 and b/116424165.
+	 */
+	if (reason == CHIPSET_RESET_HOST_CMD ||
+	    reason == CHIPSET_RESET_AP_REQ) {
 		request_cold_reset();
 		return;
 	}
