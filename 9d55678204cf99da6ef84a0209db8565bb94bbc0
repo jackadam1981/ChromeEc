@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8915b4d4_e68d583f",
+        "filename": "board/atlas_ish/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-12-07T22:35:41Z",
+      "side": 0,
+      "message": "the builder flagged this one.\nplease also replace all references to CONFIG_ISH_30\nwith CHIP_FAMILY_ISH3 or whatever it is now\nin the rest of the src tree.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "9d55678204cf99da6ef84a0209db8565bb94bbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
