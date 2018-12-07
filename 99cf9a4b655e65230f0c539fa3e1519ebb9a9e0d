@@ -94,6 +94,75 @@
       "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fcde890_67907f7b",
+        "filename": "chip/host/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-07T17:48:17Z",
+      "side": 1,
+      "message": "IMO it would be cleaner to use a forward declaration of:\nvoid exit(int);\n\nThat is the only symbol needed from stdlib here.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0edcae03_e160bdab",
+        "filename": "core/host/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-07T17:48:17Z",
+      "side": 1,
+      "message": "I think this is OK here because panic.c mainly deals with IO related stdlib functions, but this could lead to confusion if this file is ever expanded so we should leave a comment explaining why this was used and why it is ok.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c98331_308df966",
+        "filename": "test/vboot.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-07T17:48:17Z",
+      "side": 1,
+      "message": "You can remove all of this.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "99cf9a4b655e65230f0c539fa3e1519ebb9a9e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
