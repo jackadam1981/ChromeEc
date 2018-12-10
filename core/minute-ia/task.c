@@ -94,7 +94,7 @@ static void task_exit_trap(void)
 static const struct {
 	uint32_t r0;
 	uint32_t pc;
-	uint16_t stack_size;
+	uint32_t stack_size;
 } tasks_init[] = {
 	TASK(IDLE, __idle, 0, IDLE_TASK_STACK_SIZE)
 	CONFIG_TASK_LIST
