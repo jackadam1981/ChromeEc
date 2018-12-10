@@ -333,7 +333,7 @@ static int ipc_get_protocol_data(const struct ipc_msg *msg,
 				 uint8_t *buf, const size_t buf_size)
 {
 	int len = 0, payload_size;
-	uint8_t *src, *dest;
+	uint8_t *src = NULL, *dest = NULL;
 	uint32_t drbl_val;
 
 	drbl_val = msg->drbl;
@@ -510,8 +510,8 @@ int ipc_write(const ipc_handle_t handle, const void *buf, const size_t buf_size)
 {
 	int ret;
 	struct ipc_if_ctx *ctx;
-	uint32_t drbl;
-	const uint8_t *payload;
+	uint32_t drbl = 0;
+	const uint8_t *payload = NULL;
 	int payload_size;
 	uint32_t protocol;
 
