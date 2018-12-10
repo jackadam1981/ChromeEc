@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf967231_c6d73f12",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-10T19:07:52Z",
+      "side": 1,
+      "message": "WOW!! thank you!!",
+      "parentUuid": "6e9a8587_f560f96e",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9c6e64d_6cc3f174",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "521e49ad_d9955c82",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-10T19:07:52Z",
+      "side": 1,
+      "message": "You mean \"ipc.h\" which is to support host command only.\nThis is more generic implementation to support many other protocols.\nLater, we are going to have host command into this and will change file name \"ipc_heci.c\" -\u003e \"ipc.c\"",
+      "parentUuid": "e9c6e64d_6cc3f174",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bf42d57b_b645e061",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-10T19:07:52Z",
+      "side": 1,
+      "message": "\u003e\u003e Is seems like each different peer connection will have its own task that processing incoming and outgoing messages on its own set of doorbell registers. That would allow us to prioritize one peer over another.\n\nIt\u0027s implementation dependent. current API is open for any shape. you can have one task control all protocols. Depending on needs, we will have proper prioritization.\n\n\u003e\u003e As the IRQ is written now, a hypothetical lower priority peer could starve a higher priority peer if the lower priority peer queued up multiple TX message and its IRQ fired first (since the IRQ will start to dequeue pending message and write them to the doorbell immediately)\n\nThere\u0027s only one message can be in IPC H/W. It cannot have multiple messages. ISH FW gets a message and processes it. IPC H/W now works like mutex due to IPC level flow control. e.g) Host writes a message into IPC H/W. ISH reads the message. Host cannot write any message until the IPC H/W is ready(clear busy bit from ISH).",
+      "parentUuid": "53684029_f9b93903",
+      "range": {
+        "startLine": 176,
+        "startChar": 25,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "871050a8_071db203",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -91,6 +163,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2bcdcd8_e56ac29a",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-10T19:07:52Z",
+      "side": 1,
+      "message": "IPC write should be happen as soon as possible. We don\u0027t need to waste computing resource for task switching. In fact, there\u0027s no generic IPC task. we have dedicated tasks that handle protocols using IPC.",
+      "parentUuid": "871050a8_071db203",
+      "range": {
+        "startLine": 411,
+        "startChar": 2,
+        "endLine": 411,
+        "endChar": 29
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
