@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c95085a_6d22be0d",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-10T18:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767ec883_3239ab26",
+      "range": {
+        "startLine": 55,
+        "startChar": 23,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "164aa8ea04cdf670d317b6d75ec1d797675cb27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4c58a10_7a5d95e6",
         "filename": "Makefile.toolchain",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "164aa8ea04cdf670d317b6d75ec1d797675cb27b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0357538f_47bd28fc",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-10T18:23:40Z",
+      "side": 1,
+      "message": "Muscle memory from bash. I changed it to ()",
+      "parentUuid": "c4c58a10_7a5d95e6",
+      "range": {
+        "startLine": 72,
+        "startChar": 32,
+        "endLine": 72,
+        "endChar": 33
+      },
+      "revId": "164aa8ea04cdf670d317b6d75ec1d797675cb27b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
