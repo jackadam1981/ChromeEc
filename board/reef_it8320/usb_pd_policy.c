@@ -29,6 +29,8 @@
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
+//#define RDO_FIXED_FLAGS (RDO_COMM_CAP)
+
 /* TODO: fill in correct source and sink capabilities */
 const uint32_t pd_src_pdo[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
@@ -139,15 +141,13 @@ int pd_check_power_swap(int port)
 
 int pd_check_data_swap(int port, int data_role)
 {
-	/*
-	 * Allow data swap if we are a UFP, otherwise don't allow.
-	 *
-	 * When we are still in the Read-Only firmware, avoid swapping roles
-	 * so we don't jump in RW as a SNK/DFP and potentially confuse the
-	 * power supply by sending a soft-reset with wrong data role.
-	 */
-	return (data_role == PD_ROLE_UFP) &&
-	       (system_get_image_copy() != SYSTEM_IMAGE_RO) ? 1 : 0;
+	/* Allow data swap if we are a UFP, otherwise don't allow. */
+
+	// When we are still in the Read-Only firmware, avoid swapping roles
+	// so we don't jump in RW as a SNK/DFP and potentially confuse the
+	// power supply by sending a soft-reset with wrong data role.
+
+	return (data_role == PD_ROLE_UFP);
 }
 
 int pd_check_vconn_swap(int port)
@@ -186,11 +186,135 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 {
 	/* If UFP, try to switch to DFP */
 	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
+			dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
+
 /* ----------------- Vendor Defined Messages ------------------ */
+#if 0 //alternate mode adapter(UFP)
+/* USB configuration */
+#define CONFIG_USB_PID 0x0000
+#define CONFIG_USB_BCD_DEV 0x0000 /* v 0.00 */
+#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
+#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
+
+const uint32_t vdo_idh = VDO_IDH(0, /* data caps as USB host */
+				 1, /* data caps as USB device */
+				 IDH_PTYPE_AMA, /* UFP:Alternate mode */
+				 1, /* supports alt modes */
+				 USB_VID_GOOGLE);
+
+const uint32_t vdo_product = VDO_PRODUCT(CONFIG_USB_PID, CONFIG_USB_BCD_DEV);
+
+const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
+				 CONFIG_USB_PD_IDENTITY_SW_VERS,
+				 0, 0, 0, 0, /* SS[TR][12] */
+				 0, /* Vconn power */
+				 0, /* Vconn power required */
+				 1, /* Vbus power required */
+				 AMA_USBSS_BBONLY /* USB SS support */);
+
+static int svdm_response_identity(int port, uint32_t *payload)
+{
+	payload[VDO_I(IDH)] = vdo_idh;
+	/* TODO(tbroch): Do we plan to obtain TID (test ID) for hoho */
+	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
+	payload[VDO_I(PRODUCT)] = vdo_product;
+	payload[VDO_I(AMA)] = vdo_ama;
+	return VDO_I(AMA) + 1;
+}
+
+static int svdm_response_svids(int port, uint32_t *payload)
+{
+	payload[1] = VDO_SVID(USB_SID_DISPLAYPORT, USB_VID_GOOGLE);
+	payload[2] = 0;
+	return 3;
+}
+
+#define OPOS_DP 1
+#define OPOS_GFU 1
+
+const uint32_t vdo_dp_modes[1] =  {
+	VDO_MODE_DP(0,		   /* UFP pin cfg supported : none */
+		    MODE_DP_PIN_C, /* DFP pin cfg supported */
+		    1,		   /* no usb2.0	signalling in AMode */
+		    CABLE_PLUG,	   /* its a plug */
+		    MODE_DP_V13,   /* DPv1.3 Support, no Gen2 */
+		    MODE_DP_SNK)   /* Its a sink only */
+};
+
+const uint32_t vdo_goog_modes[1] =  {
+	VDO_MODE_GOOGLE(MODE_GOOGLE_FU)
+};
+
+static int svdm_response_modes(int port, uint32_t *payload)
+{
+	if (PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) {
+		memcpy(payload + 1, vdo_dp_modes, sizeof(vdo_dp_modes));
+		return ARRAY_SIZE(vdo_dp_modes) + 1;
+	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
+		memcpy(payload + 1, vdo_goog_modes, sizeof(vdo_goog_modes));
+		return ARRAY_SIZE(vdo_goog_modes) + 1;
+	} else {
+		return 0; /* nak */
+	}
+}
+
+const struct svdm_response svdm_rsp = {
+	.identity = &svdm_response_identity,
+	.svids = &svdm_response_svids,
+	.modes = &svdm_response_modes,
+	//.enter_mode = &svdm_enter_dp_mode,
+	//.exit_mode = &svdm_exit_dp_mode
+};
+#endif  //alternate mode adapter(UFP)
+
+#if 0 //alternate mode controller(DFP)
+/* USB configuration */
+#define CONFIG_USB_PID 0x0000
+#define CONFIG_USB_BCD_DEV 0x0000 /* v 0.00 */
+#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
+#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
+
+//const uint32_t vdo_idh = VDO_IDH(1, /* data caps as USB host */
+//				 0, /* data caps as USB device */
+//				 IDH_PTYPE_UNDEF, /* UFP:undef*/
+//				 1, /* supports alt modes */
+//				    /* ? DFP:Alternate mode controller */
+//				 USB_VID_GOOGLE);
+
+const uint32_t vdo_idh = ((1) << 31 | (0) << 30 |
+	((IDH_PTYPE_UNDEF) & 0x7) << 27 | (1) << 26 | ((0x4) & 0x7) << 23
+	  | ((USB_VID_GOOGLE) & 0xffff));
+
+
+const uint32_t vdo_product = VDO_PRODUCT(CONFIG_USB_PID, CONFIG_USB_BCD_DEV);
+
+const uint32_t vdo_ama = VDO_AMA(CONFIG_USB_PD_IDENTITY_HW_VERS,
+				 CONFIG_USB_PD_IDENTITY_SW_VERS,
+				 0, 0, 0, 0, /* SS[TR][12] */
+				 0, /* Vconn power */
+				 0, /* Vconn power required */
+				 1, /* Vbus power required */
+				 AMA_USBSS_BBONLY /* USB SS support */);
+
+static int svdm_response_identity(int port, uint32_t *payload)
+{
+	payload[VDO_I(IDH)] = vdo_idh;
+	/* TODO(tbroch): Do we plan to obtain TID (test ID) for hoho */
+	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
+	payload[VDO_I(PRODUCT)] = vdo_product;
+	payload[VDO_I(AMA)] = vdo_ama;
+	return VDO_I(AMA) + 1;
+}
+const struct svdm_response svdm_rsp = {
+	.identity = &svdm_response_identity,
+	.svids = NULL,
+	.modes = NULL,
+};
+
+#endif //alternate mode controller(DFP)
+
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
 	.svids = NULL,

@@ -16,6 +16,10 @@
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+extern void switch_plug_out_type(int port, int *cc1, int *cc2);
+#endif //IT83XX_INTC_PLUG_OUT_SUPPORT
+
 /* Store each port last message id of received packet */
 static uint8_t message_id_last[USBPD_PORT_COUNT];
 
@@ -58,6 +62,12 @@ static int consume_repeat_message(int port)
 
 static void chip_pd_irq(enum usbpd_port port)
 {
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+	int i = 0;
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+	int cc1, cc2;
+#endif //IT83XX_INTC_PLUG_OUT_SUPPORT
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
@@ -81,6 +91,47 @@ static void chip_pd_irq(enum usbpd_port port)
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
 		}
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+			i = ((IT83XX_USBPD_TCDCR(port) &
+				USBPD_REG_PLUG_IN_OUT_SELECT) >> 3);
+			ccprints("P%d ISR: PLUG_DTCT %d (IN=0 OUT=1)", port, i);
+#ifndef IT83XX_INTC_PLUG_OUT_SUPPORT
+			/*
+			 * When tcpc detect type-c plug in, then disable
+			 * this interrupt. Because any cc volt changes
+			 * (include pd negotiation) would trigger plug in
+			 * interrupt, frequently plug in interrupt and wakeup
+			 * pd task may cause task starvation or device dead
+			 * (ex.trnasmit lots SRC_Cap).
+			 *
+			 * When polling disconnect will enable detect type-c
+			 * plug in again.
+			 */
+			IT83XX_USBPD_TCDCR(port) |=
+				(USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
+				 USBPD_REG_PLUG_IN_OUT_DETECT_STAT);
+#else
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+#endif //IT83XX_INTC_PLUG_OUT_SUPPORT
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+			/*
+			 * When tcpc detect type-c plug in:
+			 * If we are sink, disable it. Because sink detecting
+			 * plug out is monitoring Vbus volt by polling.
+			 * If we are source, then setting detect plug out.
+			 *
+			 * When polling disconnect will enable detect type-c
+			 * plug in again.
+			 */
+			switch_plug_out_type(port, &cc1, &cc2);
+#endif //IT83XX_INTC_PLUG_OUT_SUPPORT
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				PD_EVENT_CC, 0);
+		}
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	}
 }
 #endif
