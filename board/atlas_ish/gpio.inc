@@ -6,8 +6,7 @@
  */
 
 /* Trackpad interrupt pin */
-/*TODO: touchpad driver is not in gerrit yet, so comment out this for now */
-/*GPIO_INT(TOUCHPAD_INT, PIN(1), GPIO_INT_F_FALLING, touchpad_event)*/
+GPIO_INT(TOUCHPAD_INT, PIN(1), GPIO_INT_F_FALLING, tp_handler)
 
 /* Those are used by common code, don't change*/
 UNIMPLEMENTED(ENTERING_RW)
