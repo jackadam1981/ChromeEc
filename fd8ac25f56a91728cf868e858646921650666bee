@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "903a0e34_eec0874f",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-10T18:23:25Z",
+      "side": 1,
+      "message": "I use TEST_FLAG to overwrite the empty value of CROSS_COMPILE\u003d that is set by default for cmd_host_test.",
+      "parentUuid": "f5a493a9_78990b0c",
+      "revId": "fd8ac25f56a91728cf868e858646921650666bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be2b50bd_f48f03ff",
         "filename": "Makefile.rules",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "fd8ac25f56a91728cf868e858646921650666bee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38f3081_3dcc9b96",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-10T18:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be2b50bd_f48f03ff",
+      "range": {
+        "startLine": 349,
+        "startChar": 37,
+        "endLine": 349,
+        "endChar": 38
+      },
+      "revId": "fd8ac25f56a91728cf868e858646921650666bee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
