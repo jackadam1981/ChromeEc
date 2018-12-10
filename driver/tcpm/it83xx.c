@@ -335,6 +335,7 @@ static void it83xx_set_data_role(enum usbpd_port port, int pd_role)
 
 static void it83xx_init(enum usbpd_port port, int role)
 {
+	//int i = 0;
 	/* Invalidate last received message id variable */
 	invalidate_last_message_id(port);
 	/* bit7: Reload CC parameter setting. */
@@ -358,9 +359,21 @@ static void it83xx_init(enum usbpd_port port, int role)
 	it83xx_set_power_role(port, role);
 	/* disable all interrupts */
 	IT83XX_USBPD_IMR(port) = 0xff;
-	/* enable tx done and reset detect interrupt */
+	/* enable tx done, reset detect and type-c plug in interrupt */
 	IT83XX_USBPD_IMR(port) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
 					USBPD_REG_MASK_HARD_RESET_DETECT);
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+	/*
+	 * when tcpc detect type-c plug in (cc lines voltage change), it will
+	 * interrupt fw to wake pd task, so task can react immediately.
+	 *
+	 * w/c status and unmask TCDCR (detect type-c plug in interrupt default
+	 * is enable).
+	 */
+	IT83XX_USBPD_TCDCR(port) = USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+	//i = IT83XX_USBPD_TCDCR(port);
+	//ccprints("P%d init IT83XX_USBPD_TCDCR 0x%x", port, i);
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	IT83XX_USBPD_CCPSR(port) = 0xff;
 	/* cc connect */
 	IT83XX_USBPD_CCCSR(port) = 0;
@@ -576,11 +589,56 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 	return EC_SUCCESS;
 }
 
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+void switch_plug_out_type(int port, int *cc1, int *cc2)
+{
+	/* Reading register check if we are source role */
+	*cc1 = USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) >> 1;
+	*cc2 = USBPD_GET_CC2_PULL_REGISTER_SELECTION(port) >> 3;
+	ccprints("P%d assert cc1 %d cc2 %d (Rp=1 Rd=0)", port, *cc1, *cc2);
+
+	/*
+	 * We are source, reading both cc volt determine which kind of
+	 * plug out(audio/debug/sink) should be detected.
+	 */
+	if ((*cc1 == TYPEC_CC_RP) || (*cc2 == TYPEC_CC_RP)) {
+		IT83XX_USBPD_TCDCR(port) |= USBPD_REG_PLUG_IN_OUT_SELECT;
+		it83xx_tcpm_get_cc(port, cc1, cc2);
+		if ((*cc1 == TYPEC_CC_VOLT_RD && *cc2 == TYPEC_CC_VOLT_RD) ||
+		    (*cc1 == TYPEC_CC_VOLT_RA && *cc2 == TYPEC_CC_VOLT_RA))
+		//plugin hasn't state changed,so chk pd[port].task_state useless
+			/* We're source, detect audio/debug plug out */
+			IT83XX_USBPD_TCDCR(port) |=
+					USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+		else
+			/* We're source, detect sink plug out */
+			IT83XX_USBPD_TCDCR(port) &=
+					~USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT;
+	} else
+		/* We're sink, disable detect src plug in to avoid lots isr */
+		IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+}
+#endif //IT83XX_INTC_PLUG_OUT_SUPPORT
+
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	/* Invalidate last received message id variable */
 	invalidate_last_message_id(port);
+#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+	/*
+	 * Enable detect type-c plug in interrupt, since the pd task has
+	 * detected a type-c physical disconnected.
+	 */
+	IT83XX_USBPD_TCDCR(port) &= ~USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
+	ccprints("polling disconnect, enable detect in");
+#ifdef IT83XX_INTC_PLUG_OUT_SUPPORT
+	/* switch to detect type-c plug in interrupt */
+	IT83XX_USBPD_TCDCR(port) &= ~USBPD_REG_PLUG_IN_OUT_SELECT;
+	ccprints("polling disconnect, switch to detect in");
+#endif //IT83XX_INTC_PLUG_OUT_SUPPORT
+#endif //IT83XX_INTC_PLUG_IN_SUPPORT
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }

@@ -223,6 +223,7 @@ int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
 		int mw = uw / 1000;
 		*rdo = RDO_BATT(pdo_index + 1, mw, max_or_min_mw, flags);
 	} else {
+		//flags |= RDO_COMM_CAP;//RDO_FIXED_FLAGS,sync with sink cap msg
 		*rdo = RDO_FIXED(pdo_index + 1, *ma, max_or_min_ma, flags);
 	}
 	return EC_SUCCESS;
@@ -715,7 +716,11 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 		if (rsize >= 1)
 			payload[0] |= VDO_CMDT(CMDT_RSP_ACK);
 		else if (!rsize) {
+#ifdef CONFIG_USB_PD_REV30
+			send_control(port, PD_CTRL_NOT_SUPPORTED);
+#else
 			payload[0] |= VDO_CMDT(CMDT_RSP_NAK);
+#endif //CONFIG_USB_PD_REV30
 			rsize = 1;
 		} else {
 			payload[0] |= VDO_CMDT(CMDT_RSP_BUSY);
