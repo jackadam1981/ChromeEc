@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1b2e3d1_b3a9158f",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-12-10T21:18:50Z",
+      "side": 1,
+      "message": "drop?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48fbd296_d0fb534d",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-12-10T21:18:50Z",
+      "side": 1,
+      "message": "Maybe make one print statement out of those three?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 47
+      },
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806a2759_674bde65",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-12-10T21:18:50Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d7e2be6_d32195da",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-12-10T21:18:50Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 53
+      },
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af46ff66_6bcc1194",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2018-12-10T21:18:50Z",
+      "side": 1,
+      "message": "If they\u0027re part of the API, their parameters should be documented, like above",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 0
+      },
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
