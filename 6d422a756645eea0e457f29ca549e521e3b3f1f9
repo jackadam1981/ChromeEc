@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "6e9a8587_f560f96e",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-10T17:45:54Z",
+      "side": 1,
+      "message": "Should this be 0x3FF instead of 0x2FF?",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c6e64d_6cc3f174",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-10T17:45:54Z",
+      "side": 1,
+      "message": "there is already a definition for this in the heci.h file. This version looks more complete.",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53684029_f9b93903",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-10T17:45:54Z",
+      "side": 1,
+      "message": "What other peer connections can the ISH have?\n\nIs seems like each different peer connection will have its own task that processing incoming and outgoing messages on its own set of doorbell registers. That would allow us to prioritize one peer over another.\n\nAs the IRQ is written now, a hypothetical lower priority peer could starve a higher priority peer if the lower priority peer queued up multiple TX message and its IRQ fired first (since the IRQ will start to dequeue pending message and write them to the doorbell immediately)",
+      "range": {
+        "startLine": 176,
+        "startChar": 25,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871050a8_071db203",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-10T17:45:54Z",
+      "side": 1,
+      "message": "Do we really want to perform this memory copy in an interrupt context. In the architecture where the IPC task is reading/writing to the actual registers, I would think the task does this write instead to this interrupt handler. Thoughts?",
+      "range": {
+        "startLine": 411,
+        "startChar": 2,
+        "endLine": 411,
+        "endChar": 29
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ac83aac_e6662936",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
