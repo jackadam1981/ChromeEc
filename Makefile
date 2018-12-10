@@ -5,6 +5,7 @@
 # Embedded Controller firmware build system
 #
 
+ARCH?=amd64
 BOARD ?= bds
 
 # Directory where the board is configured (includes /$(BOARD) at the end)
