@@ -16,6 +16,24 @@
       "revId": "ae25d98c2f55bed36d89e5e202218c0b8c144e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a75cb5c_c911c86e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-12-10T16:32:16Z",
+      "side": 1,
+      "message": "We branched last week, which is why we\u0027re putting these in now :) \n\nThe tricky part will be that we have 2 boards at much earlier stages of development than the others, so we may end up with a fair amount of branch churn as they\u0027re developed",
+      "parentUuid": "18554c75_eaa610d0",
+      "revId": "ae25d98c2f55bed36d89e5e202218c0b8c144e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
