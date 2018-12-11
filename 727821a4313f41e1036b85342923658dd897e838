@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "547e2bb2_c97c2816",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-12-11T22:29:52Z",
+      "side": 1,
+      "message": "What do you mean by this?\n\nRealistically we have good enough use of the EC based timestamp recording (\"last_interrupt_timestamp \u003d __hw_clock_source_read();\" line). The EC based timestamp recording also handles the drift between the EC and the IMU.\n\nIf HW timestamp refers to a timestamp that the IMU counts internally, I would prefer not to use that (unless you have a good argument to support it).",
+      "revId": "727821a4313f41e1036b85342923658dd897e838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1093ba7d_083a3f64",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-12-11T22:29:52Z",
+      "side": 1,
+      "message": "From what I understand: your load_fifo function loops through samples it got from the IMU side fifo, calls this push_fifo_data function for each.\n\nThe issue is that you directly use last_interrupt_timestamp, since last_interrupt_timestamp might change at any point before you\u0027re finished (unless it\u0027s impossible for the IMU to raise another irq before this all samples are done).\n\nAt some point before you allow the IMU to re raise the IRQ again, you have to save last_interrupt_timestamp, and use it for all samples that you read in one batch.\n\nIt\u0027s ok if you skip an irq timestamp. As long as if you have a group of samples with repeat timestamps, the timestamp has to match the first sample in that group.\n\nHere\u0027s a good example:\n(interrupt, record t0)\nfirst call of load_fifo yields: [(s0, t0), (s1, t0), (s2, t0)] (interrupt, record t3)\nsecond call of load_fifo yields: [(s3, t3), (s4, t3), (s5, t3)] (interrupt, record t5)\n\nWhat the kernel sees:\n[(s0, t0), (s1, t0), (s2, t0)]\n[(s3, t3), (s4, t3), (s5, t3)]\n\nNote how (t0, s0) and (s3, t3) correspond.\n\nWhat your code will produce:\n(interrupt, record t0)\nfirst call of load_fifo yields: [(s0, t0), (s1, t0), (interrupt, record t3) (s2, t3)]\nsecond call of load_fifo yields: [(s3, t3), (s4, t3), (s5, t3)] \n\nWhat the kernel sees:\n[(s0, t0), (s1, t0)]\n[(s2, t3), (s3, t3), (s4, t3), (s5, t3)]\n\nThe kernel will now spread the samples wrong, will make s0, s1 more spread out, s2-s5 more dense.",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 31
+      },
+      "revId": "727821a4313f41e1036b85342923658dd897e838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35cc2d3d_a323abc3",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-12-11T22:29:52Z",
+      "side": 1,
+      "message": "why is this all indented/scoped?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "727821a4313f41e1036b85342923658dd897e838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d6b313_f9c2f30a",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-12-11T22:29:52Z",
+      "side": 1,
+      "message": "Why do you use CPRINTF everywhere?\n\nYou probably want CPRINTS, it\u0027ll handle the %T for you.",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 10
+      },
+      "revId": "727821a4313f41e1036b85342923658dd897e838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e076a95_a9df2d3b",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-12-11T22:29:52Z",
+      "side": 1,
+      "message": "Would there be a way to inline this? I don\u0027t think anything else calls load_fifo. You might see the other drivers using this pattern because it\u0027s how it used to be (since motion sense called it directly), but at this point, for a new driver, just inline it (if it doesn\u0027t look ugly).",
+      "range": {
+        "startLine": 230,
+        "startChar": 9,
+        "endLine": 230,
+        "endChar": 18
+      },
+      "revId": "727821a4313f41e1036b85342923658dd897e838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
