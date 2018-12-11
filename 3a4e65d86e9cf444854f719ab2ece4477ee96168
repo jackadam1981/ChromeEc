@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a27ee96_a39d2a00",
+        "filename": "extra/usb_updater/sweetberry.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2018-12-11T22:51:00Z",
+      "side": 1,
+      "message": "I don\u0027t think this is accurate, sweetberry got a relayout. See:\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/chip/stm32/config-stm32f446.h",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "3a4e65d86e9cf444854f719ab2ece4477ee96168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
