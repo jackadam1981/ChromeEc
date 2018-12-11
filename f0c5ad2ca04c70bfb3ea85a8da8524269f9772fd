@@ -49,6 +49,142 @@
     },
     {
       "key": {
+        "uuid": "ccd3c715_564df456",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "Spoof mode is very specific: it returns sensor data from spoof_xyz[] instead of calling a physical sensor. It looks like you are overriding it.",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1b3aa9_e264d9d5",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "You should not use you own buffer here.",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9b6b897_4d08192c",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "defines constants.\nAdd comments? why 7 feature ids map tho the same device.\ncase 6:\ncase 7:\n...\ncase 12:\n\nor \nif (feature_id \u003e\u003d 5 \u0026\u0026 feature_di \u003c\u003d 12)\n...",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f52f0688_ecd4597f",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "move #defines before code.",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "138478a3_6e67eadb",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "remove, you are supposed to use the mutex defined in the sensor structure.",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd05441_29097aa3",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "remove. use /* instead of //",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d1ef8a_ad1dfa32",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "indent.",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85e433f_638bfe46",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "describe paramter. I assume data is an array of data_len bytes.",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48fbd296_d0fb534d",
         "filename": "common/motion_sense_hid.c",
         "patchSetId": 4
@@ -187,6 +323,23 @@
       "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2190d4ae_c56d5a6a",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "move this code in CONFIG_ACCEL_SPOOF_MODE send_response().",
+      "revId": "f0c5ad2ca04c70bfb3ea85a8da8524269f9772fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

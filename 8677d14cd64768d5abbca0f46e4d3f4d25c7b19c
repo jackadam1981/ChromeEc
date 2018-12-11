@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3beb5648_d956d27e",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "where is input defined? This is too common to be a global variable.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d34ac0ae_d870fe7e",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "indent",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86e4347_7a1d637e",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "indent, no //",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ab4cba_36fcfb2a",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "We need to return an error to the host, it is expecting an answer.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9a7903_c59db568",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "define a fnction for line 380 - 398 to avoid cut and paste.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b311102_2034d648",
+        "filename": "include/motion_sense_hid.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "use proper syntax, prefix with hid_",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e9b55a_3b9d6d8a",
+        "filename": "include/motion_sense_hid.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-12-11T00:01:13Z",
+      "side": 1,
+      "message": "prefix with hid_, at least.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
