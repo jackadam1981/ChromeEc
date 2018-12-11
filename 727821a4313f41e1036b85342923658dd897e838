@@ -42,6 +42,52 @@
     },
     {
       "key": {
+        "uuid": "31f61dc3_175fe7a9",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-12-11T22:49:26Z",
+      "side": 1,
+      "message": "Is this defined somewhere? I couldn\u0027t find it at a glance.",
+      "range": {
+        "startLine": 140,
+        "startChar": 14,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "727821a4313f41e1036b85342923658dd897e838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e885c6c_973cde27",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1287098
+      },
+      "writtenOn": "2018-12-11T22:49:26Z",
+      "side": 1,
+      "message": "Double semicolon?",
+      "range": {
+        "startLine": 144,
+        "startChar": 49,
+        "endLine": 144,
+        "endChar": 50
+      },
+      "revId": "727821a4313f41e1036b85342923658dd897e838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35cc2d3d_a323abc3",
         "filename": "driver/accelgyro_lsm6dso.c",
         "patchSetId": 1
