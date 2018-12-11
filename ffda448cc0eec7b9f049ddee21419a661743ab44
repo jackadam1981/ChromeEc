@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b91fd1be_4497b27e",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T21:10:38Z",
+      "side": 1,
+      "message": "Actually, I let coreboot set the IRQ and shared memory address, removed these 2 variables.",
+      "parentUuid": "69a43fe5_14730bff",
+      "range": {
+        "startLine": 1781,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 0
+      },
+      "revId": "ffda448cc0eec7b9f049ddee21419a661743ab44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47160fe4_f318c421",
         "filename": "include/i2c_over_lpc.h",
         "patchSetId": 1
