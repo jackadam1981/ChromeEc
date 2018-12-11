@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "412e2fa9_c6ad6c7b",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T22:45:05Z",
+      "side": 1,
+      "message": "this is a floating state for this pin, but... bip power really isn\u0027t relevant at this point :)",
+      "range": {
+        "startLine": 106,
+        "startChar": 36,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "feb08739f816c48c212b417244ef7408a60a21d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
