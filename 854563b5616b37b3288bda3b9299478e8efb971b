@@ -22,6 +22,30 @@
       "revId": "854563b5616b37b3288bda3b9299478e8efb971b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87425c52_382b8fd0",
+        "filename": "util/iteflash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2018-12-11T01:32:20Z",
+      "side": 1,
+      "message": "Cosmetic yes, but they\u0027re related in that they\u0027re basically duplicated between ommand_write_pages() and ommand_write_pages2().  I think making the duplicate code look that much more similar is relevant to this change...that\u0027s basically all this change is doing.",
+      "parentUuid": "145c6f25_c35982f9",
+      "range": {
+        "startLine": 954,
+        "startChar": 9,
+        "endLine": 954,
+        "endChar": 14
+      },
+      "revId": "854563b5616b37b3288bda3b9299478e8efb971b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
