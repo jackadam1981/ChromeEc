@@ -2,6 +2,108 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7b76a5d_ac1aaad2",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "Add a separate config, _hid code is only needed for eve-campfire for now.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add3727d_30787a22",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "Use a local variable, or a pointer into the hid response buffer, it is only needed when you build a hid object.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa73536_a5a1e3b1",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "use mutex from sensor object if needed.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a8d5db_98eacc10",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "use a pointer to input_reports",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b63797_fd34d43a",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "FYI, global variables are always set to 0.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d167e46_e077575a",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "you need to unlock somewhere, preferably in the same function.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3beb5648_d956d27e",
         "filename": "common/motion_sense_hid.c",
         "patchSetId": 5
@@ -87,6 +189,23 @@
     },
     {
       "key": {
+        "uuid": "4b848725_9dce3a8b",
+        "filename": "common/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "this looks wrong, hid_command_process is called by hid_process, that would be a recursion.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b311102_2034d648",
         "filename": "include/motion_sense_hid.h",
         "patchSetId": 5
@@ -115,6 +234,142 @@
       "writtenOn": "2018-12-11T00:01:13Z",
       "side": 1,
       "message": "prefix with hid_, at least.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058d03f6_eee9842b",
+        "filename": "test/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "is it needed here?",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e768ee_c9458997",
+        "filename": "test/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "merge with line 245",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7292a1ba_70faa491",
+        "filename": "test/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "inline, no //",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d39e33a_79dcca32",
+        "filename": "test/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "naming, no camelcase",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "701c3c2f_21cb187e",
+        "filename": "test/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "I am not sure I follow this one. report_desc is a pointer, so sizeof(report_desc) will be 4.\nI think the casting is lost somewhere.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b323f1a5_69861a00",
+        "filename": "test/motion_sense_hid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "Consider using memcmp().",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7d90c7_7275f4f2",
+        "filename": "test/motion_sense_hid.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "(c) is too much, use 2018.\nUpload with --verify, it should spot these errors for you.",
+      "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "738dd0dd_b24dcd56",
+        "filename": "test/test_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-11T22:24:30Z",
+      "side": 1,
+      "message": "LID variables are not needed.",
       "revId": "8677d14cd64768d5abbca0f46e4d3f4d25c7b19c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
