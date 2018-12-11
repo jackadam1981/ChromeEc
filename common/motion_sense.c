@@ -432,7 +432,7 @@ static void motion_sense_set_motion_intervals(void)
 
 static inline int motion_sense_init(struct motion_sensor_t *sensor)
 {
-	int ret, cnt = 3;
+	int ret, cnt = 10;
 
 	/* By default, report the actual sensor values. */
 	sensor->in_spoof_mode = 0;
