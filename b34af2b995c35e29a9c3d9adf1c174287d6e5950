@@ -22,6 +22,30 @@
       "revId": "b34af2b995c35e29a9c3d9adf1c174287d6e5950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430fb179_827e74d9",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-11T16:59:58Z",
+      "side": 1,
+      "message": "I spend some time trying to get that to work and it has some significant downsides.\n\nThe run-* targets depend on the host- targets and since the dependencies get pulled out outside of buildfuzztests the fuzzer related variables/flags are not set when building leading to a bunch of sanitizer related compiler errors. I will look into it a bit more to see if I can come up with a good solution.",
+      "parentUuid": "9af0664a_fab0c91d",
+      "range": {
+        "startLine": 357,
+        "startChar": 37,
+        "endLine": 358,
+        "endChar": 0
+      },
+      "revId": "b34af2b995c35e29a9c3d9adf1c174287d6e5950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
