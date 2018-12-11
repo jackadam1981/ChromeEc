@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9e43371_54ee2736",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T23:17:22Z",
+      "side": 1,
+      "message": "blocking read will still need an event to wait on though. We should add this back",
+      "range": {
+        "startLine": 853,
+        "startChar": 26,
+        "endLine": 853,
+        "endChar": 70
+      },
+      "revId": "89f0e15fc6a7499fb95d0f7c38724b6e10e114a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
