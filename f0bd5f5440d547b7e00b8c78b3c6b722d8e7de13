@@ -22,6 +22,23 @@
       "revId": "f0bd5f5440d547b7e00b8c78b3c6b722d8e7de13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15633d40_96019e15",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-12-11T22:12:21Z",
+      "side": 1,
+      "message": "Add an entry for ep in the comment block",
+      "revId": "f0bd5f5440d547b7e00b8c78b3c6b722d8e7de13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
