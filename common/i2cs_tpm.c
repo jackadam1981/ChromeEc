@@ -218,6 +218,7 @@ static void i2cs_if_stop(void)
 
 static void i2cs_if_start(void)
 {
+	ccprintf("%s\n", __func__);
 	i2cs_register_write_complete_handler(wr_complete_handler);
 }
 

@@ -680,6 +680,11 @@ static void board_init(void)
 	if (system_get_reset_flags() & RESET_FLAG_HIBERNATE)
 		decrement_retry_counter();
 	configure_board_specific_gpios();
+
+	ccprintf("%s: I2CS_INT_STATE = %08x\n", __func__,
+		GREAD(I2CS, INT_STATE));
+
+
 	init_pmu();
 	reset_wake_logic();
 	init_trng();
@@ -950,8 +955,8 @@ static int command_sys_rst(int argc, char **argv)
 	int ms = 20;
 
 	if (argc > 1) {
-		if (!ccd_is_cap_enabled(CCD_CAP_REBOOT_EC_AP))
-			return EC_ERROR_ACCESS_DENIED;
+//		if (!ccd_is_cap_enabled(CCD_CAP_REBOOT_EC_AP))
+//			return EC_ERROR_ACCESS_DENIED;
 
 		if (!strcasecmp("pulse", argv[1])) {
 			if (argc == 3) {
@@ -1048,8 +1053,8 @@ static int command_ec_rst(int argc, char **argv)
 	int val;
 
 	if (argc > 1) {
-		if (!ccd_is_cap_enabled(CCD_CAP_REBOOT_EC_AP))
-			return EC_ERROR_ACCESS_DENIED;
+//		if (!ccd_is_cap_enabled(CCD_CAP_REBOOT_EC_AP))
+//			return EC_ERROR_ACCESS_DENIED;
 
 		if (!strcasecmp("pulse", argv[1])) {
 			ccprintf("Pulsing EC reset\n");
@@ -1552,7 +1557,7 @@ int chip_factory_mode(void)
 	return mode_set & 1;
 }
 
-#ifdef CR50_DEV
+//#ifdef CR50_DEV
 static int command_rollback(int argc, char **argv)
 {
 	system_ensure_rollback();
@@ -1562,9 +1567,9 @@ static int command_rollback(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rollback, command_rollback,
+DECLARE_SAFE_CONSOLE_COMMAND(rollback, command_rollback,
 	"", "Force rollback to escape DEV image.");
-#endif
+//#endif
 
 /*
  * Set long life register bit requesting generating of the ITE SYNC sequence

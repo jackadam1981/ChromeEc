@@ -105,6 +105,40 @@ static uint16_t last_read_pointer;
 static uint16_t i2cs_read_irq_count;
 static uint16_t i2cs_read_recovery_count;
 
+#ifdef CR50_DEV
+static const char * const i2cs_reg_name[] = {
+	"VERSION",
+	"INT_ENABLE",
+	"INT_STATE",
+	"INT_TEST",
+	"CTRL_SDA_VAL",
+	"SLAVE_DEVADDRVAL",
+	"CLOCK_STRECTH",
+	"AUTO_WAIT_AFTER_WRITE_MODE",
+	"CLOCK_STRETCH_MODE",
+	"READ_PTR",
+	"WRITE_PTR",
+	"READVAL",
+	"CTRL_MSR",
+};
+
+
+static void i2cs_register_dump(void)
+{
+	int i;
+
+	ccprintf("I2CS Registers:\n");
+
+	for (i = 0; i < ARRAY_SIZE(i2cs_reg_name); i++) {
+		ccprintf("  %s = %08x\n", i2cs_reg_name[i],
+			REG32(GBASE(I2CS) + i * 4));
+	}
+	ccprintf("  INT_AP_L state = %d\n", gpio_get_level(GPIO_INT_AP_L));
+}
+#else
+#define i2cs_register_dump()
+#endif
+
 static void i2cs_init(void)
 {
 	/* First decide if i2c is even needed for this platform. */
@@ -114,6 +148,9 @@ static void i2cs_init(void)
 
 	pmu_clock_en(PERIPH_I2CS);
 
+	ccprintf("%s: before reset\n", __func__);
+	i2cs_register_dump();
+
 	/*
 	 * Toggle the reset register to make sure i2cs interface is in the
 	 * initial state even if it is mid transaction at this time.
@@ -121,7 +158,7 @@ static void i2cs_init(void)
 	GWRITE_FIELD(PMU, RST0, DI2CS0, 1);
 
 	/*
-	 * This initialization is guraranteed to take way more than enough
+	 * This initialization is guaranteed to take way more than enough
 	 * time for the reset to kick in.
 	 */
 	memset(i2cs_buffer, 0, sizeof(i2cs_buffer));
@@ -131,6 +168,8 @@ static void i2cs_init(void)
 
 	GWRITE_FIELD(PMU, RST0, DI2CS0, 0);
 
+	ccprintf("%s: after reset\n", __func__);
+	i2cs_register_dump();
 
 	/* Set pinmux registers for I2CS interface */
 	i2cs_set_pinmux();
@@ -174,6 +213,7 @@ static void poll_read_state(void)
 				 */
 				last_i2cs_read_irq_count = ~0;
 				i2cs_read_recovery_count++;
+				CPRINTF("I2CS read recovery\n");
 				i2cs_register_write_complete_handler
 					(write_complete_handler_);
 

@@ -24,6 +24,10 @@
 
 #define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
+#ifndef CR50_DEV
+#define CR50_DEV
+#endif
+
 /*
  * This structure defines flash offset ranges of the RO and RW images which
  * are not currently active and as such could be overwritten with an update.

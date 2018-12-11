@@ -221,6 +221,8 @@ static void copy_bytes(uint8_t *dest, uint32_t data_size, uint32_t value)
 
 static void access_reg_write(uint8_t data)
 {
+	ccprints("%s: current %02x data %02x", __func__,
+		tpm_.regs.access, data);
 	if (!single_bit_set(data)) {
 		CPRINTF("%s: attempt to set acces reg to %02x\n",
 			__func__, data);
@@ -260,6 +262,8 @@ static void access_reg_write(uint8_t data)
 			" of 0x%02x\n", __func__, data);
 		break;
 	}
+
+	ccprints("%s: new %02x", __func__, tpm_.regs.access);
 }
 
 /*
@@ -450,13 +454,25 @@ void fifo_reg_read(uint8_t *dest, uint32_t data_size)
 	uint32_t still_in_fifo = tpm_.fifo_write_index -
 		tpm_.fifo_read_index;
 	uint32_t tpm_sts;
+	uint32_t read_index_save;
 
 	data_size = MIN(data_size, still_in_fifo);
 	memcpy(dest,
 	       tpm_.regs.data_fifo + tpm_.fifo_read_index,
 	       data_size);
 
+	read_index_save = tpm_.fifo_read_index;
 	tpm_.fifo_read_index += data_size;
+
+	{
+		int i;
+
+		CPRINTF("  FIFO %04x (", read_index_save);
+		data_size = MIN(data_size, 16);
+		for (i = 0; i < data_size ; i++)
+			CPRINTF("%02x ", dest[i]);
+		CPRINTF(")\n");
+	}
 
 	tpm_sts = tpm_.regs.sts;
 	tpm_sts &= ~(burst_count_mask << burst_count_shift);
@@ -496,6 +512,7 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 		copy_bytes(dest, data_size, IF_CAPABILITY_REG);
 		break;
 	case TPM_ACCESS:
+		ccprints("%s: access = %02x", __func__, tpm_.regs.access);
 		copy_bytes(dest, data_size, tpm_.regs.access);
 		break;
 	case TPM_STS:

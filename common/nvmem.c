@@ -247,6 +247,8 @@ static int nvmem_reinitialize(void)
 	 */
 	nvmem_act_partition = 0;
 
+	CPRINTS("%s", __func__);
+
 	memset(nvmem_cache, 0xff, NVMEM_PARTITION_SIZE);
 
 	/* Start with generation zero in the current active partition. */
