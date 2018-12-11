@@ -858,9 +858,6 @@ static int load_fifo(struct motion_sensor_t *s, uint32_t last_ts)
 		return EC_SUCCESS;
 	}
 
-	/* Add one byte to get an empty FIFO frame.*/
-	length++;
-
 	if (length > sizeof(bmi160_buffer))
 		CPRINTS("unexpected large FIFO: %d", length);
 	length = MIN(length, sizeof(bmi160_buffer));
