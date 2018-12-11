@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae9a0f02_f7bfc29d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T18:27:14Z",
+      "side": 1,
+      "message": "This line doesn\u0027t look different than line 37. It looks like the difference are already captures in CLOCK_FACTOR.\n\nAdding a comment for ISH3 and ISH4/5 about the time for one clock is still a good idea though",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 46
+      },
+      "revId": "f3a6c2ee9addfc8679efc7fd505eda06d456047a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18038304_54fd48cd",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T18:27:14Z",
+      "side": 1,
+      "message": "won\u0027t the compiler do this optimization for you if you just\n\nreturn HPET_MAIN_COUNTER / CLOCK_FACTOR;\n\ninstead?",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "f3a6c2ee9addfc8679efc7fd505eda06d456047a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e54fded_2b1906f3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T18:27:14Z",
+      "side": 1,
+      "message": "what is left over, ISH2?",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "f3a6c2ee9addfc8679efc7fd505eda06d456047a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dffa0a0e_f6bd07c6",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T18:27:14Z",
+      "side": 1,
+      "message": "should this be \n(CLOCK_FACTOR \u003c\u003c 32) - CLOCK_FACTOR\n\ninstead?",
+      "range": {
+        "startLine": 138,
+        "startChar": 25,
+        "endLine": 138,
+        "endChar": 53
+      },
+      "revId": "f3a6c2ee9addfc8679efc7fd505eda06d456047a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
