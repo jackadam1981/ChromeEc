@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "1ecce52f_01c67453",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T23:15:08Z",
+      "side": 1,
+      "message": "I guess I don\u0027t see where the report_id is set in payload[0]. Is it already set from the incoming message? Are we sure that set_feature_report didn\u0027t change the buffer?\n\nPlease answer a few of these questions with comments above this section of code.",
+      "parentUuid": "b97461ad_ad0ede96",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "678eb2e1_b9af6744",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -282,6 +306,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "938796af_5548bd2c",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T23:15:08Z",
+      "side": 1,
+      "message": "So you are saying that the hid client callback functions should not return an error from the method but instead fill their output buffer correct so the linux driver will interpret the error correctly?\n\nIf that is correct, maybe change this comment saying that most errors should not go through this path as client should return a well formed protocol message that represent the correct error.",
+      "parentUuid": "4e118bfc_7bbc3012",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 60
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -376,6 +424,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37c241ff_429da60b",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T23:15:08Z",
+      "side": 1,
+      "message": "Did see the change in heci_client.h",
+      "parentUuid": "1baf5e38_f92df9fc",
+      "range": {
+        "startLine": 388,
+        "startChar": 7,
+        "endLine": 388,
+        "endChar": 10
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

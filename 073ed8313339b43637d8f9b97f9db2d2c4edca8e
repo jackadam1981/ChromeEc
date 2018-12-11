@@ -265,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "8354181b_c58fcf9e",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T23:15:08Z",
+      "side": 1,
+      "message": "the hid device developer would not need to touch here. The would just make their driver, and the board developer would add a new entry into their board level configuration that referenced the hid device driver.\n\nThe common hid code would use the board defined array and call hid_subsys_register_device on it at the appropriate time and the register method would not even have to be public anymore",
+      "parentUuid": "141242e4_a7710506",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -687,6 +711,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9af03a00_4b4ec392",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T23:15:08Z",
+      "side": 1,
+      "message": "let\u0027s just use index until we need handle like encoding (like we did fro heci_ipc)",
+      "parentUuid": "12f10dab_52531396",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

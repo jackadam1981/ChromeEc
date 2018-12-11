@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "e798e439_a1f106d0",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T23:15:08Z",
+      "side": 1,
+      "message": "rename dev_ids to _dev_ids\n\nGwendal, what is that for again?",
+      "parentUuid": "d352559a_0b9ca3f8",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "077e7a0f_541b9ed6",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
