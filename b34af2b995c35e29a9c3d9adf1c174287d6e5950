@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af0664a_fab0c91d",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-11T00:39:40Z",
+      "side": 1,
+      "message": "Can we add this to runtests instead?\n\n(i.e. keep build* for things that build targets)",
+      "range": {
+        "startLine": 357,
+        "startChar": 37,
+        "endLine": 358,
+        "endChar": 0
+      },
+      "revId": "b34af2b995c35e29a9c3d9adf1c174287d6e5950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
