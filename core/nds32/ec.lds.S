@@ -242,6 +242,10 @@ SECTIONS
         *(.h2ram.pool.hostcmd)
         . = ALIGN(256);
         *(.h2ram.pool.acpiec)
+        . = ALIGN(256);
+        *(.h2ram.pool.spislvrx)
+        . = ALIGN(256);
+        *(.h2ram.pool.spislvtx)
     } > H2RAM
 #endif
 
