@@ -22,6 +22,30 @@
       "revId": "feb08739f816c48c212b417244ef7408a60a21d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0b8642_27dabd5c",
+        "filename": "board/bip/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2018-12-11T22:58:51Z",
+      "side": 1,
+      "message": "That was approximately my thinking.  Would there be a better GPIO_* output define to use?",
+      "parentUuid": "412e2fa9_c6ad6c7b",
+      "range": {
+        "startLine": 106,
+        "startChar": 36,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "feb08739f816c48c212b417244ef7408a60a21d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
