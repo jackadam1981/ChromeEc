@@ -29,6 +29,7 @@
 #define CONFIG_PWM
 /* Use CS0 of SSPI */
 #define CONFIG_SPI
+#define CONFIG_SPI_SLAVE
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_UART_HOST
 #define CONFIG_HOSTCMD_LPC

@@ -85,3 +85,4 @@ ALTERNATE(PIN_MASK(C, 0x06), 1, MODULE_I2C, 0)             /* I2C B SCL/SDA */
 ALTERNATE(PIN_MASK(F, 0xC0), 1, MODULE_I2C, 0)             /* I2C C SCL/SDA */
 #endif
 ALTERNATE(PIN_MASK(E, 0x81), 1, MODULE_I2C, 0)             /* I2C E SCL/SDA E0/E7 */
+ALTERNATE(PIN_MASK(M, 0x33), 1, MODULE_SPI, 0)             /* Slave SPI Function */

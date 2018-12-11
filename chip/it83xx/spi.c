@@ -115,6 +115,9 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	/* bit[0]: Write cycle */
 	IT83XX_SSPI_SPICTRL2 &= ~0x04;
 	for (idx = 0x00; idx < txlen; idx++) {
+
+		CPRINTS("[SPI]txdata=%x", txdata[idx]);
+
 		IT83XX_SSPI_SPIDATA = txdata[idx];
 		if (port == SSPI_CH_CS1)
 			/* Write 1 to start the data transmission of CS1 */
@@ -166,6 +169,31 @@ static void sspi_init(void)
 
 	for (i = 0; i < spi_devices_used; i++)
 		/* Disabling spi module */
-		spi_enable(spi_devices[i].port, 0);
+		spi_enable(spi_devices[i].port, 1);
 }
 DECLARE_HOOK(HOOK_INIT, sspi_init, HOOK_PRIO_INIT_SPI);
+
+#define SPI (&(spi_devices[0]))
+
+static int command_spi_slave(int argc, char **argv)
+{
+	uint8_t tx_buf[] = {0x03, 0xEE, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00,
+	 0x01, 0x02, 0x03, 0x04};
+
+	spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spihtest, command_spi_slave,
+			     "SPI",
+			     "SPI parse");
+
+static int command_spi1_slave(int argc, char **argv)
+{
+	uint8_t tx_buf[] = {0x03, 0xFD, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+	spi_transaction(SPI, tx_buf, sizeof(tx_buf), NULL, 0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spihtest1, command_spi1_slave,
+			     "SPI",
+			     "SPI parse");
