@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f62af09a_0451ba5c",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "we should make this based on a (new) config option instead of the name of a task\n\nCONFIG_DRBL_IPC may work",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4b4947_b5ef789b",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "please add a comment saying that the MNG protocol is handled in-line since it is the highest priority",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e9a8587_f560f96e",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -42,6 +88,29 @@
         "startChar": 33,
         "endLine": 76,
         "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16840124_1ae47150",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "call this _SHIFT to match above naming",
+      "range": {
+        "startLine": 115,
+        "startChar": 27,
+        "endLine": 115,
+        "endChar": 33
       },
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -96,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "639eddb9_63c96b4f",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "(I did mean ipc.h)\n\nI still don\u0027t think we should submit this CL will two conflicting definitions of ipc_if_ctx. Should be move this to ipc.h?",
+      "parentUuid": "521e49ad_d9955c82",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53684029_f9b93903",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -140,6 +233,145 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1d66fb_a3f60ad9",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "The code implies that there will be a different set of doorbell registers for each ipc_peer (implied by the .in_drbl_rg and .out_drbl_reg).\n\nIf there isn\u0027t another set of doorbell register for the ISH, then we should remove these fields from the configuration struct and use IPC_HOST2ISH_DOORBELL and IPC_ISH2HOST_DOORBELL directly.",
+      "parentUuid": "bf42d57b_b645e061",
+      "range": {
+        "startLine": 176,
+        "startChar": 25,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "422e3388_4d37b1fb",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "why a method for this and a MACRO for the handle version (above)",
+      "range": {
+        "startLine": 192,
+        "startChar": 33,
+        "endLine": 192,
+        "endChar": 47
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d14a4f_95a69adc",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "it looks like every call side just uses the size in the drbl parameter. Can we derive the size from the drbl within this function and not pass in this fourth parameter?",
+      "range": {
+        "startLine": 246,
+        "startChar": 28,
+        "endLine": 246,
+        "endChar": 47
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f0ada3_1f27f631",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "can you add a function header for this saying what this is used for. (why isn\u0027t this called ipc_send_reset)?",
+      "range": {
+        "startLine": 281,
+        "startChar": 11,
+        "endLine": 281,
+        "endChar": 26
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6dd2c21_09d2d945",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "can we use the ipc_msg structure here instead of re-encoding the structure here with ptr arithmetic",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 32
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25231393_94f1a2b1",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "no need to add inline here, the compiler will make that optimization for you automatically",
+      "range": {
+        "startLine": 357,
+        "startChar": 7,
+        "endLine": 357,
+        "endChar": 13
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -190,6 +422,52 @@
     },
     {
       "key": {
+        "uuid": "60c5b766_545aea47",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "can you add comments to this section, the function names are not very clear as to what is happening",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 21
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "349b9486_dbe0c121",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "Since this MNG task here and the defines at the top are pretty self contained, let\u0027s pull them out now in their own separate file.\n\nThis should just be named ipc.c right. There is nothing really specific about HECI in here (expect the occasional encoding/decoding scheme like MGT)",
+      "range": {
+        "startLine": 658,
+        "startChar": 3,
+        "endLine": 658,
+        "endChar": 33
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ac83aac_e6662936",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -230,6 +508,191 @@
         "startChar": 5,
         "endLine": 660,
         "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62e796bc_f01c3fd8",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "Let\u0027s drop this task structure discussion for now and keep the interface the way it currently is.\n\nI see issues in the what I was suggesting about task structure: if the RX queue for a protocol fills up quickly, then that protocol task will still block other protocol tasks from completing as long as the single doorbell register has a new message waiting for that blocking full protocol. \nI was also thinking that we could pull all of the incoming messages as fast as we could and let the ISH processes them as needed, but the host may be able to send messages much more quickly than the ISH can process (so we would end up in the full queue scenario often).",
+      "parentUuid": "2e0fc4f2_3b2ba3da",
+      "range": {
+        "startLine": 660,
+        "startChar": 5,
+        "endLine": 660,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fde83ff_21465171",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "Let\u0027s log the error here",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 678,
+        "endChar": 11
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0e40f35_4471cd98",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "if we comment out or remove the enums in the header file, then this code doesn\u0027t have to be commented out.\n\nI would prefer the header to contain the information that the other peers are not implemented.",
+      "range": {
+        "startLine": 690,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 33
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f802f5bd_891b3d31",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "these error codes still need to be merged with the one found in common.h",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a468196_3905c480",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "since we don\u0027t have the implementation for these yet, can we omit them (or at least add a notes that they aren\u0027t implemented yet)",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 65
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b6d9f1_464296a1",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "say why you need this to be true (i.e you are encoding the peer id in 4-bit on the handle)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400f1ebb_fa33f59c",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "same comment here about why this build assert is needed",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8da8a0e_d263f2f2",
+        "filename": "chip/ish/ish_fwst.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "please add comments to this file. I have no idea of ilup and hup are.\n\nfwst (firware start?)",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 43
       },
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

@@ -675,6 +675,30 @@
     },
     {
       "key": {
+        "uuid": "33d38733_20096cba",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-11T21:38:25Z",
+      "side": 1,
+      "message": "We can close this issue. Let\u0027s go with the current API style",
+      "parentUuid": "62f16e34_b3eab52f",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "9881dc24fe1c2899c227a5e68aa2d23968d26d38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cc0874a_6855ebf1",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 12
