@@ -2054,6 +2054,9 @@
 /* To define it, if I2C channel C and PECI used at the same time. */
 #undef CONFIG_IT83XX_SMCLK2_ON_GPC7
 
+/* Support SPI Slave */
+#undef CONFIG_SPI_SLAVE
+
 /*****************************************************************************/
 /* Keyboard config */
 
