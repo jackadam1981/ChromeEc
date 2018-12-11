@@ -22,6 +22,30 @@
       "revId": "778fc41601a950b24f321a121f62400187c76fdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfb7866_9c3e898a",
+        "filename": "Makefile.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-11T19:14:14Z",
+      "side": 0,
+      "message": "If I leave this here, none of the fuzz targets are executed. My understanding is order isn\u0027t supposed to matter in a Makefile, but when I force a failure it doesn\u0027t show up unless run-fuzz-test-targets is defined before 292",
+      "parentUuid": "7f1665c9_723b6e76",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 0
+      },
+      "revId": "778fc41601a950b24f321a121f62400187c76fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
