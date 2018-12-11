@@ -9,61 +9,14 @@
 #include "internal.h"
 #include "trng.h"
 
-/* V = HMAC_K(V) */
-static void update_v(const uint32_t *k, uint32_t *v)
-{
-	LITE_HMAC_CTX ctx;
-
-	DCRYPTO_HMAC_SHA256_init(&ctx, k, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, v, SHA256_DIGEST_SIZE);
-	memcpy(v, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
-}
-
-/* K = HMAC_K(V || tag || x || h1) */
-static void update_k(uint32_t *k, const uint32_t *v, uint8_t tag,
-		     const uint32_t *x,  const uint32_t *h1)
-{
-	LITE_HMAC_CTX ctx;
-
-	DCRYPTO_HMAC_SHA256_init(&ctx, k, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, v, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, &tag, 1);
-	HASH_update(&ctx.hash, x, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, h1, SHA256_DIGEST_SIZE);
-	memcpy(k, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
-}
-
-/* K = HMAC_K(V || 0x00) */
-static void append_0(uint32_t *k, const uint32_t *v)
-{
-	LITE_HMAC_CTX ctx;
-	uint8_t zero = 0;
-
-	DCRYPTO_HMAC_SHA256_init(&ctx, k, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, v, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, &zero, 1);
-	memcpy(k, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
-}
-
 /* Deterministic generation of k as per RFC 6979 */
 void drbg_rfc6979_init(struct drbg_ctx *ctx, const p256_int *key,
 		       const p256_int *message)
 {
-	const uint32_t *x = key->a;
-	const uint32_t *h1 = message->a;
-
-	/* V = 0x01 0x01 0x01 ... 0x01 */
-	always_memset(ctx->v,  0x01, sizeof(ctx->v));
-	/* K = 0x00 0x00 0x00 ... 0x00 */
-	always_memset(ctx->k,  0x00, sizeof(ctx->k));
-	/* K = HMAC_K(V || 0x00 || int2octets(x) || bits2octets(h1)) */
-	update_k(ctx->k, ctx->v, 0x00, x, h1);
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
-	/* K = HMAC_K(V || 0x01 || int2octets(x) || bits2octets(h1)) */
-	update_k(ctx->k, ctx->v, 0x01, x, h1);
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
+	hmac_drbg_init(ctx,
+		       key->a, sizeof(key->a),
+		       message->a, sizeof(message->a),
+		       NULL, 0);
 }
 
 void drbg_rand_init(struct drbg_ctx *ctx)
@@ -81,17 +34,9 @@ void drbg_rand_init(struct drbg_ctx *ctx)
 
 void drbg_generate(struct drbg_ctx *ctx, p256_int *k_out)
 {
-	int i;
-
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
-	/* get the current candidate K, then prepare for the next one */
-	for (i = 0; i < P256_NDIGITS; ++i)
-		k_out->a[i] = ctx->v[i];
-	/* K = HMAC_K(V || 0x00) */
-	append_0(ctx->k, ctx->v);
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
+	hmac_drbg_generate(ctx,
+			   k_out->a, sizeof(k_out->a),
+			   NULL, 0);
 }
 
 void drbg_exit(struct drbg_ctx *ctx)
