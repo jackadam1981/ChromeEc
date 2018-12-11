@@ -5483,6 +5483,22 @@ struct ec_params_charger_control {
  *      EC_VER_MASK(0);
  */
 #define EC_CMD_BOARD_SPECIFIC_BASE 0x3E00
+
+/*****************************************************************************/
+/* LED custom colors for factory mode */
+#define EC_CMD_LED_CUSTOM 0x3E01
+
+/*
+ * 32 bits flags are enough for various kind of custom blink way.
+ */
+struct ec_params_led_custom {
+	uint32_t flags;		/* control flags */
+} __ec_align4;
+
+struct ec_response_led_custom {
+	uint32_t results;	/* result */
+} __ec_align4;
+
 #define EC_CMD_BOARD_SPECIFIC_LAST 0x3FFF
 
 /*
