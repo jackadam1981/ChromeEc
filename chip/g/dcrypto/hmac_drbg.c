@@ -1,4 +1,4 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,7 +9,7 @@
 #include "internal.h"
 #include "trng.h"
 
-/* V = HMAC_K(V) */
+/* V = HMAC(K, V) */
 static void update_v(const uint32_t *k, uint32_t *v)
 {
 	LITE_HMAC_CTX ctx;
@@ -19,79 +19,124 @@ static void update_v(const uint32_t *k, uint32_t *v)
 	memcpy(v, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
 }
 
-/* K = HMAC_K(V || tag || x || h1) */
-static void update_k(uint32_t *k, const uint32_t *v, uint8_t tag,
-		     const uint32_t *x,  const uint32_t *h1)
+/* K = HMAC(K, V || tag || p0 || p1 || p2) */
+/* V = HMAC(K, V) */
+static void update_kv(uint32_t *k, uint32_t *v, uint8_t tag,
+		      const void *p0, size_t p0_len,
+		      const void *p1, size_t p1_len,
+		      const void *p2, size_t p2_len)
 {
 	LITE_HMAC_CTX ctx;
 
 	DCRYPTO_HMAC_SHA256_init(&ctx, k, SHA256_DIGEST_SIZE);
 	HASH_update(&ctx.hash, v, SHA256_DIGEST_SIZE);
 	HASH_update(&ctx.hash, &tag, 1);
-	HASH_update(&ctx.hash, x, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, h1, SHA256_DIGEST_SIZE);
+	HASH_update(&ctx.hash, p0, p0_len);
+	HASH_update(&ctx.hash, p1, p1_len);
+	HASH_update(&ctx.hash, p2, p2_len);
 	memcpy(k, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
+
+	update_v(k, v);
 }
 
-/* K = HMAC_K(V || 0x00) */
-static void append_0(uint32_t *k, const uint32_t *v)
+static void update(struct drbg_ctx *ctx,
+		   const void *p0, size_t p0_len,
+		   const void *p1, size_t p1_len,
+		   const void *p2, size_t p2_len)
 {
-	LITE_HMAC_CTX ctx;
-	uint8_t zero = 0;
+	/* K = HMAC(K, V || 0x00 || provided_data) */
+	/* V = HMAC(K, V) */
+	update_kv(ctx->k, ctx->v, 0x00,
+		  p0, p0_len, p1, p1_len, p2, p2_len);
 
-	DCRYPTO_HMAC_SHA256_init(&ctx, k, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, v, SHA256_DIGEST_SIZE);
-	HASH_update(&ctx.hash, &zero, 1);
-	memcpy(k, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
+	/* If no provided_data, stop. */
+	if (p0_len + p1_len + p2_len == 0)
+		return;
+
+	/* K = HMAC(K, V || 0x01 || provided_data) */
+	/* V = HMAC(K, V) */
+	update_kv(ctx->k, ctx->v,
+		  0x01,
+		  p0, p0_len, p1, p1_len, p2, p2_len);
 }
 
-/* Deterministic generation of k as per RFC 6979 */
-void drbg_rfc6979_init(struct drbg_ctx *ctx, const p256_int *key,
-		       const p256_int *message)
+void hmac_drbg_init(struct drbg_ctx *ctx,
+		    const void *p0, size_t p0_len,
+		    const void *p1, size_t p1_len,
+		    const void *p2, size_t p2_len)
 {
-	const uint32_t *x = key->a;
-	const uint32_t *h1 = message->a;
-
-	/* V = 0x01 0x01 0x01 ... 0x01 */
-	always_memset(ctx->v,  0x01, sizeof(ctx->v));
 	/* K = 0x00 0x00 0x00 ... 0x00 */
 	always_memset(ctx->k,  0x00, sizeof(ctx->k));
-	/* K = HMAC_K(V || 0x00 || int2octets(x) || bits2octets(h1)) */
-	update_k(ctx->k, ctx->v, 0x00, x, h1);
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
-	/* K = HMAC_K(V || 0x01 || int2octets(x) || bits2octets(h1)) */
-	update_k(ctx->k, ctx->v, 0x01, x, h1);
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
+	/* V = 0x01 0x01 0x01 ... 0x01 */
+	always_memset(ctx->v,  0x01, sizeof(ctx->v));
+
+	update(ctx, p0, p0_len, p1, p1_len, p2, p2_len);
+
+	ctx->reseed_counter = 1;
 }
 
-void drbg_rand_init(struct drbg_ctx *ctx)
+void hmac_drbg_init_rfc6979(struct drbg_ctx *ctx, const p256_int *key,
+			    const p256_int *message)
+{
+	hmac_drbg_init(ctx,
+		       key->a, sizeof(key->a),
+		       message->a, sizeof(message->a),
+		       NULL, 0);
+}
+
+void hmac_drbg_init_rand(struct drbg_ctx *ctx, size_t nbits)
 {
 	int i;
-	p256_int x, h1;
+	uint32_t x[(nbits + 31) / 32];
 
-	for (i = 0; i < P256_NDIGITS; ++i) {
-		x.a[i] = rand();
-		h1.a[i] = rand();
+	for (i = 0; i < ARRAY_SIZE(x); ++i)
+		x[i] = rand();
+
+	hmac_drbg_init(ctx, &x, sizeof(x), NULL, 0, NULL, 0);
+}
+
+void hmac_drbg_reseed(struct drbg_ctx *ctx,
+		      const void *p0, size_t p0_len,
+		      const void *p1, size_t p1_len,
+		      const void *p2, size_t p2_len)
+{
+	update(ctx, p0, p0_len, p1, p1_len, p2, p2_len);
+	ctx->reseed_counter = 1;
+}
+
+int hmac_drbg_generate(struct drbg_ctx *ctx,
+		       void *out, size_t out_len,
+		       const void *input, size_t input_len)
+{
+	/* TODO(louiscollard): Assert maximum output length? */
+
+	if (ctx->reseed_counter >= 10000)
+		return 2;
+
+	if (input_len)
+		update(ctx, input, input_len, NULL, 0, NULL, 0);
+
+	while (out_len) {
+		size_t n = out_len > sizeof(ctx->v) ? sizeof(ctx->v) : out_len;
+
+		update_v(ctx->k, ctx->v);
+
+		memcpy(out, ctx->v, n);
+		out += n;
+		out_len -= n;
 	}
 
-	drbg_rfc6979_init(ctx, &x, &h1);
+	update(ctx, input, input_len, NULL, 0, NULL, 0);
+	ctx->reseed_counter++;
+
+	return 0;
 }
 
-void drbg_generate(struct drbg_ctx *ctx, p256_int *k_out)
+void hmac_drbg_generate_p256(struct drbg_ctx *ctx, p256_int *k_out)
 {
-	int i;
-
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
-	/* get the current candidate K, then prepare for the next one */
-	for (i = 0; i < P256_NDIGITS; ++i)
-		k_out->a[i] = ctx->v[i];
-	/* K = HMAC_K(V || 0x00) */
-	append_0(ctx->k, ctx->v);
-	/* V = HMAC_K(V) */
-	update_v(ctx->k, ctx->v);
+	hmac_drbg_generate(ctx,
+			   k_out->a, sizeof(k_out->a),
+			   NULL, 0);
 }
 
 void drbg_exit(struct drbg_ctx *ctx)
@@ -151,9 +196,9 @@ static int cmd_rfc6979(int argc, char **argv)
 	HASH_update(&ctx, message, sizeof(message) - 1);
 	memcpy(&h1, HASH_final(&ctx), SHA256_DIGEST_SIZE);
 
-	drbg_rfc6979_init(&drbg, x, &h1);
+	hmac_drbg_init_rfc6979(&drbg, x, &h1);
 	do {
-		drbg_generate(&drbg, &k);
+		hmac_drbg_generate_p256(&drbg, &k);
 		ccprintf("K = %.32h\n", &k);
 	} while (p256_cmp(&SECP256r1_nMin2, &k) < 0);
 	drbg_exit(&drbg);
