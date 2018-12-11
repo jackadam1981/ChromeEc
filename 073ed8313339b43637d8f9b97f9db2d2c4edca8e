@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "141242e4_a7710506",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "I don\u0027t understand why does HID device developer need to touch here and there to add the driver.\nLet\u0027s keep it. Maybe there can be people who doesn\u0027t like macro will make their function(which, in turn, calls hid_subsys_register_device()) for HOOK_INIT() with HOOK_PRIO_LAST - 2).",
+      "parentUuid": "feb90d35_f87421a7",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -639,6 +663,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f10dab_52531396",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "It\u0027s not just extra layer. It returns handle which is an opaque ID to indicating something valid object but I didn\u0027t do with much encoding.\n\nIf it wasn\u0027t opaque ID then I would named \"index\".",
+      "parentUuid": "b9f865f3_99f454d7",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

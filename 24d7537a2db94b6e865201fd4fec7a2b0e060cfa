@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e97cc85_1df3e455",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a25a7956_1d833085",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53350f99_f60251e8",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "408caeb6_527bdae0",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "Huk~~ sorry~~ Losing my mind ? ^.^;;;\nwill fix.",
+      "parentUuid": "0ad6d010_b1fa287a",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaf51b3e_563c4e57",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -116,6 +164,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b1938fa_920f1372",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "Huk~~ where is my return ?\nI\u0027ll fix it.",
+      "parentUuid": "aaf51b3e_563c4e57",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "b97461ad_ad0ede96",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "Payload data is coming from Linux HID driver and this is for configuring hid device(including hid device driver). The Linux driver expects the same report_id(payload[0]) on return.\nFor HID device driver, it\u0027s read only.",
+      "parentUuid": "89e12c78_4cadee17",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "678eb2e1_b9af6744",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -162,6 +258,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e118bfc_7bbc3012",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "This is just glue layer btw Linux hid device driver and ISH hid device driver. It should(can) only handle errors related its role. Device specific error shouldn\u0027t be handled here. Each device should embed error to their payload so that the counterpart handles the error. In fact, there\u0027s no way for the counterpart in Linux(which is on top of \"hid-core\") to get the device specific error using this mechanism.",
+      "parentUuid": "678eb2e1_b9af6744",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 60
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "ca599555_c330e3a4",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "OK, I\u0027ll add.",
+      "parentUuid": "44e99752_cc08f5c1",
+      "range": {
+        "startLine": 372,
+        "startChar": 15,
+        "endLine": 373,
+        "endChar": 7
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d8f5eda_2f7e8ab1",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -208,6 +352,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1baf5e38_f92df9fc",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-11T22:48:15Z",
+      "side": 1,
+      "message": "I\u0027ll add comments",
+      "parentUuid": "3d8f5eda_2f7e8ab1",
+      "range": {
+        "startLine": 388,
+        "startChar": 7,
+        "endLine": 388,
+        "endChar": 10
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
