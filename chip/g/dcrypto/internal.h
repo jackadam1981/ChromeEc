@@ -121,13 +121,30 @@ int dcrypto_modexp_blinded(struct LITE_BIGNUM *output,
 			const struct LITE_BIGNUM *N,
 			uint32_t pubexp);
 
-/*
- * RFC6979 based DRBG for ECDSA signature.
- */
 struct drbg_ctx {
 	uint32_t k[SHA256_DIGEST_WORDS];
 	uint32_t v[SHA256_DIGEST_WORDS];
+	uint32_t reseed_counter;
 };
+
+/*
+ * NIST SP 800-90A HMAC DRBG.
+ */
+void hmac_drbg_init(struct drbg_ctx *ctx,
+		    const void *p0, size_t p0_len,
+		    const void *p1, size_t p1_len,
+		    const void *p2, size_t p2_len);
+void hmac_drbg_reseed(struct drbg_ctx *ctx,
+		      const void *p0, size_t p0_len,
+		      const void *p1, size_t p1_len,
+		      const void *p2, size_t p2_len);
+int hmac_drbg_generate(struct drbg_ctx *ctx,
+		       void *out, size_t out_len,
+		       const void *input, size_t input_len);
+
+/*
+ * RFC6979 based DRBG for ECDSA signature.
+ */
 void drbg_rfc6979_init(struct drbg_ctx *ctx, const p256_int *key,
 		       const p256_int *message);
 void drbg_rand_init(struct drbg_ctx *ctx);
