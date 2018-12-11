@@ -107,3 +107,13 @@ static void karma_chipset_shutdown(void)
 	gpio_disable_interrupt(GPIO_PANEL_BACKLIGHT_EN);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, karma_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
+static int led_command_custom(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_led_custom *p = args->params;
+
+	CPRINTS("custom led flag=0x%x", p->flags);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_LED_CUSTOM, led_command_custom, EC_VER_MASK(0));

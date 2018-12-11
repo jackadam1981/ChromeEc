@@ -4912,6 +4912,25 @@ int cmd_led(int argc, char *argv[])
 }
 
 
+int cmd_led_custom(int argc, char *argv[])
+{
+	struct ec_params_led_custom p;
+	char *e;
+
+	if (argc != 2) {
+		printf("wrong params\n");
+		return 1;
+	}
+
+	p.flags = strtol(argv[1], &e, 0);
+
+	if (ec_command(EC_CMD_LED_CUSTOM, 0, &p, sizeof(p), NULL, 0) < 0)
+		fprintf(stderr, "command error\n");
+
+	return 0;
+}
+
+
 int cmd_usb_charge_set_mode(int argc, char *argv[])
 {
 	struct ec_params_usb_charge_set_mode p;
@@ -8456,6 +8475,7 @@ const struct command commands[] = {
 	{"infopddev", cmd_pd_device_info},
 	{"inventory", cmd_inventory},
 	{"led", cmd_led},
+	{"ledcustom", cmd_led_custom},
 	{"lightbar", cmd_lightbar},
 	{"kbfactorytest", cmd_keyboard_factory_test},
 	{"kbid", cmd_kbid},
