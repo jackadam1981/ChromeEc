@@ -12,6 +12,7 @@
 #include "chipset.h"
 #include "clock.h"
 #include "console.h"
+#include "crc8.h"
 #include "flash.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -21,6 +22,8 @@
 #include "shared_mem.h"
 #include "system.h"
 #include "usb_pd.h"
+#include "uart.h"
+#include "version.h"
 #include "vboot.h"
 #include "vb21_struct.h"
 
@@ -132,6 +135,75 @@ static int hc_verify_slot(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_EFS_VERIFY, hc_verify_slot, EC_VER_MASK(0));
 
+/**
+ * Send raw byte stream to Cr50
+ *
+ * @param data
+ * @param timeout
+ * @return
+ */
+static int send_to_cr50_raw(const uint8_t *data, size_t size)
+{
+	uint64_t until = get_time().val + CR50_COMM_TIMEOUT;
+
+	uart_clear_input();
+	/* No traffic control, assuming Cr50 consumes stream much faster. */
+	uart_put_raw(data, size);
+
+	/* Wait for response from Cr50 */
+	while (get_time().val < until) {
+		int c = uart_getc();
+		if (c != -1)
+			return c;
+		msleep(10);
+	}
+	return CR50_COMM_ERROR_TIMEOUT;
+}
+
+static int send_to_cr50(const uint8_t *data, uint8_t size)
+{
+	struct {
+		uint8_t preamble[CR50_UART_RX_BUFFER_SIZE];
+		uint8_t packet[CR50_COMM_MAX_PACKET_SIZE];
+	} __packed s;
+	struct cr50_comm_packet *p = (struct cr50_comm_packet *)s.packet;
+
+	/* compose stream = preamble + packet */
+	memset(s.preamble, 0xec, sizeof(s.preamble));
+	p->magic = CR50_PACKET_MAGIC;
+	p->type = CR50_CMD_FW_VERSION;
+	p->size = size;
+	memcpy(p->data, data, p->size);
+	p->crc = crc8((uint8_t *)&p->type,
+		      sizeof(p->type) + sizeof(p->size) + p->size);
+
+	return send_to_cr50_raw((uint8_t *)&s,
+				sizeof(s.preamble) + sizeof(*p) + p->size);
+}
+
+static int check_rollback(enum system_image_copy_t slot)
+{
+	int32_t version = ver_get_num_commits(slot);
+	int rv;
+
+	if (version < 0)
+		return EC_ERROR_UNKNOWN;
+	/* TODO: uncomment it */
+	// CPRINTS("RW-%d version %d", slot, version);
+
+	/* Clear Tx buffer. Console task hasn't started yet. */
+	uart_flush_output();
+
+	/* send version */
+	rv = send_to_cr50((uint8_t *)&version, sizeof(version));
+	if (rv != CR50_COMM_SUCCESS) {
+		CPRINTS("Rollback check failed (0x%x)", rv);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
 static int verify_and_jump(void)
 {
 	enum system_image_copy_t slot;
@@ -143,10 +215,18 @@ static int verify_and_jump(void)
 	/* 2. Verify the slot */
 	rv = verify_slot(slot);
 	if (rv) {
+		enum system_image_copy_t fallback;
 		if (rv == EC_ERROR_VBOOT_KEY)
 			/* Key error. The other slot isn't worth trying. */
 			return rv;
-		slot = system_get_update_copy();
+
+		fallback = system_get_update_copy();
+
+		/* If there is no fallback slot, we're done. */
+		if (fallback == slot)
+			return rv;
+
+		slot = fallback;
 		/* TODO(chromium:767050): Skip reading key again. */
 		rv = verify_slot(slot);
 		if (rv)
@@ -160,9 +240,14 @@ static int verify_and_jump(void)
 				system_image_copy_t_to_string(slot));
 	}
 
-	/* 3. Jump (and reboot) */
+	/* 3. Send version to cr50 for rollback protection */
+	rv = check_rollback(slot);
+	if (rv)
+		return rv;
+
+	/* 4. Jump (and reboot) */
 	rv = system_run_image_copy(slot);
-	CPRINTS("Failed to jump (%d)", rv);
+	CPRINTS("Failed to jump (0x%x)", rv);
 
 	return rv;
 }
