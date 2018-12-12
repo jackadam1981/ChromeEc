@@ -84,17 +84,5 @@ extern struct npcx_iol_msg *msg_from_host;
 int npcx_iol_host_int(int semaphore);
 
 
-/**
- * Function to process HID message once they have been reassembled into the
- * i2c buffer.
- *
- * @param len:  length of the incoming message.
- * @param buffer: address of the incoming message.
- * @param send_response: Function to call to send a respone.
- *    Using same buffer, response has len bytes.
- */
-void i2c_hid_process(int len, uint8_t *buffer,
-		void (*send_response)(int len));
-
 #endif  /*  __CROS_EC_I2C_OVER_LPC_H */
 

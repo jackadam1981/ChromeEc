@@ -229,7 +229,7 @@ static int test_set_accel_sampling_freq(void)
 	spoof_host_buffer[11] = 0x0;
 	spoof_host_buffer[12] = 0x0;
 
-	hid_process(sizeof(spoof_host_buffer),
+	i2c_hid_process(sizeof(spoof_host_buffer),
 	spoof_host_buffer, send_response);
 	new_odr = get_new_odr(get_spoof_sensor());
 	printf("New ODR is: %d\n", new_odr);
@@ -261,7 +261,7 @@ static int test_read_hid_descr(void)
 	spoof_host_buffer[1] = 0x10; // hid_descr cmd reg msb
 	printf("HID Descr len: %d\n", sizeof(hid_desc));
 
-	hid_process(sizeof(spoof_host_buffer),
+	i2c_hid_process(sizeof(spoof_host_buffer),
 	spoof_host_buffer, send_response);
 // Check that response in i2c buffer matches hid_descr exactly
 	TEST_ASSERT((spoof_host_buffer[0] & 0xFF) == hid_desc_arr[j]);
@@ -284,7 +284,7 @@ static int test_read_report_descr(void)
 
 	spoof_host_buffer[0] = 0x00; // report_descr cmd reg lsb
 	spoof_host_buffer[1] = 0x50; // report_descr cmd reg msb
-	hid_process(sizeof(spoof_host_buffer),
+	i2c_hid_process(sizeof(spoof_host_buffer),
 	spoof_host_buffer, send_response);
 	same = compareReportDescResponse(spoof_host_buffer, report_desc);
 	TEST_ASSERT(same == 1);
@@ -349,7 +349,7 @@ static int test_input_report_content(void)
 // Create spoof sensor and set x,y,z values to return in input report
 	sensor = &motion_sensors[0];
 	set_spoof_sensor(sensor);
-	hid_process(sizeof(spoof_host_buffer),
+	i2c_hid_process(sizeof(spoof_host_buffer),
 	spoof_host_buffer, send_response);
 	printf("Buffer contents after getting hid input report:\n");
 	for (i = 0; i < (I2C_HID_HEADER_SIZE +
