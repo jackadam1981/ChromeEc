@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "32c2b978_9fa427a7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-12T22:53:57Z",
+      "side": 1,
+      "message": "\u003e This change look correct to me.\n\n+1",
+      "parentUuid": "7484583d_1558d9a6",
+      "range": {
+        "startLine": 2852,
+        "startChar": 7,
+        "endLine": 2852,
+        "endChar": 20
+      },
+      "revId": "df19b3187c2af964fbe202fb6d4e718ce7912926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd113f2c_ca9a0ce0",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Rubin, if you update this, I can give you a +2",
       "parentUuid": "cd113f2c_ca9a0ce0",
+      "range": {
+        "startLine": 3391,
+        "startChar": 7,
+        "endLine": 3391,
+        "endChar": 19
+      },
+      "revId": "df19b3187c2af964fbe202fb6d4e718ce7912926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fbda0c7_1da3f03f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3391,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-12T22:53:57Z",
+      "side": 1,
+      "message": "\u003e This should be PD_T_TRY_WAIT.\n\nI think this should be tDRPtry, which is between 75ms ~ 150. So, PD_T_TRY_SRC is about right. PD_T_TRY_WAIT is too large.",
+      "parentUuid": "82eae6b4_c1994553",
       "range": {
         "startLine": 3391,
         "startChar": 7,
