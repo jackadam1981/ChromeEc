@@ -14,6 +14,7 @@
 #include "host_command.h"
 #include "i2c_over_lpc.h"
 #include "lpc.h"
+#include "motion_sense_hid.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"

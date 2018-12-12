@@ -15,11 +15,10 @@
 
 
 /* Register definition */
-#define HID_DESC_REGISTER		0x1000
 #define REPORT_DESC_REGISTER		0x5000
 #define INPUT_REPORT_REGISTER		0x2000
-#define COMMAND_REGISTER		0x3000
-#define DATA_REGISTER			0x3000
+#define COMMAND_REGISTER		0x3001
+#define DATA_REGISTER			0x3002
 
 /* I2C-HID commands */
 #define I2C_HID_CMD_RESET		0x01
@@ -186,7 +185,7 @@ static const uint8_t report_desc[] = {
 };
 
 int hid_command_process(int len, uint8_t *buffer,
-				void (*send_response)(int len));
+			void (*send_response)(int len));
 
 struct __attribute__ ((__packed__)) hid_descriptor {
 	uint16_t wHIDDescLength;
@@ -199,6 +198,8 @@ struct __attribute__ ((__packed__)) hid_descriptor {
 	uint16_t wMaxOutputLength;
 	uint16_t wCommandRegister;
 	uint16_t wDataRegister;
+	uint16_t wVendorID;
+	uint16_t wProductID;
 	uint16_t wVersionID;
 	uint32_t reserved;
 };
@@ -229,18 +230,29 @@ int hid_compile_input(int report_id);
 int compareReportDescResponse(uint8_t *buffer, const uint8_t *report_desc);
 
 int extract_report(uint64_t len, uint8_t *buffer,
-			void *data, uint64_t data_len);
+		   void *data, uint64_t data_len);
 
+/**
+ * Function to process HID message once they have been reassembled into the
+ * i2c buffer.
+ *
+ * @param len:  length of the incoming message.
+ * @param buffer: address of the incoming message.
+ * @param send_response: Function to call to send a respone.
+ *    Using same buffer, response has len bytes.
+ */
+void i2c_hid_process(int len, uint8_t *buffer,
+		void (*send_response)(int len));
 
-void hid_process(int len, uint8_t *buffer, void(*send_response)(int len));
 
 struct motion_sensor_t
 	*hid_host_sensor_id_to_real_sensor(int report_id);
 
+/* TODO(): To remove, test code can define sensor array and host buffer. */
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 int get_new_odr(struct motion_sensor_t *sensor);
 struct motion_sensor_t *get_spoof_sensor(void);
 void send_response(int len);
 extern struct motion_sensor_t *spoof_sensor;
-extern uint8_t spoof_host_buffer[128];
+extern uint8_t spoof_host_buffer[512];
 #endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */

@@ -38,12 +38,3 @@ int npcx_iol_host_int(int semaphore)
 	NPCX_IOL_SEM = semaphore;
 	return 0;
 }
-
-/* place holder */
-void i2c_hid_process(int len, uint8_t *buffer,
-		void (*send_response)(int len))
-{
-	CPRINTS("i2c message received: %.*h", MIN(8, len), buffer);
-	send_response(0);
-}
-

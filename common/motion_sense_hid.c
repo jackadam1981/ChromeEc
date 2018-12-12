@@ -39,9 +39,10 @@ int report_active_index;
 /* Sensor odr */
 uint32_t base_accel_odr;
 
+/* TODO(): To remove, test code can define sensor array and host buffer. */
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 struct motion_sensor_t *spoof_sensor;
-uint8_t spoof_host_buffer[128];
+uint8_t spoof_host_buffer[512];
 #endif
 
 /* Map feature report ID to report/ sensor ID*/
@@ -70,15 +71,6 @@ static int hid_get_sensorid_from_featureid(int feature_id)
 #define MOTION_SENSOR_INT_ADJUSTMENT_US 10
 
 /*
- * Mutex to protect sensor values between host command task and
- * motion sense task:
- * When we process CMD_DUMP, we want to be sure the motion sense
- * task is not updating the sensor values at the same time.
- */
-#ifndef CONFIG_ACCEL_SPOOF_MODE
-static struct mutex g_sensor_mutex;
-#endif
-/*
  * Current power level (S0, S3, S5, ...)
  */
 //test_export_static enum chipset_state_mask sensor_active_hid;
@@ -95,8 +87,13 @@ static struct hid_descriptor hid_desc = {
 	.wOutputRegister = 0,
 	.wMaxOutputLength = 0,
 	.wCommandRegister = COMMAND_REGISTER,
-	.wDataRegister = DATA_REGISTER
+	.wDataRegister = DATA_REGISTER,
+	.wVendorID = 0x18d1,  /* Google Vendor ID from USB */
+	.wProductID = 0x5037,  /* Register at "Google USB ID allocation" */
+	.wVersionID = 0x6776
 };
+
+BUILD_ASSERT(sizeof(hid_desc) == 30);
 
 static struct hid_accel_input_report input = {
 	.report_id = 0, // maps to sensor id
@@ -153,9 +150,6 @@ int hid_compile_input(int report_id)
 	sensor->xyz[X], sensor->xyz[Y], sensor->xyz[Z]);
 	if (sensor == NULL)
 		return EC_RES_INVALID_PARAM;
-#ifndef CONFIG_ACCEL_SPOOF_MODE
-	mutex_lock(&g_sensor_mutex);
-#endif
 	input.report_id = report_id;
 	input.sensor_state = 0;
 	input.sensor_event = 0;
@@ -252,33 +246,30 @@ struct motion_sensor_t
 }
 
 
-void hid_process(int data_len, uint8_t *buffer,
-			void (*send_response)(int len))
+void i2c_hid_process(int data_len, uint8_t *buffer,
+		     void (*send_response)(int len))
 {
-	int reg;
+	uint16_t reg;
 	size_t response_len;
-	uint32_t data;
 
-	if (data_len == 0)
+	if (data_len < 2)
 		reg = INPUT_REPORT_REGISTER;
 	else
-		reg = buffer[1] << 8 | buffer[0];
+		reg = *((uint16_t*)buffer);
 
+	ccprintf("Processing  %x - %d\n", reg, data_len);
 	switch (reg) {
-	/* Return HID descr to incompatible types when assigning to typehost */
-	case HID_DESC_REGISTER:
-		ccprintf("Retrieve HID_DESC_REGISTER %x\n", reg);
+	case EC_ACPI_HID_DESCRIPTOR_ADDR:
+		/* Return HID descr to incompatible types when assigning to typehost */
 		memcpy(buffer, &hid_desc, sizeof(hid_desc));
 #ifdef CONFIG_ACCEL_SPOOF_MODE
-		ccprintf("Retrieve HID_DESC_REGISTER spoof mode %x\n", reg);
 		memcpy(spoof_host_buffer, &hid_desc, sizeof(hid_desc));
 #endif
 		send_response(sizeof(hid_desc));
-		ccprintf("spoof_host_buffer[0] %d\n", spoof_host_buffer[0]);
 		break;
 
-	/* Return Report descr to host */
 	case REPORT_DESC_REGISTER:
+		/* Return Report descr to host */
 		ccprintf("Retrieve REPORT_DESC_REGISTER %x\n", reg);
 		memcpy(buffer, &report_desc, sizeof(report_desc));
 #ifdef CONFIG_ACCEL_SPOOF_MODE
@@ -287,9 +278,9 @@ void hid_process(int data_len, uint8_t *buffer,
 		send_response(sizeof(report_desc));
 		break;
 
-	/* Return input report to host */
 	case INPUT_REPORT_REGISTER:
-	// Need to add code to check if reset is pending. Not sure of GPIO used
+		/* Return input report to host */
+		// Need to add code to check if reset is pending. Not sure of GPIO used
 		hid_compile_input(REPORT_ID_BASE_ACCEL);
 		response_len = hid_fill_buffer(buffer, REPORT_ID_BASE_ACCEL,
 				&input_reports[0],
@@ -302,9 +293,10 @@ void hid_process(int data_len, uint8_t *buffer,
 		break;
 		//gpio_set_level(GPIO_INT_L, 1);
 
-	/* Process cmd from host */
+		/* Process cmd from host */
 	case COMMAND_REGISTER:
-		ccprintf("Inside i2c hid process fn: data set is:%d\n", data);
+		ccprintf("Inside i2c hid process fn: data set is: %.*h\n",
+			 data_len, buffer);
 		hid_command_process(data_len, buffer, send_response);
 		break;
 	default:
@@ -320,54 +312,66 @@ int hid_command_process(int len, uint8_t *buffer,
 	uint8_t report_type_id = buffer[2];
 	uint8_t rpt_id = report_type_id & 0x0F;
 	size_t response_len;
-	uint8_t sensor_rpt_id = 0;
 	uint32_t data_set;
 	struct motion_sensor_t *sensor;
 	int ret = EC_RES_INVALID_PARAM;
 
 	switch (command) {
+	case I2C_HID_CMD_SET_POWER:
+		ccprintf("I2C-HID: SET_POWER %s\n",
+			 buffer[2] & 0x3 ? "Sleep": "ON");
+		/* Set Power is a NOOP for now. */
+		send_response(0);
+		break;
 	case I2C_HID_CMD_RESET:
-		ccprintf("I2C-HID: command reset\n");
-		// Need to implement this
-		return 0;
+		ccprintf("I2C-HID: RESET\n");
+		/* Reset is a NOOP for now. */
+		send_response(0);
+		break;
 	/* For both input and feature reports */
 	case I2C_HID_CMD_GET_REPORT:
 		ccprintf("I2C-HID: command get_report (%04x)\n", rpt_id);
 		switch (rpt_id) {
 		case REPORT_ID_BASE_ACCEL:
-		hid_compile_input(REPORT_ID_BASE_ACCEL);
+			hid_compile_input(REPORT_ID_BASE_ACCEL);
 
-		response_len = hid_fill_buffer(buffer, REPORT_ID_BASE_ACCEL,
-				&input_reports[0],
-				sizeof(struct hid_accel_input_report));
-		ccprintf("&input_reports[0] x, y, z: %d %d %d\n",
-		input_reports[0].x, input_reports[0].y, input_reports[0].z);
-		return response_len;
+			response_len = hid_fill_buffer(
+					buffer, REPORT_ID_BASE_ACCEL,
+					&input_reports[0],
+					sizeof(struct hid_accel_input_report));
+			ccprintf("&input_reports[0] x, y, z: %d %d %d\n",
+				 input_reports[0].x,
+				 input_reports[0].y,
+				 input_reports[0].z);
+			break;
 		default:
 			response_len = 2;
 			buffer[0] = response_len;
 			buffer[1] = 0;
-			return 0;
+			break;
 		}
 
 		send_response(response_len);
-		return 0;
+		break;
 	case I2C_HID_CMD_SET_REPORT:
 		ccprintf("I2C-HID: command set_report (%04x)\n", rpt_id);
 		switch (rpt_id) {
-		case REPORT_ID_BASE_ACCEL_SAMPLING_RATE:
+		case REPORT_ID_BASE_ACCEL_SAMPLING_RATE: {
+			uint8_t sensor_rpt =
+				hid_get_sensorid_from_featureid(rpt_id);
+
 			data_set = extract_report(len, buffer, &base_accel_odr,
 				       sizeof(base_accel_odr));
-			sensor_rpt_id = hid_get_sensorid_from_featureid(rpt_id);
 			sensor =
-			hid_host_sensor_id_to_real_sensor(sensor_rpt_id);
+				hid_host_sensor_id_to_real_sensor(sensor_rpt);
 			ccprintf("New ODR set %d\n", data_set);
 			ccprintf("ODR place holder var: %d\n", base_accel_odr);
-			ccprintf("Sensor report id: %d\n", sensor_rpt_id);
+			ccprintf("Sensor report id: %d\n", sensor_rpt);
 
-			if (sensor == NULL)
-				return EC_RES_INVALID_PARAM;
-
+			if (sensor == NULL) {
+				ret = EC_RES_INVALID_PARAM;
+				break;
+			}
 			/* Set new data rate */
 
 			/* To be sure timestamps are calculated
@@ -377,12 +381,11 @@ int hid_command_process(int len, uint8_t *buffer,
 #ifdef CONFIG_ACCEL_FIFO
 			motion_sense_insert_timestamp();
 #endif
-			sensor->config[SENSOR_CONFIG_AP].odr =
-			base_accel_odr;
+			sensor->config[SENSOR_CONFIG_AP].odr = base_accel_odr;
 
 			ret = motion_sense_set_data_rate(sensor);
 			if (ret != EC_SUCCESS)
-				return EC_RES_INVALID_PARAM;
+				break;
 
 			/* The new ODR may suspend sensor, leaving
 			 * samples in the FIFO. Flush it explicitly.
@@ -396,14 +399,16 @@ int hid_command_process(int len, uint8_t *buffer,
 			 * sampling rate
 			 */
 			motion_sense_set_motion_intervals();
+			break;
 		}
-		return 0;
-
-	case I2C_HID_CMD_SET_POWER:
-		// Dummy call to avoid compile errors
-		hid_process(sizeof(buffer), buffer, send_response);
-		return 0;
-
+		default:
+			ret = EC_RES_INVALID_PARAM;
+		}
+		send_response(ret * -1);
+		break;
+	default:
+		ccprintf("I2C-HID: unknown command %d\n", command);
+		send_response(EC_RES_INVALID_PARAM * -1);
 	}
 	return 0;
 }
