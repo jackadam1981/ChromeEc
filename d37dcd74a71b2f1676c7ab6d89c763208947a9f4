@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c40c0a34_20178fee",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-12T19:13:20Z",
+      "side": 1,
+      "message": "if we want this to work with 0.0.22 zero timeout should be the default and result in sending the command without the timeout value.",
+      "range": {
+        "startLine": 2047,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 2
+      },
+      "revId": "d37dcd74a71b2f1676c7ab6d89c763208947a9f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
