@@ -313,6 +313,30 @@
     },
     {
       "key": {
+        "uuid": "68d96bf2_e94b8d08",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T09:04:35Z",
+      "side": 1,
+      "message": "And what do you mean by \"public anymore\"? If you think about the contents of the array you mentioned, still you need to make something in the driver public.\n\nthe following is the template for HID device driver. other than the driver, the developer just needs to put the c file to \"build.mk\" and define CONFIG_XXX to enable the device.\n\n\u003d\u003d\u003d hello_hid_device.c \u003d\u003d\u003d\n\n#include \"hid_device.h\"\n#include \"util.h\"\n\nint hello_initialize(int hid_handle)\n{\n        /* keep the hid_handle to use hid subsystem from other than callbacks */\n        return 0;\n}\n\nint hello_get_hid_descriptor(int hid_handle, uint8_t *buf, size_t buf_size)\n{\n        /* copy hid descriptor to buf and return size */\n        return 0;\n}\n\nint hello_get_report_descriptor(int hid_handle, uint8_t *buf, size_t buf_size)\n{\n        /* copy hid input report descriptor to buf and return size */\n        return 0;\n}\n\nint hello_get_feature_report(int hid_handle, uint8_t report_id, uint8_t *buf,\n                             size_t buf_size)\n{\n        /* do action based on report_id */\n        /* copy the result to buf and return size */\n        return 0;\n}\n\nint hello_set_feature_report(int hid_handle, uint8_t report_id,\n                             const uint8_t *data, size_t data_size)\n{\n        /* based on report id, do action using data */\n        return 0;\n}\n\nint hello_get_input_report(int hid_handle, uint8_t report_id,\n                           uint8_t *buf, size_t buf_size)\n{\n        /* copy hid input report to buf and return size */\n        return 0;\n}\n\nstatic struct hid_callbacks hello_hid_cbs \u003d {\n        .initialize \u003d hello_initialize,\n        .get_hid_descriptor \u003d hello_get_hid_descriptor,\n        .get_report_descriptor \u003d hello_get_report_descriptor,\n        .get_feature_report \u003d hello_get_feature_report,\n        .set_feature_report \u003d hello_set_feature_report,\n        .get_input_report \u003d hello_get_input_report,\n};\n\nstatic struct hid_device hello_device \u003d {\n        .dev_class \u003d 1,\n        .pid \u003d 1,\n        .vid \u003d 0,\n\n        .cbs \u003d \u0026hello_hid_cbs,\n};\n\nHID_DEVICE_ENTRY(hello_device); \u003c\u003d\u003d this is all they need for registration.",
+      "parentUuid": "3e654bab_b6f24f10",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
