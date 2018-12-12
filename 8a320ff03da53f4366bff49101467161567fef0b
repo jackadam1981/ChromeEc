@@ -70,6 +70,53 @@
       "revId": "8a320ff03da53f4366bff49101467161567fef0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be631cca_53fde33b",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-12T06:39:38Z",
+      "side": 1,
+      "message": "Yeah, it\u0027d be nice if the fuzzer would either accept `-` as parameter (then we can just cat /dev/null | ...exe - . Or just accept /dev/null (now it says \"Not a directory: /dev/null; exiting\").",
+      "parentUuid": "be76d952_7ca54e9a",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "8a320ff03da53f4366bff49101467161567fef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8070b3_646408d0",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-12T06:39:38Z",
+      "side": 1,
+      "message": "Why can\u0027t use use host-% target like for other tests?",
+      "range": {
+        "startLine": 280,
+        "startChar": 33,
+        "endLine": 280,
+        "endChar": 47
+      },
+      "revId": "8a320ff03da53f4366bff49101467161567fef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
