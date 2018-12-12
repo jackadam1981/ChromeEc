@@ -286,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "6205dfdd_23167f0a",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-12T23:05:38Z",
+      "side": 1,
+      "message": "All I am asking for is clearer comments. The follow would suffice:\n\n/* Re-use the report id that was set from the host as input for the output since the host expects successful responses to just contain the report id again. Report Id is only 1 byte. We can assume that the buffer is at least 1 byte in the successful case because of the input message format requirements */\n\nYou can then remove the TODO",
+      "parentUuid": "5aa4ba1e_d1d3eaf8",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "678eb2e1_b9af6744",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -378,6 +402,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e410a6c2_fdece554",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-12T23:05:38Z",
+      "side": 1,
+      "message": "Why is this TODO still here. What work needs to be done?\n\nDo you just need to update the comment stating something to the effect:\n\n/* Note these errors are link-level errors. Protocol level errors should be well-formed messages that get sent back to the host in a valid protocol packet */",
+      "parentUuid": "72b87dad_0e636c3a",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 60
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

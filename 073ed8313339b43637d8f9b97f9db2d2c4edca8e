@@ -337,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "8635f3e5_71630dac",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-12T23:05:38Z",
+      "side": 1,
+      "message": "The device driver implementer wouldn\u0027t update any board files. Only the board developer would (assuming they are different people).\n\nThe hid_subsys_register_device method wouldn\u0027t need to be public (since only hid common code would call it), but you are right the static struct hid_device hello_device (driver) would need to be public so board developers could reference the correct driver for the hid devices they have connected to their board. They would reference the driver in their hid_device_config_t struct (or something like that). \n\nSee these links:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/93eee0a9e77bb8bb9726998eb84940ada6010d14/include/usbc_ppc.h#126\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/93eee0a9e77bb8bb9726998eb84940ada6010d14/board/nocturne/board.c#285",
+      "parentUuid": "68d96bf2_e94b8d08",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
