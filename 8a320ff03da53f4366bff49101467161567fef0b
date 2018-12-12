@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "fd7dade6_0ad04c02",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-12T17:11:25Z",
+      "side": 1,
+      "message": "The problem with the fuzzing targets is the command line arguments are handled by libfuzzer so I don\u0027t have any control over how it handles \u0027-\u0027. I tried both \u0027-\u0027 and \u0027/proc/self/fd/0\u0027, but neither worked.\n\nI think I found a satisfactory alternative though by setting a fixed seed and limiting the number of runs to a small number.",
+      "parentUuid": "be631cca_53fde33b",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "8a320ff03da53f4366bff49101467161567fef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a8070b3_646408d0",
         "filename": "Makefile.rules",
         "patchSetId": 5
@@ -108,6 +132,30 @@
       "writtenOn": "2018-12-12T06:39:38Z",
       "side": 1,
       "message": "Why can\u0027t use use host-% target like for other tests?",
+      "range": {
+        "startLine": 280,
+        "startChar": 33,
+        "endLine": 280,
+        "endChar": 47
+      },
+      "revId": "8a320ff03da53f4366bff49101467161567fef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74c5d21_b970c7cd",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-12T17:11:25Z",
+      "side": 1,
+      "message": "That is originally how I had it setup, but the problem is whenever the makefile tries to build the fuzz targets outside of buildfuzztests the target specific vars that are present in \"buildfuzztests\" like TEST_FUZZ\u003dy aren\u0027t set so they fail to compile.\n\nI tried setting the vars for host-%_fuzz but that didn\u0027t work either because of some of the pre build steps that generate headers.",
+      "parentUuid": "9a8070b3_646408d0",
       "range": {
         "startLine": 280,
         "startChar": 33,
