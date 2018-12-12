@@ -58,7 +58,7 @@ void uart_tx_stop(void)
 void uart_tx_flush(void)
 {
 	while (!(UART_LSR(UARTN) & UART_LSR_TEMT))
-		usleep(uart_wait_us);
+		;
 }
 
 int uart_tx_ready(void)
@@ -76,7 +76,7 @@ int uart_rx_available(void)
 void uart_write_char(char c)
 {
 	while (!uart_tx_ready())
-		usleep(uart_wait_us);
+		;
 
 	UART_DATA(UARTN) = c;
 }
