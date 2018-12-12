@@ -15,11 +15,10 @@
 
 
 /* Register definition */
-#define HID_DESC_REGISTER		0x1000
 #define REPORT_DESC_REGISTER		0x5000
 #define INPUT_REPORT_REGISTER		0x2000
-#define COMMAND_REGISTER		0x3000
-#define DATA_REGISTER			0x3000
+#define COMMAND_REGISTER		0x3001
+#define DATA_REGISTER			0x3002
 
 /* I2C-HID commands */
 #define I2C_HID_CMD_RESET		0x01
