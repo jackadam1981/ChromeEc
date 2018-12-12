@@ -68,6 +68,7 @@ GPIO(USB_C0_CHARGE_L,		PIN(C, 0), GPIO_OUT_LOW)			/* C0 Charge enable */
 GPIO(USB_C0_PD_RST_ODL,		PIN(0, 3), GPIO_OUT_LOW)			/* C0 PD Reset */
 GPIO(USB_C0_DP_HPD,		PIN(9, 4), GPIO_INPUT)				/* C0 DP Hotplug Detect */
 GPIO(USB_C0_TCPC_PWR,		PIN(8, 4), GPIO_OUT_LOW)			/* Enable C0 TCPC Power */
+GPIO(USB_C0_VBUS_ILIM,		PIN(3, 5), GPIO_INPUT | GPIO_PULL_UP)		/* USB limit max out 3A */
 GPIO(FAN_PWR_EN,		PIN(9, 5), GPIO_OUT_HIGH)			/* Fan power */
 GPIO(USB1_ENABLE,		PIN(3, 2), GPIO_OUT_LOW)			/* Rear port, bottom */
 GPIO(USB2_ENABLE,		PIN(C, 6), GPIO_OUT_LOW)			/* Rear port, top */
@@ -91,7 +92,6 @@ GPIO(TP127,			PIN(6, 6), GPIO_INPUT)
 GPIO(TP128,			PIN(C, 4), GPIO_INPUT)
 GPIO(TP129,			PIN(0, 1), GPIO_INPUT)
 GPIO(TP248,			PIN(5, 7), GPIO_INPUT)
-GPIO(TP250,			PIN(3, 5), GPIO_INPUT)
 
 /* Alternate functions GPIO definitions */
 ALTERNATE(PIN_MASK(6, 0x30), 1, MODULE_UART, 0)		/* GPIO64-65 */		/* UART from EC to Servo */
