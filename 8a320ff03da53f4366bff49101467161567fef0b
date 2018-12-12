@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8e98fba_bc5e7267",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-12T00:20:10Z",
+      "side": 1,
+      "message": "out of curiosity: what is the purpose of this? Is this creating an empty file? \n\nWouldn\u0027t this be happening concurrently when multiple fuzz targets are built in parallel?",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "8a320ff03da53f4366bff49101467161567fef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
