@@ -289,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "3e654bab_b6f24f10",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T08:29:55Z",
+      "side": 1,
+      "message": "As I said, my first version was some like you said but ,instead, I introduced is fully automated mechanism because the driver runs on top of subsystem which requires registration.\n\nDeveloper just needs to make their driver which is tightly coupled with framework, fully operated by callbacks from framework. They don\u0027t need to know about other than the framework they use/rely on. They don\u0027t need to change any array which is in the file they didn\u0027t create.\n\n1. make their driver.\n2. enable the driver with \"CONFIG_XXXXX\".\n\nHow simple it is ?",
+      "parentUuid": "8354181b_c58fcf9e",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
@@ -735,6 +759,30 @@
       "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf44f13_4dc9bd59",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T08:29:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9af03a00_4b4ec392",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

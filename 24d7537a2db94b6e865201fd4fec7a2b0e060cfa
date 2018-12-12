@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "5aa4ba1e_d1d3eaf8",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T08:29:55Z",
+      "side": 1,
+      "message": "every callback except \"initialize\" is copy of linux host driver.\nhid_subsys is nothing but bearer.\nYou can think like we just moved host manged HID drivers to ISH.\nSince host is still the initiator for HID device, we just transfers the request from host to ISH.\n\nSee the \"struct hid_ll_driver\" in Linux.\n\n\u003e\u003e I guess I don\u0027t see where the report_id is set in payload[0]. Is it already set from the incoming message?\nAs you can see the control flow, the payload is coming from host. so payload[0] is from host.\n\u003e\u003e Are we sure that set_feature_report didn\u0027t change the buffer?\nset_feature is representing one of standard HID feature report. If you are working on HID then you should know get_feature_report is for getting data from device(or sometimes driver) and set_feature_report is for configuring device(or driver). some HID devices uses these for updating FW. What I mean by \"read only\" above is about its function signature like below\n\"int (*set_feature_report)(const int hid_handle, const uint8_t report_id,\n\t\t\t\t  const uint8_t *data, const size_t data_size);\"\n\nonly device knows things to be done for the report id. it\u0027s their own definition.\ne.g) report id \u003d\u003d 7 for fw update, report id \u003d\u003d 8 for changing framerate \n\nAlthough I have limited experience about HID, FEATURE report in HID is like you should know about \"main\" if you want to use \"C language\".",
+      "parentUuid": "1ecce52f_01c67453",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "678eb2e1_b9af6744",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -330,6 +354,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72b87dad_0e636c3a",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T08:29:55Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.",
+      "parentUuid": "938796af_5548bd2c",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 60
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
