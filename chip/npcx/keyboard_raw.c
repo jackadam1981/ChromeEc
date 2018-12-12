@@ -212,6 +212,7 @@ int keyboard_factory_test_scan(void)
 	}
 done:
 	gpio_config_module(MODULE_KEYBOARD_SCAN, 1);
+	gpio_set_flags(GPIO_KBD_KSO2, GPIO_OUT_LOW);
 	keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_CLOSED);
 
 	return shorted;
