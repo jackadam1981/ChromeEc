@@ -46,6 +46,30 @@
       "revId": "8a320ff03da53f4366bff49101467161567fef0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be76d952_7ca54e9a",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-12T00:28:16Z",
+      "side": 1,
+      "message": "not really. It\u0027s just odd that an empty file is required on a regular basis - maybe build/host/$*/$*.exe needs to be modified. But this of course is a different issue.",
+      "parentUuid": "1dd607cd_2f86ee92",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "8a320ff03da53f4366bff49101467161567fef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
