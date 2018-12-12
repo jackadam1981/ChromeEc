@@ -3,9 +3,14 @@
  * found in the LICENSE file.
  */
 
+#ifndef __CROS_EC_VBOOT_H
+#define __CROS_EC_VBOOT_H
+
 #include "common.h"
 #include "vb21_struct.h"
 #include "rsa.h"
+#include "sha256.h"
+#include "timer.h"
 
 /**
  * Validate key contents.
@@ -35,16 +40,17 @@ int vb21_is_signature_valid(const struct vb21_signature *sig,
  */
 int vboot_is_padding_valid(const uint8_t *data, uint32_t start, uint32_t end);
 
+uint8_t *vboot_get_hash(const uint8_t *data, int len, struct sha256_ctx *ctx);
+
 /**
  * Verify data by RSA signature
  *
- * @param data Data to be verified.
- * @param len  Number of bytes in <data>.
+ * @param data Hash data to be verified.
  * @param key  Key to be used for verification.
  * @param sig  Signature of <data>
  * @return EC_SUCCESS or EC_ERROR_*
  */
-int vboot_verify(const uint8_t *data, int len,
+int vboot_verify(uint8_t *hash,
 		 const struct rsa_public_key *key, const uint8_t *sig);
 
 /**
@@ -58,3 +64,30 @@ void vboot_main(void);
  * @return 1: need PD communication. 0: PD communication is not needed.
  */
 int vboot_need_pd_comm(void);
+
+#define CR50_PACKET_MAGIC 0x4345	/* 'EC' in little endian */
+
+struct cr50_comm_packet {
+	uint16_t magic;	/* CR50_PACKET_MAGIC */
+	uint8_t crc;	/* checksum computed from all bytes after crc */
+	uint16_t type;	/* CR50_CMD_* (or control packet with no data) */
+	uint8_t size;	/* Max 256 bytes. Easy on Cr50 buffer. */
+	uint8_t data[];	/* Payload */
+} __packed;
+
+#define CR50_COMM_MAX_PACKET_SIZE	(sizeof(struct cr50_comm_packet) + 32)
+#define CR50_UART_RX_BUFFER_SIZE	32	/* TODO: Get from Cr50 header */
+#define CR50_COMM_TIMEOUT		(200 * MSEC)	/* TODO: tune */
+
+/* commands */
+#define CR50_CMD_FW_VERSION		0x1
+
+/* return code */
+#define CR50_COMM_SUCCESS		0xec
+#define CR50_COMM_ERROR_UNKNOWN		0xe0
+#define CR50_COMM_ERROR_MAGIC		0xe1
+#define CR50_COMM_ERROR_CRC		0xe2
+#define CR50_COMM_ERROR_ROLLBACK	0xe3
+#define CR50_COMM_ERROR_TIMEOUT		0xe4
+
+#endif
