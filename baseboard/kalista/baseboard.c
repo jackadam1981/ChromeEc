@@ -528,3 +528,8 @@ void board_rtc_reset(void)
 	udelay(100);
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }
+
+enum battery_present battery_hw_present(void)
+{
+	return BP_NO;
+}
