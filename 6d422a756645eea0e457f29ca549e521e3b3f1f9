@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "1e749170_0323fcaf",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e4b4947_b5ef789b",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e9a8587_f560f96e",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "711e906c_32591d2b",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bf967231_c6d73f12",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16840124_1ae47150",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -115,6 +163,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9fe3df1_16293a2e",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "16840124_1ae47150",
+      "range": {
+        "startLine": 115,
+        "startChar": 27,
+        "endLine": 115,
+        "endChar": 33
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "9ba076f4_1aabb6ef",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "No, for now, only one of them(CONFIG_HOSTCMD_LPC and HAS_TASK_IPC_MNG) should be enabled.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1263897\nand https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1263896 are merged.\nSo existing CONFIG_HOSTCMD_LPC(which no one used) is disabled.",
+      "parentUuid": "639eddb9_63c96b4f",
+      "range": {
+        "startLine": 155,
+        "startChar": 7,
+        "endLine": 155,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53684029_f9b93903",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -260,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "c9da20f5_2310d97b",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "we have separate set of IPC for x64, CSME and PMC.",
+      "parentUuid": "8d1d66fb_a3f60ad9",
+      "range": {
+        "startLine": 176,
+        "startChar": 25,
+        "endLine": 176,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "422e3388_4d37b1fb",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -271,6 +391,30 @@
       "writtenOn": "2018-12-11T21:38:25Z",
       "side": 1,
       "message": "why a method for this and a MACRO for the handle version (above)",
+      "range": {
+        "startLine": 192,
+        "startChar": 33,
+        "endLine": 192,
+        "endChar": 47
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d48ad8_cb952585",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "I know I didn\u0027t much care. I\u0027ll change.",
+      "parentUuid": "422e3388_4d37b1fb",
       "range": {
         "startLine": 192,
         "startChar": 33,
@@ -306,6 +450,30 @@
     },
     {
       "key": {
+        "uuid": "b5f8e448_ad37145e",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "I know drbl has the length, protocol.. but it\u0027s my habit considering speed. which is based on ARM which I worked on most of my engineering time.\nTry to keep \u003c\u003d 4 arguments, up to 4,sending as arguments is the faster since ARM ABI defines using r0~r3 for arguments.\n\nx86 ABI asks stack(push) for arguments for standard call. So It\u0027s about push VS and-shift. I just checked machine cycle and push(3+2) is faster than and-shift(6+4).",
+      "parentUuid": "c9d14a4f_95a69adc",
+      "range": {
+        "startLine": 246,
+        "startChar": 28,
+        "endLine": 246,
+        "endChar": 47
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47f0ada3_1f27f631",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -317,6 +485,30 @@
       "writtenOn": "2018-12-11T21:38:25Z",
       "side": 1,
       "message": "can you add a function header for this saying what this is used for. (why isn\u0027t this called ipc_send_reset)?",
+      "range": {
+        "startLine": 281,
+        "startChar": 11,
+        "endLine": 281,
+        "endChar": 26
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6460976_7473c572",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll change this to ipc_send_reset_notify().",
+      "parentUuid": "47f0ada3_1f27f631",
       "range": {
         "startLine": 281,
         "startChar": 11,
@@ -352,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "52a81aa7_52bdc3eb",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "No problem.",
+      "parentUuid": "a6dd2c21_09d2d945",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 32
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25231393_94f1a2b1",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -372,6 +588,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72550c89_2d3a621d",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25231393_94f1a2b1",
+      "range": {
+        "startLine": 357,
+        "startChar": 7,
+        "endLine": 357,
+        "endChar": 13
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -445,6 +685,30 @@
     },
     {
       "key": {
+        "uuid": "7ce5f9e1_2f71f7b3",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "I\u0027ll add comments",
+      "parentUuid": "60c5b766_545aea47",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 21
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "349b9486_dbe0c121",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -465,6 +729,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1baaa590_d1b14ab2",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "I also thought about taking this out to separate file but I\u0027ve added this task here because, unlike HECI, this is mandatory. this is for managing the link btw host and ISH. This task always should be there to enable any protocol.\n\nAs I mentioned above, the file name of this will be changed to \"ipc.c\" once we migrate existing \"ipc.c\" into this.",
+      "parentUuid": "349b9486_dbe0c121",
+      "range": {
+        "startLine": 658,
+        "startChar": 3,
+        "endLine": 658,
+        "endChar": 33
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -539,6 +827,30 @@
     },
     {
       "key": {
+        "uuid": "22656b38_434824fd",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "by nature of IPC flow control\n- only one transaction(one meaningful message) per protocol from host can use IPC H/W at the same time.\n- if corresponding task reads the transaction, IPC H/W is free to others. There\u0027s no lock/unlock mechanism here but combination of how host send a transaction through IPC and IPC busy bit flow control makes this happens.\n- Host doesn\u0027t send any message until IPC busy bit clear. this is IPC level flow control.\n\nIt is more \"can there be more than one transaction for a protocol\"\n- one task received the transaction and busy with processing it. If we allow host to send another transaction then the task in processing the previous transaction should be able to read new transaction while processing it. Or we should maintain two tasks \"reading\" and \"processing\". \n\nBUT the thing is I don\u0027t think ISH will get two different transactions for one protocol. Host point of view, I believe it will be always \"send one\" and \"wait response\"(maybe with timeout).",
+      "parentUuid": "62e796bc_f01c3fd8",
+      "range": {
+        "startLine": 660,
+        "startChar": 5,
+        "endLine": 660,
+        "endChar": 17
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fde83ff_21465171",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -562,6 +874,30 @@
     },
     {
       "key": {
+        "uuid": "a51793a8_b70f5552",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6fde83ff_21465171",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 678,
+        "endChar": 11
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0e40f35_4471cd98",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -582,6 +918,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95fc1087_5a800d53",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-12T01:31:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0e40f35_4471cd98",
+      "range": {
+        "startLine": 690,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 33
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
