@@ -70,15 +70,6 @@ static int hid_get_sensorid_from_featureid(int feature_id)
 #define MOTION_SENSOR_INT_ADJUSTMENT_US 10
 
 /*
- * Mutex to protect sensor values between host command task and
- * motion sense task:
- * When we process CMD_DUMP, we want to be sure the motion sense
- * task is not updating the sensor values at the same time.
- */
-#ifndef CONFIG_ACCEL_SPOOF_MODE
-static struct mutex g_sensor_mutex;
-#endif
-/*
  * Current power level (S0, S3, S5, ...)
  */
 //test_export_static enum chipset_state_mask sensor_active_hid;
@@ -153,9 +144,6 @@ int hid_compile_input(int report_id)
 	sensor->xyz[X], sensor->xyz[Y], sensor->xyz[Z]);
 	if (sensor == NULL)
 		return EC_RES_INVALID_PARAM;
-#ifndef CONFIG_ACCEL_SPOOF_MODE
-	mutex_lock(&g_sensor_mutex);
-#endif
 	input.report_id = report_id;
 	input.sensor_state = 0;
 	input.sensor_event = 0;
@@ -252,33 +240,31 @@ struct motion_sensor_t
 }
 
 
-void hid_process(int data_len, uint8_t *buffer,
-			void (*send_response)(int len))
+void i2c_hid_process(int data_len, uint8_t *buffer,
+		     void (*send_response)(int len))
 {
-	int reg;
+	uint16_t reg;
 	size_t response_len;
 	uint32_t data;
 
-	if (data_len == 0)
+	if (data_len < 2)
 		reg = INPUT_REPORT_REGISTER;
 	else
-		reg = buffer[1] << 8 | buffer[0];
+		reg = *((uint16_t*)buffer);
 
+	ccprintf("Processing  %x - %d\n", reg, data_len);
 	switch (reg) {
-	/* Return HID descr to incompatible types when assigning to typehost */
-	case HID_DESC_REGISTER:
-		ccprintf("Retrieve HID_DESC_REGISTER %x\n", reg);
+	case EC_ACPI_HID_DESCRIPTOR_ADDR:
+		/* Return HID descr to incompatible types when assigning to typehost */
 		memcpy(buffer, &hid_desc, sizeof(hid_desc));
 #ifdef CONFIG_ACCEL_SPOOF_MODE
-		ccprintf("Retrieve HID_DESC_REGISTER spoof mode %x\n", reg);
 		memcpy(spoof_host_buffer, &hid_desc, sizeof(hid_desc));
 #endif
 		send_response(sizeof(hid_desc));
-		ccprintf("spoof_host_buffer[0] %d\n", spoof_host_buffer[0]);
 		break;
 
-	/* Return Report descr to host */
 	case REPORT_DESC_REGISTER:
+		/* Return Report descr to host */
 		ccprintf("Retrieve REPORT_DESC_REGISTER %x\n", reg);
 		memcpy(buffer, &report_desc, sizeof(report_desc));
 #ifdef CONFIG_ACCEL_SPOOF_MODE
@@ -287,9 +273,9 @@ void hid_process(int data_len, uint8_t *buffer,
 		send_response(sizeof(report_desc));
 		break;
 
-	/* Return input report to host */
 	case INPUT_REPORT_REGISTER:
-	// Need to add code to check if reset is pending. Not sure of GPIO used
+		/* Return input report to host */
+		// Need to add code to check if reset is pending. Not sure of GPIO used
 		hid_compile_input(REPORT_ID_BASE_ACCEL);
 		response_len = hid_fill_buffer(buffer, REPORT_ID_BASE_ACCEL,
 				&input_reports[0],
@@ -302,7 +288,7 @@ void hid_process(int data_len, uint8_t *buffer,
 		break;
 		//gpio_set_level(GPIO_INT_L, 1);
 
-	/* Process cmd from host */
+		/* Process cmd from host */
 	case COMMAND_REGISTER:
 		ccprintf("Inside i2c hid process fn: data set is:%d\n", data);
 		hid_command_process(data_len, buffer, send_response);
@@ -400,8 +386,6 @@ int hid_command_process(int len, uint8_t *buffer,
 		return 0;
 
 	case I2C_HID_CMD_SET_POWER:
-		// Dummy call to avoid compile errors
-		hid_process(sizeof(buffer), buffer, send_response);
 		return 0;
 
 	}
