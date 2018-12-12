@@ -22,6 +22,30 @@
       "revId": "8a320ff03da53f4366bff49101467161567fef0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dd607cd_2f86ee92",
+        "filename": "Makefile.rules",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-12T00:24:40Z",
+      "side": 1,
+      "message": "Yes, the important thing is that the file is empty. It is only read from and doesn\u0027t have to be unique. I tried using /dev/null but it doesn\u0027t work because it isn\u0027t a regular file. Do you have suggestions for a better way of doing this?",
+      "parentUuid": "a8e98fba_bc5e7267",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "8a320ff03da53f4366bff49101467161567fef0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
