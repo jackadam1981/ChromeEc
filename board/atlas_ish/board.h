@@ -27,6 +27,8 @@
 #define CONFIG_CLOCK_CRYSTAL
 #define CONFIG_ISH_UART_0
 /* EC */
+#undef  CONFIG_RO_SIZE
+#define CONFIG_RO_SIZE (200 * 1024)
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
 #define CONFIG_I2C
@@ -69,6 +71,8 @@
 
 #include "gpio_signal.h"
 #include "registers.h"
+
+void touchpad_event(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
