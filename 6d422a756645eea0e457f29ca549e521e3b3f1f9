@@ -498,6 +498,30 @@
     },
     {
       "key": {
+        "uuid": "894b88c0_94c80e42",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-12T22:51:54Z",
+      "side": 1,
+      "message": "I don\u0027t see why it matters for speef if you do the DRBL-\u003e size calculation in the parent function of this function. All of the callers of this function are doing the same calculation, so why not do the calculation in this function and omit this parameter from being passed (so we would have 3 parameter for this function signature)",
+      "parentUuid": "45f738b0_a11f11a8",
+      "range": {
+        "startLine": 246,
+        "startChar": 28,
+        "endLine": 246,
+        "endChar": 47
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47f0ada3_1f27f631",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -980,6 +1004,30 @@
       "writtenOn": "2018-12-11T21:38:25Z",
       "side": 1,
       "message": "these error codes still need to be merged with the one found in common.h",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbcad416_77b68a43",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-12T22:51:54Z",
+      "side": 1,
+      "message": "If you still want to keep function signatures that return a negative return code, then\nreturn -EC_ERROR_INVAL; (or the appropriate ec_error_list value)",
+      "parentUuid": "f802f5bd_891b3d31",
       "range": {
         "startLine": 10,
         "startChar": 8,
