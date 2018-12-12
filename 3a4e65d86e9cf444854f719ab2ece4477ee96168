@@ -22,6 +22,30 @@
       "revId": "3a4e65d86e9cf444854f719ab2ece4477ee96168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "899e83cc_1d1861b1",
+        "filename": "extra/usb_updater/sweetberry.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-12-12T06:41:33Z",
+      "side": 1,
+      "message": "from the linked file it seems that it\u0027s now 0x40000 for both RO and RW. If so, I think patchset 2 covers this now",
+      "parentUuid": "3a27ee96_a39d2a00",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "3a4e65d86e9cf444854f719ab2ece4477ee96168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
