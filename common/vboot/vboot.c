@@ -12,6 +12,7 @@
 #include "chipset.h"
 #include "clock.h"
 #include "console.h"
+#include "crc8.h"
 #include "flash.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -21,6 +22,8 @@
 #include "shared_mem.h"
 #include "system.h"
 #include "usb_pd.h"
+#include "uart.h"
+#include "version.h"
 #include "vboot.h"
 #include "vb21_struct.h"
 
@@ -193,10 +196,18 @@ static int verify_and_jump(void)
 	/* 2. Verify the slot */
 	rv = verify_slot(slot);
 	if (rv) {
+		enum system_image_copy_t fallback;
 		if (rv == EC_ERROR_VBOOT_KEY)
 			/* Key error. The other slot isn't worth trying. */
 			return rv;
-		slot = system_get_update_copy();
+
+		/* If the update copy (=RW_B) isn't present, the same copy
+		 * (RW_A) would be returned. Then, there is no slot to try. */
+		fallback = system_get_update_copy();
+		if (fallback == slot)
+			return rv;
+
+		slot = fallback;
 		/* TODO(chromium:767050): Skip reading key again. */
 		rv = verify_slot(slot);
 		if (rv)
@@ -210,7 +221,12 @@ static int verify_and_jump(void)
 				system_image_copy_t_to_string(slot));
 	}
 
-	/* 3. Jump (and reboot) */
+	/* 3. Send version to cr50 for rollback protection */
+	rv = check_rollback(slot);
+	if (rv)
+		return rv;
+
+	/* 4. Jump (and reboot) */
 	rv = system_run_image_copy(slot);
 	CPRINTS("Failed to jump (0x%x)", rv);
 
