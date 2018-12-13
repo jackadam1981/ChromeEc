@@ -33,14 +33,15 @@
 #undef CONFIG_CMD_RW
 #undef CONFIG_CMD_SLEEPMASK_SET
 #undef CONFIG_CMD_WAITMS
-#undef CONFIG_FLASH
+#undef CONFIG_CMD_FLASHINFO
+#else
+#define CONFIG_CMD_FLASH
 #endif
 
 /* Flash configuration */
 #undef CONFIG_FLASH_PSTATE
 #define CONFIG_WP_ALWAYS
 #define CONFIG_FLASH_READOUT_PROTECTION
-#define CONFIG_CMD_FLASH
 
 #define CONFIG_CRC8
 
