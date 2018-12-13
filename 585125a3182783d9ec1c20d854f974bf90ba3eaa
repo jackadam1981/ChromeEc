@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0354d6e1_2f37fe33",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-13T22:57:58Z",
+      "side": 1,
+      "message": "found this while I was testing. Adding this eliminates a double reset for PS8751, which almost may have been causing the problem.\n\nLet me know if I need more detailed comments (or they aren\u0027t clear)",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 446,
+        "endChar": 28
+      },
+      "revId": "585125a3182783d9ec1c20d854f974bf90ba3eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
