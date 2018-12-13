@@ -22,6 +22,30 @@
       "revId": "89f0e15fc6a7499fb95d0f7c38724b6e10e114a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9cc5c30_ba0a424a",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T16:40:23Z",
+      "side": 1,
+      "message": "IPC ISR is sending one of the following two events \n- WAKE EVENT if there\u0027s a task blocked in ipc_read(..., -1).\n- EVENT_FLAG_BIT_HECI_MSG if user specified. Which means user wants to handle the event. this is for a task waiting for other events at the same time. Still although user specified event while ipc_open(), if there\u0027s any blocking ipc_read(..., -1) call, then IPC ISR only send WAKE EVENT to the task blocked in ipc_read().\n\nFor short, if user called ipc_open(..., 0) with no event specified, then there\u0027s no event visible to user. In this case, IPC ISR only sends the event when there\u0027s a task blocked in ipc_read(). \n\nAnyway, this will be gone, since I\u0027ll go back to old IPC implementation.",
+      "parentUuid": "b9e43371_54ee2736",
+      "range": {
+        "startLine": 853,
+        "startChar": 26,
+        "endLine": 853,
+        "endChar": 70
+      },
+      "revId": "89f0e15fc6a7499fb95d0f7c38724b6e10e114a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
