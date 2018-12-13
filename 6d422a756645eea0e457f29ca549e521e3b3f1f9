@@ -427,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "310e2323_30129736",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T00:12:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47d48ad8_cb952585",
+      "range": {
+        "startLine": 192,
+        "startChar": 33,
+        "endLine": 192,
+        "endChar": 47
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9d14a4f_95a69adc",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -522,6 +546,30 @@
     },
     {
       "key": {
+        "uuid": "4853381c_1893248f",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T00:12:14Z",
+      "side": 1,
+      "message": "Half of calling this function is done by ipc_write() which already gets the payload size in it.\nalso the write_payload_and_ring_drbl() needs payload size. So it\u0027s better to keep for speed.",
+      "parentUuid": "45f738b0_a11f11a8",
+      "range": {
+        "startLine": 246,
+        "startChar": 28,
+        "endLine": 246,
+        "endChar": 47
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47f0ada3_1f27f631",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -569,6 +617,30 @@
     },
     {
       "key": {
+        "uuid": "004313df_18437461",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T00:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6460976_7473c572",
+      "range": {
+        "startLine": 281,
+        "startChar": 11,
+        "endLine": 281,
+        "endChar": 26
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6dd2c21_09d2d945",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -613,6 +685,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe341600_91ac2af3",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T00:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a81aa7_52bdc3eb",
+      "range": {
+        "startLine": 341,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 32
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -754,6 +850,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c07c803a_fa923b62",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T00:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ce5f9e1_2f71f7b3",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 535,
+        "endChar": 21
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -946,6 +1066,30 @@
     },
     {
       "key": {
+        "uuid": "b8ecae2e_78073eb3",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T00:12:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a51793a8_b70f5552",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 678,
+        "endChar": 11
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0e40f35_4471cd98",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -981,6 +1125,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "b0e40f35_4471cd98",
+      "range": {
+        "startLine": 690,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 33
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b48e657c_67f57b48",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T00:12:14Z",
+      "side": 1,
+      "message": "Done. I removed my TODO as well as commented out PEERS in enum",
+      "parentUuid": "95fc1087_5a800d53",
       "range": {
         "startLine": 690,
         "startChar": 4,
