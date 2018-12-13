@@ -32,80 +32,84 @@ static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_write(int port, int reg, int val)
 {
-	int rv = i2c_write8(tcpc_config[port].i2c_host_port,
-			    tcpc_config[port].i2c_slave_addr, reg, val);
-	if (rv && pd_device_in_low_power(port)) {
+	int rv;
+
+	if (pd_device_in_low_power(port))
 		pd_wait_for_wakeup(port);
-		rv = i2c_write8(tcpc_config[port].i2c_host_port,
-				tcpc_config[port].i2c_slave_addr, reg, val);
-	}
+
+	rv = i2c_write8(tcpc_config[port].i2c_host_port,
+			tcpc_config[port].i2c_slave_addr, reg, val);
+
 	pd_device_accessed(port);
 	return rv;
 }
 
 int tcpc_write16(int port, int reg, int val)
 {
-	int rv = i2c_write16(tcpc_config[port].i2c_host_port,
-			     tcpc_config[port].i2c_slave_addr, reg, val);
-	if (rv && pd_device_in_low_power(port)) {
+	int rv;
+
+	if (pd_device_in_low_power(port))
 		pd_wait_for_wakeup(port);
-		rv = i2c_write16(tcpc_config[port].i2c_host_port,
-				 tcpc_config[port].i2c_slave_addr, reg, val);
-	}
+
+	rv = i2c_write16(tcpc_config[port].i2c_host_port,
+			 tcpc_config[port].i2c_slave_addr, reg, val);
+
 	pd_device_accessed(port);
 	return rv;
 }
 
 int tcpc_read(int port, int reg, int *val)
 {
-	int rv = i2c_read8(tcpc_config[port].i2c_host_port,
-			   tcpc_config[port].i2c_slave_addr, reg, val);
-	if (rv && pd_device_in_low_power(port)) {
+	int rv;
+
+	if (pd_device_in_low_power(port))
 		pd_wait_for_wakeup(port);
-		rv = i2c_read8(tcpc_config[port].i2c_host_port,
-			       tcpc_config[port].i2c_slave_addr, reg, val);
-	}
+
+	rv = i2c_read8(tcpc_config[port].i2c_host_port,
+		       tcpc_config[port].i2c_slave_addr, reg, val);
+
 	pd_device_accessed(port);
 	return rv;
 }
 
 int tcpc_read16(int port, int reg, int *val)
 {
-	int rv = i2c_read16(tcpc_config[port].i2c_host_port,
-			    tcpc_config[port].i2c_slave_addr, reg, val);
-	if (rv && pd_device_in_low_power(port)) {
+	int rv;
+
+	if (pd_device_in_low_power(port))
 		pd_wait_for_wakeup(port);
-		rv = i2c_read16(tcpc_config[port].i2c_host_port,
-				tcpc_config[port].i2c_slave_addr, reg, val);
-	}
+
+	rv = i2c_read16(tcpc_config[port].i2c_host_port,
+			tcpc_config[port].i2c_slave_addr, reg, val);
+
 	pd_device_accessed(port);
 	return rv;
 }
 
 int tcpc_read_block(int port, int reg, uint8_t *in, int size)
 {
-	int rv = i2c_read_block(tcpc_config[port].i2c_host_port,
-			    tcpc_config[port].i2c_slave_addr, reg, in, size);
-	if (rv && pd_device_in_low_power(port)) {
+	int rv;
+
+	if (pd_device_in_low_power(port))
 		pd_wait_for_wakeup(port);
-		rv = i2c_read_block(tcpc_config[port].i2c_host_port,
-				tcpc_config[port].i2c_slave_addr, reg,
-				in, size);
-	}
+
+	rv = i2c_read_block(tcpc_config[port].i2c_host_port,
+			    tcpc_config[port].i2c_slave_addr, reg, in, size);
+
 	pd_device_accessed(port);
 	return rv;
 }
 
 int tcpc_write_block(int port, int reg, const uint8_t *out, int size)
 {
-	int rv = i2c_write_block(tcpc_config[port].i2c_host_port,
-			    tcpc_config[port].i2c_slave_addr, reg, out, size);
-	if (rv && pd_device_in_low_power(port)) {
+	int rv;
+
+	if (pd_device_in_low_power(port))
 		pd_wait_for_wakeup(port);
-		rv = i2c_write_block(tcpc_config[port].i2c_host_port,
-				tcpc_config[port].i2c_slave_addr, reg,
-				out, size);
-	}
+
+	rv = i2c_write_block(tcpc_config[port].i2c_host_port,
+			     tcpc_config[port].i2c_slave_addr, reg, out, size);
+
 	pd_device_accessed(port);
 	return rv;
 }
