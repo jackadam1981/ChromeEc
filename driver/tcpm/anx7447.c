@@ -74,6 +74,7 @@ static inline int anx7447_reg_write(int port, int reg, int val)
 	return rv;
 }
 
+
 static inline int anx7447_reg_read(int port, int reg, int *val)
 {
 	int rv = i2c_read8(tcpc_config[port].i2c_host_port,
