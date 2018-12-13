@@ -69,6 +69,30 @@
       "revId": "cebec1440efe3bb5160b7e73b138aea9560eca79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734ae934_73806cbe",
+        "filename": "chip/ish/heci_client.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-13T23:05:44Z",
+      "side": 1,
+      "message": "This structure is internally consumed.",
+      "parentUuid": "d0c4facf_54a11578",
+      "range": {
+        "startLine": 52,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "cebec1440efe3bb5160b7e73b138aea9560eca79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
