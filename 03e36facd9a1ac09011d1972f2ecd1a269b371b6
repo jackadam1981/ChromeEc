@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fae6341f_3c8e8453",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-13T18:49:25Z",
+      "side": 1,
+      "message": "gotcha,  (1 / log-2(e)) -\u003e (log-e(2)). Thanks!\n\nCan you add header that log here mean log based e instead of log based 10",
+      "parentUuid": "ca20115f_532fbded",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "03e36facd9a1ac09011d1972f2ecd1a269b371b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7448d2b3_dfebcb1c",
         "filename": "core/minute-ia/include/math.h",
         "patchSetId": 3
