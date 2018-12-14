@@ -858,6 +858,30 @@
     },
     {
       "key": {
+        "uuid": "24782aa7_ec54d12c",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-14T00:31:03Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I cannot use 0 for handle for API. \"0\", unlike other numbers, is so much easily passed to API functions by mistake. It just makes debugging difficult.\n\nI want to keep this.",
+      "parentUuid": "faf44f13_4dc9bd59",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a6e4346_0c527bee",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
