@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "15a4447b_357fc58f",
+        "filename": "board/kukui_scp/board.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0707e7b_730d6ab2",
+      "revId": "8906f50ce7463763bf42237f6650fdffa14d5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a97ab7ce_639df540",
         "filename": "board/kukui_scp/ec.tasklist",
         "patchSetId": 12
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "694b93a6_cabf043f",
+        "filename": "board/kukui_scp/ec.tasklist",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a97ab7ce_639df540",
+      "revId": "8906f50ce7463763bf42237f6650fdffa14d5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d4594d_b69c60e5",
         "filename": "board/kukui_scp/gpio.inc",
         "patchSetId": 12
@@ -50,6 +86,24 @@
       "revId": "8906f50ce7463763bf42237f6650fdffa14d5ce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed67010_8ad9a44c",
+        "filename": "board/kukui_scp/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:43Z",
+      "side": 1,
+      "message": "I think we can keep both for now.\nWe are using 11/12 for Kukui P1, and we should use 110/112 for Kukui P2. (11/12 in P2 is occupied)",
+      "parentUuid": "24d4594d_b69c60e5",
+      "revId": "8906f50ce7463763bf42237f6650fdffa14d5ce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
