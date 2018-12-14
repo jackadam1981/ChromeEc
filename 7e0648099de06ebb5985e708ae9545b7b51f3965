@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ca89e19_8952cb46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-14T02:12:48Z",
+      "side": 1,
+      "message": "do we need to bump this up on ARM as well or\nis x86 just more stack-hungry?",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "7e0648099de06ebb5985e708ae9545b7b51f3965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
