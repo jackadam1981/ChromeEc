@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1155e7a8_fdd3ce47",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-14T01:56:29Z",
+      "side": 1,
+      "message": "we could just take out CFLAGS here.\ndefault gmake rule is:\n\nCOMPILE.cc \u003d $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c",
+      "range": {
+        "startLine": 79,
+        "startChar": 59,
+        "endLine": 79,
+        "endChar": 65
+      },
+      "revId": "47b4b3a321111b5ee2ee8787dc96d3c681d68f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
