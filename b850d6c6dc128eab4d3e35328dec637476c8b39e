@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee4b8c38_18dcce88",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-14T02:26:40Z",
+      "side": 1,
+      "message": "not sure how strict we are about unaligned accesses\nin the EC codebase, but normally this would be\nfrowned upon.",
+      "range": {
+        "startLine": 364,
+        "startChar": 4,
+        "endLine": 364,
+        "endChar": 16
+      },
+      "revId": "b850d6c6dc128eab4d3e35328dec637476c8b39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd34ea84_d8ba7f99",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-14T02:26:40Z",
+      "side": 1,
+      "message": "the logic seems a bit strange here.\nif buf_size is \u003c sizeof(drbl_val), won\u0027t you still\nexceed the buf founds in the IPC_PROTOCOL_MNG case\nsince you\u0027re assuming there are at least 4 bytes\navailable?",
+      "range": {
+        "startLine": 373,
+        "startChar": 9,
+        "endLine": 373,
+        "endChar": 33
+      },
+      "revId": "b850d6c6dc128eab4d3e35328dec637476c8b39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
