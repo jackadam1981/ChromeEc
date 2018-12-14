@@ -310,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "6fecb5fe_e2bb5341",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-14T00:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6205dfdd_23167f0a",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 26
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "678eb2e1_b9af6744",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -429,6 +453,30 @@
     },
     {
       "key": {
+        "uuid": "5333e260_8df7412e",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-14T00:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e410a6c2_fdece554",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 60
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44e99752_cc08f5c1",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 16
@@ -464,6 +512,30 @@
       "side": 1,
       "message": "OK, I\u0027ll add.",
       "parentUuid": "44e99752_cc08f5c1",
+      "range": {
+        "startLine": 372,
+        "startChar": 15,
+        "endLine": 373,
+        "endChar": 7
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cd51d09_d761aaa7",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-14T00:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca599555_c330e3a4",
       "range": {
         "startLine": 372,
         "startChar": 15,
@@ -544,6 +616,30 @@
       "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eea7d9f_36bc3e14",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-14T00:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37c241ff_429da60b",
+      "range": {
+        "startLine": 388,
+        "startChar": 7,
+        "endLine": 388,
+        "endChar": 10
+      },
+      "revId": "24d7537a2db94b6e865201fd4fec7a2b0e060cfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
