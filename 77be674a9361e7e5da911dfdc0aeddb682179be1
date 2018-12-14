@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ced8a46_3634af5f",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-14T00:30:04Z",
+      "side": 1,
+      "message": "add \nstruct motion_sensor_t *sensor;\n\n...\n\nsensor \u003d accel + id;",
+      "revId": "77be674a9361e7e5da911dfdc0aeddb682179be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99d6088_b70c493a",
+        "filename": "driver/accelgyro_lsm6dso.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-14T00:30:04Z",
+      "side": 1,
+      "message": "I felt the need to have accel/gyro and mag in the same data structure, as collection/magnetometer online calibration is done while reading a single FIFO.\nSee CL:1361992, file driver/accelgyro_lsm6dsm.h and a board.c like board/zoombini/board.c.",
+      "revId": "77be674a9361e7e5da911dfdc0aeddb682179be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ee22f6_70198d7e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2412,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-12-14T00:30:04Z",
+      "side": 1,
+      "message": "update ectool.c has well, function  cmd_motionsense()",
+      "revId": "77be674a9361e7e5da911dfdc0aeddb682179be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
