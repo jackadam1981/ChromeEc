@@ -46,6 +46,30 @@
       "revId": "546be58cad3936545820ef0eb9d431247b09a57a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a721d0_c2c0b91a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2889,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-14T23:44:23Z",
+      "side": 1,
+      "message": "It\u0027s meant to be the same as the code you proposed. can you elaborate which part is different?",
+      "parentUuid": "8bc80815_e7c7bef0",
+      "range": {
+        "startLine": 2887,
+        "startChar": 4,
+        "endLine": 2889,
+        "endChar": 28
+      },
+      "revId": "546be58cad3936545820ef0eb9d431247b09a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
