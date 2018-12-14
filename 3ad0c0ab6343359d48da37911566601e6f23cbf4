@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d89d296_b03061b6",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59c28906_cc7281c6",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2b646b7_f5ab5157",
         "filename": "chip/mt_scp/hrtimer.c",
         "patchSetId": 12
@@ -36,6 +60,24 @@
       "writtenOn": "2018-11-29T13:02:57Z",
       "side": 1,
       "message": "Why is this commented out?",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade6a456_dbd9ab9d",
+        "filename": "chip/mt_scp/hrtimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "This is set in the sample implementation. Not sure why it commented out as well.\n\nTurn it on for now, and see what might happen.",
+      "parentUuid": "b2b646b7_f5ab5157",
       "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "1cfbdb4e_314f51d7",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad25594_d4427f1e",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff348d37_d998edcb",
         "filename": "chip/mt_scp/system.c",
         "patchSetId": 12
@@ -73,6 +133,24 @@
       "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfdaab82_1214da08",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff348d37_d998edcb",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "2a1e7e5b_b000e2fb",
+        "filename": "chip/mt_scp/system.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8cddec2_a29b2c3b",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5360395_369ddb16",
         "filename": "chip/mt_scp/uart.c",
         "patchSetId": 12
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "4b55ad10_ff030290",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5360395_369ddb16",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c4dd94c_0214d905",
         "filename": "chip/mt_scp/uart.c",
         "patchSetId": 12
@@ -124,6 +238,24 @@
       "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca31238_038eff37",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4dd94c_0214d905",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "bcc68aab_f5970990",
+        "filename": "chip/mt_scp/watchdog.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "I think it is probably fine.\nSCP_WDT_CFG upper half controls the enable/disable, and bottom half keeps the counting.",
+      "parentUuid": "ece90e25_c73eeb32",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0981e7c2_92ced3b7",
         "filename": "chip/mt_scp/watchdog.c",
         "patchSetId": 12
@@ -170,6 +326,30 @@
       "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881f3b6a_faf83027",
+        "filename": "chip/mt_scp/watchdog.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-14T09:25:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0981e7c2_92ced3b7",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
