@@ -8,6 +8,11 @@
 #include "config.h"
 #include "interrupts.h"
 
+	.equ	CR0_PE,		(1 << 0)
+	.equ	CR0_NW,		(1 << 29)
+	.equ	CR0_CD,		(1 << 30)
+
+
 .global __idt
 
 # GDT is loaded by ISH ROM. The FW code retains the same GDT
@@ -347,6 +352,11 @@ reset:
 
 	# Load IDT
 	lidt __idt_ptr
+
+	# Enable cache (CR0)
+	mov	%cr0, %eax
+	and	$~(CR0_CD | CR0_NW), %eax
+	mov	%eax, %cr0
 
 	# Reset Task-Switched flag to prevent an ESC instruction such
 	# as fninit, from triggering a Device-not-available fault
