@@ -80,6 +80,8 @@ static inline void keyboard_raw_gpio_interrupt(enum gpio_signal signal) { }
  */
 int keyboard_factory_test_scan(void);
 
+int keyboard_raw_is_input(int port, int id);
+
 static inline int keyboard_raw_get_cols(void) {
 	return keyboard_cols;
 }
