@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc6ac7da_537c47cf",
+        "filename": "board/kukui/emmc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1113845
+      },
+      "writtenOn": "2018-12-15T08:27:25Z",
+      "side": 1,
+      "message": "Should this be `txpos \u003e\u003d sizeof(bootblock_raw_data) + 2`?",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 40
+      },
+      "revId": "6d12a66b7f46f9b6a195b00d3b645d6b8ee5998a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
