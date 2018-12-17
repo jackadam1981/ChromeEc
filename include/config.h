@@ -1884,6 +1884,9 @@
 /* Command to issue AP reset */
 #undef  CONFIG_HOSTCMD_AP_RESET
 
+/* Support chip specific hostcmd initialization when host_command_task up. */
+#undef  CONFIG_CHIP_HOSTCMD_INIT
+
 /* List of host commands whose debug output will be suppressed */
 #undef CONFIG_SUPPRESSED_HOST_COMMANDS
 
