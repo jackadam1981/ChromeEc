@@ -61,7 +61,7 @@ static int accel_disp;
 
 #define SENSOR_ACTIVE(_sensor) (sensor_active & (_sensor)->active_mask)
 
-#if defined(CONFIG_HOSTCMD_X86) || defined(TEST_MOTION_LID)
+#if defined(CONFIG_HOSTCMD_X86) || defined(TEST_BUILD)
 #define UPDATE_HOST_MEM_MAP
 #endif
 
