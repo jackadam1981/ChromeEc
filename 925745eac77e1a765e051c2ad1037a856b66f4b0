@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d1d40a3_63166b55",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T18:31:15Z",
+      "side": 1,
+      "message": "can you add a comment here saying we see the need for USB-C chargers to ramp otherwise we see voltage droops.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "925745eac77e1a765e051c2ad1037a856b66f4b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
