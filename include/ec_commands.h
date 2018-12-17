@@ -1336,6 +1336,8 @@ enum ec_feature_code {
 	 * MOTIONSENSE_CMD_TABLET_MODE_LID_ANGLE.
 	 */
 	EC_FEATURE_REFINED_TABLET_MODE_HYSTERESIS = 37,
+	/* EC Supports SCP. */
+	EC_FEATURE_SCP = 38,
 };
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))

@@ -338,4 +338,9 @@ void host_send_sysrq(uint8_t key);
 uint32_t get_feature_flags0(void);
 uint32_t get_feature_flags1(void);
 
+#ifdef CONFIG_CHIP_HOSTCMD_INIT
+/* Chip specific host command initialization. */
+void chip_host_command_init(void);
+#endif
+
 #endif  /* __CROS_EC_HOST_COMMAND_H */
