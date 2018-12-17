@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e7cd050f_c8094f5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-12-17T05:29:00Z",
+      "side": 1,
+      "message": "What kind of bad state?",
+      "range": {
+        "startLine": 17,
+        "startChar": 62,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "585125a3182783d9ec1c20d854f974bf90ba3eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0354d6e1_2f37fe33",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -22,6 +45,30 @@
       "revId": "585125a3182783d9ec1c20d854f974bf90ba3eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c9249d3_dcbae739",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-12-17T05:29:00Z",
+      "side": 1,
+      "message": "\"almost may have been causing the problem\": which problem?\n\nnit: rewriting the comment a little for clarity:\n\n\t * The double reset event happens when the higher priority PD interrupt\n\t * task gets an interrupt during the above tcpm_init function. When that\n\t * occurs, the higher priority task waits correctly for us to finish waking\n\t * the TCPC, but it has also set PD_EVENT_TCPC_RESET again, which would\n\t * result in a second unnecessary init.",
+      "parentUuid": "0354d6e1_2f37fe33",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 446,
+        "endChar": 28
+      },
+      "revId": "585125a3182783d9ec1c20d854f974bf90ba3eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
