@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e49fc8f_c031ebf3",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-12-17T16:37:47Z",
+      "side": 1,
+      "message": "use movl and andl here for consistency w/ rest of code in this file.",
+      "revId": "a206e957b38f6e137f9c4264bcb8aafc723da125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
