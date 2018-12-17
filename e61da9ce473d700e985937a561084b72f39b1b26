@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92dffc4c_c347a3d3",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "please drop the (c) in new files. This should be caught be the presubmit check if you are using the repo tool. Do you see the error?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4905e79_63195d00",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "This list might be better as an enum (and the response bit is OR\u0027ed on when needed)",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507d3695_6f7bf8d1",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "let\u0027s make a define for 0x80 HECI_RESPONSE_BIT (or something like that)",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66afe55_8f472292",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "please add comments for this struct. Please specify what these fields are used for.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98057fa1_a9dce7cd",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "bit fields are non-standard and compilers can chose to pack them in any order. Please don\u0027t use bit fields if this struct is used for communication with host",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8613ad01_be9b0589",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "no bit fields please",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110afdfc_89862067",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "please add comment for the intent of these fields",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d831431e_a97ad094",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "what is this -1 for?",
+      "range": {
+        "startLine": 78,
+        "startChar": 64,
+        "endLine": 78,
+        "endChar": 77
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b53340a_8afcec31",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "this is very difficult to read. Please add comment and clean up formatting if possible",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04360c4_4d15a910",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "can we drop this 1",
+      "range": {
+        "startLine": 94,
+        "startChar": 39,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4972c46_c0fce27b",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "what is an ss_device?",
+      "range": {
+        "startLine": 96,
+        "startChar": 56,
+        "endLine": 96,
+        "endChar": 65
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4171a06c_577f6542",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "return EC_SUCCESS;\n\n(here and other successful return 0 lines please)",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 9
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d327be6c_984681d3",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "Multiple line comments start with a new line first\n /* \n  * First line of\n  * multi-line comment\n  */",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 6
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c065f9c_569dc90f",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "\"by law\" sounds bit weird. There is no legal regulation here, correct?\n\nIf we switch to the board level define of devices, then we can guarantee this constraint in this file (since this would be a static function to this file)",
+      "range": {
+        "startLine": 137,
+        "startChar": 58,
+        "endLine": 137,
+        "endChar": 64
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a0e591_6ddb2378",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "Please do this once at the top of the method into a new variable.\n\nStringing macros together starts hiding code",
+      "range": {
+        "startLine": 247,
+        "startChar": 31,
+        "endLine": 247,
+        "endChar": 41
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89eee47e_98ea1965",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "why does this need to be macro instead of a method?",
+      "range": {
+        "startLine": 250,
+        "startChar": 6,
+        "endLine": 250,
+        "endChar": 30
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49ea119_0ec920dd",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "it is confusing that msg_consumed and msg_item start with the same prefix since one is a chuck of the other.\n\nMaybe\nmsg_consumed --\u003e num_chunks\nmsg_item --\u003e cur_item",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 31
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec534440_ff0b6b8a",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "add a comment that says we intentionally break before the last chunk, since we want to sent msg_complete \u003d 1 for that last item",
+      "range": {
+        "startLine": 344,
+        "startChar": 3,
+        "endLine": 346,
+        "endChar": 10
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e91b4fe_31f000b3",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "when will this be false? Don\u0027t we always need to send a msg_complete chunk to finish everything?",
+      "range": {
+        "startLine": 378,
+        "startChar": 5,
+        "endLine": 378,
+        "endChar": 18
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5648fefe_e5ceb4bd",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "Where does this 8 come from. This needs to be a constant (and at least needs to be comment)",
+      "range": {
+        "startLine": 454,
+        "startChar": 55,
+        "endLine": 454,
+        "endChar": 56
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775d32f8_c0f8823c",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T23:12:15Z",
+      "side": 1,
+      "message": "this +1 and -1 everywhere is very troublesome. This would be incredible easy to miss someplace.\n\nLet\u0027s please from the + 1 handle; it just adds potential for bugs at this point without giving us anything (because we are assuming the encoding everywhere)\n\n----\n\nif size_in_bits were a constant this would be a nice bit shift operation instead of a divide. (it probably should be a constant)",
+      "range": {
+        "startLine": 456,
+        "startChar": 29,
+        "endLine": 456,
+        "endChar": 50
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
