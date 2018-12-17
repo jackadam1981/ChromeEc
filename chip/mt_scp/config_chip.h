@@ -81,6 +81,7 @@
 	 (CONFIG_IPC_SHARE_BUF_SIZE + 2 * sizeof(int32_t)) * 2)
 
 #define CONFIG_CHIP_PRE_INIT
+#define CONFIG_CHIP_HOSTCMD_INIT
 
 #define GPIO_PIN(num) ((num) / 32), ((num) % 32)
 #define GPIO_PIN_MASK(p, m) .port = (p), .mask = (m)
