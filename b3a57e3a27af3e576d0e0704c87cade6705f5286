@@ -568,6 +568,30 @@
     },
     {
       "key": {
+        "uuid": "9addb8da_679f5a30",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T22:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a12597_ad2a3784",
+      "range": {
+        "startLine": 357,
+        "startChar": 1,
+        "endLine": 357,
+        "endChar": 71
+      },
+      "revId": "b3a57e3a27af3e576d0e0704c87cade6705f5286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8121dd75_e5301945",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 5

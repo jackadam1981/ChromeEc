@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f2cd50_1d060250",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T22:33:06Z",
+      "side": 1,
+      "message": "can you collapse the unsupported protocols into the default cause for now. It is just noise right now.\n\n(same with below switch statement)",
+      "range": {
+        "startLine": 352,
+        "startChar": 1,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "c802bea4d63ef63b55fbf5b64d6a7c5378589b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "627d9e4a_aa4756c4",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T22:33:06Z",
+      "side": 1,
+      "message": "dest \u003d msg-\u003epayload;\n\nseems more appropriate here",
+      "range": {
+        "startLine": 379,
+        "startChar": 9,
+        "endLine": 379,
+        "endChar": 33
+      },
+      "revId": "c802bea4d63ef63b55fbf5b64d6a7c5378589b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0541c9ce_bc1162ca",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T22:33:06Z",
+      "side": 1,
+      "message": "I\u0027m sorry if I am repeating myself, I think we already talked about breaking this out into its own file. This will happen in a followup CL, right?",
+      "range": {
+        "startLine": 701,
+        "startChar": 5,
+        "endLine": 701,
+        "endChar": 17
+      },
+      "revId": "c802bea4d63ef63b55fbf5b64d6a7c5378589b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
