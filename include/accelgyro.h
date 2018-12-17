@@ -10,8 +10,13 @@
 
 /* Header file for accelerometer / gyro drivers. */
 
-/* Number of counts from accelerometer that represents 1G acceleration. */
-#define ACCEL_G  1024
+/*
+ * EC reports sensor data on 16 bits. For accel/gyro/mag.. the MSB is the sign.
+ * For instance, for gravity,
+ * real_value[in g] = measured_value * range >> 15
+ */
+#define MOTION_SCALING_FACTOR (1 << 15)
+#define MOTION_ONE_G (9.80665f)
 
 struct accelgyro_drv {
 	/**
