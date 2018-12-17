@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32cf7c1f_5d7bbb0c",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-12-17T15:26:36Z",
+      "side": 1,
+      "message": "PE isn\u0027t used in here. Drop it?",
+      "revId": "2ac721344c9639eba88d0e02d359a98bff73a46f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
