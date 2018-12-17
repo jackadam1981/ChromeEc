@@ -208,7 +208,7 @@ VALID_CHIP_COMBO["yorp.npcx_spi"]="(servo_micro|servo_v2)"
 VALID_CHIP_COMBO["yorp.npcx_uut"]="ccd_cr50"
 
 DEFAULT_PORT="${SERVOD_PORT:-9999}"
-BITBANG_RATE="9600"  # Could be overwritten by a command line option.
+BITBANG_RATE="57600"  # Could be overwritten by a command line option.
 
 # Flags
 DEFINE_integer bitbang_rate "${BITBANG_RATE}" \
