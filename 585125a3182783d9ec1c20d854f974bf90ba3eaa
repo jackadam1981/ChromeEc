@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5717f114_449b0662",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T16:51:08Z",
+      "side": 1,
+      "message": "it was getting into a watchdog reset since the interrupt line was continually help low. Looks like the newer firmware still has the issue with out without this change, but this change will still help the double reset case (and the newer PS8751 firmware will respond to i2c transactions in LPM so this still seems like a worthwhile change)\n\nI did update the commit description though",
+      "parentUuid": "e7cd050f_c8094f5c",
+      "range": {
+        "startLine": 17,
+        "startChar": 62,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "585125a3182783d9ec1c20d854f974bf90ba3eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0354d6e1_2f37fe33",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -69,6 +93,30 @@
       "revId": "585125a3182783d9ec1c20d854f974bf90ba3eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763e5e61_969b24f7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T16:51:08Z",
+      "side": 1,
+      "message": "May have been the watchdog reset issue caused by the PS8751 holding the interrupt line low with newer firmware. Looks like the newer (unreleased) firmware version has an issue with or without this change though.\n\nThank you for the comment suggestion. I used it!",
+      "parentUuid": "0c9249d3_dcbae739",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 446,
+        "endChar": 28
+      },
+      "revId": "585125a3182783d9ec1c20d854f974bf90ba3eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
