@@ -897,6 +897,14 @@ static void tpm_reset_now(int wipe_first)
 	reset_in_progress = 0;
 
 	/*
+	 * FIXME - for testing coreboot - force a timeout during initial
+	 * I2C communication
+	 */
+	cprints(CC_TASK, "%s: delay for coreboot test", __func__);
+	udelay(3 * SECOND);
+	cprints(CC_TASK, "%s: resume", __func__);
+
+	/*
 	 * In chip factory mode SPI idle byte sent on MISO is used for
 	 * progress reporting. TPM flow control messes it up, do not start TPM
 	 * in factory mode.
