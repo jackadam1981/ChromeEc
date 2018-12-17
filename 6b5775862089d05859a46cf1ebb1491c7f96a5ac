@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcd47a6d_fc8267c9",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T18:35:04Z",
+      "side": 1,
+      "message": "are there are TCPC hooks for this board? If so, they are probably i2c + 1, we should make them i2c + 2 instead (to ensure they run after this)",
+      "range": {
+        "startLine": 715,
+        "startChar": 34,
+        "endLine": 715,
+        "endChar": 56
+      },
+      "revId": "6b5775862089d05859a46cf1ebb1491c7f96a5ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
