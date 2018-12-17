@@ -12,28 +12,6 @@
 #include "math_util.h"
 
 /**
- * This structure defines all of the data needed to specify the orientation
- * of the base and lid accelerometers in order to calculate the lid angle.
- */
-struct accel_orientation {
-	/* Rotation matrix to rotate positive 90 degrees around the hinge. */
-	mat33_fp_t rot_hinge_90;
-
-	/*
-	 * Rotation matrix to rotate 180 degrees around the hinge. The value
-	 * here should be rot_hinge_90 ^ 2.
-	 */
-	mat33_fp_t rot_hinge_180;
-
-	/* Vector pointing along hinge axis. */
-	intv3_t hinge_axis;
-};
-
-/* Link global structure for orientation. This must be defined in board.c. */
-extern const struct accel_orientation acc_orient;
-
-
-/**
  * Get last calculated lid angle. Note, the lid angle calculated by the EC
  * is un-calibrated and is an approximate angle.
  *
