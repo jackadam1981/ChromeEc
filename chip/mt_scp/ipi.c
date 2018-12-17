@@ -27,6 +27,7 @@ static struct ipc_share_obj *const scp_send_obj =
 static struct ipc_share_obj *const scp_recv_obj =
 	(struct ipc_share_obj *)(CONFIG_IPC_SHARE_BUFFER_ADDR +
 				 sizeof(struct ipc_share_obj));
+static struct host_packet ipi_packet;
 
 /* Check if SCP to AP IPI is in use. */
 static inline int is_ipi_busy(void)
@@ -162,6 +163,86 @@ void ipi_inform_ap(void)
 		ccprintf("Failed to send initialization IPC messages.\n");
 }
 
+#ifdef HAS_TASK_HOSTCMD
+static void ipi_send_response_packet(struct host_packet *pkt)
+{
+	int ret;
+
+	ret = ipi_send(IPI_HOST_COMMAND, pkt->response, pkt->response_size, 1);
+	if (ret)
+		CPRINTS("#ERR IPI HOSTCMD %d", ret);
+}
+
+static void ipi_hostcmd_handler(int id, void *buf, unsigned int len)
+{
+	int i;
+	uint8_t const *msg = buf;
+
+	if (msg[0] == EC_HOST_REQUEST_VERSION) {
+		/* Protocol version 3 */
+		struct ec_host_request *r = (struct ec_host_request *)msg;
+		int pkt_size;
+
+		/*
+		 * Check how big the packet should be.  We can't just wait to
+		 * see how much data the host sends, because it will keep
+		 * sending dummy data until we respond.
+		 */
+		pkt_size = host_request_expected_size(r);
+		if (pkt_size == 0 || pkt_size > IPI_MAX_REQUEST_SIZE) {
+			CPRINTS("Invalid packet size %d", pkt_size);
+			return;
+		}
+
+		ipi_packet.send_response = ipi_send_response_packet;
+
+		ipi_packet.request = (void *)r;
+		ipi_packet.request_temp = NULL;
+		ipi_packet.request_max = IPI_MAX_REQUEST_SIZE;
+		ipi_packet.request_size = pkt_size;
+
+		ipi_packet.response = scp_send_obj->share_buf;
+		/* Reserve space for the preamble and trailing past-end byte */
+		ipi_packet.response_max = IPI_MAX_RESPONSE_SIZE;
+		ipi_packet.response_size = 0;
+
+		ipi_packet.driver_result = EC_RES_SUCCESS;
+
+		host_packet_receive(&ipi_packet);
+		return;
+
+	} else if (msg[0] >= EC_CMD_VERSION0) {
+		CPRINTS("ERROR: Protocol V2 is not supported!");
+	}
+
+	CPRINTS("IPI bad data");
+	CPRINTF("msg=[");
+	for (i = 0; i < len; i++)
+		CPRINTF("%02x ", msg[i]);
+	CPRINTF("]\n");
+}
+
+/*
+ * Get protocol information
+ */
+static int ipi_get_protocol_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_protocol_info *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->protocol_versions |= (1 << 3);
+	r->max_request_packet_size = IPI_MAX_REQUEST_SIZE;
+	r->max_response_packet_size = IPI_MAX_RESPONSE_SIZE;
+
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
+		     ipi_get_protocol_info,
+		     EC_VER_MASK(0));
+#endif
+
 /* Initialize IPI. */
 static void ipi_init(void)
 {
@@ -169,6 +250,11 @@ static void ipi_init(void)
 	memset(scp_send_obj, 0, sizeof(struct ipc_share_obj));
 
 	request_ipc(IPC_ID(0), ipi_handler);
+
+#ifdef HAS_TASK_HOSTCMD
+	/* Register IPI handlers. */
+	ipi_register(IPI_HOST_COMMAND, ipi_hostcmd_handler);
+#endif
 
 	/* Enable IRQs */
 	task_enable_irq(SCP_IRQ_IPC0);
