@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e683558_14f3b85c",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-17T18:19:07Z",
+      "side": 1,
+      "message": "Found a missing conversion for CONFIG_ISH_30",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "2b51339a553a511ea7bd515a357073ec2053c431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
