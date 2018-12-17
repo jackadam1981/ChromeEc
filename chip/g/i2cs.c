@@ -105,6 +105,40 @@ static uint16_t last_read_pointer;
 static uint16_t i2cs_read_irq_count;
 static uint16_t i2cs_read_recovery_count;
 
+#ifdef CR50_DEV
+static const char * const i2cs_reg_name[] = {
+	"VERSION",
+	"INT_ENABLE",
+	"INT_STATE",
+	"INT_TEST",
+	"CTRL_SDA_VAL",
+	"SLAVE_DEVADDRVAL",
+	"CLOCK_STRECTH",
+	"AUTO_WAIT_AFTER_WRITE_MODE",
+	"CLOCK_STRETCH_MODE",
+	"READ_PTR",
+	"WRITE_PTR",
+	"READVAL",
+	"CTRL_MSR",
+};
+
+
+static void i2cs_register_dump(void)
+{
+	int i;
+
+	CPRINTF("I2CS Registers:\n");
+
+	for (i = 0; i < ARRAY_SIZE(i2cs_reg_name); i++) {
+		CPRINTF("  %s = %08x\n", i2cs_reg_name[i],
+			REG32(GBASE(I2CS) + i * 4));
+	}
+	CPRINTF("  INT_AP_L state = %d\n", gpio_get_level(GPIO_INT_AP_L));
+}
+#else
+#define i2cs_register_dump()
+#endif
+
 static void i2cs_init(void)
 {
 	/* First decide if i2c is even needed for this platform. */
@@ -137,6 +171,8 @@ static void i2cs_init(void)
 
 	/* Enable I2CS interrupt */
 	GWRITE_FIELD(I2CS, INT_ENABLE, INTR_WRITE_COMPLETE, 1);
+	GWRITE_FIELD(I2CS, INT_ENABLE, INTR_READ_BEGIN, 1);
+	GWRITE_FIELD(I2CS, INT_ENABLE, INTR_READ_COMPLETE, 1);
 
 	/* Slave address is hardcoded to 0x50. */
 	GWRITE(I2CS, SLAVE_DEVADDRVAL, 0x50);
@@ -172,6 +208,8 @@ static void poll_read_state(void)
 				 * interface (which will also restart this
 				 * polling function).
 				 */
+				CPUTS("i2c is hosed! reinitializing.\n");
+				i2cs_register_dump();
 				last_i2cs_read_irq_count = ~0;
 				i2cs_read_recovery_count++;
 				i2cs_register_write_complete_handler
@@ -200,6 +238,8 @@ static void poll_read_state(void)
 /* Process the 'end of a write cycle' interrupt. */
 static void _i2cs_write_complete_int(void)
 {
+	CPRINTF("WC: S: 0x%x, WR: 0x%x", GREAD(I2CS, INT_STATE), GREAD(I2CS, WRITE_PTR));
+
 	/* Reset the IRQ condition. */
 	GWRITE_FIELD(I2CS, INT_STATE, INTR_WRITE_COMPLETE, 1);
 
@@ -255,6 +295,8 @@ static void _i2cs_write_complete_int(void)
 			i2cs_read_irq_count++;
 	}
 
+	CPRINTF("WC: RP: 0x%x", GREAD(I2CS, READ_PTR));
+
 	/*
 	 * Could be the end of a TPM trasaction. Set sleep to be reenabled in 1
 	 * second. If this is not the end of a TPM response, then sleep will be
@@ -265,6 +307,28 @@ static void _i2cs_write_complete_int(void)
 }
 DECLARE_IRQ(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT,
 	    _i2cs_write_complete_int, 1);
+
+/* Process the 'begin of a read cycle' interrupt. */
+static void _i2cs_read_begin_int(void)
+{
+	CPRINTF("RB: S: 0x%x, RP: 0x%x", GREAD(I2CS, INT_STATE), GREAD(I2CS, READ_PTR));
+
+	/* Reset the IRQ condition. */
+	GWRITE_FIELD(I2CS, INT_STATE, INTR_READ_BEGIN, 1);
+}
+DECLARE_IRQ(GC_IRQNUM_I2CS0_INTR_READ_BEGIN_INT,
+	    _i2cs_read_begin_int, 1);
+
+/* Process the 'end of a read cycle' interrupt. */
+static void _i2cs_read_end_int(void)
+{
+	CPRINTF("RC: S: 0x%x, RP: 0x%x", GREAD(I2CS, INT_STATE), GREAD(I2CS, READ_PTR));
+
+	/* Reset the IRQ condition. */
+	GWRITE_FIELD(I2CS, INT_STATE, INTR_READ_COMPLETE, 1);
+}
+DECLARE_IRQ(GC_IRQNUM_I2CS0_INTR_READ_COMPLETE_INT,
+	    _i2cs_read_end_int, 1);
 
 void i2cs_post_read_data(uint8_t byte_to_read)
 {
@@ -351,6 +415,8 @@ void i2cs_post_read_fill_fifo(uint8_t *buffer, size_t len)
 int i2cs_register_write_complete_handler(wr_complete_handler_f wc_handler)
 {
 	task_disable_irq(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT);
+	task_disable_irq(GC_IRQNUM_I2CS0_INTR_READ_COMPLETE_INT);
+	task_disable_irq(GC_IRQNUM_I2CS0_INTR_READ_BEGIN_INT);
 
 	if (!wc_handler)
 		return 0;
@@ -358,6 +424,8 @@ int i2cs_register_write_complete_handler(wr_complete_handler_f wc_handler)
 	i2cs_init();
 	write_complete_handler_ = wc_handler;
 	task_enable_irq(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT);
+	task_enable_irq(GC_IRQNUM_I2CS0_INTR_READ_COMPLETE_INT);
+	task_enable_irq(GC_IRQNUM_I2CS0_INTR_READ_BEGIN_INT);
 
 	/*
 	 * Start a self perpetuating polling function to check for 'hosed'
