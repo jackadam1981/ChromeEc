@@ -665,14 +665,18 @@ enum {
 	GPIO_M = 0xd,
 	GPIO_PORT_COUNT,
 
-	/* NOTE: Support GPIO input only if KSO/KSI pins are used as GPIO. */
-	GPIO_KBS_OFF = 0x700,
-	/* KSI[7-0]  GPIO data mirror register. */
-	GPIO_KSI     = GPIO_KBS_OFF + 0x9,
-	/* KSO[15-8] GPIO data mirror register. */
-	GPIO_KSO_H   = GPIO_KBS_OFF + 0xc,
-	/* KSO[7-0]  GPIO data mirror register. */
-	GPIO_KSO_L   = GPIO_KBS_OFF + 0xf,
+	/*
+	 * Support GPIO input/output if KSO/KSI pins are used as GPIO.
+	 * Supported flags:
+	 * GPIO_INPUT, GPIO_OUTPUT, GPIO_LOW, GPIO_HIGH and GPIO_OPEN_DRAIN.
+	 */
+	GPIO_KBS_OFF = 0x80,
+	/* KSI[7-0] */
+	GPIO_KSI     = GPIO_KBS_OFF,
+	/* KSO[15-8] */
+	GPIO_KSO_H   = GPIO_KBS_OFF + 1,
+	/* KSO[7-0] */
+	GPIO_KSO_L   = GPIO_KBS_OFF + 2,
 };
 #define DUMMY_GPIO_BANK GPIO_A
 
@@ -1010,6 +1014,9 @@ REG8(IT83XX_PMC_BASE + (ch > LPC_PM2 ? 5 : 8) + (ch << 4))
 #define IT83XX_KBS_SDC2R        REG8(IT83XX_KBS_BASE+0x23)
 #define IT83XX_KBS_SDC3R        REG8(IT83XX_KBS_BASE+0x24)
 #define IT83XX_KBS_SDSR         REG8(IT83XX_KBS_BASE+0x25)
+#define IT83XX_KBS_KSIGPODR     REG8(IT83XX_KBS_BASE+0x26)
+#define IT83XX_KBS_KSOHGPODR    REG8(IT83XX_KBS_BASE+0x27)
+#define IT83XX_KBS_KSOLGPODR    REG8(IT83XX_KBS_BASE+0x28)
 
 /* Shared Memory Flash Interface Bridge (SMFI) */
 #define IT83XX_SMFI_BASE  0x00F01000
