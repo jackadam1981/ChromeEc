@@ -428,6 +428,10 @@ static void host_command_init(void)
 #ifdef CONFIG_SUPPRESSED_HOST_COMMANDS
 	suppressed_cmd_deadline.val = get_time().val + SUPPRESSED_CMD_INTERVAL;
 #endif
+
+#ifdef CONFIG_CHIP_HOSTCMD_INIT
+	chip_host_command_init();
+#endif
 }
 
 void host_command_task(void *u)
