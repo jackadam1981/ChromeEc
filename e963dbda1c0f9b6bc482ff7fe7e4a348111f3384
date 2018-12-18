@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "57ca79c5_4cd8fa74",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2018-12-18T06:01:28Z",
+      "side": 1,
+      "message": "nit: camera",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 16
+      },
+      "revId": "e963dbda1c0f9b6bc482ff7fe7e4a348111f3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09174c83_028834ed",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2018-12-18T06:01:28Z",
+      "side": 1,
+      "message": "Is this (void *) needed?",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "e963dbda1c0f9b6bc482ff7fe7e4a348111f3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dca32039_0459a426",
         "filename": "chip/mt_scp/ipi.c",
         "patchSetId": 13
