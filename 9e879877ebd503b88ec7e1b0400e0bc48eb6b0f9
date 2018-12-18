@@ -22,6 +22,30 @@
       "revId": "9e879877ebd503b88ec7e1b0400e0bc48eb6b0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b492f452_d412e297",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3016,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-18T22:59:18Z",
+      "side": 1,
+      "message": "Can you explain how you\u0027re trying to handle source cap interrupts? I imagine I would do this in handle_data_request while as Vincent pointed out, you need to check an alt mode has been entered already or not.",
+      "parentUuid": "4d78a048_2dfe94dc",
+      "range": {
+        "startLine": 3016,
+        "startChar": 4,
+        "endLine": 3016,
+        "endChar": 46
+      },
+      "revId": "9e879877ebd503b88ec7e1b0400e0bc48eb6b0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
