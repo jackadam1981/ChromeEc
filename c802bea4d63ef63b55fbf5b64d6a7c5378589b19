@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cf5ecf5b_b087929d",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T17:24:17Z",
+      "side": 1,
+      "message": "For sure, it wasn\u0027t a bug. I just wanted to reuse the encoding scheme we get by defining the structure.\n\nThank you for the update.",
+      "parentUuid": "90a643bc_07d3a702",
+      "range": {
+        "startLine": 379,
+        "startChar": 9,
+        "endLine": 379,
+        "endChar": 33
+      },
+      "revId": "c802bea4d63ef63b55fbf5b64d6a7c5378589b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0541c9ce_bc1162ca",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 25
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "OK, for now, let\u0027s keep like this.\nFor having its own file, let\u0027s discuss more.",
       "parentUuid": "0541c9ce_bc1162ca",
+      "range": {
+        "startLine": 701,
+        "startChar": 5,
+        "endLine": 701,
+        "endChar": 17
+      },
+      "revId": "c802bea4d63ef63b55fbf5b64d6a7c5378589b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3c47772_88d43001",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T17:24:17Z",
+      "side": 1,
+      "message": "It will be a small file, but it would only contain the MNG stuff (defines and task). This would help keep IPC layer separate from all protocol layers (expect for the necessary read/write encoding in the IPC layer).\n\nFuture (soon) CL is fine though.",
+      "parentUuid": "7290c5dd_dda0b502",
       "range": {
         "startLine": 701,
         "startChar": 5,
