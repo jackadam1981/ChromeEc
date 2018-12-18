@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4e9d8792_2e14c5ae",
+        "filename": "board/rammus/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-12-18T22:53:49Z",
+      "side": 1,
+      "message": "Can you please raise a bug to ensure that this gets dropped once board version 0 is deprecated?",
+      "range": {
+        "startLine": 147,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "bddca2731e4cd85a5437df17c13b5864a06303b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5804105c_6a70d169",
         "filename": "include/config.h",
         "patchSetId": 1
