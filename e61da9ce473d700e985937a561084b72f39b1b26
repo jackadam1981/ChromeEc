@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "df70d605_d85b6d51",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4905e79_63195d00",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "507d3695_6f7bf8d1",
         "filename": "chip/ish/hbm.h",
         "patchSetId": 19
@@ -91,6 +115,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05963c7e_b33fcb9a",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "507d3695_6f7bf8d1",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "22666ef0_80385fb1",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c66afe55_8f472292",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98057fa1_a9dce7cd",
         "filename": "chip/ish/hbm.h",
         "patchSetId": 19
@@ -137,6 +209,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50ee863b_e105c495",
+        "filename": "chip/ish/hbm.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98057fa1_a9dce7cd",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 23
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "7798fa7a_2053fe75",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Hmm.... sorry.. I\u0027ve already fixed this and some bugs as well as EC error handling but somehow some files are not added to this patch. I\u0027ll update it soon",
+      "parentUuid": "8613ad01_be9b0589",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "110afdfc_89862067",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -183,6 +303,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb7a30e_ade862d2",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "110afdfc_89862067",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "d62ec6a0_8a378479",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "FW sends host the bitmap of available HECI clients. The host uses this bitmap to generate fw address and it starts from 1. The macro is to find the corresponding client context.",
+      "parentUuid": "d831431e_a97ad094",
+      "range": {
+        "startLine": 78,
+        "startChar": 64,
+        "endLine": 78,
+        "endChar": 77
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b53340a_8afcec31",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -229,6 +397,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03785351_a94b30fd",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b53340a_8afcec31",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 60
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "a241d55a_adfffc61",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "There\u0027re two things associated with the array of client_ctxs. fw(client) address which is for interfacing with host. It is generated by host and starts from 1. handle which is for client to use HECI API. it also starts from 1. So fw address and handle are same.",
+      "parentUuid": "a04360c4_4d15a910",
+      "range": {
+        "startLine": 94,
+        "startChar": 39,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4972c46_c0fce27b",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -275,6 +491,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d1ac43_7d2bfb05",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Added comments",
+      "parentUuid": "c4972c46_c0fce27b",
+      "range": {
+        "startLine": 96,
+        "startChar": 56,
+        "endLine": 96,
+        "endChar": 65
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "8188d666_034650ee",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4171a06c_577f6542",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 9
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d327be6c_984681d3",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -321,6 +585,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48b0f70_bddfe484",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d327be6c_984681d3",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 6
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +635,30 @@
     },
     {
       "key": {
+        "uuid": "17278463_e2058fe9",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "I\u0027ll change the comments\n\nWhy do we need to change to board level ? That\u0027s not easy and simple solution.\nThe constraint is already guaranteed by macro which is very easy and simple. no other file involved.",
+      "parentUuid": "6c065f9c_569dc90f",
+      "range": {
+        "startLine": 137,
+        "startChar": 58,
+        "endLine": 137,
+        "endChar": 64
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34a0e591_6ddb2378",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -367,6 +679,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4732b6f_64467442",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34a0e591_6ddb2378",
+      "range": {
+        "startLine": 247,
+        "startChar": 31,
+        "endLine": 247,
+        "endChar": 41
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +729,30 @@
     },
     {
       "key": {
+        "uuid": "e66c78e1_8918b832",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "It\u0027s my habit. For FW implementation, if things are clear. I use macro than method since if I don\u0027t specify always_inline attribute sometimes compiler makes \"call\" caring about space. If I specify always_inline, usually inline \"method\" has more machine instructions than macro one.\n\nIt\u0027s just my habit. I\u0027m not sure if we are using speed optimization option.\n\nI know \"method\" way help us with checking type and size related errors. But, if it\u0027s clear, still for FW, I prefer macro than method.\n\nAnyway, I already converted some macro to method in IPC/HID patches as reviewers asked. I\u0027ll change this.",
+      "parentUuid": "89eee47e_98ea1965",
+      "range": {
+        "startLine": 250,
+        "startChar": 6,
+        "endLine": 250,
+        "endChar": 30
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e49ea119_0ec920dd",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -413,6 +773,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0613a45_2e1a0512",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "msg_item -\u003e cur_item\nmsg_consumed -\u003e msg_cur_pos",
+      "parentUuid": "e49ea119_0ec920dd",
+      "range": {
+        "startLine": 338,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 31
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +823,30 @@
     },
     {
       "key": {
+        "uuid": "c77641a2_50c61c9b",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "There may be nothing to send so it\u0027s enough.",
+      "parentUuid": "ec534440_ff0b6b8a",
+      "range": {
+        "startLine": 344,
+        "startChar": 3,
+        "endLine": 346,
+        "endChar": 10
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e91b4fe_31f000b3",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -459,6 +867,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55e3f99_96c1d8a2",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "yes, this is known issue and fixed. thank you.",
+      "parentUuid": "4e91b4fe_31f000b3",
+      "range": {
+        "startLine": 378,
+        "startChar": 5,
+        "endLine": 378,
+        "endChar": 18
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -485,6 +917,30 @@
     },
     {
       "key": {
+        "uuid": "b4331d77_286c20ef",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5648fefe_e5ceb4bd",
+      "range": {
+        "startLine": 454,
+        "startChar": 55,
+        "endLine": 454,
+        "endChar": 56
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "775d32f8_c0f8823c",
         "filename": "chip/ish/heci.c",
         "patchSetId": 19
@@ -505,6 +961,30 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e3266b_2f357ee3",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T09:12:54Z",
+      "side": 1,
+      "message": "This is bitmap that host asked ISH FW to provides, It\u0027s nothing related with handle. host generates fw address from this bitmap. interface doesn\u0027t allow to use bit 0. since fw address \"0\" is for special purpose. +1/-1 here is due to interface designed. Please read host driver code then you will get better understanding.\n\nBugs we found until now were not related with wrong handle or wrong fw address. \n\n--------------------------------------\n\nsize_in_bits is constant. I didn\u0027t declare it with \"const\" keyword but compiler knows it\u0027s constant. Of course, since compiler knows size_in_bits is 8, it uses shift operations.",
+      "parentUuid": "775d32f8_c0f8823c",
+      "range": {
+        "startLine": 456,
+        "startChar": 29,
+        "endLine": 456,
+        "endChar": 50
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
