@@ -22,6 +22,30 @@
       "revId": "bddca2731e4cd85a5437df17c13b5864a06303b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd69ed3_d6739f4a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T16:53:02Z",
+      "side": 1,
+      "message": "Good call, Just dropping the _I2C_ would be good",
+      "parentUuid": "5804105c_6a70d169",
+      "range": {
+        "startLine": 3275,
+        "startChar": 7,
+        "endLine": 3275,
+        "endChar": 44
+      },
+      "revId": "bddca2731e4cd85a5437df17c13b5864a06303b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
