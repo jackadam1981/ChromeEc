@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "4ccded61_774764ed",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T17:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94c7b07d_fcf14937",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e17e2f8a_5402a71e",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13
