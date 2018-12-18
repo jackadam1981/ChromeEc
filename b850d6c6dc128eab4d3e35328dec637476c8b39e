@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "062e442d_67c929a2",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-18T00:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aad1f09_90684665",
+      "range": {
+        "startLine": 364,
+        "startChar": 4,
+        "endLine": 364,
+        "endChar": 16
+      },
+      "revId": "b850d6c6dc128eab4d3e35328dec637476c8b39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd34ea84_d8ba7f99",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "b850d6c6dc128eab4d3e35328dec637476c8b39e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee07074_7479c9d7",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-18T00:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1edc3ba9_95a618ad",
+      "range": {
+        "startLine": 373,
+        "startChar": 9,
+        "endLine": 373,
+        "endChar": 33
+      },
+      "revId": "b850d6c6dc128eab4d3e35328dec637476c8b39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
