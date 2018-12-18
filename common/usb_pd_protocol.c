@@ -3351,6 +3351,9 @@ void pd_task(void *u)
 		case PD_STATE_SRC_SWAP_STANDBY:
 			/* Send PS_RDY to let sink know our power is off */
 			if (pd[port].last_state != pd[port].task_state) {
+				/* Switch to Rd and swap roles to sink */
+				tcpm_set_cc(port, TYPEC_CC_RD);
+				pd_set_power_role(port, PD_ROLE_SINK);
 				/* Send PS_RDY */
 				res = send_control(port, PD_CTRL_PS_RDY);
 				if (res < 0) {
@@ -3359,9 +3362,6 @@ void pd_task(void *u)
 						  PD_STATE_SRC_DISCONNECTED);
 					break;
 				}
-				/* Switch to Rd and swap roles to sink */
-				tcpm_set_cc(port, TYPEC_CC_RD);
-				pd_set_power_role(port, PD_ROLE_SINK);
 				/* Wait for PS_RDY from new source */
 				set_state_timeout(port,
 						  get_time().val +
