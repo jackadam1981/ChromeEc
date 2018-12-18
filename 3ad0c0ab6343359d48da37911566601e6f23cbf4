@@ -259,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "088b7dc2_9dcbc0eb",
+        "filename": "chip/mt_scp/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-18T07:25:45Z",
+      "side": 1,
+      "message": "I\u0027d even ifdef the task out completely.",
+      "parentUuid": "cca31238_038eff37",
+      "revId": "3ad0c0ab6343359d48da37911566601e6f23cbf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ece90e25_c73eeb32",
         "filename": "chip/mt_scp/watchdog.c",
         "patchSetId": 12

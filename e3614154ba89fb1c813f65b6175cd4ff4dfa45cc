@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a15f579_91b8daee",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-18T07:25:45Z",
+      "side": 1,
+      "message": "What is this tinysys thing? What does this section containt exactly?",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f46fe2c_795dff07",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-18T07:25:45Z",
+      "side": 1,
+      "message": "shared buffer with AP",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f492f120_5ef2367e",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-18T07:25:45Z",
+      "side": 1,
+      "message": "ditto, please describe a little better.",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7046f4d4_711e81c8",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-18T07:25:45Z",
+      "side": 1,
+      "message": "shared with AP too?",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c52ba1_27d8cd33",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-18T07:25:45Z",
+      "side": 1,
+      "message": "System",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 10
+      },
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
