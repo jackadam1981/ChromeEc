@@ -1,0 +1,22 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "chip/mt_scp/registers.h"
+#include "queue.h"
+
+enum vdec_type {
+	VDEC_H264,
+	VDEC_VP8,
+	VDEC_VP9,
+	VDEC_MAX,
+};
+
+typedef void (*vdec_msg_handler)(void *msg);
+
+struct vdec_service {
+	enum vdec_type type;
+	unsigned char msg[48];
+	vdec_msg_handler handler[VDEC_MAX];
+};

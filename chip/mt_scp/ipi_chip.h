@@ -23,6 +23,11 @@ enum ipi_id {
 	IPI_SCP_INIT = 0,
 	IPI_HOST_COMMAND,
 	IPI_MDP,
+	IPI_VDEC_H264,
+	IPI_VDEC_VP8,
+	IPI_VDEC_VP9,
+	IPI_VENC_H264,
+	IPI_VENC_VP8,
 	IPI_MAX
 };
 
@@ -71,6 +76,11 @@ int ipi_register(enum ipi_id id, ipi_handler_t handler);
  * Unregister a IPI handler.
  */
 int ipi_unregister(enum ipi_id id);
+
+/*
+ * Register a IPI as a wake-up source.
+ */
+void ipi_wakeup_ap_register(enum ipi_id id);
 
 /*
  * Send a IPI contents to AP.
