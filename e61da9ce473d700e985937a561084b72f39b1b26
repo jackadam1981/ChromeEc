@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7b7ff444_5fa22aca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-18T03:32:15Z",
+      "side": 1,
+      "message": "you\u0027ll need a CL: prefix here",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92dffc4c_c347a3d3",
         "filename": "chip/ish/hbm.h",
         "patchSetId": 19
