@@ -42,10 +42,10 @@ void led_set_color_battery(enum ec_led_colors color)
 	switch (color) {
 	case EC_LED_COLOR_AMBER:
 		gpio_set_level(GPIO_LED_1_L, LED_ON_LVL);
-		gpio_set_level(GPIO_LED_1_L, LED_ON_LVL);
+		gpio_set_level(GPIO_LED_2_L, LED_OFF_LVL);
 		break;
 	case EC_LED_COLOR_WHITE:
-		gpio_set_level(GPIO_LED_2_L, LED_OFF_LVL);
+		gpio_set_level(GPIO_LED_1_L, LED_OFF_LVL);
 		gpio_set_level(GPIO_LED_2_L, LED_ON_LVL);
 		break;
 	default: /* LED_OFF and other unsupported colors */
