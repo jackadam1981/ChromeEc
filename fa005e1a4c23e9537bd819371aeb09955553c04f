@@ -22,6 +22,30 @@
       "revId": "fa005e1a4c23e9537bd819371aeb09955553c04f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a05ec8_2a8e507e",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-18T21:41:15Z",
+      "side": 1,
+      "message": "Yes, although, for now, it does nothing but the purpose of code(and above) is to help further changes in \"handle encoding\". Functions below are using these functions with the specified type (heci_handle_t) so, if we want to have more encoding in handle, then we just need to change this part.\n\nWe can change handle encoding any time we want just by changing this code but for now, I don\u0027t have any idea except to put some magic number in upper bits. ^.^;;;;;;",
+      "parentUuid": "1ab95168_9e1bbc59",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 70
+      },
+      "revId": "fa005e1a4c23e9537bd819371aeb09955553c04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
