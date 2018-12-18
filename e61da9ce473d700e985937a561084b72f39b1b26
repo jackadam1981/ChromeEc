@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6c550e8_0d4a4985",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T18:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7ff444_5fa22aca",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92dffc4c_c347a3d3",
         "filename": "chip/ish/hbm.h",
         "patchSetId": 19
@@ -365,6 +389,30 @@
       "side": 1,
       "message": "FW sends host the bitmap of available HECI clients. The host uses this bitmap to generate fw address and it starts from 1. The macro is to find the corresponding client context.",
       "parentUuid": "d831431e_a97ad094",
+      "range": {
+        "startLine": 78,
+        "startChar": 64,
+        "endLine": 78,
+        "endChar": 77
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fafd382e_bc7e1225",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T18:51:53Z",
+      "side": 1,
+      "message": "The new comments help. thank you.",
+      "parentUuid": "d62ec6a0_8a378479",
       "range": {
         "startLine": 78,
         "startChar": 64,
@@ -985,6 +1033,53 @@
       "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "627b161e_579f1dcf",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T18:51:53Z",
+      "side": 1,
+      "message": "Thank you for pointing out that this in not the handle encoding scheme. I looked at the kernel driver and it does not provide more clarification to me [0]. Maybe I am missing something. There are no comments that I could find that specify that bit0 is reserved and bit1 is client number 0.\n\nEither way, we need more comments here and we most likely should have functions/macros that go between client number and fw address\n\n[0] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/db7a20f734db36ad2d40d0ecf0039701ddcab9a5/drivers/hid/intel-ish-hid/ishtp/hbm.c#230",
+      "parentUuid": "89e3266b_2f357ee3",
+      "range": {
+        "startLine": 456,
+        "startChar": 29,
+        "endLine": 456,
+        "endChar": 50
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb44f57_c7aae453",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T18:51:53Z",
+      "side": 1,
+      "message": "is_hbm_valid(...) seems more appropriate.",
+      "range": {
+        "startLine": 700,
+        "startChar": 11,
+        "endLine": 700,
+        "endChar": 30
+      },
+      "revId": "e61da9ce473d700e985937a561084b72f39b1b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

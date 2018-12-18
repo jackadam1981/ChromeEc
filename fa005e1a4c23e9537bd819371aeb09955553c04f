@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab95168_9e1bbc59",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-18T18:51:53Z",
+      "side": 1,
+      "message": "I feel like this is break encapsulation boundaries by knowing the FW address is the heci handle. What if we changed the heci_handle encoding, this would break right? What else can we do",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 70
+      },
+      "revId": "fa005e1a4c23e9537bd819371aeb09955553c04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
