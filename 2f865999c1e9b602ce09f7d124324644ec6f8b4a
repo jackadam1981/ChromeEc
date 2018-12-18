@@ -71,6 +71,52 @@
     },
     {
       "key": {
+        "uuid": "d3fdc3e5_45a4d606",
+        "filename": "board/atlas_ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-18T04:20:16Z",
+      "side": 1,
+      "message": "hmm... so that is the default toolchain in the chroot\nor potentially your desktop if you\u0027re compiling outside\nthe chroot and have the the 32 bit x86 compiler installed.\n\nwe should be using the coreboot toolchain.  i see that\nthe coreboot toolchain does not include the C++ compiler.\n\nlet\u0027s check with pgeorgi@ to see how we should proceed.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "2f865999c1e9b602ce09f7d124324644ec6f8b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0264e3e1_b11136ce",
+        "filename": "board/atlas_ish/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-18T04:20:16Z",
+      "side": 1,
+      "message": "-I... and -D... should go into CPPFLAGS instead.",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "2f865999c1e9b602ce09f7d124324644ec6f8b4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35e5dd94_61992906",
         "filename": "board/atlas_ish/hid.h",
         "patchSetId": 1
