@@ -46,6 +46,30 @@
       "revId": "47b4b3a321111b5ee2ee8787dc96d3c681d68f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cd0b4ef_a8b4a35f",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-18T00:31:24Z",
+      "side": 1,
+      "message": "are there specific flags in CFLAGS that maybe should be duplicated\nin CXXFLAGS?  maybe move them to CPPFLAGS if they are really\npre-processor flags?\n\nwhat is the argument for not removing CFLAGS from this recipe?\nCFLAGS seems out of place to me here.",
+      "parentUuid": "708a2c8f_0d12f734",
+      "range": {
+        "startLine": 79,
+        "startChar": 59,
+        "endLine": 79,
+        "endChar": 65
+      },
+      "revId": "47b4b3a321111b5ee2ee8787dc96d3c681d68f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
