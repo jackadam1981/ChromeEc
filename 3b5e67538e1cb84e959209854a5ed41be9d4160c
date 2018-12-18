@@ -45,6 +45,30 @@
       "revId": "3b5e67538e1cb84e959209854a5ed41be9d4160c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f85bf084_84f9bf7b",
+        "filename": "util/ec3po/interpreter_unittest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-12-18T20:15:14Z",
+      "side": 1,
+      "message": "I modified the logger names, so nothing is added if a name isn\u0027t given.",
+      "parentUuid": "535da559_0051003b",
+      "range": {
+        "startLine": 43,
+        "startChar": 48,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "3b5e67538e1cb84e959209854a5ed41be9d4160c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
