@@ -184,6 +184,7 @@ static struct pd_protocol {
 	int prev_request_mv;
 	/* Time for Try.SRC states */
 	uint64_t try_src_marker;
+	uint64_t try_timeout;
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -2874,15 +2875,20 @@ void pd_task(void *u)
 			}
 #if defined(CONFIG_USB_PD_DUAL_ROLE)
 			/*
-			 * Try.SRC state is embedded here. Wait for SNK
-			 * detect, or if timer expires, transition to
-			 * SNK_DISCONNETED.
+			 * Try.SRC state is embedded here. The port shall
+			 * transition to TryWait.SNK(SNK_DISCONNETED) after
+			 * tDRPTry(PD_T_DRP_TRY) and the SRC.Rd state has not
+			 * been detected and Vbus is within vSafe0V,
+			 * or after tTryTimeout(PD_T_TRY_TIMEOUT) and
+			 * the SRC.Rd state has not been detected.
 			 *
 			 * If Try.SRC state is not active, then this block
 			 * handles the normal DRP toggle from SRC->SNK
 			 */
 			else if ((pd[port].flags & PD_FLAGS_TRY_SRC &&
-				 get_time().val >= pd[port].try_src_marker) ||
+				 get_time().val >= pd[port].try_src_marker &&
+				 !pd_is_vbus_present(port)) ||
+				 (get_time().val >= pd[port].try_timeout) ||
 				 (!(pd[port].flags & PD_FLAGS_TRY_SRC) &&
 				  drp_state[port] != PD_DRP_FORCE_SOURCE &&
 				  drp_state[port] != PD_DRP_FREEZE &&
@@ -2985,7 +2991,6 @@ void pd_task(void *u)
 				/* If PD comm is enabled, enable TCPC RX */
 				if (pd_comm_is_enabled(port))
 					tcpm_set_rx_enable(port, 1);
-
 				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
 						  PD_FLAGS_CHECK_DR_ROLE;
 				hard_reset_count = 0;
@@ -3447,7 +3452,9 @@ void pd_task(void *u)
 				 * then force attempt to connect as source.
 				 */
 				pd[port].try_src_marker = get_time().val
-					+ PD_T_TRY_SRC;
+					+ PD_T_DRP_TRY;
+				pd[port].try_timeout = get_time().val
+					+ PD_T_TRY_TIMEOUT;
 				/* Swap roles to source */
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				tcpm_set_cc(port, TYPEC_CC_RP);
