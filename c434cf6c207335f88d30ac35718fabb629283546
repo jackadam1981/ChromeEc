@@ -22,6 +22,30 @@
       "revId": "c434cf6c207335f88d30ac35718fabb629283546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44aa7660_e6005c9a",
+        "filename": "Makefile",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2018-12-18T21:24:26Z",
+      "side": 1,
+      "message": "It is set for the ebuilds that call this makefile, such as chromeos-ec. I can add a comment explaining that if it would help.",
+      "parentUuid": "b4ef159b_6e815128",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 6
+      },
+      "revId": "c434cf6c207335f88d30ac35718fabb629283546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
