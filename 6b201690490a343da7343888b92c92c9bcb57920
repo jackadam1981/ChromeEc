@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f1aa8a8_4b9b4035",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 19
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:20Z",
+      "side": 1,
+      "message": "Oh... my mistake.. this should be part of HECI implementation patch.\nand I\u0027ll change to use config",
+      "parentUuid": "a3fd910f_822812bc",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "6b201690490a343da7343888b92c92c9bcb57920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a93eb8fe_541f3d40",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "6b201690490a343da7343888b92c92c9bcb57920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abbe1a5c_a3b2ac2b",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a93eb8fe_541f3d40",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 40
+      },
+      "revId": "6b201690490a343da7343888b92c92c9bcb57920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

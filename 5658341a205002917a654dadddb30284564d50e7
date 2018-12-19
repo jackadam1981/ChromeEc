@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "60740a7c_523f2bfc",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:20Z",
+      "side": 1,
+      "message": "macros has changed to static inline functions",
+      "parentUuid": "e798e439_a1f106d0",
+      "revId": "5658341a205002917a654dadddb30284564d50e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "077e7a0f_541b9ed6",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 13

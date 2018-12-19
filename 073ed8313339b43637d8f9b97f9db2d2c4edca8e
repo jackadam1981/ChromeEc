@@ -409,6 +409,30 @@
     },
     {
       "key": {
+        "uuid": "ee1e17ce_68e9af29",
+        "filename": "chip/ish/hid_device.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:20Z",
+      "side": 1,
+      "message": "HID formatted data can be generated in many ways. I2C, SPI,and so on.\n\nThese days, even you can easily find virtual HID device driver which just uses other physical sensor drivers to collect sensor data and creates completely new type of virtual HID device.\n\nI really want to keep the current way since I believe this is simple and easy for everyone. but if the current way is really bad or wrong, you can submit new CL after this. I don\u0027t mind.",
+      "parentUuid": "58355a54_b96ca298",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "073ed8313339b43637d8f9b97f9db2d2c4edca8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41736276_13b49dca",
         "filename": "chip/ish/hid_subsys.c",
         "patchSetId": 14
