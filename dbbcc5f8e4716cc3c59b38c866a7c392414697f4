@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5f3c270_e41cb1db",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-12-19T05:37:08Z",
+      "side": 1,
+      "message": "I think there four situations:\n\n1.time now \u003c try_src_marker and Vbus preset or not: stay in Try.SRC\n\n2.try_src_marker \u003c time now \u003c try_timeout and Vbus preset: stay in Try.SRC\n\n3.try_src_marker \u003c time now \u003c try_timeout and Vbus not preset: transition to TryWait.SNK\n\n4.try_timeout \u003c time now and Vbus preset or not: transition to TryWait.SNK",
+      "range": {
+        "startLine": 2889,
+        "startChar": 4,
+        "endLine": 2891,
+        "endChar": 37
+      },
+      "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
