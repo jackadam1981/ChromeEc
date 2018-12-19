@@ -679,6 +679,19 @@ void ccd_disable(void)
 	ccd_set_state(CCD_STATE_LOCKED);
 }
 
+int ccd_get_factory_mode(void)
+{
+	/*
+	 * If WP override at boot is on, and the current WP state is off,
+	 * then factory mode is enabled.
+	 */
+	if (ccd_get_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT)
+		&& !ccd_get_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED))
+		return 1;
+	else
+		return 0;
+}
+
 /******************************************************************************/
 /* Console commands */
 
