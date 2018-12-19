@@ -350,6 +350,9 @@ reset:
 
 #ifdef CONFIG_FPU
 	fninit
+
+	# set FPU control word to single precision.
+	fldcw 0x007f
 #endif
 
 	# Jump to C code
