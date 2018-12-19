@@ -93,14 +93,31 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 			 * open-drain low.
 			 */
 			GR_GPIO_SETDOUTEN(port) = mask;
-		else if (flags & GPIO_OPEN_DRAIN)
+		else if (flags & GPIO_OPEN_DRAIN) {
 			/*
 			 * Disable output for other open-drain cases to get a
 			 * high-Z pin.
 			 */
 			GR_GPIO_CLRDOUTEN(port) = mask;
+#ifdef CR50_DEV
+			if (port == 0) {
+				ccprintf("%s: OUT clear OUTEN bits %04x,"
+					"caller 0x%08x\n",
+					__func__, mask,
+					__builtin_return_address(0));
+			}
+#endif
+		}
 	} else {
 		GR_GPIO_CLRDOUTEN(port) = mask;
+#ifdef CR50_DEV
+		if (port == 0) {
+			ccprintf("%s: IN clear OUTEN bits %04x,"
+				"caller 0x%08x\n",
+				__func__, mask,
+				__builtin_return_address(0));
+		}
+#endif
 	}
 
 	/* Interrupt types */
