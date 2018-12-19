@@ -45,6 +45,29 @@
       "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c42c508_426cefc5",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-19T18:26:15Z",
+      "side": 1,
+      "message": "Also, does this early return still guarantee locking correctly? (exclusive access over memory)?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
