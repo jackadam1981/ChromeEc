@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a13161cf_6ad35077",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3360,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-19T23:51:27Z",
+      "side": 1,
+      "message": "Hmm... this causes the PS_RDY to be sent as a sink. Should it be in PD_STATE_SRC_SWAP_STANDBY?",
+      "range": {
+        "startLine": 3357,
+        "startChar": 0,
+        "endLine": 3360,
+        "endChar": 26
+      },
+      "revId": "ff252a64bdade2e20f3df56e3d12a35638241dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
