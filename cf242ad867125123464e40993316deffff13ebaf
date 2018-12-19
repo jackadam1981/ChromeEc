@@ -22,6 +22,30 @@
       "revId": "cf242ad867125123464e40993316deffff13ebaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59aed061_1975a210",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-19T22:03:40Z",
+      "side": 1,
+      "message": "We can use servo v4.",
+      "parentUuid": "3659dcb3_dc4b513c",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 35
+      },
+      "revId": "cf242ad867125123464e40993316deffff13ebaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
