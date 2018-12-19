@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d028d519_6cd7be89",
+        "filename": "board/snappy/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-19T20:41:31Z",
+      "side": 1,
+      "message": "What\u0027s the expected behavior of this flag? I remember the gas gauge sets it at 100% and keep it until 95%. Is it right?",
+      "range": {
+        "startLine": 142,
+        "startChar": 24,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "b30aabb535288b0a64d49d364b9045c89f26d959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
