@@ -138,7 +138,8 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 	 * S3 is not included because we can't distinguish whether we're booting
 	 * up or we're quietly sleeping.
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) &&
+		curr->batt.state_of_charge <= 80)
 		return 0;
 
 	/*
