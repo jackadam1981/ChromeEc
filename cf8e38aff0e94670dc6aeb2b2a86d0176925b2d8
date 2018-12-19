@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afac946b_7dbf4afc",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 35
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-19T18:59:05Z",
+      "side": 1,
+      "message": "update comment (and below)",
+      "range": {
+        "startLine": 20,
+        "startChar": 48,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a0ca2ed_9f5c0856",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 35
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-19T18:59:05Z",
+      "side": 1,
+      "message": "Controls the dead-battery pull-downs on charger side; either dead battery Rd (low) or Hi-Z (high)",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 75
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7627497_a0f4d313",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 35
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-19T18:59:05Z",
+      "side": 1,
+      "message": "TIM16_CH1",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a5840c_5dbba6e8",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-12-19T18:59:05Z",
+      "side": 1,
+      "message": "if SM_INIT is zero, couldn\u0027t you just \u003d {0} and be length-independent?",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
