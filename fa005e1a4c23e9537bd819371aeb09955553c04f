@@ -46,6 +46,30 @@
       "revId": "fa005e1a4c23e9537bd819371aeb09955553c04f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cddebbd6_d866f0ef",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-19T22:43:50Z",
+      "side": 1,
+      "message": "Looking at this again. I am okay with this. I mistakenly thought this was a handle from another layer, not this layer.",
+      "parentUuid": "85a05ec8_2a8e507e",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 70
+      },
+      "revId": "fa005e1a4c23e9537bd819371aeb09955553c04f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

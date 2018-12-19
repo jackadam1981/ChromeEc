@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17180dbc_2810540e",
+        "filename": "chip/ish/heci.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-19T22:43:50Z",
+      "side": 1,
+      "message": "nit: we could clean this up be starting this from i \u003d 1; and go to i \u003c\u003d num_clients\n\nthen drop the +1s in the loop",
+      "range": {
+        "startLine": 516,
+        "startChar": 6,
+        "endLine": 516,
+        "endChar": 11
+      },
+      "revId": "2bdf4807f33b52f813062c8ae04504289ab78fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
