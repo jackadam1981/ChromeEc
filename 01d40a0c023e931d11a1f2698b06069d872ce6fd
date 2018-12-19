@@ -22,6 +22,30 @@
       "revId": "01d40a0c023e931d11a1f2698b06069d872ce6fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8577a9c8_a6d56176",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2018-12-19T15:07:18Z",
+      "side": 1,
+      "message": "Yes you are correct. Source operand is memory location. It is indirect.\nI will correct it.",
+      "parentUuid": "dfc277ea_e00ac24f",
+      "range": {
+        "startLine": 355,
+        "startChar": 7,
+        "endLine": 355,
+        "endChar": 13
+      },
+      "revId": "01d40a0c023e931d11a1f2698b06069d872ce6fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
