@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e7b0b55_b3deb8cb",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1294665
+      },
+      "writtenOn": "2018-12-19T08:54:34Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "d8028962_d8e46aa5",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 70
+      },
+      "revId": "9d1f8bbdcf6d1614ae0962a7168205f63a602a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "222802c4_0d4c6316",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "86e400d6_9ea48123",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1294665
+      },
+      "writtenOn": "2018-12-19T08:54:34Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "222802c4_0d4c6316",
+      "range": {
+        "startLine": 983,
+        "startChar": 0,
+        "endLine": 988,
+        "endChar": 49
+      },
+      "revId": "9d1f8bbdcf6d1614ae0962a7168205f63a602a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83f2a4df_5b1e7545",
         "filename": "driver/charger/rt946x.h",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "9d1f8bbdcf6d1614ae0962a7168205f63a602a75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5541a73d_89c3d866",
+        "filename": "driver/charger/rt946x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1294665
+      },
+      "writtenOn": "2018-12-19T08:54:34Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "83f2a4df_5b1e7545",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "9d1f8bbdcf6d1614ae0962a7168205f63a602a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
