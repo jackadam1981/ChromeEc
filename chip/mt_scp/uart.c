@@ -158,6 +158,7 @@ void uart_init(void)
 	UART_DLL(UARTN) = div & 0xff;
 	UART_DLH(UARTN) = (div >> 8) & 0xff;
 	UART_LCR(UARTN) &= ~UART_LCR_DLAB;
+	UART_IER(UARTN) |= UART_IER_RDI;
 
 #if (UARTN < SCP_UART_COUNT)
 	task_enable_irq(UART_IRQ(UARTN));
