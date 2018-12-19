@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8981cadb_c5bb7925",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 35
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-12-19T19:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afac946b_7dbf4afc",
+      "range": {
+        "startLine": 20,
+        "startChar": 48,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a0ca2ed_9f5c0856",
         "filename": "board/chocodile_vpdmcu/gpio.inc",
         "patchSetId": 35
@@ -45,6 +69,30 @@
       "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22c258c1_25f03f2b",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 35
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-12-19T19:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a0ca2ed_9f5c0856",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 75
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7c859723_7f2e943f",
+        "filename": "board/chocodile_vpdmcu/gpio.inc",
+        "patchSetId": 35
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-12-19T19:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7627497_a0f4d313",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0a5840c_5dbba6e8",
         "filename": "common/usb_prl_sm.c",
         "patchSetId": 35
@@ -91,6 +163,30 @@
       "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c8c82f_ddb52ac6",
+        "filename": "common/usb_prl_sm.c",
+        "patchSetId": 35
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2018-12-19T19:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a5840c_5dbba6e8",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "cf8e38aff0e94670dc6aeb2b2a86d0176925b2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
