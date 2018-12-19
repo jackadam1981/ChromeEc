@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b93302da_d12a7e60",
+        "filename": "chip/ish/hid_subsys.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-19T21:30:45Z",
+      "side": 1,
+      "message": "Ah, this is a great find! I am glad we brought more formality to hid_handle_t",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 27
+      },
+      "revId": "5cc3616e12535bf6844249fc526b4834f9b95e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
