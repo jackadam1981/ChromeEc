@@ -350,6 +350,40 @@ const uint8_t *system_get_jump_tag(uint16_t tag, int *version, int *size)
 	return NULL;
 }
 
+__attribute__((weak)) uint32_t board_is_wp_enabled(void)
+{
+#ifdef CONFIG_WP_ALWAYS
+	return 1;
+#elif defined(CONFIG_WP_ACTIVE_HIGH)
+	return gpio_get_level(GPIO_WP);
+#elif defined(GPIO_WP_L)
+	return !gpio_get_level(GPIO_WP_L);
+#else
+	return 0;
+#endif
+}
+
+static void system_protect_tcpc_i2c_ports(void)
+{
+	uint32_t wp_enabled = board_is_wp_enabled();
+
+	/*
+	 * If WP is not enabled leave the tunnels open so that factory line
+	 * can do updates without a new RO BIOS.
+	 */
+	if (!wp_enabled) {
+		CPRINTS("WP not enabled, TCPC I2C tunnels may be unprotected");
+		return;
+	}
+
+#ifdef I2C_PORT_TCPC0
+	i2c_passthru_protect_port(I2C_PORT_TCPC0);
+#endif
+#ifdef I2C_PORT_TCPC1
+	i2c_passthru_protect_port(I2C_PORT_TCPC1);
+#endif
+}
+
 void system_disable_jump(void)
 {
 	disable_jump = 1;
@@ -915,6 +949,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 		/* That shouldn't return... */
 		return EC_ERROR_UNKNOWN;
 	case EC_REBOOT_DISABLE_JUMP:
+		system_protect_tcpc_i2c_ports();
 		system_disable_jump();
 		return EC_SUCCESS;
 #ifdef CONFIG_HIBERNATE
@@ -1169,6 +1204,7 @@ static int command_sysjump(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 #endif
 	} else if (!strcasecmp(argv[1], "disable")) {
+		system_protect_tcpc_i2c_ports();
 		system_disable_jump();
 		return EC_SUCCESS;
 	}

@@ -761,6 +761,12 @@ static int i2c_command_passthru(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 
+void i2c_passthru_protect_port(uint32_t port)
+{
+	if (get_i2c_port(port))
+		port_protected[port] = 1;
+}
+
 static int i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_i2c_passthru_protect *params = args->params;
@@ -790,7 +796,7 @@ static int i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 		resp->status = port_protected[params->port];
 		args->response_size = sizeof(*resp);
 	} else if (params->subcmd == EC_CMD_I2C_PASSTHRU_PROTECT_ENABLE) {
-		port_protected[params->port] = 1;
+		i2c_passthru_protect_port(params->port);
 	} else {
 		return EC_RES_INVALID_COMMAND;
 	}

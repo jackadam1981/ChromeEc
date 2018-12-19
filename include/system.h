@@ -644,4 +644,11 @@ int system_set_active_copy(enum system_image_copy_t copy);
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy);
 
+/**
+ * Optional board-level function to determine if the write protect is enabled.
+ * The default implementation tries to use the configuration to get the WP
+ * state. In the cases where the GPIO WP pins are enumerated, it is left to
+ * the board-specific implementation to override.
+ */
+__attribute__((weak)) uint32_t board_is_wp_enabled(void);
 #endif  /* __CROS_EC_SYSTEM_H */
