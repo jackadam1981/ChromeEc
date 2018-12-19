@@ -68,6 +68,30 @@
       "revId": "e963dbda1c0f9b6bc482ff7fe7e4a348111f3384",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a9d84e_c2fbc1db",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2018-12-19T03:37:59Z",
+      "side": 1,
+      "message": "Could you support wait function (busy-loop wait or not) via \"wait\" parameter?",
+      "parentUuid": "dca32039_0459a426",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 72
+      },
+      "revId": "e963dbda1c0f9b6bc482ff7fe7e4a348111f3384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

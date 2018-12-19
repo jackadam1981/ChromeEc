@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f056b40_a2d51130",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1299840
+      },
+      "writtenOn": "2018-12-19T03:37:59Z",
+      "side": 1,
+      "message": "For carefully, you need to check if in somebody use \"need wait\" in ISR",
+      "range": {
+        "startLine": 91,
+        "startChar": 58,
+        "endLine": 91,
+        "endChar": 62
+      },
+      "revId": "9a3f9ac0a8ac2c72e6fddc47f1e48a7d02d9eb86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
