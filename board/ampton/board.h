@@ -38,15 +38,6 @@
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
-#undef CONFIG_UART_TX_BUF_SIZE
-#define CONFIG_UART_TX_BUF_SIZE 4096
-
-/* Keyboard backlight is unimplemented in hardware */
-#undef CONFIG_PWM
-#undef CONFIG_PWM_KBLIGHT
-
-#define CONFIG_LED_COMMON
-
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
@@ -57,6 +48,12 @@
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT	TASK_EVENT_CUSTOM(1 << 2)
 #define CONFIG_SYNC_INT_EVENT		  	TASK_EVENT_CUSTOM(1 << 3)
 
+/* Keyboard backlight is unimplemented in hardware */
+#undef CONFIG_PWM
+#undef CONFIG_PWM_KBLIGHT
+
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 4096
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
