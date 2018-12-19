@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfc277ea_e00ac24f",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2018-12-19T09:14:01Z",
+      "side": 1,
+      "message": "The addressing mode here looks incorrect. I believe you want to load a value of 0x7f to FPU control word, i.e. use immediate addressing. But this seem to be using a direct memory load, i.e. it\u0027s loading content from address 0x7f. Can you please cross check?",
+      "range": {
+        "startLine": 355,
+        "startChar": 7,
+        "endLine": 355,
+        "endChar": 13
+      },
+      "revId": "01d40a0c023e931d11a1f2698b06069d872ce6fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
