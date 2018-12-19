@@ -8,6 +8,9 @@
 #include "config.h"
 #include "interrupts.h"
 
+# FPU precision control bits
+	.equ 	FPUCW_PC,			(3 << 8)
+
 .global __idt
 
 # GDT is loaded by ISH ROM. The FW code retains the same GDT
@@ -319,6 +322,12 @@ __gdt_ptr:
 	.word 24
 	.long __gdt
 
+
+#ifdef CONFIG_FPU
+__fpu_cw:
+	.word 0x0000
+#endif
+
 .section .init
 .code32
 
@@ -350,6 +359,11 @@ reset:
 
 #ifdef CONFIG_FPU
 	fninit
+
+	# set FPU control word to single precision.
+	fstcw	__fpu_cw
+	andw	$~(FPUCW_PC), __fpu_cw
+	fldcw __fpu_cw
 #endif
 
 	# Jump to C code
