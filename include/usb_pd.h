@@ -10,6 +10,13 @@
 
 #include "common.h"
 
+#undef LET_SRC_SEND_SFRST
+#undef LET_SNK_SEND_HDRST
+
+#ifdef LET_SNK_SEND_HDRST
+extern int HdRstCnt;
+#endif //LET_SNK_SEND_HDRST
+
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 

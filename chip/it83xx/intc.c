@@ -15,9 +15,18 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+#ifdef LET_SNK_SEND_HDRST
+int HdRstCnt;
+#endif //LET_SNK_SEND_HDRST
+
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
 /* Store each port last message id of received packet */
-static uint8_t message_id_last[USBPD_PORT_COUNT];
+uint8_t message_id_last[USBPD_PORT_COUNT]; //static
+/*
+ * TO DO:consider SOP'and SOP" cable packet
+ * static uint8_t message_id_last [2][USBPD_PORT_COUNT];
+ * 2-Dim store each port last message id of received cable packet
+ */
 
 /* Invalidate last received message id variable */
 void invalidate_last_message_id(int port)
@@ -28,6 +37,10 @@ void invalidate_last_message_id(int port)
 	 * with first received packet, so we initial an invalid value 0xff.
 	 */
 	message_id_last[port] = 0xff;
+	/*
+	 * TO DO:consider SOP'and SOP" cable packet
+	 * message_id_last [device or cable][port] = 0xff;
+	 */
 }
 
 static int consume_repeat_message(int port)
@@ -42,11 +55,13 @@ static int consume_repeat_message(int port)
 	 * messages, except softreset control request.
 	 */
 	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
-	    PD_HEADER_CNT(msg_header) == 0)
+	    PD_HEADER_CNT(msg_header) == 0) {
 		invalidate_last_message_id(port);
-	else if (message_id_last[port] != msg_id)
+		CPRINTS("receive soft: p[%d] id=%d", port, msg_id);
+	} else if (message_id_last[port] != msg_id) {
 		message_id_last[port] = msg_id;
-	else if (message_id_last[port] == msg_id) {
+		CPRINTS("receive diff msgid: p[%d] id=%d", port, msg_id);
+	} else if (message_id_last[port] == msg_id) {
 		/* If clear this bit, USBPD receives next packet */
 		IT83XX_USBPD_MRSR(port) = USBPD_REG_MASK_RX_MSG_VALID;
 		CPRINTS("receive repetitive msg id: p[%d] id=%d", port, msg_id);
@@ -64,8 +79,18 @@ static void chip_pd_irq(enum usbpd_port port)
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+#ifdef LET_SNK_SEND_HDRST
+		HdRstCnt++;
+#endif //LET_SNK_SEND_HDRST
 		/* Invalidate last received message id variable */
-		invalidate_last_message_id(port);
+		//invalidate_last_message_id(port);
+		/*
+		 * TO DO:consider cable with EMark,reset port partner and caable
+		 * invalid_message_id_last(0, port);
+		 * invalid_message_id_last(1, port);
+		 */
+		//ccprints("receive hard message_id_last[%d] = %d", port,
+		//	 message_id_last[port]);
 		task_set_event(PD_PORT_TO_TASK_ID(port),
 			PD_EVENT_TCPC_RESET, 0);
 	} else {

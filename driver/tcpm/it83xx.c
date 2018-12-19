@@ -211,8 +211,17 @@ static enum tcpc_transmit_complete it83xx_tx_data(
 		return TCPC_TX_COMPLETE_DISCARDED;
 
 	/* Transmit softreset, invalidate last received message id variable */
-	if (PD_HEADER_TYPE(header) == PD_CTRL_SOFT_RESET && length == 0)
-		invalidate_last_message_id(port);
+	//if (PD_HEADER_TYPE(header) == PD_CTRL_SOFT_RESET && length == 0) {
+		//invalidate_last_message_id(port);
+		/*
+		 * TO DO:consider SOP'and SOP" softreset packet,
+		 * reset port partner or caable
+		 * SOP:invalid_message_id_last(0, port);
+		 * SOP'and SOP":invalid_message_id_last(1, port);
+		 */
+		//ccprints("Transmit soft message_id_last[%d] = %d", port,
+		//	 message_id_last[port]);
+	//}
 
 	return TCPC_TX_COMPLETE_SUCCESS;
 }
@@ -233,8 +242,14 @@ static enum tcpc_transmit_complete it83xx_send_hw_reset(enum usbpd_port port,
 		return TCPC_TX_COMPLETE_FAILED;
 
 	/* Transmit hardreset, invalidate last received message id variable */
-	invalidate_last_message_id(port);
-
+	//invalidate_last_message_id(port);
+	/*
+	 * TO DO:consider cable with EMark, reset port partner and caable
+	 * invalid_message_id_last(0, port);
+	 * invalid_message_id_last(1, port);
+	 */
+	//ccprints("Transmit hard message_id_last[%d] = %d", port,
+	//	 message_id_last[port]);
 	return TCPC_TX_COMPLETE_SUCCESS;
 }
 
@@ -337,6 +352,12 @@ static void it83xx_init(enum usbpd_port port, int role)
 {
 	/* Invalidate last received message id variable */
 	invalidate_last_message_id(port);
+	/*
+	 * TO DO:consider cable with EMark, Init port partner and caable
+	 * invalid_message_id_last(0, port);
+	 * invalid_message_id_last(1, port);
+	 */
+	ccprints("init message_id_last[%d] = %d", port, message_id_last[port]);
 	/* bit7: Reload CC parameter setting. */
 	IT83XX_USBPD_CCPSR0(port) |= (1 << 7);
 	/* reset and disable HW auto generate message header */
@@ -579,13 +600,41 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
 	/* Invalidate last received message id variable */
-	invalidate_last_message_id(port);
+	//invalidate_last_message_id(port); //just in case
+	/*
+	 * TO DO:consider cable with EMark, Init port partner and caable
+	 * invalid_message_id_last(0, port);
+	 * invalid_message_id_last(1, port);
+	 */
+	ccprints("discon message_id_last[%d] = %d", port,
+		 message_id_last[port]);
+
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }
 
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it83xx_tcpm_sw_reset, HOOK_PRIO_DEFAULT);
+
+static void it83xx_tcpm_invalidate_last_message_id(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	/* Invalidate last received message id variable */
+	invalidate_last_message_id(port);
+	/*
+	 * TO DO:consider cable with EMark, Init port partner and caable
+	 * invalid_message_id_last(0, port);
+	 * invalid_message_id_last(1, port);
+	 */
+	ccprints("hook invalidate message_id_last[%d] = %d", port,
+		 message_id_last[port]);
+}
+
+DECLARE_HOOK(HOOK_USB_PD_RESET_MESSAGE_ID,
+	     it83xx_tcpm_invalidate_last_message_id, HOOK_PRIO_DEFAULT);
+
 
 const struct tcpm_drv it83xx_tcpm_drv = {
 	.init			= &it83xx_tcpm_init,

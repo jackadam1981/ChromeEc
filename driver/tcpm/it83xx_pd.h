@@ -108,5 +108,6 @@ extern const struct tcpm_drv it83xx_tcpm_drv;
 void it83xx_disable_pd_module(int port);
 /* Invalidate last received message id variable */
 extern void invalidate_last_message_id(int port);
+extern uint8_t message_id_last[USBPD_PORT_COUNT];
 
 #endif /* __CROS_EC_DRIVER_TCPM_IT83XX_H */
