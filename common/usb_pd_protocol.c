@@ -184,6 +184,7 @@ static struct pd_protocol {
 	int prev_request_mv;
 	/* Time for Try.SRC states */
 	uint64_t try_src_marker;
+	uint64_t try_timeout;
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -2871,32 +2872,55 @@ void pd_task(void *u)
 				pd[port].cc_state = PD_CC_NONE;
 				set_state(port,
 					PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
+				break;
 			}
 #if defined(CONFIG_USB_PD_DUAL_ROLE)
-			/*
-			 * Try.SRC state is embedded here. Wait for SNK
-			 * detect, or if timer expires, transition to
-			 * SNK_DISCONNETED.
-			 *
-			 * If Try.SRC state is not active, then this block
-			 * handles the normal DRP toggle from SRC->SNK
-			 */
-			else if ((pd[port].flags & PD_FLAGS_TRY_SRC &&
-				 get_time().val >= pd[port].try_src_marker) ||
-				 (!(pd[port].flags & PD_FLAGS_TRY_SRC) &&
-				  drp_state[port] != PD_DRP_FORCE_SOURCE &&
-				  drp_state[port] != PD_DRP_FREEZE &&
-				 get_time().val >= next_role_swap)) {
-				pd_set_power_role(port, PD_ROLE_SINK);
-				set_state(port, PD_STATE_SNK_DISCONNECTED);
-				tcpm_set_cc(port, TYPEC_CC_RD);
-				next_role_swap = get_time().val + PD_T_DRP_SNK;
-				pd[port].try_src_marker = get_time().val
-					+ PD_T_DEBOUNCE;
+			if (pd[port].flags & PD_FLAGS_TRY_SRC) {
+				/*
+				 * Try.SRC state is embedded here. The port
+				 * shall transition to TryWait.SNK after
+				 * tDRPTry (PD_T_DRP_TRY) and Vbus is within
+				 * vSafe0V, or after tTryTimeout
+				 * (PD_T_TRY_TIMEOUT). Otherwise we should stay
+				 * within Try.SRC (break).
+				 */
+				uint64_t now = get_time().val;
 
-				/* Swap states quickly */
-				timeout = 2*MSEC;
+				if ((now < pd[port].try_src_marker ||
+				     pd_is_vbus_present(port)) &&
+				    (now < pd[port].try_timeout))
+					break;
+
+				/*
+				 * We need to transition now, so update src
+				 * marker time and fall through to setting
+				 * state below.
+				 */
+				pd[port].try_src_marker =
+					get_time().val + PD_T_DEBOUNCE;
+
+			} else {
+				/*
+				 * If Try.SRC state is not active, then handle
+				 * the normal DRP toggle from SRC->SNK.
+				 */
+				if (get_time().val < next_role_swap ||
+				    drp_state[port] == PD_DRP_FORCE_SOURCE ||
+				    drp_state[port] == PD_DRP_FREEZE)
+					break;
+
+				/*
+				 * We need to transition now, so update next
+				 * role swap time and fall through to setting
+				 * state below.
+				 */
+				next_role_swap = get_time().val + PD_T_DRP_SNK;
 			}
+			/* Swap states quickly */
+			timeout = 2 * MSEC;
+			set_state(port, PD_STATE_SNK_DISCONNECTED);
+			pd_set_power_role(port, PD_ROLE_SINK);
+			tcpm_set_cc(port, TYPEC_CC_RD);
 #endif
 			break;
 		case PD_STATE_SRC_DISCONNECTED_DEBOUNCE:
@@ -3447,7 +3471,9 @@ void pd_task(void *u)
 				 * then force attempt to connect as source.
 				 */
 				pd[port].try_src_marker = get_time().val
-					+ PD_T_TRY_SRC;
+					+ PD_T_DRP_TRY;
+				pd[port].try_timeout = get_time().val
+					+ PD_T_TRY_TIMEOUT;
 				/* Swap roles to source */
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				tcpm_set_cc(port, TYPEC_CC_RP);
