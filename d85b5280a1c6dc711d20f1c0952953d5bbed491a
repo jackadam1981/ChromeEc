@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e204a6c2_211f2c48",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-19T21:22:05Z",
+      "side": 1,
+      "message": "you will need to add this to config.h with a description of what this config option does\n\nEnables doorbell inter process communication between ISH and HOST\n\nor something like that.\n\n\nYou must really have the presubmit checks turned off, this is something that it complains about. Are you using \"repo upload\" to upload changes?",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "d85b5280a1c6dc711d20f1c0952953d5bbed491a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
