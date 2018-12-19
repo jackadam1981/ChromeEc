@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2004e228_e3b16c21",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f62af09a_0451ba5c",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e4b4947_b5ef789b",
         "filename": "chip/ish/ipc_heci.c",
         "patchSetId": 19
@@ -1302,6 +1326,30 @@
     },
     {
       "key": {
+        "uuid": "89d43909_a1a65c38",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b6d9f1_464296a1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "400f1ebb_fa33f59c",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 19
@@ -1322,6 +1370,30 @@
       "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e8aeb2_f830b2b7",
+        "filename": "chip/ish/ipc_heci.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400f1ebb_fa33f59c",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "6d422a756645eea0e457f29ca549e521e3b3f1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

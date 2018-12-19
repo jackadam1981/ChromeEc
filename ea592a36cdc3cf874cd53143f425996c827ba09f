@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2eb0571e_8962faa1",
+        "filename": "chip/ish/ipc_heci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-19T19:13:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5420e82_ee7c9535",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "ea592a36cdc3cf874cd53143f425996c827ba09f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29ff2bd4_66888796",
         "filename": "chip/ish/ipc_heci.h",
         "patchSetId": 7
