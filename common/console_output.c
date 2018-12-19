@@ -75,6 +75,8 @@ int cprintf(enum console_channel channel, const char *format, ...)
 	rv2 = uart_vprintf(format, args);
 	va_end(args);
 
+	cflush();
+
 	return rv1 == EC_SUCCESS ? rv2 : rv1;
 }
 
@@ -104,6 +106,8 @@ int cprints(enum console_channel channel, const char *format, ...)
 	usb_va_end(args);
 
 	r = cputs(channel, "]\n");
+	cflush();
+
 	return r ? r : rv;
 }
 
