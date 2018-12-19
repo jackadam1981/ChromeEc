@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6eeb90d3_bf3caeb5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-19T22:02:05Z",
+      "side": 1,
+      "message": "Can you reuse this below (instead of repeating get_time().val)?",
+      "range": {
+        "startLine": 2887,
+        "startChar": 13,
+        "endLine": 2887,
+        "endChar": 16
+      },
+      "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5f3c270_e41cb1db",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -46,6 +69,53 @@
       "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11a51bff_cfb6e705",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-19T22:02:05Z",
+      "side": 1,
+      "message": "Does this look more readable?\n\n  if (now \u003c try_src_marker) {\n    break;\n  } else if (now \u003c try_timeout) {\n    if (vbus_present(port))\n      break;\n  }",
+      "parentUuid": "a8720d33_fbd99547",
+      "range": {
+        "startLine": 2889,
+        "startChar": 4,
+        "endLine": 2891,
+        "endChar": 37
+      },
+      "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c7d0a7_2c4624b7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2895,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-19T22:02:05Z",
+      "side": 1,
+      "message": "Can you specifically say \u0027TryWait.SNK\u0027?",
+      "range": {
+        "startLine": 2895,
+        "startChar": 10,
+        "endLine": 2895,
+        "endChar": 32
+      },
+      "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
