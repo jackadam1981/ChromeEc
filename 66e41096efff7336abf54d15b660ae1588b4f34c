@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d17ccf9_e4a30a04",
+        "filename": "chip/mt_scp/vdec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2018-12-19T07:28:38Z",
+      "side": 1,
+      "message": "should not have this not",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 7
+      },
+      "revId": "66e41096efff7336abf54d15b660ae1588b4f34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96804b06_15e073dc",
+        "filename": "chip/mt_scp/venc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2018-12-19T07:28:38Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 7
+      },
+      "revId": "66e41096efff7336abf54d15b660ae1588b4f34c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
