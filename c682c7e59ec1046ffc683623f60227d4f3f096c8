@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d67fb1e9_133f1c4e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-12-19T03:51:28Z",
+      "side": 1,
+      "message": "When time now \u003e try_src_marker(125ms) \u0026\u0026 no Vbus present, we should transit to TryWait.SNK. But our state will be stuck in Try.SRC by this if(550ms).",
+      "range": {
+        "startLine": 2893,
+        "startChar": 4,
+        "endLine": 2893,
+        "endChar": 35
+      },
+      "revId": "c682c7e59ec1046ffc683623f60227d4f3f096c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
