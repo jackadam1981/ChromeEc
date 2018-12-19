@@ -102,6 +102,10 @@ GPIO(STRAP_A1,        PIN(1, 13), GPIO_INPUT)
 GPIO(STRAP_B0,        PIN(1, 14), GPIO_INPUT)
 GPIO(STRAP_B1,        PIN(1, 15), GPIO_INPUT)
 
+/*
+ * If you change the names of EN_PP3300_INA_L, I2C_SCL_INA, or I2C_SDA_INA,
+ * you also need to update the usage in closed_source_set1.c
+ */
 /* Control the load switch powering the INA 3.3V rail */
 GPIO(EN_PP3300_INA_L, PIN(0, 11), GPIO_ODR_HIGH)
 /* GPIOs used for I2CM pins for INAs */
