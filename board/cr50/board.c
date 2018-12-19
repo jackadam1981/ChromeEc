@@ -221,7 +221,8 @@ const struct strap_desc strap_regs[] = {
 	 "a12"},
 };
 
-#define BOARD_PROPERTIES_DEFAULT (BOARD_SLAVE_CONFIG_I2C | BOARD_USE_PLT_RESET)
+#define BOARD_PROPERTIES_DEFAULT (BOARD_SLAVE_CONFIG_I2C | BOARD_USE_PLT_RESET \
+	| BOARD_CLOSED_SOURCE_SET1)
 static struct board_cfg board_cfg_table[] = {
 	/* SPI Variants: DIOA12 = 1M PD, DIOA6 = 1M PD */
 	/* Kevin/Gru: DI0A9 = 5k PD, DIOA1 = 1M PU */
