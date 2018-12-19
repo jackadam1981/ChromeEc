@@ -67,8 +67,11 @@ static enum ec_error_list set(const char *name, int value)
 	if (!gpio_is_implemented(signal))
 		return EC_ERROR_INVAL;
 
+	/* FIXME, for debug only - bypass flags check which is const data */
+#if 0
 	if (!(gpio_get_default_flags(signal) & GPIO_OUTPUT))
 		return EC_ERROR_INVAL;
+#endif
 
 	gpio_set_level(signal, value);
 
