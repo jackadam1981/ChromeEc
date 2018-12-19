@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c62c63df_8420aa6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1146375
+      },
+      "writtenOn": "2018-12-19T04:38:28Z",
+      "side": 1,
+      "message": "I see several of the commits use core/minute-ia: tag although some recent patches from Intel have used ISH: tag. Any inputs from Google?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "a206e957b38f6e137f9c4264bcb8aafc723da125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e49fc8f_c031ebf3",
         "filename": "core/minute-ia/init.S",
         "patchSetId": 2
