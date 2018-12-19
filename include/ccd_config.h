@@ -279,6 +279,13 @@ enum ccd_state ccd_get_state(void);
  */
 void ccd_disable(void);
 
+/**
+ * Get the factory mode state.
+ *
+ * @return 0 if factory mode is disabled, !=0 if factory mode is enabled.
+ */
+int ccd_get_factory_mode(void);
+
 /* Flags for ccd_reset_config() */
 enum ccd_reset_config_flags {
 	/* Also reset test lab flag */
