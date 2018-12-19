@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79bfd1fb_cc082a3a",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-19T07:24:33Z",
+      "side": 1,
+      "message": "This is the FreeRTOS layout, not EC.  Fix the description.",
+      "parentUuid": "1a15f579_91b8daee",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f46fe2c_795dff07",
         "filename": "chip/mt_scp/config_chip.h",
         "patchSetId": 18
@@ -33,6 +51,24 @@
       "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98bc8dfd_470b1ef9",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-19T07:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f46fe2c_795dff07",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "53748e1f_0568f861",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-19T07:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f492f120_5ef2367e",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7046f4d4_711e81c8",
         "filename": "chip/mt_scp/config_chip.h",
         "patchSetId": 18
@@ -67,6 +121,24 @@
       "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8621597_2277b7b5",
+        "filename": "chip/mt_scp/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-19T07:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7046f4d4_711e81c8",
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -90,6 +162,30 @@
       "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae665410_20eee2d4",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-19T07:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c52ba1_27d8cd33",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 10
+      },
+      "revId": "e3614154ba89fb1c813f65b6175cd4ff4dfa45cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
