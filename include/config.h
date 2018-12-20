@@ -1335,6 +1335,9 @@
 /* Support DMA transfers inside the EC */
 #undef CONFIG_DMA
 
+/* Support DMA address translation between AP and EC */
+#undef CONFIG_DMA_ADDR_TRANSLATE
+
 /* Use the common interrupt handlers for DMA IRQs */
 #define CONFIG_DMA_DEFAULT_HANDLERS
 

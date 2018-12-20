@@ -19,5 +19,6 @@ chip-$(CONFIG_I2C)+=i2c.o
 chip-$(CONFIG_IPI)+=ipi.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
+chip-$(CONFIG_DMA_ADDR_TRANSLATE)+=dma_api.o
 chip-$(HAS_TASK_VDEC_SERVICE)+=vdec.o
 chip-$(HAS_TASK_VENC_SERVICE)+=venc.o
