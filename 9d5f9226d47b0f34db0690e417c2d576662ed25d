@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "225f7384_27cadd94",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T14:37:28Z",
+      "side": 1,
+      "message": "I was confused over at\u0026t versus intel syntax. Thanks for the clarification",
+      "parentUuid": "e0fb8c1a_9af02c08",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c9ed7ed_203ce06d",
         "filename": "core/minute-ia/atomic.h",
         "patchSetId": 4
@@ -101,6 +125,30 @@
       "side": 1,
       "message": "This \"memory\" is asking compiler not to move this operation across other memory operations.\nFor short, it\u0027s memory barrier for compiler.",
       "parentUuid": "4c9ed7ed_203ce06d",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42636406_27419165",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T14:37:28Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "b4c3d8e5_51f23c9b",
       "range": {
         "startLine": 19,
         "startChar": 5,
@@ -157,6 +205,30 @@
       "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83083594_55ca715d",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T14:37:28Z",
+      "side": 1,
+      "message": "Could this potential cause an issue this access isn\u0027t guard by a memory barrier and could get re-ordered?\n\nThis optimization seems like it could cause subtle, non-atomic behavior, or am I missing something else?",
+      "parentUuid": "b341df3e_66ad3b32",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
