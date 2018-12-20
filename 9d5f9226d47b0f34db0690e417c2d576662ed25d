@@ -253,6 +253,30 @@
       "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab80c2ab_d8e2f5b5",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:46:47Z",
+      "side": 1,
+      "message": "Ah yes, the volatile will force what we need. Thanks!",
+      "parentUuid": "23766fca_e93b65a1",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
