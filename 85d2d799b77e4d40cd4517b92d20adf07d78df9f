@@ -22,6 +22,30 @@
       "revId": "85d2d799b77e4d40cd4517b92d20adf07d78df9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8e82bd_38f87f1c",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-12-20T10:40:10Z",
+      "side": 1,
+      "message": "Although we don\u0027t follow IEEE Std 1003.1-2017. But centroiding lib is expecting to have these constants after include \u003ccmath\u003e (and math.h). These 2 constants are defined here for compatibility reason.\n\nUsing FLDPI, we will have a good PI on FPU stack, but toolchain needs to generate extra floating point commands to process the FPU stack to 32bit float convertion:\n  fldcw _to32bit\n  fistpl _float_mem\n  fldcw _cw_restore\n\nSo we probably want to use standard macro instead.",
+      "parentUuid": "3d402a4c_35561846",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "85d2d799b77e4d40cd4517b92d20adf07d78df9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
