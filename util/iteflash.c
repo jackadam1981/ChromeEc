@@ -448,7 +448,7 @@ static int check_chipid(struct common_hnd *chnd)
 	 * 4:192KB
 	 * 8:256KB
 	 *
-	 * DX flash size(bit 7-4)
+	 * DX later flash size(bit 7-4)
 	 * 0:128KB
 	 * 2:192KB
 	 * 4:256KB
@@ -470,7 +470,7 @@ static int check_chipid(struct common_hnd *chnd)
 		return -EINVAL;
 	}
 	/* compute embedded flash size from CHIPVER field */
-	if ((ver & 0x0f) == 0x03)  {
+	if ((ver & 0x0f) >= 0x03)  {
 		chnd->flash_size = DX[(ver & 0xF0)>>5] * 1024;
 		chnd->is8320dx = 1;
 	} else {
