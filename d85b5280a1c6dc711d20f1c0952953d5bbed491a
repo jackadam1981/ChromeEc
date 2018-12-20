@@ -46,6 +46,30 @@
       "revId": "d85b5280a1c6dc711d20f1c0952953d5bbed491a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "987cf5c9_af4d3e52",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:46:28Z",
+      "side": 1,
+      "message": "See https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md for a guide on gerrit (and repo upload)\n\nThis is the general developers\u0027 guide: https://chromium.googlesource.com/chromiumos/docs/+/master/developer_guide.md",
+      "parentUuid": "7dfa4f64_f84a6ca1",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "d85b5280a1c6dc711d20f1c0952953d5bbed491a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
