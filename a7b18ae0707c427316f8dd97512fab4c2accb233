@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29b5f48b_7ff3cc33",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:41:13Z",
+      "side": 1,
+      "message": "where is MSEC defined, timer.h? If so, this is just 1000. so this value is not in counts but in microseconds. (unless counts is microseconds, but I thought the clock was 32kHz)",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "a7b18ae0707c427316f8dd97512fab4c2accb233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a17063_1d80ac7b",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:41:13Z",
+      "side": 1,
+      "message": "where is this used to re-enabled SLEEP_MASK_CONSOLE?",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 63
+      },
+      "revId": "a7b18ae0707c427316f8dd97512fab4c2accb233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
