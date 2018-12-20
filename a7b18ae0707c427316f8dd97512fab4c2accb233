@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a76142df_e92e354e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2018-12-20T23:10:26Z",
+      "side": 1,
+      "message": "please add a bugid for tracking.  either use one of the existing\nISH ones if you feel that\u0027s appropriate or create a more specific\none if this is going to be a more substantial power management\nseries.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "a7b18ae0707c427316f8dd97512fab4c2accb233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9393549b_22eda5e2",
         "filename": "chip/ish/build.mk",
         "patchSetId": 8
