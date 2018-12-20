@@ -229,6 +229,30 @@
       "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23766fca_e93b65a1",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2018-12-20T18:04:01Z",
+      "side": 1,
+      "message": "Compiler will not reorder this since it\u0027s volatile and we don\u0027t have out-of-execution in ISH.\nEven with ouf-of-execution, it would be ok since I believe inline function with volatile args is not actually inlined due to guarantee the order(implicit memory barrier).\n\nI\u0027m not sure if this is really optimization. It depends on how this function mostly frequently used. To be honest, I didn\u0027t check how this function is actually used when I modify this file. I just thought \"Oh.. why? hm.. probably, in many cases, this function is called with 0 in the location\".\n\nAnyway, there will be no problem with this since there\u0027s only one read operation. So precisely it is \"exclusive access over memory\" because no \"write\" is needed if the location already has 0.\n\nWe use atomic operation for cases that need \"exclusive R(ead)-M(odify)-W(write)\" on a location.",
+      "parentUuid": "83083594_55ca715d",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "9d5f9226d47b0f34db0690e417c2d576662ed25d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
