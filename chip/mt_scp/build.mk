@@ -10,7 +10,7 @@ CORE:=cortex-m
 CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
 
 # Required chip modules
-chip-y=clock.o gpio.o system.o uart.o
+chip-y=clock.o gpio.o system.o uart.o dma_api.o
 
 # Optional chip modules
 chip-$(CONFIG_CHIP_MEMORY_REGIONS)+=stepping_stone.o
