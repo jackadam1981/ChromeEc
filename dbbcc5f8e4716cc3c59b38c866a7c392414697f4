@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a8c3458_9d23b434",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-12-20T02:48:20Z",
+      "side": 1,
+      "message": "Compiler can\u0027t figure out our pd state machine, so it will judge variable now which may be used uninitialized.",
+      "parentUuid": "6eeb90d3_bf3caeb5",
+      "range": {
+        "startLine": 2887,
+        "startChar": 13,
+        "endLine": 2887,
+        "endChar": 16
+      },
+      "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5f3c270_e41cb1db",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b9447a05_e876ff77",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2891,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-12-20T02:48:20Z",
+      "side": 1,
+      "message": "Yes, thanks",
+      "parentUuid": "11a51bff_cfb6e705",
+      "range": {
+        "startLine": 2889,
+        "startChar": 4,
+        "endLine": 2891,
+        "endChar": 37
+      },
+      "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17c7d0a7_2c4624b7",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -116,6 +164,30 @@
       "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af1b892f_9bb91848",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2895,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-12-20T02:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c7d0a7_2c4624b7",
+      "range": {
+        "startLine": 2895,
+        "startChar": 10,
+        "endLine": 2895,
+        "endChar": 32
+      },
+      "revId": "dbbcc5f8e4716cc3c59b38c866a7c392414697f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
