@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a766b188_bb108c09",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "mt6370_, and ifdef the functions according to CONFIG_CHARGER_MT6370",
+      "range": {
+        "startLine": 865,
+        "startChar": 4,
+        "endLine": 865,
+        "endChar": 10
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1ff24a_fcb5f9cb",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "case MT6370_CHG_TYPE_DCP:\n\tcase MT6370_CHG_TYPE_SAMSUNG_CHARGER:\n\tcase MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:\n\tcase MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:\n\tcase MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:\n\tcase MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:\n\t\treturn CHARGE_SUPPLIER_BC12_DCP;",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 34
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82f155d8_98a0c0d9",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "I\u0027d just do:\n\nif (!(usb_stat \u0026 MT6370_MASK_DCD_TIMEOUT))\n\nand drop dcd_timeout",
+      "range": {
+        "startLine": 905,
+        "startChar": 7,
+        "endLine": 905,
+        "endChar": 18
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a736263_a980e318",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "dp_0_9v is not very useful IMHO.\n\nI\u0027d just do:\n\n\t/* Normal port (D+ \u003c 0.9V) */\n\tif (!(reg \u0026 MT6370_MASK_SS_OUT))",
+      "range": {
+        "startLine": 918,
+        "startChar": 0,
+        "endLine": 921,
+        "endChar": 14
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be2cd256_32e9dfc8",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "same, drop this variable",
+      "range": {
+        "startLine": 931,
+        "startChar": 6,
+        "endLine": 931,
+        "endChar": 13
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f08712c_17111d75",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "Split the function in 2:\n\nrt946x_get_bc12_device_type(void)\n\nand\n\nmt6370_get_bc12_device_type(int charger_type)",
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0214d4b_905be5ed",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "mt6370",
+      "range": {
+        "startLine": 1004,
+        "startChar": 4,
+        "endLine": 1004,
+        "endChar": 10
+      },
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bf8e40c_61757689",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-20T00:28:11Z",
+      "side": 1,
+      "message": "This change is going to break rt946x. Again, please split the functions if neeeded.",
+      "revId": "bfca940ac0c0ec47220ce9aabc309fe56a5833c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
