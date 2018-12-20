@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9df4b50_c2b78c1a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2903,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-12-20T08:14:32Z",
+      "side": 1,
+      "message": "Move to here. Timer count should start from we assert Rd which means we are in TryWait.SNK state.",
+      "range": {
+        "startLine": 2901,
+        "startChar": 4,
+        "endLine": 2903,
+        "endChar": 35
+      },
+      "revId": "069c1d2cebcb566ff6ea598be75dd9549881c76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e3c699e_a1c044b9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2923,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2018-12-20T08:14:32Z",
+      "side": 1,
+      "message": "So as too. Timer count should start from we assert Rd which means we are in Unattached.SNK state.",
+      "range": {
+        "startLine": 2921,
+        "startChar": 0,
+        "endLine": 2923,
+        "endChar": 35
+      },
+      "revId": "069c1d2cebcb566ff6ea598be75dd9549881c76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
