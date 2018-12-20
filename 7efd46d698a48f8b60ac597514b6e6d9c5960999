@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "d0783155_cca27ed4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T23:07:24Z",
+      "side": 1,
+      "message": "The spirit of this comment was right, but the details are wrong.\n\n (1) When Cr50 resets its i2c bus, it releases SDA (ie, it should float high), it doesn\u0027t assert it low.\n (2) An ACK is when the recevier asserts LOW on the bus, so \"NAK\" is when the receiver does NOT assert the line and it floats high.\n\nSo:\n  (a) If Cr50 releases bus during an incoming byte (ie., an address byte) it will not ACK the byte, leading to a NAK\n  (b) If Cr50 releases bus when it is in the middle of transmitting a byte, during the LOW phase of the i2c clock, it CAN LEAD TO *BAD DATA* (ie 0s reported as 1s), but NO i2c BUS errors, and no NAK (since it is the master that would ACK).\n  (c) If Cr50 release bus when it is in the middle of transmitting a 1 bit, during the HIGH phase of the i2c clock, it leads to i2c BUS ARBITRATION LOST errors (on the host) -\u003e because SDA should never change during the high phase of the clock.\n  (d) ** possible ** If there is a race inside the Cr50 between the poller and the i2c write complete interrupt, it may be possible for the write complete handler to fire, but discover that there are no bytes waiting for it, leading to Cr50\u0027s \"hwrng: no data available\" message, and thus Cr50 doesn\u0027t assert its IRQ and the master will time out.",
+      "parentUuid": "106c9f2c_5f8a9ace",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21626ed3_2575d74a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -110,6 +134,30 @@
       "writtenOn": "2018-12-20T20:16:23Z",
       "side": 1,
       "message": "how does this exactly help? We are just hoping that the chances of hitting SDA at zero five times in a row are much lower?\n\nI think the fix should be a better means of determining that there has been no bus activity since last time.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0dca16c_622035a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T23:07:24Z",
+      "side": 1,
+      "message": "@Vadim - correct, this only helps by making it much less likely that a single instance of bad timing will trigger this problem.  I completely agree that a better, more reliable mechanism for detecting \"stuck SDA\" would be a better solution.",
+      "parentUuid": "0f5974e6_ff53c7ea",
       "range": {
         "startLine": 38,
         "startChar": 5,
