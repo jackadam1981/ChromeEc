@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9393549b_22eda5e2",
+        "filename": "chip/ish/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T21:27:50Z",
+      "side": 1,
+      "message": "please rebase, jtag.c does not exist",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "a7b18ae0707c427316f8dd97512fab4c2accb233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29b5f48b_7ff3cc33",
         "filename": "chip/ish/clock.c",
         "patchSetId": 8
