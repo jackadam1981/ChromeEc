@@ -62,6 +62,29 @@
       "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe155db_ee758f57",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T18:38:01Z",
+      "side": 1,
+      "message": "interesting - a \u0027write\u0027 transaction (ie, if \u003e1 byte is processed here) does *NOT* reset the i2cs_read_irq_count....  but shouldn\u0027t it?",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 25
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
