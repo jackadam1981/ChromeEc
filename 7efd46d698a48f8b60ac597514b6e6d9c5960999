@@ -99,6 +99,29 @@
     },
     {
       "key": {
+        "uuid": "0f5974e6_ff53c7ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-20T20:16:23Z",
+      "side": 1,
+      "message": "how does this exactly help? We are just hoping that the chances of hitting SDA at zero five times in a row are much lower?\n\nI think the fix should be a better means of determining that there has been no bus activity since last time.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "013d3cf8_e23b6c58",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -219,6 +242,30 @@
       "writtenOn": "2018-12-20T18:38:01Z",
       "side": 1,
       "message": "interesting - a \u0027write\u0027 transaction (ie, if \u003e1 byte is processed here) does *NOT* reset the i2cs_read_irq_count....  but shouldn\u0027t it?",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 25
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9ea1ee_012262c9",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-12-20T20:16:23Z",
+      "side": 1,
+      "message": "this is a good question, I don\u0027t remember why only reads are counted.\n\njust removing this check in line 289 could be enough for this fix, or we should look into some better indication of the bus activity (like FIFO register pointers or some such to be looked at in case the transaction counter did not change since last time.",
+      "parentUuid": "6fe155db_ee758f57",
       "range": {
         "startLine": 290,
         "startChar": 0,
