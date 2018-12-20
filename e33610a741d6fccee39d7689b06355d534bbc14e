@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "bbf9708d_ab991632",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-20T22:58:36Z",
+      "side": 1,
+      "message": "shall we have a better protection in case a task without ENABLE_RESET(task_id) in task_reset_state[] decides to call task_enable_resets() or task_disable_resets()? right now such task will just reset itself through deferred_task_reset in case of task_enable_resets() and go into an endless sleep in case of task_disable_resets().",
+      "range": {
+        "startLine": 566,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 3
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81f86a48_5e19b053",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -163,6 +186,29 @@
     },
     {
       "key": {
+        "uuid": "9eb1eefa_8ece9803",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-20T22:58:36Z",
+      "side": 1,
+      "message": "or we could request deferred_task_reset, then sleep forever",
+      "range": {
+        "startLine": 674,
+        "startChar": 2,
+        "endLine": 675,
+        "endChar": 0
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f31a06_812001f1",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -202,6 +248,29 @@
         "startChar": 23,
         "endLine": 963,
         "endChar": 31
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e1dbbbe_15ea88eb",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-12-20T22:58:36Z",
+      "side": 1,
+      "message": "nit: \"task_id\" since the parameter is mandatory?",
+      "range": {
+        "startLine": 971,
+        "startChar": 4,
+        "endLine": 971,
+        "endChar": 13
       },
       "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
