@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d8d3e70_c93f7c8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T19:17:52Z",
+      "side": 1,
+      "message": "In my experience, most i2c devices work like this:\n\nRead register:\n  S \u003ci2c_addr|W\u003e \u003creg_addr\u003e R \u003ci2c_addr|R\u003e \u003cdata0\u003e .. \u003cdataN\u003e P\n\nWrite register:\n  S \u003ci2c_addr|W\u003e \u003creg_addr\u003e \u003cdata0\u003e .. \u003cdataN\u003e P\n\nSo, I think you are you saying for TPM *read* transactions, we must do this instead:\n\nRead TPM register:\n  S \u003ci2c_addr|W\u003e \u003creg_addr\u003e P  I  S \u003ci2c_addr|R\u003e \u003cdata0\u003e .. \u003cdataN\u003e P\n\nBut write-tpm-register transactions are as still similar to the above:\nWrite TPM register:\n  S \u003ci2c_addr|W\u003e \u003creg_addr\u003e \u003cdata0\u003e .. \u003cdataN\u003e P  I\n\nwhere:\n  S: i2c Start\n  R: i2c Repeated-start\n  P: i2c Stop\n  I: GPIO_INT_AP_L (Cr50-\u003eAP interrupt line)",
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e090ef59_064102e2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -18,6 +35,109 @@
         "startChar": 5,
         "endLine": 20,
         "endChar": 11
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01afbd5e_0eabefd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T19:17:52Z",
+      "side": 1,
+      "message": "If my above understanding is correct, I think the flow is more like:\n\n 1. Master writes a 1 byte register address to the tpm\n 2. Master waits for Cr50 to pulse GPIO_INT_AP_L.\n 3. Cr50 i2c write complete isr fires on the tpm\n   2.1 if exactly 1 byte is received, assume a read transaction is requested, increment i2cs_read_irq_count, and fill tx fifo with requested data.\n   2.2 else, start processing write register request \n 4. Cr50 pulses GPIO_INT_AP_L when data is ready-to-be-read / written\n 5. If master wanted to read, master sends an i2c read command to read data from Cr50 tx fifo.",
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106c9f2c_5f8a9ace",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T19:17:52Z",
+      "side": 1,
+      "message": "Is this the only possible result?\nI think it depends on the exact timing, and there are at least these 3 possible results (all of which you have seen):\n  (a) master receives a NAK for a byte it sent to Cr50; this happens ifCr50 resets i2c bus \u003d\u003e sets SDA\u003d0 while AP sends a 0, so AP doesn\u0027t see it until it checks for NAK.\n  (a) master sees a bus arbitration error if it tries to send a 1 while Cr50 is resetting i2c (ie Cr50 writes SDA\u003d0 overridding master\u0027s write of SDA\u003d1).\n  (b) master sees no bus error, but never receives IRQ, if poller aborts transaction after physical i2c bus transaction was completed successfully.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21626ed3_2575d74a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T19:17:52Z",
+      "side": 1,
+      "message": "wait ....  so in other words the following scenario would be a problem with the current Cr50?\n\n S \u003ci2c_addr|W\u003e \u003creg\u003e P  I       ..500 ms.. S \u003ci2c_addr|R\u003e \u003c0000_0000\u003e\n     cr50 500 ms timer starts---^                           ^-- SDA sampled here\n\nSo, if the Master is slow (~500 ms) to respond to GPIO_INT_AP_L, the Cr50 could abort if it saw SDA\u003d0 the middle of its own response?",
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013d3cf8_e23b6c58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T19:17:52Z",
+      "side": 1,
+      "message": "What if the Master is slow (~500 ms) to respond to GPIO_INT_AP_L?  That is, what if it takes a while to do the second half of the read?\n\n S \u003ci2c_addr|W\u003e \u003creg\u003e P  I       ..500 ms.. S \u003ci2c_addr|R\u003e \u003c0000_0000\u003e\n     cr50 500 ms timer starts---^                           ^-- SDA sampled here\n\nWould the Cr50 abort if it saw SDA\u003d0 the middle of its own response?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab4cc04_540f92d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T19:17:52Z",
+      "side": 1,
+      "message": "I2C SDA can\u0027t really be \"stuck high\".  Since SDA is Open-Drain, if the bus is high, either side can drive the bus low and both sides would then see low, so the bus isn\u0027t \"stuck\".  So, if the i2c slave is confused and the bus is high, the slave can always drive the bus low to signal a problem (cause an arb error, or NAK, or stop condition).  Thus, the bus can\u0027t be \"stuck high\".\n\nI2C can get \"stuck low\" when one side is actively driving low.  In this case the other side cannot modify SDA to signal that it is having a problem.  Hence the bus is stuck.",
+      "range": {
+        "startLine": 45,
+        "startChar": 33,
+        "endLine": 45,
+        "endChar": 50
       },
       "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
