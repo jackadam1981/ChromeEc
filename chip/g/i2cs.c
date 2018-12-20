@@ -104,6 +104,7 @@ static uint16_t last_read_pointer;
  */
 static uint16_t i2cs_read_irq_count;
 static uint16_t i2cs_read_recovery_count;
+static uint16_t i2cs_sda_low_count;
 
 static void i2cs_init(void)
 {
@@ -147,11 +148,21 @@ static void poll_read_state(void);
 DECLARE_DEFERRED(poll_read_state);
 
 /* Poll SDA line to detect the "hosed" condition. */
-#define READ_STATUS_CHECK_INTERVAL (500 * MSEC)
+#define READ_STATUS_CHECK_INTERVAL (100 * MSEC)
+/* Number of times SDA must be low between i2c writes before the i2c slave is
+ * restarted.
+ */
+#define READ_STATUS_CHECK_THRESHOLD 5
 
 /*
- * Check for receive problems, if found - reinitialize the i2c slave
- * interface.
+ * Reinitialize the i2c slave if the SDA line is stuck low for an extended
+ * period of time. Since we don't have a register describing the state the i2c
+ * controller is in, we poll the SDA line to see if there is traffic. This has
+ * the downside of not being able to detect if the master stopped clocking
+ * while the i2c slave was transmitting a 1 on SDA.
+ *
+ * Ideally we would also take into account the read begin and read complete
+ * interrupts to determine the last time we saw traffic on the bus.
  */
 static void poll_read_state(void)
 {
@@ -163,28 +174,52 @@ static void poll_read_state(void)
 	static uint16_t last_i2cs_read_irq_count = ~0;
 
 	if (ap_is_on()) {
-		if (!gpio_get_level(GPIO_I2CS_SDA)) {
-			if (last_i2cs_read_irq_count == i2cs_read_irq_count) {
+		/* There have been no write completions since the last poll */
+		if (last_i2cs_read_irq_count == i2cs_read_irq_count)
+			if (gpio_get_level(GPIO_I2CS_SDA))
 				/*
-				 * SDA line is low and number of RX interrupts
-				 * has not changed since last poll when it was
-				 * low, it must be hosed. Reinitialize the i2c
-				 * interface (which will also restart this
-				 * polling function).
+				 * The bus is either idle, the master has
+				 * stopped clocking while SDA is high, or we
+				 * have polled in the middle of a transaction
+				 * where SDA happens to be high.
 				 */
-				last_i2cs_read_irq_count = ~0;
-				i2cs_read_recovery_count++;
-				i2cs_register_write_complete_handler
-					(write_complete_handler_);
+				i2cs_sda_low_count = 0;
+			else
+				/*
+				 * The maser has stopped clocking while SDA is
+				 * low, or we have polled in the middle of a
+				 * transaction where SDA happens to be low.
+				 */
+				i2cs_sda_low_count++;
+		/*
+		 * There have been writes since the last poll.
+		 */
+		else
+			i2cs_sda_low_count = 0;
+
+		/*
+		 * SDA line has been stuck low without any write transactions
+		 * occurring. We will assume the controller is wedged.
+		 * Reinitialize the i2c interface (which will also restart this
+		 * polling function).
+		 */
+		if (i2cs_sda_low_count == READ_STATUS_CHECK_THRESHOLD) {
+			/* We don't reset the counter to ~0 just in case
+			 * i2cs_read_irq_count is already 0xFFFF.
+			 */
+			last_i2cs_read_irq_count = i2cs_read_irq_count - 1;
+			i2cs_sda_low_count = 0;
+			i2cs_read_recovery_count++;
+			i2cs_register_write_complete_handler
+				(write_complete_handler_);
 
 #ifdef CONFIG_TPM_LOGGING
-				tpm_log_event(TPM_I2C_RESET,
-					i2cs_read_recovery_count);
+			tpm_log_event(TPM_I2C_RESET,
+				i2cs_read_recovery_count);
 #endif
-				return;
-			}
-			last_i2cs_read_irq_count = i2cs_read_irq_count;
+			return;
 		}
+		last_i2cs_read_irq_count = i2cs_read_irq_count;
 	} else {
 		/*
 		 * AP is off, let's make sure that in case this function
