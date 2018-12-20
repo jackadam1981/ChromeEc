@@ -323,6 +323,30 @@
       "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6be97b5_36a0cce4",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T23:09:44Z",
+      "side": 1,
+      "message": "@Vadim - just fixing this improves things, but isn\u0027t a complete fix;\n\nThere are still scenarios where SDA would be low for a new transaction (either a heavily delayed \"read\" half of a \"write\"+\"read\" transaction, or a subsequent pure \"write\" transaction) that has not yet reached the write complete handler.",
+      "parentUuid": "fd9ea1ee_012262c9",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 25
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
