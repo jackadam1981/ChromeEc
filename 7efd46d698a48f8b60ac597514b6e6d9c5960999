@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e090ef59_064102e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-12-20T18:51:16Z",
+      "side": 1,
+      "message": "\"goto 2\" doesn\u0027t seem exactly true, since there is no I2C read after the I2C write and INT pulse.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01070b70_90f4129c",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 1
