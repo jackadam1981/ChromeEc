@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1edeb98_6eeb9440",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:24:54Z",
+      "side": 1,
+      "message": "the datasheet I have doesn\u0027t list this register. (it does list the one below at offset x108)\n\nCan you point me to the right datasheet (doc number would work)?",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775e757a_2dbfc296",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:24:54Z",
+      "side": 1,
+      "message": "add note that we are waiting for timer to settle (or whatever the reason is), please",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 52
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21af3bba_05f24e16",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:24:54Z",
+      "side": 1,
+      "message": "add comment that timer_id 2 is used only for idle wake up and should not be processed by OS",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 18
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c954abbf_76ca861b",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:24:54Z",
+      "side": 1,
+      "message": "this is the first access of timer2_config, we don\u0027t need to clear anything since it is initialized to 0 already\n\n(same for above timer1_config)",
+      "range": {
+        "startLine": 147,
+        "startChar": 19,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53962f9_850eb22d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T18:24:54Z",
+      "side": 1,
+      "message": "What do you think about dropping all of the other #ifdef guards in the function and only keeping these. It would make the rest of the code easier to read if it wasn\u0027t litter with #ifdef CONFIG_LOW_POWER_IDLE",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 28
+      },
+      "revId": "56ee5fd2dc4e65951b4fe91cbb05f44e77e7af57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
