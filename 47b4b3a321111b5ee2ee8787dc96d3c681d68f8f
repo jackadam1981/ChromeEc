@@ -70,6 +70,30 @@
       "revId": "47b4b3a321111b5ee2ee8787dc96d3c681d68f8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ed2e32_bfe8a8ef",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-12-20T10:50:22Z",
+      "side": 1,
+      "message": "I guess, it\u0027s mostly because we maintain all the flags in this way (Makefile.toolchain):\n  CFLAGS_CPU CFLAGS_DEBUG CFLAGS_y CFLAGS_DEFINE CFLAGS_INCLUDE CFLAGS_COVERAGE EXTRA_CFLAGS\n\nAnd CXXFLAGS is only the diff. I am not sure if it\u0027s a good idea to dup all above list into CXXFLAGS for removing the CFLAGS in cmd_cxx_to_o.",
+      "parentUuid": "1cd0b4ef_a8b4a35f",
+      "range": {
+        "startLine": 79,
+        "startChar": 59,
+        "endLine": 79,
+        "endChar": 65
+      },
+      "revId": "47b4b3a321111b5ee2ee8787dc96d3c681d68f8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
