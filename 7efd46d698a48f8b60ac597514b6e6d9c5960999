@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01070b70_90f4129c",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T18:34:57Z",
+      "side": 1,
+      "message": "can you add some {  } around these multi-line comment blocks.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 54
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea25679_abfd5daa",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T18:34:57Z",
+      "side": 1,
+      "message": "master",
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d63596f_b8fdc038",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2018-12-20T18:34:57Z",
+      "side": 1,
+      "message": "You probably know this, but the logic could be condensed to just:\n\n /*\n  * Increment the \"sda is low\" counter if there has not been a write since\n  * the last poll and the SDA line is \"still\" low when sampled.\n  */\n if (last_i2cs_read_irq_count \u003d\u003d i2cs_read_irq_count \u0026\u0026\n     !gpio_get_level(GPIO_I2CS_SDA))\n   i2cs_sda_low_count++;\n else\n   i2cs_sda_low_count \u003d 0;\n\n /*\n  * If sda was low for 5 consecutive samples since the last write\n  * transaction was completed, we assume that the I2C bus is stuck\n  * and reset the controller.\n  */",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 26
+      },
+      "revId": "7efd46d698a48f8b60ac597514b6e6d9c5960999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
