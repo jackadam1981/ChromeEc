@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "daaaf38b_678145f3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2899,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-20T18:20:03Z",
+      "side": 1,
+      "message": "Please update.",
+      "range": {
+        "startLine": 2898,
+        "startChar": 27,
+        "endLine": 2899,
+        "endChar": 19
+      },
+      "revId": "069c1d2cebcb566ff6ea598be75dd9549881c76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9df4b50_c2b78c1a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -18,6 +41,70 @@
         "startChar": 4,
         "endLine": 2903,
         "endChar": 35
+      },
+      "revId": "069c1d2cebcb566ff6ea598be75dd9549881c76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaebf16f_baf0d635",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2903,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-20T18:20:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9df4b50_c2b78c1a",
+      "range": {
+        "startLine": 2901,
+        "startChar": 4,
+        "endLine": 2903,
+        "endChar": 35
+      },
+      "revId": "069c1d2cebcb566ff6ea598be75dd9549881c76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0850d06e_11d42bad",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2905,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-20T18:20:03Z",
+      "side": 1,
+      "message": "nit: Can we break the try.src case here and start the no-try.src case fresh as follows?\n\n    timeout \u003d 2 * MSEC;\n    break;\n  }\n\n  if (now.val \u003c next_role_swap ||\n      drp_state[port] \u003d\u003d PD_DRP_FORCE_SOURCE ||\n      drp_state[port] \u003d\u003d PD_DRP_FREEZE)\n        break;",
+      "revId": "069c1d2cebcb566ff6ea598be75dd9549881c76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32449dc9_48fd890b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2919,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-12-20T18:20:03Z",
+      "side": 1,
+      "message": "please update it.",
+      "range": {
+        "startLine": 2918,
+        "startChar": 26,
+        "endLine": 2919,
+        "endChar": 19
       },
       "revId": "069c1d2cebcb566ff6ea598be75dd9549881c76f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
