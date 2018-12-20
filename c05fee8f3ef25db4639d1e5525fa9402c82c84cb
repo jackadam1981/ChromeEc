@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c76cdd44_6f3eba37",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:42:11Z",
+      "side": 1,
+      "message": "does this suffer from the reverse bug? (https://docs.huihoo.com/redhat/rhel-4-docs/rhel-as-en-4/i386-bugs.html)",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b20b09_683c497b",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:42:11Z",
+      "side": 1,
+      "message": "why did you drop the (0) here? Can you add it to be consistent with the above function?",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c49ff74f_03b94bf5",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:42:11Z",
+      "side": 1,
+      "message": "what is the \u0027u\u0027 constraint? Document link would be helpful too if you have one",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d808852c_814d8c53",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:42:11Z",
+      "side": 1,
+      "message": "do we also not need a floorf function?",
+      "range": {
+        "startLine": 121,
+        "startChar": 20,
+        "endLine": 121,
+        "endChar": 25
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858352a1_39fa8629",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:42:11Z",
+      "side": 1,
+      "message": "please add a comment saying this set Rounding Mode to 10B with is round up (toward +infinity)",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 53
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8da1553_600a112a",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:42:11Z",
+      "side": 1,
+      "message": "After the pop, doesn\u0027t this leave ST(0) unintentionally affected?\n\nwouldn\u0027t faddp st(0), st(0) be better?",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 8
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a872f4b0_e6105a3c",
+        "filename": "core/minute-ia/include/math.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T19:42:11Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 230,
+        "endChar": 8
+      },
+      "revId": "c05fee8f3ef25db4639d1e5525fa9402c82c84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
