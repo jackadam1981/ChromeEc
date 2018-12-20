@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fe3cc91_9add6771",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-20T21:23:15Z",
+      "side": 1,
+      "message": "the div instruction doesn\u0027t affect the flags register, right? It throws exceptions instead of updating the flags.",
+      "range": {
+        "startLine": 60,
+        "startChar": 70,
+        "endLine": 60,
+        "endChar": 74
+      },
+      "revId": "80e6645b2d9876be58102c454cb0cf188f1d1eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
