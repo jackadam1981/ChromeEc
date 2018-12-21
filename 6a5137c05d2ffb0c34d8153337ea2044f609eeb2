@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4ecf4cf_83d697bf",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-12-21T19:44:03Z",
+      "side": 1,
+      "message": "What is \"0000_0000\"? Maybe change to \"\u003cdata\u003e*\"?",
+      "range": {
+        "startLine": 163,
+        "startChar": 25,
+        "endLine": 163,
+        "endChar": 36
+      },
+      "revId": "6a5137c05d2ffb0c34d8153337ea2044f609eeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e806118_dbb45f72",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-12-21T19:44:03Z",
+      "side": 1,
+      "message": "Change to \"\u003creg\u003e \u003cdata\u003e*\"?",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 30
+      },
+      "revId": "6a5137c05d2ffb0c34d8153337ea2044f609eeb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
