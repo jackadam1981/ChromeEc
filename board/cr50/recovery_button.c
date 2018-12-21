@@ -9,6 +9,8 @@
 #include "console.h"
 #include "extension.h"
 #include "registers.h"
+#include "timer.h"
+#include "u2f_impl.h"
 #include "util.h"
 
 /*
@@ -20,9 +22,44 @@
  */
 static uint8_t rec_btn_force_pressed;
 
+/*
+ * Timestamp of the most recent recovery button press
+ */
+static timestamp_t last_press;
+
+/* how long do we keep the last button press as valid presence */
+#define RECOVERY_BUTTON_TIMEOUT (10 * SECOND)
+
+void recovery_button_record(void)
+{
+	ccprints("%s", __func__);
+	if (ap_is_on())
+		last_press = get_time();
+	else
+		ccprintf("AP is OFF - recovery not recorded\n");
+}
+
+enum touch_state pop_recovery_button_state(void)
+{
+	int recent = (get_time().val - RECOVERY_BUTTON_TIMEOUT)
+		< last_press.val;
+
+	last_press.val = 0;
+
+	/* Latched recovery button state */
+	return recent ? POP_TOUCH_YES : POP_TOUCH_NO;
+}
+
 static uint8_t is_rec_btn_pressed(void)
 {
 	if (rec_btn_force_pressed)
+		return 1;
+
+	/*
+	 * Platform has a defined recovery button combination and it
+	 * the combination was pressed within a timeout
+	 */
+	if (pop_recovery_button_state() == POP_TOUCH_YES)
 		return 1;
 
 	/*
@@ -67,6 +104,8 @@ static enum vendor_cmd_rc vc_get_rec_btn(enum vendor_cmd_cc code,
 {
 	*(uint8_t *)buf = is_rec_btn_pressed();
 	*response_size = 1;
+
+	ccprints("VENDOR_CC_GET_REC_BTN: state=%d", *(uint8_t *)buf);
 
 	return VENDOR_RC_SUCCESS;
 }
