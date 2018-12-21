@@ -67,6 +67,7 @@ typedef void (*isr_handler_t) (void);
 void init_interrupts(void);
 void mask_interrupt(unsigned int irq);
 void unmask_interrupt(unsigned int irq);
+unsigned int get_current_irq(void);
 #endif
 
 #endif	/* __CROS_EC_IA32_INTERRUPTS_H */
