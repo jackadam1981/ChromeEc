@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ba7768b_ba81de0a",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-21T07:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec635dee_7ced63cc",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "ec22d6db9a7d778028ea0b5b66b7f3a1e8db1158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6587a20_582bfa8d",
         "filename": "chip/mt_scp/memory_regions.inc",
         "patchSetId": 10
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6be31f7e_7421babe",
+        "filename": "chip/mt_scp/memory_regions.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-21T07:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6587a20_582bfa8d",
+      "revId": "ec22d6db9a7d778028ea0b5b66b7f3a1e8db1158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27202bb6_d7b32ea4",
         "filename": "chip/mt_scp/stepping_stone.c",
         "patchSetId": 10
@@ -56,6 +98,24 @@
       "revId": "ec22d6db9a7d778028ea0b5b66b7f3a1e8db1158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6eaf907_094c71ce",
+        "filename": "chip/mt_scp/stepping_stone.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-21T07:50:03Z",
+      "side": 1,
+      "message": "SGTM, Done",
+      "parentUuid": "27202bb6_d7b32ea4",
+      "revId": "ec22d6db9a7d778028ea0b5b66b7f3a1e8db1158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
