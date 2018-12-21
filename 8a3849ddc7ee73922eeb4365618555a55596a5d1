@@ -1,0 +1,238 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11508224_7b250383",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "alphabetical",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d926a55_51eb262d",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "I don\u0027t see anything related to DMA here.\n\nAlso, it\u0027d be better to have this in the same file as scp_memmap_init, to keep the mappings in one file.",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abd564b_28b1a915",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "const",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b14e840_539a4359",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "const",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab722451_a51d338c",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "Do we plan to have more entries here? If not, maybe hardcode the values below?",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a4fabde_938ed5fd",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "nit: brackets {} for this block preferred, even if not fully needed.",
+      "range": {
+        "startLine": 44,
+        "startChar": 34,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1baadbe_2100a956",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "We usually do: ap_addr \u0026 ADDR_MSB_MASK",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c603a986_e2813466",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 53
+      },
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69b8c37_6a97b341",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 58,
+        "startChar": 10,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67ba649_25649d7e",
+        "filename": "chip/mt_scp/dma_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "err, but 0 can be a valid address, right?",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000ef4ca_e7ce3dcb",
+        "filename": "chip/mt_scp/dma_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "uintptr_t is a bit more correct.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6187ecd0_5bba8c93",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:18Z",
+      "side": 1,
+      "message": "Thanks. Can we please describe this in the code that sets these registers, too?",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
