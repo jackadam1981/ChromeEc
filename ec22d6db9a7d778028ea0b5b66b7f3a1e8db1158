@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec635dee_7ced63cc",
+        "filename": "chip/mt_scp/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:12:12Z",
+      "side": 1,
+      "message": "Adding this to chip-y is ok: the option can\u0027t be disabled.",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "ec22d6db9a7d778028ea0b5b66b7f3a1e8db1158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6587a20_582bfa8d",
+        "filename": "chip/mt_scp/memory_regions.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:12:12Z",
+      "side": 1,
+      "message": "REGION_LOAD(stepping_stone, rwx, 0x00000, 0x8)",
+      "revId": "ec22d6db9a7d778028ea0b5b66b7f3a1e8db1158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27202bb6_d7b32ea4",
+        "filename": "chip/mt_scp/stepping_stone.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:12:12Z",
+      "side": 1,
+      "message": "I don\u0027t know if this is much better, but you can keep both symbols in the same section:\n\nextern void* stack_end;\nextern void reset(void);\n\n__keep  __SECTION_KEEP(stepping_stone)\nconst void* header[2] \u003d {\n\t\u0026stack_end,\n\t\u0026reset\n};",
+      "revId": "ec22d6db9a7d778028ea0b5b66b7f3a1e8db1158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
