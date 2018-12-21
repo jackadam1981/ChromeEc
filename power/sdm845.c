@@ -429,6 +429,7 @@ enum power_state power_chipset_init(void)
 	 * Some batteries use clock stretching feature, which requires
 	 * more time to be stable.
 	 */
+	battery_wait_for_stable();
 
 	return init_power_state;
 }
