@@ -673,5 +673,5 @@ int task_start(void)
 #ifdef CONFIG_TASK_PROFILING
 	task_start_time = exc_end_time = get_time().val;
 #endif
-	return __task_start(&need_resched_or_profiling);
+	return __task_start();
 }
