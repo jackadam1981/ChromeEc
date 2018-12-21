@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c11abf7_b303e103",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:56:11Z",
+      "side": 1,
+      "message": "cast not needed",
+      "range": {
+        "startLine": 187,
+        "startChar": 19,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "68d16a04007dfc6a5116aa6254bdcb08c0e4750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b7500f_ef274115",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:56:11Z",
+      "side": 1,
+      "message": "if (in_msg[0] !\u003d EC_HOST_REQUEST_VERSION) {\n  CPRINTS(\"ERROR: Protocol version is not supported!\");\n\n/* debug prints */\n\n  return;\n}\n\nThen you can de-indent the rest of the code",
+      "revId": "68d16a04007dfc6a5116aa6254bdcb08c0e4750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cf2c7f2_ac9769cf",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:56:11Z",
+      "side": 1,
+      "message": "host_packet_receive already does these checks:\n\n        if (pkt-\u003erequest_size \u003c sizeof(*r)) {\n        if (pkt-\u003erequest_size \u003e pkt-\u003erequest_max) {",
+      "revId": "68d16a04007dfc6a5116aa6254bdcb08c0e4750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60efe386_69f8aa3e",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:56:11Z",
+      "side": 1,
+      "message": "\"trailing byte\" is enough, that means past-end.",
+      "range": {
+        "startLine": 217,
+        "startChar": 40,
+        "endLine": 217,
+        "endChar": 62
+      },
+      "revId": "68d16a04007dfc6a5116aa6254bdcb08c0e4750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17632513_6d7a99c5",
+        "filename": "include/host_command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T07:56:11Z",
+      "side": 1,
+      "message": "no need for the ifdef, linker will complain.",
+      "revId": "68d16a04007dfc6a5116aa6254bdcb08c0e4750a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
