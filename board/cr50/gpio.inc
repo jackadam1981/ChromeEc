@@ -108,6 +108,9 @@ GPIO(EN_PP3300_INA_L, PIN(0, 11), GPIO_ODR_HIGH)
 GPIO(I2C_SCL_INA,     PIN(0, 12), GPIO_INPUT)
 GPIO(I2C_SDA_INA,     PIN(0, 13), GPIO_INPUT)
 
+/* Alternate EC reset pin on DIOM4 */
+GPIO(ALT_EC_RST_L,    PIN(1, 5), GPIO_ODR_HIGH)
+
 /*
  * Use this to poll the state of the I2CS SDA line. Note that this is not
  * necessary if SPI interface is used to communicate with the AP, if needed,
@@ -157,6 +160,7 @@ PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
  */
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT | DIO_OUTPUT)
 PINMUX(GPIO(BATT_PRES_L),     M2, 0)
+PINMUX(GPIO(ALT_EC_RST_L),    M4, DIO_INPUT | DIO_OUTPUT)
 PINMUX(GPIO(I2C_SCL_INA),     B0, DIO_INPUT)
 PINMUX(GPIO(I2C_SDA_INA),     B1, DIO_INPUT)
 /* UARTs */

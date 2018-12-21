@@ -17,8 +17,6 @@
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
 
-DECLARE_DEFERRED(deassert_ec_rst);
-
 void power_button_release_enable_interrupt(int enable)
 {
 	/* Clear any leftover power button rising edge detection interrupts */
