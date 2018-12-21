@@ -24,6 +24,7 @@
 #include "nvmem_vars.h"
 #include "rbox.h"
 #include "rdd.h"
+#include "recovery_button.h"
 #include "registers.h"
 #include "scratch_reg1.h"
 #include "signed_header.h"
@@ -673,6 +674,18 @@ static void maybe_trigger_ite_sync(void)
 	generate_ite_sync();
 }
 
+/*
+ * This interrupt handler will be called if the RBOX key combo is detected.
+ */
+static void key_combo0_irq(void)
+{
+	GWRITE_FIELD(RBOX, INT_STATE, INTR_BUTTON_COMBO0_RDY, 1);
+	recovery_button_record();
+	board_reboot_ec();
+	CPRINTS("Recovery Requested");
+}
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT, key_combo0_irq, 0);
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -755,6 +768,16 @@ static void board_init(void)
 	 * supported.
 	 */
 	bitbang_config.uart_in = ec_uart.producer.queue;
+
+	/*
+	 * Enable interrupt handler for RBOX key combo so it can be used to
+	 * store the recovery request.
+	 */
+	if (board_uses_closed_source_set1()) {
+		/* Enable interrupt handler for reset button combo */
+		task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT);
+		GWRITE_FIELD(RBOX, INT_ENABLE, INTR_BUTTON_COMBO0_RDY, 1);
+	}
 
 	/*
 	 * Note that the AP, EC, and servo state machines do not have explicit
@@ -953,6 +976,15 @@ void board_reboot_ap(void)
 }
 
 /**
+ * Reboot the EC
+ */
+void board_reboot_ec(void)
+{
+	assert_ec_rst();
+	deassert_ec_rst();
+}
+
+/**
  * Console command to toggle system (AP) reset
  */
 static int command_sys_rst(int argc, char **argv)
@@ -1039,12 +1071,27 @@ void assert_ec_rst(void)
 
 	wait_ec_rst(1);
 }
-void deassert_ec_rst(void)
+
+static void deassert_ec_rst_now(void)
 {
 	wait_ec_rst(0);
 
 	if (uart_bitbang_is_enabled())
 		task_enable_irq(bitbang_config.rx_irq);
+}
+DECLARE_DEFERRED(deassert_ec_rst_now);
+
+void deassert_ec_rst(void)
+{
+	/*
+	 * On closed source set1, the EC requires a minimum 30 ms pulse to
+	 * properly reset.  Ensure EC reset is never de-asesrted for less
+	 * than this time.
+	 */
+	if (board_uses_closed_source_set1())
+		hook_call_deferred(&deassert_ec_rst_now_data, 30 * MSEC);
+	else
+		deassert_ec_rst_now();
 }
 
 int is_ec_rst_asserted(void)
@@ -1065,9 +1112,7 @@ static int command_ec_rst(int argc, char **argv)
 
 		if (!strcasecmp("pulse", argv[1])) {
 			ccprintf("Pulsing EC reset\n");
-			assert_ec_rst();
-			usleep(200);
-			deassert_ec_rst();
+			board_reboot_ec();
 		} else if (parse_bool(argv[1], &val)) {
 			if (val)
 				assert_ec_rst();
