@@ -233,6 +233,24 @@
       "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae479532_963e20bf",
+        "filename": "chip/mt_scp/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-12-21T08:07:35Z",
+      "side": 1,
+      "message": "(scp_memmap_init)",
+      "parentUuid": "6187ecd0_5bba8c93",
+      "revId": "8a3849ddc7ee73922eeb4365618555a55596a5d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
