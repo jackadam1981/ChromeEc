@@ -56,7 +56,6 @@
 /* By default, set hcdebug to off */
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
-#undef CONFIG_LID_SWITCH
 #undef CONFIG_LTO
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_IGNORE_LID
@@ -99,9 +98,8 @@
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 #endif /* SECTION_IS_RW */
 
-/* To be able to indicate the device is in tablet mode. */
-#define CONFIG_TABLET_MODE
-#define CONFIG_TABLET_MODE_SWITCH
+/* Emulate hall covering by lid. */
+#define GPIO_LID_OPEN GPIO_HALL_INT_L
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 256
