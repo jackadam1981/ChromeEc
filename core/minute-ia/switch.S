@@ -9,6 +9,12 @@
 #include "registers.h"
 #include "task_defs.h"
 
+#ifdef CONFIG_TASK_PROFILING
+#define task_start_irq_handler_call call task_start_irq_handler
+#else
+#define task_start_irq_handler_call
+#endif
+
 .text
 
 .extern current_task
@@ -57,7 +63,7 @@ default_int_handler:
 .endfunc
 
 # Switches from one task to another if ready.
-# __schedule triggeres software interrupt ISH_TS_VECTOR, which is handled by
+# __schedule triggers software interrupt ISH_TS_VECTOR, which is handled by
 # __switchto
 .align 4
 .func __switchto
@@ -66,6 +72,7 @@ __switchto:
 	# Save current task
 	pusha
 	ASM_LOCK_PREFIX addl $1, __in_isr
+	task_start_irq_handler_call
 
 	# __schedule() copies 'resched' to %ecx and 'desched' to %edx before
 	# triggering ISH_TS_VECTOR
