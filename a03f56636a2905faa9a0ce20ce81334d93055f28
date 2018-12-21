@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55fd8a31_55782d93",
+        "filename": "core/minute-ia/init.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-12-21T16:57:55Z",
+      "side": 1,
+      "message": "since this is the first access to this register after reset, can we initialize __fpu_cw to 0x7f (above) and only perform the fldcw __fpu_cw here?",
+      "range": {
+        "startLine": 364,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 28
+      },
+      "revId": "a03f56636a2905faa9a0ce20ce81334d93055f28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
