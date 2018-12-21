@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "99d04cf7_6be58ecd",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "Can you change to #define TASK_RESET_SUPPORTED and add Daisuke\u0027s suggested macro plus some other helper macros.\n\n#define TASK_RESET_UNSUPPORTED 0\n#define TASK_RESET_STATE_MASK     TASK_RESET_SUPPORTED|TASK_RESET_LOCK          \n#define TASK_WAITERS_MASK         ~TASK_RESET_STATE_MASK\n#define TASK_RESET_STATE_LOCKED   TASK_RESET_SUPPORTED|TASK_RESET_LOCK\n#define TASK_RESET_STATE_UNLOCKED TASK_RESET_SUPPORTED",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71169be1_4fd645f7",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -71,6 +94,52 @@
     },
     {
       "key": {
+        "uuid": "a6ac99f1_07ac6a2f",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "What happens if the resetting task owns a mutex?  What happens if the resetting task is waiting on a mutex and then the current mutex owner releases the mutex?  Can you write some test tasks to verify behavior for this?",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 38
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1938c93_7b4da4e9",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "All callers to this routine always set TASK_RESET_ENABLED in the to_value.  Change this routine to always preserve this bit.",
+      "range": {
+        "startLine": 538,
+        "startChar": 11,
+        "endLine": 538,
+        "endChar": 29
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca40679f_9927fcaf",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -87,6 +156,29 @@
         "startChar": 10,
         "endLine": 545,
         "endChar": 19
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24eb591e_cdd9ebc6",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "Can you add?\nASSERT((*state \u0026 TASK_RESET_STATE_MASK) \u003d\u003d TASK_RESET_STATE_LOCKED)\n\nThis now can be tested easily by calling task_enable_resets() back to back.",
+      "range": {
+        "startLine": 559,
+        "startChar": 4,
+        "endLine": 559,
+        "endChar": 44
       },
       "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -140,6 +232,52 @@
     },
     {
       "key": {
+        "uuid": "24d82629_fa8296d2",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "I agree with Diasuke that the overload of state containing enable/lock bits and waiter ID bits makes this code hard to follow.  \n\nI would like to see wrapper functions around update_reset_state() that have a descriptive name of the actual action being performed.\n\nThis call here could be something like unlock_resets() or enable_resets().  This would return true only if waiters is zero.",
+      "range": {
+        "startLine": 566,
+        "startChar": 6,
+        "endLine": 566,
+        "endChar": 24
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d857650_342e7c28",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "Under what conditions \"with correctly written code\" could task_disable_resets() be called and have either TASK_RESET_LOCK set or have bits set in TASK_WAITERS_MASK?  The only other place TASK_RESET_LOCK is set is in task_reset().  If task_reset() sets the lock, then the task is reset immediately.\n\nI think the sleep forever may be unneeded here, and it would be better to add two asserts:\n\nASSERT((*state \u0026 TASK_RESET_STATE_MASK) \u003d\u003d TASK_RESET_STATE_UNLOCKED)\nASSERT((*state \u0026 TASK_WAITERS_MASK) \u003d\u003d 0)\n\nAlternatively, if update_reset_state() fails, then ASSERT.",
+      "range": {
+        "startLine": 591,
+        "startChar": 4,
+        "endLine": 593,
+        "endChar": 28
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81f86a48_5e19b053",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -163,6 +301,29 @@
     },
     {
       "key": {
+        "uuid": "02ec6a71_7fa67977",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "Similar to above, make a wrapper called lock_resets() or disable_resets().",
+      "range": {
+        "startLine": 598,
+        "startChar": 6,
+        "endLine": 598,
+        "endChar": 24
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9ce4100_1e0677f1",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 7
@@ -179,6 +340,52 @@
         "startChar": 4,
         "endLine": 599,
         "endChar": 33
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fb18360_be520da5",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "Can you rename this to task_was_reset() or something similar.  Should make the calling task easier to read.  e.g.\n  void tpm_task(void)\n      if (task_was_reset())\n          tpm_reset_now();",
+      "range": {
+        "startLine": 607,
+        "startChar": 4,
+        "endLine": 607,
+        "endChar": 22
+      },
+      "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dea50fb_f071892c",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T21:29:29Z",
+      "side": 1,
+      "message": "I would find this more readable as \nif (cleanup_req)\n    while (!update_reset_state(   // etc\n\nYou can also change update_reset_state() to unlock_resets() if you create wrapper functions.",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 0
       },
       "revId": "e33610a741d6fccee39d7689b06355d534bbc14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
