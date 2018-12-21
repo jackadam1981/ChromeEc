@@ -162,6 +162,10 @@ SECTIONS
         KEEP(*(.rodata.HOOK_USB_PD_DISCONNECT))
         __hooks_usb_pd_disconnect_end = .;
 
+        __hooks_usb_pd_reset_message_id = .;
+        KEEP(*(.rodata.HOOK_USB_PD_RESET_MESSAGE_ID))
+        __hooks_usb_pd_reset_message_id_end = .;
+
         __deferred_funcs = .;
         KEEP(*(.rodata.deferred))
         __deferred_funcs_end = .;

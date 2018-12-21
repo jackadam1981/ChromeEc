@@ -210,10 +210,6 @@ static enum tcpc_transmit_complete it83xx_tx_data(
 	if (r > PD_RETRY_COUNT)
 		return TCPC_TX_COMPLETE_DISCARDED;
 
-	/* Transmit softreset, invalidate last received message id variable */
-	if (PD_HEADER_TYPE(header) == PD_CTRL_SOFT_RESET && length == 0)
-		invalidate_last_message_id(port);
-
 	return TCPC_TX_COMPLETE_SUCCESS;
 }
 
@@ -231,9 +227,6 @@ static enum tcpc_transmit_complete it83xx_send_hw_reset(enum usbpd_port port,
 
 	if (IT83XX_USBPD_MTSR0(port) & USBPD_REG_MASK_SEND_HW_RESET)
 		return TCPC_TX_COMPLETE_FAILED;
-
-	/* Transmit hardreset, invalidate last received message id variable */
-	invalidate_last_message_id(port);
 
 	return TCPC_TX_COMPLETE_SUCCESS;
 }
@@ -579,13 +572,27 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
 	/* Invalidate last received message id variable */
-	invalidate_last_message_id(port);
+	//invalidate_last_message_id(port); //just in case
+
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }
 
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, it83xx_tcpm_sw_reset, HOOK_PRIO_DEFAULT);
+
+static void it83xx_tcpm_invalidate_last_message_id(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	/* Invalidate last received message id variable */
+	invalidate_last_message_id(port);
+}
+
+DECLARE_HOOK(HOOK_USB_PD_RESET_MESSAGE_ID,
+	     it83xx_tcpm_invalidate_last_message_id, HOOK_PRIO_DEFAULT);
+
 
 const struct tcpm_drv it83xx_tcpm_drv = {
 	.init			= &it83xx_tcpm_init,

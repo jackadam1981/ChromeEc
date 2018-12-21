@@ -712,9 +712,19 @@ static inline void set_state(int port, enum pd_states next_state)
 }
 
 /* increment message ID counter */
-static void inc_id(int port)
+static void inc_message_id(int port)
 {
 	pd[port].msg_id = (pd[port].msg_id + 1) & PD_MESSAGE_ID_COUNT;
+}
+
+/* reset message ID counter */
+static void reset_message_id(int port)
+{
+	pd[port].msg_id = 0;
+#ifdef CONFIG_COMMON_RUNTIME
+	/* Called when USB PD message ID reset */
+	hook_notify(HOOK_USB_PD_RESET_MESSAGE_ID);
+#endif //CONFIG_COMMON_RUNTIME
 }
 
 #ifdef CONFIG_USB_PD_REV30
@@ -733,7 +743,7 @@ static inline void pd_ca_reset(int port)
 void pd_transmit_complete(int port, int status)
 {
 	if (status == TCPC_TX_COMPLETE_SUCCESS)
-		inc_id(port);
+		inc_message_id(port);
 
 	pd[port].tx_status = status;
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_TX, 0);
@@ -1078,7 +1088,6 @@ static int send_request(int port, uint32_t rdo)
 
 	return bit_len;
 }
-
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -1193,7 +1202,7 @@ void pd_execute_hard_reset(int port)
 	else
 		CPRINTF("C%d HARD RST RX\n", port);
 
-	pd[port].msg_id = 0;
+	reset_message_id(port);
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	pd_dfp_exit_mode(port, 0, 0);
 #endif
@@ -1257,7 +1266,7 @@ void pd_execute_hard_reset(int port)
 
 static void execute_soft_reset(int port)
 {
-	pd[port].msg_id = 0;
+	reset_message_id(port);
 	set_state(port, DUAL_ROLE_IF_ELSE(port, PD_STATE_SNK_DISCOVERY,
 						PD_STATE_SRC_DISCOVERY));
 	CPRINTF("C%d Soft Rst\n", port);
@@ -1623,7 +1632,7 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SNK_SWAP_STANDBY);
 		} else if (pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY) {
 			/* reset message ID and swap roles */
-			pd[port].msg_id = 0;
+			reset_message_id(port);
 			pd_set_power_role(port, PD_ROLE_SINK);
 			pd_update_roles(port);
 			/*
@@ -3037,7 +3046,7 @@ void pd_task(void *u)
 				pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
 				/* reset various counters */
 				caps_count = 0;
-				pd[port].msg_id = 0;
+				reset_message_id(port);
 				snk_cap_count = 0;
 				set_state_timeout(
 					port,
@@ -3462,7 +3471,7 @@ void pd_task(void *u)
 			pd[port].polarity = get_snk_polarity(cc1, cc2);
 			set_polarity(port, pd[port].polarity);
 			/* reset message ID  on connection */
-			pd[port].msg_id = 0;
+			reset_message_id(port);
 			/* initial data role for sink is UFP */
 			pd_set_data_role(port, PD_ROLE_UFP);
 #if defined(CONFIG_CHARGE_MANAGER)
@@ -3761,7 +3770,7 @@ void pd_task(void *u)
 			/* Don't send GET_SINK_CAP on swap */
 			snk_cap_count = PD_SNK_CAP_RETRIES+1;
 			caps_count = 0;
-			pd[port].msg_id = 0;
+			reset_message_id(port);
 			pd_set_power_role(port, PD_ROLE_SOURCE);
 			pd_update_roles(port);
 			set_state(port, PD_STATE_SRC_DISCOVERY);
@@ -3839,7 +3848,7 @@ void pd_task(void *u)
 		case PD_STATE_SOFT_RESET:
 			if (pd[port].last_state != pd[port].task_state) {
 				/* Message ID of soft reset is always 0 */
-				pd[port].msg_id = 0;
+				reset_message_id(port);
 				res = send_control(port, PD_CTRL_SOFT_RESET);
 
 				/* if soft reset failed, try hard reset. */
