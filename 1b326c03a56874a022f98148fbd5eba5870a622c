@@ -22,6 +22,30 @@
       "revId": "1b326c03a56874a022f98148fbd5eba5870a622c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1388e27c_c73dd5b3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2018-12-21T18:15:36Z",
+      "side": 1,
+      "message": "gpio_set_flags() only updates the registers in the GPIO module, and doesn\u0027t write any registers in the PINMUX module.  So I believe these register writes are required and now moved to closed_source_set1.c.",
+      "parentUuid": "c0ddb2e6_95fbe887",
+      "range": {
+        "startLine": 563,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 40
+      },
+      "revId": "1b326c03a56874a022f98148fbd5eba5870a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
