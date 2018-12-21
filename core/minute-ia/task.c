@@ -46,8 +46,12 @@ static const char * const task_names[] = {
 
 #ifdef CONFIG_TASK_PROFILING
 static uint64_t task_start_time; /* Time task scheduling started */
-static uint64_t exc_start_time;  /* Time of task->exception transition */
-static uint64_t exc_end_time;    /* Time of exception->task transition */
+/*
+ * We only keep 32-bit values for exception start/end time, to avoid
+ * accounting errors when we service interrupt when the timer wraps around.
+ */
+static uint32_t exc_start_time;  /* Time of task->exception transition */
+static uint32_t exc_end_time;    /* Time of exception->task transition */
 static uint64_t exc_total_time;  /* Total time in exceptions */
 static uint32_t svc_calls;	 /* Number of service calls */
 static uint32_t task_switches;	/* Number of times active task changed */
@@ -131,10 +135,12 @@ task_ *current_task, *next_task;
  *
  * 2) An event was set by an interrupt; this could result in a higher-priority
  * task unblocking.  After checking for a task switch, switch_handler() will
- * clear  the flag (unless profiling is also enabled; then the flag remains
+ * clear the flag (unless profiling is also enabled; then the flag remains
  * set).
  */
-static int need_resched_or_profiling;
+#ifndef CONFIG_TASK_PROFILING
+static int need_resched;
+#endif
 
 /*
  * Bitmap of all tasks ready to be run.
@@ -173,11 +179,6 @@ inline int in_interrupt_context(void)
 	return !!__in_isr;
 }
 
-static inline int get_interrupt_context(void)
-{
-	return 0;
-}
-
 task_id_t task_get_current(void)
 {
 #ifdef CONFIG_DEBUG_BRINGUP
@@ -206,20 +207,7 @@ uint32_t switch_handler(int desched, task_id_t resched)
 {
 	task_ *current, *next;
 #ifdef CONFIG_TASK_PROFILING
-	int exc = get_interrupt_context();
-	uint64_t t;
-#endif
-
-
-#ifdef CONFIG_TASK_PROFILING
-	/*
-	 * SVCall isn't triggered via DECLARE_IRQ(), so it needs to track its
-	 * start time explicitly.
-	 */
-	if (exc == 0xb) {
-		exc_start_time = get_time().val;
-		svc_calls++;
-	}
+	uint32_t t;
 #endif
 
 	current = current_task;
@@ -247,22 +235,19 @@ uint32_t switch_handler(int desched, task_id_t resched)
 	next = __task_id_to_ptr(__fls(tasks_ready & tasks_enabled));
 
 #ifdef CONFIG_TASK_PROFILING
-	/* Track time in interrupts */
-	t = get_time().val;
-	exc_total_time += (t - exc_start_time);
-
-	/*
-	 * Bill the current task for time between the end of the last interrupt
-	 * and the start of this one.
-	 */
-	current->runtime += (exc_start_time - exc_end_time);
-	exc_end_time = t;
+	/* Only the first ISR on the (nested IRQ) stack calculates time */
+	if (__in_isr == 1) {
+		/* Track time in interrupts */
+		t = get_time().le.lo;
+		exc_end_time = t;
+		exc_total_time += (t - exc_start_time);
+	}
 #else
 	/*
 	 * Don't chain here from interrupts until the next time an interrupt
 	 * sets an event.
 	 */
-	need_resched_or_profiling = 0;
+	need_resched = 0;
 #endif
 
 	/* Nothing to do */
@@ -293,14 +278,14 @@ void __schedule(int desched, int resched)
 }
 
 #ifdef CONFIG_TASK_PROFILING
-void __keep task_start_irq_handler(void *excep_return)
+void __keep task_start_irq_handler(void *unused)
 {
 	/*
 	 * Get time before checking depth, in case this handler is
 	 * pre-empted.
 	 */
-	uint64_t t = get_time().val;
-	int irq = get_interrupt_context() - 16;
+	uint32_t t = get_time().le.lo;
+	int irq = get_current_irq();
 
 	/*
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
@@ -309,29 +294,21 @@ void __keep task_start_irq_handler(void *excep_return)
 	if (irq < ARRAY_SIZE(irq_dist))
 		irq_dist[irq]++;
 
-	/*
-	 * Continue iff a rescheduling event happened or profiling is active,
-	 * and we are not called from another exception (this must match the
-	 * logic for when we chain to svc_handler() below).
-	 */
-	if (!need_resched_or_profiling || (((uint32_t)excep_return & 0xf) == 1))
-		return;
+	/* Track total number of service calls */
+	atomic_add(&svc_calls, 1);
 
-	exc_start_time = t;
+	/* Only the outer ISR should keep track of the ISR start time */
+	if (__in_isr == 1) {
+		exc_start_time = t;
+
+		/*
+		 * Bill the current task for time between the end of the last
+		 * interrupt and the start of this one (now).
+		 */
+		current_task->runtime += (t - exc_end_time);
+	}
 }
 #endif
-
-void __keep task_resched_if_needed(void *excep_return)
-{
-	/*
-	 * Continue iff a rescheduling event happened or profiling is active,
-	 * and we are not called from another exception.
-	 */
-	if (!need_resched_or_profiling || (((uint32_t)excep_return & 0xf) == 1))
-		return;
-
-	switch_handler(0, 0);
-}
 
 static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 {
@@ -384,7 +361,7 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait)
 		atomic_or(&tasks_ready, 1 << tskid);
 #ifndef CONFIG_TASK_PROFILING
 		if (start_called)
-			need_resched_or_profiling = 1;
+			need_resched = 1;
 #endif
 	} else {
 		if (wait)
