@@ -107,6 +107,8 @@
 /* To be able to indicate the device is in tablet mode. */
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
+#define CONFIG_HALL_SENSOR
+#define HALL_SENSOR_GPIO_L GPIO_HALL_INT_L
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 256

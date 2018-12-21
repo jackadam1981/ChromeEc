@@ -33,6 +33,7 @@
 #include "spi.h"
 #include "switch.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "tcpm.h"
 #include "temp_sensor.h"
@@ -53,11 +54,6 @@ static void tcpc_alert_event(enum gpio_signal signal)
 }
 
 #if BOARD_REV >= 1
-static void hall_interrupt(enum gpio_signal signal)
-{
-	/* TODO(b/111378000): Implement hall_interrupt */
-}
-
 static void gauge_interrupt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_CHARGER);
@@ -225,6 +221,19 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_GAUGE_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_mode_change(void)
+{
+	/*
+	 * TODO: Not sure which event is more suitable for kukui.
+	 * We have MODE_CHANGE, LID_CLOSE, LID_OPEN events.
+	 * Generally the MODE_CHANGE is using in clasmshell's tablet mode.
+	 * Scarlet use MODE_CHANGE, but considering we might have a
+	 * keyboard, the cases might be more complex.
+	 */
+	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, board_mode_change, HOOK_PRIO_DEFAULT);
 
 void board_config_pre_init(void)
 {

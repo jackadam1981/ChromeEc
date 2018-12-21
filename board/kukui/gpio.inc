@@ -45,7 +45,7 @@ GPIO(SPI1_NSS,              PIN(A, 15), GPIO_INPUT)
 GPIO_INT_RW(SYNC_INT,       PIN(A, 8),  GPIO_INT_RISING | GPIO_PULL_DOWN,
          sync_interrupt)
 GPIO_INT(HALL_INT_L,        PIN(C, 5),  GPIO_INT_FALLING,
-         hall_interrupt)
+         hall_sensor_isr)
 GPIO_INT(GAUGE_INT_ODL,     PIN(C, 9),  GPIO_INT_FALLING | GPIO_PULL_UP,
          gauge_interrupt)
 #endif
