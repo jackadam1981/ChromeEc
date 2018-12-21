@@ -264,6 +264,12 @@ int board_use_plt_rst(void);
 int board_rst_pullup_needed(void);
 int board_tpm_uses_i2c(void);
 int board_tpm_uses_spi(void);
+/**
+ * Return the state of the BOARD_CLOSED_SOURCE_SET1 board strap option.
+ *
+ * @return 0 if option is not set, !=0 if option set.
+ */
+int board_uses_closed_source_set1(void);
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
@@ -282,6 +288,7 @@ int board_battery_is_present(void);
 int board_fwmp_allows_unlock(void);
 int board_vboot_dev_mode_enabled(void);
 void board_reboot_ap(void);
+void board_reboot_ec(void);
 int board_wipe_tpm(void);
 int board_is_first_factory_boot(void);
 
@@ -309,6 +316,8 @@ int chip_factory_mode(void);
  * reboot.
  */
 void board_start_ite_sync(void);
+
+extern const struct deferred_data deassert_ec_rst_data;
 
 #endif /* !__ASSEMBLER__ */
 

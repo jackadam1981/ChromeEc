@@ -157,6 +157,11 @@ int board_tpm_uses_spi(void)
 	return !!(board_properties & BOARD_SLAVE_CONFIG_SPI);
 }
 
+int board_uses_closed_source_set1(void)
+{
+	return !!(board_properties & BOARD_CLOSED_SOURCE_SET1);
+}
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {
@@ -664,6 +669,17 @@ static void maybe_trigger_ite_sync(void)
 	generate_ite_sync();
 }
 
+/*
+ * This interrupt handler will be called if the RBOX key combo is detected.
+ */
+static void key_combo0_irq(void)
+{
+	GWRITE_FIELD(RBOX, INT_STATE, INTR_BUTTON_COMBO0_RDY, 1);
+	board_reboot_ec();
+	CPRINTS("Recovery Requested");
+}
+DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT, key_combo0_irq, 0);
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -746,6 +762,16 @@ static void board_init(void)
 	 * supported.
 	 */
 	bitbang_config.uart_in = ec_uart.producer.queue;
+
+	/*
+	 * Enable interrupt handler for RBOX key combo so it can be used to
+	 * store the recovery request.
+	 */
+	if (board_uses_closed_source_set1()) {
+		/* Enable interrupt handler for reset button combo */
+		task_enable_irq(GC_IRQNUM_RBOX0_INTR_BUTTON_COMBO0_RDY_INT);
+		GWRITE_FIELD(RBOX, INT_ENABLE, INTR_BUTTON_COMBO0_RDY, 1);
+	}
 
 	/*
 	 * Note that the AP, EC, and servo state machines do not have explicit
@@ -940,6 +966,17 @@ void board_reboot_ap(void)
 	deassert_sys_rst();
 }
 
+DECLARE_DEFERRED(deassert_ec_rst);
+
+/**
+ * Reboot the EC
+ */
+void board_reboot_ec(void)
+{
+	assert_ec_rst();
+	hook_call_deferred(&deassert_ec_rst_data, 20 * MSEC);
+}
+
 /**
  * Console command to toggle system (AP) reset
  */
@@ -1053,9 +1090,7 @@ static int command_ec_rst(int argc, char **argv)
 
 		if (!strcasecmp("pulse", argv[1])) {
 			ccprintf("Pulsing EC reset\n");
-			assert_ec_rst();
-			usleep(200);
-			deassert_ec_rst();
+			board_reboot_ec();
 		} else if (parse_bool(argv[1], &val)) {
 			if (val)
 				assert_ec_rst();
