@@ -208,6 +208,13 @@ enum hook_type {
 	 * Hook routines will be called from the PD task.
 	 */
 	HOOK_USB_PD_DISCONNECT,
+
+	/*
+	 * Called when USB PD message ID reset.
+	 *
+	 * Hook routines will be called from the PD task.
+	 */
+	HOOK_USB_PD_RESET_MESSAGE_ID,
 };
 
 struct hook_data {
