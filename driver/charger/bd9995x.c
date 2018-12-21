@@ -213,7 +213,22 @@ static int bd9995x_charger_enable(int enable)
 
 	prev_chg_enable = enable;
 
+	rv = ch_raw_read16(BD9995X_CMD_CHGOP_SET2, &reg,
+				BD9995X_EXTENDED_COMMAND);
+	if (rv)
+		return rv;
+
+	if (enable)
+		reg |= BD9995X_CMD_CHGOP_SET2_CHG_EN;
+	else
+		reg &= ~BD9995X_CMD_CHGOP_SET2_CHG_EN;
+
 	if (enable) {
+		rv = ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
+					BD9995X_EXTENDED_COMMAND);
+		if (rv)
+			return rv;
+
 		/*
 		 * BGATE capacitor max : 0.1uF + 20%
 		 * Charge MOSFET threshold max : 2.8V
@@ -234,6 +249,8 @@ static int bd9995x_charger_enable(int enable)
 		 */
 		rv = bd9995x_set_vsysreg(bi->voltage_max +
 					 BD9995X_VSYS_PRECHARGE_OFFSET_MV);
+		if (rv)
+			return rv;
 
 		/*
 		 * Allow charger in pre-charge state for 50ms before disabling
@@ -241,22 +258,13 @@ static int bd9995x_charger_enable(int enable)
 		 * fast-charge state to pre-charge state.
 		 */
 		msleep(50);
+
+		rv = ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
+					BD9995X_EXTENDED_COMMAND);
 	}
-	if (rv)
-		return rv;
 
-	rv = ch_raw_read16(BD9995X_CMD_CHGOP_SET2, &reg,
-				BD9995X_EXTENDED_COMMAND);
-	if (rv)
-		return rv;
+	return rv;
 
-	if (enable)
-		reg |= BD9995X_CMD_CHGOP_SET2_CHG_EN;
-	else
-		reg &= ~BD9995X_CMD_CHGOP_SET2_CHG_EN;
-
-	return ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
-				BD9995X_EXTENDED_COMMAND);
 }
 
 static int bd9995x_por_reset(void)
