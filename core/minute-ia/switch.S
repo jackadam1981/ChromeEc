@@ -57,7 +57,7 @@ default_int_handler:
 .endfunc
 
 # Switches from one task to another if ready.
-# __schedule triggeres software interrupt ISH_TS_VECTOR, which is handled by
+# __schedule triggers software interrupt ISH_TS_VECTOR, which is handled by
 # __switchto
 .align 4
 .func __switchto
