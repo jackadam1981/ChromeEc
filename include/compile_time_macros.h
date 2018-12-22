@@ -15,6 +15,9 @@
 #define _BA0_(c, x) _BA1_(c, x)
 #define BUILD_ASSERT(cond) _BA0_(cond, __LINE__)
 
+/* For Linux kernel compatibility */
+#define BUILD_BUG_ON(cond) BUILD_ASSERT(!(cond))
+
 /*
  * Test an important condition inside code path at run time, taking advantage of
  * -Werror=div-by-zero.

@@ -1384,15 +1384,19 @@ struct ec_response_flash_info {
 	uint32_t protect_block_size;
 } __ec_align4;
 
-/* Flags for version 1+ flash info command */
-/* EC flash erases bits to 0 instead of 1 */
+/*
+ * Flags for version 1+ flash info command
+ * EC flash erases bits to 0 instead of 1.
+ */
 #define EC_FLASH_INFO_ERASE_TO_0 (1 << 0)
 
-/* Flash must be selected for read/write/erase operations to succeed.  This may
+/*
+ * Flash must be selected for read/write/erase operations to succeed.  This may
  * be necessary on a chip where write/erase can be corrupted by other board
  * activity, or where the chip needs to enable some sort of programming voltage,
  * or where the read/write/erase operations require cleanly suspending other
- * chip functionality. */
+ * chip functionality.
+ */
 #define EC_FLASH_INFO_SELECT_REQUIRED (1 << 1)
 
 /**
@@ -1659,8 +1663,10 @@ enum ec_flash_region {
 	/* Number of regions */
 	EC_FLASH_REGION_COUNT,
 };
-/* 'RW' is vague if there are multiple RW images; we mean the active one,
- * so the old constant is deprecated */
+/*
+ * 'RW' is vague if there are multiple RW images; we mean the active one,
+ * so the old constant is deprecated.
+ */
 #define EC_FLASH_REGION_RW EC_FLASH_REGION_ACTIVE
 
 /**
@@ -2241,8 +2247,10 @@ enum ec_vboot_hash_status {
 #define EC_VBOOT_HASH_OFFSET_ACTIVE	0xfffffffd
 #define EC_VBOOT_HASH_OFFSET_UPDATE	0xfffffffc
 
-/* 'RW' is vague if there are multiple RW images; we mean the active one,
- * so the old constant is deprecated */
+/*
+ * 'RW' is vague if there are multiple RW images; we mean the active one,
+ * so the old constant is deprecated.
+ */
 #define EC_VBOOT_HASH_OFFSET_RW EC_VBOOT_HASH_OFFSET_ACTIVE
 
 /*****************************************************************************/
@@ -2556,8 +2564,10 @@ struct ec_params_motion_sense {
 			int16_t data;
 		} kb_wake_angle;
 
-		/* Used for MOTIONSENSE_CMD_INFO, MOTIONSENSE_CMD_DATA
-		 * and MOTIONSENSE_CMD_PERFORM_CALIB. */
+		/*
+		 * Used for MOTIONSENSE_CMD_INFO, MOTIONSENSE_CMD_DATA
+		 * and MOTIONSENSE_CMD_PERFORM_CALIB.
+		 */
 		struct __ec_todo_unpacked {
 			uint8_t sensor_num;
 		} info, info_3, data, fifo_flush, perform_calib,
@@ -3413,7 +3423,7 @@ enum ec_mkbp_event {
 	/* Number of MKBP events */
 	EC_MKBP_EVENT_COUNT,
 };
-BUILD_ASSERT(EC_MKBP_EVENT_COUNT <= EC_MKBP_EVENT_TYPE_MASK);
+BUILD_BUG_ON(EC_MKBP_EVENT_COUNT > EC_MKBP_EVENT_TYPE_MASK);
 
 union __ec_align_offset1 ec_response_get_next_data {
 	uint8_t key_matrix[13];
@@ -3466,7 +3476,7 @@ union __ec_align_offset1 ec_response_get_next_data_v1 {
 
 	uint8_t cec_message[16];
 };
-BUILD_ASSERT(sizeof(union ec_response_get_next_data_v1) == 16);
+BUILD_BUG_ON(sizeof(union ec_response_get_next_data_v1) != 16);
 
 struct ec_response_get_next_event {
 	uint8_t event_type;
@@ -4734,9 +4744,11 @@ struct ec_params_usb_pd_fw_update {
 struct ec_params_usb_pd_rw_hash_entry {
 	uint16_t dev_id;
 	uint8_t dev_rw_hash[PD_RW_HASH_SIZE];
-	uint8_t reserved;        /* For alignment of current_image
+	uint8_t reserved;        /*
+				  * For alignment of current_image
 				  * TODO(rspangler) but it's not aligned!
-				  * Should have been reserved[2]. */
+				  * Should have been reserved[2].
+				  */
 	uint32_t current_image;  /* One of ec_current_image */
 } __ec_align1;
 
