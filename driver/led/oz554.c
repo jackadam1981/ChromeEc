@@ -88,7 +88,7 @@ DECLARE_DEFERRED(backlight_enable_deferred);
 
 void backlight_enable_interrupt(enum gpio_signal signal)
 {
-	hook_call_deferred(&backlight_enable_deferred_data, 30 * MSEC);
+	hook_call_deferred(&backlight_enable_deferred_data, SECOND);
 }
 
 static void on_chipset_resume(void)
