@@ -10,6 +10,10 @@
 
 #include "gpio.h"
 
+#ifndef OZ554_POWER_BACKLIGHT_DELAY
+#define OZ554_POWER_BACKLIGHT_DELAY SECOND
+#endif
+
 void backlight_enable_interrupt(enum gpio_signal signal);
 
 #endif
