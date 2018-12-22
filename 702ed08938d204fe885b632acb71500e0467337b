@@ -110,6 +110,24 @@
     },
     {
       "key": {
+        "uuid": "930e03b7_5eafc3a4",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-22T10:46:58Z",
+      "side": 1,
+      "message": "Haven\u0027t figure out a good way to initialize ipi_desc array statically (compile time) now.\n\nMy two cents:\n\nThere are several magic link script examples in the EC.\ne.g. DECLARE_IRQ(), DECLARE_HOOK().\n\nIRQ:\n1. Each IRQ handler entry is known due to the ARM exception handling model.  The IRQ handler location is easily calculated.\n2. IRQ will be masked out if not calling task_irq_enable(). The unregistered IRQ won\u0027t effect the system.\n\nIPI suits this model, however, we have to guard unregistered IPI, but I haven\u0027t came up a good way to tell which IPI is registered or not.\nUnregistered IPI won\u0027t call DECLARE_IPI, but we have to assign its handler to NULL.  I haven\u0027t figure out how to do this in compile time.\n\nHOOK:\nhook_list contains an array of hook_type symbols, like, __hooks_init, __hooks_init_end, __hooks_ac_change, __hooks_ac_change_end.\nThese symbols points to either the starting address or end address of each hook_type.\nWhenever a hook_type needs to run, it just runs all the hooks in between the starting location and end location of a hook_type.\nTo achieve this, linkerscript should contains each hook_type sections, like, \".rodata.HOOK_CHIPSET_RESUME\", \".rodata.HOOK_CHIPSET_RESET\"\n\nWe can also use this for IPI, but, if we do not want to use a for-loop (the index may skew/unaligned) to find out the IPI handler, we have to add a lot of section symbols in linker script.\ne.g. \".rodata.IPI0\" .. \".rodata.IPI7\"\nAnd, if we have more IPI in the future, we have to add this in the linker script again.\n\nGPIO_INT:\nThis could fit IPI model best, but DECLARE_IPI would be placed in a standalone file.\n\nNot sure if I cover all the case. I would like to hear some input. (If we can propagate some init/register in runtime, then things could be easier?)",
+      "parentUuid": "fe370391_33da96d8",
+      "revId": "702ed08938d204fe885b632acb71500e0467337b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5af7f847_078a4458",
         "filename": "chip/mt_scp/ipi.c",
         "patchSetId": 19
@@ -124,6 +142,24 @@
       "revId": "702ed08938d204fe885b632acb71500e0467337b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "390cec65_a617e7b3",
+        "filename": "chip/mt_scp/ipi.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2018-12-22T10:46:58Z",
+      "side": 1,
+      "message": "Probably not needed, but this is an API in the scp code drop.  We can remove this anyway, and ask vendor to remove the API usages.",
+      "parentUuid": "5af7f847_078a4458",
+      "revId": "702ed08938d204fe885b632acb71500e0467337b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
