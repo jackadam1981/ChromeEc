@@ -131,11 +131,12 @@ static void gpio_interrupt(void)
 
 	for (i = 0; i < GPIO_IH_COUNT; i++, g++) {
 		if (gisr & g->mask) {
-			/* write 1 to clear interrupt status bit */
-			ISH_GPIO_GISR = g->mask;
 			gpio_irq_handlers[i](i);
 		}
 	}
+
+	/* write 1 to clear interrupt status bit */
+	ISH_GPIO_GISR = gisr;
 }
 
 DECLARE_IRQ(ISH_GPIO_IRQ, gpio_interrupt);
